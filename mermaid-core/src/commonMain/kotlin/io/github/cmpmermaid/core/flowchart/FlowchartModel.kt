@@ -4,6 +4,7 @@ import io.github.cmpmermaid.core.SceneArrowHead
 import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneStrokePattern
+import io.github.cmpmermaid.core.SceneTextWeight
 
 internal enum class FlowDirection {
     TopToBottom,
@@ -17,6 +18,9 @@ internal data class FlowNodeStyle(
     val stroke: SceneColor? = null,
     val text: SceneColor? = null,
     val strokeWidth: Float? = null,
+    val strokePattern: SceneStrokePattern? = null,
+    val fontSize: Float? = null,
+    val fontWeight: SceneTextWeight? = null,
 )
 
 internal data class FlowNode(

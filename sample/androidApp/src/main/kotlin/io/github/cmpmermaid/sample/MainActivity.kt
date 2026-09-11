@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -21,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,6 +32,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.AccountTree
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -51,6 +54,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -63,6 +67,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.compose.MermaidDiagram
 import io.github.cmpmermaid.core.MermaidCompatibility
@@ -339,54 +344,202 @@ private fun BasicSyntaxPage(
                 warning = true,
             )
         }
-        item {
+        items(flowchartSyntaxLessons, key = SyntaxLessonContent::title) { lesson ->
             SyntaxLesson(
-                title = "A node (default)",
-                source = """
-                    flowchart LR
-                      id
-                """.trimIndent(),
-                note = "The node id is displayed when no separate label is provided.",
-                height = 130,
-            )
-        }
-        item {
-            SyntaxLesson(
-                title = "A node with text",
-                source = """
-                    flowchart LR
-                      id1[This is the text in the box]
-                """.trimIndent(),
-                note = "A label enclosed in square brackets replaces the visible node id.",
-                height = 140,
-            )
-        }
-        item {
-            SyntaxLesson(
-                title = "Direction",
-                source = """
-                    flowchart LR
-                      Start --> Finish
-                """.trimIndent(),
-                note = "Use TB, BT, LR, or RL to control the primary layout direction.",
-                height = 150,
-            )
-        }
-        item {
-            SyntaxLesson(
-                title = "Nodes and links",
-                source = """
-                    flowchart TB
-                      A([Request]) --> B{Valid?}
-                      B -->|Yes| C[(Store)]
-                      B -->|No| D[Reject]
-                """.trimIndent(),
-                note = "Node shapes and edge labels can be combined in the same statement.",
-                height = 250,
+                title = lesson.title,
+                source = lesson.source,
+                note = lesson.note,
+                height = lesson.height,
             )
         }
     }
 }
+
+private data class SyntaxLessonContent(
+    val title: String,
+    val source: String,
+    val note: String,
+    val height: Int,
+)
+
+private val flowchartSyntaxLessons = listOf(
+    SyntaxLessonContent(
+        title = "A node (default)",
+        source = "flowchart LR\n  id",
+        note = "The node id is displayed when no separate label is provided.",
+        height = 130,
+    ),
+    SyntaxLessonContent(
+        title = "A node with text",
+        source = "flowchart LR\n  id1[This is the text in the box]",
+        note = "A label enclosed in square brackets replaces the visible node id.",
+        height = 140,
+    ),
+    SyntaxLessonContent(
+        title = "Unicode and line breaks",
+        source = "flowchart LR\n  A[\"Unicode text\"] --> B[\"Line one<br/>Line two\"]",
+        note = "Quoted labels preserve punctuation; br tags create explicit line breaks.",
+        height = 160,
+    ),
+    SyntaxLessonContent(
+        title = "Direction",
+        source = "flowchart LR\n  Start --> Finish",
+        note = "Use TB, TD, BT, LR, or RL to control the primary layout direction.",
+        height = 150,
+    ),
+    SyntaxLessonContent(
+        title = "Classic node shapes",
+        source = """
+            flowchart LR
+              A[Process] --> B(Rounded) --> C([Terminal])
+              C --> D[[Subroutine]] --> E[(Database)]
+              E --> F{Decision} --> G{{Prepare}}
+        """.trimIndent(),
+        note = "Classic delimiters select the node geometry without metadata.",
+        height = 210,
+    ),
+    SyntaxLessonContent(
+        title = "Expanded shape syntax",
+        source = """
+            flowchart LR
+              A@{ shape: doc, label: "Document" }
+              A --> B@{ shape: lin-cyl, label: "Disk" }
+              B --> C@{ shape: cross-circ, label: "Summary" }
+        """.trimIndent(),
+        note = "The metadata form supports Mermaid 12 semantic shape names and aliases.",
+        height = 180,
+    ),
+    SyntaxLessonContent(
+        title = "Arrow and open links",
+        source = """
+            flowchart LR
+              A --> B
+              A --- C
+        """.trimIndent(),
+        note = "Three hyphens create an open link; an ending angle bracket adds an arrow.",
+        height = 170,
+    ),
+    SyntaxLessonContent(
+        title = "Text on links",
+        source = """
+            flowchart LR
+              A -- text --> B
+              A -->|pipe label| C
+        """.trimIndent(),
+        note = "Both middle text and pipe-delimited edge labels are supported.",
+        height = 180,
+    ),
+    SyntaxLessonContent(
+        title = "Dotted, thick, and invisible links",
+        source = """
+            flowchart LR
+              A -. dotted .-> B
+              A == thick ==> C
+              B ~~~ C
+        """.trimIndent(),
+        note = "Invisible links affect layout without drawing a visible edge.",
+        height = 190,
+    ),
+    SyntaxLessonContent(
+        title = "Circle and cross markers",
+        source = """
+            flowchart LR
+              A --o B
+              C --x D
+              E o--o F
+              G x--x H
+        """.trimIndent(),
+        note = "Circle and cross markers can be attached to either end.",
+        height = 190,
+    ),
+    SyntaxLessonContent(
+        title = "Multi-directional arrows",
+        source = """
+            flowchart LR
+              A <--> B
+              C <==> D
+              E <-.-> F
+        """.trimIndent(),
+        note = "Normal, thick, and dotted links can carry markers at both ends.",
+        height = 190,
+    ),
+    SyntaxLessonContent(
+        title = "Minimum link length",
+        source = """
+            flowchart TD
+              A --> B
+              A ---> C
+              A ----> D
+        """.trimIndent(),
+        note = "Extra dashes request additional ranks between connected nodes.",
+        height = 260,
+    ),
+    SyntaxLessonContent(
+        title = "Chaining and multiple nodes",
+        source = """
+            flowchart TB
+              A & B --> C & D
+              C --> E --> F
+        """.trimIndent(),
+        note = "Ampersands create compact fan-out and fan-in declarations.",
+        height = 260,
+    ),
+    SyntaxLessonContent(
+        title = "Edge ids",
+        source = """
+            flowchart LR
+              A e1@--> B
+              classDef highlight stroke:#dc2626,stroke-width:3px
+              class e1 highlight
+        """.trimIndent(),
+        note = "An edge id allows later class and metadata assignments.",
+        height = 160,
+    ),
+    SyntaxLessonContent(
+        title = "Subgraphs",
+        source = """
+            flowchart TB
+              subgraph group [Validation]
+                A --> B
+              end
+              B --> C
+        """.trimIndent(),
+        note = "Subgraphs group related nodes and may be nested.",
+        height = 250,
+    ),
+    SyntaxLessonContent(
+        title = "Node styles",
+        source = """
+            flowchart LR
+              A[Start] --> B[Finish]
+              style A fill:#dbeafe,stroke:#2563eb,color:#172554,stroke-width:3px
+        """.trimIndent(),
+        note = "Fill, stroke, text color, width, dash pattern, and font styles are native.",
+        height = 160,
+    ),
+    SyntaxLessonContent(
+        title = "Classes",
+        source = """
+            flowchart LR
+              A:::source --> B:::result
+              classDef source fill:#dbeafe,stroke:#2563eb
+              classDef result fill:#dcfce7,stroke:#16a34a
+        """.trimIndent(),
+        note = "Class definitions can be attached directly with the triple-colon syntax.",
+        height = 160,
+    ),
+    SyntaxLessonContent(
+        title = "Link styles",
+        source = """
+            flowchart LR
+              A --> B --> C
+              linkStyle 0 stroke:#dc2626,stroke-width:4px
+              linkStyle 1 stroke:#2563eb,stroke-width:3px
+        """.trimIndent(),
+        note = "Link indexes follow source declaration order, beginning at zero.",
+        height = 160,
+    ),
+)
 
 @Composable
 private fun SyntaxLesson(
@@ -458,6 +611,17 @@ private fun NoticeBlock(
 private fun DemoGalleryPage(
     contentPadding: PaddingValues,
 ) {
+    val categories = remember {
+        listOf("All") + flowchartDemos.map(FlowchartDemo::category).distinct()
+    }
+    var selectedCategory by rememberSaveable { mutableStateOf("All") }
+    val visibleDemos = remember(selectedCategory) {
+        if (selectedCategory == "All") {
+            flowchartDemos
+        } else {
+            flowchartDemos.filter { it.category == selectedCategory }
+        }
+    }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -480,7 +644,28 @@ private fun DemoGalleryPage(
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
-        items(flowchartDemos, key = FlowchartDemo::id) { demo ->
+        item {
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(end = 16.dp),
+            ) {
+                items(categories, key = { it }) { category ->
+                    FilterChip(
+                        selected = category == selectedCategory,
+                        onClick = { selectedCategory = category },
+                        label = {
+                            val count = if (category == "All") {
+                                flowchartDemos.size
+                            } else {
+                                flowchartDemos.count { it.category == category }
+                            }
+                            Text("$category $count")
+                        },
+                    )
+                }
+            }
+        }
+        items(visibleDemos, key = FlowchartDemo::id) { demo ->
             DemoComparison(demo)
         }
     }
@@ -542,16 +727,24 @@ private fun DemoComparison(
             }
         }
         Spacer(Modifier.height(12.dp))
-        if (selectedPreview == 0) {
-            NativePreview(
-                demo = demo,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-        } else {
-            OfficialPreview(
-                demo = demo,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
+        BoxWithConstraints(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+        ) {
+            val height = (maxWidth / demo.officialAspectRatio)
+                .coerceIn(200.dp, 480.dp)
+            if (selectedPreview == 0) {
+                NativePreview(
+                    demo = demo,
+                    height = height,
+                )
+            } else {
+                OfficialPreview(
+                    demo = demo,
+                    height = height,
+                )
+            }
         }
         if (expanded) {
             Spacer(Modifier.height(14.dp))
@@ -566,17 +759,16 @@ private fun DemoComparison(
 @Composable
 private fun NativePreview(
     demo: FlowchartDemo,
-    modifier: Modifier,
+    height: Dp,
 ) {
     PreviewFrame(
         label = "CMP Native",
-        modifier = modifier,
     ) {
         MermaidDiagram(
             source = demo.source,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(previewHeight(demo).dp),
+                .height(height),
             theme = MermaidTheme.MermaidDefault,
             contentDescription = "${demo.title} CMP rendering",
         )
@@ -586,18 +778,17 @@ private fun NativePreview(
 @Composable
 private fun OfficialPreview(
     demo: FlowchartDemo,
-    modifier: Modifier,
+    height: Dp,
 ) {
     PreviewFrame(
         label = "Official Mermaid.js 12.0.0",
-        modifier = modifier,
     ) {
         Image(
             painter = painterResource(demo.officialDrawable),
             contentDescription = "${demo.title} official rendering",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(previewHeight(demo).dp)
+                .height(height)
                 .background(Color.White),
             contentScale = ContentScale.Fit,
         )
@@ -651,9 +842,4 @@ private fun CodeBlock(
             overflow = TextOverflow.Ellipsis,
         )
     }
-}
-
-private fun previewHeight(demo: FlowchartDemo): Int = when (demo.id) {
-    "question_workflow", "subgraph", "nested_subgraphs", "long_labels" -> 270
-    else -> 210
 }

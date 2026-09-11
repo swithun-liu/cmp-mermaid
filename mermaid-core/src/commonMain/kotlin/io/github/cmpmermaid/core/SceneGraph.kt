@@ -79,6 +79,7 @@ data class SceneShape(
     val fill: SceneColor,
     val stroke: SceneColor,
     val strokeWidth: Float = 1.5f,
+    val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val cornerRadius: Float = 8f,
     override val zIndex: Int = 10,
 ) : SceneElement
@@ -113,8 +114,15 @@ data class ScenePath(
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val arrowStart: SceneArrowHead = SceneArrowHead.None,
     val arrowEnd: SceneArrowHead = SceneArrowHead.None,
+    val cornerRadius: Float = 8f,
+    val bridges: List<SceneBridge> = emptyList(),
     override val zIndex: Int = 5,
 ) : SceneElement
+
+data class SceneBridge(
+    val center: ScenePoint,
+    val radius: Float = 5f,
+)
 
 data class MermaidScene(
     val width: Float,

@@ -27,6 +27,7 @@ if (mermaidPackage.version !== '12.0.0') {
 mkdirSync(output, { recursive: true });
 rmSync(temporary, { recursive: true, force: true });
 mkdirSync(temporary, { recursive: true });
+const dimensions = new Map();
 
 for (const demo of cases) {
   const input = resolve(temporary, `${demo.id}.mmd`);
@@ -54,11 +55,17 @@ for (const demo of cases) {
       `Official render failed for ${demo.id}\n${result.stdout}\n${result.stderr}`,
     );
   }
+  const png = readFileSync(target);
+  dimensions.set(demo.id, {
+    width: png.readUInt32BE(16),
+    height: png.readUInt32BE(20),
+  });
 }
 
 const kotlinCases = cases
   .map((demo) => {
     const source = demo.source.replaceAll('$', "${'$'}");
+    const size = dimensions.get(demo.id);
     return `    FlowchartDemo(
         id = "${demo.id}",
         title = "${demo.title}",
@@ -67,6 +74,7 @@ const kotlinCases = cases
 ${source}
         """.trimIndent(),
         officialDrawable = R.drawable.official_${demo.id},
+        officialAspectRatio = ${size.width}f / ${size.height}f,
     )`;
   })
   .join(',\n');
@@ -84,6 +92,7 @@ internal data class FlowchartDemo(
     val category: String,
     val source: String,
     val officialDrawable: Int,
+    val officialAspectRatio: Float,
 )
 
 internal val flowchartDemos: List<FlowchartDemo> = listOf(

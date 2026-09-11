@@ -1,13 +1,14 @@
 package io.github.cmpmermaid.compose
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.calculatePan
+import androidx.compose.foundation.gestures.calculateZoom
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -26,6 +27,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.withTransform
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.contentDescription
@@ -59,6 +61,7 @@ import io.github.cmpmermaid.core.TextMetricProvider
 import io.github.cmpmermaid.core.TextMetrics
 import io.github.cmpmermaid.core.TextMetricsRequest
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.min
@@ -127,16 +130,42 @@ fun MermaidSceneCanvas(
 ) {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val density = LocalDensity.current
-    var zoom by remember(scene) { mutableFloatStateOf(1f) }
-    var pan by remember(scene) { mutableStateOf(Offset.Zero) }
+    var viewport by remember(scene) { mutableStateOf(DiagramViewport()) }
 
     Canvas(
         modifier = modifier
+            .clipToBounds()
             .semantics { this.contentDescription = contentDescription }
             .pointerInput(scene) {
-                detectTransformGestures { _, panChange, zoomChange, _ ->
-                    zoom = (zoom * zoomChange).coerceIn(1f, 5f)
-                    pan += panChange
+                awaitEachGesture {
+                    while (true) {
+                        val event = awaitPointerEvent()
+                        val pressed = event.changes.filter { it.pressed }
+                        if (pressed.size >= 2) {
+                            val centroid = pressed
+                                .map { it.position }
+                                .reduce(Offset::plus) / pressed.size.toFloat()
+                            val fitScale = min(
+                                size.width / scene.width,
+                                size.height / scene.height,
+                            )
+                            viewport = viewport.applyGesture(
+                                viewportWidth = size.width.toFloat(),
+                                viewportHeight = size.height.toFloat(),
+                                fittedContentWidth = scene.width * fitScale,
+                                fittedContentHeight = scene.height * fitScale,
+                                centroidX = centroid.x,
+                                centroidY = centroid.y,
+                                gesturePanX = event.calculatePan().x,
+                                gesturePanY = event.calculatePan().y,
+                                zoomChange = event.calculateZoom(),
+                            )
+                            event.changes.forEach { it.consume() }
+                        }
+                        if (event.changes.none { it.pressed }) {
+                            break
+                        }
+                    }
                 }
             },
     ) {
@@ -145,14 +174,16 @@ fun MermaidSceneCanvas(
             return@Canvas
         }
         val fitScale = min(size.width / scene.width, size.height / scene.height)
-        val scale = fitScale * zoom
+        val scale = fitScale * viewport.zoom
+        val contentWidth = scene.width * scale
+        val contentHeight = scene.height * scale
         val baseOffset = Offset(
-            x = (size.width - scene.width * fitScale) / 2f,
-            y = (size.height - scene.height * fitScale) / 2f,
+            x = (size.width - contentWidth) / 2f,
+            y = (size.height - contentHeight) / 2f,
         )
 
         withTransform({
-            translate(baseOffset.x + pan.x, baseOffset.y + pan.y)
+            translate(baseOffset.x + viewport.panX, baseOffset.y + viewport.panY)
             scale(scale, scale, Offset.Zero)
         }) {
             scene.elements.forEach { element ->
@@ -179,6 +210,7 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
         width = shape.strokeWidth,
         cap = StrokeCap.Round,
         join = StrokeJoin.Round,
+        pathEffect = shape.strokePattern.toPathEffect(),
     )
 
     when (shape.kind) {
@@ -196,9 +228,15 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
             drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
             drawRoundRect(stroke, bounds.topLeft, bounds.size, radius, style = strokeStyle)
         }
-        SceneShapeKind.Circle -> {
+        SceneShapeKind.Circle,
+        SceneShapeKind.Ellipse,
+        SceneShapeKind.SmallCircle,
+        -> {
             drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
             drawOval(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
+        }
+        SceneShapeKind.FilledCircle -> {
+            drawOval(stroke, bounds.topLeft, bounds.size, style = Fill)
         }
         SceneShapeKind.DoubleCircle -> {
             drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
@@ -211,18 +249,228 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
                 style = strokeStyle,
             )
         }
+        SceneShapeKind.FramedCircle -> {
+            drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
+            drawOval(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
+            drawCircle(stroke, radius = 4f, center = bounds.center)
+        }
+        SceneShapeKind.CrossedCircle -> {
+            drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
+            drawOval(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
+            val radius = bounds.width.coerceAtMost(bounds.height) * 0.3f
+            drawLine(
+                stroke,
+                bounds.center - Offset(radius, radius),
+                bounds.center + Offset(radius, radius),
+                shape.strokeWidth,
+            )
+            drawLine(
+                stroke,
+                bounds.center + Offset(-radius, radius),
+                bounds.center + Offset(radius, -radius),
+                shape.strokeWidth,
+            )
+        }
         SceneShapeKind.Cylinder -> drawCylinder(bounds, fill, stroke, strokeStyle)
+        SceneShapeKind.LinedCylinder -> {
+            drawCylinder(bounds, fill, stroke, strokeStyle)
+            drawOval(
+                color = stroke,
+                topLeft = Offset(bounds.left, bounds.top + 5f),
+                size = Size(bounds.width, 14f.coerceAtMost(bounds.height / 3f)),
+                style = strokeStyle,
+            )
+        }
+        SceneShapeKind.DirectAccessStorage -> drawHorizontalCylinder(bounds, fill, stroke, strokeStyle)
         SceneShapeKind.Subroutine -> {
             drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
             drawRect(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
             drawLine(stroke, Offset(bounds.left + 10f, bounds.top), Offset(bounds.left + 10f, bounds.bottom), shape.strokeWidth)
             drawLine(stroke, Offset(bounds.right - 10f, bounds.top), Offset(bounds.right - 10f, bounds.bottom), shape.strokeWidth)
         }
-        else -> {
-            val path = shape.kind.toPath(bounds)
-            drawPath(path, fill, style = Fill)
-            drawPath(path, stroke, style = strokeStyle)
+        SceneShapeKind.TextBlock -> Unit
+        SceneShapeKind.BraceLeft,
+        SceneShapeKind.BraceRight,
+        SceneShapeKind.Braces,
+        -> drawBraces(shape.kind, bounds, stroke, strokeStyle)
+        SceneShapeKind.MultiProcess -> {
+            val offset = 6f
+            drawRect(
+                color = fill,
+                topLeft = bounds.topLeft + Offset(offset, -offset),
+                size = bounds.size,
+                style = Fill,
+            )
+            drawRect(
+                color = stroke,
+                topLeft = bounds.topLeft + Offset(offset, -offset),
+                size = bounds.size,
+                style = strokeStyle,
+            )
+            drawPathShape(shape.kind, bounds, fill, stroke, strokeStyle)
         }
+        SceneShapeKind.MultiDocument -> {
+            drawDocument(bounds.shifted(6f, -8f), fill, stroke, strokeStyle)
+            drawDocument(bounds.shifted(3f, -4f), fill, stroke, strokeStyle)
+            drawDocument(bounds, fill, stroke, strokeStyle)
+        }
+        SceneShapeKind.Document -> drawDocument(bounds, fill, stroke, strokeStyle)
+        SceneShapeKind.LinedDocument -> {
+            drawDocument(bounds, fill, stroke, strokeStyle)
+            drawLine(
+                stroke,
+                Offset(bounds.left + 10f, bounds.top),
+                Offset(bounds.left + 10f, bounds.bottom - 8f),
+                shape.strokeWidth,
+            )
+            drawLine(
+                stroke,
+                Offset(bounds.right - 10f, bounds.top),
+                Offset(bounds.right - 10f, bounds.bottom - 8f),
+                shape.strokeWidth,
+            )
+        }
+        SceneShapeKind.TaggedDocument -> {
+            drawDocument(bounds, fill, stroke, strokeStyle)
+            drawTag(bounds, stroke, shape.strokeWidth)
+        }
+        SceneShapeKind.LinedRectangle,
+        SceneShapeKind.DividedRectangle,
+        SceneShapeKind.WindowPane,
+        SceneShapeKind.TaggedRectangle,
+        -> {
+            drawPathShape(shape.kind, bounds, fill, stroke, strokeStyle)
+            drawInternalShapeLines(shape.kind, bounds, stroke, shape.strokeWidth)
+        }
+        else -> {
+            drawPathShape(shape.kind, bounds, fill, stroke, strokeStyle)
+        }
+    }
+}
+
+private fun DrawScope.drawPathShape(
+    kind: SceneShapeKind,
+    bounds: Rect,
+    fill: Color,
+    stroke: Color,
+    strokeStyle: Stroke,
+) {
+    val path = kind.toPath(bounds)
+    drawPath(path, fill, style = Fill)
+    drawPath(path, stroke, style = strokeStyle)
+}
+
+private fun Rect.shifted(dx: Float, dy: Float): Rect = Rect(
+    left = left + dx,
+    top = top + dy,
+    right = right + dx,
+    bottom = bottom + dy,
+)
+
+private fun DrawScope.drawHorizontalCylinder(
+    bounds: Rect,
+    fill: Color,
+    stroke: Color,
+    strokeStyle: Stroke,
+) {
+    val capWidth = min(16f, bounds.width / 4f)
+    val body = Path().apply {
+        moveTo(bounds.left + capWidth / 2f, bounds.top)
+        lineTo(bounds.right - capWidth / 2f, bounds.top)
+        cubicTo(bounds.right + capWidth / 2f, bounds.top, bounds.right + capWidth / 2f, bounds.bottom, bounds.right - capWidth / 2f, bounds.bottom)
+        lineTo(bounds.left + capWidth / 2f, bounds.bottom)
+        cubicTo(bounds.left - capWidth / 2f, bounds.bottom, bounds.left - capWidth / 2f, bounds.top, bounds.left + capWidth / 2f, bounds.top)
+        close()
+    }
+    drawPath(body, fill, style = Fill)
+    drawPath(body, stroke, style = strokeStyle)
+    drawOval(
+        color = stroke,
+        topLeft = bounds.topLeft,
+        size = Size(capWidth, bounds.height),
+        style = strokeStyle,
+    )
+}
+
+private fun DrawScope.drawDocument(
+    bounds: Rect,
+    fill: Color,
+    stroke: Color,
+    strokeStyle: Stroke,
+) {
+    val wave = min(10f, bounds.height / 4f)
+    val path = Path().apply {
+        moveTo(bounds.left, bounds.top)
+        lineTo(bounds.right, bounds.top)
+        lineTo(bounds.right, bounds.bottom - wave)
+        cubicTo(
+            bounds.right - bounds.width * 0.25f,
+            bounds.bottom - wave * 2f,
+            bounds.left + bounds.width * 0.25f,
+            bounds.bottom + wave,
+            bounds.left,
+            bounds.bottom - wave,
+        )
+        close()
+    }
+    drawPath(path, fill, style = Fill)
+    drawPath(path, stroke, style = strokeStyle)
+}
+
+private fun DrawScope.drawBraces(
+    kind: SceneShapeKind,
+    bounds: Rect,
+    stroke: Color,
+    strokeStyle: Stroke,
+) {
+    fun brace(x: Float, direction: Float): Path = Path().apply {
+        val depth = 9f * direction
+        moveTo(x, bounds.top)
+        cubicTo(x + depth, bounds.top, x + depth, bounds.center.y - 6f, x, bounds.center.y)
+        cubicTo(x + depth, bounds.center.y + 6f, x + depth, bounds.bottom, x, bounds.bottom)
+    }
+    if (kind != SceneShapeKind.BraceRight) {
+        drawPath(brace(bounds.left + 4f, 1f), stroke, style = strokeStyle)
+    }
+    if (kind != SceneShapeKind.BraceLeft) {
+        drawPath(brace(bounds.right - 4f, -1f), stroke, style = strokeStyle)
+    }
+}
+
+private fun DrawScope.drawTag(
+    bounds: Rect,
+    stroke: Color,
+    strokeWidth: Float,
+) {
+    val inset = min(12f, bounds.width / 5f)
+    drawLine(
+        stroke,
+        Offset(bounds.right - inset, bounds.top),
+        Offset(bounds.right - inset, bounds.bottom - 4f),
+        strokeWidth,
+    )
+}
+
+private fun DrawScope.drawInternalShapeLines(
+    kind: SceneShapeKind,
+    bounds: Rect,
+    stroke: Color,
+    strokeWidth: Float,
+) {
+    when (kind) {
+        SceneShapeKind.LinedRectangle -> {
+            drawLine(stroke, Offset(bounds.left + 10f, bounds.top), Offset(bounds.left + 10f, bounds.bottom), strokeWidth)
+            drawLine(stroke, Offset(bounds.right - 10f, bounds.top), Offset(bounds.right - 10f, bounds.bottom), strokeWidth)
+        }
+        SceneShapeKind.DividedRectangle -> {
+            drawLine(stroke, Offset(bounds.left, bounds.center.y), Offset(bounds.right, bounds.center.y), strokeWidth)
+        }
+        SceneShapeKind.WindowPane -> {
+            drawLine(stroke, Offset(bounds.left + 13f, bounds.top), Offset(bounds.left + 13f, bounds.bottom), strokeWidth)
+            drawLine(stroke, Offset(bounds.left, bounds.top + 13f), Offset(bounds.right, bounds.top + 13f), strokeWidth)
+        }
+        SceneShapeKind.TaggedRectangle -> drawTag(bounds, stroke, strokeWidth)
+        else -> Unit
     }
 }
 
@@ -316,6 +564,112 @@ private fun SceneShapeKind.toPath(bounds: Rect): Path = Path().apply {
             lineTo(bounds.right, bounds.bottom)
             lineTo(bounds.left, bounds.bottom)
         }
+        SceneShapeKind.NotchedRectangle -> {
+            val notch = min(12f, bounds.width / 6f)
+            moveTo(bounds.left + notch, bounds.top)
+            lineTo(bounds.right, bounds.top)
+            lineTo(bounds.right, bounds.bottom)
+            lineTo(bounds.left, bounds.bottom)
+            lineTo(bounds.left, bounds.top + notch)
+        }
+        SceneShapeKind.Hourglass -> {
+            val inset = bounds.width * 0.18f
+            moveTo(bounds.left, bounds.top)
+            lineTo(bounds.right, bounds.top)
+            lineTo(bounds.right - inset, bounds.center.y)
+            lineTo(bounds.right, bounds.bottom)
+            lineTo(bounds.left, bounds.bottom)
+            lineTo(bounds.left + inset, bounds.center.y)
+        }
+        SceneShapeKind.Bolt -> {
+            moveTo(bounds.center.x + bounds.width * 0.08f, bounds.top)
+            lineTo(bounds.left + bounds.width * 0.24f, bounds.center.y + bounds.height * 0.05f)
+            lineTo(bounds.center.x - bounds.width * 0.03f, bounds.center.y + bounds.height * 0.05f)
+            lineTo(bounds.center.x - bounds.width * 0.12f, bounds.bottom)
+            lineTo(bounds.right - bounds.width * 0.2f, bounds.center.y - bounds.height * 0.08f)
+            lineTo(bounds.center.x + bounds.width * 0.05f, bounds.center.y - bounds.height * 0.08f)
+        }
+        SceneShapeKind.Delay -> {
+            val radius = bounds.height / 2f
+            moveTo(bounds.left, bounds.top)
+            lineTo(bounds.right - radius, bounds.top)
+            cubicTo(bounds.right, bounds.top, bounds.right, bounds.bottom, bounds.right - radius, bounds.bottom)
+            lineTo(bounds.left, bounds.bottom)
+        }
+        SceneShapeKind.CurvedTrapezoid -> {
+            val inset = bounds.width * 0.12f
+            moveTo(bounds.left + inset, bounds.top)
+            lineTo(bounds.right - inset, bounds.top)
+            cubicTo(bounds.right + inset, bounds.top, bounds.right + inset, bounds.bottom, bounds.right - inset, bounds.bottom)
+            lineTo(bounds.left + inset, bounds.bottom)
+            cubicTo(bounds.left - inset, bounds.bottom, bounds.left - inset, bounds.top, bounds.left + inset, bounds.top)
+        }
+        SceneShapeKind.Triangle -> {
+            moveTo(bounds.center.x, bounds.top)
+            lineTo(bounds.right, bounds.bottom)
+            lineTo(bounds.left, bounds.bottom)
+        }
+        SceneShapeKind.FlippedTriangle -> {
+            moveTo(bounds.left, bounds.top)
+            lineTo(bounds.right, bounds.top)
+            lineTo(bounds.center.x, bounds.bottom)
+        }
+        SceneShapeKind.SlopedRectangle -> {
+            val inset = bounds.width * 0.12f
+            moveTo(bounds.left, bounds.top)
+            lineTo(bounds.right, bounds.top)
+            lineTo(bounds.right - inset, bounds.bottom)
+            lineTo(bounds.left + inset, bounds.bottom)
+        }
+        SceneShapeKind.NotchedPentagon -> {
+            val notch = bounds.width * 0.16f
+            moveTo(bounds.left + notch, bounds.top)
+            lineTo(bounds.right - notch, bounds.top)
+            lineTo(bounds.right, bounds.top + bounds.height * 0.35f)
+            lineTo(bounds.right, bounds.bottom)
+            lineTo(bounds.left, bounds.bottom)
+            lineTo(bounds.left, bounds.top + bounds.height * 0.35f)
+        }
+        SceneShapeKind.PaperTape -> {
+            val wave = min(9f, bounds.height / 4f)
+            moveTo(bounds.left, bounds.top + wave)
+            cubicTo(
+                bounds.left + bounds.width * 0.25f,
+                bounds.top - wave,
+                bounds.right - bounds.width * 0.25f,
+                bounds.top + wave * 2f,
+                bounds.right,
+                bounds.top + wave,
+            )
+            lineTo(bounds.right, bounds.bottom - wave)
+            cubicTo(
+                bounds.right - bounds.width * 0.25f,
+                bounds.bottom + wave,
+                bounds.left + bounds.width * 0.25f,
+                bounds.bottom - wave * 2f,
+                bounds.left,
+                bounds.bottom - wave,
+            )
+        }
+        SceneShapeKind.BowTieRectangle -> {
+            val inset = bounds.width * 0.12f
+            moveTo(bounds.left, bounds.top)
+            lineTo(bounds.right, bounds.top)
+            lineTo(bounds.right - inset, bounds.center.y)
+            lineTo(bounds.right, bounds.bottom)
+            lineTo(bounds.left, bounds.bottom)
+            lineTo(bounds.left + inset, bounds.center.y)
+        }
+        SceneShapeKind.TaggedRectangle,
+        SceneShapeKind.TaggedDocument,
+        -> {
+            val tag = min(14f, bounds.width / 5f)
+            moveTo(bounds.left, bounds.top)
+            lineTo(bounds.right - tag, bounds.top)
+            lineTo(bounds.right, bounds.center.y)
+            lineTo(bounds.right - tag, bounds.bottom)
+            lineTo(bounds.left, bounds.bottom)
+        }
         else -> {
             moveTo(bounds.left, bounds.top)
             lineTo(bounds.right, bounds.top)
@@ -331,8 +685,11 @@ private fun DrawScope.drawScenePath(element: ScenePath) {
         return
     }
     val path = Path().apply {
-        moveTo(element.points.first().x, element.points.first().y)
-        element.points.drop(1).forEach { point -> lineTo(point.x, point.y) }
+        appendRoundedPolyline(
+            points = element.points,
+            cornerRadius = element.cornerRadius,
+            bridges = element.bridges,
+        )
     }
     val pathEffect = when (element.strokePattern) {
         SceneStrokePattern.Solid -> null
@@ -365,6 +722,139 @@ private fun DrawScope.drawScenePath(element: ScenePath) {
     )
 }
 
+private fun Path.appendRoundedPolyline(
+    points: List<ScenePoint>,
+    cornerRadius: Float,
+    bridges: List<io.github.cmpmermaid.core.SceneBridge>,
+) {
+    moveTo(points.first().x, points.first().y)
+    var segmentStart = points.first()
+    points.zipWithNext().forEachIndexed { index, (start, end) ->
+        val next = points.getOrNull(index + 2)
+        if (next == null || cornerRadius <= 0f) {
+            appendSegmentWithBridges(segmentStart, end, bridges)
+            segmentStart = end
+            return@forEachIndexed
+        }
+
+        val radius = min(
+            cornerRadius,
+            min(start.orthogonalDistanceTo(end), end.orthogonalDistanceTo(next)) / 2f,
+        )
+        if (radius <= 0f) {
+            appendSegmentWithBridges(segmentStart, end, bridges)
+            segmentStart = end
+            return@forEachIndexed
+        }
+
+        val approach = end.moveToward(start, radius)
+        val departure = end.moveToward(next, radius)
+        appendSegmentWithBridges(segmentStart, approach, bridges)
+        cubicTo(
+            end.x,
+            end.y,
+            end.x,
+            end.y,
+            departure.x,
+            departure.y,
+        )
+        segmentStart = departure
+    }
+}
+
+private fun ScenePoint.orthogonalDistanceTo(other: ScenePoint): Float =
+    abs(other.x - x) + abs(other.y - y)
+
+private fun ScenePoint.moveToward(
+    target: ScenePoint,
+    distance: Float,
+): ScenePoint {
+    val total = orthogonalDistanceTo(target)
+    if (total <= 0f) {
+        return this
+    }
+    val ratio = (distance / total).coerceIn(0f, 1f)
+    return ScenePoint(
+        x = x + (target.x - x) * ratio,
+        y = y + (target.y - y) * ratio,
+    )
+}
+
+private fun SceneStrokePattern.toPathEffect(): PathEffect? = when (this) {
+    SceneStrokePattern.Solid -> null
+    SceneStrokePattern.Dashed -> PathEffect.dashPathEffect(floatArrayOf(9f, 6f))
+    SceneStrokePattern.Dotted -> PathEffect.dashPathEffect(floatArrayOf(2f, 6f))
+}
+
+private fun Path.appendSegmentWithBridges(
+    start: ScenePoint,
+    end: ScenePoint,
+    bridges: List<io.github.cmpmermaid.core.SceneBridge>,
+) {
+    val horizontal = abs(end.y - start.y) < 0.01f
+    val vertical = abs(end.x - start.x) < 0.01f
+    if (!horizontal && !vertical) {
+        lineTo(end.x, end.y)
+        return
+    }
+
+    val segmentBridges = bridges
+        .filter { bridge ->
+            if (horizontal) {
+                abs(bridge.center.y - start.y) < 0.5f &&
+                    bridge.center.x.isBetween(start.x, end.x, bridge.radius)
+            } else {
+                abs(bridge.center.x - start.x) < 0.5f &&
+                    bridge.center.y.isBetween(start.y, end.y, bridge.radius)
+            }
+        }
+        .sortedBy { bridge ->
+            if (horizontal) {
+                abs(bridge.center.x - start.x)
+            } else {
+                abs(bridge.center.y - start.y)
+            }
+        }
+
+    segmentBridges.forEach { bridge ->
+        if (horizontal) {
+            val direction = if (end.x >= start.x) 1f else -1f
+            val before = bridge.center.x - bridge.radius * direction
+            val after = bridge.center.x + bridge.radius * direction
+            lineTo(before, start.y)
+            cubicTo(
+                bridge.center.x - bridge.radius * 0.45f * direction,
+                start.y - bridge.radius,
+                bridge.center.x + bridge.radius * 0.45f * direction,
+                start.y - bridge.radius,
+                after,
+                start.y,
+            )
+        } else {
+            val direction = if (end.y >= start.y) 1f else -1f
+            val before = bridge.center.y - bridge.radius * direction
+            val after = bridge.center.y + bridge.radius * direction
+            lineTo(start.x, before)
+            cubicTo(
+                start.x + bridge.radius,
+                bridge.center.y - bridge.radius * 0.45f * direction,
+                start.x + bridge.radius,
+                bridge.center.y + bridge.radius * 0.45f * direction,
+                start.x,
+                after,
+            )
+        }
+    }
+    lineTo(end.x, end.y)
+}
+
+private fun Float.isBetween(
+    first: Float,
+    second: Float,
+    clearance: Float,
+): Boolean = this >= min(first, second) + clearance &&
+    this <= maxOf(first, second) - clearance
+
 private fun DrawScope.drawArrowHead(
     type: SceneArrowHead,
     tip: ScenePoint,
@@ -376,7 +866,10 @@ private fun DrawScope.drawArrowHead(
         return
     }
     val angle = atan2(tip.y - previous.y, tip.x - previous.x)
-    val tipOffset = Offset(tip.x, tip.y)
+    fun insetCenter(radius: Float): Offset = Offset(
+        x = tip.x - cos(angle) * radius,
+        y = tip.y - sin(angle) * radius,
+    )
     when (type) {
         SceneArrowHead.Triangle -> {
             val length = 10f
@@ -391,19 +884,23 @@ private fun DrawScope.drawArrowHead(
             }
             drawPath(path, color, style = Fill)
         }
-        SceneArrowHead.Circle -> drawCircle(color, radius = 4.5f, center = tipOffset)
+        SceneArrowHead.Circle -> {
+            val radius = 5f
+            drawCircle(color, radius = radius, center = insetCenter(radius))
+        }
         SceneArrowHead.Cross -> {
             val radius = 5f
+            val center = insetCenter(radius)
             drawLine(
                 color,
-                Offset(tip.x - radius, tip.y - radius),
-                Offset(tip.x + radius, tip.y + radius),
+                Offset(center.x - radius, center.y - radius),
+                Offset(center.x + radius, center.y + radius),
                 strokeWidth,
             )
             drawLine(
                 color,
-                Offset(tip.x - radius, tip.y + radius),
-                Offset(tip.x + radius, tip.y - radius),
+                Offset(center.x - radius, center.y + radius),
+                Offset(center.x + radius, center.y - radius),
                 strokeWidth,
             )
         }

@@ -22,8 +22,9 @@ internal class FlowchartLayout {
         document: FlowchartDocument,
         context: MermaidRenderContext,
     ): GMResult<MermaidScene, MermaidError> {
+        val preparedDocument = collapseSubgraphs(document)
         val nodeSizes = linkedMapOf<String, SceneSize>()
-        for ((id, node) in document.nodes) {
+        for ((id, node) in preparedDocument.nodes) {
             val measured = try {
                 context.textMetrics.measure(
                     TextMetricsRequest(
@@ -47,19 +48,111 @@ internal class FlowchartLayout {
             )
         }
 
-        val ranks = calculateRanks(document)
-        val orderedLayers = orderLayers(document, ranks)
-        val nodeBounds = placeNodes(document.direction, orderedLayers, nodeSizes, context)
-        if (nodeBounds.size != document.nodes.size) {
+        val rankingDocument = preparedDocument.copy(
+            edges = preparedDocument.edges.map { edge ->
+                edge.copy(
+                    from = resolveSubgraphEndpoint(preparedDocument, edge.from, outgoing = true),
+                    to = resolveSubgraphEndpoint(preparedDocument, edge.to, outgoing = false),
+                )
+            },
+        )
+        val ranks = calculateRanks(rankingDocument)
+        val orderedLayers = orderLayers(rankingDocument, ranks)
+        val nodeBounds = placeNodes(preparedDocument.direction, orderedLayers, nodeSizes, context)
+        if (nodeBounds.size != preparedDocument.nodes.size) {
             return GMResult.Err(MermaidError.Layout("Not every flowchart node was positioned"))
         }
+        val subgraphBounds = calculateSubgraphBounds(preparedDocument, nodeBounds)
+        val endpointBounds = nodeBounds + subgraphBounds
 
         val elements = mutableListOf<SceneElement>()
-        addSubgraphs(document, nodeBounds, context, elements)
-        addEdges(document, nodeBounds, context, elements)
-        addNodes(document, nodeBounds, context, elements)
+        addSubgraphs(preparedDocument, subgraphBounds, context, elements)
+        addEdges(preparedDocument, endpointBounds, context, elements)
+        addNodes(preparedDocument, nodeBounds, context, elements)
 
         return GMResult.Ok(normalizeScene(elements, context))
+    }
+
+    private fun collapseSubgraphs(document: FlowchartDocument): FlowchartDocument {
+        val collapsed = document.subgraphs.filter(FlowSubgraph::collapsed)
+        if (collapsed.isEmpty()) {
+            return document
+        }
+
+        fun collapsedAncestor(id: String): FlowSubgraph? = collapsed
+            .filter { it.id == id || id in it.nodeIds }
+            .maxByOrNull { it.nodeIds.size }
+
+        val hiddenNodeIds = collapsed.flatMapTo(mutableSetOf(), FlowSubgraph::nodeIds)
+        val visibleNodes = document.nodes
+            .filterKeys { it !in hiddenNodeIds }
+            .toMutableMap()
+        collapsed.forEach { subgraph ->
+            visibleNodes[subgraph.id] = FlowNode(
+                id = subgraph.id,
+                label = subgraph.label,
+                shape = SceneShapeKind.RoundedRectangle,
+            )
+        }
+
+        val visibleEdges = document.edges.mapNotNull { edge ->
+            val from = collapsedAncestor(edge.from)?.id ?: edge.from
+            val to = collapsedAncestor(edge.to)?.id ?: edge.to
+            if (from == to && edge.from != edge.to) {
+                null
+            } else {
+                edge.copy(from = from, to = to)
+            }
+        }
+        val visibleSubgraphs = document.subgraphs
+            .filterNot { subgraph ->
+                subgraph.collapsed || collapsed.any { parent -> subgraph.id in parent.nodeIds }
+            }
+            .map { subgraph ->
+                subgraph.copy(
+                    nodeIds = subgraph.nodeIds
+                        .mapTo(linkedSetOf()) { nodeId -> collapsedAncestor(nodeId)?.id ?: nodeId },
+                )
+            }
+        return document.copy(
+            nodes = visibleNodes,
+            edges = visibleEdges,
+            subgraphs = visibleSubgraphs,
+        )
+    }
+
+    private fun resolveSubgraphEndpoint(
+        document: FlowchartDocument,
+        id: String,
+        outgoing: Boolean,
+    ): String {
+        if (id in document.nodes) {
+            return id
+        }
+        val subgraph = document.subgraphs.firstOrNull { it.id == id } ?: return id
+        val declarationOrder = document.nodes.keys.withIndex().associate { it.value to it.index }
+        val candidates = subgraph.nodeIds.filter { it in document.nodes }
+        return if (outgoing) {
+            candidates.maxByOrNull { declarationOrder[it] ?: -1 }
+        } else {
+            candidates.minByOrNull { declarationOrder[it] ?: Int.MAX_VALUE }
+        } ?: id
+    }
+
+    private fun calculateSubgraphBounds(
+        document: FlowchartDocument,
+        nodeBounds: Map<String, SceneRect>,
+    ): Map<String, SceneRect> = buildMap {
+        document.subgraphs
+            .sortedBy { it.nodeIds.size }
+            .forEach { subgraph ->
+                val bounds = subgraph.nodeIds
+                    .mapNotNull { nodeId -> nodeBounds[nodeId] ?: get(nodeId) }
+                    .reduceOrNull(SceneRect::union)
+                    ?.let { SceneRect(it.left - 24f, it.top - 42f, it.right + 24f, it.bottom + 24f) }
+                    ?: return@forEach
+                put(subgraph.id, bounds)
+            }
     }
 
     private fun calculateRanks(document: FlowchartDocument): Map<String, Int> {
@@ -206,17 +299,14 @@ internal class FlowchartLayout {
 
     private fun addSubgraphs(
         document: FlowchartDocument,
-        nodeBounds: Map<String, SceneRect>,
+        subgraphBounds: Map<String, SceneRect>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ) {
         document.subgraphs
             .sortedByDescending { it.nodeIds.size }
             .forEachIndexed { index, subgraph ->
-                val bounds = subgraph.nodeIds
-                    .mapNotNull(nodeBounds::get)
-                    .reduceOrNull(SceneRect::union)
-                    ?.let { SceneRect(it.left - 24f, it.top - 42f, it.right + 24f, it.bottom + 24f) }
+                val bounds = subgraphBounds[subgraph.id]
                     ?: return@forEachIndexed
                 elements += SceneShape(
                     id = "subgraph_${subgraph.id}",
@@ -249,6 +339,12 @@ internal class FlowchartLayout {
             document.direction == FlowDirection.BottomToTop
         val outerRight = nodeBounds.values.maxOfOrNull(SceneRect::right) ?: 0f
         val outerBottom = nodeBounds.values.maxOfOrNull(SceneRect::bottom) ?: 0f
+        val startPorts = assignPorts(document.edges, nodeBounds, document.direction, outgoing = true)
+        val endPorts = assignPorts(document.edges, nodeBounds, document.direction, outgoing = false)
+        val parallelLanes = assignParallelLanes(document.edges)
+        val primaryChannels = assignPrimaryChannels(document.edges, nodeBounds, document.direction)
+        val paths = mutableListOf<ScenePath>()
+        val labels = mutableListOf<SceneElement>()
 
         document.edges.forEachIndexed { index, edge ->
             if (edge.invisible) {
@@ -257,37 +353,45 @@ internal class FlowchartLayout {
             val from = nodeBounds[edge.from] ?: return@forEachIndexed
             val to = nodeBounds[edge.to] ?: return@forEachIndexed
             val edgeStyle = resolveEdgeStyle(edge, document)
-            val start = anchor(from, document.direction, start = true)
-            val end = anchor(to, document.direction, start = false)
+            val start = startPorts[index] ?: anchor(from, document.direction, start = true)
+            val end = endPorts[index] ?: anchor(to, document.direction, start = false)
             val forward = when (document.direction) {
                 FlowDirection.TopToBottom -> end.y > start.y
                 FlowDirection.BottomToTop -> end.y < start.y
                 FlowDirection.LeftToRight -> end.x > start.x
                 FlowDirection.RightToLeft -> end.x < start.x
             }
-            val points = if (vertical) {
-                if (forward) {
-                    val middle = (start.y + end.y) / 2f
-                    listOf(start, ScenePoint(start.x, middle), ScenePoint(end.x, middle), end)
-                } else {
-                    val side = outerRight + 32f + (index % 4) * 12f
-                    listOf(start, ScenePoint(side, start.y), ScenePoint(side, end.y), end)
-                }
+            val parallelLane = parallelLanes[index]
+            val primaryChannel = primaryChannels[index] ?: 0f
+            val points = if (edge.from == edge.to) {
+                selfLoop(from, document.direction, parallelLane?.crossOffset ?: 0f)
+            } else if (vertical) {
+                routeVertical(
+                    start = start,
+                    end = end,
+                    forward = forward,
+                    outerRight = outerRight,
+                    parallelLane = parallelLane,
+                    primaryChannel = primaryChannel,
+                    edgeIndex = index,
+                )
             } else {
-                if (forward) {
-                    val middle = (start.x + end.x) / 2f
-                    listOf(start, ScenePoint(middle, start.y), ScenePoint(middle, end.y), end)
-                } else {
-                    val side = outerBottom + 32f + (index % 4) * 12f
-                    listOf(start, ScenePoint(start.x, side), ScenePoint(end.x, side), end)
-                }
+                routeHorizontal(
+                    start = start,
+                    end = end,
+                    forward = forward,
+                    outerBottom = outerBottom,
+                    parallelLane = parallelLane,
+                    primaryChannel = primaryChannel,
+                    edgeIndex = index,
+                )
             }
-            elements += ScenePath(
+            paths += ScenePath(
                 id = edge.id,
                 points = points.distinctAdjacent(),
                 color = edgeStyle.stroke ?: context.theme.edge,
                 strokeWidth = edgeStyle.strokeWidth ?: edge.thickness,
-                strokePattern = edge.pattern,
+                strokePattern = edgeStyle.strokePattern ?: edge.pattern,
                 arrowStart = edge.arrowStart,
                 arrowEnd = edge.arrowEnd,
             )
@@ -296,19 +400,19 @@ internal class FlowchartLayout {
             val metrics = context.textMetrics.measure(
                 TextMetricsRequest(
                     text = label,
-                    fontSize = 13f,
+                    fontSize = edgeStyle.fontSize ?: 13f,
                     maxWidth = 180f,
-                    weight = SceneTextWeight.Normal,
+                    weight = edgeStyle.fontWeight ?: SceneTextWeight.Normal,
                 ),
             )
-            val center = points[points.size / 2]
+            val center = points.longestSegmentCenter()
             val labelBounds = SceneRect(
                 left = center.x - metrics.width / 2f - 6f,
                 top = center.y - metrics.height / 2f - 3f,
                 right = center.x + metrics.width / 2f + 6f,
                 bottom = center.y + metrics.height / 2f + 3f,
             )
-            elements += SceneShape(
+            labels += SceneShape(
                 id = "${edge.id}_label_background",
                 bounds = labelBounds,
                 kind = SceneShapeKind.RoundedRectangle,
@@ -317,15 +421,204 @@ internal class FlowchartLayout {
                 cornerRadius = 4f,
                 zIndex = 6,
             )
-            elements += SceneText(
+            labels += SceneText(
                 text = label,
                 bounds = labelBounds,
                 color = edgeStyle.text ?: context.theme.nodeText,
-                fontSize = 13f,
-                weight = SceneTextWeight.Normal,
+                fontSize = edgeStyle.fontSize ?: 13f,
+                weight = edgeStyle.fontWeight ?: SceneTextWeight.Normal,
                 zIndex = 7,
             )
         }
+        elements += LineBridgeRouter.apply(paths)
+        elements += labels
+    }
+
+    private fun assignPorts(
+        edges: List<FlowEdge>,
+        nodeBounds: Map<String, SceneRect>,
+        direction: FlowDirection,
+        outgoing: Boolean,
+    ): Map<Int, ScenePoint> {
+        val vertical = direction == FlowDirection.TopToBottom ||
+            direction == FlowDirection.BottomToTop
+        val indexedEdges = edges.withIndex().filterNot { it.value.invisible }
+        val grouped = indexedEdges.groupBy { if (outgoing) it.value.from else it.value.to }
+        return buildMap {
+            grouped.forEach { (nodeId, group) ->
+                val bounds = nodeBounds[nodeId] ?: return@forEach
+                val sorted = group.sortedWith(
+                    compareBy<IndexedValue<FlowEdge>> { indexed ->
+                        val otherId = if (outgoing) indexed.value.to else indexed.value.from
+                        val other = nodeBounds[otherId]
+                        if (vertical) other?.center?.x else other?.center?.y
+                    }.thenBy { it.index },
+                )
+                sorted.forEachIndexed { slot, indexed ->
+                    val ratio = (slot + 1f) / (sorted.size + 1f)
+                    put(
+                        indexed.index,
+                        if (vertical) {
+                            ScenePoint(
+                                x = bounds.left + bounds.width * ratio,
+                                y = when (direction) {
+                                    FlowDirection.TopToBottom -> if (outgoing) bounds.bottom else bounds.top
+                                    FlowDirection.BottomToTop -> if (outgoing) bounds.top else bounds.bottom
+                                },
+                            )
+                        } else {
+                            ScenePoint(
+                                x = when (direction) {
+                                    FlowDirection.LeftToRight -> if (outgoing) bounds.right else bounds.left
+                                    FlowDirection.RightToLeft -> if (outgoing) bounds.left else bounds.right
+                                },
+                                y = bounds.top + bounds.height * ratio,
+                            )
+                        },
+                    )
+                }
+            }
+        }
+    }
+
+    private data class ParallelLane(
+        val crossOffset: Float,
+    )
+
+    private fun assignParallelLanes(edges: List<FlowEdge>): Map<Int, ParallelLane> = buildMap {
+        edges.withIndex()
+            .filterNot { it.value.invisible }
+            .groupBy { it.value.from to it.value.to }
+            .values
+            .filter { it.size > 1 }
+            .forEach { group ->
+                group.forEachIndexed { slot, indexed ->
+                    put(
+                        indexed.index,
+                        ParallelLane(
+                            crossOffset = (slot - (group.size - 1) / 2f) * 52f,
+                        ),
+                    )
+                }
+            }
+    }
+
+    private fun assignPrimaryChannels(
+        edges: List<FlowEdge>,
+        nodeBounds: Map<String, SceneRect>,
+        direction: FlowDirection,
+    ): Map<Int, Float> {
+        val vertical = direction == FlowDirection.TopToBottom ||
+            direction == FlowDirection.BottomToTop
+        return buildMap {
+            edges.withIndex()
+                .filterNot { it.value.invisible || it.value.from == it.value.to }
+                .groupBy { indexed ->
+                    val from = nodeBounds[indexed.value.from]
+                    val to = nodeBounds[indexed.value.to]
+                    if (vertical) {
+                        from?.center?.y to to?.center?.y
+                    } else {
+                        from?.center?.x to to?.center?.x
+                    }
+                }
+                .values
+                .filter { it.size > 1 }
+                .forEach { group ->
+                    group.forEachIndexed { slot, indexed ->
+                        put(indexed.index, (slot - (group.size - 1) / 2f) * 12f)
+                    }
+                }
+        }
+    }
+
+    private fun routeVertical(
+        start: ScenePoint,
+        end: ScenePoint,
+        forward: Boolean,
+        outerRight: Float,
+        parallelLane: ParallelLane?,
+        primaryChannel: Float,
+        edgeIndex: Int,
+    ): List<ScenePoint> {
+        if (!forward) {
+            val side = outerRight + 32f + (edgeIndex % 4) * 12f
+            return listOf(start, ScenePoint(side, start.y), ScenePoint(side, end.y), end)
+        }
+        if (parallelLane != null) {
+            val direction = if (end.y >= start.y) 1f else -1f
+            val stub = min(28f, kotlin.math.abs(end.y - start.y) / 4f)
+            val startStub = start.y + stub * direction
+            val endStub = end.y - stub * direction
+            val lane = (start.x + end.x) / 2f + parallelLane.crossOffset
+            return listOf(
+                start,
+                ScenePoint(start.x, startStub),
+                ScenePoint(lane, startStub),
+                ScenePoint(lane, endStub),
+                ScenePoint(end.x, endStub),
+                end,
+            )
+        }
+        val middle = (start.y + end.y) / 2f + primaryChannel
+        return listOf(start, ScenePoint(start.x, middle), ScenePoint(end.x, middle), end)
+    }
+
+    private fun routeHorizontal(
+        start: ScenePoint,
+        end: ScenePoint,
+        forward: Boolean,
+        outerBottom: Float,
+        parallelLane: ParallelLane?,
+        primaryChannel: Float,
+        edgeIndex: Int,
+    ): List<ScenePoint> {
+        if (!forward) {
+            val side = outerBottom + 32f + (edgeIndex % 4) * 12f
+            return listOf(start, ScenePoint(start.x, side), ScenePoint(end.x, side), end)
+        }
+        if (parallelLane != null) {
+            val direction = if (end.x >= start.x) 1f else -1f
+            val stub = min(28f, kotlin.math.abs(end.x - start.x) / 4f)
+            val startStub = start.x + stub * direction
+            val endStub = end.x - stub * direction
+            val lane = (start.y + end.y) / 2f + parallelLane.crossOffset
+            return listOf(
+                start,
+                ScenePoint(startStub, start.y),
+                ScenePoint(startStub, lane),
+                ScenePoint(endStub, lane),
+                ScenePoint(endStub, end.y),
+                end,
+            )
+        }
+        val middle = (start.x + end.x) / 2f + primaryChannel
+        return listOf(start, ScenePoint(middle, start.y), ScenePoint(middle, end.y), end)
+    }
+
+    private fun selfLoop(
+        bounds: SceneRect,
+        direction: FlowDirection,
+        laneOffset: Float,
+    ): List<ScenePoint> = if (
+        direction == FlowDirection.TopToBottom ||
+        direction == FlowDirection.BottomToTop
+    ) {
+        val side = bounds.right + 34f + laneOffset
+        listOf(
+            ScenePoint(bounds.right, bounds.center.y - 8f),
+            ScenePoint(side, bounds.center.y - 8f),
+            ScenePoint(side, bounds.center.y + 8f),
+            ScenePoint(bounds.right, bounds.center.y + 8f),
+        )
+    } else {
+        val side = bounds.bottom + 34f + laneOffset
+        listOf(
+            ScenePoint(bounds.center.x - 8f, bounds.bottom),
+            ScenePoint(bounds.center.x - 8f, side),
+            ScenePoint(bounds.center.x + 8f, side),
+            ScenePoint(bounds.center.x + 8f, bounds.bottom),
+        )
     }
 
     private fun addNodes(
@@ -344,14 +637,18 @@ internal class FlowchartLayout {
                 fill = style.fill ?: context.theme.nodeFill,
                 stroke = style.stroke ?: context.theme.nodeStroke,
                 strokeWidth = style.strokeWidth ?: 1.5f,
+                strokePattern = style.strokePattern ?: io.github.cmpmermaid.core.SceneStrokePattern.Solid,
                 cornerRadius = 9f,
             )
-            elements += SceneText(
-                text = node.label,
-                bounds = bounds,
-                color = style.text ?: context.theme.nodeText,
-                fontSize = context.options.fontSize,
-            )
+            if (node.shape.showsInternalLabel()) {
+                elements += SceneText(
+                    text = node.label,
+                    bounds = bounds,
+                    color = style.text ?: context.theme.nodeText,
+                    fontSize = style.fontSize ?: context.options.fontSize,
+                    weight = style.fontWeight ?: SceneTextWeight.Medium,
+                )
+            }
         }
     }
 
@@ -386,6 +683,9 @@ internal class FlowchartLayout {
             stroke = other.stroke ?: stroke,
             text = other.text ?: text,
             strokeWidth = other.strokeWidth ?: strokeWidth,
+            strokePattern = other.strokePattern ?: strokePattern,
+            fontSize = other.fontSize ?: fontSize,
+            fontWeight = other.fontWeight ?: fontWeight,
         )
     }
 
@@ -404,15 +704,45 @@ internal class FlowchartLayout {
                 val diameter = max(baseWidth, baseHeight) + 10f
                 SceneSize(diameter, diameter)
             }
+            SceneShapeKind.SmallCircle -> SceneSize(22f, 22f)
+            SceneShapeKind.FilledCircle -> SceneSize(20f, 20f)
+            SceneShapeKind.FramedCircle -> SceneSize(30f, 30f)
+            SceneShapeKind.CrossedCircle -> SceneSize(46f, 46f)
+            SceneShapeKind.Ellipse -> SceneSize(baseWidth + 20f, baseHeight + 8f)
             SceneShapeKind.Diamond -> SceneSize(baseWidth + 44f, baseHeight + 28f)
             SceneShapeKind.Hexagon -> SceneSize(baseWidth + 30f, baseHeight + 8f)
-            SceneShapeKind.Cylinder -> SceneSize(baseWidth + 8f, baseHeight + 16f)
+            SceneShapeKind.Cylinder,
+            SceneShapeKind.LinedCylinder,
+            -> SceneSize(baseWidth + 8f, baseHeight + 16f)
+            SceneShapeKind.DirectAccessStorage,
+            SceneShapeKind.CurvedTrapezoid,
+            -> SceneSize(baseWidth + 24f, baseHeight + 8f)
             SceneShapeKind.Parallelogram,
             SceneShapeKind.ParallelogramAlt,
             SceneShapeKind.Trapezoid,
             SceneShapeKind.TrapezoidAlt,
+            SceneShapeKind.SlopedRectangle,
             -> SceneSize(baseWidth + 28f, baseHeight)
             SceneShapeKind.Asymmetric -> SceneSize(baseWidth + 22f, baseHeight)
+            SceneShapeKind.BowTieRectangle,
+            SceneShapeKind.NotchedPentagon,
+            -> SceneSize(baseWidth + 28f, baseHeight + 8f)
+            SceneShapeKind.Hourglass -> SceneSize(58f, 58f)
+            SceneShapeKind.Triangle,
+            SceneShapeKind.FlippedTriangle,
+            -> SceneSize(baseWidth + 18f, baseHeight + 24f)
+            SceneShapeKind.Bolt -> SceneSize(52f, 66f)
+            SceneShapeKind.BraceLeft,
+            SceneShapeKind.BraceRight,
+            SceneShapeKind.Braces,
+            -> SceneSize(baseWidth + 28f, baseHeight + 12f)
+            SceneShapeKind.Document,
+            SceneShapeKind.LinedDocument,
+            SceneShapeKind.MultiDocument,
+            SceneShapeKind.TaggedDocument,
+            -> SceneSize(baseWidth + 14f, baseHeight + 16f)
+            SceneShapeKind.MultiProcess -> SceneSize(baseWidth + 8f, baseHeight + 8f)
+            SceneShapeKind.ForkJoin -> SceneSize(100f, 16f)
             else -> SceneSize(baseWidth, baseHeight)
         }
     }
@@ -483,12 +813,34 @@ internal class FlowchartLayout {
     private fun SceneElement.translate(dx: Float, dy: Float): SceneElement = when (this) {
         is SceneShape -> copy(bounds = bounds.translate(dx, dy))
         is SceneText -> copy(bounds = bounds.translate(dx, dy))
-        is ScenePath -> copy(points = points.map { ScenePoint(it.x + dx, it.y + dy) })
+        is ScenePath -> copy(
+            points = points.map { ScenePoint(it.x + dx, it.y + dy) },
+            bridges = bridges.map { bridge ->
+                bridge.copy(
+                    center = ScenePoint(
+                        x = bridge.center.x + dx,
+                        y = bridge.center.y + dy,
+                    ),
+                )
+            },
+        )
     }
 
     private fun SceneSize.primary(vertical: Boolean): Float = if (vertical) height else width
 
     private fun SceneSize.cross(vertical: Boolean): Float = if (vertical) width else height
+
+    private fun SceneShapeKind.showsInternalLabel(): Boolean = when (this) {
+        SceneShapeKind.SmallCircle,
+        SceneShapeKind.FilledCircle,
+        SceneShapeKind.FramedCircle,
+        SceneShapeKind.ForkJoin,
+        SceneShapeKind.Hourglass,
+        SceneShapeKind.Bolt,
+        SceneShapeKind.CrossedCircle,
+        -> false
+        else -> true
+    }
 
     private fun <T> Iterable<T>.sumOfFloat(selector: (T) -> Float): Float {
         var total = 0f
@@ -504,5 +856,15 @@ internal class FlowchartLayout {
                 add(point)
             }
         }
+    }
+
+    private fun List<ScenePoint>.longestSegmentCenter(): ScenePoint {
+        val segment = zipWithNext().maxByOrNull { (start, end) ->
+            kotlin.math.abs(end.x - start.x) + kotlin.math.abs(end.y - start.y)
+        } ?: return firstOrNull() ?: ScenePoint(0f, 0f)
+        return ScenePoint(
+            x = (segment.first.x + segment.second.x) / 2f,
+            y = (segment.first.y + segment.second.y) / 2f,
+        )
     }
 }

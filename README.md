@@ -7,8 +7,8 @@ focuses exclusively on flowcharts.
 ## Modules
 
 - `mermaid-core`: parser, flowchart model, layered layout, and SceneGraph.
-- `mermaid-compose`: Compose Canvas rendering, text measurement, pan, and zoom.
-- `sample/androidApp`: mobile documentation and official comparison gallery.
+- `mermaid-compose`: Compose Canvas rendering, text measurement, bounded two-finger pan, and zoom.
+- `sample/androidApp`: mobile documentation and a 40-case official comparison gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference image generator.
 
 ## Verify
@@ -38,7 +38,10 @@ Supported:
 - Solid, dotted, thick, invisible, bidirectional, circle, and cross links.
 - Edge labels, edge ids, minimum lengths, and static edge class styling.
 - Chained and `&` multi-node links.
-- Nested subgraphs, class definitions, node classes, and inline styles.
+- Nested/collapsed subgraphs, class definitions, node classes, and inline styles.
+- Hex, RGB(A), HSL(A), and common CSS named colors.
+- Port-aware orthogonal routing, parallel lanes, self-loops, rounded corners,
+  and crossing bridges.
 - Front matter, comments, semicolon-separated statements, and line breaks.
 
 Production gaps are tracked in

@@ -8,7 +8,7 @@ import io.github.cmpmermaid.core.MermaidScene
 
 class FlowchartPlugin : MermaidDiagramPlugin {
     override val id: String = "flowchart"
-    override val headers: Set<String> = setOf("flowchart", "graph")
+    override val headers: Set<String> = setOf("flowchart", "flowchart-elk", "graph")
 
     override fun compile(
         source: String,

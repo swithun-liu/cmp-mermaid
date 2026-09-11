@@ -35,7 +35,7 @@ class MermaidEngineTest {
             context,
         )
 
-        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
         val shapes = scene.elements.filterIsInstance<SceneShape>()
         val paths = scene.elements.filterIsInstance<ScenePath>()
 
@@ -175,15 +175,160 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun rendersEveryOfficialComparisonCase() {
-        officialFlowchartCases.forEach { case ->
-            val result = engine.render(case.source, context)
-            val scene = assertIs<GMResult.Ok<MermaidScene>>(
-                result,
-                "Official comparison case '${case.id}' failed: $result",
-            ).value
-            assertTrue(scene.elements.filterIsInstance<SceneShape>().isNotEmpty(), case.id)
-            assertTrue(scene.width > 0f && scene.height > 0f, case.id)
+    fun supportsMarkerCombinationsAcrossStrokeTypes() {
+        val cases = listOf(
+            "A x--x B" to Triple(SceneArrowHead.Cross, SceneArrowHead.Cross, SceneStrokePattern.Solid),
+            "A o==o B" to Triple(SceneArrowHead.Circle, SceneArrowHead.Circle, SceneStrokePattern.Solid),
+            "A <-.-> B" to Triple(SceneArrowHead.Triangle, SceneArrowHead.Triangle, SceneStrokePattern.Dotted),
+            "A x-. label .-x B" to Triple(SceneArrowHead.Cross, SceneArrowHead.Cross, SceneStrokePattern.Dotted),
+            "A o== label ==o B" to Triple(SceneArrowHead.Circle, SceneArrowHead.Circle, SceneStrokePattern.Solid),
+            "A <-- label --> B" to Triple(SceneArrowHead.Triangle, SceneArrowHead.Triangle, SceneStrokePattern.Solid),
+        )
+
+        cases.forEach { (edgeSource, expected) ->
+            val result = engine.render("flowchart LR\n  $edgeSource", context)
+            val scene = assertIs<GMResult.Ok<MermaidScene>>(result, edgeSource).value
+            val path = scene.elements.filterIsInstance<ScenePath>().single()
+            assertEquals(expected.first, path.arrowStart, edgeSource)
+            assertEquals(expected.second, path.arrowEnd, edgeSource)
+            assertEquals(expected.third, path.strokePattern, edgeSource)
         }
+    }
+
+    @Test
+    fun supportsCssColorsAndTextStyles() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A --> B
+                  style A fill:rgba(255,0,0,0.5),stroke:hsl(120,100%,25%),color:white,stroke-dasharray:5 5,font-size:20px,font-weight:bold
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val shape = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
+        val text = scene.elements.filterIsInstance<SceneText>().first { it.text == "A" }
+        assertEquals(SceneColor(0x80FF0000), shape.fill)
+        assertEquals(SceneColor(0xFF008000), shape.stroke)
+        assertEquals(SceneStrokePattern.Dashed, shape.strokePattern)
+        assertEquals(20f, text.fontSize)
+        assertEquals(SceneTextWeight.Bold, text.weight)
+    }
+
+    @Test
+    fun routesParallelEdgesOnDistinctLanesWithoutLabelOverlap() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A -->|primary| B
+                  A -.->|retry| B
+                  A ==>|priority| B
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val labels = scene.elements
+            .filterIsInstance<SceneText>()
+            .filter { it.text in setOf("primary", "retry", "priority") }
+            .sortedBy { it.bounds.top }
+
+        assertEquals(3, labels.size)
+        labels.zipWithNext().forEach { (first, second) ->
+            assertTrue(
+                first.bounds.bottom <= second.bounds.top,
+                "${first.text} overlaps ${second.text}",
+            )
+        }
+    }
+
+    @Test
+    fun addsBridgeToLaterPathAtOrthogonalCrossing() {
+        val result = engine.render(
+            """
+                flowchart TB
+                  Start --> A & B & C
+                  A --> D
+                  B --> E
+                  C --> F
+                  A --> F
+                  C --> D
+                  D & E & F --> Finish
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val paths = scene.elements.filterIsInstance<ScenePath>()
+        assertTrue(
+            paths.any { it.bridges.isNotEmpty() },
+            "Expected at least one routed crossing to contain a bridge: " +
+                paths.joinToString { "${it.id}=${it.points}" },
+        )
+    }
+
+    @Test
+    fun connectsEdgesToExpandedSubgraphBoundsWithoutFakeNodes() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  Start --> group
+                  subgraph group [Validation]
+                    A --> B
+                  end
+                  group --> Finish
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>()
+        assertTrue(shapes.any { it.id == "subgraph_group" })
+        assertTrue(shapes.none { it.id == "group" })
+        assertEquals(3, scene.elements.filterIsInstance<ScenePath>().size)
+    }
+
+    @Test
+    fun collapsedSubgraphBecomesSingleNodeAndRedirectsBoundaryEdges() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  Start --> group
+                  subgraph group [Validation]
+                    A --> B --> C
+                  end
+                  group --> Finish
+                  group@{ view: collapsed }
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>()
+        assertTrue(shapes.any { it.id == "group" })
+        assertTrue(shapes.none { it.id in setOf("A", "B", "C", "subgraph_group") })
+        assertEquals(2, scene.elements.filterIsInstance<ScenePath>().size)
+    }
+
+    @Test
+    fun rendersEveryOfficialComparisonCase() {
+        val failures = officialFlowchartCases.mapNotNull { case ->
+            when (val result = engine.render(case.source, context)) {
+                is GMResult.Ok -> when {
+                    result.value.elements.filterIsInstance<SceneShape>().isEmpty() ->
+                        "${case.id}: no shapes"
+                    result.value.width <= 0f || result.value.height <= 0f ->
+                        "${case.id}: invalid scene bounds"
+                    else -> null
+                }
+                is GMResult.Err -> "${case.id}: ${result.error.message}"
+            }
+        }
+
+        assertTrue(
+            failures.isEmpty(),
+            failures.joinToString(separator = "\n", prefix = "Official cases failed:\n"),
+        )
     }
 }

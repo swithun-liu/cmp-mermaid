@@ -28,5 +28,8 @@ kotlin {
             api(compose.ui)
             implementation(compose.foundation)
         }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
     }
 }

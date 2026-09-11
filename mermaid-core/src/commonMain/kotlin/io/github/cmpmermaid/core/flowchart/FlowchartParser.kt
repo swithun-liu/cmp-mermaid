@@ -6,6 +6,7 @@ import io.github.cmpmermaid.core.SceneArrowHead
 import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneStrokePattern
+import io.github.cmpmermaid.core.SceneTextWeight
 
 internal class FlowchartParser {
     fun parse(source: String): GMResult<FlowchartDocument, MermaidError> {
@@ -34,10 +35,11 @@ internal class FlowchartParser {
             return parseError(header.line, 1, "Flowchart contains no nodes")
         }
 
+        val subgraphIds = state.subgraphs.mapTo(mutableSetOf(), FlowSubgraph::id)
         return GMResult.Ok(
             FlowchartDocument(
                 direction = state.direction,
-                nodes = state.nodes,
+                nodes = state.nodes.filterKeys { it !in subgraphIds },
                 edges = state.edges,
                 subgraphs = state.subgraphs,
                 classStyles = state.classStyles,
@@ -58,6 +60,8 @@ internal class FlowchartParser {
                 label = open.label,
                 nodeIds = open.nodeIds,
                 direction = open.direction,
+                parentId = open.parentId,
+                collapsed = open.collapsed,
             )
             return GMResult.Ok(Unit)
         }
@@ -92,8 +96,20 @@ internal class FlowchartParser {
             return GMResult.Ok(Unit)
         }
         val metadataId = text.substringBefore("@{").trim()
-        if (text.contains("@{") && state.edges.any { it.id == metadataId }) {
-            return GMResult.Ok(Unit)
+        if (text.contains("@{")) {
+            val metadataBody = text.substringAfter("@{").substringBeforeLast('}')
+            val subgraphIndex = state.subgraphs.indexOfFirst { it.id == metadataId }
+            if (subgraphIndex >= 0) {
+                val values = parseMetadataValues(metadataBody)
+                val current = state.subgraphs[subgraphIndex]
+                state.subgraphs[subgraphIndex] = current.copy(
+                    collapsed = values["view"].equals("collapsed", ignoreCase = true),
+                )
+                return GMResult.Ok(Unit)
+            }
+            if (state.edges.any { it.id == metadataId }) {
+                return GMResult.Ok(Unit)
+            }
         }
 
         return parseNodeChain(text, statement.line, state)
@@ -129,6 +145,7 @@ internal class FlowchartParser {
             id = id,
             label = label,
             line = line,
+            parentId = state.subgraphStack.lastOrNull()?.id,
         )
         return GMResult.Ok(Unit)
     }
@@ -245,8 +262,11 @@ internal class FlowchartParser {
         var stroke: SceneColor? = null
         var text: SceneColor? = null
         var strokeWidth: Float? = null
+        var strokePattern: SceneStrokePattern? = null
+        var fontSize: Float? = null
+        var fontWeight: SceneTextWeight? = null
 
-        source.split(',').forEach { declaration ->
+        splitStyleDeclarations(source).forEach { declaration ->
             val pair = declaration.split(':', limit = 2)
             if (pair.size != 2) {
                 return@forEach
@@ -254,7 +274,7 @@ internal class FlowchartParser {
             val key = pair[0].trim()
             val value = pair[1].trim()
             when (key) {
-                "fill" -> when (val color = parseColor(value, line)) {
+                "fill", "background" -> when (val color = parseColor(value, line)) {
                     is GMResult.Ok -> fill = color.value
                     is GMResult.Err -> return color
                 }
@@ -270,32 +290,88 @@ internal class FlowchartParser {
                     strokeWidth = value.removeSuffix("px").toFloatOrNull()
                         ?: return parseError(line, 1, "Invalid stroke width '$value'")
                 }
+                "stroke-dasharray" -> {
+                    strokePattern = SceneStrokePattern.Dashed
+                }
+                "font-size" -> {
+                    fontSize = value.removeSuffix("px").removeSuffix("pt").toFloatOrNull()
+                        ?: return parseError(line, 1, "Invalid font size '$value'")
+                }
+                "font-weight" -> {
+                    fontWeight = when (value.lowercase()) {
+                        "bold", "600", "700", "800", "900" -> SceneTextWeight.Bold
+                        "normal", "400", "500" -> SceneTextWeight.Normal
+                        else -> return parseError(line, 1, "Invalid font weight '$value'")
+                    }
+                }
+                "border" -> {
+                    val parts = value.split(Regex("""\s+"""))
+                    strokeWidth = parts.firstOrNull()
+                        ?.removeSuffix("px")
+                        ?.toFloatOrNull()
+                        ?: strokeWidth
+                    val borderColor = parts.lastOrNull()
+                    if (borderColor != null) {
+                        when (val color = parseColor(borderColor, line)) {
+                            is GMResult.Ok -> stroke = color.value
+                            is GMResult.Err -> return color
+                        }
+                    }
+                }
             }
         }
-        return GMResult.Ok(FlowNodeStyle(fill, stroke, text, strokeWidth))
+        return GMResult.Ok(
+            FlowNodeStyle(
+                fill = fill,
+                stroke = stroke,
+                text = text,
+                strokeWidth = strokeWidth,
+                strokePattern = strokePattern,
+                fontSize = fontSize,
+                fontWeight = fontWeight,
+            ),
+        )
+    }
+
+    private fun splitStyleDeclarations(source: String): List<String> = buildList {
+        val current = StringBuilder()
+        var escaped = false
+        var parenthesesDepth = 0
+        source.forEach { char ->
+            when {
+                escaped -> {
+                    current.append(char)
+                    escaped = false
+                }
+                char == '\\' -> escaped = true
+                char == '(' -> {
+                    parenthesesDepth += 1
+                    current.append(char)
+                }
+                char == ')' -> {
+                    parenthesesDepth = (parenthesesDepth - 1).coerceAtLeast(0)
+                    current.append(char)
+                }
+                char == ',' && parenthesesDepth == 0 -> {
+                    add(current.toString())
+                    current.clear()
+                }
+                else -> current.append(char)
+            }
+        }
+        if (escaped) {
+            current.append('\\')
+        }
+        add(current.toString())
     }
 
     private fun parseColor(
         source: String,
         line: Int,
-    ): GMResult<SceneColor, MermaidError> {
-        val named = NAMED_COLORS[source.lowercase()]
-        if (named != null) {
-            return GMResult.Ok(named)
-        }
-        if (!source.startsWith('#')) {
-            return parseError(line, 1, "Unsupported color '$source'")
-        }
-        val hex = source.removePrefix("#")
-        val expanded = when (hex.length) {
-            3 -> hex.flatMap { listOf(it, it) }.joinToString("")
-            6 -> hex
-            else -> return parseError(line, 1, "Invalid color '$source'")
-        }
-        val rgb = expanded.toLongOrNull(16)
-            ?: return parseError(line, 1, "Invalid color '$source'")
-        return GMResult.Ok(SceneColor(0xFF000000 or rgb))
-    }
+    ): GMResult<SceneColor, MermaidError> =
+        CssColorParser.parse(source)
+            ?.let { GMResult.Ok(it) }
+            ?: parseError(line, 1, "Unsupported color '$source'")
 
     private fun parseNodeChain(
         text: String,
@@ -477,13 +553,7 @@ internal class FlowchartParser {
         nextIndex: Int,
         line: Int,
     ): GMResult<ParsedNode, MermaidError> {
-        val values = metadata
-            .split(',')
-            .mapNotNull { entry ->
-                val pair = entry.split(':', limit = 2)
-                if (pair.size == 2) pair[0].trim() to pair[1].trim().trim('"', '\'') else null
-            }
-            .toMap()
+        val values = parseMetadataValues(metadata)
         val shapeName = values["shape"]?.lowercase() ?: "rect"
         val shape = METADATA_SHAPES[shapeName]
             ?: return parseError(line, 1, "Unsupported flowchart shape '$shapeName'")
@@ -496,6 +566,14 @@ internal class FlowchartParser {
             ),
         )
     }
+
+    private fun parseMetadataValues(metadata: String): Map<String, String> = metadata
+        .split(',')
+        .mapNotNull { entry ->
+            val pair = entry.split(':', limit = 2)
+            if (pair.size == 2) pair[0].trim() to pair[1].trim().trim('"', '\'') else null
+        }
+        .toMap()
 
     private fun parseEdge(
         text: String,
@@ -510,6 +588,25 @@ internal class FlowchartParser {
             index += edgeIdMatch.value.length
         }
         val remaining = text.substring(index)
+        for (syntax in GENERIC_LABELED_EDGES) {
+            val match = syntax.regex.find(remaining)
+            if (match != null && match.range.first == 0) {
+                val startMarker = match.groupValues[1].firstOrNull()
+                    ?.takeIf { it == 'x' || it == 'o' || it == '<' }
+                val endToken = match.groupValues[3]
+                val token = when (syntax.kind) {
+                    LabeledEdgeKind.Normal -> "${startMarker ?: ""}$endToken"
+                    LabeledEdgeKind.Thick -> "${startMarker ?: ""}$endToken"
+                    LabeledEdgeKind.Dotted -> "${startMarker ?: ""}-$endToken"
+                }
+                return edgeFromToken(
+                    id = edgeId,
+                    token = token,
+                    label = cleanLabel(match.groupValues[2]),
+                    nextIndex = index + match.value.length,
+                )
+            }
+        }
         for (pattern in LABELED_EDGE_PATTERNS) {
             val match = pattern.regex.find(remaining)
             if (match != null && match.range.first == 0) {
@@ -609,21 +706,32 @@ internal class FlowchartParser {
     }
 
     private fun parseDirection(value: String): FlowDirection? = when (value.uppercase()) {
-        "TB", "TD", "" -> FlowDirection.TopToBottom
-        "BT" -> FlowDirection.BottomToTop
-        "LR" -> FlowDirection.LeftToRight
-        "RL" -> FlowDirection.RightToLeft
+        "TB", "TD", "V", "" -> FlowDirection.TopToBottom
+        "BT", "^" -> FlowDirection.BottomToTop
+        "LR", ">" -> FlowDirection.LeftToRight
+        "RL", "<" -> FlowDirection.RightToLeft
         else -> null
     }
 
-    private fun cleanLabel(value: String): String = value
-        .trim()
-        .trim('"')
-        .removeSurrounding("`")
-        .replace("**", "")
-        .replace("__", "")
-        .replace("<br/>", "\n", ignoreCase = true)
-        .replace("<br>", "\n", ignoreCase = true)
+    private fun cleanLabel(value: String): String {
+        val plain = value
+            .trim()
+            .trim('"')
+            .removeSurrounding("`")
+            .replace("**", "")
+            .replace("__", "")
+            .replace("*", "")
+            .replace("<br/>", "\n", ignoreCase = true)
+            .replace("<br>", "\n", ignoreCase = true)
+            .replace("#quot;", "\"")
+            .replace("#amp;", "&")
+            .replace("#lt;", "<")
+            .replace("#gt;", ">")
+        return DECIMAL_ENTITY.replace(plain) { match ->
+            match.groupValues[1].toIntOrNull()?.takeIf { it in 0..0xFFFF }?.toChar()?.toString()
+                ?: match.value
+        }
+    }
 
     private fun isIdCharacter(
         text: String,
@@ -648,6 +756,7 @@ internal class FlowchartParser {
         val remaining = text.substring(index)
         return EDGE_TOKEN.find(remaining)?.range?.first == 0 ||
             EDGE_ID_PREFIX.find(remaining)?.range?.first == 0 ||
+            GENERIC_LABELED_EDGES.any { it.regex.containsMatchIn(remaining) } ||
             LABELED_EDGE_PATTERNS.any { it.regex.containsMatchIn(remaining) }
     }
 
@@ -712,6 +821,17 @@ internal class FlowchartParser {
         )
     }
 
+    private enum class LabeledEdgeKind {
+        Normal,
+        Thick,
+        Dotted,
+    }
+
+    private data class GenericLabeledEdge(
+        val regex: Regex,
+        val kind: LabeledEdgeKind,
+    )
+
     private data class ShapeDelimiter(
         val open: String,
         val close: String,
@@ -722,8 +842,10 @@ internal class FlowchartParser {
         val id: String,
         val label: String,
         val line: Int,
+        val parentId: String?,
         val nodeIds: MutableSet<String> = linkedSetOf(),
         var direction: FlowDirection? = null,
+        var collapsed: Boolean = false,
     )
 
     private class ParseState(
@@ -753,9 +875,24 @@ internal class FlowchartParser {
     }
 
     private companion object {
-        val HEADER = Regex("""^(flowchart|graph)(?:\s+(TB|TD|BT|LR|RL))?\s*$""", RegexOption.IGNORE_CASE)
+        val HEADER = Regex("""^(flowchart(?:-elk)?|graph)(?:\s+(TB|TD|BT|LR|RL|>|<|\^|v))?\s*$""", RegexOption.IGNORE_CASE)
+        val DECIMAL_ENTITY = Regex("""#(\d+);""")
         val EDGE_ID_PREFIX = Regex("""^([A-Za-z_][A-Za-z0-9_:.-]*)@(?=[xo<~=.-])""")
         val EDGE_TOKEN = Regex("""^[xo<]?(?:-{2,}[xo>]?|={2,}[xo>]?|-\.+-[xo>]?|~{3,})""")
+        val GENERIC_LABELED_EDGES = listOf(
+            GenericLabeledEdge(
+                regex = Regex("""^([xo<]?--)\s+(.+?)\s+(--+[xo>]?)\s*"""),
+                kind = LabeledEdgeKind.Normal,
+            ),
+            GenericLabeledEdge(
+                regex = Regex("""^([xo<]?==)\s+(.+?)\s+(==+[xo>]?)\s*"""),
+                kind = LabeledEdgeKind.Thick,
+            ),
+            GenericLabeledEdge(
+                regex = Regex("""^([xo<]?-\.)\s+(.+?)\s+(\.+-[xo>]?)\s*"""),
+                kind = LabeledEdgeKind.Dotted,
+            ),
+        )
 
         val LABELED_EDGE_PATTERNS = listOf(
             LabeledEdgePattern(
@@ -775,6 +912,12 @@ internal class FlowchartParser {
                 SceneStrokePattern.Solid,
                 SceneArrowHead.Triangle,
                 3f,
+            ),
+            LabeledEdgePattern(
+                Regex("""^--\s+(.+?)\s+---+\s*"""),
+                SceneStrokePattern.Solid,
+                SceneArrowHead.None,
+                1.7f,
             ),
         )
 
@@ -898,16 +1041,5 @@ internal class FlowchartParser {
             "image" to SceneShapeKind.Image,
         )
 
-        val NAMED_COLORS = mapOf(
-            "white" to SceneColor(0xFFFFFFFF),
-            "black" to SceneColor(0xFF000000),
-            "red" to SceneColor(0xFFDC2626),
-            "blue" to SceneColor(0xFF2563EB),
-            "green" to SceneColor(0xFF16A34A),
-            "yellow" to SceneColor(0xFFFACC15),
-            "gray" to SceneColor(0xFF6B7280),
-            "grey" to SceneColor(0xFF6B7280),
-            "transparent" to SceneColor(0x00000000),
-        )
     }
 }
