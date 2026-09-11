@@ -1,0 +1,17 @@
+.gradle/
+.idea/
+.kotlin/
+.DS_Store
+**/build/
+local.properties
+.env
+.env.*
+*.iml
+*.hprof
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+captures/
+tools/official-reference/node_modules/
+tools/official-reference/.cache/
