@@ -40,7 +40,7 @@ internal data class FlowEdge(
     val pattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val arrowStart: SceneArrowHead = SceneArrowHead.None,
     val arrowEnd: SceneArrowHead = SceneArrowHead.Triangle,
-    val thickness: Float = 1.7f,
+    val thickness: Float = 1f,
     val minimumLength: Int = 1,
     val invisible: Boolean = false,
     val classes: Set<String> = emptySet(),

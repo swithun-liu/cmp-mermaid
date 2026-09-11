@@ -10,11 +10,22 @@ import kotlin.test.assertTrue
 
 class LineBridgeRouterTest {
     @Test
-    fun laterPathBridgesOverInteriorCrossing() {
+    fun horizontalPathBridgesOverVerticalInteriorCrossing() {
         val horizontal = path("horizontal", ScenePoint(0f, 50f), ScenePoint(100f, 50f))
         val vertical = path("vertical", ScenePoint(50f, 0f), ScenePoint(50f, 100f))
 
         val result = LineBridgeRouter.apply(listOf(horizontal, vertical))
+
+        assertEquals(ScenePoint(50f, 50f), result[0].bridges.single().center)
+        assertTrue(result[1].bridges.isEmpty())
+    }
+
+    @Test
+    fun horizontalPathWinsRegardlessOfDrawOrder() {
+        val vertical = path("vertical", ScenePoint(50f, 0f), ScenePoint(50f, 100f))
+        val horizontal = path("horizontal", ScenePoint(0f, 50f), ScenePoint(100f, 50f))
+
+        val result = LineBridgeRouter.apply(listOf(vertical, horizontal))
 
         assertTrue(result[0].bridges.isEmpty())
         assertEquals(ScenePoint(50f, 50f), result[1].bridges.single().center)

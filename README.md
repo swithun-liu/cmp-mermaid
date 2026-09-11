@@ -14,7 +14,10 @@ focuses exclusively on flowcharts.
 ## Verify
 
 ```bash
-./gradlew :mermaid-core:jvmTest :sample:androidApp:assembleDebug
+./gradlew \
+  :mermaid-core:jvmTest \
+  :mermaid-compose:jvmTest \
+  :sample:androidApp:assembleDebug
 ```
 
 Regenerate every official reference image and the shared Kotlin demo catalog:
@@ -29,6 +32,22 @@ The generator asserts that the installed Mermaid package is exactly `12.0.0`.
 Each gallery item therefore uses the same source for the native renderer and
 the official Mermaid.js PNG.
 
+Capture the complete Native/Official gallery from a connected Android device:
+
+```bash
+ANDROID_SERIAL=<serial> WAIT_SECONDS=5 tools/capture-android-audit.sh
+```
+
+The same script can restrict a regression pass without changing its default
+40-case behavior:
+
+```bash
+CAPTURE_PREVIEWS=Native \
+CAPTURE_CASE_IDS=multi_node_links,crossing_routes \
+ANDROID_SERIAL=<serial> \
+tools/capture-android-audit.sh
+```
+
 ## Current Flowchart Coverage
 
 Supported:
@@ -38,7 +57,8 @@ Supported:
 - Solid, dotted, thick, invisible, bidirectional, circle, and cross links.
 - Edge labels, edge ids, minimum lengths, and static edge class styling.
 - Chained and `&` multi-node links.
-- Nested/collapsed subgraphs, class definitions, node classes, and inline styles.
+- Nested/collapsed subgraphs, local subgraph directions, class definitions,
+  node classes, and inline styles.
 - Hex, RGB(A), HSL(A), and common CSS named colors.
 - Port-aware orthogonal routing, parallel lanes, self-loops, rounded corners,
   and crossing bridges.

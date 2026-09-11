@@ -78,9 +78,19 @@ import io.github.cmpmermaid.sample.generated.flowchartDemos
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val auditDemoId = intent.getStringExtra(EXTRA_AUDIT_DEMO_ID)
+        val auditPreview = AuditPreview.from(intent.getStringExtra(EXTRA_AUDIT_PREVIEW))
         setContent {
-            MermaidDocsApp()
+            MermaidDocsApp(
+                auditDemoId = auditDemoId,
+                auditPreview = auditPreview,
+            )
         }
+    }
+
+    private companion object {
+        const val EXTRA_AUDIT_DEMO_ID = "auditDemoId"
+        const val EXTRA_AUDIT_PREVIEW = "auditPreview"
     }
 }
 
@@ -89,9 +99,26 @@ private enum class DocsScreen {
     Flowchart,
 }
 
+private enum class AuditPreview {
+    Native,
+    Official,
+    ;
+
+    companion object {
+        fun from(value: String?): AuditPreview =
+            entries.firstOrNull { it.name.equals(value, ignoreCase = true) } ?: Native
+    }
+}
+
 @Composable
-private fun MermaidDocsApp() {
+private fun MermaidDocsApp(
+    auditDemoId: String? = null,
+    auditPreview: AuditPreview = AuditPreview.Native,
+) {
     var screen by rememberSaveable { mutableStateOf(DocsScreen.DiagramTypes) }
+    val auditDemo = remember(auditDemoId) {
+        flowchartDemos.firstOrNull { it.id == auditDemoId }
+    }
     val colors = lightColorScheme(
         primary = Color(0xFF007F86),
         onPrimary = Color.White,
@@ -105,6 +132,13 @@ private fun MermaidDocsApp() {
     )
 
     MaterialTheme(colorScheme = colors) {
+        if (auditDemo != null) {
+            VisualAuditScreen(
+                demo = auditDemo,
+                preview = auditPreview,
+            )
+            return@MaterialTheme
+        }
         BackHandler(enabled = screen != DocsScreen.DiagramTypes) {
             screen = DocsScreen.DiagramTypes
         }
@@ -114,6 +148,35 @@ private fun MermaidDocsApp() {
             )
             DocsScreen.Flowchart -> FlowchartDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
+            )
+        }
+    }
+}
+
+@Composable
+private fun VisualAuditScreen(
+    demo: FlowchartDemo,
+    preview: AuditPreview,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        when (preview) {
+            AuditPreview.Native -> MermaidDiagram(
+                source = demo.source,
+                modifier = Modifier.fillMaxSize(),
+                theme = MermaidTheme.MermaidDefault,
+                contentDescription = "Audit ${demo.id} native",
+            )
+            AuditPreview.Official -> Image(
+                painter = painterResource(demo.officialDrawable),
+                contentDescription = "Audit ${demo.id} official",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Fit,
             )
         }
     }

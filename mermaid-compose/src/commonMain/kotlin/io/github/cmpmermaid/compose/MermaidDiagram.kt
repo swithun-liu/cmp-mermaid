@@ -223,6 +223,28 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
             drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
             drawRoundRect(stroke, bounds.topLeft, bounds.size, radius, style = strokeStyle)
         }
+        SceneShapeKind.CollapsedGroup -> {
+            val radius = CornerRadius(shape.cornerRadius * 1.5f, shape.cornerRadius * 1.5f)
+            drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
+            drawRoundRect(stroke, bounds.topLeft, bounds.size, radius, style = strokeStyle)
+            val decoration = stroke.copy(alpha = 0.45f)
+            val separatorY = bounds.top + bounds.height * 0.62f
+            drawLine(
+                color = decoration,
+                start = Offset(bounds.left + 18f, separatorY),
+                end = Offset(bounds.right - 18f, separatorY),
+                strokeWidth = shape.strokeWidth,
+                pathEffect = PathEffect.dashPathEffect(floatArrayOf(5f, 4f)),
+            )
+            val dotsY = bounds.top + bounds.height * 0.8f
+            listOf(-12f, 0f, 12f).forEach { offset ->
+                drawCircle(
+                    color = decoration,
+                    radius = 3.5f,
+                    center = Offset(bounds.center.x + offset, dotsY),
+                )
+            }
+        }
         SceneShapeKind.Stadium -> {
             val radius = CornerRadius(bounds.height / 2f, bounds.height / 2f)
             drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
@@ -691,11 +713,6 @@ private fun DrawScope.drawScenePath(element: ScenePath) {
             bridges = element.bridges,
         )
     }
-    val pathEffect = when (element.strokePattern) {
-        SceneStrokePattern.Solid -> null
-        SceneStrokePattern.Dashed -> PathEffect.dashPathEffect(floatArrayOf(9f, 6f))
-        SceneStrokePattern.Dotted -> PathEffect.dashPathEffect(floatArrayOf(2f, 6f))
-    }
     drawPath(
         path = path,
         color = element.color.toComposeColor(),
@@ -703,7 +720,7 @@ private fun DrawScope.drawScenePath(element: ScenePath) {
             width = element.strokeWidth,
             cap = StrokeCap.Round,
             join = StrokeJoin.Round,
-            pathEffect = pathEffect,
+            pathEffect = element.strokePattern.toPathEffect(),
         ),
     )
     drawArrowHead(
@@ -782,8 +799,8 @@ private fun ScenePoint.moveToward(
 
 private fun SceneStrokePattern.toPathEffect(): PathEffect? = when (this) {
     SceneStrokePattern.Solid -> null
-    SceneStrokePattern.Dashed -> PathEffect.dashPathEffect(floatArrayOf(9f, 6f))
-    SceneStrokePattern.Dotted -> PathEffect.dashPathEffect(floatArrayOf(2f, 6f))
+    SceneStrokePattern.Dashed -> PathEffect.dashPathEffect(floatArrayOf(3f, 3f))
+    SceneStrokePattern.Dotted -> PathEffect.dashPathEffect(floatArrayOf(2f, 2f))
 }
 
 private fun Path.appendSegmentWithBridges(

@@ -134,7 +134,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun supportsMultiNodeChainsDirectClassesAndEdgeIds() {
+    fun assignsExplicitMultiNodeEdgeIdOnlyToLastStartAndFirstEnd() {
         val result = engine.render(
             """
                 flowchart LR
@@ -151,7 +151,7 @@ class MermaidEngineTest {
         val paths = scene.elements.filterIsInstance<ScenePath>()
         assertEquals(4, nodes.size)
         assertEquals(4, paths.size)
-        assertTrue(paths.all { it.id == "e1" })
+        assertEquals(1, paths.count { it.id == "e1" })
     }
 
     @Test
@@ -192,6 +192,105 @@ class MermaidEngineTest {
             assertEquals(expected.first, path.arrowStart, edgeSource)
             assertEquals(expected.second, path.arrowEnd, edgeSource)
             assertEquals(expected.third, path.strokePattern, edgeSource)
+        }
+    }
+
+    @Test
+    fun matchesMermaidDefaultEdgeWidths() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A --> B
+                  B ==> C
+            """.trimIndent(),
+            context,
+        )
+
+        val paths = assertIs<GMResult.Ok<MermaidScene>>(result).value
+            .elements
+            .filterIsInstance<ScenePath>()
+
+        assertEquals(1f, paths[0].strokeWidth)
+        assertEquals(3.5f, paths[1].strokeWidth)
+    }
+
+    @Test
+    fun balancesMinimumLengthSlackIntoOneMiddleLayer() {
+        val result = engine.render(
+            """
+                flowchart TD
+                  A --> B
+                  A ---> C
+                  A ----> D
+                  B -.-> E
+                  C -..-> E
+                  D ====> E
+            """.trimIndent(),
+            context,
+        )
+
+        val nodes = assertIs<GMResult.Ok<MermaidScene>>(result).value
+            .elements
+            .filterIsInstance<SceneShape>()
+            .filter { shape -> shape.id in setOf("A", "B", "C", "D", "E") }
+            .associateBy(SceneShape::id)
+
+        assertEquals(nodes.getValue("B").bounds.center.y, nodes.getValue("C").bounds.center.y)
+        assertEquals(nodes.getValue("C").bounds.center.y, nodes.getValue("D").bounds.center.y)
+        assertTrue(nodes.getValue("A").bounds.bottom < nodes.getValue("B").bounds.top)
+        assertTrue(nodes.getValue("D").bounds.bottom < nodes.getValue("E").bounds.top)
+    }
+
+    @Test
+    fun routesCrossedMultiNodeLinksThroughDistinctDoglegs() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A eAC@--> C
+                  A eAD@--> D
+                  B eBC@--> C
+                  B eBD@--> D
+            """.trimIndent(),
+            context,
+        )
+
+        val paths = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+            .elements
+            .filterIsInstance<ScenePath>()
+            .associateBy(ScenePath::id)
+
+        assertEquals(2, paths.getValue("eAC").points.size)
+        assertEquals(2, paths.getValue("eBD").points.size)
+        assertTrue(paths.getValue("eAD").points.size >= 4)
+        assertTrue(paths.getValue("eBC").points.size >= 6)
+        assertTrue(paths.getValue("eBC").bridges.isNotEmpty())
+    }
+
+    @Test
+    fun keepsMixedEdgeLabelsSeparated() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A -- text --> B
+                  A -->|pipe label| C
+                  A -. dotted .-> D
+                  A == thick ==> E
+                  A -- open text --- F
+            """.trimIndent(),
+            context,
+        )
+
+        val labels = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+            .elements
+            .filterIsInstance<SceneText>()
+            .filter { text ->
+                text.text in setOf("text", "pipe label", "dotted", "thick", "open text")
+            }
+            .sortedBy { text -> text.bounds.top }
+
+        assertEquals(5, labels.size)
+        labels.zipWithNext().forEach { (first, second) ->
+            assertTrue(first.bounds.bottom <= second.bounds.top, "${first.text} overlaps ${second.text}")
         }
     }
 
@@ -244,6 +343,31 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun placesHorizontalSelfLoopAboveItsNode() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A --> A
+                  A --> B
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val node = scene.elements
+            .filterIsInstance<SceneShape>()
+            .first { shape -> shape.id == "A" }
+        val loop = scene.elements
+            .filterIsInstance<ScenePath>()
+            .first { path -> path.id == "edge_0" }
+
+        assertEquals(4, loop.points.size)
+        assertEquals(node.bounds.top, loop.points.first().y)
+        assertEquals(node.bounds.top, loop.points.last().y)
+        assertTrue(loop.points.drop(1).dropLast(1).all { point -> point.y < node.bounds.top })
+    }
+
+    @Test
     fun addsBridgeToLaterPathAtOrthogonalCrossing() {
         val result = engine.render(
             """
@@ -290,6 +414,46 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun honorsExplicitDirectionsInNestedSubgraphs() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  subgraph TOP
+                    direction TB
+                    subgraph B1
+                      direction RL
+                      i1 --> f1
+                    end
+                    subgraph B2
+                      direction BT
+                      i2 --> f2
+                    end
+                  end
+                  A --> TOP --> B
+                  B1 --> B2
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val top = shapes.getValue("subgraph_TOP").bounds
+        val firstGroup = shapes.getValue("subgraph_B1").bounds
+        val secondGroup = shapes.getValue("subgraph_B2").bounds
+
+        assertTrue(shapes.getValue("A").bounds.right < top.left)
+        assertTrue(top.right < shapes.getValue("B").bounds.left)
+        assertTrue(firstGroup.bottom < secondGroup.top)
+        assertTrue(shapes.getValue("f1").bounds.right < shapes.getValue("i1").bounds.left)
+        assertTrue(shapes.getValue("f2").bounds.bottom < shapes.getValue("i2").bounds.top)
+
+        val paths = scene.elements.filterIsInstance<ScenePath>().associateBy(ScenePath::id)
+        assertTrue(paths.getValue("edge_0").points.first().x > paths.getValue("edge_0").points.last().x)
+        assertTrue(paths.getValue("edge_1").points.first().y > paths.getValue("edge_1").points.last().y)
+        assertTrue(paths.getValue("edge_4").points.first().y < paths.getValue("edge_4").points.last().y)
+    }
+
+    @Test
     fun collapsedSubgraphBecomesSingleNodeAndRedirectsBoundaryEdges() {
         val result = engine.render(
             """
@@ -306,7 +470,7 @@ class MermaidEngineTest {
 
         val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
         val shapes = scene.elements.filterIsInstance<SceneShape>()
-        assertTrue(shapes.any { it.id == "group" })
+        assertTrue(shapes.any { it.id == "group" && it.kind == SceneShapeKind.CollapsedGroup })
         assertTrue(shapes.none { it.id in setOf("A", "B", "C", "subgraph_group") })
         assertEquals(2, scene.elements.filterIsInstance<ScenePath>().size)
     }

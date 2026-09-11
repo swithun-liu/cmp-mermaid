@@ -133,12 +133,16 @@ internal class FlowchartParser {
             label = cleanLabel(declaration.substring(bracketStart + 1, bracketEnd))
         } else {
             label = cleanLabel(declaration)
-            id = declaration
-                .lowercase()
-                .map { char -> if (char.isLetterOrDigit()) char else '_' }
-                .joinToString("")
-                .trim('_')
-                .ifEmpty { "subgraph_${state.subgraphs.size}" }
+            id = if (declaration.none(Char::isWhitespace)) {
+                declaration
+            } else {
+                declaration
+                    .lowercase()
+                    .map { char -> if (char.isLetterOrDigit()) char else '_' }
+                    .joinToString("")
+                    .trim('_')
+                    .ifEmpty { "subgraph_${state.subgraphs.size}" }
+            }
         }
 
         state.subgraphStack += MutableSubgraph(
@@ -400,10 +404,13 @@ internal class FlowchartParser {
             }
             next.nodes.forEach(state::upsert)
             val targets = next.nodes.map { it.node.id }
-            previous.forEach { from ->
-                targets.forEach { to ->
+            previous.forEachIndexed { fromIndex, from ->
+                targets.forEachIndexed { toIndex, to ->
+                    val explicitId = edge.id?.takeIf {
+                        fromIndex == previous.lastIndex && toIndex == 0
+                    }
                     state.edges += FlowEdge(
-                        id = edge.id ?: "edge_${state.edges.size}",
+                        id = explicitId ?: "edge_${state.edges.size}",
                         from = from,
                         to = to,
                         label = edge.label,
@@ -649,7 +656,7 @@ internal class FlowchartParser {
         val core = token.substring(coreStart, coreEnd)
         val invisible = core.firstOrNull() == '~'
         val pattern = if (core.contains('.')) SceneStrokePattern.Dotted else SceneStrokePattern.Solid
-        val thickness = if (core.contains('=')) 3f else 1.7f
+        val thickness = if (core.contains('=')) 3.5f else 1f
         val minimumLength = when {
             invisible -> (core.count { it == '~' } - 2).coerceAtLeast(1)
             core.contains('.') -> core.count { it == '.' }.coerceAtLeast(1)
@@ -899,25 +906,25 @@ internal class FlowchartParser {
                 Regex("""^--\s+(.+?)\s+-->\s*"""),
                 SceneStrokePattern.Solid,
                 SceneArrowHead.Triangle,
-                1.7f,
+                1f,
             ),
             LabeledEdgePattern(
                 Regex("""^-\.\s+(.+?)\s+\.->\s*"""),
                 SceneStrokePattern.Dotted,
                 SceneArrowHead.Triangle,
-                1.7f,
+                1f,
             ),
             LabeledEdgePattern(
                 Regex("""^==\s+(.+?)\s+==>\s*"""),
                 SceneStrokePattern.Solid,
                 SceneArrowHead.Triangle,
-                3f,
+                3.5f,
             ),
             LabeledEdgePattern(
                 Regex("""^--\s+(.+?)\s+---+\s*"""),
                 SceneStrokePattern.Solid,
                 SceneArrowHead.None,
-                1.7f,
+                1f,
             ),
         )
 

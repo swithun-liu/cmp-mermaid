@@ -10,11 +10,12 @@ internal object LineBridgeRouter {
 
     fun apply(paths: List<ScenePath>): List<ScenePath> {
         val bridges = paths.map { mutableListOf<SceneBridge>() }
-        for (lowerIndex in paths.indices) {
-            for (upperIndex in lowerIndex + 1 until paths.size) {
-                findCrossings(paths[lowerIndex], paths[upperIndex]).forEach { crossing ->
-                    if (bridges[upperIndex].none { it.center.isNear(crossing) }) {
-                        bridges[upperIndex] += SceneBridge(crossing)
+        for (firstIndex in paths.indices) {
+            for (secondIndex in firstIndex + 1 until paths.size) {
+                findCrossings(paths[firstIndex], paths[secondIndex]).forEach { crossing ->
+                    val bridgeIndex = if (crossing.bridgeFirst) firstIndex else secondIndex
+                    if (bridges[bridgeIndex].none { it.center.isNear(crossing.point) }) {
+                        bridges[bridgeIndex] += SceneBridge(crossing.point)
                     }
                 }
             }
@@ -27,7 +28,7 @@ internal object LineBridgeRouter {
     private fun findCrossings(
         first: ScenePath,
         second: ScenePath,
-    ): List<ScenePoint> = buildList {
+    ): List<Crossing> = buildList {
         first.points.zipWithNext().forEach { (firstStart, firstEnd) ->
             second.points.zipWithNext().forEach { (secondStart, secondEnd) ->
                 val crossing = orthogonalIntersection(
@@ -48,7 +49,7 @@ internal object LineBridgeRouter {
         firstEnd: ScenePoint,
         secondStart: ScenePoint,
         secondEnd: ScenePoint,
-    ): ScenePoint? {
+    ): Crossing? {
         val firstHorizontal = firstStart.y.isCloseTo(firstEnd.y)
         val firstVertical = firstStart.x.isCloseTo(firstEnd.x)
         val secondHorizontal = secondStart.y.isCloseTo(secondEnd.y)
@@ -74,11 +75,23 @@ internal object LineBridgeRouter {
         }
 
         val crossing = ScenePoint(verticalStart.x, horizontalStart.y)
-        return crossing.takeIf {
-            it.x.isStrictlyBetween(horizontalStart.x, horizontalEnd.x) &&
-                it.y.isStrictlyBetween(verticalStart.y, verticalEnd.y)
+        return crossing
+            .takeIf {
+                it.x.isStrictlyBetween(horizontalStart.x, horizontalEnd.x) &&
+                    it.y.isStrictlyBetween(verticalStart.y, verticalEnd.y)
+            }
+            ?.let {
+                Crossing(
+                    point = it,
+                    bridgeFirst = firstHorizontal,
+                )
         }
     }
+
+    private data class Crossing(
+        val point: ScenePoint,
+        val bridgeFirst: Boolean,
+    )
 
     private fun Float.isStrictlyBetween(first: Float, second: Float): Boolean {
         val minimum = minOf(first, second) + ENDPOINT_CLEARANCE

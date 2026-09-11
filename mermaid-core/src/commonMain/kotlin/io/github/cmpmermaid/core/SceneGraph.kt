@@ -7,6 +7,7 @@ data class SceneColor(
 enum class SceneShapeKind {
     Rectangle,
     RoundedRectangle,
+    CollapsedGroup,
     Stadium,
     Subroutine,
     Cylinder,
