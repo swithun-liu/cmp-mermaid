@@ -23,6 +23,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kaml)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.quickjs)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

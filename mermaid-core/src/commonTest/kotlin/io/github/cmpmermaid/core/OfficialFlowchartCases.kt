@@ -442,4 +442,52 @@ flowchart TB
   D & E & F --> Finish
         """.trimIndent(),
     ),
+    OfficialFlowchartCase(
+        id = "icon_shape",
+        source = """
+flowchart LR
+  A@{ icon: "fa:user", form: "square", label: "User Icon", pos: "t", h: 60 }
+  A --> B[Continue]
+        """.trimIndent(),
+    ),
+    OfficialFlowchartCase(
+        id = "image_shape",
+        source = """
+flowchart LR
+  A@{ img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAA8CAYAAACQPx/OAAAABmJLR0QA/wD/AP+gvaeTAAAEb0lEQVR4nO3cX0xbVRwH8O/vVErLKAiyZWw6QGMcNgsuLpqwRIGxRBenyXT4J1EfRvRpL4uvjLvEV6MxmkxdE3U+4J9EkpqZzLGNICEucW4EurqHURgRZjtWCrTdZbfHB4R0C7Cu99x7z+j5PBHKPecbvmnvvaenJdzB3dG7zcV4O+d8F4BaAOvu/BvFlDkAEQJOGQzHdK15KPtBWvrp4Ilib4XnYw68DxCzO2WBMgg4mmLRQ9DadGCxkIMnij0V3l8BNDuZrmBxOp12/fsitDadAYCn0vsJVBnOId7i5es/AgByd/RuY2RcUC9TjjMynDcwF+PtqgwpuIhwgHGOVqeTKAsItJsBfIvTQZQlNQxAqdMplCU+de6QjCpEMqoQyahCJKMKkYwqRDKqEMk8YPUERMBT1T7s3VqFnTXl2FjqxuayYgDAeOImrs3q+D0SRzB8HRcmZqyOIz3yHD7DLRmYgH3+DehsqcXjD5XkdMzlWBJazwi6L0XBLUklP0sKebTSi29eq8eOzWV5HX9uPIF3fwohciMtOJn8hJ9DGreU42z79rzLAIBnHi5D/3tPo6muQmCy+4PQZ8jzdQ8i+HYDily07OPezrPL/j51pGnZ3+tGBi99O4i+SFxQQvkJe4bUVnjw3X7/imXkw+1i6Hrdj8cqvcLGlJ2QQoiA4/ufRNW6IhHD3aaypAiBffUgcT1LTUghr/o3mDpn3M2zj5Thlfr1lo0vE9OFEAGHW2oFRFmdtqvO8jlkYLqQ7dW+nO8zzHiiqgQN1Wv/vTTThezdWiUih3RzOcV0IY015SJy5GSnjXM5xXQhm3zFInJIN5dTTC8ubvS5Aax805eLXI5NHWnCprK1X4jpZ4idi4CZAlhxNF3I5OxNETlyMjGj2zaXU0wX8k/Cvn/SxIx95TvFdCH9o/Yt/PVFpm2byymmCwmGr4vIkZNfwjHb5nKK6ausi5MzuBxLrriEnu1el9+zhaNJDE7O3lu4+5CQqyytZ0REllV19lyxfA4ZCFnt7b4UxbnxhIihljUwNo1gAbxcAYIK4Rx458cQYnPzIoa7zVRyHu0/hwtm04OwdwxH42m89cMwdCMjakjoRgZtXUO4MpUSNqbshG5y6IvE8cLXFxGdM39vMpWcx8vHB9E/uvYvdbMJ33UyMDaN5746jz+u5n9OGRibRuMXf6J3pHA2NyyyZCtp5EYazYHzePP7YfwdS+Z8XDiaxBtdw2gJ/IXReOHtyQIs3ErKOdAdiqI7FEVDdemqby59eCaCYDhWEPcZd2PZVlIlP2r3u2RUIZJRhUhGFSIZVYhkVCGSUYVIhgFQH+yTBiUYQFedjqEs4mOMwH9zOoaygBOdZAbDMQCG02EUGJxuBZiuNQ8RcNTpNIWOiD7XtdYQA4AUix4C0ONwpsLFcSo1UfoBsHjZq7XpaRbdQ4TPoF6+7GQQ0afpa749+HLHPJD9zdb/c3ec9hPhAIF2Y+Grxtf+x5bsNQsgwolOcroV0LXWUPaD/wHzh0LfoJOJBgAAAABJRU5ErkJggg==", label: "Bitmap", pos: "t", h: 60, constraint: "on" }
+  A --> B[Rendered natively]
+        """.trimIndent(),
+    ),
+    OfficialFlowchartCase(
+        id = "embedded_image_shape",
+        source = """
+flowchart LR
+  A@{ img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNjAiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNjAiIHJ4PSI4IiBmaWxsPSIjZmYzNjcwIi8+PHBhdGggZD0iTTI1IDE1YzE4IDAgMjUgMTAgMjUgMjAgMC0xMCA3LTIwIDI1LTIwLTEwIDgtMTUgMTctMTUgMzBINDBjMC0xMy01LTIyLTE1LTMwWiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=", label: "Embedded", pos: "t", h: 60, constraint: "on" }
+  A --> B[No network required]
+        """.trimIndent(),
+    ),
+    OfficialFlowchartCase(
+        id = "html_label_styles",
+        source = """
+flowchart LR
+  A["<b>Bold</b> and <i>italic</i><br/><u>underlined</u>"]
+  A --> B["<code>monospace</code> H<sub>2</sub>O x<sup>2</sup>"]
+        """.trimIndent(),
+    ),
+    OfficialFlowchartCase(
+        id = "line_hops_gap",
+        source = """
+---
+config:
+  layout: elk
+  elk:
+    lineHops: gap
+---
+flowchart TB
+  A --> D
+  B --> C
+  A --> C
+  B --> D
+        """.trimIndent(),
+    ),
 )

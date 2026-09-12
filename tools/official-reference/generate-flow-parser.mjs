@@ -150,16 +150,18 @@ const lexerChunks = [];
 for (let index = 0; index < parser.lexer.rules.length; index += LEXER_CHUNK_SIZE) {
   lexerChunks.push(parser.lexer.rules.slice(index, index + LEXER_CHUNK_SIZE));
 }
-lines.push('    val lexerPatterns: List<Regex> = buildList {');
+lines.push('    val lexerPatterns: List<JisonLexerPattern> = buildList {');
 for (let index = 0; index < lexerChunks.length; index += 1) {
   lines.push(`        addAll(lexerChunk${index}())`);
 }
 lines.push('    }');
 lines.push('');
 for (let chunkIndex = 0; chunkIndex < lexerChunks.length; chunkIndex += 1) {
-  lines.push(`    private fun lexerChunk${chunkIndex}(): List<Regex> = listOf(`);
-  for (const rule of lexerChunks[chunkIndex]) {
-    lines.push(`        Regex(${kotlinString(rule.source)}),`);
+  lines.push(`    private fun lexerChunk${chunkIndex}(): List<JisonLexerPattern> = listOf(`);
+  for (let ruleIndex = 0; ruleIndex < lexerChunks[chunkIndex].length; ruleIndex += 1) {
+    const absoluteIndex = chunkIndex * LEXER_CHUNK_SIZE + ruleIndex;
+    const rule = lexerChunks[chunkIndex][ruleIndex];
+    lines.push(`        JisonLexerPattern(${absoluteIndex}, ${kotlinString(rule.source)}),`);
   }
   lines.push('    )');
   lines.push('');

@@ -6,6 +6,7 @@ import com.charleskorn.kaml.YamlScalar
 import io.github.cmpmermaid.core.GMResult
 import io.github.cmpmermaid.core.MermaidError
 import io.github.cmpmermaid.core.MermaidRenderOptions
+import io.github.cmpmermaid.core.MermaidSecurityLevel
 
 /**
  * Kotlin port of packages/mermaid/src/diagrams/flowchart/flowDb.ts.
@@ -92,7 +93,7 @@ internal class FlowDb(
             return GMResult.Ok(Unit)
         }
         val edge = edges.firstOrNull { it.id == id }
-        if (edge != null && metadata != null) {
+        if (edge != null) {
             metadataValues["animate"]?.let { edge.animate = it.equals("true", ignoreCase = true) }
             metadataValues["animation"]?.let { edge.animation = it }
             metadataValues["curve"]?.let { edge.interpolate = it }
@@ -290,13 +291,12 @@ internal class FlowDb(
         functionName: String?,
         functionArgs: String? = null,
     ) {
-        if (functionName == null) {
-            return
-        }
-        ids.split(',').forEach { id ->
-            vertices[id]?.let { vertex ->
-                vertex.callbackName = functionName
-                vertex.callbackArgs = functionArgs
+        if (functionName != null && config.securityLevel == MermaidSecurityLevel.Loose) {
+            ids.split(',').forEach { id ->
+                vertices[id]?.let { vertex ->
+                    vertex.callbackName = functionName
+                    vertex.callbackArgs = functionArgs
+                }
             }
         }
         setClass(ids, "clickable")
@@ -309,7 +309,7 @@ internal class FlowDb(
     ) {
         ids.split(',').forEach { id ->
             vertices[id]?.let { vertex ->
-                vertex.link = link
+                vertex.link = MermaidUrlSanitizer.sanitize(link)
                 vertex.linkTarget = target
             }
         }
@@ -614,6 +614,8 @@ internal class FlowDb(
                 link = vertex.link,
                 linkTarget = vertex.linkTarget,
                 tooltip = vertex.tooltip,
+                callbackName = vertex.callbackName,
+                callbackArgs = vertex.callbackArgs,
                 icon = vertex.icon,
                 form = vertex.form,
                 position = vertex.position,

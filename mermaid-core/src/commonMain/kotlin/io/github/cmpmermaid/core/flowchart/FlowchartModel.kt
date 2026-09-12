@@ -4,6 +4,7 @@ import io.github.cmpmermaid.core.SceneArrowHead
 import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneStrokePattern
+import io.github.cmpmermaid.core.SceneTextAlignment
 import io.github.cmpmermaid.core.SceneTextSpan
 import io.github.cmpmermaid.core.SceneTextWeight
 import io.github.cmpmermaid.core.flowchart.upstream.mermaid.FlowLabelType
@@ -24,7 +25,17 @@ internal data class FlowNodeStyle(
     val strokePattern: SceneStrokePattern? = null,
     val dashIntervals: List<Float> = emptyList(),
     val fontSize: Float? = null,
+    val fontSizeScale: Float? = null,
+    val fontFamily: String? = null,
     val fontWeight: SceneTextWeight? = null,
+    val italic: Boolean? = null,
+    val underline: Boolean = false,
+    val lineThrough: Boolean = false,
+    val lineHeightMultiplier: Float? = null,
+    val lineHeightPixels: Float? = null,
+    val textAlignment: SceneTextAlignment? = null,
+    val animated: Boolean = false,
+    val animationDurationMillis: Int? = null,
 )
 
 internal data class FlowNode(
@@ -41,12 +52,15 @@ internal data class FlowNode(
     val link: String? = null,
     val linkTarget: String? = null,
     val tooltip: String? = null,
+    val callbackName: String? = null,
+    val callbackArgs: String? = null,
     val icon: String? = null,
     val position: String? = null,
     val image: String? = null,
     val assetWidth: Float? = null,
     val assetHeight: Float? = null,
     val constraint: String? = null,
+    val colorIndex: Int? = null,
 )
 
 internal data class FlowEdge(
@@ -58,11 +72,12 @@ internal data class FlowEdge(
     val pattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val arrowStart: SceneArrowHead = SceneArrowHead.None,
     val arrowEnd: SceneArrowHead = SceneArrowHead.Triangle,
-    val thickness: Float = 1f,
+    val thickness: Float? = null,
     val minimumLength: Int = 1,
     val invisible: Boolean = false,
     val inlineStyle: FlowNodeStyle? = null,
     val animated: Boolean = false,
+    val animationDurationMillis: Int? = null,
     val curve: String? = null,
     val look: String,
 )
@@ -77,6 +92,8 @@ internal data class FlowSubgraph(
     val padding: Float,
     val look: String,
     val inlineStyle: FlowNodeStyle? = null,
+    val metadata: Map<String, String> = emptyMap(),
+    val colorIndex: Int? = null,
 )
 
 internal data class FlowchartDocument(

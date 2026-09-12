@@ -76,7 +76,9 @@ import io.github.cmpmermaid.core.MermaidTheme
 import io.github.cmpmermaid.sample.generated.FlowchartDemo
 import io.github.cmpmermaid.sample.generated.flowchartDemos
 
-private val officialReferenceRenderOptions = MermaidRenderOptions(curve = "rounded")
+private val officialReferenceRenderOptions = MermaidRenderOptions(
+    layout = "elk",
+)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -172,7 +174,7 @@ private fun VisualAuditScreen(
             AuditPreview.Native -> MermaidDiagram(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
-                theme = MermaidTheme.MermaidDefault,
+                theme = MermaidTheme.FlowchartDefault,
                 options = officialReferenceRenderOptions,
                 contentDescription = "Audit ${demo.id} native",
             )
@@ -630,7 +632,7 @@ private fun SyntaxLesson(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(height.dp),
-                theme = MermaidTheme.MermaidDefault,
+                theme = MermaidTheme.FlowchartDefault,
                 options = officialReferenceRenderOptions,
                 contentDescription = "$title CMP rendering",
             )
@@ -837,7 +839,7 @@ private fun NativePreview(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(height),
-            theme = MermaidTheme.MermaidDefault,
+            theme = MermaidTheme.FlowchartDefault,
             options = officialReferenceRenderOptions,
             contentDescription = "${demo.title} CMP rendering",
         )

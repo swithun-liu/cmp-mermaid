@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawnSync } from 'node:child_process';
+import puppeteer from 'puppeteer';
 import { cases } from './cases.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -15,7 +15,7 @@ const testOutput = resolve(
   '../../mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/OfficialFlowchartCases.kt',
 );
 const temporary = resolve(root, '.cache');
-const cli = resolve(root, 'node_modules/.bin/mmdc');
+const mermaidBundle = resolve(root, 'node_modules/mermaid/dist/mermaid.min.js');
 const mermaidPackage = JSON.parse(
   readFileSync(resolve(root, 'node_modules/mermaid/package.json'), 'utf8'),
 );
@@ -27,51 +27,51 @@ if (mermaidPackage.version !== '12.0.0') {
 mkdirSync(output, { recursive: true });
 rmSync(temporary, { recursive: true, force: true });
 mkdirSync(temporary, { recursive: true });
-const config = resolve(temporary, 'mermaid-config.json');
-writeFileSync(
-  config,
-  JSON.stringify({
-    layout: 'dagre',
-    flowchart: {
-      curve: 'rounded',
-    },
-  }),
-);
 const dimensions = new Map();
 
-for (const demo of cases) {
-  const input = resolve(temporary, `${demo.id}.mmd`);
-  const target = resolve(output, `official_${demo.id}.png`);
-  writeFileSync(input, `${demo.source}\n`);
-  const result = spawnSync(
-    cli,
-    [
-      '--input',
-      input,
-      '--output',
-      target,
-      '--configFile',
-      config,
-      '--backgroundColor',
-      'white',
-      '--width',
-      '1000',
-      '--scale',
-      '1',
-      '--quiet',
-    ],
-    { cwd: root, encoding: 'utf8' },
+const browser = await puppeteer.launch({ headless: 'shell' });
+try {
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1000, height: 1000, deviceScaleFactor: 1 });
+  await page.setContent(
+    '<style>body{margin:0;background:white}svg{display:block}</style>' +
+      '<div id="container"></div>',
   );
-  if (result.status !== 0) {
-    throw new Error(
-      `Official render failed for ${demo.id}\n${result.stdout}\n${result.stderr}`,
-    );
-  }
-  const png = readFileSync(target);
-  dimensions.set(demo.id, {
-    width: png.readUInt32BE(16),
-    height: png.readUInt32BE(20),
+  await page.addScriptTag({ path: mermaidBundle });
+  await page.evaluate(() => {
+    mermaid.initialize({
+      startOnLoad: false,
+      layout: 'elk',
+    });
   });
+
+  for (const demo of cases) {
+    const target = resolve(output, `official_${demo.id}.png`);
+    await page.evaluate(
+      async ({ id, source }) => {
+        const container = document.querySelector('#container');
+        container.replaceChildren();
+        const { svg } = await mermaid.render(`official-${id}`, source, container);
+        container.innerHTML = svg;
+        container.querySelector('svg').style.backgroundColor = 'white';
+      },
+      demo,
+    );
+    const svg = await page.$('#container > svg');
+    if (svg === null) {
+      throw new Error(
+        `Official Mermaid ${mermaidPackage.version} produced no SVG for ${demo.id}`,
+      );
+    }
+    await svg.screenshot({ path: target, omitBackground: false });
+    const png = readFileSync(target);
+    dimensions.set(demo.id, {
+      width: png.readUInt32BE(16),
+      height: png.readUInt32BE(20),
+    });
+  }
+} finally {
+  await browser.close();
 }
 
 const kotlinCases = cases

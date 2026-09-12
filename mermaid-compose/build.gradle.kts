@@ -27,9 +27,17 @@ kotlin {
             api(project(":mermaid-core"))
             api(compose.ui)
             implementation(compose.foundation)
+            implementation(compose.components.resources)
+        }
+        androidMain.dependencies {
+            implementation(libs.android.svg)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
     }
+}
+
+compose.resources {
+    packageOfResClass = "io.github.cmpmermaid.compose.generated.resources"
 }

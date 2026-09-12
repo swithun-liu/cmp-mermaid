@@ -2,88 +2,116 @@
 
 Baseline: Mermaid `12.0.0`.
 
-## Release Gate
+## Compatibility Contract
 
-Production readiness requires:
+The target is visual and semantic parity rather than pixel identity. A
+supported Flowchart must preserve its content, hierarchy, direction, routing,
+markers, labels, styles, and interactions closely enough that a side-by-side
+comparison does not expose a functional rendering defect.
 
-- Every supported syntax case parses without fallback or silent data loss.
-- Nodes and labels do not overlap or clip at supported font scales.
-- Links preserve direction, marker type, label, and minimum rank length.
-- Android and iOS render the same SceneGraph within typography tolerance.
-- Official comparison fixtures and cloud-device smoke tests pass.
+Legal Mermaid 12 input that cannot be represented by the native SceneGraph
+must return a structured `MermaidError.UnsupportedFeature`; it must not be
+silently dropped or approximated as another feature.
 
 ## Compatibility Matrix
 
 | Area | Status | Notes |
 | --- | --- | --- |
-| Headers and directions | Supported | `flowchart`, `flowchart-elk`, `graph`, TB/TD/BT/LR/RL and symbolic aliases |
-| Classic node syntax | Supported | Rectangle, rounded, stadium, database, decision, circle, hexagon and IO shapes |
-| Metadata shape syntax | Supported with exceptions | Mermaid 12 aliases and native geometry are covered; icon/image assets still need an injected loader |
-| Links and labels | Supported | Solid, dotted, thick, open, invisible, labelled and bidirectional links |
-| Edge markers | Supported | Triangle, circle and cross markers at either or both ends |
-| Edge ids and lengths | Supported | Minimum rank length is applied; animation metadata renders statically |
-| Multi-node links | Supported | `A & B --> C & D` |
-| Classes and inline styles | Supported | Fill, stroke, text color, stroke width/pattern, font size/weight; Hex, RGB(A), HSL(A) and common named colors |
-| `linkStyle` | Supported with exceptions | Static stroke/text properties and Mermaid's Flowchart D3 curve names are applied |
-| Routing | Supported | Translated Dagre layout, parallel lanes, cycles, compact self-loops and Mermaid edge curves; Dagre does not apply ELK line jumps |
-| Subgraphs | Supported | Nested groups, boundary links, collapsed view and independently laid out local directions |
-| Markdown strings | Partial | Basic emphasis and line breaks; full Markdown layout remains |
-| Click and tooltip directives | Ignored safely | Native callback and tooltip APIs are not exposed yet |
-| Icon and image nodes | Parse only | Requires an injected KMP asset loader |
-| Mobile gestures | Supported | Single-finger gestures remain available to the parent scroll container; two-finger pan/zoom is clipped and bounded |
+| Headers and directions | Supported | `flowchart`, `flowchart-elk`, `graph`, TB/TD/BT/LR/RL, and symbolic aliases |
+| Preprocessing and configuration | Supported with explicit boundaries | Frontmatter, directives, comments, entity handling, config precedence, secure host keys, themes, Flowchart and ELK options |
+| Flowchart parser and FlowDB | Supported | Kotlin runtime for Mermaid's generated `flow.jison` tables and translated FlowDB semantics |
+| Classic node syntax | Supported | Rectangle, rounded, stadium, database, decision, circle, hexagon, IO, and asymmetric forms |
+| Metadata shape syntax | Supported | Mermaid 12 shape aliases, geometry, labels, constraints, icon nodes, and image nodes |
+| Links and labels | Supported | Solid, dotted, thick, open, invisible, animated, labelled, and bidirectional links |
+| Edge markers | Supported | Triangle, circle, and cross markers at either or both ends |
+| Edge ids and lengths | Supported | Explicit ids, classes, animation metadata, and minimum rank lengths |
+| Multi-node links | Supported | Chained links and `A & B --> C & D` expansion preserve FlowDB order |
+| Classes and inline styles | Supported with explicit boundaries | Fill, stroke, background, border, dash, animation, font, line height, alignment, and decoration; unknown CSS returns `UnsupportedFeature` |
+| Colors | Supported | Hex, RGB(A), HSL(A), transparent, and CSS named colors |
+| Routing: Dagre | Supported | Translated Graphlib/Dagre pipeline, compound graphs, cycles, self-loops, parallel lanes, and Mermaid D3 curves |
+| Routing: ELK | Supported | Mermaid adapter translated to Kotlin; locked `elkjs@0.9.3` executes in QuickJS |
+| ELK line hops | Supported | `arc`, `gap`, and disabled crossing treatment |
+| Subgraphs | Supported | Nested groups, collapsed groups, boundary links, local directions, title margins, and cross-hierarchy edges |
+| Markdown strings | Supported for Mermaid's label path | Marked `16.4.2` lexer/token behavior used by Mermaid, including emphasis, code, deletion, blocks, escapes, and line breaks |
+| HTML labels | Supported with explicit boundaries | Formatting spans, entities, sanitization, color/background, relative font sizes, alignment, decoration, and line height |
+| Themes | Supported with explicit boundaries | Mermaid default, dark, forest, neutral, base, neo/redux variants, theme variables, color arrays, and default Flowchart appearance |
+| Security levels | Supported | Strict, loose, antiscript, and sandbox URL/callback handling; diagram text cannot override secure host limits |
+| Links, callbacks, and tooltips | Supported | Exposed as `SceneNodeInteraction`; callbacks are retained only at Mermaid's loose security level |
+| Image nodes | Android supported | Cached bitmap/SVG loading from `data:` by default; HTTP/HTTPS requires host `INTERNET` permission plus `AndroidMermaidAssetProvider(MermaidNetworkAccess.HttpAndHttps)`; 8 MiB input and 4096 px decode bounds |
+| Image nodes | iOS/JVM host provider required | The public `MermaidAssetProvider` contract is available; no platform default is installed yet |
+| Icon metadata nodes | Provider required | SceneGraph retains pack/name metadata; Android displays an explicit fallback when no icon pack is registered |
+| Mobile gestures | Supported | One-finger parent scrolling remains available; two-finger pan/zoom is clipped and bounded |
+| Resource controls | Supported | Host-owned `maxTextSize`, `maxEdges`, 10-second ELK timeout, and QuickJS memory/stack limits |
 
-## Current State
+## Explicit Unsupported Boundaries
 
-- The Android documentation app contains 18 syntax lessons and 40 generated
-  comparison cases.
-- Each comparison case uses identical Mermaid source for the native renderer
-  and the Mermaid.js `12.0.0` PNG, with both sides fixed to Dagre and rounded
-  edge interpolation.
-- JVM tests cover parsing, colors, markers, numeric Dagre parity, minimum link
-  lengths, multi-node routing, parallel-label separation, recursive subgraph
-  directions, compact self-loops, viewport constraints, and crossing bridges.
-- Android APK and iOS Simulator targets compile from the same common source.
+The following legal Mermaid capabilities currently return
+`UnsupportedFeature`:
 
-## Mermaid And Dagre Mapping
+- KaTeX labels.
+- FontAwesome substring replacement and custom Iconify pack registration.
+- Inline HTML `<img>`, `<a>`, `<svg>`, and MathML content inside labels.
+- HTML layout tags whose DOM box behavior cannot be represented by text spans.
+- `look: handDrawn`, because Mermaid implements it through roughjs.
+- `themeCSS` and `altFontFamily`.
+- Unmapped CSS, including letter spacing, word spacing, text shadow, text
+  transform, and white-space/word-breaking behavior.
 
-The production layout pipeline is a Kotlin source port of Mermaid `12.0.0`
-and `dagre-d3-es 7.0.14`. The detailed file map is maintained in
-[`upstream-flowchart-map.md`](upstream-flowchart-map.md).
+Additional platform limitations:
 
-| Native stage | Upstream reference |
+- iOS and Desktop compile against the common asset-provider contract but do
+  not yet ship default network/bitmap/SVG providers.
+- Arbitrary system font-family discovery is host-defined. The Compose adapter
+  bundles Arimo as an Arial-compatible default and accepts a custom
+  `MermaidFontFamilyResolver`.
+- Non-zero browser SVG blur is represented by the closest Compose shadow, not
+  browser-filter pixel parity.
+- iOS source sets compile for Arm64, Simulator Arm64, and X64; final
+  application link/runtime execution still belongs to the consuming iOS app.
+
+## Validation Corpus
+
+- 45 curated gallery cases are rendered from identical source by Native
+  Compose and Mermaid.js `12.0.0` with ELK, then captured on the same Android
+  viewport.
+- 114 examples extracted from Mermaid's Flowchart documentation run through
+  both Dagre and ELK in JVM tests.
+- The only expected documentation-level unsupported cases are the two
+  FontAwesome label examples, which return structured errors.
+- Focused tests cover parser tables, FlowDB, Marked fixtures, HTML entities,
+  sanitization, colors, all shapes, markers, D3 curves, numeric Dagre parity,
+  nested ELK hierarchy, line hops, assets, interactions, viewport behavior,
+  and resource limits.
+- Android rendering has been installed and visually audited on a 1080 x 2280
+  device. Core and Compose also compile for all configured iOS architectures.
+
+## Performance Audit
+
+The 2026-09-12 JVM audit used fresh Gradle test workers:
+
+| Scenario | Result |
 | --- | --- |
-| `upstream/graphlib` | Graphlib graph and traversal subset used by Dagre |
-| `upstream/dagre` | Dagre layout, rank, order, compound, normalization and Brandes-Köpf position stages |
-| `MermaidGraphAdapter` | Mermaid recursive cluster extraction and cluster endpoint anchoring |
-| `FlowDagreLayout` | Mermaid Dagre preparation, recursive measurement, self-loop merge and Native result adapter |
-| `MermaidEdgePathPort` | Mermaid `edges.js`, `lineWithOffset.ts`, and D3 curve selection |
-| `D3CurvePort` | Line-only ports of the `d3-shape 3.2.0` curves used by Mermaid |
-| Compose renderer | Native path, shape, dash, marker and text painting |
+| QuickJS creation, 1.6 MiB elkjs worker load, and first layout | 0.964 s |
+| 114 official Flowchart examples through ELK in one process | 1.745 s total |
+| 500-edge chain at the default `maxEdges` boundary, including cold start | 1.908 s |
 
-## Remaining Gaps
+These values are observations, not CI thresholds. The runtime is initialized
+once, cached for subsequent layouts, serialized by a coroutine `Mutex`, capped
+at 256 MiB with a 2 MiB stack, and guarded by a 10-second layout timeout.
 
-- `MermaidTextPort` is still a transitional Markdown subset and must be
-  replaced by a source translation of Mermaid's pinned `marked` dependency.
-- HTML labels, sanitization, KaTeX, links, icons and image loading are not yet
-  translated; unsupported paths must fail explicitly rather than approximate.
-- Icon and image nodes need a public KMP asset-provider contract.
-- Click, link, callback, and tooltip directives need native interaction APIs.
-- Very large or adversarial graphs still need performance and layout stress
-  testing before claiming complete Mermaid Flowchart compatibility.
+## Reference Workflow
 
-## Reference Corpus
+`tools/official-reference/cases.mjs` is the source of truth for the 45-case
+comparison gallery. `npm run render` produces:
 
-`tools/official-reference/cases.mjs` is the single source of truth for the
-comparison gallery. Running `npm run render` produces:
+- Mermaid.js PNG files under Android `drawable-nodpi`.
+- The Android gallery catalog.
+- JVM fixtures containing the same source.
 
-- Official Mermaid.js PNG files under the Android sample resources.
-- The Android demo catalog.
-- JVM test fixtures consumed by `MermaidEngineTest`.
+`npm run generate:flowchart-doc-fixtures` extracts the 114 documentation
+examples. Other generators pin parser tables, Marked rules, WHATWG entities,
+and the elkjs worker by version and SHA-256.
 
-The generator explicitly sets `layout: "dagre"` and
-`flowchart.curve: "rounded"`. Mermaid `12.0.0` otherwise defaults its full
-bundle to ELK, which is outside the current translated layout boundary.
-
-`tools/capture-android-audit.sh` opens each gallery case directly and captures
-Native and Official views from the same Android viewport. Screenshots are
-stored locally under the ignored `captures/local/` directory.
+`tools/capture-android-audit.sh` opens each case directly and captures Native
+and Official views. Screenshots are written only to ignored
+`captures/local/` paths and are not distributed.

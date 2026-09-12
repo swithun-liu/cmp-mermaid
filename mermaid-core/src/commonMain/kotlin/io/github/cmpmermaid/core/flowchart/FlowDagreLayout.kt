@@ -6,6 +6,7 @@ import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.ScenePoint
 import io.github.cmpmermaid.core.SceneRect
 import io.github.cmpmermaid.core.SceneSize
+import io.github.cmpmermaid.core.subGraphTitleTotalMargin
 import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreEdge
 import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreGraph
 import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreGraphLabel
@@ -25,24 +26,13 @@ import kotlin.math.min
  * converts measured Native nodes to and from Dagre labels.
  */
 internal object FlowDagreLayout {
-    data class Result(
-        val nodeBounds: Map<String, SceneRect>,
-        val subgraphBounds: Map<String, SceneRect>,
-        val edges: Map<Int, RoutedEdge>,
-    )
-
-    data class RoutedEdge(
-        val points: List<ScenePoint>,
-        val labelAnchor: ScenePoint,
-    )
-
     fun layout(
         document: FlowchartDocument,
         nodeSizes: Map<String, SceneSize>,
         nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         edgeLabelSizes: Map<Int, SceneSize>,
         options: MermaidRenderOptions,
-    ): GMResult<Result, MermaidError> {
+    ): GMResult<FlowLayoutPlacement, MermaidError> {
         val graph = buildGraph(document, nodeSizes, edgeLabelSizes, options)
         when (val adjusted = MermaidGraphAdapter.adjustClustersAndEdges(graph)) {
             is GMResult.Err -> return adjusted
@@ -70,7 +60,41 @@ internal object FlowDagreLayout {
             nodeBounds = nodeBounds,
             subgraphBounds = subgraphBounds,
         )
-        return GMResult.Ok(Result(nodeBounds, subgraphBounds, edges))
+        return GMResult.Ok(
+            applySubgraphTitleMargins(
+                placement = FlowLayoutPlacement(nodeBounds, subgraphBounds, edges),
+                totalMargin = options.subGraphTitleTotalMargin,
+            ),
+        )
+    }
+
+    private fun applySubgraphTitleMargins(
+        placement: FlowLayoutPlacement,
+        totalMargin: Float,
+    ): FlowLayoutPlacement {
+        if (totalMargin == 0f) {
+            return placement
+        }
+        val edgeOffset = totalMargin / 2f
+        return FlowLayoutPlacement(
+            nodeBounds = placement.nodeBounds.mapValues { (_, bounds) ->
+                bounds.translate(0f, edgeOffset)
+            },
+            subgraphBounds = placement.subgraphBounds.mapValues { (_, bounds) ->
+                SceneRect(
+                    left = bounds.left,
+                    top = bounds.top - edgeOffset,
+                    right = bounds.right,
+                    bottom = bounds.bottom + edgeOffset,
+                )
+            },
+            edges = placement.edges.mapValues { (_, edge) ->
+                edge.copy(
+                    points = edge.points.map { point -> point.translate(0f, edgeOffset) },
+                    labelAnchor = edge.labelAnchor.translate(0f, edgeOffset),
+                )
+            },
+        )
     }
 
     private fun buildGraph(
@@ -286,8 +310,8 @@ internal object FlowDagreLayout {
         nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         nodeBounds: Map<String, SceneRect>,
         subgraphBounds: Map<String, SceneRect>,
-    ): Map<Int, RoutedEdge> {
-        val result = linkedMapOf<Int, RoutedEdge>()
+    ): Map<Int, FlowRoutedEdge> {
+        val result = linkedMapOf<Int, FlowRoutedEdge>()
         collectEdges(
             graph = graph,
             document = document,
@@ -309,7 +333,7 @@ internal object FlowDagreLayout {
         subgraphBounds: Map<String, SceneRect>,
         offsetX: Float,
         offsetY: Float,
-        result: MutableMap<Int, RoutedEdge>,
+        result: MutableMap<Int, FlowRoutedEdge>,
     ) {
         val selfLoops = linkedMapOf<String, MutableList<SelfLoopSegment>>()
         graph.edges().forEach { edgeRef ->
@@ -359,7 +383,7 @@ internal object FlowDagreLayout {
                 labelWidth = middle.width,
                 labelHeight = middle.height,
             )
-            result[index] = RoutedEdge(
+            result[index] = FlowRoutedEdge(
                 points = points,
                 labelAnchor = localLabelAnchor.translate(offsetX, offsetY),
             )
@@ -384,7 +408,7 @@ internal object FlowDagreLayout {
     }
 
     private fun addRoutedEdge(
-        result: MutableMap<Int, RoutedEdge>,
+        result: MutableMap<Int, FlowRoutedEdge>,
         edge: DagreEdge,
         document: FlowchartDocument,
         nodeShapeLayouts: Map<String, MermaidShapeLayout>,
@@ -421,7 +445,7 @@ internal object FlowDagreLayout {
         val labelAnchor = edge.x?.let { x ->
             edge.y?.let { y -> ScenePoint(x + offsetX, y + offsetY) }
         } ?: points.halfLengthPoint()
-        result[index] = RoutedEdge(points, labelAnchor)
+        result[index] = FlowRoutedEdge(points, labelAnchor)
     }
 
     private fun selfLoopSide(

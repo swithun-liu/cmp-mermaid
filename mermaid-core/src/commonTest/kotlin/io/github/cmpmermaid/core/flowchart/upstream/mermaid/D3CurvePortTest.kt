@@ -102,6 +102,13 @@ class D3CurvePortTest {
             command.end.x,
             command.end.y,
         )
+        is ScenePathCommand.ArcTo -> expected(
+            "A",
+            command.radius,
+            command.end.x,
+            command.end.y,
+            if (command.clockwise) 1f else 0f,
+        )
     }
 
     private fun expected(kind: String, vararg values: Float): ExpectedCommand =

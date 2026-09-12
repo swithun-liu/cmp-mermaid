@@ -865,6 +865,6 @@ internal class FlowJisonParser(
     private data object EmptyStatement
 
     private companion object {
-        val TRAILING_METADATA_WHITESPACE = Regex("""}\s*\n""")
+        val TRAILING_METADATA_WHITESPACE = Regex("""\}\s*\n""")
     }
 }

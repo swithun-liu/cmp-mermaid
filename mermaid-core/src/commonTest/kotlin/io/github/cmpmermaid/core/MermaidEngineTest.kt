@@ -4,6 +4,7 @@ import kotlin.math.ceil
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class MermaidEngineTest {
@@ -15,7 +16,10 @@ class MermaidEngineTest {
             height = lineCount * 18f,
         )
     }
-    private val context = MermaidRenderContext(textMetrics)
+    private val context = MermaidRenderContext(
+        textMetrics = textMetrics,
+        options = MermaidRenderOptions(layout = "dagre"),
+    )
     private val engine = MermaidEngine()
 
     @Test
@@ -119,6 +123,56 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun returnsStructuredErrorWhenCleanedFlowchartExceedsHostTextLimit() {
+        val source = "flowchart LR\n A[${"x".repeat(80)}]"
+        val result = engine.render(
+            source,
+            context.copy(
+                options = context.options.copy(maxTextSize = 40),
+            ),
+        )
+
+        val error = assertIs<MermaidError.ResourceLimit>(
+            assertIs<GMResult.Err<MermaidError>>(result).error,
+        )
+        assertEquals("maxTextSize", error.resource)
+        assertEquals(source.length, error.actual)
+        assertEquals(40, error.maximum)
+    }
+
+    @Test
+    fun excludesFlowchartCommentsFromHostTextLimitLikeMermaid12() {
+        val result = engine.render(
+            "%% ${"comment".repeat(30)}\nflowchart LR\n A --> B",
+            context.copy(
+                options = context.options.copy(maxTextSize = 30),
+            ),
+        )
+
+        assertIs<GMResult.Ok<MermaidScene>>(result, result.toString())
+    }
+
+    @Test
+    fun sanitizesInteractionUrlsButPreservesImageSourcesLikeFlowDb() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A@{ img: "data:text/html,payload", label: "Image" }
+                  B[Link]
+                  click B "javascript:alert(1)"
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val image = scene.elements.filterIsInstance<SceneAsset>().single()
+        val interaction = scene.interactions.single()
+
+        assertEquals("data:text/html,payload", image.source)
+        assertEquals("about:blank", interaction.link)
+    }
+
+    @Test
     fun ignoresInvalidCssColorLikeTheSvgRenderer() {
         val result = engine.render(
             """
@@ -132,6 +186,43 @@ class MermaidEngineTest {
         val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
         val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
         assertEquals(context.theme.nodeFill, node.fill)
+    }
+
+    @Test
+    fun appliesFlowchartThemeVariablesFromFrontmatter() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  themeVariables:
+                    mainBkg: "#112233"
+                    nodeBorder: "rgb(68, 85, 102)"
+                    nodeTextColor: white
+                    defaultLinkColor: "#778899"
+                    fontSize: 18px
+                ---
+                flowchart LR
+                  A --> B
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
+        val edge = scene.elements.filterIsInstance<ScenePath>().single()
+
+        assertEquals(SceneColor(0xFF112233), node.fill)
+        assertEquals(SceneColor(0xFF445566), node.stroke)
+        assertEquals(SceneColor(0xFF778899), edge.color)
+        assertTrue(
+            scene.elements
+                .filterIsInstance<SceneText>()
+                .filter { it.text in setOf("A", "B") }
+                .all {
+                    it.color == SceneColor(0xFFFFFFFF) &&
+                        it.fontSize == 18f
+                },
+        )
     }
 
     @Test
@@ -197,7 +288,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun matchesMermaidDefaultEdgeWidths() {
+    fun matchesMermaid12FlowchartDefaultEdgeWidths() {
         val result = engine.render(
             """
                 flowchart LR
@@ -211,8 +302,337 @@ class MermaidEngineTest {
             .elements
             .filterIsInstance<ScenePath>()
 
-        assertEquals(1f, paths[0].strokeWidth)
+        assertEquals(2f, paths[0].strokeWidth)
         assertEquals(3.5f, paths[1].strokeWidth)
+    }
+
+    @Test
+    fun usesMermaid12FlowchartAppearanceWhenNoThemeIsSpecified() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  subgraph group [Group]
+                    A --> B
+                  end
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val nodeText = scene.elements
+            .filterIsInstance<SceneText>()
+            .first { it.text == "A" }
+
+        assertNull(MermaidRenderOptions().fontSize)
+        assertEquals(14f, nodeText.fontSize)
+        assertEquals("\"Recursive Variable\", arial, sans-serif", nodeText.fontFamily)
+        assertEquals(SceneTextWeight.Normal, nodeText.weight)
+        assertEquals(SceneColor(0xFFFFFFFF), shapes.getValue("A").fill)
+        assertEquals(SceneColor(0xFF28253D), shapes.getValue("A").stroke)
+        assertEquals(SceneColor(0xFF28253D), nodeText.color)
+        assertEquals(2f, shapes.getValue("A").strokeWidth)
+        assertEquals(SceneColor(0xFFFDF4FF), shapes.getValue("subgraph_group").fill)
+        assertEquals(SceneColor(0xFFE879F9), shapes.getValue("subgraph_group").stroke)
+        assertEquals(MermaidTheme.FlowchartDefault.dropShadow, shapes.getValue("A").shadow)
+    }
+
+    @Test
+    fun usesClassicDefaultThemeVariablesForQuotedNullTheme() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  flowchart:
+                    theme: "null"
+                ---
+                flowchart LR
+                  subgraph group [Group]
+                    A --> B
+                  end
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val nodeText = scene.elements
+            .filterIsInstance<SceneText>()
+            .first { it.text == "A" }
+
+        assertEquals(SceneColor(0xFFECECFF), shapes.getValue("A").fill)
+        assertEquals(SceneColor(0xFF9370DB), shapes.getValue("A").stroke)
+        assertEquals(1f, shapes.getValue("A").strokeWidth)
+        assertEquals(SceneColor(0xFF333333), nodeText.color)
+        assertEquals(16f, nodeText.fontSize)
+        assertEquals("\"trebuchet ms\", verdana, arial, sans-serif", nodeText.fontFamily)
+        assertEquals(SceneColor(0xFFFFFFDE), shapes.getValue("subgraph_group").fill)
+        assertEquals(SceneColor(0xFF9370DB), shapes.getValue("subgraph_group").stroke)
+    }
+
+    @Test
+    fun appliesExplicitMermaidReduxColorTheme() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  theme: redux-color
+                ---
+                flowchart LR
+                  subgraph first [First]
+                    A --> B
+                  end
+                  subgraph second [Second]
+                    C --> D
+                  end
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val edge = scene.elements.filterIsInstance<ScenePath>().first()
+
+        assertEquals(SceneColor(0xFFFFFFFF), shapes.getValue("A").fill)
+        assertEquals(SceneColor(0xFF28253D), shapes.getValue("A").stroke)
+        assertEquals(2f, shapes.getValue("A").strokeWidth)
+        assertEquals(2f, edge.strokeWidth)
+        assertEquals(SceneColor(0xFFFDF4FF), shapes.getValue("subgraph_first").fill)
+        assertEquals(SceneColor(0xFFE879F9), shapes.getValue("subgraph_first").stroke)
+        assertEquals(SceneColor(0xFFF0FDFA), shapes.getValue("subgraph_second").fill)
+        assertEquals(SceneColor(0xFF2DD4BF), shapes.getValue("subgraph_second").stroke)
+        assertEquals(
+            SceneShadow(
+                color = SceneColor(0x0F000000),
+                offsetX = 4f,
+                offsetY = 4f,
+            ),
+            shapes.getValue("A").shadow,
+        )
+        assertEquals(shapes.getValue("A").shadow, shapes.getValue("subgraph_first").shadow)
+    }
+
+    @Test
+    fun appliesConfiguredFontFamilyToNodesAndEdgeLabels() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  fontFamily: "Arial, sans-serif"
+                  themeVariables:
+                    fontFamily: "monospace"
+                ---
+                flowchart LR
+                  A -->|label| B
+            """.trimIndent(),
+            context,
+        )
+
+        val texts = assertIs<GMResult.Ok<MermaidScene>>(result).value
+            .elements
+            .filterIsInstance<SceneText>()
+
+        assertTrue(texts.isNotEmpty())
+        assertTrue(texts.all { text -> text.fontFamily == "monospace" })
+        assertEquals(14f, texts.first { text -> text.text == "label" }.fontSize)
+    }
+
+    @Test
+    fun appliesDropShadowOnlyToNeoNodesAndSubgraphs() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  look: classic
+                ---
+                flowchart LR
+                  subgraph group [Group]
+                    A --> B
+                  end
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+
+        assertNull(shapes.getValue("A").shadow)
+        assertNull(shapes.getValue("B").shadow)
+        assertNull(shapes.getValue("subgraph_group").shadow)
+    }
+
+    @Test
+    fun honorsDropShadowThemeVariable() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  themeVariables:
+                    dropShadow: "drop-shadow(2px 3px 4px rgba(10, 20, 30, 0.5))"
+                ---
+                flowchart LR
+                  A --> B
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
+
+        assertEquals(
+            SceneShadow(
+                color = SceneColor(0x800A141E),
+                offsetX = 2f,
+                offsetY = 3f,
+                blurRadius = 4f,
+            ),
+            node.shadow,
+        )
+    }
+
+    @Test
+    fun appliesMermaid12SubgraphTitleMarginsToDagreAndElk() {
+        fun render(layout: String, top: Float, bottom: Float): MermaidScene {
+            val result = engine.render(
+                """
+                    flowchart TB
+                      subgraph group [Group]
+                        A -->|label| B
+                      end
+                """.trimIndent(),
+                context.copy(
+                    options = context.options.copy(
+                        layout = layout,
+                        subGraphTitleTopMargin = top,
+                        subGraphTitleBottomMargin = bottom,
+                    ),
+                ),
+            )
+            return assertIs<GMResult.Ok<MermaidScene>>(result).value
+        }
+
+        val dagreDefault = render("dagre", 0f, 0f)
+        val dagreMargin = render("dagre", 10f, 5f)
+        val dagreDefaultShapes = dagreDefault.elements
+            .filterIsInstance<SceneShape>()
+            .associateBy(SceneShape::id)
+        val dagreMarginShapes = dagreMargin.elements
+            .filterIsInstance<SceneShape>()
+            .associateBy(SceneShape::id)
+        val dagreDefaultGroup = dagreDefaultShapes.getValue("subgraph_group")
+        val dagreMarginGroup = dagreMarginShapes.getValue("subgraph_group")
+        val dagreDefaultNode = dagreDefaultShapes.getValue("A")
+        val dagreMarginNode = dagreMarginShapes.getValue("A")
+        val dagreMarginTitle = dagreMargin.elements
+            .filterIsInstance<SceneText>()
+            .first { it.text == "Group" }
+
+        assertEquals(
+            15f,
+            dagreMarginGroup.bounds.height - dagreDefaultGroup.bounds.height,
+            0.01f,
+        )
+        assertEquals(
+            15f,
+            (dagreMarginNode.bounds.top - dagreMarginGroup.bounds.top) -
+                (dagreDefaultNode.bounds.top - dagreDefaultGroup.bounds.top),
+            0.01f,
+        )
+        assertEquals(
+            10f,
+            dagreMarginTitle.bounds.top - dagreMarginGroup.bounds.top,
+            0.01f,
+        )
+
+        val elkDefault = render("elk", 0f, 0f)
+        val elkMargin = render("elk", 10f, 5f)
+        val elkDefaultGroup = elkDefault.elements
+            .filterIsInstance<SceneShape>()
+            .first { it.id == "subgraph_group" }
+        val elkMarginGroup = elkMargin.elements
+            .filterIsInstance<SceneShape>()
+            .first { it.id == "subgraph_group" }
+        val elkMarginTitle = elkMargin.elements
+            .filterIsInstance<SceneText>()
+            .first { it.text == "Group" }
+        val elkDefaultLabel = elkDefault.elements
+            .filterIsInstance<SceneShape>()
+            .first { it.id.endsWith("_label_background") }
+        val elkMarginLabel = elkMargin.elements
+            .filterIsInstance<SceneShape>()
+            .first { it.id.endsWith("_label_background") }
+
+        assertEquals(elkDefaultGroup.bounds.height, elkMarginGroup.bounds.height, 0.01f)
+        assertEquals(
+            10f,
+            elkMarginTitle.bounds.top - elkMarginGroup.bounds.top,
+            0.01f,
+        )
+        assertEquals(
+            7.5f,
+            elkMarginLabel.bounds.top - elkDefaultLabel.bounds.top,
+            0.01f,
+        )
+    }
+
+    @Test
+    fun appliesThemeColorArrayOverridesToFlowchartSlots() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  themeVariables:
+                    bkgColorArray: ["#112233", "#445566"]
+                    borderColorArray: ["#778899", "#aabbcc"]
+                ---
+                flowchart LR
+                  subgraph first [First]
+                    A
+                  end
+                  subgraph second [Second]
+                    B
+                  end
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+
+        assertEquals(SceneColor(0xFF112233), shapes.getValue("subgraph_first").fill)
+        assertEquals(SceneColor(0xFF778899), shapes.getValue("subgraph_first").stroke)
+        assertEquals(SceneColor(0xFF445566), shapes.getValue("subgraph_second").fill)
+        assertEquals(SceneColor(0xFFAABBCC), shapes.getValue("subgraph_second").stroke)
+    }
+
+    @Test
+    fun appliesExplicitDefaultTheme() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  theme: default
+                ---
+                flowchart LR
+                  subgraph group [Group]
+                    A --> B
+                  end
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val nodeText = scene.elements
+            .filterIsInstance<SceneText>()
+            .first { it.text == "A" }
+
+        assertEquals(SceneColor(0xFFECECFF), shapes.getValue("A").fill)
+        assertEquals(SceneColor(0xFF9370DB), shapes.getValue("A").stroke)
+        assertEquals(1f, shapes.getValue("A").strokeWidth)
+        assertEquals(SceneColor(0xFFFFFFDE), shapes.getValue("subgraph_group").fill)
+        assertEquals(SceneColor(0xFF9370DB), shapes.getValue("subgraph_group").stroke)
+        assertEquals(16f, nodeText.fontSize)
     }
 
     @Test
@@ -313,6 +733,49 @@ class MermaidEngineTest {
         assertEquals(SceneStrokePattern.Dashed, shape.strokePattern)
         assertEquals(20f, text.fontSize)
         assertEquals(SceneTextWeight.Bold, text.weight)
+    }
+
+    @Test
+    fun supportsRepresentableFlowchartLabelCss() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A[Styled label] --> B
+                  style A font-style:italic,text-decoration:underline line-through,line-height:2,text-align:left
+            """.trimIndent(),
+            context,
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+            .elements
+            .filterIsInstance<SceneText>()
+            .first { it.text == "Styled label" }
+        val styleSpan = text.spans.first { it.start == 0 && it.end == text.text.length }
+
+        assertEquals(2f, text.lineHeight)
+        assertEquals(SceneTextAlignment.Start, text.horizontalAlignment)
+        assertEquals(true, styleSpan.italic)
+        assertEquals(true, styleSpan.underline)
+        assertEquals(true, styleSpan.lineThrough)
+    }
+
+    @Test
+    fun matchesMermaidHtmlLabelRelativeFontSizeCascadeAndIgnoresSvgBorder() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A[Small] --> B
+                  style A font-size:50%,font-style:bold,border:5px solid red
+            """.trimIndent(),
+            context,
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+            .elements
+            .filterIsInstance<SceneText>()
+            .first { it.text == "Small" }
+
+        assertEquals(1.75f, text.fontSize, 0.001f)
     }
 
     @Test
@@ -507,6 +970,50 @@ class MermaidEngineTest {
             SceneStrokePattern.Dashed,
             scene.elements.filterIsInstance<ScenePath>().first { it.id == "e1" }.strokePattern,
         )
+        assertTrue(
+            scene.elements.filterIsInstance<SceneShape>().none { it.id == "e1" },
+            "A user-defined edge ID must not also create a node.",
+        )
+    }
+
+    @Test
+    fun keepsStadiumCapsConvexOutward() {
+        val scene = renderCase("metadata_shapes")
+        val stadium = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
+        val outline = assertIs<SceneShapeGeometry>(stadium.geometry).outline
+        val rightArc = outline.subList(2, 52)
+        val leftArc = outline.drop(53)
+
+        assertTrue(
+            rightArc.all { it.x >= rightArc.first().x - 0.01f },
+            "The right stadium cap must curve outward.",
+        )
+        assertTrue(
+            leftArc.all { it.x <= leftArc.first().x + 0.01f },
+            "The left stadium cap must curve outward.",
+        )
+    }
+
+    @Test
+    fun appliesEffectiveFlowchartCssFillToSpecialShapes() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A@{ shape: sm-circ } --> B@{ shape: fork }
+                  B --> C@{ shape: f-circ }
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val start = assertIs<SceneShapeGeometry>(shapes.getValue("A").geometry)
+        val fork = assertIs<SceneShapeGeometry>(shapes.getValue("B").geometry)
+        val junction = assertIs<SceneShapeGeometry>(shapes.getValue("C").geometry)
+
+        assertEquals(SceneShapePaint.Fill, start.paths.single().fill)
+        assertEquals(SceneShapePaint.Fill, fork.paths.single().fill)
+        assertEquals(SceneShapePaint.Stroke, junction.paths.single().fill)
     }
 
     @Test
@@ -560,19 +1067,23 @@ class MermaidEngineTest {
     fun measuresNodeTextWithResolvedClassAndInlineStyles() {
         val requests = mutableListOf<TextMetricsRequest>()
         val measuringContext = MermaidRenderContext(
-            TextMetricProvider { request ->
+            textMetrics = TextMetricProvider { request ->
                 requests += request
                 TextMetrics(request.text.length * request.fontSize, request.fontSize * 2f)
             },
+            options = MermaidRenderOptions(layout = "dagre"),
         )
         val scene = assertIs<GMResult.Ok<MermaidScene>>(
             engine.render(
-                "flowchart LR\n A[Wide label]\n classDef large font-size:32px,font-weight:bold\n class A large",
+                "flowchart LR\n A[Wide label]\n " +
+                    "classDef large font-size:32px,font-weight:bold,font-family:monospace\n " +
+                    "class A large",
                 measuringContext,
             ),
         ).value
         val request = requests.first { it.text == "Wide label" }
         assertEquals(32f, request.fontSize)
+        assertEquals("monospace", request.fontFamily)
         assertEquals(SceneTextWeight.Bold, request.weight)
         val label = scene.elements.filterIsInstance<SceneText>().first { it.text == "Wide label" }
         assertTrue(label.bounds.height >= 64f)

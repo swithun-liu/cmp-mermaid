@@ -1,5 +1,10 @@
 package io.github.cmpmermaid.compose
 
+import androidx.compose.ui.geometry.Offset
+import io.github.cmpmermaid.core.MermaidScene
+import io.github.cmpmermaid.core.SceneColor
+import io.github.cmpmermaid.core.SceneNodeInteraction
+import io.github.cmpmermaid.core.SceneRect
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -77,5 +82,30 @@ class DiagramViewportTest {
         )
 
         assertEquals(DiagramViewport(), viewport)
+    }
+
+    @Test
+    fun resolvesInteractionThroughFittedViewportTransform() {
+        val interaction = SceneNodeInteraction(
+            nodeId = "A",
+            bounds = SceneRect(20f, 20f, 40f, 40f),
+            link = "https://example.com",
+        )
+        val scene = MermaidScene(
+            width = 100f,
+            height = 100f,
+            background = SceneColor(0xFFFFFFFF),
+            elements = emptyList(),
+            interactions = listOf(interaction),
+        )
+
+        val resolved = scene.interactionAt(
+            screenPosition = Offset(76f, 36f),
+            viewportWidth = 200f,
+            viewportHeight = 120f,
+            viewport = DiagramViewport(),
+        )
+
+        assertEquals(interaction, resolved)
     }
 }

@@ -84,6 +84,13 @@ sealed interface SceneElement {
     val zIndex: Int
 }
 
+data class SceneShadow(
+    val color: SceneColor,
+    val offsetX: Float,
+    val offsetY: Float,
+    val blurRadius: Float = 0f,
+)
+
 data class SceneShape(
     val id: String,
     val bounds: SceneRect,
@@ -95,7 +102,22 @@ data class SceneShape(
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val dashIntervals: List<Float> = emptyList(),
     val cornerRadius: Float = 8f,
+    val shadow: SceneShadow? = null,
     override val zIndex: Int = 10,
+) : SceneElement
+
+enum class SceneAssetKind {
+    Icon,
+    Image,
+}
+
+data class SceneAsset(
+    val id: String,
+    val source: String,
+    val bounds: SceneRect,
+    val kind: SceneAssetKind,
+    val tint: SceneColor? = null,
+    override val zIndex: Int = 15,
 ) : SceneElement
 
 enum class SceneShapePaint {
@@ -129,6 +151,8 @@ data class SceneText(
     val bounds: SceneRect,
     val color: SceneColor,
     val fontSize: Float,
+    val lineHeight: Float = 1.2f,
+    val fontFamily: String? = null,
     val weight: SceneTextWeight = SceneTextWeight.Medium,
     val spans: List<SceneTextSpan> = emptyList(),
     val horizontalAlignment: SceneTextAlignment = SceneTextAlignment.Center,
@@ -140,12 +164,28 @@ data class SceneTextSpan(
     val end: Int,
     val weight: SceneTextWeight? = null,
     val italic: Boolean = false,
+    val underline: Boolean = false,
+    val lineThrough: Boolean = false,
+    val color: SceneColor? = null,
+    val background: SceneColor? = null,
+    val fontFamily: SceneTextFontFamily? = null,
+    val baselineShift: SceneTextBaselineShift? = null,
+    val fontSizeScale: Float = 1f,
 )
 
 enum class SceneTextWeight {
     Normal,
     Medium,
     Bold,
+}
+
+enum class SceneTextFontFamily {
+    Monospace,
+}
+
+enum class SceneTextBaselineShift {
+    Subscript,
+    Superscript,
 }
 
 enum class SceneTextAlignment {
@@ -173,6 +213,12 @@ sealed interface ScenePathCommand {
         val control2: ScenePoint,
         val end: ScenePoint,
     ) : ScenePathCommand
+
+    data class ArcTo(
+        val radius: Float,
+        val end: ScenePoint,
+        val clockwise: Boolean,
+    ) : ScenePathCommand
 }
 
 data class ScenePath(
@@ -187,9 +233,20 @@ data class ScenePath(
     val curve: String = "rounded",
     val look: String,
     val animated: Boolean,
+    val animationDurationMillis: Int? = null,
     override val zIndex: Int = 5,
     val dashIntervals: List<Float> = emptyList(),
 ) : SceneElement
+
+data class SceneNodeInteraction(
+    val nodeId: String,
+    val bounds: SceneRect,
+    val link: String? = null,
+    val linkTarget: String? = null,
+    val tooltip: String? = null,
+    val callbackName: String? = null,
+    val callbackArgs: String? = null,
+)
 
 data class MermaidScene(
     val width: Float,
@@ -199,12 +256,15 @@ data class MermaidScene(
     val title: String? = null,
     val accessibilityTitle: String? = null,
     val accessibilityDescription: String? = null,
+    val interactions: List<SceneNodeInteraction> = emptyList(),
 )
 
 data class TextMetricsRequest(
     val text: String,
     val fontSize: Float,
     val maxWidth: Float,
+    val lineHeight: Float = 1.2f,
+    val fontFamily: String? = null,
     val weight: SceneTextWeight = SceneTextWeight.Medium,
     val spans: List<SceneTextSpan> = emptyList(),
 )

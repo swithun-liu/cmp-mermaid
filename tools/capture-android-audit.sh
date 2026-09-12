@@ -4,7 +4,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUTPUT_DIR="${OUTPUT_DIR:-${ROOT_DIR}/captures/local/audit/current}"
-WAIT_SECONDS="${WAIT_SECONDS:-4}"
+WAIT_SECONDS="${WAIT_SECONDS:-6}"
 CAPTURE_PREVIEWS="${CAPTURE_PREVIEWS:-Native Official}"
 CAPTURE_CASE_IDS="${CAPTURE_CASE_IDS:-}"
 PACKAGE_NAME="io.github.cmpmermaid.sample"

@@ -78,6 +78,25 @@ class FlowJisonParserTest {
     }
 
     @Test
+    fun preservesMermaidMultiNodeDeclarationAndEdgeOrder() {
+        val result = FlowJisonParser().parse(
+            """
+                flowchart LR
+                  A:::source & B:::source --> C & D
+                  classDef source fill:#e0f2fe,stroke:#0369a1
+            """.trimIndent(),
+        )
+
+        val db = assertIs<GMResult.Ok<FlowDb>>(result, result.toString()).value
+        assertEquals(listOf("A", "B", "C", "D"), db.vertices().keys.toList())
+        assertEquals(listOf("A", "B", "C", "D"), db.getData().nodes.map { it.id })
+        assertEquals(
+            listOf("A" to "C", "A" to "D", "B" to "C", "B" to "D"),
+            db.getData().edges.map { edge -> edge.start to edge.end },
+        )
+    }
+
+    @Test
     fun parsesSubgraphsStylesAndMetadataThroughFlowDb() {
         val result = FlowJisonParser().parse(
             """

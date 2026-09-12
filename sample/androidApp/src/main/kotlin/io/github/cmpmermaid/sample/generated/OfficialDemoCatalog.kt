@@ -24,7 +24,7 @@ flowchart LR
   C -->|Two| E[Result two]
         """.trimIndent(),
         officialDrawable = R.drawable.official_basic_syntax,
-        officialAspectRatio = 886f / 190f,
+        officialAspectRatio = 920f / 187f,
     ),
     FlowchartDemo(
         id = "question_workflow",
@@ -40,7 +40,7 @@ flowchart TB
   E --> F((Delivered))
         """.trimIndent(),
         officialDrawable = R.drawable.official_question_workflow,
-        officialAspectRatio = 394f / 809f,
+        officialAspectRatio = 383f / 790f,
     ),
     FlowchartDemo(
         id = "classic_shapes",
@@ -56,7 +56,7 @@ flowchart LR
   F --> G{{Hexagon}}
         """.trimIndent(),
         officialDrawable = R.drawable.official_classic_shapes,
-        officialAspectRatio = 984f / 127f,
+        officialAspectRatio = 1000f / 132f,
     ),
     FlowchartDemo(
         id = "input_output_shapes",
@@ -69,7 +69,7 @@ flowchart TB
   C --> D[\Manual/]
         """.trimIndent(),
         officialDrawable = R.drawable.official_input_output_shapes,
-        officialAspectRatio = 250f / 337f,
+        officialAspectRatio = 247f / 295f,
     ),
     FlowchartDemo(
         id = "edge_labels",
@@ -83,7 +83,7 @@ flowchart LR
   C == thick ==> D
         """.trimIndent(),
         officialDrawable = R.drawable.official_edge_labels,
-        officialAspectRatio = 692f / 162f,
+        officialAspectRatio = 731f / 146f,
     ),
     FlowchartDemo(
         id = "edge_markers",
@@ -98,7 +98,7 @@ flowchart LR
   E x--x F
         """.trimIndent(),
         officialDrawable = R.drawable.official_edge_markers,
-        officialAspectRatio = 984f / 54f,
+        officialAspectRatio = 1000f / 54f,
     ),
     FlowchartDemo(
         id = "renderer_pipeline",
@@ -112,7 +112,7 @@ flowchart LR
   S --> C([CMP Canvas])
         """.trimIndent(),
         officialDrawable = R.drawable.official_renderer_pipeline,
-        officialAspectRatio = 984f / 176f,
+        officialAspectRatio = 1000f / 183f,
     ),
     FlowchartDemo(
         id = "subgraph",
@@ -127,7 +127,7 @@ flowchart TB
   C --> D[CMP Canvas]
         """.trimIndent(),
         officialDrawable = R.drawable.official_subgraph,
-        officialAspectRatio = 238f / 408f,
+        officialAspectRatio = 216f / 366f,
     ),
     FlowchartDemo(
         id = "nested_subgraphs",
@@ -146,7 +146,7 @@ flowchart LR
   end
         """.trimIndent(),
         officialDrawable = R.drawable.official_nested_subgraphs,
-        officialAspectRatio = 278f / 658f,
+        officialAspectRatio = 860f / 205f,
     ),
     FlowchartDemo(
         id = "styled_nodes",
@@ -161,7 +161,7 @@ flowchart LR
   class C render
         """.trimIndent(),
         officialDrawable = R.drawable.official_styled_nodes,
-        officialAspectRatio = 572f / 64f,
+        officialAspectRatio = 552f / 61f,
     ),
     FlowchartDemo(
         id = "long_labels",
@@ -174,7 +174,7 @@ flowchart TB
   B -->|No| D["Ask for the missing context"]
         """.trimIndent(),
         officialDrawable = R.drawable.official_long_labels,
-        officialAspectRatio = 370f / 602f,
+        officialAspectRatio = 360f / 523f,
     ),
     FlowchartDemo(
         id = "metadata_shapes",
@@ -187,7 +187,7 @@ flowchart LR
   C --> D@{ shape: dbl-circ, label: "Stop" }
         """.trimIndent(),
         officialDrawable = R.drawable.official_metadata_shapes,
-        officialAspectRatio = 867f / 195f,
+        officialAspectRatio = 833f / 194f,
     ),
     FlowchartDemo(
         id = "multi_node_links",
@@ -199,7 +199,7 @@ flowchart LR
   classDef source fill:#e0f2fe,stroke:#0369a1,color:#0c4a6e
         """.trimIndent(),
         officialDrawable = R.drawable.official_multi_node_links,
-        officialAspectRatio = 370f / 182f,
+        officialAspectRatio = 400f / 146f,
     ),
     FlowchartDemo(
         id = "edge_ids_and_length",
@@ -215,7 +215,7 @@ flowchart LR
   class e1 animated
         """.trimIndent(),
         officialDrawable = R.drawable.official_edge_ids_and_length,
-        officialAspectRatio = 924f / 64f,
+        officialAspectRatio = 744f / 61f,
     ),
     FlowchartDemo(
         id = "direction_bottom_to_top",
@@ -226,7 +226,7 @@ flowchart BT
   Start --> Validate --> Finish
         """.trimIndent(),
         officialDrawable = R.drawable.official_direction_bottom_to_top,
-        officialAspectRatio = 168f / 260f,
+        officialAspectRatio = 168f / 231f,
     ),
     FlowchartDemo(
         id = "direction_right_to_left",
@@ -237,7 +237,7 @@ flowchart RL
   Start --> Validate --> Finish
         """.trimIndent(),
         officialDrawable = R.drawable.official_direction_right_to_left,
-        officialAspectRatio = 572f / 64f,
+        officialAspectRatio = 552f / 61f,
     ),
     FlowchartDemo(
         id = "unicode_markdown",
@@ -253,7 +253,7 @@ flowchart LR
   B --> C["Line one<br/>Line two"]
         """.trimIndent(),
         officialDrawable = R.drawable.official_unicode_markdown,
-        officialAspectRatio = 572f / 77f,
+        officialAspectRatio = 552f / 71f,
     ),
     FlowchartDemo(
         id = "expanded_process_shapes",
@@ -268,7 +268,7 @@ flowchart LR
   E --> F@{ shape: circle, label: "Start" }
         """.trimIndent(),
         officialDrawable = R.drawable.official_expanded_process_shapes,
-        officialAspectRatio = 984f / 162f,
+        officialAspectRatio = 1000f / 171f,
     ),
     FlowchartDemo(
         id = "expanded_control_shapes",
@@ -282,7 +282,7 @@ flowchart TB
   D --> E@{ shape: trap-t, label: "Manual" }
         """.trimIndent(),
         officialDrawable = R.drawable.official_expanded_control_shapes,
-        officialAspectRatio = 250f / 625f,
+        officialAspectRatio = 247f / 570f,
     ),
     FlowchartDemo(
         id = "expanded_storage_shapes",
@@ -295,7 +295,7 @@ flowchart LR
   C --> D@{ shape: bow-rect, label: "Stored data" }
         """.trimIndent(),
         officialDrawable = R.drawable.official_expanded_storage_shapes,
-        officialAspectRatio = 785f / 130f,
+        officialAspectRatio = 753f / 126f,
     ),
     FlowchartDemo(
         id = "expanded_document_shapes",
@@ -309,7 +309,7 @@ flowchart LR
   D --> E@{ shape: tag-rect, label: "Tagged process" }
         """.trimIndent(),
         officialDrawable = R.drawable.official_expanded_document_shapes,
-        officialAspectRatio = 984f / 113f,
+        officialAspectRatio = 993f / 114f,
     ),
     FlowchartDemo(
         id = "expanded_special_shapes",
@@ -324,7 +324,7 @@ flowchart LR
   E --> F@{ shape: bolt, label: "Com link" }
         """.trimIndent(),
         officialDrawable = R.drawable.official_expanded_special_shapes,
-        officialAspectRatio = 538f / 86f,
+        officialAspectRatio = 488f / 86f,
     ),
     FlowchartDemo(
         id = "expanded_manual_shapes",
@@ -344,7 +344,7 @@ flowchart TB
   J --> K@{ shape: cross-circ, label: "Summary" }
         """.trimIndent(),
         officialDrawable = R.drawable.official_expanded_manual_shapes,
-        officialAspectRatio = 206f / 1346f,
+        officialAspectRatio = 206f / 1215f,
     ),
     FlowchartDemo(
         id = "all_link_types",
@@ -361,7 +361,7 @@ flowchart LR
   A ~~~ H
         """.trimIndent(),
         officialDrawable = R.drawable.official_all_link_types,
-        officialAspectRatio = 370f / 652f,
+        officialAspectRatio = 400f / 571f,
     ),
     FlowchartDemo(
         id = "marker_matrix",
@@ -377,7 +377,7 @@ flowchart LR
   K <--> L
         """.trimIndent(),
         officialDrawable = R.drawable.official_marker_matrix,
-        officialAspectRatio = 370f / 554f,
+        officialAspectRatio = 360f / 486f,
     ),
     FlowchartDemo(
         id = "marker_styles",
@@ -393,7 +393,7 @@ flowchart LR
   K <-.-> L
         """.trimIndent(),
         officialDrawable = R.drawable.official_marker_styles,
-        officialAspectRatio = 370f / 554f,
+        officialAspectRatio = 360f / 486f,
     ),
     FlowchartDemo(
         id = "minimum_link_lengths",
@@ -409,7 +409,7 @@ flowchart TD
   D ====> E
         """.trimIndent(),
         officialDrawable = R.drawable.official_minimum_link_lengths,
-        officialAspectRatio = 390f / 556f,
+        officialAspectRatio = 552f / 231f,
     ),
     FlowchartDemo(
         id = "mixed_link_labels",
@@ -424,7 +424,7 @@ flowchart LR
   A -- open text --- F
         """.trimIndent(),
         officialDrawable = R.drawable.official_mixed_link_labels,
-        officialAspectRatio = 442f / 456f,
+        officialAspectRatio = 480f / 401f,
     ),
     FlowchartDemo(
         id = "node_color_formats",
@@ -438,7 +438,7 @@ flowchart LR
   style C fill:lightgreen,stroke:darkgreen,color:black
         """.trimIndent(),
         officialDrawable = R.drawable.official_node_color_formats,
-        officialAspectRatio = 572f / 64f,
+        officialAspectRatio = 552f / 61f,
     ),
     FlowchartDemo(
         id = "link_styles",
@@ -452,7 +452,7 @@ flowchart LR
   linkStyle 2 stroke:#16a34a,stroke-width:2px,color:#14532d
         """.trimIndent(),
         officialDrawable = R.drawable.official_link_styles,
-        officialAspectRatio = 774f / 64f,
+        officialAspectRatio = 744f / 61f,
     ),
     FlowchartDemo(
         id = "class_shorthand",
@@ -466,7 +466,7 @@ flowchart LR
   classDef result fill:#fef3c7,stroke:#d97706,color:#78350f
         """.trimIndent(),
         officialDrawable = R.drawable.official_class_shorthand,
-        officialAspectRatio = 370f / 162f,
+        officialAspectRatio = 360f / 146f,
     ),
     FlowchartDemo(
         id = "default_class",
@@ -478,7 +478,7 @@ flowchart LR
   classDef default fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-width:2px
         """.trimIndent(),
         officialDrawable = R.drawable.official_default_class,
-        officialAspectRatio = 572f / 64f,
+        officialAspectRatio = 552f / 61f,
     ),
     FlowchartDemo(
         id = "comments_entities",
@@ -491,7 +491,7 @@ flowchart LR
   B --> C["Parentheses (work) in quotes"]
         """.trimIndent(),
         officialDrawable = R.drawable.official_comments_entities,
-        officialAspectRatio = 572f / 88f,
+        officialAspectRatio = 552f / 82f,
     ),
     FlowchartDemo(
         id = "subgraph_edges",
@@ -510,7 +510,7 @@ flowchart LR
   two --> Finish
         """.trimIndent(),
         officialDrawable = R.drawable.official_subgraph_edges,
-        officialAspectRatio = 914f / 262f,
+        officialAspectRatio = 1000f / 112f,
     ),
     FlowchartDemo(
         id = "subgraph_directions",
@@ -533,7 +533,7 @@ flowchart LR
   B1 --> B2
         """.trimIndent(),
         officialDrawable = R.drawable.official_subgraph_directions,
-        officialAspectRatio = 984f / 575f,
+        officialAspectRatio = 824f / 415f,
     ),
     FlowchartDemo(
         id = "collapsed_subgraph",
@@ -549,7 +549,7 @@ flowchart TD
   one@{ view: collapsed }
         """.trimIndent(),
         officialDrawable = R.drawable.official_collapsed_subgraph,
-        officialAspectRatio = 168f / 280f,
+        officialAspectRatio = 168f / 251f,
     ),
     FlowchartDemo(
         id = "parallel_edges",
@@ -562,7 +562,7 @@ flowchart LR
   A ==>|priority| B
         """.trimIndent(),
         officialDrawable = R.drawable.official_parallel_edges,
-        officialAspectRatio = 426f / 128f,
+        officialAspectRatio = 447f / 121f,
     ),
     FlowchartDemo(
         id = "self_loop_and_cycle",
@@ -574,7 +574,7 @@ flowchart LR
   A --> B --> C --> A
         """.trimIndent(),
         officialDrawable = R.drawable.official_self_loop_and_cycle,
-        officialAspectRatio = 572f / 170f,
+        officialAspectRatio = 552f / 82f,
     ),
     FlowchartDemo(
         id = "crossing_routes",
@@ -591,7 +591,7 @@ flowchart TB
   D & E & F --> Finish
         """.trimIndent(),
         officialDrawable = R.drawable.official_crossing_routes,
-        officialAspectRatio = 582f / 358f,
+        officialAspectRatio = 552f / 356f,
     ),
     FlowchartDemo(
         id = "dense_branch_merge",
@@ -606,6 +606,74 @@ flowchart TB
   D & E & F --> Finish
         """.trimIndent(),
         officialDrawable = R.drawable.official_dense_branch_merge,
-        officialAspectRatio = 592f / 358f,
+        officialAspectRatio = 700f / 356f,
+    ),
+    FlowchartDemo(
+        id = "icon_shape",
+        title = "Icon shape fallback",
+        category = "Assets",
+        source = """
+flowchart LR
+  A@{ icon: "fa:user", form: "square", label: "User Icon", pos: "t", h: 60 }
+  A --> B[Continue]
+        """.trimIndent(),
+        officialDrawable = R.drawable.official_icon_shape,
+        officialAspectRatio = 283f / 124f,
+    ),
+    FlowchartDemo(
+        id = "image_shape",
+        title = "Embedded bitmap image",
+        category = "Assets",
+        source = """
+flowchart LR
+  A@{ img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAA8CAYAAACQPx/OAAAABmJLR0QA/wD/AP+gvaeTAAAEb0lEQVR4nO3cX0xbVRwH8O/vVErLKAiyZWw6QGMcNgsuLpqwRIGxRBenyXT4J1EfRvRpL4uvjLvEV6MxmkxdE3U+4J9EkpqZzLGNICEucW4EurqHURgRZjtWCrTdZbfHB4R0C7Cu99x7z+j5PBHKPecbvmnvvaenJdzB3dG7zcV4O+d8F4BaAOvu/BvFlDkAEQJOGQzHdK15KPtBWvrp4Ilib4XnYw68DxCzO2WBMgg4mmLRQ9DadGCxkIMnij0V3l8BNDuZrmBxOp12/fsitDadAYCn0vsJVBnOId7i5es/AgByd/RuY2RcUC9TjjMynDcwF+PtqgwpuIhwgHGOVqeTKAsItJsBfIvTQZQlNQxAqdMplCU+de6QjCpEMqoQyahCJKMKkYwqRDKqEMk8YPUERMBT1T7s3VqFnTXl2FjqxuayYgDAeOImrs3q+D0SRzB8HRcmZqyOIz3yHD7DLRmYgH3+DehsqcXjD5XkdMzlWBJazwi6L0XBLUklP0sKebTSi29eq8eOzWV5HX9uPIF3fwohciMtOJn8hJ9DGreU42z79rzLAIBnHi5D/3tPo6muQmCy+4PQZ8jzdQ8i+HYDily07OPezrPL/j51pGnZ3+tGBi99O4i+SFxQQvkJe4bUVnjw3X7/imXkw+1i6Hrdj8cqvcLGlJ2QQoiA4/ufRNW6IhHD3aaypAiBffUgcT1LTUghr/o3mDpn3M2zj5Thlfr1lo0vE9OFEAGHW2oFRFmdtqvO8jlkYLqQ7dW+nO8zzHiiqgQN1Wv/vTTThezdWiUih3RzOcV0IY015SJy5GSnjXM5xXQhm3zFInJIN5dTTC8ubvS5Aax805eLXI5NHWnCprK1X4jpZ4idi4CZAlhxNF3I5OxNETlyMjGj2zaXU0wX8k/Cvn/SxIx95TvFdCH9o/Yt/PVFpm2byymmCwmGr4vIkZNfwjHb5nKK6ausi5MzuBxLrriEnu1el9+zhaNJDE7O3lu4+5CQqyytZ0REllV19lyxfA4ZCFnt7b4UxbnxhIihljUwNo1gAbxcAYIK4Rx458cQYnPzIoa7zVRyHu0/hwtm04OwdwxH42m89cMwdCMjakjoRgZtXUO4MpUSNqbshG5y6IvE8cLXFxGdM39vMpWcx8vHB9E/uvYvdbMJ33UyMDaN5746jz+u5n9OGRibRuMXf6J3pHA2NyyyZCtp5EYazYHzePP7YfwdS+Z8XDiaxBtdw2gJ/IXReOHtyQIs3ErKOdAdiqI7FEVDdemqby59eCaCYDhWEPcZd2PZVlIlP2r3u2RUIZJRhUhGFSIZVYhkVCGSUYVIhgFQH+yTBiUYQFedjqEs4mOMwH9zOoaygBOdZAbDMQCG02EUGJxuBZiuNQ8RcNTpNIWOiD7XtdYQA4AUix4C0ONwpsLFcSo1UfoBsHjZq7XpaRbdQ4TPoF6+7GQQ0afpa749+HLHPJD9zdb/c3ec9hPhAIF2Y+Grxtf+x5bsNQsgwolOcroV0LXWUPaD/wHzh0LfoJOJBgAAAABJRU5ErkJggg==", label: "Bitmap", pos: "t", h: 60, constraint: "on" }
+  A --> B[Rendered natively]
+        """.trimIndent(),
+        officialDrawable = R.drawable.official_image_shape,
+        officialAspectRatio = 308f / 109f,
+    ),
+    FlowchartDemo(
+        id = "embedded_image_shape",
+        title = "Embedded SVG image",
+        category = "Assets",
+        source = """
+flowchart LR
+  A@{ img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNjAiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNjAiIHJ4PSI4IiBmaWxsPSIjZmYzNjcwIi8+PHBhdGggZD0iTTI1IDE1YzE4IDAgMjUgMTAgMjUgMjAgMC0xMCA3LTIwIDI1LTIwLTEwIDgtMTUgMTctMTUgMzBINDBjMC0xMy01LTIyLTE1LTMwWiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=", label: "Embedded", pos: "t", h: 60, constraint: "on" }
+  A --> B[No network required]
+        """.trimIndent(),
+        officialDrawable = R.drawable.official_embedded_image_shape,
+        officialAspectRatio = 308f / 109f,
+    ),
+    FlowchartDemo(
+        id = "html_label_styles",
+        title = "HTML label styles",
+        category = "Text",
+        source = """
+flowchart LR
+  A["<b>Bold</b> and <i>italic</i><br/><u>underlined</u>"]
+  A --> B["<code>monospace</code> H<sub>2</sub>O x<sup>2</sup>"]
+        """.trimIndent(),
+        officialDrawable = R.drawable.official_html_label_styles,
+        officialAspectRatio = 360f / 88f,
+    ),
+    FlowchartDemo(
+        id = "line_hops_gap",
+        title = "ELK crossing gaps",
+        category = "Layouts",
+        source = """
+---
+config:
+  layout: elk
+  elk:
+    lineHops: gap
+---
+flowchart TB
+  A --> D
+  B --> C
+  A --> C
+  B --> D
+        """.trimIndent(),
+        officialDrawable = R.drawable.official_line_hops_gap,
+        officialAspectRatio = 360f / 186f,
     ),
 )

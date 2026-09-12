@@ -1,5 +1,10 @@
 package io.github.cmpmermaid.compose
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.calculatePan
@@ -8,15 +13,20 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.PathMeasure
@@ -29,18 +39,28 @@ import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextGeometricTransform
+import androidx.compose.ui.text.TextMeasurer
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.core.GMResult
 import io.github.cmpmermaid.core.MermaidEngine
@@ -49,22 +69,35 @@ import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.MermaidScene
 import io.github.cmpmermaid.core.MermaidTheme
 import io.github.cmpmermaid.core.SceneArrowHead
+import io.github.cmpmermaid.core.SceneAsset
+import io.github.cmpmermaid.core.SceneAssetKind
 import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.SceneElement
+import io.github.cmpmermaid.core.SceneNodeInteraction
 import io.github.cmpmermaid.core.ScenePath
 import io.github.cmpmermaid.core.ScenePathCommand
 import io.github.cmpmermaid.core.ScenePoint
 import io.github.cmpmermaid.core.SceneRect
 import io.github.cmpmermaid.core.SceneShape
 import io.github.cmpmermaid.core.SceneShapePaint
+import io.github.cmpmermaid.core.SceneShapePath
+import io.github.cmpmermaid.core.SceneShadow
+import io.github.cmpmermaid.core.SceneSize
 import io.github.cmpmermaid.core.SceneStrokePattern
 import io.github.cmpmermaid.core.SceneText
 import io.github.cmpmermaid.core.SceneTextAlignment
+import io.github.cmpmermaid.core.SceneTextBaselineShift
+import io.github.cmpmermaid.core.SceneTextFontFamily
 import io.github.cmpmermaid.core.SceneTextWeight
 import io.github.cmpmermaid.core.TextMetricProvider
 import io.github.cmpmermaid.core.TextMetrics
 import io.github.cmpmermaid.core.TextMetricsRequest
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlin.math.PI
+import kotlin.math.atan2
 import kotlin.math.hypot
+import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
 
@@ -72,16 +105,49 @@ import kotlin.math.roundToInt
 fun MermaidDiagram(
     source: String,
     modifier: Modifier = Modifier,
-    theme: MermaidTheme = MermaidTheme(),
+    theme: MermaidTheme = MermaidTheme.FlowchartDefault,
     options: MermaidRenderOptions = MermaidRenderOptions(),
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
     contentDescription: String = "Mermaid diagram",
+    assetProvider: MermaidAssetProvider? = null,
+    onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
+    onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
 ) {
-    val sceneResult = rememberMermaidScene(source, theme, options)
+    val platformAssetProvider = rememberPlatformMermaidAssetProvider()
+    val effectiveAssetProvider = remember(assetProvider, platformAssetProvider) {
+        (assetProvider ?: platformAssetProvider)?.cached()
+    }
+    var assetMetrics by remember(source) {
+        mutableStateOf<Map<String, SceneSize>>(emptyMap())
+    }
+    val sceneResult = rememberMermaidScene(
+        source = source,
+        theme = theme,
+        options = options,
+        fontFamilyResolver = fontFamilyResolver,
+        assetMetrics = assetMetrics,
+    ).value
     when (sceneResult) {
+        null -> Box(modifier = modifier)
         is GMResult.Ok -> MermaidSceneCanvas(
             scene = sceneResult.value,
             modifier = modifier,
             contentDescription = contentDescription,
+            fontFamilyResolver = fontFamilyResolver,
+            assetProvider = effectiveAssetProvider,
+            onAssetError = onAssetError,
+            onAssetResolved = { asset, resolved ->
+                if (asset.kind == SceneAssetKind.Image) {
+                    val size = SceneSize(
+                        width = resolved.intrinsicWidth.toFloat(),
+                        height = resolved.intrinsicHeight.toFloat(),
+                    )
+                    if (assetMetrics[asset.source] != size) {
+                        assetMetrics = assetMetrics + (asset.source to size)
+                    }
+                }
+            },
+            onNodeInteraction = onNodeInteraction,
         )
         is GMResult.Err -> Box(
             modifier = modifier,
@@ -98,15 +164,22 @@ fun MermaidDiagram(
 @Composable
 fun rememberMermaidScene(
     source: String,
-    theme: MermaidTheme = MermaidTheme(),
+    theme: MermaidTheme = MermaidTheme.FlowchartDefault,
     options: MermaidRenderOptions = MermaidRenderOptions(),
     engine: MermaidEngine = remember { MermaidEngine() },
-): GMResult<MermaidScene, io.github.cmpmermaid.core.MermaidError> {
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
+    assetMetrics: Map<String, SceneSize> = emptyMap(),
+): State<GMResult<MermaidScene, io.github.cmpmermaid.core.MermaidError>?> {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val density = LocalDensity.current
-    val metrics = remember(textMeasurer, density) {
+    val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
+    val metrics = remember(textMeasurer, density, effectiveFontFamilyResolver) {
         TextMetricProvider { request ->
-            val style = request.toTextStyle(density.density, density.fontScale)
+            val style = request.toTextStyle(
+                density = density.density,
+                fontScale = density.fontScale,
+                fontFamilyResolver = effectiveFontFamilyResolver,
+            )
             val result = textMeasurer.measure(
                 text = request.text.toAnnotatedString(request.spans),
                 style = style,
@@ -117,8 +190,27 @@ fun rememberMermaidScene(
             TextMetrics(result.size.width.toFloat(), result.size.height.toFloat())
         }
     }
-    return remember(source, theme, options, engine, metrics) {
-        engine.render(source, MermaidRenderContext(metrics, theme, options))
+    return produceState(
+        initialValue = null,
+        source,
+        theme,
+        options,
+        engine,
+        metrics,
+        effectiveFontFamilyResolver,
+        assetMetrics,
+    ) {
+        value = withContext(Dispatchers.Default) {
+            engine.render(
+                source,
+                MermaidRenderContext(
+                    textMetrics = metrics,
+                    theme = theme,
+                    options = options,
+                    assetMetrics = assetMetrics,
+                ),
+            )
+        }
     }
 }
 
@@ -127,21 +219,92 @@ fun MermaidSceneCanvas(
     scene: MermaidScene,
     modifier: Modifier = Modifier,
     contentDescription: String = "Mermaid diagram",
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
+    assetProvider: MermaidAssetProvider? = null,
+    onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
+    onAssetResolved: ((SceneAsset, MermaidResolvedAsset) -> Unit)? = null,
+    onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
 ) {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
+    val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
     val density = LocalDensity.current
+    val touchSlop = LocalViewConfiguration.current.touchSlop
+    val currentInteractionHandler by rememberUpdatedState(onNodeInteraction)
+    val currentAssetErrorHandler by rememberUpdatedState(onAssetError)
+    val currentAssetResolvedHandler by rememberUpdatedState(onAssetResolved)
     var viewport by remember(scene) { mutableStateOf(DiagramViewport()) }
+    val sceneAssets = remember(scene) {
+        scene.elements.filterIsInstance<SceneAsset>()
+    }
+    val initialAssetStates: Map<String, MermaidAssetState> = remember(sceneAssets) {
+        sceneAssets.associate { asset -> asset.id to MermaidAssetState.Loading }
+    }
+    val assetStates by produceState(
+        initialValue = initialAssetStates,
+        sceneAssets,
+        assetProvider,
+    ) {
+        val assetsById = sceneAssets.associateBy(SceneAsset::id)
+        resolveMermaidAssets(sceneAssets, assetProvider) { id, state ->
+            value = value + (id to state)
+            if (state is MermaidAssetState.Failed) {
+                assetsById[id]?.let { asset ->
+                    currentAssetErrorHandler?.invoke(asset, state.error)
+                }
+            } else if (state is MermaidAssetState.Resolved) {
+                assetsById[id]?.let { asset ->
+                    currentAssetResolvedHandler?.invoke(asset, state.asset)
+                }
+            }
+        }
+    }
+    val hasAnimatedPath = remember(scene) {
+        scene.elements.any { element -> element is ScenePath && element.animated }
+    }
+    val animationTimeMillis = if (hasAnimatedPath) {
+        val transition = rememberInfiniteTransition(label = "Mermaid edge animation clock")
+        val value by transition.animateFloat(
+            initialValue = 0f,
+            targetValue = ANIMATION_CLOCK_DURATION_MILLIS.toFloat(),
+            animationSpec = infiniteRepeatable(
+                animation = tween(
+                    durationMillis = ANIMATION_CLOCK_DURATION_MILLIS,
+                    easing = LinearEasing,
+                ),
+            ),
+            label = "Mermaid edge animation time",
+        )
+        value
+    } else {
+        0f
+    }
 
     Canvas(
         modifier = modifier
             .clipToBounds()
             .semantics { this.contentDescription = contentDescription }
-            .pointerInput(scene) {
+            .pointerInput(scene, touchSlop) {
                 awaitEachGesture {
+                    var tapStart: Offset? = null
+                    var tapPosition: Offset? = null
+                    var tapMoved = false
+                    var multiTouch = false
                     while (true) {
                         val event = awaitPointerEvent()
                         val pressed = event.changes.filter { it.pressed }
+                        if (pressed.size == 1 && !multiTouch) {
+                            val position = pressed.single().position
+                            val start = tapStart
+                            if (start == null) {
+                                tapStart = position
+                            } else if ((position - start).getDistance() > touchSlop) {
+                                tapMoved = true
+                            }
+                            tapPosition = position
+                        }
                         if (pressed.size >= 2) {
+                            multiTouch = true
+                            tapStart = null
                             val centroid = pressed
                                 .map { it.position }
                                 .reduce(Offset::plus) / pressed.size.toFloat()
@@ -163,6 +326,17 @@ fun MermaidSceneCanvas(
                             event.changes.forEach { it.consume() }
                         }
                         if (event.changes.none { it.pressed }) {
+                            val position = tapPosition
+                            if (!multiTouch && !tapMoved && position != null) {
+                                scene.interactionAt(
+                                    screenPosition = position,
+                                    viewportWidth = size.width.toFloat(),
+                                    viewportHeight = size.height.toFloat(),
+                                    viewport = viewport,
+                                )?.let { interaction ->
+                                    currentInteractionHandler?.invoke(interaction)
+                                }
+                            }
                             break
                         }
                     }
@@ -188,17 +362,146 @@ fun MermaidSceneCanvas(
         }) {
             scene.elements.forEach { element ->
                 when (element) {
+                    is SceneAsset -> when (val state = assetStates[element.id]) {
+                        is MermaidAssetState.Resolved -> drawSceneAsset(
+                            asset = element,
+                            image = state.asset.image,
+                        )
+                        is MermaidAssetState.Failed -> drawSceneAssetFailure(
+                            asset = element,
+                            textMeasurer = textMeasurer,
+                        )
+                        MermaidAssetState.Loading, null -> drawSceneAssetLoading(element)
+                    }
                     is SceneShape -> drawSceneShape(element)
-                    is ScenePath -> drawScenePath(element)
+                    is ScenePath -> drawScenePath(element, animationTimeMillis)
                     is SceneText -> drawSceneText(
                         element = element,
                         textMeasurer = textMeasurer,
                         density = density.density,
                         fontScale = density.fontScale,
+                        fontFamilyResolver = effectiveFontFamilyResolver,
                     )
                 }
             }
         }
+    }
+}
+
+private fun DrawScope.drawSceneAssetLoading(
+    asset: SceneAsset,
+) {
+    val bounds = asset.bounds.toComposeRect()
+    drawRect(
+        color = Color(0xFFE5E7EB),
+        topLeft = bounds.topLeft,
+        size = bounds.size,
+    )
+}
+
+private fun DrawScope.drawSceneAssetFailure(
+    asset: SceneAsset,
+    textMeasurer: TextMeasurer,
+) {
+    val bounds = asset.bounds.toComposeRect()
+    if (asset.kind == SceneAssetKind.Icon) {
+        drawRect(
+            color = Color(0xFF087EBF),
+            topLeft = bounds.topLeft,
+            size = bounds.size,
+        )
+        val result = textMeasurer.measure(
+            text = "?",
+            style = TextStyle(
+                color = Color.White,
+                fontSize = (bounds.height * 0.72f).sp,
+                textAlign = TextAlign.Center,
+            ),
+        )
+        drawText(
+            textLayoutResult = result,
+            topLeft = Offset(
+                x = bounds.center.x - result.size.width / 2f,
+                y = bounds.center.y - result.size.height / 2f,
+            ),
+        )
+        return
+    }
+    val color = Color(0xFFB91C1C)
+    val strokeWidth = min(bounds.width, bounds.height).coerceAtLeast(1f) * 0.06f
+    drawRect(
+        color = Color(0xFFFFF1F2),
+        topLeft = bounds.topLeft,
+        size = bounds.size,
+    )
+    drawRect(
+        color = color,
+        topLeft = bounds.topLeft,
+        size = bounds.size,
+        style = Stroke(width = strokeWidth),
+    )
+    drawLine(
+        color = color,
+        start = bounds.topLeft,
+        end = bounds.bottomRight,
+        strokeWidth = strokeWidth,
+    )
+    drawLine(
+        color = color,
+        start = Offset(bounds.right, bounds.top),
+        end = Offset(bounds.left, bounds.bottom),
+        strokeWidth = strokeWidth,
+    )
+}
+
+private fun DrawScope.drawSceneAsset(
+    asset: SceneAsset,
+    image: ImageBitmap,
+) {
+    val width = asset.bounds.width.roundToInt().coerceAtLeast(1)
+    val height = asset.bounds.height.roundToInt().coerceAtLeast(1)
+    drawImage(
+        image = image,
+        dstOffset = IntOffset(
+            x = asset.bounds.left.roundToInt(),
+            y = asset.bounds.top.roundToInt(),
+        ),
+        dstSize = IntSize(width, height),
+        colorFilter = if (asset.kind == SceneAssetKind.Icon) {
+            asset.tint?.let { ColorFilter.tint(it.toComposeColor()) }
+        } else {
+            null
+        },
+    )
+}
+
+internal fun MermaidScene.interactionAt(
+    screenPosition: Offset,
+    viewportWidth: Float,
+    viewportHeight: Float,
+    viewport: DiagramViewport,
+): SceneNodeInteraction? {
+    if (width <= 0f || height <= 0f || viewportWidth <= 0f || viewportHeight <= 0f) {
+        return null
+    }
+    val fitScale = min(viewportWidth / width, viewportHeight / height)
+    val scale = fitScale * viewport.zoom
+    if (scale <= 0f) {
+        return null
+    }
+    val contentWidth = width * scale
+    val contentHeight = height * scale
+    val baseOffset = Offset(
+        x = (viewportWidth - contentWidth) / 2f,
+        y = (viewportHeight - contentHeight) / 2f,
+    )
+    val scenePoint = ScenePoint(
+        x = (screenPosition.x - baseOffset.x - viewport.panX) / scale,
+        y = (screenPosition.y - baseOffset.y - viewport.panY) / scale,
+    )
+    return interactions.asReversed().firstOrNull { interaction ->
+        scenePoint.x in interaction.bounds.left..interaction.bounds.right &&
+            scenePoint.y in interaction.bounds.top..interaction.bounds.bottom
     }
 }
 
@@ -207,6 +510,9 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
     val fill = shape.fill.toComposeColor()
     val stroke = shape.stroke.toComposeColor()
     val geometry = shape.geometry
+    shape.shadow?.let { shadow ->
+        drawSceneShapeShadow(shape, bounds, shadow)
+    }
     if (geometry == null) {
         drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
         drawRect(
@@ -228,14 +534,7 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
         if (primitive.points.isEmpty()) {
             return@forEach
         }
-        val path = Path().apply {
-            primitive.points.forEachIndexed { index, point ->
-                val x = bounds.center.x + point.x
-                val y = bounds.center.y + point.y
-                if (index == 0) moveTo(x, y) else lineTo(x, y)
-            }
-            if (primitive.closed) close()
-        }
+        val path = primitive.toComposePath(bounds)
         val opacity = primitive.opacity.coerceIn(0f, 1f)
         when (primitive.fill) {
             SceneShapePaint.None -> Unit
@@ -258,7 +557,79 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
     }
 }
 
-private fun io.github.cmpmermaid.core.SceneShapePath.strokeStyle(
+private fun DrawScope.drawSceneShapeShadow(
+    shape: SceneShape,
+    bounds: Rect,
+    shadow: SceneShadow,
+) {
+    val shadowColor = shadow.color.toComposeColor()
+    val primitive = shape.geometry
+        ?.paths
+        ?.firstOrNull { path ->
+            path.points.isNotEmpty() &&
+                (path.fill != SceneShapePaint.None || path.stroke != SceneShapePaint.None)
+        }
+    val primitivePath = primitive?.toComposePath(bounds)
+    shadow.samples().forEach { sample ->
+        val color = shadowColor.copy(alpha = shadowColor.alpha * sample.alpha)
+        withTransform({
+            translate(sample.offset.x, sample.offset.y)
+        }) {
+            when {
+                primitivePath == null -> drawRect(
+                    color = color,
+                    topLeft = bounds.topLeft,
+                    size = bounds.size,
+                    style = Fill,
+                )
+                primitive.fill != SceneShapePaint.None -> drawPath(
+                    path = primitivePath,
+                    color = color,
+                    style = Fill,
+                )
+                else -> drawPath(
+                    path = primitivePath,
+                    color = color,
+                    style = primitive.strokeStyle(shape),
+                )
+            }
+        }
+    }
+}
+
+private fun SceneShapePath.toComposePath(bounds: Rect): Path = Path().apply {
+    points.forEachIndexed { index, point ->
+        val x = bounds.center.x + point.x
+        val y = bounds.center.y + point.y
+        if (index == 0) moveTo(x, y) else lineTo(x, y)
+    }
+    if (closed) close()
+}
+
+private fun SceneShadow.samples(): List<ShadowSample> {
+    if (blurRadius <= 0f) {
+        return listOf(ShadowSample(Offset(offsetX, offsetY), 1f))
+    }
+    val diagonal = blurRadius * 0.70710677f
+    return listOf(
+        ShadowSample(Offset(offsetX, offsetY), 0.4f),
+        ShadowSample(Offset(offsetX - blurRadius, offsetY), 0.1f),
+        ShadowSample(Offset(offsetX + blurRadius, offsetY), 0.1f),
+        ShadowSample(Offset(offsetX, offsetY - blurRadius), 0.1f),
+        ShadowSample(Offset(offsetX, offsetY + blurRadius), 0.1f),
+        ShadowSample(Offset(offsetX - diagonal, offsetY - diagonal), 0.05f),
+        ShadowSample(Offset(offsetX + diagonal, offsetY - diagonal), 0.05f),
+        ShadowSample(Offset(offsetX - diagonal, offsetY + diagonal), 0.05f),
+        ShadowSample(Offset(offsetX + diagonal, offsetY + diagonal), 0.05f),
+    )
+}
+
+private data class ShadowSample(
+    val offset: Offset,
+    val alpha: Float,
+)
+
+private fun SceneShapePath.strokeStyle(
     shape: SceneShape,
 ): Stroke = Stroke(
     width = strokeWidth ?: shape.strokeWidth,
@@ -278,60 +649,43 @@ private fun List<Float>.toPathEffect(): PathEffect? =
     takeIf { size >= 2 && all { interval -> interval.isFinite() && interval > 0f } }
         ?.let { PathEffect.dashPathEffect(it.toFloatArray()) }
 
-private fun DrawScope.drawScenePath(element: ScenePath) {
+private fun DrawScope.drawScenePath(
+    element: ScenePath,
+    animationTimeMillis: Float,
+) {
     if (element.commands.isEmpty()) {
         return
     }
-    val path = Path().apply {
-        element.commands.forEach { command ->
-            when (command) {
-                is ScenePathCommand.MoveTo ->
-                    moveTo(command.point.x, command.point.y)
-                is ScenePathCommand.LineTo ->
-                    lineTo(command.point.x, command.point.y)
-                is ScenePathCommand.QuadraticTo ->
-                    quadraticTo(
-                        command.control.x,
-                        command.control.y,
-                        command.end.x,
-                        command.end.y,
-                    )
-                is ScenePathCommand.CubicTo ->
-                    cubicTo(
-                        command.control1.x,
-                        command.control1.y,
-                        command.control2.x,
-                        command.control2.y,
-                        command.end.x,
-                        command.end.y,
-                    )
-            }
-        }
-    }
+    val paths = element.toComposeContours()
     val useNeoMarkerMargin = element.look == "neo" && !element.animated
-    val visiblePath = if (useNeoMarkerMargin) {
-        path.withMermaidNeoMarkerGaps(element)
+    val visiblePaths = if (useNeoMarkerMargin) {
+        listOf(paths.withMermaidNeoMarkerGaps(element))
     } else {
-        path
+        paths
     }
-    drawPath(
-        path = visiblePath,
-        color = element.color.toComposeColor(),
-        style = Stroke(
-            width = element.strokeWidth,
-            cap = if (element.animated) StrokeCap.Round else StrokeCap.Butt,
-            join = StrokeJoin.Miter,
-            pathEffect = if (
-                !useNeoMarkerMargin &&
-                element.dashIntervals.size >= 2 &&
-                element.dashIntervals.all { it.isFinite() && it > 0f }
-            ) {
-                PathEffect.dashPathEffect(element.dashIntervals.toFloatArray())
-            } else if (!useNeoMarkerMargin) {
-                element.strokePattern.toPathEffect()
-            } else null,
-        ),
-    )
+    visiblePaths.forEach { visiblePath ->
+        drawPath(
+            path = visiblePath,
+            color = element.color.toComposeColor(),
+            style = Stroke(
+                width = element.strokeWidth,
+                cap = if (element.animated) StrokeCap.Round else StrokeCap.Butt,
+                join = StrokeJoin.Miter,
+                pathEffect = if (
+                    !useNeoMarkerMargin &&
+                    element.dashIntervals.size >= 2 &&
+                    element.dashIntervals.all { it.isFinite() && it > 0f }
+                ) {
+                    PathEffect.dashPathEffect(
+                        intervals = element.dashIntervals.toFloatArray(),
+                        phase = element.animationDashPhase(animationTimeMillis),
+                    )
+                } else if (!useNeoMarkerMargin) {
+                    element.strokePattern.toPathEffect()
+                } else null,
+            ),
+        )
+    }
     drawArrowHead(
         type = element.arrowStart,
         commands = element.commands,
@@ -348,10 +702,98 @@ private fun DrawScope.drawScenePath(element: ScenePath) {
     )
 }
 
-private fun Path.withMermaidNeoMarkerGaps(element: ScenePath): Path {
-    val measure = PathMeasure()
-    measure.setPath(this, forceClosed = false)
-    val length = measure.length
+private fun ScenePath.toComposeContours(): List<Path> {
+    val contours = mutableListOf<Path>()
+    var active: Path? = null
+    var current: ScenePoint? = null
+
+    fun path(): Path = active ?: Path().also { active = it }
+
+    commands.forEach { command ->
+        when (command) {
+            is ScenePathCommand.MoveTo -> {
+                active?.let(contours::add)
+                active = Path().apply {
+                    moveTo(command.point.x, command.point.y)
+                }
+                current = command.point
+            }
+            is ScenePathCommand.LineTo -> {
+                path().lineTo(command.point.x, command.point.y)
+                current = command.point
+            }
+            is ScenePathCommand.QuadraticTo -> {
+                path().quadraticTo(
+                    command.control.x,
+                    command.control.y,
+                    command.end.x,
+                    command.end.y,
+                )
+                current = command.end
+            }
+            is ScenePathCommand.CubicTo -> {
+                path().cubicTo(
+                    command.control1.x,
+                    command.control1.y,
+                    command.control2.x,
+                    command.control2.y,
+                    command.end.x,
+                    command.end.y,
+                )
+                current = command.end
+            }
+            is ScenePathCommand.ArcTo -> {
+                val start = current
+                if (start == null || command.radius <= 0f) {
+                    path().moveTo(command.end.x, command.end.y)
+                } else {
+                    val center = ScenePoint(
+                        x = (start.x + command.end.x) / 2f,
+                        y = (start.y + command.end.y) / 2f,
+                    )
+                    val startAngle = (
+                        atan2(start.y - center.y, start.x - center.x) *
+                            180f / PI.toFloat()
+                        )
+                    path().arcTo(
+                        rect = Rect(
+                            left = center.x - command.radius,
+                            top = center.y - command.radius,
+                            right = center.x + command.radius,
+                            bottom = center.y + command.radius,
+                        ),
+                        startAngleDegrees = startAngle,
+                        sweepAngleDegrees = if (command.clockwise) 180f else -180f,
+                        forceMoveTo = false,
+                    )
+                }
+                current = command.end
+            }
+        }
+    }
+    active?.let(contours::add)
+    return contours
+}
+
+private fun ScenePath.animationDashPhase(animationTimeMillis: Float): Float {
+    if (!animated) {
+        return 0f
+    }
+    val duration = animationDurationMillis
+        ?.takeIf { it > 0 }
+        ?: DEFAULT_EDGE_ANIMATION_DURATION_MILLIS
+    val progress = (animationTimeMillis % duration.toFloat()) / duration.toFloat()
+    return EDGE_ANIMATION_DASH_OFFSET * (1f - progress)
+}
+
+private fun List<Path>.withMermaidNeoMarkerGaps(element: ScenePath): Path {
+    val measures = map { path ->
+        PathMeasure().apply {
+            setPath(path, forceClosed = false)
+        }
+    }
+    val contourLengths = measures.map(PathMeasure::length)
+    val length = contourLengths.sum()
     val startOffset = element.arrowStart.neoMarkerOffset()
     val endOffset = element.arrowEnd.neoMarkerOffset()
     val dashIntervals = if (
@@ -372,16 +814,33 @@ private fun Path.withMermaidNeoMarkerGaps(element: ScenePath): Path {
     } else {
         listOf(0f, startOffset, (length - startOffset - endOffset).coerceAtLeast(0f), endOffset)
     }
-    return measure.extractDashPattern(length, dashIntervals)
+    val result = Path()
+    mermaidDashSegments(contourLengths, dashIntervals).forEach { segment ->
+        measures[segment.contourIndex].getSegment(
+            startDistance = segment.start,
+            stopDistance = segment.end,
+            destination = result,
+            startWithMoveTo = true,
+        )
+    }
+    return result
 }
 
-private fun PathMeasure.extractDashPattern(
-    pathLength: Float,
+internal fun mermaidDashSegments(
+    contourLengths: List<Float>,
     sourceIntervals: List<Float>,
-): Path {
-    val result = Path()
-    if (pathLength <= 0f || sourceIntervals.isEmpty()) {
-        return result
+): List<MermaidContourSegment> {
+    if (
+        contourLengths.isEmpty() ||
+        contourLengths.any { length -> !length.isFinite() || length < 0f } ||
+        sourceIntervals.isEmpty() ||
+        sourceIntervals.any { interval -> !interval.isFinite() || interval < 0f }
+    ) {
+        return emptyList()
+    }
+    val pathLength = contourLengths.sum()
+    if (pathLength <= 0f) {
+        return emptyList()
     }
     val intervals = if (sourceIntervals.size % 2 == 0) {
         sourceIntervals
@@ -389,9 +848,17 @@ private fun PathMeasure.extractDashPattern(
         sourceIntervals + sourceIntervals
     }
     if (intervals.none { it > 0f }) {
-        return result
+        return emptyList()
     }
 
+    val contourStarts = buildList {
+        var start = 0f
+        contourLengths.forEach { length ->
+            add(start)
+            start += length
+        }
+    }
+    val result = mutableListOf<MermaidContourSegment>()
     var distance = 0f
     var intervalIndex = 0
     var draw = true
@@ -399,7 +866,19 @@ private fun PathMeasure.extractDashPattern(
         val interval = intervals[intervalIndex]
         val nextDistance = min(pathLength, distance + interval)
         if (draw && nextDistance > distance) {
-            getSegment(distance, nextDistance, result, startWithMoveTo = true)
+            contourLengths.forEachIndexed { contourIndex, contourLength ->
+                val contourStart = contourStarts[contourIndex]
+                val contourEnd = contourStart + contourLength
+                val overlapStart = max(distance, contourStart)
+                val overlapEnd = min(nextDistance, contourEnd)
+                if (overlapEnd > overlapStart) {
+                    result += MermaidContourSegment(
+                        contourIndex = contourIndex,
+                        start = overlapStart - contourStart,
+                        end = overlapEnd - contourStart,
+                    )
+                }
+            }
         }
         distance = nextDistance
         draw = !draw
@@ -407,6 +886,12 @@ private fun PathMeasure.extractDashPattern(
     }
     return result
 }
+
+internal data class MermaidContourSegment(
+    val contourIndex: Int,
+    val start: Float,
+    val end: Float,
+)
 
 private fun SceneArrowHead.neoMarkerOffset(): Float = when (this) {
     SceneArrowHead.None -> 0f
@@ -648,6 +1133,24 @@ private fun List<ScenePathCommand>.markerTangent(position: MarkerPosition): Mark
                 }
                 current = command.end
             }
+            is ScenePathCommand.ArcTo -> {
+                val from = current
+                if (from != null) {
+                    if (start == null) {
+                        start = MarkerTangent.create(
+                            from,
+                            command.end,
+                            anchorAtStart = true,
+                        )
+                    }
+                    end = MarkerTangent.create(
+                        from,
+                        command.end,
+                        anchorAtStart = false,
+                    ) ?: end
+                }
+                current = command.end
+            }
         }
     }
     return if (position == MarkerPosition.Start) start else end
@@ -657,6 +1160,11 @@ private enum class MarkerPosition {
     Start,
     End,
 }
+
+private const val DEFAULT_EDGE_ANIMATION_DURATION_MILLIS = 20_000
+private const val ANIMATION_CLOCK_DURATION_MILLIS = 100_000
+private const val MERMAID_FONT_WIDTH_SCALE = 1.10f
+private const val EDGE_ANIMATION_DASH_OFFSET = 900f
 
 private data class MarkerTangent(
     val anchor: ScenePoint,
@@ -719,10 +1227,16 @@ private fun DrawScope.drawSceneText(
     textMeasurer: androidx.compose.ui.text.TextMeasurer,
     density: Float,
     fontScale: Float,
+    fontFamilyResolver: MermaidFontFamilyResolver,
 ) {
     val style = TextStyle(
         color = element.color.toComposeColor(),
         fontSize = normalizedSp(element.fontSize, density, fontScale),
+        lineHeight = normalizedSp(element.fontSize * element.lineHeight, density, fontScale),
+        textGeometricTransform = TextGeometricTransform(scaleX = MERMAID_FONT_WIDTH_SCALE),
+        fontFamily = element.fontFamily
+            ?.let(fontFamilyResolver::resolve)
+            ?: FontFamily.Default,
         fontWeight = element.weight.toComposeWeight(),
         textAlign = when (element.horizontalAlignment) {
             SceneTextAlignment.Start -> TextAlign.Start
@@ -751,8 +1265,14 @@ private fun DrawScope.drawSceneText(
 private fun TextMetricsRequest.toTextStyle(
     density: Float,
     fontScale: Float,
+    fontFamilyResolver: MermaidFontFamilyResolver,
 ): TextStyle = TextStyle(
     fontSize = normalizedSp(fontSize, density, fontScale),
+    lineHeight = normalizedSp(fontSize * lineHeight, density, fontScale),
+    textGeometricTransform = TextGeometricTransform(scaleX = MERMAID_FONT_WIDTH_SCALE),
+    fontFamily = fontFamily
+        ?.let(fontFamilyResolver::resolve)
+        ?: FontFamily.Default,
     fontWeight = weight.toComposeWeight(),
 )
 
@@ -780,11 +1300,41 @@ private fun String.toAnnotatedString(
             style = SpanStyle(
                 fontWeight = span.weight?.toComposeWeight(),
                 fontStyle = if (span.italic) FontStyle.Italic else null,
+                textDecoration = span.toComposeTextDecoration(),
+                color = span.color?.toComposeColor() ?: Color.Unspecified,
+                background = span.background?.toComposeColor() ?: Color.Unspecified,
+                fontFamily = when (span.fontFamily) {
+                    SceneTextFontFamily.Monospace -> FontFamily.Monospace
+                    null -> null
+                },
+                baselineShift = when (span.baselineShift) {
+                    SceneTextBaselineShift.Subscript -> BaselineShift.Subscript
+                    SceneTextBaselineShift.Superscript -> BaselineShift.Superscript
+                    null -> null
+                },
+                fontSize = if (span.fontSizeScale == 1f) {
+                    TextUnit.Unspecified
+                } else {
+                    span.fontSizeScale.em
+                },
             ),
             start = span.start,
             end = span.end,
         )
     }
+}
+
+private fun io.github.cmpmermaid.core.SceneTextSpan.toComposeTextDecoration(): TextDecoration? {
+    val decorations = buildList {
+        if (underline) {
+            add(TextDecoration.Underline)
+        }
+        if (lineThrough) {
+            add(TextDecoration.LineThrough)
+        }
+    }
+    return decorations.takeIf(List<TextDecoration>::isNotEmpty)
+        ?.let(TextDecoration::combine)
 }
 
 private fun SceneRect.toComposeRect(): Rect = Rect(left, top, right, bottom)

@@ -1,5 +1,6 @@
 package io.github.cmpmermaid.core.flowchart
 
+import io.github.cmpmermaid.core.CssColorParser
 import io.github.cmpmermaid.core.SceneColor
 import kotlin.test.Test
 import kotlin.test.assertEquals

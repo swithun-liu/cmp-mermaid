@@ -177,9 +177,23 @@ internal object MermaidShapePort {
         val outline =
             listOf(ScenePoint(-width / 2f + radius, -height / 2f)) +
                 listOf(ScenePoint(width / 2f - radius, -height / 2f)) +
-                arcPoints(-width / 2f + radius, 0f, radius, radius, 270f, 90f, 50) +
+                mermaidCirclePoints(
+                    -width / 2f + radius,
+                    0f,
+                    radius,
+                    50,
+                    90f,
+                    270f,
+                ) +
                 listOf(ScenePoint(width / 2f - radius, height / 2f)) +
-                arcPoints(width / 2f - radius, 0f, radius, radius, 90f, 270f, 50)
+                mermaidCirclePoints(
+                    width / 2f - radius,
+                    0f,
+                    radius,
+                    50,
+                    270f,
+                    450f,
+                )
         return centeredShape(listOf(closedPath(outline)), outline)
     }
 
@@ -616,7 +630,7 @@ internal object MermaidShapePort {
     private fun stateStart(): MermaidShapeLayout {
         val outline = ellipsePoints(0f, 0f, 7f, 7f)
         return centeredShape(
-            listOf(closedPath(outline, fill = SceneShapePaint.Stroke)),
+            listOf(closedPath(outline)),
             outline,
             showsLabel = false,
         )
@@ -646,7 +660,7 @@ internal object MermaidShapePort {
         val height = if (width == 10f) 70f else 10f
         val outline = rectanglePoints(width, height)
         return centeredShape(
-            listOf(closedPath(outline, fill = SceneShapePaint.Stroke)),
+            listOf(closedPath(outline)),
             outline,
             showsLabel = false,
         )

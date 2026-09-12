@@ -3,14 +3,16 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "generate:html-entities": "node generate-html-entities.mjs",
+    "generate:flowchart-doc-fixtures": "node generate-flowchart-doc-fixtures.mjs",
     "generate:flow-parser": "node generate-flow-parser.mjs",
+    "generate:elk-worker": "node generate-elk-worker-source.mjs",
+    "generate:marked-fixtures": "node generate-marked-fixtures.mjs",
+    "generate:marked-rules": "node generate-marked-rules.mjs",
     "render": "node render.mjs"
   },
   "dependencies": {
-    "@mermaid-js/mermaid-cli": "11.17.0",
-    "mermaid": "12.0.0"
-  },
-  "overrides": {
-    "mermaid": "12.0.0"
+    "mermaid": "12.0.0",
+    "puppeteer": "25.10.0"
   }
 }

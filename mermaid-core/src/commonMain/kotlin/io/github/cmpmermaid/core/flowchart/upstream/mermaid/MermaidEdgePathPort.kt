@@ -125,7 +125,7 @@ internal object MermaidEdgePathPort {
         arrowEnd: SceneArrowHead,
     ): List<ScenePoint> {
         val adjusted = points.toMutableList()
-        markerOffset(arrowStart)?.let { offset ->
+        markerOffset(arrowStart).takeIf { offset -> offset > 0f }?.let { offset ->
             val first = points[0]
             val second = points[1]
             val angle = atan2(second.y - first.y, second.x - first.x)
@@ -134,7 +134,7 @@ internal object MermaidEdgePathPort {
                 y = first.y + offset * sin(angle),
             )
         }
-        markerOffset(arrowEnd)?.let { offset ->
+        markerOffset(arrowEnd).takeIf { offset -> offset > 0f }?.let { offset ->
             val lastIndex = points.lastIndex
             val last = points[lastIndex]
             val previous = points[lastIndex - 1]
@@ -167,8 +167,8 @@ internal object MermaidEdgePathPort {
     ): Float {
         var offset = 0f
         val directionIsRight = points.first().x >= points.last().x
-        val startMarkerHeight = markerOffset(arrowStart)
-        val endMarkerHeight = markerOffset(arrowEnd)
+        val startMarkerHeight = markerOffset(arrowStart).takeIf { offset -> offset > 0f }
+        val endMarkerHeight = markerOffset(arrowEnd).takeIf { offset -> offset > 0f }
 
         if (index == 0 && startMarkerHeight != null) {
             val (angle, deltaX) = deltaAndLineAngle(points[0], points[1])
@@ -217,8 +217,8 @@ internal object MermaidEdgePathPort {
     ): Float {
         var offset = 0f
         val directionIsUp = points.first().y >= points.last().y
-        val startMarkerHeight = markerOffset(arrowStart)
-        val endMarkerHeight = markerOffset(arrowEnd)
+        val startMarkerHeight = markerOffset(arrowStart).takeIf { offset -> offset > 0f }
+        val endMarkerHeight = markerOffset(arrowEnd).takeIf { offset -> offset > 0f }
 
         if (index == 0 && startMarkerHeight != null) {
             val (angle, _, deltaY) = deltaAndLineAngle(points[0], points[1])
@@ -363,13 +363,8 @@ internal object MermaidEdgePathPort {
         )
     }
 
-    private fun markerOffset(arrow: SceneArrowHead): Float? = when (arrow) {
-        SceneArrowHead.Triangle -> 4f
-        SceneArrowHead.None,
-        SceneArrowHead.Circle,
-        SceneArrowHead.Cross,
-        -> null
-    }
+    private fun markerOffset(arrow: SceneArrowHead): Float =
+        MermaidMarkerPort.pathOffset(arrow)
 
     private data class DeltaAndAngle(
         val angle: Float,

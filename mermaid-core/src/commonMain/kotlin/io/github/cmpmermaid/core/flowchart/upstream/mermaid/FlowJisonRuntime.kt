@@ -27,6 +27,100 @@ internal data class JisonToken(
 )
 
 /**
+ * Executes Mermaid's generated lexer rules without relying on lookahead
+ * support in the platform regex engine. Android's ICU regex implementation
+ * rejects several expressions emitted by Jison 0.4.18, while JVM accepts
+ * them. The special cases below are direct equivalents of those rules in
+ * flow.jison; every other rule still uses the generated regular expression.
+ */
+internal class JisonLexerPattern(
+    private val rule: Int,
+    source: String,
+) {
+    private val regex = if (rule in PORTABLE_RULES) null else Regex(source)
+
+    fun match(input: String): String? = when (rule) {
+        1, 3 -> input.substringBefore('\n')
+        61 -> matchLinkId(input)
+        72 -> matchSingleUnlessFollowedBy(input, '-', '-')
+        75 -> matchSingleUnlessFollowedBy(input, '=', '=')
+        78 -> matchSingleUnlessFollowedBy(input, '.', '-')
+        94 -> "/]".takeIf(input::startsWith)
+        95 -> matchTrapezoidText(input)
+        106 -> matchNodeString(input)
+        else -> regex?.find(input)?.takeIf { it.range.first == 0 }?.value
+    }
+
+    private fun matchLinkId(input: String): String? {
+        var lastValidAt = -1
+        var index = 0
+        while (index < input.length && !input[index].isWhitespace() && input[index] != '"') {
+            if (
+                input[index] == '@' &&
+                input.getOrNull(index + 1)?.let { next -> next != '{' && next != '"' } == true
+            ) {
+                lastValidAt = index
+            }
+            index += 1
+        }
+        return lastValidAt.takeIf { it >= 0 }?.let { input.substring(0, it + 1) }
+    }
+
+    private fun matchSingleUnlessFollowedBy(
+        input: String,
+        guarded: Char,
+        forbiddenNext: Char,
+    ): String? {
+        val first = input.firstOrNull() ?: return null
+        return when {
+            first != guarded -> first.toString()
+            input.getOrNull(1) != forbiddenNext -> first.toString()
+            else -> null
+        }
+    }
+
+    private fun matchTrapezoidText(input: String): String? {
+        val first = input.firstOrNull() ?: return null
+        if (first == '/' || first == '\\') {
+            return first.toString().takeIf { input.getOrNull(1) != ']' }
+        }
+        val end = input.indexOfFirst { it in TRAPEZOID_DELIMITERS }
+            .let { if (it < 0) input.length else it }
+        return input.substring(0, end).takeIf(String::isNotEmpty)
+    }
+
+    private fun matchNodeString(input: String): String? {
+        var index = 0
+        while (index < input.length) {
+            val current = input[index]
+            when {
+                current.isAsciiNodeCharacter() -> index += 1
+                current == '-' &&
+                    input.getOrNull(index + 1)?.let { next -> next !in NODE_HYPHEN_TERMINATORS } == true ->
+                    index += 1
+                else -> break
+            }
+        }
+        return input.substring(0, index).takeIf(String::isNotEmpty)
+    }
+
+    private fun Char.isAsciiNodeCharacter(): Boolean =
+        this in 'A'..'Z' ||
+            this in 'a'..'z' ||
+            this in '0'..'9' ||
+            this in ASCII_NODE_PUNCTUATION
+
+    private companion object {
+        val PORTABLE_RULES = setOf(1, 3, 61, 72, 75, 78, 94, 95, 106)
+        val TRAPEZOID_DELIMITERS = setOf('\\', '[', ']', '(', ')', '{', '}', '/')
+        val ASCII_NODE_PUNCTUATION = setOf(
+            '!', '"', '#', '$', '%', '&', '\'', '*', '+', '.', '`', '?', '\\', '_', '/',
+        )
+        val NODE_HYPHEN_TERMINATORS = setOf('>', '-', '.')
+    }
+}
+
+/**
  * Kotlin port of the Jison 0.4.18 lexer runtime used by Mermaid's generated
  * Flowchart parser. Rule ordering, start conditions and actions correspond to
  * packages/mermaid/src/diagrams/flowchart/parser/flow.jison.
@@ -63,10 +157,10 @@ internal class FlowJisonLexer(
             var matchedRule: Int? = null
             var matchedText: String? = null
             for (rule in rules) {
-                val match = FlowJisonTables.lexerPatterns[rule].find(remaining)
-                if (match?.range?.first == 0) {
+                val match = FlowJisonTables.lexerPatterns[rule].match(remaining)
+                if (match != null) {
                     matchedRule = rule
-                    matchedText = match.value
+                    matchedText = match
                     break
                 }
             }

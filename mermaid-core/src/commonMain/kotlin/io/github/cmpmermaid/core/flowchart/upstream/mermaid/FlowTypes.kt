@@ -98,6 +98,8 @@ internal data class MermaidFlowLayoutNode(
     val link: String? = null,
     val linkTarget: String? = null,
     val tooltip: String? = null,
+    val callbackName: String? = null,
+    val callbackArgs: String? = null,
     val icon: String? = null,
     val form: String? = null,
     val position: String? = null,

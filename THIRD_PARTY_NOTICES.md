@@ -3,8 +3,9 @@
 ## Mermaid
 
 The KMP runtime contains Kotlin translations of selected Mermaid Flowchart
-layout and rendering algorithms. The reference-rendering tool also downloads
-Mermaid.js from npm. JavaScript is not embedded in the runtime libraries.
+parsing, layout-adapter, and rendering algorithms. The reference-rendering
+tool also downloads Mermaid.js from npm. Mermaid.js itself is not embedded in
+the runtime libraries.
 
 Mermaid is distributed under the MIT License:
 
@@ -117,3 +118,85 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Marked
+
+The KMP runtime contains a Kotlin translation of the Marked `16.4.2` lexer and
+tokenizer behavior consumed by Mermaid Flowchart labels.
+
+Copyright (c) 2018+, MarkedJS (https://github.com/markedjs/)
+
+Copyright (c) 2011-2018, Christopher Jeffrey (https://github.com/chjj/)
+
+Marked is distributed under the MIT License:
+
+https://github.com/markedjs/marked/blob/v16.4.2/LICENSE.md
+
+## elkjs
+
+The KMP runtime embeds the generated `elk-worker.min.js` from `elkjs 0.9.3`.
+It is the only JavaScript algorithm bundle executed by the runtime.
+
+elkjs is distributed under the Eclipse Public License 2.0:
+
+https://github.com/kieler/elkjs
+
+The complete license text is included at:
+
+`third_party/licenses/ELKJS-EPL-2.0.txt`
+
+The corresponding source is available from the upstream `elkjs 0.9.3`
+release:
+
+https://github.com/kieler/elkjs/tree/0.9.3
+
+## quickjs-kt And QuickJS
+
+The KMP runtime uses `quickjs-kt 1.0.5` to execute the locked elkjs worker in
+an isolated runtime.
+
+quickjs-kt is distributed under the Apache License 2.0:
+
+https://github.com/dokar3/quickjs-kt
+
+QuickJS is distributed under the MIT License:
+
+Copyright (c) 2017-2021 Fabrice Bellard
+
+Copyright (c) 2017-2021 Charlie Gordon
+
+https://bellard.org/quickjs/
+
+## AndroidSVG
+
+The Android asset provider uses AndroidSVG `1.4` for SVG image nodes.
+
+AndroidSVG is distributed under the Apache License 2.0:
+
+https://github.com/BigBadaboom/androidsvg
+
+## Arimo
+
+The Compose adapter bundles Arimo Regular, Bold, Italic, and Bold Italic as an
+Arial-compatible default font family.
+
+Arimo is distributed under the Apache License 2.0. The complete license text
+is included at:
+
+`third_party/licenses/ARIMO-APACHE-2.0.txt`
+
+Project:
+
+https://fonts.google.com/specimen/Arimo
+
+## WHATWG HTML Named Character References
+
+`Html5NamedEntities.kt` is generated from the WHATWG HTML Standard
+`entities.json` data:
+
+https://html.spec.whatwg.org/entities.json
+
+The generator pins the source by SHA-256. WHATWG specification licensing
+information is available at:
+
+https://whatwg.org/ipr-policy

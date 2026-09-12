@@ -4,8 +4,9 @@ import io.github.cmpmermaid.core.flowchart.FlowchartPlugin
 
 data class MermaidRenderContext(
     val textMetrics: TextMetricProvider,
-    val theme: MermaidTheme = MermaidTheme(),
+    val theme: MermaidTheme = MermaidTheme.FlowchartDefault,
     val options: MermaidRenderOptions = MermaidRenderOptions(),
+    val assetMetrics: Map<String, SceneSize> = emptyMap(),
     internal val diagramTitle: String? = null,
     internal val frontmatterLineOffset: Int = 0,
 )
@@ -39,10 +40,6 @@ class MermaidEngine(
             is GMResult.Ok -> result.value
             is GMResult.Err -> return result
         }
-        val resolvedOptions = when (val result = preprocessed.config.applyTo(context.options)) {
-            is GMResult.Ok -> result.value
-            is GMResult.Err -> return result
-        }
         val header = preprocessed.code.cleaned
             .lineSequence()
             .map(String::trim)
@@ -50,6 +47,49 @@ class MermaidEngine(
             ?.substringBefore(' ')
             ?.lowercase()
             .orEmpty()
+        val detectedOptions = when (header) {
+            "flowchart-elk" -> context.options.copy(layout = "elk")
+            else -> context.options
+        }
+        val resolvedOptions = when (val result = preprocessed.config.applyTo(detectedOptions)) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
+        val textSize = preprocessed.code.cleaned.length
+        if (textSize > resolvedOptions.maxTextSize) {
+            return GMResult.Err(
+                MermaidError.ResourceLimit(
+                    resource = "maxTextSize",
+                    actual = textSize,
+                    maximum = resolvedOptions.maxTextSize,
+                    message = "Maximum text size in diagram exceeded " +
+                        "($textSize > ${resolvedOptions.maxTextSize})",
+                ),
+            )
+        }
+        val baseTheme = when (val themeName = resolvedOptions.themeName) {
+            null -> context.theme
+            "null" -> MermaidTheme.MermaidDefault
+            else -> MermaidTheme.named(themeName) ?: context.theme
+        }
+        val resolvedThemeVariables = if (
+            "fontFamily" in resolvedOptions.themeVariables ||
+            resolvedOptions.fontFamily == null
+        ) {
+            resolvedOptions.themeVariables
+        } else {
+            resolvedOptions.themeVariables + ("fontFamily" to resolvedOptions.fontFamily)
+        }
+        val resolvedTheme = when (
+            val result = MermaidTheme.withVariables(
+                theme = baseTheme,
+                values = resolvedThemeVariables,
+                colorArrays = resolvedOptions.themeColorArrays,
+            )
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
 
         val plugin = pluginsByHeader[header]
             ?: return GMResult.Err(MermaidError.UnsupportedDiagram(header.ifEmpty { "<empty>" }))
@@ -58,6 +98,7 @@ class MermaidEngine(
         return plugin.compile(
             source = parserSource,
             context = context.copy(
+                theme = resolvedTheme,
                 options = resolvedOptions,
                 diagramTitle = preprocessed.title,
                 frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,

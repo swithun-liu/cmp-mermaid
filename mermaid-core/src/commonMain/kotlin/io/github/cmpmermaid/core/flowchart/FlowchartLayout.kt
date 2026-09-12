@@ -4,7 +4,11 @@ import io.github.cmpmermaid.core.GMResult
 import io.github.cmpmermaid.core.MermaidError
 import io.github.cmpmermaid.core.MermaidRenderContext
 import io.github.cmpmermaid.core.MermaidScene
+import io.github.cmpmermaid.core.SceneAsset
+import io.github.cmpmermaid.core.SceneAssetKind
+import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.SceneElement
+import io.github.cmpmermaid.core.SceneNodeInteraction
 import io.github.cmpmermaid.core.ScenePath
 import io.github.cmpmermaid.core.ScenePathCommand
 import io.github.cmpmermaid.core.ScenePoint
@@ -14,9 +18,13 @@ import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneSize
 import io.github.cmpmermaid.core.SceneStrokePattern
 import io.github.cmpmermaid.core.SceneText
+import io.github.cmpmermaid.core.SceneTextAlignment
+import io.github.cmpmermaid.core.SceneTextSpan
 import io.github.cmpmermaid.core.SceneTextWeight
 import io.github.cmpmermaid.core.TextMetricsRequest
+import io.github.cmpmermaid.core.subGraphTitleTotalMargin
 import io.github.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPort
+import io.github.cmpmermaid.core.flowchart.upstream.mermaid.MermaidLineJumpPort
 import io.github.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
 import io.github.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapePort
 import kotlin.math.max
@@ -27,19 +35,22 @@ internal class FlowchartLayout {
         document: FlowchartDocument,
         context: MermaidRenderContext,
     ): GMResult<MermaidScene, MermaidError> {
+        val resolvedDocument = resolveImageMetrics(document, context)
         val nodeSizes = linkedMapOf<String, SceneSize>()
         val nodeTextSizes = linkedMapOf<String, SceneSize>()
         val nodeShapeLayouts = linkedMapOf<String, MermaidShapeLayout>()
-        for ((id, node) in document.nodes) {
+        for ((id, node) in resolvedDocument.nodes) {
             val style = resolveStyle(node)
             val measured = try {
                 context.textMetrics.measure(
                     TextMetricsRequest(
                         text = node.label,
-                        fontSize = style.fontSize ?: context.options.fontSize,
+                        fontSize = textFontSize(style, context),
                         maxWidth = context.options.wrappingWidth,
-                        weight = style.fontWeight ?: SceneTextWeight.Medium,
-                        spans = node.labelSpans,
+                        lineHeight = textLineHeight(style, context),
+                        fontFamily = textFontFamily(style, context),
+                        weight = style.fontWeight ?: SceneTextWeight.Normal,
+                        spans = textSpans(node.label, node.labelSpans, style),
                     ),
                 )
             } catch (failure: Throwable) {
@@ -55,7 +66,7 @@ internal class FlowchartLayout {
                 val shapeResult = MermaidShapePort.layout(
                     node = node,
                     measuredLabel = textSize,
-                    direction = document.direction,
+                    direction = resolvedDocument.direction,
                 )
             ) {
                 is GMResult.Ok -> shapeResult.value
@@ -65,17 +76,19 @@ internal class FlowchartLayout {
             nodeSizes[id] = shapeLayout.size
         }
         val edgeLabelSizes = linkedMapOf<Int, SceneSize>()
-        for ((index, edge) in document.edges.withIndex()) {
+        for ((index, edge) in resolvedDocument.edges.withIndex()) {
             val label = edge.label ?: continue
             val edgeStyle = resolveEdgeStyle(edge)
             val measured = try {
                 context.textMetrics.measure(
                     TextMetricsRequest(
                         text = label,
-                        fontSize = edgeStyle.fontSize ?: 13f,
+                        fontSize = textFontSize(edgeStyle, context),
                         maxWidth = 180f,
+                        lineHeight = textLineHeight(edgeStyle, context),
+                        fontFamily = textFontFamily(edgeStyle, context),
                         weight = edgeStyle.fontWeight ?: SceneTextWeight.Normal,
-                        spans = edge.labelSpans,
+                        spans = textSpans(label, edge.labelSpans, edgeStyle),
                     ),
                 )
             } catch (failure: Throwable) {
@@ -88,33 +101,95 @@ internal class FlowchartLayout {
             }
             edgeLabelSizes[index] = SceneSize(measured.width, measured.height)
         }
+        val subgraphLabelSizes = linkedMapOf<String, SceneSize>()
+        for (subgraph in resolvedDocument.subgraphs) {
+            val style = subgraph.inlineStyle ?: FlowNodeStyle()
+            val measured = try {
+                context.textMetrics.measure(
+                    TextMetricsRequest(
+                        text = subgraph.label,
+                        fontSize = textFontSize(style, context),
+                        maxWidth = UNWRAPPED_LABEL_MAX_WIDTH,
+                        lineHeight = textLineHeight(style, context),
+                        fontFamily = textFontFamily(style, context),
+                        weight = style.fontWeight ?: SceneTextWeight.Normal,
+                        spans = textSpans(subgraph.label, subgraph.labelSpans, style),
+                    ),
+                )
+            } catch (failure: Throwable) {
+                return GMResult.Err(
+                    MermaidError.Layout(
+                        "Subgraph label measurement failed for '${subgraph.id}': " +
+                            (failure.message ?: "unknown error"),
+                    ),
+                )
+            }
+            subgraphLabelSizes[subgraph.id] = SceneSize(measured.width, measured.height)
+        }
 
-        val placement = when (
-            val dagre = FlowDagreLayout.layout(
-                document = document,
-                nodeSizes = nodeSizes,
-                nodeShapeLayouts = nodeShapeLayouts,
-                edgeLabelSizes = edgeLabelSizes,
-                options = context.options,
+        val placement = when (context.options.layout) {
+            "dagre" -> when (
+                val dagre = FlowDagreLayout.layout(
+                    document = resolvedDocument,
+                    nodeSizes = nodeSizes,
+                    nodeShapeLayouts = nodeShapeLayouts,
+                    edgeLabelSizes = edgeLabelSizes,
+                    options = context.options,
+                )
+            ) {
+                is GMResult.Ok -> dagre.value
+                is GMResult.Err -> return dagre
+            }
+            "elk",
+            "elk.layered",
+            "elk.stress",
+            "elk.force",
+            "elk.mrtree",
+            "elk.sporeOverlap",
+            "elk.box",
+            "elk.rectpacking",
+            -> when (
+                val elk = FlowElkLayout.layout(
+                    document = resolvedDocument,
+                    nodeSizes = nodeSizes,
+                    nodeShapeLayouts = nodeShapeLayouts,
+                    edgeLabelSizes = edgeLabelSizes,
+                    subgraphLabelSizes = subgraphLabelSizes,
+                    options = context.options,
+                )
+            ) {
+                is GMResult.Ok -> elk.value
+                is GMResult.Err -> return elk
+            }
+            else -> return GMResult.Err(
+                MermaidError.UnsupportedFeature(
+                    feature = "${context.options.layout} layout",
+                    message = "Native Flowchart has not connected the requested layout engine",
+                ),
             )
-        ) {
-            is GMResult.Ok -> dagre.value
-            is GMResult.Err -> return dagre
         }
         val nodeBounds = placement.nodeBounds
-        if (nodeBounds.size != document.nodes.size) {
+        if (nodeBounds.size != resolvedDocument.nodes.size) {
             return GMResult.Err(MermaidError.Layout("Not every flowchart node was positioned"))
         }
         val subgraphBounds = placement.subgraphBounds
 
         val elements = mutableListOf<SceneElement>()
-        when (val subgraphs = addSubgraphs(document, subgraphBounds, context, elements)) {
+        when (
+            val subgraphs = addSubgraphs(
+                document = resolvedDocument,
+                subgraphBounds = subgraphBounds,
+                subgraphLabelSizes = subgraphLabelSizes,
+                context = context,
+                elements = elements,
+            )
+        ) {
             is GMResult.Ok -> Unit
             is GMResult.Err -> return subgraphs
         }
         when (
             val edges = addEdges(
-                document = document,
+                document = resolvedDocument,
                 routedEdges = placement.edges,
                 edgeLabelSizes = edgeLabelSizes,
                 context = context,
@@ -124,18 +199,54 @@ internal class FlowchartLayout {
             is GMResult.Ok -> Unit
             is GMResult.Err -> return edges
         }
-        addNodes(document, nodeBounds, nodeTextSizes, nodeShapeLayouts, context, elements)
-        when (val title = addDiagramTitle(document, context, elements)) {
+        addNodes(resolvedDocument, nodeBounds, nodeTextSizes, nodeShapeLayouts, context, elements)
+        when (val title = addDiagramTitle(resolvedDocument, context, elements)) {
             is GMResult.Ok -> Unit
             is GMResult.Err -> return title
         }
 
-        return GMResult.Ok(normalizeScene(elements, document, context))
+        return GMResult.Ok(normalizeScene(elements, resolvedDocument, context))
     }
+
+    private fun resolveImageMetrics(
+        document: FlowchartDocument,
+        context: MermaidRenderContext,
+    ): FlowchartDocument = document.copy(
+        nodes = document.nodes.mapValues { (_, node) ->
+            val source = node.image ?: return@mapValues node
+            val naturalSize = context.assetMetrics[source]
+                ?.takeIf { size -> size.width > 0f && size.height > 0f }
+                ?: return@mapValues node
+            val aspectRatio = naturalSize.width / naturalSize.height
+            val minimumImageWidth = context.options.wrappingWidth.takeIf {
+                node.label.isNotEmpty()
+            } ?: 0f
+            val rawWidth = max(
+                minimumImageWidth,
+                node.assetWidth ?: naturalSize.width,
+            )
+            val constrained = node.constraint.equals("on", ignoreCase = true)
+            val imageWidth = if (constrained && node.assetHeight != null) {
+                node.assetHeight * aspectRatio
+            } else {
+                rawWidth
+            }
+            val imageHeight = if (constrained) {
+                imageWidth / aspectRatio
+            } else {
+                node.assetHeight ?: naturalSize.height
+            }
+            node.copy(
+                assetWidth = imageWidth,
+                assetHeight = imageHeight,
+            )
+        },
+    )
 
     private fun addSubgraphs(
         document: FlowchartDocument,
         subgraphBounds: Map<String, SceneRect>,
+        subgraphLabelSizes: Map<String, SceneSize>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ): GMResult<Unit, MermaidError> {
@@ -145,24 +256,12 @@ internal class FlowchartLayout {
                 val bounds = subgraphBounds[subgraph.id]
                     ?: return@forEachIndexed
                 val style = subgraph.inlineStyle ?: FlowNodeStyle()
-                val measured = try {
-                    context.textMetrics.measure(
-                        TextMetricsRequest(
-                            text = subgraph.label,
-                            fontSize = style.fontSize ?: context.options.fontSize,
-                            maxWidth = bounds.width.coerceAtLeast(1f),
-                            weight = style.fontWeight ?: SceneTextWeight.Normal,
-                            spans = subgraph.labelSpans,
-                        ),
-                    )
-                } catch (failure: Throwable) {
-                    return GMResult.Err(
+                val measured = subgraphLabelSizes[subgraph.id]
+                    ?: return GMResult.Err(
                         MermaidError.Layout(
-                            "Subgraph label measurement failed for '${subgraph.id}': " +
-                                (failure.message ?: "unknown error"),
+                            "Subgraph '${subgraph.id}' has no measured label",
                         ),
                     )
-                }
                 val renderedWidth = max(bounds.width, measured.width + subgraph.padding)
                 val renderedBounds = SceneRect(
                     left = bounds.center.x - renderedWidth / 2f,
@@ -174,26 +273,32 @@ internal class FlowchartLayout {
                     id = "subgraph_${subgraph.id}",
                     bounds = renderedBounds,
                     kind = SceneShapeKind.Rectangle,
-                    fill = style.fill ?: context.theme.groupFill,
-                    stroke = style.stroke ?: context.theme.groupStroke,
+                    fill = style.fill ?: context.theme.colorFill(subgraph.colorIndex),
+                    stroke = style.stroke ?: context.theme.colorStroke(subgraph.colorIndex),
                     strokeWidth = style.strokeWidth ?: 1f,
                     strokePattern = style.strokePattern ?: SceneStrokePattern.Solid,
                     dashIntervals = style.dashIntervals,
                     cornerRadius = 0f,
+                    shadow = context.theme.dropShadow.takeIf { subgraph.look == "neo" },
                     zIndex = index,
                 )
                 elements += SceneText(
                     text = subgraph.label,
                     bounds = SceneRect(
                         left = renderedBounds.center.x - measured.width / 2f,
-                        top = renderedBounds.top,
+                        top = renderedBounds.top + context.options.subGraphTitleTopMargin,
                         right = renderedBounds.center.x + measured.width / 2f,
-                        bottom = renderedBounds.top + measured.height,
+                        bottom = renderedBounds.top +
+                            context.options.subGraphTitleTopMargin +
+                            measured.height,
                     ),
                     color = style.text ?: context.theme.groupText,
-                    fontSize = style.fontSize ?: context.options.fontSize,
+                    fontSize = textFontSize(style, context),
+                    lineHeight = textLineHeight(style, context),
+                    fontFamily = textFontFamily(style, context),
                     weight = style.fontWeight ?: SceneTextWeight.Normal,
-                    spans = subgraph.labelSpans,
+                    spans = textSpans(subgraph.label, subgraph.labelSpans, style),
+                    horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                     zIndex = index + 1,
                 )
             }
@@ -202,7 +307,7 @@ internal class FlowchartLayout {
 
     private fun addEdges(
         document: FlowchartDocument,
-        routedEdges: Map<Int, FlowDagreLayout.RoutedEdge>,
+        routedEdges: Map<Int, FlowRoutedEdge>,
         edgeLabelSizes: Map<Int, SceneSize>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
@@ -214,7 +319,7 @@ internal class FlowchartLayout {
             if (edge.invisible) return@forEachIndexed
             val routed = routedEdges[index] ?: return@forEachIndexed
             val edgeStyle = resolveEdgeStyle(edge)
-            val curve = edge.curve ?: context.options.curve
+            val curve = routed.curveOverride ?: edge.curve ?: context.options.curve
             val commands = when (
                 val generatedPath = MermaidEdgePathPort.generate(
                     points = routed.points,
@@ -231,15 +336,17 @@ internal class FlowchartLayout {
                 points = routed.points,
                 commands = commands,
                 color = edgeStyle.stroke ?: context.theme.edge,
-                strokeWidth = edgeStyle.strokeWidth ?: edge.thickness,
+                strokeWidth = edgeStyle.strokeWidth ?: edge.thickness ?: context.theme.strokeWidth,
                 strokePattern = if (edge.animated) SceneStrokePattern.Dashed else edgeStyle.strokePattern ?: edge.pattern,
                 arrowStart = edge.arrowStart,
                 arrowEnd = edge.arrowEnd,
                 curve = curve,
                 look = edge.look,
                 animated = edge.animated,
+                animationDurationMillis = edge.animationDurationMillis,
                 dashIntervals = if (edge.animated) {
-                    listOf(9f, 5f)
+                    edgeStyle.dashIntervals.takeIf(List<Float>::isNotEmpty)
+                        ?: listOf(9f, 5f)
                 } else {
                     edgeStyle.dashIntervals
                 },
@@ -247,7 +354,10 @@ internal class FlowchartLayout {
 
             val label = edge.label ?: return@forEachIndexed
             val labelSize = edgeLabelSizes[index] ?: return@forEachIndexed
-            val center = routed.labelAnchor
+            val center = routed.labelAnchor.translate(
+                dx = 0f,
+                dy = context.options.subGraphTitleTotalMargin / 2f,
+            )
             val labelBounds = SceneRect(
                 left = center.x - labelSize.width / 2f - 6f,
                 top = center.y - labelSize.height / 2f - 3f,
@@ -267,13 +377,20 @@ internal class FlowchartLayout {
                 text = label,
                 bounds = labelBounds,
                 color = edgeStyle.text ?: context.theme.nodeText,
-                fontSize = edgeStyle.fontSize ?: 13f,
+                fontSize = textFontSize(edgeStyle, context),
+                lineHeight = textLineHeight(edgeStyle, context),
+                fontFamily = textFontFamily(edgeStyle, context),
                 weight = edgeStyle.fontWeight ?: SceneTextWeight.Normal,
-                spans = edge.labelSpans,
+                spans = textSpans(label, edge.labelSpans, edgeStyle),
+                horizontalAlignment = edgeStyle.textAlignment ?: SceneTextAlignment.Center,
                 zIndex = 7,
             )
         }
-        elements += paths
+        elements += if (context.options.layout == "elk" || context.options.layout.startsWith("elk.")) {
+            MermaidLineJumpPort.apply(paths, context.options.elk.lineHops)
+        } else {
+            paths
+        }
         elements += labels
         return GMResult.Ok(Unit)
     }
@@ -290,18 +407,72 @@ internal class FlowchartLayout {
             val bounds = nodeBounds.getValue(id)
             val style = resolveStyle(node)
             val shapeLayout = nodeShapeLayouts.getValue(id)
+            val isIconShape = node.shape in ICON_SHAPES
+            val fill = style.fill
+                ?: node.colorIndex?.let(context.theme::colorFill)
+                ?: context.theme.nodeFill
+            val stroke = when {
+                node.shape == SceneShapeKind.Icon -> SceneColor(0x00000000)
+                isIconShape -> fill
+                else -> style.stroke
+                    ?: node.colorIndex?.let(context.theme::colorStroke)
+                    ?: context.theme.nodeStroke
+            }
             elements += SceneShape(
                 id = id,
                 bounds = bounds,
                 kind = node.shape,
                 geometry = shapeLayout.geometry,
-                fill = style.fill ?: context.theme.nodeFill,
-                stroke = style.stroke ?: context.theme.nodeStroke,
-                strokeWidth = style.strokeWidth ?: 1.5f,
+                fill = if (node.shape == SceneShapeKind.Icon) {
+                    SceneColor(0x00000000)
+                } else {
+                    fill
+                },
+                stroke = stroke,
+                strokeWidth = style.strokeWidth ?: context.theme.strokeWidth,
                 strokePattern = style.strokePattern ?: io.github.cmpmermaid.core.SceneStrokePattern.Solid,
                 dashIntervals = style.dashIntervals,
                 cornerRadius = 9f,
+                shadow = context.theme.dropShadow.takeIf {
+                    node.look == "neo" && !isIconShape
+                },
             )
+            shapeLayout.assetOffset?.let { offset ->
+                val isIcon = node.image == null && node.icon != null
+                val source = if (isIcon) node.icon else node.image
+                if (source != null) {
+                    val assetWidth = if (isIcon) {
+                        max(node.assetWidth ?: 48f, node.assetHeight ?: 48f)
+                    } else {
+                        node.assetWidth ?: 48f
+                    }
+                    val assetHeight = if (isIcon) {
+                        assetWidth
+                    } else {
+                        node.assetHeight ?: 48f
+                    }
+                    val assetCenter = ScenePoint(
+                        x = bounds.center.x + offset.x,
+                        y = bounds.center.y + offset.y,
+                    )
+                    elements += SceneAsset(
+                        id = "${id}_asset",
+                        source = source,
+                        bounds = SceneRect(
+                            left = assetCenter.x - assetWidth / 2f,
+                            top = assetCenter.y - assetHeight / 2f,
+                            right = assetCenter.x + assetWidth / 2f,
+                            bottom = assetCenter.y + assetHeight / 2f,
+                        ),
+                        kind = if (isIcon) SceneAssetKind.Icon else SceneAssetKind.Image,
+                        tint = if (isIcon) {
+                            style.stroke ?: context.theme.nodeStroke
+                        } else {
+                            null
+                        },
+                    )
+                }
+            }
             if (shapeLayout.showsLabel) {
                 val textSize = nodeTextSizes.getValue(id)
                 val center = bounds.center
@@ -309,18 +480,35 @@ internal class FlowchartLayout {
                     x = center.x + shapeLayout.labelOffset.x,
                     y = center.y + shapeLayout.labelOffset.y,
                 )
+                val labelBounds = SceneRect(
+                    left = labelCenter.x - textSize.width / 2f,
+                    top = labelCenter.y - textSize.height / 2f,
+                    right = labelCenter.x + textSize.width / 2f,
+                    bottom = labelCenter.y + textSize.height / 2f,
+                )
+                if (node.label.isNotEmpty() && (node.icon != null || node.image != null)) {
+                    elements += SceneShape(
+                        id = "${id}_asset_label_background",
+                        bounds = labelBounds,
+                        kind = SceneShapeKind.Rectangle,
+                        fill = style.labelBackground
+                            ?: context.theme.edgeLabelFill.withAlpha(0x80),
+                        stroke = SceneColor(0x00000000),
+                        strokeWidth = 0f,
+                        cornerRadius = 0f,
+                        zIndex = 19,
+                    )
+                }
                 elements += SceneText(
                     text = node.label,
-                    bounds = SceneRect(
-                        left = labelCenter.x - textSize.width / 2f,
-                        top = labelCenter.y - textSize.height / 2f,
-                        right = labelCenter.x + textSize.width / 2f,
-                        bottom = labelCenter.y + textSize.height / 2f,
-                    ),
+                    bounds = labelBounds,
                     color = style.text ?: context.theme.nodeText,
-                    fontSize = style.fontSize ?: context.options.fontSize,
-                    weight = style.fontWeight ?: SceneTextWeight.Medium,
-                    spans = node.labelSpans,
+                    fontSize = textFontSize(style, context),
+                    lineHeight = textLineHeight(style, context),
+                    fontFamily = textFontFamily(style, context),
+                    weight = style.fontWeight ?: SceneTextWeight.Normal,
+                    spans = textSpans(node.label, node.labelSpans, style),
+                    horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                 )
             }
         }
@@ -331,6 +519,63 @@ internal class FlowchartLayout {
 
     private fun resolveEdgeStyle(edge: FlowEdge): FlowNodeStyle =
         edge.inlineStyle ?: FlowNodeStyle()
+
+    private fun SceneColor.withAlpha(alpha: Int): SceneColor =
+        SceneColor((argb and 0x00FFFFFFL) or (alpha.toLong() shl 24))
+
+    private fun textFontSize(
+        style: FlowNodeStyle,
+        context: MermaidRenderContext,
+    ): Float {
+        val inherited = context.options.fontSize ?: context.theme.fontSize
+        style.fontSize?.let { return it }
+        val scale = style.fontSizeScale ?: return inherited
+        var resolved = inherited
+        repeat(if (context.options.htmlLabels) 3 else 2) {
+            resolved *= scale
+        }
+        return resolved
+    }
+
+    private fun textLineHeight(
+        style: FlowNodeStyle,
+        context: MermaidRenderContext,
+    ): Float {
+        val inherited = if (context.options.htmlLabels) 1.5f else 1.1f
+        val fontSize = textFontSize(style, context)
+        return style.lineHeightPixels
+            ?.div(fontSize)
+            ?.takeIf { it.isFinite() && it > 0f }
+            ?: style.lineHeightMultiplier
+            ?: inherited
+    }
+
+    private fun textFontFamily(
+        style: FlowNodeStyle,
+        context: MermaidRenderContext,
+    ): String = style.fontFamily ?: context.theme.fontFamily
+
+    private fun textSpans(
+        text: String,
+        spans: List<SceneTextSpan>,
+        style: FlowNodeStyle,
+    ): List<SceneTextSpan> {
+        if (
+            text.isEmpty() ||
+            (style.italic != true && !style.underline && !style.lineThrough)
+        ) {
+            return spans
+        }
+        return listOf(
+            SceneTextSpan(
+                start = 0,
+                end = text.length,
+                italic = style.italic == true,
+                underline = style.underline,
+                lineThrough = style.lineThrough,
+            ),
+        ) + spans
+    }
 
     /**
      * Native equivalent of utils.insertTitle() in Mermaid's unified Flowchart
@@ -354,6 +599,8 @@ internal class FlowchartLayout {
                     text = title,
                     fontSize = TITLE_FONT_SIZE,
                     maxWidth = graphBounds.width.coerceAtLeast(1f),
+                    lineHeight = 1f,
+                    fontFamily = context.theme.fontFamily,
                     weight = SceneTextWeight.Normal,
                 ),
             )
@@ -376,6 +623,8 @@ internal class FlowchartLayout {
             ),
             color = context.theme.nodeText,
             fontSize = TITLE_FONT_SIZE,
+            lineHeight = 1f,
+            fontFamily = context.theme.fontFamily,
             weight = SceneTextWeight.Normal,
             zIndex = 30,
         )
@@ -395,6 +644,28 @@ internal class FlowchartLayout {
         val dx = padding - bounds.left
         val dy = padding - bounds.top
         val translated = elements.map { it.translate(dx, dy) }
+        val translatedNodeBounds = translated
+            .filterIsInstance<SceneShape>()
+            .associate { shape -> shape.id to shape.bounds }
+        val interactions = document.nodes.values.mapNotNull { node ->
+            if (
+                node.link == null &&
+                node.tooltip == null &&
+                node.callbackName == null
+            ) {
+                return@mapNotNull null
+            }
+            val nodeBounds = translatedNodeBounds[node.id] ?: return@mapNotNull null
+            SceneNodeInteraction(
+                nodeId = node.id,
+                bounds = nodeBounds,
+                link = node.link,
+                linkTarget = node.linkTarget,
+                tooltip = node.tooltip,
+                callbackName = node.callbackName,
+                callbackArgs = node.callbackArgs,
+            )
+        }
         return MermaidScene(
             width = bounds.width + padding * 2f,
             height = bounds.height + padding * 2f,
@@ -403,10 +674,12 @@ internal class FlowchartLayout {
             title = document.title,
             accessibilityTitle = document.accessibilityTitle,
             accessibilityDescription = document.accessibilityDescription,
+            interactions = interactions,
         )
     }
 
     private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
+        is SceneAsset -> element.bounds
         is SceneShape -> element.bounds
         is SceneText -> element.bounds
         is ScenePath -> {
@@ -423,6 +696,7 @@ internal class FlowchartLayout {
     }
 
     private fun SceneElement.translate(dx: Float, dy: Float): SceneElement = when (this) {
+        is SceneAsset -> copy(bounds = bounds.translate(dx, dy))
         is SceneShape -> copy(bounds = bounds.translate(dx, dy))
         is SceneText -> copy(bounds = bounds.translate(dx, dy))
         is ScenePath -> copy(
@@ -446,12 +720,20 @@ internal class FlowchartLayout {
             control2 = control2.translate(dx, dy),
             end = end.translate(dx, dy),
         )
+        is ScenePathCommand.ArcTo -> copy(end = end.translate(dx, dy))
     }
 
     private fun ScenePoint.translate(dx: Float, dy: Float): ScenePoint =
         ScenePoint(x + dx, y + dy)
 
     private companion object {
+        val ICON_SHAPES = setOf(
+            SceneShapeKind.Icon,
+            SceneShapeKind.IconCircle,
+            SceneShapeKind.IconSquare,
+            SceneShapeKind.IconRounded,
+        )
         const val TITLE_FONT_SIZE = 18f
+        const val UNWRAPPED_LABEL_MAX_WIDTH = 100_000f
     }
 }

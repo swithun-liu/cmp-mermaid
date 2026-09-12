@@ -3,10 +3,12 @@ package io.github.cmpmermaid.core.flowchart
 import io.github.cmpmermaid.core.GMResult
 import io.github.cmpmermaid.core.MermaidError
 import io.github.cmpmermaid.core.MermaidRenderOptions
+import io.github.cmpmermaid.core.CssColorParser
 import io.github.cmpmermaid.core.SceneArrowHead
 import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneStrokePattern
+import io.github.cmpmermaid.core.SceneTextAlignment
 import io.github.cmpmermaid.core.SceneTextWeight
 import io.github.cmpmermaid.core.flowchart.upstream.mermaid.FlowDb
 import io.github.cmpmermaid.core.flowchart.upstream.mermaid.FlowLabelType
@@ -72,12 +74,15 @@ internal object FlowchartDataAdapter {
                 link = node.link,
                 linkTarget = node.linkTarget,
                 tooltip = tooltip,
+                callbackName = node.callbackName,
+                callbackArgs = node.callbackArgs,
                 icon = node.icon,
                 position = node.position,
                 image = node.image,
                 assetWidth = node.assetWidth,
                 assetHeight = node.assetHeight,
                 constraint = node.constraint,
+                colorIndex = node.colorIndex,
             )
         }
 
@@ -116,6 +121,8 @@ internal object FlowchartDataAdapter {
                         padding = group.padding,
                         look = group.look,
                         inlineStyle = style,
+                        metadata = group.metadata,
+                        colorIndex = group.colorIndex,
                     ),
                 )
             }
@@ -155,13 +162,24 @@ internal object FlowchartDataAdapter {
                         },
                         arrowStart = arrowHead(edge.arrowTypeStart),
                         arrowEnd = arrowHead(edge.arrowTypeEnd),
-                        thickness = if (edge.thickness == "thick") 3.5f else 1f,
+                        thickness = if (edge.thickness == "thick") 3.5f else null,
                         minimumLength = edge.minimumLength ?: 1,
                         invisible = edge.thickness == "invisible",
                         inlineStyle = style,
                         animated = edge.animate == true ||
                             edge.animation == "fast" ||
-                            edge.animation == "slow",
+                            edge.animation == "slow" ||
+                            style.animated,
+                        animationDurationMillis = style.animationDurationMillis
+                            ?: when (edge.animation) {
+                                "slow" -> SLOW_ANIMATION_DURATION_MILLIS
+                                "fast" -> FAST_ANIMATION_DURATION_MILLIS
+                                else -> if (edge.animate == true) {
+                                    FAST_ANIMATION_DURATION_MILLIS
+                                } else {
+                                    null
+                                }
+                            },
                         curve = edge.curve,
                         look = edge.look,
                     ),
@@ -294,6 +312,9 @@ internal object FlowchartDataAdapter {
         }
         return GMResult.Ok(kind)
     }
+
+    private const val FAST_ANIMATION_DURATION_MILLIS = 20_000
+    private const val SLOW_ANIMATION_DURATION_MILLIS = 50_000
 }
 
 /**
@@ -309,10 +330,11 @@ private object FlowStyleAdapter {
         styles
             .flatMap(::normalizeStyleList)
             .forEach { style ->
-                val pair = style.split(':')
+                val pair = style.split(':', limit = 2)
                 val key = pair.firstOrNull()?.trim().orEmpty()
-                if (key.isNotEmpty()) {
-                    declarations[key] = pair.getOrNull(1)?.trim().orEmpty()
+                val value = pair.getOrNull(1)?.trim()
+                if (key.isNotEmpty() && value != null) {
+                    declarations[key] = value
                 }
             }
 
@@ -333,13 +355,54 @@ private object FlowStyleAdapter {
         }
         val fontSize = when (val value = declarations["font-size"]) {
             null -> null
-            else -> parsePixelNumber(value)
+            else -> parseFontSize(value)
                 ?: return invalidCss(owner, "font-size", value)
         }
         val strokeWidth = when (val value = declarations["stroke-width"]) {
             null -> null
             else -> parsePixelNumber(value)
                 ?: return invalidCss(owner, "stroke-width", value)
+        }
+        val dashOffset = when (val value = declarations["stroke-dashoffset"]) {
+            null -> null
+            else -> parsePixelNumber(value)
+                ?: return invalidCss(owner, "stroke-dashoffset", value)
+        }
+        val animation = declarations["animation"]
+        val animationDurationMillis = animation
+            ?.takeUnless { it.equals("none", ignoreCase = true) }
+            ?.let(::parseAnimationDurationMillis)
+        val fontStyle = when (val value = declarations["font-style"]?.lowercase()) {
+            "italic", "oblique" -> true
+            "normal" -> false
+            "bold" -> null
+            null -> null
+            else -> return invalidCss(owner, "font-style", value)
+        }
+        val textDecoration = when (val value = declarations["text-decoration"]?.lowercase()) {
+            null, "none" -> TextDecoration()
+            else -> {
+                val values = value.split(WHITESPACE).filter(String::isNotEmpty)
+                if (values.isEmpty() || values.any { it !in TEXT_DECORATIONS }) {
+                    return invalidCss(owner, "text-decoration", value)
+                }
+                TextDecoration(
+                    underline = "underline" in values,
+                    lineThrough = "line-through" in values,
+                )
+            }
+        }
+        val lineHeight = when (val value = declarations["line-height"]) {
+            null -> null
+            else -> parseLineHeight(value)
+                ?: return invalidCss(owner, "line-height", value)
+        }
+        val textAlignment = when (val value = declarations["text-align"]?.lowercase()) {
+            "left", "start" -> SceneTextAlignment.Start
+            "center" -> SceneTextAlignment.Center
+            "right", "end" -> SceneTextAlignment.End
+            null -> null
+            else -> return invalidCss(owner, "text-align", value)
         }
         return GMResult.Ok(FlowNodeStyle(
             fill = declarations["fill"]?.let(::parsePaintColor),
@@ -351,7 +414,9 @@ private object FlowStyleAdapter {
                 ?.takeIf(List<Float>::isNotEmpty)
                 ?.let { SceneStrokePattern.Dashed },
             dashIntervals = dashIntervals.orEmpty(),
-            fontSize = fontSize,
+            fontSize = fontSize?.pixels,
+            fontSizeScale = fontSize?.scale,
+            fontFamily = declarations["font-family"]?.takeIf(String::isNotBlank),
             fontWeight = when (declarations["font-weight"]?.lowercase()) {
                 "bold", "600", "700", "800", "900" -> SceneTextWeight.Bold
                 "normal", "100", "200", "300", "400", "500" -> SceneTextWeight.Normal
@@ -362,6 +427,16 @@ private object FlowStyleAdapter {
                     declarations.getValue("font-weight"),
                 )
             },
+            italic = fontStyle,
+            underline = textDecoration.underline,
+            lineThrough = textDecoration.lineThrough,
+            lineHeightMultiplier = lineHeight?.scale,
+            lineHeightPixels = lineHeight?.pixels,
+            textAlignment = textAlignment,
+            animated = animation != null &&
+                !animation.equals("none", ignoreCase = true) &&
+                dashOffset != null,
+            animationDurationMillis = animationDurationMillis,
         ))
     }
 
@@ -385,6 +460,53 @@ private object FlowStyleAdapter {
         }
     }
 
+    private fun parseFontSize(value: String): RelativeLength? {
+        val normalized = value.trim().lowercase()
+        val parsed = when {
+            normalized.endsWith("px") ->
+                normalized.dropLast(2).trim().toFloatOrNull()
+                    ?.let { RelativeLength(pixels = it) }
+            normalized.endsWith("%") ->
+                normalized.dropLast(1).trim().toFloatOrNull()
+                    ?.let { RelativeLength(scale = it / 100f) }
+            normalized.endsWith("em") ->
+                normalized.dropLast(2).trim().toFloatOrNull()
+                    ?.let { RelativeLength(scale = it) }
+            NUMBER.matches(normalized) ->
+                normalized.toFloatOrNull()?.let { RelativeLength(pixels = it) }
+            else -> null
+        } ?: return null
+        return parsed.takeIf { length ->
+            (length.pixels == null || length.pixels > 0f) &&
+                (length.scale == null || length.scale > 0f)
+        }
+    }
+
+    private fun parseLineHeight(value: String): RelativeLength? {
+        val normalized = value.trim().lowercase()
+        if (normalized == "normal") {
+            return RelativeLength()
+        }
+        val parsed = when {
+            normalized.endsWith("px") ->
+                normalized.dropLast(2).trim().toFloatOrNull()
+                    ?.let { RelativeLength(pixels = it) }
+            normalized.endsWith("%") ->
+                normalized.dropLast(1).trim().toFloatOrNull()
+                    ?.let { RelativeLength(scale = it / 100f) }
+            normalized.endsWith("em") ->
+                normalized.dropLast(2).trim().toFloatOrNull()
+                    ?.let { RelativeLength(scale = it) }
+            NUMBER.matches(normalized) ->
+                normalized.toFloatOrNull()?.let { RelativeLength(scale = it) }
+            else -> null
+        } ?: return null
+        return parsed.takeIf { length ->
+            (length.pixels == null || length.pixels > 0f) &&
+                (length.scale == null || length.scale > 0f)
+        }
+    }
+
     private fun parseDashArray(value: String?): List<Float>? {
         if (value == null || value.trim().equals("none", ignoreCase = true)) {
             return emptyList()
@@ -402,6 +524,13 @@ private object FlowStyleAdapter {
         return if (parsed.size % 2 == 0) parsed else parsed + parsed
     }
 
+    private fun parseAnimationDurationMillis(value: String): Int? {
+        val match = ANIMATION_DURATION.find(value) ?: return null
+        val amount = match.groupValues[1].toFloatOrNull() ?: return null
+        val multiplier = if (match.groupValues[2].equals("ms", ignoreCase = true)) 1f else 1_000f
+        return (amount * multiplier).toInt().takeIf { it > 0 }
+    }
+
     private fun invalidCss(
         owner: String,
         property: String,
@@ -416,14 +545,35 @@ private object FlowStyleAdapter {
 
     private val SUPPORTED_PROPERTIES = setOf(
         "background",
+        "animation",
+        "border",
         "color",
         "fill",
+        "font-family",
         "font-size",
+        "font-style",
         "font-weight",
+        "line-height",
         "stroke",
         "stroke-dasharray",
+        "stroke-dashoffset",
         "stroke-width",
+        "text-align",
+        "text-decoration",
     )
+    private val TEXT_DECORATIONS = setOf("underline", "line-through")
     private val NUMBER = Regex("""^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$""")
     private val DASH_SEPARATOR = Regex("""[\s,]+""")
+    private val WHITESPACE = Regex("""\s+""")
+    private val ANIMATION_DURATION = Regex("""(?:^|\s)(\d+(?:\.\d+)?)(ms|s)(?:\s|$)""")
+
+    private data class RelativeLength(
+        val pixels: Float? = null,
+        val scale: Float? = null,
+    )
+
+    private data class TextDecoration(
+        val underline: Boolean = false,
+        val lineThrough: Boolean = false,
+    )
 }

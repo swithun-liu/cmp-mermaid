@@ -1,6 +1,5 @@
-package io.github.cmpmermaid.core.flowchart
+package io.github.cmpmermaid.core
 
-import io.github.cmpmermaid.core.SceneColor
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
