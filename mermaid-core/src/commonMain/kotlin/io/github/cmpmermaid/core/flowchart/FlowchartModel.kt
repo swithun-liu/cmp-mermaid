@@ -45,6 +45,7 @@ internal data class FlowEdge(
     val invisible: Boolean = false,
     val classes: Set<String> = emptySet(),
     val inlineStyle: FlowNodeStyle? = null,
+    val animated: Boolean = false,
 )
 
 internal data class FlowSubgraph(

@@ -5,8 +5,12 @@ import io.github.cmpmermaid.core.ScenePath
 import io.github.cmpmermaid.core.ScenePoint
 import kotlin.math.abs
 
+/**
+ * Native geometry port of Mermaid 12.0.0:
+ * packages/mermaid/src/rendering-util/rendering-elements/lineJump.ts
+ */
 internal object LineBridgeRouter {
-    private const val ENDPOINT_CLEARANCE = 9f
+    private const val ENDPOINT_EPSILON = 0.000001f
 
     fun apply(paths: List<ScenePath>): List<ScenePath> {
         val bridges = paths.map { mutableListOf<SceneBridge>() }
@@ -31,76 +35,64 @@ internal object LineBridgeRouter {
     ): List<Crossing> = buildList {
         first.points.zipWithNext().forEach { (firstStart, firstEnd) ->
             second.points.zipWithNext().forEach { (secondStart, secondEnd) ->
-                val crossing = orthogonalIntersection(
+                val intersection = segmentIntersection(
                     firstStart = firstStart,
                     firstEnd = firstEnd,
                     secondStart = secondStart,
                     secondEnd = secondEnd,
+                ) ?: return@forEach
+                val firstHorizontal = isHorizontallyDominant(firstStart, firstEnd)
+                val secondHorizontal = isHorizontallyDominant(secondStart, secondEnd)
+                add(
+                    Crossing(
+                        point = intersection,
+                        bridgeFirst = firstHorizontal != secondHorizontal && firstHorizontal,
+                    ),
                 )
-                if (crossing != null) {
-                    add(crossing)
-                }
             }
         }
     }
 
-    private fun orthogonalIntersection(
+    private fun segmentIntersection(
         firstStart: ScenePoint,
         firstEnd: ScenePoint,
         secondStart: ScenePoint,
         secondEnd: ScenePoint,
-    ): Crossing? {
-        val firstHorizontal = firstStart.y.isCloseTo(firstEnd.y)
-        val firstVertical = firstStart.x.isCloseTo(firstEnd.x)
-        val secondHorizontal = secondStart.y.isCloseTo(secondEnd.y)
-        val secondVertical = secondStart.x.isCloseTo(secondEnd.x)
-        val horizontalStart: ScenePoint
-        val horizontalEnd: ScenePoint
-        val verticalStart: ScenePoint
-        val verticalEnd: ScenePoint
-        when {
-            firstHorizontal && secondVertical -> {
-                horizontalStart = firstStart
-                horizontalEnd = firstEnd
-                verticalStart = secondStart
-                verticalEnd = secondEnd
-            }
-            firstVertical && secondHorizontal -> {
-                horizontalStart = secondStart
-                horizontalEnd = secondEnd
-                verticalStart = firstStart
-                verticalEnd = firstEnd
-            }
-            else -> return null
-        }
+    ): ScenePoint? {
+        val firstDeltaX = firstEnd.x - firstStart.x
+        val firstDeltaY = firstEnd.y - firstStart.y
+        val secondDeltaX = secondEnd.x - secondStart.x
+        val secondDeltaY = secondEnd.y - secondStart.y
+        val denominator = firstDeltaX * secondDeltaY - firstDeltaY * secondDeltaX
+        if (abs(denominator) < ENDPOINT_EPSILON) return null
 
-        val crossing = ScenePoint(verticalStart.x, horizontalStart.y)
-        return crossing
-            .takeIf {
-                it.x.isStrictlyBetween(horizontalStart.x, horizontalEnd.x) &&
-                    it.y.isStrictlyBetween(verticalStart.y, verticalEnd.y)
-            }
-            ?.let {
-                Crossing(
-                    point = it,
-                    bridgeFirst = firstHorizontal,
-                )
+        val offsetX = secondStart.x - firstStart.x
+        val offsetY = secondStart.y - firstStart.y
+        val firstParameter =
+            (offsetX * secondDeltaY - offsetY * secondDeltaX) / denominator
+        val secondParameter =
+            (offsetX * firstDeltaY - offsetY * firstDeltaX) / denominator
+        if (firstParameter <= ENDPOINT_EPSILON ||
+            firstParameter >= 1f - ENDPOINT_EPSILON ||
+            secondParameter <= ENDPOINT_EPSILON ||
+            secondParameter >= 1f - ENDPOINT_EPSILON
+        ) {
+            return null
         }
+        return ScenePoint(
+            x = firstStart.x + firstParameter * firstDeltaX,
+            y = firstStart.y + firstParameter * firstDeltaY,
+        )
     }
+
+    private fun isHorizontallyDominant(start: ScenePoint, end: ScenePoint): Boolean =
+        abs(end.x - start.x) >= abs(end.y - start.y)
+
+    private fun ScenePoint.isNear(other: ScenePoint): Boolean =
+        abs(x - other.x) < 1f && abs(y - other.y) < 1f
 
     private data class Crossing(
         val point: ScenePoint,
         val bridgeFirst: Boolean,
     )
-
-    private fun Float.isStrictlyBetween(first: Float, second: Float): Boolean {
-        val minimum = minOf(first, second) + ENDPOINT_CLEARANCE
-        val maximum = maxOf(first, second) - ENDPOINT_CLEARANCE
-        return this in minimum..maximum
-    }
-
-    private fun Float.isCloseTo(other: Float): Boolean = abs(this - other) < 0.01f
-
-    private fun ScenePoint.isNear(other: ScenePoint): Boolean =
-        abs(x - other.x) < 1f && abs(y - other.y) < 1f
 }

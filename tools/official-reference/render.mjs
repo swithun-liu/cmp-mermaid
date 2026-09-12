@@ -27,6 +27,16 @@ if (mermaidPackage.version !== '12.0.0') {
 mkdirSync(output, { recursive: true });
 rmSync(temporary, { recursive: true, force: true });
 mkdirSync(temporary, { recursive: true });
+const config = resolve(temporary, 'mermaid-config.json');
+writeFileSync(
+  config,
+  JSON.stringify({
+    layout: 'dagre',
+    flowchart: {
+      curve: 'rounded',
+    },
+  }),
+);
 const dimensions = new Map();
 
 for (const demo of cases) {
@@ -40,6 +50,8 @@ for (const demo of cases) {
       input,
       '--output',
       target,
+      '--configFile',
+      config,
       '--backgroundColor',
       'white',
       '--width',

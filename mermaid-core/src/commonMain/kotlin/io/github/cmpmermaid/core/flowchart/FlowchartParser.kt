@@ -107,7 +107,12 @@ internal class FlowchartParser {
                 )
                 return GMResult.Ok(Unit)
             }
-            if (state.edges.any { it.id == metadataId }) {
+            val edgeIndex = state.edges.indexOfFirst { it.id == metadataId }
+            if (edgeIndex >= 0) {
+                val values = parseMetadataValues(metadataBody)
+                val animated = values["animate"].equals("true", ignoreCase = true) ||
+                    values["animation"] in setOf("fast", "slow")
+                state.edges[edgeIndex] = state.edges[edgeIndex].copy(animated = animated)
                 return GMResult.Ok(Unit)
             }
         }
@@ -981,7 +986,7 @@ internal class FlowchartParser {
             "stop" to SceneShapeKind.FramedCircle,
             "fork" to SceneShapeKind.ForkJoin,
             "join" to SceneShapeKind.ForkJoin,
-            "bow-rect" to SceneShapeKind.Hourglass,
+            "bow-rect" to SceneShapeKind.BowTieRectangle,
             "hourglass" to SceneShapeKind.Hourglass,
             "collate" to SceneShapeKind.Hourglass,
             "brace-l" to SceneShapeKind.BraceLeft,

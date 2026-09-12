@@ -115,9 +115,10 @@ data class ScenePath(
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val arrowStart: SceneArrowHead = SceneArrowHead.None,
     val arrowEnd: SceneArrowHead = SceneArrowHead.None,
-    val cornerRadius: Float = 8f,
+    val cornerRadius: Float = 5f,
     val bridges: List<SceneBridge> = emptyList(),
     override val zIndex: Int = 5,
+    val dashIntervals: List<Float> = emptyList(),
 ) : SceneElement
 
 data class SceneBridge(

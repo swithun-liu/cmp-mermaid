@@ -25,7 +25,7 @@ Production readiness requires:
 | Multi-node links | Supported | `A & B --> C & D` |
 | Classes and inline styles | Supported | Fill, stroke, text color, stroke width/pattern, font size/weight; Hex, RGB(A), HSL(A) and common named colors |
 | `linkStyle` | Supported with exceptions | Static stroke/text properties are applied; Mermaid curve interpolation names are not |
-| Routing | Supported | Layered placement, ordered ports, parallel lanes, cycles, compact self-loops, rounded orthogonal corners and horizontal-priority crossing bridges |
+| Routing | Supported | Translated Dagre layout, parallel lanes, cycles, compact self-loops, rounded paths and Mermaid line-jump crossings |
 | Subgraphs | Supported | Nested groups, boundary links, collapsed view and independently laid out local directions |
 | Markdown strings | Partial | Basic emphasis and line breaks; full Markdown layout remains |
 | Click and tooltip directives | Ignored safely | Native callback and tooltip APIs are not exposed yet |
@@ -37,32 +37,33 @@ Production readiness requires:
 - The Android documentation app contains 18 syntax lessons and 40 generated
   comparison cases.
 - Each comparison case uses identical Mermaid source for the native renderer
-  and the Mermaid.js `12.0.0` PNG.
-- JVM tests cover parsing, colors, markers, minimum link lengths, multi-node
-  routing, parallel-label separation, local subgraph directions, compact
-  self-loops, viewport constraints, and crossing bridge generation.
+  and the Mermaid.js `12.0.0` PNG, with both sides fixed to Dagre and rounded
+  edge interpolation.
+- JVM tests cover parsing, colors, markers, numeric Dagre parity, minimum link
+  lengths, multi-node routing, parallel-label separation, recursive subgraph
+  directions, compact self-loops, viewport constraints, and crossing bridges.
 - Android APK and iOS Simulator targets compile from the same common source.
 
 ## Mermaid And Dagre Mapping
 
-The native pipeline follows Mermaid `12.0.0` and `dagre-d3-es` stage
-boundaries so upstream behavior can be compared without copying JavaScript
-runtime code:
+The production layout pipeline is a Kotlin source port of Mermaid `12.0.0`
+and `dagre-d3-es 7.0.14`. The detailed file map is maintained in
+[`upstream-flowchart-map.md`](upstream-flowchart-map.md).
 
 | Native stage | Upstream reference |
 | --- | --- |
-| `FlowchartParser` | Mermaid `flowDb.ts` edge expansion, ids, subgraphs and styles |
-| `FlowLayering` | Dagre cycle removal, rank assignment, normalization and ordering |
-| `FlowNodePlacer` | Dagre coordinate assignment with half-ranks for edge labels |
-| `FlowCompoundLayout` | Mermaid Dagre recursive cluster measurement and local `dir` |
-| `FlowDirectionResolver` | Nearest cluster direction inheritance |
-| `FlowEdgeRouter` | Ordered ports, normalized edge chains, parallel lanes and compact self-loops |
-| `LineBridgeRouter` | Mermaid `lineJump.ts`, with horizontal segments receiving bridges |
-| Compose renderer | Mermaid flowchart stroke widths, dash patterns, markers and collapsed-group decoration |
+| `upstream/graphlib` | Graphlib graph and traversal subset used by Dagre |
+| `upstream/dagre` | Dagre layout, rank, order, compound, normalization and Brandes-Köpf position stages |
+| `MermaidGraphAdapter` | Mermaid recursive cluster extraction and cluster endpoint anchoring |
+| `FlowDagreLayout` | Mermaid Dagre preparation, recursive measurement, self-loop merge and Native result adapter |
+| `LineBridgeRouter` | Mermaid `lineJump.ts` segment intersection and hop assignment |
+| Compose renderer | Native path, shape, dash, marker and hop painting |
 
 ## Remaining Gaps
 
 - Rich Markdown measurement does not yet match Mermaid's HTML label renderer.
+- The Flowchart parser/FlowDB layer supports the documented matrix but is not
+  yet a complete method-for-method source port.
 - Icon and image nodes need a public KMP asset-provider contract.
 - Click, link, callback, and tooltip directives need native interaction APIs.
 - Very large or adversarial graphs still need performance and layout stress
@@ -76,6 +77,10 @@ comparison gallery. Running `npm run render` produces:
 - Official Mermaid.js PNG files under the Android sample resources.
 - The Android demo catalog.
 - JVM test fixtures consumed by `MermaidEngineTest`.
+
+The generator explicitly sets `layout: "dagre"` and
+`flowchart.curve: "rounded"`. Mermaid `12.0.0` otherwise defaults its full
+bundle to ELK, which is outside the current translated layout boundary.
 
 `tools/capture-android-audit.sh` opens each gallery case directly and captures
 Native and Official views from the same Android viewport. Screenshots are

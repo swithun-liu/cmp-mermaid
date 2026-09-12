@@ -6,7 +6,7 @@ focuses exclusively on flowcharts.
 
 ## Modules
 
-- `mermaid-core`: parser, flowchart model, layered layout, and SceneGraph.
+- `mermaid-core`: Flowchart semantics, translated Graphlib/Dagre layout, and SceneGraph.
 - `mermaid-compose`: Compose Canvas rendering, text measurement, bounded two-finger pan, and zoom.
 - `sample/androidApp`: mobile documentation and a 40-case official comparison gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference image generator.
@@ -30,7 +30,9 @@ npm run render
 
 The generator asserts that the installed Mermaid package is exactly `12.0.0`.
 Each gallery item therefore uses the same source for the native renderer and
-the official Mermaid.js PNG.
+the official Mermaid.js PNG. The generator explicitly selects Mermaid's
+`dagre` layout and `rounded` curve so the reference matches the translated
+layout engine; Mermaid's separate ELK default is not used.
 
 Capture the complete Native/Official gallery from a connected Android device:
 
@@ -60,9 +62,11 @@ Supported:
 - Nested/collapsed subgraphs, local subgraph directions, class definitions,
   node classes, and inline styles.
 - Hex, RGB(A), HSL(A), and common CSS named colors.
-- Port-aware orthogonal routing, parallel lanes, self-loops, rounded corners,
-  and crossing bridges.
+- Dagre source-ported layout, parallel lanes, compact self-loops, rounded
+  paths, and Mermaid line-jump crossings.
 - Front matter, comments, semicolon-separated statements, and line breaks.
 
 Production gaps are tracked in
 [`docs/flowchart-compatibility.md`](docs/flowchart-compatibility.md).
+The frozen upstream versions and source-to-source mapping are documented in
+[`docs/upstream-flowchart-map.md`](docs/upstream-flowchart-map.md).

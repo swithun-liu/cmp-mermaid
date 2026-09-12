@@ -215,7 +215,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun balancesMinimumLengthSlackIntoOneMiddleLayer() {
+    fun honorsDagreMinimumLengthRanks() {
         val result = engine.render(
             """
                 flowchart TD
@@ -235,14 +235,15 @@ class MermaidEngineTest {
             .filter { shape -> shape.id in setOf("A", "B", "C", "D", "E") }
             .associateBy(SceneShape::id)
 
-        assertEquals(nodes.getValue("B").bounds.center.y, nodes.getValue("C").bounds.center.y)
-        assertEquals(nodes.getValue("C").bounds.center.y, nodes.getValue("D").bounds.center.y)
-        assertTrue(nodes.getValue("A").bounds.bottom < nodes.getValue("B").bounds.top)
-        assertTrue(nodes.getValue("D").bounds.bottom < nodes.getValue("E").bounds.top)
+        val centers = nodes.mapValues { it.value.bounds.center.y }
+        assertTrue(centers.getValue("A") < centers.getValue("D"))
+        assertTrue(centers.getValue("D") < centers.getValue("C"))
+        assertTrue(centers.getValue("C") < centers.getValue("B"))
+        assertTrue(centers.getValue("B") < centers.getValue("E"))
     }
 
     @Test
-    fun routesCrossedMultiNodeLinksThroughDistinctDoglegs() {
+    fun keepsMultiNodeLinksDistinctWithDagreRoutes() {
         val result = engine.render(
             """
                 flowchart LR
@@ -259,11 +260,10 @@ class MermaidEngineTest {
             .filterIsInstance<ScenePath>()
             .associateBy(ScenePath::id)
 
-        assertEquals(2, paths.getValue("eAC").points.size)
-        assertEquals(2, paths.getValue("eBD").points.size)
-        assertTrue(paths.getValue("eAD").points.size >= 4)
-        assertTrue(paths.getValue("eBC").points.size >= 6)
-        assertTrue(paths.getValue("eBC").bridges.isNotEmpty())
+        assertEquals(setOf("eAC", "eAD", "eBC", "eBD"), paths.keys)
+        assertTrue(paths.values.all { it.points.size >= 3 })
+        assertEquals(4, paths.values.map(ScenePath::points).toSet().size)
+        assertTrue(paths.values.any { it.bridges.isNotEmpty() })
     }
 
     @Test
@@ -343,7 +343,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun placesHorizontalSelfLoopAboveItsNode() {
+    fun placesHorizontalSelfLoopOnDagreSelectedSide() {
         val result = engine.render(
             """
                 flowchart LR
@@ -362,9 +362,9 @@ class MermaidEngineTest {
             .first { path -> path.id == "edge_0" }
 
         assertEquals(4, loop.points.size)
-        assertEquals(node.bounds.top, loop.points.first().y)
-        assertEquals(node.bounds.top, loop.points.last().y)
-        assertTrue(loop.points.drop(1).dropLast(1).all { point -> point.y < node.bounds.top })
+        assertEquals(node.bounds.right, loop.points.first().x)
+        assertEquals(node.bounds.right, loop.points.last().x)
+        assertTrue(loop.points.drop(1).dropLast(1).all { point -> point.x > node.bounds.right })
     }
 
     @Test
@@ -494,5 +494,196 @@ class MermaidEngineTest {
             failures.isEmpty(),
             failures.joinToString(separator = "\n", prefix = "Official cases failed:\n"),
         )
+    }
+
+    @Test
+    fun preservesStoredDataShapeAndLabel() {
+        val scene = renderCase("expanded_storage_shapes")
+        val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "D" }
+        assertEquals(SceneShapeKind.BowTieRectangle, node.kind)
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any { it.text == "Stored data" })
+    }
+
+    @Test
+    fun preservesAnimatedEdgeDashPatternInStaticPreview() {
+        val scene = renderCase("edge_ids_and_length")
+        assertEquals(
+            SceneStrokePattern.Dashed,
+            scene.elements.filterIsInstance<ScenePath>().first { it.id == "e1" }.strokePattern,
+        )
+    }
+
+    @Test
+    fun enclosesNestedSubgraphsBelowParentTitle() {
+        val scene = renderCase("nested_subgraphs")
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val outer = shapes.getValue("subgraph_outer").bounds
+        val title = scene.elements.filterIsInstance<SceneText>().first { it.text == "Rendering engine" }
+        for (id in listOf("subgraph_syntax", "subgraph_visual")) {
+            val child = shapes.getValue(id).bounds
+            assertTrue(outer.left < child.left && outer.right > child.right, id)
+            assertTrue(
+                title.bounds.bottom < child.top,
+                "$id overlaps parent title: outer=$outer, title=${title.bounds}, child=$child",
+            )
+            assertTrue(outer.bottom > child.bottom, id)
+        }
+    }
+
+    @Test
+    fun connectsDecisionEdgesToActualOutlineInEveryDirection() {
+        for (direction in listOf("TB", "BT", "LR", "RL")) {
+            val scene = assertIs<GMResult.Ok<MermaidScene>>(
+                engine.render("flowchart $direction\n A{Decision} --> B & C", context),
+            ).value
+            val diamond = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }.bounds
+            assertEquals(diamond.width, diamond.height, 0.01f)
+            for (path in scene.elements.filterIsInstance<ScenePath>()) {
+                val start = path.points.first()
+                val outlineDistance = kotlin.math.abs(start.x - diamond.center.x) / (diamond.width / 2f) +
+                    kotlin.math.abs(start.y - diamond.center.y) / (diamond.height / 2f)
+                assertEquals(1f, outlineDistance, 0.01f, "$direction: ${path.id}")
+            }
+        }
+    }
+
+    @Test
+    fun reservesLabelSpaceAwayFromShapeDecorations() {
+        val scene = renderCase("expanded_manual_shapes")
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val labels = scene.elements.filterIsInstance<SceneText>().associateBy(SceneText::text)
+        val divided = shapes.getValue("B").bounds
+        assertTrue(labels.getValue("Divided").bounds.top >= divided.top + divided.height / 6f)
+        val triangle = shapes.getValue("C").bounds
+        assertTrue(labels.getValue("Extract").bounds.center.y > triangle.center.y)
+        val flipped = shapes.getValue("G").bounds
+        assertTrue(labels.getValue("Manual file").bounds.center.y < flipped.center.y)
+    }
+
+    @Test
+    fun measuresNodeTextWithResolvedClassAndInlineStyles() {
+        val requests = mutableListOf<TextMetricsRequest>()
+        val measuringContext = MermaidRenderContext(
+            TextMetricProvider { request ->
+                requests += request
+                TextMetrics(request.text.length * request.fontSize, request.fontSize * 2f)
+            },
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                "flowchart LR\n A[Wide label]\n classDef large font-size:32px,font-weight:bold\n class A large",
+                measuringContext,
+            ),
+        ).value
+        val request = requests.first { it.text == "Wide label" }
+        assertEquals(32f, request.fontSize)
+        assertEquals(SceneTextWeight.Bold, request.weight)
+        val label = scene.elements.filterIsInstance<SceneText>().first { it.text == "Wide label" }
+        assertTrue(label.bounds.height >= 64f)
+    }
+
+    @Test
+    fun routesQuestionWorkflowWithoutCrossingUnrelatedNodes() {
+        val scene = renderCase("question_workflow")
+        val endpoints = listOf("A" to "B", "B" to "C", "C" to "A", "B" to "D", "D" to "E", "E" to "F")
+        val nodes = scene.elements.filterIsInstance<SceneShape>().filter { it.id in setOf("A", "B", "C", "D", "E", "F") }
+        for (path in scene.elements.filterIsInstance<ScenePath>()) {
+            val (from, to) = endpoints[path.id.removePrefix("edge_").toInt()]
+            for (node in nodes.filter { it.id != from && it.id != to }) {
+                assertTrue(
+                    path.points.zipWithNext().none { (start, end) -> crossesInterior(start, end, node.bounds) },
+                    "${path.id} ($from -> $to) crosses ${node.id}: ${path.points}",
+                )
+            }
+        }
+    }
+
+    @Test
+    fun returnsCycleEdgeToActualOutlineFromOutside() {
+        val scene = renderCase("self_loop_and_cycle")
+        val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }.bounds
+        val path = scene.elements.filterIsInstance<ScenePath>().first { it.id == "edge_3" }
+        val end = path.points.last()
+        val previous = path.points[path.points.lastIndex - 1]
+        val onOutline =
+            kotlin.math.abs(end.x - node.left) < 0.01f ||
+                kotlin.math.abs(end.x - node.right) < 0.01f ||
+                kotlin.math.abs(end.y - node.top) < 0.01f ||
+                kotlin.math.abs(end.y - node.bottom) < 0.01f
+        assertTrue(onOutline, "node=$node, path=${path.points}")
+        val center = node.center
+        val previousDistance =
+            (previous.x - center.x) * (previous.x - center.x) +
+                (previous.y - center.y) * (previous.y - center.y)
+        val endDistance =
+            (end.x - center.x) * (end.x - center.x) +
+                (end.y - center.y) * (end.y - center.y)
+        assertTrue(previousDistance > endDistance, "Returning arrow must approach A from outside")
+    }
+
+    @Test
+    fun keepsEdgeLabelsClearOfUnrelatedRoutes() {
+        for (id in listOf("parallel_edges", "edge_labels", "mixed_link_labels")) {
+            val scene = renderCase(id)
+            val paths = scene.elements.filterIsInstance<ScenePath>()
+            val labels = scene.elements.filterIsInstance<SceneShape>()
+                .filter { it.id.endsWith("_label_background") }
+            for (label in labels) {
+                val owner = label.id.removeSuffix("_label_background")
+                for (path in paths.filter { it.id != owner }) {
+                    assertTrue(
+                        path.points.zipWithNext().none { (a, b) -> crossesInterior(a, b, label.bounds) },
+                        "$id: ${label.id} hides ${path.id}: ${label.bounds}, ${path.points}",
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun separatesDenseRoutesWithoutSharedSegments() {
+        for (id in listOf("basic_syntax", "crossing_routes", "dense_branch_merge")) {
+            val paths = renderCase(id).elements.filterIsInstance<ScenePath>()
+            for ((index, first) in paths.withIndex()) {
+                for (second in paths.drop(index + 1)) {
+                    for ((a, b) in first.points.zipWithNext()) {
+                        for ((c, d) in second.points.zipWithNext()) {
+                            val vertical = kotlin.math.abs(a.x - b.x) < 0.1f &&
+                                kotlin.math.abs(c.x - d.x) < 0.1f && kotlin.math.abs(a.x - c.x) < 0.1f
+                            val horizontal = kotlin.math.abs(a.y - b.y) < 0.1f &&
+                                kotlin.math.abs(c.y - d.y) < 0.1f && kotlin.math.abs(a.y - c.y) < 0.1f
+                            val overlap = when {
+                                vertical -> minOf(maxOf(a.y, b.y), maxOf(c.y, d.y)) -
+                                    maxOf(minOf(a.y, b.y), minOf(c.y, d.y))
+                                horizontal -> minOf(maxOf(a.x, b.x), maxOf(c.x, d.x)) -
+                                    maxOf(minOf(a.x, b.x), minOf(c.x, d.x))
+                                else -> 0f
+                            }
+                            assertTrue(
+                                overlap <= 0.1f,
+                                "$id: ${first.id} and ${second.id} share $overlap units: $a -> $b, $c -> $d",
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun renderCase(id: String): MermaidScene = assertIs<GMResult.Ok<MermaidScene>>(
+        engine.render(officialFlowchartCases.first { it.id == id }.source, context),
+    ).value
+
+    private fun crossesInterior(start: ScenePoint, end: ScenePoint, bounds: SceneRect): Boolean {
+        val inset = 0.1f
+        return if (kotlin.math.abs(start.x - end.x) < inset) {
+            start.x > bounds.left + inset && start.x < bounds.right - inset &&
+                maxOf(start.y, end.y) > bounds.top + inset && minOf(start.y, end.y) < bounds.bottom - inset
+        } else if (kotlin.math.abs(start.y - end.y) < inset) {
+            start.y > bounds.top + inset && start.y < bounds.bottom - inset &&
+                maxOf(start.x, end.x) > bounds.left + inset && minOf(start.x, end.x) < bounds.right - inset
+        } else {
+            false
+        }
     }
 }
