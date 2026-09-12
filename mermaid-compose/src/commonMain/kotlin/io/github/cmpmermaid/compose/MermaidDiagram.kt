@@ -370,6 +370,8 @@ fun MermaidSceneCanvas(
                         is MermaidAssetState.Failed -> drawSceneAssetFailure(
                             asset = element,
                             textMeasurer = textMeasurer,
+                            density = density.density,
+                            fontScale = density.fontScale,
                         )
                         MermaidAssetState.Loading, null -> drawSceneAssetLoading(element)
                     }
@@ -402,6 +404,8 @@ private fun DrawScope.drawSceneAssetLoading(
 private fun DrawScope.drawSceneAssetFailure(
     asset: SceneAsset,
     textMeasurer: TextMeasurer,
+    density: Float,
+    fontScale: Float,
 ) {
     val bounds = asset.bounds.toComposeRect()
     if (asset.kind == SceneAssetKind.Icon) {
@@ -414,7 +418,12 @@ private fun DrawScope.drawSceneAssetFailure(
             text = "?",
             style = TextStyle(
                 color = Color.White,
-                fontSize = (bounds.height * 0.72f).sp,
+                fontSize = normalizedSp(
+                    bounds.height * UNKNOWN_ICON_FONT_SCALE,
+                    density,
+                    fontScale,
+                ),
+                fontFamily = FontFamily.SansSerif,
                 textAlign = TextAlign.Center,
             ),
         )
@@ -1164,6 +1173,7 @@ private enum class MarkerPosition {
 private const val DEFAULT_EDGE_ANIMATION_DURATION_MILLIS = 20_000
 private const val ANIMATION_CLOCK_DURATION_MILLIS = 100_000
 private const val MERMAID_FONT_WIDTH_SCALE = 1.10f
+private const val UNKNOWN_ICON_FONT_SCALE = 67.75f / 80f
 private const val EDGE_ANIMATION_DASH_OFFSET = 900f
 
 private data class MarkerTangent(

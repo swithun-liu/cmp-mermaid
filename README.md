@@ -114,6 +114,7 @@ A focused pass can select cases and preview modes:
 ```bash
 CAPTURE_PREVIEWS=Native \
 CAPTURE_CASE_IDS=multi_node_links,crossing_routes,line_hops_gap \
+CAPTURE_LAYOUT=dagre \
 ANDROID_SERIAL=<serial> \
 tools/capture-android-audit.sh
 ```

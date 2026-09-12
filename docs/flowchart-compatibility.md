@@ -116,5 +116,6 @@ examples. Other generators pin parser tables, Marked rules, WHATWG entities,
 and the elkjs worker by version and SHA-256.
 
 `tools/capture-android-audit.sh` opens each case directly and captures Native
-and Official views. Screenshots are written only to ignored
+and Official views. It defaults to ELK; set `CAPTURE_LAYOUT=dagre` to compare
+both renderers on the Dagre path. Screenshots are written only to ignored
 `captures/local/` paths and are not distributed.

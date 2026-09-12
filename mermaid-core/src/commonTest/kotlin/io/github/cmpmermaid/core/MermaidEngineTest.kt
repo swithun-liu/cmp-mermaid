@@ -964,6 +964,21 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun keepsOddShapeNotchPointingIntoTheNode() {
+        val scene = renderCase("expanded_control_shapes")
+        val odd = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
+        val outline = assertIs<SceneShapeGeometry>(odd.geometry).outline
+
+        assertEquals(5, outline.size)
+        assertTrue(
+            outline[0].x < outline[1].x,
+            "The middle of the odd shape notch must point into the node.",
+        )
+        assertEquals(outline[0].x, outline[2].x, 0.01f)
+        assertEquals(outline[3].x, outline[4].x, 0.01f)
+    }
+
+    @Test
     fun preservesAnimatedEdgeDashPatternInStaticPreview() {
         val scene = renderCase("edge_ids_and_length")
         assertEquals(

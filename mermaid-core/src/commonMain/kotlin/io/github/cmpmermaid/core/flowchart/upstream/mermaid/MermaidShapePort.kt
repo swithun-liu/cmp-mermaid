@@ -557,20 +557,18 @@ internal object MermaidShapePort {
         val paddingY = if (look == NEO) 12f else padding
         val labelWidth = label.width + if (look == NEO) paddingX * 2f else paddingX
         val height = label.height + if (look == NEO) paddingY * 2f else paddingY
-        val notchWidth = height / 4f
         val width = labelWidth
+        val x = -width / 2f
+        val y = -height / 2f
+        val notch = y / 2f
         val points = points(
-            -width / 2f - notchWidth / 2f to -height / 2f,
-            -width / 2f - notchWidth to 0f,
-            -width / 2f - notchWidth / 2f to height / 2f,
-            width / 2f - notchWidth / 2f to height / 2f,
-            width / 2f - notchWidth / 2f to -height / 2f,
+            x + notch to y,
+            x to 0f,
+            x + notch to -y,
+            -x to -y,
+            -x to y,
         )
-        return centeredShape(
-            listOf(closedPath(points)),
-            points,
-            ScenePoint(notchWidth / 2f, 0f),
-        )
+        return centeredShape(listOf(closedPath(points)), points)
     }
 
     private fun ellipse(label: SceneSize, padding: Float): MermaidShapeLayout {

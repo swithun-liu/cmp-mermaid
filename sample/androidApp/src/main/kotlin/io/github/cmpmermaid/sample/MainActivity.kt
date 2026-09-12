@@ -86,11 +86,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val auditDemoId = intent.getStringExtra(EXTRA_AUDIT_DEMO_ID)
         val auditPreview = AuditPreview.from(intent.getStringExtra(EXTRA_AUDIT_PREVIEW))
+        val auditLayout = intent.getStringExtra(EXTRA_AUDIT_LAYOUT)
+            ?.takeIf { it == "elk" || it == "dagre" }
+            ?: "elk"
         val openPlayground = intent.getBooleanExtra(EXTRA_OPEN_PLAYGROUND, false)
         setContent {
             MermaidDocsApp(
                 auditDemoId = auditDemoId,
                 auditPreview = auditPreview,
+                auditLayout = auditLayout,
                 openPlayground = openPlayground,
             )
         }
@@ -99,6 +103,7 @@ class MainActivity : ComponentActivity() {
     private companion object {
         const val EXTRA_AUDIT_DEMO_ID = "auditDemoId"
         const val EXTRA_AUDIT_PREVIEW = "auditPreview"
+        const val EXTRA_AUDIT_LAYOUT = "auditLayout"
         const val EXTRA_OPEN_PLAYGROUND = "openPlayground"
     }
 }
@@ -124,6 +129,7 @@ private enum class AuditPreview {
 private fun MermaidDocsApp(
     auditDemoId: String? = null,
     auditPreview: AuditPreview = AuditPreview.Native,
+    auditLayout: String = "elk",
     openPlayground: Boolean = false,
 ) {
     var screen by rememberSaveable {
@@ -151,6 +157,7 @@ private fun MermaidDocsApp(
             VisualAuditScreen(
                 demo = auditDemo,
                 preview = auditPreview,
+                layout = auditLayout,
             )
             return@MaterialTheme
         }
@@ -180,6 +187,7 @@ private fun MermaidDocsApp(
 private fun VisualAuditScreen(
     demo: FlowchartDemo,
     preview: AuditPreview,
+    layout: String,
 ) {
     Box(
         modifier = Modifier
@@ -193,15 +201,23 @@ private fun VisualAuditScreen(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
                 theme = MermaidTheme.FlowchartDefault,
-                options = officialReferenceRenderOptions,
+                options = officialReferenceRenderOptions.copy(layout = layout),
                 contentDescription = "Audit ${demo.id} native",
             )
-            AuditPreview.Official -> Image(
-                painter = painterResource(demo.officialDrawable),
-                contentDescription = "Audit ${demo.id} official",
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Fit,
-            )
+            AuditPreview.Official -> if (layout == "elk") {
+                Image(
+                    painter = painterResource(demo.officialDrawable),
+                    contentDescription = "Audit ${demo.id} official",
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Fit,
+                )
+            } else {
+                OfficialMermaidDiagram(
+                    source = demo.source,
+                    layout = layout,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
         }
     }
 }

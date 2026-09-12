@@ -77,6 +77,61 @@
         },
       });
     }
+    if (!window.structuredClone) {
+      window.structuredClone = (value) => {
+        const seen = new Map();
+        const clone = (input) => {
+          if (input === null || typeof input !== "object") {
+            return input;
+          }
+          if (seen.has(input)) {
+            return seen.get(input);
+          }
+          if (input instanceof Date) {
+            return new Date(input.getTime());
+          }
+          if (input instanceof RegExp) {
+            return new RegExp(input.source, input.flags);
+          }
+          if (input instanceof ArrayBuffer) {
+            return input.slice(0);
+          }
+          if (ArrayBuffer.isView(input)) {
+            return input instanceof DataView
+              ? new DataView(input.buffer.slice(0), input.byteOffset, input.byteLength)
+              : new input.constructor(input);
+          }
+          if (input instanceof Map) {
+            const output = new Map();
+            seen.set(input, output);
+            input.forEach((entryValue, entryKey) => {
+              output.set(clone(entryKey), clone(entryValue));
+            });
+            return output;
+          }
+          if (input instanceof Set) {
+            const output = new Set();
+            seen.set(input, output);
+            input.forEach((entry) => output.add(clone(entry)));
+            return output;
+          }
+
+          const output = Array.isArray(input)
+            ? []
+            : Object.create(Object.getPrototypeOf(input));
+          seen.set(input, output);
+          Reflect.ownKeys(input).forEach((key) => {
+            const descriptor = Object.getOwnPropertyDescriptor(input, key);
+            if (descriptor && Object.prototype.hasOwnProperty.call(descriptor, "value")) {
+              descriptor.value = clone(descriptor.value);
+            }
+            Object.defineProperty(output, key, descriptor);
+          });
+          return output;
+        };
+        return clone(value);
+      };
+    }
   </script>
   <script src="/assets/mermaid-12.0.0.min.js"></script>
 </head>

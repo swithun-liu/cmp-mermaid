@@ -7,8 +7,14 @@ OUTPUT_DIR="${OUTPUT_DIR:-${ROOT_DIR}/captures/local/audit/current}"
 WAIT_SECONDS="${WAIT_SECONDS:-6}"
 CAPTURE_PREVIEWS="${CAPTURE_PREVIEWS:-Native Official}"
 CAPTURE_CASE_IDS="${CAPTURE_CASE_IDS:-}"
+CAPTURE_LAYOUT="${CAPTURE_LAYOUT:-elk}"
 PACKAGE_NAME="io.github.cmpmermaid.sample"
 ACTIVITY_NAME="${PACKAGE_NAME}/.MainActivity"
+
+if [[ "${CAPTURE_LAYOUT}" != "elk" && "${CAPTURE_LAYOUT}" != "dagre" ]]; then
+    echo "CAPTURE_LAYOUT must be 'elk' or 'dagre'." >&2
+    exit 1
+fi
 
 if [[ -z "${ANDROID_SERIAL:-}" ]]; then
     ANDROID_SERIAL="$(
@@ -50,6 +56,7 @@ capture_preview() {
         -n "${ACTIVITY_NAME}" \
         --es auditDemoId "${demo_id}" \
         --es auditPreview "${preview}" \
+        --es auditLayout "${CAPTURE_LAYOUT}" \
         >/dev/null </dev/null
     sleep "${WAIT_SECONDS}"
     android screen capture \

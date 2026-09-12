@@ -125,7 +125,7 @@ class OfficialFlowchartDocumentationTest {
         return when (val result = engine.render(case.source, renderContext)) {
             is GMResult.Ok -> expectedFeature?.let {
                 "${case.id}: expected explicit unsupported feature '$it'"
-            }
+            } ?: validateScene(case.id, result.value)
             is GMResult.Err -> {
                 val error = result.error
                 if (error is MermaidError.UnsupportedFeature && error.feature == expectedFeature) {
@@ -135,5 +135,46 @@ class OfficialFlowchartDocumentationTest {
                 }
             }
         }
+    }
+
+    private fun validateScene(caseId: String, scene: MermaidScene): String? {
+        if (!scene.width.isFinite() || !scene.height.isFinite() ||
+            scene.width <= 0f || scene.height <= 0f
+        ) {
+            return "$caseId: invalid scene size ${scene.width} x ${scene.height}"
+        }
+        scene.elements.forEach { element ->
+            val bounds = when (element) {
+                is SceneAsset -> element.bounds
+                is SceneShape -> element.bounds
+                is SceneText -> element.bounds
+                is ScenePath -> null
+            }
+            if (bounds != null &&
+                (!bounds.left.isFinite() || !bounds.top.isFinite() ||
+                    !bounds.width.isFinite() || !bounds.height.isFinite() ||
+                    bounds.width < 0f || bounds.height < 0f)
+            ) {
+                return "$caseId: invalid ${element::class.simpleName} bounds $bounds"
+            }
+            if (element is ScenePath &&
+                (element.points.size < 2 ||
+                    element.points.any { !it.x.isFinite() || !it.y.isFinite() })
+            ) {
+                return "$caseId: invalid edge path ${element.id}"
+            }
+            if (element is SceneShape) {
+                val geometry = element.geometry ?: return@forEach
+                if (geometry.outline.size < 3 ||
+                    geometry.outline.any { !it.x.isFinite() || !it.y.isFinite() } ||
+                    geometry.paths.any { path ->
+                        path.points.any { !it.x.isFinite() || !it.y.isFinite() }
+                    }
+                ) {
+                    return "$caseId: invalid shape geometry ${element.id}"
+                }
+            }
+        }
+        return null
     }
 }
