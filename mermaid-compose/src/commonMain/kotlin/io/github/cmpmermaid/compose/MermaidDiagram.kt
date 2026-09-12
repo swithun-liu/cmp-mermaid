@@ -14,13 +14,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.PathMeasure
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -33,8 +32,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.rememberTextMeasurer
@@ -50,10 +52,11 @@ import io.github.cmpmermaid.core.SceneArrowHead
 import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.SceneElement
 import io.github.cmpmermaid.core.ScenePath
+import io.github.cmpmermaid.core.ScenePathCommand
 import io.github.cmpmermaid.core.ScenePoint
 import io.github.cmpmermaid.core.SceneRect
 import io.github.cmpmermaid.core.SceneShape
-import io.github.cmpmermaid.core.SceneShapeKind
+import io.github.cmpmermaid.core.SceneShapePaint
 import io.github.cmpmermaid.core.SceneStrokePattern
 import io.github.cmpmermaid.core.SceneText
 import io.github.cmpmermaid.core.SceneTextAlignment
@@ -61,15 +64,9 @@ import io.github.cmpmermaid.core.SceneTextWeight
 import io.github.cmpmermaid.core.TextMetricProvider
 import io.github.cmpmermaid.core.TextMetrics
 import io.github.cmpmermaid.core.TextMetricsRequest
-import io.github.cmpmermaid.core.sceneShapeOutline
-import kotlin.math.PI
-import kotlin.math.abs
-import kotlin.math.atan2
-import kotlin.math.cos
+import kotlin.math.hypot
 import kotlin.math.min
 import kotlin.math.roundToInt
-import kotlin.math.sin
-import kotlin.math.sqrt
 
 @Composable
 fun MermaidDiagram(
@@ -111,7 +108,7 @@ fun rememberMermaidScene(
         TextMetricProvider { request ->
             val style = request.toTextStyle(density.density, density.fontScale)
             val result = textMeasurer.measure(
-                text = AnnotatedString(request.text),
+                text = request.text.toAnnotatedString(request.spans),
                 style = style,
                 softWrap = true,
                 maxLines = 8,
@@ -209,418 +206,214 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
     val bounds = shape.bounds.toComposeRect()
     val fill = shape.fill.toComposeColor()
     val stroke = shape.stroke.toComposeColor()
-    val strokeStyle = Stroke(
-        width = shape.strokeWidth,
-        cap = StrokeCap.Round,
-        join = StrokeJoin.Round,
-        pathEffect = shape.strokePattern.toPathEffect(),
-    )
-
-    when (shape.kind) {
-        SceneShapeKind.Rectangle -> {
-            drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
-            drawRect(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
-        }
-        SceneShapeKind.RoundedRectangle -> {
-            val radius = CornerRadius(shape.cornerRadius, shape.cornerRadius)
-            drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
-            drawRoundRect(stroke, bounds.topLeft, bounds.size, radius, style = strokeStyle)
-        }
-        SceneShapeKind.CollapsedGroup -> {
-            val radius = CornerRadius(shape.cornerRadius * 1.5f, shape.cornerRadius * 1.5f)
-            drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
-            drawRoundRect(stroke, bounds.topLeft, bounds.size, radius, style = strokeStyle)
-            val decoration = stroke.copy(alpha = 0.45f)
-            val separatorY = bounds.top + bounds.height * 0.62f
-            drawLine(
-                color = decoration,
-                start = Offset(bounds.left + 18f, separatorY),
-                end = Offset(bounds.right - 18f, separatorY),
-                strokeWidth = shape.strokeWidth,
-                pathEffect = PathEffect.dashPathEffect(floatArrayOf(5f, 4f)),
-            )
-            val dotsY = bounds.top + bounds.height * 0.8f
-            listOf(-12f, 0f, 12f).forEach { offset ->
-                drawCircle(
-                    color = decoration,
-                    radius = 3.5f,
-                    center = Offset(bounds.center.x + offset, dotsY),
-                )
-            }
-        }
-        SceneShapeKind.Stadium -> {
-            val radius = CornerRadius(bounds.height / 2f, bounds.height / 2f)
-            drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
-            drawRoundRect(stroke, bounds.topLeft, bounds.size, radius, style = strokeStyle)
-        }
-        SceneShapeKind.Circle,
-        SceneShapeKind.Ellipse,
-        SceneShapeKind.SmallCircle,
-        -> {
-            drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
-            drawOval(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
-        }
-        SceneShapeKind.FilledCircle -> {
-            drawOval(stroke, bounds.topLeft, bounds.size, style = Fill)
-        }
-        SceneShapeKind.DoubleCircle -> {
-            drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
-            drawOval(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
-            val inset = 5f
-            drawOval(
-                color = stroke,
-                topLeft = bounds.topLeft + Offset(inset, inset),
-                size = Size(bounds.width - inset * 2f, bounds.height - inset * 2f),
-                style = strokeStyle,
-            )
-        }
-        SceneShapeKind.FramedCircle -> {
-            drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
-            drawOval(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
-            drawCircle(stroke, radius = bounds.width / 4f, center = bounds.center, style = strokeStyle)
-        }
-        SceneShapeKind.CrossedCircle -> {
-            drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
-            drawOval(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
-            val radius = bounds.width.coerceAtMost(bounds.height) * 0.3f
-            drawLine(
-                stroke,
-                bounds.center - Offset(radius, radius),
-                bounds.center + Offset(radius, radius),
-                shape.strokeWidth,
-            )
-            drawLine(
-                stroke,
-                bounds.center + Offset(-radius, radius),
-                bounds.center + Offset(radius, -radius),
-                shape.strokeWidth,
-            )
-        }
-        SceneShapeKind.Cylinder -> drawCylinder(bounds, fill, stroke, strokeStyle)
-        SceneShapeKind.LinedCylinder -> {
-            drawCylinder(bounds, fill, stroke, strokeStyle)
-            drawOval(
-                color = stroke,
-                topLeft = Offset(bounds.left, bounds.top + 5f),
-                size = Size(bounds.width, 14f.coerceAtMost(bounds.height / 3f)),
-                style = strokeStyle,
-            )
-        }
-        SceneShapeKind.DirectAccessStorage -> drawHorizontalCylinder(bounds, fill, stroke, strokeStyle)
-        SceneShapeKind.Subroutine -> {
-            drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
-            drawRect(stroke, bounds.topLeft, bounds.size, style = strokeStyle)
-            drawLine(stroke, Offset(bounds.left + 10f, bounds.top), Offset(bounds.left + 10f, bounds.bottom), shape.strokeWidth)
-            drawLine(stroke, Offset(bounds.right - 10f, bounds.top), Offset(bounds.right - 10f, bounds.bottom), shape.strokeWidth)
-        }
-        SceneShapeKind.TextBlock -> Unit
-        SceneShapeKind.BraceLeft,
-        SceneShapeKind.BraceRight,
-        SceneShapeKind.Braces,
-        -> drawBraces(shape.kind, bounds, stroke, strokeStyle)
-        SceneShapeKind.MultiProcess -> {
-            for (offset in listOf(12f, 6f, 0f)) {
-                val topLeft = bounds.topLeft + Offset(offset, 12f - offset)
-                val size = Size(bounds.width - 12f, bounds.height - 12f)
-                drawRect(fill, topLeft, size, style = Fill)
-                drawRect(stroke, topLeft, size, style = strokeStyle)
-            }
-        }
-        SceneShapeKind.MultiDocument -> {
-            for (offset in listOf(12f, 6f, 0f)) {
-                val page = Rect(bounds.left + offset, bounds.top + 12f - offset,
-                    bounds.right - 12f + offset, bounds.bottom - offset)
-                drawDocument(page, fill, stroke, strokeStyle)
-            }
-        }
-        SceneShapeKind.Document -> drawDocument(bounds, fill, stroke, strokeStyle)
-        SceneShapeKind.LinedDocument -> {
-            drawDocument(bounds, fill, stroke, strokeStyle)
-            drawLine(
-                stroke,
-                Offset(bounds.left + 10f, bounds.top),
-                Offset(bounds.left + 10f, bounds.bottom - 8f),
-                shape.strokeWidth,
-            )
-        }
-        SceneShapeKind.TaggedDocument -> {
-            drawDocument(bounds, fill, stroke, strokeStyle)
-            val lowerEdge = sceneShapeOutline(
-                SceneShapeKind.Document,
-                SceneRect(bounds.left, bounds.top, bounds.right, bounds.bottom),
-            ).drop(2).takeWhile { it.x >= bounds.right - bounds.width * 0.2f }
-            val tag = Path().apply {
-                moveTo(lowerEdge.last().x, lowerEdge.last().y)
-                lineTo(bounds.right, lowerEdge.first().y - bounds.height * 0.2f)
-                lowerEdge.forEach { lineTo(it.x, it.y) }
-                close()
-            }
-            drawPath(tag, fill, style = Fill)
-            drawPath(tag, stroke, style = strokeStyle)
-        }
-        SceneShapeKind.LinedRectangle,
-        SceneShapeKind.DividedRectangle,
-        SceneShapeKind.WindowPane,
-        SceneShapeKind.TaggedRectangle,
-        -> {
-            drawPathShape(shape.kind, bounds, fill, stroke, strokeStyle)
-            drawInternalShapeLines(shape.kind, bounds, stroke, shape.strokeWidth)
-        }
-        else -> {
-            drawPathShape(shape.kind, bounds, fill, stroke, strokeStyle)
-        }
-    }
-}
-
-private fun DrawScope.drawPathShape(
-    kind: SceneShapeKind,
-    bounds: Rect,
-    fill: Color,
-    stroke: Color,
-    strokeStyle: Stroke,
-) {
-    val path = kind.toPath(bounds)
-    drawPath(path, fill, style = Fill)
-    drawPath(path, stroke, style = strokeStyle)
-}
-
-private fun DrawScope.drawHorizontalCylinder(
-    bounds: Rect,
-    fill: Color,
-    stroke: Color,
-    strokeStyle: Stroke,
-) {
-    val capWidth = min(16f, bounds.width / 4f)
-    val body = Path().apply {
-        moveTo(bounds.left + capWidth / 2f, bounds.top)
-        lineTo(bounds.right - capWidth / 2f, bounds.top)
-        cubicTo(bounds.right + capWidth / 2f, bounds.top, bounds.right + capWidth / 2f, bounds.bottom, bounds.right - capWidth / 2f, bounds.bottom)
-        lineTo(bounds.left + capWidth / 2f, bounds.bottom)
-        cubicTo(bounds.left - capWidth / 2f, bounds.bottom, bounds.left - capWidth / 2f, bounds.top, bounds.left + capWidth / 2f, bounds.top)
-        close()
-    }
-    drawPath(body, fill, style = Fill)
-    drawPath(body, stroke, style = strokeStyle)
-    drawOval(
-        color = stroke,
-        topLeft = Offset(bounds.right - capWidth, bounds.top),
-        size = Size(capWidth, bounds.height),
-        style = strokeStyle,
-    )
-}
-
-private fun DrawScope.drawDocument(
-    bounds: Rect,
-    fill: Color,
-    stroke: Color,
-    strokeStyle: Stroke,
-) {
-    drawPathShape(SceneShapeKind.Document, bounds, fill, stroke, strokeStyle)
-}
-
-private fun DrawScope.drawBraces(
-    kind: SceneShapeKind,
-    bounds: Rect,
-    stroke: Color,
-    strokeStyle: Stroke,
-) {
-    fun brace(x: Float, direction: Float): Path = Path().apply {
-        val depth = 9f * direction
-        moveTo(x + depth, bounds.top)
-        cubicTo(x, bounds.top, x, bounds.top, x, bounds.top + 9f)
-        lineTo(x, bounds.center.y - 9f)
-        cubicTo(x, bounds.center.y, x, bounds.center.y, x - depth / 2f, bounds.center.y)
-        cubicTo(x, bounds.center.y, x, bounds.center.y, x, bounds.center.y + 9f)
-        lineTo(x, bounds.bottom - 9f)
-        cubicTo(x, bounds.bottom, x, bounds.bottom, x + depth, bounds.bottom)
-    }
-    if (kind != SceneShapeKind.BraceRight) {
-        drawPath(brace(bounds.left + 4f, 1f), stroke, style = strokeStyle)
-    }
-    if (kind != SceneShapeKind.BraceLeft) {
-        drawPath(brace(bounds.right - 4f, -1f), stroke, style = strokeStyle)
-    }
-}
-
-private fun DrawScope.drawTag(
-    bounds: Rect,
-    stroke: Color,
-    strokeWidth: Float,
-) {
-    val inset = min(12f, bounds.width / 5f)
-    drawLine(
-        stroke,
-        Offset(bounds.right, bounds.bottom - inset),
-        Offset(bounds.right - inset, bounds.bottom),
-        strokeWidth,
-    )
-}
-
-private fun DrawScope.drawInternalShapeLines(
-    kind: SceneShapeKind,
-    bounds: Rect,
-    stroke: Color,
-    strokeWidth: Float,
-) {
-    when (kind) {
-        SceneShapeKind.LinedRectangle -> {
-            drawLine(stroke, Offset(bounds.left + 10f, bounds.top), Offset(bounds.left + 10f, bounds.bottom), strokeWidth)
-        }
-        SceneShapeKind.DividedRectangle -> {
-            val y = bounds.top + bounds.height / 6f
-            drawLine(stroke, Offset(bounds.left, y), Offset(bounds.right, y), strokeWidth)
-        }
-        SceneShapeKind.WindowPane -> {
-            drawLine(stroke, Offset(bounds.left + 13f, bounds.top), Offset(bounds.left + 13f, bounds.bottom), strokeWidth)
-            drawLine(stroke, Offset(bounds.left, bounds.top + 13f), Offset(bounds.right, bounds.top + 13f), strokeWidth)
-        }
-        SceneShapeKind.TaggedRectangle -> drawTag(bounds, stroke, strokeWidth)
-        else -> Unit
-    }
-}
-
-private fun DrawScope.drawCylinder(
-    bounds: Rect,
-    fill: Color,
-    stroke: Color,
-    strokeStyle: Stroke,
-) {
-    val ellipseHeight = min(14f, bounds.height / 3f)
-    val body = Path().apply {
-        moveTo(bounds.left, bounds.top + ellipseHeight / 2f)
-        lineTo(bounds.left, bounds.bottom - ellipseHeight / 2f)
-        cubicTo(
-            bounds.left,
-            bounds.bottom + ellipseHeight / 2f,
-            bounds.right,
-            bounds.bottom + ellipseHeight / 2f,
-            bounds.right,
-            bounds.bottom - ellipseHeight / 2f,
+    val geometry = shape.geometry
+    if (geometry == null) {
+        drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
+        drawRect(
+            color = stroke,
+            topLeft = bounds.topLeft,
+            size = bounds.size,
+            style = Stroke(
+                width = shape.strokeWidth,
+                cap = StrokeCap.Butt,
+                join = StrokeJoin.Miter,
+                pathEffect = shape.dashIntervals.toPathEffect()
+                    ?: shape.strokePattern.toPathEffect(),
+            ),
         )
-        lineTo(bounds.right, bounds.top + ellipseHeight / 2f)
-        close()
+        return
     }
-    drawPath(body, fill, style = Fill)
-    drawPath(body, stroke, style = strokeStyle)
-    drawOval(
-        color = fill,
-        topLeft = bounds.topLeft,
-        size = Size(bounds.width, ellipseHeight),
-        style = Fill,
-    )
-    drawOval(
-        color = stroke,
-        topLeft = bounds.topLeft,
-        size = Size(bounds.width, ellipseHeight),
-        style = strokeStyle,
-    )
+
+    geometry.paths.forEach { primitive ->
+        if (primitive.points.isEmpty()) {
+            return@forEach
+        }
+        val path = Path().apply {
+            primitive.points.forEachIndexed { index, point ->
+                val x = bounds.center.x + point.x
+                val y = bounds.center.y + point.y
+                if (index == 0) moveTo(x, y) else lineTo(x, y)
+            }
+            if (primitive.closed) close()
+        }
+        val opacity = primitive.opacity.coerceIn(0f, 1f)
+        when (primitive.fill) {
+            SceneShapePaint.None -> Unit
+            SceneShapePaint.Fill -> drawPath(path, fill.copy(alpha = fill.alpha * opacity), style = Fill)
+            SceneShapePaint.Stroke -> drawPath(path, stroke.copy(alpha = stroke.alpha * opacity), style = Fill)
+        }
+        when (primitive.stroke) {
+            SceneShapePaint.None -> Unit
+            SceneShapePaint.Fill -> drawPath(
+                path,
+                fill.copy(alpha = fill.alpha * opacity),
+                style = primitive.strokeStyle(shape),
+            )
+            SceneShapePaint.Stroke -> drawPath(
+                path,
+                stroke.copy(alpha = stroke.alpha * opacity),
+                style = primitive.strokeStyle(shape),
+            )
+        }
+    }
 }
 
-private fun SceneShapeKind.toPath(bounds: Rect): Path = Path().apply {
-    val outline = sceneShapeOutline(this@toPath, SceneRect(bounds.left, bounds.top, bounds.right, bounds.bottom))
-    outline.forEachIndexed { index, point ->
-        if (index == 0) moveTo(point.x, point.y) else lineTo(point.x, point.y)
-    }
-    close()
-}
+private fun io.github.cmpmermaid.core.SceneShapePath.strokeStyle(
+    shape: SceneShape,
+): Stroke = Stroke(
+    width = strokeWidth ?: shape.strokeWidth,
+    cap = StrokeCap.Butt,
+    join = StrokeJoin.Miter,
+    pathEffect = when {
+        dashIntervals.size >= 2 && dashIntervals.all { it.isFinite() && it > 0f } ->
+            PathEffect.dashPathEffect(dashIntervals.toFloatArray())
+        strokePattern != SceneStrokePattern.Solid -> strokePattern.toPathEffect()
+        shape.dashIntervals.size >= 2 && shape.dashIntervals.all { it.isFinite() && it > 0f } ->
+            PathEffect.dashPathEffect(shape.dashIntervals.toFloatArray())
+        else -> shape.strokePattern.toPathEffect()
+    },
+)
+
+private fun List<Float>.toPathEffect(): PathEffect? =
+    takeIf { size >= 2 && all { interval -> interval.isFinite() && interval > 0f } }
+        ?.let { PathEffect.dashPathEffect(it.toFloatArray()) }
 
 private fun DrawScope.drawScenePath(element: ScenePath) {
-    if (element.points.size < 2) {
+    if (element.commands.isEmpty()) {
         return
     }
     val path = Path().apply {
-        appendRoundedPolyline(
-            points = element.points,
-            cornerRadius = element.cornerRadius,
-            bridges = element.bridges,
-        )
+        element.commands.forEach { command ->
+            when (command) {
+                is ScenePathCommand.MoveTo ->
+                    moveTo(command.point.x, command.point.y)
+                is ScenePathCommand.LineTo ->
+                    lineTo(command.point.x, command.point.y)
+                is ScenePathCommand.QuadraticTo ->
+                    quadraticTo(
+                        command.control.x,
+                        command.control.y,
+                        command.end.x,
+                        command.end.y,
+                    )
+                is ScenePathCommand.CubicTo ->
+                    cubicTo(
+                        command.control1.x,
+                        command.control1.y,
+                        command.control2.x,
+                        command.control2.y,
+                        command.end.x,
+                        command.end.y,
+                    )
+            }
+        }
+    }
+    val useNeoMarkerMargin = element.look == "neo" && !element.animated
+    val visiblePath = if (useNeoMarkerMargin) {
+        path.withMermaidNeoMarkerGaps(element)
+    } else {
+        path
     }
     drawPath(
-        path = path,
+        path = visiblePath,
         color = element.color.toComposeColor(),
         style = Stroke(
             width = element.strokeWidth,
-            cap = StrokeCap.Round,
-            join = StrokeJoin.Round,
-            pathEffect = if (element.dashIntervals.size >= 2 && element.dashIntervals.all { it.isFinite() && it > 0f }) {
+            cap = if (element.animated) StrokeCap.Round else StrokeCap.Butt,
+            join = StrokeJoin.Miter,
+            pathEffect = if (
+                !useNeoMarkerMargin &&
+                element.dashIntervals.size >= 2 &&
+                element.dashIntervals.all { it.isFinite() && it > 0f }
+            ) {
                 PathEffect.dashPathEffect(element.dashIntervals.toFloatArray())
-            } else {
+            } else if (!useNeoMarkerMargin) {
                 element.strokePattern.toPathEffect()
-            },
+            } else null,
         ),
     )
     drawArrowHead(
         type = element.arrowStart,
-        tip = element.points.first(),
-        previous = element.points[1],
+        commands = element.commands,
+        position = MarkerPosition.Start,
+        useMargin = useNeoMarkerMargin,
         color = element.color.toComposeColor(),
-        strokeWidth = element.strokeWidth,
     )
     drawArrowHead(
         type = element.arrowEnd,
-        tip = element.points.last(),
-        previous = element.points[element.points.lastIndex - 1],
+        commands = element.commands,
+        position = MarkerPosition.End,
+        useMargin = useNeoMarkerMargin,
         color = element.color.toComposeColor(),
-        strokeWidth = element.strokeWidth,
     )
 }
 
-private fun Path.appendRoundedPolyline(
-    points: List<ScenePoint>,
-    cornerRadius: Float,
-    bridges: List<io.github.cmpmermaid.core.SceneBridge>,
-) {
-    moveTo(points.first().x, points.first().y)
-    var segmentStart = points.first()
-    points.zipWithNext().forEachIndexed { index, (start, end) ->
-        val next = points.getOrNull(index + 2)
-        if (next == null || cornerRadius <= 0f) {
-            appendSegmentWithBridges(segmentStart, end, bridges)
-            segmentStart = end
-            return@forEachIndexed
+private fun Path.withMermaidNeoMarkerGaps(element: ScenePath): Path {
+    val measure = PathMeasure()
+    measure.setPath(this, forceClosed = false)
+    val length = measure.length
+    val startOffset = element.arrowStart.neoMarkerOffset()
+    val endOffset = element.arrowEnd.neoMarkerOffset()
+    val dashIntervals = if (
+        element.strokePattern == SceneStrokePattern.Dashed ||
+        element.strokePattern == SceneStrokePattern.Dotted
+    ) {
+        val middleLength = length - startOffset - endOffset
+        val pairCount = (middleLength / 4f).toInt().coerceAtLeast(0)
+        buildList {
+            add(0f)
+            add(startOffset)
+            repeat(pairCount) {
+                add(2f)
+                add(2f)
+            }
+            add(endOffset)
         }
-
-        val radius = min(
-            cornerRadius,
-            min(start.orthogonalDistanceTo(end), end.orthogonalDistanceTo(next)) / 2f,
-        )
-        if (radius <= 0f) {
-            appendSegmentWithBridges(segmentStart, end, bridges)
-            segmentStart = end
-            return@forEachIndexed
-        }
-
-        val approach = end.moveToward(start, radius)
-        val departure = end.moveToward(next, radius)
-        appendSegmentWithBridges(segmentStart, approach, bridges)
-        cubicTo(
-            end.x,
-            end.y,
-            end.x,
-            end.y,
-            departure.x,
-            departure.y,
-        )
-        segmentStart = departure
+    } else {
+        listOf(0f, startOffset, (length - startOffset - endOffset).coerceAtLeast(0f), endOffset)
     }
+    return measure.extractDashPattern(length, dashIntervals)
 }
 
-private fun ScenePoint.orthogonalDistanceTo(other: ScenePoint): Float =
-    abs(other.x - x) + abs(other.y - y)
-
-private fun ScenePoint.moveToward(
-    target: ScenePoint,
-    distance: Float,
-): ScenePoint {
-    val total = orthogonalDistanceTo(target)
-    if (total <= 0f) {
-        return this
+private fun PathMeasure.extractDashPattern(
+    pathLength: Float,
+    sourceIntervals: List<Float>,
+): Path {
+    val result = Path()
+    if (pathLength <= 0f || sourceIntervals.isEmpty()) {
+        return result
     }
-    val ratio = (distance / total).coerceIn(0f, 1f)
-    return ScenePoint(
-        x = x + (target.x - x) * ratio,
-        y = y + (target.y - y) * ratio,
-    )
+    val intervals = if (sourceIntervals.size % 2 == 0) {
+        sourceIntervals
+    } else {
+        sourceIntervals + sourceIntervals
+    }
+    if (intervals.none { it > 0f }) {
+        return result
+    }
+
+    var distance = 0f
+    var intervalIndex = 0
+    var draw = true
+    while (distance < pathLength) {
+        val interval = intervals[intervalIndex]
+        val nextDistance = min(pathLength, distance + interval)
+        if (draw && nextDistance > distance) {
+            getSegment(distance, nextDistance, result, startWithMoveTo = true)
+        }
+        distance = nextDistance
+        draw = !draw
+        intervalIndex = (intervalIndex + 1) % intervals.size
+    }
+    return result
+}
+
+private fun SceneArrowHead.neoMarkerOffset(): Float = when (this) {
+    SceneArrowHead.None -> 0f
+    SceneArrowHead.Triangle -> 4f
+    SceneArrowHead.Circle,
+    SceneArrowHead.Cross,
+    -> 12.5f
 }
 
 private fun SceneStrokePattern.toPathEffect(): PathEffect? = when (this) {
@@ -629,124 +422,297 @@ private fun SceneStrokePattern.toPathEffect(): PathEffect? = when (this) {
     SceneStrokePattern.Dotted -> PathEffect.dashPathEffect(floatArrayOf(2f, 2f))
 }
 
-private fun Path.appendSegmentWithBridges(
-    start: ScenePoint,
-    end: ScenePoint,
-    bridges: List<io.github.cmpmermaid.core.SceneBridge>,
-) {
-    val deltaX = end.x - start.x
-    val deltaY = end.y - start.y
-    val length = sqrt(deltaX * deltaX + deltaY * deltaY)
-    if (length <= 0.0001f) {
-        lineTo(end.x, end.y)
-        return
-    }
-    val directionX = deltaX / length
-    val directionY = deltaY / length
-
-    val segmentBridges = bridges
-        .mapNotNull { bridge ->
-            val offsetX = bridge.center.x - start.x
-            val offsetY = bridge.center.y - start.y
-            val distance = offsetX * directionX + offsetY * directionY
-            val projectedX = start.x + directionX * distance
-            val projectedY = start.y + directionY * distance
-            val projectionError = sqrt(
-                (projectedX - bridge.center.x) * (projectedX - bridge.center.x) +
-                    (projectedY - bridge.center.y) * (projectedY - bridge.center.y),
-            )
-            bridge.takeIf {
-                projectionError < 0.5f &&
-                    distance >= bridge.radius &&
-                    distance <= length - bridge.radius
-            }?.let { it to distance }
-        }
-        .sortedBy { it.second }
-
-    segmentBridges.forEach { (bridge, _) ->
-        val radius = bridge.radius
-        var normalX = -directionY
-        var normalY = directionX
-        if (abs(deltaX) >= abs(deltaY)) {
-            if (normalY > 0f) {
-                normalX = -normalX
-                normalY = -normalY
-            }
-        } else {
-            if (normalX < 0f) {
-                normalX = -normalX
-                normalY = -normalY
-            }
-        }
-        val beforeX = bridge.center.x - directionX * radius
-        val beforeY = bridge.center.y - directionY * radius
-        val afterX = bridge.center.x + directionX * radius
-        val afterY = bridge.center.y + directionY * radius
-        lineTo(beforeX, beforeY)
-        cubicTo(
-            beforeX + directionX * radius * 0.45f + normalX * radius,
-            beforeY + directionY * radius * 0.45f + normalY * radius,
-            afterX - directionX * radius * 0.45f + normalX * radius,
-            afterY - directionY * radius * 0.45f + normalY * radius,
-            afterX,
-            afterY,
-        )
-    }
-    lineTo(end.x, end.y)
-}
-
 private fun DrawScope.drawArrowHead(
     type: SceneArrowHead,
-    tip: ScenePoint,
-    previous: ScenePoint,
+    commands: List<ScenePathCommand>,
+    position: MarkerPosition,
+    useMargin: Boolean,
     color: Color,
-    strokeWidth: Float,
 ) {
     if (type == SceneArrowHead.None) {
         return
     }
-    val angle = atan2(tip.y - previous.y, tip.x - previous.x)
-    fun insetCenter(radius: Float): Offset = Offset(
-        x = tip.x - cos(angle) * radius,
-        y = tip.y - sin(angle) * radius,
-    )
+    val tangent = commands.markerTangent(position) ?: return
     when (type) {
-        SceneArrowHead.Triangle -> {
-            val length = 10f
-            val spread = 5f
-            val baseX = tip.x - cos(angle) * length
-            val baseY = tip.y - sin(angle) * length
-            val path = Path().apply {
-                moveTo(tip.x, tip.y)
-                lineTo(baseX + cos(angle + PI.toFloat() / 2f) * spread, baseY + sin(angle + PI.toFloat() / 2f) * spread)
-                lineTo(baseX + cos(angle - PI.toFloat() / 2f) * spread, baseY + sin(angle - PI.toFloat() / 2f) * spread)
-                close()
-            }
-            drawPath(path, color, style = Fill)
-        }
-        SceneArrowHead.Circle -> {
-            val radius = 5f
-            drawCircle(color, radius = radius, center = insetCenter(radius))
-        }
-        SceneArrowHead.Cross -> {
-            val radius = 5f
-            val center = insetCenter(radius)
-            drawLine(
-                color,
-                Offset(center.x - radius, center.y - radius),
-                Offset(center.x + radius, center.y + radius),
-                strokeWidth,
-            )
-            drawLine(
-                color,
-                Offset(center.x - radius, center.y + radius),
-                Offset(center.x + radius, center.y - radius),
-                strokeWidth,
-            )
-        }
+        SceneArrowHead.Triangle -> drawPointMarker(tangent, position, useMargin, color)
+        SceneArrowHead.Circle -> drawCircleMarker(tangent, position, useMargin, color)
+        SceneArrowHead.Cross -> drawCrossMarker(tangent, position, useMargin, color)
         SceneArrowHead.None -> Unit
     }
 }
+
+private fun DrawScope.drawPointMarker(
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    useMargin: Boolean,
+    color: Color,
+) {
+    val definition = when {
+        useMargin && position == MarkerPosition.End -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 0f),
+                ScenePoint(11.5f, 7f),
+                ScenePoint(0f, 14f),
+            ),
+            reference = ScenePoint(11.5f, 7f),
+            scale = 10.5f / 11.5f,
+            strokeWidth = 0f,
+        )
+        useMargin -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 7f),
+                ScenePoint(11.5f, 14f),
+                ScenePoint(11.5f, 0f),
+            ),
+            reference = ScenePoint(1f, 7f),
+            scale = 1f,
+            strokeWidth = 0f,
+        )
+        position == MarkerPosition.End -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 0f),
+                ScenePoint(10f, 5f),
+                ScenePoint(0f, 10f),
+            ),
+            reference = ScenePoint(5f, 5f),
+            scale = 0.8f,
+            strokeWidth = 0.8f,
+        )
+        else -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 5f),
+                ScenePoint(10f, 10f),
+                ScenePoint(10f, 0f),
+            ),
+            reference = ScenePoint(4.5f, 5f),
+            scale = 0.8f,
+            strokeWidth = 0.8f,
+        )
+    }
+    val path = Path().apply {
+        definition.points.forEachIndexed { index, point ->
+            val transformed = tangent.transform(
+                point = point,
+                reference = definition.reference,
+                scale = definition.scale,
+            )
+            if (index == 0) {
+                moveTo(transformed.x, transformed.y)
+            } else {
+                lineTo(transformed.x, transformed.y)
+            }
+        }
+        close()
+    }
+    drawPath(path, color, style = Fill)
+    if (definition.strokeWidth > 0f) {
+        drawPath(
+            path,
+            color,
+            style = Stroke(
+                width = definition.strokeWidth,
+                cap = StrokeCap.Butt,
+                join = StrokeJoin.Miter,
+            ),
+        )
+    }
+}
+
+private fun DrawScope.drawCircleMarker(
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    useMargin: Boolean,
+    color: Color,
+) {
+    val referenceX = when {
+        useMargin && position == MarkerPosition.End -> 12.25f
+        useMargin -> -2f
+        position == MarkerPosition.End -> 11f
+        else -> -1f
+    }
+    val scale = if (useMargin) 1.4f else 1.1f
+    val center = tangent.transform(
+        point = ScenePoint(5f, 5f),
+        reference = ScenePoint(referenceX, 5f),
+        scale = scale,
+    )
+    val radius = 5f * scale
+    drawCircle(color = color, radius = radius, center = center, style = Fill)
+    if (!useMargin) {
+        drawCircle(
+            color = color,
+            radius = radius,
+            center = center,
+            style = Stroke(width = scale),
+        )
+    }
+}
+
+private fun DrawScope.drawCrossMarker(
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    useMargin: Boolean,
+    color: Color,
+) {
+    val definition = if (useMargin) {
+        MarkerCrossDefinition(
+            firstStart = ScenePoint(1f, 1f),
+            firstEnd = ScenePoint(14f, 14f),
+            secondStart = ScenePoint(1f, 14f),
+            secondEnd = ScenePoint(14f, 1f),
+            reference = ScenePoint(
+                if (position == MarkerPosition.End) 17.7f else -3.5f,
+                7.5f,
+            ),
+            scale = 0.8f,
+            strokeWidth = 2f,
+        )
+    } else {
+        MarkerCrossDefinition(
+            firstStart = ScenePoint(1f, 1f),
+            firstEnd = ScenePoint(10f, 10f),
+            secondStart = ScenePoint(10f, 1f),
+            secondEnd = ScenePoint(1f, 10f),
+            reference = ScenePoint(
+                if (position == MarkerPosition.End) 12f else -1f,
+                5.2f,
+            ),
+            scale = 1f,
+            strokeWidth = 2f,
+        )
+    }
+    drawLine(
+        color = color,
+        start = tangent.transform(definition.firstStart, definition.reference, definition.scale),
+        end = tangent.transform(definition.firstEnd, definition.reference, definition.scale),
+        strokeWidth = definition.strokeWidth,
+    )
+    drawLine(
+        color = color,
+        start = tangent.transform(definition.secondStart, definition.reference, definition.scale),
+        end = tangent.transform(definition.secondEnd, definition.reference, definition.scale),
+        strokeWidth = definition.strokeWidth,
+    )
+}
+
+private fun List<ScenePathCommand>.markerTangent(position: MarkerPosition): MarkerTangent? {
+    var current: ScenePoint? = null
+    var start: MarkerTangent? = null
+    var end: MarkerTangent? = null
+    forEach { command ->
+        when (command) {
+            is ScenePathCommand.MoveTo -> current = command.point
+            is ScenePathCommand.LineTo -> {
+                val from = current
+                if (from != null) {
+                    if (start == null) {
+                        start = MarkerTangent.create(from, command.point, anchorAtStart = true)
+                    }
+                    end = MarkerTangent.create(from, command.point, anchorAtStart = false) ?: end
+                }
+                current = command.point
+            }
+            is ScenePathCommand.QuadraticTo -> {
+                val from = current
+                if (from != null) {
+                    val startTangent = MarkerTangent.create(
+                        from,
+                        command.control,
+                        anchorAtStart = true,
+                    ) ?: MarkerTangent.create(from, command.end, anchorAtStart = true)
+                    val endTangent = MarkerTangent.create(
+                        command.control,
+                        command.end,
+                        anchorAtStart = false,
+                    ) ?: MarkerTangent.create(from, command.end, anchorAtStart = false)
+                    if (start == null && startTangent != null) start = startTangent
+                    if (endTangent != null) end = endTangent
+                }
+                current = command.end
+            }
+            is ScenePathCommand.CubicTo -> {
+                val from = current
+                if (from != null) {
+                    val startTangent = MarkerTangent.create(
+                        from,
+                        command.control1,
+                        anchorAtStart = true,
+                    ) ?: MarkerTangent.create(from, command.end, anchorAtStart = true)
+                    val endTangent = MarkerTangent.create(
+                        command.control2,
+                        command.end,
+                        anchorAtStart = false,
+                    ) ?: MarkerTangent.create(from, command.end, anchorAtStart = false)
+                    if (start == null && startTangent != null) start = startTangent
+                    if (endTangent != null) end = endTangent
+                }
+                current = command.end
+            }
+        }
+    }
+    return if (position == MarkerPosition.Start) start else end
+}
+
+private enum class MarkerPosition {
+    Start,
+    End,
+}
+
+private data class MarkerTangent(
+    val anchor: ScenePoint,
+    val unitX: Float,
+    val unitY: Float,
+) {
+    fun transform(
+        point: ScenePoint,
+        reference: ScenePoint,
+        scale: Float,
+    ): Offset {
+        val localX = (point.x - reference.x) * scale
+        val localY = (point.y - reference.y) * scale
+        return Offset(
+            x = anchor.x + unitX * localX - unitY * localY,
+            y = anchor.y + unitY * localX + unitX * localY,
+        )
+    }
+
+    companion object {
+        fun create(
+            from: ScenePoint,
+            to: ScenePoint,
+            anchorAtStart: Boolean,
+        ): MarkerTangent? {
+            val deltaX = to.x - from.x
+            val deltaY = to.y - from.y
+            val length = hypot(deltaX, deltaY)
+            if (length <= 0.0001f) {
+                return null
+            }
+            return MarkerTangent(
+                anchor = if (anchorAtStart) from else to,
+                unitX = deltaX / length,
+                unitY = deltaY / length,
+            )
+        }
+    }
+}
+
+private data class MarkerPathDefinition(
+    val points: List<ScenePoint>,
+    val reference: ScenePoint,
+    val scale: Float,
+    val strokeWidth: Float,
+)
+
+private data class MarkerCrossDefinition(
+    val firstStart: ScenePoint,
+    val firstEnd: ScenePoint,
+    val secondStart: ScenePoint,
+    val secondEnd: ScenePoint,
+    val reference: ScenePoint,
+    val scale: Float,
+    val strokeWidth: Float,
+)
 
 private fun DrawScope.drawSceneText(
     element: SceneText,
@@ -765,7 +731,7 @@ private fun DrawScope.drawSceneText(
         },
     )
     val layout = textMeasurer.measure(
-        text = AnnotatedString(element.text),
+        text = element.text.toAnnotatedString(element.spans),
         style = style,
         softWrap = true,
         maxLines = 8,
@@ -800,6 +766,25 @@ private fun SceneTextWeight.toComposeWeight(): FontWeight = when (this) {
     SceneTextWeight.Normal -> FontWeight.Normal
     SceneTextWeight.Medium -> FontWeight.Medium
     SceneTextWeight.Bold -> FontWeight.Bold
+}
+
+private fun String.toAnnotatedString(
+    spans: List<io.github.cmpmermaid.core.SceneTextSpan>,
+): AnnotatedString = buildAnnotatedString {
+    append(this@toAnnotatedString)
+    spans.forEach { span ->
+        if (span.start < 0 || span.end > length || span.start >= span.end) {
+            return@forEach
+        }
+        addStyle(
+            style = SpanStyle(
+                fontWeight = span.weight?.toComposeWeight(),
+                fontStyle = if (span.italic) FontStyle.Italic else null,
+            ),
+            start = span.start,
+            end = span.end,
+        )
+    }
 }
 
 private fun SceneRect.toComposeRect(): Rect = Rect(left, top, right, bottom)

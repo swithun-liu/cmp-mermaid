@@ -6,7 +6,6 @@ import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.ScenePoint
 import io.github.cmpmermaid.core.SceneRect
 import io.github.cmpmermaid.core.SceneSize
-import io.github.cmpmermaid.core.sceneShapeOutline
 import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreEdge
 import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreGraph
 import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreGraphLabel
@@ -15,6 +14,7 @@ import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreNode
 import io.github.cmpmermaid.core.flowchart.upstream.dagre.DagreSelfLoop
 import io.github.cmpmermaid.core.flowchart.upstream.graphlib.Graph
 import io.github.cmpmermaid.core.flowchart.upstream.mermaid.MermaidGraphAdapter
+import io.github.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -39,6 +39,7 @@ internal object FlowDagreLayout {
     fun layout(
         document: FlowchartDocument,
         nodeSizes: Map<String, SceneSize>,
+        nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         edgeLabelSizes: Map<Int, SceneSize>,
         options: MermaidRenderOptions,
     ): GMResult<Result, MermaidError> {
@@ -65,6 +66,7 @@ internal object FlowDagreLayout {
         val edges = collectEdges(
             graph = graph,
             document = document,
+            nodeShapeLayouts = nodeShapeLayouts,
             nodeBounds = nodeBounds,
             subgraphBounds = subgraphBounds,
         )
@@ -83,8 +85,8 @@ internal object FlowDagreLayout {
         ).setGraph(
             DagreGraphLabel(
                 rankdir = document.direction.toDagreDirection(),
-                nodesep = options.horizontalSpacing,
-                ranksep = options.verticalSpacing,
+                nodesep = options.nodeSpacing,
+                ranksep = options.rankSpacing,
                 marginx = 8f,
                 marginy = 8f,
             ),
@@ -281,6 +283,7 @@ internal object FlowDagreLayout {
     private fun collectEdges(
         graph: DagreGraph,
         document: FlowchartDocument,
+        nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         nodeBounds: Map<String, SceneRect>,
         subgraphBounds: Map<String, SceneRect>,
     ): Map<Int, RoutedEdge> {
@@ -288,6 +291,7 @@ internal object FlowDagreLayout {
         collectEdges(
             graph = graph,
             document = document,
+            nodeShapeLayouts = nodeShapeLayouts,
             nodeBounds = nodeBounds,
             subgraphBounds = subgraphBounds,
             offsetX = 0f,
@@ -300,6 +304,7 @@ internal object FlowDagreLayout {
     private fun collectEdges(
         graph: DagreGraph,
         document: FlowchartDocument,
+        nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         nodeBounds: Map<String, SceneRect>,
         subgraphBounds: Map<String, SceneRect>,
         offsetX: Float,
@@ -319,6 +324,7 @@ internal object FlowDagreLayout {
                 result = result,
                 edge = edge,
                 document = document,
+                nodeShapeLayouts = nodeShapeLayouts,
                 nodeBounds = nodeBounds,
                 subgraphBounds = subgraphBounds,
                 offsetX = offsetX,
@@ -367,6 +373,7 @@ internal object FlowDagreLayout {
             collectEdges(
                 graph = nested,
                 document = document,
+                nodeShapeLayouts = nodeShapeLayouts,
                 nodeBounds = nodeBounds,
                 subgraphBounds = subgraphBounds,
                 offsetX = offsetX + node.x - nestedRoot.x,
@@ -380,6 +387,7 @@ internal object FlowDagreLayout {
         result: MutableMap<Int, RoutedEdge>,
         edge: DagreEdge,
         document: FlowchartDocument,
+        nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         nodeBounds: Map<String, SceneRect>,
         subgraphBounds: Map<String, SceneRect>,
         offsetX: Float,
@@ -398,14 +406,14 @@ internal object FlowDagreLayout {
             ?: subgraphBounds[source.to]
         if (startBounds != null) {
             points[0] = intersect(
-                shape = document.nodes[source.from]?.shape,
+                shapeLayout = nodeShapeLayouts[source.from],
                 bounds = startBounds,
                 toward = points[1],
             )
         }
         if (endBounds != null) {
             points[points.lastIndex] = intersect(
-                shape = document.nodes[source.to]?.shape,
+                shapeLayout = nodeShapeLayouts[source.to],
                 bounds = endBounds,
                 toward = points[points.lastIndex - 1],
             )
@@ -549,12 +557,12 @@ internal object FlowDagreLayout {
     }
 
     private fun intersect(
-        shape: io.github.cmpmermaid.core.SceneShapeKind?,
+        shapeLayout: MermaidShapeLayout?,
         bounds: SceneRect,
         toward: ScenePoint,
     ): ScenePoint {
         val center = bounds.center
-        val outline = if (shape == null) {
+        val outline = if (shapeLayout == null) {
             listOf(
                 ScenePoint(bounds.left, bounds.top),
                 ScenePoint(bounds.right, bounds.top),
@@ -562,7 +570,9 @@ internal object FlowDagreLayout {
                 ScenePoint(bounds.left, bounds.bottom),
             )
         } else {
-            sceneShapeOutline(shape, bounds)
+            shapeLayout.geometry.outline.map { point ->
+                ScenePoint(center.x + point.x, center.y + point.y)
+            }
         }
         val directionX = toward.x - center.x
         val directionY = toward.y - center.y
@@ -577,7 +587,10 @@ internal object FlowDagreLayout {
             val ray = (offsetX * segmentY - offsetY * segmentX) / denominator
             val segment = (offsetX * directionY - offsetY * directionX) / denominator
             val currentBest = best
-            if (ray >= 0f && segment in 0f..1f && (currentBest == null || ray < currentBest.first)) {
+            if (ray in 0f..1f &&
+                segment in 0f..1f &&
+                (currentBest == null || ray > currentBest.first)
+            ) {
                 best = ray to ScenePoint(
                     center.x + directionX * ray,
                     center.y + directionY * ray,

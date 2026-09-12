@@ -71,9 +71,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.compose.MermaidDiagram
 import io.github.cmpmermaid.core.MermaidCompatibility
+import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.MermaidTheme
 import io.github.cmpmermaid.sample.generated.FlowchartDemo
 import io.github.cmpmermaid.sample.generated.flowchartDemos
+
+private val officialReferenceRenderOptions = MermaidRenderOptions(curve = "rounded")
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -170,6 +173,7 @@ private fun VisualAuditScreen(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
                 theme = MermaidTheme.MermaidDefault,
+                options = officialReferenceRenderOptions,
                 contentDescription = "Audit ${demo.id} native",
             )
             AuditPreview.Official -> Image(
@@ -627,6 +631,7 @@ private fun SyntaxLesson(
                     .fillMaxWidth()
                     .height(height.dp),
                 theme = MermaidTheme.MermaidDefault,
+                options = officialReferenceRenderOptions,
                 contentDescription = "$title CMP rendering",
             )
         }
@@ -833,6 +838,7 @@ private fun NativePreview(
                 .fillMaxWidth()
                 .height(height),
             theme = MermaidTheme.MermaidDefault,
+            options = officialReferenceRenderOptions,
             contentDescription = "${demo.title} CMP rendering",
         )
     }

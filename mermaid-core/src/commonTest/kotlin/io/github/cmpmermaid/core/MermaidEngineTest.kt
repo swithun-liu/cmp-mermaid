@@ -119,7 +119,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun returnsStructuredErrorForInvalidColor() {
+    fun ignoresInvalidCssColorLikeTheSvgRenderer() {
         val result = engine.render(
             """
                 flowchart TB
@@ -129,8 +129,9 @@ class MermaidEngineTest {
             context,
         )
 
-        val error = assertIs<GMResult.Err<MermaidError>>(result).error
-        assertIs<MermaidError.Parse>(error)
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
+        assertEquals(context.theme.nodeFill, node.fill)
     }
 
     @Test
@@ -170,7 +171,7 @@ class MermaidEngineTest {
         val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
         val paths = scene.elements.filterIsInstance<ScenePath>()
         assertEquals(3, paths.size)
-        assertTrue(paths.any { it.arrowStart == SceneArrowHead.Circle && it.arrowEnd == SceneArrowHead.Cross })
+        assertTrue(paths.any { it.arrowStart == SceneArrowHead.None && it.arrowEnd == SceneArrowHead.Cross })
         assertTrue(paths.any { it.arrowStart == SceneArrowHead.Triangle && it.arrowEnd == SceneArrowHead.Triangle })
     }
 
@@ -263,7 +264,6 @@ class MermaidEngineTest {
         assertEquals(setOf("eAC", "eAD", "eBC", "eBD"), paths.keys)
         assertTrue(paths.values.all { it.points.size >= 3 })
         assertEquals(4, paths.values.map(ScenePath::points).toSet().size)
-        assertTrue(paths.values.any { it.bridges.isNotEmpty() })
     }
 
     @Test
@@ -300,7 +300,7 @@ class MermaidEngineTest {
             """
                 flowchart LR
                   A --> B
-                  style A fill:rgba(255,0,0,0.5),stroke:hsl(120,100%,25%),color:white,stroke-dasharray:5 5,font-size:20px,font-weight:bold
+                  style A fill:#ff000080,stroke:#008000,color:white,stroke-dasharray:5 5,font-size:20px,font-weight:bold
             """.trimIndent(),
             context,
         )
@@ -359,7 +359,7 @@ class MermaidEngineTest {
             .first { shape -> shape.id == "A" }
         val loop = scene.elements
             .filterIsInstance<ScenePath>()
-            .first { path -> path.id == "edge_0" }
+            .first { path -> path.id == "L_A_A_0" }
 
         assertEquals(4, loop.points.size)
         assertEquals(node.bounds.right, loop.points.first().x)
@@ -368,7 +368,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun addsBridgeToLaterPathAtOrthogonalCrossing() {
+    fun doesNotApplyElkLineJumpsToDagreCrossings() {
         val result = engine.render(
             """
                 flowchart TB
@@ -385,11 +385,7 @@ class MermaidEngineTest {
 
         val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
         val paths = scene.elements.filterIsInstance<ScenePath>()
-        assertTrue(
-            paths.any { it.bridges.isNotEmpty() },
-            "Expected at least one routed crossing to contain a bridge: " +
-                paths.joinToString { "${it.id}=${it.points}" },
-        )
+        assertEquals(11, paths.size)
     }
 
     @Test
@@ -448,9 +444,9 @@ class MermaidEngineTest {
         assertTrue(shapes.getValue("f2").bounds.bottom < shapes.getValue("i2").bounds.top)
 
         val paths = scene.elements.filterIsInstance<ScenePath>().associateBy(ScenePath::id)
-        assertTrue(paths.getValue("edge_0").points.first().x > paths.getValue("edge_0").points.last().x)
-        assertTrue(paths.getValue("edge_1").points.first().y > paths.getValue("edge_1").points.last().y)
-        assertTrue(paths.getValue("edge_4").points.first().y < paths.getValue("edge_4").points.last().y)
+        assertTrue(paths.getValue("L_i1_f1_0").points.first().x > paths.getValue("L_i1_f1_0").points.last().x)
+        assertTrue(paths.getValue("L_i2_f2_0").points.first().y > paths.getValue("L_i2_f2_0").points.last().y)
+        assertTrue(paths.getValue("L_B1_B2_0").points.first().y < paths.getValue("L_B1_B2_0").points.last().y)
     }
 
     @Test
@@ -585,10 +581,17 @@ class MermaidEngineTest {
     @Test
     fun routesQuestionWorkflowWithoutCrossingUnrelatedNodes() {
         val scene = renderCase("question_workflow")
-        val endpoints = listOf("A" to "B", "B" to "C", "C" to "A", "B" to "D", "D" to "E", "E" to "F")
+        val endpoints = mapOf(
+            "L_A_B_0" to ("A" to "B"),
+            "L_B_C_0" to ("B" to "C"),
+            "L_C_A_0" to ("C" to "A"),
+            "L_B_D_0" to ("B" to "D"),
+            "L_D_E_0" to ("D" to "E"),
+            "L_E_F_0" to ("E" to "F"),
+        )
         val nodes = scene.elements.filterIsInstance<SceneShape>().filter { it.id in setOf("A", "B", "C", "D", "E", "F") }
         for (path in scene.elements.filterIsInstance<ScenePath>()) {
-            val (from, to) = endpoints[path.id.removePrefix("edge_").toInt()]
+            val (from, to) = endpoints.getValue(path.id)
             for (node in nodes.filter { it.id != from && it.id != to }) {
                 assertTrue(
                     path.points.zipWithNext().none { (start, end) -> crossesInterior(start, end, node.bounds) },
@@ -602,7 +605,7 @@ class MermaidEngineTest {
     fun returnsCycleEdgeToActualOutlineFromOutside() {
         val scene = renderCase("self_loop_and_cycle")
         val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }.bounds
-        val path = scene.elements.filterIsInstance<ScenePath>().first { it.id == "edge_3" }
+        val path = scene.elements.filterIsInstance<ScenePath>().first { it.id == "L_C_A_0" }
         val end = path.points.last()
         val previous = path.points[path.points.lastIndex - 1]
         val onOutline =

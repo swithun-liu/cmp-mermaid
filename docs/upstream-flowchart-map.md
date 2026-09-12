@@ -44,17 +44,29 @@ adapter owns measurement and painting instead.
 | --- | --- | --- |
 | `upstream/mermaid/MermaidGraphAdapter.kt` | `rendering-util/layout-algorithms/dagre/mermaid-graphlib.js` | Cluster discovery, endpoint anchors, extraction, and recursive graphs ported |
 | `FlowDagreLayout.kt` | `rendering-util/layout-algorithms/dagre/index.js` | Graph preparation, self-loop splitting/merging, recursive measurement, result normalization ported |
-| `LineBridgeRouter.kt` | `rendering-util/rendering-elements/lineJump.ts` | Segment crossing and hop assignment ported |
-| `SceneShapeGeometry.kt` | Mermaid shape intersection functions | Native shape-outline adapter |
-| `MermaidDiagram.kt` | Mermaid SVG rendering elements | Compose Canvas platform adapter |
+| `upstream/mermaid/MermaidShapePort.kt` | `rendering-util/rendering-elements/shapes/*` | Shape sizing, geometry, label offsets, and intersection outlines translated |
+| `upstream/mermaid/MermaidEdgePathPort.kt` | `rendering-util/rendering-elements/edges.js`, `utils/lineWithOffset.ts` | Rounded paths, corner correction, marker offsets, and curve selection translated |
+| `upstream/mermaid/D3CurvePort.kt` | `d3-shape 3.2.0 src/curve/*` | Line-only curve implementations used by Mermaid translated |
+| `FlowchartDataAdapter.kt` | FlowDB renderer data to `SceneGraph` | Native data-model adapter |
+| `MermaidDiagram.kt` | Mermaid SVG rendering result | Compose Canvas platform adapter |
+
+Mermaid's Dagre renderer does not call `lineJump.ts`. No separate crossing-hop
+algorithm is present in the Native Dagre path.
 
 ## Flowchart Semantics
 
-`FlowchartParser.kt` and `FlowchartModel.kt` currently implement the supported
-Flowchart/FlowDB behavior in Kotlin, but they are not yet a complete
-method-for-method port of Mermaid's parser and `flowDb.ts`. Unsupported
-behavior remains listed in `flowchart-compatibility.md`; it must not be
-described as translated until its upstream mapping and parity tests exist.
+| Kotlin source | Upstream source | Port status |
+| --- | --- | --- |
+| `MermaidPreprocessor.kt` | `preprocess.ts`, directive/config cleanup, entity helpers | Frontmatter, directives, comments, entities, and supported config merge translated |
+| `upstream/mermaid/FlowJisonTables.kt` | Generated Mermaid `flow.jison` parser | Generated lexer rules, conditions, productions, and LALR states |
+| `upstream/mermaid/FlowJisonRuntime.kt` | Jison `0.4.18` generated lexer/parser runtime | Kotlin runtime adapter for the generated tables |
+| `upstream/mermaid/FlowJisonParser.kt` | Mermaid `flow.jison` semantic actions | Flowchart grammar actions translated to typed Kotlin values |
+| `upstream/mermaid/FlowDb.kt` | `diagrams/flowchart/flowDb.ts` | FlowDB state and renderer-data conversion translated |
+| `upstream/mermaid/MermaidTextPort.kt` | `createText.ts`, `handle-markdown-text.ts`, `marked` | Transitional subset; it is not a complete `marked` source port and remains a release blocker |
+
+Unsupported behavior remains listed in `flowchart-compatibility.md`; it must
+not be described as translated until its upstream mapping and parity tests
+exist.
 
 ## Intentional Kotlin Adaptations
 
@@ -66,7 +78,7 @@ described as translated until its upstream mapping and parity tests exist.
 - Lodash operations map to Kotlin collection operations without changing
   traversal order.
 - DOM measurement is supplied by `TextMetricProvider`.
-- SVG paths, markers, and line jumps map to `SceneGraph` primitives.
+- SVG paths and markers map to `SceneGraph` primitives.
 
 ## Parity Gate
 
@@ -82,7 +94,7 @@ package for:
 
 `MermaidEngineTest` additionally covers all 40 official Flowchart gallery
 sources, recursive subgraph directions, cluster endpoints, compact
-self-loops, invisible edges, and crossing hops.
+self-loops, invisible edges, and the absence of ELK-only line jumps in Dagre.
 
 ## Upgrade Procedure
 

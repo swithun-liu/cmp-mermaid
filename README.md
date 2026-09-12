@@ -62,8 +62,8 @@ Supported:
 - Nested/collapsed subgraphs, local subgraph directions, class definitions,
   node classes, and inline styles.
 - Hex, RGB(A), HSL(A), and common CSS named colors.
-- Dagre source-ported layout, parallel lanes, compact self-loops, rounded
-  paths, and Mermaid line-jump crossings.
+- Dagre source-ported layout, parallel lanes, compact self-loops, and Mermaid
+  edge curves. Dagre does not apply the ELK-only line-jump renderer.
 - Front matter, comments, semicolon-separated statements, and line breaks.
 
 Production gaps are tracked in

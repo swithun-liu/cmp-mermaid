@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "generate:flow-parser": "node generate-flow-parser.mjs",
     "render": "node render.mjs"
   },
   "dependencies": {

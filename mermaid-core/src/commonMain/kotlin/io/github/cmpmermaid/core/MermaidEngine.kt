@@ -6,6 +6,8 @@ data class MermaidRenderContext(
     val textMetrics: TextMetricProvider,
     val theme: MermaidTheme = MermaidTheme(),
     val options: MermaidRenderOptions = MermaidRenderOptions(),
+    internal val diagramTitle: String? = null,
+    internal val frontmatterLineOffset: Int = 0,
 )
 
 interface MermaidDiagramPlugin {
@@ -33,11 +35,18 @@ class MermaidEngine(
         source: String,
         context: MermaidRenderContext,
     ): GMResult<MermaidScene, MermaidError> {
-        val normalized = stripFrontMatter(source)
-        val header = normalized
+        val preprocessed = when (val result = MermaidPreprocessor.preprocess(source)) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
+        val resolvedOptions = when (val result = preprocessed.config.applyTo(context.options)) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
+        val header = preprocessed.code.cleaned
             .lineSequence()
             .map(String::trim)
-            .firstOrNull { it.isNotEmpty() && !it.startsWith("%%") }
+            .firstOrNull(String::isNotEmpty)
             ?.substringBefore(' ')
             ?.lowercase()
             .orEmpty()
@@ -45,20 +54,14 @@ class MermaidEngine(
         val plugin = pluginsByHeader[header]
             ?: return GMResult.Err(MermaidError.UnsupportedDiagram(header.ifEmpty { "<empty>" }))
 
-        return plugin.compile(normalized, context)
-    }
-
-    private fun stripFrontMatter(source: String): String {
-        val lines = source.lines()
-        val firstContent = lines.indexOfFirst { it.isNotBlank() }
-        if (firstContent == -1 || lines[firstContent].trim() != "---") {
-            return source
-        }
-
-        val closing = (firstContent + 1 until lines.size)
-            .firstOrNull { lines[it].trim() == "---" }
-            ?: return source
-
-        return lines.drop(closing + 1).joinToString("\n")
+        val parserSource = MermaidPreprocessor.encodeEntities(preprocessed.code.cleaned) + "\n"
+        return plugin.compile(
+            source = parserSource,
+            context = context.copy(
+                options = resolvedOptions,
+                diagramTitle = preprocessed.title,
+                frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,
+            ),
+        )
     }
 }

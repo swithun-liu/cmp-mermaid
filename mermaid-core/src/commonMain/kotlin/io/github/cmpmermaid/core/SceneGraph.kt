@@ -53,7 +53,18 @@ enum class SceneShapeKind {
     TaggedDocument,
     TaggedRectangle,
     Icon,
+    IconCircle,
+    IconSquare,
+    IconRounded,
     Image,
+    Datastore,
+    Folder,
+    Bucket,
+    Console,
+    Browser,
+    Person,
+    Bang,
+    Cloud,
 }
 
 enum class SceneStrokePattern {
@@ -77,13 +88,41 @@ data class SceneShape(
     val id: String,
     val bounds: SceneRect,
     val kind: SceneShapeKind,
+    val geometry: SceneShapeGeometry? = null,
     val fill: SceneColor,
     val stroke: SceneColor,
     val strokeWidth: Float = 1.5f,
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
+    val dashIntervals: List<Float> = emptyList(),
     val cornerRadius: Float = 8f,
     override val zIndex: Int = 10,
 ) : SceneElement
+
+enum class SceneShapePaint {
+    None,
+    Fill,
+    Stroke,
+}
+
+data class SceneShapePath(
+    val points: List<ScenePoint>,
+    val closed: Boolean = true,
+    val fill: SceneShapePaint = SceneShapePaint.Fill,
+    val stroke: SceneShapePaint = SceneShapePaint.Stroke,
+    val strokeWidth: Float? = null,
+    val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
+    val dashIntervals: List<Float> = emptyList(),
+    val opacity: Float = 1f,
+)
+
+/**
+ * Shape paths use coordinates relative to the center of [SceneShape.bounds].
+ * The outline is the exact Mermaid intersection boundary for the rendered node.
+ */
+data class SceneShapeGeometry(
+    val paths: List<SceneShapePath>,
+    val outline: List<ScenePoint>,
+)
 
 data class SceneText(
     val text: String,
@@ -91,9 +130,17 @@ data class SceneText(
     val color: SceneColor,
     val fontSize: Float,
     val weight: SceneTextWeight = SceneTextWeight.Medium,
+    val spans: List<SceneTextSpan> = emptyList(),
     val horizontalAlignment: SceneTextAlignment = SceneTextAlignment.Center,
     override val zIndex: Int = 20,
 ) : SceneElement
+
+data class SceneTextSpan(
+    val start: Int,
+    val end: Int,
+    val weight: SceneTextWeight? = null,
+    val italic: Boolean = false,
+)
 
 enum class SceneTextWeight {
     Normal,
@@ -107,30 +154,51 @@ enum class SceneTextAlignment {
     End,
 }
 
+sealed interface ScenePathCommand {
+    data class MoveTo(
+        val point: ScenePoint,
+    ) : ScenePathCommand
+
+    data class LineTo(
+        val point: ScenePoint,
+    ) : ScenePathCommand
+
+    data class QuadraticTo(
+        val control: ScenePoint,
+        val end: ScenePoint,
+    ) : ScenePathCommand
+
+    data class CubicTo(
+        val control1: ScenePoint,
+        val control2: ScenePoint,
+        val end: ScenePoint,
+    ) : ScenePathCommand
+}
+
 data class ScenePath(
     val id: String,
     val points: List<ScenePoint>,
+    val commands: List<ScenePathCommand>,
     val color: SceneColor,
     val strokeWidth: Float,
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val arrowStart: SceneArrowHead = SceneArrowHead.None,
     val arrowEnd: SceneArrowHead = SceneArrowHead.None,
-    val cornerRadius: Float = 5f,
-    val bridges: List<SceneBridge> = emptyList(),
+    val curve: String = "rounded",
+    val look: String,
+    val animated: Boolean,
     override val zIndex: Int = 5,
     val dashIntervals: List<Float> = emptyList(),
 ) : SceneElement
-
-data class SceneBridge(
-    val center: ScenePoint,
-    val radius: Float = 5f,
-)
 
 data class MermaidScene(
     val width: Float,
     val height: Float,
     val background: SceneColor,
     val elements: List<SceneElement>,
+    val title: String? = null,
+    val accessibilityTitle: String? = null,
+    val accessibilityDescription: String? = null,
 )
 
 data class TextMetricsRequest(
@@ -138,6 +206,7 @@ data class TextMetricsRequest(
     val fontSize: Float,
     val maxWidth: Float,
     val weight: SceneTextWeight = SceneTextWeight.Medium,
+    val spans: List<SceneTextSpan> = emptyList(),
 )
 
 data class TextMetrics(

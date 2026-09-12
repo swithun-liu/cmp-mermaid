@@ -21,6 +21,9 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
+        commonMain.dependencies {
+            implementation(libs.kaml)
+        }
         commonTest.dependencies {
             implementation(kotlin("test"))
         }

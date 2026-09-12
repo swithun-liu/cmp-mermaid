@@ -24,8 +24,8 @@ Production readiness requires:
 | Edge ids and lengths | Supported | Minimum rank length is applied; animation metadata renders statically |
 | Multi-node links | Supported | `A & B --> C & D` |
 | Classes and inline styles | Supported | Fill, stroke, text color, stroke width/pattern, font size/weight; Hex, RGB(A), HSL(A) and common named colors |
-| `linkStyle` | Supported with exceptions | Static stroke/text properties are applied; Mermaid curve interpolation names are not |
-| Routing | Supported | Translated Dagre layout, parallel lanes, cycles, compact self-loops, rounded paths and Mermaid line-jump crossings |
+| `linkStyle` | Supported with exceptions | Static stroke/text properties and Mermaid's Flowchart D3 curve names are applied |
+| Routing | Supported | Translated Dagre layout, parallel lanes, cycles, compact self-loops and Mermaid edge curves; Dagre does not apply ELK line jumps |
 | Subgraphs | Supported | Nested groups, boundary links, collapsed view and independently laid out local directions |
 | Markdown strings | Partial | Basic emphasis and line breaks; full Markdown layout remains |
 | Click and tooltip directives | Ignored safely | Native callback and tooltip APIs are not exposed yet |
@@ -56,14 +56,16 @@ and `dagre-d3-es 7.0.14`. The detailed file map is maintained in
 | `upstream/dagre` | Dagre layout, rank, order, compound, normalization and Brandes-Köpf position stages |
 | `MermaidGraphAdapter` | Mermaid recursive cluster extraction and cluster endpoint anchoring |
 | `FlowDagreLayout` | Mermaid Dagre preparation, recursive measurement, self-loop merge and Native result adapter |
-| `LineBridgeRouter` | Mermaid `lineJump.ts` segment intersection and hop assignment |
-| Compose renderer | Native path, shape, dash, marker and hop painting |
+| `MermaidEdgePathPort` | Mermaid `edges.js`, `lineWithOffset.ts`, and D3 curve selection |
+| `D3CurvePort` | Line-only ports of the `d3-shape 3.2.0` curves used by Mermaid |
+| Compose renderer | Native path, shape, dash, marker and text painting |
 
 ## Remaining Gaps
 
-- Rich Markdown measurement does not yet match Mermaid's HTML label renderer.
-- The Flowchart parser/FlowDB layer supports the documented matrix but is not
-  yet a complete method-for-method source port.
+- `MermaidTextPort` is still a transitional Markdown subset and must be
+  replaced by a source translation of Mermaid's pinned `marked` dependency.
+- HTML labels, sanitization, KaTeX, links, icons and image loading are not yet
+  translated; unsupported paths must fail explicitly rather than approximate.
 - Icon and image nodes need a public KMP asset-provider contract.
 - Click, link, callback, and tooltip directives need native interaction APIs.
 - Very large or adversarial graphs still need performance and layout stress
