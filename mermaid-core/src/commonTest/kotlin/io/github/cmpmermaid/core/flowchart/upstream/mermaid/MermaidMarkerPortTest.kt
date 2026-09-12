@@ -20,6 +20,10 @@ class MermaidMarkerPortTest {
         assertEquals(17.25f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassComposition))
         assertEquals(6f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassDependency))
         assertEquals(13.5f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassLollipop))
+        assertEquals(0f, MermaidMarkerPort.pathOffset(SceneArrowHead.ErOnlyOne))
+        assertEquals(0f, MermaidMarkerPort.pathOffset(SceneArrowHead.ErZeroOrOne))
+        assertEquals(0f, MermaidMarkerPort.pathOffset(SceneArrowHead.ErOneOrMore))
+        assertEquals(0f, MermaidMarkerPort.pathOffset(SceneArrowHead.ErZeroOrMore))
     }
 
     @Test

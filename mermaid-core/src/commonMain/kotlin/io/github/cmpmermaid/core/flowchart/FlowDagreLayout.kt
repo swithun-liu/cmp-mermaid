@@ -268,8 +268,9 @@ internal object FlowDagreLayout {
         edgeId: String,
         originalEdge: DagreEdge,
     ) {
-        val firstDummy = "$nodeId---$nodeId---1"
-        val secondDummy = "$nodeId---$nodeId---2"
+        val loopPrefix = "$nodeId---$edgeId"
+        val firstDummy = "$loopPrefix---1"
+        val secondDummy = "$loopPrefix---2"
         val parent = graph.parent(nodeId)
         graph.setNode(firstDummy, DagreNode(width = 10f, height = 10f))
         graph.setNode(secondDummy, DagreNode(width = 10f, height = 10f))
@@ -288,19 +289,19 @@ internal object FlowDagreLayout {
             nodeId,
             firstDummy,
             segment(order = 0, keepLabel = false),
-            "$nodeId-cyclic-special-0",
+            "$loopPrefix-cyclic-special-0",
         )
         graph.setEdge(
             firstDummy,
             secondDummy,
             segment(order = 1, keepLabel = true),
-            "$nodeId-cyclic-special-1",
+            "$loopPrefix-cyclic-special-1",
         )
         graph.setEdge(
             secondDummy,
             nodeId,
             segment(order = 2, keepLabel = false),
-            "$nodeId-cyclic-special-2",
+            "$loopPrefix-cyclic-special-2",
         )
     }
 

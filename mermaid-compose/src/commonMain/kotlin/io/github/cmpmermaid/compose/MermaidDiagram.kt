@@ -716,6 +716,8 @@ private fun DrawScope.drawScenePath(
         position = MarkerPosition.Start,
         useMargin = useNeoMarkerMargin,
         color = element.color.toComposeColor(),
+        markerBackground = element.markerBackground?.toComposeColor() ?: Color.White,
+        strokeWidth = element.strokeWidth,
     )
     drawArrowHead(
         type = element.arrowEnd,
@@ -723,6 +725,8 @@ private fun DrawScope.drawScenePath(
         position = MarkerPosition.End,
         useMargin = useNeoMarkerMargin,
         color = element.color.toComposeColor(),
+        markerBackground = element.markerBackground?.toComposeColor() ?: Color.White,
+        strokeWidth = element.strokeWidth,
     )
 }
 
@@ -935,6 +939,10 @@ private fun SceneArrowHead.neoMarkerOffset(): Float = when (this) {
     SceneArrowHead.ClassComposition,
     SceneArrowHead.ClassDependency,
     SceneArrowHead.ClassLollipop,
+    SceneArrowHead.ErOnlyOne,
+    SceneArrowHead.ErZeroOrOne,
+    SceneArrowHead.ErOneOrMore,
+    SceneArrowHead.ErZeroOrMore,
     -> 0f
 }
 
@@ -950,6 +958,8 @@ private fun DrawScope.drawArrowHead(
     position: MarkerPosition,
     useMargin: Boolean,
     color: Color,
+    markerBackground: Color,
+    strokeWidth: Float,
 ) {
     if (type == SceneArrowHead.None) {
         return
@@ -974,7 +984,118 @@ private fun DrawScope.drawArrowHead(
         SceneArrowHead.ClassDependency,
         SceneArrowHead.ClassLollipop,
         -> drawClassMarker(type, tangent, position, color)
+        SceneArrowHead.ErOnlyOne,
+        SceneArrowHead.ErZeroOrOne,
+        SceneArrowHead.ErOneOrMore,
+        SceneArrowHead.ErZeroOrMore,
+        -> drawErMarker(
+            type = type,
+            tangent = tangent,
+            position = position,
+            color = color,
+            background = markerBackground,
+            strokeWidth = strokeWidth,
+        )
         SceneArrowHead.None -> Unit
+    }
+}
+
+/**
+ * Canvas translation of Mermaid 12.0.0's only_one, zero_or_one,
+ * one_or_more and zero_or_more marker definitions.
+ */
+private fun DrawScope.drawErMarker(
+    type: SceneArrowHead,
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    color: Color,
+    background: Color,
+    strokeWidth: Float,
+) {
+    val inward = if (position == MarkerPosition.Start) {
+        tangent
+    } else {
+        tangent.copy(unitX = -tangent.unitX, unitY = -tangent.unitY)
+    }
+    val width = strokeWidth.coerceAtLeast(1f)
+
+    fun point(distance: Float, perpendicular: Float = 0f): Offset =
+        inward.transform(
+            point = ScenePoint(distance, perpendicular),
+            reference = ScenePoint(0f, 0f),
+            scale = 1f,
+        )
+
+    fun bar(distance: Float) {
+        drawLine(
+            color = color,
+            start = point(distance, -9f),
+            end = point(distance, 9f),
+            strokeWidth = width,
+            cap = StrokeCap.Butt,
+        )
+    }
+
+    fun circle(distance: Float) {
+        drawCircle(
+            color = background,
+            radius = 6f,
+            center = point(distance),
+            style = Fill,
+        )
+        drawCircle(
+            color = color,
+            radius = 6f,
+            center = point(distance),
+            style = Stroke(width = width),
+        )
+    }
+
+    fun crowFoot() {
+        val root = point(18f)
+        val firstControl = point(0f, -18f)
+        val coveredTip = point(-18f)
+        val secondControl = point(0f, 18f)
+        val path = Path().apply {
+            moveTo(root.x, root.y)
+            quadraticTo(
+                firstControl.x,
+                firstControl.y,
+                coveredTip.x,
+                coveredTip.y,
+            )
+            quadraticTo(
+                secondControl.x,
+                secondControl.y,
+                root.x,
+                root.y,
+            )
+        }
+        drawPath(
+            path = path,
+            color = color,
+            style = Stroke(width = width, cap = StrokeCap.Butt),
+        )
+    }
+
+    when (type) {
+        SceneArrowHead.ErOnlyOne -> {
+            bar(9f)
+            bar(15f)
+        }
+        SceneArrowHead.ErZeroOrOne -> {
+            bar(9f)
+            circle(21f)
+        }
+        SceneArrowHead.ErOneOrMore -> {
+            crowFoot()
+            bar(24f)
+        }
+        SceneArrowHead.ErZeroOrMore -> {
+            crowFoot()
+            circle(28f)
+        }
+        else -> Unit
     }
 }
 

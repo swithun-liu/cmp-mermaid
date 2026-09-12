@@ -227,6 +227,7 @@ internal object MermaidPreprocessor {
         val flowchart = map.map("flowchart") ?: map.map("config")
         val classDiagram = map.map("class")
         val stateDiagram = map.map("state")
+        val erDiagram = map.map("er")
         val elk = map.map("elk")
         val unsupported = buildSet {
             TOP_LEVEL_UNTRANSLATED_KEYS.filterTo(this) { map.node(it) != null }
@@ -444,6 +445,13 @@ internal object MermaidPreprocessor {
             "titleTopMargin",
             "state.titleTopMargin",
         )
+        val erDiagramPadding = float(erDiagram, "diagramPadding", "er.diagramPadding")
+        val erEntityPadding = float(erDiagram, "entityPadding", "er.entityPadding")
+        val erMinEntityWidth = float(erDiagram, "minEntityWidth", "er.minEntityWidth")
+        val erMinEntityHeight = float(erDiagram, "minEntityHeight", "er.minEntityHeight")
+        val erNodeSpacing = float(erDiagram, "nodeSpacing", "er.nodeSpacing")
+        val erRankSpacing = float(erDiagram, "rankSpacing", "er.rankSpacing")
+        val erTitleTopMargin = float(erDiagram, "titleTopMargin", "er.titleTopMargin")
         val curve = string(flowchart, "curve", "flowchart.curve")
         val flowTheme = appearanceString(flowchart, "theme", "flowchart.theme")
             ?.takeIf(USABLE_THEMES::contains)
@@ -566,6 +574,13 @@ internal object MermaidPreprocessor {
                 stateNodeSpacing = stateNodeSpacing,
                 stateRankSpacing = stateRankSpacing,
                 stateTitleTopMargin = stateTitleTopMargin,
+                erDiagramPadding = erDiagramPadding,
+                erEntityPadding = erEntityPadding,
+                erMinEntityWidth = erMinEntityWidth,
+                erMinEntityHeight = erMinEntityHeight,
+                erNodeSpacing = erNodeSpacing,
+                erRankSpacing = erRankSpacing,
+                erTitleTopMargin = erTitleTopMargin,
                 curve = curve,
                 fontSize = fontSize,
                 fontFamily = fontFamily,
@@ -728,6 +743,13 @@ internal data class MermaidConfigOverride(
     val stateNodeSpacing: Float? = null,
     val stateRankSpacing: Float? = null,
     val stateTitleTopMargin: Float? = null,
+    val erDiagramPadding: Float? = null,
+    val erEntityPadding: Float? = null,
+    val erMinEntityWidth: Float? = null,
+    val erMinEntityHeight: Float? = null,
+    val erNodeSpacing: Float? = null,
+    val erRankSpacing: Float? = null,
+    val erTitleTopMargin: Float? = null,
     val curve: String? = null,
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -764,6 +786,13 @@ internal data class MermaidConfigOverride(
         stateNodeSpacing = overrides.stateNodeSpacing ?: stateNodeSpacing,
         stateRankSpacing = overrides.stateRankSpacing ?: stateRankSpacing,
         stateTitleTopMargin = overrides.stateTitleTopMargin ?: stateTitleTopMargin,
+        erDiagramPadding = overrides.erDiagramPadding ?: erDiagramPadding,
+        erEntityPadding = overrides.erEntityPadding ?: erEntityPadding,
+        erMinEntityWidth = overrides.erMinEntityWidth ?: erMinEntityWidth,
+        erMinEntityHeight = overrides.erMinEntityHeight ?: erMinEntityHeight,
+        erNodeSpacing = overrides.erNodeSpacing ?: erNodeSpacing,
+        erRankSpacing = overrides.erRankSpacing ?: erRankSpacing,
+        erTitleTopMargin = overrides.erTitleTopMargin ?: erTitleTopMargin,
         curve = overrides.curve ?: curve,
         fontSize = overrides.fontSize ?: fontSize,
         fontFamily = overrides.fontFamily ?: fontFamily,
@@ -827,6 +856,13 @@ internal data class MermaidConfigOverride(
                 stateNodeSpacing = stateNodeSpacing ?: options.stateNodeSpacing,
                 stateRankSpacing = stateRankSpacing ?: options.stateRankSpacing,
                 stateTitleTopMargin = stateTitleTopMargin ?: options.stateTitleTopMargin,
+                erDiagramPadding = erDiagramPadding ?: options.erDiagramPadding,
+                erEntityPadding = erEntityPadding ?: options.erEntityPadding,
+                erMinEntityWidth = erMinEntityWidth ?: options.erMinEntityWidth,
+                erMinEntityHeight = erMinEntityHeight ?: options.erMinEntityHeight,
+                erNodeSpacing = erNodeSpacing ?: options.erNodeSpacing,
+                erRankSpacing = erRankSpacing ?: options.erRankSpacing,
+                erTitleTopMargin = erTitleTopMargin ?: options.erTitleTopMargin,
                 curve = curve ?: options.curve,
                 fontSize = fontSize ?: options.fontSize,
                 fontFamily = fontFamily ?: options.fontFamily,

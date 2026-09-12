@@ -841,6 +841,26 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun preservesMultipleDagreSelfLoopsOnTheSameNode() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A -->|first| A
+                  A -.->|second| A
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val loops = scene.elements
+            .filterIsInstance<ScenePath>()
+            .filter { path -> path.id.startsWith("L_A_A_") }
+
+        assertEquals(2, loops.size)
+        assertTrue(loops.all { loop -> loop.points.size == 4 })
+    }
+
+    @Test
     fun doesNotApplyElkLineJumpsToDagreCrossings() {
         val result = engine.render(
             """

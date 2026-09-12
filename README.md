@@ -4,11 +4,11 @@ Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.
 The compatibility baseline is Mermaid `12.0.0`.
 
 The production renderer libraries do not use a WebView and do not execute
-Mermaid.js. Mermaid's Flowchart, Sequence, Class, and State parser semantics,
-diagram databases, layout preparation, shapes, edges, markers, text handling,
-and SceneGraph conversion are translated to Kotlin. Flowchart ELK layout keeps
-Mermaid's Kotlin-translated adapter around the locked `elkjs@0.9.3` worker,
-which runs in an isolated QuickJS runtime.
+Mermaid.js. Mermaid's Flowchart, Sequence, Class, State, and Entity
+Relationship parser semantics, diagram databases, layout preparation, shapes,
+edges, markers, text handling, and SceneGraph conversion are translated to
+Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter around the locked
+`elkjs@0.9.3` worker, which runs in an isolated QuickJS runtime.
 
 ```text
 Mermaid 12 diagram source
@@ -26,6 +26,8 @@ Kotlin preprocessing + translated Jison runtime + diagram DB
         |
         +--> State: Kotlin stateDb/dataFetcher/unified renderer translation
         |
+        +--> ER: Kotlin erDb/erBox/unified renderer translation
+        |
         v
 Platform-independent SceneGraph
         |
@@ -35,14 +37,15 @@ Compose Canvas
 
 ## Modules
 
-- `mermaid-core`: common Kotlin Flowchart, Sequence, Class, and State
+- `mermaid-core`: common Kotlin Flowchart, Sequence, Class, State, and ER
   semantics, layout adapters, and platform-independent SceneGraph.
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
 - `sample/androidApp`: mobile syntax documentation, an editable Flowchart
   Playground with 45 presets, an on-demand local WebView for live official
   Mermaid.js comparison, a 45-case Flowchart gallery, a 35-case Sequence
-  gallery, a 27-case Class gallery, and a 25-case State gallery.
+  gallery, a 27-case Class gallery, a 25-case State gallery, and a 20-case ER
+  gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.
@@ -138,6 +141,29 @@ layout engines return `MermaidError.UnsupportedFeature`. See
 [`docs/state-compatibility.md`](docs/state-compatibility.md) for the full
 matrix.
 
+## Entity Relationship Diagram Coverage
+
+The supported path includes:
+
+- Mermaid's generated `erDiagram.jison` grammar and translated `erDb.ts`
+  entity, attribute, relationship, style, subgraph, and metadata semantics.
+- Aliases, Unicode names, nullable and generic attribute types, comments, and
+  `PK`, `FK`, and `UK` key combinations.
+- All four visible crow-foot cardinalities, identifying and non-identifying
+  relationships, self-relationships, repeated relationships, and labels.
+- Root and nested subgraphs, subgraph relationships, and TB, BT, LR, and RL
+  directions.
+- Mermaid's default ELK layout, named ELK algorithms, and explicit Dagre
+  override.
+- `style`, `classDef`, `class`, inline `:::`, Markdown/HTML text, title,
+  accessibility metadata, Unicode, and ER layout configuration.
+
+The `MD_PARENT` token is parsed but has no marker, matching Mermaid 12's
+unified renderer, which does not register the legacy diamond definition.
+KaTeX, browser-only label content, `handDrawn`, unmapped CSS, and unconnected
+layout engines return `MermaidError.UnsupportedFeature`. See
+[`docs/er-compatibility.md`](docs/er-compatibility.md) for the full matrix.
+
 ## Verification
 
 Run the shared JVM tests and build the Android sample:
@@ -172,7 +198,8 @@ npm run render
 The generator asserts Mermaid `12.0.0` and renders the same source used by the
 native side with Mermaid's ELK layout. The documentation fixture generators
 extract all 114 Flowchart examples, all 38 Sequence examples, all 38 Class
-examples, and all 22 State examples from the locked Mermaid source.
+examples, all 22 State examples, and all 24 ER examples from the locked
+Mermaid source.
 
 Capture every Native/Official pair from a connected Android device:
 
@@ -196,7 +223,8 @@ The source-to-source upgrade maps are maintained in
 Class translation in
 [`docs/upstream-class-map.md`](docs/upstream-class-map.md) and the State
 translation in
-[`docs/upstream-state-map.md`](docs/upstream-state-map.md).
+[`docs/upstream-state-map.md`](docs/upstream-state-map.md). The ER translation
+is mapped in [`docs/upstream-er-map.md`](docs/upstream-er-map.md).
 
 Android hosts that opt into HTTP/HTTPS image loading must also declare the
 `android.permission.INTERNET` permission; the library does not add it

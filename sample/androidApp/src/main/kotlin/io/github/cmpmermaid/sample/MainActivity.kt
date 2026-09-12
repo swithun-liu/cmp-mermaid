@@ -114,6 +114,7 @@ private enum class DocsScreen {
     Sequence,
     Class,
     State,
+    Er,
     Playground,
 }
 
@@ -151,6 +152,9 @@ private fun MermaidDocsApp(
     }
     val auditStateDemo = remember(auditDemoId) {
         stateDemos.firstOrNull { it.id == auditDemoId }
+    }
+    val auditErDemo = remember(auditDemoId) {
+        erDemos.firstOrNull { it.id == auditDemoId }
     }
     val colors = lightColorScheme(
         primary = Color(0xFF007F86),
@@ -194,6 +198,13 @@ private fun MermaidDocsApp(
             )
             return@MaterialTheme
         }
+        if (auditErDemo != null) {
+            ErVisualAuditScreen(
+                demo = auditErDemo,
+                preview = auditPreview,
+            )
+            return@MaterialTheme
+        }
         BackHandler(enabled = screen != DocsScreen.DiagramTypes) {
             screen = when (screen) {
                 DocsScreen.DiagramTypes -> DocsScreen.DiagramTypes
@@ -201,6 +212,7 @@ private fun MermaidDocsApp(
                 DocsScreen.Sequence -> DocsScreen.DiagramTypes
                 DocsScreen.Class -> DocsScreen.DiagramTypes
                 DocsScreen.State -> DocsScreen.DiagramTypes
+                DocsScreen.Er -> DocsScreen.DiagramTypes
                 DocsScreen.Playground -> DocsScreen.Flowchart
             }
         }
@@ -210,6 +222,7 @@ private fun MermaidDocsApp(
                 onSequenceClick = { screen = DocsScreen.Sequence },
                 onClassClick = { screen = DocsScreen.Class },
                 onStateClick = { screen = DocsScreen.State },
+                onErClick = { screen = DocsScreen.Er },
             )
             DocsScreen.Flowchart -> FlowchartDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
@@ -225,6 +238,9 @@ private fun MermaidDocsApp(
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
             DocsScreen.State -> StateDocsScreen(
+                onBack = { screen = DocsScreen.DiagramTypes },
+            )
+            DocsScreen.Er -> ErDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
         }
@@ -316,6 +332,35 @@ private fun StateVisualAuditScreen(
 }
 
 @Composable
+private fun ErVisualAuditScreen(
+    demo: ErDemo,
+    preview: AuditPreview,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        when (preview) {
+            AuditPreview.Native -> MermaidDiagram(
+                source = demo.source,
+                modifier = Modifier.fillMaxSize(),
+                theme = MermaidTheme.FlowchartDefault,
+                options = officialReferenceRenderOptions,
+                contentDescription = "Audit ${demo.id} native",
+            )
+            AuditPreview.Official -> OfficialMermaidDiagram(
+                source = demo.source,
+                layout = "elk",
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
+    }
+}
+
+@Composable
 private fun VisualAuditScreen(
     demo: FlowchartDemo,
     preview: AuditPreview,
@@ -361,6 +406,7 @@ private fun DiagramTypesScreen(
     onSequenceClick: () -> Unit,
     onClassClick: () -> Unit,
     onStateClick: () -> Unit,
+    onErClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -426,6 +472,13 @@ private fun DiagramTypesScreen(
                     title = "State",
                     description = "States, transitions, composites, notes, and concurrency",
                     onClick = onStateClick,
+                )
+            }
+            item {
+                DiagramTypeRow(
+                    title = "Entity Relationship",
+                    description = "Entities, attributes, cardinalities, and subgraphs",
+                    onClick = onErClick,
                 )
             }
         }
@@ -1500,6 +1553,157 @@ private fun StateDocsScreen(
                                 .fillMaxWidth()
                                 .height(460.dp),
                             theme = MermaidTheme.FlowchartDefault,
+                            contentDescription = "${demo.title} CMP rendering",
+                        )
+                    } else {
+                        OfficialMermaidDiagram(
+                            source = demo.source,
+                            layout = "elk",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                        )
+                    }
+                }
+            }
+            item {
+                CodeBlock(demo.source)
+            }
+        }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun ErDocsScreen(
+    onBack: () -> Unit,
+) {
+    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+    var selectedPreview by rememberSaveable { mutableIntStateOf(0) }
+    val demo = erDemos[selectedIndex]
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                        )
+                    }
+                },
+                title = {
+                    Column {
+                        Text(
+                            text = "Entity Relationship",
+                            fontWeight = FontWeight.SemiBold,
+                            letterSpacing = 0.sp,
+                        )
+                        Text(
+                            text = "Mermaid ${MermaidCompatibility.BASELINE_VERSION}",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp,
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                ),
+            )
+        },
+    ) { contentPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(contentPadding),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            item {
+                Text(
+                    text = "ER diagram gallery",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.sp,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = "${erDemos.size} native cases with an on-device Mermaid.js reference",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    IconButton(
+                        onClick = {
+                            selectedIndex = (selectedIndex - 1 + erDemos.size) % erDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Previous case",
+                        )
+                    }
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = demo.title,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Text(
+                            text = "${selectedIndex + 1} / ${erDemos.size} · ${demo.category}",
+                            color = MaterialTheme.colorScheme.primary,
+                            style = MaterialTheme.typography.labelMedium,
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            selectedIndex = (selectedIndex + 1) % erDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = "Next case",
+                        )
+                    }
+                }
+            }
+            item {
+                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                    listOf("CMP Native", "Official").forEachIndexed { index, label ->
+                        SegmentedButton(
+                            selected = selectedPreview == index,
+                            onClick = { selectedPreview = index },
+                            shape = SegmentedButtonDefaults.itemShape(index, 2),
+                            label = { Text(label) },
+                        )
+                    }
+                }
+            }
+            item {
+                PreviewFrame(
+                    label = if (selectedPreview == 0) {
+                        "CMP Native"
+                    } else {
+                        "Official Mermaid.js 12.0.0"
+                    },
+                ) {
+                    if (selectedPreview == 0) {
+                        MermaidDiagram(
+                            source = demo.source,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                            theme = MermaidTheme.FlowchartDefault,
+                            options = officialReferenceRenderOptions,
                             contentDescription = "${demo.title} CMP rendering",
                         )
                     } else {

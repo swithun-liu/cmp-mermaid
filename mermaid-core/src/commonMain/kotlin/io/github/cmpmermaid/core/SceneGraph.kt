@@ -90,6 +90,10 @@ enum class SceneArrowHead {
     ClassComposition,
     ClassDependency,
     ClassLollipop,
+    ErOnlyOne,
+    ErZeroOrOne,
+    ErOneOrMore,
+    ErZeroOrMore,
 }
 
 sealed interface SceneElement {
@@ -248,6 +252,7 @@ data class ScenePath(
     val animationDurationMillis: Int? = null,
     override val zIndex: Int = 5,
     val dashIntervals: List<Float> = emptyList(),
+    val markerBackground: SceneColor? = null,
 ) : SceneElement
 
 data class SceneNodeInteraction(
