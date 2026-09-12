@@ -3,9 +3,10 @@
 ## Mermaid
 
 The KMP runtime contains Kotlin translations of selected Mermaid Flowchart,
-Sequence, Class, State, and Entity Relationship parsing, layout-adapter, and
-rendering algorithms. The reference-rendering tool also downloads Mermaid.js
-from npm. Mermaid.js itself is not embedded in the runtime libraries.
+Sequence, Class, State, Entity Relationship, Gantt, and Pie parsing,
+layout-adapter, and rendering algorithms. The reference-rendering tool also
+downloads Mermaid.js from npm. Mermaid.js itself is not embedded in the
+runtime libraries.
 
 The Android sample bundles Mermaid.js `12.0.0` only for on-demand official
 WebView comparisons. The npm distribution is syntax transpiled to Chrome 87
@@ -55,6 +56,19 @@ https://www.apache.org/licenses/LICENSE-2.0
 Project:
 
 https://github.com/charleskorn/kaml
+
+## kotlinx-datetime
+
+The KMP runtime uses kotlinx-datetime `0.7.1` for portable Gantt date parsing,
+calendar arithmetic, and formatting.
+
+kotlinx-datetime is distributed under the Apache License 2.0:
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Project:
+
+https://github.com/Kotlin/kotlinx-datetime
 
 ## dagre-d3-es
 
@@ -110,8 +124,8 @@ THIS SOFTWARE.
 ## Jison
 
 The KMP runtime contains Kotlin translations of the Jison `0.4.18` generated
-lexer/parser runtime used by Mermaid's Flowchart, Sequence, Class, State, and
-Entity Relationship grammars.
+lexer/parser runtime used by Mermaid's Flowchart, Sequence, Class, State,
+Entity Relationship, and Gantt grammars.
 
 Copyright (c) Zach Carter
 

@@ -74,6 +74,26 @@ data class MermaidRenderOptions(
     val erNodeSpacing: Float = 140f,
     val erRankSpacing: Float = 80f,
     val erTitleTopMargin: Float = 25f,
+    val ganttTitleTopMargin: Float = 25f,
+    val ganttBarHeight: Float = 20f,
+    val ganttBarGap: Float = 4f,
+    val ganttTopPadding: Float = 50f,
+    val ganttRightPadding: Float = 75f,
+    val ganttLeftPadding: Float = 75f,
+    val ganttGridLineStartPadding: Float = 35f,
+    val ganttFontSize: Float = 11f,
+    val ganttSectionFontSize: Float = 11f,
+    val ganttNumberSectionStyles: Int = 4,
+    val ganttAxisFormat: String = "%Y-%m-%d",
+    val ganttTickInterval: String? = null,
+    val ganttTopAxis: Boolean = false,
+    val ganttDisplayMode: String = "",
+    val ganttWeekday: String = "sunday",
+    val ganttUseWidth: Float = 1200f,
+    val pieTextPosition: Float = 0.75f,
+    val pieDonutHole: Float = 0f,
+    val pieLegendPosition: String = "right",
+    val pieHighlightSlice: String = "",
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -123,6 +143,34 @@ enum class MermaidSecurityLevel {
     Sandbox,
 }
 
+data class MermaidPieTheme(
+    val colors: List<SceneColor> = listOf(
+        SceneColor(0xFFECECFF),
+        SceneColor(0xFFFFFFDE),
+        SceneColor(0xFFB5FF20),
+        SceneColor(0xFFB9B9FF),
+        SceneColor(0xFFFFFF45),
+        SceneColor(0xFFD7FF86),
+        SceneColor(0xFFFF86FF),
+        SceneColor(0xFF20FFFF),
+        SceneColor(0xFFFF2020),
+        SceneColor(0xFFFF20FF),
+        SceneColor(0xFF20FF90),
+        SceneColor(0xFFFF5353),
+    ),
+    val titleTextSize: Float = 25f,
+    val titleTextColor: SceneColor = SceneColor(0xFF000000),
+    val sectionTextSize: Float = 17f,
+    val sectionTextColor: SceneColor = SceneColor(0xFF333333),
+    val legendTextSize: Float = 17f,
+    val legendTextColor: SceneColor = SceneColor(0xFF000000),
+    val strokeColor: SceneColor = SceneColor(0xFF000000),
+    val strokeWidth: Float = 2f,
+    val outerStrokeWidth: Float = 2f,
+    val outerStrokeColor: SceneColor = SceneColor(0xFF000000),
+    val opacity: Float = 0.7f,
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
@@ -138,6 +186,7 @@ data class MermaidTheme(
     val strokeWidth: Float = 1f,
     val bkgColorArray: List<SceneColor> = emptyList(),
     val borderColorArray: List<SceneColor> = emptyList(),
+    val pie: MermaidPieTheme = MermaidPieTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -164,6 +213,7 @@ data class MermaidTheme(
             groupFill = SceneColor(0xFF474949),
             groupStroke = SceneColor(0x40FFFFFF),
             groupText = SceneColor(0xFFF9FFFE),
+            pie = darkPieTheme(),
         )
 
         val FlowchartDefault = MermaidTheme(
@@ -181,6 +231,7 @@ data class MermaidTheme(
             strokeWidth = 2f,
             bkgColorArray = reduxColorBackgrounds(),
             borderColorArray = reduxColorBorders(),
+            pie = reduxColorPieTheme(dark = false),
             dropShadow = reduxShadow(dark = false),
         )
 
@@ -197,6 +248,7 @@ data class MermaidTheme(
                 groupFill = SceneColor(0xFFCDFFB2),
                 groupStroke = SceneColor(0xFF6EAA49),
                 groupText = SceneColor(0xFF333333),
+                pie = forestPieTheme(),
                 dropShadow = SceneShadow(
                     color = SceneColor(0x80B9B9B9),
                     offsetX = 1f,
@@ -214,6 +266,7 @@ data class MermaidTheme(
                 groupFill = SceneColor(0xFFFCFCFC),
                 groupStroke = SceneColor(0xFF707070),
                 groupText = SceneColor(0xFF333333),
+                pie = neutralPieTheme(),
             )
             "base" -> MermaidTheme(
                 background = SceneColor(0xFFF4F4F4),
@@ -225,6 +278,7 @@ data class MermaidTheme(
                 groupFill = SceneColor(0xFFF7FAFF),
                 groupStroke = SceneColor(0xFFD7DFED),
                 groupText = SceneColor(0xFF333333),
+                pie = basePieTheme(),
             )
             "neo" -> MermaidTheme(
                 background = SceneColor(0xFFFFFFFF),
@@ -239,6 +293,7 @@ data class MermaidTheme(
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
+                pie = neoPieTheme(dark = false),
                 dropShadow = SceneShadow(
                     color = SceneColor(0x40000000),
                     offsetX = 0f,
@@ -258,6 +313,7 @@ data class MermaidTheme(
                 groupText = SceneColor(0xFFDFE0E0),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
+                pie = neoPieTheme(dark = true),
                 dropShadow = SceneShadow(
                     color = SceneColor(0x33B9B9B9),
                     offsetX = 1f,
@@ -278,12 +334,14 @@ data class MermaidTheme(
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
+                pie = reduxPieTheme(dark = false),
                 dropShadow = reduxShadow(dark = false),
             )
             "redux-color" -> FlowchartDefault
             "redux-dark" -> reduxDark()
             "redux-dark-color" -> reduxDark().copy(
                 borderColorArray = reduxColorBorders(),
+                pie = reduxColorPieTheme(dark = true),
             )
             else -> null
         }
@@ -338,6 +396,50 @@ data class MermaidTheme(
                 is GMResult.Ok -> parsed.value ?: theme.borderColorArray
                 is GMResult.Err -> return parsed
             }
+            val pieColors = MutableList(12) { index ->
+                theme.pie.colors.getOrElse(index) { SceneColor(0xFF000000) }
+            }
+            pieColors.indices.forEach { index ->
+                color("pie${index + 1}")?.let { parsed ->
+                    pieColors[index] = parsed
+                }
+            }
+            val pieStrokeWidth = number("pieStrokeWidth") ?: theme.pie.strokeWidth
+            val pieOuterStrokeWidth =
+                number("pieOuterStrokeWidth") ?: theme.pie.outerStrokeWidth
+            val pieOpacity = number("pieOpacity") ?: theme.pie.opacity
+            if (
+                pieStrokeWidth < 0f ||
+                pieOuterStrokeWidth < 0f ||
+                pieOpacity !in 0f..1f
+            ) {
+                val invalidName = when {
+                    pieStrokeWidth < 0f -> "pieStrokeWidth"
+                    pieOuterStrokeWidth < 0f -> "pieOuterStrokeWidth"
+                    else -> "pieOpacity"
+                }
+                invalidVariable = invalidName to values[invalidName].orEmpty()
+            }
+            val pie = theme.pie.copy(
+                colors = pieColors,
+                titleTextSize = number("pieTitleTextSize") ?: theme.pie.titleTextSize,
+                titleTextColor =
+                    color("pieTitleTextColor") ?: theme.pie.titleTextColor,
+                sectionTextSize =
+                    number("pieSectionTextSize") ?: theme.pie.sectionTextSize,
+                sectionTextColor =
+                    color("pieSectionTextColor") ?: theme.pie.sectionTextColor,
+                legendTextSize =
+                    number("pieLegendTextSize") ?: theme.pie.legendTextSize,
+                legendTextColor =
+                    color("pieLegendTextColor") ?: theme.pie.legendTextColor,
+                strokeColor = color("pieStrokeColor") ?: theme.pie.strokeColor,
+                strokeWidth = pieStrokeWidth,
+                outerStrokeWidth = pieOuterStrokeWidth,
+                outerStrokeColor =
+                    color("pieOuterStrokeColor") ?: theme.pie.outerStrokeColor,
+                opacity = pieOpacity,
+            )
             val dropShadow = when (
                 val parsed = parseDropShadow(
                     source = values["dropShadow"],
@@ -362,6 +464,7 @@ data class MermaidTheme(
                 strokeWidth = number("strokeWidth") ?: theme.strokeWidth,
                 bkgColorArray = bkgColorArray,
                 borderColorArray = borderColorArray,
+                pie = pie,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -388,8 +491,9 @@ data class MermaidTheme(
             groupStroke = SceneColor(0xFFBDBCCC),
             groupText = SceneColor(0xFFDFE0E0),
             fontSize = 14f,
-                fontFamily = MERMAID_REDUX_FONT_FAMILY,
+            fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
+            pie = reduxPieTheme(dark = true),
             dropShadow = reduxShadow(dark = true),
         )
 
@@ -397,6 +501,167 @@ data class MermaidTheme(
             color = if (dark) SceneColor(0x0FFFFFFF) else SceneColor(0x0F000000),
             offsetX = 4f,
             offsetY = 4f,
+        )
+
+        private fun darkPieTheme(): MermaidPieTheme = pieTheme(
+            colors = listOf(
+                0xFF0B0000,
+                0xFF4D1037,
+                0xFF3F5258,
+                0xFF4F2F1B,
+                0xFF6E0A0A,
+                0xFF3B0048,
+                0xFF995A01,
+                0xFF154706,
+                0xFF161722,
+                0xFF00296F,
+                0xFF01629C,
+                0xFF000000,
+            ),
+            title = 0xFFD3D3D3,
+            section = 0xFFCCCCCC,
+            legend = 0xFFD3D3D3,
+        )
+
+        private fun forestPieTheme(): MermaidPieTheme = pieTheme(
+            colors = listOf(
+                0xFFCDE498,
+                0xFFCDFFB2,
+                0xFFE1EFC0,
+                0xFF8CB42F,
+                0xFF6AFF19,
+                0xFF33B42F,
+                0xFF70D990,
+                0xFFD99070,
+                0xFF98CDE4,
+                0xFF1A6330,
+                0xFF63301A,
+                0xFF1A4D63,
+            ),
+            title = 0xFF000000,
+            section = 0xFF000000,
+            legend = 0xFF000000,
+        )
+
+        private fun neutralPieTheme(): MermaidPieTheme = pieTheme(
+            colors = listOf(
+                0xFFF4F4F4,
+                0xFF555555,
+                0xFFBBBBBB,
+                0xFF777777,
+                0xFF999999,
+                0xFFDDDDDD,
+                0xFFFFFFFF,
+                0xFFDDDDDD,
+                0xFFBBBBBB,
+                0xFF999999,
+                0xFF777777,
+                0xFF555555,
+            ),
+            title = 0xFF333333,
+            section = 0xFF000000,
+            legend = 0xFF333333,
+        )
+
+        private fun basePieTheme(): MermaidPieTheme = pieTheme(
+            colors = listOf(
+                0xFFFFF4DD,
+                0xFFF4DDFF,
+                0xFFF7F9FF,
+                0xFFFFE4AA,
+                0xFFE4AAFF,
+                0xFFC4D7FF,
+                0xFFC6FFAA,
+                0xFFFFAAC6,
+                0xFFDDFFF4,
+                0xFFA3FF77,
+                0xFFFF77A3,
+                0xFFAAFFE4,
+            ),
+            title = 0xFF333333,
+            section = 0xFF333333,
+            legend = 0xFF333333,
+        )
+
+        private fun neoPieTheme(dark: Boolean): MermaidPieTheme = if (dark) {
+            pieTheme(
+                colors = listOf(
+                    0xFF1F2020,
+                    0xFF474949,
+                    0xFF201F1F,
+                    0xFF060606,
+                    0xFF2E3030,
+                    0xFF060606,
+                    0xFF060606,
+                    0xFF060606,
+                    0xFF201F20,
+                    0xFF000000,
+                    0xFF000000,
+                    0xFF060606,
+                ),
+                title = 0xFFCCCCCC,
+                section = 0xFFCCCCCC,
+                legend = 0xFFCCCCCC,
+            )
+        } else {
+            pieTheme(
+                colors = listOf(
+                    0xFFECECFE,
+                    0xFFE9E9F1,
+                    0xFFFFFFFF,
+                    0xFFBCBCFB,
+                    0xFFCACADD,
+                    0xFFFCFCCF,
+                    0xFFFBBCFB,
+                    0xFFBCFBFB,
+                    0xFFFEECEC,
+                    0xFFF98BF9,
+                    0xFF8BF9F9,
+                    0xFFFBBCBC,
+                ),
+                title = 0xFF333333,
+                section = 0xFF333333,
+                legend = 0xFF333333,
+            )
+        }
+
+        private fun reduxPieTheme(dark: Boolean): MermaidPieTheme =
+            neoPieTheme(dark).copy(
+                titleTextColor = if (dark) SceneColor(0xFFCCCCCC) else SceneColor(0xFF28253D),
+                sectionTextColor = if (dark) SceneColor(0xFFCCCCCC) else SceneColor(0xFF28253D),
+                legendTextColor = if (dark) SceneColor(0xFFCCCCCC) else SceneColor(0xFF28253D),
+            )
+
+        private fun reduxColorPieTheme(dark: Boolean): MermaidPieTheme = pieTheme(
+            colors = listOf(
+                0xFFF4A8FF,
+                0xFF46ECD5,
+                0xFFFFB86A,
+                0xFFDAB2FF,
+                0xFF7BF1A8,
+                0xFFC4B4FF,
+                0xFFFFA2A2,
+                0xFFFFDF20,
+                0xFFA3B3FF,
+                0xFFBBF451,
+                0xFF74D4FF,
+                0xFFFFA1AD,
+            ),
+            title = if (dark) 0xFFCCCCCC else 0xFF28253D,
+            section = 0xFF28253D,
+            legend = if (dark) 0xFFCCCCCC else 0xFF28253D,
+        )
+
+        private fun pieTheme(
+            colors: List<Long>,
+            title: Long,
+            section: Long,
+            legend: Long,
+        ): MermaidPieTheme = MermaidPieTheme(
+            colors = colors.map(::SceneColor),
+            titleTextColor = SceneColor(title),
+            sectionTextColor = SceneColor(section),
+            legendTextColor = SceneColor(legend),
         )
 
         private fun parseDropShadow(

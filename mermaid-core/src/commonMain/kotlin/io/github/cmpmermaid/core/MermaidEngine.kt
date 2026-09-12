@@ -3,6 +3,8 @@ package io.github.cmpmermaid.core
 import io.github.cmpmermaid.core.classdiagram.ClassPlugin
 import io.github.cmpmermaid.core.erdiagram.ErPlugin
 import io.github.cmpmermaid.core.flowchart.FlowchartPlugin
+import io.github.cmpmermaid.core.gantt.GanttPlugin
+import io.github.cmpmermaid.core.pie.PiePlugin
 import io.github.cmpmermaid.core.sequence.SequencePlugin
 import io.github.cmpmermaid.core.statediagram.StatePlugin
 
@@ -32,6 +34,8 @@ class MermaidEngine(
         ClassPlugin(),
         StatePlugin(),
         ErPlugin(),
+        GanttPlugin(),
+        PiePlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {

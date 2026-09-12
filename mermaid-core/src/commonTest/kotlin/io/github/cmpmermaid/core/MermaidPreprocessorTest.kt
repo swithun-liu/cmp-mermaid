@@ -130,6 +130,62 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsMermaidPieConfiguration() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  pie:
+                    textPosition: 0.4
+                    donutHole: 0.3
+                    legendPosition: bottom
+                    highlightSlice: Potassium
+                ---
+                pie
+                  "Calcium" : 40
+                  "Potassium" : 60
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value
+
+        assertEquals(0.4f, options.pieTextPosition)
+        assertEquals(0.3f, options.pieDonutHole)
+        assertEquals("bottom", options.pieLegendPosition)
+        assertEquals("Potassium", options.pieHighlightSlice)
+    }
+
+    @Test
+    fun rejectsOutOfRangePieConfiguration() {
+        listOf(
+            "textPosition: 1.1",
+            "donutHole: -0.1",
+            "donutHole: 0.91",
+            "legendPosition: diagonal",
+        ).forEach { config ->
+            val result = MermaidPreprocessor.preprocess(
+                """
+                    ---
+                    config:
+                      pie:
+                        $config
+                    ---
+                    pie
+                      "A" : 1
+                """.trimIndent(),
+            )
+
+            assertIs<GMResult.Err<MermaidError>>(
+                result,
+                "Expected invalid Pie config to fail: $config",
+            )
+        }
+    }
+
+    @Test
     fun directiveOverridesFrontmatterLikeCleanAndMerge() {
         val result = MermaidPreprocessor.preprocess(
             """

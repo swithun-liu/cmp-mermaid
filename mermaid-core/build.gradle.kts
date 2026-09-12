@@ -24,6 +24,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kaml)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.quickjs)
         }

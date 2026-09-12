@@ -99,11 +99,19 @@ internal object MermaidPreprocessor {
             is GMResult.Ok -> parsed.value
             is GMResult.Err -> return parsed
         }
+        val displayMode = root.scalar("displayMode")
+        if (displayMode != null && displayMode !in setOf("", "compact")) {
+            return configurationError(
+                "Mermaid frontmatter 'displayMode' must be empty or compact",
+            )
+        }
         return GMResult.Ok(
             FrontmatterResult(
                 text = source.drop(match.value.length),
                 title = root.scalar("title"),
-                config = config,
+                config = config.copy(
+                    ganttDisplayMode = displayMode ?: config.ganttDisplayMode,
+                ),
                 lineOffset = match.value.count { it == '\n' },
             ),
         )
@@ -228,6 +236,8 @@ internal object MermaidPreprocessor {
         val classDiagram = map.map("class")
         val stateDiagram = map.map("state")
         val erDiagram = map.map("er")
+        val gantt = map.map("gantt")
+        val pie = map.map("pie")
         val elk = map.map("elk")
         val unsupported = buildSet {
             TOP_LEVEL_UNTRANSLATED_KEYS.filterTo(this) { map.node(it) != null }
@@ -452,6 +462,72 @@ internal object MermaidPreprocessor {
         val erNodeSpacing = float(erDiagram, "nodeSpacing", "er.nodeSpacing")
         val erRankSpacing = float(erDiagram, "rankSpacing", "er.rankSpacing")
         val erTitleTopMargin = float(erDiagram, "titleTopMargin", "er.titleTopMargin")
+        val ganttTitleTopMargin = float(gantt, "titleTopMargin", "gantt.titleTopMargin")
+        val ganttBarHeight = float(gantt, "barHeight", "gantt.barHeight")
+        val ganttBarGap = float(gantt, "barGap", "gantt.barGap")
+        val ganttTopPadding = float(gantt, "topPadding", "gantt.topPadding")
+        val ganttRightPadding = float(gantt, "rightPadding", "gantt.rightPadding")
+        val ganttLeftPadding = float(gantt, "leftPadding", "gantt.leftPadding")
+        val ganttGridLineStartPadding = float(
+            gantt,
+            "gridLineStartPadding",
+            "gantt.gridLineStartPadding",
+        )
+        val ganttFontSize = float(gantt, "fontSize", "gantt.fontSize")
+        val ganttSectionFontSize = float(gantt, "sectionFontSize", "gantt.sectionFontSize")
+        val ganttNumberSectionStyles = int(
+            gantt,
+            "numberSectionStyles",
+            "gantt.numberSectionStyles",
+        )
+        val ganttAxisFormat = string(gantt, "axisFormat", "gantt.axisFormat")
+        val ganttTickInterval = string(gantt, "tickInterval", "gantt.tickInterval")
+        val ganttTopAxis = boolean(gantt, "topAxis", "gantt.topAxis")
+        val ganttDisplayMode = enumString(
+            gantt,
+            "displayMode",
+            "gantt.displayMode",
+            setOf("", "compact"),
+        ) ?: enumString(
+            map,
+            "displayMode",
+            "displayMode",
+            setOf("", "compact"),
+        )
+        val ganttWeekday = enumString(
+            gantt,
+            "weekday",
+            "gantt.weekday",
+            setOf(
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday",
+                "saturday",
+                "sunday",
+            ),
+        )
+        val ganttUseWidth = float(gantt, "useWidth", "gantt.useWidth")
+        val pieTextPosition = float(pie, "textPosition", "pie.textPosition")
+        val pieDonutHole = float(pie, "donutHole", "pie.donutHole")
+        val pieLegendPosition = enumString(
+            pie,
+            "legendPosition",
+            "pie.legendPosition",
+            setOf("top", "bottom", "left", "right", "center"),
+        )
+        val pieHighlightSlice = string(pie, "highlightSlice", "pie.highlightSlice")
+        if (pieTextPosition != null && (!pieTextPosition.isFinite() || pieTextPosition !in 0f..1f)) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'pie.textPosition' must be between 0 and 1",
+            )
+        }
+        if (pieDonutHole != null && (!pieDonutHole.isFinite() || pieDonutHole !in 0f..0.9f)) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'pie.donutHole' must be between 0 and 0.9",
+            )
+        }
         val curve = string(flowchart, "curve", "flowchart.curve")
         val flowTheme = appearanceString(flowchart, "theme", "flowchart.theme")
             ?.takeIf(USABLE_THEMES::contains)
@@ -581,6 +657,26 @@ internal object MermaidPreprocessor {
                 erNodeSpacing = erNodeSpacing,
                 erRankSpacing = erRankSpacing,
                 erTitleTopMargin = erTitleTopMargin,
+                ganttTitleTopMargin = ganttTitleTopMargin,
+                ganttBarHeight = ganttBarHeight,
+                ganttBarGap = ganttBarGap,
+                ganttTopPadding = ganttTopPadding,
+                ganttRightPadding = ganttRightPadding,
+                ganttLeftPadding = ganttLeftPadding,
+                ganttGridLineStartPadding = ganttGridLineStartPadding,
+                ganttFontSize = ganttFontSize,
+                ganttSectionFontSize = ganttSectionFontSize,
+                ganttNumberSectionStyles = ganttNumberSectionStyles,
+                ganttAxisFormat = ganttAxisFormat,
+                ganttTickInterval = ganttTickInterval,
+                ganttTopAxis = ganttTopAxis,
+                ganttDisplayMode = ganttDisplayMode,
+                ganttWeekday = ganttWeekday,
+                ganttUseWidth = ganttUseWidth,
+                pieTextPosition = pieTextPosition,
+                pieDonutHole = pieDonutHole,
+                pieLegendPosition = pieLegendPosition,
+                pieHighlightSlice = pieHighlightSlice,
                 curve = curve,
                 fontSize = fontSize,
                 fontFamily = fontFamily,
@@ -750,6 +846,26 @@ internal data class MermaidConfigOverride(
     val erNodeSpacing: Float? = null,
     val erRankSpacing: Float? = null,
     val erTitleTopMargin: Float? = null,
+    val ganttTitleTopMargin: Float? = null,
+    val ganttBarHeight: Float? = null,
+    val ganttBarGap: Float? = null,
+    val ganttTopPadding: Float? = null,
+    val ganttRightPadding: Float? = null,
+    val ganttLeftPadding: Float? = null,
+    val ganttGridLineStartPadding: Float? = null,
+    val ganttFontSize: Float? = null,
+    val ganttSectionFontSize: Float? = null,
+    val ganttNumberSectionStyles: Int? = null,
+    val ganttAxisFormat: String? = null,
+    val ganttTickInterval: String? = null,
+    val ganttTopAxis: Boolean? = null,
+    val ganttDisplayMode: String? = null,
+    val ganttWeekday: String? = null,
+    val ganttUseWidth: Float? = null,
+    val pieTextPosition: Float? = null,
+    val pieDonutHole: Float? = null,
+    val pieLegendPosition: String? = null,
+    val pieHighlightSlice: String? = null,
     val curve: String? = null,
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -793,6 +909,28 @@ internal data class MermaidConfigOverride(
         erNodeSpacing = overrides.erNodeSpacing ?: erNodeSpacing,
         erRankSpacing = overrides.erRankSpacing ?: erRankSpacing,
         erTitleTopMargin = overrides.erTitleTopMargin ?: erTitleTopMargin,
+        ganttTitleTopMargin = overrides.ganttTitleTopMargin ?: ganttTitleTopMargin,
+        ganttBarHeight = overrides.ganttBarHeight ?: ganttBarHeight,
+        ganttBarGap = overrides.ganttBarGap ?: ganttBarGap,
+        ganttTopPadding = overrides.ganttTopPadding ?: ganttTopPadding,
+        ganttRightPadding = overrides.ganttRightPadding ?: ganttRightPadding,
+        ganttLeftPadding = overrides.ganttLeftPadding ?: ganttLeftPadding,
+        ganttGridLineStartPadding =
+            overrides.ganttGridLineStartPadding ?: ganttGridLineStartPadding,
+        ganttFontSize = overrides.ganttFontSize ?: ganttFontSize,
+        ganttSectionFontSize = overrides.ganttSectionFontSize ?: ganttSectionFontSize,
+        ganttNumberSectionStyles =
+            overrides.ganttNumberSectionStyles ?: ganttNumberSectionStyles,
+        ganttAxisFormat = overrides.ganttAxisFormat ?: ganttAxisFormat,
+        ganttTickInterval = overrides.ganttTickInterval ?: ganttTickInterval,
+        ganttTopAxis = overrides.ganttTopAxis ?: ganttTopAxis,
+        ganttDisplayMode = overrides.ganttDisplayMode ?: ganttDisplayMode,
+        ganttWeekday = overrides.ganttWeekday ?: ganttWeekday,
+        ganttUseWidth = overrides.ganttUseWidth ?: ganttUseWidth,
+        pieTextPosition = overrides.pieTextPosition ?: pieTextPosition,
+        pieDonutHole = overrides.pieDonutHole ?: pieDonutHole,
+        pieLegendPosition = overrides.pieLegendPosition ?: pieLegendPosition,
+        pieHighlightSlice = overrides.pieHighlightSlice ?: pieHighlightSlice,
         curve = overrides.curve ?: curve,
         fontSize = overrides.fontSize ?: fontSize,
         fontFamily = overrides.fontFamily ?: fontFamily,
@@ -863,6 +1001,30 @@ internal data class MermaidConfigOverride(
                 erNodeSpacing = erNodeSpacing ?: options.erNodeSpacing,
                 erRankSpacing = erRankSpacing ?: options.erRankSpacing,
                 erTitleTopMargin = erTitleTopMargin ?: options.erTitleTopMargin,
+                ganttTitleTopMargin =
+                    ganttTitleTopMargin ?: options.ganttTitleTopMargin,
+                ganttBarHeight = ganttBarHeight ?: options.ganttBarHeight,
+                ganttBarGap = ganttBarGap ?: options.ganttBarGap,
+                ganttTopPadding = ganttTopPadding ?: options.ganttTopPadding,
+                ganttRightPadding = ganttRightPadding ?: options.ganttRightPadding,
+                ganttLeftPadding = ganttLeftPadding ?: options.ganttLeftPadding,
+                ganttGridLineStartPadding =
+                    ganttGridLineStartPadding ?: options.ganttGridLineStartPadding,
+                ganttFontSize = ganttFontSize ?: options.ganttFontSize,
+                ganttSectionFontSize =
+                    ganttSectionFontSize ?: options.ganttSectionFontSize,
+                ganttNumberSectionStyles =
+                    ganttNumberSectionStyles ?: options.ganttNumberSectionStyles,
+                ganttAxisFormat = ganttAxisFormat ?: options.ganttAxisFormat,
+                ganttTickInterval = ganttTickInterval ?: options.ganttTickInterval,
+                ganttTopAxis = ganttTopAxis ?: options.ganttTopAxis,
+                ganttDisplayMode = ganttDisplayMode ?: options.ganttDisplayMode,
+                ganttWeekday = ganttWeekday ?: options.ganttWeekday,
+                ganttUseWidth = ganttUseWidth ?: options.ganttUseWidth,
+                pieTextPosition = pieTextPosition ?: options.pieTextPosition,
+                pieDonutHole = pieDonutHole ?: options.pieDonutHole,
+                pieLegendPosition = pieLegendPosition ?: options.pieLegendPosition,
+                pieHighlightSlice = pieHighlightSlice ?: options.pieHighlightSlice,
                 curve = curve ?: options.curve,
                 fontSize = fontSize ?: options.fontSize,
                 fontFamily = fontFamily ?: options.fontFamily,

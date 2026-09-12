@@ -4,17 +4,17 @@ Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.
 The compatibility baseline is Mermaid `12.0.0`.
 
 The production renderer libraries do not use a WebView and do not execute
-Mermaid.js. Mermaid's Flowchart, Sequence, Class, State, and Entity
-Relationship parser semantics, diagram databases, layout preparation, shapes,
-edges, markers, text handling, and SceneGraph conversion are translated to
-Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter around the locked
-`elkjs@0.9.3` worker, which runs in an isolated QuickJS runtime.
+Mermaid.js. Mermaid's Flowchart, Sequence, Class, State, Entity Relationship,
+Gantt, and Pie parser semantics, diagram databases, layout preparation,
+shapes, edges, markers, text handling, and SceneGraph conversion are translated
+to Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter around the
+locked `elkjs@0.9.3` worker, which runs in an isolated QuickJS runtime.
 
 ```text
 Mermaid 12 diagram source
         |
         v
-Kotlin preprocessing + translated Jison runtime + diagram DB
+Kotlin preprocessing + translated parser/runtime + diagram DB
         |
         +--> Flowchart: Kotlin Graphlib/Dagre
         |
@@ -28,6 +28,10 @@ Kotlin preprocessing + translated Jison runtime + diagram DB
         |
         +--> ER: Kotlin erDb/erBox/unified renderer translation
         |
+        +--> Gantt: Kotlin ganttDb/Day.js/D3/renderer translation
+        |
+        +--> Pie: Kotlin Langium grammar/pieDb/D3/renderer translation
+        |
         v
 Platform-independent SceneGraph
         |
@@ -37,15 +41,15 @@ Compose Canvas
 
 ## Modules
 
-- `mermaid-core`: common Kotlin Flowchart, Sequence, Class, State, and ER
-  semantics, layout adapters, and platform-independent SceneGraph.
+- `mermaid-core`: common Kotlin Flowchart, Sequence, Class, State, ER, Gantt,
+  and Pie semantics, layout adapters, and platform-independent SceneGraph.
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
 - `sample/androidApp`: mobile syntax documentation, an editable Flowchart
   Playground with 45 presets, an on-demand local WebView for live official
   Mermaid.js comparison, a 45-case Flowchart gallery, a 35-case Sequence
-  gallery, a 27-case Class gallery, a 25-case State gallery, and a 20-case ER
-  gallery.
+  gallery, a 27-case Class gallery, a 25-case State gallery, a 20-case ER
+  gallery, a 20-case Gantt gallery, and a 20-case Pie gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.
@@ -164,6 +168,47 @@ KaTeX, browser-only label content, `handDrawn`, unmapped CSS, and unconnected
 layout engines return `MermaidError.UnsupportedFeature`. See
 [`docs/er-compatibility.md`](docs/er-compatibility.md) for the full matrix.
 
+## Gantt Diagram Coverage
+
+The supported path includes:
+
+- Mermaid's generated `gantt.jison` grammar and translated `ganttDb.js`
+  task, section, dependency, exclusion, interaction, and metadata semantics.
+- Day.js-style input formats, all Mermaid duration units, Unix timestamps,
+  previous-task shorthand, multiple `after` dependencies, and `until`.
+- Weekday/date exclusions, includes, configurable weekends, inclusive end
+  dates, milestones, vertical markers, and compact rows.
+- D3-style automatic time ticks, explicit tick intervals, week starts, axis
+  formatting, top axis, and Mermaid's 1200-unit width fallback.
+- Mermaid 12 task-state, section, exclusion, grid, today-marker, title, and
+  vertical-marker styling.
+- Links and callbacks through `SceneNodeInteraction`, with Mermaid
+  security-level behavior.
+
+`themeCSS` and unsupported `todayMarker` CSS properties return
+`MermaidError.UnsupportedFeature`. See
+[`docs/gantt-compatibility.md`](docs/gantt-compatibility.md) for the full
+matrix.
+
+## Pie Diagram Coverage
+
+The supported path includes:
+
+- Mermaid's `pie.langium` grammar, token/value converters, and translated
+  `pieDb.ts` section, duplicate-label, title, and accessibility semantics.
+- Input-order D3 angles, one-percent filtering, percentage rounding, the
+  twelve-color ordinal palette, and palette cycling.
+- `showData`, zero and decimal values, quoted/escaped labels, inline comments,
+  and all-zero data.
+- `textPosition`, donut holes, named static slice highlighting, and `top`,
+  `bottom`, `left`, `right`, or `center` legends.
+- Mermaid 12 Pie colors, opacity, stroke, title, section, and legend theme
+  variables across all built-in themes.
+
+`highlightSlice: hover` returns `MermaidError.UnsupportedFeature` because
+SceneGraph has no browser pointer-hover state. See
+[`docs/pie-compatibility.md`](docs/pie-compatibility.md) for the full matrix.
+
 ## Verification
 
 Run the shared JVM tests and build the Android sample:
@@ -198,8 +243,8 @@ npm run render
 The generator asserts Mermaid `12.0.0` and renders the same source used by the
 native side with Mermaid's ELK layout. The documentation fixture generators
 extract all 114 Flowchart examples, all 38 Sequence examples, all 38 Class
-examples, all 22 State examples, and all 24 ER examples from the locked
-Mermaid source.
+examples, all 22 State examples, all 24 ER examples, all 11 Gantt examples,
+and both Pie examples from the locked Mermaid source.
 
 Capture every Native/Official pair from a connected Android device:
 
@@ -224,7 +269,11 @@ Class translation in
 [`docs/upstream-class-map.md`](docs/upstream-class-map.md) and the State
 translation in
 [`docs/upstream-state-map.md`](docs/upstream-state-map.md). The ER translation
-is mapped in [`docs/upstream-er-map.md`](docs/upstream-er-map.md).
+is mapped in [`docs/upstream-er-map.md`](docs/upstream-er-map.md), and the
+Gantt translation in
+[`docs/upstream-gantt-map.md`](docs/upstream-gantt-map.md). The Pie
+translation is mapped in
+[`docs/upstream-pie-map.md`](docs/upstream-pie-map.md).
 
 Android hosts that opt into HTTP/HTTPS image loading must also declare the
 `android.permission.INTERNET` permission; the library does not add it

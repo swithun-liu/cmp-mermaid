@@ -115,6 +115,8 @@ private enum class DocsScreen {
     Class,
     State,
     Er,
+    Gantt,
+    Pie,
     Playground,
 }
 
@@ -155,6 +157,12 @@ private fun MermaidDocsApp(
     }
     val auditErDemo = remember(auditDemoId) {
         erDemos.firstOrNull { it.id == auditDemoId }
+    }
+    val auditGanttDemo = remember(auditDemoId) {
+        ganttDemos.firstOrNull { it.id == auditDemoId }
+    }
+    val auditPieDemo = remember(auditDemoId) {
+        pieDemos.firstOrNull { it.id == auditDemoId }
     }
     val colors = lightColorScheme(
         primary = Color(0xFF007F86),
@@ -205,6 +213,20 @@ private fun MermaidDocsApp(
             )
             return@MaterialTheme
         }
+        if (auditGanttDemo != null) {
+            GanttVisualAuditScreen(
+                demo = auditGanttDemo,
+                preview = auditPreview,
+            )
+            return@MaterialTheme
+        }
+        if (auditPieDemo != null) {
+            PieVisualAuditScreen(
+                demo = auditPieDemo,
+                preview = auditPreview,
+            )
+            return@MaterialTheme
+        }
         BackHandler(enabled = screen != DocsScreen.DiagramTypes) {
             screen = when (screen) {
                 DocsScreen.DiagramTypes -> DocsScreen.DiagramTypes
@@ -213,6 +235,8 @@ private fun MermaidDocsApp(
                 DocsScreen.Class -> DocsScreen.DiagramTypes
                 DocsScreen.State -> DocsScreen.DiagramTypes
                 DocsScreen.Er -> DocsScreen.DiagramTypes
+                DocsScreen.Gantt -> DocsScreen.DiagramTypes
+                DocsScreen.Pie -> DocsScreen.DiagramTypes
                 DocsScreen.Playground -> DocsScreen.Flowchart
             }
         }
@@ -223,6 +247,8 @@ private fun MermaidDocsApp(
                 onClassClick = { screen = DocsScreen.Class },
                 onStateClick = { screen = DocsScreen.State },
                 onErClick = { screen = DocsScreen.Er },
+                onGanttClick = { screen = DocsScreen.Gantt },
+                onPieClick = { screen = DocsScreen.Pie },
             )
             DocsScreen.Flowchart -> FlowchartDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
@@ -241,6 +267,12 @@ private fun MermaidDocsApp(
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
             DocsScreen.Er -> ErDocsScreen(
+                onBack = { screen = DocsScreen.DiagramTypes },
+            )
+            DocsScreen.Gantt -> GanttDocsScreen(
+                onBack = { screen = DocsScreen.DiagramTypes },
+            )
+            DocsScreen.Pie -> PieDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
         }
@@ -361,6 +393,62 @@ private fun ErVisualAuditScreen(
 }
 
 @Composable
+private fun GanttVisualAuditScreen(
+    demo: GanttDemo,
+    preview: AuditPreview,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        when (preview) {
+            AuditPreview.Native -> MermaidDiagram(
+                source = demo.source,
+                modifier = Modifier.fillMaxSize(),
+                theme = MermaidTheme.FlowchartDefault,
+                contentDescription = "Audit ${demo.id} native",
+            )
+            AuditPreview.Official -> OfficialMermaidDiagram(
+                source = demo.source,
+                layout = "dagre",
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
+    }
+}
+
+@Composable
+private fun PieVisualAuditScreen(
+    demo: PieDemo,
+    preview: AuditPreview,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        when (preview) {
+            AuditPreview.Native -> MermaidDiagram(
+                source = demo.source,
+                modifier = Modifier.fillMaxSize(),
+                theme = MermaidTheme.MermaidDefault,
+                contentDescription = "Audit ${demo.id} native",
+            )
+            AuditPreview.Official -> OfficialMermaidDiagram(
+                source = demo.source,
+                layout = "dagre",
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
+    }
+}
+
+@Composable
 private fun VisualAuditScreen(
     demo: FlowchartDemo,
     preview: AuditPreview,
@@ -407,6 +495,8 @@ private fun DiagramTypesScreen(
     onClassClick: () -> Unit,
     onStateClick: () -> Unit,
     onErClick: () -> Unit,
+    onGanttClick: () -> Unit,
+    onPieClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -479,6 +569,20 @@ private fun DiagramTypesScreen(
                     title = "Entity Relationship",
                     description = "Entities, attributes, cardinalities, and subgraphs",
                     onClick = onErClick,
+                )
+            }
+            item {
+                DiagramTypeRow(
+                    title = "Gantt",
+                    description = "Tasks, dependencies, calendar exclusions, and milestones",
+                    onClick = onGanttClick,
+                )
+            }
+            item {
+                DiagramTypeRow(
+                    title = "Pie",
+                    description = "Pie and donut charts with configurable legends",
+                    onClick = onPieClick,
                 )
             }
         }
@@ -1710,6 +1814,307 @@ private fun ErDocsScreen(
                         OfficialMermaidDiagram(
                             source = demo.source,
                             layout = "elk",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                        )
+                    }
+                }
+            }
+            item {
+                CodeBlock(demo.source)
+            }
+        }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun GanttDocsScreen(
+    onBack: () -> Unit,
+) {
+    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+    var selectedPreview by rememberSaveable { mutableIntStateOf(0) }
+    val demo = ganttDemos[selectedIndex]
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                        )
+                    }
+                },
+                title = {
+                    Column {
+                        Text(
+                            text = "Gantt",
+                            fontWeight = FontWeight.SemiBold,
+                            letterSpacing = 0.sp,
+                        )
+                        Text(
+                            text = "Mermaid ${MermaidCompatibility.BASELINE_VERSION}",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp,
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                ),
+            )
+        },
+    ) { contentPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(contentPadding),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            item {
+                Text(
+                    text = "Gantt diagram gallery",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.sp,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = "${ganttDemos.size} native cases with an on-device Mermaid.js reference",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    IconButton(
+                        onClick = {
+                            selectedIndex =
+                                (selectedIndex - 1 + ganttDemos.size) % ganttDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Previous case",
+                        )
+                    }
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = demo.title,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Text(
+                            text = "${selectedIndex + 1} / ${ganttDemos.size} · ${demo.category}",
+                            color = MaterialTheme.colorScheme.primary,
+                            style = MaterialTheme.typography.labelMedium,
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            selectedIndex = (selectedIndex + 1) % ganttDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = "Next case",
+                        )
+                    }
+                }
+            }
+            item {
+                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                    listOf("CMP Native", "Official").forEachIndexed { index, label ->
+                        SegmentedButton(
+                            selected = selectedPreview == index,
+                            onClick = { selectedPreview = index },
+                            shape = SegmentedButtonDefaults.itemShape(index, 2),
+                            label = { Text(label) },
+                        )
+                    }
+                }
+            }
+            item {
+                PreviewFrame(
+                    label = if (selectedPreview == 0) {
+                        "CMP Native"
+                    } else {
+                        "Official Mermaid.js 12.0.0"
+                    },
+                ) {
+                    if (selectedPreview == 0) {
+                        MermaidDiagram(
+                            source = demo.source,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                            theme = MermaidTheme.FlowchartDefault,
+                            contentDescription = "${demo.title} CMP rendering",
+                        )
+                    } else {
+                        OfficialMermaidDiagram(
+                            source = demo.source,
+                            layout = "dagre",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                        )
+                    }
+                }
+            }
+            item {
+                CodeBlock(demo.source)
+            }
+        }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun PieDocsScreen(
+    onBack: () -> Unit,
+) {
+    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+    var selectedPreview by rememberSaveable { mutableIntStateOf(0) }
+    val demo = pieDemos[selectedIndex]
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                        )
+                    }
+                },
+                title = {
+                    Column {
+                        Text(
+                            text = "Pie",
+                            fontWeight = FontWeight.SemiBold,
+                            letterSpacing = 0.sp,
+                        )
+                        Text(
+                            text = "Mermaid ${MermaidCompatibility.BASELINE_VERSION}",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp,
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                ),
+            )
+        },
+    ) { contentPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(contentPadding),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            item {
+                Text(
+                    text = "Pie diagram gallery",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.sp,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = "${pieDemos.size} native cases with an on-device Mermaid.js reference",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    IconButton(
+                        onClick = {
+                            selectedIndex = (selectedIndex - 1 + pieDemos.size) % pieDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Previous case",
+                        )
+                    }
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = demo.title,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Text(
+                            text = "${selectedIndex + 1} / ${pieDemos.size} / ${demo.category}",
+                            color = MaterialTheme.colorScheme.primary,
+                            style = MaterialTheme.typography.labelMedium,
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            selectedIndex = (selectedIndex + 1) % pieDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = "Next case",
+                        )
+                    }
+                }
+            }
+            item {
+                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                    listOf("CMP Native", "Official").forEachIndexed { index, label ->
+                        SegmentedButton(
+                            selected = selectedPreview == index,
+                            onClick = { selectedPreview = index },
+                            shape = SegmentedButtonDefaults.itemShape(index, 2),
+                            label = { Text(label) },
+                        )
+                    }
+                }
+            }
+            item {
+                PreviewFrame(
+                    label = if (selectedPreview == 0) {
+                        "CMP Native"
+                    } else {
+                        "Official Mermaid.js 12.0.0"
+                    },
+                ) {
+                    if (selectedPreview == 0) {
+                        MermaidDiagram(
+                            source = demo.source,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                            theme = MermaidTheme.MermaidDefault,
+                            contentDescription = "${demo.title} CMP rendering",
+                        )
+                    } else {
+                        OfficialMermaidDiagram(
+                            source = demo.source,
+                            layout = "dagre",
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(460.dp),

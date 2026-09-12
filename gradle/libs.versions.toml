@@ -5,6 +5,7 @@ compose = "1.9.3"
 kaml = "0.104.0"
 quickJs = "1.0.5"
 kotlinxCoroutines = "1.10.2"
+kotlinxDatetime = "0.7.1"
 kotlinxSerializationJson = "1.10.0"
 androidxActivity = "1.13.0"
 androidxCore = "1.18.0"
@@ -27,6 +28,7 @@ android-svg = { module = "com.caverock:androidsvg-aar", version.ref = "androidSv
 kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
 quickjs = { module = "io.github.dokar3:quickjs-kt", version.ref = "quickJs" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 
 [plugins]
