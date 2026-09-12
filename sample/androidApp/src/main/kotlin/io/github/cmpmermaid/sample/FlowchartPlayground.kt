@@ -71,6 +71,13 @@ private enum class PlaygroundLayout(
     Dagre(label = "Dagre", option = "dagre"),
 }
 
+private enum class PlaygroundRenderer(
+    val label: String,
+) {
+    Native(label = "CMP Native"),
+    Official(label = "Official JS"),
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun FlowchartPlaygroundScreen(
@@ -83,9 +90,15 @@ internal fun FlowchartPlaygroundScreen(
     var selectedLayoutName by rememberSaveable {
         mutableStateOf(PlaygroundLayout.Elk.name)
     }
+    var selectedRendererName by rememberSaveable {
+        mutableStateOf(PlaygroundRenderer.Native.name)
+    }
     val selectedLayout = PlaygroundLayout.entries
         .firstOrNull { it.name == selectedLayoutName }
         ?: PlaygroundLayout.Elk
+    val selectedRenderer = PlaygroundRenderer.entries
+        .firstOrNull { it.name == selectedRendererName }
+        ?: PlaygroundRenderer.Native
     val selectedDemo = flowchartDemos
         .firstOrNull { it.id == selectedDemoId }
         ?: initialDemo
@@ -129,6 +142,7 @@ internal fun FlowchartPlaygroundScreen(
             draftSource = draftSource,
             renderedSource = renderedSource,
             selectedLayout = selectedLayout,
+            selectedRenderer = selectedRenderer,
             focusManager = focusManager,
             onDemoSelected = { demo ->
                 selectedDemoId = demo.id
@@ -138,6 +152,9 @@ internal fun FlowchartPlaygroundScreen(
             onDraftChange = { draftSource = it },
             onLayoutSelected = { layout ->
                 selectedLayoutName = layout.name
+            },
+            onRendererSelected = { renderer ->
+                selectedRendererName = renderer.name
             },
             onReset = {
                 draftSource = selectedDemo.source
@@ -161,10 +178,12 @@ private fun PlaygroundContent(
     draftSource: String,
     renderedSource: String,
     selectedLayout: PlaygroundLayout,
+    selectedRenderer: PlaygroundRenderer,
     focusManager: FocusManager,
     onDemoSelected: (FlowchartDemo) -> Unit,
     onDraftChange: (String) -> Unit,
     onLayoutSelected: (PlaygroundLayout) -> Unit,
+    onRendererSelected: (PlaygroundRenderer) -> Unit,
     onReset: () -> Unit,
     onRender: () -> Unit,
 ) {
@@ -328,6 +347,22 @@ private fun PlaygroundContent(
                 fontWeight = FontWeight.SemiBold,
             )
             Spacer(Modifier.height(8.dp))
+            SingleChoiceSegmentedButtonRow(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                PlaygroundRenderer.entries.forEachIndexed { index, renderer ->
+                    SegmentedButton(
+                        selected = selectedRenderer == renderer,
+                        onClick = { onRendererSelected(renderer) },
+                        shape = SegmentedButtonDefaults.itemShape(
+                            index = index,
+                            count = PlaygroundRenderer.entries.size,
+                        ),
+                        label = { Text(renderer.label) },
+                    )
+                }
+            }
+            Spacer(Modifier.height(10.dp))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -341,13 +376,20 @@ private fun PlaygroundContent(
                     .padding(8.dp),
                 contentAlignment = Alignment.Center,
             ) {
-                MermaidDiagram(
-                    source = renderedSource,
-                    modifier = Modifier.fillMaxSize(),
-                    theme = MermaidTheme.FlowchartDefault,
-                    options = renderOptions,
-                    contentDescription = "Playground Flowchart preview",
-                )
+                when (selectedRenderer) {
+                    PlaygroundRenderer.Native -> MermaidDiagram(
+                        source = renderedSource,
+                        modifier = Modifier.fillMaxSize(),
+                        theme = MermaidTheme.FlowchartDefault,
+                        options = renderOptions,
+                        contentDescription = "Playground Flowchart native preview",
+                    )
+                    PlaygroundRenderer.Official -> OfficialMermaidDiagram(
+                        source = renderedSource,
+                        layout = selectedLayout.option,
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                }
             }
         }
     }

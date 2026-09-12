@@ -74,6 +74,9 @@ Additional platform limitations:
 - 45 curated gallery cases are rendered from identical source by Native
   Compose and Mermaid.js `12.0.0` with ELK, then captured on the same Android
   viewport.
+- The Android Playground can render its current source and layout on demand
+  through either Native Compose or a network-disabled WebView containing the
+  locked Mermaid.js `12.0.0` bundle.
 - 114 examples extracted from Mermaid's Flowchart documentation run through
   both Dagre and ELK in JVM tests.
 - The only expected documentation-level unsupported cases are the two

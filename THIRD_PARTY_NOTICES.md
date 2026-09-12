@@ -7,6 +7,19 @@ parsing, layout-adapter, and rendering algorithms. The reference-rendering
 tool also downloads Mermaid.js from npm. Mermaid.js itself is not embedded in
 the runtime libraries.
 
+The Android sample bundles Mermaid.js `12.0.0` only for the Playground's
+on-demand official WebView comparison. The npm distribution is syntax
+transpiled to Chrome 87 by esbuild without changing Mermaid's rendering
+semantics. It is not included in `mermaid-core` or `mermaid-compose`.
+
+Upstream npm bundle SHA-256:
+
+`28fca7ae6ebc7ed7bb63bde63136a74bfef14f296a57e403657eeb8b32836073`
+
+Bundled Chrome 87-compatible file SHA-256:
+
+`9d886dff8ae78dc6f9579732c0aa33695d7371b8206826689bf7bdaf8568960a`
+
 Mermaid is distributed under the MIT License:
 
 Copyright (c) 2014 - 2022 Knut Sveidqvist
@@ -188,6 +201,29 @@ is included at:
 Project:
 
 https://fonts.google.com/specimen/Arimo
+
+## AndroidX WebKit
+
+The Android sample uses AndroidX WebKit `1.17.0` to serve bundled Mermaid
+comparison assets to its isolated WebView through `WebViewAssetLoader`.
+
+AndroidX WebKit is distributed under the Apache License 2.0:
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Project:
+
+https://developer.android.com/jetpack/androidx/releases/webkit
+
+## esbuild
+
+The official-reference generator uses esbuild `0.28.2` to lower the bundled
+Mermaid.js syntax for the Android test device's WebView. esbuild is a
+development tool and is not distributed in the app.
+
+esbuild is distributed under the MIT License:
+
+https://github.com/evanw/esbuild
 
 ## WHATWG HTML Named Character References
 

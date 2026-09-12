@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { transform } from 'esbuild';
 import puppeteer from 'puppeteer';
 import { cases } from './cases.mjs';
 
@@ -14,6 +15,10 @@ const testOutput = resolve(
   root,
   '../../mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/OfficialFlowchartCases.kt',
 );
+const androidAssetOutput = resolve(
+  root,
+  '../../sample/androidApp/src/main/assets',
+);
 const temporary = resolve(root, '.cache');
 const mermaidBundle = resolve(root, 'node_modules/mermaid/dist/mermaid.min.js');
 const mermaidPackage = JSON.parse(
@@ -25,6 +30,20 @@ if (mermaidPackage.version !== '12.0.0') {
 }
 
 mkdirSync(output, { recursive: true });
+mkdirSync(androidAssetOutput, { recursive: true });
+const androidMermaidBundle = await transform(
+  readFileSync(mermaidBundle, 'utf8'),
+  {
+    loader: 'js',
+    target: 'chrome87',
+    minify: true,
+    legalComments: 'inline',
+  },
+);
+writeFileSync(
+  resolve(androidAssetOutput, `mermaid-${mermaidPackage.version}.min.js`),
+  androidMermaidBundle.code,
+);
 rmSync(temporary, { recursive: true, force: true });
 mkdirSync(temporary, { recursive: true });
 const dimensions = new Map();

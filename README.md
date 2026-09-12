@@ -3,11 +3,12 @@
 Native Mermaid Flowchart rendering for Kotlin Multiplatform and Compose
 Multiplatform. The compatibility baseline is Mermaid `12.0.0`.
 
-The renderer does not use a WebView and does not execute Mermaid.js. Mermaid's
-Flowchart preprocessing, parser semantics, FlowDB, Dagre adapter, shapes,
-edges, markers, text handling, and SceneGraph conversion are translated to
-Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter around the locked
-`elkjs@0.9.3` worker, which runs in an isolated QuickJS runtime.
+The production renderer libraries do not use a WebView and do not execute
+Mermaid.js. Mermaid's Flowchart preprocessing, parser semantics, FlowDB, Dagre
+adapter, shapes, edges, markers, text handling, and SceneGraph conversion are
+translated to Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter
+around the locked `elkjs@0.9.3` worker, which runs in an isolated QuickJS
+runtime.
 
 ```text
 Mermaid 12 Flowchart source
@@ -33,8 +34,8 @@ Compose Canvas
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
 - `sample/androidApp`: mobile syntax documentation, an editable Flowchart
-  Playground with 45 presets, and a 45-case Native/Official comparison
-  gallery.
+  Playground with 45 presets, an on-demand local WebView for live official
+  Mermaid.js comparison, and a 45-case Native/Official comparison gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.
