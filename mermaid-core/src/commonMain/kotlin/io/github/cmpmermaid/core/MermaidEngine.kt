@@ -3,6 +3,7 @@ package io.github.cmpmermaid.core
 import io.github.cmpmermaid.core.classdiagram.ClassPlugin
 import io.github.cmpmermaid.core.flowchart.FlowchartPlugin
 import io.github.cmpmermaid.core.sequence.SequencePlugin
+import io.github.cmpmermaid.core.statediagram.StatePlugin
 
 data class MermaidRenderContext(
     val textMetrics: TextMetricProvider,
@@ -28,6 +29,7 @@ class MermaidEngine(
         FlowchartPlugin(),
         SequencePlugin(),
         ClassPlugin(),
+        StatePlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {

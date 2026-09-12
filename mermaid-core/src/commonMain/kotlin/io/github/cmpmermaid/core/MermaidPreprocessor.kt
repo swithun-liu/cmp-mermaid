@@ -226,6 +226,7 @@ internal object MermaidPreprocessor {
         }
         val flowchart = map.map("flowchart") ?: map.map("config")
         val classDiagram = map.map("class")
+        val stateDiagram = map.map("state")
         val elk = map.map("elk")
         val unsupported = buildSet {
             TOP_LEVEL_UNTRANSLATED_KEYS.filterTo(this) { map.node(it) != null }
@@ -425,6 +426,24 @@ internal object MermaidPreprocessor {
             "hierarchicalNamespaces",
             "class.hierarchicalNamespaces",
         )
+        val statePadding = float(stateDiagram, "padding", "state.padding")
+        val stateWrappingWidth = float(
+            stateDiagram,
+            "wrappingWidth",
+            "state.wrappingWidth",
+        )
+        val stateMinNodeWidth = float(
+            stateDiagram,
+            "minNodeWidth",
+            "state.minNodeWidth",
+        )
+        val stateNodeSpacing = float(stateDiagram, "nodeSpacing", "state.nodeSpacing")
+        val stateRankSpacing = float(stateDiagram, "rankSpacing", "state.rankSpacing")
+        val stateTitleTopMargin = float(
+            stateDiagram,
+            "titleTopMargin",
+            "state.titleTopMargin",
+        )
         val curve = string(flowchart, "curve", "flowchart.curve")
         val flowTheme = appearanceString(flowchart, "theme", "flowchart.theme")
             ?.takeIf(USABLE_THEMES::contains)
@@ -541,6 +560,12 @@ internal object MermaidPreprocessor {
                 classPadding = classPadding,
                 classHideEmptyMembersBox = classHideEmptyMembersBox,
                 classHierarchicalNamespaces = classHierarchicalNamespaces,
+                statePadding = statePadding,
+                stateWrappingWidth = stateWrappingWidth,
+                stateMinNodeWidth = stateMinNodeWidth,
+                stateNodeSpacing = stateNodeSpacing,
+                stateRankSpacing = stateRankSpacing,
+                stateTitleTopMargin = stateTitleTopMargin,
                 curve = curve,
                 fontSize = fontSize,
                 fontFamily = fontFamily,
@@ -697,6 +722,12 @@ internal data class MermaidConfigOverride(
     val classPadding: Float? = null,
     val classHideEmptyMembersBox: Boolean? = null,
     val classHierarchicalNamespaces: Boolean? = null,
+    val statePadding: Float? = null,
+    val stateWrappingWidth: Float? = null,
+    val stateMinNodeWidth: Float? = null,
+    val stateNodeSpacing: Float? = null,
+    val stateRankSpacing: Float? = null,
+    val stateTitleTopMargin: Float? = null,
     val curve: String? = null,
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -727,6 +758,12 @@ internal data class MermaidConfigOverride(
             overrides.classHideEmptyMembersBox ?: classHideEmptyMembersBox,
         classHierarchicalNamespaces =
             overrides.classHierarchicalNamespaces ?: classHierarchicalNamespaces,
+        statePadding = overrides.statePadding ?: statePadding,
+        stateWrappingWidth = overrides.stateWrappingWidth ?: stateWrappingWidth,
+        stateMinNodeWidth = overrides.stateMinNodeWidth ?: stateMinNodeWidth,
+        stateNodeSpacing = overrides.stateNodeSpacing ?: stateNodeSpacing,
+        stateRankSpacing = overrides.stateRankSpacing ?: stateRankSpacing,
+        stateTitleTopMargin = overrides.stateTitleTopMargin ?: stateTitleTopMargin,
         curve = overrides.curve ?: curve,
         fontSize = overrides.fontSize ?: fontSize,
         fontFamily = overrides.fontFamily ?: fontFamily,
@@ -784,6 +821,12 @@ internal data class MermaidConfigOverride(
                     classHideEmptyMembersBox ?: options.classHideEmptyMembersBox,
                 classHierarchicalNamespaces =
                     classHierarchicalNamespaces ?: options.classHierarchicalNamespaces,
+                statePadding = statePadding ?: options.statePadding,
+                stateWrappingWidth = stateWrappingWidth ?: options.stateWrappingWidth,
+                stateMinNodeWidth = stateMinNodeWidth ?: options.stateMinNodeWidth,
+                stateNodeSpacing = stateNodeSpacing ?: options.stateNodeSpacing,
+                stateRankSpacing = stateRankSpacing ?: options.stateRankSpacing,
+                stateTitleTopMargin = stateTitleTopMargin ?: options.stateTitleTopMargin,
                 curve = curve ?: options.curve,
                 fontSize = fontSize ?: options.fontSize,
                 fontFamily = fontFamily ?: options.fontFamily,

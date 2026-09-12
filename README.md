@@ -4,9 +4,9 @@ Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.
 The compatibility baseline is Mermaid `12.0.0`.
 
 The production renderer libraries do not use a WebView and do not execute
-Mermaid.js. Mermaid's Flowchart, Sequence, and Class parser semantics, diagram
-databases, layout preparation, shapes, edges, markers, text handling, and
-SceneGraph conversion are translated to Kotlin. Flowchart ELK layout keeps
+Mermaid.js. Mermaid's Flowchart, Sequence, Class, and State parser semantics,
+diagram databases, layout preparation, shapes, edges, markers, text handling,
+and SceneGraph conversion are translated to Kotlin. Flowchart ELK layout keeps
 Mermaid's Kotlin-translated adapter around the locked `elkjs@0.9.3` worker,
 which runs in an isolated QuickJS runtime.
 
@@ -24,6 +24,8 @@ Kotlin preprocessing + translated Jison runtime + diagram DB
         |
         +--> Class: Kotlin classDb/classBox/unified renderer translation
         |
+        +--> State: Kotlin stateDb/dataFetcher/unified renderer translation
+        |
         v
 Platform-independent SceneGraph
         |
@@ -33,14 +35,14 @@ Compose Canvas
 
 ## Modules
 
-- `mermaid-core`: common Kotlin Flowchart, Sequence, and Class semantics, layout
-  adapters, and platform-independent SceneGraph.
+- `mermaid-core`: common Kotlin Flowchart, Sequence, Class, and State
+  semantics, layout adapters, and platform-independent SceneGraph.
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
 - `sample/androidApp`: mobile syntax documentation, an editable Flowchart
   Playground with 45 presets, an on-demand local WebView for live official
-  Mermaid.js comparison, a 45-case Flowchart gallery, and a 35-case Sequence
-  gallery plus a 27-case Class gallery.
+  Mermaid.js comparison, a 45-case Flowchart gallery, a 35-case Sequence
+  gallery, a 27-case Class gallery, and a 25-case State gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.
@@ -114,6 +116,28 @@ KaTeX, browser-only label content, `handDrawn`, and unmapped CSS return
 [`docs/class-compatibility.md`](docs/class-compatibility.md) for the full
 matrix.
 
+## State Diagram Coverage
+
+The supported path includes:
+
+- Mermaid's generated `stateDiagram.jison` grammar, translated `stateDb.ts`
+  document semantics, and translated `dataFetcher.ts` renderer projection.
+- States, aliases, repeated descriptions, transitions, labels, self-loops,
+  root/nested start and end markers, choice, fork, and join pseudostates.
+- Named, nested, and sibling composite states, concurrency regions, and
+  root/nested TB, BT, LR, and RL directions.
+- Single-line and multiline folded notes with Mermaid's directed dashed-edge
+  placement semantics.
+- Mermaid's default ELK layout, named ELK algorithms, and explicit Dagre
+  override.
+- `style`, `classDef`, `class`, inline `:::`, links, tooltips, Markdown/HTML
+  text, title, accessibility metadata, Unicode, and State layout configuration.
+
+KaTeX, browser-only label content, `handDrawn`, unmapped CSS, and unconnected
+layout engines return `MermaidError.UnsupportedFeature`. See
+[`docs/state-compatibility.md`](docs/state-compatibility.md) for the full
+matrix.
+
 ## Verification
 
 Run the shared JVM tests and build the Android sample:
@@ -147,8 +171,8 @@ npm run render
 
 The generator asserts Mermaid `12.0.0` and renders the same source used by the
 native side with Mermaid's ELK layout. The documentation fixture generators
-extract all 114 Flowchart examples, all 38 Sequence examples, and all 38 Class
-examples from the locked Mermaid source.
+extract all 114 Flowchart examples, all 38 Sequence examples, all 38 Class
+examples, and all 22 State examples from the locked Mermaid source.
 
 Capture every Native/Official pair from a connected Android device:
 
@@ -170,7 +194,9 @@ The source-to-source upgrade maps are maintained in
 [`docs/upstream-flowchart-map.md`](docs/upstream-flowchart-map.md) and
 [`docs/upstream-sequence-map.md`](docs/upstream-sequence-map.md), with the
 Class translation in
-[`docs/upstream-class-map.md`](docs/upstream-class-map.md).
+[`docs/upstream-class-map.md`](docs/upstream-class-map.md) and the State
+translation in
+[`docs/upstream-state-map.md`](docs/upstream-state-map.md).
 
 Android hosts that opt into HTTP/HTTPS image loading must also declare the
 `android.permission.INTERNET` permission; the library does not add it
