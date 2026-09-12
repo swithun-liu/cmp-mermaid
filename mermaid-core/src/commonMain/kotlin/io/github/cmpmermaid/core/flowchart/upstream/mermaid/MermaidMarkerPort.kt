@@ -20,6 +20,12 @@ internal object MermaidMarkerPort {
         SceneArrowHead.HalfOpenTop,
         SceneArrowHead.HalfOpenBottom,
         -> 0f
+        SceneArrowHead.ClassAggregation,
+        SceneArrowHead.ClassExtension,
+        SceneArrowHead.ClassComposition,
+        -> 17.25f
+        SceneArrowHead.ClassDependency -> 6f
+        SceneArrowHead.ClassLollipop -> 13.5f
     }
 
     fun neoGapOffset(arrow: SceneArrowHead): Float = when (arrow) {
@@ -35,6 +41,11 @@ internal object MermaidMarkerPort {
         SceneArrowHead.HalfTriangleBottom,
         SceneArrowHead.HalfOpenTop,
         SceneArrowHead.HalfOpenBottom,
+        SceneArrowHead.ClassAggregation,
+        SceneArrowHead.ClassExtension,
+        SceneArrowHead.ClassComposition,
+        SceneArrowHead.ClassDependency,
+        SceneArrowHead.ClassLollipop,
         -> 0f
     }
 

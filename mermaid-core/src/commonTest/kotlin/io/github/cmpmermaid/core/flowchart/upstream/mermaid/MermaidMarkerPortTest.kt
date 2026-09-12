@@ -15,6 +15,11 @@ class MermaidMarkerPortTest {
         assertEquals(4f, MermaidMarkerPort.pathOffset(SceneArrowHead.Triangle))
         assertEquals(0f, MermaidMarkerPort.pathOffset(SceneArrowHead.Circle))
         assertEquals(0f, MermaidMarkerPort.pathOffset(SceneArrowHead.Cross))
+        assertEquals(17.25f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassAggregation))
+        assertEquals(17.25f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassExtension))
+        assertEquals(17.25f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassComposition))
+        assertEquals(6f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassDependency))
+        assertEquals(13.5f, MermaidMarkerPort.pathOffset(SceneArrowHead.ClassLollipop))
     }
 
     @Test
@@ -54,6 +59,26 @@ class MermaidMarkerPortTest {
         val commands = assertIs<GMResult.Ok<List<ScenePathCommand>>>(result).value
         assertEquals(
             ScenePathCommand.LineTo(ScenePoint(46f, 0f)),
+            commands.last(),
+        )
+    }
+
+    @Test
+    fun reservesClassMarkerLengthsAtBothPathEnds() {
+        val result = MermaidEdgePathPort.generate(
+            points = listOf(ScenePoint(0f, 0f), ScenePoint(100f, 0f)),
+            curve = "linear",
+            arrowStart = SceneArrowHead.ClassAggregation,
+            arrowEnd = SceneArrowHead.ClassDependency,
+        )
+
+        val commands = assertIs<GMResult.Ok<List<ScenePathCommand>>>(result).value
+        assertEquals(
+            ScenePathCommand.MoveTo(ScenePoint(17.25f, 0f)),
+            commands.first(),
+        )
+        assertEquals(
+            ScenePathCommand.LineTo(ScenePoint(94f, 0f)),
             commands.last(),
         )
     }

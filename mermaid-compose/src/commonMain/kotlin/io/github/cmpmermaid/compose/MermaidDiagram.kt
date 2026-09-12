@@ -930,6 +930,11 @@ private fun SceneArrowHead.neoMarkerOffset(): Float = when (this) {
     SceneArrowHead.HalfTriangleBottom,
     SceneArrowHead.HalfOpenTop,
     SceneArrowHead.HalfOpenBottom,
+    SceneArrowHead.ClassAggregation,
+    SceneArrowHead.ClassExtension,
+    SceneArrowHead.ClassComposition,
+    SceneArrowHead.ClassDependency,
+    SceneArrowHead.ClassLollipop,
     -> 0f
 }
 
@@ -963,8 +968,128 @@ private fun DrawScope.drawArrowHead(
         SceneArrowHead.HalfOpenTop,
         SceneArrowHead.HalfOpenBottom,
         -> drawSequenceArrowMarker(type, tangent, position, color)
+        SceneArrowHead.ClassAggregation,
+        SceneArrowHead.ClassExtension,
+        SceneArrowHead.ClassComposition,
+        SceneArrowHead.ClassDependency,
+        SceneArrowHead.ClassLollipop,
+        -> drawClassMarker(type, tangent, position, color)
         SceneArrowHead.None -> Unit
     }
+}
+
+private fun DrawScope.drawClassMarker(
+    type: SceneArrowHead,
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    color: Color,
+) {
+    if (type == SceneArrowHead.ClassLollipop) {
+        val reference = ScenePoint(
+            x = if (position == MarkerPosition.Start) 13f else 1f,
+            y = 7f,
+        )
+        val center = tangent.transform(
+            point = ScenePoint(7f, 7f),
+            reference = reference,
+            scale = 1f,
+        )
+        drawCircle(
+            color = color,
+            radius = 6f,
+            center = center,
+            style = Stroke(width = 1f),
+        )
+        return
+    }
+
+    val definition = when (type) {
+        SceneArrowHead.ClassAggregation,
+        SceneArrowHead.ClassComposition,
+        -> ClassMarkerDefinition(
+            points = listOf(
+                ScenePoint(18f, 7f),
+                ScenePoint(9f, 13f),
+                ScenePoint(1f, 7f),
+                ScenePoint(9f, 1f),
+            ),
+            reference = ScenePoint(
+                x = if (position == MarkerPosition.Start) 18f else 1f,
+                y = 7f,
+            ),
+            filled = type == SceneArrowHead.ClassComposition,
+        )
+        SceneArrowHead.ClassExtension -> ClassMarkerDefinition(
+            points = if (position == MarkerPosition.Start) {
+                listOf(
+                    ScenePoint(1f, 7f),
+                    ScenePoint(18f, 13f),
+                    ScenePoint(18f, 1f),
+                )
+            } else {
+                listOf(
+                    ScenePoint(1f, 1f),
+                    ScenePoint(1f, 13f),
+                    ScenePoint(18f, 7f),
+                )
+            },
+            reference = ScenePoint(
+                x = if (position == MarkerPosition.Start) 18f else 1f,
+                y = 7f,
+            ),
+            filled = false,
+        )
+        SceneArrowHead.ClassDependency -> ClassMarkerDefinition(
+            points = if (position == MarkerPosition.Start) {
+                listOf(
+                    ScenePoint(5f, 7f),
+                    ScenePoint(9f, 13f),
+                    ScenePoint(1f, 7f),
+                    ScenePoint(9f, 1f),
+                )
+            } else {
+                listOf(
+                    ScenePoint(18f, 7f),
+                    ScenePoint(9f, 13f),
+                    ScenePoint(14f, 7f),
+                    ScenePoint(9f, 1f),
+                )
+            },
+            reference = ScenePoint(
+                x = if (position == MarkerPosition.Start) 6f else 13f,
+                y = 7f,
+            ),
+            filled = true,
+        )
+        else -> return
+    }
+    val path = Path().apply {
+        definition.points.forEachIndexed { index, point ->
+            val transformed = tangent.transform(
+                point = point,
+                reference = definition.reference,
+                scale = 1f,
+            )
+            if (index == 0) {
+                moveTo(transformed.x, transformed.y)
+            } else {
+                lineTo(transformed.x, transformed.y)
+            }
+        }
+        close()
+    }
+    if (definition.filled) {
+        drawPath(path, color = color, style = Fill)
+    }
+    drawPath(
+        path,
+        color = color,
+        style = Stroke(
+            width = 1f,
+            cap = StrokeCap.Butt,
+            join = StrokeJoin.Miter,
+        ),
+    )
 }
 
 private fun DrawScope.drawSequenceCrossMarker(
@@ -1386,6 +1511,12 @@ private data class MarkerPathDefinition(
     val reference: ScenePoint,
     val scale: Float,
     val strokeWidth: Float,
+)
+
+private data class ClassMarkerDefinition(
+    val points: List<ScenePoint>,
+    val reference: ScenePoint,
+    val filled: Boolean,
 )
 
 private data class MarkerCrossDefinition(

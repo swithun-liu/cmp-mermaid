@@ -49,6 +49,7 @@ sealed interface MermaidError {
 
 data class MermaidRenderOptions(
     val layout: String = "elk",
+    val classLayout: String? = null,
     val elk: MermaidElkOptions = MermaidElkOptions(),
     val nodeSpacing: Float = 50f,
     val rankSpacing: Float = 50f,
@@ -56,6 +57,9 @@ data class MermaidRenderOptions(
     val wrappingWidth: Float = 120f,
     val minNodeWidth: Float = 120f,
     val flowchartPadding: Float = 15f,
+    val classPadding: Float = 12f,
+    val classHideEmptyMembersBox: Boolean = false,
+    val classHierarchicalNamespaces: Boolean = true,
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,

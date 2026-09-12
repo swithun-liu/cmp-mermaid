@@ -112,6 +112,7 @@ private enum class DocsScreen {
     DiagramTypes,
     Flowchart,
     Sequence,
+    Class,
     Playground,
 }
 
@@ -144,6 +145,9 @@ private fun MermaidDocsApp(
     val auditSequenceDemo = remember(auditDemoId) {
         sequenceDemos.firstOrNull { it.id == auditDemoId }
     }
+    val auditClassDemo = remember(auditDemoId) {
+        classDemos.firstOrNull { it.id == auditDemoId }
+    }
     val colors = lightColorScheme(
         primary = Color(0xFF007F86),
         onPrimary = Color.White,
@@ -172,11 +176,19 @@ private fun MermaidDocsApp(
             )
             return@MaterialTheme
         }
+        if (auditClassDemo != null) {
+            ClassVisualAuditScreen(
+                demo = auditClassDemo,
+                preview = auditPreview,
+            )
+            return@MaterialTheme
+        }
         BackHandler(enabled = screen != DocsScreen.DiagramTypes) {
             screen = when (screen) {
                 DocsScreen.DiagramTypes -> DocsScreen.DiagramTypes
                 DocsScreen.Flowchart -> DocsScreen.DiagramTypes
                 DocsScreen.Sequence -> DocsScreen.DiagramTypes
+                DocsScreen.Class -> DocsScreen.DiagramTypes
                 DocsScreen.Playground -> DocsScreen.Flowchart
             }
         }
@@ -184,6 +196,7 @@ private fun MermaidDocsApp(
             DocsScreen.DiagramTypes -> DiagramTypesScreen(
                 onFlowchartClick = { screen = DocsScreen.Flowchart },
                 onSequenceClick = { screen = DocsScreen.Sequence },
+                onClassClick = { screen = DocsScreen.Class },
             )
             DocsScreen.Flowchart -> FlowchartDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
@@ -193,6 +206,9 @@ private fun MermaidDocsApp(
                 onBack = { screen = DocsScreen.Flowchart },
             )
             DocsScreen.Sequence -> SequenceDocsScreen(
+                onBack = { screen = DocsScreen.DiagramTypes },
+            )
+            DocsScreen.Class -> ClassDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
         }
@@ -221,6 +237,34 @@ private fun SequenceVisualAuditScreen(
             AuditPreview.Official -> OfficialMermaidDiagram(
                 source = demo.source,
                 layout = "dagre",
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
+    }
+}
+
+@Composable
+private fun ClassVisualAuditScreen(
+    demo: ClassDemo,
+    preview: AuditPreview,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        when (preview) {
+            AuditPreview.Native -> MermaidDiagram(
+                source = demo.source,
+                modifier = Modifier.fillMaxSize(),
+                theme = MermaidTheme.FlowchartDefault,
+                contentDescription = "Audit ${demo.id} native",
+            )
+            AuditPreview.Official -> OfficialMermaidDiagram(
+                source = demo.source,
+                layout = "elk",
                 modifier = Modifier.fillMaxSize(),
             )
         }
@@ -271,6 +315,7 @@ private fun VisualAuditScreen(
 private fun DiagramTypesScreen(
     onFlowchartClick: () -> Unit,
     onSequenceClick: () -> Unit,
+    onClassClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -322,6 +367,13 @@ private fun DiagramTypesScreen(
                     title = "Sequence",
                     description = "Participants, messages, notes, and control regions",
                     onClick = onSequenceClick,
+                )
+            }
+            item {
+                DiagramTypeRow(
+                    title = "Class",
+                    description = "Classes, relations, notes, and namespaces",
+                    onClick = onClassClick,
                 )
             }
         }
@@ -1100,6 +1152,157 @@ private fun SequenceDocsScreen(
                         OfficialMermaidDiagram(
                             source = demo.source,
                             layout = "dagre",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                        )
+                    }
+                }
+            }
+            item {
+                CodeBlock(demo.source)
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ClassDocsScreen(
+    onBack: () -> Unit,
+) {
+    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+    var selectedPreview by rememberSaveable { mutableIntStateOf(0) }
+    val demo = classDemos[selectedIndex]
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                        )
+                    }
+                },
+                title = {
+                    Column {
+                        Text(
+                            text = "Class",
+                            fontWeight = FontWeight.SemiBold,
+                            letterSpacing = 0.sp,
+                        )
+                        Text(
+                            text = "Mermaid ${MermaidCompatibility.BASELINE_VERSION}",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp,
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                ),
+            )
+        },
+    ) { contentPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(contentPadding),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            item {
+                Text(
+                    text = "Class diagram gallery",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.sp,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = "${classDemos.size} native cases with an on-device Mermaid.js reference",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    IconButton(
+                        onClick = {
+                            selectedIndex =
+                                (selectedIndex - 1 + classDemos.size) % classDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Previous case",
+                        )
+                    }
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = demo.title,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Text(
+                            text = "${selectedIndex + 1} / ${classDemos.size} · ${demo.category}",
+                            color = MaterialTheme.colorScheme.primary,
+                            style = MaterialTheme.typography.labelMedium,
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            selectedIndex = (selectedIndex + 1) % classDemos.size
+                            selectedPreview = 0
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = "Next case",
+                        )
+                    }
+                }
+            }
+            item {
+                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                    listOf("CMP Native", "Official").forEachIndexed { index, label ->
+                        SegmentedButton(
+                            selected = selectedPreview == index,
+                            onClick = { selectedPreview = index },
+                            shape = SegmentedButtonDefaults.itemShape(index, 2),
+                            label = { Text(label) },
+                        )
+                    }
+                }
+            }
+            item {
+                PreviewFrame(
+                    label = if (selectedPreview == 0) {
+                        "CMP Native"
+                    } else {
+                        "Official Mermaid.js 12.0.0"
+                    },
+                ) {
+                    if (selectedPreview == 0) {
+                        MermaidDiagram(
+                            source = demo.source,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(460.dp),
+                            theme = MermaidTheme.FlowchartDefault,
+                            contentDescription = "${demo.title} CMP rendering",
+                        )
+                    } else {
+                        OfficialMermaidDiagram(
+                            source = demo.source,
+                            layout = "elk",
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(460.dp),

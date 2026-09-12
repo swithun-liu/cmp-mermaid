@@ -5,6 +5,8 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUTPUT_DIR="${OUTPUT_DIR:-${ROOT_DIR}/captures/local/audit/current}"
 WAIT_SECONDS="${WAIT_SECONDS:-6}"
+CAPTURE_ATTEMPTS="${CAPTURE_ATTEMPTS:-3}"
+MIN_CAPTURE_BYTES="${MIN_CAPTURE_BYTES:-24000}"
 CAPTURE_PREVIEWS="${CAPTURE_PREVIEWS:-Native Official}"
 CAPTURE_CASE_IDS="${CAPTURE_CASE_IDS:-}"
 CAPTURE_LAYOUT="${CAPTURE_LAYOUT:-elk}"
@@ -49,20 +51,35 @@ capture_preview() {
     local demo_id="$1"
     local preview="$2"
     local suffix
+    local output_file
     suffix="$(printf '%s' "${preview}" | tr '[:upper:]' '[:lower:]')"
+    output_file="${OUTPUT_DIR}/${demo_id}_${suffix}.png"
 
-    adb -s "${ANDROID_SERIAL}" shell am force-stop "${PACKAGE_NAME}" </dev/null
-    adb -s "${ANDROID_SERIAL}" shell am start \
-        -n "${ACTIVITY_NAME}" \
-        --es auditDemoId "${demo_id}" \
-        --es auditPreview "${preview}" \
-        --es auditLayout "${CAPTURE_LAYOUT}" \
-        >/dev/null </dev/null
-    sleep "${WAIT_SECONDS}"
-    android screen capture \
-        --device="${ANDROID_SERIAL}" \
-        -o "${OUTPUT_DIR}/${demo_id}_${suffix}.png" \
-        </dev/null
+    for ((attempt = 1; attempt <= CAPTURE_ATTEMPTS; attempt++)); do
+        adb -s "${ANDROID_SERIAL}" shell am force-stop "${PACKAGE_NAME}" </dev/null
+        adb -s "${ANDROID_SERIAL}" shell am start \
+            -n "${ACTIVITY_NAME}" \
+            --es auditDemoId "${demo_id}" \
+            --es auditPreview "${preview}" \
+            --es auditLayout "${CAPTURE_LAYOUT}" \
+            >/dev/null </dev/null
+        sleep "${WAIT_SECONDS}"
+        android screen capture \
+            --device="${ANDROID_SERIAL}" \
+            -o "${output_file}" \
+            </dev/null
+        if [[ "$(stat -f%z "${output_file}")" -ge "${MIN_CAPTURE_BYTES}" ]]; then
+            return
+        fi
+        echo \
+            "Capture ${demo_id}/${preview} was blank on attempt ${attempt}; retrying." \
+            >&2
+    done
+
+    echo \
+        "Capture ${demo_id}/${preview} remained below ${MIN_CAPTURE_BYTES} bytes." \
+        >&2
+    return 1
 }
 
 while IFS= read -r demo_id; do

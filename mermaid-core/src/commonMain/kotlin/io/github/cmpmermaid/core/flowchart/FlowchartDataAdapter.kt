@@ -321,7 +321,7 @@ internal object FlowchartDataAdapter {
  * Native CSS adapter for Mermaid's ordered cssCompiledStyles + cssStyles data.
  * The last declaration for a property wins, matching styles2Map().
  */
-private object FlowStyleAdapter {
+internal object FlowStyleAdapter {
     fun parse(
         styles: List<String>,
         owner: String,

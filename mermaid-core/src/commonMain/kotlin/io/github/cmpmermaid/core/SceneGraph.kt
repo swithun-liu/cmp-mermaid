@@ -85,6 +85,11 @@ enum class SceneArrowHead {
     HalfTriangleBottom,
     HalfOpenTop,
     HalfOpenBottom,
+    ClassAggregation,
+    ClassExtension,
+    ClassComposition,
+    ClassDependency,
+    ClassLollipop,
 }
 
 sealed interface SceneElement {

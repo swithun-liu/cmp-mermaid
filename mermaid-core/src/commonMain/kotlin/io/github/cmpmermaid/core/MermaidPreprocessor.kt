@@ -225,6 +225,7 @@ internal object MermaidPreprocessor {
             return GMResult.Ok(MermaidConfigOverride())
         }
         val flowchart = map.map("flowchart") ?: map.map("config")
+        val classDiagram = map.map("class")
         val elk = map.map("elk")
         val unsupported = buildSet {
             TOP_LEVEL_UNTRANSLATED_KEYS.filterTo(this) { map.node(it) != null }
@@ -413,6 +414,17 @@ internal object MermaidPreprocessor {
         val wrappingWidth = float(flowchart, "wrappingWidth", "flowchart.wrappingWidth")
         val minNodeWidth = float(flowchart, "minNodeWidth", "flowchart.minNodeWidth")
         val padding = float(flowchart, "padding", "flowchart.padding")
+        val classPadding = float(classDiagram, "padding", "class.padding")
+        val classHideEmptyMembersBox = boolean(
+            classDiagram,
+            "hideEmptyMembersBox",
+            "class.hideEmptyMembersBox",
+        )
+        val classHierarchicalNamespaces = boolean(
+            classDiagram,
+            "hierarchicalNamespaces",
+            "class.hierarchicalNamespaces",
+        )
         val curve = string(flowchart, "curve", "flowchart.curve")
         val flowTheme = appearanceString(flowchart, "theme", "flowchart.theme")
             ?.takeIf(USABLE_THEMES::contains)
@@ -461,8 +473,9 @@ internal object MermaidPreprocessor {
         val markdownAutoWrap = boolean(map, "markdownAutoWrap", "markdownAutoWrap")
         val fontSize = float(map, "fontSize", "fontSize")
         val fontFamily = string(map, "fontFamily", "fontFamily")
-        val layout = string(flowchart, "layout", "flowchart.layout")
-            ?: string(map, "layout", "layout")
+        val topLayout = string(map, "layout", "layout")
+        val layout = string(flowchart, "layout", "flowchart.layout") ?: topLayout
+        val classLayout = string(classDiagram, "layout", "class.layout")
         val elkMergeEdges = boolean(elk, "mergeEdges", "elk.mergeEdges")
         val elkNodePlacementStrategy = enumString(
             elk,
@@ -525,6 +538,9 @@ internal object MermaidPreprocessor {
                 wrappingWidth = wrappingWidth,
                 minNodeWidth = minNodeWidth,
                 flowchartPadding = padding,
+                classPadding = classPadding,
+                classHideEmptyMembersBox = classHideEmptyMembersBox,
+                classHierarchicalNamespaces = classHierarchicalNamespaces,
                 curve = curve,
                 fontSize = fontSize,
                 fontFamily = fontFamily,
@@ -540,6 +556,7 @@ internal object MermaidPreprocessor {
                 markdownAutoWrap = markdownAutoWrap,
                 maxEdges = maxEdges,
                 layout = layout,
+                classLayout = classLayout,
                 elk = elk?.let {
                     MermaidElkConfigOverride(
                         mergeEdges = elkMergeEdges,
@@ -677,6 +694,9 @@ internal data class MermaidConfigOverride(
     val wrappingWidth: Float? = null,
     val minNodeWidth: Float? = null,
     val flowchartPadding: Float? = null,
+    val classPadding: Float? = null,
+    val classHideEmptyMembersBox: Boolean? = null,
+    val classHierarchicalNamespaces: Boolean? = null,
     val curve: String? = null,
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -692,6 +712,7 @@ internal data class MermaidConfigOverride(
     val markdownAutoWrap: Boolean? = null,
     val maxEdges: Int? = null,
     val layout: String? = null,
+    val classLayout: String? = null,
     val elk: MermaidElkConfigOverride? = null,
 ) {
     fun merge(overrides: MermaidConfigOverride): MermaidConfigOverride = MermaidConfigOverride(
@@ -701,6 +722,11 @@ internal data class MermaidConfigOverride(
         wrappingWidth = overrides.wrappingWidth ?: wrappingWidth,
         minNodeWidth = overrides.minNodeWidth ?: minNodeWidth,
         flowchartPadding = overrides.flowchartPadding ?: flowchartPadding,
+        classPadding = overrides.classPadding ?: classPadding,
+        classHideEmptyMembersBox =
+            overrides.classHideEmptyMembersBox ?: classHideEmptyMembersBox,
+        classHierarchicalNamespaces =
+            overrides.classHierarchicalNamespaces ?: classHierarchicalNamespaces,
         curve = overrides.curve ?: curve,
         fontSize = overrides.fontSize ?: fontSize,
         fontFamily = overrides.fontFamily ?: fontFamily,
@@ -726,6 +752,7 @@ internal data class MermaidConfigOverride(
         markdownAutoWrap = overrides.markdownAutoWrap ?: markdownAutoWrap,
         maxEdges = overrides.maxEdges ?: maxEdges,
         layout = overrides.layout ?: layout,
+        classLayout = overrides.classLayout ?: classLayout,
         elk = when {
             overrides.elk != null -> elk?.merge(overrides.elk) ?: overrides.elk
             else -> elk
@@ -752,6 +779,11 @@ internal data class MermaidConfigOverride(
                 wrappingWidth = wrappingWidth ?: options.wrappingWidth,
                 minNodeWidth = minNodeWidth ?: options.minNodeWidth,
                 flowchartPadding = flowchartPadding ?: options.flowchartPadding,
+                classPadding = classPadding ?: options.classPadding,
+                classHideEmptyMembersBox =
+                    classHideEmptyMembersBox ?: options.classHideEmptyMembersBox,
+                classHierarchicalNamespaces =
+                    classHierarchicalNamespaces ?: options.classHierarchicalNamespaces,
                 curve = curve ?: options.curve,
                 fontSize = fontSize ?: options.fontSize,
                 fontFamily = fontFamily ?: options.fontFamily,
@@ -768,6 +800,7 @@ internal data class MermaidConfigOverride(
                 htmlLabels = htmlLabels ?: options.htmlLabels,
                 markdownAutoWrap = markdownAutoWrap ?: options.markdownAutoWrap,
                 maxEdges = maxEdges ?: options.maxEdges,
+                classLayout = classLayout ?: options.classLayout,
             ),
         )
     }
