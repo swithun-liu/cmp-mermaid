@@ -1,24 +1,26 @@
 # CMP Mermaid
 
-Native Mermaid Flowchart rendering for Kotlin Multiplatform and Compose
-Multiplatform. The compatibility baseline is Mermaid `12.0.0`.
+Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.
+The compatibility baseline is Mermaid `12.0.0`.
 
 The production renderer libraries do not use a WebView and do not execute
-Mermaid.js. Mermaid's Flowchart preprocessing, parser semantics, FlowDB, Dagre
-adapter, shapes, edges, markers, text handling, and SceneGraph conversion are
-translated to Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter
-around the locked `elkjs@0.9.3` worker, which runs in an isolated QuickJS
-runtime.
+Mermaid.js. Mermaid's Flowchart and Sequence parser semantics, diagram
+databases, layout preparation, shapes, edges, markers, text handling, and
+SceneGraph conversion are translated to Kotlin. Flowchart ELK layout keeps
+Mermaid's Kotlin-translated adapter around the locked `elkjs@0.9.3` worker,
+which runs in an isolated QuickJS runtime.
 
 ```text
-Mermaid 12 Flowchart source
+Mermaid 12 diagram source
         |
         v
-Kotlin preprocessing + flow.jison runtime + FlowDB
+Kotlin preprocessing + translated Jison runtime + diagram DB
         |
-        +--> Kotlin Graphlib/Dagre
+        +--> Flowchart: Kotlin Graphlib/Dagre
         |
-        +--> Kotlin Mermaid ELK adapter --> elkjs 0.9.3 in QuickJS
+        +--> Flowchart: Kotlin Mermaid ELK adapter --> elkjs 0.9.3 in QuickJS
+        |
+        +--> Sequence: Kotlin sequenceRenderer/svgDraw/actorBands translation
         |
         v
 Platform-independent SceneGraph
@@ -29,13 +31,14 @@ Compose Canvas
 
 ## Modules
 
-- `mermaid-core`: common Kotlin Flowchart semantics, layout adapters, and
-  platform-independent SceneGraph.
+- `mermaid-core`: common Kotlin Flowchart and Sequence semantics, layout
+  adapters, and platform-independent SceneGraph.
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
 - `sample/androidApp`: mobile syntax documentation, an editable Flowchart
   Playground with 45 presets, an on-demand local WebView for live official
-  Mermaid.js comparison, and a 45-case Native/Official comparison gallery.
+  Mermaid.js comparison, a 45-case Flowchart gallery, and a 35-case Sequence
+  gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.
@@ -66,6 +69,26 @@ approximation. The main boundaries are KaTeX, FontAwesome/Iconify label
 replacement, inline HTML image/link/SVG/MathML content, `handDrawn`,
 `themeCSS`, `altFontFamily`, and unsupported CSS properties. See
 [`docs/flowchart-compatibility.md`](docs/flowchart-compatibility.md) for the
+full matrix.
+
+## Sequence Coverage
+
+The supported path includes:
+
+- Mermaid's generated `sequenceDiagram.jison` grammar and translated
+  `sequenceDb.ts` state semantics.
+- Participants, actors, Mermaid 12 participant types, aliases, boxes,
+  create/destroy lifecycle, and top/bottom actor bands.
+- All 26 Sequence message forms, including open, filled, cross,
+  bidirectional, async, half, stick, dotted, and central-connection markers.
+- Activations, self messages, autonumber, side/over notes, explicit wrapping,
+  HTML line breaks, Unicode text, title, and accessibility metadata.
+- `loop`, `alt`, `opt`, `par`, `par_over`, `critical`, `break`, and `rect`
+  control regions, including nesting.
+
+Browser-only participant menus, properties, and DOM `details` references
+return `MermaidError.UnsupportedFeature`. See
+[`docs/sequence-compatibility.md`](docs/sequence-compatibility.md) for the
 full matrix.
 
 ## Verification
@@ -100,8 +123,9 @@ npm run render
 ```
 
 The generator asserts Mermaid `12.0.0` and renders the same source used by the
-native side with Mermaid's ELK layout. The separate documentation fixture
-generator extracts all 114 Flowchart examples from the locked Mermaid source.
+native side with Mermaid's ELK layout. The documentation fixture generators
+extract all 114 Flowchart examples and all 38 Sequence examples from the
+locked Mermaid source.
 
 Capture every Native/Official pair from a connected Android device:
 
@@ -119,8 +143,9 @@ ANDROID_SERIAL=<serial> \
 tools/capture-android-audit.sh
 ```
 
-The source-to-source upgrade map is maintained in
-[`docs/upstream-flowchart-map.md`](docs/upstream-flowchart-map.md).
+The source-to-source upgrade maps are maintained in
+[`docs/upstream-flowchart-map.md`](docs/upstream-flowchart-map.md) and
+[`docs/upstream-sequence-map.md`](docs/upstream-sequence-map.md).
 
 Android hosts that opt into HTTP/HTTPS image loading must also declare the
 `android.permission.INTERNET` permission; the library does not add it

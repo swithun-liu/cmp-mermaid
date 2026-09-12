@@ -2,15 +2,15 @@
 
 ## Mermaid
 
-The KMP runtime contains Kotlin translations of selected Mermaid Flowchart
-parsing, layout-adapter, and rendering algorithms. The reference-rendering
-tool also downloads Mermaid.js from npm. Mermaid.js itself is not embedded in
-the runtime libraries.
+The KMP runtime contains Kotlin translations of selected Mermaid Flowchart and
+Sequence parsing, layout-adapter, and rendering algorithms. The
+reference-rendering tool also downloads Mermaid.js from npm. Mermaid.js itself
+is not embedded in the runtime libraries.
 
-The Android sample bundles Mermaid.js `12.0.0` only for the Playground's
-on-demand official WebView comparison. The npm distribution is syntax
-transpiled to Chrome 87 by esbuild without changing Mermaid's rendering
-semantics. It is not included in `mermaid-core` or `mermaid-compose`.
+The Android sample bundles Mermaid.js `12.0.0` only for on-demand official
+WebView comparisons. The npm distribution is syntax transpiled to Chrome 87
+by esbuild without changing Mermaid's rendering semantics. It is not included
+in `mermaid-core` or `mermaid-compose`.
 
 Upstream npm bundle SHA-256:
 
@@ -109,8 +109,8 @@ THIS SOFTWARE.
 
 ## Jison
 
-The KMP runtime contains a Kotlin translation of the Jison `0.4.18` generated
-lexer/parser runtime used by Mermaid's Flowchart grammar.
+The KMP runtime contains Kotlin translations of the Jison `0.4.18` generated
+lexer/parser runtime used by Mermaid's Flowchart and Sequence grammars.
 
 Copyright (c) Zach Carter
 

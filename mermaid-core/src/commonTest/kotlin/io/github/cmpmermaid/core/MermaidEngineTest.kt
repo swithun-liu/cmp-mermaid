@@ -109,7 +109,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun returnsStructuredErrorForUnsupportedDiagram() {
+    fun rendersSequenceDiagramThroughRegisteredPlugin() {
         val result = engine.render(
             """
                 sequenceDiagram
@@ -117,6 +117,16 @@ class MermaidEngineTest {
             """.trimIndent(),
             context,
         )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(scene.elements.filterIsInstance<SceneShape>().any { it.id == "actor-Alice-top" })
+        assertTrue(scene.elements.filterIsInstance<SceneShape>().any { it.id == "actor-Bob-top" })
+        assertTrue(scene.elements.filterIsInstance<ScenePath>().any { it.id == "message-0" })
+    }
+
+    @Test
+    fun returnsStructuredErrorForUnsupportedDiagram() {
+        val result = engine.render("timeline\n  2026 : Unsupported", context)
 
         val error = assertIs<GMResult.Err<MermaidError>>(result).error
         assertIs<MermaidError.UnsupportedDiagram>(error)

@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ImageBitmap
@@ -79,6 +80,7 @@ import io.github.cmpmermaid.core.ScenePathCommand
 import io.github.cmpmermaid.core.ScenePoint
 import io.github.cmpmermaid.core.SceneRect
 import io.github.cmpmermaid.core.SceneShape
+import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneShapePaint
 import io.github.cmpmermaid.core.SceneShapePath
 import io.github.cmpmermaid.core.SceneShadow
@@ -523,19 +525,32 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
         drawSceneShapeShadow(shape, bounds, shadow)
     }
     if (geometry == null) {
-        drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
-        drawRect(
-            color = stroke,
-            topLeft = bounds.topLeft,
-            size = bounds.size,
-            style = Stroke(
-                width = shape.strokeWidth,
-                cap = StrokeCap.Butt,
-                join = StrokeJoin.Miter,
-                pathEffect = shape.dashIntervals.toPathEffect()
-                    ?: shape.strokePattern.toPathEffect(),
-            ),
+        val strokeStyle = Stroke(
+            width = shape.strokeWidth,
+            cap = StrokeCap.Butt,
+            join = StrokeJoin.Miter,
+            pathEffect = shape.dashIntervals.toPathEffect()
+                ?: shape.strokePattern.toPathEffect(),
         )
+        if (shape.kind == SceneShapeKind.RoundedRectangle) {
+            val radius = CornerRadius(shape.cornerRadius, shape.cornerRadius)
+            drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
+            drawRoundRect(
+                color = stroke,
+                topLeft = bounds.topLeft,
+                size = bounds.size,
+                cornerRadius = radius,
+                style = strokeStyle,
+            )
+        } else {
+            drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
+            drawRect(
+                color = stroke,
+                topLeft = bounds.topLeft,
+                size = bounds.size,
+                style = strokeStyle,
+            )
+        }
         return
     }
 
@@ -908,6 +923,14 @@ private fun SceneArrowHead.neoMarkerOffset(): Float = when (this) {
     SceneArrowHead.Circle,
     SceneArrowHead.Cross,
     -> 12.5f
+    SceneArrowHead.Open,
+    SceneArrowHead.Async,
+    SceneArrowHead.SequenceCross,
+    SceneArrowHead.HalfTriangleTop,
+    SceneArrowHead.HalfTriangleBottom,
+    SceneArrowHead.HalfOpenTop,
+    SceneArrowHead.HalfOpenBottom,
+    -> 0f
 }
 
 private fun SceneStrokePattern.toPathEffect(): PathEffect? = when (this) {
@@ -931,7 +954,150 @@ private fun DrawScope.drawArrowHead(
         SceneArrowHead.Triangle -> drawPointMarker(tangent, position, useMargin, color)
         SceneArrowHead.Circle -> drawCircleMarker(tangent, position, useMargin, color)
         SceneArrowHead.Cross -> drawCrossMarker(tangent, position, useMargin, color)
+        SceneArrowHead.SequenceCross ->
+            drawSequenceCrossMarker(tangent, position, color)
+        SceneArrowHead.Open,
+        SceneArrowHead.Async,
+        SceneArrowHead.HalfTriangleTop,
+        SceneArrowHead.HalfTriangleBottom,
+        SceneArrowHead.HalfOpenTop,
+        SceneArrowHead.HalfOpenBottom,
+        -> drawSequenceArrowMarker(type, tangent, position, color)
         SceneArrowHead.None -> Unit
+    }
+}
+
+private fun DrawScope.drawSequenceCrossMarker(
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    color: Color,
+) {
+    val orientedTangent = if (position == MarkerPosition.Start) {
+        tangent.copy(unitX = -tangent.unitX, unitY = -tangent.unitY)
+    } else {
+        tangent
+    }
+    val reference = ScenePoint(4f, 4.5f)
+    val scale = 1.5f
+    val segments = listOf(
+        ScenePoint(1f, 2f) to ScenePoint(6f, 7f),
+        ScenePoint(6f, 2f) to ScenePoint(1f, 7f),
+    )
+    segments.forEach { (start, end) ->
+        val transformedStart = orientedTangent.transform(start, reference, scale)
+        val transformedEnd = orientedTangent.transform(end, reference, scale)
+        drawLine(
+            color = color,
+            start = Offset(transformedStart.x, transformedStart.y),
+            end = Offset(transformedEnd.x, transformedEnd.y),
+            strokeWidth = 2f,
+            cap = StrokeCap.Butt,
+        )
+    }
+}
+
+private fun DrawScope.drawSequenceArrowMarker(
+    type: SceneArrowHead,
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    color: Color,
+) {
+    val definition = when (type) {
+        SceneArrowHead.Open -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 0f),
+                ScenePoint(10f, 5f),
+                ScenePoint(0f, 10f),
+            ),
+            reference = ScenePoint(10f, 5f),
+            scale = 1f,
+            strokeWidth = 1.5f,
+        )
+        SceneArrowHead.Async -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(18f, 7f),
+                ScenePoint(9f, 13f),
+                ScenePoint(14f, 7f),
+                ScenePoint(9f, 1f),
+            ),
+            reference = ScenePoint(15.5f, 7f),
+            scale = 1.5f,
+            strokeWidth = 0f,
+        )
+        SceneArrowHead.HalfTriangleTop -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 0f),
+                ScenePoint(10f, 8f),
+                ScenePoint(0f, 8f),
+            ),
+            reference = ScenePoint(7.9f, 7.25f),
+            scale = 1f,
+            strokeWidth = 0f,
+        )
+        SceneArrowHead.HalfTriangleBottom -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 0f),
+                ScenePoint(10f, 0f),
+                ScenePoint(0f, 8f),
+            ),
+            reference = ScenePoint(7.9f, 0.75f),
+            scale = 1f,
+            strokeWidth = 0f,
+        )
+        SceneArrowHead.HalfOpenTop -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 0f),
+                ScenePoint(7f, 7f),
+            ),
+            reference = ScenePoint(7.5f, 7f),
+            scale = 1f,
+            strokeWidth = 1.5f,
+        )
+        SceneArrowHead.HalfOpenBottom -> MarkerPathDefinition(
+            points = listOf(
+                ScenePoint(0f, 7f),
+                ScenePoint(7f, 0f),
+            ),
+            reference = ScenePoint(7.5f, 0f),
+            scale = 1f,
+            strokeWidth = 1.5f,
+        )
+        else -> return
+    }
+    val orientedTangent = if (position == MarkerPosition.Start) {
+        tangent.copy(unitX = -tangent.unitX, unitY = -tangent.unitY)
+    } else {
+        tangent
+    }
+    val path = Path().apply {
+        definition.points.forEachIndexed { index, point ->
+            val transformed = orientedTangent.transform(
+                point = point,
+                reference = definition.reference,
+                scale = definition.scale,
+            )
+            if (index == 0) {
+                moveTo(transformed.x, transformed.y)
+            } else {
+                lineTo(transformed.x, transformed.y)
+            }
+        }
+        if (definition.strokeWidth == 0f) {
+            close()
+        }
+    }
+    if (definition.strokeWidth == 0f) {
+        drawPath(path, color, style = Fill)
+    } else {
+        drawPath(
+            path,
+            color,
+            style = Stroke(
+                width = definition.strokeWidth,
+                cap = StrokeCap.Butt,
+                join = StrokeJoin.Miter,
+            ),
+        )
     }
 }
 

@@ -78,6 +78,13 @@ enum class SceneArrowHead {
     Triangle,
     Circle,
     Cross,
+    Open,
+    Async,
+    SequenceCross,
+    HalfTriangleTop,
+    HalfTriangleBottom,
+    HalfOpenTop,
+    HalfOpenBottom,
 }
 
 sealed interface SceneElement {

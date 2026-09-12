@@ -12,6 +12,13 @@ internal object MermaidMarkerPort {
         SceneArrowHead.Triangle -> 4f
         SceneArrowHead.Circle,
         SceneArrowHead.Cross,
+        SceneArrowHead.Open,
+        SceneArrowHead.Async,
+        SceneArrowHead.SequenceCross,
+        SceneArrowHead.HalfTriangleTop,
+        SceneArrowHead.HalfTriangleBottom,
+        SceneArrowHead.HalfOpenTop,
+        SceneArrowHead.HalfOpenBottom,
         -> 0f
     }
 
@@ -21,6 +28,14 @@ internal object MermaidMarkerPort {
         SceneArrowHead.Circle,
         SceneArrowHead.Cross,
         -> 12.5f
+        SceneArrowHead.Open,
+        SceneArrowHead.Async,
+        SceneArrowHead.SequenceCross,
+        SceneArrowHead.HalfTriangleTop,
+        SceneArrowHead.HalfTriangleBottom,
+        SceneArrowHead.HalfOpenTop,
+        SceneArrowHead.HalfOpenBottom,
+        -> 0f
     }
 
     fun terminalSegmentOffset(arrow: SceneArrowHead): Float =

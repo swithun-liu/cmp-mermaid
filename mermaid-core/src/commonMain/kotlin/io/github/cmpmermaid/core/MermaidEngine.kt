@@ -1,6 +1,7 @@
 package io.github.cmpmermaid.core
 
 import io.github.cmpmermaid.core.flowchart.FlowchartPlugin
+import io.github.cmpmermaid.core.sequence.SequencePlugin
 
 data class MermaidRenderContext(
     val textMetrics: TextMetricProvider,
@@ -22,7 +23,10 @@ interface MermaidDiagramPlugin {
 }
 
 class MermaidEngine(
-    plugins: List<MermaidDiagramPlugin> = listOf(FlowchartPlugin()),
+    plugins: List<MermaidDiagramPlugin> = listOf(
+        FlowchartPlugin(),
+        SequencePlugin(),
+    ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {
         plugins.forEach { plugin ->
