@@ -32,8 +32,9 @@ Compose Canvas
   platform-independent SceneGraph.
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
-- `sample/androidApp`: mobile syntax documentation and a 45-case
-  Native/Official comparison gallery.
+- `sample/androidApp`: mobile syntax documentation, an editable Flowchart
+  Playground with 45 presets, and a 45-case Native/Official comparison
+  gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.

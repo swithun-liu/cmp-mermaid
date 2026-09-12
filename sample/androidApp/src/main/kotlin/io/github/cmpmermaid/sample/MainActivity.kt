@@ -31,6 +31,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.AccountTree
+import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
@@ -85,10 +86,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val auditDemoId = intent.getStringExtra(EXTRA_AUDIT_DEMO_ID)
         val auditPreview = AuditPreview.from(intent.getStringExtra(EXTRA_AUDIT_PREVIEW))
+        val openPlayground = intent.getBooleanExtra(EXTRA_OPEN_PLAYGROUND, false)
         setContent {
             MermaidDocsApp(
                 auditDemoId = auditDemoId,
                 auditPreview = auditPreview,
+                openPlayground = openPlayground,
             )
         }
     }
@@ -96,12 +99,14 @@ class MainActivity : ComponentActivity() {
     private companion object {
         const val EXTRA_AUDIT_DEMO_ID = "auditDemoId"
         const val EXTRA_AUDIT_PREVIEW = "auditPreview"
+        const val EXTRA_OPEN_PLAYGROUND = "openPlayground"
     }
 }
 
 private enum class DocsScreen {
     DiagramTypes,
     Flowchart,
+    Playground,
 }
 
 private enum class AuditPreview {
@@ -119,8 +124,13 @@ private enum class AuditPreview {
 private fun MermaidDocsApp(
     auditDemoId: String? = null,
     auditPreview: AuditPreview = AuditPreview.Native,
+    openPlayground: Boolean = false,
 ) {
-    var screen by rememberSaveable { mutableStateOf(DocsScreen.DiagramTypes) }
+    var screen by rememberSaveable {
+        mutableStateOf(
+            if (openPlayground) DocsScreen.Playground else DocsScreen.DiagramTypes,
+        )
+    }
     val auditDemo = remember(auditDemoId) {
         flowchartDemos.firstOrNull { it.id == auditDemoId }
     }
@@ -145,7 +155,11 @@ private fun MermaidDocsApp(
             return@MaterialTheme
         }
         BackHandler(enabled = screen != DocsScreen.DiagramTypes) {
-            screen = DocsScreen.DiagramTypes
+            screen = when (screen) {
+                DocsScreen.DiagramTypes -> DocsScreen.DiagramTypes
+                DocsScreen.Flowchart -> DocsScreen.DiagramTypes
+                DocsScreen.Playground -> DocsScreen.Flowchart
+            }
         }
         when (screen) {
             DocsScreen.DiagramTypes -> DiagramTypesScreen(
@@ -153,6 +167,10 @@ private fun MermaidDocsApp(
             )
             DocsScreen.Flowchart -> FlowchartDocsScreen(
                 onBack = { screen = DocsScreen.DiagramTypes },
+                onPlayground = { screen = DocsScreen.Playground },
+            )
+            DocsScreen.Playground -> FlowchartPlaygroundScreen(
+                onBack = { screen = DocsScreen.Flowchart },
             )
         }
     }
@@ -311,6 +329,7 @@ private fun StatusLabel() {
 @Composable
 private fun FlowchartDocsScreen(
     onBack: () -> Unit,
+    onPlayground: () -> Unit,
 ) {
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     Scaffold(
@@ -337,6 +356,16 @@ private fun FlowchartDocsScreen(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 fontSize = 12.sp,
                             )
+                        }
+                    },
+                    actions = {
+                        TextButton(onClick = onPlayground) {
+                            Icon(
+                                imageVector = Icons.Outlined.Code,
+                                contentDescription = null,
+                            )
+                            Spacer(Modifier.width(6.dp))
+                            Text("Playground")
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
