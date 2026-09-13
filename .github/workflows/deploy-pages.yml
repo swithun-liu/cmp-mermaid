@@ -17,13 +17,13 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Set up Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
@@ -32,7 +32,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build Kotlin/Wasm site
-        run: ./gradlew --no-daemon :sample:webApp:wasmJsBrowserDistribution
+        run: ./gradlew --no-daemon --no-build-cache --rerun-tasks :sample:webApp:wasmJsBrowserDistribution
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
