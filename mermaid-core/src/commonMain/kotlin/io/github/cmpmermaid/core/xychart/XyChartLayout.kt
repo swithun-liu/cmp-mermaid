@@ -66,6 +66,7 @@ internal class XyChartLayout {
                 title = data.title.takeIf(String::isNotEmpty),
                 accessibilityTitle = data.accessibilityTitle,
                 accessibilityDescription = data.accessibilityDescription,
+                viewportPadding = XY_VIEWPORT_PADDING,
             ),
         )
     }
@@ -134,6 +135,10 @@ internal class XyChartLayout {
 
     private fun configurationError(message: String): GMResult<Unit, MermaidError> =
         GMResult.Err(MermaidError.Configuration("Mermaid XY Chart $message"))
+
+    companion object {
+        private const val XY_VIEWPORT_PADDING = 12f
+    }
 }
 
 private class XyOrchestrator(
@@ -142,7 +147,7 @@ private class XyOrchestrator(
     private val theme: MermaidXyChartTheme,
     private val context: MermaidRenderContext,
 ) {
-    private val textDimensions = XyTextDimensions(context)
+    private val textDimensions = XyTextDimensions(context, config.width)
     private val title = XyChartTitle(config, data, theme, textDimensions)
     private val plot = XyPlot(config, data, theme, context)
     private val legend = XyLegend(config, data, theme, textDimensions, context)
@@ -301,7 +306,11 @@ private interface XyComponent {
 
 private class XyTextDimensions(
     private val context: MermaidRenderContext,
+    chartWidth: Float,
 ) {
+    val fontFamily: String = context.options.fontFamily ?: context.theme.fontFamily
+    private val svgViewportScale = SVG_MEASUREMENT_VIEWPORT_WIDTH / chartWidth
+
     fun max(
         texts: List<String>,
         fontSize: Float,
@@ -314,18 +323,20 @@ private class XyTextDimensions(
                     text = text,
                     fontSize = fontSize,
                     maxWidth = MAX_TEXT_WIDTH,
-                    fontFamily = context.theme.fontFamily,
+                    fontFamily = fontFamily,
                     weight = SceneTextWeight.Normal,
                 ),
             )
-            width = max(width, measured.width)
-            height = max(height, measured.height)
+            width = max(width, measured.width * svgViewportScale)
+            height = max(height, measured.height * svgViewportScale)
         }
         return TextMetrics(width, height)
     }
 
     companion object {
         private const val MAX_TEXT_WIDTH = 100_000f
+        // Mermaid measures in a temporary SVG whose default CSS viewport is 300 px wide.
+        private const val SVG_MEASUREMENT_VIEWPORT_WIDTH = 300f
     }
 }
 
@@ -1025,7 +1036,7 @@ private class XyPlot(
                 fontSize = 12f,
                 horizontal = alignment,
                 verticalTop = false,
-                dimensions = XyTextDimensions(context),
+                dimensions = XyTextDimensions(context, config.width),
                 zIndex = 18,
             )
         }
@@ -1113,7 +1124,7 @@ private class XyPlot(
         }
         val fontSize = floor(candidates.minOrNull() ?: 0f)
         if (fontSize <= 0f) return emptyList()
-        val dimensions = XyTextDimensions(context)
+        val dimensions = XyTextDimensions(context, config.width)
         return bars.mapIndexed { index, bar ->
             sceneText(
                 id = "xy-bar-$plotIndex-label-$index",
@@ -1157,7 +1168,7 @@ private class XyPlot(
         }
         val fontSize = floor(candidates.minOrNull() ?: 0f)
         if (fontSize <= 0f) return emptyList()
-        val dimensions = XyTextDimensions(context)
+        val dimensions = XyTextDimensions(context, config.width)
         return bars.mapIndexed { index, bar ->
             val targetY = if (config.showDataLabelOutsideBar) {
                 bar.bounds.top - 10f - fontSize
@@ -1210,12 +1221,13 @@ private fun sceneText(
         ),
         color = color,
         fontSize = fontSize,
-        fontFamily = null,
+        fontFamily = dimensions.fontFamily,
         weight = SceneTextWeight.Normal,
         horizontalAlignment = horizontal,
         rotationDegrees = rotation,
         rotationPivot = ScenePoint(x, y),
         zIndex = zIndex,
+        softWrap = false,
     )
 }
 

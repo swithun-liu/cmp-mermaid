@@ -56,6 +56,23 @@
       color: #5f5b66;
       font-size: 13px;
     }
+
+    #diagram.status::before {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      border: 2px solid #d9dde2;
+      border-top-color: #008c95;
+      border-radius: 50%;
+      animation: loading-spin 0.8s linear infinite;
+      content: "";
+    }
+
+    @keyframes loading-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
   <script>
     if (!Object.hasOwn) {
@@ -134,16 +151,28 @@
       };
     }
   </script>
-  <script src="mermaid-12.0.0.min.js"></script>
+  <script defer src="mermaid-12.0.0.min.js"></script>
 </head>
 <body>
-  <div id="diagram" class="status">Loading official renderer...</div>
+  <div id="diagram" class="status" role="status" aria-live="polite">
+    Loading Official Mermaid.js...
+  </div>
   <script>
     (() => {
       const diagram = document.querySelector("#diagram");
       let requestId = 0;
       const viewBoxPadding = 12;
       const parentMessagePrefix = "cmp-mermaid:";
+      const rendererLoadTimeout = window.setTimeout(() => {
+        if (requestId !== 0 || typeof window.mermaid !== "undefined") {
+          return;
+        }
+        const message =
+          "Official Mermaid.js did not finish loading. Check the network and retry.";
+        diagram.className = "error";
+        diagram.textContent = message;
+        notifyParent(`error:${message}`);
+      }, 30000);
 
       const notifyParent = (message) => {
         if (window.parent !== window) {
@@ -189,6 +218,7 @@
       };
 
       window.renderDiagram = async (source, layout) => {
+        window.clearTimeout(rendererLoadTimeout);
         const currentRequest = ++requestId;
         diagram.className = "status";
         diagram.textContent = "Rendering...";

@@ -2,12 +2,15 @@
 
 package io.github.cmpmermaid.debugui
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.WebElementView
@@ -34,7 +37,6 @@ internal actual fun OfficialMermaidDiagram(
     val currentOnRenderResult by rememberUpdatedState(onRenderResult)
     val frame = remember {
         (document.createElement("iframe") as HTMLIFrameElement).apply {
-            src = "official-mermaid.html"
             title = "Official Mermaid.js rendering"
             style.border = "0"
             style.width = "100%"
@@ -42,7 +44,13 @@ internal actual fun OfficialMermaidDiagram(
             style.backgroundColor = "#ffffff"
         }
     }
-    DisposableEffect(frame) {
+    var frameReady by remember {
+        mutableStateOf(false)
+    }
+    DisposableEffect(Unit) {
+        frame.onload = {
+            frameReady = hasOfficialRenderer(frame)
+        }
         val listener: (Event) -> Unit = { event ->
             val messageEvent = event as? MessageEvent
             if (
@@ -63,21 +71,25 @@ internal actual fun OfficialMermaidDiagram(
         }
         window.addEventListener("message", listener)
         onDispose {
+            frame.onload = null
             window.removeEventListener("message", listener)
         }
+    }
+    LaunchedEffect(Unit) {
+        frame.src = "official-mermaid.html"
     }
     LaunchedEffect(source, layout) {
         currentOnRenderResult(OfficialRenderResult.Loading)
     }
+    LaunchedEffect(source, layout, frameReady) {
+        if (frameReady) {
+            renderOfficialDiagram(frame, source, layout)
+        }
+    }
     WebElementView(
         factory = { frame },
-        modifier = modifier,
-        update = { currentFrame ->
-            currentFrame.onload = {
-                renderOfficialDiagram(currentFrame, source, layout)
-            }
-            renderOfficialDiagram(currentFrame, source, layout)
-        },
+        modifier = modifier.fillMaxSize(),
+        update = {},
     )
 }
 
@@ -87,23 +99,10 @@ internal actual fun PlatformBackHandler(
     onBack: () -> Unit,
 ) = Unit
 
-@JsFun(
-    """(frame, source, layout) => {
-        let attempts = 0;
-        const render = () => {
-            const renderer = frame.contentWindow?.renderDiagram;
-            if (renderer) {
-                renderer(source, layout);
-                return;
-            }
-            attempts += 1;
-            if (attempts < 300) {
-                globalThis.setTimeout(render, 16);
-            }
-        };
-        render();
-    }""",
-)
+@JsFun("(frame) => typeof frame.contentWindow?.renderDiagram === 'function'")
+private external fun hasOfficialRenderer(frame: HTMLIFrameElement): Boolean
+
+@JsFun("(frame, source, layout) => frame.contentWindow.renderDiagram(source, layout)")
 private external fun renderOfficialDiagram(
     frame: HTMLIFrameElement,
     source: String,

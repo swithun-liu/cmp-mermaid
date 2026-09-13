@@ -10,10 +10,28 @@ import io.github.cmpmermaid.compose.generated.resources.arimo_bold
 import io.github.cmpmermaid.compose.generated.resources.arimo_bolditalic
 import io.github.cmpmermaid.compose.generated.resources.arimo_italic
 import io.github.cmpmermaid.compose.generated.resources.arimo_regular
+import io.github.cmpmermaid.compose.generated.resources.droid_sans_fallback
 import org.jetbrains.compose.resources.Font
 
 fun interface MermaidFontFamilyResolver {
     fun resolve(cssFontFamily: String): FontFamily?
+}
+
+/**
+ * Returns the bundled CJK fallback used by the Mermaid renderer.
+ *
+ * The font resource is loaded lazily when text actually references this family.
+ */
+@Composable
+fun rememberMermaidCjkFontFamily(): FontFamily {
+    val font = Font(
+        Res.font.droid_sans_fallback,
+        FontWeight.Normal,
+        FontStyle.Normal,
+    )
+    return remember(font) {
+        FontFamily(font)
+    }
 }
 
 @Composable

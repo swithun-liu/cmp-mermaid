@@ -51,12 +51,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.OffsetMapping
+import androidx.compose.ui.text.input.TransformedText
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.compose.MermaidDiagram
+import io.github.cmpmermaid.compose.rememberMermaidCjkFontFamily
 import io.github.cmpmermaid.core.MermaidCompatibility
 import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.MermaidTheme
@@ -189,6 +195,14 @@ private fun PlaygroundContent(
 ) {
     var examplesExpanded by remember { mutableStateOf(false) }
     val hasPendingChanges = draftSource != renderedSource
+    val cjkFontFamily = if (draftSource.cjkFontRanges().isNotEmpty()) {
+        rememberMermaidCjkFontFamily()
+    } else {
+        null
+    }
+    val sourceVisualTransformation = remember(cjkFontFamily) {
+        cjkFontFamily?.let(::CjkFontVisualTransformation) ?: VisualTransformation.None
+    }
     val renderOptions = remember(selectedLayout) {
         MermaidRenderOptions(layout = selectedLayout.option)
     }
@@ -300,6 +314,7 @@ private fun PlaygroundContent(
                     lineHeight = 19.sp,
                     letterSpacing = 0.sp,
                 ),
+                visualTransformation = sourceVisualTransformation,
                 supportingText = {
                     Text("${draftSource.length} / 50,000 characters")
                 },
@@ -394,6 +409,75 @@ private fun PlaygroundContent(
         }
     }
 }
+
+private class CjkFontVisualTransformation(
+    private val fontFamily: FontFamily,
+) : VisualTransformation {
+    override fun filter(text: AnnotatedString): TransformedText {
+        val transformed = AnnotatedString.Builder(text).apply {
+            text.text.cjkFontRanges().forEach { range ->
+                addStyle(
+                    style = SpanStyle(fontFamily = fontFamily),
+                    start = range.first,
+                    end = range.last + 1,
+                )
+            }
+        }.toAnnotatedString()
+        return TransformedText(transformed, OffsetMapping.Identity)
+    }
+}
+
+private fun String.cjkFontRanges(): List<IntRange> = buildList {
+    var rangeStart = -1
+    var index = 0
+    while (index < length) {
+        val first = this@cjkFontRanges[index].code
+        val hasSurrogatePair =
+            first in HIGH_SURROGATE_RANGE &&
+                index + 1 < length &&
+                this@cjkFontRanges[index + 1].code in LOW_SURROGATE_RANGE
+        val codePoint = if (hasSurrogatePair) {
+            val second = this@cjkFontRanges[index + 1].code
+            SUPPLEMENTARY_CODE_POINT_OFFSET +
+                ((first - HIGH_SURROGATE_START) shl 10) +
+                (second - LOW_SURROGATE_START)
+        } else {
+            first
+        }
+        val characterLength = if (hasSurrogatePair) 2 else 1
+        if (codePoint.usesCjkFont()) {
+            if (rangeStart < 0) {
+                rangeStart = index
+            }
+        } else if (rangeStart >= 0) {
+            add(rangeStart until index)
+            rangeStart = -1
+        }
+        index += characterLength
+    }
+    if (rangeStart >= 0) {
+        add(rangeStart until length)
+    }
+}
+
+private fun Int.usesCjkFont(): Boolean =
+    this in 0x2E80..0x303F ||
+        this in 0x3040..0x30FF ||
+        this in 0x3100..0x312F ||
+        this in 0x31A0..0x31EF ||
+        this in 0x3400..0x4DBF ||
+        this in 0x4E00..0x9FFF ||
+        this in 0xAC00..0xD7AF ||
+        this in 0xF900..0xFAFF ||
+        this in 0xFE30..0xFE4F ||
+        this in 0xFF00..0xFFEF ||
+        this in 0x20000..0x2FA1F
+
+private val HIGH_SURROGATE_RANGE = 0xD800..0xDBFF
+private val LOW_SURROGATE_RANGE = 0xDC00..0xDFFF
+private const val HIGH_SURROGATE_START = 0xD800
+private const val LOW_SURROGATE_START = 0xDC00
+private const val SUPPLEMENTARY_CODE_POINT_OFFSET = 0x10000
 
 @Composable
 private fun RenderState(

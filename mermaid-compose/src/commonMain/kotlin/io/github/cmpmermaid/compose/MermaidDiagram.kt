@@ -175,7 +175,17 @@ fun rememberMermaidScene(
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val density = LocalDensity.current
     val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
-    val metrics = remember(textMeasurer, density, effectiveFontFamilyResolver) {
+    val cjkFontFamily = if (fontFamilyResolver == null && source.hasCjkFontCharacters()) {
+        rememberMermaidCjkFontFamily()
+    } else {
+        null
+    }
+    val metrics = remember(
+        textMeasurer,
+        density,
+        effectiveFontFamilyResolver,
+        cjkFontFamily,
+    ) {
         TextMetricProvider { request ->
             val style = request.toTextStyle(
                 density = density.density,
@@ -183,7 +193,10 @@ fun rememberMermaidScene(
                 fontFamilyResolver = effectiveFontFamilyResolver,
             )
             val result = textMeasurer.measure(
-                text = request.text.toAnnotatedString(request.spans),
+                text = request.text.toAnnotatedString(
+                    spans = request.spans,
+                    cjkFontFamily = cjkFontFamily,
+                ),
                 style = style,
                 softWrap = true,
                 maxLines = 8,
@@ -229,6 +242,17 @@ fun MermaidSceneCanvas(
 ) {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
+    val hasCjkText = remember(scene) {
+        scene.elements
+            .asSequence()
+            .filterIsInstance<SceneText>()
+            .any { it.text.hasCjkFontCharacters() }
+    }
+    val cjkFontFamily = if (fontFamilyResolver == null && hasCjkText) {
+        rememberMermaidCjkFontFamily()
+    } else {
+        null
+    }
     val density = LocalDensity.current
     val touchSlop = LocalViewConfiguration.current.touchSlop
     val currentInteractionHandler by rememberUpdatedState(onNodeInteraction)
@@ -307,18 +331,21 @@ fun MermaidSceneCanvas(
                         if (pressed.size >= 2) {
                             multiTouch = true
                             tapStart = null
+                            val viewportPadding = scene.viewportPadding.coerceAtLeast(0f)
+                            val paddedSceneWidth = scene.width + viewportPadding * 2f
+                            val paddedSceneHeight = scene.height + viewportPadding * 2f
                             val centroid = pressed
                                 .map { it.position }
                                 .reduce(Offset::plus) / pressed.size.toFloat()
                             val fitScale = min(
-                                size.width / scene.width,
-                                size.height / scene.height,
+                                size.width / paddedSceneWidth,
+                                size.height / paddedSceneHeight,
                             )
                             viewport = viewport.applyGesture(
                                 viewportWidth = size.width.toFloat(),
                                 viewportHeight = size.height.toFloat(),
-                                fittedContentWidth = scene.width * fitScale,
-                                fittedContentHeight = scene.height * fitScale,
+                                fittedContentWidth = paddedSceneWidth * fitScale,
+                                fittedContentHeight = paddedSceneHeight * fitScale,
                                 centroidX = centroid.x,
                                 centroidY = centroid.y,
                                 gesturePanX = event.calculatePan().x,
@@ -349,17 +376,23 @@ fun MermaidSceneCanvas(
         if (scene.width <= 0f || scene.height <= 0f) {
             return@Canvas
         }
-        val fitScale = min(size.width / scene.width, size.height / scene.height)
+        val viewportPadding = scene.viewportPadding.coerceAtLeast(0f)
+        val paddedSceneWidth = scene.width + viewportPadding * 2f
+        val paddedSceneHeight = scene.height + viewportPadding * 2f
+        val fitScale = min(size.width / paddedSceneWidth, size.height / paddedSceneHeight)
         val scale = fitScale * viewport.zoom
-        val contentWidth = scene.width * scale
-        val contentHeight = scene.height * scale
+        val contentWidth = paddedSceneWidth * scale
+        val contentHeight = paddedSceneHeight * scale
         val baseOffset = Offset(
             x = (size.width - contentWidth) / 2f,
             y = (size.height - contentHeight) / 2f,
         )
 
         withTransform({
-            translate(baseOffset.x + viewport.panX, baseOffset.y + viewport.panY)
+            translate(
+                baseOffset.x + viewport.panX + viewportPadding * scale,
+                baseOffset.y + viewport.panY + viewportPadding * scale,
+            )
             scale(scale, scale, Offset.Zero)
         }) {
             scene.elements.forEach { element ->
@@ -385,6 +418,7 @@ fun MermaidSceneCanvas(
                         density = density.density,
                         fontScale = density.fontScale,
                         fontFamilyResolver = effectiveFontFamilyResolver,
+                        cjkFontFamily = cjkFontFamily,
                     )
                 }
             }
@@ -495,20 +529,23 @@ internal fun MermaidScene.interactionAt(
     if (width <= 0f || height <= 0f || viewportWidth <= 0f || viewportHeight <= 0f) {
         return null
     }
-    val fitScale = min(viewportWidth / width, viewportHeight / height)
+    val padding = viewportPadding.coerceAtLeast(0f)
+    val paddedWidth = width + padding * 2f
+    val paddedHeight = height + padding * 2f
+    val fitScale = min(viewportWidth / paddedWidth, viewportHeight / paddedHeight)
     val scale = fitScale * viewport.zoom
     if (scale <= 0f) {
         return null
     }
-    val contentWidth = width * scale
-    val contentHeight = height * scale
+    val contentWidth = paddedWidth * scale
+    val contentHeight = paddedHeight * scale
     val baseOffset = Offset(
         x = (viewportWidth - contentWidth) / 2f,
         y = (viewportHeight - contentHeight) / 2f,
     )
     val scenePoint = ScenePoint(
-        x = (screenPosition.x - baseOffset.x - viewport.panX) / scale,
-        y = (screenPosition.y - baseOffset.y - viewport.panY) / scale,
+        x = (screenPosition.x - baseOffset.x - viewport.panX - padding * scale) / scale,
+        y = (screenPosition.y - baseOffset.y - viewport.panY - padding * scale) / scale,
     )
     return interactions.asReversed().firstOrNull { interaction ->
         scenePoint.x in interaction.bounds.left..interaction.bounds.right &&
@@ -1656,6 +1693,7 @@ private fun DrawScope.drawSceneText(
     density: Float,
     fontScale: Float,
     fontFamilyResolver: MermaidFontFamilyResolver,
+    cjkFontFamily: FontFamily?,
 ) {
     val style = TextStyle(
         color = element.color.toComposeColor(),
@@ -1673,13 +1711,18 @@ private fun DrawScope.drawSceneText(
         },
     )
     val layout = textMeasurer.measure(
-        text = element.text.toAnnotatedString(element.spans),
-        style = style,
-        softWrap = true,
-        maxLines = 8,
-        constraints = Constraints(
-            maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1),
+        text = element.text.toAnnotatedString(
+            spans = element.spans,
+            cjkFontFamily = cjkFontFamily,
         ),
+        style = style,
+        softWrap = element.softWrap,
+        maxLines = if (element.softWrap) 8 else 1,
+        constraints = if (element.softWrap) {
+            Constraints(maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1))
+        } else {
+            Constraints()
+        },
     )
     val x = when (element.horizontalAlignment) {
         SceneTextAlignment.Start -> element.bounds.left + 4f
@@ -1727,6 +1770,7 @@ private fun SceneTextWeight.toComposeWeight(): FontWeight = when (this) {
 
 private fun String.toAnnotatedString(
     spans: List<io.github.cmpmermaid.core.SceneTextSpan>,
+    cjkFontFamily: FontFamily?,
 ): AnnotatedString = buildAnnotatedString {
     append(this@toAnnotatedString)
     spans.forEach { span ->
@@ -1759,7 +1803,70 @@ private fun String.toAnnotatedString(
             end = span.end,
         )
     }
+    if (cjkFontFamily != null) {
+        cjkFontRanges().forEach { range ->
+            addStyle(
+                style = SpanStyle(fontFamily = cjkFontFamily),
+                start = range.first,
+                end = range.last + 1,
+            )
+        }
+    }
 }
+
+internal fun String.cjkFontRanges(): List<IntRange> = buildList {
+    var rangeStart = -1
+    var index = 0
+    while (index < length) {
+        val first = this@cjkFontRanges[index].code
+        val hasSurrogatePair =
+            first in HIGH_SURROGATE_RANGE &&
+                index + 1 < length &&
+                this@cjkFontRanges[index + 1].code in LOW_SURROGATE_RANGE
+        val codePoint = if (hasSurrogatePair) {
+            val second = this@cjkFontRanges[index + 1].code
+            SUPPLEMENTARY_CODE_POINT_OFFSET +
+                ((first - HIGH_SURROGATE_START) shl 10) +
+                (second - LOW_SURROGATE_START)
+        } else {
+            first
+        }
+        val characterLength = if (hasSurrogatePair) 2 else 1
+        if (codePoint.usesCjkFont()) {
+            if (rangeStart < 0) {
+                rangeStart = index
+            }
+        } else if (rangeStart >= 0) {
+            add(rangeStart until index)
+            rangeStart = -1
+        }
+        index += characterLength
+    }
+    if (rangeStart >= 0) {
+        add(rangeStart until length)
+    }
+}
+
+private fun String.hasCjkFontCharacters(): Boolean = cjkFontRanges().isNotEmpty()
+
+private fun Int.usesCjkFont(): Boolean =
+    this in 0x2E80..0x303F ||
+        this in 0x3040..0x30FF ||
+        this in 0x3100..0x312F ||
+        this in 0x31A0..0x31EF ||
+        this in 0x3400..0x4DBF ||
+        this in 0x4E00..0x9FFF ||
+        this in 0xAC00..0xD7AF ||
+        this in 0xF900..0xFAFF ||
+        this in 0xFE30..0xFE4F ||
+        this in 0xFF00..0xFFEF ||
+        this in 0x20000..0x2FA1F
+
+private val HIGH_SURROGATE_RANGE = 0xD800..0xDBFF
+private val LOW_SURROGATE_RANGE = 0xDC00..0xDFFF
+private const val HIGH_SURROGATE_START = 0xD800
+private const val LOW_SURROGATE_START = 0xDC00
+private const val SUPPLEMENTARY_CODE_POINT_OFFSET = 0x10000
 
 private fun io.github.cmpmermaid.core.SceneTextSpan.toComposeTextDecoration(): TextDecoration? {
     val decorations = buildList {

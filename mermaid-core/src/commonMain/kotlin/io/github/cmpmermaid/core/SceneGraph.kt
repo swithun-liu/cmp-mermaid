@@ -175,6 +175,7 @@ data class SceneText(
     val rotationDegrees: Float = 0f,
     val rotationPivot: ScenePoint? = null,
     override val zIndex: Int = 20,
+    val softWrap: Boolean = true,
 ) : SceneElement
 
 data class SceneTextSpan(
@@ -276,6 +277,7 @@ data class MermaidScene(
     val accessibilityTitle: String? = null,
     val accessibilityDescription: String? = null,
     val interactions: List<SceneNodeInteraction> = emptyList(),
+    val viewportPadding: Float = 0f,
 )
 
 data class TextMetricsRequest(

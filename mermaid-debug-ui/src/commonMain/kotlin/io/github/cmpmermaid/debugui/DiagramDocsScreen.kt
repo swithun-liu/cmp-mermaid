@@ -38,7 +38,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -406,9 +405,7 @@ private fun ResponsiveDiagramPreview(
     options: MermaidRenderOptions,
     officialLayout: String,
 ) {
-    var aspectRatio by remember(demo.id) {
-        mutableFloatStateOf(demo.initialAspectRatio.coerceAtLeast(0.1f))
-    }
+    val aspectRatio = demo.initialAspectRatio.coerceAtLeast(0.1f)
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
         val previewHeight = (maxWidth / aspectRatio).coerceIn(200.dp, 520.dp)
         PreviewFrame(
@@ -435,11 +432,6 @@ private fun ResponsiveDiagramPreview(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(previewHeight),
-                    onRenderResult = { result ->
-                        if (result is OfficialRenderResult.Ready) {
-                            aspectRatio = (result.width / result.height).coerceAtLeast(0.1f)
-                        }
-                    },
                 )
             }
         }

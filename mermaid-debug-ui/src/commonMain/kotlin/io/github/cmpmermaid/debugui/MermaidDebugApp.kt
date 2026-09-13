@@ -33,14 +33,18 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -78,18 +82,30 @@ private enum class DebugScreen {
     Playground,
 }
 
+private enum class DiagramStability {
+    Stable,
+    Beta,
+}
+
 private data class DiagramDestination(
     val screen: DebugScreen,
     val spec: DiagramDocsSpec,
     val summary: String,
+    val stability: DiagramStability = DiagramStability.Beta,
 )
 
 private val destinations = listOf(
-    DiagramDestination(DebugScreen.Flowchart, flowchartDiagramDocsSpec, "Dagre and ELK layouts"),
+    DiagramDestination(
+        DebugScreen.Flowchart,
+        flowchartDiagramDocsSpec,
+        "Dagre and ELK layouts",
+        DiagramStability.Stable,
+    ),
     DiagramDestination(
         DebugScreen.XyChart,
         xyChartDiagramDocsSpec,
         "Bar and line series with categorical or numeric axes",
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Sequence,
@@ -263,6 +279,7 @@ private fun DiagramTypesScreen(
                         DiagramTypeRow(
                             title = destination.spec.title,
                             description = destination.summary,
+                            stability = destination.stability,
                             onClick = { onOpen(destination) },
                         )
                     }
@@ -276,6 +293,7 @@ private fun DiagramTypesScreen(
 private fun DiagramTypeRow(
     title: String,
     description: String,
+    stability: DiagramStability,
     onClick: () -> Unit,
 ) {
     val shape = RoundedCornerShape(8.dp)
@@ -310,13 +328,19 @@ private fun DiagramTypeRow(
                 )
                 Spacer(Modifier.width(8.dp))
                 Surface(
-                    color = Color(0xFFFEF3C7),
+                    color = when (stability) {
+                        DiagramStability.Stable -> Color(0xFFDCFCE7)
+                        DiagramStability.Beta -> Color(0xFFFEF3C7)
+                    },
                     shape = RoundedCornerShape(4.dp),
                 ) {
                     Text(
-                        text = "BETA",
+                        text = stability.name.uppercase(),
                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp),
-                        color = Color(0xFF92400E),
+                        color = when (stability) {
+                            DiagramStability.Stable -> Color(0xFF166534)
+                            DiagramStability.Beta -> Color(0xFF92400E)
+                        },
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 0.sp,
@@ -345,10 +369,24 @@ private fun DiagramAuditScreen(
     preview: MermaidDebugPreview,
     layoutOverride: String,
 ) {
+    var auditStatus by remember(demo.id, preview, layoutOverride) {
+        mutableStateOf(AUDIT_STATUS_LOADING)
+    }
+    LaunchedEffect(demo.id, preview, layoutOverride) {
+        if (preview == MermaidDebugPreview.Native) {
+            withFrameNanos { }
+            withFrameNanos { }
+            auditStatus = AUDIT_STATUS_READY
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
+            .semantics {
+                contentDescription = auditStatus
+            }
             .padding(8.dp),
         contentAlignment = Alignment.Center,
     ) {
@@ -366,10 +404,23 @@ private fun DiagramAuditScreen(
                 source = demo.source,
                 layout = if (spec.id == "flowchart") layoutOverride else spec.officialLayout,
                 modifier = Modifier.fillMaxSize(),
+                onRenderResult = { result ->
+                    auditStatus = when (result) {
+                        OfficialRenderResult.Loading -> AUDIT_STATUS_LOADING
+                        is OfficialRenderResult.Ready -> AUDIT_STATUS_READY
+                        is OfficialRenderResult.Error -> {
+                            "$AUDIT_STATUS_ERROR_PREFIX${result.message}"
+                        }
+                    }
+                },
             )
         }
     }
 }
+
+private const val AUDIT_STATUS_LOADING = "cmp-mermaid-audit:loading"
+private const val AUDIT_STATUS_READY = "cmp-mermaid-audit:ready"
+private const val AUDIT_STATUS_ERROR_PREFIX = "cmp-mermaid-audit:error:"
 
 internal val debugUiVersionLabel: String
     get() = "Mermaid ${MermaidCompatibility.BASELINE_VERSION}"

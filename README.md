@@ -88,6 +88,17 @@ debugImplementation("io.github.cmpmermaid:mermaid-debug-ui:<version>")
 production `mermaid-compose` and `mermaid-core` manifests do not declare
 `android.permission.INTERNET`.
 
+## Stability
+
+- **Stable:** Flowchart and XY Chart against the Mermaid `12.0.0` compatibility
+  baseline.
+- **Beta:** Sequence, Class, State, Entity Relationship, Gantt, and Pie.
+
+Stable renderers are covered by official documentation fixtures, deterministic
+stress cases, and Native/Official visual comparisons. Syntax that cannot be
+translated faithfully returns `MermaidError.UnsupportedFeature` rather than a
+misleading approximation.
+
 ## Flowchart Coverage
 
 The supported path includes:

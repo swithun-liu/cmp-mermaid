@@ -295,4 +295,177 @@ internal val xyChartDemos = listOf(
                 line [34, 45, 61, 76]
         """.trimIndent(),
     ),
+    XyChartDemo(
+        id = "xy_multi_bar_labels",
+        title = "Multiple labeled bar series",
+        category = "Stability",
+        source = """
+            ---
+            config:
+              xyChart:
+                showDataLabel: true
+            ---
+            xychart
+                title "Planned and actual"
+                x-axis [Q1, Q2, Q3, Q4, Q5, Q6]
+                y-axis 0 --> 120
+                bar "Planned" [42, 55, 61, 78, 92, 108]
+                bar "Actual" [38, 63, 58, 84, 88, 115]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_horizontal_multi_series",
+        title = "Horizontal mixed series",
+        category = "Stability",
+        source = """
+            xychart horizontal
+                title "Regional throughput"
+                x-axis [North, South, East, West, Central]
+                y-axis 0 --> 200
+                bar "Current" [120, 88, 156, 110, 142]
+                line "Target" [130, 100, 150, 125, 160]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_wide_category_corpus",
+        title = "Wide category corpus",
+        category = "Stability",
+        source = """
+            ---
+            config:
+              xyChart:
+                xAxis:
+                  labelRotation: -45
+            ---
+            xychart
+                title "Sixteen release cohorts"
+                x-axis [R01, R02, R03, R04, R05, R06, R07, R08, R09, R10, R11, R12, R13, R14, R15, R16]
+                y-axis 0 --> 100
+                bar [22, 28, 31, 37, 42, 49, 53, 57, 61, 66, 70, 74, 79, 83, 88, 93]
+                line [18, 24, 30, 35, 39, 45, 50, 54, 59, 63, 68, 72, 76, 81, 86, 90]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_tiny_decimal_domain",
+        title = "Tiny decimal domain",
+        category = "Stability",
+        source = """
+            xychart
+                title "Error rate"
+                x-axis [A, B, C, D, E, F]
+                y-axis "Ratio" 0 --> 0.01
+                line "Observed" [0.001, 0.0025, 0.0018, 0.0042, 0.0068, 0.0091]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_large_magnitude_domain",
+        title = "Large magnitude domain",
+        category = "Stability",
+        source = """
+            xychart
+                title "Monthly events"
+                x-axis [Jan, Feb, Mar, Apr, May, Jun]
+                y-axis "Events" 0 --> 10000000
+                bar "Processed" [1200000, 2400000, 3800000, 5100000, 7300000, 9400000]
+                line "Capacity" [2000000, 3000000, 4500000, 6000000, 8000000, 10000000]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_single_point",
+        title = "Single numeric point",
+        category = "Stability",
+        source = """
+            xychart
+                title "Single observation"
+                x-axis "Input" 5 --> 5
+                y-axis "Output" 10 --> 10
+                line [10 "Observed"]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_constant_auto_domain",
+        title = "Constant automatic domain",
+        category = "Stability",
+        source = """
+            xychart
+                title "Constant measurements"
+                x-axis [A, B, C, D, E]
+                line "Stable" [7, 7, 7, 7, 7]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_dense_legend",
+        title = "Dense legend",
+        category = "Stability",
+        source = """
+            xychart
+                title "Service latency"
+                x-axis [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+                y-axis 0 --> 300
+                line "Gateway p50" [45, 48, 43, 51, 57, 39, 41]
+                line "Gateway p95" [140, 155, 132, 168, 180, 110, 121]
+                line "Search p50" [61, 66, 59, 72, 70, 55, 58]
+                line "Search p95" [188, 205, 176, 230, 218, 160, 172]
+                bar "Daily average" [83, 91, 79, 104, 109, 72, 78]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_mixed_signed_values",
+        title = "Mixed signed values",
+        category = "Stability",
+        source = """
+            xychart
+                title "Signed deltas"
+                x-axis [A, B, C, D, E, F, G]
+                y-axis -50 --> 50
+                bar "Delta" [-35, -12, 8, 31, -6, 22, 45]
+                line "Trend" [-28, -18, -4, 12, 19, 27, 38]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_point_label_crowding",
+        title = "Dense point labels",
+        category = "Stability",
+        source = """
+            xychart
+                title "Release milestones"
+                x-axis [R1, R2, R3, R4, R5, R6, R7, R8]
+                y-axis 0 --> 100
+                line [12 "Alpha", 21 "Beta", 35 "RC1", 48 "RC2", 63 "GA", 72 "Patch 1", 84 "Patch 2", 95 "LTS"]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_compact_rotated",
+        title = "Compact rotated chart",
+        category = "Stability",
+        source = """
+            ---
+            config:
+              xyChart:
+                width: 420
+                height: 300
+                plotReservedSpacePercent: 65
+                xAxis:
+                  labelRotation: -60
+            ---
+            xychart
+                title "Compact monthly view"
+                x-axis [January, February, March, April, May, June]
+                y-axis 0 --> 80
+                bar [22, 35, 31, 48, 59, 72]
+        """.trimIndent(),
+    ),
+    XyChartDemo(
+        id = "xy_partial_series_lengths",
+        title = "Partial series lengths",
+        category = "Stability",
+        source = """
+            xychart
+                title "Partial observations"
+                x-axis [A, B, C, D, E, F]
+                y-axis 0 --> 100
+                bar "Complete" [15, 30, 45, 60, 75, 90]
+                line "Partial" [12, 27, 51]
+        """.trimIndent(),
+    ),
 )

@@ -19,4 +19,20 @@ class MermaidFontFamilyResolverTest {
             parseCssFontFamilies("\"Custom, Family\", monospace"),
         )
     }
+
+    @Test
+    fun groupsCjkCharactersAndPunctuationIntoFontRanges() {
+        assertEquals(
+            listOf(1..2, 5..5),
+            "A中文 B。".cjkFontRanges(),
+        )
+    }
+
+    @Test
+    fun preservesUtf16RangeForSupplementaryCjkCharacters() {
+        assertEquals(
+            listOf(1..2),
+            "A\uD840\uDC00B".cjkFontRanges(),
+        )
+    }
 }

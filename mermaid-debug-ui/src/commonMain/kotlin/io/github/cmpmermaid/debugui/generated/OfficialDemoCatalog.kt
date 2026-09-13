@@ -236,6 +236,19 @@ flowchart LR
         officialAspectRatio = 552f / 71f,
     ),
     FlowchartDemo(
+        id = "cjk_labels",
+        title = "Chinese labels",
+        category = "Text",
+        source = """
+flowchart LR
+  A["用户提交问题"] --> B{"信息完整吗？"}
+  B -- "否" --> C["请求补充信息"]
+  C --> A
+  B -- "是" --> D["生成并验证答案"]
+        """.trimIndent(),
+        officialAspectRatio = 625f / 207f,
+    ),
+    FlowchartDemo(
         id = "expanded_process_shapes",
         title = "Expanded process shapes",
         category = "Expanded shapes",
@@ -627,5 +640,286 @@ flowchart TB
   B --> D
         """.trimIndent(),
         officialAspectRatio = 360f / 186f,
+    ),
+    FlowchartDemo(
+        id = "dense_fanout_fanin",
+        title = "Dense fan-out and fan-in",
+        category = "Stability",
+        source = """
+flowchart TB
+  Start([Start]) --> A & B & C & D
+  A --> E & F
+  B --> E & G
+  C --> F & H
+  D --> G & H
+  E & F & G & H --> Finish([Finish])
+        """.trimIndent(),
+        officialAspectRatio = 892f / 396f,
+    ),
+    FlowchartDemo(
+        id = "nested_deployment_feedback",
+        title = "Nested deployment feedback",
+        category = "Stability",
+        source = """
+flowchart LR
+  subgraph client [Client]
+    UI[Compose UI] --> Core[Shared core]
+  end
+  subgraph cloud [Cloud]
+    subgraph api [API tier]
+      Gateway --> Service
+    end
+    subgraph data [Data tier]
+      Cache --> Database[(Database)]
+    end
+    Service --> Cache
+    Cache -. miss .-> Database
+  end
+  Core --> Gateway
+  Service -->|response| Core
+  Database -. invalidation .-> Cache
+        """.trimIndent(),
+        officialAspectRatio = 1000f / 166f,
+    ),
+    FlowchartDemo(
+        id = "parallel_protocol_edges",
+        title = "Parallel protocol edges",
+        category = "Stability",
+        source = """
+flowchart LR
+  Client -->|request| Server
+  Client -.->|retry| Server
+  Client ==>|priority| Server
+  Client o--o Server
+  Server -->|response| Client
+        """.trimIndent(),
+        officialAspectRatio = 498f / 184f,
+    ),
+    FlowchartDemo(
+        id = "cross_subgraph_feedback",
+        title = "Cross-subgraph feedback",
+        category = "Stability",
+        source = """
+flowchart TB
+  subgraph ingest [Ingestion]
+    direction BT
+    Decode@{ shape: hex, label: "Decode" }
+    Validate@{ shape: doc, label: "Validate" }
+    Decode --> Validate
+  end
+  Normalize@{ shape: notch-rect, label: "Normalize" }
+  Store@{ shape: cyl, label: "Store" }
+  Publish@{ shape: stadium, label: "Publish" }
+  Validate ==> Normalize --> Store --> Publish
+  Decode -. bypass .-> Normalize
+  Store -. retry .-> Validate
+        """.trimIndent(),
+        officialAspectRatio = 368f / 727f,
+    ),
+    FlowchartDemo(
+        id = "deep_validation_pipeline",
+        title = "Deep validation pipeline",
+        category = "Stability",
+        source = """
+flowchart LR
+  Input[/Input/] --> Parse[Parse]
+  Parse --> Schema{Schema valid?}
+  Schema -- No --> Reject[Reject]
+  Schema -- Yes --> Auth{Authorized?}
+  Auth -- No --> Audit[Audit denial] --> Reject
+  Auth -- Yes --> Enrich[Enrich]
+  Enrich --> Rules{Rules pass?}
+  Rules -- No --> Review[[Manual review]]
+  Review --> Rules
+  Rules -- Yes --> Persist[(Persist)]
+  Persist --> Notify[Notify] --> Done((Done))
+        """.trimIndent(),
+        officialAspectRatio = 1000f / 188f,
+    ),
+    FlowchartDemo(
+        id = "many_to_many_routes",
+        title = "Many-to-many routes",
+        category = "Stability",
+        source = """
+flowchart TB
+  A & B & C --> X & Y & Z
+  X --> Result
+  Y --> Result
+  Z --> Result
+        """.trimIndent(),
+        officialAspectRatio = 552f / 311f,
+    ),
+    FlowchartDemo(
+        id = "styled_decision_tree",
+        title = "Styled decision tree",
+        category = "Stability",
+        source = """
+flowchart TB
+  Root{Risk level} -->|Low| Fast[Fast path]
+  Root -->|Medium| Review[Review]
+  Root -->|High| Block[Block]
+  Review -->|Pass| Fast
+  Review -->|Fail| Block
+  Fast --> Done([Done])
+  classDef decision fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:3px
+  classDef success fill:#dcfce7,stroke:#15803d,color:#14532d
+  classDef danger fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+  class Root decision
+  class Fast,Done success
+  class Block danger
+  linkStyle 0,3 stroke:#16a34a,stroke-width:3px
+  linkStyle 2,4 stroke:#dc2626,stroke-width:3px
+        """.trimIndent(),
+        officialAspectRatio = 370f / 564f,
+    ),
+    FlowchartDemo(
+        id = "long_cjk_workflow",
+        title = "Long Chinese workflow",
+        category = "Stability",
+        source = """
+flowchart TB
+  A["用户提交包含上下文的复杂问题"] --> B{"输入信息是否足够完整？"}
+  B -- "否" --> C["生成澄清问题并等待用户补充信息"]
+  C --> A
+  B -- "是" --> D["检索相关资料并生成候选答案"]
+  D --> E{"答案是否通过事实与安全校验？"}
+  E -- "否" --> D
+  E -- "是" --> F["返回简洁、准确、可执行的最终答案"]
+        """.trimIndent(),
+        officialAspectRatio = 380f / 941f,
+    ),
+    FlowchartDemo(
+        id = "mixed_shape_operations",
+        title = "Mixed operational shapes",
+        category = "Stability",
+        source = """
+flowchart LR
+  A@{ shape: rounded, label: "Receive" } --> B@{ shape: doc, label: "Document" }
+  B --> C@{ shape: diamond, label: "Inspect" }
+  C --> D@{ shape: subproc, label: "Transform" }
+  D --> E@{ shape: cyl, label: "Store" }
+  E --> F@{ shape: lin-cyl, label: "Archive" }
+  F --> G@{ shape: docs, label: "Replicate" }
+  G --> H@{ shape: hourglass, label: "Collate" }
+  H --> I@{ shape: stadium, label: "Complete" }
+        """.trimIndent(),
+        officialAspectRatio = 1000f / 114f,
+    ),
+    FlowchartDemo(
+        id = "cycle_with_shortcuts",
+        title = "Cycles, shortcuts, and self-loops",
+        category = "Stability",
+        source = """
+flowchart LR
+  A --> B --> C --> D --> E
+  E --> A
+  B --> D
+  C --> C
+  E -. retry .-> C
+  A == priority ==> D
+        """.trimIndent(),
+        officialAspectRatio = 996f / 193f,
+    ),
+    FlowchartDemo(
+        id = "dense_minimum_lengths",
+        title = "Dense minimum lengths",
+        category = "Stability",
+        source = """
+flowchart TD
+  Start --> A
+  Start ---> B
+  Start ----> C
+  A -..-> D
+  B ===> D
+  C ====> D
+  A --> E
+  B ---> E
+  C ----> E
+  D & E --> Finish
+        """.trimIndent(),
+        officialAspectRatio = 552f / 376f,
+    ),
+    FlowchartDemo(
+        id = "nested_direction_matrix",
+        title = "Nested direction matrix",
+        category = "Stability",
+        source = """
+flowchart LR
+  subgraph outer [Outer LR]
+    direction LR
+    subgraph top [Top TB]
+      direction TB
+      A --> B --> C
+    end
+    subgraph bottom [Bottom RL]
+      direction RL
+      D --> E --> F
+    end
+    C --> D
+  end
+  Start --> A
+  F --> Finish
+        """.trimIndent(),
+        officialAspectRatio = 1000f / 125f,
+    ),
+    FlowchartDemo(
+        id = "disconnected_components",
+        title = "Disconnected components",
+        category = "Stability",
+        source = """
+flowchart TB
+  A1 --> A2 --> A3
+  B1{Choice} --> B2
+  B1 --> B3
+  C1((Start)) --> C2[(Store)]
+  D1@{ shape: doc, label: "Document" }
+        """.trimIndent(),
+        officialAspectRatio = 952f / 412f,
+    ),
+    FlowchartDemo(
+        id = "rich_text_matrix",
+        title = "Rich text matrix",
+        category = "Stability",
+        source = """
+flowchart TB
+  A["<b>Bold</b> and <i>italic</i>"] --> B["<u>Underlined</u><br/>second line"]
+  B --> C["H<sub>2</sub>O and x<sup>2</sup>"]
+  C --> D["`Markdown **bold** and _italic_`"]
+  D --> E["Symbols: &lt; &gt; &amp; #9829;"]
+        """.trimIndent(),
+        officialAspectRatio = 168f / 449f,
+    ),
+    FlowchartDemo(
+        id = "animated_edge_matrix",
+        title = "Animated edge matrix",
+        category = "Stability",
+        source = """
+flowchart LR
+  A fast@--> B
+  B slow@-.-> C
+  C thick@==> D
+  fast@{ animate: true, animation: fast }
+  slow@{ animate: true, animation: slow }
+  thick@{ animate: true }
+  classDef pulse stroke:#dc2626,stroke-width:3px
+  class fast,slow,thick pulse
+        """.trimIndent(),
+        officialAspectRatio = 744f / 61f,
+    ),
+    FlowchartDemo(
+        id = "collapsed_group_feedback",
+        title = "Collapsed group feedback",
+        category = "Stability",
+        source = """
+flowchart LR
+  Start --> pipeline
+  subgraph pipeline [Processing pipeline]
+    Parse --> Validate --> Transform --> Persist
+  end
+  pipeline --> Done
+  Done -. retry .-> pipeline
+  pipeline@{ view: collapsed }
+        """.trimIndent(),
+        officialAspectRatio = 604f / 102f,
     ),
 )

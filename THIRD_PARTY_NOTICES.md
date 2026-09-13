@@ -219,6 +219,27 @@ Project:
 
 https://fonts.google.com/specimen/Arimo
 
+## Droid Sans Fallback
+
+The Compose adapter bundles Droid Sans Fallback for CJK text runs that are
+not covered by Arimo. The font is loaded only when a diagram contains CJK
+characters.
+
+Digitized data copyright Google Corporation (c) 2006
+
+Droid Sans Fallback is distributed under the Apache License 2.0. The complete
+license text is included at:
+
+`third_party/licenses/DROID-SANS-FALLBACK-APACHE-2.0.txt`
+
+Upstream:
+
+https://github.com/aosp-mirror/platform_frameworks_base/blob/main/data/fonts/DroidSansFallback.ttf
+
+Bundled file SHA-256:
+
+`21b96a0377f067833a93af3082eb28d4ffab7a8cd46bfd513286f1d64b7b0949`
+
 ## AndroidX WebKit
 
 The Android sample uses AndroidX WebKit `1.17.0` to serve bundled Mermaid

@@ -250,8 +250,20 @@ internal class FlowchartLayout {
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ): GMResult<Unit, MermaidError> {
+        val subgraphsById = document.subgraphs.associateBy(FlowSubgraph::id)
+        fun depth(subgraph: FlowSubgraph): Int {
+            var current = subgraph.parentId
+            var result = 0
+            val visited = mutableSetOf<String>()
+            while (current != null && visited.add(current)) {
+                result += 1
+                current = subgraphsById[current]?.parentId
+            }
+            return result
+        }
+
         document.subgraphs
-            .sortedByDescending { it.nodeIds.size }
+            .sortedBy(::depth)
             .forEachIndexed { index, subgraph ->
                 val bounds = subgraphBounds[subgraph.id]
                     ?: return@forEachIndexed

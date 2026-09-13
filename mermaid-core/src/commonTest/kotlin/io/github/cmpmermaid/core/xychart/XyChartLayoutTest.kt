@@ -4,6 +4,7 @@ import io.github.cmpmermaid.core.GMResult
 import io.github.cmpmermaid.core.MermaidEngine
 import io.github.cmpmermaid.core.MermaidError
 import io.github.cmpmermaid.core.MermaidRenderContext
+import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.MermaidScene
 import io.github.cmpmermaid.core.MermaidTheme
 import io.github.cmpmermaid.core.SceneColor
@@ -12,6 +13,9 @@ import io.github.cmpmermaid.core.SceneShape
 import io.github.cmpmermaid.core.SceneText
 import io.github.cmpmermaid.core.TextMetricProvider
 import io.github.cmpmermaid.core.TextMetrics
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.sin
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -90,6 +94,49 @@ class XyChartLayoutTest {
     }
 
     @Test
+    fun usesFirstPlotValuesForEveryBarLabelLikeMermaid12Renderer() {
+        val scene = render(
+            """
+            ---
+            config:
+              xyChart:
+                showDataLabel: true
+            ---
+            xychart
+                x-axis [A, B]
+                y-axis 0 --> 100
+                bar "First" [10, 20]
+                bar "Second" [70, 80]
+            """.trimIndent(),
+        )
+
+        val labels = scene.elements.filterIsInstance<SceneText>()
+            .filter { text -> text.zIndex == 18 }
+
+        assertEquals(listOf("10", "20", "10", "20"), labels.map(SceneText::text))
+    }
+
+    @Test
+    fun anchorsBarsToPlotBoundaryLikeMermaid12BarPlot() {
+        val scene = render(
+            """
+            xychart
+                x-axis [A, B]
+                y-axis -10 --> 10
+                bar [5, 10]
+            """.trimIndent(),
+        )
+
+        val bars = scene.elements.filterIsInstance<SceneShape>()
+            .filter { shape -> shape.id.startsWith("xy-bar-") }
+        val plotBottom = bars.maxOf { bar -> bar.bounds.bottom }
+
+        assertEquals(2, bars.size)
+        assertTrue(bars.all { bar -> bar.bounds.bottom == plotBottom })
+        assertTrue(bars.first().bounds.height < bars.last().bounds.height)
+    }
+
+    @Test
     fun appliesNestedConfigAndThemeVariables() {
         val scene = render(
             """
@@ -154,6 +201,112 @@ class XyChartLayoutTest {
     }
 
     @Test
+    fun preservesMeasuredFontFamilyOnRenderedText() {
+        val customFont = "Test Sans"
+        val result = engine.render(
+            """
+            xychart
+                title "Compact monthly view"
+                x-axis "Month" [January, February]
+                y-axis "Revenue" 0 --> 100
+                bar "Actual" [40, 80]
+            """.trimIndent(),
+            context.copy(options = MermaidRenderOptions(fontFamily = customFont)),
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val texts = scene.elements.filterIsInstance<SceneText>()
+
+        assertTrue(texts.isNotEmpty())
+        assertTrue(texts.all { text -> text.fontFamily == customFont })
+        assertTrue(texts.none(SceneText::softWrap))
+    }
+
+    @Test
+    fun keepsRotatedBottomAxisLabelsInsideChartBounds() {
+        val result = engine.render(
+            """
+            ---
+            config:
+              xyChart:
+                width: 420
+                height: 300
+                plotReservedSpacePercent: 65
+                xAxis:
+                  labelRotation: -60
+            ---
+            xychart
+                title "Compact monthly view"
+                x-axis [January, February, March, April, May, June]
+                y-axis 0 --> 80
+                bar [22, 35, 31, 48, 59, 72]
+            """.trimIndent(),
+            context,
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val expectedLabels = setOf("January", "February", "March", "April", "May", "June")
+        val labels = scene.elements.filterIsInstance<SceneText>()
+            .filter { text -> text.text in expectedLabels }
+
+        assertEquals(6, labels.size)
+        labels.forEach { label ->
+            val transformedBounds = label.rotatedBounds()
+            assertTrue(
+                transformedBounds.left >= 0f &&
+                    transformedBounds.top >= 0f &&
+                    transformedBounds.right <= scene.width &&
+                    transformedBounds.bottom <= scene.height,
+                "${label.text} is outside the chart: $transformedBounds in " +
+                    "${scene.width}x${scene.height}",
+            )
+        }
+    }
+
+    @Test
+    fun keepsRotatedLabelsAndTicksWhenMetricsIncludeComposeLineHeight() {
+        val composeLikeContext = context.copy(
+            textMetrics = TextMetricProvider { request ->
+                TextMetrics(
+                    width = request.text.length * request.fontSize * 0.5f,
+                    height = request.fontSize * 1.2f,
+                )
+            },
+        )
+        val result = engine.render(
+            """
+            ---
+            config:
+              xyChart:
+                width: 420
+                height: 300
+                plotReservedSpacePercent: 65
+                xAxis:
+                  labelRotation: -60
+            ---
+            xychart
+                title "Compact monthly view"
+                x-axis [January, February, March, April, May, June]
+                y-axis 0 --> 80
+                bar [22, 35, 31, 48, 59, 72]
+            """.trimIndent(),
+            composeLikeContext,
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val expectedLabels = setOf("January", "February", "March", "April", "May", "June")
+
+        assertEquals(
+            expectedLabels,
+            scene.elements.filterIsInstance<SceneText>()
+                .map(SceneText::text)
+                .filterTo(mutableSetOf()) { text -> text in expectedLabels },
+        )
+        assertEquals(
+            6,
+            scene.elements.filterIsInstance<ScenePath>()
+                .count { path -> path.id.startsWith("xy-bottom-axis-tick-") },
+        )
+    }
+
+    @Test
     fun reportsInvalidConfigurationWithoutThrowing() {
         val result = engine.render(
             """
@@ -180,4 +333,27 @@ class XyChartLayoutTest {
             "Expected XY Chart render success:\n$source\n$result",
         ).value
     }
+
+    private fun SceneText.rotatedBounds(): io.github.cmpmermaid.core.SceneRect {
+        val pivot = rotationPivot ?: bounds.center
+        val radians = rotationDegrees * PI.toFloat() / 180f
+        val corners = listOf(
+            bounds.left to bounds.top,
+            bounds.right to bounds.top,
+            bounds.right to bounds.bottom,
+            bounds.left to bounds.bottom,
+        ).map { (x, y) ->
+            val offsetX = x - pivot.x
+            val offsetY = y - pivot.y
+            (pivot.x + offsetX * cos(radians) - offsetY * sin(radians)) to
+                (pivot.y + offsetX * sin(radians) + offsetY * cos(radians))
+        }
+        return io.github.cmpmermaid.core.SceneRect(
+            left = corners.minOf { point -> point.first },
+            top = corners.minOf { point -> point.second },
+            right = corners.maxOf { point -> point.first },
+            bottom = corners.maxOf { point -> point.second },
+        )
+    }
+
 }
