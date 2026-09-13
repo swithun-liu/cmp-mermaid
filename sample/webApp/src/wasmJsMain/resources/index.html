@@ -22,6 +22,7 @@
     <script>
         if (window.location.hostname.endsWith(".github.io")) {
             const nativeFetch = window.fetch.bind(window);
+            const nativeInstantiate = WebAssembly.instantiate.bind(WebAssembly);
 
             window.fetch = async (input, options) => {
                 const requestUrl = new URL(
@@ -60,6 +61,15 @@
                 return new Response(bytes, {
                     headers: { "Content-Type": "application/wasm" },
                 });
+            };
+
+            WebAssembly.instantiateStreaming = async (source, imports, options) => {
+                const response = await source;
+                return nativeInstantiate(
+                    await response.arrayBuffer(),
+                    imports,
+                    options,
+                );
             };
         }
     </script>
