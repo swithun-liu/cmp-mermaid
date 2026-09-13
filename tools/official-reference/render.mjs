@@ -6,10 +6,10 @@ import puppeteer from 'puppeteer';
 import { cases } from './cases.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
-const output = resolve(root, '../../sample/androidApp/src/main/res/drawable-nodpi');
+const output = resolve(root, '../../captures/local/flowchart-official');
 const kotlinOutput = resolve(
   root,
-  '../../sample/androidApp/src/main/kotlin/io/github/cmpmermaid/sample/generated/OfficialDemoCatalog.kt',
+  '../../mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/generated/OfficialDemoCatalog.kt',
 );
 const testOutput = resolve(
   root,
@@ -17,7 +17,7 @@ const testOutput = resolve(
 );
 const androidAssetOutput = resolve(
   root,
-  '../../sample/androidApp/src/main/assets',
+  '../../mermaid-debug-ui/src/androidMain/assets',
 );
 const temporary = resolve(root, '.cache');
 const mermaidBundle = resolve(root, 'node_modules/mermaid/dist/mermaid.min.js');
@@ -104,7 +104,6 @@ const kotlinCases = cases
         source = """
 ${source}
         """.trimIndent(),
-        officialDrawable = R.drawable.official_${demo.id},
         officialAspectRatio = ${size.width}f / ${size.height}f,
     )`;
   })
@@ -113,16 +112,13 @@ ${source}
 mkdirSync(dirname(kotlinOutput), { recursive: true });
 writeFileSync(
   kotlinOutput,
-  `package io.github.cmpmermaid.sample.generated
-
-import io.github.cmpmermaid.sample.R
+  `package io.github.cmpmermaid.debugui.generated
 
 internal data class FlowchartDemo(
     val id: String,
     val title: String,
     val category: String,
     val source: String,
-    val officialDrawable: Int,
     val officialAspectRatio: Float,
 )
 

@@ -13,7 +13,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
         google()
         mavenCentral()
@@ -24,4 +24,7 @@ rootProject.name = "cmp-mermaid"
 
 include(":mermaid-core")
 include(":mermaid-compose")
+include(":mermaid-debug-ui")
 include(":sample:androidApp")
+include(":sample:desktopApp")
+include(":sample:webApp")

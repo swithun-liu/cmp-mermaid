@@ -3,13 +3,16 @@
 Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.
 The compatibility baseline is Mermaid `12.0.0`.
 
+Web demo: <https://swithun-liu.github.io/cmp-mermaid/>
+
 The production renderer libraries do not use a WebView and do not execute
 Mermaid.js. Mermaid's Flowchart, XY Chart, Sequence, Class, State, Entity
 Relationship, Gantt, and Pie parser semantics, diagram databases, layout
 preparation, shapes, edges, markers, text handling, and SceneGraph conversion
 are translated to Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter
-around the locked `elkjs@0.9.3` worker, which runs in an isolated QuickJS
-runtime.
+around the locked `elkjs@0.9.3` worker. Android and Desktop execute it in
+QuickJS, iOS uses the system JavaScriptCore runtime, and Web uses the browser
+JavaScript runtime.
 
 ```text
 Mermaid 12 diagram source
@@ -19,7 +22,10 @@ Kotlin preprocessing + translated parser/runtime + diagram DB
         |
         +--> Flowchart: Kotlin Graphlib/Dagre
         |
-        +--> Flowchart: Kotlin Mermaid ELK adapter --> elkjs 0.9.3 in QuickJS
+        +--> Flowchart: Kotlin Mermaid ELK adapter
+        |      +--> Android / Desktop: elkjs 0.9.3 in QuickJS
+        |      +--> iOS: elkjs 0.9.3 in JavaScriptCore
+        |      +--> Web: elkjs 0.9.3 in the browser runtime
         |
         +--> XY Chart: Kotlin Jison/D3/chartBuilder translation
         |
@@ -49,15 +55,38 @@ Compose Canvas
   SceneGraph.
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
-- `sample/androidApp`: mobile syntax documentation, an editable Flowchart
-  Playground with 45 presets, an on-demand local WebView for live official
-  Mermaid.js comparison, a 45-case Flowchart gallery, a 20-case XY Chart
-  gallery, a 35-case Sequence gallery, a 27-case Class gallery, a 25-case
-  State gallery, a 20-case ER gallery, a 20-case Gantt gallery, and a 20-case
-  Pie gallery.
+- `mermaid-debug-ui`: optional shared Compose Multiplatform documentation,
+  galleries, and Flowchart Playground. Android and Web include an on-demand,
+  local Mermaid.js comparison; iOS and Desktop keep the native renderer only.
+- `sample/androidApp`: thin Android launcher for `mermaid-debug-ui`.
+- `sample/desktopApp`: thin Compose Desktop launcher.
+- `sample/webApp`: thin Kotlin/Wasm launcher and GitHub Pages site.
+- `sample/iosApp`: SwiftUI launcher for the shared Compose framework.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.
+
+## Integration
+
+Keep production code dependent only on the renderer:
+
+```kotlin
+dependencies {
+    implementation(project(":mermaid-compose"))
+    debugImplementation(project(":mermaid-debug-ui"))
+}
+```
+
+The intended published artifact split is:
+
+```kotlin
+implementation("io.github.cmpmermaid:mermaid-compose:<version>")
+debugImplementation("io.github.cmpmermaid:mermaid-debug-ui:<version>")
+```
+
+`mermaid-debug-ui` contributes `MermaidDebugActivity` on Android. The
+production `mermaid-compose` and `mermaid-core` manifests do not declare
+`android.permission.INTERNET`.
 
 ## Flowchart Coverage
 
@@ -235,6 +264,49 @@ The supported path includes:
 SceneGraph has no browser pointer-hover state. See
 [`docs/pie-compatibility.md`](docs/pie-compatibility.md) for the full matrix.
 
+## Run The Samples
+
+Android:
+
+```bash
+./gradlew :sample:androidApp:installDebug
+```
+
+Desktop:
+
+```bash
+./gradlew :sample:desktopApp:run
+```
+
+Web development server:
+
+```bash
+./gradlew :sample:webApp:wasmJsBrowserDevelopmentRun
+```
+
+Web production output:
+
+```bash
+./gradlew :sample:webApp:wasmJsBrowserDistribution
+```
+
+The production files are written to
+`sample/webApp/build/dist/wasmJs/productionExecutable`. A push to `main`
+builds this directory and deploys it through
+`.github/workflows/deploy-pages.yml`.
+
+iOS 17.2 or newer:
+
+```bash
+brew install xcodegen
+cd sample/iosApp
+xcodegen generate
+open CMPMermaid.xcodeproj
+```
+
+The Xcode pre-build phase builds and embeds the
+`CmpMermaidDebugUi.framework`.
+
 ## Verification
 
 Run the shared JVM tests and build the Android sample:
@@ -243,6 +315,7 @@ Run the shared JVM tests and build the Android sample:
 ./gradlew \
   :mermaid-core:jvmTest \
   :mermaid-compose:jvmTest \
+  :mermaid-debug-ui:desktopTest \
   :sample:androidApp:assembleDebug
 ```
 
@@ -255,10 +328,14 @@ Compile every configured iOS architecture:
   :mermaid-core:compileKotlinIosX64 \
   :mermaid-compose:compileKotlinIosArm64 \
   :mermaid-compose:compileKotlinIosSimulatorArm64 \
-  :mermaid-compose:compileKotlinIosX64
+  :mermaid-compose:compileKotlinIosX64 \
+  :mermaid-debug-ui:compileKotlinIosArm64 \
+  :mermaid-debug-ui:compileKotlinIosSimulatorArm64 \
+  :mermaid-debug-ui:compileKotlinIosX64
 ```
 
-Regenerate all 45 official reference images and the shared Kotlin gallery:
+Regenerate all 45 official audit images, the bundled Mermaid.js asset, and the
+shared Kotlin gallery:
 
 ```bash
 cd tools/official-reference
@@ -266,7 +343,8 @@ npm install
 npm run render
 ```
 
-The generator asserts Mermaid `12.0.0` and renders the same source used by the
+The generator asserts Mermaid `12.0.0`, writes ignored audit images under
+`captures/local/flowchart-official`, and renders the same source used by the
 native side with Mermaid's ELK layout. The documentation fixture generators
 extract all 114 Flowchart examples, all 8 XY Chart examples, all 38 Sequence
 examples, all 38 Class examples, all 22 State examples, all 24 ER examples,

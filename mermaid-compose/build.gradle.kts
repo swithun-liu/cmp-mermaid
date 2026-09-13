@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -7,6 +8,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+@OptIn(ExperimentalWasmDsl::class)
 kotlin {
     android {
         namespace = "io.github.cmpmermaid.compose"
@@ -18,6 +20,9 @@ kotlin {
     }
 
     jvm()
+    wasmJs {
+        browser()
+    }
     iosX64()
     iosArm64()
     iosSimulatorArm64()
