@@ -10,6 +10,7 @@ import io.github.cmpmermaid.core.MermaidSecurityLevel
 import io.github.cmpmermaid.core.SceneArrowHead
 import io.github.cmpmermaid.core.ScenePath
 import io.github.cmpmermaid.core.SceneShape
+import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneStrokePattern
 import io.github.cmpmermaid.core.SceneText
 import io.github.cmpmermaid.core.SceneTextAlignment
@@ -111,7 +112,11 @@ class ClassLayoutTest {
         val noteEdge = scene.elements.filterIsInstance<ScenePath>()
             .single { it.id == "edgeNote0" }
 
-        assertEquals(2, note.geometry?.paths?.size)
+        assertEquals(SceneShapeKind.Rectangle, note.kind)
+        assertEquals(1, note.geometry?.paths?.size)
+        assertEquals(context.theme.noteFill, note.fill)
+        assertEquals(context.theme.noteStroke, note.stroke)
+        assertEquals(context.theme.noteText, labels.single { it.text == "Primary\naccount" }.color)
         assertEquals(SceneStrokePattern.Dashed, noteEdge.strokePattern)
         assertTrue(labels.any { it.text == "Primary\naccount" })
         assertTrue(labels.any { it.text == "places" })

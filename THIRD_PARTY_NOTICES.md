@@ -240,6 +240,26 @@ Bundled file SHA-256:
 
 `21b96a0377f067833a93af3082eb28d4ffab7a8cd46bfd513286f1d64b7b0949`
 
+## Noto Sans Symbols 2
+
+The Compose adapter bundles Noto Sans Symbols 2 for Dingbat glyphs that are
+not covered by Arimo, such as the check mark used in Mermaid labels.
+
+Copyright 2018 The Noto Project Authors
+
+Noto Sans Symbols 2 is distributed under the SIL Open Font License 1.1. The
+complete license text is included at:
+
+`third_party/licenses/NOTO-SANS-SYMBOLS-2-OFL-1.1.txt`
+
+Upstream revision:
+
+https://github.com/notofonts/noto-fonts/tree/ffebf8c1ee449e544955a7e813c54f9b73848eac
+
+Bundled file SHA-256:
+
+`630846d528dbe4c4981370a4d0a9475a1fd1491a129bb411f8e157cdb5de13c6`
+
 ## AndroidX WebKit
 
 The Android sample uses AndroidX WebKit `1.17.0` to serve bundled Mermaid

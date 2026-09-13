@@ -290,7 +290,7 @@ internal class StateLayout {
             is GMResult.Err -> return rendered
         }
         val size = SceneSize(
-            width = line.metrics.width + NOTE_PADDING * 2f + NOTE_FOLD,
+            width = line.metrics.width + NOTE_PADDING * 2f,
             height = line.metrics.height + NOTE_PADDING * 2f,
         )
         return GMResult.Ok(
@@ -613,12 +613,12 @@ internal class StateLayout {
             StateNodeType.Join,
         )
         val fill = when {
-            note -> NOTE_FILL
+            note -> context.theme.noteFill
             special -> context.theme.edge
             else -> visual.style.fill ?: context.theme.nodeFill
         }
         val stroke = when {
-            note -> NOTE_STROKE
+            note -> context.theme.noteStroke
             special -> context.theme.edge
             else -> visual.style.stroke ?: context.theme.nodeStroke
         }
@@ -644,10 +644,10 @@ internal class StateLayout {
                 bounds = SceneRect(
                     left = bounds.left + NOTE_PADDING,
                     top = bounds.top + NOTE_PADDING,
-                    right = bounds.right - NOTE_PADDING - NOTE_FOLD,
+                    right = bounds.right - NOTE_PADDING,
                     bottom = bounds.bottom - NOTE_PADDING,
                 ),
-                color = visual.style.text ?: context.theme.nodeText,
+                color = visual.style.text ?: context.theme.noteText,
                 context = context,
                 alignment = SceneTextAlignment.Start,
             )
@@ -887,24 +887,12 @@ internal class StateLayout {
         val bottom = size.height / 2f
         val outline = listOf(
             ScenePoint(left, top),
-            ScenePoint(right - NOTE_FOLD, top),
-            ScenePoint(right, top + NOTE_FOLD),
+            ScenePoint(right, top),
             ScenePoint(right, bottom),
             ScenePoint(left, bottom),
         )
         return SceneShapeGeometry(
-            paths = listOf(
-                SceneShapePath(outline),
-                SceneShapePath(
-                    points = listOf(
-                        ScenePoint(right - NOTE_FOLD, top),
-                        ScenePoint(right - NOTE_FOLD, top + NOTE_FOLD),
-                        ScenePoint(right, top + NOTE_FOLD),
-                    ),
-                    closed = false,
-                    fill = SceneShapePaint.None,
-                ),
-            ),
+            paths = listOf(SceneShapePath(outline)),
             outline = outline,
         )
     }
@@ -1037,12 +1025,9 @@ internal class StateLayout {
             StateNodeType.Join,
             StateNodeType.Choice,
         )
-        val NOTE_FILL = SceneColor(0xFFFFFFD0)
-        val NOTE_STROKE = SceneColor(0xFFAAAA33)
         const val DEFAULT_LINE_HEIGHT = 1.2f
         const val DESCRIPTION_GAP = 10f
         const val NOTE_PADDING = 10f
-        const val NOTE_FOLD = 10f
         const val CHOICE_SIZE = 28f
         const val STATE_GROUP_PADDING = 16f
         const val STATE_GROUP_TITLE_MARGIN = 22f

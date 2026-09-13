@@ -931,6 +931,7 @@ internal class GanttLayout {
         companion object {
             fun from(context: MermaidRenderContext): GMResult<GanttPalette, MermaidError> {
                 var invalid: Pair<String, String>? = null
+                val theme = context.theme.gantt
                 fun color(
                     name: String,
                     fallback: SceneColor,
@@ -943,27 +944,33 @@ internal class GanttLayout {
 
                 val palette = GanttPalette(
                     background = context.theme.background,
-                    section0 = color("sectionBkgColor", SECTION_0),
-                    section1 = color("altSectionBkgColor", context.theme.background),
-                    section2 = color("sectionBkgColor2", SECTION_2),
-                    exclude = color("excludeBkgColor", EXCLUDE_FILL),
-                    taskFill = color("taskBkgColor", TASK_FILL),
-                    taskStroke = color("taskBorderColor", TASK_STROKE),
-                    activeFill = color("activeTaskBkgColor", ACTIVE_FILL),
-                    activeStroke = color("activeTaskBorderColor", TASK_STROKE),
-                    doneFill = color("doneTaskBkgColor", LIGHT_GREY),
-                    doneStroke = color("doneTaskBorderColor", GREY),
-                    criticalFill = color("critBkgColor", RED),
-                    criticalStroke = color("critBorderColor", CRITICAL_BORDER),
-                    taskText = color("taskTextColor", WHITE),
-                    taskTextDark = color("taskTextDarkColor", BLACK),
-                    taskTextOutside = color("taskTextOutsideColor", BLACK),
-                    clickableText = color("taskTextClickableColor", CLICKABLE),
-                    text = color("textColor", context.theme.nodeText),
-                    grid = color("gridColor", LIGHT_GREY),
-                    today = color("todayLineColor", RED),
-                    vertical = color("vertLineColor", NAVY),
-                    title = color("titleColor", context.theme.groupText),
+                    section0 = color("sectionBkgColor", theme.sectionBackground),
+                    section1 = color(
+                        "altSectionBkgColor",
+                        theme.alternateSectionBackground,
+                    ),
+                    section2 = color("sectionBkgColor2", theme.secondSectionBackground),
+                    exclude = color("excludeBkgColor", theme.excludedBackground),
+                    taskFill = color("taskBkgColor", theme.taskFill),
+                    taskStroke = color("taskBorderColor", theme.taskStroke),
+                    activeFill = color("activeTaskBkgColor", theme.activeTaskFill),
+                    activeStroke = color("activeTaskBorderColor", theme.activeTaskStroke),
+                    doneFill = color("doneTaskBkgColor", theme.doneTaskFill),
+                    doneStroke = color("doneTaskBorderColor", theme.doneTaskStroke),
+                    criticalFill = color("critBkgColor", theme.criticalTaskFill),
+                    criticalStroke = color("critBorderColor", theme.criticalTaskStroke),
+                    taskText = color("taskTextColor", theme.taskText),
+                    taskTextDark = color("taskTextDarkColor", theme.darkTaskText),
+                    taskTextOutside = color("taskTextOutsideColor", theme.outsideTaskText),
+                    clickableText = color(
+                        "taskTextClickableColor",
+                        theme.clickableTaskText,
+                    ),
+                    text = color("textColor", theme.text),
+                    grid = color("gridColor", theme.grid),
+                    today = color("todayLineColor", theme.todayLine),
+                    vertical = color("vertLineColor", theme.verticalLine),
+                    title = color("titleColor", theme.title),
                 )
                 val error = invalid
                 return if (error == null) {
@@ -1033,20 +1040,6 @@ internal class GanttLayout {
 
     private companion object {
         val TRANSPARENT = SceneColor(0x00000000)
-        val BLACK = SceneColor(0xFF000000)
-        val WHITE = SceneColor(0xFFFFFFFF)
-        val NAVY = SceneColor(0xFF000080)
-        val RED = SceneColor(0xFFFF0000)
-        val GREY = SceneColor(0xFF808080)
-        val LIGHT_GREY = SceneColor(0xFFD3D3D3)
-        val EXCLUDE_FILL = SceneColor(0xFFEEEEEE)
-        val SECTION_0 = SceneColor(0x806666FF)
-        val SECTION_2 = SceneColor(0xFFFFF400)
-        val TASK_FILL = SceneColor(0xFF8A90DD)
-        val TASK_STROKE = SceneColor(0xFF534FBC)
-        val ACTIVE_FILL = SceneColor(0xFFBFC7FF)
-        val CRITICAL_BORDER = SceneColor(0xFFFF8888)
-        val CLICKABLE = SceneColor(0xFF003163)
         val BREAK = Regex("""(?i)<br\s*/?>""")
         const val DEFAULT_LINE_HEIGHT = 1.2f
         const val UNWRAPPED_TEXT_WIDTH = 100_000f

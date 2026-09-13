@@ -615,10 +615,10 @@ internal class SequenceLayout {
                 SceneShape(
                     id = "note-${message.id}",
                     bounds = bounds,
-                    kind = SceneShapeKind.Document,
-                    geometry = foldedNoteGeometry(bounds.width, bounds.height),
-                    fill = NOTE_FILL,
-                    stroke = NOTE_STROKE,
+                    kind = SceneShapeKind.Rectangle,
+                    geometry = rectangleGeometry(bounds.width, bounds.height),
+                    fill = context.theme.noteFill,
+                    stroke = context.theme.noteStroke,
                     strokeWidth = 1f,
                     zIndex = 12,
                 ),
@@ -630,7 +630,7 @@ internal class SequenceLayout {
                         right = bounds.right - NOTE_MARGIN,
                         bottom = bounds.bottom,
                     ),
-                    color = context.theme.nodeText,
+                    color = context.theme.noteText,
                     fontSize = NOTE_FONT_SIZE,
                     fontFamily = context.theme.fontFamily,
                     weight = SceneTextWeight.Normal,
@@ -1320,36 +1320,6 @@ internal class SequenceLayout {
         )
     }
 
-    private fun foldedNoteGeometry(width: Float, height: Float): SceneShapeGeometry {
-        val left = -width / 2f
-        val top = -height / 2f
-        val right = width / 2f
-        val bottom = height / 2f
-        val fold = min(10f, min(width, height) / 3f)
-        val outline = listOf(
-            ScenePoint(left, top),
-            ScenePoint(right - fold, top),
-            ScenePoint(right, top + fold),
-            ScenePoint(right, bottom),
-            ScenePoint(left, bottom),
-        )
-        return SceneShapeGeometry(
-            paths = listOf(
-                SceneShapePath(outline),
-                SceneShapePath(
-                    points = listOf(
-                        ScenePoint(right - fold, top),
-                        ScenePoint(right - fold, top + fold),
-                        ScenePoint(right, top + fold),
-                    ),
-                    closed = false,
-                    fill = SceneShapePaint.None,
-                ),
-            ),
-            outline = outline,
-        )
-    }
-
     private fun labelGeometry(width: Float, height: Float): SceneShapeGeometry {
         val left = -width / 2f
         val top = -height / 2f
@@ -1789,8 +1759,6 @@ internal class SequenceLayout {
         const val CIRCLE_SEGMENTS = 24
 
         val TRANSPARENT = SceneColor(0x00000000)
-        val NOTE_FILL = SceneColor(0xFFFFF5AD)
-        val NOTE_STROKE = SceneColor(0xFFFACC15)
         val BOX_STROKE = SceneColor(0x80000000)
         val SEQUENCE_NUMBER_TEXT = SceneColor(0xFFFFFFFF)
         val HTML_BREAK = Regex("""<br\s*/?>""", RegexOption.IGNORE_CASE)

@@ -121,6 +121,35 @@ class GanttLayoutTest {
     }
 
     @Test
+    fun usesMermaid12BuiltInGanttPalette() {
+        val scene = render(
+            """
+            ---
+            config:
+              theme: dark
+            ---
+            gantt
+                dateFormat YYYY-MM-DD
+                todayMarker off
+                section Delivery
+                Active work :active, work, 2025-01-01, 2d
+            """.trimIndent(),
+        )
+        val task = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "gantt-task-work" }
+        val section = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "gantt-row-0" }
+        val taskText = scene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "Active work" }
+
+        assertEquals(SceneColor(0xFF333333), scene.background)
+        assertEquals(SceneColor(0x33B4AC76), section.fill)
+        assertEquals(SceneColor(0xFF81B1DB), task.fill)
+        assertEquals(SceneColor(0xFFFFFFFF), task.stroke)
+        assertEquals(SceneColor(0xFF2C2C2C), taskText.color)
+    }
+
+    @Test
     fun compactsNonOverlappingTasksAndDrawsExcludedRanges() {
         val scene = render(
             """

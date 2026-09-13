@@ -373,11 +373,11 @@ class MermaidEngineTest {
         assertEquals(SceneColor(0xFFECECFF), shapes.getValue("A").fill)
         assertEquals(SceneColor(0xFF9370DB), shapes.getValue("A").stroke)
         assertEquals(1f, shapes.getValue("A").strokeWidth)
-        assertEquals(SceneColor(0xFF333333), nodeText.color)
+        assertEquals(SceneColor(0xFF131300), nodeText.color)
         assertEquals(16f, nodeText.fontSize)
         assertEquals("\"trebuchet ms\", verdana, arial, sans-serif", nodeText.fontFamily)
         assertEquals(SceneColor(0xFFFFFFDE), shapes.getValue("subgraph_group").fill)
-        assertEquals(SceneColor(0xFF9370DB), shapes.getValue("subgraph_group").stroke)
+        assertEquals(SceneColor(0xFFAAAA33), shapes.getValue("subgraph_group").stroke)
     }
 
     @Test
@@ -641,7 +641,7 @@ class MermaidEngineTest {
         assertEquals(SceneColor(0xFF9370DB), shapes.getValue("A").stroke)
         assertEquals(1f, shapes.getValue("A").strokeWidth)
         assertEquals(SceneColor(0xFFFFFFDE), shapes.getValue("subgraph_group").fill)
-        assertEquals(SceneColor(0xFF9370DB), shapes.getValue("subgraph_group").stroke)
+        assertEquals(SceneColor(0xFFAAAA33), shapes.getValue("subgraph_group").stroke)
         assertEquals(16f, nodeText.fontSize)
     }
 

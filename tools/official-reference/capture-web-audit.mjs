@@ -25,8 +25,19 @@ const viewportWidth = Number(process.env.VIEWPORT_WIDTH ?? 900);
 const viewportHeight = Number(process.env.VIEWPORT_HEIGHT ?? 900);
 const minimumCaptureBytes = Number(process.env.MIN_CAPTURE_BYTES ?? 5_000);
 
-if (!['all', 'flowchart', 'xychart'].includes(auditKind)) {
-  throw new Error('AUDIT_KIND must be all, flowchart, or xychart');
+const kotlinGalleryFiles = {
+  xychart: ['XyChartDemos.kt', 'XyChartDemo'],
+  sequence: ['SequenceDemos.kt', 'SequenceDemo'],
+  class: ['ClassDemos.kt', 'ClassDemo'],
+  state: ['StateDemos.kt', 'StateDemo'],
+  er: ['ErDemos.kt', 'ErDemo'],
+  gantt: ['GanttDemos.kt', 'GanttDemo'],
+  pie: ['PieDemos.kt', 'PieDemo'],
+};
+const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
+
+if (!supportedAuditKinds.includes(auditKind)) {
+  throw new Error(`AUDIT_KIND must be one of: ${supportedAuditKinds.join(', ')}`);
 }
 if (!['dagre', 'elk'].includes(layout)) {
   throw new Error('CAPTURE_LAYOUT must be dagre or elk');
@@ -36,9 +47,12 @@ const availableCases = [
   ...(auditKind === 'all' || auditKind === 'flowchart'
     ? flowchartCases.map((entry) => ({ ...entry, kind: 'flowchart' }))
     : []),
-  ...(auditKind === 'all' || auditKind === 'xychart'
-    ? readXyChartCases().map((entry) => ({ ...entry, kind: 'xychart' }))
-    : []),
+  ...Object.entries(kotlinGalleryFiles).flatMap(
+    ([kind, [fileName, constructorName]]) =>
+      auditKind === 'all' || auditKind === kind
+        ? readKotlinCases(fileName, constructorName).map((entry) => ({ ...entry, kind }))
+        : [],
+  ),
 ].filter(({ id }) => selectedIds.size === 0 || selectedIds.has(id));
 
 if (availableCases.length === 0) {
@@ -150,14 +164,20 @@ async function waitForOfficialSvg(page) {
   );
 }
 
-function readXyChartCases() {
+function readKotlinCases(fileName, constructorName) {
   const sourcePath = resolve(
     repositoryRoot,
-    'mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/XyChartDemos.kt',
+    `mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/${fileName}`,
   );
   const kotlin = readFileSync(sourcePath, 'utf8');
-  const casePattern =
-    /XyChartDemo\(\s*id = "([^"]+)",\s*title = "([^"]+)",\s*category = "([^"]+)",\s*source = """\n([\s\S]*?)\n\s*"""\.trimIndent\(\),\s*\)/g;
+  const casePattern = new RegExp(
+    `${constructorName}\\(\\s*` +
+      'id = "([^"]+)",\\s*' +
+      'title = "([^"]+)",\\s*' +
+      'category = "([^"]+)",\\s*' +
+      'source = """\\n([\\s\\S]*?)\\n\\s*"""\\.trimIndent\\(\\),\\s*\\)',
+    'g',
+  );
   return [...kotlin.matchAll(casePattern)].map((match) => ({
     id: match[1],
     title: match[2],

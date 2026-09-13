@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 internal actual fun OfficialMermaidDiagram(
     source: String,
     layout: String,
+    themeName: String?,
     modifier: Modifier,
     onRenderResult: (OfficialRenderResult) -> Unit,
 ) {

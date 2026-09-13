@@ -36,7 +36,7 @@ production so an upstream grammar diff can be translated incrementally.
 | Kotlin source | Upstream source | Translation boundary |
 | --- | --- | --- |
 | `statediagram/StateLayout.kt` | `stateRenderer-v3-unified.ts` | Default ELK selection, Dagre override, SceneGraph orchestration, title, accessibility, interactions, and bounds normalization |
-| `statediagram/StateLayout.kt` | `shapes.js` and `stateCommon.ts` | State boxes, description compartments, start/end, choice, fork/join, folded notes, composite groups, and concurrency regions |
+| `statediagram/StateLayout.kt` | `rendering-util/rendering-elements/shapes/note.ts`, `shapes.js`, and `stateCommon.ts` | State boxes, description compartments, start/end, choice, fork/join, rectangular notes, composite groups, and concurrency regions |
 | `statediagram/StateLayout.kt` | `dataFetcher.ts` note edges | Left/right note ordering expressed as directed dashed edges and placed by the selected layout engine |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
 | `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | State and composite placement for explicit Dagre requests |

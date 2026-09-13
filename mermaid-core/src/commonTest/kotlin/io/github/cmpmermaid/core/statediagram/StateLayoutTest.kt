@@ -127,6 +127,16 @@ class StateLayoutTest {
         val dashedPaths = scene.elements.filterIsInstance<ScenePath>()
             .filter { it.strokePattern == SceneStrokePattern.Dashed }
 
+        assertTrue(listOf(leftNote, rightNote).all {
+            it.kind == SceneShapeKind.Rectangle && it.geometry?.paths?.size == 1
+        })
+        assertEquals(context.theme.noteFill, leftNote.fill)
+        assertEquals(context.theme.noteStroke, leftNote.stroke)
+        assertTrue(
+            scene.elements.filterIsInstance<SceneText>()
+                .filter { it.text == "Left note" || it.text == "Right note" }
+                .all { it.color == context.theme.noteText },
+        )
         assertEquals(2, dashedPaths.size)
         assertTrue(dashedPaths.any { it.id == "${leftNote.id}-One" })
         assertTrue(dashedPaths.any { it.id == "Two-${rightNote.id}" })

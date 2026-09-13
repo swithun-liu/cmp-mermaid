@@ -35,4 +35,12 @@ class MermaidFontFamilyResolverTest {
             "A\uD840\uDC00B".cjkFontRanges(),
         )
     }
+
+    @Test
+    fun groupsSupportedDingbatsIntoBundledSymbolFontRanges() {
+        assertEquals(
+            listOf(1..2),
+            "A✓✗→B".bundledSymbolFontRanges(),
+        )
+    }
 }

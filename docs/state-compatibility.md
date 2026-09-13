@@ -26,7 +26,7 @@ discarded or rendered as a different feature.
 | Pseudostates | Supported | Choice, fork, and join declarations with native Mermaid-equivalent shapes |
 | Composite states | Supported | Named, nested, sibling, and transition-connected composites |
 | Concurrency | Supported | `--` region splitting, nested region hierarchy, and dashed region boundaries |
-| Notes | Supported | Single-line and multiline notes, left/right edge direction, folded-note geometry, and dashed connectors |
+| Notes | Supported | Single-line and multiline rectangular notes, left/right edge direction, and dashed connectors |
 | Direction | Supported | TB, BT, LR, and RL at root and nested composite levels |
 | Layout | Supported | Mermaid's default ELK path, named ELK algorithms, and explicit Dagre override |
 | Markdown and HTML text | Supported with explicit boundaries | Shared Mermaid/Marked text path for states, descriptions, transitions, notes, and composite labels |

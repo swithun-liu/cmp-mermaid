@@ -34,6 +34,7 @@ private const val OFFICIAL_MERMAID_URL =
 internal actual fun OfficialMermaidDiagram(
     source: String,
     layout: String,
+    themeName: String?,
     modifier: Modifier,
     onRenderResult: (OfficialRenderResult) -> Unit,
 ) {
@@ -60,7 +61,7 @@ internal actual fun OfficialMermaidDiagram(
                 webView.release()
             },
             update = { webView ->
-                webView.render(source, layout)
+                webView.render(source, layout, themeName)
             },
         )
     }
@@ -76,8 +77,10 @@ private class OfficialMermaidWebView(
     private var released = false
     private var pendingSource = ""
     private var pendingLayout = "elk"
+    private var pendingThemeName: String? = null
     private var dispatchedSource: String? = null
     private var dispatchedLayout: String? = null
+    private var dispatchedThemeName: String? = null
     private val renderBridge = OfficialRenderBridge(onRenderResult)
 
     init {
@@ -122,12 +125,14 @@ private class OfficialMermaidWebView(
     fun render(
         source: String,
         layout: String,
+        themeName: String?,
     ) {
         if (released) {
             return
         }
         pendingSource = source
         pendingLayout = layout
+        pendingThemeName = themeName
         dispatchRender()
     }
 
@@ -138,6 +143,7 @@ private class OfficialMermaidWebView(
         pageReady = false
         dispatchedSource = null
         dispatchedLayout = null
+        dispatchedThemeName = null
         loadUrl(OFFICIAL_MERMAID_URL)
     }
 
@@ -157,18 +163,24 @@ private class OfficialMermaidWebView(
         if (!pageReady) {
             return
         }
-        if (pendingSource == dispatchedSource && pendingLayout == dispatchedLayout) {
+        if (
+            pendingSource == dispatchedSource &&
+            pendingLayout == dispatchedLayout &&
+            pendingThemeName == dispatchedThemeName
+        ) {
             return
         }
         dispatchedSource = pendingSource
         dispatchedLayout = pendingLayout
+        dispatchedThemeName = pendingThemeName
         renderBridge.loading()
         val sourceArgument = JSONObject.quote(pendingSource)
             .replace("\u2028", "\\u2028")
             .replace("\u2029", "\\u2029")
         val layoutArgument = JSONObject.quote(pendingLayout)
+        val themeArgument = pendingThemeName?.let(JSONObject::quote) ?: "null"
         evaluateJavascript(
-            "window.renderDiagram($sourceArgument, $layoutArgument);",
+            "window.renderDiagram($sourceArgument, $layoutArgument, $themeArgument);",
             null,
         )
     }

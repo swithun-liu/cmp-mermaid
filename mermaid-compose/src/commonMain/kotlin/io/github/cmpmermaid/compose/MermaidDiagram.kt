@@ -180,11 +180,20 @@ fun rememberMermaidScene(
     } else {
         null
     }
+    val symbolFontFamily = if (
+        fontFamilyResolver == null &&
+        source.hasBundledSymbolFontCharacters()
+    ) {
+        rememberMermaidSymbolFontFamily()
+    } else {
+        null
+    }
     val metrics = remember(
         textMeasurer,
         density,
         effectiveFontFamilyResolver,
         cjkFontFamily,
+        symbolFontFamily,
     ) {
         TextMetricProvider { request ->
             val style = request.toTextStyle(
@@ -196,6 +205,7 @@ fun rememberMermaidScene(
                 text = request.text.toAnnotatedString(
                     spans = request.spans,
                     cjkFontFamily = cjkFontFamily,
+                    symbolFontFamily = symbolFontFamily,
                 ),
                 style = style,
                 softWrap = true,
@@ -250,6 +260,17 @@ fun MermaidSceneCanvas(
     }
     val cjkFontFamily = if (fontFamilyResolver == null && hasCjkText) {
         rememberMermaidCjkFontFamily()
+    } else {
+        null
+    }
+    val hasSymbolText = remember(scene) {
+        scene.elements
+            .asSequence()
+            .filterIsInstance<SceneText>()
+            .any { it.text.hasBundledSymbolFontCharacters() }
+    }
+    val symbolFontFamily = if (fontFamilyResolver == null && hasSymbolText) {
+        rememberMermaidSymbolFontFamily()
     } else {
         null
     }
@@ -419,6 +440,7 @@ fun MermaidSceneCanvas(
                         fontScale = density.fontScale,
                         fontFamilyResolver = effectiveFontFamilyResolver,
                         cjkFontFamily = cjkFontFamily,
+                        symbolFontFamily = symbolFontFamily,
                     )
                 }
             }
@@ -1694,6 +1716,7 @@ private fun DrawScope.drawSceneText(
     fontScale: Float,
     fontFamilyResolver: MermaidFontFamilyResolver,
     cjkFontFamily: FontFamily?,
+    symbolFontFamily: FontFamily?,
 ) {
     val style = TextStyle(
         color = element.color.toComposeColor(),
@@ -1714,6 +1737,7 @@ private fun DrawScope.drawSceneText(
         text = element.text.toAnnotatedString(
             spans = element.spans,
             cjkFontFamily = cjkFontFamily,
+            symbolFontFamily = symbolFontFamily,
         ),
         style = style,
         softWrap = element.softWrap,
@@ -1771,6 +1795,7 @@ private fun SceneTextWeight.toComposeWeight(): FontWeight = when (this) {
 private fun String.toAnnotatedString(
     spans: List<io.github.cmpmermaid.core.SceneTextSpan>,
     cjkFontFamily: FontFamily?,
+    symbolFontFamily: FontFamily?,
 ): AnnotatedString = buildAnnotatedString {
     append(this@toAnnotatedString)
     spans.forEach { span ->
@@ -1812,19 +1837,36 @@ private fun String.toAnnotatedString(
             )
         }
     }
+    if (symbolFontFamily != null) {
+        bundledSymbolFontRanges().forEach { range ->
+            addStyle(
+                style = SpanStyle(fontFamily = symbolFontFamily),
+                start = range.first,
+                end = range.last + 1,
+            )
+        }
+    }
 }
 
-internal fun String.cjkFontRanges(): List<IntRange> = buildList {
+internal fun String.cjkFontRanges(): List<IntRange> =
+    fontRanges(Int::usesCjkFont)
+
+internal fun String.bundledSymbolFontRanges(): List<IntRange> =
+    fontRanges(Int::usesBundledSymbolFont)
+
+private fun String.fontRanges(
+    predicate: (Int) -> Boolean,
+): List<IntRange> = buildList {
     var rangeStart = -1
     var index = 0
     while (index < length) {
-        val first = this@cjkFontRanges[index].code
+        val first = this@fontRanges[index].code
         val hasSurrogatePair =
             first in HIGH_SURROGATE_RANGE &&
                 index + 1 < length &&
-                this@cjkFontRanges[index + 1].code in LOW_SURROGATE_RANGE
+                this@fontRanges[index + 1].code in LOW_SURROGATE_RANGE
         val codePoint = if (hasSurrogatePair) {
-            val second = this@cjkFontRanges[index + 1].code
+            val second = this@fontRanges[index + 1].code
             SUPPLEMENTARY_CODE_POINT_OFFSET +
                 ((first - HIGH_SURROGATE_START) shl 10) +
                 (second - LOW_SURROGATE_START)
@@ -1832,7 +1874,7 @@ internal fun String.cjkFontRanges(): List<IntRange> = buildList {
             first
         }
         val characterLength = if (hasSurrogatePair) 2 else 1
-        if (codePoint.usesCjkFont()) {
+        if (predicate(codePoint)) {
             if (rangeStart < 0) {
                 rangeStart = index
             }
@@ -1861,6 +1903,14 @@ private fun Int.usesCjkFont(): Boolean =
         this in 0xFE30..0xFE4F ||
         this in 0xFF00..0xFFEF ||
         this in 0x20000..0x2FA1F
+
+private fun String.hasBundledSymbolFontCharacters(): Boolean =
+    bundledSymbolFontRanges().isNotEmpty()
+
+private fun Int.usesBundledSymbolFont(): Boolean =
+    this in 0x2700..0x2704 ||
+        this in 0x2706..0x2709 ||
+        this in 0x270B..0x271C
 
 private val HIGH_SURROGATE_RANGE = 0xD800..0xDBFF
 private val LOW_SURROGATE_RANGE = 0xDC00..0xDFFF

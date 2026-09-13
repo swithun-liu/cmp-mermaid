@@ -191,7 +191,7 @@
         await new Promise(requestAnimationFrame);
       };
 
-      const normalizeViewBox = (svg) => {
+      const normalizeViewBox = (svg, backgroundColor) => {
         const original = svg.viewBox.baseVal;
         const content = svg.getBBox();
         const originalRight = original.x + original.width;
@@ -213,22 +213,31 @@
         svg.style.height = "100%";
         svg.style.maxWidth = "100%";
         svg.style.maxHeight = "100%";
-        svg.style.backgroundColor = "#ffffff";
+        svg.style.backgroundColor = backgroundColor;
         return { width, height };
       };
 
-      window.renderDiagram = async (source, layout) => {
+      window.renderDiagram = async (source, layout, themeName = null) => {
         window.clearTimeout(rendererLoadTimeout);
         const currentRequest = ++requestId;
         diagram.className = "status";
         diagram.textContent = "Rendering...";
 
         try {
-          mermaid.initialize({
+          const config = {
             startOnLoad: false,
             securityLevel: "strict",
             layout,
-          });
+          };
+          if (themeName) {
+            config.theme = themeName;
+          }
+          mermaid.initialize(config);
+          const backgroundColor =
+            mermaid.mermaidAPI.getConfig()?.themeVariables?.background ?? "#ffffff";
+          document.documentElement.style.backgroundColor = backgroundColor;
+          document.body.style.backgroundColor = backgroundColor;
+          diagram.style.backgroundColor = backgroundColor;
           const result = await mermaid.render(
             `cmp-official-${currentRequest}`,
             source,
@@ -248,7 +257,7 @@
           if (currentRequest !== requestId) {
             return;
           }
-          const size = normalizeViewBox(svg);
+          const size = normalizeViewBox(svg, backgroundColor);
           window.CmpMermaidBridge?.onRenderReady(
             String(size.width),
             String(size.height),

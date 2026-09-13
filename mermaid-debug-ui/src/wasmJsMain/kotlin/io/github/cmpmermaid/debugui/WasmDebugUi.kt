@@ -31,6 +31,7 @@ private const val OFFICIAL_ERROR_PREFIX = "${OFFICIAL_MESSAGE_PREFIX}error:"
 internal actual fun OfficialMermaidDiagram(
     source: String,
     layout: String,
+    themeName: String?,
     modifier: Modifier,
     onRenderResult: (OfficialRenderResult) -> Unit,
 ) {
@@ -78,12 +79,12 @@ internal actual fun OfficialMermaidDiagram(
     LaunchedEffect(Unit) {
         frame.src = "official-mermaid.html"
     }
-    LaunchedEffect(source, layout) {
+    LaunchedEffect(source, layout, themeName) {
         currentOnRenderResult(OfficialRenderResult.Loading)
     }
-    LaunchedEffect(source, layout, frameReady) {
+    LaunchedEffect(source, layout, themeName, frameReady) {
         if (frameReady) {
-            renderOfficialDiagram(frame, source, layout)
+            renderOfficialDiagram(frame, source, layout, themeName)
         }
     }
     WebElementView(
@@ -102,11 +103,12 @@ internal actual fun PlatformBackHandler(
 @JsFun("(frame) => typeof frame.contentWindow?.renderDiagram === 'function'")
 private external fun hasOfficialRenderer(frame: HTMLIFrameElement): Boolean
 
-@JsFun("(frame, source, layout) => frame.contentWindow.renderDiagram(source, layout)")
+@JsFun("(frame, source, layout, themeName) => frame.contentWindow.renderDiagram(source, layout, themeName)")
 private external fun renderOfficialDiagram(
     frame: HTMLIFrameElement,
     source: String,
     layout: String,
+    themeName: String?,
 )
 
 @JsFun("(event, frame) => event.source === frame.contentWindow")

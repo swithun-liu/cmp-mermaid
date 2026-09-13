@@ -28,6 +28,7 @@ internal sealed interface OfficialRenderResult {
 internal expect fun OfficialMermaidDiagram(
     source: String,
     layout: String,
+    themeName: String? = null,
     modifier: Modifier = Modifier,
     onRenderResult: (OfficialRenderResult) -> Unit = {},
 )

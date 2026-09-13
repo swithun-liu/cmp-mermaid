@@ -456,7 +456,7 @@ internal class ClassLayout {
                     spans = rendered.spans,
                     metrics = metrics,
                     size = SceneSize(
-                        width = metrics.width + NOTE_PADDING * 2f + NOTE_FOLD,
+                        width = metrics.width + NOTE_PADDING * 2f,
                         height = metrics.height + NOTE_PADDING * 2f,
                     ),
                 ),
@@ -914,8 +914,8 @@ internal class ClassLayout {
             bounds = bounds,
             kind = SceneShapeKind.Rectangle,
             geometry = noteGeometry(visual.size),
-            fill = NOTE_FILL,
-            stroke = NOTE_STROKE,
+            fill = context.theme.noteFill,
+            stroke = context.theme.noteStroke,
             strokeWidth = 1f,
             cornerRadius = 0f,
             zIndex = 10,
@@ -925,10 +925,10 @@ internal class ClassLayout {
             bounds = SceneRect(
                 left = bounds.left + NOTE_PADDING,
                 top = bounds.top + NOTE_PADDING,
-                right = bounds.right - NOTE_PADDING - NOTE_FOLD,
+                right = bounds.right - NOTE_PADDING,
                 bottom = bounds.bottom - NOTE_PADDING,
             ),
-            color = context.theme.nodeText,
+            color = context.theme.noteText,
             fontSize = context.options.fontSize ?: context.theme.fontSize,
             lineHeight = DEFAULT_LINE_HEIGHT,
             fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
@@ -1344,28 +1344,9 @@ internal class ClassLayout {
     }
 
     private fun noteGeometry(size: SceneSize): SceneShapeGeometry {
-        val left = -size.width / 2f
-        val right = size.width / 2f
-        val top = -size.height / 2f
-        val bottom = size.height / 2f
-        val outer = listOf(
-            ScenePoint(left, top),
-            ScenePoint(right - NOTE_FOLD, top),
-            ScenePoint(right, top + NOTE_FOLD),
-            ScenePoint(right, bottom),
-            ScenePoint(left, bottom),
-        )
-        val fold = SceneShapePath(
-            points = listOf(
-                ScenePoint(right - NOTE_FOLD, top),
-                ScenePoint(right - NOTE_FOLD, top + NOTE_FOLD),
-                ScenePoint(right, top + NOTE_FOLD),
-            ),
-            closed = false,
-            fill = SceneShapePaint.None,
-        )
+        val outer = rectanglePoints(size.width, size.height)
         return SceneShapeGeometry(
-            paths = listOf(SceneShapePath(outer), fold),
+            paths = listOf(SceneShapePath(outer)),
             outline = outer,
         )
     }
@@ -1619,12 +1600,9 @@ internal class ClassLayout {
     )
 
     private companion object {
-        val NOTE_FILL = SceneColor(0xFFFFF5AD)
-        val NOTE_STROKE = SceneColor(0xFFFACC15)
         val HTML_BREAK = Regex("""<br\s*/?>""", RegexOption.IGNORE_CASE)
         const val MIN_CLASS_WIDTH = 80f
         const val NOTE_PADDING = 10f
-        const val NOTE_FOLD = 10f
         const val EDGE_FONT_SIZE = 14f
         const val TERMINAL_FONT_SIZE = 11f
         const val TITLE_FONT_SIZE = 18f

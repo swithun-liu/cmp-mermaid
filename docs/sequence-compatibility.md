@@ -46,16 +46,21 @@ not silently discarded.
 ## Validation Corpus
 
 - 35 curated gallery cases render identical source through Native Compose and
-  the bundled Mermaid.js `12.0.0` reference on the same Android viewport.
+  the bundled Mermaid.js `12.0.0` reference on Web and the same Android
+  emulator viewport.
 - 38 examples extracted from Mermaid's official Sequence documentation run in
   JVM tests.
 - The two browser menu documentation examples are the only expected
   unsupported cases.
+- 256 deterministic random legal Sequence diagrams cover 2-7 participants,
+  every message marker family, self messages, autonumber, notes, activations,
+  and nested control regions while checking finite bounds, actor bands,
+  labels, and routed message paths.
 - Focused tests cover Jison lexer/parser behavior, SequenceDB state,
   participant shapes, every message marker family, notes, wrapping, HTML line
   breaks, activations, control nesting, lifecycle endpoints, and resource
   limits.
-- Core and Compose compile for JVM, Android, and all configured iOS
+- Core and Compose compile for JVM, Android, Desktop, and all configured iOS
   architectures.
 
 ## Reference Workflow

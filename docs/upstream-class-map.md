@@ -36,7 +36,7 @@ production so an upstream grammar diff can be translated incrementally.
 | --- | --- | --- |
 | `classdiagram/ClassLayout.kt` | `classDb.getData()` and `classRenderer-v3-unified.ts` | Unified renderer data, default ELK selection, Dagre override, SceneGraph orchestration, title, interactions, and normalization |
 | `classdiagram/ClassLayout.kt` | `rendering-elements/shapes/classBox.ts` and `diagrams/class/shapeUtil.ts` | Class measurement, annotations, compartments, dividers, empty boxes, members, and methods |
-| `classdiagram/ClassLayout.kt` | Class note/rect rendering | Folded notes, attached note edges, and note colors |
+| `classdiagram/ClassLayout.kt` | `rendering-util/rendering-elements/shapes/note.ts` | Rectangular notes, attached note edges, and note colors |
 | `classdiagram/ClassLayout.kt` | `rendering-elements/edges.js`, `utils/lineWithOffset.ts` | Relations, center labels, terminal cardinalities, self-relations, and marker-aware offsets |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
 | `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Class and namespace placement using translated Graphlib/Dagre |

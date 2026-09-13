@@ -11,6 +11,7 @@ import io.github.cmpmermaid.compose.generated.resources.arimo_bolditalic
 import io.github.cmpmermaid.compose.generated.resources.arimo_italic
 import io.github.cmpmermaid.compose.generated.resources.arimo_regular
 import io.github.cmpmermaid.compose.generated.resources.droid_sans_fallback
+import io.github.cmpmermaid.compose.generated.resources.noto_sans_symbols2_regular
 import org.jetbrains.compose.resources.Font
 
 fun interface MermaidFontFamilyResolver {
@@ -26,6 +27,21 @@ fun interface MermaidFontFamilyResolver {
 fun rememberMermaidCjkFontFamily(): FontFamily {
     val font = Font(
         Res.font.droid_sans_fallback,
+        FontWeight.Normal,
+        FontStyle.Normal,
+    )
+    return remember(font) {
+        FontFamily(font)
+    }
+}
+
+/**
+ * Returns the bundled symbol fallback used for Unicode glyphs missing from Arimo.
+ */
+@Composable
+fun rememberMermaidSymbolFontFamily(): FontFamily {
+    val font = Font(
+        Res.font.noto_sans_symbols2_regular,
         FontWeight.Normal,
         FontStyle.Normal,
     )

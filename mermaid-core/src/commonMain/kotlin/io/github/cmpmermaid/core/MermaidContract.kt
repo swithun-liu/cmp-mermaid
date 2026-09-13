@@ -176,6 +176,25 @@ enum class MermaidSecurityLevel {
     Sandbox,
 }
 
+/**
+ * Mermaid 12 built-in theme names, available without parsing diagram configuration.
+ */
+enum class MermaidThemePreset(
+    val configName: String,
+) {
+    Default("default"),
+    Dark("dark"),
+    Forest("forest"),
+    Neutral("neutral"),
+    Base("base"),
+    Neo("neo"),
+    NeoDark("neo-dark"),
+    Redux("redux"),
+    ReduxColor("redux-color"),
+    ReduxDark("redux-dark"),
+    ReduxDarkColor("redux-dark-color"),
+}
+
 data class MermaidPieTheme(
     val colors: List<SceneColor> = listOf(
         SceneColor(0xFFECECFF),
@@ -231,16 +250,43 @@ data class MermaidXyChartTheme(
     ),
 )
 
+data class MermaidGanttTheme(
+    val sectionBackground: SceneColor = SceneColor(0x7D6666FF),
+    val alternateSectionBackground: SceneColor = SceneColor(0xFFFFFFFF),
+    val secondSectionBackground: SceneColor = SceneColor(0xFFFFF400),
+    val excludedBackground: SceneColor = SceneColor(0xFFEEEEEE),
+    val taskFill: SceneColor = SceneColor(0xFF8A90DD),
+    val taskStroke: SceneColor = SceneColor(0xFF534FBC),
+    val activeTaskFill: SceneColor = SceneColor(0xFFBFC7FF),
+    val activeTaskStroke: SceneColor = SceneColor(0xFF534FBC),
+    val doneTaskFill: SceneColor = SceneColor(0xFFD3D3D3),
+    val doneTaskStroke: SceneColor = SceneColor(0xFF808080),
+    val criticalTaskFill: SceneColor = SceneColor(0xFFFF0000),
+    val criticalTaskStroke: SceneColor = SceneColor(0xFFFF8888),
+    val taskText: SceneColor = SceneColor(0xFFFFFFFF),
+    val darkTaskText: SceneColor = SceneColor(0xFF000000),
+    val outsideTaskText: SceneColor = SceneColor(0xFF000000),
+    val clickableTaskText: SceneColor = SceneColor(0xFF003163),
+    val text: SceneColor = SceneColor(0xFF333333),
+    val grid: SceneColor = SceneColor(0xFFD3D3D3),
+    val todayLine: SceneColor = SceneColor(0xFFFF0000),
+    val verticalLine: SceneColor = SceneColor(0xFF000080),
+    val title: SceneColor = SceneColor(0xFF333333),
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
     val nodeStroke: SceneColor = SceneColor(0xFF9370DB),
-    val nodeText: SceneColor = SceneColor(0xFF333333),
+    val nodeText: SceneColor = SceneColor(0xFF131300),
     val edge: SceneColor = SceneColor(0xFF333333),
     val edgeLabelFill: SceneColor = SceneColor(0xCCE8E8E8),
     val groupFill: SceneColor = SceneColor(0xFFFFFFDE),
-    val groupStroke: SceneColor = SceneColor(0xFF9370DB),
+    val groupStroke: SceneColor = SceneColor(0xFFAAAA33),
     val groupText: SceneColor = SceneColor(0xFF333333),
+    val noteFill: SceneColor = SceneColor(0xFFFFF5AD),
+    val noteStroke: SceneColor = SceneColor(0xFFAAAA33),
+    val noteText: SceneColor = SceneColor(0xFF000000),
     val fontSize: Float = 16f,
     val fontFamily: String = MERMAID_CLASSIC_FONT_FAMILY,
     val strokeWidth: Float = 1f,
@@ -248,6 +294,7 @@ data class MermaidTheme(
     val borderColorArray: List<SceneColor> = emptyList(),
     val pie: MermaidPieTheme = MermaidPieTheme(),
     val xyChart: MermaidXyChartTheme = MermaidXyChartTheme(),
+    val gantt: MermaidGanttTheme = MermaidGanttTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -268,12 +315,16 @@ data class MermaidTheme(
             background = SceneColor(0xFF333333),
             nodeFill = SceneColor(0xFF1F2020),
             nodeStroke = SceneColor(0xFFCCCCCC),
-            nodeText = SceneColor(0xFFCCCCCC),
+            nodeText = SceneColor(0xFFE0DFDF),
             edge = SceneColor(0xFFD3D3D3),
             edgeLabelFill = SceneColor(0xFF585858),
             groupFill = SceneColor(0xFF474949),
             groupStroke = SceneColor(0x40FFFFFF),
             groupText = SceneColor(0xFFF9FFFE),
+            noteFill = SceneColor(0xFF474949),
+            noteStroke = SceneColor(0xFF2F2F2F),
+            noteText = SceneColor(0xFFB8B6B6),
+            gantt = darkGanttTheme(),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
                 background = 0xFF333333,
@@ -303,6 +354,10 @@ data class MermaidTheme(
             groupFill = SceneColor(0xFFF9F9FB),
             groupStroke = SceneColor(0xFFBDBCCC),
             groupText = SceneColor(0xFF000000),
+            noteFill = SceneColor(0xFFFFF5AD),
+            noteStroke = SceneColor(0xFFFACC15),
+            noteText = SceneColor(0xFF28253D),
+            gantt = reduxColorGanttTheme(),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -313,6 +368,22 @@ data class MermaidTheme(
             dropShadow = reduxShadow(dark = false),
         )
 
+        /**
+         * Resolves a Mermaid 12 built-in theme for host-controlled runtime switching.
+         */
+        fun preset(preset: MermaidThemePreset): MermaidTheme =
+            named(preset.configName) ?: MermaidDefault
+
+        /**
+         * Resolves a Mermaid 12 theme name without throwing on persisted or remote input.
+         */
+        fun fromName(name: String): GMResult<MermaidTheme, MermaidError> =
+            named(name.trim())?.let { theme -> GMResult.Ok(theme) } ?: GMResult.Err(
+                MermaidError.Configuration(
+                    "Unsupported Mermaid theme '$name'",
+                ),
+            )
+
         internal fun named(name: String): MermaidTheme? = when (name.lowercase()) {
             "default" -> MermaidDefault
             "dark" -> Dark
@@ -320,12 +391,16 @@ data class MermaidTheme(
                 background = SceneColor(0xFFFFFFFF),
                 nodeFill = SceneColor(0xFFCDE498),
                 nodeStroke = SceneColor(0xFF13540C),
-                nodeText = SceneColor(0xFF000000),
+                nodeText = SceneColor(0xFF321B67),
                 edge = SceneColor(0xFF000000),
                 edgeLabelFill = SceneColor(0xFFE8E8E8),
                 groupFill = SceneColor(0xFFCDFFB2),
                 groupStroke = SceneColor(0xFF6EAA49),
                 groupText = SceneColor(0xFF333333),
+                noteFill = SceneColor(0xFFFFF5AD),
+                noteStroke = SceneColor(0xFF6EAA49),
+                noteText = SceneColor(0xFF000000),
+                gantt = forestGanttTheme(),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -360,6 +435,10 @@ data class MermaidTheme(
                 groupFill = SceneColor(0xFFFCFCFC),
                 groupStroke = SceneColor(0xFF707070),
                 groupText = SceneColor(0xFF333333),
+                noteFill = SceneColor(0xFF666666),
+                noteStroke = SceneColor(0xFF999999),
+                noteText = SceneColor(0xFFFFFFFF),
+                gantt = neutralGanttTheme(),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -381,13 +460,17 @@ data class MermaidTheme(
             "base" -> MermaidTheme(
                 background = SceneColor(0xFFF4F4F4),
                 nodeFill = SceneColor(0xFFFFF4DD),
-                nodeStroke = SceneColor(0xFFE3D7C1),
+                nodeStroke = SceneColor(0xFFEEDEBB),
                 nodeText = SceneColor(0xFF333333),
                 edge = SceneColor(0xFF0B0B0B),
-                edgeLabelFill = SceneColor(0xFFFFDDEE),
-                groupFill = SceneColor(0xFFF7FAFF),
-                groupStroke = SceneColor(0xFFD7DFED),
-                groupText = SceneColor(0xFF333333),
+                edgeLabelFill = SceneColor(0xFFF4DDFF),
+                groupFill = SceneColor(0xFFF7F9FF),
+                groupStroke = SceneColor(0xFFCFDBF3),
+                groupText = SceneColor(0xFF090600),
+                noteFill = SceneColor(0xFFFFF5AD),
+                noteStroke = SceneColor(0xFFE4DB95),
+                noteText = SceneColor(0xFF333333),
+                gantt = baseGanttTheme(),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
             )
@@ -401,6 +484,10 @@ data class MermaidTheme(
                 groupFill = SceneColor(0xFFFFFFFF),
                 groupStroke = SceneColor(0xFFE6E6E6),
                 groupText = SceneColor(0xFF000000),
+                noteFill = SceneColor(0xFFFFF5AD),
+                noteStroke = SceneColor(0xFFE4DB95),
+                noteText = SceneColor(0xFF333333),
+                gantt = neoGanttTheme(),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -423,6 +510,10 @@ data class MermaidTheme(
                 groupFill = SceneColor(0xFF201F1F),
                 groupStroke = SceneColor(0xFF060606),
                 groupText = SceneColor(0xFFDFE0E0),
+                noteFill = SceneColor(0xFFFFF5AD),
+                noteStroke = SceneColor(0xFFE4DB95),
+                noteText = SceneColor(0xFF333333),
+                gantt = neoDarkGanttTheme(),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 pie = neoPieTheme(dark = true),
@@ -444,6 +535,10 @@ data class MermaidTheme(
                 groupFill = SceneColor(0xFFF9F9FB),
                 groupStroke = SceneColor(0xFFBDBCCC),
                 groupText = SceneColor(0xFF000000),
+                noteFill = SceneColor(0xFFFFF5AD),
+                noteStroke = SceneColor(0xFFFACC15),
+                noteText = SceneColor(0xFF28253D),
+                gantt = reduxGanttTheme(),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -455,13 +550,17 @@ data class MermaidTheme(
             "redux-dark" -> reduxDark()
             "redux-dark-color" -> reduxDark().copy(
                 borderColorArray = reduxColorBorders(),
+                gantt = reduxDarkColorGanttTheme(),
                 pie = reduxColorPieTheme(dark = true),
                 xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
             )
             else -> null
         }
 
-        internal fun withVariables(
+        /**
+         * Applies Mermaid themeVariables to a base theme for application brand styling.
+         */
+        fun withVariables(
             theme: MermaidTheme,
             values: Map<String, String>,
             colorArrays: Map<String, List<String>> = emptyMap(),
@@ -555,6 +654,42 @@ data class MermaidTheme(
                     color("pieOuterStrokeColor") ?: theme.pie.outerStrokeColor,
                 opacity = pieOpacity,
             )
+            val gantt = theme.gantt.copy(
+                sectionBackground =
+                    color("sectionBkgColor") ?: theme.gantt.sectionBackground,
+                alternateSectionBackground =
+                    color("altSectionBkgColor") ?: theme.gantt.alternateSectionBackground,
+                secondSectionBackground =
+                    color("sectionBkgColor2") ?: theme.gantt.secondSectionBackground,
+                excludedBackground =
+                    color("excludeBkgColor") ?: theme.gantt.excludedBackground,
+                taskFill = color("taskBkgColor") ?: theme.gantt.taskFill,
+                taskStroke = color("taskBorderColor") ?: theme.gantt.taskStroke,
+                activeTaskFill =
+                    color("activeTaskBkgColor") ?: theme.gantt.activeTaskFill,
+                activeTaskStroke =
+                    color("activeTaskBorderColor") ?: theme.gantt.activeTaskStroke,
+                doneTaskFill =
+                    color("doneTaskBkgColor") ?: theme.gantt.doneTaskFill,
+                doneTaskStroke =
+                    color("doneTaskBorderColor") ?: theme.gantt.doneTaskStroke,
+                criticalTaskFill =
+                    color("critBkgColor") ?: theme.gantt.criticalTaskFill,
+                criticalTaskStroke =
+                    color("critBorderColor") ?: theme.gantt.criticalTaskStroke,
+                taskText = color("taskTextColor") ?: theme.gantt.taskText,
+                darkTaskText =
+                    color("taskTextDarkColor") ?: theme.gantt.darkTaskText,
+                outsideTaskText =
+                    color("taskTextOutsideColor") ?: theme.gantt.outsideTaskText,
+                clickableTaskText =
+                    color("taskTextClickableColor") ?: theme.gantt.clickableTaskText,
+                text = color("textColor") ?: theme.gantt.text,
+                grid = color("gridColor") ?: theme.gantt.grid,
+                todayLine = color("todayLineColor") ?: theme.gantt.todayLine,
+                verticalLine = color("vertLineColor") ?: theme.gantt.verticalLine,
+                title = color("titleColor") ?: theme.gantt.title,
+            )
             val xyPaletteSource = values["xyChart.plotColorPalette"]
             val xyPalette = if (xyPaletteSource == null) {
                 theme.xyChart.plotColorPalette
@@ -614,7 +749,7 @@ data class MermaidTheme(
             }
             val resolved = theme.copy(
                 background = color("background") ?: theme.background,
-                nodeFill = color("mainBkg") ?: theme.nodeFill,
+                nodeFill = color("mainBkg", "primaryColor") ?: theme.nodeFill,
                 nodeStroke = color("nodeBorder", "primaryBorderColor") ?: theme.nodeStroke,
                 nodeText = color("nodeTextColor", "primaryTextColor", "textColor") ?: theme.nodeText,
                 edge = color("defaultLinkColor", "lineColor") ?: theme.edge,
@@ -622,6 +757,9 @@ data class MermaidTheme(
                 groupFill = color("clusterBkg") ?: theme.groupFill,
                 groupStroke = color("clusterBorder") ?: theme.groupStroke,
                 groupText = color("clusterText", "titleColor") ?: theme.groupText,
+                noteFill = color("noteBkgColor") ?: theme.noteFill,
+                noteStroke = color("noteBorderColor") ?: theme.noteStroke,
+                noteText = color("noteTextColor") ?: theme.noteText,
                 fontSize = number("fontSize") ?: theme.fontSize,
                 fontFamily = values["fontFamily"] ?: theme.fontFamily,
                 strokeWidth = number("strokeWidth") ?: theme.strokeWidth,
@@ -629,6 +767,7 @@ data class MermaidTheme(
                 borderColorArray = borderColorArray,
                 pie = pie,
                 xyChart = xyChart,
+                gantt = gantt,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -654,6 +793,10 @@ data class MermaidTheme(
             groupFill = SceneColor(0xFF1E1A2E),
             groupStroke = SceneColor(0xFFBDBCCC),
             groupText = SceneColor(0xFFDFE0E0),
+            noteFill = SceneColor(0xFFFEF9C3),
+            noteStroke = SceneColor(0xFFFACC15),
+            noteText = SceneColor(0xFF28253D),
+            gantt = reduxDarkGanttTheme(),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -661,6 +804,126 @@ data class MermaidTheme(
             xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
             dropShadow = reduxShadow(dark = true),
         )
+
+        private fun darkGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
+            sectionBackground = SceneColor(0xFFB4AC76),
+            alternateSectionBackground = SceneColor(0xFF333333),
+            secondSectionBackground = SceneColor(0xFFEAE8D9),
+            excludedBackground = SceneColor(0xFF9F9758),
+            taskFill = SceneColor(0xFF595C5C),
+            taskStroke = SceneColor(0xFFFFFFFF),
+            activeTaskFill = SceneColor(0xFF81B1DB),
+            activeTaskStroke = SceneColor(0xFFFFFFFF),
+            criticalTaskFill = SceneColor(0xFFE83737),
+            criticalTaskStroke = SceneColor(0xFFE83737),
+            taskText = SceneColor(0xFFE2DCD6),
+            darkTaskText = SceneColor(0xFF2C2C2C),
+            outsideTaskText = SceneColor(0xFFD3D3D3),
+            text = SceneColor(0xFFCCCCCC),
+            todayLine = SceneColor(0xFFDB5757),
+            verticalLine = SceneColor(0xFF00BFFF),
+            title = SceneColor(0xFFF9FFFE),
+        )
+
+        private fun forestGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
+            sectionBackground = SceneColor(0xFF6EAA49),
+            secondSectionBackground = SceneColor(0xFF6EAA49),
+            taskFill = SceneColor(0xFF487E3A),
+            taskStroke = SceneColor(0xFF13540C),
+            activeTaskFill = SceneColor(0xFFCDE498),
+            activeTaskStroke = SceneColor(0xFF13540C),
+            text = SceneColor(0xFF000000),
+            verticalLine = SceneColor(0xFF00BFFF),
+        )
+
+        private fun neutralGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
+            sectionBackground = SceneColor(0xFFBDBDBD),
+            secondSectionBackground = SceneColor(0xFFBDBDBD),
+            taskFill = SceneColor(0xFF707070),
+            taskStroke = SceneColor(0xFF575757),
+            activeTaskFill = SceneColor(0xFFEEEEEE),
+            activeTaskStroke = SceneColor(0xFF575757),
+            doneTaskFill = SceneColor(0xFFBBBBBB),
+            doneTaskStroke = SceneColor(0xFF666666),
+            criticalTaskFill = SceneColor(0xFFDD4422),
+            criticalTaskStroke = SceneColor(0xFFB1361B),
+            darkTaskText = SceneColor(0xFF333333),
+            outsideTaskText = SceneColor(0xFF333333),
+            text = SceneColor(0xFF000000),
+            grid = SceneColor(0xFFE6E6E6),
+            todayLine = SceneColor(0xFFDD4422),
+            verticalLine = SceneColor(0xFFDD4422),
+        )
+
+        private fun baseGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
+            sectionBackground = SceneColor(0xFFF7F9FF),
+            secondSectionBackground = SceneColor(0xFFFFF4DD),
+            taskFill = SceneColor(0xFFFFF4DD),
+            taskStroke = SceneColor(0xFFEEDEBB),
+            activeTaskFill = SceneColor(0xFFFFFFFF),
+            activeTaskStroke = SceneColor(0xFFFFF4DD),
+            taskText = SceneColor(0xFF333333),
+            darkTaskText = SceneColor(0xFF333333),
+            outsideTaskText = SceneColor(0xFF333333),
+            text = SceneColor(0xFF333333),
+            title = SceneColor(0xFF090600),
+        )
+
+        private fun neoGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
+            sectionBackground = SceneColor(0xFFFFFFFF),
+            secondSectionBackground = SceneColor(0xFFECECFE),
+            taskFill = SceneColor(0xFFECECFE),
+            taskStroke = SceneColor(0xFFB3B3B3),
+            activeTaskFill = SceneColor(0xFFFFFFFF),
+            activeTaskStroke = SceneColor(0xFFECECFE),
+            taskText = SceneColor(0xFF333333),
+            darkTaskText = SceneColor(0xFF333333),
+            outsideTaskText = SceneColor(0xFF333333),
+            verticalLine = SceneColor(0xFFB3B3B3),
+            title = SceneColor(0xFF000000),
+        )
+
+        private fun neoDarkGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
+            sectionBackground = SceneColor(0xFF201F1F),
+            secondSectionBackground = SceneColor(0xFF1F2020),
+            taskFill = SceneColor(0xFF1F2020),
+            taskStroke = SceneColor(0xFFCCCCCC),
+            activeTaskFill = SceneColor(0xFF595C5C),
+            activeTaskStroke = SceneColor(0xFF1F2020),
+            doneTaskFill = SceneColor(0xFF584343),
+            taskText = SceneColor(0xFFCCCCCC),
+            darkTaskText = SceneColor(0xFFCCCCCC),
+            outsideTaskText = SceneColor(0xFFCCCCCC),
+            text = SceneColor(0xFFCCCCCC),
+            verticalLine = SceneColor(0xFFCCCCCC),
+            title = SceneColor(0xFFDFE0E0),
+        )
+
+        private fun reduxGanttTheme(): MermaidGanttTheme = neoGanttTheme().copy(
+            taskStroke = SceneColor(0xFF181818),
+            activeTaskStroke = SceneColor(0xFFECECFE),
+            taskText = SceneColor(0xFF28253D),
+            darkTaskText = SceneColor(0xFF28253D),
+            outsideTaskText = SceneColor(0xFF28253D),
+            text = SceneColor(0xFF28253D),
+            verticalLine = SceneColor(0xFF181818),
+        )
+
+        private fun reduxColorGanttTheme(): MermaidGanttTheme = reduxGanttTheme().copy(
+            sectionBackground = SceneColor(0xFFF4A8FF),
+            secondSectionBackground = SceneColor(0xFF46ECD5),
+        )
+
+        private fun reduxDarkGanttTheme(): MermaidGanttTheme = neoDarkGanttTheme().copy(
+            doneTaskFill = SceneColor(0xFF38383E),
+        )
+
+        private fun reduxDarkColorGanttTheme(): MermaidGanttTheme =
+            reduxDarkGanttTheme().copy(
+                sectionBackground = SceneColor(0xFFF4A8FF),
+                alternateSectionBackground = SceneColor(0xFF333333),
+                secondSectionBackground = SceneColor(0xFF46ECD5),
+            )
 
         private fun reduxXyChartTheme(
             background: Long,

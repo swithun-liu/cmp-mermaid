@@ -111,31 +111,37 @@ private val destinations = listOf(
         DebugScreen.Sequence,
         sequenceDiagramDocsSpec,
         "Participants, messages, notes, and control regions",
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Class,
         classDiagramDocsSpec,
         "Classes, relations, notes, and namespaces",
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.State,
         stateDiagramDocsSpec,
         "States, transitions, composites, notes, and concurrency",
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Er,
         erDiagramDocsSpec,
         "Entities, attributes, cardinalities, and subgraphs",
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Gantt,
         ganttDiagramDocsSpec,
         "Tasks, dependencies, exclusions, and milestones",
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Pie,
         pieDiagramDocsSpec,
         "Pie and donut charts with configurable legends",
+        DiagramStability.Stable,
     ),
 )
 

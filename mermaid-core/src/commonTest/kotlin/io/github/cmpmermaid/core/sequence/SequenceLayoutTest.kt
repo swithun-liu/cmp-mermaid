@@ -12,6 +12,7 @@ import io.github.cmpmermaid.core.ScenePathCommand
 import io.github.cmpmermaid.core.ScenePoint
 import io.github.cmpmermaid.core.SceneShape
 import io.github.cmpmermaid.core.SceneShapeGeometry
+import io.github.cmpmermaid.core.SceneShapeKind
 import io.github.cmpmermaid.core.SceneStrokePattern
 import io.github.cmpmermaid.core.SceneText
 import io.github.cmpmermaid.core.TextMetricProvider
@@ -100,10 +101,19 @@ class SequenceLayoutTest {
         )
 
         val shapes = scene.elements.filterIsInstance<SceneShape>()
+        val notes = shapes.filter { it.id.startsWith("note-") }
         assertTrue(shapes.any { it.id.startsWith("activation-") })
         assertTrue(shapes.any { it.id.startsWith("control-") })
         assertTrue(shapes.any { it.id.startsWith("control-label-") })
-        assertTrue(shapes.any { it.id.startsWith("note-") })
+        assertTrue(notes.all { it.kind == SceneShapeKind.Rectangle })
+        assertTrue(notes.all { it.fill == context.theme.noteFill })
+        assertTrue(notes.all { it.stroke == context.theme.noteStroke })
+        assertEquals(
+            context.theme.noteText,
+            scene.elements.filterIsInstance<SceneText>()
+                .single { it.text == "Shared state" }
+                .color,
+        )
         assertTrue(scene.width > 0f)
         assertTrue(scene.height > 0f)
     }

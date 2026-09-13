@@ -88,11 +88,43 @@ debugImplementation("io.github.cmpmermaid:mermaid-debug-ui:<version>")
 production `mermaid-compose` and `mermaid-core` manifests do not declare
 `android.permission.INTERNET`.
 
+## Themes
+
+The native renderer translates Mermaid `12.0.0` theme variables instead of
+loading browser CSS. Hosts can switch any built-in preset at runtime:
+
+```kotlin
+MermaidDiagram(
+    source = source,
+    theme = MermaidTheme.preset(MermaidThemePreset.Forest),
+)
+```
+
+Business-specific themes can start from a preset and use Kotlin `copy`, or use
+`MermaidTheme.withVariables(...)` when the values come from Mermaid-compatible
+configuration. The latter returns `GMResult` so invalid remote colors and
+numbers are reported explicitly.
+
+```kotlin
+val brandTheme = MermaidTheme.preset(MermaidThemePreset.ReduxColor).copy(
+    background = SceneColor(0xFF101820),
+    nodeFill = SceneColor(0xFFF2AA4C),
+    nodeText = SceneColor(0xFF101820),
+    edge = SceneColor(0xFFF2AA4C),
+)
+```
+
+`MermaidRenderOptions.themeName`, frontmatter `theme`, and frontmatter
+`themeVariables` remain compatible with Mermaid.js. Arbitrary `themeCSS` is a
+browser DOM feature and returns `MermaidError.UnsupportedFeature` on the native
+renderer; use `MermaidTheme`, `MermaidPieTheme`, `MermaidXyChartTheme`,
+`MermaidGanttTheme`, or a custom `MermaidFontFamilyResolver` for portable
+styling.
+
 ## Stability
 
-- **Stable:** Flowchart and XY Chart against the Mermaid `12.0.0` compatibility
-  baseline.
-- **Beta:** Sequence, Class, State, Entity Relationship, Gantt, and Pie.
+- **Stable:** Flowchart, XY Chart, Sequence, Class, State, Entity Relationship,
+  Gantt, and Pie against the Mermaid `12.0.0` compatibility contracts.
 
 Stable renderers are covered by official documentation fixtures, deterministic
 stress cases, and Native/Official visual comparisons. Syntax that cannot be

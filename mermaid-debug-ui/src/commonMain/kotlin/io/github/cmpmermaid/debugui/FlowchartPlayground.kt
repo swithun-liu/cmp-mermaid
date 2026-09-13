@@ -66,6 +66,7 @@ import io.github.cmpmermaid.compose.rememberMermaidCjkFontFamily
 import io.github.cmpmermaid.core.MermaidCompatibility
 import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.MermaidTheme
+import io.github.cmpmermaid.core.MermaidThemePreset
 import io.github.cmpmermaid.debugui.generated.FlowchartDemo
 import io.github.cmpmermaid.debugui.generated.flowchartDemos
 
@@ -96,12 +97,18 @@ internal fun FlowchartPlaygroundScreen(
     var selectedLayoutName by rememberSaveable {
         mutableStateOf(PlaygroundLayout.Elk.name)
     }
+    var selectedThemeName by rememberSaveable {
+        mutableStateOf(MermaidThemePreset.ReduxColor.name)
+    }
     var selectedRendererName by rememberSaveable {
         mutableStateOf(PlaygroundRenderer.Native.name)
     }
     val selectedLayout = PlaygroundLayout.entries
         .firstOrNull { it.name == selectedLayoutName }
         ?: PlaygroundLayout.Elk
+    val selectedTheme = MermaidThemePreset.entries
+        .firstOrNull { it.name == selectedThemeName }
+        ?: MermaidThemePreset.ReduxColor
     val selectedRenderer = PlaygroundRenderer.entries
         .firstOrNull { it.name == selectedRendererName }
         ?: PlaygroundRenderer.Native
@@ -148,6 +155,7 @@ internal fun FlowchartPlaygroundScreen(
             draftSource = draftSource,
             renderedSource = renderedSource,
             selectedLayout = selectedLayout,
+            selectedTheme = selectedTheme,
             selectedRenderer = selectedRenderer,
             focusManager = focusManager,
             onDemoSelected = { demo ->
@@ -158,6 +166,9 @@ internal fun FlowchartPlaygroundScreen(
             onDraftChange = { draftSource = it },
             onLayoutSelected = { layout ->
                 selectedLayoutName = layout.name
+            },
+            onThemeSelected = { theme ->
+                selectedThemeName = theme.name
             },
             onRendererSelected = { renderer ->
                 selectedRendererName = renderer.name
@@ -184,16 +195,19 @@ private fun PlaygroundContent(
     draftSource: String,
     renderedSource: String,
     selectedLayout: PlaygroundLayout,
+    selectedTheme: MermaidThemePreset,
     selectedRenderer: PlaygroundRenderer,
     focusManager: FocusManager,
     onDemoSelected: (FlowchartDemo) -> Unit,
     onDraftChange: (String) -> Unit,
     onLayoutSelected: (PlaygroundLayout) -> Unit,
+    onThemeSelected: (MermaidThemePreset) -> Unit,
     onRendererSelected: (PlaygroundRenderer) -> Unit,
     onReset: () -> Unit,
     onRender: () -> Unit,
 ) {
     var examplesExpanded by remember { mutableStateOf(false) }
+    var themesExpanded by remember { mutableStateOf(false) }
     val hasPendingChanges = draftSource != renderedSource
     val cjkFontFamily = if (draftSource.cjkFontRanges().isNotEmpty()) {
         rememberMermaidCjkFontFamily()
@@ -203,8 +217,11 @@ private fun PlaygroundContent(
     val sourceVisualTransformation = remember(cjkFontFamily) {
         cjkFontFamily?.let(::CjkFontVisualTransformation) ?: VisualTransformation.None
     }
-    val renderOptions = remember(selectedLayout) {
-        MermaidRenderOptions(layout = selectedLayout.option)
+    val renderOptions = remember(selectedLayout, selectedTheme) {
+        MermaidRenderOptions(
+            layout = selectedLayout.option,
+            themeName = selectedTheme.configName,
+        )
     }
 
     LazyColumn(
@@ -296,6 +313,59 @@ private fun PlaygroundContent(
                         ),
                         label = { Text(layout.label) },
                     )
+                }
+            }
+        }
+
+        item {
+            Text(
+                text = "Theme",
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Spacer(Modifier.height(8.dp))
+            ExposedDropdownMenuBox(
+                expanded = themesExpanded,
+                onExpandedChange = { themesExpanded = it },
+            ) {
+                OutlinedTextField(
+                    value = selectedTheme.configName,
+                    onValueChange = {},
+                    modifier = Modifier
+                        .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
+                        .fillMaxWidth(),
+                    readOnly = true,
+                    singleLine = true,
+                    label = { Text("Mermaid 12 preset") },
+                    trailingIcon = {
+                        ExposedDropdownMenuDefaults.TrailingIcon(
+                            expanded = themesExpanded,
+                        )
+                    },
+                )
+                ExposedDropdownMenu(
+                    expanded = themesExpanded,
+                    onDismissRequest = { themesExpanded = false },
+                ) {
+                    MermaidThemePreset.entries.forEach { theme ->
+                        DropdownMenuItem(
+                            text = {
+                                Text(
+                                    text = theme.configName,
+                                    fontWeight = if (theme == selectedTheme) {
+                                        FontWeight.SemiBold
+                                    } else {
+                                        FontWeight.Normal
+                                    },
+                                )
+                            },
+                            onClick = {
+                                themesExpanded = false
+                                focusManager.clearFocus()
+                                onThemeSelected(theme)
+                            },
+                        )
+                    }
                 }
             }
         }
@@ -395,13 +465,14 @@ private fun PlaygroundContent(
                     PlaygroundRenderer.Native -> MermaidDiagram(
                         source = renderedSource,
                         modifier = Modifier.fillMaxSize(),
-                        theme = MermaidTheme.FlowchartDefault,
+                        theme = MermaidTheme.preset(selectedTheme),
                         options = renderOptions,
                         contentDescription = "Playground Flowchart native preview",
                     )
                     PlaygroundRenderer.Official -> OfficialMermaidDiagram(
                         source = renderedSource,
                         layout = selectedLayout.option,
+                        themeName = selectedTheme.configName,
                         modifier = Modifier.fillMaxSize(),
                     )
                 }
