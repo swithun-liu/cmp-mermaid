@@ -19,6 +19,15 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
     </style>
+    <script>
+        if (window.location.hostname.endsWith(".github.io")) {
+            WebAssembly.instantiateStreaming = async (source, imports, options) => {
+                const response = await source;
+                const bytes = await response.arrayBuffer();
+                return WebAssembly.instantiate(bytes, imports, options);
+            };
+        }
+    </script>
     <script defer type="application/javascript" src="cmp-mermaid.js"></script>
 </head>
 <body></body>
