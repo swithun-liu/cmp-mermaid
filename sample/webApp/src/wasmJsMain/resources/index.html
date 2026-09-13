@@ -21,10 +21,44 @@
     </style>
     <script>
         if (window.location.hostname.endsWith(".github.io")) {
+            const nativeInstantiate = WebAssembly.instantiate.bind(WebAssembly);
+
             WebAssembly.instantiateStreaming = async (source, imports, options) => {
                 const response = await source;
-                const bytes = await response.arrayBuffer();
-                return WebAssembly.instantiate(bytes, imports, options);
+                const manifestResponse = await fetch(`${response.url}.chunks.json`);
+                if (!manifestResponse.ok) {
+                    return nativeInstantiate(
+                        await response.arrayBuffer(),
+                        imports,
+                        options,
+                    );
+                }
+
+                const manifest = await manifestResponse.json();
+                const chunks = [];
+                const batchSize = 6;
+                for (let start = 0; start < manifest.chunks.length; start += batchSize) {
+                    const batch = manifest.chunks.slice(start, start + batchSize);
+                    const loaded = await Promise.all(
+                        batch.map(async (chunkName) => {
+                            const chunkUrl = new URL(chunkName, response.url);
+                            const chunkResponse = await fetch(chunkUrl);
+                            if (!chunkResponse.ok) {
+                                throw new Error(`Failed to load ${chunkUrl}`);
+                            }
+                            return new Uint8Array(await chunkResponse.arrayBuffer());
+                        }),
+                    );
+                    chunks.push(...loaded);
+                }
+
+                const bytes = new Uint8Array(manifest.byteLength);
+                let offset = 0;
+                for (const chunk of chunks) {
+                    bytes.set(chunk, offset);
+                    offset += chunk.byteLength;
+                }
+                return nativeInstantiate(bytes, imports, options);
             };
         }
     </script>

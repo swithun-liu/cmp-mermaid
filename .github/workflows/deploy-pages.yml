@@ -34,6 +34,9 @@ jobs:
       - name: Build Kotlin/Wasm site
         run: ./gradlew --no-daemon --no-build-cache --rerun-tasks :sample:webApp:wasmJsBrowserDistribution
 
+      - name: Prepare GitHub Pages Wasm assets
+        run: node tools/split-wasm-for-pages.mjs sample/webApp/build/dist/wasmJs/productionExecutable
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
