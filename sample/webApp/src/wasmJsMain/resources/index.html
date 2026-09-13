@@ -18,29 +18,111 @@
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
+
+        .loading-shell {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            place-items: center;
+            color: #202124;
+        }
+
+        .loading-content {
+            width: min(320px, calc(100vw - 48px));
+        }
+
+        .loading-title {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 650;
+            letter-spacing: 0;
+        }
+
+        .loading-status {
+            margin: 10px 0 18px;
+            color: #5f6368;
+            font-size: 14px;
+            letter-spacing: 0;
+        }
+
+        .loading-track {
+            width: 100%;
+            height: 4px;
+            overflow: hidden;
+            border-radius: 2px;
+            background: #dfe3e7;
+        }
+
+        .loading-progress {
+            width: 16%;
+            height: 100%;
+            border-radius: 2px;
+            background: #008c95;
+            animation: loading-slide 1.2s ease-in-out infinite alternate;
+            transition: width 180ms ease-out;
+        }
+
+        .loading-progress.determinate {
+            animation: none;
+        }
+
+        @keyframes loading-slide {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(525%);
+            }
+        }
     </style>
     <script>
         if (window.location.hostname.endsWith(".github.io")) {
             const nativeFetch = window.fetch.bind(window);
             const nativeInstantiate = WebAssembly.instantiate.bind(WebAssembly);
+            const directWasmTimeoutMs = 8000;
+            const loadingState = { completed: 0, total: 0 };
 
-            window.fetch = async (input, options) => {
-                const requestUrl = new URL(
-                    input instanceof Request ? input.url : input,
-                    window.location.href,
-                );
-                if (!requestUrl.pathname.endsWith(".wasm")) {
-                    return nativeFetch(input, options);
+            const updateLoadingProgress = () => {
+                const progress = document.querySelector("#loading-progress");
+                const status = document.querySelector("#loading-status");
+                if (progress === null || status === null || loadingState.total === 0) {
+                    return;
                 }
 
+                const percent = Math.round(
+                    loadingState.completed * 100 / loadingState.total,
+                );
+                status.textContent = `Loading renderer ${percent}%`;
+                if (loadingState.completed === 0) {
+                    return;
+                }
+
+                progress.classList.add("determinate");
+                progress.style.transform = "none";
+                progress.style.width = `${percent}%`;
+                progress.setAttribute("aria-valuenow", `${percent}`);
+            };
+
+            const showLoadingError = () => {
+                const status = document.querySelector("#loading-status");
+                if (status !== null) {
+                    status.textContent = "Loading failed. Refresh to retry.";
+                }
+            };
+
+            const fetchChunkedWasm = async (requestUrl) => {
                 const manifestUrl = new URL(requestUrl);
                 manifestUrl.pathname = `${manifestUrl.pathname}.chunks.json`;
                 const manifestResponse = await nativeFetch(manifestUrl);
                 if (!manifestResponse.ok) {
-                    return nativeFetch(input, options);
+                    throw new Error(`Failed to load ${manifestUrl}`);
                 }
 
                 const manifest = await manifestResponse.json();
+                loadingState.total += manifest.chunks.length;
+                updateLoadingProgress();
+
                 const chunks = [];
                 for (const chunkName of manifest.chunks) {
                     const chunkUrl = new URL(chunkName, manifestUrl);
@@ -51,6 +133,8 @@
                     chunks.push(
                         new Uint8Array(await chunkResponse.arrayBuffer()),
                     );
+                    loadingState.completed += 1;
+                    updateLoadingProgress();
                 }
 
                 const bytes = new Uint8Array(manifest.byteLength);
@@ -59,9 +143,66 @@
                     bytes.set(chunk, offset);
                     offset += chunk.byteLength;
                 }
-                return new Response(bytes, {
-                    headers: { "Content-Type": "application/wasm" },
+                return bytes;
+            };
+
+            const fetchDirectWasm = async (input, options) => {
+                const controller = new AbortController();
+                let timeoutId = 0;
+                const timeout = new Promise((_, reject) => {
+                    timeoutId = window.setTimeout(() => {
+                        controller.abort();
+                        reject(new Error("Direct Wasm download timed out"));
+                    }, directWasmTimeoutMs);
                 });
+                const download = nativeFetch(input, {
+                    ...(options ?? {}),
+                    signal: controller.signal,
+                }).then(async (response) => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${response.url}`);
+                    }
+                    const bytes = new Uint8Array(await response.arrayBuffer());
+                    if (bytes.byteLength === 0) {
+                        throw new Error(`Empty Wasm response from ${response.url}`);
+                    }
+                    return bytes;
+                });
+
+                try {
+                    return await Promise.race([download, timeout]);
+                } finally {
+                    window.clearTimeout(timeoutId);
+                }
+            };
+
+            const createWasmResponse = (bytes) => new Response(bytes, {
+                headers: { "Content-Type": "application/wasm" },
+            });
+
+            window.fetch = async (input, options) => {
+                const requestUrl = new URL(
+                    input instanceof Request ? input.url : input,
+                    window.location.href,
+                );
+                if (!requestUrl.pathname.endsWith(".wasm")) {
+                    return nativeFetch(input, options);
+                }
+
+                try {
+                    return createWasmResponse(
+                        await fetchDirectWasm(input, options),
+                    );
+                } catch (directFailure) {
+                    try {
+                        return createWasmResponse(
+                            await fetchChunkedWasm(requestUrl),
+                        );
+                    } catch (chunkFailure) {
+                        showLoadingError();
+                        throw chunkFailure;
+                    }
+                }
             };
 
             WebAssembly.instantiateStreaming = async (source, imports, options) => {
@@ -76,5 +217,22 @@
     </script>
     <script defer type="application/javascript" src="cmp-mermaid.js"></script>
 </head>
-<body></body>
+<body>
+    <main class="loading-shell">
+        <div class="loading-content">
+            <h1 class="loading-title">CMP Mermaid</h1>
+            <p class="loading-status" id="loading-status">Preparing renderer...</p>
+            <div class="loading-track">
+                <div
+                    class="loading-progress"
+                    id="loading-progress"
+                    role="progressbar"
+                    aria-label="Loading CMP Mermaid"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                ></div>
+            </div>
+        </div>
+    </main>
+</body>
 </html>

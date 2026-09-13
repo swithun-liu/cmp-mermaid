@@ -38,6 +38,5 @@ for (const wasmFile of wasmFiles) {
     `${wasmPath}.chunks.json`,
     `${JSON.stringify({ byteLength: wasmBytes.length, chunks })}\n`,
   );
-  await writeFile(wasmPath, new Uint8Array());
   console.log(`Split ${wasmFile} into ${chunks.length} chunks.`);
 }
