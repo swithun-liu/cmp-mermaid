@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-const CHUNK_SIZE_BYTES = 256 * 1024;
+const CHUNK_SIZE_BYTES = 512 * 1024;
 const outputDirectory = process.argv[2];
 
 if (!outputDirectory) {
