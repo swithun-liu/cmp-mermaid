@@ -41,16 +41,17 @@
                 }
 
                 const manifest = await manifestResponse.json();
-                const chunks = await Promise.all(
-                    manifest.chunks.map(async (chunkName) => {
-                        const chunkUrl = new URL(chunkName, manifestUrl);
-                        const chunkResponse = await nativeFetch(chunkUrl);
-                        if (!chunkResponse.ok) {
-                            throw new Error(`Failed to load ${chunkUrl}`);
-                        }
-                        return new Uint8Array(await chunkResponse.arrayBuffer());
-                    }),
-                );
+                const chunks = [];
+                for (const chunkName of manifest.chunks) {
+                    const chunkUrl = new URL(chunkName, manifestUrl);
+                    const chunkResponse = await nativeFetch(chunkUrl);
+                    if (!chunkResponse.ok) {
+                        throw new Error(`Failed to load ${chunkUrl}`);
+                    }
+                    chunks.push(
+                        new Uint8Array(await chunkResponse.arrayBuffer()),
+                    );
+                }
 
                 const bytes = new Uint8Array(manifest.byteLength);
                 let offset = 0;
