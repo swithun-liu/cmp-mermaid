@@ -21,24 +21,29 @@
     </style>
     <script>
         if (window.location.hostname.endsWith(".github.io")) {
-            const nativeInstantiate = WebAssembly.instantiate.bind(WebAssembly);
+            const nativeFetch = window.fetch.bind(window);
 
-            WebAssembly.instantiateStreaming = async (source, imports, options) => {
-                const response = await source;
-                const manifestResponse = await fetch(`${response.url}.chunks.json`);
+            window.fetch = async (input, options) => {
+                const requestUrl = new URL(
+                    input instanceof Request ? input.url : input,
+                    window.location.href,
+                );
+                if (!requestUrl.pathname.endsWith(".wasm")) {
+                    return nativeFetch(input, options);
+                }
+
+                const manifestUrl = new URL(requestUrl);
+                manifestUrl.pathname = `${manifestUrl.pathname}.chunks.json`;
+                const manifestResponse = await nativeFetch(manifestUrl);
                 if (!manifestResponse.ok) {
-                    return nativeInstantiate(
-                        await response.arrayBuffer(),
-                        imports,
-                        options,
-                    );
+                    return nativeFetch(input, options);
                 }
 
                 const manifest = await manifestResponse.json();
                 const chunks = await Promise.all(
                     manifest.chunks.map(async (chunkName) => {
-                        const chunkUrl = new URL(chunkName, response.url);
-                        const chunkResponse = await fetch(chunkUrl);
+                        const chunkUrl = new URL(chunkName, manifestUrl);
+                        const chunkResponse = await nativeFetch(chunkUrl);
                         if (!chunkResponse.ok) {
                             throw new Error(`Failed to load ${chunkUrl}`);
                         }
@@ -52,7 +57,9 @@
                     bytes.set(chunk, offset);
                     offset += chunk.byteLength;
                 }
-                return nativeInstantiate(bytes, imports, options);
+                return new Response(bytes, {
+                    headers: { "Content-Type": "application/wasm" },
+                });
             };
         }
     </script>
