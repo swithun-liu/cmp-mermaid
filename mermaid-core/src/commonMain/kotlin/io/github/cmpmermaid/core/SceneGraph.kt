@@ -172,6 +172,8 @@ data class SceneText(
     val weight: SceneTextWeight = SceneTextWeight.Medium,
     val spans: List<SceneTextSpan> = emptyList(),
     val horizontalAlignment: SceneTextAlignment = SceneTextAlignment.Center,
+    val rotationDegrees: Float = 0f,
+    val rotationPivot: ScenePoint? = null,
     override val zIndex: Int = 20,
 ) : SceneElement
 

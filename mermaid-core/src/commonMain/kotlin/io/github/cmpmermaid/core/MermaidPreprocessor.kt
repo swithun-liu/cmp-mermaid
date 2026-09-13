@@ -238,6 +238,9 @@ internal object MermaidPreprocessor {
         val erDiagram = map.map("er")
         val gantt = map.map("gantt")
         val pie = map.map("pie")
+        val xyChart = map.map("xyChart")
+        val xyXAxis = xyChart?.map("xAxis")
+        val xyYAxis = xyChart?.map("yAxis")
         val elk = map.map("elk")
         val unsupported = buildSet {
             TOP_LEVEL_UNTRANSLATED_KEYS.filterTo(this) { map.node(it) != null }
@@ -408,6 +411,26 @@ internal object MermaidPreprocessor {
                         }
                         arrays[entryKey.content] = items.filterNotNull()
                     }
+                    is YamlMap -> {
+                        if (entryKey.content != "xyChart") {
+                            readError = MermaidError.Configuration(
+                                "Mermaid $sourceName '$path.${entryKey.content}' " +
+                                    "does not support nested theme variables",
+                            )
+                            return null
+                        }
+                        entryValue.entries.forEach { (nestedKey, nestedValue) ->
+                            val scalar = nestedValue as? YamlScalar
+                            if (scalar == null) {
+                                readError = MermaidError.Configuration(
+                                    "Mermaid $sourceName '$path.xyChart.${nestedKey.content}' " +
+                                        "must be a scalar",
+                                )
+                                return null
+                            }
+                            scalars["xyChart.${nestedKey.content}"] = scalar.content
+                        }
+                    }
                     else -> {
                         readError = MermaidError.Configuration(
                             "Mermaid $sourceName '$path.${entryKey.content}' " +
@@ -526,6 +549,111 @@ internal object MermaidPreprocessor {
         if (pieDonutHole != null && (!pieDonutHole.isFinite() || pieDonutHole !in 0f..0.9f)) {
             readError = MermaidError.Configuration(
                 "Mermaid $sourceName 'pie.donutHole' must be between 0 and 0.9",
+            )
+        }
+        val xyWidth = float(xyChart, "width", "xyChart.width")
+        val xyHeight = float(xyChart, "height", "xyChart.height")
+        val xyTitleFontSize = float(xyChart, "titleFontSize", "xyChart.titleFontSize")
+        val xyTitlePadding = float(xyChart, "titlePadding", "xyChart.titlePadding")
+        val xyShowTitle = boolean(xyChart, "showTitle", "xyChart.showTitle")
+        val xyShowLegend = boolean(xyChart, "showLegend", "xyChart.showLegend")
+        val xyLegendFontSize = float(xyChart, "legendFontSize", "xyChart.legendFontSize")
+        val xyLegendPadding = float(xyChart, "legendPadding", "xyChart.legendPadding")
+        val xyShowDataLabel = boolean(xyChart, "showDataLabel", "xyChart.showDataLabel")
+        val xyShowDataLabelOutsideBar = boolean(
+            xyChart,
+            "showDataLabelOutsideBar",
+            "xyChart.showDataLabelOutsideBar",
+        )
+        val xyChartOrientation = enumString(
+            xyChart,
+            "chartOrientation",
+            "xyChart.chartOrientation",
+            setOf("vertical", "horizontal"),
+        )
+        val xyPlotReservedSpacePercent = float(
+            xyChart,
+            "plotReservedSpacePercent",
+            "xyChart.plotReservedSpacePercent",
+        )
+        fun xyAxisOverride(
+            axis: YamlMap?,
+            path: String,
+        ): MermaidXyAxisConfigOverride? {
+            if (axis == null) return null
+            return MermaidXyAxisConfigOverride(
+                showLabel = boolean(axis, "showLabel", "$path.showLabel"),
+                labelFontSize = float(axis, "labelFontSize", "$path.labelFontSize"),
+                labelPadding = float(axis, "labelPadding", "$path.labelPadding"),
+                showTitle = boolean(axis, "showTitle", "$path.showTitle"),
+                titleFontSize = float(axis, "titleFontSize", "$path.titleFontSize"),
+                titlePadding = float(axis, "titlePadding", "$path.titlePadding"),
+                showTick = boolean(axis, "showTick", "$path.showTick"),
+                tickLength = float(axis, "tickLength", "$path.tickLength"),
+                tickWidth = float(axis, "tickWidth", "$path.tickWidth"),
+                showAxisLine = boolean(axis, "showAxisLine", "$path.showAxisLine"),
+                axisLineWidth = float(axis, "axisLineWidth", "$path.axisLineWidth"),
+                labelRotation = float(axis, "labelRotation", "$path.labelRotation"),
+            )
+        }
+        val xyXAxisOverride = xyAxisOverride(xyXAxis, "xyChart.xAxis")
+        val xyYAxisOverride = xyAxisOverride(xyYAxis, "xyChart.yAxis")
+        val xyPositiveValues = listOf(
+            "xyChart.width" to xyWidth,
+            "xyChart.height" to xyHeight,
+            "xyChart.titleFontSize" to xyTitleFontSize,
+            "xyChart.legendFontSize" to xyLegendFontSize,
+            "xyChart.xAxis.labelFontSize" to xyXAxisOverride?.labelFontSize,
+            "xyChart.xAxis.titleFontSize" to xyXAxisOverride?.titleFontSize,
+            "xyChart.xAxis.tickLength" to xyXAxisOverride?.tickLength,
+            "xyChart.xAxis.tickWidth" to xyXAxisOverride?.tickWidth,
+            "xyChart.xAxis.axisLineWidth" to xyXAxisOverride?.axisLineWidth,
+            "xyChart.yAxis.labelFontSize" to xyYAxisOverride?.labelFontSize,
+            "xyChart.yAxis.titleFontSize" to xyYAxisOverride?.titleFontSize,
+            "xyChart.yAxis.tickLength" to xyYAxisOverride?.tickLength,
+            "xyChart.yAxis.tickWidth" to xyYAxisOverride?.tickWidth,
+            "xyChart.yAxis.axisLineWidth" to xyYAxisOverride?.axisLineWidth,
+        )
+        val invalidPositive = xyPositiveValues.firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 1f)
+        }
+        if (invalidPositive != null) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalidPositive.first}' must be at least 1",
+            )
+        }
+        val xyNonNegativeValues = listOf(
+            "xyChart.titlePadding" to xyTitlePadding,
+            "xyChart.legendPadding" to xyLegendPadding,
+            "xyChart.xAxis.labelPadding" to xyXAxisOverride?.labelPadding,
+            "xyChart.xAxis.titlePadding" to xyXAxisOverride?.titlePadding,
+            "xyChart.yAxis.labelPadding" to xyYAxisOverride?.labelPadding,
+            "xyChart.yAxis.titlePadding" to xyYAxisOverride?.titlePadding,
+        )
+        val invalidNonNegative = xyNonNegativeValues.firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }
+        if (invalidNonNegative != null) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalidNonNegative.first}' must be non-negative",
+            )
+        }
+        listOf(
+            "xyChart.xAxis.labelRotation" to xyXAxisOverride?.labelRotation,
+            "xyChart.yAxis.labelRotation" to xyYAxisOverride?.labelRotation,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value !in -90f..90f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be between -90 and 90",
+            )
+        }
+        if (
+            xyPlotReservedSpacePercent != null &&
+            (!xyPlotReservedSpacePercent.isFinite() || xyPlotReservedSpacePercent < 30f)
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'xyChart.plotReservedSpacePercent' must be at least 30",
             )
         }
         val curve = string(flowchart, "curve", "flowchart.curve")
@@ -677,6 +805,24 @@ internal object MermaidPreprocessor {
                 pieDonutHole = pieDonutHole,
                 pieLegendPosition = pieLegendPosition,
                 pieHighlightSlice = pieHighlightSlice,
+                xyChart = xyChart?.let {
+                    MermaidXyChartConfigOverride(
+                        width = xyWidth,
+                        height = xyHeight,
+                        titleFontSize = xyTitleFontSize,
+                        titlePadding = xyTitlePadding,
+                        showTitle = xyShowTitle,
+                        showLegend = xyShowLegend,
+                        legendFontSize = xyLegendFontSize,
+                        legendPadding = xyLegendPadding,
+                        showDataLabel = xyShowDataLabel,
+                        showDataLabelOutsideBar = xyShowDataLabelOutsideBar,
+                        chartOrientation = xyChartOrientation,
+                        plotReservedSpacePercent = xyPlotReservedSpacePercent,
+                        xAxis = xyXAxisOverride,
+                        yAxis = xyYAxisOverride,
+                    )
+                },
                 curve = curve,
                 fontSize = fontSize,
                 fontFamily = fontFamily,
@@ -866,6 +1012,7 @@ internal data class MermaidConfigOverride(
     val pieDonutHole: Float? = null,
     val pieLegendPosition: String? = null,
     val pieHighlightSlice: String? = null,
+    val xyChart: MermaidXyChartConfigOverride? = null,
     val curve: String? = null,
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -931,6 +1078,10 @@ internal data class MermaidConfigOverride(
         pieDonutHole = overrides.pieDonutHole ?: pieDonutHole,
         pieLegendPosition = overrides.pieLegendPosition ?: pieLegendPosition,
         pieHighlightSlice = overrides.pieHighlightSlice ?: pieHighlightSlice,
+        xyChart = when {
+            overrides.xyChart != null -> xyChart?.merge(overrides.xyChart) ?: overrides.xyChart
+            else -> xyChart
+        },
         curve = overrides.curve ?: curve,
         fontSize = overrides.fontSize ?: fontSize,
         fontFamily = overrides.fontFamily ?: fontFamily,
@@ -1025,6 +1176,7 @@ internal data class MermaidConfigOverride(
                 pieDonutHole = pieDonutHole ?: options.pieDonutHole,
                 pieLegendPosition = pieLegendPosition ?: options.pieLegendPosition,
                 pieHighlightSlice = pieHighlightSlice ?: options.pieHighlightSlice,
+                xyChart = xyChart?.applyTo(options.xyChart) ?: options.xyChart,
                 curve = curve ?: options.curve,
                 fontSize = fontSize ?: options.fontSize,
                 fontFamily = fontFamily ?: options.fontFamily,
@@ -1045,6 +1197,113 @@ internal data class MermaidConfigOverride(
             ),
         )
     }
+}
+internal data class MermaidXyChartConfigOverride(
+    val width: Float? = null,
+    val height: Float? = null,
+    val titleFontSize: Float? = null,
+    val titlePadding: Float? = null,
+    val showTitle: Boolean? = null,
+    val showLegend: Boolean? = null,
+    val legendFontSize: Float? = null,
+    val legendPadding: Float? = null,
+    val showDataLabel: Boolean? = null,
+    val showDataLabelOutsideBar: Boolean? = null,
+    val chartOrientation: String? = null,
+    val plotReservedSpacePercent: Float? = null,
+    val xAxis: MermaidXyAxisConfigOverride? = null,
+    val yAxis: MermaidXyAxisConfigOverride? = null,
+) {
+    fun merge(overrides: MermaidXyChartConfigOverride): MermaidXyChartConfigOverride =
+        MermaidXyChartConfigOverride(
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            titleFontSize = overrides.titleFontSize ?: titleFontSize,
+            titlePadding = overrides.titlePadding ?: titlePadding,
+            showTitle = overrides.showTitle ?: showTitle,
+            showLegend = overrides.showLegend ?: showLegend,
+            legendFontSize = overrides.legendFontSize ?: legendFontSize,
+            legendPadding = overrides.legendPadding ?: legendPadding,
+            showDataLabel = overrides.showDataLabel ?: showDataLabel,
+            showDataLabelOutsideBar =
+                overrides.showDataLabelOutsideBar ?: showDataLabelOutsideBar,
+            chartOrientation = overrides.chartOrientation ?: chartOrientation,
+            plotReservedSpacePercent =
+                overrides.plotReservedSpacePercent ?: plotReservedSpacePercent,
+            xAxis = when {
+                overrides.xAxis != null -> xAxis?.merge(overrides.xAxis) ?: overrides.xAxis
+                else -> xAxis
+            },
+            yAxis = when {
+                overrides.yAxis != null -> yAxis?.merge(overrides.yAxis) ?: overrides.yAxis
+                else -> yAxis
+            },
+        )
+
+    fun applyTo(options: MermaidXyChartOptions): MermaidXyChartOptions = options.copy(
+        width = width ?: options.width,
+        height = height ?: options.height,
+        titleFontSize = titleFontSize ?: options.titleFontSize,
+        titlePadding = titlePadding ?: options.titlePadding,
+        showTitle = showTitle ?: options.showTitle,
+        showLegend = showLegend ?: options.showLegend,
+        legendFontSize = legendFontSize ?: options.legendFontSize,
+        legendPadding = legendPadding ?: options.legendPadding,
+        showDataLabel = showDataLabel ?: options.showDataLabel,
+        showDataLabelOutsideBar =
+            showDataLabelOutsideBar ?: options.showDataLabelOutsideBar,
+        chartOrientation = chartOrientation ?: options.chartOrientation,
+        plotReservedSpacePercent =
+            plotReservedSpacePercent ?: options.plotReservedSpacePercent,
+        xAxis = xAxis?.applyTo(options.xAxis) ?: options.xAxis,
+        yAxis = yAxis?.applyTo(options.yAxis) ?: options.yAxis,
+    )
+}
+
+internal data class MermaidXyAxisConfigOverride(
+    val showLabel: Boolean? = null,
+    val labelFontSize: Float? = null,
+    val labelPadding: Float? = null,
+    val showTitle: Boolean? = null,
+    val titleFontSize: Float? = null,
+    val titlePadding: Float? = null,
+    val showTick: Boolean? = null,
+    val tickLength: Float? = null,
+    val tickWidth: Float? = null,
+    val showAxisLine: Boolean? = null,
+    val axisLineWidth: Float? = null,
+    val labelRotation: Float? = null,
+) {
+    fun merge(overrides: MermaidXyAxisConfigOverride): MermaidXyAxisConfigOverride =
+        MermaidXyAxisConfigOverride(
+            showLabel = overrides.showLabel ?: showLabel,
+            labelFontSize = overrides.labelFontSize ?: labelFontSize,
+            labelPadding = overrides.labelPadding ?: labelPadding,
+            showTitle = overrides.showTitle ?: showTitle,
+            titleFontSize = overrides.titleFontSize ?: titleFontSize,
+            titlePadding = overrides.titlePadding ?: titlePadding,
+            showTick = overrides.showTick ?: showTick,
+            tickLength = overrides.tickLength ?: tickLength,
+            tickWidth = overrides.tickWidth ?: tickWidth,
+            showAxisLine = overrides.showAxisLine ?: showAxisLine,
+            axisLineWidth = overrides.axisLineWidth ?: axisLineWidth,
+            labelRotation = overrides.labelRotation ?: labelRotation,
+        )
+
+    fun applyTo(options: MermaidXyAxisOptions): MermaidXyAxisOptions = options.copy(
+        showLabel = showLabel ?: options.showLabel,
+        labelFontSize = labelFontSize ?: options.labelFontSize,
+        labelPadding = labelPadding ?: options.labelPadding,
+        showTitle = showTitle ?: options.showTitle,
+        titleFontSize = titleFontSize ?: options.titleFontSize,
+        titlePadding = titlePadding ?: options.titlePadding,
+        showTick = showTick ?: options.showTick,
+        tickLength = tickLength ?: options.tickLength,
+        tickWidth = tickWidth ?: options.tickWidth,
+        showAxisLine = showAxisLine ?: options.showAxisLine,
+        axisLineWidth = axisLineWidth ?: options.axisLineWidth,
+        labelRotation = labelRotation ?: options.labelRotation,
+    )
 }
 
 internal data class MermaidElkConfigOverride(

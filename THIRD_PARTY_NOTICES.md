@@ -3,7 +3,7 @@
 ## Mermaid
 
 The KMP runtime contains Kotlin translations of selected Mermaid Flowchart,
-Sequence, Class, State, Entity Relationship, Gantt, and Pie parsing,
+XY Chart, Sequence, Class, State, Entity Relationship, Gantt, and Pie parsing,
 layout-adapter, and rendering algorithms. The reference-rendering tool also
 downloads Mermaid.js from npm. Mermaid.js itself is not embedded in the
 runtime libraries.
@@ -102,10 +102,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## D3 Shape
+## D3 Array, Scale, And Shape
 
-The KMP runtime contains Kotlin translations of the line curve implementations
-used by Mermaid from `d3-shape 3.2.0`.
+The KMP runtime contains Kotlin translations of the tick, linear/band scale,
+line, and curve implementations used by Mermaid from `d3-array 3.2.4`,
+`d3-scale 4.0.2`, and `d3-shape 3.2.0`.
 
 Copyright 2010-2022 Mike Bostock
 
@@ -124,8 +125,8 @@ THIS SOFTWARE.
 ## Jison
 
 The KMP runtime contains Kotlin translations of the Jison `0.4.18` generated
-lexer/parser runtime used by Mermaid's Flowchart, Sequence, Class, State,
-Entity Relationship, and Gantt grammars.
+lexer/parser runtime used by Mermaid's Flowchart, XY Chart, Sequence, Class,
+State, Entity Relationship, and Gantt grammars.
 
 Copyright (c) Zach Carter
 

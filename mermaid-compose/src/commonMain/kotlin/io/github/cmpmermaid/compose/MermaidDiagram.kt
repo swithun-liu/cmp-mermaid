@@ -1687,7 +1687,16 @@ private fun DrawScope.drawSceneText(
         SceneTextAlignment.End -> element.bounds.right - layout.size.width - 4f
     }
     val y = element.bounds.center.y - layout.size.height / 2f
-    drawText(layout, topLeft = Offset(x, y))
+    withTransform({
+        rotate(
+            degrees = element.rotationDegrees,
+            pivot = (element.rotationPivot ?: element.bounds.center).let { point ->
+                Offset(point.x, point.y)
+            },
+        )
+    }) {
+        drawText(layout, topLeft = Offset(x, y))
+    }
 }
 
 private fun TextMetricsRequest.toTextStyle(

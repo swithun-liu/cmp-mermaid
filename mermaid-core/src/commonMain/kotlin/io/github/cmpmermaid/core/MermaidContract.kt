@@ -47,6 +47,38 @@ sealed interface MermaidError {
     ) : MermaidError
 }
 
+data class MermaidXyAxisOptions(
+    val showLabel: Boolean = true,
+    val labelFontSize: Float = 14f,
+    val labelPadding: Float = 5f,
+    val showTitle: Boolean = true,
+    val titleFontSize: Float = 16f,
+    val titlePadding: Float = 5f,
+    val showTick: Boolean = true,
+    val tickLength: Float = 5f,
+    val tickWidth: Float = 2f,
+    val showAxisLine: Boolean = true,
+    val axisLineWidth: Float = 2f,
+    val labelRotation: Float = 0f,
+)
+
+data class MermaidXyChartOptions(
+    val width: Float = 700f,
+    val height: Float = 500f,
+    val titleFontSize: Float = 20f,
+    val titlePadding: Float = 10f,
+    val showTitle: Boolean = true,
+    val showLegend: Boolean = true,
+    val legendFontSize: Float = 14f,
+    val legendPadding: Float = 10f,
+    val showDataLabel: Boolean = false,
+    val showDataLabelOutsideBar: Boolean = false,
+    val chartOrientation: String = "vertical",
+    val plotReservedSpacePercent: Float = 50f,
+    val xAxis: MermaidXyAxisOptions = MermaidXyAxisOptions(),
+    val yAxis: MermaidXyAxisOptions = MermaidXyAxisOptions(),
+)
+
 data class MermaidRenderOptions(
     val layout: String = "elk",
     val classLayout: String? = null,
@@ -94,6 +126,7 @@ data class MermaidRenderOptions(
     val pieDonutHole: Float = 0f,
     val pieLegendPosition: String = "right",
     val pieHighlightSlice: String = "",
+    val xyChart: MermaidXyChartOptions = MermaidXyChartOptions(),
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -171,6 +204,33 @@ data class MermaidPieTheme(
     val opacity: Float = 0.7f,
 )
 
+data class MermaidXyChartTheme(
+    val backgroundColor: SceneColor = SceneColor(0xFFFFFFFF),
+    val titleColor: SceneColor = SceneColor(0xFF333333),
+    val dataLabelColor: SceneColor = SceneColor(0xFF333333),
+    val legendTextColor: SceneColor = SceneColor(0xFF333333),
+    val xAxisLabelColor: SceneColor = SceneColor(0xFF333333),
+    val xAxisTitleColor: SceneColor = SceneColor(0xFF333333),
+    val xAxisTickColor: SceneColor = SceneColor(0xFF333333),
+    val xAxisLineColor: SceneColor = SceneColor(0xFF333333),
+    val yAxisLabelColor: SceneColor = SceneColor(0xFF333333),
+    val yAxisTitleColor: SceneColor = SceneColor(0xFF333333),
+    val yAxisTickColor: SceneColor = SceneColor(0xFF333333),
+    val yAxisLineColor: SceneColor = SceneColor(0xFF333333),
+    val plotColorPalette: List<SceneColor> = listOf(
+        SceneColor(0xFFECECFF),
+        SceneColor(0xFF8493A6),
+        SceneColor(0xFFFFC3A0),
+        SceneColor(0xFFDCDDE1),
+        SceneColor(0xFFB8E994),
+        SceneColor(0xFFD1A36F),
+        SceneColor(0xFFC3CDE6),
+        SceneColor(0xFFFFB6C1),
+        SceneColor(0xFF496078),
+        SceneColor(0xFFF8F3E3),
+    ),
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
@@ -187,6 +247,7 @@ data class MermaidTheme(
     val bkgColorArray: List<SceneColor> = emptyList(),
     val borderColorArray: List<SceneColor> = emptyList(),
     val pie: MermaidPieTheme = MermaidPieTheme(),
+    val xyChart: MermaidXyChartTheme = MermaidXyChartTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -214,6 +275,22 @@ data class MermaidTheme(
             groupStroke = SceneColor(0x40FFFFFF),
             groupText = SceneColor(0xFFF9FFFE),
             pie = darkPieTheme(),
+            xyChart = xyChartTheme(
+                background = 0xFF333333,
+                text = 0xFFCCCCCC,
+                palette = listOf(
+                    0xFF3498DB,
+                    0xFF2ECC71,
+                    0xFFE74C3C,
+                    0xFFF1C40F,
+                    0xFFBDC3C7,
+                    0xFFFFFFFF,
+                    0xFF34495E,
+                    0xFF9B59B6,
+                    0xFF1ABC9C,
+                    0xFFE67E22,
+                ),
+            ),
         )
 
         val FlowchartDefault = MermaidTheme(
@@ -232,6 +309,7 @@ data class MermaidTheme(
             bkgColorArray = reduxColorBackgrounds(),
             borderColorArray = reduxColorBorders(),
             pie = reduxColorPieTheme(dark = false),
+            xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF28253D),
             dropShadow = reduxShadow(dark = false),
         )
 
@@ -249,6 +327,22 @@ data class MermaidTheme(
                 groupStroke = SceneColor(0xFF6EAA49),
                 groupText = SceneColor(0xFF333333),
                 pie = forestPieTheme(),
+                xyChart = xyChartTheme(
+                    background = 0xFFFFFFFF,
+                    text = 0xFF000000,
+                    palette = listOf(
+                        0xFFCDE498,
+                        0xFFFF6B6B,
+                        0xFFA0D2DB,
+                        0xFFD7BDE2,
+                        0xFFF0F0F0,
+                        0xFFFFC3A0,
+                        0xFF7FD8BE,
+                        0xFFFF9A8B,
+                        0xFFFAF3E0,
+                        0xFFFFF176,
+                    ),
+                ),
                 dropShadow = SceneShadow(
                     color = SceneColor(0x80B9B9B9),
                     offsetX = 1f,
@@ -267,6 +361,22 @@ data class MermaidTheme(
                 groupStroke = SceneColor(0xFF707070),
                 groupText = SceneColor(0xFF333333),
                 pie = neutralPieTheme(),
+                xyChart = xyChartTheme(
+                    background = 0xFFFFFFFF,
+                    text = 0xFF333333,
+                    palette = listOf(
+                        0xFFEEEEEE,
+                        0xFF6BB8E4,
+                        0xFF8ACB88,
+                        0xFFC7ACD6,
+                        0xFFE8DCC2,
+                        0xFFFFB2A8,
+                        0xFFFFF380,
+                        0xFF7E8D91,
+                        0xFFFFD8B1,
+                        0xFFFAF3E0,
+                    ),
+                ),
             )
             "base" -> MermaidTheme(
                 background = SceneColor(0xFFF4F4F4),
@@ -279,6 +389,7 @@ data class MermaidTheme(
                 groupStroke = SceneColor(0xFFD7DFED),
                 groupText = SceneColor(0xFF333333),
                 pie = basePieTheme(),
+                xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
             )
             "neo" -> MermaidTheme(
                 background = SceneColor(0xFFFFFFFF),
@@ -294,6 +405,7 @@ data class MermaidTheme(
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
                 pie = neoPieTheme(dark = false),
+                xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF333333),
                 dropShadow = SceneShadow(
                     color = SceneColor(0x40000000),
                     offsetX = 0f,
@@ -314,6 +426,7 @@ data class MermaidTheme(
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 pie = neoPieTheme(dark = true),
+                xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
                 dropShadow = SceneShadow(
                     color = SceneColor(0x33B9B9B9),
                     offsetX = 1f,
@@ -335,6 +448,7 @@ data class MermaidTheme(
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
                 pie = reduxPieTheme(dark = false),
+                xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF28253D),
                 dropShadow = reduxShadow(dark = false),
             )
             "redux-color" -> FlowchartDefault
@@ -342,6 +456,7 @@ data class MermaidTheme(
             "redux-dark-color" -> reduxDark().copy(
                 borderColorArray = reduxColorBorders(),
                 pie = reduxColorPieTheme(dark = true),
+                xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
             )
             else -> null
         }
@@ -440,6 +555,54 @@ data class MermaidTheme(
                     color("pieOuterStrokeColor") ?: theme.pie.outerStrokeColor,
                 opacity = pieOpacity,
             )
+            val xyPaletteSource = values["xyChart.plotColorPalette"]
+            val xyPalette = if (xyPaletteSource == null) {
+                theme.xyChart.plotColorPalette
+            } else {
+                val sourceColors = xyPaletteSource
+                    .split(',')
+                    .map(String::trim)
+                    .filter(String::isNotEmpty)
+                val parsedColors = sourceColors.map(CssColorParser::parse)
+                val invalidIndex = parsedColors.indexOfFirst { parsed -> parsed == null }
+                when {
+                    sourceColors.isEmpty() -> {
+                        invalidVariable = "xyChart.plotColorPalette" to xyPaletteSource
+                        emptyList()
+                    }
+                    invalidIndex >= 0 -> {
+                        invalidVariable = "xyChart.plotColorPalette" to sourceColors[invalidIndex]
+                        emptyList()
+                    }
+                    else -> parsedColors.filterNotNull()
+                }
+            }
+            val xyChart = theme.xyChart.copy(
+                backgroundColor =
+                    color("xyChart.backgroundColor") ?: theme.xyChart.backgroundColor,
+                titleColor = color("xyChart.titleColor") ?: theme.xyChart.titleColor,
+                dataLabelColor =
+                    color("xyChart.dataLabelColor") ?: theme.xyChart.dataLabelColor,
+                legendTextColor =
+                    color("xyChart.legendTextColor") ?: theme.xyChart.legendTextColor,
+                xAxisLabelColor =
+                    color("xyChart.xAxisLabelColor") ?: theme.xyChart.xAxisLabelColor,
+                xAxisTitleColor =
+                    color("xyChart.xAxisTitleColor") ?: theme.xyChart.xAxisTitleColor,
+                xAxisTickColor =
+                    color("xyChart.xAxisTickColor") ?: theme.xyChart.xAxisTickColor,
+                xAxisLineColor =
+                    color("xyChart.xAxisLineColor") ?: theme.xyChart.xAxisLineColor,
+                yAxisLabelColor =
+                    color("xyChart.yAxisLabelColor") ?: theme.xyChart.yAxisLabelColor,
+                yAxisTitleColor =
+                    color("xyChart.yAxisTitleColor") ?: theme.xyChart.yAxisTitleColor,
+                yAxisTickColor =
+                    color("xyChart.yAxisTickColor") ?: theme.xyChart.yAxisTickColor,
+                yAxisLineColor =
+                    color("xyChart.yAxisLineColor") ?: theme.xyChart.yAxisLineColor,
+                plotColorPalette = xyPalette,
+            )
             val dropShadow = when (
                 val parsed = parseDropShadow(
                     source = values["dropShadow"],
@@ -465,6 +628,7 @@ data class MermaidTheme(
                 bkgColorArray = bkgColorArray,
                 borderColorArray = borderColorArray,
                 pie = pie,
+                xyChart = xyChart,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -494,8 +658,52 @@ data class MermaidTheme(
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
             pie = reduxPieTheme(dark = true),
+            xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
             dropShadow = reduxShadow(dark = true),
         )
+
+        private fun reduxXyChartTheme(
+            background: Long,
+            text: Long,
+        ): MermaidXyChartTheme = xyChartTheme(
+            background = background,
+            text = text,
+            palette = listOf(
+                0xFFFFF4DD,
+                0xFFFFD8B1,
+                0xFFFFA07A,
+                0xFFECEFF1,
+                0xFFD6DBDF,
+                0xFFC3E0A8,
+                0xFFFFB6A4,
+                0xFFFFD74D,
+                0xFF738FA7,
+                0xFFFFFFF0,
+            ),
+        )
+
+        private fun xyChartTheme(
+            background: Long,
+            text: Long,
+            palette: List<Long>,
+        ): MermaidXyChartTheme {
+            val textColor = SceneColor(text)
+            return MermaidXyChartTheme(
+                backgroundColor = SceneColor(background),
+                titleColor = textColor,
+                dataLabelColor = textColor,
+                legendTextColor = textColor,
+                xAxisLabelColor = textColor,
+                xAxisTitleColor = textColor,
+                xAxisTickColor = textColor,
+                xAxisLineColor = textColor,
+                yAxisLabelColor = textColor,
+                yAxisTitleColor = textColor,
+                yAxisTickColor = textColor,
+                yAxisLineColor = textColor,
+                plotColorPalette = palette.map(::SceneColor),
+            )
+        }
 
         private fun reduxShadow(dark: Boolean): SceneShadow = SceneShadow(
             color = if (dark) SceneColor(0x0FFFFFFF) else SceneColor(0x0F000000),

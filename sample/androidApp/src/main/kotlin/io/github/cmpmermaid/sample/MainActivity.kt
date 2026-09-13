@@ -111,6 +111,7 @@ class MainActivity : ComponentActivity() {
 private enum class DocsScreen {
     DiagramTypes,
     Flowchart,
+    XyChart,
     Sequence,
     Class,
     State,
@@ -148,6 +149,9 @@ private fun MermaidDocsApp(
     }
     val auditSequenceDemo = remember(auditDemoId) {
         sequenceDemos.firstOrNull { it.id == auditDemoId }
+    }
+    val auditXyChartDemo = remember(auditDemoId) {
+        xyChartDemos.firstOrNull { it.id == auditDemoId }
     }
     val auditClassDemo = remember(auditDemoId) {
         classDemos.firstOrNull { it.id == auditDemoId }
@@ -192,6 +196,13 @@ private fun MermaidDocsApp(
             )
             return@MaterialTheme
         }
+        if (auditXyChartDemo != null) {
+            XyChartVisualAuditScreen(
+                demo = auditXyChartDemo,
+                preview = auditPreview,
+            )
+            return@MaterialTheme
+        }
         if (auditClassDemo != null) {
             ClassVisualAuditScreen(
                 demo = auditClassDemo,
@@ -231,6 +242,7 @@ private fun MermaidDocsApp(
             screen = when (screen) {
                 DocsScreen.DiagramTypes -> DocsScreen.DiagramTypes
                 DocsScreen.Flowchart -> DocsScreen.DiagramTypes
+                DocsScreen.XyChart -> DocsScreen.DiagramTypes
                 DocsScreen.Sequence -> DocsScreen.DiagramTypes
                 DocsScreen.Class -> DocsScreen.DiagramTypes
                 DocsScreen.State -> DocsScreen.DiagramTypes
@@ -243,6 +255,7 @@ private fun MermaidDocsApp(
         when (screen) {
             DocsScreen.DiagramTypes -> DiagramTypesScreen(
                 onFlowchartClick = { screen = DocsScreen.Flowchart },
+                onXyChartClick = { screen = DocsScreen.XyChart },
                 onSequenceClick = { screen = DocsScreen.Sequence },
                 onClassClick = { screen = DocsScreen.Class },
                 onStateClick = { screen = DocsScreen.State },
@@ -250,30 +263,70 @@ private fun MermaidDocsApp(
                 onGanttClick = { screen = DocsScreen.Gantt },
                 onPieClick = { screen = DocsScreen.Pie },
             )
-            DocsScreen.Flowchart -> FlowchartDocsScreen(
+            DocsScreen.Flowchart -> UnifiedDiagramDocsScreen(
+                spec = flowchartDiagramDocsSpec,
                 onBack = { screen = DocsScreen.DiagramTypes },
-                onPlayground = { screen = DocsScreen.Playground },
+                actionLabel = "Playground",
+                onAction = { screen = DocsScreen.Playground },
             )
             DocsScreen.Playground -> FlowchartPlaygroundScreen(
                 onBack = { screen = DocsScreen.Flowchart },
             )
-            DocsScreen.Sequence -> SequenceDocsScreen(
+            DocsScreen.XyChart -> UnifiedDiagramDocsScreen(
+                spec = xyChartDiagramDocsSpec,
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
-            DocsScreen.Class -> ClassDocsScreen(
+            DocsScreen.Sequence -> UnifiedDiagramDocsScreen(
+                spec = sequenceDiagramDocsSpec,
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
-            DocsScreen.State -> StateDocsScreen(
+            DocsScreen.Class -> UnifiedDiagramDocsScreen(
+                spec = classDiagramDocsSpec,
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
-            DocsScreen.Er -> ErDocsScreen(
+            DocsScreen.State -> UnifiedDiagramDocsScreen(
+                spec = stateDiagramDocsSpec,
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
-            DocsScreen.Gantt -> GanttDocsScreen(
+            DocsScreen.Er -> UnifiedDiagramDocsScreen(
+                spec = erDiagramDocsSpec,
                 onBack = { screen = DocsScreen.DiagramTypes },
             )
-            DocsScreen.Pie -> PieDocsScreen(
+            DocsScreen.Gantt -> UnifiedDiagramDocsScreen(
+                spec = ganttDiagramDocsSpec,
                 onBack = { screen = DocsScreen.DiagramTypes },
+            )
+            DocsScreen.Pie -> UnifiedDiagramDocsScreen(
+                spec = pieDiagramDocsSpec,
+                onBack = { screen = DocsScreen.DiagramTypes },
+            )
+        }
+    }
+}
+
+@Composable
+private fun XyChartVisualAuditScreen(
+    demo: XyChartDemo,
+    preview: AuditPreview,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        when (preview) {
+            AuditPreview.Native -> MermaidDiagram(
+                source = demo.source,
+                modifier = Modifier.fillMaxSize(),
+                theme = MermaidTheme.MermaidDefault,
+                contentDescription = "Audit ${demo.id} native",
+            )
+            AuditPreview.Official -> OfficialMermaidDiagram(
+                source = demo.source,
+                layout = "dagre",
+                modifier = Modifier.fillMaxSize(),
             )
         }
     }
@@ -469,20 +522,11 @@ private fun VisualAuditScreen(
                 options = officialReferenceRenderOptions.copy(layout = layout),
                 contentDescription = "Audit ${demo.id} native",
             )
-            AuditPreview.Official -> if (layout == "elk") {
-                Image(
-                    painter = painterResource(demo.officialDrawable),
-                    contentDescription = "Audit ${demo.id} official",
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Fit,
-                )
-            } else {
-                OfficialMermaidDiagram(
-                    source = demo.source,
-                    layout = layout,
-                    modifier = Modifier.fillMaxSize(),
-                )
-            }
+            AuditPreview.Official -> OfficialMermaidDiagram(
+                source = demo.source,
+                layout = layout,
+                modifier = Modifier.fillMaxSize(),
+            )
         }
     }
 }
@@ -491,6 +535,7 @@ private fun VisualAuditScreen(
 @Composable
 private fun DiagramTypesScreen(
     onFlowchartClick: () -> Unit,
+    onXyChartClick: () -> Unit,
     onSequenceClick: () -> Unit,
     onClassClick: () -> Unit,
     onStateClick: () -> Unit,
@@ -541,6 +586,13 @@ private fun DiagramTypesScreen(
                     title = "Flowchart",
                     description = "Dagre and ELK layouts",
                     onClick = onFlowchartClick,
+                )
+            }
+            item {
+                DiagramTypeRow(
+                    title = "XY Chart",
+                    description = "Bar and line series with categorical or numeric axes",
+                    onClick = onXyChartClick,
                 )
             }
             item {
@@ -974,6 +1026,37 @@ private val flowchartSyntaxLessons = listOf(
     ),
 )
 
+private val flowchartDiagramDocsSpec by lazy {
+    DiagramDocsSpec(
+        id = "flowchart",
+        title = "Flowchart",
+        syntaxTitle = "Flowcharts - Basic Syntax",
+        description = "A flowchart is composed of nodes and links. Declare its direction after " +
+            "the flowchart keyword.",
+        documentationUrl = "https://mermaid.js.org/syntax/flowchart.html",
+        galleryTitle = "Flowchart demo gallery",
+        cases = flowchartDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = demo.officialAspectRatio,
+            )
+        },
+        syntaxLessons = flowchartSyntaxLessons.map { lesson ->
+            DiagramSyntaxLesson(
+                title = lesson.title,
+                source = lesson.source,
+                note = lesson.note,
+                initialAspectRatio = 360f / lesson.height.toFloat(),
+            )
+        },
+        nativeOptions = officialReferenceRenderOptions,
+        officialLayout = "elk",
+    )
+}
+
 @Composable
 private fun SyntaxLesson(
     title: String,
@@ -1011,7 +1094,7 @@ private fun SyntaxLesson(
 }
 
 @Composable
-private fun NoticeBlock(
+internal fun NoticeBlock(
     title: String,
     text: String,
     warning: Boolean,
@@ -2130,7 +2213,7 @@ private fun PieDocsScreen(
 }
 
 @Composable
-private fun PreviewFrame(
+internal fun PreviewFrame(
     label: String,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
@@ -2156,7 +2239,7 @@ private fun PreviewFrame(
 }
 
 @Composable
-private fun CodeBlock(
+internal fun CodeBlock(
     source: String,
 ) {
     Box(

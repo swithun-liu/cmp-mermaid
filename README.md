@@ -4,11 +4,12 @@ Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.
 The compatibility baseline is Mermaid `12.0.0`.
 
 The production renderer libraries do not use a WebView and do not execute
-Mermaid.js. Mermaid's Flowchart, Sequence, Class, State, Entity Relationship,
-Gantt, and Pie parser semantics, diagram databases, layout preparation,
-shapes, edges, markers, text handling, and SceneGraph conversion are translated
-to Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter around the
-locked `elkjs@0.9.3` worker, which runs in an isolated QuickJS runtime.
+Mermaid.js. Mermaid's Flowchart, XY Chart, Sequence, Class, State, Entity
+Relationship, Gantt, and Pie parser semantics, diagram databases, layout
+preparation, shapes, edges, markers, text handling, and SceneGraph conversion
+are translated to Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter
+around the locked `elkjs@0.9.3` worker, which runs in an isolated QuickJS
+runtime.
 
 ```text
 Mermaid 12 diagram source
@@ -19,6 +20,8 @@ Kotlin preprocessing + translated parser/runtime + diagram DB
         +--> Flowchart: Kotlin Graphlib/Dagre
         |
         +--> Flowchart: Kotlin Mermaid ELK adapter --> elkjs 0.9.3 in QuickJS
+        |
+        +--> XY Chart: Kotlin Jison/D3/chartBuilder translation
         |
         +--> Sequence: Kotlin sequenceRenderer/svgDraw/actorBands translation
         |
@@ -41,15 +44,17 @@ Compose Canvas
 
 ## Modules
 
-- `mermaid-core`: common Kotlin Flowchart, Sequence, Class, State, ER, Gantt,
-  and Pie semantics, layout adapters, and platform-independent SceneGraph.
+- `mermaid-core`: common Kotlin Flowchart, XY Chart, Sequence, Class, State,
+  ER, Gantt, and Pie semantics, layout adapters, and platform-independent
+  SceneGraph.
 - `mermaid-compose`: Compose Canvas painting, typography, assets,
   interactions, and bounded two-finger pan/zoom.
 - `sample/androidApp`: mobile syntax documentation, an editable Flowchart
   Playground with 45 presets, an on-demand local WebView for live official
-  Mermaid.js comparison, a 45-case Flowchart gallery, a 35-case Sequence
-  gallery, a 27-case Class gallery, a 25-case State gallery, a 20-case ER
-  gallery, a 20-case Gantt gallery, and a 20-case Pie gallery.
+  Mermaid.js comparison, a 45-case Flowchart gallery, a 20-case XY Chart
+  gallery, a 35-case Sequence gallery, a 27-case Class gallery, a 25-case
+  State gallery, a 20-case ER gallery, a 20-case Gantt gallery, and a 20-case
+  Pie gallery.
 - `tools/official-reference`: reproducible Mermaid.js reference and source
   generation tools; these are development-only and are not part of the native
   runtime.
@@ -81,6 +86,27 @@ replacement, inline HTML image/link/SVG/MathML content, `handDrawn`,
 `themeCSS`, `altFontFamily`, and unsupported CSS properties. See
 [`docs/flowchart-compatibility.md`](docs/flowchart-compatibility.md) for the
 full matrix.
+
+## XY Chart Coverage
+
+The supported path includes:
+
+- Mermaid's generated `xychart.jison` grammar and translated `xychartDb.ts`
+  state and automatic-domain semantics.
+- Vertical and horizontal charts with categorical or numeric axes, negative
+  and decimal values, axis titles, labels, ticks, lines, and rotations.
+- Multiple bar and line series, declaration-order palettes, named-series
+  legends, overlapping bars, and mismatched series lengths.
+- Bar labels inside or outside bars and per-point labels on line series.
+- Mermaid's translated `chartBuilder` space allocation, D3 linear/band
+  scales, D3 tick selection, dimensions, visibility flags, and plot-space
+  configuration.
+- XY theme variables and palettes across all built-in Mermaid themes.
+
+Browser CSS overrides return `MermaidError.UnsupportedFeature`; SVG-only
+responsive sizing is owned by the Compose host. See
+[`docs/xychart-compatibility.md`](docs/xychart-compatibility.md) for the full
+matrix.
 
 ## Sequence Coverage
 
@@ -242,9 +268,9 @@ npm run render
 
 The generator asserts Mermaid `12.0.0` and renders the same source used by the
 native side with Mermaid's ELK layout. The documentation fixture generators
-extract all 114 Flowchart examples, all 38 Sequence examples, all 38 Class
-examples, all 22 State examples, all 24 ER examples, all 11 Gantt examples,
-and both Pie examples from the locked Mermaid source.
+extract all 114 Flowchart examples, all 8 XY Chart examples, all 38 Sequence
+examples, all 38 Class examples, all 22 State examples, all 24 ER examples,
+all 11 Gantt examples, and both Pie examples from the locked Mermaid source.
 
 Capture every Native/Official pair from a connected Android device:
 
@@ -264,8 +290,10 @@ tools/capture-android-audit.sh
 
 The source-to-source upgrade maps are maintained in
 [`docs/upstream-flowchart-map.md`](docs/upstream-flowchart-map.md) and
-[`docs/upstream-sequence-map.md`](docs/upstream-sequence-map.md), with the
-Class translation in
+[`docs/upstream-xychart-map.md`](docs/upstream-xychart-map.md), with the
+Sequence translation in
+[`docs/upstream-sequence-map.md`](docs/upstream-sequence-map.md) and the Class
+translation in
 [`docs/upstream-class-map.md`](docs/upstream-class-map.md) and the State
 translation in
 [`docs/upstream-state-map.md`](docs/upstream-state-map.md). The ER translation

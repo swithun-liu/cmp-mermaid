@@ -7,6 +7,7 @@ import io.github.cmpmermaid.core.gantt.GanttPlugin
 import io.github.cmpmermaid.core.pie.PiePlugin
 import io.github.cmpmermaid.core.sequence.SequencePlugin
 import io.github.cmpmermaid.core.statediagram.StatePlugin
+import io.github.cmpmermaid.core.xychart.XyChartPlugin
 
 data class MermaidRenderContext(
     val textMetrics: TextMetricProvider,
@@ -36,6 +37,7 @@ class MermaidEngine(
         ErPlugin(),
         GanttPlugin(),
         PiePlugin(),
+        XyChartPlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {

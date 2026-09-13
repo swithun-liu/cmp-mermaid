@@ -40,6 +40,7 @@
       height: 100%;
       max-width: 100%;
       max-height: 100%;
+      overflow: visible;
     }
 
     #diagram.error {
@@ -141,8 +142,43 @@
     (() => {
       const diagram = document.querySelector("#diagram");
       let requestId = 0;
+      const viewBoxPadding = 12;
 
-      window.renderFlowchart = async (source, layout) => {
+      const waitForLayout = async () => {
+        if (document.fonts?.ready) {
+          await document.fonts.ready;
+        }
+        await new Promise(requestAnimationFrame);
+        await new Promise(requestAnimationFrame);
+      };
+
+      const normalizeViewBox = (svg) => {
+        const original = svg.viewBox.baseVal;
+        const content = svg.getBBox();
+        const originalRight = original.x + original.width;
+        const originalBottom = original.y + original.height;
+        const contentRight = content.x + content.width;
+        const contentBottom = content.y + content.height;
+        const left = Math.min(original.x, content.x) - viewBoxPadding;
+        const top = Math.min(original.y, content.y) - viewBoxPadding;
+        const right = Math.max(originalRight, contentRight) + viewBoxPadding;
+        const bottom = Math.max(originalBottom, contentBottom) + viewBoxPadding;
+        const width = Math.max(right - left, 1);
+        const height = Math.max(bottom - top, 1);
+
+        svg.setAttribute("viewBox", `${left} ${top} ${width} ${height}`);
+        svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+        svg.removeAttribute("width");
+        svg.removeAttribute("height");
+        svg.style.width = "100%";
+        svg.style.height = "100%";
+        svg.style.maxWidth = "100%";
+        svg.style.maxHeight = "100%";
+        svg.style.backgroundColor = "#ffffff";
+        return { width, height };
+      };
+
+      window.renderDiagram = async (source, layout) => {
         const currentRequest = ++requestId;
         diagram.className = "status";
         diagram.textContent = "Rendering...";
@@ -164,20 +200,27 @@
           diagram.className = "";
           diagram.innerHTML = result.svg;
           const svg = diagram.querySelector("svg");
-          if (svg) {
-            svg.style.width = "100%";
-            svg.style.height = "100%";
-            svg.style.maxWidth = "100%";
-            svg.style.maxHeight = "100%";
-            svg.style.backgroundColor = "#ffffff";
+          if (!svg) {
+            throw new Error("Official Mermaid did not produce an SVG");
           }
           result.bindFunctions?.(diagram);
+          await waitForLayout();
+          if (currentRequest !== requestId) {
+            return;
+          }
+          const size = normalizeViewBox(svg);
+          window.CmpMermaidBridge?.onRenderReady(
+            String(size.width),
+            String(size.height),
+          );
         } catch (failure) {
           if (currentRequest !== requestId) {
             return;
           }
           diagram.className = "error";
-          diagram.textContent = failure?.message ?? String(failure);
+          const message = failure?.message ?? String(failure);
+          diagram.textContent = message;
+          window.CmpMermaidBridge?.onRenderError(message);
         }
       };
     })();
