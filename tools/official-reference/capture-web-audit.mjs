@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import { cases as flowchartCases } from './cases.mjs';
+import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -71,7 +72,7 @@ if (availableCases.length === 0) {
 }
 
 mkdirSync(outputDirectory, { recursive: true });
-const browser = await puppeteer.launch({ headless: 'shell' });
+const browser = await puppeteer.launch(puppeteerLaunchOptions);
 try {
   const page = await browser.newPage();
   await page.setViewport({

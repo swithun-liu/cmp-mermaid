@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import puppeteer from 'puppeteer';
+import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases } from './stability-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -29,7 +30,7 @@ const kindTitles = {
 
 mkdirSync(outputDirectory, { recursive: true });
 const manifest = [];
-const browser = await puppeteer.launch({ headless: 'shell' });
+const browser = await puppeteer.launch(puppeteerLaunchOptions);
 try {
   const page = await browser.newPage();
   await page.setViewport({

@@ -38,11 +38,15 @@ jobs:
             mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/generated/StabilityCorpus.kt \
             mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/generated/StabilityCorpus.kt
 
-      - name: Test and build all targets
+      - name: Test JVM modules
         run: |
           ./gradlew \
             :mermaid-core:jvmTest \
-            :mermaid-compose:jvmTest \
+            :mermaid-compose:jvmTest
+
+      - name: Build all targets
+        run: |
+          ./gradlew \
             :sample:androidApp:assembleDebug \
             :sample:webApp:wasmJsBrowserDistribution \
             :sample:desktopApp:assemble \

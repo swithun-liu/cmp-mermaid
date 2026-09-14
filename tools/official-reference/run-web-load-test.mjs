@@ -3,6 +3,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
+import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases } from './stability-corpus.mjs';
 
 const baseUrl = process.env.BASE_URL ?? 'http://127.0.0.1:8093/';
@@ -29,7 +30,7 @@ if (lastCase == null) {
 }
 
 fs.mkdirSync(outputDirectory, { recursive: true });
-const browser = await puppeteer.launch({ headless: 'shell' });
+const browser = await puppeteer.launch(puppeteerLaunchOptions);
 const errors = [];
 
 try {

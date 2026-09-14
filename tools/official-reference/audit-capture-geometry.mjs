@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
+import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases } from './stability-corpus.mjs';
 
 const repositoryRoot = path.resolve(
@@ -26,7 +27,7 @@ const thresholds = {
   maximumInkRatio: readNumber('MAXIMUM_INK_RATIO', 1.7),
 };
 
-const browser = await puppeteer.launch({ headless: 'shell' });
+const browser = await puppeteer.launch(puppeteerLaunchOptions);
 const results = [];
 const failures = [];
 
