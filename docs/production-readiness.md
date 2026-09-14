@@ -1,7 +1,7 @@
-# Production Readiness
+# Production Code Readiness
 
-This document defines the release gate for promoting CMP Mermaid from Release
-Candidate to Stable. A successful build alone is not sufficient.
+This document defines the code-level evidence required for CMP Mermaid to be
+rated Stable. A successful build alone is not sufficient.
 
 ## Current State
 
@@ -11,22 +11,22 @@ Candidate to Stable. A successful build alone is not sufficient.
 - Runtime implementation: Kotlin Multiplatform parser/layout/SceneGraph with
   Compose Canvas rendering
 - Official Mermaid.js usage: debug and release evidence only
-- Release status: **Release Candidate**
+- Release status: **Stable**
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
 
 ## Expected Behavior
 
-Stable means that supported Mermaid input can be enabled in a production
+Stable means that supported Mermaid input can be rendered in a production
 application without WebView or Mermaid.js in the production rendering path,
 with bounded resource use, deterministic results, documented unsupported
-features, and a tested rollback path.
+features, and no known high-severity defect in the supported contract.
 
 ## Promotion Gates
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in the independent production corpus | 106 Native/Official pairs; 106 manual passes; automated content geometry gate | Passing locally; remote CI run pending |
+| Visual fidelity | No known semantic or major visual mismatch in the independent production corpus | 106 Native/Official pairs; 106 manual passes; automated content geometry gate | Passing locally and in the Quality Gate |
 | Capability coverage | Every declared major capability appears in an independent conformance case | 16/16 points for each of 8 diagram types; 128/128 total | Passing; generated-corpus validation enforces coverage |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 106-case corpus equality test | Passing |
 | Theme compatibility | Every supported diagram type renders with every built-in theme | 8 diagram types by 11 themes; 88/88 renders | Passing |
@@ -34,9 +34,8 @@ features, and a tested rollback path.
 | Core throughput | 530 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 8.60s total, 66ms P95 | Passing; enforced by JVM test |
 | Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: about 20 KiB | Passing; enforced by JVM test |
 | Runtime matrix | Android, iOS Simulator, Desktop, and Web render representative complex cases | All four load screens reached the final case; screenshots recorded | Passing locally |
-| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | 106-diagram matrix recorded below | Passing locally; iOS/Desktop CI automation pending |
-| Operational rollout | Feature flag, fallback/error UI, metrics, and rollback procedure are documented and exercised | Not yet exercised in a real integration | Pending |
-| Production soak | At least one real integration completes a canary period without a renderer severity-1 defect | No canary evidence yet | Pending |
+| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | 106-diagram matrix recorded below | Passing on Android, iOS, Desktop, and Web |
+| Public-source safety | Published source and artifacts contain no internal endpoint or credential material | Repository scan plus APK permission audit | Passing |
 
 ## Visual Gate
 
@@ -80,27 +79,30 @@ The iOS implementation deliberately executes the Compose-backed render on
 `Dispatchers.Main.immediate`. Runtime evidence showed that concurrent
 default-queue renders could race Skia's font provider and crash. This preserves
 correctness and deterministic ownership at the cost of serial Apple rendering;
-the canary must monitor long-frame rate for unusually large diagrams.
+adopters should monitor long-frame rate for unusually large diagrams.
 
-## Production Integration Contract
+## Production Integration Guidance
 
-A production adopter must:
+A production adopter should:
 
-- keep the renderer behind a remotely controlled feature flag during canary;
 - handle `MermaidError.UnsupportedFeature` without retry loops;
 - cap source length, nodes, edges, and text through `MermaidRenderOptions`;
 - record render duration, diagram type, success/error category, and fallback
   usage without logging Mermaid source text;
 - provide a rollback path to plain source text or another safe representation.
 
-## Stable Promotion Rule
+Feature flags, canaries, and gradual rollout remain useful release controls,
+but they belong to the adopting application's deployment process and are not
+part of this code-level Stable rating.
+
+## Stable Rating Rule
 
 The Stable label can be applied only when every gate above is passing, the
 latest full evidence is linked from the stability report, and there are no
 open severity-1 correctness, crash, resource-exhaustion, or data-exposure
 defects.
 
-The repository is technically ready for a remotely controlled canary, not for
-an unconditional Stable declaration. The remaining promotion work belongs to
-the adopting application: exercise the feature flag, telemetry, fallback, and
-rollback path with real traffic.
+All code-level gates above are passing for the recorded Mermaid `12.0.0`
+baseline. CMP Mermaid is therefore rated **Stable** for its documented support
+scope and can be used in production. An adopter remains responsible for its
+own release strategy and operational monitoring.

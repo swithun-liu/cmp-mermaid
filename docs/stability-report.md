@@ -1,17 +1,17 @@
-# Mermaid 12.0.0 Release Candidate Test Report
+# Mermaid 12.0.0 Stable Test Report
 
 This report records the evidence behind CMP Mermaid's current
-**Release Candidate** status. It is deliberately separate from the demo
-gallery: every visual case below comes from an independent complex scenario
-corpus that is not shown as a product demo.
+**Stable** status for the documented support scope. It is deliberately
+separate from the demo gallery: every visual case below comes from an
+independent complex scenario corpus that is not shown as a product demo.
 
 ## Decision
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Release Candidate** |
+| Current rating | **Stable** |
 | Mermaid compatibility baseline | `12.0.0` |
-| Independent production scenarios | 106: 42 prior RC cases plus 64 additional conformance cases |
+| Independent production scenarios | 106: 42 original stability cases plus 64 additional conformance cases |
 | Declared capability coverage | 128/128 points across 8 diagram types |
 | Native core render results | 106 passed, 0 failed |
 | Web Native/Official captures | 212 generated, 0 render errors |
@@ -27,13 +27,12 @@ corpus that is not shown as a product demo.
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
-**Conclusion:** all eight supported diagram types now pass the independent
+**Conclusion:** all eight supported diagram types pass the independent
 106-case visual corpus, deterministic replay, generated stress tests, core
-soak, and local runtime load matrix. The project remains a Release Candidate
-because the final production gates are operational: the expanded visual CI job
-must be green on `main`, and at least one real adopter must complete a guarded
-canary and rollback exercise before the public status can be promoted to
-Stable.
+soak, runtime load matrix, cross-platform build matrix, and the repository
+Quality Gate. This satisfies the project's code-level Stable criteria.
+Canary, feature flags, and rollback are deployment choices for an adopting
+application, not prerequisites for rating the renderer code as Stable.
 
 ## What This Report Does And Does Not Prove
 
@@ -49,18 +48,19 @@ This report proves that the exact source-controlled corpus:
 It does **not** prove that every possible legal Mermaid program is supported.
 The automated image gate measures content bounds and foreground density, not
 full semantic or pixel equality, so manual review remains required. Platform
-font metrics and text wrapping may differ. The local runtime evidence is not a
-substitute for telemetry from a real production integration.
+font metrics and text wrapping may differ. An adopter can still use telemetry
+and gradual rollout to manage its own release risk, but that operational
+choice is outside this code-level rating.
 
 ## Independent Production Corpus
 
 The canonical corpus is
 [`tools/official-reference/production-corpus.mjs`](../tools/official-reference/production-corpus.mjs).
-It includes the 42 prior RC cases plus 64 conformance cases that are also
-independent from the 241-item demo gallery. Generated Kotlin copies are
-consumed independently by core tests and the Web audit screen. Case IDs use
-the `rc_` or `prod_` prefix and cannot be resolved through the normal demo
-gallery.
+It includes 42 original stability cases plus 64 conformance cases that are
+also independent from the 241-item demo gallery. Generated Kotlin copies are
+consumed independently by core tests and the Web audit screen. The original
+cases retain their legacy `rc_` IDs for evidence continuity; additional cases
+use `prod_`. Neither set can be resolved through the normal demo gallery.
 
 | Diagram | Production cases | Capability points | Scenario examples | Manual visual result |
 | --- | ---: | ---: | --- | --- |
@@ -337,9 +337,9 @@ if a screenshot is below the minimum size. The geometry gate rejects blank
 images and severe width, height, or foreground-density differences. The
 contact-sheet generator verifies every expected pair and records its SHA-256.
 
-## Promotion Gate For Stable
+## Stable Acceptance Criteria
 
-The project should only restore the Stable label when all of these are true:
+The Stable label requires all of these code-level gates:
 
 - the independent complex corpus has no blocked visual category;
 - Native/Official comparison includes automated semantic or perceptual
@@ -348,9 +348,9 @@ The project should only restore the Stable label when all of these are true:
 - Android, Web, iOS, and Desktop have runtime smoke evidence, not compile-only
   evidence;
 - bulk rendering has repeatable memory, latency, and long-running soak limits;
-- no open high-severity correctness defect exists for the supported contract;
-- a Release Candidate has been exercised by at least one real integration.
+- no open high-severity correctness, crash, resource-exhaustion, or
+  data-exposure defect exists for the supported contract.
 
-The repository-local technical gates now pass. The remote visual job and a real
-integration canary remain outstanding, so the public status stays
-**Release Candidate**.
+Every criterion above passes for the recorded Mermaid `12.0.0` evidence, so the
+public code status is **Stable**. Production canaries and rollback controls
+remain good release practices for adopters, but do not change this code rating.

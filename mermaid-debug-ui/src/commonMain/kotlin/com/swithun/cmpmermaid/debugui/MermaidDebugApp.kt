@@ -92,7 +92,6 @@ private enum class DiagramStability(
     val label: String,
 ) {
     Stable("STABLE"),
-    ReleaseCandidate("RC"),
     Beta("BETA"),
 }
 
@@ -108,49 +107,49 @@ private val destinations = listOf(
         DebugScreen.Flowchart,
         flowchartDiagramDocsSpec,
         "Dagre and ELK layouts",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.XyChart,
         xyChartDiagramDocsSpec,
         "Bar and line series with categorical or numeric axes",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Sequence,
         sequenceDiagramDocsSpec,
         "Participants, messages, notes, and control regions",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Class,
         classDiagramDocsSpec,
         "Classes, relations, notes, and namespaces",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.State,
         stateDiagramDocsSpec,
         "States, transitions, composites, notes, and concurrency",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Er,
         erDiagramDocsSpec,
         "Entities, attributes, cardinalities, and subgraphs",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Gantt,
         ganttDiagramDocsSpec,
         "Tasks, dependencies, exclusions, and milestones",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
     DiagramDestination(
         DebugScreen.Pie,
         pieDiagramDocsSpec,
         "Pie and donut charts with configurable legends",
-        DiagramStability.ReleaseCandidate,
+        DiagramStability.Stable,
     ),
 )
 
@@ -162,7 +161,7 @@ private val stabilityAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
             destination.spec to DiagramDocsCase(
                 id = corpusCase.id,
                 title = corpusCase.title,
-                category = "Release candidate corpus",
+                category = "Stable corpus",
                 source = corpusCase.source,
                 initialAspectRatio = corpusCase.initialAspectRatio,
             )
@@ -341,7 +340,7 @@ private fun DiagramTypesScreen(
                     DiagramTypeRow(
                         title = "Production load test",
                         description = "${productionCorpusCases.size} mixed complex diagrams",
-                        stability = DiagramStability.ReleaseCandidate,
+                        stability = DiagramStability.Stable,
                         onClick = onOpenLoadTest,
                     )
                 }
@@ -401,7 +400,6 @@ private fun DiagramTypeRow(
                 Surface(
                     color = when (stability) {
                         DiagramStability.Stable -> Color(0xFFDCFCE7)
-                        DiagramStability.ReleaseCandidate -> Color(0xFFFEF3C7)
                         DiagramStability.Beta -> Color(0xFFFEF3C7)
                     },
                     shape = RoundedCornerShape(4.dp),
@@ -411,7 +409,6 @@ private fun DiagramTypeRow(
                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp),
                         color = when (stability) {
                             DiagramStability.Stable -> Color(0xFF166534)
-                            DiagramStability.ReleaseCandidate -> Color(0xFF92400E)
                             DiagramStability.Beta -> Color(0xFF92400E)
                         },
                         fontSize = 10.sp,

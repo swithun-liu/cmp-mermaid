@@ -134,7 +134,7 @@ jobs:
       - name: Build Web production distribution
         run: ./gradlew :sample:webApp:wasmJsBrowserDistribution
 
-      - name: Capture Native and Official RC corpus
+      - name: Capture Native and Official stable corpus
         working-directory: tools/official-reference
         run: |
           python3 -m http.server 8093 \
@@ -158,7 +158,7 @@ jobs:
           OUTPUT_DIR=captures/ci/load-test-web \
           npm run test:web-load
 
-      - name: Enforce RC visual geometry
+      - name: Enforce stable visual geometry
         working-directory: tools/official-reference
         run: |
           CORPUS_SOURCE=production \
@@ -170,10 +170,10 @@ jobs:
           OUTPUT_DIR=captures/ci/contact-sheets \
           npm run generate:stability-contact-sheets
 
-      - name: Upload RC visual evidence
+      - name: Upload stable visual evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: rc-visual-evidence
+          name: stable-visual-evidence
           path: captures/ci
           retention-days: 14

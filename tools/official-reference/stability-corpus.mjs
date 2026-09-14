@@ -1,4 +1,4 @@
-// Independent release-candidate corpus. These cases are intentionally not part
+// Independent stable corpus. These cases are intentionally not part
 // of the demo gallery: they model larger workflows and combined syntax that is
 // closer to application documentation than isolated feature examples.
 export const cases = [
