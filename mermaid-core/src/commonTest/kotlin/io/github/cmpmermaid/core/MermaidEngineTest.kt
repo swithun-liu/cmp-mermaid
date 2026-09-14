@@ -994,6 +994,22 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun keepsLinedCylinderInnerArcBelowItsEndpoints() {
+        val scene = renderCase("expanded_storage_shapes")
+        val disk = scene.elements.filterIsInstance<SceneShape>().first { it.id == "B" }
+        val geometry = assertIs<SceneShapeGeometry>(disk.geometry)
+        val innerArc = geometry.paths.last().points
+
+        assertEquals(SceneShapeKind.LinedCylinder, disk.kind)
+        assertEquals(3, geometry.paths.size)
+        assertEquals(innerArc.first().y, innerArc.last().y, 0.01f)
+        assertTrue(
+            innerArc[innerArc.size / 2].y > innerArc.first().y,
+            "Mermaid's lined-cylinder inner arc must bow down into the cylinder.",
+        )
+    }
+
+    @Test
     fun keepsOddShapeNotchPointingIntoTheNode() {
         val scene = renderCase("expanded_control_shapes")
         val odd = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }

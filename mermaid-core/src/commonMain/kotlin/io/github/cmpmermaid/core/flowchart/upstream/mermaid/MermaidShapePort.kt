@@ -244,7 +244,7 @@ internal object MermaidShapePort {
             add(openStroke(*ellipsePoints(0f, topCenterY, radiusX, radiusY).toPairs()))
             if (lined) {
                 val offsetY = topCenterY + bodyHeight * 0.1f
-                add(openStroke(*arcPoints(0f, offsetY, radiusX, radiusY, 180f, 360f, 50).toPairs()))
+                add(openStroke(*arcPoints(0f, offsetY, radiusX, radiusY, 180f, 0f, 50).toPairs()))
             }
         }
         val labelOffset = if (lined) ScenePoint(0f, radiusY) else ScenePoint(0f, padding / 1.5f)
