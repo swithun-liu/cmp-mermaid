@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.compose.MermaidDiagram
 import io.github.cmpmermaid.core.MermaidCompatibility
+import io.github.cmpmermaid.core.MermaidTheme
 
 enum class MermaidDebugPreview {
     Native,
@@ -400,15 +401,17 @@ private fun DiagramAuditScreen(
             MermaidDebugPreview.Native -> MermaidDiagram(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
-                theme = spec.nativeTheme,
+                theme = MermaidTheme.preset(spec.initialTheme),
                 options = spec.nativeOptions.copy(
                     layout = if (spec.id == "flowchart") layoutOverride else spec.nativeOptions.layout,
+                    themeName = spec.initialTheme.configName,
                 ),
                 contentDescription = "${demo.title} native audit preview",
             )
             MermaidDebugPreview.Official -> OfficialMermaidDiagram(
                 source = demo.source,
                 layout = if (spec.id == "flowchart") layoutOverride else spec.officialLayout,
+                themeName = spec.initialTheme.configName,
                 modifier = Modifier.fillMaxSize(),
                 onRenderResult = { result ->
                     auditStatus = when (result) {

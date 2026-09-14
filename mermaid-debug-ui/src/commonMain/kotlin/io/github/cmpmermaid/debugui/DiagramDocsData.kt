@@ -1,7 +1,7 @@
 package io.github.cmpmermaid.debugui
 
 import io.github.cmpmermaid.core.MermaidRenderOptions
-import io.github.cmpmermaid.core.MermaidTheme
+import io.github.cmpmermaid.core.MermaidThemePreset
 
 private fun lessons(
     cases: List<DiagramDocsCase>,
@@ -39,7 +39,7 @@ internal val xyChartDiagramDocsSpec = DiagramDocsSpec(
             "Named plots appear in a right-side legend; unnamed plots stay out of the legend.",
         ),
     ),
-    nativeTheme = MermaidTheme.MermaidDefault,
+    initialTheme = MermaidThemePreset.Default,
 )
 
 internal val sequenceDiagramDocsSpec = DiagramDocsSpec(
@@ -212,5 +212,5 @@ internal val pieDiagramDocsSpec = DiagramDocsSpec(
             "Tiny slices below Mermaid's drawing threshold still remain in the legend.",
         ),
     ),
-    nativeTheme = MermaidTheme.MermaidDefault,
+    initialTheme = MermaidThemePreset.Default,
 )

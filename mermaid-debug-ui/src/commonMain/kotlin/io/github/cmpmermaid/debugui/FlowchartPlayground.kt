@@ -142,6 +142,14 @@ internal fun FlowchartPlaygroundScreen(
                         )
                     }
                 },
+                actions = {
+                    MermaidThemeMenuAction(
+                        selectedTheme = selectedTheme,
+                        onThemeSelected = { theme ->
+                            selectedThemeName = theme.name
+                        },
+                    )
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface,
                 ),
@@ -166,9 +174,6 @@ internal fun FlowchartPlaygroundScreen(
             onDraftChange = { draftSource = it },
             onLayoutSelected = { layout ->
                 selectedLayoutName = layout.name
-            },
-            onThemeSelected = { theme ->
-                selectedThemeName = theme.name
             },
             onRendererSelected = { renderer ->
                 selectedRendererName = renderer.name
@@ -201,13 +206,11 @@ private fun PlaygroundContent(
     onDemoSelected: (FlowchartDemo) -> Unit,
     onDraftChange: (String) -> Unit,
     onLayoutSelected: (PlaygroundLayout) -> Unit,
-    onThemeSelected: (MermaidThemePreset) -> Unit,
     onRendererSelected: (PlaygroundRenderer) -> Unit,
     onReset: () -> Unit,
     onRender: () -> Unit,
 ) {
     var examplesExpanded by remember { mutableStateOf(false) }
-    var themesExpanded by remember { mutableStateOf(false) }
     val hasPendingChanges = draftSource != renderedSource
     val cjkFontFamily = if (draftSource.cjkFontRanges().isNotEmpty()) {
         rememberMermaidCjkFontFamily()
@@ -313,59 +316,6 @@ private fun PlaygroundContent(
                         ),
                         label = { Text(layout.label) },
                     )
-                }
-            }
-        }
-
-        item {
-            Text(
-                text = "Theme",
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.SemiBold,
-            )
-            Spacer(Modifier.height(8.dp))
-            ExposedDropdownMenuBox(
-                expanded = themesExpanded,
-                onExpandedChange = { themesExpanded = it },
-            ) {
-                OutlinedTextField(
-                    value = selectedTheme.configName,
-                    onValueChange = {},
-                    modifier = Modifier
-                        .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
-                        .fillMaxWidth(),
-                    readOnly = true,
-                    singleLine = true,
-                    label = { Text("Mermaid 12 preset") },
-                    trailingIcon = {
-                        ExposedDropdownMenuDefaults.TrailingIcon(
-                            expanded = themesExpanded,
-                        )
-                    },
-                )
-                ExposedDropdownMenu(
-                    expanded = themesExpanded,
-                    onDismissRequest = { themesExpanded = false },
-                ) {
-                    MermaidThemePreset.entries.forEach { theme ->
-                        DropdownMenuItem(
-                            text = {
-                                Text(
-                                    text = theme.configName,
-                                    fontWeight = if (theme == selectedTheme) {
-                                        FontWeight.SemiBold
-                                    } else {
-                                        FontWeight.Normal
-                                    },
-                                )
-                            },
-                            onClick = {
-                                themesExpanded = false
-                                focusManager.clearFocus()
-                                onThemeSelected(theme)
-                            },
-                        )
-                    }
                 }
             }
         }

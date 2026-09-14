@@ -53,6 +53,7 @@ import io.github.cmpmermaid.compose.MermaidDiagram
 import io.github.cmpmermaid.core.MermaidCompatibility
 import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.core.MermaidTheme
+import io.github.cmpmermaid.core.MermaidThemePreset
 
 internal data class DiagramDocsCase(
     val id: String,
@@ -78,7 +79,7 @@ internal data class DiagramDocsSpec(
     val galleryTitle: String,
     val cases: List<DiagramDocsCase>,
     val syntaxLessons: List<DiagramSyntaxLesson>,
-    val nativeTheme: MermaidTheme = MermaidTheme.FlowchartDefault,
+    val initialTheme: MermaidThemePreset = MermaidThemePreset.ReduxColor,
     val nativeOptions: MermaidRenderOptions = MermaidRenderOptions(),
     val officialLayout: String = "dagre",
 )
@@ -92,6 +93,18 @@ internal fun UnifiedDiagramDocsScreen(
     onAction: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable(spec.id) { mutableIntStateOf(0) }
+    var selectedThemeName by rememberSaveable(spec.id) {
+        mutableStateOf(spec.initialTheme.name)
+    }
+    val selectedThemePreset = MermaidThemePreset.entries
+        .firstOrNull { it.name == selectedThemeName }
+        ?: spec.initialTheme
+    val selectedTheme = remember(selectedThemePreset) {
+        MermaidTheme.preset(selectedThemePreset)
+    }
+    val themedOptions = remember(spec.nativeOptions, selectedThemePreset) {
+        spec.nativeOptions.copy(themeName = selectedThemePreset.configName)
+    }
     Scaffold(
         topBar = {
             Column {
@@ -119,6 +132,12 @@ internal fun UnifiedDiagramDocsScreen(
                         }
                     },
                     actions = {
+                        MermaidThemeMenuAction(
+                            selectedTheme = selectedThemePreset,
+                            onThemeSelected = { theme ->
+                                selectedThemeName = theme.name
+                            },
+                        )
                         if (actionLabel != null && onAction != null) {
                             TextButton(onClick = onAction) {
                                 Icon(
@@ -150,8 +169,19 @@ internal fun UnifiedDiagramDocsScreen(
         },
     ) { contentPadding ->
         when (selectedTab) {
-            0 -> UnifiedBasicSyntaxPage(spec, contentPadding)
-            else -> UnifiedDemoGalleryPage(spec, contentPadding)
+            0 -> UnifiedBasicSyntaxPage(
+                spec = spec,
+                contentPadding = contentPadding,
+                theme = selectedTheme,
+                options = themedOptions,
+            )
+            else -> UnifiedDemoGalleryPage(
+                spec = spec,
+                contentPadding = contentPadding,
+                theme = selectedTheme,
+                options = themedOptions,
+                themeName = selectedThemePreset.configName,
+            )
         }
     }
 }
@@ -160,6 +190,8 @@ internal fun UnifiedDiagramDocsScreen(
 private fun UnifiedBasicSyntaxPage(
     spec: DiagramDocsSpec,
     contentPadding: PaddingValues,
+    theme: MermaidTheme,
+    options: MermaidRenderOptions,
 ) {
     val uriHandler = LocalUriHandler.current
     LazyColumn(
@@ -199,8 +231,8 @@ private fun UnifiedBasicSyntaxPage(
         items(spec.syntaxLessons, key = DiagramSyntaxLesson::title) { lesson ->
             UnifiedSyntaxLesson(
                 lesson = lesson,
-                theme = spec.nativeTheme,
-                options = spec.nativeOptions,
+                theme = theme,
+                options = options,
             )
         }
     }
@@ -250,6 +282,9 @@ private fun UnifiedSyntaxLesson(
 private fun UnifiedDemoGalleryPage(
     spec: DiagramDocsSpec,
     contentPadding: PaddingValues,
+    theme: MermaidTheme,
+    options: MermaidRenderOptions,
+    themeName: String,
 ) {
     val categories = remember(spec.cases) {
         listOf("All") + spec.cases.map(DiagramDocsCase::category).distinct()
@@ -380,8 +415,9 @@ private fun UnifiedDemoGalleryPage(
                 ResponsiveDiagramPreview(
                     demo = demo,
                     selectedPreview = selectedPreview,
-                    theme = spec.nativeTheme,
-                    options = spec.nativeOptions,
+                    theme = theme,
+                    options = options,
+                    themeName = themeName,
                     officialLayout = spec.officialLayout,
                 )
             }
@@ -403,6 +439,7 @@ private fun ResponsiveDiagramPreview(
     selectedPreview: Int,
     theme: MermaidTheme,
     options: MermaidRenderOptions,
+    themeName: String,
     officialLayout: String,
 ) {
     val aspectRatio = demo.initialAspectRatio.coerceAtLeast(0.1f)
@@ -429,6 +466,7 @@ private fun ResponsiveDiagramPreview(
                 OfficialMermaidDiagram(
                     source = demo.source,
                     layout = officialLayout,
+                    themeName = themeName,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(previewHeight),
