@@ -3,8 +3,9 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import puppeteer from 'puppeteer';
+import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
-import { cases } from './stability-corpus.mjs';
+import { cases as stabilityCases } from './stability-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -16,6 +17,13 @@ const outputDirectory = resolve(
   repositoryRoot,
   process.env.OUTPUT_DIR ?? 'docs/assets/stability-report',
 );
+const corpusSource = process.env.CORPUS_SOURCE ?? 'stability';
+const cases = corpusSource === 'production'
+  ? productionCases
+  : stabilityCases;
+if (!['stability', 'production'].includes(corpusSource)) {
+  throw new Error('CORPUS_SOURCE must be stability or production');
+}
 const kinds = ['flowchart', 'xychart', 'sequence', 'class', 'state', 'er', 'gantt', 'pie'];
 const kindTitles = {
   flowchart: 'Flowchart',
@@ -70,6 +78,7 @@ writeFileSync(
   resolve(outputDirectory, 'manifest.json'),
   `${JSON.stringify({
     mermaidVersion: '12.0.0',
+    corpusSource,
     generatedAt: new Date().toISOString(),
     caseCount: manifest.length,
     cases: manifest.map(({ nativePath, officialPath, ...entry }) => entry),
@@ -153,7 +162,7 @@ function renderContactSheet(kind, records) {
 </head>
 <body>
   <header>
-    <h1>${kindTitles[kind]} complex release-candidate corpus</h1>
+    <h1>${kindTitles[kind]} ${escapeHtml(corpusSource)} corpus</h1>
     <p>Independent real-world scenarios. Left: CMP Native. Right: Mermaid.js 12.0.0.</p>
   </header>
   ${rows}

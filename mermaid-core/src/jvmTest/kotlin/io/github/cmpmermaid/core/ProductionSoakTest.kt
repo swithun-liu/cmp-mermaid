@@ -1,7 +1,7 @@
 package io.github.cmpmermaid.core
 
 import io.github.cmpmermaid.core.generated.StabilityCorpusCase
-import io.github.cmpmermaid.core.generated.stabilityCorpusCases
+import io.github.cmpmermaid.core.generated.productionCorpusCases
 import kotlin.math.ceil
 import kotlin.math.min
 import kotlin.test.Test
@@ -35,7 +35,7 @@ class ProductionSoakTest {
     @Test
     fun repeatedlyRendersProductionCorpusWithinJvmBudget() {
         repeat(WARMUP_ROUNDS) {
-            stabilityCorpusCases.forEach(::render)
+            productionCorpusCases.forEach(::render)
         }
         forceGc()
         val memoryBefore = usedHeapBytes()
@@ -43,7 +43,7 @@ class ProductionSoakTest {
         val startedAt = System.nanoTime()
 
         repeat(MEASURED_ROUNDS) {
-            stabilityCorpusCases.forEach { case ->
+            productionCorpusCases.forEach { case ->
                 val renderStartedAt = System.nanoTime()
                 render(case)
                 durations += System.nanoTime() - renderStartedAt
@@ -110,8 +110,8 @@ class ProductionSoakTest {
 
     private companion object {
         const val WARMUP_ROUNDS = 2
-        const val MEASURED_ROUNDS = 10
-        const val MAX_TOTAL_MILLIS = 30_000L
+        const val MEASURED_ROUNDS = 5
+        const val MAX_TOTAL_MILLIS = 45_000L
         const val MAX_P95_MILLIS = 500L
         const val MAX_RETAINED_HEAP_BYTES = 64L * 1024L * 1024L
     }

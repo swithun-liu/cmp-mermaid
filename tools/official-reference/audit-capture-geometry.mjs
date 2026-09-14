@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
+import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
-import { cases } from './stability-corpus.mjs';
+import { cases as stabilityCases } from './stability-corpus.mjs';
 
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -16,6 +17,13 @@ const inputDirectory = path.resolve(
 const outputFile = process.env.OUTPUT_FILE
   ? path.resolve(repositoryRoot, process.env.OUTPUT_FILE)
   : null;
+const corpusSource = process.env.CORPUS_SOURCE ?? 'stability';
+const cases = corpusSource === 'production'
+  ? productionCases
+  : stabilityCases;
+if (!['stability', 'production'].includes(corpusSource)) {
+  throw new Error('CORPUS_SOURCE must be stability or production');
+}
 const thresholds = {
   minimumInkPixels: readNumber('MINIMUM_INK_PIXELS', 100),
   minimumContentSize: readNumber('MINIMUM_CONTENT_SIZE', 20),
@@ -83,7 +91,8 @@ try {
 const report = {
   schemaVersion: 1,
   generatedAt: new Date().toISOString(),
-  inputDirectory,
+  inputDirectory: path.relative(repositoryRoot, inputDirectory),
+  corpusSource,
   caseCount: results.length,
   thresholds,
   failures,

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "device": "emulator-5554",
+  "caseCount": 106,
+  "lastCaseId": "prod_pie_themed_many_services",
+  "initialPssKb": 211754,
+  "peakPssKb": 220810,
+  "finalPssKb": 184116,
+  "scrollSeconds": 24,
+  "reachedLastCase": true,
+  "thresholds": {
+    "maximumPssKb": 300000,
+    "maximumScrollSeconds": 45
+  }
+}

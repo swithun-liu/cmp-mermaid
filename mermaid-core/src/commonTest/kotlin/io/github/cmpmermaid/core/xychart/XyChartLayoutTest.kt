@@ -14,6 +14,7 @@ import io.github.cmpmermaid.core.SceneText
 import io.github.cmpmermaid.core.TextMetricProvider
 import io.github.cmpmermaid.core.TextMetrics
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.test.Test
@@ -229,7 +230,7 @@ class XyChartLayoutTest {
             config:
               xyChart:
                 width: 420
-                height: 300
+                height: 340
                 plotReservedSpacePercent: 65
                 xAxis:
                   labelRotation: -60
@@ -277,7 +278,7 @@ class XyChartLayoutTest {
             config:
               xyChart:
                 width: 420
-                height: 300
+                height: 340
                 plotReservedSpacePercent: 65
                 xAxis:
                   labelRotation: -60
@@ -304,6 +305,41 @@ class XyChartLayoutTest {
             scene.elements.filterIsInstance<ScenePath>()
                 .count { path -> path.id.startsWith("xy-bottom-axis-tick-") },
         )
+    }
+
+    @Test
+    fun preservesMeasuredBoundsAndOutsideLabelsForHorizontalCharts() {
+        val scene = render(
+            """
+            ---
+            config:
+              xyChart:
+                showDataLabel: true
+                showDataLabelOutsideBar: true
+            ---
+            xychart horizontal
+                title "Review queue age"
+                x-axis ["Security", "Privacy", "Legal", "Finance", "Operations"]
+                bar "Minutes" [14, 9, 21, 7, 12]
+            """.trimIndent(),
+        )
+        val texts = scene.elements.filterIsInstance<SceneText>()
+        val category = texts.single { text -> text.text == "Security" }
+        val legend = texts.single { text -> text.text == "Minutes" }
+        val labels = texts.filter { text ->
+            text.zIndex == 18 && text.text in setOf("14", "9", "21", "7", "12")
+        }
+
+        assertTrue(
+            abs(category.bounds.width - category.text.length * category.fontSize * 0.55f) < 0.01f,
+            "Horizontal category bounds must preserve the measured text width",
+        )
+        assertTrue(
+            abs(legend.bounds.width - legend.text.length * legend.fontSize * 0.55f) < 0.01f,
+            "Legend bounds must preserve the measured text width",
+        )
+        assertEquals(setOf("14", "9", "21", "7", "12"), labels.mapTo(mutableSetOf(), SceneText::text))
+        assertTrue(labels.all { label -> label.bounds.right <= scene.width })
     }
 
     @Test

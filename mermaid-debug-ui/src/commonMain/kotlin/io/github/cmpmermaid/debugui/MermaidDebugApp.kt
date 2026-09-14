@@ -51,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.compose.MermaidDiagram
 import io.github.cmpmermaid.core.MermaidCompatibility
 import io.github.cmpmermaid.core.MermaidTheme
+import io.github.cmpmermaid.debugui.generated.productionCorpusCases
 import io.github.cmpmermaid.debugui.generated.stabilityCorpusCases
 
 enum class MermaidDebugPreview {
@@ -168,6 +169,21 @@ private val stabilityAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
         }
     }
 
+private val productionAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
+    productionCorpusCases.mapNotNull { corpusCase ->
+        destinations.firstOrNull { destination ->
+            destination.spec.id == corpusCase.diagramId
+        }?.let { destination ->
+            destination.spec to DiagramDocsCase(
+                id = corpusCase.id,
+                title = corpusCase.title,
+                category = "Production conformance corpus",
+                source = corpusCase.source,
+                initialAspectRatio = corpusCase.initialAspectRatio,
+            )
+        }
+    }
+
 @Composable
 fun MermaidDebugApp(
     options: MermaidDebugLaunchOptions = MermaidDebugLaunchOptions(),
@@ -201,6 +217,8 @@ fun MermaidDebugApp(
                     .firstOrNull { it.id == requestedId }
                     ?.let { demo -> destination.spec to demo }
             } ?: stabilityAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            } ?: productionAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId
             }
         }
@@ -322,7 +340,7 @@ private fun DiagramTypesScreen(
                 item(key = "production-load-test") {
                     DiagramTypeRow(
                         title = "Production load test",
-                        description = "${stabilityCorpusCases.size} mixed complex diagrams",
+                        description = "${productionCorpusCases.size} mixed complex diagrams",
                         stability = DiagramStability.ReleaseCandidate,
                         onClick = onOpenLoadTest,
                     )

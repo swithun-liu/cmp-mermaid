@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import { cases as flowchartCases } from './cases.mjs';
+import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
 
@@ -38,7 +39,7 @@ const kotlinGalleryFiles = {
   pie: ['PieDemos.kt', 'PieDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
-const supportedAuditSources = ['gallery', 'stability'];
+const supportedAuditSources = ['gallery', 'stability', 'production'];
 
 if (!supportedAuditKinds.includes(auditKind)) {
   throw new Error(`AUDIT_KIND must be one of: ${supportedAuditKinds.join(', ')}`);
@@ -50,8 +51,11 @@ if (!['dagre', 'elk'].includes(layout)) {
   throw new Error('CAPTURE_LAYOUT must be dagre or elk');
 }
 
-const sourceCases = auditSource === 'stability'
-  ? stabilityCases.filter(({ kind }) => auditKind === 'all' || auditKind === kind)
+const corpusCases = auditSource === 'production'
+  ? productionCases
+  : stabilityCases;
+const sourceCases = auditSource === 'stability' || auditSource === 'production'
+  ? corpusCases.filter(({ kind }) => auditKind === 'all' || auditKind === kind)
   : [
       ...(auditKind === 'all' || auditKind === 'flowchart'
         ? flowchartCases.map((entry) => ({ ...entry, kind: 'flowchart' }))
@@ -92,8 +96,11 @@ try {
         timeout: 60_000,
       });
       if (preview.toLowerCase() === 'official') {
-        await waitForOfficialSvg(page);
-        if (auditSource === 'stability' && auditCase.kind === 'gantt') {
+        await waitForOfficialSvg(page, auditCase.id);
+        if (
+          (auditSource === 'stability' || auditSource === 'production') &&
+          auditCase.kind === 'gantt'
+        ) {
           await assertOfficialGanttWidth(page, auditCase.id);
         }
       } else {
@@ -155,8 +162,8 @@ async function waitForNativeCanvas(page) {
   await new Promise((resolveWait) => setTimeout(resolveWait, 750));
 }
 
-async function waitForOfficialSvg(page) {
-  await page.waitForFunction(
+async function waitForOfficialSvg(page, caseId) {
+  const outcomeHandle = await page.waitForFunction(
     () => {
       const roots = [document];
       for (let index = 0; index < roots.length; index += 1) {
@@ -165,7 +172,14 @@ async function waitForOfficialSvg(page) {
           'iframe[title="Official Mermaid.js rendering"]',
         );
         if (frame?.contentDocument?.querySelector('#diagram svg') != null) {
-          return true;
+          return { status: 'ready' };
+        }
+        const error = frame?.contentDocument?.querySelector('#diagram.error');
+        if (error != null) {
+          return {
+            status: 'error',
+            message: error.textContent?.trim() ?? 'Unknown rendering error',
+          };
         }
         root.querySelectorAll?.('*').forEach((element) => {
           if (element.shadowRoot !== null) {
@@ -173,10 +187,17 @@ async function waitForOfficialSvg(page) {
           }
         });
       }
-      return false;
+      return null;
     },
     { timeout: 60_000 },
   );
+  const outcome = await outcomeHandle.jsonValue();
+  await outcomeHandle.dispose();
+  if (outcome.status === 'error') {
+    throw new Error(
+      `${caseId}/Official Mermaid.js rendering failed: ${outcome.message}`,
+    );
+  }
 }
 
 async function assertOfficialGanttWidth(page, caseId) {

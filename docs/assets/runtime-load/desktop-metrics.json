@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "platform": "Desktop macOS",
+  "caseCount": 106,
+  "lastCaseId": "prod_pie_themed_many_services",
+  "autoRunItemDelayMillis": 75,
+  "finalRssKb": 437872,
+  "reachedLastCase": true,
+  "crashed": false
+}

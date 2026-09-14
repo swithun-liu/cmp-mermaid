@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "platform": "iOS Simulator",
+  "device": "iPhone 17 Pro",
+  "caseCount": 106,
+  "lastCaseId": "prod_pie_themed_many_services",
+  "autoRunItemDelayMillis": 75,
+  "finalHostRssKb": 514944,
+  "reachedLastCase": true,
+  "crashed": false
+}

@@ -12,6 +12,8 @@ Candidate to Stable. A successful build alone is not sufficient.
   Compose Canvas rendering
 - Official Mermaid.js usage: debug and release evidence only
 - Release status: **Release Candidate**
+- Detailed conformance scope:
+  [`production-capability-matrix.md`](production-capability-matrix.md)
 
 ## Expected Behavior
 
@@ -24,13 +26,15 @@ features, and a tested rollback path.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in the independent RC corpus | 42 Native/Official pairs; 42 manual passes; automated content geometry gate | Passing locally; remote CI run pending |
-| Determinism | Repeated rendering returns the same SceneGraph | Full 42-case corpus equality test | Passing |
+| Visual fidelity | No known semantic or major visual mismatch in the independent production corpus | 106 Native/Official pairs; 106 manual passes; automated content geometry gate | Passing locally; remote CI run pending |
+| Capability coverage | Every declared major capability appears in an independent conformance case | 16/16 points for each of 8 diagram types; 128/128 total | Passing; generated-corpus validation enforces coverage |
+| Determinism | Repeated rendering returns the same SceneGraph | Full 106-case corpus equality test | Passing |
+| Theme compatibility | Every supported diagram type renders with every built-in theme | 8 diagram types by 11 themes; 88/88 renders | Passing |
 | Parser/layout robustness | Deterministic randomized corpus and resource limits pass | 2,048 generated stress inputs plus diagram-specific limits | Passing |
-| Core throughput | 420 warmed complex renders complete within 30s and P95 is at most 500ms | Local baseline: 11.5s total, 101ms P95 | Passing; enforced by JVM test |
-| Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: about 24 KiB | Passing; enforced by JVM test |
+| Core throughput | 530 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 8.60s total, 66ms P95 | Passing; enforced by JVM test |
+| Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: about 20 KiB | Passing; enforced by JVM test |
 | Runtime matrix | Android, iOS Simulator, Desktop, and Web render representative complex cases | All four load screens reached the final case; screenshots recorded | Passing locally |
-| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | 42-diagram matrix recorded below | Passing locally; iOS/Desktop CI automation pending |
+| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | 106-diagram matrix recorded below | Passing locally; iOS/Desktop CI automation pending |
 | Operational rollout | Feature flag, fallback/error UI, metrics, and rollback procedure are documented and exercised | Not yet exercised in a real integration | Pending |
 | Production soak | At least one real integration completes a canary period without a renderer severity-1 defect | No canary evidence yet | Pending |
 
@@ -63,10 +67,10 @@ The runtime load gate must record:
 
 | Platform | Corpus | Latency | Memory | Outcome |
 | --- | ---: | --- | --- | --- |
-| Android Emulator | 42 | 8s list traversal | 216MiB peak PSS; 180MiB final PSS | Passed 300MiB/20s budget |
-| iOS Simulator | 42 | About 5.5s automatic traversal | 222MiB idle RSS; 473-491MiB final RSS | Five fresh-process passes; no crash |
-| Desktop | 42 | Automatic traversal reached final case | 454MiB process RSS; 59MiB JVM heap used | Passed |
-| Web | 42 | 928ms first content; 2.67s scroll | 5.4MiB retained JS heap | Passed 15s/96MiB budget |
+| Android Emulator | 106 | 24s list traversal | 216MiB peak PSS; 180MiB final PSS | Passed 300MiB/45s budget |
+| iOS Simulator | 106 | Automatic traversal reached final case | About 503MiB final host RSS | Passed without a crash |
+| Desktop | 106 | Automatic traversal reached final case | About 428MiB process RSS | Passed |
+| Web | 106 | 661ms first content; 5.77s scroll | 8.9MiB retained JS heap | Passed 15s/96MiB budget |
 
 Headless Chromium process-tree RSS is recorded as diagnostic data but is not a
 renderer budget because it includes browser infrastructure outside the Web

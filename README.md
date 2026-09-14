@@ -15,10 +15,11 @@
 
 > **Current baseline:** Mermaid `12.0.0` · **Release candidates:** 8 ·
 > **Built-in themes:** 11 · **Platforms:** Android, iOS, Desktop, Web ·
-> **Independent complex scenarios:** 42 · **JVM tests:** 273
+> **Independent production scenarios:** 106 · **JVM tests:** 279
 >
 > Evidence and current limitations:
 > **[Release Candidate test report](docs/stability-report.md)** ·
+> **[Capability matrix](docs/production-capability-matrix.md)** ·
 > **[Production readiness gate](docs/production-readiness.md)**
 
 CMP Mermaid is built for screens that may contain many diagrams. Production
@@ -29,8 +30,8 @@ by Compose Canvas.
 
 ## Native Vs Mermaid.js 12.0.0
 
-These images come from the independent Release Candidate corpus, not the demo
-gallery. They use the **same Mermaid source, theme, layout mode, and fixed
+These images come from the independent production corpus, not the demo gallery.
+They use the **same Mermaid source, theme, layout mode, and fixed
 viewport**. The target is semantic and visual parity, not a pixel-for-pixel
 browser clone; small font-metric differences are expected across platforms.
 
@@ -80,24 +81,26 @@ later visits faster.
 
 ## Release Candidate Support Matrix
 
-| Diagram | Demo examples | Independent RC cases | Major translated coverage | Status |
-| --- | ---: | ---: | --- | :---: |
-| Flowchart | 62 | 6 | Jison/FlowDB, Dagre, ELK adapter, shapes, links, Markdown/HTML labels | Release candidate |
-| XY Chart | 32 | 5 | Jison/XY DB, D3 scales/ticks, chartBuilder, bar/line plots | Release candidate |
-| Sequence | 35 | 6 | Jison/Sequence DB, actors, 26 message forms, notes, control regions | Release candidate |
-| Class | 27 | 5 | Jison/Class DB, compartments, namespaces, relations, ELK/Dagre | Release candidate |
-| State | 25 | 5 | Jison/State DB, composites, concurrency, notes, ELK/Dagre | Release candidate |
-| Entity Relationship | 20 | 5 | Jison/ER DB, attributes, cardinalities, subgraphs, ELK/Dagre | Release candidate |
-| Gantt | 20 | 5 | Jison/Gantt DB, dates, dependencies, exclusions, milestones, ticks | Release candidate |
-| Pie | 20 | 5 | Langium grammar, Pie DB, D3 angles, donut, legends, palettes | Release candidate |
+| Diagram | Demo examples | Production cases | Capability points | Major translated coverage | Status |
+| --- | ---: | ---: | ---: | --- | :---: |
+| Flowchart | 62 | 14 | 16/16 | Jison/FlowDB, Dagre, ELK adapter, shapes, links, Markdown/HTML labels | Release candidate |
+| XY Chart | 32 | 13 | 16/16 | Jison/XY DB, D3 scales/ticks, chartBuilder, bar/line plots | Release candidate |
+| Sequence | 35 | 14 | 16/16 | Jison/Sequence DB, actors, 26 message forms, notes, control regions | Release candidate |
+| Class | 27 | 13 | 16/16 | Jison/Class DB, compartments, namespaces, relations, ELK/Dagre | Release candidate |
+| State | 25 | 13 | 16/16 | Jison/State DB, composites, concurrency, notes, ELK/Dagre | Release candidate |
+| Entity Relationship | 20 | 13 | 16/16 | Jison/ER DB, attributes, cardinalities, subgraphs, ELK/Dagre | Release candidate |
+| Gantt | 20 | 13 | 16/16 | Jison/Gantt DB, dates, dependencies, exclusions, milestones, ticks | Release candidate |
+| Pie | 20 | 13 | 16/16 | Langium grammar, Pie DB, D3 angles, donut, legends, palettes | Release candidate |
 
 Demo examples are for feature discovery and are not counted as stability
 evidence. Each release candidate is separately covered by official
 documentation fixtures, deterministic stress tests, the independent complex
 corpus, deterministic SceneGraph replay, Native/Official screenshots, and a
-42-diagram runtime load screen. All 42 independent visual pairs currently pass;
-the project remains a Release Candidate until a real adopter completes canary
-and rollback validation.
+106-diagram runtime load screen. The production corpus combines 42 prior
+release-candidate scenarios with 64 additional conformance cases, covers all
+128 declared capability points, and produces 212 Native/Official captures. All
+106 visual pairs currently pass; the project remains a Release Candidate until
+a real adopter completes canary and rollback validation.
 Unsupported legal Mermaid features return
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation.

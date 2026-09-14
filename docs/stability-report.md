@@ -11,25 +11,29 @@ corpus that is not shown as a product demo.
 | --- | --- |
 | Current rating | **Release Candidate** |
 | Mermaid compatibility baseline | `12.0.0` |
-| Independent complex scenarios | 42 |
-| Native core render results | 42 passed, 0 failed |
-| Web Native/Official captures | 84 generated, 0 render errors |
-| Manual visual review | 42 acceptable, 0 blocked |
-| Automated visual geometry | 42 passed, 0 failed |
-| Deterministic SceneGraph replay | 42 passed, 0 mismatches |
+| Independent production scenarios | 106: 42 prior RC cases plus 64 additional conformance cases |
+| Declared capability coverage | 128/128 points across 8 diagram types |
+| Native core render results | 106 passed, 0 failed |
+| Web Native/Official captures | 212 generated, 0 render errors |
+| Manual visual review | 106 acceptable, 0 blocked |
+| Automated visual geometry | 106 passed, 0 failed |
+| Deterministic SceneGraph replay | 106 passed, 0 mismatches |
+| Built-in theme matrix | 88/88 renders passed: 8 diagram types by 11 themes |
 | Deterministic generated stress inputs | 2,048 |
-| JVM tests | 273 passed, 0 failed |
-| Core production soak | 420 renders; 11.5s total; 101ms P95; 24KiB retained heap |
+| JVM tests | 279 passed, 0 failed |
+| Core production soak | 530 renders; 8.60s total; 66ms P95; about 20KiB retained heap |
 | Runtime load matrix | Android Emulator, iOS Simulator, Desktop, and Web passed |
-| Platform build matrix | Android, Web, Desktop, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
-| Android Internet permission | Not declared |
+| Platform build matrix | Android debug/release, Web production, Desktop distributable, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
+| Android Internet permission | Not declared in debug or release APK |
+| Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
 **Conclusion:** all eight supported diagram types now pass the independent
-visual corpus, deterministic replay, generated stress tests, core soak, and
-local runtime load matrix. The project remains a Release Candidate because the
-final production gates are operational: the new visual CI job must be green on
-`main`, and at least one real adopter must complete a guarded canary and rollback
-exercise before the public status can be promoted to Stable.
+106-case visual corpus, deterministic replay, generated stress tests, core
+soak, and local runtime load matrix. The project remains a Release Candidate
+because the final production gates are operational: the expanded visual CI job
+must be green on `main`, and at least one real adopter must complete a guarded
+canary and rollback exercise before the public status can be promoted to
+Stable.
 
 ## What This Report Does And Does Not Prove
 
@@ -48,24 +52,26 @@ full semantic or pixel equality, so manual review remains required. Platform
 font metrics and text wrapping may differ. The local runtime evidence is not a
 substitute for telemetry from a real production integration.
 
-## Independent Complex Corpus
+## Independent Production Corpus
 
 The canonical corpus is
-[`tools/official-reference/stability-corpus.mjs`](../tools/official-reference/stability-corpus.mjs).
-Generated Kotlin copies are consumed independently by the core tests and the
-Web audit screen. Case IDs use the `rc_` prefix and cannot be resolved through
-the normal demo gallery.
+[`tools/official-reference/production-corpus.mjs`](../tools/official-reference/production-corpus.mjs).
+It includes the 42 prior RC cases plus 64 conformance cases that are also
+independent from the 241-item demo gallery. Generated Kotlin copies are
+consumed independently by core tests and the Web audit screen. Case IDs use
+the `rc_` or `prod_` prefix and cannot be resolved through the normal demo
+gallery.
 
-| Diagram | Complex cases | Scenario examples | Manual visual result |
-| --- | ---: | --- | --- |
-| Flowchart | 6 | checkout compensation, regional failover, release rollback, incident response | Acceptable |
-| XY Chart | 5 | latency percentiles, conversion, capacity, backlog, error budget | Acceptable |
-| Sequence | 6 | checkout saga, OAuth race, multipart upload, retry delivery, offline sync | Acceptable; autonumber/activation layering rechecked |
-| Class | 5 | commerce, workflow engine, authorization, notifications, editor model | Acceptable |
-| State | 5 | fulfillment, payment, rollout, media processing, support lifecycle | Acceptable |
-| Entity Relationship | 5 | commerce, learning, messaging, billing, warehouse inventory | Acceptable |
-| Gantt | 5 | mobile release, database migration, regional launch, incident hardening | Acceptable |
-| Pie | 5 | cloud cost, acquisition, incidents, subscriptions, storage | Acceptable |
+| Diagram | Production cases | Capability points | Scenario examples | Manual visual result |
+| --- | ---: | ---: | --- | --- |
+| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Acceptable |
+| XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Acceptable |
+| Sequence | 14 | 16/16 | checkout saga, lifecycle, self messages, parallel and critical regions | Acceptable; self-message/frame bounds rechecked |
+| Class | 13 | 16/16 | commerce, namespaces, generics, relations, annotations | Acceptable |
+| State | 13 | 16/16 | fulfillment, nested composites, fork/join, concurrency, notes | Acceptable |
+| Entity Relationship | 13 | 16/16 | commerce, aliases, attributes, cardinalities, nested subgraphs | Acceptable |
+| Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Acceptable |
+| Pie | 13 | 16/16 | cost, escaped labels, donut, legends, themes, many slices | Acceptable |
 
 `Acceptable` means the manual review found no missing domain entity, state,
 message, series, relationship, or route that changes the meaning of the
@@ -81,21 +87,21 @@ Each contact sheet uses the same Mermaid source on both sides:
 The source IDs and scenario descriptions are printed above every pair.
 
 <details open>
-<summary><strong>Flowchart: 6 complex scenarios</strong></summary>
+<summary><strong>Flowchart: 14 production scenarios</strong></summary>
 
 ![Flowchart complex Native and Official corpus](assets/stability-report/flowchart-complex-corpus.png)
 
 </details>
 
 <details open>
-<summary><strong>XY Chart: 5 complex scenarios</strong></summary>
+<summary><strong>XY Chart: 13 production scenarios</strong></summary>
 
 ![XY Chart complex Native and Official corpus](assets/stability-report/xychart-complex-corpus.png)
 
 </details>
 
 <details>
-<summary><strong>Sequence: 6 complex scenarios</strong></summary>
+<summary><strong>Sequence: 14 production scenarios</strong></summary>
 
 ![Sequence complex Native and Official corpus](assets/stability-report/sequence-complex-corpus.png)
 
@@ -107,28 +113,28 @@ above activation bars.
 </details>
 
 <details>
-<summary><strong>Class: 5 complex scenarios</strong></summary>
+<summary><strong>Class: 13 production scenarios</strong></summary>
 
 ![Class complex Native and Official corpus](assets/stability-report/class-complex-corpus.png)
 
 </details>
 
 <details>
-<summary><strong>State: 5 complex scenarios</strong></summary>
+<summary><strong>State: 13 production scenarios</strong></summary>
 
 ![State complex Native and Official corpus](assets/stability-report/state-complex-corpus.png)
 
 </details>
 
 <details>
-<summary><strong>Entity Relationship: 5 complex scenarios</strong></summary>
+<summary><strong>Entity Relationship: 13 production scenarios</strong></summary>
 
 ![Entity Relationship complex Native and Official corpus](assets/stability-report/er-complex-corpus.png)
 
 </details>
 
 <details open>
-<summary><strong>Gantt: 5 complex scenarios</strong></summary>
+<summary><strong>Gantt: 13 production scenarios</strong></summary>
 
 ![Gantt complex Native and Official corpus](assets/stability-report/gantt-complex-corpus.png)
 
@@ -142,22 +148,26 @@ weeks as Mermaid.js.
 </details>
 
 <details>
-<summary><strong>Pie: 5 complex scenarios</strong></summary>
+<summary><strong>Pie: 13 production scenarios</strong></summary>
 
 ![Pie complex Native and Official corpus](assets/stability-report/pie-complex-corpus.png)
 
 </details>
 
 The generated capture metadata, byte sizes, and SHA-256 values are available in
-[`manifest.json`](assets/stability-report/manifest.json).
+[`manifest.json`](assets/stability-report/manifest.json). Per-case Native versus
+Official content bounds, foreground density, ratios, thresholds, and failures
+are recorded in
+[`geometry-report.json`](assets/stability-report/geometry-report.json).
 
 ## Automated Test Evidence
 
 The repository-level
 [`Quality Gate`](../.github/workflows/quality.yml) repeats the JVM tests,
-cross-platform builds, generated-corpus check, APK permission audit, 84-image
-capture, visual geometry gate, and Web load test on every push to `main` and
-every pull request.
+cross-platform builds, generated-corpus and capability-coverage checks, source
+and credential scan, debug/release APK permission audit, 212-image capture,
+visual geometry gate, and Web load test on every push to `main` and every pull
+request.
 
 The full verification command completed successfully:
 
@@ -166,8 +176,9 @@ JAVA_HOME=$(/usr/libexec/java_home -v 17) ./gradlew \
   :mermaid-core:jvmTest \
   :mermaid-compose:jvmTest \
   :sample:androidApp:assembleDebug \
+  :sample:androidApp:assembleRelease \
   :sample:webApp:wasmJsBrowserDistribution \
-  :sample:desktopApp:assemble \
+  :sample:desktopApp:createDistributable \
   :mermaid-core:compileKotlinIosArm64 \
   :mermaid-core:compileKotlinIosSimulatorArm64 \
   :mermaid-core:compileKotlinIosX64 \
@@ -183,17 +194,21 @@ Result:
 
 ```text
 BUILD SUCCESSFUL
-mermaid-core: 256 tests
+mermaid-core: 262 tests
 mermaid-compose: 17 tests
-total: 273 tests
+total: 279 tests
 failures: 0
 errors: 0
 ```
 
 The independent corpus test is
-[`StabilityCorpusTest`](../mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/StabilityCorpusTest.kt).
-It compiles all 42 sources and rejects parser errors, invalid scene dimensions,
-or empty SceneGraphs.
+[`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/ProductionCorpusTest.kt).
+It compiles all 106 sources and rejects parser errors, invalid or non-finite
+geometry, scenes outside the 20,000-unit and 20,000-element limits, empty
+SceneGraphs, and non-deterministic replay. The 64 conformance additions also
+require selected semantic text to survive parsing and layout. The test renders
+a representative of all eight diagram types with each of the 11 built-in
+themes.
 
 The existing deterministic stress suites generate 256 inputs for each of the
 eight diagram types, for 2,048 generated inputs in total. Flowchart exercises
@@ -201,34 +216,40 @@ both Dagre and ELK for every generated source.
 
 ## Determinism And Performance Evidence
 
-Every one of the 42 independent scenarios is rendered twice and compared as a
+Every one of the 106 independent scenarios is rendered twice and compared as a
 complete `MermaidScene`, including dimensions, elements, paths, text, styles,
 metadata, and z-order.
 
-The JVM production soak performs two warmup rounds followed by 10 measured
-rounds over all 42 scenarios:
+The JVM production soak performs two warmup rounds followed by five measured
+rounds over all 106 scenarios:
 
 ```text
-renders=420
-totalMs=11514
-p95Ms=101
-retainedHeapBytes=24112
+renders=530
+totalMs=8600
+p95Ms=66
+retainedHeapBytes=20624
 ```
 
-Enforced budgets are 30 seconds total, 500ms P95, and 64MiB retained heap after
+Enforced budgets are 45 seconds total, 500ms P95, and 64MiB retained heap after
 forced GC.
 
 ## Runtime Load Matrix
 
-The shared load screen renders the 42 mixed scenarios in a `LazyColumn` and
+The shared load screen renders the 106 mixed scenarios in a `LazyColumn` and
 walks from the first Flowchart to the final Pie chart.
 
 | Platform | Result | Local evidence |
 | --- | --- | --- |
-| Android Emulator | Passed | 8s scroll; 216MiB peak PSS; 180MiB final PSS; final case reached |
-| iOS Simulator | Passed | Five fresh-process traversals; about 473-491MiB final RSS; no new crash report |
-| Desktop | Passed | Final case reached; about 454MiB process RSS; about 59MiB JVM heap used |
-| Web | Passed | 928ms first content; 2.67s scroll; 5.4MiB retained JS heap; no browser errors |
+| Android Emulator | Passed | 24s scroll; 216MiB peak PSS; 180MiB final PSS; final case reached |
+| iOS Simulator | Passed | Automatic traversal reached final case; about 503MiB final host RSS; no crash |
+| Desktop | Passed | Automatic traversal reached final case; about 428MiB process RSS |
+| Web | Passed | 661ms first content; 5.77s scroll; 8.9MiB retained JS heap; no browser errors |
+
+Machine-readable measurements:
+[Android](assets/runtime-load/android-emulator-metrics.json),
+[iOS](assets/runtime-load/ios-simulator-metrics.json),
+[Desktop](assets/runtime-load/desktop-metrics.json), and
+[Web](assets/runtime-load/web-metrics.json).
 
 All four screenshots show the final corpus case after traversing the same mixed
 list:
@@ -250,10 +271,11 @@ render path now serializes text measurement and rendering on
 
 ## APK Permission Audit
 
-Audited artifact:
+Audited artifacts:
 
 ```text
 sample/androidApp/build/outputs/apk/debug/androidApp-debug.apk
+sample/androidApp/build/outputs/apk/release/androidApp-release-unsigned.apk
 ```
 
 Declared permissions:
@@ -272,7 +294,13 @@ npm run generate:stability-corpus
 
 cd ../..
 JAVA_HOME=$(/usr/libexec/java_home -v 17) \
-  ./gradlew :mermaid-core:jvmTest :sample:webApp:wasmJsBrowserDistribution
+  ./gradlew \
+    :mermaid-core:jvmTest \
+    :mermaid-compose:jvmTest \
+    :sample:androidApp:assembleDebug \
+    :sample:androidApp:assembleRelease \
+    :sample:webApp:wasmJsBrowserDistribution \
+    :sample:desktopApp:createDistributable
 
 python3 -m http.server 8093 \
   --directory sample/webApp/build/dist/wasmJs/productionExecutable \
@@ -281,21 +309,25 @@ WEB_SERVER_PID=$!
 trap 'kill "$WEB_SERVER_PID"' EXIT
 
 cd tools/official-reference
-AUDIT_SOURCE=stability \
-OUTPUT_DIR=captures/local/rc-stability-corpus \
+AUDIT_SOURCE=production \
+OUTPUT_DIR=captures/local/production-corpus \
 BASE_URL=http://127.0.0.1:8093/ \
 VIEWPORT_WIDTH=1200 \
 VIEWPORT_HEIGHT=900 \
 npm run capture:web-audit
 
-INPUT_DIR=captures/local/rc-stability-corpus \
-OUTPUT_FILE=captures/local/stability-geometry.json \
+CORPUS_SOURCE=production \
+INPUT_DIR=captures/local/production-corpus \
+OUTPUT_FILE=captures/local/production-corpus/geometry-report.json \
 npm run audit:stability-geometry
 
 BASE_URL=http://127.0.0.1:8093/ \
 OUTPUT_DIR=captures/local/load-test-web \
 npm run test:web-load
 
+CORPUS_SOURCE=production \
+INPUT_DIR=captures/local/production-corpus \
+OUTPUT_DIR=captures/local/production-contact-sheets \
 npm run generate:stability-contact-sheets
 ```
 

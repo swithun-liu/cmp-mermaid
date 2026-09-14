@@ -288,7 +288,11 @@ internal class SequenceLayout {
                         context,
                         text,
                         MESSAGE_FONT_SIZE,
-                        max(abs(from.centerX - to.centerX), ACTOR_WIDTH),
+                        if (message.wrap) {
+                            max(abs(from.centerX - to.centerX), ACTOR_WIDTH)
+                        } else {
+                            MAX_TEXT_WIDTH
+                        },
                     )
                     val messageTop = vertical + MESSAGE_TOP_PADDING
                     val lineY = messageTop + metrics.height + MESSAGE_LINE_GAP
@@ -330,21 +334,25 @@ internal class SequenceLayout {
                         sequenceNumberVisible = sequenceVisible,
                         context = context,
                     )
+                    val selfMessage = from.source.id == to.source.id
+                    val textBounds = messageTextBounds(
+                        from = from,
+                        to = to,
+                        top = messageTop,
+                        width = metrics.width,
+                        height = metrics.height,
+                        self = selfMessage,
+                    )
                     pathElements += path
                     foregroundElements += SceneText(
                         text = text,
-                        bounds = messageTextBounds(
-                            from = from,
-                            to = to,
-                            top = messageTop,
-                            height = metrics.height,
-                            self = from.source.id == to.source.id,
-                        ),
+                        bounds = textBounds,
                         color = context.theme.nodeText,
                         fontSize = MESSAGE_FONT_SIZE,
                         fontFamily = context.theme.fontFamily,
                         weight = SceneTextWeight.Normal,
                         zIndex = 20,
+                        softWrap = message.wrap,
                     )
                     if (sequenceVisible) {
                         foregroundElements += sequenceNumber(
@@ -363,6 +371,29 @@ internal class SequenceLayout {
                     )
                     touchFrames(frameStack, actorIndex[from.source.id])
                     touchFrames(frameStack, actorIndex[to.source.id])
+                    if (selfMessage) {
+                        val selfMessageWidth = max(
+                            if (message.wrap) 0f else metrics.width + 2f * WRAP_PADDING,
+                            from.width,
+                        )
+                        touchFrameBounds(
+                            frames = frameStack,
+                            left = min(
+                                from.centerX - selfMessageWidth / 2f,
+                                path.points.minOf(ScenePoint::x),
+                            ),
+                            right = max(
+                                from.centerX + selfMessageWidth / 2f,
+                                path.points.maxOf(ScenePoint::x),
+                            ),
+                        )
+                    } else {
+                        touchFrameBounds(
+                            frames = frameStack,
+                            left = min(textBounds.left, path.points.minOf(ScenePoint::x)),
+                            right = max(textBounds.right, path.points.maxOf(ScenePoint::x)),
+                        )
+                    }
                     vertical = lineY + if (from.source.id == to.source.id) {
                         SELF_MESSAGE_HEIGHT
                     } else {
@@ -842,13 +873,14 @@ internal class SequenceLayout {
         from: LayoutActor,
         to: LayoutActor,
         top: Float,
+        width: Float,
         height: Float,
         self: Boolean,
     ): SceneRect = if (self) {
         SceneRect(
-            left = from.centerX,
+            left = from.centerX - width / 2f,
             top = top,
-            right = from.centerX + max(SELF_MESSAGE_WIDTH, from.width / 2f),
+            right = from.centerX + width / 2f,
             bottom = top + height,
         )
     } else {
@@ -1049,8 +1081,19 @@ internal class SequenceLayout {
         val baseRight = (rightActor?.centerX ?: actors.lastOrNull()?.centerX ?: ACTOR_WIDTH) +
             ACTOR_MARGIN / 2f
         val nestedInset = frame.depth * BOX_MARGIN
-        val left = baseLeft + nestedInset
-        val right = max(baseRight - nestedInset, left + LABEL_BOX_WIDTH)
+        val indexedLeft = baseLeft + nestedInset
+        val indexedRight = baseRight - nestedInset
+        val left = if (frame.contentLeft.isFinite()) {
+            min(indexedLeft, frame.contentLeft)
+        } else {
+            indexedLeft
+        }
+        val contentRight = if (frame.contentRight.isFinite()) {
+            max(indexedRight, frame.contentRight)
+        } else {
+            indexedRight
+        }
+        val right = max(contentRight, left + LABEL_BOX_WIDTH)
         val bounds = SceneRect(left, frame.startY, max(right, left + LABEL_BOX_WIDTH), frame.endY)
         if (frame.type == SequenceLineType.RECT_START) {
             return listOf(
@@ -1371,6 +1414,17 @@ internal class SequenceLayout {
             return
         }
         frames.forEach { it.include(index) }
+    }
+
+    private fun touchFrameBounds(
+        frames: List<ControlFrame>,
+        left: Float,
+        right: Float,
+    ) {
+        frames.forEachIndexed { index, frame ->
+            val margin = (frames.size - index) * BOX_MARGIN
+            frame.includeBounds(left - margin, right + margin)
+        }
     }
 
     private fun activationOffset(depth: Int): Float =
@@ -1781,6 +1835,8 @@ internal class SequenceLayout {
         var endY: Float = startY,
         var leftIndex: Int = Int.MAX_VALUE,
         var rightIndex: Int = Int.MIN_VALUE,
+        var contentLeft: Float = Float.POSITIVE_INFINITY,
+        var contentRight: Float = Float.NEGATIVE_INFINITY,
         val sections: MutableList<FrameSection> = mutableListOf(),
     ) {
         fun include(index: Int) {
@@ -1789,6 +1845,11 @@ internal class SequenceLayout {
             }
             leftIndex = min(leftIndex, index)
             rightIndex = max(rightIndex, index)
+        }
+
+        fun includeBounds(left: Float, right: Float) {
+            contentLeft = min(contentLeft, left)
+            contentRight = max(contentRight, right)
         }
     }
 

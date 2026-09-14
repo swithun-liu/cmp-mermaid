@@ -147,7 +147,7 @@ private class XyOrchestrator(
     private val theme: MermaidXyChartTheme,
     private val context: MermaidRenderContext,
 ) {
-    private val textDimensions = XyTextDimensions(context, config.width)
+    private val textDimensions = XyTextDimensions(context)
     private val title = XyChartTitle(config, data, theme, textDimensions)
     private val plot = XyPlot(config, data, theme, context)
     private val legend = XyLegend(config, data, theme, textDimensions, context)
@@ -306,10 +306,8 @@ private interface XyComponent {
 
 private class XyTextDimensions(
     private val context: MermaidRenderContext,
-    chartWidth: Float,
 ) {
     val fontFamily: String = context.options.fontFamily ?: context.theme.fontFamily
-    private val svgViewportScale = SVG_MEASUREMENT_VIEWPORT_WIDTH / chartWidth
 
     fun max(
         texts: List<String>,
@@ -327,16 +325,14 @@ private class XyTextDimensions(
                     weight = SceneTextWeight.Normal,
                 ),
             )
-            width = max(width, measured.width * svgViewportScale)
-            height = max(height, measured.height * svgViewportScale)
+            width = max(width, measured.width)
+            height = max(height, measured.height)
         }
         return TextMetrics(width, height)
     }
 
     companion object {
         private const val MAX_TEXT_WIDTH = 100_000f
-        // Mermaid measures in a temporary SVG whose default CSS viewport is 300 px wide.
-        private const val SVG_MEASUREMENT_VIEWPORT_WIDTH = 300f
     }
 }
 
@@ -1036,7 +1032,7 @@ private class XyPlot(
                 fontSize = 12f,
                 horizontal = alignment,
                 verticalTop = false,
-                dimensions = XyTextDimensions(context, config.width),
+                dimensions = XyTextDimensions(context),
                 zIndex = 18,
             )
         }
@@ -1111,20 +1107,29 @@ private class XyPlot(
         labels: List<String>,
         plotIndex: Int,
     ): List<SceneText> {
-        val candidates = bars.mapIndexed { index, bar ->
-            var fontSize = bar.bounds.height * 0.7f
-            val label = labels.getOrElse(index) { "" }
-            while (
-                fontSize > 0f &&
-                fontSize * label.length * 0.7f > bar.bounds.width - 10f
-            ) {
-                fontSize -= 1f
+        val fontSize = if (config.showDataLabelOutsideBar) {
+            floor(
+                min(
+                    config.yAxis.labelFontSize,
+                    bars.minOf { bar -> bar.bounds.height * 0.7f },
+                ),
+            )
+        } else {
+            val candidates = bars.mapIndexed { index, bar ->
+                var candidate = bar.bounds.height * 0.7f
+                val label = labels.getOrElse(index) { "" }
+                while (
+                    candidate > 0f &&
+                    candidate * label.length * 0.7f > bar.bounds.width - 10f
+                ) {
+                    candidate -= 1f
+                }
+                candidate
             }
-            fontSize
+            floor(candidates.minOrNull() ?: 0f)
         }
-        val fontSize = floor(candidates.minOrNull() ?: 0f)
         if (fontSize <= 0f) return emptyList()
-        val dimensions = XyTextDimensions(context, config.width)
+        val dimensions = XyTextDimensions(context)
         return bars.mapIndexed { index, bar ->
             sceneText(
                 id = "xy-bar-$plotIndex-label-$index",
@@ -1168,7 +1173,7 @@ private class XyPlot(
         }
         val fontSize = floor(candidates.minOrNull() ?: 0f)
         if (fontSize <= 0f) return emptyList()
-        val dimensions = XyTextDimensions(context, config.width)
+        val dimensions = XyTextDimensions(context)
         return bars.mapIndexed { index, bar ->
             val targetY = if (config.showDataLabelOutsideBar) {
                 bar.bounds.top - 10f - fontSize

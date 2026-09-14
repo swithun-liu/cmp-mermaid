@@ -31,12 +31,28 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
 
-      - name: Verify generated stability corpus
+      - name: Verify generated audit corpora
         run: |
           node tools/official-reference/generate-stability-corpus.mjs
           git diff --exit-code -- \
             mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/generated/StabilityCorpus.kt \
             mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/generated/StabilityCorpus.kt
+
+      - name: Reject internal endpoints and credential material
+        shell: bash
+        run: |
+          set -euo pipefail
+          organization_pattern='byte''dance|byted''\.org|byted''\.net|byte''intl|tiktok''-row|fei''shu|lark''\.office'
+          if git grep -I -n -E "$organization_pattern"; then
+            echo "Internal organization reference detected" >&2
+            exit 1
+          fi
+          if git grep -I -n -E \
+            '(AKIA[0-9A-Z]{16}|-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----|gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,})'
+          then
+            echo "Credential-like material detected" >&2
+            exit 1
+          fi
 
       - name: Test JVM modules
         run: |
@@ -48,8 +64,9 @@ jobs:
         run: |
           ./gradlew \
             :sample:androidApp:assembleDebug \
+            :sample:androidApp:assembleRelease \
             :sample:webApp:wasmJsBrowserDistribution \
-            :sample:desktopApp:assemble \
+            :sample:desktopApp:createDistributable \
             :mermaid-core:compileKotlinIosArm64 \
             :mermaid-core:compileKotlinIosSimulatorArm64 \
             :mermaid-core:compileKotlinIosX64 \
@@ -60,11 +77,10 @@ jobs:
             :mermaid-debug-ui:compileKotlinIosSimulatorArm64 \
             :mermaid-debug-ui:compileKotlinIosX64
 
-      - name: Reject Internet permission in sample APK
+      - name: Reject Internet permission in sample APKs
         shell: bash
         run: |
           set -euo pipefail
-          apk="sample/androidApp/build/outputs/apk/debug/androidApp-debug.apk"
           aapt2=""
           for candidate in "$ANDROID_HOME"/build-tools/*/aapt2; do
             if [[ -x "$candidate" ]]; then
@@ -72,12 +88,17 @@ jobs:
             fi
           done
           test -n "$aapt2"
-          permissions="$("$aapt2" dump permissions "$apk")"
-          printf '%s\n' "$permissions"
-          if grep -q 'android.permission.INTERNET' <<<"$permissions"; then
-            echo "Unexpected android.permission.INTERNET declaration" >&2
-            exit 1
-          fi
+          for apk in \
+            sample/androidApp/build/outputs/apk/debug/androidApp-debug.apk \
+            sample/androidApp/build/outputs/apk/release/androidApp-release-unsigned.apk
+          do
+            permissions="$("$aapt2" dump permissions "$apk")"
+            printf '%s\n' "$permissions"
+            if grep -q 'android.permission.INTERNET' <<<"$permissions"; then
+              echo "Unexpected android.permission.INTERNET declaration in $apk" >&2
+              exit 1
+            fi
+          done
 
   visual-regression:
     runs-on: ubuntu-latest
@@ -124,8 +145,8 @@ jobs:
             fi
             sleep 1
           done
-          AUDIT_SOURCE=stability \
-          OUTPUT_DIR=captures/ci/stability \
+          AUDIT_SOURCE=production \
+          OUTPUT_DIR=captures/ci/production \
           BASE_URL=http://127.0.0.1:8093/ \
           VIEWPORT_WIDTH=1200 \
           VIEWPORT_HEIGHT=900 \
@@ -137,10 +158,12 @@ jobs:
       - name: Enforce RC visual geometry
         working-directory: tools/official-reference
         run: |
-          INPUT_DIR=captures/ci/stability \
-          OUTPUT_FILE=captures/ci/stability-geometry.json \
+          CORPUS_SOURCE=production \
+          INPUT_DIR=captures/ci/production \
+          OUTPUT_FILE=captures/ci/production-geometry.json \
           npm run audit:stability-geometry
-          INPUT_DIR=captures/ci/stability \
+          CORPUS_SOURCE=production \
+          INPUT_DIR=captures/ci/production \
           OUTPUT_DIR=captures/ci/contact-sheets \
           npm run generate:stability-contact-sheets
 

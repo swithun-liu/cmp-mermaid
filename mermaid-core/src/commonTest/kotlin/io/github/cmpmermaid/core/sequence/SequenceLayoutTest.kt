@@ -21,6 +21,7 @@ import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
@@ -80,6 +81,38 @@ class SequenceLayoutTest {
             .single { it.id == "message-0" }
         assertTrue(message.commands.any { it is ScenePathCommand.CubicTo })
         assertTrue(message.points.maxOf { it.x } > message.points.first().x)
+    }
+
+    @Test
+    fun keepsSelfMessageTextAndPathInsideControlFrame() {
+        val scene = render(
+            """
+            sequenceDiagram
+                participant API as Session gateway
+                opt audit enabled
+                    API->>API:Append audit event
+                end
+            """.trimIndent(),
+        )
+        val frame = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape ->
+                shape.id.startsWith("control-") &&
+                    !shape.id.startsWith("control-label-")
+            }
+        val path = scene.elements.filterIsInstance<ScenePath>()
+            .single { element ->
+                element.id.startsWith("message-") &&
+                    element.commands.any { command -> command is ScenePathCommand.CubicTo }
+            }
+        val text = scene.elements.filterIsInstance<SceneText>()
+            .single { element -> element.text == "Append audit event" }
+
+        assertFalse(text.softWrap)
+        assertTrue(text.bounds.width >= 144f)
+        assertTrue(frame.bounds.left <= text.bounds.left)
+        assertTrue(frame.bounds.right >= text.bounds.right)
+        assertTrue(frame.bounds.left <= path.points.minOf(ScenePoint::x))
+        assertTrue(frame.bounds.right >= path.points.maxOf(ScenePoint::x))
     }
 
     @Test

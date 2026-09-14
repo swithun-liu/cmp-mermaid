@@ -3,8 +3,8 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
+import { cases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
-import { cases } from './stability-corpus.mjs';
 
 const baseUrl = process.env.BASE_URL ?? 'http://127.0.0.1:8093/';
 const repositoryRoot = path.resolve(

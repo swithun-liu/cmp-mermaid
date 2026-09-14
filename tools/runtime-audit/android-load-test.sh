@@ -11,7 +11,10 @@ fi
 apk="${APK_PATH:-sample/androidApp/build/outputs/apk/debug/androidApp-debug.apk}"
 output_dir="${OUTPUT_DIR:-captures/local/load-test-android}"
 maximum_pss_kb="${MAXIMUM_PSS_KB:-300000}"
-maximum_scroll_seconds="${MAXIMUM_SCROLL_SECONDS:-20}"
+maximum_scroll_seconds="${MAXIMUM_SCROLL_SECONDS:-45}"
+swipe_count="${SWIPE_COUNT:-90}"
+case_count=106
+last_case_id="prod_pie_themed_many_services"
 package_name="io.github.cmpmermaid.sample"
 activity_name="io.github.cmpmermaid.debugui.MermaidDebugActivity"
 adb="${ANDROID_HOME:?ANDROID_HOME is required}/platform-tools/adb"
@@ -35,7 +38,7 @@ peak_pss_kb="$initial_pss_kb"
 android screen capture --device="$serial" -o "$output_dir/top.png" >/dev/null
 started_at="$SECONDS"
 
-for index in $(seq 1 28); do
+for index in $(seq 1 "$swipe_count"); do
   "$adb" -s "$serial" shell input swipe 540 2050 540 450 220 >/dev/null
   if ((index % 4 == 0)); then
     current_pss_kb="$(read_pss_kb)"
@@ -50,7 +53,7 @@ android layout --device="$serial" -o "$output_dir/layout.json" >/dev/null
 android screen capture --device="$serial" -o "$output_dir/bottom.png" >/dev/null
 final_pss_kb="$(read_pss_kb)"
 reached_last_case=false
-if grep -q 'rc_pie_storage_allocation' "$output_dir/layout.json"; then
+if grep -q "$last_case_id" "$output_dir/layout.json"; then
   reached_last_case=true
 fi
 
@@ -58,7 +61,8 @@ cat >"$output_dir/metrics.json" <<EOF
 {
   "schemaVersion": 1,
   "device": "$serial",
-  "caseCount": 42,
+  "caseCount": $case_count,
+  "lastCaseId": "$last_case_id",
   "initialPssKb": $initial_pss_kb,
   "peakPssKb": $peak_pss_kb,
   "finalPssKb": $final_pss_kb,

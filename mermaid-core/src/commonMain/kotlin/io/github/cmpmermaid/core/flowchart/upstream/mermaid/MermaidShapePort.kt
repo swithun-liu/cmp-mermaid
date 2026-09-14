@@ -436,20 +436,20 @@ internal object MermaidShapePort {
         val nominalHeight = max(label.height + 8f * halfPadding, label.height + 20f)
         val radius = nominalWidth * 0.15f
         val builder = SvgPointBuilder(ScenePoint(0f, 0f))
-        builder.arcBy(radius, radius, largeArc = true, sweep = false, nominalWidth * 0.25f, -nominalHeight * 0.1f)
-        builder.arcBy(radius, radius, true, false, nominalWidth * 0.25f, 0f)
-        builder.arcBy(radius, radius, true, false, nominalWidth * 0.25f, 0f)
-        builder.arcBy(radius, radius, true, false, nominalWidth * 0.25f, nominalHeight * 0.1f)
-        builder.arcBy(radius, radius, true, false, nominalWidth * 0.15f, nominalHeight * 0.33f)
-        builder.arcBy(radius * 0.8f, radius * 0.8f, true, false, 0f, nominalHeight * 0.34f)
-        builder.arcBy(radius, radius, true, false, -nominalWidth * 0.15f, nominalHeight * 0.33f)
-        builder.arcBy(radius, radius, true, false, -nominalWidth * 0.25f, nominalHeight * 0.15f)
-        builder.arcBy(radius, radius, true, false, -nominalWidth * 0.25f, 0f)
-        builder.arcBy(radius, radius, true, false, -nominalWidth * 0.25f, 0f)
-        builder.arcBy(radius, radius, true, false, -nominalWidth * 0.25f, -nominalHeight * 0.15f)
-        builder.arcBy(radius, radius, true, false, -nominalWidth * 0.1f, -nominalHeight * 0.33f)
-        builder.arcBy(radius * 0.8f, radius * 0.8f, true, false, 0f, -nominalHeight * 0.34f)
-        builder.arcBy(radius, radius, true, false, nominalWidth * 0.1f, -nominalHeight * 0.33f)
+        builder.arcBy(radius, radius, 1f, false, false, nominalWidth * 0.25f, -nominalHeight * 0.1f)
+        builder.arcBy(radius, radius, 1f, false, false, nominalWidth * 0.25f, 0f)
+        builder.arcBy(radius, radius, 1f, false, false, nominalWidth * 0.25f, 0f)
+        builder.arcBy(radius, radius, 1f, false, false, nominalWidth * 0.25f, nominalHeight * 0.1f)
+        builder.arcBy(radius, radius, 1f, false, false, nominalWidth * 0.15f, nominalHeight * 0.33f)
+        builder.arcBy(radius * 0.8f, radius * 0.8f, 1f, false, false, 0f, nominalHeight * 0.34f)
+        builder.arcBy(radius, radius, 1f, false, false, -nominalWidth * 0.15f, nominalHeight * 0.33f)
+        builder.arcBy(radius, radius, 1f, false, false, -nominalWidth * 0.25f, nominalHeight * 0.15f)
+        builder.arcBy(radius, radius, 1f, false, false, -nominalWidth * 0.25f, 0f)
+        builder.arcBy(radius, radius, 1f, false, false, -nominalWidth * 0.25f, 0f)
+        builder.arcBy(radius, radius, 1f, false, false, -nominalWidth * 0.25f, -nominalHeight * 0.15f)
+        builder.arcBy(radius, radius, 1f, false, false, -nominalWidth * 0.1f, -nominalHeight * 0.33f)
+        builder.arcBy(radius * 0.8f, radius * 0.8f, 1f, false, false, 0f, -nominalHeight * 0.34f)
+        builder.arcBy(radius, radius, 1f, false, false, nominalWidth * 0.1f, -nominalHeight * 0.33f)
         val shifted = builder.points.map {
             ScenePoint(it.x - nominalWidth / 2f, it.y - nominalHeight / 2f)
         }
@@ -467,16 +467,16 @@ internal object MermaidShapePort {
         val r3 = 0.35f * width
         val r4 = 0.2f * width
         val builder = SvgPointBuilder(ScenePoint(0f, 0f))
-        builder.arcBy(r1, r1, false, true, width * 0.25f, -width * 0.1f)
-        builder.arcBy(r3, r3, true, true, width * 0.4f, -width * 0.1f)
-        builder.arcBy(r2, r2, true, true, width * 0.35f, width * 0.2f)
-        builder.arcBy(r1, r1, true, true, width * 0.15f, height * 0.35f)
-        builder.arcBy(r4, r4, true, true, -width * 0.15f, height * 0.65f)
-        builder.arcBy(r2, r1, true, true, -width * 0.25f, width * 0.15f)
-        builder.arcBy(r3, r3, true, true, -width * 0.5f, 0f)
-        builder.arcBy(r1, r1, true, true, -width * 0.25f, -width * 0.15f)
-        builder.arcBy(r1, r1, true, true, -width * 0.1f, -height * 0.35f)
-        builder.arcBy(r4, r4, true, true, width * 0.1f, -height * 0.65f)
+        builder.arcBy(r1, r1, 0f, false, true, width * 0.25f, -width * 0.1f)
+        builder.arcBy(r3, r3, 1f, false, true, width * 0.4f, -width * 0.1f)
+        builder.arcBy(r2, r2, 1f, false, true, width * 0.35f, width * 0.2f)
+        builder.arcBy(r1, r1, 1f, false, true, width * 0.15f, height * 0.35f)
+        builder.arcBy(r4, r4, 1f, false, true, -width * 0.15f, height * 0.65f)
+        builder.arcBy(r2, r1, 1f, false, true, -width * 0.25f, width * 0.15f)
+        builder.arcBy(r3, r3, 1f, false, true, -width * 0.5f, 0f)
+        builder.arcBy(r1, r1, 1f, false, true, -width * 0.25f, -width * 0.15f)
+        builder.arcBy(r1, r1, 1f, false, true, -width * 0.1f, -height * 0.35f)
+        builder.arcBy(r4, r4, 1f, false, true, width * 0.1f, -height * 0.65f)
         val shifted = builder.points.map {
             ScenePoint(it.x - width / 2f, it.y - height / 2f)
         }
@@ -1497,6 +1497,7 @@ internal object MermaidShapePort {
         fun arcBy(
             radiusX: Float,
             radiusY: Float,
+            rotationDegrees: Float,
             largeArc: Boolean,
             sweep: Boolean,
             deltaX: Float,
@@ -1508,6 +1509,7 @@ internal object MermaidShapePort {
                 end = end,
                 inputRadiusX = radiusX,
                 inputRadiusY = radiusY,
+                rotationDegrees = rotationDegrees,
                 largeArc = largeArc,
                 sweep = sweep,
             ).drop(1)
@@ -1520,6 +1522,7 @@ internal object MermaidShapePort {
         end: ScenePoint,
         inputRadiusX: Float,
         inputRadiusY: Float,
+        rotationDegrees: Float,
         largeArc: Boolean,
         sweep: Boolean,
         count: Int = 16,
@@ -1529,8 +1532,13 @@ internal object MermaidShapePort {
         if (radiusX == 0f || radiusY == 0f || start == end) {
             return listOf(start, end)
         }
-        val xPrime = (start.x - end.x) / 2f
-        val yPrime = (start.y - end.y) / 2f
+        val rotation = rotationDegrees * PI.toFloat() / 180f
+        val rotationCos = cos(rotation)
+        val rotationSin = sin(rotation)
+        val deltaX = (start.x - end.x) / 2f
+        val deltaY = (start.y - end.y) / 2f
+        val xPrime = rotationCos * deltaX + rotationSin * deltaY
+        val yPrime = -rotationSin * deltaX + rotationCos * deltaY
         val scale = xPrime * xPrime / (radiusX * radiusX) +
             yPrime * yPrime / (radiusY * radiusY)
         if (scale > 1f) {
@@ -1550,8 +1558,12 @@ internal object MermaidShapePort {
         val factor = if (denominator == 0f) 0f else sign * sqrt(numerator / denominator)
         val centerPrimeX = factor * radiusX * yPrime / radiusY
         val centerPrimeY = factor * -radiusY * xPrime / radiusX
-        val centerX = centerPrimeX + (start.x + end.x) / 2f
-        val centerY = centerPrimeY + (start.y + end.y) / 2f
+        val centerX = rotationCos * centerPrimeX -
+            rotationSin * centerPrimeY +
+            (start.x + end.x) / 2f
+        val centerY = rotationSin * centerPrimeX +
+            rotationCos * centerPrimeY +
+            (start.y + end.y) / 2f
 
         fun vectorAngle(ux: Float, uy: Float, vx: Float, vy: Float): Float {
             val dot = ux * vx + uy * vy
@@ -1571,8 +1583,12 @@ internal object MermaidShapePort {
         return (0..count).map { index ->
             val theta = startAngle + deltaAngle * index / count
             ScenePoint(
-                centerX + radiusX * cos(theta),
-                centerY + radiusY * sin(theta),
+                centerX +
+                    rotationCos * radiusX * cos(theta) -
+                    rotationSin * radiusY * sin(theta),
+                centerY +
+                    rotationSin * radiusX * cos(theta) +
+                    rotationCos * radiusY * sin(theta),
             )
         }
     }

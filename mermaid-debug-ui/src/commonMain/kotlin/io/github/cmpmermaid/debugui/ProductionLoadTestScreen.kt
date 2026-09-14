@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.compose.MermaidDiagram
 import io.github.cmpmermaid.core.MermaidRenderOptions
 import io.github.cmpmermaid.debugui.generated.StabilityCorpusCase
-import io.github.cmpmermaid.debugui.generated.stabilityCorpusCases
+import io.github.cmpmermaid.debugui.generated.productionCorpusCases
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,7 +49,7 @@ internal fun ProductionLoadTestScreen(
     val listState = rememberLazyListState()
     LaunchedEffect(autoRun) {
         if (autoRun) {
-            stabilityCorpusCases.indices.forEach { index ->
+            productionCorpusCases.indices.forEach { index ->
                 listState.scrollToItem(index)
                 delay(AUTO_RUN_ITEM_DELAY_MILLIS)
             }
@@ -74,7 +74,7 @@ internal fun ProductionLoadTestScreen(
                             letterSpacing = 0.sp,
                         )
                         Text(
-                            text = "${stabilityCorpusCases.size} mixed diagrams",
+                            text = "${productionCorpusCases.size} mixed diagrams",
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp,
                         )
@@ -105,7 +105,7 @@ internal fun ProductionLoadTestScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 items(
-                    items = stabilityCorpusCases,
+                    items = productionCorpusCases,
                     key = StabilityCorpusCase::id,
                 ) { case ->
                     LoadTestDiagram(case)
