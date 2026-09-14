@@ -77,6 +77,11 @@ production so an upstream grammar diff can be translated incrementally.
 - DOM text measurement is supplied by `TextMetricProvider`; Compose uses the
   same font, size, alignment, rotation, and line-height inputs for measurement
   and painting.
+- `xychartRenderer.ts` keeps the configured SVG viewBox while browser SVG text
+  remains visible through the default `overflow: visible`. Compose clips its
+  Canvas, so `XyChartLayout` expands only the Scene viewport to include
+  translated text bounds; plot, axis, title, and legend coordinates remain
+  unchanged.
 - SceneGraph output remains platform independent; Compose owns final Canvas
   painting.
 
@@ -92,8 +97,9 @@ production so an upstream grammar diff can be translated incrementally.
   finite geometry.
 - `OfficialXyChartDocumentationCases` executes all 8 examples extracted from
   Mermaid's XY Chart documentation.
-- The Android gallery compares 20 identical sources against on-device
-  Mermaid.js `12.0.0`.
+- The large-scale Web audit compares 256 unique same-source cases against
+  Mermaid.js `12.0.0`, including long title and label-pressure profiles, and
+  enforces content-bound and foreground-density limits.
 
 ## Upgrade Procedure
 
@@ -107,7 +113,6 @@ production so an upstream grammar diff can be translated incrementally.
 4. Regenerate the documentation fixtures and review their hash.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
-6. Install the Android sample and capture all 20 Native/Official XY Chart
-   pairs.
+6. Capture all 256 Native/Official XY Chart matrix pairs.
 7. Review the contact sheets and update this map and compatibility matrix
    before publishing.

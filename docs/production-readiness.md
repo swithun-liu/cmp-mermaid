@@ -26,11 +26,11 @@ features, and no known high-severity defect in the supported contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in the independent production corpus | 106 Native/Official pairs; 106 manual passes; automated content geometry gate | Passing locally and in the Quality Gate |
+| Visual fidelity | No known semantic or major visual mismatch in the independent production corpus | 106 manually reviewed Native/Official pairs plus 2,048 systematic matrix pairs; all 2,154 pass automated geometry | Passing locally; regular and full-matrix workflows are source controlled |
 | Capability coverage | Every declared major capability appears in an independent conformance case | 16/16 points for each of 8 diagram types; 128/128 total | Passing; generated-corpus validation enforces coverage |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 106-case corpus equality test | Passing |
 | Theme compatibility | Every supported diagram type renders with every built-in theme | 8 diagram types by 11 themes; 88/88 renders | Passing |
-| Parser/layout robustness | Deterministic randomized corpus and resource limits pass | 2,048 generated stress inputs plus diagram-specific limits | Passing |
+| Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 2,048 visual-matrix Native renders plus a separate 2,048 generated stress inputs | Passing |
 | Core throughput | 530 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 8.60s total, 66ms P95 | Passing; enforced by JVM test |
 | Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: about 20 KiB | Passing; enforced by JVM test |
 | Runtime matrix | Android, iOS Simulator, Desktop, and Web render representative complex cases | All four load screens reached the final case; screenshots recorded | Passing locally |
@@ -48,6 +48,13 @@ copies of the documentation gallery. CI must:
 4. Upload all screenshots, contact sheets, hashes, and geometry metrics.
 5. Preserve manual review for text collisions, routing meaning, and semantic
    differences that image geometry cannot prove.
+
+The regular Quality Gate runs the 106 independent cases on every push and pull
+request. The weekly/manual Full Visual Parity workflow adds 256 unique sources
+per diagram type, or 2,048 Native/Official pairs total. Those matrix cases are
+deterministic combinations of 13 or 14 complex structural seeds per type and
+20 visible text/layout-pressure profiles; they are not represented as 256
+unrelated topologies per type.
 
 ## Performance Gate
 

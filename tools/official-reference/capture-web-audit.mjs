@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
@@ -6,6 +6,7 @@ import { cases as flowchartCases } from './cases.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
+import { cases as visualParityCases } from './visual-parity-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -16,7 +17,7 @@ const outputDirectory = resolve(
 );
 const auditKind = process.env.AUDIT_KIND ?? 'all';
 const auditSource = process.env.AUDIT_SOURCE ?? 'gallery';
-const layout = process.env.CAPTURE_LAYOUT ?? 'elk';
+const layoutOverride = process.env.CAPTURE_LAYOUT ?? null;
 const selectedIds = new Set(
   (process.env.CAPTURE_CASE_IDS ?? '')
     .split(/[\s,]+/)
@@ -28,6 +29,7 @@ const previews = (process.env.CAPTURE_PREVIEWS ?? 'Native Official')
 const viewportWidth = Number(process.env.VIEWPORT_WIDTH ?? 900);
 const viewportHeight = Number(process.env.VIEWPORT_HEIGHT ?? 900);
 const minimumCaptureBytes = Number(process.env.MIN_CAPTURE_BYTES ?? 5_000);
+const skipExisting = (process.env.SKIP_EXISTING ?? 'false') === 'true';
 
 const kotlinGalleryFiles = {
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
@@ -39,7 +41,12 @@ const kotlinGalleryFiles = {
   pie: ['PieDemos.kt', 'PieDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
-const supportedAuditSources = ['gallery', 'stability', 'production'];
+const supportedAuditSources = [
+  'gallery',
+  'stability',
+  'production',
+  'visual-parity',
+];
 
 if (!supportedAuditKinds.includes(auditKind)) {
   throw new Error(`AUDIT_KIND must be one of: ${supportedAuditKinds.join(', ')}`);
@@ -47,14 +54,16 @@ if (!supportedAuditKinds.includes(auditKind)) {
 if (!supportedAuditSources.includes(auditSource)) {
   throw new Error(`AUDIT_SOURCE must be one of: ${supportedAuditSources.join(', ')}`);
 }
-if (!['dagre', 'elk'].includes(layout)) {
+if (layoutOverride !== null && !['dagre', 'elk'].includes(layoutOverride)) {
   throw new Error('CAPTURE_LAYOUT must be dagre or elk');
 }
 
-const corpusCases = auditSource === 'production'
-  ? productionCases
-  : stabilityCases;
-const sourceCases = auditSource === 'stability' || auditSource === 'production'
+const corpusCases = {
+  stability: stabilityCases,
+  production: productionCases,
+  'visual-parity': visualParityCases,
+}[auditSource] ?? [];
+const sourceCases = supportedAuditSources.slice(1).includes(auditSource)
   ? corpusCases.filter(({ kind }) => auditKind === 'all' || auditKind === kind)
   : [
       ...(auditKind === 'all' || auditKind === 'flowchart'
@@ -87,18 +96,31 @@ try {
 
   for (const auditCase of availableCases) {
     for (const preview of previews) {
+      const suffix = preview.toLowerCase();
+      const target = resolve(
+        outputDirectory,
+        `${auditCase.id}_${suffix}.png`,
+      );
+      if (
+        skipExisting &&
+        existsSync(target) &&
+        statSync(target).size >= minimumCaptureBytes
+      ) {
+        continue;
+      }
       const url = new URL(baseUrl);
+      const captureLayout = layoutOverride ?? auditCase.layout ?? 'elk';
       url.searchParams.set('auditDemoId', auditCase.id);
       url.searchParams.set('auditPreview', preview);
-      url.searchParams.set('auditLayout', layout);
+      url.searchParams.set('auditLayout', captureLayout);
       await page.goto(url.href, {
         waitUntil: 'domcontentloaded',
         timeout: 60_000,
       });
       if (preview.toLowerCase() === 'official') {
-        await waitForOfficialSvg(page, auditCase.id);
+        await waitForOfficialSvg(page, auditCase);
         if (
-          (auditSource === 'stability' || auditSource === 'production') &&
+          supportedAuditSources.slice(1).includes(auditSource) &&
           auditCase.kind === 'gantt'
         ) {
           await assertOfficialGanttWidth(page, auditCase.id);
@@ -110,11 +132,6 @@ try {
         requestAnimationFrame(() => requestAnimationFrame(resolveFrame));
       }));
 
-      const suffix = preview.toLowerCase();
-      const target = resolve(
-        outputDirectory,
-        `${auditCase.id}_${suffix}.png`,
-      );
       await page.screenshot({
         path: target,
         omitBackground: false,
@@ -162,7 +179,7 @@ async function waitForNativeCanvas(page) {
   await new Promise((resolveWait) => setTimeout(resolveWait, 750));
 }
 
-async function waitForOfficialSvg(page, caseId) {
+async function waitForOfficialSvg(page, auditCase) {
   const outcomeHandle = await page.waitForFunction(
     () => {
       const roots = [document];
@@ -195,8 +212,37 @@ async function waitForOfficialSvg(page, caseId) {
   await outcomeHandle.dispose();
   if (outcome.status === 'error') {
     throw new Error(
-      `${caseId}/Official Mermaid.js rendering failed: ${outcome.message}`,
+      `${auditCase.id}/Official Mermaid.js rendering failed: ${outcome.message}`,
     );
+  }
+  const expectedTexts = auditCase.expectedTexts ?? [];
+  if (expectedTexts.length > 0) {
+    const officialText = await page.evaluate(() => {
+      const roots = [document];
+      for (let index = 0; index < roots.length; index += 1) {
+        const root = roots[index];
+        const frame = root.querySelector?.(
+          'iframe[title="Official Mermaid.js rendering"]',
+        );
+        const svg = frame?.contentDocument?.querySelector('#diagram svg');
+        if (svg != null) {
+          return svg.textContent ?? '';
+        }
+        root.querySelectorAll?.('*').forEach((element) => {
+          if (element.shadowRoot !== null) {
+            roots.push(element.shadowRoot);
+          }
+        });
+      }
+      return '';
+    });
+    for (const expectedText of expectedTexts) {
+      if (!officialText.includes(expectedText)) {
+        throw new Error(
+          `${auditCase.id}/Official output is missing expected text: ${expectedText}`,
+        );
+      }
+    }
   }
 }
 

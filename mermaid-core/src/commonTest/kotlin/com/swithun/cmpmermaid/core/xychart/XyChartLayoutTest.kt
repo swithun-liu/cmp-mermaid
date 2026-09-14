@@ -65,6 +65,33 @@ class XyChartLayoutTest {
     }
 
     @Test
+    fun keepsLongChartTitleInsideSceneViewport() {
+        val scene = render(
+            """
+            ---
+            config:
+              xyChart:
+                width: 520
+                height: 360
+            ---
+            xychart
+                title "Monthly retention cohort - Accessibility Metadata And Text Measurement Evidence Label 246"
+                x-axis ["January", "February", "March", "April", "May", "June"]
+                y-axis "Percent" 0 --> 100
+                line [82, 79, 76, 74, 72, 70]
+            """.trimIndent(),
+        )
+        val title = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text.startsWith("Monthly retention cohort") }
+
+        assertTrue(title.bounds.width > 520f)
+        assertTrue(
+            title.bounds.right <= scene.width,
+            "Title ${title.bounds} exceeds scene width ${scene.width}",
+        )
+    }
+
+    @Test
     fun rendersHorizontalChartAndDataLabels() {
         val scene = render(
             """

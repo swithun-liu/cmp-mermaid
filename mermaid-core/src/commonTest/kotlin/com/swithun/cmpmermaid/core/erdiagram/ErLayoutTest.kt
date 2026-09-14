@@ -58,6 +58,89 @@ class ErLayoutTest {
     }
 
     @Test
+    fun wrapsLongEntityAliasAtConfiguredWidth() {
+        val alias = "End To End Production Compatibility Verification Evidence Label 255"
+        var measuredAliasWidth: Float? = null
+        val wrappingContext = context.copy(
+            textMetrics = TextMetricProvider { request ->
+                if (request.text == alias) {
+                    measuredAliasWidth = request.maxWidth
+                }
+                val charactersPerLine = (request.maxWidth / 8f).toInt().coerceAtLeast(1)
+                val lines = request.text
+                    .split('\n')
+                    .sumOf { line ->
+                        ceil(line.length.toDouble() / charactersPerLine)
+                            .toInt()
+                            .coerceAtLeast(1)
+                    }
+                TextMetrics(
+                    width = minOf(
+                        request.maxWidth,
+                        request.text.lineSequence().maxOfOrNull(String::length).orZero() * 8f,
+                    ),
+                    height = lines * request.fontSize * request.lineHeight,
+                )
+            },
+        )
+        val result = engine.render(
+            """
+            erDiagram
+                ParityEvidence255["$alias"]
+            """.trimIndent(),
+            wrappingContext,
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val entity = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id.matches(Regex("""entity-ParityEvidence255-\d+""")) }
+        val title = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == alias }
+
+        assertEquals(wrappingContext.options.wrappingWidth, measuredAliasWidth)
+        assertEquals(
+            wrappingContext.options.wrappingWidth +
+                wrappingContext.options.erDiagramPadding * 2f,
+            entity.bounds.width,
+        )
+        assertTrue(title.softWrap)
+        assertTrue(title.bounds.height > title.fontSize * title.lineHeight)
+    }
+
+    @Test
+    fun keepsUnbrokenEntityNameOnSingleLine() {
+        val entityName = "BILLING_PROFILE_ARCHIVE"
+        var measuredEntityWidth: Float? = null
+        val wrappingContext = context.copy(
+            textMetrics = TextMetricProvider { request ->
+                if (request.text == entityName) {
+                    measuredEntityWidth = request.maxWidth
+                }
+                TextMetrics(
+                    width = minOf(request.maxWidth, request.text.length * 8f),
+                    height = request.fontSize * request.lineHeight,
+                )
+            },
+        )
+        val result = engine.render(
+            """
+            erDiagram
+                $entityName
+            """.trimIndent(),
+            wrappingContext,
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val entity = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id.matches(Regex("""entity-$entityName-\d+""")) }
+        val title = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == entityName }
+
+        assertEquals(100_000f, measuredEntityWidth)
+        assertTrue(entity.bounds.width > wrappingContext.options.wrappingWidth)
+        assertTrue(!title.softWrap)
+        assertEquals(title.fontSize * title.lineHeight, title.bounds.height)
+    }
+
+    @Test
     fun rendersEveryCardinalityAndIdentificationPattern() {
         val scene = render(
             """

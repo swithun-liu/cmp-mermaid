@@ -1,9 +1,10 @@
 # Mermaid 12.0.0 Stable Test Report
 
 This report records the evidence behind CMP Mermaid's current
-**Stable** status for the documented support scope. It is deliberately
-separate from the demo gallery: every visual case below comes from an
-independent complex scenario corpus that is not shown as a product demo.
+**Stable** status for the documented support scope. The evidence is
+deliberately separate from the demo gallery and distinguishes independent
+production scenarios, systematic visual-matrix variants, and Native-only
+randomized stress inputs.
 
 ## Decision
 
@@ -13,14 +14,15 @@ independent complex scenario corpus that is not shown as a product demo.
 | Mermaid compatibility baseline | `12.0.0` |
 | Independent production scenarios | 106: 42 original stability cases plus 64 additional conformance cases |
 | Declared capability coverage | 128/128 points across 8 diagram types |
-| Native core render results | 106 passed, 0 failed |
-| Web Native/Official captures | 212 generated, 0 render errors |
-| Manual visual review | 106 acceptable, 0 blocked |
-| Automated visual geometry | 106 passed, 0 failed |
+| Large-scale visual matrix | 2,048 unique Mermaid sources: 256 per diagram type |
+| Native core render results | 106 independent plus 2,048 matrix cases passed, 0 failed |
+| Web Native/Official captures | 4,096 matrix screenshots plus 212 independent-corpus screenshots, 0 render errors |
+| Manual visual review | 106 independent scenarios acceptable, 0 blocked; matrix pages sampled during generation |
+| Automated visual geometry | 2,048/2,048 matrix pairs and 106/106 independent pairs passed |
 | Deterministic SceneGraph replay | 106 passed, 0 mismatches |
 | Built-in theme matrix | 88/88 renders passed: 8 diagram types by 11 themes |
-| Deterministic generated stress inputs | 2,048 |
-| JVM tests | 279 passed, 0 failed |
+| Separate deterministic Native stress inputs | 2,048 |
+| JVM tests | 283 passed, 0 failed |
 | Core production soak | 530 renders; 8.60s total; 66ms P95; about 20KiB retained heap |
 | Runtime load matrix | Android Emulator, iOS Simulator, Desktop, and Web passed |
 | Platform build matrix | Android debug/release, Web production, Desktop distributable, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
@@ -28,11 +30,12 @@ independent complex scenario corpus that is not shown as a product demo.
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
 **Conclusion:** all eight supported diagram types pass the independent
-106-case visual corpus, deterministic replay, generated stress tests, core
-soak, runtime load matrix, cross-platform build matrix, and the repository
-Quality Gate. This satisfies the project's code-level Stable criteria.
-Canary, feature flags, and rollback are deployment choices for an adopting
-application, not prerequisites for rating the renderer code as Stable.
+106-case visual corpus, the 2,048-case Native/Official visual matrix,
+deterministic replay, separate generated stress tests, core soak, runtime load
+matrix, cross-platform build matrix, and the repository Quality Gate. This
+satisfies the project's code-level Stable criteria. Canary, feature flags, and
+rollback are deployment choices for an adopting application, not prerequisites
+for rating the renderer code as Stable.
 
 ## What This Report Does And Does Not Prove
 
@@ -41,7 +44,7 @@ This report proves that the exact source-controlled corpus:
 - compiles through the Kotlin parser, database, layout, and SceneGraph pipeline;
 - produces non-empty Native Canvas output;
 - is accepted and rendered by the pinned Mermaid.js `12.0.0` reference;
-- has been reviewed side by side at the same `1200 x 900` viewport;
+- has been captured side by side at the same `1200 x 900` viewport;
 - passes automated blank-image and severe content-geometry checks;
 - can be regenerated from the repository scripts.
 
@@ -51,6 +54,22 @@ full semantic or pixel equality, so manual review remains required. Platform
 font metrics and text wrapping may differ. An adopter can still use telemetry
 and gradual rollout to manage its own release risk, but that operational
 choice is outside this code-level rating.
+
+## Evidence Layers
+
+The three large evidence sets answer different questions and are not counted
+as substitutes for each other:
+
+1. **106 independent production scenarios.** These are hand-authored,
+   production-like structures used for capability coverage, deterministic
+   replay, manual review, performance soak, and the regular Quality Gate.
+2. **2,048 Native/Official visual-matrix cases.** Each diagram type contributes
+   256 unique Mermaid sources, derived deterministically from 13 or 14 complex
+   structural seeds and 20 visible text/layout-pressure profiles. This is not a
+   claim of 256 unrelated topologies per type.
+3. **2,048 Native-only randomized stress inputs.** These separately exercise
+   parser and layout robustness. They are not presented as Mermaid.js parity
+   evidence.
 
 ## Independent Production Corpus
 
@@ -77,7 +96,29 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 message, series, relationship, or route that changes the meaning of the
 diagram. It allows minor font, spacing, and edge-routing differences.
 
-## Visual Evidence
+## Large-Scale Visual Matrix
+
+The large-scale matrix contains 256 unique sources for each of Flowchart,
+XY Chart, Sequence, Class, State, Entity Relationship, Gantt, and Pie:
+
+- 2,048 unique Mermaid sources;
+- 2,048 CMP Native screenshots;
+- 2,048 Mermaid.js `12.0.0` screenshots;
+- 128 paged contact sheets, with 16 same-source pairs per page;
+- source, seed, profile, feature, screenshot, and SHA-256 metadata;
+- per-pair content bounds and foreground-density metrics.
+
+**[Open all 128 paged Native/Official comparison images](assets/stability-report/visual-parity-evidence.md).**
+
+Machine-readable evidence:
+[manifest](assets/stability-report/visual-parity-manifest.json) and
+[geometry report](assets/stability-report/visual-parity-geometry.json).
+The automated gate accepted all 2,048 pairs. Across the complete matrix,
+Native/Official width ratios were `1.003-1.261`, height ratios were
+`0.878-1.140`, and foreground-ink ratios were `0.585-1.467`, within the
+source-controlled thresholds.
+
+## Independent Production Visual Evidence
 
 Each contact sheet uses the same Mermaid source on both sides:
 
@@ -167,7 +208,9 @@ The repository-level
 cross-platform builds, generated-corpus and capability-coverage checks, source
 and credential scan, debug/release APK permission audit, 212-image capture,
 visual geometry gate, and Web load test on every push to `main` and every pull
-request.
+request. The
+[`Full Visual Parity`](../.github/workflows/full-visual-parity.yml) workflow
+runs the 2,048-pair matrix weekly and on demand in eight parallel diagram jobs.
 
 The full verification command completed successfully:
 
@@ -194,9 +237,9 @@ Result:
 
 ```text
 BUILD SUCCESSFUL
-mermaid-core: 262 tests
+mermaid-core: 266 tests
 mermaid-compose: 17 tests
-total: 279 tests
+total: 283 tests
 failures: 0
 errors: 0
 ```
@@ -210,9 +253,12 @@ require selected semantic text to survive parsing and layout. The test renders
 a representative of all eight diagram types with each of the 11 built-in
 themes.
 
-The existing deterministic stress suites generate 256 inputs for each of the
-eight diagram types, for 2,048 generated inputs in total. Flowchart exercises
-both Dagre and ELK for every generated source.
+`ProductionCorpusTest` additionally renders all 2,048 visual-matrix sources,
+checks the expected visible text, and rejects empty, invalid, or non-finite
+SceneGraphs. The separate deterministic stress suites generate another 256
+Native-only inputs for each of the eight diagram types, for 2,048 stress inputs
+in total. Flowchart exercises both Dagre and ELK for every generated stress
+source.
 
 ## Determinism And Performance Evidence
 
@@ -329,6 +375,24 @@ CORPUS_SOURCE=production \
 INPUT_DIR=captures/local/production-corpus \
 OUTPUT_DIR=captures/local/production-contact-sheets \
 npm run generate:stability-contact-sheets
+
+AUDIT_SOURCE=visual-parity \
+OUTPUT_DIR=captures/local/visual-parity \
+BASE_URL=http://127.0.0.1:8093/ \
+VIEWPORT_WIDTH=1200 \
+VIEWPORT_HEIGHT=900 \
+npm run capture:web-audit
+
+CORPUS_SOURCE=visual-parity \
+INPUT_DIR=captures/local/visual-parity \
+OUTPUT_FILE=docs/assets/stability-report/visual-parity-geometry.json \
+npm run audit:stability-geometry
+
+CORPUS_SOURCE=visual-parity \
+INPUT_DIR=captures/local/visual-parity \
+OUTPUT_DIR=docs/assets/stability-report \
+CONTACT_SHEET_PAGE_SIZE=16 \
+npm run generate:stability-contact-sheets
 ```
 
 The capture command fails if a requested Native canvas or Official SVG does not
@@ -336,6 +400,8 @@ appear, if Mermaid reports an error, if an Official Gantt viewBox collapses, or
 if a screenshot is below the minimum size. The geometry gate rejects blank
 images and severe width, height, or foreground-density differences. The
 contact-sheet generator verifies every expected pair and records its SHA-256.
+Set `AUDIT_KIND` and `CORPUS_KIND` to one of the eight diagram IDs to reproduce
+a single 256-case partition instead of the complete matrix.
 
 ## Stable Acceptance Criteria
 

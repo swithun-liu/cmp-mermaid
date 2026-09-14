@@ -57,9 +57,14 @@ internal class XyChartLayout {
             theme = context.theme.xyChart,
             context = context,
         ).build()
+        // Mermaid: xychartRenderer.ts -> draw keeps overflowing SVG text visible.
+        // Compose clips its Canvas, so include the translated text overflow in the viewport.
+        val sceneWidth = elements
+            .filterIsInstance<SceneText>()
+            .fold(config.width) { width, text -> max(width, text.bounds.right) }
         return GMResult.Ok(
             MermaidScene(
-                width = config.width,
+                width = sceneWidth,
                 height = config.height,
                 background = context.theme.xyChart.backgroundColor,
                 elements = elements.sortedBy(SceneElement::zIndex),

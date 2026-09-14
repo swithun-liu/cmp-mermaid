@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core
 
 import com.swithun.cmpmermaid.core.generated.StabilityCorpusCase
 import com.swithun.cmpmermaid.core.generated.productionCorpusCases
+import com.swithun.cmpmermaid.core.generated.visualParityCorpusCases
 import kotlin.math.ceil
 import kotlin.math.min
 import kotlin.test.Test
@@ -57,6 +58,64 @@ class ProductionCorpusTest {
         assertTrue(conformanceCases.all { case -> case.features.isNotEmpty() })
 
         productionCorpusCases.forEach { case ->
+            val scene = render(case)
+
+            assertTrue(
+                scene.width.isFinite() && scene.width in 1f..MAX_SCENE_SIZE,
+                "${case.id} produced invalid width ${scene.width}",
+            )
+            assertTrue(
+                scene.height.isFinite() && scene.height in 1f..MAX_SCENE_SIZE,
+                "${case.id} produced invalid height ${scene.height}",
+            )
+            assertTrue(
+                scene.elements.size in 1..MAX_SCENE_ELEMENTS,
+                "${case.id} produced ${scene.elements.size} elements",
+            )
+            scene.elements.forEach { element ->
+                assertFiniteGeometry(case.id, element)
+            }
+
+            val renderedText = buildList {
+                scene.title?.let(::add)
+                scene.accessibilityTitle?.let(::add)
+                scene.accessibilityDescription?.let(::add)
+                scene.elements.filterIsInstance<SceneText>().mapTo(this, SceneText::text)
+            }
+            case.expectedTexts.forEach { expectedText ->
+                assertTrue(
+                    renderedText.any { text -> expectedText in text },
+                    "${case.id} did not render expected text '$expectedText'; " +
+                        "actual=$renderedText",
+                )
+            }
+        }
+    }
+
+    @Test
+    fun rendersEveryLargeScaleVisualParityCase() {
+        assertEquals(2_048, visualParityCorpusCases.size)
+        assertEquals(
+            setOf(
+                "flowchart",
+                "xychart",
+                "sequence",
+                "class",
+                "state",
+                "er",
+                "gantt",
+                "pie",
+            ).associateWith { 256 },
+            visualParityCorpusCases
+                .groupingBy(StabilityCorpusCase::diagramId)
+                .eachCount(),
+        )
+        assertEquals(
+            visualParityCorpusCases.size,
+            visualParityCorpusCases.map(StabilityCorpusCase::source).toSet().size,
+        )
+
+        visualParityCorpusCases.forEach { case ->
             val scene = render(case)
 
             assertTrue(

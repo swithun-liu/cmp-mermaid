@@ -30,8 +30,9 @@
 > [!IMPORTANT]
 > **CMP Mermaid is Stable for its documented Mermaid `12.0.0` support
 > scope.** All 8 supported diagram types pass the independent production
-> corpus, Native/Official visual review, deterministic replay, randomized
-> stress tests, runtime load tests, and cross-platform builds.
+> corpus, a 2,048-case Native/Official visual matrix, deterministic replay,
+> separate randomized stress tests, runtime load tests, and cross-platform
+> builds.
 >
 > Start with the **[full Stable test report](docs/stability-report.md)**.
 > It contains the cases, Native/Official contact sheets, performance numbers,
@@ -53,22 +54,25 @@ demo gallery.
 | Supported diagram types | 8 |
 | Independent production scenarios | 106 |
 | Declared capability coverage | 128/128 |
-| Native/Official captures | 212, with 0 render errors |
+| Large-scale visual matrix | 2,048 unique sources: 256 per diagram type |
+| Native/Official captures | 4,096 matrix screenshots plus 212 independent-corpus screenshots |
 | Manual visual review | 106 accepted, 0 blocked |
-| Automated visual geometry | 106 passed, 0 failed |
+| Automated visual geometry | 2,048/2,048 matrix pairs and 106/106 independent pairs passed |
 | Deterministic SceneGraph replay | 106 passed, 0 mismatches |
 | Built-in theme matrix | 88/88 |
-| Generated stress inputs | 2,048 |
-| JVM tests | 279 passed, 0 failed |
+| Separate generated Native stress inputs | 2,048 |
+| JVM tests | 283 passed, 0 failed |
 | Core production soak | 530 renders, 66ms P95 |
 | Runtime load matrix | Android, iOS, Desktop, Web passed |
 
 | Evidence document | What it contains |
 | --- | --- |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
+| **[All 2,048 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 128 paged contact sheets, with 16 same-source pairs per page |
 | [Production capability matrix](docs/production-capability-matrix.md) | The 128 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual 8-way matrix capture, geometry enforcement, and downloadable evidence |
 
 The Stable rating applies to the documented support contract. It is not a
 claim that every legal Mermaid program is implemented. A legal feature that
@@ -102,8 +106,9 @@ not pixel-identical browser output; platform font metrics may differ.
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native state diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js state diagram" width="700"> |
 
-The test report contains all 106 side-by-side pairs:
-**[open the visual evidence](docs/stability-report.md#visual-evidence)**.
+The report contains the 106 independent production comparisons and a separate
+large-scale matrix with 2,048 unique Mermaid sources:
+**[open all 128 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
 
 </details>
 

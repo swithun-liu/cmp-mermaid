@@ -69,6 +69,10 @@ diff can be translated incrementally.
   equivalent Kotlin token scanners while retaining their Jison rule indexes.
 - Mermaid DOM text maps to shared SceneGraph text spans and host-supplied
   measurement.
+- Entity aliases containing browser wrap opportunities use Mermaid's configured
+  `wrappingWidth` for both measurement and `SceneText.softWrap`. Unbroken entity
+  identifiers remain single-line, matching browser `break-spaces` behavior
+  instead of Compose's default character-level hard wrapping.
 - Browser-only label content returns `UnsupportedFeature`.
 - `MD_PARENT` remains in the translated grammar and DB, but maps to no
   SceneGraph marker because Mermaid 12's unified ER renderer does not register
@@ -91,8 +95,9 @@ diff can be translated incrementally.
   self-relationships.
 - `OfficialErDocumentationCases` executes all 24 examples extracted from
   Mermaid's ER documentation.
-- The Android gallery compares 20 identical sources against official Mermaid
-  `12.0.0` ELK output.
+- The large-scale Web audit compares 256 unique same-source cases against
+  Mermaid.js `12.0.0`, including long aliases and unbroken entity identifiers,
+  and enforces content-bound and foreground-density limits.
 
 ## Upgrade Procedure
 
@@ -106,7 +111,6 @@ diff can be translated incrementally.
 4. Regenerate the 24 documentation fixtures and review their hash.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
-6. Install the Android sample and capture all 20 Native/Official ER pairs with
-   ELK.
+6. Capture all 256 Native/Official ER matrix pairs with ELK.
 7. Review the contact sheets and update this map and the compatibility matrix
    before publishing.

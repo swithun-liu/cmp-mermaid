@@ -13,6 +13,8 @@ and enforced by
 - 64 conformance scenarios created independently from the demo gallery
 - 16 required capability points per diagram type
 - 128/128 declared capability points covered
+- 2,048 additional visual-matrix sources: 256 per diagram type
+- 2,048 separate Native-only randomized stress inputs
 
 ## Coverage
 
@@ -42,6 +44,14 @@ bounded geometry and expected semantic text, compares two complete SceneGraphs
 for determinism, and renders all 8 diagram types across all 11 built-in themes.
 The Web audit captures Native and Mermaid.js output for every case and enforces
 blank-image and content-geometry limits.
+
+The large-scale visual matrix adds 256 unique sources per type by combining 13
+or 14 complex production structures with 20 visible text and layout-pressure
+profiles. All 2,048 sources render in the Native core test and all 2,048
+Native/Official screenshot pairs pass the geometry gate. This systematic
+matrix broadens layout and text-pressure coverage, but it is not counted as
+2,048 independent topologies. The separate randomized stress corpus remains
+Native-only robustness evidence and is not presented as Official parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.
 Unsupported legal features must return `MermaidError.UnsupportedFeature`

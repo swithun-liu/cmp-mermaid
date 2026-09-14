@@ -53,6 +53,7 @@ import com.swithun.cmpmermaid.core.MermaidCompatibility
 import com.swithun.cmpmermaid.core.MermaidTheme
 import com.swithun.cmpmermaid.debugui.generated.productionCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.stabilityCorpusCases
+import com.swithun.cmpmermaid.debugui.generated.visualParityCorpusCases
 
 enum class MermaidDebugPreview {
     Native,
@@ -183,6 +184,21 @@ private val productionAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
         }
     }
 
+private val visualParityAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
+    visualParityCorpusCases.mapNotNull { corpusCase ->
+        destinations.firstOrNull { destination ->
+            destination.spec.id == corpusCase.diagramId
+        }?.let { destination ->
+            destination.spec to DiagramDocsCase(
+                id = corpusCase.id,
+                title = corpusCase.title,
+                category = "Large-scale visual parity corpus",
+                source = corpusCase.source,
+                initialAspectRatio = corpusCase.initialAspectRatio,
+            )
+        }
+    }
+
 @Composable
 fun MermaidDebugApp(
     options: MermaidDebugLaunchOptions = MermaidDebugLaunchOptions(),
@@ -218,6 +234,8 @@ fun MermaidDebugApp(
             } ?: stabilityAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId
             } ?: productionAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            } ?: visualParityAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId
             }
         }

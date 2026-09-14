@@ -189,6 +189,8 @@ internal class ErLayout {
                 source = entity.alias.ifEmpty { entity.label },
                 style = style,
                 context = context,
+                // Mermaid: rendering-elements/shapes/erBox.ts -> addText/createText.
+                maxWidth = context.options.wrappingWidth,
             )
         ) {
             is GMResult.Ok -> measured.value
@@ -367,6 +369,7 @@ internal class ErLayout {
         style: FlowNodeStyle,
         context: MermaidRenderContext,
         fontSize: Float = style.fontSize ?: context.options.fontSize ?: context.theme.fontSize,
+        maxWidth: Float = UNWRAPPED_TEXT_WIDTH,
     ): GMResult<ErTextVisual, MermaidError> {
         val rendered = when (
             val result = MermaidTextPort.render(
@@ -385,6 +388,10 @@ internal class ErLayout {
             ?: style.lineHeightMultiplier
             ?: DEFAULT_LINE_HEIGHT
         val weight = style.fontWeight ?: SceneTextWeight.Normal
+        val softWrap = maxWidth < UNWRAPPED_TEXT_WIDTH &&
+            context.options.markdownAutoWrap &&
+            rendered.text.any(Char::isWhitespace)
+        val measuredMaxWidth = if (softWrap) maxWidth else UNWRAPPED_TEXT_WIDTH
         return try {
             GMResult.Ok(
                 ErTextVisual(
@@ -394,7 +401,7 @@ internal class ErLayout {
                         TextMetricsRequest(
                             text = rendered.text,
                             fontSize = fontSize,
-                            maxWidth = UNWRAPPED_TEXT_WIDTH,
+                            maxWidth = measuredMaxWidth,
                             lineHeight = lineHeight,
                             fontFamily = family,
                             weight = weight,
@@ -405,6 +412,7 @@ internal class ErLayout {
                     lineHeight = lineHeight,
                     fontFamily = family,
                     weight = weight,
+                    softWrap = softWrap,
                 ),
             )
         } catch (failure: Throwable) {
@@ -948,6 +956,7 @@ internal class ErLayout {
         spans = spans,
         horizontalAlignment = alignment,
         zIndex = zIndex,
+        softWrap = softWrap,
     )
 
     private fun decode(source: String): String =
@@ -1020,6 +1029,7 @@ internal class ErLayout {
         val lineHeight: Float,
         val fontFamily: String,
         val weight: SceneTextWeight,
+        val softWrap: Boolean,
     )
 
     private data class ErAttributeRow(

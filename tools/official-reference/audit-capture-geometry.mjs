@@ -5,6 +5,7 @@ import puppeteer from 'puppeteer';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
+import { cases as visualParityCases } from './visual-parity-corpus.mjs';
 
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -18,11 +19,22 @@ const outputFile = process.env.OUTPUT_FILE
   ? path.resolve(repositoryRoot, process.env.OUTPUT_FILE)
   : null;
 const corpusSource = process.env.CORPUS_SOURCE ?? 'stability';
-const cases = corpusSource === 'production'
-  ? productionCases
-  : stabilityCases;
-if (!['stability', 'production'].includes(corpusSource)) {
-  throw new Error('CORPUS_SOURCE must be stability or production');
+const corpusCases = {
+  stability: stabilityCases,
+  production: productionCases,
+  'visual-parity': visualParityCases,
+}[corpusSource];
+if (corpusCases === undefined) {
+  throw new Error(
+    'CORPUS_SOURCE must be stability, production, or visual-parity',
+  );
+}
+const corpusKind = process.env.CORPUS_KIND ?? 'all';
+const cases = corpusCases.filter(
+  (entry) => corpusKind === 'all' || entry.kind === corpusKind,
+);
+if (cases.length === 0) {
+  throw new Error(`No ${corpusSource} cases found for kind ${corpusKind}`);
 }
 const thresholds = {
   minimumInkPixels: readNumber('MINIMUM_INK_PIXELS', 100),

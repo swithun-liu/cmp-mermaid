@@ -5043,3 +5043,142 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf("legend-right", "legend-transforms", "theme-colors", "many-slices", "metadata"),
     ),
 )
+
+private val visualParityLabelProfiles: List<String> = listOf(
+    "A",
+    "Short Label",
+    "Compact Review Label",
+    "Regional Validation Label",
+    "Cross Region Validation Label",
+    "Primary Production Evidence Label",
+    "Secondary Production Evidence Label",
+    "Fallback And Recovery Evidence Label",
+    "Authorization And Policy Evaluation Label",
+    "Long Running Background Verification Label",
+    "Multi Stage Delivery Coordination Evidence Label",
+    "Customer Facing Result Confirmation Evidence Label",
+    "Asynchronous Replication Completion Evidence Label",
+    "Privacy Preserving Data Processing Evidence Label",
+    "Operational Readiness And Rollback Evidence Label",
+    "Globally Distributed Service Coordination Evidence Label",
+    "Deterministic Rendering Verification Evidence Label",
+    "Resource Budget And Performance Validation Evidence Label",
+    "Accessibility Metadata And Text Measurement Evidence Label",
+    "End To End Production Compatibility Verification Evidence Label",
+)
+
+internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
+    buildList {
+        val kinds = listOf(
+            "flowchart",
+            "xychart",
+            "sequence",
+            "class",
+            "state",
+            "er",
+            "gantt",
+            "pie",
+        )
+        kinds.forEach { kind ->
+            val seeds = productionCorpusCases.filter { case ->
+                case.diagramId == kind
+            }
+            repeat(256) { index ->
+                val seed = seeds[index % seeds.size]
+                val profileIndex = index / seeds.size
+                val ordinal = index + 1
+                val suffix = ordinal.toString().padStart(3, '0')
+                val evidenceId = "ParityEvidence$suffix"
+                val visibleLabel =
+                    "${visualParityLabelProfiles[profileIndex]} $suffix"
+                add(
+                    seed.copy(
+                        id = "parity_${kind}_$suffix",
+                        title = "${seed.title} - profile " +
+                            (profileIndex + 1).toString().padStart(2, '0'),
+                        scenario = "Structural seed ${seed.id}; visible label " +
+                            "profile ${profileIndex + 1}; matrix case $ordinal " +
+                            "of 256.",
+                        source = addVisualParityVariation(
+                            kind = kind,
+                            source = seed.source,
+                            evidenceId = evidenceId,
+                            label = visibleLabel,
+                            ordinal = ordinal,
+                        ),
+                        expectedTexts = seed.expectedTexts + visibleLabel,
+                        features = seed.features + setOf(
+                            "seed:${seed.id}",
+                            "label-profile:${profileIndex + 1}",
+                        ),
+                    ),
+                )
+            }
+        }
+    }
+}
+
+private fun addVisualParityVariation(
+    kind: String,
+    source: String,
+    evidenceId: String,
+    label: String,
+    ordinal: Int,
+): String = when (kind) {
+    "flowchart" -> "${source.trimEnd()}\n  $evidenceId[\"$label\"]\n"
+    "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
+    "sequence" -> insertAfterDeclaration(
+        source = source,
+        declaration = "sequenceDiagram",
+        line = "  participant $evidenceId as $label",
+    )
+    "class" -> "${source.trimEnd()}\n  class $evidenceId[\"$label\"]\n"
+    "state" -> "${source.trimEnd()}\n  state \"$label\" as $evidenceId\n"
+    "er" -> "${source.trimEnd()}\n  $evidenceId[\"$label\"]\n"
+    "gantt" -> replaceOrInsertVisualParityTitle(source, "gantt", label)
+    "pie" -> "${source.trimEnd()}\n  \"$label\" : ${(ordinal % 17) + 3}\n"
+    else -> source
+}
+
+private fun replaceOrInsertVisualParityTitle(
+    source: String,
+    declaration: String,
+    suffix: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val titleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title ")
+    }
+    if (titleIndex >= 0) {
+        val line = lines[titleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title ")
+            .trim()
+            .removeSurrounding("\"")
+        lines[titleIndex] = "${indent}title \"$title - $suffix\""
+        return lines.joinToString("\n")
+    }
+    val declarationIndex = lines.indexOfFirst { line ->
+        val value = line.trim()
+        value == declaration ||
+            (declaration == "xychart" && value == "xychart horizontal")
+    }
+    if (declarationIndex < 0) return source
+    lines.add(declarationIndex + 1, "  title \"$suffix\"")
+    return lines.joinToString("\n")
+}
+
+private fun insertAfterDeclaration(
+    source: String,
+    declaration: String,
+    line: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val declarationIndex = lines.indexOfFirst { value ->
+        value.trim() == declaration
+    }
+    if (declarationIndex < 0) return source
+    lines.add(declarationIndex + 1, line)
+    return lines.joinToString("\n")
+}

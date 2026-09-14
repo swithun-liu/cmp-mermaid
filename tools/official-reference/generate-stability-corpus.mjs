@@ -8,6 +8,11 @@ import {
   requiredFeaturesByKind,
 } from './production-corpus.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
+import {
+  cases as visualParityCases,
+  casesPerKind as visualParityCasesPerKind,
+  labelProfiles as visualParityLabelProfiles,
+} from './visual-parity-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -53,6 +58,7 @@ const supportedKinds = new Set([
 
 validateStabilityCases();
 validateProductionCases();
+validateVisualParityCases();
 
 const outputs = [
   {
@@ -249,6 +255,50 @@ function validateProductionCases() {
   }
 }
 
+function validateVisualParityCases() {
+  const expectedCount = supportedKinds.size * visualParityCasesPerKind;
+  if (visualParityCases.length !== expectedCount) {
+    throw new Error(
+      `Expected ${expectedCount} visual parity cases, found ${visualParityCases.length}`,
+    );
+  }
+  const ids = new Set();
+  const sources = new Set();
+  for (const entry of visualParityCases) {
+    if (!/^parity_[a-z]+_\d{3}$/.test(entry.id)) {
+      throw new Error(`Invalid visual parity case id: ${entry.id}`);
+    }
+    if (ids.has(entry.id)) {
+      throw new Error(`Duplicate visual parity case id: ${entry.id}`);
+    }
+    if (sources.has(normalizeMermaidSource(entry.source))) {
+      throw new Error(`Duplicate visual parity source: ${entry.id}`);
+    }
+    if (!supportedKinds.has(entry.kind)) {
+      throw new Error(`Unsupported visual parity kind: ${entry.kind}`);
+    }
+    if (!Array.isArray(entry.expectedTexts) || entry.expectedTexts.length === 0) {
+      throw new Error(`Missing visual parity text expectations for ${entry.id}`);
+    }
+    if (!Array.isArray(entry.features) || entry.features.length === 0) {
+      throw new Error(`Missing visual parity dimensions for ${entry.id}`);
+    }
+    if (entry.sourceSha256.length !== 64) {
+      throw new Error(`Invalid source hash for ${entry.id}`);
+    }
+    ids.add(entry.id);
+    sources.add(normalizeMermaidSource(entry.source));
+  }
+  for (const kind of supportedKinds) {
+    const count = visualParityCases.filter((entry) => entry.kind === kind).length;
+    if (count !== visualParityCasesPerKind) {
+      throw new Error(
+        `Expected ${visualParityCasesPerKind} ${kind} visual parity cases, found ${count}`,
+      );
+    }
+  }
+}
+
 function readDemoCases() {
   const demoCases = flowchartDemoCases.map(({ id, source }) => ({ id, source }));
   for (const [fileName, constructorName] of Object.values(kotlinGalleryFiles)) {
@@ -309,6 +359,126 @@ ${stabilityEntries}
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
 ${productionEntries}
 )
+
+private val visualParityLabelProfiles: List<String> = listOf(
+${indent(visualParityLabelProfiles.map((value) => `${JSON.stringify(value)},`).join('\n'), 4)}
+)
+
+internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
+    buildList {
+        val kinds = listOf(
+            "flowchart",
+            "xychart",
+            "sequence",
+            "class",
+            "state",
+            "er",
+            "gantt",
+            "pie",
+        )
+        kinds.forEach { kind ->
+            val seeds = productionCorpusCases.filter { case ->
+                case.diagramId == kind
+            }
+            repeat(${visualParityCasesPerKind}) { index ->
+                val seed = seeds[index % seeds.size]
+                val profileIndex = index / seeds.size
+                val ordinal = index + 1
+                val suffix = ordinal.toString().padStart(3, '0')
+                val evidenceId = "ParityEvidence\$suffix"
+                val visibleLabel =
+                    "\${visualParityLabelProfiles[profileIndex]} \$suffix"
+                add(
+                    seed.copy(
+                        id = "parity_\${kind}_\$suffix",
+                        title = "\${seed.title} - profile " +
+                            (profileIndex + 1).toString().padStart(2, '0'),
+                        scenario = "Structural seed \${seed.id}; visible label " +
+                            "profile \${profileIndex + 1}; matrix case \$ordinal " +
+                            "of ${visualParityCasesPerKind}.",
+                        source = addVisualParityVariation(
+                            kind = kind,
+                            source = seed.source,
+                            evidenceId = evidenceId,
+                            label = visibleLabel,
+                            ordinal = ordinal,
+                        ),
+                        expectedTexts = seed.expectedTexts + visibleLabel,
+                        features = seed.features + setOf(
+                            "seed:\${seed.id}",
+                            "label-profile:\${profileIndex + 1}",
+                        ),
+                    ),
+                )
+            }
+        }
+    }
+}
+
+private fun addVisualParityVariation(
+    kind: String,
+    source: String,
+    evidenceId: String,
+    label: String,
+    ordinal: Int,
+): String = when (kind) {
+    "flowchart" -> "\${source.trimEnd()}\\n  \$evidenceId[\\"\$label\\"]\\n"
+    "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
+    "sequence" -> insertAfterDeclaration(
+        source = source,
+        declaration = "sequenceDiagram",
+        line = "  participant \$evidenceId as \$label",
+    )
+    "class" -> "\${source.trimEnd()}\\n  class \$evidenceId[\\"\$label\\"]\\n"
+    "state" -> "\${source.trimEnd()}\\n  state \\"\$label\\" as \$evidenceId\\n"
+    "er" -> "\${source.trimEnd()}\\n  \$evidenceId[\\"\$label\\"]\\n"
+    "gantt" -> replaceOrInsertVisualParityTitle(source, "gantt", label)
+    "pie" -> "\${source.trimEnd()}\\n  \\"\$label\\" : \${(ordinal % 17) + 3}\\n"
+    else -> source
+}
+
+private fun replaceOrInsertVisualParityTitle(
+    source: String,
+    declaration: String,
+    suffix: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val titleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title ")
+    }
+    if (titleIndex >= 0) {
+        val line = lines[titleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title ")
+            .trim()
+            .removeSurrounding("\\"")
+        lines[titleIndex] = "\${indent}title \\"\$title - \$suffix\\""
+        return lines.joinToString("\\n")
+    }
+    val declarationIndex = lines.indexOfFirst { line ->
+        val value = line.trim()
+        value == declaration ||
+            (declaration == "xychart" && value == "xychart horizontal")
+    }
+    if (declarationIndex < 0) return source
+    lines.add(declarationIndex + 1, "  title \\"\$suffix\\"")
+    return lines.joinToString("\\n")
+}
+
+private fun insertAfterDeclaration(
+    source: String,
+    declaration: String,
+    line: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val declarationIndex = lines.indexOfFirst { value ->
+        value.trim() == declaration
+    }
+    if (declarationIndex < 0) return source
+    lines.add(declarationIndex + 1, line)
+    return lines.joinToString("\\n")
+}
 `;
 }
 
