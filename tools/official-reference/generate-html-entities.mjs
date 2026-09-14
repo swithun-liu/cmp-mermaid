@@ -8,7 +8,7 @@ const expectedSha256 = 'd741d877ac77c4194c4ad526b5b4a19aef8dfe411ab840a466891cdb
 const root = dirname(fileURLToPath(import.meta.url));
 const output = resolve(
   root,
-  '../../mermaid-core/src/commonMain/kotlin/io/github/cmpmermaid/core/flowchart/upstream/mermaid/Html5NamedEntities.kt',
+  '../../mermaid-core/src/commonMain/kotlin/com/swithun/cmpmermaid/core/flowchart/upstream/mermaid/Html5NamedEntities.kt',
 );
 
 const response = await fetch(sourceUrl);
@@ -57,7 +57,7 @@ const maxNameLength = Math.max(...entries.map(([name]) => name.length));
 mkdirSync(dirname(output), { recursive: true });
 writeFileSync(
   output,
-  `package io.github.cmpmermaid.core.flowchart.upstream.mermaid
+  `package com.swithun.cmpmermaid.core.flowchart.upstream.mermaid
 
 /**
  * Generated from the WHATWG named character references used by browser

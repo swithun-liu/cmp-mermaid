@@ -19,7 +19,7 @@ kotlin {
 
 compose.desktop {
     application {
-        mainClass = "io.github.cmpmermaid.sample.desktop.MainKt"
+        mainClass = "com.swithun.cmpmermaid.sample.desktop.MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg)
             packageName = "CMP Mermaid"

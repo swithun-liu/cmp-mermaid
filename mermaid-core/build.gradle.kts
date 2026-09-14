@@ -4,12 +4,13 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
+    `maven-publish`
 }
 
 @OptIn(ExperimentalWasmDsl::class)
 kotlin {
     android {
-        namespace = "io.github.cmpmermaid.core"
+        namespace = "com.swithun.cmpmermaid.core"
         compileSdk = 36
         minSdk = 24
         compilerOptions {

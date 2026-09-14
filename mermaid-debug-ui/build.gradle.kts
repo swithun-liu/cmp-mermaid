@@ -6,12 +6,13 @@ plugins {
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
+    `maven-publish`
 }
 
 @OptIn(ExperimentalWasmDsl::class)
 kotlin {
     android {
-        namespace = "io.github.cmpmermaid.debugui"
+        namespace = "com.swithun.cmpmermaid.debugui"
         compileSdk = 36
         minSdk = 24
         androidResources {

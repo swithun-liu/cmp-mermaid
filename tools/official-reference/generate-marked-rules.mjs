@@ -47,7 +47,7 @@ const emitRules = (lines, name, rules) => {
 };
 
 const lines = [
-  'package io.github.cmpmermaid.core.flowchart.upstream.marked',
+  'package com.swithun.cmpmermaid.core.flowchart.upstream.marked',
   '',
   '/**',
   ` * Generated from the Marked ${MARKED_VERSION} dependency resolved by Mermaid ${MERMAID_VERSION}.`,
@@ -67,7 +67,7 @@ lines.push('}');
 
 const output = path.join(
   repositoryRoot,
-  'mermaid-core/src/commonMain/kotlin/io/github/cmpmermaid/core/flowchart/upstream/marked/MarkedGeneratedRules.kt',
+  'mermaid-core/src/commonMain/kotlin/com/swithun/cmpmermaid/core/flowchart/upstream/marked/MarkedGeneratedRules.kt',
 );
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, `${lines.join('\n')}\n`);

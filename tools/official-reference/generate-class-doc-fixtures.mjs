@@ -77,12 +77,12 @@ const kotlinCases = cases
 
 const output = path.join(
   repositoryRoot,
-  'mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/OfficialClassDocumentationCases.kt',
+  'mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/OfficialClassDocumentationCases.kt',
 );
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(
   output,
-  `package io.github.cmpmermaid.core
+  `package com.swithun.cmpmermaid.core
 
 /**
  * Generated from Mermaid ${MERMAID_VERSION} packages/mermaid/src/docs/syntax/classDiagram.md.

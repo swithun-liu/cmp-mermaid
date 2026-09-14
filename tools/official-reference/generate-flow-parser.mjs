@@ -82,7 +82,7 @@ const cellSource = (cell) => {
 };
 
 const lines = [];
-lines.push('package io.github.cmpmermaid.core.flowchart.upstream.mermaid');
+lines.push('package com.swithun.cmpmermaid.core.flowchart.upstream.mermaid');
 lines.push('');
 lines.push('/**');
 lines.push(` * Generated from Mermaid ${MERMAID_VERSION} flow.jison.`);
@@ -177,7 +177,7 @@ lines.push('}');
 
 const output = path.join(
   repositoryRoot,
-  'mermaid-core/src/commonMain/kotlin/io/github/cmpmermaid/core/flowchart/upstream/mermaid/FlowJisonTables.kt',
+  'mermaid-core/src/commonMain/kotlin/com/swithun/cmpmermaid/core/flowchart/upstream/mermaid/FlowJisonTables.kt',
 );
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, `${lines.join('\n')}\n`);

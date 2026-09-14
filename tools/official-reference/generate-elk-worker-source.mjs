@@ -10,7 +10,7 @@ const packageJsonPath = path.join(scriptDirectory, 'node_modules/elkjs/package.j
 const workerPath = path.join(scriptDirectory, 'node_modules/elkjs/lib/elk-worker.min.js');
 const outputPath = path.resolve(
   scriptDirectory,
-  '../../mermaid-core/src/commonMain/kotlin/io/github/cmpmermaid/core/flowchart/upstream/elk/ElkWorkerSource.kt',
+  '../../mermaid-core/src/commonMain/kotlin/com/swithun/cmpmermaid/core/flowchart/upstream/elk/ElkWorkerSource.kt',
 );
 
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
@@ -47,7 +47,7 @@ for (let offset = 0; offset < source.length; offset += CHUNK_LENGTH) {
 const kotlinString = (value) =>
   JSON.stringify(value).replaceAll('$', () => '\\$');
 
-const kotlin = `package io.github.cmpmermaid.core.flowchart.upstream.elk
+const kotlin = `package com.swithun.cmpmermaid.core.flowchart.upstream.elk
 
 /**
  * Generated from the elkjs ${ELKJS_VERSION} dependency resolved by Mermaid 12.0.0.

@@ -1,6 +1,6 @@
 name: CMPMermaid
 options:
-  bundleIdPrefix: io.github.cmpmermaid
+  bundleIdPrefix: com.swithun.cmpmermaid
   deploymentTarget:
     iOS: "17.2"
 settings:
@@ -37,7 +37,7 @@ targets:
           - UIInterfaceOrientationLandscapeRight
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: io.github.cmpmermaid.sample
+        PRODUCT_BUNDLE_IDENTIFIER: com.swithun.cmpmermaid.sample
         PRODUCT_NAME: CMP Mermaid
         TARGETED_DEVICE_FAMILY: "1,2"
     preBuildScripts:

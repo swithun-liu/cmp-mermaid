@@ -9,11 +9,11 @@ const root = dirname(fileURLToPath(import.meta.url));
 const output = resolve(root, '../../captures/local/flowchart-official');
 const kotlinOutput = resolve(
   root,
-  '../../mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/generated/OfficialDemoCatalog.kt',
+  '../../mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/OfficialDemoCatalog.kt',
 );
 const testOutput = resolve(
   root,
-  '../../mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/OfficialFlowchartCases.kt',
+  '../../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/OfficialFlowchartCases.kt',
 );
 const androidAssetOutput = resolve(
   root,
@@ -112,7 +112,7 @@ ${source}
 mkdirSync(dirname(kotlinOutput), { recursive: true });
 writeFileSync(
   kotlinOutput,
-  `package io.github.cmpmermaid.debugui.generated
+  `package com.swithun.cmpmermaid.debugui.generated
 
 internal data class FlowchartDemo(
     val id: String,
@@ -143,7 +143,7 @@ ${source}
 mkdirSync(dirname(testOutput), { recursive: true });
 writeFileSync(
   testOutput,
-  `package io.github.cmpmermaid.core
+  `package com.swithun.cmpmermaid.core
 
 internal data class OfficialFlowchartCase(
     val id: String,

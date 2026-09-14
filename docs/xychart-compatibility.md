@@ -86,7 +86,7 @@ Capture matching Native and on-device Official views:
 
 ```bash
 CAPTURE_CASE_IDS="$(rg 'id = \"xy_' \
-  sample/androidApp/src/main/kotlin/io/github/cmpmermaid/sample/XyChartDemos.kt |
+  mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/XyChartDemos.kt |
   sed -E 's/.*id = \"([^\"]+)\".*/\1/' | paste -sd, -)" \
 CAPTURE_LAYOUT=dagre \
 ANDROID_SERIAL=<serial> \

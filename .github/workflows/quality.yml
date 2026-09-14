@@ -35,8 +35,8 @@ jobs:
         run: |
           node tools/official-reference/generate-stability-corpus.mjs
           git diff --exit-code -- \
-            mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/generated/StabilityCorpus.kt \
-            mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/generated/StabilityCorpus.kt
+            mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/StabilityCorpus.kt \
+            mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/StabilityCorpus.kt
 
       - name: Reject internal endpoints and credential material
         shell: bash
@@ -59,6 +59,9 @@ jobs:
           ./gradlew \
             :mermaid-core:jvmTest \
             :mermaid-compose:jvmTest
+
+      - name: Verify Maven publication coordinates
+        run: ./gradlew verifyPublicationCoordinates
 
       - name: Build all targets
         run: |

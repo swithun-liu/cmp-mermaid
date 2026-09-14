@@ -239,7 +239,7 @@ async function assertOfficialGanttWidth(page, caseId) {
 function readKotlinCases(fileName, constructorName) {
   const sourcePath = resolve(
     repositoryRoot,
-    `mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/${fileName}`,
+    `mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/${fileName}`,
   );
   const kotlin = readFileSync(sourcePath, 'utf8');
   const casePattern = new RegExp(

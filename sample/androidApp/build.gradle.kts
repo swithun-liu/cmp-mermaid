@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "io.github.cmpmermaid.sample"
+    namespace = "com.swithun.cmpmermaid.sample"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.github.cmpmermaid.sample"
+        applicationId = "com.swithun.cmpmermaid.sample"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

@@ -80,12 +80,12 @@ const kotlinCases = cases
 
 const output = path.join(
   repositoryRoot,
-  'mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/OfficialXyChartDocumentationCases.kt',
+  'mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/OfficialXyChartDocumentationCases.kt',
 );
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(
   output,
-  `package io.github.cmpmermaid.core
+  `package com.swithun.cmpmermaid.core
 
 /**
  * Generated from Mermaid ${MERMAID_VERSION}

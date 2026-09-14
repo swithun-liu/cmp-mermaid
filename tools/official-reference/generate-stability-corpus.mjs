@@ -56,18 +56,18 @@ validateProductionCases();
 
 const outputs = [
   {
-    packageName: 'io.github.cmpmermaid.debugui.generated',
+    packageName: 'com.swithun.cmpmermaid.debugui.generated',
     path: resolve(
       repositoryRoot,
-      'mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/generated/' +
+      'mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/' +
         'StabilityCorpus.kt',
     ),
   },
   {
-    packageName: 'io.github.cmpmermaid.core.generated',
+    packageName: 'com.swithun.cmpmermaid.core.generated',
     path: resolve(
       repositoryRoot,
-      'mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/generated/' +
+      'mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/' +
         'StabilityCorpus.kt',
     ),
   },
@@ -254,7 +254,7 @@ function readDemoCases() {
   for (const [fileName, constructorName] of Object.values(kotlinGalleryFiles)) {
     const sourcePath = resolve(
       repositoryRoot,
-      `mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/${fileName}`,
+      `mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/${fileName}`,
     );
     const kotlin = readFileSync(sourcePath, 'utf8');
     const casePattern = new RegExp(

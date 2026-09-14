@@ -76,7 +76,7 @@ const cellSource = (cell) => {
 };
 
 const lines = [];
-lines.push('package io.github.cmpmermaid.core.classdiagram.upstream.mermaid');
+lines.push('package com.swithun.cmpmermaid.core.classdiagram.upstream.mermaid');
 lines.push('');
 lines.push('/**');
 lines.push(
@@ -197,7 +197,7 @@ lines.push('}');
 
 const output = path.join(
   repositoryRoot,
-  'mermaid-core/src/commonMain/kotlin/io/github/cmpmermaid/core/classdiagram/upstream/mermaid/ClassJisonTables.kt',
+  'mermaid-core/src/commonMain/kotlin/com/swithun/cmpmermaid/core/classdiagram/upstream/mermaid/ClassJisonTables.kt',
 );
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, `${lines.join('\n')}\n`);

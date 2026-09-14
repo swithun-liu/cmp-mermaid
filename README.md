@@ -208,11 +208,29 @@ dependencies {
 }
 ```
 
-The planned artifact split keeps the comparison UI out of production builds:
+Public Kotlin APIs use the `com.swithun.cmpmermaid` package root. Maven
+publications use the shorter `com.swithun` group:
+
+| Module | Maven coordinate |
+| --- | --- |
+| Core renderer | `com.swithun:mermaid-core:0.1.0-RC1` |
+| Compose renderer | `com.swithun:mermaid-compose:0.1.0-RC1` |
+| Debug and comparison UI | `com.swithun:mermaid-debug-ui:0.1.0-RC1` |
+
+The artifact split keeps the comparison UI out of production builds:
 
 ```kotlin
-implementation("io.github.cmpmermaid:mermaid-compose:<version>")
-debugImplementation("io.github.cmpmermaid:mermaid-debug-ui:<version>")
+implementation("com.swithun:mermaid-compose:<version>")
+debugImplementation("com.swithun:mermaid-debug-ui:<version>")
+```
+
+Generate all platform publications under `build/maven-repository`:
+
+```bash
+./gradlew \
+  :mermaid-core:publishAllPublicationsToBuildRepository \
+  :mermaid-compose:publishAllPublicationsToBuildRepository \
+  :mermaid-debug-ui:publishAllPublicationsToBuildRepository
 ```
 
 Basic Compose usage:

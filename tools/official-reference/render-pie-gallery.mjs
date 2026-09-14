@@ -7,7 +7,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
 const sourcePath = resolve(
   repositoryRoot,
-  'mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/PieDemos.kt',
+  'mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/PieDemos.kt',
 );
 const output = resolve(
   repositoryRoot,

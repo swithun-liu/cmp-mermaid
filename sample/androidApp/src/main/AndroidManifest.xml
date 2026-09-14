@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="io.github.cmpmermaid.debugui.MermaidDebugActivity"
+            android:name="com.swithun.cmpmermaid.debugui.MermaidDebugActivity"
             android:exported="true"
             tools:replace="android:exported">
             <intent-filter>

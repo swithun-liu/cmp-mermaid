@@ -15,8 +15,8 @@ maximum_scroll_seconds="${MAXIMUM_SCROLL_SECONDS:-45}"
 swipe_count="${SWIPE_COUNT:-90}"
 case_count=106
 last_case_id="prod_pie_themed_many_services"
-package_name="io.github.cmpmermaid.sample"
-activity_name="io.github.cmpmermaid.debugui.MermaidDebugActivity"
+package_name="com.swithun.cmpmermaid.sample"
+activity_name="com.swithun.cmpmermaid.debugui.MermaidDebugActivity"
 adb="${ANDROID_HOME:?ANDROID_HOME is required}/platform-tools/adb"
 
 mkdir -p "$output_dir"

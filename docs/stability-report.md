@@ -202,7 +202,7 @@ errors: 0
 ```
 
 The independent corpus test is
-[`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/ProductionCorpusTest.kt).
+[`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/ProductionCorpusTest.kt).
 It compiles all 106 sources and rejects parser errors, invalid or non-finite
 geometry, scenes outside the 20,000-unit and 20,000-element limits, empty
 SceneGraphs, and non-deterministic replay. The 64 conformance additions also
@@ -281,7 +281,7 @@ sample/androidApp/build/outputs/apk/release/androidApp-release-unsigned.apk
 Declared permissions:
 
 ```text
-io.github.cmpmermaid.sample.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+com.swithun.cmpmermaid.sample.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ```
 
 `android.permission.INTERNET` is not declared.

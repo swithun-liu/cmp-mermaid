@@ -76,7 +76,7 @@ const tokenSource = (token, indent) => {
 };
 
 const lines = [
-  'package io.github.cmpmermaid.core.flowchart.upstream.marked',
+  'package com.swithun.cmpmermaid.core.flowchart.upstream.marked',
   '',
   '/**',
   ` * Generated with Marked ${MARKED_VERSION}.`,
@@ -119,7 +119,7 @@ lines.push(')');
 
 const output = path.join(
   repositoryRoot,
-  'mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/flowchart/upstream/marked/MarkedFixtures.kt',
+  'mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/flowchart/upstream/marked/MarkedFixtures.kt',
 );
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, `${lines.join('\n')}\n`);
