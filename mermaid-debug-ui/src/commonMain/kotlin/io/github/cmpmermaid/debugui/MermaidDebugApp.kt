@@ -51,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import io.github.cmpmermaid.compose.MermaidDiagram
 import io.github.cmpmermaid.core.MermaidCompatibility
 import io.github.cmpmermaid.core.MermaidTheme
+import io.github.cmpmermaid.debugui.generated.stabilityCorpusCases
 
 enum class MermaidDebugPreview {
     Native,
@@ -83,9 +84,12 @@ private enum class DebugScreen {
     Playground,
 }
 
-private enum class DiagramStability {
-    Stable,
-    Beta,
+private enum class DiagramStability(
+    val label: String,
+) {
+    Stable("STABLE"),
+    ReleaseCandidate("RC"),
+    Beta("BETA"),
 }
 
 private data class DiagramDestination(
@@ -100,51 +104,66 @@ private val destinations = listOf(
         DebugScreen.Flowchart,
         flowchartDiagramDocsSpec,
         "Dagre and ELK layouts",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
     DiagramDestination(
         DebugScreen.XyChart,
         xyChartDiagramDocsSpec,
         "Bar and line series with categorical or numeric axes",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
     DiagramDestination(
         DebugScreen.Sequence,
         sequenceDiagramDocsSpec,
         "Participants, messages, notes, and control regions",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
     DiagramDestination(
         DebugScreen.Class,
         classDiagramDocsSpec,
         "Classes, relations, notes, and namespaces",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
     DiagramDestination(
         DebugScreen.State,
         stateDiagramDocsSpec,
         "States, transitions, composites, notes, and concurrency",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
     DiagramDestination(
         DebugScreen.Er,
         erDiagramDocsSpec,
         "Entities, attributes, cardinalities, and subgraphs",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
     DiagramDestination(
         DebugScreen.Gantt,
         ganttDiagramDocsSpec,
         "Tasks, dependencies, exclusions, and milestones",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
     DiagramDestination(
         DebugScreen.Pie,
         pieDiagramDocsSpec,
         "Pie and donut charts with configurable legends",
-        DiagramStability.Stable,
+        DiagramStability.ReleaseCandidate,
     ),
 )
+
+private val stabilityAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
+    stabilityCorpusCases.mapNotNull { corpusCase ->
+        destinations.firstOrNull { destination ->
+            destination.spec.id == corpusCase.diagramId
+        }?.let { destination ->
+            destination.spec to DiagramDocsCase(
+                id = corpusCase.id,
+                title = corpusCase.title,
+                category = "Release candidate corpus",
+                source = corpusCase.source,
+                initialAspectRatio = corpusCase.initialAspectRatio,
+            )
+        }
+    }
 
 @Composable
 fun MermaidDebugApp(
@@ -174,6 +193,8 @@ fun MermaidDebugApp(
                 destination.spec.cases
                     .firstOrNull { it.id == requestedId }
                     ?.let { demo -> destination.spec to demo }
+            } ?: stabilityAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
             }
         }
     }
@@ -337,15 +358,17 @@ private fun DiagramTypeRow(
                 Surface(
                     color = when (stability) {
                         DiagramStability.Stable -> Color(0xFFDCFCE7)
+                        DiagramStability.ReleaseCandidate -> Color(0xFFFEF3C7)
                         DiagramStability.Beta -> Color(0xFFFEF3C7)
                     },
                     shape = RoundedCornerShape(4.dp),
                 ) {
                     Text(
-                        text = stability.name.uppercase(),
+                        text = stability.label,
                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp),
                         color = when (stability) {
                             DiagramStability.Stable -> Color(0xFF166534)
+                            DiagramStability.ReleaseCandidate -> Color(0xFF92400E)
                             DiagramStability.Beta -> Color(0xFF92400E)
                         },
                         fontSize = 10.sp,

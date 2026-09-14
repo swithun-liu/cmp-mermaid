@@ -5,7 +5,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Open the live Web demo</strong></a>
     ·
-    <a href="#stable-support-matrix">Support matrix</a>
+    <a href="#release-candidate-support-matrix">Support matrix</a>
     ·
     <a href="#why-it-can-follow-mermaid-releases">Upgrade model</a>
     ·
@@ -13,9 +13,12 @@
   </p>
 </div>
 
-> **Current baseline:** Mermaid `12.0.0` · **Stable renderers:** 8 ·
+> **Current baseline:** Mermaid `12.0.0` · **Release candidates:** 8 ·
 > **Built-in themes:** 11 · **Platforms:** Android, iOS, Desktop, Web ·
-> **Native/Official gallery cases:** 241 · **JVM tests:** 266
+> **Independent complex scenarios:** 42 · **JVM tests:** 267
+>
+> Evidence and current limitations:
+> **[Mermaid 12.0.0 Release Candidate test report](docs/stability-report.md)**
 
 CMP Mermaid is built for screens that may contain many diagrams. Production
 rendering does not create a WebView and does not execute Mermaid.js. Parsing,
@@ -25,19 +28,20 @@ by Compose Canvas.
 
 ## Native Vs Mermaid.js 12.0.0
 
-These images use the **same Mermaid source, theme, layout mode, and fixed
+These images come from the independent Release Candidate corpus, not the demo
+gallery. They use the **same Mermaid source, theme, layout mode, and fixed
 viewport**. The target is semantic and visual parity, not a pixel-for-pixel
 browser clone; small font-metric differences are expected across platforms.
 
-**Flowchart: dense fan-out/fan-in routing**
+**Flowchart: multi-region failover**
 
 | CMP Native - Compose Canvas | Official - Mermaid.js `12.0.0` |
 | :---: | :---: |
 | <img src="docs/assets/parity-flowchart-native.png" alt="CMP Native dense flowchart" width="700"> | <img src="docs/assets/parity-flowchart-official.png" alt="Official Mermaid.js dense flowchart" width="700"> |
 
-The Native renderer preserves hierarchy, edge routing, arrow markers,
-fan-out/fan-in structure, and crossing hops without embedding the official SVG
-renderer.
+The Native renderer preserves regional grouping, failover branches, data
+replication, edge routing, and terminal outcomes without embedding the
+official SVG renderer.
 
 <details>
 <summary><strong>More same-source parity examples</strong></summary>
@@ -60,7 +64,7 @@ renderer.
 
 Open <https://swithun-liu.github.io/cmp-mermaid/> to:
 
-- browse syntax and curated galleries for all eight stable diagram types;
+- browse syntax and curated galleries for all eight release-candidate diagram types;
 - switch between CMP Native and on-demand Mermaid.js `12.0.0` references;
 - edit Flowchart source in the Playground and compare ELK with Dagre;
 - switch all 11 Mermaid `12.0.0` themes from the palette menu.
@@ -73,21 +77,23 @@ The Web demo is the shared Compose Multiplatform UI running on Kotlin/Wasm.
 The first visit downloads and compiles the renderer; browser caching makes
 later visits faster.
 
-## Stable Support Matrix
+## Release Candidate Support Matrix
 
-| Diagram | Curated gallery pairs | Major translated coverage | Status |
-| --- | ---: | --- | :---: |
-| Flowchart | 62 | Jison/FlowDB, Dagre, ELK adapter, shapes, links, Markdown/HTML labels | Stable |
-| XY Chart | 32 | Jison/XY DB, D3 scales/ticks, chartBuilder, bar/line plots | Stable |
-| Sequence | 35 | Jison/Sequence DB, actors, 26 message forms, notes, control regions | Stable |
-| Class | 27 | Jison/Class DB, compartments, namespaces, relations, ELK/Dagre | Stable |
-| State | 25 | Jison/State DB, composites, concurrency, notes, ELK/Dagre | Stable |
-| Entity Relationship | 20 | Jison/ER DB, attributes, cardinalities, subgraphs, ELK/Dagre | Stable |
-| Gantt | 20 | Jison/Gantt DB, dates, dependencies, exclusions, milestones, ticks | Stable |
-| Pie | 20 | Langium grammar, Pie DB, D3 angles, donut, legends, palettes | Stable |
+| Diagram | Demo examples | Independent RC cases | Major translated coverage | Status |
+| --- | ---: | ---: | --- | :---: |
+| Flowchart | 62 | 6 | Jison/FlowDB, Dagre, ELK adapter, shapes, links, Markdown/HTML labels | Release candidate |
+| XY Chart | 32 | 5 | Jison/XY DB, D3 scales/ticks, chartBuilder, bar/line plots | Release candidate |
+| Sequence | 35 | 6 | Jison/Sequence DB, actors, 26 message forms, notes, control regions | Release candidate |
+| Class | 27 | 5 | Jison/Class DB, compartments, namespaces, relations, ELK/Dagre | Release candidate |
+| State | 25 | 5 | Jison/State DB, composites, concurrency, notes, ELK/Dagre | Release candidate |
+| Entity Relationship | 20 | 5 | Jison/ER DB, attributes, cardinalities, subgraphs, ELK/Dagre | Release candidate |
+| Gantt | 20 | 5 | Jison/Gantt DB, dates, dependencies, exclusions, milestones, ticks | Release candidate |
+| Pie | 20 | 5 | Langium grammar, Pie DB, D3 angles, donut, legends, palettes | Release candidate |
 
-Each stable renderer is gated by official documentation fixtures,
-deterministic stress tests, complex fixtures, and Native/Official screenshots.
+Demo examples are for feature discovery and are not counted as stability
+evidence. Each release candidate is separately covered by official
+documentation fixtures, deterministic stress tests, the independent complex
+corpus, and Native/Official screenshots.
 Unsupported legal Mermaid features return
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation.

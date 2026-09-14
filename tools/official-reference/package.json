@@ -12,6 +12,8 @@
     "generate:gantt-doc-fixtures": "node generate-gantt-doc-fixtures.mjs",
     "generate:pie-doc-fixtures": "node generate-pie-doc-fixtures.mjs",
     "generate:xychart-doc-fixtures": "node generate-xychart-doc-fixtures.mjs",
+    "generate:stability-corpus": "node generate-stability-corpus.mjs",
+    "generate:stability-contact-sheets": "node generate-stability-contact-sheets.mjs",
     "generate:flow-parser": "node generate-flow-parser.mjs",
     "generate:sequence-parser": "node generate-sequence-parser.mjs",
     "generate:class-parser": "node generate-class-parser.mjs",

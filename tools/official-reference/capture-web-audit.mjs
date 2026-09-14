@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import { cases as flowchartCases } from './cases.mjs';
+import { cases as stabilityCases } from './stability-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -12,6 +13,7 @@ const outputDirectory = resolve(
   process.env.OUTPUT_DIR ?? 'captures/local/web-audit/current',
 );
 const auditKind = process.env.AUDIT_KIND ?? 'all';
+const auditSource = process.env.AUDIT_SOURCE ?? 'gallery';
 const layout = process.env.CAPTURE_LAYOUT ?? 'elk';
 const selectedIds = new Set(
   (process.env.CAPTURE_CASE_IDS ?? '')
@@ -35,25 +37,34 @@ const kotlinGalleryFiles = {
   pie: ['PieDemos.kt', 'PieDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
+const supportedAuditSources = ['gallery', 'stability'];
 
 if (!supportedAuditKinds.includes(auditKind)) {
   throw new Error(`AUDIT_KIND must be one of: ${supportedAuditKinds.join(', ')}`);
+}
+if (!supportedAuditSources.includes(auditSource)) {
+  throw new Error(`AUDIT_SOURCE must be one of: ${supportedAuditSources.join(', ')}`);
 }
 if (!['dagre', 'elk'].includes(layout)) {
   throw new Error('CAPTURE_LAYOUT must be dagre or elk');
 }
 
-const availableCases = [
-  ...(auditKind === 'all' || auditKind === 'flowchart'
-    ? flowchartCases.map((entry) => ({ ...entry, kind: 'flowchart' }))
-    : []),
-  ...Object.entries(kotlinGalleryFiles).flatMap(
-    ([kind, [fileName, constructorName]]) =>
-      auditKind === 'all' || auditKind === kind
-        ? readKotlinCases(fileName, constructorName).map((entry) => ({ ...entry, kind }))
-        : [],
-  ),
-].filter(({ id }) => selectedIds.size === 0 || selectedIds.has(id));
+const sourceCases = auditSource === 'stability'
+  ? stabilityCases.filter(({ kind }) => auditKind === 'all' || auditKind === kind)
+  : [
+      ...(auditKind === 'all' || auditKind === 'flowchart'
+        ? flowchartCases.map((entry) => ({ ...entry, kind: 'flowchart' }))
+        : []),
+      ...Object.entries(kotlinGalleryFiles).flatMap(
+        ([kind, [fileName, constructorName]]) =>
+          auditKind === 'all' || auditKind === kind
+            ? readKotlinCases(fileName, constructorName).map((entry) => ({ ...entry, kind }))
+            : [],
+      ),
+    ];
+const availableCases = sourceCases.filter(
+  ({ id }) => selectedIds.size === 0 || selectedIds.has(id),
+);
 
 if (availableCases.length === 0) {
   throw new Error('No matching audit cases were found');

@@ -1,0 +1,76 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  multiplatform:
+    runs-on: macos-14
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Verify generated stability corpus
+        run: |
+          node tools/official-reference/generate-stability-corpus.mjs
+          git diff --exit-code -- \
+            mermaid-core/src/commonTest/kotlin/io/github/cmpmermaid/core/generated/StabilityCorpus.kt \
+            mermaid-debug-ui/src/commonMain/kotlin/io/github/cmpmermaid/debugui/generated/StabilityCorpus.kt
+
+      - name: Test and build all targets
+        run: |
+          ./gradlew \
+            :mermaid-core:jvmTest \
+            :mermaid-compose:jvmTest \
+            :sample:androidApp:assembleDebug \
+            :sample:webApp:wasmJsBrowserDistribution \
+            :sample:desktopApp:assemble \
+            :mermaid-core:compileKotlinIosArm64 \
+            :mermaid-core:compileKotlinIosSimulatorArm64 \
+            :mermaid-core:compileKotlinIosX64 \
+            :mermaid-compose:compileKotlinIosArm64 \
+            :mermaid-compose:compileKotlinIosSimulatorArm64 \
+            :mermaid-compose:compileKotlinIosX64 \
+            :mermaid-debug-ui:compileKotlinIosArm64 \
+            :mermaid-debug-ui:compileKotlinIosSimulatorArm64 \
+            :mermaid-debug-ui:compileKotlinIosX64
+
+      - name: Reject Internet permission in sample APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="sample/androidApp/build/outputs/apk/debug/androidApp-debug.apk"
+          aapt2=""
+          for candidate in "$ANDROID_HOME"/build-tools/*/aapt2; do
+            if [[ -x "$candidate" ]]; then
+              aapt2="$candidate"
+            fi
+          done
+          test -n "$aapt2"
+          permissions="$("$aapt2" dump permissions "$apk")"
+          printf '%s\n' "$permissions"
+          if grep -q 'android.permission.INTERNET' <<<"$permissions"; then
+            echo "Unexpected android.permission.INTERNET declaration" >&2
+            exit 1
+          fi
