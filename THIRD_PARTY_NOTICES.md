@@ -240,6 +240,26 @@ Bundled file SHA-256:
 
 `21b96a0377f067833a93af3082eb28d4ffab7a8cd46bfd513286f1d64b7b0949`
 
+## Droid Sans Mono
+
+The Compose adapter bundles Droid Sans Mono for deterministic HTML
+`code`/`kbd`/`samp`/`tt` label spans across platforms.
+
+Digitized data copyright Google Corporation (c) 2007
+
+Droid Sans Mono is distributed under the Apache License 2.0. The complete
+license text is included at:
+
+`third_party/licenses/DROID-SANS-FALLBACK-APACHE-2.0.txt`
+
+Upstream:
+
+https://android.googlesource.com/platform/frameworks/base/+/android-10.0.0_r1/data/fonts/
+
+Bundled file SHA-256:
+
+`0361584c155c1a80c0c259eb69cc42ffaed4ffbacdf2cc862fd77c1e20d8b33e`
+
 ## Noto Sans Symbols 2
 
 The Compose adapter bundles Noto Sans Symbols 2 for Dingbat glyphs that are

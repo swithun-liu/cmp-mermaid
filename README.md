@@ -15,7 +15,7 @@
 
 > **Current baseline:** Mermaid `12.0.0` · **Release candidates:** 8 ·
 > **Built-in themes:** 11 · **Platforms:** Android, iOS, Desktop, Web ·
-> **Independent complex scenarios:** 42 · **JVM tests:** 267
+> **Independent complex scenarios:** 42 · **JVM tests:** 270
 >
 > Evidence and current limitations:
 > **[Mermaid 12.0.0 Release Candidate test report](docs/stability-report.md)**

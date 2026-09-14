@@ -16,7 +16,7 @@ corpus that is not shown as a product demo.
 | Web Native/Official captures | 84 generated, 0 render errors |
 | Manual visual review | 37 acceptable, 5 Gantt cases blocked |
 | Deterministic generated stress inputs | 2,048 |
-| JVM tests | 267 passed, 0 failed |
+| JVM tests | 270 passed, 0 failed |
 | Platform build matrix | Android, Web, Desktop, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
 | Android Internet permission | Not declared |
 
@@ -55,7 +55,7 @@ the normal demo gallery.
 | --- | ---: | --- | --- |
 | Flowchart | 6 | checkout compensation, regional failover, release rollback, incident response | Acceptable |
 | XY Chart | 5 | latency percentiles, conversion, capacity, backlog, error budget | Acceptable |
-| Sequence | 6 | checkout saga, OAuth race, multipart upload, retry delivery, offline sync | Acceptable |
+| Sequence | 6 | checkout saga, OAuth race, multipart upload, retry delivery, offline sync | Acceptable; autonumber/activation layering rechecked |
 | Class | 5 | commerce, workflow engine, authorization, notifications, editor model | Acceptable |
 | State | 5 | fulfillment, payment, rollout, media processing, support lifecycle | Acceptable |
 | Entity Relationship | 5 | commerce, learning, messaging, billing, warehouse inventory | Acceptable |
@@ -96,6 +96,11 @@ The source IDs and scenario descriptions are printed above every pair.
 <summary><strong>Sequence: 6 complex scenarios</strong></summary>
 
 ![Sequence complex Native and Official corpus](assets/stability-report/sequence-complex-corpus.png)
+
+The checkout saga was re-audited at full capture resolution. Sequence numbers
+now use Mermaid `12.0.0` activation bounds, the official `6px` marker radius,
+message-line clearance, and the upstream draw order that keeps number markers
+above activation bars.
 
 </details>
 
@@ -172,11 +177,10 @@ JAVA_HOME=$(/usr/libexec/java_home -v 17) ./gradlew \
 Result:
 
 ```text
-BUILD SUCCESSFUL in 39s
-175 actionable tasks: 21 executed, 154 up-to-date
-mermaid-core: 251 tests
-mermaid-compose: 16 tests
-total: 267 tests
+BUILD SUCCESSFUL
+mermaid-core: 253 tests
+mermaid-compose: 17 tests
+total: 270 tests
 failures: 0
 errors: 0
 ```

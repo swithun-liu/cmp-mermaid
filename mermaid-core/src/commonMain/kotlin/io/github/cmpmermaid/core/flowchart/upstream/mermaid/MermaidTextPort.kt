@@ -20,6 +20,9 @@ import io.github.cmpmermaid.core.flowchart.upstream.marked.MarkedTokenType
  * translated Marked 16.4.2 lexer, matching Mermaid's resolved dependency.
  */
 internal object MermaidTextPort {
+    // Browser HTML labels compute the user-agent sub/sup "smaller" size as 5/6.
+    private const val HTML_SCRIPT_FONT_SIZE_SCALE = 5f / 6f
+
     fun render(
         source: String,
         labelType: FlowLabelType,
@@ -503,11 +506,11 @@ internal object MermaidTextPort {
                     TextStyle(fontFamily = SceneTextFontFamily.Monospace)
                 "sub" -> TextStyle(
                     baselineShift = SceneTextBaselineShift.Subscript,
-                    fontSizeScale = 0.75f,
+                    fontSizeScale = HTML_SCRIPT_FONT_SIZE_SCALE,
                 )
                 "sup" -> TextStyle(
                     baselineShift = SceneTextBaselineShift.Superscript,
-                    fontSizeScale = 0.75f,
+                    fontSizeScale = HTML_SCRIPT_FONT_SIZE_SCALE,
                 )
                 "small" -> TextStyle(fontSizeScale = 0.8f)
                 "mark" -> TextStyle(background = SceneColor(0xFFFFFF00))

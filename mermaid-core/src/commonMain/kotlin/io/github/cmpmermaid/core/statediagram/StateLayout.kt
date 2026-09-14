@@ -195,6 +195,7 @@ internal class StateLayout {
                         node = flowNode(node, shape, context, style),
                         measuredLabel = SceneSize(0f, 0f),
                         direction = direction,
+                        defaultNodeStroke = context.theme.nodeStroke,
                     )
                 ) {
                     is GMResult.Ok -> measured.value
@@ -244,6 +245,7 @@ internal class StateLayout {
                 node = flowNode(node, SceneShapeKind.RoundedRectangle, context, style),
                 measuredLabel = measuredLabel,
                 direction = direction,
+                defaultNodeStroke = context.theme.nodeStroke,
             )
         ) {
             is GMResult.Ok -> measured.value

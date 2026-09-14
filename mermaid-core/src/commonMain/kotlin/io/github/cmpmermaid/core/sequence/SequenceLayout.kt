@@ -306,6 +306,17 @@ internal class SequenceLayout {
                     if (destroyedTo) {
                         actorEnd[to.source.id] = lineY - actorRowHeight / 2f
                     }
+                    val sequenceNumberX = if (sequenceVisible) {
+                        sequenceNumberX(
+                            message = message,
+                            from = from,
+                            to = to,
+                            fromActivationDepth = activeFrom,
+                            toActivationDepth = activeTo,
+                        )
+                    } else {
+                        null
+                    }
                     val path = messagePath(
                         message = message,
                         from = from,
@@ -316,6 +327,7 @@ internal class SequenceLayout {
                         created = created,
                         destroyedFrom = destroyedFrom,
                         destroyedTo = destroyedTo,
+                        sequenceNumberVisible = sequenceVisible,
                         context = context,
                     )
                     pathElements += path
@@ -337,7 +349,7 @@ internal class SequenceLayout {
                     if (sequenceVisible) {
                         foregroundElements += sequenceNumber(
                             value = formatSequenceNumber(sequenceIndex),
-                            x = path.points.first().x,
+                            x = sequenceNumberX ?: path.points.first().x,
                             y = lineY,
                             context = context,
                         )
@@ -475,7 +487,8 @@ internal class SequenceLayout {
             width = contentRight + DIAGRAM_MARGIN_X,
             height = sceneHeight,
             background = context.theme.background,
-            elements = backgroundElements + pathElements + foregroundElements,
+            elements = (backgroundElements + pathElements + foregroundElements)
+                .sortedBy(SceneElement::zIndex),
             title = db.diagramTitle,
             accessibilityTitle = db.accessibilityTitle,
             accessibilityDescription = db.accessibilityDescription,
@@ -650,6 +663,7 @@ internal class SequenceLayout {
         created: Boolean,
         destroyedFrom: Boolean,
         destroyedTo: Boolean,
+        sequenceNumberVisible: Boolean,
         context: MermaidRenderContext,
     ): ScenePath {
         val toRight = from.centerX <= to.centerX
@@ -696,6 +710,38 @@ internal class SequenceLayout {
         }
         if (destroyedTo) {
             endX += towardSource(lifecycleActorHalfWidth(to) + MESSAGE_ENDPOINT_OFFSET)
+        }
+        if (sequenceNumberVisible) {
+            val hasCentralConnection = message.hasCentralConnection()
+            when {
+                message.type in BIDIRECTIONAL_MESSAGE_TYPES -> {
+                    if (startX < endX) {
+                        startX += SEQUENCE_NUMBER_RADIUS * 2f
+                    } else {
+                        startX -= SEQUENCE_NUMBER_RADIUS
+                        if (hasCentralConnection) {
+                            startX -= SEQUENCE_NUMBER_CENTRAL_START_OFFSET
+                        }
+                        if (message.hasReverseCentralConnection()) {
+                            startX -= SEQUENCE_NUMBER_REVERSE_CENTRAL_START_OFFSET
+                        }
+                    }
+                }
+                message.type in REVERSE_ARROW_MESSAGE_TYPES -> {
+                    if (endX > startX) {
+                        endX -= SEQUENCE_NUMBER_RADIUS * 2f
+                    } else {
+                        endX -= SEQUENCE_NUMBER_RADIUS
+                        if (message.hasReverseCentralConnection()) {
+                            startX -= SEQUENCE_NUMBER_REVERSE_CENTRAL_START_OFFSET
+                        }
+                    }
+                    if (hasCentralConnection) {
+                        endX += SEQUENCE_NUMBER_CENTRAL_END_OFFSET
+                    }
+                }
+                else -> startX += SEQUENCE_NUMBER_RADIUS
+            }
         }
         val marker = markers(message.type)
         val commands: List<ScenePathCommand>
@@ -750,7 +796,7 @@ internal class SequenceLayout {
         depth: Int,
     ): Pair<Float, Float> {
         if (depth <= 0) {
-            return actor.centerX to actor.centerX
+            return actor.centerX - 1f to actor.centerX + 1f
         }
         val center = actor.centerX + activationOffset(depth)
         return center - ACTIVATION_WIDTH / 2f to center + ACTIVATION_WIDTH / 2f
@@ -762,6 +808,35 @@ internal class SequenceLayout {
         } else {
             actor.width / 2f
         }
+
+    private fun sequenceNumberX(
+        message: SequenceMessage,
+        from: LayoutActor,
+        to: LayoutActor,
+        fromActivationDepth: Int,
+        toActivationDepth: Int,
+    ): Float {
+        val fromBounds = activationBounds(from, fromActivationDepth)
+        val toBounds = activationBounds(to, toActivationDepth)
+        val left = min(fromBounds.first, toBounds.first)
+        val right = max(fromBounds.second, toBounds.second)
+        val isLeftToRight = from.centerX <= to.centerX
+        return when {
+            from.source.id == to.source.id -> left + 1f
+            message.type in REVERSE_ARROW_MESSAGE_TYPES ->
+                if (isLeftToRight) right - 1f else left + 1f
+            isLeftToRight -> left + 1f
+            else -> right - 1f
+        }
+    }
+
+    private fun SequenceMessage.hasCentralConnection(): Boolean =
+        centralConnection == SequenceLineType.CENTRAL_CONNECTION ||
+            hasReverseCentralConnection()
+
+    private fun SequenceMessage.hasReverseCentralConnection(): Boolean =
+        centralConnection == SequenceLineType.CENTRAL_CONNECTION_REVERSE ||
+            centralConnection == SequenceLineType.CENTRAL_CONNECTION_DUAL
 
     private fun messageTextBounds(
         from: LayoutActor,
@@ -1748,10 +1823,11 @@ internal class SequenceLayout {
         const val CONTROL_MARKER_ANGLE_DEGREES = 172.5
         const val COLLECTION_OFFSET = 6f
         const val MESSAGE_STROKE_WIDTH = 1.5f
-        const val SEQUENCE_NUMBER_BASE_RADIUS = 6f
-        const val SEQUENCE_NUMBER_RADIUS =
-            SEQUENCE_NUMBER_BASE_RADIUS * MESSAGE_STROKE_WIDTH
+        const val SEQUENCE_NUMBER_RADIUS = 6f
         const val SEQUENCE_NUMBER_TEXT_HALF_WIDTH = 18f
+        const val SEQUENCE_NUMBER_CENTRAL_START_OFFSET = 5f
+        const val SEQUENCE_NUMBER_REVERSE_CENTRAL_START_OFFSET = 7.5f
+        const val SEQUENCE_NUMBER_CENTRAL_END_OFFSET = 15f
         const val MESSAGE_ENDPOINT_OFFSET = 3f
         const val CENTRAL_CONNECTION_BASE_OFFSET = 4f
         const val CENTRAL_CONNECTION_BIDIRECTIONAL_OFFSET = 6f
@@ -1779,6 +1855,16 @@ internal class SequenceLayout {
         val BIDIRECTIONAL_MESSAGE_TYPES = setOf(
             SequenceLineType.BIDIRECTIONAL_SOLID,
             SequenceLineType.BIDIRECTIONAL_DOTTED,
+        )
+        val REVERSE_ARROW_MESSAGE_TYPES = setOf(
+            SequenceLineType.SOLID_ARROW_TOP_REVERSE,
+            SequenceLineType.SOLID_ARROW_BOTTOM_REVERSE,
+            SequenceLineType.STICK_ARROW_TOP_REVERSE,
+            SequenceLineType.STICK_ARROW_BOTTOM_REVERSE,
+            SequenceLineType.SOLID_ARROW_TOP_REVERSE_DOTTED,
+            SequenceLineType.SOLID_ARROW_BOTTOM_REVERSE_DOTTED,
+            SequenceLineType.STICK_ARROW_TOP_REVERSE_DOTTED,
+            SequenceLineType.STICK_ARROW_BOTTOM_REVERSE_DOTTED,
         )
         val MESSAGE_END_OFFSET_EXCLUDED_TYPES = setOf(
             SequenceLineType.SOLID_OPEN,

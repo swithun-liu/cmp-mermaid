@@ -151,6 +151,7 @@ data class SceneShapePath(
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val dashIntervals: List<Float> = emptyList(),
     val opacity: Float = 1f,
+    val strokeColor: SceneColor? = null,
 )
 
 /**

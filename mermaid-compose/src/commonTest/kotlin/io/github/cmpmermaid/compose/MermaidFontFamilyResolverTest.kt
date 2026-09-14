@@ -43,4 +43,12 @@ class MermaidFontFamilyResolverTest {
             "A✓✗→B".bundledSymbolFontRanges(),
         )
     }
+
+    @Test
+    fun usesBundledSymbolFontForHeavyBlackHeart() {
+        assertEquals(
+            listOf(1..1),
+            "A❤B".bundledSymbolFontRanges(),
+        )
+    }
 }

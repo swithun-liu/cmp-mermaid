@@ -54,6 +54,25 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun matchesMermaidSvgEdgeLabelBackgroundGeometry() {
+        val result = engine.render(
+            "flowchart LR\n A -- label --> B",
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val background = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "L_A_B_0_label_background" }
+
+        assertEquals(SceneShapeKind.Rectangle, background.kind)
+        assertEquals(44f, background.bounds.width)
+        assertEquals(22f, background.bounds.height)
+        assertEquals(SceneColor(0x00000000), background.stroke)
+        assertEquals(0f, background.strokeWidth)
+        assertEquals(0f, background.cornerRadius)
+    }
+
+    @Test
     fun laysOutLeftToRightWithoutNodeOverlap() {
         val result = engine.render(
             """
@@ -959,7 +978,20 @@ class MermaidEngineTest {
 
         val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
         val shapes = scene.elements.filterIsInstance<SceneShape>()
-        assertTrue(shapes.any { it.id == "group" && it.kind == SceneShapeKind.CollapsedGroup })
+        val collapsed = shapes.single {
+            it.id == "group" && it.kind == SceneShapeKind.CollapsedGroup
+        }
+        val collapsedPaths = collapsed.geometry?.paths.orEmpty()
+        val separator = collapsedPaths[1]
+        val indicators = collapsedPaths.drop(2)
+        assertEquals(0.75f, separator.strokeWidth)
+        assertEquals(listOf(3f, 3f), separator.dashIntervals)
+        assertEquals(3, indicators.size)
+        assertTrue(indicators.all { it.fill == SceneShapePaint.Stroke })
+        assertTrue(indicators.all { it.stroke == SceneShapePaint.Stroke })
+        assertTrue(indicators.all { it.strokeWidth == 2f })
+        assertTrue(indicators.all { it.strokeColor == context.theme.nodeStroke })
+        assertTrue(indicators.all { it.opacity == 0.6f })
         assertTrue(shapes.none { it.id in setOf("A", "B", "C", "subgraph_group") })
         assertEquals(2, scene.elements.filterIsInstance<ScenePath>().size)
     }

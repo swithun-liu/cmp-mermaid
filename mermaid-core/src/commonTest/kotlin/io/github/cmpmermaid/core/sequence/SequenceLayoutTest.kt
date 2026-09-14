@@ -278,8 +278,32 @@ class SequenceLayoutTest {
 
         assertEquals(setOf("3", "3.5"), shapes.keys)
         assertEquals(setOf("3", "3.5"), labels.keys)
+        assertTrue(shapes.values.all { it.bounds.width == 12f })
+        assertTrue(shapes.values.all { it.bounds.height == 12f })
         assertTrue(labels.getValue("3.5").bounds.width > shapes.getValue("3.5").bounds.width)
         assertEquals(12f, labels.getValue("3.5").fontSize)
+    }
+
+    @Test
+    fun placesSequenceNumberOutsideActiveSourceAndShortensMessageLine() {
+        val scene = render(
+            """
+            sequenceDiagram
+                autonumber
+                A->>+B:Activate
+                B->>C:Forward
+            """.trimIndent(),
+        )
+        val number = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id.startsWith("sequence-number-circle-2-") }
+        val activation = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "activation-open-B-0" }
+        val message = scene.elements.filterIsInstance<ScenePath>()
+            .filter { it.id.startsWith("message-") }
+            .single { path -> abs(path.points.first().y - number.bounds.center.y) < 0.001f }
+
+        assertTrue(number.bounds.right < message.points.first().x)
+        assertTrue(scene.elements.indexOf(activation) < scene.elements.indexOf(number))
     }
 
     @Test
@@ -328,14 +352,14 @@ class SequenceLayoutTest {
         val centerB = shapes.getValue("actor-B-top").bounds.center.x
 
         assertEquals(7, messages.size)
-        assertClose(centerB - 6f, messages[0].points.last().x)
-        assertClose(centerA + 6f, messages[1].points.last().x)
-        assertClose(centerB, messages[2].points.last().x)
-        assertClose(centerA + 3f, messages[3].points.last().x)
-        assertClose(centerA + 6f, messages[4].points.first().x)
-        assertClose(centerB - 6f, messages[4].points.last().x)
-        assertClose(centerA + 4f, messages[5].points.first().x)
-        assertClose(centerB - 10f, messages[6].points.last().x)
+        assertClose(centerB - 7f, messages[0].points.last().x)
+        assertClose(centerA + 7f, messages[1].points.last().x)
+        assertClose(centerB - 1f, messages[2].points.last().x)
+        assertClose(centerA + 4f, messages[3].points.last().x)
+        assertClose(centerA + 7f, messages[4].points.first().x)
+        assertClose(centerB - 7f, messages[4].points.last().x)
+        assertClose(centerA + 5f, messages[5].points.first().x)
+        assertClose(centerB - 11f, messages[6].points.last().x)
     }
 
     @Test
@@ -357,8 +381,8 @@ class SequenceLayoutTest {
         val workerCenter = shapes.getValue("actor-Worker-destroyed").bounds.center.x
 
         assertEquals(2, messages.size)
-        assertClose(workerCenter - 27f, messages[0].points.last().x)
-        assertClose(workerCenter - 27f, messages[1].points.last().x)
+        assertClose(workerCenter - 28f, messages[0].points.last().x)
+        assertClose(workerCenter - 28f, messages[1].points.last().x)
     }
 
     @Test

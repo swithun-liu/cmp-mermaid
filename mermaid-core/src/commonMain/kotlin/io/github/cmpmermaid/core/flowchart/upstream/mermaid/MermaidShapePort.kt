@@ -2,6 +2,7 @@ package io.github.cmpmermaid.core.flowchart.upstream.mermaid
 
 import io.github.cmpmermaid.core.GMResult
 import io.github.cmpmermaid.core.MermaidError
+import io.github.cmpmermaid.core.SceneColor
 import io.github.cmpmermaid.core.ScenePoint
 import io.github.cmpmermaid.core.SceneShapeGeometry
 import io.github.cmpmermaid.core.SceneShapeKind
@@ -34,6 +35,7 @@ internal object MermaidShapePort {
         node: FlowNode,
         measuredLabel: SceneSize,
         direction: FlowDirection,
+        defaultNodeStroke: SceneColor,
     ): GMResult<MermaidShapeLayout, MermaidError> {
         val label = measuredLabel.copy(
             width = if (node.label.isNotEmpty()) {
@@ -46,7 +48,8 @@ internal object MermaidShapePort {
             when (node.shape) {
                 SceneShapeKind.Rectangle -> rectangle(label, node.padding, node.look)
                 SceneShapeKind.RoundedRectangle -> roundedRectangle(label, node.padding)
-                SceneShapeKind.CollapsedGroup -> collapsedGroup(label, node.padding)
+                SceneShapeKind.CollapsedGroup ->
+                    collapsedGroup(label, node.padding, defaultNodeStroke)
                 SceneShapeKind.Stadium -> stadium(label, node.padding, node.look)
                 SceneShapeKind.Subroutine -> subroutine(label, node.padding, node.look)
                 SceneShapeKind.Cylinder -> cylinder(label, node.padding, node.look, lined = false)
@@ -135,15 +138,25 @@ internal object MermaidShapePort {
         return centeredShape(listOf(closedPath(outline)), rectanglePoints(width, height))
     }
 
-    private fun collapsedGroup(label: SceneSize, padding: Float): MermaidShapeLayout {
+    private fun collapsedGroup(
+        label: SceneSize,
+        padding: Float,
+        defaultNodeStroke: SceneColor,
+    ): MermaidShapeLayout {
         val width = max(label.width + padding * 2f, 80f)
         val height = label.height + 8f + 20f + padding * 2f
         val outline = roundedRectanglePoints(width, height, radius = 8f)
         val separatorY = -height / 2f + padding + label.height + 8f
         val paths = buildList {
             add(closedPath(outline))
-            add(openStroke(-width / 2f + 8f to separatorY, width / 2f - 8f to separatorY,
-                pattern = SceneStrokePattern.Dashed))
+            add(
+                openStroke(
+                    -width / 2f + 8f to separatorY,
+                    width / 2f - 8f to separatorY,
+                    strokeWidth = 0.75f,
+                    dashIntervals = listOf(3f, 3f),
+                ),
+            )
             for (index in -1..1) {
                 add(
                     closedPath(
@@ -154,7 +167,10 @@ internal object MermaidShapePort {
                             radiusY = 2.5f,
                         ),
                         fill = SceneShapePaint.Stroke,
-                        stroke = SceneShapePaint.None,
+                        stroke = SceneShapePaint.Stroke,
+                        strokeWidth = 2f,
+                        opacity = 0.6f,
+                        strokeColor = defaultNodeStroke,
                     ),
                 )
             }
@@ -1427,15 +1443,19 @@ internal object MermaidShapePort {
         points: List<ScenePoint>,
         fill: SceneShapePaint = SceneShapePaint.Fill,
         stroke: SceneShapePaint = SceneShapePaint.Stroke,
+        strokeWidth: Float? = null,
         dashIntervals: List<Float> = emptyList(),
         opacity: Float = 1f,
+        strokeColor: SceneColor? = null,
     ) = SceneShapePath(
         points = points,
         closed = true,
         fill = fill,
         stroke = stroke,
+        strokeWidth = strokeWidth,
         dashIntervals = dashIntervals,
         opacity = opacity,
+        strokeColor = strokeColor,
     )
 
     private fun openPath(
@@ -1451,12 +1471,16 @@ internal object MermaidShapePort {
     private fun openStroke(
         vararg values: Pair<Float, Float>,
         pattern: SceneStrokePattern = SceneStrokePattern.Solid,
+        strokeWidth: Float? = null,
+        dashIntervals: List<Float> = emptyList(),
     ) = SceneShapePath(
         points = points(*values),
         closed = false,
         fill = SceneShapePaint.None,
         stroke = SceneShapePaint.Stroke,
+        strokeWidth = strokeWidth,
         strokePattern = pattern,
+        dashIntervals = dashIntervals,
     )
 
     private fun invisiblePath(points: List<ScenePoint>) = SceneShapePath(

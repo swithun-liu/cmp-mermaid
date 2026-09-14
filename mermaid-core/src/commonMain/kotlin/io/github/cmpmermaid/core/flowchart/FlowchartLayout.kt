@@ -67,6 +67,7 @@ internal class FlowchartLayout {
                     node = node,
                     measuredLabel = textSize,
                     direction = resolvedDocument.direction,
+                    defaultNodeStroke = context.theme.nodeStroke,
                 )
             ) {
                 is GMResult.Ok -> shapeResult.value
@@ -370,19 +371,21 @@ internal class FlowchartLayout {
                 dx = 0f,
                 dy = context.options.subGraphTitleTotalMargin / 2f,
             )
+            val backgroundPadding = 2f
             val labelBounds = SceneRect(
-                left = center.x - labelSize.width / 2f - 6f,
-                top = center.y - labelSize.height / 2f - 3f,
-                right = center.x + labelSize.width / 2f + 6f,
-                bottom = center.y + labelSize.height / 2f + 3f,
+                left = center.x - labelSize.width / 2f - backgroundPadding,
+                top = center.y - labelSize.height / 2f - backgroundPadding,
+                right = center.x + labelSize.width / 2f + backgroundPadding,
+                bottom = center.y + labelSize.height / 2f + backgroundPadding,
             )
             labels += SceneShape(
                 id = "${edge.id}_label_background",
                 bounds = labelBounds,
-                kind = SceneShapeKind.RoundedRectangle,
+                kind = SceneShapeKind.Rectangle,
                 fill = edgeStyle.labelBackground ?: context.theme.edgeLabelFill,
-                stroke = edgeStyle.labelBackground ?: context.theme.edgeLabelFill,
-                cornerRadius = 4f,
+                stroke = SceneColor(0x00000000),
+                strokeWidth = 0f,
+                cornerRadius = 0f,
                 zIndex = 6,
             )
             labels += SceneText(

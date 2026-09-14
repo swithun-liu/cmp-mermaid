@@ -1,6 +1,6 @@
 {
   "mermaidVersion": "12.0.0",
-  "generatedAt": "2026-09-14T01:54:43.548Z",
+  "generatedAt": "2026-09-14T05:36:49.759Z",
   "caseCount": 42,
   "cases": [
     {
@@ -13,10 +13,10 @@
       "source": "\nflowchart LR\n  Customer([Customer]) --> Cart[Review cart]\n  Cart --> Validate{Cart valid?}\n  Validate -- No --> Repair[Repair quantities] --> Cart\n  Validate -- Yes --> Quote[Price and tax quote]\n  subgraph Orchestration[Checkout orchestration]\n    direction TB\n    Quote --> Reserve[Reserve inventory]\n    Reserve --> Inventory{Reserved?}\n    Inventory -- No --> Release[Release reservations]\n    Inventory -- Yes --> Authorize[Authorize payment]\n    Authorize --> Payment{Authorized?}\n    Payment -- No --> Release\n    Payment -- Yes --> CreateOrder[Create order]\n    CreateOrder --> Arrange[Arrange shipment]\n    Arrange --> Shipment{Carrier accepted?}\n    Shipment -- No --> Refund[Void payment]\n    Refund --> Release\n  end\n  Shipment -- Yes --> Confirm[Send confirmation]\n  Confirm --> Complete([Order accepted])\n  Release --> Failed([Checkout failed])\n",
       "nativeFile": "rc_flow_checkout_saga_native.png",
       "officialFile": "rc_flow_checkout_saga_official.png",
-      "nativeBytes": 24908,
-      "officialBytes": 24933,
-      "nativeSha256": "836ed5aeaa4caf56240533f60c79d33c26f842b253bef70b705397fdf326f5b8",
-      "officialSha256": "7de1b418429f6fb2f3baa28a768d12f24f7ce8798bf954e50c0ae49b3c474fee"
+      "nativeBytes": 24355,
+      "officialBytes": 24798,
+      "nativeSha256": "a55c12b7939d6c38ea4707b0e1efebf0fa38990f77254fba7f1acd5d9861f6e7",
+      "officialSha256": "05d39295bddbe6f7be9ee41bbc8ca07fb8fa754f259147adb37fb00beedefb70"
     },
     {
       "id": "rc_flow_multi_region_failover",
@@ -28,10 +28,10 @@
       "source": "\nflowchart TB\n  User([Client request]) --> DNS[Global traffic manager]\n  DNS --> Health{Primary healthy?}\n  subgraph Primary[Primary region]\n    direction LR\n    EdgeA[Edge gateway] --> ApiA[API pool]\n    ApiA --> CacheA[(Regional cache)]\n    ApiA --> DbA[(Primary database)]\n    DbA --> Stream[Replication stream]\n  end\n  subgraph Secondary[Secondary region]\n    direction LR\n    EdgeB[Standby gateway] --> ApiB[Warm API pool]\n    ApiB --> CacheB[(Regional cache)]\n    ApiB --> DbB[(Replica database)]\n  end\n  Health -- Yes --> EdgeA\n  Health -- No --> Promote{Replica caught up?}\n  Stream --> DbB\n  Promote -- Yes --> Switch[Promote replica and shift DNS] --> EdgeB\n  Promote -- No --> Degraded[Serve read-only mode] --> EdgeB\n  EdgeA --> Response([Response])\n  EdgeB --> Response\n  Metrics[Health probes] --> Health\n  Response --> Metrics\n",
       "nativeFile": "rc_flow_multi_region_failover_native.png",
       "officialFile": "rc_flow_multi_region_failover_official.png",
-      "nativeBytes": 37928,
-      "officialBytes": 40297,
-      "nativeSha256": "cf36e3eea8cc09fefc5cdbed90fed3c408ae6cfd0e1b443787e142c6a8b91899",
-      "officialSha256": "fbebe9f6175d1db6fe562778314de8c5e551ecbe6f149ebbd40a5ba6611fd531"
+      "nativeBytes": 37545,
+      "officialBytes": 40239,
+      "nativeSha256": "22e236c2b6836ea563e09341543e65dc1d1dd8c21329e24ad11d208a7094b35a",
+      "officialSha256": "630f33b44d4e53d75f15f785918adf406f3a3a826e65d5601aa7ff20aa277a94"
     },
     {
       "id": "rc_flow_release_train",
@@ -43,10 +43,10 @@
       "source": "\nflowchart LR\n  Commit([Merge to main]) --> Build[Reproducible build]\n  Build --> Unit{Unit tests pass?}\n  Unit -- No --> Fix[Return to owner] --> Commit\n  Unit -- Yes --> Parallel{Start validation}\n  Parallel --> Android[Android device matrix]\n  Parallel --> IOS[iOS device matrix]\n  Parallel --> Web[Web browser matrix]\n  Android --> Gate{All platforms green?}\n  IOS --> Gate\n  Web --> Gate\n  Gate -- No --> Fix\n  Gate -- Yes --> Sign[Sign release artifacts]\n  Sign --> Canary[Deploy 5 percent canary]\n  Canary --> Observe{SLOs healthy?}\n  Observe -- No --> Rollback[Rollback and freeze]\n  Rollback --> Incident[Open incident review]\n  Observe -- Yes --> Half[Deploy 50 percent]\n  Half --> ObserveHalf{Error budget healthy?}\n  ObserveHalf -- No --> Rollback\n  ObserveHalf -- Yes --> Global[Global rollout]\n  Global --> Done([Release complete])\n",
       "nativeFile": "rc_flow_release_train_native.png",
       "officialFile": "rc_flow_release_train_official.png",
-      "nativeBytes": 32326,
-      "officialBytes": 30992,
-      "nativeSha256": "15043fec34f6c7138ca356419d7a332365374514af2918315b6115a707d95288",
-      "officialSha256": "b6daf7c8c8c8cfb3152cbdaa8cceff0be0d4c88eada4633bc13c05d667b8bbea"
+      "nativeBytes": 31961,
+      "officialBytes": 31013,
+      "nativeSha256": "cb2a37feba81272b766c0518579238ef44294c2e0f86fdf75354744f15d5bd5c",
+      "officialSha256": "985797ccbac55636edc19d9de279998e50fe1b26760e3a7c0b729e27ba3288a4"
     },
     {
       "id": "rc_flow_incident_response",
@@ -58,10 +58,10 @@
       "source": "\nflowchart TB\n  Alert([Alert or customer report]) --> Confirm[Confirm impact]\n  Confirm --> Severity{Severity}\n  Severity -- SEV-1 --> Page[Page incident commander]\n  Severity -- SEV-2 --> Assign[Assign service owner]\n  Severity -- SEV-3 --> Ticket[Create backlog ticket]\n  Page --> WarRoom[Open response channel]\n  Assign --> WarRoom\n  WarRoom --> Parallel{Parallel response}\n  Parallel --> Diagnose[Inspect metrics, logs, and traces]\n  Parallel --> Communicate[Publish status update]\n  Parallel --> Preserve[Preserve evidence]\n  Diagnose --> Mitigation{Safe mitigation known?}\n  Mitigation -- Yes --> Apply[Apply rollback or traffic shift]\n  Mitigation -- No --> Contain[Disable affected feature]\n  Apply --> Verify{SLO recovered?}\n  Contain --> Verify\n  Verify -- No --> Diagnose\n  Verify -- Yes --> Resolve[Resolve incident]\n  Communicate --> Resolve\n  Preserve --> Resolve\n  Resolve --> Review[Blameless review]\n  Review --> Actions[Owners and due dates]\n  Ticket --> Actions\n  Actions --> Closed([Closed])\n",
       "nativeFile": "rc_flow_incident_response_native.png",
       "officialFile": "rc_flow_incident_response_official.png",
-      "nativeBytes": 35999,
-      "officialBytes": 35409,
-      "nativeSha256": "cadf517d3dc9875651bd3b4fc81669445298b64a21d3d5e0505a3f7b699ee91f",
-      "officialSha256": "0a505ea82d073a35a91e7cc7958be8511e41ca53a1a8ead631bac45d5812a237"
+      "nativeBytes": 35440,
+      "officialBytes": 35427,
+      "nativeSha256": "386d0bb5537e957f8867e2b66eab159ad2d719216c94d1e6c0b43eb0981ce536",
+      "officialSha256": "98744662609fef8b92b4adc8826770372c0e502534562777ddf110813395d6d0"
     },
     {
       "id": "rc_flow_event_ingestion",
@@ -73,9 +73,9 @@
       "source": "\nflowchart LR\n  SDK[Mobile and Web SDKs] --> Gateway[Ingestion gateway]\n  Partner[Partner batch files] --> Gateway\n  Gateway --> Auth{Credential valid?}\n  Auth -- No --> Reject[Reject with audit record]\n  Auth -- Yes --> Schema{Schema valid?}\n  Schema -- No --> Quarantine[(Quarantine topic)]\n  Schema -- Yes --> Dedupe[Deduplicate by event id]\n  Dedupe --> Duplicate{Seen before?}\n  Duplicate -- Yes --> Metrics[Increment duplicate metric]\n  Duplicate -- No --> Enrich[Add tenant and geo context]\n  Enrich --> Privacy{Consent permits use?}\n  Privacy -- No --> Redact[Redact restricted fields]\n  Privacy -- Yes --> Route[Route by event family]\n  Redact --> Route\n  Route --> Realtime[(Realtime topic)]\n  Route --> Warehouse[(Warehouse stream)]\n  Route --> Archive[(Immutable archive)]\n  Quarantine --> Review[Operator review]\n  Review --> Fixed{Repairable?}\n  Fixed -- Yes --> Replay[Replay corrected event] --> Schema\n  Fixed -- No --> Reject\n",
       "nativeFile": "rc_flow_event_ingestion_native.png",
       "officialFile": "rc_flow_event_ingestion_official.png",
-      "nativeBytes": 43682,
+      "nativeBytes": 42987,
       "officialBytes": 41640,
-      "nativeSha256": "a042e6b1f3482d8572ca1eb23613310ff1a7c1761ab017426bc4ba54fb83f4f2",
+      "nativeSha256": "9053e2441b311ac7e65e5af419749b2107a0a0d6b3abff2a806e548e509f751d",
       "officialSha256": "931f252386e653e593c91a530257f8b60a74ab984b8c30aeaccbcca9dc829c59"
     },
     {
@@ -88,10 +88,10 @@
       "source": "\nflowchart TB\n  Request([Access request]) --> Identity[Resolve employee and device]\n  Identity --> Risk{Risk signals acceptable?}\n  Risk -- No --> Deny[Reject and notify]\n  Risk -- Yes --> Policy[Evaluate resource policy]\n  Policy --> Auto{Eligible for auto approval?}\n  Auto -- Yes --> Grant[Issue time-bound grant]\n  Auto -- No --> Manager[Manager review]\n  Manager --> ManagerDecision{Approved?}\n  ManagerDecision -- No --> Deny\n  ManagerDecision -- Yes --> Security{Security review required?}\n  Security -- Yes --> SecurityReview[Security owner review]\n  Security -- No --> Grant\n  SecurityReview --> SecurityDecision{Approved?}\n  SecurityDecision -- No --> Deny\n  SecurityDecision -- Yes --> Grant\n  Grant --> Provision[Provision least privilege]\n  Provision --> Audit[(Append audit event)]\n  Audit --> Monitor[Monitor privileged activity]\n  Monitor --> Expired{Expired or revoked?}\n  Expired -- No --> Monitor\n  Expired -- Yes --> Remove[Remove grant]\n  Remove --> Complete([Access closed])\n",
       "nativeFile": "rc_flow_access_governance_native.png",
       "officialFile": "rc_flow_access_governance_official.png",
-      "nativeBytes": 29031,
-      "officialBytes": 28155,
-      "nativeSha256": "d884f092700cd3bfa021219c23d9f81b8582124f858e2aec557d4d4060f4e5ed",
-      "officialSha256": "df56285533d645ff8bb6631d195d39cc8edcbf0d9884e8f474d2f5ac8d3134d9"
+      "nativeBytes": 28396,
+      "officialBytes": 28176,
+      "nativeSha256": "5f4b9f0a5b7c238ea017ca4b3243020b2fa6090fdcf8b3563f5bc05a4f627b0a",
+      "officialSha256": "eddcd21971a30cefa9e1a9c31d6f85d7af510a24bccfc11ee7e4ed71a86f7b43"
     },
     {
       "id": "rc_xy_service_latency",
@@ -178,9 +178,9 @@
       "source": "\nsequenceDiagram\n  autonumber\n  actor Customer\n  participant App\n  participant Gateway\n  participant Inventory\n  participant Payment\n  participant Orders\n  participant Shipping\n  Customer->>App: Confirm checkout\n  App->>+Gateway: POST /checkout\n  Gateway->>+Inventory: Reserve items\n  alt Inventory available\n    Inventory-->>-Gateway: Reservation token\n    Gateway->>+Payment: Authorize total\n    alt Payment authorized\n      Payment-->>-Gateway: Authorization id\n      Gateway->>+Orders: Create order\n      Orders-->>-Gateway: Order id\n      Gateway->>Shipping: Request shipment\n      Shipping-->>Gateway: Shipment accepted\n      Gateway-->>App: Order confirmed\n    else Payment rejected\n      Payment-->>Gateway: Decline reason\n      Gateway->>Inventory: Release reservation\n      Gateway-->>App: Payment failed\n    end\n  else Inventory unavailable\n    Inventory-->>Gateway: Missing items\n    Gateway-->>App: Cart changed\n  end\n  deactivate Gateway\n  App-->>Customer: Show final status\n",
       "nativeFile": "rc_sequence_checkout_saga_native.png",
       "officialFile": "rc_sequence_checkout_saga_official.png",
-      "nativeBytes": 109152,
+      "nativeBytes": 109351,
       "officialBytes": 104670,
-      "nativeSha256": "5da4cd75cb45315392f5943dd23d266f3856db18778f3c6fb8bfd6795e6cbdd0",
+      "nativeSha256": "45512d244d6ba369ad773291dd917ff259e2c33ef14d38a104bc652e09c091ef",
       "officialSha256": "f09046fc87343659ecae7cd29930088033228b45365a6fbf453f7e2b3042ba0b"
     },
     {
@@ -193,9 +193,9 @@
       "source": "\nsequenceDiagram\n  participant UI as Mobile UI\n  participant Client as API Client\n  participant Lock as Refresh Lock\n  participant Auth as Authorization Server\n  participant API as Resource Server\n  par Profile request\n    UI->>Client: GET /profile\n    Client->>API: Access token A\n    API-->>Client: 401 expired\n  and Orders request\n    UI->>Client: GET /orders\n    Client->>API: Access token A\n    API-->>Client: 401 expired\n  end\n  critical Acquire refresh ownership\n    Client->>Lock: compareAndSet(false, true)\n  option Another request owns refresh\n    Lock-->>Client: wait for new token\n  end\n  Client->>+Auth: Refresh token\n  alt Refresh accepted\n    Auth-->>-Client: Access token B\n    Client->>Lock: publish token B\n    Client->>API: Retry profile\n    Client->>API: Retry orders\n    API-->>Client: 200 responses\n    Client-->>UI: Deliver both results\n  else Refresh revoked\n    Auth-->>Client: invalid_grant\n    Client->>Lock: clear credentials\n    Client-->>UI: Require sign-in\n  end\n",
       "nativeFile": "rc_sequence_oauth_refresh_native.png",
       "officialFile": "rc_sequence_oauth_refresh_official.png",
-      "nativeBytes": 101380,
+      "nativeBytes": 101261,
       "officialBytes": 87123,
-      "nativeSha256": "474bee1f4d88bd82c12f0538596adc636bf031f8d133471dbc89ac3fadfce18a",
+      "nativeSha256": "541d44299cec16aa33d8e2d1d8d596b66972dbad6acaa18386d6cc16ef63ff61",
       "officialSha256": "7d6c14ae96299dd8fe63bf5638429a2459bc165eb31465d17e2513fec7041afc"
     },
     {
@@ -208,9 +208,9 @@
       "source": "\nsequenceDiagram\n  actor Creator\n  participant App\n  participant API\n  participant Store as Object Storage\n  participant Queue\n  participant Worker\n  Creator->>App: Select video\n  App->>+API: Create upload session\n  API-->>-App: Signed part URLs\n  par Upload part 1\n    App->>Store: PUT part 1\n    Store-->>App: ETag 1\n  and Upload part 2\n    App->>Store: PUT part 2\n    Store-->>App: ETag 2\n  and Upload part 3\n    App->>Store: PUT part 3\n    Store-->>App: ETag 3\n  end\n  App->>+API: Complete upload with ETags\n  API->>Store: Verify object\n  alt Checksum matches\n    Store-->>API: Object metadata\n    API->>Queue: Publish processing job\n    API-->>-App: Processing\n    Queue->>Worker: Transcode and scan\n    loop Progress updates\n      Worker-->>API: Stage progress\n      App->>API: Poll status\n      API-->>App: Current stage\n    end\n    Worker-->>API: Ready\n    API-->>App: Playback URL\n  else Checksum mismatch\n    Store-->>API: Invalid checksum\n    API-->>App: Restart required\n  end\n",
       "nativeFile": "rc_sequence_media_upload_native.png",
       "officialFile": "rc_sequence_media_upload_official.png",
-      "nativeBytes": 96353,
+      "nativeBytes": 95995,
       "officialBytes": 85723,
-      "nativeSha256": "5578927eeda755e643dc08f06bfa75820ed28026b8d6ecd4e91f5a96c3eaace4",
+      "nativeSha256": "28092eeb35cf9fb902adacf06c15a62607785dc36cb27f84a84a65b22a8e42f7",
       "officialSha256": "a820c50328efcf018a64cd07b7d0d335ec50f71ff521abccae6cc4a803045414"
     },
     {
@@ -223,9 +223,9 @@
       "source": "\nsequenceDiagram\n  participant Events\n  participant Dispatcher\n  participant Secrets\n  participant Partner\n  participant DLQ as Dead Letter Queue\n  participant Operator\n  Events->>Dispatcher: Domain event\n  Dispatcher->>Secrets: Resolve signing key\n  Secrets-->>Dispatcher: Active key\n  loop Up to five attempts\n    Dispatcher->>Partner: POST signed payload\n    alt 2xx response\n      Partner-->>Dispatcher: Accepted\n      Dispatcher->>Events: Mark delivered\n    else Retryable response\n      Partner-->>Dispatcher: 429 or 5xx\n      Note over Dispatcher: Exponential backoff with jitter\n    else Permanent response\n      Partner-->>Dispatcher: 400 or 410\n      Dispatcher->>DLQ: Store failed delivery\n    end\n  end\n  opt Attempts exhausted\n    Dispatcher->>DLQ: Store retry history\n    DLQ-->>Operator: Alert\n    Operator->>DLQ: Replay after repair\n    DLQ->>Dispatcher: Requeue delivery\n  end\n",
       "nativeFile": "rc_sequence_webhook_retry_native.png",
       "officialFile": "rc_sequence_webhook_retry_official.png",
-      "nativeBytes": 115867,
+      "nativeBytes": 115671,
       "officialBytes": 97557,
-      "nativeSha256": "ec71cfb59e1996d3d6f9466dbed8908e32de1b25d5fd74084bd9b782958b637e",
+      "nativeSha256": "ea46a3e13009e7f7899186b7c0894bc0732ddd0fc7f40265cd019559cdb6ad34",
       "officialSha256": "7f704b24240fda3ea86c43f1f3228d95f434f10973250de89ff29f6a2e17a17e"
     },
     {
@@ -238,9 +238,9 @@
       "source": "\nsequenceDiagram\n  actor Editor\n  participant UI\n  participant Local as Local Database\n  participant Sync\n  participant API\n  participant Presence\n  participant Files\n  Editor->>UI: Reconnect document\n  UI->>Local: Read pending operations\n  Local-->>UI: Local revision and queue\n  UI->>+Sync: Start synchronization\n  par Reconcile text\n    Sync->>API: Fetch changes since revision\n    API-->>Sync: Remote operations\n    Sync->>Sync: Transform concurrent operations\n    Sync->>API: Push transformed local operations\n    API-->>Sync: Accepted revision\n  and Restore presence\n    Sync->>Presence: Join room\n    Presence-->>Sync: Active collaborators\n  and Resume attachments\n    Sync->>Files: Query incomplete uploads\n    Files-->>Sync: Missing chunks\n  end\n  Sync->>Local: Commit merged revision\n  Local-->>Sync: Durable\n  Sync-->>-UI: Synced document\n  UI-->>Editor: Render merged state\n",
       "nativeFile": "rc_sequence_realtime_sync_native.png",
       "officialFile": "rc_sequence_realtime_sync_official.png",
-      "nativeBytes": 87233,
+      "nativeBytes": 87604,
       "officialBytes": 83523,
-      "nativeSha256": "90baffb7bcebdfdfc687b0475794dc184ef14a5d36dbe6d0494eff9327522c5f",
+      "nativeSha256": "6c5b073b0f3d135ca20f46f98f255cbe6af8ccc4e26fb1957846b96a37fd6f00",
       "officialSha256": "29c63f09e8bcf2e469ca91c90f30f4c224e32224385489871b3b480e8c9f66c7"
     },
     {
@@ -253,9 +253,9 @@
       "source": "\nsequenceDiagram\n  participant A as Request A\n  participant B as Request B\n  participant Cache\n  participant Lock\n  participant DB as Database\n  par First lookup\n    A->>Cache: GET product:42\n    Cache-->>A: Miss\n  and Concurrent lookup\n    B->>Cache: GET product:42\n    Cache-->>B: Miss\n  end\n  critical Elect loader\n    A->>Lock: SET NX product:42\n    Lock-->>A: Acquired\n  option Loader already elected\n    B->>Lock: SET NX product:42\n    Lock-->>B: Rejected\n  end\n  A->>+DB: SELECT product 42\n  DB-->>-A: Product row\n  A->>Cache: SET product:42 with jittered TTL\n  A->>Lock: Release\n  loop Wait with bounded backoff\n    B->>Cache: GET product:42\n    Cache-->>B: Value or miss\n  end\n  A-->>A: Return value\n  B-->>B: Return refreshed value\n",
       "nativeFile": "rc_sequence_cache_stampede_native.png",
       "officialFile": "rc_sequence_cache_stampede_official.png",
-      "nativeBytes": 87980,
+      "nativeBytes": 88876,
       "officialBytes": 76626,
-      "nativeSha256": "82c51b5c6472fc867808f0c3b9ff4d7ed83eca1ac99ea3ae5f3966083c720f72",
+      "nativeSha256": "994ca33a15c817c48bcad44862753c3935026d14d14c80971ebce7a3addb6a42",
       "officialSha256": "a733a6625a4307472096ae0d66b4b222e9ca5bab6e9b5174676836b522138856"
     },
     {
@@ -359,9 +359,9 @@
       "nativeFile": "rc_state_payment_transaction_native.png",
       "officialFile": "rc_state_payment_transaction_official.png",
       "nativeBytes": 41919,
-      "officialBytes": 41669,
+      "officialBytes": 41667,
       "nativeSha256": "25ac081c04d9e14c5309c37d6b93c20f914b61e89f6e48079e9d5a506b882c8b",
-      "officialSha256": "e382c5397db242bd48f1de4d4bdf2b86079aa5707ce3fa26f96672666ed3086d"
+      "officialSha256": "24930c0610b7f0bd7fb60e4bdb15dbe6190a88fc5a15fb344c1e827c0b5557e0"
     },
     {
       "id": "rc_state_deployment_rollout",

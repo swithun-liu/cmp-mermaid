@@ -62,8 +62,8 @@ Additional platform limitations:
 - iOS and Desktop compile against the common asset-provider contract but do
   not yet ship default network/bitmap/SVG providers.
 - Arbitrary system font-family discovery is host-defined. The Compose adapter
-  bundles Arimo as an Arial-compatible default and accepts a custom
-  `MermaidFontFamilyResolver`.
+  bundles Arimo as an Arial-compatible default, Droid Sans Mono for HTML code
+  spans, and accepts a custom `MermaidFontFamilyResolver`.
 - Non-zero browser SVG blur is represented by the closest Compose shadow, not
   browser-filter pixel parity.
 - iOS source sets compile for Arm64, Simulator Arm64, and X64; final

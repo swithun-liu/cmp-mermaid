@@ -175,6 +175,7 @@ fun rememberMermaidScene(
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val density = LocalDensity.current
     val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
+    val monospaceFontFamily = rememberMermaidMonospaceFontFamily()
     val cjkFontFamily = if (fontFamilyResolver == null && source.hasCjkFontCharacters()) {
         rememberMermaidCjkFontFamily()
     } else {
@@ -192,6 +193,7 @@ fun rememberMermaidScene(
         textMeasurer,
         density,
         effectiveFontFamilyResolver,
+        monospaceFontFamily,
         cjkFontFamily,
         symbolFontFamily,
     ) {
@@ -204,13 +206,16 @@ fun rememberMermaidScene(
             val result = textMeasurer.measure(
                 text = request.text.toAnnotatedString(
                     spans = request.spans,
+                    monospaceFontFamily = monospaceFontFamily,
                     cjkFontFamily = cjkFontFamily,
                     symbolFontFamily = symbolFontFamily,
                 ),
                 style = style,
                 softWrap = true,
                 maxLines = 8,
-                constraints = Constraints(maxWidth = request.maxWidth.roundToInt().coerceAtLeast(1)),
+                constraints = Constraints(
+                    maxWidth = request.maxWidth.mermaidTextConstraint(request.spans),
+                ),
             )
             TextMetrics(result.size.width.toFloat(), result.size.height.toFloat())
         }
@@ -252,6 +257,7 @@ fun MermaidSceneCanvas(
 ) {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
+    val monospaceFontFamily = rememberMermaidMonospaceFontFamily()
     val hasCjkText = remember(scene) {
         scene.elements
             .asSequence()
@@ -439,6 +445,7 @@ fun MermaidSceneCanvas(
                         density = density.density,
                         fontScale = density.fontScale,
                         fontFamilyResolver = effectiveFontFamilyResolver,
+                        monospaceFontFamily = monospaceFontFamily,
                         cjkFontFamily = cjkFontFamily,
                         symbolFontFamily = symbolFontFamily,
                     )
@@ -619,6 +626,7 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
         }
         val path = primitive.toComposePath(bounds)
         val opacity = primitive.opacity.coerceIn(0f, 1f)
+        val primitiveStroke = primitive.strokeColor?.toComposeColor()
         when (primitive.fill) {
             SceneShapePaint.None -> Unit
             SceneShapePaint.Fill -> drawPath(path, fill.copy(alpha = fill.alpha * opacity), style = Fill)
@@ -628,12 +636,16 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
             SceneShapePaint.None -> Unit
             SceneShapePaint.Fill -> drawPath(
                 path,
-                fill.copy(alpha = fill.alpha * opacity),
+                (primitiveStroke ?: fill).let { color ->
+                    color.copy(alpha = color.alpha * opacity)
+                },
                 style = primitive.strokeStyle(shape),
             )
             SceneShapePaint.Stroke -> drawPath(
                 path,
-                stroke.copy(alpha = stroke.alpha * opacity),
+                (primitiveStroke ?: stroke).let { color ->
+                    color.copy(alpha = color.alpha * opacity)
+                },
                 style = primitive.strokeStyle(shape),
             )
         }
@@ -1643,7 +1655,10 @@ private enum class MarkerPosition {
 
 private const val DEFAULT_EDGE_ANIMATION_DURATION_MILLIS = 20_000
 private const val ANIMATION_CLOCK_DURATION_MILLIS = 100_000
-private const val MERMAID_FONT_WIDTH_SCALE = 1.10f
+private const val MERMAID_FONT_WIDTH_SCALE = 1.06f
+// Mermaid's browser HTML labels use the user-agent sub/sup baseline geometry.
+private const val HTML_SUBSCRIPT_BASELINE_SHIFT = -0.19f
+private const val HTML_SUPERSCRIPT_BASELINE_SHIFT = 0.46f
 private const val UNKNOWN_ICON_FONT_SCALE = 67.75f / 80f
 private const val EDGE_ANIMATION_DASH_OFFSET = 900f
 
@@ -1715,6 +1730,7 @@ private fun DrawScope.drawSceneText(
     density: Float,
     fontScale: Float,
     fontFamilyResolver: MermaidFontFamilyResolver,
+    monospaceFontFamily: FontFamily,
     cjkFontFamily: FontFamily?,
     symbolFontFamily: FontFamily?,
 ) {
@@ -1736,6 +1752,7 @@ private fun DrawScope.drawSceneText(
     val layout = textMeasurer.measure(
         text = element.text.toAnnotatedString(
             spans = element.spans,
+            monospaceFontFamily = monospaceFontFamily,
             cjkFontFamily = cjkFontFamily,
             symbolFontFamily = symbolFontFamily,
         ),
@@ -1786,6 +1803,19 @@ private fun normalizedSp(
     fontScale: Float,
 ) = (sceneUnits / density / fontScale).sp
 
+private fun Float.mermaidTextConstraint(
+    spans: List<io.github.cmpmermaid.core.SceneTextSpan>,
+): Int {
+    val widthScale = if (
+        spans.any { span -> span.fontFamily == SceneTextFontFamily.Monospace }
+    ) {
+        MERMAID_FONT_WIDTH_SCALE
+    } else {
+        1f
+    }
+    return (this / widthScale).roundToInt().coerceAtLeast(1)
+}
+
 private fun SceneTextWeight.toComposeWeight(): FontWeight = when (this) {
     SceneTextWeight.Normal -> FontWeight.Normal
     SceneTextWeight.Medium -> FontWeight.Medium
@@ -1794,6 +1824,7 @@ private fun SceneTextWeight.toComposeWeight(): FontWeight = when (this) {
 
 private fun String.toAnnotatedString(
     spans: List<io.github.cmpmermaid.core.SceneTextSpan>,
+    monospaceFontFamily: FontFamily,
     cjkFontFamily: FontFamily?,
     symbolFontFamily: FontFamily?,
 ): AnnotatedString = buildAnnotatedString {
@@ -1810,12 +1841,14 @@ private fun String.toAnnotatedString(
                 color = span.color?.toComposeColor() ?: Color.Unspecified,
                 background = span.background?.toComposeColor() ?: Color.Unspecified,
                 fontFamily = when (span.fontFamily) {
-                    SceneTextFontFamily.Monospace -> FontFamily.Monospace
+                    SceneTextFontFamily.Monospace -> monospaceFontFamily
                     null -> null
                 },
                 baselineShift = when (span.baselineShift) {
-                    SceneTextBaselineShift.Subscript -> BaselineShift.Subscript
-                    SceneTextBaselineShift.Superscript -> BaselineShift.Superscript
+                    SceneTextBaselineShift.Subscript ->
+                        BaselineShift(HTML_SUBSCRIPT_BASELINE_SHIFT)
+                    SceneTextBaselineShift.Superscript ->
+                        BaselineShift(HTML_SUPERSCRIPT_BASELINE_SHIFT)
                     null -> null
                 },
                 fontSize = if (span.fontSizeScale == 1f) {
@@ -1910,7 +1943,8 @@ private fun String.hasBundledSymbolFontCharacters(): Boolean =
 private fun Int.usesBundledSymbolFont(): Boolean =
     this in 0x2700..0x2704 ||
         this in 0x2706..0x2709 ||
-        this in 0x270B..0x271C
+        this in 0x270B..0x271C ||
+        this == 0x2764
 
 private val HIGH_SURROGATE_RANGE = 0xD800..0xDBFF
 private val LOW_SURROGATE_RANGE = 0xDC00..0xDFFF

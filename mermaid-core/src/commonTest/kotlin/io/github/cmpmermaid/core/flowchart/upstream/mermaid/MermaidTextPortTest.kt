@@ -85,13 +85,13 @@ class MermaidTextPortTest {
         val result = MermaidTextPort.render(
             source = "<u>under</u> <s>strike</s> " +
                 "<span style='color:#ff0000;text-decoration:underline'>red</span> " +
-                "H<sub>2</sub>O",
+                "H<sub>2</sub>O x<sup>2</sup>",
             labelType = FlowLabelType.Text,
             config = MermaidRenderOptions(),
         )
 
         val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
-        assertEquals("under strike red H2O", text.text)
+        assertEquals("under strike red H2O x2", text.text)
         assertEquals(
             listOf(
                 SceneTextSpan(0, 5, underline = true),
@@ -106,7 +106,13 @@ class MermaidTextPortTest {
                     18,
                     19,
                     baselineShift = SceneTextBaselineShift.Subscript,
-                    fontSizeScale = 0.75f,
+                    fontSizeScale = 5f / 6f,
+                ),
+                SceneTextSpan(
+                    22,
+                    23,
+                    baselineShift = SceneTextBaselineShift.Superscript,
+                    fontSizeScale = 5f / 6f,
                 ),
             ),
             text.spans,
