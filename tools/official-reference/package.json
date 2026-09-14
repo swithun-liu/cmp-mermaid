@@ -35,6 +35,8 @@
     "render:xychart-gallery": "node render-xychart-gallery.mjs",
     "render:xychart-contact-sheet": "node render-xychart-contact-sheet.mjs",
     "capture:web-audit": "node capture-web-audit.mjs",
+    "audit:stability-geometry": "node audit-capture-geometry.mjs",
+    "test:web-load": "node run-web-load-test.mjs",
     "generate:elk-worker": "node generate-elk-worker-source.mjs",
     "generate:marked-fixtures": "node generate-marked-fixtures.mjs",
     "generate:marked-rules": "node generate-marked-rules.mjs",

@@ -19,6 +19,8 @@ class MermaidDebugActivity : ComponentActivity() {
             ),
             auditLayout = intent.getStringExtra(EXTRA_AUDIT_LAYOUT) ?: "elk",
             openPlayground = intent.getBooleanExtra(EXTRA_OPEN_PLAYGROUND, false),
+            openLoadTest = intent.getBooleanExtra(EXTRA_OPEN_LOAD_TEST, false),
+            autoRunLoadTest = intent.getBooleanExtra(EXTRA_AUTO_RUN_LOAD_TEST, false),
         )
         setContent {
             MermaidDebugApp(options)
@@ -30,6 +32,8 @@ class MermaidDebugActivity : ComponentActivity() {
         const val EXTRA_AUDIT_PREVIEW = "auditPreview"
         const val EXTRA_AUDIT_LAYOUT = "auditLayout"
         const val EXTRA_OPEN_PLAYGROUND = "openPlayground"
+        const val EXTRA_OPEN_LOAD_TEST = "openLoadTest"
+        const val EXTRA_AUTO_RUN_LOAD_TEST = "autoRunLoadTest"
     }
 }
 

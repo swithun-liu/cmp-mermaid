@@ -92,6 +92,9 @@ try {
       });
       if (preview.toLowerCase() === 'official') {
         await waitForOfficialSvg(page);
+        if (auditSource === 'stability' && auditCase.kind === 'gantt') {
+          await assertOfficialGanttWidth(page, auditCase.id);
+        }
       } else {
         await waitForNativeCanvas(page);
       }
@@ -173,6 +176,42 @@ async function waitForOfficialSvg(page) {
     },
     { timeout: 60_000 },
   );
+}
+
+async function assertOfficialGanttWidth(page, caseId) {
+  const dimensions = await page.evaluate(() => {
+    const roots = [document];
+    for (let index = 0; index < roots.length; index += 1) {
+      const root = roots[index];
+      const frame = root.querySelector?.(
+        'iframe[title="Official Mermaid.js rendering"]',
+      );
+      const svg = frame?.contentDocument?.querySelector('#diagram svg');
+      if (frame != null && svg != null) {
+        return {
+          frameWidth: frame.clientWidth,
+          viewBoxWidth: svg.viewBox.baseVal.width,
+        };
+      }
+      root.querySelectorAll?.('*').forEach((element) => {
+        if (element.shadowRoot !== null) {
+          roots.push(element.shadowRoot);
+        }
+      });
+    }
+    return null;
+  });
+  if (
+    dimensions == null ||
+    dimensions.frameWidth <= 0 ||
+    dimensions.viewBoxWidth < dimensions.frameWidth * 0.75
+  ) {
+    throw new Error(
+      `${caseId}/Official Gantt width collapsed: ` +
+        `${dimensions?.viewBoxWidth ?? 'missing'} viewBox units for ` +
+        `${dimensions?.frameWidth ?? 'missing'} frame pixels`,
+    );
+  }
 }
 
 function readKotlinCases(fileName, constructorName) {

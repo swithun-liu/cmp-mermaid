@@ -59,6 +59,9 @@ production so an upstream grammar diff can be translated incrementally.
   across JVM, Android, and Kotlin/Native.
 - Mermaid's D3 automatic time-tick interval table is translated to typed
   Kotlin intervals.
+- D3 `interval.every(count)` anchoring is preserved: weeks are selected against
+  D3's epoch week index, while day, month, hour, minute, and second intervals
+  use the matching calendar-field modulo.
 - The generated comment lexer rule
   `\%\%(?!\{)*[^\n]*` is replaced by an equivalent line-prefix scanner because
   Android ICU rejects repetition of a zero-width lookahead.
@@ -75,7 +78,8 @@ production so an upstream grammar diff can be translated incrementally.
 ## Parity Gate
 
 - `GanttJisonParserTest` covers parser directives, task tags, dependencies,
-  date formats, durations, interactions, and malformed input.
+  date formats, durations, interactions, malformed input, and D3 multi-unit
+  tick anchoring.
 - `GanttLayoutTest` covers sections, task-state colors, milestones, vertical
   markers, exclusions, automatic ticks, compact rows, interactions, title,
   accessibility, and structured unsupported errors.
@@ -85,6 +89,9 @@ production so an upstream grammar diff can be translated incrementally.
   Mermaid's Gantt documentation.
 - The Android gallery compares 20 identical sources against official Mermaid
   `12.0.0` output, including a width-matched mode for label-placement review.
+- The Web RC capture rejects an Official Gantt SVG whose viewBox is less than
+  75% of its iframe width, preventing a flex-shrunk reference from masking or
+  inventing Native layout differences.
 
 ## Upgrade Procedure
 

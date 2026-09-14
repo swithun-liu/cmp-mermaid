@@ -20,6 +20,8 @@ fun main() {
                 auditPreview = MermaidDebugPreview.from(queryParameter("auditPreview")),
                 auditLayout = queryParameter("auditLayout") ?: "elk",
                 openPlayground = queryParameter("openPlayground") == "true",
+                openLoadTest = queryParameter("openLoadTest") == "true",
+                autoRunLoadTest = queryParameter("autoRunLoadTest") == "true",
             ),
         )
     }

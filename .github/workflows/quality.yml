@@ -74,3 +74,76 @@ jobs:
             echo "Unexpected android.permission.INTERNET declaration" >&2
             exit 1
           fi
+
+  visual-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: tools/official-reference/package-lock.json
+
+      - name: Install visual audit dependencies
+        working-directory: tools/official-reference
+        run: npm ci
+
+      - name: Build Web production distribution
+        run: ./gradlew :sample:webApp:wasmJsBrowserDistribution
+
+      - name: Capture Native and Official RC corpus
+        working-directory: tools/official-reference
+        run: |
+          python3 -m http.server 8093 \
+            --directory ../../sample/webApp/build/dist/wasmJs/productionExecutable \
+            >/tmp/cmp-mermaid-web.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8093/ >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          AUDIT_SOURCE=stability \
+          OUTPUT_DIR=captures/ci/stability \
+          BASE_URL=http://127.0.0.1:8093/ \
+          VIEWPORT_WIDTH=1200 \
+          VIEWPORT_HEIGHT=900 \
+          npm run capture:web-audit
+          BASE_URL=http://127.0.0.1:8093/ \
+          OUTPUT_DIR=captures/ci/load-test-web \
+          npm run test:web-load
+
+      - name: Enforce RC visual geometry
+        working-directory: tools/official-reference
+        run: |
+          INPUT_DIR=captures/ci/stability \
+          OUTPUT_FILE=captures/ci/stability-geometry.json \
+          npm run audit:stability-geometry
+          INPUT_DIR=captures/ci/stability \
+          OUTPUT_DIR=captures/ci/contact-sheets \
+          npm run generate:stability-contact-sheets
+
+      - name: Upload RC visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rc-visual-evidence
+          path: captures/ci
+          retention-days: 14

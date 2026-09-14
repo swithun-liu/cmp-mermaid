@@ -14,7 +14,10 @@ struct CMPMermaidApp: App {
 
 private struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        IosDebugUiKt.MermaidDebugViewController()
+        if ProcessInfo.processInfo.arguments.contains("--load-test") {
+            return IosDebugUiKt.MermaidLoadTestViewController()
+        }
+        return IosDebugUiKt.MermaidDebugViewController()
     }
 
     func updateUIViewController(

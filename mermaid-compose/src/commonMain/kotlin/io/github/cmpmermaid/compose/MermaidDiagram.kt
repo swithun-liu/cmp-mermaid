@@ -94,7 +94,6 @@ import io.github.cmpmermaid.core.SceneTextWeight
 import io.github.cmpmermaid.core.TextMetricProvider
 import io.github.cmpmermaid.core.TextMetrics
 import io.github.cmpmermaid.core.TextMetricsRequest
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.math.PI
 import kotlin.math.atan2
@@ -230,7 +229,7 @@ fun rememberMermaidScene(
         effectiveFontFamilyResolver,
         assetMetrics,
     ) {
-        value = withContext(Dispatchers.Default) {
+        value = withContext(mermaidRenderDispatcher()) {
             engine.render(
                 source,
                 MermaidRenderContext(

@@ -15,10 +15,11 @@
 
 > **Current baseline:** Mermaid `12.0.0` · **Release candidates:** 8 ·
 > **Built-in themes:** 11 · **Platforms:** Android, iOS, Desktop, Web ·
-> **Independent complex scenarios:** 42 · **JVM tests:** 270
+> **Independent complex scenarios:** 42 · **JVM tests:** 273
 >
 > Evidence and current limitations:
-> **[Mermaid 12.0.0 Release Candidate test report](docs/stability-report.md)**
+> **[Release Candidate test report](docs/stability-report.md)** ·
+> **[Production readiness gate](docs/production-readiness.md)**
 
 CMP Mermaid is built for screens that may contain many diagrams. Production
 rendering does not create a WebView and does not execute Mermaid.js. Parsing,
@@ -93,7 +94,10 @@ later visits faster.
 Demo examples are for feature discovery and are not counted as stability
 evidence. Each release candidate is separately covered by official
 documentation fixtures, deterministic stress tests, the independent complex
-corpus, and Native/Official screenshots.
+corpus, deterministic SceneGraph replay, Native/Official screenshots, and a
+42-diagram runtime load screen. All 42 independent visual pairs currently pass;
+the project remains a Release Candidate until a real adopter completes canary
+and rollback validation.
 Unsupported legal Mermaid features return
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation.

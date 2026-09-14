@@ -36,16 +36,7 @@ class StabilityCorpusTest {
     fun rendersIndependentComplexReleaseCandidateCorpus() {
         assertEquals(42, stabilityCorpusCases.size)
         stabilityCorpusCases.forEach { case ->
-            val result = engine.render(
-                source = case.source,
-                context = context.copy(
-                    options = MermaidRenderOptions(layout = case.layout),
-                ),
-            )
-            val scene = assertIs<GMResult.Ok<MermaidScene>>(
-                result,
-                "${case.id} failed with ${(result as? GMResult.Err)?.error}:\n${case.source}",
-            ).value
+            val scene = render(case)
 
             assertTrue(
                 scene.width.isFinite() && scene.width > 0f,
@@ -60,6 +51,32 @@ class StabilityCorpusTest {
                 "${case.id} produced an empty scene",
             )
         }
+    }
+
+    @Test
+    fun rendersIndependentCorpusDeterministically() {
+        stabilityCorpusCases.forEach { case ->
+            assertEquals(
+                expected = render(case),
+                actual = render(case),
+                message = "${case.id} produced a non-deterministic SceneGraph",
+            )
+        }
+    }
+
+    private fun render(
+        case: io.github.cmpmermaid.core.generated.StabilityCorpusCase,
+    ): MermaidScene {
+        val result = engine.render(
+            source = case.source,
+            context = context.copy(
+                options = MermaidRenderOptions(layout = case.layout),
+            ),
+        )
+        return assertIs<GMResult.Ok<MermaidScene>>(
+            result,
+            "${case.id} failed with ${(result as? GMResult.Err)?.error}:\n${case.source}",
+        ).value
     }
 
     private fun Int?.orZero(): Int = this ?: 0

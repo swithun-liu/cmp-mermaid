@@ -128,6 +128,58 @@ class GanttJisonParserTest {
         )
     }
 
+    @Test
+    fun anchorsMultiUnitTicksLikeD3TimeEvery() {
+        assertEquals(
+            listOf("2027-03-07", "2027-03-21"),
+            tickDates(
+                minimum = "2027-03-01",
+                maximum = "2027-04-01",
+                count = 2,
+                unit = GanttTickUnit.Week,
+            ),
+        )
+        assertEquals(
+            listOf("2027-03-03", "2027-03-05", "2027-03-07", "2027-03-09", "2027-03-11"),
+            tickDates(
+                minimum = "2027-03-02",
+                maximum = "2027-03-11",
+                count = 2,
+                unit = GanttTickUnit.Day,
+            ),
+        )
+        assertEquals(
+            listOf("2027-04-01", "2027-07-01", "2027-10-01"),
+            tickDates(
+                minimum = "2027-02-01",
+                maximum = "2027-10-01",
+                count = 3,
+                unit = GanttTickUnit.Month,
+            ),
+        )
+        assertEquals(
+            listOf("2030-01-01", "2035-01-01"),
+            tickDates(
+                minimum = "2027-01-01",
+                maximum = "2038-01-01",
+                count = 5,
+                unit = GanttTickUnit.Year,
+            ),
+        )
+    }
+
+    private fun tickDates(
+        minimum: String,
+        maximum: String,
+        count: Int,
+        unit: GanttTickUnit,
+    ): List<String> = GanttDatePort.ticks(
+        minimum = GanttDatePort.parse(minimum, "YYYY-MM-DD").value(),
+        maximum = GanttDatePort.parse(maximum, "YYYY-MM-DD").value(),
+        interval = GanttTickInterval(count, unit),
+        weekStart = GanttWeekday.Sunday,
+    ).map(GanttDatePort::dateOnly)
+
     private fun parse(
         source: String,
         securityLevel: MermaidSecurityLevel = MermaidSecurityLevel.Strict,

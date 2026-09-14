@@ -1,6 +1,6 @@
 {
   "mermaidVersion": "12.0.0",
-  "generatedAt": "2026-09-14T05:36:49.759Z",
+  "generatedAt": "2026-09-14T08:46:39.170Z",
   "caseCount": 42,
   "cases": [
     {
@@ -14,9 +14,9 @@
       "nativeFile": "rc_flow_checkout_saga_native.png",
       "officialFile": "rc_flow_checkout_saga_official.png",
       "nativeBytes": 24355,
-      "officialBytes": 24798,
+      "officialBytes": 24897,
       "nativeSha256": "a55c12b7939d6c38ea4707b0e1efebf0fa38990f77254fba7f1acd5d9861f6e7",
-      "officialSha256": "05d39295bddbe6f7be9ee41bbc8ca07fb8fa754f259147adb37fb00beedefb70"
+      "officialSha256": "1e385de0647e35fb1ed531155ebb73526bf89a48896f426804fc49ef08477c18"
     },
     {
       "id": "rc_flow_multi_region_failover",
@@ -29,9 +29,9 @@
       "nativeFile": "rc_flow_multi_region_failover_native.png",
       "officialFile": "rc_flow_multi_region_failover_official.png",
       "nativeBytes": 37545,
-      "officialBytes": 40239,
+      "officialBytes": 40199,
       "nativeSha256": "22e236c2b6836ea563e09341543e65dc1d1dd8c21329e24ad11d208a7094b35a",
-      "officialSha256": "630f33b44d4e53d75f15f785918adf406f3a3a826e65d5601aa7ff20aa277a94"
+      "officialSha256": "c2ff35dcc275c9d16df6e94dd7a63db100e99388a7e314ed9c44f7c352dcf2bb"
     },
     {
       "id": "rc_flow_release_train",
@@ -44,9 +44,9 @@
       "nativeFile": "rc_flow_release_train_native.png",
       "officialFile": "rc_flow_release_train_official.png",
       "nativeBytes": 31961,
-      "officialBytes": 31013,
+      "officialBytes": 31035,
       "nativeSha256": "cb2a37feba81272b766c0518579238ef44294c2e0f86fdf75354744f15d5bd5c",
-      "officialSha256": "985797ccbac55636edc19d9de279998e50fe1b26760e3a7c0b729e27ba3288a4"
+      "officialSha256": "02049f3eadb3864877b9e1bf5d4d5358826c0f0fcf5d44db461f72022f80be89"
     },
     {
       "id": "rc_flow_incident_response",
@@ -59,9 +59,9 @@
       "nativeFile": "rc_flow_incident_response_native.png",
       "officialFile": "rc_flow_incident_response_official.png",
       "nativeBytes": 35440,
-      "officialBytes": 35427,
+      "officialBytes": 35414,
       "nativeSha256": "386d0bb5537e957f8867e2b66eab159ad2d719216c94d1e6c0b43eb0981ce536",
-      "officialSha256": "98744662609fef8b92b4adc8826770372c0e502534562777ddf110813395d6d0"
+      "officialSha256": "da64808d9c1ca4d760efad80d49c5c2be03a3e9e82c55af75b009825c4893e5c"
     },
     {
       "id": "rc_flow_event_ingestion",
@@ -89,9 +89,9 @@
       "nativeFile": "rc_flow_access_governance_native.png",
       "officialFile": "rc_flow_access_governance_official.png",
       "nativeBytes": 28396,
-      "officialBytes": 28176,
+      "officialBytes": 28086,
       "nativeSha256": "5f4b9f0a5b7c238ea017ca4b3243020b2fa6090fdcf8b3563f5bc05a4f627b0a",
-      "officialSha256": "eddcd21971a30cefa9e1a9c31d6f85d7af510a24bccfc11ee7e4ed71a86f7b43"
+      "officialSha256": "a875587a3451afe5adac4ffe03d05632e246478000b3b57ee1c4d7f9e86d5bea"
     },
     {
       "id": "rc_xy_service_latency",
@@ -104,9 +104,9 @@
       "nativeFile": "rc_xy_service_latency_native.png",
       "officialFile": "rc_xy_service_latency_official.png",
       "nativeBytes": 68450,
-      "officialBytes": 66968,
+      "officialBytes": 67333,
       "nativeSha256": "b3d376de228f1525d584ab5308af5ae74e23c5130e1a51c3e82058cd3a612201",
-      "officialSha256": "3a94e8e8721936648c87b48e9698178d96cf09d84ff1b9aeb8c56a143761d4d8"
+      "officialSha256": "79dd4dc904b39880b0e1c9bb296ee35f4a2c67aa26f49e1048b0a3b8f88e4534"
     },
     {
       "id": "rc_xy_checkout_conversion",
@@ -119,9 +119,9 @@
       "nativeFile": "rc_xy_checkout_conversion_native.png",
       "officialFile": "rc_xy_checkout_conversion_official.png",
       "nativeBytes": 58162,
-      "officialBytes": 57537,
+      "officialBytes": 59217,
       "nativeSha256": "15675864804537dcb15fa66fdedba82fbb9c62a5b915e874caaea6197d15bb5b",
-      "officialSha256": "f2fb1b5f64e480f1b83ba0f55482af3ab3efe93f78ffdd3a7f92a4d6f6710467"
+      "officialSha256": "a8b1a028a4153addd8170d0d8975322faa129af1ad6cfea5b31023470ef05e9e"
     },
     {
       "id": "rc_xy_capacity_forecast",
@@ -134,9 +134,9 @@
       "nativeFile": "rc_xy_capacity_forecast_native.png",
       "officialFile": "rc_xy_capacity_forecast_official.png",
       "nativeBytes": 64222,
-      "officialBytes": 65719,
+      "officialBytes": 68009,
       "nativeSha256": "df34288e711e589770895963347e2e317cc24324560ca849e2d823a7570657b7",
-      "officialSha256": "0c2b1d9f1e974d62a96416597ee2a12993169d1354e86bf801caeb0be38328d1"
+      "officialSha256": "01fa294796dc8a5f764bee64e698babd50939276c0cf5eefa4c5ca1ce919219d"
     },
     {
       "id": "rc_xy_queue_backlog",
@@ -149,9 +149,9 @@
       "nativeFile": "rc_xy_queue_backlog_native.png",
       "officialFile": "rc_xy_queue_backlog_official.png",
       "nativeBytes": 64853,
-      "officialBytes": 64468,
+      "officialBytes": 68078,
       "nativeSha256": "b75cc2f814ab36c5828b5e9f575e65d3f4e478145d5d256ccf395f937c27dd64",
-      "officialSha256": "dbed20f6759b286ba3382dd4f2aae0e0d39c1bd9a8b768af02b85963832a2c41"
+      "officialSha256": "5062c4ae2f68cd3cc1124057be0facbe4e3b8da3ee64d3844911e69ebc401d1a"
     },
     {
       "id": "rc_xy_error_budget",
@@ -164,9 +164,9 @@
       "nativeFile": "rc_xy_error_budget_native.png",
       "officialFile": "rc_xy_error_budget_official.png",
       "nativeBytes": 68802,
-      "officialBytes": 68467,
+      "officialBytes": 67375,
       "nativeSha256": "8637b3521757ccebae6d847270af6e0805f5229e8c16bda1590491ca4f913ebb",
-      "officialSha256": "f9f389a6b2bd8526167b3ff65c77953a4302c2328f9acaf833bd043246a3ee2b"
+      "officialSha256": "6b9921b4e758d9f222d5af343ee40772980307d56d5b53d3fdbd9ed4667d0172"
     },
     {
       "id": "rc_sequence_checkout_saga",
@@ -359,9 +359,9 @@
       "nativeFile": "rc_state_payment_transaction_native.png",
       "officialFile": "rc_state_payment_transaction_official.png",
       "nativeBytes": 41919,
-      "officialBytes": 41667,
+      "officialBytes": 41645,
       "nativeSha256": "25ac081c04d9e14c5309c37d6b93c20f914b61e89f6e48079e9d5a506b882c8b",
-      "officialSha256": "24930c0610b7f0bd7fb60e4bdb15dbe6190a88fc5a15fb344c1e827c0b5557e0"
+      "officialSha256": "a1b5569eef232335a3c6aa765f073ebd1331b4345edb12c42db3cab51a0f805d"
     },
     {
       "id": "rc_state_deployment_rollout",
@@ -494,9 +494,9 @@
       "nativeFile": "rc_gantt_mobile_release_native.png",
       "officialFile": "rc_gantt_mobile_release_official.png",
       "nativeBytes": 42011,
-      "officialBytes": 84553,
+      "officialBytes": 44552,
       "nativeSha256": "b7859419ff9f583c480ecfc55af5d04a18352f3d1bb9e2062b9103e0108c8035",
-      "officialSha256": "66593c0bcabc2a83cdfb6b0ce9adaef546555d798cfbbde28c275c3dee5802c0"
+      "officialSha256": "b06749c8598ae5dafec75c2269fd20e76eee4ea3081a1222f4f6b3f63d7519ff"
     },
     {
       "id": "rc_gantt_database_migration",
@@ -509,9 +509,9 @@
       "nativeFile": "rc_gantt_database_migration_native.png",
       "officialFile": "rc_gantt_database_migration_official.png",
       "nativeBytes": 40513,
-      "officialBytes": 94336,
+      "officialBytes": 43748,
       "nativeSha256": "e54d542e941843df21d0476def4f74fb5d8ab884c3f9e6e6f74ac720639541a6",
-      "officialSha256": "5bfe5ac31895ee7a74d7184945eb8d19baed45cc1aebdc611a4b1cb77b775743"
+      "officialSha256": "57441e71c3bc3df091681ac2634fd14d218b6a39b90c91eaf675aad95bf79523"
     },
     {
       "id": "rc_gantt_regional_launch",
@@ -524,9 +524,9 @@
       "nativeFile": "rc_gantt_regional_launch_native.png",
       "officialFile": "rc_gantt_regional_launch_official.png",
       "nativeBytes": 34704,
-      "officialBytes": 82690,
+      "officialBytes": 39218,
       "nativeSha256": "d6c3979a5b7498d58e619f70a1b1d942305857353d1879eb3f70ee3cb7676548",
-      "officialSha256": "9c5c575a1d6b2c6ae07d2101676187fd063b4341df0863768e87e5e334b7a31e"
+      "officialSha256": "453616d230f720028fbc8b829c8930019c18b5f1546fbca0461e89730c743aeb"
     },
     {
       "id": "rc_gantt_incident_hardening",
@@ -539,9 +539,9 @@
       "nativeFile": "rc_gantt_incident_hardening_native.png",
       "officialFile": "rc_gantt_incident_hardening_official.png",
       "nativeBytes": 37192,
-      "officialBytes": 88763,
+      "officialBytes": 39161,
       "nativeSha256": "245be00e9507db56f7eea81d58967561d284da5bc3411790b8d739a706aceefa",
-      "officialSha256": "4cb9bbd7c65ff6d89aceedc257c661ed796ad483fecd2d9a605b5f2045c1f133"
+      "officialSha256": "841dd9987d59c49edb13cd0ee2d49955b75acf2eac80ba9b5ebfb970a43ae380"
     },
     {
       "id": "rc_gantt_data_platform_upgrade",
@@ -553,10 +553,10 @@
       "source": "\ngantt\n  title Data platform engine upgrade\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 2week\n  excludes weekends\n  todayMarker off\n  section Foundation\n  Dependency inventory :inventory, 2027-03-01, 10d\n  Compatibility harness :harness, 2027-03-03, 12d\n  New engine cluster :cluster, 2027-03-08, 10d\n  section Pilot\n  Dual-run critical jobs :pilot, after inventory harness cluster, 10d\n  Result reconciliation :reconcile, after pilot, 5d\n  Pilot approval :milestone, approval, after reconcile, 0d\n  section Migration waves\n  Low-risk jobs :wave1, after approval, 10d\n  Medium-risk jobs :wave2, after wave1, 10d\n  Critical jobs :crit, wave3, after wave2, 12d\n  section Retirement\n  Freeze old deployments :freeze, after wave3, 5d\n  Archive execution history :archive, after freeze, 5d\n  Retire old cluster :milestone, retire, after archive, 0d\n",
       "nativeFile": "rc_gantt_data_platform_upgrade_native.png",
       "officialFile": "rc_gantt_data_platform_upgrade_official.png",
-      "nativeBytes": 42078,
-      "officialBytes": 95900,
-      "nativeSha256": "36dab07516d78fbef50dc5aac5d31f9a0c5e0990ca230476a68caa84fb7c33a2",
-      "officialSha256": "c67bcfa7e3fb95460d46c12f91bef2404ee9b711e670102d05bfc1991e4b7d10"
+      "nativeBytes": 42213,
+      "officialBytes": 44466,
+      "nativeSha256": "e9f64889dcf83ba0b9b44131f815ee8e9045813d293bb7c6fd423bf1781c9147",
+      "officialSha256": "7ee9626458fb0aaa400ab8371fe600f49d131e616549cc4464f54f803bf47ac1"
     },
     {
       "id": "rc_pie_cloud_cost",

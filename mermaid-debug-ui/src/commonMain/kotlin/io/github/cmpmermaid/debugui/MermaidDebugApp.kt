@@ -69,6 +69,8 @@ data class MermaidDebugLaunchOptions(
     val auditPreview: MermaidDebugPreview = MermaidDebugPreview.Native,
     val auditLayout: String = "elk",
     val openPlayground: Boolean = false,
+    val openLoadTest: Boolean = false,
+    val autoRunLoadTest: Boolean = false,
 )
 
 private enum class DebugScreen {
@@ -82,6 +84,7 @@ private enum class DebugScreen {
     Gantt,
     Pie,
     Playground,
+    LoadTest,
 }
 
 private enum class DiagramStability(
@@ -171,7 +174,11 @@ fun MermaidDebugApp(
 ) {
     var screenName by rememberSaveable {
         mutableStateOf(
-            if (options.openPlayground) DebugScreen.Playground.name else DebugScreen.DiagramTypes.name,
+            when {
+                options.openLoadTest -> DebugScreen.LoadTest.name
+                options.openPlayground -> DebugScreen.Playground.name
+                else -> DebugScreen.DiagramTypes.name
+            },
         )
     }
     val screen = DebugScreen.entries.firstOrNull { it.name == screenName }
@@ -218,6 +225,7 @@ fun MermaidDebugApp(
             val backTarget = when (screen) {
                 DebugScreen.DiagramTypes -> null
                 DebugScreen.Playground -> DebugScreen.Flowchart
+                DebugScreen.LoadTest -> DebugScreen.DiagramTypes
                 else -> DebugScreen.DiagramTypes
             }
             PlatformBackHandler(enabled = backTarget != null) {
@@ -227,14 +235,22 @@ fun MermaidDebugApp(
             when (screen) {
                 DebugScreen.DiagramTypes -> DiagramTypesScreen(
                     onOpen = { screenName = it.screen.name },
+                    onOpenLoadTest = { screenName = DebugScreen.LoadTest.name },
                 )
                 DebugScreen.Playground -> FlowchartPlaygroundScreen(
                     onBack = { screenName = DebugScreen.Flowchart.name },
                 )
+                DebugScreen.LoadTest -> ProductionLoadTestScreen(
+                    onBack = { screenName = DebugScreen.DiagramTypes.name },
+                    autoRun = options.autoRunLoadTest,
+                )
                 else -> {
                     val destination = destinations.firstOrNull { it.screen == screen }
                     if (destination == null) {
-                        DiagramTypesScreen(onOpen = { screenName = it.screen.name })
+                        DiagramTypesScreen(
+                            onOpen = { screenName = it.screen.name },
+                            onOpenLoadTest = { screenName = DebugScreen.LoadTest.name },
+                        )
                     } else {
                         UnifiedDiagramDocsScreen(
                             spec = destination.spec,
@@ -257,6 +273,7 @@ fun MermaidDebugApp(
 @Composable
 private fun DiagramTypesScreen(
     onOpen: (DiagramDestination) -> Unit,
+    onOpenLoadTest: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -300,6 +317,14 @@ private fun DiagramTypesScreen(
                         text = "Native Compose Multiplatform renderers",
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         style = MaterialTheme.typography.bodyMedium,
+                    )
+                }
+                item(key = "production-load-test") {
+                    DiagramTypeRow(
+                        title = "Production load test",
+                        description = "${stabilityCorpusCases.size} mixed complex diagrams",
+                        stability = DiagramStability.ReleaseCandidate,
+                        onClick = onOpenLoadTest,
                     )
                 }
                 destinations.forEach { destination ->

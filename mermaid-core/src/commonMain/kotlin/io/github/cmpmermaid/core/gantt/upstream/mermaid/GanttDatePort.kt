@@ -365,19 +365,89 @@ internal object GanttDatePort {
         weekStart: GanttWeekday,
     ): List<Long> {
         if (minimum > maximum || interval.count <= 0) return emptyList()
-        var cursor = alignTick(minimum, interval.unit, weekStart)
-        while (cursor < minimum) {
-            cursor = addTick(cursor, interval) ?: return emptyList()
-        }
+        var cursor = firstTickAtOrAfter(minimum, interval, weekStart)
+            ?: return emptyList()
         val result = mutableListOf<Long>()
         while (cursor <= maximum && result.size <= MAX_TICKS) {
             result += cursor
-            val next = addTick(cursor, interval) ?: break
+            val next = nextTick(cursor, interval) ?: break
             if (next <= cursor) break
             cursor = next
         }
         return if (result.size > MAX_TICKS) emptyList() else result
     }
+
+    private fun firstTickAtOrAfter(
+        minimum: Long,
+        interval: GanttTickInterval,
+        weekStart: GanttWeekday,
+    ): Long? {
+        if (interval.unit == GanttTickUnit.Millisecond) {
+            val count = interval.count.toLong()
+            val remainder = positiveModulo(minimum, count)
+            return if (remainder == 0L) minimum else minimum + count - remainder
+        }
+        var cursor = alignTick(minimum, interval.unit, weekStart)
+        if (interval.unit == GanttTickUnit.Week && interval.count > 1) {
+            val epochWeek = alignTick(0L, GanttTickUnit.Week, weekStart)
+            val weekIndex = (cursor - epochWeek) / MILLIS_PER_WEEK
+            var weeksToAdvance = positiveModulo(
+                -weekIndex,
+                interval.count.toLong(),
+            )
+            if (weeksToAdvance == 0L && cursor < minimum) {
+                weeksToAdvance = interval.count.toLong()
+            }
+            return cursor + weeksToAdvance * MILLIS_PER_WEEK
+        }
+        val baseInterval = GanttTickInterval(1, interval.unit)
+        while (cursor < minimum || !matchesTickStep(cursor, interval)) {
+            cursor = addTick(cursor, baseInterval) ?: return null
+        }
+        return cursor
+    }
+
+    private fun nextTick(
+        cursor: Long,
+        interval: GanttTickInterval,
+    ): Long? {
+        if (
+            interval.unit == GanttTickUnit.Millisecond ||
+            interval.unit == GanttTickUnit.Week
+        ) {
+            return addTick(cursor, interval)
+        }
+        val baseInterval = GanttTickInterval(1, interval.unit)
+        var next = addTick(cursor, baseInterval) ?: return null
+        while (!matchesTickStep(next, interval)) {
+            next = addTick(next, baseInterval) ?: return null
+        }
+        return next
+    }
+
+    private fun matchesTickStep(
+        millis: Long,
+        interval: GanttTickInterval,
+    ): Boolean {
+        if (interval.count == 1) return true
+        val dateTime = localDateTime(millis)
+        val field = when (interval.unit) {
+            GanttTickUnit.Millisecond -> millis
+            GanttTickUnit.Second -> dateTime.second.toLong()
+            GanttTickUnit.Minute -> dateTime.minute.toLong()
+            GanttTickUnit.Hour -> dateTime.hour.toLong()
+            GanttTickUnit.Day -> (dateTime.day - 1).toLong()
+            GanttTickUnit.Month -> (dateTime.month.number - 1).toLong()
+            GanttTickUnit.Year -> dateTime.year.toLong()
+            GanttTickUnit.Week -> return true
+        }
+        return positiveModulo(field, interval.count.toLong()) == 0L
+    }
+
+    private fun positiveModulo(
+        value: Long,
+        divisor: Long,
+    ): Long = ((value % divisor) + divisor) % divisor
 
     private fun compileInputPattern(format: String): CompiledInputPattern {
         val tokens = mutableListOf<String>()
@@ -677,6 +747,7 @@ internal object GanttDatePort {
     private const val MILLIS_PER_MINUTE = 60L * MILLIS_PER_SECOND
     private const val MILLIS_PER_HOUR = 60L * MILLIS_PER_MINUTE
     private const val MILLIS_PER_DAY = 24L * MILLIS_PER_HOUR
+    private const val MILLIS_PER_WEEK = 7L * MILLIS_PER_DAY
     private const val MAX_TICKS = 10_000
     private val DURATION = Regex("""(\d+(?:\.\d+)?)(M|ms|[dhmswy])""")
     private val TICK_INTERVAL =
