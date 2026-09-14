@@ -1,97 +1,120 @@
-# CMP Mermaid
+<div align="center">
+  <h1>CMP Mermaid</h1>
+  <p><strong>Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.</strong></p>
+  <p>Mermaid <code>12.0.0</code> semantics translated to Kotlin, rendered with Compose Canvas.</p>
+  <p>
+    <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Open the live Web demo</strong></a>
+    ·
+    <a href="#stable-support-matrix">Support matrix</a>
+    ·
+    <a href="#why-it-can-follow-mermaid-releases">Upgrade model</a>
+    ·
+    <a href="#integration">Integration</a>
+  </p>
+</div>
 
-Native Mermaid rendering for Kotlin Multiplatform and Compose Multiplatform.
-The compatibility baseline is Mermaid `12.0.0`.
+> **Current baseline:** Mermaid `12.0.0` · **Stable renderers:** 8 ·
+> **Built-in themes:** 11 · **Platforms:** Android, iOS, Desktop, Web ·
+> **Native/Official gallery cases:** 241 · **JVM tests:** 266
 
-Web demo: <https://swithun-liu.github.io/cmp-mermaid/>
+CMP Mermaid is built for screens that may contain many diagrams. Production
+rendering does not create a WebView and does not execute Mermaid.js. Parsing,
+diagram databases, layout preparation, shapes, edges, markers, text handling,
+themes, and SceneGraph conversion live in Kotlin, with the final output painted
+by Compose Canvas.
 
-The production renderer libraries do not use a WebView and do not execute
-Mermaid.js. Mermaid's Flowchart, XY Chart, Sequence, Class, State, Entity
-Relationship, Gantt, and Pie parser semantics, diagram databases, layout
-preparation, shapes, edges, markers, text handling, and SceneGraph conversion
-are translated to Kotlin. ELK layout keeps Mermaid's Kotlin-translated adapter
-around the locked `elkjs@0.9.3` worker. Android and Desktop execute it in
-QuickJS, iOS uses the system JavaScriptCore runtime, and Web uses the browser
-JavaScript runtime.
+## Native Vs Mermaid.js 12.0.0
 
-```text
-Mermaid 12 diagram source
-        |
-        v
-Kotlin preprocessing + translated parser/runtime + diagram DB
-        |
-        +--> Flowchart: Kotlin Graphlib/Dagre
-        |
-        +--> Flowchart: Kotlin Mermaid ELK adapter
-        |      +--> Android / Desktop: elkjs 0.9.3 in QuickJS
-        |      +--> iOS: elkjs 0.9.3 in JavaScriptCore
-        |      +--> Web: elkjs 0.9.3 in the browser runtime
-        |
-        +--> XY Chart: Kotlin Jison/D3/chartBuilder translation
-        |
-        +--> Sequence: Kotlin sequenceRenderer/svgDraw/actorBands translation
-        |
-        +--> Class: Kotlin classDb/classBox/unified renderer translation
-        |
-        +--> State: Kotlin stateDb/dataFetcher/unified renderer translation
-        |
-        +--> ER: Kotlin erDb/erBox/unified renderer translation
-        |
-        +--> Gantt: Kotlin ganttDb/Day.js/D3/renderer translation
-        |
-        +--> Pie: Kotlin Langium grammar/pieDb/D3/renderer translation
-        |
-        v
-Platform-independent SceneGraph
-        |
-        v
-Compose Canvas
-```
+These images use the **same Mermaid source, theme, layout mode, and fixed
+viewport**. The target is semantic and visual parity, not a pixel-for-pixel
+browser clone; small font-metric differences are expected across platforms.
 
-## Modules
+**Flowchart: dense fan-out/fan-in routing**
 
-- `mermaid-core`: common Kotlin Flowchart, XY Chart, Sequence, Class, State,
-  ER, Gantt, and Pie semantics, layout adapters, and platform-independent
-  SceneGraph.
-- `mermaid-compose`: Compose Canvas painting, typography, assets,
-  interactions, and bounded two-finger pan/zoom.
-- `mermaid-debug-ui`: optional shared Compose Multiplatform documentation,
-  galleries, and Flowchart Playground. Android and Web include an on-demand,
-  local Mermaid.js comparison; iOS and Desktop keep the native renderer only.
-- `sample/androidApp`: thin Android launcher for `mermaid-debug-ui`.
-- `sample/desktopApp`: thin Compose Desktop launcher.
-- `sample/webApp`: thin Kotlin/Wasm launcher and GitHub Pages site.
-- `sample/iosApp`: SwiftUI launcher for the shared Compose framework.
-- `tools/official-reference`: reproducible Mermaid.js reference and source
-  generation tools; these are development-only and are not part of the native
-  runtime.
+| CMP Native - Compose Canvas | Official - Mermaid.js `12.0.0` |
+| :---: | :---: |
+| <img src="docs/assets/parity-flowchart-native.png" alt="CMP Native dense flowchart" width="700"> | <img src="docs/assets/parity-flowchart-official.png" alt="Official Mermaid.js dense flowchart" width="700"> |
 
-## Integration
+The Native renderer preserves hierarchy, edge routing, arrow markers,
+fan-out/fan-in structure, and crossing hops without embedding the official SVG
+renderer.
 
-Keep production code dependent only on the renderer:
+<details>
+<summary><strong>More same-source parity examples</strong></summary>
 
-```kotlin
-dependencies {
-    implementation(project(":mermaid-compose"))
-    debugImplementation(project(":mermaid-debug-ui"))
-}
-```
+**XY Chart: mixed bar/line series and legend**
 
-The intended published artifact split is:
+| CMP Native - Compose Canvas | Official - Mermaid.js `12.0.0` |
+| :---: | :---: |
+| <img src="docs/assets/parity-xy-native.png" alt="CMP Native XY chart" width="700"> | <img src="docs/assets/parity-xy-official.png" alt="Official Mermaid.js XY chart" width="700"> |
 
-```kotlin
-implementation("io.github.cmpmermaid:mermaid-compose:<version>")
-debugImplementation("io.github.cmpmermaid:mermaid-debug-ui:<version>")
-```
+**State Diagram: labels, loops, branches, and terminal states**
 
-`mermaid-debug-ui` contributes `MermaidDebugActivity` on Android. The
-production `mermaid-compose` and `mermaid-core` manifests do not declare
-`android.permission.INTERNET`.
+| CMP Native - Compose Canvas | Official - Mermaid.js `12.0.0` |
+| :---: | :---: |
+| <img src="docs/assets/parity-state-native.png" alt="CMP Native state diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js state diagram" width="700"> |
+
+</details>
+
+## Try It Online
+
+Open <https://swithun-liu.github.io/cmp-mermaid/> to:
+
+- browse syntax and curated galleries for all eight stable diagram types;
+- switch between CMP Native and on-demand Mermaid.js `12.0.0` references;
+- edit Flowchart source in the Playground and compare ELK with Dagre;
+- switch all 11 Mermaid `12.0.0` themes from the palette menu.
+
+| Live Kotlin/Wasm Playground | Shared 11-theme picker |
+| :---: | :---: |
+| <a href="https://swithun-liu.github.io/cmp-mermaid/"><img src="docs/assets/web-playground.png" alt="CMP Mermaid live Web Playground" width="900"></a> | <img src="docs/assets/theme-picker-android.png" alt="Android diagram theme picker with 11 Mermaid themes" width="360"> |
+
+The Web demo is the shared Compose Multiplatform UI running on Kotlin/Wasm.
+The first visit downloads and compiles the renderer; browser caching makes
+later visits faster.
+
+## Stable Support Matrix
+
+| Diagram | Curated gallery pairs | Major translated coverage | Status |
+| --- | ---: | --- | :---: |
+| Flowchart | 62 | Jison/FlowDB, Dagre, ELK adapter, shapes, links, Markdown/HTML labels | Stable |
+| XY Chart | 32 | Jison/XY DB, D3 scales/ticks, chartBuilder, bar/line plots | Stable |
+| Sequence | 35 | Jison/Sequence DB, actors, 26 message forms, notes, control regions | Stable |
+| Class | 27 | Jison/Class DB, compartments, namespaces, relations, ELK/Dagre | Stable |
+| State | 25 | Jison/State DB, composites, concurrency, notes, ELK/Dagre | Stable |
+| Entity Relationship | 20 | Jison/ER DB, attributes, cardinalities, subgraphs, ELK/Dagre | Stable |
+| Gantt | 20 | Jison/Gantt DB, dates, dependencies, exclusions, milestones, ticks | Stable |
+| Pie | 20 | Langium grammar, Pie DB, D3 angles, donut, legends, palettes | Stable |
+
+Each stable renderer is gated by official documentation fixtures,
+deterministic stress tests, complex fixtures, and Native/Official screenshots.
+Unsupported legal Mermaid features return
+`MermaidError.UnsupportedFeature` instead of silently drawing a misleading
+approximation.
+
+## Platforms And Runtime
+
+| Platform | Production rendering | Official comparison |
+| --- | --- | --- |
+| Android | Compose Canvas | Debug-only local WebView |
+| iOS | Compose Canvas | Native renderer only |
+| Desktop | Compose Canvas | Native renderer only |
+| Web | Compose Canvas on Kotlin/Wasm | Debug-only local Mermaid.js iframe |
+
+`mermaid-core` and `mermaid-compose` do not declare
+`android.permission.INTERNET`. The official Mermaid.js asset and comparison UI
+belong to the optional `mermaid-debug-ui` module, not the production renderer.
+
+ELK layout uses a Kotlin-translated Mermaid adapter around a locked
+`elkjs@0.9.3` worker. Android and Desktop execute it in isolated QuickJS, iOS
+uses the system JavaScriptCore runtime, and Web uses the browser runtime.
+Mermaid.js itself is never used by the production renderer.
 
 ## Themes
 
-The native renderer translates Mermaid `12.0.0` theme variables instead of
-loading browser CSS. Hosts can switch any built-in preset at runtime:
+The renderer includes all 11 Mermaid `12.0.0` presets:
+`default`, `dark`, `forest`, `neutral`, `base`, `neo`, `neo-dark`, `redux`,
+`redux-color`, `redux-dark`, and `redux-dark-color`.
 
 ```kotlin
 MermaidDiagram(
@@ -100,10 +123,10 @@ MermaidDiagram(
 )
 ```
 
-Business-specific themes can start from a preset and use Kotlin `copy`, or use
-`MermaidTheme.withVariables(...)` when the values come from Mermaid-compatible
-configuration. The latter returns `GMResult` so invalid remote colors and
-numbers are reported explicitly.
+Business themes can start from a preset with Kotlin `copy`, or consume
+Mermaid-compatible `themeVariables` through
+`MermaidTheme.withVariables(...)`. Invalid remote values are returned as
+`GMResult.Err`.
 
 ```kotlin
 val brandTheme = MermaidTheme.preset(MermaidThemePreset.ReduxColor).copy(
@@ -114,22 +137,97 @@ val brandTheme = MermaidTheme.preset(MermaidThemePreset.ReduxColor).copy(
 )
 ```
 
-`MermaidRenderOptions.themeName`, frontmatter `theme`, and frontmatter
-`themeVariables` remain compatible with Mermaid.js. Arbitrary `themeCSS` is a
-browser DOM feature and returns `MermaidError.UnsupportedFeature` on the native
-renderer; use `MermaidTheme`, `MermaidPieTheme`, `MermaidXyChartTheme`,
-`MermaidGanttTheme`, or a custom `MermaidFontFamilyResolver` for portable
-styling.
+Frontmatter `theme` and `themeVariables` remain compatible with Mermaid.js.
+Arbitrary `themeCSS` depends on a browser DOM and therefore returns
+`MermaidError.UnsupportedFeature`; portable styling uses the typed Kotlin
+theme objects or a custom `MermaidFontFamilyResolver`.
 
-## Stability
+## Why It Can Follow Mermaid Releases
 
-- **Stable:** Flowchart, XY Chart, Sequence, Class, State, Entity Relationship,
-  Gantt, and Pie against the Mermaid `12.0.0` compatibility contracts.
+This project is not maintained by visually guessing at official output. It
+uses a source-mapped translation workflow:
 
-Stable renderers are covered by official documentation fixtures, deterministic
-stress cases, and Native/Official visual comparisons. Syntax that cannot be
-translated faithfully returns `MermaidError.UnsupportedFeature` rather than a
-misleading approximation.
+1. **Freeze a baseline.** Mermaid, Jison, D3, Marked, Dagre, and ELK versions
+   and relevant upstream SHA-256 values are recorded.
+2. **Map upstream ownership.** Each Kotlin parser, DB, layout, shape, edge,
+   theme, and renderer module names the Mermaid source file it translates.
+3. **Generate deterministic artifacts.** Jison tables, regex rules, HTML
+   entities, fixtures, and the ELK worker are regenerated from pinned inputs.
+4. **Translate only the upstream delta.** A Mermaid upgrade starts with diffs
+   of mapped files, then ports changed behavior inside the same Kotlin
+   boundaries.
+5. **Re-run parity gates.** JVM tests, deterministic random tests, every
+   platform compile, official documentation fixtures, and complete
+   Native/Official screenshot galleries must pass before a renderer is marked
+   stable.
+
+Following a new Mermaid release is therefore **incremental and reviewable, not
+automatic**. If Mermaid changes a grammar production, DB method, shape, layout
+stage, or theme variable, the matching Kotlin boundary and its parity tests
+identify where the update belongs.
+
+Source maps:
+[Flowchart](docs/upstream-flowchart-map.md) ·
+[XY Chart](docs/upstream-xychart-map.md) ·
+[Sequence](docs/upstream-sequence-map.md) ·
+[Class](docs/upstream-class-map.md) ·
+[State](docs/upstream-state-map.md) ·
+[ER](docs/upstream-er-map.md) ·
+[Gantt](docs/upstream-gantt-map.md) ·
+[Pie](docs/upstream-pie-map.md)
+
+```text
+Mermaid source
+    -> Kotlin preprocessor + translated parser/runtime + diagram DB
+    -> translated Dagre/D3/rendering logic or Kotlin ELK adapter
+    -> platform-independent SceneGraph
+    -> Compose Canvas
+```
+
+## Integration
+
+Until the first published artifact release, consume the repository modules:
+
+```kotlin
+dependencies {
+    implementation(project(":mermaid-compose"))
+    debugImplementation(project(":mermaid-debug-ui"))
+}
+```
+
+The planned artifact split keeps the comparison UI out of production builds:
+
+```kotlin
+implementation("io.github.cmpmermaid:mermaid-compose:<version>")
+debugImplementation("io.github.cmpmermaid:mermaid-debug-ui:<version>")
+```
+
+Basic Compose usage:
+
+```kotlin
+MermaidDiagram(
+    source = """
+        flowchart LR
+          Parse --> Layout --> SceneGraph --> Canvas
+    """.trimIndent(),
+    modifier = Modifier.fillMaxWidth(),
+)
+```
+
+## Modules
+
+- `mermaid-core`: common Kotlin diagram semantics, layout adapters, typed
+  errors, and platform-independent SceneGraph.
+- `mermaid-compose`: Compose Canvas painting, typography, assets,
+  interactions, and bounded pan/zoom.
+- `mermaid-debug-ui`: optional shared docs, galleries, Playground, themes, and
+  Native/Official comparison UI.
+- `sample/androidApp`, `sample/iosApp`, `sample/desktopApp`, `sample/webApp`:
+  thin platform launchers around the shared debug UI.
+- `tools/official-reference`: reproducible Mermaid.js references and source
+  generation tools; development-only, never part of the native runtime.
+
+## Detailed Compatibility
 
 ## Flowchart Coverage
 
