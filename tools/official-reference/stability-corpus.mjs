@@ -2026,4 +2026,153 @@ requirementDiagram
   security_suite - verifies -> least_privilege
 `,
   },
+  {
+    id: 'rc_gitgraph_release_train',
+    kind: 'gitgraph',
+    title: 'Multi-branch release train',
+    scenario: 'A release train integrates nested feature work, a hotfix cherry-pick, and a tagged merge.',
+    layout: 'dagre',
+    aspectRatio: 1.8,
+    source: String.raw`
+gitGraph LR:
+  commit id: "bootstrap"
+  commit id: "baseline"
+  branch develop order: 2
+  commit id: "api-contract"
+  branch experiment order: 3
+  commit id: "prototype" type: HIGHLIGHT
+  checkout develop
+  commit id: "integration"
+  merge experiment id: "accept-experiment"
+  branch release order: 1
+  commit id: "candidate" tag: "rc.1"
+  checkout main
+  commit id: "urgent-fix" type: REVERSE
+  checkout release
+  cherry-pick id: "urgent-fix"
+  commit id: "verified"
+  checkout main
+  merge release id: "v2.0.0" tag: "stable"
+`,
+  },
+  {
+    id: 'rc_gitgraph_parallel_bottom_to_top',
+    kind: 'gitgraph',
+    title: 'Parallel bottom-to-top delivery',
+    scenario: 'Independent client and service work share parent ranks before a bottom-to-top merge.',
+    layout: 'dagre',
+    aspectRatio: 1.45,
+    source: String.raw`
+---
+config:
+  gitGraph:
+    parallelCommits: true
+---
+gitGraph BT:
+  commit id: "approved-plan"
+  branch service order: 2
+  commit id: "service-api"
+  commit id: "service-tests"
+  checkout main
+  branch client order: 1
+  commit id: "client-ui"
+  commit id: "client-tests"
+  checkout main
+  commit id: "release-notes"
+  merge service id: "service-ready"
+  merge client id: "delivery-ready" tag: "candidate"
+`,
+  },
+  {
+    id: 'rc_gitgraph_ordered_top_to_bottom',
+    kind: 'gitgraph',
+    title: 'Ordered top-to-bottom branches',
+    scenario: 'Explicit fractional branch orders place verification lanes around a reordered main branch.',
+    layout: 'dagre',
+    aspectRatio: 1.35,
+    source: String.raw`
+---
+config:
+  gitGraph:
+    mainBranchOrder: 2
+---
+gitGraph TB:
+  commit id: "proposal"
+  branch implementation order: 1
+  commit id: "build"
+  branch validation order: 4
+  commit id: "integration-tests" type: HIGHLIGHT
+  checkout implementation
+  commit id: "review"
+  merge validation id: "verified"
+  checkout main
+  commit id: "approval"
+  merge implementation id: "accepted" tag: "ready"
+`,
+  },
+  {
+    id: 'rc_gitgraph_metadata_and_theme',
+    kind: 'gitgraph',
+    title: 'Accessible themed history',
+    scenario: 'Metadata, Unicode, custom theme variables, and quoted branch names remain visible.',
+    layout: 'dagre',
+    aspectRatio: 1.65,
+    source: String.raw`
+---
+title: Regional release history
+config:
+  theme: base
+  themeVariables:
+    git0: "#0f766e"
+    git1: "#c2410c"
+    gitInv0: "#ccfbf1"
+    gitBranchLabel0: "#ffffff"
+    commitLineColor: "#475569"
+    commitLabelColor: "#0f172a"
+    tagLabelColor: "#134e4a"
+    tagLabelBackground: "#ccfbf1"
+    tagLabelBorder: "#0f766e"
+    textColor: "#0f172a"
+---
+gitGraph
+  accTitle: Regional release history
+  accDescr {
+    The release candidate is validated before it is merged into the main branch.
+  }
+  commit id: "准备"
+  branch "release candidate"
+  commit id: "verify-日本語" type: HIGHLIGHT tag: "候选版本"
+  checkout main
+  commit id: "approval"
+  merge "release candidate" id: "发布" tag: "v3"
+`,
+  },
+  {
+    id: 'rc_gitgraph_horizontal_labels',
+    kind: 'gitgraph',
+    title: 'Long horizontal commit labels',
+    scenario: 'Horizontal labels, hidden branch decorations, merges, and cherry-picks remain unclipped.',
+    layout: 'dagre',
+    aspectRatio: 2.1,
+    source: String.raw`
+---
+config:
+  gitGraph:
+    showBranches: false
+    rotateCommitLabel: false
+---
+gitGraph LR:
+  commit id: "initialize-release-coordination"
+  branch verification
+  commit id: "complete-cross-platform-validation"
+  checkout main
+  commit id: "publish-release-documentation"
+  merge verification id: "accept-validation-results"
+  branch maintenance
+  commit id: "prepare-follow-up-correction"
+  checkout main
+  cherry-pick id: "prepare-follow-up-correction"
+  commit id: "close-release-window" tag: "complete"
+`,
+  },
 ];

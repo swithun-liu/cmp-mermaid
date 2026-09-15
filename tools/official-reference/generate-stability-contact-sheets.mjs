@@ -50,6 +50,7 @@ const kinds = [
   'pie',
   'journey',
   'requirement',
+  'gitgraph',
 ];
 const kindTitles = {
   flowchart: 'Flowchart',
@@ -62,6 +63,7 @@ const kindTitles = {
   pie: 'Pie',
   journey: 'User Journey',
   requirement: 'Requirement',
+  gitgraph: 'Git Graph',
 };
 const selectedKinds = kinds.filter(
   (kind) => corpusKind === 'all' || corpusKind === kind,

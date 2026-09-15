@@ -18,6 +18,7 @@ class MermaidDebugActivity : ComponentActivity() {
                 intent.getStringExtra(EXTRA_AUDIT_PREVIEW),
             ),
             auditLayout = intent.getStringExtra(EXTRA_AUDIT_LAYOUT) ?: "elk",
+            auditThemeName = intent.getStringExtra(EXTRA_AUDIT_THEME),
             openPlayground = intent.getBooleanExtra(EXTRA_OPEN_PLAYGROUND, false),
             playgroundDiagramId =
                 intent.getStringExtra(EXTRA_PLAYGROUND_DIAGRAM_ID) ?: "flowchart",
@@ -36,6 +37,7 @@ class MermaidDebugActivity : ComponentActivity() {
         const val EXTRA_AUDIT_DEMO_ID = "auditDemoId"
         const val EXTRA_AUDIT_PREVIEW = "auditPreview"
         const val EXTRA_AUDIT_LAYOUT = "auditLayout"
+        const val EXTRA_AUDIT_THEME = "auditTheme"
         const val EXTRA_OPEN_PLAYGROUND = "openPlayground"
         const val EXTRA_PLAYGROUND_DIAGRAM_ID = "playgroundDiagramId"
         const val EXTRA_PLAYGROUND_PREVIEW = "playgroundPreview"

@@ -183,6 +183,32 @@ export const requiredFeaturesByKind = {
     'unicode',
     'comments',
   ],
+  gitgraph: [
+    'commits',
+    'custom-ids',
+    'messages',
+    'tags',
+    'commit-types',
+    'branches',
+    'quoted-branches',
+    'checkout',
+    'switch',
+    'branch-order',
+    'main-branch-config',
+    'merges',
+    'merge-customization',
+    'cherry-pick',
+    'merge-cherry-pick',
+    'orientations',
+    'parallel-commits',
+    'visibility-config',
+    'frontmatter-config',
+    'title',
+    'accessibility',
+    'theme-variables',
+    'unicode',
+    'comments',
+  ],
 };
 
 const flowchartCases = [
@@ -2114,6 +2140,248 @@ requirementDiagram
   }),
 ];
 
+const gitGraphCases = [
+  ...expandTemplate({
+    kind: 'gitgraph',
+    id: 'commit_metadata',
+    layout: 'dagre',
+    aspectRatio: 1.8,
+    features: [
+      'commits',
+      'custom-ids',
+      'messages',
+      'tags',
+      'commit-types',
+      'frontmatter-config',
+      'title',
+      'accessibility',
+      'unicode',
+      'comments',
+    ],
+    variants: [
+      {
+        slug: 'release',
+        title: 'Release commit metadata',
+        scenario: 'A release history combines custom IDs, messages, tags, symbols, and metadata.',
+        diagramTitle: 'Release commit history',
+        accessibilityTitle: 'Release commits',
+        first: 'plan',
+        second: 'rollback',
+        third: '发布',
+        tag: 'v4.0.0',
+      },
+      {
+        slug: 'migration',
+        title: 'Migration commit metadata',
+        scenario: 'A migration history combines custom IDs, messages, tags, symbols, and metadata.',
+        diagramTitle: 'Migration commit history',
+        accessibilityTitle: 'Migration commits',
+        first: 'inventory',
+        second: 'restore-point',
+        third: '切换',
+        tag: 'migration-ready',
+      },
+    ],
+    source: (value) => String.raw`
+---
+title: ${value.diagramTitle}
+---
+gitGraph
+  accTitle: ${value.accessibilityTitle}
+  accDescr {
+    Commit identifiers and release markers describe the verified delivery history.
+  }
+  %% Every public commit attribute is represented.
+  commit id: "${value.first}" msg: "Create the delivery plan"
+  commit id: "${value.second}" msg: "Record a safe rollback point" type: REVERSE
+  commit id: "${value.third}" msg: "Publish the verified result" type: HIGHLIGHT tag: "${value.tag}"
+`,
+    expectedTexts: (value) => [value.diagramTitle, value.third, value.tag],
+  }),
+  ...expandTemplate({
+    kind: 'gitgraph',
+    id: 'branch_merge',
+    layout: 'dagre',
+    aspectRatio: 1.75,
+    features: [
+      'branches',
+      'quoted-branches',
+      'checkout',
+      'switch',
+      'branch-order',
+      'main-branch-config',
+      'merges',
+      'merge-customization',
+    ],
+    variants: [
+      {
+        slug: 'delivery',
+        title: 'Ordered delivery branches',
+        scenario: 'Delivery and hotfix lanes use explicit order, both switching commands, and customized merges.',
+        main: 'trunk',
+        feature: 'delivery lane',
+        hotfix: 'urgent-fix',
+        merge: 'accept-delivery',
+        tag: 'reviewed',
+      },
+      {
+        slug: 'platform',
+        title: 'Ordered platform branches',
+        scenario: 'Platform and recovery lanes use explicit order, both switching commands, and customized merges.',
+        main: 'stable',
+        feature: 'platform lane',
+        hotfix: 'recovery-fix',
+        merge: 'accept-platform',
+        tag: 'approved',
+      },
+    ],
+    source: (value) => String.raw`
+---
+config:
+  gitGraph:
+    mainBranchName: "${value.main}"
+    mainBranchOrder: 2
+---
+gitGraph LR:
+  commit id: "root"
+  branch "${value.feature}" order: 1
+  commit id: "feature-1"
+  switch ${value.main}
+  branch ${value.hotfix} order: 3
+  commit id: "fix-1"
+  checkout "${value.feature}"
+  merge ${value.hotfix} id: "${value.merge}" tag: "${value.tag}" type: REVERSE
+  switch ${value.main}
+  merge "${value.feature}" id: "publish"
+`,
+    expectedTexts: (value) => [value.main, value.feature, value.merge, value.tag],
+  }),
+  ...expandTemplate({
+    kind: 'gitgraph',
+    id: 'cherry_orientation',
+    layout: 'dagre',
+    aspectRatio: 1.45,
+    features: [
+      'branches',
+      'checkout',
+      'merges',
+      'cherry-pick',
+      'merge-cherry-pick',
+      'orientations',
+      'parallel-commits',
+    ],
+    variants: [
+      {
+        slug: 'top_to_bottom',
+        title: 'Top-to-bottom cherry-pick history',
+        scenario: 'Top-to-bottom parallel ranks include normal and merge cherry-picks.',
+        direction: 'TB',
+        root: 'tb-root',
+        source: 'tb-change',
+        merge: 'tb-merge',
+      },
+      {
+        slug: 'bottom_to_top',
+        title: 'Bottom-to-top cherry-pick history',
+        scenario: 'Bottom-to-top parallel ranks include normal and merge cherry-picks.',
+        direction: 'BT',
+        root: 'bt-root',
+        source: 'bt-change',
+        merge: 'bt-merge',
+      },
+    ],
+    source: (value) => String.raw`
+---
+config:
+  gitGraph:
+    parallelCommits: true
+---
+gitGraph ${value.direction}:
+  commit id: "${value.root}"
+  branch develop
+  branch release
+  commit id: "release-base"
+  checkout develop
+  commit id: "${value.source}"
+  checkout main
+  commit id: "main-change"
+  merge develop id: "${value.merge}"
+  branch hotfix
+  commit id: "independent-fix"
+  checkout release
+  cherry-pick id: "${value.merge}" parent: "${value.source}"
+  cherry-pick id: "independent-fix"
+`,
+    expectedTexts: (value) => [value.root, value.merge],
+  }),
+  ...expandTemplate({
+    kind: 'gitgraph',
+    id: 'configured_visibility',
+    layout: 'dagre',
+    aspectRatio: 1.85,
+    features: [
+      'branches',
+      'merges',
+      'visibility-config',
+      'frontmatter-config',
+      'title',
+      'accessibility',
+      'theme-variables',
+    ],
+    variants: [
+      {
+        slug: 'hidden_branches',
+        title: 'Hidden branch decorations',
+        scenario: 'Branch labels and spines are hidden while commits, tags, and metadata remain visible.',
+        diagramTitle: 'Hidden branch release',
+        showBranches: false,
+        showCommitLabel: true,
+        rotateCommitLabel: true,
+        tag: 'branchless',
+      },
+      {
+        slug: 'hidden_commits',
+        title: 'Hidden commit labels',
+        scenario: 'Commit labels are hidden while branch lanes, tags, and metadata remain visible.',
+        diagramTitle: 'Compact release history',
+        showBranches: true,
+        showCommitLabel: false,
+        rotateCommitLabel: false,
+        tag: 'compact',
+      },
+    ],
+    source: (value) => String.raw`
+---
+title: ${value.diagramTitle}
+config:
+  theme: base
+  gitGraph:
+    diagramPadding: 16
+    showBranches: ${value.showBranches}
+    showCommitLabel: ${value.showCommitLabel}
+    rotateCommitLabel: ${value.rotateCommitLabel}
+  themeVariables:
+    git0: "#0f766e"
+    git1: "#c2410c"
+    commitLineColor: "#475569"
+    tagLabelColor: "#134e4a"
+    tagLabelBackground: "#ccfbf1"
+    tagLabelBorder: "#0f766e"
+    textColor: "#0f172a"
+---
+gitGraph
+  accTitle: ${value.diagramTitle}
+  accDescr: The configured graph keeps release metadata available.
+  commit id: "baseline"
+  branch verification
+  commit id: "validated" type: HIGHLIGHT
+  checkout main
+  merge verification id: "published" tag: "${value.tag}"
+`,
+    expectedTexts: (value) => [value.diagramTitle, value.tag],
+  }),
+];
+
 export const conformanceCases = [
   ...flowchartCases,
   ...xyChartCases,
@@ -2125,6 +2393,7 @@ export const conformanceCases = [
   ...pieCases,
   ...journeyCases,
   ...requirementCases,
+  ...gitGraphCases,
 ];
 
 export const cases = [

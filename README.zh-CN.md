@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>在线 Web Demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>2,560 案例视觉报告</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>2,816 案例视觉报告</strong></a>
     ·
     <a href="docs/stability-report.md">完整 Stable 报告</a>
     ·
@@ -30,12 +30,12 @@
 
 > [!IMPORTANT]
 > **CMP Mermaid 在文档声明的 Mermaid `12.0.0` 支持范围内已达到
-> Stable。** 当前支持的 10 类图均已通过独立生产场景语料、
-> 2,560 案例 Native/Official 视觉矩阵、确定性重放、独立随机压力测试、
+> Stable。** 当前支持的 11 类图均已通过独立生产场景语料、
+> 2,816 案例 Native/Official 视觉矩阵、确定性重放、独立随机压力测试、
 > 运行时负载测试和跨平台构建。
 >
-> 建议先查看 **[2,560 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**，
-> 其中包含 5,120 张截图和 160 页分页对比图。
+> 建议先查看 **[2,816 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**，
+> 其中包含 5,632 张截图和 176 页分页对比图。
 > **[完整 Stable 报告](docs/stability-report.md)** 还包含 Stable 判定、
 > 性能、平台、安全和复现证据。
 
@@ -50,28 +50,28 @@ Stable 结论来自仓库内可复现的测试证据，而不是 Demo Gallery �
 
 | 证据 | 结果 |
 | --- | ---: |
-| 支持的图表类型 | 10 |
-| 独立生产场景 | 132 |
-| 已声明能力覆盖率 | 162/162 |
-| 大规模视觉矩阵 | 2,560 个唯一源码，每类图 256 个 |
-| Native/Official 截图 | 5,120 张矩阵截图，另有 264 张独立语料截图 |
-| 人工视觉审查 | 132 个通过，0 个阻塞 |
-| 自动视觉几何检查 | 2,560/2,560 个矩阵对和 132/132 个独立对通过 |
-| 确定性 SceneGraph 重放 | 132 个通过，0 个不一致 |
-| 内置主题矩阵 | 110/110 |
-| 独立生成的 Native 压力输入 | 2,560 |
-| JVM 测试 | 318 个通过，0 个失败 |
-| Core 生产场景压力测试 | 660 次渲染，P95 为 68ms |
+| 支持的图表类型 | 11 |
+| 独立生产场景 | 145 |
+| 已声明能力覆盖率 | 186/186 |
+| 大规模视觉矩阵 | 2,816 个唯一源码，每类图 256 个 |
+| Native/Official 截图 | 5,632 张矩阵截图，另有 290 张独立语料截图 |
+| 人工视觉审查 | 145 个通过，0 个阻塞 |
+| 自动视觉几何检查 | 2,816/2,816 个矩阵对和 145/145 个独立对通过 |
+| 确定性 SceneGraph 重放 | 145 个通过，0 个不一致 |
+| 内置主题矩阵 | 121/121 |
+| 独立生成的 Native 压力输入 | 2,816 |
+| JVM 测试 | 356 个通过，0 个失败 |
+| Core 生产场景压力测试 | 725 次渲染，P95 为 61ms |
 | 运行时负载矩阵 | Android、iOS、Desktop、Web 全部通过 |
 
 | 证据文档 | 内容 |
 | --- | --- |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
-| **[全部 2,560 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 160 页分页对比图，每页包含 16 组同源码结果 |
-| [生产能力矩阵](docs/production-capability-matrix.md) | 162 项被独立验证的能力 |
+| **[全部 2,816 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 176 页分页对比图，每页包含 16 组同源码结果 |
+| [生产能力矩阵](docs/production-capability-matrix.md) | 186 项被独立验证的能力 |
 | [生产就绪说明](docs/production-readiness.md) | 代码级 Stable 标准、资源预算和接入指引 |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | 当前 JVM、构建、发布、安全、APK、视觉和 Web 负载自动化结果 |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 每周或手动执行的 10 路矩阵截图、几何门禁和可下载证据 |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 每周或手动执行的 11 路矩阵截图、几何门禁和可下载证据 |
 
 Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 Mermaid 程序均已实现。
 对于无法忠实表达的合法特性，系统会返回
@@ -103,9 +103,9 @@ Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native State Diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js State Diagram" width="700"> |
 
-测试报告包含 132 个独立生产场景对比，以及由 2,560 个唯一 Mermaid 源码组成的
+测试报告包含 145 个独立生产场景对比，以及由 2,816 个唯一 Mermaid 源码组成的
 独立大规模矩阵：
-**[查看全部 160 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
+**[查看全部 176 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
 
 </details>
 
@@ -123,8 +123,9 @@ Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 
 | Pie | **Stable** | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
 | User Journey | **Stable** | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
 | Requirement | **Stable** | 13 | SysML 类型与字段、元素、七类关系、Dagre/ELK、样式 | [兼容性](docs/requirement-compatibility.md) |
+| Git Graph | **Stable** | 13 | Langium 语法、分支、合并、cherry-pick、方向与主题 | [兼容性](docs/gitgraph-compatibility.md) |
 
-在各自文档声明的兼容范围内，10 类图均支持 Mermaid frontmatter、metadata、
+在各自文档声明的兼容范围内，11 类图均支持 Mermaid frontmatter、metadata、
 Unicode 和相关主题变量。
 
 ## 在线体验
@@ -216,7 +217,6 @@ fun Diagram(source: String) {
 ```
 
 在 `build/maven-repository` 下生成全部 KMP 发布制品：
-
 ```bash
 ./gradlew \
   :mermaid-core:publishAllPublicationsToBuildRepository \
@@ -267,7 +267,9 @@ CMP Mermaid 采用带源码映射的翻译工作流，而不是根据截图重�
 [ER](docs/upstream-er-map.md) ·
 [Gantt](docs/upstream-gantt-map.md) ·
 [Pie](docs/upstream-pie-map.md) ·
-[User Journey](docs/upstream-journey-map.md)
+[User Journey](docs/upstream-journey-map.md) ·
+[Requirement](docs/upstream-requirement-map.md) ·
+[Git Graph](docs/upstream-gitgraph-map.md)
 
 ## 验证
 

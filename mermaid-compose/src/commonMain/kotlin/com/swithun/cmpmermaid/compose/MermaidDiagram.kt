@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ImageBitmap
@@ -75,6 +76,7 @@ import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
 import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.SceneElement
+import com.swithun.cmpmermaid.core.SceneLinearGradient
 import com.swithun.cmpmermaid.core.SceneNodeInteraction
 import com.swithun.cmpmermaid.core.ScenePath
 import com.swithun.cmpmermaid.core.ScenePathCommand
@@ -586,6 +588,7 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
     val bounds = shape.bounds.toComposeRect()
     val fill = shape.fill.toComposeColor()
     val stroke = shape.stroke.toComposeColor()
+    val strokeGradient = shape.strokeGradient?.toComposeBrush(bounds)
     val geometry = shape.geometry
     shape.shadow?.let { shadow ->
         drawSceneShapeShadow(shape, bounds, shadow)
@@ -598,24 +601,64 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
             pathEffect = shape.dashIntervals.toPathEffect()
                 ?: shape.strokePattern.toPathEffect(),
         )
-        if (shape.kind == SceneShapeKind.RoundedRectangle) {
-            val radius = CornerRadius(shape.cornerRadius, shape.cornerRadius)
-            drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
-            drawRoundRect(
-                color = stroke,
-                topLeft = bounds.topLeft,
-                size = bounds.size,
-                cornerRadius = radius,
-                style = strokeStyle,
-            )
-        } else {
-            drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
-            drawRect(
-                color = stroke,
-                topLeft = bounds.topLeft,
-                size = bounds.size,
-                style = strokeStyle,
-            )
+        when (shape.kind.primitiveCanvasShape()) {
+            PrimitiveCanvasShape.Oval -> {
+                drawOval(fill, bounds.topLeft, bounds.size, style = Fill)
+                if (strokeGradient == null) {
+                    drawOval(
+                        color = stroke,
+                        topLeft = bounds.topLeft,
+                        size = bounds.size,
+                        style = strokeStyle,
+                    )
+                } else {
+                    drawOval(
+                        brush = strokeGradient,
+                        topLeft = bounds.topLeft,
+                        size = bounds.size,
+                        style = strokeStyle,
+                    )
+                }
+            }
+            PrimitiveCanvasShape.RoundedRectangle -> {
+                val radius = CornerRadius(shape.cornerRadius, shape.cornerRadius)
+                drawRoundRect(fill, bounds.topLeft, bounds.size, radius, style = Fill)
+                if (strokeGradient == null) {
+                    drawRoundRect(
+                        color = stroke,
+                        topLeft = bounds.topLeft,
+                        size = bounds.size,
+                        cornerRadius = radius,
+                        style = strokeStyle,
+                    )
+                } else {
+                    drawRoundRect(
+                        brush = strokeGradient,
+                        topLeft = bounds.topLeft,
+                        size = bounds.size,
+                        cornerRadius = radius,
+                        style = strokeStyle,
+                    )
+                }
+            }
+            PrimitiveCanvasShape.Rectangle -> {
+                drawRect(fill, bounds.topLeft, bounds.size, style = Fill)
+                if (strokeGradient == null) {
+                    drawRect(
+                        color = stroke,
+                        topLeft = bounds.topLeft,
+                        size = bounds.size,
+                        style = strokeStyle,
+                    )
+                } else {
+                    drawRect(
+                        brush = strokeGradient,
+                        topLeft = bounds.topLeft,
+                        size = bounds.size,
+                        style = strokeStyle,
+                    )
+                }
+            }
         }
         return
     }
@@ -641,16 +684,40 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
                 },
                 style = primitive.strokeStyle(shape),
             )
-            SceneShapePaint.Stroke -> drawPath(
-                path,
-                (primitiveStroke ?: stroke).let { color ->
-                    color.copy(alpha = color.alpha * opacity)
-                },
-                style = primitive.strokeStyle(shape),
-            )
+            SceneShapePaint.Stroke -> when {
+                primitiveStroke != null -> drawPath(
+                    path = path,
+                    color = primitiveStroke.copy(alpha = primitiveStroke.alpha * opacity),
+                    style = primitive.strokeStyle(shape),
+                )
+                strokeGradient != null -> drawPath(
+                    path = path,
+                    brush = strokeGradient,
+                    alpha = opacity,
+                    style = primitive.strokeStyle(shape),
+                )
+                else -> drawPath(
+                    path = path,
+                    color = stroke.copy(alpha = stroke.alpha * opacity),
+                    style = primitive.strokeStyle(shape),
+                )
+            }
         }
     }
 }
+
+private fun SceneLinearGradient.toComposeBrush(bounds: Rect): Brush =
+    Brush.linearGradient(
+        colors = listOf(startColor.toComposeColor(), endColor.toComposeColor()),
+        start = Offset(
+            x = bounds.left + bounds.width * start.x,
+            y = bounds.top + bounds.height * start.y,
+        ),
+        end = Offset(
+            x = bounds.left + bounds.width * end.x,
+            y = bounds.top + bounds.height * end.y,
+        ),
+    )
 
 private fun DrawScope.drawSceneShapeShadow(
     shape: SceneShape,
@@ -671,6 +738,13 @@ private fun DrawScope.drawSceneShapeShadow(
             translate(sample.offset.x, sample.offset.y)
         }) {
             when {
+                primitivePath == null &&
+                    shape.kind.primitiveCanvasShape() == PrimitiveCanvasShape.Oval -> drawOval(
+                    color = color,
+                    topLeft = bounds.topLeft,
+                    size = bounds.size,
+                    style = Fill,
+                )
                 primitivePath == null -> drawRect(
                     color = color,
                     topLeft = bounds.topLeft,
@@ -1833,7 +1907,9 @@ private fun DrawScope.drawSceneText(
         color = element.color.toComposeColor(),
         fontSize = normalizedSp(element.fontSize, density, fontScale),
         lineHeight = normalizedSp(element.fontSize * element.lineHeight, density, fontScale),
-        textGeometricTransform = TextGeometricTransform(scaleX = MERMAID_FONT_WIDTH_SCALE),
+        textGeometricTransform = TextGeometricTransform(
+            scaleX = mermaidTextHorizontalScale(element.horizontalScale),
+        ),
         fontFamily = element.fontFamily
             ?.let(fontFamilyResolver::resolve)
             ?: FontFamily.Default,
@@ -1853,7 +1929,7 @@ private fun DrawScope.drawSceneText(
         ),
         style = style,
         softWrap = element.softWrap,
-        maxLines = if (element.softWrap) 8 else 1,
+        maxLines = mermaidTextMaxLines(element.text, element.softWrap),
         constraints = if (element.softWrap) {
             Constraints(maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1))
         } else {
@@ -1889,6 +1965,30 @@ private fun DrawScope.drawSceneText(
     }
 }
 
+internal enum class PrimitiveCanvasShape {
+    Rectangle,
+    RoundedRectangle,
+    Oval,
+}
+
+internal fun SceneShapeKind.primitiveCanvasShape(): PrimitiveCanvasShape = when (this) {
+    SceneShapeKind.Circle -> PrimitiveCanvasShape.Oval
+    SceneShapeKind.RoundedRectangle -> PrimitiveCanvasShape.RoundedRectangle
+    else -> PrimitiveCanvasShape.Rectangle
+}
+
+internal fun mermaidTextMaxLines(
+    text: String,
+    softWrap: Boolean,
+): Int = if (softWrap) {
+    MAX_SOFT_TEXT_LINES
+} else {
+    text.count { character -> character == '\n' } + 1
+}
+
+internal fun mermaidTextHorizontalScale(override: Float?): Float =
+    override ?: MERMAID_FONT_WIDTH_SCALE
+
 private fun TextMetricsRequest.toTextStyle(
     density: Float,
     fontScale: Float,
@@ -1896,7 +1996,9 @@ private fun TextMetricsRequest.toTextStyle(
 ): TextStyle = TextStyle(
     fontSize = normalizedSp(fontSize, density, fontScale),
     lineHeight = normalizedSp(fontSize * lineHeight, density, fontScale),
-    textGeometricTransform = TextGeometricTransform(scaleX = MERMAID_FONT_WIDTH_SCALE),
+    textGeometricTransform = TextGeometricTransform(
+        scaleX = mermaidTextHorizontalScale(horizontalScale),
+    ),
     fontFamily = fontFamily
         ?.let(fontFamilyResolver::resolve)
         ?: FontFamily.Default,
@@ -2057,6 +2159,7 @@ private val LOW_SURROGATE_RANGE = 0xDC00..0xDFFF
 private const val HIGH_SURROGATE_START = 0xD800
 private const val LOW_SURROGATE_START = 0xDC00
 private const val SUPPLEMENTARY_CODE_POINT_OFFSET = 0x10000
+private const val MAX_SOFT_TEXT_LINES = 8
 
 private fun com.swithun.cmpmermaid.core.SceneTextSpan.toComposeTextDecoration(): TextDecoration? {
     val decorations = buildList {

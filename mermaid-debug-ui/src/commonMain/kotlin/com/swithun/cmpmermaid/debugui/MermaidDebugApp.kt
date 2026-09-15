@@ -51,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import com.swithun.cmpmermaid.compose.MermaidDiagram
 import com.swithun.cmpmermaid.core.MermaidCompatibility
 import com.swithun.cmpmermaid.core.MermaidTheme
+import com.swithun.cmpmermaid.core.MermaidThemePreset
 import com.swithun.cmpmermaid.debugui.generated.productionCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.stabilityCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.visualParityCorpusCases
@@ -70,6 +71,7 @@ data class MermaidDebugLaunchOptions(
     val auditDemoId: String? = null,
     val auditPreview: MermaidDebugPreview = MermaidDebugPreview.Native,
     val auditLayout: String = "elk",
+    val auditThemeName: String? = null,
     val openPlayground: Boolean = false,
     val playgroundDiagramId: String = "flowchart",
     val playgroundPreview: MermaidDebugPreview = MermaidDebugPreview.Native,
@@ -89,6 +91,7 @@ private enum class DebugScreen {
     Pie,
     Journey,
     Requirement,
+    GitGraph,
     Playground,
     LoadTest,
 }
@@ -166,6 +169,12 @@ private val destinations = listOf(
         DebugScreen.Requirement,
         requirementDiagramDocsSpec,
         "SysML requirements, elements, and typed relationships",
+        DiagramStability.Stable,
+    ),
+    DiagramDestination(
+        DebugScreen.GitGraph,
+        gitGraphDiagramDocsSpec,
+        "Commits, branches, merges, cherry-picks, tags, and three orientations",
         DiagramStability.Stable,
     ),
 )
@@ -275,6 +284,7 @@ fun MermaidDebugApp(
                     demo = auditCase.second,
                     preview = options.auditPreview,
                     layoutOverride = options.auditLayout,
+                    themeNameOverride = options.auditThemeName,
                 )
                 return@Box
             }
@@ -479,12 +489,16 @@ private fun DiagramAuditScreen(
     demo: DiagramDocsCase,
     preview: MermaidDebugPreview,
     layoutOverride: String,
+    themeNameOverride: String?,
 ) {
     val usesCorpusLayout = spec.id == "flowchart" || spec.id == "requirement"
-    var auditStatus by remember(demo.id, preview, layoutOverride) {
+    val themePreset = MermaidThemePreset.entries.firstOrNull { preset ->
+        preset.configName.equals(themeNameOverride, ignoreCase = true)
+    } ?: spec.initialTheme
+    var auditStatus by remember(demo.id, preview, layoutOverride, themePreset) {
         mutableStateOf(AUDIT_STATUS_LOADING)
     }
-    LaunchedEffect(demo.id, preview, layoutOverride) {
+    LaunchedEffect(demo.id, preview, layoutOverride, themePreset) {
         if (preview == MermaidDebugPreview.Native) {
             withFrameNanos { }
             withFrameNanos { }
@@ -506,17 +520,17 @@ private fun DiagramAuditScreen(
             MermaidDebugPreview.Native -> MermaidDiagram(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
-                theme = MermaidTheme.preset(spec.initialTheme),
+                theme = MermaidTheme.preset(themePreset),
                 options = spec.nativeOptions.copy(
                     layout = if (usesCorpusLayout) layoutOverride else spec.nativeOptions.layout,
-                    themeName = spec.initialTheme.configName,
+                    themeName = themePreset.configName,
                 ),
                 contentDescription = "${demo.title} native audit preview",
             )
             MermaidDebugPreview.Official -> OfficialMermaidDiagram(
                 source = demo.source,
                 layout = if (usesCorpusLayout) layoutOverride else spec.officialLayout,
-                themeName = spec.initialTheme.configName,
+                themeName = themePreset.configName,
                 look = spec.nativeOptions.look,
                 modifier = Modifier.fillMaxSize(),
                 onRenderResult = { result ->

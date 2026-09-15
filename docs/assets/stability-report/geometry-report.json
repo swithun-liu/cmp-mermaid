@@ -1,9 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-15T09:37:57.439Z",
+  "generatedAt": "2026-09-15T15:15:49.763Z",
   "inputDirectory": "captures/local/production-corpus",
   "corpusSource": "production",
-  "caseCount": 132,
+  "theme": null,
+  "caseCount": 145,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -28,6 +29,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 14172,
         "inkRatio": 0.013122222222222223,
         "contentBounds": {
@@ -45,6 +54,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 13048,
         "inkRatio": 0.012081481481481481,
@@ -71,6 +88,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 23721,
         "inkRatio": 0.02196388888888889,
         "contentBounds": {
@@ -88,6 +113,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 23545,
         "inkRatio": 0.021800925925925925,
@@ -114,6 +147,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 14014,
         "inkRatio": 0.012975925925925925,
         "contentBounds": {
@@ -131,6 +172,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 13385,
         "inkRatio": 0.012393518518518519,
@@ -157,6 +206,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 18623,
         "inkRatio": 0.01724351851851852,
         "contentBounds": {
@@ -174,6 +231,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 17446,
         "inkRatio": 0.016153703703703705,
@@ -200,6 +265,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 19703,
         "inkRatio": 0.01824351851851852,
         "contentBounds": {
@@ -217,6 +290,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 19045,
         "inkRatio": 0.01763425925925926,
@@ -243,6 +324,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 11610,
         "inkRatio": 0.01075,
         "contentBounds": {
@@ -260,6 +349,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 10392,
         "inkRatio": 0.009622222222222223,
@@ -286,6 +383,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 268987,
         "inkRatio": 0.24906203703703703,
         "contentBounds": {
@@ -303,6 +408,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 240736,
         "inkRatio": 0.22290370370370372,
@@ -329,6 +442,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 299827,
         "inkRatio": 0.2776175925925926,
         "contentBounds": {
@@ -346,6 +467,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 287672,
         "inkRatio": 0.26636296296296297,
@@ -372,6 +501,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 255643,
         "inkRatio": 0.2367064814814815,
         "contentBounds": {
@@ -389,6 +526,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 261247,
         "inkRatio": 0.24189537037037037,
@@ -415,6 +560,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 240750,
         "inkRatio": 0.22291666666666668,
         "contentBounds": {
@@ -432,6 +585,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 229662,
         "inkRatio": 0.21265,
@@ -458,6 +619,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 32764,
         "inkRatio": 0.030337037037037037,
         "contentBounds": {
@@ -475,6 +644,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 34621,
         "inkRatio": 0.032056481481481484,
@@ -501,6 +678,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 103592,
         "inkRatio": 0.09591851851851851,
         "contentBounds": {
@@ -518,6 +703,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 97125,
         "inkRatio": 0.08993055555555556,
@@ -544,6 +737,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 78473,
         "inkRatio": 0.07266018518518519,
         "contentBounds": {
@@ -561,6 +762,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 62620,
         "inkRatio": 0.05798148148148148,
@@ -587,6 +796,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 68662,
         "inkRatio": 0.06357592592592592,
         "contentBounds": {
@@ -604,6 +821,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 55963,
         "inkRatio": 0.051817592592592596,
@@ -630,6 +855,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 105596,
         "inkRatio": 0.09777407407407407,
         "contentBounds": {
@@ -647,6 +880,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 84514,
         "inkRatio": 0.0782537037037037,
@@ -673,6 +914,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 86277,
         "inkRatio": 0.07988611111111112,
         "contentBounds": {
@@ -690,6 +939,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 74856,
         "inkRatio": 0.06931111111111112,
@@ -716,6 +973,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 77479,
         "inkRatio": 0.07173981481481481,
         "contentBounds": {
@@ -733,6 +998,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 60014,
         "inkRatio": 0.05556851851851852,
@@ -759,6 +1032,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 124683,
         "inkRatio": 0.11544722222222223,
         "contentBounds": {
@@ -776,6 +1057,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 135925,
         "inkRatio": 0.12585648148148149,
@@ -802,6 +1091,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 82750,
         "inkRatio": 0.07662037037037037,
         "contentBounds": {
@@ -819,6 +1116,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 93509,
         "inkRatio": 0.08658240740740741,
@@ -845,6 +1150,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 86610,
         "inkRatio": 0.08019444444444444,
         "contentBounds": {
@@ -862,6 +1175,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 88566,
         "inkRatio": 0.08200555555555555,
@@ -888,6 +1209,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 209710,
         "inkRatio": 0.19417592592592592,
         "contentBounds": {
@@ -905,6 +1234,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 211235,
         "inkRatio": 0.19558796296296296,
@@ -931,6 +1268,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 160354,
         "inkRatio": 0.14847592592592593,
         "contentBounds": {
@@ -948,6 +1293,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 158788,
         "inkRatio": 0.14702592592592592,
@@ -974,6 +1327,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 46883,
         "inkRatio": 0.043410185185185184,
         "contentBounds": {
@@ -991,6 +1352,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 36013,
         "inkRatio": 0.03334537037037037,
@@ -1017,6 +1386,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 37789,
         "inkRatio": 0.034989814814814814,
         "contentBounds": {
@@ -1034,6 +1411,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 27637,
         "inkRatio": 0.025589814814814815,
@@ -1060,6 +1445,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 27987,
         "inkRatio": 0.02591388888888889,
         "contentBounds": {
@@ -1077,6 +1470,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 26334,
         "inkRatio": 0.024383333333333333,
@@ -1103,6 +1504,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 55255,
         "inkRatio": 0.051162037037037034,
         "contentBounds": {
@@ -1120,6 +1529,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 40682,
         "inkRatio": 0.03766851851851852,
@@ -1146,6 +1563,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 68227,
         "inkRatio": 0.06317314814814814,
         "contentBounds": {
@@ -1163,6 +1588,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 52824,
         "inkRatio": 0.048911111111111114,
@@ -1189,6 +1622,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 115825,
         "inkRatio": 0.10724537037037037,
         "contentBounds": {
@@ -1206,6 +1647,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 165327,
         "inkRatio": 0.15308055555555555,
@@ -1232,6 +1681,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 92948,
         "inkRatio": 0.08606296296296297,
         "contentBounds": {
@@ -1249,6 +1706,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 130044,
         "inkRatio": 0.12041111111111111,
@@ -1275,6 +1740,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 131084,
         "inkRatio": 0.12137407407407408,
         "contentBounds": {
@@ -1292,6 +1765,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 228764,
         "inkRatio": 0.21181851851851852,
@@ -1318,6 +1799,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 169107,
         "inkRatio": 0.15658055555555556,
         "contentBounds": {
@@ -1335,6 +1824,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 252873,
         "inkRatio": 0.23414166666666666,
@@ -1361,6 +1858,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 111078,
         "inkRatio": 0.10285,
         "contentBounds": {
@@ -1378,6 +1883,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 159109,
         "inkRatio": 0.14732314814814815,
@@ -1404,6 +1917,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 231357,
         "inkRatio": 0.21421944444444443,
         "contentBounds": {
@@ -1421,6 +1942,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 226535,
         "inkRatio": 0.20975462962962962,
@@ -1447,6 +1976,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 190423,
         "inkRatio": 0.17631759259259258,
         "contentBounds": {
@@ -1464,6 +2001,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 186998,
         "inkRatio": 0.1731462962962963,
@@ -1490,6 +2035,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 164886,
         "inkRatio": 0.1526722222222222,
         "contentBounds": {
@@ -1507,6 +2060,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 162537,
         "inkRatio": 0.15049722222222223,
@@ -1533,6 +2094,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 154690,
         "inkRatio": 0.1432314814814815,
         "contentBounds": {
@@ -1550,6 +2119,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 152421,
         "inkRatio": 0.14113055555555556,
@@ -1576,6 +2153,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 166163,
         "inkRatio": 0.15385462962962962,
         "contentBounds": {
@@ -1593,6 +2178,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 163499,
         "inkRatio": 0.15138796296296297,
@@ -1619,6 +2212,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 299719,
         "inkRatio": 0.27751759259259257,
         "contentBounds": {
@@ -1636,6 +2237,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 277816,
         "inkRatio": 0.25723703703703704,
@@ -1662,6 +2271,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 200789,
         "inkRatio": 0.18591574074074074,
         "contentBounds": {
@@ -1679,6 +2296,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 181187,
         "inkRatio": 0.16776574074074074,
@@ -1705,6 +2330,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 304836,
         "inkRatio": 0.28225555555555554,
         "contentBounds": {
@@ -1722,6 +2355,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 278409,
         "inkRatio": 0.2577861111111111,
@@ -1748,6 +2389,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 268264,
         "inkRatio": 0.24839259259259258,
         "contentBounds": {
@@ -1765,6 +2414,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 236358,
         "inkRatio": 0.21885,
@@ -1791,6 +2448,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 326065,
         "inkRatio": 0.30191203703703706,
         "contentBounds": {
@@ -1808,6 +2473,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 300731,
         "inkRatio": 0.27845462962962964,
@@ -1834,6 +2507,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 43248,
         "inkRatio": 0.040044444444444445,
         "contentBounds": {
@@ -1851,6 +2532,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 42206,
         "inkRatio": 0.03907962962962963,
@@ -1877,6 +2566,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 37105,
         "inkRatio": 0.03435648148148148,
         "contentBounds": {
@@ -1894,6 +2591,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 35893,
         "inkRatio": 0.03323425925925926,
@@ -1920,6 +2625,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 40811,
         "inkRatio": 0.03778796296296296,
         "contentBounds": {
@@ -1937,6 +2650,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 38859,
         "inkRatio": 0.03598055555555556,
@@ -1963,6 +2684,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 40223,
         "inkRatio": 0.037243518518518516,
         "contentBounds": {
@@ -1980,6 +2709,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 39100,
         "inkRatio": 0.0362037037037037,
@@ -2006,6 +2743,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 37203,
         "inkRatio": 0.03444722222222222,
         "contentBounds": {
@@ -2023,6 +2768,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 36080,
         "inkRatio": 0.033407407407407406,
@@ -2049,6 +2802,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 90225,
         "inkRatio": 0.08354166666666667,
         "contentBounds": {
@@ -2066,6 +2827,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 92872,
         "inkRatio": 0.08599259259259259,
@@ -2092,6 +2861,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 179830,
         "inkRatio": 0.16650925925925925,
         "contentBounds": {
@@ -2109,6 +2886,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 183258,
         "inkRatio": 0.16968333333333332,
@@ -2135,6 +2920,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 92941,
         "inkRatio": 0.08605648148148148,
         "contentBounds": {
@@ -2152,6 +2945,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 94590,
         "inkRatio": 0.08758333333333333,
@@ -2178,6 +2979,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 113964,
         "inkRatio": 0.10552222222222223,
         "contentBounds": {
@@ -2195,6 +3004,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 111328,
         "inkRatio": 0.10308148148148148,
@@ -2221,6 +3038,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 188091,
         "inkRatio": 0.17415833333333333,
         "contentBounds": {
@@ -2239,6 +3064,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 171796,
         "inkRatio": 0.15907037037037036,
         "contentBounds": {
@@ -2253,6 +3086,313 @@
       "inkRatio": 1.0948508696360801
     },
     {
+      "id": "rc_gitgraph_release_train",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 67687,
+        "inkRatio": 0.06267314814814814,
+        "contentBounds": {
+          "x": 20,
+          "y": 148,
+          "width": 1159,
+          "height": 599
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61522,
+        "inkRatio": 0.056964814814814815,
+        "contentBounds": {
+          "x": 46,
+          "y": 161,
+          "width": 1106,
+          "height": 572
+        }
+      },
+      "widthRatio": 1.0479204339963835,
+      "heightRatio": 1.0472027972027973,
+      "inkRatio": 1.1002080556548877
+    },
+    {
+      "id": "rc_gitgraph_parallel_bottom_to_top",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 97541,
+        "inkRatio": 0.09031574074074074,
+        "contentBounds": {
+          "x": 173,
+          "y": 28,
+          "width": 882,
+          "height": 853
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 84208,
+        "inkRatio": 0.07797037037037037,
+        "contentBounds": {
+          "x": 213,
+          "y": 65,
+          "width": 808,
+          "height": 781
+        }
+      },
+      "widthRatio": 1.0915841584158417,
+      "heightRatio": 1.092189500640205,
+      "inkRatio": 1.1583341250237507
+    },
+    {
+      "id": "rc_gitgraph_ordered_top_to_bottom",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61979,
+        "inkRatio": 0.05738796296296296,
+        "contentBounds": {
+          "x": 227,
+          "y": 22,
+          "width": 752,
+          "height": 838
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 57273,
+        "inkRatio": 0.05303055555555555,
+        "contentBounds": {
+          "x": 249,
+          "y": 52,
+          "width": 709,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.0606488011283497,
+      "heightRatio": 1.0743589743589743,
+      "inkRatio": 1.0821678626927174
+    },
+    {
+      "id": "rc_gitgraph_metadata_and_theme",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 111431,
+        "inkRatio": 0.10317685185185185,
+        "contentBounds": {
+          "x": 31,
+          "y": 164,
+          "width": 1132,
+          "height": 562
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 99920,
+        "inkRatio": 0.09251851851851851,
+        "contentBounds": {
+          "x": 69,
+          "y": 187,
+          "width": 1054,
+          "height": 521
+        }
+      },
+      "widthRatio": 1.0740037950664136,
+      "heightRatio": 1.0786948176583493,
+      "inkRatio": 1.1152021617293835
+    },
+    {
+      "id": "rc_gitgraph_horizontal_labels",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 54397,
+        "inkRatio": 0.050367592592592596,
+        "contentBounds": {
+          "x": 20,
+          "y": 239,
+          "width": 1157,
+          "height": 415
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 42090,
+        "inkRatio": 0.03897222222222222,
+        "contentBounds": {
+          "x": 72,
+          "y": 254,
+          "width": 1057,
+          "height": 387
+        }
+      },
+      "widthRatio": 1.0946073793755913,
+      "heightRatio": 1.0723514211886305,
+      "inkRatio": 1.2923972440009506
+    },
+    {
       "id": "prod_flowchart_orchestration_identity",
       "kind": "flowchart",
       "native": {
@@ -2263,6 +3403,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 31885,
         "inkRatio": 0.02952314814814815,
@@ -2281,6 +3429,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 32897,
         "inkRatio": 0.030460185185185184,
@@ -2307,6 +3463,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 28163,
         "inkRatio": 0.02607685185185185,
         "contentBounds": {
@@ -2324,6 +3488,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 29485,
         "inkRatio": 0.027300925925925926,
@@ -2350,6 +3522,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 18133,
         "inkRatio": 0.016789814814814816,
         "contentBounds": {
@@ -2367,6 +3547,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 16795,
         "inkRatio": 0.015550925925925926,
@@ -2393,6 +3581,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 18173,
         "inkRatio": 0.016826851851851853,
         "contentBounds": {
@@ -2410,6 +3606,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 16806,
         "inkRatio": 0.01556111111111111,
@@ -2436,6 +3640,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 35712,
         "inkRatio": 0.03306666666666667,
         "contentBounds": {
@@ -2453,6 +3665,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 30955,
         "inkRatio": 0.028662037037037038,
@@ -2479,6 +3699,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 34371,
         "inkRatio": 0.031825,
         "contentBounds": {
@@ -2496,6 +3724,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 31133,
         "inkRatio": 0.028826851851851854,
@@ -2522,6 +3758,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 25380,
         "inkRatio": 0.0235,
         "contentBounds": {
@@ -2539,6 +3783,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 23631,
         "inkRatio": 0.021880555555555556,
@@ -2565,6 +3817,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 25564,
         "inkRatio": 0.02367037037037037,
         "contentBounds": {
@@ -2582,6 +3842,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 23794,
         "inkRatio": 0.022031481481481482,
@@ -2608,6 +3876,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 224880,
         "inkRatio": 0.20822222222222223,
         "contentBounds": {
@@ -2625,6 +3901,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 217695,
         "inkRatio": 0.20156944444444444,
@@ -2651,6 +3935,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 324899,
         "inkRatio": 0.3008324074074074,
         "contentBounds": {
@@ -2668,6 +3960,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 313995,
         "inkRatio": 0.2907361111111111,
@@ -2694,6 +3994,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 169248,
         "inkRatio": 0.1567111111111111,
         "contentBounds": {
@@ -2711,6 +4019,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 164051,
         "inkRatio": 0.15189907407407408,
@@ -2737,6 +4053,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 188018,
         "inkRatio": 0.17409074074074074,
         "contentBounds": {
@@ -2754,6 +4078,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 184564,
         "inkRatio": 0.1708925925925926,
@@ -2780,6 +4112,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 25449,
         "inkRatio": 0.023563888888888888,
         "contentBounds": {
@@ -2797,6 +4137,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 25326,
         "inkRatio": 0.02345,
@@ -2823,6 +4171,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 25637,
         "inkRatio": 0.023737962962962964,
         "contentBounds": {
@@ -2840,6 +4196,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 25171,
         "inkRatio": 0.02330648148148148,
@@ -2866,6 +4230,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 27104,
         "inkRatio": 0.025096296296296297,
         "contentBounds": {
@@ -2883,6 +4255,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 28007,
         "inkRatio": 0.025932407407407407,
@@ -2909,6 +4289,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 28425,
         "inkRatio": 0.026319444444444444,
         "contentBounds": {
@@ -2926,6 +4314,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 30177,
         "inkRatio": 0.027941666666666667,
@@ -2952,6 +4348,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 56338,
         "inkRatio": 0.05216481481481482,
         "contentBounds": {
@@ -2969,6 +4373,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 37861,
         "inkRatio": 0.03505648148148148,
@@ -2995,6 +4407,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 56267,
         "inkRatio": 0.052099074074074075,
         "contentBounds": {
@@ -3012,6 +4432,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 37751,
         "inkRatio": 0.03495462962962963,
@@ -3038,6 +4466,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 97254,
         "inkRatio": 0.09005,
         "contentBounds": {
@@ -3055,6 +4491,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 73277,
         "inkRatio": 0.06784907407407408,
@@ -3081,6 +4525,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 97156,
         "inkRatio": 0.08995925925925925,
         "contentBounds": {
@@ -3098,6 +4550,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 73203,
         "inkRatio": 0.06778055555555555,
@@ -3124,6 +4584,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 344027,
         "inkRatio": 0.31854351851851853,
         "contentBounds": {
@@ -3141,6 +4609,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 263049,
         "inkRatio": 0.24356388888888889,
@@ -3167,6 +4643,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 344537,
         "inkRatio": 0.31901574074074074,
         "contentBounds": {
@@ -3184,6 +4668,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 262712,
         "inkRatio": 0.24325185185185186,
@@ -3210,6 +4702,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 49532,
         "inkRatio": 0.04586296296296296,
         "contentBounds": {
@@ -3227,6 +4727,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 39316,
         "inkRatio": 0.0364037037037037,
@@ -3253,6 +4761,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 49558,
         "inkRatio": 0.04588703703703704,
         "contentBounds": {
@@ -3270,6 +4786,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 39458,
         "inkRatio": 0.036535185185185184,
@@ -3296,6 +4820,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 88098,
         "inkRatio": 0.08157222222222223,
         "contentBounds": {
@@ -3313,6 +4845,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 92995,
         "inkRatio": 0.08610648148148148,
@@ -3339,6 +4879,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 87489,
         "inkRatio": 0.08100833333333333,
         "contentBounds": {
@@ -3356,6 +4904,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 93573,
         "inkRatio": 0.08664166666666667,
@@ -3382,6 +4938,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 53496,
         "inkRatio": 0.04953333333333333,
         "contentBounds": {
@@ -3399,6 +4963,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 58616,
         "inkRatio": 0.05427407407407407,
@@ -3425,6 +4997,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 47060,
         "inkRatio": 0.04357407407407407,
         "contentBounds": {
@@ -3442,6 +5022,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 51086,
         "inkRatio": 0.04730185185185185,
@@ -3468,6 +5056,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 161931,
         "inkRatio": 0.1499361111111111,
         "contentBounds": {
@@ -3485,6 +5081,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 153842,
         "inkRatio": 0.1424462962962963,
@@ -3511,6 +5115,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 195690,
         "inkRatio": 0.18119444444444444,
         "contentBounds": {
@@ -3528,6 +5140,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 175569,
         "inkRatio": 0.1625638888888889,
@@ -3554,6 +5174,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 134840,
         "inkRatio": 0.12485185185185185,
         "contentBounds": {
@@ -3571,6 +5199,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 113566,
         "inkRatio": 0.10515370370370371,
@@ -3597,6 +5233,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 134386,
         "inkRatio": 0.12443148148148148,
         "contentBounds": {
@@ -3614,6 +5258,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 112182,
         "inkRatio": 0.10387222222222223,
@@ -3640,6 +5292,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 33842,
         "inkRatio": 0.03133518518518519,
         "contentBounds": {
@@ -3657,6 +5317,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 33151,
         "inkRatio": 0.03069537037037037,
@@ -3683,6 +5351,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 33903,
         "inkRatio": 0.031391666666666665,
         "contentBounds": {
@@ -3700,6 +5376,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 33236,
         "inkRatio": 0.030774074074074075,
@@ -3726,6 +5410,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 45127,
         "inkRatio": 0.04178425925925926,
         "contentBounds": {
@@ -3743,6 +5435,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 37365,
         "inkRatio": 0.034597222222222224,
@@ -3769,6 +5469,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 44771,
         "inkRatio": 0.04145462962962963,
         "contentBounds": {
@@ -3786,6 +5494,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 36961,
         "inkRatio": 0.03422314814814815,
@@ -3812,6 +5528,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 111064,
         "inkRatio": 0.10283703703703703,
         "contentBounds": {
@@ -3829,6 +5553,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 102636,
         "inkRatio": 0.09503333333333333,
@@ -3855,6 +5587,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 93543,
         "inkRatio": 0.08661388888888889,
         "contentBounds": {
@@ -3872,6 +5612,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 86325,
         "inkRatio": 0.07993055555555556,
@@ -3898,6 +5646,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 46301,
         "inkRatio": 0.042871296296296296,
         "contentBounds": {
@@ -3915,6 +5671,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 35860,
         "inkRatio": 0.0332037037037037,
@@ -3941,6 +5705,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 45818,
         "inkRatio": 0.04242407407407407,
         "contentBounds": {
@@ -3958,6 +5730,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 35039,
         "inkRatio": 0.03244351851851852,
@@ -3984,6 +5764,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 83469,
         "inkRatio": 0.07728611111111111,
         "contentBounds": {
@@ -4001,6 +5789,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 60698,
         "inkRatio": 0.05620185185185185,
@@ -4027,6 +5823,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 82028,
         "inkRatio": 0.07595185185185185,
         "contentBounds": {
@@ -4044,6 +5848,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 59703,
         "inkRatio": 0.055280555555555555,
@@ -4070,6 +5882,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 136305,
         "inkRatio": 0.12620833333333334,
         "contentBounds": {
@@ -4087,6 +5907,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 98831,
         "inkRatio": 0.09151018518518518,
@@ -4113,6 +5941,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 137768,
         "inkRatio": 0.12756296296296296,
         "contentBounds": {
@@ -4130,6 +5966,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 100145,
         "inkRatio": 0.09272685185185185,
@@ -4156,6 +6000,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 81398,
         "inkRatio": 0.07536851851851852,
         "contentBounds": {
@@ -4173,6 +6025,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 92188,
         "inkRatio": 0.08535925925925926,
@@ -4199,6 +6059,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 73649,
         "inkRatio": 0.06819351851851851,
         "contentBounds": {
@@ -4216,6 +6084,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 85503,
         "inkRatio": 0.07916944444444445,
@@ -4242,6 +6118,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 215671,
         "inkRatio": 0.19969537037037038,
         "contentBounds": {
@@ -4259,6 +6143,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 164347,
         "inkRatio": 0.15217314814814814,
@@ -4285,6 +6177,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 226546,
         "inkRatio": 0.20976481481481482,
         "contentBounds": {
@@ -4302,6 +6202,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 171566,
         "inkRatio": 0.15885740740740742,
@@ -4328,6 +6236,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 22796,
         "inkRatio": 0.021107407407407408,
         "contentBounds": {
@@ -4345,6 +6261,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 22222,
         "inkRatio": 0.020575925925925925,
@@ -4371,6 +6295,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 23196,
         "inkRatio": 0.021477777777777776,
         "contentBounds": {
@@ -4388,6 +6320,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 22744,
         "inkRatio": 0.02105925925925926,
@@ -4414,6 +6354,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 47778,
         "inkRatio": 0.04423888888888889,
         "contentBounds": {
@@ -4431,6 +6379,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 46549,
         "inkRatio": 0.043100925925925924,
@@ -4457,6 +6413,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 47997,
         "inkRatio": 0.044441666666666664,
         "contentBounds": {
@@ -4474,6 +6438,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 46740,
         "inkRatio": 0.043277777777777776,
@@ -4500,6 +6472,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 27176,
         "inkRatio": 0.025162962962962963,
         "contentBounds": {
@@ -4517,6 +6497,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 26802,
         "inkRatio": 0.024816666666666667,
@@ -4543,6 +6531,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 26761,
         "inkRatio": 0.024778703703703702,
         "contentBounds": {
@@ -4560,6 +6556,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 26318,
         "inkRatio": 0.02436851851851852,
@@ -4586,6 +6590,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 26856,
         "inkRatio": 0.024866666666666665,
         "contentBounds": {
@@ -4603,6 +6615,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 26701,
         "inkRatio": 0.024723148148148147,
@@ -4629,6 +6649,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 26881,
         "inkRatio": 0.024889814814814816,
         "contentBounds": {
@@ -4646,6 +6674,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 26791,
         "inkRatio": 0.02480648148148148,
@@ -4672,6 +6708,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 278932,
         "inkRatio": 0.2582703703703704,
         "contentBounds": {
@@ -4689,6 +6733,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 251583,
         "inkRatio": 0.23294722222222222,
@@ -4715,6 +6767,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 315295,
         "inkRatio": 0.2919398148148148,
         "contentBounds": {
@@ -4732,6 +6792,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 282646,
         "inkRatio": 0.26170925925925925,
@@ -4758,6 +6826,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 335686,
         "inkRatio": 0.31082037037037036,
         "contentBounds": {
@@ -4775,6 +6851,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 293124,
         "inkRatio": 0.2714111111111111,
@@ -4801,6 +6885,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 251805,
         "inkRatio": 0.23315277777777776,
         "contentBounds": {
@@ -4818,6 +6910,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 220267,
         "inkRatio": 0.20395092592592592,
@@ -4844,6 +6944,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 291446,
         "inkRatio": 0.26985740740740743,
         "contentBounds": {
@@ -4861,6 +6969,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 261128,
         "inkRatio": 0.2417851851851852,
@@ -4887,6 +7003,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 291375,
         "inkRatio": 0.26979166666666665,
         "contentBounds": {
@@ -4904,6 +7028,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 261005,
         "inkRatio": 0.2416712962962963,
@@ -4930,6 +7062,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 442787,
         "inkRatio": 0.40998796296296297,
         "contentBounds": {
@@ -4947,6 +7087,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 385843,
         "inkRatio": 0.357262037037037,
@@ -4973,6 +7121,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 443254,
         "inkRatio": 0.4104203703703704,
         "contentBounds": {
@@ -4990,6 +7146,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 386169,
         "inkRatio": 0.3575638888888889,
@@ -5016,6 +7180,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 43504,
         "inkRatio": 0.04028148148148148,
         "contentBounds": {
@@ -5033,6 +7205,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 42216,
         "inkRatio": 0.03908888888888889,
@@ -5059,6 +7239,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 40621,
         "inkRatio": 0.037612037037037034,
         "contentBounds": {
@@ -5076,6 +7264,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 39353,
         "inkRatio": 0.036437962962962964,
@@ -5102,6 +7298,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 105781,
         "inkRatio": 0.09794537037037038,
         "contentBounds": {
@@ -5119,6 +7323,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 99492,
         "inkRatio": 0.09212222222222222,
@@ -5145,6 +7357,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 62166,
         "inkRatio": 0.05756111111111111,
         "contentBounds": {
@@ -5162,6 +7382,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 59037,
         "inkRatio": 0.05466388888888889,
@@ -5188,6 +7416,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 61450,
         "inkRatio": 0.05689814814814815,
         "contentBounds": {
@@ -5205,6 +7441,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 57009,
         "inkRatio": 0.05278611111111111,
@@ -5231,6 +7475,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 61666,
         "inkRatio": 0.05709814814814815,
         "contentBounds": {
@@ -5248,6 +7500,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 59095,
         "inkRatio": 0.054717592592592595,
@@ -5274,6 +7534,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 72056,
         "inkRatio": 0.06671851851851852,
         "contentBounds": {
@@ -5291,6 +7559,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 68299,
         "inkRatio": 0.06323981481481482,
@@ -5317,6 +7593,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 72713,
         "inkRatio": 0.06732685185185185,
         "contentBounds": {
@@ -5334,6 +7618,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 67965,
         "inkRatio": 0.06293055555555556,
@@ -5360,6 +7652,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 168100,
         "inkRatio": 0.15564814814814815,
         "contentBounds": {
@@ -5377,6 +7677,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 168472,
         "inkRatio": 0.1559925925925926,
@@ -5403,6 +7711,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 149173,
         "inkRatio": 0.13812314814814816,
         "contentBounds": {
@@ -5420,6 +7736,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 152259,
         "inkRatio": 0.14098055555555555,
@@ -5446,6 +7770,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 74852,
         "inkRatio": 0.0693074074074074,
         "contentBounds": {
@@ -5463,6 +7795,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 76481,
         "inkRatio": 0.07081574074074073,
@@ -5489,6 +7829,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 168454,
         "inkRatio": 0.15597592592592593,
         "contentBounds": {
@@ -5506,6 +7854,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 160742,
         "inkRatio": 0.14883518518518518,
@@ -5532,6 +7888,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 142221,
         "inkRatio": 0.13168611111111111,
         "contentBounds": {
@@ -5549,6 +7913,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 131473,
         "inkRatio": 0.12173425925925926,
@@ -5575,6 +7947,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 190986,
         "inkRatio": 0.17683888888888888,
         "contentBounds": {
@@ -5592,6 +7972,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 174365,
         "inkRatio": 0.16144907407407408,
@@ -5618,6 +8006,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 161276,
         "inkRatio": 0.14932962962962962,
         "contentBounds": {
@@ -5635,6 +8031,14 @@
           255,
           255,
           255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
         ],
         "inkPixels": 148485,
         "inkRatio": 0.13748611111111111,
@@ -5661,6 +8065,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 290391,
         "inkRatio": 0.26888055555555557,
         "contentBounds": {
@@ -5679,6 +8091,14 @@
           255,
           255
         ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
         "inkPixels": 249988,
         "inkRatio": 0.23147037037037038,
         "contentBounds": {
@@ -5691,6 +8111,502 @@
       "widthRatio": 1.07816091954023,
       "heightRatio": 1.054678007290401,
       "inkRatio": 1.161619757748372
+    },
+    {
+      "id": "prod_gitgraph_commit_metadata_release",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 68728,
+        "inkRatio": 0.06363703703703703,
+        "contentBounds": {
+          "x": 41,
+          "y": 229,
+          "width": 1113,
+          "height": 442
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53366,
+        "inkRatio": 0.049412962962962964,
+        "contentBounds": {
+          "x": 96,
+          "y": 252,
+          "width": 995,
+          "height": 390
+        }
+      },
+      "widthRatio": 1.1185929648241206,
+      "heightRatio": 1.1333333333333333,
+      "inkRatio": 1.2878611850241726
+    },
+    {
+      "id": "prod_gitgraph_commit_metadata_migration",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 82724,
+        "inkRatio": 0.0765962962962963,
+        "contentBounds": {
+          "x": 41,
+          "y": 191,
+          "width": 1130,
+          "height": 517
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61829,
+        "inkRatio": 0.05724907407407408,
+        "contentBounds": {
+          "x": 96,
+          "y": 218,
+          "width": 1000,
+          "height": 458
+        }
+      },
+      "widthRatio": 1.13,
+      "heightRatio": 1.1288209606986899,
+      "inkRatio": 1.3379482120040758
+    },
+    {
+      "id": "prod_gitgraph_branch_merge_delivery",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 107164,
+        "inkRatio": 0.09922592592592593,
+        "contentBounds": {
+          "x": 28,
+          "y": 87,
+          "width": 1141,
+          "height": 712
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 95155,
+        "inkRatio": 0.08810648148148148,
+        "contentBounds": {
+          "x": 67,
+          "y": 113,
+          "width": 1063,
+          "height": 660
+        }
+      },
+      "widthRatio": 1.0733772342427093,
+      "heightRatio": 1.0787878787878789,
+      "inkRatio": 1.1262046135253008
+    },
+    {
+      "id": "prod_gitgraph_branch_merge_platform",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 113285,
+        "inkRatio": 0.10489351851851852,
+        "contentBounds": {
+          "x": 28,
+          "y": 89,
+          "width": 1141,
+          "height": 707
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 99809,
+        "inkRatio": 0.09241574074074074,
+        "contentBounds": {
+          "x": 67,
+          "y": 116,
+          "width": 1063,
+          "height": 655
+        }
+      },
+      "widthRatio": 1.0733772342427093,
+      "heightRatio": 1.0793893129770993,
+      "inkRatio": 1.1350178841587433
+    },
+    {
+      "id": "prod_gitgraph_cherry_orientation_top_to_bottom",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 96876,
+        "inkRatio": 0.0897,
+        "contentBounds": {
+          "x": 107,
+          "y": 24,
+          "width": 1007,
+          "height": 859
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 85511,
+        "inkRatio": 0.07917685185185185,
+        "contentBounds": {
+          "x": 151,
+          "y": 56,
+          "width": 921,
+          "height": 787
+        }
+      },
+      "widthRatio": 1.0933767643865364,
+      "heightRatio": 1.0914866581956797,
+      "inkRatio": 1.1329068774777515
+    },
+    {
+      "id": "prod_gitgraph_cherry_orientation_bottom_to_top",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 120338,
+        "inkRatio": 0.11142407407407408,
+        "contentBounds": {
+          "x": 43,
+          "y": 56,
+          "width": 1138,
+          "height": 797
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 108079,
+        "inkRatio": 0.10007314814814815,
+        "contentBounds": {
+          "x": 85,
+          "y": 79,
+          "width": 1056,
+          "height": 754
+        }
+      },
+      "widthRatio": 1.0776515151515151,
+      "heightRatio": 1.057029177718833,
+      "inkRatio": 1.1134262900285903
+    },
+    {
+      "id": "prod_gitgraph_configured_visibility_hidden_branches",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 96025,
+        "inkRatio": 0.08891203703703704,
+        "contentBounds": {
+          "x": 237,
+          "y": 84,
+          "width": 728,
+          "height": 720
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 75332,
+        "inkRatio": 0.06975185185185186,
+        "contentBounds": {
+          "x": 276,
+          "y": 130,
+          "width": 651,
+          "height": 633
+        }
+      },
+      "widthRatio": 1.118279569892473,
+      "heightRatio": 1.1374407582938388,
+      "inkRatio": 1.2746907024903096
+    },
+    {
+      "id": "prod_gitgraph_configured_visibility_hidden_commits",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 150726,
+        "inkRatio": 0.1395611111111111,
+        "contentBounds": {
+          "x": 73,
+          "y": 244,
+          "width": 1052,
+          "height": 439
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 127602,
+        "inkRatio": 0.11815,
+        "contentBounds": {
+          "x": 116,
+          "y": 272,
+          "width": 963,
+          "height": 384
+        }
+      },
+      "widthRatio": 1.0924195223260644,
+      "heightRatio": 1.1432291666666667,
+      "inkRatio": 1.1812197300982743
     }
   ]
 }

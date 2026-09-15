@@ -28,6 +28,7 @@ android-svg = { module = "com.caverock:androidsvg-aar", version.ref = "androidSv
 kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
 quickjs = { module = "io.github.dokar3:quickjs-kt", version.ref = "quickJs" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 

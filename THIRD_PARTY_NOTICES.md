@@ -4,9 +4,9 @@
 
 The KMP runtime contains Kotlin translations of selected Mermaid Flowchart,
 XY Chart, Sequence, Class, State, Entity Relationship, Gantt, Pie, User
-Journey, and Requirement parsing, layout-adapter, and rendering algorithms.
-The reference-rendering tool also downloads Mermaid.js from npm. Mermaid.js
-itself is not embedded in the runtime libraries.
+Journey, Requirement, and Git Graph parsing, layout-adapter, and rendering
+algorithms. The reference-rendering tool also downloads Mermaid.js from npm.
+Mermaid.js itself is not embedded in the runtime libraries.
 
 The Android sample bundles Mermaid.js `12.0.0` only for on-demand official
 WebView comparisons. The npm distribution is syntax transpiled to Chrome 87
@@ -24,6 +24,35 @@ Bundled Chrome 87-compatible file SHA-256:
 Mermaid is distributed under the MIT License:
 
 Copyright (c) 2014 - 2022 Knut Sveidqvist
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## @mermaid-js/parser
+
+The Git Graph parser is a Kotlin translation of the Git Graph grammar and
+parser-adapter behavior in `@mermaid-js/parser 2.0.0`. The upstream grammar is
+generated with Langium `4.2.1`; neither `@mermaid-js/parser` nor the Langium
+runtime is embedded in the production libraries.
+
+`@mermaid-js/parser` is distributed under the MIT License:
+
+Copyright (c) 2023 Yokozuna59
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

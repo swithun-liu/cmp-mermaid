@@ -12,6 +12,7 @@ export const kinds = [
   'pie',
   'journey',
   'requirement',
+  'gitgraph',
 ];
 
 export const casesPerKind = 256;
@@ -119,6 +120,10 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
     risk: low
     verifyMethod: inspection
   }
+`;
+    case 'gitgraph':
+      return `${source.trimEnd()}
+  commit id: "${evidenceId}" tag: "${label}"
 `;
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);

@@ -143,4 +143,78 @@ class MermaidThemeTest {
         assertEquals(base.journey.actorColors, customized.journey.actorColors)
         assertEquals(base.journey.faceColor, customized.journey.faceColor)
     }
+
+    @Test
+    fun derivesGitInverseColorsUsingMermaid12ThemeRules() {
+        val expected = mapOf(
+            MermaidThemePreset.Base to SceneColor(0xFFB5E6FA),
+            MermaidThemePreset.Default to SceneColor(0xFF0000A1),
+            MermaidThemePreset.Dark to SceneColor(0xFF5EDD8C),
+            MermaidThemePreset.Forest to SceneColor(0xFFB5E6FA),
+            MermaidThemePreset.Neutral to SceneColor(0xFFAAAAAA),
+            MermaidThemePreset.Neo to SceneColor(0xFFB5E6FA),
+            MermaidThemePreset.NeoDark to SceneColor(0xFF0A79A6),
+            MermaidThemePreset.Redux to SceneColor(0xFFB5E6FA),
+            MermaidThemePreset.ReduxColor to SceneColor(0xFFB5E6FA),
+            MermaidThemePreset.ReduxDark to SceneColor(0xFFB5E6FA),
+            MermaidThemePreset.ReduxDarkColor to SceneColor(0xFFB5E6FA),
+        )
+
+        expected.forEach { (preset, inverseColor) ->
+            val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+                MermaidTheme.withVariables(
+                    theme = MermaidTheme.preset(preset),
+                    values = mapOf("git1" to "#c2410c"),
+                    themeName = preset.configName,
+                ),
+            ).value
+
+            assertEquals(SceneColor(0xFFC2410C), customized.gitGraph.colors[1], preset.name)
+            assertEquals(inverseColor, customized.gitGraph.inverseColors[1], preset.name)
+        }
+    }
+
+    @Test
+    fun preservesExplicitGitInverseColorOverride() {
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.preset(MermaidThemePreset.Base),
+                values = mapOf(
+                    "git1" to "#c2410c",
+                    "gitInv1" to "#102030",
+                ),
+                themeName = MermaidThemePreset.Base.configName,
+            ),
+        ).value
+
+        assertEquals(SceneColor(0xFFC2410C), customized.gitGraph.colors[1])
+        assertEquals(SceneColor(0xFF102030), customized.gitGraph.inverseColors[1])
+    }
+
+    @Test
+    fun preservesNeoGitGraphGradientVariablesAndExplicitOverrides() {
+        listOf(MermaidThemePreset.Neo, MermaidThemePreset.NeoDark).forEach { preset ->
+            val gitGraph = MermaidTheme.preset(preset).gitGraph
+
+            assertEquals(true, gitGraph.useGradient, preset.name)
+            assertEquals(SceneColor(0xFF0042EB), gitGraph.gradientStart, preset.name)
+            assertEquals(SceneColor(0xFFEB0042), gitGraph.gradientStop, preset.name)
+        }
+
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.preset(MermaidThemePreset.Neo),
+                values = mapOf(
+                    "useGradient" to "false",
+                    "gradientStart" to "#112233",
+                    "gradientStop" to "#445566",
+                ),
+                themeName = MermaidThemePreset.Neo.configName,
+            ),
+        ).value.gitGraph
+
+        assertEquals(false, customized.useGradient)
+        assertEquals(SceneColor(0xFF112233), customized.gradientStart)
+        assertEquals(SceneColor(0xFF445566), customized.gradientStop)
+    }
 }

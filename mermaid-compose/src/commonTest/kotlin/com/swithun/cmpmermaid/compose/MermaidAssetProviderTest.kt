@@ -3,7 +3,7 @@ package com.swithun.cmpmermaid.compose
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
 import com.swithun.cmpmermaid.core.SceneRect
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -21,7 +21,7 @@ class MermaidAssetProviderTest {
 
     @Test
     fun reportsMissingProviderInsteadOfDroppingAsset() {
-        runBlocking {
+        runTest {
             val states = mutableMapOf<String, MermaidAssetState>()
 
             resolveMermaidAssets(
@@ -37,7 +37,7 @@ class MermaidAssetProviderTest {
 
     @Test
     fun convertsProviderExceptionToLoadFailure() {
-        runBlocking {
+        runTest {
             val states = mutableMapOf<String, MermaidAssetState>()
 
             resolveMermaidAssets(

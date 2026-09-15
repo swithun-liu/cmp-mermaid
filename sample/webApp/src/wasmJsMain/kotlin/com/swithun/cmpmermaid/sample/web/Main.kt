@@ -19,6 +19,7 @@ fun main() {
                 auditDemoId = queryParameter("auditDemoId"),
                 auditPreview = MermaidDebugPreview.from(queryParameter("auditPreview")),
                 auditLayout = queryParameter("auditLayout") ?: "elk",
+                auditThemeName = queryParameter("auditTheme"),
                 openPlayground = queryParameter("openPlayground") == "true",
                 playgroundDiagramId = queryParameter("playgroundDiagramId") ?: "flowchart",
                 playgroundPreview =

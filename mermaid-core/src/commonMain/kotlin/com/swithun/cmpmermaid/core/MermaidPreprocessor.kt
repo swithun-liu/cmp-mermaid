@@ -239,6 +239,7 @@ internal object MermaidPreprocessor {
         val gantt = map.map("gantt")
         val journey = map.map("journey")
         val requirement = map.map("requirement")
+        val gitGraph = map.map("gitGraph")
         val pie = map.map("pie")
         val xyChart = map.map("xyChart")
         val xyXAxis = xyChart?.map("xAxis")
@@ -816,6 +817,37 @@ internal object MermaidPreprocessor {
             "look",
             "requirement.look",
         )?.takeIf(USABLE_LOOKS::contains)
+        val gitGraphTitleTopMargin =
+            float(gitGraph, "titleTopMargin", "gitGraph.titleTopMargin")
+        val gitGraphDiagramPadding =
+            float(gitGraph, "diagramPadding", "gitGraph.diagramPadding")
+        val gitGraphMainBranchName =
+            string(gitGraph, "mainBranchName", "gitGraph.mainBranchName")
+        val gitGraphMainBranchOrder =
+            float(gitGraph, "mainBranchOrder", "gitGraph.mainBranchOrder")
+        val gitGraphShowCommitLabel =
+            boolean(gitGraph, "showCommitLabel", "gitGraph.showCommitLabel")
+        val gitGraphShowBranches =
+            boolean(gitGraph, "showBranches", "gitGraph.showBranches")
+        val gitGraphRotateCommitLabel =
+            boolean(gitGraph, "rotateCommitLabel", "gitGraph.rotateCommitLabel")
+        val gitGraphParallelCommits =
+            boolean(gitGraph, "parallelCommits", "gitGraph.parallelCommits")
+        listOf(
+            "gitGraph.titleTopMargin" to gitGraphTitleTopMargin,
+            "gitGraph.diagramPadding" to gitGraphDiagramPadding,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
+            )
+        }
+        if (gitGraphMainBranchOrder != null && !gitGraphMainBranchOrder.isFinite()) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'gitGraph.mainBranchOrder' must be finite",
+            )
+        }
         val topLook = appearanceString(map, "look", "look")
             ?.takeIf(USABLE_LOOKS::contains)
         val titleTopMargin = float(flowchart, "titleTopMargin", "flowchart.titleTopMargin")
@@ -1008,6 +1040,18 @@ internal object MermaidPreprocessor {
                 fontFamily = fontFamily,
                 themeName = flowTheme ?: topTheme,
                 requirementThemeName = requirementTheme,
+                gitGraph = gitGraph?.let {
+                    MermaidGitGraphConfigOverride(
+                        titleTopMargin = gitGraphTitleTopMargin,
+                        diagramPadding = gitGraphDiagramPadding,
+                        mainBranchName = gitGraphMainBranchName,
+                        mainBranchOrder = gitGraphMainBranchOrder,
+                        showCommitLabel = gitGraphShowCommitLabel,
+                        showBranches = gitGraphShowBranches,
+                        rotateCommitLabel = gitGraphRotateCommitLabel,
+                        parallelCommits = gitGraphParallelCommits,
+                    )
+                },
                 themeVariables = parsedThemeVariables?.scalars,
                 themeColorArrays = parsedThemeVariables?.arrays,
                 look = flowLook ?: topLook,
@@ -1200,6 +1244,7 @@ internal data class MermaidConfigOverride(
     val fontFamily: String? = null,
     val themeName: String? = null,
     val requirementThemeName: String? = null,
+    val gitGraph: MermaidGitGraphConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
     val look: String? = null,
@@ -1275,6 +1320,11 @@ internal data class MermaidConfigOverride(
         fontFamily = overrides.fontFamily ?: fontFamily,
         themeName = overrides.themeName ?: themeName,
         requirementThemeName = overrides.requirementThemeName ?: requirementThemeName,
+        gitGraph = when {
+            overrides.gitGraph != null ->
+                gitGraph?.merge(overrides.gitGraph) ?: overrides.gitGraph
+            else -> gitGraph
+        },
         themeVariables = when {
             overrides.themeVariables != null ->
                 themeVariables.orEmpty() + overrides.themeVariables
@@ -1366,6 +1416,7 @@ internal data class MermaidConfigOverride(
                 themeName = themeName ?: options.themeName,
                 requirementThemeName =
                     requirementThemeName ?: options.requirementThemeName,
+                gitGraph = gitGraph?.applyTo(options.gitGraph) ?: options.gitGraph,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
                 look = resolvedLook,
@@ -1383,6 +1434,40 @@ internal data class MermaidConfigOverride(
             ),
         )
     }
+}
+
+internal data class MermaidGitGraphConfigOverride(
+    val titleTopMargin: Float? = null,
+    val diagramPadding: Float? = null,
+    val mainBranchName: String? = null,
+    val mainBranchOrder: Float? = null,
+    val showCommitLabel: Boolean? = null,
+    val showBranches: Boolean? = null,
+    val rotateCommitLabel: Boolean? = null,
+    val parallelCommits: Boolean? = null,
+) {
+    fun merge(overrides: MermaidGitGraphConfigOverride): MermaidGitGraphConfigOverride =
+        MermaidGitGraphConfigOverride(
+            titleTopMargin = overrides.titleTopMargin ?: titleTopMargin,
+            diagramPadding = overrides.diagramPadding ?: diagramPadding,
+            mainBranchName = overrides.mainBranchName ?: mainBranchName,
+            mainBranchOrder = overrides.mainBranchOrder ?: mainBranchOrder,
+            showCommitLabel = overrides.showCommitLabel ?: showCommitLabel,
+            showBranches = overrides.showBranches ?: showBranches,
+            rotateCommitLabel = overrides.rotateCommitLabel ?: rotateCommitLabel,
+            parallelCommits = overrides.parallelCommits ?: parallelCommits,
+        )
+
+    fun applyTo(options: MermaidGitGraphOptions): MermaidGitGraphOptions = options.copy(
+        titleTopMargin = titleTopMargin ?: options.titleTopMargin,
+        diagramPadding = diagramPadding ?: options.diagramPadding,
+        mainBranchName = mainBranchName ?: options.mainBranchName,
+        mainBranchOrder = mainBranchOrder ?: options.mainBranchOrder,
+        showCommitLabel = showCommitLabel ?: options.showCommitLabel,
+        showBranches = showBranches ?: options.showBranches,
+        rotateCommitLabel = rotateCommitLabel ?: options.rotateCommitLabel,
+        parallelCommits = parallelCommits ?: options.parallelCommits,
+    )
 }
 
 internal data class MermaidJourneyConfigOverride(

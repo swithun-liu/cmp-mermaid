@@ -18,6 +18,7 @@ const outputDirectory = resolve(
 const auditKind = process.env.AUDIT_KIND ?? 'all';
 const auditSource = process.env.AUDIT_SOURCE ?? 'gallery';
 const layoutOverride = process.env.CAPTURE_LAYOUT ?? null;
+const themeOverride = process.env.CAPTURE_THEME ?? null;
 const selectedIds = new Set(
   (process.env.CAPTURE_CASE_IDS ?? '')
     .split(/[\s,]+/)
@@ -41,6 +42,7 @@ const kotlinGalleryFiles = {
   pie: ['PieDemos.kt', 'PieDemo'],
   journey: ['JourneyDemos.kt', 'JourneyDemo'],
   requirement: ['RequirementDemos.kt', 'RequirementDemo'],
+  gitgraph: ['GitGraphDemos.kt', 'GitGraphDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [
@@ -48,6 +50,19 @@ const supportedAuditSources = [
   'stability',
   'production',
   'visual-parity',
+];
+const supportedThemes = [
+  'default',
+  'dark',
+  'forest',
+  'neutral',
+  'base',
+  'neo',
+  'neo-dark',
+  'redux',
+  'redux-color',
+  'redux-dark',
+  'redux-dark-color',
 ];
 
 if (!supportedAuditKinds.includes(auditKind)) {
@@ -58,6 +73,9 @@ if (!supportedAuditSources.includes(auditSource)) {
 }
 if (layoutOverride !== null && !['dagre', 'elk'].includes(layoutOverride)) {
   throw new Error('CAPTURE_LAYOUT must be dagre or elk');
+}
+if (themeOverride !== null && !supportedThemes.includes(themeOverride)) {
+  throw new Error(`CAPTURE_THEME must be one of: ${supportedThemes.join(', ')}`);
 }
 
 const corpusCases = {
@@ -98,7 +116,10 @@ try {
 
   for (const auditCase of availableCases) {
     for (const preview of previews) {
-      const suffix = preview.toLowerCase();
+      const suffix = [
+        themeOverride,
+        preview.toLowerCase(),
+      ].filter(Boolean).join('_');
       const target = resolve(
         outputDirectory,
         `${auditCase.id}_${suffix}.png`,
@@ -115,6 +136,9 @@ try {
       url.searchParams.set('auditDemoId', auditCase.id);
       url.searchParams.set('auditPreview', preview);
       url.searchParams.set('auditLayout', captureLayout);
+      if (themeOverride !== null) {
+        url.searchParams.set('auditTheme', themeOverride);
+      }
       await page.goto(url.href, {
         waitUntil: 'domcontentloaded',
         timeout: 60_000,

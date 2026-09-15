@@ -13,8 +13,14 @@ output_dir="${OUTPUT_DIR:-captures/local/load-test-android}"
 maximum_pss_kb="${MAXIMUM_PSS_KB:-300000}"
 maximum_scroll_seconds="${MAXIMUM_SCROLL_SECONDS:-45}"
 swipe_count="${SWIPE_COUNT:-90}"
-case_count=132
-last_case_id="prod_requirement_styled_theme_resilience"
+read -r case_count last_case_id < <(
+  node --input-type=module -e '
+    import { cases } from "./tools/official-reference/production-corpus.mjs";
+    const lastCase = cases.at(-1);
+    if (lastCase == null) process.exit(1);
+    console.log(`${cases.length} ${lastCase.id}`);
+  '
+)
 package_name="com.swithun.cmpmermaid.sample"
 activity_name="com.swithun.cmpmermaid.debugui.MermaidDebugActivity"
 adb="${ANDROID_HOME:?ANDROID_HOME is required}/platform-tools/adb"

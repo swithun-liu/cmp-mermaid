@@ -55,7 +55,7 @@ typed `MermaidTheme.journey` API.
   All pairs passed the geometry gate; all 16 contact-sheet pages were manually
   reviewed.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traversed the
-  complete 132-case mixed corpus through the final Requirement case.
+  complete 145-case mixed corpus.
 
 ## Reference Workflow
 

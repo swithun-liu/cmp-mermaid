@@ -30,8 +30,32 @@ if (corpusCases === undefined) {
   );
 }
 const corpusKind = process.env.CORPUS_KIND ?? 'all';
+const themeOverride = process.env.CAPTURE_THEME ?? null;
+const selectedIds = new Set(
+  (process.env.CAPTURE_CASE_IDS ?? '')
+    .split(/[\s,]+/)
+    .filter(Boolean),
+);
+const supportedThemes = [
+  'default',
+  'dark',
+  'forest',
+  'neutral',
+  'base',
+  'neo',
+  'neo-dark',
+  'redux',
+  'redux-color',
+  'redux-dark',
+  'redux-dark-color',
+];
+if (themeOverride !== null && !supportedThemes.includes(themeOverride)) {
+  throw new Error(`CAPTURE_THEME must be one of: ${supportedThemes.join(', ')}`);
+}
 const cases = corpusCases.filter(
-  (entry) => corpusKind === 'all' || entry.kind === corpusKind,
+  (entry) =>
+    (corpusKind === 'all' || entry.kind === corpusKind) &&
+    (selectedIds.size === 0 || selectedIds.has(entry.id)),
 );
 if (cases.length === 0) {
   throw new Error(`No ${corpusSource} cases found for kind ${corpusKind}`);
@@ -54,13 +78,14 @@ const failures = [];
 try {
   const page = await browser.newPage();
   for (const auditCase of cases) {
+    const themeSuffix = themeOverride === null ? '' : `_${themeOverride}`;
     const native = await analyzePng(
       page,
-      path.join(inputDirectory, `${auditCase.id}_native.png`),
+      path.join(inputDirectory, `${auditCase.id}${themeSuffix}_native.png`),
     );
     const official = await analyzePng(
       page,
-      path.join(inputDirectory, `${auditCase.id}_official.png`),
+      path.join(inputDirectory, `${auditCase.id}${themeSuffix}_official.png`),
     );
     const result = {
       id: auditCase.id,
@@ -105,6 +130,7 @@ const report = {
   generatedAt: new Date().toISOString(),
   inputDirectory: path.relative(repositoryRoot, inputDirectory),
   corpusSource,
+  theme: themeOverride,
   caseCount: results.length,
   thresholds,
   failures,
@@ -165,6 +191,11 @@ async function analyzePng(page, fileName) {
   }
   const source = `data:image/png;base64,${fs.readFileSync(fileName).toString('base64')}`;
   return page.evaluate(async (imageSource) => {
+    const colorDistance = (left, right) =>
+      Math.abs(left[0] - right[0]) +
+      Math.abs(left[1] - right[1]) +
+      Math.abs(left[2] - right[2]) +
+      Math.abs(left[3] - right[3]);
     const image = new Image();
     image.src = imageSource;
     await image.decode();
@@ -186,6 +217,24 @@ async function analyzePng(page, fileName) {
         .sort((left, right) => left - right);
       return Math.round((values[1] + values[2]) / 2);
     });
+    const sampledColors = new Map();
+    for (let y = 0; y < image.height; y += 4) {
+      for (let x = 0; x < image.width; x += 4) {
+        const index = (y * image.width + x) * 4;
+        const key =
+          `${pixels[index]},${pixels[index + 1]},` +
+          `${pixels[index + 2]},${pixels[index + 3]}`;
+        sampledColors.set(key, (sampledColors.get(key) ?? 0) + 1);
+      }
+    }
+    const dominantBackground = [...sampledColors.entries()]
+      .sort((left, right) => right[1] - left[1])[0][0]
+      .split(',')
+      .map(Number);
+    const backgrounds = [dominantBackground];
+    if (colorDistance(background, dominantBackground) > 24) {
+      backgrounds.push(background);
+    }
     let minimumX = image.width;
     let minimumY = image.height;
     let maximumX = -1;
@@ -194,11 +243,16 @@ async function analyzePng(page, fileName) {
     for (let y = 0; y < image.height; y += 1) {
       for (let x = 0; x < image.width; x += 1) {
         const index = (y * image.width + x) * 4;
-        const distance =
-          Math.abs(pixels[index] - background[0]) +
-          Math.abs(pixels[index + 1] - background[1]) +
-          Math.abs(pixels[index + 2] - background[2]) +
-          Math.abs(pixels[index + 3] - background[3]);
+        let distance = Number.POSITIVE_INFINITY;
+        for (const candidate of backgrounds) {
+          distance = Math.min(
+            distance,
+            Math.abs(pixels[index] - candidate[0]) +
+              Math.abs(pixels[index + 1] - candidate[1]) +
+              Math.abs(pixels[index + 2] - candidate[2]) +
+              Math.abs(pixels[index + 3] - candidate[3]),
+          );
+        }
         if (distance <= 24) continue;
         inkPixels += 1;
         minimumX = Math.min(minimumX, x);
@@ -218,7 +272,8 @@ async function analyzePng(page, fileName) {
     return {
       width: image.width,
       height: image.height,
-      background,
+      background: dominantBackground,
+      backgroundColors: backgrounds,
       inkPixels,
       inkRatio: inkPixels / (image.width * image.height),
       contentBounds,

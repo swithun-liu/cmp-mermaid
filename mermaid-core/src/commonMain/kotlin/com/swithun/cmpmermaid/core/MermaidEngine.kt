@@ -4,6 +4,7 @@ import com.swithun.cmpmermaid.core.classdiagram.ClassPlugin
 import com.swithun.cmpmermaid.core.erdiagram.ErPlugin
 import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
+import com.swithun.cmpmermaid.core.gitgraph.GitGraphPlugin
 import com.swithun.cmpmermaid.core.journey.JourneyPlugin
 import com.swithun.cmpmermaid.core.pie.PiePlugin
 import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
@@ -42,6 +43,7 @@ class MermaidEngine(
         XyChartPlugin(),
         JourneyPlugin(),
         RequirementPlugin(),
+        GitGraphPlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {
@@ -121,6 +123,7 @@ class MermaidEngine(
                 theme = baseTheme,
                 values = resolvedThemeVariables,
                 colorArrays = diagramOptions.themeColorArrays,
+                themeName = diagramOptions.themeName,
             )
         ) {
             is GMResult.Ok -> result.value

@@ -295,3 +295,44 @@ internal val requirementDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.ReduxColor,
 )
+
+internal val gitGraphDiagramDocsSpec = DiagramDocsSpec(
+    id = "gitgraph",
+    title = "Git Graph",
+    syntaxTitle = "Git Graph diagrams - Basic Syntax",
+    description = "Visualize commit history, branches, merges, cherry-picks, tags, and " +
+        "release workflows.",
+    documentationUrl = "https://mermaid.js.org/syntax/gitgraph.html",
+    galleryTitle = "Git Graph diagram gallery",
+    cases = gitGraphDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1.65f,
+        )
+    },
+    syntaxLessons = lessons(
+        gitGraphDemos.take(8).map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1.65f,
+            )
+        },
+        listOf(
+            "Use commit to append work to the currently checked-out branch.",
+            "NORMAL, REVERSE, and HIGHLIGHT select the official commit glyphs.",
+            "Attach one or more quoted tags to mark releases and milestones.",
+            "branch creates and checks out a branch; checkout and switch select an existing one.",
+            "A merge commit links the current head and the merged branch head.",
+            "Nested branches preserve their parent history when they merge back.",
+            "Cherry-pick copies a commit from another branch and records its source tag.",
+            "Cherry-picking a merge requires one of that merge commit's immediate parents.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.ReduxColor,
+)

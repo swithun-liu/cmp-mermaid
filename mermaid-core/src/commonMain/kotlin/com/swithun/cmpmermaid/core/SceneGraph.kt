@@ -109,6 +109,13 @@ data class SceneShadow(
     val blurRadius: Float = 0f,
 )
 
+data class SceneLinearGradient(
+    val startColor: SceneColor,
+    val endColor: SceneColor,
+    val start: ScenePoint = ScenePoint(0f, 0f),
+    val end: ScenePoint = ScenePoint(1f, 0f),
+)
+
 data class SceneShape(
     val id: String,
     val bounds: SceneRect,
@@ -121,6 +128,7 @@ data class SceneShape(
     val dashIntervals: List<Float> = emptyList(),
     val cornerRadius: Float = 8f,
     val shadow: SceneShadow? = null,
+    val strokeGradient: SceneLinearGradient? = null,
     override val zIndex: Int = 10,
 ) : SceneElement
 
@@ -180,6 +188,7 @@ data class SceneText(
     override val zIndex: Int = 20,
     val softWrap: Boolean = true,
     val clipToBounds: Boolean = false,
+    val horizontalScale: Float? = null,
 ) : SceneElement
 
 data class SceneTextSpan(
@@ -292,6 +301,7 @@ data class TextMetricsRequest(
     val fontFamily: String? = null,
     val weight: SceneTextWeight = SceneTextWeight.Medium,
     val spans: List<SceneTextSpan> = emptyList(),
+    val horizontalScale: Float? = null,
 )
 
 data class TextMetrics(

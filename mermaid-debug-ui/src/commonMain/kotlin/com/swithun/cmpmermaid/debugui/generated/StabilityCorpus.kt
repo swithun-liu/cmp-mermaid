@@ -2143,6 +2143,165 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_release_train",
+        diagramId = "gitgraph",
+        title = "Multi-branch release train",
+        scenario = "A release train integrates nested feature work, a hotfix cherry-pick, and a tagged merge.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            gitGraph LR:
+              commit id: "bootstrap"
+              commit id: "baseline"
+              branch develop order: 2
+              commit id: "api-contract"
+              branch experiment order: 3
+              commit id: "prototype" type: HIGHLIGHT
+              checkout develop
+              commit id: "integration"
+              merge experiment id: "accept-experiment"
+              branch release order: 1
+              commit id: "candidate" tag: "rc.1"
+              checkout main
+              commit id: "urgent-fix" type: REVERSE
+              checkout release
+              cherry-pick id: "urgent-fix"
+              commit id: "verified"
+              checkout main
+              merge release id: "v2.0.0" tag: "stable"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_parallel_bottom_to_top",
+        diagramId = "gitgraph",
+        title = "Parallel bottom-to-top delivery",
+        scenario = "Independent client and service work share parent ranks before a bottom-to-top merge.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                parallelCommits: true
+            ---
+            gitGraph BT:
+              commit id: "approved-plan"
+              branch service order: 2
+              commit id: "service-api"
+              commit id: "service-tests"
+              checkout main
+              branch client order: 1
+              commit id: "client-ui"
+              commit id: "client-tests"
+              checkout main
+              commit id: "release-notes"
+              merge service id: "service-ready"
+              merge client id: "delivery-ready" tag: "candidate"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_ordered_top_to_bottom",
+        diagramId = "gitgraph",
+        title = "Ordered top-to-bottom branches",
+        scenario = "Explicit fractional branch orders place verification lanes around a reordered main branch.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                mainBranchOrder: 2
+            ---
+            gitGraph TB:
+              commit id: "proposal"
+              branch implementation order: 1
+              commit id: "build"
+              branch validation order: 4
+              commit id: "integration-tests" type: HIGHLIGHT
+              checkout implementation
+              commit id: "review"
+              merge validation id: "verified"
+              checkout main
+              commit id: "approval"
+              merge implementation id: "accepted" tag: "ready"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_metadata_and_theme",
+        diagramId = "gitgraph",
+        title = "Accessible themed history",
+        scenario = "Metadata, Unicode, custom theme variables, and quoted branch names remain visible.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            title: Regional release history
+            config:
+              theme: base
+              themeVariables:
+                git0: "#0f766e"
+                git1: "#c2410c"
+                gitInv0: "#ccfbf1"
+                gitBranchLabel0: "#ffffff"
+                commitLineColor: "#475569"
+                commitLabelColor: "#0f172a"
+                tagLabelColor: "#134e4a"
+                tagLabelBackground: "#ccfbf1"
+                tagLabelBorder: "#0f766e"
+                textColor: "#0f172a"
+            ---
+            gitGraph
+              accTitle: Regional release history
+              accDescr {
+                The release candidate is validated before it is merged into the main branch.
+              }
+              commit id: "准备"
+              branch "release candidate"
+              commit id: "verify-日本語" type: HIGHLIGHT tag: "候选版本"
+              checkout main
+              commit id: "approval"
+              merge "release candidate" id: "发布" tag: "v3"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_horizontal_labels",
+        diagramId = "gitgraph",
+        title = "Long horizontal commit labels",
+        scenario = "Horizontal labels, hidden branch decorations, merges, and cherry-picks remain unclipped.",
+        layout = "dagre",
+        initialAspectRatio = 2.1f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                showBranches: false
+                rotateCommitLabel: false
+            ---
+            gitGraph LR:
+              commit id: "initialize-release-coordination"
+              branch verification
+              commit id: "complete-cross-platform-validation"
+              checkout main
+              commit id: "publish-release-documentation"
+              merge verification id: "accept-validation-results"
+              branch maintenance
+              commit id: "prepare-follow-up-correction"
+              checkout main
+              cherry-pick id: "prepare-follow-up-correction"
+              commit id: "close-release-window" tag: "complete"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -4270,6 +4429,165 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               policy_gateway - satisfies -> protected_access
               security_suite - verifies -> protected_access
               security_suite - verifies -> least_privilege
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_release_train",
+        diagramId = "gitgraph",
+        title = "Multi-branch release train",
+        scenario = "A release train integrates nested feature work, a hotfix cherry-pick, and a tagged merge.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            gitGraph LR:
+              commit id: "bootstrap"
+              commit id: "baseline"
+              branch develop order: 2
+              commit id: "api-contract"
+              branch experiment order: 3
+              commit id: "prototype" type: HIGHLIGHT
+              checkout develop
+              commit id: "integration"
+              merge experiment id: "accept-experiment"
+              branch release order: 1
+              commit id: "candidate" tag: "rc.1"
+              checkout main
+              commit id: "urgent-fix" type: REVERSE
+              checkout release
+              cherry-pick id: "urgent-fix"
+              commit id: "verified"
+              checkout main
+              merge release id: "v2.0.0" tag: "stable"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_parallel_bottom_to_top",
+        diagramId = "gitgraph",
+        title = "Parallel bottom-to-top delivery",
+        scenario = "Independent client and service work share parent ranks before a bottom-to-top merge.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                parallelCommits: true
+            ---
+            gitGraph BT:
+              commit id: "approved-plan"
+              branch service order: 2
+              commit id: "service-api"
+              commit id: "service-tests"
+              checkout main
+              branch client order: 1
+              commit id: "client-ui"
+              commit id: "client-tests"
+              checkout main
+              commit id: "release-notes"
+              merge service id: "service-ready"
+              merge client id: "delivery-ready" tag: "candidate"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_ordered_top_to_bottom",
+        diagramId = "gitgraph",
+        title = "Ordered top-to-bottom branches",
+        scenario = "Explicit fractional branch orders place verification lanes around a reordered main branch.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                mainBranchOrder: 2
+            ---
+            gitGraph TB:
+              commit id: "proposal"
+              branch implementation order: 1
+              commit id: "build"
+              branch validation order: 4
+              commit id: "integration-tests" type: HIGHLIGHT
+              checkout implementation
+              commit id: "review"
+              merge validation id: "verified"
+              checkout main
+              commit id: "approval"
+              merge implementation id: "accepted" tag: "ready"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_metadata_and_theme",
+        diagramId = "gitgraph",
+        title = "Accessible themed history",
+        scenario = "Metadata, Unicode, custom theme variables, and quoted branch names remain visible.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            title: Regional release history
+            config:
+              theme: base
+              themeVariables:
+                git0: "#0f766e"
+                git1: "#c2410c"
+                gitInv0: "#ccfbf1"
+                gitBranchLabel0: "#ffffff"
+                commitLineColor: "#475569"
+                commitLabelColor: "#0f172a"
+                tagLabelColor: "#134e4a"
+                tagLabelBackground: "#ccfbf1"
+                tagLabelBorder: "#0f766e"
+                textColor: "#0f172a"
+            ---
+            gitGraph
+              accTitle: Regional release history
+              accDescr {
+                The release candidate is validated before it is merged into the main branch.
+              }
+              commit id: "准备"
+              branch "release candidate"
+              commit id: "verify-日本語" type: HIGHLIGHT tag: "候选版本"
+              checkout main
+              commit id: "approval"
+              merge "release candidate" id: "发布" tag: "v3"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_gitgraph_horizontal_labels",
+        diagramId = "gitgraph",
+        title = "Long horizontal commit labels",
+        scenario = "Horizontal labels, hidden branch decorations, merges, and cherry-picks remain unclipped.",
+        layout = "dagre",
+        initialAspectRatio = 2.1f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                showBranches: false
+                rotateCommitLabel: false
+            ---
+            gitGraph LR:
+              commit id: "initialize-release-coordination"
+              branch verification
+              commit id: "complete-cross-platform-validation"
+              checkout main
+              commit id: "publish-release-documentation"
+              merge verification id: "accept-validation-results"
+              branch maintenance
+              commit id: "prepare-follow-up-correction"
+              checkout main
+              cherry-pick id: "prepare-follow-up-correction"
+              commit id: "close-release-window" tag: "complete"
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -6444,6 +6762,252 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Continue service during a regional outage", "Traffic controller"),
         features = setOf("directions", "dagre-layout", "direct-styles", "classes", "theme-variables"),
     ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_commit_metadata_release",
+        diagramId = "gitgraph",
+        title = "Release commit metadata",
+        scenario = "A release history combines custom IDs, messages, tags, symbols, and metadata.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Release commit history
+            ---
+            gitGraph
+              accTitle: Release commits
+              accDescr {
+                Commit identifiers and release markers describe the verified delivery history.
+              }
+              %% Every public commit attribute is represented.
+              commit id: "plan" msg: "Create the delivery plan"
+              commit id: "rollback" msg: "Record a safe rollback point" type: REVERSE
+              commit id: "发布" msg: "Publish the verified result" type: HIGHLIGHT tag: "v4.0.0"
+        """.trimIndent(),
+        expectedTexts = listOf("Release commit history", "发布", "v4.0.0"),
+        features = setOf("commits", "custom-ids", "messages", "tags", "commit-types", "frontmatter-config", "title", "accessibility", "unicode", "comments"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_commit_metadata_migration",
+        diagramId = "gitgraph",
+        title = "Migration commit metadata",
+        scenario = "A migration history combines custom IDs, messages, tags, symbols, and metadata.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Migration commit history
+            ---
+            gitGraph
+              accTitle: Migration commits
+              accDescr {
+                Commit identifiers and release markers describe the verified delivery history.
+              }
+              %% Every public commit attribute is represented.
+              commit id: "inventory" msg: "Create the delivery plan"
+              commit id: "restore-point" msg: "Record a safe rollback point" type: REVERSE
+              commit id: "切换" msg: "Publish the verified result" type: HIGHLIGHT tag: "migration-ready"
+        """.trimIndent(),
+        expectedTexts = listOf("Migration commit history", "切换", "migration-ready"),
+        features = setOf("commits", "custom-ids", "messages", "tags", "commit-types", "frontmatter-config", "title", "accessibility", "unicode", "comments"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_branch_merge_delivery",
+        diagramId = "gitgraph",
+        title = "Ordered delivery branches",
+        scenario = "Delivery and hotfix lanes use explicit order, both switching commands, and customized merges.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                mainBranchName: "trunk"
+                mainBranchOrder: 2
+            ---
+            gitGraph LR:
+              commit id: "root"
+              branch "delivery lane" order: 1
+              commit id: "feature-1"
+              switch trunk
+              branch urgent-fix order: 3
+              commit id: "fix-1"
+              checkout "delivery lane"
+              merge urgent-fix id: "accept-delivery" tag: "reviewed" type: REVERSE
+              switch trunk
+              merge "delivery lane" id: "publish"
+        """.trimIndent(),
+        expectedTexts = listOf("trunk", "delivery lane", "accept-delivery", "reviewed"),
+        features = setOf("branches", "quoted-branches", "checkout", "switch", "branch-order", "main-branch-config", "merges", "merge-customization"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_branch_merge_platform",
+        diagramId = "gitgraph",
+        title = "Ordered platform branches",
+        scenario = "Platform and recovery lanes use explicit order, both switching commands, and customized merges.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                mainBranchName: "stable"
+                mainBranchOrder: 2
+            ---
+            gitGraph LR:
+              commit id: "root"
+              branch "platform lane" order: 1
+              commit id: "feature-1"
+              switch stable
+              branch recovery-fix order: 3
+              commit id: "fix-1"
+              checkout "platform lane"
+              merge recovery-fix id: "accept-platform" tag: "approved" type: REVERSE
+              switch stable
+              merge "platform lane" id: "publish"
+        """.trimIndent(),
+        expectedTexts = listOf("stable", "platform lane", "accept-platform", "approved"),
+        features = setOf("branches", "quoted-branches", "checkout", "switch", "branch-order", "main-branch-config", "merges", "merge-customization"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_cherry_orientation_top_to_bottom",
+        diagramId = "gitgraph",
+        title = "Top-to-bottom cherry-pick history",
+        scenario = "Top-to-bottom parallel ranks include normal and merge cherry-picks.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                parallelCommits: true
+            ---
+            gitGraph TB:
+              commit id: "tb-root"
+              branch develop
+              branch release
+              commit id: "release-base"
+              checkout develop
+              commit id: "tb-change"
+              checkout main
+              commit id: "main-change"
+              merge develop id: "tb-merge"
+              branch hotfix
+              commit id: "independent-fix"
+              checkout release
+              cherry-pick id: "tb-merge" parent: "tb-change"
+              cherry-pick id: "independent-fix"
+        """.trimIndent(),
+        expectedTexts = listOf("tb-root", "tb-merge"),
+        features = setOf("branches", "checkout", "merges", "cherry-pick", "merge-cherry-pick", "orientations", "parallel-commits"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_cherry_orientation_bottom_to_top",
+        diagramId = "gitgraph",
+        title = "Bottom-to-top cherry-pick history",
+        scenario = "Bottom-to-top parallel ranks include normal and merge cherry-picks.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            ---
+            config:
+              gitGraph:
+                parallelCommits: true
+            ---
+            gitGraph BT:
+              commit id: "bt-root"
+              branch develop
+              branch release
+              commit id: "release-base"
+              checkout develop
+              commit id: "bt-change"
+              checkout main
+              commit id: "main-change"
+              merge develop id: "bt-merge"
+              branch hotfix
+              commit id: "independent-fix"
+              checkout release
+              cherry-pick id: "bt-merge" parent: "bt-change"
+              cherry-pick id: "independent-fix"
+        """.trimIndent(),
+        expectedTexts = listOf("bt-root", "bt-merge"),
+        features = setOf("branches", "checkout", "merges", "cherry-pick", "merge-cherry-pick", "orientations", "parallel-commits"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_configured_visibility_hidden_branches",
+        diagramId = "gitgraph",
+        title = "Hidden branch decorations",
+        scenario = "Branch labels and spines are hidden while commits, tags, and metadata remain visible.",
+        layout = "dagre",
+        initialAspectRatio = 1.85f,
+        source = """
+            ---
+            title: Hidden branch release
+            config:
+              theme: base
+              gitGraph:
+                diagramPadding: 16
+                showBranches: false
+                showCommitLabel: true
+                rotateCommitLabel: true
+              themeVariables:
+                git0: "#0f766e"
+                git1: "#c2410c"
+                commitLineColor: "#475569"
+                tagLabelColor: "#134e4a"
+                tagLabelBackground: "#ccfbf1"
+                tagLabelBorder: "#0f766e"
+                textColor: "#0f172a"
+            ---
+            gitGraph
+              accTitle: Hidden branch release
+              accDescr: The configured graph keeps release metadata available.
+              commit id: "baseline"
+              branch verification
+              commit id: "validated" type: HIGHLIGHT
+              checkout main
+              merge verification id: "published" tag: "branchless"
+        """.trimIndent(),
+        expectedTexts = listOf("Hidden branch release", "branchless"),
+        features = setOf("branches", "merges", "visibility-config", "frontmatter-config", "title", "accessibility", "theme-variables"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_gitgraph_configured_visibility_hidden_commits",
+        diagramId = "gitgraph",
+        title = "Hidden commit labels",
+        scenario = "Commit labels are hidden while branch lanes, tags, and metadata remain visible.",
+        layout = "dagre",
+        initialAspectRatio = 1.85f,
+        source = """
+            ---
+            title: Compact release history
+            config:
+              theme: base
+              gitGraph:
+                diagramPadding: 16
+                showBranches: true
+                showCommitLabel: false
+                rotateCommitLabel: false
+              themeVariables:
+                git0: "#0f766e"
+                git1: "#c2410c"
+                commitLineColor: "#475569"
+                tagLabelColor: "#134e4a"
+                tagLabelBackground: "#ccfbf1"
+                tagLabelBorder: "#0f766e"
+                textColor: "#0f172a"
+            ---
+            gitGraph
+              accTitle: Compact release history
+              accDescr: The configured graph keeps release metadata available.
+              commit id: "baseline"
+              branch verification
+              commit id: "validated" type: HIGHLIGHT
+              checkout main
+              merge verification id: "published" tag: "compact"
+        """.trimIndent(),
+        expectedTexts = listOf("Compact release history", "compact"),
+        features = setOf("branches", "merges", "visibility-config", "frontmatter-config", "title", "accessibility", "theme-variables"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -6482,6 +7046,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "pie",
             "journey",
             "requirement",
+            "gitgraph",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -6550,6 +7115,8 @@ private fun addVisualParityVariation(
         "    risk: low\n" +
         "    verifyMethod: inspection\n" +
         "  }\n"
+    "gitgraph" -> "${source.trimEnd()}\n" +
+        "  commit id: \"$evidenceId\" tag: \"$label\"\n"
     else -> source
 }
 

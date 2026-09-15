@@ -240,11 +240,6 @@
             config.look = look;
           }
           mermaid.initialize(config);
-          const backgroundColor =
-            mermaid.mermaidAPI.getConfig()?.themeVariables?.background ?? "#ffffff";
-          document.documentElement.style.backgroundColor = backgroundColor;
-          document.body.style.backgroundColor = backgroundColor;
-          diagram.style.backgroundColor = backgroundColor;
           const result = await mermaid.render(
             `cmp-official-${currentRequest}`,
             source,
@@ -259,6 +254,11 @@
           if (!svg) {
             throw new Error("Official Mermaid did not produce an SVG");
           }
+          const backgroundColor =
+            mermaid.mermaidAPI.getConfig()?.themeVariables?.background ?? "#ffffff";
+          document.documentElement.style.backgroundColor = backgroundColor;
+          document.body.style.backgroundColor = backgroundColor;
+          diagram.style.backgroundColor = backgroundColor;
           result.bindFunctions?.(diagram);
           await waitForLayout();
           if (currentRequest !== requestId) {

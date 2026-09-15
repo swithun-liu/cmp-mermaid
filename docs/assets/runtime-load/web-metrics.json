@@ -1,37 +1,37 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-15T09:21:13.279Z",
-  "caseCount": 132,
+  "generatedAt": "2026-09-15T15:04:12.563Z",
+  "caseCount": 145,
   "firstCaseId": "rc_flow_checkout_saga",
-  "lastCaseId": "prod_requirement_styled_theme_resilience",
-  "firstContentMillis": 802,
-  "scrollMillis": 7981,
-  "scrollEvents": 65,
+  "lastCaseId": "prod_gitgraph_configured_visibility_hidden_commits",
+  "firstContentMillis": 677,
+  "scrollMillis": 5052,
+  "scrollEvents": 70,
   "reachedLastCase": true,
   "before": {
     "LayoutCount": 0,
     "RecalcStyleCount": 0,
-    "TaskDuration": 0.018895,
-    "JSHeapUsedSize": 27922908,
-    "JSHeapTotalSize": 30162944
+    "TaskDuration": 0.013145,
+    "JSHeapUsedSize": 28299192,
+    "JSHeapTotalSize": 30425088
   },
   "afterScroll": {
-    "LayoutCount": 8,
-    "RecalcStyleCount": 8,
-    "TaskDuration": 5.760232,
-    "JSHeapUsedSize": 42132056,
-    "JSHeapTotalSize": 135593984
+    "LayoutCount": 5,
+    "RecalcStyleCount": 5,
+    "TaskDuration": 2.140973,
+    "JSHeapUsedSize": 40779028,
+    "JSHeapTotalSize": 134021120
   },
   "afterGc": {
-    "LayoutCount": 8,
-    "RecalcStyleCount": 8,
-    "TaskDuration": 5.788591,
-    "JSHeapUsedSize": 39036676,
-    "JSHeapTotalSize": 41484288
+    "LayoutCount": 5,
+    "RecalcStyleCount": 5,
+    "TaskDuration": 2.160328,
+    "JSHeapUsedSize": 37929724,
+    "JSHeapTotalSize": 39911424
   },
-  "retainedJsHeapBytes": 11113768,
-  "peakProcessRssBytes": 1979957248,
-  "finalProcessRssBytes": 1888305152,
+  "retainedJsHeapBytes": 9630532,
+  "peakProcessRssBytes": 2507849728,
+  "finalProcessRssBytes": 2287747072,
   "errors": [],
   "thresholds": {
     "maximumFirstContentMillis": 15000,

@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 2,560 source cases and
-5,120 screenshots from the large-scale
+This index contains 2,816 source cases and
+5,632 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -380,5 +380,42 @@ presented as 256 unrelated topologies.
 ![Requirement visual parity page 15](requirement-visual-parity-15.jpg)
 
 ![Requirement visual parity page 16](requirement-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Git Graph - 256 Native/Official pairs</strong></summary>
+
+![Git Graph visual parity page 01](gitgraph-visual-parity-01.jpg)
+
+![Git Graph visual parity page 02](gitgraph-visual-parity-02.jpg)
+
+![Git Graph visual parity page 03](gitgraph-visual-parity-03.jpg)
+
+![Git Graph visual parity page 04](gitgraph-visual-parity-04.jpg)
+
+![Git Graph visual parity page 05](gitgraph-visual-parity-05.jpg)
+
+![Git Graph visual parity page 06](gitgraph-visual-parity-06.jpg)
+
+![Git Graph visual parity page 07](gitgraph-visual-parity-07.jpg)
+
+![Git Graph visual parity page 08](gitgraph-visual-parity-08.jpg)
+
+![Git Graph visual parity page 09](gitgraph-visual-parity-09.jpg)
+
+![Git Graph visual parity page 10](gitgraph-visual-parity-10.jpg)
+
+![Git Graph visual parity page 11](gitgraph-visual-parity-11.jpg)
+
+![Git Graph visual parity page 12](gitgraph-visual-parity-12.jpg)
+
+![Git Graph visual parity page 13](gitgraph-visual-parity-13.jpg)
+
+![Git Graph visual parity page 14](gitgraph-visual-parity-14.jpg)
+
+![Git Graph visual parity page 15](gitgraph-visual-parity-15.jpg)
+
+![Git Graph visual parity page 16](gitgraph-visual-parity-16.jpg)
 
 </details>

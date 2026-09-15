@@ -121,6 +121,17 @@ data class MermaidJourneyOptions(
     val titleFontSize: String = "4ex",
 )
 
+data class MermaidGitGraphOptions(
+    val titleTopMargin: Float = 25f,
+    val diagramPadding: Float = 8f,
+    val mainBranchName: String = "main",
+    val mainBranchOrder: Float = 0f,
+    val showCommitLabel: Boolean = true,
+    val showBranches: Boolean = true,
+    val rotateCommitLabel: Boolean = true,
+    val parallelCommits: Boolean = false,
+)
+
 data class MermaidRenderOptions(
     val layout: String = "elk",
     val classLayout: String? = null,
@@ -172,6 +183,7 @@ data class MermaidRenderOptions(
     val pieHighlightSlice: String = "",
     val xyChart: MermaidXyChartOptions = MermaidXyChartOptions(),
     val journey: MermaidJourneyOptions = MermaidJourneyOptions(),
+    val gitGraph: MermaidGitGraphOptions = MermaidGitGraphOptions(),
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -349,6 +361,54 @@ data class MermaidRequirementTheme(
     val edgeLabelBackground: SceneColor = SceneColor(0xCCE8E8E8),
 )
 
+data class MermaidGitGraphTheme(
+    val colors: List<SceneColor> = listOf(
+        0xFF0000EC,
+        0xFFDEDE00,
+        0xFF9DEC00,
+        0xFF0076EC,
+        0xFF00ECEC,
+        0xFF00EC76,
+        0xFFEC00EC,
+        0xFFEC0000,
+    ).map(::SceneColor),
+    val inverseColors: List<SceneColor> = listOf(
+        0xFF131300,
+        0xFF0000A1,
+        0xFF310093,
+        0xFF934900,
+        0xFF930000,
+        0xFF930049,
+        0xFF009300,
+        0xFF009393,
+    ).map(::SceneColor),
+    val branchLabelColors: List<SceneColor> = listOf(
+        0xFFFFFFFF,
+        0xFF000000,
+        0xFF000000,
+        0xFFFFFFFF,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+    ).map(::SceneColor),
+    val commitLineColor: SceneColor = SceneColor(0xFF333333),
+    val commitLabelColor: SceneColor = SceneColor(0xFF000021),
+    val commitLabelBackground: SceneColor = SceneColor(0xFFFFFFDE),
+    val tagLabelColor: SceneColor = SceneColor(0xFF131300),
+    val tagLabelBackground: SceneColor = SceneColor(0xFFECECFF),
+    val tagLabelBorder: SceneColor = SceneColor(0xFFC7C7F1),
+    val nodeBorder: SceneColor = SceneColor(0xFF9370DB),
+    val mainBackground: SceneColor = SceneColor(0xFFECECFF),
+    val primaryColor: SceneColor = SceneColor(0xFFECECFF),
+    val textColor: SceneColor = SceneColor(0xFF333333),
+    val useGradient: Boolean = false,
+    val gradientStart: SceneColor = SceneColor(0xFF0042EB),
+    val gradientStop: SceneColor = SceneColor(0xFFEB0042),
+    val commitLabelFontSize: Float = 10f,
+    val tagLabelFontSize: Float = 10f,
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
@@ -372,6 +432,7 @@ data class MermaidTheme(
     val gantt: MermaidGanttTheme = MermaidGanttTheme(),
     val journey: MermaidJourneyTheme = MermaidJourneyTheme(),
     val requirement: MermaidRequirementTheme = MermaidRequirementTheme(),
+    val gitGraph: MermaidGitGraphTheme = MermaidGitGraphTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -404,6 +465,7 @@ data class MermaidTheme(
             gantt = darkGanttTheme(),
             journey = darkJourneyTheme(),
             requirement = darkRequirementTheme(),
+            gitGraph = gitGraphTheme("dark"),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
                 background = 0xFF333333,
@@ -446,6 +508,7 @@ data class MermaidTheme(
             pie = reduxColorPieTheme(dark = false),
             xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF28253D),
             requirement = reduxRequirementTheme(dark = false),
+            gitGraph = gitGraphTheme("redux"),
             dropShadow = reduxShadow(dark = false),
         )
 
@@ -484,6 +547,7 @@ data class MermaidTheme(
                 gantt = forestGanttTheme(),
                 journey = forestJourneyTheme(),
                 requirement = forestRequirementTheme(),
+                gitGraph = gitGraphTheme("forest"),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -524,6 +588,7 @@ data class MermaidTheme(
                 gantt = neutralGanttTheme(),
                 journey = neutralJourneyTheme(),
                 requirement = neutralRequirementTheme(),
+                gitGraph = gitGraphTheme("neutral"),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -558,6 +623,7 @@ data class MermaidTheme(
                 gantt = baseGanttTheme(),
                 journey = baseJourneyTheme(),
                 requirement = baseRequirementTheme(),
+                gitGraph = gitGraphTheme("base"),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
             )
@@ -577,6 +643,7 @@ data class MermaidTheme(
                 gantt = neoGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = false),
                 requirement = neoRequirementTheme(dark = false),
+                gitGraph = gitGraphTheme("neo"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -605,6 +672,7 @@ data class MermaidTheme(
                 gantt = neoDarkGanttTheme(),
                 journey = neoJourneyTheme(dark = true, redux = false),
                 requirement = neoRequirementTheme(dark = true),
+                gitGraph = gitGraphTheme("neo-dark"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 pie = neoPieTheme(dark = true),
@@ -632,6 +700,7 @@ data class MermaidTheme(
                 gantt = reduxGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = true),
                 requirement = reduxRequirementTheme(dark = false),
+                gitGraph = gitGraphTheme("redux"),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -658,6 +727,7 @@ data class MermaidTheme(
             theme: MermaidTheme,
             values: Map<String, String>,
             colorArrays: Map<String, List<String>> = emptyMap(),
+            themeName: String? = null,
         ): GMResult<MermaidTheme, MermaidError> {
             var invalidVariable: Pair<String, String>? = null
 
@@ -679,6 +749,20 @@ data class MermaidTheme(
                     invalidVariable = name to value
                 }
                 return parsed
+            }
+
+            fun boolean(name: String): Boolean? {
+                val value = values[name] ?: return null
+                return when (value.trim().lowercase()) {
+                    "true" -> true
+                    "false" -> false
+                    else -> {
+                        if (invalidVariable == null) {
+                            invalidVariable = name to value
+                        }
+                        null
+                    }
+                }
             }
 
             fun colorArray(name: String): GMResult<List<SceneColor>?, MermaidError> {
@@ -830,6 +914,66 @@ data class MermaidTheme(
                     "edgeLabelBackground",
                 ) ?: theme.requirement.edgeLabelBackground,
             )
+            val gitColors = theme.gitGraph.colors.toMutableList()
+            val gitInverseColors = theme.gitGraph.inverseColors.toMutableList()
+            val gitBranchLabelColors = theme.gitGraph.branchLabelColors.toMutableList()
+            repeat(8) { index ->
+                val gitColor = color("git$index")
+                if (gitColor != null) {
+                    gitColors[index] = gitColor
+                }
+                val gitInverseColor = color("gitInv$index")
+                gitInverseColors[index] = when {
+                    gitInverseColor != null -> gitInverseColor
+                    gitColor != null -> deriveGitInverseColor(
+                        themeName = themeName,
+                        gitColor = gitColor,
+                        inherited = gitInverseColors[index],
+                    )
+                    else -> gitInverseColors[index]
+                }
+                color("gitBranchLabel$index")?.let { parsed ->
+                    gitBranchLabelColors[index] = parsed
+                }
+            }
+            val gitCommitLabelFontSize =
+                number("commitLabelFontSize") ?: theme.gitGraph.commitLabelFontSize
+            val gitTagLabelFontSize =
+                number("tagLabelFontSize") ?: theme.gitGraph.tagLabelFontSize
+            if (gitCommitLabelFontSize < 0f || gitTagLabelFontSize < 0f) {
+                val invalidName = if (gitCommitLabelFontSize < 0f) {
+                    "commitLabelFontSize"
+                } else {
+                    "tagLabelFontSize"
+                }
+                invalidVariable = invalidName to values[invalidName].orEmpty()
+            }
+            val gitGraph = theme.gitGraph.copy(
+                colors = gitColors,
+                inverseColors = gitInverseColors,
+                branchLabelColors = gitBranchLabelColors,
+                commitLineColor =
+                    color("commitLineColor", "lineColor") ?: theme.gitGraph.commitLineColor,
+                commitLabelColor =
+                    color("commitLabelColor") ?: theme.gitGraph.commitLabelColor,
+                commitLabelBackground =
+                    color("commitLabelBackground") ?: theme.gitGraph.commitLabelBackground,
+                tagLabelColor = color("tagLabelColor") ?: theme.gitGraph.tagLabelColor,
+                tagLabelBackground =
+                    color("tagLabelBackground") ?: theme.gitGraph.tagLabelBackground,
+                tagLabelBorder =
+                    color("tagLabelBorder", "tagBorder") ?: theme.gitGraph.tagLabelBorder,
+                nodeBorder = color("nodeBorder", "primaryBorderColor")
+                    ?: theme.gitGraph.nodeBorder,
+                mainBackground = color("mainBkg") ?: theme.gitGraph.mainBackground,
+                primaryColor = color("primaryColor") ?: theme.gitGraph.primaryColor,
+                textColor = color("textColor") ?: theme.gitGraph.textColor,
+                useGradient = boolean("useGradient") ?: theme.gitGraph.useGradient,
+                gradientStart = color("gradientStart") ?: theme.gitGraph.gradientStart,
+                gradientStop = color("gradientStop") ?: theme.gitGraph.gradientStop,
+                commitLabelFontSize = gitCommitLabelFontSize,
+                tagLabelFontSize = gitTagLabelFontSize,
+            )
             val xyPaletteSource = values["xyChart.plotColorPalette"]
             val xyPalette = if (xyPaletteSource == null) {
                 theme.xyChart.plotColorPalette
@@ -910,6 +1054,7 @@ data class MermaidTheme(
                 gantt = gantt,
                 journey = journey,
                 requirement = requirement,
+                gitGraph = gitGraph,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -922,6 +1067,28 @@ data class MermaidTheme(
                             "'${invalid.second}'",
                     ),
                 )
+            }
+        }
+
+        private fun deriveGitInverseColor(
+            themeName: String?,
+            gitColor: SceneColor,
+            inherited: SceneColor,
+        ): SceneColor {
+            // Mermaid: packages/mermaid/src/themes/theme-*.js -> updateColors / calculate.
+            return when (themeName?.lowercase()) {
+                "base",
+                "forest",
+                "neo",
+                "redux",
+                "redux-color",
+                "redux-dark",
+                "redux-dark-color",
+                -> gitColor.mermaidDarken(25.0).mermaidInvert()
+                "neo-dark" -> gitColor.mermaidLighten(25.0).mermaidInvert()
+                // Default, dark, and neutral derive gitInv from fixed generated palettes
+                // before user gitN overrides are restored.
+                else -> inherited
             }
         }
 
@@ -941,6 +1108,7 @@ data class MermaidTheme(
             gantt = reduxDarkGanttTheme(),
             journey = neoJourneyTheme(dark = true, redux = true),
             requirement = reduxRequirementTheme(dark = true),
+            gitGraph = gitGraphTheme("redux-dark"),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -1052,6 +1220,274 @@ data class MermaidTheme(
                 }.map(::SceneColor),
                 textColor = SceneColor(if (dark) 0xFFCCCCCC else 0xFF28253D),
             )
+
+        private fun gitGraphTheme(name: String): MermaidGitGraphTheme {
+            fun colors(vararg values: Long): List<SceneColor> = values.map(::SceneColor)
+            return when (name) {
+                "dark" -> MermaidGitGraphTheme(
+                    colors = colors(
+                        0xFF797D7D,
+                        0xFFA12273,
+                        0xFF6A8993,
+                        0xFF9B5C35,
+                        0xFFCC1212,
+                        0xFF65007B,
+                        0xFFCC7801,
+                        0xFF31A50E,
+                    ),
+                    inverseColors = colors(
+                        0xFF868282,
+                        0xFF5EDD8C,
+                        0xFF95766C,
+                        0xFF64A3CA,
+                        0xFF34EDED,
+                        0xFF9AFF84,
+                        0xFF3387FE,
+                        0xFFCE5AF1,
+                    ),
+                    branchLabelColors = colors(
+                        0xFF2C2C2C,
+                        0xFFD3D3D3,
+                        0xFFD3D3D3,
+                        0xFF2C2C2C,
+                        0xFFD3D3D3,
+                        0xFFD3D3D3,
+                        0xFFD3D3D3,
+                        0xFFD3D3D3,
+                    ),
+                    commitLineColor = SceneColor(0xFFD3D3D3),
+                    commitLabelColor = SceneColor(0xFFB8B6B6),
+                    commitLabelBackground = SceneColor(0xFF474949),
+                    tagLabelColor = SceneColor(0xFFE0DFDF),
+                    tagLabelBackground = SceneColor(0xFF1F2020),
+                    tagLabelBorder = SceneColor(0xFFCCCCCC),
+                    nodeBorder = SceneColor(0xFFCCCCCC),
+                    mainBackground = SceneColor(0xFF1F2020),
+                    primaryColor = SceneColor(0xFF1F2020),
+                    textColor = SceneColor(0xFFCCCCCC),
+                )
+                "forest" -> MermaidGitGraphTheme(
+                    colors = colors(
+                        0xFF9BC834,
+                        0xFF7AFF32,
+                        0xFFB0D45B,
+                        0xFFC8AB34,
+                        0xFFC86134,
+                        0xFFC83452,
+                        0xFF34C861,
+                        0xFF349BC8,
+                    ),
+                    inverseColors = colors(
+                        0xFF6437CB,
+                        0xFF8500CD,
+                        0xFF4F2BA4,
+                        0xFF3754CB,
+                        0xFF379ECB,
+                        0xFF37CBAD,
+                        0xFFCB379E,
+                        0xFFCB6437,
+                    ),
+                    commitLineColor = SceneColor(0xFF000000),
+                    commitLabelColor = SceneColor(0xFF32004D),
+                    commitLabelBackground = SceneColor(0xFFCDFFB2),
+                    tagLabelColor = SceneColor(0xFF321B67),
+                    tagLabelBackground = SceneColor(0xFFCDE498),
+                    tagLabelBorder = SceneColor(0xFFABB594),
+                    nodeBorder = SceneColor(0xFF13540C),
+                    mainBackground = SceneColor(0xFFCDE498),
+                    primaryColor = SceneColor(0xFFCDE498),
+                    textColor = SceneColor(0xFF000000),
+                )
+                "neutral" -> MermaidGitGraphTheme(
+                    colors = colors(
+                        0xFFB4B4B4,
+                        0xFF555555,
+                        0xFFBBBBBB,
+                        0xFF777777,
+                        0xFF999999,
+                        0xFFDDDDDD,
+                        0xFFFFFFFF,
+                        0xFFDDDDDD,
+                    ),
+                    inverseColors = colors(
+                        0xFF4B4B4B,
+                        0xFFAAAAAA,
+                        0xFF444444,
+                        0xFF888888,
+                        0xFF666666,
+                        0xFF222222,
+                        0xFF000000,
+                        0xFF222222,
+                    ),
+                    branchLabelColors = colors(
+                        0xFF333333,
+                        0xFFFFFFFF,
+                        0xFF333333,
+                        0xFFFFFFFF,
+                        0xFF333333,
+                        0xFF333333,
+                        0xFF333333,
+                        0xFF333333,
+                    ),
+                    commitLineColor = SceneColor(0xFF666666),
+                    commitLabelColor = SceneColor(0xFF030303),
+                    commitLabelBackground = SceneColor(0xFFFCFCFC),
+                    tagLabelColor = SceneColor(0xFF111111),
+                    tagLabelBackground = SceneColor(0xFFEEEEEE),
+                    tagLabelBorder = SceneColor(0xFFD5D5D5),
+                    nodeBorder = SceneColor(0xFF999999),
+                    mainBackground = SceneColor(0xFFEEEEEE),
+                    primaryColor = SceneColor(0xFFEEEEEE),
+                    textColor = SceneColor(0xFF000000),
+                )
+                "base" -> MermaidGitGraphTheme(
+                    colors = colors(
+                        0xFFFFCB5E,
+                        0xFFCB5EFF,
+                        0xFF77A3FF,
+                        0xFFFF7A5E,
+                        0xFFFF5E92,
+                        0xFFFF5EE3,
+                        0xFF92FF5E,
+                        0xFF5EFFCB,
+                    ),
+                    inverseColors = colors(
+                        0xFF0034A2,
+                        0xFF34A200,
+                        0xFF885C00,
+                        0xFF0085A2,
+                        0xFF00A26D,
+                        0xFF00A21D,
+                        0xFF6D00A2,
+                        0xFFA20034,
+                    ),
+                    branchLabelColors = List(8) { SceneColor(0xFF333333) },
+                    commitLineColor = SceneColor(0xFF0B0B0B),
+                    commitLabelColor = SceneColor(0xFF0B2200),
+                    commitLabelBackground = SceneColor(0xFFF4DDFF),
+                    tagLabelColor = SceneColor(0xFF333333),
+                    tagLabelBackground = SceneColor(0xFFFFF4DD),
+                    tagLabelBorder = SceneColor(0xFFEEDEBB),
+                    nodeBorder = SceneColor(0xFFEEDEBB),
+                    mainBackground = SceneColor(0xFFFFF4DD),
+                    primaryColor = SceneColor(0xFFFFF4DD),
+                    textColor = SceneColor(0xFF333333),
+                )
+                "neo", "redux" -> MermaidGitGraphTheme(
+                    colors = colors(
+                        0xFF7373F8,
+                        0xFF9B9BBF,
+                        0xFFF9F986,
+                        0xFF73B5F8,
+                        0xFF73F8F8,
+                        0xFF73F8B5,
+                        0xFFF873F8,
+                        0xFFF87373,
+                    ),
+                    inverseColors = colors(
+                        0xFF8C8C07,
+                        0xFF646440,
+                        0xFF060679,
+                        0xFF8C4A07,
+                        0xFF8C0707,
+                        0xFF8C074A,
+                        0xFF078C07,
+                        0xFF078C8C,
+                    ),
+                    branchLabelColors = List(8) {
+                        SceneColor(if (name == "redux") 0xFF28253D else 0xFF333333)
+                    },
+                    commitLineColor = SceneColor(
+                        if (name == "redux") 0xFFBDBCCC else 0xFF000000,
+                    ),
+                    commitLabelColor = SceneColor(0xFF333333),
+                    commitLabelBackground = SceneColor(0xFFCCCCCC),
+                    tagLabelColor = SceneColor(
+                        if (name == "redux") 0xFF28253D else 0xFF333333,
+                    ),
+                    tagLabelBackground = SceneColor(0xFFCCCCCC),
+                    tagLabelBorder = SceneColor(
+                        if (name == "redux") 0xFF181818 else 0xFFB3B3B3,
+                    ),
+                    nodeBorder = SceneColor(
+                        if (name == "redux") 0xFF28253D else 0xFF000000,
+                    ),
+                    mainBackground = SceneColor(0xFFFFFFFF),
+                    primaryColor = SceneColor(0xFFCCCCCC),
+                    textColor = SceneColor(
+                        if (name == "redux") 0xFF28253D else 0xFF333333,
+                    ),
+                    useGradient = name == "neo",
+                )
+                "neo-dark", "redux-dark" -> MermaidGitGraphTheme(
+                    colors = if (name == "neo-dark") {
+                        colors(
+                            0xFF8B0000,
+                            0xFFB72682,
+                            0xFF78959E,
+                            0xFFAE683B,
+                            0xFFE31515,
+                            0xFFA300C8,
+                            0xFFFEA01C,
+                            0xFF38BD10,
+                        )
+                    } else {
+                        colors(
+                            0xFF000000,
+                            0xFF080909,
+                            0xFF000000,
+                            0xFF000000,
+                            0xFF000000,
+                            0xFF000000,
+                            0xFF000000,
+                            0xFF000000,
+                        )
+                    },
+                    inverseColors = if (name == "neo-dark") {
+                        colors(
+                            0xFF75FFFF,
+                            0xFF48D97D,
+                            0xFF876A61,
+                            0xFF5197C4,
+                            0xFF1CEAEA,
+                            0xFF5CFF38,
+                            0xFF015FE3,
+                            0xFFC742EF,
+                        )
+                    } else {
+                        colors(
+                            0xFFFFFFFF,
+                            0xFFF7F6F6,
+                            0xFFFFFFFF,
+                            0xFFFFFFFF,
+                            0xFFFFFFFF,
+                            0xFFFFFFFF,
+                            0xFFFFFFFF,
+                            0xFFFFFFFF,
+                        )
+                    },
+                    branchLabelColors = List(8) { SceneColor(0xFFE0DFDF) },
+                    commitLineColor = SceneColor(
+                        if (name == "redux-dark") 0xFFBDBCCC else 0xFFCCCCCC,
+                    ),
+                    commitLabelColor = SceneColor(0xFFB8B6B6),
+                    commitLabelBackground = SceneColor(0xFF474949),
+                    tagLabelColor = SceneColor(0xFFE0DFDF),
+                    tagLabelBackground = SceneColor(0xFF1F2020),
+                    tagLabelBorder = SceneColor(0xFFCCCCCC),
+                    nodeBorder = SceneColor(
+                        if (name == "redux-dark") 0xFFFFFFFF else 0xFFCCCCCC,
+                    ),
+                    mainBackground = SceneColor(
+                        if (name == "redux-dark") 0xFF111113 else 0xFF2A2020,
+                    ),
+                    primaryColor = SceneColor(0xFF1F2020),
+                    textColor = SceneColor(0xFFCCCCCC),
+                    useGradient = name == "neo-dark",
+                )
+                else -> MermaidGitGraphTheme()
+            }
+        }
 
         private fun darkRequirementTheme(): MermaidRequirementTheme =
             MermaidRequirementTheme(

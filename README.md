@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Live Web demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>2,560-case visual report</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>2,816-case visual report</strong></a>
     ·
     <a href="docs/stability-report.md">Full Stable report</a>
     ·
@@ -30,13 +30,13 @@
 
 > [!IMPORTANT]
 > **CMP Mermaid is Stable for its documented Mermaid `12.0.0` support
-> scope.** All 10 supported diagram types pass the independent production
-> corpus, a 2,560-case Native/Official visual matrix, deterministic replay,
+> scope.** All 11 supported diagram types pass the independent production
+> corpus, a 2,816-case Native/Official visual matrix, deterministic replay,
 > separate randomized stress tests, runtime load tests, and cross-platform
 > builds.
 >
-> Start with the **[2,560-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**,
-> containing all 5,120 screenshots across 160 paged contact sheets. The
+> Start with the **[2,816-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**,
+> containing all 5,632 screenshots across 176 paged contact sheets. The
 > **[full Stable report](docs/stability-report.md)** adds the decision,
 > performance, platform, security, and reproduction evidence.
 
@@ -53,28 +53,28 @@ demo gallery.
 
 | Evidence | Result |
 | --- | ---: |
-| Supported diagram types | 10 |
-| Independent production scenarios | 132 |
-| Declared capability coverage | 162/162 |
-| Large-scale visual matrix | 2,560 unique sources: 256 per diagram type |
-| Native/Official captures | 5,120 matrix screenshots plus 264 independent-corpus screenshots |
-| Manual visual review | 132 accepted, 0 blocked |
-| Automated visual geometry | 2,560/2,560 matrix pairs and 132/132 independent pairs passed |
-| Deterministic SceneGraph replay | 132 passed, 0 mismatches |
-| Built-in theme matrix | 110/110 |
-| Separate generated Native stress inputs | 2,560 |
-| JVM tests | 318 passed, 0 failed |
-| Core production soak | 660 renders, 68ms P95 |
+| Supported diagram types | 11 |
+| Independent production scenarios | 145 |
+| Declared capability coverage | 186/186 |
+| Large-scale visual matrix | 2,816 unique sources: 256 per diagram type |
+| Native/Official captures | 5,632 matrix screenshots plus 290 independent-corpus screenshots |
+| Manual visual review | 145 accepted, 0 blocked |
+| Automated visual geometry | 2,816/2,816 matrix pairs and 145/145 independent pairs passed |
+| Deterministic SceneGraph replay | 145 passed, 0 mismatches |
+| Built-in theme matrix | 121/121 |
+| Separate generated Native stress inputs | 2,816 |
+| JVM tests | 356 passed, 0 failed |
+| Core production soak | 725 renders, 61ms P95 |
 | Runtime load matrix | Android, iOS, Desktop, Web passed |
 
 | Evidence document | What it contains |
 | --- | --- |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
-| **[All 2,560 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 160 paged contact sheets, with 16 same-source pairs per page |
-| [Production capability matrix](docs/production-capability-matrix.md) | The 162 independently exercised capabilities |
+| **[All 2,816 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 176 paged contact sheets, with 16 same-source pairs per page |
+| [Production capability matrix](docs/production-capability-matrix.md) | The 186 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual 10-way matrix capture, geometry enforcement, and downloadable evidence |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual 11-way matrix capture, geometry enforcement, and downloadable evidence |
 
 The Stable rating applies to the documented support contract. It is not a
 claim that every legal Mermaid program is implemented. A legal feature that
@@ -108,9 +108,9 @@ not pixel-identical browser output; platform font metrics may differ.
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native state diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js state diagram" width="700"> |
 
-The report contains the 132 independent production comparisons and a separate
-large-scale matrix with 2,560 unique Mermaid sources:
-**[open all 160 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
+The report contains the 145 independent production comparisons and a separate
+large-scale matrix with 2,816 unique Mermaid sources:
+**[open all 176 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
 
 </details>
 
@@ -128,8 +128,9 @@ large-scale matrix with 2,560 unique Mermaid sources:
 | Pie | **Stable** | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
 | User Journey | **Stable** | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
 | Requirement | **Stable** | 13 | SysML types and fields, elements, seven relationships, Dagre/ELK, styling | [Compatibility](docs/requirement-compatibility.md) |
+| Git Graph | **Stable** | 13 | Langium grammar, branches, merges, cherry-picks, orientations, themes | [Compatibility](docs/gitgraph-compatibility.md) |
 
-All 10 types support Mermaid frontmatter, metadata, Unicode, and the relevant
+All 11 types support Mermaid frontmatter, metadata, Unicode, and the relevant
 theme variables within their documented compatibility boundaries.
 
 ## Try It
@@ -226,7 +227,6 @@ fun Diagram(source: String) {
 ```
 
 Generate all KMP publications under `build/maven-repository`:
-
 ```bash
 ./gradlew \
   :mermaid-core:publishAllPublicationsToBuildRepository \
@@ -279,7 +279,9 @@ Source maps:
 [ER](docs/upstream-er-map.md) ·
 [Gantt](docs/upstream-gantt-map.md) ·
 [Pie](docs/upstream-pie-map.md) ·
-[User Journey](docs/upstream-journey-map.md)
+[User Journey](docs/upstream-journey-map.md) ·
+[Requirement](docs/upstream-requirement-map.md) ·
+[Git Graph](docs/upstream-gitgraph-map.md)
 
 ## Verification
 

@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "platform": "iOS Simulator",
   "device": "iPhone 17 Pro",
-  "caseCount": 132,
-  "lastCaseId": "prod_requirement_styled_theme_resilience",
+  "caseCount": 145,
+  "lastCaseId": "prod_gitgraph_configured_visibility_hidden_commits",
   "autoRunItemDelayMillis": 75,
-  "finalHostRssKb": 258928,
+  "finalHostRssKb": 530032,
   "reachedLastCase": true,
   "crashed": false
 }
