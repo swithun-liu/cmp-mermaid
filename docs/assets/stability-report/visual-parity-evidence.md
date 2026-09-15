@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 2,304 source cases and
-4,608 screenshots from the large-scale
+This index contains 2,560 source cases and
+5,120 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -343,5 +343,42 @@ presented as 256 unrelated topologies.
 ![User Journey visual parity page 15](journey-visual-parity-15.jpg)
 
 ![User Journey visual parity page 16](journey-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Requirement - 256 Native/Official pairs</strong></summary>
+
+![Requirement visual parity page 01](requirement-visual-parity-01.jpg)
+
+![Requirement visual parity page 02](requirement-visual-parity-02.jpg)
+
+![Requirement visual parity page 03](requirement-visual-parity-03.jpg)
+
+![Requirement visual parity page 04](requirement-visual-parity-04.jpg)
+
+![Requirement visual parity page 05](requirement-visual-parity-05.jpg)
+
+![Requirement visual parity page 06](requirement-visual-parity-06.jpg)
+
+![Requirement visual parity page 07](requirement-visual-parity-07.jpg)
+
+![Requirement visual parity page 08](requirement-visual-parity-08.jpg)
+
+![Requirement visual parity page 09](requirement-visual-parity-09.jpg)
+
+![Requirement visual parity page 10](requirement-visual-parity-10.jpg)
+
+![Requirement visual parity page 11](requirement-visual-parity-11.jpg)
+
+![Requirement visual parity page 12](requirement-visual-parity-12.jpg)
+
+![Requirement visual parity page 13](requirement-visual-parity-13.jpg)
+
+![Requirement visual parity page 14](requirement-visual-parity-14.jpg)
+
+![Requirement visual parity page 15](requirement-visual-parity-15.jpg)
+
+![Requirement visual parity page 16](requirement-visual-parity-16.jpg)
 
 </details>

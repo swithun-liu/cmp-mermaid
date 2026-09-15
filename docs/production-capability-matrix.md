@@ -8,13 +8,14 @@ and enforced by
 
 ## Current State
 
-- 9 supported diagram types
-- 119 production scenarios
-- 77 conformance scenarios created independently from the demo gallery
-- 16 required capability points per diagram type
-- 144/144 declared capability points covered
-- 2,304 additional visual-matrix sources: 256 per diagram type
-- 2,304 separate Native-only randomized stress inputs
+- 10 supported diagram types
+- 132 production scenarios
+- 80 conformance scenarios created independently from the demo gallery
+- 16 required capability points for each of the first nine diagram types and
+  18 for Requirement
+- 162/162 declared capability points covered
+- 2,560 additional visual-matrix sources: 256 per diagram type
+- 2,560 separate Native-only randomized stress inputs
 
 ## Coverage
 
@@ -29,29 +30,31 @@ and enforced by
 | Gantt | 13 | date formats, duration units, dependencies, task states, milestones, excludes, weekends, axis format, tick interval, sections, compact mode, top axis, vertical markers, links, frontmatter config, Unicode |
 | Pie | 13 | basic slices, show data, title, escaped labels, duplicate labels, zero values, decimal values, donut, legend right, legend center, legend transforms, static highlight, theme colors, many slices, metadata, Unicode |
 | User Journey | 13 | sections, scores, decimal scores, single actor, multiple actors, actor order, actor reuse, actorless tasks, title, frontmatter title, accessibility, comments, configuration, theme colors, long task text, long actor text |
+| Requirement | 13 | requirement types, fields, risk levels, verification methods, elements, relationship types, reverse relationships, directions, Dagre, ELK, frontmatter title, accessibility, Markdown, direct styles, classes, theme variables, Unicode, comments |
 
 ## Enforcement
 
 The corpus generator fails when:
 
 - a diagram type does not have its expected number of cases;
-- one of the 144 required capability points has no conformance case;
+- one of the 162 required capability points has no conformance case;
 - a case reuses a demo or prior RC source;
 - a case has no semantic text expectation;
 - a case declares an unknown capability point.
 
 `ProductionCorpusTest` then requires every source to render with finite,
 bounded geometry and expected semantic text, compares two complete SceneGraphs
-for determinism, and renders all 9 diagram types across all 11 built-in themes.
+for determinism, and renders all 10 diagram types across all 11 built-in
+themes.
 The Web audit captures Native and Mermaid.js output for every case and enforces
 blank-image and content-geometry limits.
 
 The large-scale visual matrix adds 256 unique sources per type by combining 13
 or 14 complex production structures with 20 visible text and layout-pressure
-profiles. All 2,304 sources render in the Native core test and all 2,304
+profiles. All 2,560 sources render in the Native core test and all 2,560
 Native/Official screenshot pairs pass the geometry gate. This systematic
 matrix broadens layout and text-pressure coverage, but it is not counted as
-2,304 independent topologies. The separate randomized stress corpus remains
+2,560 independent topologies. The separate randomized stress corpus remains
 Native-only robustness evidence and is not presented as Official parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.

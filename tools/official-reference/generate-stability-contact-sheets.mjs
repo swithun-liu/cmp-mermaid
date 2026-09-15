@@ -49,6 +49,7 @@ const kinds = [
   'gantt',
   'pie',
   'journey',
+  'requirement',
 ];
 const kindTitles = {
   flowchart: 'Flowchart',
@@ -60,6 +61,7 @@ const kindTitles = {
   gantt: 'Gantt',
   pie: 'Pie',
   journey: 'User Journey',
+  requirement: 'Requirement',
 };
 const selectedKinds = kinds.filter(
   (kind) => corpusKind === 'all' || corpusKind === kind,

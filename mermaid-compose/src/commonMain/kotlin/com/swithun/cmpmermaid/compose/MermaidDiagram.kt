@@ -752,7 +752,11 @@ private fun DrawScope.drawScenePath(
         return
     }
     val paths = element.toComposeContours()
-    val useNeoMarkerMargin = element.look == "neo" && !element.animated
+    val useNeoMarkerMargin = shouldApplyNeoMarkerMargins(
+        look = element.look,
+        animated = element.animated,
+        dashIntervals = element.dashIntervals,
+    )
     val visiblePaths = if (useNeoMarkerMargin) {
         listOf(paths.withMermaidNeoMarkerGaps(element))
     } else {
@@ -800,6 +804,17 @@ private fun DrawScope.drawScenePath(
         strokeWidth = element.strokeWidth,
     )
 }
+
+internal fun shouldApplyNeoMarkerMargins(
+    look: String,
+    animated: Boolean,
+    dashIntervals: List<Float>,
+): Boolean = look == "neo" &&
+    !animated &&
+    !dashIntervals.hasValidDashIntervals()
+
+private fun List<Float>.hasValidDashIntervals(): Boolean =
+    size >= 2 && all { interval -> interval.isFinite() && interval > 0f }
 
 private fun ScenePath.toComposeContours(): List<Path> {
     val contours = mutableListOf<Path>()
@@ -1014,6 +1029,8 @@ private fun SceneArrowHead.neoMarkerOffset(): Float = when (this) {
     SceneArrowHead.ErZeroOrOne,
     SceneArrowHead.ErOneOrMore,
     SceneArrowHead.ErZeroOrMore,
+    SceneArrowHead.RequirementArrow,
+    SceneArrowHead.RequirementContains,
     -> 0f
 }
 
@@ -1067,7 +1084,85 @@ private fun DrawScope.drawArrowHead(
             background = markerBackground,
             strokeWidth = strokeWidth,
         )
+        SceneArrowHead.RequirementArrow,
+        SceneArrowHead.RequirementContains,
+        -> drawRequirementMarker(
+            type = type,
+            tangent = tangent,
+            position = position,
+            color = color,
+            strokeWidth = strokeWidth,
+        )
         SceneArrowHead.None -> Unit
+    }
+}
+
+/**
+ * Canvas translation of Mermaid 12.0.0's requirement_arrow and
+ * requirement_contains marker definitions.
+ */
+private fun DrawScope.drawRequirementMarker(
+    type: SceneArrowHead,
+    tangent: MarkerTangent,
+    position: MarkerPosition,
+    color: Color,
+    strokeWidth: Float,
+) {
+    val inward = if (position == MarkerPosition.Start) {
+        tangent
+    } else {
+        tangent.copy(unitX = -tangent.unitX, unitY = -tangent.unitY)
+    }
+    val width = strokeWidth.coerceAtLeast(1f)
+
+    fun point(distance: Float, perpendicular: Float = 0f): Offset =
+        inward.transform(
+            point = ScenePoint(distance, perpendicular),
+            reference = ScenePoint(0f, 0f),
+            scale = 1f,
+        )
+
+    when (type) {
+        SceneArrowHead.RequirementArrow -> {
+            drawLine(
+                color = color,
+                start = point(20f, -10f),
+                end = point(0f),
+                strokeWidth = width,
+                cap = StrokeCap.Butt,
+            )
+            drawLine(
+                color = color,
+                start = point(0f),
+                end = point(20f, 10f),
+                strokeWidth = width,
+                cap = StrokeCap.Butt,
+            )
+        }
+        SceneArrowHead.RequirementContains -> {
+            val center = point(10f)
+            drawCircle(
+                color = color,
+                radius = 9f,
+                center = center,
+                style = Stroke(width = width),
+            )
+            drawLine(
+                color = color,
+                start = point(1f),
+                end = point(19f),
+                strokeWidth = width,
+                cap = StrokeCap.Butt,
+            )
+            drawLine(
+                color = color,
+                start = point(10f, -9f),
+                end = point(10f, 9f),
+                strokeWidth = width,
+                cap = StrokeCap.Butt,
+            )
+        }
+        else -> Unit
     }
 }
 

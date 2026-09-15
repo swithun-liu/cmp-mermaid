@@ -439,6 +439,7 @@ private fun PlaygroundContent(
                         source = renderedSource,
                         layout = effectiveOfficialLayout,
                         themeName = selectedTheme.configName,
+                        look = renderOptions.look,
                         modifier = Modifier.fillMaxSize(),
                     )
                 }

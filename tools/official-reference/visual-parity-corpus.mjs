@@ -11,6 +11,7 @@ export const kinds = [
   'gantt',
   'pie',
   'journey',
+  'requirement',
 ];
 
 export const casesPerKind = 256;
@@ -110,6 +111,15 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}\n  "${label}" : ${(ordinal % 17) + 3}\n`;
     case 'journey':
       return `${source.trimEnd()}\n  ${label}: ${(ordinal % 5) + 1}: Parity Actor ${ordinal}\n`;
+    case 'requirement':
+      return `${source.trimEnd()}
+  requirement ${evidenceId} {
+    id: "PARITY-${String(ordinal).padStart(3, '0')}"
+    text: "${label}"
+    risk: low
+    verifyMethod: inspection
+  }
+`;
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }

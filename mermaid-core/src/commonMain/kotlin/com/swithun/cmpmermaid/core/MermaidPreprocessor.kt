@@ -238,6 +238,7 @@ internal object MermaidPreprocessor {
         val erDiagram = map.map("er")
         val gantt = map.map("gantt")
         val journey = map.map("journey")
+        val requirement = map.map("requirement")
         val pie = map.map("pie")
         val xyChart = map.map("xyChart")
         val xyXAxis = xyChart?.map("xAxis")
@@ -800,11 +801,21 @@ internal object MermaidPreprocessor {
         val curve = string(flowchart, "curve", "flowchart.curve")
         val flowTheme = appearanceString(flowchart, "theme", "flowchart.theme")
             ?.takeIf(USABLE_THEMES::contains)
+        val requirementTheme = appearanceString(
+            requirement,
+            "theme",
+            "requirement.theme",
+        )?.takeIf(USABLE_THEMES::contains)
         val topTheme = appearanceString(map, "theme", "theme")
             ?.takeIf(USABLE_THEMES::contains)
         val parsedThemeVariables = themeVariables(map, "themeVariables", "themeVariables")
         val flowLook = appearanceString(flowchart, "look", "flowchart.look")
             ?.takeIf(USABLE_LOOKS::contains)
+        val requirementLook = appearanceString(
+            requirement,
+            "look",
+            "requirement.look",
+        )?.takeIf(USABLE_LOOKS::contains)
         val topLook = appearanceString(map, "look", "look")
             ?.takeIf(USABLE_LOOKS::contains)
         val titleTopMargin = float(flowchart, "titleTopMargin", "flowchart.titleTopMargin")
@@ -996,9 +1007,11 @@ internal object MermaidPreprocessor {
                 fontSize = fontSize,
                 fontFamily = fontFamily,
                 themeName = flowTheme ?: topTheme,
+                requirementThemeName = requirementTheme,
                 themeVariables = parsedThemeVariables?.scalars,
                 themeColorArrays = parsedThemeVariables?.arrays,
                 look = flowLook ?: topLook,
+                requirementLook = requirementLook,
                 titleTopMargin = titleTopMargin,
                 subGraphTitleTopMargin = subGraphTitleTopMargin?.toFloat(),
                 subGraphTitleBottomMargin = subGraphTitleBottomMargin?.toFloat(),
@@ -1186,9 +1199,11 @@ internal data class MermaidConfigOverride(
     val fontSize: Float? = null,
     val fontFamily: String? = null,
     val themeName: String? = null,
+    val requirementThemeName: String? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
     val look: String? = null,
+    val requirementLook: String? = null,
     val titleTopMargin: Float? = null,
     val subGraphTitleTopMargin: Float? = null,
     val subGraphTitleBottomMargin: Float? = null,
@@ -1259,6 +1274,7 @@ internal data class MermaidConfigOverride(
         fontSize = overrides.fontSize ?: fontSize,
         fontFamily = overrides.fontFamily ?: fontFamily,
         themeName = overrides.themeName ?: themeName,
+        requirementThemeName = overrides.requirementThemeName ?: requirementThemeName,
         themeVariables = when {
             overrides.themeVariables != null ->
                 themeVariables.orEmpty() + overrides.themeVariables
@@ -1270,6 +1286,7 @@ internal data class MermaidConfigOverride(
             else -> themeColorArrays
         },
         look = overrides.look ?: look,
+        requirementLook = overrides.requirementLook ?: requirementLook,
         titleTopMargin = overrides.titleTopMargin ?: titleTopMargin,
         subGraphTitleTopMargin =
             overrides.subGraphTitleTopMargin ?: subGraphTitleTopMargin,
@@ -1289,14 +1306,6 @@ internal data class MermaidConfigOverride(
 
     fun applyTo(options: MermaidRenderOptions): GMResult<MermaidRenderOptions, MermaidError> {
         val resolvedLook = look ?: options.look
-        if (resolvedLook == "handDrawn") {
-            return GMResult.Err(
-                MermaidError.UnsupportedFeature(
-                    feature = "handDrawn look",
-                    message = "Native Mermaid has not translated Mermaid's roughjs handDrawn renderer",
-                ),
-            )
-        }
         return GMResult.Ok(
             options.copy(
                 layout = layout ?: options.layout,
@@ -1355,9 +1364,12 @@ internal data class MermaidConfigOverride(
                 fontSize = fontSize ?: options.fontSize,
                 fontFamily = fontFamily ?: options.fontFamily,
                 themeName = themeName ?: options.themeName,
+                requirementThemeName =
+                    requirementThemeName ?: options.requirementThemeName,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
                 look = resolvedLook,
+                requirementLook = requirementLook ?: options.requirementLook,
                 titleTopMargin = titleTopMargin ?: options.titleTopMargin,
                 subGraphTitleTopMargin =
                     subGraphTitleTopMargin ?: options.subGraphTitleTopMargin,

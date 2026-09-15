@@ -25,6 +25,7 @@ const kotlinGalleryFiles = {
   gantt: ['GanttDemos.kt', 'GanttDemo'],
   pie: ['PieDemos.kt', 'PieDemo'],
   journey: ['JourneyDemos.kt', 'JourneyDemo'],
+  requirement: ['RequirementDemos.kt', 'RequirementDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -36,6 +37,7 @@ const expectedKindCounts = new Map([
   ['gantt', 5],
   ['pie', 5],
   ['journey', 5],
+  ['requirement', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -47,6 +49,7 @@ const expectedProductionKindCounts = new Map([
   ['gantt', 13],
   ['pie', 13],
   ['journey', 13],
+  ['requirement', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -58,6 +61,7 @@ const supportedKinds = new Set([
   'gantt',
   'pie',
   'journey',
+  'requirement',
 ]);
 
 validateStabilityCases();
@@ -131,8 +135,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 257) {
-    throw new Error(`Expected 257 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 274) {
+    throw new Error(`Expected 274 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -152,14 +156,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 119) {
+  if (productionCases.length !== 132) {
     throw new Error(
-      `Expected 119 production cases, found ${productionCases.length}`,
+      `Expected 132 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 72) {
+  if (conformanceCases.length !== 80) {
     throw new Error(
-      `Expected 72 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 80 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -380,6 +384,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "gantt",
             "pie",
             "journey",
+            "requirement",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -441,6 +446,13 @@ private fun addVisualParityVariation(
     "pie" -> "\${source.trimEnd()}\\n  \\"\$label\\" : \${(ordinal % 17) + 3}\\n"
     "journey" -> "\${source.trimEnd()}\\n  \$label: \${(ordinal % 5) + 1}: " +
         "Parity Actor \$ordinal\\n"
+    "requirement" -> "\${source.trimEnd()}\\n" +
+        "  requirement \$evidenceId {\\n" +
+        "    id: \\"PARITY-\${ordinal.toString().padStart(3, '0')}\\"\\n" +
+        "    text: \\"\$label\\"\\n" +
+        "    risk: low\\n" +
+        "    verifyMethod: inspection\\n" +
+        "  }\\n"
     else -> source
 }
 

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "device": "emulator-5554",
-  "caseCount": 119,
-  "lastCaseId": "prod_journey_theme_actor_order_migration",
-  "initialPssKb": 207519,
-  "peakPssKb": 236934,
-  "finalPssKb": 193492,
-  "scrollSeconds": 29,
+  "caseCount": 132,
+  "lastCaseId": "prod_requirement_styled_theme_resilience",
+  "initialPssKb": 213832,
+  "peakPssKb": 244735,
+  "finalPssKb": 199249,
+  "scrollSeconds": 25,
   "reachedLastCase": true,
   "thresholds": {
     "maximumPssKb": 300000,

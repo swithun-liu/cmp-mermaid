@@ -125,6 +125,8 @@ data class MermaidRenderOptions(
     val layout: String = "elk",
     val classLayout: String? = null,
     val stateLayout: String? = null,
+    val requirementThemeName: String? = null,
+    val requirementLook: String? = null,
     val elk: MermaidElkOptions = MermaidElkOptions(),
     val nodeSpacing: Float = 50f,
     val rankSpacing: Float = 50f,
@@ -336,6 +338,17 @@ data class MermaidJourneyTheme(
     val boxStroke: SceneColor = SceneColor(0xFF666666),
 )
 
+data class MermaidRequirementTheme(
+    val background: SceneColor = SceneColor(0xFFECECFF),
+    val borderColor: SceneColor = SceneColor(0xFFC7C7F1),
+    val borderSize: Float = 1f,
+    val textColor: SceneColor = SceneColor(0xFF131300),
+    val relationColor: SceneColor = SceneColor(0xFF333333),
+    val relationLabelBackground: SceneColor = SceneColor(0xCCE8E8E8),
+    val relationLabelColor: SceneColor = SceneColor(0xFF000000),
+    val edgeLabelBackground: SceneColor = SceneColor(0xCCE8E8E8),
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
@@ -358,6 +371,7 @@ data class MermaidTheme(
     val xyChart: MermaidXyChartTheme = MermaidXyChartTheme(),
     val gantt: MermaidGanttTheme = MermaidGanttTheme(),
     val journey: MermaidJourneyTheme = MermaidJourneyTheme(),
+    val requirement: MermaidRequirementTheme = MermaidRequirementTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -389,6 +403,7 @@ data class MermaidTheme(
             noteText = SceneColor(0xFFB8B6B6),
             gantt = darkGanttTheme(),
             journey = darkJourneyTheme(),
+            requirement = darkRequirementTheme(),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
                 background = 0xFF333333,
@@ -430,6 +445,7 @@ data class MermaidTheme(
             borderColorArray = reduxColorBorders(),
             pie = reduxColorPieTheme(dark = false),
             xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF28253D),
+            requirement = reduxRequirementTheme(dark = false),
             dropShadow = reduxShadow(dark = false),
         )
 
@@ -467,6 +483,7 @@ data class MermaidTheme(
                 noteText = SceneColor(0xFF000000),
                 gantt = forestGanttTheme(),
                 journey = forestJourneyTheme(),
+                requirement = forestRequirementTheme(),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -506,6 +523,7 @@ data class MermaidTheme(
                 noteText = SceneColor(0xFFFFFFFF),
                 gantt = neutralGanttTheme(),
                 journey = neutralJourneyTheme(),
+                requirement = neutralRequirementTheme(),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -539,6 +557,7 @@ data class MermaidTheme(
                 noteText = SceneColor(0xFF333333),
                 gantt = baseGanttTheme(),
                 journey = baseJourneyTheme(),
+                requirement = baseRequirementTheme(),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
             )
@@ -557,6 +576,7 @@ data class MermaidTheme(
                 noteText = SceneColor(0xFF333333),
                 gantt = neoGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = false),
+                requirement = neoRequirementTheme(dark = false),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -584,6 +604,7 @@ data class MermaidTheme(
                 noteText = SceneColor(0xFF333333),
                 gantt = neoDarkGanttTheme(),
                 journey = neoJourneyTheme(dark = true, redux = false),
+                requirement = neoRequirementTheme(dark = true),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 pie = neoPieTheme(dark = true),
@@ -610,6 +631,7 @@ data class MermaidTheme(
                 noteText = SceneColor(0xFF28253D),
                 gantt = reduxGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = true),
+                requirement = reduxRequirementTheme(dark = false),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -774,6 +796,40 @@ data class MermaidTheme(
                 sectionFills = journeySectionFills,
                 textColor = color("textColor") ?: theme.journey.textColor,
             )
+            val requirementBorderSize =
+                number("requirementBorderSize") ?: theme.requirement.borderSize
+            if (requirementBorderSize < 0f) {
+                invalidVariable =
+                    "requirementBorderSize" to values["requirementBorderSize"].orEmpty()
+            }
+            val requirement = theme.requirement.copy(
+                background = color("requirementBackground", "mainBkg", "primaryColor")
+                    ?: theme.requirement.background,
+                borderColor = color(
+                    "requirementBorderColor",
+                    "nodeBorder",
+                    "primaryBorderColor",
+                ) ?: theme.requirement.borderColor,
+                borderSize = requirementBorderSize,
+                textColor = color(
+                    "requirementTextColor",
+                    "nodeTextColor",
+                    "primaryTextColor",
+                    "textColor",
+                ) ?: theme.requirement.textColor,
+                relationColor = color("relationColor", "defaultLinkColor", "lineColor")
+                    ?: theme.requirement.relationColor,
+                relationLabelBackground = color(
+                    "relationLabelBackground",
+                    "edgeLabelBackground",
+                ) ?: theme.requirement.relationLabelBackground,
+                relationLabelColor = color("relationLabelColor")
+                    ?: theme.requirement.relationLabelColor,
+                edgeLabelBackground = color(
+                    "requirementEdgeLabelBackground",
+                    "edgeLabelBackground",
+                ) ?: theme.requirement.edgeLabelBackground,
+            )
             val xyPaletteSource = values["xyChart.plotColorPalette"]
             val xyPalette = if (xyPaletteSource == null) {
                 theme.xyChart.plotColorPalette
@@ -853,6 +909,7 @@ data class MermaidTheme(
                 xyChart = xyChart,
                 gantt = gantt,
                 journey = journey,
+                requirement = requirement,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -883,6 +940,7 @@ data class MermaidTheme(
             noteText = SceneColor(0xFF28253D),
             gantt = reduxDarkGanttTheme(),
             journey = neoJourneyTheme(dark = true, redux = true),
+            requirement = reduxRequirementTheme(dark = true),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -994,6 +1052,90 @@ data class MermaidTheme(
                 }.map(::SceneColor),
                 textColor = SceneColor(if (dark) 0xFFCCCCCC else 0xFF28253D),
             )
+
+        private fun darkRequirementTheme(): MermaidRequirementTheme =
+            MermaidRequirementTheme(
+                background = SceneColor(0xFF1F2020),
+                borderColor = SceneColor(0xFFCCCCCC),
+                textColor = SceneColor(0xFFE0DFDF),
+                relationColor = SceneColor(0xFFD3D3D3),
+                relationLabelBackground = SceneColor(0xFF474949),
+                relationLabelColor = SceneColor(0xFFD3D3D3),
+                edgeLabelBackground = SceneColor(0xFF585858),
+            )
+
+        private fun forestRequirementTheme(): MermaidRequirementTheme =
+            MermaidRequirementTheme(
+                background = SceneColor(0xFFCDE498),
+                borderColor = SceneColor(0xFFABB594),
+                textColor = SceneColor(0xFF321B67),
+                relationColor = SceneColor(0xFF000000),
+                relationLabelBackground = SceneColor(0xFFE8E8E8),
+                relationLabelColor = SceneColor(0xFF000000),
+                edgeLabelBackground = SceneColor(0xFFE8E8E8),
+            )
+
+        private fun neutralRequirementTheme(): MermaidRequirementTheme =
+            MermaidRequirementTheme(
+                background = SceneColor(0xFFEEEEEE),
+                borderColor = SceneColor(0xFFD4D4D4),
+                textColor = SceneColor(0xFF111111),
+                relationColor = SceneColor(0xFF666666),
+                relationLabelBackground = SceneColor(0xFFFFFFFF),
+                relationLabelColor = SceneColor(0xFF333333),
+                edgeLabelBackground = SceneColor(0xFFFFFFFF),
+            )
+
+        private fun baseRequirementTheme(): MermaidRequirementTheme =
+            MermaidRequirementTheme(
+                background = SceneColor(0xFFFFF4DD),
+                borderColor = SceneColor(0xFFEEDDBB),
+                textColor = SceneColor(0xFF333333),
+                relationColor = SceneColor(0xFF0B0B0B),
+                relationLabelBackground = SceneColor(0xFFF4DDFF),
+                relationLabelColor = SceneColor(0xFF333333),
+                edgeLabelBackground = SceneColor(0xFFF4DDFF),
+            )
+
+        private fun neoRequirementTheme(dark: Boolean): MermaidRequirementTheme =
+            if (dark) {
+                MermaidRequirementTheme(
+                    background = SceneColor(0xFF1F2020),
+                    borderColor = SceneColor(0xFFCCCCCC),
+                    textColor = SceneColor(0xFFE0DFDF),
+                    relationColor = SceneColor(0xFFCCCCCC),
+                    relationLabelBackground = SceneColor(0xFF474949),
+                    relationLabelColor = SceneColor(0xFFE0DFDF),
+                    edgeLabelBackground = SceneColor(0xFF474949),
+                )
+            } else {
+                MermaidRequirementTheme(
+                    background = SceneColor(0xFFECECFE),
+                    borderColor = SceneColor(0xFFB3B3B3),
+                    textColor = SceneColor(0xFF333333),
+                    relationColor = SceneColor(0xFF000000),
+                    relationLabelBackground = SceneColor(0xFFCCCCCC),
+                    relationLabelColor = SceneColor(0xFF333333),
+                    edgeLabelBackground = SceneColor(0xFFCCCCCC),
+                )
+            }
+
+        private fun reduxRequirementTheme(dark: Boolean): MermaidRequirementTheme =
+            if (dark) {
+                neoRequirementTheme(dark = true).copy(
+                    edgeLabelBackground = SceneColor(0xFF16141F),
+                )
+            } else {
+                MermaidRequirementTheme(
+                    background = SceneColor(0xFFECECFE),
+                    borderColor = SceneColor(0xFF181818),
+                    textColor = SceneColor(0xFF28253D),
+                    relationColor = SceneColor(0xFF000000),
+                    relationLabelBackground = SceneColor(0xFFCCCCCC),
+                    relationLabelColor = SceneColor(0xFF28253D),
+                    edgeLabelBackground = SceneColor(0xFFFFFFFF),
+                )
+            }
 
         private fun darkGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
             sectionBackground = SceneColor(0xFFB4AC76),

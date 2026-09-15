@@ -468,6 +468,7 @@ private fun ResponsiveDiagramPreview(
                     source = demo.source,
                     layout = officialLayout,
                     themeName = themeName,
+                    look = options.look,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(previewHeight),

@@ -32,6 +32,7 @@ internal actual fun OfficialMermaidDiagram(
     source: String,
     layout: String,
     themeName: String?,
+    look: String?,
     modifier: Modifier,
     onRenderResult: (OfficialRenderResult) -> Unit,
 ) {
@@ -79,12 +80,12 @@ internal actual fun OfficialMermaidDiagram(
     LaunchedEffect(Unit) {
         frame.src = "official-mermaid.html"
     }
-    LaunchedEffect(source, layout, themeName) {
+    LaunchedEffect(source, layout, themeName, look) {
         currentOnRenderResult(OfficialRenderResult.Loading)
     }
-    LaunchedEffect(source, layout, themeName, frameReady) {
+    LaunchedEffect(source, layout, themeName, look, frameReady) {
         if (frameReady) {
-            renderOfficialDiagram(frame, source, layout, themeName)
+            renderOfficialDiagram(frame, source, layout, themeName, look)
         }
     }
     WebElementView(
@@ -103,12 +104,16 @@ internal actual fun PlatformBackHandler(
 @JsFun("(frame) => typeof frame.contentWindow?.renderDiagram === 'function'")
 private external fun hasOfficialRenderer(frame: HTMLIFrameElement): Boolean
 
-@JsFun("(frame, source, layout, themeName) => frame.contentWindow.renderDiagram(source, layout, themeName)")
+@JsFun(
+    "(frame, source, layout, themeName, look) => " +
+        "frame.contentWindow.renderDiagram(source, layout, themeName, look)",
+)
 private external fun renderOfficialDiagram(
     frame: HTMLIFrameElement,
     source: String,
     layout: String,
     themeName: String?,
+    look: String?,
 )
 
 @JsFun("(event, frame) => event.source === frame.contentWindow")

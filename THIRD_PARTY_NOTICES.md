@@ -3,10 +3,10 @@
 ## Mermaid
 
 The KMP runtime contains Kotlin translations of selected Mermaid Flowchart,
-XY Chart, Sequence, Class, State, Entity Relationship, Gantt, and Pie parsing,
-layout-adapter, and rendering algorithms. The reference-rendering tool also
-downloads Mermaid.js from npm. Mermaid.js itself is not embedded in the
-runtime libraries.
+XY Chart, Sequence, Class, State, Entity Relationship, Gantt, Pie, User
+Journey, and Requirement parsing, layout-adapter, and rendering algorithms.
+The reference-rendering tool also downloads Mermaid.js from npm. Mermaid.js
+itself is not embedded in the runtime libraries.
 
 The Android sample bundles Mermaid.js `12.0.0` only for on-demand official
 WebView comparisons. The npm distribution is syntax transpiled to Chrome 87
@@ -126,7 +126,7 @@ THIS SOFTWARE.
 
 The KMP runtime contains Kotlin translations of the Jison `0.4.18` generated
 lexer/parser runtime used by Mermaid's Flowchart, XY Chart, Sequence, Class,
-State, Entity Relationship, and Gantt grammars.
+State, Entity Relationship, Gantt, User Journey, and Requirement grammars.
 
 Copyright (c) Zach Carter
 

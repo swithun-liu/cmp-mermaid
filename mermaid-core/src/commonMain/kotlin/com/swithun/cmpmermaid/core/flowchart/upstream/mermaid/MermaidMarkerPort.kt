@@ -30,6 +30,8 @@ internal object MermaidMarkerPort {
         SceneArrowHead.ErZeroOrOne,
         SceneArrowHead.ErOneOrMore,
         SceneArrowHead.ErZeroOrMore,
+        SceneArrowHead.RequirementArrow,
+        SceneArrowHead.RequirementContains,
         -> 0f
     }
 
@@ -55,6 +57,8 @@ internal object MermaidMarkerPort {
         SceneArrowHead.ErZeroOrOne,
         SceneArrowHead.ErOneOrMore,
         SceneArrowHead.ErZeroOrMore,
+        SceneArrowHead.RequirementArrow,
+        SceneArrowHead.RequirementContains,
         -> 0f
     }
 

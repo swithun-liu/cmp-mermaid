@@ -1882,6 +1882,267 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_requirement_checkout_assurance",
+        diagramId = "requirement",
+        title = "Checkout assurance model",
+        scenario = "Payment requirements trace from system goals through interfaces and verification evidence.",
+        layout = "elk",
+        initialAspectRatio = 1.7f,
+        source = """
+            requirementDiagram
+              direction LR
+              requirement checkout_platform {
+                id: "PAY-SYS-1"
+                text: "Complete checkout without duplicate orders"
+                risk: high
+                verifyMethod: demonstration
+              }
+              functionalRequirement idempotent_order {
+                id: "PAY-FN-2"
+                text: "Create at most one order for each payment attempt"
+                risk: high
+                verifyMethod: test
+              }
+              interfaceRequirement gateway_contract {
+                id: "PAY-IF-3"
+                text: "Preserve the external payment contract"
+                risk: medium
+                verifyMethod: inspection
+              }
+              performanceRequirement authorization_latency {
+                id: "PAY-PF-4"
+                text: "Return authorization within the latency budget"
+                risk: medium
+                verifyMethod: analysis
+              }
+              element checkout_service {
+                type: "Application service"
+                docRef: "design/checkout-service"
+              }
+              element contract_suite {
+                type: "Contract suite"
+                docRef: "tests/payment-contract"
+              }
+              checkout_platform - contains -> idempotent_order
+              checkout_platform - contains -> gateway_contract
+              idempotent_order - derives -> authorization_latency
+              checkout_service - satisfies -> idempotent_order
+              contract_suite - verifies -> gateway_contract
+              gateway_contract - traces -> authorization_latency
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_device_safety",
+        diagramId = "requirement",
+        title = "Device safety controls",
+        scenario = "Safety requirements decompose into physical limits, design constraints, and test evidence.",
+        layout = "elk",
+        initialAspectRatio = 1.45f,
+        source = """
+            requirementDiagram
+              direction TB
+              requirement safe_operation {
+                id: "SAFE-1"
+                text: "Maintain safe operation during every supported mode"
+                risk: high
+                verifyMethod: demonstration
+              }
+              physicalRequirement thermal_limit {
+                id: "SAFE-1.1"
+                text: "Keep enclosure temperature below the approved limit"
+                risk: high
+                verifyMethod: test
+              }
+              designConstraint shutdown_guard {
+                id: "SAFE-1.2"
+                text: "Enter a protected state after a sensor fault"
+                risk: high
+                verifyMethod: inspection
+              }
+              interfaceRequirement alarm_contract {
+                id: "SAFE-1.3"
+                text: "Publish an operator alarm before automatic shutdown"
+                risk: medium
+                verifyMethod: analysis
+              }
+              element thermal_controller {
+                type: "Control component"
+                docRef: "architecture/thermal-controller"
+              }
+              element safety_lab {
+                type: "Verification facility"
+                docRef: "evidence/safety-validation"
+              }
+              safe_operation - contains -> thermal_limit
+              safe_operation - contains -> shutdown_guard
+              shutdown_guard - derives -> alarm_contract
+              thermal_controller - satisfies -> shutdown_guard
+              safety_lab - verifies -> thermal_limit
+              safety_lab - verifies -> alarm_contract
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_data_retention",
+        diagramId = "requirement",
+        title = "Data retention traceability",
+        scenario = "Policy, storage, deletion, and audit requirements remain traceable across implementation assets.",
+        layout = "elk",
+        initialAspectRatio = 1.65f,
+        source = """
+            requirementDiagram
+              direction RL
+              requirement retention_policy {
+                id: "DATA-1"
+                text: "Retain records only for the approved business period"
+                risk: high
+                verifyMethod: inspection
+              }
+              functionalRequirement deletion_workflow {
+                id: "DATA-1.1"
+                text: "Delete expired records and derived copies"
+                risk: high
+                verifyMethod: test
+              }
+              performanceRequirement deletion_window {
+                id: "DATA-1.2"
+                text: "Complete deletion within the approved window"
+                risk: medium
+                verifyMethod: analysis
+              }
+              designConstraint immutable_audit {
+                id: "DATA-1.3"
+                text: "Preserve immutable deletion evidence"
+                risk: medium
+                verifyMethod: inspection
+              }
+              element lifecycle_worker {
+                type: "Background worker"
+                docRef: "design/lifecycle-worker"
+              }
+              element evidence_store {
+                type: "Audit store"
+                docRef: "design/evidence-store"
+              }
+              retention_policy - contains -> deletion_workflow
+              deletion_workflow - refines -> deletion_window
+              deletion_workflow - derives -> immutable_audit
+              lifecycle_worker - satisfies -> deletion_workflow
+              evidence_store - satisfies -> immutable_audit
+              deletion_window <- verifies - lifecycle_worker
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_failover_evidence",
+        diagramId = "requirement",
+        title = "Regional failover evidence",
+        scenario = "Availability targets connect to routing, recovery, observability, and validation evidence.",
+        layout = "elk",
+        initialAspectRatio = 1.55f,
+        source = """
+            requirementDiagram
+              direction BT
+              requirement regional_service {
+                id: "SRE-1"
+                text: "Continue serving requests after a regional outage"
+                risk: high
+                verifyMethod: demonstration
+              }
+              functionalRequirement traffic_shift {
+                id: "SRE-1.1"
+                text: "Shift traffic to a healthy region"
+                risk: high
+                verifyMethod: test
+              }
+              performanceRequirement recovery_target {
+                id: "SRE-1.2"
+                text: "Restore full capacity within the recovery target"
+                risk: medium
+                verifyMethod: analysis
+              }
+              interfaceRequirement health_signal {
+                id: "SRE-1.3"
+                text: "Expose health signals to the traffic manager"
+                risk: medium
+                verifyMethod: inspection
+              }
+              element traffic_manager {
+                type: "Routing service"
+                docRef: "operations/traffic-manager"
+              }
+              element resilience_suite {
+                type: "Failure injection suite"
+                docRef: "evidence/regional-failover"
+              }
+              regional_service - contains -> traffic_shift
+              regional_service - contains -> recovery_target
+              traffic_shift - refines -> health_signal
+              traffic_manager - satisfies -> traffic_shift
+              resilience_suite - verifies -> regional_service
+              resilience_suite - verifies -> recovery_target
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_access_controls",
+        diagramId = "requirement",
+        title = "Styled access-control requirements",
+        scenario = "Critical controls, implementation elements, metadata, and reusable styles in one review model.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Access control requirements
+            config:
+              theme: default
+              look: classic
+              layout: dagre
+            ---
+            requirementDiagram
+              accTitle: Access control requirement model
+              accDescr {
+                Authentication and authorization controls are connected to implementation
+                components and independent verification evidence.
+              }
+              direction LR
+              requirement protected_access:::critical {
+                id: "AUTH-1"
+                text: "**Authenticate** every protected request"
+                risk: high
+                verifyMethod: test
+              }
+              functionalRequirement least_privilege {
+                id: "AUTH-1.1"
+                text: "Authorize only the minimum required capability"
+                risk: high
+                verifyMethod: inspection
+              }
+              element policy_gateway {
+                type: "Policy enforcement point"
+                docRef: "architecture/policy-gateway"
+              }
+              element security_suite {
+                type: "Independent verification suite"
+                docRef: "tests/access-control"
+              }
+              classDef critical fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d,stroke-width:3px
+              style least_privilege fill:#dcfce7,stroke:#15803d,color:#14532d
+              class policy_gateway critical
+              protected_access - contains -> least_privilege
+              policy_gateway - satisfies -> protected_access
+              security_suite - verifies -> protected_access
+              security_suite - verifies -> least_privilege
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -3753,6 +4014,267 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_requirement_checkout_assurance",
+        diagramId = "requirement",
+        title = "Checkout assurance model",
+        scenario = "Payment requirements trace from system goals through interfaces and verification evidence.",
+        layout = "elk",
+        initialAspectRatio = 1.7f,
+        source = """
+            requirementDiagram
+              direction LR
+              requirement checkout_platform {
+                id: "PAY-SYS-1"
+                text: "Complete checkout without duplicate orders"
+                risk: high
+                verifyMethod: demonstration
+              }
+              functionalRequirement idempotent_order {
+                id: "PAY-FN-2"
+                text: "Create at most one order for each payment attempt"
+                risk: high
+                verifyMethod: test
+              }
+              interfaceRequirement gateway_contract {
+                id: "PAY-IF-3"
+                text: "Preserve the external payment contract"
+                risk: medium
+                verifyMethod: inspection
+              }
+              performanceRequirement authorization_latency {
+                id: "PAY-PF-4"
+                text: "Return authorization within the latency budget"
+                risk: medium
+                verifyMethod: analysis
+              }
+              element checkout_service {
+                type: "Application service"
+                docRef: "design/checkout-service"
+              }
+              element contract_suite {
+                type: "Contract suite"
+                docRef: "tests/payment-contract"
+              }
+              checkout_platform - contains -> idempotent_order
+              checkout_platform - contains -> gateway_contract
+              idempotent_order - derives -> authorization_latency
+              checkout_service - satisfies -> idempotent_order
+              contract_suite - verifies -> gateway_contract
+              gateway_contract - traces -> authorization_latency
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_device_safety",
+        diagramId = "requirement",
+        title = "Device safety controls",
+        scenario = "Safety requirements decompose into physical limits, design constraints, and test evidence.",
+        layout = "elk",
+        initialAspectRatio = 1.45f,
+        source = """
+            requirementDiagram
+              direction TB
+              requirement safe_operation {
+                id: "SAFE-1"
+                text: "Maintain safe operation during every supported mode"
+                risk: high
+                verifyMethod: demonstration
+              }
+              physicalRequirement thermal_limit {
+                id: "SAFE-1.1"
+                text: "Keep enclosure temperature below the approved limit"
+                risk: high
+                verifyMethod: test
+              }
+              designConstraint shutdown_guard {
+                id: "SAFE-1.2"
+                text: "Enter a protected state after a sensor fault"
+                risk: high
+                verifyMethod: inspection
+              }
+              interfaceRequirement alarm_contract {
+                id: "SAFE-1.3"
+                text: "Publish an operator alarm before automatic shutdown"
+                risk: medium
+                verifyMethod: analysis
+              }
+              element thermal_controller {
+                type: "Control component"
+                docRef: "architecture/thermal-controller"
+              }
+              element safety_lab {
+                type: "Verification facility"
+                docRef: "evidence/safety-validation"
+              }
+              safe_operation - contains -> thermal_limit
+              safe_operation - contains -> shutdown_guard
+              shutdown_guard - derives -> alarm_contract
+              thermal_controller - satisfies -> shutdown_guard
+              safety_lab - verifies -> thermal_limit
+              safety_lab - verifies -> alarm_contract
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_data_retention",
+        diagramId = "requirement",
+        title = "Data retention traceability",
+        scenario = "Policy, storage, deletion, and audit requirements remain traceable across implementation assets.",
+        layout = "elk",
+        initialAspectRatio = 1.65f,
+        source = """
+            requirementDiagram
+              direction RL
+              requirement retention_policy {
+                id: "DATA-1"
+                text: "Retain records only for the approved business period"
+                risk: high
+                verifyMethod: inspection
+              }
+              functionalRequirement deletion_workflow {
+                id: "DATA-1.1"
+                text: "Delete expired records and derived copies"
+                risk: high
+                verifyMethod: test
+              }
+              performanceRequirement deletion_window {
+                id: "DATA-1.2"
+                text: "Complete deletion within the approved window"
+                risk: medium
+                verifyMethod: analysis
+              }
+              designConstraint immutable_audit {
+                id: "DATA-1.3"
+                text: "Preserve immutable deletion evidence"
+                risk: medium
+                verifyMethod: inspection
+              }
+              element lifecycle_worker {
+                type: "Background worker"
+                docRef: "design/lifecycle-worker"
+              }
+              element evidence_store {
+                type: "Audit store"
+                docRef: "design/evidence-store"
+              }
+              retention_policy - contains -> deletion_workflow
+              deletion_workflow - refines -> deletion_window
+              deletion_workflow - derives -> immutable_audit
+              lifecycle_worker - satisfies -> deletion_workflow
+              evidence_store - satisfies -> immutable_audit
+              deletion_window <- verifies - lifecycle_worker
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_failover_evidence",
+        diagramId = "requirement",
+        title = "Regional failover evidence",
+        scenario = "Availability targets connect to routing, recovery, observability, and validation evidence.",
+        layout = "elk",
+        initialAspectRatio = 1.55f,
+        source = """
+            requirementDiagram
+              direction BT
+              requirement regional_service {
+                id: "SRE-1"
+                text: "Continue serving requests after a regional outage"
+                risk: high
+                verifyMethod: demonstration
+              }
+              functionalRequirement traffic_shift {
+                id: "SRE-1.1"
+                text: "Shift traffic to a healthy region"
+                risk: high
+                verifyMethod: test
+              }
+              performanceRequirement recovery_target {
+                id: "SRE-1.2"
+                text: "Restore full capacity within the recovery target"
+                risk: medium
+                verifyMethod: analysis
+              }
+              interfaceRequirement health_signal {
+                id: "SRE-1.3"
+                text: "Expose health signals to the traffic manager"
+                risk: medium
+                verifyMethod: inspection
+              }
+              element traffic_manager {
+                type: "Routing service"
+                docRef: "operations/traffic-manager"
+              }
+              element resilience_suite {
+                type: "Failure injection suite"
+                docRef: "evidence/regional-failover"
+              }
+              regional_service - contains -> traffic_shift
+              regional_service - contains -> recovery_target
+              traffic_shift - refines -> health_signal
+              traffic_manager - satisfies -> traffic_shift
+              resilience_suite - verifies -> regional_service
+              resilience_suite - verifies -> recovery_target
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_requirement_access_controls",
+        diagramId = "requirement",
+        title = "Styled access-control requirements",
+        scenario = "Critical controls, implementation elements, metadata, and reusable styles in one review model.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Access control requirements
+            config:
+              theme: default
+              look: classic
+              layout: dagre
+            ---
+            requirementDiagram
+              accTitle: Access control requirement model
+              accDescr {
+                Authentication and authorization controls are connected to implementation
+                components and independent verification evidence.
+              }
+              direction LR
+              requirement protected_access:::critical {
+                id: "AUTH-1"
+                text: "**Authenticate** every protected request"
+                risk: high
+                verifyMethod: test
+              }
+              functionalRequirement least_privilege {
+                id: "AUTH-1.1"
+                text: "Authorize only the minimum required capability"
+                risk: high
+                verifyMethod: inspection
+              }
+              element policy_gateway {
+                type: "Policy enforcement point"
+                docRef: "architecture/policy-gateway"
+              }
+              element security_suite {
+                type: "Independent verification suite"
+                docRef: "tests/access-control"
+              }
+              classDef critical fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d,stroke-width:3px
+              style least_privilege fill:#dcfce7,stroke:#15803d,color:#14532d
+              class policy_gateway critical
+              protected_access - contains -> least_privilege
+              policy_gateway - satisfies -> protected_access
+              security_suite - verifies -> protected_access
+              security_suite - verifies -> least_privilege
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "prod_flowchart_orchestration_identity",
         diagramId = "flowchart",
         title = "Identity verification orchestration",
@@ -5530,6 +6052,398 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Themed migration coordination", "Approve cutover"),
         features = setOf("theme-colors", "actor-order", "multi-actor"),
     ),
+    StabilityCorpusCase(
+        id = "prod_requirement_typed_fields_device",
+        diagramId = "requirement",
+        title = "Device requirement type matrix",
+        scenario = "A device model exercises every requirement type and all typed fields.",
+        layout = "elk",
+        initialAspectRatio = 1.7f,
+        source = """
+            requirementDiagram
+              direction LR
+              requirement system_goal {
+                id: "DEV-SYS-1"
+                text: "Operate safely in every supported mode"
+                risk: high
+                verifyMethod: demonstration
+              }
+              functionalRequirement function_goal {
+                id: "DEV-FN-2"
+                text: "Stop output after a detected control fault"
+                risk: high
+                verifyMethod: test
+              }
+              interfaceRequirement interface_goal {
+                id: "DEV-IF-3"
+                text: "Publish a fault notification to the operator console"
+                risk: medium
+                verifyMethod: inspection
+              }
+              performanceRequirement performance_goal {
+                id: "DEV-PF-4"
+                text: "Complete the shutdown within the approved interval"
+                risk: medium
+                verifyMethod: analysis
+              }
+              physicalRequirement physical_goal {
+                id: "DEV-PH-5"
+                text: "Keep the enclosure below the thermal limit"
+                risk: low
+                verifyMethod: test
+              }
+              designConstraint implementation_constraint {
+                id: "DEV-DC-6"
+                text: "Use redundant temperature sensors"
+                risk: low
+                verifyMethod: inspection
+              }
+              element implementation {
+                type: "Safety controller"
+                docRef: "architecture/dev-implementation"
+              }
+              element verification_evidence {
+                type: "Independent validation laboratory"
+                docRef: "evidence/dev-validation"
+              }
+              system_goal - contains -> function_goal
+              system_goal - contains -> interface_goal
+              function_goal - derives -> performance_goal
+              implementation - satisfies -> implementation_constraint
+              verification_evidence - verifies -> physical_goal
+        """.trimIndent(),
+        expectedTexts = listOf("Operate safely in every supported mode", "Independent validation laboratory"),
+        features = setOf("requirement-types", "fields", "risk-levels", "verification-methods", "elements", "directions", "elk-layout"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_requirement_typed_fields_checkout",
+        diagramId = "requirement",
+        title = "Checkout requirement type matrix",
+        scenario = "A checkout model exercises every requirement type and all typed fields.",
+        layout = "elk",
+        initialAspectRatio = 1.7f,
+        source = """
+            requirementDiagram
+              direction TB
+              requirement system_goal {
+                id: "PAY-SYS-1"
+                text: "Complete checkout without duplicate orders"
+                risk: high
+                verifyMethod: demonstration
+              }
+              functionalRequirement function_goal {
+                id: "PAY-FN-2"
+                text: "Create at most one order for each payment attempt"
+                risk: high
+                verifyMethod: test
+              }
+              interfaceRequirement interface_goal {
+                id: "PAY-IF-3"
+                text: "Preserve the external payment contract"
+                risk: medium
+                verifyMethod: inspection
+              }
+              performanceRequirement performance_goal {
+                id: "PAY-PF-4"
+                text: "Return authorization within the latency budget"
+                risk: medium
+                verifyMethod: analysis
+              }
+              physicalRequirement physical_goal {
+                id: "PAY-PH-5"
+                text: "Protect payment keys in approved hardware"
+                risk: low
+                verifyMethod: test
+              }
+              designConstraint implementation_constraint {
+                id: "PAY-DC-6"
+                text: "Use idempotent command identifiers"
+                risk: low
+                verifyMethod: inspection
+              }
+              element implementation {
+                type: "Checkout service"
+                docRef: "architecture/pay-implementation"
+              }
+              element verification_evidence {
+                type: "Payment contract suite"
+                docRef: "evidence/pay-validation"
+              }
+              system_goal - contains -> function_goal
+              system_goal - contains -> interface_goal
+              function_goal - derives -> performance_goal
+              implementation - satisfies -> implementation_constraint
+              verification_evidence - verifies -> physical_goal
+        """.trimIndent(),
+        expectedTexts = listOf("Complete checkout without duplicate orders", "Payment contract suite"),
+        features = setOf("requirement-types", "fields", "risk-levels", "verification-methods", "elements", "directions", "elk-layout"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_requirement_relation_matrix_replication",
+        diagramId = "requirement",
+        title = "Replication relationship matrix",
+        scenario = "Replication requirements exercise every relationship and reverse syntax.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            requirementDiagram
+              direction BT
+              requirement root_goal {
+                text: "Maintain a recoverable replica"
+              }
+              functionalRequirement child_goal {
+                text: "Persist every accepted change"
+              }
+              requirement copy_goal {
+                text: "Mirror the recovery policy"
+              }
+              performanceRequirement derived_goal {
+                text: "Calculate a replication checkpoint"
+              }
+              interfaceRequirement refined_goal {
+                text: "Define the recovery-point objective"
+              }
+              requirement traced_goal {
+                text: "Record the originating change request"
+              }
+              element implementation {
+                type: "Replication worker"
+              }
+              element verification_evidence {
+                type: "Recovery validation suite"
+              }
+              root_goal - contains -> child_goal
+              copy_goal <- copies - root_goal
+              root_goal - derives -> derived_goal
+              implementation - satisfies -> root_goal
+              verification_evidence - verifies -> child_goal
+              refined_goal <- refines - root_goal
+              root_goal - traces -> traced_goal
+        """.trimIndent(),
+        expectedTexts = listOf("Maintain a recoverable replica", "Recovery validation suite"),
+        features = setOf("elements", "relationship-types", "reverse-relationships", "directions", "dagre-layout"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_requirement_relation_matrix_delivery",
+        diagramId = "requirement",
+        title = "Delivery relationship matrix",
+        scenario = "Delivery requirements exercise every relationship and reverse syntax.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            requirementDiagram
+              direction RL
+              requirement root_goal {
+                text: "Deliver each accepted message"
+              }
+              functionalRequirement child_goal {
+                text: "Persist delivery state"
+              }
+              requirement copy_goal {
+                text: "Mirror the routing policy"
+              }
+              performanceRequirement derived_goal {
+                text: "Calculate the retry schedule"
+              }
+              interfaceRequirement refined_goal {
+                text: "Define the acknowledgement contract"
+              }
+              requirement traced_goal {
+                text: "Record the originating delivery request"
+              }
+              element implementation {
+                type: "Delivery worker"
+              }
+              element verification_evidence {
+                type: "Delivery verification suite"
+              }
+              root_goal - contains -> child_goal
+              copy_goal <- copies - root_goal
+              root_goal - derives -> derived_goal
+              implementation - satisfies -> root_goal
+              verification_evidence - verifies -> child_goal
+              refined_goal <- refines - root_goal
+              root_goal - traces -> traced_goal
+        """.trimIndent(),
+        expectedTexts = listOf("Deliver each accepted message", "Delivery verification suite"),
+        features = setOf("elements", "relationship-types", "reverse-relationships", "directions", "dagre-layout"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_requirement_metadata_layout_authorization",
+        diagramId = "requirement",
+        title = "Authorization requirement metadata",
+        scenario = "Authorization requirements preserve titles, accessibility, Markdown, and Unicode.",
+        layout = "elk",
+        initialAspectRatio = 1.55f,
+        source = """
+            ---
+            title: Authorization requirements
+            config:
+              layout: elk
+              theme: default
+              look: classic
+            ---
+            requirementDiagram
+              accTitle: Authorization requirement trace
+              accDescr {
+                Authorization controls and their verification evidence.
+              }
+              direction LR
+              %% Markdown and Unicode are intentionally combined in requirement text.
+              requirement primary_requirement {
+                id: "META-1"
+                text: "**Authorize every protected request**"
+                risk: high
+                verifyMethod: inspection
+              }
+              functionalRequirement localized_requirement {
+                id: "META-2"
+                text: "*Préserver la décision de sécurité*"
+                risk: medium
+                verifyMethod: demonstration
+              }
+              element responsible_component {
+                type: "Policy enforcement point"
+                docRef: "architecture/metadata-owner"
+              }
+              primary_requirement - contains -> localized_requirement
+              responsible_component - satisfies -> primary_requirement
+        """.trimIndent(),
+        expectedTexts = listOf("Authorization requirements", "Authorize every protected request", "Préserver la décision de sécurité"),
+        features = setOf("directions", "elk-layout", "frontmatter-title", "accessibility", "markdown", "unicode", "comments"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_requirement_metadata_layout_continuity",
+        diagramId = "requirement",
+        title = "Continuity requirement metadata",
+        scenario = "Continuity requirements preserve titles, accessibility, Markdown, and Unicode.",
+        layout = "elk",
+        initialAspectRatio = 1.55f,
+        source = """
+            ---
+            title: Continuity requirements
+            config:
+              layout: elk
+              theme: default
+              look: classic
+            ---
+            requirementDiagram
+              accTitle: Continuity requirement trace
+              accDescr {
+                Recovery controls and their verification evidence.
+              }
+              direction TB
+              %% Markdown and Unicode are intentionally combined in requirement text.
+              requirement primary_requirement {
+                id: "META-1"
+                text: "**Restore every critical service**"
+                risk: high
+                verifyMethod: inspection
+              }
+              functionalRequirement localized_requirement {
+                id: "META-2"
+                text: "*Vérifier la reprise régionale*"
+                risk: medium
+                verifyMethod: demonstration
+              }
+              element responsible_component {
+                type: "Regional recovery coordinator"
+                docRef: "architecture/metadata-owner"
+              }
+              primary_requirement - contains -> localized_requirement
+              responsible_component - satisfies -> primary_requirement
+        """.trimIndent(),
+        expectedTexts = listOf("Continuity requirements", "Restore every critical service", "Vérifier la reprise régionale"),
+        features = setOf("directions", "elk-layout", "frontmatter-title", "accessibility", "markdown", "unicode", "comments"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_requirement_styled_theme_privacy",
+        diagramId = "requirement",
+        title = "Styled privacy requirements",
+        scenario = "Privacy controls combine class assignment, direct styles, and theme variables.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              themeVariables:
+                requirementBackground: "#ecfeff"
+                requirementBorderColor: "#0e7490"
+                requirementTextColor: "#164e63"
+                relationColor: "#475569"
+                requirementEdgeLabelBackground: "#fff7ed"
+            ---
+            requirementDiagram
+              direction RL
+              requirement primary_requirement:::critical {
+                id: "STYLE-1"
+                text: "Limit access to approved identities"
+                risk: high
+                verifyMethod: test
+              }
+              functionalRequirement secondary_requirement {
+                id: "STYLE-2"
+                text: "Record every policy decision"
+                risk: medium
+                verifyMethod: analysis
+              }
+              element implementation {
+                type: "Privacy gateway"
+                docRef: "architecture/styled-component"
+              }
+              classDef critical fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d,stroke-width:3px
+              class implementation critical
+              style secondary_requirement fill:#dcfce7,stroke:#15803d,color:#14532d
+              primary_requirement - contains -> secondary_requirement
+              implementation - satisfies -> primary_requirement
+        """.trimIndent(),
+        expectedTexts = listOf("Limit access to approved identities", "Privacy gateway"),
+        features = setOf("directions", "dagre-layout", "direct-styles", "classes", "theme-variables"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_requirement_styled_theme_resilience",
+        diagramId = "requirement",
+        title = "Styled resilience requirements",
+        scenario = "Resilience controls combine class assignment, direct styles, and theme variables.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              themeVariables:
+                requirementBackground: "#ecfeff"
+                requirementBorderColor: "#0e7490"
+                requirementTextColor: "#164e63"
+                relationColor: "#475569"
+                requirementEdgeLabelBackground: "#fff7ed"
+            ---
+            requirementDiagram
+              direction BT
+              requirement primary_requirement:::critical {
+                id: "STYLE-1"
+                text: "Continue service during a regional outage"
+                risk: high
+                verifyMethod: test
+              }
+              functionalRequirement secondary_requirement {
+                id: "STYLE-2"
+                text: "Record every failover decision"
+                risk: medium
+                verifyMethod: analysis
+              }
+              element implementation {
+                type: "Traffic controller"
+                docRef: "architecture/styled-component"
+              }
+              classDef critical fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d,stroke-width:3px
+              class implementation critical
+              style secondary_requirement fill:#dcfce7,stroke:#15803d,color:#14532d
+              primary_requirement - contains -> secondary_requirement
+              implementation - satisfies -> primary_requirement
+        """.trimIndent(),
+        expectedTexts = listOf("Continue service during a regional outage", "Traffic controller"),
+        features = setOf("directions", "dagre-layout", "direct-styles", "classes", "theme-variables"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -5567,6 +6481,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "gantt",
             "pie",
             "journey",
+            "requirement",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -5628,6 +6543,13 @@ private fun addVisualParityVariation(
     "pie" -> "${source.trimEnd()}\n  \"$label\" : ${(ordinal % 17) + 3}\n"
     "journey" -> "${source.trimEnd()}\n  $label: ${(ordinal % 5) + 1}: " +
         "Parity Actor $ordinal\n"
+    "requirement" -> "${source.trimEnd()}\n" +
+        "  requirement $evidenceId {\n" +
+        "    id: \"PARITY-${ordinal.toString().padStart(3, '0')}\"\n" +
+        "    text: \"$label\"\n" +
+        "    risk: low\n" +
+        "    verifyMethod: inspection\n" +
+        "  }\n"
     else -> source
 }
 

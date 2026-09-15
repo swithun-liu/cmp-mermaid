@@ -174,6 +174,25 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rejectsEffectiveHandDrawnLookForExistingDiagramTypes() {
+        val result = engine.render(
+            """
+                ---
+                config:
+                  look: handDrawn
+                ---
+                flowchart LR
+                  A --> B
+            """.trimIndent(),
+            context,
+        )
+
+        val error = assertIs<GMResult.Err<MermaidError>>(result).error
+        assertIs<MermaidError.UnsupportedFeature>(error)
+        assertEquals("handDrawn look", error.feature)
+    }
+
+    @Test
     fun returnsStructuredErrorWhenCleanedFlowchartExceedsHostTextLimit() {
         val source = "flowchart LR\n A[${"x".repeat(80)}]"
         val result = engine.render(

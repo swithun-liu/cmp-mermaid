@@ -5,6 +5,34 @@ import kotlin.test.assertEquals
 
 class MermaidPathTrimTest {
     @Test
+    fun explicitDashIntervalsOverrideGeneratedNeoPattern() {
+        assertEquals(
+            false,
+            shouldApplyNeoMarkerMargins(
+                look = "neo",
+                animated = false,
+                dashIntervals = listOf(10f, 7f),
+            ),
+        )
+        assertEquals(
+            true,
+            shouldApplyNeoMarkerMargins(
+                look = "neo",
+                animated = false,
+                dashIntervals = emptyList(),
+            ),
+        )
+        assertEquals(
+            false,
+            shouldApplyNeoMarkerMargins(
+                look = "neo",
+                animated = true,
+                dashIntervals = emptyList(),
+            ),
+        )
+    }
+
+    @Test
     fun preservesContoursCreatedByLineHopGaps() {
         val segments = mermaidDashSegments(
             contourLengths = listOf(16f, 24f),

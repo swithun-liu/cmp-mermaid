@@ -256,3 +256,42 @@ internal val journeyDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val requirementDiagramDocsSpec = DiagramDocsSpec(
+    id = "requirement",
+    title = "Requirement",
+    syntaxTitle = "Requirement diagrams - Basic Syntax",
+    description = "Model SysML requirements, external elements, verification methods, and " +
+        "typed relationships.",
+    documentationUrl = "https://mermaid.js.org/syntax/requirementDiagram.html",
+    galleryTitle = "Requirement diagram gallery",
+    cases = requirementDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1.35f,
+        )
+    },
+    syntaxLessons = lessons(
+        requirementDemos.take(6).map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1.35f,
+            )
+        },
+        listOf(
+            "A requirement records its type, identifier, text, risk, and verification method.",
+            "Six SysML requirement types are available and may be connected in one model.",
+            "Seven labeled relationship types express containment, derivation, and evidence.",
+            "The reverse arrow form preserves the same source and destination semantics.",
+            "Direction TB lays out dependent requirements from top to bottom.",
+            "Direction BT reverses the rank order while preserving relationship direction.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.ReduxColor,
+)

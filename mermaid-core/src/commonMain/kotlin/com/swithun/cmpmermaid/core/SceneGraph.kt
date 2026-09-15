@@ -94,6 +94,8 @@ enum class SceneArrowHead {
     ErZeroOrOne,
     ErOneOrMore,
     ErZeroOrMore,
+    RequirementArrow,
+    RequirementContains,
 }
 
 sealed interface SceneElement {

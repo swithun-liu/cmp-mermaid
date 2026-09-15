@@ -88,6 +88,7 @@ private enum class DebugScreen {
     Gantt,
     Pie,
     Journey,
+    Requirement,
     Playground,
     LoadTest,
 }
@@ -159,6 +160,12 @@ private val destinations = listOf(
         DebugScreen.Journey,
         journeyDiagramDocsSpec,
         "Sections, scored tasks, and multi-actor journeys",
+        DiagramStability.Stable,
+    ),
+    DiagramDestination(
+        DebugScreen.Requirement,
+        requirementDiagramDocsSpec,
+        "SysML requirements, elements, and typed relationships",
         DiagramStability.Stable,
     ),
 )
@@ -473,6 +480,7 @@ private fun DiagramAuditScreen(
     preview: MermaidDebugPreview,
     layoutOverride: String,
 ) {
+    val usesCorpusLayout = spec.id == "flowchart" || spec.id == "requirement"
     var auditStatus by remember(demo.id, preview, layoutOverride) {
         mutableStateOf(AUDIT_STATUS_LOADING)
     }
@@ -500,15 +508,16 @@ private fun DiagramAuditScreen(
                 modifier = Modifier.fillMaxSize(),
                 theme = MermaidTheme.preset(spec.initialTheme),
                 options = spec.nativeOptions.copy(
-                    layout = if (spec.id == "flowchart") layoutOverride else spec.nativeOptions.layout,
+                    layout = if (usesCorpusLayout) layoutOverride else spec.nativeOptions.layout,
                     themeName = spec.initialTheme.configName,
                 ),
                 contentDescription = "${demo.title} native audit preview",
             )
             MermaidDebugPreview.Official -> OfficialMermaidDiagram(
                 source = demo.source,
-                layout = if (spec.id == "flowchart") layoutOverride else spec.officialLayout,
+                layout = if (usesCorpusLayout) layoutOverride else spec.officialLayout,
                 themeName = spec.initialTheme.configName,
+                look = spec.nativeOptions.look,
                 modifier = Modifier.fillMaxSize(),
                 onRenderResult = { result ->
                     auditStatus = when (result) {

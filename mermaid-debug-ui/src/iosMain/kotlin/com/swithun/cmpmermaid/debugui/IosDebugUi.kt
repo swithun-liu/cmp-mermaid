@@ -23,6 +23,7 @@ internal actual fun OfficialMermaidDiagram(
     source: String,
     layout: String,
     themeName: String?,
+    look: String?,
     modifier: Modifier,
     onRenderResult: (OfficialRenderResult) -> Unit,
 ) {

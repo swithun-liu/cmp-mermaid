@@ -6,6 +6,7 @@ import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
 import com.swithun.cmpmermaid.core.journey.JourneyPlugin
 import com.swithun.cmpmermaid.core.pie.PiePlugin
+import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
 import com.swithun.cmpmermaid.core.statediagram.StatePlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
@@ -40,6 +41,7 @@ class MermaidEngine(
         PiePlugin(),
         XyChartPlugin(),
         JourneyPlugin(),
+        RequirementPlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {
@@ -73,36 +75,52 @@ class MermaidEngine(
             is GMResult.Ok -> result.value
             is GMResult.Err -> return result
         }
+        val diagramOptions = if (header == "requirementdiagram" || header == "requirement") {
+            resolvedOptions.copy(
+                themeName = resolvedOptions.requirementThemeName ?: resolvedOptions.themeName,
+                look = resolvedOptions.requirementLook ?: resolvedOptions.look,
+            )
+        } else {
+            resolvedOptions
+        }
+        if (diagramOptions.look == "handDrawn") {
+            return GMResult.Err(
+                MermaidError.UnsupportedFeature(
+                    feature = "handDrawn look",
+                    message = "Native Mermaid has not translated Mermaid's roughjs handDrawn renderer",
+                ),
+            )
+        }
         val textSize = preprocessed.code.cleaned.length
-        if (textSize > resolvedOptions.maxTextSize) {
+        if (textSize > diagramOptions.maxTextSize) {
             return GMResult.Err(
                 MermaidError.ResourceLimit(
                     resource = "maxTextSize",
                     actual = textSize,
-                    maximum = resolvedOptions.maxTextSize,
+                    maximum = diagramOptions.maxTextSize,
                     message = "Maximum text size in diagram exceeded " +
-                        "($textSize > ${resolvedOptions.maxTextSize})",
+                        "($textSize > ${diagramOptions.maxTextSize})",
                 ),
             )
         }
-        val baseTheme = when (val themeName = resolvedOptions.themeName) {
+        val baseTheme = when (val themeName = diagramOptions.themeName) {
             null -> context.theme
             "null" -> MermaidTheme.MermaidDefault
             else -> MermaidTheme.named(themeName) ?: context.theme
         }
         val resolvedThemeVariables = if (
-            "fontFamily" in resolvedOptions.themeVariables ||
-            resolvedOptions.fontFamily == null
+            "fontFamily" in diagramOptions.themeVariables ||
+            diagramOptions.fontFamily == null
         ) {
-            resolvedOptions.themeVariables
+            diagramOptions.themeVariables
         } else {
-            resolvedOptions.themeVariables + ("fontFamily" to resolvedOptions.fontFamily)
+            diagramOptions.themeVariables + ("fontFamily" to diagramOptions.fontFamily)
         }
         val resolvedTheme = when (
             val result = MermaidTheme.withVariables(
                 theme = baseTheme,
                 values = resolvedThemeVariables,
-                colorArrays = resolvedOptions.themeColorArrays,
+                colorArrays = diagramOptions.themeColorArrays,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -117,7 +135,7 @@ class MermaidEngine(
             source = parserSource,
             context = context.copy(
                 theme = resolvedTheme,
-                options = resolvedOptions,
+                options = diagramOptions,
                 diagramTitle = preprocessed.title,
                 frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,
             ),

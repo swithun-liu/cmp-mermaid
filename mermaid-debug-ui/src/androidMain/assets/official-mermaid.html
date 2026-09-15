@@ -221,7 +221,7 @@
         return { width, height };
       };
 
-      window.renderDiagram = async (source, layout, themeName = null) => {
+      window.renderDiagram = async (source, layout, themeName = null, look = null) => {
         window.clearTimeout(rendererLoadTimeout);
         const currentRequest = ++requestId;
         diagram.className = "status";
@@ -235,6 +235,9 @@
           };
           if (themeName) {
             config.theme = themeName;
+          }
+          if (look) {
+            config.look = look;
           }
           mermaid.initialize(config);
           const backgroundColor =

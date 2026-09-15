@@ -40,6 +40,7 @@ const kotlinGalleryFiles = {
   gantt: ['GanttDemos.kt', 'GanttDemo'],
   pie: ['PieDemos.kt', 'PieDemo'],
   journey: ['JourneyDemos.kt', 'JourneyDemo'],
+  requirement: ['RequirementDemos.kt', 'RequirementDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [
@@ -293,8 +294,7 @@ function readKotlinCases(fileName, constructorName) {
     `${constructorName}\\(\\s*` +
       'id = "([^"]+)",\\s*' +
       'title = "([^"]+)",\\s*' +
-      'category = "([^"]+)",\\s*' +
-      'source = """\\n([\\s\\S]*?)\\n\\s*"""\\.trimIndent\\(\\),\\s*\\)',
+      'category = "([^"]+)",',
     'g',
   );
   return [...kotlin.matchAll(casePattern)].map((match) => ({

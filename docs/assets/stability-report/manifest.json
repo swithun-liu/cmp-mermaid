@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-15T06:07:52.392Z",
-  "caseCount": 119,
+  "generatedAt": "2026-09-15T09:46:46.049Z",
+  "caseCount": 132,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -2606,6 +2606,309 @@
       "nativeSha256": "4f1e2a26b1a3d15de4770ca1b74393e710c209af0ccb4c56e567c6eaf7e6e1ca",
       "officialSha256": "c6970f371d19596b331b8e35ea929b87be81ffc61473b9f5766ae7a503bd7ede",
       "sourceSha256": "cae5cd833dca4f3ec5024d1dfe53dde9bf06899a199119c3ca5aaf92f0f4292e"
+    },
+    {
+      "id": "rc_requirement_checkout_assurance",
+      "kind": "requirement",
+      "title": "Checkout assurance model",
+      "scenario": "Payment requirements trace from system goals through interfaces and verification evidence.",
+      "layout": "elk",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_requirement_checkout_assurance_native.png",
+      "officialFile": "rc_requirement_checkout_assurance_official.png",
+      "nativeBytes": 83210,
+      "officialBytes": 88642,
+      "nativeSha256": "06df8073377fefb81d23ea6bd28d94c728fe944e51b5d2824ede0ffcb4b7f3e5",
+      "officialSha256": "86a1468471871ebfa4a33a2c9d4679770c71ef683f04900f289c7672229c0d33",
+      "sourceSha256": "7eaf7e9047845700ebac3cd2fd047387499f491ab6c191efd89389ea9fee16b8"
+    },
+    {
+      "id": "rc_requirement_device_safety",
+      "kind": "requirement",
+      "title": "Device safety controls",
+      "scenario": "Safety requirements decompose into physical limits, design constraints, and test evidence.",
+      "layout": "elk",
+      "aspectRatio": 1.45,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_requirement_device_safety_native.png",
+      "officialFile": "rc_requirement_device_safety_official.png",
+      "nativeBytes": 111525,
+      "officialBytes": 116531,
+      "nativeSha256": "fe1ed294cf10368d664afc5f6e3ca163f9a56c9dd983ec5bc714c845f7f3e721",
+      "officialSha256": "4bb267fe0b3492e3333e0b804ab4550deab01e46977587bd4ae1a11b63cb8cd1",
+      "sourceSha256": "2f58db8f05d5ef7d68cb7cd587b2413c337dd4ca8d5d261a424b9b64d5ac4286"
+    },
+    {
+      "id": "rc_requirement_data_retention",
+      "kind": "requirement",
+      "title": "Data retention traceability",
+      "scenario": "Policy, storage, deletion, and audit requirements remain traceable across implementation assets.",
+      "layout": "elk",
+      "aspectRatio": 1.65,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_requirement_data_retention_native.png",
+      "officialFile": "rc_requirement_data_retention_official.png",
+      "nativeBytes": 81987,
+      "officialBytes": 85053,
+      "nativeSha256": "7e7a814847d2814461a6aab038376f4e532b44372b2e52ee50d4379b3288761e",
+      "officialSha256": "517cb10b9f6684da912249c4c17f6f69941f94d8fc6aac674871896d647e7575",
+      "sourceSha256": "fb273f690973845a4ce2fa0dbfe04a44c90c70a00fd106e532f718724fa949c3"
+    },
+    {
+      "id": "rc_requirement_failover_evidence",
+      "kind": "requirement",
+      "title": "Regional failover evidence",
+      "scenario": "Availability targets connect to routing, recovery, observability, and validation evidence.",
+      "layout": "elk",
+      "aspectRatio": 1.55,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_requirement_failover_evidence_native.png",
+      "officialFile": "rc_requirement_failover_evidence_official.png",
+      "nativeBytes": 84757,
+      "officialBytes": 89445,
+      "nativeSha256": "51f494ba02c39f53030388346f0725d661542be0ee5e3e41a1c91f5a9ff28031",
+      "officialSha256": "cabdacfd4150433397d3cb5c0953411336110d32699225dea49f3e0ba82de7ed",
+      "sourceSha256": "650b1322c0a125eafa9f62a754a9ab45a35655009bb691d38a0f13452211ffbe"
+    },
+    {
+      "id": "rc_requirement_access_controls",
+      "kind": "requirement",
+      "title": "Styled access-control requirements",
+      "scenario": "Critical controls, implementation elements, metadata, and reusable styles in one review model.",
+      "layout": "dagre",
+      "aspectRatio": 1.6,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_requirement_access_controls_native.png",
+      "officialFile": "rc_requirement_access_controls_official.png",
+      "nativeBytes": 66607,
+      "officialBytes": 65125,
+      "nativeSha256": "a3c3aadc1ff959a39243446ae47c33454945f648096c07aedc45be10c33d008d",
+      "officialSha256": "8c275a7135653f6037a10c7b6b0934bd8a746ea7e42de97be6aca81309fc02fa",
+      "sourceSha256": "fde04546fd781aca859b371ee6d32c1f29a05b1aebf2b2c472703c6336ca084d"
+    },
+    {
+      "id": "prod_requirement_typed_fields_device",
+      "kind": "requirement",
+      "title": "Device requirement type matrix",
+      "scenario": "A device model exercises every requirement type and all typed fields.",
+      "layout": "elk",
+      "aspectRatio": 1.7,
+      "features": [
+        "requirement-types",
+        "fields",
+        "risk-levels",
+        "verification-methods",
+        "elements",
+        "directions",
+        "elk-layout"
+      ],
+      "expectedTexts": [
+        "Operate safely in every supported mode",
+        "Independent validation laboratory"
+      ],
+      "nativeFile": "prod_requirement_typed_fields_device_native.png",
+      "officialFile": "prod_requirement_typed_fields_device_official.png",
+      "nativeBytes": 102386,
+      "officialBytes": 108107,
+      "nativeSha256": "f3a43139708db3a5450e08bdf0e2471eba0993c2ec17849c78bef3b191e1f4a2",
+      "officialSha256": "f00b1fa9219b8dd84ce23656dca0b742a3e8f925b346b04812ad4958a9bbb658",
+      "sourceSha256": "251a5392eb5d4c7ebe4a798d668a2880eba757dd8c2c9531223c7153ff14076b"
+    },
+    {
+      "id": "prod_requirement_typed_fields_checkout",
+      "kind": "requirement",
+      "title": "Checkout requirement type matrix",
+      "scenario": "A checkout model exercises every requirement type and all typed fields.",
+      "layout": "elk",
+      "aspectRatio": 1.7,
+      "features": [
+        "requirement-types",
+        "fields",
+        "risk-levels",
+        "verification-methods",
+        "elements",
+        "directions",
+        "elk-layout"
+      ],
+      "expectedTexts": [
+        "Complete checkout without duplicate orders",
+        "Payment contract suite"
+      ],
+      "nativeFile": "prod_requirement_typed_fields_checkout_native.png",
+      "officialFile": "prod_requirement_typed_fields_checkout_official.png",
+      "nativeBytes": 94771,
+      "officialBytes": 99680,
+      "nativeSha256": "58ede3b2cec3170523af82df2988b5a714485128c6ac2154b270610b6e6bc66c",
+      "officialSha256": "81e555b82779e7d70d22bf426ac0e1aa7db050220d23ba2dfad5bea0371d4063",
+      "sourceSha256": "19739eac0b432062107404220d3c2852e3a84aac38258b8ee76b0cdce8b8c204"
+    },
+    {
+      "id": "prod_requirement_relation_matrix_replication",
+      "kind": "requirement",
+      "title": "Replication relationship matrix",
+      "scenario": "Replication requirements exercise every relationship and reverse syntax.",
+      "layout": "dagre",
+      "aspectRatio": 1.65,
+      "features": [
+        "elements",
+        "relationship-types",
+        "reverse-relationships",
+        "directions",
+        "dagre-layout"
+      ],
+      "expectedTexts": [
+        "Maintain a recoverable replica",
+        "Recovery validation suite"
+      ],
+      "nativeFile": "prod_requirement_relation_matrix_replication_native.png",
+      "officialFile": "prod_requirement_relation_matrix_replication_official.png",
+      "nativeBytes": 57354,
+      "officialBytes": 63513,
+      "nativeSha256": "338499bd61e8a4cbb712db4fa524b68cff24ac685bfb57131fc2b8f927e749b2",
+      "officialSha256": "2edb614aef6bf6696704db694a8b19d9dc7a0158b5d36085879f92bc99f92d5b",
+      "sourceSha256": "c83f5ddc489c9d199b527310e7e5acf2c8fb3d184a3c1b9f5b6442709de54ba4"
+    },
+    {
+      "id": "prod_requirement_relation_matrix_delivery",
+      "kind": "requirement",
+      "title": "Delivery relationship matrix",
+      "scenario": "Delivery requirements exercise every relationship and reverse syntax.",
+      "layout": "dagre",
+      "aspectRatio": 1.65,
+      "features": [
+        "elements",
+        "relationship-types",
+        "reverse-relationships",
+        "directions",
+        "dagre-layout"
+      ],
+      "expectedTexts": [
+        "Deliver each accepted message",
+        "Delivery verification suite"
+      ],
+      "nativeFile": "prod_requirement_relation_matrix_delivery_native.png",
+      "officialFile": "prod_requirement_relation_matrix_delivery_official.png",
+      "nativeBytes": 104700,
+      "officialBytes": 104137,
+      "nativeSha256": "c8dacd9edbcb6ed6b23a319c8654bb23560ac91226b96c8a1ffa96a81d6cf40b",
+      "officialSha256": "32dd799fd76fe92370bc53f3671b41fc29542fa192b85ce1034f723969809318",
+      "sourceSha256": "dca67c21b66e3c7bec80f8a2c155810676ebf47ee629f8616dbc4f663d5259fe"
+    },
+    {
+      "id": "prod_requirement_metadata_layout_authorization",
+      "kind": "requirement",
+      "title": "Authorization requirement metadata",
+      "scenario": "Authorization requirements preserve titles, accessibility, Markdown, and Unicode.",
+      "layout": "elk",
+      "aspectRatio": 1.55,
+      "features": [
+        "directions",
+        "elk-layout",
+        "frontmatter-title",
+        "accessibility",
+        "markdown",
+        "unicode",
+        "comments"
+      ],
+      "expectedTexts": [
+        "Authorization requirements",
+        "Authorize every protected request",
+        "Préserver la décision de sécurité"
+      ],
+      "nativeFile": "prod_requirement_metadata_layout_authorization_native.png",
+      "officialFile": "prod_requirement_metadata_layout_authorization_official.png",
+      "nativeBytes": 47937,
+      "officialBytes": 47799,
+      "nativeSha256": "015c534e8ac142181bb1929cee17b4b6a092367b5f5e967f3da0b2496ac70f4c",
+      "officialSha256": "2eb204f76fc7df7879deb8a9adb3b31c142896b5e1157b8d73d8b8f1503694f6",
+      "sourceSha256": "002a75542d8fce8a68eca2b64511c59431033bf7f24f12beac046f92fb8a0cd0"
+    },
+    {
+      "id": "prod_requirement_metadata_layout_continuity",
+      "kind": "requirement",
+      "title": "Continuity requirement metadata",
+      "scenario": "Continuity requirements preserve titles, accessibility, Markdown, and Unicode.",
+      "layout": "elk",
+      "aspectRatio": 1.55,
+      "features": [
+        "directions",
+        "elk-layout",
+        "frontmatter-title",
+        "accessibility",
+        "markdown",
+        "unicode",
+        "comments"
+      ],
+      "expectedTexts": [
+        "Continuity requirements",
+        "Restore every critical service",
+        "Vérifier la reprise régionale"
+      ],
+      "nativeFile": "prod_requirement_metadata_layout_continuity_native.png",
+      "officialFile": "prod_requirement_metadata_layout_continuity_official.png",
+      "nativeBytes": 66308,
+      "officialBytes": 62862,
+      "nativeSha256": "4d65cc9e066469a620881834629bd023ee210c91ac857deaea0494ce063960f3",
+      "officialSha256": "0893682944096b22c783de3cf90ee4c3bf558df38f332c225de82bcdc0369119",
+      "sourceSha256": "0a9798c8005d77521aa411aa8ff42f01d8942c882866f6bb15e397f3fe3e6dd1"
+    },
+    {
+      "id": "prod_requirement_styled_theme_privacy",
+      "kind": "requirement",
+      "title": "Styled privacy requirements",
+      "scenario": "Privacy controls combine class assignment, direct styles, and theme variables.",
+      "layout": "dagre",
+      "aspectRatio": 1.5,
+      "features": [
+        "directions",
+        "dagre-layout",
+        "direct-styles",
+        "classes",
+        "theme-variables"
+      ],
+      "expectedTexts": [
+        "Limit access to approved identities",
+        "Privacy gateway"
+      ],
+      "nativeFile": "prod_requirement_styled_theme_privacy_native.png",
+      "officialFile": "prod_requirement_styled_theme_privacy_official.png",
+      "nativeBytes": 51382,
+      "officialBytes": 52688,
+      "nativeSha256": "2fc41c0e171d1985455a99507a5aae4434078bf0b8cd97c259093c8b6e64e278",
+      "officialSha256": "278d01c01f678a11d3a32353ffb19ec9dd6d016b74eb6fbf162613fd496fe958",
+      "sourceSha256": "7291c8675671285077fff50a37f0eea7aa8f494b7968dad2a4c99db3ec5f1cef"
+    },
+    {
+      "id": "prod_requirement_styled_theme_resilience",
+      "kind": "requirement",
+      "title": "Styled resilience requirements",
+      "scenario": "Resilience controls combine class assignment, direct styles, and theme variables.",
+      "layout": "dagre",
+      "aspectRatio": 1.5,
+      "features": [
+        "directions",
+        "dagre-layout",
+        "direct-styles",
+        "classes",
+        "theme-variables"
+      ],
+      "expectedTexts": [
+        "Continue service during a regional outage",
+        "Traffic controller"
+      ],
+      "nativeFile": "prod_requirement_styled_theme_resilience_native.png",
+      "officialFile": "prod_requirement_styled_theme_resilience_official.png",
+      "nativeBytes": 67399,
+      "officialBytes": 66860,
+      "nativeSha256": "fbbdb600c7e004be43512467ace2d951f5f3d6efdbed1acb6bfee42925aefbc5",
+      "officialSha256": "e4c636f65fe39ec4cd2c2c2ff88b973a9e4b1279849ca1624a54dafcb7c6cb8e",
+      "sourceSha256": "58fb744d55f2b673dd546835a3efccecdb618ff471f870e794dd2f74d1894756"
     }
   ]
 }

@@ -29,6 +29,7 @@ internal expect fun OfficialMermaidDiagram(
     source: String,
     layout: String,
     themeName: String? = null,
+    look: String? = null,
     modifier: Modifier = Modifier,
     onRenderResult: (OfficialRenderResult) -> Unit = {},
 )

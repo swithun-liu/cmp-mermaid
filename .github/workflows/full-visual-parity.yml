@@ -60,6 +60,7 @@ jobs:
           - gantt
           - pie
           - journey
+          - requirement
 
     steps:
       - name: Checkout

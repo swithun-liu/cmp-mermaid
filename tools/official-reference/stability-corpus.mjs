@@ -1775,4 +1775,255 @@ journey
     Confirm access removal: 5: Requester, Resource Owner
 `,
   },
+  {
+    id: 'rc_requirement_checkout_assurance',
+    kind: 'requirement',
+    title: 'Checkout assurance model',
+    scenario: 'Payment requirements trace from system goals through interfaces and verification evidence.',
+    layout: 'elk',
+    aspectRatio: 1.7,
+    source: String.raw`
+requirementDiagram
+  direction LR
+  requirement checkout_platform {
+    id: "PAY-SYS-1"
+    text: "Complete checkout without duplicate orders"
+    risk: high
+    verifyMethod: demonstration
+  }
+  functionalRequirement idempotent_order {
+    id: "PAY-FN-2"
+    text: "Create at most one order for each payment attempt"
+    risk: high
+    verifyMethod: test
+  }
+  interfaceRequirement gateway_contract {
+    id: "PAY-IF-3"
+    text: "Preserve the external payment contract"
+    risk: medium
+    verifyMethod: inspection
+  }
+  performanceRequirement authorization_latency {
+    id: "PAY-PF-4"
+    text: "Return authorization within the latency budget"
+    risk: medium
+    verifyMethod: analysis
+  }
+  element checkout_service {
+    type: "Application service"
+    docRef: "design/checkout-service"
+  }
+  element contract_suite {
+    type: "Contract suite"
+    docRef: "tests/payment-contract"
+  }
+  checkout_platform - contains -> idempotent_order
+  checkout_platform - contains -> gateway_contract
+  idempotent_order - derives -> authorization_latency
+  checkout_service - satisfies -> idempotent_order
+  contract_suite - verifies -> gateway_contract
+  gateway_contract - traces -> authorization_latency
+`,
+  },
+  {
+    id: 'rc_requirement_device_safety',
+    kind: 'requirement',
+    title: 'Device safety controls',
+    scenario: 'Safety requirements decompose into physical limits, design constraints, and test evidence.',
+    layout: 'elk',
+    aspectRatio: 1.45,
+    source: String.raw`
+requirementDiagram
+  direction TB
+  requirement safe_operation {
+    id: "SAFE-1"
+    text: "Maintain safe operation during every supported mode"
+    risk: high
+    verifyMethod: demonstration
+  }
+  physicalRequirement thermal_limit {
+    id: "SAFE-1.1"
+    text: "Keep enclosure temperature below the approved limit"
+    risk: high
+    verifyMethod: test
+  }
+  designConstraint shutdown_guard {
+    id: "SAFE-1.2"
+    text: "Enter a protected state after a sensor fault"
+    risk: high
+    verifyMethod: inspection
+  }
+  interfaceRequirement alarm_contract {
+    id: "SAFE-1.3"
+    text: "Publish an operator alarm before automatic shutdown"
+    risk: medium
+    verifyMethod: analysis
+  }
+  element thermal_controller {
+    type: "Control component"
+    docRef: "architecture/thermal-controller"
+  }
+  element safety_lab {
+    type: "Verification facility"
+    docRef: "evidence/safety-validation"
+  }
+  safe_operation - contains -> thermal_limit
+  safe_operation - contains -> shutdown_guard
+  shutdown_guard - derives -> alarm_contract
+  thermal_controller - satisfies -> shutdown_guard
+  safety_lab - verifies -> thermal_limit
+  safety_lab - verifies -> alarm_contract
+`,
+  },
+  {
+    id: 'rc_requirement_data_retention',
+    kind: 'requirement',
+    title: 'Data retention traceability',
+    scenario: 'Policy, storage, deletion, and audit requirements remain traceable across implementation assets.',
+    layout: 'elk',
+    aspectRatio: 1.65,
+    source: String.raw`
+requirementDiagram
+  direction RL
+  requirement retention_policy {
+    id: "DATA-1"
+    text: "Retain records only for the approved business period"
+    risk: high
+    verifyMethod: inspection
+  }
+  functionalRequirement deletion_workflow {
+    id: "DATA-1.1"
+    text: "Delete expired records and derived copies"
+    risk: high
+    verifyMethod: test
+  }
+  performanceRequirement deletion_window {
+    id: "DATA-1.2"
+    text: "Complete deletion within the approved window"
+    risk: medium
+    verifyMethod: analysis
+  }
+  designConstraint immutable_audit {
+    id: "DATA-1.3"
+    text: "Preserve immutable deletion evidence"
+    risk: medium
+    verifyMethod: inspection
+  }
+  element lifecycle_worker {
+    type: "Background worker"
+    docRef: "design/lifecycle-worker"
+  }
+  element evidence_store {
+    type: "Audit store"
+    docRef: "design/evidence-store"
+  }
+  retention_policy - contains -> deletion_workflow
+  deletion_workflow - refines -> deletion_window
+  deletion_workflow - derives -> immutable_audit
+  lifecycle_worker - satisfies -> deletion_workflow
+  evidence_store - satisfies -> immutable_audit
+  deletion_window <- verifies - lifecycle_worker
+`,
+  },
+  {
+    id: 'rc_requirement_failover_evidence',
+    kind: 'requirement',
+    title: 'Regional failover evidence',
+    scenario: 'Availability targets connect to routing, recovery, observability, and validation evidence.',
+    layout: 'elk',
+    aspectRatio: 1.55,
+    source: String.raw`
+requirementDiagram
+  direction BT
+  requirement regional_service {
+    id: "SRE-1"
+    text: "Continue serving requests after a regional outage"
+    risk: high
+    verifyMethod: demonstration
+  }
+  functionalRequirement traffic_shift {
+    id: "SRE-1.1"
+    text: "Shift traffic to a healthy region"
+    risk: high
+    verifyMethod: test
+  }
+  performanceRequirement recovery_target {
+    id: "SRE-1.2"
+    text: "Restore full capacity within the recovery target"
+    risk: medium
+    verifyMethod: analysis
+  }
+  interfaceRequirement health_signal {
+    id: "SRE-1.3"
+    text: "Expose health signals to the traffic manager"
+    risk: medium
+    verifyMethod: inspection
+  }
+  element traffic_manager {
+    type: "Routing service"
+    docRef: "operations/traffic-manager"
+  }
+  element resilience_suite {
+    type: "Failure injection suite"
+    docRef: "evidence/regional-failover"
+  }
+  regional_service - contains -> traffic_shift
+  regional_service - contains -> recovery_target
+  traffic_shift - refines -> health_signal
+  traffic_manager - satisfies -> traffic_shift
+  resilience_suite - verifies -> regional_service
+  resilience_suite - verifies -> recovery_target
+`,
+  },
+  {
+    id: 'rc_requirement_access_controls',
+    kind: 'requirement',
+    title: 'Styled access-control requirements',
+    scenario: 'Critical controls, implementation elements, metadata, and reusable styles in one review model.',
+    layout: 'dagre',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+title: Access control requirements
+config:
+  theme: default
+  look: classic
+  layout: dagre
+---
+requirementDiagram
+  accTitle: Access control requirement model
+  accDescr {
+    Authentication and authorization controls are connected to implementation
+    components and independent verification evidence.
+  }
+  direction LR
+  requirement protected_access:::critical {
+    id: "AUTH-1"
+    text: "**Authenticate** every protected request"
+    risk: high
+    verifyMethod: test
+  }
+  functionalRequirement least_privilege {
+    id: "AUTH-1.1"
+    text: "Authorize only the minimum required capability"
+    risk: high
+    verifyMethod: inspection
+  }
+  element policy_gateway {
+    type: "Policy enforcement point"
+    docRef: "architecture/policy-gateway"
+  }
+  element security_suite {
+    type: "Independent verification suite"
+    docRef: "tests/access-control"
+  }
+  classDef critical fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d,stroke-width:3px
+  style least_privilege fill:#dcfce7,stroke:#15803d,color:#14532d
+  class policy_gateway critical
+  protected_access - contains -> least_privilege
+  policy_gateway - satisfies -> protected_access
+  security_suite - verifies -> protected_access
+  security_suite - verifies -> least_privilege
+`,
+  },
 ];

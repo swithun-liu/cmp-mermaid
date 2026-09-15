@@ -163,6 +163,26 @@ export const requiredFeaturesByKind = {
     'long-task-text',
     'long-actor-text',
   ],
+  requirement: [
+    'requirement-types',
+    'fields',
+    'risk-levels',
+    'verification-methods',
+    'elements',
+    'relationship-types',
+    'reverse-relationships',
+    'directions',
+    'dagre-layout',
+    'elk-layout',
+    'frontmatter-title',
+    'accessibility',
+    'markdown',
+    'direct-styles',
+    'classes',
+    'theme-variables',
+    'unicode',
+    'comments',
+  ],
 };
 
 const flowchartCases = [
@@ -1767,6 +1787,333 @@ journey
   }),
 ];
 
+const requirementCases = [
+  ...expandTemplate({
+    kind: 'requirement',
+    id: 'typed_fields',
+    layout: 'elk',
+    aspectRatio: 1.7,
+    features: [
+      'requirement-types',
+      'fields',
+      'risk-levels',
+      'verification-methods',
+      'elements',
+      'directions',
+      'elk-layout',
+    ],
+    variants: [
+      {
+        slug: 'device',
+        title: 'Device requirement type matrix',
+        scenario: 'A device model exercises every requirement type and all typed fields.',
+        direction: 'LR',
+        prefix: 'DEV',
+        rootText: 'Operate safely in every supported mode',
+        functionText: 'Stop output after a detected control fault',
+        interfaceText: 'Publish a fault notification to the operator console',
+        performanceText: 'Complete the shutdown within the approved interval',
+        physicalText: 'Keep the enclosure below the thermal limit',
+        constraintText: 'Use redundant temperature sensors',
+        implementationType: 'Safety controller',
+        evidenceType: 'Independent validation laboratory',
+      },
+      {
+        slug: 'checkout',
+        title: 'Checkout requirement type matrix',
+        scenario: 'A checkout model exercises every requirement type and all typed fields.',
+        direction: 'TB',
+        prefix: 'PAY',
+        rootText: 'Complete checkout without duplicate orders',
+        functionText: 'Create at most one order for each payment attempt',
+        interfaceText: 'Preserve the external payment contract',
+        performanceText: 'Return authorization within the latency budget',
+        physicalText: 'Protect payment keys in approved hardware',
+        constraintText: 'Use idempotent command identifiers',
+        implementationType: 'Checkout service',
+        evidenceType: 'Payment contract suite',
+      },
+    ],
+    source: (value) => String.raw`
+requirementDiagram
+  direction ${value.direction}
+  requirement system_goal {
+    id: "${value.prefix}-SYS-1"
+    text: "${value.rootText}"
+    risk: high
+    verifyMethod: demonstration
+  }
+  functionalRequirement function_goal {
+    id: "${value.prefix}-FN-2"
+    text: "${value.functionText}"
+    risk: high
+    verifyMethod: test
+  }
+  interfaceRequirement interface_goal {
+    id: "${value.prefix}-IF-3"
+    text: "${value.interfaceText}"
+    risk: medium
+    verifyMethod: inspection
+  }
+  performanceRequirement performance_goal {
+    id: "${value.prefix}-PF-4"
+    text: "${value.performanceText}"
+    risk: medium
+    verifyMethod: analysis
+  }
+  physicalRequirement physical_goal {
+    id: "${value.prefix}-PH-5"
+    text: "${value.physicalText}"
+    risk: low
+    verifyMethod: test
+  }
+  designConstraint implementation_constraint {
+    id: "${value.prefix}-DC-6"
+    text: "${value.constraintText}"
+    risk: low
+    verifyMethod: inspection
+  }
+  element implementation {
+    type: "${value.implementationType}"
+    docRef: "architecture/${value.prefix.toLowerCase()}-implementation"
+  }
+  element verification_evidence {
+    type: "${value.evidenceType}"
+    docRef: "evidence/${value.prefix.toLowerCase()}-validation"
+  }
+  system_goal - contains -> function_goal
+  system_goal - contains -> interface_goal
+  function_goal - derives -> performance_goal
+  implementation - satisfies -> implementation_constraint
+  verification_evidence - verifies -> physical_goal
+`,
+    expectedTexts: (value) => [value.rootText, value.evidenceType],
+  }),
+  ...expandTemplate({
+    kind: 'requirement',
+    id: 'relation_matrix',
+    layout: 'dagre',
+    aspectRatio: 1.65,
+    features: [
+      'elements',
+      'relationship-types',
+      'reverse-relationships',
+      'directions',
+      'dagre-layout',
+    ],
+    variants: [
+      {
+        slug: 'replication',
+        title: 'Replication relationship matrix',
+        scenario: 'Replication requirements exercise every relationship and reverse syntax.',
+        direction: 'BT',
+        rootText: 'Maintain a recoverable replica',
+        childText: 'Persist every accepted change',
+        copyText: 'Mirror the recovery policy',
+        derivedText: 'Calculate a replication checkpoint',
+        refinedText: 'Define the recovery-point objective',
+        tracedText: 'Record the originating change request',
+        implementationType: 'Replication worker',
+        evidenceType: 'Recovery validation suite',
+      },
+      {
+        slug: 'delivery',
+        title: 'Delivery relationship matrix',
+        scenario: 'Delivery requirements exercise every relationship and reverse syntax.',
+        direction: 'RL',
+        rootText: 'Deliver each accepted message',
+        childText: 'Persist delivery state',
+        copyText: 'Mirror the routing policy',
+        derivedText: 'Calculate the retry schedule',
+        refinedText: 'Define the acknowledgement contract',
+        tracedText: 'Record the originating delivery request',
+        implementationType: 'Delivery worker',
+        evidenceType: 'Delivery verification suite',
+      },
+    ],
+    source: (value) => String.raw`
+requirementDiagram
+  direction ${value.direction}
+  requirement root_goal {
+    text: "${value.rootText}"
+  }
+  functionalRequirement child_goal {
+    text: "${value.childText}"
+  }
+  requirement copy_goal {
+    text: "${value.copyText}"
+  }
+  performanceRequirement derived_goal {
+    text: "${value.derivedText}"
+  }
+  interfaceRequirement refined_goal {
+    text: "${value.refinedText}"
+  }
+  requirement traced_goal {
+    text: "${value.tracedText}"
+  }
+  element implementation {
+    type: "${value.implementationType}"
+  }
+  element verification_evidence {
+    type: "${value.evidenceType}"
+  }
+  root_goal - contains -> child_goal
+  copy_goal <- copies - root_goal
+  root_goal - derives -> derived_goal
+  implementation - satisfies -> root_goal
+  verification_evidence - verifies -> child_goal
+  refined_goal <- refines - root_goal
+  root_goal - traces -> traced_goal
+`,
+    expectedTexts: (value) => [value.rootText, value.evidenceType],
+  }),
+  ...expandTemplate({
+    kind: 'requirement',
+    id: 'metadata_layout',
+    layout: 'elk',
+    aspectRatio: 1.55,
+    features: [
+      'directions',
+      'elk-layout',
+      'frontmatter-title',
+      'accessibility',
+      'markdown',
+      'unicode',
+      'comments',
+    ],
+    variants: [
+      {
+        slug: 'authorization',
+        title: 'Authorization requirement metadata',
+        scenario: 'Authorization requirements preserve titles, accessibility, Markdown, and Unicode.',
+        diagramTitle: 'Authorization requirements',
+        accessibilityTitle: 'Authorization requirement trace',
+        accessibilityDescription: 'Authorization controls and their verification evidence',
+        direction: 'LR',
+        primaryText: 'Authorize every protected request',
+        unicodeText: 'Préserver la décision de sécurité',
+        actorType: 'Policy enforcement point',
+      },
+      {
+        slug: 'continuity',
+        title: 'Continuity requirement metadata',
+        scenario: 'Continuity requirements preserve titles, accessibility, Markdown, and Unicode.',
+        diagramTitle: 'Continuity requirements',
+        accessibilityTitle: 'Continuity requirement trace',
+        accessibilityDescription: 'Recovery controls and their verification evidence',
+        direction: 'TB',
+        primaryText: 'Restore every critical service',
+        unicodeText: 'Vérifier la reprise régionale',
+        actorType: 'Regional recovery coordinator',
+      },
+    ],
+    source: (value) => String.raw`
+---
+title: ${value.diagramTitle}
+config:
+  layout: elk
+  theme: default
+  look: classic
+---
+requirementDiagram
+  accTitle: ${value.accessibilityTitle}
+  accDescr {
+    ${value.accessibilityDescription}.
+  }
+  direction ${value.direction}
+  %% Markdown and Unicode are intentionally combined in requirement text.
+  requirement primary_requirement {
+    id: "META-1"
+    text: "**${value.primaryText}**"
+    risk: high
+    verifyMethod: inspection
+  }
+  functionalRequirement localized_requirement {
+    id: "META-2"
+    text: "*${value.unicodeText}*"
+    risk: medium
+    verifyMethod: demonstration
+  }
+  element responsible_component {
+    type: "${value.actorType}"
+    docRef: "architecture/metadata-owner"
+  }
+  primary_requirement - contains -> localized_requirement
+  responsible_component - satisfies -> primary_requirement
+`,
+    expectedTexts: (value) => [value.diagramTitle, value.primaryText, value.unicodeText],
+  }),
+  ...expandTemplate({
+    kind: 'requirement',
+    id: 'styled_theme',
+    layout: 'dagre',
+    aspectRatio: 1.5,
+    features: [
+      'directions',
+      'dagre-layout',
+      'direct-styles',
+      'classes',
+      'theme-variables',
+    ],
+    variants: [
+      {
+        slug: 'privacy',
+        title: 'Styled privacy requirements',
+        scenario: 'Privacy controls combine class assignment, direct styles, and theme variables.',
+        direction: 'RL',
+        primaryText: 'Limit access to approved identities',
+        secondaryText: 'Record every policy decision',
+        componentType: 'Privacy gateway',
+      },
+      {
+        slug: 'resilience',
+        title: 'Styled resilience requirements',
+        scenario: 'Resilience controls combine class assignment, direct styles, and theme variables.',
+        direction: 'BT',
+        primaryText: 'Continue service during a regional outage',
+        secondaryText: 'Record every failover decision',
+        componentType: 'Traffic controller',
+      },
+    ],
+    source: (value) => String.raw`
+---
+config:
+  themeVariables:
+    requirementBackground: "#ecfeff"
+    requirementBorderColor: "#0e7490"
+    requirementTextColor: "#164e63"
+    relationColor: "#475569"
+    requirementEdgeLabelBackground: "#fff7ed"
+---
+requirementDiagram
+  direction ${value.direction}
+  requirement primary_requirement:::critical {
+    id: "STYLE-1"
+    text: "${value.primaryText}"
+    risk: high
+    verifyMethod: test
+  }
+  functionalRequirement secondary_requirement {
+    id: "STYLE-2"
+    text: "${value.secondaryText}"
+    risk: medium
+    verifyMethod: analysis
+  }
+  element implementation {
+    type: "${value.componentType}"
+    docRef: "architecture/styled-component"
+  }
+  classDef critical fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d,stroke-width:3px
+  class implementation critical
+  style secondary_requirement fill:#dcfce7,stroke:#15803d,color:#14532d
+  primary_requirement - contains -> secondary_requirement
+  implementation - satisfies -> primary_requirement
+`,
+    expectedTexts: (value) => [value.primaryText, value.componentType],
+  }),
+];
+
 export const conformanceCases = [
   ...flowchartCases,
   ...xyChartCases,
@@ -1777,6 +2124,7 @@ export const conformanceCases = [
   ...ganttCases,
   ...pieCases,
   ...journeyCases,
+  ...requirementCases,
 ];
 
 export const cases = [
