@@ -71,6 +71,8 @@ data class MermaidDebugLaunchOptions(
     val auditPreview: MermaidDebugPreview = MermaidDebugPreview.Native,
     val auditLayout: String = "elk",
     val openPlayground: Boolean = false,
+    val playgroundDiagramId: String = "flowchart",
+    val playgroundPreview: MermaidDebugPreview = MermaidDebugPreview.Native,
     val openLoadTest: Boolean = false,
     val autoRunLoadTest: Boolean = false,
 )
@@ -214,6 +216,12 @@ fun MermaidDebugApp(
     }
     val screen = DebugScreen.entries.firstOrNull { it.name == screenName }
         ?: DebugScreen.DiagramTypes
+    var playgroundDiagramId by rememberSaveable {
+        mutableStateOf(options.playgroundDiagramId)
+    }
+    val playgroundDestination = destinations
+        .firstOrNull { destination -> destination.spec.id == playgroundDiagramId }
+        ?: destinations.first()
     val colors = lightColorScheme(
         primary = Color(0xFF007F86),
         onPrimary = Color.White,
@@ -259,7 +267,7 @@ fun MermaidDebugApp(
 
             val backTarget = when (screen) {
                 DebugScreen.DiagramTypes -> null
-                DebugScreen.Playground -> DebugScreen.Flowchart
+                DebugScreen.Playground -> playgroundDestination.screen
                 DebugScreen.LoadTest -> DebugScreen.DiagramTypes
                 else -> DebugScreen.DiagramTypes
             }
@@ -272,8 +280,10 @@ fun MermaidDebugApp(
                     onOpen = { screenName = it.screen.name },
                     onOpenLoadTest = { screenName = DebugScreen.LoadTest.name },
                 )
-                DebugScreen.Playground -> FlowchartPlaygroundScreen(
-                    onBack = { screenName = DebugScreen.Flowchart.name },
+                DebugScreen.Playground -> DiagramPlaygroundScreen(
+                    spec = playgroundDestination.spec,
+                    initialPreview = options.playgroundPreview,
+                    onBack = { screenName = playgroundDestination.screen.name },
                 )
                 DebugScreen.LoadTest -> ProductionLoadTestScreen(
                     onBack = { screenName = DebugScreen.DiagramTypes.name },
@@ -290,11 +300,10 @@ fun MermaidDebugApp(
                         UnifiedDiagramDocsScreen(
                             spec = destination.spec,
                             onBack = { screenName = DebugScreen.DiagramTypes.name },
-                            actionLabel = if (screen == DebugScreen.Flowchart) "Playground" else null,
-                            onAction = if (screen == DebugScreen.Flowchart) {
-                                { screenName = DebugScreen.Playground.name }
-                            } else {
-                                null
+                            actionLabel = "Playground",
+                            onAction = {
+                                playgroundDiagramId = destination.spec.id
+                                screenName = DebugScreen.Playground.name
                             },
                         )
                     }

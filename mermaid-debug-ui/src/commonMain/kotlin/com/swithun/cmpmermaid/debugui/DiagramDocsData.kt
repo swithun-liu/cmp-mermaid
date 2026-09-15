@@ -105,6 +105,7 @@ internal val classDiagramDocsSpec = DiagramDocsSpec(
         ),
     ),
     officialLayout = "elk",
+    playgroundLayouts = listOf("elk", "dagre"),
 )
 
 internal val stateDiagramDocsSpec = DiagramDocsSpec(
@@ -132,6 +133,7 @@ internal val stateDiagramDocsSpec = DiagramDocsSpec(
         ),
     ),
     officialLayout = "elk",
+    playgroundLayouts = listOf("elk", "dagre"),
 )
 
 internal val erDiagramDocsSpec = DiagramDocsSpec(
@@ -160,6 +162,7 @@ internal val erDiagramDocsSpec = DiagramDocsSpec(
     ),
     nativeOptions = MermaidRenderOptions(layout = "elk"),
     officialLayout = "elk",
+    playgroundLayouts = listOf("elk", "dagre"),
 )
 
 internal val ganttDiagramDocsSpec = DiagramDocsSpec(

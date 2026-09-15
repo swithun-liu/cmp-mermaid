@@ -82,6 +82,7 @@ internal data class DiagramDocsSpec(
     val initialTheme: MermaidThemePreset = MermaidThemePreset.ReduxColor,
     val nativeOptions: MermaidRenderOptions = MermaidRenderOptions(),
     val officialLayout: String = "dagre",
+    val playgroundLayouts: List<String> = emptyList(),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)

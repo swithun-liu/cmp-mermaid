@@ -202,4 +202,5 @@ internal val flowchartDiagramDocsSpec = DiagramDocsSpec(
     syntaxLessons = flowchartSyntaxLessons,
     nativeOptions = MermaidRenderOptions(layout = "elk"),
     officialLayout = "elk",
+    playgroundLayouts = listOf("elk", "dagre"),
 )

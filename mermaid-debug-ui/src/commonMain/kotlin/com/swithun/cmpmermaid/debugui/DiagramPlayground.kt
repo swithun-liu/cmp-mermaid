@@ -64,11 +64,8 @@ import androidx.compose.ui.unit.sp
 import com.swithun.cmpmermaid.compose.MermaidDiagram
 import com.swithun.cmpmermaid.compose.rememberMermaidCjkFontFamily
 import com.swithun.cmpmermaid.core.MermaidCompatibility
-import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidTheme
 import com.swithun.cmpmermaid.core.MermaidThemePreset
-import com.swithun.cmpmermaid.debugui.generated.FlowchartDemo
-import com.swithun.cmpmermaid.debugui.generated.flowchartDemos
 
 private enum class PlaygroundLayout(
     val label: String,
@@ -78,41 +75,34 @@ private enum class PlaygroundLayout(
     Dagre(label = "Dagre", option = "dagre"),
 }
 
-private enum class PlaygroundRenderer(
-    val label: String,
-) {
-    Native(label = "CMP Native"),
-    Official(label = "Official JS"),
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun FlowchartPlaygroundScreen(
+internal fun DiagramPlaygroundScreen(
+    spec: DiagramDocsSpec,
+    initialPreview: MermaidDebugPreview,
     onBack: () -> Unit,
 ) {
-    val initialDemo = flowchartDemos.first()
-    var selectedDemoId by rememberSaveable { mutableStateOf(initialDemo.id) }
-    var draftSource by rememberSaveable { mutableStateOf(initialDemo.source) }
-    var renderedSource by rememberSaveable { mutableStateOf(initialDemo.source) }
-    var selectedLayoutName by rememberSaveable {
-        mutableStateOf(PlaygroundLayout.Elk.name)
+    val initialDemo = spec.cases.first()
+    var selectedDemoId by rememberSaveable(spec.id) { mutableStateOf(initialDemo.id) }
+    var draftSource by rememberSaveable(spec.id) { mutableStateOf(initialDemo.source) }
+    var renderedSource by rememberSaveable(spec.id) { mutableStateOf(initialDemo.source) }
+    var selectedLayoutName by rememberSaveable(spec.id) {
+        mutableStateOf(spec.playgroundLayouts.firstOrNull() ?: spec.nativeOptions.layout)
     }
-    var selectedThemeName by rememberSaveable {
-        mutableStateOf(MermaidThemePreset.ReduxColor.name)
+    var selectedThemeName by rememberSaveable(spec.id) {
+        mutableStateOf(spec.initialTheme.name)
     }
-    var selectedRendererName by rememberSaveable {
-        mutableStateOf(PlaygroundRenderer.Native.name)
+    var selectedRendererName by rememberSaveable(spec.id, initialPreview) {
+        mutableStateOf(initialPreview.name)
     }
     val selectedLayout = PlaygroundLayout.entries
-        .firstOrNull { it.name == selectedLayoutName }
+        .firstOrNull { it.option == selectedLayoutName }
         ?: PlaygroundLayout.Elk
     val selectedTheme = MermaidThemePreset.entries
         .firstOrNull { it.name == selectedThemeName }
-        ?: MermaidThemePreset.ReduxColor
-    val selectedRenderer = PlaygroundRenderer.entries
-        .firstOrNull { it.name == selectedRendererName }
-        ?: PlaygroundRenderer.Native
-    val selectedDemo = flowchartDemos
+        ?: spec.initialTheme
+    val selectedRenderer = MermaidDebugPreview.from(selectedRendererName)
+    val selectedDemo = spec.cases
         .firstOrNull { it.id == selectedDemoId }
         ?: initialDemo
     val focusManager = LocalFocusManager.current
@@ -131,7 +121,7 @@ internal fun FlowchartPlaygroundScreen(
                 title = {
                     Column {
                         Text(
-                            text = "Flowchart Playground",
+                            text = "${spec.title} Playground",
                             fontWeight = FontWeight.SemiBold,
                             letterSpacing = 0.sp,
                         )
@@ -157,6 +147,7 @@ internal fun FlowchartPlaygroundScreen(
         },
     ) { contentPadding ->
         PlaygroundContent(
+            spec = spec,
             contentPadding = contentPadding,
             selectedDemo = selectedDemo,
             selectedDemoId = selectedDemoId,
@@ -173,7 +164,7 @@ internal fun FlowchartPlaygroundScreen(
             },
             onDraftChange = { draftSource = it },
             onLayoutSelected = { layout ->
-                selectedLayoutName = layout.name
+                selectedLayoutName = layout.option
             },
             onRendererSelected = { renderer ->
                 selectedRendererName = renderer.name
@@ -194,24 +185,40 @@ internal fun FlowchartPlaygroundScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PlaygroundContent(
+    spec: DiagramDocsSpec,
     contentPadding: PaddingValues,
-    selectedDemo: FlowchartDemo,
+    selectedDemo: DiagramDocsCase,
     selectedDemoId: String,
     draftSource: String,
     renderedSource: String,
     selectedLayout: PlaygroundLayout,
     selectedTheme: MermaidThemePreset,
-    selectedRenderer: PlaygroundRenderer,
+    selectedRenderer: MermaidDebugPreview,
     focusManager: FocusManager,
-    onDemoSelected: (FlowchartDemo) -> Unit,
+    onDemoSelected: (DiagramDocsCase) -> Unit,
     onDraftChange: (String) -> Unit,
     onLayoutSelected: (PlaygroundLayout) -> Unit,
-    onRendererSelected: (PlaygroundRenderer) -> Unit,
+    onRendererSelected: (MermaidDebugPreview) -> Unit,
     onReset: () -> Unit,
     onRender: () -> Unit,
 ) {
-    var examplesExpanded by remember { mutableStateOf(false) }
+    var examplesExpanded by remember(spec.id) { mutableStateOf(false) }
     val hasPendingChanges = draftSource != renderedSource
+    val availableLayouts = remember(spec.playgroundLayouts) {
+        PlaygroundLayout.entries.filter { layout ->
+            layout.option in spec.playgroundLayouts
+        }
+    }
+    val effectiveNativeLayout = if (availableLayouts.isNotEmpty()) {
+        selectedLayout.option
+    } else {
+        spec.nativeOptions.layout
+    }
+    val effectiveOfficialLayout = if (availableLayouts.isNotEmpty()) {
+        selectedLayout.option
+    } else {
+        spec.officialLayout
+    }
     val cjkFontFamily = if (draftSource.cjkFontRanges().isNotEmpty()) {
         rememberMermaidCjkFontFamily()
     } else {
@@ -220,9 +227,9 @@ private fun PlaygroundContent(
     val sourceVisualTransformation = remember(cjkFontFamily) {
         cjkFontFamily?.let(::CjkFontVisualTransformation) ?: VisualTransformation.None
     }
-    val renderOptions = remember(selectedLayout, selectedTheme) {
-        MermaidRenderOptions(
-            layout = selectedLayout.option,
+    val renderOptions = remember(spec.nativeOptions, effectiveNativeLayout, selectedTheme) {
+        spec.nativeOptions.copy(
+            layout = effectiveNativeLayout,
             themeName = selectedTheme.configName,
         )
     }
@@ -255,7 +262,7 @@ private fun PlaygroundContent(
                         .fillMaxWidth(),
                     readOnly = true,
                     singleLine = true,
-                    label = { Text("${flowchartDemos.size} presets") },
+                    label = { Text("${spec.cases.size} presets") },
                     trailingIcon = {
                         ExposedDropdownMenuDefaults.TrailingIcon(
                             expanded = examplesExpanded,
@@ -266,7 +273,7 @@ private fun PlaygroundContent(
                     expanded = examplesExpanded,
                     onDismissRequest = { examplesExpanded = false },
                 ) {
-                    flowchartDemos.forEach { demo ->
+                    spec.cases.forEach { demo ->
                         DropdownMenuItem(
                             text = {
                                 Column {
@@ -296,26 +303,28 @@ private fun PlaygroundContent(
             }
         }
 
-        item {
-            Text(
-                text = "Layout",
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.SemiBold,
-            )
-            Spacer(Modifier.height(8.dp))
-            SingleChoiceSegmentedButtonRow(
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                PlaygroundLayout.entries.forEachIndexed { index, layout ->
-                    SegmentedButton(
-                        selected = selectedLayout == layout,
-                        onClick = { onLayoutSelected(layout) },
-                        shape = SegmentedButtonDefaults.itemShape(
-                            index = index,
-                            count = PlaygroundLayout.entries.size,
-                        ),
-                        label = { Text(layout.label) },
-                    )
+        if (availableLayouts.size > 1) {
+            item {
+                Text(
+                    text = "Layout",
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                Spacer(Modifier.height(8.dp))
+                SingleChoiceSegmentedButtonRow(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    availableLayouts.forEachIndexed { index, layout ->
+                        SegmentedButton(
+                            selected = selectedLayout == layout,
+                            onClick = { onLayoutSelected(layout) },
+                            shape = SegmentedButtonDefaults.itemShape(
+                                index = index,
+                                count = availableLayouts.size,
+                            ),
+                            label = { Text(layout.label) },
+                        )
+                    }
                 }
             }
         }
@@ -385,15 +394,22 @@ private fun PlaygroundContent(
             SingleChoiceSegmentedButtonRow(
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                PlaygroundRenderer.entries.forEachIndexed { index, renderer ->
+                MermaidDebugPreview.entries.forEachIndexed { index, renderer ->
                     SegmentedButton(
                         selected = selectedRenderer == renderer,
                         onClick = { onRendererSelected(renderer) },
                         shape = SegmentedButtonDefaults.itemShape(
                             index = index,
-                            count = PlaygroundRenderer.entries.size,
+                            count = MermaidDebugPreview.entries.size,
                         ),
-                        label = { Text(renderer.label) },
+                        label = {
+                            Text(
+                                when (renderer) {
+                                    MermaidDebugPreview.Native -> "CMP Native"
+                                    MermaidDebugPreview.Official -> "Official JS"
+                                },
+                            )
+                        },
                     )
                 }
             }
@@ -412,16 +428,16 @@ private fun PlaygroundContent(
                 contentAlignment = Alignment.Center,
             ) {
                 when (selectedRenderer) {
-                    PlaygroundRenderer.Native -> MermaidDiagram(
+                    MermaidDebugPreview.Native -> MermaidDiagram(
                         source = renderedSource,
                         modifier = Modifier.fillMaxSize(),
                         theme = MermaidTheme.preset(selectedTheme),
                         options = renderOptions,
-                        contentDescription = "Playground Flowchart native preview",
+                        contentDescription = "${spec.title} playground native preview",
                     )
-                    PlaygroundRenderer.Official -> OfficialMermaidDiagram(
+                    MermaidDebugPreview.Official -> OfficialMermaidDiagram(
                         source = renderedSource,
-                        layout = selectedLayout.option,
+                        layout = effectiveOfficialLayout,
                         themeName = selectedTheme.configName,
                         modifier = Modifier.fillMaxSize(),
                     )

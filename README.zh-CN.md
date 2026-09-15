@@ -129,8 +129,9 @@ Unicode 和相关主题变量。
 
 打开 **[Kotlin/Wasm 在线 Demo](https://swithun-liu.github.io/cmp-mermaid/)**，
 可以浏览语法、渲染 Gallery、切换全部 11 个主题，并比较 CMP Native 与锁定版本
-Mermaid.js 的结果。Flowchart Playground 支持编辑任意源码，并可在 ELK 和
-Dagre 之间切换。
+Mermaid.js 的结果。每种受支持的图表都有可编辑的 Playground，并支持切换
+Native/Official 预览；Flowchart、Class、State 和 Entity Relationship 的
+Playground 还可以在 ELK 与 Dagre 之间切换。
 
 <a href="https://swithun-liu.github.io/cmp-mermaid/">
   <img src="docs/assets/web-playground.png" alt="CMP Mermaid Kotlin Wasm Playground" width="900">

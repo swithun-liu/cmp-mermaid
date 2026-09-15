@@ -16,6 +16,7 @@ internal val ganttDemos = listOf(
             gantt
                 title Product delivery
                 dateFormat YYYY-MM-DD
+                todayMarker off
                 section Build
                 Implement feature :build, 2025-01-06, 4d
                 Review changes :review, after build, 2d

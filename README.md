@@ -134,8 +134,10 @@ theme variables within their documented compatibility boundaries.
 
 Open the **[live Kotlin/Wasm demo](https://swithun-liu.github.io/cmp-mermaid/)**
 to browse syntax, render the galleries, switch all 11 themes, and compare CMP
-Native output with the pinned Mermaid.js reference. The Flowchart Playground
-accepts editable source and can switch between ELK and Dagre.
+Native output with the pinned Mermaid.js reference. Every supported diagram
+type has an editable Playground with Native/Official preview switching.
+Flowchart, Class, State, and Entity Relationship Playgrounds can also switch
+between ELK and Dagre.
 
 <a href="https://swithun-liu.github.io/cmp-mermaid/">
   <img src="docs/assets/web-playground.png" alt="CMP Mermaid Kotlin Wasm Playground" width="900">
