@@ -1,5 +1,6 @@
 <div align="center">
   <h1>CMP Mermaid</h1>
+  <p><strong>English</strong> · <a href="README.zh-CN.md">简体中文</a></p>
   <p><strong>Stable native Mermaid rendering for Kotlin and Compose Multiplatform.</strong></p>
   <p>Mermaid <code>12.0.0</code> semantics translated to Kotlin and rendered with Compose Canvas.</p>
   <p>
