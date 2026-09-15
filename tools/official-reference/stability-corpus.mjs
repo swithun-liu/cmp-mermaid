@@ -1643,4 +1643,136 @@ pie
   "Free space" : 2.3
 `,
   },
+  {
+    id: 'rc_journey_account_onboarding',
+    kind: 'journey',
+    title: 'Account onboarding journey',
+    scenario: 'A customer creates an account, verifies identity, and completes initial setup.',
+    layout: 'dagre',
+    aspectRatio: 2.1,
+    source: String.raw`
+journey
+  title Account onboarding
+  section Discover
+    Compare plans: 4: Customer
+    Read privacy summary: 3: Customer
+  section Register
+    Enter account details: 4: Customer
+    Verify email address: 3: Customer, Identity Service
+    Complete identity check: 2: Customer, Identity Service
+  section Configure
+    Select preferences: 4: Customer
+    Invite team members: 3: Customer, Administrator
+  section Adopt
+    Finish guided setup: 5: Customer
+    Confirm first result: 5: Customer, Support
+`,
+  },
+  {
+    id: 'rc_journey_incident_response',
+    kind: 'journey',
+    title: 'Incident response journey',
+    scenario: 'Operations and engineering coordinate detection, mitigation, and follow-up.',
+    layout: 'dagre',
+    aspectRatio: 2.2,
+    source: String.raw`
+journey
+  title Production incident response
+  section Detect
+    Receive alert: 2: On-call Engineer
+    Confirm customer impact: 2: On-call Engineer, Support
+  section Coordinate
+    Open response channel: 3: Incident Commander
+    Assign investigation tracks: 3: Incident Commander, Service Owner
+    Publish status update: 4: Incident Commander, Communications
+  section Mitigate
+    Identify safe rollback: 2: Service Owner
+    Execute mitigation: 3: Service Owner, On-call Engineer
+    Verify recovery: 4: On-call Engineer, Support
+  section Learn
+    Preserve evidence: 4: Service Owner
+    Complete incident review: 5: Incident Commander, Service Owner
+`,
+  },
+  {
+    id: 'rc_journey_checkout_recovery',
+    kind: 'journey',
+    title: 'Checkout and recovery journey',
+    scenario: 'A shopper completes checkout while payment recovery and support paths remain visible.',
+    layout: 'dagre',
+    aspectRatio: 2.15,
+    source: String.raw`
+journey
+  title Checkout and payment recovery
+  section Prepare
+    Review cart: 5: Shopper
+    Confirm delivery address: 4: Shopper
+    Apply promotion: 3: Shopper, Pricing Service
+  section Pay
+    Choose payment method: 4: Shopper
+    Complete authentication: 2: Shopper, Payment Provider
+    Handle payment retry: 1: Shopper, Payment Provider, Support
+  section Confirm
+    Reserve inventory: 3: Inventory Service
+    Receive order confirmation: 5: Shopper, Order Service
+    Track shipment: 4: Shopper, Carrier
+`,
+  },
+  {
+    id: 'rc_journey_release_coordination',
+    kind: 'journey',
+    title: 'Cross-platform release journey',
+    scenario: 'Engineering, quality, and operations coordinate a guarded cross-platform release.',
+    layout: 'dagre',
+    aspectRatio: 2.25,
+    source: String.raw`
+journey
+  title Cross-platform release
+  section Plan
+    Confirm release scope: 4: Product, Engineering
+    Review compatibility risks: 3: Android, Desktop, iOS, Web
+  section Build
+    Produce signed artifacts: 3: Android, Desktop, iOS, Web
+    Publish release notes: 4: Product, Engineering
+  section Validate
+    Run device matrix: 3: Android, iOS, Quality
+    Run browser matrix: 3: Web, Quality
+    Verify desktop packages: 3: Desktop, Quality
+  section Release
+    Approve rollout: 4: Product, Quality, Operations
+    Monitor production health: 4: Engineering, Operations
+    Confirm global availability: 5: Product, Operations
+`,
+  },
+  {
+    id: 'rc_journey_privileged_access',
+    kind: 'journey',
+    title: 'Privileged access journey',
+    scenario: 'A time-bound access request moves through policy, approval, use, and revocation.',
+    layout: 'dagre',
+    aspectRatio: 2.2,
+    source: String.raw`
+journey
+  accTitle: Privileged access lifecycle
+  accDescr {
+    The journey follows a requester from justification through approval,
+    monitored use, expiry, and access removal.
+  }
+  title Privileged access lifecycle
+  section Request
+    Describe business need: 4: Requester
+    Select least privilege role: 3: Requester, Resource Owner
+  section Evaluate
+    Run policy checks: 4: Policy Engine
+    Review elevated risk: 2: Security Reviewer, Resource Owner
+    Approve time-bound grant: 4: Resource Owner
+  section Use
+    Provision access: 3: Access Service
+    Perform approved work: 4: Requester
+    Monitor privileged activity: 3: Security Operations
+  section Close
+    Expire the grant: 5: Access Service
+    Confirm access removal: 5: Requester, Resource Owner
+`,
+  },
 ];

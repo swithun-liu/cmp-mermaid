@@ -39,6 +39,7 @@ const kotlinGalleryFiles = {
   er: ['ErDemos.kt', 'ErDemo'],
   gantt: ['GanttDemos.kt', 'GanttDemo'],
   pie: ['PieDemos.kt', 'PieDemo'],
+  journey: ['JourneyDemos.kt', 'JourneyDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [

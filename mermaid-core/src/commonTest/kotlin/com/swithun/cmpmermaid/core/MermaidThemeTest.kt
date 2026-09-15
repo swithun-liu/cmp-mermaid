@@ -122,4 +122,25 @@ class MermaidThemeTest {
         )
         assertEquals(MermaidTheme.FlowchartDefault, base)
     }
+
+    @Test
+    fun appliesOnlyJourneyVariablesAcceptedByMermaid12DirectiveSanitizer() {
+        val base = MermaidTheme.preset(MermaidThemePreset.Default)
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = base,
+                values = mapOf(
+                    "fillType0" to "#112233",
+                    "textColor" to "#445566",
+                    "actor0" to "#778899",
+                    "faceColor" to "#aabbcc",
+                ),
+            ),
+        ).value
+
+        assertEquals(SceneColor(0xFF112233), customized.journey.sectionFills.first())
+        assertEquals(SceneColor(0xFF445566), customized.journey.textColor)
+        assertEquals(base.journey.actorColors, customized.journey.actorColors)
+        assertEquals(base.journey.faceColor, customized.journey.faceColor)
+    }
 }

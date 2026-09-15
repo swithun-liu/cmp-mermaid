@@ -145,6 +145,24 @@ export const requiredFeaturesByKind = {
     'metadata',
     'unicode',
   ],
+  journey: [
+    'sections',
+    'scores',
+    'decimal-scores',
+    'single-actor',
+    'multi-actor',
+    'actor-order',
+    'actor-reuse',
+    'actorless-tasks',
+    'title',
+    'frontmatter-title',
+    'accessibility',
+    'comments',
+    'configuration',
+    'theme-colors',
+    'long-task-text',
+    'long-actor-text',
+  ],
 };
 
 const flowchartCases = [
@@ -1536,6 +1554,219 @@ pie
   }),
 ];
 
+const journeyCases = [
+  ...expandTemplate({
+    kind: 'journey',
+    id: 'multi_stage',
+    layout: 'dagre',
+    aspectRatio: 2.05,
+    features: [
+      'sections',
+      'scores',
+      'single-actor',
+      'multi-actor',
+      'actor-reuse',
+      'title',
+    ],
+    variants: [
+      {
+        slug: 'support',
+        title: 'Customer support journey',
+        scenario: 'A customer and support team move from problem reporting to resolution.',
+        diagramTitle: 'Customer support resolution',
+        actor: 'Customer',
+        collaborator: 'Support Specialist',
+        sections: [
+          ['Report', [['Describe the problem', 3], ['Attach evidence', 2]]],
+          ['Investigate', [['Reproduce the issue', 3], ['Explain the cause', 4]]],
+          ['Resolve', [['Verify the fix', 5], ['Confirm closure', 5]]],
+        ],
+      },
+      {
+        slug: 'procurement',
+        title: 'Procurement approval journey',
+        scenario: 'A requester and procurement reviewer coordinate a purchase approval.',
+        diagramTitle: 'Procurement approval',
+        actor: 'Requester',
+        collaborator: 'Procurement Reviewer',
+        sections: [
+          ['Prepare', [['Define requirements', 4], ['Collect quotations', 3]]],
+          ['Review', [['Evaluate suppliers', 2], ['Approve budget', 3]]],
+          ['Complete', [['Issue purchase order', 4], ['Confirm delivery', 5]]],
+        ],
+      },
+    ],
+    source: (value) => String.raw`
+journey
+  title ${value.diagramTitle}
+${value.sections.map(([section, tasks], sectionIndex) => (
+    `  section ${section}\n${tasks.map(([task, score], taskIndex) => {
+      const actors = taskIndex === 0 && sectionIndex !== 0
+        ? `${value.actor}, ${value.collaborator}`
+        : value.actor;
+      return `    ${task}: ${score}: ${actors}`;
+    }).join('\n')}`
+  )).join('\n')}
+`,
+    expectedTexts: (value) => [value.diagramTitle, value.sections.at(-1)[1].at(-1)[0]],
+  }),
+  ...expandTemplate({
+    kind: 'journey',
+    id: 'metadata_edges',
+    layout: 'dagre',
+    aspectRatio: 1.85,
+    features: [
+      'decimal-scores',
+      'actorless-tasks',
+      'frontmatter-title',
+      'accessibility',
+      'comments',
+    ],
+    variants: [
+      {
+        slug: 'automation',
+        title: 'Automation metadata journey',
+        scenario: 'Automated and human tasks retain metadata, comments, and decimal scores.',
+        diagramTitle: 'Automation evidence journey',
+        accessibilityTitle: 'Automation workflow satisfaction',
+        actor: 'Operator',
+        first: 'Collect scheduled inputs',
+        second: 'Review generated evidence',
+        third: 'Approve automated outcome',
+      },
+      {
+        slug: 'recovery',
+        title: 'Recovery metadata journey',
+        scenario: 'Recovery tasks retain metadata, comments, and decimal scores.',
+        diagramTitle: 'Recovery evidence journey',
+        accessibilityTitle: 'Recovery workflow satisfaction',
+        actor: 'Reliability Engineer',
+        first: 'Detect failed workload',
+        second: 'Review recovery evidence',
+        third: 'Confirm restored service',
+      },
+    ],
+    source: (value) => String.raw`
+---
+title: ${value.diagramTitle}
+---
+journey
+  accTitle: ${value.accessibilityTitle}
+  accDescr: Journey with automatic and operator-owned stages
+  %% Automatic tasks intentionally omit an actor.
+  section Observe
+    ${value.first}: 2.5
+  section Decide
+    ${value.second}: 3.5: ${value.actor}
+    %% The final score exercises a fractional face position.
+    ${value.third}: 4.5: ${value.actor}
+`,
+    expectedTexts: (value) => [value.diagramTitle, value.third],
+  }),
+  ...expandTemplate({
+    kind: 'journey',
+    id: 'configured_text',
+    layout: 'dagre',
+    aspectRatio: 2.0,
+    features: ['configuration', 'long-task-text', 'long-actor-text'],
+    variants: [
+      {
+        slug: 'compliance',
+        title: 'Configured compliance journey',
+        scenario: 'Long compliance labels exercise measured actor width and configured task boxes.',
+        diagramTitle: 'Compliance evidence review',
+        actor: 'Regional Compliance Review Coordination Team',
+        tasks: [
+          'Inspect policy evidence for every active deployment region',
+          'Resolve missing attestations with the responsible service owner',
+          'Publish the approved compliance decision record',
+        ],
+      },
+      {
+        slug: 'continuity',
+        title: 'Configured continuity journey',
+        scenario: 'Long continuity labels exercise measured actor width and configured task boxes.',
+        diagramTitle: 'Business continuity validation',
+        actor: 'Global Business Continuity Validation Team',
+        tasks: [
+          'Collect recovery objectives from every critical product area',
+          'Validate regional failover evidence against agreed objectives',
+          'Approve the consolidated continuity readiness report',
+        ],
+      },
+    ],
+    source: (value) => String.raw`
+---
+config:
+  journey:
+    leftMargin: 170
+    maxLabelWidth: 210
+    width: 190
+    height: 62
+    taskMargin: 65
+    taskFontSize: 13
+---
+journey
+  title ${value.diagramTitle}
+  section Evidence
+    ${value.tasks[0]}: 3: ${value.actor}
+    ${value.tasks[1]}: 2: ${value.actor}
+  section Decision
+    ${value.tasks[2]}: 5: ${value.actor}
+`,
+    expectedTexts: (value) => [value.diagramTitle, value.tasks[2]],
+  }),
+  ...expandTemplate({
+    kind: 'journey',
+    id: 'theme_actor_order',
+    layout: 'dagre',
+    aspectRatio: 1.95,
+    features: ['theme-colors', 'actor-order', 'multi-actor'],
+    variants: [
+      {
+        slug: 'release',
+        title: 'Themed release actor order',
+        scenario: 'A custom section palette retains Mermaid actor sorting and task marker order.',
+        diagramTitle: 'Themed release coordination',
+        sectionA: 'Prepare',
+        sectionB: 'Release',
+        taskA: 'Review candidate',
+        taskB: 'Approve rollout',
+        actorsA: 'Web Owner, Android Owner, Desktop Owner',
+        actorsB: 'Quality Lead, Android Owner, Web Owner',
+      },
+      {
+        slug: 'migration',
+        title: 'Themed migration actor order',
+        scenario: 'A custom section palette retains Mermaid actor sorting and task marker order.',
+        diagramTitle: 'Themed migration coordination',
+        sectionA: 'Inventory',
+        sectionB: 'Migrate',
+        taskA: 'Confirm dependencies',
+        taskB: 'Approve cutover',
+        actorsA: 'Storage Owner, API Owner, Client Owner',
+        actorsB: 'Reliability Lead, API Owner, Storage Owner',
+      },
+    ],
+    source: (value) => String.raw`
+---
+config:
+  themeVariables:
+    fillType0: "#e0f2fe"
+    fillType1: "#dcfce7"
+    textColor: "#1f2937"
+---
+journey
+  title ${value.diagramTitle}
+  section ${value.sectionA}
+    ${value.taskA}: 3: ${value.actorsA}
+  section ${value.sectionB}
+    ${value.taskB}: 5: ${value.actorsB}
+`,
+    expectedTexts: (value) => [value.diagramTitle, value.taskB],
+  }),
+];
+
 export const conformanceCases = [
   ...flowchartCases,
   ...xyChartCases,
@@ -1545,6 +1776,7 @@ export const conformanceCases = [
   ...erCases,
   ...ganttCases,
   ...pieCases,
+  ...journeyCases,
 ];
 
 export const cases = [

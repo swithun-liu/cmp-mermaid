@@ -237,6 +237,7 @@ internal object MermaidPreprocessor {
         val stateDiagram = map.map("state")
         val erDiagram = map.map("er")
         val gantt = map.map("gantt")
+        val journey = map.map("journey")
         val pie = map.map("pie")
         val xyChart = map.map("xyChart")
         val xyXAxis = xyChart?.map("xAxis")
@@ -325,6 +326,59 @@ internal object MermaidPreprocessor {
                     )
                     null
                 }
+        }
+
+        fun color(
+            owner: YamlMap?,
+            key: String,
+            path: String,
+            emptyAsNull: Boolean = false,
+        ): SceneColor? {
+            val value = string(owner, key, path) ?: return null
+            if (emptyAsNull && value.isBlank()) {
+                return null
+            }
+            return CssColorParser.parse(value)
+                ?: run {
+                    readError = MermaidError.Configuration(
+                        "Mermaid $sourceName '$path' has invalid color '$value'",
+                    )
+                    null
+                }
+        }
+
+        fun colorList(
+            owner: YamlMap?,
+            key: String,
+            path: String,
+        ): List<SceneColor>? {
+            val node = owner?.node(key) ?: return null
+            val list = node as? YamlList
+            if (list == null) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must be a color array",
+                )
+                return null
+            }
+            if (list.items.isEmpty()) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must not be empty",
+                )
+                return null
+            }
+            val result = mutableListOf<SceneColor>()
+            list.items.forEachIndexed { index, item ->
+                val raw = (item as? YamlScalar)?.content
+                val parsed = raw?.let(CssColorParser::parse)
+                if (parsed == null) {
+                    readError = MermaidError.Configuration(
+                        "Mermaid $sourceName '$path' has invalid color at index $index",
+                    )
+                    return null
+                }
+                result += parsed
+            }
+            return result
         }
 
         fun appearanceString(
@@ -532,6 +586,93 @@ internal object MermaidPreprocessor {
             ),
         )
         val ganttUseWidth = float(gantt, "useWidth", "gantt.useWidth")
+        val journeyDiagramMarginX =
+            float(journey, "diagramMarginX", "journey.diagramMarginX")
+        val journeyDiagramMarginY =
+            float(journey, "diagramMarginY", "journey.diagramMarginY")
+        val journeyLeftMargin = float(journey, "leftMargin", "journey.leftMargin")
+        val journeyMaxLabelWidth =
+            float(journey, "maxLabelWidth", "journey.maxLabelWidth")
+        val journeyWidth = float(journey, "width", "journey.width")
+        val journeyHeight = float(journey, "height", "journey.height")
+        val journeyBoxMargin = float(journey, "boxMargin", "journey.boxMargin")
+        val journeyBoxTextMargin =
+            float(journey, "boxTextMargin", "journey.boxTextMargin")
+        val journeyNoteMargin = float(journey, "noteMargin", "journey.noteMargin")
+        val journeyMessageMargin =
+            float(journey, "messageMargin", "journey.messageMargin")
+        val journeyMessageAlign =
+            string(journey, "messageAlign", "journey.messageAlign")
+        val journeyBottomMarginAdj =
+            float(journey, "bottomMarginAdj", "journey.bottomMarginAdj")
+        val journeyRightAngles =
+            boolean(journey, "rightAngles", "journey.rightAngles")
+        val journeyTaskFontSize =
+            float(journey, "taskFontSize", "journey.taskFontSize")
+        val journeyTaskFontFamily =
+            string(journey, "taskFontFamily", "journey.taskFontFamily")
+        val journeyTaskMargin = float(journey, "taskMargin", "journey.taskMargin")
+        val journeyActivationWidth =
+            float(journey, "activationWidth", "journey.activationWidth")
+        val journeyTextPlacement = enumString(
+            journey,
+            "textPlacement",
+            "journey.textPlacement",
+            setOf("fo", "old", "tspan"),
+        )
+        val journeyActorColours =
+            colorList(journey, "actorColours", "journey.actorColours")
+        val journeySectionFills =
+            colorList(journey, "sectionFills", "journey.sectionFills")
+        val journeySectionColours =
+            colorList(journey, "sectionColours", "journey.sectionColours")
+        val journeyTitleColor = color(
+            journey,
+            "titleColor",
+            "journey.titleColor",
+            emptyAsNull = true,
+        )
+        val journeyTitleFontFamily =
+            string(journey, "titleFontFamily", "journey.titleFontFamily")
+        val journeyTitleFontSize =
+            string(journey, "titleFontSize", "journey.titleFontSize")
+        val journeyPositiveValues = listOf(
+            "journey.maxLabelWidth" to journeyMaxLabelWidth,
+            "journey.width" to journeyWidth,
+            "journey.height" to journeyHeight,
+            "journey.taskFontSize" to journeyTaskFontSize,
+        )
+        journeyPositiveValues.firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value <= 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be positive",
+            )
+        }
+        val journeyNonNegativeValues = listOf(
+            "journey.diagramMarginX" to journeyDiagramMarginX,
+            "journey.diagramMarginY" to journeyDiagramMarginY,
+            "journey.leftMargin" to journeyLeftMargin,
+            "journey.boxMargin" to journeyBoxMargin,
+            "journey.boxTextMargin" to journeyBoxTextMargin,
+            "journey.noteMargin" to journeyNoteMargin,
+            "journey.messageMargin" to journeyMessageMargin,
+            "journey.bottomMarginAdj" to journeyBottomMarginAdj,
+            "journey.taskMargin" to journeyTaskMargin,
+            "journey.activationWidth" to journeyActivationWidth,
+        )
+        journeyNonNegativeValues.firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
+            )
+        }
+        if (journeyTitleFontSize != null && journeyTitleFontSize.isBlank()) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'journey.titleFontSize' must not be blank",
+            )
+        }
         val pieTextPosition = float(pie, "textPosition", "pie.textPosition")
         val pieDonutHole = float(pie, "donutHole", "pie.donutHole")
         val pieLegendPosition = enumString(
@@ -801,6 +942,34 @@ internal object MermaidPreprocessor {
                 ganttDisplayMode = ganttDisplayMode,
                 ganttWeekday = ganttWeekday,
                 ganttUseWidth = ganttUseWidth,
+                journey = journey?.let {
+                    MermaidJourneyConfigOverride(
+                        diagramMarginX = journeyDiagramMarginX,
+                        diagramMarginY = journeyDiagramMarginY,
+                        leftMargin = journeyLeftMargin,
+                        maxLabelWidth = journeyMaxLabelWidth,
+                        width = journeyWidth,
+                        height = journeyHeight,
+                        boxMargin = journeyBoxMargin,
+                        boxTextMargin = journeyBoxTextMargin,
+                        noteMargin = journeyNoteMargin,
+                        messageMargin = journeyMessageMargin,
+                        messageAlign = journeyMessageAlign,
+                        bottomMarginAdj = journeyBottomMarginAdj,
+                        rightAngles = journeyRightAngles,
+                        taskFontSize = journeyTaskFontSize,
+                        taskFontFamily = journeyTaskFontFamily,
+                        taskMargin = journeyTaskMargin,
+                        activationWidth = journeyActivationWidth,
+                        textPlacement = journeyTextPlacement,
+                        actorColours = journeyActorColours,
+                        sectionFills = journeySectionFills,
+                        sectionColours = journeySectionColours,
+                        titleColor = journeyTitleColor,
+                        titleFontFamily = journeyTitleFontFamily,
+                        titleFontSize = journeyTitleFontSize,
+                    )
+                },
                 pieTextPosition = pieTextPosition,
                 pieDonutHole = pieDonutHole,
                 pieLegendPosition = pieLegendPosition,
@@ -1007,6 +1176,7 @@ internal data class MermaidConfigOverride(
     val ganttDisplayMode: String? = null,
     val ganttWeekday: String? = null,
     val ganttUseWidth: Float? = null,
+    val journey: MermaidJourneyConfigOverride? = null,
     val pieTextPosition: Float? = null,
     val pieDonutHole: Float? = null,
     val pieLegendPosition: String? = null,
@@ -1073,6 +1243,10 @@ internal data class MermaidConfigOverride(
         ganttDisplayMode = overrides.ganttDisplayMode ?: ganttDisplayMode,
         ganttWeekday = overrides.ganttWeekday ?: ganttWeekday,
         ganttUseWidth = overrides.ganttUseWidth ?: ganttUseWidth,
+        journey = when {
+            overrides.journey != null -> journey?.merge(overrides.journey) ?: overrides.journey
+            else -> journey
+        },
         pieTextPosition = overrides.pieTextPosition ?: pieTextPosition,
         pieDonutHole = overrides.pieDonutHole ?: pieDonutHole,
         pieLegendPosition = overrides.pieLegendPosition ?: pieLegendPosition,
@@ -1171,6 +1345,7 @@ internal data class MermaidConfigOverride(
                 ganttDisplayMode = ganttDisplayMode ?: options.ganttDisplayMode,
                 ganttWeekday = ganttWeekday ?: options.ganttWeekday,
                 ganttUseWidth = ganttUseWidth ?: options.ganttUseWidth,
+                journey = journey?.applyTo(options.journey) ?: options.journey,
                 pieTextPosition = pieTextPosition ?: options.pieTextPosition,
                 pieDonutHole = pieDonutHole ?: options.pieDonutHole,
                 pieLegendPosition = pieLegendPosition ?: options.pieLegendPosition,
@@ -1197,6 +1372,89 @@ internal data class MermaidConfigOverride(
         )
     }
 }
+
+internal data class MermaidJourneyConfigOverride(
+    val diagramMarginX: Float? = null,
+    val diagramMarginY: Float? = null,
+    val leftMargin: Float? = null,
+    val maxLabelWidth: Float? = null,
+    val width: Float? = null,
+    val height: Float? = null,
+    val boxMargin: Float? = null,
+    val boxTextMargin: Float? = null,
+    val noteMargin: Float? = null,
+    val messageMargin: Float? = null,
+    val messageAlign: String? = null,
+    val bottomMarginAdj: Float? = null,
+    val rightAngles: Boolean? = null,
+    val taskFontSize: Float? = null,
+    val taskFontFamily: String? = null,
+    val taskMargin: Float? = null,
+    val activationWidth: Float? = null,
+    val textPlacement: String? = null,
+    val actorColours: List<SceneColor>? = null,
+    val sectionFills: List<SceneColor>? = null,
+    val sectionColours: List<SceneColor>? = null,
+    val titleColor: SceneColor? = null,
+    val titleFontFamily: String? = null,
+    val titleFontSize: String? = null,
+) {
+    fun merge(overrides: MermaidJourneyConfigOverride): MermaidJourneyConfigOverride =
+        MermaidJourneyConfigOverride(
+            diagramMarginX = overrides.diagramMarginX ?: diagramMarginX,
+            diagramMarginY = overrides.diagramMarginY ?: diagramMarginY,
+            leftMargin = overrides.leftMargin ?: leftMargin,
+            maxLabelWidth = overrides.maxLabelWidth ?: maxLabelWidth,
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            boxMargin = overrides.boxMargin ?: boxMargin,
+            boxTextMargin = overrides.boxTextMargin ?: boxTextMargin,
+            noteMargin = overrides.noteMargin ?: noteMargin,
+            messageMargin = overrides.messageMargin ?: messageMargin,
+            messageAlign = overrides.messageAlign ?: messageAlign,
+            bottomMarginAdj = overrides.bottomMarginAdj ?: bottomMarginAdj,
+            rightAngles = overrides.rightAngles ?: rightAngles,
+            taskFontSize = overrides.taskFontSize ?: taskFontSize,
+            taskFontFamily = overrides.taskFontFamily ?: taskFontFamily,
+            taskMargin = overrides.taskMargin ?: taskMargin,
+            activationWidth = overrides.activationWidth ?: activationWidth,
+            textPlacement = overrides.textPlacement ?: textPlacement,
+            actorColours = overrides.actorColours ?: actorColours,
+            sectionFills = overrides.sectionFills ?: sectionFills,
+            sectionColours = overrides.sectionColours ?: sectionColours,
+            titleColor = overrides.titleColor ?: titleColor,
+            titleFontFamily = overrides.titleFontFamily ?: titleFontFamily,
+            titleFontSize = overrides.titleFontSize ?: titleFontSize,
+        )
+
+    fun applyTo(options: MermaidJourneyOptions): MermaidJourneyOptions = options.copy(
+        diagramMarginX = diagramMarginX ?: options.diagramMarginX,
+        diagramMarginY = diagramMarginY ?: options.diagramMarginY,
+        leftMargin = leftMargin ?: options.leftMargin,
+        maxLabelWidth = maxLabelWidth ?: options.maxLabelWidth,
+        width = width ?: options.width,
+        height = height ?: options.height,
+        boxMargin = boxMargin ?: options.boxMargin,
+        boxTextMargin = boxTextMargin ?: options.boxTextMargin,
+        noteMargin = noteMargin ?: options.noteMargin,
+        messageMargin = messageMargin ?: options.messageMargin,
+        messageAlign = messageAlign ?: options.messageAlign,
+        bottomMarginAdj = bottomMarginAdj ?: options.bottomMarginAdj,
+        rightAngles = rightAngles ?: options.rightAngles,
+        taskFontSize = taskFontSize ?: options.taskFontSize,
+        taskFontFamily = taskFontFamily ?: options.taskFontFamily,
+        taskMargin = taskMargin ?: options.taskMargin,
+        activationWidth = activationWidth ?: options.activationWidth,
+        textPlacement = textPlacement ?: options.textPlacement,
+        actorColours = actorColours ?: options.actorColours,
+        sectionFills = sectionFills ?: options.sectionFills,
+        sectionColours = sectionColours ?: options.sectionColours,
+        titleColor = titleColor ?: options.titleColor,
+        titleFontFamily = titleFontFamily ?: options.titleFontFamily,
+        titleFontSize = titleFontSize ?: options.titleFontSize,
+    )
+}
+
 internal data class MermaidXyChartConfigOverride(
     val width: Float? = null,
     val height: Float? = null,

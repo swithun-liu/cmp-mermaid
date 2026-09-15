@@ -1740,6 +1740,148 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_journey_account_onboarding",
+        diagramId = "journey",
+        title = "Account onboarding journey",
+        scenario = "A customer creates an account, verifies identity, and completes initial setup.",
+        layout = "dagre",
+        initialAspectRatio = 2.1f,
+        source = """
+            journey
+              title Account onboarding
+              section Discover
+                Compare plans: 4: Customer
+                Read privacy summary: 3: Customer
+              section Register
+                Enter account details: 4: Customer
+                Verify email address: 3: Customer, Identity Service
+                Complete identity check: 2: Customer, Identity Service
+              section Configure
+                Select preferences: 4: Customer
+                Invite team members: 3: Customer, Administrator
+              section Adopt
+                Finish guided setup: 5: Customer
+                Confirm first result: 5: Customer, Support
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_incident_response",
+        diagramId = "journey",
+        title = "Incident response journey",
+        scenario = "Operations and engineering coordinate detection, mitigation, and follow-up.",
+        layout = "dagre",
+        initialAspectRatio = 2.2f,
+        source = """
+            journey
+              title Production incident response
+              section Detect
+                Receive alert: 2: On-call Engineer
+                Confirm customer impact: 2: On-call Engineer, Support
+              section Coordinate
+                Open response channel: 3: Incident Commander
+                Assign investigation tracks: 3: Incident Commander, Service Owner
+                Publish status update: 4: Incident Commander, Communications
+              section Mitigate
+                Identify safe rollback: 2: Service Owner
+                Execute mitigation: 3: Service Owner, On-call Engineer
+                Verify recovery: 4: On-call Engineer, Support
+              section Learn
+                Preserve evidence: 4: Service Owner
+                Complete incident review: 5: Incident Commander, Service Owner
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_checkout_recovery",
+        diagramId = "journey",
+        title = "Checkout and recovery journey",
+        scenario = "A shopper completes checkout while payment recovery and support paths remain visible.",
+        layout = "dagre",
+        initialAspectRatio = 2.15f,
+        source = """
+            journey
+              title Checkout and payment recovery
+              section Prepare
+                Review cart: 5: Shopper
+                Confirm delivery address: 4: Shopper
+                Apply promotion: 3: Shopper, Pricing Service
+              section Pay
+                Choose payment method: 4: Shopper
+                Complete authentication: 2: Shopper, Payment Provider
+                Handle payment retry: 1: Shopper, Payment Provider, Support
+              section Confirm
+                Reserve inventory: 3: Inventory Service
+                Receive order confirmation: 5: Shopper, Order Service
+                Track shipment: 4: Shopper, Carrier
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_release_coordination",
+        diagramId = "journey",
+        title = "Cross-platform release journey",
+        scenario = "Engineering, quality, and operations coordinate a guarded cross-platform release.",
+        layout = "dagre",
+        initialAspectRatio = 2.25f,
+        source = """
+            journey
+              title Cross-platform release
+              section Plan
+                Confirm release scope: 4: Product, Engineering
+                Review compatibility risks: 3: Android, Desktop, iOS, Web
+              section Build
+                Produce signed artifacts: 3: Android, Desktop, iOS, Web
+                Publish release notes: 4: Product, Engineering
+              section Validate
+                Run device matrix: 3: Android, iOS, Quality
+                Run browser matrix: 3: Web, Quality
+                Verify desktop packages: 3: Desktop, Quality
+              section Release
+                Approve rollout: 4: Product, Quality, Operations
+                Monitor production health: 4: Engineering, Operations
+                Confirm global availability: 5: Product, Operations
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_privileged_access",
+        diagramId = "journey",
+        title = "Privileged access journey",
+        scenario = "A time-bound access request moves through policy, approval, use, and revocation.",
+        layout = "dagre",
+        initialAspectRatio = 2.2f,
+        source = """
+            journey
+              accTitle: Privileged access lifecycle
+              accDescr {
+                The journey follows a requester from justification through approval,
+                monitored use, expiry, and access removal.
+              }
+              title Privileged access lifecycle
+              section Request
+                Describe business need: 4: Requester
+                Select least privilege role: 3: Requester, Resource Owner
+              section Evaluate
+                Run policy checks: 4: Policy Engine
+                Review elevated risk: 2: Security Reviewer, Resource Owner
+                Approve time-bound grant: 4: Resource Owner
+              section Use
+                Provision access: 3: Access Service
+                Perform approved work: 4: Requester
+                Monitor privileged activity: 3: Security Operations
+              section Close
+                Expire the grant: 5: Access Service
+                Confirm access removal: 5: Requester, Resource Owner
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -3469,6 +3611,148 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_journey_account_onboarding",
+        diagramId = "journey",
+        title = "Account onboarding journey",
+        scenario = "A customer creates an account, verifies identity, and completes initial setup.",
+        layout = "dagre",
+        initialAspectRatio = 2.1f,
+        source = """
+            journey
+              title Account onboarding
+              section Discover
+                Compare plans: 4: Customer
+                Read privacy summary: 3: Customer
+              section Register
+                Enter account details: 4: Customer
+                Verify email address: 3: Customer, Identity Service
+                Complete identity check: 2: Customer, Identity Service
+              section Configure
+                Select preferences: 4: Customer
+                Invite team members: 3: Customer, Administrator
+              section Adopt
+                Finish guided setup: 5: Customer
+                Confirm first result: 5: Customer, Support
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_incident_response",
+        diagramId = "journey",
+        title = "Incident response journey",
+        scenario = "Operations and engineering coordinate detection, mitigation, and follow-up.",
+        layout = "dagre",
+        initialAspectRatio = 2.2f,
+        source = """
+            journey
+              title Production incident response
+              section Detect
+                Receive alert: 2: On-call Engineer
+                Confirm customer impact: 2: On-call Engineer, Support
+              section Coordinate
+                Open response channel: 3: Incident Commander
+                Assign investigation tracks: 3: Incident Commander, Service Owner
+                Publish status update: 4: Incident Commander, Communications
+              section Mitigate
+                Identify safe rollback: 2: Service Owner
+                Execute mitigation: 3: Service Owner, On-call Engineer
+                Verify recovery: 4: On-call Engineer, Support
+              section Learn
+                Preserve evidence: 4: Service Owner
+                Complete incident review: 5: Incident Commander, Service Owner
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_checkout_recovery",
+        diagramId = "journey",
+        title = "Checkout and recovery journey",
+        scenario = "A shopper completes checkout while payment recovery and support paths remain visible.",
+        layout = "dagre",
+        initialAspectRatio = 2.15f,
+        source = """
+            journey
+              title Checkout and payment recovery
+              section Prepare
+                Review cart: 5: Shopper
+                Confirm delivery address: 4: Shopper
+                Apply promotion: 3: Shopper, Pricing Service
+              section Pay
+                Choose payment method: 4: Shopper
+                Complete authentication: 2: Shopper, Payment Provider
+                Handle payment retry: 1: Shopper, Payment Provider, Support
+              section Confirm
+                Reserve inventory: 3: Inventory Service
+                Receive order confirmation: 5: Shopper, Order Service
+                Track shipment: 4: Shopper, Carrier
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_release_coordination",
+        diagramId = "journey",
+        title = "Cross-platform release journey",
+        scenario = "Engineering, quality, and operations coordinate a guarded cross-platform release.",
+        layout = "dagre",
+        initialAspectRatio = 2.25f,
+        source = """
+            journey
+              title Cross-platform release
+              section Plan
+                Confirm release scope: 4: Product, Engineering
+                Review compatibility risks: 3: Android, Desktop, iOS, Web
+              section Build
+                Produce signed artifacts: 3: Android, Desktop, iOS, Web
+                Publish release notes: 4: Product, Engineering
+              section Validate
+                Run device matrix: 3: Android, iOS, Quality
+                Run browser matrix: 3: Web, Quality
+                Verify desktop packages: 3: Desktop, Quality
+              section Release
+                Approve rollout: 4: Product, Quality, Operations
+                Monitor production health: 4: Engineering, Operations
+                Confirm global availability: 5: Product, Operations
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_journey_privileged_access",
+        diagramId = "journey",
+        title = "Privileged access journey",
+        scenario = "A time-bound access request moves through policy, approval, use, and revocation.",
+        layout = "dagre",
+        initialAspectRatio = 2.2f,
+        source = """
+            journey
+              accTitle: Privileged access lifecycle
+              accDescr {
+                The journey follows a requester from justification through approval,
+                monitored use, expiry, and access removal.
+              }
+              title Privileged access lifecycle
+              section Request
+                Describe business need: 4: Requester
+                Select least privilege role: 3: Requester, Resource Owner
+              section Evaluate
+                Run policy checks: 4: Policy Engine
+                Review elevated risk: 2: Security Reviewer, Resource Owner
+                Approve time-bound grant: 4: Resource Owner
+              section Use
+                Provision access: 3: Access Service
+                Perform approved work: 4: Requester
+                Monitor privileged activity: 3: Security Operations
+              section Close
+                Expire the grant: 5: Access Service
+                Confirm access removal: 5: Requester, Resource Owner
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "prod_flowchart_orchestration_identity",
         diagramId = "flowchart",
         title = "Identity verification orchestration",
@@ -5042,6 +5326,210 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Service ownership", "H"),
         features = setOf("legend-right", "legend-transforms", "theme-colors", "many-slices", "metadata"),
     ),
+    StabilityCorpusCase(
+        id = "prod_journey_multi_stage_support",
+        diagramId = "journey",
+        title = "Customer support journey",
+        scenario = "A customer and support team move from problem reporting to resolution.",
+        layout = "dagre",
+        initialAspectRatio = 2.05f,
+        source = """
+            journey
+              title Customer support resolution
+              section Report
+                Describe the problem: 3: Customer
+                Attach evidence: 2: Customer
+              section Investigate
+                Reproduce the issue: 3: Customer, Support Specialist
+                Explain the cause: 4: Customer
+              section Resolve
+                Verify the fix: 5: Customer, Support Specialist
+                Confirm closure: 5: Customer
+        """.trimIndent(),
+        expectedTexts = listOf("Customer support resolution", "Confirm closure"),
+        features = setOf("sections", "scores", "single-actor", "multi-actor", "actor-reuse", "title"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_journey_multi_stage_procurement",
+        diagramId = "journey",
+        title = "Procurement approval journey",
+        scenario = "A requester and procurement reviewer coordinate a purchase approval.",
+        layout = "dagre",
+        initialAspectRatio = 2.05f,
+        source = """
+            journey
+              title Procurement approval
+              section Prepare
+                Define requirements: 4: Requester
+                Collect quotations: 3: Requester
+              section Review
+                Evaluate suppliers: 2: Requester, Procurement Reviewer
+                Approve budget: 3: Requester
+              section Complete
+                Issue purchase order: 4: Requester, Procurement Reviewer
+                Confirm delivery: 5: Requester
+        """.trimIndent(),
+        expectedTexts = listOf("Procurement approval", "Confirm delivery"),
+        features = setOf("sections", "scores", "single-actor", "multi-actor", "actor-reuse", "title"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_journey_metadata_edges_automation",
+        diagramId = "journey",
+        title = "Automation metadata journey",
+        scenario = "Automated and human tasks retain metadata, comments, and decimal scores.",
+        layout = "dagre",
+        initialAspectRatio = 1.85f,
+        source = """
+            ---
+            title: Automation evidence journey
+            ---
+            journey
+              accTitle: Automation workflow satisfaction
+              accDescr: Journey with automatic and operator-owned stages
+              %% Automatic tasks intentionally omit an actor.
+              section Observe
+                Collect scheduled inputs: 2.5
+              section Decide
+                Review generated evidence: 3.5: Operator
+                %% The final score exercises a fractional face position.
+                Approve automated outcome: 4.5: Operator
+        """.trimIndent(),
+        expectedTexts = listOf("Automation evidence journey", "Approve automated outcome"),
+        features = setOf("decimal-scores", "actorless-tasks", "frontmatter-title", "accessibility", "comments"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_journey_metadata_edges_recovery",
+        diagramId = "journey",
+        title = "Recovery metadata journey",
+        scenario = "Recovery tasks retain metadata, comments, and decimal scores.",
+        layout = "dagre",
+        initialAspectRatio = 1.85f,
+        source = """
+            ---
+            title: Recovery evidence journey
+            ---
+            journey
+              accTitle: Recovery workflow satisfaction
+              accDescr: Journey with automatic and operator-owned stages
+              %% Automatic tasks intentionally omit an actor.
+              section Observe
+                Detect failed workload: 2.5
+              section Decide
+                Review recovery evidence: 3.5: Reliability Engineer
+                %% The final score exercises a fractional face position.
+                Confirm restored service: 4.5: Reliability Engineer
+        """.trimIndent(),
+        expectedTexts = listOf("Recovery evidence journey", "Confirm restored service"),
+        features = setOf("decimal-scores", "actorless-tasks", "frontmatter-title", "accessibility", "comments"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_journey_configured_text_compliance",
+        diagramId = "journey",
+        title = "Configured compliance journey",
+        scenario = "Long compliance labels exercise measured actor width and configured task boxes.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ---
+            config:
+              journey:
+                leftMargin: 170
+                maxLabelWidth: 210
+                width: 190
+                height: 62
+                taskMargin: 65
+                taskFontSize: 13
+            ---
+            journey
+              title Compliance evidence review
+              section Evidence
+                Inspect policy evidence for every active deployment region: 3: Regional Compliance Review Coordination Team
+                Resolve missing attestations with the responsible service owner: 2: Regional Compliance Review Coordination Team
+              section Decision
+                Publish the approved compliance decision record: 5: Regional Compliance Review Coordination Team
+        """.trimIndent(),
+        expectedTexts = listOf("Compliance evidence review", "Publish the approved compliance decision record"),
+        features = setOf("configuration", "long-task-text", "long-actor-text"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_journey_configured_text_continuity",
+        diagramId = "journey",
+        title = "Configured continuity journey",
+        scenario = "Long continuity labels exercise measured actor width and configured task boxes.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ---
+            config:
+              journey:
+                leftMargin: 170
+                maxLabelWidth: 210
+                width: 190
+                height: 62
+                taskMargin: 65
+                taskFontSize: 13
+            ---
+            journey
+              title Business continuity validation
+              section Evidence
+                Collect recovery objectives from every critical product area: 3: Global Business Continuity Validation Team
+                Validate regional failover evidence against agreed objectives: 2: Global Business Continuity Validation Team
+              section Decision
+                Approve the consolidated continuity readiness report: 5: Global Business Continuity Validation Team
+        """.trimIndent(),
+        expectedTexts = listOf("Business continuity validation", "Approve the consolidated continuity readiness report"),
+        features = setOf("configuration", "long-task-text", "long-actor-text"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_journey_theme_actor_order_release",
+        diagramId = "journey",
+        title = "Themed release actor order",
+        scenario = "A custom section palette retains Mermaid actor sorting and task marker order.",
+        layout = "dagre",
+        initialAspectRatio = 1.95f,
+        source = """
+            ---
+            config:
+              themeVariables:
+                fillType0: "#e0f2fe"
+                fillType1: "#dcfce7"
+                textColor: "#1f2937"
+            ---
+            journey
+              title Themed release coordination
+              section Prepare
+                Review candidate: 3: Web Owner, Android Owner, Desktop Owner
+              section Release
+                Approve rollout: 5: Quality Lead, Android Owner, Web Owner
+        """.trimIndent(),
+        expectedTexts = listOf("Themed release coordination", "Approve rollout"),
+        features = setOf("theme-colors", "actor-order", "multi-actor"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_journey_theme_actor_order_migration",
+        diagramId = "journey",
+        title = "Themed migration actor order",
+        scenario = "A custom section palette retains Mermaid actor sorting and task marker order.",
+        layout = "dagre",
+        initialAspectRatio = 1.95f,
+        source = """
+            ---
+            config:
+              themeVariables:
+                fillType0: "#e0f2fe"
+                fillType1: "#dcfce7"
+                textColor: "#1f2937"
+            ---
+            journey
+              title Themed migration coordination
+              section Inventory
+                Confirm dependencies: 3: Storage Owner, API Owner, Client Owner
+              section Migrate
+                Approve cutover: 5: Reliability Lead, API Owner, Storage Owner
+        """.trimIndent(),
+        expectedTexts = listOf("Themed migration coordination", "Approve cutover"),
+        features = setOf("theme-colors", "actor-order", "multi-actor"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -5078,6 +5566,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "er",
             "gantt",
             "pie",
+            "journey",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -5137,6 +5626,8 @@ private fun addVisualParityVariation(
     "er" -> "${source.trimEnd()}\n  $evidenceId[\"$label\"]\n"
     "gantt" -> replaceOrInsertVisualParityTitle(source, "gantt", label)
     "pie" -> "${source.trimEnd()}\n  \"$label\" : ${(ordinal % 17) + 3}\n"
+    "journey" -> "${source.trimEnd()}\n  $label: ${(ordinal % 5) + 1}: " +
+        "Parity Actor $ordinal\n"
     else -> source
 }
 

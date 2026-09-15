@@ -87,6 +87,7 @@ private enum class DebugScreen {
     Er,
     Gantt,
     Pie,
+    Journey,
     Playground,
     LoadTest,
 }
@@ -152,6 +153,12 @@ private val destinations = listOf(
         DebugScreen.Pie,
         pieDiagramDocsSpec,
         "Pie and donut charts with configurable legends",
+        DiagramStability.Stable,
+    ),
+    DiagramDestination(
+        DebugScreen.Journey,
+        journeyDiagramDocsSpec,
+        "Sections, scored tasks, and multi-actor journeys",
         DiagramStability.Stable,
     ),
 )

@@ -177,6 +177,7 @@ data class SceneText(
     val rotationPivot: ScenePoint? = null,
     override val zIndex: Int = 20,
     val softWrap: Boolean = true,
+    val clipToBounds: Boolean = false,
 ) : SceneElement
 
 data class SceneTextSpan(

@@ -59,6 +59,7 @@ jobs:
           - er
           - gantt
           - pie
+          - journey
 
     steps:
       - name: Checkout

@@ -144,6 +144,28 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersJourneyDiagramThroughRegisteredPlugin() {
+        val result = engine.render(
+            """
+                journey
+                  section Discover
+                    Compare options: 4: Customer
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(
+            scene.elements.filterIsInstance<SceneShape>()
+                .any { it.id == "journey-task-0" },
+        )
+        assertTrue(
+            scene.elements.filterIsInstance<ScenePath>()
+                .any { it.id == "journey-activity-line" },
+        )
+    }
+
+    @Test
     fun returnsStructuredErrorForUnsupportedDiagram() {
         val result = engine.render("timeline\n  2026 : Unsupported", context)
 

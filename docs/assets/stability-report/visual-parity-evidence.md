@@ -1,8 +1,9 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains all 2,048 source cases and 4,096 screenshots from the
-large-scale visual parity matrix. Every page shows the same Mermaid source on
-the left in CMP Native and on the right in Mermaid.js 12.0.0.
+This index contains 2,304 source cases and
+4,608 screenshots from the large-scale
+visual parity matrix. Every page shows the same Mermaid source on the left in
+CMP Native and on the right in Mermaid.js 12.0.0.
 
 The matrix contains 256 cases per supported diagram type. Case IDs, structural
 seed IDs, label profiles, feature dimensions, source hashes, image hashes, and
@@ -305,5 +306,42 @@ presented as 256 unrelated topologies.
 ![Pie visual parity page 15](pie-visual-parity-15.jpg)
 
 ![Pie visual parity page 16](pie-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>User Journey - 256 Native/Official pairs</strong></summary>
+
+![User Journey visual parity page 01](journey-visual-parity-01.jpg)
+
+![User Journey visual parity page 02](journey-visual-parity-02.jpg)
+
+![User Journey visual parity page 03](journey-visual-parity-03.jpg)
+
+![User Journey visual parity page 04](journey-visual-parity-04.jpg)
+
+![User Journey visual parity page 05](journey-visual-parity-05.jpg)
+
+![User Journey visual parity page 06](journey-visual-parity-06.jpg)
+
+![User Journey visual parity page 07](journey-visual-parity-07.jpg)
+
+![User Journey visual parity page 08](journey-visual-parity-08.jpg)
+
+![User Journey visual parity page 09](journey-visual-parity-09.jpg)
+
+![User Journey visual parity page 10](journey-visual-parity-10.jpg)
+
+![User Journey visual parity page 11](journey-visual-parity-11.jpg)
+
+![User Journey visual parity page 12](journey-visual-parity-12.jpg)
+
+![User Journey visual parity page 13](journey-visual-parity-13.jpg)
+
+![User Journey visual parity page 14](journey-visual-parity-14.jpg)
+
+![User Journey visual parity page 15](journey-visual-parity-15.jpg)
+
+![User Journey visual parity page 16](journey-visual-parity-16.jpg)
 
 </details>

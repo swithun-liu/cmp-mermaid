@@ -79,6 +79,48 @@ data class MermaidXyChartOptions(
     val yAxis: MermaidXyAxisOptions = MermaidXyAxisOptions(),
 )
 
+data class MermaidJourneyOptions(
+    val diagramMarginX: Float = 50f,
+    val diagramMarginY: Float = 10f,
+    val leftMargin: Float = 150f,
+    val maxLabelWidth: Float = 360f,
+    val width: Float = 150f,
+    val height: Float = 50f,
+    val boxMargin: Float = 10f,
+    val boxTextMargin: Float = 5f,
+    val noteMargin: Float = 10f,
+    val messageMargin: Float = 35f,
+    val messageAlign: String = "center",
+    val bottomMarginAdj: Float = 1f,
+    val rightAngles: Boolean = false,
+    val taskFontSize: Float = 14f,
+    val taskFontFamily: String = "\"Open Sans\", sans-serif",
+    val taskMargin: Float = 50f,
+    val activationWidth: Float = 10f,
+    val textPlacement: String = "fo",
+    val actorColours: List<SceneColor> = listOf(
+        SceneColor(0xFF8FBC8F),
+        SceneColor(0xFF7CFC00),
+        SceneColor(0xFF00FFFF),
+        SceneColor(0xFF20B2AA),
+        SceneColor(0xFFB0E0E6),
+        SceneColor(0xFFFFFFE0),
+    ),
+    val sectionFills: List<SceneColor> = listOf(
+        SceneColor(0xFF191970),
+        SceneColor(0xFF8B008B),
+        SceneColor(0xFF4B0082),
+        SceneColor(0xFF2F4F4F),
+        SceneColor(0xFF800000),
+        SceneColor(0xFF8B4513),
+        SceneColor(0xFF00008B),
+    ),
+    val sectionColours: List<SceneColor> = listOf(SceneColor(0xFFFFFFFF)),
+    val titleColor: SceneColor? = null,
+    val titleFontFamily: String = MERMAID_CLASSIC_FONT_FAMILY,
+    val titleFontSize: String = "4ex",
+)
+
 data class MermaidRenderOptions(
     val layout: String = "elk",
     val classLayout: String? = null,
@@ -127,6 +169,7 @@ data class MermaidRenderOptions(
     val pieLegendPosition: String = "right",
     val pieHighlightSlice: String = "",
     val xyChart: MermaidXyChartOptions = MermaidXyChartOptions(),
+    val journey: MermaidJourneyOptions = MermaidJourneyOptions(),
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -274,6 +317,25 @@ data class MermaidGanttTheme(
     val title: SceneColor = SceneColor(0xFF333333),
 )
 
+data class MermaidJourneyTheme(
+    val sectionFills: List<SceneColor> = listOf(
+        SceneColor(0xFFECECFF),
+        SceneColor(0xFFFFFFDE),
+        SceneColor(0xFFFFECFE),
+        SceneColor(0xFFDEFFE0),
+        SceneColor(0xFFECFFFE),
+        SceneColor(0xFFFFDEE0),
+        SceneColor(0xFFFFEFEC),
+        SceneColor(0xFFDEFBFF),
+    ),
+    val actorColors: List<SceneColor?> = List(6) { null },
+    val textColor: SceneColor = SceneColor(0xFF333333),
+    val faceColor: SceneColor = SceneColor(0xFFFFF8DC),
+    val faceStroke: SceneColor = SceneColor(0xFF999999),
+    val detailStroke: SceneColor = SceneColor(0xFF666666),
+    val boxStroke: SceneColor = SceneColor(0xFF666666),
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
@@ -295,6 +357,7 @@ data class MermaidTheme(
     val pie: MermaidPieTheme = MermaidPieTheme(),
     val xyChart: MermaidXyChartTheme = MermaidXyChartTheme(),
     val gantt: MermaidGanttTheme = MermaidGanttTheme(),
+    val journey: MermaidJourneyTheme = MermaidJourneyTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -325,6 +388,7 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFF2F2F2F),
             noteText = SceneColor(0xFFB8B6B6),
             gantt = darkGanttTheme(),
+            journey = darkJourneyTheme(),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
                 background = 0xFF333333,
@@ -358,6 +422,7 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
             gantt = reduxColorGanttTheme(),
+            journey = reduxColorJourneyTheme(dark = false),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -401,6 +466,7 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFF6EAA49),
                 noteText = SceneColor(0xFF000000),
                 gantt = forestGanttTheme(),
+                journey = forestJourneyTheme(),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -439,6 +505,7 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFF999999),
                 noteText = SceneColor(0xFFFFFFFF),
                 gantt = neutralGanttTheme(),
+                journey = neutralJourneyTheme(),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -471,6 +538,7 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 gantt = baseGanttTheme(),
+                journey = baseJourneyTheme(),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
             )
@@ -488,6 +556,7 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 gantt = neoGanttTheme(),
+                journey = neoJourneyTheme(dark = false, redux = false),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -514,6 +583,7 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 gantt = neoDarkGanttTheme(),
+                journey = neoJourneyTheme(dark = true, redux = false),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 pie = neoPieTheme(dark = true),
@@ -539,6 +609,7 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFFACC15),
                 noteText = SceneColor(0xFF28253D),
                 gantt = reduxGanttTheme(),
+                journey = neoJourneyTheme(dark = false, redux = true),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -551,6 +622,7 @@ data class MermaidTheme(
             "redux-dark-color" -> reduxDark().copy(
                 borderColorArray = reduxColorBorders(),
                 gantt = reduxDarkColorGanttTheme(),
+                journey = reduxColorJourneyTheme(dark = true),
                 pie = reduxColorPieTheme(dark = true),
                 xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
             )
@@ -690,6 +762,18 @@ data class MermaidTheme(
                 verticalLine = color("vertLineColor") ?: theme.gantt.verticalLine,
                 title = color("titleColor") ?: theme.gantt.title,
             )
+            val journeySectionFills = MutableList(8) { index ->
+                theme.journey.sectionFills.getOrElse(index) { SceneColor(0xFF000000) }
+            }
+            journeySectionFills.indices.forEach { index ->
+                color("fillType$index")?.let { parsed ->
+                    journeySectionFills[index] = parsed
+                }
+            }
+            val journey = theme.journey.copy(
+                sectionFills = journeySectionFills,
+                textColor = color("textColor") ?: theme.journey.textColor,
+            )
             val xyPaletteSource = values["xyChart.plotColorPalette"]
             val xyPalette = if (xyPaletteSource == null) {
                 theme.xyChart.plotColorPalette
@@ -768,6 +852,7 @@ data class MermaidTheme(
                 pie = pie,
                 xyChart = xyChart,
                 gantt = gantt,
+                journey = journey,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -797,6 +882,7 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
             gantt = reduxDarkGanttTheme(),
+            journey = neoJourneyTheme(dark = true, redux = true),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -804,6 +890,110 @@ data class MermaidTheme(
             xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
             dropShadow = reduxShadow(dark = true),
         )
+
+        private fun darkJourneyTheme(): MermaidJourneyTheme = MermaidJourneyTheme(
+            sectionFills = listOf(
+                0xFF1F2020,
+                0xFF474949,
+                0xFF1F1F20,
+                0xFF474749,
+                0xFF1F201F,
+                0xFF474947,
+                0xFF201F20,
+                0xFF494749,
+            ).map(::SceneColor),
+            textColor = SceneColor(0xFFCCCCCC),
+        )
+
+        private fun forestJourneyTheme(): MermaidJourneyTheme = MermaidJourneyTheme(
+            sectionFills = listOf(
+                0xFFCDE498,
+                0xFFCDFFB2,
+                0xFF98E4B4,
+                0xFFB2FFE9,
+                0xFFE4AA98,
+                0xFFFFDFB2,
+                0xFF98C3E4,
+                0xFFB2C3FF,
+            ).map(::SceneColor),
+            textColor = SceneColor(0xFF000000),
+        )
+
+        private fun neutralJourneyTheme(): MermaidJourneyTheme = MermaidJourneyTheme(
+            sectionFills = listOf(
+                0xFFEEEEEE,
+                0xFFFCFCFC,
+                0xFFEEEEEE,
+                0xFFFCFCFC,
+                0xFFEEEEEE,
+                0xFFFCFCFC,
+                0xFFEEEEEE,
+                0xFFFCFCFC,
+            ).map(::SceneColor),
+            textColor = SceneColor(0xFF000000),
+        )
+
+        private fun baseJourneyTheme(): MermaidJourneyTheme = MermaidJourneyTheme(
+            sectionFills = listOf(
+                0xFFFFF4DD,
+                0xFFF4DDFF,
+                0xFFE6FFDD,
+                0xFFFFDDE6,
+                0xFFFFDDEA,
+                0xFFDDEAFF,
+                0xFFDDFFF9,
+                0xFFFFF9DD,
+            ).map(::SceneColor),
+        )
+
+        private fun neoJourneyTheme(
+            dark: Boolean,
+            redux: Boolean,
+        ): MermaidJourneyTheme = if (dark) {
+            darkJourneyTheme()
+        } else {
+            MermaidJourneyTheme(
+                sectionFills = listOf(
+                    0xFFECECFE,
+                    0xFFE9E9F1,
+                    0xFFFEECFD,
+                    0xFFF1E9F0,
+                    0xFFECFEFD,
+                    0xFFE9F1F0,
+                    0xFFFEEEEC,
+                    0xFFF1EAE9,
+                ).map(::SceneColor),
+                textColor = SceneColor(if (redux) 0xFF28253D else 0xFF333333),
+            )
+        }
+
+        private fun reduxColorJourneyTheme(dark: Boolean): MermaidJourneyTheme =
+            MermaidJourneyTheme(
+                sectionFills = if (dark) {
+                    listOf(
+                        0xFF701A75,
+                        0xFF134E4A,
+                        0xFF7C2D12,
+                        0xFF581C87,
+                        0xFF14532D,
+                        0xFF4C1D95,
+                        0xFF7F1D1D,
+                        0xFF713F12,
+                    )
+                } else {
+                    listOf(
+                        0xFFFDF4FF,
+                        0xFFF0FDFA,
+                        0xFFFFF7ED,
+                        0xFFECFEFF,
+                        0xFFF0FDF4,
+                        0xFFF5F3FF,
+                        0xFFFEF2F2,
+                        0xFFFEFCE8,
+                    )
+                }.map(::SceneColor),
+                textColor = SceneColor(if (dark) 0xFFCCCCCC else 0xFF28253D),
+            )
 
         private fun darkGanttTheme(): MermaidGanttTheme = MermaidGanttTheme(
             sectionBackground = SceneColor(0xFFB4AC76),

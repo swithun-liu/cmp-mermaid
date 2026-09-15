@@ -36,6 +36,7 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.pointer.pointerInput
@@ -1778,7 +1779,18 @@ private fun DrawScope.drawSceneText(
             },
         )
     }) {
-        drawText(layout, topLeft = Offset(x, y))
+        if (element.clipToBounds) {
+            clipRect(
+                left = element.bounds.left,
+                top = element.bounds.top,
+                right = element.bounds.right,
+                bottom = element.bounds.bottom,
+            ) {
+                drawText(layout, topLeft = Offset(x, y))
+            }
+        } else {
+            drawText(layout, topLeft = Offset(x, y))
+        }
     }
 }
 

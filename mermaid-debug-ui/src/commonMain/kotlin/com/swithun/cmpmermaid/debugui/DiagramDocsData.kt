@@ -217,3 +217,42 @@ internal val pieDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val journeyDiagramDocsSpec = DiagramDocsSpec(
+    id = "journey",
+    title = "User Journey",
+    syntaxTitle = "User Journey diagrams - Basic Syntax",
+    description = "Split a workflow into sections, score each task from one to five, and show " +
+        "which actors participate in every step.",
+    documentationUrl = "https://mermaid.js.org/syntax/userJourney.html",
+    galleryTitle = "User Journey diagram gallery",
+    cases = journeyDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1.85f,
+        )
+    },
+    syntaxLessons = lessons(
+        journeyDemos.take(6).map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1.85f,
+            )
+        },
+        listOf(
+            "Use the journey header, then group scored tasks under named sections.",
+            "Scores control the vertical face position from one at the bottom to five at the top.",
+            "List multiple actors after the score to mark every participant on a task.",
+            "The actor legend is sorted alphabetically, matching Mermaid's Journey database.",
+            "Repeated actor names keep their task markers while appearing once in the legend.",
+            "The actor list is optional when a task represents an automatic or anonymous step.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

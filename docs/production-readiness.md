@@ -7,7 +7,7 @@ rated Stable. A successful build alone is not sufficient.
 
 - Mermaid compatibility baseline: `12.0.0`
 - Native renderers: Flowchart, XY Chart, Sequence, Class, State, Entity
-  Relationship, Gantt, and Pie
+  Relationship, Gantt, Pie, and User Journey
 - Runtime implementation: Kotlin Multiplatform parser/layout/SceneGraph with
   Compose Canvas rendering
 - Official Mermaid.js usage: debug and release evidence only
@@ -26,15 +26,15 @@ features, and no known high-severity defect in the supported contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in the independent production corpus | 106 manually reviewed Native/Official pairs plus 2,048 systematic matrix pairs; all 2,154 pass automated geometry | Passing locally; regular and full-matrix workflows are source controlled |
-| Capability coverage | Every declared major capability appears in an independent conformance case | 16/16 points for each of 8 diagram types; 128/128 total | Passing; generated-corpus validation enforces coverage |
-| Determinism | Repeated rendering returns the same SceneGraph | Full 106-case corpus equality test | Passing |
-| Theme compatibility | Every supported diagram type renders with every built-in theme | 8 diagram types by 11 themes; 88/88 renders | Passing |
-| Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 2,048 visual-matrix Native renders plus a separate 2,048 generated stress inputs | Passing |
-| Core throughput | 530 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 8.60s total, 66ms P95 | Passing; enforced by JVM test |
+| Visual fidelity | No known semantic or major visual mismatch in the independent production corpus | 119 manually reviewed Native/Official pairs plus 2,304 systematic matrix pairs; all 2,423 pass automated geometry | Passing locally; regular and full-matrix workflows are source controlled |
+| Capability coverage | Every declared major capability appears in an independent conformance case | 16/16 points for each of 9 diagram types; 144/144 total | Passing; generated-corpus validation enforces coverage |
+| Determinism | Repeated rendering returns the same SceneGraph | Full 119-case corpus equality test | Passing |
+| Theme compatibility | Every supported diagram type renders with every built-in theme | 9 diagram types by 11 themes; 99/99 renders | Passing |
+| Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 2,304 visual-matrix Native renders plus a separate 2,304 generated stress inputs | Passing |
+| Core throughput | 595 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 9.81s total, 76ms P95 | Passing; enforced by JVM test |
 | Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: about 20 KiB | Passing; enforced by JVM test |
 | Runtime matrix | Android, iOS Simulator, Desktop, and Web render representative complex cases | All four load screens reached the final case; screenshots recorded | Passing locally |
-| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | 106-diagram matrix recorded below | Passing on Android, iOS, Desktop, and Web |
+| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | 119-diagram matrix recorded below | Passing on Android, iOS, Desktop, and Web |
 | Public-source safety | Published source and artifacts contain no internal endpoint or credential material | Repository scan plus APK permission audit | Passing |
 
 ## Visual Gate
@@ -49,9 +49,9 @@ copies of the documentation gallery. CI must:
 5. Preserve manual review for text collisions, routing meaning, and semantic
    differences that image geometry cannot prove.
 
-The regular Quality Gate runs the 106 independent cases on every push and pull
+The regular Quality Gate runs the 119 independent cases on every push and pull
 request. The weekly/manual Full Visual Parity workflow adds 256 unique sources
-per diagram type, or 2,048 Native/Official pairs total. Those matrix cases are
+per diagram type, or 2,304 Native/Official pairs total. Those matrix cases are
 deterministic combinations of 13 or 14 complex structural seeds per type and
 20 visible text/layout-pressure profiles; they are not represented as 256
 unrelated topologies per type.
@@ -73,10 +73,10 @@ The runtime load gate must record:
 
 | Platform | Corpus | Latency | Memory | Outcome |
 | --- | ---: | --- | --- | --- |
-| Android Emulator | 106 | 24s list traversal | 216MiB peak PSS; 180MiB final PSS | Passed 300MiB/45s budget |
-| iOS Simulator | 106 | Automatic traversal reached final case | About 503MiB final host RSS | Passed without a crash |
-| Desktop | 106 | Automatic traversal reached final case | About 428MiB process RSS | Passed |
-| Web | 106 | 661ms first content; 5.77s scroll | 8.9MiB retained JS heap | Passed 15s/96MiB budget |
+| Android Emulator | 119 | 29s list traversal | 231MiB peak PSS; 189MiB final PSS | Passed 300MiB/45s budget |
+| iOS Simulator | 119 | Automatic traversal reached final case | About 245MiB final host RSS | Passed without a crash |
+| Desktop | 119 | Automatic traversal reached final case | About 88MiB process RSS | Passed |
+| Web | 119 | 1.32s first content; 6.36s scroll | 8.8MiB retained JS heap | Passed 15s/96MiB budget |
 
 Headless Chromium process-tree RSS is recorded as diagnostic data but is not a
 renderer budget because it includes browser infrastructure outside the Web

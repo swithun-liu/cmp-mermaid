@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-14T11:04:56.158Z",
-  "caseCount": 106,
+  "generatedAt": "2026-09-15T06:07:52.392Z",
+  "caseCount": 119,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -11,7 +11,6 @@
       "scenario": "Commerce checkout coordinating inventory, payment, shipment, and rollback paths.",
       "layout": "elk",
       "aspectRatio": 1.65,
-      "source": "\nflowchart LR\n  Customer([Customer]) --> Cart[Review cart]\n  Cart --> Validate{Cart valid?}\n  Validate -- No --> Repair[Repair quantities] --> Cart\n  Validate -- Yes --> Quote[Price and tax quote]\n  subgraph Orchestration[Checkout orchestration]\n    direction TB\n    Quote --> Reserve[Reserve inventory]\n    Reserve --> Inventory{Reserved?}\n    Inventory -- No --> Release[Release reservations]\n    Inventory -- Yes --> Authorize[Authorize payment]\n    Authorize --> Payment{Authorized?}\n    Payment -- No --> Release\n    Payment -- Yes --> CreateOrder[Create order]\n    CreateOrder --> Arrange[Arrange shipment]\n    Arrange --> Shipment{Carrier accepted?}\n    Shipment -- No --> Refund[Void payment]\n    Refund --> Release\n  end\n  Shipment -- Yes --> Confirm[Send confirmation]\n  Confirm --> Complete([Order accepted])\n  Release --> Failed([Checkout failed])\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_flow_checkout_saga_native.png",
@@ -19,7 +18,8 @@
       "nativeBytes": 24355,
       "officialBytes": 24840,
       "nativeSha256": "a55c12b7939d6c38ea4707b0e1efebf0fa38990f77254fba7f1acd5d9861f6e7",
-      "officialSha256": "a05d686c6e151dc0ddd2ee6a563ea845c2643cbc0f1e3e6d29df202f4c1edacb"
+      "officialSha256": "a05d686c6e151dc0ddd2ee6a563ea845c2643cbc0f1e3e6d29df202f4c1edacb",
+      "sourceSha256": "15645d1744c28826a3f558fd2bc30e04fa0d5d86c6073ebd3d784b015461b05b"
     },
     {
       "id": "rc_flow_multi_region_failover",
@@ -28,7 +28,6 @@
       "scenario": "Traffic management and data recovery during a regional outage.",
       "layout": "elk",
       "aspectRatio": 1.7,
-      "source": "\nflowchart TB\n  User([Client request]) --> DNS[Global traffic manager]\n  DNS --> Health{Primary healthy?}\n  subgraph Primary[Primary region]\n    direction LR\n    EdgeA[Edge gateway] --> ApiA[API pool]\n    ApiA --> CacheA[(Regional cache)]\n    ApiA --> DbA[(Primary database)]\n    DbA --> Stream[Replication stream]\n  end\n  subgraph Secondary[Secondary region]\n    direction LR\n    EdgeB[Standby gateway] --> ApiB[Warm API pool]\n    ApiB --> CacheB[(Regional cache)]\n    ApiB --> DbB[(Replica database)]\n  end\n  Health -- Yes --> EdgeA\n  Health -- No --> Promote{Replica caught up?}\n  Stream --> DbB\n  Promote -- Yes --> Switch[Promote replica and shift DNS] --> EdgeB\n  Promote -- No --> Degraded[Serve read-only mode] --> EdgeB\n  EdgeA --> Response([Response])\n  EdgeB --> Response\n  Metrics[Health probes] --> Health\n  Response --> Metrics\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_flow_multi_region_failover_native.png",
@@ -36,7 +35,8 @@
       "nativeBytes": 37545,
       "officialBytes": 40133,
       "nativeSha256": "22e236c2b6836ea563e09341543e65dc1d1dd8c21329e24ad11d208a7094b35a",
-      "officialSha256": "b0b319dbf0e29954be8cad14d20cd0f270ebc8733c6ea973878b3926ffa60a23"
+      "officialSha256": "b0b319dbf0e29954be8cad14d20cd0f270ebc8733c6ea973878b3926ffa60a23",
+      "sourceSha256": "0d1cbaeeb6a3befbf2fa7c8d96dae768d0ab0d8fe5be6ad44f2cc0b5433697b6"
     },
     {
       "id": "rc_flow_release_train",
@@ -45,7 +45,6 @@
       "scenario": "A guarded mobile release with parallel validation and staged rollout.",
       "layout": "elk",
       "aspectRatio": 1.8,
-      "source": "\nflowchart LR\n  Commit([Merge to main]) --> Build[Reproducible build]\n  Build --> Unit{Unit tests pass?}\n  Unit -- No --> Fix[Return to owner] --> Commit\n  Unit -- Yes --> Parallel{Start validation}\n  Parallel --> Android[Android device matrix]\n  Parallel --> IOS[iOS device matrix]\n  Parallel --> Web[Web browser matrix]\n  Android --> Gate{All platforms green?}\n  IOS --> Gate\n  Web --> Gate\n  Gate -- No --> Fix\n  Gate -- Yes --> Sign[Sign release artifacts]\n  Sign --> Canary[Deploy 5 percent canary]\n  Canary --> Observe{SLOs healthy?}\n  Observe -- No --> Rollback[Rollback and freeze]\n  Rollback --> Incident[Open incident review]\n  Observe -- Yes --> Half[Deploy 50 percent]\n  Half --> ObserveHalf{Error budget healthy?}\n  ObserveHalf -- No --> Rollback\n  ObserveHalf -- Yes --> Global[Global rollout]\n  Global --> Done([Release complete])\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_flow_release_train_native.png",
@@ -53,7 +52,8 @@
       "nativeBytes": 31961,
       "officialBytes": 31034,
       "nativeSha256": "cb2a37feba81272b766c0518579238ef44294c2e0f86fdf75354744f15d5bd5c",
-      "officialSha256": "bdc2e288c655f3a3b6c5f6842c1eafd24f6b7d9a09a425326a7ee759a5f6af1a"
+      "officialSha256": "bdc2e288c655f3a3b6c5f6842c1eafd24f6b7d9a09a425326a7ee759a5f6af1a",
+      "sourceSha256": "515b89760d999f7c3d2a1d1637b983807ab518409e24bdca0ac630e7ea3a1ec9"
     },
     {
       "id": "rc_flow_incident_response",
@@ -62,7 +62,6 @@
       "scenario": "Incident triage, mitigation, communication, and follow-up ownership.",
       "layout": "elk",
       "aspectRatio": 1.55,
-      "source": "\nflowchart TB\n  Alert([Alert or customer report]) --> Confirm[Confirm impact]\n  Confirm --> Severity{Severity}\n  Severity -- SEV-1 --> Page[Page incident commander]\n  Severity -- SEV-2 --> Assign[Assign service owner]\n  Severity -- SEV-3 --> Ticket[Create backlog ticket]\n  Page --> WarRoom[Open response channel]\n  Assign --> WarRoom\n  WarRoom --> Parallel{Parallel response}\n  Parallel --> Diagnose[Inspect metrics, logs, and traces]\n  Parallel --> Communicate[Publish status update]\n  Parallel --> Preserve[Preserve evidence]\n  Diagnose --> Mitigation{Safe mitigation known?}\n  Mitigation -- Yes --> Apply[Apply rollback or traffic shift]\n  Mitigation -- No --> Contain[Disable affected feature]\n  Apply --> Verify{SLO recovered?}\n  Contain --> Verify\n  Verify -- No --> Diagnose\n  Verify -- Yes --> Resolve[Resolve incident]\n  Communicate --> Resolve\n  Preserve --> Resolve\n  Resolve --> Review[Blameless review]\n  Review --> Actions[Owners and due dates]\n  Ticket --> Actions\n  Actions --> Closed([Closed])\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_flow_incident_response_native.png",
@@ -70,7 +69,8 @@
       "nativeBytes": 35440,
       "officialBytes": 35297,
       "nativeSha256": "386d0bb5537e957f8867e2b66eab159ad2d719216c94d1e6c0b43eb0981ce536",
-      "officialSha256": "1909c045c01b47985cf95a762a060c871c2f2de51258f5bf0f30147df777fcd7"
+      "officialSha256": "1909c045c01b47985cf95a762a060c871c2f2de51258f5bf0f30147df777fcd7",
+      "sourceSha256": "18774b769dedc4efeb2a8c29255c5febff7a0691bacc9adc0caf254d409f267a"
     },
     {
       "id": "rc_flow_event_ingestion",
@@ -79,7 +79,6 @@
       "scenario": "A streaming pipeline handling validation, deduplication, enrichment, and replay.",
       "layout": "elk",
       "aspectRatio": 1.8,
-      "source": "\nflowchart LR\n  SDK[Mobile and Web SDKs] --> Gateway[Ingestion gateway]\n  Partner[Partner batch files] --> Gateway\n  Gateway --> Auth{Credential valid?}\n  Auth -- No --> Reject[Reject with audit record]\n  Auth -- Yes --> Schema{Schema valid?}\n  Schema -- No --> Quarantine[(Quarantine topic)]\n  Schema -- Yes --> Dedupe[Deduplicate by event id]\n  Dedupe --> Duplicate{Seen before?}\n  Duplicate -- Yes --> Metrics[Increment duplicate metric]\n  Duplicate -- No --> Enrich[Add tenant and geo context]\n  Enrich --> Privacy{Consent permits use?}\n  Privacy -- No --> Redact[Redact restricted fields]\n  Privacy -- Yes --> Route[Route by event family]\n  Redact --> Route\n  Route --> Realtime[(Realtime topic)]\n  Route --> Warehouse[(Warehouse stream)]\n  Route --> Archive[(Immutable archive)]\n  Quarantine --> Review[Operator review]\n  Review --> Fixed{Repairable?}\n  Fixed -- Yes --> Replay[Replay corrected event] --> Schema\n  Fixed -- No --> Reject\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_flow_event_ingestion_native.png",
@@ -87,7 +86,8 @@
       "nativeBytes": 42987,
       "officialBytes": 41640,
       "nativeSha256": "9053e2441b311ac7e65e5af419749b2107a0a0d6b3abff2a806e548e509f751d",
-      "officialSha256": "931f252386e653e593c91a530257f8b60a74ab984b8c30aeaccbcca9dc829c59"
+      "officialSha256": "931f252386e653e593c91a530257f8b60a74ab984b8c30aeaccbcca9dc829c59",
+      "sourceSha256": "fb8133b107e4893d25cce08249f27a55bff3e6223c3cf1955f3e2d6c7256b46c"
     },
     {
       "id": "rc_flow_access_governance",
@@ -96,7 +96,6 @@
       "scenario": "Approval, policy evaluation, provisioning, expiry, and emergency revocation.",
       "layout": "elk",
       "aspectRatio": 1.65,
-      "source": "\nflowchart TB\n  Request([Access request]) --> Identity[Resolve employee and device]\n  Identity --> Risk{Risk signals acceptable?}\n  Risk -- No --> Deny[Reject and notify]\n  Risk -- Yes --> Policy[Evaluate resource policy]\n  Policy --> Auto{Eligible for auto approval?}\n  Auto -- Yes --> Grant[Issue time-bound grant]\n  Auto -- No --> Manager[Manager review]\n  Manager --> ManagerDecision{Approved?}\n  ManagerDecision -- No --> Deny\n  ManagerDecision -- Yes --> Security{Security review required?}\n  Security -- Yes --> SecurityReview[Security owner review]\n  Security -- No --> Grant\n  SecurityReview --> SecurityDecision{Approved?}\n  SecurityDecision -- No --> Deny\n  SecurityDecision -- Yes --> Grant\n  Grant --> Provision[Provision least privilege]\n  Provision --> Audit[(Append audit event)]\n  Audit --> Monitor[Monitor privileged activity]\n  Monitor --> Expired{Expired or revoked?}\n  Expired -- No --> Monitor\n  Expired -- Yes --> Remove[Remove grant]\n  Remove --> Complete([Access closed])\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_flow_access_governance_native.png",
@@ -104,7 +103,8 @@
       "nativeBytes": 28396,
       "officialBytes": 28198,
       "nativeSha256": "5f4b9f0a5b7c238ea017ca4b3243020b2fa6090fdcf8b3563f5bc05a4f627b0a",
-      "officialSha256": "5042249ba577a037e46e1d4fda165162057d96a85ef132a888152e253fff78bd"
+      "officialSha256": "5042249ba577a037e46e1d4fda165162057d96a85ef132a888152e253fff78bd",
+      "sourceSha256": "e33079c9c9c18e98ce5aec4b193a6cccae4a9697496db855b1393751e410aa2a"
     },
     {
       "id": "prod_flowchart_orchestration_identity",
@@ -125,13 +125,13 @@
         "Verification request",
         "Identity approved"
       ],
-      "source": "\nflowchart LR\n  Start([Verification request]) --> Check{Evidence complete?}\n  subgraph Services[\"Decision services\"]\n    direction TB\n    First[Policy evaluation] --> Second[( Risk scoring )]\n  end\n  Check -- Yes --> First\n  Check -- No --> Failure[Request remediation]\n  Second --> Success([Identity approved])\n  classDef warning fill:#fff4dd,stroke:#a16207,color:#422006\n  class Failure warning\n",
       "nativeFile": "prod_flowchart_orchestration_identity_native.png",
       "officialFile": "prod_flowchart_orchestration_identity_official.png",
       "nativeBytes": 34606,
       "officialBytes": 36315,
       "nativeSha256": "1fb8b3804337cbaca7fd989745a17fd69df6ce03c8324c4f6eb14094cb5a1514",
-      "officialSha256": "ac791ccd32c2afae6d82248f12b16614b4b501b7314cf3200a90836713b2750b"
+      "officialSha256": "ac791ccd32c2afae6d82248f12b16614b4b501b7314cf3200a90836713b2750b",
+      "sourceSha256": "00792b6df84f4cb3b0f9fbb1301e4c980a1ce8f6362106b17d5eeee95b2776e9"
     },
     {
       "id": "prod_flowchart_orchestration_refund",
@@ -152,13 +152,13 @@
         "Refund request",
         "Refund confirmed"
       ],
-      "source": "\nflowchart LR\n  Start([Refund request]) --> Check{Eligible?}\n  subgraph Services[\"Refund services\"]\n    direction TB\n    First[Reverse ledger] --> Second[( Payment reversal )]\n  end\n  Check -- Yes --> First\n  Check -- No --> Failure[Manual review]\n  Second --> Success([Refund confirmed])\n  classDef warning fill:#fff4dd,stroke:#a16207,color:#422006\n  class Failure warning\n",
       "nativeFile": "prod_flowchart_orchestration_refund_native.png",
       "officialFile": "prod_flowchart_orchestration_refund_official.png",
       "nativeBytes": 32177,
       "officialBytes": 33748,
       "nativeSha256": "8a1ec3e1a7708db8aa0309b66e9b5cc830dd89da4eef2d397d8b73b6aa1ab932",
-      "officialSha256": "6c6aa3038e9b68b46ed5a732c62c07b08a5298d21e185f89a3bbdf1621ae24df"
+      "officialSha256": "6c6aa3038e9b68b46ed5a732c62c07b08a5298d21e185f89a3bbdf1621ae24df",
+      "sourceSha256": "fa3b64bb9659c5f9a4834cad261393446c750feee0207f81c0e14d32fe8246a2"
     },
     {
       "id": "prod_flowchart_edge_matrix_replication",
@@ -177,13 +177,13 @@
         "Primary",
         "Recovery"
       ],
-      "source": "\nflowchart TB\n  A((Primary)) o--o B[Relay]\n  B x--x C{Replica}\n  C <--> D[Archive]\n  D -. retry .-> E[( Audit )]\n  E ==>|priority| F([Recovery])\n  A ----> F\n",
       "nativeFile": "prod_flowchart_edge_matrix_replication_native.png",
       "officialFile": "prod_flowchart_edge_matrix_replication_official.png",
       "nativeBytes": 31405,
       "officialBytes": 31967,
       "nativeSha256": "999ea4033578f5da0bb049ed8cc629545690d7f226aa42fe0bf1717e3597204f",
-      "officialSha256": "399f9064be9786d4dbc4c31d9d0e3c4f3d7e570d28711b2d88d22d76003a4deb"
+      "officialSha256": "399f9064be9786d4dbc4c31d9d0e3c4f3d7e570d28711b2d88d22d76003a4deb",
+      "sourceSha256": "59962bdc0e6d43fe4315b7e0d9bd58e8ade32a3af5e0ee8bfd3a44e1151dd25a"
     },
     {
       "id": "prod_flowchart_edge_matrix_delivery",
@@ -202,13 +202,13 @@
         "Ingress",
         "Fallback"
       ],
-      "source": "\nflowchart TB\n  A((Ingress)) o--o B[Router]\n  B x--x C{Worker}\n  C <--> D[Partner]\n  D -. retry .-> E[( Ledger )]\n  E ==>|priority| F([Fallback])\n  A ----> F\n",
       "nativeFile": "prod_flowchart_edge_matrix_delivery_native.png",
       "officialFile": "prod_flowchart_edge_matrix_delivery_official.png",
       "nativeBytes": 31171,
       "officialBytes": 31928,
       "nativeSha256": "7b04da134154f837f097bdeaad5bbe8f1c0f9fec3a9a8906b08ee38b1810f0ff",
-      "officialSha256": "056213dd4e9033d60fbe89dae11184984c395339f34a97a7ddcf0e2e345b8c61"
+      "officialSha256": "056213dd4e9033d60fbe89dae11184984c395339f34a97a7ddcf0e2e345b8c61",
+      "sourceSha256": "752dcc0a86aeea62767ef9b4d9aa1a3c19d5cf59ec7d0d29d5b68683c1e8332b"
     },
     {
       "id": "prod_flowchart_nested_domains_regional_data",
@@ -227,13 +227,13 @@
         "Global data plane",
         "Analytics store"
       ],
-      "source": "\nflowchart TB\n  subgraph Outer[\"Global data plane\"]\n    direction TB\n    Source[\"イベント intake\"]\n    subgraph Inner[\"Tokyo region\"]\n      direction LR\n      Queue[(Work queue)] --> Transform[\"Normalize<br/>and enrich\"]\n      Transform --> Review{\"\\`**Quality** accepted?\\`\"}\n    end\n    Source --> Queue\n    Review -- Yes --> Sink[( Analytics store )]\n    Review -- No --> Queue\n  end\n",
       "nativeFile": "prod_flowchart_nested_domains_regional_data_native.png",
       "officialFile": "prod_flowchart_nested_domains_regional_data_official.png",
       "nativeBytes": 34748,
       "officialBytes": 35613,
       "nativeSha256": "0fca4e20476f764b30b7ff795606806de8628d40dd62318669e19cc4df77b5d3",
-      "officialSha256": "fcc04998626032782128fc8036aa689ed4e38aa2c7139e2b2b557364c2d18367"
+      "officialSha256": "fcc04998626032782128fc8036aa689ed4e38aa2c7139e2b2b557364c2d18367",
+      "sourceSha256": "ecc530b91cdb5888f659ea2c6b3fff3287f5d968c7063ca6cdb78ebc75f5ba70"
     },
     {
       "id": "prod_flowchart_nested_domains_media_pipeline",
@@ -252,13 +252,13 @@
         "Media platform",
         "Delivery origin"
       ],
-      "source": "\nflowchart TB\n  subgraph Outer[\"Media platform\"]\n    direction TB\n    Source[\"Upload intake\"]\n    subgraph Inner[\"Processing pool\"]\n      direction LR\n      Queue[(Work queue)] --> Transform[\"Transcode<br/>and inspect\"]\n      Transform --> Review{\"\\`**Quality** accepted?\\`\"}\n    end\n    Source --> Queue\n    Review -- Yes --> Sink[( Delivery origin )]\n    Review -- No --> Queue\n  end\n",
       "nativeFile": "prod_flowchart_nested_domains_media_pipeline_native.png",
       "officialFile": "prod_flowchart_nested_domains_media_pipeline_official.png",
       "nativeBytes": 35046,
       "officialBytes": 35715,
       "nativeSha256": "451fd65c7af3842e516707bd172aec97442480ed9f32fab049c3ccb2ea99d627",
-      "officialSha256": "22a1bd00cdb2e164f0b8e8c58353e41ac5451751aa5bd5f314e7ee0e58d5d8ed"
+      "officialSha256": "22a1bd00cdb2e164f0b8e8c58353e41ac5451751aa5bd5f314e7ee0e58d5d8ed",
+      "sourceSha256": "352e78f6f3439628312ea05704beeecb6d93fdfbd930561bb5776607791484f0"
     },
     {
       "id": "prod_flowchart_shape_catalog_document_control",
@@ -275,13 +275,13 @@
         "Draft",
         "Publication"
       ],
-      "source": "\n---\nconfig:\n  flowchart:\n    curve: stepAfter\n---\nflowchart LR\n  A@{ shape: doc, label: \"Draft\" }\n  B@{ shape: processes, label: \"Approval\" }\n  C@{ shape: lin-cyl, label: \"Policy archive\" }\n  D@{ shape: bang, label: \"Exception\" }\n  E@{ shape: cloud, label: \"Publication\" }\n  A --> B --> C\n  B --> D --> E\n  C --> E\n",
       "nativeFile": "prod_flowchart_shape_catalog_document_control_native.png",
       "officialFile": "prod_flowchart_shape_catalog_document_control_official.png",
       "nativeBytes": 31101,
       "officialBytes": 45837,
       "nativeSha256": "30abd6eba76730cc308b330dc22a623db212548edae65312aaa6f75ac472f958",
-      "officialSha256": "24ee1f3742695d957ce8433f6852aa732f91ef10b33b6c76ef05cb6c19b899e1"
+      "officialSha256": "24ee1f3742695d957ce8433f6852aa732f91ef10b33b6c76ef05cb6c19b899e1",
+      "sourceSha256": "6a965add7db4e99a8f6e053a0e801f06bef864697ecd6050467d4e88de5ff5b0"
     },
     {
       "id": "prod_flowchart_shape_catalog_network_control",
@@ -298,13 +298,13 @@
         "Request",
         "Edge delivery"
       ],
-      "source": "\n---\nconfig:\n  flowchart:\n    curve: stepAfter\n---\nflowchart LR\n  A@{ shape: doc, label: \"Request\" }\n  B@{ shape: processes, label: \"Control plane\" }\n  C@{ shape: lin-cyl, label: \"State store\" }\n  D@{ shape: bang, label: \"Alert\" }\n  E@{ shape: cloud, label: \"Edge delivery\" }\n  A --> B --> C\n  B --> D --> E\n  C --> E\n",
       "nativeFile": "prod_flowchart_shape_catalog_network_control_native.png",
       "officialFile": "prod_flowchart_shape_catalog_network_control_official.png",
       "nativeBytes": 31519,
       "officialBytes": 46594,
       "nativeSha256": "0a83e9e23ae9340a8e9680dd7379b42cccd3ce5029c4e601b92d4c81d7dd55b6",
-      "officialSha256": "a4afb7f2986180f3a102d32319be8624d3e61cc9745fe37b6405dd0549254b52"
+      "officialSha256": "a4afb7f2986180f3a102d32319be8624d3e61cc9745fe37b6405dd0549254b52",
+      "sourceSha256": "4383c7a7bbaf39a1fec139ecc97246e1de349c9d07d04548a105c416554bf75d"
     },
     {
       "id": "rc_xy_service_latency",
@@ -313,7 +313,6 @@
       "scenario": "Four latency series and request volume across a fourteen-day incident window.",
       "layout": "dagre",
       "aspectRatio": 1.4,
-      "source": "\n---\nconfig:\n  xyChart:\n    showLegend: true\n---\nxychart\n  title \"Checkout latency and volume\"\n  x-axis [\"D-13\", \"D-12\", \"D-11\", \"D-10\", \"D-9\", \"D-8\", \"D-7\", \"D-6\", \"D-5\", \"D-4\", \"D-3\", \"D-2\", \"D-1\", \"Now\"]\n  y-axis \"Normalized value\" 0 --> 320\n  line \"p50 latency\" [72, 70, 74, 77, 81, 79, 83, 90, 96, 88, 84, 80, 76, 74]\n  line \"p95 latency\" [140, 145, 151, 160, 168, 176, 224, 285, 260, 210, 188, 172, 158, 150]\n  line \"p99 latency\" [188, 194, 201, 215, 228, 240, 298, 315, 304, 276, 250, 231, 214, 205]\n  bar \"Request volume\" [118, 124, 130, 142, 151, 164, 176, 205, 198, 184, 170, 158, 149, 143]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_xy_service_latency_native.png",
@@ -321,7 +320,8 @@
       "nativeBytes": 67004,
       "officialBytes": 67333,
       "nativeSha256": "546dba1d35ee8bf3f09d6f5e6d12717556645c06811cc20da6d2836677b9e0be",
-      "officialSha256": "79dd4dc904b39880b0e1c9bb296ee35f4a2c67aa26f49e1048b0a3b8f88e4534"
+      "officialSha256": "79dd4dc904b39880b0e1c9bb296ee35f4a2c67aa26f49e1048b0a3b8f88e4534",
+      "sourceSha256": "2658b3a02baed8849f8b94d664653f023950df725dc24e688b208e6787aacd1a"
     },
     {
       "id": "rc_xy_checkout_conversion",
@@ -330,7 +330,6 @@
       "scenario": "A horizontal comparison with labels for twelve markets and two conversion stages.",
       "layout": "dagre",
       "aspectRatio": 1.4,
-      "source": "\n---\nconfig:\n  xyChart:\n    showLegend: true\n    showDataLabel: true\n    showDataLabelOutsideBar: true\n---\nxychart horizontal\n  title \"Checkout conversion by market\"\n  x-axis [US, CA, MX, BR, GB, DE, FR, ES, JP, KR, AU, IN]\n  y-axis \"Percent\" 0 --> 100\n  bar \"Payment started\" [82, 80, 73, 68, 84, 81, 79, 76, 88, 86, 83, 65]\n  line \"Order completed\" [74, 72, 61, 56, 77, 73, 71, 68, 81, 78, 76, 52]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_xy_checkout_conversion_native.png",
@@ -338,7 +337,8 @@
       "nativeBytes": 57088,
       "officialBytes": 59217,
       "nativeSha256": "ff5f335ccaa85d19bdc257295f7d77f2a78fae173d27fb8e6ae25884f19dcef9",
-      "officialSha256": "a8b1a028a4153addd8170d0d8975322faa129af1ad6cfea5b31023470ef05e9e"
+      "officialSha256": "a8b1a028a4153addd8170d0d8975322faa129af1ad6cfea5b31023470ef05e9e",
+      "sourceSha256": "84812a60c82363905d4c32c1866f072933575876fa8fcf4c16c2d313a857cdb5"
     },
     {
       "id": "rc_xy_capacity_forecast",
@@ -347,7 +347,6 @@
       "scenario": "Monthly provisioned capacity, observed demand, and forecast headroom.",
       "layout": "dagre",
       "aspectRatio": 1.4,
-      "source": "\nxychart\n  title \"Regional capacity plan\"\n  x-axis [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]\n  y-axis \"Thousands of requests per second\" 0 --> 900\n  bar \"Provisioned\" [420, 420, 480, 480, 560, 560, 640, 640, 720, 720, 820, 820]\n  line \"Observed peak\" [350, 372, 401, 430, 468, 505, 548, 590, 621, 665, 718, 760]\n  line \"Forecast peak\" [360, 385, 415, 449, 486, 526, 568, 610, 653, 699, 748, 802]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_xy_capacity_forecast_native.png",
@@ -355,7 +354,8 @@
       "nativeBytes": 64405,
       "officialBytes": 68009,
       "nativeSha256": "6e221510c2ade8f1cff2fe3e3a1c90a33d6670d6190cd8a5ebd5f400d48531cf",
-      "officialSha256": "01fa294796dc8a5f764bee64e698babd50939276c0cf5eefa4c5ca1ce919219d"
+      "officialSha256": "01fa294796dc8a5f764bee64e698babd50939276c0cf5eefa4c5ca1ce919219d",
+      "sourceSha256": "b225592da932a1581cfd43a96f031dac43b26dc378a6e7dc68b5eb73ff3f60dd"
     },
     {
       "id": "rc_xy_queue_backlog",
@@ -364,7 +364,6 @@
       "scenario": "Backlog and consumer throughput during a recovery window.",
       "layout": "dagre",
       "aspectRatio": 1.4,
-      "source": "\n---\nconfig:\n  xyChart:\n    showLegend: true\n---\nxychart\n  title \"Queue recovery after dependency outage\"\n  x-axis [\"10:00\", \"10:05\", \"10:10\", \"10:15\", \"10:20\", \"10:25\", \"10:30\", \"10:35\", \"10:40\", \"10:45\", \"10:50\", \"10:55\"]\n  y-axis \"Messages per second\" 0 --> 500\n  bar \"Backlog\" [45, 130, 245, 390, 470, 430, 350, 270, 195, 124, 62, 18]\n  line \"Consumer throughput\" [180, 170, 155, 140, 130, 210, 280, 330, 370, 405, 430, 448]\n  line \"Producer throughput\" [190, 205, 220, 232, 240, 238, 230, 218, 210, 205, 198, 192]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_xy_queue_backlog_native.png",
@@ -372,7 +371,8 @@
       "nativeBytes": 62369,
       "officialBytes": 68078,
       "nativeSha256": "ac0c2681f6a19a56e17b309ebc59e6a6a8bd8db8dcedf44ed28a01e1096f3600",
-      "officialSha256": "5062c4ae2f68cd3cc1124057be0facbe4e3b8da3ee64d3844911e69ebc401d1a"
+      "officialSha256": "5062c4ae2f68cd3cc1124057be0facbe4e3b8da3ee64d3844911e69ebc401d1a",
+      "sourceSha256": "f923cbbac2c1e2955dd212fc5c93fca3367726cc4d841d5c2a5096c095b466de"
     },
     {
       "id": "rc_xy_error_budget",
@@ -381,7 +381,6 @@
       "scenario": "Daily error budget consumption against warning and critical thresholds.",
       "layout": "dagre",
       "aspectRatio": 1.4,
-      "source": "\nxychart\n  title \"Thirty-day error budget burn\"\n  x-axis [D1, D3, D5, D7, D9, D11, D13, D15, D17, D19, D21, D23, D25, D27, D29]\n  y-axis \"Budget consumed percent\" 0 --> 100\n  line \"Actual burn\" [2, 4, 7, 11, 15, 19, 25, 34, 48, 57, 63, 69, 75, 81, 86]\n  line \"Warning boundary\" [10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 54, 58, 62, 66]\n  line \"Critical boundary\" [20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_xy_error_budget_native.png",
@@ -389,7 +388,8 @@
       "nativeBytes": 68350,
       "officialBytes": 67375,
       "nativeSha256": "4712da97711fd91da344089b847701f6ae8cd532a2270f2a8a6b3a083c242b52",
-      "officialSha256": "6b9921b4e758d9f222d5af343ee40772980307d56d5b53d3fdbd9ed4667d0172"
+      "officialSha256": "6b9921b4e758d9f222d5af343ee40772980307d56d5b53d3fdbd9ed4667d0172",
+      "sourceSha256": "61c00d316dfeb16f89d5c9e6e1afaf77ae20feac312cedc7bcd5583af86beab7"
     },
     {
       "id": "prod_xychart_mixed_vertical_api_capacity",
@@ -411,13 +411,13 @@
         "API capacity and demand",
         "Capacity"
       ],
-      "source": "\n---\nconfig:\n  xyChart:\n    showLegend: true\n---\nxychart\n  title \"API capacity and demand\"\n  x-axis [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"]\n  y-axis \"Units\" 0 --> 140\n  bar \"Capacity\" [62, 68, 72, 78, 84, 88]\n  line \"Observed\" [48, 52, 60, 69, 76, 73]\n  line \"Forecast\" [51, 57, 65, 72, 80, 82]\n",
       "nativeFile": "prod_xychart_mixed_vertical_api_capacity_native.png",
       "officialFile": "prod_xychart_mixed_vertical_api_capacity_official.png",
       "nativeBytes": 48060,
       "officialBytes": 48030,
       "nativeSha256": "08d652badd4c5d4dff9f2a3ae03dec7ea57e16a0ad4565e6131d7d166df9f547",
-      "officialSha256": "e5577d23c85f5f7d492e0a565ab89fee76911111713eba0c5508bbec38520456"
+      "officialSha256": "e5577d23c85f5f7d492e0a565ab89fee76911111713eba0c5508bbec38520456",
+      "sourceSha256": "1225b2ca36690c84063b5a67490545113721b76277e9a6a0c1e5fe7197456cba"
     },
     {
       "id": "prod_xychart_mixed_vertical_warehouse_slots",
@@ -439,13 +439,13 @@
         "Warehouse slot utilization",
         "Capacity"
       ],
-      "source": "\n---\nconfig:\n  xyChart:\n    showLegend: true\n---\nxychart\n  title \"Warehouse slot utilization\"\n  x-axis [\"A1\", \"A2\", \"B1\", \"B2\", \"C1\", \"C2\"]\n  y-axis \"Units\" 0 --> 140\n  bar \"Capacity\" [90, 90, 110, 110, 130, 130]\n  line \"Observed\" [64, 72, 81, 88, 97, 104]\n  line \"Forecast\" [70, 77, 86, 94, 105, 116]\n",
       "nativeFile": "prod_xychart_mixed_vertical_warehouse_slots_native.png",
       "officialFile": "prod_xychart_mixed_vertical_warehouse_slots_official.png",
       "nativeBytes": 49089,
       "officialBytes": 50017,
       "nativeSha256": "e76ac3526771d83099a553dfb5fe9a13eb0672fffd678268eb577f53f60d59dd",
-      "officialSha256": "f3c97024d12e1ce33a4563a2f5e9e91814da15c5672098c3199ac78d611ff63b"
+      "officialSha256": "f3c97024d12e1ce33a4563a2f5e9e91814da15c5672098c3199ac78d611ff63b",
+      "sourceSha256": "661442a98c518702769aa2044d1fea1bd0ce363916be9fce5d5364a361ef7ed6"
     },
     {
       "id": "prod_xychart_horizontal_labels_review_queue",
@@ -464,13 +464,13 @@
         "Review queue age",
         "14"
       ],
-      "source": "\n---\nconfig:\n  xyChart:\n    showDataLabel: true\n    showDataLabelOutsideBar: true\n---\nxychart horizontal\n  title \"Review queue age\"\n  x-axis [\"Security\", \"Privacy\", \"Legal\", \"Finance\", \"Operations\"]\n  bar \"Minutes\" [14, 9, 21, 7, 12]\n",
       "nativeFile": "prod_xychart_horizontal_labels_review_queue_native.png",
       "officialFile": "prod_xychart_horizontal_labels_review_queue_official.png",
       "nativeBytes": 29764,
       "officialBytes": 31730,
       "nativeSha256": "184f134d5131abcc26ac502b2cb4cf08cd1c793a38f9d67e4005028372a1d5bf",
-      "officialSha256": "763e9656273bff2f26300ccf56c4f6383d377b1ef230a45af6c18302419a98e2"
+      "officialSha256": "763e9656273bff2f26300ccf56c4f6383d377b1ef230a45af6c18302419a98e2",
+      "sourceSha256": "bf7f8dacb5a7e3bdf814a3c0fd85f5f2878e2621f831e855edc2568fe9e0482e"
     },
     {
       "id": "prod_xychart_horizontal_labels_build_duration",
@@ -489,13 +489,13 @@
         "Build duration by target",
         "18"
       ],
-      "source": "\n---\nconfig:\n  xyChart:\n    showDataLabel: true\n    showDataLabelOutsideBar: true\n---\nxychart horizontal\n  title \"Build duration by target\"\n  x-axis [\"Android\", \"iOS\", \"Desktop\", \"Web\", \"Server\"]\n  bar \"Minutes\" [18, 24, 11, 9, 16]\n",
       "nativeFile": "prod_xychart_horizontal_labels_build_duration_native.png",
       "officialFile": "prod_xychart_horizontal_labels_build_duration_official.png",
       "nativeBytes": 29017,
       "officialBytes": 28689,
       "nativeSha256": "41672858e857c65b0b1572f172e19ff6279a0cee917f386c2e57b748f8d73d36",
-      "officialSha256": "e0618cf72bdaad2cfe16f5460dcaac208479f749bc8da2676ab0bd36f2cb8030"
+      "officialSha256": "e0618cf72bdaad2cfe16f5460dcaac208479f749bc8da2676ab0bd36f2cb8030",
+      "sourceSha256": "be8b81cd896abf1f456ab6b21c9bad47b3ba35902609e0ef2bd854da9b271203"
     },
     {
       "id": "prod_xychart_point_labels_model_efficiency",
@@ -513,13 +513,13 @@
         "Model efficiency checkpoints",
         "Baseline"
       ],
-      "source": "\n---\nconfig:\n  themeVariables:\n    xyChart:\n      plotColorPalette: \"#2563eb, #f97316\"\n---\nxychart\n  title \"Model efficiency checkpoints\"\n  x-axis 1 --> 4\n  y-axis \"Milliseconds\" 0 --> 110\n  line [88 \"Baseline\", 71 \"Quantized\", 54 \"Distilled\", 42 \"Target\"]\n",
       "nativeFile": "prod_xychart_point_labels_model_efficiency_native.png",
       "officialFile": "prod_xychart_point_labels_model_efficiency_official.png",
       "nativeBytes": 52630,
       "officialBytes": 50631,
       "nativeSha256": "3dc01ab96cb206d21f82639b696dc901252f65cdb2d4818d8ff8656e483d6259",
-      "officialSha256": "ecacb42d35d2a55758c77920128238673f860608df3da7d7d621e365ce0761f2"
+      "officialSha256": "ecacb42d35d2a55758c77920128238673f860608df3da7d7d621e365ce0761f2",
+      "sourceSha256": "af2fbe8e157ec502c887e5c2f526918a53d21522ebfff69bd8c4526c2e7d1989"
     },
     {
       "id": "prod_xychart_point_labels_database_latency",
@@ -537,13 +537,13 @@
         "Database latency checkpoints",
         "Original"
       ],
-      "source": "\n---\nconfig:\n  themeVariables:\n    xyChart:\n      plotColorPalette: \"#2563eb, #f97316\"\n---\nxychart\n  title \"Database latency checkpoints\"\n  x-axis 1 --> 4\n  y-axis \"Milliseconds\" 0 --> 110\n  line [96 \"Original\", 72 \"Indexed\", 55 \"Rewritten\", 39 \"Cached\"]\n",
       "nativeFile": "prod_xychart_point_labels_database_latency_native.png",
       "officialFile": "prod_xychart_point_labels_database_latency_official.png",
       "nativeBytes": 54882,
       "officialBytes": 54379,
       "nativeSha256": "a332a1ff1447667845b1ad6a2e4b075044dd168969766f281804992123e68ff2",
-      "officialSha256": "ff8038939d68a9f2fdf822c4b518a3efb64aa01c02b3f182aa352207655adba3"
+      "officialSha256": "ff8038939d68a9f2fdf822c4b518a3efb64aa01c02b3f182aa352207655adba3",
+      "sourceSha256": "ba4e91fb3c1109f7e45c36bc70adc13dc9ba9f03c4e4fef3fe1b6ac6efdef2c7"
     },
     {
       "id": "prod_xychart_axis_controls_monthly_retention",
@@ -560,13 +560,13 @@
         "Monthly retention cohort",
         "January"
       ],
-      "source": "\n---\nconfig:\n  xyChart:\n    width: 520\n    height: 360\n    showLegend: false\n    xAxis:\n      labelRotation: -45\n      showTitle: false\n    yAxis:\n      showTick: false\n---\nxychart\n  title \"Monthly retention cohort\"\n  x-axis [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\"]\n  y-axis \"Percent\" 0 --> 100\n  line [82, 79, 76, 74, 72, 70]\n",
       "nativeFile": "prod_xychart_axis_controls_monthly_retention_native.png",
       "officialFile": "prod_xychart_axis_controls_monthly_retention_official.png",
       "nativeBytes": 43821,
       "officialBytes": 44113,
       "nativeSha256": "28e56b927b2ee8090418f236622505c27225c8fece8b97cfce067a1dd983fab2",
-      "officialSha256": "b306ab45b3eafd318d62f8697cfbbf53632e32f9695359f27e1b7c0a27f4ae3b"
+      "officialSha256": "b306ab45b3eafd318d62f8697cfbbf53632e32f9695359f27e1b7c0a27f4ae3b",
+      "sourceSha256": "30ea92529284802ef140f03aec5a5de025d5fe2ac226b17bfab592fe58642412"
     },
     {
       "id": "prod_xychart_axis_controls_quarterly_quality",
@@ -583,13 +583,13 @@
         "Quarterly quality trend",
         "Q1 baseline"
       ],
-      "source": "\n---\nconfig:\n  xyChart:\n    width: 520\n    height: 360\n    showLegend: false\n    xAxis:\n      labelRotation: -45\n      showTitle: false\n    yAxis:\n      showTick: false\n---\nxychart\n  title \"Quarterly quality trend\"\n  x-axis [\"Q1 baseline\", \"Q1 final\", \"Q2 baseline\", \"Q2 final\", \"Q3 baseline\", \"Q3 final\"]\n  y-axis \"Percent\" 0 --> 100\n  line [71, 78, 76, 84, 82, 89]\n",
       "nativeFile": "prod_xychart_axis_controls_quarterly_quality_native.png",
       "officialFile": "prod_xychart_axis_controls_quarterly_quality_official.png",
       "nativeBytes": 49641,
       "officialBytes": 46813,
       "nativeSha256": "63db40f24fabdd92aaccb1259b77ebbb245a338e29a1296adad9574d739cd914",
-      "officialSha256": "6a3b3d9d0fc6f532df707db1d0f06a537aa33454598bbd6b1c622ee3052dbde6"
+      "officialSha256": "6a3b3d9d0fc6f532df707db1d0f06a537aa33454598bbd6b1c622ee3052dbde6",
+      "sourceSha256": "c11d078b6005ae8aca0f60b8ecc1db6ac992274922c77e01440c005698dcc0d4"
     },
     {
       "id": "rc_sequence_checkout_saga",
@@ -598,7 +598,6 @@
       "scenario": "A checkout request coordinating inventory, payment, order storage, and compensation.",
       "layout": "dagre",
       "aspectRatio": 0.8,
-      "source": "\nsequenceDiagram\n  autonumber\n  actor Customer\n  participant App\n  participant Gateway\n  participant Inventory\n  participant Payment\n  participant Orders\n  participant Shipping\n  Customer->>App: Confirm checkout\n  App->>+Gateway: POST /checkout\n  Gateway->>+Inventory: Reserve items\n  alt Inventory available\n    Inventory-->>-Gateway: Reservation token\n    Gateway->>+Payment: Authorize total\n    alt Payment authorized\n      Payment-->>-Gateway: Authorization id\n      Gateway->>+Orders: Create order\n      Orders-->>-Gateway: Order id\n      Gateway->>Shipping: Request shipment\n      Shipping-->>Gateway: Shipment accepted\n      Gateway-->>App: Order confirmed\n    else Payment rejected\n      Payment-->>Gateway: Decline reason\n      Gateway->>Inventory: Release reservation\n      Gateway-->>App: Payment failed\n    end\n  else Inventory unavailable\n    Inventory-->>Gateway: Missing items\n    Gateway-->>App: Cart changed\n  end\n  deactivate Gateway\n  App-->>Customer: Show final status\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_sequence_checkout_saga_native.png",
@@ -606,7 +605,8 @@
       "nativeBytes": 109351,
       "officialBytes": 104670,
       "nativeSha256": "45512d244d6ba369ad773291dd917ff259e2c33ef14d38a104bc652e09c091ef",
-      "officialSha256": "f09046fc87343659ecae7cd29930088033228b45365a6fbf453f7e2b3042ba0b"
+      "officialSha256": "f09046fc87343659ecae7cd29930088033228b45365a6fbf453f7e2b3042ba0b",
+      "sourceSha256": "dd684e60d2c2884a10ace65f063233ca70bc3653148986cf3de66890ed93d55a"
     },
     {
       "id": "rc_sequence_oauth_refresh",
@@ -615,7 +615,6 @@
       "scenario": "Concurrent API requests coordinate a single token refresh and retry.",
       "layout": "dagre",
       "aspectRatio": 0.78,
-      "source": "\nsequenceDiagram\n  participant UI as Mobile UI\n  participant Client as API Client\n  participant Lock as Refresh Lock\n  participant Auth as Authorization Server\n  participant API as Resource Server\n  par Profile request\n    UI->>Client: GET /profile\n    Client->>API: Access token A\n    API-->>Client: 401 expired\n  and Orders request\n    UI->>Client: GET /orders\n    Client->>API: Access token A\n    API-->>Client: 401 expired\n  end\n  critical Acquire refresh ownership\n    Client->>Lock: compareAndSet(false, true)\n  option Another request owns refresh\n    Lock-->>Client: wait for new token\n  end\n  Client->>+Auth: Refresh token\n  alt Refresh accepted\n    Auth-->>-Client: Access token B\n    Client->>Lock: publish token B\n    Client->>API: Retry profile\n    Client->>API: Retry orders\n    API-->>Client: 200 responses\n    Client-->>UI: Deliver both results\n  else Refresh revoked\n    Auth-->>Client: invalid_grant\n    Client->>Lock: clear credentials\n    Client-->>UI: Require sign-in\n  end\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_sequence_oauth_refresh_native.png",
@@ -623,7 +622,8 @@
       "nativeBytes": 101261,
       "officialBytes": 87123,
       "nativeSha256": "541d44299cec16aa33d8e2d1d8d596b66972dbad6acaa18386d6cc16ef63ff61",
-      "officialSha256": "7d6c14ae96299dd8fe63bf5638429a2459bc165eb31465d17e2513fec7041afc"
+      "officialSha256": "7d6c14ae96299dd8fe63bf5638429a2459bc165eb31465d17e2513fec7041afc",
+      "sourceSha256": "825568d4e8d701b315303b1d7ef4825c95f5ac2d4129b07eb7aa1ef0a0ac71ad"
     },
     {
       "id": "rc_sequence_media_upload",
@@ -632,7 +632,6 @@
       "scenario": "Upload negotiation, parallel part transfer, verification, and asynchronous processing.",
       "layout": "dagre",
       "aspectRatio": 0.78,
-      "source": "\nsequenceDiagram\n  actor Creator\n  participant App\n  participant API\n  participant Store as Object Storage\n  participant Queue\n  participant Worker\n  Creator->>App: Select video\n  App->>+API: Create upload session\n  API-->>-App: Signed part URLs\n  par Upload part 1\n    App->>Store: PUT part 1\n    Store-->>App: ETag 1\n  and Upload part 2\n    App->>Store: PUT part 2\n    Store-->>App: ETag 2\n  and Upload part 3\n    App->>Store: PUT part 3\n    Store-->>App: ETag 3\n  end\n  App->>+API: Complete upload with ETags\n  API->>Store: Verify object\n  alt Checksum matches\n    Store-->>API: Object metadata\n    API->>Queue: Publish processing job\n    API-->>-App: Processing\n    Queue->>Worker: Transcode and scan\n    loop Progress updates\n      Worker-->>API: Stage progress\n      App->>API: Poll status\n      API-->>App: Current stage\n    end\n    Worker-->>API: Ready\n    API-->>App: Playback URL\n  else Checksum mismatch\n    Store-->>API: Invalid checksum\n    API-->>App: Restart required\n  end\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_sequence_media_upload_native.png",
@@ -640,7 +639,8 @@
       "nativeBytes": 95995,
       "officialBytes": 85723,
       "nativeSha256": "28092eeb35cf9fb902adacf06c15a62607785dc36cb27f84a84a65b22a8e42f7",
-      "officialSha256": "a820c50328efcf018a64cd07b7d0d335ec50f71ff521abccae6cc4a803045414"
+      "officialSha256": "a820c50328efcf018a64cd07b7d0d335ec50f71ff521abccae6cc4a803045414",
+      "sourceSha256": "190435f3ddc9187e928f9eaab189c5f7bd97b6232f55385594c914719c4259e2"
     },
     {
       "id": "rc_sequence_webhook_retry",
@@ -649,7 +649,6 @@
       "scenario": "Signed webhook delivery, exponential retry, dead-lettering, and replay.",
       "layout": "dagre",
       "aspectRatio": 0.82,
-      "source": "\nsequenceDiagram\n  participant Events\n  participant Dispatcher\n  participant Secrets\n  participant Partner\n  participant DLQ as Dead Letter Queue\n  participant Operator\n  Events->>Dispatcher: Domain event\n  Dispatcher->>Secrets: Resolve signing key\n  Secrets-->>Dispatcher: Active key\n  loop Up to five attempts\n    Dispatcher->>Partner: POST signed payload\n    alt 2xx response\n      Partner-->>Dispatcher: Accepted\n      Dispatcher->>Events: Mark delivered\n    else Retryable response\n      Partner-->>Dispatcher: 429 or 5xx\n      Note over Dispatcher: Exponential backoff with jitter\n    else Permanent response\n      Partner-->>Dispatcher: 400 or 410\n      Dispatcher->>DLQ: Store failed delivery\n    end\n  end\n  opt Attempts exhausted\n    Dispatcher->>DLQ: Store retry history\n    DLQ-->>Operator: Alert\n    Operator->>DLQ: Replay after repair\n    DLQ->>Dispatcher: Requeue delivery\n  end\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_sequence_webhook_retry_native.png",
@@ -657,7 +656,8 @@
       "nativeBytes": 115671,
       "officialBytes": 97557,
       "nativeSha256": "ea46a3e13009e7f7899186b7c0894bc0732ddd0fc7f40265cd019559cdb6ad34",
-      "officialSha256": "7f704b24240fda3ea86c43f1f3228d95f434f10973250de89ff29f6a2e17a17e"
+      "officialSha256": "7f704b24240fda3ea86c43f1f3228d95f434f10973250de89ff29f6a2e17a17e",
+      "sourceSha256": "13ca8546a85d1b901ba4321d0e16bbc9e635e999c41c1e9f95030da1e7547a34"
     },
     {
       "id": "rc_sequence_realtime_sync",
@@ -666,7 +666,6 @@
       "scenario": "Local edits reconcile with server state while presence and attachments update in parallel.",
       "layout": "dagre",
       "aspectRatio": 0.82,
-      "source": "\nsequenceDiagram\n  actor Editor\n  participant UI\n  participant Local as Local Database\n  participant Sync\n  participant API\n  participant Presence\n  participant Files\n  Editor->>UI: Reconnect document\n  UI->>Local: Read pending operations\n  Local-->>UI: Local revision and queue\n  UI->>+Sync: Start synchronization\n  par Reconcile text\n    Sync->>API: Fetch changes since revision\n    API-->>Sync: Remote operations\n    Sync->>Sync: Transform concurrent operations\n    Sync->>API: Push transformed local operations\n    API-->>Sync: Accepted revision\n  and Restore presence\n    Sync->>Presence: Join room\n    Presence-->>Sync: Active collaborators\n  and Resume attachments\n    Sync->>Files: Query incomplete uploads\n    Files-->>Sync: Missing chunks\n  end\n  Sync->>Local: Commit merged revision\n  Local-->>Sync: Durable\n  Sync-->>-UI: Synced document\n  UI-->>Editor: Render merged state\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_sequence_realtime_sync_native.png",
@@ -674,7 +673,8 @@
       "nativeBytes": 86406,
       "officialBytes": 83523,
       "nativeSha256": "f5c156b2b3a8f5278cdb5acf20622690b51a92ca6ae18625568ccb79ed1f055f",
-      "officialSha256": "29c63f09e8bcf2e469ca91c90f30f4c224e32224385489871b3b480e8c9f66c7"
+      "officialSha256": "29c63f09e8bcf2e469ca91c90f30f4c224e32224385489871b3b480e8c9f66c7",
+      "sourceSha256": "c9408141bdda3d3113404223ce21d065f0bcd82bd3b6dd54d00446f796a0749c"
     },
     {
       "id": "rc_sequence_cache_stampede",
@@ -683,7 +683,6 @@
       "scenario": "Concurrent cache misses elect one loader and distribute the refreshed value.",
       "layout": "dagre",
       "aspectRatio": 0.82,
-      "source": "\nsequenceDiagram\n  participant A as Request A\n  participant B as Request B\n  participant Cache\n  participant Lock\n  participant DB as Database\n  par First lookup\n    A->>Cache: GET product:42\n    Cache-->>A: Miss\n  and Concurrent lookup\n    B->>Cache: GET product:42\n    Cache-->>B: Miss\n  end\n  critical Elect loader\n    A->>Lock: SET NX product:42\n    Lock-->>A: Acquired\n  option Loader already elected\n    B->>Lock: SET NX product:42\n    Lock-->>B: Rejected\n  end\n  A->>+DB: SELECT product 42\n  DB-->>-A: Product row\n  A->>Cache: SET product:42 with jittered TTL\n  A->>Lock: Release\n  loop Wait with bounded backoff\n    B->>Cache: GET product:42\n    Cache-->>B: Value or miss\n  end\n  A-->>A: Return value\n  B-->>B: Return refreshed value\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_sequence_cache_stampede_native.png",
@@ -691,7 +690,8 @@
       "nativeBytes": 90539,
       "officialBytes": 76626,
       "nativeSha256": "7896a8a80bcca5afc2b1498be36e882f177a5b3acb12f563c93656b8ca5aaa7d",
-      "officialSha256": "a733a6625a4307472096ae0d66b4b222e9ca5bab6e9b5174676836b522138856"
+      "officialSha256": "a733a6625a4307472096ae0d66b4b222e9ca5bab6e9b5174676836b522138856",
+      "sourceSha256": "18d7b7bc0e9484e83c4220ac5e16a0aba73232304eb857bfae9d49a5b52799bb"
     },
     {
       "id": "prod_sequence_request_lifecycle_session_refresh",
@@ -712,13 +712,13 @@
         "Mobile user",
         "Refresh session"
       ],
-      "source": "\nsequenceDiagram\n  autonumber\n  actor User as Mobile user\n  participant API@{ type: \"boundary\", alias: \"Session gateway\" }\n  participant Service@{ type: \"control\", alias: \"Identity service\" }\n  User->>+API: Refresh session\n  API->>+Service: Validate request\n  alt accepted\n    Service-->>API: Result\n  else rejected\n    Service-->>API: Structured error\n  end\n  deactivate Service\n  opt audit enabled\n    API->>API: Append audit event\n  end\n  API-->>-User: Response\n",
       "nativeFile": "prod_sequence_request_lifecycle_session_refresh_native.png",
       "officialFile": "prod_sequence_request_lifecycle_session_refresh_official.png",
       "nativeBytes": 83296,
       "officialBytes": 83704,
       "nativeSha256": "074c13319346c95e4b1085a5fdf5037d83f70f66615a4eb15001ad3cca57c563",
-      "officialSha256": "c37f180e2632bb18d5f3b5a515746d26587d3565f17694b461c0790cf2b2ea0d"
+      "officialSha256": "c37f180e2632bb18d5f3b5a515746d26587d3565f17694b461c0790cf2b2ea0d",
+      "sourceSha256": "16ebd282ba987efb7d5564fe639e650e4e75dd2e9bd4c37e8e4760e9f4d5fe65"
     },
     {
       "id": "prod_sequence_request_lifecycle_shipment_quote",
@@ -739,13 +739,13 @@
         "Merchant",
         "Request quote"
       ],
-      "source": "\nsequenceDiagram\n  autonumber\n  actor User as Merchant\n  participant API@{ type: \"boundary\", alias: \"Shipping gateway\" }\n  participant Service@{ type: \"control\", alias: \"Routing service\" }\n  User->>+API: Request quote\n  API->>+Service: Validate request\n  alt accepted\n    Service-->>API: Result\n  else rejected\n    Service-->>API: Structured error\n  end\n  deactivate Service\n  opt audit enabled\n    API->>API: Append audit event\n  end\n  API-->>-User: Response\n",
       "nativeFile": "prod_sequence_request_lifecycle_shipment_quote_native.png",
       "officialFile": "prod_sequence_request_lifecycle_shipment_quote_official.png",
       "nativeBytes": 82477,
       "officialBytes": 83178,
       "nativeSha256": "50330eb3d142c4d4331bbbba2aa5568f0fbc75f62ce76ea8adfb4166e82534b6",
-      "officialSha256": "dd4c3e13f206dcf856743d564d037ab15f269cb8d3dd8c292737b786e901f9d3"
+      "officialSha256": "dd4c3e13f206dcf856743d564d037ab15f269cb8d3dd8c292737b786e901f9d3",
+      "sourceSha256": "b8664cabf2d737e6f45ba550a6a8fb77dfb3a254e8fb29d24a0f7e6e6fbdf18c"
     },
     {
       "id": "prod_sequence_control_regions_cache_rebuild",
@@ -765,13 +765,13 @@
         "Scheduler",
         "Old version remains available"
       ],
-      "source": "\nsequenceDiagram\n  participant Caller as Scheduler\n  participant Worker as Rebuilder\n  participant Store as Cache\n  par prepare\n    Caller->>Worker: Start build\n  and inspect\n    Caller->>Store: Read current version\n  end\n  loop bounded batches\n    Worker->>Store: Write next batch\n  end\n  critical publish atomically\n    Worker->>Store: Promote new version\n  option lock unavailable\n    Worker-->>Caller: Retry later\n  end\n  break validation failed\n    Worker--xCaller: Abort rollout\n  end\n  Note over Worker,Store: Old version remains available\n",
       "nativeFile": "prod_sequence_control_regions_cache_rebuild_native.png",
       "officialFile": "prod_sequence_control_regions_cache_rebuild_official.png",
       "nativeBytes": 77659,
       "officialBytes": 74731,
       "nativeSha256": "647b25bc4c0173334e3bec547e44a4edcff0cdfe4c4f3b2fdce1deba0152c92b",
-      "officialSha256": "b7bbec5030ef6422e8c8f8456b74fa012c8d5eada952999a1e7099a2bb0e99af"
+      "officialSha256": "b7bbec5030ef6422e8c8f8456b74fa012c8d5eada952999a1e7099a2bb0e99af",
+      "sourceSha256": "218903da8735eab93390fab8b1bef9e79a5ee368f7905ba069c88d884a036ead"
     },
     {
       "id": "prod_sequence_control_regions_index_rollout",
@@ -791,13 +791,13 @@
         "Release job",
         "Old version remains available"
       ],
-      "source": "\nsequenceDiagram\n  participant Caller as Release job\n  participant Worker as Indexer\n  participant Store as Search cluster\n  par prepare\n    Caller->>Worker: Start build\n  and inspect\n    Caller->>Store: Read current version\n  end\n  loop bounded batches\n    Worker->>Store: Write next batch\n  end\n  critical publish atomically\n    Worker->>Store: Promote new version\n  option lock unavailable\n    Worker-->>Caller: Retry later\n  end\n  break validation failed\n    Worker--xCaller: Abort rollout\n  end\n  Note over Worker,Store: Old version remains available\n",
       "nativeFile": "prod_sequence_control_regions_index_rollout_native.png",
       "officialFile": "prod_sequence_control_regions_index_rollout_official.png",
       "nativeBytes": 79095,
       "officialBytes": 76631,
       "nativeSha256": "78f42b7d7cd6eba523256fbf8207bbf75460c4e6f6c776639f75516206c0d1a4",
-      "officialSha256": "1f7b1b6e0b3c16500381bfb1aab1d42f9073b40ec53322257c1e48bab062a435"
+      "officialSha256": "1f7b1b6e0b3c16500381bfb1aab1d42f9073b40ec53322257c1e48bab062a435",
+      "sourceSha256": "a1e65651357029ec95698d644439c196ef48f9b35c2d89701701099444bc74eb"
     },
     {
       "id": "prod_sequence_dynamic_participants_export_worker",
@@ -815,13 +815,13 @@
         "Export coordinator",
         "CSV worker"
       ],
-      "source": "\nsequenceDiagram\n  box rgb(239,246,255) Export services\n    participant API as Export coordinator\n  end\n  create participant Worker as CSV worker\n  API->>Worker: Start isolated task\n  rect rgb(240,253,244)\n    Worker->>Worker: Process input\n    Worker-->>API: Stream progress\n  end\n  destroy Worker\n  Worker-->>API: Final result\n",
       "nativeFile": "prod_sequence_dynamic_participants_export_worker_native.png",
       "officialFile": "prod_sequence_dynamic_participants_export_worker_official.png",
       "nativeBytes": 51492,
       "officialBytes": 48103,
       "nativeSha256": "baaf36c4f681ea09ef5d1be1eaa75ac27c50533f8c2dcf4d217b50160a67e2f5",
-      "officialSha256": "300420bf1affab3a8af6ebe367bd7e485c6d1fcb3e1ef79513b34982c33fdf16"
+      "officialSha256": "300420bf1affab3a8af6ebe367bd7e485c6d1fcb3e1ef79513b34982c33fdf16",
+      "sourceSha256": "8fa6aef10381f3c195c8ecdf807dec429b94992c6d263c416175486152d3488c"
     },
     {
       "id": "prod_sequence_dynamic_participants_scan_worker",
@@ -839,13 +839,13 @@
         "Scan coordinator",
         "Artifact scanner"
       ],
-      "source": "\nsequenceDiagram\n  box rgb(239,246,255) Security services\n    participant API as Scan coordinator\n  end\n  create participant Worker as Artifact scanner\n  API->>Worker: Start isolated task\n  rect rgb(240,253,244)\n    Worker->>Worker: Process input\n    Worker-->>API: Stream progress\n  end\n  destroy Worker\n  Worker-->>API: Final result\n",
       "nativeFile": "prod_sequence_dynamic_participants_scan_worker_native.png",
       "officialFile": "prod_sequence_dynamic_participants_scan_worker_official.png",
       "nativeBytes": 53905,
       "officialBytes": 50510,
       "nativeSha256": "e42a010366b4e89569ebe0b2c7cdd27e198f343ff72dd53be52e32229fef60d1",
-      "officialSha256": "71fc54c3f4276a80ecce80a4fdcb3b3b1b52de5b7436b60a386f8d095ca3d4ed"
+      "officialSha256": "71fc54c3f4276a80ecce80a4fdcb3b3b1b52de5b7436b60a386f8d095ca3d4ed",
+      "sourceSha256": "29bc38a7e3be646088453053fae8b5c7e892581768d5f55ed31fa35a5393f6cb"
     },
     {
       "id": "prod_sequence_arrow_matrix_transport",
@@ -862,13 +862,13 @@
         "Transport client",
         "Bidirectional sync"
       ],
-      "source": "\nsequenceDiagram\n  participant A as Transport client\n  participant B as Transport service\n  A->B: Open request\n  B-->A: Open response\n  A->>B: Closed request\n  B-->>A: Closed response\n  A-)B: Async event\n  B--xA: Failure event\n  A<<->>B: Bidirectional sync\n  A->>A: Update local state\n",
       "nativeFile": "prod_sequence_arrow_matrix_transport_native.png",
       "officialFile": "prod_sequence_arrow_matrix_transport_official.png",
       "nativeBytes": 65046,
       "officialBytes": 56415,
       "nativeSha256": "d36abeff64e6d7716ccd6076ec0ebf01af797ba7ac54e2f62c67100bcdccce27",
-      "officialSha256": "4c15da38096d9a8ff03b221c5dac99c3a23a03283e25d08acc06c4913d3c126a"
+      "officialSha256": "4c15da38096d9a8ff03b221c5dac99c3a23a03283e25d08acc06c4913d3c126a",
+      "sourceSha256": "ec562f8681ab7da4e790b3b636cee89dd02bcac65ec82b0fecf58848922bd9be"
     },
     {
       "id": "prod_sequence_arrow_matrix_workflow",
@@ -885,13 +885,13 @@
         "Workflow client",
         "Bidirectional sync"
       ],
-      "source": "\nsequenceDiagram\n  participant A as Workflow client\n  participant B as Workflow engine\n  A->B: Open request\n  B-->A: Open response\n  A->>B: Closed request\n  B-->>A: Closed response\n  A-)B: Async event\n  B--xA: Failure event\n  A<<->>B: Bidirectional sync\n  A->>A: Update local state\n",
       "nativeFile": "prod_sequence_arrow_matrix_workflow_native.png",
       "officialFile": "prod_sequence_arrow_matrix_workflow_official.png",
       "nativeBytes": 67028,
       "officialBytes": 57792,
       "nativeSha256": "64045f46e61926a3ad24df6d3c8ce68da9205503613673a798f277cd5a623615",
-      "officialSha256": "f1766029a1922cca187d488f94adfbf3c045d9fb9ad522ce4dc1380c7b618779"
+      "officialSha256": "f1766029a1922cca187d488f94adfbf3c045d9fb9ad522ce4dc1380c7b618779",
+      "sourceSha256": "dfdbab6041e2c26d3a125b65f36418ca4e30c4dc6effc125515d5b2ac051a18a"
     },
     {
       "id": "rc_class_commerce_domain",
@@ -900,7 +900,6 @@
       "scenario": "Aggregate roots, repositories, payment strategy, inventory, and fulfillment.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nclassDiagram\n  direction LR\n  class Order {\n    +OrderId id\n    +OrderStatus status\n    +Money total\n    +addItem(product, quantity)\n    +confirm()\n    +cancel(reason)\n  }\n  class OrderItem {\n    +ProductId productId\n    +int quantity\n    +Money unitPrice\n  }\n  class Customer {\n    +CustomerId id\n    +Email email\n  }\n  class Payment {\n    +PaymentId id\n    +PaymentStatus status\n    +authorize()\n    +capture()\n    +void()\n  }\n  class PaymentGateway {\n    <<interface>>\n    +authorize(request)\n    +capture(id)\n  }\n  class InventoryReservation {\n    +ReservationId id\n    +reserve()\n    +release()\n  }\n  class Shipment {\n    +ShipmentId id\n    +TrackingCode tracking\n    +dispatch()\n  }\n  class OrderRepository {\n    <<interface>>\n    +find(id) Order\n    +save(order)\n  }\n  Customer \"1\" --> \"0..*\" Order : places\n  Order \"1\" *-- \"1..*\" OrderItem : contains\n  Order \"1\" o-- \"0..1\" Payment : payment\n  Order \"1\" o-- \"0..1\" InventoryReservation : inventory\n  Order \"1\" o-- \"0..1\" Shipment : fulfillment\n  Payment --> PaymentGateway : delegates\n  OrderRepository ..> Order : persists\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_class_commerce_domain_native.png",
@@ -908,7 +907,8 @@
       "nativeBytes": 88550,
       "officialBytes": 80523,
       "nativeSha256": "7872f72cb73c78e08a31dca10a63314f0b83501e0a0082f123be37040131aa7b",
-      "officialSha256": "e5649ecb96840f32e5ff662d0a15beb5de3d2c4208ae7c1698c58435a4decb15"
+      "officialSha256": "e5649ecb96840f32e5ff662d0a15beb5de3d2c4208ae7c1698c58435a4decb15",
+      "sourceSha256": "59af74a64ed6a53bbbc107a3d01fbfed16d22dec375c699358c730a59eb2b2dd"
     },
     {
       "id": "rc_class_workflow_engine",
@@ -917,7 +917,6 @@
       "scenario": "Definitions, executable instances, typed steps, scheduling, and state persistence.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nclassDiagram\n  direction TB\n  namespace Definition {\n    class WorkflowDefinition {\n      +String key\n      +int version\n      +List~StepDefinition~ steps\n      +validate() Result\n    }\n    class StepDefinition {\n      <<abstract>>\n      +String id\n      +Duration timeout\n    }\n    class HttpStep {\n      +URI endpoint\n      +Map~String,String~ headers\n    }\n    class DecisionStep {\n      +Expression condition\n    }\n  }\n  namespace Runtime {\n    class WorkflowInstance {\n      +InstanceId id\n      +InstanceStatus status\n      +advance(event)\n    }\n    class StepExecution {\n      +ExecutionId id\n      +int attempt\n      +ExecutionStatus status\n    }\n    class Scheduler {\n      +schedule(instance)\n      +retry(execution)\n    }\n    class StateStore {\n      <<interface>>\n      +load(id) WorkflowInstance\n      +commit(instance)\n    }\n  }\n  StepDefinition <|-- HttpStep\n  StepDefinition <|-- DecisionStep\n  WorkflowDefinition \"1\" *-- \"1..*\" StepDefinition\n  WorkflowInstance \"1\" *-- \"0..*\" StepExecution\n  Scheduler --> StateStore\n  WorkflowInstance --> WorkflowDefinition : executes\n  StepExecution --> StepDefinition : realizes\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_class_workflow_engine_native.png",
@@ -925,7 +924,8 @@
       "nativeBytes": 57320,
       "officialBytes": 52804,
       "nativeSha256": "369a6843d5bd1461789ac4d5b79c09cd38433d1f077b524e74abe326f2a21e0e",
-      "officialSha256": "be0cd3f809813b59e0496563ae8856022905ccaa2f2a83ac565a230495f765b0"
+      "officialSha256": "be0cd3f809813b59e0496563ae8856022905ccaa2f2a83ac565a230495f765b0",
+      "sourceSha256": "8277efc34f42ff17d2d83d22e9cd3d94ea5a8edabad7f761e383214b752432a9"
     },
     {
       "id": "rc_class_authorization_model",
@@ -934,7 +934,6 @@
       "scenario": "Users, groups, roles, permissions, scoped grants, and policy evaluation.",
       "layout": "elk",
       "aspectRatio": 1.3,
-      "source": "\nclassDiagram\n  class Principal {\n    <<interface>>\n    +PrincipalId id\n  }\n  class User {\n    +String email\n    +UserStatus status\n  }\n  class Group {\n    +String name\n  }\n  class Role {\n    +String name\n    +Set~Permission~ permissions\n  }\n  class Permission {\n    +String action\n    +String resourceType\n  }\n  class Grant {\n    +Instant startsAt\n    +Instant expiresAt\n    +Scope scope\n  }\n  class Policy {\n    +Effect effect\n    +Expression condition\n  }\n  class Evaluator {\n    +evaluate(request) Decision\n  }\n  class AuditSink {\n    <<interface>>\n    +append(decision)\n  }\n  Principal <|.. User\n  Principal <|.. Group\n  Group \"0..*\" o-- \"0..*\" User : members\n  Grant --> Principal : subject\n  Grant --> Role : assigns\n  Role \"1\" *-- \"1..*\" Permission\n  Policy --> Permission : constrains\n  Evaluator --> Grant : resolves\n  Evaluator --> Policy : applies\n  Evaluator --> AuditSink : records\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_class_authorization_model_native.png",
@@ -942,7 +941,8 @@
       "nativeBytes": 54593,
       "officialBytes": 50479,
       "nativeSha256": "de38a68a7575d5f29d9251e077b495f8bc9b0e3614d3d5386fb2dc6bb876f11c",
-      "officialSha256": "68b3b0aa57d0cb2c77a207f1b8f165b9774a4b21e5ffb4ea7cd91bcee3d536ca"
+      "officialSha256": "68b3b0aa57d0cb2c77a207f1b8f165b9774a4b21e5ffb4ea7cd91bcee3d536ca",
+      "sourceSha256": "d7b1de772816372a78ca92fc7075ac3bdf9f535d5826185487168fc476ce1b87"
     },
     {
       "id": "rc_class_notification_platform",
@@ -951,7 +951,6 @@
       "scenario": "Templates, channel adapters, preferences, routing, retries, and delivery receipts.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nclassDiagram\n  class Notification {\n    +NotificationId id\n    +Recipient recipient\n    +Map~String,Any~ variables\n  }\n  class Template {\n    +TemplateId id\n    +Locale locale\n    +render(variables) Message\n  }\n  class PreferenceService {\n    +allowed(recipient, channel) bool\n  }\n  class Router {\n    +route(notification) List~Channel~\n  }\n  class Channel {\n    <<interface>>\n    +send(message) DeliveryReceipt\n  }\n  class EmailChannel\n  class PushChannel\n  class SmsChannel\n  class RetryPolicy {\n    +int maxAttempts\n    +Duration nextDelay(attempt)\n  }\n  class DeliveryStore {\n    <<interface>>\n    +save(receipt)\n    +pending() List~DeliveryReceipt~\n  }\n  Notification --> Template : renders with\n  Router --> PreferenceService : checks\n  Router --> Channel : selects\n  Channel <|.. EmailChannel\n  Channel <|.. PushChannel\n  Channel <|.. SmsChannel\n  Channel --> RetryPolicy : follows\n  Channel --> DeliveryStore : records\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_class_notification_platform_native.png",
@@ -959,7 +958,8 @@
       "nativeBytes": 83449,
       "officialBytes": 79303,
       "nativeSha256": "e25da0b30231a5107438c3c505fdd4a956572899ad15bfa249b18ed3c1329dfc",
-      "officialSha256": "644662ce8ef15421b8a419d64c6bb38a7ed301762d0053aa42d0fbbf197195ac"
+      "officialSha256": "644662ce8ef15421b8a419d64c6bb38a7ed301762d0053aa42d0fbbf197195ac",
+      "sourceSha256": "e6ee32c0b12236dc4366af0f564f17b995778f8925617438e0d76441f421c69e"
     },
     {
       "id": "rc_class_document_editor",
@@ -968,7 +968,6 @@
       "scenario": "Documents, blocks, operations, revisions, presence, and conflict transformation.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nclassDiagram\n  class Document {\n    +DocumentId id\n    +Revision revision\n    +List~Block~ blocks\n    +apply(operation)\n  }\n  class Block {\n    <<abstract>>\n    +BlockId id\n    +Position position\n  }\n  class TextBlock {\n    +String text\n    +List~Mark~ marks\n  }\n  class MediaBlock {\n    +URI source\n    +Dimensions size\n  }\n  class Operation {\n    +OperationId id\n    +Revision baseRevision\n    +transform(other) Operation\n  }\n  class Revision {\n    +long sequence\n    +Instant committedAt\n  }\n  class Session {\n    +SessionId id\n    +UserId user\n    +Cursor cursor\n  }\n  class SyncEngine {\n    +merge(local, remote) MergeResult\n  }\n  class DocumentStore {\n    <<interface>>\n    +load(id) Document\n    +commit(document, operations)\n  }\n  Block <|-- TextBlock\n  Block <|-- MediaBlock\n  Document \"1\" *-- \"1..*\" Block\n  Document \"1\" o-- \"0..*\" Revision\n  Document \"1\" o-- \"0..*\" Session\n  SyncEngine --> Operation\n  SyncEngine --> DocumentStore\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_class_document_editor_native.png",
@@ -976,7 +975,8 @@
       "nativeBytes": 74669,
       "officialBytes": 66706,
       "nativeSha256": "1914c2ffd17145c883fcb54c88fb9f4a14ccd08964c602210810b61522b56100",
-      "officialSha256": "ab3546a273a4a8b59066cd4627fa88c25773f56ff4952027ca39edb75d4fb7b7"
+      "officialSha256": "ab3546a273a4a8b59066cd4627fa88c25773f56ff4952027ca39edb75d4fb7b7",
+      "sourceSha256": "f40b0659f210e498fec0ef38ad522c31e5d92730a7c6e68ed43b160a93827de7"
     },
     {
       "id": "prod_class_domain_model_billing",
@@ -997,13 +997,13 @@
         "Invoice",
         "PaymentService"
       ],
-      "source": "\nclassDiagram\n  class Invoice {\n    <<aggregate>>\n    +String id\n    -List~LineItem~ items\n    +total() Decimal\n  }\n  class LineItem {\n    +String id\n    +Decimal amount\n  }\n  class PaymentService {\n    <<service>>\n    +execute(Invoice) Result~Boolean~\n  }\n  Invoice \"1\" *-- \"1..*\" LineItem : contains\n  PaymentService ..> Invoice : processes\n",
       "nativeFile": "prod_class_domain_model_billing_native.png",
       "officialFile": "prod_class_domain_model_billing_official.png",
       "nativeBytes": 43956,
       "officialBytes": 38693,
       "nativeSha256": "8abe36e8f915d6d6f2a127e61f62a863d6eaee277a47302306dd53e6683b615a",
-      "officialSha256": "ca313f7e5596a745f35cad693d1a642cae6085f0c894928748ec444f0016ec84"
+      "officialSha256": "ca313f7e5596a745f35cad693d1a642cae6085f0c894928748ec444f0016ec84",
+      "sourceSha256": "28a15850bb9fae7d40d0768376ba9b2491bbe8fba4972fe927e8663fe07eec4d"
     },
     {
       "id": "prod_class_domain_model_learning",
@@ -1024,13 +1024,13 @@
         "Course",
         "EnrollmentService"
       ],
-      "source": "\nclassDiagram\n  class Course {\n    <<aggregate>>\n    +String id\n    -List~Lesson~ items\n    +total() Decimal\n  }\n  class Lesson {\n    +String id\n    +Decimal amount\n  }\n  class EnrollmentService {\n    <<service>>\n    +execute(Course) Result~Boolean~\n  }\n  Course \"1\" *-- \"1..*\" Lesson : contains\n  EnrollmentService ..> Course : processes\n",
       "nativeFile": "prod_class_domain_model_learning_native.png",
       "officialFile": "prod_class_domain_model_learning_official.png",
       "nativeBytes": 44292,
       "officialBytes": 39507,
       "nativeSha256": "87cc545e5c3f8893313118e5686d7e0c62851ab3cc62a81f492c950830d6325f",
-      "officialSha256": "117053ccf03e20b402aa49e2e4300bb4e7962aa94d3cbc71955c680028caff25"
+      "officialSha256": "117053ccf03e20b402aa49e2e4300bb4e7962aa94d3cbc71955c680028caff25",
+      "sourceSha256": "198f992b0ad9026761e0e219e6d25da756cb87a5f138d097f2f370a0e6aa49f1"
     },
     {
       "id": "prod_class_namespace_tree_observability",
@@ -1049,13 +1049,13 @@
         "TraceReceiver",
         "Owns request lifecycle"
       ],
-      "source": "\nclassDiagram\n  direction LR\n  namespace observability {\n    namespace collection {\n      class TraceReceiver\n    }\n    class SpanStore\n  }\n  TraceReceiver --> SpanStore : publishes\n  note for TraceReceiver \"Owns request lifecycle\"\n",
       "nativeFile": "prod_class_namespace_tree_observability_native.png",
       "officialFile": "prod_class_namespace_tree_observability_official.png",
       "nativeBytes": 28643,
       "officialBytes": 29013,
       "nativeSha256": "05ac512673df1837870ef52ec7447a172c528ec5d9acd68ef16d9e89f2a39ea6",
-      "officialSha256": "66d8bb912187a69cf6879f3c40247eb1f21f8cead07e9bfd33bd890c6d07e34c"
+      "officialSha256": "66d8bb912187a69cf6879f3c40247eb1f21f8cead07e9bfd33bd890c6d07e34c",
+      "sourceSha256": "440fd5ee3dbc5dd22edfdb5de45fe7e37441f70ca8f20297faa5a869045ba3b6"
     },
     {
       "id": "prod_class_namespace_tree_commerce",
@@ -1074,13 +1074,13 @@
         "CheckoutCoordinator",
         "Owns request lifecycle"
       ],
-      "source": "\nclassDiagram\n  direction LR\n  namespace commerce {\n    namespace checkout {\n      class CheckoutCoordinator\n    }\n    class FulfillmentGateway\n  }\n  CheckoutCoordinator --> FulfillmentGateway : publishes\n  note for CheckoutCoordinator \"Owns request lifecycle\"\n",
       "nativeFile": "prod_class_namespace_tree_commerce_native.png",
       "officialFile": "prod_class_namespace_tree_commerce_official.png",
       "nativeBytes": 27456,
       "officialBytes": 28305,
       "nativeSha256": "ed222a0ba6f3b69d1d77d3f001aa46b9d5e1d6a4ac1f69e016c4b2b7d1fa7b8f",
-      "officialSha256": "214d22bd8732f968a83b305fd1e0e875d657c347cf368c6c5e1338bdd253ef0c"
+      "officialSha256": "214d22bd8732f968a83b305fd1e0e875d657c347cf368c6c5e1338bdd253ef0c",
+      "sourceSha256": "f26925c2485256a623bafc9ecef8a24c75b1096e4e7895cc3c0a05f3393ea044"
     },
     {
       "id": "prod_class_relation_matrix_plugins",
@@ -1098,13 +1098,13 @@
         "PluginRuntime",
         "PluginPort"
       ],
-      "source": "\nclassDiagram\n  class PluginBase\n  class PluginConfig\n  class PluginRuntime\n  class PluginRegistry\n  class PluginPort\n  PluginBase <|-- PluginRuntime\n  PluginRuntime *-- PluginConfig\n  PluginRegistry o-- PluginRuntime\n  PluginRuntime <--> PluginRegistry\n  PluginRuntime --() PluginPort\n",
       "nativeFile": "prod_class_relation_matrix_plugins_native.png",
       "officialFile": "prod_class_relation_matrix_plugins_official.png",
       "nativeBytes": 35655,
       "officialBytes": 35848,
       "nativeSha256": "cca326673e818da2be73c822a96d60f6117ff1181113490a2866f0cb9e5f48a0",
-      "officialSha256": "582953f84e70cc4a31d52f69eda71abe818b5129198529c1d0f2b7038682ec14"
+      "officialSha256": "582953f84e70cc4a31d52f69eda71abe818b5129198529c1d0f2b7038682ec14",
+      "sourceSha256": "0572e94b6de890b25cb1dcf0fe024833d424cf17982ceaa2abf2001777ad6e82"
     },
     {
       "id": "prod_class_relation_matrix_connectors",
@@ -1122,13 +1122,13 @@
         "ConnectorRuntime",
         "ConnectorPort"
       ],
-      "source": "\nclassDiagram\n  class ConnectorBase\n  class ConnectorConfig\n  class ConnectorRuntime\n  class ConnectorRegistry\n  class ConnectorPort\n  ConnectorBase <|-- ConnectorRuntime\n  ConnectorRuntime *-- ConnectorConfig\n  ConnectorRegistry o-- ConnectorRuntime\n  ConnectorRuntime <--> ConnectorRegistry\n  ConnectorRuntime --() ConnectorPort\n",
       "nativeFile": "prod_class_relation_matrix_connectors_native.png",
       "officialFile": "prod_class_relation_matrix_connectors_official.png",
       "nativeBytes": 43289,
       "officialBytes": 40972,
       "nativeSha256": "9806634be31fc1ffc66a72e964fc657b7a724e4034798d05aef381fc6e276fe7",
-      "officialSha256": "8801e19d457e0116e5839fde5830716a4a46390cf2ee4750611876b5503a5209"
+      "officialSha256": "8801e19d457e0116e5839fde5830716a4a46390cf2ee4750611876b5503a5209",
+      "sourceSha256": "8cd715e22fe7a952d8c7375bb148178fa3be7972e5d2f97df2954e440c850384"
     },
     {
       "id": "prod_class_styled_metadata_policy",
@@ -1147,13 +1147,13 @@
         "PolicyInput",
         "PolicyDecision"
       ],
-      "source": "\n---\ntitle: Policy evaluation model\naccTitle: Policy evaluation model\naccDescr: A compact decision model\n---\nclassDiagram\n  class PolicyInput[\"\\`**PolicyInput**\\`\"]\n  class PolicyDecision\n  PolicyInput <--> PolicyDecision : evaluates\n  classDef input fill:#dbeafe,stroke:#1d4ed8,color:#172554\n  class PolicyInput input\n",
       "nativeFile": "prod_class_styled_metadata_policy_native.png",
       "officialFile": "prod_class_styled_metadata_policy_official.png",
       "nativeBytes": 36324,
       "officialBytes": 31770,
       "nativeSha256": "ac5ca2037a55bee554b26cd19e70a775a873746d9523a8a709a452c23f0a147f",
-      "officialSha256": "ec81529a07cb6b2d9bcb3d988c815ac600f3f89bfa90c6a5ed858f523ad88365"
+      "officialSha256": "ec81529a07cb6b2d9bcb3d988c815ac600f3f89bfa90c6a5ed858f523ad88365",
+      "sourceSha256": "d0830e68142955d2bc2d5dfa0da46afc14ddfe56c6bce0e9025f716492aeeebb"
     },
     {
       "id": "prod_class_styled_metadata_routing",
@@ -1172,13 +1172,13 @@
         "RouteInput",
         "RouteDecision"
       ],
-      "source": "\n---\ntitle: Routing decision model\naccTitle: Routing decision model\naccDescr: A compact decision model\n---\nclassDiagram\n  class RouteInput[\"\\`**RouteInput**\\`\"]\n  class RouteDecision\n  RouteInput <--> RouteDecision : evaluates\n  classDef input fill:#dbeafe,stroke:#1d4ed8,color:#172554\n  class RouteInput input\n",
       "nativeFile": "prod_class_styled_metadata_routing_native.png",
       "officialFile": "prod_class_styled_metadata_routing_official.png",
       "nativeBytes": 36058,
       "officialBytes": 31810,
       "nativeSha256": "604c6f221b7cfc229f3213b706666bfc82284be2ee0823789759f8dd5692275b",
-      "officialSha256": "997a32846934e5bd090f3970276fd4610a28c093d052b3b4c4a5c3c85b074795"
+      "officialSha256": "997a32846934e5bd090f3970276fd4610a28c093d052b3b4c4a5c3c85b074795",
+      "sourceSha256": "9f8c317b4fa166f81bd59426e2e227aa99b781addce22998500fab37ecbb5519"
     },
     {
       "id": "rc_state_order_fulfillment",
@@ -1187,7 +1187,6 @@
       "scenario": "Payment, allocation, shipment, cancellation, return, and refund states.",
       "layout": "elk",
       "aspectRatio": 1.1,
-      "source": "\nstateDiagram-v2\n  [*] --> Draft\n  Draft --> AwaitingPayment : submit\n  AwaitingPayment --> Cancelled : payment timeout\n  AwaitingPayment --> Allocating : payment captured\n  Allocating --> Backordered : stock unavailable\n  Backordered --> Allocating : replenished\n  Backordered --> Cancelled : customer cancels\n  Allocating --> Packing : stock allocated\n  Packing --> Cancelled : warehouse rejects\n  Packing --> Shipped : carrier accepts\n  Shipped --> Delivered : delivery confirmed\n  Shipped --> DeliveryException : carrier exception\n  DeliveryException --> Shipped : redelivery\n  DeliveryException --> Returned : returned to sender\n  Delivered --> ReturnRequested : return opened\n  ReturnRequested --> Returned : item received\n  ReturnRequested --> Delivered : request denied\n  Returned --> Refunded : inspection passed\n  Returned --> Delivered : inspection failed\n  Cancelled --> Refunded : payment existed\n  Cancelled --> [*]\n  Refunded --> [*]\n  Delivered --> [*] : return window closed\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_state_order_fulfillment_native.png",
@@ -1195,7 +1194,8 @@
       "nativeBytes": 50014,
       "officialBytes": 47602,
       "nativeSha256": "a25358d45be59c3203ebb58494eb7a07c1d62e844b18876cab60275a7464766e",
-      "officialSha256": "7637ca740dfc760caff50dfeb9742bd9a8715ac07d0ec66ed167591a946fe4ab"
+      "officialSha256": "7637ca740dfc760caff50dfeb9742bd9a8715ac07d0ec66ed167591a946fe4ab",
+      "sourceSha256": "39639eb942e3a10123594cf9312de1685216f651572ca43704ace8592173d862"
     },
     {
       "id": "rc_state_payment_transaction",
@@ -1204,7 +1204,6 @@
       "scenario": "Authorization, challenge, capture, partial refund, reversal, and terminal outcomes.",
       "layout": "elk",
       "aspectRatio": 1.1,
-      "source": "\nstateDiagram-v2\n  state risk <<choice>>\n  [*] --> Created\n  Created --> Validating : submit\n  Validating --> risk\n  risk --> Declined : blocked\n  risk --> Challenging : step up required\n  risk --> Authorizing : low risk\n  Challenging --> Authorizing : challenge passed\n  Challenging --> Declined : challenge failed\n  Authorizing --> Authorized : issuer approved\n  Authorizing --> Declined : issuer declined\n  Authorized --> Capturing : capture requested\n  Authorized --> Voided : void requested\n  Capturing --> Captured : capture confirmed\n  Capturing --> Authorized : retryable failure\n  Captured --> PartiallyRefunded : partial refund\n  PartiallyRefunded --> PartiallyRefunded : another partial refund\n  PartiallyRefunded --> Refunded : full amount refunded\n  Captured --> Refunded : full refund\n  Captured --> Reversed : chargeback\n  Declined --> [*]\n  Voided --> [*]\n  Refunded --> [*]\n  Reversed --> [*]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_state_payment_transaction_native.png",
@@ -1212,7 +1211,8 @@
       "nativeBytes": 41919,
       "officialBytes": 41641,
       "nativeSha256": "25ac081c04d9e14c5309c37d6b93c20f914b61e89f6e48079e9d5a506b882c8b",
-      "officialSha256": "c3ac432eff2e24f0eb255b388f77c820601ad8082a28c301a4fccb9eb313b08e"
+      "officialSha256": "c3ac432eff2e24f0eb255b388f77c820601ad8082a28c301a4fccb9eb313b08e",
+      "sourceSha256": "51f81bf6831d5eb3bbbbebce198d87158611aa19c8c704a12959919e718e1371"
     },
     {
       "id": "rc_state_deployment_rollout",
@@ -1221,7 +1221,6 @@
       "scenario": "Build, canary, staged rollout, automated rollback, and incident review.",
       "layout": "elk",
       "aspectRatio": 1.05,
-      "source": "\nstateDiagram-v2\n  [*] --> Preparing\n  state Preparing {\n    [*] --> Building\n    Building --> Testing\n    Testing --> Signing\n    Signing --> [*]\n  }\n  Preparing --> Canary : artifacts ready\n  state Canary {\n    [*] --> DeployingFivePercent\n    DeployingFivePercent --> Observing\n    Observing --> Approved : SLO healthy\n    Observing --> Rejected : SLO violated\n  }\n  Canary --> RollingOut : approved\n  Canary --> RollingBack : rejected\n  state RollingOut {\n    [*] --> TwentyFivePercent\n    TwentyFivePercent --> FiftyPercent\n    FiftyPercent --> OneHundredPercent\n    OneHundredPercent --> [*]\n  }\n  RollingOut --> Completed\n  RollingOut --> RollingBack : guardrail violated\n  RollingBack --> IncidentReview : previous version restored\n  IncidentReview --> Preparing : fix prepared\n  Completed --> [*]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_state_deployment_rollout_native.png",
@@ -1229,7 +1228,8 @@
       "nativeBytes": 36393,
       "officialBytes": 38757,
       "nativeSha256": "5b8f1632e48070aab61f7a4dd4419774cc4c7976c82b85d7b6e246d06acf7a2b",
-      "officialSha256": "edb3c002a7e4f5ad54e49edbb846d0a26314617e9742412727dc9a5d016a343a"
+      "officialSha256": "edb3c002a7e4f5ad54e49edbb846d0a26314617e9742412727dc9a5d016a343a",
+      "sourceSha256": "46162350861b49c4273c80521842bbdb9b20096605a2f3ac806ca0545c2eec01"
     },
     {
       "id": "rc_state_media_processing",
@@ -1238,7 +1238,6 @@
       "scenario": "Upload verification, concurrent transforms, moderation, publication, and retry.",
       "layout": "elk",
       "aspectRatio": 1.05,
-      "source": "\nstateDiagram-v2\n  state split <<fork>>\n  state merge <<join>>\n  [*] --> Uploading\n  Uploading --> Verifying : all parts uploaded\n  Uploading --> Failed : session expired\n  Verifying --> Failed : checksum mismatch\n  Verifying --> split : object verified\n  split --> Transcoding\n  split --> Thumbnailing\n  split --> Moderating\n  Transcoding --> merge\n  Thumbnailing --> merge\n  Moderating --> Rejected : policy violation\n  Moderating --> merge : accepted\n  merge --> Packaging\n  Packaging --> Ready\n  Packaging --> RetryableFailure : worker timeout\n  RetryableFailure --> Packaging : retry budget remains\n  RetryableFailure --> Failed : retry budget exhausted\n  Ready --> Published : metadata complete\n  Ready --> Archived : owner removes asset\n  Published --> Archived : retention expires\n  Rejected --> [*]\n  Failed --> [*]\n  Archived --> [*]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_state_media_processing_native.png",
@@ -1246,7 +1245,8 @@
       "nativeBytes": 50623,
       "officialBytes": 48168,
       "nativeSha256": "34db2b45c23126a1b69fe13639397cf135f5e65254630b0a450fc4cbd9cbe38c",
-      "officialSha256": "00f3f482554d565730f5b3b96ab43a92ea6a939267f0b8a25da07504ccecb0cc"
+      "officialSha256": "00f3f482554d565730f5b3b96ab43a92ea6a939267f0b8a25da07504ccecb0cc",
+      "sourceSha256": "c8088fe836952e0254d148b570f0deaf2eb2a5a462b4a6974e1bdf7ddf23cbaf"
     },
     {
       "id": "rc_state_support_ticket",
@@ -1255,7 +1255,6 @@
       "scenario": "Automated triage, ownership, customer waiting, escalation, and reopening.",
       "layout": "elk",
       "aspectRatio": 1.1,
-      "source": "\nstateDiagram-v2\n  [*] --> New\n  New --> Triaged : classifier result\n  Triaged --> Assigned : queue selected\n  Assigned --> Investigating : agent accepts\n  Investigating --> WaitingForCustomer : need information\n  WaitingForCustomer --> Investigating : customer replies\n  WaitingForCustomer --> AutoClosed : response timeout\n  Investigating --> Escalated : specialist required\n  Escalated --> Investigating : guidance received\n  Investigating --> PendingChange : product fix required\n  PendingChange --> Investigating : fix released\n  Investigating --> Resolved : solution delivered\n  Resolved --> Closed : customer confirms\n  Resolved --> Reopened : issue persists\n  Reopened --> Assigned\n  AutoClosed --> Reopened : customer replies\n  Closed --> [*]\n  AutoClosed --> [*]\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_state_support_ticket_native.png",
@@ -1263,7 +1262,8 @@
       "nativeBytes": 53902,
       "officialBytes": 53362,
       "nativeSha256": "8ffe8310723cdd81bfe945d1eb9dd8feabbc9cc1f2b0bce2f3fe44174c56336f",
-      "officialSha256": "018141ce0e37b6caac92b74ce4d8cf16cf8e456bd6e2dc687dc2f18046c868c7"
+      "officialSha256": "018141ce0e37b6caac92b74ce4d8cf16cf8e456bd6e2dc687dc2f18046c868c7",
+      "sourceSha256": "2a9d59b7d674758a1322e036868a56c20eed975678d57d19df618108974f6532"
     },
     {
       "id": "prod_state_nested_lifecycle_document",
@@ -1284,13 +1284,13 @@
         "Draft document",
         "Published"
       ],
-      "source": "\nstateDiagram-v2\n  [*] --> DocumentFlow\n  state \"Draft document\" as Draft\n  state \"Published\" as Done\n  state DocumentFlow {\n    [*] --> Draft\n    state ReviewCycle {\n      Draft --> Review\n      Review --> Draft : changes requested\n      Review --> Accepted : approved\n    }\n    Accepted --> Complete\n  }\n  DocumentFlow --> Done : complete\n  Done --> [*]\n",
       "nativeFile": "prod_state_nested_lifecycle_document_native.png",
       "officialFile": "prod_state_nested_lifecycle_document_official.png",
       "nativeBytes": 32659,
       "officialBytes": 33053,
       "nativeSha256": "7c899b8ee3134c0dae667f5789b39d507ba871aba9508f2ad509182d75ee5956",
-      "officialSha256": "c26bb9c6f6bd2754a1149f8e6f06f609bc6e3b2415ab28227f1bb1459b777d22"
+      "officialSha256": "c26bb9c6f6bd2754a1149f8e6f06f609bc6e3b2415ab28227f1bb1459b777d22",
+      "sourceSha256": "a0f4f4a38241396a254db373323011e0f1b210f23f1be826287b8f179cee399b"
     },
     {
       "id": "prod_state_nested_lifecycle_shipment",
@@ -1311,13 +1311,13 @@
         "Prepared parcel",
         "Delivered"
       ],
-      "source": "\nstateDiagram-v2\n  [*] --> ShipmentFlow\n  state \"Prepared parcel\" as Draft\n  state \"Delivered\" as Done\n  state ShipmentFlow {\n    [*] --> Draft\n    state DispatchCycle {\n      Draft --> Review\n      Review --> Draft : changes requested\n      Review --> Accepted : approved\n    }\n    Accepted --> Complete\n  }\n  ShipmentFlow --> Done : complete\n  Done --> [*]\n",
       "nativeFile": "prod_state_nested_lifecycle_shipment_native.png",
       "officialFile": "prod_state_nested_lifecycle_shipment_official.png",
       "nativeBytes": 32911,
       "officialBytes": 33372,
       "nativeSha256": "465dcdf6236817e345d60362414924d7e5c82eed80cb010ed4930c91d27bbca9",
-      "officialSha256": "0748129958f0a7cc1de5495f8db6c20d623061a44528484d20642ef953e27e36"
+      "officialSha256": "0748129958f0a7cc1de5495f8db6c20d623061a44528484d20642ef953e27e36",
+      "sourceSha256": "8c0a9e53c803baccf159b1cae78ed5b4427605c5f2148bdf87ce3a5e2c01a1d2"
     },
     {
       "id": "prod_state_decision_sync_deployment",
@@ -1335,13 +1335,13 @@
         "CandidateReady",
         "RolloutComplete"
       ],
-      "source": "\nstateDiagram-v2\n  state decision <<choice>>\n  state split <<fork>>\n  state merge <<join>>\n  [*] --> CandidateReady\n  CandidateReady --> decision\n  decision --> split : proceed\n  decision --> Rework : revise\n  split --> RegionValidation\n  split --> ClientValidation\n  RegionValidation --> merge\n  ClientValidation --> merge\n  merge --> RolloutComplete\n  RolloutComplete --> [*]\n  Rework --> CandidateReady\n",
       "nativeFile": "prod_state_decision_sync_deployment_native.png",
       "officialFile": "prod_state_decision_sync_deployment_official.png",
       "nativeBytes": 40820,
       "officialBytes": 38161,
       "nativeSha256": "63c021cb5d43e1a4a6dd34c134e746f25aaf63ff39f9435d2614995e60db2b39",
-      "officialSha256": "7572ad4166811ff9617b95edd8497cc94b174315033795e6e83374bf2bd31d34"
+      "officialSha256": "7572ad4166811ff9617b95edd8497cc94b174315033795e6e83374bf2bd31d34",
+      "sourceSha256": "9d4314bea3b179cabc5a9f0b890767c00c2809c3e68d09ebf4c1742ebca91675"
     },
     {
       "id": "prod_state_decision_sync_migration",
@@ -1359,13 +1359,13 @@
         "PlanReady",
         "CutoverComplete"
       ],
-      "source": "\nstateDiagram-v2\n  state decision <<choice>>\n  state split <<fork>>\n  state merge <<join>>\n  [*] --> PlanReady\n  PlanReady --> decision\n  decision --> split : proceed\n  decision --> Rework : revise\n  split --> SchemaValidation\n  split --> TrafficValidation\n  SchemaValidation --> merge\n  TrafficValidation --> merge\n  merge --> CutoverComplete\n  CutoverComplete --> [*]\n  Rework --> PlanReady\n",
       "nativeFile": "prod_state_decision_sync_migration_native.png",
       "officialFile": "prod_state_decision_sync_migration_official.png",
       "nativeBytes": 38228,
       "officialBytes": 37295,
       "nativeSha256": "29995840b36bfed0ddd0ff2ee99339b3a9d7cadb45694a500304d58331addde3",
-      "officialSha256": "2254b0f289aee8ef0c9eeef7227fed67899377ccca992cc71fd97ae1a031d956"
+      "officialSha256": "2254b0f289aee8ef0c9eeef7227fed67899377ccca992cc71fd97ae1a031d956",
+      "sourceSha256": "bbc1b89d9fe9ba097f23718c811c772e3fcc7a92395c6c89b8399de9c4bef8a1"
     },
     {
       "id": "prod_state_notes_styles_approval",
@@ -1384,13 +1384,13 @@
         "PendingApproval",
         "Requires two reviewers"
       ],
-      "source": "\nstateDiagram-v2\n  direction LR\n  [*] --> PendingApproval\n  note right of PendingApproval\n    Requires two reviewers\n  end note\n  PendingApproval --> Approved\n  Approved --> [*]\n  classDef guarded fill:#fef3c7,stroke:#b45309,color:#451a03\n  class PendingApproval guarded\n  click Approved href \"https://example.com/status\"\n",
       "nativeFile": "prod_state_notes_styles_approval_native.png",
       "officialFile": "prod_state_notes_styles_approval_official.png",
       "nativeBytes": 36522,
       "officialBytes": 32695,
       "nativeSha256": "6a97ea54455043d15e8be57ef1eab2f9941eaaecc3479f142cd7af34ce3e4e54",
-      "officialSha256": "20547ed4163b67d88431573ac9fd9ba97be81a9589e4f23516f703692d85a652"
+      "officialSha256": "20547ed4163b67d88431573ac9fd9ba97be81a9589e4f23516f703692d85a652",
+      "sourceSha256": "2f2f24ce6c57b4249abd4db619b98b1e6e7c0efc8191af75578dce21f62c2fbe"
     },
     {
       "id": "prod_state_notes_styles_retention",
@@ -1409,13 +1409,13 @@
         "PendingDeletion",
         "Honors legal hold"
       ],
-      "source": "\nstateDiagram-v2\n  direction LR\n  [*] --> PendingDeletion\n  note right of PendingDeletion\n    Honors legal hold\n  end note\n  PendingDeletion --> Deleted\n  Deleted --> [*]\n  classDef guarded fill:#fef3c7,stroke:#b45309,color:#451a03\n  class PendingDeletion guarded\n  click Deleted href \"https://example.com/status\"\n",
       "nativeFile": "prod_state_notes_styles_retention_native.png",
       "officialFile": "prod_state_notes_styles_retention_official.png",
       "nativeBytes": 31253,
       "officialBytes": 28077,
       "nativeSha256": "eb2693242cfd46f4f850d40492d829f4b4bd0b05d63e31277a1197eb52be69a9",
-      "officialSha256": "4519b7abb918bfab807a666bb31f94efc7c6d080d9ed71869223175b819528a8"
+      "officialSha256": "4519b7abb918bfab807a666bb31f94efc7c6d080d9ed71869223175b819528a8",
+      "sourceSha256": "86c3b587c330ce4dbe909b87efbccd5a497c8c5ddb826e08510afbf68fef8ea2"
     },
     {
       "id": "prod_state_markdown_metadata_localization",
@@ -1433,13 +1433,13 @@
         "翻訳待ち",
         "Published"
       ],
-      "source": "\n---\ntitle: Localization workflow\naccTitle: Localization workflow\naccDescr: State transition evidence\n---\nstateDiagram-v2\n  state \"\\`**翻訳待ち**\\`\" as First\n  state \"Published\" as Second\n  [*] --> First\n  First --> Second : accepted\n  Second --> [*]\n",
       "nativeFile": "prod_state_markdown_metadata_localization_native.png",
       "officialFile": "prod_state_markdown_metadata_localization_official.png",
       "nativeBytes": 36541,
       "officialBytes": 31782,
       "nativeSha256": "04ff8631d09c9f79de1a9c677fd2f3222688531edf3e0fe89d6ba7536675c280",
-      "officialSha256": "282da1a3ca3fb3503228c36ed8784eb0bf3a5a366949a1fd1fa7eef833e4eb45"
+      "officialSha256": "282da1a3ca3fb3503228c36ed8784eb0bf3a5a366949a1fd1fa7eef833e4eb45",
+      "sourceSha256": "237c5e227a7b9abb73db0aabb9b560653a4a4554fac36fddad0906091848f3eb"
     },
     {
       "id": "prod_state_markdown_metadata_compliance",
@@ -1457,13 +1457,13 @@
         "Révision",
         "Certified"
       ],
-      "source": "\n---\ntitle: Compliance workflow\naccTitle: Compliance workflow\naccDescr: State transition evidence\n---\nstateDiagram-v2\n  state \"\\`**Révision**\\`\" as First\n  state \"Certified\" as Second\n  [*] --> First\n  First --> Second : accepted\n  Second --> [*]\n",
       "nativeFile": "prod_state_markdown_metadata_compliance_native.png",
       "officialFile": "prod_state_markdown_metadata_compliance_official.png",
       "nativeBytes": 36700,
       "officialBytes": 30689,
       "nativeSha256": "4ecaaf0861b6b9b3c3e74f4a766b7a9121667049abdf57b0e3444284bcf23cff",
-      "officialSha256": "d63ed329221e90e85d4a4f9a7ee290746ad7e10bee2fa294d3473a3f08c6880b"
+      "officialSha256": "d63ed329221e90e85d4a4f9a7ee290746ad7e10bee2fa294d3473a3f08c6880b",
+      "sourceSha256": "8c9590d4ba7568eed74c38f57de5a926edf7fd885730720ffc2d960e3485b6de"
     },
     {
       "id": "rc_er_commerce_platform",
@@ -1472,7 +1472,6 @@
       "scenario": "Customers, catalog, orders, payments, fulfillment, promotions, and returns.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nerDiagram\n  CUSTOMER {\n    bigint id PK\n    string email UK\n    timestamp created_at\n  }\n  ADDRESS {\n    bigint id PK\n    bigint customer_id FK\n    string country\n  }\n  PRODUCT {\n    bigint id PK\n    string sku UK\n    bigint category_id FK\n  }\n  CATEGORY {\n    bigint id PK\n    string name UK\n  }\n  ORDER {\n    bigint id PK\n    bigint customer_id FK\n    bigint shipping_address_id FK\n    string status\n  }\n  ORDER_ITEM {\n    bigint order_id PK, FK\n    bigint product_id PK, FK\n    int quantity\n    decimal unit_price\n  }\n  PAYMENT {\n    bigint id PK\n    bigint order_id FK\n    string status\n  }\n  SHIPMENT {\n    bigint id PK\n    bigint order_id FK\n    string tracking_code UK\n  }\n  PROMOTION {\n    bigint id PK\n    string code UK\n  }\n  RETURN {\n    bigint id PK\n    bigint order_id FK\n    string reason\n  }\n  CUSTOMER ||--o{ ADDRESS : owns\n  CUSTOMER ||--o{ ORDER : places\n  ADDRESS ||--o{ ORDER : ships_to\n  CATEGORY ||--o{ PRODUCT : groups\n  ORDER ||--|{ ORDER_ITEM : contains\n  PRODUCT ||--o{ ORDER_ITEM : appears_in\n  ORDER ||--o{ PAYMENT : receives\n  ORDER ||--o| SHIPMENT : creates\n  ORDER }o--o{ PROMOTION : applies\n  ORDER ||--o{ RETURN : permits\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_er_commerce_platform_native.png",
@@ -1480,7 +1479,8 @@
       "nativeBytes": 85774,
       "officialBytes": 83919,
       "nativeSha256": "565788a408c926b4a337c05fc97cd83719eb2f9d82276b7e805a446862684451",
-      "officialSha256": "cff342078d0466a82e7118f60631ca84840fc54625219a575aec5626ee29d0ed"
+      "officialSha256": "cff342078d0466a82e7118f60631ca84840fc54625219a575aec5626ee29d0ed",
+      "sourceSha256": "302387fe515b6a40e36d2f081b5bc65e24c51f8929c36cf09cf242eace08ec5f"
     },
     {
       "id": "rc_er_learning_platform",
@@ -1489,7 +1489,6 @@
       "scenario": "Courses, modules, lessons, enrollment, progress, assessment, and certificates.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nerDiagram\n  LEARNER {\n    bigint id PK\n    string email UK\n  }\n  INSTRUCTOR {\n    bigint id PK\n    string display_name\n  }\n  COURSE {\n    bigint id PK\n    bigint instructor_id FK\n    string title\n  }\n  MODULE {\n    bigint id PK\n    bigint course_id FK\n    int position\n  }\n  LESSON {\n    bigint id PK\n    bigint module_id FK\n    string content_type\n  }\n  ENROLLMENT {\n    bigint learner_id PK, FK\n    bigint course_id PK, FK\n    timestamp enrolled_at\n  }\n  PROGRESS {\n    bigint learner_id PK, FK\n    bigint lesson_id PK, FK\n    decimal completion\n  }\n  ASSESSMENT {\n    bigint id PK\n    bigint course_id FK\n  }\n  ATTEMPT {\n    bigint id PK\n    bigint assessment_id FK\n    bigint learner_id FK\n    decimal score\n  }\n  CERTIFICATE {\n    bigint id PK\n    bigint enrollment_id FK\n    timestamp issued_at\n  }\n  INSTRUCTOR ||--o{ COURSE : authors\n  COURSE ||--|{ MODULE : contains\n  MODULE ||--|{ LESSON : contains\n  LEARNER ||--o{ ENROLLMENT : creates\n  COURSE ||--o{ ENROLLMENT : accepts\n  LEARNER ||--o{ PROGRESS : records\n  LESSON ||--o{ PROGRESS : measures\n  COURSE ||--o{ ASSESSMENT : evaluates\n  ASSESSMENT ||--o{ ATTEMPT : receives\n  LEARNER ||--o{ ATTEMPT : submits\n  ENROLLMENT ||--o| CERTIFICATE : earns\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_er_learning_platform_native.png",
@@ -1497,7 +1496,8 @@
       "nativeBytes": 83422,
       "officialBytes": 71866,
       "nativeSha256": "ccc11170d78d503c7bb50d9072802549f9e264fb238450856f78f332808af985",
-      "officialSha256": "8332ae3007c1297634de20adba9605c17bf50ed1623c691d7c3f88e216e1a983"
+      "officialSha256": "8332ae3007c1297634de20adba9605c17bf50ed1623c691d7c3f88e216e1a983",
+      "sourceSha256": "99d91291d6e1cfaa6f6a7f21dbc73b16b693fa0044a62718f1bba673c8af76c1"
     },
     {
       "id": "rc_er_messaging_system",
@@ -1506,7 +1506,6 @@
       "scenario": "Conversations, membership, messages, reactions, attachments, reads, and devices.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nerDiagram\n  USER {\n    bigint id PK\n    string handle UK\n  }\n  DEVICE {\n    bigint id PK\n    bigint user_id FK\n    string push_token UK\n  }\n  CONVERSATION {\n    bigint id PK\n    string kind\n  }\n  MEMBERSHIP {\n    bigint conversation_id PK, FK\n    bigint user_id PK, FK\n    string role\n  }\n  MESSAGE {\n    bigint id PK\n    bigint conversation_id FK\n    bigint sender_id FK\n    string body\n  }\n  ATTACHMENT {\n    bigint id PK\n    bigint message_id FK\n    string media_type\n  }\n  REACTION {\n    bigint message_id PK, FK\n    bigint user_id PK, FK\n    string emoji PK\n  }\n  READ_CURSOR {\n    bigint conversation_id PK, FK\n    bigint user_id PK, FK\n    bigint message_id FK\n  }\n  USER ||--o{ DEVICE : registers\n  USER ||--o{ MEMBERSHIP : joins\n  CONVERSATION ||--|{ MEMBERSHIP : includes\n  CONVERSATION ||--o{ MESSAGE : contains\n  USER ||--o{ MESSAGE : sends\n  MESSAGE ||--o{ ATTACHMENT : carries\n  MESSAGE ||--o{ REACTION : receives\n  USER ||--o{ REACTION : adds\n  MEMBERSHIP ||--o| READ_CURSOR : tracks\n  MESSAGE ||--o{ READ_CURSOR : last_read\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_er_messaging_system_native.png",
@@ -1514,7 +1513,8 @@
       "nativeBytes": 92769,
       "officialBytes": 102862,
       "nativeSha256": "b094cf867019a148873582ae99c2600a511b8e2eb83a12f9be10ea92cd957f04",
-      "officialSha256": "8f01a84a33879d81dc9695b5b73db45e77fd456c87f66cbc0f7cb911f4c2087c"
+      "officialSha256": "8f01a84a33879d81dc9695b5b73db45e77fd456c87f66cbc0f7cb911f4c2087c",
+      "sourceSha256": "6235eafcacea2016557ac3ca7b9c0ca23111140fad9110a507e78da20cb2dbb1"
     },
     {
       "id": "rc_er_subscription_billing",
@@ -1523,7 +1523,6 @@
       "scenario": "Accounts, plans, subscriptions, invoices, line items, payments, and entitlements.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nerDiagram\n  ACCOUNT {\n    bigint id PK\n    string billing_email\n  }\n  PLAN {\n    bigint id PK\n    string code UK\n    decimal monthly_price\n  }\n  SUBSCRIPTION {\n    bigint id PK\n    bigint account_id FK\n    bigint plan_id FK\n    string status\n  }\n  INVOICE {\n    bigint id PK\n    bigint account_id FK\n    date period_start\n    date period_end\n  }\n  INVOICE_ITEM {\n    bigint id PK\n    bigint invoice_id FK\n    bigint subscription_id FK\n    decimal amount\n  }\n  PAYMENT_METHOD {\n    bigint id PK\n    bigint account_id FK\n    string provider_token UK\n  }\n  PAYMENT_ATTEMPT {\n    bigint id PK\n    bigint invoice_id FK\n    bigint payment_method_id FK\n    string status\n  }\n  ENTITLEMENT {\n    bigint id PK\n    bigint subscription_id FK\n    string feature_key\n  }\n  ACCOUNT ||--o{ SUBSCRIPTION : owns\n  PLAN ||--o{ SUBSCRIPTION : configures\n  ACCOUNT ||--o{ INVOICE : receives\n  INVOICE ||--|{ INVOICE_ITEM : contains\n  SUBSCRIPTION ||--o{ INVOICE_ITEM : charges\n  ACCOUNT ||--o{ PAYMENT_METHOD : stores\n  INVOICE ||--o{ PAYMENT_ATTEMPT : collects\n  PAYMENT_METHOD ||--o{ PAYMENT_ATTEMPT : funds\n  SUBSCRIPTION ||--o{ ENTITLEMENT : grants\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_er_subscription_billing_native.png",
@@ -1531,7 +1530,8 @@
       "nativeBytes": 109189,
       "officialBytes": 101094,
       "nativeSha256": "f172b9b62a4c3607b6b1672f380db4ebade6c817f50800b832e35ce0eca23055",
-      "officialSha256": "d0ef1ede0553c9b583d3ff511fa49696eb9021decef7937397035385d46304d3"
+      "officialSha256": "d0ef1ede0553c9b583d3ff511fa49696eb9021decef7937397035385d46304d3",
+      "sourceSha256": "9e6ed1ad471e7e1418711bb9c3091d8f901ad40ab32a626dc515e79a388862c8"
     },
     {
       "id": "rc_er_inventory_network",
@@ -1540,7 +1540,6 @@
       "scenario": "Warehouses, bins, stock, suppliers, purchase orders, transfers, and reservations.",
       "layout": "elk",
       "aspectRatio": 1.25,
-      "source": "\nerDiagram\n  WAREHOUSE {\n    bigint id PK\n    string code UK\n  }\n  BIN {\n    bigint id PK\n    bigint warehouse_id FK\n    string location UK\n  }\n  SKU {\n    bigint id PK\n    string code UK\n  }\n  STOCK {\n    bigint bin_id PK, FK\n    bigint sku_id PK, FK\n    int on_hand\n  }\n  SUPPLIER {\n    bigint id PK\n    string name\n  }\n  PURCHASE_ORDER {\n    bigint id PK\n    bigint supplier_id FK\n    string status\n  }\n  PURCHASE_LINE {\n    bigint order_id PK, FK\n    bigint sku_id PK, FK\n    int quantity\n  }\n  TRANSFER {\n    bigint id PK\n    bigint source_warehouse_id FK\n    bigint target_warehouse_id FK\n  }\n  RESERVATION {\n    bigint id PK\n    bigint sku_id FK\n    bigint warehouse_id FK\n    int quantity\n  }\n  WAREHOUSE ||--|{ BIN : contains\n  BIN ||--o{ STOCK : stores\n  SKU ||--o{ STOCK : counted_as\n  SUPPLIER ||--o{ PURCHASE_ORDER : receives\n  PURCHASE_ORDER ||--|{ PURCHASE_LINE : contains\n  SKU ||--o{ PURCHASE_LINE : replenishes\n  WAREHOUSE ||--o{ TRANSFER : sources\n  WAREHOUSE ||--o{ TRANSFER : targets\n  WAREHOUSE ||--o{ RESERVATION : allocates\n  SKU ||--o{ RESERVATION : reserves\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_er_inventory_network_native.png",
@@ -1548,7 +1547,8 @@
       "nativeBytes": 87905,
       "officialBytes": 81380,
       "nativeSha256": "e6d458812f4079fe749c0cd021a3a3493bcde4612c1ed0cf01173c304f49b9e1",
-      "officialSha256": "c5fabf3d3b74f03b30c6f8dfc6d2962847477b5b80cff8708ae87286afe5faae"
+      "officialSha256": "c5fabf3d3b74f03b30c6f8dfc6d2962847477b5b80cff8708ae87286afe5faae",
+      "sourceSha256": "99e8c0f09f5d7cdcfcf74e92540bd40118bfe27a8d9998480df7e28a868eb81b"
     },
     {
       "id": "prod_er_attribute_model_support",
@@ -1570,13 +1570,13 @@
         "Support ticket",
         "Conversation message"
       ],
-      "source": "\nerDiagram\n  TICKET[\"Support ticket\"] {\n    uuid id PK \"stable identifier\"\n    string tenant_id FK\n    string? description \"optional detail\"\n    datetime created_at\n  }\n  MESSAGE[\"Conversation message\"] {\n    uuid id PK\n    uuid parent_id FK\n    string body\n  }\n  TICKET ||--|{ MESSAGE : contains\n",
       "nativeFile": "prod_er_attribute_model_support_native.png",
       "officialFile": "prod_er_attribute_model_support_official.png",
       "nativeBytes": 58738,
       "officialBytes": 48325,
       "nativeSha256": "c8c5ef32254a61110e612aa1a669d9d1114e955162e0ca950bdb557519ed35a5",
-      "officialSha256": "0991b8eb3c13df3595af8490fb1435105d05723ecba8b32dcd626da222f0eefc"
+      "officialSha256": "0991b8eb3c13df3595af8490fb1435105d05723ecba8b32dcd626da222f0eefc",
+      "sourceSha256": "d87a9e36b48b085d19b91ceea4cddc7d6420a362954a19b50487a171bdd295b7"
     },
     {
       "id": "prod_er_attribute_model_catalog",
@@ -1598,13 +1598,13 @@
         "Catalog product",
         "Product variant"
       ],
-      "source": "\nerDiagram\n  PRODUCT[\"Catalog product\"] {\n    uuid id PK \"stable identifier\"\n    string tenant_id FK\n    string? description \"optional detail\"\n    datetime created_at\n  }\n  VARIANT[\"Product variant\"] {\n    uuid id PK\n    uuid parent_id FK\n    string body\n  }\n  PRODUCT ||--|{ VARIANT : contains\n",
       "nativeFile": "prod_er_attribute_model_catalog_native.png",
       "officialFile": "prod_er_attribute_model_catalog_official.png",
       "nativeBytes": 57642,
       "officialBytes": 46555,
       "nativeSha256": "a32a26327a33f53e82e8c0253466f7f2e3cb10ce030b679bb074314c9ee5f57a",
-      "officialSha256": "6f2920bb46c13d1185d7cc51b5c49f3eccf09ecef80becf19fb3cc9354e5ac35"
+      "officialSha256": "6f2920bb46c13d1185d7cc51b5c49f3eccf09ecef80becf19fb3cc9354e5ac35",
+      "sourceSha256": "3eaa1f9525bd52b42ca64cecd5662b224de7986a160dbb25e88045eec84edfd2"
     },
     {
       "id": "prod_er_cardinality_matrix_tenant",
@@ -1621,13 +1621,13 @@
         "TENANT",
         "PROJECT"
       ],
-      "source": "\nerDiagram\n  TENANT ||..o{ MEMBER : invites\n  TENANT ||..|{ PROJECT : owns\n  TENANT |o..o| BILLING_PROFILE : configures\n  PROJECT }o..o{ LABEL : tagged_with\n  MEMBER }|..|| PROFILE : has\n",
       "nativeFile": "prod_er_cardinality_matrix_tenant_native.png",
       "officialFile": "prod_er_cardinality_matrix_tenant_official.png",
       "nativeBytes": 40745,
       "officialBytes": 41938,
       "nativeSha256": "fafbe58002b2d0f6dbdb1ec880b48e59412e1f1ae0bccb9597e7ce60c16d15b7",
-      "officialSha256": "6e190537be62b5e5a81397013e831f1fff76e6d868383840f25dec0257b37a68"
+      "officialSha256": "6e190537be62b5e5a81397013e831f1fff76e6d868383840f25dec0257b37a68",
+      "sourceSha256": "70d2ef95144bd5c8134e02e87883a828dfedb3b105236c162a130ed1756db809"
     },
     {
       "id": "prod_er_cardinality_matrix_workspace",
@@ -1644,13 +1644,13 @@
         "WORKSPACE",
         "PROJECT"
       ],
-      "source": "\nerDiagram\n  WORKSPACE ||..o{ MEMBER : invites\n  WORKSPACE ||..|{ PROJECT : owns\n  WORKSPACE |o..o| BILLING_PROFILE : configures\n  PROJECT }o..o{ LABEL : tagged_with\n  MEMBER }|..|| PROFILE : has\n",
       "nativeFile": "prod_er_cardinality_matrix_workspace_native.png",
       "officialFile": "prod_er_cardinality_matrix_workspace_official.png",
       "nativeBytes": 43411,
       "officialBytes": 44717,
       "nativeSha256": "d02b4bddcd4dd6392ad6890b973795cc7615e02f4dea7ca5cfffa1d241e241ef",
-      "officialSha256": "8db190d5207126fcfcbe77f914afe2af7fa945f0071675d656d407f0ab83044a"
+      "officialSha256": "8db190d5207126fcfcbe77f914afe2af7fa945f0071675d656d407f0ab83044a",
+      "sourceSha256": "99d132819ce4afab63e9567a457c92426d61b1b55d9fd68ec23dc7598a7b125f"
     },
     {
       "id": "prod_er_subgraph_domains_health",
@@ -1669,13 +1669,13 @@
         "PATIENT",
         "診療記録"
       ],
-      "source": "\nerDiagram\n  direction LR\n  subgraph HEALTH_PLATFORM\n    direction TB\n    subgraph CLINICAL\n      PATIENT\n      RECORD[\"診療記録\"]\n    end\n    AUDIT_EVENT\n  end\n  PATIENT ||--o{ RECORD : owns\n  RECORD ||--o{ AUDIT_EVENT : emits\n",
       "nativeFile": "prod_er_subgraph_domains_health_native.png",
       "officialFile": "prod_er_subgraph_domains_health_official.png",
       "nativeBytes": 25595,
       "officialBytes": 27218,
       "nativeSha256": "efa66e23da12c40d4164b0109d77501a02797b7659dcfc5d0a93622a870db147",
-      "officialSha256": "b20bfef4c874d70c05e85cc1d5dade6ba3964c028425ce746bebaeba5b6c5173"
+      "officialSha256": "b20bfef4c874d70c05e85cc1d5dade6ba3964c028425ce746bebaeba5b6c5173",
+      "sourceSha256": "7d6301d7e4083571a95e2eba1daf0a3a364017a75c5e1239a8ddda027865d284"
     },
     {
       "id": "prod_er_subgraph_domains_travel",
@@ -1694,13 +1694,13 @@
         "TRAVELER",
         "Réservation"
       ],
-      "source": "\nerDiagram\n  direction LR\n  subgraph TRAVEL_PLATFORM\n    direction TB\n    subgraph BOOKING\n      TRAVELER\n      RECORD[\"Réservation\"]\n    end\n    AUDIT_EVENT\n  end\n  TRAVELER ||--o{ RECORD : owns\n  RECORD ||--o{ AUDIT_EVENT : emits\n",
       "nativeFile": "prod_er_subgraph_domains_travel_native.png",
       "officialFile": "prod_er_subgraph_domains_travel_official.png",
       "nativeBytes": 25980,
       "officialBytes": 27627,
       "nativeSha256": "5da022b25862f87f3f3e8e1602926c9a00bff7b826999f0cd3a3003e5a8b922e",
-      "officialSha256": "cedb6c56867ff8e70430aba8e4a26c48e8f2142941022227ee2743ca2c0b0b3e"
+      "officialSha256": "cedb6c56867ff8e70430aba8e4a26c48e8f2142941022227ee2743ca2c0b0b3e",
+      "sourceSha256": "d3abfbb17cd91c399fda7d5c05eac37d9e8d34ea3b6f0d1df27426f462ccf86e"
     },
     {
       "id": "prod_er_styled_metadata_governance",
@@ -1718,13 +1718,13 @@
         "DATA_ASSET",
         "POLICY_BINDING"
       ],
-      "source": "\n---\ntitle: Governance catalog\naccTitle: Governance catalog\naccDescr: Entity relationship evidence\nconfig:\n  layout: elk\n---\nerDiagram\n  DATA_ASSET ||--o{ POLICY_BINDING : governs\n  classDef governed fill:#dbeafe,stroke:#1d4ed8,color:#172554\n  class DATA_ASSET,POLICY_BINDING governed\n",
       "nativeFile": "prod_er_styled_metadata_governance_native.png",
       "officialFile": "prod_er_styled_metadata_governance_official.png",
       "nativeBytes": 34803,
       "officialBytes": 27173,
       "nativeSha256": "3f519cf51e712a8c67ba27e5ac1d2d867133c423bec540b52d34309e2c1bdf41",
-      "officialSha256": "09873de762d719971fa15b3ca6c924d857a3e83b4ee4541ce83e4c2ff19a8f1d"
+      "officialSha256": "09873de762d719971fa15b3ca6c924d857a3e83b4ee4541ce83e4c2ff19a8f1d",
+      "sourceSha256": "e6bfb761097820a0173831defa5cdb551246d3cfcecfa357fbfdcaec06381522"
     },
     {
       "id": "prod_er_styled_metadata_feature_flags",
@@ -1742,13 +1742,13 @@
         "FEATURE_FLAG",
         "ROLLOUT_RULE"
       ],
-      "source": "\n---\ntitle: Feature flag catalog\naccTitle: Feature flag catalog\naccDescr: Entity relationship evidence\nconfig:\n  layout: elk\n---\nerDiagram\n  FEATURE_FLAG ||--o{ ROLLOUT_RULE : governs\n  classDef governed fill:#dbeafe,stroke:#1d4ed8,color:#172554\n  class FEATURE_FLAG,ROLLOUT_RULE governed\n",
       "nativeFile": "prod_er_styled_metadata_feature_flags_native.png",
       "officialFile": "prod_er_styled_metadata_feature_flags_official.png",
       "nativeBytes": 30555,
       "officialBytes": 26562,
       "nativeSha256": "7a990935a20243377d8ba517e8128c6e17b9bd63b539899346d34705ec7ddfe8",
-      "officialSha256": "3ad63b158d48ca936e42a97857b82d3f03ec9bf9175d6bd7b16eef952391a1a9"
+      "officialSha256": "3ad63b158d48ca936e42a97857b82d3f03ec9bf9175d6bd7b16eef952391a1a9",
+      "sourceSha256": "7f1be19711634e01d93170bc5a71490f5302b9051ab7692c40d5dce127540996"
     },
     {
       "id": "rc_gantt_mobile_release",
@@ -1757,7 +1757,6 @@
       "scenario": "Parallel feature work, integration, security review, store review, and rollout.",
       "layout": "dagre",
       "aspectRatio": 2,
-      "source": "\ngantt\n  title Cross-platform mobile release\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 1week\n  weekday monday\n  excludes weekends\n  todayMarker off\n  section Product\n  Requirements freeze :milestone, req, 2026-10-05, 0d\n  UX specification :ux, 2026-10-05, 8d\n  Acceptance review :review, after ux, 3d\n  section Engineering\n  Shared core :core, 2026-10-06, 12d\n  Android client :android, after req, 14d\n  iOS client :ios, after req, 14d\n  Web client :web, after req, 10d\n  Integration :crit, integration, after core android ios web, 5d\n  section Quality\n  Test design :testplan, 2026-10-08, 8d\n  Regression :regression, after integration testplan, 5d\n  Security review :security, after integration, 4d\n  Release candidate :milestone, rc, after regression security, 0d\n  section Release\n  Store review :store, after rc, 5d\n  Staged rollout :rollout, after store, 7d\n  General availability :milestone, ga, after rollout, 0d\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_gantt_mobile_release_native.png",
@@ -1765,7 +1764,8 @@
       "nativeBytes": 42011,
       "officialBytes": 44552,
       "nativeSha256": "b7859419ff9f583c480ecfc55af5d04a18352f3d1bb9e2062b9103e0108c8035",
-      "officialSha256": "b06749c8598ae5dafec75c2269fd20e76eee4ea3081a1222f4f6b3f63d7519ff"
+      "officialSha256": "b06749c8598ae5dafec75c2269fd20e76eee4ea3081a1222f4f6b3f63d7519ff",
+      "sourceSha256": "7ff76c83590fe8ec2a2da5b52d5b898a1f5fd734f2e2131882b9191f390b5ac3"
     },
     {
       "id": "rc_gantt_database_migration",
@@ -1774,7 +1774,6 @@
       "scenario": "Schema expansion, backfill, dual write, verification, cutover, and cleanup.",
       "layout": "dagre",
       "aspectRatio": 2,
-      "source": "\ngantt\n  title Zero-downtime database migration\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 1week\n  excludes weekends\n  todayMarker off\n  section Preparation\n  Capacity review :done, capacity, 2026-11-02, 3d\n  Rollback rehearsal :done, rollback, after capacity, 3d\n  Expand schema :schema, after rollback, 2d\n  section Data movement\n  Historical backfill :backfill, after schema, 10d\n  Consistency sampling :sampling, 2026-11-12, 7d\n  section Application\n  Enable dual write :dual, after schema, 8d\n  Shadow reads :shadow, after dual, 5d\n  Cutover approval :milestone, approval, after backfill sampling shadow, 0d\n  Read cutover :crit, cutover, after approval, 2d\n  section Cleanup\n  Observe new path :observe, after cutover, 5d\n  Remove old writes :cleanup, after observe, 3d\n  Contract schema :milestone, contract, after cleanup, 0d\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_gantt_database_migration_native.png",
@@ -1782,7 +1781,8 @@
       "nativeBytes": 40513,
       "officialBytes": 43748,
       "nativeSha256": "e54d542e941843df21d0476def4f74fb5d8ab884c3f9e6e6f74ac720639541a6",
-      "officialSha256": "57441e71c3bc3df091681ac2634fd14d218b6a39b90c91eaf675aad95bf79523"
+      "officialSha256": "57441e71c3bc3df091681ac2634fd14d218b6a39b90c91eaf675aad95bf79523",
+      "sourceSha256": "e0c3ca337f8e63428bcd46bfe64ae88fbfb7ac5085999be45e43428fe12f01bd"
     },
     {
       "id": "rc_gantt_regional_launch",
@@ -1791,7 +1791,6 @@
       "scenario": "Localization, compliance, infrastructure, go-to-market, and launch gates.",
       "layout": "dagre",
       "aspectRatio": 2,
-      "source": "\ngantt\n  title Regional product launch\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 1week\n  excludes weekends\n  todayMarker off\n  section Localization\n  Copy inventory :copy, 2027-01-04, 5d\n  Translation :translation, after copy, 10d\n  Linguistic QA :lqa, after translation, 5d\n  section Compliance\n  Data mapping :mapping, 2027-01-04, 8d\n  Legal review :legal, after mapping, 8d\n  Policy approval :milestone, policy, after legal, 0d\n  section Infrastructure\n  Regional capacity :capacity, 2027-01-06, 10d\n  Disaster recovery drill :drill, after capacity, 4d\n  section Go to market\n  Partner readiness :partners, 2027-01-11, 10d\n  Support training :support, after translation, 5d\n  Launch review :milestone, review, after lqa policy drill partners support, 0d\n  Phased launch :crit, launch, after review, 7d\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_gantt_regional_launch_native.png",
@@ -1799,7 +1798,8 @@
       "nativeBytes": 34704,
       "officialBytes": 39218,
       "nativeSha256": "d6c3979a5b7498d58e619f70a1b1d942305857353d1879eb3f70ee3cb7676548",
-      "officialSha256": "453616d230f720028fbc8b829c8930019c18b5f1546fbca0461e89730c743aeb"
+      "officialSha256": "453616d230f720028fbc8b829c8930019c18b5f1546fbca0461e89730c743aeb",
+      "sourceSha256": "3b31278b92136dbe2520dbbd43241cec534b49d3cd05c5d9d6fdbab1d3609690"
     },
     {
       "id": "rc_gantt_incident_hardening",
@@ -1808,7 +1808,6 @@
       "scenario": "Root cause, containment, resilience work, validation, and follow-up review.",
       "layout": "dagre",
       "aspectRatio": 2,
-      "source": "\ngantt\n  title Post-incident hardening\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 1week\n  excludes weekends\n  todayMarker off\n  section Investigation\n  Evidence preservation :done, evidence, 2027-02-01, 2d\n  Root cause analysis :done, rca, after evidence, 4d\n  Review published :milestone, review, after rca, 0d\n  section Immediate controls\n  Capacity guardrail :active, guardrail, 2027-02-02, 5d\n  Emergency rollback path :rollback, 2027-02-03, 6d\n  section Durable fixes\n  Remove contention :crit, contention, after rca, 10d\n  Add load shedding :shedding, after rca, 8d\n  Repair retry policy :retry, after rca, 5d\n  section Validation\n  Failure injection :chaos, after contention shedding retry, 4d\n  Peak load test :load, after chaos, 3d\n  SLO review :milestone, slo, after load guardrail rollback, 0d\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_gantt_incident_hardening_native.png",
@@ -1816,7 +1815,8 @@
       "nativeBytes": 37192,
       "officialBytes": 39161,
       "nativeSha256": "245be00e9507db56f7eea81d58967561d284da5bc3411790b8d739a706aceefa",
-      "officialSha256": "841dd9987d59c49edb13cd0ee2d49955b75acf2eac80ba9b5ebfb970a43ae380"
+      "officialSha256": "841dd9987d59c49edb13cd0ee2d49955b75acf2eac80ba9b5ebfb970a43ae380",
+      "sourceSha256": "9b75365716b7f6d6d0ea6dacc1ccfd15b2377e7676d1a10420afa3df2d890573"
     },
     {
       "id": "rc_gantt_data_platform_upgrade",
@@ -1825,7 +1825,6 @@
       "scenario": "Compatibility analysis, dual-running jobs, migration waves, and retirement.",
       "layout": "dagre",
       "aspectRatio": 2,
-      "source": "\ngantt\n  title Data platform engine upgrade\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 2week\n  excludes weekends\n  todayMarker off\n  section Foundation\n  Dependency inventory :inventory, 2027-03-01, 10d\n  Compatibility harness :harness, 2027-03-03, 12d\n  New engine cluster :cluster, 2027-03-08, 10d\n  section Pilot\n  Dual-run critical jobs :pilot, after inventory harness cluster, 10d\n  Result reconciliation :reconcile, after pilot, 5d\n  Pilot approval :milestone, approval, after reconcile, 0d\n  section Migration waves\n  Low-risk jobs :wave1, after approval, 10d\n  Medium-risk jobs :wave2, after wave1, 10d\n  Critical jobs :crit, wave3, after wave2, 12d\n  section Retirement\n  Freeze old deployments :freeze, after wave3, 5d\n  Archive execution history :archive, after freeze, 5d\n  Retire old cluster :milestone, retire, after archive, 0d\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_gantt_data_platform_upgrade_native.png",
@@ -1833,7 +1832,8 @@
       "nativeBytes": 42213,
       "officialBytes": 44466,
       "nativeSha256": "e9f64889dcf83ba0b9b44131f815ee8e9045813d293bb7c6fd423bf1781c9147",
-      "officialSha256": "7ee9626458fb0aaa400ab8371fe600f49d131e616549cc4464f54f803bf47ac1"
+      "officialSha256": "7ee9626458fb0aaa400ab8371fe600f49d131e616549cc4464f54f803bf47ac1",
+      "sourceSha256": "c8a6daf2741e9c2c4e58cc0a753266823c4cf372ac370d24311f3b0545df6f00"
     },
     {
       "id": "prod_gantt_dependency_plan_key_rotation",
@@ -1853,13 +1853,13 @@
         "Key rotation rollout",
         "Primary change"
       ],
-      "source": "\ngantt\n  title Key rotation rollout\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Preparation\n  Inventory :done, inventory, 2028-01-03, 3d\n  Dry run :active, dryrun, after inventory, 4d\n  section Execution\n  Primary change :crit, change, after dryrun, 2d\n  Validation :validate, after change, 36h\n  Cleanup :after validate, 2d\n",
       "nativeFile": "prod_gantt_dependency_plan_key_rotation_native.png",
       "officialFile": "prod_gantt_dependency_plan_key_rotation_official.png",
       "nativeBytes": 19904,
       "officialBytes": 21069,
       "nativeSha256": "f8b26f5b01ff6ca51e1338dad005fa51c48c9e9a0eb9a7d7aa0119eab2f803ba",
-      "officialSha256": "83ebc58c1ca6628c7d392aaa84d89c45036c95786aebc0c2afad178f1284089d"
+      "officialSha256": "83ebc58c1ca6628c7d392aaa84d89c45036c95786aebc0c2afad178f1284089d",
+      "sourceSha256": "e3142239e7cebb39d18694c0fcbc98f712b8c1197fc5f20bde7d8829a7402bc4"
     },
     {
       "id": "prod_gantt_dependency_plan_schema_upgrade",
@@ -1879,13 +1879,13 @@
         "Schema upgrade rollout",
         "Primary change"
       ],
-      "source": "\ngantt\n  title Schema upgrade rollout\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Preparation\n  Inventory :done, inventory, 2028-03-06, 3d\n  Dry run :active, dryrun, after inventory, 4d\n  section Migration\n  Primary change :crit, change, after dryrun, 2d\n  Validation :validate, after change, 36h\n  Cleanup :after validate, 2d\n",
       "nativeFile": "prod_gantt_dependency_plan_schema_upgrade_native.png",
       "officialFile": "prod_gantt_dependency_plan_schema_upgrade_official.png",
       "nativeBytes": 20732,
       "officialBytes": 22356,
       "nativeSha256": "3b5c958a7a2d08e02b008083b9bd463e10c37f7a71f22e76138f011d8fc5301c",
-      "officialSha256": "8c00b49093a37cbf57dcb692c5b0bdb4754b66cf5858381c5b8716a5ae17a3c0"
+      "officialSha256": "8c00b49093a37cbf57dcb692c5b0bdb4754b66cf5858381c5b8716a5ae17a3c0",
+      "sourceSha256": "09577e2f26ad07dcd2b533958a756fd89a8bbf250c2fb23ae05a5de59a531806"
     },
     {
       "id": "prod_gantt_calendar_controls_store_launch",
@@ -1904,13 +1904,13 @@
         "Store launch calendar",
         "Store approval"
       ],
-      "source": "\ngantt\n  title Store launch calendar\n  dateFormat YYYY-MM-DD\n  axisFormat %a %d\n  todayMarker off\n  excludes weekends\n  weekend saturday\n  section Delivery\n  Build candidate :build, 2028-05-01, 5d\n  Verification :verify, after build, 4d\n  Store approval :milestone, ready, after verify, 0d\n  Staged rollout :after ready, 5d\n",
       "nativeFile": "prod_gantt_calendar_controls_store_launch_native.png",
       "officialFile": "prod_gantt_calendar_controls_store_launch_official.png",
       "nativeBytes": 21439,
       "officialBytes": 22436,
       "nativeSha256": "2403ad29765a97968cb420fd8db1c7441a0c5b374dec7868f39ba5b9fe685622",
-      "officialSha256": "f0712d2f206554a679d505b761759358d705994d6c9767126d77c07f3c59f430"
+      "officialSha256": "f0712d2f206554a679d505b761759358d705994d6c9767126d77c07f3c59f430",
+      "sourceSha256": "fbdc28fcb431983329e3c32e009bffea601259e8a99ee49f7eae85309099a985"
     },
     {
       "id": "prod_gantt_calendar_controls_regional_cutover",
@@ -1929,13 +1929,13 @@
         "Regional cutover calendar",
         "Region ready"
       ],
-      "source": "\ngantt\n  title Regional cutover calendar\n  dateFormat YYYY-MM-DD\n  axisFormat %a %d\n  todayMarker off\n  excludes weekends\n  weekend saturday\n  section Delivery\n  Build candidate :build, 2028-07-03, 5d\n  Verification :verify, after build, 4d\n  Region ready :milestone, ready, after verify, 0d\n  Staged rollout :after ready, 5d\n",
       "nativeFile": "prod_gantt_calendar_controls_regional_cutover_native.png",
       "officialFile": "prod_gantt_calendar_controls_regional_cutover_official.png",
       "nativeBytes": 21583,
       "officialBytes": 22980,
       "nativeSha256": "4a5c8619b20d709ec736b910255d53474930457c4e84ed32419a07e6f09acd72",
-      "officialSha256": "2250bc19f2a15c89c2a8f6d2fbfe25739c597ca2fa15793540c3c163d111d1c6"
+      "officialSha256": "2250bc19f2a15c89c2a8f6d2fbfe25739c597ca2fa15793540c3c163d111d1c6",
+      "sourceSha256": "fd50d3906043679a5324ac0bf1a8b301fc44128ab3d552a84adfe765537c6cc5"
     },
     {
       "id": "prod_gantt_axis_controls_capacity",
@@ -1953,13 +1953,13 @@
         "Capacity review timeline",
         "Experiment"
       ],
-      "source": "\n---\nconfig:\n  gantt:\n    topAxis: true\n---\ngantt\n  title Capacity review timeline\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 2week\n  todayMarker off\n  section Review\n  Baseline :base, 2028-09-01, 14d\n  Experiment :experiment, after base, 21d\n  Review checkpoint :vert, checkpoint, 2028-10-02, 1d\n  Decision :milestone, decision, after experiment, 0d\n",
       "nativeFile": "prod_gantt_axis_controls_capacity_native.png",
       "officialFile": "prod_gantt_axis_controls_capacity_official.png",
       "nativeBytes": 19392,
       "officialBytes": 21039,
       "nativeSha256": "f935dc14bdf16ea38c17e43966a8bb7d64224ec745e39551e5a606e227020cbf",
-      "officialSha256": "316bc22cb0df6d8c684ac8c6cd2b834da41dc32d6017a3900c60bbaddd219473"
+      "officialSha256": "316bc22cb0df6d8c684ac8c6cd2b834da41dc32d6017a3900c60bbaddd219473",
+      "sourceSha256": "d31e3a6e739cae69346d8c1a2e38ad710462d658fb5c949cc512af4781277d06"
     },
     {
       "id": "prod_gantt_axis_controls_retention",
@@ -1977,13 +1977,13 @@
         "Retention review timeline",
         "Experiment"
       ],
-      "source": "\n---\nconfig:\n  gantt:\n    topAxis: true\n---\ngantt\n  title Retention review timeline\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  tickInterval 2week\n  todayMarker off\n  section Review\n  Baseline :base, 2029-01-08, 14d\n  Experiment :experiment, after base, 21d\n  Review checkpoint :vert, checkpoint, 2029-02-05, 1d\n  Decision :milestone, decision, after experiment, 0d\n",
       "nativeFile": "prod_gantt_axis_controls_retention_native.png",
       "officialFile": "prod_gantt_axis_controls_retention_official.png",
       "nativeBytes": 17173,
       "officialBytes": 18894,
       "nativeSha256": "cd702a4a8c2ddc5766f9891084ddb036ab34ca2e39ce246aac787584e3fdc323",
-      "officialSha256": "be763cd6b70d47d5a14d75dec4eb56c3fedb207431af0a53309d2630de9a8380"
+      "officialSha256": "be763cd6b70d47d5a14d75dec4eb56c3fedb207431af0a53309d2630de9a8380",
+      "sourceSha256": "08bdab5898e666ca63b278eb4fef7340cc6c9ca6b6ac0d2aff30a345bc8533fc"
     },
     {
       "id": "prod_gantt_compact_links_localization",
@@ -2002,13 +2002,13 @@
         "Localization delivery",
         "翻訳 validation"
       ],
-      "source": "\n---\nconfig:\n  gantt:\n    displayMode: compact\n---\ngantt\n  title Localization delivery\n  dateFormat YYYY-MM-DD\n  todayMarker off\n  section Evidence\n  Collect inputs :collect, 2029-04-02, 5d\n  翻訳 validation :review, after collect, 5d\n  Publish record :publish, after review, 2d\n  click publish href \"https://example.com/evidence\"\n",
       "nativeFile": "prod_gantt_compact_links_localization_native.png",
       "officialFile": "prod_gantt_compact_links_localization_official.png",
       "nativeBytes": 17525,
       "officialBytes": 19864,
       "nativeSha256": "9a6a40cd87c35ca9d7795dfc150508fb166573c085d4eb31233f8b289d5609c0",
-      "officialSha256": "e6f25f60fb9bbac5cf80eb78f99aa77e426a205a18e76ea43c4e187a12f6cf3b"
+      "officialSha256": "e6f25f60fb9bbac5cf80eb78f99aa77e426a205a18e76ea43c4e187a12f6cf3b",
+      "sourceSha256": "06df3aa63c19994066ecdb5b3e1b009d2a7631f77d1fb400c95f5f6e2713c733"
     },
     {
       "id": "prod_gantt_compact_links_certification",
@@ -2027,13 +2027,13 @@
         "Certification delivery",
         "Révision evidence"
       ],
-      "source": "\n---\nconfig:\n  gantt:\n    displayMode: compact\n---\ngantt\n  title Certification delivery\n  dateFormat YYYY-MM-DD\n  todayMarker off\n  section Evidence\n  Collect inputs :collect, 2029-06-04, 5d\n  Révision evidence :review, after collect, 5d\n  Publish record :publish, after review, 2d\n  click publish href \"https://example.com/evidence\"\n",
       "nativeFile": "prod_gantt_compact_links_certification_native.png",
       "officialFile": "prod_gantt_compact_links_certification_official.png",
       "nativeBytes": 17487,
       "officialBytes": 19780,
       "nativeSha256": "bd79e86245590736392e83751000cf5d40ce430dd3490a39af1a669e876e973a",
-      "officialSha256": "23d5408f290343231658b68805f7db4bd74770a746b82a39296004b33315a9c2"
+      "officialSha256": "23d5408f290343231658b68805f7db4bd74770a746b82a39296004b33315a9c2",
+      "sourceSha256": "4e5bc9c6025c22736704fd6f69c0e2e5931bb06579d34521246296441e5cff7f"
     },
     {
       "id": "rc_pie_cloud_cost",
@@ -2042,7 +2042,6 @@
       "scenario": "A twelve-category monthly cost allocation with legend values.",
       "layout": "dagre",
       "aspectRatio": 1.25,
-      "source": "\n---\nconfig:\n  pie:\n    legendPosition: right\n    donutHole: 0.38\n---\npie showData\n  title Monthly cloud cost allocation\n  \"Compute\" : 31.4\n  \"Object storage\" : 12.8\n  \"Databases\" : 14.6\n  \"Caching\" : 5.2\n  \"Networking\" : 9.7\n  \"Observability\" : 6.4\n  \"Message queues\" : 4.1\n  \"Search\" : 5.9\n  \"Data warehouse\" : 4.8\n  \"Security\" : 2.7\n  \"Support\" : 1.5\n  \"Other\" : 0.9\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_pie_cloud_cost_native.png",
@@ -2050,7 +2049,8 @@
       "nativeBytes": 141801,
       "officialBytes": 137568,
       "nativeSha256": "d0212c064e89c90adb7913ad79149de8a8ddbbfe4217169ce5cd420f7ce2eb95",
-      "officialSha256": "af7aa43257e2f85e0ffbb5271a3487506113645fadc4a2212f173b465dfb9820"
+      "officialSha256": "af7aa43257e2f85e0ffbb5271a3487506113645fadc4a2212f173b465dfb9820",
+      "sourceSha256": "a43d952342c9f804bd56434f2dfd7defc8210feefb462502e87d40b37485a64c"
     },
     {
       "id": "rc_pie_traffic_sources",
@@ -2059,7 +2059,6 @@
       "scenario": "Traffic composition across organic, paid, referral, direct, and partner channels.",
       "layout": "dagre",
       "aspectRatio": 1.25,
-      "source": "\n---\nconfig:\n  pie:\n    legendPosition: bottom\n    textPosition: 0.62\n---\npie\n  title Weekly acquisition traffic\n  \"Organic search\" : 34\n  \"Paid search\" : 18\n  \"Direct\" : 16\n  \"Social\" : 11\n  \"Partner referrals\" : 8\n  \"Email campaigns\" : 6\n  \"App store discovery\" : 4\n  \"Other\" : 3\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_pie_traffic_sources_native.png",
@@ -2067,7 +2066,8 @@
       "nativeBytes": 95468,
       "officialBytes": 87152,
       "nativeSha256": "125162bdcfddfebad4a5a4e39fcf90599943815b3864c8d67fa6d4514c5f56c5",
-      "officialSha256": "c8875f70d79c1d0b6335d96123b09a2ba694e010b1d9fc0c65c4340304f8274e"
+      "officialSha256": "c8875f70d79c1d0b6335d96123b09a2ba694e010b1d9fc0c65c4340304f8274e",
+      "sourceSha256": "fddec134d8fd13f6eea94f456ff627e1b0621144276650a8f9aa8b8100e5af2f"
     },
     {
       "id": "rc_pie_incident_causes",
@@ -2076,7 +2076,6 @@
       "scenario": "Incident root-cause distribution with the largest category highlighted.",
       "layout": "dagre",
       "aspectRatio": 1.25,
-      "source": "\n---\nconfig:\n  pie:\n    highlightSlice: Unsafe deployment\n    legendPosition: right\n---\npie showData\n  title Quarterly incident root causes\n  \"Unsafe deployment\" : 27\n  \"Dependency outage\" : 18\n  \"Capacity exhaustion\" : 16\n  \"Configuration error\" : 14\n  \"Data quality\" : 9\n  \"Certificate expiry\" : 6\n  \"Network fault\" : 5\n  \"Unknown\" : 5\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_pie_incident_causes_native.png",
@@ -2084,7 +2083,8 @@
       "nativeBytes": 123351,
       "officialBytes": 110704,
       "nativeSha256": "d7adef3594eb414761f87edf5f3d000dfe770ad833c65330020a7476a3874ff5",
-      "officialSha256": "d146a6387ba47d178c048c9ea5c81c2d45d6f78ed5c7bf0d813b0a154cd38647"
+      "officialSha256": "d146a6387ba47d178c048c9ea5c81c2d45d6f78ed5c7bf0d813b0a154cd38647",
+      "sourceSha256": "b2a54a426fb7e0c564e4a7da30eae7e6273e44c32c1c086b7f89362ddf44a058"
     },
     {
       "id": "rc_pie_subscription_mix",
@@ -2093,7 +2093,6 @@
       "scenario": "A donut chart showing active customer distribution across plan tiers.",
       "layout": "dagre",
       "aspectRatio": 1.25,
-      "source": "\n---\nconfig:\n  pie:\n    donutHole: 0.56\n    legendPosition: center\n---\npie showData\n  title Active subscriptions by plan\n  \"Free\" : 58420\n  \"Starter\" : 18430\n  \"Professional\" : 9275\n  \"Business\" : 3120\n  \"Enterprise\" : 755\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_pie_subscription_mix_native.png",
@@ -2101,7 +2100,8 @@
       "nativeBytes": 105997,
       "officialBytes": 95032,
       "nativeSha256": "283f7d086a0be5a2e77498abb790a77450b86ed0b762dcd656423e5ffd485b3b",
-      "officialSha256": "4dbc9d8b19c88f88e64bd36d497f389172243b0062a147fe44c700e0acb37047"
+      "officialSha256": "4dbc9d8b19c88f88e64bd36d497f389172243b0062a147fe44c700e0acb37047",
+      "sourceSha256": "c796629184cfbd9bdbe14ee914618ee916ca4dbd200854c15946ac6fe93ae8d2"
     },
     {
       "id": "rc_pie_storage_allocation",
@@ -2110,7 +2110,6 @@
       "scenario": "Storage consumption split by content family with a small free-space slice.",
       "layout": "dagre",
       "aspectRatio": 1.25,
-      "source": "\n---\nconfig:\n  pie:\n    legendPosition: left\n    textPosition: 0.5\n---\npie\n  title Tenant storage allocation\n  \"Video originals\" : 41.2\n  \"Video derivatives\" : 19.6\n  \"Images\" : 12.3\n  \"Documents\" : 8.8\n  \"Database backups\" : 7.4\n  \"Search indexes\" : 4.5\n  \"Logs\" : 3.9\n  \"Free space\" : 2.3\n",
       "features": [],
       "expectedTexts": [],
       "nativeFile": "rc_pie_storage_allocation_native.png",
@@ -2118,7 +2117,8 @@
       "nativeBytes": 126180,
       "officialBytes": 110835,
       "nativeSha256": "5662df4c942764d214ae1279dea8dfb3b9e47f9146485125573ced10d009af24",
-      "officialSha256": "2a7fcbcd47d3517bc4fb73e6905dd1ee7a28c5855e3a0b3b1f1832f185bc4b75"
+      "officialSha256": "2a7fcbcd47d3517bc4fb73e6905dd1ee7a28c5855e3a0b3b1f1832f185bc4b75",
+      "sourceSha256": "5aff22925bf2fed0b6c7022dc84a4b7f28950cf5a03258d4a207db81d0327806"
     },
     {
       "id": "prod_pie_distribution_compute",
@@ -2137,13 +2137,13 @@
         "Compute cost distribution",
         "On-demand"
       ],
-      "source": "\npie showData\n  title Compute cost distribution\n  \"On-demand\" : 42.5\n  \"Reserved\" : 31.25\n  \"Spot\" : 18.75\n  \"Other\" : 7.5\n",
       "nativeFile": "prod_pie_distribution_compute_native.png",
       "officialFile": "prod_pie_distribution_compute_official.png",
       "nativeBytes": 85111,
       "officialBytes": 76797,
       "nativeSha256": "e8dd5b59fdf11a8b857e490e3143bcf8fe051a2574bdedc7dca8449504b9e751",
-      "officialSha256": "5d711b5028a81bc7ba9f759e5c0fd89dbeb3410a522c772f207f24237d0aff4b"
+      "officialSha256": "5d711b5028a81bc7ba9f759e5c0fd89dbeb3410a522c772f207f24237d0aff4b",
+      "sourceSha256": "89f38c469176ffda0a10275a13ad2913b57a1710441839390989bc9f368d1dad"
     },
     {
       "id": "prod_pie_distribution_traffic",
@@ -2162,13 +2162,13 @@
         "Traffic distribution",
         "Direct"
       ],
-      "source": "\npie showData\n  title Traffic distribution\n  \"Direct\" : 38.4\n  \"Search\" : 27.6\n  \"Referral\" : 21.2\n  \"Other\" : 12.8\n",
       "nativeFile": "prod_pie_distribution_traffic_native.png",
       "officialFile": "prod_pie_distribution_traffic_official.png",
       "nativeBytes": 90111,
       "officialBytes": 80058,
       "nativeSha256": "a22e851f16ea11b2983c23a33e578e2901c2f047fd808ac51a4d05e6c04933ac",
-      "officialSha256": "a828010c58dfc9cb1bb536936583428b1a658ec021e02e9c1cd60b2691a608fd"
+      "officialSha256": "a828010c58dfc9cb1bb536936583428b1a658ec021e02e9c1cd60b2691a608fd",
+      "sourceSha256": "1f2abff37969ccf58df347e38865e1505820914ab2a78109ac77886d8c15bdad"
     },
     {
       "id": "prod_pie_donut_center_subscription",
@@ -2186,13 +2186,13 @@
         "Subscription mix",
         "Growth"
       ],
-      "source": "\n---\nconfig:\n  pie:\n    donutHole: 0.52\n    legendPosition: center\n    highlightSlice: \"Growth\"\n---\n\npie\n  title Subscription mix\n  \"Core\" : 58\n  \"Growth\" : 24\n  \"Trial\" : 12\n  \"Paused\" : 6\n\n",
       "nativeFile": "prod_pie_donut_center_subscription_native.png",
       "officialFile": "prod_pie_donut_center_subscription_official.png",
       "nativeBytes": 86283,
       "officialBytes": 77678,
       "nativeSha256": "0bddd08ad43088067bfa0cc4c67a544cb62acd34023bd4547d4d9e1295d3fe96",
-      "officialSha256": "cddf441a4bb86eee204462be92466c3adaa2bec66ff6680017c0e0c524e5db9f"
+      "officialSha256": "cddf441a4bb86eee204462be92466c3adaa2bec66ff6680017c0e0c524e5db9f",
+      "sourceSha256": "f6fcbe4872dd4179cd6027fdabfc008b9f81a5d85a349b749f7d66c07100b7cb"
     },
     {
       "id": "prod_pie_donut_center_storage",
@@ -2210,13 +2210,13 @@
         "Storage mix",
         "Archive"
       ],
-      "source": "\n---\nconfig:\n  pie:\n    donutHole: 0.52\n    legendPosition: center\n    highlightSlice: \"Archive\"\n---\n\npie\n  title Storage mix\n  \"Primary\" : 52\n  \"Replica\" : 28\n  \"Archive\" : 15\n  \"Free\" : 5\n\n",
       "nativeFile": "prod_pie_donut_center_storage_native.png",
       "officialFile": "prod_pie_donut_center_storage_official.png",
       "nativeBytes": 86166,
       "officialBytes": 77668,
       "nativeSha256": "ee00de35c67e1853c54c4078d47b725ed92a6c1d33d5474e8dd5c46323af70e3",
-      "officialSha256": "f750e5975dbd9141ff7efc3d7b0442b1004544281941cb8a0f5c8eb7ed9f5ca8"
+      "officialSha256": "f750e5975dbd9141ff7efc3d7b0442b1004544281941cb8a0f5c8eb7ed9f5ca8",
+      "sourceSha256": "c4ed54083b0e1c5293422ca9f3ce4c675456f64efc6ed83217521b812b18915a"
     },
     {
       "id": "prod_pie_label_edges_incident",
@@ -2235,13 +2235,13 @@
         "Incident labels",
         "Réseau"
       ],
-      "source": "\npie showData\n  title Incident labels\n  \"Quoted \\\"label\\\"\" : 12\n  \"Duplicate\" : 18\n  \"Duplicate\" : 30\n  \"Zero\" : 0\n  \"Réseau\" : 40\n",
       "nativeFile": "prod_pie_label_edges_incident_native.png",
       "officialFile": "prod_pie_label_edges_incident_official.png",
       "nativeBytes": 76632,
       "officialBytes": 69451,
       "nativeSha256": "5ed089ed9eea88a1db141c3d73d79d032dbed327da814dbbf8397d7d6de2f10a",
-      "officialSha256": "5964dcb2d6ec89d03ae4968bfe478fda626529523aa8ddfc99ad6dd5e5414cd5"
+      "officialSha256": "5964dcb2d6ec89d03ae4968bfe478fda626529523aa8ddfc99ad6dd5e5414cd5",
+      "sourceSha256": "38ede3ef50c01226f02d87303996bc47f1aa237a5b82165be3437bfea98bf70d"
     },
     {
       "id": "prod_pie_label_edges_content",
@@ -2260,13 +2260,13 @@
         "Content labels",
         "動画"
       ],
-      "source": "\npie showData\n  title Content labels\n  \"Quoted \\\"label\\\"\" : 12\n  \"Duplicate\" : 18\n  \"Duplicate\" : 30\n  \"Zero\" : 0\n  \"動画\" : 40\n",
       "nativeFile": "prod_pie_label_edges_content_native.png",
       "officialFile": "prod_pie_label_edges_content_official.png",
       "nativeBytes": 76452,
       "officialBytes": 68284,
       "nativeSha256": "17b0bc6ae0dc2001ffcbe212558317c9bcf6aabce3e332f550593aa23f619df8",
-      "officialSha256": "4ef2c53cd48673efd79ded3f837877c51582c3cad5660a1c675616ef957a3c14"
+      "officialSha256": "4ef2c53cd48673efd79ded3f837877c51582c3cad5660a1c675616ef957a3c14",
+      "sourceSha256": "d6074eb7edce16d51d299c6f433a0e63ea16f87c8d838e902be18ba89505c5e5"
     },
     {
       "id": "prod_pie_themed_many_regions",
@@ -2286,13 +2286,13 @@
         "Regional traffic",
         "H"
       ],
-      "source": "\n---\ntitle: Regional traffic\naccTitle: Regional traffic\naccDescr: Distribution with many categories\nconfig:\n  pie:\n    legendPosition: right\n    legendTransform: \"translate(8, 4)\"\n  themeVariables:\n    pie1: \"#2563eb\"\n    pie2: \"#14b8a6\"\n    pie3: \"#f97316\"\n---\npie\n  title Regional traffic\n  \"A\" : 20\n  \"B\" : 18\n  \"C\" : 16\n  \"D\" : 14\n  \"E\" : 12\n  \"F\" : 10\n  \"G\" : 6\n  \"H\" : 4\n",
       "nativeFile": "prod_pie_themed_many_regions_native.png",
       "officialFile": "prod_pie_themed_many_regions_official.png",
       "nativeBytes": 107726,
       "officialBytes": 94228,
       "nativeSha256": "92260c16b456216233316c97e5747bdd3f9a8f0f800fef2748849d55d0ddefb7",
-      "officialSha256": "d79cdf69dc157f0c569ae4478384224637dcacc324fd1ddfcb363ebcdd5694bc"
+      "officialSha256": "d79cdf69dc157f0c569ae4478384224637dcacc324fd1ddfcb363ebcdd5694bc",
+      "sourceSha256": "29f042a3536d8a7ac8e93e61c6d5230a44a00ac64deec2b2a1a033b0675e09ae"
     },
     {
       "id": "prod_pie_themed_many_services",
@@ -2312,13 +2312,300 @@
         "Service ownership",
         "H"
       ],
-      "source": "\n---\ntitle: Service ownership\naccTitle: Service ownership\naccDescr: Distribution with many categories\nconfig:\n  pie:\n    legendPosition: right\n    legendTransform: \"translate(8, 4)\"\n  themeVariables:\n    pie1: \"#2563eb\"\n    pie2: \"#14b8a6\"\n    pie3: \"#f97316\"\n---\npie\n  title Service ownership\n  \"A\" : 20\n  \"B\" : 18\n  \"C\" : 16\n  \"D\" : 14\n  \"E\" : 12\n  \"F\" : 10\n  \"G\" : 6\n  \"H\" : 4\n",
       "nativeFile": "prod_pie_themed_many_services_native.png",
       "officialFile": "prod_pie_themed_many_services_official.png",
       "nativeBytes": 109114,
       "officialBytes": 95112,
       "nativeSha256": "3c34fe9b1b4757cbe9fcf2f39a5a08c32aa6f9c82da6ca2761ca4e69877859e4",
-      "officialSha256": "b675b73cef719c675f0a8362bbd97a3f0fdabcb0bf7d95f6198c5ae3d699d4c9"
+      "officialSha256": "b675b73cef719c675f0a8362bbd97a3f0fdabcb0bf7d95f6198c5ae3d699d4c9",
+      "sourceSha256": "c55ebb3bb7660e05e9c19da745b4035312085c716e052ef72df1df071a321cc0"
+    },
+    {
+      "id": "rc_journey_account_onboarding",
+      "kind": "journey",
+      "title": "Account onboarding journey",
+      "scenario": "A customer creates an account, verifies identity, and completes initial setup.",
+      "layout": "dagre",
+      "aspectRatio": 2.1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_journey_account_onboarding_native.png",
+      "officialFile": "rc_journey_account_onboarding_official.png",
+      "nativeBytes": 37647,
+      "officialBytes": 41095,
+      "nativeSha256": "2459ce3b94149484e55a0864e3b8f305c5cf15f8512ebbe9664867b8f79166c6",
+      "officialSha256": "6bf7ff8443c52769a03ec16c5268a1b7dd2035da81f6ad017217e53615ca19da",
+      "sourceSha256": "87f3a75b58fa94300703c0507d392f95ab93ec8628dcdf7d16f0c2ed9559efa7"
+    },
+    {
+      "id": "rc_journey_incident_response",
+      "kind": "journey",
+      "title": "Incident response journey",
+      "scenario": "Operations and engineering coordinate detection, mitigation, and follow-up.",
+      "layout": "dagre",
+      "aspectRatio": 2.2,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_journey_incident_response_native.png",
+      "officialFile": "rc_journey_incident_response_official.png",
+      "nativeBytes": 37688,
+      "officialBytes": 40395,
+      "nativeSha256": "e212044530b7b34839360a763536f7d451ecad4d55be774c43107f958aa01677",
+      "officialSha256": "4cbd25580d8b3a3d16687aab4f8f1bfbdb749c63791a96ec36d33fa47f3b8fbd",
+      "sourceSha256": "9b127d4a57a4f4c051e92c143993f1e93aae54fc18e2df6194289d07b2e7e688"
+    },
+    {
+      "id": "rc_journey_checkout_recovery",
+      "kind": "journey",
+      "title": "Checkout and recovery journey",
+      "scenario": "A shopper completes checkout while payment recovery and support paths remain visible.",
+      "layout": "dagre",
+      "aspectRatio": 2.15,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_journey_checkout_recovery_native.png",
+      "officialFile": "rc_journey_checkout_recovery_official.png",
+      "nativeBytes": 39585,
+      "officialBytes": 43848,
+      "nativeSha256": "667672fa09e496aedc63f2d578b6d578c9fd8e423cb3a304352e7bb1533b0d37",
+      "officialSha256": "67eb5e743ebe2531172e2fdcc0ac1c2fc6a73659b6e63c77aba547e97125db25",
+      "sourceSha256": "ba3f75a22425a33278df6d9fb3129f010d13e3de5f40a1dff979b964f4bff3b5"
+    },
+    {
+      "id": "rc_journey_release_coordination",
+      "kind": "journey",
+      "title": "Cross-platform release journey",
+      "scenario": "Engineering, quality, and operations coordinate a guarded cross-platform release.",
+      "layout": "dagre",
+      "aspectRatio": 2.25,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_journey_release_coordination_native.png",
+      "officialFile": "rc_journey_release_coordination_official.png",
+      "nativeBytes": 40766,
+      "officialBytes": 44358,
+      "nativeSha256": "b95cd53ddc3dd2bd5aea62f5df52e1b95c4d395447927bc04a0a74e5b5f6246a",
+      "officialSha256": "5001e476ba58c8c67ac8c6c7ece7b006facc6a13bf9ba1d10ad0b4ceb7ab1209",
+      "sourceSha256": "5baaa0168395ea25017d4791ee315c1d22d2ccf3c1337862666514ebfde1a0a6"
+    },
+    {
+      "id": "rc_journey_privileged_access",
+      "kind": "journey",
+      "title": "Privileged access journey",
+      "scenario": "A time-bound access request moves through policy, approval, use, and revocation.",
+      "layout": "dagre",
+      "aspectRatio": 2.2,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_journey_privileged_access_native.png",
+      "officialFile": "rc_journey_privileged_access_official.png",
+      "nativeBytes": 39234,
+      "officialBytes": 40864,
+      "nativeSha256": "94bab125eae53f8504cf1f2ec56d85001d35cf7b3d1f62a90d89778c31a96360",
+      "officialSha256": "a93d5146a3e489744bc7d8e67e6902c7950870e9a0fa94a28235f08d8ef83e52",
+      "sourceSha256": "7760b8be42d4a082d33b0ede62adf1a555f03ddc0f5d35bf1db637d9e4e6e480"
+    },
+    {
+      "id": "prod_journey_multi_stage_support",
+      "kind": "journey",
+      "title": "Customer support journey",
+      "scenario": "A customer and support team move from problem reporting to resolution.",
+      "layout": "dagre",
+      "aspectRatio": 2.05,
+      "features": [
+        "sections",
+        "scores",
+        "single-actor",
+        "multi-actor",
+        "actor-reuse",
+        "title"
+      ],
+      "expectedTexts": [
+        "Customer support resolution",
+        "Confirm closure"
+      ],
+      "nativeFile": "prod_journey_multi_stage_support_native.png",
+      "officialFile": "prod_journey_multi_stage_support_official.png",
+      "nativeBytes": 36205,
+      "officialBytes": 37835,
+      "nativeSha256": "152a5afb351580a415fc2ee058f46980e66a435a3fc79400906d44fb6cf8af38",
+      "officialSha256": "3c1b5122d098b44132d2effc3ae148d46ccf3889d7ba1228022f03a52c2a7598",
+      "sourceSha256": "8fe79874df197eb8a1601218f899be23229212496a5be60dfedf4d91b63d9331"
+    },
+    {
+      "id": "prod_journey_multi_stage_procurement",
+      "kind": "journey",
+      "title": "Procurement approval journey",
+      "scenario": "A requester and procurement reviewer coordinate a purchase approval.",
+      "layout": "dagre",
+      "aspectRatio": 2.05,
+      "features": [
+        "sections",
+        "scores",
+        "single-actor",
+        "multi-actor",
+        "actor-reuse",
+        "title"
+      ],
+      "expectedTexts": [
+        "Procurement approval",
+        "Confirm delivery"
+      ],
+      "nativeFile": "prod_journey_multi_stage_procurement_native.png",
+      "officialFile": "prod_journey_multi_stage_procurement_official.png",
+      "nativeBytes": 34956,
+      "officialBytes": 36992,
+      "nativeSha256": "e2032363df921b4a0420ab5752dbe11a1963794e15734bdf0d5c07b1e7f725d9",
+      "officialSha256": "c0641293162eb550be9d89f781acec54915911a59404c32cef876c72f9e964ea",
+      "sourceSha256": "324d30611bc4a1aeac7a884749da79eedb7da9c5c3b064981774bd1dc4460551"
+    },
+    {
+      "id": "prod_journey_metadata_edges_automation",
+      "kind": "journey",
+      "title": "Automation metadata journey",
+      "scenario": "Automated and human tasks retain metadata, comments, and decimal scores.",
+      "layout": "dagre",
+      "aspectRatio": 1.85,
+      "features": [
+        "decimal-scores",
+        "actorless-tasks",
+        "frontmatter-title",
+        "accessibility",
+        "comments"
+      ],
+      "expectedTexts": [
+        "Automation evidence journey",
+        "Approve automated outcome"
+      ],
+      "nativeFile": "prod_journey_metadata_edges_automation_native.png",
+      "officialFile": "prod_journey_metadata_edges_automation_official.png",
+      "nativeBytes": 45525,
+      "officialBytes": 46183,
+      "nativeSha256": "56a119138c1e7691d2ffe2f6baa020e721d91c071ed37a9c0cd6d7ea98b151ef",
+      "officialSha256": "5692b238e516321a645ff42dd8a949b1cab10e65db92a4c039309a495c77f200",
+      "sourceSha256": "c9e81a63f2f45391df2f1b2472227528a862d4bdb79d44c08832566264aa6639"
+    },
+    {
+      "id": "prod_journey_metadata_edges_recovery",
+      "kind": "journey",
+      "title": "Recovery metadata journey",
+      "scenario": "Recovery tasks retain metadata, comments, and decimal scores.",
+      "layout": "dagre",
+      "aspectRatio": 1.85,
+      "features": [
+        "decimal-scores",
+        "actorless-tasks",
+        "frontmatter-title",
+        "accessibility",
+        "comments"
+      ],
+      "expectedTexts": [
+        "Recovery evidence journey",
+        "Confirm restored service"
+      ],
+      "nativeFile": "prod_journey_metadata_edges_recovery_native.png",
+      "officialFile": "prod_journey_metadata_edges_recovery_official.png",
+      "nativeBytes": 35272,
+      "officialBytes": 37909,
+      "nativeSha256": "3e23c262b814756c8ef3774ce8afc6a18fbf5d7d7d0da4fd1f9e120ad682ad36",
+      "officialSha256": "f09a116d0a34fcb5ce53bbbc6d5ace391f8e8ceae6cc49685dbfb6c43efd0ca8",
+      "sourceSha256": "6824a6a2d6ba96b269e4a12208a186a0a8b50eee3181b862049d0e1b47f57760"
+    },
+    {
+      "id": "prod_journey_configured_text_compliance",
+      "kind": "journey",
+      "title": "Configured compliance journey",
+      "scenario": "Long compliance labels exercise measured actor width and configured task boxes.",
+      "layout": "dagre",
+      "aspectRatio": 2,
+      "features": [
+        "configuration",
+        "long-task-text",
+        "long-actor-text"
+      ],
+      "expectedTexts": [
+        "Compliance evidence review",
+        "Publish the approved compliance decision record"
+      ],
+      "nativeFile": "prod_journey_configured_text_compliance_native.png",
+      "officialFile": "prod_journey_configured_text_compliance_official.png",
+      "nativeBytes": 40632,
+      "officialBytes": 40881,
+      "nativeSha256": "6435d699cdbfadd2fe7ef9db5d21cd4acbd52be6d9e87f91a0cefc9cb527326c",
+      "officialSha256": "5570b6d8969b9adfeb4a3195b6b7fe4f541fe7df2382cd8e808e3721f3f9be81",
+      "sourceSha256": "47c1a64d4d3c81fca78f3959b443da1ecc2311d05dc6366b6c0f377cd65ab8ab"
+    },
+    {
+      "id": "prod_journey_configured_text_continuity",
+      "kind": "journey",
+      "title": "Configured continuity journey",
+      "scenario": "Long continuity labels exercise measured actor width and configured task boxes.",
+      "layout": "dagre",
+      "aspectRatio": 2,
+      "features": [
+        "configuration",
+        "long-task-text",
+        "long-actor-text"
+      ],
+      "expectedTexts": [
+        "Business continuity validation",
+        "Approve the consolidated continuity readiness report"
+      ],
+      "nativeFile": "prod_journey_configured_text_continuity_native.png",
+      "officialFile": "prod_journey_configured_text_continuity_official.png",
+      "nativeBytes": 41834,
+      "officialBytes": 41735,
+      "nativeSha256": "d329f59a974cf88a5225e85d6d09a8ed7a9c5ddafb476be53cd9fb00ef1b12cd",
+      "officialSha256": "c2fad42a827623e236e71efbfa5e842f475513ef7ab760850b9680e5138dbc60",
+      "sourceSha256": "409116f1264fca62e975e35feb55647c817c974e3c7761e7fd7aadecc0de3056"
+    },
+    {
+      "id": "prod_journey_theme_actor_order_release",
+      "kind": "journey",
+      "title": "Themed release actor order",
+      "scenario": "A custom section palette retains Mermaid actor sorting and task marker order.",
+      "layout": "dagre",
+      "aspectRatio": 1.95,
+      "features": [
+        "theme-colors",
+        "actor-order",
+        "multi-actor"
+      ],
+      "expectedTexts": [
+        "Themed release coordination",
+        "Approve rollout"
+      ],
+      "nativeFile": "prod_journey_theme_actor_order_release_native.png",
+      "officialFile": "prod_journey_theme_actor_order_release_official.png",
+      "nativeBytes": 48534,
+      "officialBytes": 46637,
+      "nativeSha256": "3b201f5706c52f4789878ebc0feb3ac83549b9944e7dce64d165506e6592d2c8",
+      "officialSha256": "ac6c65205d935f35b7f6159bf216f1204402b236a342287a01bf5bd125fc4c80",
+      "sourceSha256": "f28c41acfda2efdd293a6b0b335d0c65360ea23415ac03293fcc6b75f4309f99"
+    },
+    {
+      "id": "prod_journey_theme_actor_order_migration",
+      "kind": "journey",
+      "title": "Themed migration actor order",
+      "scenario": "A custom section palette retains Mermaid actor sorting and task marker order.",
+      "layout": "dagre",
+      "aspectRatio": 1.95,
+      "features": [
+        "theme-colors",
+        "actor-order",
+        "multi-actor"
+      ],
+      "expectedTexts": [
+        "Themed migration coordination",
+        "Approve cutover"
+      ],
+      "nativeFile": "prod_journey_theme_actor_order_migration_native.png",
+      "officialFile": "prod_journey_theme_actor_order_migration_official.png",
+      "nativeBytes": 48544,
+      "officialBytes": 48886,
+      "nativeSha256": "4f1e2a26b1a3d15de4770ca1b74393e710c209af0ccb4c56e567c6eaf7e6e1ca",
+      "officialSha256": "c6970f371d19596b331b8e35ea929b87be81ffc61473b9f5766ae7a503bd7ede",
+      "sourceSha256": "cae5cd833dca4f3ec5024d1dfe53dde9bf06899a199119c3ca5aaf92f0f4292e"
     }
   ]
 }
