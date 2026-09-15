@@ -19,9 +19,9 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Live Web demo</strong></a>
     ·
-    <a href="docs/stability-report.md"><strong>Stable test report</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>2,048-case visual report</strong></a>
     ·
-    <a href="docs/production-capability-matrix.md">Capability matrix</a>
+    <a href="docs/stability-report.md">Full Stable report</a>
     ·
     <a href="#integration">Integration</a>
   </p>
@@ -34,9 +34,10 @@
 > separate randomized stress tests, runtime load tests, and cross-platform
 > builds.
 >
-> Start with the **[full Stable test report](docs/stability-report.md)**.
-> It contains the cases, Native/Official contact sheets, performance numbers,
-> runtime screenshots, machine-readable metrics, and reproduction commands.
+> Start with the **[2,048-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**,
+> containing all 4,096 screenshots across 128 paged contact sheets. The
+> **[full Stable report](docs/stability-report.md)** adds the decision,
+> performance, platform, security, and reproduction evidence.
 
 CMP Mermaid is designed for applications that render many diagrams without a
 WebView per diagram. The production path does not embed Mermaid.js and does not
