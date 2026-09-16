@@ -132,8 +132,15 @@ data class MermaidGitGraphOptions(
     val parallelCommits: Boolean = false,
 )
 
+data class MermaidMindmapOptions(
+    val padding: Float = 10f,
+    val maxNodeWidth: Float = 200f,
+    val useMaxWidth: Boolean = true,
+    val layoutAlgorithm: String = "cose-bilkent",
+)
+
 data class MermaidRenderOptions(
-    val layout: String = "elk",
+    val layout: String = "dagre",
     val classLayout: String? = null,
     val stateLayout: String? = null,
     val requirementThemeName: String? = null,
@@ -184,6 +191,7 @@ data class MermaidRenderOptions(
     val xyChart: MermaidXyChartOptions = MermaidXyChartOptions(),
     val journey: MermaidJourneyOptions = MermaidJourneyOptions(),
     val gitGraph: MermaidGitGraphOptions = MermaidGitGraphOptions(),
+    val mindmap: MermaidMindmapOptions = MermaidMindmapOptions(),
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -409,6 +417,58 @@ data class MermaidGitGraphTheme(
     val tagLabelFontSize: Float = 10f,
 )
 
+data class MermaidMindmapTheme(
+    val mainBackground: SceneColor = SceneColor(0xFFECECFF),
+    val nodeBorder: SceneColor = SceneColor(0xFF9370DB),
+    val rootFill: SceneColor = SceneColor(0xFF0000EC),
+    val rootText: SceneColor = SceneColor(0xFFFFFFFF),
+    val sectionFills: List<SceneColor> = listOf(
+        0xFF8686FF,
+        0xFFFFFF78,
+        0xFFD7FF86,
+        0xFFC286FF,
+        0xFFFF86FF,
+        0xFFFF86C2,
+        0xFFFF8686,
+        0xFFFFC286,
+        0xFFC2FF86,
+        0xFF86FFC2,
+        0xFF86FFFF,
+        0xFF86C2FF,
+    ).map(::SceneColor),
+    val sectionInverseColors: List<SceneColor> = listOf(
+        0xFFFFFFB9,
+        0xFFABABFF,
+        0xFFD0B9FF,
+        0xFFDCFFB9,
+        0xFFB9FFB9,
+        0xFFB9FFDC,
+        0xFFB9FFFF,
+        0xFFB9DCFF,
+        0xFFDCB9FF,
+        0xFFFFB9DC,
+        0xFFFFB9B9,
+        0xFFFFDCB9,
+    ).map(::SceneColor),
+    val sectionLabelColors: List<SceneColor> = listOf(
+        0xFFFFFFFF,
+        0xFF000000,
+        0xFF000000,
+        0xFFFFFFFF,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+    ).map(::SceneColor),
+    val useGradient: Boolean = false,
+    val gradientStart: SceneColor = SceneColor(0xFFC7C7F1),
+    val gradientStop: SceneColor = SceneColor(0xFFEEEEBC),
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
@@ -433,6 +493,7 @@ data class MermaidTheme(
     val journey: MermaidJourneyTheme = MermaidJourneyTheme(),
     val requirement: MermaidRequirementTheme = MermaidRequirementTheme(),
     val gitGraph: MermaidGitGraphTheme = MermaidGitGraphTheme(),
+    val mindmap: MermaidMindmapTheme = MermaidMindmapTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -466,6 +527,7 @@ data class MermaidTheme(
             journey = darkJourneyTheme(),
             requirement = darkRequirementTheme(),
             gitGraph = gitGraphTheme("dark"),
+            mindmap = mindmapTheme("dark"),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
                 background = 0xFF333333,
@@ -509,6 +571,7 @@ data class MermaidTheme(
             xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF28253D),
             requirement = reduxRequirementTheme(dark = false),
             gitGraph = gitGraphTheme("redux"),
+            mindmap = mindmapTheme("redux-color"),
             dropShadow = reduxShadow(dark = false),
         )
 
@@ -548,6 +611,7 @@ data class MermaidTheme(
                 journey = forestJourneyTheme(),
                 requirement = forestRequirementTheme(),
                 gitGraph = gitGraphTheme("forest"),
+                mindmap = mindmapTheme("forest"),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -589,6 +653,7 @@ data class MermaidTheme(
                 journey = neutralJourneyTheme(),
                 requirement = neutralRequirementTheme(),
                 gitGraph = gitGraphTheme("neutral"),
+                mindmap = mindmapTheme("neutral"),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -624,6 +689,7 @@ data class MermaidTheme(
                 journey = baseJourneyTheme(),
                 requirement = baseRequirementTheme(),
                 gitGraph = gitGraphTheme("base"),
+                mindmap = mindmapTheme("base"),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
             )
@@ -644,6 +710,7 @@ data class MermaidTheme(
                 journey = neoJourneyTheme(dark = false, redux = false),
                 requirement = neoRequirementTheme(dark = false),
                 gitGraph = gitGraphTheme("neo"),
+                mindmap = mindmapTheme("neo"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -673,6 +740,7 @@ data class MermaidTheme(
                 journey = neoJourneyTheme(dark = true, redux = false),
                 requirement = neoRequirementTheme(dark = true),
                 gitGraph = gitGraphTheme("neo-dark"),
+                mindmap = mindmapTheme("neo-dark"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 pie = neoPieTheme(dark = true),
@@ -701,6 +769,7 @@ data class MermaidTheme(
                 journey = neoJourneyTheme(dark = false, redux = true),
                 requirement = reduxRequirementTheme(dark = false),
                 gitGraph = gitGraphTheme("redux"),
+                mindmap = mindmapTheme("redux"),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -716,6 +785,7 @@ data class MermaidTheme(
                 journey = reduxColorJourneyTheme(dark = true),
                 pie = reduxColorPieTheme(dark = true),
                 xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
+                mindmap = mindmapTheme("redux-dark-color"),
             )
             else -> null
         }
@@ -940,6 +1010,14 @@ data class MermaidTheme(
                 number("commitLabelFontSize") ?: theme.gitGraph.commitLabelFontSize
             val gitTagLabelFontSize =
                 number("tagLabelFontSize") ?: theme.gitGraph.tagLabelFontSize
+            // Mermaid 12.0.0: themes/theme-base.js -> calculate(overrides).
+            // A Base nodeBorder override disables the inherited Neo gradient unless
+            // useGradient is also explicitly provided.
+            val useGradientOverride = boolean("useGradient")
+            val disablesBaseGradient =
+                themeName?.lowercase() == "base" &&
+                    "nodeBorder" in values &&
+                    "useGradient" !in values
             if (gitCommitLabelFontSize < 0f || gitTagLabelFontSize < 0f) {
                 val invalidName = if (gitCommitLabelFontSize < 0f) {
                     "commitLabelFontSize"
@@ -968,11 +1046,49 @@ data class MermaidTheme(
                 mainBackground = color("mainBkg") ?: theme.gitGraph.mainBackground,
                 primaryColor = color("primaryColor") ?: theme.gitGraph.primaryColor,
                 textColor = color("textColor") ?: theme.gitGraph.textColor,
-                useGradient = boolean("useGradient") ?: theme.gitGraph.useGradient,
+                useGradient = useGradientOverride
+                    ?: if (disablesBaseGradient) false else theme.gitGraph.useGradient,
                 gradientStart = color("gradientStart") ?: theme.gitGraph.gradientStart,
                 gradientStop = color("gradientStop") ?: theme.gitGraph.gradientStop,
                 commitLabelFontSize = gitCommitLabelFontSize,
                 tagLabelFontSize = gitTagLabelFontSize,
+            )
+            val mindmapSectionFills = MutableList(12) { index ->
+                theme.mindmap.sectionFills.getOrElse(index) { SceneColor(0xFF000000) }
+            }
+            val mindmapSectionInverseColors = MutableList(12) { index ->
+                theme.mindmap.sectionInverseColors.getOrElse(index) {
+                    SceneColor(0xFF000000)
+                }
+            }
+            val mindmapSectionLabelColors = MutableList(12) { index ->
+                theme.mindmap.sectionLabelColors.getOrElse(index) {
+                    SceneColor(0xFF000000)
+                }
+            }
+            repeat(12) { index ->
+                color("cScale$index")?.let { parsed ->
+                    mindmapSectionFills[index] = parsed
+                }
+                color("cScaleInv$index")?.let { parsed ->
+                    mindmapSectionInverseColors[index] = parsed
+                }
+                color("cScaleLabel$index")?.let { parsed ->
+                    mindmapSectionLabelColors[index] = parsed
+                }
+            }
+            val mindmap = theme.mindmap.copy(
+                mainBackground = color("mainBkg") ?: theme.mindmap.mainBackground,
+                nodeBorder = color("nodeBorder") ?: theme.mindmap.nodeBorder,
+                rootFill = color("git0") ?: theme.mindmap.rootFill,
+                rootText = color("gitBranchLabel0") ?: theme.mindmap.rootText,
+                sectionFills = mindmapSectionFills,
+                sectionInverseColors = mindmapSectionInverseColors,
+                sectionLabelColors = mindmapSectionLabelColors,
+                useGradient = useGradientOverride
+                    ?: if (disablesBaseGradient) false else theme.mindmap.useGradient,
+                gradientStart = color("gradientStart") ?: theme.mindmap.gradientStart,
+                gradientStop = color("gradientStop") ?: theme.mindmap.gradientStop,
             )
             val xyPaletteSource = values["xyChart.plotColorPalette"]
             val xyPalette = if (xyPaletteSource == null) {
@@ -1055,6 +1171,7 @@ data class MermaidTheme(
                 journey = journey,
                 requirement = requirement,
                 gitGraph = gitGraph,
+                mindmap = mindmap,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -1109,6 +1226,7 @@ data class MermaidTheme(
             journey = neoJourneyTheme(dark = true, redux = true),
             requirement = reduxRequirementTheme(dark = true),
             gitGraph = gitGraphTheme("redux-dark"),
+            mindmap = mindmapTheme("redux-dark"),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -1220,6 +1338,196 @@ data class MermaidTheme(
                 }.map(::SceneColor),
                 textColor = SceneColor(if (dark) 0xFFCCCCCC else 0xFF28253D),
             )
+
+        /**
+         * Mermaid 12.0.0 themes/theme-*.js values consumed by mindmap/styles.ts.
+         */
+        private fun mindmapTheme(name: String): MermaidMindmapTheme {
+            fun colors(vararg values: Long): List<SceneColor> = values.map(::SceneColor)
+            return when (name) {
+                "dark" -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(0xFF1F2020),
+                    nodeBorder = SceneColor(0xFFCCCCCC),
+                    rootFill = SceneColor(0xFF797D7D),
+                    rootText = SceneColor(0xFF2C2C2C),
+                    sectionFills = colors(
+                        0xFF1F2020, 0xFF0B0000, 0xFF4D1037, 0xFF3F5258,
+                        0xFF4F2F1B, 0xFF6E0A0A, 0xFF3B0048, 0xFF995A01,
+                        0xFF154706, 0xFF161722, 0xFF00296F, 0xFF01629C,
+                    ),
+                    sectionInverseColors = colors(
+                        0xFFE0DFDF, 0xFFF4FFFF, 0xFFB2EFC8, 0xFFC0ADA7,
+                        0xFFB0D0E4, 0xFF91F5F5, 0xFFC4FFB7, 0xFF66A5FE,
+                        0xFFEAB8F9, 0xFFE9E8DD, 0xFFFFD690, 0xFFFE9D63,
+                    ),
+                    sectionLabelColors = List(12) { SceneColor(0xFFD3D3D3) },
+                    useGradient = true,
+                    gradientStart = SceneColor(0xFFCCCCCC),
+                    gradientStop = SceneColor(0xFF2F2F2F),
+                )
+                "forest" -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(0xFFCDE498),
+                    nodeBorder = SceneColor(0xFF13540C),
+                    rootFill = SceneColor(0xFF9BC834),
+                    rootText = SceneColor(0xFFFFFFFF),
+                    sectionFills = colors(
+                        0xFFB9D970, 0xFFACFF7F, 0xFFCDE498, 0xFF84D970,
+                        0xFF70D990, 0xFF70D9C5, 0xFF70B9D9, 0xFF7084D9,
+                        0xFFC570D9, 0xFFD97084, 0xFFD99070, 0xFFD9C570,
+                    ),
+                    sectionInverseColors = colors(
+                        0xFF9070D9, 0xFFD27FFF, 0xFFAF98E4, 0xFFC570D9,
+                        0xFFD970B9, 0xFFD97084, 0xFFD99070, 0xFFD9C570,
+                        0xFF84D970, 0xFF70D9C5, 0xFF70B9D9, 0xFF7084D9,
+                    ),
+                    sectionLabelColors = List(12) { SceneColor(0xFF000000) },
+                    useGradient = true,
+                    gradientStart = SceneColor(0xFFABB594),
+                    gradientStop = SceneColor(0xFFB4E599),
+                )
+                "neutral" -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(0xFFEEEEEE),
+                    nodeBorder = SceneColor(0xFF999999),
+                    rootFill = SceneColor(0xFFB4B4B4),
+                    rootText = SceneColor(0xFF333333),
+                    sectionFills = colors(
+                        0xFF555555, 0xFFF4F4F4, 0xFF555555, 0xFFBBBBBB,
+                        0xFF777777, 0xFF999999, 0xFFDDDDDD, 0xFFFFFFFF,
+                        0xFFDDDDDD, 0xFFBBBBBB, 0xFF999999, 0xFF777777,
+                    ),
+                    sectionInverseColors = colors(
+                        0xFFAAAAAA, 0xFF0B0B0B, 0xFFAAAAAA, 0xFF444444,
+                        0xFF888888, 0xFF666666, 0xFF222222, 0xFF000000,
+                        0xFF222222, 0xFF444444, 0xFF666666, 0xFF888888,
+                    ),
+                    sectionLabelColors = colors(
+                        0xFFF4F4F4, 0xFF333333, 0xFFF4F4F4, 0xFF333333,
+                        0xFF333333, 0xFF333333, 0xFF333333, 0xFF333333,
+                        0xFF333333, 0xFF333333, 0xFF333333, 0xFF333333,
+                    ),
+                    useGradient = true,
+                    gradientStart = SceneColor(0xFFD4D4D4),
+                    gradientStop = SceneColor(0xFFE3E3E3),
+                )
+                "base" -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(0xFFFFF4DD),
+                    nodeBorder = SceneColor(0xFFEEDDBB),
+                    rootFill = SceneColor(0xFFFFCB5D),
+                    rootText = SceneColor(0xFF333333),
+                    sectionFills = colors(
+                        0xFFFFCB5D, 0xFFCB5DFF, 0xFF77A3FF, 0xFFE3FF5D,
+                        0xFF92FF5D, 0xFF5DFF7A, 0xFF5DFFCB, 0xFF5DE3FF,
+                        0xFF9680FF, 0xFFFF5DE3, 0xFFFF5D92, 0xFFFF7A5D,
+                    ),
+                    sectionInverseColors = colors(
+                        0xFF0034A2, 0xFF34A200, 0xFF885C00, 0xFF1D00A2,
+                        0xFF6D00A2, 0xFFA20085, 0xFFA20034, 0xFFA21D00,
+                        0xFF698000, 0xFF00A21D, 0xFF00A26D, 0xFF0085A2,
+                    ),
+                    sectionLabelColors = List(12) { SceneColor(0xFF333333) },
+                    useGradient = true,
+                    gradientStart = SceneColor(0xFFEEDDBB),
+                    gradientStop = SceneColor(0xFFDDBBEE),
+                )
+                "neo" -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(0xFFFFFFFF),
+                    nodeBorder = SceneColor(0xFF000000),
+                    rootFill = SceneColor(0xFF7373F8),
+                    rootText = SceneColor(0xFF333333),
+                    sectionFills = colors(
+                        0xFF7373F8, 0xFF9B9BBF, 0xFFF9F986, 0xFFB573F8,
+                        0xFFF873F8, 0xFFF873B5, 0xFFF87373, 0xFFF8B573,
+                        0xFFBFF986, 0xFF73F8B5, 0xFF73F8F8, 0xFF73B5F8,
+                    ),
+                    sectionInverseColors = colors(
+                        0xFF8C8C07, 0xFF646440, 0xFF060679, 0xFF4A8C07,
+                        0xFF078C07, 0xFF078C4A, 0xFF078C8C, 0xFF074A8C,
+                        0xFF400679, 0xFF8C074A, 0xFF8C0707, 0xFF8C4A07,
+                    ),
+                    sectionLabelColors = List(12) { SceneColor(0xFF333333) },
+                    useGradient = true,
+                    gradientStart = SceneColor(0xFF0042EB),
+                    gradientStop = SceneColor(0xFFEB0042),
+                )
+                "neo-dark",
+                "redux-dark",
+                -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(
+                        if (name == "redux-dark") 0xFF111113 else 0xFF2A2020,
+                    ),
+                    nodeBorder = SceneColor(
+                        if (name == "redux-dark") 0xFFFFFFFF else 0xFFCCCCCC,
+                    ),
+                    rootFill = SceneColor(
+                        if (name == "redux-dark") 0xFF000000 else 0xFF8B0000,
+                    ),
+                    rootText = SceneColor(0xFFE0DFDF),
+                    sectionFills = colors(
+                        0xFF000000, 0xFF080909, 0xFF000000, 0xFF000000,
+                        0xFF000000, 0xFF000000, 0xFF000000, 0xFF000000,
+                        0xFFC0BFBE, 0xFF000000, 0xFF000000, 0xFF000000,
+                    ),
+                    sectionInverseColors = colors(
+                        0xFFFFFFFF, 0xFFF7F6F6, 0xFFFFFFFF, 0xFFFFFFFF,
+                        0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                        0xFF3F4041, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                    ),
+                    sectionLabelColors = List(12) { SceneColor(0xFFE0DFDF) },
+                    useGradient = name == "neo-dark",
+                    gradientStart = SceneColor(0xFF0042EB),
+                    gradientStop = SceneColor(0xFFEB0042),
+                )
+                "redux" -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(0xFFFFFFFF),
+                    nodeBorder = SceneColor(0xFF28253D),
+                    rootFill = SceneColor(0xFF7373F8),
+                    rootText = SceneColor(0xFF28253D),
+                    sectionFills = List(12) { SceneColor(0xFFBFBFBF) },
+                    sectionInverseColors = List(12) { SceneColor(0xFF404040) },
+                    sectionLabelColors = List(12) { SceneColor(0xFF28253D) },
+                    gradientStart = SceneColor(0xFF0042EB),
+                    gradientStop = SceneColor(0xFFEB0042),
+                )
+                "redux-color",
+                "redux-dark-color",
+                -> MermaidMindmapTheme(
+                    mainBackground = SceneColor(
+                        if (name == "redux-dark-color") 0xFF111113 else 0xFFFFFFFF,
+                    ),
+                    nodeBorder = SceneColor(
+                        if (name == "redux-dark-color") 0xFFFFFFFF else 0xFF28253D,
+                    ),
+                    rootFill = SceneColor(
+                        if (name == "redux-dark-color") 0xFF000000 else 0xFF7373F8,
+                    ),
+                    rootText = SceneColor(
+                        if (name == "redux-dark-color") 0xFFE0DFDF else 0xFF28253D,
+                    ),
+                    sectionFills = colors(
+                        0xFFF4A8FF, 0xFF46ECD5, 0xFFFFB86A, 0xFFDAB2FF,
+                        0xFF7BF1A8, 0xFFC4B4FF, 0xFFFFA2A2, 0xFFFFDF20,
+                        0xFFA3B3FF, 0xFFBBF451, 0xFF74D4FF, 0xFFFFA1AD,
+                    ),
+                    sectionInverseColors = colors(
+                        0xFF0B5700, 0xFFB9132A, 0xFF004795, 0xFF254D00,
+                        0xFF840E57, 0xFF3B4B00, 0xFF005D5D, 0xFF0020DF,
+                        0xFF5C4C00, 0xFF440BAE, 0xFF8B2B00, 0xFF005E52,
+                    ),
+                    sectionLabelColors = if (name == "redux-dark-color") {
+                        colors(
+                            0xFF230029, 0xFF000000, 0xFF000000, 0xFF1A0032,
+                            0xFF000000, 0xFF0B0035, 0xFF230000, 0xFF000000,
+                            0xFF000623, 0xFF000000, 0xFF000000, 0xFF220004,
+                        )
+                    } else {
+                        List(12) { SceneColor(0xFF28253D) }
+                    },
+                    gradientStart = SceneColor(0xFF0042EB),
+                    gradientStop = SceneColor(0xFFEB0042),
+                )
+                else -> MermaidMindmapTheme()
+            }
+        }
 
         private fun gitGraphTheme(name: String): MermaidGitGraphTheme {
             fun colors(vararg values: Long): List<SceneColor> = values.map(::SceneColor)

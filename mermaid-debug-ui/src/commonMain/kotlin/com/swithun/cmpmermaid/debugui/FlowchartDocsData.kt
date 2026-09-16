@@ -200,7 +200,7 @@ internal val flowchartDiagramDocsSpec = DiagramDocsSpec(
         )
     },
     syntaxLessons = flowchartSyntaxLessons,
-    nativeOptions = MermaidRenderOptions(layout = "elk"),
-    officialLayout = "elk",
-    playgroundLayouts = listOf("elk", "dagre"),
+    nativeOptions = MermaidRenderOptions(layout = "dagre"),
+    officialLayout = "dagre",
+    playgroundLayouts = listOf("dagre"),
 )

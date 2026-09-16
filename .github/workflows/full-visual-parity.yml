@@ -62,6 +62,7 @@ jobs:
           - journey
           - requirement
           - gitgraph
+          - mindmap
 
     steps:
       - name: Checkout

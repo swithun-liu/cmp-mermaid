@@ -485,13 +485,11 @@ flowchart LR
         """.trimIndent(),
     ),
     OfficialFlowchartCase(
-        id = "line_hops_gap",
+        id = "dense_crossing_routes_dagre",
         source = """
 ---
 config:
-  layout: elk
-  elk:
-    lineHops: gap
+  layout: dagre
 ---
 flowchart TB
   A --> D

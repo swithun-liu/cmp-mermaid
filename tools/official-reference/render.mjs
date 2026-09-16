@@ -60,7 +60,7 @@ try {
   await page.evaluate(() => {
     mermaid.initialize({
       startOnLoad: false,
-      layout: 'elk',
+      layout: 'dagre',
     });
   });
 

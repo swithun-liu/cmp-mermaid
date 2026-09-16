@@ -8,12 +8,11 @@
 | Mermaid source commit | `98a0945418c76238f15df2afaddbba4272656c3b` |
 | Jison runtime | `0.4.18` |
 | Marked | `16.4.2` |
-| elkjs | `0.9.3` |
 | Native renderer | Compose Multiplatform Canvas |
 
 The production State path is Kotlin in `commonMain`. It does not execute
-Mermaid.js or require a WebView. ELK uses the same locked QuickJS worker as the
-translated Flowchart and Class layout paths.
+Mermaid.js, require a WebView, or embed a JavaScript engine. Dagre is the
+Native default; ELK selectors are recognized and rejected explicitly.
 
 ## Parser And Database
 
@@ -35,12 +34,12 @@ production so an upstream grammar diff can be translated incrementally.
 
 | Kotlin source | Upstream source | Translation boundary |
 | --- | --- | --- |
-| `statediagram/StateLayout.kt` | `stateRenderer-v3-unified.ts` | Default ELK selection, Dagre override, SceneGraph orchestration, title, accessibility, interactions, and bounds normalization |
+| `statediagram/StateLayout.kt` | `stateRenderer-v3-unified.ts` | Native Dagre selection, SceneGraph orchestration, title, accessibility, interactions, and bounds normalization |
 | `statediagram/StateLayout.kt` | `rendering-util/rendering-elements/shapes/note.ts`, `shapes.js`, and `stateCommon.ts` | State boxes, description compartments, start/end, choice, fork/join, rectangular notes, composite groups, and concurrency regions |
 | `statediagram/StateLayout.kt` | `dataFetcher.ts` note edges | Left/right note ordering expressed as directed dashed edges and placed by the selected layout engine |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
-| `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | State and composite placement for explicit Dagre requests |
-| `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Mermaid 12 default State placement using the locked `elkjs@0.9.3` worker |
+| `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Default State and composite placement |
+| `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Retained mapping boundary that returns structured `UnsupportedFeature` |
 | `flowchart/upstream/mermaid/MermaidEdgePathPort.kt` | `rendering-elements/edges.js` and `utils/lineWithOffset.ts` | Curves, endpoint correction, self-transitions, and transition labels |
 | `SceneGraph.kt` | Mermaid State shape semantics | Typed state, note, group, edge, text, metadata, and interaction output |
 | `mermaid-compose/.../MermaidDiagram.kt` | State SVG rendering behavior | Native Canvas geometry and painting |
@@ -83,11 +82,11 @@ production so an upstream grammar diff can be translated incrementally.
   composites, concurrency, note edge direction, styles, interactions, title,
   accessibility, and structured unsupported errors.
 - `StateStressTest` renders 256 deterministic random legal diagrams under
-  alternating Dagre and ELK layouts.
+  Dagre.
 - `OfficialStateDocumentationTest` executes all 22 examples extracted from
   Mermaid's State documentation.
 - The Android gallery compares 25 identical sources against official Mermaid
-  `12.0.0` ELK output.
+  `12.0.0` Dagre output.
 
 ## Upgrade Procedure
 
@@ -101,6 +100,6 @@ production so an upstream grammar diff can be translated incrementally.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
 6. Install the Android sample and capture all 25 Native/Official State pairs
-   with ELK.
+   with Dagre.
 7. Review the contact sheets and update this map and the compatibility matrix
    before publishing.

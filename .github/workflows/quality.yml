@@ -54,6 +54,38 @@ jobs:
             exit 1
           fi
 
+      - name: Enforce production runtime isolation
+        shell: bash
+        run: |
+          set -euo pipefail
+          production_roots=(mermaid-core/src mermaid-compose/src)
+          bundled_scripts="$(
+            find "${production_roots[@]}" -type f \
+              \( -name '*.js' -o -name '*.mjs' -o -name '*.html' -o -name '*.wasm' \)
+          )"
+          if [[ -n "$bundled_scripts" ]]; then
+            printf '%s\n' "$bundled_scripts"
+            echo "Bundled Web asset detected in a production module" >&2
+            exit 1
+          fi
+          forbidden_runtime="$(
+            find "${production_roots[@]}" -path '*/src/*Main/*' -type f -name '*.kt' \
+              -exec grep -nEH \
+                'android\.webkit|java\.net\.(HttpURLConnection|URL)|javax\.script|JavaScriptCore|io\.github\.dokar3\.quickjs' \
+                {} + || true
+          )"
+          if [[ -n "$forbidden_runtime" ]]; then
+            printf '%s\n' "$forbidden_runtime"
+            echo "Network, WebView, or JavaScript runtime API detected in production code" >&2
+            exit 1
+          fi
+          if grep -nE 'mermaid-debug-ui|quickjs-kt|libs\.quickjs' \
+            mermaid-core/build.gradle.kts mermaid-compose/build.gradle.kts
+          then
+            echo "Debug UI or QuickJS dependency detected in a production module" >&2
+            exit 1
+          fi
+
       - name: Test JVM modules
         run: |
           ./gradlew \

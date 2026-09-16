@@ -478,14 +478,12 @@ flowchart LR
   A --> B["<code>monospace</code> H<sub>2</sub>O x<sup>2</sup>"]`,
   },
   {
-    id: 'line_hops_gap',
-    title: 'ELK crossing gaps',
+    id: 'dense_crossing_routes_dagre',
+    title: 'Dagre crossing routes',
     category: 'Layouts',
     source: `---
 config:
-  layout: elk
-  elk:
-    lineHops: gap
+  layout: dagre
 ---
 flowchart TB
   A --> D

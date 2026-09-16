@@ -136,7 +136,7 @@ class RequirementLayoutTest {
     }
 
     @Test
-    fun positionsBodyTextAtTheLeftAfterOfficialLabelTranslation() {
+    fun positionsBodyTextAtTheLeftAfterOfficialLabelTranslationAndRejectsElk() {
         val source = """
             requirementDiagram
               requirement checkout {
@@ -145,7 +145,7 @@ class RequirementLayoutTest {
         """.trimIndent()
 
         val dagre = render(source)
-        val elk = render(
+        val elk = MermaidEngine().render(
             source,
             context.copy(options = context.options.copy(layout = "elk")),
         )
@@ -155,11 +155,8 @@ class RequirementLayoutTest {
             dagre.elements.filterIsInstance<SceneText>().single { it.text == "ID: 1" }
                 .horizontalAlignment,
         )
-        assertEquals(
-            SceneTextAlignment.Start,
-            elk.elements.filterIsInstance<SceneText>().single { it.text == "ID: 1" }
-                .horizontalAlignment,
-        )
+        val elkError = assertIs<GMResult.Err<MermaidError.UnsupportedFeature>>(elk).error
+        assertEquals("ELK layout", elkError.feature)
     }
 
     @Test

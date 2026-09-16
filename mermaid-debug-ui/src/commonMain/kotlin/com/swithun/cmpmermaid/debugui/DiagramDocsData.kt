@@ -104,8 +104,8 @@ internal val classDiagramDocsSpec = DiagramDocsSpec(
             "Visibility and member classifiers preserve Mermaid's class notation.",
         ),
     ),
-    officialLayout = "elk",
-    playgroundLayouts = listOf("elk", "dagre"),
+    officialLayout = "dagre",
+    playgroundLayouts = listOf("dagre"),
 )
 
 internal val stateDiagramDocsSpec = DiagramDocsSpec(
@@ -132,8 +132,8 @@ internal val stateDiagramDocsSpec = DiagramDocsSpec(
             "Text after a colon labels the transition.",
         ),
     ),
-    officialLayout = "elk",
-    playgroundLayouts = listOf("elk", "dagre"),
+    officialLayout = "dagre",
+    playgroundLayouts = listOf("dagre"),
 )
 
 internal val erDiagramDocsSpec = DiagramDocsSpec(
@@ -160,9 +160,9 @@ internal val erDiagramDocsSpec = DiagramDocsSpec(
             "Solid links are identifying relationships; dotted links are non-identifying.",
         ),
     ),
-    nativeOptions = MermaidRenderOptions(layout = "elk"),
-    officialLayout = "elk",
-    playgroundLayouts = listOf("elk", "dagre"),
+    nativeOptions = MermaidRenderOptions(layout = "dagre"),
+    officialLayout = "dagre",
+    playgroundLayouts = listOf("dagre"),
 )
 
 internal val ganttDiagramDocsSpec = DiagramDocsSpec(
@@ -335,4 +335,47 @@ internal val gitGraphDiagramDocsSpec = DiagramDocsSpec(
         ),
     ),
     initialTheme = MermaidThemePreset.ReduxColor,
+)
+
+internal val mindmapDiagramDocsSpec = DiagramDocsSpec(
+    id = "mindmap",
+    title = "Mindmap",
+    syntaxTitle = "Mindmaps - Basic Syntax",
+    description = "Organize concepts into an indentation-based hierarchy with Mermaid's " +
+        "Mindmap shapes, text formatting, themes, and layout algorithms.",
+    documentationUrl = "https://mermaid.js.org/syntax/mindmap.html",
+    galleryTitle = "Mindmap demo gallery",
+    cases = mindmapDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = demo.initialAspectRatio,
+        )
+    },
+    syntaxLessons = lessons(
+        mindmapDemos.take(8).map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = demo.initialAspectRatio,
+            )
+        },
+        listOf(
+            "Indentation defines parent and child relationships below one root node.",
+            "Default, square, rounded, circle, cloud, bang, and hexagon shapes are supported.",
+            "A node attaches to the nearest earlier node with less indentation.",
+            "Markdown emphasis is preserved in labels and participates in text measurement.",
+            "Long labels wrap at maxNodeWidth, while br tags create explicit line breaks.",
+            "Unicode text follows the same hierarchy and layout rules as Latin labels.",
+            "HTML entities are decoded at Mermaid's parser boundary.",
+            "Percent-prefixed Mermaid comments are removed before Mindmap parsing.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+    officialLayout = "cose-bilkent",
+    playgroundLayouts = listOf("cose-bilkent", "dagre", "tidy-tree"),
 )

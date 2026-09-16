@@ -561,7 +561,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun appliesMermaid12SubgraphTitleMarginsToDagreAndElk() {
+    fun appliesMermaid12SubgraphTitleMarginsToDagre() {
         fun render(layout: String, top: Float, bottom: Float): MermaidScene {
             val result = engine.render(
                 """
@@ -611,36 +611,6 @@ class MermaidEngineTest {
         assertEquals(
             10f,
             dagreMarginTitle.bounds.top - dagreMarginGroup.bounds.top,
-            0.01f,
-        )
-
-        val elkDefault = render("elk", 0f, 0f)
-        val elkMargin = render("elk", 10f, 5f)
-        val elkDefaultGroup = elkDefault.elements
-            .filterIsInstance<SceneShape>()
-            .first { it.id == "subgraph_group" }
-        val elkMarginGroup = elkMargin.elements
-            .filterIsInstance<SceneShape>()
-            .first { it.id == "subgraph_group" }
-        val elkMarginTitle = elkMargin.elements
-            .filterIsInstance<SceneText>()
-            .first { it.text == "Group" }
-        val elkDefaultLabel = elkDefault.elements
-            .filterIsInstance<SceneShape>()
-            .first { it.id.endsWith("_label_background") }
-        val elkMarginLabel = elkMargin.elements
-            .filterIsInstance<SceneShape>()
-            .first { it.id.endsWith("_label_background") }
-
-        assertEquals(elkDefaultGroup.bounds.height, elkMarginGroup.bounds.height, 0.01f)
-        assertEquals(
-            10f,
-            elkMarginTitle.bounds.top - elkMarginGroup.bounds.top,
-            0.01f,
-        )
-        assertEquals(
-            7.5f,
-            elkMarginLabel.bounds.top - elkDefaultLabel.bounds.top,
             0.01f,
         )
     }

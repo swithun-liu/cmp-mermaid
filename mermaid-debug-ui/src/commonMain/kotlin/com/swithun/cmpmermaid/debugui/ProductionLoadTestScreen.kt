@@ -27,6 +27,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
@@ -35,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swithun.cmpmermaid.compose.MermaidDiagram
+import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.debugui.generated.StabilityCorpusCase
 import com.swithun.cmpmermaid.debugui.generated.productionCorpusCases
@@ -47,6 +52,7 @@ internal fun ProductionLoadTestScreen(
     autoRun: Boolean,
 ) {
     val listState = rememberLazyListState()
+    var reachedLastCase by remember { mutableStateOf(false) }
     LaunchedEffect(autoRun) {
         if (autoRun) {
             productionCorpusCases.indices.forEach { index ->
@@ -74,7 +80,11 @@ internal fun ProductionLoadTestScreen(
                             letterSpacing = 0.sp,
                         )
                         Text(
-                            text = "${productionCorpusCases.size} mixed diagrams",
+                            text = if (reachedLastCase) {
+                                "${productionCorpusCases.size}/${productionCorpusCases.size} rendered"
+                            } else {
+                                "${productionCorpusCases.size} mixed diagrams"
+                            },
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp,
                         )
@@ -108,7 +118,19 @@ internal fun ProductionLoadTestScreen(
                     items = productionCorpusCases,
                     key = StabilityCorpusCase::id,
                 ) { case ->
-                    LoadTestDiagram(case)
+                    LoadTestDiagram(
+                        case = case,
+                        onRendered = if (case == productionCorpusCases.last()) {
+                            {
+                                if (!reachedLastCase) {
+                                    reachedLastCase = true
+                                    println("$LOAD_TEST_COMPLETE_MARKER ${case.id}")
+                                }
+                            }
+                        } else {
+                            null
+                        },
+                    )
                 }
             }
         }
@@ -120,6 +142,7 @@ private const val AUTO_RUN_ITEM_DELAY_MILLIS = 75L
 @Composable
 private fun LoadTestDiagram(
     case: StabilityCorpusCase,
+    onRendered: (() -> Unit)?,
 ) {
     val shape = RoundedCornerShape(8.dp)
     Column(
@@ -150,6 +173,14 @@ private fun LoadTestDiagram(
                 .semantics {
                     contentDescription = "Load test diagram ${case.id}"
                 },
+            respectSourceViewportSizing = false,
+            onRenderResult = { result ->
+                if (result is GMResult.Ok) {
+                    onRendered?.invoke()
+                }
+            },
         )
     }
 }
+
+private const val LOAD_TEST_COMPLETE_MARKER = "CMP_MERMAID_LOAD_TEST_COMPLETE"

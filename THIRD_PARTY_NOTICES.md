@@ -4,8 +4,8 @@
 
 The KMP runtime contains Kotlin translations of selected Mermaid Flowchart,
 XY Chart, Sequence, Class, State, Entity Relationship, Gantt, Pie, User
-Journey, Requirement, and Git Graph parsing, layout-adapter, and rendering
-algorithms. The reference-rendering tool also downloads Mermaid.js from npm.
+Journey, Requirement, Git Graph, and Mindmap parsing, layout-adapter, and
+rendering algorithms. The reference-rendering tool also downloads Mermaid.js from npm.
 Mermaid.js itself is not embedded in the runtime libraries.
 
 The Android sample bundles Mermaid.js `12.0.0` only for on-demand official
@@ -155,7 +155,8 @@ THIS SOFTWARE.
 
 The KMP runtime contains Kotlin translations of the Jison `0.4.18` generated
 lexer/parser runtime used by Mermaid's Flowchart, XY Chart, Sequence, Class,
-State, Entity Relationship, Gantt, User Journey, and Requirement grammars.
+State, Entity Relationship, Gantt, User Journey, Requirement, and Mindmap
+grammars.
 
 Copyright (c) Zach Carter
 
@@ -193,8 +194,9 @@ https://github.com/markedjs/marked/blob/v16.4.2/LICENSE.md
 
 ## elkjs
 
-The KMP runtime embeds the generated `elk-worker.min.js` from `elkjs 0.9.3`.
-It is the only JavaScript algorithm bundle executed by the runtime.
+The debug-only Mermaid.js reference renderer resolves `elkjs 0.9.3` as an npm
+transitive dependency. `elkjs` is not embedded in `mermaid-core` or
+`mermaid-compose`, and the production runtime does not execute it.
 
 elkjs is distributed under the Eclipse Public License 2.0:
 
@@ -209,22 +211,59 @@ release:
 
 https://github.com/kieler/elkjs/tree/0.9.3
 
-## quickjs-kt And QuickJS
+## cytoscape-cose-bilkent
 
-The KMP runtime uses `quickjs-kt 1.0.5` to execute the locked elkjs worker in
-an isolated runtime.
+The KMP runtime contains a Kotlin translation of the flat-tree layout path from
+`cytoscape-cose-bilkent 4.1.0`, `cose-base 1.0.3`, and `layout-base 1.0.2`
+used by Mermaid Mindmap.
 
-quickjs-kt is distributed under the Apache License 2.0:
+Copyright (c) 2016-2018, The Cytoscape Consortium.
 
-https://github.com/dokar3/quickjs-kt
+Copyright (c) 2019 - present, iVis@Bilkent.
 
-QuickJS is distributed under the MIT License:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Copyright (c) 2017-2021 Fabrice Bellard
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Copyright (c) 2017-2021 Charlie Gordon
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-https://bellard.org/quickjs/
+## non-layered-tidy-tree-layout
+
+The KMP runtime contains a Kotlin translation of the tree layout algorithm and
+bounding-box adapter from `non-layered-tidy-tree-layout 2.0.2`, as used by
+Mermaid's optional Mindmap tidy-tree layout.
+
+Copyright (c) 2019 Michael Wong
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ## AndroidSVG
 

@@ -7,7 +7,7 @@ export const cases = [
     kind: 'flowchart',
     title: 'Checkout saga with compensation',
     scenario: 'Commerce checkout coordinating inventory, payment, shipment, and rollback paths.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.65,
     source: String.raw`
 flowchart LR
@@ -39,7 +39,7 @@ flowchart LR
     kind: 'flowchart',
     title: 'Multi-region failover',
     scenario: 'Traffic management and data recovery during a regional outage.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.7,
     source: String.raw`
 flowchart TB
@@ -74,7 +74,7 @@ flowchart TB
     kind: 'flowchart',
     title: 'Release train and rollback',
     scenario: 'A guarded mobile release with parallel validation and staged rollout.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.8,
     source: String.raw`
 flowchart LR
@@ -106,7 +106,7 @@ flowchart LR
     kind: 'flowchart',
     title: 'Production incident response',
     scenario: 'Incident triage, mitigation, communication, and follow-up ownership.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.55,
     source: String.raw`
 flowchart TB
@@ -141,7 +141,7 @@ flowchart TB
     kind: 'flowchart',
     title: 'Event ingestion and quarantine',
     scenario: 'A streaming pipeline handling validation, deduplication, enrichment, and replay.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.8,
     source: String.raw`
 flowchart LR
@@ -173,7 +173,7 @@ flowchart LR
     kind: 'flowchart',
     title: 'Privileged access governance',
     scenario: 'Approval, policy evaluation, provisioning, expiry, and emergency revocation.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.65,
     source: String.raw`
 flowchart TB
@@ -560,7 +560,7 @@ sequenceDiagram
     kind: 'class',
     title: 'Commerce domain model',
     scenario: 'Aggregate roots, repositories, payment strategy, inventory, and fulfillment.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 classDiagram
@@ -623,7 +623,7 @@ classDiagram
     kind: 'class',
     title: 'Workflow engine architecture',
     scenario: 'Definitions, executable instances, typed steps, scheduling, and state persistence.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 classDiagram
@@ -683,7 +683,7 @@ classDiagram
     kind: 'class',
     title: 'Authorization policy model',
     scenario: 'Users, groups, roles, permissions, scoped grants, and policy evaluation.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.3,
     source: String.raw`
 classDiagram
@@ -739,7 +739,7 @@ classDiagram
     kind: 'class',
     title: 'Notification delivery platform',
     scenario: 'Templates, channel adapters, preferences, routing, retries, and delivery receipts.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 classDiagram
@@ -790,7 +790,7 @@ classDiagram
     kind: 'class',
     title: 'Collaborative document editor',
     scenario: 'Documents, blocks, operations, revisions, presence, and conflict transformation.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 classDiagram
@@ -849,7 +849,7 @@ classDiagram
     kind: 'state',
     title: 'Order fulfillment lifecycle',
     scenario: 'Payment, allocation, shipment, cancellation, return, and refund states.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.1,
     source: String.raw`
 stateDiagram-v2
@@ -883,7 +883,7 @@ stateDiagram-v2
     kind: 'state',
     title: 'Payment transaction state machine',
     scenario: 'Authorization, challenge, capture, partial refund, reversal, and terminal outcomes.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.1,
     source: String.raw`
 stateDiagram-v2
@@ -918,7 +918,7 @@ stateDiagram-v2
     kind: 'state',
     title: 'Progressive deployment rollout',
     scenario: 'Build, canary, staged rollout, automated rollback, and incident review.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.05,
     source: String.raw`
 stateDiagram-v2
@@ -956,7 +956,7 @@ stateDiagram-v2
     kind: 'state',
     title: 'Media processing pipeline',
     scenario: 'Upload verification, concurrent transforms, moderation, publication, and retry.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.05,
     source: String.raw`
 stateDiagram-v2
@@ -992,7 +992,7 @@ stateDiagram-v2
     kind: 'state',
     title: 'Support ticket lifecycle',
     scenario: 'Automated triage, ownership, customer waiting, escalation, and reopening.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.1,
     source: String.raw`
 stateDiagram-v2
@@ -1021,7 +1021,7 @@ stateDiagram-v2
     kind: 'er',
     title: 'Commerce platform data model',
     scenario: 'Customers, catalog, orders, payments, fulfillment, promotions, and returns.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 erDiagram
@@ -1092,7 +1092,7 @@ erDiagram
     kind: 'er',
     title: 'Learning platform data model',
     scenario: 'Courses, modules, lessons, enrollment, progress, assessment, and certificates.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 erDiagram
@@ -1162,7 +1162,7 @@ erDiagram
     kind: 'er',
     title: 'Messaging system data model',
     scenario: 'Conversations, membership, messages, reactions, attachments, reads, and devices.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 erDiagram
@@ -1222,7 +1222,7 @@ erDiagram
     kind: 'er',
     title: 'Subscription billing data model',
     scenario: 'Accounts, plans, subscriptions, invoices, line items, payments, and entitlements.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 erDiagram
@@ -1285,7 +1285,7 @@ erDiagram
     kind: 'er',
     title: 'Warehouse inventory network',
     scenario: 'Warehouses, bins, stock, suppliers, purchase orders, transfers, and reservations.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.25,
     source: String.raw`
 erDiagram
@@ -1780,7 +1780,7 @@ journey
     kind: 'requirement',
     title: 'Checkout assurance model',
     scenario: 'Payment requirements trace from system goals through interfaces and verification evidence.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.7,
     source: String.raw`
 requirementDiagram
@@ -1830,7 +1830,7 @@ requirementDiagram
     kind: 'requirement',
     title: 'Device safety controls',
     scenario: 'Safety requirements decompose into physical limits, design constraints, and test evidence.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.45,
     source: String.raw`
 requirementDiagram
@@ -1880,7 +1880,7 @@ requirementDiagram
     kind: 'requirement',
     title: 'Data retention traceability',
     scenario: 'Policy, storage, deletion, and audit requirements remain traceable across implementation assets.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.65,
     source: String.raw`
 requirementDiagram
@@ -1930,7 +1930,7 @@ requirementDiagram
     kind: 'requirement',
     title: 'Regional failover evidence',
     scenario: 'Availability targets connect to routing, recovery, observability, and validation evidence.',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.55,
     source: String.raw`
 requirementDiagram
@@ -2173,6 +2173,195 @@ gitGraph LR:
   checkout main
   cherry-pick id: "prepare-follow-up-correction"
   commit id: "close-release-window" tag: "complete"
+`,
+  },
+  {
+    id: 'rc_mindmap_product_strategy',
+    kind: 'mindmap',
+    title: 'Product strategy hierarchy',
+    scenario: 'A product strategy connects outcomes, customer needs, platform investments, and measurable signals.',
+    layout: 'cose-bilkent',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+title: Product strategy
+config:
+  layout: cose-bilkent
+---
+mindmap
+  root((Product strategy))
+    Customer outcomes
+      Faster onboarding
+        Guided setup
+        Progressive profiling
+      Reliable daily use
+        Offline recovery
+        Clear error states
+    Platform investments
+      Shared design system
+        Accessible components
+        Cross-platform tokens
+      Delivery automation
+        Reproducible builds
+        Release evidence
+    Success signals
+      Activation rate
+      Task completion
+      Support volume
+`,
+  },
+  {
+    id: 'rc_mindmap_incident_response',
+    kind: 'mindmap',
+    title: 'Incident response responsibilities',
+    scenario: 'A top-to-bottom response map assigns detection, mitigation, communication, and follow-up work.',
+    layout: 'dagre',
+    aspectRatio: 1.25,
+    source: String.raw`
+---
+title: Incident response
+config:
+  layout: dagre
+---
+mindmap
+  root((Production incident))
+    Detect
+      Customer reports
+      Service alerts
+      Dependency health
+    Assess
+      Impact
+      Severity
+      Ownership
+    Mitigate
+      Roll back
+      Shift traffic
+      Disable feature
+    Communicate
+      Status updates
+      Stakeholder brief
+    Learn
+      Timeline
+      Root cause
+      Follow-up actions
+`,
+  },
+  {
+    id: 'rc_mindmap_platform_architecture',
+    kind: 'mindmap',
+    title: 'Platform architecture map',
+    scenario: 'A bidirectional tidy tree presents client and service concerns around one platform boundary.',
+    layout: 'tidy-tree',
+    aspectRatio: 1.9,
+    source: String.raw`
+---
+title: Platform architecture
+config:
+  layout: tidy-tree
+---
+mindmap
+  root((Shared platform))
+    Clients
+      Android
+        Offline cache
+        Background sync
+      iOS
+        Secure storage
+        Push updates
+      Web
+        Progressive loading
+        Browser storage
+    Services
+      Gateway
+        Authentication
+        Rate limits
+      Domain APIs
+        Commands
+        Queries
+      Data
+        Primary store
+        Event archive
+`,
+  },
+  {
+    id: 'rc_mindmap_shape_and_text_matrix',
+    kind: 'mindmap',
+    title: 'Shape and text matrix',
+    scenario: 'Every supported Mindmap shape carries markdown, wrapped, escaped, or Unicode labels.',
+    layout: 'cose-bilkent',
+    aspectRatio: 1.7,
+    source: String.raw`
+---
+config:
+  layout: cose-bilkent
+  mindmap:
+    maxNodeWidth: 130
+---
+mindmap
+  root((**Evidence map**))
+    default branch
+      Plain label
+    square[Square &amp; entities]
+      long[A deliberately long label that wraps inside a square node]
+    rounded(*Rounded emphasis*)
+      child(Secondary rounded node)
+    circle((Circle))
+      unicode((品質確認))
+    cloud)Cloud(
+      weather)Operational signal(
+    bang))Bang((
+      alert))Escalation((
+    hex{{Hexagon}}
+      gate{{Release gate}}
+`,
+  },
+  {
+    id: 'rc_mindmap_governance_theme',
+    kind: 'mindmap',
+    title: 'Themed governance map',
+    scenario: 'Custom theme variables, sizing controls, comments, and a deep governance hierarchy render together.',
+    layout: 'dagre',
+    aspectRatio: 1.35,
+    source: String.raw`
+---
+title: Delivery governance
+config:
+  layout: dagre
+  mindmap:
+    padding: 18
+    maxNodeWidth: 140
+    useMaxWidth: false
+  theme: base
+  themeVariables:
+    mainBkg: "#f8fafc"
+    nodeBorder: "#334155"
+    git0: "#0f766e"
+    gitBranchLabel0: "#ffffff"
+    cScale0: "#ccfbf1"
+    cScale1: "#dbeafe"
+    cScale2: "#fef3c7"
+    cScaleLabel0: "#134e4a"
+    cScaleLabel1: "#1e3a8a"
+    cScaleLabel2: "#78350f"
+---
+mindmap
+  root((Delivery governance))
+    Definition
+      Scope
+      Owners
+      Acceptance criteria
+    Verification
+      Automated checks
+        Unit tests
+        Integration tests
+      Manual review
+        Visual evidence
+        Accessibility
+    Release
+      %% The release branch intentionally includes operational controls.
+      Change approval
+      Rollback plan
+      Monitoring window
 `,
   },
 ];

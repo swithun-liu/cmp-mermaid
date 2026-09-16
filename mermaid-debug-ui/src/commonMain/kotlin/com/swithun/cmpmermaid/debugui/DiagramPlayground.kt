@@ -73,6 +73,8 @@ private enum class PlaygroundLayout(
 ) {
     Elk(label = "ELK", option = "elk"),
     Dagre(label = "Dagre", option = "dagre"),
+    CoseBilkent(label = "CoSE", option = "cose-bilkent"),
+    TidyTree(label = "Tidy", option = "tidy-tree"),
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -228,10 +230,19 @@ private fun PlaygroundContent(
         cjkFontFamily?.let(::CjkFontVisualTransformation) ?: VisualTransformation.None
     }
     val renderOptions = remember(spec.nativeOptions, effectiveNativeLayout, selectedTheme) {
-        spec.nativeOptions.copy(
-            layout = effectiveNativeLayout,
-            themeName = selectedTheme.configName,
-        )
+        if (spec.id == "mindmap") {
+            spec.nativeOptions.copy(
+                mindmap = spec.nativeOptions.mindmap.copy(
+                    layoutAlgorithm = effectiveNativeLayout,
+                ),
+                themeName = selectedTheme.configName,
+            )
+        } else {
+            spec.nativeOptions.copy(
+                layout = effectiveNativeLayout,
+                themeName = selectedTheme.configName,
+            )
+        }
     }
 
     LazyColumn(
@@ -434,6 +445,7 @@ private fun PlaygroundContent(
                         theme = MermaidTheme.preset(selectedTheme),
                         options = renderOptions,
                         contentDescription = "${spec.title} playground native preview",
+                        respectSourceViewportSizing = false,
                     )
                     MermaidDebugPreview.Official -> OfficialMermaidDiagram(
                         source = renderedSource,

@@ -29,8 +29,8 @@ import kotlin.math.sign
  * Kotlin translation of Mermaid 12.0.0's Flowchart ELK adapter.
  *
  * Mermaid owns graph construction, hierarchy policy, result mapping and edge
- * clipping here. The isolated [ElkJsRuntime] executes only the locked elkjs
- * algorithm bundle that Mermaid depends on.
+ * clipping here. [ElkJsRuntime] currently rejects execution until the elkjs
+ * algorithm itself has a pure Kotlin translation.
  */
 internal object FlowElkLayout {
     fun layout(

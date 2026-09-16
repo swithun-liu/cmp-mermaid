@@ -13,6 +13,7 @@ export const kinds = [
   'journey',
   'requirement',
   'gitgraph',
+  'mindmap',
 ];
 
 export const casesPerKind = 256;
@@ -92,7 +93,7 @@ function buildKindCases(kind) {
 function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
   switch (kind) {
     case 'flowchart':
-      return `${source.trimEnd()}\n  ${evidenceId}["${label}"]\n`;
+      return appendFlowchartEvidence(source, evidenceId, label);
     case 'xychart':
       return replaceOrInsertTitle(source, 'xychart', label);
     case 'sequence':
@@ -101,7 +102,7 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
         `$1\n  participant ${evidenceId} as ${label}`,
       );
     case 'class':
-      return `${source.trimEnd()}\n  class ${evidenceId}["${label}"]\n`;
+      return appendClassEvidence(source, evidenceId, label);
     case 'state':
       return `${source.trimEnd()}\n  state "${label}" as ${evidenceId}\n`;
     case 'er':
@@ -125,9 +126,60 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}
   commit id: "${evidenceId}" tag: "${label}"
 `;
+    case 'mindmap':
+      return `${source.trimEnd()}
+    ${evidenceId}["${label}"]
+`;
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
+}
+
+function appendFlowchartEvidence(source, evidenceId, label) {
+  const anchorId = findFirstDiagramIdentifier(source, [
+    '[',
+    '(',
+    '{',
+    '@',
+    '-',
+    'o-',
+    'x-',
+    '<',
+    '=',
+  ]);
+  return `${source.trimEnd()}
+  ${anchorId} -.-> ${evidenceId}["${escapeQuotedLabel(label)}"]
+`;
+}
+
+function appendClassEvidence(source, evidenceId, label) {
+  const classPattern = /^\s*class\s+([A-Za-z_][A-Za-z0-9_-]*)/m;
+  const anchorId = source.match(classPattern)?.[1];
+  if (anchorId === undefined) {
+    throw new Error('Missing class declaration while adding visual parity evidence');
+  }
+  return `${source.trimEnd()}
+  class ${evidenceId}["${escapeQuotedLabel(label)}"]
+  ${anchorId} ..> ${evidenceId} : parity
+`;
+}
+
+function findFirstDiagramIdentifier(source, expectedRestPrefixes) {
+  for (const line of source.split(/\r?\n/)) {
+    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_-]*)\s*(.*)$/);
+    if (match === null) {
+      continue;
+    }
+    const [, identifier, rest] = match;
+    if (expectedRestPrefixes.some((prefix) => rest.startsWith(prefix))) {
+      return identifier;
+    }
+  }
+  throw new Error('Missing diagram identifier while adding visual parity evidence');
+}
+
+function escapeQuotedLabel(label) {
+  return label.replaceAll('\\', '\\\\').replaceAll('"', '\\"');
 }
 
 function replaceOrInsertTitle(source, declaration, suffix) {

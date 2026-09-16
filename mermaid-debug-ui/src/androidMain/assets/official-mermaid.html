@@ -156,6 +156,7 @@
     }
   </script>
   <script defer src="mermaid-12.0.0.min.js"></script>
+  <script defer src="mermaid-layout-tidy-tree-1.0.0.min.js"></script>
 </head>
 <body>
   <div id="diagram" class="status" role="status" aria-live="polite">
@@ -165,6 +166,7 @@
     (() => {
       const diagram = document.querySelector("#diagram");
       let requestId = 0;
+      let tidyTreeRegistered = false;
       const viewBoxPadding = 12;
       const parentMessagePrefix = "cmp-mermaid:";
       const rendererLoadTimeout = window.setTimeout(() => {
@@ -193,6 +195,17 @@
         }
         await new Promise(requestAnimationFrame);
         await new Promise(requestAnimationFrame);
+      };
+
+      const registerOptionalLayouts = () => {
+        if (tidyTreeRegistered) {
+          return;
+        }
+        if (!Array.isArray(window.cmpMermaidTidyTreeLayouts)) {
+          throw new Error("Official tidy-tree layout asset did not load");
+        }
+        mermaid.registerLayoutLoaders(window.cmpMermaidTidyTreeLayouts);
+        tidyTreeRegistered = true;
       };
 
       const normalizeViewBox = (svg, backgroundColor) => {
@@ -228,6 +241,7 @@
         diagram.textContent = "Rendering...";
 
         try {
+          registerOptionalLayouts();
           const config = {
             startOnLoad: false,
             securityLevel: "strict",

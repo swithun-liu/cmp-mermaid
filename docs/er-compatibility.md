@@ -28,7 +28,7 @@ discarded or rendered as a different feature.
 | `MD_PARENT` | Upstream-equivalent | The grammar and DB retain it; Mermaid 12's unified ER renderer does not register the legacy diamond marker, so no marker is painted |
 | Subgraphs | Supported | Root, nested, labelled, relationship-connected, and direction-aware subgraphs with parent-before-child paint order |
 | Direction | Supported | TB, BT, LR, and RL at root and nested subgraph levels |
-| Layout | Supported | Mermaid's ELK path, named ELK algorithms, and explicit Dagre override |
+| Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Shared Mermaid/Marked text path for entity aliases, attributes, relationship labels, and subgraph labels |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, `class`, inline `:::`, fill, stroke, dash, text, font, decoration, and line-height properties |
 | Themes | Supported | Mermaid 12 redux-color palette, alternating attribute rows, edge-label backgrounds, neo shadows, and shared native theme variables |
@@ -44,7 +44,8 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
 - Inline HTML links, images, SVG, MathML, or DOM layout elements inside labels.
 - `look: handDrawn`, because Mermaid implements it through roughjs.
 - CSS properties that the shared native style adapter cannot represent.
-- Layout engines other than the connected Dagre and ELK algorithms.
+- Layout engines other than Dagre, including `elk` and every named `elk.*`
+  algorithm.
 
 ## Validation Corpus
 
@@ -53,11 +54,11 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
 - Semantic tests cover aliases, attributes, nullable and generic types, keys,
   comments, every cardinality, identification, styles, nested subgraphs,
   configuration, title, and accessibility.
-- 256 deterministic random legal ER diagrams alternate between Dagre and ELK
-  while checking finite bounds, entity and relationship retention, marker
+- 256 deterministic random legal ER diagrams use Dagre while checking finite
+  bounds, entity and relationship retention, marker
   validity, self-relationships, and repeated relationships.
 - 20 curated gallery cases render identical source through Native Compose and
-  Mermaid.js `12.0.0` with ELK.
+  Mermaid.js `12.0.0` with Dagre.
 - The 20 Native Android screenshots are compared side by side with 20
   Puppeteer-rendered official references.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
@@ -80,7 +81,7 @@ MERMAID_SOURCE_DIR=/path/to/mermaid-12 \
   npm run generate:er-doc-fixtures
 ```
 
-Render the 20 official ELK references:
+Render the 20 official Dagre references:
 
 ```bash
 cd tools/official-reference

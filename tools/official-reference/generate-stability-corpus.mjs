@@ -27,6 +27,7 @@ const kotlinGalleryFiles = {
   journey: ['JourneyDemos.kt', 'JourneyDemo'],
   requirement: ['RequirementDemos.kt', 'RequirementDemo'],
   gitgraph: ['GitGraphDemos.kt', 'GitGraphDemo'],
+  mindmap: ['MindmapDemos.kt', 'MindmapDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -40,6 +41,7 @@ const expectedKindCounts = new Map([
   ['journey', 5],
   ['requirement', 5],
   ['gitgraph', 5],
+  ['mindmap', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -53,6 +55,7 @@ const expectedProductionKindCounts = new Map([
   ['journey', 13],
   ['requirement', 13],
   ['gitgraph', 13],
+  ['mindmap', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -66,6 +69,7 @@ const supportedKinds = new Set([
   'journey',
   'requirement',
   'gitgraph',
+  'mindmap',
 ]);
 
 validateStabilityCases();
@@ -139,8 +143,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 294) {
-    throw new Error(`Expected 294 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 314) {
+    throw new Error(`Expected 314 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -160,14 +164,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 145) {
+  if (productionCases.length !== 158) {
     throw new Error(
-      `Expected 145 production cases, found ${productionCases.length}`,
+      `Expected 158 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 88) {
+  if (conformanceCases.length !== 96) {
     throw new Error(
-      `Expected 88 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 96 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -324,7 +328,7 @@ function readDemoCases() {
         'id = "([^"]+)",\\s*' +
         'title = "[^"]+",\\s*' +
         'category = "[^"]+",\\s*' +
-        'source = """\\n([\\s\\S]*?)\\n\\s*"""\\.trimIndent\\(\\),\\s*\\)',
+        'source = """\\n([\\s\\S]*?)\\n\\s*"""\\.trimIndent\\(\\),',
       'g',
     );
     demoCases.push(...[...kotlin.matchAll(casePattern)].map((match) => ({
@@ -390,6 +394,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "journey",
             "requirement",
             "gitgraph",
+            "mindmap",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -437,14 +442,14 @@ private fun addVisualParityVariation(
     label: String,
     ordinal: Int,
 ): String = when (kind) {
-    "flowchart" -> "\${source.trimEnd()}\\n  \$evidenceId[\\"\$label\\"]\\n"
+    "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "sequence" -> insertAfterDeclaration(
         source = source,
         declaration = "sequenceDiagram",
         line = "  participant \$evidenceId as \$label",
     )
-    "class" -> "\${source.trimEnd()}\\n  class \$evidenceId[\\"\$label\\"]\\n"
+    "class" -> appendClassEvidence(source, evidenceId, label)
     "state" -> "\${source.trimEnd()}\\n  state \\"\$label\\" as \$evidenceId\\n"
     "er" -> "\${source.trimEnd()}\\n  \$evidenceId[\\"\$label\\"]\\n"
     "gantt" -> replaceOrInsertVisualParityTitle(source, "gantt", label)
@@ -460,8 +465,74 @@ private fun addVisualParityVariation(
         "  }\\n"
     "gitgraph" -> "\${source.trimEnd()}\\n" +
         "  commit id: \\"\$evidenceId\\" tag: \\"\$label\\"\\n"
+    "mindmap" -> "\${source.trimEnd()}\\n    \$evidenceId[\\"\$label\\"]\\n"
     else -> source
 }
+
+private fun appendFlowchartEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val anchorId = findFirstDiagramIdentifier(
+        source = source,
+        expectedRestPrefixes = listOf("[", "(", "{", "@", "-", "o-", "x-", "<", "="),
+    ) ?: return source
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    return "\${source.trimEnd()}\\n  \$anchorId -.-> \$evidenceId[\\"\$escapedLabel\\"]\\n"
+}
+
+private fun appendClassEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    var anchorId: String? = null
+    for (line in source.lines()) {
+        val trimmed = line.trimStart()
+        if (!trimmed.startsWith("class ")) continue
+        val identifier = trimmed.removePrefix("class ")
+            .trimStart()
+            .takeWhile { character ->
+                character.isLetterOrDigit() || character == '_' || character == '-'
+            }
+        if (identifier.isNotEmpty()) {
+            anchorId = identifier
+            break
+        }
+    }
+    val resolvedAnchorId = anchorId ?: return source
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    return "\${source.trimEnd()}\\n" +
+        "  class \$evidenceId[\\"\$escapedLabel\\"]\\n" +
+        "  \$resolvedAnchorId ..> \$evidenceId : parity\\n"
+}
+
+private fun findFirstDiagramIdentifier(
+    source: String,
+    expectedRestPrefixes: List<String>,
+): String? {
+    for (line in source.lines()) {
+        val trimmed = line.trimStart()
+        val identifier = trimmed.takeWhile { character ->
+            character.isLetterOrDigit() || character == '_' || character == '-'
+        }
+        if (
+            identifier.isEmpty() ||
+            (!identifier.first().isLetter() && identifier.first() != '_')
+        ) {
+            continue
+        }
+        val rest = trimmed.drop(identifier.length).trimStart()
+        if (expectedRestPrefixes.any(rest::startsWith)) {
+            return identifier
+        }
+    }
+    return null
+}
+
+private fun escapeQuotedVisualParityLabel(label: String): String =
+    label.replace("\\\\", "\\\\\\\\").replace("\\"", "\\\\\\"")
 
 private fun replaceOrInsertVisualParityTitle(
     source: String,

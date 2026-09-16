@@ -281,6 +281,12 @@ data class SceneNodeInteraction(
     val callbackArgs: String? = null,
 )
 
+enum class MermaidSceneViewportSizing {
+    Fit,
+    ResponsiveMaxWidth,
+    Intrinsic,
+}
+
 data class MermaidScene(
     val width: Float,
     val height: Float,
@@ -291,6 +297,7 @@ data class MermaidScene(
     val accessibilityDescription: String? = null,
     val interactions: List<SceneNodeInteraction> = emptyList(),
     val viewportPadding: Float = 0f,
+    val viewportSizing: MermaidSceneViewportSizing = MermaidSceneViewportSizing.Fit,
 )
 
 data class TextMetricsRequest(

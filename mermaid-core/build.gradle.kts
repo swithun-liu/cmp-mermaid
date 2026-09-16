@@ -36,17 +36,5 @@ kotlin {
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
-        androidMain {
-            kotlin.srcDir("src/quickJsMain/kotlin")
-            dependencies {
-                implementation(libs.quickjs)
-            }
-        }
-        jvmMain {
-            kotlin.srcDir("src/quickJsMain/kotlin")
-            dependencies {
-                implementation(libs.quickjs)
-            }
-        }
     }
 }

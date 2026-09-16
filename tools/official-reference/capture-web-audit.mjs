@@ -43,6 +43,7 @@ const kotlinGalleryFiles = {
   journey: ['JourneyDemos.kt', 'JourneyDemo'],
   requirement: ['RequirementDemos.kt', 'RequirementDemo'],
   gitgraph: ['GitGraphDemos.kt', 'GitGraphDemo'],
+  mindmap: ['MindmapDemos.kt', 'MindmapDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [
@@ -71,8 +72,13 @@ if (!supportedAuditKinds.includes(auditKind)) {
 if (!supportedAuditSources.includes(auditSource)) {
   throw new Error(`AUDIT_SOURCE must be one of: ${supportedAuditSources.join(', ')}`);
 }
-if (layoutOverride !== null && !['dagre', 'elk'].includes(layoutOverride)) {
-  throw new Error('CAPTURE_LAYOUT must be dagre or elk');
+if (
+  layoutOverride !== null &&
+  !['dagre', 'elk', 'cose-bilkent', 'tidy-tree'].includes(layoutOverride)
+) {
+  throw new Error(
+    'CAPTURE_LAYOUT must be dagre, elk, cose-bilkent, or tidy-tree',
+  );
 }
 if (themeOverride !== null && !supportedThemes.includes(themeOverride)) {
   throw new Error(`CAPTURE_THEME must be one of: ${supportedThemes.join(', ')}`);
@@ -132,7 +138,7 @@ try {
         continue;
       }
       const url = new URL(baseUrl);
-      const captureLayout = layoutOverride ?? auditCase.layout ?? 'elk';
+      const captureLayout = layoutOverride ?? auditCase.layout ?? 'dagre';
       url.searchParams.set('auditDemoId', auditCase.id);
       url.searchParams.set('auditPreview', preview);
       url.searchParams.set('auditLayout', captureLayout);
@@ -152,7 +158,7 @@ try {
           await assertOfficialGanttWidth(page, auditCase.id);
         }
       } else {
-        await waitForNativeCanvas(page);
+        await waitForNativeCanvas(page, auditCase);
       }
       await page.evaluate(() => new Promise((resolveFrame) => {
         requestAnimationFrame(() => requestAnimationFrame(resolveFrame));
@@ -182,7 +188,41 @@ console.log(
     outputDirectory,
 );
 
-async function waitForNativeCanvas(page) {
+async function waitForNativeCanvas(page, auditCase) {
+  const outcomeHandle = await page.waitForFunction(
+    () => {
+      const roots = [document];
+      for (let index = 0; index < roots.length; index += 1) {
+        const root = roots[index];
+        for (const element of root.querySelectorAll?.('[aria-label]') ?? []) {
+          const label = element.getAttribute('aria-label') ?? '';
+          if (label === 'cmp-mermaid-audit:ready') {
+            return { status: 'ready' };
+          }
+          if (label.startsWith('cmp-mermaid-audit:error:')) {
+            return {
+              status: 'error',
+              message: label.slice('cmp-mermaid-audit:error:'.length),
+            };
+          }
+        }
+        root.querySelectorAll?.('*').forEach((element) => {
+          if (element.shadowRoot !== null) {
+            roots.push(element.shadowRoot);
+          }
+        });
+      }
+      return null;
+    },
+    { timeout: 60_000 },
+  );
+  const outcome = await outcomeHandle.jsonValue();
+  await outcomeHandle.dispose();
+  if (outcome.status === 'error') {
+    throw new Error(
+      `${auditCase.id}/Native rendering failed: ${outcome.message}`,
+    );
+  }
   await page.waitForFunction(
     () => {
       const roots = [document];

@@ -17,7 +17,7 @@ const mermaidBundle = resolve(root, 'node_modules/mermaid/dist/mermaid.min.js');
 const mermaidPackage = JSON.parse(
   readFileSync(resolve(root, 'node_modules/mermaid/package.json'), 'utf8'),
 );
-const layout = process.env.ER_LAYOUT ?? 'elk';
+const layout = process.env.ER_LAYOUT ?? 'dagre';
 
 if (mermaidPackage.version !== '12.0.0') {
   throw new Error(`Expected mermaid 12.0.0, found ${mermaidPackage.version}`);

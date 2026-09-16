@@ -4,8 +4,16 @@ import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
 
 /**
- * Executes Mermaid's locked elkjs worker on the current platform.
+ * Preserves Mermaid's ELK adapter boundary until elkjs has a pure Kotlin translation.
  */
-internal expect object ElkJsRuntime {
-    fun layout(graphJson: String): GMResult<String, MermaidError>
+internal object ElkJsRuntime {
+    fun layout(@Suppress("UNUSED_PARAMETER") graphJson: String): GMResult<String, MermaidError> {
+        return GMResult.Err(
+            MermaidError.UnsupportedFeature(
+                feature = "ELK layout",
+                message = "Native Mermaid does not execute JavaScript; " +
+                    "ELK layouts require a pure Kotlin translation of elkjs",
+            ),
+        )
+    }
 }

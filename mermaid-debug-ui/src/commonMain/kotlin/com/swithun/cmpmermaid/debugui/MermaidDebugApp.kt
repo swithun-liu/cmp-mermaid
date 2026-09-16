@@ -33,13 +33,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,6 +47,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swithun.cmpmermaid.compose.MermaidDiagram
+import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidCompatibility
 import com.swithun.cmpmermaid.core.MermaidTheme
 import com.swithun.cmpmermaid.core.MermaidThemePreset
@@ -70,7 +69,7 @@ enum class MermaidDebugPreview {
 data class MermaidDebugLaunchOptions(
     val auditDemoId: String? = null,
     val auditPreview: MermaidDebugPreview = MermaidDebugPreview.Native,
-    val auditLayout: String = "elk",
+    val auditLayout: String = "dagre",
     val auditThemeName: String? = null,
     val openPlayground: Boolean = false,
     val playgroundDiagramId: String = "flowchart",
@@ -92,6 +91,7 @@ private enum class DebugScreen {
     Journey,
     Requirement,
     GitGraph,
+    Mindmap,
     Playground,
     LoadTest,
 }
@@ -176,6 +176,11 @@ private val destinations = listOf(
         gitGraphDiagramDocsSpec,
         "Commits, branches, merges, cherry-picks, tags, and three orientations",
         DiagramStability.Stable,
+    ),
+    DiagramDestination(
+        DebugScreen.Mindmap,
+        mindmapDiagramDocsSpec,
+        "Hierarchies, seven shapes, themes, and three native layouts",
     ),
 )
 
@@ -491,19 +496,26 @@ private fun DiagramAuditScreen(
     layoutOverride: String,
     themeNameOverride: String?,
 ) {
-    val usesCorpusLayout = spec.id == "flowchart" || spec.id == "requirement"
+    val usesCorpusLayout =
+        spec.id == "flowchart" || spec.id == "requirement" || spec.id == "mindmap"
     val themePreset = MermaidThemePreset.entries.firstOrNull { preset ->
         preset.configName.equals(themeNameOverride, ignoreCase = true)
     } ?: spec.initialTheme
+    val nativeOptions = if (spec.id == "mindmap") {
+        spec.nativeOptions.copy(
+            mindmap = spec.nativeOptions.mindmap.copy(
+                layoutAlgorithm = layoutOverride,
+            ),
+            themeName = themePreset.configName,
+        )
+    } else {
+        spec.nativeOptions.copy(
+            layout = if (usesCorpusLayout) layoutOverride else spec.nativeOptions.layout,
+            themeName = themePreset.configName,
+        )
+    }
     var auditStatus by remember(demo.id, preview, layoutOverride, themePreset) {
         mutableStateOf(AUDIT_STATUS_LOADING)
-    }
-    LaunchedEffect(demo.id, preview, layoutOverride, themePreset) {
-        if (preview == MermaidDebugPreview.Native) {
-            withFrameNanos { }
-            withFrameNanos { }
-            auditStatus = AUDIT_STATUS_READY
-        }
     }
 
     Box(
@@ -521,11 +533,16 @@ private fun DiagramAuditScreen(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
                 theme = MermaidTheme.preset(themePreset),
-                options = spec.nativeOptions.copy(
-                    layout = if (usesCorpusLayout) layoutOverride else spec.nativeOptions.layout,
-                    themeName = themePreset.configName,
-                ),
+                options = nativeOptions,
                 contentDescription = "${demo.title} native audit preview",
+                respectSourceViewportSizing = false,
+                onRenderResult = { result ->
+                    auditStatus = when (result) {
+                        is GMResult.Ok -> AUDIT_STATUS_READY
+                        is GMResult.Err ->
+                            "$AUDIT_STATUS_ERROR_PREFIX${result.error.message}"
+                    }
+                },
             )
             MermaidDebugPreview.Official -> OfficialMermaidDiagram(
                 source = demo.source,

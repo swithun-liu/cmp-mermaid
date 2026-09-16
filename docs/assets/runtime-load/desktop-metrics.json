@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
   "platform": "Desktop macOS",
-  "caseCount": 145,
-  "lastCaseId": "prod_gitgraph_configured_visibility_hidden_commits",
+  "caseCount": 158,
+  "lastCaseId": "prod_mindmap_configured_theme_readiness",
   "autoRunItemDelayMillis": 75,
-  "minimumCompletionMillis": 10875,
-  "finalRssKb": 93424,
+  "completionMillis": 15000,
+  "finalRssKb": 428480,
+  "completedRuns": 3,
   "windowObserved": true,
   "reachedLastCase": true,
   "crashed": false

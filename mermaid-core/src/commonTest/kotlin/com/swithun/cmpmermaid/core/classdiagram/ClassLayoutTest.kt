@@ -304,18 +304,25 @@ class ClassLayoutTest {
     }
 
     @Test
-    fun inheritsTheTopLevelElkLayoutUnlessClassLayoutOverridesIt() {
+    fun inheritsTheTopLevelDagreLayoutAndRejectsExplicitElk() {
         val source = """
             classDiagram
                 Parent <|-- Child
                 Parent --> Service : delegates
         """.trimIndent()
         val defaultScene = render(source)
-        val explicitElk = render(
+        val explicitDagre = render(
+            source,
+            context.copy(options = context.options.copy(classLayout = "dagre")),
+        )
+        assertEquals(explicitDagre, defaultScene)
+
+        val elk = engine.render(
             source,
             context.copy(options = context.options.copy(classLayout = "elk")),
         )
-        assertEquals(explicitElk, defaultScene)
+        val elkError = assertIs<GMResult.Err<MermaidError.UnsupportedFeature>>(elk).error
+        assertEquals("ELK layout", elkError.feature)
 
         val unsupported = engine.render(
             source,

@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>在线 Web Demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>2,816 案例视觉报告</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>3,072 案例视觉报告</strong></a>
     ·
     <a href="docs/stability-report.md">完整 Stable 报告</a>
     ·
@@ -30,17 +30,17 @@
 
 > [!IMPORTANT]
 > **CMP Mermaid 在文档声明的 Mermaid `12.0.0` 支持范围内已达到
-> Stable。** 当前支持的 11 类图均已通过独立生产场景语料、
-> 2,816 案例 Native/Official 视觉矩阵、确定性重放、独立随机压力测试、
+> Stable。** 当前支持的 12 类图均已通过独立生产场景语料、
+> 3,072 案例 Native/Official 视觉矩阵、确定性重放、独立随机压力测试、
 > 运行时负载测试和跨平台构建。
 >
-> 建议先查看 **[2,816 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**，
-> 其中包含 5,632 张截图和 176 页分页对比图。
+> 建议先查看 **[3,072 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**，
+> 其中包含 6,144 张截图和 192 页分页对比图。
 > **[完整 Stable 报告](docs/stability-report.md)** 还包含 Stable 判定、
 > 性能、平台、安全和复现证据。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
-WebView。生产渲染链路不内嵌 Mermaid.js，也不需要
+WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，也不需要
 `android.permission.INTERNET`：解析、图表状态、布局准备、SceneGraph
 生成和最终 Compose Canvas 绘制均由多平台库完成。
 
@@ -50,28 +50,28 @@ Stable 结论来自仓库内可复现的测试证据，而不是 Demo Gallery �
 
 | 证据 | 结果 |
 | --- | ---: |
-| 支持的图表类型 | 11 |
-| 独立生产场景 | 145 |
-| 已声明能力覆盖率 | 186/186 |
-| 大规模视觉矩阵 | 2,816 个唯一源码，每类图 256 个 |
-| Native/Official 截图 | 5,632 张矩阵截图，另有 290 张独立语料截图 |
-| 人工视觉审查 | 145 个通过，0 个阻塞 |
-| 自动视觉几何检查 | 2,816/2,816 个矩阵对和 145/145 个独立对通过 |
-| 确定性 SceneGraph 重放 | 145 个通过，0 个不一致 |
-| 内置主题矩阵 | 121/121 |
-| 独立生成的 Native 压力输入 | 2,816 |
-| JVM 测试 | 356 个通过，0 个失败 |
-| Core 生产场景压力测试 | 725 次渲染，P95 为 61ms |
+| 支持的图表类型 | 12 |
+| 独立生产场景 | 158 |
+| 已声明能力覆盖率 | 207/207 |
+| 大规模视觉矩阵 | 3,072 个唯一源码，每类图 256 个 |
+| Native/Official 截图 | 6,144 张矩阵截图，另有 316 张独立语料截图 |
+| 人工视觉审查 | 158 个通过，0 个阻塞 |
+| 自动视觉几何检查 | 3,072/3,072 个矩阵对和 158/158 个独立对通过 |
+| 确定性 SceneGraph 重放 | 158 个通过，0 个不一致 |
+| 内置主题矩阵 | 132/132 |
+| 独立生成的 Native 压力输入 | 3,072 |
+| JVM 测试 | 376 个通过，0 个失败 |
+| Core 生产场景压力测试 | 790 次渲染，P95 为 1ms |
 | 运行时负载矩阵 | Android、iOS、Desktop、Web 全部通过 |
 
 | 证据文档 | 内容 |
 | --- | --- |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
-| **[全部 2,816 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 176 页分页对比图，每页包含 16 组同源码结果 |
-| [生产能力矩阵](docs/production-capability-matrix.md) | 186 项被独立验证的能力 |
+| **[全部 3,072 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 192 页分页对比图，每页包含 16 组同源码结果 |
+| [生产能力矩阵](docs/production-capability-matrix.md) | 207 项被独立验证的能力 |
 | [生产就绪说明](docs/production-readiness.md) | 代码级 Stable 标准、资源预算和接入指引 |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | 当前 JVM、构建、发布、安全、APK、视觉和 Web 负载自动化结果 |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 每周或手动执行的 11 路矩阵截图、几何门禁和可下载证据 |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 每周或手动执行的 12 路矩阵截图、几何门禁和可下载证据 |
 
 Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 Mermaid 程序均已实现。
 对于无法忠实表达的合法特性，系统会返回
@@ -103,9 +103,9 @@ Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native State Diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js State Diagram" width="700"> |
 
-测试报告包含 145 个独立生产场景对比，以及由 2,816 个唯一 Mermaid 源码组成的
+测试报告包含 158 个独立生产场景对比，以及由 3,072 个唯一 Mermaid 源码组成的
 独立大规模矩阵：
-**[查看全部 176 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
+**[查看全部 192 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
 
 </details>
 
@@ -113,19 +113,20 @@ Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 
 
 | 图表 | 状态 | 生产案例 | 主要覆盖能力 | 详情 |
 | --- | :---: | ---: | --- | --- |
-| Flowchart | **Stable** | 14 | Jison/FlowDB、Dagre、ELK、形状、连线、Markdown/HTML 标签 | [兼容性](docs/flowchart-compatibility.md) |
+| Flowchart | **Stable** | 14 | Jison/FlowDB、Dagre、形状、连线、Markdown/HTML 标签 | [兼容性](docs/flowchart-compatibility.md) |
 | XY Chart | **Stable** | 13 | Jison/XY DB、D3 比例尺和刻度、柱状图/折线图、标签 | [兼容性](docs/xychart-compatibility.md) |
 | Sequence | **Stable** | 14 | 参与者、26 种消息形式、注释、激活、控制区域 | [兼容性](docs/sequence-compatibility.md) |
-| Class | **Stable** | 13 | 分区、泛型、命名空间、关系、ELK/Dagre | [兼容性](docs/class-compatibility.md) |
-| State | **Stable** | 13 | 复合状态、并发、注释、分叉/汇合、ELK/Dagre | [兼容性](docs/state-compatibility.md) |
+| Class | **Stable** | 13 | 分区、泛型、命名空间、关系、Dagre | [兼容性](docs/class-compatibility.md) |
+| State | **Stable** | 13 | 复合状态、并发、注释、分叉/汇合、Dagre | [兼容性](docs/state-compatibility.md) |
 | Entity Relationship | **Stable** | 13 | 属性、基数、关系、嵌套子图 | [兼容性](docs/er-compatibility.md) |
 | Gantt | **Stable** | 13 | 日期、依赖、排除日期、里程碑、D3 风格刻度 | [兼容性](docs/gantt-compatibility.md) |
 | Pie | **Stable** | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
 | User Journey | **Stable** | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
-| Requirement | **Stable** | 13 | SysML 类型与字段、元素、七类关系、Dagre/ELK、样式 | [兼容性](docs/requirement-compatibility.md) |
+| Requirement | **Stable** | 13 | SysML 类型与字段、元素、七类关系、Dagre、样式 | [兼容性](docs/requirement-compatibility.md) |
 | Git Graph | **Stable** | 13 | Langium 语法、分支、合并、cherry-pick、方向与主题 | [兼容性](docs/gitgraph-compatibility.md) |
+| Mindmap | **Stable** | 13 | Jison/Mindmap DB、CoSE-Bilkent、Dagre、tidy tree、形状与主题 | [兼容性](docs/mindmap-compatibility.md) |
 
-在各自文档声明的兼容范围内，11 类图均支持 Mermaid frontmatter、metadata、
+在各自文档声明的兼容范围内，12 类图均支持 Mermaid frontmatter、metadata、
 Unicode 和相关主题变量。
 
 ## 在线体验
@@ -133,8 +134,8 @@ Unicode 和相关主题变量。
 打开 **[Kotlin/Wasm 在线 Demo](https://swithun-liu.github.io/cmp-mermaid/)**，
 可以浏览语法、渲染 Gallery、切换全部 11 个主题，并比较 CMP Native 与锁定版本
 Mermaid.js 的结果。每种受支持的图表都有可编辑的 Playground，并支持切换
-Native/Official 预览；Flowchart、Class、State 和 Entity Relationship 的
-Playground 还可以在 ELK 与 Dagre 之间切换。
+Native/Official 预览；Mindmap 可在 CoSE-Bilkent、Dagre 与 tidy-tree
+布局间切换。
 
 <a href="https://swithun-liu.github.io/cmp-mermaid/">
   <img src="docs/assets/web-playground.png" alt="CMP Mermaid Kotlin Wasm Playground" width="900">
@@ -161,9 +162,9 @@ Mermaid source
 - `sample/*` 包含 Android、iOS、Desktop 和 Web 的轻量启动壳，共享同一套
   debug UI。
 
-ELK 路径使用 Mermaid 适配层及锁定的 `elkjs@0.9.3` worker。Android 和 Desktop
-通过 QuickJS 隔离运行，iOS 使用 JavaScriptCore，Web 使用浏览器运行时。这只是
-布局实现细节；Mermaid.js 不参与生产渲染。
+生产库不包含 JavaScript 引擎，也不打包 JavaScript 算法。统一布局默认使用纯
+Kotlin Dagre。ELK 名称和 `flowchart-elk` 仍会作为上游输入被识别，但会返回
+`MermaidError.UnsupportedFeature("ELK layout")`，绝不会静默替换为其他布局。
 
 ## 接入
 
@@ -251,10 +252,10 @@ val brandTheme = MermaidTheme.preset(MermaidThemePreset.ReduxColor).copy(
 
 CMP Mermaid 采用带源码映射的翻译工作流，而不是根据截图重新实现行为：
 
-1. 锁定 Mermaid、Jison、D3、Marked、Dagre 和 ELK 版本。
+1. 锁定 Mermaid、Jison、D3、Marked、Dagre、CoSE-Bilkent 和 tidy-tree 版本。
 2. 将每个 Kotlin parser、DB、layout、shape、theme 和 renderer 边界映射到
    Mermaid 上游源码。
-3. 根据锁定的输入生成 parser table、rule、entity、fixture 和 worker。
+3. 根据锁定的输入生成 parser table、rule、entity、fixture 和仅用于调试的参考资源。
 4. Mermaid 升级时只翻译上游增量。
 5. 重新运行完整视觉对拍和平台门禁。
 
@@ -269,7 +270,8 @@ CMP Mermaid 采用带源码映射的翻译工作流，而不是根据截图重�
 [Pie](docs/upstream-pie-map.md) ·
 [User Journey](docs/upstream-journey-map.md) ·
 [Requirement](docs/upstream-requirement-map.md) ·
-[Git Graph](docs/upstream-gitgraph-map.md)
+[Git Graph](docs/upstream-gitgraph-map.md) ·
+[Mindmap](docs/upstream-mindmap-map.md)
 
 ## 验证
 

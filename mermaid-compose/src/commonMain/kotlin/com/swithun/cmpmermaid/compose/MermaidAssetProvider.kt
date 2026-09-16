@@ -34,19 +34,16 @@ data class MermaidResolvedAsset(
 )
 
 /**
- * Controls whether a platform asset provider may fetch diagram-controlled URLs.
+ * Retained for source and binary compatibility. Built-in network loading is no
+ * longer available; inject a host-owned [MermaidAssetProvider] for external assets.
  */
+@Deprecated(
+    message = "Built-in network loading was removed; inject a host MermaidAssetProvider",
+)
 enum class MermaidNetworkAccess {
     Disabled,
     HttpAndHttps,
 }
-
-internal fun MermaidNetworkAccess.allows(source: String): Boolean =
-    this == MermaidNetworkAccess.HttpAndHttps &&
-        (
-            source.startsWith("https://", ignoreCase = true) ||
-                source.startsWith("http://", ignoreCase = true)
-            )
 
 fun interface MermaidAssetProvider {
     suspend fun resolve(

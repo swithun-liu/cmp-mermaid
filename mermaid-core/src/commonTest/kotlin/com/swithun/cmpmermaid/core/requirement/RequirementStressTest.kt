@@ -60,7 +60,7 @@ class RequirementStressTest {
                 appendLine("---")
                 appendLine("title: Random requirement model $caseIndex")
                 appendLine("config:")
-                appendLine("  layout: ${if (caseIndex % 2 == 0) "elk" else "dagre"}")
+                appendLine("  layout: dagre")
                 appendLine("---")
             }
             appendLine("requirementDiagram")

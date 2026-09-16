@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 2,816 source cases and
-5,632 screenshots from the large-scale
+This index contains 3,072 source cases and
+6,144 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -417,5 +417,42 @@ presented as 256 unrelated topologies.
 ![Git Graph visual parity page 15](gitgraph-visual-parity-15.jpg)
 
 ![Git Graph visual parity page 16](gitgraph-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Mindmap - 256 Native/Official pairs</strong></summary>
+
+![Mindmap visual parity page 01](mindmap-visual-parity-01.jpg)
+
+![Mindmap visual parity page 02](mindmap-visual-parity-02.jpg)
+
+![Mindmap visual parity page 03](mindmap-visual-parity-03.jpg)
+
+![Mindmap visual parity page 04](mindmap-visual-parity-04.jpg)
+
+![Mindmap visual parity page 05](mindmap-visual-parity-05.jpg)
+
+![Mindmap visual parity page 06](mindmap-visual-parity-06.jpg)
+
+![Mindmap visual parity page 07](mindmap-visual-parity-07.jpg)
+
+![Mindmap visual parity page 08](mindmap-visual-parity-08.jpg)
+
+![Mindmap visual parity page 09](mindmap-visual-parity-09.jpg)
+
+![Mindmap visual parity page 10](mindmap-visual-parity-10.jpg)
+
+![Mindmap visual parity page 11](mindmap-visual-parity-11.jpg)
+
+![Mindmap visual parity page 12](mindmap-visual-parity-12.jpg)
+
+![Mindmap visual parity page 13](mindmap-visual-parity-13.jpg)
+
+![Mindmap visual parity page 14](mindmap-visual-parity-14.jpg)
+
+![Mindmap visual parity page 15](mindmap-visual-parity-15.jpg)
+
+![Mindmap visual parity page 16](mindmap-visual-parity-16.jpg)
 
 </details>

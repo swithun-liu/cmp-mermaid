@@ -2,10 +2,11 @@
   "schemaVersion": 1,
   "platform": "iOS Simulator",
   "device": "iPhone 17 Pro",
-  "caseCount": 145,
-  "lastCaseId": "prod_gitgraph_configured_visibility_hidden_commits",
+  "caseCount": 158,
+  "lastCaseId": "prod_mindmap_configured_theme_readiness",
   "autoRunItemDelayMillis": 75,
-  "finalHostRssKb": 530032,
+  "completionMillis": 17000,
+  "finalHostRssKb": 328352,
   "reachedLastCase": true,
   "crashed": false
 }

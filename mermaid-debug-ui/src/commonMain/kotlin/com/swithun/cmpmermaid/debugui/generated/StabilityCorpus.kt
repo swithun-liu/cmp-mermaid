@@ -20,7 +20,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Checkout saga with compensation",
         scenario = "Commerce checkout coordinating inventory, payment, shipment, and rollback paths.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart LR
@@ -54,7 +54,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Multi-region failover",
         scenario = "Traffic management and data recovery during a regional outage.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             flowchart TB
@@ -91,7 +91,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Release train and rollback",
         scenario = "A guarded mobile release with parallel validation and staged rollout.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.8f,
         source = """
             flowchart LR
@@ -125,7 +125,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Production incident response",
         scenario = "Incident triage, mitigation, communication, and follow-up ownership.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             flowchart TB
@@ -162,7 +162,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Event ingestion and quarantine",
         scenario = "A streaming pipeline handling validation, deduplication, enrichment, and replay.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.8f,
         source = """
             flowchart LR
@@ -196,7 +196,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Privileged access governance",
         scenario = "Approval, policy evaluation, provisioning, expiry, and emergency revocation.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart TB
@@ -607,7 +607,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Commerce domain model",
         scenario = "Aggregate roots, repositories, payment strategy, inventory, and fulfillment.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -672,7 +672,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Workflow engine architecture",
         scenario = "Definitions, executable instances, typed steps, scheduling, and state persistence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -734,7 +734,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Authorization policy model",
         scenario = "Users, groups, roles, permissions, scoped grants, and policy evaluation.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.3f,
         source = """
             classDiagram
@@ -792,7 +792,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Notification delivery platform",
         scenario = "Templates, channel adapters, preferences, routing, retries, and delivery receipts.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -845,7 +845,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Collaborative document editor",
         scenario = "Documents, blocks, operations, revisions, presence, and conflict transformation.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -906,7 +906,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Order fulfillment lifecycle",
         scenario = "Payment, allocation, shipment, cancellation, return, and refund states.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.1f,
         source = """
             stateDiagram-v2
@@ -942,7 +942,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Payment transaction state machine",
         scenario = "Authorization, challenge, capture, partial refund, reversal, and terminal outcomes.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.1f,
         source = """
             stateDiagram-v2
@@ -979,7 +979,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Progressive deployment rollout",
         scenario = "Build, canary, staged rollout, automated rollback, and incident review.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.05f,
         source = """
             stateDiagram-v2
@@ -1019,7 +1019,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Media processing pipeline",
         scenario = "Upload verification, concurrent transforms, moderation, publication, and retry.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.05f,
         source = """
             stateDiagram-v2
@@ -1057,7 +1057,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Support ticket lifecycle",
         scenario = "Automated triage, ownership, customer waiting, escalation, and reopening.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.1f,
         source = """
             stateDiagram-v2
@@ -1088,7 +1088,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Commerce platform data model",
         scenario = "Customers, catalog, orders, payments, fulfillment, promotions, and returns.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -1161,7 +1161,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Learning platform data model",
         scenario = "Courses, modules, lessons, enrollment, progress, assessment, and certificates.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -1233,7 +1233,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Messaging system data model",
         scenario = "Conversations, membership, messages, reactions, attachments, reads, and devices.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -1295,7 +1295,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Subscription billing data model",
         scenario = "Accounts, plans, subscriptions, invoices, line items, payments, and entitlements.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -1360,7 +1360,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Warehouse inventory network",
         scenario = "Warehouses, bins, stock, suppliers, purchase orders, transfers, and reservations.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -1887,7 +1887,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Checkout assurance model",
         scenario = "Payment requirements trace from system goals through interfaces and verification evidence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             requirementDiagram
@@ -1939,7 +1939,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Device safety controls",
         scenario = "Safety requirements decompose into physical limits, design constraints, and test evidence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.45f,
         source = """
             requirementDiagram
@@ -1991,7 +1991,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Data retention traceability",
         scenario = "Policy, storage, deletion, and audit requirements remain traceable across implementation assets.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             requirementDiagram
@@ -2043,7 +2043,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Regional failover evidence",
         scenario = "Availability targets connect to routing, recovery, observability, and validation evidence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             requirementDiagram
@@ -2298,6 +2298,205 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
               checkout main
               cherry-pick id: "prepare-follow-up-correction"
               commit id: "close-release-window" tag: "complete"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_product_strategy",
+        diagramId = "mindmap",
+        title = "Product strategy hierarchy",
+        scenario = "A product strategy connects outcomes, customer needs, platform investments, and measurable signals.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Product strategy
+            config:
+              layout: cose-bilkent
+            ---
+            mindmap
+              root((Product strategy))
+                Customer outcomes
+                  Faster onboarding
+                    Guided setup
+                    Progressive profiling
+                  Reliable daily use
+                    Offline recovery
+                    Clear error states
+                Platform investments
+                  Shared design system
+                    Accessible components
+                    Cross-platform tokens
+                  Delivery automation
+                    Reproducible builds
+                    Release evidence
+                Success signals
+                  Activation rate
+                  Task completion
+                  Support volume
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_incident_response",
+        diagramId = "mindmap",
+        title = "Incident response responsibilities",
+        scenario = "A top-to-bottom response map assigns detection, mitigation, communication, and follow-up work.",
+        layout = "dagre",
+        initialAspectRatio = 1.25f,
+        source = """
+            ---
+            title: Incident response
+            config:
+              layout: dagre
+            ---
+            mindmap
+              root((Production incident))
+                Detect
+                  Customer reports
+                  Service alerts
+                  Dependency health
+                Assess
+                  Impact
+                  Severity
+                  Ownership
+                Mitigate
+                  Roll back
+                  Shift traffic
+                  Disable feature
+                Communicate
+                  Status updates
+                  Stakeholder brief
+                Learn
+                  Timeline
+                  Root cause
+                  Follow-up actions
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_platform_architecture",
+        diagramId = "mindmap",
+        title = "Platform architecture map",
+        scenario = "A bidirectional tidy tree presents client and service concerns around one platform boundary.",
+        layout = "tidy-tree",
+        initialAspectRatio = 1.9f,
+        source = """
+            ---
+            title: Platform architecture
+            config:
+              layout: tidy-tree
+            ---
+            mindmap
+              root((Shared platform))
+                Clients
+                  Android
+                    Offline cache
+                    Background sync
+                  iOS
+                    Secure storage
+                    Push updates
+                  Web
+                    Progressive loading
+                    Browser storage
+                Services
+                  Gateway
+                    Authentication
+                    Rate limits
+                  Domain APIs
+                    Commands
+                    Queries
+                  Data
+                    Primary store
+                    Event archive
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_shape_and_text_matrix",
+        diagramId = "mindmap",
+        title = "Shape and text matrix",
+        scenario = "Every supported Mindmap shape carries markdown, wrapped, escaped, or Unicode labels.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.7f,
+        source = """
+            ---
+            config:
+              layout: cose-bilkent
+              mindmap:
+                maxNodeWidth: 130
+            ---
+            mindmap
+              root((**Evidence map**))
+                default branch
+                  Plain label
+                square[Square &amp; entities]
+                  long[A deliberately long label that wraps inside a square node]
+                rounded(*Rounded emphasis*)
+                  child(Secondary rounded node)
+                circle((Circle))
+                  unicode((品質確認))
+                cloud)Cloud(
+                  weather)Operational signal(
+                bang))Bang((
+                  alert))Escalation((
+                hex{{Hexagon}}
+                  gate{{Release gate}}
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_governance_theme",
+        diagramId = "mindmap",
+        title = "Themed governance map",
+        scenario = "Custom theme variables, sizing controls, comments, and a deep governance hierarchy render together.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            ---
+            title: Delivery governance
+            config:
+              layout: dagre
+              mindmap:
+                padding: 18
+                maxNodeWidth: 140
+                useMaxWidth: false
+              theme: base
+              themeVariables:
+                mainBkg: "#f8fafc"
+                nodeBorder: "#334155"
+                git0: "#0f766e"
+                gitBranchLabel0: "#ffffff"
+                cScale0: "#ccfbf1"
+                cScale1: "#dbeafe"
+                cScale2: "#fef3c7"
+                cScaleLabel0: "#134e4a"
+                cScaleLabel1: "#1e3a8a"
+                cScaleLabel2: "#78350f"
+            ---
+            mindmap
+              root((Delivery governance))
+                Definition
+                  Scope
+                  Owners
+                  Acceptance criteria
+                Verification
+                  Automated checks
+                    Unit tests
+                    Integration tests
+                  Manual review
+                    Visual evidence
+                    Accessibility
+                Release
+                  %% The release branch intentionally includes operational controls.
+                  Change approval
+                  Rollback plan
+                  Monitoring window
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -2310,7 +2509,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Checkout saga with compensation",
         scenario = "Commerce checkout coordinating inventory, payment, shipment, and rollback paths.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart LR
@@ -2344,7 +2543,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Multi-region failover",
         scenario = "Traffic management and data recovery during a regional outage.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             flowchart TB
@@ -2381,7 +2580,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Release train and rollback",
         scenario = "A guarded mobile release with parallel validation and staged rollout.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.8f,
         source = """
             flowchart LR
@@ -2415,7 +2614,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Production incident response",
         scenario = "Incident triage, mitigation, communication, and follow-up ownership.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             flowchart TB
@@ -2452,7 +2651,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Event ingestion and quarantine",
         scenario = "A streaming pipeline handling validation, deduplication, enrichment, and replay.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.8f,
         source = """
             flowchart LR
@@ -2486,7 +2685,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Privileged access governance",
         scenario = "Approval, policy evaluation, provisioning, expiry, and emergency revocation.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart TB
@@ -2897,7 +3096,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Commerce domain model",
         scenario = "Aggregate roots, repositories, payment strategy, inventory, and fulfillment.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -2962,7 +3161,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Workflow engine architecture",
         scenario = "Definitions, executable instances, typed steps, scheduling, and state persistence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -3024,7 +3223,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Authorization policy model",
         scenario = "Users, groups, roles, permissions, scoped grants, and policy evaluation.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.3f,
         source = """
             classDiagram
@@ -3082,7 +3281,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Notification delivery platform",
         scenario = "Templates, channel adapters, preferences, routing, retries, and delivery receipts.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -3135,7 +3334,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Collaborative document editor",
         scenario = "Documents, blocks, operations, revisions, presence, and conflict transformation.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             classDiagram
@@ -3196,7 +3395,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Order fulfillment lifecycle",
         scenario = "Payment, allocation, shipment, cancellation, return, and refund states.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.1f,
         source = """
             stateDiagram-v2
@@ -3232,7 +3431,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Payment transaction state machine",
         scenario = "Authorization, challenge, capture, partial refund, reversal, and terminal outcomes.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.1f,
         source = """
             stateDiagram-v2
@@ -3269,7 +3468,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Progressive deployment rollout",
         scenario = "Build, canary, staged rollout, automated rollback, and incident review.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.05f,
         source = """
             stateDiagram-v2
@@ -3309,7 +3508,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Media processing pipeline",
         scenario = "Upload verification, concurrent transforms, moderation, publication, and retry.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.05f,
         source = """
             stateDiagram-v2
@@ -3347,7 +3546,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Support ticket lifecycle",
         scenario = "Automated triage, ownership, customer waiting, escalation, and reopening.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.1f,
         source = """
             stateDiagram-v2
@@ -3378,7 +3577,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Commerce platform data model",
         scenario = "Customers, catalog, orders, payments, fulfillment, promotions, and returns.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -3451,7 +3650,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Learning platform data model",
         scenario = "Courses, modules, lessons, enrollment, progress, assessment, and certificates.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -3523,7 +3722,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Messaging system data model",
         scenario = "Conversations, membership, messages, reactions, attachments, reads, and devices.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -3585,7 +3784,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Subscription billing data model",
         scenario = "Accounts, plans, subscriptions, invoices, line items, payments, and entitlements.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -3650,7 +3849,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Warehouse inventory network",
         scenario = "Warehouses, bins, stock, suppliers, purchase orders, transfers, and reservations.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.25f,
         source = """
             erDiagram
@@ -4177,7 +4376,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Checkout assurance model",
         scenario = "Payment requirements trace from system goals through interfaces and verification evidence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             requirementDiagram
@@ -4229,7 +4428,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Device safety controls",
         scenario = "Safety requirements decompose into physical limits, design constraints, and test evidence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.45f,
         source = """
             requirementDiagram
@@ -4281,7 +4480,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Data retention traceability",
         scenario = "Policy, storage, deletion, and audit requirements remain traceable across implementation assets.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             requirementDiagram
@@ -4333,7 +4532,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Regional failover evidence",
         scenario = "Availability targets connect to routing, recovery, observability, and validation evidence.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             requirementDiagram
@@ -4593,11 +4792,210 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_mindmap_product_strategy",
+        diagramId = "mindmap",
+        title = "Product strategy hierarchy",
+        scenario = "A product strategy connects outcomes, customer needs, platform investments, and measurable signals.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Product strategy
+            config:
+              layout: cose-bilkent
+            ---
+            mindmap
+              root((Product strategy))
+                Customer outcomes
+                  Faster onboarding
+                    Guided setup
+                    Progressive profiling
+                  Reliable daily use
+                    Offline recovery
+                    Clear error states
+                Platform investments
+                  Shared design system
+                    Accessible components
+                    Cross-platform tokens
+                  Delivery automation
+                    Reproducible builds
+                    Release evidence
+                Success signals
+                  Activation rate
+                  Task completion
+                  Support volume
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_incident_response",
+        diagramId = "mindmap",
+        title = "Incident response responsibilities",
+        scenario = "A top-to-bottom response map assigns detection, mitigation, communication, and follow-up work.",
+        layout = "dagre",
+        initialAspectRatio = 1.25f,
+        source = """
+            ---
+            title: Incident response
+            config:
+              layout: dagre
+            ---
+            mindmap
+              root((Production incident))
+                Detect
+                  Customer reports
+                  Service alerts
+                  Dependency health
+                Assess
+                  Impact
+                  Severity
+                  Ownership
+                Mitigate
+                  Roll back
+                  Shift traffic
+                  Disable feature
+                Communicate
+                  Status updates
+                  Stakeholder brief
+                Learn
+                  Timeline
+                  Root cause
+                  Follow-up actions
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_platform_architecture",
+        diagramId = "mindmap",
+        title = "Platform architecture map",
+        scenario = "A bidirectional tidy tree presents client and service concerns around one platform boundary.",
+        layout = "tidy-tree",
+        initialAspectRatio = 1.9f,
+        source = """
+            ---
+            title: Platform architecture
+            config:
+              layout: tidy-tree
+            ---
+            mindmap
+              root((Shared platform))
+                Clients
+                  Android
+                    Offline cache
+                    Background sync
+                  iOS
+                    Secure storage
+                    Push updates
+                  Web
+                    Progressive loading
+                    Browser storage
+                Services
+                  Gateway
+                    Authentication
+                    Rate limits
+                  Domain APIs
+                    Commands
+                    Queries
+                  Data
+                    Primary store
+                    Event archive
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_shape_and_text_matrix",
+        diagramId = "mindmap",
+        title = "Shape and text matrix",
+        scenario = "Every supported Mindmap shape carries markdown, wrapped, escaped, or Unicode labels.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.7f,
+        source = """
+            ---
+            config:
+              layout: cose-bilkent
+              mindmap:
+                maxNodeWidth: 130
+            ---
+            mindmap
+              root((**Evidence map**))
+                default branch
+                  Plain label
+                square[Square &amp; entities]
+                  long[A deliberately long label that wraps inside a square node]
+                rounded(*Rounded emphasis*)
+                  child(Secondary rounded node)
+                circle((Circle))
+                  unicode((品質確認))
+                cloud)Cloud(
+                  weather)Operational signal(
+                bang))Bang((
+                  alert))Escalation((
+                hex{{Hexagon}}
+                  gate{{Release gate}}
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_mindmap_governance_theme",
+        diagramId = "mindmap",
+        title = "Themed governance map",
+        scenario = "Custom theme variables, sizing controls, comments, and a deep governance hierarchy render together.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            ---
+            title: Delivery governance
+            config:
+              layout: dagre
+              mindmap:
+                padding: 18
+                maxNodeWidth: 140
+                useMaxWidth: false
+              theme: base
+              themeVariables:
+                mainBkg: "#f8fafc"
+                nodeBorder: "#334155"
+                git0: "#0f766e"
+                gitBranchLabel0: "#ffffff"
+                cScale0: "#ccfbf1"
+                cScale1: "#dbeafe"
+                cScale2: "#fef3c7"
+                cScaleLabel0: "#134e4a"
+                cScaleLabel1: "#1e3a8a"
+                cScaleLabel2: "#78350f"
+            ---
+            mindmap
+              root((Delivery governance))
+                Definition
+                  Scope
+                  Owners
+                  Acceptance criteria
+                Verification
+                  Automated checks
+                    Unit tests
+                    Integration tests
+                  Manual review
+                    Visual evidence
+                    Accessibility
+                Release
+                  %% The release branch intentionally includes operational controls.
+                  Change approval
+                  Rollback plan
+                  Monitoring window
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "prod_flowchart_orchestration_identity",
         diagramId = "flowchart",
         title = "Identity verification orchestration",
         scenario = "Identity checks fan out to policy and risk services before approval.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart LR
@@ -4620,7 +5018,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Refund orchestration",
         scenario = "A refund coordinates eligibility, ledger, payment, and notification work.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart LR
@@ -4681,7 +5079,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Regional data domains",
         scenario = "Nested regional and storage domains preserve local layout directions.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart TB
@@ -4706,7 +5104,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Media processing domains",
         scenario = "Nested ingest and processing domains coordinate media derivatives.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.65f,
         source = """
             flowchart TB
@@ -4731,7 +5129,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Document control shape catalog",
         scenario = "Document workflow exercises advanced Mermaid shape declarations.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             ---
@@ -4757,7 +5155,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "flowchart",
         title = "Network control shape catalog",
         scenario = "Network workflow exercises advanced Mermaid shape declarations.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             ---
@@ -5197,7 +5595,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Billing domain model",
         scenario = "Invoices, line items, and payment attempts form a typed aggregate.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.45f,
         source = """
             classDiagram
@@ -5226,7 +5624,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Learning domain model",
         scenario = "Courses, lessons, and enrollment services form a typed aggregate.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.45f,
         source = """
             classDiagram
@@ -5255,7 +5653,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Observability namespace tree",
         scenario = "Nested namespaces separate collection and storage responsibilities.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             classDiagram
@@ -5277,7 +5675,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Commerce namespace tree",
         scenario = "Nested namespaces separate checkout and fulfillment responsibilities.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             classDiagram
@@ -5345,7 +5743,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Policy metadata model",
         scenario = "Styled policy classes include Markdown labels and accessibility metadata.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.4f,
         source = """
             ---
@@ -5368,7 +5766,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "class",
         title = "Routing metadata model",
         scenario = "Styled routing classes include Markdown labels and accessibility metadata.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.4f,
         source = """
             ---
@@ -5391,7 +5789,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Document lifecycle",
         scenario = "A nested review lifecycle returns drafts for revision before publication.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             stateDiagram-v2
@@ -5418,7 +5816,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Shipment lifecycle",
         scenario = "A nested dispatch lifecycle returns parcels for correction before delivery.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             stateDiagram-v2
@@ -5445,7 +5843,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Deployment decision and synchronization",
         scenario = "A deployment choice fans out validation before synchronized rollout.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             stateDiagram-v2
@@ -5472,7 +5870,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Migration decision and synchronization",
         scenario = "A migration choice fans out checks before synchronized cutover.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             stateDiagram-v2
@@ -5499,7 +5897,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Approval state annotations",
         scenario = "Directional states use notes, classes, and a sanitized link.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             stateDiagram-v2
@@ -5522,7 +5920,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Retention state annotations",
         scenario = "Directional states use notes, classes, and a sanitized link.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             stateDiagram-v2
@@ -5545,7 +5943,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Localization workflow metadata",
         scenario = "Unicode and Markdown state labels retain accessibility metadata.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             ---
@@ -5568,7 +5966,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "state",
         title = "Compliance workflow metadata",
         scenario = "Unicode and Markdown state labels retain accessibility metadata.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.35f,
         source = """
             ---
@@ -5591,7 +5989,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Support data model",
         scenario = "Tickets and messages exercise aliases, keys, comments, and optional types.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.45f,
         source = """
             erDiagram
@@ -5616,7 +6014,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Catalog data model",
         scenario = "Products and variants exercise aliases, keys, comments, and optional types.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.45f,
         source = """
             erDiagram
@@ -5641,7 +6039,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Tenant relationship cardinalities",
         scenario = "Tenant resources cover optional, singular, and plural cardinalities.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             erDiagram
@@ -5659,7 +6057,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Workspace relationship cardinalities",
         scenario = "Workspace resources cover optional, singular, and plural cardinalities.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             erDiagram
@@ -5677,7 +6075,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Health data domains",
         scenario = "Nested clinical domains preserve direction and Unicode aliases.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             erDiagram
@@ -5701,7 +6099,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Travel data domains",
         scenario = "Nested booking domains preserve direction and Unicode aliases.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             erDiagram
@@ -5725,7 +6123,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Governance metadata model",
         scenario = "Styled governance entities use frontmatter layout and accessibility metadata.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.5f,
         source = """
             ---
@@ -5733,7 +6131,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
             accTitle: Governance catalog
             accDescr: Entity relationship evidence
             config:
-              layout: elk
+              layout: dagre
             ---
             erDiagram
               DATA_ASSET ||--o{ POLICY_BINDING : governs
@@ -5748,7 +6146,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "er",
         title = "Feature flag metadata model",
         scenario = "Styled feature entities use frontmatter layout and accessibility metadata.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.5f,
         source = """
             ---
@@ -5756,7 +6154,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
             accTitle: Feature flag catalog
             accDescr: Entity relationship evidence
             config:
-              layout: elk
+              layout: dagre
             ---
             erDiagram
               FEATURE_FLAG ||--o{ ROLLOUT_RULE : governs
@@ -6375,7 +6773,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Device requirement type matrix",
         scenario = "A device model exercises every requirement type and all typed fields.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             requirementDiagram
@@ -6431,14 +6829,14 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               verification_evidence - verifies -> physical_goal
         """.trimIndent(),
         expectedTexts = listOf("Operate safely in every supported mode", "Independent validation laboratory"),
-        features = setOf("requirement-types", "fields", "risk-levels", "verification-methods", "elements", "directions", "elk-layout"),
+        features = setOf("requirement-types", "fields", "risk-levels", "verification-methods", "elements", "directions", "dagre-layout"),
     ),
     StabilityCorpusCase(
         id = "prod_requirement_typed_fields_checkout",
         diagramId = "requirement",
         title = "Checkout requirement type matrix",
         scenario = "A checkout model exercises every requirement type and all typed fields.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.7f,
         source = """
             requirementDiagram
@@ -6494,7 +6892,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               verification_evidence - verifies -> physical_goal
         """.trimIndent(),
         expectedTexts = listOf("Complete checkout without duplicate orders", "Payment contract suite"),
-        features = setOf("requirement-types", "fields", "risk-levels", "verification-methods", "elements", "directions", "elk-layout"),
+        features = setOf("requirement-types", "fields", "risk-levels", "verification-methods", "elements", "directions", "dagre-layout"),
     ),
     StabilityCorpusCase(
         id = "prod_requirement_relation_matrix_replication",
@@ -6591,13 +6989,13 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         diagramId = "requirement",
         title = "Authorization requirement metadata",
         scenario = "Authorization requirements preserve titles, accessibility, Markdown, and Unicode.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             ---
             title: Authorization requirements
             config:
-              layout: elk
+              layout: dagre
               theme: default
               look: classic
             ---
@@ -6628,20 +7026,20 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               responsible_component - satisfies -> primary_requirement
         """.trimIndent(),
         expectedTexts = listOf("Authorization requirements", "Authorize every protected request", "Préserver la décision de sécurité"),
-        features = setOf("directions", "elk-layout", "frontmatter-title", "accessibility", "markdown", "unicode", "comments"),
+        features = setOf("directions", "dagre-layout", "frontmatter-title", "accessibility", "markdown", "unicode", "comments"),
     ),
     StabilityCorpusCase(
         id = "prod_requirement_metadata_layout_continuity",
         diagramId = "requirement",
         title = "Continuity requirement metadata",
         scenario = "Continuity requirements preserve titles, accessibility, Markdown, and Unicode.",
-        layout = "elk",
+        layout = "dagre",
         initialAspectRatio = 1.55f,
         source = """
             ---
             title: Continuity requirements
             config:
-              layout: elk
+              layout: dagre
               theme: default
               look: classic
             ---
@@ -6672,7 +7070,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               responsible_component - satisfies -> primary_requirement
         """.trimIndent(),
         expectedTexts = listOf("Continuity requirements", "Restore every critical service", "Vérifier la reprise régionale"),
-        features = setOf("directions", "elk-layout", "frontmatter-title", "accessibility", "markdown", "unicode", "comments"),
+        features = setOf("directions", "dagre-layout", "frontmatter-title", "accessibility", "markdown", "unicode", "comments"),
     ),
     StabilityCorpusCase(
         id = "prod_requirement_styled_theme_privacy",
@@ -7008,6 +7406,292 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Compact release history", "compact"),
         features = setOf("branches", "merges", "visibility-config", "frontmatter-config", "title", "accessibility", "theme-variables"),
     ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_hierarchy_service_ownership",
+        diagramId = "mindmap",
+        title = "Service ownership hierarchy",
+        scenario = "Service ownership spans client, API, data, and operations responsibilities.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Service ownership hierarchy
+            config:
+              layout: cose-bilkent
+            ---
+            mindmap
+              root((Service ownership))
+                Client experience
+                    Discovery
+                          Interviews
+                      Synthesis
+                            Release verification
+                Delivery
+                  Plan
+                  Build
+                  Verify
+                    品質確認
+                Operations
+                  Ownership
+                  Monitoring
+                  Improvement
+                %% Comments do not create hierarchy nodes.
+        """.trimIndent(),
+        expectedTexts = listOf("Service ownership", "Release verification", "品質確認"),
+        features = setOf("hierarchy", "irregular-indentation", "deep-hierarchy", "wide-hierarchy", "comments", "cose-bilkent-layout", "unicode"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_hierarchy_research_program",
+        diagramId = "mindmap",
+        title = "Research program hierarchy",
+        scenario = "A research program connects questions, methods, evidence, and publication work.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Research program hierarchy
+            config:
+              layout: cose-bilkent
+            ---
+            mindmap
+              root((Research program))
+                Research questions
+                    Discovery
+                          Interviews
+                      Synthesis
+                            Independent replication
+                Delivery
+                  Plan
+                  Build
+                  Verify
+                    結果確認
+                Operations
+                  Ownership
+                  Monitoring
+                  Improvement
+                %% Comments do not create hierarchy nodes.
+        """.trimIndent(),
+        expectedTexts = listOf("Research program", "Independent replication", "結果確認"),
+        features = setOf("hierarchy", "irregular-indentation", "deep-hierarchy", "wide-hierarchy", "comments", "cose-bilkent-layout", "unicode"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_shape_text_delivery",
+        diagramId = "mindmap",
+        title = "Delivery shape vocabulary",
+        scenario = "Delivery concepts exercise every supported shape and text representation.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.7f,
+        source = """
+            ---
+            config:
+              layout: cose-bilkent
+              mindmap:
+                maxNodeWidth: 135
+            ---
+            mindmap
+              root((Delivery model))
+                Default branch
+                  **Validated**
+                square[Build &amp; sign]
+                  squareChild[Square child]
+                rounded(Rounded)
+                  wrapped(A long rounded label that wraps at the configured width)
+                circle((Circle))
+                  circleChild((Release<br/>evidence))
+                cloud)Cloud(
+                  cloudChild)Cloud child(
+                bang))Bang((
+                  bangChild))Bang child((
+                hex{{Hexagon}}
+                  hexChild{{Hexagon child}}
+        """.trimIndent(),
+        expectedTexts = listOf("Delivery model", "Validated", "Hexagon child"),
+        features = setOf("default-shape", "square-shape", "rounded-shape", "circle-shape", "cloud-shape", "bang-shape", "hexagon-shape", "markdown", "html-breaks", "entities"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_shape_text_operations",
+        diagramId = "mindmap",
+        title = "Operations shape vocabulary",
+        scenario = "Operational concepts exercise every supported shape and text representation.",
+        layout = "cose-bilkent",
+        initialAspectRatio = 1.7f,
+        source = """
+            ---
+            config:
+              layout: cose-bilkent
+              mindmap:
+                maxNodeWidth: 135
+            ---
+            mindmap
+              root((Operations model))
+                Default branch
+                  **Observed**
+                square[Alert &amp; respond]
+                  squareChild[Square child]
+                rounded(Rounded)
+                  wrapped(A long rounded label that wraps at the configured width)
+                circle((Circle))
+                  circleChild((Recovery<br/>evidence))
+                cloud)Cloud(
+                  cloudChild)Cloud child(
+                bang))Bang((
+                  bangChild))Bang child((
+                hex{{Hexagon}}
+                  hexChild{{Hexagon child}}
+        """.trimIndent(),
+        expectedTexts = listOf("Operations model", "Observed", "Hexagon child"),
+        features = setOf("default-shape", "square-shape", "rounded-shape", "circle-shape", "cloud-shape", "bang-shape", "hexagon-shape", "markdown", "html-breaks", "entities"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_layout_dagre_pipeline",
+        diagramId = "mindmap",
+        title = "Dagre delivery pipeline",
+        scenario = "A measured top-to-bottom hierarchy preserves Dagre ranks and routed edges.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            ---
+            title: Dagre delivery pipeline
+            config:
+              layout: dagre
+            ---
+            mindmap
+              root((Delivery pipeline))
+                Inputs
+                  Primary
+                    Contract
+                    Validation
+                  Secondary
+                    Fallback
+                    Recovery
+                Outputs
+                  Processing
+                    Commands
+                    Queries
+                  Storage
+                    Operational
+                    Analytical
+        """.trimIndent(),
+        expectedTexts = listOf("Delivery pipeline", "Inputs", "Outputs"),
+        features = setOf("hierarchy", "dagre-layout"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_layout_tidy_architecture",
+        diagramId = "mindmap",
+        title = "Tidy-tree architecture map",
+        scenario = "A bidirectional tidy tree balances architecture branches around the root.",
+        layout = "tidy-tree",
+        initialAspectRatio = 1.55f,
+        source = """
+            ---
+            title: Tidy-tree architecture map
+            config:
+              layout: tidy-tree
+            ---
+            mindmap
+              root((Architecture))
+                Clients
+                  Primary
+                    Contract
+                    Validation
+                  Secondary
+                    Fallback
+                    Recovery
+                Services
+                  Processing
+                    Commands
+                    Queries
+                  Storage
+                    Operational
+                    Analytical
+        """.trimIndent(),
+        expectedTexts = listOf("Architecture", "Clients", "Services"),
+        features = setOf("hierarchy", "tidy-tree-layout"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_configured_theme_governance",
+        diagramId = "mindmap",
+        title = "Configured governance map",
+        scenario = "Governance labels use explicit sizing and a restrained custom palette.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            ---
+            title: Configured governance map
+            config:
+              layout: dagre
+              mindmap:
+                padding: 16
+                maxNodeWidth: 125
+                useMaxWidth: false
+              theme: base
+              themeVariables:
+                mainBkg: "#f8fafc"
+                nodeBorder: "#334155"
+                git0: "#0f766e"
+                gitBranchLabel0: "#ffffff"
+                cScale0: "#ccfbf1"
+                cScale1: "#dbeafe"
+                cScaleLabel0: "#134e4a"
+                cScaleLabel1: "#1e3a8a"
+            ---
+            mindmap
+              root((**Governance**))
+                Architecture review
+                  Evidence inventory
+                  Decision record
+                Release review
+                  Automated validation
+                  Manual confirmation
+                Follow-up
+                  Named owners
+                  Due dates
+        """.trimIndent(),
+        expectedTexts = listOf("Governance", "Architecture review", "Release review"),
+        features = setOf("frontmatter-title", "sizing-config", "theme-variables", "dagre-layout", "markdown"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_mindmap_configured_theme_readiness",
+        diagramId = "mindmap",
+        title = "Configured readiness map",
+        scenario = "Readiness labels use explicit sizing and a contrasting custom palette.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            ---
+            title: Configured readiness map
+            config:
+              layout: dagre
+              mindmap:
+                padding: 16
+                maxNodeWidth: 125
+                useMaxWidth: false
+              theme: base
+              themeVariables:
+                mainBkg: "#f8fafc"
+                nodeBorder: "#334155"
+                git0: "#1d4ed8"
+                gitBranchLabel0: "#ffffff"
+                cScale0: "#ccfbf1"
+                cScale1: "#dbeafe"
+                cScaleLabel0: "#134e4a"
+                cScaleLabel1: "#1e3a8a"
+            ---
+            mindmap
+              root((**Operational readiness**))
+                Service checks
+                  Evidence inventory
+                  Decision record
+                Recovery checks
+                  Automated validation
+                  Manual confirmation
+                Follow-up
+                  Named owners
+                  Due dates
+        """.trimIndent(),
+        expectedTexts = listOf("Operational readiness", "Service checks", "Recovery checks"),
+        features = setOf("frontmatter-title", "sizing-config", "theme-variables", "dagre-layout", "markdown"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -7047,6 +7731,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "journey",
             "requirement",
             "gitgraph",
+            "mindmap",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -7094,14 +7779,14 @@ private fun addVisualParityVariation(
     label: String,
     ordinal: Int,
 ): String = when (kind) {
-    "flowchart" -> "${source.trimEnd()}\n  $evidenceId[\"$label\"]\n"
+    "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "sequence" -> insertAfterDeclaration(
         source = source,
         declaration = "sequenceDiagram",
         line = "  participant $evidenceId as $label",
     )
-    "class" -> "${source.trimEnd()}\n  class $evidenceId[\"$label\"]\n"
+    "class" -> appendClassEvidence(source, evidenceId, label)
     "state" -> "${source.trimEnd()}\n  state \"$label\" as $evidenceId\n"
     "er" -> "${source.trimEnd()}\n  $evidenceId[\"$label\"]\n"
     "gantt" -> replaceOrInsertVisualParityTitle(source, "gantt", label)
@@ -7117,8 +7802,74 @@ private fun addVisualParityVariation(
         "  }\n"
     "gitgraph" -> "${source.trimEnd()}\n" +
         "  commit id: \"$evidenceId\" tag: \"$label\"\n"
+    "mindmap" -> "${source.trimEnd()}\n    $evidenceId[\"$label\"]\n"
     else -> source
 }
+
+private fun appendFlowchartEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val anchorId = findFirstDiagramIdentifier(
+        source = source,
+        expectedRestPrefixes = listOf("[", "(", "{", "@", "-", "o-", "x-", "<", "="),
+    ) ?: return source
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    return "${source.trimEnd()}\n  $anchorId -.-> $evidenceId[\"$escapedLabel\"]\n"
+}
+
+private fun appendClassEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    var anchorId: String? = null
+    for (line in source.lines()) {
+        val trimmed = line.trimStart()
+        if (!trimmed.startsWith("class ")) continue
+        val identifier = trimmed.removePrefix("class ")
+            .trimStart()
+            .takeWhile { character ->
+                character.isLetterOrDigit() || character == '_' || character == '-'
+            }
+        if (identifier.isNotEmpty()) {
+            anchorId = identifier
+            break
+        }
+    }
+    val resolvedAnchorId = anchorId ?: return source
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    return "${source.trimEnd()}\n" +
+        "  class $evidenceId[\"$escapedLabel\"]\n" +
+        "  $resolvedAnchorId ..> $evidenceId : parity\n"
+}
+
+private fun findFirstDiagramIdentifier(
+    source: String,
+    expectedRestPrefixes: List<String>,
+): String? {
+    for (line in source.lines()) {
+        val trimmed = line.trimStart()
+        val identifier = trimmed.takeWhile { character ->
+            character.isLetterOrDigit() || character == '_' || character == '-'
+        }
+        if (
+            identifier.isEmpty() ||
+            (!identifier.first().isLetter() && identifier.first() != '_')
+        ) {
+            continue
+        }
+        val rest = trimmed.drop(identifier.length).trimStart()
+        if (expectedRestPrefixes.any(rest::startsWith)) {
+            return identifier
+        }
+    }
+    return null
+}
+
+private fun escapeQuotedVisualParityLabel(label: String): String =
+    label.replace("\\", "\\\\").replace("\"", "\\\"")
 
 private fun replaceOrInsertVisualParityTitle(
     source: String,

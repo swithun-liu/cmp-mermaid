@@ -42,9 +42,9 @@ Jison production so an upstream grammar diff can be translated incrementally.
 | `SceneGraph.kt` | Mermaid unified-renderer primitives | Requirement marker types and platform-independent geometry |
 | `mermaid-compose/.../MermaidDiagram.kt` | SVG path and marker painting | Native Canvas paths, text, dividers, and Requirement marker geometry |
 
-Requirement diagrams reuse the existing translations of Mermaid's unified
-Dagre and ELK layout adapters. They do not introduce a separate approximate
-layout algorithm.
+Requirement diagrams reuse the existing translation of Mermaid's unified
+Dagre adapter. ELK selectors cross the shared explicit unsupported boundary;
+they are not silently approximated with Dagre.
 
 ## Locked Upstream Hashes
 

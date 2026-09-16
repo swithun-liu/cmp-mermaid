@@ -7,7 +7,7 @@ import kotlin.test.assertIs
 
 class MermaidPreprocessorTest {
     @Test
-    fun usesMermaid12DefaultElkLayout() {
+    fun usesNativeDagreDefaultWithoutAJavaScriptRuntime() {
         val result = MermaidPreprocessor.preprocess(
             """
                 flowchart LR
@@ -20,7 +20,7 @@ class MermaidPreprocessorTest {
             processed.config.applyTo(MermaidRenderOptions()),
         ).value
 
-        assertEquals("elk", options.layout)
+        assertEquals("dagre", options.layout)
     }
 
     @Test

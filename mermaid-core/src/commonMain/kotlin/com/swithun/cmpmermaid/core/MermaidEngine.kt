@@ -6,6 +6,7 @@ import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
 import com.swithun.cmpmermaid.core.gitgraph.GitGraphPlugin
 import com.swithun.cmpmermaid.core.journey.JourneyPlugin
+import com.swithun.cmpmermaid.core.mindmap.MindmapPlugin
 import com.swithun.cmpmermaid.core.pie.PiePlugin
 import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
@@ -44,6 +45,7 @@ class MermaidEngine(
         JourneyPlugin(),
         RequirementPlugin(),
         GitGraphPlugin(),
+        MindmapPlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {

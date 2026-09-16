@@ -15,9 +15,6 @@ import com.swithun.cmpmermaid.core.SceneAssetKind
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.net.HttpURLConnection
-import java.net.URL
 import kotlin.math.ceil
 import kotlin.math.min
 
@@ -26,10 +23,14 @@ internal actual fun rememberPlatformMermaidAssetProvider(): MermaidAssetProvider
     remember { AndroidMermaidAssetProvider() }
 
 /**
- * Loads Android bitmap and SVG assets. Network sources require explicit opt-in.
+ * Loads embedded Android bitmap and SVG assets without network access.
+ *
+ * [networkAccess] is retained for compatibility and does not enable network I/O.
  */
+@Suppress("DEPRECATION")
 class AndroidMermaidAssetProvider(
-    private val networkAccess: MermaidNetworkAccess = MermaidNetworkAccess.Disabled,
+    @Suppress("UNUSED_PARAMETER")
+    networkAccess: MermaidNetworkAccess = MermaidNetworkAccess.Disabled,
 ) : MermaidAssetProvider {
     override suspend fun resolve(
         asset: SceneAsset,
@@ -61,76 +62,15 @@ class AndroidMermaidAssetProvider(
             normalized.startsWith("data:", ignoreCase = true) -> decodeDataUri(normalized)
             normalized.startsWith("https://", ignoreCase = true) ||
                 normalized.startsWith("http://", ignoreCase = true) -> {
-                if (networkAccess.allows(normalized)) {
-                    loadHttp(normalized)
-                } else {
-                    GMResult.Err(
-                        MermaidAssetError.UnsupportedSource(
-                            source = source,
-                            message = "Network image loading is disabled; inject an " +
-                                "AndroidMermaidAssetProvider with HttpAndHttps access to enable it",
-                        ),
-                    )
-                }
+                GMResult.Err(
+                    MermaidAssetError.UnsupportedSource(
+                        source = source,
+                        message = "Network image loading is not part of mermaid-compose; " +
+                            "inject a host MermaidAssetProvider for external assets",
+                    ),
+                )
             }
             else -> GMResult.Err(MermaidAssetError.UnsupportedSource(source))
-        }
-    }
-
-    private fun loadHttp(
-        source: String,
-    ): GMResult<LoadedBytes, MermaidAssetError> {
-        val connection = try {
-            URL(source).openConnection() as? HttpURLConnection
-        } catch (failure: Throwable) {
-            return loadFailure(source, failure.message)
-        } ?: return GMResult.Err(MermaidAssetError.UnsupportedSource(source))
-        return try {
-            connection.instanceFollowRedirects = true
-            connection.connectTimeout = CONNECT_TIMEOUT_MILLIS
-            connection.readTimeout = READ_TIMEOUT_MILLIS
-            connection.setRequestProperty("Accept", "image/*")
-            val status = connection.responseCode
-            if (status !in 200..299) {
-                return loadFailure(source, "HTTP $status")
-            }
-            val finalProtocol = connection.url.protocol.lowercase()
-            if (finalProtocol != "http" && finalProtocol != "https") {
-                return GMResult.Err(MermaidAssetError.UnsupportedSource(connection.url.toString()))
-            }
-            val declaredLength = connection.contentLengthLong
-            if (declaredLength > MAX_ASSET_BYTES) {
-                return loadFailure(source, "Asset exceeds the ${MAX_ASSET_BYTES / 1_048_576} MiB limit")
-            }
-            val output = ByteArrayOutputStream(
-                declaredLength.takeIf { it in 1..MAX_ASSET_BYTES }?.toInt() ?: DEFAULT_BUFFER_SIZE,
-            )
-            connection.inputStream.use { input ->
-                val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-                var total = 0
-                while (true) {
-                    val count = input.read(buffer)
-                    if (count < 0) break
-                    total += count
-                    if (total > MAX_ASSET_BYTES) {
-                        return loadFailure(
-                            source,
-                            "Asset exceeds the ${MAX_ASSET_BYTES / 1_048_576} MiB limit",
-                        )
-                    }
-                    output.write(buffer, 0, count)
-                }
-            }
-            GMResult.Ok(
-                LoadedBytes(
-                    bytes = output.toByteArray(),
-                    contentType = connection.contentType?.substringBefore(';'),
-                ),
-            )
-        } catch (failure: Throwable) {
-            loadFailure(source, failure.message)
-        } finally {
-            connection.disconnect()
         }
     }
 
@@ -287,8 +227,6 @@ class AndroidMermaidAssetProvider(
 
     private companion object {
         const val DATA_PREFIX_LENGTH = 5
-        const val CONNECT_TIMEOUT_MILLIS = 10_000
-        const val READ_TIMEOUT_MILLIS = 15_000
         const val MAX_ASSET_BYTES = 8 * 1_048_576
         const val MAX_DECODE_DIMENSION = 4_096
         const val SVG_SNIFF_BYTES = 1_024

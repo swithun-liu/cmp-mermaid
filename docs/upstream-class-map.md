@@ -8,12 +8,11 @@
 | Mermaid source commit | `98a0945418c76238f15df2afaddbba4272656c3b` |
 | Jison runtime | `0.4.18` |
 | Marked | `16.4.2` |
-| elkjs | `0.9.3` |
 | Native renderer | Compose Multiplatform Canvas |
 
 The production Class path is Kotlin in `commonMain`. It does not execute
-Mermaid.js or require a WebView. ELK uses the same locked QuickJS worker as the
-translated Flowchart layout path.
+Mermaid.js, require a WebView, or embed a JavaScript engine. Dagre is the
+Native default; ELK selectors are recognized and rejected explicitly.
 
 ## Parser And Database
 
@@ -34,13 +33,13 @@ production so an upstream grammar diff can be translated incrementally.
 
 | Kotlin source | Upstream source | Translation boundary |
 | --- | --- | --- |
-| `classdiagram/ClassLayout.kt` | `classDb.getData()` and `classRenderer-v3-unified.ts` | Unified renderer data, default ELK selection, Dagre override, SceneGraph orchestration, title, interactions, and normalization |
+| `classdiagram/ClassLayout.kt` | `classDb.getData()` and `classRenderer-v3-unified.ts` | Unified renderer data, Native Dagre selection, SceneGraph orchestration, title, interactions, and normalization |
 | `classdiagram/ClassLayout.kt` | `rendering-elements/shapes/classBox.ts` and `diagrams/class/shapeUtil.ts` | Class measurement, annotations, compartments, dividers, empty boxes, members, and methods |
 | `classdiagram/ClassLayout.kt` | `rendering-util/rendering-elements/shapes/note.ts` | Rectangular notes, attached note edges, and note colors |
 | `classdiagram/ClassLayout.kt` | `rendering-elements/edges.js`, `utils/lineWithOffset.ts` | Relations, center labels, terminal cardinalities, self-relations, and marker-aware offsets |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
-| `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Class and namespace placement using translated Graphlib/Dagre |
-| `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Default Class placement using the locked `elkjs@0.9.3` worker |
+| `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Default Class and namespace placement using translated Graphlib/Dagre |
+| `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Retained mapping boundary that returns structured `UnsupportedFeature` |
 | `flowchart/upstream/mermaid/MermaidEdgePathPort.kt` | `edges.js` and `lineWithOffset.ts` | Curves and endpoint correction |
 | `flowchart/upstream/mermaid/MermaidMarkerPort.kt` | `rendering-elements/markers.js` | Class marker endpoint offsets |
 | `SceneGraph.kt` | Mermaid Class marker names | Typed aggregation, composition, extension, dependency, and lollipop variants |
@@ -80,11 +79,11 @@ production so an upstream grammar diff can be translated incrementally.
   labels, cardinalities, notes, namespaces, interactions, Markdown, structured
   unsupported errors, layout selection, title, and accessibility metadata.
 - `ClassStressTest` covers Mermaid's relation matrix and 256 deterministic
-  random legal diagrams under Dagre and ELK.
+  random legal diagrams under Dagre.
 - `OfficialClassDocumentationTest` executes all 38 examples extracted from
   Mermaid's Class documentation.
 - The Android gallery compares 27 identical sources against official Mermaid
-  `12.0.0` ELK output.
+  `12.0.0` Dagre output.
 
 ## Upgrade Procedure
 
@@ -98,6 +97,6 @@ production so an upstream grammar diff can be translated incrementally.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
 6. Install the Android sample and capture all 27 Native/Official Class pairs
-   with ELK.
+   with Dagre.
 7. Review the contact sheets and update this map and the compatibility matrix
    before publishing.

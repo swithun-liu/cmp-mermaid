@@ -8,12 +8,11 @@
 | Mermaid source commit | `98a0945418c76238f15df2afaddbba4272656c3b` |
 | Jison runtime | `0.4.18` |
 | Marked | `16.4.2` |
-| elkjs | `0.9.3` |
 | Native renderer | Compose Multiplatform Canvas |
 
 The production ER path is Kotlin in `commonMain`. It does not execute
-Mermaid.js or require a WebView. ELK uses the same locked QuickJS worker as the
-translated Flowchart, Class, and State layout paths.
+Mermaid.js, require a WebView, or embed a JavaScript engine. Dagre is the
+Native default; ELK selectors are recognized and rejected explicitly.
 
 ## Parser And Database
 
@@ -38,8 +37,8 @@ diff can be translated incrementally.
 | `erdiagram/ErLayout.kt` | `rendering-elements/shapes/erBox.ts` | Entity header, alternating attribute rows, type/name/key/comment columns, dividers, padding, and minimum dimensions |
 | `erdiagram/ErLayout.kt` | `erRenderer-unified.ts` and `styles.ts` | Theme colors, identifying and non-identifying lines, subgraph paint order, and ER configuration |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
-| `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Entity and subgraph placement, edge routing, and distinct routing for repeated self-relationships |
-| `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Mermaid 12 default ER placement using the locked `elkjs@0.9.3` worker |
+| `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Default entity and subgraph placement, edge routing, and distinct routing for repeated self-relationships |
+| `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Retained mapping boundary that returns structured `UnsupportedFeature` |
 | `flowchart/upstream/mermaid/MermaidEdgePathPort.kt` | `rendering-elements/edges.js` | Basis curves, endpoint correction, self-relationships, and relationship label anchors |
 | `flowchart/upstream/mermaid/MermaidMarkerPort.kt` | `rendering-elements/markers.js` | Marker offset behavior, including ER markers anchored at entity boundaries |
 | `SceneGraph.kt` | Mermaid ER relationship marker semantics | Typed crow-foot markers and marker background color |
@@ -89,8 +88,7 @@ diff can be translated incrementally.
 - `ErLayoutTest` covers tables, keys, comments, cardinalities, identification,
   `MD_PARENT`, styles, nested subgraph ordering, configuration, title, and
   accessibility.
-- `ErStressTest` renders 256 deterministic random legal diagrams under
-  alternating Dagre and ELK layouts.
+- `ErStressTest` renders 256 deterministic random legal diagrams under Dagre.
 - `MermaidEngineTest` protects distinct Dagre routes for repeated
   self-relationships.
 - `OfficialErDocumentationCases` executes all 24 examples extracted from
@@ -111,6 +109,6 @@ diff can be translated incrementally.
 4. Regenerate the 24 documentation fixtures and review their hash.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
-6. Capture all 256 Native/Official ER matrix pairs with ELK.
+6. Capture all 256 Native/Official ER matrix pairs with Dagre.
 7. Review the contact sheets and update this map and the compatibility matrix
    before publishing.

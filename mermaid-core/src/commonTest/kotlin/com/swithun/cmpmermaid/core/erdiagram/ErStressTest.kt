@@ -40,17 +40,16 @@ class ErStressTest {
     }
 
     @Test
-    fun rendersDeterministicRandomizedCorpusAcrossDagreAndElk() {
+    fun rendersDeterministicRandomizedCorpusWithDagre() {
         val random = Random(12_00_00)
         repeat(RANDOM_CASE_COUNT) { index ->
             val generated = randomErDiagram(random, index)
-            val layout = if (index % 2 == 0) "dagre" else "elk"
             validateScene(
-                caseName = "random-$index-$layout",
+                caseName = "random-$index-dagre",
                 source = generated.source,
                 expectedEntities = generated.entityCount,
                 expectedRelationships = generated.relationshipCount,
-                scene = render(generated.source, layout),
+                scene = render(generated.source, "dagre"),
             )
         }
     }

@@ -28,7 +28,7 @@ discarded or rendered as a different feature.
 | Concurrency | Supported | `--` region splitting, nested region hierarchy, and dashed region boundaries |
 | Notes | Supported | Single-line and multiline rectangular notes, left/right edge direction, and dashed connectors |
 | Direction | Supported | TB, BT, LR, and RL at root and nested composite levels |
-| Layout | Supported | Mermaid's default ELK path, named ELK algorithms, and explicit Dagre override |
+| Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Shared Mermaid/Marked text path for states, descriptions, transitions, notes, and composite labels |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, `class`, inline `:::`, fill, stroke, dash, text, font, decoration, and line-height properties |
 | Themes | Supported | Mermaid 12 redux-color palette, note colors, group color slots, neo appearance, and shared native theme variables |
@@ -45,7 +45,8 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
 - Inline HTML links, images, SVG, MathML, or DOM layout elements inside labels.
 - `look: handDrawn`, because Mermaid implements it through roughjs.
 - CSS properties that the shared native style adapter cannot represent.
-- Layout engines other than the connected Dagre and ELK algorithms.
+- Layout engines other than Dagre, including `elk` and every named `elk.*`
+  algorithm.
 
 State links are represented as SceneGraph interactions. The host owns
 navigation; the native renderer does not execute arbitrary URLs or JavaScript.
@@ -56,11 +57,11 @@ navigation; the native renderer does not execute arbitrary URLs or JavaScript.
   through both the translated parser and native renderer in JVM tests.
 - Semantic tests cover descriptions, Markdown, start/end, choice, fork/join,
   composites, concurrency, notes, styles, links, title, and accessibility.
-- 256 deterministic random legal State diagrams alternate between Dagre and
-  ELK while checking finite bounds, shapes, routed edges, nested composites,
+- 256 deterministic random legal State diagrams use Dagre while checking
+  finite bounds, shapes, routed edges, nested composites,
   and concurrent regions.
 - 25 curated gallery cases render identical source through Native Compose and
-  Mermaid.js `12.0.0` with ELK.
+  Mermaid.js `12.0.0` with Dagre.
 - The 25 Native Android screenshots are compared side by side with 25
   Puppeteer-rendered official references.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
@@ -83,7 +84,7 @@ MERMAID_SOURCE_DIR=/path/to/mermaid-12 \
   npm run generate:state-doc-fixtures
 ```
 
-Render the 25 official ELK references:
+Render the 25 official Dagre references:
 
 ```bash
 cd tools/official-reference

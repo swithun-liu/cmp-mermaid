@@ -73,7 +73,7 @@ class FlowchartStressTest {
             ),
             expectedSubgraphs = 3,
         )
-        val scene = render(generated, layout = "elk", curve = "basis")
+        val scene = render(generated, layout = "dagre", curve = "basis")
         val subgraphs = scene.elements
             .filterIsInstance<SceneShape>()
             .filter { shape -> shape.id.startsWith("subgraph_") }
@@ -85,7 +85,7 @@ class FlowchartStressTest {
     }
 
     @Test
-    fun rendersDeterministicRandomizedCorpusAcrossDagreAndElk() {
+    fun rendersDeterministicRandomizedCorpusWithDagre() {
         val random = Random(12_00_00)
         repeat(RANDOM_CASE_COUNT) { caseIndex ->
             val generated = randomFlowchart(random, caseIndex)
@@ -199,7 +199,7 @@ class FlowchartStressTest {
                 options = MermaidRenderOptions(
                     layout = layout,
                     curve = curve,
-                    look = if (layout == "elk") "neo" else "classic",
+                    look = "classic",
                 ),
             ),
         )
@@ -301,7 +301,7 @@ class FlowchartStressTest {
         const val RANDOM_CASE_COUNT = 256
         const val INTERSECTION_EPSILON = 0.5f
 
-        val LAYOUTS = listOf("dagre", "elk")
+        val LAYOUTS = listOf("dagre")
         val DIRECTIONS = listOf("TB", "BT", "LR", "RL")
         val CURVES = listOf("basis", "linear", "step", "cardinal")
         val SHAPES = listOf(

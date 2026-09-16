@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,6 +42,7 @@ import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.semantics.contentDescription
@@ -67,9 +69,11 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidEngine
+import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
+import com.swithun.cmpmermaid.core.MermaidSceneViewportSizing
 import com.swithun.cmpmermaid.core.MermaidTheme
 import com.swithun.cmpmermaid.core.SceneArrowHead
 import com.swithun.cmpmermaid.core.SceneAsset
@@ -116,6 +120,8 @@ fun MermaidDiagram(
     assetProvider: MermaidAssetProvider? = null,
     onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
     onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
+    respectSourceViewportSizing: Boolean = true,
+    onRenderResult: ((GMResult<MermaidScene, MermaidError>) -> Unit)? = null,
 ) {
     val platformAssetProvider = rememberPlatformMermaidAssetProvider()
     val effectiveAssetProvider = remember(assetProvider, platformAssetProvider) {
@@ -131,6 +137,10 @@ fun MermaidDiagram(
         fontFamilyResolver = fontFamilyResolver,
         assetMetrics = assetMetrics,
     ).value
+    val currentRenderResultHandler by rememberUpdatedState(onRenderResult)
+    LaunchedEffect(sceneResult) {
+        sceneResult?.let { result -> currentRenderResultHandler?.invoke(result) }
+    }
     when (sceneResult) {
         null -> Box(modifier = modifier)
         is GMResult.Ok -> MermaidSceneCanvas(
@@ -152,6 +162,7 @@ fun MermaidDiagram(
                 }
             },
             onNodeInteraction = onNodeInteraction,
+            respectSourceViewportSizing = respectSourceViewportSizing,
         )
         is GMResult.Err -> Box(
             modifier = modifier,
@@ -232,6 +243,7 @@ fun rememberMermaidScene(
         effectiveFontFamilyResolver,
         assetMetrics,
     ) {
+        value = null
         value = withContext(mermaidRenderDispatcher()) {
             engine.render(
                 source,
@@ -256,6 +268,7 @@ fun MermaidSceneCanvas(
     onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
     onAssetResolved: ((SceneAsset, MermaidResolvedAsset) -> Unit)? = null,
     onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
+    respectSourceViewportSizing: Boolean = true,
 ) {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
@@ -335,7 +348,11 @@ fun MermaidSceneCanvas(
     }
 
     Canvas(
-        modifier = modifier
+        modifier = (if (respectSourceViewportSizing) {
+            modifier.mermaidSceneViewportSize(scene)
+        } else {
+            modifier
+        })
             .clipToBounds()
             .semantics { this.contentDescription = contentDescription }
             .pointerInput(scene, touchSlop) {
@@ -549,6 +566,44 @@ private fun DrawScope.drawSceneAsset(
             null
         },
     )
+}
+
+/**
+ * Mermaid 12.0.0: setupGraphViewbox.js -> calculateSvgSizeAttrs.
+ *
+ * The source sizing policy selects the Compose host's preferred size. Explicit
+ * caller constraints still win, and Canvas keeps aspect-fitting within the
+ * allocated host just as an SVG viewBox does.
+ */
+private fun Modifier.mermaidSceneViewportSize(
+    scene: MermaidScene,
+): Modifier {
+    if (scene.viewportSizing == MermaidSceneViewportSizing.Fit) {
+        return this
+    }
+    return layout { measurable, constraints ->
+        val padding = scene.viewportPadding.coerceAtLeast(0f)
+        val naturalWidth = (scene.width + padding * 2f).roundToInt().coerceAtLeast(1)
+        val naturalHeight = (scene.height + padding * 2f).roundToInt().coerceAtLeast(1)
+        val preferredWidth = when (scene.viewportSizing) {
+            MermaidSceneViewportSizing.Fit -> constraints.maxWidth
+            MermaidSceneViewportSizing.ResponsiveMaxWidth ->
+                if (constraints.hasBoundedWidth) {
+                    min(naturalWidth, constraints.maxWidth)
+                } else {
+                    naturalWidth
+                }
+            MermaidSceneViewportSizing.Intrinsic -> naturalWidth
+        }
+        val width = preferredWidth.coerceIn(constraints.minWidth, constraints.maxWidth)
+        val heightScale = width.toFloat() / naturalWidth
+        val preferredHeight = (naturalHeight * heightScale).roundToInt().coerceAtLeast(1)
+        val height = preferredHeight.coerceIn(constraints.minHeight, constraints.maxHeight)
+        val placeable = measurable.measure(Constraints.fixed(width, height))
+        layout(width, height) {
+            placeable.place(0, 0)
+        }
+    }
 }
 
 internal fun MermaidScene.interactionAt(

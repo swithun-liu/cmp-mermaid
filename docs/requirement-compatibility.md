@@ -21,7 +21,7 @@ not expose a functional rendering defect.
 | Requirement fields | Supported | Identifier, text, Low/Medium/High risk, and Analysis/Demonstration/Inspection/Test verification |
 | Elements | Supported | Element name, type, document reference, classes, and direct styles |
 | Relationships | Supported | Contains, copies, derives, satisfies, verifies, refines, and traces, including reverse-arrow syntax |
-| Layout | Supported | TB, BT, LR, and RL directions through Mermaid-compatible Dagre and ELK adapters |
+| Layout | Supported with explicit boundary | TB, BT, LR, and RL directions through the translated Dagre adapter; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Requirement boxes | Supported | Type/name headers, body fields, dividers, HTML-label line-box sizing, and final left-aligned body translation |
 | Markers and edges | Supported | Requirement arrow and contains markers, labels, dotted relationships, and Neo marker spacing |
 | Markdown and styling | Supported | Strong/emphasis labels, `style`, `classDef`, `class`, `:::`, and registered Requirement theme variables |
@@ -33,6 +33,8 @@ not expose a functional rendering defect.
 - Mermaid's RoughJS-backed `handDrawn` look is not translated. It returns
   `MermaidError.UnsupportedFeature` instead of silently drawing a Classic
   approximation.
+- `layout: elk` and every named `elk.*` algorithm return
+  `MermaidError.UnsupportedFeature`; Native never substitutes Dagre.
 - Browser HTML labels map to measured Compose text. CMP Mermaid preserves the
   Mermaid `14px`/`21px` line box and label placement, while platform glyph
   metrics can still differ.
@@ -56,8 +58,8 @@ not expose a functional rendering defect.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
   All pairs passed the geometry gate, and all 16 contact-sheet pages were
   manually reviewed.
-- Android Emulator, iOS Simulator, Desktop, and Web load tests traversed the
-  complete 145-case mixed corpus.
+- Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
+  complete mixed production corpus.
 
 ## Reference Workflow
 

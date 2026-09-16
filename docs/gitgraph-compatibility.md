@@ -56,8 +56,8 @@ side-by-side comparison does not expose a functional rendering defect.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
   All pairs passed the geometry gate, and all 16 contact-sheet pages were
   manually reviewed.
-- Android Emulator, iOS Simulator, Desktop, and Web load tests traversed the
-  complete 145-case mixed corpus through the final Git Graph case.
+- Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
+  complete 158-case mixed corpus.
 
 ## Reference Workflow
 

@@ -240,6 +240,7 @@ internal object MermaidPreprocessor {
         val journey = map.map("journey")
         val requirement = map.map("requirement")
         val gitGraph = map.map("gitGraph")
+        val mindmap = map.map("mindmap")
         val pie = map.map("pie")
         val xyChart = map.map("xyChart")
         val xyXAxis = xyChart?.map("xAxis")
@@ -848,6 +849,23 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'gitGraph.mainBranchOrder' must be finite",
             )
         }
+        val mindmapPadding = float(mindmap, "padding", "mindmap.padding")
+        val mindmapMaxNodeWidth =
+            float(mindmap, "maxNodeWidth", "mindmap.maxNodeWidth")
+        val mindmapUseMaxWidth =
+            boolean(mindmap, "useMaxWidth", "mindmap.useMaxWidth")
+        val mindmapLayoutAlgorithm =
+            string(mindmap, "layoutAlgorithm", "mindmap.layoutAlgorithm")
+        listOf(
+            "mindmap.padding" to mindmapPadding,
+            "mindmap.maxNodeWidth" to mindmapMaxNodeWidth,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value <= 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be positive",
+            )
+        }
         val topLook = appearanceString(map, "look", "look")
             ?.takeIf(USABLE_LOOKS::contains)
         val titleTopMargin = float(flowchart, "titleTopMargin", "flowchart.titleTopMargin")
@@ -1052,6 +1070,16 @@ internal object MermaidPreprocessor {
                         parallelCommits = gitGraphParallelCommits,
                     )
                 },
+                mindmap = if (mindmap != null || topLayout != null) {
+                    MermaidMindmapConfigOverride(
+                        padding = mindmapPadding,
+                        maxNodeWidth = mindmapMaxNodeWidth,
+                        useMaxWidth = mindmapUseMaxWidth,
+                        layoutAlgorithm = topLayout ?: mindmapLayoutAlgorithm,
+                    )
+                } else {
+                    null
+                },
                 themeVariables = parsedThemeVariables?.scalars,
                 themeColorArrays = parsedThemeVariables?.arrays,
                 look = flowLook ?: topLook,
@@ -1245,6 +1273,7 @@ internal data class MermaidConfigOverride(
     val themeName: String? = null,
     val requirementThemeName: String? = null,
     val gitGraph: MermaidGitGraphConfigOverride? = null,
+    val mindmap: MermaidMindmapConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
     val look: String? = null,
@@ -1324,6 +1353,11 @@ internal data class MermaidConfigOverride(
             overrides.gitGraph != null ->
                 gitGraph?.merge(overrides.gitGraph) ?: overrides.gitGraph
             else -> gitGraph
+        },
+        mindmap = when {
+            overrides.mindmap != null ->
+                mindmap?.merge(overrides.mindmap) ?: overrides.mindmap
+            else -> mindmap
         },
         themeVariables = when {
             overrides.themeVariables != null ->
@@ -1417,6 +1451,7 @@ internal data class MermaidConfigOverride(
                 requirementThemeName =
                     requirementThemeName ?: options.requirementThemeName,
                 gitGraph = gitGraph?.applyTo(options.gitGraph) ?: options.gitGraph,
+                mindmap = mindmap?.applyTo(options.mindmap) ?: options.mindmap,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
                 look = resolvedLook,
@@ -1434,6 +1469,28 @@ internal data class MermaidConfigOverride(
             ),
         )
     }
+}
+
+internal data class MermaidMindmapConfigOverride(
+    val padding: Float? = null,
+    val maxNodeWidth: Float? = null,
+    val useMaxWidth: Boolean? = null,
+    val layoutAlgorithm: String? = null,
+) {
+    fun merge(overrides: MermaidMindmapConfigOverride): MermaidMindmapConfigOverride =
+        MermaidMindmapConfigOverride(
+            padding = overrides.padding ?: padding,
+            maxNodeWidth = overrides.maxNodeWidth ?: maxNodeWidth,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            layoutAlgorithm = overrides.layoutAlgorithm ?: layoutAlgorithm,
+        )
+
+    fun applyTo(options: MermaidMindmapOptions): MermaidMindmapOptions = options.copy(
+        padding = padding ?: options.padding,
+        maxNodeWidth = maxNodeWidth ?: options.maxNodeWidth,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        layoutAlgorithm = layoutAlgorithm ?: options.layoutAlgorithm,
+    )
 }
 
 internal data class MermaidGitGraphConfigOverride(

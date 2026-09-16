@@ -1,22 +1,31 @@
 package com.swithun.cmpmermaid.compose
 
+import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
 import com.swithun.cmpmermaid.core.SceneRect
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
 import kotlin.test.assertIs
-import kotlin.test.assertTrue
 
 class MermaidAssetProviderTest {
     @Test
-    fun requiresExplicitNetworkAccess() {
-        assertFalse(MermaidNetworkAccess.Disabled.allows("https://example.com/image.svg"))
-        assertTrue(MermaidNetworkAccess.HttpAndHttps.allows("https://example.com/image.svg"))
-        assertTrue(MermaidNetworkAccess.HttpAndHttps.allows("HTTP://example.com/image.png"))
-        assertFalse(MermaidNetworkAccess.HttpAndHttps.allows("data:image/png;base64,payload"))
+    fun preservesStructuredProviderFailure() = runTest {
+        val states = mutableMapOf<String, MermaidAssetState>()
+        val expected = MermaidAssetError.UnsupportedSource(
+            source = "https://example.com/image.svg",
+            message = "External assets are disabled",
+        )
+
+        resolveMermaidAssets(
+            assets = listOf(asset()),
+            provider = MermaidAssetProvider { GMResult.Err(expected) },
+            onResolved = states::set,
+        )
+
+        val failure = assertIs<MermaidAssetState.Failed>(states.getValue("asset"))
+        assertEquals(expected, failure.error)
     }
 
     @Test

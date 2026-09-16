@@ -3,7 +3,6 @@ agp = "9.0.1"
 kotlin = "2.3.20"
 compose = "1.9.3"
 kaml = "0.104.0"
-quickJs = "1.0.5"
 kotlinxCoroutines = "1.10.2"
 kotlinxDatetime = "0.7.1"
 kotlinxSerializationJson = "1.10.0"
@@ -26,7 +25,6 @@ androidx-material3 = { module = "androidx.compose.material3:material3", version.
 androidx-webkit = { module = "androidx.webkit:webkit", version.ref = "androidxWebkit" }
 android-svg = { module = "com.caverock:androidsvg-aar", version.ref = "androidSvg" }
 kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
-quickjs = { module = "io.github.dokar3:quickjs-kt", version.ref = "quickJs" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }

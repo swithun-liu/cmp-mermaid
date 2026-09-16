@@ -15,15 +15,22 @@ import { cases as stabilityCases } from './stability-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
+const corpusKind = process.env.CORPUS_KIND ?? 'gitgraph';
+const caseIds = (
+  process.env.THEME_CASE_IDS ??
+  'rc_gitgraph_release_train,prod_gitgraph_commit_metadata_release'
+)
+  .split(/[\s,]+/)
+  .filter(Boolean);
 const inputDirectory = resolve(
   repositoryRoot,
   process.env.INPUT_DIR ??
-    'captures/local/gitgraph/theme-matrix-20260915',
+    `captures/local/${corpusKind}/theme-matrix-20260915`,
 );
 const outputDirectory = resolve(
   repositoryRoot,
   process.env.OUTPUT_DIR ??
-    'captures/local/gitgraph/theme-matrix-contact-sheets',
+    `captures/local/${corpusKind}/theme-matrix-contact-sheets`,
 );
 const themes = [
   'default',
@@ -38,10 +45,7 @@ const themes = [
   'redux-dark',
   'redux-dark-color',
 ];
-const selectedCases = [
-  findCase(stabilityCases, 'rc_gitgraph_release_train'),
-  findCase(productionCases, 'prod_gitgraph_commit_metadata_release'),
-];
+const selectedCases = caseIds.map(findCase);
 
 mkdirSync(outputDirectory, { recursive: true });
 const manifest = [];
@@ -69,7 +73,7 @@ try {
     );
     const outputPath = resolve(
       outputDirectory,
-      `gitgraph-theme-${theme}.png`,
+      `${corpusKind}-theme-${theme}.png`,
     );
     await page.screenshot({
       path: outputPath,
@@ -88,6 +92,7 @@ writeFileSync(
   resolve(outputDirectory, 'manifest.json'),
   `${JSON.stringify({
     mermaidVersion: '12.0.0',
+    corpusKind,
     generatedAt: new Date().toISOString(),
     themeCount: themes.length,
     caseCount: selectedCases.length,
@@ -105,10 +110,16 @@ writeFileSync(
   }, null, 2)}\n`,
 );
 
-function findCase(cases, id) {
-  const entry = cases.find((candidate) => candidate.id === id);
+function findCase(id) {
+  const entry = [...stabilityCases, ...productionCases]
+    .find((candidate) => candidate.id === id);
   if (entry === undefined) {
-    throw new Error(`Missing Git Graph theme matrix case: ${id}`);
+    throw new Error(`Missing theme matrix case: ${id}`);
+  }
+  if (entry.kind !== corpusKind) {
+    throw new Error(
+      `Theme matrix case ${id} has kind ${entry.kind}, expected ${corpusKind}`,
+    );
   }
   return entry;
 }
@@ -202,12 +213,21 @@ function renderContactSheet(theme, records) {
 </head>
 <body>
   <header>
-    <h1>Git Graph theme: ${escapeHtml(theme)}</h1>
+    <h1>${escapeHtml(diagramTitle(corpusKind))} theme: ${escapeHtml(theme)}</h1>
     <p>Left: CMP Native. Right: Mermaid.js 12.0.0.</p>
   </header>
   ${rows}
 </body>
 </html>`;
+}
+
+function diagramTitle(kind) {
+  return kind
+    .split(/[-_]/)
+    .map((part) => part.length === 0
+      ? part
+      : `${part[0].toUpperCase()}${part.slice(1)}`)
+    .join(' ');
 }
 
 function escapeHtml(value) {

@@ -27,7 +27,7 @@ discarded or rendered as a different feature.
 | Notes | Supported | Standalone and class-attached notes with dotted relation routing |
 | Namespaces | Supported | Explicit, dotted, nested, labelled, hierarchical, and compact namespace modes |
 | Direction | Supported | TB, BT, LR, and RL |
-| Layout | Supported | Mermaid's default ELK path, named ELK algorithms, and explicit Dagre override |
+| Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Mermaid/Marked text path for class labels, members, notes, namespace labels, lollipop labels, and relation labels |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, fill, stroke, dash, text, font, decoration, and line-height properties mapped by the shared style adapter |
 | Themes | Supported | Mermaid 12 class color slots, note colors, group colors, redux/neo appearance, and shared native theme variables |
@@ -42,6 +42,7 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
 - FontAwesome substring replacement.
 - Inline HTML links, images, SVG, MathML, or DOM layout elements inside labels.
 - `look: handDrawn`, because Mermaid implements it through roughjs.
+- `layout: elk` and every named `elk.*` algorithm.
 - CSS properties that the shared native style adapter cannot represent.
 
 Class links and callbacks are represented as SceneGraph interactions. The host
@@ -52,11 +53,11 @@ arbitrary URLs or JavaScript.
 
 - 38 examples extracted from Mermaid's official Class documentation run in JVM
   tests.
-- Mermaid's dense relation matrix runs through both Dagre and ELK.
-- 256 deterministic random legal Class diagrams alternate between Dagre and
-  ELK while checking shape/edge counts, finite bounds, and routed paths.
+- Mermaid's dense relation matrix runs through Dagre.
+- 256 deterministic random legal Class diagrams use Dagre while checking
+  shape/edge counts, finite bounds, and routed paths.
 - 27 curated gallery cases render identical source through Native Compose and
-  Mermaid.js `12.0.0` with ELK.
+  Mermaid.js `12.0.0` with Dagre.
 - The 27 Native Android screenshots were compared side by side with 27
   Puppeteer-rendered official references, including markers, cardinalities,
   self-relations, notes, namespaces, styles, title, Unicode, and a dense model.
@@ -80,11 +81,11 @@ MERMAID_SOURCE_DIR=/path/to/mermaid-12 \
   npm run generate:class-doc-fixtures
 ```
 
-Render the 27 official ELK references:
+Render the 27 official Dagre references:
 
 ```bash
 cd tools/official-reference
-CLASS_LAYOUT=elk OUTPUT_DIR=captures/local/class-official \
+CLASS_LAYOUT=dagre OUTPUT_DIR=captures/local/class-official \
   npm run render:class-gallery
 ```
 

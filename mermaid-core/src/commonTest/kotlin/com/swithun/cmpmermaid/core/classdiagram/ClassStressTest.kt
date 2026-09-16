@@ -63,27 +63,24 @@ class ClassStressTest {
                 }
         """.trimIndent()
 
-        listOf("dagre", "elk").forEach { layout ->
-            validateScene(
-                caseName = "official-relationship-matrix-$layout",
-                source = source,
-                scene = render(source, layout),
-                minimumClasses = 12,
-                minimumRelations = 8,
-            )
-        }
+        validateScene(
+            caseName = "official-relationship-matrix-dagre",
+            source = source,
+            scene = render(source, "dagre"),
+            minimumClasses = 12,
+            minimumRelations = 8,
+        )
     }
 
     @Test
-    fun rendersDeterministicRandomizedCorpusAcrossDagreAndElk() {
+    fun rendersDeterministicRandomizedCorpusWithDagre() {
         val random = Random(12_00_00)
         repeat(RANDOM_CASE_COUNT) { index ->
             val source = randomClassDiagram(random, index)
-            val layout = if (index % 2 == 0) "dagre" else "elk"
             validateScene(
-                caseName = "random-$index-$layout",
+                caseName = "random-$index-dagre",
                 source = source,
-                scene = render(source, layout),
+                scene = render(source, "dagre"),
                 minimumClasses = 2,
                 minimumRelations = 1,
             )

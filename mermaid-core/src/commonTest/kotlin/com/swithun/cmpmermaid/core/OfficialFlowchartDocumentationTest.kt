@@ -23,10 +23,6 @@ class OfficialFlowchartDocumentationTest {
         textMetrics = textMetrics,
         options = MermaidRenderOptions(layout = "dagre"),
     )
-    private val elkContext = MermaidRenderContext(
-        textMetrics = textMetrics,
-        options = MermaidRenderOptions(layout = "elk"),
-    )
     private val expectedUnsupportedFeatures = mapOf(
         "112_basic_support_for_fontawesome" to "FontAwesome label icon",
         "113_custom_icons" to "FontAwesome label icon",
@@ -42,21 +38,6 @@ class OfficialFlowchartDocumentationTest {
             failures.isEmpty(),
             failures.joinToString(
                 prefix = "Failed Mermaid 12.0.0 Flowchart documentation cases:\n",
-                separator = "\n",
-            ),
-        )
-    }
-
-    @Test
-    fun handlesEveryMermaid12FlowchartDocumentationExampleWithDefaultElk() {
-        val failures = officialFlowchartDocumentationCases.mapNotNull {
-            renderFailure(it, elkContext)
-        }
-
-        assertTrue(
-            failures.isEmpty(),
-            failures.joinToString(
-                prefix = "Failed Mermaid 12.0.0 Flowchart ELK documentation cases:\n",
                 separator = "\n",
             ),
         )

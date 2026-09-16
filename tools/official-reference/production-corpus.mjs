@@ -173,7 +173,6 @@ export const requiredFeaturesByKind = {
     'reverse-relationships',
     'directions',
     'dagre-layout',
-    'elk-layout',
     'frontmatter-title',
     'accessibility',
     'markdown',
@@ -209,13 +208,37 @@ export const requiredFeaturesByKind = {
     'unicode',
     'comments',
   ],
+  mindmap: [
+    'hierarchy',
+    'irregular-indentation',
+    'deep-hierarchy',
+    'wide-hierarchy',
+    'default-shape',
+    'square-shape',
+    'rounded-shape',
+    'circle-shape',
+    'cloud-shape',
+    'bang-shape',
+    'hexagon-shape',
+    'markdown',
+    'html-breaks',
+    'entities',
+    'comments',
+    'frontmatter-title',
+    'cose-bilkent-layout',
+    'dagre-layout',
+    'tidy-tree-layout',
+    'sizing-config',
+    'theme-variables',
+    'unicode',
+  ],
 };
 
 const flowchartCases = [
   ...expandTemplate({
     kind: 'flowchart',
     id: 'orchestration',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.65,
     features: [
       'directions',
@@ -305,7 +328,7 @@ flowchart TB
   ...expandTemplate({
     kind: 'flowchart',
     id: 'nested_domains',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.65,
     features: [
       'nested-subgraphs',
@@ -355,7 +378,7 @@ flowchart TB
   ...expandTemplate({
     kind: 'flowchart',
     id: 'shape_catalog',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.7,
     features: ['advanced-shapes', 'frontmatter-config'],
     variants: [
@@ -761,7 +784,7 @@ const classCases = [
   ...expandTemplate({
     kind: 'class',
     id: 'domain_model',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.45,
     features: [
       'members',
@@ -813,7 +836,7 @@ classDiagram
   ...expandTemplate({
     kind: 'class',
     id: 'namespace_tree',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.55,
     features: ['namespaces', 'nested-namespaces', 'direction', 'notes'],
     variants: [
@@ -892,7 +915,7 @@ classDiagram
   ...expandTemplate({
     kind: 'class',
     id: 'styled_metadata',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.4,
     features: ['classes-styles', 'markdown', 'metadata', 'two-way-relations'],
     variants: [
@@ -934,7 +957,7 @@ const stateCases = [
   ...expandTemplate({
     kind: 'state',
     id: 'nested_lifecycle',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.35,
     features: [
       'simple-states',
@@ -986,7 +1009,7 @@ stateDiagram-v2
   ...expandTemplate({
     kind: 'state',
     id: 'decision_sync',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.35,
     features: ['choice', 'fork-join', 'concurrency'],
     variants: [
@@ -1031,7 +1054,7 @@ stateDiagram-v2
   ...expandTemplate({
     kind: 'state',
     id: 'notes_styles',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.35,
     features: ['notes', 'classes-styles', 'links', 'direction'],
     variants: [
@@ -1070,7 +1093,7 @@ stateDiagram-v2
   ...expandTemplate({
     kind: 'state',
     id: 'markdown_metadata',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.35,
     features: ['markdown', 'metadata', 'unicode'],
     variants: [
@@ -1112,7 +1135,7 @@ const erCases = [
   ...expandTemplate({
     kind: 'er',
     id: 'attribute_model',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.45,
     features: [
       'entities',
@@ -1163,7 +1186,7 @@ erDiagram
   ...expandTemplate({
     kind: 'er',
     id: 'cardinality_matrix',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.55,
     features: ['cardinalities', 'non-identifying'],
     variants: [
@@ -1193,7 +1216,7 @@ erDiagram
   ...expandTemplate({
     kind: 'er',
     id: 'subgraph_domains',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.55,
     features: ['direction', 'subgraphs', 'nested-subgraphs', 'unicode'],
     variants: [
@@ -1235,7 +1258,7 @@ erDiagram
   ...expandTemplate({
     kind: 'er',
     id: 'styled_metadata',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.5,
     features: ['classes-styles', 'layout-config', 'metadata'],
     variants: [
@@ -1262,7 +1285,7 @@ title: ${value.titleText}
 accTitle: ${value.titleText}
 accDescr: Entity relationship evidence
 config:
-  layout: elk
+  layout: dagre
 ---
 erDiagram
   ${value.root} ||--o{ ${value.child} : governs
@@ -1817,7 +1840,7 @@ const requirementCases = [
   ...expandTemplate({
     kind: 'requirement',
     id: 'typed_fields',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.7,
     features: [
       'requirement-types',
@@ -1826,7 +1849,7 @@ const requirementCases = [
       'verification-methods',
       'elements',
       'directions',
-      'elk-layout',
+      'dagre-layout',
     ],
     variants: [
       {
@@ -1997,11 +2020,11 @@ requirementDiagram
   ...expandTemplate({
     kind: 'requirement',
     id: 'metadata_layout',
-    layout: 'elk',
+    layout: 'dagre',
     aspectRatio: 1.55,
     features: [
       'directions',
-      'elk-layout',
+      'dagre-layout',
       'frontmatter-title',
       'accessibility',
       'markdown',
@@ -2038,7 +2061,7 @@ requirementDiagram
 ---
 title: ${value.diagramTitle}
 config:
-  layout: elk
+  layout: dagre
   theme: default
   look: classic
 ---
@@ -2382,6 +2405,254 @@ gitGraph
   }),
 ];
 
+const mindmapCases = [
+  ...expandTemplate({
+    kind: 'mindmap',
+    id: 'hierarchy',
+    layout: 'cose-bilkent',
+    aspectRatio: 1.6,
+    features: [
+      'hierarchy',
+      'irregular-indentation',
+      'deep-hierarchy',
+      'wide-hierarchy',
+      'comments',
+      'cose-bilkent-layout',
+      'unicode',
+    ],
+    variants: [
+      {
+        slug: 'service_ownership',
+        title: 'Service ownership hierarchy',
+        scenario: 'Service ownership spans client, API, data, and operations responsibilities.',
+        root: 'Service ownership',
+        first: 'Client experience',
+        deep: 'Release verification',
+        unicode: '品質確認',
+      },
+      {
+        slug: 'research_program',
+        title: 'Research program hierarchy',
+        scenario: 'A research program connects questions, methods, evidence, and publication work.',
+        root: 'Research program',
+        first: 'Research questions',
+        deep: 'Independent replication',
+        unicode: '結果確認',
+      },
+    ],
+    source: (value) => String.raw`
+---
+title: ${value.title}
+config:
+  layout: cose-bilkent
+---
+mindmap
+  root((${value.root}))
+    ${value.first}
+        Discovery
+              Interviews
+          Synthesis
+                ${value.deep}
+    Delivery
+      Plan
+      Build
+      Verify
+        ${value.unicode}
+    Operations
+      Ownership
+      Monitoring
+      Improvement
+    %% Comments do not create hierarchy nodes.
+`,
+    expectedTexts: (value) => [value.root, value.deep, value.unicode],
+  }),
+  ...expandTemplate({
+    kind: 'mindmap',
+    id: 'shape_text',
+    layout: 'cose-bilkent',
+    aspectRatio: 1.7,
+    features: [
+      'default-shape',
+      'square-shape',
+      'rounded-shape',
+      'circle-shape',
+      'cloud-shape',
+      'bang-shape',
+      'hexagon-shape',
+      'markdown',
+      'html-breaks',
+      'entities',
+    ],
+    variants: [
+      {
+        slug: 'delivery',
+        title: 'Delivery shape vocabulary',
+        scenario: 'Delivery concepts exercise every supported shape and text representation.',
+        root: 'Delivery model',
+        emphasis: 'Validated',
+        entity: 'Build &amp; sign',
+        multiline: 'Release<br/>evidence',
+      },
+      {
+        slug: 'operations',
+        title: 'Operations shape vocabulary',
+        scenario: 'Operational concepts exercise every supported shape and text representation.',
+        root: 'Operations model',
+        emphasis: 'Observed',
+        entity: 'Alert &amp; respond',
+        multiline: 'Recovery<br/>evidence',
+      },
+    ],
+    source: (value) => String.raw`
+---
+config:
+  layout: cose-bilkent
+  mindmap:
+    maxNodeWidth: 135
+---
+mindmap
+  root((${value.root}))
+    Default branch
+      **${value.emphasis}**
+    square[${value.entity}]
+      squareChild[Square child]
+    rounded(Rounded)
+      wrapped(A long rounded label that wraps at the configured width)
+    circle((Circle))
+      circleChild((${value.multiline}))
+    cloud)Cloud(
+      cloudChild)Cloud child(
+    bang))Bang((
+      bangChild))Bang child((
+    hex{{Hexagon}}
+      hexChild{{Hexagon child}}
+`,
+    expectedTexts: (value) => [value.root, value.emphasis, 'Hexagon child'],
+  }),
+  ...expandTemplate({
+    kind: 'mindmap',
+    id: 'layout',
+    layout: (value) => value.layout,
+    aspectRatio: 1.55,
+    features: (value) => [
+      'hierarchy',
+      value.layoutFeature,
+    ],
+    variants: [
+      {
+        slug: 'dagre_pipeline',
+        title: 'Dagre delivery pipeline',
+        scenario: 'A measured top-to-bottom hierarchy preserves Dagre ranks and routed edges.',
+        layout: 'dagre',
+        layoutFeature: 'dagre-layout',
+        root: 'Delivery pipeline',
+        left: 'Inputs',
+        right: 'Outputs',
+      },
+      {
+        slug: 'tidy_architecture',
+        title: 'Tidy-tree architecture map',
+        scenario: 'A bidirectional tidy tree balances architecture branches around the root.',
+        layout: 'tidy-tree',
+        layoutFeature: 'tidy-tree-layout',
+        root: 'Architecture',
+        left: 'Clients',
+        right: 'Services',
+      },
+    ],
+    source: (value) => String.raw`
+---
+title: ${value.title}
+config:
+  layout: ${value.layout}
+---
+mindmap
+  root((${value.root}))
+    ${value.left}
+      Primary
+        Contract
+        Validation
+      Secondary
+        Fallback
+        Recovery
+    ${value.right}
+      Processing
+        Commands
+        Queries
+      Storage
+        Operational
+        Analytical
+`,
+    expectedTexts: (value) => [value.root, value.left, value.right],
+  }),
+  ...expandTemplate({
+    kind: 'mindmap',
+    id: 'configured_theme',
+    layout: 'dagre',
+    aspectRatio: 1.45,
+    features: [
+      'frontmatter-title',
+      'sizing-config',
+      'theme-variables',
+      'dagre-layout',
+      'markdown',
+    ],
+    variants: [
+      {
+        slug: 'governance',
+        title: 'Configured governance map',
+        scenario: 'Governance labels use explicit sizing and a restrained custom palette.',
+        root: 'Governance',
+        sectionA: 'Architecture review',
+        sectionB: 'Release review',
+        accent: '#0f766e',
+      },
+      {
+        slug: 'readiness',
+        title: 'Configured readiness map',
+        scenario: 'Readiness labels use explicit sizing and a contrasting custom palette.',
+        root: 'Operational readiness',
+        sectionA: 'Service checks',
+        sectionB: 'Recovery checks',
+        accent: '#1d4ed8',
+      },
+    ],
+    source: (value) => String.raw`
+---
+title: ${value.title}
+config:
+  layout: dagre
+  mindmap:
+    padding: 16
+    maxNodeWidth: 125
+    useMaxWidth: false
+  theme: base
+  themeVariables:
+    mainBkg: "#f8fafc"
+    nodeBorder: "#334155"
+    git0: "${value.accent}"
+    gitBranchLabel0: "#ffffff"
+    cScale0: "#ccfbf1"
+    cScale1: "#dbeafe"
+    cScaleLabel0: "#134e4a"
+    cScaleLabel1: "#1e3a8a"
+---
+mindmap
+  root((**${value.root}**))
+    ${value.sectionA}
+      Evidence inventory
+      Decision record
+    ${value.sectionB}
+      Automated validation
+      Manual confirmation
+    Follow-up
+      Named owners
+      Due dates
+`,
+    expectedTexts: (value) => [value.root, value.sectionA, value.sectionB],
+  }),
+];
+
 export const conformanceCases = [
   ...flowchartCases,
   ...xyChartCases,
@@ -2394,6 +2665,7 @@ export const conformanceCases = [
   ...journeyCases,
   ...requirementCases,
   ...gitGraphCases,
+  ...mindmapCases,
 ];
 
 export const cases = [
@@ -2411,9 +2683,13 @@ function expandTemplate(template) {
     kind: template.kind,
     title: variant.title,
     scenario: variant.scenario,
-    layout: template.layout,
+    layout: typeof template.layout === 'function'
+      ? template.layout(variant)
+      : template.layout,
     aspectRatio: template.aspectRatio,
-    features: template.features,
+    features: typeof template.features === 'function'
+      ? template.features(variant)
+      : template.features,
     expectedTexts: template.expectedTexts(variant),
     source: template.source(variant),
   }));

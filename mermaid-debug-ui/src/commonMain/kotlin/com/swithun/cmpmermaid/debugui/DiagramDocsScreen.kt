@@ -266,6 +266,7 @@ private fun UnifiedSyntaxLesson(
                     theme = theme,
                     options = options,
                     contentDescription = "${lesson.title} CMP rendering",
+                    respectSourceViewportSizing = false,
                 )
             }
         }
@@ -462,6 +463,7 @@ private fun ResponsiveDiagramPreview(
                     theme = theme,
                     options = options,
                     contentDescription = "${demo.title} CMP rendering",
+                    respectSourceViewportSizing = false,
                 )
             } else {
                 OfficialMermaidDiagram(

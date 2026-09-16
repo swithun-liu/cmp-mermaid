@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "device": "emulator-5554",
-  "caseCount": 145,
-  "lastCaseId": "prod_gitgraph_configured_visibility_hidden_commits",
-  "initialPssKb": 166498,
-  "peakPssKb": 242833,
-  "finalPssKb": 213373,
+  "caseCount": 158,
+  "lastCaseId": "prod_mindmap_configured_theme_readiness",
+  "initialPssKb": 164357,
+  "peakPssKb": 194098,
+  "finalPssKb": 157788,
   "scrollSeconds": 30,
   "reachedLastCase": true,
   "thresholds": {

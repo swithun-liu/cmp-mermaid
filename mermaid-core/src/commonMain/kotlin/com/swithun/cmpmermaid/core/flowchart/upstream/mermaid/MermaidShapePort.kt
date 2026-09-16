@@ -31,6 +31,106 @@ import kotlin.math.sqrt
  * these primitives; it does not make shape sizing or geometry decisions.
  */
 internal object MermaidShapePort {
+    /**
+     * Mermaid 12.0.0:
+     * rendering-elements/shapes/defaultMindmapNode.ts.
+     */
+    fun mindmapDefault(
+        measuredLabel: SceneSize,
+        padding: Float,
+        look: String,
+        bottomStroke: SceneColor,
+    ): MermaidShapeLayout {
+        val width = measuredLabel.width + padding * 4f
+        val height = measuredLabel.height + padding
+        val radius = 5f
+        val outline = if (look == NEO) {
+            val top = -height / 2f
+            val bottom = height / 2f
+            listOf(ScenePoint(-width / 2f, bottom)) +
+                arcPoints(
+                    centerX = -width / 2f + radius,
+                    centerY = top + radius,
+                    radiusX = radius,
+                    radiusY = radius,
+                    startAngle = 180f,
+                    endAngle = 270f,
+                    count = 8,
+                ).drop(1) +
+                listOf(ScenePoint(width / 2f - radius, top)) +
+                arcPoints(
+                    centerX = width / 2f - radius,
+                    centerY = top + radius,
+                    radiusX = radius,
+                    radiusY = radius,
+                    startAngle = 270f,
+                    endAngle = 360f,
+                    count = 8,
+                ).drop(1) +
+                listOf(ScenePoint(width / 2f, bottom))
+        } else {
+            roundedRectanglePoints(width, height, radius)
+        }
+        return centeredShape(
+            paths = listOf(
+                closedPath(outline),
+                openStroke(
+                    -width / 2f to height / 2f,
+                    width / 2f to height / 2f,
+                    strokeWidth = 3f,
+                    strokeColor = bottomStroke,
+                ),
+            ),
+            outline = outline,
+        )
+    }
+
+    /**
+     * Mermaid 12.0.0:
+     * rendering-elements/shapes/mindmapCircle.ts -> circle.ts.
+     */
+    fun mindmapCircle(
+        measuredLabel: SceneSize,
+        padding: Float,
+        look: String,
+    ): MermaidShapeLayout {
+        val labelRadius = hypot(measuredLabel.width, measuredLabel.height) / 2f
+        val radius = if (look == NEO) labelRadius + 32f else labelRadius + padding
+        val outline = ellipsePoints(0f, 0f, radius, radius)
+        return centeredShape(listOf(closedPath(outline)), outline)
+    }
+
+    fun mindmapShape(
+        kind: SceneShapeKind,
+        isDefaultNode: Boolean,
+        measuredLabel: SceneSize,
+        padding: Float,
+        look: String,
+        bottomStroke: SceneColor,
+    ): GMResult<MermaidShapeLayout, MermaidError> = when {
+        isDefaultNode -> GMResult.Ok(
+            mindmapDefault(measuredLabel, padding, look, bottomStroke),
+        )
+        kind == SceneShapeKind.Rectangle -> GMResult.Ok(
+            rectangle(measuredLabel, padding = 10f, look = look),
+        )
+        kind == SceneShapeKind.RoundedRectangle -> GMResult.Ok(
+            roundedRectangle(measuredLabel, padding = 15f),
+        )
+        kind == SceneShapeKind.Circle -> GMResult.Ok(
+            mindmapCircle(measuredLabel, padding = 10f, look = look),
+        )
+        kind == SceneShapeKind.Cloud -> GMResult.Ok(cloud(measuredLabel, padding))
+        kind == SceneShapeKind.Bang -> GMResult.Ok(bang(measuredLabel, padding))
+        kind == SceneShapeKind.Hexagon -> GMResult.Ok(hexagon(measuredLabel, padding, look))
+        else -> GMResult.Err(
+            MermaidError.UnsupportedFeature(
+                feature = "Mindmap ${kind.name} shape",
+                message = "Mermaid 12 Mindmap does not map this node type to a shape",
+            ),
+        )
+    }
+
     fun layout(
         node: FlowNode,
         measuredLabel: SceneSize,
@@ -1473,6 +1573,7 @@ internal object MermaidShapePort {
         pattern: SceneStrokePattern = SceneStrokePattern.Solid,
         strokeWidth: Float? = null,
         dashIntervals: List<Float> = emptyList(),
+        strokeColor: SceneColor? = null,
     ) = SceneShapePath(
         points = points(*values),
         closed = false,
@@ -1481,6 +1582,7 @@ internal object MermaidShapePort {
         strokeWidth = strokeWidth,
         strokePattern = pattern,
         dashIntervals = dashIntervals,
+        strokeColor = strokeColor,
     )
 
     private fun invisiblePath(points: List<ScenePoint>) = SceneShapePath(
