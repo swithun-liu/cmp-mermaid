@@ -189,8 +189,21 @@ async function analyzePng(page, fileName) {
   if (!fs.existsSync(fileName)) {
     throw new Error(`Missing capture: ${fileName}`);
   }
+  const manifestFileName = fileName.replace(/\.png$/, '.manifest.json');
+  const manifest = fs.existsSync(manifestFileName)
+    ? JSON.parse(fs.readFileSync(manifestFileName, 'utf8'))
+    : null;
+  const viewportBackground = manifest?.viewport?.background;
+  const manifestBackground = viewportBackground == null
+    ? null
+    : [
+        viewportBackground.r,
+        viewportBackground.g,
+        viewportBackground.b,
+        viewportBackground.a,
+      ];
   const source = `data:image/png;base64,${fs.readFileSync(fileName).toString('base64')}`;
-  return page.evaluate(async (imageSource) => {
+  return page.evaluate(async ({ imageSource, manifestBackground }) => {
     const colorDistance = (left, right) =>
       Math.abs(left[0] - right[0]) +
       Math.abs(left[1] - right[1]) +
@@ -217,23 +230,12 @@ async function analyzePng(page, fileName) {
         .sort((left, right) => left - right);
       return Math.round((values[1] + values[2]) / 2);
     });
-    const sampledColors = new Map();
-    for (let y = 0; y < image.height; y += 4) {
-      for (let x = 0; x < image.width; x += 4) {
-        const index = (y * image.width + x) * 4;
-        const key =
-          `${pixels[index]},${pixels[index + 1]},` +
-          `${pixels[index + 2]},${pixels[index + 3]}`;
-        sampledColors.set(key, (sampledColors.get(key) ?? 0) + 1);
-      }
-    }
-    const dominantBackground = [...sampledColors.entries()]
-      .sort((left, right) => right[1] - left[1])[0][0]
-      .split(',')
-      .map(Number);
-    const backgrounds = [dominantBackground];
-    if (colorDistance(background, dominantBackground) > 24) {
-      backgrounds.push(background);
+    const backgrounds = [background];
+    if (
+      manifestBackground !== null &&
+      colorDistance(background, manifestBackground) > 24
+    ) {
+      backgrounds.push(manifestBackground);
     }
     let minimumX = image.width;
     let minimumY = image.height;
@@ -272,13 +274,13 @@ async function analyzePng(page, fileName) {
     return {
       width: image.width,
       height: image.height,
-      background: dominantBackground,
+      background: manifestBackground ?? background,
       backgroundColors: backgrounds,
       inkPixels,
       inkRatio: inkPixels / (image.width * image.height),
       contentBounds,
     };
-  }, source);
+  }, { imageSource: source, manifestBackground });
 }
 
 function ratio(numerator, denominator) {

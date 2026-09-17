@@ -56,6 +56,7 @@ const kinds = [
   'mindmap',
   'packet',
   'radar',
+  'sankey',
   'kanban',
 ];
 const kindTitles = {
@@ -75,6 +76,7 @@ const kindTitles = {
   mindmap: 'Mindmap',
   packet: 'Packet',
   radar: 'Radar',
+  sankey: 'Sankey',
   kanban: 'Kanban',
 };
 const selectedKinds = kinds.filter(

@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -78,6 +79,7 @@ import com.swithun.cmpmermaid.core.MermaidTheme
 import com.swithun.cmpmermaid.core.SceneArrowHead
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
+import com.swithun.cmpmermaid.core.SceneBlendMode
 import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.SceneElement
 import com.swithun.cmpmermaid.core.SceneLinearGradient
@@ -895,7 +897,9 @@ private fun DrawScope.drawScenePath(
             drawPath(
                 path = path,
                 color = fillColor.toComposeColor(),
+                alpha = element.opacity.coerceIn(0f, 1f),
                 style = Fill,
+                blendMode = element.blendMode.toComposeBlendMode(),
             )
         }
     }
@@ -904,28 +908,43 @@ private fun DrawScope.drawScenePath(
     } else {
         paths
     }
+    val pathBounds = element.points.toComposeBounds()
+    val strokeGradient = element.strokeGradient?.toComposeBrush(pathBounds)
     visiblePaths.forEach { visiblePath ->
-        drawPath(
-            path = visiblePath,
-            color = element.color.toComposeColor(),
-            style = Stroke(
-                width = element.strokeWidth,
-                cap = if (element.animated) StrokeCap.Round else StrokeCap.Butt,
-                join = StrokeJoin.Miter,
-                pathEffect = if (
-                    !useNeoMarkerMargin &&
-                    element.dashIntervals.size >= 2 &&
-                    element.dashIntervals.all { it.isFinite() && it > 0f }
-                ) {
-                    PathEffect.dashPathEffect(
-                        intervals = element.dashIntervals.toFloatArray(),
-                        phase = element.animationDashPhase(animationTimeMillis),
-                    )
-                } else if (!useNeoMarkerMargin) {
-                    element.strokePattern.toPathEffect()
-                } else null,
-            ),
+        val stroke = Stroke(
+            width = element.strokeWidth,
+            cap = if (element.animated) StrokeCap.Round else StrokeCap.Butt,
+            join = StrokeJoin.Miter,
+            pathEffect = if (
+                !useNeoMarkerMargin &&
+                element.dashIntervals.size >= 2 &&
+                element.dashIntervals.all { it.isFinite() && it > 0f }
+            ) {
+                PathEffect.dashPathEffect(
+                    intervals = element.dashIntervals.toFloatArray(),
+                    phase = element.animationDashPhase(animationTimeMillis),
+                )
+            } else if (!useNeoMarkerMargin) {
+                element.strokePattern.toPathEffect()
+            } else null,
         )
+        if (strokeGradient == null) {
+            drawPath(
+                path = visiblePath,
+                color = element.color.toComposeColor(),
+                alpha = element.opacity.coerceIn(0f, 1f),
+                style = stroke,
+                blendMode = element.blendMode.toComposeBlendMode(),
+            )
+        } else {
+            drawPath(
+                path = visiblePath,
+                brush = strokeGradient,
+                alpha = element.opacity.coerceIn(0f, 1f),
+                style = stroke,
+                blendMode = element.blendMode.toComposeBlendMode(),
+            )
+        }
     }
     drawArrowHead(
         type = element.arrowStart,
@@ -945,6 +964,23 @@ private fun DrawScope.drawScenePath(
         markerBackground = element.markerBackground?.toComposeColor() ?: Color.White,
         strokeWidth = element.strokeWidth,
     )
+}
+
+private fun List<ScenePoint>.toComposeBounds(): Rect {
+    if (isEmpty()) {
+        return Rect.Zero
+    }
+    return Rect(
+        left = minOf(ScenePoint::x),
+        top = minOf(ScenePoint::y),
+        right = maxOf(ScenePoint::x),
+        bottom = maxOf(ScenePoint::y),
+    )
+}
+
+private fun SceneBlendMode.toComposeBlendMode(): BlendMode = when (this) {
+    SceneBlendMode.SourceOver -> BlendMode.SrcOver
+    SceneBlendMode.Multiply -> BlendMode.Multiply
 }
 
 internal fun shouldApplyNeoMarkerMargins(
@@ -2007,12 +2043,41 @@ private fun DrawScope.drawSceneText(
             Constraints()
         },
     )
+    val outlineLayout = element.outlineColor
+        ?.takeIf { element.outlineWidth > 0f }
+        ?.let { outlineColor ->
+            textMeasurer.measure(
+                text = element.text.toAnnotatedString(
+                    spans = element.spans,
+                    monospaceFontFamily = monospaceFontFamily,
+                    cjkFontFamily = cjkFontFamily,
+                    symbolFontFamily = symbolFontFamily,
+                ),
+                style = style.copy(
+                    color = outlineColor.toComposeColor(),
+                    drawStyle = Stroke(width = element.outlineWidth),
+                ),
+                softWrap = element.softWrap,
+                maxLines = mermaidTextMaxLines(element.text, element.softWrap),
+                constraints = if (element.softWrap) {
+                    Constraints(maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1))
+                } else {
+                    Constraints()
+                },
+            )
+        }
     val x = when (element.horizontalAlignment) {
         SceneTextAlignment.Start -> element.bounds.left + 4f
         SceneTextAlignment.Center -> element.bounds.center.x - layout.size.width / 2f
         SceneTextAlignment.End -> element.bounds.right - layout.size.width - 4f
     }
     val y = element.bounds.center.y - layout.size.height / 2f
+    fun DrawScope.drawLayouts() {
+        outlineLayout?.let { outlined ->
+            drawText(outlined, topLeft = Offset(x, y))
+        }
+        drawText(layout, topLeft = Offset(x, y))
+    }
     withTransform({
         rotate(
             degrees = element.rotationDegrees,
@@ -2028,10 +2093,10 @@ private fun DrawScope.drawSceneText(
                 right = element.bounds.right,
                 bottom = element.bounds.bottom,
             ) {
-                drawText(layout, topLeft = Offset(x, y))
+                drawLayouts()
             }
         } else {
-            drawText(layout, topLeft = Offset(x, y))
+            drawLayouts()
         }
     }
 }

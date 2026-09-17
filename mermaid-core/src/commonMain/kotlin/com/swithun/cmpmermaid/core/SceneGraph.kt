@@ -73,6 +73,11 @@ enum class SceneStrokePattern {
     Dotted,
 }
 
+enum class SceneBlendMode {
+    SourceOver,
+    Multiply,
+}
+
 enum class SceneArrowHead {
     None,
     Triangle,
@@ -189,6 +194,8 @@ data class SceneText(
     val softWrap: Boolean = true,
     val clipToBounds: Boolean = false,
     val horizontalScale: Float? = null,
+    val outlineColor: SceneColor? = null,
+    val outlineWidth: Float = 0f,
 ) : SceneElement
 
 data class SceneTextSpan(
@@ -271,6 +278,9 @@ data class ScenePath(
     val markerBackground: SceneColor? = null,
     val fillColor: SceneColor? = null,
     val closed: Boolean = false,
+    val strokeGradient: SceneLinearGradient? = null,
+    val opacity: Float = 1f,
+    val blendMode: SceneBlendMode = SceneBlendMode.SourceOver,
 ) : SceneElement
 
 data class SceneNodeInteraction(

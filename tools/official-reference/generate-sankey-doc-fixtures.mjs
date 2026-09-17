@@ -1,0 +1,141 @@
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const MERMAID_VERSION = '12.0.0';
+const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
+const repositoryRoot = path.resolve(scriptDirectory, '../..');
+const mermaidSourceRoot = process.env.MERMAID_SOURCE_DIR;
+
+if (!mermaidSourceRoot) {
+  throw new Error('Set MERMAID_SOURCE_DIR to a Mermaid source checkout');
+}
+
+const packageFile = path.join(mermaidSourceRoot, 'packages/mermaid/package.json');
+const packageMetadata = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
+if (packageMetadata.version !== MERMAID_VERSION) {
+  throw new Error(
+    `Expected Mermaid source ${MERMAID_VERSION}, found ${packageMetadata.version}`,
+  );
+}
+
+const documentationFile = path.join(
+  mermaidSourceRoot,
+  'packages/mermaid/src/docs/syntax/sankey.md',
+);
+const documentation = fs.readFileSync(documentationFile, 'utf8');
+const documentationHash = crypto
+  .createHash('sha256')
+  .update(documentation)
+  .digest('hex');
+const cases = [];
+let heading = 'Sankey';
+let fenceLanguage = '';
+let fenceLines = null;
+let inHtmlComment = false;
+
+for (const line of documentation.split(/\r?\n/)) {
+  if (fenceLines === null) {
+    if (line.includes('<!--')) {
+      inHtmlComment = true;
+    }
+    if (inHtmlComment) {
+      if (line.includes('-->')) {
+        inHtmlComment = false;
+      }
+      continue;
+    }
+    if (/^#{1,4}\s/.test(line)) {
+      heading = line.replace(/^#{1,4}\s+/, '').trim();
+    }
+    if (line.startsWith('```')) {
+      fenceLanguage = line.slice(3).trim();
+      fenceLines = [];
+    }
+    continue;
+  }
+
+  if (line === '```') {
+    const source = fenceLines.join('\n').trim();
+    const hasDiagramHeader = source
+      .split(/\r?\n/)
+      .map((candidate) => candidate.trim())
+      .some((candidate) => /^sankey(?:-beta)?\s*$/.test(candidate));
+    if (/^(mermaid|mermaid-example)$/.test(fenceLanguage) && hasDiagramHeader) {
+      cases.push({
+        id: `${String(cases.length + 1).padStart(3, '0')}_${slug(heading)}`,
+        title: heading,
+        source,
+      });
+    }
+    fenceLanguage = '';
+    fenceLines = null;
+    continue;
+  }
+
+  fenceLines.push(line);
+}
+
+const kotlinCases = cases
+  .map(({ id, title, source }) => `    MermaidSankeyDocCase(
+        id = ${kotlinString(id)},
+        title = ${kotlinString(title)},
+        source = ${kotlinRawString(source)},
+    )`)
+  .join(',\n');
+
+const output = path.join(
+  repositoryRoot,
+  'mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/OfficialSankeyDocumentationCases.kt',
+);
+fs.mkdirSync(path.dirname(output), { recursive: true });
+fs.writeFileSync(
+  output,
+  `package com.swithun.cmpmermaid.core
+
+/**
+ * Generated from Mermaid ${MERMAID_VERSION}
+ * packages/mermaid/src/docs/syntax/sankey.md.
+ * Upstream document SHA-256: ${documentationHash}
+ *
+ * Do not edit manually. Run:
+ *   MERMAID_SOURCE_DIR=/path/to/mermaid npm run generate:sankey-doc-fixtures
+ */
+internal data class MermaidSankeyDocCase(
+    val id: String,
+    val title: String,
+    val source: String,
+)
+
+internal val officialSankeyDocumentationCases: List<MermaidSankeyDocCase> = listOf(
+${kotlinCases},
+)
+`,
+);
+
+console.log(
+  `Generated ${cases.length} Mermaid ${MERMAID_VERSION} Sankey documentation fixtures.`,
+);
+
+function slug(value) {
+  const normalized = value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+  return normalized || 'example';
+}
+
+function kotlinString(value) {
+  return JSON.stringify(value).replaceAll('$', '\\$');
+}
+
+function kotlinRawString(value) {
+  return `"""
+${value
+    .replaceAll('$', () => "${'$'}")
+    .replaceAll('"""', '${"\\"\\"\\""}')}
+        """.trimIndent()`;
+}

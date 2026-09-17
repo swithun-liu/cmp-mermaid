@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "device": "emulator-5554",
-  "caseCount": 158,
-  "lastCaseId": "prod_mindmap_configured_theme_readiness",
-  "initialPssKb": 164357,
-  "peakPssKb": 194098,
-  "finalPssKb": 157788,
-  "scrollSeconds": 30,
+  "caseCount": 236,
+  "lastCaseId": "prod_sankey_beta_compact",
+  "initialPssKb": 161201,
+  "peakPssKb": 235037,
+  "finalPssKb": 188221,
+  "scrollSeconds": 21,
   "reachedLastCase": true,
   "thresholds": {
     "maximumPssKb": 300000,

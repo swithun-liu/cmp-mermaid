@@ -1,13 +1,14 @@
 {
   "schemaVersion": 1,
   "platform": "Desktop macOS",
-  "caseCount": 158,
-  "lastCaseId": "prod_mindmap_configured_theme_readiness",
+  "caseCount": 236,
+  "lastCaseId": "prod_sankey_beta_compact",
   "autoRunItemDelayMillis": 75,
-  "completionMillis": 15000,
-  "finalRssKb": 428480,
+  "completionMillis": 21000,
+  "peakRssKb": 442176,
+  "finalRssKb": 442176,
   "completedRuns": 3,
-  "windowObserved": true,
+  "windowObserved": false,
   "reachedLastCase": true,
   "crashed": false
 }

@@ -97,6 +97,7 @@ private enum class DebugScreen {
     Mindmap,
     Packet,
     Radar,
+    Sankey,
     Playground,
     LoadTest,
 }
@@ -217,6 +218,12 @@ private val destinations = listOf(
         radarDiagramDocsSpec,
         "Multi-series polar charts with circular or polygon graticules",
         DiagramStability.Reaudit,
+    ),
+    DiagramDestination(
+        DebugScreen.Sankey,
+        sankeyDiagramDocsSpec,
+        "Directed quantities with CSV input and D3 Sankey layout",
+        DiagramStability.Beta,
     ),
 )
 

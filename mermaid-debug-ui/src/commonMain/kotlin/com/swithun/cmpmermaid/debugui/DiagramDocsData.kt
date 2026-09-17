@@ -532,3 +532,41 @@ internal val radarDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val sankeyDiagramDocsSpec = DiagramDocsSpec(
+    id = "sankey",
+    title = "Sankey",
+    syntaxTitle = "Sankey diagrams - Basic Syntax",
+    description = "Visualize directed quantities using three-column CSV records, D3 Sankey " +
+        "alignment, value labels, link colors, and configurable node geometry.",
+    documentationUrl = "https://mermaid.js.org/syntax/sankey.html",
+    galleryTitle = "Sankey demo gallery",
+    cases = sankeyDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1.5f,
+        )
+    },
+    syntaxLessons = lessons(
+        sankeyDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1.5f,
+            )
+        },
+        listOf(
+            "Each CSV row defines a source, target, and numeric flow value.",
+            "Quoted fields preserve commas and doubled quote characters.",
+            "Left, right, center, and justify alignment follow d3-sankey semantics.",
+            "Node colors, link coloring, geometry, and outlined labels are configurable.",
+            "The sankey-beta alias and fixed or responsive sizing share one renderer.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

@@ -334,6 +334,35 @@ export const requiredFeaturesByKind = {
     'tick-cap',
     'curve-tension',
   ],
+  sankey: [
+    'sankey-header',
+    'sankey-beta-header',
+    'csv-records',
+    'quoted-commas',
+    'escaped-quotes',
+    'blank-lines',
+    'multi-stage-flow',
+    'branching',
+    'merging',
+    'left-alignment',
+    'right-alignment',
+    'center-alignment',
+    'justify-alignment',
+    'gradient-links',
+    'source-links',
+    'target-links',
+    'fixed-link-color',
+    'show-values',
+    'hide-values',
+    'value-prefix',
+    'value-suffix',
+    'node-width',
+    'node-padding',
+    'outlined-labels',
+    'custom-node-colors',
+    'frontmatter-title',
+    'responsive-sizing',
+  ],
 };
 
 const flowchartCases = [
@@ -3364,6 +3393,213 @@ radar-beta
   },
 ];
 
+const sankeyCases = [
+  {
+    id: 'prod_sankey_delivery_flow',
+    kind: 'sankey',
+    title: 'Delivery flow',
+    scenario: 'A multi-stage delivery pipeline branches and merges with visible values.',
+    aspectRatio: 1.5,
+    features: [
+      'sankey-header',
+      'csv-records',
+      'multi-stage-flow',
+      'branching',
+      'merging',
+      'justify-alignment',
+      'gradient-links',
+      'show-values',
+    ],
+    expectedTexts: ['Intake', 'Build', 'Release'],
+    source: String.raw`
+sankey
+Intake,Build,80
+Intake,Review,40
+Build,Release,70
+Build,Rework,10
+Review,Release,35
+Review,Rejected,5
+Rework,Release,10
+`,
+  },
+  {
+    id: 'prod_sankey_quoted_csv',
+    kind: 'sankey',
+    title: 'Quoted CSV values',
+    scenario: 'Quoted commas, escaped quotes, and blank lines follow the Sankey CSV grammar.',
+    aspectRatio: 1.5,
+    features: ['quoted-commas', 'escaped-quotes', 'blank-lines', 'csv-records'],
+    expectedTexts: ['North', 'Reviewed', 'Deferred'],
+    source: String.raw`
+sankey
+
+"North, region","Reviewed ""ready""",20
+"North, region",Deferred,12.5
+
+"South, region","Reviewed ""ready""",18
+`,
+  },
+  {
+    id: 'prod_sankey_left_source_links',
+    kind: 'sankey',
+    title: 'Left-aligned source links',
+    scenario: 'Left alignment and source-colored links render without value labels.',
+    aspectRatio: 1.5,
+    features: ['left-alignment', 'source-links', 'hide-values', 'responsive-sizing'],
+    expectedTexts: ['Gateway', 'Archive'],
+    source: String.raw`
+---
+config:
+  sankey:
+    nodeAlignment: left
+    linkColor: source
+    showValues: false
+    useMaxWidth: true
+---
+sankey
+Gateway,Validate,45
+Gateway,Reject,5
+Validate,Publish,38
+Validate,Archive,7
+`,
+  },
+  {
+    id: 'prod_sankey_right_target_links',
+    kind: 'sankey',
+    title: 'Right-aligned target links',
+    scenario: 'Right alignment, target colors, custom dimensions, and spacing are configured.',
+    aspectRatio: 1.75,
+    features: [
+      'right-alignment',
+      'target-links',
+      'node-width',
+      'node-padding',
+      'responsive-sizing',
+    ],
+    expectedTexts: ['Requests', 'Completed'],
+    source: String.raw`
+---
+config:
+  sankey:
+    width: 700
+    height: 400
+    nodeAlignment: right
+    linkColor: target
+    nodeWidth: 18
+    nodePadding: 8
+    useMaxWidth: false
+---
+sankey
+Requests,Accepted,80
+Requests,Rejected,10
+Accepted,Completed,72
+Accepted,Cancelled,8
+`,
+  },
+  {
+    id: 'prod_sankey_center_currency',
+    kind: 'sankey',
+    title: 'Centered currency flow',
+    scenario: 'Center alignment formats values with a prefix and suffix.',
+    aspectRatio: 1.5,
+    features: ['center-alignment', 'value-prefix', 'value-suffix', 'show-values'],
+    expectedTexts: ['Budget', 'Delivery'],
+    source: String.raw`
+---
+config:
+  sankey:
+    nodeAlignment: center
+    prefix: "$"
+    suffix: "k"
+---
+sankey
+Budget,Engineering,90
+Budget,Operations,60
+Engineering,Delivery,75
+Operations,Delivery,40
+`,
+  },
+  {
+    id: 'prod_sankey_outlined_custom_nodes',
+    kind: 'sankey',
+    title: 'Outlined custom nodes',
+    scenario: 'Outlined labels and node-specific colors remain legible over dense links.',
+    aspectRatio: 1.5,
+    features: ['outlined-labels', 'custom-node-colors', 'gradient-links', 'branching'],
+    expectedTexts: ['Source', 'Transform', 'Warehouse'],
+    source: String.raw`
+---
+config:
+  sankey:
+    labelStyle: outlined
+    nodeColors:
+      Source: "#2563eb"
+      Transform: "#dc2626"
+      Warehouse: "#16a34a"
+---
+sankey
+Source,Transform,65
+Source,Quarantine,15
+Transform,Warehouse,55
+Transform,Retry,10
+`,
+  },
+  {
+    id: 'prod_sankey_fixed_link_color',
+    kind: 'sankey',
+    title: 'Fixed link color',
+    scenario: 'All links use one explicit CSS color while node colors retain the ordinal palette.',
+    aspectRatio: 1.5,
+    features: ['fixed-link-color', 'multi-stage-flow', 'merging'],
+    expectedTexts: ['Capture', 'Index', 'Search'],
+    source: String.raw`
+---
+title: Search ingestion
+config:
+  sankey:
+    linkColor: "#475569"
+---
+sankey
+Capture,Normalize,64
+Normalize,Index,56
+Normalize,Discard,8
+Index,Search,52
+Archive,Search,4
+`,
+  },
+  {
+    id: 'prod_sankey_beta_compact',
+    kind: 'sankey',
+    title: 'Compact beta alias',
+    scenario: 'The beta alias shares compact node geometry and frontmatter title metadata.',
+    aspectRatio: 1.6,
+    features: [
+      'sankey-beta-header',
+      'frontmatter-title',
+      'node-width',
+      'node-padding',
+      'hide-values',
+    ],
+    expectedTexts: ['Legacy', 'Bridge', 'Modern'],
+    source: String.raw`
+---
+title: Compact migration
+config:
+  sankey:
+    width: 640
+    height: 400
+    nodeWidth: 6
+    nodePadding: 4
+    showValues: false
+---
+sankey-beta
+Legacy,Bridge,48
+Bridge,Modern,44
+Bridge,Manual review,4
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -3699,6 +3935,7 @@ export const conformanceCases = [
   ...mindmapCases,
   ...packetCases,
   ...radarCases,
+  ...sankeyCases,
 ];
 
 export const cases = [

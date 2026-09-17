@@ -24,6 +24,10 @@ const maximumRetainedJsHeapBytes = readNumber(
   'MAXIMUM_RETAINED_JS_HEAP_BYTES',
   96 * 1024 * 1024,
 );
+const maximumScrollEvents = readNumber(
+  'MAXIMUM_SCROLL_EVENTS',
+  Math.max(80, cases.length),
+);
 const lastCase = cases.at(-1);
 if (lastCase == null) {
   throw new Error('The stability corpus is empty');
@@ -59,7 +63,7 @@ try {
   await page.mouse.move(600, 700);
   let reachedLastCase = false;
   let scrollEvents = 0;
-  while (scrollEvents < 80 && !reachedLastCase) {
+  while (scrollEvents < maximumScrollEvents && !reachedLastCase) {
     await page.mouse.wheel({ deltaY: 700 });
     await sleep(35);
     scrollEvents += 1;

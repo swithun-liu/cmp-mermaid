@@ -90,7 +90,7 @@ export const diagramFamilies = Object.freeze([
   family('sankey', 'Sankey', 'sankey.md', ['sankey'], [
     header('sankey-beta', 'sankey'),
     header('sankey', 'sankey'),
-  ]),
+  ], true),
   family('sequence', 'Sequence', 'sequenceDiagram.md', ['sequence'], [
     header('sequenceDiagram', 'sequence'),
   ], true),

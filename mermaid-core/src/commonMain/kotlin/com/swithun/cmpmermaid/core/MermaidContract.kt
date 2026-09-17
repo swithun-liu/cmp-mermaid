@@ -184,6 +184,21 @@ data class MermaidRadarOptions(
     val useMaxWidth: Boolean = true,
 )
 
+data class MermaidSankeyOptions(
+    val width: Float = 600f,
+    val height: Float = 400f,
+    val linkColor: String = "gradient",
+    val nodeAlignment: String = "justify",
+    val useMaxWidth: Boolean = false,
+    val showValues: Boolean = true,
+    val prefix: String = "",
+    val suffix: String = "",
+    val nodeWidth: Float = 10f,
+    val nodePadding: Float = 12f,
+    val labelStyle: String = "legacy",
+    val nodeColors: Map<String, SceneColor> = emptyMap(),
+)
+
 data class MermaidKanbanOptions(
     val padding: Float = 8f,
     val sectionWidth: Float = 200f,
@@ -292,6 +307,7 @@ data class MermaidRenderOptions(
     val mindmap: MermaidMindmapOptions = MermaidMindmapOptions(),
     val packet: MermaidPacketOptions = MermaidPacketOptions(),
     val radar: MermaidRadarOptions = MermaidRadarOptions(),
+    val sankey: MermaidSankeyOptions = MermaidSankeyOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
     val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val curve: String = "basis",

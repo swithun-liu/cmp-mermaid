@@ -69,7 +69,7 @@ side-by-side comparison does not expose a functional rendering defect.
   commit labels are emitted in upstream commit order instead of legacy global
   label layers, eliminating the missed cherry-pick label paint-order defect.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
-  complete 158-case mixed corpus.
+  complete 236-case mixed corpus.
 
 ## Reference Workflow
 

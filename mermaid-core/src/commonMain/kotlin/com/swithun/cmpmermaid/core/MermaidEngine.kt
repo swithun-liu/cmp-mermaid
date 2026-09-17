@@ -13,6 +13,7 @@ import com.swithun.cmpmermaid.core.pie.PiePlugin
 import com.swithun.cmpmermaid.core.quadrant.QuadrantPlugin
 import com.swithun.cmpmermaid.core.radar.RadarPlugin
 import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
+import com.swithun.cmpmermaid.core.sankey.SankeyPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
 import com.swithun.cmpmermaid.core.statediagram.StatePlugin
 import com.swithun.cmpmermaid.core.timeline.TimelinePlugin
@@ -54,6 +55,7 @@ class MermaidEngine(
         MindmapPlugin(),
         PacketPlugin(),
         RadarPlugin(),
+        SankeyPlugin(),
         TimelinePlugin(),
         KanbanPlugin(),
     ),

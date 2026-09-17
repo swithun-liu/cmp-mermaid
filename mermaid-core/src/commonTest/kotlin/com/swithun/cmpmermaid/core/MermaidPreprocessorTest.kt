@@ -692,4 +692,49 @@ class MermaidPreprocessorTest {
         assertIs<MermaidError.UnsupportedFeature>(error)
         assertContains(error.message, "themeCSS")
     }
+
+    @Test
+    fun portsCompleteSankeyConfigShape() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  sankey:
+                    width: 720
+                    height: 360
+                    linkColor: source
+                    nodeAlignment: center
+                    useMaxWidth: true
+                    showValues: false
+                    prefix: "${'$'}"
+                    suffix: MW
+                    nodeWidth: 16
+                    nodePadding: 9
+                    labelStyle: outlined
+                    nodeColors:
+                      Input: "#112233"
+                ---
+                sankey
+                Input,Output,1
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val sankey = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.sankey
+
+        assertEquals(720f, sankey.width)
+        assertEquals(360f, sankey.height)
+        assertEquals("source", sankey.linkColor)
+        assertEquals("center", sankey.nodeAlignment)
+        assertEquals(true, sankey.useMaxWidth)
+        assertEquals(false, sankey.showValues)
+        assertEquals("${'$'}", sankey.prefix)
+        assertEquals("MW", sankey.suffix)
+        assertEquals(16f, sankey.nodeWidth)
+        assertEquals(9f, sankey.nodePadding)
+        assertEquals("outlined", sankey.labelStyle)
+        assertEquals(SceneColor(0xFF112233), sankey.nodeColors["Input"])
+    }
 }

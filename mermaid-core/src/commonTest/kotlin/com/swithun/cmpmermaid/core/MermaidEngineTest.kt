@@ -218,6 +218,20 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersSankeyAndSankeyBetaThroughRegisteredPlugin() {
+        listOf("sankey", "sankey-beta").forEach { header ->
+            val result = engine.render("$header\nInput,Output,42", context)
+
+            val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+            assertEquals(2, scene.elements.filterIsInstance<SceneShape>().size)
+            assertEquals(1, scene.elements.filterIsInstance<ScenePath>().size)
+            assertTrue(scene.elements.filterIsInstance<SceneText>().any {
+                text -> text.text == "Input 42"
+            })
+        }
+    }
+
+    @Test
     fun rejectsEffectiveHandDrawnLookForExistingDiagramTypes() {
         val result = engine.render(
             """

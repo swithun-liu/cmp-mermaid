@@ -244,6 +244,7 @@ internal object MermaidPreprocessor {
         val mindmap = map.map("mindmap")
         val packet = map.map("packet")
         val radar = map.map("radar")
+        val sankey = map.map("sankey")
         val kanban = map.map("kanban")
         val pie = map.map("pie")
         val quadrantChart = map.map("quadrantChart")
@@ -404,6 +405,34 @@ internal object MermaidPreprocessor {
                     return null
                 }
                 result += parsed
+            }
+            return result
+        }
+
+        fun colorMap(
+            owner: YamlMap?,
+            key: String,
+            path: String,
+        ): Map<String, SceneColor>? {
+            val node = owner?.node(key) ?: return null
+            val yamlMap = node as? YamlMap
+            if (yamlMap == null) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must be a color map",
+                )
+                return null
+            }
+            val result = linkedMapOf<String, SceneColor>()
+            yamlMap.entries.forEach { (entryKey, entryValue) ->
+                val raw = (entryValue as? YamlScalar)?.content
+                val parsed = raw?.let(CssColorParser::parse)
+                if (parsed == null) {
+                    readError = MermaidError.Configuration(
+                        "Mermaid $sourceName '$path.${entryKey.content}' has invalid color",
+                    )
+                    return null
+                }
+                result[entryKey.content] = parsed
             }
             return result
         }
@@ -1120,6 +1149,61 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'radar.curveTension' must be between 0 and 1",
             )
         }
+        val sankeyWidth = float(sankey, "width", "sankey.width")
+        val sankeyHeight = float(sankey, "height", "sankey.height")
+        val sankeyLinkColor = string(sankey, "linkColor", "sankey.linkColor")
+        val sankeyNodeAlignment =
+            string(sankey, "nodeAlignment", "sankey.nodeAlignment")
+        val sankeyUseMaxWidth = boolean(sankey, "useMaxWidth", "sankey.useMaxWidth")
+        val sankeyShowValues = boolean(sankey, "showValues", "sankey.showValues")
+        val sankeyPrefix = string(sankey, "prefix", "sankey.prefix")
+        val sankeySuffix = string(sankey, "suffix", "sankey.suffix")
+        val sankeyNodeWidth = float(sankey, "nodeWidth", "sankey.nodeWidth")
+        val sankeyNodePadding = float(sankey, "nodePadding", "sankey.nodePadding")
+        val sankeyLabelStyle = string(sankey, "labelStyle", "sankey.labelStyle")
+        val sankeyNodeColors = colorMap(sankey, "nodeColors", "sankey.nodeColors")
+        listOf(
+            "sankey.width" to sankeyWidth,
+            "sankey.height" to sankeyHeight,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value <= 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be positive",
+            )
+        }
+        listOf(
+            "sankey.nodeWidth" to sankeyNodeWidth,
+            "sankey.nodePadding" to sankeyNodePadding,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
+            )
+        }
+        if (
+            sankeyNodeAlignment != null &&
+            sankeyNodeAlignment !in setOf("left", "right", "center", "justify")
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'sankey.nodeAlignment' is invalid",
+            )
+        }
+        if (sankeyLabelStyle != null && sankeyLabelStyle !in setOf("legacy", "outlined")) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'sankey.labelStyle' is invalid",
+            )
+        }
+        if (
+            sankeyLinkColor != null &&
+            sankeyLinkColor !in setOf("gradient", "source", "target") &&
+            CssColorParser.parse(sankeyLinkColor) == null
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'sankey.linkColor' has invalid color '$sankeyLinkColor'",
+            )
+        }
         val kanbanPadding = float(kanban, "padding", "kanban.padding")
         val kanbanSectionWidth = float(kanban, "sectionWidth", "kanban.sectionWidth")
         val kanbanTicketBaseUrl =
@@ -1435,6 +1519,22 @@ internal object MermaidPreprocessor {
                         useMaxWidth = radarUseMaxWidth,
                     )
                 },
+                sankey = sankey?.let {
+                    MermaidSankeyConfigOverride(
+                        width = sankeyWidth,
+                        height = sankeyHeight,
+                        linkColor = sankeyLinkColor,
+                        nodeAlignment = sankeyNodeAlignment,
+                        useMaxWidth = sankeyUseMaxWidth,
+                        showValues = sankeyShowValues,
+                        prefix = sankeyPrefix,
+                        suffix = sankeySuffix,
+                        nodeWidth = sankeyNodeWidth,
+                        nodePadding = sankeyNodePadding,
+                        labelStyle = sankeyLabelStyle,
+                        nodeColors = sankeyNodeColors,
+                    )
+                },
                 kanban = kanban?.let {
                     MermaidKanbanConfigOverride(
                         padding = kanbanPadding,
@@ -1640,6 +1740,7 @@ internal data class MermaidConfigOverride(
     val mindmap: MermaidMindmapConfigOverride? = null,
     val packet: MermaidPacketConfigOverride? = null,
     val radar: MermaidRadarConfigOverride? = null,
+    val sankey: MermaidSankeyConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
@@ -1746,6 +1847,11 @@ internal data class MermaidConfigOverride(
                 radar?.merge(overrides.radar) ?: overrides.radar
             else -> radar
         },
+        sankey = when {
+            overrides.sankey != null ->
+                sankey?.merge(overrides.sankey) ?: overrides.sankey
+            else -> sankey
+        },
         kanban = when {
             overrides.kanban != null ->
                 kanban?.merge(overrides.kanban) ?: overrides.kanban
@@ -1850,6 +1956,7 @@ internal data class MermaidConfigOverride(
                 mindmap = mindmap?.applyTo(options.mindmap) ?: options.mindmap,
                 packet = packet?.applyTo(options.packet) ?: options.packet,
                 radar = radar?.applyTo(options.radar) ?: options.radar,
+                sankey = sankey?.applyTo(options.sankey) ?: options.sankey,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
@@ -1938,6 +2045,55 @@ internal data class MermaidRadarConfigOverride(
         axisLabelFactor = axisLabelFactor ?: options.axisLabelFactor,
         curveTension = curveTension ?: options.curveTension,
         useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+    )
+}
+
+internal data class MermaidSankeyConfigOverride(
+    val width: Float? = null,
+    val height: Float? = null,
+    val linkColor: String? = null,
+    val nodeAlignment: String? = null,
+    val useMaxWidth: Boolean? = null,
+    val showValues: Boolean? = null,
+    val prefix: String? = null,
+    val suffix: String? = null,
+    val nodeWidth: Float? = null,
+    val nodePadding: Float? = null,
+    val labelStyle: String? = null,
+    val nodeColors: Map<String, SceneColor>? = null,
+) {
+    fun merge(overrides: MermaidSankeyConfigOverride): MermaidSankeyConfigOverride =
+        MermaidSankeyConfigOverride(
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            linkColor = overrides.linkColor ?: linkColor,
+            nodeAlignment = overrides.nodeAlignment ?: nodeAlignment,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            showValues = overrides.showValues ?: showValues,
+            prefix = overrides.prefix ?: prefix,
+            suffix = overrides.suffix ?: suffix,
+            nodeWidth = overrides.nodeWidth ?: nodeWidth,
+            nodePadding = overrides.nodePadding ?: nodePadding,
+            labelStyle = overrides.labelStyle ?: labelStyle,
+            nodeColors = when {
+                overrides.nodeColors != null -> nodeColors.orEmpty() + overrides.nodeColors
+                else -> nodeColors
+            },
+        )
+
+    fun applyTo(options: MermaidSankeyOptions): MermaidSankeyOptions = options.copy(
+        width = width ?: options.width,
+        height = height ?: options.height,
+        linkColor = linkColor ?: options.linkColor,
+        nodeAlignment = nodeAlignment ?: options.nodeAlignment,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        showValues = showValues ?: options.showValues,
+        prefix = prefix ?: options.prefix,
+        suffix = suffix ?: options.suffix,
+        nodeWidth = nodeWidth ?: options.nodeWidth,
+        nodePadding = nodePadding ?: options.nodePadding,
+        labelStyle = labelStyle ?: options.labelStyle,
+        nodeColors = options.nodeColors + nodeColors.orEmpty(),
     )
 }
 

@@ -3094,6 +3094,136 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_sankey_platform_delivery",
+        diagramId = "sankey",
+        title = "Platform delivery flow",
+        scenario = "A production delivery graph combines branching, merging, and multiple stages.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            sankey
+            Demand,Planning,120
+            Planning,Build,85
+            Planning,Deferred,35
+            Build,Verification,70
+            Build,Rework,15
+            Rework,Verification,12
+            Verification,Release,76
+            Verification,Rejected,6
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_revenue_allocation",
+        diagramId = "sankey",
+        title = "Revenue allocation",
+        scenario = "Currency labels, outlined text, custom node colors, and source links are combined.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                prefix: "$"
+                suffix: "M"
+                labelStyle: outlined
+                linkColor: source
+                nodeColors:
+                  Revenue: "#2563eb"
+                  Product: "#16a34a"
+                  Operations: "#dc2626"
+            ---
+            sankey
+            Revenue,Product,72.5
+            Revenue,Operations,38.25
+            Revenue,Research,19.25
+            Product,Growth,54
+            Operations,Reliability,31
+            Research,Growth,16
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_regional_routing",
+        diagramId = "sankey",
+        title = "Regional routing",
+        scenario = "Quoted CSV labels with commas and escaped quotes use target-colored links.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                linkColor: target
+                nodeAlignment: right
+            ---
+            sankey
+            "North, primary","Validation ""green${"\"\"\""},42
+            "South, secondary","Validation ""green${"\"\"\""},36
+            "Validation ""green${"\"\"\""},Deployment,70
+            "Validation ""green${"\"\"\""},Hold,8
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_compact_processing",
+        diagramId = "sankey",
+        title = "Compact processing graph",
+        scenario = "Intrinsic dimensions, narrow nodes, compact padding, and hidden values are exercised.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            title: Compact processing
+            config:
+              sankey:
+                width: 700
+                height: 400
+                nodeWidth: 7
+                nodePadding: 5
+                nodeAlignment: center
+                showValues: false
+                useMaxWidth: false
+            ---
+            sankey-beta
+            Input,Decode,90
+            Decode,Transform,82
+            Decode,Invalid,8
+            Transform,Store,77
+            Transform,Retry,5
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_observability_pipeline",
+        diagramId = "sankey",
+        title = "Observability pipeline",
+        scenario = "A fixed-color flow joins telemetry sources into storage and alerting outputs.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                linkColor: "#64748b"
+                nodeAlignment: left
+            ---
+            sankey
+            Metrics,Collector,58
+            Logs,Collector,76
+            Traces,Collector,42
+            Collector,Hot storage,96
+            Collector,Cold storage,54
+            Collector,Alerts,26
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -6172,6 +6302,136 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               curve target["Target"] { tokyo: 96, seoul: 91, sao: 88, quality: 94 }
               graticule polygon
               max 100
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_platform_delivery",
+        diagramId = "sankey",
+        title = "Platform delivery flow",
+        scenario = "A production delivery graph combines branching, merging, and multiple stages.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            sankey
+            Demand,Planning,120
+            Planning,Build,85
+            Planning,Deferred,35
+            Build,Verification,70
+            Build,Rework,15
+            Rework,Verification,12
+            Verification,Release,76
+            Verification,Rejected,6
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_revenue_allocation",
+        diagramId = "sankey",
+        title = "Revenue allocation",
+        scenario = "Currency labels, outlined text, custom node colors, and source links are combined.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                prefix: "$"
+                suffix: "M"
+                labelStyle: outlined
+                linkColor: source
+                nodeColors:
+                  Revenue: "#2563eb"
+                  Product: "#16a34a"
+                  Operations: "#dc2626"
+            ---
+            sankey
+            Revenue,Product,72.5
+            Revenue,Operations,38.25
+            Revenue,Research,19.25
+            Product,Growth,54
+            Operations,Reliability,31
+            Research,Growth,16
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_regional_routing",
+        diagramId = "sankey",
+        title = "Regional routing",
+        scenario = "Quoted CSV labels with commas and escaped quotes use target-colored links.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                linkColor: target
+                nodeAlignment: right
+            ---
+            sankey
+            "North, primary","Validation ""green${"\"\"\""},42
+            "South, secondary","Validation ""green${"\"\"\""},36
+            "Validation ""green${"\"\"\""},Deployment,70
+            "Validation ""green${"\"\"\""},Hold,8
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_compact_processing",
+        diagramId = "sankey",
+        title = "Compact processing graph",
+        scenario = "Intrinsic dimensions, narrow nodes, compact padding, and hidden values are exercised.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            title: Compact processing
+            config:
+              sankey:
+                width: 700
+                height: 400
+                nodeWidth: 7
+                nodePadding: 5
+                nodeAlignment: center
+                showValues: false
+                useMaxWidth: false
+            ---
+            sankey-beta
+            Input,Decode,90
+            Decode,Transform,82
+            Decode,Invalid,8
+            Transform,Store,77
+            Transform,Retry,5
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_sankey_observability_pipeline",
+        diagramId = "sankey",
+        title = "Observability pipeline",
+        scenario = "A fixed-color flow joins telemetry sources into storage and alerting outputs.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                linkColor: "#64748b"
+                nodeAlignment: left
+            ---
+            sankey
+            Metrics,Collector,58
+            Logs,Collector,76
+            Traces,Collector,42
+            Collector,Hot storage,96
+            Collector,Cold storage,54
+            Collector,Alerts,26
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -9779,6 +10039,197 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Option precedence", "Baseline", "Target"),
         features = setOf("option-last-wins", "tick-cap", "ticks", "legend", "polygon-graticule", "explicit-range"),
     ),
+    StabilityCorpusCase(
+        id = "prod_sankey_delivery_flow",
+        diagramId = "sankey",
+        title = "Delivery flow",
+        scenario = "A multi-stage delivery pipeline branches and merges with visible values.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            sankey
+            Intake,Build,80
+            Intake,Review,40
+            Build,Release,70
+            Build,Rework,10
+            Review,Release,35
+            Review,Rejected,5
+            Rework,Release,10
+        """.trimIndent(),
+        expectedTexts = listOf("Intake", "Build", "Release"),
+        features = setOf("sankey-header", "csv-records", "multi-stage-flow", "branching", "merging", "justify-alignment", "gradient-links", "show-values"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_sankey_quoted_csv",
+        diagramId = "sankey",
+        title = "Quoted CSV values",
+        scenario = "Quoted commas, escaped quotes, and blank lines follow the Sankey CSV grammar.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            sankey
+
+            "North, region","Reviewed ""ready${"\"\"\""},20
+            "North, region",Deferred,12.5
+
+            "South, region","Reviewed ""ready${"\"\"\""},18
+        """.trimIndent(),
+        expectedTexts = listOf("North", "Reviewed", "Deferred"),
+        features = setOf("quoted-commas", "escaped-quotes", "blank-lines", "csv-records"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_sankey_left_source_links",
+        diagramId = "sankey",
+        title = "Left-aligned source links",
+        scenario = "Left alignment and source-colored links render without value labels.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                nodeAlignment: left
+                linkColor: source
+                showValues: false
+                useMaxWidth: true
+            ---
+            sankey
+            Gateway,Validate,45
+            Gateway,Reject,5
+            Validate,Publish,38
+            Validate,Archive,7
+        """.trimIndent(),
+        expectedTexts = listOf("Gateway", "Archive"),
+        features = setOf("left-alignment", "source-links", "hide-values", "responsive-sizing"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_sankey_right_target_links",
+        diagramId = "sankey",
+        title = "Right-aligned target links",
+        scenario = "Right alignment, target colors, custom dimensions, and spacing are configured.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            config:
+              sankey:
+                width: 700
+                height: 400
+                nodeAlignment: right
+                linkColor: target
+                nodeWidth: 18
+                nodePadding: 8
+                useMaxWidth: false
+            ---
+            sankey
+            Requests,Accepted,80
+            Requests,Rejected,10
+            Accepted,Completed,72
+            Accepted,Cancelled,8
+        """.trimIndent(),
+        expectedTexts = listOf("Requests", "Completed"),
+        features = setOf("right-alignment", "target-links", "node-width", "node-padding", "responsive-sizing"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_sankey_center_currency",
+        diagramId = "sankey",
+        title = "Centered currency flow",
+        scenario = "Center alignment formats values with a prefix and suffix.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                nodeAlignment: center
+                prefix: "$"
+                suffix: "k"
+            ---
+            sankey
+            Budget,Engineering,90
+            Budget,Operations,60
+            Engineering,Delivery,75
+            Operations,Delivery,40
+        """.trimIndent(),
+        expectedTexts = listOf("Budget", "Delivery"),
+        features = setOf("center-alignment", "value-prefix", "value-suffix", "show-values"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_sankey_outlined_custom_nodes",
+        diagramId = "sankey",
+        title = "Outlined custom nodes",
+        scenario = "Outlined labels and node-specific colors remain legible over dense links.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              sankey:
+                labelStyle: outlined
+                nodeColors:
+                  Source: "#2563eb"
+                  Transform: "#dc2626"
+                  Warehouse: "#16a34a"
+            ---
+            sankey
+            Source,Transform,65
+            Source,Quarantine,15
+            Transform,Warehouse,55
+            Transform,Retry,10
+        """.trimIndent(),
+        expectedTexts = listOf("Source", "Transform", "Warehouse"),
+        features = setOf("outlined-labels", "custom-node-colors", "gradient-links", "branching"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_sankey_fixed_link_color",
+        diagramId = "sankey",
+        title = "Fixed link color",
+        scenario = "All links use one explicit CSS color while node colors retain the ordinal palette.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            title: Search ingestion
+            config:
+              sankey:
+                linkColor: "#475569"
+            ---
+            sankey
+            Capture,Normalize,64
+            Normalize,Index,56
+            Normalize,Discard,8
+            Index,Search,52
+            Archive,Search,4
+        """.trimIndent(),
+        expectedTexts = listOf("Capture", "Index", "Search"),
+        features = setOf("fixed-link-color", "multi-stage-flow", "merging"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_sankey_beta_compact",
+        diagramId = "sankey",
+        title = "Compact beta alias",
+        scenario = "The beta alias shares compact node geometry and frontmatter title metadata.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Compact migration
+            config:
+              sankey:
+                width: 640
+                height: 400
+                nodeWidth: 6
+                nodePadding: 4
+                showValues: false
+            ---
+            sankey-beta
+            Legacy,Bridge,48
+            Bridge,Modern,44
+            Bridge,Manual review,4
+        """.trimIndent(),
+        expectedTexts = listOf("Legacy", "Bridge", "Modern"),
+        features = setOf("sankey-beta-header", "frontmatter-title", "node-width", "node-padding", "hide-values"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -9824,6 +10275,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "mindmap",
             "packet",
             "radar",
+            "sankey",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -9905,6 +10357,7 @@ private fun addVisualParityVariation(
     "mindmap" -> "${source.trimEnd()}\n    $evidenceId[\"$label\"]\n"
     "packet" -> "${source.trimEnd()}\n  +1: \"${escapeQuotedVisualParityLabel(label)}\"\n"
     "radar" -> replaceOrInsertVisualParityTitle(source, "radar-beta", label)
+    "sankey" -> "${source.trimEnd()}\n\"$label\",$evidenceId,${(ordinal % 17) + 3}\n"
     else -> source
 }
 

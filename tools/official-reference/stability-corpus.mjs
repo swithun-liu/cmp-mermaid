@@ -2882,4 +2882,119 @@ radar-beta
   max 100
 `,
   },
+  {
+    id: 'rc_sankey_platform_delivery',
+    kind: 'sankey',
+    title: 'Platform delivery flow',
+    scenario: 'A production delivery graph combines branching, merging, and multiple stages.',
+    aspectRatio: 1.5,
+    source: String.raw`
+sankey
+Demand,Planning,120
+Planning,Build,85
+Planning,Deferred,35
+Build,Verification,70
+Build,Rework,15
+Rework,Verification,12
+Verification,Release,76
+Verification,Rejected,6
+`,
+  },
+  {
+    id: 'rc_sankey_revenue_allocation',
+    kind: 'sankey',
+    title: 'Revenue allocation',
+    scenario: 'Currency labels, outlined text, custom node colors, and source links are combined.',
+    aspectRatio: 1.5,
+    source: String.raw`
+---
+config:
+  sankey:
+    prefix: "$"
+    suffix: "M"
+    labelStyle: outlined
+    linkColor: source
+    nodeColors:
+      Revenue: "#2563eb"
+      Product: "#16a34a"
+      Operations: "#dc2626"
+---
+sankey
+Revenue,Product,72.5
+Revenue,Operations,38.25
+Revenue,Research,19.25
+Product,Growth,54
+Operations,Reliability,31
+Research,Growth,16
+`,
+  },
+  {
+    id: 'rc_sankey_regional_routing',
+    kind: 'sankey',
+    title: 'Regional routing',
+    scenario: 'Quoted CSV labels with commas and escaped quotes use target-colored links.',
+    aspectRatio: 1.5,
+    source: String.raw`
+---
+config:
+  sankey:
+    linkColor: target
+    nodeAlignment: right
+---
+sankey
+"North, primary","Validation ""green""",42
+"South, secondary","Validation ""green""",36
+"Validation ""green""",Deployment,70
+"Validation ""green""",Hold,8
+`,
+  },
+  {
+    id: 'rc_sankey_compact_processing',
+    kind: 'sankey',
+    title: 'Compact processing graph',
+    scenario: 'Intrinsic dimensions, narrow nodes, compact padding, and hidden values are exercised.',
+    aspectRatio: 1.75,
+    source: String.raw`
+---
+title: Compact processing
+config:
+  sankey:
+    width: 700
+    height: 400
+    nodeWidth: 7
+    nodePadding: 5
+    nodeAlignment: center
+    showValues: false
+    useMaxWidth: false
+---
+sankey-beta
+Input,Decode,90
+Decode,Transform,82
+Decode,Invalid,8
+Transform,Store,77
+Transform,Retry,5
+`,
+  },
+  {
+    id: 'rc_sankey_observability_pipeline',
+    kind: 'sankey',
+    title: 'Observability pipeline',
+    scenario: 'A fixed-color flow joins telemetry sources into storage and alerting outputs.',
+    aspectRatio: 1.5,
+    source: String.raw`
+---
+config:
+  sankey:
+    linkColor: "#64748b"
+    nodeAlignment: left
+---
+sankey
+Metrics,Collector,58
+Logs,Collector,76
+Traces,Collector,42
+Collector,Hot storage,96
+Collector,Cold storage,54
+Collector,Alerts,26
+`,
+  },
 ];

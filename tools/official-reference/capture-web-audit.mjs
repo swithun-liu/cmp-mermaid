@@ -55,6 +55,7 @@ const kotlinGalleryFiles = {
   mindmap: ['MindmapDemos.kt', 'MindmapDemo'],
   packet: ['PacketDemos.kt', 'PacketDemo'],
   radar: ['RadarDemos.kt', 'RadarDemo'],
+  sankey: ['SankeyDemos.kt', 'SankeyDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [

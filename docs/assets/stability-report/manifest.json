@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-17T14:23:17.084Z",
-  "caseCount": 223,
+  "generatedAt": "2026-09-17T15:50:10.477Z",
+  "caseCount": 236,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -4954,6 +4954,288 @@
       "nativeSha256": "2cf89cd56e7fc8566499961a2d51b6eb9f4e3ad748f4ee0eed963324eb41b919",
       "officialSha256": "4b7620463c42cabf345fe8ab2ccce5ca66d700ebc4324230dda7626b73c6bd5f",
       "sourceSha256": "e0653b6854317a001ac267ce08ca5a55263e4dd59db9b02b9e8894d52350774e"
+    },
+    {
+      "id": "rc_sankey_platform_delivery",
+      "kind": "sankey",
+      "title": "Platform delivery flow",
+      "scenario": "A production delivery graph combines branching, merging, and multiple stages.",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_sankey_platform_delivery_native.png",
+      "officialFile": "rc_sankey_platform_delivery_official.png",
+      "nativeBytes": 35585,
+      "officialBytes": 146139,
+      "nativeSha256": "e3c2b16941a0ea5b218c12e691ba1196f724b5d84ef817c4090fa79d57991b0d",
+      "officialSha256": "084833b0faa4b4dd78f20cacb7e6810bbd94ec93bb8daee7816248bde640276b",
+      "sourceSha256": "8f1214c3b3e54fa3a237dc9167b9ac61afdbc3fdda97cbf1290d5b54fe478850"
+    },
+    {
+      "id": "rc_sankey_revenue_allocation",
+      "kind": "sankey",
+      "title": "Revenue allocation",
+      "scenario": "Currency labels, outlined text, custom node colors, and source links are combined.",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_sankey_revenue_allocation_native.png",
+      "officialFile": "rc_sankey_revenue_allocation_official.png",
+      "nativeBytes": 33329,
+      "officialBytes": 33852,
+      "nativeSha256": "1953b5688b7af3eec55a24cf2ad86a371a33ff8564a80afaac357d4136481390",
+      "officialSha256": "0165d971cde9b3c10ddf849bda72ce7fc39985e5bf5b6645b591b4c2af25d65f",
+      "sourceSha256": "4e927dd0289a94b9a9c08c73bbde21367918a9af6519780fadb126dfae2de27a"
+    },
+    {
+      "id": "rc_sankey_regional_routing",
+      "kind": "sankey",
+      "title": "Regional routing",
+      "scenario": "Quoted CSV labels with commas and escaped quotes use target-colored links.",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_sankey_regional_routing_native.png",
+      "officialFile": "rc_sankey_regional_routing_official.png",
+      "nativeBytes": 25468,
+      "officialBytes": 29283,
+      "nativeSha256": "0a94a2ca63e7aa57b696a6bfef1c3c6e346ab01eedac9594fd0758d26bdba2f6",
+      "officialSha256": "3894b1bfec0ac3782ba80cace1b0c7d8640b795474a5083ad04c44a17577369a",
+      "sourceSha256": "537d960a1a3d460ea54b79320af64307352b0f9213dfc9c26f0848989cb6f512"
+    },
+    {
+      "id": "rc_sankey_compact_processing",
+      "kind": "sankey",
+      "title": "Compact processing graph",
+      "scenario": "Intrinsic dimensions, narrow nodes, compact padding, and hidden values are exercised.",
+      "aspectRatio": 1.75,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_sankey_compact_processing_native.png",
+      "officialFile": "rc_sankey_compact_processing_official.png",
+      "nativeBytes": 16398,
+      "officialBytes": 118543,
+      "nativeSha256": "fe799f267769c560a1a43fe35e42fe6ae64478be9ee48765a6194b4e2df9f393",
+      "officialSha256": "77beb46f51d19003a6ec43d9c5b50d7414bbeed77b21faaafed854abd7140a84",
+      "sourceSha256": "01c37b57a7032108a75fcae0aa751c9585a848bc596d37ba71b2f5f5b5f92450"
+    },
+    {
+      "id": "rc_sankey_observability_pipeline",
+      "kind": "sankey",
+      "title": "Observability pipeline",
+      "scenario": "A fixed-color flow joins telemetry sources into storage and alerting outputs.",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_sankey_observability_pipeline_native.png",
+      "officialFile": "rc_sankey_observability_pipeline_official.png",
+      "nativeBytes": 30797,
+      "officialBytes": 30273,
+      "nativeSha256": "6dcc0e786c73fb1e372f339a348ff741b190bc123e1639023fdf8aaace8ae625",
+      "officialSha256": "d0cea091399370199b915192ba82de11bc54e454b4f5d508b01e932a21a61e34",
+      "sourceSha256": "744970c66c2596272ba15b9297052e90fe0ce2dc44eeaf75a7257f3928258268"
+    },
+    {
+      "id": "prod_sankey_delivery_flow",
+      "kind": "sankey",
+      "title": "Delivery flow",
+      "scenario": "A multi-stage delivery pipeline branches and merges with visible values.",
+      "aspectRatio": 1.5,
+      "features": [
+        "sankey-header",
+        "csv-records",
+        "multi-stage-flow",
+        "branching",
+        "merging",
+        "justify-alignment",
+        "gradient-links",
+        "show-values"
+      ],
+      "expectedTexts": [
+        "Intake",
+        "Build",
+        "Release"
+      ],
+      "nativeFile": "prod_sankey_delivery_flow_native.png",
+      "officialFile": "prod_sankey_delivery_flow_official.png",
+      "nativeBytes": 28627,
+      "officialBytes": 165428,
+      "nativeSha256": "f8716bcb30e2f82bdd7e4bfd0f4df27660a2c01f560d6cfa7584e2abbf113d16",
+      "officialSha256": "a590e5d6447f434e0146d6af1191e1cb1e63f0b044c8a172a2b5d9f69d462011",
+      "sourceSha256": "68a18db558a551bc9e7dd0a65d6c6355ef1c33d02e487a519bcbd7afb2c7740d"
+    },
+    {
+      "id": "prod_sankey_quoted_csv",
+      "kind": "sankey",
+      "title": "Quoted CSV values",
+      "scenario": "Quoted commas, escaped quotes, and blank lines follow the Sankey CSV grammar.",
+      "aspectRatio": 1.5,
+      "features": [
+        "quoted-commas",
+        "escaped-quotes",
+        "blank-lines",
+        "csv-records"
+      ],
+      "expectedTexts": [
+        "North",
+        "Reviewed",
+        "Deferred"
+      ],
+      "nativeFile": "prod_sankey_quoted_csv_native.png",
+      "officialFile": "prod_sankey_quoted_csv_official.png",
+      "nativeBytes": 36912,
+      "officialBytes": 147449,
+      "nativeSha256": "be45827bc10d69804798857097263153204b71d191d7b91e8804afa6ce98baf1",
+      "officialSha256": "143c6226df0f3457320f341719f61aabdd9e011ec2b28fa9824822106cc337cb",
+      "sourceSha256": "fd2583729728b449b2fe69ecb52354bfc76ecb25a05845e0f4625e01e8a91fd9"
+    },
+    {
+      "id": "prod_sankey_left_source_links",
+      "kind": "sankey",
+      "title": "Left-aligned source links",
+      "scenario": "Left alignment and source-colored links render without value labels.",
+      "aspectRatio": 1.5,
+      "features": [
+        "left-alignment",
+        "source-links",
+        "hide-values",
+        "responsive-sizing"
+      ],
+      "expectedTexts": [
+        "Gateway",
+        "Archive"
+      ],
+      "nativeFile": "prod_sankey_left_source_links_native.png",
+      "officialFile": "prod_sankey_left_source_links_official.png",
+      "nativeBytes": 16908,
+      "officialBytes": 19176,
+      "nativeSha256": "dc3d10242c4dd83a5e9367e46acced17aec3b4edf3237b7cb020b4e39f74f2b8",
+      "officialSha256": "6252b5c327d357e085b5450862e67fe9dad671374040d978289253e16ed01c7e",
+      "sourceSha256": "a6f2733d10aece91838b84eb04079fad470deaaf58d7d0f0774ce4ad17aa5e8c"
+    },
+    {
+      "id": "prod_sankey_right_target_links",
+      "kind": "sankey",
+      "title": "Right-aligned target links",
+      "scenario": "Right alignment, target colors, custom dimensions, and spacing are configured.",
+      "aspectRatio": 1.75,
+      "features": [
+        "right-alignment",
+        "target-links",
+        "node-width",
+        "node-padding",
+        "responsive-sizing"
+      ],
+      "expectedTexts": [
+        "Requests",
+        "Completed"
+      ],
+      "nativeFile": "prod_sankey_right_target_links_native.png",
+      "officialFile": "prod_sankey_right_target_links_official.png",
+      "nativeBytes": 19195,
+      "officialBytes": 21358,
+      "nativeSha256": "f5cc93ea3a30a5e8d1cea40621ca8f2abe1ef95d77c0b28076b78d8aeda957a4",
+      "officialSha256": "e41a7566ee4c8e5028941872fa8291fe3be681ed580324f8abf2705aa195e7dd",
+      "sourceSha256": "a97c4b49d67810a2baa917d470423f5ce47038c776562acf310f6da7e3f53491"
+    },
+    {
+      "id": "prod_sankey_center_currency",
+      "kind": "sankey",
+      "title": "Centered currency flow",
+      "scenario": "Center alignment formats values with a prefix and suffix.",
+      "aspectRatio": 1.5,
+      "features": [
+        "center-alignment",
+        "value-prefix",
+        "value-suffix",
+        "show-values"
+      ],
+      "expectedTexts": [
+        "Budget",
+        "Delivery"
+      ],
+      "nativeFile": "prod_sankey_center_currency_native.png",
+      "officialFile": "prod_sankey_center_currency_official.png",
+      "nativeBytes": 29056,
+      "officialBytes": 135814,
+      "nativeSha256": "e1efa8a5c8fdbd28a68ac216e5b9546a0ede5809d3e05bd212b76b8c85160c93",
+      "officialSha256": "c0c739ef28d12f9ddb5a8bedf19ae0554dc646aa5688a9bd2a87ffc503565e19",
+      "sourceSha256": "371b64df44fc4c9984d3fce090011ffb29904ccd8c98c1011102e4cd319f5872"
+    },
+    {
+      "id": "prod_sankey_outlined_custom_nodes",
+      "kind": "sankey",
+      "title": "Outlined custom nodes",
+      "scenario": "Outlined labels and node-specific colors remain legible over dense links.",
+      "aspectRatio": 1.5,
+      "features": [
+        "outlined-labels",
+        "custom-node-colors",
+        "gradient-links",
+        "branching"
+      ],
+      "expectedTexts": [
+        "Source",
+        "Transform",
+        "Warehouse"
+      ],
+      "nativeFile": "prod_sankey_outlined_custom_nodes_native.png",
+      "officialFile": "prod_sankey_outlined_custom_nodes_official.png",
+      "nativeBytes": 26793,
+      "officialBytes": 105713,
+      "nativeSha256": "8455853db3163944f2927b4ca0cf5ae2aed5f317b540b3f0ebba875c14c0fadf",
+      "officialSha256": "7553c2b21953ce14f91d2e54ca8bfbcd9fd415779a3794fa1550a49d938364c9",
+      "sourceSha256": "b01cbcd21462d8b8f1b4c55a0d272c7121008d65b96288365160b11e60fef2ce"
+    },
+    {
+      "id": "prod_sankey_fixed_link_color",
+      "kind": "sankey",
+      "title": "Fixed link color",
+      "scenario": "All links use one explicit CSS color while node colors retain the ordinal palette.",
+      "aspectRatio": 1.5,
+      "features": [
+        "fixed-link-color",
+        "multi-stage-flow",
+        "merging"
+      ],
+      "expectedTexts": [
+        "Capture",
+        "Index",
+        "Search"
+      ],
+      "nativeFile": "prod_sankey_fixed_link_color_native.png",
+      "officialFile": "prod_sankey_fixed_link_color_official.png",
+      "nativeBytes": 22759,
+      "officialBytes": 34881,
+      "nativeSha256": "9bdbe9ba28788ab6883c57bf3bbbfdfbb820c55e4d03df07b1d4a6127d49308c",
+      "officialSha256": "744d246763d7e7dc6c7d8bb2047d2c6cc855ea0c1cc9a7cd975bf918959e5ca4",
+      "sourceSha256": "0df2c0c94ac5f4a1efa4df021f5c0cd9d60e19b650d34285472b6178625cb7d8"
+    },
+    {
+      "id": "prod_sankey_beta_compact",
+      "kind": "sankey",
+      "title": "Compact beta alias",
+      "scenario": "The beta alias shares compact node geometry and frontmatter title metadata.",
+      "aspectRatio": 1.6,
+      "features": [
+        "sankey-beta-header",
+        "frontmatter-title",
+        "node-width",
+        "node-padding",
+        "hide-values"
+      ],
+      "expectedTexts": [
+        "Legacy",
+        "Bridge",
+        "Modern"
+      ],
+      "nativeFile": "prod_sankey_beta_compact_native.png",
+      "officialFile": "prod_sankey_beta_compact_official.png",
+      "nativeBytes": 14622,
+      "officialBytes": 147716,
+      "nativeSha256": "d59afc790f454847fed4662d4204140e20da3eaf1e564c67b1b65bf8178286c0",
+      "officialSha256": "c82c1e51ff06abab343022595c36e6389a02b101c8220b8d342bd34f4631cb96",
+      "sourceSha256": "6e8be65c69383401d861bcedaaf844b9b06f95452166725d5e8cf73f5009abe0"
     }
   ]
 }

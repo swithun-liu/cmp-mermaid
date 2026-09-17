@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T14:23:10.820Z",
+  "generatedAt": "2026-09-17T15:50:10.481Z",
   "inputDirectory": "captures/local/production-17-merged",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 223,
+  "caseCount": 236,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -13293,6 +13293,773 @@
       "widthRatio": 1.025099075297226,
       "heightRatio": 1.0176565008025682,
       "inkRatio": 1.03481155198334
+    },
+    {
+      "id": "rc_sankey_platform_delivery",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 462634,
+        "inkRatio": 0.571153086419753,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 412486,
+        "inkRatio": 0.509241975308642,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 557
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.059245960502693,
+      "inkRatio": 1.1215750352739242
+    },
+    {
+      "id": "rc_sankey_revenue_allocation",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 297161,
+        "inkRatio": 0.36686543209876543,
+        "contentBounds": {
+          "x": 8,
+          "y": 199,
+          "width": 884,
+          "height": 502
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 267772,
+        "inkRatio": 0.3305827160493827,
+        "contentBounds": {
+          "x": 30,
+          "y": 212,
+          "width": 842,
+          "height": 476
+        }
+      },
+      "widthRatio": 1.0498812351543942,
+      "heightRatio": 1.0546218487394958,
+      "inkRatio": 1.1097538204143824
+    },
+    {
+      "id": "rc_sankey_regional_routing",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 487706,
+        "inkRatio": 0.6021061728395062,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 434483,
+        "inkRatio": 0.5363987654320987,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 558
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.0573476702508962,
+      "inkRatio": 1.1224973128983182
+    },
+    {
+      "id": "rc_sankey_compact_processing",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 429086,
+        "inkRatio": 0.5297358024691358,
+        "contentBounds": {
+          "x": 8,
+          "y": 197,
+          "width": 884,
+          "height": 506
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 387244,
+        "inkRatio": 0.478079012345679,
+        "contentBounds": {
+          "x": 30,
+          "y": 210,
+          "width": 840,
+          "height": 480
+        }
+      },
+      "widthRatio": 1.0523809523809524,
+      "heightRatio": 1.0541666666666667,
+      "inkRatio": 1.108050738035967
+    },
+    {
+      "id": "rc_sankey_observability_pipeline",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 454172,
+        "inkRatio": 0.5607061728395062,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 404487,
+        "inkRatio": 0.4993666666666667,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 558
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.0573476702508962,
+      "inkRatio": 1.122834602842613
+    },
+    {
+      "id": "prod_sankey_delivery_flow",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 487573,
+        "inkRatio": 0.601941975308642,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 434930,
+        "inkRatio": 0.5369506172839507,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 558
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.0573476702508962,
+      "inkRatio": 1.121037868162693
+    },
+    {
+      "id": "prod_sankey_quoted_csv",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 461106,
+        "inkRatio": 0.5692666666666667,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 411688,
+        "inkRatio": 0.5082567901234568,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 558
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.0573476702508962,
+      "inkRatio": 1.1200375041293407
+    },
+    {
+      "id": "prod_sankey_left_source_links",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 482202,
+        "inkRatio": 0.5953111111111111,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 429661,
+        "inkRatio": 0.5304456790123456,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 558
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.0573476702508962,
+      "inkRatio": 1.1222847779993996
+    },
+    {
+      "id": "prod_sankey_right_target_links",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 397000,
+        "inkRatio": 0.4901234567901235,
+        "contentBounds": {
+          "x": 8,
+          "y": 197,
+          "width": 884,
+          "height": 506
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 358090,
+        "inkRatio": 0.44208641975308643,
+        "contentBounds": {
+          "x": 30,
+          "y": 210,
+          "width": 840,
+          "height": 480
+        }
+      },
+      "widthRatio": 1.0523809523809524,
+      "heightRatio": 1.0541666666666667,
+      "inkRatio": 1.108659834119914
+    },
+    {
+      "id": "prod_sankey_center_currency",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 433189,
+        "inkRatio": 0.5348012345679012,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 385850,
+        "inkRatio": 0.476358024691358,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 558
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.0573476702508962,
+      "inkRatio": 1.1226875728910197
+    },
+    {
+      "id": "prod_sankey_outlined_custom_nodes",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 338533,
+        "inkRatio": 0.41794197530864197,
+        "contentBounds": {
+          "x": 8,
+          "y": 197,
+          "width": 884,
+          "height": 506
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 308280,
+        "inkRatio": 0.3805925925925926,
+        "contentBounds": {
+          "x": 30,
+          "y": 208,
+          "width": 841,
+          "height": 484
+        }
+      },
+      "widthRatio": 1.051129607609988,
+      "heightRatio": 1.0454545454545454,
+      "inkRatio": 1.0981348125081094
+    },
+    {
+      "id": "prod_sankey_fixed_link_color",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 478890,
+        "inkRatio": 0.5912222222222222,
+        "contentBounds": {
+          "x": 8,
+          "y": 155,
+          "width": 884,
+          "height": 590
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 426417,
+        "inkRatio": 0.5264407407407408,
+        "contentBounds": {
+          "x": 33,
+          "y": 171,
+          "width": 834,
+          "height": 558
+        }
+      },
+      "widthRatio": 1.0599520383693046,
+      "heightRatio": 1.0573476702508962,
+      "inkRatio": 1.1230556005037322
+    },
+    {
+      "id": "prod_sankey_beta_compact",
+      "kind": "sankey",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 484875,
+        "inkRatio": 0.5986111111111111,
+        "contentBounds": {
+          "x": 8,
+          "y": 173,
+          "width": 884,
+          "height": 554
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 433806,
+        "inkRatio": 0.535562962962963,
+        "contentBounds": {
+          "x": 32,
+          "y": 188,
+          "width": 836,
+          "height": 524
+        }
+      },
+      "widthRatio": 1.0574162679425838,
+      "heightRatio": 1.0572519083969465,
+      "inkRatio": 1.1177231296939183
     }
   ]
 }

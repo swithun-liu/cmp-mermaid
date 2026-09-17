@@ -12,7 +12,6 @@ apk="${APK_PATH:-sample/androidApp/build/outputs/apk/debug/androidApp-debug.apk}
 output_dir="${OUTPUT_DIR:-captures/local/load-test-android}"
 maximum_pss_kb="${MAXIMUM_PSS_KB:-300000}"
 maximum_scroll_seconds="${MAXIMUM_SCROLL_SECONDS:-45}"
-swipe_count="${SWIPE_COUNT:-90}"
 read -r case_count last_case_id < <(
   node --input-type=module -e '
     import { cases } from "./tools/official-reference/production-corpus.mjs";
@@ -24,15 +23,17 @@ read -r case_count last_case_id < <(
 package_name="com.swithun.cmpmermaid.sample"
 activity_name="com.swithun.cmpmermaid.debugui.MermaidDebugActivity"
 adb="${ANDROID_HOME:?ANDROID_HOME is required}/platform-tools/adb"
+completion_marker="CMP_MERMAID_LOAD_TEST_COMPLETE $last_case_id"
 
 mkdir -p "$output_dir"
 android install --device="$serial" --apks="$apk"
 "$adb" -s "$serial" shell am force-stop "$package_name"
+"$adb" -s "$serial" logcat -c
 "$adb" -s "$serial" shell am start -W \
   -n "$package_name/$activity_name" \
   --ez openLoadTest true \
+  --ez autoRunLoadTest true \
   >"$output_dir/launch.txt"
-sleep 2
 
 read_pss_kb() {
   "$adb" -s "$serial" shell dumpsys meminfo "$package_name" |
@@ -43,24 +44,27 @@ initial_pss_kb="$(read_pss_kb)"
 peak_pss_kb="$initial_pss_kb"
 android screen capture --device="$serial" -o "$output_dir/top.png" >/dev/null
 started_at="$SECONDS"
+reached_last_case=false
 
-for index in $(seq 1 "$swipe_count"); do
-  "$adb" -s "$serial" shell input swipe 540 2050 540 450 220 >/dev/null
-  if ((index % 4 == 0)); then
-    current_pss_kb="$(read_pss_kb)"
-    if ((current_pss_kb > peak_pss_kb)); then
-      peak_pss_kb="$current_pss_kb"
-    fi
+while ((SECONDS - started_at <= maximum_scroll_seconds)); do
+  current_pss_kb="$(read_pss_kb)"
+  if ((current_pss_kb > peak_pss_kb)); then
+    peak_pss_kb="$current_pss_kb"
   fi
+  if "$adb" -s "$serial" logcat -d |
+    grep -Fq "$completion_marker"; then
+    reached_last_case=true
+    break
+  fi
+  sleep 1
 done
 
 scroll_seconds="$((SECONDS - started_at))"
 android layout --device="$serial" -o "$output_dir/layout.json" >/dev/null
 android screen capture --device="$serial" -o "$output_dir/bottom.png" >/dev/null
 final_pss_kb="$(read_pss_kb)"
-reached_last_case=false
-if grep -q "$last_case_id" "$output_dir/layout.json"; then
-  reached_last_case=true
+if ((final_pss_kb > peak_pss_kb)); then
+  peak_pss_kb="$final_pss_kb"
 fi
 
 cat >"$output_dir/metrics.json" <<EOF

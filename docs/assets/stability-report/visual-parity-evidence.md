@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 4,352 source cases and
-8,704 screenshots from the large-scale
+This index contains 4,608 source cases and
+9,216 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 17 implemented families have completed the replacement detail gate and
+All 18 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`4,352/4,352` pairs: `4,142 pass / 210 manually reviewed / 0 fail` across
-272 contact sheets.
+`4,608/4,608` pairs: `4,398 pass / 210 manually reviewed / 0 fail` across
+288 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -666,6 +666,47 @@ All 16 pages below were manually reviewed.
 ![Radar visual parity page 15](radar-visual-parity-15.jpg)
 
 ![Radar visual parity page 16](radar-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Sankey - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.048-1.060`, height `1.028-1.059`, foreground ink `1.062-1.124`.
+All 16 pages below were manually reviewed.
+
+![Sankey visual parity page 01](sankey-visual-parity-01.jpg)
+
+![Sankey visual parity page 02](sankey-visual-parity-02.jpg)
+
+![Sankey visual parity page 03](sankey-visual-parity-03.jpg)
+
+![Sankey visual parity page 04](sankey-visual-parity-04.jpg)
+
+![Sankey visual parity page 05](sankey-visual-parity-05.jpg)
+
+![Sankey visual parity page 06](sankey-visual-parity-06.jpg)
+
+![Sankey visual parity page 07](sankey-visual-parity-07.jpg)
+
+![Sankey visual parity page 08](sankey-visual-parity-08.jpg)
+
+![Sankey visual parity page 09](sankey-visual-parity-09.jpg)
+
+![Sankey visual parity page 10](sankey-visual-parity-10.jpg)
+
+![Sankey visual parity page 11](sankey-visual-parity-11.jpg)
+
+![Sankey visual parity page 12](sankey-visual-parity-12.jpg)
+
+![Sankey visual parity page 13](sankey-visual-parity-13.jpg)
+
+![Sankey visual parity page 14](sankey-visual-parity-14.jpg)
+
+![Sankey visual parity page 15](sankey-visual-parity-15.jpg)
+
+![Sankey visual parity page 16](sankey-visual-parity-16.jpg)
 
 </details>
 

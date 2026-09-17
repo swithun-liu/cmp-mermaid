@@ -125,6 +125,22 @@ private fun StringBuilder.appendPath(path: ScenePath) {
     appendJsonString(path.strokePattern.name)
     append(",\"dashIntervals\":")
     appendNumberArray(path.dashIntervals)
+    append(",\"strokeGradient\":")
+    val gradient = path.strokeGradient
+    if (gradient == null) {
+        append("null")
+    } else {
+        append('{')
+        append("\"startColor\":")
+        appendColor(gradient.startColor)
+        append(",\"endColor\":")
+        appendColor(gradient.endColor)
+        append('}')
+    }
+    append(",\"opacity\":")
+    appendFiniteNumber(path.opacity)
+    append(",\"blendMode\":")
+    appendJsonString(path.blendMode.name)
     append(",\"arrowStart\":")
     appendJsonString(path.arrowStart.name)
     append(",\"arrowEnd\":")
@@ -146,7 +162,16 @@ private fun StringBuilder.appendText(text: SceneText) {
     appendJsonString(text.text)
     append(",\"fill\":")
     appendColor(text.color)
-    append(",\"stroke\":null,\"fontSize\":")
+    append(",\"stroke\":")
+    val outline = text.outlineColor
+    if (outline == null || text.outlineWidth <= 0f) {
+        append("null")
+    } else {
+        appendColor(outline)
+    }
+    append(",\"strokeWidth\":")
+    appendFiniteNumber(text.outlineWidth)
+    append(",\"fontSize\":")
     appendFiniteNumber(text.fontSize)
     append(",\"fontFamily\":")
     appendJsonStringOrNull(text.fontFamily)

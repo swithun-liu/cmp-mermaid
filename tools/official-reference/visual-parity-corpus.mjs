@@ -19,6 +19,7 @@ export const kinds = [
   'mindmap',
   'packet',
   'radar',
+  'sankey',
 ];
 
 export const casesPerKind = 256;
@@ -153,6 +154,8 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
 `;
     case 'radar':
       return replaceOrInsertTitle(source, 'radar-beta', label);
+    case 'sankey':
+      return `${source.trimEnd()}\n"${label}",${evidenceId},${(ordinal % 17) + 3}\n`;
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }

@@ -34,7 +34,7 @@ class StabilityCorpusTest {
 
     @Test
     fun rendersIndependentComplexReleaseCandidateCorpus() {
-        assertEquals(87, stabilityCorpusCases.size)
+        assertEquals(92, stabilityCorpusCases.size)
         stabilityCorpusCases.forEach { case ->
             val scene = render(case)
 

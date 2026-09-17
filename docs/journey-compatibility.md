@@ -60,7 +60,7 @@ typed `MermaidTheme.journey` API.
   retain ten text elements with no clipping or overlap. All 16 contact sheets
   were manually reviewed.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
-  complete 158-case mixed corpus.
+  complete 236-case mixed corpus.
 
 ## Reference Workflow
 

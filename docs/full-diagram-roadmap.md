@@ -2,7 +2,7 @@
 
 ## Current State
 
-CMP Mermaid implements 17 of the 33 user-visible diagram families documented
+CMP Mermaid implements 18 of the 33 user-visible diagram families documented
 by Mermaid `12.0.0`. The source-controlled inventory is
 [`diagram-inventory.mjs`](../tools/official-reference/diagram-inventory.mjs);
 CI verifies it against Mermaid's 39 registered IDs and, when the pinned source
@@ -19,10 +19,10 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar |
-| Translation pending | Agentflow, Architecture, Block, C4, Cynefin, Event Modeling, Ishikawa, Railroad, Sankey, Swimlanes, Treemap, TreeView, Use Case, Venn, Wardley Map, ZenUML |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey |
+| Translation pending | Agentflow, Architecture, Block, C4, Cynefin, Event Modeling, Ishikawa, Railroad, Swimlanes, Treemap, TreeView, Use Case, Venn, Wardley Map, ZenUML |
 
-The current 4,352-pair matrix covers all 17 implemented families with fresh
+The current 4,608-pair matrix covers all 18 implemented families with fresh
 replacement evidence. A Git Graph label paint-order defect was visible in the
 original 3,072-pair matrix and was not identified during the earlier review.
 That defect is now corrected and every implemented family has passed the
@@ -51,9 +51,9 @@ global label layers reports a `paint-order-occlusion` mismatch for
 Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
-All 17 implemented families have completed the replacement gate. Together they
-have 4,352 accepted same-source pairs:
-`4,142 pass / 210 manually reviewed / 0 fail` across 272 reviewed contact
+All 18 implemented families have completed the replacement gate. Together they
+have 4,608 accepted same-source pairs:
+`4,398 pass / 210 manually reviewed / 0 fail` across 288 reviewed contact
 sheets. The 60 ER reviews are text-position threshold findings, while the 19
 Journey reviews are benign line-segmentation differences for one complete long
 actor label. The four Requirement reviews are benign greedy cross-matches
@@ -85,7 +85,8 @@ Git Graph ratios are `1.036-1.154`, `1.032-1.137`, and `1.027-1.415`,
 respectively. Mindmap ratios are `0.956-1.155`, `0.861-1.212`, and
 `0.771-1.431`, respectively. Packet ratios are `1.011-1.015`,
 `1.006-1.056`, and `0.977-1.039`, respectively. Radar ratios are
-`1.004-1.036`, `1.007-1.021`, and `1.005-1.036`, respectively.
+`1.004-1.036`, `1.007-1.021`, and `1.005-1.036`, respectively. Sankey ratios
+are `1.048-1.060`, `1.028-1.059`, and `1.062-1.124`, respectively.
 
 ## Expected Behavior
 
