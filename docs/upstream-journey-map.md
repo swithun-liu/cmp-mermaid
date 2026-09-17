@@ -76,8 +76,9 @@ Jison production so an upstream grammar diff can be translated incrementally.
 - `JourneyStressTest` renders 256 deterministic random legal diagrams.
 - `OfficialJourneyDocumentationTest` executes the official documentation
   example extracted from Mermaid `12.0.0`.
-- The large-scale Web audit compares 256 unique same-source cases against
-  Mermaid.js `12.0.0`; all 16 contact-sheet pages were manually reviewed.
+- The legacy large-scale Web audit compares 256 unique same-source cases
+  against Mermaid.js `12.0.0`. Its former manual completion claim is withdrawn
+  pending the detail re-audit.
 
 ## Upgrade Procedure
 

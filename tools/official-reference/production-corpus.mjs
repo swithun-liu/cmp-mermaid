@@ -37,6 +37,62 @@ export const requiredFeaturesByKind = {
     'theme-palette',
     'component-visibility',
   ],
+  quadrant: [
+    'title',
+    'x-axis',
+    'y-axis',
+    'quadrant-labels',
+    'points',
+    'boundary-points',
+    'empty-points',
+    'point-radius',
+    'point-color',
+    'point-stroke',
+    'class-styles',
+    'inline-precedence',
+    'frontmatter-config',
+    'theme-colors',
+    'metadata',
+    'unicode',
+    'comments',
+  ],
+  timeline: [
+    'lr',
+    'td',
+    'title',
+    'periods',
+    'events',
+    'continued-events',
+    'sections',
+    'sectionless-colors',
+    'disable-multicolor',
+    'html-breaks',
+    'frontmatter-config',
+    'theme-colors',
+    'redux-theme',
+    'metadata',
+    'unicode',
+    'comments',
+  ],
+  kanban: [
+    'sections',
+    'tasks',
+    'anonymous-items',
+    'explicit-ids',
+    'node-forms',
+    'deeper-indentation',
+    'comments',
+    'wrapped-labels',
+    'empty-sections',
+    'ticket',
+    'assigned',
+    'priorities',
+    'ticket-links',
+    'section-width',
+    'theme-colors',
+    'markdown',
+    'unicode',
+  ],
   sequence: [
     'participants',
     'actor-types',
@@ -2653,9 +2709,516 @@ mindmap
   }),
 ];
 
+const quadrantCases = [
+  {
+    id: 'prod_quadrant_release_scoring',
+    kind: 'quadrant',
+    title: 'Release candidate scoring',
+    scenario: 'Release candidates are compared by readiness and expected customer value.',
+    aspectRatio: 1,
+    features: ['title', 'x-axis', 'y-axis', 'quadrant-labels', 'points'],
+    expectedTexts: ['Release candidate scoring', 'Ready to ship', 'Candidate Alpha'],
+    source: String.raw`
+quadrantChart
+  title Release candidate scoring
+  x-axis Lower readiness --> Higher readiness
+  y-axis Lower customer value --> Higher customer value
+  quadrant-1 Ready to ship
+  quadrant-2 Validate value
+  quadrant-3 Defer
+  quadrant-4 Finish hardening
+  Candidate Alpha: [0.82, 0.88]
+  Candidate Beta: [0.61, 0.74]
+  Candidate Gamma: [0.44, 0.36]
+`,
+  },
+  {
+    id: 'prod_quadrant_boundary_coordinates',
+    kind: 'quadrant',
+    title: 'Boundary coordinate coverage',
+    scenario: 'Points at every chart corner and center verify normalized coordinate projection.',
+    aspectRatio: 1,
+    features: ['points', 'boundary-points', 'point-radius'],
+    expectedTexts: ['Origin', 'Upper right', 'Center'],
+    source: String.raw`
+quadrantChart
+  x-axis Zero --> One
+  y-axis Zero --> One
+  Origin: [0, 0] radius: 7
+  Upper left: [0, 1] radius: 8
+  Lower right: [1, 0] radius: 9
+  Upper right: [1, 1] radius: 10
+  Center: [0.5, 0.5] radius: 11
+`,
+  },
+  {
+    id: 'prod_quadrant_empty_framework',
+    kind: 'quadrant',
+    title: 'Empty decision framework',
+    scenario: 'A framework without observations centers all semantic labels.',
+    aspectRatio: 1,
+    features: ['title', 'x-axis', 'y-axis', 'quadrant-labels', 'empty-points'],
+    expectedTexts: ['Decision framework', 'Immediate action', 'Monitor'],
+    source: String.raw`
+quadrantChart
+  title Decision framework
+  x-axis Lower urgency --> Higher urgency
+  y-axis Lower impact --> Higher impact
+  quadrant-1 Immediate action
+  quadrant-2 Schedule
+  quadrant-3 Ignore
+  quadrant-4 Monitor
+`,
+  },
+  {
+    id: 'prod_quadrant_inline_styles',
+    kind: 'quadrant',
+    title: 'Inline observation styles',
+    scenario: 'Individual observations override radius, fill, and stroke independently.',
+    aspectRatio: 1,
+    features: ['points', 'point-radius', 'point-color', 'point-stroke'],
+    expectedTexts: ['Critical exposure', 'Watch item'],
+    source: String.raw`
+quadrantChart
+  title Inline observation styles
+  Critical exposure: [0.86, 0.91] radius: 14, color: #dc2626, stroke-color: #7f1d1d, stroke-width: 4px
+  Watch item: [0.54, 0.62] radius: 9, color: #f59e0b, stroke-color: #92400e, stroke-width: 2px
+  Healthy signal: [0.24, 0.18] color: #16a34a
+`,
+  },
+  {
+    id: 'prod_quadrant_class_precedence',
+    kind: 'quadrant',
+    title: 'Reusable point classes',
+    scenario: 'Shared point classes apply first and local declarations retain precedence.',
+    aspectRatio: 1,
+    features: ['points', 'class-styles', 'inline-precedence', 'point-color', 'point-stroke'],
+    expectedTexts: ['Shared style', 'Local override'],
+    source: String.raw`
+quadrantChart
+  title Reusable point classes
+  Shared style:::priority: [0.32, 0.72]
+  Local override:::priority: [0.74, 0.81] color: #2563eb, radius: 13
+  classDef priority color: #109060, radius: 10, stroke-color: #064e3b, stroke-width: 3px
+`,
+  },
+  {
+    id: 'prod_quadrant_dimension_config',
+    kind: 'quadrant',
+    title: 'Configured chart dimensions',
+    scenario: 'Frontmatter controls chart geometry, label metrics, borders, and responsive sizing.',
+    aspectRatio: 1.3,
+    features: ['frontmatter-config', 'title', 'points'],
+    expectedTexts: ['Configured portfolio', 'Platform renewal'],
+    source: String.raw`
+---
+config:
+  quadrantChart:
+    chartWidth: 560
+    chartHeight: 430
+    titleFontSize: 24
+    titlePadding: 14
+    quadrantPadding: 9
+    xAxisLabelPadding: 7
+    yAxisLabelPadding: 8
+    xAxisLabelFontSize: 15
+    yAxisLabelFontSize: 17
+    quadrantLabelFontSize: 18
+    quadrantTextTopPadding: 8
+    pointTextPadding: 7
+    pointLabelFontSize: 13
+    pointRadius: 8
+    yAxisPosition: right
+    quadrantInternalBorderStrokeWidth: 2
+    quadrantExternalBorderStrokeWidth: 4
+    useMaxWidth: false
+---
+quadrantChart
+  title Configured portfolio
+  x-axis Lower return --> Higher return
+  y-axis Lower risk --> Higher risk
+  Platform renewal: [0.71, 0.64]
+`,
+  },
+  {
+    id: 'prod_quadrant_theme_metadata',
+    kind: 'quadrant',
+    title: 'Themed accessible assessment',
+    scenario: 'Theme variables and accessibility metadata travel through the production scene.',
+    aspectRatio: 1,
+    features: ['theme-colors', 'metadata', 'quadrant-labels', 'points'],
+    expectedTexts: ['Themed assessment', 'Approve', 'Evidence review'],
+    source: String.raw`
+---
+title: Themed assessment
+config:
+  themeVariables:
+    quadrant1Fill: "#dcfce7"
+    quadrant2Fill: "#dbeafe"
+    quadrant3Fill: "#fee2e2"
+    quadrant4Fill: "#fef3c7"
+    quadrantPointFill: "#111827"
+    quadrantPointTextFill: "#111827"
+    quadrantExternalBorderStrokeFill: "#475569"
+---
+quadrantChart
+  accTitle: Accessible assessment
+  accDescr: Evidence review organized across four outcomes
+  quadrant-1 Approve
+  quadrant-2 Investigate
+  quadrant-3 Reject
+  quadrant-4 Recheck
+  Evidence review: [0.63, 0.76]
+`,
+  },
+  {
+    id: 'prod_quadrant_unicode_comments',
+    kind: 'quadrant',
+    title: 'Unicode regional assessment',
+    scenario: 'Unicode labels, quoted punctuation, comments, and direct colors share one chart.',
+    aspectRatio: 1,
+    features: ['unicode', 'comments', 'x-axis', 'y-axis', 'points', 'point-color'],
+    expectedTexts: ['地域評価', 'São Paulo', '서울'],
+    source: String.raw`
+quadrantChart
+  %% Regional labels intentionally mix scripts.
+  title 地域評価
+  x-axis "低い到達度" --> "高い到達度"
+  y-axis "低い関与 ❤" --> "高い関与 ❤"
+  quadrant-1 拡大
+  quadrant-2 検証
+  quadrant-3 再評価
+  quadrant-4 維持
+  東京: [0.82, 0.88]
+  서울: [0.36, 0.42]
+  "São Paulo": [0.61, 0.73] color: #2563eb
+`,
+  },
+];
+
+const timelineCases = [
+  {
+    id: 'prod_timeline_release_history',
+    kind: 'timeline',
+    title: 'Product release history',
+    scenario: 'A horizontal timeline presents periods with one or more release events.',
+    aspectRatio: 1.6,
+    features: ['lr', 'title', 'periods', 'events'],
+    expectedTexts: ['Product release history', '2024', 'General availability'],
+    source: String.raw`
+timeline
+  title Product release history
+  2024 : Private preview : Public beta
+  2025 : General availability
+`,
+  },
+  {
+    id: 'prod_timeline_vertical_delivery',
+    kind: 'timeline',
+    title: 'Vertical delivery plan',
+    scenario: 'The TD renderer places periods and event stacks on opposite sides of the axis.',
+    aspectRatio: 1,
+    features: ['td', 'sections', 'events', 'metadata'],
+    expectedTexts: ['Vertical delivery plan', 'Build', 'Release candidate'],
+    source: String.raw`
+timeline TD
+  title Vertical delivery plan
+  accTitle: Accessible vertical delivery plan
+  accDescr: Build and release milestones
+  section Build
+    Foundation : Architecture review : API contract
+  section Release
+    Release candidate : Automated checks : Manual review
+`,
+  },
+  {
+    id: 'prod_timeline_continued_events',
+    kind: 'timeline',
+    title: 'Continued event stack',
+    scenario: 'Events on following lines attach to the most recent period.',
+    aspectRatio: 1.4,
+    features: ['lr', 'continued-events', 'events'],
+    expectedTexts: ['Implementation', 'Accessibility review', 'Launch approval'],
+    source: String.raw`
+timeline
+  Implementation : Core complete
+                 : Accessibility review : Load test
+                 : Launch approval
+`,
+  },
+  {
+    id: 'prod_timeline_industrial_sections',
+    kind: 'timeline',
+    title: 'Industrial eras',
+    scenario: 'Multiple sections group periods while preserving source order.',
+    aspectRatio: 1.8,
+    features: ['lr', 'sections', 'html-breaks', 'unicode'],
+    expectedTexts: ['産業時代', '17th-20th century', 'Industry 4.0'],
+    source: String.raw`
+timeline
+  title 産業時代
+  section 17th-20th century
+    Industry 1.0 : Machinery, Water power, Steam <br> power
+    Industry 2.0 : Electricity and mass production
+  section 21st century
+    Industry 4.0 : Internet, Robotics, Internet of Things
+`,
+  },
+  {
+    id: 'prod_timeline_sectionless_palette',
+    kind: 'timeline',
+    title: 'Sectionless color rotation',
+    scenario: 'Periods without sections rotate through Mermaid color slots.',
+    aspectRatio: 1.7,
+    features: ['lr', 'sectionless-colors', 'events', 'comments'],
+    expectedTexts: ['Discover', 'Deliver', 'Operate'],
+    source: String.raw`
+timeline
+  %% Period colors rotate without explicit sections.
+  Discover : User research
+  Design : Architecture
+  Deliver : Implementation
+  Operate : Monitoring
+`,
+  },
+  {
+    id: 'prod_timeline_disable_multicolor',
+    kind: 'timeline',
+    title: 'Monochrome sectionless timeline',
+    scenario: 'The timeline-specific switch keeps sectionless periods in one color slot.',
+    aspectRatio: 1.7,
+    features: ['lr', 'disable-multicolor', 'frontmatter-config'],
+    expectedTexts: ['Plan', 'Build', 'Validate'],
+    source: String.raw`
+---
+config:
+  timeline:
+    disableMulticolor: true
+---
+timeline
+  Plan : Scope
+  Build : Implementation
+  Validate : Acceptance
+`,
+  },
+  {
+    id: 'prod_timeline_spacing_config',
+    kind: 'timeline',
+    title: 'Configured spacing',
+    scenario: 'Timeline padding, left margin, and intrinsic sizing come from frontmatter.',
+    aspectRatio: 1.5,
+    features: ['lr', 'frontmatter-config', 'sections'],
+    expectedTexts: ['Configured spacing', 'Milestones', 'Production'],
+    source: String.raw`
+---
+config:
+  timeline:
+    leftMargin: 210
+    padding: 28
+    useMaxWidth: false
+---
+timeline
+  title Configured spacing
+  section Milestones
+    Preview : Internal
+    Production : External
+`,
+  },
+  {
+    id: 'prod_timeline_custom_colors',
+    kind: 'timeline',
+    title: 'Custom timeline colors',
+    scenario: 'Color scale variables style adjacent sections and their events.',
+    aspectRatio: 1.6,
+    features: ['theme-colors', 'redux-theme', 'sections', 'events'],
+    expectedTexts: ['Custom timeline colors', 'Discovery', 'Delivery'],
+    source: String.raw`
+---
+config:
+  theme: redux-color
+  look: neo
+  themeVariables:
+    cScale0: "#dbeafe"
+    cScale1: "#dcfce7"
+    cScaleLabel0: "#1e3a8a"
+    cScaleLabel1: "#14532d"
+---
+timeline
+  title Custom timeline colors
+  section Discovery
+    Research : Interviews
+  section Delivery
+    Launch : Production rollout
+`,
+  },
+];
+
+const kanbanCases = [
+  {
+    id: 'prod_kanban_delivery_board',
+    kind: 'kanban',
+    title: 'Delivery workflow',
+    scenario: 'Explicit stage and task identifiers form a three-column delivery board.',
+    aspectRatio: 2.1,
+    features: ['sections', 'tasks', 'explicit-ids'],
+    expectedTexts: ['Backlog', 'Implement parser', 'Production release'],
+    source: String.raw`
+kanban
+  backlog[Backlog]
+    parser[Implement parser]
+    layout[Match layout]
+  verify[Verification]
+    tests[Run automated tests]
+    review[Review screenshots]
+  done[Done]
+    release[Production release]
+`,
+  },
+  {
+    id: 'prod_kanban_anonymous_forms',
+    kind: 'kanban',
+    title: 'Anonymous and shaped labels',
+    scenario: 'Anonymous nodes and legacy shape delimiters retain their visible labels.',
+    aspectRatio: 1.7,
+    features: ['anonymous-items', 'node-forms', 'tasks'],
+    expectedTexts: ['Planning', 'Rounded task', 'Hexagon task'],
+    source: String.raw`
+kanban
+  [Planning]
+    (Rounded task)
+    circle((Circle task))
+    cloud(-Cloud task-)
+    hex{{Hexagon task}}
+`,
+  },
+  {
+    id: 'prod_kanban_nested_comments',
+    kind: 'kanban',
+    title: 'Flattened nested tasks',
+    scenario: 'Deeper indentation and comments preserve task order in the current stage.',
+    aspectRatio: 1.5,
+    features: ['deeper-indentation', 'comments', 'tasks'],
+    expectedTexts: ['Discovery', 'Interviews', 'Validated findings'],
+    source: String.raw`
+kanban
+  discovery[Discovery]
+    interviews[Interviews]
+      synthesis[Research synthesis]
+    %% Deep descendants remain direct cards in this diagram family.
+        findings[Validated findings]
+`,
+  },
+  {
+    id: 'prod_kanban_metadata',
+    kind: 'kanban',
+    title: 'Operational task metadata',
+    scenario: 'Ticket numbers, assignees, and all priority bands appear on task cards.',
+    aspectRatio: 1.8,
+    features: ['ticket', 'assigned', 'priorities'],
+    expectedTexts: ['Incident response', 'OPS-401', 'Owner B'],
+    source: String.raw`
+kanban
+  active[Incident response]
+    restore[Restore traffic]@{ ticket: OPS-401, assigned: 'Owner A', priority: 'Very High' }
+    mitigate[Reduce load]@{ ticket: OPS-402, assigned: 'Owner B', priority: High }
+    monitor[Monitor recovery]@{ priority: Medium }
+    followup[Write follow-up]@{ priority: Low }
+    polish[Polish dashboard]@{ priority: 'Very Low' }
+`,
+  },
+  {
+    id: 'prod_kanban_ticket_links',
+    kind: 'kanban',
+    title: 'Linked delivery tickets',
+    scenario: 'A configured ticket URL creates external interactions for ticket labels.',
+    aspectRatio: 1.7,
+    features: ['ticket', 'ticket-links', 'assigned'],
+    expectedTexts: ['Implementation', 'KB-501', 'Acceptance'],
+    source: String.raw`
+---
+config:
+  kanban:
+    ticketBaseUrl: "https://issues.example/browse/#TICKET#"
+---
+kanban
+  build[Build]
+    implementation[Implementation]@{ ticket: KB-501, assigned: Ada }
+  verify[Verify]
+    acceptance[Acceptance]@{ ticket: KB-502, assigned: Lin }
+`,
+  },
+  {
+    id: 'prod_kanban_width_and_empty',
+    kind: 'kanban',
+    title: 'Configured columns',
+    scenario: 'Configured section width applies to wrapped cards and an empty stage.',
+    aspectRatio: 1.9,
+    features: ['section-width', 'wrapped-labels', 'empty-sections'],
+    expectedTexts: ['Ready', 'deterministic rendering', 'Waiting'],
+    source: String.raw`
+---
+config:
+  kanban:
+    sectionWidth: 240
+---
+kanban
+  ready[Ready]
+    long[Complete deterministic rendering verification for every supported platform]
+  waiting[Waiting]
+  complete[Complete]
+    shipped[Artifacts published]
+`,
+  },
+  {
+    id: 'prod_kanban_theme_markdown',
+    kind: 'kanban',
+    title: 'Themed markdown board',
+    scenario: 'Palette variables and Markdown emphasis style stages and card labels.',
+    aspectRatio: 1.8,
+    features: ['theme-colors', 'markdown', 'sections'],
+    expectedTexts: ['Architecture', 'API contract', 'Visual review'],
+    source: String.raw`
+---
+config:
+  theme: base
+  look: classic
+  themeVariables:
+    cScale2: "#dbeafe"
+    cScale3: "#dcfce7"
+    cScaleLabel2: "#1e3a8a"
+    cScaleLabel3: "#14532d"
+---
+kanban
+  design[**Architecture**]
+    contract[*API contract*]
+  validate[**Validation**]
+    visual[*Visual review*]
+`,
+  },
+  {
+    id: 'prod_kanban_unicode',
+    kind: 'kanban',
+    title: 'International workflow',
+    scenario: 'Unicode labels and metadata render in the same fixed-column layout.',
+    aspectRatio: 1.8,
+    features: ['unicode', 'sections', 'assigned', 'ticket'],
+    expectedTexts: ['準備', '東京で確認', '서울 출시'],
+    source: String.raw`
+kanban
+  prepare[準備]
+    tokyo[東京で確認]@{ assigned: 品質 }
+  complete[완료]
+    seoul[서울 출시]@{ ticket: 국제-7 }
+`,
+  },
+];
+
 export const conformanceCases = [
   ...flowchartCases,
   ...xyChartCases,
+  ...quadrantCases,
+  ...timelineCases,
+  ...kanbanCases,
   ...sequenceCases,
   ...classCases,
   ...stateCases,

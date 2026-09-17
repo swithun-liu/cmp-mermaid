@@ -8,17 +8,13 @@ import com.swithun.cmpmermaid.core.SceneSize
 import com.swithun.cmpmermaid.core.flowchart.FlowDirection
 import com.swithun.cmpmermaid.core.flowchart.FlowNode
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertIs
-import kotlin.test.assertTrue
 
 class MermaidShapePortTest {
     @Test
-    fun keepsBangAndCloudArcContoursWithinOfficialEnvelope() {
-        val maximumHeightRatios = mapOf(
-            SceneShapeKind.Bang to 1.5f,
-            SceneShapeKind.Cloud to 2.5f,
-        )
-        maximumHeightRatios.forEach { (kind, maximumHeightRatio) ->
+    fun usesActualBoundsForBangAndCloudRectIntersections() {
+        listOf(SceneShapeKind.Bang, SceneShapeKind.Cloud).forEach { kind ->
             val result = MermaidShapePort.layout(
                 node = node(kind),
                 measuredLabel = SceneSize(width = 80f, height = 20f),
@@ -29,14 +25,10 @@ class MermaidShapePortTest {
             val pathPoints = layout.geometry.paths.single().points
             val outline = layout.geometry.outline
 
-            assertTrue(
-                pathPoints.width() <= outline.width() * 1.5f,
-                "$kind path width ${pathPoints.width()} exceeds outline ${outline.width()}",
-            )
-            assertTrue(
-                pathPoints.height() <= outline.height() * maximumHeightRatio,
-                "$kind path height ${pathPoints.height()} exceeds outline ${outline.height()}",
-            )
+            assertEquals(pathPoints.width(), outline.width(), 0.001f, "$kind width")
+            assertEquals(pathPoints.height(), outline.height(), 0.001f, "$kind height")
+            assertEquals(layout.size.width, outline.width(), 0.001f, "$kind layout width")
+            assertEquals(layout.size.height, outline.height(), 0.001f, "$kind layout height")
         }
     }
 

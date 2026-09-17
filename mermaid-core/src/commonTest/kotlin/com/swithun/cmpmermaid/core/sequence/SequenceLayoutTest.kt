@@ -116,6 +116,25 @@ class SequenceLayoutTest {
     }
 
     @Test
+    fun wrapsControlTitlesToTheUpstreamLoopContentWidth() {
+        val scene = render(
+            """
+            sequenceDiagram
+                participant API as Session gateway
+                opt audit enabled
+                    API->>API:Append audit event
+                end
+            """.trimIndent(),
+        )
+        val titleLines = scene.elements.filterIsInstance<SceneText>()
+            .filter { it.text == "[audit" || it.text == "enabled]" }
+            .sortedBy { it.bounds.top }
+
+        assertEquals(listOf("[audit", "enabled]"), titleLines.map(SceneText::text))
+        assertTrue(titleLines[0].bounds.bottom <= titleLines[1].bounds.top)
+    }
+
+    @Test
     fun rendersNotesActivationsAndNestedControlFrames() {
         val scene = render(
             """
@@ -416,6 +435,28 @@ class SequenceLayoutTest {
         assertEquals(2, messages.size)
         assertClose(workerCenter - 28f, messages[0].points.last().x)
         assertClose(workerCenter - 28f, messages[1].points.last().x)
+    }
+
+    @Test
+    fun reportsCreatedActorTextAtItsMeasuredGlyphBounds() {
+        val scene = render(
+            """
+            sequenceDiagram
+                participant Client
+                create participant Worker as CSV worker
+                Client->>Worker:Start isolated task
+                destroy Worker
+                Worker-->>Client:Final result
+            """.trimIndent(),
+        )
+        val texts = scene.elements.filterIsInstance<SceneText>()
+        val createdWorker = texts
+            .filter { it.text == "CSV worker" }
+            .minBy { it.bounds.top }
+        val startMessage = texts.single { it.text == "Start isolated task" }
+
+        assertTrue(createdWorker.bounds.height < 20f)
+        assertTrue(startMessage.bounds.bottom <= createdWorker.bounds.top)
     }
 
     @Test

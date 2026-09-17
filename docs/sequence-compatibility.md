@@ -45,9 +45,6 @@ not silently discarded.
 
 ## Validation Corpus
 
-- 35 curated gallery cases render identical source through Native Compose and
-  the bundled Mermaid.js `12.0.0` reference on Web and the same Android
-  emulator viewport.
 - 38 examples extracted from Mermaid's official Sequence documentation run in
   JVM tests.
 - The two browser menu documentation examples are the only expected
@@ -60,6 +57,16 @@ not silently discarded.
   participant shapes, every message marker family, notes, wrapping, HTML line
   breaks, activations, control nesting, lifecycle endpoints, and resource
   limits.
+- 14 independent production scenarios render identical source through Native
+  Compose and Mermaid.js `12.0.0`: detail audit
+  `14 pass / 0 review / 0 fail`; geometry width `1.019-1.254`, height
+  `0.910-1.111`, and foreground ink `0.939-1.327`.
+- 256 same-source visual-parity cases pass both the replacement detail and
+  geometry gates: `256 pass / 0 review / 0 fail`; width `1.023-1.068`, height
+  `0.893-1.045`, and foreground ink `0.926-1.148`.
+- All 16 matrix contact sheets and all 256 pairs were manually reviewed. No
+  unresolved blank, clipping, participant, lifecycle, message, marker, note,
+  activation, control-frame, overlap, or paint-order defect remains.
 - Core and Compose compile for JVM, Android, Desktop, and all configured iOS
   architectures.
 
@@ -80,6 +87,18 @@ MERMAID_SOURCE_DIR=/path/to/mermaid-12 \
   npm run generate:sequence-doc-fixtures
 ```
 
-Capture all Native/Official Android pairs by passing the Sequence demo ids to
-`tools/capture-android-audit.sh`. Screenshots remain under ignored
-`captures/local/` paths and are not distributed.
+Capture the independent production corpus:
+
+```bash
+cd tools/official-reference
+AUDIT_SOURCE=production AUDIT_KIND=sequence \
+OUTPUT_DIR=captures/local/sequence-production-detail \
+npm run capture:web-audit
+```
+
+Capture the 256-case matrix by changing `AUDIT_SOURCE` to `visual-parity`. Run
+`npm run audit:detail` and `npm run audit:stability-geometry`, then generate
+the 16 review sheets with `npm run generate:stability-contact-sheets`. Local
+captures remain under ignored `captures/local/` paths. Reviewed production
+and matrix contact sheets are published in
+[`docs/assets/stability-report/`](assets/stability-report/).

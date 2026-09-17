@@ -47,14 +47,25 @@ presentation flags do not alter the fixed intrinsic SceneGraph dimensions.
 - Parser and layout tests cover categorical and numeric axes, automatic
   domains, horizontal orientation, named series, legends, bar labels, point
   labels, rotations, nested configuration, theme overrides, missing values,
-  equal domains, metadata, and structured errors.
+  equal domains, metadata, structured errors, Mermaid component paint order,
+  and the browser fallback for invalid negative data-label font sizes.
 - 256 deterministic random legal charts cover 2-12 points, 1-4 mixed series,
   both orientations, categorical and numeric axes, negative values, legends,
   labels, and plot-space configuration while checking finite SceneGraph
   bounds and path points.
-- 20 curated gallery cases render identical source through Native Compose and
-  on-device Mermaid.js `12.0.0`.
-- All 20 Native/Official pairs were captured and reviewed on Android.
+- 13 independent production scenarios render identical source through Native
+  Compose and Mermaid.js `12.0.0`: detail audit `13 pass / 0 review / 0 fail`;
+  geometry width `1.016-1.020`, height `1.012-1.015`, and foreground ink
+  `0.967-1.144`.
+- 256 same-source visual-parity cases pass both the replacement detail and
+  geometry gates: `256 pass / 0 review / 0 fail`; width `1.008-1.029`, height
+  `0.995-1.041`, and foreground ink `0.918-1.163`.
+- All 16 matrix contact sheets and all 256 pairs were manually reviewed. No
+  unresolved blank, clipping, geometry, label, legend, line, bar, overlap, or
+  paint-order defect remains. Browser/Compose font rasterization differences,
+  point labels touching the left axis, and legend coverage of a horizontal
+  data label were retained only where the pinned Mermaid result exhibits the
+  same behavior.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
 
@@ -75,23 +86,16 @@ MERMAID_SOURCE_DIR=/path/to/mermaid-12 \
   npm run generate:xychart-doc-fixtures
 ```
 
-Render the 20 browser references:
+Capture the independent production corpus:
 
 ```bash
-cd tools/official-reference
-npm run render:xychart-gallery
+AUDIT_SOURCE=production AUDIT_KIND=xychart \
+OUTPUT_DIR=captures/local/xychart-production-detail-final \
+npm run capture:web-audit
 ```
 
-Capture matching Native and on-device Official views:
-
-```bash
-CAPTURE_CASE_IDS="$(rg 'id = \"xy_' \
-  mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/XyChartDemos.kt |
-  sed -E 's/.*id = \"([^\"]+)\".*/\1/' | paste -sd, -)" \
-CAPTURE_LAYOUT=dagre \
-ANDROID_SERIAL=<serial> \
-tools/capture-android-audit.sh
-```
-
-Generate review sheets with `npm run render:xychart-contact-sheet`. All
-screenshots remain under ignored `captures/local/` paths.
+Capture the 256-case matrix by changing `AUDIT_SOURCE` to `visual-parity`. Run
+`npm run audit:detail` and `npm run audit:stability-geometry`, then generate
+the 16 review sheets with `npm run generate:stability-contact-sheets`. Local
+screenshots remain under ignored `captures/local/` paths; reviewed evidence
+pages are published under `docs/assets/stability-report/`.

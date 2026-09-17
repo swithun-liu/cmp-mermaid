@@ -121,6 +121,41 @@ class GanttLayoutTest {
     }
 
     @Test
+    fun usesMeasuredD3AxisTextBounds() {
+        val scene = render(
+            """
+            gantt
+                dateFormat YYYY-MM-DD
+                axisFormat %b %d
+                tickInterval 1day
+                topAxis
+                todayMarker off
+                Task :task, 2025-01-01, 2d
+            """.trimIndent(),
+        )
+        val labels = scene.elements.filterIsInstance<SceneText>()
+            .filter { it.text == "Jan 01" }
+            .sortedBy { it.bounds.center.y }
+        val grid = scene.elements.filterIsInstance<ScenePath>()
+            .first { it.id == "gantt-grid-0" }
+
+        assertEquals(2, labels.size)
+        labels.forEach { label ->
+            assertEquals(6 * 7f, label.bounds.width)
+            assertEquals(10f, label.bounds.height)
+            assertEquals(grid.points.first().x, label.bounds.center.x)
+        }
+        assertEquals(
+            context.options.ganttTopPadding - 6.5f,
+            labels.first().bounds.center.y,
+        )
+        assertEquals(
+            scene.height - 50f + 9.5f,
+            labels.last().bounds.center.y,
+        )
+    }
+
+    @Test
     fun usesMermaid12BuiltInGanttPalette() {
         val scene = render(
             """

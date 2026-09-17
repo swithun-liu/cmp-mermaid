@@ -163,6 +163,12 @@ jobs:
         working-directory: tools/official-reference
         run: npm ci
 
+      - name: Verify Mermaid diagram inventory
+        working-directory: tools/official-reference
+        run: |
+          npm run audit:diagram-inventory
+          npm run test:detail-audit
+
       - name: Build Web production distribution
         run: ./gradlew :sample:webApp:wasmJsBrowserDistribution
 
@@ -201,6 +207,16 @@ jobs:
           INPUT_DIR=captures/ci/production \
           OUTPUT_DIR=captures/ci/contact-sheets \
           npm run generate:stability-contact-sheets
+
+      - name: Enforce detailed Native and Official parity
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_SOURCE=production \
+          INPUT_DIR=captures/ci/production \
+          OUTPUT_FILE=captures/ci/production-detail.json \
+          HEATMAP_DIR=captures/ci/detail-diffs \
+          FAIL_ON_REVIEW=false \
+          npm run audit:detail
 
       - name: Upload stable visual evidence
         if: always()

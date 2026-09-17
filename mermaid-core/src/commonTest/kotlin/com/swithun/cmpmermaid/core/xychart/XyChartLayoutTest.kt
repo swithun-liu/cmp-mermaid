@@ -366,7 +366,48 @@ class XyChartLayoutTest {
             "Legend bounds must preserve the measured text width",
         )
         assertEquals(setOf("14", "9", "21", "7", "12"), labels.mapTo(mutableSetOf(), SceneText::text))
+        assertTrue(
+            labels.all { label -> label.fontSize == 16f },
+            "Invalid negative SVG font sizes must match the browser's inherited 16px fallback",
+        )
         assertTrue(labels.all { label -> label.bounds.right <= scene.width })
+    }
+
+    @Test
+    fun preservesOfficialPlotLegendAndAxisPaintOrder() {
+        val scene = render(
+            """
+            ---
+            config:
+              xyChart:
+                showDataLabel: true
+                showDataLabelOutsideBar: true
+            ---
+            xychart horizontal
+                title "Review queue age"
+                x-axis ["Security", "Privacy", "Legal", "Finance", "Operations"]
+                bar "Minutes" [14, 9, 21, 7, 12]
+            """.trimIndent(),
+        )
+        val label = scene.elements.single { element ->
+            element is SceneText &&
+                element.zIndex == 18 &&
+                element.text == "21"
+        }
+        val legendMarker = scene.elements.single { element ->
+            element is SceneShape && element.id == "xy-legend-bar-0"
+        }
+        val legendText = scene.elements.single { element ->
+            element is SceneText &&
+                element.text == "Minutes"
+        }
+        val axisLine = scene.elements.single { element ->
+            element is ScenePath && element.id == "xy-left-axis-line"
+        }
+
+        assertTrue(scene.elements.indexOf(label) < scene.elements.indexOf(legendMarker))
+        assertTrue(scene.elements.indexOf(legendMarker) < scene.elements.indexOf(legendText))
+        assertTrue(scene.elements.indexOf(legendText) < scene.elements.indexOf(axisLine))
     }
 
     @Test

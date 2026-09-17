@@ -1,5 +1,11 @@
 # Production Capability Matrix
 
+> [!WARNING]
+> This matrix covers the 15 currently implemented
+> families. It is not the Mermaid 12.0.0 full-family matrix and does not confer
+> Stable status. See
+> [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
+
 This matrix defines the major Mermaid `12.0.0` capabilities exercised by the
 production conformance corpus. It is generated conceptually from
 [`requiredFeaturesByKind`](../tools/official-reference/production-corpus.mjs)
@@ -8,14 +14,14 @@ and enforced by
 
 ## Current State
 
-- 12 supported diagram types
-- 158 production scenarios
-- 96 conformance scenarios created independently from the demo gallery
-- 16 required capability points for each of the first nine diagram types and
-  17 for Requirement, 24 for Git Graph, and 22 for Mindmap
-- 207/207 declared capability points covered
-- 3,072 additional visual-matrix sources: 256 per diagram type
-- 3,072 separate Native-only randomized stress inputs
+- 15 supported diagram types
+- 197 production scenarios
+- 120 conformance scenarios created independently from the demo gallery
+- 16 required capability points for the original chart families, 17 for
+  Quadrant Chart, Kanban, and Requirement, 24 for Git Graph, and 22 for Mindmap
+- 257/257 declared capability points covered
+- 3,840 additional visual-matrix sources: 256 per diagram type
+- 3,840 separate Native-only randomized stress inputs
 
 ## Coverage
 
@@ -23,6 +29,9 @@ and enforced by
 | --- | ---: | --- |
 | Flowchart | 14 | directions, classic shapes, advanced shapes, subgraphs, nested subgraphs, subgraph direction, solid edges, dotted/thick edges, edge labels, circle/cross markers, bidirectional edges, minimum length, classes/styles, Markdown/HTML, frontmatter config, Unicode |
 | XY Chart | 13 | vertical, horizontal, categorical axis, numeric axis, explicit domain, automatic domain, bars, lines, mixed plots, legend, data labels, outside labels, point labels, axis rotation, theme palette, component visibility |
+| Quadrant Chart | 13 | title, axes, quadrant labels, points, boundary points, empty charts, point radius/fill/stroke, classes, direct-style precedence, frontmatter config, theme colors, metadata, Unicode, comments |
+| Timeline | 13 | LR, TD, title, periods, events, continued events, sections, sectionless colors, disabled multicolor, HTML breaks, frontmatter config, theme colors, Redux themes, metadata, Unicode, comments |
+| Kanban | 13 | sections, tasks, anonymous items, explicit IDs, node forms, deeper indentation, comments, wrapped labels, empty sections, tickets, assignees, priorities, ticket links, section width, theme colors, Markdown, Unicode |
 | Sequence | 14 | participants, actor types, aliases, autonumber, activations, arrow families, notes, loops, alt/opt, parallel, critical, break, rect, boxes, create/destroy, self messages |
 | Class | 13 | members, visibility, generics, annotations, relation markers, two-way relations, relation labels, cardinalities, lollipop, namespaces, nested namespaces, direction, notes, classes/styles, Markdown, metadata |
 | State | 13 | simple states, descriptions, aliases, start/end, composites, nested composites, choice, fork/join, concurrency, direction, notes, classes/styles, links, Markdown, metadata, Unicode |
@@ -39,25 +48,36 @@ and enforced by
 The corpus generator fails when:
 
 - a diagram type does not have its expected number of cases;
-- one of the 207 required capability points has no conformance case;
+- one of the 257 required capability points has no conformance case;
 - a case reuses a demo or prior RC source;
 - a case has no semantic text expectation;
 - a case declares an unknown capability point.
 
 `ProductionCorpusTest` then requires every source to render with finite,
 bounded geometry and expected semantic text, compares two complete SceneGraphs
-for determinism, and renders all 12 diagram types across all 11 built-in
+for determinism, and renders all 15 diagram types across all 11 built-in
 themes.
-The Web audit captures Native and Mermaid.js output for every case and enforces
-blank-image and content-geometry limits.
+The legacy Web audit captures Native and Mermaid.js output for every case and
+enforces blank-image and content-geometry limits. The replacement detail audit
+also exports renderer manifests and checks semantic text, normalized element
+geometry, style categories, markers, clipping, overlap, paint-order occlusion,
+foreground masks, edges, colors, and review heatmaps.
 
 The large-scale visual matrix adds 256 unique sources per type by combining 13
 or 14 complex production structures with 20 visible text and layout-pressure
-profiles. All 3,072 sources render in the Native core test and all 3,072
-Native/Official screenshot pairs pass the geometry gate. This systematic
-matrix broadens layout and text-pressure coverage, but it is not counted as
-3,072 independent topologies. The separate randomized stress corpus remains
-Native-only robustness evidence and is not presented as Official parity.
+profiles. All 3,840 sources render in the Native core test. The historical
+3,072 Native/Official screenshot pairs passed the legacy geometry gate. That
+result
+did not catch a visible Git Graph paint-order defect and is not a detail-parity
+pass. Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class,
+State, and Entity Relationship add 2,304 Native/Official pairs accepted by the
+replacement detail gate. The first eight families contribute
+`2,048 pass / 0 review / 0 fail`; ER contributes
+`196 pass / 60 manually reviewed / 0 fail`. All 2,304 pairs also pass the
+geometry gate. This systematic matrix broadens layout and text-pressure
+coverage, but it is not counted as 3,840 independent topologies. The separate
+randomized stress corpus remains Native-only robustness evidence and is not
+presented as Official parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.
 Unsupported legal features must return `MermaidError.UnsupportedFeature`

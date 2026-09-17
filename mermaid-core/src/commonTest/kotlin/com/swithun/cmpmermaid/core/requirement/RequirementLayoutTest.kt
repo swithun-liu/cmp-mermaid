@@ -16,6 +16,7 @@ import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
 import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
+import kotlin.math.hypot
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -102,6 +103,56 @@ class RequirementLayoutTest {
     }
 
     @Test
+    fun positionsCurvedContainsLabelAtUpdatedPathHalfLength() {
+        val scene = render(
+            """
+            requirementDiagram
+              direction BT
+              requirement root_goal {
+                text: "Maintain a recoverable replica"
+              }
+              functionalRequirement child_goal {
+                text: "Persist every accepted change"
+              }
+              requirement copy_goal {
+                text: "Mirror the recovery policy"
+              }
+              performanceRequirement derived_goal {
+                text: "Calculate a replication checkpoint"
+              }
+              interfaceRequirement refined_goal {
+                text: "Define the recovery-point objective"
+              }
+              requirement traced_goal {
+                text: "Record the originating change request"
+              }
+              element implementation {
+                type: "Replication worker"
+              }
+              element verification_evidence {
+                type: "Recovery validation suite"
+              }
+              root_goal - contains -> child_goal
+              copy_goal <- copies - root_goal
+              root_goal - derives -> derived_goal
+              implementation - satisfies -> root_goal
+              verification_evidence - verifies -> child_goal
+              refined_goal <- refines - root_goal
+              root_goal - traces -> traced_goal
+            """.trimIndent(),
+        )
+
+        val edge = scene.elements.filterIsInstance<ScenePath>()
+            .single { it.id == "root_goal-child_goal-0" }
+        val label = scene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "<<contains>>" }
+        val expected = edge.points.halfLengthPoint()
+
+        assertEquals(expected.x, label.bounds.center.x, 0.01f)
+        assertEquals(expected.y, label.bounds.center.y, 0.01f)
+    }
+
+    @Test
     fun rendersContainsAndDependencyRelationshipMarkers() {
         val scene = render(
             """
@@ -154,6 +205,11 @@ class RequirementLayoutTest {
             SceneTextAlignment.Start,
             dagre.elements.filterIsInstance<SceneText>().single { it.text == "ID: 1" }
                 .horizontalAlignment,
+        )
+        assertEquals(
+            35f,
+            dagre.elements.filterIsInstance<SceneText>().single { it.text == "ID: 1" }
+                .bounds.width,
         )
         val elkError = assertIs<GMResult.Err<MermaidError.UnsupportedFeature>>(elk).error
         assertEquals("ELK layout", elkError.feature)
@@ -332,5 +388,25 @@ class RequirementLayoutTest {
             result,
             "Expected Requirement render success:\n$source\n$result",
         ).value
+    }
+
+    private fun List<com.swithun.cmpmermaid.core.ScenePoint>.halfLengthPoint():
+        com.swithun.cmpmermaid.core.ScenePoint {
+        val lengths = zipWithNext { first, second ->
+            hypot(second.x - first.x, second.y - first.y)
+        }
+        val target = lengths.sum() / 2f
+        var traversed = 0f
+        lengths.forEachIndexed { index, length ->
+            if (traversed + length >= target && length > 0f) {
+                val ratio = (target - traversed) / length
+                return com.swithun.cmpmermaid.core.ScenePoint(
+                    x = this[index].x + (this[index + 1].x - this[index].x) * ratio,
+                    y = this[index].y + (this[index + 1].y - this[index].y) * ratio,
+                )
+            }
+            traversed += length
+        }
+        return last()
     }
 }

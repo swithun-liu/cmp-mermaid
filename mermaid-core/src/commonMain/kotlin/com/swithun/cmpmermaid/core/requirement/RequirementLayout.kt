@@ -500,11 +500,16 @@ internal class RequirementLayout {
                 ?: return GMResult.Err(
                     MermaidError.Layout("Requirement relation $edgeId has no label"),
                 )
+            val labelAnchor = MermaidEdgePathPort.positionEdgeLabel(
+                layoutAnchor = routed.labelAnchor,
+                points = routed.points,
+                commands = commands,
+            )
             val labelBounds = SceneRect(
-                left = routed.labelAnchor.x - label.metrics.width / 2f - EDGE_LABEL_PADDING_X,
-                top = routed.labelAnchor.y - label.metrics.height / 2f - EDGE_LABEL_PADDING_Y,
-                right = routed.labelAnchor.x + label.metrics.width / 2f + EDGE_LABEL_PADDING_X,
-                bottom = routed.labelAnchor.y + label.metrics.height / 2f + EDGE_LABEL_PADDING_Y,
+                left = labelAnchor.x - label.metrics.width / 2f - EDGE_LABEL_PADDING_X,
+                top = labelAnchor.y - label.metrics.height / 2f - EDGE_LABEL_PADDING_Y,
+                right = labelAnchor.x + label.metrics.width / 2f + EDGE_LABEL_PADDING_X,
+                bottom = labelAnchor.y + label.metrics.height / 2f + EDGE_LABEL_PADDING_Y,
             )
             elements += SceneShape(
                 id = "$edgeId-label-background",
@@ -580,10 +585,11 @@ internal class RequirementLayout {
                 line.metrics.height / 2f +
                 BOX_PADDING
             val textBounds = if (positioned.isBody && bodyAlignment == SceneTextAlignment.Start) {
+                val left = bounds.left + BOX_PADDING / 2f - START_ALIGNMENT_INSET
                 SceneRect(
-                    left = bounds.left + BOX_PADDING / 2f,
+                    left = left,
                     top = top,
-                    right = bounds.right - BOX_PADDING / 2f,
+                    right = left + line.metrics.width,
                     bottom = top + line.metrics.height,
                 )
             } else {
@@ -870,6 +876,8 @@ internal class RequirementLayout {
         const val TITLE_FONT_SIZE = 18f
         const val EDGE_LABEL_PADDING_X = 6f
         const val EDGE_LABEL_PADDING_Y = 3f
+        // SceneTextAlignment.Start paints at bounds.left + 4.
+        const val START_ALIGNMENT_INSET = 4f
         const val UNWRAPPED_TEXT_WIDTH = 100_000f
         val RELATION_DASH_INTERVALS = listOf(10f, 7f)
         val TRANSPARENT = SceneColor(0x00000000)

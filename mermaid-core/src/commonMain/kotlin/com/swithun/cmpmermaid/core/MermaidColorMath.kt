@@ -8,10 +8,18 @@ import kotlin.math.roundToInt
  * Mermaid: packages/mermaid/src/themes/theme-*.js -> updateColors, via Khroma operations.
  */
 internal fun SceneColor.mermaidDarken(amount: Double): SceneColor =
-    mermaidAdjustLightness(-amount)
+    mermaidAdjustSaturationAndLightness(lightnessAmount = -amount)
 
 internal fun SceneColor.mermaidLighten(amount: Double): SceneColor =
-    mermaidAdjustLightness(amount)
+    mermaidAdjustSaturationAndLightness(lightnessAmount = amount)
+
+internal fun SceneColor.mermaidAdjustSaturationAndLightness(
+    saturationAmount: Double = 0.0,
+    lightnessAmount: Double = 0.0,
+): SceneColor = mermaidAdjustColor(
+    saturationAmount = saturationAmount,
+    lightnessAmount = lightnessAmount,
+)
 
 internal fun SceneColor.mermaidInvert(): SceneColor = SceneColor(
     argb = (
@@ -22,7 +30,10 @@ internal fun SceneColor.mermaidInvert(): SceneColor = SceneColor(
         ),
 )
 
-private fun SceneColor.mermaidAdjustLightness(amount: Double): SceneColor {
+private fun SceneColor.mermaidAdjustColor(
+    saturationAmount: Double,
+    lightnessAmount: Double,
+): SceneColor {
     val redUnit = red / 255.0
     val greenUnit = green / 255.0
     val blueUnit = blue / 255.0
@@ -42,15 +53,16 @@ private fun SceneColor.mermaidAdjustLightness(amount: Double): SceneColor {
         maximum == greenUnit -> ((blueUnit - redUnit) / delta + 2.0) / 6.0
         else -> ((redUnit - greenUnit) / delta + 4.0) / 6.0
     }
-    val adjustedLightness = (lightness + amount / 100.0).coerceIn(0.0, 1.0)
-    if (saturation == 0.0) {
+    val adjustedSaturation = (saturation + saturationAmount / 100.0).coerceIn(0.0, 1.0)
+    val adjustedLightness = (lightness + lightnessAmount / 100.0).coerceIn(0.0, 1.0)
+    if (adjustedSaturation == 0.0) {
         val channel = (adjustedLightness * 255.0).roundToInt()
         return color(channel, channel, channel)
     }
     val upper = if (adjustedLightness < 0.5) {
-        adjustedLightness * (1.0 + saturation)
+        adjustedLightness * (1.0 + adjustedSaturation)
     } else {
-        adjustedLightness + saturation - adjustedLightness * saturation
+        adjustedLightness + adjustedSaturation - adjustedLightness * adjustedSaturation
     }
     val lower = 2.0 * adjustedLightness - upper
     return color(

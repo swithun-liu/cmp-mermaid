@@ -79,6 +79,28 @@ data class MermaidXyChartOptions(
     val yAxis: MermaidXyAxisOptions = MermaidXyAxisOptions(),
 )
 
+data class MermaidQuadrantChartOptions(
+    val chartWidth: Float = 500f,
+    val chartHeight: Float = 500f,
+    val titleFontSize: Float = 20f,
+    val titlePadding: Float = 10f,
+    val quadrantPadding: Float = 5f,
+    val xAxisLabelPadding: Float = 5f,
+    val yAxisLabelPadding: Float = 5f,
+    val xAxisLabelFontSize: Float = 16f,
+    val yAxisLabelFontSize: Float = 16f,
+    val quadrantLabelFontSize: Float = 16f,
+    val quadrantTextTopPadding: Float = 5f,
+    val pointTextPadding: Float = 5f,
+    val pointLabelFontSize: Float = 12f,
+    val pointRadius: Float = 5f,
+    val xAxisPosition: String = "top",
+    val yAxisPosition: String = "left",
+    val quadrantInternalBorderStrokeWidth: Float = 1f,
+    val quadrantExternalBorderStrokeWidth: Float = 2f,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidJourneyOptions(
     val diagramMarginX: Float = 50f,
     val diagramMarginY: Float = 10f,
@@ -139,6 +161,57 @@ data class MermaidMindmapOptions(
     val layoutAlgorithm: String = "cose-bilkent",
 )
 
+data class MermaidKanbanOptions(
+    val padding: Float = 8f,
+    val sectionWidth: Float = 200f,
+    val ticketBaseUrl: String = "",
+)
+
+data class MermaidTimelineOptions(
+    val useWidth: Float? = null,
+    val useMaxWidth: Boolean = true,
+    val theme: String? = null,
+    val look: String? = null,
+    val layout: String? = null,
+    val diagramMarginX: Float = 50f,
+    val diagramMarginY: Float = 10f,
+    val leftMargin: Float = 150f,
+    val width: Float = 150f,
+    val height: Float = 50f,
+    val padding: Float = 50f,
+    val boxMargin: Float = 10f,
+    val boxTextMargin: Float = 5f,
+    val noteMargin: Float = 10f,
+    val messageMargin: Float = 35f,
+    val messageAlign: String = "center",
+    val bottomMarginAdj: Float = 1f,
+    val rightAngles: Boolean = false,
+    val taskFontSize: Float = 14f,
+    val taskFontFamily: String = "\"Open Sans\", sans-serif",
+    val taskMargin: Float = 50f,
+    val activationWidth: Float = 10f,
+    val textPlacement: String = "fo",
+    val actorColours: List<SceneColor> = listOf(
+        SceneColor(0xFF8FBC8F),
+        SceneColor(0xFF7CFC00),
+        SceneColor(0xFF00FFFF),
+        SceneColor(0xFF20B2AA),
+        SceneColor(0xFFB0E0E6),
+        SceneColor(0xFFFFFFE0),
+    ),
+    val sectionFills: List<SceneColor> = listOf(
+        SceneColor(0xFF191970),
+        SceneColor(0xFF8B008B),
+        SceneColor(0xFF4B0082),
+        SceneColor(0xFF2F4F4F),
+        SceneColor(0xFF800000),
+        SceneColor(0xFF8B4513),
+        SceneColor(0xFF00008B),
+    ),
+    val sectionColours: List<SceneColor> = listOf(SceneColor(0xFFFFFFFF)),
+    val disableMulticolor: Boolean = false,
+)
+
 data class MermaidRenderOptions(
     val layout: String = "dagre",
     val classLayout: String? = null,
@@ -153,6 +226,7 @@ data class MermaidRenderOptions(
     val minNodeWidth: Float = 120f,
     val flowchartPadding: Float = 15f,
     val classPadding: Float = 12f,
+    val classNotePadding: Float = 6f,
     val classHideEmptyMembersBox: Boolean = false,
     val classHierarchicalNamespaces: Boolean = true,
     val statePadding: Float = 8f,
@@ -189,9 +263,12 @@ data class MermaidRenderOptions(
     val pieLegendPosition: String = "right",
     val pieHighlightSlice: String = "",
     val xyChart: MermaidXyChartOptions = MermaidXyChartOptions(),
+    val quadrantChart: MermaidQuadrantChartOptions = MermaidQuadrantChartOptions(),
     val journey: MermaidJourneyOptions = MermaidJourneyOptions(),
     val gitGraph: MermaidGitGraphOptions = MermaidGitGraphOptions(),
     val mindmap: MermaidMindmapOptions = MermaidMindmapOptions(),
+    val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
+    val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,
@@ -290,17 +367,18 @@ data class MermaidPieTheme(
 
 data class MermaidXyChartTheme(
     val backgroundColor: SceneColor = SceneColor(0xFFFFFFFF),
-    val titleColor: SceneColor = SceneColor(0xFF333333),
-    val dataLabelColor: SceneColor = SceneColor(0xFF333333),
-    val legendTextColor: SceneColor = SceneColor(0xFF333333),
-    val xAxisLabelColor: SceneColor = SceneColor(0xFF333333),
-    val xAxisTitleColor: SceneColor = SceneColor(0xFF333333),
-    val xAxisTickColor: SceneColor = SceneColor(0xFF333333),
-    val xAxisLineColor: SceneColor = SceneColor(0xFF333333),
-    val yAxisLabelColor: SceneColor = SceneColor(0xFF333333),
-    val yAxisTitleColor: SceneColor = SceneColor(0xFF333333),
-    val yAxisTickColor: SceneColor = SceneColor(0xFF333333),
-    val yAxisLineColor: SceneColor = SceneColor(0xFF333333),
+    // Mermaid 12.0.0: themes/theme-default.js -> Theme.calculate.
+    val titleColor: SceneColor = SceneColor(0xFF131300),
+    val dataLabelColor: SceneColor = SceneColor(0xFF131300),
+    val legendTextColor: SceneColor = SceneColor(0xFF131300),
+    val xAxisLabelColor: SceneColor = SceneColor(0xFF131300),
+    val xAxisTitleColor: SceneColor = SceneColor(0xFF131300),
+    val xAxisTickColor: SceneColor = SceneColor(0xFF131300),
+    val xAxisLineColor: SceneColor = SceneColor(0xFF131300),
+    val yAxisLabelColor: SceneColor = SceneColor(0xFF131300),
+    val yAxisTitleColor: SceneColor = SceneColor(0xFF131300),
+    val yAxisTickColor: SceneColor = SceneColor(0xFF131300),
+    val yAxisLineColor: SceneColor = SceneColor(0xFF131300),
     val plotColorPalette: List<SceneColor> = listOf(
         SceneColor(0xFFECECFF),
         SceneColor(0xFF8493A6),
@@ -360,12 +438,12 @@ data class MermaidJourneyTheme(
 
 data class MermaidRequirementTheme(
     val background: SceneColor = SceneColor(0xFFECECFF),
-    val borderColor: SceneColor = SceneColor(0xFFC7C7F1),
+    val borderColor: SceneColor = SceneColor(0xFF9370DB),
     val borderSize: Float = 1f,
-    val textColor: SceneColor = SceneColor(0xFF131300),
+    val textColor: SceneColor = SceneColor(0xFF333333),
     val relationColor: SceneColor = SceneColor(0xFF333333),
     val relationLabelBackground: SceneColor = SceneColor(0xCCE8E8E8),
-    val relationLabelColor: SceneColor = SceneColor(0xFF000000),
+    val relationLabelColor: SceneColor = SceneColor(0xFF333333),
     val edgeLabelBackground: SceneColor = SceneColor(0xCCE8E8E8),
 )
 
@@ -469,6 +547,56 @@ data class MermaidMindmapTheme(
     val gradientStop: SceneColor = SceneColor(0xFFEEEEBC),
 )
 
+data class MermaidTimelineTheme(
+    val mainBackground: SceneColor = SceneColor(0xFFECECFF),
+    val nodeBorder: SceneColor = SceneColor(0xFF9370DB),
+    val sectionFills: List<SceneColor> = listOf(
+        0xFF8686FF,
+        0xFFFFFF78,
+        0xFFD7FF86,
+        0xFFC286FF,
+        0xFFFF86FF,
+        0xFFFF86C2,
+        0xFFFF8686,
+        0xFFFFC286,
+        0xFFC2FF86,
+        0xFF86FFC2,
+        0xFF86FFFF,
+        0xFF86C2FF,
+    ).map(::SceneColor),
+    val sectionInverseColors: List<SceneColor> = listOf(
+        0xFFFFFFB9,
+        0xFFABABFF,
+        0xFFD0B9FF,
+        0xFFDCFFB9,
+        0xFFB9FFB9,
+        0xFFB9FFDC,
+        0xFFB9FFFF,
+        0xFFB9DCFF,
+        0xFFDCB9FF,
+        0xFFFFB9DC,
+        0xFFFFB9B9,
+        0xFFFFDCB9,
+    ).map(::SceneColor),
+    val sectionLabelColors: List<SceneColor> = listOf(
+        0xFFFFFFFF,
+        0xFF000000,
+        0xFF000000,
+        0xFFFFFFFF,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+        0xFF000000,
+    ).map(::SceneColor),
+    val useGradient: Boolean = false,
+    val gradientStart: SceneColor = SceneColor(0xFFC7C7F1),
+    val gradientStop: SceneColor = SceneColor(0xFFEEEEBC),
+)
+
 data class MermaidTheme(
     val background: SceneColor = SceneColor(0xFFFFFFFF),
     val nodeFill: SceneColor = SceneColor(0xFFECECFF),
@@ -494,6 +622,7 @@ data class MermaidTheme(
     val requirement: MermaidRequirementTheme = MermaidRequirementTheme(),
     val gitGraph: MermaidGitGraphTheme = MermaidGitGraphTheme(),
     val mindmap: MermaidMindmapTheme = MermaidMindmapTheme(),
+    val timeline: MermaidTimelineTheme = MermaidTimelineTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
         offsetX = 1f,
@@ -528,6 +657,7 @@ data class MermaidTheme(
             requirement = darkRequirementTheme(),
             gitGraph = gitGraphTheme("dark"),
             mindmap = mindmapTheme("dark"),
+            timeline = timelineTheme("dark"),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
                 background = 0xFF333333,
@@ -572,6 +702,7 @@ data class MermaidTheme(
             requirement = reduxRequirementTheme(dark = false),
             gitGraph = gitGraphTheme("redux"),
             mindmap = mindmapTheme("redux-color"),
+            timeline = timelineTheme("redux-color"),
             dropShadow = reduxShadow(dark = false),
         )
 
@@ -612,6 +743,7 @@ data class MermaidTheme(
                 requirement = forestRequirementTheme(),
                 gitGraph = gitGraphTheme("forest"),
                 mindmap = mindmapTheme("forest"),
+                timeline = timelineTheme("forest"),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -654,6 +786,7 @@ data class MermaidTheme(
                 requirement = neutralRequirementTheme(),
                 gitGraph = gitGraphTheme("neutral"),
                 mindmap = mindmapTheme("neutral"),
+                timeline = timelineTheme("neutral"),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
                     background = 0xFFFFFFFF,
@@ -690,6 +823,7 @@ data class MermaidTheme(
                 requirement = baseRequirementTheme(),
                 gitGraph = gitGraphTheme("base"),
                 mindmap = mindmapTheme("base"),
+                timeline = timelineTheme("base"),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
             )
@@ -711,6 +845,7 @@ data class MermaidTheme(
                 requirement = neoRequirementTheme(dark = false),
                 gitGraph = gitGraphTheme("neo"),
                 mindmap = mindmapTheme("neo"),
+                timeline = timelineTheme("neo"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -741,6 +876,7 @@ data class MermaidTheme(
                 requirement = neoRequirementTheme(dark = true),
                 gitGraph = gitGraphTheme("neo-dark"),
                 mindmap = mindmapTheme("neo-dark"),
+                timeline = timelineTheme("neo-dark"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
                 pie = neoPieTheme(dark = true),
@@ -770,6 +906,7 @@ data class MermaidTheme(
                 requirement = reduxRequirementTheme(dark = false),
                 gitGraph = gitGraphTheme("redux"),
                 mindmap = mindmapTheme("redux"),
+                timeline = timelineTheme("redux"),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
@@ -786,6 +923,7 @@ data class MermaidTheme(
                 pie = reduxColorPieTheme(dark = true),
                 xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
                 mindmap = mindmapTheme("redux-dark-color"),
+                timeline = timelineTheme("redux-dark-color"),
             )
             else -> null
         }
@@ -1090,6 +1228,17 @@ data class MermaidTheme(
                 gradientStart = color("gradientStart") ?: theme.mindmap.gradientStart,
                 gradientStop = color("gradientStop") ?: theme.mindmap.gradientStop,
             )
+            val timeline = theme.timeline.copy(
+                mainBackground = color("mainBkg") ?: theme.timeline.mainBackground,
+                nodeBorder = color("nodeBorder") ?: theme.timeline.nodeBorder,
+                sectionFills = mindmapSectionFills,
+                sectionInverseColors = mindmapSectionInverseColors,
+                sectionLabelColors = mindmapSectionLabelColors,
+                useGradient = useGradientOverride
+                    ?: if (disablesBaseGradient) false else theme.timeline.useGradient,
+                gradientStart = color("gradientStart") ?: theme.timeline.gradientStart,
+                gradientStop = color("gradientStop") ?: theme.timeline.gradientStop,
+            )
             val xyPaletteSource = values["xyChart.plotColorPalette"]
             val xyPalette = if (xyPaletteSource == null) {
                 theme.xyChart.plotColorPalette
@@ -1172,6 +1321,7 @@ data class MermaidTheme(
                 requirement = requirement,
                 gitGraph = gitGraph,
                 mindmap = mindmap,
+                timeline = timeline,
                 dropShadow = dropShadow,
             )
             val invalid = invalidVariable
@@ -1227,6 +1377,7 @@ data class MermaidTheme(
             requirement = reduxRequirementTheme(dark = true),
             gitGraph = gitGraphTheme("redux-dark"),
             mindmap = mindmapTheme("redux-dark"),
+            timeline = timelineTheme("redux-dark"),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
@@ -1527,6 +1678,20 @@ data class MermaidTheme(
                 )
                 else -> MermaidMindmapTheme()
             }
+        }
+
+        private fun timelineTheme(name: String): MermaidTimelineTheme {
+            val colorScale = mindmapTheme(name)
+            return MermaidTimelineTheme(
+                mainBackground = colorScale.mainBackground,
+                nodeBorder = colorScale.nodeBorder,
+                sectionFills = colorScale.sectionFills,
+                sectionInverseColors = colorScale.sectionInverseColors,
+                sectionLabelColors = colorScale.sectionLabelColors,
+                useGradient = colorScale.useGradient,
+                gradientStart = colorScale.gradientStart,
+                gradientStop = colorScale.gradientStop,
+            )
         }
 
         private fun gitGraphTheme(name: String): MermaidGitGraphTheme {

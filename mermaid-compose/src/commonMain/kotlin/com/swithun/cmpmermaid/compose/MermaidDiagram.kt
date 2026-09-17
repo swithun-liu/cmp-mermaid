@@ -230,7 +230,11 @@ fun rememberMermaidScene(
                     maxWidth = request.maxWidth.mermaidTextConstraint(request.spans),
                 ),
             )
-            TextMetrics(result.size.width.toFloat(), result.size.height.toFloat())
+            TextMetrics(
+                width = result.size.width.toFloat(),
+                height = result.size.height.toFloat(),
+                lineCount = result.lineCount,
+            )
         }
     }
     return produceState(

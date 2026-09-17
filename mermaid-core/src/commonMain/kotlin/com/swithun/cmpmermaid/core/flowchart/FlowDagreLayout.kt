@@ -115,10 +115,15 @@ internal object FlowDagreLayout {
                 marginy = 8f,
             ),
         )
-        document.nodes.forEach { (id, _) ->
-            val size = nodeSizes.getValue(id)
-            graph.setNode(id, DagreNode(width = size.width, height = size.height, originalId = id))
+        val subgraphDepths = document.subgraphs.associate { subgraph ->
+            subgraph.id to generateSequence(subgraph.parentId) { parent ->
+                document.subgraphs.firstOrNull { it.id == parent }?.parentId
+            }.count()
         }
+
+        // Mermaid: rendering-util/layout-algorithms/dagre/index.js
+        // -> prepareLayoutForDagre. FlowDB emits groups before regular nodes,
+        // and Dagre uses that insertion order to break equal-crossing ties.
         document.subgraphs.forEach { subgraph ->
             graph.setNode(
                 subgraph.id,
@@ -127,16 +132,14 @@ internal object FlowDagreLayout {
                     dir = subgraph.direction?.toDagreDirection(),
                 ),
             )
-        }
-        document.subgraphs.forEach { subgraph ->
             subgraph.parentId?.let { graph.setParent(subgraph.id, it) }
         }
-        val subgraphDepths = document.subgraphs.associate { subgraph ->
-            subgraph.id to generateSequence(subgraph.parentId) { parent ->
-                document.subgraphs.firstOrNull { it.id == parent }?.parentId
-            }.count()
-        }
-        document.nodes.keys.forEach { nodeId ->
+        document.nodes.forEach { (nodeId, _) ->
+            val size = nodeSizes.getValue(nodeId)
+            graph.setNode(
+                nodeId,
+                DagreNode(width = size.width, height = size.height, originalId = nodeId),
+            )
             document.subgraphs
                 .filter { nodeId in it.nodeIds }
                 .maxByOrNull { subgraphDepths.getValue(it.id) }
@@ -172,6 +175,16 @@ internal object FlowDagreLayout {
                 ?: return GMResult.Err(
                     MermaidError.Layout("Extracted cluster '$id' has no cluster data"),
                 )
+            // Mermaid 12.0.0: rendering-util/layout-algorithms/dagre/index.js
+            // -> measureDagreGraph. Extracted subgraphs inherit parent spacing,
+            // with extra rank separation reserved for the cluster boundary.
+            val graphSettings = graph.graph()
+            nested.setGraph(
+                nested.graph().copy(
+                    ranksep = graphSettings.ranksep + 25f,
+                    nodesep = graphSettings.nodesep,
+                ),
+            )
             when (
                 val nestedResult = layoutRecursively(
                     graph = nested,

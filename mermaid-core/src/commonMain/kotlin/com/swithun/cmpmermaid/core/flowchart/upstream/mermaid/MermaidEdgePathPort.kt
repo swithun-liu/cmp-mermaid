@@ -13,6 +13,7 @@ import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.hypot
 import kotlin.math.min
+import kotlin.math.roundToInt
 import kotlin.math.sin
 import kotlin.math.sqrt
 
@@ -24,6 +25,23 @@ import kotlin.math.sqrt
  * - d3-shape/src/curve/step.js
  */
 internal object MermaidEdgePathPort {
+    /**
+     * Mermaid: rendering-util/rendering-elements/edges.js -> positionEdgeLabel
+     * and utils.ts -> calcLabelPosition / isLabelCoordinateInPath.
+     */
+    fun positionEdgeLabel(
+        layoutAnchor: ScenePoint,
+        points: List<ScenePoint>,
+        commands: List<ScenePathCommand>,
+    ): ScenePoint {
+        val middlePoint = points.getOrNull(points.size / 2) ?: return layoutAnchor
+        return if (isLabelCoordinateInPath(middlePoint, commands)) {
+            layoutAnchor
+        } else {
+            calcLabelPosition(points)
+        }
+    }
+
     fun generate(
         points: List<ScenePoint>,
         curve: String,
@@ -56,6 +74,55 @@ internal object MermaidEdgePathPort {
                 ),
             )
         }
+    }
+
+    private fun isLabelCoordinateInPath(
+        point: ScenePoint,
+        commands: List<ScenePathCommand>,
+    ): Boolean {
+        val roundedX = point.x.roundToInt().toString()
+        val roundedY = point.y.roundToInt().toString()
+        return commands.asSequence()
+            .flatMap { command -> command.coordinates() }
+            .map { coordinate -> coordinate.roundToInt().toString() }
+            .any { coordinate ->
+                coordinate.contains(roundedX) || coordinate.contains(roundedY)
+            }
+    }
+
+    private fun calcLabelPosition(points: List<ScenePoint>): ScenePoint {
+        if (points.size == 1) return points.first()
+        val lengths = points.zipWithNext { first, second ->
+            hypot(second.x - first.x, second.y - first.y)
+        }
+        val target = lengths.sum() / 2f
+        var traversed = 0f
+        lengths.forEachIndexed { index, length ->
+            if (traversed + length >= target && length > 0f) {
+                val ratio = (target - traversed) / length
+                return ScenePoint(
+                    x = points[index].x + (points[index + 1].x - points[index].x) * ratio,
+                    y = points[index].y + (points[index + 1].y - points[index].y) * ratio,
+                )
+            }
+            traversed += length
+        }
+        return points.lastOrNull() ?: ScenePoint(0f, 0f)
+    }
+
+    private fun ScenePathCommand.coordinates(): Sequence<Float> = when (this) {
+        is ScenePathCommand.MoveTo -> sequenceOf(point.x, point.y)
+        is ScenePathCommand.LineTo -> sequenceOf(point.x, point.y)
+        is ScenePathCommand.QuadraticTo -> sequenceOf(control.x, control.y, end.x, end.y)
+        is ScenePathCommand.CubicTo -> sequenceOf(
+            control1.x,
+            control1.y,
+            control2.x,
+            control2.y,
+            end.x,
+            end.y,
+        )
+        is ScenePathCommand.ArcTo -> sequenceOf(end.x, end.y)
     }
 
     private fun generateRoundedPath(

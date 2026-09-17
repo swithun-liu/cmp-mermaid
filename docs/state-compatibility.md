@@ -60,6 +60,14 @@ navigation; the native renderer does not execute arbitrary URLs or JavaScript.
 - 256 deterministic random legal State diagrams use Dagre while checking
   finite bounds, shapes, routed edges, nested composites,
   and concurrent regions.
+- 13 independent production scenarios and 256 systematic visual-matrix cases
+  render identical source through Native Compose and Mermaid.js `12.0.0`.
+- The replacement detail audit reports `256 pass / 0 review / 0 fail`; matrix
+  geometry ratios are width `0.963-1.224`, height `0.968-1.089`, and
+  foreground ink `1.031-1.383`.
+- All 16 matrix contact sheets were manually reviewed for state semantics,
+  nested boundaries, notes, pseudostates, routing, labels, clipping, overlap,
+  and paint order.
 - 25 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0` with Dagre.
 - The 25 Native Android screenshots are compared side by side with 25

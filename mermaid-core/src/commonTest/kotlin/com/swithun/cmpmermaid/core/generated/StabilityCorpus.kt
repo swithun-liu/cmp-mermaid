@@ -2501,6 +2501,361 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_product_portfolio",
+        diagramId = "quadrant",
+        title = "Product investment portfolio",
+        scenario = "Product initiatives are prioritized by customer value and delivery confidence.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Product investment portfolio
+              x-axis Lower confidence --> Higher confidence
+              y-axis Lower customer value --> Higher customer value
+              quadrant-1 Commit
+              quadrant-2 Validate
+              quadrant-3 Pause
+              quadrant-4 Optimize
+              Search relevance: [0.82, 0.88]
+              Checkout recovery: [0.73, 0.69]
+              Reporting refresh: [0.46, 0.62]
+              Legacy cleanup: [0.28, 0.24]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_incident_risk",
+        diagramId = "quadrant",
+        title = "Incident risk assessment",
+        scenario = "Operational risks are plotted by likelihood and customer impact.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Incident risk assessment
+              x-axis Unlikely --> Likely
+              y-axis Limited impact --> Severe impact
+              quadrant-1 Mitigate now
+              quadrant-2 Prepare response
+              quadrant-3 Monitor
+              quadrant-4 Reduce exposure
+              Database saturation:::critical: [0.84, 0.91]
+              Queue backlog:::warning: [0.67, 0.63]
+              Certificate expiry:::warning: [0.38, 0.76]
+              Dashboard delay: [0.24, 0.18]
+              classDef critical color: #dc2626, radius: 12, stroke-color: #7f1d1d, stroke-width: 3px
+              classDef warning color: #f59e0b, radius: 9, stroke-color: #92400e, stroke-width: 2px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_delivery_framework",
+        diagramId = "quadrant",
+        title = "Delivery framework without observations",
+        scenario = "An empty framework centers its axis and quadrant labels before initiatives exist.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Delivery framework
+              x-axis Low urgency --> High urgency
+              y-axis Low impact --> High impact
+              quadrant-1 Execute
+              quadrant-2 Schedule
+              quadrant-3 Eliminate
+              quadrant-4 Delegate
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_governance_theme",
+        diagramId = "quadrant",
+        title = "Themed governance portfolio",
+        scenario = "Frontmatter changes dimensions, axis placement, sizing mode, and every visible color family.",
+        layout = "dagre",
+        initialAspectRatio = 1.2f,
+        source = """
+            ---
+            title: Governance portfolio
+            config:
+              quadrantChart:
+                chartWidth: 540
+                chartHeight: 450
+                yAxisPosition: right
+                pointRadius: 7
+                useMaxWidth: false
+              themeVariables:
+                quadrant1Fill: "#dcfce7"
+                quadrant2Fill: "#dbeafe"
+                quadrant3Fill: "#fee2e2"
+                quadrant4Fill: "#fef3c7"
+                quadrantPointFill: "#0f172a"
+                quadrantExternalBorderStrokeFill: "#334155"
+            ---
+            quadrantChart
+              accTitle: Governance portfolio
+              accDescr: Delivery controls organized by confidence and evidence
+              x-axis Lower confidence --> Higher confidence
+              y-axis Less evidence --> More evidence
+              quadrant-1 Approve
+              quadrant-2 Investigate
+              quadrant-3 Reject
+              quadrant-4 Recheck
+              Automated tests: [0.83, 0.86]
+              Manual review: [0.62, 0.71]
+              Rollback rehearsal: [0.48, 0.54]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_unicode_market",
+        diagramId = "quadrant",
+        title = "International market assessment",
+        scenario = "Unicode labels, comments, quoted punctuation, and boundary coordinates render together.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              %% International labels exercise the same parser states as Latin text.
+              title 市場ポートフォリオ
+              x-axis "低い到達度" --> "高い到達度"
+              y-axis "低い関与 ❤" --> "高い関与 ❤"
+              quadrant-1 拡大する
+              quadrant-2 検証する
+              quadrant-3 再評価する
+              quadrant-4 維持する
+              東京: [1, 1]
+              서울: [0, 0]
+              "São Paulo": [0.58, 0.72] color: #2563eb, radius: 11
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_release_history",
+        diagramId = "timeline",
+        title = "Product release history",
+        scenario = "Multiple periods and stacked events exercise the horizontal renderer.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            timeline
+              title Product release history
+              2023 : Private preview
+              2024 : Public beta : Partner rollout
+                   : Accessibility review
+              2025 : General availability
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_vertical_program",
+        diagramId = "timeline",
+        title = "Vertical program milestones",
+        scenario = "Sections, tasks, and event stacks exercise the top-down renderer.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            timeline TD
+              title Vertical program milestones
+              section Foundation
+                Architecture : Contract review : Prototype
+                Platform : Core implementation
+              section Validation
+                Release candidate : Automated tests : Manual review
+                Launch : Monitoring : Rollback rehearsal
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_sectionless_palette",
+        diagramId = "timeline",
+        title = "Sectionless multicolor delivery",
+        scenario = "Each period receives a distinct color when no sections are declared.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            timeline
+              title Sectionless multicolor delivery
+              Discover : User research
+              Design : Architecture
+              Build : Implementation
+              Validate : Acceptance
+              Operate : Monitoring
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_configured_theme",
+        diagramId = "timeline",
+        title = "Configured accessible timeline",
+        scenario = "Spacing, sizing, colors, and accessibility metadata are configured together.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              theme: base
+              look: classic
+              timeline:
+                leftMargin: 190
+                padding: 30
+                useMaxWidth: false
+                disableMulticolor: false
+              themeVariables:
+                cScale0: "#dbeafe"
+                cScale1: "#dcfce7"
+                cScaleLabel0: "#1e3a8a"
+                cScaleLabel1: "#14532d"
+            ---
+            timeline
+              title Configured delivery milestones
+              accTitle: Delivery milestones
+              accDescr: Build and validation phases
+              section Build
+                Candidate : API complete : UI complete
+              section Validate
+                Approval : Automated checks : Manual review
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_unicode_vertical",
+        diagramId = "timeline",
+        title = "International vertical history",
+        scenario = "Unicode, entities, HTML breaks, comments, and vertical layout render together.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            timeline TD
+              %% International milestones intentionally mix scripts.
+              title 地域リリース
+              section アジア
+                2025 : 東京 &amp; 서울
+              section Americas
+                2026 : São Paulo <br> general availability
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_release_workflow",
+        diagramId = "kanban",
+        title = "Release workflow board",
+        scenario = "Three workflow stages organize delivery tasks in source order.",
+        layout = "dagre",
+        initialAspectRatio = 2.1f,
+        source = """
+            kanban
+              backlog[Backlog]
+                scope[Confirm release scope]
+                owners[Assign component owners]
+              progress[In progress]
+                implementation[Complete native renderer]
+                integration[Run integration suite]
+              done[Done]
+                approval[Architecture approval]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_priority_triage",
+        diagramId = "kanban",
+        title = "Priority triage board",
+        scenario = "Ticket, assignee, and every supported priority marker render on task cards.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            kanban
+              triage[Triage]
+                outage[Restore service]@{ ticket: OPS-101, assigned: Ada, priority: 'Very High' }
+                latency[Reduce latency]@{ ticket: OPS-102, assigned: Lin, priority: High }
+                cleanup[Remove stale data]@{ priority: Medium }
+              planned[Planned]
+                docs[Refresh runbook]@{ priority: Low }
+                polish[Polish dashboard]@{ priority: 'Very Low' }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_wrapped_empty_stage",
+        diagramId = "kanban",
+        title = "Wrapped tasks and empty stage",
+        scenario = "Long task text wraps while an adjacent empty stage keeps its minimum height.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            kanban
+              planned[Planned work]
+                long[Implement deterministic rendering verification across desktop and mobile targets]
+              waiting[Waiting for approval]
+              complete[Complete]
+                shipped[Publish verified artifacts]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_configured_links",
+        diagramId = "kanban",
+        title = "Configured linked tickets",
+        scenario = "Section width, palette variables, classic look, and external ticket links combine.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              theme: base
+              look: classic
+              kanban:
+                sectionWidth: 230
+                ticketBaseUrl: "https://issues.example/#TICKET#"
+              themeVariables:
+                cScale2: "#dbeafe"
+                cScale3: "#dcfce7"
+                cScaleLabel2: "#1e3a8a"
+                cScaleLabel3: "#14532d"
+            ---
+            kanban
+              build[Build]
+                parser[Translate parser]@{ ticket: KB-201, assigned: Ada, priority: High }
+              verify[Verify]
+                parity[Review visual parity]@{ ticket: KB-202, assigned: Lin, priority: Low }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_unicode_indentation",
+        diagramId = "kanban",
+        title = "International nested board",
+        scenario = "Unicode, comments, anonymous nodes, and deeper indentation share one board.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            kanban
+              todo[準備]
+                [仕様を確認]
+                  nested[詳細レビュー]
+                %% Deeper indentation remains in the current section.
+                    evidence[証拠を保存]
+              done[완료]
+                release[서울 출시]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -4991,6 +5346,361 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_quadrant_product_portfolio",
+        diagramId = "quadrant",
+        title = "Product investment portfolio",
+        scenario = "Product initiatives are prioritized by customer value and delivery confidence.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Product investment portfolio
+              x-axis Lower confidence --> Higher confidence
+              y-axis Lower customer value --> Higher customer value
+              quadrant-1 Commit
+              quadrant-2 Validate
+              quadrant-3 Pause
+              quadrant-4 Optimize
+              Search relevance: [0.82, 0.88]
+              Checkout recovery: [0.73, 0.69]
+              Reporting refresh: [0.46, 0.62]
+              Legacy cleanup: [0.28, 0.24]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_incident_risk",
+        diagramId = "quadrant",
+        title = "Incident risk assessment",
+        scenario = "Operational risks are plotted by likelihood and customer impact.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Incident risk assessment
+              x-axis Unlikely --> Likely
+              y-axis Limited impact --> Severe impact
+              quadrant-1 Mitigate now
+              quadrant-2 Prepare response
+              quadrant-3 Monitor
+              quadrant-4 Reduce exposure
+              Database saturation:::critical: [0.84, 0.91]
+              Queue backlog:::warning: [0.67, 0.63]
+              Certificate expiry:::warning: [0.38, 0.76]
+              Dashboard delay: [0.24, 0.18]
+              classDef critical color: #dc2626, radius: 12, stroke-color: #7f1d1d, stroke-width: 3px
+              classDef warning color: #f59e0b, radius: 9, stroke-color: #92400e, stroke-width: 2px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_delivery_framework",
+        diagramId = "quadrant",
+        title = "Delivery framework without observations",
+        scenario = "An empty framework centers its axis and quadrant labels before initiatives exist.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Delivery framework
+              x-axis Low urgency --> High urgency
+              y-axis Low impact --> High impact
+              quadrant-1 Execute
+              quadrant-2 Schedule
+              quadrant-3 Eliminate
+              quadrant-4 Delegate
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_governance_theme",
+        diagramId = "quadrant",
+        title = "Themed governance portfolio",
+        scenario = "Frontmatter changes dimensions, axis placement, sizing mode, and every visible color family.",
+        layout = "dagre",
+        initialAspectRatio = 1.2f,
+        source = """
+            ---
+            title: Governance portfolio
+            config:
+              quadrantChart:
+                chartWidth: 540
+                chartHeight: 450
+                yAxisPosition: right
+                pointRadius: 7
+                useMaxWidth: false
+              themeVariables:
+                quadrant1Fill: "#dcfce7"
+                quadrant2Fill: "#dbeafe"
+                quadrant3Fill: "#fee2e2"
+                quadrant4Fill: "#fef3c7"
+                quadrantPointFill: "#0f172a"
+                quadrantExternalBorderStrokeFill: "#334155"
+            ---
+            quadrantChart
+              accTitle: Governance portfolio
+              accDescr: Delivery controls organized by confidence and evidence
+              x-axis Lower confidence --> Higher confidence
+              y-axis Less evidence --> More evidence
+              quadrant-1 Approve
+              quadrant-2 Investigate
+              quadrant-3 Reject
+              quadrant-4 Recheck
+              Automated tests: [0.83, 0.86]
+              Manual review: [0.62, 0.71]
+              Rollback rehearsal: [0.48, 0.54]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_quadrant_unicode_market",
+        diagramId = "quadrant",
+        title = "International market assessment",
+        scenario = "Unicode labels, comments, quoted punctuation, and boundary coordinates render together.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              %% International labels exercise the same parser states as Latin text.
+              title 市場ポートフォリオ
+              x-axis "低い到達度" --> "高い到達度"
+              y-axis "低い関与 ❤" --> "高い関与 ❤"
+              quadrant-1 拡大する
+              quadrant-2 検証する
+              quadrant-3 再評価する
+              quadrant-4 維持する
+              東京: [1, 1]
+              서울: [0, 0]
+              "São Paulo": [0.58, 0.72] color: #2563eb, radius: 11
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_release_history",
+        diagramId = "timeline",
+        title = "Product release history",
+        scenario = "Multiple periods and stacked events exercise the horizontal renderer.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            timeline
+              title Product release history
+              2023 : Private preview
+              2024 : Public beta : Partner rollout
+                   : Accessibility review
+              2025 : General availability
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_vertical_program",
+        diagramId = "timeline",
+        title = "Vertical program milestones",
+        scenario = "Sections, tasks, and event stacks exercise the top-down renderer.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            timeline TD
+              title Vertical program milestones
+              section Foundation
+                Architecture : Contract review : Prototype
+                Platform : Core implementation
+              section Validation
+                Release candidate : Automated tests : Manual review
+                Launch : Monitoring : Rollback rehearsal
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_sectionless_palette",
+        diagramId = "timeline",
+        title = "Sectionless multicolor delivery",
+        scenario = "Each period receives a distinct color when no sections are declared.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            timeline
+              title Sectionless multicolor delivery
+              Discover : User research
+              Design : Architecture
+              Build : Implementation
+              Validate : Acceptance
+              Operate : Monitoring
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_configured_theme",
+        diagramId = "timeline",
+        title = "Configured accessible timeline",
+        scenario = "Spacing, sizing, colors, and accessibility metadata are configured together.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              theme: base
+              look: classic
+              timeline:
+                leftMargin: 190
+                padding: 30
+                useMaxWidth: false
+                disableMulticolor: false
+              themeVariables:
+                cScale0: "#dbeafe"
+                cScale1: "#dcfce7"
+                cScaleLabel0: "#1e3a8a"
+                cScaleLabel1: "#14532d"
+            ---
+            timeline
+              title Configured delivery milestones
+              accTitle: Delivery milestones
+              accDescr: Build and validation phases
+              section Build
+                Candidate : API complete : UI complete
+              section Validate
+                Approval : Automated checks : Manual review
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_timeline_unicode_vertical",
+        diagramId = "timeline",
+        title = "International vertical history",
+        scenario = "Unicode, entities, HTML breaks, comments, and vertical layout render together.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            timeline TD
+              %% International milestones intentionally mix scripts.
+              title 地域リリース
+              section アジア
+                2025 : 東京 &amp; 서울
+              section Americas
+                2026 : São Paulo <br> general availability
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_release_workflow",
+        diagramId = "kanban",
+        title = "Release workflow board",
+        scenario = "Three workflow stages organize delivery tasks in source order.",
+        layout = "dagre",
+        initialAspectRatio = 2.1f,
+        source = """
+            kanban
+              backlog[Backlog]
+                scope[Confirm release scope]
+                owners[Assign component owners]
+              progress[In progress]
+                implementation[Complete native renderer]
+                integration[Run integration suite]
+              done[Done]
+                approval[Architecture approval]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_priority_triage",
+        diagramId = "kanban",
+        title = "Priority triage board",
+        scenario = "Ticket, assignee, and every supported priority marker render on task cards.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            kanban
+              triage[Triage]
+                outage[Restore service]@{ ticket: OPS-101, assigned: Ada, priority: 'Very High' }
+                latency[Reduce latency]@{ ticket: OPS-102, assigned: Lin, priority: High }
+                cleanup[Remove stale data]@{ priority: Medium }
+              planned[Planned]
+                docs[Refresh runbook]@{ priority: Low }
+                polish[Polish dashboard]@{ priority: 'Very Low' }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_wrapped_empty_stage",
+        diagramId = "kanban",
+        title = "Wrapped tasks and empty stage",
+        scenario = "Long task text wraps while an adjacent empty stage keeps its minimum height.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            kanban
+              planned[Planned work]
+                long[Implement deterministic rendering verification across desktop and mobile targets]
+              waiting[Waiting for approval]
+              complete[Complete]
+                shipped[Publish verified artifacts]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_configured_links",
+        diagramId = "kanban",
+        title = "Configured linked tickets",
+        scenario = "Section width, palette variables, classic look, and external ticket links combine.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              theme: base
+              look: classic
+              kanban:
+                sectionWidth: 230
+                ticketBaseUrl: "https://issues.example/#TICKET#"
+              themeVariables:
+                cScale2: "#dbeafe"
+                cScale3: "#dcfce7"
+                cScaleLabel2: "#1e3a8a"
+                cScaleLabel3: "#14532d"
+            ---
+            kanban
+              build[Build]
+                parser[Translate parser]@{ ticket: KB-201, assigned: Ada, priority: High }
+              verify[Verify]
+                parity[Review visual parity]@{ ticket: KB-202, assigned: Lin, priority: Low }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_kanban_unicode_indentation",
+        diagramId = "kanban",
+        title = "International nested board",
+        scenario = "Unicode, comments, anonymous nodes, and deeper indentation share one board.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            kanban
+              todo[準備]
+                [仕様を確認]
+                  nested[詳細レビュー]
+                %% Deeper indentation remains in the current section.
+                    evidence[証拠を保存]
+              done[완료]
+                release[서울 출시]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "prod_flowchart_orchestration_identity",
         diagramId = "flowchart",
         title = "Identity verification orchestration",
@@ -5371,6 +6081,525 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         """.trimIndent(),
         expectedTexts = listOf("Quarterly quality trend", "Q1 baseline"),
         features = setOf("axis-rotation", "component-visibility"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_release_scoring",
+        diagramId = "quadrant",
+        title = "Release candidate scoring",
+        scenario = "Release candidates are compared by readiness and expected customer value.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Release candidate scoring
+              x-axis Lower readiness --> Higher readiness
+              y-axis Lower customer value --> Higher customer value
+              quadrant-1 Ready to ship
+              quadrant-2 Validate value
+              quadrant-3 Defer
+              quadrant-4 Finish hardening
+              Candidate Alpha: [0.82, 0.88]
+              Candidate Beta: [0.61, 0.74]
+              Candidate Gamma: [0.44, 0.36]
+        """.trimIndent(),
+        expectedTexts = listOf("Release candidate scoring", "Ready to ship", "Candidate Alpha"),
+        features = setOf("title", "x-axis", "y-axis", "quadrant-labels", "points"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_boundary_coordinates",
+        diagramId = "quadrant",
+        title = "Boundary coordinate coverage",
+        scenario = "Points at every chart corner and center verify normalized coordinate projection.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              x-axis Zero --> One
+              y-axis Zero --> One
+              Origin: [0, 0] radius: 7
+              Upper left: [0, 1] radius: 8
+              Lower right: [1, 0] radius: 9
+              Upper right: [1, 1] radius: 10
+              Center: [0.5, 0.5] radius: 11
+        """.trimIndent(),
+        expectedTexts = listOf("Origin", "Upper right", "Center"),
+        features = setOf("points", "boundary-points", "point-radius"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_empty_framework",
+        diagramId = "quadrant",
+        title = "Empty decision framework",
+        scenario = "A framework without observations centers all semantic labels.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Decision framework
+              x-axis Lower urgency --> Higher urgency
+              y-axis Lower impact --> Higher impact
+              quadrant-1 Immediate action
+              quadrant-2 Schedule
+              quadrant-3 Ignore
+              quadrant-4 Monitor
+        """.trimIndent(),
+        expectedTexts = listOf("Decision framework", "Immediate action", "Monitor"),
+        features = setOf("title", "x-axis", "y-axis", "quadrant-labels", "empty-points"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_inline_styles",
+        diagramId = "quadrant",
+        title = "Inline observation styles",
+        scenario = "Individual observations override radius, fill, and stroke independently.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Inline observation styles
+              Critical exposure: [0.86, 0.91] radius: 14, color: #dc2626, stroke-color: #7f1d1d, stroke-width: 4px
+              Watch item: [0.54, 0.62] radius: 9, color: #f59e0b, stroke-color: #92400e, stroke-width: 2px
+              Healthy signal: [0.24, 0.18] color: #16a34a
+        """.trimIndent(),
+        expectedTexts = listOf("Critical exposure", "Watch item"),
+        features = setOf("points", "point-radius", "point-color", "point-stroke"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_class_precedence",
+        diagramId = "quadrant",
+        title = "Reusable point classes",
+        scenario = "Shared point classes apply first and local declarations retain precedence.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              title Reusable point classes
+              Shared style:::priority: [0.32, 0.72]
+              Local override:::priority: [0.74, 0.81] color: #2563eb, radius: 13
+              classDef priority color: #109060, radius: 10, stroke-color: #064e3b, stroke-width: 3px
+        """.trimIndent(),
+        expectedTexts = listOf("Shared style", "Local override"),
+        features = setOf("points", "class-styles", "inline-precedence", "point-color", "point-stroke"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_dimension_config",
+        diagramId = "quadrant",
+        title = "Configured chart dimensions",
+        scenario = "Frontmatter controls chart geometry, label metrics, borders, and responsive sizing.",
+        layout = "dagre",
+        initialAspectRatio = 1.3f,
+        source = """
+            ---
+            config:
+              quadrantChart:
+                chartWidth: 560
+                chartHeight: 430
+                titleFontSize: 24
+                titlePadding: 14
+                quadrantPadding: 9
+                xAxisLabelPadding: 7
+                yAxisLabelPadding: 8
+                xAxisLabelFontSize: 15
+                yAxisLabelFontSize: 17
+                quadrantLabelFontSize: 18
+                quadrantTextTopPadding: 8
+                pointTextPadding: 7
+                pointLabelFontSize: 13
+                pointRadius: 8
+                yAxisPosition: right
+                quadrantInternalBorderStrokeWidth: 2
+                quadrantExternalBorderStrokeWidth: 4
+                useMaxWidth: false
+            ---
+            quadrantChart
+              title Configured portfolio
+              x-axis Lower return --> Higher return
+              y-axis Lower risk --> Higher risk
+              Platform renewal: [0.71, 0.64]
+        """.trimIndent(),
+        expectedTexts = listOf("Configured portfolio", "Platform renewal"),
+        features = setOf("frontmatter-config", "title", "points"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_theme_metadata",
+        diagramId = "quadrant",
+        title = "Themed accessible assessment",
+        scenario = "Theme variables and accessibility metadata travel through the production scene.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            ---
+            title: Themed assessment
+            config:
+              themeVariables:
+                quadrant1Fill: "#dcfce7"
+                quadrant2Fill: "#dbeafe"
+                quadrant3Fill: "#fee2e2"
+                quadrant4Fill: "#fef3c7"
+                quadrantPointFill: "#111827"
+                quadrantPointTextFill: "#111827"
+                quadrantExternalBorderStrokeFill: "#475569"
+            ---
+            quadrantChart
+              accTitle: Accessible assessment
+              accDescr: Evidence review organized across four outcomes
+              quadrant-1 Approve
+              quadrant-2 Investigate
+              quadrant-3 Reject
+              quadrant-4 Recheck
+              Evidence review: [0.63, 0.76]
+        """.trimIndent(),
+        expectedTexts = listOf("Themed assessment", "Approve", "Evidence review"),
+        features = setOf("theme-colors", "metadata", "quadrant-labels", "points"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_quadrant_unicode_comments",
+        diagramId = "quadrant",
+        title = "Unicode regional assessment",
+        scenario = "Unicode labels, quoted punctuation, comments, and direct colors share one chart.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            quadrantChart
+              %% Regional labels intentionally mix scripts.
+              title 地域評価
+              x-axis "低い到達度" --> "高い到達度"
+              y-axis "低い関与 ❤" --> "高い関与 ❤"
+              quadrant-1 拡大
+              quadrant-2 検証
+              quadrant-3 再評価
+              quadrant-4 維持
+              東京: [0.82, 0.88]
+              서울: [0.36, 0.42]
+              "São Paulo": [0.61, 0.73] color: #2563eb
+        """.trimIndent(),
+        expectedTexts = listOf("地域評価", "São Paulo", "서울"),
+        features = setOf("unicode", "comments", "x-axis", "y-axis", "points", "point-color"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_release_history",
+        diagramId = "timeline",
+        title = "Product release history",
+        scenario = "A horizontal timeline presents periods with one or more release events.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            timeline
+              title Product release history
+              2024 : Private preview : Public beta
+              2025 : General availability
+        """.trimIndent(),
+        expectedTexts = listOf("Product release history", "2024", "General availability"),
+        features = setOf("lr", "title", "periods", "events"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_vertical_delivery",
+        diagramId = "timeline",
+        title = "Vertical delivery plan",
+        scenario = "The TD renderer places periods and event stacks on opposite sides of the axis.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            timeline TD
+              title Vertical delivery plan
+              accTitle: Accessible vertical delivery plan
+              accDescr: Build and release milestones
+              section Build
+                Foundation : Architecture review : API contract
+              section Release
+                Release candidate : Automated checks : Manual review
+        """.trimIndent(),
+        expectedTexts = listOf("Vertical delivery plan", "Build", "Release candidate"),
+        features = setOf("td", "sections", "events", "metadata"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_continued_events",
+        diagramId = "timeline",
+        title = "Continued event stack",
+        scenario = "Events on following lines attach to the most recent period.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            timeline
+              Implementation : Core complete
+                             : Accessibility review : Load test
+                             : Launch approval
+        """.trimIndent(),
+        expectedTexts = listOf("Implementation", "Accessibility review", "Launch approval"),
+        features = setOf("lr", "continued-events", "events"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_industrial_sections",
+        diagramId = "timeline",
+        title = "Industrial eras",
+        scenario = "Multiple sections group periods while preserving source order.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            timeline
+              title 産業時代
+              section 17th-20th century
+                Industry 1.0 : Machinery, Water power, Steam <br> power
+                Industry 2.0 : Electricity and mass production
+              section 21st century
+                Industry 4.0 : Internet, Robotics, Internet of Things
+        """.trimIndent(),
+        expectedTexts = listOf("産業時代", "17th-20th century", "Industry 4.0"),
+        features = setOf("lr", "sections", "html-breaks", "unicode"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_sectionless_palette",
+        diagramId = "timeline",
+        title = "Sectionless color rotation",
+        scenario = "Periods without sections rotate through Mermaid color slots.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            timeline
+              %% Period colors rotate without explicit sections.
+              Discover : User research
+              Design : Architecture
+              Deliver : Implementation
+              Operate : Monitoring
+        """.trimIndent(),
+        expectedTexts = listOf("Discover", "Deliver", "Operate"),
+        features = setOf("lr", "sectionless-colors", "events", "comments"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_disable_multicolor",
+        diagramId = "timeline",
+        title = "Monochrome sectionless timeline",
+        scenario = "The timeline-specific switch keeps sectionless periods in one color slot.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            ---
+            config:
+              timeline:
+                disableMulticolor: true
+            ---
+            timeline
+              Plan : Scope
+              Build : Implementation
+              Validate : Acceptance
+        """.trimIndent(),
+        expectedTexts = listOf("Plan", "Build", "Validate"),
+        features = setOf("lr", "disable-multicolor", "frontmatter-config"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_spacing_config",
+        diagramId = "timeline",
+        title = "Configured spacing",
+        scenario = "Timeline padding, left margin, and intrinsic sizing come from frontmatter.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              timeline:
+                leftMargin: 210
+                padding: 28
+                useMaxWidth: false
+            ---
+            timeline
+              title Configured spacing
+              section Milestones
+                Preview : Internal
+                Production : External
+        """.trimIndent(),
+        expectedTexts = listOf("Configured spacing", "Milestones", "Production"),
+        features = setOf("lr", "frontmatter-config", "sections"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_timeline_custom_colors",
+        diagramId = "timeline",
+        title = "Custom timeline colors",
+        scenario = "Color scale variables style adjacent sections and their events.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              theme: redux-color
+              look: neo
+              themeVariables:
+                cScale0: "#dbeafe"
+                cScale1: "#dcfce7"
+                cScaleLabel0: "#1e3a8a"
+                cScaleLabel1: "#14532d"
+            ---
+            timeline
+              title Custom timeline colors
+              section Discovery
+                Research : Interviews
+              section Delivery
+                Launch : Production rollout
+        """.trimIndent(),
+        expectedTexts = listOf("Custom timeline colors", "Discovery", "Delivery"),
+        features = setOf("theme-colors", "redux-theme", "sections", "events"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_delivery_board",
+        diagramId = "kanban",
+        title = "Delivery workflow",
+        scenario = "Explicit stage and task identifiers form a three-column delivery board.",
+        layout = "dagre",
+        initialAspectRatio = 2.1f,
+        source = """
+            kanban
+              backlog[Backlog]
+                parser[Implement parser]
+                layout[Match layout]
+              verify[Verification]
+                tests[Run automated tests]
+                review[Review screenshots]
+              done[Done]
+                release[Production release]
+        """.trimIndent(),
+        expectedTexts = listOf("Backlog", "Implement parser", "Production release"),
+        features = setOf("sections", "tasks", "explicit-ids"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_anonymous_forms",
+        diagramId = "kanban",
+        title = "Anonymous and shaped labels",
+        scenario = "Anonymous nodes and legacy shape delimiters retain their visible labels.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            kanban
+              [Planning]
+                (Rounded task)
+                circle((Circle task))
+                cloud(-Cloud task-)
+                hex{{Hexagon task}}
+        """.trimIndent(),
+        expectedTexts = listOf("Planning", "Rounded task", "Hexagon task"),
+        features = setOf("anonymous-items", "node-forms", "tasks"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_nested_comments",
+        diagramId = "kanban",
+        title = "Flattened nested tasks",
+        scenario = "Deeper indentation and comments preserve task order in the current stage.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            kanban
+              discovery[Discovery]
+                interviews[Interviews]
+                  synthesis[Research synthesis]
+                %% Deep descendants remain direct cards in this diagram family.
+                    findings[Validated findings]
+        """.trimIndent(),
+        expectedTexts = listOf("Discovery", "Interviews", "Validated findings"),
+        features = setOf("deeper-indentation", "comments", "tasks"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_metadata",
+        diagramId = "kanban",
+        title = "Operational task metadata",
+        scenario = "Ticket numbers, assignees, and all priority bands appear on task cards.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            kanban
+              active[Incident response]
+                restore[Restore traffic]@{ ticket: OPS-401, assigned: 'Owner A', priority: 'Very High' }
+                mitigate[Reduce load]@{ ticket: OPS-402, assigned: 'Owner B', priority: High }
+                monitor[Monitor recovery]@{ priority: Medium }
+                followup[Write follow-up]@{ priority: Low }
+                polish[Polish dashboard]@{ priority: 'Very Low' }
+        """.trimIndent(),
+        expectedTexts = listOf("Incident response", "OPS-401", "Owner B"),
+        features = setOf("ticket", "assigned", "priorities"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_ticket_links",
+        diagramId = "kanban",
+        title = "Linked delivery tickets",
+        scenario = "A configured ticket URL creates external interactions for ticket labels.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            ---
+            config:
+              kanban:
+                ticketBaseUrl: "https://issues.example/browse/#TICKET#"
+            ---
+            kanban
+              build[Build]
+                implementation[Implementation]@{ ticket: KB-501, assigned: Ada }
+              verify[Verify]
+                acceptance[Acceptance]@{ ticket: KB-502, assigned: Lin }
+        """.trimIndent(),
+        expectedTexts = listOf("Implementation", "KB-501", "Acceptance"),
+        features = setOf("ticket", "ticket-links", "assigned"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_width_and_empty",
+        diagramId = "kanban",
+        title = "Configured columns",
+        scenario = "Configured section width applies to wrapped cards and an empty stage.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            ---
+            config:
+              kanban:
+                sectionWidth: 240
+            ---
+            kanban
+              ready[Ready]
+                long[Complete deterministic rendering verification for every supported platform]
+              waiting[Waiting]
+              complete[Complete]
+                shipped[Artifacts published]
+        """.trimIndent(),
+        expectedTexts = listOf("Ready", "deterministic rendering", "Waiting"),
+        features = setOf("section-width", "wrapped-labels", "empty-sections"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_theme_markdown",
+        diagramId = "kanban",
+        title = "Themed markdown board",
+        scenario = "Palette variables and Markdown emphasis style stages and card labels.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              theme: base
+              look: classic
+              themeVariables:
+                cScale2: "#dbeafe"
+                cScale3: "#dcfce7"
+                cScaleLabel2: "#1e3a8a"
+                cScaleLabel3: "#14532d"
+            ---
+            kanban
+              design[**Architecture**]
+                contract[*API contract*]
+              validate[**Validation**]
+                visual[*Visual review*]
+        """.trimIndent(),
+        expectedTexts = listOf("Architecture", "API contract", "Visual review"),
+        features = setOf("theme-colors", "markdown", "sections"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_kanban_unicode",
+        diagramId = "kanban",
+        title = "International workflow",
+        scenario = "Unicode labels and metadata render in the same fixed-column layout.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            kanban
+              prepare[準備]
+                tokyo[東京で確認]@{ assigned: 品質 }
+              complete[완료]
+                seoul[서울 출시]@{ ticket: 국제-7 }
+        """.trimIndent(),
+        expectedTexts = listOf("準備", "東京で確認", "서울 출시"),
+        features = setOf("unicode", "sections", "assigned", "ticket"),
     ),
     StabilityCorpusCase(
         id = "prod_sequence_request_lifecycle_session_refresh",
@@ -7722,6 +8951,9 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
         val kinds = listOf(
             "flowchart",
             "xychart",
+            "quadrant",
+            "timeline",
+            "kanban",
             "sequence",
             "class",
             "state",
@@ -7781,6 +9013,14 @@ private fun addVisualParityVariation(
 ): String = when (kind) {
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
+    "quadrant" -> {
+        val x = ((ordinal % 8) + 1) / 10.0
+        val y = (((ordinal * 3) % 8) + 1) / 10.0
+        "${source.trimEnd()}\n  \"$label\": [" +
+            "$x, $y]\n"
+    }
+    "timeline" -> appendTimelineEvidence(source, label)
+    "kanban" -> appendKanbanEvidence(source, evidenceId, label, ordinal)
     "sequence" -> insertAfterDeclaration(
         source = source,
         declaration = "sequenceDiagram",
@@ -7805,6 +9045,20 @@ private fun addVisualParityVariation(
     "mindmap" -> "${source.trimEnd()}\n    $evidenceId[\"$label\"]\n"
     else -> source
 }
+
+private fun appendTimelineEvidence(
+    source: String,
+    label: String,
+): String = "${source.trimEnd()}\n  $label : Parity evidence\n"
+
+private fun appendKanbanEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+    ordinal: Int,
+): String = "${source.trimEnd()}\n" +
+    "  ${evidenceId}Stage[Parity stage ${ordinal.toString().padStart(3, '0')}]\n" +
+    "    $evidenceId[$label]\n"
 
 private fun appendFlowchartEvidence(
     source: String,

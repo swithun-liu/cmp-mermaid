@@ -90,6 +90,10 @@ presented as 256 unrelated topologies.
 <details>
 <summary><strong>Sequence - 256 Native/Official pairs</strong></summary>
 
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.023-1.068`, height `0.893-1.045`, foreground ink `0.926-1.148`.
+All 16 pages below were manually reviewed.
+
 ![Sequence visual parity page 01](sequence-visual-parity-01.jpg)
 
 ![Sequence visual parity page 02](sequence-visual-parity-02.jpg)
@@ -127,6 +131,10 @@ presented as 256 unrelated topologies.
 <details>
 <summary><strong>Class - 256 Native/Official pairs</strong></summary>
 
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.030-1.208`, height `0.897-1.055`, foreground ink `0.781-1.227`.
+All 16 pages below were manually reviewed.
+
 ![Class visual parity page 01](class-visual-parity-01.jpg)
 
 ![Class visual parity page 02](class-visual-parity-02.jpg)
@@ -163,6 +171,10 @@ presented as 256 unrelated topologies.
 
 <details>
 <summary><strong>State - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `0.963-1.224`, height `0.968-1.089`, foreground ink `1.031-1.383`.
+All 16 pages below were manually reviewed.
 
 ![State visual parity page 01](state-visual-parity-01.jpg)
 

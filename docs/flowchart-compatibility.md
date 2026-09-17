@@ -90,6 +90,15 @@ Additional platform limitations:
   sanitization, colors, all shapes, markers, D3 curves, numeric Dagre parity,
   compound Dagre hierarchy, line hops, assets, interactions, viewport behavior,
   and resource limits.
+- The replacement visual gate passes all 14 production scenarios and all 256
+  same-source matrix cases with `0` review and `0` failure results. Matrix
+  Native/Official ratios are `1.026-1.119` for width, `0.945-1.047` for
+  height, and `0.948-1.241` for foreground ink.
+- All 16 matrix contact sheets were manually reviewed for topology, advanced
+  shapes, marker visibility, labels, clipping, overlap, and paint order.
+- Marker manifests include actual path endpoint anchors. The detail auditor
+  rejects missing anchors and compares endpoint coverage by later opaque paint,
+  preventing a declared but hidden arrow from passing on marker counts alone.
 - Android rendering has been installed and visually audited on a 1080 x 2280
   device. Core and Compose also compile for all configured iOS architectures.
 

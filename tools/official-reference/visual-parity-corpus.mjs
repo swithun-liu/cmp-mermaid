@@ -4,6 +4,9 @@ import { cases as productionCases } from './production-corpus.mjs';
 export const kinds = [
   'flowchart',
   'xychart',
+  'quadrant',
+  'timeline',
+  'kanban',
   'sequence',
   'class',
   'state',
@@ -96,6 +99,18 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return appendFlowchartEvidence(source, evidenceId, label);
     case 'xychart':
       return replaceOrInsertTitle(source, 'xychart', label);
+    case 'quadrant': {
+      const x = ((ordinal % 8) + 1) / 10;
+      const y = (((ordinal * 3) % 8) + 1) / 10;
+      return `${source.trimEnd()}\n  "${label}": [${x.toFixed(1)}, ${y.toFixed(1)}]\n`;
+    }
+    case 'timeline':
+      return `${source.trimEnd()}\n  ${label} : Evidence ${String(ordinal).padStart(3, '0')}\n`;
+    case 'kanban':
+      return `${source.trimEnd()}
+  ${evidenceId}Stage[Parity stage ${String(ordinal).padStart(3, '0')}]
+    ${evidenceId}[${label}]
+`;
     case 'sequence':
       return source.replace(
         /^(\s*sequenceDiagram\s*)$/m,

@@ -67,7 +67,9 @@ internal class XyChartLayout {
                 width = sceneWidth,
                 height = config.height,
                 background = context.theme.xyChart.backgroundColor,
-                elements = elements.sortedBy(SceneElement::zIndex),
+                // Mermaid: xychartRenderer.ts -> draw iterates drawable elements in
+                // Orchestrator component order. Later legend/axis groups may cover plot text.
+                elements = elements,
                 title = data.title.takeIf(String::isNotEmpty),
                 accessibilityTitle = data.accessibilityTitle,
                 accessibilityDescription = data.accessibilityDescription,
@@ -1112,27 +1114,23 @@ private class XyPlot(
         labels: List<String>,
         plotIndex: Int,
     ): List<SceneText> {
-        val fontSize = if (config.showDataLabelOutsideBar) {
-            floor(
-                min(
-                    config.yAxis.labelFontSize,
-                    bars.minOf { bar -> bar.bounds.height * 0.7f },
-                ),
-            )
-        } else {
-            val candidates = bars.mapIndexed { index, bar ->
-                var candidate = bar.bounds.height * 0.7f
-                val label = labels.getOrElse(index) { "" }
-                while (
-                    candidate > 0f &&
-                    candidate * label.length * 0.7f > bar.bounds.width - 10f
-                ) {
-                    candidate -= 1f
-                }
-                candidate
+        // Mermaid: xychartRenderer.ts -> draw(rect) calculates this from the
+        // in-bar fit even when labels are placed outside the bar.
+        val candidates = bars.mapIndexed { index, bar ->
+            var candidate = bar.bounds.height * 0.7f
+            val label = labels.getOrElse(index) { "" }
+            while (
+                candidate > 0f &&
+                candidate * label.length * 0.7f > bar.bounds.width - 10f
+            ) {
+                candidate -= 1f
             }
-            floor(candidates.minOrNull() ?: 0f)
+            candidate
         }
+        val configuredFontSize = floor(candidates.minOrNull() ?: 0f)
+        // A negative SVG font-size attribute is invalid. Browsers ignore it
+        // and use the inherited initial font size, which is 16px here.
+        val fontSize = if (configuredFontSize < 0f) 16f else configuredFontSize
         if (fontSize <= 0f) return emptyList()
         val dimensions = XyTextDimensions(context)
         return bars.mapIndexed { index, bar ->

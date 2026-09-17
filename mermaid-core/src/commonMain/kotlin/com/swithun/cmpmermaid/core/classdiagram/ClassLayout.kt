@@ -138,10 +138,6 @@ internal class ClassLayout {
         val layout = context.options.classLayout ?: context.options.layout
         val layoutOptions = context.options.copy(
             layout = layout,
-            subGraphTitleTopMargin = max(
-                context.options.subGraphTitleTopMargin,
-                NAMESPACE_TITLE_MARGIN,
-            ),
         )
         val placement = when (layout) {
             "dagre" -> FlowDagreLayout.layout(
@@ -299,26 +295,36 @@ internal class ClassLayout {
             val hasAnyRows = members.isNotEmpty() || methods.isNotEmpty()
             val renderEmptyCompartments =
                 !hasAnyRows && !context.options.classHideEmptyMembersBox
+            // Mermaid: rendering-elements/shapes/classBox.ts. Empty rows
+            // use the measured SVG group gaps, not two full padding blocks.
             val membersHeight = when {
                 members.isNotEmpty() -> members.sumOfHeight() + padding * 2f
-                methods.isNotEmpty() -> padding
-                renderEmptyCompartments -> padding * 2f
+                methods.isNotEmpty() -> padding * 2f
+                renderEmptyCompartments -> padding * 1.5f
                 else -> 0f
             }
             val methodsHeight = when {
-                methods.isNotEmpty() -> methods.sumOfHeight() + padding * 2f
+                methods.isNotEmpty() ->
+                    methods.sumOfHeight() +
+                        if (members.isEmpty()) padding * 2.5f else padding * 2f
                 members.isNotEmpty() -> padding * 2f
-                renderEmptyCompartments -> padding * 2f
+                renderEmptyCompartments -> padding * 1.5f
                 else -> 0f
             }
-            val maximumTextWidth = buildList {
-                annotation?.let(::add)
-                add(title)
-                addAll(members)
-                addAll(methods)
-            }.maxOfOrNull { it.metrics.width } ?: 0f
+            // Mermaid: diagrams/class/shapeUtil.ts -> textHelper and
+            // rendering-elements/shapes/classBox.ts -> classBox. Header text
+            // is centered at x=0 while member text starts at x=0, so the
+            // measured group extends by the header half-width on its left.
+            val headerHalfWidth = max(
+                annotation?.metrics?.width.orZero(),
+                title.metrics.width,
+            ) / 2f
+            val bodyWidth = (members + methods)
+                .maxOfOrNull { it.metrics.width }
+                .orZero()
+            val textGroupWidth = headerHalfWidth + max(headerHalfWidth, bodyWidth)
             val size = SceneSize(
-                width = max(MIN_CLASS_WIDTH, maximumTextWidth + padding * 2f),
+                width = textGroupWidth + padding * 2f,
                 height = headerHeight + membersHeight + methodsHeight,
             )
             GMResult.Ok(
@@ -442,22 +448,26 @@ internal class ClassLayout {
                 TextMetricsRequest(
                     text = rendered.text,
                     fontSize = context.options.fontSize ?: context.theme.fontSize,
-                    maxWidth = context.options.wrappingWidth,
+                    // Mermaid: classDb.ts -> getData sets white-space: nowrap
+                    // for note nodes. Explicit <br> lines remain intact.
+                    maxWidth = UNWRAPPED_TEXT_WIDTH,
                     lineHeight = DEFAULT_LINE_HEIGHT,
                     fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
                     weight = SceneTextWeight.Normal,
                     spans = rendered.spans,
                 ),
             )
+            val padding = context.options.classNotePadding
             GMResult.Ok(
                 NoteVisual(
                     source = note,
                     text = rendered.text,
                     spans = rendered.spans,
                     metrics = metrics,
+                    padding = padding,
                     size = SceneSize(
-                        width = metrics.width + NOTE_PADDING * 2f,
-                        height = metrics.height + NOTE_PADDING * 2f,
+                        width = metrics.width + padding * 2f,
+                        height = metrics.height + padding * 2f,
                     ),
                 ),
             )
@@ -756,6 +766,7 @@ internal class ClassLayout {
             val edges = addEdges(
                 edges = layoutEdges,
                 routedEdges = placement.edges,
+                nodeBounds = placement.nodeBounds,
                 edgeLabelVisuals = edgeLabelVisuals,
                 context = context,
                 elements = elements,
@@ -923,10 +934,10 @@ internal class ClassLayout {
         elements += SceneText(
             text = visual.text,
             bounds = SceneRect(
-                left = bounds.left + NOTE_PADDING,
-                top = bounds.top + NOTE_PADDING,
-                right = bounds.right - NOTE_PADDING,
-                bottom = bounds.bottom - NOTE_PADDING,
+                left = bounds.left + visual.padding,
+                top = bounds.top + visual.padding,
+                right = bounds.right - visual.padding,
+                bottom = bounds.bottom - visual.padding,
             ),
             color = context.theme.noteText,
             fontSize = context.options.fontSize ?: context.theme.fontSize,
@@ -966,6 +977,7 @@ internal class ClassLayout {
     private fun addEdges(
         edges: List<ClassLayoutEdge>,
         routedEdges: Map<Int, com.swithun.cmpmermaid.core.flowchart.FlowRoutedEdge>,
+        nodeBounds: Map<String, SceneRect>,
         edgeLabelVisuals: Map<Int, EdgeLabelVisual>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
@@ -1024,6 +1036,7 @@ internal class ClassLayout {
                     points = routed.points,
                     labelAnchor = routed.labelAnchor,
                     labelVisual = edgeLabelVisuals[index],
+                    nodeBounds = nodeBounds,
                     context = context,
                     elements = elements,
                 )
@@ -1038,6 +1051,7 @@ internal class ClassLayout {
         points: List<ScenePoint>,
         labelAnchor: ScenePoint,
         labelVisual: EdgeLabelVisual?,
+        nodeBounds: Map<String, SceneRect>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ) {
@@ -1084,6 +1098,7 @@ internal class ClassLayout {
                         start = true,
                     ),
                     centered = true,
+                    avoidBounds = nodeBounds[relation.id1],
                     context = context,
                     elements = elements,
                 )
@@ -1100,6 +1115,7 @@ internal class ClassLayout {
                         start = false,
                     ),
                     centered = false,
+                    avoidBounds = nodeBounds[relation.id2],
                     context = context,
                     elements = elements,
                 )
@@ -1111,6 +1127,7 @@ internal class ClassLayout {
         text: String,
         position: ScenePoint?,
         centered: Boolean,
+        avoidBounds: SceneRect?,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ) {
@@ -1125,7 +1142,7 @@ internal class ClassLayout {
                 weight = SceneTextWeight.Normal,
             ),
         )
-        val bounds = if (centered) {
+        val rawBounds = if (centered) {
             SceneRect(
                 left = position.x - metrics.width / 2f,
                 top = position.y - metrics.height / 2f,
@@ -1133,6 +1150,9 @@ internal class ClassLayout {
                 bottom = position.y + metrics.height / 2f,
             )
         } else {
+            // Mermaid: rendering-util/rendering-elements/edges.js ->
+            // insertEdgeLabel. endLabelLeft is inserted outside its empty
+            // inner group, so computeLabelTransform does not affect it.
             SceneRect(
                 left = position.x,
                 top = position.y,
@@ -1140,6 +1160,9 @@ internal class ClassLayout {
                 bottom = position.y + metrics.height,
             )
         }
+        val bounds = avoidBounds
+            ?.let { obstacle -> rawBounds.translatedOutside(obstacle) }
+            ?: rawBounds
         elements += SceneText(
             text = text,
             bounds = bounds,
@@ -1151,6 +1174,28 @@ internal class ClassLayout {
             zIndex = 8,
         )
     }
+
+    private fun SceneRect.translatedOutside(
+        obstacle: SceneRect,
+    ): SceneRect {
+        if (!overlaps(obstacle)) return this
+        val candidates = listOf(
+            ScenePoint(obstacle.left - right - TERMINAL_LABEL_GAP, 0f),
+            ScenePoint(obstacle.right - left + TERMINAL_LABEL_GAP, 0f),
+            ScenePoint(0f, obstacle.top - bottom - TERMINAL_LABEL_GAP),
+            ScenePoint(0f, obstacle.bottom - top + TERMINAL_LABEL_GAP),
+        )
+        val translation = candidates.minBy { point ->
+            kotlin.math.abs(point.x) + kotlin.math.abs(point.y)
+        }
+        return translate(translation.x, translation.y)
+    }
+
+    private fun SceneRect.overlaps(other: SceneRect): Boolean =
+        left < other.right &&
+            right > other.left &&
+            top < other.bottom &&
+            bottom > other.top
 
     private fun terminalLabelPosition(
         points: List<ScenePoint>,
@@ -1404,12 +1449,15 @@ internal class ClassLayout {
         container: SceneRect,
         top: Float,
         padding: Float,
-    ): SceneRect = SceneRect(
-        left = container.left + padding,
-        top = top,
-        right = container.right - padding,
-        bottom = top + line.metrics.height,
-    )
+    ): SceneRect {
+        val left = container.left + padding
+        return SceneRect(
+            left = left,
+            top = top,
+            right = min(left + line.metrics.width, container.right - padding),
+            bottom = top + line.metrics.height,
+        )
+    }
 
     private fun VisualLine.asSceneText(
         bounds: SceneRect,
@@ -1568,6 +1616,7 @@ internal class ClassLayout {
         val text: String,
         val spans: List<SceneTextSpan>,
         val metrics: TextMetrics,
+        val padding: Float,
         val size: SceneSize,
     )
 
@@ -1601,16 +1650,14 @@ internal class ClassLayout {
 
     private companion object {
         val HTML_BREAK = Regex("""<br\s*/?>""", RegexOption.IGNORE_CASE)
-        const val MIN_CLASS_WIDTH = 80f
-        const val NOTE_PADDING = 10f
         const val EDGE_FONT_SIZE = 14f
         const val TERMINAL_FONT_SIZE = 11f
+        const val TERMINAL_LABEL_GAP = 1f
         const val TITLE_FONT_SIZE = 18f
         const val DEFAULT_LINE_HEIGHT = 1.2f
         const val INTERFACE_LINE_HEIGHT = 1.5f
         const val EDGE_LABEL_PADDING_X = 6f
         const val EDGE_LABEL_PADDING_Y = 3f
-        const val NAMESPACE_TITLE_MARGIN = 24f
         const val NAMESPACE_LABEL_TOP = 4f
         const val UNWRAPPED_TEXT_WIDTH = 100_000f
     }

@@ -76,6 +76,7 @@ internal class SequenceLayout {
     private fun buildScene(
         db: SequenceDb,
         context: MermaidRenderContext,
+        controlWrapWidths: Map<String, Float>? = null,
     ): MermaidScene {
         val actorKeys = db.getActors().keys.toList()
         val actorIndex = actorKeys.withIndex().associate { (index, id) -> id to index }
@@ -222,23 +223,26 @@ internal class SequenceLayout {
                     foregroundElements += note.elements
                     touchFrames(frameStack, actorIndex[message.from])
                     touchFrames(frameStack, actorIndex[message.to])
+                    frameStack.forEach { frame ->
+                        frame.includeLoopBounds(note.left, note.right)
+                    }
                 }
                 in CONTROL_START_TYPES -> {
                     val label = controlLabel(message.type)
                     val text = decode(message.message)
-                    val textMetrics = measure(
-                        context,
-                        "[$text]",
-                        MESSAGE_FONT_SIZE,
-                        MAX_TEXT_WIDTH,
+                    val titleLines = controlTitleLines(
+                        text = "[$text]",
+                        maxWidth = controlWrapWidths?.get(message.id),
+                        context = context,
                     )
+                    val titleHeight = controlTitleHeight(titleLines, context)
                     val frame = ControlFrame(
                         id = message.id,
                         type = message.type,
                         label = label,
-                        title = text,
+                        titleLines = titleLines,
                         startY = vertical + BOX_MARGIN,
-                        titleHeight = max(LABEL_BOX_HEIGHT, textMetrics.height),
+                        titleHeight = titleHeight,
                         depth = frameStack.size,
                         fill = if (message.type == SequenceLineType.RECT_START) {
                             CssColorParser.parse(message.message)
@@ -253,18 +257,28 @@ internal class SequenceLayout {
                 in CONTROL_SECTION_TYPES -> {
                     val frame = frameStack.lastOrNull()
                     if (frame != null) {
-                        frame.sections += FrameSection(
-                            y = vertical + BOX_MARGIN,
-                            title = decode(message.message),
+                        val titleLines = controlTitleLines(
+                            text = "[${decode(message.message)}]",
+                            maxWidth = controlWrapWidths?.get(message.id),
+                            context = context,
                         )
+                        val titleHeight = controlTitleHeight(titleLines, context)
+                        frame.sections += FrameSection(
+                            id = message.id,
+                            y = vertical + BOX_MARGIN,
+                            titleLines = titleLines,
+                            titleHeight = titleHeight,
+                        )
+                        vertical += BOX_MARGIN + titleHeight
+                    } else {
+                        val metrics = measure(
+                            context,
+                            decode(message.message),
+                            MESSAGE_FONT_SIZE,
+                            MAX_TEXT_WIDTH,
+                        )
+                        vertical += BOX_MARGIN + max(metrics.height, LABEL_BOX_HEIGHT)
                     }
-                    val metrics = measure(
-                        context,
-                        decode(message.message),
-                        MESSAGE_FONT_SIZE,
-                        MAX_TEXT_WIDTH,
-                    )
-                    vertical += BOX_MARGIN + max(metrics.height, LABEL_BOX_HEIGHT)
                 }
                 in CONTROL_END_TYPES -> {
                     val frame = frameStack.removeLastOrNull()
@@ -376,6 +390,12 @@ internal class SequenceLayout {
                             if (message.wrap) 0f else metrics.width + 2f * WRAP_PADDING,
                             from.width,
                         )
+                        frameStack.forEach { frame ->
+                            frame.includeLoopBounds(
+                                left = from.centerX - selfMessageWidth / 2f,
+                                right = from.centerX + selfMessageWidth / 2f,
+                            )
+                        }
                         touchFrameBounds(
                             frames = frameStack,
                             left = min(
@@ -388,6 +408,19 @@ internal class SequenceLayout {
                             ),
                         )
                     } else {
+                        val messageModelWidth = max(
+                            max(
+                                if (message.wrap) 0f else metrics.width + 2f * WRAP_PADDING,
+                                abs(path.points.first().x - path.points.last().x) +
+                                    2f * WRAP_PADDING,
+                            ),
+                            ACTOR_WIDTH,
+                        )
+                        frameStack.forEach { frame ->
+                            // Mermaid's loop preflight includes both horizontal frame margins
+                            // around the message model before applying label-box subtraction.
+                            frame.includeLoopWidth(messageModelWidth + 3f * BOX_MARGIN)
+                        }
                         touchFrameBounds(
                             frames = frameStack,
                             left = min(textBounds.left, path.points.minOf(ScenePoint::x)),
@@ -414,6 +447,17 @@ internal class SequenceLayout {
             frame.endY = vertical + BOX_MARGIN
             completedFrames += frame
             vertical = frame.endY
+        }
+        if (controlWrapWidths == null && completedFrames.isNotEmpty()) {
+            val measuredWidths = buildMap {
+                completedFrames.forEach { frame ->
+                    put(frame.id, frame.loopWidth)
+                    frame.sections.forEach { section ->
+                        put(section.id, frame.loopWidth)
+                    }
+                }
+            }
+            return buildScene(db, context, measuredWidths)
         }
         activationStarts.forEach { (actorId, starts) ->
             val actor = actors.getOrNull(actorIndex[actorId] ?: -1)
@@ -616,7 +660,12 @@ internal class SequenceLayout {
         context: MermaidRenderContext,
     ): NoteLayout {
         val from = actors.getOrNull(actorIndex[message.from] ?: -1)
-            ?: return NoteLayout(top, emptyList())
+            ?: return NoteLayout(
+                bottom = top,
+                left = 0f,
+                right = 0f,
+                elements = emptyList(),
+            )
         val to = actors.getOrNull(actorIndex[message.to] ?: -1) ?: from
         val text = decode(message.message)
         val noteWidth = when {
@@ -655,6 +704,8 @@ internal class SequenceLayout {
         val bounds = SceneRect(left, noteTop, left + noteWidth, noteTop + noteHeight)
         return NoteLayout(
             bottom = bounds.bottom,
+            left = bounds.left,
+            right = bounds.right,
             elements = listOf(
                 SceneShape(
                     id = "note-${message.id}",
@@ -1019,7 +1070,7 @@ internal class SequenceLayout {
                 zIndex = 10,
             )
         }
-        val textBounds = when {
+        val layoutBounds = when {
             type in GLYPH_ACTOR_TYPES -> SceneRect(
                 left = actor.left,
                 top = top + actor.height - actor.textMetrics.height - LABEL_LIFELINE_GAP,
@@ -1033,6 +1084,16 @@ internal class SequenceLayout {
                 bottom = top + actor.height,
             )
             else -> bounds
+        }
+        val textBounds = if (actor.source.wrap) {
+            layoutBounds
+        } else {
+            SceneRect(
+                left = layoutBounds.center.x - actor.textMetrics.width / 2f,
+                top = layoutBounds.center.y - actor.textMetrics.height / 2f,
+                right = layoutBounds.center.x + actor.textMetrics.width / 2f,
+                bottom = layoutBounds.center.y + actor.textMetrics.height / 2f,
+            )
         }
         return listOf(
             shape,
@@ -1162,20 +1223,13 @@ internal class SequenceLayout {
             weight = SceneTextWeight.Normal,
             zIndex = 20,
         )
-        if (frame.title.isNotBlank()) {
-            result += SceneText(
-                text = "[${frame.title}]",
-                bounds = SceneRect(
-                    left = labelBounds.right,
-                    top = frame.startY + BOX_MARGIN,
-                    right = bounds.right,
-                    bottom = frame.startY + BOX_MARGIN + frame.titleHeight,
-                ),
-                color = context.theme.nodeText,
-                fontSize = MESSAGE_FONT_SIZE,
-                fontFamily = context.theme.fontFamily,
-                weight = SceneTextWeight.Normal,
-                zIndex = 20,
+        if (frame.titleLines.any(String::isNotBlank)) {
+            result += controlTitleElements(
+                lines = frame.titleLines,
+                left = labelBounds.right,
+                right = bounds.right,
+                top = frame.startY + BOX_MARGIN,
+                context = context,
             )
         }
         frame.sections.forEachIndexed { index, section ->
@@ -1189,24 +1243,141 @@ internal class SequenceLayout {
                 look = context.options.look,
                 zIndex = 4,
             )
-            if (section.title.isNotBlank()) {
-                result += SceneText(
-                    text = "[${section.title}]",
-                    bounds = SceneRect(
-                        left = bounds.left + LABEL_BOX_WIDTH,
-                        top = section.y + BOX_MARGIN,
-                        right = bounds.right,
-                        bottom = section.y + BOX_MARGIN + LABEL_BOX_HEIGHT,
-                    ),
-                    color = context.theme.nodeText,
-                    fontSize = MESSAGE_FONT_SIZE,
-                    fontFamily = context.theme.fontFamily,
-                    weight = SceneTextWeight.Normal,
-                    zIndex = 20,
+            if (section.titleLines.any(String::isNotBlank)) {
+                result += controlTitleElements(
+                    lines = section.titleLines,
+                    left = bounds.left + LABEL_BOX_WIDTH,
+                    right = bounds.right,
+                    top = section.y + BOX_MARGIN,
+                    context = context,
                 )
             }
         }
         return result
+    }
+
+    private fun controlTitleElements(
+        lines: List<String>,
+        left: Float,
+        right: Float,
+        top: Float,
+        context: MermaidRenderContext,
+    ): List<SceneText> {
+        val centerX = (left + right) / 2f
+        var cursorY = top
+        return lines.map { line ->
+            val metrics = measure(context, line, MESSAGE_FONT_SIZE, MAX_TEXT_WIDTH)
+            SceneText(
+                text = line,
+                bounds = SceneRect(
+                    left = centerX - metrics.width / 2f,
+                    top = cursorY,
+                    right = centerX + metrics.width / 2f,
+                    bottom = cursorY + metrics.height,
+                ),
+                color = context.theme.nodeText,
+                fontSize = MESSAGE_FONT_SIZE,
+                fontFamily = context.theme.fontFamily,
+                weight = SceneTextWeight.Normal,
+                zIndex = 20,
+                softWrap = false,
+            ).also {
+                cursorY += metrics.height
+            }
+        }
+    }
+
+    private fun controlTitleHeight(
+        lines: List<String>,
+        context: MermaidRenderContext,
+    ): Float = max(
+        LABEL_BOX_HEIGHT,
+        lines.sumOf { line ->
+            measure(context, line, MESSAGE_FONT_SIZE, MAX_TEXT_WIDTH).height.toDouble()
+        }.toFloat(),
+    )
+
+    // Mermaid: src/utils.ts -> wrapLabel
+    private fun controlTitleLines(
+        text: String,
+        maxWidth: Float?,
+        context: MermaidRenderContext,
+    ): List<String> {
+        if (maxWidth == null || text.contains('\n')) {
+            return text.split('\n')
+        }
+        // Mermaid's SVG getBBox preflight is narrower than Compose's glyph measurement.
+        // Keep the upstream wrap boundary while rendering with the native font metrics.
+        val availableWidth = max(
+            (maxWidth - 2f * WRAP_PADDING) * SVG_WRAP_WIDTH_SCALE,
+            1f,
+        )
+        val words = text.split(' ').filter(String::isNotBlank)
+        if (words.isEmpty()) {
+            return listOf(text)
+        }
+        val completed = mutableListOf<String>()
+        var nextLine = ""
+        words.forEachIndexed { index, word ->
+            val wordWidth = measure(
+                context,
+                "$word ",
+                MESSAGE_FONT_SIZE,
+                MAX_TEXT_WIDTH,
+            ).width
+            val nextLineWidth = measure(
+                context,
+                nextLine,
+                MESSAGE_FONT_SIZE,
+                MAX_TEXT_WIDTH,
+            ).width
+            if (wordWidth > availableWidth) {
+                if (nextLine.isNotEmpty()) {
+                    completed += nextLine
+                }
+                val broken = breakControlTitleWord(word, availableWidth, context)
+                completed += broken.dropLast(1)
+                nextLine = broken.lastOrNull().orEmpty()
+            } else if (nextLineWidth + wordWidth >= availableWidth) {
+                if (nextLine.isNotEmpty()) {
+                    completed += nextLine
+                }
+                nextLine = word
+            } else {
+                nextLine = listOf(nextLine, word)
+                    .filter(String::isNotEmpty)
+                    .joinToString(" ")
+            }
+            if (index == words.lastIndex && nextLine.isNotEmpty()) {
+                completed += nextLine
+            }
+        }
+        return completed.filter(String::isNotEmpty)
+    }
+
+    private fun breakControlTitleWord(
+        word: String,
+        maxWidth: Float,
+        context: MermaidRenderContext,
+    ): List<String> {
+        val lines = mutableListOf<String>()
+        var current = ""
+        word.forEachIndexed { index, character ->
+            val candidate = current + character
+            if (
+                measure(context, candidate, MESSAGE_FONT_SIZE, MAX_TEXT_WIDTH).width >= maxWidth &&
+                current.isNotEmpty()
+            ) {
+                lines += "$current-"
+                current = character.toString()
+            } else {
+                current = candidate
+            }
+            if (index == word.lastIndex && current.isNotEmpty()) {
+                lines += current
+            }
+        }
+        return lines.ifEmpty { listOf(word) }
     }
 
     private fun boxElements(
@@ -1815,19 +1986,23 @@ internal class SequenceLayout {
 
     private data class NoteLayout(
         val bottom: Float,
+        val left: Float,
+        val right: Float,
         val elements: List<SceneElement>,
     )
 
     private data class FrameSection(
+        val id: String,
         val y: Float,
-        val title: String,
+        val titleLines: List<String>,
+        val titleHeight: Float,
     )
 
     private data class ControlFrame(
         val id: String,
         val type: Int,
         val label: String,
-        val title: String,
+        val titleLines: List<String>,
         val startY: Float,
         val titleHeight: Float,
         val depth: Int,
@@ -1837,6 +2012,9 @@ internal class SequenceLayout {
         var rightIndex: Int = Int.MIN_VALUE,
         var contentLeft: Float = Float.POSITIVE_INFINITY,
         var contentRight: Float = Float.NEGATIVE_INFINITY,
+        var loopLeft: Float = Float.POSITIVE_INFINITY,
+        var loopRight: Float = Float.NEGATIVE_INFINITY,
+        var loopWidth: Float = 0f,
         val sections: MutableList<FrameSection> = mutableListOf(),
     ) {
         fun include(index: Int) {
@@ -1850,6 +2028,16 @@ internal class SequenceLayout {
         fun includeBounds(left: Float, right: Float) {
             contentLeft = min(contentLeft, left)
             contentRight = max(contentRight, right)
+        }
+
+        fun includeLoopBounds(left: Float, right: Float) {
+            loopLeft = min(loopLeft, left)
+            loopRight = max(loopRight, right)
+            loopWidth = max(loopWidth, abs(loopRight - loopLeft)) - LABEL_BOX_WIDTH
+        }
+
+        fun includeLoopWidth(width: Float) {
+            loopWidth = max(loopWidth, width) - LABEL_BOX_WIDTH
         }
     }
 
@@ -1883,6 +2071,7 @@ internal class SequenceLayout {
         const val ROUND_GLYPH_RADIUS = 22f
         const val CONTROL_MARKER_ANGLE_DEGREES = 172.5
         const val COLLECTION_OFFSET = 6f
+        const val SVG_WRAP_WIDTH_SCALE = 1.1f
         const val MESSAGE_STROKE_WIDTH = 1.5f
         const val SEQUENCE_NUMBER_RADIUS = 6f
         const val SEQUENCE_NUMBER_TEXT_HALF_WIDTH = 18f

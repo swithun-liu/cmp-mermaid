@@ -74,6 +74,13 @@ production so an upstream grammar diff can be translated incrementally.
   `1`, outer padding `0`, and center alignment.
 - Equal linear domains map values to the range midpoint.
 - D3's straight line generator maps directly to `ScenePath` points.
+- `chartBuilder/orchestrator.ts` component insertion order is preserved as
+  title, plot, legend, x-axis, then y-axis. Scene elements are not globally
+  reordered by their legacy `zIndex` metadata.
+- `xychartRenderer.ts` computes horizontal bar-label font size from in-bar
+  fit even when the label is placed outside. When that produces a negative
+  SVG `font-size`, browsers reject the attribute and inherit `16px`; the
+  Kotlin translation reproduces that fallback explicitly.
 - DOM text measurement is supplied by `TextMetricProvider`; Compose uses the
   same font, size, alignment, rotation, and line-height inputs for measurement
   and painting.
@@ -92,14 +99,22 @@ production so an upstream grammar diff can be translated incrementally.
   metadata, and structured empty-chart errors.
 - `XyChartLayoutTest` covers component layout, horizontal projection, data
   labels, nested configuration, theme variables, rotation, equal domains, and
-  structured invalid-configuration errors.
+  structured invalid-configuration errors. It also locks Mermaid's component
+  paint order and invalid-font-size fallback.
 - `XyChartStressTest` renders 256 deterministic random legal charts and checks
   finite geometry.
 - `OfficialXyChartDocumentationCases` executes all 8 examples extracted from
   Mermaid's XY Chart documentation.
+- The independent production audit passes `13 pass / 0 review / 0 fail`.
+  Geometry ratios are width `1.016-1.020`, height `1.012-1.015`, and
+  foreground ink `0.967-1.144`.
 - The large-scale Web audit compares 256 unique same-source cases against
-  Mermaid.js `12.0.0`, including long title and label-pressure profiles, and
-  enforces content-bound and foreground-density limits.
+  Mermaid.js `12.0.0`, including long title and label-pressure profiles. It
+  passes the replacement detail and geometry gates with
+  `256 pass / 0 review / 0 fail`; width `1.008-1.029`, height `0.995-1.041`,
+  and foreground ink `0.918-1.163`.
+- All 16 matrix contact sheets were manually reviewed with no unresolved
+  visual defect.
 
 ## Upgrade Procedure
 

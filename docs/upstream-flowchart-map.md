@@ -108,6 +108,10 @@ not a production runtime dependency.
   the same font and line-height inputs for measurement and painting.
 - SVG paths, markers, assets, spans, shadows, and interactions map to typed
   SceneGraph primitives.
+- Bang and Cloud use the extrema of their sampled rendered paths for
+  rectangular edge intersection. This mirrors each upstream shape's
+  `updateNodeBounds` followed by `intersect.rect`, rather than intersecting
+  against the smaller nominal label envelope.
 
 ## Parity Gate
 
@@ -122,6 +126,10 @@ not a production runtime dependency.
   `12.0.0` Dagre PNGs on the same device viewport.
 - Focused tests cover every translated parser, text, shape, edge, marker,
   line-hop, interaction, asset, and resource-limit boundary.
+- The replacement Web audit passes 14/14 production scenarios and 256/256
+  matrix pairs. Its manifests record actual marker endpoint anchors and compare
+  their occlusion by later opaque nodes; all 16 matrix contact sheets were
+  manually reviewed.
 
 ## Upgrade Procedure
 

@@ -80,8 +80,9 @@ Jison production.
 - `CoseBilkentLayoutTest`, `MindmapDagreLayoutTest`, and
   `NonLayeredTidyTreeLayoutTest` cover the translated algorithm boundaries.
 - `MindmapStressTest` renders 256 deterministic randomized Native diagrams.
-- The large-scale Web audit compares 256 unique same-source cases against
-  Mermaid.js `12.0.0`; all 16 contact-sheet pages were manually reviewed.
+- The legacy large-scale Web audit compares 256 unique same-source cases
+  against Mermaid.js `12.0.0`. Its former manual completion claim is withdrawn
+  pending the detail re-audit.
 
 ## Upgrade Procedure
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-16T04:04:40.051Z",
+  "generatedAt": "2026-09-17T06:43:31.473Z",
   "inputDirectory": "captures/local/production-12",
   "corpusSource": "production",
   "theme": null,
@@ -1614,7 +1614,7 @@
       "id": "rc_er_commerce_platform",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1630,17 +1630,17 @@
             255
           ]
         ],
-        "inkPixels": 75463,
-        "inkRatio": 0.06987314814814814,
+        "inkPixels": 44981,
+        "inkRatio": 0.0555320987654321,
         "contentBounds": {
-          "x": 13,
-          "y": 115,
-          "width": 1176,
-          "height": 672
+          "x": 12,
+          "y": 200,
+          "width": 878,
+          "height": 502
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1656,24 +1656,24 @@
             255
           ]
         ],
-        "inkPixels": 140124,
-        "inkRatio": 0.12974444444444444,
+        "inkPixels": 78658,
+        "inkRatio": 0.09710864197530865,
         "contentBounds": {
-          "x": 30,
-          "y": 75,
-          "width": 1143,
-          "height": 753
+          "x": 26,
+          "y": 171,
+          "width": 850,
+          "height": 560
         }
       },
-      "widthRatio": 1.0288713910761156,
-      "heightRatio": 0.8924302788844621,
-      "inkRatio": 0.5385444320744484
+      "widthRatio": 1.0329411764705883,
+      "heightRatio": 0.8964285714285715,
+      "inkRatio": 0.5718553738971243
     },
     {
       "id": "rc_er_learning_platform",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1689,17 +1689,17 @@
             255
           ]
         ],
-        "inkPixels": 93507,
-        "inkRatio": 0.08658055555555555,
+        "inkPixels": 74083,
+        "inkRatio": 0.0914604938271605,
         "contentBounds": {
-          "x": 104,
-          "y": 14,
-          "width": 995,
-          "height": 874
+          "x": 14,
+          "y": 66,
+          "width": 875,
+          "height": 770
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1715,24 +1715,24 @@
             255
           ]
         ],
-        "inkPixels": 135041,
-        "inkRatio": 0.12503796296296296,
+        "inkPixels": 135059,
+        "inkRatio": 0.1667395061728395,
         "contentBounds": {
-          "x": 186,
+          "x": 36,
           "y": 29,
           "width": 832,
           "height": 845
         }
       },
-      "widthRatio": 1.1959134615384615,
-      "heightRatio": 1.034319526627219,
-      "inkRatio": 0.6924341496286313
+      "widthRatio": 1.0516826923076923,
+      "heightRatio": 0.9112426035502958,
+      "inkRatio": 0.5485232379922849
     },
     {
       "id": "rc_er_messaging_system",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1748,17 +1748,17 @@
             255
           ]
         ],
-        "inkPixels": 114250,
-        "inkRatio": 0.10578703703703704,
+        "inkPixels": 67377,
+        "inkRatio": 0.08318148148148148,
         "contentBounds": {
-          "x": 15,
-          "y": 133,
-          "width": 1172,
-          "height": 636
+          "x": 13,
+          "y": 214,
+          "width": 876,
+          "height": 474
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1774,24 +1774,24 @@
             255
           ]
         ],
-        "inkPixels": 205558,
-        "inkRatio": 0.1903314814814815,
+        "inkPixels": 115981,
+        "inkRatio": 0.1431864197530864,
         "contentBounds": {
-          "x": 35,
-          "y": 96,
-          "width": 1134,
-          "height": 711
+          "x": 30,
+          "y": 187,
+          "width": 843,
+          "height": 529
         }
       },
-      "widthRatio": 1.033509700176367,
-      "heightRatio": 0.8945147679324894,
-      "inkRatio": 0.5558042012473365
+      "widthRatio": 1.0391459074733096,
+      "heightRatio": 0.8960302457466919,
+      "inkRatio": 0.580931359446806
     },
     {
       "id": "rc_er_subscription_billing",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1807,17 +1807,17 @@
             255
           ]
         ],
-        "inkPixels": 130418,
-        "inkRatio": 0.12075740740740741,
+        "inkPixels": 75721,
+        "inkRatio": 0.09348271604938271,
         "contentBounds": {
-          "x": 16,
-          "y": 83,
-          "width": 1171,
-          "height": 737
+          "x": 14,
+          "y": 176,
+          "width": 874,
+          "height": 551
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1833,24 +1833,24 @@
             255
           ]
         ],
-        "inkPixels": 263323,
-        "inkRatio": 0.24381759259259259,
+        "inkPixels": 146031,
+        "inkRatio": 0.1802851851851852,
         "contentBounds": {
-          "x": 36,
-          "y": 37,
-          "width": 1132,
-          "height": 830
+          "x": 31,
+          "y": 143,
+          "width": 841,
+          "height": 617
         }
       },
-      "widthRatio": 1.034452296819788,
-      "heightRatio": 0.8879518072289156,
-      "inkRatio": 0.49527766279436286
+      "widthRatio": 1.0392390011890607,
+      "heightRatio": 0.893030794165316,
+      "inkRatio": 0.5185268881264937
     },
     {
       "id": "rc_er_inventory_network",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1866,17 +1866,17 @@
             255
           ]
         ],
-        "inkPixels": 74424,
-        "inkRatio": 0.06891111111111112,
+        "inkPixels": 43903,
+        "inkRatio": 0.054201234567901234,
         "contentBounds": {
-          "x": 13,
-          "y": 212,
-          "width": 1176,
-          "height": 478
+          "x": 12,
+          "y": 272,
+          "width": 877,
+          "height": 357
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -1892,18 +1892,18 @@
             255
           ]
         ],
-        "inkPixels": 129636,
-        "inkRatio": 0.12003333333333334,
+        "inkPixels": 73786,
+        "inkRatio": 0.09109382716049383,
         "contentBounds": {
-          "x": 30,
-          "y": 183,
-          "width": 1142,
-          "height": 537
+          "x": 27,
+          "y": 251,
+          "width": 848,
+          "height": 400
         }
       },
-      "widthRatio": 1.0297723292469352,
-      "heightRatio": 0.8901303538175046,
-      "inkRatio": 0.574099787096177
+      "widthRatio": 1.034198113207547,
+      "heightRatio": 0.8925,
+      "inkRatio": 0.5950044723931369
     },
     {
       "id": "rc_gantt_mobile_release",
@@ -6063,7 +6063,7 @@
       "id": "prod_er_attribute_model_support",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6080,16 +6080,16 @@
           ]
         ],
         "inkPixels": 76637,
-        "inkRatio": 0.07096018518518518,
+        "inkRatio": 0.09461358024691358,
         "contentBounds": {
-          "x": 256,
+          "x": 106,
           "y": 23,
           "width": 694,
           "height": 860
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6106,9 +6106,9 @@
           ]
         ],
         "inkPixels": 60748,
-        "inkRatio": 0.05624814814814815,
+        "inkRatio": 0.07499753086419753,
         "contentBounds": {
-          "x": 307,
+          "x": 157,
           "y": 49,
           "width": 593,
           "height": 809
@@ -6116,13 +6116,13 @@
       },
       "widthRatio": 1.1703204047217537,
       "heightRatio": 1.0630407911001236,
-      "inkRatio": 1.2615559359978927
+      "inkRatio": 1.261555935997893
     },
     {
       "id": "prod_er_attribute_model_catalog",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6139,16 +6139,16 @@
           ]
         ],
         "inkPixels": 82028,
-        "inkRatio": 0.07595185185185185,
+        "inkRatio": 0.10126913580246913,
         "contentBounds": {
-          "x": 238,
+          "x": 88,
           "y": 23,
           "width": 730,
           "height": 860
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6165,9 +6165,9 @@
           ]
         ],
         "inkPixels": 59753,
-        "inkRatio": 0.05532685185185185,
+        "inkRatio": 0.07376913580246913,
         "contentBounds": {
-          "x": 307,
+          "x": 157,
           "y": 49,
           "width": 593,
           "height": 809
@@ -6181,7 +6181,7 @@
       "id": "prod_er_cardinality_matrix_tenant",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6197,17 +6197,17 @@
             255
           ]
         ],
-        "inkPixels": 106217,
-        "inkRatio": 0.09834907407407407,
+        "inkPixels": 59272,
+        "inkRatio": 0.07317530864197531,
         "contentBounds": {
-          "x": 20,
-          "y": 73,
-          "width": 1165,
-          "height": 758
+          "x": 17,
+          "y": 169,
+          "width": 870,
+          "height": 566
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6223,24 +6223,24 @@
             255
           ]
         ],
-        "inkPixels": 88657,
-        "inkRatio": 0.08208981481481481,
+        "inkPixels": 50259,
+        "inkRatio": 0.06204814814814815,
         "contentBounds": {
-          "x": 48,
-          "y": 70,
-          "width": 1111,
-          "height": 766
+          "x": 40,
+          "y": 168,
+          "width": 825,
+          "height": 569
         }
       },
-      "widthRatio": 1.0486048604860485,
-      "heightRatio": 0.9895561357702349,
-      "inkRatio": 1.1980667065206358
+      "widthRatio": 1.0545454545454545,
+      "heightRatio": 0.9947275922671354,
+      "inkRatio": 1.1793310650828708
     },
     {
       "id": "prod_er_cardinality_matrix_workspace",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6256,17 +6256,17 @@
             255
           ]
         ],
-        "inkPixels": 107245,
-        "inkRatio": 0.09930092592592593,
+        "inkPixels": 59782,
+        "inkRatio": 0.07380493827160493,
         "contentBounds": {
-          "x": 20,
-          "y": 73,
-          "width": 1165,
-          "height": 758
+          "x": 17,
+          "y": 169,
+          "width": 870,
+          "height": 566
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6282,24 +6282,24 @@
             255
           ]
         ],
-        "inkPixels": 89866,
-        "inkRatio": 0.08320925925925926,
+        "inkPixels": 50967,
+        "inkRatio": 0.06292222222222223,
         "contentBounds": {
-          "x": 48,
-          "y": 70,
-          "width": 1111,
-          "height": 766
+          "x": 40,
+          "y": 168,
+          "width": 825,
+          "height": 569
         }
       },
-      "widthRatio": 1.0486048604860485,
-      "heightRatio": 0.9895561357702349,
-      "inkRatio": 1.1933879331449047
+      "widthRatio": 1.0545454545454545,
+      "heightRatio": 0.9947275922671354,
+      "inkRatio": 1.1729550493456549
     },
     {
       "id": "prod_er_subgraph_domains_health",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6315,17 +6315,17 @@
             255
           ]
         ],
-        "inkPixels": 66443,
-        "inkRatio": 0.061521296296296296,
+        "inkPixels": 37336,
+        "inkRatio": 0.04609382716049383,
         "contentBounds": {
-          "x": 414,
-          "y": 21,
-          "width": 372,
-          "height": 858
+          "x": 265,
+          "y": 17,
+          "width": 370,
+          "height": 866
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6342,23 +6342,23 @@
           ]
         ],
         "inkPixels": 43000,
-        "inkRatio": 0.03981481481481482,
+        "inkRatio": 0.05308641975308642,
         "contentBounds": {
-          "x": 426,
+          "x": 276,
           "y": 38,
           "width": 352,
           "height": 828
         }
       },
-      "widthRatio": 1.0568181818181819,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.5451860465116278
+      "widthRatio": 1.0511363636363635,
+      "heightRatio": 1.0458937198067633,
+      "inkRatio": 0.8682790697674418
     },
     {
       "id": "prod_er_subgraph_domains_travel",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6374,17 +6374,17 @@
             255
           ]
         ],
-        "inkPixels": 70135,
-        "inkRatio": 0.06493981481481481,
+        "inkPixels": 39123,
+        "inkRatio": 0.0483,
         "contentBounds": {
-          "x": 399,
-          "y": 21,
-          "width": 402,
-          "height": 858
+          "x": 255,
+          "y": 17,
+          "width": 390,
+          "height": 866
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6401,23 +6401,23 @@
           ]
         ],
         "inkPixels": 44714,
-        "inkRatio": 0.04140185185185185,
+        "inkRatio": 0.05520246913580247,
         "contentBounds": {
-          "x": 416,
+          "x": 266,
           "y": 38,
           "width": 373,
           "height": 828
         }
       },
-      "widthRatio": 1.0777479892761395,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.5685243995169298
+      "widthRatio": 1.0455764075067024,
+      "heightRatio": 1.0458937198067633,
+      "inkRatio": 0.8749608623697276
     },
     {
       "id": "prod_er_styled_metadata_governance",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6434,16 +6434,16 @@
           ]
         ],
         "inkPixels": 215671,
-        "inkRatio": 0.19969537037037038,
+        "inkRatio": 0.2662604938271605,
         "contentBounds": {
-          "x": 372,
+          "x": 222,
           "y": 39,
           "width": 464,
           "height": 841
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6460,9 +6460,9 @@
           ]
         ],
         "inkPixels": 168216,
-        "inkRatio": 0.15575555555555556,
+        "inkRatio": 0.20767407407407407,
         "contentBounds": {
-          "x": 401,
+          "x": 251,
           "y": 72,
           "width": 407,
           "height": 775
@@ -6476,7 +6476,7 @@
       "id": "prod_er_styled_metadata_feature_flags",
       "kind": "er",
       "native": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6493,16 +6493,16 @@
           ]
         ],
         "inkPixels": 226546,
-        "inkRatio": 0.20976481481481482,
+        "inkRatio": 0.27968641975308645,
         "contentBounds": {
-          "x": 376,
+          "x": 226,
           "y": 39,
           "width": 453,
           "height": 841
         }
       },
       "official": {
-        "width": 1200,
+        "width": 900,
         "height": 900,
         "background": [
           255,
@@ -6519,9 +6519,9 @@
           ]
         ],
         "inkPixels": 175470,
-        "inkRatio": 0.1624722222222222,
+        "inkRatio": 0.21662962962962962,
         "contentBounds": {
-          "x": 409,
+          "x": 259,
           "y": 72,
           "width": 391,
           "height": 775

@@ -555,7 +555,7 @@ internal object MermaidShapePort {
         }
         return centeredShape(
             listOf(closedPath(shifted)),
-            rectanglePoints(nominalWidth, nominalHeight),
+            boundingRectangle(shifted),
         )
     }
 
@@ -582,7 +582,7 @@ internal object MermaidShapePort {
         }
         return centeredShape(
             listOf(closedPath(shifted)),
-            rectanglePoints(width, height),
+            boundingRectangle(shifted),
         )
     }
 
@@ -1411,6 +1411,23 @@ internal object MermaidShapePort {
         centerX + width / 2f to centerY + height / 2f,
         centerX - width / 2f to centerY + height / 2f,
     )
+
+    /**
+     * Mermaid: rendering-elements/shapes/bang.ts and cloud.ts
+     * -> updateNodeBounds followed by intersect.rect(node, point).
+     */
+    private fun boundingRectangle(points: List<ScenePoint>): List<ScenePoint> {
+        val minX = points.minOf(ScenePoint::x)
+        val maxX = points.maxOf(ScenePoint::x)
+        val minY = points.minOf(ScenePoint::y)
+        val maxY = points.maxOf(ScenePoint::y)
+        return points(
+            minX to minY,
+            maxX to minY,
+            maxX to maxY,
+            minX to maxY,
+        )
+    }
 
     private fun roundedRectanglePoints(
         width: Float,

@@ -52,8 +52,9 @@ typed `MermaidTheme.journey` API.
 - 13 independent production scenarios cover all 16 declared Journey
   capability points.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
-  All pairs passed the geometry gate; all 16 contact-sheet pages were manually
-  reviewed.
+  All pairs passed the legacy geometry gate. The former manual completion
+  claim is withdrawn pending the detail re-audit defined in
+  [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
   complete 158-case mixed corpus.
 

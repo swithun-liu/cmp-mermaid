@@ -474,6 +474,80 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsCompleteTimelineConfigShape() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  timeline:
+                    useWidth: 960
+                    useMaxWidth: false
+                    theme: forest
+                    look: classic
+                    layout: custom
+                    diagramMarginX: 51
+                    diagramMarginY: 12
+                    leftMargin: 175
+                    width: 160
+                    height: 60
+                    padding: 44
+                    boxMargin: 11
+                    boxTextMargin: 6
+                    noteMargin: 13
+                    messageMargin: 37
+                    messageAlign: right
+                    bottomMarginAdj: 2
+                    rightAngles: true
+                    taskFontSize: 15px
+                    taskFontFamily: Timeline Sans
+                    taskMargin: 55
+                    activationWidth: 12
+                    textPlacement: tspan
+                    actorColours: ["#112233"]
+                    sectionFills: ["#445566"]
+                    sectionColours: ["#778899"]
+                    disableMulticolor: true
+                ---
+                timeline
+                  2026 : Shipped
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val timeline = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.timeline
+
+        assertEquals(960f, timeline.useWidth)
+        assertEquals(false, timeline.useMaxWidth)
+        assertEquals("forest", timeline.theme)
+        assertEquals("classic", timeline.look)
+        assertEquals("custom", timeline.layout)
+        assertEquals(51f, timeline.diagramMarginX)
+        assertEquals(12f, timeline.diagramMarginY)
+        assertEquals(175f, timeline.leftMargin)
+        assertEquals(160f, timeline.width)
+        assertEquals(60f, timeline.height)
+        assertEquals(44f, timeline.padding)
+        assertEquals(11f, timeline.boxMargin)
+        assertEquals(6f, timeline.boxTextMargin)
+        assertEquals(13f, timeline.noteMargin)
+        assertEquals(37f, timeline.messageMargin)
+        assertEquals("right", timeline.messageAlign)
+        assertEquals(2f, timeline.bottomMarginAdj)
+        assertEquals(true, timeline.rightAngles)
+        assertEquals(15f, timeline.taskFontSize)
+        assertEquals("Timeline Sans", timeline.taskFontFamily)
+        assertEquals(55f, timeline.taskMargin)
+        assertEquals(12f, timeline.activationWidth)
+        assertEquals("tspan", timeline.textPlacement)
+        assertEquals(listOf(SceneColor(0xFF112233)), timeline.actorColours)
+        assertEquals(listOf(SceneColor(0xFF445566)), timeline.sectionFills)
+        assertEquals(listOf(SceneColor(0xFF778899)), timeline.sectionColours)
+        assertEquals(true, timeline.disableMulticolor)
+    }
+
+    @Test
     fun rejectsKnownConfigurationWithoutANativePort() {
         val result = MermaidPreprocessor.preprocess(
             """

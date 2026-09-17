@@ -1,7 +1,15 @@
-# Mermaid 12.0.0 Stable Test Report
+# Mermaid 12.0.0 Legacy Stable Test Report
 
-This report records the evidence behind CMP Mermaid's current
-**Stable** status for the documented support scope. The evidence is
+> [!WARNING]
+> This is a historical report for the previously implemented 12-family subset,
+> not a current overall Stable decision. A Git Graph paint-order defect was
+> visible in the 3,072-pair matrix but missed by the coarse geometry gate and
+> earlier review. The old matrix-detail completion claim is withdrawn. See the
+> [33-family roadmap](full-diagram-roadmap.md) for current status and the new
+> detail-level promotion gate.
+
+This report records the evidence behind CMP Mermaid's former **Stable** status
+for the previously documented 12-family scope. The evidence is
 deliberately separate from the demo gallery and distinguishes independent
 production scenarios, systematic visual-matrix variants, and Native-only
 randomized stress inputs.
@@ -10,14 +18,14 @@ randomized stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Stable** |
+| Current rating | **Detail re-audit pending; historical Stable rating withdrawn** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Independent production scenarios | 158: 62 release-candidate cases plus 96 additional conformance cases |
 | Declared capability coverage | 207/207 points across 12 diagram types |
 | Large-scale visual matrix | 3,072 unique Mermaid sources: 256 per diagram type |
 | Native core render results | 158 independent plus 3,072 matrix cases passed, 0 failed |
 | Web Native/Official captures | 6,144 matrix screenshots plus 316 independent-corpus screenshots, 0 render errors |
-| Manual visual review | 158 independent scenarios acceptable, 0 blocked; all 256 Journey, Requirement, Git Graph, and Mindmap matrix pairs reviewed |
+| Manual visual review | 144 replacement-gate sheets across 9 families; the other implemented families remain pending |
 | Automated visual geometry | 3,072/3,072 matrix pairs and 158/158 independent pairs passed |
 | Deterministic SceneGraph replay | 158 passed, 0 mismatches |
 | Built-in theme matrix | 132/132 renders passed: 12 diagram types by 11 themes |
@@ -29,13 +37,77 @@ randomized stress inputs.
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
-**Conclusion:** all 12 supported diagram types pass the independent
-158-case visual corpus, the 3,072-case Native/Official visual matrix,
-deterministic replay, separate generated stress tests, core soak, runtime load
-matrix, cross-platform build matrix, and the repository Quality Gate. This
-satisfies the project's code-level Stable criteria. Canary, feature flags, and
-rollback are deployment choices for an adopting application, not prerequisites
-for rating the renderer code as Stable.
+**Historical conclusion:** the 12 implemented families passed the listed
+legacy gates. That evidence does not satisfy the new detail-level or 33-family
+Stable criteria and must not be used as a current Stable decision.
+
+## Current Replacement-Gate Progress
+
+Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
+and Entity Relationship are now the first nine families to complete the
+replacement visual gate. Each has 256 unique same-source Native/Official
+pairs, a 256/256 geometry result, and 16 paged contact sheets. The accepted
+replacement total is 2,304/2,304 pairs across 144 manually reviewed sheets:
+`2,244 pass / 60 manually reviewed / 0 fail`. All 60 reviews are ER
+text-position threshold findings with complete text, no clipping or overlap,
+and passing raster checks.
+
+- Flowchart content ratios: width `1.026-1.119`, height `0.945-1.047`,
+  foreground ink `0.948-1.241`.
+- XY Chart content ratios: width `1.008-1.029`, height `0.995-1.041`,
+  foreground ink `0.918-1.163`.
+- Quadrant content ratios: width `1.007-1.035`, height `1.011-1.022`,
+  foreground ink `1.024-1.048`.
+- Timeline content ratios: width `1.026-1.053`, height `1.038-1.087`,
+  foreground ink `1.052-1.136`.
+- Kanban content ratios: width `1.041-1.071`, height `0.864-1.230`,
+  foreground ink `0.996-1.110`.
+- Sequence content ratios: width `1.023-1.068`, height `0.893-1.045`,
+  foreground ink `0.926-1.148`.
+- Class content ratios: width `1.030-1.208`, height `0.897-1.055`,
+  foreground ink `0.781-1.227`.
+- State content ratios: width `0.963-1.224`, height `0.968-1.089`,
+  foreground ink `1.031-1.383`.
+- Entity Relationship content ratios: width `1.033-1.078`, height
+  `0.882-1.043`, foreground ink `0.545-1.150`.
+- All 16 Flowchart contact sheets and all 256 same-source pairs were manually
+  inspected after correcting Bang/Cloud edge intersection bounds. No
+  unresolved marker, routing, label, clipping, overlap, or paint-order defect
+  remains in that corpus.
+- All 16 XY Chart contact sheets and all 256 same-source pairs were manually
+  inspected after matching Mermaid's component insertion order and invalid
+  SVG font-size fallback. No unresolved chart, axis, plot, legend, label,
+  clipping, overlap, or paint-order defect remains in that corpus.
+- All 16 Kanban contact sheets and all 256 same-source pairs were manually
+  inspected, including the corrected three-line titles in cases 114 and 117.
+- All 16 Sequence contact sheets and all 256 same-source pairs were manually
+  inspected after translating Mermaid's control-title loop-width preflight and
+  tightening created-participant manifest text bounds. No unresolved
+  participant, lifecycle, message, marker, note, activation, control-frame,
+  clipping, overlap, or paint-order defect remains.
+- All 16 Class contact sheets and all 256 same-source pairs were manually
+  inspected after matching Mermaid's asymmetric class text-group bbox, empty
+  and method-only compartment spacing, note padding, and terminal placement.
+  No unresolved class, namespace, relation, marker, cardinality, note, label,
+  clipping, overlap, or paint-order defect remains.
+- All 16 State contact sheets and all 256 same-source pairs were manually
+  inspected after matching nested composite, note, concurrency, start/end,
+  choice, fork/join, and transition routing behavior. No unresolved state,
+  group boundary, marker, note, label, clipping, overlap, or paint-order defect
+  remains.
+- All 16 Entity Relationship contact sheets and all 256 same-source pairs were
+  manually inspected after translating Mermaid's recursive subgraph spacing.
+  The 60 queued cases differ only in isolated label positions on repeated large
+  structures; their P95 normalized text-center distance is at most `0.077`,
+  mask IoU is at least `0.685`, and edge F1 is at least `0.922`. No unresolved
+  entity, attribute, subgraph, relationship, marker, text-loss, clipping,
+  overlap, or paint-order defect remains.
+- Every Timeline sheet and representative first, middle, and final Quadrant
+  sheets were manually inspected.
+
+This is a per-family result. Overall status remains Not Stable until the other
+implemented families complete the replacement audit and all 33 official
+families are translated.
 
 ## What This Report Does And Does Not Prove
 
@@ -83,22 +155,22 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 
 | Diagram | Production cases | Capability points | Scenario examples | Manual visual result |
 | --- | ---: | ---: | --- | --- |
-| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Acceptable |
-| XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Acceptable |
-| Sequence | 14 | 16/16 | checkout saga, lifecycle, self messages, parallel and critical regions | Acceptable; self-message/frame bounds rechecked |
-| Class | 13 | 16/16 | commerce, namespaces, generics, relations, annotations | Acceptable |
-| State | 13 | 16/16 | fulfillment, nested composites, fork/join, concurrency, notes | Acceptable |
-| Entity Relationship | 13 | 16/16 | commerce, aliases, attributes, cardinalities, nested subgraphs | Acceptable |
-| Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Acceptable |
-| Pie | 13 | 16/16 | cost, escaped labels, donut, legends, themes, many slices | Acceptable |
-| User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Acceptable; all 256 matrix pairs manually reviewed |
-| Requirement | 13 | 17/17 | typed requirements, elements, relationships, directions, styling, metadata | Acceptable; all 256 matrix pairs manually reviewed |
-| Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Acceptable; all 256 matrix pairs manually reviewed |
-| Mindmap | 13 | 22/22 | hierarchy, shapes, text, CoSE-Bilkent, Dagre, tidy tree, configuration, themes | Acceptable; all 256 matrix pairs manually reviewed |
+| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Replacement detail pass; 14/14 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| Sequence | 14 | 16/16 | checkout saga, lifecycle, self messages, parallel and critical regions | Replacement detail pass; 14/14 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| Class | 13 | 16/16 | commerce, namespaces, generics, relations, annotations | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| State | 13 | 16/16 | fulfillment, nested composites, fork/join, concurrency, notes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| Entity Relationship | 13 | 16/16 | commerce, aliases, attributes, cardinalities, nested subgraphs | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Historical review; detail re-audit pending |
+| Pie | 13 | 16/16 | cost, escaped labels, donut, legends, themes, many slices | Historical review; detail re-audit pending |
+| User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Historical review; detail re-audit pending |
+| Requirement | 13 | 17/17 | typed requirements, elements, relationships, directions, styling, metadata | Historical review; detail re-audit pending |
+| Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Historical review; detail re-audit pending |
+| Mindmap | 13 | 22/22 | hierarchy, shapes, text, CoSE-Bilkent, Dagre, tidy tree, configuration, themes | Historical review; detail re-audit pending |
 
-`Acceptable` means the manual review found no missing domain entity, state,
-message, series, relationship, or route that changes the meaning of the
-diagram. It allows minor font, spacing, and edge-routing differences.
+Rows still marked "Historical review" preserve the former review record only.
+They do not satisfy the new manifest and perceptual checks and therefore are
+not current acceptance decisions.
 
 ## Large-Scale Visual Matrix
 
@@ -137,6 +209,16 @@ The source IDs and scenario descriptions are printed above every pair.
 
 ![Flowchart complex Native and Official corpus](assets/stability-report/flowchart-complex-corpus.png)
 
+The replacement audit passed all 14 production scenarios and all 256 matrix
+pairs with no review queue. The matrix width, height, and foreground-ink ratios
+were `1.026-1.119`, `0.945-1.047`, and `0.948-1.241`. All 16 matrix contact
+sheets were manually reviewed. During that review, hidden arrows on Bang and
+Cloud nodes exposed a mismatch between sampled path bounds and edge
+intersection bounds. The translated shapes now follow Mermaid's
+`updateNodeBounds` plus `intersect.rect` behavior, and the detail auditor now
+requires marker endpoint anchors and compares their later-paint occlusion
+depth, so marker metadata alone cannot satisfy the gate.
+
 </details>
 
 <details open>
@@ -144,24 +226,44 @@ The source IDs and scenario descriptions are printed above every pair.
 
 ![XY Chart complex Native and Official corpus](assets/stability-report/xychart-complex-corpus.png)
 
+The replacement audit passed all 13 production scenarios and all 256 matrix
+pairs with no review queue. Production width, height, and foreground-ink
+ratios were `1.016-1.020`, `1.012-1.015`, and `0.967-1.144`; matrix ratios were
+`1.008-1.029`, `0.995-1.041`, and `0.918-1.163`. All 16 matrix contact sheets
+were manually reviewed. The final translation preserves Mermaid's component
+insertion order and its browser fallback from an invalid negative bar-label
+font size to inherited `16px`.
+
 </details>
 
-<details>
+<details open>
 <summary><strong>Sequence: 14 production scenarios</strong></summary>
 
 ![Sequence complex Native and Official corpus](assets/stability-report/sequence-complex-corpus.png)
 
-The checkout saga was re-audited at full capture resolution. Sequence numbers
-now use Mermaid `12.0.0` activation bounds, the official `6px` marker radius,
-message-line clearance, and the upstream draw order that keeps number markers
-above activation bars.
+The replacement audit passed all 14 production scenarios and all 256 matrix
+pairs with no review queue. Production width, height, and foreground-ink
+ratios were `1.019-1.254`, `0.910-1.111`, and `0.939-1.327`; matrix ratios were
+`1.023-1.068`, `0.893-1.045`, and `0.926-1.148`. All 16 matrix contact sheets
+were manually reviewed. The final translation follows Mermaid's
+`calculateLoopBounds`, `adjustLoopHeightForWrap`, and `wrapLabel` behavior for
+control titles, preserves marker and activation paint order, and reports
+created-participant text at its measured glyph bounds.
 
 </details>
 
-<details>
+<details open>
 <summary><strong>Class: 13 production scenarios</strong></summary>
 
 ![Class complex Native and Official corpus](assets/stability-report/class-complex-corpus.png)
+
+The replacement audit passed all 13 production scenarios and all 256 matrix
+pairs with no review queue. Production width, height, and foreground-ink
+ratios were `1.036-1.196`, `0.906-1.055`, and `0.723-1.230`; matrix ratios were
+`1.030-1.208`, `0.897-1.055`, and `0.781-1.227`. All 16 matrix contact sheets
+were manually reviewed. The final translation follows Mermaid's asymmetric
+`textHelper` group bounds for class width, exact empty and method-only
+compartment spacing, note padding, and marker-aware terminal placement.
 
 </details>
 
@@ -170,12 +272,33 @@ above activation bars.
 
 ![State complex Native and Official corpus](assets/stability-report/state-complex-corpus.png)
 
+The replacement audit passed all 13 production scenarios and all 256 matrix
+pairs with no review queue. Production width, height, and foreground-ink
+ratios were `0.995-1.206`, `1.030-1.093`, and `1.066-1.408`; matrix ratios
+were `0.963-1.224`, `0.968-1.089`, and `1.031-1.383`. All 16 matrix contact
+sheets were manually reviewed. The final translation preserves scoped
+start/end markers, nested composite and concurrency boundaries, note
+placement, pseudostates, and marker-aware transition routing.
+
 </details>
 
-<details>
+<details open>
 <summary><strong>Entity Relationship: 13 production scenarios</strong></summary>
 
 ![Entity Relationship complex Native and Official corpus](assets/stability-report/er-complex-corpus.png)
+
+The replacement audit accepted all 13 production scenarios and all 256 matrix
+pairs with no failures. Production detail results were
+`10 pass / 3 manually reviewed / 0 fail`; matrix results were
+`196 pass / 60 manually reviewed / 0 fail`. All reviews were isolated
+text-position threshold findings on large repeated structures, while text
+presence, clipping, overlap, paint order, marker checks, and raster checks
+passed. Production width, height, and foreground-ink ratios were
+`1.033-1.231`, `0.892-1.085`, and `0.519-1.373`; matrix ratios were
+`1.033-1.078`, `0.882-1.043`, and `0.545-1.150`. All 16 matrix contact sheets
+were manually reviewed. The final translation propagates each parent Dagre
+graph's `nodesep` and `ranksep + 25` into recursively extracted subgraphs,
+matching Mermaid.js `12.0.0` `measureDagreGraph`.
 
 </details>
 
@@ -205,9 +328,10 @@ weeks as Mermaid.js.
 
 ![User Journey complex Native and Official corpus](assets/stability-report/journey-complex-corpus.png)
 
-All 256 Journey matrix pairs were manually reviewed. The Journey-only geometry
-ratios were `1.020-1.032` for width, `1.031-1.050` for height, and
-`0.999-1.080` for foreground ink.
+The historical review recorded all 256 Journey pairs as acceptable. That
+conclusion is pending the new detail re-audit. The legacy geometry ratios were
+`1.020-1.032` for width, `1.031-1.050` for height, and `0.999-1.080` for
+foreground ink.
 
 </details>
 
@@ -216,9 +340,10 @@ ratios were `1.020-1.032` for width, `1.031-1.050` for height, and
 
 ![Requirement complex Native and Official corpus](assets/stability-report/requirement-complex-corpus.png)
 
-All 256 Requirement matrix pairs were manually reviewed. The Requirement-only
-geometry ratios were `1.019-1.072` for width, `1.004-1.053` for height, and
-`0.975-1.148` for foreground ink.
+The historical review recorded all 256 Requirement pairs as acceptable. That
+conclusion is pending the new detail re-audit. The legacy geometry ratios were
+`1.019-1.072` for width, `1.004-1.053` for height, and `0.975-1.148` for
+foreground ink.
 
 </details>
 
@@ -227,8 +352,9 @@ geometry ratios were `1.019-1.072` for width, `1.004-1.053` for height, and
 
 ![Git Graph complex Native and Official corpus](assets/stability-report/gitgraph-complex-corpus.png)
 
-All 256 Git Graph matrix pairs were manually reviewed. The Git Graph-only
-geometry ratios were `1.036-1.154` for width, `1.032-1.137` for height, and
+The historical review recorded all 256 Git Graph pairs as acceptable, but
+`parity_gitgraph_005` visibly contradicted that conclusion. The legacy geometry
+ratios were `1.036-1.154` for width, `1.032-1.137` for height, and
 `1.044-1.427` for foreground ink.
 
 </details>
@@ -238,9 +364,10 @@ geometry ratios were `1.036-1.154` for width, `1.032-1.137` for height, and
 
 ![Mindmap complex Native and Official corpus](assets/stability-report/mindmap-complex-corpus.png)
 
-All 256 Mindmap matrix pairs were manually reviewed across CoSE-Bilkent,
-Dagre, and tidy-tree inputs. Icons and arbitrary CSS classes remain explicit
-unsupported boundaries.
+The historical review recorded all 256 Mindmap pairs as acceptable across
+CoSE-Bilkent, Dagre, and tidy-tree inputs. That conclusion is pending the new
+detail re-audit. Icons and arbitrary CSS classes remain explicit unsupported
+boundaries.
 
 </details>
 
@@ -256,10 +383,10 @@ The repository-level
 [`Quality Gate`](../.github/workflows/quality.yml) repeats the JVM tests,
 cross-platform builds, generated-corpus and capability-coverage checks, source
 and credential scan, production runtime-isolation check, debug/release APK
-permission audit, 316-image capture, visual geometry gate, and Web load test
+permission audit, 394-image capture, visual geometry gate, and Web load test
 on every push to `main` and every pull request. The
 [`Full Visual Parity`](../.github/workflows/full-visual-parity.yml) workflow
-runs the 3,072-pair matrix weekly and on demand in 12 parallel diagram jobs.
+runs the 3,840-pair matrix weekly and on demand in 15 parallel diagram jobs.
 
 The full verification command completed successfully:
 
@@ -286,43 +413,43 @@ Result:
 
 ```text
 BUILD SUCCESSFUL
-mermaid-core: 354 tests
+mermaid-core: 417 tests
 mermaid-compose: 22 tests
-total: 376 tests
+total: 439 tests
 failures: 0
 errors: 0
 ```
 
-The independent corpus test is
+The current independent corpus test is
 [`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/ProductionCorpusTest.kt).
-It compiles all 158 sources and rejects parser errors, invalid or non-finite
+It compiles all 197 sources and rejects parser errors, invalid or non-finite
 geometry, scenes outside the 20,000-unit and 20,000-element limits, empty
-SceneGraphs, and non-deterministic replay. The 96 conformance cases also
+SceneGraphs, and non-deterministic replay. The 120 conformance cases also
 require selected semantic text to survive parsing and layout. The test renders
-a representative of all 12 diagram types with each of the 11 built-in
+a representative of all 15 implemented diagram types with each of the 11 built-in
 themes.
 
-`ProductionCorpusTest` additionally renders all 3,072 visual-matrix sources,
+`ProductionCorpusTest` additionally renders all 3,840 visual-matrix sources,
 checks the expected visible text, and rejects empty, invalid, or non-finite
 SceneGraphs. The separate deterministic stress suites generate another 256
-Native-only inputs for each of the 12 diagram types, for 3,072 stress inputs
-in total. Unified graph diagrams exercise Dagre, while Mindmap exercises
-CoSE-Bilkent, Dagre, and tidy tree.
+Native-only inputs for each of the 15 implemented diagram types, for 3,840
+stress inputs in total. Unified graph diagrams exercise Dagre, while Mindmap
+exercises CoSE-Bilkent, Dagre, and tidy tree.
 
 ## Determinism And Performance Evidence
 
-Every one of the 158 independent scenarios is rendered twice and compared as a
+Every one of the 197 independent scenarios is rendered twice and compared as a
 complete `MermaidScene`, including dimensions, elements, paths, text, styles,
 metadata, and z-order.
 
 The JVM production soak performs two warmup rounds followed by five measured
-rounds over all 158 scenarios:
+rounds over all 197 scenarios:
 
 ```text
-renders=790
-totalMs=416
+renders=985
+totalMs=419
 p95Ms=1
-retainedHeapBytes=25312
+retainedHeapBytes=29144
 ```
 
 Enforced budgets are 45 seconds total, 500ms P95, and 64MiB retained heap after
@@ -443,6 +570,12 @@ npm run audit:stability-geometry
 
 CORPUS_SOURCE=visual-parity \
 INPUT_DIR=captures/local/visual-parity \
+OUTPUT_FILE=captures/local/visual-parity/detail-audit.json \
+HEATMAP_DIR=captures/local/visual-parity/detail-diffs \
+npm run audit:detail
+
+CORPUS_SOURCE=visual-parity \
+INPUT_DIR=captures/local/visual-parity \
 OUTPUT_DIR=docs/assets/stability-report \
 CONTACT_SHEET_PAGE_SIZE=16 \
 npm run generate:stability-contact-sheets
@@ -453,7 +586,7 @@ appear, if Mermaid reports an error, if an Official Gantt viewBox collapses, or
 if a screenshot is below the minimum size. The geometry gate rejects blank
 images and severe width, height, or foreground-density differences. The
 contact-sheet generator verifies every expected pair and records its SHA-256.
-Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 12 diagram IDs to reproduce
+Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 15 diagram IDs to reproduce
 a single 256-case partition instead of the complete matrix.
 
 ## Stable Acceptance Criteria
@@ -470,6 +603,8 @@ The Stable label requires all of these code-level gates:
 - no open high-severity correctness, crash, resource-exhaustion, or
   data-exposure defect exists for the supported contract.
 
-Every criterion above passes for the recorded Mermaid `12.0.0` evidence, so the
-public code status is **Stable**. Production canaries and rollback controls
-remain good release practices for adopters, but do not change this code rating.
+These criteria are not currently satisfied. The semantic, paint-order, and
+perceptual re-audit is in progress, and 18 official Mermaid families are not
+yet implemented. The public code status therefore remains **Not Stable** until
+the per-family gates in
+[`full-diagram-roadmap.md`](full-diagram-roadmap.md) pass.

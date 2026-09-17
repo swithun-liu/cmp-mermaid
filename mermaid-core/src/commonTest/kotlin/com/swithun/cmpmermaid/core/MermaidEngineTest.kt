@@ -166,11 +166,16 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun returnsStructuredErrorForUnsupportedDiagram() {
-        val result = engine.render("timeline\n  2026 : Unsupported", context)
+    fun rendersTimelineDiagramThroughRegisteredPlugin() {
+        val result = engine.render("timeline\n  2026 : Supported", context)
 
-        val error = assertIs<GMResult.Err<MermaidError>>(result).error
-        assertIs<MermaidError.UnsupportedDiagram>(error)
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(scene.elements.filterIsInstance<SceneShape>().any {
+            shape -> shape.id == "timeline-node-0"
+        })
+        assertTrue(scene.elements.filterIsInstance<ScenePath>().any {
+            path -> path.id == "timeline-axis"
+        })
     }
 
     @Test

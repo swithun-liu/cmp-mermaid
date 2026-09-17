@@ -314,6 +314,7 @@ data class TextMetricsRequest(
 data class TextMetrics(
     val width: Float,
     val height: Float,
+    val lineCount: Int? = null,
 )
 
 fun interface TextMetricProvider {

@@ -2364,4 +2364,314 @@ mindmap
       Monitoring window
 `,
   },
+  {
+    id: 'rc_quadrant_product_portfolio',
+    kind: 'quadrant',
+    title: 'Product investment portfolio',
+    scenario: 'Product initiatives are prioritized by customer value and delivery confidence.',
+    aspectRatio: 1,
+    source: String.raw`
+quadrantChart
+  title Product investment portfolio
+  x-axis Lower confidence --> Higher confidence
+  y-axis Lower customer value --> Higher customer value
+  quadrant-1 Commit
+  quadrant-2 Validate
+  quadrant-3 Pause
+  quadrant-4 Optimize
+  Search relevance: [0.82, 0.88]
+  Checkout recovery: [0.73, 0.69]
+  Reporting refresh: [0.46, 0.62]
+  Legacy cleanup: [0.28, 0.24]
+`,
+  },
+  {
+    id: 'rc_quadrant_incident_risk',
+    kind: 'quadrant',
+    title: 'Incident risk assessment',
+    scenario: 'Operational risks are plotted by likelihood and customer impact.',
+    aspectRatio: 1,
+    source: String.raw`
+quadrantChart
+  title Incident risk assessment
+  x-axis Unlikely --> Likely
+  y-axis Limited impact --> Severe impact
+  quadrant-1 Mitigate now
+  quadrant-2 Prepare response
+  quadrant-3 Monitor
+  quadrant-4 Reduce exposure
+  Database saturation:::critical: [0.84, 0.91]
+  Queue backlog:::warning: [0.67, 0.63]
+  Certificate expiry:::warning: [0.38, 0.76]
+  Dashboard delay: [0.24, 0.18]
+  classDef critical color: #dc2626, radius: 12, stroke-color: #7f1d1d, stroke-width: 3px
+  classDef warning color: #f59e0b, radius: 9, stroke-color: #92400e, stroke-width: 2px
+`,
+  },
+  {
+    id: 'rc_quadrant_delivery_framework',
+    kind: 'quadrant',
+    title: 'Delivery framework without observations',
+    scenario: 'An empty framework centers its axis and quadrant labels before initiatives exist.',
+    aspectRatio: 1,
+    source: String.raw`
+quadrantChart
+  title Delivery framework
+  x-axis Low urgency --> High urgency
+  y-axis Low impact --> High impact
+  quadrant-1 Execute
+  quadrant-2 Schedule
+  quadrant-3 Eliminate
+  quadrant-4 Delegate
+`,
+  },
+  {
+    id: 'rc_quadrant_governance_theme',
+    kind: 'quadrant',
+    title: 'Themed governance portfolio',
+    scenario: 'Frontmatter changes dimensions, axis placement, sizing mode, and every visible color family.',
+    aspectRatio: 1.2,
+    source: String.raw`
+---
+title: Governance portfolio
+config:
+  quadrantChart:
+    chartWidth: 540
+    chartHeight: 450
+    yAxisPosition: right
+    pointRadius: 7
+    useMaxWidth: false
+  themeVariables:
+    quadrant1Fill: "#dcfce7"
+    quadrant2Fill: "#dbeafe"
+    quadrant3Fill: "#fee2e2"
+    quadrant4Fill: "#fef3c7"
+    quadrantPointFill: "#0f172a"
+    quadrantExternalBorderStrokeFill: "#334155"
+---
+quadrantChart
+  accTitle: Governance portfolio
+  accDescr: Delivery controls organized by confidence and evidence
+  x-axis Lower confidence --> Higher confidence
+  y-axis Less evidence --> More evidence
+  quadrant-1 Approve
+  quadrant-2 Investigate
+  quadrant-3 Reject
+  quadrant-4 Recheck
+  Automated tests: [0.83, 0.86]
+  Manual review: [0.62, 0.71]
+  Rollback rehearsal: [0.48, 0.54]
+`,
+  },
+  {
+    id: 'rc_quadrant_unicode_market',
+    kind: 'quadrant',
+    title: 'International market assessment',
+    scenario: 'Unicode labels, comments, quoted punctuation, and boundary coordinates render together.',
+    aspectRatio: 1,
+    source: String.raw`
+quadrantChart
+  %% International labels exercise the same parser states as Latin text.
+  title 市場ポートフォリオ
+  x-axis "低い到達度" --> "高い到達度"
+  y-axis "低い関与 ❤" --> "高い関与 ❤"
+  quadrant-1 拡大する
+  quadrant-2 検証する
+  quadrant-3 再評価する
+  quadrant-4 維持する
+  東京: [1, 1]
+  서울: [0, 0]
+  "São Paulo": [0.58, 0.72] color: #2563eb, radius: 11
+`,
+  },
+  {
+    id: 'rc_timeline_release_history',
+    kind: 'timeline',
+    title: 'Product release history',
+    scenario: 'Multiple periods and stacked events exercise the horizontal renderer.',
+    aspectRatio: 1.7,
+    source: String.raw`
+timeline
+  title Product release history
+  2023 : Private preview
+  2024 : Public beta : Partner rollout
+       : Accessibility review
+  2025 : General availability
+`,
+  },
+  {
+    id: 'rc_timeline_vertical_program',
+    kind: 'timeline',
+    title: 'Vertical program milestones',
+    scenario: 'Sections, tasks, and event stacks exercise the top-down renderer.',
+    aspectRatio: 1,
+    source: String.raw`
+timeline TD
+  title Vertical program milestones
+  section Foundation
+    Architecture : Contract review : Prototype
+    Platform : Core implementation
+  section Validation
+    Release candidate : Automated tests : Manual review
+    Launch : Monitoring : Rollback rehearsal
+`,
+  },
+  {
+    id: 'rc_timeline_sectionless_palette',
+    kind: 'timeline',
+    title: 'Sectionless multicolor delivery',
+    scenario: 'Each period receives a distinct color when no sections are declared.',
+    aspectRatio: 1.8,
+    source: String.raw`
+timeline
+  title Sectionless multicolor delivery
+  Discover : User research
+  Design : Architecture
+  Build : Implementation
+  Validate : Acceptance
+  Operate : Monitoring
+`,
+  },
+  {
+    id: 'rc_timeline_configured_theme',
+    kind: 'timeline',
+    title: 'Configured accessible timeline',
+    scenario: 'Spacing, sizing, colors, and accessibility metadata are configured together.',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+config:
+  theme: base
+  look: classic
+  timeline:
+    leftMargin: 190
+    padding: 30
+    useMaxWidth: false
+    disableMulticolor: false
+  themeVariables:
+    cScale0: "#dbeafe"
+    cScale1: "#dcfce7"
+    cScaleLabel0: "#1e3a8a"
+    cScaleLabel1: "#14532d"
+---
+timeline
+  title Configured delivery milestones
+  accTitle: Delivery milestones
+  accDescr: Build and validation phases
+  section Build
+    Candidate : API complete : UI complete
+  section Validate
+    Approval : Automated checks : Manual review
+`,
+  },
+  {
+    id: 'rc_timeline_unicode_vertical',
+    kind: 'timeline',
+    title: 'International vertical history',
+    scenario: 'Unicode, entities, HTML breaks, comments, and vertical layout render together.',
+    aspectRatio: 1,
+    source: String.raw`
+timeline TD
+  %% International milestones intentionally mix scripts.
+  title 地域リリース
+  section アジア
+    2025 : 東京 &amp; 서울
+  section Americas
+    2026 : São Paulo <br> general availability
+`,
+  },
+  {
+    id: 'rc_kanban_release_workflow',
+    kind: 'kanban',
+    title: 'Release workflow board',
+    scenario: 'Three workflow stages organize delivery tasks in source order.',
+    aspectRatio: 2.1,
+    source: String.raw`
+kanban
+  backlog[Backlog]
+    scope[Confirm release scope]
+    owners[Assign component owners]
+  progress[In progress]
+    implementation[Complete native renderer]
+    integration[Run integration suite]
+  done[Done]
+    approval[Architecture approval]
+`,
+  },
+  {
+    id: 'rc_kanban_priority_triage',
+    kind: 'kanban',
+    title: 'Priority triage board',
+    scenario: 'Ticket, assignee, and every supported priority marker render on task cards.',
+    aspectRatio: 2,
+    source: String.raw`
+kanban
+  triage[Triage]
+    outage[Restore service]@{ ticket: OPS-101, assigned: Ada, priority: 'Very High' }
+    latency[Reduce latency]@{ ticket: OPS-102, assigned: Lin, priority: High }
+    cleanup[Remove stale data]@{ priority: Medium }
+  planned[Planned]
+    docs[Refresh runbook]@{ priority: Low }
+    polish[Polish dashboard]@{ priority: 'Very Low' }
+`,
+  },
+  {
+    id: 'rc_kanban_wrapped_empty_stage',
+    kind: 'kanban',
+    title: 'Wrapped tasks and empty stage',
+    scenario: 'Long task text wraps while an adjacent empty stage keeps its minimum height.',
+    aspectRatio: 1.8,
+    source: String.raw`
+kanban
+  planned[Planned work]
+    long[Implement deterministic rendering verification across desktop and mobile targets]
+  waiting[Waiting for approval]
+  complete[Complete]
+    shipped[Publish verified artifacts]
+`,
+  },
+  {
+    id: 'rc_kanban_configured_links',
+    kind: 'kanban',
+    title: 'Configured linked tickets',
+    scenario: 'Section width, palette variables, classic look, and external ticket links combine.',
+    aspectRatio: 1.8,
+    source: String.raw`
+---
+config:
+  theme: base
+  look: classic
+  kanban:
+    sectionWidth: 230
+    ticketBaseUrl: "https://issues.example/#TICKET#"
+  themeVariables:
+    cScale2: "#dbeafe"
+    cScale3: "#dcfce7"
+    cScaleLabel2: "#1e3a8a"
+    cScaleLabel3: "#14532d"
+---
+kanban
+  build[Build]
+    parser[Translate parser]@{ ticket: KB-201, assigned: Ada, priority: High }
+  verify[Verify]
+    parity[Review visual parity]@{ ticket: KB-202, assigned: Lin, priority: Low }
+`,
+  },
+  {
+    id: 'rc_kanban_unicode_indentation',
+    kind: 'kanban',
+    title: 'International nested board',
+    scenario: 'Unicode, comments, anonymous nodes, and deeper indentation share one board.',
+    aspectRatio: 1.9,
+    source: String.raw`
+kanban
+  todo[準備]
+    [仕様を確認]
+      nested[詳細レビュー]
+    %% Deeper indentation remains in the current section.
+        evidence[証拠を保存]
+  done[완료]
+    release[서울 출시]
+`,
+  },
 ];

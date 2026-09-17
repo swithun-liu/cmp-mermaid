@@ -52,11 +52,13 @@ internal object StateDataFetcher {
                         id = node.id,
                         label = node.labels.firstOrNull().orEmpty(),
                         parentId = node.parentId,
-                        direction = node.direction ?: DEFAULT_NESTED_DIRECTION,
+                        direction = node.direction,
                         divider = node.type == StateNodeType.Divider,
+                        note = node.note,
                         alternate = node.alternate,
                         styles = node.styles.toList(),
                         colorIndex = node.colorIndex,
+                        position = node.position,
                     )
                 } else {
                     leaves[node.id] = StateRenderNode(
@@ -185,15 +187,27 @@ internal object StateDataFetcher {
 
             parsed.note?.let { note ->
                 val noteId = "$itemId----note-$graphItemCount"
-                nodes[noteId] = MutableStateRenderNode(
-                    id = noteId,
+                val noteGroupId = "$itemId----parent"
+                // Mermaid 12.0.0: state/dataFetcher.ts creates an invisible
+                // noteGroup compound around the note before Dagre layout.
+                nodes[noteGroupId] = MutableStateRenderNode(
+                    id = noteGroupId,
                     type = StateNodeType.Default,
                     labels = mutableListOf(note.text),
                     parentId = current.parentId,
                     styles = mutableListOf(),
+                    isGroup = true,
+                    position = note.position,
+                    note = true,
+                )
+                nodes[noteId] = MutableStateRenderNode(
+                    id = noteId,
+                    type = StateNodeType.Default,
+                    labels = mutableListOf(note.text),
+                    parentId = noteGroupId,
+                    styles = mutableListOf(),
                     position = note.position,
                     noteOwner = itemId,
-                    note = true,
                 )
                 val noteOnLeft = note.position == "left of"
                 edges += StateRenderEdge(
@@ -287,11 +301,13 @@ internal data class StateRenderGroup(
     val id: String,
     val label: String,
     val parentId: String?,
-    val direction: String,
+    val direction: String?,
     val divider: Boolean,
+    val note: Boolean,
     val alternate: Boolean,
     val styles: List<String>,
     val colorIndex: Int?,
+    val position: String?,
 )
 
 internal data class StateRenderEdge(

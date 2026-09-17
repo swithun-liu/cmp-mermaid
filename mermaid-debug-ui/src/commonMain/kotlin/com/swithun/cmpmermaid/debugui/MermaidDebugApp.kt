@@ -82,6 +82,9 @@ private enum class DebugScreen {
     DiagramTypes,
     Flowchart,
     XyChart,
+    Quadrant,
+    Timeline,
+    Kanban,
     Sequence,
     Class,
     State,
@@ -99,7 +102,7 @@ private enum class DebugScreen {
 private enum class DiagramStability(
     val label: String,
 ) {
-    Stable("STABLE"),
+    Reaudit("RE-AUDIT"),
     Beta("BETA"),
 }
 
@@ -115,72 +118,91 @@ private val destinations = listOf(
         DebugScreen.Flowchart,
         flowchartDiagramDocsSpec,
         "Dagre and ELK layouts",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.XyChart,
         xyChartDiagramDocsSpec,
         "Bar and line series with categorical or numeric axes",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
+    ),
+    DiagramDestination(
+        DebugScreen.Quadrant,
+        quadrantDiagramDocsSpec,
+        "Four-region prioritization charts with normalized data points",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Timeline,
+        timelineDiagramDocsSpec,
+        "Horizontal and vertical period-event histories with sections",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Kanban,
+        kanbanDiagramDocsSpec,
+        "Workflow stages with task metadata and priority markers",
+        DiagramStability.Beta,
     ),
     DiagramDestination(
         DebugScreen.Sequence,
         sequenceDiagramDocsSpec,
         "Participants, messages, notes, and control regions",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.Class,
         classDiagramDocsSpec,
         "Classes, relations, notes, and namespaces",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.State,
         stateDiagramDocsSpec,
         "States, transitions, composites, notes, and concurrency",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.Er,
         erDiagramDocsSpec,
         "Entities, attributes, cardinalities, and subgraphs",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.Gantt,
         ganttDiagramDocsSpec,
         "Tasks, dependencies, exclusions, and milestones",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.Pie,
         pieDiagramDocsSpec,
         "Pie and donut charts with configurable legends",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.Journey,
         journeyDiagramDocsSpec,
         "Sections, scored tasks, and multi-actor journeys",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.Requirement,
         requirementDiagramDocsSpec,
         "SysML requirements, elements, and typed relationships",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.GitGraph,
         gitGraphDiagramDocsSpec,
         "Commits, branches, merges, cherry-picks, tags, and three orientations",
-        DiagramStability.Stable,
+        DiagramStability.Reaudit,
     ),
     DiagramDestination(
         DebugScreen.Mindmap,
         mindmapDiagramDocsSpec,
         "Hierarchies, seven shapes, themes, and three native layouts",
+        DiagramStability.Reaudit,
     ),
 )
 
@@ -396,7 +418,7 @@ private fun DiagramTypesScreen(
                     DiagramTypeRow(
                         title = "Production load test",
                         description = "${productionCorpusCases.size} mixed complex diagrams",
-                        stability = DiagramStability.Stable,
+                        stability = DiagramStability.Reaudit,
                         onClick = onOpenLoadTest,
                     )
                 }
@@ -455,7 +477,7 @@ private fun DiagramTypeRow(
                 Spacer(Modifier.width(8.dp))
                 Surface(
                     color = when (stability) {
-                        DiagramStability.Stable -> Color(0xFFDCFCE7)
+                        DiagramStability.Reaudit -> Color(0xFFFFF3CD)
                         DiagramStability.Beta -> Color(0xFFFEF3C7)
                     },
                     shape = RoundedCornerShape(4.dp),
@@ -464,7 +486,7 @@ private fun DiagramTypeRow(
                         text = stability.label,
                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp),
                         color = when (stability) {
-                            DiagramStability.Stable -> Color(0xFF166534)
+                            DiagramStability.Reaudit -> Color(0xFF7A4E00)
                             DiagramStability.Beta -> Color(0xFF92400E)
                         },
                         fontSize = 10.sp,
@@ -538,7 +560,8 @@ private fun DiagramAuditScreen(
                 respectSourceViewportSizing = false,
                 onRenderResult = { result ->
                     auditStatus = when (result) {
-                        is GMResult.Ok -> AUDIT_STATUS_READY
+                        is GMResult.Ok ->
+                            "$AUDIT_STATUS_READY_PREFIX${result.value.toAuditManifestJson()}"
                         is GMResult.Err ->
                             "$AUDIT_STATUS_ERROR_PREFIX${result.error.message}"
                     }
@@ -553,7 +576,7 @@ private fun DiagramAuditScreen(
                 onRenderResult = { result ->
                     auditStatus = when (result) {
                         OfficialRenderResult.Loading -> AUDIT_STATUS_LOADING
-                        is OfficialRenderResult.Ready -> AUDIT_STATUS_READY
+                        is OfficialRenderResult.Ready -> AUDIT_STATUS_READY_PREFIX
                         is OfficialRenderResult.Error -> {
                             "$AUDIT_STATUS_ERROR_PREFIX${result.message}"
                         }
@@ -565,7 +588,7 @@ private fun DiagramAuditScreen(
 }
 
 private const val AUDIT_STATUS_LOADING = "cmp-mermaid-audit:loading"
-private const val AUDIT_STATUS_READY = "cmp-mermaid-audit:ready"
+private const val AUDIT_STATUS_READY_PREFIX = "cmp-mermaid-audit:ready:"
 private const val AUDIT_STATUS_ERROR_PREFIX = "cmp-mermaid-audit:error:"
 
 internal val debugUiVersionLabel: String

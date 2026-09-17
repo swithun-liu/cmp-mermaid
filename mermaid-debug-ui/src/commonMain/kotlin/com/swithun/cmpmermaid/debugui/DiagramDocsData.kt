@@ -42,6 +42,83 @@ internal val xyChartDiagramDocsSpec = DiagramDocsSpec(
     initialTheme = MermaidThemePreset.Default,
 )
 
+internal val quadrantDiagramDocsSpec = DiagramDocsSpec(
+    id = "quadrant",
+    title = "Quadrant Chart",
+    syntaxTitle = "Quadrant charts - Basic Syntax",
+    description = "Plot normalized points across four labeled regions with configurable axes, " +
+        "dimensions, themes, and reusable point classes.",
+    documentationUrl = "https://mermaid.js.org/syntax/quadrantChart.html",
+    galleryTitle = "Quadrant Chart demo gallery",
+    cases = quadrantDemos.map { demo ->
+        DiagramDocsCase(demo.id, demo.title, demo.category, demo.source, 1f)
+    },
+    syntaxLessons = lessons(
+        quadrantDemos.map { demo ->
+            DiagramDocsCase(demo.id, demo.title, demo.category, demo.source, 1f)
+        },
+        listOf(
+            "Axes and quadrant labels divide a fixed chart into four semantic regions.",
+            "Without points, axis and quadrant labels move to their centered positions.",
+            "Frontmatter controls dimensions, axis placement, responsive sizing, and colors.",
+            "Point classes provide shared styles while inline declarations take precedence.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
+internal val timelineDiagramDocsSpec = DiagramDocsSpec(
+    id = "timeline",
+    title = "Timeline",
+    syntaxTitle = "Timelines - Basic Syntax",
+    description = "Arrange periods and their events from left to right or top to bottom, " +
+        "with optional sections, titles, metadata, themes, and responsive sizing.",
+    documentationUrl = "https://mermaid.js.org/syntax/timeline.html",
+    galleryTitle = "Timeline demo gallery",
+    cases = timelineDemos.map { demo ->
+        DiagramDocsCase(demo.id, demo.title, demo.category, demo.source, 1.55f)
+    },
+    syntaxLessons = lessons(
+        timelineDemos.map { demo ->
+            DiagramDocsCase(demo.id, demo.title, demo.category, demo.source, 1.55f)
+        },
+        listOf(
+            "Periods appear on the main axis and each colon introduces a related event.",
+            "Sections group adjacent periods and preserve their declaration order.",
+            "The TD modifier places periods left of a vertical axis and events to its right.",
+            "Additional event lines continue the most recently declared period.",
+            "Frontmatter controls spacing, responsive sizing, colors, and accessibility metadata.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
+internal val kanbanDiagramDocsSpec = DiagramDocsSpec(
+    id = "kanban",
+    title = "Kanban",
+    syntaxTitle = "Kanban boards - Basic Syntax",
+    description = "Arrange workflow stages as fixed-width columns with indented tasks, " +
+        "ticket and assignee metadata, priority markers, themes, and configurable widths.",
+    documentationUrl = "https://mermaid.js.org/syntax/kanban.html",
+    galleryTitle = "Kanban demo gallery",
+    cases = kanbanDemos.map { demo ->
+        DiagramDocsCase(demo.id, demo.title, demo.category, demo.source, 1.7f)
+    },
+    syntaxLessons = lessons(
+        kanbanDemos.map { demo ->
+            DiagramDocsCase(demo.id, demo.title, demo.category, demo.source, 1.7f)
+        },
+        listOf(
+            "Top-level nodes create stages and indented nodes create task cards.",
+            "Task metadata adds ticket, assignee, and priority details.",
+            "Long labels wrap within the configured fixed column width.",
+            "Indentation deeper than one task level is flattened into the current stage.",
+            "Frontmatter controls section width, ticket links, theme colors, and look.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
 internal val sequenceDiagramDocsSpec = DiagramDocsSpec(
     id = "sequence",
     title = "Sequence",

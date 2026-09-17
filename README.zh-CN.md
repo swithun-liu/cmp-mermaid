@@ -1,7 +1,7 @@
 <div align="center">
   <h1>CMP Mermaid</h1>
   <p><a href="README.md">English</a> · <strong>简体中文</strong></p>
-  <p><strong>面向 Kotlin 与 Compose Multiplatform 的 Stable 原生 Mermaid 渲染器。</strong></p>
+  <p><strong>面向 Kotlin 与 Compose Multiplatform 的原生 Mermaid 渲染器。</strong></p>
   <p>将 Mermaid <code>12.0.0</code> 语义翻译为 Kotlin，并通过 Compose Canvas 渲染。</p>
   <p>
     <a href="https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml">
@@ -24,56 +24,63 @@
     ·
     <a href="docs/stability-report.md">完整 Stable 报告</a>
     ·
+    <a href="docs/full-diagram-roadmap.md">33 类图路线</a>
+    ·
     <a href="#接入">接入</a>
   </p>
 </div>
 
 > [!IMPORTANT]
-> **CMP Mermaid 在文档声明的 Mermaid `12.0.0` 支持范围内已达到
-> Stable。** 当前支持的 12 类图均已通过独立生产场景语料、
-> 3,072 案例 Native/Official 视觉矩阵、确定性重放、独立随机压力测试、
-> 运行时负载测试和跨平台构建。
+> **CMP Mermaid 当前实现了 Mermaid `12.0.0` 官方 33 个图表家族中的
+> 15 个。** 剩余 18 个家族见
+> **[全图表路线](docs/full-diagram-roadmap.md)**。
 >
-> 建议先查看 **[3,072 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**，
-> 其中包含 6,144 张截图和 192 页分页对比图。
-> **[完整 Stable 报告](docs/stability-report.md)** 还包含 Stable 判定、
-> 性能、平台、安全和复现证据。
+> 现有 **[3,072 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
+> 仍保留为截图证据，但旧自动门禁只检查粗粒度几何，没有检查标签绘制顺序等细节。
+> 当前正在重新做细节验收。Flowchart、XY Chart、Quadrant Chart、Timeline、Kanban、
+> Sequence、Class、State 与 Entity Relationship 已完成新的 256 案例门禁；旧报告
+> 不能被理解为完整 Mermaid 兼容证明，也不能证明其他家族已完成细节审查。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
 WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，也不需要
 `android.permission.INTERNET`：解析、图表状态、布局准备、SceneGraph
 生成和最终 Compose Canvas 绘制均由多平台库完成。
 
-## 已验证的 Stable
+## 当前验证状态
 
-Stable 结论来自仓库内可复现的测试证据，而不是 Demo Gallery 的规模。
+已实现的 15 个家族仍有仓库内可复现的测试与截图。Flowchart、XY Chart、Quadrant Chart、
+Timeline、Kanban、Sequence、Class、State 与 Entity Relationship 已通过新的细节门禁，
+其他已实现家族的 Native/Official 证据正在升级并重新审查。
 
 | 证据 | 结果 |
 | --- | ---: |
-| 支持的图表类型 | 12 |
-| 独立生产场景 | 158 |
-| 已声明能力覆盖率 | 207/207 |
-| 大规模视觉矩阵 | 3,072 个唯一源码，每类图 256 个 |
-| Native/Official 截图 | 6,144 张矩阵截图，另有 316 张独立语料截图 |
-| 人工视觉审查 | 158 个通过，0 个阻塞 |
-| 自动视觉几何检查 | 3,072/3,072 个矩阵对和 158/158 个独立对通过 |
-| 确定性 SceneGraph 重放 | 158 个通过，0 个不一致 |
-| 内置主题矩阵 | 132/132 |
-| 独立生成的 Native 压力输入 | 3,072 |
-| JVM 测试 | 376 个通过，0 个失败 |
-| Core 生产场景压力测试 | 790 次渲染，P95 为 1ms |
+| Mermaid 官方图表家族 | 33 |
+| 已实现图表家族 | 15/33 |
+| 待翻译 | 18 |
+| 独立生产场景 | 197 |
+| 已声明能力覆盖率 | 257/257 |
+| 大规模视觉矩阵 | 3,840 个唯一源码，每个已实现家族 256 个 |
+| Native/Official 截图 | 7,680 张矩阵截图，另有 394 张独立语料截图 |
+| 矩阵细节审查 | 9 个家族：2,304/2,304 验收；其中 2,244 个自动通过，60 个 ER 文本位置告警经人工复核通过；其余 6 个家族待重审 |
+| 自动视觉检查 | 3,840/3,840 几何通过；9 个家族的细节门禁通过 |
+| 确定性 SceneGraph 重放 | 197 个通过，0 个不一致 |
+| 内置主题矩阵 | 165/165 |
+| 独立生成的 Native 压力输入 | 3,840 |
+| JVM 测试 | 439 个通过，0 个失败 |
+| Core 生产场景压力测试 | 985 次渲染，总耗时 419ms，P95 为 1ms，保留堆 29,144 bytes |
 | 运行时负载矩阵 | Android、iOS、Desktop、Web 全部通过 |
 
 | 证据文档 | 内容 |
 | --- | --- |
+| **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单、当前 15/33 状态、缺失 18 类和新 Stable 门禁 |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
 | **[全部 3,072 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 192 页分页对比图，每页包含 16 组同源码结果 |
-| [生产能力矩阵](docs/production-capability-matrix.md) | 207 项被独立验证的能力 |
+| [生产能力矩阵](docs/production-capability-matrix.md) | 257 项被独立验证的能力 |
 | [生产就绪说明](docs/production-readiness.md) | 代码级 Stable 标准、资源预算和接入指引 |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | 当前 JVM、构建、发布、安全、APK、视觉和 Web 负载自动化结果 |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 每周或手动执行的 12 路矩阵截图、几何门禁和可下载证据 |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 已实现子集的每周/手动截图；细节门禁正在升级 |
 
-Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 Mermaid 程序均已实现。
+只有 33 个家族都通过新门禁后，整体 Mermaid `12.0.0` 支持才能达到 Stable。
 对于无法忠实表达的合法特性，系统会返回
 `MermaidError.UnsupportedFeature`，而不是静默绘制可能误导用户的近似结果。
 
@@ -113,20 +120,23 @@ Stable 评级仅适用于文档声明的支持契约，并不表示所有合法 
 
 | 图表 | 状态 | 生产案例 | 主要覆盖能力 | 详情 |
 | --- | :---: | ---: | --- | --- |
-| Flowchart | **Stable** | 14 | Jison/FlowDB、Dagre、形状、连线、Markdown/HTML 标签 | [兼容性](docs/flowchart-compatibility.md) |
-| XY Chart | **Stable** | 13 | Jison/XY DB、D3 比例尺和刻度、柱状图/折线图、标签 | [兼容性](docs/xychart-compatibility.md) |
-| Sequence | **Stable** | 14 | 参与者、26 种消息形式、注释、激活、控制区域 | [兼容性](docs/sequence-compatibility.md) |
-| Class | **Stable** | 13 | 分区、泛型、命名空间、关系、Dagre | [兼容性](docs/class-compatibility.md) |
-| State | **Stable** | 13 | 复合状态、并发、注释、分叉/汇合、Dagre | [兼容性](docs/state-compatibility.md) |
-| Entity Relationship | **Stable** | 13 | 属性、基数、关系、嵌套子图 | [兼容性](docs/er-compatibility.md) |
-| Gantt | **Stable** | 13 | 日期、依赖、排除日期、里程碑、D3 风格刻度 | [兼容性](docs/gantt-compatibility.md) |
-| Pie | **Stable** | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
-| User Journey | **Stable** | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
-| Requirement | **Stable** | 13 | SysML 类型与字段、元素、七类关系、Dagre、样式 | [兼容性](docs/requirement-compatibility.md) |
-| Git Graph | **Stable** | 13 | Langium 语法、分支、合并、cherry-pick、方向与主题 | [兼容性](docs/gitgraph-compatibility.md) |
-| Mindmap | **Stable** | 13 | Jison/Mindmap DB、CoSE-Bilkent、Dagre、tidy tree、形状与主题 | [兼容性](docs/mindmap-compatibility.md) |
+| Flowchart | 细节门禁通过 | 14 | Jison/FlowDB、Dagre、形状、连线、Markdown/HTML 标签 | [兼容性](docs/flowchart-compatibility.md) |
+| XY Chart | 细节门禁通过 | 13 | Jison/XY DB、D3 比例尺和刻度、柱状图/折线图、标签 | [兼容性](docs/xychart-compatibility.md) |
+| Quadrant Chart | 细节门禁通过 | 13 | 坐标轴、象限、点、共享类、直接样式、主题 | [兼容性](docs/quadrant-compatibility.md) |
+| Timeline | 细节门禁通过 | 13 | LR/TD 布局、分区、时期、事件、色阶与主题 | [兼容性](docs/timeline-compatibility.md) |
+| Kanban | 细节门禁通过 | 13 | 分区、任务、元数据、优先级、工单链接与主题 | [兼容性](docs/kanban-compatibility.md) |
+| Sequence | 细节门禁通过 | 14 | 参与者、26 种消息形式、注释、激活、控制区域 | [兼容性](docs/sequence-compatibility.md) |
+| Class | 细节门禁通过 | 13 | 分区、泛型、命名空间、关系、Dagre | [兼容性](docs/class-compatibility.md) |
+| State | 细节门禁通过 | 13 | 复合状态、并发、注释、分叉/汇合、Dagre | [兼容性](docs/state-compatibility.md) |
+| Entity Relationship | 细节门禁通过 | 13 | 属性、基数、关系、嵌套子图 | [兼容性](docs/er-compatibility.md) |
+| Gantt | 细节重审 | 13 | 日期、依赖、排除日期、里程碑、D3 风格刻度 | [兼容性](docs/gantt-compatibility.md) |
+| Pie | 细节重审 | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
+| User Journey | 细节重审 | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
+| Requirement | 细节重审 | 13 | SysML 类型与字段、元素、七类关系、Dagre、样式 | [兼容性](docs/requirement-compatibility.md) |
+| Git Graph | 细节重审 | 13 | Langium 语法、分支、合并、cherry-pick、方向与主题 | [兼容性](docs/gitgraph-compatibility.md) |
+| Mindmap | 细节重审 | 13 | Jison/Mindmap DB、CoSE-Bilkent、Dagre、tidy tree、形状与主题 | [兼容性](docs/mindmap-compatibility.md) |
 
-在各自文档声明的兼容范围内，12 类图均支持 Mermaid frontmatter、metadata、
+在各自文档声明的兼容范围内，已实现的 15 类图均支持 Mermaid frontmatter、metadata、
 Unicode 和相关主题变量。
 
 ## 在线体验
@@ -168,7 +178,7 @@ Kotlin Dagre。ELK 名称和 `flowchart-elk` 仍会作为上游输入被识别�
 
 ## 接入
 
-Stable 版本发布坐标如下：
+当前发布坐标如下：
 
 | 模块 | Maven 坐标 |
 | --- | --- |
@@ -262,6 +272,9 @@ CMP Mermaid 采用带源码映射的翻译工作流，而不是根据截图重�
 源码映射：
 [Flowchart](docs/upstream-flowchart-map.md) ·
 [XY Chart](docs/upstream-xychart-map.md) ·
+[Quadrant Chart](docs/upstream-quadrant-map.md) ·
+[Timeline](docs/upstream-timeline-map.md) ·
+[Kanban](docs/upstream-kanban-map.md) ·
 [Sequence](docs/upstream-sequence-map.md) ·
 [Class](docs/upstream-class-map.md) ·
 [State](docs/upstream-state-map.md) ·

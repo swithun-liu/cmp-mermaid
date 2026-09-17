@@ -36,11 +36,14 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryProductionCaseWithValidSceneGeometryAndExpectedText() {
-        assertEquals(158, productionCorpusCases.size)
+        assertEquals(197, productionCorpusCases.size)
         assertEquals(
             mapOf(
                 "flowchart" to 14,
                 "xychart" to 13,
+                "quadrant" to 13,
+                "timeline" to 13,
+                "kanban" to 13,
                 "sequence" to 14,
                 "class" to 13,
                 "state" to 13,
@@ -57,7 +60,7 @@ class ProductionCorpusTest {
         val conformanceCases = productionCorpusCases.filter { case ->
             case.id.startsWith("prod_")
         }
-        assertEquals(96, conformanceCases.size)
+        assertEquals(120, conformanceCases.size)
         assertTrue(conformanceCases.all { case -> case.expectedTexts.isNotEmpty() })
         assertTrue(conformanceCases.all { case -> case.features.isNotEmpty() })
 
@@ -88,7 +91,9 @@ class ProductionCorpusTest {
             }
             case.expectedTexts.forEach { expectedText ->
                 assertTrue(
-                    renderedText.any { text -> expectedText in text },
+                    renderedText.any { text ->
+                        expectedText in text.replace(WHITESPACE, " ")
+                    },
                     "${case.id} did not render expected text '$expectedText'; " +
                         "actual=$renderedText",
                 )
@@ -98,11 +103,14 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryLargeScaleVisualParityCase() {
-        assertEquals(3_072, visualParityCorpusCases.size)
+        assertEquals(3_840, visualParityCorpusCases.size)
         assertEquals(
             setOf(
                 "flowchart",
                 "xychart",
+                "quadrant",
+                "timeline",
+                "kanban",
                 "sequence",
                 "class",
                 "state",
@@ -150,7 +158,9 @@ class ProductionCorpusTest {
             }
             case.expectedTexts.forEach { expectedText ->
                 assertTrue(
-                    renderedText.any { text -> expectedText in text },
+                    renderedText.any { text ->
+                        expectedText in text.replace(WHITESPACE, " ")
+                    },
                     "${case.id} did not render expected text '$expectedText'; " +
                         "actual=$renderedText",
                 )
@@ -176,7 +186,7 @@ class ProductionCorpusTest {
             .groupBy(StabilityCorpusCase::diagramId)
             .mapValues { (_, cases) -> cases.first() }
 
-        assertEquals(12, representatives.size)
+        assertEquals(15, representatives.size)
         representatives.forEach { (diagramId, case) ->
             MermaidThemePreset.entries.forEach { preset ->
                 val result = engine.render(
@@ -298,5 +308,6 @@ class ProductionCorpusTest {
     private companion object {
         const val MAX_SCENE_SIZE = 20_000f
         const val MAX_SCENE_ELEMENTS = 20_000
+        val WHITESPACE = Regex("""\s+""")
     }
 }

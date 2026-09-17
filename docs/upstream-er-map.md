@@ -37,7 +37,7 @@ diff can be translated incrementally.
 | `erdiagram/ErLayout.kt` | `rendering-elements/shapes/erBox.ts` | Entity header, alternating attribute rows, type/name/key/comment columns, dividers, padding, and minimum dimensions |
 | `erdiagram/ErLayout.kt` | `erRenderer-unified.ts` and `styles.ts` | Theme colors, identifying and non-identifying lines, subgraph paint order, and ER configuration |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
-| `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Default entity and subgraph placement, edge routing, and distinct routing for repeated self-relationships |
+| `flowchart/FlowDagreLayout.kt` | `rendering-util/layout-algorithms/dagre/index.js` `measureDagreGraph()` | Default entity and subgraph placement, recursive parent `nodesep` and `ranksep + 25` propagation, edge routing, and distinct routing for repeated self-relationships |
 | `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Retained mapping boundary that returns structured `UnsupportedFeature` |
 | `flowchart/upstream/mermaid/MermaidEdgePathPort.kt` | `rendering-elements/edges.js` | Basis curves, endpoint correction, self-relationships, and relationship label anchors |
 | `flowchart/upstream/mermaid/MermaidMarkerPort.kt` | `rendering-elements/markers.js` | Marker offset behavior, including ER markers anchored at entity boundaries |
@@ -56,6 +56,7 @@ diff can be translated incrementally.
 | `markers.js` | `e495d9d84cdf51ee2ead29e3656f98554e7a3a57d20a2873884a32522c4d8f35` |
 | `erMarkers.js` | `afcae8780d19f8a0465fbbd785bd909e875cc5df7b7354432f006e3a02d509e4` |
 | `styles.ts` | `8a090f8401285cf5256d6c113fa5c2cc9d206e6940f33bb7601da044a8c932c4` |
+| `rendering-util/layout-algorithms/dagre/index.js` | `9981c5e6418078fc81fa5b2c8accd2e954827ae683c6adfeba81c521126c7337` |
 | `entityRelationshipDiagram.md` | `0be2f34ff578b2d86d0429ce288e8681ef46a27d645841a5162c78d501e5441b` |
 
 ## Intentional Kotlin Adaptations
@@ -78,6 +79,9 @@ diff can be translated incrementally.
   the legacy diamond marker from `erMarkers.js`.
 - Parent subgraphs paint before nested children, matching `ErDB.getData()`'s
   reversed group projection.
+- Extracted Dagre subgraphs inherit the parent graph's `nodesep` and
+  `ranksep + 25` immediately before recursive layout, matching
+  `measureDagreGraph()`.
 - SceneGraph output remains platform independent; Compose owns final Canvas
   painting.
 

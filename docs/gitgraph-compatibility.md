@@ -54,8 +54,10 @@ side-by-side comparison does not expose a functional rendering defect.
 - 13 independent production scenarios cover all 24 declared Git Graph
   capability points.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
-  All pairs passed the geometry gate, and all 16 contact-sheet pages were
-  manually reviewed.
+  All pairs passed the legacy geometry gate. That gate did not detect a label
+  paint-order mismatch in `parity_gitgraph_005`, so the former detailed-review
+  completion claim is withdrawn and all 256 pairs require the new detail gate
+  and re-review.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
   complete 158-case mixed corpus.
 

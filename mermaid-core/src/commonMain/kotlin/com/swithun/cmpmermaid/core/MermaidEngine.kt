@@ -6,11 +6,14 @@ import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
 import com.swithun.cmpmermaid.core.gitgraph.GitGraphPlugin
 import com.swithun.cmpmermaid.core.journey.JourneyPlugin
+import com.swithun.cmpmermaid.core.kanban.KanbanPlugin
 import com.swithun.cmpmermaid.core.mindmap.MindmapPlugin
 import com.swithun.cmpmermaid.core.pie.PiePlugin
+import com.swithun.cmpmermaid.core.quadrant.QuadrantPlugin
 import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
 import com.swithun.cmpmermaid.core.statediagram.StatePlugin
+import com.swithun.cmpmermaid.core.timeline.TimelinePlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
 
 data class MermaidRenderContext(
@@ -41,11 +44,14 @@ class MermaidEngine(
         ErPlugin(),
         GanttPlugin(),
         PiePlugin(),
+        QuadrantPlugin(),
         XyChartPlugin(),
         JourneyPlugin(),
         RequirementPlugin(),
         GitGraphPlugin(),
         MindmapPlugin(),
+        TimelinePlugin(),
+        KanbanPlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {
@@ -79,13 +85,20 @@ class MermaidEngine(
             is GMResult.Ok -> result.value
             is GMResult.Err -> return result
         }
-        val diagramOptions = if (header == "requirementdiagram" || header == "requirement") {
-            resolvedOptions.copy(
-                themeName = resolvedOptions.requirementThemeName ?: resolvedOptions.themeName,
-                look = resolvedOptions.requirementLook ?: resolvedOptions.look,
-            )
-        } else {
-            resolvedOptions
+        val diagramOptions = when {
+            header == "requirementdiagram" || header == "requirement" ->
+                resolvedOptions.copy(
+                    themeName = resolvedOptions.requirementThemeName
+                        ?: resolvedOptions.themeName,
+                    look = resolvedOptions.requirementLook ?: resolvedOptions.look,
+                )
+            header == "timeline" ->
+                resolvedOptions.copy(
+                    themeName = resolvedOptions.timeline.theme ?: resolvedOptions.themeName,
+                    look = resolvedOptions.timeline.look ?: resolvedOptions.look,
+                    layout = resolvedOptions.timeline.layout ?: resolvedOptions.layout,
+                )
+            else -> resolvedOptions
         }
         if (diagramOptions.look == "handDrawn") {
             return GMResult.Err(

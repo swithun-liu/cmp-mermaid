@@ -789,7 +789,15 @@ internal class GitGraphLayout {
             elements: MutableList<SceneElement>,
         ) {
             // Mermaid: gitGraphRenderer.ts -> drawCommits(..., modifyGraph = true)
-            commits.values.sortedBy(GitGraphCommit::seq).forEach { commit ->
+            // Its shared gLabels group paints each commit's label and tags in commit order.
+            // Later opaque backgrounds intentionally cover earlier overlapping text.
+            val sorted = commits.values.sortedBy(GitGraphCommit::seq)
+            val paintOrder = if (direction == GitGraphDirection.BT) {
+                sorted.asReversed()
+            } else {
+                sorted
+            }
+            paintOrder.forEach { commit ->
                 val position = commitPositions.getValue(commit.id)
                 val branchIndex = branchPositions.getValue(commit.branch).index
                 drawCommitBullet(commit, position, branchIndex, elements)
@@ -984,7 +992,7 @@ internal class GitGraphLayout {
                 },
                 stroke = TRANSPARENT,
                 strokeWidth = 0f,
-                zIndex = 18,
+                zIndex = COMMIT_LABEL_LAYER,
             )
             elements += SceneText(
                 text = commit.id,
@@ -999,7 +1007,7 @@ internal class GitGraphLayout {
                 weight = if (useReduxGeometry) SceneTextWeight.Bold else SceneTextWeight.Normal,
                 rotationDegrees = rotation,
                 rotationPivot = pivot,
-                zIndex = 19,
+                zIndex = COMMIT_LABEL_LAYER,
                 softWrap = false,
                 horizontalScale = SVG_TEXT_HORIZONTAL_SCALE,
             )
@@ -1034,6 +1042,17 @@ internal class GitGraphLayout {
                         ScenePoint(left, centerY + halfHeight),
                     )
                     elements += tagShape(commit, index, points)
+                    elements += circle(
+                        id = "git-tag-hole-${commit.id}-$index",
+                        center = ScenePoint(
+                            position.x - LAYOUT_OFFSET - maximumWidth / 2f + PX / 2f,
+                            centerY,
+                        ),
+                        radius = 1.5f,
+                        fill = context.theme.gitGraph.tagLabelColor,
+                        stroke = context.theme.gitGraph.tagLabelColor,
+                        zIndex = COMMIT_LABEL_LAYER,
+                    )
                     elements += SceneText(
                         text = tag,
                         bounds = centeredBounds(
@@ -1045,20 +1064,9 @@ internal class GitGraphLayout {
                         fontSize = context.theme.gitGraph.tagLabelFontSize,
                         fontFamily = context.theme.fontFamily,
                         weight = SceneTextWeight.Normal,
-                        zIndex = 21,
+                        zIndex = COMMIT_LABEL_LAYER,
                         softWrap = false,
                         horizontalScale = SVG_TEXT_HORIZONTAL_SCALE,
-                    )
-                    elements += circle(
-                        id = "git-tag-hole-${commit.id}-$index",
-                        center = ScenePoint(
-                            position.x - LAYOUT_OFFSET - maximumWidth / 2f + PX / 2f,
-                            centerY,
-                        ),
-                        radius = 1.5f,
-                        fill = context.theme.gitGraph.tagLabelColor,
-                        stroke = context.theme.gitGraph.tagLabelColor,
-                        zIndex = 22,
                     )
                 } else {
                     drawVerticalTag(
@@ -1118,7 +1126,7 @@ internal class GitGraphLayout {
                 radius = 1.5f,
                 fill = context.theme.gitGraph.tagLabelColor,
                 stroke = context.theme.gitGraph.tagLabelColor,
-                zIndex = 22,
+                zIndex = COMMIT_LABEL_LAYER,
             )
             val textCenter = ScenePoint(
                 position.x + 5f + metrics.width / 2f,
@@ -1133,7 +1141,7 @@ internal class GitGraphLayout {
                 weight = SceneTextWeight.Normal,
                 rotationDegrees = 45f,
                 rotationPivot = pivot.translate(14f, 14f),
-                zIndex = 21,
+                zIndex = COMMIT_LABEL_LAYER,
                 softWrap = false,
                 horizontalScale = SVG_TEXT_HORIZONTAL_SCALE,
             )
@@ -1158,7 +1166,7 @@ internal class GitGraphLayout {
             },
             strokeWidth = context.theme.strokeWidth,
             shadow = if (useNeoColorGeneration) context.theme.dropShadow else null,
-            zIndex = 20,
+            zIndex = COMMIT_LABEL_LAYER,
         )
 
         private fun branchColorIndex(
@@ -1371,6 +1379,7 @@ internal class GitGraphLayout {
         const val REDUX_BRANCH_LABEL_PADDING_Y = 12f
         const val TAG_STEP = 20f
         const val TITLE_FONT_SIZE = 18f
+        const val COMMIT_LABEL_LAYER = 18
         const val SVG_TEXT_HORIZONTAL_SCALE = 1f
         const val QUARTER_ARC_KAPPA = 0.5522848f
         const val MAX_TEXT_WIDTH = 100_000f

@@ -83,7 +83,9 @@ the grammar behavior; it does not bundle the Langium runtime.
 - `OfficialGitGraphDocumentationTest` executes all 35 examples extracted from
   Mermaid `12.0.0` documentation.
 - The large-scale Web audit compares 256 unique same-source cases against
-  Mermaid.js `12.0.0`; all 16 contact-sheet pages were manually reviewed.
+  Mermaid.js `12.0.0`. The old geometry gate passed, but its detailed review
+  status was withdrawn after case `parity_gitgraph_005` exposed a missed
+  commit-label paint-order mismatch. Detail re-audit is required.
 
 ## Upgrade Procedure
 

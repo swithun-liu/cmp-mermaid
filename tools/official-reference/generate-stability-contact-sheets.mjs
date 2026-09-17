@@ -42,6 +42,8 @@ const corpusKind = process.env.CORPUS_KIND ?? 'all';
 const kinds = [
   'flowchart',
   'xychart',
+  'quadrant',
+  'timeline',
   'sequence',
   'class',
   'state',
@@ -52,10 +54,13 @@ const kinds = [
   'requirement',
   'gitgraph',
   'mindmap',
+  'kanban',
 ];
 const kindTitles = {
   flowchart: 'Flowchart',
   xychart: 'XY Chart',
+  quadrant: 'Quadrant Chart',
+  timeline: 'Timeline',
   sequence: 'Sequence',
   class: 'Class',
   state: 'State',
@@ -66,6 +71,7 @@ const kindTitles = {
   requirement: 'Requirement',
   gitgraph: 'Git Graph',
   mindmap: 'Mindmap',
+  kanban: 'Kanban',
 };
 const selectedKinds = kinds.filter(
   (kind) => corpusKind === 'all' || corpusKind === kind,

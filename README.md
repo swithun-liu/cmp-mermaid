@@ -1,7 +1,7 @@
 <div align="center">
   <h1>CMP Mermaid</h1>
   <p><strong>English</strong> · <a href="README.zh-CN.md">简体中文</a></p>
-  <p><strong>Stable native Mermaid rendering for Kotlin and Compose Multiplatform.</strong></p>
+  <p><strong>Native Mermaid rendering for Kotlin and Compose Multiplatform.</strong></p>
   <p>Mermaid <code>12.0.0</code> semantics translated to Kotlin and rendered with Compose Canvas.</p>
   <p>
     <a href="https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml">
@@ -24,21 +24,25 @@
     ·
     <a href="docs/stability-report.md">Full Stable report</a>
     ·
+    <a href="docs/full-diagram-roadmap.md">33-diagram roadmap</a>
+    ·
     <a href="#integration">Integration</a>
   </p>
 </div>
 
 > [!IMPORTANT]
-> **CMP Mermaid is Stable for its documented Mermaid `12.0.0` support
-> scope.** All 12 supported diagram types pass the independent production
-> corpus, a 3,072-case Native/Official visual matrix, deterministic replay,
-> separate randomized stress tests, runtime load tests, and cross-platform
-> builds.
+> **CMP Mermaid currently implements 15 of Mermaid `12.0.0`'s 33 official
+> diagram families.** The remaining 18 families are on the
+> **[full-diagram roadmap](docs/full-diagram-roadmap.md)**.
 >
-> Start with the **[3,072-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**,
-> containing all 6,144 screenshots across 192 paged contact sheets. The
-> **[full Stable report](docs/stability-report.md)** adds the decision,
-> performance, platform, security, and reproduction evidence.
+> The existing **[3,072-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
+> remains available, but its old automated gate checked coarse geometry rather
+> than label paint order and other rendering details. Detailed re-audit is in
+> progress. Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence,
+> Class, State, and Entity Relationship have completed the replacement
+> 256-case gate; the
+> legacy report must not be read as proof of complete Mermaid compatibility or
+> as completed detail review for the other families.
 
 CMP Mermaid is designed for applications that render many diagrams without a
 WebView per diagram. The production path does not embed Mermaid.js and does not
@@ -46,40 +50,45 @@ include a network client or require `android.permission.INTERNET`: parsing,
 diagram state, layout preparation, SceneGraph generation, and final Compose
 Canvas painting are owned by the multiplatform libraries.
 
-## Verified Stable
+## Current Verification
 
-Stable is based on repository-controlled test evidence, not on the size of the
-demo gallery.
+The 15 implemented families retain repository-controlled tests and captures.
+Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
+and Entity Relationship pass the replacement detail gate; the other
+implemented families are being upgraded and re-reviewed.
 
 | Evidence | Result |
 | --- | ---: |
-| Supported diagram types | 12 |
-| Independent production scenarios | 158 |
-| Declared capability coverage | 207/207 |
-| Large-scale visual matrix | 3,072 unique sources: 256 per diagram type |
-| Native/Official captures | 6,144 matrix screenshots plus 316 independent-corpus screenshots |
-| Manual visual review | 158 accepted, 0 blocked |
-| Automated visual geometry | 3,072/3,072 matrix pairs and 158/158 independent pairs passed |
-| Deterministic SceneGraph replay | 158 passed, 0 mismatches |
-| Built-in theme matrix | 132/132 |
-| Separate generated Native stress inputs | 3,072 |
-| JVM tests | 376 passed, 0 failed |
-| Core production soak | 790 renders, 1ms P95 |
+| Official Mermaid diagram families | 33 |
+| Implemented diagram families | 15/33 |
+| Translation pending | 18 |
+| Independent production scenarios | 197 |
+| Declared capability coverage | 257/257 |
+| Large-scale visual matrix | 3,840 unique sources: 256 per implemented family |
+| Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots |
+| Matrix detail review | Nine families: 2,304/2,304 accepted; 2,244 automatic passes plus 60 manually accepted ER text-position reviews; remaining 6 families require re-audit |
+| Automated visual geometry | 3,840/3,840 passed; nine family detail gates passed |
+| Deterministic SceneGraph replay | 197 passed, 0 mismatches |
+| Built-in theme matrix | 165/165 |
+| Separate generated Native stress inputs | 3,840 |
+| JVM tests | 439 passed, 0 failed |
+| Core production soak | 985 renders, 419ms total, 1ms P95, 29,144 bytes retained heap |
 | Runtime load matrix | Android, iOS, Desktop, Web passed |
 
 | Evidence document | What it contains |
 | --- | --- |
+| **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory, current 15/33 state, missing 18 families, and the new Stable gate |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
 | **[All 3,072 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 192 paged contact sheets, with 16 same-source pairs per page |
-| [Production capability matrix](docs/production-capability-matrix.md) | The 207 independently exercised capabilities |
+| [Production capability matrix](docs/production-capability-matrix.md) | The 257 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual 12-way matrix capture, geometry enforcement, and downloadable evidence |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual capture for the implemented subset; detail enforcement is being upgraded |
 
-The Stable rating applies to the documented support contract. It is not a
-claim that every legal Mermaid program is implemented. A legal feature that
-cannot be represented faithfully returns `MermaidError.UnsupportedFeature`
-instead of silently drawing a misleading approximation.
+Overall Mermaid `12.0.0` support is not Stable until all 33 family gates pass.
+A legal feature that cannot be represented faithfully returns
+`MermaidError.UnsupportedFeature` instead of silently drawing a misleading
+approximation.
 
 ## Native Vs Mermaid.js
 
@@ -118,21 +127,24 @@ large-scale matrix with 3,072 unique Mermaid sources:
 
 | Diagram | Status | Production cases | Main coverage | Details |
 | --- | :---: | ---: | --- | --- |
-| Flowchart | **Stable** | 14 | Jison/FlowDB, Dagre, shapes, links, Markdown/HTML labels | [Compatibility](docs/flowchart-compatibility.md) |
-| XY Chart | **Stable** | 13 | Jison/XY DB, D3 scales and ticks, bar/line plots, labels | [Compatibility](docs/xychart-compatibility.md) |
-| Sequence | **Stable** | 14 | Actors, 26 message forms, notes, activations, control regions | [Compatibility](docs/sequence-compatibility.md) |
-| Class | **Stable** | 13 | Compartments, generics, namespaces, relations, Dagre | [Compatibility](docs/class-compatibility.md) |
-| State | **Stable** | 13 | Composite states, concurrency, notes, forks/joins, Dagre | [Compatibility](docs/state-compatibility.md) |
-| Entity Relationship | **Stable** | 13 | Attributes, cardinalities, relationships, nested subgraphs | [Compatibility](docs/er-compatibility.md) |
-| Gantt | **Stable** | 13 | Dates, dependencies, exclusions, milestones, D3-style ticks | [Compatibility](docs/gantt-compatibility.md) |
-| Pie | **Stable** | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
-| User Journey | **Stable** | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
-| Requirement | **Stable** | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |
-| Git Graph | **Stable** | 13 | Langium grammar, branches, merges, cherry-picks, orientations, themes | [Compatibility](docs/gitgraph-compatibility.md) |
-| Mindmap | **Stable** | 13 | Jison/Mindmap DB, CoSE-Bilkent, Dagre, tidy tree, shapes, themes | [Compatibility](docs/mindmap-compatibility.md) |
+| Flowchart | Detail gate passed | 14 | Jison/FlowDB, Dagre, shapes, links, Markdown/HTML labels | [Compatibility](docs/flowchart-compatibility.md) |
+| XY Chart | Detail gate passed | 13 | Jison/XY DB, D3 scales and ticks, bar/line plots, labels | [Compatibility](docs/xychart-compatibility.md) |
+| Quadrant Chart | Detail gate passed | 13 | Axes, quadrants, points, classes, direct styles, themes | [Compatibility](docs/quadrant-compatibility.md) |
+| Timeline | Detail gate passed | 13 | LR/TD layouts, sections, periods, events, color scales, themes | [Compatibility](docs/timeline-compatibility.md) |
+| Kanban | Detail gate passed | 13 | Sections, tasks, metadata, priorities, ticket links, themes | [Compatibility](docs/kanban-compatibility.md) |
+| Sequence | Detail gate passed | 14 | Actors, 26 message forms, notes, activations, control regions | [Compatibility](docs/sequence-compatibility.md) |
+| Class | Detail gate passed | 13 | Compartments, generics, namespaces, relations, Dagre | [Compatibility](docs/class-compatibility.md) |
+| State | Detail gate passed | 13 | Composite states, concurrency, notes, forks/joins, Dagre | [Compatibility](docs/state-compatibility.md) |
+| Entity Relationship | Detail gate passed | 13 | Attributes, cardinalities, relationships, nested subgraphs | [Compatibility](docs/er-compatibility.md) |
+| Gantt | Detail re-audit | 13 | Dates, dependencies, exclusions, milestones, D3-style ticks | [Compatibility](docs/gantt-compatibility.md) |
+| Pie | Detail re-audit | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
+| User Journey | Detail re-audit | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
+| Requirement | Detail re-audit | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |
+| Git Graph | Detail re-audit | 13 | Langium grammar, branches, merges, cherry-picks, orientations, themes | [Compatibility](docs/gitgraph-compatibility.md) |
+| Mindmap | Detail re-audit | 13 | Jison/Mindmap DB, CoSE-Bilkent, Dagre, tidy tree, shapes, themes | [Compatibility](docs/mindmap-compatibility.md) |
 
-All 12 types support Mermaid frontmatter, metadata, Unicode, and the relevant
-theme variables within their documented compatibility boundaries.
+All 15 implemented types support Mermaid frontmatter, metadata, Unicode, and
+the relevant theme variables within their documented compatibility boundaries.
 
 ## Try It
 
@@ -177,7 +189,7 @@ substituted with another layout.
 
 ## Integration
 
-The stable publication coordinates are:
+The current publication coordinates are:
 
 | Module | Maven coordinate |
 | --- | --- |
@@ -274,6 +286,9 @@ reimplementing behavior from screenshots:
 Source maps:
 [Flowchart](docs/upstream-flowchart-map.md) ·
 [XY Chart](docs/upstream-xychart-map.md) ·
+[Quadrant Chart](docs/upstream-quadrant-map.md) ·
+[Timeline](docs/upstream-timeline-map.md) ·
+[Kanban](docs/upstream-kanban-map.md) ·
 [Sequence](docs/upstream-sequence-map.md) ·
 [Class](docs/upstream-class-map.md) ·
 [State](docs/upstream-state-map.md) ·

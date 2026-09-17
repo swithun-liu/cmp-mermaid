@@ -231,12 +231,18 @@ internal class StateLayout {
         } else {
             null
         }
+        // Mermaid 12.0.0: rendering-elements/shapes/util.ts -> withMinWidth.
+        val measuredTitle = if (description == null) {
+            title.withMinWidth(context.options.stateMinNodeWidth)
+        } else {
+            title
+        }
         val measuredLabel = SceneSize(
             width = max(
                 context.options.stateMinNodeWidth,
-                max(title.metrics.width, description?.metrics?.width ?: 0f),
+                max(measuredTitle.metrics.width, description?.metrics?.width ?: 0f),
             ),
-            height = title.metrics.height +
+            height = measuredTitle.metrics.height +
                 (description?.metrics?.height ?: 0f) +
                 if (description == null) 0f else DESCRIPTION_GAP,
         )
@@ -276,7 +282,7 @@ internal class StateLayout {
                 source = node,
                 style = style,
                 layout = layout,
-                title = title,
+                title = measuredTitle,
                 description = description,
             ),
         )
@@ -290,10 +296,12 @@ internal class StateLayout {
         val line = when (val rendered = renderLine(node.labels.firstOrNull().orEmpty(), style, context)) {
             is GMResult.Ok -> rendered.value
             is GMResult.Err -> return rendered
-        }
+        }.withMinWidth(context.options.stateMinNodeWidth)
+        // Mermaid 12.0.0: state/dataFetcher.ts -> noteData.padding.
+        val padding = context.options.flowchartPadding
         val size = SceneSize(
-            width = line.metrics.width + NOTE_PADDING * 2f,
-            height = line.metrics.height + NOTE_PADDING * 2f,
+            width = line.metrics.width + padding * 2f,
+            height = line.metrics.height + padding * 2f,
         )
         return GMResult.Ok(
             StateNodeVisual(
@@ -319,7 +327,7 @@ internal class StateLayout {
             is GMResult.Ok -> parsed.value
             is GMResult.Err -> return parsed
         }
-        if (group.divider || group.label.isEmpty()) {
+        if (group.note || group.divider || group.label.isEmpty()) {
             return GMResult.Ok(StateGroupVisual(group, style, null))
         }
         val label = when (val rendered = renderLine(group.label, style, context)) {
@@ -392,17 +400,26 @@ internal class StateLayout {
         style: FlowNodeStyle,
         context: MermaidRenderContext,
         maxWidth: Float,
-    ): TextMetrics = context.textMetrics.measure(
-        TextMetricsRequest(
-            text = rendered.text,
-            fontSize = style.fontSize ?: context.options.fontSize ?: context.theme.fontSize,
-            maxWidth = maxWidth,
-            lineHeight = style.lineHeightMultiplier ?: DEFAULT_LINE_HEIGHT,
-            fontFamily = style.fontFamily ?: context.options.fontFamily ?: context.theme.fontFamily,
-            weight = style.fontWeight ?: SceneTextWeight.Normal,
-            spans = rendered.spans,
-        ),
-    )
+    ): TextMetrics {
+        val fontSize = style.fontSize ?: context.options.fontSize ?: context.theme.fontSize
+        val lineHeight = style.lineHeightMultiplier ?: DEFAULT_LINE_HEIGHT
+        val measured = context.textMetrics.measure(
+            TextMetricsRequest(
+                text = rendered.text,
+                fontSize = fontSize,
+                maxWidth = maxWidth,
+                lineHeight = lineHeight,
+                fontFamily = style.fontFamily ?: context.options.fontFamily ?: context.theme.fontFamily,
+                weight = style.fontWeight ?: SceneTextWeight.Normal,
+                spans = rendered.spans,
+            ),
+        )
+        // CSS foreignObject labels retain the complete line box; Compose trims
+        // leading from TextLayoutResult.size, so restore it from the measured line count.
+        return measured.lineCount?.let { lineCount ->
+            measured.copy(height = lineCount * fontSize * lineHeight)
+        } ?: measured
+    }
 
     private fun buildLayoutDocument(
         data: StateRenderData,
@@ -430,7 +447,7 @@ internal class StateLayout {
                 nodeIds = data.nodes.values
                     .filter { node -> node.parentId == group.id }
                     .mapTo(linkedSetOf(), StateRenderNode::id),
-                direction = direction(group.direction),
+                direction = group.direction?.let(::direction),
                 parentId = group.parentId,
                 padding = STATE_GROUP_PADDING,
                 look = context.options.look,
@@ -510,11 +527,22 @@ internal class StateLayout {
                 ?: return GMResult.Err(MermaidError.Layout("State '$id' has no bounds"))
             addNode(visual, bounds, context, elements)
         }
-        when (val result = addDiagramTitle(db, context, elements)) {
+        val layoutOnlyBounds = data.groups
+            .filter(StateRenderGroup::note)
+            .mapNotNull { group -> placement.subgraphBounds[group.id] }
+        when (val result = addDiagramTitle(db, context, elements, layoutOnlyBounds)) {
             is GMResult.Ok -> Unit
             is GMResult.Err -> return result
         }
-        return GMResult.Ok(normalizeScene(db, document, elements, context))
+        return GMResult.Ok(
+            normalizeScene(
+                db = db,
+                document = document,
+                elements = elements,
+                layoutOnlyBounds = layoutOnlyBounds,
+                context = context,
+            ),
+        )
     }
 
     private fun addGroups(
@@ -531,6 +559,9 @@ internal class StateLayout {
             }.count()
         }
         data.groups.sortedBy { depths[it.id] ?: 0 }.forEach { group ->
+            // Mermaid 12.0.0: rendering-elements/clusters.js -> noteGroup.
+            // The compound affects layout but paints no frame or title.
+            if (group.note) return@forEach
             val groupBounds = bounds[group.id] ?: return@forEach
             val visual = visuals[group.id] ?: return@forEach
             val fill = visual.style.fill
@@ -642,12 +673,13 @@ internal class StateLayout {
         )
         val title = visual.title ?: return
         if (note) {
+            val padding = context.options.flowchartPadding
             elements += title.asSceneText(
                 bounds = SceneRect(
-                    left = bounds.left + NOTE_PADDING,
-                    top = bounds.top + NOTE_PADDING,
-                    right = bounds.right - NOTE_PADDING,
-                    bottom = bounds.bottom - NOTE_PADDING,
+                    left = bounds.left + padding,
+                    top = bounds.top + padding,
+                    right = bounds.right - padding,
+                    bottom = bounds.bottom - padding,
                 ),
                 color = visual.style.text ?: context.theme.noteText,
                 context = context,
@@ -728,11 +760,16 @@ internal class StateLayout {
                 zIndex = 5,
             )
             visuals[index]?.let { visual ->
+                val labelAnchor = MermaidEdgePathPort.positionEdgeLabel(
+                    layoutAnchor = route.labelAnchor,
+                    points = route.points,
+                    commands = commands,
+                )
                 val bounds = SceneRect(
-                    left = route.labelAnchor.x - visual.size.width / 2f - EDGE_LABEL_PADDING,
-                    top = route.labelAnchor.y - visual.size.height / 2f - EDGE_LABEL_PADDING,
-                    right = route.labelAnchor.x + visual.size.width / 2f + EDGE_LABEL_PADDING,
-                    bottom = route.labelAnchor.y + visual.size.height / 2f + EDGE_LABEL_PADDING,
+                    left = labelAnchor.x - visual.size.width / 2f - EDGE_LABEL_PADDING,
+                    top = labelAnchor.y - visual.size.height / 2f - EDGE_LABEL_PADDING,
+                    right = labelAnchor.x + visual.size.width / 2f + EDGE_LABEL_PADDING,
+                    bottom = labelAnchor.y + visual.size.height / 2f + EDGE_LABEL_PADDING,
                 )
                 elements += SceneShape(
                     id = "${edge.id}-label-background",
@@ -764,10 +801,12 @@ internal class StateLayout {
         db: StateDb,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
+        layoutOnlyBounds: List<SceneRect>,
     ): GMResult<Unit, MermaidError> {
         val title = db.diagramTitle?.takeIf(String::isNotBlank)?.let(::decode)
             ?: return GMResult.Ok(Unit)
-        val graphBounds = elements.mapNotNull(::elementBounds).reduceOrNull(SceneRect::union)
+        val graphBounds = (elements.mapNotNull(::elementBounds) + layoutOnlyBounds)
+            .reduceOrNull(SceneRect::union)
             ?: return GMResult.Ok(Unit)
         val metrics = try {
             context.textMetrics.measure(
@@ -809,9 +848,13 @@ internal class StateLayout {
         db: StateDb,
         document: FlowchartDocument,
         elements: List<SceneElement>,
+        layoutOnlyBounds: List<SceneRect>,
         context: MermaidRenderContext,
     ): MermaidScene {
-        val bounds = elements.mapNotNull(::elementBounds).reduceOrNull(SceneRect::union)
+        // Mermaid 12.0.0: noteGroup is not painted, but its compound bounds
+        // still participate in the root SVG bounding box.
+        val bounds = (elements.mapNotNull(::elementBounds) + layoutOnlyBounds)
+            .reduceOrNull(SceneRect::union)
             ?: SceneRect(0f, 0f, 1f, 1f)
         val padding = context.options.diagramPadding
         val dx = padding - bounds.left
@@ -928,6 +971,9 @@ internal class StateLayout {
         zIndex = zIndex,
     )
 
+    private fun StateTextVisual.withMinWidth(minWidth: Float): StateTextVisual =
+        copy(metrics = metrics.copy(width = max(metrics.width, minWidth)))
+
     private fun direction(value: String): FlowDirection = when (value) {
         "BT" -> FlowDirection.BottomToTop
         "LR" -> FlowDirection.LeftToRight
@@ -1027,9 +1073,9 @@ internal class StateLayout {
             StateNodeType.Join,
             StateNodeType.Choice,
         )
-        const val DEFAULT_LINE_HEIGHT = 1.2f
+        // Mermaid 12.0.0: rendering-util/createText.ts -> addHtmlSpan.
+        const val DEFAULT_LINE_HEIGHT = 1.5f
         const val DESCRIPTION_GAP = 10f
-        const val NOTE_PADDING = 10f
         const val CHOICE_SIZE = 28f
         const val STATE_GROUP_PADDING = 16f
         const val STATE_GROUP_TITLE_MARGIN = 22f

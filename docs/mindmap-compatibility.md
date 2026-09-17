@@ -50,8 +50,10 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   assert the exact structured unsupported boundary.
 - 13 independent production scenarios cover all 22 declared Mindmap
   capability points.
-- 256 same-source Native/Official visual cases pass screenshot, SHA-256, and
-  geometry checks; all 16 contact-sheet pages were manually reviewed.
+- 256 same-source Native/Official visual cases passed screenshot, SHA-256, and
+  legacy geometry checks. The former manual completion claim is withdrawn
+  pending the detail re-audit defined in
+  [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
 - All 11 built-in themes are rendered by the shared production theme matrix.

@@ -83,6 +83,39 @@ class MermaidThemeTest {
     }
 
     @Test
+    fun matchesMermaid12DefaultXyChartTextColors() {
+        val expected = SceneColor(0xFF131300)
+        val xyChart = MermaidTheme.preset(MermaidThemePreset.Default).xyChart
+
+        listOf(
+            xyChart.titleColor,
+            xyChart.dataLabelColor,
+            xyChart.legendTextColor,
+            xyChart.xAxisLabelColor,
+            xyChart.xAxisTitleColor,
+            xyChart.xAxisTickColor,
+            xyChart.xAxisLineColor,
+            xyChart.yAxisLabelColor,
+            xyChart.yAxisTitleColor,
+            xyChart.yAxisTickColor,
+            xyChart.yAxisLineColor,
+        ).forEach { actual ->
+            assertEquals(expected, actual)
+        }
+    }
+
+    @Test
+    fun matchesMermaid12DefaultRequirementRenderedColors() {
+        val requirement = MermaidTheme.preset(MermaidThemePreset.Default).requirement
+
+        assertEquals(SceneColor(0xFFECECFF), requirement.background)
+        assertEquals(SceneColor(0xFF9370DB), requirement.borderColor)
+        assertEquals(SceneColor(0xFF333333), requirement.textColor)
+        assertEquals(SceneColor(0xFF333333), requirement.relationLabelColor)
+        assertEquals(SceneColor(0xCCE8E8E8), requirement.edgeLabelBackground)
+    }
+
+    @Test
     fun appliesBrandVariablesWithoutMutatingTheBasePreset() {
         val base = MermaidTheme.preset(MermaidThemePreset.ReduxColor)
         val result = MermaidTheme.withVariables(
@@ -142,6 +175,42 @@ class MermaidThemeTest {
         assertEquals(SceneColor(0xFF445566), customized.journey.textColor)
         assertEquals(base.journey.actorColors, customized.journey.actorColors)
         assertEquals(base.journey.faceColor, customized.journey.faceColor)
+    }
+
+    @Test
+    fun keepsTimelinePaletteIndependentAndAppliesColorScaleOverridesToBothDiagrams() {
+        val base = MermaidTheme.preset(MermaidThemePreset.Forest)
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = base,
+                values = mapOf(
+                    "mainBkg" to "#102030",
+                    "nodeBorder" to "#203040",
+                    "cScale0" to "#304050",
+                    "cScaleInv0" to "#405060",
+                    "cScaleLabel0" to "#506070",
+                    "useGradient" to "false",
+                ),
+                themeName = MermaidThemePreset.Forest.configName,
+            ),
+        ).value
+
+        assertEquals(SceneColor(0xFF102030), customized.timeline.mainBackground)
+        assertEquals(SceneColor(0xFF203040), customized.timeline.nodeBorder)
+        assertEquals(SceneColor(0xFF304050), customized.timeline.sectionFills[0])
+        assertEquals(SceneColor(0xFF405060), customized.timeline.sectionInverseColors[0])
+        assertEquals(SceneColor(0xFF506070), customized.timeline.sectionLabelColors[0])
+        assertEquals(customized.mindmap.sectionFills, customized.timeline.sectionFills)
+        assertEquals(
+            customized.mindmap.sectionInverseColors,
+            customized.timeline.sectionInverseColors,
+        )
+        assertEquals(
+            customized.mindmap.sectionLabelColors,
+            customized.timeline.sectionLabelColors,
+        )
+        assertEquals(false, customized.timeline.useGradient)
+        assertEquals(base.timeline.sectionFills[1], customized.timeline.sectionFills[1])
     }
 
     @Test

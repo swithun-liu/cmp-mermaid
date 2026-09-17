@@ -53,6 +53,8 @@ jobs:
         kind:
           - flowchart
           - xychart
+          - quadrant
+          - timeline
           - sequence
           - class
           - state
@@ -63,6 +65,7 @@ jobs:
           - requirement
           - gitgraph
           - mindmap
+          - kanban
 
     steps:
       - name: Checkout
@@ -77,7 +80,9 @@ jobs:
 
       - name: Install visual audit dependencies
         working-directory: tools/official-reference
-        run: npm ci
+        run: |
+          npm ci
+          npm run test:detail-audit
 
       - name: Download Web audit application
         uses: actions/download-artifact@v4
@@ -115,6 +120,16 @@ jobs:
           INPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
           OUTPUT_FILE=captures/visual-parity/${{ matrix.kind }}-geometry.json \
           npm run audit:stability-geometry
+
+      - name: Enforce pair detail
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_SOURCE=visual-parity \
+          CORPUS_KIND=${{ matrix.kind }} \
+          INPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
+          OUTPUT_FILE=captures/visual-parity/${{ matrix.kind }}-detail.json \
+          HEATMAP_DIR=captures/visual-parity/${{ matrix.kind }}-diffs \
+          npm run audit:detail
 
       - name: Generate paged visual evidence
         working-directory: tools/official-reference

@@ -182,14 +182,19 @@ internal class GanttLayout {
             is GMResult.Ok -> Unit
             is GMResult.Err -> return excluded
         }
-        addGrid(
-            document = document,
-            scale = scale,
-            height = height,
-            context = context,
-            palette = palette,
-            elements = elements,
-        )
+        when (
+            val grid = addGrid(
+                document = document,
+                scale = scale,
+                height = height,
+                context = context,
+                palette = palette,
+                elements = elements,
+            )
+        ) {
+            is GMResult.Ok -> Unit
+            is GMResult.Err -> return grid
+        }
         addTasks(
             tasks = tasks.sortedBy(GanttTask::startMillis)
                 .sortedBy { task -> task.flags.vertical },
@@ -395,7 +400,7 @@ internal class GanttLayout {
         context: MermaidRenderContext,
         palette: GanttPalette,
         elements: MutableList<SceneElement>,
-    ) {
+    ): GMResult<Unit, MermaidError> {
         val requested = GanttDatePort.parseTickInterval(
             document.tickInterval ?: context.options.ganttTickInterval,
         )
@@ -417,8 +422,23 @@ internal class GanttLayout {
         val axisFormat = document.axisFormat.ifEmpty {
             if (document.dateFormat.trim() == "D") "%d" else context.options.ganttAxisFormat
         }
+        val labels = mutableListOf<Pair<Long, MeasuredText>>()
+        ticks.forEach { value ->
+            val measured = when (
+                val result = measure(
+                    text = GanttDatePort.format(value, axisFormat),
+                    fontSize = AXIS_FONT_SIZE,
+                    lineHeight = AXIS_LINE_HEIGHT,
+                    context = context,
+                )
+            ) {
+                is GMResult.Ok -> result.value
+                is GMResult.Err -> return result
+            }
+            labels += value to measured
+        }
         val bottom = height - AXIS_BOTTOM_MARGIN
-        ticks.forEachIndexed { index, value ->
+        labels.forEachIndexed { index, (value, label) ->
             val x = scale(value)
             elements += line(
                 id = "gantt-grid-$index",
@@ -429,40 +449,59 @@ internal class GanttLayout {
                 zIndex = 2,
                 look = context.options.look,
             )
-            val text = GanttDatePort.format(value, axisFormat)
             elements += SceneText(
-                text = text,
-                bounds = SceneRect(
-                    left = x - AXIS_LABEL_HALF_WIDTH,
-                    top = bottom + AXIS_LABEL_GAP,
-                    right = x + AXIS_LABEL_HALF_WIDTH,
-                    bottom = height,
+                text = label.text,
+                bounds = axisLabelBounds(
+                    centerX = x,
+                    baselineY = bottom + AXIS_TICK_PADDING + AXIS_FONT_SIZE,
+                    metrics = label.metrics,
                 ),
                 color = palette.text,
                 fontSize = AXIS_FONT_SIZE,
-                lineHeight = 1f,
+                lineHeight = AXIS_LINE_HEIGHT,
                 fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
                 weight = SceneTextWeight.Normal,
                 zIndex = 20,
             )
             if (document.topAxis || context.options.ganttTopAxis) {
                 elements += SceneText(
-                    text = text,
-                    bounds = SceneRect(
-                        left = x - AXIS_LABEL_HALF_WIDTH,
-                        top = context.options.ganttTopPadding - AXIS_TOP_LABEL_HEIGHT,
-                        right = x + AXIS_LABEL_HALF_WIDTH,
-                        bottom = context.options.ganttTopPadding,
+                    text = label.text,
+                    bounds = axisLabelBounds(
+                        centerX = x,
+                        baselineY = context.options.ganttTopPadding - AXIS_TICK_PADDING,
+                        metrics = label.metrics,
                     ),
                     color = palette.text,
                     fontSize = AXIS_FONT_SIZE,
-                    lineHeight = 1f,
+                    lineHeight = AXIS_LINE_HEIGHT,
                     fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
                     weight = SceneTextWeight.Normal,
                     zIndex = 20,
                 )
             }
         }
+        return GMResult.Ok(Unit)
+    }
+
+    /**
+     * Mermaid: ganttRenderer.js -> makeGrid, translated from d3-axis text baselines.
+     *
+     * D3 clamps the negative grid tick size to zero before adding its 3px padding.
+     * Mermaid then applies dy=1em to the bottom labels. SceneText is center-anchored,
+     * so the SVG baseline is converted to the 10px glyph center used by Mermaid.
+     */
+    private fun axisLabelBounds(
+        centerX: Float,
+        baselineY: Float,
+        metrics: TextMetrics,
+    ): SceneRect {
+        val centerY = baselineY - AXIS_BASELINE_TO_GLYPH_CENTER
+        return SceneRect(
+            left = centerX - metrics.width / 2f,
+            top = centerY - metrics.height / 2f,
+            right = centerX + metrics.width / 2f,
+            bottom = centerY + metrics.height / 2f,
+        )
     }
 
     private fun addTasks(
@@ -741,6 +780,7 @@ internal class GanttLayout {
         fontSize: Float,
         context: MermaidRenderContext,
         weight: SceneTextWeight = SceneTextWeight.Normal,
+        lineHeight: Float = DEFAULT_LINE_HEIGHT,
     ): GMResult<MeasuredText, MermaidError> = try {
         GMResult.Ok(
             MeasuredText(
@@ -750,7 +790,7 @@ internal class GanttLayout {
                         text = text,
                         fontSize = fontSize,
                         maxWidth = UNWRAPPED_TEXT_WIDTH,
-                        lineHeight = DEFAULT_LINE_HEIGHT,
+                        lineHeight = lineHeight,
                         fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
                         weight = weight,
                     ),
@@ -1047,10 +1087,10 @@ internal class GanttLayout {
         const val GRID_OPACITY = 0.8f
         const val MIN_HEIGHT = 100f
         const val AXIS_BOTTOM_MARGIN = 50f
-        const val AXIS_LABEL_GAP = 6f
-        const val AXIS_TOP_LABEL_HEIGHT = 20f
-        const val AXIS_LABEL_HALF_WIDTH = 60f
+        const val AXIS_TICK_PADDING = 3f
         const val AXIS_FONT_SIZE = 10f
+        const val AXIS_LINE_HEIGHT = 1f
+        const val AXIS_BASELINE_TO_GLYPH_CENTER = 3.5f
         const val DEFAULT_AUTOMATIC_TICK_COUNT = 10
         const val TASK_LABEL_GAP = 5f
         const val VERTICAL_WIDTH_FACTOR = 0.08f

@@ -87,6 +87,13 @@ production so an upstream grammar diff can be translated incrementally.
   Mermaid's State documentation.
 - The Android gallery compares 25 identical sources against official Mermaid
   `12.0.0` Dagre output.
+- The replacement Web gate compares 13 independent production scenarios and
+  256 systematic same-source matrix cases. The matrix reports
+  `256 pass / 0 review / 0 fail`; geometry ratios are `0.963-1.224` for width,
+  `0.968-1.089` for height, and `1.031-1.383` for foreground ink.
+- All 16 matrix contact sheets were manually reviewed with no unresolved
+  state, group-boundary, note, pseudostate, routing, marker, label, clipping,
+  overlap, or paint-order defect.
 
 ## Upgrade Procedure
 

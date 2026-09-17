@@ -68,6 +68,7 @@ class ClassLayoutTest {
         val member = texts.single { it.text == "+String name" }
         val method = texts.single { it.text == "+load(id) : Result" }
         assertEquals(SceneTextAlignment.Start, member.horizontalAlignment)
+        assertEquals(member.text.length * 8f, member.bounds.width)
         assertTrue(member.spans.single().underline)
         assertTrue(method.spans.single().italic)
     }
@@ -122,6 +123,13 @@ class ClassLayoutTest {
         assertTrue(labels.any { it.text == "places" })
         assertTrue(labels.any { it.text == "1" })
         assertTrue(labels.any { it.text == "0..*" })
+        val order = scene.elements.filterIsInstance<SceneShape>().single { it.id == "Order" }
+        val endCardinality = labels.single { it.text == "0..*" }
+        assertTrue(
+            !endCardinality.bounds.overlaps(order.bounds),
+            "Expected end cardinality outside Order: " +
+                "${endCardinality.bounds} versus ${order.bounds}",
+        )
         val relationLabel = labels.single { it.text == "places" }
         assertTrue(
             labels.filter { it.text == "1" || it.text == "0..*" }
@@ -134,6 +142,37 @@ class ClassLayoutTest {
         val labelBackground = scene.elements.filterIsInstance<SceneShape>()
             .single { it.id.endsWith("-label-background") }
         assertEquals(context.theme.nodeFill, labelBackground.fill)
+    }
+
+    @Test
+    fun keepsHorizontalEndCardinalityOutsideTargetClass() {
+        val scene = render(
+            """
+            classDiagram
+                direction LR
+                class Customer {
+                    +CustomerId id
+                    +Email email
+                }
+                class Order {
+                    +OrderId id
+                    +OrderStatus status
+                    +Money total
+                    +addItem(product, quantity)
+                }
+                Customer "1" --> "0..*" Order : places
+            """.trimIndent(),
+        )
+
+        val order = scene.elements.filterIsInstance<SceneShape>().single { it.id == "Order" }
+        val endCardinality = scene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "0..*" }
+
+        assertTrue(
+            endCardinality.bounds.right <= order.bounds.left,
+            "Expected end cardinality before Order: " +
+                "${endCardinality.bounds} versus ${order.bounds}",
+        )
     }
 
     @Test
@@ -275,6 +314,123 @@ class ClassLayoutTest {
         assertEquals(3, defaultShape.geometry?.paths?.size)
         assertEquals(1, hiddenShape.geometry?.paths?.size)
         assertTrue(hiddenShape.bounds.height < defaultShape.bounds.height)
+    }
+
+    @Test
+    fun matchesUpstreamEmptyAndMethodOnlyClassBoxSpacing() {
+        val emptyScene = render(
+            """
+            classDiagram
+                class Empty
+            """.trimIndent(),
+        )
+        val emptyShape = emptyScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "Empty" }
+        val emptyTitle = emptyScene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "Empty" }
+        assertEquals(
+            emptyTitle.bounds.height + context.options.classPadding * 5f,
+            emptyShape.bounds.height,
+            0.001f,
+        )
+
+        val methodScene = render(
+            """
+            classDiagram
+                class Service {
+                    +run()
+                }
+            """.trimIndent(),
+        )
+        val methodShape = methodScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "Service" }
+        val methodTexts = methodScene.elements.filterIsInstance<SceneText>()
+        val title = methodTexts.single { it.text == "Service" }
+        val method = methodTexts.single { it.text == "+run()" }
+        assertEquals(
+            title.bounds.height +
+                method.bounds.height +
+                context.options.classPadding * 6.5f,
+            methodShape.bounds.height,
+            0.001f,
+        )
+    }
+
+    @Test
+    fun matchesUpstreamAsymmetricClassTextGroupWidth() {
+        val methodScene = render(
+            """
+            classDiagram
+                class Service {
+                    +execute(Course) Result~Boolean~
+                }
+            """.trimIndent(),
+        )
+        val methodShape = methodScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "Service" }
+        val methodTexts = methodScene.elements.filterIsInstance<SceneText>()
+        val title = methodTexts.single { it.text == "Service" }
+        val method = methodTexts.single {
+            it.text == "+execute(Course) : Result<Boolean>"
+        }
+        val headerHalfWidth = title.bounds.width / 2f
+        assertEquals(
+            headerHalfWidth +
+                maxOf(headerHalfWidth, method.bounds.width) +
+                context.options.classPadding * 2f,
+            methodShape.bounds.width,
+            0.001f,
+        )
+
+        val shortScene = render(
+            """
+            classDiagram
+                class A
+            """.trimIndent(),
+        )
+        val shortShape = shortScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "A" }
+        val shortTitle = shortScene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "A" }
+        assertEquals(
+            shortTitle.bounds.width + context.options.classPadding * 2f,
+            shortShape.bounds.width,
+            0.001f,
+        )
+    }
+
+    @Test
+    fun keepsClassNotesUnwrappedAndUsesTheUpstreamNotePadding() {
+        val defaultScene = render(
+            """
+            classDiagram
+                note "Owns request lifecycle"
+            """.trimIndent(),
+        )
+        val defaultShape = defaultScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "note0" }
+        val defaultText = defaultScene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "Owns request lifecycle" }
+        assertEquals(defaultText.bounds.width + 12f, defaultShape.bounds.width, 0.001f)
+        assertEquals(defaultText.bounds.height + 12f, defaultShape.bounds.height, 0.001f)
+
+        val configuredScene = render(
+            """
+            ---
+            config:
+              class:
+                padding: 9
+            ---
+            classDiagram
+                note "Configured padding"
+            """.trimIndent(),
+        )
+        val configuredShape = configuredScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "note0" }
+        val configuredText = configuredScene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "Configured padding" }
+        assertEquals(configuredText.bounds.width + 18f, configuredShape.bounds.width, 0.001f)
+        assertEquals(configuredText.bounds.height + 18f, configuredShape.bounds.height, 0.001f)
     }
 
     @Test

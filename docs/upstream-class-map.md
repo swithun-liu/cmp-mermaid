@@ -77,13 +77,16 @@ production so an upstream grammar diff can be translated incrementally.
   notes, members, relations, styles, and malformed input.
 - `ClassLayoutTest` covers compartments, classifiers, every marker family,
   labels, cardinalities, notes, namespaces, interactions, Markdown, structured
-  unsupported errors, layout selection, title, and accessibility metadata.
+  unsupported errors, layout selection, title, accessibility metadata, and
+  Mermaid's asymmetric header/body text-group width.
 - `ClassStressTest` covers Mermaid's relation matrix and 256 deterministic
   random legal diagrams under Dagre.
 - `OfficialClassDocumentationTest` executes all 38 examples extracted from
   Mermaid's Class documentation.
-- The Android gallery compares 27 identical sources against official Mermaid
-  `12.0.0` Dagre output.
+- The replacement Web gate compares 13 independent production scenarios and
+  256 deterministic matrix sources against Mermaid `12.0.0`. Both detail
+  audits have empty review queues, both geometry audits pass, and all 16 matrix
+  contact sheets were manually reviewed.
 
 ## Upgrade Procedure
 
@@ -96,7 +99,7 @@ production so an upstream grammar diff can be translated incrementally.
 4. Regenerate the 38 documentation fixtures and review their hash.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
-6. Install the Android sample and capture all 27 Native/Official Class pairs
-   with Dagre.
-7. Review the contact sheets and update this map and the compatibility matrix
-   before publishing.
+6. Capture the 13 production and 256 matrix Native/Official Class pairs with
+   Dagre, then run both detail and geometry audits.
+7. Review all 16 matrix contact sheets and the production sheet, then update
+   this map and the compatibility matrix before publishing.

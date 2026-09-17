@@ -56,6 +56,15 @@ arbitrary URLs or JavaScript.
 - Mermaid's dense relation matrix runs through Dagre.
 - 256 deterministic random legal Class diagrams use Dagre while checking
   shape/edge counts, finite bounds, and routed paths.
+- 13 independent production scenarios pass the detail audit with
+  `13 pass / 0 review / 0 fail`; geometry ratios are width `1.036-1.196`,
+  height `0.906-1.055`, and foreground ink `0.723-1.230`.
+- 256 deterministic same-source Native/Official matrix pairs pass the detail
+  audit with `256 pass / 0 review / 0 fail`; geometry ratios are width
+  `1.030-1.208`, height `0.897-1.055`, and foreground ink `0.781-1.227`.
+- All 16 matrix contact sheets were manually reviewed with no unresolved
+  class, namespace, relation, marker, cardinality, note, label, clipping,
+  overlap, or paint-order defect.
 - 27 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0` with Dagre.
 - The 27 Native Android screenshots were compared side by side with 27

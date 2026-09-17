@@ -18,6 +18,9 @@ const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
 const kotlinGalleryFiles = {
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
+  quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
+  timeline: ['TimelineDemos.kt', 'TimelineDemo'],
+  kanban: ['KanbanDemos.kt', 'KanbanDemo'],
   sequence: ['SequenceDemos.kt', 'SequenceDemo'],
   class: ['ClassDemos.kt', 'ClassDemo'],
   state: ['StateDemos.kt', 'StateDemo'],
@@ -32,6 +35,9 @@ const kotlinGalleryFiles = {
 const expectedKindCounts = new Map([
   ['flowchart', 6],
   ['xychart', 5],
+  ['quadrant', 5],
+  ['timeline', 5],
+  ['kanban', 5],
   ['sequence', 6],
   ['class', 5],
   ['state', 5],
@@ -46,6 +52,9 @@ const expectedKindCounts = new Map([
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
   ['xychart', 13],
+  ['quadrant', 13],
+  ['timeline', 13],
+  ['kanban', 13],
   ['sequence', 14],
   ['class', 13],
   ['state', 13],
@@ -60,6 +69,9 @@ const expectedProductionKindCounts = new Map([
 const supportedKinds = new Set([
   'flowchart',
   'xychart',
+  'quadrant',
+  'timeline',
+  'kanban',
   'sequence',
   'class',
   'state',
@@ -143,8 +155,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 314) {
-    throw new Error(`Expected 314 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 328) {
+    throw new Error(`Expected 328 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -164,14 +176,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 158) {
+  if (productionCases.length !== 197) {
     throw new Error(
-      `Expected 158 production cases, found ${productionCases.length}`,
+      `Expected 197 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 96) {
+  if (conformanceCases.length !== 120) {
     throw new Error(
-      `Expected 96 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 120 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -385,6 +397,9 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
         val kinds = listOf(
             "flowchart",
             "xychart",
+            "quadrant",
+            "timeline",
+            "kanban",
             "sequence",
             "class",
             "state",
@@ -444,6 +459,14 @@ private fun addVisualParityVariation(
 ): String = when (kind) {
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
+    "quadrant" -> {
+        val x = ((ordinal % 8) + 1) / 10.0
+        val y = (((ordinal * 3) % 8) + 1) / 10.0
+        "\${source.trimEnd()}\\n  \\"\$label\\": [" +
+            "\$x, \$y]\\n"
+    }
+    "timeline" -> appendTimelineEvidence(source, label)
+    "kanban" -> appendKanbanEvidence(source, evidenceId, label, ordinal)
     "sequence" -> insertAfterDeclaration(
         source = source,
         declaration = "sequenceDiagram",
@@ -468,6 +491,20 @@ private fun addVisualParityVariation(
     "mindmap" -> "\${source.trimEnd()}\\n    \$evidenceId[\\"\$label\\"]\\n"
     else -> source
 }
+
+private fun appendTimelineEvidence(
+    source: String,
+    label: String,
+): String = "\${source.trimEnd()}\\n  \$label : Parity evidence\\n"
+
+private fun appendKanbanEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+    ordinal: Int,
+): String = "\${source.trimEnd()}\\n" +
+    "  \${evidenceId}Stage[Parity stage \${ordinal.toString().padStart(3, '0')}]\\n" +
+    "    \$evidenceId[\$label]\\n"
 
 private fun appendFlowchartEvidence(
     source: String,

@@ -195,6 +195,104 @@ class GitGraphLayoutTest {
     }
 
     @Test
+    fun preservesOfficialCommitLabelPaintOrderForOverlappingHorizontalLabels() {
+        val scene = render(
+            """
+            ---
+            config:
+              gitGraph:
+                showBranches: false
+                rotateCommitLabel: false
+            ---
+            gitGraph LR:
+                commit id:"initialize-release-coordination"
+                branch maintenance
+                commit id:"prepare-follow-up-correction"
+                checkout main
+                cherry-pick id:"prepare-follow-up-correction"
+                commit id:"close-release-window" tag:"complete"
+            """.trimIndent(),
+        )
+
+        val cherryPickTag = scene.elements.indexOfFirst { element ->
+            element is SceneText &&
+                element.text == "cherry-pick:prepare-follow-up-correction"
+        }
+        val laterCommitBackground = scene.elements.indexOfFirst { element ->
+            element is SceneShape &&
+                element.id == "git-commit-label-background-close-release-window"
+        }
+        val laterCommitText = scene.elements.indexOfFirst { element ->
+            element is SceneText && element.text == "close-release-window"
+        }
+        val laterTagBackground = scene.elements.indexOfFirst { element ->
+            element is SceneShape &&
+                element.id == "git-tag-background-close-release-window-0"
+        }
+        val laterTagHole = scene.elements.indexOfFirst { element ->
+            element is SceneShape &&
+                element.id == "git-tag-hole-close-release-window-0"
+        }
+        val laterTagText = scene.elements.indexOfFirst { element ->
+            element is SceneText && element.text == "complete"
+        }
+
+        assertTrue(cherryPickTag >= 0)
+        assertTrue(cherryPickTag < laterCommitBackground)
+        assertTrue(laterCommitBackground < laterCommitText)
+        assertTrue(laterCommitText < laterTagBackground)
+        assertTrue(laterTagBackground < laterTagHole)
+        assertTrue(laterTagHole < laterTagText)
+    }
+
+    @Test
+    fun reversesBottomToTopCommitPaintOrderLikeOfficialRenderer() {
+        val scene = render(
+            """
+            ---
+            config:
+              gitGraph:
+                parallelCommits: true
+            ---
+            gitGraph BT:
+                commit id: "bt-root"
+                branch develop
+                branch release
+                commit id: "release-base"
+                checkout develop
+                commit id: "bt-change"
+                checkout main
+                commit id: "main-change"
+                merge develop id: "bt-merge"
+                branch hotfix
+                commit id: "independent-fix"
+                checkout release
+                cherry-pick id: "bt-merge" parent: "bt-change"
+                cherry-pick id: "independent-fix"
+            """.trimIndent(),
+        )
+
+        val labelOrder = scene.elements
+            .filterIsInstance<SceneText>()
+            .map(SceneText::text)
+            .filter { text ->
+                text.startsWith("cherry-pick:") ||
+                    text in setOf("independent-fix", "bt-merge", "bt-root")
+            }
+
+        assertEquals(
+            listOf(
+                "cherry-pick:independent-fix",
+                "cherry-pick:bt-merge|parent:bt-change",
+                "independent-fix",
+                "bt-merge",
+                "bt-root",
+            ),
+            labelOrder,
+        )
+    }
+
+    @Test
     fun positionsVerticalTagTextBeforeApplyingTheSvgRotation() {
         val tag = "release-candidate"
         val measuredWidth = tag.length * context.theme.gitGraph.tagLabelFontSize * 0.55f

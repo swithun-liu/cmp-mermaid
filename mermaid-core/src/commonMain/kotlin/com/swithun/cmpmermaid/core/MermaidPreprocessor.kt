@@ -238,10 +238,13 @@ internal object MermaidPreprocessor {
         val erDiagram = map.map("er")
         val gantt = map.map("gantt")
         val journey = map.map("journey")
+        val timeline = map.map("timeline")
         val requirement = map.map("requirement")
         val gitGraph = map.map("gitGraph")
         val mindmap = map.map("mindmap")
+        val kanban = map.map("kanban")
         val pie = map.map("pie")
+        val quadrantChart = map.map("quadrantChart")
         val xyChart = map.map("xyChart")
         val xyXAxis = xyChart?.map("xAxis")
         val xyYAxis = xyChart?.map("yAxis")
@@ -272,6 +275,25 @@ internal object MermaidPreprocessor {
                 ?: run {
                     readError = MermaidError.Configuration(
                         "Mermaid $sourceName '$path' must be a number",
+                    )
+                    null
+                }
+        }
+
+        fun fontSize(
+            owner: YamlMap?,
+            key: String,
+            path: String,
+        ): Float? {
+            val scalar = owner?.node(key) ?: return null
+            return (scalar as? YamlScalar)
+                ?.content
+                ?.removeSuffix("px")
+                ?.trim()
+                ?.toFloatOrNull()
+                ?: run {
+                    readError = MermaidError.Configuration(
+                        "Mermaid $sourceName '$path' must be a number or pixel size",
                     )
                     null
                 }
@@ -676,6 +698,82 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'journey.titleFontSize' must not be blank",
             )
         }
+        val timelineUseWidth = float(timeline, "useWidth", "timeline.useWidth")
+        val timelineUseMaxWidth =
+            boolean(timeline, "useMaxWidth", "timeline.useMaxWidth")
+        val timelineTheme = appearanceString(timeline, "theme", "timeline.theme")
+            ?.takeIf(USABLE_THEMES::contains)
+        val timelineLook = appearanceString(timeline, "look", "timeline.look")
+            ?.takeIf(USABLE_LOOKS::contains)
+        val timelineLayout = string(timeline, "layout", "timeline.layout")
+        val timelineDiagramMarginX =
+            float(timeline, "diagramMarginX", "timeline.diagramMarginX")
+        val timelineDiagramMarginY =
+            float(timeline, "diagramMarginY", "timeline.diagramMarginY")
+        val timelineLeftMargin = float(timeline, "leftMargin", "timeline.leftMargin")
+        val timelineWidth = float(timeline, "width", "timeline.width")
+        val timelineHeight = float(timeline, "height", "timeline.height")
+        val timelinePadding = float(timeline, "padding", "timeline.padding")
+        val timelineBoxMargin = float(timeline, "boxMargin", "timeline.boxMargin")
+        val timelineBoxTextMargin =
+            float(timeline, "boxTextMargin", "timeline.boxTextMargin")
+        val timelineNoteMargin = float(timeline, "noteMargin", "timeline.noteMargin")
+        val timelineMessageMargin =
+            float(timeline, "messageMargin", "timeline.messageMargin")
+        val timelineMessageAlign = enumString(
+            timeline,
+            "messageAlign",
+            "timeline.messageAlign",
+            setOf("left", "center", "right"),
+        )
+        val timelineBottomMarginAdj =
+            float(timeline, "bottomMarginAdj", "timeline.bottomMarginAdj")
+        val timelineRightAngles =
+            boolean(timeline, "rightAngles", "timeline.rightAngles")
+        val timelineTaskFontSize =
+            fontSize(timeline, "taskFontSize", "timeline.taskFontSize")
+        val timelineTaskFontFamily =
+            string(timeline, "taskFontFamily", "timeline.taskFontFamily")
+        val timelineTaskMargin = float(timeline, "taskMargin", "timeline.taskMargin")
+        val timelineActivationWidth =
+            float(timeline, "activationWidth", "timeline.activationWidth")
+        val timelineTextPlacement =
+            string(timeline, "textPlacement", "timeline.textPlacement")
+        val timelineActorColours =
+            colorList(timeline, "actorColours", "timeline.actorColours")
+        val timelineSectionFills =
+            colorList(timeline, "sectionFills", "timeline.sectionFills")
+        val timelineSectionColours =
+            colorList(timeline, "sectionColours", "timeline.sectionColours")
+        val timelineDisableMulticolor =
+            boolean(timeline, "disableMulticolor", "timeline.disableMulticolor")
+        listOf(
+            "timeline.diagramMarginX" to timelineDiagramMarginX,
+            "timeline.diagramMarginY" to timelineDiagramMarginY,
+            "timeline.leftMargin" to timelineLeftMargin,
+            "timeline.width" to timelineWidth,
+            "timeline.height" to timelineHeight,
+            "timeline.padding" to timelinePadding,
+            "timeline.boxMargin" to timelineBoxMargin,
+            "timeline.boxTextMargin" to timelineBoxTextMargin,
+            "timeline.noteMargin" to timelineNoteMargin,
+            "timeline.messageMargin" to timelineMessageMargin,
+            "timeline.bottomMarginAdj" to timelineBottomMarginAdj,
+            "timeline.taskFontSize" to timelineTaskFontSize,
+            "timeline.taskMargin" to timelineTaskMargin,
+            "timeline.activationWidth" to timelineActivationWidth,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
+            )
+        }
+        if (timelineUseWidth != null && !timelineUseWidth.isFinite()) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'timeline.useWidth' must be finite",
+            )
+        }
         val pieTextPosition = float(pie, "textPosition", "pie.textPosition")
         val pieDonutHole = float(pie, "donutHole", "pie.donutHole")
         val pieLegendPosition = enumString(
@@ -693,6 +791,84 @@ internal object MermaidPreprocessor {
         if (pieDonutHole != null && (!pieDonutHole.isFinite() || pieDonutHole !in 0f..0.9f)) {
             readError = MermaidError.Configuration(
                 "Mermaid $sourceName 'pie.donutHole' must be between 0 and 0.9",
+            )
+        }
+        val quadrantChartWidth =
+            float(quadrantChart, "chartWidth", "quadrantChart.chartWidth")
+        val quadrantChartHeight =
+            float(quadrantChart, "chartHeight", "quadrantChart.chartHeight")
+        val quadrantTitleFontSize =
+            float(quadrantChart, "titleFontSize", "quadrantChart.titleFontSize")
+        val quadrantTitlePadding =
+            float(quadrantChart, "titlePadding", "quadrantChart.titlePadding")
+        val quadrantPadding =
+            float(quadrantChart, "quadrantPadding", "quadrantChart.quadrantPadding")
+        val quadrantXAxisLabelPadding =
+            float(quadrantChart, "xAxisLabelPadding", "quadrantChart.xAxisLabelPadding")
+        val quadrantYAxisLabelPadding =
+            float(quadrantChart, "yAxisLabelPadding", "quadrantChart.yAxisLabelPadding")
+        val quadrantXAxisLabelFontSize =
+            float(quadrantChart, "xAxisLabelFontSize", "quadrantChart.xAxisLabelFontSize")
+        val quadrantYAxisLabelFontSize =
+            float(quadrantChart, "yAxisLabelFontSize", "quadrantChart.yAxisLabelFontSize")
+        val quadrantLabelFontSize =
+            float(quadrantChart, "quadrantLabelFontSize", "quadrantChart.quadrantLabelFontSize")
+        val quadrantTextTopPadding =
+            float(quadrantChart, "quadrantTextTopPadding", "quadrantChart.quadrantTextTopPadding")
+        val quadrantPointTextPadding =
+            float(quadrantChart, "pointTextPadding", "quadrantChart.pointTextPadding")
+        val quadrantPointLabelFontSize =
+            float(quadrantChart, "pointLabelFontSize", "quadrantChart.pointLabelFontSize")
+        val quadrantPointRadius =
+            float(quadrantChart, "pointRadius", "quadrantChart.pointRadius")
+        val quadrantXAxisPosition = enumString(
+            quadrantChart,
+            "xAxisPosition",
+            "quadrantChart.xAxisPosition",
+            setOf("top", "bottom"),
+        )
+        val quadrantYAxisPosition = enumString(
+            quadrantChart,
+            "yAxisPosition",
+            "quadrantChart.yAxisPosition",
+            setOf("left", "right"),
+        )
+        val quadrantInternalBorderStrokeWidth = float(
+            quadrantChart,
+            "quadrantInternalBorderStrokeWidth",
+            "quadrantChart.quadrantInternalBorderStrokeWidth",
+        )
+        val quadrantExternalBorderStrokeWidth = float(
+            quadrantChart,
+            "quadrantExternalBorderStrokeWidth",
+            "quadrantChart.quadrantExternalBorderStrokeWidth",
+        )
+        val quadrantUseMaxWidth =
+            boolean(quadrantChart, "useMaxWidth", "quadrantChart.useMaxWidth")
+        listOf(
+            "quadrantChart.chartWidth" to quadrantChartWidth,
+            "quadrantChart.chartHeight" to quadrantChartHeight,
+            "quadrantChart.titleFontSize" to quadrantTitleFontSize,
+            "quadrantChart.titlePadding" to quadrantTitlePadding,
+            "quadrantChart.quadrantPadding" to quadrantPadding,
+            "quadrantChart.xAxisLabelPadding" to quadrantXAxisLabelPadding,
+            "quadrantChart.yAxisLabelPadding" to quadrantYAxisLabelPadding,
+            "quadrantChart.xAxisLabelFontSize" to quadrantXAxisLabelFontSize,
+            "quadrantChart.yAxisLabelFontSize" to quadrantYAxisLabelFontSize,
+            "quadrantChart.quadrantLabelFontSize" to quadrantLabelFontSize,
+            "quadrantChart.quadrantTextTopPadding" to quadrantTextTopPadding,
+            "quadrantChart.pointTextPadding" to quadrantPointTextPadding,
+            "quadrantChart.pointLabelFontSize" to quadrantPointLabelFontSize,
+            "quadrantChart.pointRadius" to quadrantPointRadius,
+            "quadrantChart.quadrantInternalBorderStrokeWidth" to
+                quadrantInternalBorderStrokeWidth,
+            "quadrantChart.quadrantExternalBorderStrokeWidth" to
+                quadrantExternalBorderStrokeWidth,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
             )
         }
         val xyWidth = float(xyChart, "width", "xyChart.width")
@@ -866,6 +1042,26 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName '${invalid.first}' must be positive",
             )
         }
+        val kanbanPadding = float(kanban, "padding", "kanban.padding")
+        val kanbanSectionWidth = float(kanban, "sectionWidth", "kanban.sectionWidth")
+        val kanbanTicketBaseUrl =
+            string(kanban, "ticketBaseUrl", "kanban.ticketBaseUrl")
+        if (
+            kanbanPadding != null &&
+            (!kanbanPadding.isFinite() || kanbanPadding < 0f)
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'kanban.padding' must be non-negative",
+            )
+        }
+        if (
+            kanbanSectionWidth != null &&
+            (!kanbanSectionWidth.isFinite() || kanbanSectionWidth <= 0f)
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'kanban.sectionWidth' must be positive",
+            )
+        }
         val topLook = appearanceString(map, "look", "look")
             ?.takeIf(USABLE_LOOKS::contains)
         val titleTopMargin = float(flowchart, "titleTopMargin", "flowchart.titleTopMargin")
@@ -1031,10 +1227,66 @@ internal object MermaidPreprocessor {
                         titleFontSize = journeyTitleFontSize,
                     )
                 },
+                timeline = timeline?.let {
+                    MermaidTimelineConfigOverride(
+                        useWidth = timelineUseWidth,
+                        useMaxWidth = timelineUseMaxWidth,
+                        theme = timelineTheme,
+                        look = timelineLook,
+                        layout = timelineLayout,
+                        diagramMarginX = timelineDiagramMarginX,
+                        diagramMarginY = timelineDiagramMarginY,
+                        leftMargin = timelineLeftMargin,
+                        width = timelineWidth,
+                        height = timelineHeight,
+                        padding = timelinePadding,
+                        boxMargin = timelineBoxMargin,
+                        boxTextMargin = timelineBoxTextMargin,
+                        noteMargin = timelineNoteMargin,
+                        messageMargin = timelineMessageMargin,
+                        messageAlign = timelineMessageAlign,
+                        bottomMarginAdj = timelineBottomMarginAdj,
+                        rightAngles = timelineRightAngles,
+                        taskFontSize = timelineTaskFontSize,
+                        taskFontFamily = timelineTaskFontFamily,
+                        taskMargin = timelineTaskMargin,
+                        activationWidth = timelineActivationWidth,
+                        textPlacement = timelineTextPlacement,
+                        actorColours = timelineActorColours,
+                        sectionFills = timelineSectionFills,
+                        sectionColours = timelineSectionColours,
+                        disableMulticolor = timelineDisableMulticolor,
+                    )
+                },
                 pieTextPosition = pieTextPosition,
                 pieDonutHole = pieDonutHole,
                 pieLegendPosition = pieLegendPosition,
                 pieHighlightSlice = pieHighlightSlice,
+                quadrantChart = quadrantChart?.let {
+                    MermaidQuadrantChartConfigOverride(
+                        chartWidth = quadrantChartWidth,
+                        chartHeight = quadrantChartHeight,
+                        titleFontSize = quadrantTitleFontSize,
+                        titlePadding = quadrantTitlePadding,
+                        quadrantPadding = quadrantPadding,
+                        xAxisLabelPadding = quadrantXAxisLabelPadding,
+                        yAxisLabelPadding = quadrantYAxisLabelPadding,
+                        xAxisLabelFontSize = quadrantXAxisLabelFontSize,
+                        yAxisLabelFontSize = quadrantYAxisLabelFontSize,
+                        quadrantLabelFontSize = quadrantLabelFontSize,
+                        quadrantTextTopPadding = quadrantTextTopPadding,
+                        pointTextPadding = quadrantPointTextPadding,
+                        pointLabelFontSize = quadrantPointLabelFontSize,
+                        pointRadius = quadrantPointRadius,
+                        xAxisPosition = quadrantXAxisPosition,
+                        yAxisPosition = quadrantYAxisPosition,
+                        quadrantInternalBorderStrokeWidth =
+                            quadrantInternalBorderStrokeWidth,
+                        quadrantExternalBorderStrokeWidth =
+                            quadrantExternalBorderStrokeWidth,
+                        useMaxWidth = quadrantUseMaxWidth,
+                    )
+                },
                 xyChart = xyChart?.let {
                     MermaidXyChartConfigOverride(
                         width = xyWidth,
@@ -1079,6 +1331,13 @@ internal object MermaidPreprocessor {
                     )
                 } else {
                     null
+                },
+                kanban = kanban?.let {
+                    MermaidKanbanConfigOverride(
+                        padding = kanbanPadding,
+                        sectionWidth = kanbanSectionWidth,
+                        ticketBaseUrl = kanbanTicketBaseUrl,
+                    )
                 },
                 themeVariables = parsedThemeVariables?.scalars,
                 themeColorArrays = parsedThemeVariables?.arrays,
@@ -1262,10 +1521,12 @@ internal data class MermaidConfigOverride(
     val ganttWeekday: String? = null,
     val ganttUseWidth: Float? = null,
     val journey: MermaidJourneyConfigOverride? = null,
+    val timeline: MermaidTimelineConfigOverride? = null,
     val pieTextPosition: Float? = null,
     val pieDonutHole: Float? = null,
     val pieLegendPosition: String? = null,
     val pieHighlightSlice: String? = null,
+    val quadrantChart: MermaidQuadrantChartConfigOverride? = null,
     val xyChart: MermaidXyChartConfigOverride? = null,
     val curve: String? = null,
     val fontSize: Float? = null,
@@ -1274,6 +1535,7 @@ internal data class MermaidConfigOverride(
     val requirementThemeName: String? = null,
     val gitGraph: MermaidGitGraphConfigOverride? = null,
     val mindmap: MermaidMindmapConfigOverride? = null,
+    val kanban: MermaidKanbanConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
     val look: String? = null,
@@ -1336,10 +1598,20 @@ internal data class MermaidConfigOverride(
             overrides.journey != null -> journey?.merge(overrides.journey) ?: overrides.journey
             else -> journey
         },
+        timeline = when {
+            overrides.timeline != null ->
+                timeline?.merge(overrides.timeline) ?: overrides.timeline
+            else -> timeline
+        },
         pieTextPosition = overrides.pieTextPosition ?: pieTextPosition,
         pieDonutHole = overrides.pieDonutHole ?: pieDonutHole,
         pieLegendPosition = overrides.pieLegendPosition ?: pieLegendPosition,
         pieHighlightSlice = overrides.pieHighlightSlice ?: pieHighlightSlice,
+        quadrantChart = when {
+            overrides.quadrantChart != null ->
+                quadrantChart?.merge(overrides.quadrantChart) ?: overrides.quadrantChart
+            else -> quadrantChart
+        },
         xyChart = when {
             overrides.xyChart != null -> xyChart?.merge(overrides.xyChart) ?: overrides.xyChart
             else -> xyChart
@@ -1358,6 +1630,11 @@ internal data class MermaidConfigOverride(
             overrides.mindmap != null ->
                 mindmap?.merge(overrides.mindmap) ?: overrides.mindmap
             else -> mindmap
+        },
+        kanban = when {
+            overrides.kanban != null ->
+                kanban?.merge(overrides.kanban) ?: overrides.kanban
+            else -> kanban
         },
         themeVariables = when {
             overrides.themeVariables != null ->
@@ -1401,6 +1678,7 @@ internal data class MermaidConfigOverride(
                 minNodeWidth = minNodeWidth ?: options.minNodeWidth,
                 flowchartPadding = flowchartPadding ?: options.flowchartPadding,
                 classPadding = classPadding ?: options.classPadding,
+                classNotePadding = classPadding ?: options.classNotePadding,
                 classHideEmptyMembersBox =
                     classHideEmptyMembersBox ?: options.classHideEmptyMembersBox,
                 classHierarchicalNamespaces =
@@ -1439,10 +1717,13 @@ internal data class MermaidConfigOverride(
                 ganttWeekday = ganttWeekday ?: options.ganttWeekday,
                 ganttUseWidth = ganttUseWidth ?: options.ganttUseWidth,
                 journey = journey?.applyTo(options.journey) ?: options.journey,
+                timeline = timeline?.applyTo(options.timeline) ?: options.timeline,
                 pieTextPosition = pieTextPosition ?: options.pieTextPosition,
                 pieDonutHole = pieDonutHole ?: options.pieDonutHole,
                 pieLegendPosition = pieLegendPosition ?: options.pieLegendPosition,
                 pieHighlightSlice = pieHighlightSlice ?: options.pieHighlightSlice,
+                quadrantChart =
+                    quadrantChart?.applyTo(options.quadrantChart) ?: options.quadrantChart,
                 xyChart = xyChart?.applyTo(options.xyChart) ?: options.xyChart,
                 curve = curve ?: options.curve,
                 fontSize = fontSize ?: options.fontSize,
@@ -1452,6 +1733,7 @@ internal data class MermaidConfigOverride(
                     requirementThemeName ?: options.requirementThemeName,
                 gitGraph = gitGraph?.applyTo(options.gitGraph) ?: options.gitGraph,
                 mindmap = mindmap?.applyTo(options.mindmap) ?: options.mindmap,
+                kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
                 look = resolvedLook,
@@ -1490,6 +1772,25 @@ internal data class MermaidMindmapConfigOverride(
         maxNodeWidth = maxNodeWidth ?: options.maxNodeWidth,
         useMaxWidth = useMaxWidth ?: options.useMaxWidth,
         layoutAlgorithm = layoutAlgorithm ?: options.layoutAlgorithm,
+    )
+}
+
+internal data class MermaidKanbanConfigOverride(
+    val padding: Float? = null,
+    val sectionWidth: Float? = null,
+    val ticketBaseUrl: String? = null,
+) {
+    fun merge(overrides: MermaidKanbanConfigOverride): MermaidKanbanConfigOverride =
+        MermaidKanbanConfigOverride(
+            padding = overrides.padding ?: padding,
+            sectionWidth = overrides.sectionWidth ?: sectionWidth,
+            ticketBaseUrl = overrides.ticketBaseUrl ?: ticketBaseUrl,
+        )
+
+    fun applyTo(options: MermaidKanbanOptions): MermaidKanbanOptions = options.copy(
+        padding = padding ?: options.padding,
+        sectionWidth = sectionWidth ?: options.sectionWidth,
+        ticketBaseUrl = ticketBaseUrl ?: options.ticketBaseUrl,
     )
 }
 
@@ -1607,6 +1908,175 @@ internal data class MermaidJourneyConfigOverride(
         titleFontFamily = titleFontFamily ?: options.titleFontFamily,
         titleFontSize = titleFontSize ?: options.titleFontSize,
     )
+}
+
+internal data class MermaidTimelineConfigOverride(
+    val useWidth: Float? = null,
+    val useMaxWidth: Boolean? = null,
+    val theme: String? = null,
+    val look: String? = null,
+    val layout: String? = null,
+    val diagramMarginX: Float? = null,
+    val diagramMarginY: Float? = null,
+    val leftMargin: Float? = null,
+    val width: Float? = null,
+    val height: Float? = null,
+    val padding: Float? = null,
+    val boxMargin: Float? = null,
+    val boxTextMargin: Float? = null,
+    val noteMargin: Float? = null,
+    val messageMargin: Float? = null,
+    val messageAlign: String? = null,
+    val bottomMarginAdj: Float? = null,
+    val rightAngles: Boolean? = null,
+    val taskFontSize: Float? = null,
+    val taskFontFamily: String? = null,
+    val taskMargin: Float? = null,
+    val activationWidth: Float? = null,
+    val textPlacement: String? = null,
+    val actorColours: List<SceneColor>? = null,
+    val sectionFills: List<SceneColor>? = null,
+    val sectionColours: List<SceneColor>? = null,
+    val disableMulticolor: Boolean? = null,
+) {
+    fun merge(overrides: MermaidTimelineConfigOverride): MermaidTimelineConfigOverride =
+        MermaidTimelineConfigOverride(
+            useWidth = overrides.useWidth ?: useWidth,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            theme = overrides.theme ?: theme,
+            look = overrides.look ?: look,
+            layout = overrides.layout ?: layout,
+            diagramMarginX = overrides.diagramMarginX ?: diagramMarginX,
+            diagramMarginY = overrides.diagramMarginY ?: diagramMarginY,
+            leftMargin = overrides.leftMargin ?: leftMargin,
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            padding = overrides.padding ?: padding,
+            boxMargin = overrides.boxMargin ?: boxMargin,
+            boxTextMargin = overrides.boxTextMargin ?: boxTextMargin,
+            noteMargin = overrides.noteMargin ?: noteMargin,
+            messageMargin = overrides.messageMargin ?: messageMargin,
+            messageAlign = overrides.messageAlign ?: messageAlign,
+            bottomMarginAdj = overrides.bottomMarginAdj ?: bottomMarginAdj,
+            rightAngles = overrides.rightAngles ?: rightAngles,
+            taskFontSize = overrides.taskFontSize ?: taskFontSize,
+            taskFontFamily = overrides.taskFontFamily ?: taskFontFamily,
+            taskMargin = overrides.taskMargin ?: taskMargin,
+            activationWidth = overrides.activationWidth ?: activationWidth,
+            textPlacement = overrides.textPlacement ?: textPlacement,
+            actorColours = overrides.actorColours ?: actorColours,
+            sectionFills = overrides.sectionFills ?: sectionFills,
+            sectionColours = overrides.sectionColours ?: sectionColours,
+            disableMulticolor = overrides.disableMulticolor ?: disableMulticolor,
+        )
+
+    fun applyTo(options: MermaidTimelineOptions): MermaidTimelineOptions = options.copy(
+        useWidth = useWidth ?: options.useWidth,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        theme = theme ?: options.theme,
+        look = look ?: options.look,
+        layout = layout ?: options.layout,
+        diagramMarginX = diagramMarginX ?: options.diagramMarginX,
+        diagramMarginY = diagramMarginY ?: options.diagramMarginY,
+        leftMargin = leftMargin ?: options.leftMargin,
+        width = width ?: options.width,
+        height = height ?: options.height,
+        padding = padding ?: options.padding,
+        boxMargin = boxMargin ?: options.boxMargin,
+        boxTextMargin = boxTextMargin ?: options.boxTextMargin,
+        noteMargin = noteMargin ?: options.noteMargin,
+        messageMargin = messageMargin ?: options.messageMargin,
+        messageAlign = messageAlign ?: options.messageAlign,
+        bottomMarginAdj = bottomMarginAdj ?: options.bottomMarginAdj,
+        rightAngles = rightAngles ?: options.rightAngles,
+        taskFontSize = taskFontSize ?: options.taskFontSize,
+        taskFontFamily = taskFontFamily ?: options.taskFontFamily,
+        taskMargin = taskMargin ?: options.taskMargin,
+        activationWidth = activationWidth ?: options.activationWidth,
+        textPlacement = textPlacement ?: options.textPlacement,
+        actorColours = actorColours ?: options.actorColours,
+        sectionFills = sectionFills ?: options.sectionFills,
+        sectionColours = sectionColours ?: options.sectionColours,
+        disableMulticolor = disableMulticolor ?: options.disableMulticolor,
+    )
+}
+
+internal data class MermaidQuadrantChartConfigOverride(
+    val chartWidth: Float? = null,
+    val chartHeight: Float? = null,
+    val titleFontSize: Float? = null,
+    val titlePadding: Float? = null,
+    val quadrantPadding: Float? = null,
+    val xAxisLabelPadding: Float? = null,
+    val yAxisLabelPadding: Float? = null,
+    val xAxisLabelFontSize: Float? = null,
+    val yAxisLabelFontSize: Float? = null,
+    val quadrantLabelFontSize: Float? = null,
+    val quadrantTextTopPadding: Float? = null,
+    val pointTextPadding: Float? = null,
+    val pointLabelFontSize: Float? = null,
+    val pointRadius: Float? = null,
+    val xAxisPosition: String? = null,
+    val yAxisPosition: String? = null,
+    val quadrantInternalBorderStrokeWidth: Float? = null,
+    val quadrantExternalBorderStrokeWidth: Float? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(
+        overrides: MermaidQuadrantChartConfigOverride,
+    ): MermaidQuadrantChartConfigOverride = MermaidQuadrantChartConfigOverride(
+        chartWidth = overrides.chartWidth ?: chartWidth,
+        chartHeight = overrides.chartHeight ?: chartHeight,
+        titleFontSize = overrides.titleFontSize ?: titleFontSize,
+        titlePadding = overrides.titlePadding ?: titlePadding,
+        quadrantPadding = overrides.quadrantPadding ?: quadrantPadding,
+        xAxisLabelPadding = overrides.xAxisLabelPadding ?: xAxisLabelPadding,
+        yAxisLabelPadding = overrides.yAxisLabelPadding ?: yAxisLabelPadding,
+        xAxisLabelFontSize = overrides.xAxisLabelFontSize ?: xAxisLabelFontSize,
+        yAxisLabelFontSize = overrides.yAxisLabelFontSize ?: yAxisLabelFontSize,
+        quadrantLabelFontSize = overrides.quadrantLabelFontSize ?: quadrantLabelFontSize,
+        quadrantTextTopPadding =
+            overrides.quadrantTextTopPadding ?: quadrantTextTopPadding,
+        pointTextPadding = overrides.pointTextPadding ?: pointTextPadding,
+        pointLabelFontSize = overrides.pointLabelFontSize ?: pointLabelFontSize,
+        pointRadius = overrides.pointRadius ?: pointRadius,
+        xAxisPosition = overrides.xAxisPosition ?: xAxisPosition,
+        yAxisPosition = overrides.yAxisPosition ?: yAxisPosition,
+        quadrantInternalBorderStrokeWidth =
+            overrides.quadrantInternalBorderStrokeWidth ?: quadrantInternalBorderStrokeWidth,
+        quadrantExternalBorderStrokeWidth =
+            overrides.quadrantExternalBorderStrokeWidth ?: quadrantExternalBorderStrokeWidth,
+        useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+    )
+
+    fun applyTo(options: MermaidQuadrantChartOptions): MermaidQuadrantChartOptions =
+        options.copy(
+            chartWidth = chartWidth ?: options.chartWidth,
+            chartHeight = chartHeight ?: options.chartHeight,
+            titleFontSize = titleFontSize ?: options.titleFontSize,
+            titlePadding = titlePadding ?: options.titlePadding,
+            quadrantPadding = quadrantPadding ?: options.quadrantPadding,
+            xAxisLabelPadding = xAxisLabelPadding ?: options.xAxisLabelPadding,
+            yAxisLabelPadding = yAxisLabelPadding ?: options.yAxisLabelPadding,
+            xAxisLabelFontSize = xAxisLabelFontSize ?: options.xAxisLabelFontSize,
+            yAxisLabelFontSize = yAxisLabelFontSize ?: options.yAxisLabelFontSize,
+            quadrantLabelFontSize =
+                quadrantLabelFontSize ?: options.quadrantLabelFontSize,
+            quadrantTextTopPadding =
+                quadrantTextTopPadding ?: options.quadrantTextTopPadding,
+            pointTextPadding = pointTextPadding ?: options.pointTextPadding,
+            pointLabelFontSize = pointLabelFontSize ?: options.pointLabelFontSize,
+            pointRadius = pointRadius ?: options.pointRadius,
+            xAxisPosition = xAxisPosition ?: options.xAxisPosition,
+            yAxisPosition = yAxisPosition ?: options.yAxisPosition,
+            quadrantInternalBorderStrokeWidth =
+                quadrantInternalBorderStrokeWidth
+                    ?: options.quadrantInternalBorderStrokeWidth,
+            quadrantExternalBorderStrokeWidth =
+                quadrantExternalBorderStrokeWidth
+                    ?: options.quadrantExternalBorderStrokeWidth,
+            useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        )
 }
 
 internal data class MermaidXyChartConfigOverride(
