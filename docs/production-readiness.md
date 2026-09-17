@@ -18,9 +18,10 @@ rated Stable. A successful build alone is not sufficient.
 - Implemented families: 15; pending families: 18
 - Release status: **Not Stable; detail re-audit and full-family translation in progress**
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
-  Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, and Pie
-  (`2,816/2,816` accepted; `2,756 pass / 60 manually reviewed / 0 fail`;
-  every family geometry gate passing)
+  Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
+  and User Journey (`3,072/3,072` accepted;
+  `2,993 pass / 79 manually reviewed / 0 fail`; every family geometry gate
+  passing)
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
 
@@ -36,7 +37,7 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | Eleven families have 2,816/2,816 accepted detail and geometry pairs: 2,756 automatic passes plus 60 manually accepted ER text-position reviews; four implemented families still rely on legacy evidence | **Eleven families passing; overall re-audit in progress** |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | Twelve families have 3,072/3,072 accepted detail and geometry pairs: 2,993 automatic passes plus 79 manually accepted ER/Journey text reviews; three implemented families still rely on legacy evidence | **Twelve families passing; overall re-audit in progress** |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 257/257 points across 15 implemented families; 18 families remain | **Incomplete** |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 197-case corpus equality test for the implemented subset | Passing for the implemented subset |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 15 by 11 matrix: 165/165 renders | Passing for the implemented subset; detail parity pending |
@@ -129,7 +130,7 @@ open severity-1 correctness, crash, resource-exhaustion, or data-exposure
 defects.
 
 The full rule is not currently satisfied. The current 15-family matrix retains
-legacy evidence for four families, and that coarse geometry check did not
+legacy evidence for three families, and that coarse geometry check did not
 detect a visible Git Graph paint-order defect. No family is promoted back to
 Stable until its 256-case detail queue is empty or every explicit exception is
 reviewed and justified; overall Stable additionally requires all 33 official

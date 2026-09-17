@@ -37,8 +37,8 @@
 >
 > 当前 **[3,840 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
 > 已覆盖全部 15 个已实现家族。Flowchart、XY Chart、Quadrant Chart、Timeline、
-> Kanban、Sequence、Class、State、Entity Relationship、Gantt 与 Pie 已完成新的
-> 256 案例细节门禁。User Journey、Requirement、Git Graph 与 Mindmap 仍是待 replacement
+> Kanban、Sequence、Class、State、Entity Relationship、Gantt、Pie 与 User Journey
+> 已完成新的 256 案例细节门禁。Requirement、Git Graph 与 Mindmap 仍是待 replacement
 > 细节重审的旧截图证据；该报告不代表 Mermaid 已完整兼容。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
@@ -49,8 +49,8 @@ WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，�
 ## 当前验证状态
 
 已实现的 15 个家族仍有仓库内可复现的测试与截图。Flowchart、XY Chart、Quadrant Chart、
-Timeline、Kanban、Sequence、Class、State、Entity Relationship、Gantt 与 Pie 已通过新的
-细节门禁，其他已实现家族的 Native/Official 证据正在升级并重新审查。
+Timeline、Kanban、Sequence、Class、State、Entity Relationship、Gantt、Pie 与 User Journey
+已通过新的细节门禁，其他已实现家族的 Native/Official 证据正在升级并重新审查。
 
 | 证据 | 结果 |
 | --- | ---: |
@@ -61,8 +61,8 @@ Timeline、Kanban、Sequence、Class、State、Entity Relationship、Gantt 与 P
 | 已声明能力覆盖率 | 257/257 |
 | 大规模视觉矩阵 | 3,840 个唯一源码，每个已实现家族 256 个 |
 | Native/Official 截图 | 7,680 张矩阵截图，另有 394 张独立语料截图 |
-| 矩阵细节审查 | 11 个家族：2,816/2,816 验收；其中 2,756 个自动通过，60 个 ER 文本位置告警经人工复核通过；其余 4 个家族待重审 |
-| 自动视觉检查 | 3,840/3,840 几何通过；11 个家族的细节门禁通过 |
+| 矩阵细节审查 | 12 个家族：3,072/3,072 验收；其中 2,993 个自动通过，79 个 ER/Journey 文本告警经人工复核通过；其余 3 个家族待重审 |
+| 自动视觉检查 | 3,840/3,840 几何通过；12 个家族的细节门禁通过 |
 | 确定性 SceneGraph 重放 | 197 个通过，0 个不一致 |
 | 内置主题矩阵 | 165/165 |
 | 独立生成的 Native 压力输入 | 3,840 |
@@ -131,7 +131,7 @@ Timeline、Kanban、Sequence、Class、State、Entity Relationship、Gantt 与 P
 | Entity Relationship | 细节门禁通过 | 13 | 属性、基数、关系、嵌套子图 | [兼容性](docs/er-compatibility.md) |
 | Gantt | 细节门禁通过 | 13 | 日期、依赖、排除日期、里程碑、D3 风格刻度 | [兼容性](docs/gantt-compatibility.md) |
 | Pie | 细节门禁通过 | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
-| User Journey | 细节重审 | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
+| User Journey | 细节门禁通过 | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
 | Requirement | 细节重审 | 13 | SysML 类型与字段、元素、七类关系、Dagre、样式 | [兼容性](docs/requirement-compatibility.md) |
 | Git Graph | 细节重审 | 13 | Langium 语法、分支、合并、cherry-pick、方向与主题 | [兼容性](docs/gitgraph-compatibility.md) |
 | Mindmap | 细节重审 | 13 | Jison/Mindmap DB、CoSE-Bilkent、Dagre、tidy tree、形状与主题 | [兼容性](docs/mindmap-compatibility.md) |

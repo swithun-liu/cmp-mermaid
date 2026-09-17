@@ -122,7 +122,7 @@ class JourneyLayoutTest {
             ),
         )
         val legendLines = scene.elements.filterIsInstance<SceneText>()
-            .filter { text -> text.bounds.left == 36f }
+            .filter { text -> text.bounds.left == 46f }
         val task = scene.elements.filterIsInstance<SceneShape>()
             .single { shape -> shape.id == "journey-task-0" }
 

@@ -70,13 +70,16 @@ Native/Official pairs pass the geometry gate. The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
 defect and is not a detail-parity pass by itself. Flowchart, XY Chart, Quadrant
 Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt,
-and Pie contribute 2,816 Native/Official pairs accepted by the replacement
-detail gate. Ten families contribute
+Pie, and User Journey contribute 3,072 Native/Official pairs accepted by the
+replacement detail gate. Ten families contribute
 `2,560 pass / 0 review / 0 fail`; ER contributes
-`196 pass / 60 manually reviewed / 0 fail`. This systematic matrix broadens
-layout and text-pressure coverage, but it is not counted as 3,840 independent
-topologies. The separate randomized stress corpus remains Native-only
-robustness evidence and is not presented as Official parity.
+`196 pass / 60 manually reviewed / 0 fail`; Journey contributes
+`237 pass / 19 manually reviewed / 0 fail`. Journey reviews are benign
+platform-font line-segmentation differences for one complete long actor label.
+This systematic matrix broadens layout and text-pressure coverage, but it is
+not counted as 3,840 independent topologies. The separate randomized stress
+corpus remains Native-only robustness evidence and is not presented as
+Official parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.
 Unsupported legal features must return `MermaidError.UnsupportedFeature`

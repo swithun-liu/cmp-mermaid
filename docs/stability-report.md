@@ -2,7 +2,7 @@
 
 > [!WARNING]
 > This report covers the current 15-family implemented subset, not a current
-> overall Stable decision. Four families still require replacement detail
+> overall Stable decision. Three families still require replacement detail
 > review, and 18 official Mermaid families remain untranslated. See the
 > [33-family roadmap](full-diagram-roadmap.md) for the complete status and
 > promotion gate.
@@ -24,7 +24,7 @@ Native-only randomized stress inputs.
 | Large-scale visual matrix | 3,840 unique Mermaid sources: 256 per diagram type |
 | Native core render results | 197 independent plus 3,840 matrix cases passed, 0 failed |
 | Web Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots, 0 render errors |
-| Manual visual review | 176 replacement-gate sheets across 11 families; four implemented families remain pending |
+| Manual visual review | 192 replacement-gate sheets across 12 families; three implemented families remain pending |
 | Automated visual geometry | 3,840/3,840 matrix pairs and 197/197 independent pairs passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 renders passed: 15 diagram types by 11 themes |
@@ -37,21 +37,24 @@ Native-only randomized stress inputs.
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
 **Current conclusion:** all 15 implemented families pass the shared core,
-geometry, determinism, theme, and resource gates. Eleven also pass the
+geometry, determinism, theme, and resource gates. Twelve also pass the
 replacement detail gate. This evidence does not satisfy the 33-family Stable
 criteria and must not be used as an overall Stable decision.
 
 ## Current Replacement-Gate Progress
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, and Pie are now the first eleven families to
+Entity Relationship, Gantt, Pie, and User Journey are now the first twelve
+families to
 complete the replacement visual gate. Each has 256 unique same-source
 Native/Official pairs, a 256/256 geometry result, and 16 paged contact sheets.
 The accepted
-replacement total is 2,816/2,816 pairs across 176 manually reviewed sheets:
-`2,756 pass / 60 manually reviewed / 0 fail`. All 60 reviews are ER
-text-position threshold findings with complete text, no clipping or overlap,
-and passing raster checks.
+replacement total is 3,072/3,072 pairs across 192 manually reviewed sheets:
+`2,993 pass / 79 manually reviewed / 0 fail`. The 60 ER reviews are
+text-position threshold findings. The 19 Journey reviews are text-segmentation
+findings for one long actor label whose two lines break at different words.
+All reviewed cases preserve complete text, have no clipping or overlap, and
+pass raster checks.
 
 - Flowchart content ratios: width `1.026-1.119`, height `0.945-1.047`,
   foreground ink `0.948-1.241`.
@@ -75,6 +78,8 @@ and passing raster checks.
   foreground ink `0.964-1.023`.
 - Pie content ratios: width `0.992-1.050`, height `0.994-1.019`,
   foreground ink `0.993-1.042`.
+- User Journey content ratios: width `1.020-1.032`, height `1.036-1.057`,
+  foreground ink `0.983-1.073`.
 - All 16 Flowchart contact sheets and all 256 same-source pairs were manually
   inspected after correcting Bang/Cloud edge intersection bounds. No
   unresolved marker, routing, label, clipping, overlap, or paint-order defect
@@ -117,6 +122,13 @@ and passing raster checks.
   inspected after matching Mermaid's centered viewport normalization and
   legend-aware bounds. No unresolved slice, percentage, legend, title,
   clipping, overlap, or paint-order defect remains.
+- All 16 User Journey contact sheets and all 256 same-source pairs were
+  manually inspected after matching Mermaid's actor-legend text offset. The 19
+  queued cases differ only in line segmentation for the complete
+  `Regional Compliance Review Coordination Team` label; both sides retain ten
+  text elements with no clipping or overlap. No unresolved section, task,
+  actor, score face, guide, label, clipping, overlap, or paint-order defect
+  remains.
 
 This is a per-family result. Overall status remains Not Stable until the other
 implemented families complete the replacement audit and all 33 official
@@ -178,13 +190,13 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | Entity Relationship | 13 | 16/16 | commerce, aliases, attributes, cardinalities, nested subgraphs | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Pie | 13 | 16/16 | cost, escaped labels, donut, legends, themes, many slices | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
-| User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Historical review; detail re-audit pending |
+| User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Requirement | 13 | 17/17 | typed requirements, elements, relationships, directions, styling, metadata | Historical review; detail re-audit pending |
 | Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Historical review; detail re-audit pending |
 | Mindmap | 13 | 22/22 | hierarchy, shapes, text, CoSE-Bilkent, Dagre, tidy tree, configuration, themes | Historical review; detail re-audit pending |
 | Kanban | 13 | 17/17 | sections, tasks, metadata, priorities, ticket links, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 
-Rows still marked "Historical review" preserve the former review record only.
+The three rows still marked "Historical review" preserve the former review record only.
 They do not satisfy the new manifest and perceptual checks and therefore are
 not current acceptance decisions.
 
@@ -356,9 +368,14 @@ normalization and legend-aware bounds.
 ![User Journey complex Native and Official corpus](assets/stability-report/journey-complex-corpus.png)
 
 The historical review recorded all 256 Journey pairs as acceptable. That
-conclusion is pending the new detail re-audit. The legacy geometry ratios were
-`1.020-1.032` for width, `1.031-1.050` for height, and `0.999-1.080` for
-foreground ink.
+result has now been replaced by a manifest-backed detail audit:
+`237 pass / 19 manually reviewed / 0 fail`. All 19 reviews are the same benign
+platform-font line-break difference for the complete
+`Regional Compliance Review Coordination Team` actor label; both sides retain
+ten text elements with no clipping or overlap. Matrix width, height, and
+foreground-ink ratios are `1.020-1.032`, `1.036-1.057`, and `0.983-1.073`.
+All 16 contact sheets were manually reviewed after matching Mermaid's
+actor-legend text offset.
 
 </details>
 

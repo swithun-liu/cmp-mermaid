@@ -14,10 +14,10 @@ layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
-Relationship, Gantt, Pie, and Kanban have completed the replacement detail
-gate and manual contact-sheet review. User Journey, Requirement, Git Graph,
-and Mindmap remain in this index as legacy capture evidence pending replacement
-detail review.
+Relationship, Gantt, Pie, User Journey, and Kanban have completed the
+replacement detail gate and manual contact-sheet review. Requirement,
+Git Graph, and Mindmap remain in this index as legacy capture evidence pending
+replacement detail review.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>

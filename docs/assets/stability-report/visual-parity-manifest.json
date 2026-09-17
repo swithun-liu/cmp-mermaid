@@ -1,7 +1,7 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "visual-parity",
-  "generatedAt": "2026-09-17T08:52:15.441Z",
+  "generatedAt": "2026-09-17T10:01:20.613Z",
   "caseCount": 3840,
   "cases": [
     {
@@ -70985,9 +70985,9 @@
       "sourceSha256": "0d494cb2083264b62557319011e1404b210d3506666b66d1e7be113baf7d5186",
       "nativeFile": "parity_journey_001_native.png",
       "officialFile": "parity_journey_001_official.png",
-      "nativeBytes": 37586,
+      "nativeBytes": 37604,
       "officialBytes": 39775,
-      "nativeSha256": "004ffeda247ffd66d67cd09116d5bf8be8d5b9e46429ce22c5064b0e55b96c1b",
+      "nativeSha256": "fc0d3ea3787f74791f7dd8d11bbe991df067d1ccfa0f055f1c41481906699fe8",
       "officialSha256": "298679089fbc21542be49dbb650aa9c2640ee0fdcd04abfc5e8df1e4565a8894"
     },
     {
@@ -71009,9 +71009,9 @@
       "sourceSha256": "cb1950cbf900a195e7d35d6a04a5fabc8decb9fb46251a1980a9b3eea554a11b",
       "nativeFile": "parity_journey_002_native.png",
       "officialFile": "parity_journey_002_official.png",
-      "nativeBytes": 38000,
+      "nativeBytes": 37955,
       "officialBytes": 40246,
-      "nativeSha256": "d51baaf6df48b84514fddd09913024770f1bcebd9af36dc6ada682c0ea93268a",
+      "nativeSha256": "aa2caf0df2d934113f2fb11bed63800168da5652c8b76631ba0716eaacc55a49",
       "officialSha256": "fd518516d65e05b27ddc87e694999202f420f29550efa33f6898712ee1124523"
     },
     {
@@ -71033,9 +71033,9 @@
       "sourceSha256": "c0683e0f9c541725038cea8aa2395f7811a59c900518908aa59d9d6358792862",
       "nativeFile": "parity_journey_003_native.png",
       "officialFile": "parity_journey_003_official.png",
-      "nativeBytes": 39920,
+      "nativeBytes": 39922,
       "officialBytes": 41998,
-      "nativeSha256": "130976a6bb24b372583713b5a4ad3e14ce327cc83c0d2af708d42c67aa87bd5a",
+      "nativeSha256": "19be124ec58e751adff852b68e9d0a7c122b08ffdc8d204e800aa4d48e7615d8",
       "officialSha256": "1b6a01c0c304a4eb924adfb9688e61bf04c3e0f8d32fffc15c59c901fe5e826c"
     },
     {
@@ -71057,9 +71057,9 @@
       "sourceSha256": "32398c3d9ecb9c8092aefd5a5f83011922c0e167cedb7f9f84b3213ad9daa59a",
       "nativeFile": "parity_journey_004_native.png",
       "officialFile": "parity_journey_004_official.png",
-      "nativeBytes": 39765,
+      "nativeBytes": 39682,
       "officialBytes": 43234,
-      "nativeSha256": "ad82c707c59cc661ba9eb5ee6b7250223eef1ae48f78f28ae950ef172c499c87",
+      "nativeSha256": "ee77f3bf591b0dba1cf5585c9db24aa8d3df1ec80df943801ca58e0b2c2af98f",
       "officialSha256": "6f8e272e765b4be7b073e14c90ffca6e940201e0be257b378ee0fdc75a150521"
     },
     {
@@ -71081,9 +71081,9 @@
       "sourceSha256": "4cfe5accfa31b914e611a51ae68441e4254b2973967ffa6a6c3b6a8f50d8fced",
       "nativeFile": "parity_journey_005_native.png",
       "officialFile": "parity_journey_005_official.png",
-      "nativeBytes": 38675,
+      "nativeBytes": 38769,
       "officialBytes": 39643,
-      "nativeSha256": "1a41a372e48fc4c3ae77e7e65962c0adc884e4ff3161455acfa7a9fcfb21311f",
+      "nativeSha256": "ff43e6c17a275a1299c0066dcaa47182d7932a6f6e64976ad63bbffe9e0df8f3",
       "officialSha256": "5a2af3debd0be0bd2d41b1ce49ae488690e0e51f8fd84b68a38323fb5ef7af4d"
     },
     {
@@ -71113,9 +71113,9 @@
       "sourceSha256": "1146880c9e06505ae10ba098cfea2cbc8c866fff33ed28ca443800496b8964a3",
       "nativeFile": "parity_journey_006_native.png",
       "officialFile": "parity_journey_006_official.png",
-      "nativeBytes": 37636,
+      "nativeBytes": 37643,
       "officialBytes": 38928,
-      "nativeSha256": "6075569f6d5ad9744c914c11e171f03bc5c37fe89cb2d7c0e3f3225a3e899434",
+      "nativeSha256": "4bac7653e87656b573932ab626d6defbff5ac488006f223061996d2649f70730",
       "officialSha256": "e187d285a853b25e3ddf0ed5a73139af309e2a44eeb0e93b4cb10728e7521fb7"
     },
     {
@@ -71145,9 +71145,9 @@
       "sourceSha256": "f5fe4f44d7bb1beb86667b0d2fb69601344946ffabadcc6c6dabb8f287b35055",
       "nativeFile": "parity_journey_007_native.png",
       "officialFile": "parity_journey_007_official.png",
-      "nativeBytes": 35658,
+      "nativeBytes": 35712,
       "officialBytes": 36775,
-      "nativeSha256": "006c48e7965729b0aef9803ade2957f29b8fe9284b16d75fae821642b0f8368a",
+      "nativeSha256": "5e662c34493456a2d1bc2ad2d04343946d4583c9fa1ea210aa7d3aef70037dd1",
       "officialSha256": "2c45abca34080bb1df01d2eb1c2e9ed4d48d12f22a9d06dabdd3338138091dd1"
     },
     {
@@ -71176,9 +71176,9 @@
       "sourceSha256": "cb8ee0111c491cda4d52066737f5bf53e413730fb4acf0a193b53796a9196a5d",
       "nativeFile": "parity_journey_008_native.png",
       "officialFile": "parity_journey_008_official.png",
-      "nativeBytes": 41211,
+      "nativeBytes": 41212,
       "officialBytes": 40634,
-      "nativeSha256": "d66d7d01816facda964a4de2cdabe3e6678de5ffc40987f0304ef64dc8c7bdf0",
+      "nativeSha256": "fd9bcff7ba94898315e11de194ba9473b2e9299335e11592a912c6d6684042c7",
       "officialSha256": "428dc4e3a3acfcecda29164274cafb5cb22f8b8e175db26a39d817cd226c8d32"
     },
     {
@@ -71207,9 +71207,9 @@
       "sourceSha256": "7bf4fab3ddf562f1c34f32213620a5db9374638cee8364c1267262d433c80d04",
       "nativeFile": "parity_journey_009_native.png",
       "officialFile": "parity_journey_009_official.png",
-      "nativeBytes": 38447,
+      "nativeBytes": 38481,
       "officialBytes": 36556,
-      "nativeSha256": "dec673633f16a02aaaf277669dace9920fdb5ad2e5c5377ae8bce0b7f6ead31c",
+      "nativeSha256": "d4b61988c567040b73c470431e27a2376a5777fe72df65ecc0d2e367ba02f0ae",
       "officialSha256": "83ce6a34b7cca4a2401a2ec2710d1615e2c8bee2b798dfae2d7a75f98d1f918b"
     },
     {
@@ -71236,9 +71236,9 @@
       "sourceSha256": "c66091d05853575401803b04d493f9b4c6c0c41b474aec685f3275a06b3dbf31",
       "nativeFile": "parity_journey_010_native.png",
       "officialFile": "parity_journey_010_official.png",
-      "nativeBytes": 38326,
+      "nativeBytes": 38367,
       "officialBytes": 36612,
-      "nativeSha256": "455200a9e36d06c53320a4e4b720341a9375e02e61da88e88c052de0239de9ef",
+      "nativeSha256": "1acbe5a33a717501630399e24db3365606bed09f58f8bc276f485d165d74c079",
       "officialSha256": "ff7e6d416dbf7e31096cfda0d27ecb5625c26e315f11a6b858a9ffd24ea97984"
     },
     {
@@ -71265,9 +71265,9 @@
       "sourceSha256": "722172a536ed860da2e32c75d49b1b0f071d5c35f27b5697da6b0df2082bd296",
       "nativeFile": "parity_journey_011_native.png",
       "officialFile": "parity_journey_011_official.png",
-      "nativeBytes": 38694,
+      "nativeBytes": 38711,
       "officialBytes": 39649,
-      "nativeSha256": "42a2563eb6d5960aa1502fcc4aa880f41e3a5d2d73255558294d173089b46e80",
+      "nativeSha256": "f84e784bdbe1931cdd84e4a0f01268f7f75fb771a1ca0e0697423847521ce006",
       "officialSha256": "fcf1b6857fcf9efb26349faf847651b0080ebe32f5ffec667abe3ac6536216a3"
     },
     {
@@ -71294,9 +71294,9 @@
       "sourceSha256": "818085963e8057fea0c4a57f1d940eeb0e01511a34a9d74e98e99ddb8fd37c45",
       "nativeFile": "parity_journey_012_native.png",
       "officialFile": "parity_journey_012_official.png",
-      "nativeBytes": 46933,
+      "nativeBytes": 46801,
       "officialBytes": 45744,
-      "nativeSha256": "f7c9edabd359e52f89d4b856141b3d677355fd9ef2dcc8926e86b7c91ad591de",
+      "nativeSha256": "05f81ac3578ff1e733790f11ad33d8d18f4230b02ed47366e5f69a1c4e04017c",
       "officialSha256": "95f4afe269af751ee872ead4b23b860b13641dde967a7110187b90c240c6d7a7"
     },
     {
@@ -71323,9 +71323,9 @@
       "sourceSha256": "f995d777a3a93b4311871913dc785f08f420db5304369add474a481cd2010157",
       "nativeFile": "parity_journey_013_native.png",
       "officialFile": "parity_journey_013_official.png",
-      "nativeBytes": 48878,
+      "nativeBytes": 48715,
       "officialBytes": 45883,
-      "nativeSha256": "04467ea7d001e797cd691c74121e66ca848ddbf3ccd64b6497429397cfc5d80b",
+      "nativeSha256": "b77ebad8dea0511de6bd01010eaf8e12d8687d9e380ac81355b851fdb1e13d20",
       "officialSha256": "179350e7d686675d1b7f692292a8a8bb25a3da006056c5ff2ce3b646ac7ed073"
     },
     {
@@ -71347,9 +71347,9 @@
       "sourceSha256": "20b92cad59717adf1a07d197706c3a741629325f0b3a73b36af630486b314fc3",
       "nativeFile": "parity_journey_014_native.png",
       "officialFile": "parity_journey_014_official.png",
-      "nativeBytes": 37917,
+      "nativeBytes": 37935,
       "officialBytes": 40273,
-      "nativeSha256": "ac9c699f42f12273659d04b347be12c532eea5477c91a3f740684248a3a64de8",
+      "nativeSha256": "698a85770de14c9d318aa9fd878bf403ce17ecc89bf9044b43c7df69d76824ac",
       "officialSha256": "40dd9b66a1667bc0d5cf7f9ff304b7bb612a079cf7acffbcc38d69b77c5a6b3e"
     },
     {
@@ -71371,9 +71371,9 @@
       "sourceSha256": "456d89ad28b0c8799f5d7842bc6513892a027e43114e7c6afa869055d252cb7b",
       "nativeFile": "parity_journey_015_native.png",
       "officialFile": "parity_journey_015_official.png",
-      "nativeBytes": 38434,
+      "nativeBytes": 38406,
       "officialBytes": 40568,
-      "nativeSha256": "8589c48113cec27b26147bcd1f480ddcdcfc1768aeb1788b5916dfb087d27a11",
+      "nativeSha256": "785f6824bd590cf0aea53c660a7a0d7109d7f941f51c2495d34b59c1c9283c02",
       "officialSha256": "7e48385c2816f04bae5ef18cc8e81bf7a8713d723679c4ef01b9770c8550dfb6"
     },
     {
@@ -71395,9 +71395,9 @@
       "sourceSha256": "007a78f5c62b8d99bd2428ebc2ea2540b2a512135612cfd0d434d96bac345c1f",
       "nativeFile": "parity_journey_016_native.png",
       "officialFile": "parity_journey_016_official.png",
-      "nativeBytes": 40135,
+      "nativeBytes": 40170,
       "officialBytes": 42402,
-      "nativeSha256": "6f956ccf9f261ffb2c03b9eed0878db8c51937094547261d9f23166c18c5f944",
+      "nativeSha256": "5fab51ad4185a441f8f2d72faaff58fa7a44478d97939f4d64054252ae9aa648",
       "officialSha256": "dc87c1b8236fb2c27f1359bfb4404407ad62006eb9741c159c9a07eb26af7701"
     },
     {
@@ -71419,9 +71419,9 @@
       "sourceSha256": "77212ba349553b07d0de7c23c78efed585d24534680711ac2ba1e32f2c34f9b1",
       "nativeFile": "parity_journey_017_native.png",
       "officialFile": "parity_journey_017_official.png",
-      "nativeBytes": 39964,
+      "nativeBytes": 39848,
       "officialBytes": 42380,
-      "nativeSha256": "05892865cfd77f3577f22d2ddad36915453857e22e91c8a1d070f36b7039aeaa",
+      "nativeSha256": "b38784324c5879e74fc2656b44ada3d04481cecdfc61eff362569f48809feab7",
       "officialSha256": "1191f63c28b854c86db7f05688a15fbd53ad0d2fa7ea2db1ae4b78becce7cdd9"
     },
     {
@@ -71443,9 +71443,9 @@
       "sourceSha256": "c840ddb50e77757aa5af13da3cc8fda2a276bc6d1a83cd7a072334590a6dcab0",
       "nativeFile": "parity_journey_018_native.png",
       "officialFile": "parity_journey_018_official.png",
-      "nativeBytes": 38984,
+      "nativeBytes": 39050,
       "officialBytes": 39573,
-      "nativeSha256": "e23f1beb6cce41afd00c2dfb245212a0e70ce0144c09ffcb1a3a1e894a807859",
+      "nativeSha256": "c8537546903f08215f90ad69f75bd1a2ee534d36481fafda7343217861df5d80",
       "officialSha256": "87f082d7bb8ecec264be4e571d339ce7de4a8885e09d641ad9034f7e973bc773"
     },
     {
@@ -71475,9 +71475,9 @@
       "sourceSha256": "3b2c1e928ed785d3370b60eaacae7e4722f98ff4bd8bcbcf8f60df68b5db7a0e",
       "nativeFile": "parity_journey_019_native.png",
       "officialFile": "parity_journey_019_official.png",
-      "nativeBytes": 38060,
+      "nativeBytes": 38071,
       "officialBytes": 39398,
-      "nativeSha256": "880a19867b77541074b2085a42210f15e9f95bccef89fa86d5b99774b0aebcfb",
+      "nativeSha256": "990182b74b0d1e14371ddad039f0d71035427f82cf7a907e8fab935393346901",
       "officialSha256": "90f768bf849a454c45cf227c1d171b4b116e96b58d1332e4885abaad4a5bd036"
     },
     {
@@ -71507,9 +71507,9 @@
       "sourceSha256": "734b99749d5369ebbdd57eb56f7eb0ed0b9bc3ce64b37ba0d766c0b88b6edd8e",
       "nativeFile": "parity_journey_020_native.png",
       "officialFile": "parity_journey_020_official.png",
-      "nativeBytes": 36398,
+      "nativeBytes": 36454,
       "officialBytes": 37548,
-      "nativeSha256": "08e45fc3dc4e96e06bf217c6dd53e6c3e2602208483a96e0aec19e269bd6fc41",
+      "nativeSha256": "91730bc84e174e2acbebf63cdda3425ca9bd03e0f16228fa20b34a15eeb81110",
       "officialSha256": "2d0a3f46b1c5416b9f0dea40e21aa0284657b06ad5d657f376d7a18a62fd0da9"
     },
     {
@@ -71538,9 +71538,9 @@
       "sourceSha256": "903965d2c6738873d620a9717fd056299801d50bbaf2c3cea852b3241d95164c",
       "nativeFile": "parity_journey_021_native.png",
       "officialFile": "parity_journey_021_official.png",
-      "nativeBytes": 40102,
+      "nativeBytes": 40049,
       "officialBytes": 40535,
-      "nativeSha256": "efb0b00cb9597f1dfceaf1d906d950456a3af4f23f1878f4c2a16a5c9eb31a97",
+      "nativeSha256": "46a2094c502c3f193e59ca9c68feca652d23db0bd4a0620b9504a80fe5d73157",
       "officialSha256": "91767120c5ab4befd4b9c2260a3d275f19195163fbc541576cb23cd08c184b00"
     },
     {
@@ -71569,9 +71569,9 @@
       "sourceSha256": "154745dfd7b95554619ddfbabda69919f6e4e931b461aaab88985dbc5ff53b40",
       "nativeFile": "parity_journey_022_native.png",
       "officialFile": "parity_journey_022_official.png",
-      "nativeBytes": 39032,
+      "nativeBytes": 39084,
       "officialBytes": 37235,
-      "nativeSha256": "fbc5cdf12bcd51adf255d61aba4169b07ad92d79c051e5cdf91bd5fdb7cd51d8",
+      "nativeSha256": "fbb4dcf5c38564fe782cb256f41e93d8e386da3658e604fbb82f7541fba58f9f",
       "officialSha256": "ab13b36463133c5a91f5b0d177cb98eb402ad12975ddce17e48597a28b40ab5d"
     },
     {
@@ -71598,9 +71598,9 @@
       "sourceSha256": "d0ee0929308b7e2577deb6c3a270ada76dd8aee461d369f141ad532f4865b7d3",
       "nativeFile": "parity_journey_023_native.png",
       "officialFile": "parity_journey_023_official.png",
-      "nativeBytes": 39080,
+      "nativeBytes": 39113,
       "officialBytes": 37206,
-      "nativeSha256": "085fdfcd9e1b646ce5c5160c04b864c0fa26a5b1860b0e1c97cf04b15201d64b",
+      "nativeSha256": "f6f21d8360b2ecc80ba753d6b360e1c47b066270fbc8d6ecb7690419a4b0b3d6",
       "officialSha256": "33c861aec3408aa8c3f5f07e84d59c28ca668128750ca30ffccaef26e4d67ab9"
     },
     {
@@ -71627,9 +71627,9 @@
       "sourceSha256": "34c051ac55550e027d228129fbc55515e1fc51c012d75f76328500ea24b18805",
       "nativeFile": "parity_journey_024_native.png",
       "officialFile": "parity_journey_024_official.png",
-      "nativeBytes": 39162,
+      "nativeBytes": 39172,
       "officialBytes": 40270,
-      "nativeSha256": "8aab39145967974c22ec45c58be8c14ad346efcdf0e64cbef4d3a8652dc3ef0e",
+      "nativeSha256": "e5c0f11bd7e34c94d5dfc30144acdf45a9e3a5a2a5546d703db1ec53c84c8486",
       "officialSha256": "61c4fe821dc08995dbc3c42e1d3ec10738e810ddb4f8e5ec50a688e510d7fe72"
     },
     {
@@ -71656,9 +71656,9 @@
       "sourceSha256": "6583bd3c3e32f81af22c8706cadf613e83cb832fa07de22ff55f79b9634dee63",
       "nativeFile": "parity_journey_025_native.png",
       "officialFile": "parity_journey_025_official.png",
-      "nativeBytes": 48696,
+      "nativeBytes": 48581,
       "officialBytes": 47887,
-      "nativeSha256": "e6de82072ec5d5c49fb028a394e808e60eb4bb7878dbd61fab3e66931e80d8a8",
+      "nativeSha256": "94384a52ba0947bf0ae9d0caf836a8445fcb2252e50a23aa680724681d723dc7",
       "officialSha256": "3ae02fcad6f896ae9ed5a1bbb2985f864a814c3cd23944bedd34822253eaa778"
     },
     {
@@ -71685,9 +71685,9 @@
       "sourceSha256": "2b2ef5eacfb1a057dbc2ac0847559cb30b225ab5bfc7e5666607b7439757bfa6",
       "nativeFile": "parity_journey_026_native.png",
       "officialFile": "parity_journey_026_official.png",
-      "nativeBytes": 50235,
+      "nativeBytes": 50106,
       "officialBytes": 47439,
-      "nativeSha256": "ea4224374f2bc6293f3bb64c6614090a82981b0100c4ec72fd584742ab4f1879",
+      "nativeSha256": "0eef0c17920fb337e54c0830f7948a3ede421c15828115170815dd366630f5dc",
       "officialSha256": "1a3985f5baa44c13948aa7c70e2d01f6cdb262c99ea331067095da05e7cf7641"
     },
     {
@@ -71709,9 +71709,9 @@
       "sourceSha256": "21d8daca88ab251ae175ca1afbc32b3c8a1254d0a384f9e197ff8e36c8101d6e",
       "nativeFile": "parity_journey_027_native.png",
       "officialFile": "parity_journey_027_official.png",
-      "nativeBytes": 38326,
+      "nativeBytes": 38358,
       "officialBytes": 40520,
-      "nativeSha256": "ccccde35e70200d3f42b84041ccecc0184bbef109c2389913dcfcff42b1df7db",
+      "nativeSha256": "be202cfcd99b4e3b6e64907f93434f7abb1428a9ea46984ef31d5c1418f992f1",
       "officialSha256": "bfb7a4071dee4fc5a5546cfc1563f4f0d003a5c57ea2927f8bd4490a38736d85"
     },
     {
@@ -71733,9 +71733,9 @@
       "sourceSha256": "97ee6488c3c057e084e45b354996a72da02405e0af09af4d61343f94efe20f4f",
       "nativeFile": "parity_journey_028_native.png",
       "officialFile": "parity_journey_028_official.png",
-      "nativeBytes": 38757,
+      "nativeBytes": 38717,
       "officialBytes": 40886,
-      "nativeSha256": "f9ad85e19e23c4bc5a58bf4e4c53080c180aec7c5ced13abfdc78454314df126",
+      "nativeSha256": "93057a7964aa0c0b2f56451054eb25774d8e9e2d4283b5a644e14f05b04d47ba",
       "officialSha256": "bab3817d8fa2886a75e06e6af7a987885b50e3b221b12778d6fccfc9d34a3064"
     },
     {
@@ -71757,9 +71757,9 @@
       "sourceSha256": "e59f4cd71f6ec6f23bdeedbd4e326bfefaf64f7812a05cb8ace531a5bb38bee8",
       "nativeFile": "parity_journey_029_native.png",
       "officialFile": "parity_journey_029_official.png",
-      "nativeBytes": 40592,
+      "nativeBytes": 40601,
       "officialBytes": 42802,
-      "nativeSha256": "82c066191932aca9935647a60e38aed608815c7f85ca0030df42d6ca84815e65",
+      "nativeSha256": "b766fd416753bae80dc60080de92820743986c02703a03067b0d7cde1aed7132",
       "officialSha256": "f3f6c40a65f7eac0b53cdbdaceff1d7a393921a4d178f356dd37b6a9c4d0069b"
     },
     {
@@ -71781,9 +71781,9 @@
       "sourceSha256": "e61446e1cf45d5649ead127a0df0f54fe0b272765621507fb150e3502071a096",
       "nativeFile": "parity_journey_030_native.png",
       "officialFile": "parity_journey_030_official.png",
-      "nativeBytes": 40809,
+      "nativeBytes": 40784,
       "officialBytes": 42838,
-      "nativeSha256": "710ceffc572e20a4f6461b872f992afffe2671f99e0b41e7a4df80b7d8e248f9",
+      "nativeSha256": "3765417f4c4c68812b48d4399c5dfc296ff9cced0685190f41090543065d736d",
       "officialSha256": "d1b2acea850ae08a91457f69ed48024f62ffaf37f4ee9f6ca5d4d85b194bc025"
     },
     {
@@ -71805,9 +71805,9 @@
       "sourceSha256": "7447d5425fa84a32d2c663bd1037ff6cc901b600448c4179a11388e2f478c2bc",
       "nativeFile": "parity_journey_031_native.png",
       "officialFile": "parity_journey_031_official.png",
-      "nativeBytes": 39331,
+      "nativeBytes": 39406,
       "officialBytes": 39954,
-      "nativeSha256": "ed4c26cf6ef4259010030bb149a036d138642ab62b636da335ba745f7945249a",
+      "nativeSha256": "389be03dba7841d7a1897ea4f7b99a2f065fa578a5ee7772c66df0762f85e4ad",
       "officialSha256": "babfecd73f931eae439345dc94fa4602d321fb0aec7354d1fbe0d67b25532774"
     },
     {
@@ -71837,9 +71837,9 @@
       "sourceSha256": "be591eafc0b4b75b8ff8db5a5733ff5e7bc65aaad5648551999709dab93de569",
       "nativeFile": "parity_journey_032_native.png",
       "officialFile": "parity_journey_032_official.png",
-      "nativeBytes": 39126,
+      "nativeBytes": 39135,
       "officialBytes": 40289,
-      "nativeSha256": "831b07bc194333d49052bf40e8107586e4d974eff7987d4ec9eed6bffa6a3f28",
+      "nativeSha256": "cfee518555e7c54b034f40248bec85af4334181dfdd0974d77e73aa6b82ad6d8",
       "officialSha256": "6fcb167107df15ba4997faa752f1b0a398df83a44d58f8f6040356345d2403ef"
     },
     {
@@ -71869,9 +71869,9 @@
       "sourceSha256": "17c2944e1d244e89b843d75cf13cfc8ff6accf7c59e4ee4a3724afb4904cb3e9",
       "nativeFile": "parity_journey_033_native.png",
       "officialFile": "parity_journey_033_official.png",
-      "nativeBytes": 37302,
+      "nativeBytes": 37346,
       "officialBytes": 38248,
-      "nativeSha256": "3f3a9d77c3556f8bc9cc6ae6fcefb0187f1d6a861af9e7d87d7e8022427e1d26",
+      "nativeSha256": "ca3769f4a139bef182edc0f4ce6a8e4813c3bf22385b3b462b805dcb7a4b271a",
       "officialSha256": "c5489e359003b8335eb8f33fdfff00b9aa9a673abdc4b356e23fe1e386c7bd80"
     },
     {
@@ -71900,9 +71900,9 @@
       "sourceSha256": "8bdb1ff0f9d74afc2fa524e4513868afadadb44f0080ce3c4d782c88c9ab1aa6",
       "nativeFile": "parity_journey_034_native.png",
       "officialFile": "parity_journey_034_official.png",
-      "nativeBytes": 41337,
+      "nativeBytes": 41278,
       "officialBytes": 41321,
-      "nativeSha256": "ab1338ded45279a80f98b785e6f37cf285ce1b88357114db1f925609e73b0bf3",
+      "nativeSha256": "3e838113df20457b2bd3cb8140c121bc7f1f823565952976e882d0ec71ac4597",
       "officialSha256": "f92c9856708df453dd3d8cb19d74d39543fba1f633cda76f5ac995a8cb0bf915"
     },
     {
@@ -71931,9 +71931,9 @@
       "sourceSha256": "c7ae5f6875d7b275262e05bd922fe89b4ea94fe53e30eacf1d2986d2fdb9873f",
       "nativeFile": "parity_journey_035_native.png",
       "officialFile": "parity_journey_035_official.png",
-      "nativeBytes": 40019,
+      "nativeBytes": 40051,
       "officialBytes": 38263,
-      "nativeSha256": "f5e27d9d6c07865e977f9eb0e897bc93ba553edc704adcc93a41137e5cf13051",
+      "nativeSha256": "28771f315480bdd86790c75c59b3f0e1f3a51db32dad90bfe45c964c2bfee270",
       "officialSha256": "8ca5cd4eab60cdcbfd1a37ff91824f0896fc861c5d16d7898ea98001939ea2d6"
     },
     {
@@ -71960,9 +71960,9 @@
       "sourceSha256": "5ca9d312217dd79d642c06366fbb61c8e32a8c2015b1591fc7fb912feb582444",
       "nativeFile": "parity_journey_036_native.png",
       "officialFile": "parity_journey_036_official.png",
-      "nativeBytes": 39681,
+      "nativeBytes": 39714,
       "officialBytes": 37972,
-      "nativeSha256": "60eb44ec8a20986eb4dd12e9d3b42b83d3c45a43624dac46d8ebde1791d65b4a",
+      "nativeSha256": "ab1fb4a50b7762c658a460a5fbd658df55068e8689bb9f5dabdf40c746b2bad4",
       "officialSha256": "ae71ee14c5f04ccce7e8f7d21e47a375cc1905a2276616b5dac52596208f50f0"
     },
     {
@@ -71989,9 +71989,9 @@
       "sourceSha256": "076795fe06cb9fd03724a345a047dbd598d44c113d085e235d949e0e17ecfac2",
       "nativeFile": "parity_journey_037_native.png",
       "officialFile": "parity_journey_037_official.png",
-      "nativeBytes": 39666,
+      "nativeBytes": 39672,
       "officialBytes": 40869,
-      "nativeSha256": "5b0b07f1eb91207d625f9e3fb61c8ced0789fc57465514ae6d89d68be8adc253",
+      "nativeSha256": "119c26cb78cd88eec0dff8d144dff8762f033d8a34114e52f11eb0b693ea94d4",
       "officialSha256": "2b8302dbc80aa7a88bb07c8852f1298a5901100a5281eeebf111258b18c5fd04"
     },
     {
@@ -72018,9 +72018,9 @@
       "sourceSha256": "8367cefcfc0e10ac00553ff18bc57c8c531b848deae1773ddb6cb2a035c8bc7c",
       "nativeFile": "parity_journey_038_native.png",
       "officialFile": "parity_journey_038_official.png",
-      "nativeBytes": 51096,
+      "nativeBytes": 50985,
       "officialBytes": 49854,
-      "nativeSha256": "31992803e7e152ea580caba1245a1b889ea15b2eab3cf2f427aa6d5235ee0f82",
+      "nativeSha256": "4034b01a7048d5979972399cfb4a373d119dc111502b0e319a798c17666f038b",
       "officialSha256": "f303e8e366a7208e0390376e62c2f0217d8cd28829b1c7b45a3e8a371e6f9dae"
     },
     {
@@ -72047,9 +72047,9 @@
       "sourceSha256": "e91c6d1a3a40f293c2892be928e01e0ff8dc5ba09f69d800dd7c9c3063896668",
       "nativeFile": "parity_journey_039_native.png",
       "officialFile": "parity_journey_039_official.png",
-      "nativeBytes": 51827,
+      "nativeBytes": 51691,
       "officialBytes": 49041,
-      "nativeSha256": "b4d251ecbedbe64435cc43bf59ff98d3467d8b14b5db8cad3fdab1d78d3db6d1",
+      "nativeSha256": "93c313b66b67237d448b2b5b00d23e1e41658e24104e90e536f29bbb4c8ffcfa",
       "officialSha256": "dfa42dc1200f0cfc978d1498f1d67171c0b1fde840b611fc1111f60e669eab03"
     },
     {
@@ -72071,9 +72071,9 @@
       "sourceSha256": "54e54a58ac9d725613e67198f278d1514662d7d6a9421840dc1e2e99b99012b8",
       "nativeFile": "parity_journey_040_native.png",
       "officialFile": "parity_journey_040_official.png",
-      "nativeBytes": 38570,
+      "nativeBytes": 38580,
       "officialBytes": 40762,
-      "nativeSha256": "dcb37d080613ea7cde690ea4a3d831911cdddeba9013887dee7bc840808c57e2",
+      "nativeSha256": "5dd2d21becaa4f6ba9853bb03138c9691ad696328f32505b4e861ca230767199",
       "officialSha256": "1162d38581c303b98d03f3e400ad34b06c7e99ec23c70948cc0a85d26e3d5734"
     },
     {
@@ -72095,9 +72095,9 @@
       "sourceSha256": "0f83673dcb6bed6721b85fdd58584fa7d936d39a85f78b501b80a259b8a70f14",
       "nativeFile": "parity_journey_041_native.png",
       "officialFile": "parity_journey_041_official.png",
-      "nativeBytes": 38617,
+      "nativeBytes": 38574,
       "officialBytes": 40951,
-      "nativeSha256": "276a668cccb95032c4afa8a9e4e1e8304307853e72ea52a5802224eb8580b997",
+      "nativeSha256": "19479c0108f874d7316f4b53af7aeb91a45284b4778567a3da1a9972d19586b5",
       "officialSha256": "bccacdebe1de4f0a0ea4dfd8563afb43e78456c37de7ba9ddd1f113bdd4f0da0"
     },
     {
@@ -72119,9 +72119,9 @@
       "sourceSha256": "f03c695d905005952c7bbe314f00526fe988de8253b5ebe61367fdb394b3145c",
       "nativeFile": "parity_journey_042_native.png",
       "officialFile": "parity_journey_042_official.png",
-      "nativeBytes": 40529,
+      "nativeBytes": 40550,
       "officialBytes": 42745,
-      "nativeSha256": "6910bc7befdbb7c5f355f8bafd3ab5c3fe32f7d2405d0f57d2f9e3b0fd19c639",
+      "nativeSha256": "a54f1c0b4c90aacd4a727d09664d6af1e0b3bb167b36a6804e0dcf696614db47",
       "officialSha256": "c7c402e5552ccc6ef1ec9a9ad467cb6a4044e6d6fef5afe14dfaa4acee341cfc"
     },
     {
@@ -72143,9 +72143,9 @@
       "sourceSha256": "5b41f2193879162271ed245b0b24f6073491050c290b213a62823f9b3d325678",
       "nativeFile": "parity_journey_043_native.png",
       "officialFile": "parity_journey_043_official.png",
-      "nativeBytes": 40797,
+      "nativeBytes": 40699,
       "officialBytes": 42844,
-      "nativeSha256": "7cd2e95f6572bf7db6118e0f71954758aba524b60588dbf04fb01afb682dca25",
+      "nativeSha256": "ba7fe4f16e30f3fc597fc0a2be647cd8a977aaae26d3b3de6ec603b4dcc5eca8",
       "officialSha256": "cfb49b96c0137843abd138df33f9130efd82816869cf65ab52a61d40b5eca0d2"
     },
     {
@@ -72167,9 +72167,9 @@
       "sourceSha256": "61ea6e25a1a316dac01652686083339fc150d043a207b45d90bf983801f5761b",
       "nativeFile": "parity_journey_044_native.png",
       "officialFile": "parity_journey_044_official.png",
-      "nativeBytes": 39387,
+      "nativeBytes": 39459,
       "officialBytes": 40055,
-      "nativeSha256": "f5729a8a4ed61b6f74136ab62ca27b16935db7754e4aec3623e204869e016480",
+      "nativeSha256": "2c85028ecb9e3633d5c1b9555ac7528438f063b571896a56673fb39132f13ef6",
       "officialSha256": "cf61bdac451bd13d73dc6906f3ed3aaf18a2477c9dfe9175009334dd06455aff"
     },
     {
@@ -72199,9 +72199,9 @@
       "sourceSha256": "843433a835a1d6a3cad1e802ac0803809cddba75a784d7f0d804b423e47aa81f",
       "nativeFile": "parity_journey_045_native.png",
       "officialFile": "parity_journey_045_official.png",
-      "nativeBytes": 39139,
+      "nativeBytes": 39144,
       "officialBytes": 40529,
-      "nativeSha256": "e7fed919d743187dd4e66fedf40a327884c84d2c3a6b30403e8602f42f003ec5",
+      "nativeSha256": "706de6505152c24b424738267d1c562e017924b9a9a8f844d54706964a922e0c",
       "officialSha256": "46ba98cf6e6c91b6a4dca140bcf6d77b592f40277814bf9b1c8b9bd7e854541f"
     },
     {
@@ -72231,9 +72231,9 @@
       "sourceSha256": "cd8f66171ddc19907d59b84fe5cc0113c43c2a093664feefcc5375b1ed1f62b2",
       "nativeFile": "parity_journey_046_native.png",
       "officialFile": "parity_journey_046_official.png",
-      "nativeBytes": 37378,
+      "nativeBytes": 37418,
       "officialBytes": 38395,
-      "nativeSha256": "e8f9c10d17b35455d08021e58f3f7730bf015b1629723d7e6e97c77f902ad4c5",
+      "nativeSha256": "3e47d321d44ec81172c83877f3db38c2d476db66508a02c1ca958b796c0894a2",
       "officialSha256": "f28ea8babbf82552c7f96815db7de4336575b79a45a614d6cfb60a9eca5cfc15"
     },
     {
@@ -72262,9 +72262,9 @@
       "sourceSha256": "b3246cc56b1ecbb5d7b21a7c1bff7f08599e65b0945da8f59af3994472007712",
       "nativeFile": "parity_journey_047_native.png",
       "officialFile": "parity_journey_047_official.png",
-      "nativeBytes": 40956,
+      "nativeBytes": 40912,
       "officialBytes": 40719,
-      "nativeSha256": "148bd9e011e9f81251b0628b177bf9e048333feec81701c2a5760688a318532f",
+      "nativeSha256": "7d2937d4a9f8e4edac382baec351dfb2ff820e9c3ec6afadab89daf5a588090e",
       "officialSha256": "cae1e0a23736ec3cbc426f6330c0b4e525c2c33a48bb6c101400c4a227195d79"
     },
     {
@@ -72293,9 +72293,9 @@
       "sourceSha256": "bb6434a690ea03d2772b314c464bdf37d02bb0cbf321c12d6417c1c9bf835214",
       "nativeFile": "parity_journey_048_native.png",
       "officialFile": "parity_journey_048_official.png",
-      "nativeBytes": 40051,
+      "nativeBytes": 40087,
       "officialBytes": 38505,
-      "nativeSha256": "4211a73021488750b8e806a9d79999e0babdef69c3411204e137b9c8716ed0ef",
+      "nativeSha256": "94afa4fa727e4f3b2a86ad930c439d31febc7090892ff844f47ecf1c2cdf0676",
       "officialSha256": "2846068d17ff8b238d3524336ad9e2c1ae76c6e8b47426e4f030f90efe136ef5"
     },
     {
@@ -72322,9 +72322,9 @@
       "sourceSha256": "de43cccb7c4f24c1c7cf858aa01c420ea76dccb32155f130ea59dd9b9c368306",
       "nativeFile": "parity_journey_049_native.png",
       "officialFile": "parity_journey_049_official.png",
-      "nativeBytes": 39375,
+      "nativeBytes": 39422,
       "officialBytes": 37692,
-      "nativeSha256": "b020739809250394fe398bb2dd6e40366a315c9f74f7089945ece498ceeb6f8a",
+      "nativeSha256": "ffab47c7288def53922c01f378b01866e79301785cde262d76b6bef72e0d4887",
       "officialSha256": "a7c9f91bc0e9470cec54246cf610aea0a238f8a0e9772abaee740ebfbaf14286"
     },
     {
@@ -72351,9 +72351,9 @@
       "sourceSha256": "753ea0d2ede530ca8fdb90d2b46e3b99f8b4800b1278ef4c2f43f220f90df771",
       "nativeFile": "parity_journey_050_native.png",
       "officialFile": "parity_journey_050_official.png",
-      "nativeBytes": 39810,
+      "nativeBytes": 39833,
       "officialBytes": 41420,
-      "nativeSha256": "5b3c30a2f2c5ff28647a7ff496f10b3f69ed2a2acfbc5caff20c70268f851986",
+      "nativeSha256": "5bf8eb3093c19b9b51484be86674d93b45043f709b3147f95f182bd8e6d4f77b",
       "officialSha256": "a05c9ffeaedff084c61c3a86558792724f7b2c5eb75e6fbcd882f17e11a871e6"
     },
     {
@@ -72380,9 +72380,9 @@
       "sourceSha256": "75187fa71428290ba1c511f49d3b5b61beb60880940d1e23b3fb1463653d84b3",
       "nativeFile": "parity_journey_051_native.png",
       "officialFile": "parity_journey_051_official.png",
-      "nativeBytes": 50518,
+      "nativeBytes": 50396,
       "officialBytes": 49767,
-      "nativeSha256": "690c4c2d084e5295f245ed85a8350f714480ed7a72d240b5f98096c591882943",
+      "nativeSha256": "0927db86a8da3c809967a6185e7ea8751c23f4ac2260b7424c5a6bbca387c0e0",
       "officialSha256": "d04c3da60ad9ed00da108f9d8657637e670a1aaa5526936dcdf44472acb43db8"
     },
     {
@@ -72409,9 +72409,9 @@
       "sourceSha256": "cab529328df6b26445b5f6ae20ccce1a2827870d373d11d2ce3dbc21d0c75c51",
       "nativeFile": "parity_journey_052_native.png",
       "officialFile": "parity_journey_052_official.png",
-      "nativeBytes": 52158,
+      "nativeBytes": 51984,
       "officialBytes": 48937,
-      "nativeSha256": "d8eb5f21cebdcf8ce004fb25b66712199e55778513c66ebb404a74fc63fd2128",
+      "nativeSha256": "4980d818cd3e511a8096b56246cf1abf81c779c472650c645c4f578bf5ad67f4",
       "officialSha256": "7ba2b300b30623be455eba0cb319b5a29716731868708bf0994ae2abb681e5cb"
     },
     {
@@ -72433,9 +72433,9 @@
       "sourceSha256": "b315a49bf7e2ace56c85c437b1c825ce2c11700471277d072fd616ca21ba514b",
       "nativeFile": "parity_journey_053_native.png",
       "officialFile": "parity_journey_053_official.png",
-      "nativeBytes": 38597,
+      "nativeBytes": 38567,
       "officialBytes": 40796,
-      "nativeSha256": "42f999a566cfe8962d693c22e3825cba97f1d3986acecee3a9e519a01b736d85",
+      "nativeSha256": "dcf8773bbf4c8c10e9dba747cc51cd8342c1503d9a033a291c813f307f94f55b",
       "officialSha256": "6b1a70621a2ca2ec18f3bf18f763fd87bbca5f7dd95b8843ccb54bbd6a6c704d"
     },
     {
@@ -72457,9 +72457,9 @@
       "sourceSha256": "33c19ab6e3bdbb62f66a948588b1bf3a1b645ce9d364161dcc6b4a0dd5654245",
       "nativeFile": "parity_journey_054_native.png",
       "officialFile": "parity_journey_054_official.png",
-      "nativeBytes": 38928,
+      "nativeBytes": 38895,
       "officialBytes": 41207,
-      "nativeSha256": "53f85ff2bc167a39f8f1b8eb0f345212a335449331735e67350534eaed3be5ef",
+      "nativeSha256": "efb927a60862175904263f33894e76e8958d979fa5c151dd63308b800f886b76",
       "officialSha256": "613a44bd16e960fe7aa497bf429977b5ea20de00b75cc11c54e1b349b2e52aa5"
     },
     {
@@ -72481,9 +72481,9 @@
       "sourceSha256": "b0a03b865d7d8bbd0e9dd7000b5dca05703e01e76a682d8b1ca21c1d5ca24340",
       "nativeFile": "parity_journey_055_native.png",
       "officialFile": "parity_journey_055_official.png",
-      "nativeBytes": 40951,
+      "nativeBytes": 40907,
       "officialBytes": 43003,
-      "nativeSha256": "d408df2691337653152afc4190f4f083b4e7f54a2099367e610920c01f2ee072",
+      "nativeSha256": "698a4c87581d595215c72a6e0231faba30be945700ca850e02d9667b6b67c517",
       "officialSha256": "1403626cfbffc73fa5cfbeba3a51adbf55f805af855a8c39d83b6eac622c13ee"
     },
     {
@@ -72505,9 +72505,9 @@
       "sourceSha256": "2a589966fce0f71461b69ab8c4b9e57df561932118ff9cb55b31ed5679fa47df",
       "nativeFile": "parity_journey_056_native.png",
       "officialFile": "parity_journey_056_official.png",
-      "nativeBytes": 40962,
+      "nativeBytes": 40862,
       "officialBytes": 43055,
-      "nativeSha256": "8f46fad1f6825eec30c1b4b4128d5e689644c8b886a25d900e7d28e204dadb40",
+      "nativeSha256": "0ea68f4bf1924fb033edc3ede948b0dcf62ea3372642b4d375038abb8eca0fd5",
       "officialSha256": "3ac3a8ffa0f1a288b6f2940f821c74cb31257a042c7188240d2335d344deb683"
     },
     {
@@ -72529,9 +72529,9 @@
       "sourceSha256": "8fd4f41c1711244b6d8ea10b8674ce157c48fb2ed03b4498021a08bd9055a680",
       "nativeFile": "parity_journey_057_native.png",
       "officialFile": "parity_journey_057_official.png",
-      "nativeBytes": 39437,
+      "nativeBytes": 39517,
       "officialBytes": 40093,
-      "nativeSha256": "e1f926aeb0fea67631c2db8b12ac20d46fed220edf6393da2851f0f8c98a2e48",
+      "nativeSha256": "fa3f8d6d5ac8ffa652e8f6e10f3a59252c354e3f8aa8fab4013fca5936df7824",
       "officialSha256": "e870035300ef33b8c5c8991f8ea332047aec1acd36b1154048efa9d0961f02cd"
     },
     {
@@ -72561,9 +72561,9 @@
       "sourceSha256": "f208b7013b6c0c8a6b78c78125f5d7e2d06b0ea555e3db5bcde2f99ede925368",
       "nativeFile": "parity_journey_058_native.png",
       "officialFile": "parity_journey_058_official.png",
-      "nativeBytes": 39365,
+      "nativeBytes": 39375,
       "officialBytes": 40690,
-      "nativeSha256": "1c3576cd0b461e583231521d4293ea9f995fffb1b3bd8eade077fbff31cf33e0",
+      "nativeSha256": "328f2871b0f057f995bd53458d85236583ce4c17f98974248a940f8fd95f5d45",
       "officialSha256": "b9d0a332c5b41c94aeca2188d5d2d583d18376b5f846f928ad5539a460024ac5"
     },
     {
@@ -72593,9 +72593,9 @@
       "sourceSha256": "6e26638325837249d296dec1db4801f1b2c904492c30e1f5bc3e703e5b6f4cb4",
       "nativeFile": "parity_journey_059_native.png",
       "officialFile": "parity_journey_059_official.png",
-      "nativeBytes": 37558,
+      "nativeBytes": 37606,
       "officialBytes": 38699,
-      "nativeSha256": "bfa1c0297b175b26913834b8113150f1695eddcf5dd871b441d34606107626b3",
+      "nativeSha256": "dc716b09a780421653cd03f13725b73230f302312089351e18cda34ee610b514",
       "officialSha256": "ad083b8df8fccac6384f95375f0a0e6f0959f9b539201f7bed19afab3a484928"
     },
     {
@@ -72624,9 +72624,9 @@
       "sourceSha256": "53b25fb92c0b0237aea60c9a77e18037e23d1d460ea721116512e29c1de1381c",
       "nativeFile": "parity_journey_060_native.png",
       "officialFile": "parity_journey_060_official.png",
-      "nativeBytes": 42291,
+      "nativeBytes": 42251,
       "officialBytes": 42307,
-      "nativeSha256": "4b34fba6e62881344da1d9512c1968b7dceb1e3721f85481b40d48c304ebd93c",
+      "nativeSha256": "70e673b44a9cc352e413c871e397bbbf77f75073d1989c20278c49c08f1b4a19",
       "officialSha256": "6743b10193271cb7f617474906609978bf55a69fa713c6a24066a637d6337b28"
     },
     {
@@ -72655,9 +72655,9 @@
       "sourceSha256": "68748be1481bcec1cb0b4bcacaf33c9ad02e947f4471f4423f5a1214d2191f95",
       "nativeFile": "parity_journey_061_native.png",
       "officialFile": "parity_journey_061_official.png",
-      "nativeBytes": 40388,
+      "nativeBytes": 40418,
       "officialBytes": 38478,
-      "nativeSha256": "d8ef48e3ba37ce1449b698a84d34d8b108bca6a9535498bda72b20a10ff5fbb2",
+      "nativeSha256": "f88938ece1dea2ed0ec39fd337fca63d7983fce1867764d7d460a55f246050b0",
       "officialSha256": "6392d192da0233a3b8c5dc751e4d1a710c1cd49b111e9108fe9677687111f11a"
     },
     {
@@ -72684,9 +72684,9 @@
       "sourceSha256": "73278f051bc134aff4244dff5123a0677699674876b80672b8b53af4741762de",
       "nativeFile": "parity_journey_062_native.png",
       "officialFile": "parity_journey_062_official.png",
-      "nativeBytes": 39968,
+      "nativeBytes": 40011,
       "officialBytes": 38330,
-      "nativeSha256": "2cc9a013caef3cf7f4f8ec8e941b5eb3439f6a89f6cde3db64b8aadf50bd56c9",
+      "nativeSha256": "67298a337baecb83ff67c102818cc07613010832d301c175efb146d52f33d985",
       "officialSha256": "73bef44feec8e77202be4984ab250fa7838cb7787d291234a59388dad4dff0cb"
     },
     {
@@ -72713,9 +72713,9 @@
       "sourceSha256": "1e16cc7d12987b387e527c8b05adfab326b3b232ab3dd4bb64a474e443b8d746",
       "nativeFile": "parity_journey_063_native.png",
       "officialFile": "parity_journey_063_official.png",
-      "nativeBytes": 40219,
+      "nativeBytes": 40241,
       "officialBytes": 41676,
-      "nativeSha256": "55fbf2758fd38b422209d47c8f337f71bbbebaae5fbddfbc92a3c6159ebcc402",
+      "nativeSha256": "0207d0d5271843c24a5aaf7b20f1059b8fa72869cb187943d2f12478004ecda2",
       "officialSha256": "1e50fdea6c6ce1995018ef82300d25122417426973e06bd9b61acafd0c83ff9b"
     },
     {
@@ -72742,9 +72742,9 @@
       "sourceSha256": "d8bcbeb33d473c568b1f3ae123d29d02bbe5083f4eb1f7a80d81923b2b837e99",
       "nativeFile": "parity_journey_064_native.png",
       "officialFile": "parity_journey_064_official.png",
-      "nativeBytes": 51406,
+      "nativeBytes": 51288,
       "officialBytes": 50112,
-      "nativeSha256": "094eb6bb359dc59005aa3f33931097b3c8d66209f1d646e7b66938a2b5aa04c7",
+      "nativeSha256": "b43dc2a3ffab2389be82ed6db98a025b71e6098ab09edf4c12b75ab6754fd875",
       "officialSha256": "a632852eb30f39d7887175b8cf74c8562afd24b42514d0deef467eebc903a205"
     },
     {
@@ -72771,9 +72771,9 @@
       "sourceSha256": "38d650087a61bbb8d5dab98b9e9366070126163683b54eb33d2dfc471dff9618",
       "nativeFile": "parity_journey_065_native.png",
       "officialFile": "parity_journey_065_official.png",
-      "nativeBytes": 53138,
+      "nativeBytes": 52973,
       "officialBytes": 50318,
-      "nativeSha256": "cd657eb30e45767542251e3b0179d0daf0c4d81854c51804e0fe52ca7c4182ae",
+      "nativeSha256": "985c1fb327988b35677e35a08699a0b1138e8304ca51442ebeb8e937e56a5ade",
       "officialSha256": "21f6d4446afb5d50bb988112ffb062954eeb378d8903b44455f3bc05c1ef7070"
     },
     {
@@ -72795,9 +72795,9 @@
       "sourceSha256": "885073942743659cc970e92af6840484efea29011b51b92792294e5037c76ccb",
       "nativeFile": "parity_journey_066_native.png",
       "officialFile": "parity_journey_066_official.png",
-      "nativeBytes": 38870,
+      "nativeBytes": 38839,
       "officialBytes": 40896,
-      "nativeSha256": "e89d615ddd3945a7c6666de87ab72ed9d28b4fa53dcc9af17f564a09b7fd945e",
+      "nativeSha256": "136e33efcb0f77d2916bd6e56ecdbe1eb046389ff365d337c885dae81cbb2459",
       "officialSha256": "2af0c46b8497324034a0c599ae5a9c083ef666143928b4ddd3eec9276c873fe3"
     },
     {
@@ -72819,9 +72819,9 @@
       "sourceSha256": "4f369039510ff7e97268320c857c389893ebafea70cb7ab96305195c3bb9beb7",
       "nativeFile": "parity_journey_067_native.png",
       "officialFile": "parity_journey_067_official.png",
-      "nativeBytes": 38798,
+      "nativeBytes": 38746,
       "officialBytes": 41206,
-      "nativeSha256": "d9e422fb9f25b95f8119f313ba922816f6bc33fd043d9bdbeb8ca228b8c47938",
+      "nativeSha256": "190ca4da52fffc501da5a3c506496ed247b3fbac9c9624919121e623deadd3dd",
       "officialSha256": "8c750a789e4d74ea7cfb68283a149666d932c36236ca4ef66fcf25d0e44fa614"
     },
     {
@@ -72843,9 +72843,9 @@
       "sourceSha256": "77e7768f6b1d1b3543f80d42ba00af8f46307ed4c5d325db675f38f195cf8ea7",
       "nativeFile": "parity_journey_068_native.png",
       "officialFile": "parity_journey_068_official.png",
-      "nativeBytes": 41107,
+      "nativeBytes": 41120,
       "officialBytes": 43077,
-      "nativeSha256": "dcfe4364d35fc70aa7dbbe7fbc1a789d909933b8f7192b90aee9f3a90bce2fef",
+      "nativeSha256": "832435da66e3f389f3605c56548e77390c3231bd149751a6164ec004cd5dc9fc",
       "officialSha256": "becf69b79a16e2591cbc6b189a4cb988c59ee6c136204736b446aa9ea51721f4"
     },
     {
@@ -72867,9 +72867,9 @@
       "sourceSha256": "d3f01c8e9854a889624ef1f502e23236235f40416a9612df528d2995d15c6bff",
       "nativeFile": "parity_journey_069_native.png",
       "officialFile": "parity_journey_069_official.png",
-      "nativeBytes": 41139,
+      "nativeBytes": 41042,
       "officialBytes": 43303,
-      "nativeSha256": "da6c02142ff2ac0d66ccfe5f68440ab0a877f44da2368c2e1bc424a325a27966",
+      "nativeSha256": "b19b781dff9e5dd2c9c342b0e02abdd039df3e31b12696c5fd72326b053def8b",
       "officialSha256": "07dc072a79cc5da31434e3572615c41c717edaf8499c15c304712984b8407415"
     },
     {
@@ -72891,9 +72891,9 @@
       "sourceSha256": "1c7afd8090b09956a3fa3bc111dc7741ed4477377fb668e3894b28956fc5566f",
       "nativeFile": "parity_journey_070_native.png",
       "officialFile": "parity_journey_070_official.png",
-      "nativeBytes": 39588,
+      "nativeBytes": 39664,
       "officialBytes": 40704,
-      "nativeSha256": "8818f916f0f465d155904caa7a6326985cee7a0e2bdfa7442547e9d8575c8d22",
+      "nativeSha256": "c004cacacbc044badb5470684c2efe95da9b620d1f883cbb3dd074955ab8234e",
       "officialSha256": "5457889110049f58825b2d0e9f5b3934ebcbd9db0e26d9722b62f6454ae40bad"
     },
     {
@@ -72923,9 +72923,9 @@
       "sourceSha256": "699577c57df9553b79692bd65740091851b593559c34f2359462461e32da613c",
       "nativeFile": "parity_journey_071_native.png",
       "officialFile": "parity_journey_071_official.png",
-      "nativeBytes": 39410,
+      "nativeBytes": 39422,
       "officialBytes": 40627,
-      "nativeSha256": "61b943eb714bc4fa6d815e1e8f84339ae21eb19c29518744f1baafeac8d99d6b",
+      "nativeSha256": "717600a728d2d27d5fd9f8d93080c2efdb2541e307d2421f0cb00bd38f3302a3",
       "officialSha256": "afc21f56d8efe931b49370a95ea085bde86d03e8f07dc1e7676b830ebc7e9f78"
     },
     {
@@ -72955,9 +72955,9 @@
       "sourceSha256": "f28cf6dfdfbbac2f0edeeeb84c46ea07327b3b5f8ba9d907354a0decf845519b",
       "nativeFile": "parity_journey_072_native.png",
       "officialFile": "parity_journey_072_official.png",
-      "nativeBytes": 37489,
+      "nativeBytes": 37558,
       "officialBytes": 38559,
-      "nativeSha256": "db5d8c5edf947107e52d892e73ed94577a9f28b28346696cd82d077187f95fff",
+      "nativeSha256": "727254a07267afc34549e3bc0fdefaea212e87a8d035a28c773c1c46572f3cfb",
       "officialSha256": "191287ca64b2074bcb0f3175c5d23a382b96f8b6f405eeef65f7b135792b05ed"
     },
     {
@@ -72986,9 +72986,9 @@
       "sourceSha256": "f75cc5ca030735d3f41d23c010cb12be2f0131cef47f2689242789d0818e0611",
       "nativeFile": "parity_journey_073_native.png",
       "officialFile": "parity_journey_073_official.png",
-      "nativeBytes": 41707,
+      "nativeBytes": 41648,
       "officialBytes": 41993,
-      "nativeSha256": "5008fb7c2bfcd14ef45f50b9983ce92da93787ce3e458a105945ff6842097cd0",
+      "nativeSha256": "b13728e8d8d6926079756f7b0cfc52831cf5cfba369520ea87e692a29a9b329a",
       "officialSha256": "f03d8a160d25c59f7ff8008bd357861ef2fa5877e8ebecc4537f530184c7c968"
     },
     {
@@ -73017,9 +73017,9 @@
       "sourceSha256": "0b5d42bc0cc00a1e628d2ae4383a2e34a6b9e988080f96aa9f17e8dddb6dbce9",
       "nativeFile": "parity_journey_074_native.png",
       "officialFile": "parity_journey_074_official.png",
-      "nativeBytes": 40186,
+      "nativeBytes": 40234,
       "officialBytes": 38842,
-      "nativeSha256": "13afb10a9188fafd9974968fe05544f6b9286e99520ad4cec953316d2ac9af46",
+      "nativeSha256": "8af2fbebefea5f0ed304f697e92cc2762e84ce3248af91b280bce4dc853f6064",
       "officialSha256": "fdea03c8cfbb3b112e41111da56f40f2415da8ffb0e0b301af814130b92bea51"
     },
     {
@@ -73046,9 +73046,9 @@
       "sourceSha256": "bc41e23ac140d0b6692b76fa66e1e67b5006a90f1eaf4f7080223f3fceb0282e",
       "nativeFile": "parity_journey_075_native.png",
       "officialFile": "parity_journey_075_official.png",
-      "nativeBytes": 40115,
+      "nativeBytes": 40146,
       "officialBytes": 38608,
-      "nativeSha256": "0b1708c6bfe0730f7efe524632683c0b86c05db58e951891244d37561d0d93dd",
+      "nativeSha256": "b59dc90b48d41a606cc78f4493dce7e958aafef756b014ac96cb6fca6fa22c27",
       "officialSha256": "14e6a8f597a31f3874c3091cbf45365b6a02d569786e0c20ef4f33ef3de763cd"
     },
     {
@@ -73075,9 +73075,9 @@
       "sourceSha256": "227e775de2caaef209bcc1066cc215358f3c0443945abb7cd0e7d9c65a66cf46",
       "nativeFile": "parity_journey_076_native.png",
       "officialFile": "parity_journey_076_official.png",
-      "nativeBytes": 40327,
+      "nativeBytes": 40334,
       "officialBytes": 41984,
-      "nativeSha256": "90da5e2ce24d8b267c6d41505b913a17b6eeb50c49a7d7fb9d69c7d731413125",
+      "nativeSha256": "ea50dfbbcd32d7a0fd40d6063b265b51a543249352cdc0c8769c96b14459973b",
       "officialSha256": "d46c49d02fb1fef556b048c69de6a98533a3260d39352b2f5f597b6fa8e493b0"
     },
     {
@@ -73104,9 +73104,9 @@
       "sourceSha256": "ddcabdb8f4ca89b7d8fcd1690f6f393b6ec4c5a72608385004e79395cee09749",
       "nativeFile": "parity_journey_077_native.png",
       "officialFile": "parity_journey_077_official.png",
-      "nativeBytes": 51087,
+      "nativeBytes": 50992,
       "officialBytes": 49594,
-      "nativeSha256": "532589e8ac32db024057c5c1c91aae511d0d9307173e1db36816fec5acd23949",
+      "nativeSha256": "d8af621da4097f2a72ee2e77751d1d8365bfd83ec1ac0a40ee4be295c1ed20e7",
       "officialSha256": "4315cc81df0cfb5e1ddaab9ba735576cc046961cc27f29d64f8035167b064d44"
     },
     {
@@ -73133,9 +73133,9 @@
       "sourceSha256": "88a1be42f8762ff5d3fd564358a31a1a42e9f9cab0ed26d05518204433721391",
       "nativeFile": "parity_journey_078_native.png",
       "officialFile": "parity_journey_078_official.png",
-      "nativeBytes": 53037,
+      "nativeBytes": 52888,
       "officialBytes": 50304,
-      "nativeSha256": "ccc3f079be202a29de3a9570dde7fd02ba488155b96387a2f9a58902e74f4fcb",
+      "nativeSha256": "3eddb7a2ab373678aba218e4927abd4e9b8c72cc4bbdb780255125d1d418b95c",
       "officialSha256": "01fd499db1a8892bc7d36844cada510886e3d0a46f33bab53557bb55e1985f52"
     },
     {
@@ -73157,9 +73157,9 @@
       "sourceSha256": "629b4c6f30dd2a5521d83fd0e5a793e4bae32ebf3dda93e9b5d52a32633e4c77",
       "nativeFile": "parity_journey_079_native.png",
       "officialFile": "parity_journey_079_official.png",
-      "nativeBytes": 38954,
+      "nativeBytes": 38916,
       "officialBytes": 41353,
-      "nativeSha256": "069a4db268c4f78cd6c0b8130c625d1cee3905e7af7021480a1602522356f86a",
+      "nativeSha256": "6d62783d11667f08e640f47a576bcce6fea2f17a18c8b2420b8de97d87e273d1",
       "officialSha256": "b0d996987b3d27eb7b93bb283166fc39dc10f0184a5277d794b2cdbbacfcfac7"
     },
     {
@@ -73181,9 +73181,9 @@
       "sourceSha256": "8be9e0e5d6186a48850b6d22f30cb2660a821cab2bdd0fce76dfe132786ea4d1",
       "nativeFile": "parity_journey_080_native.png",
       "officialFile": "parity_journey_080_official.png",
-      "nativeBytes": 39464,
+      "nativeBytes": 39450,
       "officialBytes": 41736,
-      "nativeSha256": "a48c2ab71f651176bf52fe0fe1314f066e8a6afbdc27da03c3d074e68c874216",
+      "nativeSha256": "c7a0c94940548a0c4d32391ad14852a6d7d8e4d801a6cdcd946bc26141fa7a7c",
       "officialSha256": "228c029b23f71cf21b6ebb3d9a8ae73ff9d9a5471f8e927e7e654e87731d00e0"
     },
     {
@@ -73205,9 +73205,9 @@
       "sourceSha256": "e0b3417f5cc676378362f6c6d14e36b3e8676c196e4c68f330495fabd8a27902",
       "nativeFile": "parity_journey_081_native.png",
       "officialFile": "parity_journey_081_official.png",
-      "nativeBytes": 41190,
+      "nativeBytes": 41189,
       "officialBytes": 43273,
-      "nativeSha256": "0fa02bab9a37eca55a9a504dcffecc0a6bd6cf6d2d99a0998b1fe99e0dd34a80",
+      "nativeSha256": "a379a4ba00d3c363af6fdd4e02ca3b4145633bbbf615b6fc35e0db67d5935c33",
       "officialSha256": "5ed8ac7b19e40568f2142bad845d5868b264c14893b5bc426c5978cd2efe7afb"
     },
     {
@@ -73229,9 +73229,9 @@
       "sourceSha256": "13e688afb9f4a846049fdc48be223b18cdfe741040c35ffe0d3533fba4850b4c",
       "nativeFile": "parity_journey_082_native.png",
       "officialFile": "parity_journey_082_official.png",
-      "nativeBytes": 41064,
+      "nativeBytes": 40959,
       "officialBytes": 43350,
-      "nativeSha256": "50c13f58b379b01fd9059d7b4147b0059442f15dceaf5a66dff9703a35febc54",
+      "nativeSha256": "41c8ef6e561ffd93e756d6bde6b119bb1f89a3faa57c7d8afa6d8ad92a1fc8db",
       "officialSha256": "60af07414003ee5af8111ece39fe2b02ff95fe39d0879353e4b65ec39d5d0f23"
     },
     {
@@ -73253,9 +73253,9 @@
       "sourceSha256": "1a698e4f23c3b5aaaad4e0227b62407a160c7043554cfa78d4354c2629b5b5d0",
       "nativeFile": "parity_journey_083_native.png",
       "officialFile": "parity_journey_083_official.png",
-      "nativeBytes": 39895,
+      "nativeBytes": 39998,
       "officialBytes": 40532,
-      "nativeSha256": "983db6a262a5a81e62fcc07f77d17cae61dfc1a459233ef6e363f61d6fb85ee4",
+      "nativeSha256": "9b80acfd0b3fd1eaee92dd4546a465e8e683548f61183cc26e64919f2b88fb6a",
       "officialSha256": "e826b4a6e9ad6bf1bbaf5533e2ed5e5db1f7a086d97db79b054f62235d7082f4"
     },
     {
@@ -73285,9 +73285,9 @@
       "sourceSha256": "a4594f6473f30f47bc163e03c0a1694f30910bc2f8c55c96b79bad81ba4513fd",
       "nativeFile": "parity_journey_084_native.png",
       "officialFile": "parity_journey_084_official.png",
-      "nativeBytes": 40084,
+      "nativeBytes": 40096,
       "officialBytes": 40793,
-      "nativeSha256": "b731ddbf8d7dc29ba4a5fd4d671ca4855fd01916ea520a3f38669b4b7fdb402e",
+      "nativeSha256": "ec593ac116e399ce40e54b8ace4cf47bfbfb3bd0663596f8f5caf9183763369c",
       "officialSha256": "1bce73d9b07cbf183dc744ce1db8001f5d19d5cc3dd6e96863b35935421f3dd3"
     },
     {
@@ -73317,9 +73317,9 @@
       "sourceSha256": "229d7511eb235fd9a3dccccae3fd06374867fe188e2cc9fea03119470216940d",
       "nativeFile": "parity_journey_085_native.png",
       "officialFile": "parity_journey_085_official.png",
-      "nativeBytes": 38017,
+      "nativeBytes": 38081,
       "officialBytes": 39022,
-      "nativeSha256": "a7567e255df57c9b7fd3ed31fbfed89a3448e28566bf329ee707106029908ffc",
+      "nativeSha256": "14bd26c81d79808602ca1773725914780ff8fe5bc39cdb3565f5af48af56f124",
       "officialSha256": "f8f65d16524f135ac515b7c2871bedbf8ba8ecf9169f2ff804994b0b2d7ea8bd"
     },
     {
@@ -73348,9 +73348,9 @@
       "sourceSha256": "0efd2a32289526084797925b08fa95a4f1653adc6a717c45eacaf2126f339c48",
       "nativeFile": "parity_journey_086_native.png",
       "officialFile": "parity_journey_086_official.png",
-      "nativeBytes": 43264,
+      "nativeBytes": 43229,
       "officialBytes": 43122,
-      "nativeSha256": "5110638b0718ade8c0f1f992096b2ebce4ddc1168f9e20563c8024943e144886",
+      "nativeSha256": "9249a23c95eb2accd979e22616620b586d522506f03d595a35d9f670d5b895e3",
       "officialSha256": "18fa380b960e31afca728479f81ee40503c9c91da1d09fd4825e605825b68bf8"
     },
     {
@@ -73379,9 +73379,9 @@
       "sourceSha256": "c7b0b2c95639a558f34d616d57d5c4481c0d03242091fd4fe10edceade29fe2c",
       "nativeFile": "parity_journey_087_native.png",
       "officialFile": "parity_journey_087_official.png",
-      "nativeBytes": 40555,
+      "nativeBytes": 40587,
       "officialBytes": 39451,
-      "nativeSha256": "ee39c623e26845be70ce7dd63c8a11ccb50b827264698550efe00833a63506cb",
+      "nativeSha256": "e56a7cc3b7c1b322ea9725272b6fd9b0ca26a2dab523760225265d00541c532a",
       "officialSha256": "eeec8c2bc270aeb850a05fa5f3a6d22f387b05810eed07c9902410261d68b3af"
     },
     {
@@ -73408,9 +73408,9 @@
       "sourceSha256": "4a0dd609d9d95e5e327c1461a56a8bdf5e9708cbf45ceeaa7a4d9e1f8068ad7f",
       "nativeFile": "parity_journey_088_native.png",
       "officialFile": "parity_journey_088_official.png",
-      "nativeBytes": 40652,
+      "nativeBytes": 40695,
       "officialBytes": 38738,
-      "nativeSha256": "7db9616616ad5b7ff44449e95d86610f0961c87bfa38e62387dbddd9cf55f5c8",
+      "nativeSha256": "73a734ab3539dbaf491c2e10abfe89e1122318abdb79a45f59e9512952e64e1d",
       "officialSha256": "6ccfe7ee8f6ba8b3cda6d8d4b7dd139caa216cab2696e3f000a86f15ecd90cd1"
     },
     {
@@ -73437,9 +73437,9 @@
       "sourceSha256": "fa08cf4875c320ffc32e23867b9fb0858ffb4e440ae74a8b2c267b8ea2f5094b",
       "nativeFile": "parity_journey_089_native.png",
       "officialFile": "parity_journey_089_official.png",
-      "nativeBytes": 40564,
+      "nativeBytes": 40574,
       "officialBytes": 42115,
-      "nativeSha256": "b2f41c35c28182775ef8b3921ef13b4ce6a07384c918801386cf6de0cadf4f62",
+      "nativeSha256": "a611a4eb566c77681575260e57c385f29322f439ecaa2ec559d1122ebd426401",
       "officialSha256": "beb6940c0f70c3bcc82b5de56b4b66cafefe4dcd9eeb3b78d075fa8268e11612"
     },
     {
@@ -73466,9 +73466,9 @@
       "sourceSha256": "8cb6bff1c10cf3557af49d1bf525979fd249f467ec7dbf7c801dbe18932b2b98",
       "nativeFile": "parity_journey_090_native.png",
       "officialFile": "parity_journey_090_official.png",
-      "nativeBytes": 52489,
+      "nativeBytes": 52427,
       "officialBytes": 51152,
-      "nativeSha256": "fdfb749f7042236c5f38f83771846d2331ebd8523d51f6c9ee38738986f8fc7b",
+      "nativeSha256": "c1adf6f91c7044e46d45e1bd123b3d2835e3458600a6b6cb4639567ac270de49",
       "officialSha256": "764d02ba2e793906b585d36d00c2a500bf411c15106b294045ee472227fbee44"
     },
     {
@@ -73495,9 +73495,9 @@
       "sourceSha256": "bb7feff5734fab22cd0a550a8b84f0faa88577994039e4ad39a427081a0fc5cb",
       "nativeFile": "parity_journey_091_native.png",
       "officialFile": "parity_journey_091_official.png",
-      "nativeBytes": 53862,
+      "nativeBytes": 53655,
       "officialBytes": 50482,
-      "nativeSha256": "8b24da9b0368aafc831463670d25ef5c41e8631583b2fac9766df3de0aa7652c",
+      "nativeSha256": "61b4866a2bb7b457f14eaed31a945dc6ca50a0b024144eac7678468a8cda700b",
       "officialSha256": "078a2d9a25515072d75480607aacca3bd01688a90d2b0ad862fb1d5559cf8f16"
     },
     {
@@ -73519,9 +73519,9 @@
       "sourceSha256": "1909a4667c355db51113117710977facc7bbb560513d5486dd00d5815a8ea9da",
       "nativeFile": "parity_journey_092_native.png",
       "officialFile": "parity_journey_092_official.png",
-      "nativeBytes": 38890,
+      "nativeBytes": 38883,
       "officialBytes": 41330,
-      "nativeSha256": "75a15746c32264953ad7da3c8277c1b06ed46dc670c4595ef5519eadfd734497",
+      "nativeSha256": "5d683943c222a157230ba01fb4e24b5ea5f079839224aff93ea29b10dfd00a84",
       "officialSha256": "1695121a00ebf2599825f7f66b34bf0106f6298d7f8ab3f97b41ceabdde7d88d"
     },
     {
@@ -73543,9 +73543,9 @@
       "sourceSha256": "8f25c7a331d41778f5bbc352aa22014fcd040de1da9886f2d2bceb1fbdcb315f",
       "nativeFile": "parity_journey_093_native.png",
       "officialFile": "parity_journey_093_official.png",
-      "nativeBytes": 39504,
+      "nativeBytes": 39468,
       "officialBytes": 41503,
-      "nativeSha256": "19dffb41714d28d4f5171b0b8293c5b39f6b8fcef8714a937ade31748a279e4b",
+      "nativeSha256": "6e9d28376e4ba8f5c61f9a4585c504bd1dfedc79e97fbd39d9a0149059e6a78a",
       "officialSha256": "099dbba0d45259964f16a2fe7da079ea8d8503a225d086a8e80d540330bf2dfc"
     },
     {
@@ -73567,9 +73567,9 @@
       "sourceSha256": "8334ace850c4e4c3340afbe0cf71a1bac4f1068b1e34f83ca5258d1fc037221a",
       "nativeFile": "parity_journey_094_native.png",
       "officialFile": "parity_journey_094_official.png",
-      "nativeBytes": 41115,
+      "nativeBytes": 41122,
       "officialBytes": 43422,
-      "nativeSha256": "af3c67e1a2abefa780feacfc6df5e5ba036b223493c62d16baf14d0cac4f0fe9",
+      "nativeSha256": "72da5286150b8758335395ab9d9f0febc2620cbcd369dcea04191eaf4703529f",
       "officialSha256": "8744e22aa61413dc0edd332c8d012a980d2d9db654ed06059fe88883aedd8588"
     },
     {
@@ -73591,9 +73591,9 @@
       "sourceSha256": "9b680eddaf3dde46abba85032b1bf827bd72fe1e659edaf7df18dc6ff14977a8",
       "nativeFile": "parity_journey_095_native.png",
       "officialFile": "parity_journey_095_official.png",
-      "nativeBytes": 41543,
+      "nativeBytes": 41455,
       "officialBytes": 43529,
-      "nativeSha256": "8a9b9de318462ae7a23c044a4032e524a95faa1fc5e1f9154feaef9c764df02c",
+      "nativeSha256": "a2890846fab10b36a8072f0ab78c2bf1dd3326f30154f0f77435be316a6934e2",
       "officialSha256": "a1e542ebafc20575affb1b04c10a0e1e3f1fb30ccece09a3d782a16c22cb5226"
     },
     {
@@ -73615,9 +73615,9 @@
       "sourceSha256": "a2ec8fe86aeee3d21ceac90ac2a81edcfb0ca3774e89fcd2693699f7f92125ec",
       "nativeFile": "parity_journey_096_native.png",
       "officialFile": "parity_journey_096_official.png",
-      "nativeBytes": 39933,
+      "nativeBytes": 40030,
       "officialBytes": 40706,
-      "nativeSha256": "26ecd9c394155b940e1155424dae91d6c2b50ca5e80dc61000a9ac45c0710a12",
+      "nativeSha256": "af992cbb556139dec175262cc0f33f95b0be49c7c1bba5d7e9434671f2abe73a",
       "officialSha256": "8480e6dfaa988cecf8cab931465ca7c35f205a557925177a8d8a98aa4b572dce"
     },
     {
@@ -73647,9 +73647,9 @@
       "sourceSha256": "ea6057125b2c0bfefa0b52eeb5c7ba0a926d7be0244a6adc421b00fcdca9e1d4",
       "nativeFile": "parity_journey_097_native.png",
       "officialFile": "parity_journey_097_official.png",
-      "nativeBytes": 39781,
+      "nativeBytes": 39786,
       "officialBytes": 40810,
-      "nativeSha256": "d85c962caf6bf334fb277fc73a8e92eb5e0afe0ed29e1c53036fe92e8cd7e4e0",
+      "nativeSha256": "2750ab293e0aea06237fd567f953942b9b291c6e6e7d254bfc29d1fef4f2f0c1",
       "officialSha256": "870dc090be06b59fcccbb04970e1b4b732dea8765ab75705218fb5cd3378494a"
     },
     {
@@ -73679,9 +73679,9 @@
       "sourceSha256": "e737d3f6ccd0a0eda415fbf9c1d96a0649808dceb2d1680ffbf083573bfaaee0",
       "nativeFile": "parity_journey_098_native.png",
       "officialFile": "parity_journey_098_official.png",
-      "nativeBytes": 37823,
+      "nativeBytes": 37863,
       "officialBytes": 38956,
-      "nativeSha256": "d185839cfc1b94eb764ba2eb91395c546b3edeee4197edb417fb4d8a5ccdcae3",
+      "nativeSha256": "1ed64ab3263dfcb59e8fa4e74c5b8923c7ced30ddd14f9609bb9ff9077d75369",
       "officialSha256": "31063d3767a7dc76479316d86fd904b32314f428bc0227b2dd6c97651ffd834a"
     },
     {
@@ -73710,9 +73710,9 @@
       "sourceSha256": "911c43fe51108812f83cdc6e83121ccb8b863b98599042a4971698f753dd464e",
       "nativeFile": "parity_journey_099_native.png",
       "officialFile": "parity_journey_099_official.png",
-      "nativeBytes": 43478,
+      "nativeBytes": 43445,
       "officialBytes": 43158,
-      "nativeSha256": "8fa5dfa08f2aaa9f47f3ce1c2f349e60209e1a37c2faa8e90d8ce40f1144d550",
+      "nativeSha256": "ab492052977e2e43ac7f7707ba96ae75c999168a0120bdb431b3a04c6cc38bc1",
       "officialSha256": "4d5055652dd1bc5925c2e2118eba3923a1693914cb0b95f5da2721022e98eef3"
     },
     {
@@ -73741,9 +73741,9 @@
       "sourceSha256": "fa07efd58abebfe19662bd7d292bab1ad97d362df56bacae5f0f0fad73e78a60",
       "nativeFile": "parity_journey_100_native.png",
       "officialFile": "parity_journey_100_official.png",
-      "nativeBytes": 40900,
+      "nativeBytes": 40976,
       "officialBytes": 39264,
-      "nativeSha256": "1eee92848cb221a4cb17620b8b81a6a1ba0543620375bcc9a1c1923f6b3e2d9f",
+      "nativeSha256": "bed41aed92104466816f9b6cfb895d422526c963f55a8488d5a104c31dd20a2e",
       "officialSha256": "b49a15f40fea90f2599afe5f36380100ce71092639e5905ba0f80e17605c456e"
     },
     {
@@ -73770,9 +73770,9 @@
       "sourceSha256": "f8038a0672721ca37eb2af230badd36f07e9df70464d02231cce5d014a7f8a91",
       "nativeFile": "parity_journey_101_native.png",
       "officialFile": "parity_journey_101_official.png",
-      "nativeBytes": 40147,
+      "nativeBytes": 40197,
       "officialBytes": 38783,
-      "nativeSha256": "3a88d6cadc3b523bf8c745a3c02a73e597ffe265fcba7643216c1d554c9c836f",
+      "nativeSha256": "2983d5c4d895addbb100618c3b26c4b3014fa213aa2866016e010ab15b55ebb7",
       "officialSha256": "40693ed5cb72baf85520aa0a52bba76070ae55ba5694fc3119776c11fc797c9a"
     },
     {
@@ -73799,9 +73799,9 @@
       "sourceSha256": "ad73061d4a169c657a582b63d35678b9f6463b1655b4492b6fd72a0589062db4",
       "nativeFile": "parity_journey_102_native.png",
       "officialFile": "parity_journey_102_official.png",
-      "nativeBytes": 40433,
+      "nativeBytes": 40458,
       "officialBytes": 41973,
-      "nativeSha256": "3796f56439091f730283b9a63fe9bb2f43399c07df5f2ffe0f46cb17272bd500",
+      "nativeSha256": "85b42c39ab8c39c61e853d87cbafe5e381edf1c51784c8caaf19776821845186",
       "officialSha256": "e35724ac43607397d60809313648642607ba2998c977cc0fbd081d9d41007ea8"
     },
     {
@@ -73828,9 +73828,9 @@
       "sourceSha256": "3016cee53a074f8896c97c35071bf5d92f29e7e6de65a449ac065c8e2cd32891",
       "nativeFile": "parity_journey_103_native.png",
       "officialFile": "parity_journey_103_official.png",
-      "nativeBytes": 52102,
+      "nativeBytes": 51937,
       "officialBytes": 50472,
-      "nativeSha256": "50047ce6046ec1dc284278deb3851c2bb4f4f7007323f468803de78d3b77f1fe",
+      "nativeSha256": "b8cbcf73e70fbfeffae6356faa3ca4581e0c7a6a782f729250145ae9c3d9361a",
       "officialSha256": "f9c8812372acc94d3a28cbc3d68a370f7672ede725ed7afaf5aa33b3443f427e"
     },
     {
@@ -73857,9 +73857,9 @@
       "sourceSha256": "7d0408c437fb6dc7ee19ab0ee57d9040cef2c23595c0a4e3e48cc93f9dc469db",
       "nativeFile": "parity_journey_104_native.png",
       "officialFile": "parity_journey_104_official.png",
-      "nativeBytes": 53364,
+      "nativeBytes": 53332,
       "officialBytes": 51223,
-      "nativeSha256": "cc1e6e99abd123e09908a984bfc534d623286424031390581d824e2a9e2431be",
+      "nativeSha256": "2c328dd78bba86cf2325c136752f6263515465b9664e0bf8e339b40ea93e3ec1",
       "officialSha256": "05a65d1d580014bbecc052341bf92c0bdebdf8713f3279cbd1ac882abc16349a"
     },
     {
@@ -73881,9 +73881,9 @@
       "sourceSha256": "ab92941f88a13a23d51575a99fa490c5cbc3f4099e3b8914fdc4e26f9d90f949",
       "nativeFile": "parity_journey_105_native.png",
       "officialFile": "parity_journey_105_official.png",
-      "nativeBytes": 39231,
+      "nativeBytes": 39259,
       "officialBytes": 41800,
-      "nativeSha256": "0184ed187b5f8eda5c1172560f44d8260834b217ee213035254cc2f403aa7e88",
+      "nativeSha256": "673335ee6c791797ead8ad425fec62435181f5bf14209f9f0d810ca0e43ffb86",
       "officialSha256": "d40f3dc90511fe557e7d92466da7b50154b94c4a3be3ed81cb2b095b7d3ddecd"
     },
     {
@@ -73905,9 +73905,9 @@
       "sourceSha256": "6fbc117003672353ee9a4432f21cd90c65581ee9815abba13581d92dd6c026dc",
       "nativeFile": "parity_journey_106_native.png",
       "officialFile": "parity_journey_106_official.png",
-      "nativeBytes": 39597,
+      "nativeBytes": 39589,
       "officialBytes": 41937,
-      "nativeSha256": "a0761eb5cc5ccb860126483a5e4a0ef3b47e50cab73c8529a8db573928ec0fc8",
+      "nativeSha256": "201812202413f7b969d49c61de8daf315f380988a0d0b0be1595dcc49f60d657",
       "officialSha256": "663cf561525720e9f7b532f0d0b55eacbd48aba0217aa28b4b005768ad6cabe9"
     },
     {
@@ -73929,9 +73929,9 @@
       "sourceSha256": "f8afda20aea463d44a9b3dac4bd3a587bfd487bd48b56dcfd9da188b38949a70",
       "nativeFile": "parity_journey_107_native.png",
       "officialFile": "parity_journey_107_official.png",
-      "nativeBytes": 41281,
+      "nativeBytes": 41345,
       "officialBytes": 43383,
-      "nativeSha256": "29d6bd05b8b7f62deba4f6b23e23267791da04832b2f26fffd44a9535f8391db",
+      "nativeSha256": "d431b1dbf9622a86afee1e9d35fa9a06563e1cc619341564d8b36f79a7eb856e",
       "officialSha256": "1938f0d325e23a121e75305d7acff2b3e75dbca5f07401b758edf5ef52f470b1"
     },
     {
@@ -73953,9 +73953,9 @@
       "sourceSha256": "297ae9a8c9820fedab5af5af58167407cfc9b645e386706613ad059efb40b7ef",
       "nativeFile": "parity_journey_108_native.png",
       "officialFile": "parity_journey_108_official.png",
-      "nativeBytes": 40750,
+      "nativeBytes": 40795,
       "officialBytes": 44061,
-      "nativeSha256": "0d0f3ca5b54df7f37259034d29bf6a4c56808c30653b9e593706e2b07ac64d8d",
+      "nativeSha256": "876da95a0cdd98f5be2d793479e6d19364ea8d086cd121fd9ba904b3bbe2e134",
       "officialSha256": "55eb826f50c2e12f9996767fdb5d50f2e91a17fb729d14d9e726c53a841493ab"
     },
     {
@@ -73977,9 +73977,9 @@
       "sourceSha256": "20170ca835bef57d14c9c87144152dcba0a48568f4f9d013f37f245929dab240",
       "nativeFile": "parity_journey_109_native.png",
       "officialFile": "parity_journey_109_official.png",
-      "nativeBytes": 40097,
+      "nativeBytes": 40190,
       "officialBytes": 40858,
-      "nativeSha256": "4eb68ec3b252a62b660d9dcaff82791160c0ceaf913ed35ebc7ae41d72c8a0e4",
+      "nativeSha256": "7a29a3349ce1544e011999929ebef9a7edda1250adba24a762daf772d3aa0412",
       "officialSha256": "3f7721936aadfe143e11d9ffe1174eaa2582806d59465b512bf9cc3f09f832a4"
     },
     {
@@ -74009,9 +74009,9 @@
       "sourceSha256": "f8be980e852b08b59332b9548d0e541c518107c5fe18f86b54f72ec532867b3d",
       "nativeFile": "parity_journey_110_native.png",
       "officialFile": "parity_journey_110_official.png",
-      "nativeBytes": 40093,
+      "nativeBytes": 40103,
       "officialBytes": 41187,
-      "nativeSha256": "28ec3a9b30e5b36dcdc7ba2b951fdf18ebc21ffa8ad3e97a6252edfa6d805070",
+      "nativeSha256": "dfe6be22c7e35762d967ddd0f5ca00cf67fc52276a51d881618a282dcdf70bbb",
       "officialSha256": "0ce53c56447231fcb8a6a748aca9c6be64c1a0828133236c80967a2579e7b497"
     },
     {
@@ -74041,9 +74041,9 @@
       "sourceSha256": "f0401e83bbcfcf00b52aaae93704eb71d8e417bbb80b5d56511f2e92c401269b",
       "nativeFile": "parity_journey_111_native.png",
       "officialFile": "parity_journey_111_official.png",
-      "nativeBytes": 37815,
+      "nativeBytes": 37814,
       "officialBytes": 38805,
-      "nativeSha256": "0fed25d3fc721444d5697c01a2d9daaa2b412760e6e091fa9ad21c8fd6a73518",
+      "nativeSha256": "588e15e7b8dea12e102935ba64f3846fba204867bfeaf1587e7bb9e3ab660442",
       "officialSha256": "9b22c2c94c3aa0e83b99fe1e8dccbdea28c5c61abb2bcc085deb20842653278c"
     },
     {
@@ -74072,9 +74072,9 @@
       "sourceSha256": "1954d18059de8b626a86b889d90b8262a382c30afbc8ce1a7103292c0af08408",
       "nativeFile": "parity_journey_112_native.png",
       "officialFile": "parity_journey_112_official.png",
-      "nativeBytes": 42529,
+      "nativeBytes": 42552,
       "officialBytes": 42623,
-      "nativeSha256": "18fb8b2bad5660ea8e7e5a8e4010a9acae822f1340be66e64dfc81a7912929e5",
+      "nativeSha256": "3af4fcfed47f28510c69f227257cdbef4496fd6de722fccee2c1249ab696d20c",
       "officialSha256": "323880f08754fbf9e2c3968f23e7e409cd5c8586fd5a9ade9c7bf02e327fdddc"
     },
     {
@@ -74103,9 +74103,9 @@
       "sourceSha256": "30348eed42f38b5f84d9dbd82de75e509204f648bf06406ae0173c121a96d103",
       "nativeFile": "parity_journey_113_native.png",
       "officialFile": "parity_journey_113_official.png",
-      "nativeBytes": 41509,
+      "nativeBytes": 41583,
       "officialBytes": 39655,
-      "nativeSha256": "4c47e74079d46f12dcdc38a8dcd68c11a0c35220435d20583219b241c72d0300",
+      "nativeSha256": "bf206d0e9b6619fa6e9220bada74d267c72e7a0342a4ef93b8b9954e5cb1057e",
       "officialSha256": "a1846f6d9ee8d97833e39cb8a21d93b2d29d30e3aae8dcf3a15b5f165c4a415c"
     },
     {
@@ -74132,9 +74132,9 @@
       "sourceSha256": "d7ccf0c262ade251fc09b5cde481171b1c1c9d2ef9d850b4754e77904c47a60d",
       "nativeFile": "parity_journey_114_native.png",
       "officialFile": "parity_journey_114_official.png",
-      "nativeBytes": 40305,
+      "nativeBytes": 40349,
       "officialBytes": 38186,
-      "nativeSha256": "ccdaf4bcaabbbc99cb79a933af9e4aebe6d909e9589a1dc3d1a54426ef733309",
+      "nativeSha256": "db92b704dcbc16a979702835d6fbcbac2ab63b9560b8a59d182c14bc5959a1dc",
       "officialSha256": "61f99610cca34017cdf91bd60100359b3533e6536aad594fbde0f8d14d92cf2d"
     },
     {
@@ -74161,9 +74161,9 @@
       "sourceSha256": "876cbee75131db90c067d45511f81ce8483d1dc62cc8461dfbefda931a1e4cdb",
       "nativeFile": "parity_journey_115_native.png",
       "officialFile": "parity_journey_115_official.png",
-      "nativeBytes": 40752,
+      "nativeBytes": 40784,
       "officialBytes": 42007,
-      "nativeSha256": "78980707391172ee47418b6f5768816c1af8edfd77807815f4e1ecff71289140",
+      "nativeSha256": "d5cd2b2433e0f29310e3e482df59319c834789bfcbd8e467389d31bb95afed20",
       "officialSha256": "5d59fc4a9617875a08926ac5f07af3b758b7fe8a5336b46c7251298c53ffd89b"
     },
     {
@@ -74190,9 +74190,9 @@
       "sourceSha256": "fb813a7dc5176ae201e9771c89b5025626169fbf97c473a4ba883724d6506429",
       "nativeFile": "parity_journey_116_native.png",
       "officialFile": "parity_journey_116_official.png",
-      "nativeBytes": 52715,
+      "nativeBytes": 53016,
       "officialBytes": 50284,
-      "nativeSha256": "4399eccac0299fd4f347a6fa556ac1a61041ffb6af9a048e3ea9fede17eb1bfc",
+      "nativeSha256": "bbffd275af5be75065f418e5be02a2c86414477fd5de969e2903839327da2630",
       "officialSha256": "c3c95d94f109faeab8890780c2a8ce32b26cc0ce13ed32f9439f441f25197c51"
     },
     {
@@ -74219,9 +74219,9 @@
       "sourceSha256": "c868c1be0a8b37a983b3e97646ad3bf2265bfee01b2cd9b8807449373541d062",
       "nativeFile": "parity_journey_117_native.png",
       "officialFile": "parity_journey_117_official.png",
-      "nativeBytes": 53408,
+      "nativeBytes": 53199,
       "officialBytes": 51481,
-      "nativeSha256": "20f469c2a45c64c3927933d29fff695a9fe72e7cf1cb1e42036e6337878c67b4",
+      "nativeSha256": "058918c55fda54555320feb58092d51fb6c412cb7f3d6443e43daaffab6e246c",
       "officialSha256": "747dea6aa48f48cd81ad403c0ecee5809150558ac625f41714447e7669c0f2fd"
     },
     {
@@ -74243,9 +74243,9 @@
       "sourceSha256": "0308f0ab6ff713a5adcb3f810ae5bed30171049ad43097c72d05f392e22f109b",
       "nativeFile": "parity_journey_118_native.png",
       "officialFile": "parity_journey_118_official.png",
-      "nativeBytes": 39530,
+      "nativeBytes": 39582,
       "officialBytes": 41373,
-      "nativeSha256": "80d31e1315ef4c7c2dc8cdd55a19d80faadc8d1cfa3ba02906eb514a3a91c12a",
+      "nativeSha256": "fe4e86719fd4fd7c061774e0465b80e880b87d82407d3ea7d0f05f67668c0cf5",
       "officialSha256": "96b83c1557ca7153e0bb29de82b2d1c625ff0b2f5d05a18af55a4b5d0e5d5204"
     },
     {
@@ -74267,9 +74267,9 @@
       "sourceSha256": "c959a2a0b681c73680e1b70789df89d473ecfa1d49b38f730785b14ec881e07c",
       "nativeFile": "parity_journey_119_native.png",
       "officialFile": "parity_journey_119_official.png",
-      "nativeBytes": 39189,
+      "nativeBytes": 39148,
       "officialBytes": 41808,
-      "nativeSha256": "2bccc465bdfb74a27156c686c9c62d85e3e9b3b9223d94490ba239f85ac53d7a",
+      "nativeSha256": "e217879f7f8b6b7772724a324cf60eefa294ef00fd1958bc7519553e37e1c6dc",
       "officialSha256": "552cae469a6c3ec04142d020198ebf90b02f75cb01466a164c35a0e69f5d5eaa"
     },
     {
@@ -74291,9 +74291,9 @@
       "sourceSha256": "dea83e328ac39f6a59b027877d58d2aede4628565dfec7489f274e7bc29a9407",
       "nativeFile": "parity_journey_120_native.png",
       "officialFile": "parity_journey_120_official.png",
-      "nativeBytes": 41368,
+      "nativeBytes": 41379,
       "officialBytes": 43503,
-      "nativeSha256": "d312c7a537b97f203a1e566619f8ec2b625dfcf5db3f3f46610e3c21f2113408",
+      "nativeSha256": "6c405838c1b015aa6bd5a918a9c450e101f28ecc8eeffb5739b43e8eb28f0427",
       "officialSha256": "fc1a22a3d4a07c40ce3a40550a2e97577ffdf8a8fdbf9bab6a26a162c3c78e5d"
     },
     {
@@ -74315,9 +74315,9 @@
       "sourceSha256": "b6e4cfc5aee20d3f7876294ba36151386e35ff4257ccfaf46dab2d383ac3846d",
       "nativeFile": "parity_journey_121_native.png",
       "officialFile": "parity_journey_121_official.png",
-      "nativeBytes": 40599,
+      "nativeBytes": 40630,
       "officialBytes": 43579,
-      "nativeSha256": "1454e45311ce0a7516c5c3fc6841fbe424a7076e9c48dd93deec4d1e337c68c2",
+      "nativeSha256": "5673cea40812a922e164d55fd556f2b97e0a24b17567529250b0748d3e2e36a3",
       "officialSha256": "0f3b00d63f751879dd13bf1f94ff7b21fc5716cf829d3af4822bcc226ac42dfd"
     },
     {
@@ -74339,9 +74339,9 @@
       "sourceSha256": "f477b0ac6a94161645fdd9b35aff7c34e1906cae5192f21b8ebc04c10a9d27d5",
       "nativeFile": "parity_journey_122_native.png",
       "officialFile": "parity_journey_122_official.png",
-      "nativeBytes": 39782,
+      "nativeBytes": 39877,
       "officialBytes": 40422,
-      "nativeSha256": "754c6f9842ed6a1bd21079010e71dfd6d932ae420545bf299fbd217543842784",
+      "nativeSha256": "49e2460131910bd0304e4928499cae996ad2193372bf92e228948bd78eb0653e",
       "officialSha256": "2f917a5297639b98cc4f350b50b1c13227e282018aabf1d4123d855b00b309ba"
     },
     {
@@ -74371,9 +74371,9 @@
       "sourceSha256": "7f70c3bea23b080dc6ea4e61ed453053d21d2c60322ff81d3b4a1a42a2129a16",
       "nativeFile": "parity_journey_123_native.png",
       "officialFile": "parity_journey_123_official.png",
-      "nativeBytes": 39935,
+      "nativeBytes": 39945,
       "officialBytes": 40874,
-      "nativeSha256": "ef5ba8019c78e565e7c72e783c7409d4ae2d62115548508aebc87c3a35c49222",
+      "nativeSha256": "1086f0b158f54f574bcc4f116e3c48296ff106af5665075449bfeb468c127fbf",
       "officialSha256": "d4d6208e0132adc40b5362f577214f2a0c565b0dfa49bace86944e80529b5ced"
     },
     {
@@ -74403,9 +74403,9 @@
       "sourceSha256": "47b010b6f49c19527586bc542b82e83d6e7cddc9ae9e1d40d697140c7a8e2f6e",
       "nativeFile": "parity_journey_124_native.png",
       "officialFile": "parity_journey_124_official.png",
-      "nativeBytes": 38059,
+      "nativeBytes": 38114,
       "officialBytes": 38915,
-      "nativeSha256": "91adbac1ebf00a515548280d7d273cde44ce7a59f582cecbddff1aace0d44615",
+      "nativeSha256": "4f17e4abb42075ce13c4e5324647ab1d20ac2419aab0f394a79bf16aee85e88d",
       "officialSha256": "785a6541e8eac5cec4ca33349aeb0ac1dd071b1f2f85a9cb16d975da89a9eade"
     },
     {
@@ -74434,9 +74434,9 @@
       "sourceSha256": "7c8fc0154d03034490e6ae16d66d03d813e96ece19b68709ccda8359bd667c3e",
       "nativeFile": "parity_journey_125_native.png",
       "officialFile": "parity_journey_125_official.png",
-      "nativeBytes": 43193,
+      "nativeBytes": 43118,
       "officialBytes": 42862,
-      "nativeSha256": "2e6fe82fe3778439c87e6c801291fd371f7555cd8efdd72e52e3ababd30dc30b",
+      "nativeSha256": "04ff41e2ee7556f8f68f759bbc378e19375259cfee6e410c1dc49bea348f8811",
       "officialSha256": "e3f42080830fed49e404f6cb5437f5f06406db4440ee23b40d9301b01d953843"
     },
     {
@@ -74465,9 +74465,9 @@
       "sourceSha256": "c39fbd8c841ff8307b54487984d420728274459835be526c787ec7128417f3de",
       "nativeFile": "parity_journey_126_native.png",
       "officialFile": "parity_journey_126_official.png",
-      "nativeBytes": 41594,
+      "nativeBytes": 41660,
       "officialBytes": 39821,
-      "nativeSha256": "734d842899105dc817cefa87d87c88e9d67711c980b6a37683a07ccb7dd604bb",
+      "nativeSha256": "0674be713a32802c3a85a5b83659fdb4cfb9d4eb975176b7efb065de0dfbe33c",
       "officialSha256": "357a83a5874ded3c4cc6230bd04a381b97aa38fa745070b40ea8782c77c9cf67"
     },
     {
@@ -74494,9 +74494,9 @@
       "sourceSha256": "69aa658c7ed4cf8b4ed026a767ba2a9fb83041953854c54560edda3ce6244d5f",
       "nativeFile": "parity_journey_127_native.png",
       "officialFile": "parity_journey_127_official.png",
-      "nativeBytes": 40250,
+      "nativeBytes": 40278,
       "officialBytes": 38746,
-      "nativeSha256": "cdfe083f08ba440d45d7c174a9a0b5f27f9fc6d4734bc65e55bd5ba30c8a86b5",
+      "nativeSha256": "38f21d8792a82fdc67bf5aabf053e4190bc2ea2c393bded66e5ceba15dc17d84",
       "officialSha256": "a5bccbea237453dc4fad8448c817798a4695d532be3659a0d611e32efeca1e33"
     },
     {
@@ -74523,9 +74523,9 @@
       "sourceSha256": "4db072cc923f2296fd8e9c1c190089cba4f37374f48e0682bda2f2da8f5834a8",
       "nativeFile": "parity_journey_128_native.png",
       "officialFile": "parity_journey_128_official.png",
-      "nativeBytes": 41075,
+      "nativeBytes": 41095,
       "officialBytes": 42458,
-      "nativeSha256": "006704436d49a22c1f907e542fad911684f35ddeb5a37c173ede10ba0da74a92",
+      "nativeSha256": "1103faf7364ec5b50b66200e73d88f54b79c095c276c5b1f447655b9a0c5e283",
       "officialSha256": "d7ababb2ed49c4bad52275c076e7f3b02a167d9b0806e8cc6148a581c7518636"
     },
     {
@@ -74552,9 +74552,9 @@
       "sourceSha256": "9d74c214ef37be3b8075159ce276db9f29c76d99f46fdd5ae97f65f0f41571c2",
       "nativeFile": "parity_journey_129_native.png",
       "officialFile": "parity_journey_129_official.png",
-      "nativeBytes": 51990,
+      "nativeBytes": 51790,
       "officialBytes": 49785,
-      "nativeSha256": "bc392b4b5ba9e4a19e797085199358c36ff9c95c7a239dd3a6dcf45dfb6bbef7",
+      "nativeSha256": "092e454190edccd437cb5f5a5a6a0a4defa9f997a96fd270bcde42eca8c71c51",
       "officialSha256": "ec1a12944aa3b2e71bc145f1805b2d8dd8692828c2445e88fd7f4f2f1f8ddadf"
     },
     {
@@ -74581,9 +74581,9 @@
       "sourceSha256": "f7e0ab194bad50e58851dfe872ca19899c1381ec19b9f1eb5fbb66ade3a97549",
       "nativeFile": "parity_journey_130_native.png",
       "officialFile": "parity_journey_130_official.png",
-      "nativeBytes": 54081,
+      "nativeBytes": 54024,
       "officialBytes": 51692,
-      "nativeSha256": "d0b17b2e4f66e18aacba064c88b1e405856629dc944a2e836e14a2089187f44f",
+      "nativeSha256": "7754a98ffd2ff4346870e776d79f1a8af319438e32f0ff96c7f75d83e90eb3c6",
       "officialSha256": "99046edfca3291d9c45c16e0b922c5d000ca3b5019f1bc74d2bb95e26f916ae8"
     },
     {
@@ -74605,9 +74605,9 @@
       "sourceSha256": "69bbad5b0b5da6ba9121db36de13ab0fd2be286ff99e00ec6453b85c7b37c71a",
       "nativeFile": "parity_journey_131_native.png",
       "officialFile": "parity_journey_131_official.png",
-      "nativeBytes": 39332,
+      "nativeBytes": 39410,
       "officialBytes": 41823,
-      "nativeSha256": "5e8dedbfa67add2b62452e90a14a6c884fee5fbd7c62647fe55c1ed481f419c6",
+      "nativeSha256": "fe3918b3982842a4f57ec1b336ee8633694ad246d3fd0b51577f4699cf8d94a0",
       "officialSha256": "de33d297cd9788efe7c25625403697fad8883ca770d75182eda2ca9f1956468c"
     },
     {
@@ -74629,9 +74629,9 @@
       "sourceSha256": "3557dbb6a38dcebf59d468abf4ced6a6bf04b5948d93a5097688d9364d2933af",
       "nativeFile": "parity_journey_132_native.png",
       "officialFile": "parity_journey_132_official.png",
-      "nativeBytes": 39784,
+      "nativeBytes": 39773,
       "officialBytes": 41976,
-      "nativeSha256": "49f1efb9caff13109b230d2a3c467e39499edad19e7d8b090ad1e8fff024ac4b",
+      "nativeSha256": "559be7ed576502abbaeb1514395670a019cabbeb6339482727566c2db6b1a29b",
       "officialSha256": "7c32a725f663dfe9f3b3131e7716c854b5cf7149f76d66745874bb5d4c455528"
     },
     {
@@ -74653,9 +74653,9 @@
       "sourceSha256": "75e1ca29298abc4e3693c82ae758537eec5e74dd09d3b66dc2c7e8b4f8bf4c57",
       "nativeFile": "parity_journey_133_native.png",
       "officialFile": "parity_journey_133_official.png",
-      "nativeBytes": 41793,
+      "nativeBytes": 41880,
       "officialBytes": 43686,
-      "nativeSha256": "b03fc20c9869b2266b8b345e302e2a347438a7d2c96f14e772244875721b5d98",
+      "nativeSha256": "4e83a7f482df2417085af5aef3c8b9e1537a57b39782c46c6b42eb9a03c56f01",
       "officialSha256": "c5d787daa4af753717906059c5b74d6a1cd400d20939c9eae564573531249415"
     },
     {
@@ -74677,9 +74677,9 @@
       "sourceSha256": "75ccbac2d453d3ee1da3a820af7276a47415166b6a2aeda8ab11a5f81cdbae7e",
       "nativeFile": "parity_journey_134_native.png",
       "officialFile": "parity_journey_134_official.png",
-      "nativeBytes": 41039,
+      "nativeBytes": 41082,
       "officialBytes": 44273,
-      "nativeSha256": "07d0c96b2a6af0769ec0efa820e56f513a61a6bc4ae14ab1360ab1de4ae1bc32",
+      "nativeSha256": "28b1e9a69f9a741919c9f77fed05e07752670fafd9fff4276a3c5c373bd9dfa7",
       "officialSha256": "447bbc1a141e39055195bd10d9b09b5f474e44acdd082a0e47b3d677faa467c3"
     },
     {
@@ -74701,9 +74701,9 @@
       "sourceSha256": "2dcaa8ad769d9d89768770f49f884e8874d038531c8edb25a20ad2a68cb75b58",
       "nativeFile": "parity_journey_135_native.png",
       "officialFile": "parity_journey_135_official.png",
-      "nativeBytes": 40288,
+      "nativeBytes": 40428,
       "officialBytes": 41419,
-      "nativeSha256": "4cc2269621233dcd94196e494ad1aa4ef2807129b08172a6a5f17424f7feaa26",
+      "nativeSha256": "6e3ed98dcf8af72d159bb57898b5c4d57a1b2655d64eb36c4b3ce64ce6b671bb",
       "officialSha256": "f76804c9cbe921b6f05c8a0ca0d7e15d158472626324d33e8fac3ad926607864"
     },
     {
@@ -74733,9 +74733,9 @@
       "sourceSha256": "baf225560e42b5ee9c309c83bee9dfd8187b3b5aed2be20860b54b7a5b781c99",
       "nativeFile": "parity_journey_136_native.png",
       "officialFile": "parity_journey_136_official.png",
-      "nativeBytes": 40690,
+      "nativeBytes": 40698,
       "officialBytes": 41595,
-      "nativeSha256": "a0dd903b539d7f9216b7b46645e14a57236432a3eab528419a2c80c2d1900b6d",
+      "nativeSha256": "21a31a12aced8d40ba5e1b2aed5179fa66ee86ba629d43ef9304016bcce331de",
       "officialSha256": "a51c74a556fb60cf0336d62e18ae3fd4b574d88cbdbfd5e28e3f67e615317b72"
     },
     {
@@ -74765,9 +74765,9 @@
       "sourceSha256": "951e885a76ccdd1548a65e406c49492c8fee97dd16a6d321fc015990dd2a7f89",
       "nativeFile": "parity_journey_137_native.png",
       "officialFile": "parity_journey_137_official.png",
-      "nativeBytes": 38433,
+      "nativeBytes": 38507,
       "officialBytes": 39151,
-      "nativeSha256": "89ffffcb773e7aab3c508bfa5cb5bfc60f8bcab192d1b3dff526a2fe83ba1f21",
+      "nativeSha256": "dc746f0a53bc27c2914e4bf11d0a167b372dc38af0dba883f3f54ee6373baa7c",
       "officialSha256": "7a9056c40b8db31ea2db5e839a81b28247fb65a05f12d6c7035598f612f6d033"
     },
     {
@@ -74796,9 +74796,9 @@
       "sourceSha256": "63554863e59fac67109e81cead74c502625964428697add166a6dacfc4787579",
       "nativeFile": "parity_journey_138_native.png",
       "officialFile": "parity_journey_138_official.png",
-      "nativeBytes": 44182,
+      "nativeBytes": 44127,
       "officialBytes": 44333,
-      "nativeSha256": "bf2625316a0665bf6c6ce79edaa521f47147b06e5a6c8443391e45b314d4a20c",
+      "nativeSha256": "8fe0ecf2fb5b70f5f3f8f19f18e3b32374dcf3d2e03ebd10c6050d13765b5e7d",
       "officialSha256": "f427698da8c8ab1278e47a039f5b74c528f67c93efbb6f14510d413940dfb351"
     },
     {
@@ -74827,9 +74827,9 @@
       "sourceSha256": "bf0b915e087b7b968f71848bf5cb9ee2a231ba9dc38a435b51b71a06d755cae9",
       "nativeFile": "parity_journey_139_native.png",
       "officialFile": "parity_journey_139_official.png",
-      "nativeBytes": 41688,
+      "nativeBytes": 41761,
       "officialBytes": 40707,
-      "nativeSha256": "96e78d815b413338c6aeb435c1b40d5c9ed218a693822c0b49e44f9eff67ad67",
+      "nativeSha256": "314d74fe2242c35095473b5151917bbbca45ba2f25ba0983ce85bbb263b78d45",
       "officialSha256": "67082ad8ae962d23468ee19e6cdd88c8b48880b680e9e5f43a9b9f8bba528116"
     },
     {
@@ -74856,9 +74856,9 @@
       "sourceSha256": "011bea15a0556d85a8aa8b5784fe7b38ee5ee267fb08fe4d377867342dc1bc12",
       "nativeFile": "parity_journey_140_native.png",
       "officialFile": "parity_journey_140_official.png",
-      "nativeBytes": 40854,
+      "nativeBytes": 40896,
       "officialBytes": 39341,
-      "nativeSha256": "59f22a73c815ef9879ceb8e91931cd32b8dde88dec8b51dd81b7ac5d1b3ebb96",
+      "nativeSha256": "bbbdcee2831f31a9bb4c8b80bdc98e11f455be1ce69654a41af95bd228629c5f",
       "officialSha256": "11480a60ba49164a268618f404470c882b10acc60454591e7d94c83c09605046"
     },
     {
@@ -74885,9 +74885,9 @@
       "sourceSha256": "f5870c2fdb415a8aa29e8c4538c565b2aa772402db70e82bc3e12888eb1a3793",
       "nativeFile": "parity_journey_141_native.png",
       "officialFile": "parity_journey_141_official.png",
-      "nativeBytes": 40795,
+      "nativeBytes": 40826,
       "officialBytes": 42386,
-      "nativeSha256": "6c3b80c2a53abbcd2a1aed636e0f288f767b3f4c67bed254d2c60fbaf025ef8c",
+      "nativeSha256": "99b2b8d3a8358b2782045bde6b0dc84fea54eef027f4615fb815fccb9abab170",
       "officialSha256": "96186f42608f5ff45152e53ee3ee4d6dfd2782b466453c482680eee056b1ca1c"
     },
     {
@@ -74914,9 +74914,9 @@
       "sourceSha256": "c03a6fb945c616d45c30ed50dc52af4abc5c55bea9b1077bd2458c1ec0ad088e",
       "nativeFile": "parity_journey_142_native.png",
       "officialFile": "parity_journey_142_official.png",
-      "nativeBytes": 53273,
+      "nativeBytes": 53113,
       "officialBytes": 50964,
-      "nativeSha256": "2f622243601378f0cbe065cf1ebe33f4b6cf3cf6004f93691f79053e81e6240f",
+      "nativeSha256": "4385c0066b7feaac725bfaf9e8d47ee7842d962b4d7c99772e4e0529828df4d4",
       "officialSha256": "103d6d4776fd614a690c894e5485b09449ccf26fcedbbbf6398cdc8de7e76fb0"
     },
     {
@@ -74943,9 +74943,9 @@
       "sourceSha256": "b63bb4c34331a62ef30367ab921d5a139dc352dd4533121f8980667d88c967f1",
       "nativeFile": "parity_journey_143_native.png",
       "officialFile": "parity_journey_143_official.png",
-      "nativeBytes": 55239,
+      "nativeBytes": 55160,
       "officialBytes": 53023,
-      "nativeSha256": "7874e43d92e10c2572d42cc04894b96faf1b448512ec4c3bed952de6f36b8e71",
+      "nativeSha256": "fe2f89e2f8583310d452de6150e47525fee922417e9241f2dd66e43950d97724",
       "officialSha256": "c89b02ef578aa47c5cbf96b839a8524ec3736c58db5428a56cd58c6051e8649e"
     },
     {
@@ -74967,9 +74967,9 @@
       "sourceSha256": "052cdd8300c84569d0ab3f47ad32511e4b1856a23b7b5b0f4323e84411504eb8",
       "nativeFile": "parity_journey_144_native.png",
       "officialFile": "parity_journey_144_official.png",
-      "nativeBytes": 39366,
+      "nativeBytes": 39440,
       "officialBytes": 41811,
-      "nativeSha256": "a3ef79bb83181546209b26c1f17ec6cd1d3cefe7abc4cf16ca93a74cab463ab4",
+      "nativeSha256": "36cef28bf1add0c609adadd2739b759755733d7ee56c40555281fc34fee90222",
       "officialSha256": "279661a138ce1af53e55d94434cd5bf1cac6951ae4b1c55267cc5e5ab26b76dd"
     },
     {
@@ -74991,9 +74991,9 @@
       "sourceSha256": "e9463077dc32f1b1db6e8cd64983cab64d76cf8d1dc2a94b52ce2b582a7d7af0",
       "nativeFile": "parity_journey_145_native.png",
       "officialFile": "parity_journey_145_official.png",
-      "nativeBytes": 39930,
+      "nativeBytes": 39917,
       "officialBytes": 42161,
-      "nativeSha256": "9a006c6f0d45f600a7009ca64cfaa0ebd0b4d075dfd534420cce04683421bd87",
+      "nativeSha256": "973f848f164f57bc78bc3312fdad6405a5e5edaf570753082fddf7bba71ffc61",
       "officialSha256": "a56f9a8676d4ead1b5fe2b98e123d19e9c2a37f1353ce49bad9d8572ccabc74d"
     },
     {
@@ -75015,9 +75015,9 @@
       "sourceSha256": "52d256859d3e6485d76e52ee075d43a86bd76cadcbd5fb2c00a7bd64d1aab601",
       "nativeFile": "parity_journey_146_native.png",
       "officialFile": "parity_journey_146_official.png",
-      "nativeBytes": 41795,
+      "nativeBytes": 41760,
       "officialBytes": 43688,
-      "nativeSha256": "98e64ebb4112cc84c342ee3d7f8294828c827375ea60211186e12826d1bae822",
+      "nativeSha256": "8d6333df5e21a6e6b563451ed89c5630f6d628d36b749e5cd942271e381de0d4",
       "officialSha256": "6c20c18162161983d9b26517dac35443c2c7938280e0e0c68ded01fdc673dda2"
     },
     {
@@ -75039,9 +75039,9 @@
       "sourceSha256": "6811e7b15351cd3b7fdbd6787df244ea505a54ba8dd84238b8dba56d85abb421",
       "nativeFile": "parity_journey_147_native.png",
       "officialFile": "parity_journey_147_official.png",
-      "nativeBytes": 40974,
+      "nativeBytes": 41008,
       "officialBytes": 44229,
-      "nativeSha256": "d76111152b6ead89ed59115237891d918a4c19968fb5107e17e6252ad5b126b8",
+      "nativeSha256": "da81269c2a4ffc83cb923ca6be654400cfd65c2dc3a487f7b01fc2f4b5c77bbd",
       "officialSha256": "a2bb1a4d23ab38f351478058eac1a846fa6f184d2828d60f8a98a743a12f2050"
     },
     {
@@ -75063,9 +75063,9 @@
       "sourceSha256": "b7ec8b9686702d77411c30ebb5dcecdcd581313d4f1c39f533affd1f2b474bc9",
       "nativeFile": "parity_journey_148_native.png",
       "officialFile": "parity_journey_148_official.png",
-      "nativeBytes": 40321,
+      "nativeBytes": 40421,
       "officialBytes": 41011,
-      "nativeSha256": "4fbc217fcfcd5adca5daa2d9b8e41a218edff4422223e60e5df76dd3c217f412",
+      "nativeSha256": "e3e696c5cff097dbb481b4b15344a51e23b8e0c152ddd1add3f8eba1c91ff735",
       "officialSha256": "42355386788f5f8ea7f6c3fea2b954133cccfb9bd8c41758fa4b398af926c4a1"
     },
     {
@@ -75095,9 +75095,9 @@
       "sourceSha256": "92805d143753a04259a2747b821e88a44ac7d1104ad1fdd46e9df2ab7ffa75b4",
       "nativeFile": "parity_journey_149_native.png",
       "officialFile": "parity_journey_149_official.png",
-      "nativeBytes": 40827,
+      "nativeBytes": 40836,
       "officialBytes": 41321,
-      "nativeSha256": "9eaadfbe6c4cd2825ce738b8884926bce048bda92224e88062d1585eb8eaea2b",
+      "nativeSha256": "dd1347c50da617a1989a8bf227b2c41da2af1becd02db427a5e1c2081d1dec6d",
       "officialSha256": "111683d572ad37ca93580967cac452c3981dc0eb700de79e510921f6c6dd4689"
     },
     {
@@ -75127,9 +75127,9 @@
       "sourceSha256": "6b377850f7cc2da528edb60d753048daa2720f49421b6d9390c312c0d44fc098",
       "nativeFile": "parity_journey_150_native.png",
       "officialFile": "parity_journey_150_official.png",
-      "nativeBytes": 38986,
+      "nativeBytes": 39043,
       "officialBytes": 39572,
-      "nativeSha256": "ab4a96679ab35bd4a37bcf2e803be90557b24288b01c655fb66a1a0159accdc3",
+      "nativeSha256": "135bb3d9de762fba67c6bef3cfa0d3334eb9e05208d8dcdd36f03d44b40bac7d",
       "officialSha256": "6b9dbfff2c654214c5178ace65a0b703d847258661bb161d49bc1e03a313fc5c"
     },
     {
@@ -75158,9 +75158,9 @@
       "sourceSha256": "89bb055d231eec7c9c758a6adc1c0c9cc4fe67390e3f2b8bf7d42d65b7548265",
       "nativeFile": "parity_journey_151_native.png",
       "officialFile": "parity_journey_151_official.png",
-      "nativeBytes": 43953,
+      "nativeBytes": 43909,
       "officialBytes": 44132,
-      "nativeSha256": "97a3a73d02a34822b0f10c15906f61393ab99e0b70526150b38e17476dcbf1de",
+      "nativeSha256": "19d90ab40a3e7866d77d67ef723fbe293adfedbca9ee79a5a92946ceb4418ec4",
       "officialSha256": "a245e98d145a6583bc282b9ff3833038d779a218832524152a51cfb40ce7e07b"
     },
     {
@@ -75189,9 +75189,9 @@
       "sourceSha256": "7e5480f74fb800544f0aba89aa824667112cdbc79acc5c46b9320020c737055c",
       "nativeFile": "parity_journey_152_native.png",
       "officialFile": "parity_journey_152_official.png",
-      "nativeBytes": 41416,
+      "nativeBytes": 41443,
       "officialBytes": 40830,
-      "nativeSha256": "cfb4f83502a4829069e3ed7f6d13f6c613c726af9102bb13a7c5caac4d5e15bc",
+      "nativeSha256": "91cf341926cd53a9089495f83c3242bf71f30cd5f78b990f7b85aeb6ffb996ab",
       "officialSha256": "74ff3b2c54a06277cfb34c4fd2ac2f1e7ce804f56ad91e7e79f2efaad0d4ed3b"
     },
     {
@@ -75218,9 +75218,9 @@
       "sourceSha256": "228927c70f25d920e45a01200ea3db44461f6bc7b861923e7b9372f5ccbc1eb3",
       "nativeFile": "parity_journey_153_native.png",
       "officialFile": "parity_journey_153_official.png",
-      "nativeBytes": 41027,
+      "nativeBytes": 41060,
       "officialBytes": 39336,
-      "nativeSha256": "c8bab14a717f4d307052995cf6852133dd311b9c590f68101d35b5b9d3ac6b60",
+      "nativeSha256": "6c031ff91fb16ba3d3fbaff38c0e720273eafc092cd6ac1eb63f53f2266854f2",
       "officialSha256": "1f242938befe4bfc825b7bb0ca5dfa1a03246afaf41ff0b95bead152247f6113"
     },
     {
@@ -75247,9 +75247,9 @@
       "sourceSha256": "3965291e72d80a60c5d583d989ebd24c8d22b0980e1291b5ebed6fc749aa6ad7",
       "nativeFile": "parity_journey_154_native.png",
       "officialFile": "parity_journey_154_official.png",
-      "nativeBytes": 41335,
+      "nativeBytes": 41350,
       "officialBytes": 42688,
-      "nativeSha256": "397ad1ab58335584d44f23832553018f2dcc57ee6c3c944fad1610717e1dd108",
+      "nativeSha256": "ee45e0282aaccdf8c24e8f3cc0967b020c6145a468b70ce900499e435ee49199",
       "officialSha256": "ea1b688839946948d1032de3bcb8b3a9347f53a6d9686a350c3dbb07019d90e6"
     },
     {
@@ -75276,9 +75276,9 @@
       "sourceSha256": "9671c9ba36d98698f8ff893d036ef39b2c7fba67e0bbcc699f1b612eb4dcd601",
       "nativeFile": "parity_journey_155_native.png",
       "officialFile": "parity_journey_155_official.png",
-      "nativeBytes": 54165,
+      "nativeBytes": 54022,
       "officialBytes": 51644,
-      "nativeSha256": "ef36fc555e1adb523ac6d2122a91fa177edeff1670bc6513eec908ea2c1bcfb2",
+      "nativeSha256": "08268fb3bcd208b85405528be502e9cd7f48075e140f3b28e67efc5a9bfd0e18",
       "officialSha256": "20a13cfd1425375ebec87d504a7d14c5c4f5e9606db8cbd114ef2b62bd925fd4"
     },
     {
@@ -75305,9 +75305,9 @@
       "sourceSha256": "34f02d95ab5e278edd28712982ff6d560f19c35135bbcd6b6bbf949aec8e74c1",
       "nativeFile": "parity_journey_156_native.png",
       "officialFile": "parity_journey_156_official.png",
-      "nativeBytes": 55716,
+      "nativeBytes": 55753,
       "officialBytes": 53346,
-      "nativeSha256": "fbedba3ef14be4750adce5d50d9200248bb1f6091f6d30aa1822fc5f1827dbf6",
+      "nativeSha256": "11e406a82542eaf5472e45d14d41aee5e6d7d961d68e0319b2245a71ae90d3ee",
       "officialSha256": "9248ceb6d2d1b95edead67f84a3c826f97a66cb42640dfaeed94f94db2d87ac8"
     },
     {
@@ -75329,9 +75329,9 @@
       "sourceSha256": "ba3fcb2edb6bf3e251442fb0fcc580a41a1256d52f6f4ebe4d2f4a476cda8266",
       "nativeFile": "parity_journey_157_native.png",
       "officialFile": "parity_journey_157_official.png",
-      "nativeBytes": 39383,
+      "nativeBytes": 39413,
       "officialBytes": 41198,
-      "nativeSha256": "b198d9385b7f7cd60c0eb4672d735919cfc9d0fbfe8a41ad4cacda19893b41d3",
+      "nativeSha256": "66f2339a9c0fffe33a8b55934e8a577f8dc4d7c638db03cac5efeece5358b557",
       "officialSha256": "a59e89e30eb974250ffc3fa12e9af1863688fbaef47471c5bc2595e1666268b0"
     },
     {
@@ -75353,9 +75353,9 @@
       "sourceSha256": "84bc7f70f4afa5621eb3b852665def81ab771283828eb195a2cd8017a6489922",
       "nativeFile": "parity_journey_158_native.png",
       "officialFile": "parity_journey_158_official.png",
-      "nativeBytes": 39343,
+      "nativeBytes": 39292,
       "officialBytes": 41572,
-      "nativeSha256": "9e3702283411f895be8a85f0204deb174199e46541ef2105d16d580a3dc0937c",
+      "nativeSha256": "81fe0144432fb263196beed33516c780eeb1c6abb5e91f18272a7b340fe9a9d3",
       "officialSha256": "705d3e6a1be789eae2dbf959f1c9037c8de7d2e534227eca8b39fe14a6ff42d3"
     },
     {
@@ -75377,9 +75377,9 @@
       "sourceSha256": "810a8bc808496c2a5b6b116c44e572e5ceeae2d596c79f7f47be47aa85c0d89a",
       "nativeFile": "parity_journey_159_native.png",
       "officialFile": "parity_journey_159_official.png",
-      "nativeBytes": 41483,
+      "nativeBytes": 41474,
       "officialBytes": 43092,
-      "nativeSha256": "04af2ac6544c169364880a921dfa9bf887fc6fbf476fb5ca679f574a40df7fea",
+      "nativeSha256": "c3362c5de13e7164a55fc8a9d12e4464eb82b0af1aec40c18f6fe758b3a8fbfb",
       "officialSha256": "a70e024373411ce71599a3a11c1b426440e75598e09e2b44a1937747db8d2e83"
     },
     {
@@ -75401,9 +75401,9 @@
       "sourceSha256": "77628e481e0dc6ebdfb1a002e91c1c93e8573250303eaea27940c0d1fd67bbd5",
       "nativeFile": "parity_journey_160_native.png",
       "officialFile": "parity_journey_160_official.png",
-      "nativeBytes": 40872,
+      "nativeBytes": 40825,
       "officialBytes": 43742,
-      "nativeSha256": "f67d1d09f32088db4e59a348cd431cef301ac920a63c598ed8451772c61f709a",
+      "nativeSha256": "cdd66530ac8020319ba897a1020370bcd9ad26005ce9931b0d83000e15987dec",
       "officialSha256": "a62c58a2da68d3f63308e0e07e82ed7b8936b0291936180e4a0d257611d32230"
     },
     {
@@ -75425,9 +75425,9 @@
       "sourceSha256": "3c7fca977ff93a090f5c059884f029acd0f184387524ac7e690ef76ed9fd6cfa",
       "nativeFile": "parity_journey_161_native.png",
       "officialFile": "parity_journey_161_official.png",
-      "nativeBytes": 40010,
+      "nativeBytes": 40100,
       "officialBytes": 40522,
-      "nativeSha256": "950bf18722f4d90c5304b944d2cb1b79e4d5a52bff6a627e6bec4ade082bdbf6",
+      "nativeSha256": "17eda4006d405a8d9e689c9138c35f2a4f988b80d6d179c8bbc492ddc9794351",
       "officialSha256": "1b463ea10619a7e8fcd0ae4cee293238e48e0ca57f06cc701513e2e66771f1f8"
     },
     {
@@ -75457,9 +75457,9 @@
       "sourceSha256": "6680168dd2374a4c5117834be061ef027ba59993350e5d735fb0746cc33dde4c",
       "nativeFile": "parity_journey_162_native.png",
       "officialFile": "parity_journey_162_official.png",
-      "nativeBytes": 40221,
+      "nativeBytes": 40231,
       "officialBytes": 40647,
-      "nativeSha256": "5bc0d2165301944f4d78933378ce8be4101109a3f06fe7b26931df3d238d2983",
+      "nativeSha256": "98aa3d09082e6919fe42c521865b857f82768e390402f388a356d12e39b7eb6b",
       "officialSha256": "e30a5e0b261ae6b4bd79e89c37c2efe9a1bd23121f5f0dbd834bc288792f18d6"
     },
     {
@@ -75489,9 +75489,9 @@
       "sourceSha256": "b610441ed4c03263e4f570b4dd043bd464150cf5772e31a84713c738e990e318",
       "nativeFile": "parity_journey_163_native.png",
       "officialFile": "parity_journey_163_official.png",
-      "nativeBytes": 38413,
+      "nativeBytes": 38468,
       "officialBytes": 38529,
-      "nativeSha256": "bceda98fed8549b486f906c82a105c88dd626f40930dde39db02cb010e22dd38",
+      "nativeSha256": "6cc977869ccc31e6cce2652c6903477e048b3ee0e2024cc79c9aba2be63c9bd1",
       "officialSha256": "03a3be4b2d3fd638d358958adf0affc0f33b6051f93bab191434a65cc9a89f3d"
     },
     {
@@ -75520,9 +75520,9 @@
       "sourceSha256": "33e128e835b798c207dfdca5f05ede30ec41aef8bbf3237bbdd91ca20fbfef81",
       "nativeFile": "parity_journey_164_native.png",
       "officialFile": "parity_journey_164_official.png",
-      "nativeBytes": 43731,
+      "nativeBytes": 43677,
       "officialBytes": 42918,
-      "nativeSha256": "9351fe404c3fac63db9054170838847dd1c3dca58745f172d55d34bf7010ebfd",
+      "nativeSha256": "aba89bcd75b98c3b6b6319c1de30eb535372e7dfa127f41cb86a42c1f20f1163",
       "officialSha256": "6a22719d721749bf85cb17bec285a02d122e6489f8361523b1770acd892bb60d"
     },
     {
@@ -75551,9 +75551,9 @@
       "sourceSha256": "170e03b52221aaabaa2243bb91efce21999acfa22575036c67afa914ef3447f4",
       "nativeFile": "parity_journey_165_native.png",
       "officialFile": "parity_journey_165_official.png",
-      "nativeBytes": 42690,
+      "nativeBytes": 42767,
       "officialBytes": 39452,
-      "nativeSha256": "a3d8dc4700943d47f504ad80f7b7f8435f14f689b325c2fa1a13b0e0bf6bf969",
+      "nativeSha256": "dfc7707f5c6fa6ac460f723a19500071dc092a520f17415881488a62d24b1704",
       "officialSha256": "2f60f8b5bc98c63cf71b564bc558d24668df73b3fc4d87a71ffcdbe4e33641e6"
     },
     {
@@ -75580,9 +75580,9 @@
       "sourceSha256": "798b2a0127ef08e680ae7c6b88d62e549b4017754c28d7d2f5005bce12883238",
       "nativeFile": "parity_journey_166_native.png",
       "officialFile": "parity_journey_166_official.png",
-      "nativeBytes": 41050,
+      "nativeBytes": 41103,
       "officialBytes": 39287,
-      "nativeSha256": "500d1d94fad36304764613ffb8fa0e4a7bb9e161b6088156a4fd0ff15a41c3e7",
+      "nativeSha256": "55dc79b01f20245488d24da65f0f358814c72af1bf09be9c96a68587fb741760",
       "officialSha256": "9086fef0350eb8649b9adbb67c6d8438e1856048a4a24bdf1999b31563f26ff3"
     },
     {
@@ -75609,9 +75609,9 @@
       "sourceSha256": "482108e0d2f55ac9fa1242af789b4d2c3f038869dbd500cee93ed6df1d45b0a2",
       "nativeFile": "parity_journey_167_native.png",
       "officialFile": "parity_journey_167_official.png",
-      "nativeBytes": 41278,
+      "nativeBytes": 41301,
       "officialBytes": 42481,
-      "nativeSha256": "94c8341f359abd18484128f7aa5ff7060bda873345f4028feeccca8685310aff",
+      "nativeSha256": "3aa50e0d3a3cc6ebe2c8d01c21af673b63e26138499d0a797b51b1771f47b2d2",
       "officialSha256": "605b1a1bb0a0344bb518885772106d2139bc8bdbf7966d3722db44e6aebf3d80"
     },
     {
@@ -75638,9 +75638,9 @@
       "sourceSha256": "622e41cd900997c6636bc9ca3c8c57b296c5dcec11d6d773ef60709d78ac1614",
       "nativeFile": "parity_journey_168_native.png",
       "officialFile": "parity_journey_168_official.png",
-      "nativeBytes": 52707,
+      "nativeBytes": 52512,
       "officialBytes": 49928,
-      "nativeSha256": "e88fe5c7c249a9e50cdc27daf29f3ebe577a0791c18b55dc3f74fc7c1cadbfda",
+      "nativeSha256": "94ff44897fd63dff376e7431bee5cad88437dd5240efd23a8ea3469153bc9248",
       "officialSha256": "760b4af6d29a1815298c8b188b32cb20a144e40821b0f52359a5550672cf694c"
     },
     {
@@ -75667,9 +75667,9 @@
       "sourceSha256": "8d563825688e9bd56358fa05ad228ea89b744949a7e6f12056f6c6cf9196d3ab",
       "nativeFile": "parity_journey_169_native.png",
       "officialFile": "parity_journey_169_official.png",
-      "nativeBytes": 54254,
+      "nativeBytes": 54177,
       "officialBytes": 51083,
-      "nativeSha256": "077e8d0e32708786c749a7af2a68f3d0f1957d97c1850a89e368fe86d94f9d85",
+      "nativeSha256": "e5f6440a9b90d0951497bb1542b9fb5f14f7adb7383aeeed6a39ca806e83f7c7",
       "officialSha256": "06cd45516e4cd57b6a1d07e03d9a79550a0372c83969fb38358c645a57586b3f"
     },
     {
@@ -75691,9 +75691,9 @@
       "sourceSha256": "b151b63d25e74671a34536a1be7e7b04a305ae9ff79ef5ce26fcb19334930a42",
       "nativeFile": "parity_journey_170_native.png",
       "officialFile": "parity_journey_170_official.png",
-      "nativeBytes": 39470,
+      "nativeBytes": 39524,
       "officialBytes": 42095,
-      "nativeSha256": "681f980667de037be86fc55b71617e804987d5af8117274922673565453cb61c",
+      "nativeSha256": "e4003312f8b19a1021f5da285b7c6cdeeb6681e53336bca8e8f5ba003af3be4e",
       "officialSha256": "9efe3341320458691b16d52fb352529572cd211ce2554d525748ee3caf47e3e7"
     },
     {
@@ -75715,9 +75715,9 @@
       "sourceSha256": "7d1ee2384fe87b8f97ab4d2395f650a3961b4963b38ec4a3e90a8819607be670",
       "nativeFile": "parity_journey_171_native.png",
       "officialFile": "parity_journey_171_official.png",
-      "nativeBytes": 39858,
+      "nativeBytes": 39836,
       "officialBytes": 41961,
-      "nativeSha256": "c643f7b7ab4fbe47269c4e51dafe87109eed49882429df880d2bde09f6495134",
+      "nativeSha256": "1e1bd170797119e75be4b9222466193a5c5902d2f1c31fdd5bbfb8e1c460a363",
       "officialSha256": "e918257a15119d4205c0941f5df5d66395c09e3b6727a26ad44f86946f8a9278"
     },
     {
@@ -75739,9 +75739,9 @@
       "sourceSha256": "23abcfe4b5bb5d74ee49ff0b5766bca7d377c9b6d5e378a7190c007f79fde285",
       "nativeFile": "parity_journey_172_native.png",
       "officialFile": "parity_journey_172_official.png",
-      "nativeBytes": 41623,
+      "nativeBytes": 41669,
       "officialBytes": 43521,
-      "nativeSha256": "023921c3716b995bbed0eae77d75950609a6809e1bdc108b982aed4714c14430",
+      "nativeSha256": "dbe6964fc47a620c47d42fa0c31f9cba7272302c54c466ef5d39df7c852d5e80",
       "officialSha256": "f66951962b54167c998e53f75a93bcb1e96a2e6e058175ff68420d51c277b35f"
     },
     {
@@ -75763,9 +75763,9 @@
       "sourceSha256": "b7c1e2c3bbbd89d4ed88cede6dec459035f925017f2b30a308179ab6ad6489e3",
       "nativeFile": "parity_journey_173_native.png",
       "officialFile": "parity_journey_173_official.png",
-      "nativeBytes": 41192,
+      "nativeBytes": 41232,
       "officialBytes": 44209,
-      "nativeSha256": "17d6a7d547d2ff50d9d211cabb2609fbe85210cc0fce086e59c0ecc5a397dbaf",
+      "nativeSha256": "604996995f52afa5a71de15f72fc0685e423e58e69d85e6e3c9ff0503f0af411",
       "officialSha256": "2d9b31ef5f2874d8db2fdcb7f8c386f948b817051cd9897aa07c94c06b17dbd5"
     },
     {
@@ -75787,9 +75787,9 @@
       "sourceSha256": "bb7534f608b299f2fa7fa02faa25af0123c026c0b26a8ed70cae2898c1e1cf71",
       "nativeFile": "parity_journey_174_native.png",
       "officialFile": "parity_journey_174_official.png",
-      "nativeBytes": 40336,
+      "nativeBytes": 40407,
       "officialBytes": 40928,
-      "nativeSha256": "ba5981b5175880f90a3bd9bd2e08cb0a87267e79d271c289e8408357fb491303",
+      "nativeSha256": "c88391848eab867b23121ab8d924168bf7c949469354b387e6664bef82c34eb1",
       "officialSha256": "d1969051834ac641a0dfa5d8a7523973658394743cef50eb852f7b9f53ebc501"
     },
     {
@@ -75819,9 +75819,9 @@
       "sourceSha256": "73c18f1e72d61bbf055dbf33da42c2555b27c43a0ce9f94058b57ed869258632",
       "nativeFile": "parity_journey_175_native.png",
       "officialFile": "parity_journey_175_official.png",
-      "nativeBytes": 40820,
+      "nativeBytes": 40823,
       "officialBytes": 41529,
-      "nativeSha256": "86865c57ff7fc6c0dd19837d7a8728d61539db452c4f0f84f7bd9435b4cb3bab",
+      "nativeSha256": "fe0e8cbe94ee6a4ea10e72ba932be92d8820c4654dc033dec97ea604d46d399c",
       "officialSha256": "14fa86a37e23bcb393c388858f440eee91e6cafbbcc1909f14d3179037e51f9c"
     },
     {
@@ -75851,9 +75851,9 @@
       "sourceSha256": "2cd31d75a785bdccabe006815bae3d9d4c350895a2bb5846ffef44f6a40a235f",
       "nativeFile": "parity_journey_176_native.png",
       "officialFile": "parity_journey_176_official.png",
-      "nativeBytes": 38691,
+      "nativeBytes": 38760,
       "officialBytes": 39528,
-      "nativeSha256": "438a5fcc535b6fca7c300aa57b275dff44c5fc42d3892e82f8d1e1c419e30d90",
+      "nativeSha256": "edfa48bc9ac0cdd7e2760debba88d419f153f77c1c84ca97d8bc8a2ffb51c3f3",
       "officialSha256": "cdc22b4637ddbfacb740069817624d037d7c928ef0c65954562d03fbf29d0688"
     },
     {
@@ -75882,9 +75882,9 @@
       "sourceSha256": "294f56b2dad49ca1d8316d9bbd9e136a6788dd11e98b18a2849dcbf8c5901398",
       "nativeFile": "parity_journey_177_native.png",
       "officialFile": "parity_journey_177_official.png",
-      "nativeBytes": 43311,
+      "nativeBytes": 43246,
       "officialBytes": 44155,
-      "nativeSha256": "4d2329c45291c4b3879d7421090d1389893bf8cff5e30ed1e08ff3a970ca2816",
+      "nativeSha256": "a5dee39e04e73dcd2ced3184a164ad8f7320be2463f136febb35e93961c86b8a",
       "officialSha256": "5f765902956f1d0bb21e2a85717cc41feb8adf72e2815d1fbfc62b868624a6c7"
     },
     {
@@ -75913,9 +75913,9 @@
       "sourceSha256": "65f8ca11f4d53f741349c93e892e56bdb7414c14336b42f696e89a9d75ad8ed8",
       "nativeFile": "parity_journey_178_native.png",
       "officialFile": "parity_journey_178_official.png",
-      "nativeBytes": 42451,
+      "nativeBytes": 42494,
       "officialBytes": 40846,
-      "nativeSha256": "1fcdda565b7134552cea03e2a80f838cd9ace058c1a9ccc59c335b7f9d578285",
+      "nativeSha256": "9635c0cd427b5087b5df461bc44e91b5bce32a709db2301bf9a9d09f9b5236af",
       "officialSha256": "3b44a4e5f47acb6bd6770a9a9b82225ac5cf8773c6c8df04f847cbbc56a5c899"
     },
     {
@@ -75942,9 +75942,9 @@
       "sourceSha256": "d055417cb2d22240fe51649e6e3d27694c3971a099d33c60bda0fb2962480576",
       "nativeFile": "parity_journey_179_native.png",
       "officialFile": "parity_journey_179_official.png",
-      "nativeBytes": 40895,
+      "nativeBytes": 40921,
       "officialBytes": 38727,
-      "nativeSha256": "1e02e2df113b6b2126de80d57d4b341905bc3077979510e006ab8b44b8d40e1d",
+      "nativeSha256": "0f4baa3b4d1ec0155c0cfa486ec89fca1214a4b63deac1888fb6cc92257788e9",
       "officialSha256": "aae6fc64dd1169bfff39ab31dba0827bb0fc081e7141d408713f18a201b93696"
     },
     {
@@ -75971,9 +75971,9 @@
       "sourceSha256": "7459a63de84973f9e9a9d60856e98d5016bd258e7bf67d8387d8f1c62bd62501",
       "nativeFile": "parity_journey_180_native.png",
       "officialFile": "parity_journey_180_official.png",
-      "nativeBytes": 41344,
+      "nativeBytes": 41349,
       "officialBytes": 42666,
-      "nativeSha256": "22b1bbc4cdece3a81a310e0d51869e4059aecbcbb56492f28d13579e62705077",
+      "nativeSha256": "0e608b98e9249714138c160e25e83b7e8e912c324fd2aa5cf31a7c113abe49c4",
       "officialSha256": "feacd4aaa784dd4cf41219c0fcc58a78d28d7731cc45c04655f7b3dcc8e372aa"
     },
     {
@@ -76000,9 +76000,9 @@
       "sourceSha256": "31f470407eefb1309ff1064b03ad395bfcd5dd44528c51ddcc15a3e639a15ba2",
       "nativeFile": "parity_journey_181_native.png",
       "officialFile": "parity_journey_181_official.png",
-      "nativeBytes": 53812,
+      "nativeBytes": 53689,
       "officialBytes": 51590,
-      "nativeSha256": "54510d4c3a1bab0a1a1819719c55e31dbe3b6fd0ff4944f01146cc2682294f13",
+      "nativeSha256": "2de415b5066a061e6eda0da9b34b1688639e75fb18f7f6930932fe0c766c2433",
       "officialSha256": "4f0b5e1c8fcb67918671bacc90955adc0cb0abe4ce7af7f5d1296cd6a3b81c79"
     },
     {
@@ -76029,9 +76029,9 @@
       "sourceSha256": "d3f0e3c9dfff70a4a73e9da6e325f90a15b4678858a3378a2c2318a48266034e",
       "nativeFile": "parity_journey_182_native.png",
       "officialFile": "parity_journey_182_official.png",
-      "nativeBytes": 55686,
+      "nativeBytes": 55559,
       "officialBytes": 52870,
-      "nativeSha256": "09e26f65768f67524cdc5483a8e68af4f24c1c29715c9c2c168191a8a2cb1d53",
+      "nativeSha256": "fbe09c0490b782be7f7070aafd2fc8d6ddd0b226a8c1dbca07b2b6914402a39c",
       "officialSha256": "de27c7bb3aa0fedf5075cbe96caa64e722ecd1498eef6e7c4b24fc7b05bc8e51"
     },
     {
@@ -76053,9 +76053,9 @@
       "sourceSha256": "ca15cb3a26490d8ca10a908f3b28d4b8fa14b3f82658e432b1464234f0b85e91",
       "nativeFile": "parity_journey_183_native.png",
       "officialFile": "parity_journey_183_official.png",
-      "nativeBytes": 39400,
+      "nativeBytes": 39431,
       "officialBytes": 41535,
-      "nativeSha256": "3dad70bcd400717e0e5363a12edd800f93a7f41a4b998bc1f517253553ae5ea7",
+      "nativeSha256": "75ba70f33632589ffaf29b2ea011a46b92945d131b4fc86a54dac0adc2414040",
       "officialSha256": "6f0a4c780efaacc00dced3baf8238dc37da32a195eb8f58e755c2dacf1b74018"
     },
     {
@@ -76077,9 +76077,9 @@
       "sourceSha256": "316cb1b6997daae8cf48e45553a51b47d453b46a5b7a9ccea7d46c16635eb4b7",
       "nativeFile": "parity_journey_184_native.png",
       "officialFile": "parity_journey_184_official.png",
-      "nativeBytes": 39313,
+      "nativeBytes": 39279,
       "officialBytes": 41826,
-      "nativeSha256": "ec739e407158c89a42d391bd583aff678a5ec03b52c7e6f09be1f499aec2271c",
+      "nativeSha256": "e4d64f3ae867046d70174390911afa9f57d5c2615e545a30aa2bb3f61f998910",
       "officialSha256": "b4f1ee1a2b8be92bb93d81063e513dfe9152925d8ece43c377727ea1dd2de695"
     },
     {
@@ -76101,9 +76101,9 @@
       "sourceSha256": "27aa95bef727f4781625ee7e995a1cd4261ece235afec6f8f56a69344faac3fc",
       "nativeFile": "parity_journey_185_native.png",
       "officialFile": "parity_journey_185_official.png",
-      "nativeBytes": 41510,
+      "nativeBytes": 41493,
       "officialBytes": 43404,
-      "nativeSha256": "83c6a66b100006dd367d0abc86cff714bd05c356759ca9340cb6119d71bbed7d",
+      "nativeSha256": "04bbea9c6aa16612283eb378ba2aded71badcbc36cc6da9c0250c084b2762ee2",
       "officialSha256": "681365b4100f7d9ab5237bd6eb993bf790097776c804de188df78627de83a96c"
     },
     {
@@ -76127,7 +76127,7 @@
       "officialFile": "parity_journey_186_official.png",
       "nativeBytes": 41007,
       "officialBytes": 43777,
-      "nativeSha256": "e191a2d794cb7d1ae4e9a35889273bbb9d38ab20a20a0a8a7263befe1d776004",
+      "nativeSha256": "c596af3d7f6a6cf499fe82465f033181fc893c6107c9e98f3205b12fc6448820",
       "officialSha256": "293ff7c35d18a90cf1a79b62bb17ff812179ea32bca5dc0d71a367cc49189462"
     },
     {
@@ -76149,9 +76149,9 @@
       "sourceSha256": "bc940b87975b9badf9790c9cea962e62b168005786cdca216e259508e5f3ed0b",
       "nativeFile": "parity_journey_187_native.png",
       "officialFile": "parity_journey_187_official.png",
-      "nativeBytes": 39971,
+      "nativeBytes": 40096,
       "officialBytes": 40626,
-      "nativeSha256": "b09128c126dee0271aa47c6cbbd7b328fcc4f538971371d60cb8d3fb91c3cdb8",
+      "nativeSha256": "c8381b757db093d0d35685791da66249c4ac886b8f0849cc5ab3e607c738c619",
       "officialSha256": "36eb1c3e162d834f22282975ca67cbe620be52749f76f41304e3ddca50583a2c"
     },
     {
@@ -76181,9 +76181,9 @@
       "sourceSha256": "7db928351cdcbac2af3260c59e45f41eba11498bc27a4dc3bd3394708e4804aa",
       "nativeFile": "parity_journey_188_native.png",
       "officialFile": "parity_journey_188_official.png",
-      "nativeBytes": 40575,
+      "nativeBytes": 40578,
       "officialBytes": 41012,
-      "nativeSha256": "87c64a18a3360eaa313b81958742595fe42618ed5a0e792e499dfaedf0b6792c",
+      "nativeSha256": "6b91a5517fe5226136bcfdeb58a047723546d64115c37a402c038d3c019e4f2d",
       "officialSha256": "8003a72b1f9f60ef442672b43b60722f5acd2ff4901c1d17350a79d9d36f5ec8"
     },
     {
@@ -76213,9 +76213,9 @@
       "sourceSha256": "3ca751907678c876b1170e60e6c5794a72dfc7ff37ee1035a3a96b5293fcc905",
       "nativeFile": "parity_journey_189_native.png",
       "officialFile": "parity_journey_189_official.png",
-      "nativeBytes": 38594,
+      "nativeBytes": 38640,
       "officialBytes": 39193,
-      "nativeSha256": "6de838386067d9566ae5fec5b066460009924ccebb62f75e920f2404fe881e3e",
+      "nativeSha256": "1bf30e8cf00a3464757c0bc92cb43578f0c7f9846682399e7c4eb4e2a9361331",
       "officialSha256": "c08c158d59e01123e1ee1b1b520db4ab6d7c2339f8bd96d6a883a78da526d8f3"
     },
     {
@@ -76244,9 +76244,9 @@
       "sourceSha256": "92f60bbe9a39472d62ff0617c816feff37755a78738fe093fa346e35f737292e",
       "nativeFile": "parity_journey_190_native.png",
       "officialFile": "parity_journey_190_official.png",
-      "nativeBytes": 43635,
+      "nativeBytes": 43568,
       "officialBytes": 43681,
-      "nativeSha256": "6a97b3b34cace029f00b0119e133fd32bfd3e56552435aea717ba786238533e7",
+      "nativeSha256": "255ab2b9eae3b203ff51fe623e746c3f9d3981b6db5ff97741c60d0d41306b09",
       "officialSha256": "31915f5e064f2134a69acc5837a169135b314f8c7a14b54e8a95d4303c71c2c2"
     },
     {
@@ -76275,9 +76275,9 @@
       "sourceSha256": "e3e02ed6888c83f2d98b06e9c8571ea2783841c43194ad86e843bd8690f2dd21",
       "nativeFile": "parity_journey_191_native.png",
       "officialFile": "parity_journey_191_official.png",
-      "nativeBytes": 41969,
+      "nativeBytes": 42004,
       "officialBytes": 40037,
-      "nativeSha256": "096b30091b39e82516121df9c11c74404b585f4807494780655d6b538af39984",
+      "nativeSha256": "5e6c788cb5b8c4a8745c4a3b5a88e4ea1d73ef54f5c462df5fae2fcfa91c61ec",
       "officialSha256": "5e5075656bf1a75e5890500ee9f42e2450ec119167664349fbf1264ec8093d3c"
     },
     {
@@ -76304,9 +76304,9 @@
       "sourceSha256": "15f3d5db95a0b7bc63cf33cf8dbc96481c12e8caf244e8b308e0dd0aa863b86b",
       "nativeFile": "parity_journey_192_native.png",
       "officialFile": "parity_journey_192_official.png",
-      "nativeBytes": 40980,
+      "nativeBytes": 41014,
       "officialBytes": 39085,
-      "nativeSha256": "9a94cef30dc8b334e56ce302d7f832ea66ab0e5169ca9033a050a45e3e173a4f",
+      "nativeSha256": "db8ae7541b1bf54c3b3e332103099352b66f332e73e8a665f8264f7cd16ed5a4",
       "officialSha256": "79b0bb1cdd7b1ea43b23b729936049b36df73029b1fd0a7eba305776359a09e5"
     },
     {
@@ -76333,9 +76333,9 @@
       "sourceSha256": "ecf873abed4860de1283f194a0e77dfb71dcbb7b12987e652b6e85b59ae46398",
       "nativeFile": "parity_journey_193_native.png",
       "officialFile": "parity_journey_193_official.png",
-      "nativeBytes": 41523,
+      "nativeBytes": 41532,
       "officialBytes": 42495,
-      "nativeSha256": "d833f13ab7eec80b463c20501e7ed697dc75da58720f8bc0088b0d7423614aea",
+      "nativeSha256": "f7a5fe4919ed169097b33038a738fdc772adedbb1d3a0a62a11765bff7bb464f",
       "officialSha256": "09e9b74ff7d9dce702a8d40e8b39dc31bb7a3fa9f3990ad6969f856fa16eb509"
     },
     {
@@ -76362,9 +76362,9 @@
       "sourceSha256": "6ba21614aa696841ba71d843f769b601829e99fda3b3cae84560497974b804f3",
       "nativeFile": "parity_journey_194_native.png",
       "officialFile": "parity_journey_194_official.png",
-      "nativeBytes": 53155,
+      "nativeBytes": 53025,
       "officialBytes": 50583,
-      "nativeSha256": "7d9518e8687dae7a41d6a816fdaa0d530066148b0958a4b4d4829406a72fcae9",
+      "nativeSha256": "ed7b47adcf7a1ef005ce9d30f71d3739c04b1517e22db92c2c2ef886556e1d0b",
       "officialSha256": "3458b262cb6671b6ff145120932698f9dda2588af3941b3008388c2c678c55d4"
     },
     {
@@ -76391,9 +76391,9 @@
       "sourceSha256": "f1c14d3d41abff3191077844004942229ffc4b849ec47594c463257bdc81afe7",
       "nativeFile": "parity_journey_195_native.png",
       "officialFile": "parity_journey_195_official.png",
-      "nativeBytes": 55017,
+      "nativeBytes": 55030,
       "officialBytes": 52325,
-      "nativeSha256": "d9bfc183fbba99e57c3ec747f468f0c91b36d937e0563cdf78b9cc835e3ef3a0",
+      "nativeSha256": "9da8032e07517c2c00c6d1a281ba04e61a47d18c1639624374ea83b975831fc4",
       "officialSha256": "ac4bb15187703a042dc000d2213c314755f28fceed2e540fee61388e38a37ba3"
     },
     {
@@ -76415,9 +76415,9 @@
       "sourceSha256": "68602843e923da5589cda3ca6b86af05c8ae8ae85bf85e689ee96f3291eda48f",
       "nativeFile": "parity_journey_196_native.png",
       "officialFile": "parity_journey_196_official.png",
-      "nativeBytes": 39727,
+      "nativeBytes": 39804,
       "officialBytes": 42036,
-      "nativeSha256": "7a2b5e6f8b430336740989d49ddffb11a03b9fcada1e357131fb735067ba764d",
+      "nativeSha256": "0cd6b820dd1b887d9c65680e3ba107e757a8d7a25e37545cecc17f6174f1fb4c",
       "officialSha256": "2dc9fc5d7d26660c2e9f63821ecc3713d75ac350450ac533dc4a819f1348e1de"
     },
     {
@@ -76439,9 +76439,9 @@
       "sourceSha256": "5a9c2ccfd9680dbdc64c0375ddeb9b549f956305a96ea4d2ce9ba5ed6d441dc3",
       "nativeFile": "parity_journey_197_native.png",
       "officialFile": "parity_journey_197_official.png",
-      "nativeBytes": 39959,
+      "nativeBytes": 39958,
       "officialBytes": 42194,
-      "nativeSha256": "1728793b94590de00b9c2c4bf6f56cf79efbdf94c100914be97b1ec0a2888c0b",
+      "nativeSha256": "eb6c4e10d30caf213f44fcfcc2f188295721dc12f332b6a457662378be9dbaff",
       "officialSha256": "560543710ebecf3f0cd7be0417aa03933284e4e996028d9a6704355d827fd08b"
     },
     {
@@ -76463,9 +76463,9 @@
       "sourceSha256": "1331353deb0948ebaeb045d791b1c3806f2d02625eedfc247e00b94d4d20246c",
       "nativeFile": "parity_journey_198_native.png",
       "officialFile": "parity_journey_198_official.png",
-      "nativeBytes": 41905,
+      "nativeBytes": 41973,
       "officialBytes": 43981,
-      "nativeSha256": "c2018a93a1dc6e38aad8dac200aed2fe790c4d65930737f70af7e78893dc0d9c",
+      "nativeSha256": "3d4fb62d5411dc6f52cd694a39ace97c66fd0b5de0fe30e4e07d227c381a471e",
       "officialSha256": "df4c807c8f6c48b86c05ec6284f10f9e9a0ef99074ea0f19a832c16dc9c47d2d"
     },
     {
@@ -76487,9 +76487,9 @@
       "sourceSha256": "646e85dd84d487490fd5770d8f13b88486b8205a837e7612eb9d9687fe50942d",
       "nativeFile": "parity_journey_199_native.png",
       "officialFile": "parity_journey_199_official.png",
-      "nativeBytes": 41210,
+      "nativeBytes": 41361,
       "officialBytes": 44426,
-      "nativeSha256": "4513899aa71348c033ddb1d1881c6eef815882b62862ca7d9da43b54fb897b1d",
+      "nativeSha256": "aaf2dcc3c68af990d54751c420e38823032b1909bea56ef86e8eb7c19bbd26e1",
       "officialSha256": "9362a5e150cae73b299b773d7e33eb8c35b027ab4b41d81f549a31f76247d0e5"
     },
     {
@@ -76511,9 +76511,9 @@
       "sourceSha256": "ceb4cb7f0ee408205deb11a5d604be064b2d2831e1872b0a83322011c4fc7f8b",
       "nativeFile": "parity_journey_200_native.png",
       "officialFile": "parity_journey_200_official.png",
-      "nativeBytes": 40440,
+      "nativeBytes": 40571,
       "officialBytes": 41638,
-      "nativeSha256": "d6c186bf8f6c3ba0b51cb7f6592b2e27953c68e14a9c54e0945a78480dd27ea8",
+      "nativeSha256": "3766aa358d98e89fc59542e22f53f5f6f26e9f34f788b07128facd3d56fc94c3",
       "officialSha256": "f01dbfd4e481a4bede7f70cc831232b5ef997cdf9f3495957b4626a3448b6555"
     },
     {
@@ -76543,9 +76543,9 @@
       "sourceSha256": "b22889cdce7df8bd311d92b4fef3f69364864cceb01c86e43cc988e052da0453",
       "nativeFile": "parity_journey_201_native.png",
       "officialFile": "parity_journey_201_official.png",
-      "nativeBytes": 41015,
+      "nativeBytes": 41030,
       "officialBytes": 41789,
-      "nativeSha256": "37fd5ca5c4bd1feb1d1500a69fc1e8925c7be5f7cbe383617e7eeebe9b58fc1d",
+      "nativeSha256": "eb2a76f12a865153a88cdad175d91526e9d846422a613924a920058295e3ad40",
       "officialSha256": "6142c7ba7a9fe7ac99622b403a14f1555b7fd7f956c847c7c0270fefcf3ddb1f"
     },
     {
@@ -76575,9 +76575,9 @@
       "sourceSha256": "c8490954ecb2cc1030a14d1afcea5db2372861d96a389a741128cf3ab65c2ef7",
       "nativeFile": "parity_journey_202_native.png",
       "officialFile": "parity_journey_202_official.png",
-      "nativeBytes": 38907,
+      "nativeBytes": 38959,
       "officialBytes": 39785,
-      "nativeSha256": "1f23860e583f268b5c76018e5fcd1ef5e05ea416d9f7b6417f35c6b7e6d6d64a",
+      "nativeSha256": "3accd44793132763074b98e31fa65a7cd191950004ae61236c101ea0f530e0cf",
       "officialSha256": "577777a7e9923e6f130f198431ea745659a73408479620f3546806a2b4187d15"
     },
     {
@@ -76606,9 +76606,9 @@
       "sourceSha256": "98c006b2ccf84a07d199aed4e11209ae3596ebd988f7dfd934f8b76f84fb8fe8",
       "nativeFile": "parity_journey_203_native.png",
       "officialFile": "parity_journey_203_official.png",
-      "nativeBytes": 44615,
+      "nativeBytes": 44536,
       "officialBytes": 45273,
-      "nativeSha256": "125cdf585c142485627469d4b380feb118c76e821eb7fac10ca7f131ba4a60f0",
+      "nativeSha256": "7b7722d0b008f6bda6b7902d9b1688a3648cb3e083cd4b60146e967a399caf2a",
       "officialSha256": "ff7b801754f355f832501115c1ad1f43887a2c6375e90ea5ff5fdd5468da0a78"
     },
     {
@@ -76637,9 +76637,9 @@
       "sourceSha256": "40215ca212cabf4618897dceef168e82053174e74c508714a3404bac0b111366",
       "nativeFile": "parity_journey_204_native.png",
       "officialFile": "parity_journey_204_official.png",
-      "nativeBytes": 42212,
+      "nativeBytes": 42275,
       "officialBytes": 41491,
-      "nativeSha256": "2a21993363c7e8f51c66a7a6fa60552fdbdcc508877932fcbcad4bef241b51e6",
+      "nativeSha256": "021c3eb105d67b063e4b29e2b73fa6fb84c202fd106d99b5e5d77f1f59b5d796",
       "officialSha256": "e5158a3e9aa6d173bf3cd65c2ae37214ed47ee888a23b7dcbfc78cabf53d75c1"
     },
     {
@@ -76666,9 +76666,9 @@
       "sourceSha256": "609418a386771bfa761eb23bf7a2a1506ea2f4e9e9feb0c8ab793cd6cb2c2043",
       "nativeFile": "parity_journey_205_native.png",
       "officialFile": "parity_journey_205_official.png",
-      "nativeBytes": 41637,
+      "nativeBytes": 41682,
       "officialBytes": 39943,
-      "nativeSha256": "8e33676741828f02098e0d8bc4fdede015b1d889b819405700f7a00fe7c07883",
+      "nativeSha256": "c5954635a8534c5449ee4595d77f109a427da5752682a6f8214d4cf569a8833f",
       "officialSha256": "c1b023febfaa82966211c12250bd7003cdbf988a176735b70c4e3ce63879247d"
     },
     {
@@ -76695,9 +76695,9 @@
       "sourceSha256": "61237f1368105359a27698df00610dc5d90ce5325bbd80622391d3d60d2a6567",
       "nativeFile": "parity_journey_206_native.png",
       "officialFile": "parity_journey_206_official.png",
-      "nativeBytes": 41939,
+      "nativeBytes": 41968,
       "officialBytes": 43560,
-      "nativeSha256": "782b22a0fb783f9bfe5556766c33299f6ead029380c263adb1e4d704899cce4f",
+      "nativeSha256": "173f793835cae1b634be9eeea5c3f1570018a1fceb665b51898c17f9dab45c3a",
       "officialSha256": "f6bf7d689acd15b74db759ff47f9ad6f370042a5dc217a9f88641e8a793f43b1"
     },
     {
@@ -76724,9 +76724,9 @@
       "sourceSha256": "a7c8b9948f5603976011294032af842ebca2e4b3df77b8b4a660e15153e9b68a",
       "nativeFile": "parity_journey_207_native.png",
       "officialFile": "parity_journey_207_official.png",
-      "nativeBytes": 54543,
+      "nativeBytes": 54336,
       "officialBytes": 51994,
-      "nativeSha256": "5591bf9b8cb8712d7e2d051621a7213aff9043471a5fdc0e8b7c4be9eb18c76d",
+      "nativeSha256": "3c2ef51cf08ddd5657dccaa094abd20921e451093e097e98c8184901b7d962f3",
       "officialSha256": "f1dd46ec9e4b1c9326909b5374e016ab1248362a92590ae31d572ce8e6c3d1fa"
     },
     {
@@ -76753,9 +76753,9 @@
       "sourceSha256": "6b9ade6b5db8b2556b88e2f284b0b3c18b659a9960a3f6e938d508fe059f995b",
       "nativeFile": "parity_journey_208_native.png",
       "officialFile": "parity_journey_208_official.png",
-      "nativeBytes": 56547,
+      "nativeBytes": 56522,
       "officialBytes": 54402,
-      "nativeSha256": "f3c3af1c1e80f4cb0e37bf7958784fec3424ca2736b9280272940eddd9b488b3",
+      "nativeSha256": "b61fddc3e50457c14dc5ac42bd9a2f18f2d035e50f3c709cfef1b16994a7ee2b",
       "officialSha256": "53c2827b36448b3438a84001c5a9451f30eca4ba0496a62461257604f82d8609"
     },
     {
@@ -76777,9 +76777,9 @@
       "sourceSha256": "ea59f18adca7d6df3ac39bc711ba256a9b6efa77bd1bec5628a231167cfcb04e",
       "nativeFile": "parity_journey_209_native.png",
       "officialFile": "parity_journey_209_official.png",
-      "nativeBytes": 39301,
+      "nativeBytes": 39373,
       "officialBytes": 41217,
-      "nativeSha256": "f9fd719fe3d89d549ad7e6e6ad8b3fd5dd6c53d4bd83d9d16e680744e10838b5",
+      "nativeSha256": "0884724167efd53d1547a2caf11ebb3abf4668c0d9e667b92118e163be526c1b",
       "officialSha256": "abf2f04b3730e3fdafc0fcc71f73533ad23b3b27f6b8e10acd3cb0e3efc74cbf"
     },
     {
@@ -76801,9 +76801,9 @@
       "sourceSha256": "bb3c1db237f5da7745581f66976e47a1c41da059e24b10ddb17a3fe400c6fa16",
       "nativeFile": "parity_journey_210_native.png",
       "officialFile": "parity_journey_210_official.png",
-      "nativeBytes": 39223,
+      "nativeBytes": 39170,
       "officialBytes": 41541,
-      "nativeSha256": "6dced611f437c8ed0cc1c9ec0651ff3c57755d9c2638186503e5fb0a7eef2037",
+      "nativeSha256": "01428735fe268c40818865dd1c2783650425aa30646a5ff2eb0a917a20a47700",
       "officialSha256": "efbfebf1e2c74fbaabc34f8ec945c3801b3dd0ce0b6c9828dac9799f4a07c922"
     },
     {
@@ -76825,9 +76825,9 @@
       "sourceSha256": "637b54ebdf57bdde2ffdadea3e68b5a1bdaceafe11079bfd234fa26395cb9de2",
       "nativeFile": "parity_journey_211_native.png",
       "officialFile": "parity_journey_211_official.png",
-      "nativeBytes": 41266,
+      "nativeBytes": 41295,
       "officialBytes": 43098,
-      "nativeSha256": "0a5a30eed4499a27793c425e8e9ac76e3625a5bac026155d8edc14f8694246cd",
+      "nativeSha256": "a39a40626718102c92ebf8b69a52fcc38c4e2b153e2077c795dec3f08ea5dfec",
       "officialSha256": "163c7c4d0dc1b7bdf442c4d47e3ce75de300e3acccc7f9dbfa56a285d5467f95"
     },
     {
@@ -76849,9 +76849,9 @@
       "sourceSha256": "30e356f76816d6f6e6789315945f0b55ba9678571165bf11ad91dfafe43c1cfb",
       "nativeFile": "parity_journey_212_native.png",
       "officialFile": "parity_journey_212_official.png",
-      "nativeBytes": 40703,
+      "nativeBytes": 40694,
       "officialBytes": 43436,
-      "nativeSha256": "38b83e8439b9b83c40735e3003a7a654a5e65ede09401a7a2147d11280b04752",
+      "nativeSha256": "eb3b0ef8104641b319fff1cb5feca13cfba6b6653791d19d06fb8cb735cc19bc",
       "officialSha256": "5b2909eaacf6743d15695c3ccf7b7ba3ff3fc4d26890114beda56c81a5c1f841"
     },
     {
@@ -76873,9 +76873,9 @@
       "sourceSha256": "d156cfaf863099c5c6b5de42739065d44b40242719af09b5bc0c33ef159d8cca",
       "nativeFile": "parity_journey_213_native.png",
       "officialFile": "parity_journey_213_official.png",
-      "nativeBytes": 39808,
+      "nativeBytes": 39959,
       "officialBytes": 40342,
-      "nativeSha256": "dd2dcd97ddcf9516e09018ab1422975e5f5fae5e3d22806952609989e4f788e1",
+      "nativeSha256": "248e2457429392e25ea9d45a0fd318b6c715ae6cc6cec7529967179237835261",
       "officialSha256": "93795fdd1e82b9a6b7dff8ee07d9f3543754f6b07d5e77a93b023c81659f478d"
     },
     {
@@ -76905,9 +76905,9 @@
       "sourceSha256": "828758b0262fafa008116268de05bf05c44549947ec8f595c7c8eac5cbcdc1ca",
       "nativeFile": "parity_journey_214_native.png",
       "officialFile": "parity_journey_214_official.png",
-      "nativeBytes": 40209,
+      "nativeBytes": 40214,
       "officialBytes": 40746,
-      "nativeSha256": "5fd6b58014451cd081d56a462ea4c02144b167bc6a2eea1a57e1fda3d747a6fb",
+      "nativeSha256": "568cc0586f3cdad3641940558edbf798e3f9ed32b21ad1908bce09e5d9e97109",
       "officialSha256": "132298a8b39eda02cf710cd7fba3238bc5b2892675f5711de182a2151675e939"
     },
     {
@@ -76937,9 +76937,9 @@
       "sourceSha256": "d7458cecff60626c5daf67c8b623c892ccdb1586f98d01adfd9297de380a151e",
       "nativeFile": "parity_journey_215_native.png",
       "officialFile": "parity_journey_215_official.png",
-      "nativeBytes": 38228,
+      "nativeBytes": 38279,
       "officialBytes": 38700,
-      "nativeSha256": "7256c47c671a87fa971307c7403edc89a472916f65671c8fa63b53e2cfd7c468",
+      "nativeSha256": "9d395b67aad6bcd453b0d52bee3da695761493b266efa115ec3aac96345407af",
       "officialSha256": "2ba9526651867564c510deea66aafc58fee5f2a295b16f4405833e461c4b9396"
     },
     {
@@ -76968,9 +76968,9 @@
       "sourceSha256": "c9ad2a4f10bac2c00a133867d28857f25407d1a5495caeb0e15205db9f9ba591",
       "nativeFile": "parity_journey_216_native.png",
       "officialFile": "parity_journey_216_official.png",
-      "nativeBytes": 43259,
+      "nativeBytes": 43200,
       "officialBytes": 42566,
-      "nativeSha256": "9ea787de64c3005a8bcc22c4a65e43e9955582735428dd91fb7819ee4a376826",
+      "nativeSha256": "d92d16071515b5142565c283949b33e21ccab84bff8ccddce1dd57899b23243f",
       "officialSha256": "053f630968b6f6a34462029dd55347ed10414b5291eae96c7d822a15711fcfb0"
     },
     {
@@ -76999,9 +76999,9 @@
       "sourceSha256": "ff7f00f25e66ccaaa0e4a9ce189456c870785eb326f56a36a7c0df8de0e126f3",
       "nativeFile": "parity_journey_217_native.png",
       "officialFile": "parity_journey_217_official.png",
-      "nativeBytes": 41629,
+      "nativeBytes": 41707,
       "officialBytes": 38991,
-      "nativeSha256": "b4b4e945097f7cbdf9bae821f0a54ae623a87d808d192535921c7adbaf68035a",
+      "nativeSha256": "679b314a5f6b2d12e327e8e7f9831e8aecc52b1f5795a76f9480007ad2caf41b",
       "officialSha256": "d5accd0061ff1fa59a532a5ef7f314d487820a303df39ee61d9f0e1494032b61"
     },
     {
@@ -77028,9 +77028,9 @@
       "sourceSha256": "2e34eebcbedba347769a9a087f2357f54b78efea23a862b8f91a022aeb1fa4ed",
       "nativeFile": "parity_journey_218_native.png",
       "officialFile": "parity_journey_218_official.png",
-      "nativeBytes": 40819,
+      "nativeBytes": 40869,
       "officialBytes": 39463,
-      "nativeSha256": "23c1f8c112fefe09ac06b0be29718f8f720c3e0ac3e6bcc14567edcce2f1205a",
+      "nativeSha256": "76fc2aa3eef258eeea7c18c4b141cbfc817690ee9219ddbf34e5dc03764c1471",
       "officialSha256": "4e9dd9ed67a321351b22ad033c2b25ccaf53d36b47d8ebb19f1272c92510e227"
     },
     {
@@ -77057,9 +77057,9 @@
       "sourceSha256": "f6ad90549689bfeda3d8459cba157f9e52225ae78b66bdf96f56d2818404409f",
       "nativeFile": "parity_journey_219_native.png",
       "officialFile": "parity_journey_219_official.png",
-      "nativeBytes": 41176,
+      "nativeBytes": 41194,
       "officialBytes": 42335,
-      "nativeSha256": "6f42f76eb36fed5d6d288e449d7ab20fbd6495b3cad60cb012587b8f7c376b44",
+      "nativeSha256": "e21f40fb9bb4bdab83878a4400654cdb43f7e1131558a2b9fc852d554a29625f",
       "officialSha256": "262b4adf0b553fecc1c1f203998a90429dd828c6b9600cfee29a3fe4ef94bad7"
     },
     {
@@ -77086,9 +77086,9 @@
       "sourceSha256": "8135d037e70f543bcb9e5e9fc74346dacc232c17faef46d4a37407aa5ecbe1d5",
       "nativeFile": "parity_journey_220_native.png",
       "officialFile": "parity_journey_220_official.png",
-      "nativeBytes": 52804,
+      "nativeBytes": 52635,
       "officialBytes": 49931,
-      "nativeSha256": "b8f42219c067266089baa7d97b574c5b37d3c38d4c5d13d987662af6d37bd00b",
+      "nativeSha256": "d7f617340696a218edca456c1cb77e3c6a01532aba137a8243ab468a96d6d56c",
       "officialSha256": "bd3994d572328fd560761154cd44c79b006fe1727f8a014492c1ca9ad1c946b3"
     },
     {
@@ -77115,9 +77115,9 @@
       "sourceSha256": "9a158bad3f5993010576282ae6ceacbb311ac2c4a13425fb8afa9c40f0f3793e",
       "nativeFile": "parity_journey_221_native.png",
       "officialFile": "parity_journey_221_official.png",
-      "nativeBytes": 54066,
+      "nativeBytes": 54001,
       "officialBytes": 51542,
-      "nativeSha256": "1d355b6e970bcb937b7aff72fa342124910746e26d1733684a934aeb3c9b3ffa",
+      "nativeSha256": "f5723355be334a5484353f35942603fe17b4705d9ddec127c6149dc51256ec8a",
       "officialSha256": "799433839fa092eaf7615020edc75727d7bf7d109d23199d7ec24ca8c6edcb40"
     },
     {
@@ -77139,9 +77139,9 @@
       "sourceSha256": "c8da3e6a5d8213d3bcc92e140c6ce32caad0843e98963e4d520845061eacb24e",
       "nativeFile": "parity_journey_222_native.png",
       "officialFile": "parity_journey_222_official.png",
-      "nativeBytes": 39653,
+      "nativeBytes": 39771,
       "officialBytes": 41642,
-      "nativeSha256": "e27be9e97fb5872a74695bd4878fbbeadd25d08a9a5ac34a6c1207c6ac80f929",
+      "nativeSha256": "62df7caae1b4ca1679170990f2ae75d9a67aa033cf33b46af634dd0ee1dcb780",
       "officialSha256": "3b96bdb0d5cd87931a5d496c281d1c1cddec9c56af6dc05ecb995bd20b3e81ec"
     },
     {
@@ -77163,9 +77163,9 @@
       "sourceSha256": "5052d302bb0bd1cbced6a0c4800e75cfabd27006667029bafd08e84c1a1651c6",
       "nativeFile": "parity_journey_223_native.png",
       "officialFile": "parity_journey_223_official.png",
-      "nativeBytes": 39468,
+      "nativeBytes": 39429,
       "officialBytes": 42070,
-      "nativeSha256": "f0baa36a79bba3fd8f8b69595d7bcb8c1a9c89e9121478280eab73512fc4e560",
+      "nativeSha256": "7f77d2f2c901a15f8e88f27ee155d8c5b858dd14d66561f25aa63b9810ff3323",
       "officialSha256": "da1504c7580b2d7f4443ee1aa167d3d21e528e08c904b1f513b1d321faccac82"
     },
     {
@@ -77187,9 +77187,9 @@
       "sourceSha256": "e7ed759a845884ec7ed63d9444cf98637235ee2e83e262328839b85d102e395f",
       "nativeFile": "parity_journey_224_native.png",
       "officialFile": "parity_journey_224_official.png",
-      "nativeBytes": 41730,
+      "nativeBytes": 41698,
       "officialBytes": 43785,
-      "nativeSha256": "df86741647350829005d57415e7713f79df8e9faf70ad77503420983f03475e3",
+      "nativeSha256": "1021c2f49f03836646b5f7daec26055e72a33d427682d8913a9cea4347556615",
       "officialSha256": "cab0a02e903d8f2e1e4fe07c5d8dea54da6edbac565e2bfe8b3e22d04d838f18"
     },
     {
@@ -77211,9 +77211,9 @@
       "sourceSha256": "4a72f2f995c9705b24cb0050b5e5339cb3f9d32cfb6ab37afd9d9727c245a2a0",
       "nativeFile": "parity_journey_225_native.png",
       "officialFile": "parity_journey_225_official.png",
-      "nativeBytes": 41126,
+      "nativeBytes": 41197,
       "officialBytes": 44289,
-      "nativeSha256": "b6596bfc919314b0f05e770a3f2fb08b2640cdd9f79867c68d76854139f59ee9",
+      "nativeSha256": "ad87c03b7ac25a5827d67337f30e1ab82f71653419c0911e56255ffec48051ab",
       "officialSha256": "f4bf19a7dad0d3362efdd728b1bbedb828909c037ecee7e9a45a8acd4b6b93c1"
     },
     {
@@ -77235,9 +77235,9 @@
       "sourceSha256": "92ae2d60943e8d9f0e6d02daa61dd9365f366fcca379d30ea448e1d69660c4a9",
       "nativeFile": "parity_journey_226_native.png",
       "officialFile": "parity_journey_226_official.png",
-      "nativeBytes": 40130,
+      "nativeBytes": 40242,
       "officialBytes": 41130,
-      "nativeSha256": "a48796d9009d3d1dda70ce52de7d074893e62916627033fe9353345f4df0b7df",
+      "nativeSha256": "266c40517036bccb88c2620a2bc6f13feccaa531b7a1d3a894236b85f474290e",
       "officialSha256": "0e347de371e997b3670e143499869ffcaedd02f1a5c5a7e27647c444932b085e"
     },
     {
@@ -77267,9 +77267,9 @@
       "sourceSha256": "0238116985cdded76cc8a79cc95a22eb7034a89e90ba6b4c6e73b06eaea766b8",
       "nativeFile": "parity_journey_227_native.png",
       "officialFile": "parity_journey_227_official.png",
-      "nativeBytes": 40706,
+      "nativeBytes": 40719,
       "officialBytes": 41473,
-      "nativeSha256": "334b22e27c196d0bc2b2659e044247464cd83e700ac6e5fc655e5e31d441990b",
+      "nativeSha256": "ee6500e3bf76556f9137b12fcab0e7ea1371d6727d4b4c3345d2ccad259f37ce",
       "officialSha256": "42b8a91eb107840789dff9d6042b033a3ed96a02610e41e641ae0f4563c1be59"
     },
     {
@@ -77299,9 +77299,9 @@
       "sourceSha256": "b9f5fa21d3bc194bfdb455373600660354d630a82a6fa150e26a3a47e6721e90",
       "nativeFile": "parity_journey_228_native.png",
       "officialFile": "parity_journey_228_official.png",
-      "nativeBytes": 38984,
+      "nativeBytes": 39026,
       "officialBytes": 39428,
-      "nativeSha256": "f5dd5a1e9e9f41198d47c259511bf612408fcc18e0988d694a51f79c042bcc7d",
+      "nativeSha256": "318c2dd65b97dae972575812886c48bcc749626669e2348363cb3b713462b429",
       "officialSha256": "f0aedbed5cb2626876490c1c42e85b06d608bdbf97ff8c889b0c69915e927c4f"
     },
     {
@@ -77330,9 +77330,9 @@
       "sourceSha256": "5ac823e84b34de7a3c6eab421a7440941d24e8e837810b0e41b73858c47b08bb",
       "nativeFile": "parity_journey_229_native.png",
       "officialFile": "parity_journey_229_official.png",
-      "nativeBytes": 44628,
+      "nativeBytes": 44573,
       "officialBytes": 43999,
-      "nativeSha256": "16deb2fbd58343329cb6c05d219a61306a6cff9f6656d381c44acc508b48b26d",
+      "nativeSha256": "683cf45ebd1649914e24c16d3e933317378729c8ffc2e5b5f0e682d2e628c127",
       "officialSha256": "caaafdf1b464a22b0d27ff51c134bc546dc230ae92f52fe99952478e40effda8"
     },
     {
@@ -77361,9 +77361,9 @@
       "sourceSha256": "6a4dc728050765fb47654ed391ab902a68966e9a27665577c0180e6082ac5998",
       "nativeFile": "parity_journey_230_native.png",
       "officialFile": "parity_journey_230_official.png",
-      "nativeBytes": 42969,
+      "nativeBytes": 43028,
       "officialBytes": 40946,
-      "nativeSha256": "eaac61db53ec99780da3160de1c1a5d7dff31a9a96a2f8df7f218c0d590a3ef9",
+      "nativeSha256": "7e24de14c5e83cf27de85496693d4059152c3fbe22ccd5f2ab04cf9f027ffa83",
       "officialSha256": "5ee759ec8587caff8d3c5b09e120f54eeb897a76100c4bd25b11db75b1d560e0"
     },
     {
@@ -77390,9 +77390,9 @@
       "sourceSha256": "8a144b2abbd7860598b4f5a9d5e65fd56741c6d5adeaa971309761a9c3bbce1b",
       "nativeFile": "parity_journey_231_native.png",
       "officialFile": "parity_journey_231_official.png",
-      "nativeBytes": 41487,
+      "nativeBytes": 41519,
       "officialBytes": 39961,
-      "nativeSha256": "40c3d87bce1b8ce4824f39ccb04d80537981e81e15b55dc4faf08e7cfb5f7a62",
+      "nativeSha256": "9a560c976da7c66746631d7c49c89cd056a82468074e2eecd32703ff25d6baf8",
       "officialSha256": "b51535ccf7afac3f292d26b6a2cabc3dacf76a7ff80c9b058894f6cccf42ee04"
     },
     {
@@ -77419,9 +77419,9 @@
       "sourceSha256": "855a401531dedd3c78fcca3ad872d575492cc1f8cd5cfdbe12f9f70aa417e0cf",
       "nativeFile": "parity_journey_232_native.png",
       "officialFile": "parity_journey_232_official.png",
-      "nativeBytes": 41860,
+      "nativeBytes": 41889,
       "officialBytes": 43475,
-      "nativeSha256": "f9b132a557384ddd7b96625b7eb4e37a2d13cf34cc4c20e68d2450fc3fb7121c",
+      "nativeSha256": "c9b030339bb9f16ba22548d9bdced6470c5fd401c4a689e32af3f0d31b2a3ff9",
       "officialSha256": "5e87d7b3737e3f43fc24aef37ecfcd0681c404d8c63f80bf27b9d9430f4a9d2c"
     },
     {
@@ -77448,9 +77448,9 @@
       "sourceSha256": "0dd5cffff41922067740a108dce076cbd194e53a61ff5b7d90e89ad02f61d8d6",
       "nativeFile": "parity_journey_233_native.png",
       "officialFile": "parity_journey_233_official.png",
-      "nativeBytes": 54643,
+      "nativeBytes": 54522,
       "officialBytes": 51284,
-      "nativeSha256": "62196f1966efb262bf9261a2b406265f8c7148d76cfcb266511c31c4a21b6e41",
+      "nativeSha256": "a70471fa3050d7063ce8879f615737f11df959795e77023c4b1d757561eea3e9",
       "officialSha256": "1b5533e113118900fa6e2ca7b55d7b847c7b0a8948555ec3ec028446cbd8b381"
     },
     {
@@ -77477,9 +77477,9 @@
       "sourceSha256": "3b4244f05f14c88ab5dce8ea482e78fb691fb7926d6a17a45c487448dc0db50d",
       "nativeFile": "parity_journey_234_native.png",
       "officialFile": "parity_journey_234_official.png",
-      "nativeBytes": 55360,
+      "nativeBytes": 55300,
       "officialBytes": 52761,
-      "nativeSha256": "329ff333ee80400f23ef6fdf659bd7a5ca2b06a3c692a7af08faed903dcaf77b",
+      "nativeSha256": "a2bc6331370c6acf5a4473c300a7530a7bdca73255b5a5f83cfe66790a3e1252",
       "officialSha256": "910521f24d9dd1257d6d1a18176b0c1c38c2e0441c7378677cfd1ec0b003b35f"
     },
     {
@@ -77501,9 +77501,9 @@
       "sourceSha256": "dc8578574f2f94743c74b978f4532569ffd5e102056e68ac581ebdbcb93ed476",
       "nativeFile": "parity_journey_235_native.png",
       "officialFile": "parity_journey_235_official.png",
-      "nativeBytes": 39828,
+      "nativeBytes": 39912,
       "officialBytes": 41656,
-      "nativeSha256": "e22c1d8452e4bc43074061218bc8bcf2c2ac956e585e6586c6b9ea585fbd0049",
+      "nativeSha256": "1c1c5653ffb8dd8296bc68df53cdaf9f3f740494e279edf8131ef4098a2cc9f4",
       "officialSha256": "945c3b0f1a68b59e8b7ec371c96ac1870d33a9b05047aca7ff751f61ddfc28df"
     },
     {
@@ -77525,9 +77525,9 @@
       "sourceSha256": "8100fa1c541e8a08c87a6f19ecafb2f7483ee994a2215cf041a7f290b3566380",
       "nativeFile": "parity_journey_236_native.png",
       "officialFile": "parity_journey_236_official.png",
-      "nativeBytes": 39481,
+      "nativeBytes": 39470,
       "officialBytes": 41791,
-      "nativeSha256": "2a19594a25c35bcdbcde6bcb939b8cbe618e06443acab097ed8f4ed10f6d817a",
+      "nativeSha256": "5372dfe807d2046aa7d5436bb355f26ad4f65491a437647db326d56f283ca5f6",
       "officialSha256": "dbdd583a18f7343a60ce1d84214429273cea681870121ca1d7a119d3e5e462cb"
     },
     {
@@ -77549,9 +77549,9 @@
       "sourceSha256": "8b2075d22afc28aff5453a24dcc526fdcaef99e46a48f93683959ae3c5ebf32e",
       "nativeFile": "parity_journey_237_native.png",
       "officialFile": "parity_journey_237_official.png",
-      "nativeBytes": 41581,
+      "nativeBytes": 41584,
       "officialBytes": 43472,
-      "nativeSha256": "f798136f6da0d6ab20e3366dc8b34d3b95428e02431c3070b75fa80f3207377c",
+      "nativeSha256": "11a08d56ae39a44f0ce0653280222282e6dfb4146594f0d9c2849bb61cd98514",
       "officialSha256": "b20adcc3e8bde464cee8024ef2777e54d22fd5be4529f78cee0bf86496de6816"
     },
     {
@@ -77573,9 +77573,9 @@
       "sourceSha256": "f32807fc85dba5bd8216f69fe945421cb7d617580bc6007ec916e02e245ce6db",
       "nativeFile": "parity_journey_238_native.png",
       "officialFile": "parity_journey_238_official.png",
-      "nativeBytes": 41132,
+      "nativeBytes": 41092,
       "officialBytes": 44091,
-      "nativeSha256": "3bb09b932b26f944df1433eb2ab3a7e671a93540509ad0731d46caf87537845d",
+      "nativeSha256": "97c592573e0b031887d8f19be71cf9138cd7d6e813447fc27083c91c0d16cf9f",
       "officialSha256": "5471e519563690ea93d4beab49fbe724fb7ba11049ced82c0196ddc49f6d2816"
     },
     {
@@ -77597,9 +77597,9 @@
       "sourceSha256": "ebe4fa8300f24ce662c6c8ed37543089cd48639b04e15a0dd514a5ca9e89dc3e",
       "nativeFile": "parity_journey_239_native.png",
       "officialFile": "parity_journey_239_official.png",
-      "nativeBytes": 40190,
+      "nativeBytes": 40320,
       "officialBytes": 40828,
-      "nativeSha256": "968d92f043045aeb24c1540389fc1b377ff87f29e79a4b9a20f46e0e92b2ff0a",
+      "nativeSha256": "95253a881ded2664d7dcd1cc37834b5c4fdc196d2e87103c5129e38ce42b78e4",
       "officialSha256": "e9fd3ede4429a5ed6024a7ddae3ef1b1437f533cb9d22fc5eb5cfea881d0923d"
     },
     {
@@ -77629,9 +77629,9 @@
       "sourceSha256": "6845eb82479f885a123c0afaca87c93dbbbc7a216d7f5c4d86450d33db3dd2d2",
       "nativeFile": "parity_journey_240_native.png",
       "officialFile": "parity_journey_240_official.png",
-      "nativeBytes": 40744,
+      "nativeBytes": 40758,
       "officialBytes": 41177,
-      "nativeSha256": "aa0894058073dd64d6d87b14adc5c3d451f1fd295ac34115a92cef2c4a30cb86",
+      "nativeSha256": "bce8691e2155dc0903b69491e0d79f64cd25fc2b2197ab7ebc361f60517f119a",
       "officialSha256": "6f33f68b2221d60fed1970f218d4538ed7caa7c12c720eca9cde5fb579de13df"
     },
     {
@@ -77661,9 +77661,9 @@
       "sourceSha256": "b89fce864b23bf020a2f2a208b233a06dd89b4a1a292da425deaf9bdb8f557fd",
       "nativeFile": "parity_journey_241_native.png",
       "officialFile": "parity_journey_241_official.png",
-      "nativeBytes": 38657,
+      "nativeBytes": 38699,
       "officialBytes": 39210,
-      "nativeSha256": "1b607b9f0f4f63b79e4b54a8347591d754ab403a423a5b1ba6c13f083db2365f",
+      "nativeSha256": "ba55fd7b7eeef50bf22b92c3b57849078c187b78097ee8b0d85401fae4a2f809",
       "officialSha256": "5a1a69ea06dfb7221d45cbce0c9f6a08284468a1e40ba5a0db5ffcb048e5f6cf"
     },
     {
@@ -77692,9 +77692,9 @@
       "sourceSha256": "0e669044d704003eea0821125f330dd2ba42b13864293aaf9aed4bb3c78dfb4d",
       "nativeFile": "parity_journey_242_native.png",
       "officialFile": "parity_journey_242_official.png",
-      "nativeBytes": 43542,
+      "nativeBytes": 43477,
       "officialBytes": 43665,
-      "nativeSha256": "b6b89062970e7e8b730566cc853b0747fad4a4cb0bdbdc32fb6654cc555bfebf",
+      "nativeSha256": "615f5f35c4f93be1f5d2d3c624655483a43b42d6d372ac0907b30999639d5394",
       "officialSha256": "1d358a94d14c2a1050fb1006f42b1517992a307c94aca14bc75eea717ee6a3cc"
     },
     {
@@ -77723,9 +77723,9 @@
       "sourceSha256": "c9f69a0845716e46d66a3657d22ae5fe4fcbd8f9e616d2e6700ee78146014801",
       "nativeFile": "parity_journey_243_native.png",
       "officialFile": "parity_journey_243_official.png",
-      "nativeBytes": 43239,
+      "nativeBytes": 43323,
       "officialBytes": 40335,
-      "nativeSha256": "f397f46878dd5b5a3ceda14e6a051e85787aa374ac0b4e68c7d92d5283d2e508",
+      "nativeSha256": "e27ec14bbc1deab59ddcd7f9ae3a123c64d98a7de9f5f22042f6a3fe32e59c1a",
       "officialSha256": "ca09d6b6c3df04935e1b2d3fb0ec91454f9e68e9c11f58d064164cad16903783"
     },
     {
@@ -77752,9 +77752,9 @@
       "sourceSha256": "ab9308f121c0f74207db8cb69af0675673925f6dcaf673d9ee7fa9b61f7dba6b",
       "nativeFile": "parity_journey_244_native.png",
       "officialFile": "parity_journey_244_official.png",
-      "nativeBytes": 41378,
+      "nativeBytes": 41416,
       "officialBytes": 39937,
-      "nativeSha256": "bf839ea0c4a880d9629b7654806ef3bf5ba9278b968c8b902d13a81cca2a5739",
+      "nativeSha256": "c68039edb67fffcce88970b02a34b3329b9f3acce7e4ccd5c09d0f11a7a420b6",
       "officialSha256": "64bdc7f657a4290f971c7ad1976e17a5bf0a1656a74ac00e7c4c9da308bf0d8e"
     },
     {
@@ -77781,9 +77781,9 @@
       "sourceSha256": "d637991ccbcfaed4f0e2d8449ccd0b65a87055cd93ba0a4f79949a72ab8849a9",
       "nativeFile": "parity_journey_245_native.png",
       "officialFile": "parity_journey_245_official.png",
-      "nativeBytes": 42316,
+      "nativeBytes": 42341,
       "officialBytes": 43913,
-      "nativeSha256": "2673599e1ddcb52cefb5ecf09dc4ea7e563cbbee5d96648e31fd5d513c015577",
+      "nativeSha256": "083cef2daa412c068f42be24903df9aa66b1e9807d2930921a06a358d5cb7018",
       "officialSha256": "29a149d8c5506e599d1235c1b106c82a1c11c38c5b176cee4b624040beeddb8d"
     },
     {
@@ -77810,9 +77810,9 @@
       "sourceSha256": "bc53bd238e8b922d98faffef37b9ee18f558eced5dcc2d14df2fe3656fdfd998",
       "nativeFile": "parity_journey_246_native.png",
       "officialFile": "parity_journey_246_official.png",
-      "nativeBytes": 53953,
+      "nativeBytes": 53807,
       "officialBytes": 51205,
-      "nativeSha256": "bbf19f133fe927bfc78862ce787785c8c43eaa4f4483d2794634dfeb82b3848b",
+      "nativeSha256": "a5e82b2092cc2a8479ff57ce98ff4646bf179fd021882e699ba25330a0bb9e1f",
       "officialSha256": "e8bbffbe1637da1db73101a99b897a266c0e033b512c3e2721c4303f5ad61713"
     },
     {
@@ -77839,9 +77839,9 @@
       "sourceSha256": "a534741b1118c21a6deb25c2ddc2bb814cb000a5e8e75c1e5a5a306815450610",
       "nativeFile": "parity_journey_247_native.png",
       "officialFile": "parity_journey_247_official.png",
-      "nativeBytes": 54920,
+      "nativeBytes": 54831,
       "officialBytes": 51806,
-      "nativeSha256": "08173825d37275557cc24a3ed9a609b043d85f49e88dfcc0e7b34d97b1cefee7",
+      "nativeSha256": "b42cc24aa8cc59848e7032314daa9b1223421be23364412549453bdeb83654c7",
       "officialSha256": "d3527c34727e490550e3a7ed3b1d9767945509c51d65c78b19bbf7a68441e4ce"
     },
     {
@@ -77863,9 +77863,9 @@
       "sourceSha256": "92e1b623c65ae52e3b79c21da91cc4a2a0d53ebb5e13ab02c761b70a4bc4bcb5",
       "nativeFile": "parity_journey_248_native.png",
       "officialFile": "parity_journey_248_official.png",
-      "nativeBytes": 38759,
+      "nativeBytes": 38833,
       "officialBytes": 41242,
-      "nativeSha256": "71b34f5ca7dee4ba7e0b71615df943d7088e12eedf749522a8ff4d8bcd5d2daa",
+      "nativeSha256": "9de3752bc95b6c7cc0d622135ab09f9d822fc7930f8360fe43491de808576ae4",
       "officialSha256": "ba611fa6a463390fc111944f503d6e92a49c731dd61c11d70febdb2ca3329d64"
     },
     {
@@ -77887,9 +77887,9 @@
       "sourceSha256": "9639f233d31d5a3474c97cac384e6d097a9f341865d46416150a04c6c3e85fe4",
       "nativeFile": "parity_journey_249_native.png",
       "officialFile": "parity_journey_249_official.png",
-      "nativeBytes": 39382,
+      "nativeBytes": 39355,
       "officialBytes": 41466,
-      "nativeSha256": "fcf60112f2645aa11758ad27b12c2d3da116e56df66c4b5302a763afddb1b2fe",
+      "nativeSha256": "8498a9a13e52f8c9454d39190d24c2df7de9ee0b72aa7066cc851844a69f9a44",
       "officialSha256": "94808a5ad81cb72853e38d9a9555b71eae7336a1a9031c52e7d5e03a63f8b267"
     },
     {
@@ -77911,9 +77911,9 @@
       "sourceSha256": "c868a8b4e7dc3324e54f634a67a5abda5b21ba8a0b76b99747bab917d9d8f57f",
       "nativeFile": "parity_journey_250_native.png",
       "officialFile": "parity_journey_250_official.png",
-      "nativeBytes": 41115,
+      "nativeBytes": 41182,
       "officialBytes": 43152,
-      "nativeSha256": "510055ddb8593825507d51d8935ad16a4a397f96a8a2fd365d43c4b0ee74dba1",
+      "nativeSha256": "e9c1e0a765fe1404a01be52460246f5b34eb1fa0b9483ac1d2425713888a5596",
       "officialSha256": "39e635b9289b39ea41d7ee767a2c817398d4465326dbd7191c8cd2811c18dc7c"
     },
     {
@@ -77935,9 +77935,9 @@
       "sourceSha256": "fa8314b6968630baa5afdf6f77e2f4ac36eee72412d193072cf18e9309ea54a4",
       "nativeFile": "parity_journey_251_native.png",
       "officialFile": "parity_journey_251_official.png",
-      "nativeBytes": 40523,
+      "nativeBytes": 40575,
       "officialBytes": 43350,
-      "nativeSha256": "8437c532c45eebeceaf16ec131e4070b687f7abfadbfad68158246d885dc7c0e",
+      "nativeSha256": "8475b5acffb7f7273bdb22087569c06ea4d157edd47044adcc1064d0d5be386b",
       "officialSha256": "f81f8e4a5f84b24c7760d78579d5a89ed984742a29cc14b71aa6067a4f9207a9"
     },
     {
@@ -77959,9 +77959,9 @@
       "sourceSha256": "5f91474230eb2cb17f16c3b4bf3e550bd4fcca352601b52e372c958985d6845b",
       "nativeFile": "parity_journey_252_native.png",
       "officialFile": "parity_journey_252_official.png",
-      "nativeBytes": 39842,
+      "nativeBytes": 39945,
       "officialBytes": 40215,
-      "nativeSha256": "660937dec3611b7f3c33d9f56cf97a1ec2ade3fff6625ddb3b49e18bbd423bfa",
+      "nativeSha256": "2bd9a72f6fa8a8bb000bd887fb895384225bd08d27fb540044efdb48f955c205",
       "officialSha256": "e973ae3e032a79aa0e9f8a17a08bdb54d2edcfe78fc28083128f55484fd26ed0"
     },
     {
@@ -77991,9 +77991,9 @@
       "sourceSha256": "e810a4c305ebaf5485aa0f5960f469c5125b387230c932b0946afd565df21454",
       "nativeFile": "parity_journey_253_native.png",
       "officialFile": "parity_journey_253_official.png",
-      "nativeBytes": 39932,
+      "nativeBytes": 39934,
       "officialBytes": 40581,
-      "nativeSha256": "ee6a4535ba3976fdb66fd9342ce90bea04bfdd137ec785b6088fccd5d3753b35",
+      "nativeSha256": "b2f1627b0a8455703c4a44ba08ae279f2f8add633427d7c6e384cc21aaf68cfd",
       "officialSha256": "de145b2f0cf05190eacd8bec4824aaddaf8a7bbd77bb861babcf1de74497fa75"
     },
     {
@@ -78023,9 +78023,9 @@
       "sourceSha256": "6f77a720f676e36079f6d211b0dea4d39187f5d33e4036106b2be607b98b541a",
       "nativeFile": "parity_journey_254_native.png",
       "officialFile": "parity_journey_254_official.png",
-      "nativeBytes": 37713,
+      "nativeBytes": 37780,
       "officialBytes": 38651,
-      "nativeSha256": "a10e4cb020242fc6fd4c8fdf3e1d158199cf85df4e235886016f28d55902206b",
+      "nativeSha256": "acb3d0dd7c1e02501f7b5583ca2676d7ed55fe755a7e4f02e1aeea9380b66b2b",
       "officialSha256": "3e9ea2848ab9cce2aec1f39a7f85df9347918b33ac9220cbcc3fa8fd25ecfae0"
     },
     {
@@ -78054,9 +78054,9 @@
       "sourceSha256": "4ca61cf3b3fd1342b7eff40f8ea6343d5aa0850d9ec766780a4a5ef5a8f02bec",
       "nativeFile": "parity_journey_255_native.png",
       "officialFile": "parity_journey_255_official.png",
-      "nativeBytes": 42280,
+      "nativeBytes": 42223,
       "officialBytes": 42625,
-      "nativeSha256": "0e7a5410bb2ea62ec3f26f8092f2c33ad16c4854a7bb6630e78e7cc37b4e0dd3",
+      "nativeSha256": "da44be748ca9985df2e2e50acbd5e24b458ea5d25c739805b4995e6e5391005a",
       "officialSha256": "502f210026bf9745610a20c1c31a71c83be47a81724799f3f02a9449287db55a"
     },
     {
@@ -78085,9 +78085,9 @@
       "sourceSha256": "0d32f86a47fb32c7bd9de750e718651e2baf2a1cb0ce1e169fda20416bb447bb",
       "nativeFile": "parity_journey_256_native.png",
       "officialFile": "parity_journey_256_official.png",
-      "nativeBytes": 40927,
+      "nativeBytes": 40975,
       "officialBytes": 39118,
-      "nativeSha256": "af8ea71dd505d438202b4ea1d8d4217e9847299e4e00cfc378308f2f5fe931d9",
+      "nativeSha256": "a5cf4485986f6c014d9460d8facd3950e1dc865da95faf029fd65d6a8b8330f1",
       "officialSha256": "9f184fe57ea873e358eb14dc9e6fde19a791348a40be562cdc82401ffba9d188"
     },
     {

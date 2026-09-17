@@ -807,7 +807,9 @@ internal class JourneyLayout {
 
     private companion object {
         const val ACTOR_CIRCLE_X = 20f
-        const val ACTOR_LABEL_X = 40f
+        // Mermaid.js 12.0.0: drawActorLegend + svgDrawCommon.drawText.
+        // The legend passes x=40 and drawText offsets its tspan by 2 * boxTextMargin.
+        const val ACTOR_LABEL_X = 50f
         const val ACTOR_START_Y = 60f
         const val ACTOR_RADIUS = 7f
         const val ACTOR_LABEL_BASELINE_OFFSET = 7f

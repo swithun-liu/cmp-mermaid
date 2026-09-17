@@ -38,7 +38,7 @@
 > The current **[3,840-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
 > covers all 15 implemented families. Flowchart, XY Chart, Quadrant Chart,
 > Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, and Pie
-> have completed the replacement 256-case detail gate. User Journey,
+> and User Journey have completed the replacement 256-case detail gate.
 > Requirement, Git Graph, and Mindmap remain legacy capture evidence pending
 > replacement detail review; the report does not prove complete Mermaid
 > compatibility.
@@ -53,8 +53,8 @@ Canvas painting are owned by the multiplatform libraries.
 
 The 15 implemented families retain repository-controlled tests and captures.
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, and Pie pass the replacement detail gate; the other
-implemented families are being upgraded and re-reviewed.
+Entity Relationship, Gantt, Pie, and User Journey pass the replacement detail
+gate; the other implemented families are being upgraded and re-reviewed.
 
 | Evidence | Result |
 | --- | ---: |
@@ -65,8 +65,8 @@ implemented families are being upgraded and re-reviewed.
 | Declared capability coverage | 257/257 |
 | Large-scale visual matrix | 3,840 unique sources: 256 per implemented family |
 | Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots |
-| Matrix detail review | Eleven families: 2,816/2,816 accepted; 2,756 automatic passes plus 60 manually accepted ER text-position reviews; remaining 4 families require re-audit |
-| Automated visual geometry | 3,840/3,840 passed; eleven family detail gates passed |
+| Matrix detail review | Twelve families: 3,072/3,072 accepted; 2,993 automatic passes plus 79 manually accepted ER/Journey text reviews; remaining 3 families require re-audit |
+| Automated visual geometry | 3,840/3,840 passed; twelve family detail gates passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 |
 | Separate generated Native stress inputs | 3,840 |
@@ -137,7 +137,7 @@ large-scale matrix with 3,840 unique Mermaid sources:
 | Entity Relationship | Detail gate passed | 13 | Attributes, cardinalities, relationships, nested subgraphs | [Compatibility](docs/er-compatibility.md) |
 | Gantt | Detail gate passed | 13 | Dates, dependencies, exclusions, milestones, D3-style ticks | [Compatibility](docs/gantt-compatibility.md) |
 | Pie | Detail gate passed | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
-| User Journey | Detail re-audit | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
+| User Journey | Detail gate passed | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
 | Requirement | Detail re-audit | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |
 | Git Graph | Detail re-audit | 13 | Langium grammar, branches, merges, cherry-picks, orientations, themes | [Compatibility](docs/gitgraph-compatibility.md) |
 | Mindmap | Detail re-audit | 13 | Jison/Mindmap DB, CoSE-Bilkent, Dagre, tidy tree, shapes, themes | [Compatibility](docs/mindmap-compatibility.md) |

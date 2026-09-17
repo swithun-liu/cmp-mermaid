@@ -19,11 +19,11 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie |
-| Implemented, detail re-audit pending | User Journey, Requirement, Git Graph, Mindmap |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey |
+| Implemented, detail re-audit pending | Requirement, Git Graph, Mindmap |
 | Translation pending | Agentflow, Architecture, Block, C4, Cynefin, Event Modeling, Ishikawa, Packet, Radar, Railroad, Sankey, Swimlanes, Treemap, TreeView, Use Case, Venn, Wardley Map, ZenUML |
 
-The current 3,840-pair matrix covers all 15 implemented families. Four families
+The current 3,840-pair matrix covers all 15 implemented families. Three families
 still retain legacy capture evidence whose automated gate checked only blank
 output, content bounds, and aggregate ink. A Git Graph label paint-order defect
 was visible in the original 3,072-pair matrix and was not identified during the
@@ -51,12 +51,14 @@ Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, and Pie are the first eleven families to complete
-the replacement gate. Together they have 2,816 accepted same-source pairs:
-`2,756 pass / 60 manually reviewed / 0 fail` across 176 reviewed contact
-sheets. The 60 reviews are ER text-position threshold findings; all preserve
-text, avoid clipping and overlap, pass raster checks, and were accepted by
-manual side-by-side review. Flowchart
+Entity Relationship, Gantt, Pie, and User Journey are the first twelve families
+to complete the replacement gate. Together they have 3,072 accepted
+same-source pairs: `2,993 pass / 79 manually reviewed / 0 fail` across 192
+reviewed contact sheets. The 60 ER reviews are text-position threshold
+findings, while the 19 Journey reviews are benign line-segmentation differences
+for one complete long actor label. All preserve text, avoid clipping and
+overlap, pass raster checks, and were accepted by manual side-by-side review.
+Flowchart
 geometry ratios are `1.026-1.119` for width, `0.945-1.047` for height, and
 `0.948-1.241` for foreground ink. XY Chart ratios are `1.008-1.029`,
 `0.995-1.041`, and `0.918-1.163`, respectively. Quadrant ratios are
@@ -70,7 +72,8 @@ respectively. Sequence ratios are `1.023-1.068`, `0.893-1.045`, and
 Relationship ratios are `1.033-1.078`, `0.882-1.043`, and `0.545-1.150`,
 respectively. Gantt ratios are `1.035-1.037`, `0.883-0.961`, and
 `0.964-1.023`, respectively. Pie ratios are `0.992-1.050`, `0.994-1.019`,
-and `0.993-1.042`, respectively.
+and `0.993-1.042`, respectively. User Journey ratios are `1.020-1.032`,
+`1.036-1.057`, and `0.983-1.073`, respectively.
 
 ## Expected Behavior
 

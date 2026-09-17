@@ -52,9 +52,13 @@ typed `MermaidTheme.journey` API.
 - 13 independent production scenarios cover all 16 declared Journey
   capability points.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
-  All pairs passed the legacy geometry gate. The former manual completion
-  claim is withdrawn pending the detail re-audit defined in
-  [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
+  The replacement audit reports `237 pass / 19 manually reviewed / 0 fail`;
+  all 256 pass geometry with width ratios `1.020-1.032`, height ratios
+  `1.036-1.057`, and foreground-ink ratios `0.983-1.073`. The 19 reviews are
+  benign platform-font line-segmentation differences for the complete
+  `Regional Compliance Review Coordination Team` actor label. Both sides
+  retain ten text elements with no clipping or overlap. All 16 contact sheets
+  were manually reviewed.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
   complete 158-case mixed corpus.
 
