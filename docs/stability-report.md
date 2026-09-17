@@ -2,8 +2,8 @@
 
 > [!WARNING]
 > This report covers the current 15-family implemented subset, not a current
-> overall Stable decision. Mindmap still requires replacement detail
-> review, and 18 official Mermaid families remain untranslated. See the
+> overall Stable decision. All implemented families have passed replacement
+> detail review, but 18 official Mermaid families remain untranslated. See the
 > [33-family roadmap](full-diagram-roadmap.md) for the complete status and
 > promotion gate.
 
@@ -17,14 +17,14 @@ Native-only randomized stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Detail re-audit pending; historical Stable rating withdrawn** |
+| Current rating | **Implemented subset detail-gated; overall Stable withheld** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Independent production scenarios | 197: 77 release-candidate cases plus 120 additional conformance cases |
 | Declared capability coverage | 257/257 points across 15 diagram types |
 | Large-scale visual matrix | 3,840 unique Mermaid sources: 256 per diagram type |
 | Native core render results | 197 independent plus 3,840 matrix cases passed, 0 failed |
 | Web Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots, 0 render errors |
-| Manual visual review | 224 replacement-gate sheets across 14 families; Mindmap remains pending |
+| Manual visual review | 240 replacement-gate sheets across all 15 implemented families |
 | Automated visual geometry | 3,840/3,840 matrix pairs and 197/197 independent pairs passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 renders passed: 15 diagram types by 11 themes |
@@ -37,26 +37,26 @@ Native-only randomized stress inputs.
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
 **Current conclusion:** all 15 implemented families pass the shared core,
-geometry, determinism, theme, and resource gates. Fourteen also pass the
-replacement detail gate. This evidence does not satisfy the 33-family Stable
-criteria and must not be used as an overall Stable decision.
+geometry, determinism, theme, resource, and replacement detail gates. This
+evidence does not satisfy the 33-family Stable criteria and must not be used as
+an overall Stable decision.
 
 ## Current Replacement-Gate Progress
 
-Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, Pie, User Journey, Requirement, and Git Graph are
-now the first fourteen families to complete the replacement visual gate. Each
+All 15 implemented families have completed the replacement visual gate. Each
 has 256 unique same-source Native/Official pairs, a 256/256 geometry result,
 and 16 paged contact sheets. The accepted replacement total is
-3,584/3,584 pairs across 224 manually reviewed sheets:
-`3,481 pass / 103 manually reviewed / 0 fail`. The 60 ER reviews are
+3,840/3,840 pairs across 240 manually reviewed sheets:
+`3,630 pass / 210 manually reviewed / 0 fail`. The 60 ER reviews are
 text-position threshold findings. The 19 Journey reviews are text-segmentation
 findings for one long actor label whose two lines break at different words. The
 four Requirement reviews are greedy duplicate-label matching findings. The 20
 Git Graph reviews are text-overlap threshold findings caused by
-browser/Compose text-bound differences. All reviewed cases preserve complete
-text, have no clipping or unresolved overlap, and pass paint-order and raster
-checks.
+browser/Compose text-bound differences. The 107 Mindmap reviews are
+text-position findings from CoSE-Bilkent branch rotations or mirrors under
+platform text-size perturbations; 67 also cross the foreground-mask threshold.
+All reviewed cases preserve complete text and diagram semantics, have no
+clipping or unresolved overlap, and pass paint-order checks.
 
 - Flowchart content ratios: width `1.026-1.119`, height `0.945-1.047`,
   foreground ink `0.948-1.241`.
@@ -86,6 +86,8 @@ checks.
   foreground ink `0.974-1.148`.
 - Git Graph content ratios: width `1.036-1.154`, height `1.032-1.137`,
   foreground ink `1.027-1.415`.
+- Mindmap content ratios: width `0.956-1.155`, height `0.861-1.212`,
+  foreground ink `0.771-1.431`.
 - All 16 Flowchart contact sheets and all 256 same-source pairs were manually
   inspected after correcting Bang/Cloud edge intersection bounds. No
   unresolved marker, routing, label, clipping, overlap, or paint-order defect
@@ -151,10 +153,16 @@ checks.
   corrected `parity_gitgraph_005` now preserves upstream commit-label paint
   order. No unresolved commit, branch, merge, cherry-pick, label, clipping,
   overlap, or paint-order defect remains.
+- All 16 Mindmap contact sheets and all 256 same-source pairs were manually
+  inspected. The 107 queued cases preserve every expected node, label,
+  hierarchy edge, shape, and section color; their differences are
+  CoSE-Bilkent branch rotations or mirrors caused by small platform text-size
+  changes. All 107 pass clipping, overlap, paint-order, edge, and color checks;
+  Dagre and tidy-tree cases pass automatically. No unresolved hierarchy,
+  shape, text, clipping, overlap, or paint-order defect remains.
 
 This is a per-family result. Overall status remains Not Stable until the
-remaining implemented family completes the replacement audit and all 33
-official families are translated.
+remaining 18 official families are translated and all 33 family gates pass.
 
 ## What This Report Does And Does Not Prove
 
@@ -215,12 +223,8 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Requirement | 13 | 17/17 | typed requirements, elements, relationships, directions, styling, metadata | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
-| Mindmap | 13 | 22/22 | hierarchy, shapes, text, CoSE-Bilkent, Dagre, tidy tree, configuration, themes | Historical review; detail re-audit pending |
+| Mindmap | 13 | 22/22 | hierarchy, shapes, text, CoSE-Bilkent, Dagre, tidy tree, configuration, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Kanban | 13 | 17/17 | sections, tasks, metadata, priorities, ticket links, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
-
-The Mindmap row still marked "Historical review" preserves the former review
-record only. It does not satisfy the new manifest and perceptual checks and
-therefore is not a current acceptance decision.
 
 ## Large-Scale Visual Matrix
 
@@ -472,10 +476,19 @@ contact sheets were manually reviewed, including the corrected
 
 ![Mindmap complex Native and Official corpus](assets/stability-report/mindmap-complex-corpus.png)
 
-The historical review recorded all 256 Mindmap pairs as acceptable across
-CoSE-Bilkent, Dagre, and tidy-tree inputs. That conclusion is pending the new
-detail re-audit. Icons and arbitrary CSS classes remain explicit unsupported
-boundaries.
+The replacement production audit accepted all 13 pairs:
+`9 pass / 4 manually reviewed / 0 fail`. Production width, height, and
+foreground-ink ratios are `0.930-1.079`, `0.856-1.049`, and `0.759-1.037`.
+
+The replacement matrix audit accepted all 256 pairs:
+`149 pass / 107 manually reviewed / 0 fail`. The queued cases are
+text-position findings from CoSE-Bilkent branch rotations or mirrors under
+platform text-size perturbations; 67 also cross the foreground-mask threshold.
+Every expected text, node, hierarchy edge, shape, and section color is
+preserved, with no clipping, overlap, or paint-order mismatch. Matrix ratios
+are `0.956-1.155`, `0.861-1.212`, and `0.771-1.431`. All 16 contact sheets
+were manually reviewed. Icons and arbitrary CSS classes remain explicit
+unsupported boundaries.
 
 </details>
 
@@ -724,8 +737,8 @@ The Stable label requires all of these code-level gates:
 - no open high-severity correctness, crash, resource-exhaustion, or
   data-exposure defect exists for the supported contract.
 
-These criteria are not currently satisfied. The semantic, paint-order, and
-perceptual re-audit is in progress, and 18 official Mermaid families are not
-yet implemented. The public code status therefore remains **Not Stable** until
-the per-family gates in
+These criteria are not currently satisfied. The current 15 implemented
+families have completed the semantic, paint-order, and perceptual re-audit,
+but 18 official Mermaid families are not yet implemented. The public code
+status therefore remains **Not Stable** until the per-family gates in
 [`full-diagram-roadmap.md`](full-diagram-roadmap.md) pass.

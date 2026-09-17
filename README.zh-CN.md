@@ -38,8 +38,8 @@
 > 当前 **[3,840 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
 > 已覆盖全部 15 个已实现家族。Flowchart、XY Chart、Quadrant Chart、Timeline、
 > Kanban、Sequence、Class、State、Entity Relationship、Gantt、Pie、User Journey、
-> Requirement 与 Git Graph 已完成新的 256 案例细节门禁。Mindmap 仍是待
-> replacement 细节重审的旧截图证据；该报告不代表 Mermaid 已完整兼容。
+> Requirement、Git Graph 与 Mindmap 已完成新的 256 案例细节门禁。由于仍有
+> 18 个官方家族待翻译，该报告不代表 Mermaid 已完整兼容。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
 WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，也不需要
@@ -50,7 +50,7 @@ WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，�
 
 已实现的 15 个家族仍有仓库内可复现的测试与截图。Flowchart、XY Chart、Quadrant Chart、
 Timeline、Kanban、Sequence、Class、State、Entity Relationship、Gantt、Pie、User Journey、
-Requirement 与 Git Graph 已通过新的细节门禁；Mindmap 的 Native/Official 证据正在升级并重新审查。
+Requirement、Git Graph 与 Mindmap 已通过新的细节门禁。
 
 | 证据 | 结果 |
 | --- | ---: |
@@ -61,8 +61,8 @@ Requirement 与 Git Graph 已通过新的细节门禁；Mindmap 的 Native/Offic
 | 已声明能力覆盖率 | 257/257 |
 | 大规模视觉矩阵 | 3,840 个唯一源码，每个已实现家族 256 个 |
 | Native/Official 截图 | 7,680 张矩阵截图，另有 394 张独立语料截图 |
-| 矩阵细节审查 | 14 个家族：3,584/3,584 验收；其中 3,481 个自动通过，103 个 ER/Journey/Requirement/Git Graph 文本告警经人工复核通过；Mindmap 待重审 |
-| 自动视觉检查 | 3,840/3,840 几何通过；14 个家族的细节门禁通过 |
+| 矩阵细节审查 | 全部 15 个已实现家族：3,840/3,840 验收；其中 3,630 个自动通过，210 个 ER/Journey/Requirement/Git Graph/Mindmap 告警经人工复核通过 |
+| 自动视觉检查 | 3,840/3,840 几何通过；全部 15 个已实现家族的细节门禁通过 |
 | 确定性 SceneGraph 重放 | 197 个通过，0 个不一致 |
 | 内置主题矩阵 | 165/165 |
 | 独立生成的 Native 压力输入 | 3,840 |
@@ -78,7 +78,7 @@ Requirement 与 Git Graph 已通过新的细节门禁；Mindmap 的 Native/Offic
 | [生产能力矩阵](docs/production-capability-matrix.md) | 257 项被独立验证的能力 |
 | [生产就绪说明](docs/production-readiness.md) | 代码级 Stable 标准、资源预算和接入指引 |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | 当前 JVM、构建、发布、安全、APK、视觉和 Web 负载自动化结果 |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 已实现子集的每周/手动截图；细节门禁正在升级 |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 已实现子集的每周/手动截图与细节门禁 |
 
 只有 33 个家族都通过新门禁后，整体 Mermaid `12.0.0` 支持才能达到 Stable。
 对于无法忠实表达的合法特性，系统会返回
@@ -134,7 +134,7 @@ Requirement 与 Git Graph 已通过新的细节门禁；Mindmap 的 Native/Offic
 | User Journey | 细节门禁通过 | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
 | Requirement | 细节门禁通过 | 13 | SysML 类型与字段、元素、七类关系、Dagre、样式 | [兼容性](docs/requirement-compatibility.md) |
 | Git Graph | 细节门禁通过 | 13 | Langium 语法、分支、合并、cherry-pick、方向与主题 | [兼容性](docs/gitgraph-compatibility.md) |
-| Mindmap | 细节重审 | 13 | Jison/Mindmap DB、CoSE-Bilkent、Dagre、tidy tree、形状与主题 | [兼容性](docs/mindmap-compatibility.md) |
+| Mindmap | 细节门禁通过 | 13 | Jison/Mindmap DB、CoSE-Bilkent、Dagre、tidy tree、形状与主题 | [兼容性](docs/mindmap-compatibility.md) |
 
 在各自文档声明的兼容范围内，已实现的 15 类图均支持 Mermaid frontmatter、metadata、
 Unicode 和相关主题变量。

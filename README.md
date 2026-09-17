@@ -38,10 +38,9 @@
 > The current **[3,840-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
 > covers all 15 implemented families. Flowchart, XY Chart, Quadrant Chart,
 > Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
-> User Journey, Requirement, and Git Graph have completed the replacement
-> 256-case detail gate. Mindmap remains legacy capture evidence pending
-> replacement detail review; the report does not prove complete Mermaid
-> compatibility.
+> User Journey, Requirement, Git Graph, and Mindmap have completed the
+> replacement 256-case detail gate. The report does not prove complete Mermaid
+> compatibility because 18 official families remain untranslated.
 
 CMP Mermaid is designed for applications that render many diagrams without a
 WebView per diagram. The production path does not embed Mermaid.js and does not
@@ -53,8 +52,8 @@ Canvas painting are owned by the multiplatform libraries.
 
 The 15 implemented families retain repository-controlled tests and captures.
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, Pie, User Journey, Requirement, and Git Graph pass
-the replacement detail gate; Mindmap is being upgraded and re-reviewed.
+Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, and
+Mindmap pass the replacement detail gate.
 
 | Evidence | Result |
 | --- | ---: |
@@ -65,8 +64,8 @@ the replacement detail gate; Mindmap is being upgraded and re-reviewed.
 | Declared capability coverage | 257/257 |
 | Large-scale visual matrix | 3,840 unique sources: 256 per implemented family |
 | Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots |
-| Matrix detail review | Fourteen families: 3,584/3,584 accepted; 3,481 automatic passes plus 103 manually accepted ER/Journey/Requirement/Git Graph text reviews; Mindmap requires re-audit |
-| Automated visual geometry | 3,840/3,840 passed; fourteen family detail gates passed |
+| Matrix detail review | All 15 implemented families: 3,840/3,840 accepted; 3,630 automatic passes plus 210 manually accepted ER/Journey/Requirement/Git Graph/Mindmap reviews |
+| Automated visual geometry | 3,840/3,840 passed; all 15 implemented-family detail gates passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 |
 | Separate generated Native stress inputs | 3,840 |
@@ -82,7 +81,7 @@ the replacement detail gate; Mindmap is being upgraded and re-reviewed.
 | [Production capability matrix](docs/production-capability-matrix.md) | The 257 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual capture for the implemented subset; detail enforcement is being upgraded |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual capture and detail enforcement for the implemented subset |
 
 Overall Mermaid `12.0.0` support is not Stable until all 33 family gates pass.
 A legal feature that cannot be represented faithfully returns
@@ -140,7 +139,7 @@ large-scale matrix with 3,840 unique Mermaid sources:
 | User Journey | Detail gate passed | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
 | Requirement | Detail gate passed | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |
 | Git Graph | Detail gate passed | 13 | Langium grammar, branches, merges, cherry-picks, orientations, themes | [Compatibility](docs/gitgraph-compatibility.md) |
-| Mindmap | Detail re-audit | 13 | Jison/Mindmap DB, CoSE-Bilkent, Dagre, tidy tree, shapes, themes | [Compatibility](docs/mindmap-compatibility.md) |
+| Mindmap | Detail gate passing | 13 | Jison/Mindmap DB, CoSE-Bilkent, Dagre, tidy tree, shapes, themes | [Compatibility](docs/mindmap-compatibility.md) |
 
 All 15 implemented types support Mermaid frontmatter, metadata, Unicode, and
 the relevant theme variables within their documented compatibility boundaries.

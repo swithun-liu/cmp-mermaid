@@ -13,12 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-Flowchart, XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
-Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, and Kanban
-have completed the replacement detail gate and manual contact-sheet review.
-Mindmap remains in this index as legacy capture evidence pending replacement
-detail review. The accepted replacement total is `3,584/3,584` pairs:
-`3,481 pass / 103 manually reviewed / 0 fail` across 224 contact sheets.
+All 15 implemented families have completed the replacement detail gate and
+manual contact-sheet review. The accepted replacement total is
+`3,840/3,840` pairs: `3,630 pass / 210 manually reviewed / 0 fail` across
+240 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -547,6 +545,13 @@ order.
 
 <details>
 <summary><strong>Mindmap - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `149 pass / 107 manually reviewed / 0 fail`.
+Geometry ratios: width `0.956-1.155`, height `0.861-1.212`, foreground ink
+`0.771-1.431`. The reviews are CoSE-Bilkent branch rotations or mirrors under
+platform text-size perturbations; every expected node, label, hierarchy edge,
+shape, and section color is preserved, with no clipping, overlap, or
+paint-order mismatch. All 16 pages below were manually reviewed.
 
 ![Mindmap visual parity page 01](mindmap-visual-parity-01.jpg)
 

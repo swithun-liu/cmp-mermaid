@@ -16,12 +16,12 @@ rated Stable. A successful build alone is not sufficient.
   `UnsupportedFeature`
 - Official Mermaid families: 33
 - Implemented families: 15; pending families: 18
-- Release status: **Not Stable; detail re-audit and full-family translation in progress**
+- Release status: **Not Stable; full-family translation in progress**
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
   Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
-  User Journey, Requirement, and Git Graph (`3,584/3,584` accepted;
-  `3,481 pass / 103 manually reviewed / 0 fail`; every family geometry gate
-  passing)
+  User Journey, Requirement, Git Graph, and Mindmap (`3,840/3,840` accepted;
+  `3,630 pass / 210 manually reviewed / 0 fail`; every implemented-family
+  geometry gate passing)
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
 
@@ -37,10 +37,10 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | Fourteen families have 3,584/3,584 accepted detail and geometry pairs: 3,481 automatic passes plus 103 manually accepted ER/Journey/Requirement/Git Graph text reviews; Mindmap still relies on legacy evidence | **Fourteen families passing; overall re-audit in progress** |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | All 15 implemented families have 3,840/3,840 accepted detail and geometry pairs: 3,630 automatic passes plus 210 manually accepted ER/Journey/Requirement/Git Graph/Mindmap reviews | **Implemented subset passing; 18 families remain untranslated** |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 257/257 points across 15 implemented families; 18 families remain | **Incomplete** |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 197-case corpus equality test for the implemented subset | Passing for the implemented subset |
-| Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 15 by 11 matrix: 165/165 renders | Passing for the implemented subset; detail parity pending |
+| Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 15 by 11 matrix: 165/165 renders | Passing for the implemented subset |
 | Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 3,840 visual-matrix Native renders plus a separate 3,840 generated stress inputs | Passing for the implemented subset |
 | Core throughput | 985 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 419ms total, 1ms P95 | Passing; enforced by JVM test |
 | Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: 29,144 bytes | Passing; enforced by JVM test |
@@ -129,9 +129,9 @@ latest full evidence is linked from the stability report, and there are no
 open severity-1 correctness, crash, resource-exhaustion, or data-exposure
 defects.
 
-The full rule is not currently satisfied. The current 15-family matrix retains
-legacy evidence for Mindmap. The former coarse geometry check missed a visible
-Git Graph paint-order defect; that defect is now corrected and Git Graph has
-passed the replacement detail gate. No family is promoted back to Stable until
-its 256-case detail queue is empty or every explicit exception is reviewed and
-justified; overall Stable additionally requires all 33 official families.
+The full rule is not currently satisfied. All 15 implemented families have
+passed the replacement detail gate. The former coarse geometry check missed a
+visible Git Graph paint-order defect; that defect is now corrected. No family
+is promoted back to Stable until its 256-case detail queue is empty or every
+explicit exception is reviewed and justified; overall Stable additionally
+requires all 33 official families.

@@ -50,10 +50,16 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   assert the exact structured unsupported boundary.
 - 13 independent production scenarios cover all 22 declared Mindmap
   capability points.
-- 256 same-source Native/Official visual cases passed screenshot, SHA-256, and
-  legacy geometry checks. The former manual completion claim is withdrawn
-  pending the detail re-audit defined in
-  [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
+- The replacement production audit accepted all 13 pairs:
+  `9 pass / 4 manually reviewed / 0 fail`; geometry ratios are width
+  `0.930-1.079`, height `0.856-1.049`, and foreground ink `0.759-1.037`.
+- The replacement 256-case Native/Official audit accepted all pairs:
+  `149 pass / 107 manually reviewed / 0 fail`; geometry ratios are width
+  `0.956-1.155`, height `0.861-1.212`, and foreground ink `0.771-1.431`.
+  The reviews are CoSE-Bilkent branch rotations or mirrors under platform
+  text-size perturbations; every expected node, label, hierarchy edge, shape,
+  and section color is preserved, with no clipping, overlap, or paint-order
+  mismatch. All 16 contact sheets were manually reviewed.
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
 - All 11 built-in themes are rendered by the shared production theme matrix.

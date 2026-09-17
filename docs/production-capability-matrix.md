@@ -68,23 +68,25 @@ or 14 complex production structures with 20 visible text and layout-pressure
 profiles. All 3,840 sources render in the Native core test and all 3,840
 Native/Official pairs pass the geometry gate. The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
-defect and is not a detail-parity pass by itself. Flowchart, XY Chart, Quadrant
-Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt,
-Pie, User Journey, Requirement, and Git Graph contribute 3,584
-Native/Official pairs accepted by the replacement detail gate. Ten families contribute
-`2,560 pass / 0 review / 0 fail`; ER contributes
+defect and is not a detail-parity pass by itself. All 15 implemented families
+contribute 3,840 Native/Official pairs accepted by the replacement detail
+gate. Ten families contribute `2,560 pass / 0 review / 0 fail`; ER contributes
 `196 pass / 60 manually reviewed / 0 fail`; Journey contributes
 `237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
-`236 pass / 20 manually reviewed / 0 fail`. Journey reviews are benign
+`236 pass / 20 manually reviewed / 0 fail`; Mindmap contributes
+`149 pass / 107 manually reviewed / 0 fail`. Journey reviews are benign
 platform-font line-segmentation differences for one complete long actor label.
 Requirement reviews are benign greedy cross-matches between duplicate
 relationship labels. Git Graph reviews are text-overlap threshold findings
 caused by browser/Compose text-bound differences; expected text, clipping,
-paint order, and raster checks pass. This systematic matrix broadens layout
-and text-pressure coverage, but it is not counted as 3,840 independent
-topologies. The separate randomized stress corpus remains Native-only
-robustness evidence and is not presented as Official parity.
+paint order, and raster checks pass. Mindmap reviews are CoSE-Bilkent branch
+rotation or mirror differences under platform text-size perturbations; all
+expected text, nodes, hierarchy edges, shapes, and colors are preserved. This
+systematic matrix broadens layout and text-pressure coverage, but it is not
+counted as 3,840 independent topologies. The separate randomized stress corpus
+remains Native-only robustness evidence and is not presented as Official
+parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.
 Unsupported legal features must return `MermaidError.UnsupportedFeature`

@@ -80,9 +80,14 @@ Jison production.
 - `CoseBilkentLayoutTest`, `MindmapDagreLayoutTest`, and
   `NonLayeredTidyTreeLayoutTest` cover the translated algorithm boundaries.
 - `MindmapStressTest` renders 256 deterministic randomized Native diagrams.
-- The legacy large-scale Web audit compares 256 unique same-source cases
-  against Mermaid.js `12.0.0`. Its former manual completion claim is withdrawn
-  pending the detail re-audit.
+- The replacement Web audit compares 13 independent production scenarios and
+  256 unique same-source matrix cases against Mermaid.js `12.0.0`. Production
+  results are `9 pass / 4 manually reviewed / 0 fail`; matrix results are
+  `149 pass / 107 manually reviewed / 0 fail`, with 256/256 geometry passes.
+  The reviews are CoSE-Bilkent branch rotations or mirrors under platform
+  text-size perturbations; expected text, nodes, hierarchy edges, shapes,
+  colors, clipping, overlap, and paint order all pass manual review across 16
+  contact sheets.
 
 ## Upgrade Procedure
 
