@@ -161,6 +161,16 @@ data class MermaidMindmapOptions(
     val layoutAlgorithm: String = "cose-bilkent",
 )
 
+data class MermaidPacketOptions(
+    val rowHeight: Float = 32f,
+    val bitWidth: Float = 32f,
+    val bitsPerRow: Int = 32,
+    val showBits: Boolean = true,
+    val paddingX: Float = 5f,
+    val paddingY: Float = 5f,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidKanbanOptions(
     val padding: Float = 8f,
     val sectionWidth: Float = 200f,
@@ -267,6 +277,7 @@ data class MermaidRenderOptions(
     val journey: MermaidJourneyOptions = MermaidJourneyOptions(),
     val gitGraph: MermaidGitGraphOptions = MermaidGitGraphOptions(),
     val mindmap: MermaidMindmapOptions = MermaidMindmapOptions(),
+    val packet: MermaidPacketOptions = MermaidPacketOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
     val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val curve: String = "basis",

@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 3,840 source cases and
-7,680 screenshots from the large-scale
+This index contains 4,096 source cases and
+8,192 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 15 implemented families have completed the replacement detail gate and
+All 16 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`3,840/3,840` pairs: `3,630 pass / 210 manually reviewed / 0 fail` across
-240 contact sheets.
+`4,096/4,096` pairs: `3,886 pass / 210 manually reviewed / 0 fail` across
+256 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -584,6 +584,47 @@ paint-order mismatch. All 16 pages below were manually reviewed.
 ![Mindmap visual parity page 15](mindmap-visual-parity-15.jpg)
 
 ![Mindmap visual parity page 16](mindmap-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Packet - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.011-1.015`, height `1.006-1.056`, foreground ink `0.977-1.039`.
+All 16 pages below were manually reviewed.
+
+![Packet visual parity page 01](packet-visual-parity-01.jpg)
+
+![Packet visual parity page 02](packet-visual-parity-02.jpg)
+
+![Packet visual parity page 03](packet-visual-parity-03.jpg)
+
+![Packet visual parity page 04](packet-visual-parity-04.jpg)
+
+![Packet visual parity page 05](packet-visual-parity-05.jpg)
+
+![Packet visual parity page 06](packet-visual-parity-06.jpg)
+
+![Packet visual parity page 07](packet-visual-parity-07.jpg)
+
+![Packet visual parity page 08](packet-visual-parity-08.jpg)
+
+![Packet visual parity page 09](packet-visual-parity-09.jpg)
+
+![Packet visual parity page 10](packet-visual-parity-10.jpg)
+
+![Packet visual parity page 11](packet-visual-parity-11.jpg)
+
+![Packet visual parity page 12](packet-visual-parity-12.jpg)
+
+![Packet visual parity page 13](packet-visual-parity-13.jpg)
+
+![Packet visual parity page 14](packet-visual-parity-14.jpg)
+
+![Packet visual parity page 15](packet-visual-parity-15.jpg)
+
+![Packet visual parity page 16](packet-visual-parity-16.jpg)
 
 </details>
 

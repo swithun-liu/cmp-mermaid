@@ -61,7 +61,7 @@ export const diagramFamilies = Object.freeze([
   family('packet', 'Packet', 'packet.md', ['packet'], [
     header('packet-beta', 'packet'),
     header('packet', 'packet'),
-  ]),
+  ], true),
   family('pie', 'Pie', 'pie.md', ['pie'], [
     header('pie', 'pie'),
   ], true),

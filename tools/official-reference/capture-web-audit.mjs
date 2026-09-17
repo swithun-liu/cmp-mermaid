@@ -53,6 +53,7 @@ const kotlinGalleryFiles = {
   requirement: ['RequirementDemos.kt', 'RequirementDemo'],
   gitgraph: ['GitGraphDemos.kt', 'GitGraphDemo'],
   mindmap: ['MindmapDemos.kt', 'MindmapDemo'],
+  packet: ['PacketDemos.kt', 'PacketDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [

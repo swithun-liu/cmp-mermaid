@@ -288,6 +288,25 @@ export const requiredFeaturesByKind = {
     'theme-variables',
     'unicode',
   ],
+  packet: [
+    'packet-header',
+    'packet-beta-header',
+    'explicit-ranges',
+    'single-bit-fields',
+    'bit-count-fields',
+    'mixed-addressing',
+    'row-splitting',
+    'title',
+    'frontmatter-title',
+    'accessibility',
+    'comments',
+    'escaped-labels',
+    'configuration',
+    'show-bits',
+    'hide-bits',
+    'responsive-sizing',
+    'unicode',
+  ],
 };
 
 const flowchartCases = [
@@ -2896,6 +2915,194 @@ quadrantChart
   },
 ];
 
+const packetCases = [
+  {
+    id: 'prod_packet_tcp_header',
+    kind: 'packet',
+    title: 'TCP header layout',
+    scenario: 'Explicit ranges and single-bit flags span eight fixed-width packet rows.',
+    aspectRatio: 2.4,
+    features: [
+      'packet-header',
+      'explicit-ranges',
+      'single-bit-fields',
+      'row-splitting',
+      'frontmatter-title',
+      'show-bits',
+    ],
+    expectedTexts: ['TCP Packet', 'Source Port', 'SYN', 'Data (variable length)'],
+    source: String.raw`
+---
+title: TCP Packet
+---
+packet
+  0-15: "Source Port"
+  16-31: "Destination Port"
+  32-63: "Sequence Number"
+  64-95: "Acknowledgment Number"
+  96-99: "Data Offset"
+  100-105: "Reserved"
+  106: "URG"
+  107: "ACK"
+  108: "PSH"
+  109: "RST"
+  110: "SYN"
+  111: "FIN"
+  112-127: "Window"
+  128-143: "Checksum"
+  144-159: "Urgent Pointer"
+  160-191: "(Options and Padding)"
+  192-255: "Data (variable length)"
+`,
+  },
+  {
+    id: 'prod_packet_udp_counts',
+    kind: 'packet',
+    title: 'UDP packet bit counts',
+    scenario: 'Automatic bit counts and explicit ranges combine in one packet.',
+    aspectRatio: 2.4,
+    features: ['bit-count-fields', 'mixed-addressing', 'title', 'row-splitting'],
+    expectedTexts: ['UDP Packet', 'Source Port', 'Checksum', 'Data payload'],
+    source: String.raw`
+packet
+  title UDP Packet
+  +16: "Source Port"
+  +16: "Destination Port"
+  32-47: "Length"
+  +16: "Checksum"
+  +64: "Data payload"
+`,
+  },
+  {
+    id: 'prod_packet_control_flags',
+    kind: 'packet',
+    title: 'Control flag register',
+    scenario: 'Single-bit flags and compact ranges preserve source order within one row.',
+    aspectRatio: 2.8,
+    features: ['single-bit-fields', 'explicit-ranges', 'show-bits'],
+    expectedTexts: ['Version', 'Priority', 'ACK', 'FIN'],
+    source: String.raw`
+packet
+  0-3: "Version"
+  4-7: "Priority"
+  8: "URG"
+  9: "ACK"
+  10: "PSH"
+  11: "RST"
+  12: "SYN"
+  13: "FIN"
+  14-31: "Reserved"
+`,
+  },
+  {
+    id: 'prod_packet_compact_config',
+    kind: 'packet',
+    title: 'Compact packet without bit labels',
+    scenario: 'Packet-specific dimensions, hidden bit labels, and intrinsic sizing are configured.',
+    aspectRatio: 2.6,
+    features: ['configuration', 'hide-bits', 'responsive-sizing', 'bit-count-fields'],
+    expectedTexts: ['Compact frame', 'Type', 'Length', 'Payload'],
+    source: String.raw`
+---
+config:
+  packet:
+    rowHeight: 28
+    bitWidth: 20
+    bitsPerRow: 16
+    showBits: false
+    paddingX: 2
+    paddingY: 4
+    useMaxWidth: false
+---
+packet
+  title Compact frame
+  +4: "Type"
+  +4: "Flags"
+  +8: "Length"
+  +32: "Payload"
+`,
+  },
+  {
+    id: 'prod_packet_beta_telemetry',
+    kind: 'packet',
+    title: 'Packet beta telemetry frame',
+    scenario: 'The packet-beta alias renders through the same parser and renderer.',
+    aspectRatio: 2.5,
+    features: ['packet-beta-header', 'bit-count-fields', 'row-splitting'],
+    expectedTexts: ['Telemetry frame', 'Device ID', 'Timestamp', 'Reading'],
+    source: String.raw`
+packet-beta
+  title Telemetry frame
+  +8: "Version"
+  +24: "Device ID"
+  +32: "Timestamp"
+  +32: "Reading"
+`,
+  },
+  {
+    id: 'prod_packet_accessible_unicode',
+    kind: 'packet',
+    title: 'Accessible international packet',
+    scenario: 'Accessibility metadata, Unicode, entities, comments, and escaped labels coexist.',
+    aspectRatio: 2.4,
+    features: ['accessibility', 'comments', 'escaped-labels', 'unicode'],
+    expectedTexts: ['地域 packet', '種類 &amp; mode', '東京', '서울'],
+    source: String.raw`
+packet
+  title 地域 packet
+  accTitle: International packet fields
+  accDescr: Field ranges for a regional transport frame
+  %% Labels preserve entities and escaped quote syntax.
+  +8: "種類 &amp; mode"
+  +8: "東京 \"edge\""
+  +16: "서울"
+`,
+  },
+  {
+    id: 'prod_packet_cross_row_field',
+    kind: 'packet',
+    title: 'Cross-row protocol field',
+    scenario: 'One long field is split repeatedly at exact row boundaries.',
+    aspectRatio: 2.2,
+    features: ['row-splitting', 'bit-count-fields', 'show-bits'],
+    expectedTexts: ['Cross-row field', 'Preamble', 'Variable extension', 'Trailer'],
+    source: String.raw`
+packet
+  title Cross-row field
+  +5: "Preamble"
+  +90: "Variable extension"
+  +1: "Trailer"
+`,
+  },
+  {
+    id: 'prod_packet_wide_rows',
+    kind: 'packet',
+    title: 'Wide 64-bit packet rows',
+    scenario: 'A 64-bit row configuration preserves explicit and counted field geometry.',
+    aspectRatio: 3,
+    features: ['configuration', 'mixed-addressing', 'responsive-sizing'],
+    expectedTexts: ['Wide record', 'Identifier', 'Sequence', 'Payload'],
+    source: String.raw`
+---
+config:
+  packet:
+    bitWidth: 16
+    bitsPerRow: 64
+    rowHeight: 36
+    paddingX: 4
+    paddingY: 8
+    useMaxWidth: true
+---
+packet
+  title Wide record
+  0-15: "Identifier"
+  +16: "Sequence"
+  32-63: "Payload"
+  +64: "Extended payload"
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -3229,6 +3436,7 @@ export const conformanceCases = [
   ...requirementCases,
   ...gitGraphCases,
   ...mindmapCases,
+  ...packetCases,
 ];
 
 export const cases = [

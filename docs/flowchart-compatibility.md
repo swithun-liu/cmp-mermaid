@@ -109,8 +109,8 @@ The current JVM audit uses fresh Gradle test workers:
 | Scenario | Result |
 | --- | --- |
 | Production Core JavaScript engines or bundles | None |
-| Production corpus soak | 985 renders, 419 ms total, 1 ms P95 |
-| Retained heap after forced GC | 29,144 bytes |
+| Production corpus soak | 1,050 renders, 437 ms total, 1 ms P95 |
+| Retained heap after forced GC | 33,080 bytes |
 
 The soak enforces a 45-second total budget, a 500 ms P95 budget, and a
 64 MiB retained-heap budget.

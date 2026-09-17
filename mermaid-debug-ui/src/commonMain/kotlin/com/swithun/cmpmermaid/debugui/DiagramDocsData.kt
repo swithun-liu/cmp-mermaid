@@ -456,3 +456,41 @@ internal val mindmapDiagramDocsSpec = DiagramDocsSpec(
     officialLayout = "cose-bilkent",
     playgroundLayouts = listOf("cose-bilkent", "dagre", "tidy-tree"),
 )
+
+internal val packetDiagramDocsSpec = DiagramDocsSpec(
+    id = "packet",
+    title = "Packet",
+    syntaxTitle = "Packet diagrams - Basic Syntax",
+    description = "Describe fixed-width protocol fields with explicit bit ranges or relative " +
+        "bit counts, automatic row splitting, titles, metadata, and sizing controls.",
+    documentationUrl = "https://mermaid.js.org/syntax/packet.html",
+    galleryTitle = "Packet demo gallery",
+    cases = packetDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 2.4f,
+        )
+    },
+    syntaxLessons = lessons(
+        packetDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 2.4f,
+            )
+        },
+        listOf(
+            "Explicit start-end ranges place fields at exact contiguous bit positions.",
+            "The +count form advances automatically from the previous field.",
+            "Single-number fields occupy one bit and share the current row.",
+            "Packet configuration controls row dimensions, bit labels, spacing, and sizing.",
+            "Packet-beta, accessibility metadata, entities, and Unicode use the same model.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

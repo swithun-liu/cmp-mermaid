@@ -179,6 +179,21 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersPacketAndPacketBetaThroughRegisteredPlugin() {
+        listOf("packet", "packet-beta").forEach { header ->
+            val result = engine.render("$header\n  0-7: \"Header\"", context)
+
+            val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+            assertTrue(scene.elements.filterIsInstance<SceneShape>().any {
+                shape -> shape.id == "packet-0-0-block"
+            })
+            assertTrue(scene.elements.filterIsInstance<SceneText>().any {
+                text -> text.text == "Header"
+            })
+        }
+    }
+
+    @Test
     fun rejectsEffectiveHandDrawnLookForExistingDiagramTypes() {
         val result = engine.render(
             """

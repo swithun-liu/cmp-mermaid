@@ -8,6 +8,7 @@ import com.swithun.cmpmermaid.core.gitgraph.GitGraphPlugin
 import com.swithun.cmpmermaid.core.journey.JourneyPlugin
 import com.swithun.cmpmermaid.core.kanban.KanbanPlugin
 import com.swithun.cmpmermaid.core.mindmap.MindmapPlugin
+import com.swithun.cmpmermaid.core.packet.PacketPlugin
 import com.swithun.cmpmermaid.core.pie.PiePlugin
 import com.swithun.cmpmermaid.core.quadrant.QuadrantPlugin
 import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
@@ -50,6 +51,7 @@ class MermaidEngine(
         RequirementPlugin(),
         GitGraphPlugin(),
         MindmapPlugin(),
+        PacketPlugin(),
         TimelinePlugin(),
         KanbanPlugin(),
     ),

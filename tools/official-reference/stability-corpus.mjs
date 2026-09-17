@@ -2176,6 +2176,107 @@ gitGraph LR:
 `,
   },
   {
+    id: 'rc_packet_transport_header',
+    kind: 'packet',
+    title: 'Transport protocol header',
+    scenario: 'Explicit ranges, single-bit flags, and multi-row fields form a complete transport header.',
+    aspectRatio: 2.4,
+    source: String.raw`
+---
+title: Transport protocol header
+---
+packet
+  0-15: "Source Port"
+  16-31: "Destination Port"
+  32-63: "Sequence Number"
+  64-95: "Acknowledgment Number"
+  96-99: "Data Offset"
+  100-105: "Reserved"
+  106: "URG"
+  107: "ACK"
+  108: "PSH"
+  109: "RST"
+  110: "SYN"
+  111: "FIN"
+  112-127: "Window"
+`,
+  },
+  {
+    id: 'rc_packet_counted_fields',
+    kind: 'packet',
+    title: 'Counted binary frame',
+    scenario: 'Count syntax automatically advances field positions and splits long payloads.',
+    aspectRatio: 2.4,
+    source: String.raw`
+packet
+  title Counted binary frame
+  +4: "Version"
+  +4: "Flags"
+  +16: "Length"
+  +8: "Checksum"
+  +72: "Payload"
+`,
+  },
+  {
+    id: 'rc_packet_compact_no_bits',
+    kind: 'packet',
+    title: 'Compact packet layout',
+    scenario: 'Custom dimensions and hidden bit numbers produce a compact intrinsic diagram.',
+    aspectRatio: 2.7,
+    source: String.raw`
+---
+config:
+  packet:
+    rowHeight: 26
+    bitWidth: 22
+    bitsPerRow: 16
+    showBits: false
+    paddingX: 3
+    paddingY: 4
+    useMaxWidth: false
+---
+packet
+  title Compact packet
+  +4: "Type"
+  +4: "Flags"
+  +8: "Length"
+  +32: "Payload"
+`,
+  },
+  {
+    id: 'rc_packet_beta_frame',
+    kind: 'packet',
+    title: 'Packet beta frame',
+    scenario: 'The packet-beta header shares explicit and counted field semantics.',
+    aspectRatio: 2.5,
+    source: String.raw`
+packet-beta
+  title Packet beta frame
+  0-7: "Revision"
+  +8: "Kind"
+  +16: "Identifier"
+  +64: "Body"
+`,
+  },
+  {
+    id: 'rc_packet_accessible_unicode',
+    kind: 'packet',
+    title: 'Accessible international frame',
+    scenario: 'Metadata, comments, Unicode, entities, and escaped quotes remain visible and ordered.',
+    aspectRatio: 2.4,
+    source: String.raw`
+packet
+  title 地域 frame
+  accTitle: International frame structure
+  accDescr: Regional fields and payload ranges
+  %% Mixed scripts exercise the quoted string converter.
+  +8: "種類 &amp; mode"
+  +8: "東京 \"edge\""
+  +16: "서울"
+  +32: "São Paulo"
+`,
+  },
+  {
     id: 'rc_mindmap_product_strategy',
     kind: 'mindmap',
     title: 'Product strategy hierarchy',

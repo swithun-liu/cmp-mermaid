@@ -15,6 +15,7 @@
     "generate:requirement-doc-fixtures": "node generate-requirement-doc-fixtures.mjs",
     "generate:gitgraph-doc-fixtures": "node generate-gitgraph-doc-fixtures.mjs",
     "generate:mindmap-doc-fixtures": "node generate-mindmap-doc-fixtures.mjs",
+    "generate:packet-doc-fixtures": "node generate-packet-doc-fixtures.mjs",
     "generate:xychart-doc-fixtures": "node generate-xychart-doc-fixtures.mjs",
     "generate:quadrant-doc-fixtures": "node generate-quadrant-doc-fixtures.mjs",
     "generate:timeline-doc-fixtures": "node generate-timeline-doc-fixtures.mjs",

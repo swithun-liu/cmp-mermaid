@@ -17,6 +17,7 @@ export const kinds = [
   'requirement',
   'gitgraph',
   'mindmap',
+  'packet',
 ];
 
 export const casesPerKind = 256;
@@ -144,6 +145,10 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
     case 'mindmap':
       return `${source.trimEnd()}
     ${evidenceId}["${label}"]
+`;
+    case 'packet':
+      return `${source.trimEnd()}
+  +1: "${escapeQuotedLabel(label)}"
 `;
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);

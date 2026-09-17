@@ -1,7 +1,7 @@
 # Production Capability Matrix
 
 > [!WARNING]
-> This matrix covers the 15 currently implemented
+> This matrix covers the 16 currently implemented
 > families. It is not the Mermaid 12.0.0 full-family matrix and does not confer
 > Stable status. See
 > [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
@@ -14,14 +14,15 @@ and enforced by
 
 ## Current State
 
-- 15 supported diagram types
-- 197 production scenarios
-- 120 conformance scenarios created independently from the demo gallery
+- 16 supported diagram types
+- 210 production scenarios
+- 128 conformance scenarios created independently from the demo gallery
 - 16 required capability points for the original chart families, 17 for
-  Quadrant Chart, Kanban, and Requirement, 24 for Git Graph, and 22 for Mindmap
-- 257/257 declared capability points covered
-- 3,840 additional visual-matrix sources: 256 per diagram type
-- 3,840 separate Native-only randomized stress inputs
+  Quadrant Chart, Kanban, Requirement, and Packet, 24 for Git Graph, and 22
+  for Mindmap
+- 274/274 declared capability points covered
+- 4,096 additional visual-matrix sources: 256 per diagram type
+- 4,096 separate Native-only randomized stress inputs
 
 ## Coverage
 
@@ -42,20 +43,21 @@ and enforced by
 | Requirement | 13 | requirement types, fields, risk levels, verification methods, elements, relationship types, reverse relationships, directions, Dagre, frontmatter title, accessibility, Markdown, direct styles, classes, theme variables, Unicode, comments |
 | Git Graph | 13 | commits, custom IDs, messages, tags, commit types, branches, quoted branches, checkout, switch, branch order, main branch config, merges, merge customization, cherry-pick, merge cherry-pick, orientations, parallel commits, visibility config, frontmatter config, title, accessibility, theme variables, Unicode, comments |
 | Mindmap | 13 | hierarchy, irregular indentation, deep hierarchy, wide hierarchy, default/square/rounded/circle/cloud/bang/hexagon shapes, Markdown, HTML breaks, entities, comments, frontmatter title, CoSE-Bilkent, Dagre, tidy tree, sizing config, theme variables, Unicode |
+| Packet | 13 | packet and packet-beta headers, explicit ranges, single-bit fields, bit-count fields, mixed addressing, row splitting, title, frontmatter title, accessibility, comments, escaped labels, configuration, show/hide bits, responsive sizing, Unicode |
 
 ## Enforcement
 
 The corpus generator fails when:
 
 - a diagram type does not have its expected number of cases;
-- one of the 257 required capability points has no conformance case;
+- one of the 274 required capability points has no conformance case;
 - a case reuses a demo or prior RC source;
 - a case has no semantic text expectation;
 - a case declares an unknown capability point.
 
 `ProductionCorpusTest` then requires every source to render with finite,
 bounded geometry and expected semantic text, compares two complete SceneGraphs
-for determinism, and renders all 15 diagram types across all 11 built-in
+for determinism, and renders all 16 diagram types across all 11 built-in
 themes.
 The legacy Web audit captures Native and Mermaid.js output for every case and
 enforces blank-image and content-geometry limits. The replacement detail audit
@@ -65,12 +67,12 @@ foreground masks, edges, colors, and review heatmaps.
 
 The large-scale visual matrix adds 256 unique sources per type by combining 13
 or 14 complex production structures with 20 visible text and layout-pressure
-profiles. All 3,840 sources render in the Native core test and all 3,840
+profiles. All 4,096 sources render in the Native core test and all 4,096
 Native/Official pairs pass the geometry gate. The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
-defect and is not a detail-parity pass by itself. All 15 implemented families
-contribute 3,840 Native/Official pairs accepted by the replacement detail
-gate. Ten families contribute `2,560 pass / 0 review / 0 fail`; ER contributes
+defect and is not a detail-parity pass by itself. All 16 implemented families
+contribute 4,096 Native/Official pairs accepted by the replacement detail
+gate. Eleven families contribute `2,816 pass / 0 review / 0 fail`; ER contributes
 `196 pass / 60 manually reviewed / 0 fail`; Journey contributes
 `237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
@@ -84,7 +86,7 @@ paint order, and raster checks pass. Mindmap reviews are CoSE-Bilkent branch
 rotation or mirror differences under platform text-size perturbations; all
 expected text, nodes, hierarchy edges, shapes, and colors are preserved. This
 systematic matrix broadens layout and text-pressure coverage, but it is not
-counted as 3,840 independent topologies. The separate randomized stress corpus
+counted as 4,096 independent topologies. The separate randomized stress corpus
 remains Native-only robustness evidence and is not presented as Official
 parity.
 

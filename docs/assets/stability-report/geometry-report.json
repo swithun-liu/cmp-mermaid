@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T11:00:31.382Z",
-  "inputDirectory": "captures/local/production-15-merged",
+  "generatedAt": "2026-09-17T12:31:40.498Z",
+  "inputDirectory": "captures/local/production-16-merged",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 197,
+  "caseCount": 210,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -11747,6 +11747,773 @@
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0555555555555556,
       "inkRatio": 1.0931328100648892
+    },
+    {
+      "id": "rc_packet_transport_header",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 175586,
+        "inkRatio": 0.16257962962962963,
+        "contentBounds": {
+          "x": 25,
+          "y": 322,
+          "width": 1148,
+          "height": 243
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 171885,
+        "inkRatio": 0.15915277777777778,
+        "contentBounds": {
+          "x": 29,
+          "y": 325,
+          "width": 1136,
+          "height": 238
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0210084033613445,
+      "inkRatio": 1.0215318381475986
+    },
+    {
+      "id": "rc_packet_counted_fields",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 142789,
+        "inkRatio": 0.13221203703703704,
+        "contentBounds": {
+          "x": 25,
+          "y": 322,
+          "width": 1148,
+          "height": 243
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 140141,
+        "inkRatio": 0.12976018518518517,
+        "contentBounds": {
+          "x": 29,
+          "y": 325,
+          "width": 1136,
+          "height": 238
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0210084033613445,
+      "inkRatio": 1.0188952554926825
+    },
+    {
+      "id": "rc_packet_compact_no_bits",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 283697,
+        "inkRatio": 0.2626824074074074,
+        "contentBounds": {
+          "x": 47,
+          "y": 273,
+          "width": 1097,
+          "height": 344
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 277311,
+        "inkRatio": 0.25676944444444444,
+        "contentBounds": {
+          "x": 54,
+          "y": 275,
+          "width": 1083,
+          "height": 334
+        }
+      },
+      "widthRatio": 1.0129270544783011,
+      "heightRatio": 1.029940119760479,
+      "inkRatio": 1.0230282967498585
+    },
+    {
+      "id": "rc_packet_beta_frame",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 131806,
+        "inkRatio": 0.12204259259259259,
+        "contentBounds": {
+          "x": 25,
+          "y": 349,
+          "width": 1148,
+          "height": 187
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 129495,
+        "inkRatio": 0.11990277777777777,
+        "contentBounds": {
+          "x": 29,
+          "y": 351,
+          "width": 1136,
+          "height": 182
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0274725274725274,
+      "inkRatio": 1.0178462488899185
+    },
+    {
+      "id": "rc_packet_accessible_unicode",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 87869,
+        "inkRatio": 0.08136018518518519,
+        "contentBounds": {
+          "x": 25,
+          "y": 375,
+          "width": 1148,
+          "height": 137
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 85920,
+        "inkRatio": 0.07955555555555556,
+        "contentBounds": {
+          "x": 29,
+          "y": 377,
+          "width": 1136,
+          "height": 131
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0458015267175573,
+      "inkRatio": 1.0226838919925512
+    },
+    {
+      "id": "prod_packet_tcp_header",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 350238,
+        "inkRatio": 0.32429444444444444,
+        "contentBounds": {
+          "x": 25,
+          "y": 217,
+          "width": 1148,
+          "height": 451
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 343464,
+        "inkRatio": 0.3180222222222222,
+        "contentBounds": {
+          "x": 29,
+          "y": 220,
+          "width": 1136,
+          "height": 444
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0157657657657657,
+      "inkRatio": 1.0197225910139054
+    },
+    {
+      "id": "prod_packet_udp_counts",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 175402,
+        "inkRatio": 0.16240925925925925,
+        "contentBounds": {
+          "x": 25,
+          "y": 322,
+          "width": 1148,
+          "height": 240
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 171401,
+        "inkRatio": 0.15870462962962964,
+        "contentBounds": {
+          "x": 29,
+          "y": 325,
+          "width": 1136,
+          "height": 235
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0212765957446808,
+      "inkRatio": 1.0233429209864586
+    },
+    {
+      "id": "prod_packet_control_flags",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 42929,
+        "inkRatio": 0.039749074074074076,
+        "contentBounds": {
+          "x": 25,
+          "y": 420,
+          "width": 1148,
+          "height": 49
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 42605,
+        "inkRatio": 0.039449074074074074,
+        "contentBounds": {
+          "x": 29,
+          "y": 421,
+          "width": 1136,
+          "height": 48
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0208333333333333,
+      "inkRatio": 1.0076047412275555
+    },
+    {
+      "id": "prod_packet_compact_config",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 331381,
+        "inkRatio": 0.3068342592592593,
+        "contentBounds": {
+          "x": 50,
+          "y": 243,
+          "width": 1093,
+          "height": 398
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 324088,
+        "inkRatio": 0.3000814814814815,
+        "contentBounds": {
+          "x": 58,
+          "y": 245,
+          "width": 1078,
+          "height": 389
+        }
+      },
+      "widthRatio": 1.0139146567717996,
+      "heightRatio": 1.0231362467866323,
+      "inkRatio": 1.0225031472933277
+    },
+    {
+      "id": "prod_packet_beta_telemetry",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 131757,
+        "inkRatio": 0.12199722222222223,
+        "contentBounds": {
+          "x": 25,
+          "y": 349,
+          "width": 1148,
+          "height": 190
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 129448,
+        "inkRatio": 0.11985925925925926,
+        "contentBounds": {
+          "x": 29,
+          "y": 351,
+          "width": 1136,
+          "height": 185
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.027027027027027,
+      "inkRatio": 1.0178372782893517
+    },
+    {
+      "id": "prod_packet_accessible_unicode",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 44161,
+        "inkRatio": 0.040889814814814816,
+        "contentBounds": {
+          "x": 25,
+          "y": 402,
+          "width": 1148,
+          "height": 85
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 43815,
+        "inkRatio": 0.04056944444444444,
+        "contentBounds": {
+          "x": 29,
+          "y": 403,
+          "width": 1136,
+          "height": 81
+        }
+      },
+      "widthRatio": 1.0105633802816902,
+      "heightRatio": 1.0493827160493827,
+      "inkRatio": 1.007896838982084
+    },
+    {
+      "id": "prod_packet_cross_row_field",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 131691,
+        "inkRatio": 0.1219361111111111,
+        "contentBounds": {
+          "x": 25,
+          "y": 349,
+          "width": 1151,
+          "height": 187
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 129279,
+        "inkRatio": 0.11970277777777778,
+        "contentBounds": {
+          "x": 29,
+          "y": 351,
+          "width": 1140,
+          "height": 182
+        }
+      },
+      "widthRatio": 1.0096491228070175,
+      "heightRatio": 1.0274725274725274,
+      "inkRatio": 1.0186573225349824
+    },
+    {
+      "id": "prod_packet_wide_rows",
+      "kind": "packet",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 98357,
+        "inkRatio": 0.0910712962962963,
+        "contentBounds": {
+          "x": 25,
+          "y": 367,
+          "width": 1149,
+          "height": 150
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 96372,
+        "inkRatio": 0.08923333333333333,
+        "contentBounds": {
+          "x": 29,
+          "y": 369,
+          "width": 1137,
+          "height": 146
+        }
+      },
+      "widthRatio": 1.0105540897097625,
+      "heightRatio": 1.0273972602739727,
+      "inkRatio": 1.0205972689162828
     }
   ]
 }

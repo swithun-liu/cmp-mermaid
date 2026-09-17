@@ -65,6 +65,7 @@ jobs:
           - requirement
           - gitgraph
           - mindmap
+          - packet
           - kanban
 
     steps:

@@ -95,6 +95,7 @@ private enum class DebugScreen {
     Requirement,
     GitGraph,
     Mindmap,
+    Packet,
     Playground,
     LoadTest,
 }
@@ -202,6 +203,12 @@ private val destinations = listOf(
         DebugScreen.Mindmap,
         mindmapDiagramDocsSpec,
         "Hierarchies, seven shapes, themes, and three native layouts",
+        DiagramStability.Reaudit,
+    ),
+    DiagramDestination(
+        DebugScreen.Packet,
+        packetDiagramDocsSpec,
+        "Fixed-width packet fields with ranges, counts, and row splitting",
         DiagramStability.Reaudit,
     ),
 )

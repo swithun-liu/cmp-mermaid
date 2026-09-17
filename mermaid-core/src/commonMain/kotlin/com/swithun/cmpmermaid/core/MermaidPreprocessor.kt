@@ -242,6 +242,7 @@ internal object MermaidPreprocessor {
         val requirement = map.map("requirement")
         val gitGraph = map.map("gitGraph")
         val mindmap = map.map("mindmap")
+        val packet = map.map("packet")
         val kanban = map.map("kanban")
         val pie = map.map("pie")
         val quadrantChart = map.map("quadrantChart")
@@ -1042,6 +1043,38 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName '${invalid.first}' must be positive",
             )
         }
+        val packetRowHeight = float(packet, "rowHeight", "packet.rowHeight")
+        val packetBitWidth = float(packet, "bitWidth", "packet.bitWidth")
+        val packetBitsPerRow = int(packet, "bitsPerRow", "packet.bitsPerRow")
+        val packetShowBits = boolean(packet, "showBits", "packet.showBits")
+        val packetPaddingX = float(packet, "paddingX", "packet.paddingX")
+        val packetPaddingY = float(packet, "paddingY", "packet.paddingY")
+        val packetUseMaxWidth = boolean(packet, "useMaxWidth", "packet.useMaxWidth")
+        listOf(
+            "packet.rowHeight" to packetRowHeight,
+            "packet.bitWidth" to packetBitWidth,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 1f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be at least 1",
+            )
+        }
+        if (packetBitsPerRow != null && packetBitsPerRow < 1) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'packet.bitsPerRow' must be at least 1",
+            )
+        }
+        listOf(
+            "packet.paddingX" to packetPaddingX,
+            "packet.paddingY" to packetPaddingY,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
+            )
+        }
         val kanbanPadding = float(kanban, "padding", "kanban.padding")
         val kanbanSectionWidth = float(kanban, "sectionWidth", "kanban.sectionWidth")
         val kanbanTicketBaseUrl =
@@ -1332,6 +1365,17 @@ internal object MermaidPreprocessor {
                 } else {
                     null
                 },
+                packet = packet?.let {
+                    MermaidPacketConfigOverride(
+                        rowHeight = packetRowHeight,
+                        bitWidth = packetBitWidth,
+                        bitsPerRow = packetBitsPerRow,
+                        showBits = packetShowBits,
+                        paddingX = packetPaddingX,
+                        paddingY = packetPaddingY,
+                        useMaxWidth = packetUseMaxWidth,
+                    )
+                },
                 kanban = kanban?.let {
                     MermaidKanbanConfigOverride(
                         padding = kanbanPadding,
@@ -1535,6 +1579,7 @@ internal data class MermaidConfigOverride(
     val requirementThemeName: String? = null,
     val gitGraph: MermaidGitGraphConfigOverride? = null,
     val mindmap: MermaidMindmapConfigOverride? = null,
+    val packet: MermaidPacketConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
@@ -1630,6 +1675,11 @@ internal data class MermaidConfigOverride(
             overrides.mindmap != null ->
                 mindmap?.merge(overrides.mindmap) ?: overrides.mindmap
             else -> mindmap
+        },
+        packet = when {
+            overrides.packet != null ->
+                packet?.merge(overrides.packet) ?: overrides.packet
+            else -> packet
         },
         kanban = when {
             overrides.kanban != null ->
@@ -1733,6 +1783,7 @@ internal data class MermaidConfigOverride(
                     requirementThemeName ?: options.requirementThemeName,
                 gitGraph = gitGraph?.applyTo(options.gitGraph) ?: options.gitGraph,
                 mindmap = mindmap?.applyTo(options.mindmap) ?: options.mindmap,
+                packet = packet?.applyTo(options.packet) ?: options.packet,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
@@ -1751,6 +1802,37 @@ internal data class MermaidConfigOverride(
             ),
         )
     }
+}
+
+internal data class MermaidPacketConfigOverride(
+    val rowHeight: Float? = null,
+    val bitWidth: Float? = null,
+    val bitsPerRow: Int? = null,
+    val showBits: Boolean? = null,
+    val paddingX: Float? = null,
+    val paddingY: Float? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(overrides: MermaidPacketConfigOverride): MermaidPacketConfigOverride =
+        MermaidPacketConfigOverride(
+            rowHeight = overrides.rowHeight ?: rowHeight,
+            bitWidth = overrides.bitWidth ?: bitWidth,
+            bitsPerRow = overrides.bitsPerRow ?: bitsPerRow,
+            showBits = overrides.showBits ?: showBits,
+            paddingX = overrides.paddingX ?: paddingX,
+            paddingY = overrides.paddingY ?: paddingY,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        )
+
+    fun applyTo(options: MermaidPacketOptions): MermaidPacketOptions = options.copy(
+        rowHeight = rowHeight ?: options.rowHeight,
+        bitWidth = bitWidth ?: options.bitWidth,
+        bitsPerRow = bitsPerRow ?: options.bitsPerRow,
+        showBits = showBits ?: options.showBits,
+        paddingX = paddingX ?: options.paddingX,
+        paddingY = paddingY ?: options.paddingY,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+    )
 }
 
 internal data class MermaidMindmapConfigOverride(

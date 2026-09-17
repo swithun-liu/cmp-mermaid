@@ -474,6 +474,66 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsCompletePacketConfigShape() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  packet:
+                    rowHeight: 40
+                    bitWidth: 24
+                    bitsPerRow: 16
+                    showBits: false
+                    paddingX: 3
+                    paddingY: 7
+                    useMaxWidth: false
+                ---
+                packet
+                  +16: "Header"
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val packet = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.packet
+
+        assertEquals(40f, packet.rowHeight)
+        assertEquals(24f, packet.bitWidth)
+        assertEquals(16, packet.bitsPerRow)
+        assertEquals(false, packet.showBits)
+        assertEquals(3f, packet.paddingX)
+        assertEquals(7f, packet.paddingY)
+        assertEquals(false, packet.useMaxWidth)
+    }
+
+    @Test
+    fun rejectsPacketConfigOutsideUpstreamSchemaBounds() {
+        val invalidFields = listOf(
+            "rowHeight: 0",
+            "bitWidth: 0",
+            "bitsPerRow: 0",
+            "paddingX: -1",
+            "paddingY: -1",
+        )
+
+        invalidFields.forEach { field ->
+            val result = MermaidPreprocessor.preprocess(
+                """
+                    ---
+                    config:
+                      packet:
+                        $field
+                    ---
+                    packet
+                      0: "Flag"
+                """.trimIndent(),
+            )
+            assertIs<GMResult.Err<MermaidError>>(result)
+        }
+    }
+
+    @Test
     fun portsCompleteTimelineConfigShape() {
         val result = MermaidPreprocessor.preprocess(
             """

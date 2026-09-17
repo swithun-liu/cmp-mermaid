@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-17T11:00:54.054Z",
-  "caseCount": 197,
+  "generatedAt": "2026-09-17T12:31:49.517Z",
+  "caseCount": 210,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -4371,6 +4371,292 @@
       "nativeSha256": "14e4d6a89f6da210c62cdb412732b4e2f8fbbbdd9a4a23782cddf1eadc447ffd",
       "officialSha256": "17345b6a2c6056e599cd3aa6a68ac1889c5cc2a000c034edbd9fb5a2a388fc4a",
       "sourceSha256": "3e15767e3f877dc5694d10cb97fbc729f660cdcbc19352452781253223ea515f"
+    },
+    {
+      "id": "rc_packet_transport_header",
+      "kind": "packet",
+      "title": "Transport protocol header",
+      "scenario": "Explicit ranges, single-bit flags, and multi-row fields form a complete transport header.",
+      "aspectRatio": 2.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_packet_transport_header_native.png",
+      "officialFile": "rc_packet_transport_header_official.png",
+      "nativeBytes": 26562,
+      "officialBytes": 25798,
+      "nativeSha256": "94be1c3867084fd501142144bea314d9611fca0544ee835a551b36d33524df1f",
+      "officialSha256": "f303299e77cf200fb7d960b8dcd5df2fa4f0a8e7727a5ca4e4179168e23544de",
+      "sourceSha256": "2ba2d0cae9d0da854787fce99411788ab0ff852cbc5951401c5e1b4d9cf2b22a"
+    },
+    {
+      "id": "rc_packet_counted_fields",
+      "kind": "packet",
+      "title": "Counted binary frame",
+      "scenario": "Count syntax automatically advances field positions and splits long payloads.",
+      "aspectRatio": 2.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_packet_counted_fields_native.png",
+      "officialFile": "rc_packet_counted_fields_official.png",
+      "nativeBytes": 17996,
+      "officialBytes": 18291,
+      "nativeSha256": "68c1eb351573a0037e5bd8060eb6358009106aa7af777ddb9a9bc11a5fa3298d",
+      "officialSha256": "7f250ec494c966e8761bc4cc0968b6ca7ce5a0b76d3203cfab1337da8f1a1958",
+      "sourceSha256": "f341e134a2c0d75a07ebe3853e5a21a0915d088b50c7bbb4907a911a4208753b"
+    },
+    {
+      "id": "rc_packet_compact_no_bits",
+      "kind": "packet",
+      "title": "Compact packet layout",
+      "scenario": "Custom dimensions and hidden bit numbers produce a compact intrinsic diagram.",
+      "aspectRatio": 2.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_packet_compact_no_bits_native.png",
+      "officialFile": "rc_packet_compact_no_bits_official.png",
+      "nativeBytes": 23574,
+      "officialBytes": 24579,
+      "nativeSha256": "82322d4cd2aa5a32ca5a3690c5652d1abfd7367bfc453e4e47de56d08913ef0a",
+      "officialSha256": "6c53cce4370f6cb2add2b6659bfc2c86f6a23935651cdb2c5e27ddee78dbc829",
+      "sourceSha256": "ed8850c937c906dfc7114fc99ab298eb261373c5fd5387657611e436e04c21f3"
+    },
+    {
+      "id": "rc_packet_beta_frame",
+      "kind": "packet",
+      "title": "Packet beta frame",
+      "scenario": "The packet-beta header shares explicit and counted field semantics.",
+      "aspectRatio": 2.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_packet_beta_frame_native.png",
+      "officialFile": "rc_packet_beta_frame_official.png",
+      "nativeBytes": 14162,
+      "officialBytes": 14483,
+      "nativeSha256": "26efedd468c46bc9aabb9c5b261a5d55c2e7379a24260594f679b7a2b253e964",
+      "officialSha256": "f87b1dcc6520175cf0899ad54479cf410e22790d6b6d74dba235a38df34a10e4",
+      "sourceSha256": "55493760443c163a25124bdb9affeed30025970ee8cd7c9d1f2d32665f7efe55"
+    },
+    {
+      "id": "rc_packet_accessible_unicode",
+      "kind": "packet",
+      "title": "Accessible international frame",
+      "scenario": "Metadata, comments, Unicode, entities, and escaped quotes remain visible and ordered.",
+      "aspectRatio": 2.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_packet_accessible_unicode_native.png",
+      "officialFile": "rc_packet_accessible_unicode_official.png",
+      "nativeBytes": 14565,
+      "officialBytes": 14699,
+      "nativeSha256": "bd8f8af11f5d2357d8d5f6ebb097807e3159ee0b78e410481b1a698448816c44",
+      "officialSha256": "1de251a11c12f93f7ab39f639e78f2be5c206e37947bc89db315cf7ec0df8f34",
+      "sourceSha256": "c387bca432f5e30ef6ba9cd585e683e8a4dedf757204e91c8c53c0b91c4b698a"
+    },
+    {
+      "id": "prod_packet_tcp_header",
+      "kind": "packet",
+      "title": "TCP header layout",
+      "scenario": "Explicit ranges and single-bit flags span eight fixed-width packet rows.",
+      "aspectRatio": 2.4,
+      "features": [
+        "packet-header",
+        "explicit-ranges",
+        "single-bit-fields",
+        "row-splitting",
+        "frontmatter-title",
+        "show-bits"
+      ],
+      "expectedTexts": [
+        "TCP Packet",
+        "Source Port",
+        "SYN",
+        "Data (variable length)"
+      ],
+      "nativeFile": "prod_packet_tcp_header_native.png",
+      "officialFile": "prod_packet_tcp_header_official.png",
+      "nativeBytes": 37737,
+      "officialBytes": 36895,
+      "nativeSha256": "be7ba1055535f86f308d11ddc55071bf0abc351afe8caaabfbc47647a73fd8f5",
+      "officialSha256": "affb13828e32f44c78af4ae01946c71ab5bb9f9a73941ded61fb9f3fbe7717d7",
+      "sourceSha256": "9c4d5f6fbd84bdc3368b98da4a5b45074f3ee9fe38769047729e1609769ce191"
+    },
+    {
+      "id": "prod_packet_udp_counts",
+      "kind": "packet",
+      "title": "UDP packet bit counts",
+      "scenario": "Automatic bit counts and explicit ranges combine in one packet.",
+      "aspectRatio": 2.4,
+      "features": [
+        "bit-count-fields",
+        "mixed-addressing",
+        "title",
+        "row-splitting"
+      ],
+      "expectedTexts": [
+        "UDP Packet",
+        "Source Port",
+        "Checksum",
+        "Data payload"
+      ],
+      "nativeFile": "prod_packet_udp_counts_native.png",
+      "officialFile": "prod_packet_udp_counts_official.png",
+      "nativeBytes": 18448,
+      "officialBytes": 18824,
+      "nativeSha256": "28c72b8c14070d98a568ad200e32b065709efd7dcca0e3cf58000075fbad8f06",
+      "officialSha256": "d2795b9a2f12a4725f2492b95a56d895d6d0f77731bf5a2aab6d9065967faf29",
+      "sourceSha256": "8251faf16aaf290d86e32a085818ab671f45028c036775d67055c98ef1aff01e"
+    },
+    {
+      "id": "prod_packet_control_flags",
+      "kind": "packet",
+      "title": "Control flag register",
+      "scenario": "Single-bit flags and compact ranges preserve source order within one row.",
+      "aspectRatio": 2.8,
+      "features": [
+        "single-bit-fields",
+        "explicit-ranges",
+        "show-bits"
+      ],
+      "expectedTexts": [
+        "Version",
+        "Priority",
+        "ACK",
+        "FIN"
+      ],
+      "nativeFile": "prod_packet_control_flags_native.png",
+      "officialFile": "prod_packet_control_flags_official.png",
+      "nativeBytes": 12707,
+      "officialBytes": 12285,
+      "nativeSha256": "96a330ba268fd69a40fa359bced0ccd31302823af2a1ce0e6d15e3a3fdb60633",
+      "officialSha256": "35133746bb68f34899375048034a92eac1f05f9b260476194877af2bc874e610",
+      "sourceSha256": "4ce1079779a5dcfae6cc1f1373b5554ac27bfe9320cb98c1d57fd20ff3e1b53e"
+    },
+    {
+      "id": "prod_packet_compact_config",
+      "kind": "packet",
+      "title": "Compact packet without bit labels",
+      "scenario": "Packet-specific dimensions, hidden bit labels, and intrinsic sizing are configured.",
+      "aspectRatio": 2.6,
+      "features": [
+        "configuration",
+        "hide-bits",
+        "responsive-sizing",
+        "bit-count-fields"
+      ],
+      "expectedTexts": [
+        "Compact frame",
+        "Type",
+        "Length",
+        "Payload"
+      ],
+      "nativeFile": "prod_packet_compact_config_native.png",
+      "officialFile": "prod_packet_compact_config_official.png",
+      "nativeBytes": 27526,
+      "officialBytes": 24505,
+      "nativeSha256": "cebc52abc5f4629292ef37f01e48a9ae5043e635a47258ee059bb94e36a63113",
+      "officialSha256": "d20c3848ce1c1ef8929f9d13ec81ec41bfb3a28e5f952deeaffa822284edf3e3",
+      "sourceSha256": "012c1eae427c4e8410a646610e7b513c54ed468811425a5bbbada6c5135c0ca0"
+    },
+    {
+      "id": "prod_packet_beta_telemetry",
+      "kind": "packet",
+      "title": "Packet beta telemetry frame",
+      "scenario": "The packet-beta alias renders through the same parser and renderer.",
+      "aspectRatio": 2.5,
+      "features": [
+        "packet-beta-header",
+        "bit-count-fields",
+        "row-splitting"
+      ],
+      "expectedTexts": [
+        "Telemetry frame",
+        "Device ID",
+        "Timestamp",
+        "Reading"
+      ],
+      "nativeFile": "prod_packet_beta_telemetry_native.png",
+      "officialFile": "prod_packet_beta_telemetry_official.png",
+      "nativeBytes": 13614,
+      "officialBytes": 13812,
+      "nativeSha256": "29a66b8a70965363c84aecffc4d83dd0123472dd65ee55ec8dd4b63054832e15",
+      "officialSha256": "747b746e275e8ca278e932fdddb27c6e4e12f9302385734158fbbb4528d770b0",
+      "sourceSha256": "10ed5a5aa6091b3946544764bf670385aae613883b394ff5b2d97bb727a2f6ff"
+    },
+    {
+      "id": "prod_packet_accessible_unicode",
+      "kind": "packet",
+      "title": "Accessible international packet",
+      "scenario": "Accessibility metadata, Unicode, entities, comments, and escaped labels coexist.",
+      "aspectRatio": 2.4,
+      "features": [
+        "accessibility",
+        "comments",
+        "escaped-labels",
+        "unicode"
+      ],
+      "expectedTexts": [
+        "地域 packet",
+        "種類 &amp; mode",
+        "東京",
+        "서울"
+      ],
+      "nativeFile": "prod_packet_accessible_unicode_native.png",
+      "officialFile": "prod_packet_accessible_unicode_official.png",
+      "nativeBytes": 12895,
+      "officialBytes": 13057,
+      "nativeSha256": "c7cee7d029fb61ae169aadad21f38139558294bfdb646fee16c338bccb9ceefc",
+      "officialSha256": "5f6e4f55b4ef3d2580637826f672fe75d1badce89a5ac1a9f1869159584717fa",
+      "sourceSha256": "04ebc00e276e4577ea75909b25ceb01e6645891b34b9d74a376a00dabe1b6ede"
+    },
+    {
+      "id": "prod_packet_cross_row_field",
+      "kind": "packet",
+      "title": "Cross-row protocol field",
+      "scenario": "One long field is split repeatedly at exact row boundaries.",
+      "aspectRatio": 2.2,
+      "features": [
+        "row-splitting",
+        "bit-count-fields",
+        "show-bits"
+      ],
+      "expectedTexts": [
+        "Cross-row field",
+        "Preamble",
+        "Variable extension",
+        "Trailer"
+      ],
+      "nativeFile": "prod_packet_cross_row_field_native.png",
+      "officialFile": "prod_packet_cross_row_field_official.png",
+      "nativeBytes": 16955,
+      "officialBytes": 17281,
+      "nativeSha256": "e1e51a8402343f94867a679c05130e9b0f92919c4f44d5bd11dea9829d10bb56",
+      "officialSha256": "f5c6a5983cc183879fc70bc6f8aaf26164992aef41abdd32a71f950f66200734",
+      "sourceSha256": "9a7e1e1f218da58adc2d4b30f660c1399de64db36f4386527495b0c338dd1545"
+    },
+    {
+      "id": "prod_packet_wide_rows",
+      "kind": "packet",
+      "title": "Wide 64-bit packet rows",
+      "scenario": "A 64-bit row configuration preserves explicit and counted field geometry.",
+      "aspectRatio": 3,
+      "features": [
+        "configuration",
+        "mixed-addressing",
+        "responsive-sizing"
+      ],
+      "expectedTexts": [
+        "Wide record",
+        "Identifier",
+        "Sequence",
+        "Payload"
+      ],
+      "nativeFile": "prod_packet_wide_rows_native.png",
+      "officialFile": "prod_packet_wide_rows_official.png",
+      "nativeBytes": 14335,
+      "officialBytes": 14508,
+      "nativeSha256": "a3c3a73395ab47dee1bc608bafd8ce2378b7c9a1868ad8d6c5662309d6fab975",
+      "officialSha256": "23093e4e0ef72fcc655e138f1f6ee9c9787daeb9701980c4ff28859abfdb41b7",
+      "sourceSha256": "d8582d64e6b2bda2196a9d75f5ffa3f8cef7db6ec8862adf974fc4b44eb48cb1"
     }
   ]
 }

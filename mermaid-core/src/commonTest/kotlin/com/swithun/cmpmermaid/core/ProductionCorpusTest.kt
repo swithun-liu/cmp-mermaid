@@ -36,7 +36,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryProductionCaseWithValidSceneGeometryAndExpectedText() {
-        assertEquals(197, productionCorpusCases.size)
+        assertEquals(210, productionCorpusCases.size)
         assertEquals(
             mapOf(
                 "flowchart" to 14,
@@ -54,13 +54,14 @@ class ProductionCorpusTest {
                 "requirement" to 13,
                 "gitgraph" to 13,
                 "mindmap" to 13,
+                "packet" to 13,
             ),
             productionCorpusCases.groupingBy(StabilityCorpusCase::diagramId).eachCount(),
         )
         val conformanceCases = productionCorpusCases.filter { case ->
             case.id.startsWith("prod_")
         }
-        assertEquals(120, conformanceCases.size)
+        assertEquals(128, conformanceCases.size)
         assertTrue(conformanceCases.all { case -> case.expectedTexts.isNotEmpty() })
         assertTrue(conformanceCases.all { case -> case.features.isNotEmpty() })
 
@@ -103,7 +104,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryLargeScaleVisualParityCase() {
-        assertEquals(3_840, visualParityCorpusCases.size)
+        assertEquals(4_096, visualParityCorpusCases.size)
         assertEquals(
             setOf(
                 "flowchart",
@@ -121,6 +122,7 @@ class ProductionCorpusTest {
                 "requirement",
                 "gitgraph",
                 "mindmap",
+                "packet",
             ).associateWith { 256 },
             visualParityCorpusCases
                 .groupingBy(StabilityCorpusCase::diagramId)
@@ -186,7 +188,7 @@ class ProductionCorpusTest {
             .groupBy(StabilityCorpusCase::diagramId)
             .mapValues { (_, cases) -> cases.first() }
 
-        assertEquals(15, representatives.size)
+        assertEquals(16, representatives.size)
         representatives.forEach { (diagramId, case) ->
             MermaidThemePreset.entries.forEach { preset ->
                 val result = engine.render(

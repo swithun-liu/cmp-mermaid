@@ -2303,6 +2303,122 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_packet_transport_header",
+        diagramId = "packet",
+        title = "Transport protocol header",
+        scenario = "Explicit ranges, single-bit flags, and multi-row fields form a complete transport header.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            ---
+            title: Transport protocol header
+            ---
+            packet
+              0-15: "Source Port"
+              16-31: "Destination Port"
+              32-63: "Sequence Number"
+              64-95: "Acknowledgment Number"
+              96-99: "Data Offset"
+              100-105: "Reserved"
+              106: "URG"
+              107: "ACK"
+              108: "PSH"
+              109: "RST"
+              110: "SYN"
+              111: "FIN"
+              112-127: "Window"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_counted_fields",
+        diagramId = "packet",
+        title = "Counted binary frame",
+        scenario = "Count syntax automatically advances field positions and splits long payloads.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            packet
+              title Counted binary frame
+              +4: "Version"
+              +4: "Flags"
+              +16: "Length"
+              +8: "Checksum"
+              +72: "Payload"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_compact_no_bits",
+        diagramId = "packet",
+        title = "Compact packet layout",
+        scenario = "Custom dimensions and hidden bit numbers produce a compact intrinsic diagram.",
+        layout = "dagre",
+        initialAspectRatio = 2.7f,
+        source = """
+            ---
+            config:
+              packet:
+                rowHeight: 26
+                bitWidth: 22
+                bitsPerRow: 16
+                showBits: false
+                paddingX: 3
+                paddingY: 4
+                useMaxWidth: false
+            ---
+            packet
+              title Compact packet
+              +4: "Type"
+              +4: "Flags"
+              +8: "Length"
+              +32: "Payload"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_beta_frame",
+        diagramId = "packet",
+        title = "Packet beta frame",
+        scenario = "The packet-beta header shares explicit and counted field semantics.",
+        layout = "dagre",
+        initialAspectRatio = 2.5f,
+        source = """
+            packet-beta
+              title Packet beta frame
+              0-7: "Revision"
+              +8: "Kind"
+              +16: "Identifier"
+              +64: "Body"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_accessible_unicode",
+        diagramId = "packet",
+        title = "Accessible international frame",
+        scenario = "Metadata, comments, Unicode, entities, and escaped quotes remain visible and ordered.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            packet
+              title 地域 frame
+              accTitle: International frame structure
+              accDescr: Regional fields and payload ranges
+              %% Mixed scripts exercise the quoted string converter.
+              +8: "種類 &amp; mode"
+              +8: "東京 \"edge\""
+              +16: "서울"
+              +32: "São Paulo"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_mindmap_product_strategy",
         diagramId = "mindmap",
         title = "Product strategy hierarchy",
@@ -5142,6 +5258,122 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               checkout main
               cherry-pick id: "prepare-follow-up-correction"
               commit id: "close-release-window" tag: "complete"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_transport_header",
+        diagramId = "packet",
+        title = "Transport protocol header",
+        scenario = "Explicit ranges, single-bit flags, and multi-row fields form a complete transport header.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            ---
+            title: Transport protocol header
+            ---
+            packet
+              0-15: "Source Port"
+              16-31: "Destination Port"
+              32-63: "Sequence Number"
+              64-95: "Acknowledgment Number"
+              96-99: "Data Offset"
+              100-105: "Reserved"
+              106: "URG"
+              107: "ACK"
+              108: "PSH"
+              109: "RST"
+              110: "SYN"
+              111: "FIN"
+              112-127: "Window"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_counted_fields",
+        diagramId = "packet",
+        title = "Counted binary frame",
+        scenario = "Count syntax automatically advances field positions and splits long payloads.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            packet
+              title Counted binary frame
+              +4: "Version"
+              +4: "Flags"
+              +16: "Length"
+              +8: "Checksum"
+              +72: "Payload"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_compact_no_bits",
+        diagramId = "packet",
+        title = "Compact packet layout",
+        scenario = "Custom dimensions and hidden bit numbers produce a compact intrinsic diagram.",
+        layout = "dagre",
+        initialAspectRatio = 2.7f,
+        source = """
+            ---
+            config:
+              packet:
+                rowHeight: 26
+                bitWidth: 22
+                bitsPerRow: 16
+                showBits: false
+                paddingX: 3
+                paddingY: 4
+                useMaxWidth: false
+            ---
+            packet
+              title Compact packet
+              +4: "Type"
+              +4: "Flags"
+              +8: "Length"
+              +32: "Payload"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_beta_frame",
+        diagramId = "packet",
+        title = "Packet beta frame",
+        scenario = "The packet-beta header shares explicit and counted field semantics.",
+        layout = "dagre",
+        initialAspectRatio = 2.5f,
+        source = """
+            packet-beta
+              title Packet beta frame
+              0-7: "Revision"
+              +8: "Kind"
+              +16: "Identifier"
+              +64: "Body"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_packet_accessible_unicode",
+        diagramId = "packet",
+        title = "Accessible international frame",
+        scenario = "Metadata, comments, Unicode, entities, and escaped quotes remain visible and ordered.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            packet
+              title 地域 frame
+              accTitle: International frame structure
+              accDescr: Regional fields and payload ranges
+              %% Mixed scripts exercise the quoted string converter.
+              +8: "種類 &amp; mode"
+              +8: "東京 \"edge\""
+              +16: "서울"
+              +32: "São Paulo"
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -8921,6 +9153,192 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Operational readiness", "Service checks", "Recovery checks"),
         features = setOf("frontmatter-title", "sizing-config", "theme-variables", "dagre-layout", "markdown"),
     ),
+    StabilityCorpusCase(
+        id = "prod_packet_tcp_header",
+        diagramId = "packet",
+        title = "TCP header layout",
+        scenario = "Explicit ranges and single-bit flags span eight fixed-width packet rows.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            ---
+            title: TCP Packet
+            ---
+            packet
+              0-15: "Source Port"
+              16-31: "Destination Port"
+              32-63: "Sequence Number"
+              64-95: "Acknowledgment Number"
+              96-99: "Data Offset"
+              100-105: "Reserved"
+              106: "URG"
+              107: "ACK"
+              108: "PSH"
+              109: "RST"
+              110: "SYN"
+              111: "FIN"
+              112-127: "Window"
+              128-143: "Checksum"
+              144-159: "Urgent Pointer"
+              160-191: "(Options and Padding)"
+              192-255: "Data (variable length)"
+        """.trimIndent(),
+        expectedTexts = listOf("TCP Packet", "Source Port", "SYN", "Data (variable length)"),
+        features = setOf("packet-header", "explicit-ranges", "single-bit-fields", "row-splitting", "frontmatter-title", "show-bits"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_packet_udp_counts",
+        diagramId = "packet",
+        title = "UDP packet bit counts",
+        scenario = "Automatic bit counts and explicit ranges combine in one packet.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            packet
+              title UDP Packet
+              +16: "Source Port"
+              +16: "Destination Port"
+              32-47: "Length"
+              +16: "Checksum"
+              +64: "Data payload"
+        """.trimIndent(),
+        expectedTexts = listOf("UDP Packet", "Source Port", "Checksum", "Data payload"),
+        features = setOf("bit-count-fields", "mixed-addressing", "title", "row-splitting"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_packet_control_flags",
+        diagramId = "packet",
+        title = "Control flag register",
+        scenario = "Single-bit flags and compact ranges preserve source order within one row.",
+        layout = "dagre",
+        initialAspectRatio = 2.8f,
+        source = """
+            packet
+              0-3: "Version"
+              4-7: "Priority"
+              8: "URG"
+              9: "ACK"
+              10: "PSH"
+              11: "RST"
+              12: "SYN"
+              13: "FIN"
+              14-31: "Reserved"
+        """.trimIndent(),
+        expectedTexts = listOf("Version", "Priority", "ACK", "FIN"),
+        features = setOf("single-bit-fields", "explicit-ranges", "show-bits"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_packet_compact_config",
+        diagramId = "packet",
+        title = "Compact packet without bit labels",
+        scenario = "Packet-specific dimensions, hidden bit labels, and intrinsic sizing are configured.",
+        layout = "dagre",
+        initialAspectRatio = 2.6f,
+        source = """
+            ---
+            config:
+              packet:
+                rowHeight: 28
+                bitWidth: 20
+                bitsPerRow: 16
+                showBits: false
+                paddingX: 2
+                paddingY: 4
+                useMaxWidth: false
+            ---
+            packet
+              title Compact frame
+              +4: "Type"
+              +4: "Flags"
+              +8: "Length"
+              +32: "Payload"
+        """.trimIndent(),
+        expectedTexts = listOf("Compact frame", "Type", "Length", "Payload"),
+        features = setOf("configuration", "hide-bits", "responsive-sizing", "bit-count-fields"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_packet_beta_telemetry",
+        diagramId = "packet",
+        title = "Packet beta telemetry frame",
+        scenario = "The packet-beta alias renders through the same parser and renderer.",
+        layout = "dagre",
+        initialAspectRatio = 2.5f,
+        source = """
+            packet-beta
+              title Telemetry frame
+              +8: "Version"
+              +24: "Device ID"
+              +32: "Timestamp"
+              +32: "Reading"
+        """.trimIndent(),
+        expectedTexts = listOf("Telemetry frame", "Device ID", "Timestamp", "Reading"),
+        features = setOf("packet-beta-header", "bit-count-fields", "row-splitting"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_packet_accessible_unicode",
+        diagramId = "packet",
+        title = "Accessible international packet",
+        scenario = "Accessibility metadata, Unicode, entities, comments, and escaped labels coexist.",
+        layout = "dagre",
+        initialAspectRatio = 2.4f,
+        source = """
+            packet
+              title 地域 packet
+              accTitle: International packet fields
+              accDescr: Field ranges for a regional transport frame
+              %% Labels preserve entities and escaped quote syntax.
+              +8: "種類 &amp; mode"
+              +8: "東京 \"edge\""
+              +16: "서울"
+        """.trimIndent(),
+        expectedTexts = listOf("地域 packet", "種類 &amp; mode", "東京", "서울"),
+        features = setOf("accessibility", "comments", "escaped-labels", "unicode"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_packet_cross_row_field",
+        diagramId = "packet",
+        title = "Cross-row protocol field",
+        scenario = "One long field is split repeatedly at exact row boundaries.",
+        layout = "dagre",
+        initialAspectRatio = 2.2f,
+        source = """
+            packet
+              title Cross-row field
+              +5: "Preamble"
+              +90: "Variable extension"
+              +1: "Trailer"
+        """.trimIndent(),
+        expectedTexts = listOf("Cross-row field", "Preamble", "Variable extension", "Trailer"),
+        features = setOf("row-splitting", "bit-count-fields", "show-bits"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_packet_wide_rows",
+        diagramId = "packet",
+        title = "Wide 64-bit packet rows",
+        scenario = "A 64-bit row configuration preserves explicit and counted field geometry.",
+        layout = "dagre",
+        initialAspectRatio = 3.0f,
+        source = """
+            ---
+            config:
+              packet:
+                bitWidth: 16
+                bitsPerRow: 64
+                rowHeight: 36
+                paddingX: 4
+                paddingY: 8
+                useMaxWidth: true
+            ---
+            packet
+              title Wide record
+              0-15: "Identifier"
+              +16: "Sequence"
+              32-63: "Payload"
+              +64: "Extended payload"
+        """.trimIndent(),
+        expectedTexts = listOf("Wide record", "Identifier", "Sequence", "Payload"),
+        features = setOf("configuration", "mixed-addressing", "responsive-sizing"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -8964,6 +9382,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "requirement",
             "gitgraph",
             "mindmap",
+            "packet",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -9043,6 +9462,7 @@ private fun addVisualParityVariation(
     "gitgraph" -> "${source.trimEnd()}\n" +
         "  commit id: \"$evidenceId\" tag: \"$label\"\n"
     "mindmap" -> "${source.trimEnd()}\n    $evidenceId[\"$label\"]\n"
+    "packet" -> "${source.trimEnd()}\n  +1: \"${escapeQuotedVisualParityLabel(label)}\"\n"
     else -> source
 }
 
