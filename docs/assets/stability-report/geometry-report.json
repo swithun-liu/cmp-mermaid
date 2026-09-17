@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T12:31:40.498Z",
-  "inputDirectory": "captures/local/production-16-merged",
+  "generatedAt": "2026-09-17T14:23:10.820Z",
+  "inputDirectory": "captures/local/production-17-merged",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 210,
+  "caseCount": 223,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -12514,6 +12514,785 @@
       "widthRatio": 1.0105540897097625,
       "heightRatio": 1.0273972602739727,
       "inkRatio": 1.0205972689162828
+    },
+    {
+      "id": "rc_radar_release_readiness",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 424423,
+        "inkRatio": 0.3929842592592593,
+        "contentBounds": {
+          "x": 162,
+          "y": 25,
+          "width": 877,
+          "height": 792
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 409701,
+        "inkRatio": 0.37935277777777776,
+        "contentBounds": {
+          "x": 173,
+          "y": 33,
+          "width": 857,
+          "height": 778
+        }
+      },
+      "widthRatio": 1.0233372228704785,
+      "heightRatio": 1.0179948586118253,
+      "inkRatio": 1.0359335222515933
+    },
+    {
+      "id": "rc_radar_operational_risk",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 271243,
+        "inkRatio": 0.2511509259259259,
+        "contentBounds": {
+          "x": 147,
+          "y": 25,
+          "width": 906,
+          "height": 828
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 262094,
+        "inkRatio": 0.24267962962962963,
+        "contentBounds": {
+          "x": 158,
+          "y": 33,
+          "width": 884,
+          "height": 813
+        }
+      },
+      "widthRatio": 1.0248868778280542,
+      "heightRatio": 1.018450184501845,
+      "inkRatio": 1.0349073233267454
+    },
+    {
+      "id": "rc_radar_compact_capacity",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 390229,
+        "inkRatio": 0.36132314814814814,
+        "contentBounds": {
+          "x": 181,
+          "y": 36,
+          "width": 841,
+          "height": 768
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 376626,
+        "inkRatio": 0.3487277777777778,
+        "contentBounds": {
+          "x": 193,
+          "y": 45,
+          "width": 818,
+          "height": 752
+        }
+      },
+      "widthRatio": 1.028117359413203,
+      "heightRatio": 1.0212765957446808,
+      "inkRatio": 1.0361180587638665
+    },
+    {
+      "id": "rc_radar_inferred_scale",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 424729,
+        "inkRatio": 0.3932675925925926,
+        "contentBounds": {
+          "x": 204,
+          "y": 25,
+          "width": 809,
+          "height": 828
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 409951,
+        "inkRatio": 0.37958425925925926,
+        "contentBounds": {
+          "x": 212,
+          "y": 33,
+          "width": 792,
+          "height": 813
+        }
+      },
+      "widthRatio": 1.0214646464646464,
+      "heightRatio": 1.018450184501845,
+      "inkRatio": 1.0360482106398081
+    },
+    {
+      "id": "rc_radar_accessible_regions",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 271416,
+        "inkRatio": 0.2513111111111111,
+        "contentBounds": {
+          "x": 108,
+          "y": 27,
+          "width": 984,
+          "height": 824
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 262265,
+        "inkRatio": 0.24283796296296295,
+        "contentBounds": {
+          "x": 116,
+          "y": 32,
+          "width": 968,
+          "height": 812
+        }
+      },
+      "widthRatio": 1.0165289256198347,
+      "heightRatio": 1.0147783251231528,
+      "inkRatio": 1.0348921891979486
+    },
+    {
+      "id": "prod_radar_grade_benchmark",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 423884,
+        "inkRatio": 0.39248518518518516,
+        "contentBounds": {
+          "x": 190,
+          "y": 25,
+          "width": 813,
+          "height": 828
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 409044,
+        "inkRatio": 0.37874444444444444,
+        "contentBounds": {
+          "x": 202,
+          "y": 33,
+          "width": 788,
+          "height": 813
+        }
+      },
+      "widthRatio": 1.031725888324873,
+      "heightRatio": 1.018450184501845,
+      "inkRatio": 1.0362797156296144
+    },
+    {
+      "id": "prod_radar_reordered_quality",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 271627,
+        "inkRatio": 0.25150648148148147,
+        "contentBounds": {
+          "x": 122,
+          "y": 25,
+          "width": 956,
+          "height": 828
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 262564,
+        "inkRatio": 0.2431148148148148,
+        "contentBounds": {
+          "x": 130,
+          "y": 33,
+          "width": 939,
+          "height": 813
+        }
+      },
+      "widthRatio": 1.0181043663471778,
+      "heightRatio": 1.018450184501845,
+      "inkRatio": 1.0345172986395696
+    },
+    {
+      "id": "prod_radar_hidden_legend",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 270501,
+        "inkRatio": 0.2504638888888889,
+        "contentBounds": {
+          "x": 141,
+          "y": 25,
+          "width": 920,
+          "height": 826
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 260962,
+        "inkRatio": 0.24163148148148147,
+        "contentBounds": {
+          "x": 151,
+          "y": 33,
+          "width": 899,
+          "height": 811
+        }
+      },
+      "widthRatio": 1.0233592880978866,
+      "heightRatio": 1.0184956843403206,
+      "inkRatio": 1.0365532146442777
+    },
+    {
+      "id": "prod_radar_inferred_maximum",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 424278,
+        "inkRatio": 0.39285,
+        "contentBounds": {
+          "x": 188,
+          "y": 25,
+          "width": 827,
+          "height": 792
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 409565,
+        "inkRatio": 0.37922685185185184,
+        "contentBounds": {
+          "x": 200,
+          "y": 33,
+          "width": 809,
+          "height": 778
+        }
+      },
+      "widthRatio": 1.0222496909765142,
+      "heightRatio": 1.0179948586118253,
+      "inkRatio": 1.0359234797895327
+    },
+    {
+      "id": "prod_radar_intrinsic_config",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 388932,
+        "inkRatio": 0.36012222222222223,
+        "contentBounds": {
+          "x": 180,
+          "y": 34,
+          "width": 971,
+          "height": 773
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 375666,
+        "inkRatio": 0.34783888888888886,
+        "contentBounds": {
+          "x": 193,
+          "y": 43,
+          "width": 940,
+          "height": 758
+        }
+      },
+      "widthRatio": 1.0329787234042553,
+      "heightRatio": 1.0197889182058046,
+      "inkRatio": 1.0353132836083117
+    },
+    {
+      "id": "prod_radar_theme_palette",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 426373,
+        "inkRatio": 0.3947898148148148,
+        "contentBounds": {
+          "x": 167,
+          "y": 25,
+          "width": 873,
+          "height": 793
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 411688,
+        "inkRatio": 0.3811925925925926,
+        "contentBounds": {
+          "x": 180,
+          "y": 33,
+          "width": 852,
+          "height": 779
+        }
+      },
+      "widthRatio": 1.0246478873239437,
+      "heightRatio": 1.017971758664955,
+      "inkRatio": 1.03567021628029
+    },
+    {
+      "id": "prod_radar_accessible_unicode",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 423517,
+        "inkRatio": 0.3921453703703704,
+        "contentBounds": {
+          "x": 102,
+          "y": 27,
+          "width": 996,
+          "height": 824
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 408656,
+        "inkRatio": 0.37838518518518516,
+        "contentBounds": {
+          "x": 111,
+          "y": 32,
+          "width": 977,
+          "height": 812
+        }
+      },
+      "widthRatio": 1.0194472876151484,
+      "heightRatio": 1.0147783251231528,
+      "inkRatio": 1.0363655495086332
+    },
+    {
+      "id": "prod_radar_option_precedence",
+      "kind": "radar",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 176900,
+        "inkRatio": 0.1637962962962963,
+        "contentBounds": {
+          "x": 208,
+          "y": 25,
+          "width": 776,
+          "height": 634
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 170949,
+        "inkRatio": 0.1582861111111111,
+        "contentBounds": {
+          "x": 216,
+          "y": 33,
+          "width": 757,
+          "height": 623
+        }
+      },
+      "widthRatio": 1.025099075297226,
+      "heightRatio": 1.0176565008025682,
+      "inkRatio": 1.03481155198334
     }
   ]
 }

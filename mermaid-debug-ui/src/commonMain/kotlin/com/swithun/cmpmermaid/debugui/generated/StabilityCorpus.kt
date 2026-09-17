@@ -2972,6 +2972,128 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_radar_release_readiness",
+        diagramId = "radar",
+        title = "Release readiness comparison",
+        scenario = "Two release candidates are compared across five delivery readiness axes.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            ---
+            title: Release readiness
+            ---
+            radar-beta
+              axis tests["Automated tests"], parity["Visual parity"], docs["Documentation"]
+              axis rollout["Rollout"], rollback["Rollback"]
+              curve candidate["Candidate"] { 91, 84, 88, 72, 95 }
+              curve baseline["Baseline"] { 78, 76, 82, 86, 89 }
+              min 20
+              max 100
+              ticks 5
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_operational_risk",
+        diagramId = "radar",
+        title = "Operational risk profile",
+        scenario = "Detailed entries are reordered against declared axes on a polygon grid.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta:
+              title Operational risk
+              axis impact["Impact"], likelihood["Likelihood"], exposure["Exposure"], recovery["Recovery"]
+              curve current["Current"] { recovery: 45, likelihood: 72, impact: 88, exposure: 64 }
+              curve mitigated["Mitigated"] { exposure 32, impact 46, recovery 81, likelihood 38 }
+              graticule polygon
+              showLegend true
+              ticks 4
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_compact_capacity",
+        diagramId = "radar",
+        title = "Compact capacity profile",
+        scenario = "Intrinsic sizing, compact margins, scaled axes, and a hidden legend share one chart.",
+        layout = "dagre",
+        initialAspectRatio = 1.2f,
+        source = """
+            ---
+            config:
+              radar:
+                width: 480
+                height: 360
+                marginTop: 32
+                marginRight: 44
+                marginBottom: 36
+                marginLeft: 44
+                axisScaleFactor: 0.82
+                axisLabelFactor: 0.94
+                curveTension: 0.05
+                useMaxWidth: false
+            ---
+            radar-beta
+              title Capacity profile
+              axis cpu["CPU"], memory["Memory"], network["Network"], storage["Storage"]
+              curve reserved["Reserved"] { 72, 81, 64, 77 }
+              curve used["Used"] { 58, 69, 51, 63 }
+              showLegend false
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_inferred_scale",
+        diagramId = "radar",
+        title = "Inferred maximum scorecard",
+        scenario = "The renderer derives its maximum from several circular curves and uses seven ticks.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title Inferred service score
+              axis latency["Latency"], throughput["Throughput"], availability["Availability"]
+              axis efficiency["Efficiency"], support["Support"], adoption["Adoption"]
+              curve alpha["Alpha"] { 42, 67, 88, 53, 71, 64 }
+              curve beta["Beta"] { 76, 58, 82, 69, 61, 79 }
+              curve gamma["Gamma"] { 63, 73, 91, 74, 68, 57 }
+              ticks 7
+              graticule circle
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_accessible_regions",
+        diagramId = "radar",
+        title = "Accessible regional scorecard",
+        scenario = "Accessibility metadata, comments, entities, escaped labels, and Unicode remain ordered.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title 地域 readiness
+              accTitle: Accessible regional readiness
+              accDescr {
+                Regional readiness values across four delivery axes.
+              }
+              %% Mixed scripts exercise labels and detailed entry references.
+              axis tokyo["東京"], seoul["서울"], sao["São Paulo"], quality["Quality \"index\""]
+              curve observed["Observed &amp; verified"] { quality: 86, tokyo: 93, sao: 75, seoul: 82 }
+              curve target["Target"] { tokyo: 96, seoul: 91, sao: 88, quality: 94 }
+              graticule polygon
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -5928,6 +6050,128 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
                     evidence[証拠を保存]
               done[완료]
                 release[서울 출시]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_release_readiness",
+        diagramId = "radar",
+        title = "Release readiness comparison",
+        scenario = "Two release candidates are compared across five delivery readiness axes.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            ---
+            title: Release readiness
+            ---
+            radar-beta
+              axis tests["Automated tests"], parity["Visual parity"], docs["Documentation"]
+              axis rollout["Rollout"], rollback["Rollback"]
+              curve candidate["Candidate"] { 91, 84, 88, 72, 95 }
+              curve baseline["Baseline"] { 78, 76, 82, 86, 89 }
+              min 20
+              max 100
+              ticks 5
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_operational_risk",
+        diagramId = "radar",
+        title = "Operational risk profile",
+        scenario = "Detailed entries are reordered against declared axes on a polygon grid.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta:
+              title Operational risk
+              axis impact["Impact"], likelihood["Likelihood"], exposure["Exposure"], recovery["Recovery"]
+              curve current["Current"] { recovery: 45, likelihood: 72, impact: 88, exposure: 64 }
+              curve mitigated["Mitigated"] { exposure 32, impact 46, recovery 81, likelihood 38 }
+              graticule polygon
+              showLegend true
+              ticks 4
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_compact_capacity",
+        diagramId = "radar",
+        title = "Compact capacity profile",
+        scenario = "Intrinsic sizing, compact margins, scaled axes, and a hidden legend share one chart.",
+        layout = "dagre",
+        initialAspectRatio = 1.2f,
+        source = """
+            ---
+            config:
+              radar:
+                width: 480
+                height: 360
+                marginTop: 32
+                marginRight: 44
+                marginBottom: 36
+                marginLeft: 44
+                axisScaleFactor: 0.82
+                axisLabelFactor: 0.94
+                curveTension: 0.05
+                useMaxWidth: false
+            ---
+            radar-beta
+              title Capacity profile
+              axis cpu["CPU"], memory["Memory"], network["Network"], storage["Storage"]
+              curve reserved["Reserved"] { 72, 81, 64, 77 }
+              curve used["Used"] { 58, 69, 51, 63 }
+              showLegend false
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_inferred_scale",
+        diagramId = "radar",
+        title = "Inferred maximum scorecard",
+        scenario = "The renderer derives its maximum from several circular curves and uses seven ticks.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title Inferred service score
+              axis latency["Latency"], throughput["Throughput"], availability["Availability"]
+              axis efficiency["Efficiency"], support["Support"], adoption["Adoption"]
+              curve alpha["Alpha"] { 42, 67, 88, 53, 71, 64 }
+              curve beta["Beta"] { 76, 58, 82, 69, 61, 79 }
+              curve gamma["Gamma"] { 63, 73, 91, 74, 68, 57 }
+              ticks 7
+              graticule circle
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_radar_accessible_regions",
+        diagramId = "radar",
+        title = "Accessible regional scorecard",
+        scenario = "Accessibility metadata, comments, entities, escaped labels, and Unicode remain ordered.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title 地域 readiness
+              accTitle: Accessible regional readiness
+              accDescr {
+                Regional readiness values across four delivery axes.
+              }
+              %% Mixed scripts exercise labels and detailed entry references.
+              axis tokyo["東京"], seoul["서울"], sao["São Paulo"], quality["Quality \"index\""]
+              curve observed["Observed &amp; verified"] { quality: 86, tokyo: 93, sao: 75, seoul: 82 }
+              curve target["Target"] { tokyo: 96, seoul: 91, sao: 88, quality: 94 }
+              graticule polygon
+              max 100
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -9339,6 +9583,202 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Wide record", "Identifier", "Sequence", "Payload"),
         features = setOf("configuration", "mixed-addressing", "responsive-sizing"),
     ),
+    StabilityCorpusCase(
+        id = "prod_radar_grade_benchmark",
+        diagramId = "radar",
+        title = "Academic grade benchmark",
+        scenario = "Two students are compared with positional values across six labeled axes.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            ---
+            title: Grades benchmark
+            ---
+            radar-beta
+              title Grades benchmark
+              axis math["Mathematics"], science["Science"], language["Language"]
+              axis history["History"], geography["Geography"], arts["Arts"]
+              curve alice["Alice"] { 86, 91, 79, 73, 82, 94 }
+              curve bob["Bob"] { 74, 78, 88, 84, 90, 81 }
+              min 0
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf("Grades benchmark", "Mathematics", "Alice", "Bob"),
+        features = setOf("axis-declarations", "axis-labels", "positional-entries", "multiple-curves", "frontmatter-title", "explicit-range", "legend", "circle-graticule"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_radar_reordered_quality",
+        diagramId = "radar",
+        title = "Reordered quality indicators",
+        scenario = "Named entries appear out of order and resolve against the declared axis sequence.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta:
+              title Quality indicators
+              axis reliability["Reliability"], performance["Performance"], usability["Usability"], maintainability["Maintainability"]
+              curve observed["Observed"] { usability: 74, reliability: 92, maintainability: 66, performance: 81 }
+              curve goal["Goal"] { maintainability 88, performance 90, reliability 96, usability 89 }
+              graticule polygon
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf("Quality indicators", "Reliability", "Observed", "Goal"),
+        features = setOf("axis-declarations", "axis-labels", "detailed-entries", "reference-reordering", "multiple-curves", "title", "polygon-graticule"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_radar_hidden_legend",
+        diagramId = "radar",
+        title = "Private operational profile",
+        scenario = "A polygon chart uses an explicit scale, custom tick count, and no legend.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title Operational profile
+              axis detect["Detection"], contain["Containment"], restore["Restoration"], learn["Learning"]
+              curve current { 62, 78, 71, 83 }
+              min 20
+              max 100
+              ticks 8
+              showLegend false
+              graticule polygon
+        """.trimIndent(),
+        expectedTexts = listOf("Operational profile", "Detection", "Containment"),
+        features = setOf("hidden-legend", "ticks", "polygon-graticule", "explicit-range", "title"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_radar_inferred_maximum",
+        diagramId = "radar",
+        title = "Inferred product maximum",
+        scenario = "The circular scale maximum is inferred from three complete product curves.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title Product comparison
+              axis fit["Market fit"], growth["Growth"], margin["Margin"], retention["Retention"], reach["Reach"]
+              curve a["Product A"] { 41, 72, 58, 66, 79 }
+              curve b["Product B"] { 68, 54, 81, 73, 62 }
+              curve c["Product C"] { 57, 83, 64, 77, 69 }
+              ticks 6
+              graticule circle
+        """.trimIndent(),
+        expectedTexts = listOf("Product comparison", "Product A", "Product C"),
+        features = setOf("inferred-max", "circle-graticule", "multiple-curves", "positional-entries", "ticks"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_radar_intrinsic_config",
+        diagramId = "radar",
+        title = "Intrinsic configured radar",
+        scenario = "Diagram dimensions, margins, scale factors, tension, and intrinsic sizing are configured.",
+        layout = "dagre",
+        initialAspectRatio = 1.25f,
+        source = """
+            ---
+            config:
+              radar:
+                width: 500
+                height: 380
+                marginTop: 36
+                marginRight: 52
+                marginBottom: 40
+                marginLeft: 52
+                axisScaleFactor: 0.84
+                axisLabelFactor: 0.96
+                curveTension: 0.3
+                useMaxWidth: false
+            ---
+            radar-beta
+              title Configured capacity
+              axis compute["Compute"], memory["Memory"], network["Network"], storage["Storage"]
+              curve reserved["Reserved"] { 75, 82, 68, 79 }
+              curve consumed["Consumed"] { 61, 73, 57, 65 }
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf("Configured capacity", "Compute", "Reserved"),
+        features = setOf("configuration", "responsive-sizing", "curve-tension", "title", "circle-graticule"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_radar_theme_palette",
+        diagramId = "radar",
+        title = "Custom radar palette",
+        scenario = "Root palette values and nested radar theme variables style all chart layers.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            ---
+            config:
+              theme: base
+              themeVariables:
+                textColor: "#172554"
+                cScale0: "#2563eb"
+                cScale1: "#dc2626"
+                cScale2: "#16a34a"
+                radar:
+                  axisColor: "#475569"
+                  axisStrokeWidth: 3
+                  axisLabelFontSize: 14
+                  curveOpacity: 0.32
+                  curveStrokeWidth: 3
+                  graticuleColor: "#94a3b8"
+                  graticuleOpacity: 0.24
+                  graticuleStrokeWidth: 2
+                  legendFontSize: 13
+            ---
+            radar-beta
+              title Portfolio health
+              axis value["Value"], confidence["Confidence"], urgency["Urgency"], readiness["Readiness"], reach["Reach"]
+              curve current["Current"] { 78, 69, 84, 72, 88 }
+              curve forecast["Forecast"] { 89, 82, 76, 91, 93 }
+              curve threshold["Threshold"] { 65, 65, 65, 65, 65 }
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf("Portfolio health", "Current", "Forecast"),
+        features = setOf("theme-variables", "configuration", "multiple-curves", "legend"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_radar_accessible_unicode",
+        diagramId = "radar",
+        title = "Accessible international radar",
+        scenario = "Unicode, accessibility metadata, comments, entities, and escaped labels coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title 地域 comparison
+              accTitle: Accessible international comparison
+              accDescr {
+                Regional indicators are compared in declared axis order.
+              }
+              %% Labels intentionally mix scripts and escaped punctuation.
+              axis tokyo["東京"], seoul["서울"], sao["São Paulo"], quality["Quality \"index\""]
+              curve observed["Observed &amp; reviewed"] { quality: 87, sao: 76, tokyo: 94, seoul: 83 }
+              max 100
+        """.trimIndent(),
+        expectedTexts = listOf("地域 comparison", "東京", "서울", "Observed &amp; reviewed"),
+        features = setOf("accessibility", "comments", "escaped-labels", "unicode", "detailed-entries", "reference-reordering"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_radar_option_precedence",
+        diagramId = "radar",
+        title = "Radar option precedence",
+        scenario = "Repeated comma-separated options use the last value and cap excessive ticks.",
+        layout = "dagre",
+        initialAspectRatio = 1.0f,
+        source = """
+            radar-beta
+              title Option precedence
+              axis one["Baseline"], two["Target"], three["Forecast"]
+              curve values["Values"] { 3, 7, 5 }
+              min 1, min 2
+              max 8, max 10
+              ticks 4, ticks 40
+              showLegend false, showLegend true
+              graticule circle, graticule polygon
+        """.trimIndent(),
+        expectedTexts = listOf("Option precedence", "Baseline", "Target"),
+        features = setOf("option-last-wins", "tick-cap", "ticks", "legend", "polygon-graticule", "explicit-range"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -9383,6 +9823,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "gitgraph",
             "mindmap",
             "packet",
+            "radar",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -9463,6 +9904,7 @@ private fun addVisualParityVariation(
         "  commit id: \"$evidenceId\" tag: \"$label\"\n"
     "mindmap" -> "${source.trimEnd()}\n    $evidenceId[\"$label\"]\n"
     "packet" -> "${source.trimEnd()}\n  +1: \"${escapeQuotedVisualParityLabel(label)}\"\n"
+    "radar" -> replaceOrInsertVisualParityTitle(source, "radar-beta", label)
     else -> source
 }
 

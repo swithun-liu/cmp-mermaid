@@ -96,6 +96,7 @@ private enum class DebugScreen {
     GitGraph,
     Mindmap,
     Packet,
+    Radar,
     Playground,
     LoadTest,
 }
@@ -209,6 +210,12 @@ private val destinations = listOf(
         DebugScreen.Packet,
         packetDiagramDocsSpec,
         "Fixed-width packet fields with ranges, counts, and row splitting",
+        DiagramStability.Reaudit,
+    ),
+    DiagramDestination(
+        DebugScreen.Radar,
+        radarDiagramDocsSpec,
+        "Multi-series polar charts with circular or polygon graticules",
         DiagramStability.Reaudit,
     ),
 )

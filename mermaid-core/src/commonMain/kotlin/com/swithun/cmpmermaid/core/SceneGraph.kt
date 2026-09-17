@@ -269,6 +269,8 @@ data class ScenePath(
     override val zIndex: Int = 5,
     val dashIntervals: List<Float> = emptyList(),
     val markerBackground: SceneColor? = null,
+    val fillColor: SceneColor? = null,
+    val closed: Boolean = false,
 ) : SceneElement
 
 data class SceneNodeInteraction(

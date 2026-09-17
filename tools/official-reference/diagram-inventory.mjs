@@ -70,7 +70,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('radar', 'Radar', 'radar.md', ['radar'], [
     header('radar-beta', 'radar'),
-  ]),
+  ], true),
   family(
     'railroad',
     'Railroad',

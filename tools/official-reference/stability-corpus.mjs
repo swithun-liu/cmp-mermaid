@@ -2775,4 +2775,111 @@ kanban
     release[서울 출시]
 `,
   },
+  {
+    id: 'rc_radar_release_readiness',
+    kind: 'radar',
+    title: 'Release readiness comparison',
+    scenario: 'Two release candidates are compared across five delivery readiness axes.',
+    aspectRatio: 1,
+    source: String.raw`
+---
+title: Release readiness
+---
+radar-beta
+  axis tests["Automated tests"], parity["Visual parity"], docs["Documentation"]
+  axis rollout["Rollout"], rollback["Rollback"]
+  curve candidate["Candidate"] { 91, 84, 88, 72, 95 }
+  curve baseline["Baseline"] { 78, 76, 82, 86, 89 }
+  min 20
+  max 100
+  ticks 5
+`,
+  },
+  {
+    id: 'rc_radar_operational_risk',
+    kind: 'radar',
+    title: 'Operational risk profile',
+    scenario: 'Detailed entries are reordered against declared axes on a polygon grid.',
+    aspectRatio: 1,
+    source: String.raw`
+radar-beta:
+  title Operational risk
+  axis impact["Impact"], likelihood["Likelihood"], exposure["Exposure"], recovery["Recovery"]
+  curve current["Current"] { recovery: 45, likelihood: 72, impact: 88, exposure: 64 }
+  curve mitigated["Mitigated"] { exposure 32, impact 46, recovery 81, likelihood 38 }
+  graticule polygon
+  showLegend true
+  ticks 4
+  max 100
+`,
+  },
+  {
+    id: 'rc_radar_compact_capacity',
+    kind: 'radar',
+    title: 'Compact capacity profile',
+    scenario: 'Intrinsic sizing, compact margins, scaled axes, and a hidden legend share one chart.',
+    aspectRatio: 1.2,
+    source: String.raw`
+---
+config:
+  radar:
+    width: 480
+    height: 360
+    marginTop: 32
+    marginRight: 44
+    marginBottom: 36
+    marginLeft: 44
+    axisScaleFactor: 0.82
+    axisLabelFactor: 0.94
+    curveTension: 0.05
+    useMaxWidth: false
+---
+radar-beta
+  title Capacity profile
+  axis cpu["CPU"], memory["Memory"], network["Network"], storage["Storage"]
+  curve reserved["Reserved"] { 72, 81, 64, 77 }
+  curve used["Used"] { 58, 69, 51, 63 }
+  showLegend false
+  max 100
+`,
+  },
+  {
+    id: 'rc_radar_inferred_scale',
+    kind: 'radar',
+    title: 'Inferred maximum scorecard',
+    scenario: 'The renderer derives its maximum from several circular curves and uses seven ticks.',
+    aspectRatio: 1,
+    source: String.raw`
+radar-beta
+  title Inferred service score
+  axis latency["Latency"], throughput["Throughput"], availability["Availability"]
+  axis efficiency["Efficiency"], support["Support"], adoption["Adoption"]
+  curve alpha["Alpha"] { 42, 67, 88, 53, 71, 64 }
+  curve beta["Beta"] { 76, 58, 82, 69, 61, 79 }
+  curve gamma["Gamma"] { 63, 73, 91, 74, 68, 57 }
+  ticks 7
+  graticule circle
+`,
+  },
+  {
+    id: 'rc_radar_accessible_regions',
+    kind: 'radar',
+    title: 'Accessible regional scorecard',
+    scenario: 'Accessibility metadata, comments, entities, escaped labels, and Unicode remain ordered.',
+    aspectRatio: 1,
+    source: String.raw`
+radar-beta
+  title 地域 readiness
+  accTitle: Accessible regional readiness
+  accDescr {
+    Regional readiness values across four delivery axes.
+  }
+  %% Mixed scripts exercise labels and detailed entry references.
+  axis tokyo["東京"], seoul["서울"], sao["São Paulo"], quality["Quality \"index\""]
+  curve observed["Observed &amp; verified"] { quality: 86, tokyo: 93, sao: 75, seoul: 82 }
+  curve target["Target"] { tokyo: 96, seoul: 91, sao: 88, quality: 94 }
+  graticule polygon
+  max 100
+`,
+  },
 ];

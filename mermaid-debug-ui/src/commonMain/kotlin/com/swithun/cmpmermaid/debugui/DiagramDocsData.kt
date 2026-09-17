@@ -494,3 +494,41 @@ internal val packetDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val radarDiagramDocsSpec = DiagramDocsSpec(
+    id = "radar",
+    title = "Radar",
+    syntaxTitle = "Radar charts - Basic Syntax",
+    description = "Compare multiple series across named axes with positional or referenced " +
+        "values, circular or polygon graticules, legends, themes, and sizing controls.",
+    documentationUrl = "https://mermaid.js.org/syntax/radar.html",
+    galleryTitle = "Radar demo gallery",
+    cases = radarDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1f,
+        )
+    },
+    syntaxLessons = lessons(
+        radarDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1f,
+            )
+        },
+        listOf(
+            "Axis declarations establish both display labels and curve value order.",
+            "Polygon graticules connect each tick across all declared axes.",
+            "Detailed entries may appear in any order and are resolved by axis identifier.",
+            "Frontmatter controls dimensions, margins, axis scale, curve tension, and colors.",
+            "Titles, accessibility metadata, comments, entities, and Unicode share the grammar.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

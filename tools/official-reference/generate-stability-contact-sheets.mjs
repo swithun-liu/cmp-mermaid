@@ -55,6 +55,7 @@ const kinds = [
   'gitgraph',
   'mindmap',
   'packet',
+  'radar',
   'kanban',
 ];
 const kindTitles = {
@@ -73,6 +74,7 @@ const kindTitles = {
   gitgraph: 'Git Graph',
   mindmap: 'Mindmap',
   packet: 'Packet',
+  radar: 'Radar',
   kanban: 'Kanban',
 };
 const selectedKinds = kinds.filter(

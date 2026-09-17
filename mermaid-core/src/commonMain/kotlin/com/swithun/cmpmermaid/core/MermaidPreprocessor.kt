@@ -243,6 +243,7 @@ internal object MermaidPreprocessor {
         val gitGraph = map.map("gitGraph")
         val mindmap = map.map("mindmap")
         val packet = map.map("packet")
+        val radar = map.map("radar")
         val kanban = map.map("kanban")
         val pie = map.map("pie")
         val quadrantChart = map.map("quadrantChart")
@@ -492,7 +493,7 @@ internal object MermaidPreprocessor {
                         arrays[entryKey.content] = items.filterNotNull()
                     }
                     is YamlMap -> {
-                        if (entryKey.content != "xyChart") {
+                        if (entryKey.content !in setOf("xyChart", "radar")) {
                             readError = MermaidError.Configuration(
                                 "Mermaid $sourceName '$path.${entryKey.content}' " +
                                     "does not support nested theme variables",
@@ -508,7 +509,7 @@ internal object MermaidPreprocessor {
                                 )
                                 return null
                             }
-                            scalars["xyChart.${nestedKey.content}"] = scalar.content
+                            scalars["${entryKey.content}.${nestedKey.content}"] = scalar.content
                         }
                     }
                     else -> {
@@ -1075,6 +1076,50 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName '${invalid.first}' must be non-negative",
             )
         }
+        val radarWidth = float(radar, "width", "radar.width")
+        val radarHeight = float(radar, "height", "radar.height")
+        val radarMarginTop = float(radar, "marginTop", "radar.marginTop")
+        val radarMarginRight = float(radar, "marginRight", "radar.marginRight")
+        val radarMarginBottom = float(radar, "marginBottom", "radar.marginBottom")
+        val radarMarginLeft = float(radar, "marginLeft", "radar.marginLeft")
+        val radarAxisScaleFactor =
+            float(radar, "axisScaleFactor", "radar.axisScaleFactor")
+        val radarAxisLabelFactor =
+            float(radar, "axisLabelFactor", "radar.axisLabelFactor")
+        val radarCurveTension = float(radar, "curveTension", "radar.curveTension")
+        val radarUseMaxWidth = boolean(radar, "useMaxWidth", "radar.useMaxWidth")
+        listOf(
+            "radar.width" to radarWidth,
+            "radar.height" to radarHeight,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 1f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be at least 1",
+            )
+        }
+        listOf(
+            "radar.marginTop" to radarMarginTop,
+            "radar.marginRight" to radarMarginRight,
+            "radar.marginBottom" to radarMarginBottom,
+            "radar.marginLeft" to radarMarginLeft,
+            "radar.axisScaleFactor" to radarAxisScaleFactor,
+            "radar.axisLabelFactor" to radarAxisLabelFactor,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
+            )
+        }
+        if (
+            radarCurveTension != null &&
+            (!radarCurveTension.isFinite() || radarCurveTension !in 0f..1f)
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'radar.curveTension' must be between 0 and 1",
+            )
+        }
         val kanbanPadding = float(kanban, "padding", "kanban.padding")
         val kanbanSectionWidth = float(kanban, "sectionWidth", "kanban.sectionWidth")
         val kanbanTicketBaseUrl =
@@ -1376,6 +1421,20 @@ internal object MermaidPreprocessor {
                         useMaxWidth = packetUseMaxWidth,
                     )
                 },
+                radar = radar?.let {
+                    MermaidRadarConfigOverride(
+                        width = radarWidth,
+                        height = radarHeight,
+                        marginTop = radarMarginTop,
+                        marginRight = radarMarginRight,
+                        marginBottom = radarMarginBottom,
+                        marginLeft = radarMarginLeft,
+                        axisScaleFactor = radarAxisScaleFactor,
+                        axisLabelFactor = radarAxisLabelFactor,
+                        curveTension = radarCurveTension,
+                        useMaxWidth = radarUseMaxWidth,
+                    )
+                },
                 kanban = kanban?.let {
                     MermaidKanbanConfigOverride(
                         padding = kanbanPadding,
@@ -1580,6 +1639,7 @@ internal data class MermaidConfigOverride(
     val gitGraph: MermaidGitGraphConfigOverride? = null,
     val mindmap: MermaidMindmapConfigOverride? = null,
     val packet: MermaidPacketConfigOverride? = null,
+    val radar: MermaidRadarConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
@@ -1680,6 +1740,11 @@ internal data class MermaidConfigOverride(
             overrides.packet != null ->
                 packet?.merge(overrides.packet) ?: overrides.packet
             else -> packet
+        },
+        radar = when {
+            overrides.radar != null ->
+                radar?.merge(overrides.radar) ?: overrides.radar
+            else -> radar
         },
         kanban = when {
             overrides.kanban != null ->
@@ -1784,6 +1849,7 @@ internal data class MermaidConfigOverride(
                 gitGraph = gitGraph?.applyTo(options.gitGraph) ?: options.gitGraph,
                 mindmap = mindmap?.applyTo(options.mindmap) ?: options.mindmap,
                 packet = packet?.applyTo(options.packet) ?: options.packet,
+                radar = radar?.applyTo(options.radar) ?: options.radar,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
@@ -1831,6 +1897,46 @@ internal data class MermaidPacketConfigOverride(
         showBits = showBits ?: options.showBits,
         paddingX = paddingX ?: options.paddingX,
         paddingY = paddingY ?: options.paddingY,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+    )
+}
+
+internal data class MermaidRadarConfigOverride(
+    val width: Float? = null,
+    val height: Float? = null,
+    val marginTop: Float? = null,
+    val marginRight: Float? = null,
+    val marginBottom: Float? = null,
+    val marginLeft: Float? = null,
+    val axisScaleFactor: Float? = null,
+    val axisLabelFactor: Float? = null,
+    val curveTension: Float? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(overrides: MermaidRadarConfigOverride): MermaidRadarConfigOverride =
+        MermaidRadarConfigOverride(
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            marginTop = overrides.marginTop ?: marginTop,
+            marginRight = overrides.marginRight ?: marginRight,
+            marginBottom = overrides.marginBottom ?: marginBottom,
+            marginLeft = overrides.marginLeft ?: marginLeft,
+            axisScaleFactor = overrides.axisScaleFactor ?: axisScaleFactor,
+            axisLabelFactor = overrides.axisLabelFactor ?: axisLabelFactor,
+            curveTension = overrides.curveTension ?: curveTension,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        )
+
+    fun applyTo(options: MermaidRadarOptions): MermaidRadarOptions = options.copy(
+        width = width ?: options.width,
+        height = height ?: options.height,
+        marginTop = marginTop ?: options.marginTop,
+        marginRight = marginRight ?: options.marginRight,
+        marginBottom = marginBottom ?: options.marginBottom,
+        marginLeft = marginLeft ?: options.marginLeft,
+        axisScaleFactor = axisScaleFactor ?: options.axisScaleFactor,
+        axisLabelFactor = axisLabelFactor ?: options.axisLabelFactor,
+        curveTension = curveTension ?: options.curveTension,
         useMaxWidth = useMaxWidth ?: options.useMaxWidth,
     )
 }

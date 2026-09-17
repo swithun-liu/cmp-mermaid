@@ -48,14 +48,14 @@ validateUnique(
 if (diagramFamilies.length !== 33) {
   failures.push(`Expected 33 diagram families, found ${diagramFamilies.length}`);
 }
-if (implementedDiagramFamilies.length !== 16) {
+if (implementedDiagramFamilies.length !== 17) {
   failures.push(
-    `Expected 16 implemented diagram families, found ${implementedDiagramFamilies.length}`,
+    `Expected 17 implemented diagram families, found ${implementedDiagramFamilies.length}`,
   );
 }
-if (pendingDiagramFamilies.length !== 17) {
+if (pendingDiagramFamilies.length !== 16) {
   failures.push(
-    `Expected 17 pending diagram families, found ${pendingDiagramFamilies.length}`,
+    `Expected 16 pending diagram families, found ${pendingDiagramFamilies.length}`,
   );
 }
 

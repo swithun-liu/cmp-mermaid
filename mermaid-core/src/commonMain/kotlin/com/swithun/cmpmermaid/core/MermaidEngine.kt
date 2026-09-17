@@ -11,6 +11,7 @@ import com.swithun.cmpmermaid.core.mindmap.MindmapPlugin
 import com.swithun.cmpmermaid.core.packet.PacketPlugin
 import com.swithun.cmpmermaid.core.pie.PiePlugin
 import com.swithun.cmpmermaid.core.quadrant.QuadrantPlugin
+import com.swithun.cmpmermaid.core.radar.RadarPlugin
 import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
 import com.swithun.cmpmermaid.core.statediagram.StatePlugin
@@ -52,6 +53,7 @@ class MermaidEngine(
         GitGraphPlugin(),
         MindmapPlugin(),
         PacketPlugin(),
+        RadarPlugin(),
         TimelinePlugin(),
         KanbanPlugin(),
     ),
@@ -76,7 +78,7 @@ class MermaidEngine(
             .lineSequence()
             .map(String::trim)
             .firstOrNull(String::isNotEmpty)
-            ?.substringBefore(' ')
+            ?.takeWhile { character -> !character.isWhitespace() }
             ?.lowercase()
             .orEmpty()
         val detectedOptions = when (header) {

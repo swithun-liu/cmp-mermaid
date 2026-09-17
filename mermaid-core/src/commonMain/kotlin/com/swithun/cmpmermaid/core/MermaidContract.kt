@@ -171,6 +171,19 @@ data class MermaidPacketOptions(
     val useMaxWidth: Boolean = true,
 )
 
+data class MermaidRadarOptions(
+    val width: Float = 600f,
+    val height: Float = 600f,
+    val marginTop: Float = 50f,
+    val marginRight: Float = 50f,
+    val marginBottom: Float = 50f,
+    val marginLeft: Float = 50f,
+    val axisScaleFactor: Float = 1f,
+    val axisLabelFactor: Float = 1.05f,
+    val curveTension: Float = 0.17f,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidKanbanOptions(
     val padding: Float = 8f,
     val sectionWidth: Float = 200f,
@@ -278,6 +291,7 @@ data class MermaidRenderOptions(
     val gitGraph: MermaidGitGraphOptions = MermaidGitGraphOptions(),
     val mindmap: MermaidMindmapOptions = MermaidMindmapOptions(),
     val packet: MermaidPacketOptions = MermaidPacketOptions(),
+    val radar: MermaidRadarOptions = MermaidRadarOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
     val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val curve: String = "basis",
@@ -558,6 +572,20 @@ data class MermaidMindmapTheme(
     val gradientStop: SceneColor = SceneColor(0xFFEEEEBC),
 )
 
+data class MermaidRadarTheme(
+    val colors: List<SceneColor> = MermaidMindmapTheme().sectionFills,
+    val axisColor: SceneColor = SceneColor(0xFF333333),
+    val axisStrokeWidth: Float = 2f,
+    val axisLabelFontSize: Float = 12f,
+    val curveOpacity: Float = 0.5f,
+    val curveStrokeWidth: Float = 2f,
+    val graticuleColor: SceneColor = SceneColor(0xFFDEDEDE),
+    val graticuleOpacity: Float = 0.3f,
+    val graticuleStrokeWidth: Float = 1f,
+    val legendBoxSize: Float = 12f,
+    val legendFontSize: Float = 12f,
+)
+
 data class MermaidTimelineTheme(
     val mainBackground: SceneColor = SceneColor(0xFFECECFF),
     val nodeBorder: SceneColor = SceneColor(0xFF9370DB),
@@ -621,6 +649,7 @@ data class MermaidTheme(
     val noteFill: SceneColor = SceneColor(0xFFFFF5AD),
     val noteStroke: SceneColor = SceneColor(0xFFAAAA33),
     val noteText: SceneColor = SceneColor(0xFF000000),
+    val textColor: SceneColor = SceneColor(0xFF333333),
     val fontSize: Float = 16f,
     val fontFamily: String = MERMAID_CLASSIC_FONT_FAMILY,
     val strokeWidth: Float = 1f,
@@ -633,6 +662,7 @@ data class MermaidTheme(
     val requirement: MermaidRequirementTheme = MermaidRequirementTheme(),
     val gitGraph: MermaidGitGraphTheme = MermaidGitGraphTheme(),
     val mindmap: MermaidMindmapTheme = MermaidMindmapTheme(),
+    val radar: MermaidRadarTheme = MermaidRadarTheme(),
     val timeline: MermaidTimelineTheme = MermaidTimelineTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
@@ -663,11 +693,13 @@ data class MermaidTheme(
             noteFill = SceneColor(0xFF474949),
             noteStroke = SceneColor(0xFF2F2F2F),
             noteText = SceneColor(0xFFB8B6B6),
+            textColor = SceneColor(0xFFCCCCCC),
             gantt = darkGanttTheme(),
             journey = darkJourneyTheme(),
             requirement = darkRequirementTheme(),
             gitGraph = gitGraphTheme("dark"),
             mindmap = mindmapTheme("dark"),
+            radar = radarTheme("dark", 0xFFD3D3D3),
             timeline = timelineTheme("dark"),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
@@ -701,6 +733,7 @@ data class MermaidTheme(
             noteFill = SceneColor(0xFFFFF5AD),
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
+            textColor = SceneColor(0xFF28253D),
             gantt = reduxColorGanttTheme(),
             journey = reduxColorJourneyTheme(dark = false),
             fontSize = 14f,
@@ -713,6 +746,7 @@ data class MermaidTheme(
             requirement = reduxRequirementTheme(dark = false),
             gitGraph = gitGraphTheme("redux"),
             mindmap = mindmapTheme("redux-color"),
+            radar = radarTheme("redux-color", 0xFF000000),
             timeline = timelineTheme("redux-color"),
             dropShadow = reduxShadow(dark = false),
         )
@@ -749,11 +783,13 @@ data class MermaidTheme(
                 noteFill = SceneColor(0xFFFFF5AD),
                 noteStroke = SceneColor(0xFF6EAA49),
                 noteText = SceneColor(0xFF000000),
+                textColor = SceneColor(0xFF000000),
                 gantt = forestGanttTheme(),
                 journey = forestJourneyTheme(),
                 requirement = forestRequirementTheme(),
                 gitGraph = gitGraphTheme("forest"),
                 mindmap = mindmapTheme("forest"),
+                radar = radarTheme("forest", 0xFF000000),
                 timeline = timelineTheme("forest"),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
@@ -792,11 +828,13 @@ data class MermaidTheme(
                 noteFill = SceneColor(0xFF666666),
                 noteStroke = SceneColor(0xFF999999),
                 noteText = SceneColor(0xFFFFFFFF),
+                textColor = SceneColor(0xFF333333),
                 gantt = neutralGanttTheme(),
                 journey = neutralJourneyTheme(),
                 requirement = neutralRequirementTheme(),
                 gitGraph = gitGraphTheme("neutral"),
                 mindmap = mindmapTheme("neutral"),
+                radar = radarTheme("neutral", 0xFF666666),
                 timeline = timelineTheme("neutral"),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
@@ -829,11 +867,13 @@ data class MermaidTheme(
                 noteFill = SceneColor(0xFFFFF5AD),
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
+                textColor = SceneColor(0xFF333333),
                 gantt = baseGanttTheme(),
                 journey = baseJourneyTheme(),
                 requirement = baseRequirementTheme(),
                 gitGraph = gitGraphTheme("base"),
                 mindmap = mindmapTheme("base"),
+                radar = radarTheme("base", 0xFF0B0B0B),
                 timeline = timelineTheme("base"),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
@@ -851,11 +891,13 @@ data class MermaidTheme(
                 noteFill = SceneColor(0xFFFFF5AD),
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
+                textColor = SceneColor(0xFF333333),
                 gantt = neoGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = false),
                 requirement = neoRequirementTheme(dark = false),
                 gitGraph = gitGraphTheme("neo"),
                 mindmap = mindmapTheme("neo"),
+                radar = radarTheme("neo", 0xFF000000),
                 timeline = timelineTheme("neo"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
@@ -882,11 +924,13 @@ data class MermaidTheme(
                 noteFill = SceneColor(0xFFFFF5AD),
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
+                textColor = SceneColor(0xFFE0DFDF),
                 gantt = neoDarkGanttTheme(),
                 journey = neoJourneyTheme(dark = true, redux = false),
                 requirement = neoRequirementTheme(dark = true),
                 gitGraph = gitGraphTheme("neo-dark"),
                 mindmap = mindmapTheme("neo-dark"),
+                radar = radarTheme("neo-dark", 0xFFCCCCCC),
                 timeline = timelineTheme("neo-dark"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
@@ -912,11 +956,13 @@ data class MermaidTheme(
                 noteFill = SceneColor(0xFFFFF5AD),
                 noteStroke = SceneColor(0xFFFACC15),
                 noteText = SceneColor(0xFF28253D),
+                textColor = SceneColor(0xFF28253D),
                 gantt = reduxGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = true),
                 requirement = reduxRequirementTheme(dark = false),
                 gitGraph = gitGraphTheme("redux"),
                 mindmap = mindmapTheme("redux"),
+                radar = radarTheme("redux", 0xFF000000),
                 timeline = timelineTheme("redux"),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
@@ -934,6 +980,7 @@ data class MermaidTheme(
                 pie = reduxColorPieTheme(dark = true),
                 xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
                 mindmap = mindmapTheme("redux-dark-color"),
+                radar = radarTheme("redux-dark-color", 0xFFCCCCCC),
                 timeline = timelineTheme("redux-dark-color"),
             )
             else -> null
@@ -1215,9 +1262,13 @@ data class MermaidTheme(
                     SceneColor(0xFF000000)
                 }
             }
+            val radarColors = MutableList(12) { index ->
+                theme.radar.colors.getOrElse(index) { SceneColor(0xFF000000) }
+            }
             repeat(12) { index ->
                 color("cScale$index")?.let { parsed ->
                     mindmapSectionFills[index] = parsed
+                    radarColors[index] = parsed
                 }
                 color("cScaleInv$index")?.let { parsed ->
                     mindmapSectionInverseColors[index] = parsed
@@ -1238,6 +1289,57 @@ data class MermaidTheme(
                     ?: if (disablesBaseGradient) false else theme.mindmap.useGradient,
                 gradientStart = color("gradientStart") ?: theme.mindmap.gradientStart,
                 gradientStop = color("gradientStop") ?: theme.mindmap.gradientStop,
+            )
+            val radarAxisStrokeWidth =
+                number("radar.axisStrokeWidth") ?: theme.radar.axisStrokeWidth
+            val radarAxisLabelFontSize =
+                number("radar.axisLabelFontSize") ?: theme.radar.axisLabelFontSize
+            val radarCurveOpacity =
+                number("radar.curveOpacity") ?: theme.radar.curveOpacity
+            val radarCurveStrokeWidth =
+                number("radar.curveStrokeWidth") ?: theme.radar.curveStrokeWidth
+            val radarGraticuleOpacity =
+                number("radar.graticuleOpacity") ?: theme.radar.graticuleOpacity
+            val radarGraticuleStrokeWidth =
+                number("radar.graticuleStrokeWidth") ?: theme.radar.graticuleStrokeWidth
+            val radarLegendBoxSize =
+                number("radar.legendBoxSize") ?: theme.radar.legendBoxSize
+            val radarLegendFontSize =
+                number("radar.legendFontSize") ?: theme.radar.legendFontSize
+            listOf(
+                "radar.axisStrokeWidth" to radarAxisStrokeWidth,
+                "radar.axisLabelFontSize" to radarAxisLabelFontSize,
+                "radar.curveStrokeWidth" to radarCurveStrokeWidth,
+                "radar.graticuleStrokeWidth" to radarGraticuleStrokeWidth,
+                "radar.legendBoxSize" to radarLegendBoxSize,
+                "radar.legendFontSize" to radarLegendFontSize,
+            ).firstOrNull { (_, value) -> !value.isFinite() || value < 0f }?.let { invalid ->
+                invalidVariable = invalid.first to values[invalid.first].orEmpty()
+            }
+            listOf(
+                "radar.curveOpacity" to radarCurveOpacity,
+                "radar.graticuleOpacity" to radarGraticuleOpacity,
+            ).firstOrNull { (_, value) -> !value.isFinite() || value !in 0f..1f }
+                ?.let { invalid ->
+                    invalidVariable = invalid.first to values[invalid.first].orEmpty()
+                }
+            val radar = theme.radar.copy(
+                colors = radarColors,
+                axisColor = color(
+                    "radar.axisColor",
+                    "lineColor",
+                    "defaultLinkColor",
+                ) ?: theme.radar.axisColor,
+                axisStrokeWidth = radarAxisStrokeWidth,
+                axisLabelFontSize = radarAxisLabelFontSize,
+                curveOpacity = radarCurveOpacity,
+                curveStrokeWidth = radarCurveStrokeWidth,
+                graticuleColor =
+                    color("radar.graticuleColor") ?: theme.radar.graticuleColor,
+                graticuleOpacity = radarGraticuleOpacity,
+                graticuleStrokeWidth = radarGraticuleStrokeWidth,
+                legendBoxSize = radarLegendBoxSize,
+                legendFontSize = radarLegendFontSize,
             )
             val timeline = theme.timeline.copy(
                 mainBackground = color("mainBkg") ?: theme.timeline.mainBackground,
@@ -1320,6 +1422,7 @@ data class MermaidTheme(
                 noteFill = color("noteBkgColor") ?: theme.noteFill,
                 noteStroke = color("noteBorderColor") ?: theme.noteStroke,
                 noteText = color("noteTextColor") ?: theme.noteText,
+                textColor = color("textColor") ?: theme.textColor,
                 fontSize = number("fontSize") ?: theme.fontSize,
                 fontFamily = values["fontFamily"] ?: theme.fontFamily,
                 strokeWidth = number("strokeWidth") ?: theme.strokeWidth,
@@ -1332,6 +1435,7 @@ data class MermaidTheme(
                 requirement = requirement,
                 gitGraph = gitGraph,
                 mindmap = mindmap,
+                radar = radar,
                 timeline = timeline,
                 dropShadow = dropShadow,
             )
@@ -1383,11 +1487,13 @@ data class MermaidTheme(
             noteFill = SceneColor(0xFFFEF9C3),
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
+            textColor = SceneColor(0xFFE0DFDF),
             gantt = reduxDarkGanttTheme(),
             journey = neoJourneyTheme(dark = true, redux = true),
             requirement = reduxRequirementTheme(dark = true),
             gitGraph = gitGraphTheme("redux-dark"),
             mindmap = mindmapTheme("redux-dark"),
+            radar = radarTheme("redux-dark", 0xFFCCCCCC),
             timeline = timelineTheme("redux-dark"),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
@@ -1690,6 +1796,17 @@ data class MermaidTheme(
                 else -> MermaidMindmapTheme()
             }
         }
+
+        /**
+         * Mermaid.js 12.0.0 themes/theme-*.js -> calculate radar and cScale0..11.
+         */
+        private fun radarTheme(
+            name: String,
+            axisColor: Long,
+        ): MermaidRadarTheme = MermaidRadarTheme(
+            colors = mindmapTheme(name).sectionFills,
+            axisColor = SceneColor(axisColor),
+        )
 
         private fun timelineTheme(name: String): MermaidTimelineTheme {
             val colorScale = mindmapTheme(name)

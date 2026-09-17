@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 4,096 source cases and
-8,192 screenshots from the large-scale
+This index contains 4,352 source cases and
+8,704 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 16 implemented families have completed the replacement detail gate and
+All 17 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`4,096/4,096` pairs: `3,886 pass / 210 manually reviewed / 0 fail` across
-256 contact sheets.
+`4,352/4,352` pairs: `4,142 pass / 210 manually reviewed / 0 fail` across
+272 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -625,6 +625,47 @@ All 16 pages below were manually reviewed.
 ![Packet visual parity page 15](packet-visual-parity-15.jpg)
 
 ![Packet visual parity page 16](packet-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Radar - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.004-1.036`, height `1.007-1.021`, foreground ink `1.005-1.036`.
+All 16 pages below were manually reviewed.
+
+![Radar visual parity page 01](radar-visual-parity-01.jpg)
+
+![Radar visual parity page 02](radar-visual-parity-02.jpg)
+
+![Radar visual parity page 03](radar-visual-parity-03.jpg)
+
+![Radar visual parity page 04](radar-visual-parity-04.jpg)
+
+![Radar visual parity page 05](radar-visual-parity-05.jpg)
+
+![Radar visual parity page 06](radar-visual-parity-06.jpg)
+
+![Radar visual parity page 07](radar-visual-parity-07.jpg)
+
+![Radar visual parity page 08](radar-visual-parity-08.jpg)
+
+![Radar visual parity page 09](radar-visual-parity-09.jpg)
+
+![Radar visual parity page 10](radar-visual-parity-10.jpg)
+
+![Radar visual parity page 11](radar-visual-parity-11.jpg)
+
+![Radar visual parity page 12](radar-visual-parity-12.jpg)
+
+![Radar visual parity page 13](radar-visual-parity-13.jpg)
+
+![Radar visual parity page 14](radar-visual-parity-14.jpg)
+
+![Radar visual parity page 15](radar-visual-parity-15.jpg)
+
+![Radar visual parity page 16](radar-visual-parity-16.jpg)
 
 </details>
 

@@ -889,7 +889,16 @@ private fun DrawScope.drawScenePath(
         look = element.look,
         animated = element.animated,
         dashIntervals = element.dashIntervals,
-    )
+    ) && !element.closed
+    element.fillColor?.let { fillColor ->
+        paths.forEach { path ->
+            drawPath(
+                path = path,
+                color = fillColor.toComposeColor(),
+                style = Fill,
+            )
+        }
+    }
     val visiblePaths = if (useNeoMarkerMargin) {
         listOf(paths.withMermaidNeoMarkerGaps(element))
     } else {
@@ -1017,6 +1026,9 @@ private fun ScenePath.toComposeContours(): List<Path> {
                 current = command.end
             }
         }
+    }
+    if (closed) {
+        active?.close()
     }
     active?.let(contours::add)
     return contours

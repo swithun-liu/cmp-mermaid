@@ -194,6 +194,30 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersRadarThroughRegisteredPlugin() {
+        val result = engine.render(
+            """
+                radar-beta
+                  axis speed["Speed"], quality["Quality"], value["Value"]
+                  curve current["Current"] { 70, 80, 90 }
+                  max 100
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(scene.elements.filterIsInstance<ScenePath>().any {
+            path -> path.id == "radar-axis-0"
+        })
+        assertTrue(scene.elements.filterIsInstance<ScenePath>().any {
+            path -> path.id == "radar-curve-0"
+        })
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any {
+            text -> text.text == "Current"
+        })
+    }
+
+    @Test
     fun rejectsEffectiveHandDrawnLookForExistingDiagramTypes() {
         val result = engine.render(
             """

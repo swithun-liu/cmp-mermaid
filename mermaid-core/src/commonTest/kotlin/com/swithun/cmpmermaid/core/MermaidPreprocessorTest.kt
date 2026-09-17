@@ -534,6 +534,74 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsCompleteRadarConfigShape() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  radar:
+                    width: 520
+                    height: 420
+                    marginTop: 31
+                    marginRight: 32
+                    marginBottom: 33
+                    marginLeft: 34
+                    axisScaleFactor: 0.8
+                    axisLabelFactor: 0.9
+                    curveTension: 0.25
+                    useMaxWidth: false
+                ---
+                radar-beta
+                  axis A, B, C
+                  curve values { 1, 2, 3 }
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val radar = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.radar
+
+        assertEquals(520f, radar.width)
+        assertEquals(420f, radar.height)
+        assertEquals(31f, radar.marginTop)
+        assertEquals(32f, radar.marginRight)
+        assertEquals(33f, radar.marginBottom)
+        assertEquals(34f, radar.marginLeft)
+        assertEquals(0.8f, radar.axisScaleFactor)
+        assertEquals(0.9f, radar.axisLabelFactor)
+        assertEquals(0.25f, radar.curveTension)
+        assertEquals(false, radar.useMaxWidth)
+    }
+
+    @Test
+    fun rejectsRadarConfigOutsideSupportedBounds() {
+        val invalidFields = listOf(
+            "width: 0",
+            "height: 0",
+            "marginTop: -1",
+            "axisScaleFactor: -0.1",
+            "curveTension: 1.1",
+        )
+
+        invalidFields.forEach { field ->
+            val result = MermaidPreprocessor.preprocess(
+                """
+                    ---
+                    config:
+                      radar:
+                        $field
+                    ---
+                    radar-beta
+                      axis A, B, C
+                      curve values { 1, 2, 3 }
+                """.trimIndent(),
+            )
+            assertIs<GMResult.Err<MermaidError>>(result)
+        }
+    }
+
+    @Test
     fun portsCompleteTimelineConfigShape() {
         val result = MermaidPreprocessor.preprocess(
             """

@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-17T12:31:49.517Z",
-  "caseCount": 210,
+  "generatedAt": "2026-09-17T14:23:17.084Z",
+  "caseCount": 223,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -4657,6 +4657,303 @@
       "nativeSha256": "a3c3a73395ab47dee1bc608bafd8ce2378b7c9a1868ad8d6c5662309d6fab975",
       "officialSha256": "23093e4e0ef72fcc655e138f1f6ee9c9787daeb9701980c4ff28859abfdb41b7",
       "sourceSha256": "d8582d64e6b2bda2196a9d75f5ffa3f8cef7db6ec8862adf974fc4b44eb48cb1"
+    },
+    {
+      "id": "rc_radar_release_readiness",
+      "kind": "radar",
+      "title": "Release readiness comparison",
+      "scenario": "Two release candidates are compared across five delivery readiness axes.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_radar_release_readiness_native.png",
+      "officialFile": "rc_radar_release_readiness_official.png",
+      "nativeBytes": 94328,
+      "officialBytes": 75670,
+      "nativeSha256": "a8df32099820e49a7e8147c0fa8ae98de536b177dfc0c1d4f1fbd1fd854277f0",
+      "officialSha256": "9bfea1d22143cac7292a7e75ab44273415c65131f846ea8c09532a5dc31b1880",
+      "sourceSha256": "a64b69cac163aaa3bc0a74440337bb18b5d560bd3eb5c2ace86d0d9d617b234c"
+    },
+    {
+      "id": "rc_radar_operational_risk",
+      "kind": "radar",
+      "title": "Operational risk profile",
+      "scenario": "Detailed entries are reordered against declared axes on a polygon grid.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_radar_operational_risk_native.png",
+      "officialFile": "rc_radar_operational_risk_official.png",
+      "nativeBytes": 51861,
+      "officialBytes": 37785,
+      "nativeSha256": "ecabce87ec439c18d7b3739f2ac035a42ac735088687dcea275cf054b6ddc669",
+      "officialSha256": "54245c1dce9d2de5a9544480e5171b97c17e4ade59d9f3c90d84d42f7bd16a35",
+      "sourceSha256": "df00783404f3674e38eb35ba0b20acd51dd5effc4fe2adca92c25ce41d9f168d"
+    },
+    {
+      "id": "rc_radar_compact_capacity",
+      "kind": "radar",
+      "title": "Compact capacity profile",
+      "scenario": "Intrinsic sizing, compact margins, scaled axes, and a hidden legend share one chart.",
+      "aspectRatio": 1.2,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_radar_compact_capacity_native.png",
+      "officialFile": "rc_radar_compact_capacity_official.png",
+      "nativeBytes": 83308,
+      "officialBytes": 62698,
+      "nativeSha256": "059db13270ad1c950c7c1db0a53cab450437d6a5c7dff98af6e80c3725b953bb",
+      "officialSha256": "b4ce80761f7e851114e3c9c019c7a1b7c17e3019c8fbdc2f11713a95c7f00562",
+      "sourceSha256": "7e7c9ca0319f1a93ba2a5d31b726a9df64d06d76677cf320fdf4671a94eb6f8b"
+    },
+    {
+      "id": "rc_radar_inferred_scale",
+      "kind": "radar",
+      "title": "Inferred maximum scorecard",
+      "scenario": "The renderer derives its maximum from several circular curves and uses seven ticks.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_radar_inferred_scale_native.png",
+      "officialFile": "rc_radar_inferred_scale_official.png",
+      "nativeBytes": 104994,
+      "officialBytes": 89074,
+      "nativeSha256": "73a04f709b4601ced9c27a08a1efde5847310882b50b53a566c44fc8e6842c3e",
+      "officialSha256": "4cae71463f3b548461b70583c6eaf3475c0ba2a1d2d4ebc989dd1de200dfdb9e",
+      "sourceSha256": "0e09252f281e4d8921ca41fa133f8ebc6e6871dac8933527f9c8d6f123874367"
+    },
+    {
+      "id": "rc_radar_accessible_regions",
+      "kind": "radar",
+      "title": "Accessible regional scorecard",
+      "scenario": "Accessibility metadata, comments, entities, escaped labels, and Unicode remain ordered.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_radar_accessible_regions_native.png",
+      "officialFile": "rc_radar_accessible_regions_official.png",
+      "nativeBytes": 64823,
+      "officialBytes": 36794,
+      "nativeSha256": "bdc4548a47eed6c8cbc66cff4aceb026895e691d7cdeb11882d6ca3365826d43",
+      "officialSha256": "c5d3f9a243aff194cc0fd9f84b9e34a11b3a1e9cb2e0a0fe884a8171dcd681fa",
+      "sourceSha256": "9d97abbbe0c1f566e60bf4c395b577dd4363840e4550e42b12d27a0bf2f84785"
+    },
+    {
+      "id": "prod_radar_grade_benchmark",
+      "kind": "radar",
+      "title": "Academic grade benchmark",
+      "scenario": "Two students are compared with positional values across six labeled axes.",
+      "aspectRatio": 1,
+      "features": [
+        "axis-declarations",
+        "axis-labels",
+        "positional-entries",
+        "multiple-curves",
+        "frontmatter-title",
+        "explicit-range",
+        "legend",
+        "circle-graticule"
+      ],
+      "expectedTexts": [
+        "Grades benchmark",
+        "Mathematics",
+        "Alice",
+        "Bob"
+      ],
+      "nativeFile": "prod_radar_grade_benchmark_native.png",
+      "officialFile": "prod_radar_grade_benchmark_official.png",
+      "nativeBytes": 95284,
+      "officialBytes": 78666,
+      "nativeSha256": "c054e6385dcc805afdd24845fe438fdb2fe0d5624249eb240176fd84dcc623f7",
+      "officialSha256": "761670265e16bce3ef4277ef19c0c14ccf433b231bad457e53f148721d87039f",
+      "sourceSha256": "740dbda9bf860563af81591d51ca42d267d5a4d2eb80554df524cb36df809335"
+    },
+    {
+      "id": "prod_radar_reordered_quality",
+      "kind": "radar",
+      "title": "Reordered quality indicators",
+      "scenario": "Named entries appear out of order and resolve against the declared axis sequence.",
+      "aspectRatio": 1,
+      "features": [
+        "axis-declarations",
+        "axis-labels",
+        "detailed-entries",
+        "reference-reordering",
+        "multiple-curves",
+        "title",
+        "polygon-graticule"
+      ],
+      "expectedTexts": [
+        "Quality indicators",
+        "Reliability",
+        "Observed",
+        "Goal"
+      ],
+      "nativeFile": "prod_radar_reordered_quality_native.png",
+      "officialFile": "prod_radar_reordered_quality_official.png",
+      "nativeBytes": 60377,
+      "officialBytes": 36142,
+      "nativeSha256": "eafdd42b2b9b347a8b667a9e6da76ab7e0ec3352c6873662d2502085ce8f2925",
+      "officialSha256": "d7c8f9867e2d451a132317c9c46c9062eace7f620e986693bbe67bad2896e79b",
+      "sourceSha256": "5c2b84ba6b0b55e01fbad87a5bf69619be0432b36adf26052b7ab6496255b978"
+    },
+    {
+      "id": "prod_radar_hidden_legend",
+      "kind": "radar",
+      "title": "Private operational profile",
+      "scenario": "A polygon chart uses an explicit scale, custom tick count, and no legend.",
+      "aspectRatio": 1,
+      "features": [
+        "hidden-legend",
+        "ticks",
+        "polygon-graticule",
+        "explicit-range",
+        "title"
+      ],
+      "expectedTexts": [
+        "Operational profile",
+        "Detection",
+        "Containment"
+      ],
+      "nativeFile": "prod_radar_hidden_legend_native.png",
+      "officialFile": "prod_radar_hidden_legend_official.png",
+      "nativeBytes": 40962,
+      "officialBytes": 31842,
+      "nativeSha256": "181ef7287b4bea3f00af850a481a70d7899644350a9a05542e79d88b2ad944b0",
+      "officialSha256": "daec08133beaac6e63e78d41b4a88891d0f9c8c73c038c3b08eda278ca8c3c41",
+      "sourceSha256": "c80af0d9d8f77b3958c1f7fef1f56e109ae37bfa3a4f5299620e7aaf2f2b76a4"
+    },
+    {
+      "id": "prod_radar_inferred_maximum",
+      "kind": "radar",
+      "title": "Inferred product maximum",
+      "scenario": "The circular scale maximum is inferred from three complete product curves.",
+      "aspectRatio": 1,
+      "features": [
+        "inferred-max",
+        "circle-graticule",
+        "multiple-curves",
+        "positional-entries",
+        "ticks"
+      ],
+      "expectedTexts": [
+        "Product comparison",
+        "Product A",
+        "Product C"
+      ],
+      "nativeFile": "prod_radar_inferred_maximum_native.png",
+      "officialFile": "prod_radar_inferred_maximum_official.png",
+      "nativeBytes": 100339,
+      "officialBytes": 83898,
+      "nativeSha256": "15630e7335512da64c9ee5b414d9f3d4c621988ede0371345a60ef758c5c00a8",
+      "officialSha256": "dea2f817b9535ff775734f566616704a625c345ad463298bf94227df85d3739d",
+      "sourceSha256": "c6d5ca2583c51b86fb5cc513ffa3be16178533dc52f1142562b6c6150645623f"
+    },
+    {
+      "id": "prod_radar_intrinsic_config",
+      "kind": "radar",
+      "title": "Intrinsic configured radar",
+      "scenario": "Diagram dimensions, margins, scale factors, tension, and intrinsic sizing are configured.",
+      "aspectRatio": 1.25,
+      "features": [
+        "configuration",
+        "responsive-sizing",
+        "curve-tension",
+        "title",
+        "circle-graticule"
+      ],
+      "expectedTexts": [
+        "Configured capacity",
+        "Compute",
+        "Reserved"
+      ],
+      "nativeFile": "prod_radar_intrinsic_config_native.png",
+      "officialFile": "prod_radar_intrinsic_config_official.png",
+      "nativeBytes": 80979,
+      "officialBytes": 63778,
+      "nativeSha256": "e0ecb28e483424e31b71776868095142e8ecb61f6fc63047361f86b7382d60b6",
+      "officialSha256": "71ce87374928fc603bc2ed20379abdd9bec524ede301649e5558c7aab2241c70",
+      "sourceSha256": "f541a1151e683fdc519a8bec61f167477aa32c3d4c9474f0a421451c98352e38"
+    },
+    {
+      "id": "prod_radar_theme_palette",
+      "kind": "radar",
+      "title": "Custom radar palette",
+      "scenario": "Root palette values and nested radar theme variables style all chart layers.",
+      "aspectRatio": 1,
+      "features": [
+        "theme-variables",
+        "configuration",
+        "multiple-curves",
+        "legend"
+      ],
+      "expectedTexts": [
+        "Portfolio health",
+        "Current",
+        "Forecast"
+      ],
+      "nativeFile": "prod_radar_theme_palette_native.png",
+      "officialFile": "prod_radar_theme_palette_official.png",
+      "nativeBytes": 143449,
+      "officialBytes": 111125,
+      "nativeSha256": "b97f8585311a83fd62325775651b2e71a821a08005c9b29592a1a980516878c2",
+      "officialSha256": "adec8acdcd8eb6ed3f58bcd4ceec80599662a85b6d2e2c41bb020622e1277a38",
+      "sourceSha256": "0d2359ae96c28f7dc511cc1ec8d303d98fffa19c43a9907f614d84a52b3d9b63"
+    },
+    {
+      "id": "prod_radar_accessible_unicode",
+      "kind": "radar",
+      "title": "Accessible international radar",
+      "scenario": "Unicode, accessibility metadata, comments, entities, and escaped labels coexist.",
+      "aspectRatio": 1,
+      "features": [
+        "accessibility",
+        "comments",
+        "escaped-labels",
+        "unicode",
+        "detailed-entries",
+        "reference-reordering"
+      ],
+      "expectedTexts": [
+        "地域 comparison",
+        "東京",
+        "서울",
+        "Observed &amp; reviewed"
+      ],
+      "nativeFile": "prod_radar_accessible_unicode_native.png",
+      "officialFile": "prod_radar_accessible_unicode_official.png",
+      "nativeBytes": 66506,
+      "officialBytes": 56919,
+      "nativeSha256": "3d06a45d66ac76c210b05bf877231582c4917c9bceb8e00400d8ac79406f7e26",
+      "officialSha256": "72a27b0e5c4c1a116bb14fbc4c865908a179fb223c67d918acfbcac5649d4c67",
+      "sourceSha256": "115dfad37853fa80615423164d1720bbde0098eb0d132ac261103fec926fcc0f"
+    },
+    {
+      "id": "prod_radar_option_precedence",
+      "kind": "radar",
+      "title": "Radar option precedence",
+      "scenario": "Repeated comma-separated options use the last value and cap excessive ticks.",
+      "aspectRatio": 1,
+      "features": [
+        "option-last-wins",
+        "tick-cap",
+        "ticks",
+        "legend",
+        "polygon-graticule",
+        "explicit-range"
+      ],
+      "expectedTexts": [
+        "Option precedence",
+        "Baseline",
+        "Target"
+      ],
+      "nativeFile": "prod_radar_option_precedence_native.png",
+      "officialFile": "prod_radar_option_precedence_official.png",
+      "nativeBytes": 63660,
+      "officialBytes": 47544,
+      "nativeSha256": "2cf89cd56e7fc8566499961a2d51b6eb9f4e3ad748f4ee0eed963324eb41b919",
+      "officialSha256": "4b7620463c42cabf345fe8ab2ccce5ca66d700ebc4324230dda7626b73c6bd5f",
+      "sourceSha256": "e0653b6854317a001ac267ce08ca5a55263e4dd59db9b02b9e8894d52350774e"
     }
   ]
 }

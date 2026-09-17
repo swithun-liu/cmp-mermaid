@@ -32,6 +32,7 @@ const kotlinGalleryFiles = {
   gitgraph: ['GitGraphDemos.kt', 'GitGraphDemo'],
   mindmap: ['MindmapDemos.kt', 'MindmapDemo'],
   packet: ['PacketDemos.kt', 'PacketDemo'],
+  radar: ['RadarDemos.kt', 'RadarDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -50,6 +51,7 @@ const expectedKindCounts = new Map([
   ['gitgraph', 5],
   ['mindmap', 5],
   ['packet', 5],
+  ['radar', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -68,6 +70,7 @@ const expectedProductionKindCounts = new Map([
   ['gitgraph', 13],
   ['mindmap', 13],
   ['packet', 13],
+  ['radar', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -86,6 +89,7 @@ const supportedKinds = new Set([
   'gitgraph',
   'mindmap',
   'packet',
+  'radar',
 ]);
 
 validateStabilityCases();
@@ -159,8 +163,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 333) {
-    throw new Error(`Expected 333 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 338) {
+    throw new Error(`Expected 338 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -180,14 +184,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 210) {
+  if (productionCases.length !== 223) {
     throw new Error(
-      `Expected 210 production cases, found ${productionCases.length}`,
+      `Expected 223 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 128) {
+  if (conformanceCases.length !== 136) {
     throw new Error(
-      `Expected 128 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 136 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -415,6 +419,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "gitgraph",
             "mindmap",
             "packet",
+            "radar",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -495,6 +500,7 @@ private fun addVisualParityVariation(
         "  commit id: \\"\$evidenceId\\" tag: \\"\$label\\"\\n"
     "mindmap" -> "\${source.trimEnd()}\\n    \$evidenceId[\\"\$label\\"]\\n"
     "packet" -> "\${source.trimEnd()}\\n  +1: \\"\${escapeQuotedVisualParityLabel(label)}\\"\\n"
+    "radar" -> replaceOrInsertVisualParityTitle(source, "radar-beta", label)
     else -> source
 }
 

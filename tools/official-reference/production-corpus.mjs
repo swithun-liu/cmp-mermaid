@@ -307,6 +307,33 @@ export const requiredFeaturesByKind = {
     'responsive-sizing',
     'unicode',
   ],
+  radar: [
+    'axis-declarations',
+    'axis-labels',
+    'positional-entries',
+    'detailed-entries',
+    'reference-reordering',
+    'multiple-curves',
+    'inferred-max',
+    'explicit-range',
+    'circle-graticule',
+    'polygon-graticule',
+    'legend',
+    'hidden-legend',
+    'ticks',
+    'title',
+    'frontmatter-title',
+    'accessibility',
+    'comments',
+    'escaped-labels',
+    'configuration',
+    'responsive-sizing',
+    'theme-variables',
+    'unicode',
+    'option-last-wins',
+    'tick-cap',
+    'curve-tension',
+  ],
 };
 
 const flowchartCases = [
@@ -3103,6 +3130,240 @@ packet
   },
 ];
 
+const radarCases = [
+  {
+    id: 'prod_radar_grade_benchmark',
+    kind: 'radar',
+    title: 'Academic grade benchmark',
+    scenario: 'Two students are compared with positional values across six labeled axes.',
+    aspectRatio: 1,
+    features: [
+      'axis-declarations',
+      'axis-labels',
+      'positional-entries',
+      'multiple-curves',
+      'frontmatter-title',
+      'explicit-range',
+      'legend',
+      'circle-graticule',
+    ],
+    expectedTexts: ['Grades benchmark', 'Mathematics', 'Alice', 'Bob'],
+    source: String.raw`
+---
+title: Grades benchmark
+---
+radar-beta
+  title Grades benchmark
+  axis math["Mathematics"], science["Science"], language["Language"]
+  axis history["History"], geography["Geography"], arts["Arts"]
+  curve alice["Alice"] { 86, 91, 79, 73, 82, 94 }
+  curve bob["Bob"] { 74, 78, 88, 84, 90, 81 }
+  min 0
+  max 100
+`,
+  },
+  {
+    id: 'prod_radar_reordered_quality',
+    kind: 'radar',
+    title: 'Reordered quality indicators',
+    scenario: 'Named entries appear out of order and resolve against the declared axis sequence.',
+    aspectRatio: 1,
+    features: [
+      'axis-declarations',
+      'axis-labels',
+      'detailed-entries',
+      'reference-reordering',
+      'multiple-curves',
+      'title',
+      'polygon-graticule',
+    ],
+    expectedTexts: ['Quality indicators', 'Reliability', 'Observed', 'Goal'],
+    source: String.raw`
+radar-beta:
+  title Quality indicators
+  axis reliability["Reliability"], performance["Performance"], usability["Usability"], maintainability["Maintainability"]
+  curve observed["Observed"] { usability: 74, reliability: 92, maintainability: 66, performance: 81 }
+  curve goal["Goal"] { maintainability 88, performance 90, reliability 96, usability 89 }
+  graticule polygon
+  max 100
+`,
+  },
+  {
+    id: 'prod_radar_hidden_legend',
+    kind: 'radar',
+    title: 'Private operational profile',
+    scenario: 'A polygon chart uses an explicit scale, custom tick count, and no legend.',
+    aspectRatio: 1,
+    features: ['hidden-legend', 'ticks', 'polygon-graticule', 'explicit-range', 'title'],
+    expectedTexts: ['Operational profile', 'Detection', 'Containment'],
+    source: String.raw`
+radar-beta
+  title Operational profile
+  axis detect["Detection"], contain["Containment"], restore["Restoration"], learn["Learning"]
+  curve current { 62, 78, 71, 83 }
+  min 20
+  max 100
+  ticks 8
+  showLegend false
+  graticule polygon
+`,
+  },
+  {
+    id: 'prod_radar_inferred_maximum',
+    kind: 'radar',
+    title: 'Inferred product maximum',
+    scenario: 'The circular scale maximum is inferred from three complete product curves.',
+    aspectRatio: 1,
+    features: [
+      'inferred-max',
+      'circle-graticule',
+      'multiple-curves',
+      'positional-entries',
+      'ticks',
+    ],
+    expectedTexts: ['Product comparison', 'Product A', 'Product C'],
+    source: String.raw`
+radar-beta
+  title Product comparison
+  axis fit["Market fit"], growth["Growth"], margin["Margin"], retention["Retention"], reach["Reach"]
+  curve a["Product A"] { 41, 72, 58, 66, 79 }
+  curve b["Product B"] { 68, 54, 81, 73, 62 }
+  curve c["Product C"] { 57, 83, 64, 77, 69 }
+  ticks 6
+  graticule circle
+`,
+  },
+  {
+    id: 'prod_radar_intrinsic_config',
+    kind: 'radar',
+    title: 'Intrinsic configured radar',
+    scenario: 'Diagram dimensions, margins, scale factors, tension, and intrinsic sizing are configured.',
+    aspectRatio: 1.25,
+    features: [
+      'configuration',
+      'responsive-sizing',
+      'curve-tension',
+      'title',
+      'circle-graticule',
+    ],
+    expectedTexts: ['Configured capacity', 'Compute', 'Reserved'],
+    source: String.raw`
+---
+config:
+  radar:
+    width: 500
+    height: 380
+    marginTop: 36
+    marginRight: 52
+    marginBottom: 40
+    marginLeft: 52
+    axisScaleFactor: 0.84
+    axisLabelFactor: 0.96
+    curveTension: 0.3
+    useMaxWidth: false
+---
+radar-beta
+  title Configured capacity
+  axis compute["Compute"], memory["Memory"], network["Network"], storage["Storage"]
+  curve reserved["Reserved"] { 75, 82, 68, 79 }
+  curve consumed["Consumed"] { 61, 73, 57, 65 }
+  max 100
+`,
+  },
+  {
+    id: 'prod_radar_theme_palette',
+    kind: 'radar',
+    title: 'Custom radar palette',
+    scenario: 'Root palette values and nested radar theme variables style all chart layers.',
+    aspectRatio: 1,
+    features: ['theme-variables', 'configuration', 'multiple-curves', 'legend'],
+    expectedTexts: ['Portfolio health', 'Current', 'Forecast'],
+    source: String.raw`
+---
+config:
+  theme: base
+  themeVariables:
+    textColor: "#172554"
+    cScale0: "#2563eb"
+    cScale1: "#dc2626"
+    cScale2: "#16a34a"
+    radar:
+      axisColor: "#475569"
+      axisStrokeWidth: 3
+      axisLabelFontSize: 14
+      curveOpacity: 0.32
+      curveStrokeWidth: 3
+      graticuleColor: "#94a3b8"
+      graticuleOpacity: 0.24
+      graticuleStrokeWidth: 2
+      legendFontSize: 13
+---
+radar-beta
+  title Portfolio health
+  axis value["Value"], confidence["Confidence"], urgency["Urgency"], readiness["Readiness"], reach["Reach"]
+  curve current["Current"] { 78, 69, 84, 72, 88 }
+  curve forecast["Forecast"] { 89, 82, 76, 91, 93 }
+  curve threshold["Threshold"] { 65, 65, 65, 65, 65 }
+  max 100
+`,
+  },
+  {
+    id: 'prod_radar_accessible_unicode',
+    kind: 'radar',
+    title: 'Accessible international radar',
+    scenario: 'Unicode, accessibility metadata, comments, entities, and escaped labels coexist.',
+    aspectRatio: 1,
+    features: [
+      'accessibility',
+      'comments',
+      'escaped-labels',
+      'unicode',
+      'detailed-entries',
+      'reference-reordering',
+    ],
+    expectedTexts: ['地域 comparison', '東京', '서울', 'Observed &amp; reviewed'],
+    source: String.raw`
+radar-beta
+  title 地域 comparison
+  accTitle: Accessible international comparison
+  accDescr {
+    Regional indicators are compared in declared axis order.
+  }
+  %% Labels intentionally mix scripts and escaped punctuation.
+  axis tokyo["東京"], seoul["서울"], sao["São Paulo"], quality["Quality \"index\""]
+  curve observed["Observed &amp; reviewed"] { quality: 87, sao: 76, tokyo: 94, seoul: 83 }
+  max 100
+`,
+  },
+  {
+    id: 'prod_radar_option_precedence',
+    kind: 'radar',
+    title: 'Radar option precedence',
+    scenario: 'Repeated comma-separated options use the last value and cap excessive ticks.',
+    aspectRatio: 1,
+    features: [
+      'option-last-wins',
+      'tick-cap',
+      'ticks',
+      'legend',
+      'polygon-graticule',
+      'explicit-range',
+    ],
+    expectedTexts: ['Option precedence', 'Baseline', 'Target'],
+    source: String.raw`
+radar-beta
+  title Option precedence
+  axis one["Baseline"], two["Target"], three["Forecast"]
+  curve values["Values"] { 3, 7, 5 }
+  min 1, min 2
+  max 8, max 10
+  ticks 4, ticks 40
+  showLegend false, showLegend true
+  graticule circle, graticule polygon
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -3437,6 +3698,7 @@ export const conformanceCases = [
   ...gitGraphCases,
   ...mindmapCases,
   ...packetCases,
+  ...radarCases,
 ];
 
 export const cases = [
