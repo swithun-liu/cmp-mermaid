@@ -19,16 +19,16 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt |
-| Implemented, detail re-audit pending | Pie, User Journey, Requirement, Git Graph, Mindmap |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie |
+| Implemented, detail re-audit pending | User Journey, Requirement, Git Graph, Mindmap |
 | Translation pending | Agentflow, Architecture, Block, C4, Cynefin, Event Modeling, Ishikawa, Packet, Radar, Railroad, Sankey, Swimlanes, Treemap, TreeView, Use Case, Venn, Wardley Map, ZenUML |
 
-The previous 3,072-pair matrix remains useful capture evidence, but its
-automated gate checked only blank output, content bounds, and aggregate ink.
-A Git Graph label paint-order defect was visible in that matrix and was not
-identified during the earlier review. Therefore the old claim that all 3,072
-pairs received sufficient detailed review is withdrawn. No family can use that
-legacy geometry result alone to satisfy the new Stable gate.
+The current 3,840-pair matrix covers all 15 implemented families. Four families
+still retain legacy capture evidence whose automated gate checked only blank
+output, content bounds, and aggregate ink. A Git Graph label paint-order defect
+was visible in the original 3,072-pair matrix and was not identified during the
+earlier review. Therefore the old detail-completion claim is withdrawn. No
+family can use a legacy geometry result alone to satisfy the new Stable gate.
 
 The replacement audit now emits a JSON manifest beside every Native and
 Official PNG. Native manifests preserve actual SceneGraph paint order;
@@ -51,9 +51,9 @@ Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, and Gantt are the first ten families to complete the
-replacement gate. Together they have 2,560 accepted same-source pairs:
-`2,500 pass / 60 manually reviewed / 0 fail` across 160 reviewed contact
+Entity Relationship, Gantt, and Pie are the first eleven families to complete
+the replacement gate. Together they have 2,816 accepted same-source pairs:
+`2,756 pass / 60 manually reviewed / 0 fail` across 176 reviewed contact
 sheets. The 60 reviews are ER text-position threshold findings; all preserve
 text, avoid clipping and overlap, pass raster checks, and were accepted by
 manual side-by-side review. Flowchart
@@ -69,7 +69,8 @@ respectively. Sequence ratios are `1.023-1.068`, `0.893-1.045`, and
 `0.963-1.224`, `0.968-1.089`, and `1.031-1.383`, respectively. Entity
 Relationship ratios are `1.033-1.078`, `0.882-1.043`, and `0.545-1.150`,
 respectively. Gantt ratios are `1.035-1.037`, `0.883-0.961`, and
-`0.964-1.023`, respectively.
+`0.964-1.023`, respectively. Pie ratios are `0.992-1.050`, `0.994-1.019`,
+and `0.993-1.042`, respectively.
 
 ## Expected Behavior
 

@@ -65,19 +65,18 @@ foreground masks, edges, colors, and review heatmaps.
 
 The large-scale visual matrix adds 256 unique sources per type by combining 13
 or 14 complex production structures with 20 visible text and layout-pressure
-profiles. All 3,840 sources render in the Native core test. The historical
-3,072 Native/Official screenshot pairs passed the legacy geometry gate. That
-result
-did not catch a visible Git Graph paint-order defect and is not a detail-parity
-pass. Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class,
-State, Entity Relationship, and Gantt add 2,560 Native/Official pairs accepted
-by the replacement detail gate. Nine families contribute
-`2,304 pass / 0 review / 0 fail`; ER contributes
-`196 pass / 60 manually reviewed / 0 fail`. All 2,560 pairs also pass the
-geometry gate. This systematic matrix broadens layout and text-pressure
-coverage, but it is not counted as 3,840 independent topologies. The separate
-randomized stress corpus remains Native-only robustness evidence and is not
-presented as Official parity.
+profiles. All 3,840 sources render in the Native core test and all 3,840
+Native/Official pairs pass the geometry gate. The original 12-family report
+used a legacy coarse gate that did not catch a visible Git Graph paint-order
+defect and is not a detail-parity pass by itself. Flowchart, XY Chart, Quadrant
+Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt,
+and Pie contribute 2,816 Native/Official pairs accepted by the replacement
+detail gate. Ten families contribute
+`2,560 pass / 0 review / 0 fail`; ER contributes
+`196 pass / 60 manually reviewed / 0 fail`. This systematic matrix broadens
+layout and text-pressure coverage, but it is not counted as 3,840 independent
+topologies. The separate randomized stress corpus remains Native-only
+robustness evidence and is not presented as Official parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.
 Unsupported legal features must return `MermaidError.UnsupportedFeature`

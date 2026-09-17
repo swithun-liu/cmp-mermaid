@@ -132,6 +132,67 @@ test('keeps matching occlusion topology with different extents in review', () =>
   );
 });
 
+test('compares the union of adjacent later opaque regions', () => {
+  const native = manifest([
+    text('covered-label', 0),
+    {
+      ...shape('first-swatch', 1),
+      bounds: { x: 30, y: 8, width: 10, height: 14 },
+    },
+    {
+      ...shape('second-swatch', 2),
+      bounds: { x: 40, y: 8, width: 10, height: 14 },
+    },
+  ]);
+  const official = manifest([
+    text('covered-label', 0),
+    {
+      ...shape('combined-swatch-area', 1),
+      bounds: { x: 30, y: 8, width: 20, height: 14 },
+    },
+    {
+      ...shape('unrelated-swatch', 2),
+      bounds: { x: 80, y: 8, width: 10, height: 14 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.paintOrderComparison.nativeOccludedTextCount, 1);
+  assert.equal(result.paintOrderComparison.officialOccludedTextCount, 1);
+});
+
+test('normalizes occluded area by each matched text box', () => {
+  const native = manifest([
+    {
+      ...text('covered-label', 0),
+      bounds: { x: 1, y: 10, width: 98, height: 10 },
+      fontSize: 16,
+    },
+    {
+      ...shape('native-swatch', 1),
+      bounds: { x: 1, y: 17, width: 98, height: 3 },
+    },
+  ]);
+  const official = manifest([
+    {
+      ...text('covered-label', 0),
+      bounds: { x: 25, y: 10, width: 50, height: 10 },
+      fontSize: 16,
+    },
+    {
+      ...shape('official-swatch', 1),
+      bounds: { x: 25, y: 17, width: 50, height: 3 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.deepEqual(result.paintOrderComparison.ratioDifferences, []);
+});
+
 test('separates missing text from harmless element multiplicity', () => {
   const official = manifest([
     text('shared', 0),

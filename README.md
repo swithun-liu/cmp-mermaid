@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Live Web demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>3,072-case visual report</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>3,840-case visual report</strong></a>
     ·
     <a href="docs/stability-report.md">Full Stable report</a>
     ·
@@ -35,14 +35,13 @@
 > diagram families.** The remaining 18 families are on the
 > **[full-diagram roadmap](docs/full-diagram-roadmap.md)**.
 >
-> The existing **[3,072-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
-> remains available, but its old automated gate checked coarse geometry rather
-> than label paint order and other rendering details. Detailed re-audit is in
-> progress. Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence,
-> Class, State, Entity Relationship, and Gantt have completed the replacement
-> 256-case gate; the
-> legacy report must not be read as proof of complete Mermaid compatibility or
-> as completed detail review for the other families.
+> The current **[3,840-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
+> covers all 15 implemented families. Flowchart, XY Chart, Quadrant Chart,
+> Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, and Pie
+> have completed the replacement 256-case detail gate. User Journey,
+> Requirement, Git Graph, and Mindmap remain legacy capture evidence pending
+> replacement detail review; the report does not prove complete Mermaid
+> compatibility.
 
 CMP Mermaid is designed for applications that render many diagrams without a
 WebView per diagram. The production path does not embed Mermaid.js and does not
@@ -54,7 +53,7 @@ Canvas painting are owned by the multiplatform libraries.
 
 The 15 implemented families retain repository-controlled tests and captures.
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, and Gantt pass the replacement detail gate; the other
+Entity Relationship, Gantt, and Pie pass the replacement detail gate; the other
 implemented families are being upgraded and re-reviewed.
 
 | Evidence | Result |
@@ -66,12 +65,12 @@ implemented families are being upgraded and re-reviewed.
 | Declared capability coverage | 257/257 |
 | Large-scale visual matrix | 3,840 unique sources: 256 per implemented family |
 | Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots |
-| Matrix detail review | Ten families: 2,560/2,560 accepted; 2,500 automatic passes plus 60 manually accepted ER text-position reviews; remaining 5 families require re-audit |
-| Automated visual geometry | 3,840/3,840 passed; ten family detail gates passed |
+| Matrix detail review | Eleven families: 2,816/2,816 accepted; 2,756 automatic passes plus 60 manually accepted ER text-position reviews; remaining 4 families require re-audit |
+| Automated visual geometry | 3,840/3,840 passed; eleven family detail gates passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 |
 | Separate generated Native stress inputs | 3,840 |
-| JVM tests | 439 passed, 0 failed |
+| JVM tests | 446 passed, 0 failed |
 | Core production soak | 985 renders, 419ms total, 1ms P95, 29,144 bytes retained heap |
 | Runtime load matrix | Android, iOS, Desktop, Web passed |
 
@@ -79,7 +78,7 @@ implemented families are being upgraded and re-reviewed.
 | --- | --- |
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory, current 15/33 state, missing 18 families, and the new Stable gate |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
-| **[All 3,072 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 192 paged contact sheets, with 16 same-source pairs per page |
+| **[All 3,840 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 240 paged contact sheets, with 16 same-source pairs per page |
 | [Production capability matrix](docs/production-capability-matrix.md) | The 257 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
@@ -117,9 +116,9 @@ not pixel-identical browser output; platform font metrics may differ.
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native state diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js state diagram" width="700"> |
 
-The report contains the 158 independent production comparisons and a separate
-large-scale matrix with 3,072 unique Mermaid sources:
-**[open all 192 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
+The report contains the 197 independent production comparisons and a separate
+large-scale matrix with 3,840 unique Mermaid sources:
+**[open all 240 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
 
 </details>
 
@@ -137,7 +136,7 @@ large-scale matrix with 3,072 unique Mermaid sources:
 | State | Detail gate passed | 13 | Composite states, concurrency, notes, forks/joins, Dagre | [Compatibility](docs/state-compatibility.md) |
 | Entity Relationship | Detail gate passed | 13 | Attributes, cardinalities, relationships, nested subgraphs | [Compatibility](docs/er-compatibility.md) |
 | Gantt | Detail gate passed | 13 | Dates, dependencies, exclusions, milestones, D3-style ticks | [Compatibility](docs/gantt-compatibility.md) |
-| Pie | Detail re-audit | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
+| Pie | Detail gate passed | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
 | User Journey | Detail re-audit | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
 | Requirement | Detail re-audit | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |
 | Git Graph | Detail re-audit | 13 | Langium grammar, branches, merges, cherry-picks, orientations, themes | [Compatibility](docs/gitgraph-compatibility.md) |

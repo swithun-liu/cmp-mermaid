@@ -636,24 +636,43 @@ function comparePaintOrder(native, official, thresholds, findings) {
   const mismatches = [];
   const ratioDifferences = [];
   for (const key of keys) {
-    const nativeProfile = nativeProfiles.get(key) ?? [];
-    const officialProfile = officialProfiles.get(key) ?? [];
-    if (nativeProfile.length !== officialProfile.length) {
+    const nativeProfile = nativeProfiles.get(key) ?? emptyOcclusionProfile();
+    const officialProfile = officialProfiles.get(key) ?? emptyOcclusionProfile();
+    const nativeOccluded =
+      nativeProfile.coverageRatio >= thresholds.occlusionOverlapRatio;
+    const officialOccluded =
+      officialProfile.coverageRatio >= thresholds.occlusionOverlapRatio;
+    if (nativeOccluded !== officialOccluded) {
       mismatches.push({
         textOccurrence: key,
-        nativeLaterOpaqueOverlaps: nativeProfile,
-        officialLaterOpaqueOverlaps: officialProfile,
+        nativeLaterOpaqueOverlaps: nativeProfile.overlaps,
+        officialLaterOpaqueOverlaps: officialProfile.overlaps,
       });
-    } else if (
-      nativeProfile.some((value, index) =>
-        Math.abs(value - officialProfile[index]) >
+    } else if (nativeOccluded && officialOccluded) {
+      const nativeComparableRatio = nativeProfile.coverageRatio;
+      const officialComparableRatio = officialProfile.coverageRatio;
+      const commonTextArea = Math.min(
+        nativeProfile.textArea,
+        officialProfile.textArea,
+      );
+      const commonAreaDifference = Math.abs(
+        ratio(nativeProfile.coveredArea, commonTextArea) -
+          ratio(officialProfile.coveredArea, commonTextArea),
+      );
+      if (
+        Math.abs(nativeComparableRatio - officialComparableRatio) <=
+          thresholds.maximumOcclusionOverlapRatioDifference ||
+        commonAreaDifference <=
           thresholds.maximumOcclusionOverlapRatioDifference
-      )
-    ) {
+      ) {
+        continue;
+      }
       ratioDifferences.push({
         textOccurrence: key,
-        nativeLaterOpaqueOverlaps: nativeProfile,
-        officialLaterOpaqueOverlaps: officialProfile,
+        nativeLaterOpaqueOverlaps: nativeProfile.overlaps,
+        officialLaterOpaqueOverlaps: officialProfile.overlaps,
+        nativeCoverageRatio: round(nativeComparableRatio, 3),
+        officialCoverageRatio: round(officialComparableRatio, 3),
       });
     }
   }
@@ -679,9 +698,15 @@ function comparePaintOrder(native, official, thresholds, findings) {
   }
   return {
     nativeOccludedTextCount: [...nativeProfiles.values()]
-      .filter((profile) => profile.length > 0).length,
+      .filter(
+        (profile) =>
+          profile.coverageRatio >= thresholds.occlusionOverlapRatio,
+      ).length,
     officialOccludedTextCount: [...officialProfiles.values()]
-      .filter((profile) => profile.length > 0).length,
+      .filter(
+        (profile) =>
+          profile.coverageRatio >= thresholds.occlusionOverlapRatio,
+      ).length,
     mismatches,
     ratioDifferences,
   };
@@ -739,20 +764,38 @@ function occlusionProfiles(analysis, thresholds) {
     const occurrence = occurrences.get(text.normalizedText) ?? 0;
     occurrences.set(text.normalizedText, occurrence + 1);
     const key = `${text.normalizedText}#${occurrence}`;
-    const overlaps = analysis.elements
+    const intersections = analysis.elements
       .filter((element) =>
         element.order > text.order &&
         isOpaquePaintElement(element)
       )
       .map((element) =>
-        overlapRatio(text.normalizedBounds, element.normalizedBounds)
+        intersectBounds(text.normalizedBounds, element.normalizedBounds)
       )
-      .filter((value) => value >= thresholds.occlusionOverlapRatio)
+      .filter((bounds) => bounds != null);
+    const textArea = boundsArea(text.normalizedBounds);
+    const coveredArea = unionArea(intersections);
+    const overlaps = intersections
+      .map((bounds) => ratio(boundsArea(bounds), textArea))
       .sort((left, right) => left - right)
       .map((value) => round(value, 3));
-    profiles.set(key, overlaps);
+    profiles.set(key, {
+      overlaps,
+      textArea,
+      coveredArea,
+      coverageRatio: ratio(coveredArea, textArea),
+    });
   }
   return profiles;
+}
+
+function emptyOcclusionProfile() {
+  return {
+    overlaps: [],
+    textArea: 0,
+    coveredArea: 0,
+    coverageRatio: 0,
+  };
 }
 
 function isOpaquePaintElement(element) {
@@ -1019,18 +1062,73 @@ function normalizedCountDifference(left, right) {
 }
 
 function overlapRatio(subject, occluder) {
-  const width = Math.max(
-    0,
-    Math.min(subject.x + subject.width, occluder.x + occluder.width) -
-      Math.max(subject.x, occluder.x),
+  const intersection = intersectBounds(subject, occluder);
+  return intersection == null
+    ? 0
+    : ratio(boundsArea(intersection), boundsArea(subject));
+}
+
+function intersectBounds(left, right) {
+  const x = Math.max(left.x, right.x);
+  const y = Math.max(left.y, right.y);
+  const rightEdge = Math.min(
+    left.x + left.width,
+    right.x + right.width,
   );
-  const height = Math.max(
-    0,
-    Math.min(subject.y + subject.height, occluder.y + occluder.height) -
-      Math.max(subject.y, occluder.y),
+  const bottomEdge = Math.min(
+    left.y + left.height,
+    right.y + right.height,
   );
-  const subjectArea = Math.max(0, subject.width) * Math.max(0, subject.height);
-  return subjectArea === 0 ? 0 : (width * height) / subjectArea;
+  if (rightEdge <= x || bottomEdge <= y) return null;
+  return {
+    x,
+    y,
+    width: rightEdge - x,
+    height: bottomEdge - y,
+  };
+}
+
+function boundsArea(bounds) {
+  return Math.max(0, bounds.width) * Math.max(0, bounds.height);
+}
+
+function unionArea(boundsList) {
+  if (boundsList.length === 0) return 0;
+  const xEdges = [...new Set(
+    boundsList.flatMap((bounds) => [
+      bounds.x,
+      bounds.x + bounds.width,
+    ]),
+  )].sort((left, right) => left - right);
+  let area = 0;
+  for (let index = 0; index + 1 < xEdges.length; index += 1) {
+    const left = xEdges[index];
+    const right = xEdges[index + 1];
+    const width = right - left;
+    if (width <= 0) continue;
+    const intervals = boundsList
+      .filter(
+        (bounds) =>
+          bounds.x < right && bounds.x + bounds.width > left,
+      )
+      .map((bounds) => [bounds.y, bounds.y + bounds.height])
+      .sort((first, second) => first[0] - second[0]);
+    let coveredHeight = 0;
+    let start = null;
+    let end = null;
+    for (const [top, bottom] of intervals) {
+      if (start == null || top > end) {
+        if (start != null) coveredHeight += end - start;
+        start = top;
+        end = bottom;
+      } else {
+        end = Math.max(end, bottom);
+      }
+    }
+    if (start != null) coveredHeight += end - start;
+    area += width * coveredHeight;
+  }
+  return area;
 }
 
 function centerDistance(left, right) {

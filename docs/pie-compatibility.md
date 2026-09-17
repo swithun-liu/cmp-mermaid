@@ -41,6 +41,9 @@ would change the feature's meaning.
 
 - Both examples extracted from Mermaid's official Pie documentation run in
   JVM tests.
+- 13 independent production scenarios and 256 deterministic same-source
+  Native/Official matrix cases exercise complex structures under visible text
+  and layout pressure.
 - Parser and layout tests cover quoting, escapes, comments, metadata,
   duplicates, negative and zero values, one-percent filtering, input order,
   donut geometry, static highlighting, all five legend positions, themes,
@@ -53,6 +56,10 @@ would change the feature's meaning.
   Mermaid.js `12.0.0`.
 - All 20 Native Android screenshots were compared side by side with 20
   Puppeteer-rendered official references.
+- The replacement matrix detail audit reports
+  `256 pass / 0 review / 0 fail`; all 16 contact sheets were manually reviewed.
+  Native/Official geometry ratios are `0.992-1.050` for width,
+  `0.994-1.019` for height, and `0.993-1.042` for foreground ink.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
 

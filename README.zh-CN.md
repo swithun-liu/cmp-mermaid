@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>在线 Web Demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>3,072 案例视觉报告</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>3,840 案例视觉报告</strong></a>
     ·
     <a href="docs/stability-report.md">完整 Stable 报告</a>
     ·
@@ -35,11 +35,11 @@
 > 15 个。** 剩余 18 个家族见
 > **[全图表路线](docs/full-diagram-roadmap.md)**。
 >
-> 现有 **[3,072 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
-> 仍保留为截图证据，但旧自动门禁只检查粗粒度几何，没有检查标签绘制顺序等细节。
-> 当前正在重新做细节验收。Flowchart、XY Chart、Quadrant Chart、Timeline、Kanban、
-> Sequence、Class、State、Entity Relationship 与 Gantt 已完成新的 256 案例门禁；旧报告
-> 不能被理解为完整 Mermaid 兼容证明，也不能证明其他家族已完成细节审查。
+> 当前 **[3,840 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
+> 已覆盖全部 15 个已实现家族。Flowchart、XY Chart、Quadrant Chart、Timeline、
+> Kanban、Sequence、Class、State、Entity Relationship、Gantt 与 Pie 已完成新的
+> 256 案例细节门禁。User Journey、Requirement、Git Graph 与 Mindmap 仍是待 replacement
+> 细节重审的旧截图证据；该报告不代表 Mermaid 已完整兼容。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
 WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，也不需要
@@ -49,8 +49,8 @@ WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，�
 ## 当前验证状态
 
 已实现的 15 个家族仍有仓库内可复现的测试与截图。Flowchart、XY Chart、Quadrant Chart、
-Timeline、Kanban、Sequence、Class、State、Entity Relationship 与 Gantt 已通过新的细节门禁，
-其他已实现家族的 Native/Official 证据正在升级并重新审查。
+Timeline、Kanban、Sequence、Class、State、Entity Relationship、Gantt 与 Pie 已通过新的
+细节门禁，其他已实现家族的 Native/Official 证据正在升级并重新审查。
 
 | 证据 | 结果 |
 | --- | ---: |
@@ -61,12 +61,12 @@ Timeline、Kanban、Sequence、Class、State、Entity Relationship 与 Gantt 已
 | 已声明能力覆盖率 | 257/257 |
 | 大规模视觉矩阵 | 3,840 个唯一源码，每个已实现家族 256 个 |
 | Native/Official 截图 | 7,680 张矩阵截图，另有 394 张独立语料截图 |
-| 矩阵细节审查 | 10 个家族：2,560/2,560 验收；其中 2,500 个自动通过，60 个 ER 文本位置告警经人工复核通过；其余 5 个家族待重审 |
-| 自动视觉检查 | 3,840/3,840 几何通过；10 个家族的细节门禁通过 |
+| 矩阵细节审查 | 11 个家族：2,816/2,816 验收；其中 2,756 个自动通过，60 个 ER 文本位置告警经人工复核通过；其余 4 个家族待重审 |
+| 自动视觉检查 | 3,840/3,840 几何通过；11 个家族的细节门禁通过 |
 | 确定性 SceneGraph 重放 | 197 个通过，0 个不一致 |
 | 内置主题矩阵 | 165/165 |
 | 独立生成的 Native 压力输入 | 3,840 |
-| JVM 测试 | 439 个通过，0 个失败 |
+| JVM 测试 | 446 个通过，0 个失败 |
 | Core 生产场景压力测试 | 985 次渲染，总耗时 419ms，P95 为 1ms，保留堆 29,144 bytes |
 | 运行时负载矩阵 | Android、iOS、Desktop、Web 全部通过 |
 
@@ -74,7 +74,7 @@ Timeline、Kanban、Sequence、Class、State、Entity Relationship 与 Gantt 已
 | --- | --- |
 | **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单、当前 15/33 状态、缺失 18 类和新 Stable 门禁 |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
-| **[全部 3,072 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 192 页分页对比图，每页包含 16 组同源码结果 |
+| **[全部 3,840 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 240 页分页对比图，每页包含 16 组同源码结果 |
 | [生产能力矩阵](docs/production-capability-matrix.md) | 257 项被独立验证的能力 |
 | [生产就绪说明](docs/production-readiness.md) | 代码级 Stable 标准、资源预算和接入指引 |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | 当前 JVM、构建、发布、安全、APK、视觉和 Web 负载自动化结果 |
@@ -110,9 +110,9 @@ Timeline、Kanban、Sequence、Class、State、Entity Relationship 与 Gantt 已
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native State Diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js State Diagram" width="700"> |
 
-测试报告包含 158 个独立生产场景对比，以及由 3,072 个唯一 Mermaid 源码组成的
+测试报告包含 197 个独立生产场景对比，以及由 3,840 个唯一 Mermaid 源码组成的
 独立大规模矩阵：
-**[查看全部 192 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
+**[查看全部 240 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
 
 </details>
 
@@ -130,7 +130,7 @@ Timeline、Kanban、Sequence、Class、State、Entity Relationship 与 Gantt 已
 | State | 细节门禁通过 | 13 | 复合状态、并发、注释、分叉/汇合、Dagre | [兼容性](docs/state-compatibility.md) |
 | Entity Relationship | 细节门禁通过 | 13 | 属性、基数、关系、嵌套子图 | [兼容性](docs/er-compatibility.md) |
 | Gantt | 细节门禁通过 | 13 | 日期、依赖、排除日期、里程碑、D3 风格刻度 | [兼容性](docs/gantt-compatibility.md) |
-| Pie | 细节重审 | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
+| Pie | 细节门禁通过 | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
 | User Journey | 细节重审 | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
 | Requirement | 细节重审 | 13 | SysML 类型与字段、元素、七类关系、Dagre、样式 | [兼容性](docs/requirement-compatibility.md) |
 | Git Graph | 细节重审 | 13 | Langium 语法、分支、合并、cherry-pick、方向与主题 | [兼容性](docs/gitgraph-compatibility.md) |

@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 3,072 source cases and
-6,144 screenshots from the large-scale
+This index contains 3,840 source cases and
+7,680 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -12,6 +12,12 @@ capture sizes are recorded in
 Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
+
+Flowchart, XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
+Relationship, Gantt, Pie, and Kanban have completed the replacement detail
+gate and manual contact-sheet review. User Journey, Requirement, Git Graph,
+and Mindmap remain in this index as legacy capture evidence pending replacement
+detail review.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -84,6 +90,88 @@ presented as 256 unrelated topologies.
 ![XY Chart visual parity page 15](xychart-visual-parity-15.jpg)
 
 ![XY Chart visual parity page 16](xychart-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Quadrant Chart - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.007-1.035`, height `1.011-1.022`, foreground ink `1.024-1.048`.
+All 16 pages below were manually reviewed.
+
+![Quadrant Chart visual parity page 01](quadrant-visual-parity-01.jpg)
+
+![Quadrant Chart visual parity page 02](quadrant-visual-parity-02.jpg)
+
+![Quadrant Chart visual parity page 03](quadrant-visual-parity-03.jpg)
+
+![Quadrant Chart visual parity page 04](quadrant-visual-parity-04.jpg)
+
+![Quadrant Chart visual parity page 05](quadrant-visual-parity-05.jpg)
+
+![Quadrant Chart visual parity page 06](quadrant-visual-parity-06.jpg)
+
+![Quadrant Chart visual parity page 07](quadrant-visual-parity-07.jpg)
+
+![Quadrant Chart visual parity page 08](quadrant-visual-parity-08.jpg)
+
+![Quadrant Chart visual parity page 09](quadrant-visual-parity-09.jpg)
+
+![Quadrant Chart visual parity page 10](quadrant-visual-parity-10.jpg)
+
+![Quadrant Chart visual parity page 11](quadrant-visual-parity-11.jpg)
+
+![Quadrant Chart visual parity page 12](quadrant-visual-parity-12.jpg)
+
+![Quadrant Chart visual parity page 13](quadrant-visual-parity-13.jpg)
+
+![Quadrant Chart visual parity page 14](quadrant-visual-parity-14.jpg)
+
+![Quadrant Chart visual parity page 15](quadrant-visual-parity-15.jpg)
+
+![Quadrant Chart visual parity page 16](quadrant-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Timeline - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.026-1.053`, height `1.038-1.087`, foreground ink `1.052-1.136`.
+All 16 pages below were manually reviewed.
+
+![Timeline visual parity page 01](timeline-visual-parity-01.jpg)
+
+![Timeline visual parity page 02](timeline-visual-parity-02.jpg)
+
+![Timeline visual parity page 03](timeline-visual-parity-03.jpg)
+
+![Timeline visual parity page 04](timeline-visual-parity-04.jpg)
+
+![Timeline visual parity page 05](timeline-visual-parity-05.jpg)
+
+![Timeline visual parity page 06](timeline-visual-parity-06.jpg)
+
+![Timeline visual parity page 07](timeline-visual-parity-07.jpg)
+
+![Timeline visual parity page 08](timeline-visual-parity-08.jpg)
+
+![Timeline visual parity page 09](timeline-visual-parity-09.jpg)
+
+![Timeline visual parity page 10](timeline-visual-parity-10.jpg)
+
+![Timeline visual parity page 11](timeline-visual-parity-11.jpg)
+
+![Timeline visual parity page 12](timeline-visual-parity-12.jpg)
+
+![Timeline visual parity page 13](timeline-visual-parity-13.jpg)
+
+![Timeline visual parity page 14](timeline-visual-parity-14.jpg)
+
+![Timeline visual parity page 15](timeline-visual-parity-15.jpg)
+
+![Timeline visual parity page 16](timeline-visual-parity-16.jpg)
 
 </details>
 
@@ -292,6 +380,10 @@ viewport.
 <details>
 <summary><strong>Pie - 256 Native/Official pairs</strong></summary>
 
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `0.992-1.050`, height `0.994-1.019`, foreground ink `0.993-1.042`.
+All 16 pages below were manually reviewed.
+
 ![Pie visual parity page 01](pie-visual-parity-01.jpg)
 
 ![Pie visual parity page 02](pie-visual-parity-02.jpg)
@@ -471,5 +563,46 @@ viewport.
 ![Mindmap visual parity page 15](mindmap-visual-parity-15.jpg)
 
 ![Mindmap visual parity page 16](mindmap-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Kanban - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.041-1.071`, height `0.864-1.230`, foreground ink `0.996-1.110`.
+All 16 pages below were manually reviewed.
+
+![Kanban visual parity page 01](kanban-visual-parity-01.jpg)
+
+![Kanban visual parity page 02](kanban-visual-parity-02.jpg)
+
+![Kanban visual parity page 03](kanban-visual-parity-03.jpg)
+
+![Kanban visual parity page 04](kanban-visual-parity-04.jpg)
+
+![Kanban visual parity page 05](kanban-visual-parity-05.jpg)
+
+![Kanban visual parity page 06](kanban-visual-parity-06.jpg)
+
+![Kanban visual parity page 07](kanban-visual-parity-07.jpg)
+
+![Kanban visual parity page 08](kanban-visual-parity-08.jpg)
+
+![Kanban visual parity page 09](kanban-visual-parity-09.jpg)
+
+![Kanban visual parity page 10](kanban-visual-parity-10.jpg)
+
+![Kanban visual parity page 11](kanban-visual-parity-11.jpg)
+
+![Kanban visual parity page 12](kanban-visual-parity-12.jpg)
+
+![Kanban visual parity page 13](kanban-visual-parity-13.jpg)
+
+![Kanban visual parity page 14](kanban-visual-parity-14.jpg)
+
+![Kanban visual parity page 15](kanban-visual-parity-15.jpg)
+
+![Kanban visual parity page 16](kanban-visual-parity-16.jpg)
 
 </details>

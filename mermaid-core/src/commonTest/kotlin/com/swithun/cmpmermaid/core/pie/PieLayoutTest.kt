@@ -51,7 +51,7 @@ class PieLayoutTest {
         assertTrue(texts.any { text -> text.text == "C [0.1]" })
         assertTrue(shapes.any { shape -> shape.id == "pie-legend-swatch-2" })
         assertTrue(scene.width > 490f)
-        assertEquals(450f, scene.height)
+        assertEquals(474f, scene.height)
     }
 
     @Test
@@ -108,14 +108,32 @@ class PieLayoutTest {
             source.withPieConfig("legendPosition: center"),
         )
 
-        assertEquals(494f, top.height)
-        assertEquals(494f, bottom.height)
-        assertEquals(450f, left.height)
-        assertEquals(450f, center.height)
+        assertEquals(518f, top.height)
+        assertEquals(518f, bottom.height)
+        assertEquals(474f, left.height)
+        assertEquals(474f, center.height)
         assertTrue(left.outerCircle().bounds.center.x > right.outerCircle().bounds.center.x)
         assertTrue(top.outerCircle().bounds.center.y > right.outerCircle().bounds.center.y)
         assertEquals(right.outerCircle().bounds.center, bottom.outerCircle().bounds.center)
         assertEquals(right.outerCircle().bounds.center, center.outerCircle().bounds.center)
+        assertEquals(
+            40f,
+            center.elements.filterIsInstance<SceneText>()
+                .single { text -> text.text == "Alpha" }
+                .bounds.width,
+        )
+    }
+
+    @Test
+    fun normalizesLongCenterAndBottomLegendsIntoTheSceneViewport() {
+        val source = """
+            pie
+                "A very long legend label that extends beyond the renderer viewBox" : 40
+                "Another long legend label that must remain fully visible" : 60
+        """.trimIndent()
+
+        assertElementsInsideViewport(render(source.withPieConfig("legendPosition: center")))
+        assertElementsInsideViewport(render(source.withPieConfig("legendPosition: bottom")))
     }
 
     @Test
@@ -219,6 +237,22 @@ class PieLayoutTest {
     private fun MermaidScene.outerCircle(): SceneShape =
         elements.filterIsInstance<SceneShape>()
             .single { shape -> shape.id == "pie-outer-circle" }
+
+    private fun assertElementsInsideViewport(scene: MermaidScene) {
+        val bounds = scene.elements.mapNotNull { element ->
+            when (element) {
+                is SceneShape -> element.bounds
+                is SceneText -> element.bounds
+                else -> null
+            }
+        }
+        bounds.forEach { rect ->
+            assertTrue(rect.left >= 12f, "$rect extends past the left viewport edge")
+            assertTrue(rect.top >= 12f, "$rect extends past the top viewport edge")
+            assertTrue(rect.right <= scene.width - 12f, "$rect extends past the right viewport edge")
+            assertTrue(rect.bottom <= scene.height - 12f, "$rect extends past the bottom viewport edge")
+        }
+    }
 
     private fun com.swithun.cmpmermaid.core.SceneShapeGeometry?.orEmptyPoints() =
         this?.paths?.firstOrNull()?.points.orEmpty()

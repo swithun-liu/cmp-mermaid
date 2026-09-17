@@ -62,6 +62,9 @@ grammar is Langium-based rather than Jison-based.
   uses Mermaid's scale and opacity rules.
 - DOM text measurement is supplied by `TextMetricProvider`; Compose uses the
   same font, size, and line-height inputs for measurement and painting.
+- The final scene viewport mirrors the reference harness's Mermaid SVG
+  `viewBox`/`getBBox()` union and 12-pixel padding, translating negative bounds
+  because `MermaidScene` has no negative viewport origin.
 - SceneGraph output remains platform independent; Compose owns final Canvas
   painting.
 
@@ -78,6 +81,9 @@ grammar is Langium-based rather than Jison-based.
   Mermaid's Pie documentation.
 - The Android gallery compares 20 identical sources against official Mermaid
   `12.0.0` output.
+- The replacement gate compares 256 deterministic same-source matrix cases:
+  `256 pass / 0 review / 0 fail`, 256/256 geometry passes, and 16/16 manually
+  reviewed contact sheets.
 
 ## Upgrade Procedure
 
@@ -89,6 +95,7 @@ grammar is Langium-based rather than Jison-based.
 4. Regenerate the documentation fixtures and review their hash.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
-6. Install the Android sample and capture all 20 Native/Official Pie pairs.
-7. Review the contact sheets and update this map and the compatibility matrix
-   before publishing.
+6. Install the Android sample and capture all 20 Native/Official gallery pairs.
+7. Capture the 256-case matrix and run detail and geometry audits.
+8. Review all matrix contact sheets and update this map, the compatibility
+   matrix, and the public stability report before publishing.
