@@ -104,6 +104,28 @@ test('tolerates small occlusion-ratio differences from text box semantics', () =
   assert.deepEqual(result.paintOrderComparison.ratioDifferences, []);
 });
 
+test('tolerates small occlusion differences across the detection threshold', () => {
+  const official = manifest([
+    text('covered-label', 0),
+    {
+      ...shape('later-label-background', 1),
+      bounds: { x: 54.5, y: 8, width: 50, height: 14 },
+    },
+  ]);
+  const native = manifest([
+    text('covered-label', 0),
+    {
+      ...shape('later-label-background', 1),
+      bounds: { x: 55.5, y: 8, width: 50, height: 14 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.deepEqual(result.paintOrderComparison.mismatches, []);
+});
+
 test('keeps matching occlusion topology with different extents in review', () => {
   const official = manifest([
     text('covered-label', 0),

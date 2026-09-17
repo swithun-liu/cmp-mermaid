@@ -19,16 +19,17 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement |
-| Implemented, detail re-audit pending | Git Graph, Mindmap |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph |
+| Implemented, detail re-audit pending | Mindmap |
 | Translation pending | Agentflow, Architecture, Block, C4, Cynefin, Event Modeling, Ishikawa, Packet, Radar, Railroad, Sankey, Swimlanes, Treemap, TreeView, Use Case, Venn, Wardley Map, ZenUML |
 
-The current 3,840-pair matrix covers all 15 implemented families. Two families
-still retain legacy capture evidence whose automated gate checked only blank
-output, content bounds, and aggregate ink. A Git Graph label paint-order defect
-was visible in the original 3,072-pair matrix and was not identified during the
-earlier review. Therefore the old detail-completion claim is withdrawn. No
-family can use a legacy geometry result alone to satisfy the new Stable gate.
+The current 3,840-pair matrix covers all 15 implemented families. Mindmap still
+retains legacy capture evidence whose automated gate checked only blank output,
+content bounds, and aggregate ink. A Git Graph label paint-order defect was
+visible in the original 3,072-pair matrix and was not identified during the
+earlier review. That defect is now corrected and the replacement Git Graph
+evidence passes; no family can use a legacy geometry result alone to satisfy
+the new Stable gate.
 
 The replacement audit now emits a JSON manifest beside every Native and
 Official PNG. Native manifests preserve actual SceneGraph paint order;
@@ -38,11 +39,13 @@ counts, colors, stroke patterns, marker counts and endpoint anchors, clipping,
 text overlap, later opaque element occlusion, foreground masks, tolerant
 edges, and foreground color difference. Every non-passing case is written to
 an explicit review queue with a diff heatmap. Text-overlap threshold flips are
-ignored only when the two measured overlap ratios differ by at most `0.08`,
-matching the existing paint-order ratio tolerance; materially different
-overlap remains a review. A marker cannot pass from metadata alone: missing
-anchors fail, and materially deeper coverage by later opaque paint is compared
-against the Official endpoint.
+ignored only when the two measured overlap ratios differ by at most `0.08`;
+materially different overlap remains a review. Paint-order occlusion compares
+coverage against a `0.10` tolerance both when both renderers cross the
+detection threshold and when only one does, so a small threshold flip cannot
+be mistaken for missing paint. A marker cannot pass from metadata alone:
+missing anchors fail, and materially deeper coverage by later opaque paint is
+compared against the Official endpoint.
 
 `parity_gitgraph_005` is the regression proof for this gate. Replaying the old
 global label layers reports a `paint-order-occlusion` mismatch for
@@ -51,15 +54,17 @@ Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, Pie, User Journey, and Requirement are the first
-thirteen families to complete the replacement gate. Together they have 3,328
-accepted same-source pairs: `3,245 pass / 83 manually reviewed / 0 fail`
-across 208 reviewed contact sheets. The 60 ER reviews are text-position
-threshold findings, while the 19 Journey reviews are benign line-segmentation
-differences for one complete long actor label. The four Requirement reviews
-are benign greedy cross-matches between duplicate `<<contains>>` or
-`<<satisfies>>` labels. All preserve text, avoid clipping and overlap, pass
-raster checks, and were accepted by manual side-by-side review.
+Entity Relationship, Gantt, Pie, User Journey, Requirement, and Git Graph are
+the first fourteen families to complete the replacement gate. Together they
+have 3,584 accepted same-source pairs:
+`3,481 pass / 103 manually reviewed / 0 fail` across 224 reviewed contact
+sheets. The 60 ER reviews are text-position threshold findings, while the 19
+Journey reviews are benign line-segmentation differences for one complete long
+actor label. The four Requirement reviews are benign greedy cross-matches
+between duplicate `<<contains>>` or `<<satisfies>>` labels. The 20 Git Graph
+reviews are text-overlap threshold findings caused by browser/Compose
+text-bound differences. All preserve expected text, avoid clipping, pass
+paint-order and raster checks, and were accepted by manual side-by-side review.
 Flowchart
 geometry ratios are `1.026-1.119` for width, `0.945-1.047` for height, and
 `0.948-1.241` for foreground ink. XY Chart ratios are `1.008-1.029`,
@@ -77,6 +82,8 @@ respectively. Gantt ratios are `1.035-1.037`, `0.883-0.961`, and
 and `0.993-1.042`, respectively. User Journey ratios are `1.020-1.032`,
 `1.036-1.057`, and `0.983-1.073`, respectively. Requirement ratios are
 `1.013-1.072`, `1.004-1.053`, and `0.974-1.148`, respectively.
+Git Graph ratios are `1.036-1.154`, `1.032-1.137`, and `1.027-1.415`,
+respectively.
 
 ## Expected Behavior
 

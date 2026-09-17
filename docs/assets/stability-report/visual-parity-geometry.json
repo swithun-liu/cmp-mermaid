@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T09:55:04.367Z",
+  "generatedAt": "2026-09-17T10:43:56.679Z",
   "inputDirectory": "captures/local/visual-parity-15-merged",
   "corpusSource": "visual-parity",
   "theme": null,
@@ -181773,8 +181773,8 @@
             255
           ]
         ],
-        "inkPixels": 51076,
-        "inkRatio": 0.047292592592592594,
+        "inkPixels": 50424,
+        "inkRatio": 0.04668888888888889,
         "contentBounds": {
           "x": 19,
           "y": 258,
@@ -181810,7 +181810,7 @@
       },
       "widthRatio": 1.0835680751173709,
       "heightRatio": 1.0619718309859154,
-      "inkRatio": 1.2963780806619456
+      "inkRatio": 1.279829437295363
     },
     {
       "id": "parity_gitgraph_006",
@@ -181891,8 +181891,8 @@
             255
           ]
         ],
-        "inkPixels": 72612,
-        "inkRatio": 0.06723333333333334,
+        "inkPixels": 72304,
+        "inkRatio": 0.06694814814814815,
         "contentBounds": {
           "x": 35,
           "y": 194,
@@ -181928,7 +181928,7 @@
       },
       "widthRatio": 1.086491739552964,
       "heightRatio": 1.1299559471365639,
-      "inkRatio": 1.3240217351664783
+      "inkRatio": 1.31840560154626
     },
     {
       "id": "parity_gitgraph_008",
@@ -182127,8 +182127,8 @@
             255
           ]
         ],
-        "inkPixels": 109420,
-        "inkRatio": 0.10131481481481482,
+        "inkPixels": 109868,
+        "inkRatio": 0.10172962962962963,
         "contentBounds": {
           "x": 86,
           "y": 26,
@@ -182164,7 +182164,7 @@
       },
       "widthRatio": 1.1039915966386555,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1441776811109252
+      "inkRatio": 1.1488623055044336
     },
     {
       "id": "parity_gitgraph_012",
@@ -182328,8 +182328,8 @@
             255
           ]
         ],
-        "inkPixels": 63127,
-        "inkRatio": 0.05845092592592593,
+        "inkPixels": 63041,
+        "inkRatio": 0.058371296296296296,
         "contentBounds": {
           "x": 19,
           "y": 169,
@@ -182365,7 +182365,7 @@
       },
       "widthRatio": 1.0513513513513513,
       "heightRatio": 1.0430711610486891,
-      "inkRatio": 1.0886217838173415
+      "inkRatio": 1.087138718355522
     },
     {
       "id": "parity_gitgraph_015",
@@ -182576,8 +182576,8 @@
             255
           ]
         ],
-        "inkPixels": 52639,
-        "inkRatio": 0.04873981481481481,
+        "inkPixels": 51842,
+        "inkRatio": 0.04800185185185185,
         "contentBounds": {
           "x": 19,
           "y": 258,
@@ -182613,7 +182613,7 @@
       },
       "widthRatio": 1.0835680751173709,
       "heightRatio": 1.0619718309859154,
-      "inkRatio": 1.3167979987492182
+      "inkRatio": 1.2968605378361475
     },
     {
       "id": "parity_gitgraph_019",
@@ -182635,8 +182635,8 @@
             255
           ]
         ],
-        "inkPixels": 69378,
-        "inkRatio": 0.06423888888888889,
+        "inkPixels": 69071,
+        "inkRatio": 0.06395462962962963,
         "contentBounds": {
           "x": 35,
           "y": 195,
@@ -182672,7 +182672,7 @@
       },
       "widthRatio": 1.1088435374149659,
       "heightRatio": 1.1255506607929515,
-      "inkRatio": 1.3242856324801007
+      "inkRatio": 1.3184256236996315
     },
     {
       "id": "parity_gitgraph_020",
@@ -182694,8 +182694,8 @@
             255
           ]
         ],
-        "inkPixels": 76632,
-        "inkRatio": 0.07095555555555555,
+        "inkPixels": 75762,
+        "inkRatio": 0.07015,
         "contentBounds": {
           "x": 35,
           "y": 195,
@@ -182731,7 +182731,7 @@
       },
       "widthRatio": 1.1088435374149659,
       "heightRatio": 1.1255506607929515,
-      "inkRatio": 1.3499154453213076
+      "inkRatio": 1.3345899098083427
     },
     {
       "id": "parity_gitgraph_021",
@@ -182930,8 +182930,8 @@
             255
           ]
         ],
-        "inkPixels": 111592,
-        "inkRatio": 0.10332592592592593,
+        "inkPixels": 112040,
+        "inkRatio": 0.10374074074074074,
         "contentBounds": {
           "x": 86,
           "y": 26,
@@ -182967,7 +182967,7 @@
       },
       "widthRatio": 1.1039915966386555,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1480540323659223
+      "inkRatio": 1.1526630384461065
     },
     {
       "id": "parity_gitgraph_025",
@@ -183131,8 +183131,8 @@
             255
           ]
         ],
-        "inkPixels": 60305,
-        "inkRatio": 0.055837962962962964,
+        "inkPixels": 60180,
+        "inkRatio": 0.05572222222222222,
         "contentBounds": {
           "x": 18,
           "y": 178,
@@ -183168,7 +183168,7 @@
       },
       "widthRatio": 1.0503597122302157,
       "heightRatio": 1.0425531914893618,
-      "inkRatio": 1.0899347539265123
+      "inkRatio": 1.0876755408556091
     },
     {
       "id": "parity_gitgraph_028",
@@ -183379,8 +183379,8 @@
             255
           ]
         ],
-        "inkPixels": 49850,
-        "inkRatio": 0.046157407407407404,
+        "inkPixels": 48934,
+        "inkRatio": 0.04530925925925926,
         "contentBounds": {
           "x": 19,
           "y": 267,
@@ -183416,7 +183416,7 @@
       },
       "widthRatio": 1.081860465116279,
       "heightRatio": 1.0526315789473684,
-      "inkRatio": 1.3061363517266675
+      "inkRatio": 1.2821359325053712
     },
     {
       "id": "parity_gitgraph_032",
@@ -183438,8 +183438,8 @@
             255
           ]
         ],
-        "inkPixels": 62244,
-        "inkRatio": 0.057633333333333335,
+        "inkPixels": 61641,
+        "inkRatio": 0.057075,
         "contentBounds": {
           "x": 33,
           "y": 215,
@@ -183475,7 +183475,7 @@
       },
       "widthRatio": 1.0989433237271855,
       "heightRatio": 1.1161137440758293,
-      "inkRatio": 1.3095177985357234
+      "inkRatio": 1.2968316081797526
     },
     {
       "id": "parity_gitgraph_033",
@@ -183497,8 +183497,8 @@
             255
           ]
         ],
-        "inkPixels": 68675,
-        "inkRatio": 0.06358796296296296,
+        "inkPixels": 67313,
+        "inkRatio": 0.06232685185185185,
         "contentBounds": {
           "x": 33,
           "y": 215,
@@ -183534,7 +183534,7 @@
       },
       "widthRatio": 1.0989433237271855,
       "heightRatio": 1.1161137440758293,
-      "inkRatio": 1.3447229293127079
+      "inkRatio": 1.3180536518504014
     },
     {
       "id": "parity_gitgraph_034",
@@ -183733,8 +183733,8 @@
             255
           ]
         ],
-        "inkPixels": 112859,
-        "inkRatio": 0.10449907407407408,
+        "inkPixels": 113307,
+        "inkRatio": 0.10491388888888889,
         "contentBounds": {
           "x": 86,
           "y": 26,
@@ -183770,7 +183770,7 @@
       },
       "widthRatio": 1.1039915966386555,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1486453477721008
+      "inkRatio": 1.15320495857675
     },
     {
       "id": "parity_gitgraph_038",
@@ -183934,8 +183934,8 @@
             255
           ]
         ],
-        "inkPixels": 59290,
-        "inkRatio": 0.05489814814814815,
+        "inkPixels": 59129,
+        "inkRatio": 0.054749074074074075,
         "contentBounds": {
           "x": 18,
           "y": 180,
@@ -183971,7 +183971,7 @@
       },
       "widthRatio": 1.0494159928122193,
       "heightRatio": 1.0408560311284047,
-      "inkRatio": 1.0923193131782087
+      "inkRatio": 1.0893531568378194
     },
     {
       "id": "parity_gitgraph_041",
@@ -184182,8 +184182,8 @@
             255
           ]
         ],
-        "inkPixels": 49711,
-        "inkRatio": 0.046028703703703704,
+        "inkPixels": 48853,
+        "inkRatio": 0.04523425925925926,
         "contentBounds": {
           "x": 18,
           "y": 269,
@@ -184219,7 +184219,7 @@
       },
       "widthRatio": 1.0817084493964717,
       "heightRatio": 1.0441176470588236,
-      "inkRatio": 1.3143061100388653
+      "inkRatio": 1.2916215001454143
     },
     {
       "id": "parity_gitgraph_045",
@@ -184241,8 +184241,8 @@
             255
           ]
         ],
-        "inkPixels": 61949,
-        "inkRatio": 0.05736018518518519,
+        "inkPixels": 61230,
+        "inkRatio": 0.05669444444444444,
         "contentBounds": {
           "x": 32,
           "y": 220,
@@ -184278,7 +184278,7 @@
       },
       "widthRatio": 1.0998080614203456,
       "heightRatio": 1.110843373493976,
-      "inkRatio": 1.3368652754699066
+      "inkRatio": 1.3213491875094412
     },
     {
       "id": "parity_gitgraph_046",
@@ -184300,8 +184300,8 @@
             255
           ]
         ],
-        "inkPixels": 67535,
-        "inkRatio": 0.06253240740740741,
+        "inkPixels": 66082,
+        "inkRatio": 0.06118703703703704,
         "contentBounds": {
           "x": 32,
           "y": 220,
@@ -184337,7 +184337,7 @@
       },
       "widthRatio": 1.0998080614203456,
       "heightRatio": 1.110843373493976,
-      "inkRatio": 1.35443824956881
+      "inkRatio": 1.3252978219886888
     },
     {
       "id": "parity_gitgraph_047",
@@ -184536,8 +184536,8 @@
             255
           ]
         ],
-        "inkPixels": 113387,
-        "inkRatio": 0.10498796296296296,
+        "inkPixels": 113835,
+        "inkRatio": 0.10540277777777778,
         "contentBounds": {
           "x": 86,
           "y": 26,
@@ -184573,7 +184573,7 @@
       },
       "widthRatio": 1.1039915966386555,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1530334153633386
+      "inkRatio": 1.1575891313632574
     },
     {
       "id": "parity_gitgraph_051",
@@ -184737,8 +184737,8 @@
             255
           ]
         ],
-        "inkPixels": 58230,
-        "inkRatio": 0.05391666666666667,
+        "inkPixels": 58095,
+        "inkRatio": 0.05379166666666667,
         "contentBounds": {
           "x": 18,
           "y": 184,
@@ -184774,7 +184774,7 @@
       },
       "widthRatio": 1.0494159928122193,
       "heightRatio": 1.039447731755424,
-      "inkRatio": 1.1308552784898624
+      "inkRatio": 1.1282335120018645
     },
     {
       "id": "parity_gitgraph_054",
@@ -184985,8 +184985,8 @@
             255
           ]
         ],
-        "inkPixels": 46830,
-        "inkRatio": 0.043361111111111114,
+        "inkPixels": 45918,
+        "inkRatio": 0.04251666666666667,
         "contentBounds": {
           "x": 18,
           "y": 273,
@@ -185022,7 +185022,7 @@
       },
       "widthRatio": 1.0797034291010195,
       "heightRatio": 1.0481927710843373,
-      "inkRatio": 1.2551931169422927
+      "inkRatio": 1.2307486129352168
     },
     {
       "id": "parity_gitgraph_058",
@@ -185044,8 +185044,8 @@
             255
           ]
         ],
-        "inkPixels": 60933,
-        "inkRatio": 0.056419444444444446,
+        "inkPixels": 60419,
+        "inkRatio": 0.05594351851851852,
         "contentBounds": {
           "x": 32,
           "y": 227,
@@ -185081,7 +185081,7 @@
       },
       "widthRatio": 1.095602294455067,
       "heightRatio": 1.1091811414392059,
-      "inkRatio": 1.3531645569620254
+      "inkRatio": 1.341749944481457
     },
     {
       "id": "parity_gitgraph_059",
@@ -185103,8 +185103,8 @@
             255
           ]
         ],
-        "inkPixels": 65647,
-        "inkRatio": 0.06078425925925926,
+        "inkPixels": 64004,
+        "inkRatio": 0.05926296296296296,
         "contentBounds": {
           "x": 32,
           "y": 227,
@@ -185140,7 +185140,7 @@
       },
       "widthRatio": 1.095602294455067,
       "heightRatio": 1.1091811414392059,
-      "inkRatio": 1.3789069064022854
+      "inkRatio": 1.344395899848765
     },
     {
       "id": "parity_gitgraph_060",
@@ -185339,8 +185339,8 @@
             255
           ]
         ],
-        "inkPixels": 114252,
-        "inkRatio": 0.10578888888888889,
+        "inkPixels": 114700,
+        "inkRatio": 0.1062037037037037,
         "contentBounds": {
           "x": 86,
           "y": 26,
@@ -185376,7 +185376,7 @@
       },
       "widthRatio": 1.1039915966386555,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.15597555546562
+      "inkRatio": 1.1605083168076409
     },
     {
       "id": "parity_gitgraph_064",
@@ -185540,8 +185540,8 @@
             255
           ]
         ],
-        "inkPixels": 57423,
-        "inkRatio": 0.05316944444444444,
+        "inkPixels": 57278,
+        "inkRatio": 0.053035185185185185,
         "contentBounds": {
           "x": 18,
           "y": 188,
@@ -185577,7 +185577,7 @@
       },
       "widthRatio": 1.0484739676840216,
       "heightRatio": 1.035928143712575,
-      "inkRatio": 1.1125254286544608
+      "inkRatio": 1.109716167780684
     },
     {
       "id": "parity_gitgraph_067",
@@ -185788,8 +185788,8 @@
             255
           ]
         ],
-        "inkPixels": 46526,
-        "inkRatio": 0.04307962962962963,
+        "inkPixels": 45595,
+        "inkRatio": 0.04221759259259259,
         "contentBounds": {
           "x": 18,
           "y": 277,
@@ -185825,7 +185825,7 @@
       },
       "widthRatio": 1.0787037037037037,
       "heightRatio": 1.0460122699386503,
-      "inkRatio": 1.2859946377732938
+      "inkRatio": 1.2602614776527818
     },
     {
       "id": "parity_gitgraph_071",
@@ -185847,8 +185847,8 @@
             255
           ]
         ],
-        "inkPixels": 59111,
-        "inkRatio": 0.05473240740740741,
+        "inkPixels": 58478,
+        "inkRatio": 0.0541462962962963,
         "contentBounds": {
           "x": 31,
           "y": 234,
@@ -185884,7 +185884,7 @@
       },
       "widthRatio": 1.0933333333333333,
       "heightRatio": 1.1045918367346939,
-      "inkRatio": 1.3456950325547512
+      "inkRatio": 1.331284432909894
     },
     {
       "id": "parity_gitgraph_072",
@@ -185906,8 +185906,8 @@
             255
           ]
         ],
-        "inkPixels": 62546,
-        "inkRatio": 0.057912962962962965,
+        "inkPixels": 60924,
+        "inkRatio": 0.05641111111111111,
         "contentBounds": {
           "x": 31,
           "y": 234,
@@ -185943,7 +185943,7 @@
       },
       "widthRatio": 1.0933333333333333,
       "heightRatio": 1.1045918367346939,
-      "inkRatio": 1.3590456738081786
+      "inkRatio": 1.323801660075616
     },
     {
       "id": "parity_gitgraph_073",
@@ -186142,8 +186142,8 @@
             255
           ]
         ],
-        "inkPixels": 115031,
-        "inkRatio": 0.10651018518518518,
+        "inkPixels": 115485,
+        "inkRatio": 0.10693055555555556,
         "contentBounds": {
           "x": 80,
           "y": 26,
@@ -186179,7 +186179,7 @@
       },
       "widthRatio": 1.1119246861924685,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1548369608866758
+      "inkRatio": 1.1593948277246806
     },
     {
       "id": "parity_gitgraph_077",
@@ -186343,8 +186343,8 @@
             255
           ]
         ],
-        "inkPixels": 55970,
-        "inkRatio": 0.05182407407407407,
+        "inkPixels": 55813,
+        "inkRatio": 0.051678703703703706,
         "contentBounds": {
           "x": 18,
           "y": 190,
@@ -186380,7 +186380,7 @@
       },
       "widthRatio": 1.0475336322869955,
       "heightRatio": 1.0362173038229376,
-      "inkRatio": 1.0972143263217735
+      "inkRatio": 1.0941365587814393
     },
     {
       "id": "parity_gitgraph_080",
@@ -186591,8 +186591,8 @@
             255
           ]
         ],
-        "inkPixels": 44800,
-        "inkRatio": 0.04148148148148148,
+        "inkPixels": 43867,
+        "inkRatio": 0.040617592592592594,
         "contentBounds": {
           "x": 18,
           "y": 279,
@@ -186628,7 +186628,7 @@
       },
       "widthRatio": 1.0777058279370952,
       "heightRatio": 1.0434782608695652,
-      "inkRatio": 1.2551129041295455
+      "inkRatio": 1.2289740572645262
     },
     {
       "id": "parity_gitgraph_084",
@@ -186650,8 +186650,8 @@
             255
           ]
         ],
-        "inkPixels": 59799,
-        "inkRatio": 0.05536944444444444,
+        "inkPixels": 59202,
+        "inkRatio": 0.054816666666666666,
         "contentBounds": {
           "x": 30,
           "y": 239,
@@ -186687,7 +186687,7 @@
       },
       "widthRatio": 1.0922053231939164,
       "heightRatio": 1.0987012987012987,
-      "inkRatio": 1.364059399165127
+      "inkRatio": 1.350441387805379
     },
     {
       "id": "parity_gitgraph_085",
@@ -186709,8 +186709,8 @@
             255
           ]
         ],
-        "inkPixels": 62671,
-        "inkRatio": 0.0580287037037037,
+        "inkPixels": 61360,
+        "inkRatio": 0.05681481481481482,
         "contentBounds": {
           "x": 30,
           "y": 239,
@@ -186746,7 +186746,7 @@
       },
       "widthRatio": 1.0922053231939164,
       "heightRatio": 1.0987012987012987,
-      "inkRatio": 1.3678248723209219
+      "inkRatio": 1.3392116635383475
     },
     {
       "id": "parity_gitgraph_086",
@@ -186945,8 +186945,8 @@
             255
           ]
         ],
-        "inkPixels": 115689,
-        "inkRatio": 0.10711944444444445,
+        "inkPixels": 116122,
+        "inkRatio": 0.10752037037037038,
         "contentBounds": {
           "x": 66,
           "y": 26,
@@ -186982,7 +186982,7 @@
       },
       "widthRatio": 1.114519427402863,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1580364560915306
+      "inkRatio": 1.1623707470395692
     },
     {
       "id": "parity_gitgraph_090",
@@ -187146,8 +187146,8 @@
             255
           ]
         ],
-        "inkPixels": 56308,
-        "inkRatio": 0.05213703703703704,
+        "inkPixels": 56167,
+        "inkRatio": 0.05200648148148148,
         "contentBounds": {
           "x": 18,
           "y": 191,
@@ -187183,7 +187183,7 @@
       },
       "widthRatio": 1.0475336322869955,
       "heightRatio": 1.0363636363636364,
-      "inkRatio": 1.1327526202498541
+      "inkRatio": 1.1299161117705043
     },
     {
       "id": "parity_gitgraph_093",
@@ -187394,8 +187394,8 @@
             255
           ]
         ],
-        "inkPixels": 45480,
-        "inkRatio": 0.04211111111111111,
+        "inkPixels": 44389,
+        "inkRatio": 0.04110092592592592,
         "contentBounds": {
           "x": 18,
           "y": 280,
@@ -187431,7 +187431,7 @@
       },
       "widthRatio": 1.0777058279370952,
       "heightRatio": 1.043613707165109,
-      "inkRatio": 1.3102852203975799
+      "inkRatio": 1.2788533563814461
     },
     {
       "id": "parity_gitgraph_097",
@@ -187453,8 +187453,8 @@
             255
           ]
         ],
-        "inkPixels": 59342,
-        "inkRatio": 0.0549462962962963,
+        "inkPixels": 58840,
+        "inkRatio": 0.054481481481481485,
         "contentBounds": {
           "x": 30,
           "y": 239,
@@ -187490,7 +187490,7 @@
       },
       "widthRatio": 1.0922053231939164,
       "heightRatio": 1.1018276762402088,
-      "inkRatio": 1.3843605654831335
+      "inkRatio": 1.3726496524051697
     },
     {
       "id": "parity_gitgraph_098",
@@ -187512,8 +187512,8 @@
             255
           ]
         ],
-        "inkPixels": 62435,
-        "inkRatio": 0.05781018518518519,
+        "inkPixels": 61110,
+        "inkRatio": 0.05658333333333333,
         "contentBounds": {
           "x": 30,
           "y": 239,
@@ -187549,7 +187549,7 @@
       },
       "widthRatio": 1.0922053231939164,
       "heightRatio": 1.1018276762402088,
-      "inkRatio": 1.3909062555694174
+      "inkRatio": 1.36138834432365
     },
     {
       "id": "parity_gitgraph_099",
@@ -187748,8 +187748,8 @@
             255
           ]
         ],
-        "inkPixels": 116253,
-        "inkRatio": 0.10764166666666666,
+        "inkPixels": 116685,
+        "inkRatio": 0.10804166666666666,
         "contentBounds": {
           "x": 64,
           "y": 26,
@@ -187785,7 +187785,7 @@
       },
       "widthRatio": 1.1128048780487805,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1653151030964004
+      "inkRatio": 1.1696454526317899
     },
     {
       "id": "parity_gitgraph_103",
@@ -187949,8 +187949,8 @@
             255
           ]
         ],
-        "inkPixels": 56273,
-        "inkRatio": 0.05210462962962963,
+        "inkPixels": 56124,
+        "inkRatio": 0.05196666666666667,
         "contentBounds": {
           "x": 18,
           "y": 193,
@@ -187986,7 +187986,7 @@
       },
       "widthRatio": 1.0475336322869955,
       "heightRatio": 1.0324543610547667,
-      "inkRatio": 1.0859320725588577
+      "inkRatio": 1.0830567348514089
     },
     {
       "id": "parity_gitgraph_106",
@@ -188197,8 +188197,8 @@
             255
           ]
         ],
-        "inkPixels": 45002,
-        "inkRatio": 0.04166851851851852,
+        "inkPixels": 43846,
+        "inkRatio": 0.04059814814814815,
         "contentBounds": {
           "x": 18,
           "y": 282,
@@ -188234,7 +188234,7 @@
       },
       "widthRatio": 1.076709796672828,
       "heightRatio": 1.0408805031446542,
-      "inkRatio": 1.293867341364538
+      "inkRatio": 1.260630804174693
     },
     {
       "id": "parity_gitgraph_110",
@@ -188256,8 +188256,8 @@
             255
           ]
         ],
-        "inkPixels": 58042,
-        "inkRatio": 0.05374259259259259,
+        "inkPixels": 57459,
+        "inkRatio": 0.05320277777777778,
         "contentBounds": {
           "x": 30,
           "y": 243,
@@ -188293,7 +188293,7 @@
       },
       "widthRatio": 1.0901328273244781,
       "heightRatio": 1.0981432360742707,
-      "inkRatio": 1.3595839872572673
+      "inkRatio": 1.345927713101122
     },
     {
       "id": "parity_gitgraph_111",
@@ -188315,8 +188315,8 @@
             255
           ]
         ],
-        "inkPixels": 60998,
-        "inkRatio": 0.05647962962962963,
+        "inkPixels": 59483,
+        "inkRatio": 0.05507685185185185,
         "contentBounds": {
           "x": 30,
           "y": 244,
@@ -188352,7 +188352,7 @@
       },
       "widthRatio": 1.0901328273244781,
       "heightRatio": 1.0954907161803713,
-      "inkRatio": 1.368435221536736
+      "inkRatio": 1.3344475602916432
     },
     {
       "id": "parity_gitgraph_112",
@@ -188551,8 +188551,8 @@
             255
           ]
         ],
-        "inkPixels": 116567,
-        "inkRatio": 0.10793240740740741,
+        "inkPixels": 116995,
+        "inkRatio": 0.1083287037037037,
         "contentBounds": {
           "x": 53,
           "y": 26,
@@ -188588,7 +188588,7 @@
       },
       "widthRatio": 1.116,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1650175901495163
+      "inkRatio": 1.169295194690973
     },
     {
       "id": "parity_gitgraph_116",
@@ -188752,8 +188752,8 @@
             255
           ]
         ],
-        "inkPixels": 55617,
-        "inkRatio": 0.05149722222222222,
+        "inkPixels": 55479,
+        "inkRatio": 0.05136944444444445,
         "contentBounds": {
           "x": 18,
           "y": 195,
@@ -188789,7 +188789,7 @@
       },
       "widthRatio": 1.0475336322869955,
       "heightRatio": 1.032719836400818,
-      "inkRatio": 1.1055738878066235
+      "inkRatio": 1.102830676261281
     },
     {
       "id": "parity_gitgraph_119",
@@ -188811,8 +188811,8 @@
             255
           ]
         ],
-        "inkPixels": 87234,
-        "inkRatio": 0.08077222222222222,
+        "inkPixels": 87392,
+        "inkRatio": 0.08091851851851851,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -188848,7 +188848,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1587784434319415
+      "inkRatio": 1.160877246582803
     },
     {
       "id": "parity_gitgraph_120",
@@ -189000,8 +189000,8 @@
             255
           ]
         ],
-        "inkPixels": 43585,
-        "inkRatio": 0.04035648148148148,
+        "inkPixels": 42618,
+        "inkRatio": 0.039461111111111113,
         "contentBounds": {
           "x": 18,
           "y": 284,
@@ -189037,7 +189037,7 @@
       },
       "widthRatio": 1.0757156048014773,
       "heightRatio": 1.0414012738853504,
-      "inkRatio": 1.3029895366218234
+      "inkRatio": 1.2740807174887891
     },
     {
       "id": "parity_gitgraph_123",
@@ -189059,8 +189059,8 @@
             255
           ]
         ],
-        "inkPixels": 57306,
-        "inkRatio": 0.053061111111111114,
+        "inkPixels": 56821,
+        "inkRatio": 0.05261203703703704,
         "contentBounds": {
           "x": 29,
           "y": 247,
@@ -189096,7 +189096,7 @@
       },
       "widthRatio": 1.0890151515151516,
       "heightRatio": 1.0970350404312668,
-      "inkRatio": 1.3439493433395875
+      "inkRatio": 1.3325750469043154
     },
     {
       "id": "parity_gitgraph_124",
@@ -189118,8 +189118,8 @@
             255
           ]
         ],
-        "inkPixels": 60177,
-        "inkRatio": 0.055719444444444446,
+        "inkPixels": 58855,
+        "inkRatio": 0.05449537037037037,
         "contentBounds": {
           "x": 29,
           "y": 247,
@@ -189155,7 +189155,7 @@
       },
       "widthRatio": 1.0890151515151516,
       "heightRatio": 1.0970350404312668,
-      "inkRatio": 1.3530522765598652
+      "inkRatio": 1.323327712197864
     },
     {
       "id": "parity_gitgraph_125",
@@ -189354,8 +189354,8 @@
             255
           ]
         ],
-        "inkPixels": 117536,
-        "inkRatio": 0.10882962962962962,
+        "inkPixels": 117968,
+        "inkRatio": 0.10922962962962963,
         "contentBounds": {
           "x": 41,
           "y": 26,
@@ -189391,7 +189391,7 @@
       },
       "widthRatio": 1.117531831537708,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1660664503903886
+      "inkRatio": 1.1703522922309195
     },
     {
       "id": "parity_gitgraph_129",
@@ -189555,8 +189555,8 @@
             255
           ]
         ],
-        "inkPixels": 54781,
-        "inkRatio": 0.05072314814814815,
+        "inkPixels": 54652,
+        "inkRatio": 0.050603703703703706,
         "contentBounds": {
           "x": 18,
           "y": 198,
@@ -189592,7 +189592,7 @@
       },
       "widthRatio": 1.0465949820788532,
       "heightRatio": 1.0352697095435686,
-      "inkRatio": 1.128737147919972
+      "inkRatio": 1.1260791626316116
     },
     {
       "id": "parity_gitgraph_132",
@@ -189614,8 +189614,8 @@
             255
           ]
         ],
-        "inkPixels": 88283,
-        "inkRatio": 0.08174351851851852,
+        "inkPixels": 88477,
+        "inkRatio": 0.08192314814814815,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -189651,7 +189651,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1692802839659877
+      "inkRatio": 1.1718497523244418
     },
     {
       "id": "parity_gitgraph_133",
@@ -189803,8 +189803,8 @@
             255
           ]
         ],
-        "inkPixels": 43456,
-        "inkRatio": 0.040237037037037036,
+        "inkPixels": 42282,
+        "inkRatio": 0.03915,
         "contentBounds": {
           "x": 18,
           "y": 287,
@@ -189840,7 +189840,7 @@
       },
       "widthRatio": 1.0737327188940091,
       "heightRatio": 1.0422077922077921,
-      "inkRatio": 1.291334838939736
+      "inkRatio": 1.2564483537382622
     },
     {
       "id": "parity_gitgraph_136",
@@ -189862,8 +189862,8 @@
             255
           ]
         ],
-        "inkPixels": 57115,
-        "inkRatio": 0.052884259259259256,
+        "inkPixels": 56661,
+        "inkRatio": 0.052463888888888886,
         "contentBounds": {
           "x": 29,
           "y": 252,
@@ -189899,7 +189899,7 @@
       },
       "widthRatio": 1.0868744098205854,
       "heightRatio": 1.0966850828729282,
-      "inkRatio": 1.3915554039567293
+      "inkRatio": 1.3804941038885097
     },
     {
       "id": "parity_gitgraph_137",
@@ -189921,8 +189921,8 @@
             255
           ]
         ],
-        "inkPixels": 59657,
-        "inkRatio": 0.05523796296296296,
+        "inkPixels": 58352,
+        "inkRatio": 0.05402962962962963,
         "contentBounds": {
           "x": 29,
           "y": 252,
@@ -189958,7 +189958,7 @@
       },
       "widthRatio": 1.0868744098205854,
       "heightRatio": 1.0966850828729282,
-      "inkRatio": 1.3988557225596174
+      "inkRatio": 1.3682556803526627
     },
     {
       "id": "parity_gitgraph_138",
@@ -190157,8 +190157,8 @@
             255
           ]
         ],
-        "inkPixels": 112893,
-        "inkRatio": 0.10453055555555556,
+        "inkPixels": 113305,
+        "inkRatio": 0.10491203703703704,
         "contentBounds": {
           "x": 40,
           "y": 37,
@@ -190194,7 +190194,7 @@
       },
       "widthRatio": 1.0823863636363635,
       "heightRatio": 1.0517676767676767,
-      "inkRatio": 1.1153671356307304
+      "inkRatio": 1.1194376383180524
     },
     {
       "id": "parity_gitgraph_142",
@@ -190358,8 +190358,8 @@
             255
           ]
         ],
-        "inkPixels": 53924,
-        "inkRatio": 0.04992962962962963,
+        "inkPixels": 53798,
+        "inkRatio": 0.04981296296296296,
         "contentBounds": {
           "x": 17,
           "y": 201,
@@ -190395,7 +190395,7 @@
       },
       "widthRatio": 1.0465532676812892,
       "heightRatio": 1.0335429769392033,
-      "inkRatio": 1.1166238714486871
+      "inkRatio": 1.1140147436428394
     },
     {
       "id": "parity_gitgraph_145",
@@ -190417,8 +190417,8 @@
             255
           ]
         ],
-        "inkPixels": 87987,
-        "inkRatio": 0.08146944444444444,
+        "inkPixels": 88156,
+        "inkRatio": 0.08162592592592592,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -190454,7 +190454,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1605793201693642
+      "inkRatio": 1.1628084893092214
     },
     {
       "id": "parity_gitgraph_146",
@@ -190606,8 +190606,8 @@
             255
           ]
         ],
-        "inkPixels": 43081,
-        "inkRatio": 0.039889814814814815,
+        "inkPixels": 41848,
+        "inkRatio": 0.03874814814814815,
         "contentBounds": {
           "x": 17,
           "y": 289,
@@ -190643,7 +190643,7 @@
       },
       "widthRatio": 1.074585635359116,
       "heightRatio": 1.046204620462046,
-      "inkRatio": 1.2955522809972033
+      "inkRatio": 1.2584729197365652
     },
     {
       "id": "parity_gitgraph_149",
@@ -190665,8 +190665,8 @@
             255
           ]
         ],
-        "inkPixels": 55957,
-        "inkRatio": 0.05181203703703704,
+        "inkPixels": 55482,
+        "inkRatio": 0.05137222222222222,
         "contentBounds": {
           "x": 28,
           "y": 257,
@@ -190702,7 +190702,7 @@
       },
       "widthRatio": 1.0857681432610744,
       "heightRatio": 1.0932203389830508,
-      "inkRatio": 1.4267465578786334
+      "inkRatio": 1.4146353901070883
     },
     {
       "id": "parity_gitgraph_150",
@@ -190724,8 +190724,8 @@
             255
           ]
         ],
-        "inkPixels": 58388,
-        "inkRatio": 0.054062962962962965,
+        "inkPixels": 57259,
+        "inkRatio": 0.053017592592592595,
         "contentBounds": {
           "x": 28,
           "y": 257,
@@ -190761,7 +190761,7 @@
       },
       "widthRatio": 1.0857681432610744,
       "heightRatio": 1.0932203389830508,
-      "inkRatio": 1.4267771180021016
+      "inkRatio": 1.3991887202795497
     },
     {
       "id": "parity_gitgraph_151",
@@ -190960,8 +190960,8 @@
             255
           ]
         ],
-        "inkPixels": 107521,
-        "inkRatio": 0.09955648148148148,
+        "inkPixels": 107929,
+        "inkRatio": 0.09993425925925926,
         "contentBounds": {
           "x": 39,
           "y": 48,
@@ -190997,7 +190997,7 @@
       },
       "widthRatio": 1.0741784037558686,
       "heightRatio": 1.045045045045045,
-      "inkRatio": 1.1085324865455595
+      "inkRatio": 1.1127389323050911
     },
     {
       "id": "parity_gitgraph_155",
@@ -191161,8 +191161,8 @@
             255
           ]
         ],
-        "inkPixels": 54753,
-        "inkRatio": 0.05069722222222222,
+        "inkPixels": 54649,
+        "inkRatio": 0.050600925925925924,
         "contentBounds": {
           "x": 17,
           "y": 201,
@@ -191198,7 +191198,7 @@
       },
       "widthRatio": 1.0465532676812892,
       "heightRatio": 1.0335429769392033,
-      "inkRatio": 1.0973204801891898
+      "inkRatio": 1.0952361865442812
     },
     {
       "id": "parity_gitgraph_158",
@@ -191220,8 +191220,8 @@
             255
           ]
         ],
-        "inkPixels": 88090,
-        "inkRatio": 0.08156481481481481,
+        "inkPixels": 88257,
+        "inkRatio": 0.08171944444444444,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -191257,7 +191257,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1616774363708295
+      "inkRatio": 1.1638797309771858
     },
     {
       "id": "parity_gitgraph_159",
@@ -191409,8 +191409,8 @@
             255
           ]
         ],
-        "inkPixels": 41851,
-        "inkRatio": 0.038750925925925925,
+        "inkPixels": 40817,
+        "inkRatio": 0.03779351851851852,
         "contentBounds": {
           "x": 17,
           "y": 290,
@@ -191446,7 +191446,7 @@
       },
       "widthRatio": 1.074585635359116,
       "heightRatio": 1.0430463576158941,
-      "inkRatio": 1.2930943920902207
+      "inkRatio": 1.2611463000154488
     },
     {
       "id": "parity_gitgraph_162",
@@ -191468,8 +191468,8 @@
             255
           ]
         ],
-        "inkPixels": 56472,
-        "inkRatio": 0.05228888888888889,
+        "inkPixels": 56055,
+        "inkRatio": 0.05190277777777778,
         "contentBounds": {
           "x": 28,
           "y": 258,
@@ -191505,7 +191505,7 @@
       },
       "widthRatio": 1.0847457627118644,
       "heightRatio": 1.0906515580736544,
-      "inkRatio": 1.3839480455826492
+      "inkRatio": 1.3737287097169464
     },
     {
       "id": "parity_gitgraph_163",
@@ -191527,8 +191527,8 @@
             255
           ]
         ],
-        "inkPixels": 59091,
-        "inkRatio": 0.05471388888888889,
+        "inkPixels": 57878,
+        "inkRatio": 0.05359074074074074,
         "contentBounds": {
           "x": 28,
           "y": 258,
@@ -191564,7 +191564,7 @@
       },
       "widthRatio": 1.0847457627118644,
       "heightRatio": 1.0906515580736544,
-      "inkRatio": 1.3919813431956842
+      "inkRatio": 1.3634072224447007
     },
     {
       "id": "parity_gitgraph_164",
@@ -191763,8 +191763,8 @@
             255
           ]
         ],
-        "inkPixels": 107045,
-        "inkRatio": 0.09911574074074074,
+        "inkPixels": 107443,
+        "inkRatio": 0.09948425925925926,
         "contentBounds": {
           "x": 39,
           "y": 50,
@@ -191800,7 +191800,7 @@
       },
       "widthRatio": 1.0741784037558686,
       "heightRatio": 1.0425806451612902,
-      "inkRatio": 1.1101258996536203
+      "inkRatio": 1.1142534171281604
     },
     {
       "id": "parity_gitgraph_168",
@@ -191964,8 +191964,8 @@
             255
           ]
         ],
-        "inkPixels": 53462,
-        "inkRatio": 0.04950185185185185,
+        "inkPixels": 53328,
+        "inkRatio": 0.04937777777777778,
         "contentBounds": {
           "x": 18,
           "y": 200,
@@ -192001,7 +192001,7 @@
       },
       "widthRatio": 1.0456580125335722,
       "heightRatio": 1.033402922755741,
-      "inkRatio": 1.1068507898387197
+      "inkRatio": 1.1040765201548621
     },
     {
       "id": "parity_gitgraph_171",
@@ -192023,8 +192023,8 @@
             255
           ]
         ],
-        "inkPixels": 88164,
-        "inkRatio": 0.08163333333333334,
+        "inkPixels": 88332,
+        "inkRatio": 0.08178888888888888,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -192060,7 +192060,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1664836400682712
+      "inkRatio": 1.168706420925894
     },
     {
       "id": "parity_gitgraph_172",
@@ -192212,8 +192212,8 @@
             255
           ]
         ],
-        "inkPixels": 43032,
-        "inkRatio": 0.039844444444444446,
+        "inkPixels": 41864,
+        "inkRatio": 0.038762962962962964,
         "contentBounds": {
           "x": 17,
           "y": 288,
@@ -192249,7 +192249,7 @@
       },
       "widthRatio": 1.074585635359116,
       "heightRatio": 1.0459016393442624,
-      "inkRatio": 1.2884603868495121
+      "inkRatio": 1.2534882328283132
     },
     {
       "id": "parity_gitgraph_175",
@@ -192271,8 +192271,8 @@
             255
           ]
         ],
-        "inkPixels": 56366,
-        "inkRatio": 0.05219074074074074,
+        "inkPixels": 56026,
+        "inkRatio": 0.05187592592592592,
         "contentBounds": {
           "x": 29,
           "y": 255,
@@ -192308,7 +192308,7 @@
       },
       "widthRatio": 1.0848256361922715,
       "heightRatio": 1.098314606741573,
-      "inkRatio": 1.3868562852151662
+      "inkRatio": 1.3784907610166572
     },
     {
       "id": "parity_gitgraph_176",
@@ -192330,8 +192330,8 @@
             255
           ]
         ],
-        "inkPixels": 59168,
-        "inkRatio": 0.05478518518518519,
+        "inkPixels": 57933,
+        "inkRatio": 0.053641666666666664,
         "contentBounds": {
           "x": 29,
           "y": 255,
@@ -192367,7 +192367,7 @@
       },
       "widthRatio": 1.0848256361922715,
       "heightRatio": 1.098314606741573,
-      "inkRatio": 1.393532584375515
+      "inkRatio": 1.3644457005581854
     },
     {
       "id": "parity_gitgraph_177",
@@ -192566,8 +192566,8 @@
             255
           ]
         ],
-        "inkPixels": 109532,
-        "inkRatio": 0.10141851851851852,
+        "inkPixels": 109937,
+        "inkRatio": 0.10179351851851852,
         "contentBounds": {
           "x": 39,
           "y": 44,
@@ -192603,7 +192603,7 @@
       },
       "widthRatio": 1.074248120300752,
       "heightRatio": 1.0445859872611465,
-      "inkRatio": 1.1013554277440374
+      "inkRatio": 1.1054277440373246
     },
     {
       "id": "parity_gitgraph_181",
@@ -192767,8 +192767,8 @@
             255
           ]
         ],
-        "inkPixels": 53627,
-        "inkRatio": 0.04965462962962963,
+        "inkPixels": 53506,
+        "inkRatio": 0.04954259259259259,
         "contentBounds": {
           "x": 17,
           "y": 201,
@@ -192804,7 +192804,7 @@
       },
       "widthRatio": 1.0465532676812892,
       "heightRatio": 1.0334728033472804,
-      "inkRatio": 1.1028688946015426
+      "inkRatio": 1.1003804627249358
     },
     {
       "id": "parity_gitgraph_184",
@@ -192826,8 +192826,8 @@
             255
           ]
         ],
-        "inkPixels": 88110,
-        "inkRatio": 0.08158333333333333,
+        "inkPixels": 88280,
+        "inkRatio": 0.08174074074074074,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -192863,7 +192863,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.156936894351217
+      "inkRatio": 1.1591690958270962
     },
     {
       "id": "parity_gitgraph_185",
@@ -193015,8 +193015,8 @@
             255
           ]
         ],
-        "inkPixels": 42526,
-        "inkRatio": 0.039375925925925925,
+        "inkPixels": 41328,
+        "inkRatio": 0.038266666666666664,
         "contentBounds": {
           "x": 17,
           "y": 289,
@@ -193052,7 +193052,7 @@
       },
       "widthRatio": 1.074585635359116,
       "heightRatio": 1.042763157894737,
-      "inkRatio": 1.3015639824931902
+      "inkRatio": 1.2648976218896335
     },
     {
       "id": "parity_gitgraph_188",
@@ -193074,8 +193074,8 @@
             255
           ]
         ],
-        "inkPixels": 56115,
-        "inkRatio": 0.051958333333333336,
+        "inkPixels": 55631,
+        "inkRatio": 0.05151018518518519,
         "contentBounds": {
           "x": 28,
           "y": 257,
@@ -193111,7 +193111,7 @@
       },
       "widthRatio": 1.0857681432610744,
       "heightRatio": 1.0870786516853932,
-      "inkRatio": 1.3645648420591883
+      "inkRatio": 1.35279527271843
     },
     {
       "id": "parity_gitgraph_189",
@@ -193133,8 +193133,8 @@
             255
           ]
         ],
-        "inkPixels": 58716,
-        "inkRatio": 0.05436666666666667,
+        "inkPixels": 57553,
+        "inkRatio": 0.05328981481481482,
         "contentBounds": {
           "x": 28,
           "y": 257,
@@ -193170,7 +193170,7 @@
       },
       "widthRatio": 1.0857681432610744,
       "heightRatio": 1.0870786516853932,
-      "inkRatio": 1.3693097014925373
+      "inkRatio": 1.3421875
     },
     {
       "id": "parity_gitgraph_190",
@@ -193369,8 +193369,8 @@
             255
           ]
         ],
-        "inkPixels": 108295,
-        "inkRatio": 0.10027314814814815,
+        "inkPixels": 108700,
+        "inkRatio": 0.10064814814814815,
         "contentBounds": {
           "x": 39,
           "y": 47,
@@ -193406,7 +193406,7 @@
       },
       "widthRatio": 1.0732394366197182,
       "heightRatio": 1.0422535211267605,
-      "inkRatio": 1.1114132944714128
+      "inkRatio": 1.1155697410687713
     },
     {
       "id": "parity_gitgraph_194",
@@ -193570,8 +193570,8 @@
             255
           ]
         ],
-        "inkPixels": 52494,
-        "inkRatio": 0.048605555555555555,
+        "inkPixels": 52371,
+        "inkRatio": 0.04849166666666667,
         "contentBounds": {
           "x": 17,
           "y": 203,
@@ -193607,7 +193607,7 @@
       },
       "widthRatio": 1.0465532676812892,
       "heightRatio": 1.0338266384778012,
-      "inkRatio": 1.1196092650258072
+      "inkRatio": 1.1169858806466748
     },
     {
       "id": "parity_gitgraph_197",
@@ -193629,8 +193629,8 @@
             255
           ]
         ],
-        "inkPixels": 88537,
-        "inkRatio": 0.0819787037037037,
+        "inkPixels": 88726,
+        "inkRatio": 0.0821537037037037,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -193666,7 +193666,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1660191489641911
+      "inkRatio": 1.1685082509120122
     },
     {
       "id": "parity_gitgraph_198",
@@ -193818,8 +193818,8 @@
             255
           ]
         ],
-        "inkPixels": 41884,
-        "inkRatio": 0.03878148148148148,
+        "inkPixels": 40736,
+        "inkRatio": 0.03771851851851852,
         "contentBounds": {
           "x": 17,
           "y": 292,
@@ -193855,7 +193855,7 @@
       },
       "widthRatio": 1.072610294117647,
       "heightRatio": 1.0366666666666666,
-      "inkRatio": 1.2933946823950837
+      "inkRatio": 1.257943982954019
     },
     {
       "id": "parity_gitgraph_201",
@@ -193877,8 +193877,8 @@
             255
           ]
         ],
-        "inkPixels": 55562,
-        "inkRatio": 0.051446296296296296,
+        "inkPixels": 55122,
+        "inkRatio": 0.05103888888888889,
         "contentBounds": {
           "x": 28,
           "y": 261,
@@ -193914,7 +193914,7 @@
       },
       "widthRatio": 1.083725305738476,
       "heightRatio": 1.0922190201729107,
-      "inkRatio": 1.3794627339987091
+      "inkRatio": 1.3685386563384478
     },
     {
       "id": "parity_gitgraph_202",
@@ -193936,8 +193936,8 @@
             255
           ]
         ],
-        "inkPixels": 58063,
-        "inkRatio": 0.05376203703703704,
+        "inkPixels": 56958,
+        "inkRatio": 0.05273888888888889,
         "contentBounds": {
           "x": 28,
           "y": 261,
@@ -193973,7 +193973,7 @@
       },
       "widthRatio": 1.083725305738476,
       "heightRatio": 1.0922190201729107,
-      "inkRatio": 1.3793652301990782
+      "inkRatio": 1.3531144581175465
     },
     {
       "id": "parity_gitgraph_203",
@@ -194172,8 +194172,8 @@
             255
           ]
         ],
-        "inkPixels": 104606,
-        "inkRatio": 0.0968574074074074,
+        "inkPixels": 104986,
+        "inkRatio": 0.09720925925925926,
         "contentBounds": {
           "x": 38,
           "y": 57,
@@ -194209,7 +194209,7 @@
       },
       "widthRatio": 1.0731021555763824,
       "heightRatio": 1.0433639947437583,
-      "inkRatio": 1.106590500370253
+      "inkRatio": 1.1106103882365388
     },
     {
       "id": "parity_gitgraph_207",
@@ -194373,8 +194373,8 @@
             255
           ]
         ],
-        "inkPixels": 55009,
-        "inkRatio": 0.05093425925925926,
+        "inkPixels": 54894,
+        "inkRatio": 0.05082777777777778,
         "contentBounds": {
           "x": 18,
           "y": 200,
@@ -194410,7 +194410,7 @@
       },
       "widthRatio": 1.0456580125335722,
       "heightRatio": 1.0354906054279749,
-      "inkRatio": 1.1329214293069714
+      "inkRatio": 1.1305529811553907
     },
     {
       "id": "parity_gitgraph_210",
@@ -194432,8 +194432,8 @@
             255
           ]
         ],
-        "inkPixels": 88424,
-        "inkRatio": 0.08187407407407407,
+        "inkPixels": 88584,
+        "inkRatio": 0.08202222222222222,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -194469,7 +194469,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1652061617931926
+      "inkRatio": 1.1673145598060273
     },
     {
       "id": "parity_gitgraph_211",
@@ -194621,8 +194621,8 @@
             255
           ]
         ],
-        "inkPixels": 42849,
-        "inkRatio": 0.039675,
+        "inkPixels": 41756,
+        "inkRatio": 0.03866296296296296,
         "contentBounds": {
           "x": 17,
           "y": 288,
@@ -194658,7 +194658,7 @@
       },
       "widthRatio": 1.074585635359116,
       "heightRatio": 1.0459016393442624,
-      "inkRatio": 1.2809865470852018
+      "inkRatio": 1.2483109118086695
     },
     {
       "id": "parity_gitgraph_214",
@@ -194680,8 +194680,8 @@
             255
           ]
         ],
-        "inkPixels": 56169,
-        "inkRatio": 0.05200833333333333,
+        "inkPixels": 55599,
+        "inkRatio": 0.05148055555555556,
         "contentBounds": {
           "x": 29,
           "y": 254,
@@ -194717,7 +194717,7 @@
       },
       "widthRatio": 1.0858490566037735,
       "heightRatio": 1.0980392156862746,
-      "inkRatio": 1.3527853375400398
+      "inkRatio": 1.339057344476289
     },
     {
       "id": "parity_gitgraph_215",
@@ -194739,8 +194739,8 @@
             255
           ]
         ],
-        "inkPixels": 58785,
-        "inkRatio": 0.05443055555555556,
+        "inkPixels": 57709,
+        "inkRatio": 0.05343425925925926,
         "contentBounds": {
           "x": 29,
           "y": 254,
@@ -194776,7 +194776,7 @@
       },
       "widthRatio": 1.0858490566037735,
       "heightRatio": 1.0980392156862746,
-      "inkRatio": 1.3585311178387374
+      "inkRatio": 1.3336645790483233
     },
     {
       "id": "parity_gitgraph_216",
@@ -194975,8 +194975,8 @@
             255
           ]
         ],
-        "inkPixels": 109207,
-        "inkRatio": 0.10111759259259259,
+        "inkPixels": 109620,
+        "inkRatio": 0.1015,
         "contentBounds": {
           "x": 39,
           "y": 43,
@@ -195012,7 +195012,7 @@
       },
       "widthRatio": 1.074248120300752,
       "heightRatio": 1.0458015267175573,
-      "inkRatio": 1.1130623560348165
+      "inkRatio": 1.117271745112828
     },
     {
       "id": "parity_gitgraph_220",
@@ -195176,8 +195176,8 @@
             255
           ]
         ],
-        "inkPixels": 51641,
-        "inkRatio": 0.04781574074074074,
+        "inkPixels": 51517,
+        "inkRatio": 0.047700925925925924,
         "contentBounds": {
           "x": 17,
           "y": 207,
@@ -195213,7 +195213,7 @@
       },
       "widthRatio": 1.0456171735241502,
       "heightRatio": 1.032119914346895,
-      "inkRatio": 1.1097238637584614
+      "inkRatio": 1.1070592027506179
     },
     {
       "id": "parity_gitgraph_223",
@@ -195235,8 +195235,8 @@
             255
           ]
         ],
-        "inkPixels": 89667,
-        "inkRatio": 0.083025,
+        "inkPixels": 89818,
+        "inkRatio": 0.08316481481481482,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -195272,7 +195272,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.171581629319919
+      "inkRatio": 1.173554582870582
     },
     {
       "id": "parity_gitgraph_224",
@@ -195424,8 +195424,8 @@
             255
           ]
         ],
-        "inkPixels": 41195,
-        "inkRatio": 0.03814351851851852,
+        "inkPixels": 39883,
+        "inkRatio": 0.03692870370370371,
         "contentBounds": {
           "x": 17,
           "y": 295,
@@ -195461,7 +195461,7 @@
       },
       "widthRatio": 1.072610294117647,
       "heightRatio": 1.0374149659863945,
-      "inkRatio": 1.3289138359301913
+      "inkRatio": 1.2865898899964516
     },
     {
       "id": "parity_gitgraph_227",
@@ -195483,8 +195483,8 @@
             255
           ]
         ],
-        "inkPixels": 54156,
-        "inkRatio": 0.05014444444444444,
+        "inkPixels": 53683,
+        "inkRatio": 0.04970648148148148,
         "contentBounds": {
           "x": 27,
           "y": 267,
@@ -195520,7 +195520,7 @@
       },
       "widthRatio": 1.0825515947467168,
       "heightRatio": 1.0857988165680474,
-      "inkRatio": 1.387796940265997
+      "inkRatio": 1.3756758834533482
     },
     {
       "id": "parity_gitgraph_228",
@@ -195542,8 +195542,8 @@
             255
           ]
         ],
-        "inkPixels": 56711,
-        "inkRatio": 0.05251018518518519,
+        "inkPixels": 55612,
+        "inkRatio": 0.05149259259259259,
         "contentBounds": {
           "x": 27,
           "y": 267,
@@ -195579,7 +195579,7 @@
       },
       "widthRatio": 1.0825515947467168,
       "heightRatio": 1.0857988165680474,
-      "inkRatio": 1.391134769170387
+      "inkRatio": 1.364176029043811
     },
     {
       "id": "parity_gitgraph_229",
@@ -195778,8 +195778,8 @@
             255
           ]
         ],
-        "inkPixels": 100770,
-        "inkRatio": 0.09330555555555556,
+        "inkPixels": 101112,
+        "inkRatio": 0.09362222222222222,
         "contentBounds": {
           "x": 37,
           "y": 69,
@@ -195815,7 +195815,7 @@
       },
       "widthRatio": 1.0710280373831775,
       "heightRatio": 1.0377867746288798,
-      "inkRatio": 1.118746808179941
+      "inkRatio": 1.1225436863023734
     },
     {
       "id": "parity_gitgraph_233",
@@ -195979,8 +195979,8 @@
             255
           ]
         ],
-        "inkPixels": 52202,
-        "inkRatio": 0.04833518518518518,
+        "inkPixels": 52075,
+        "inkRatio": 0.04821759259259259,
         "contentBounds": {
           "x": 17,
           "y": 207,
@@ -196016,7 +196016,7 @@
       },
       "widthRatio": 1.0456171735241502,
       "heightRatio": 1.032119914346895,
-      "inkRatio": 1.105998008432382
+      "inkRatio": 1.1033072734591833
     },
     {
       "id": "parity_gitgraph_236",
@@ -196038,8 +196038,8 @@
             255
           ]
         ],
-        "inkPixels": 89769,
-        "inkRatio": 0.08311944444444444,
+        "inkPixels": 89941,
+        "inkRatio": 0.0832787037037037,
         "contentBounds": {
           "x": 208,
           "y": 26,
@@ -196075,7 +196075,7 @@
       },
       "widthRatio": 1.0867208672086721,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1711393197740407
+      "inkRatio": 1.1733832565785183
     },
     {
       "id": "parity_gitgraph_237",
@@ -196227,8 +196227,8 @@
             255
           ]
         ],
-        "inkPixels": 41204,
-        "inkRatio": 0.03815185185185185,
+        "inkPixels": 39911,
+        "inkRatio": 0.03695462962962963,
         "contentBounds": {
           "x": 17,
           "y": 295,
@@ -196264,7 +196264,7 @@
       },
       "widthRatio": 1.072610294117647,
       "heightRatio": 1.0374149659863945,
-      "inkRatio": 1.3237382336877952
+      "inkRatio": 1.2821987342178816
     },
     {
       "id": "parity_gitgraph_240",
@@ -196286,8 +196286,8 @@
             255
           ]
         ],
-        "inkPixels": 54164,
-        "inkRatio": 0.05015185185185185,
+        "inkPixels": 53732,
+        "inkRatio": 0.04975185185185185,
         "contentBounds": {
           "x": 27,
           "y": 267,
@@ -196323,7 +196323,7 @@
       },
       "widthRatio": 1.0825515947467168,
       "heightRatio": 1.0887573964497042,
-      "inkRatio": 1.37741271011876
+      "inkRatio": 1.3664267731353152
     },
     {
       "id": "parity_gitgraph_241",
@@ -196345,8 +196345,8 @@
             255
           ]
         ],
-        "inkPixels": 56356,
-        "inkRatio": 0.05218148148148148,
+        "inkPixels": 55403,
+        "inkRatio": 0.05129907407407407,
         "contentBounds": {
           "x": 27,
           "y": 267,
@@ -196382,7 +196382,7 @@
       },
       "widthRatio": 1.0825515947467168,
       "heightRatio": 1.0887573964497042,
-      "inkRatio": 1.382731800672277
+      "inkRatio": 1.3593493142282307
     },
     {
       "id": "parity_gitgraph_242",
@@ -196581,8 +196581,8 @@
             255
           ]
         ],
-        "inkPixels": 99175,
-        "inkRatio": 0.0918287037037037,
+        "inkPixels": 99529,
+        "inkRatio": 0.09215648148148148,
         "contentBounds": {
           "x": 37,
           "y": 69,
@@ -196618,7 +196618,7 @@
       },
       "widthRatio": 1.0710280373831775,
       "heightRatio": 1.0377867746288798,
-      "inkRatio": 1.1012469880186992
+      "inkRatio": 1.1051778318176266
     },
     {
       "id": "parity_gitgraph_246",
@@ -196782,8 +196782,8 @@
             255
           ]
         ],
-        "inkPixels": 51812,
-        "inkRatio": 0.04797407407407407,
+        "inkPixels": 51676,
+        "inkRatio": 0.04784814814814815,
         "contentBounds": {
           "x": 17,
           "y": 208,
@@ -196819,7 +196819,7 @@
       },
       "widthRatio": 1.0456171735241502,
       "heightRatio": 1.0323275862068966,
-      "inkRatio": 1.1127528886216227
+      "inkRatio": 1.1098320518878055
     },
     {
       "id": "parity_gitgraph_249",
@@ -196841,8 +196841,8 @@
             255
           ]
         ],
-        "inkPixels": 89740,
-        "inkRatio": 0.08309259259259259,
+        "inkPixels": 89950,
+        "inkRatio": 0.08328703703703703,
         "contentBounds": {
           "x": 201,
           "y": 26,
@@ -196878,7 +196878,7 @@
       },
       "widthRatio": 1.1043360433604337,
       "heightRatio": 1.0808080808080809,
-      "inkRatio": 1.1674103367980122
+      "inkRatio": 1.170142186260098
     },
     {
       "id": "parity_gitgraph_250",
@@ -197030,8 +197030,8 @@
             255
           ]
         ],
-        "inkPixels": 40884,
-        "inkRatio": 0.03785555555555556,
+        "inkPixels": 39635,
+        "inkRatio": 0.03669907407407407,
         "contentBounds": {
           "x": 17,
           "y": 296,
@@ -197067,7 +197067,7 @@
       },
       "widthRatio": 1.0706422018348625,
       "heightRatio": 1.0376712328767124,
-      "inkRatio": 1.349574173103585
+      "inkRatio": 1.3083448867762593
     },
     {
       "id": "parity_gitgraph_253",
@@ -197089,8 +197089,8 @@
             255
           ]
         ],
-        "inkPixels": 53844,
-        "inkRatio": 0.049855555555555556,
+        "inkPixels": 53450,
+        "inkRatio": 0.04949074074074074,
         "contentBounds": {
           "x": 27,
           "y": 268,
@@ -197126,7 +197126,7 @@
       },
       "widthRatio": 1.0815370196813496,
       "heightRatio": 1.0865671641791044,
-      "inkRatio": 1.4029547408739156
+      "inkRatio": 1.392688709971599
     },
     {
       "id": "parity_gitgraph_254",
@@ -197148,8 +197148,8 @@
             255
           ]
         ],
-        "inkPixels": 56217,
-        "inkRatio": 0.05205277777777778,
+        "inkPixels": 55224,
+        "inkRatio": 0.051133333333333336,
         "contentBounds": {
           "x": 27,
           "y": 268,
@@ -197185,7 +197185,7 @@
       },
       "widthRatio": 1.0815370196813496,
       "heightRatio": 1.0865671641791044,
-      "inkRatio": 1.4058467540262078
+      "inkRatio": 1.3810143042912875
     },
     {
       "id": "parity_gitgraph_255",

@@ -54,10 +54,20 @@ side-by-side comparison does not expose a functional rendering defect.
 - 13 independent production scenarios cover all 24 declared Git Graph
   capability points.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
-  All pairs passed the legacy geometry gate. That gate did not detect a label
-  paint-order mismatch in `parity_gitgraph_005`, so the former detailed-review
-  completion claim is withdrawn and all 256 pairs require the new detail gate
-  and re-review.
+  The replacement audit accepted all 256:
+  `236 pass / 20 manually reviewed / 0 fail`. All 20 reviews are
+  text-overlap threshold findings caused by browser/Compose text-bound
+  differences; expected labels, clipping, paint order, and raster checks pass.
+  Geometry ratios are width `1.036-1.154`, height `1.032-1.137`, and
+  foreground ink `1.027-1.415`. All 16 contact sheets were manually reviewed.
+- The 13 production pairs are also accepted:
+  `12 pass / 1 manually reviewed / 0 fail`. The single review has the same
+  text-bound cause and passes semantic, clipping, paint-order, and raster
+  checks. Production geometry ratios are width `1.048-1.129`, height
+  `1.047-1.146`, and foreground ink `1.074-1.342`.
+- The replacement evidence includes the corrected `parity_gitgraph_005`;
+  commit labels are emitted in upstream commit order instead of legacy global
+  label layers, eliminating the missed cherry-pick label paint-order defect.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
   complete 158-case mixed corpus.
 

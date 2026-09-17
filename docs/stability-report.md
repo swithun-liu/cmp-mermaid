@@ -2,7 +2,7 @@
 
 > [!WARNING]
 > This report covers the current 15-family implemented subset, not a current
-> overall Stable decision. Two families still require replacement detail
+> overall Stable decision. Mindmap still requires replacement detail
 > review, and 18 official Mermaid families remain untranslated. See the
 > [33-family roadmap](full-diagram-roadmap.md) for the complete status and
 > promotion gate.
@@ -24,7 +24,7 @@ Native-only randomized stress inputs.
 | Large-scale visual matrix | 3,840 unique Mermaid sources: 256 per diagram type |
 | Native core render results | 197 independent plus 3,840 matrix cases passed, 0 failed |
 | Web Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots, 0 render errors |
-| Manual visual review | 208 replacement-gate sheets across 13 families; two implemented families remain pending |
+| Manual visual review | 224 replacement-gate sheets across 14 families; Mindmap remains pending |
 | Automated visual geometry | 3,840/3,840 matrix pairs and 197/197 independent pairs passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 renders passed: 15 diagram types by 11 themes |
@@ -37,24 +37,26 @@ Native-only randomized stress inputs.
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
 **Current conclusion:** all 15 implemented families pass the shared core,
-geometry, determinism, theme, and resource gates. Thirteen also pass the
+geometry, determinism, theme, and resource gates. Fourteen also pass the
 replacement detail gate. This evidence does not satisfy the 33-family Stable
 criteria and must not be used as an overall Stable decision.
 
 ## Current Replacement-Gate Progress
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, Pie, User Journey, and Requirement are now the
-first thirteen families to complete the replacement visual gate. Each has 256
-unique same-source Native/Official pairs, a 256/256 geometry result, and 16
-paged contact sheets. The accepted
-replacement total is 3,328/3,328 pairs across 208 manually reviewed sheets:
-`3,245 pass / 83 manually reviewed / 0 fail`. The 60 ER reviews are
+Entity Relationship, Gantt, Pie, User Journey, Requirement, and Git Graph are
+now the first fourteen families to complete the replacement visual gate. Each
+has 256 unique same-source Native/Official pairs, a 256/256 geometry result,
+and 16 paged contact sheets. The accepted replacement total is
+3,584/3,584 pairs across 224 manually reviewed sheets:
+`3,481 pass / 103 manually reviewed / 0 fail`. The 60 ER reviews are
 text-position threshold findings. The 19 Journey reviews are text-segmentation
 findings for one long actor label whose two lines break at different words. The
-four Requirement reviews are greedy duplicate-label matching findings. All
-reviewed cases preserve complete text, have no clipping or overlap, and pass
-raster checks.
+four Requirement reviews are greedy duplicate-label matching findings. The 20
+Git Graph reviews are text-overlap threshold findings caused by
+browser/Compose text-bound differences. All reviewed cases preserve complete
+text, have no clipping or unresolved overlap, and pass paint-order and raster
+checks.
 
 - Flowchart content ratios: width `1.026-1.119`, height `0.945-1.047`,
   foreground ink `0.948-1.241`.
@@ -82,6 +84,8 @@ raster checks.
   foreground ink `0.983-1.073`.
 - Requirement content ratios: width `1.013-1.072`, height `1.004-1.053`,
   foreground ink `0.974-1.148`.
+- Git Graph content ratios: width `1.036-1.154`, height `1.032-1.137`,
+  foreground ink `1.027-1.415`.
 - All 16 Flowchart contact sheets and all 256 same-source pairs were manually
   inspected after correcting Bang/Cloud edge intersection bounds. No
   unresolved marker, routing, label, clipping, overlap, or paint-order defect
@@ -139,10 +143,18 @@ raster checks.
   `0.016`, no clipping or overlap, and passing raster checks. No unresolved
   requirement, element, relationship, marker, label, styling, clipping,
   overlap, or paint-order defect remains.
+- All 16 Git Graph contact sheets and all 256 same-source pairs were manually
+  inspected. The 20 queued cases are text-overlap threshold findings caused by
+  browser/Compose text-bound differences; their P95 normalized text-center
+  distance is at most `0.052`, mask IoU is at least `0.639`, and edge F1 is at
+  least `0.828`. Every expected label is present and unclipped, and the
+  corrected `parity_gitgraph_005` now preserves upstream commit-label paint
+  order. No unresolved commit, branch, merge, cherry-pick, label, clipping,
+  overlap, or paint-order defect remains.
 
-This is a per-family result. Overall status remains Not Stable until the other
-implemented families complete the replacement audit and all 33 official
-families are translated.
+This is a per-family result. Overall status remains Not Stable until the
+remaining implemented family completes the replacement audit and all 33
+official families are translated.
 
 ## What This Report Does And Does Not Prove
 
@@ -202,13 +214,13 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | Pie | 13 | 16/16 | cost, escaped labels, donut, legends, themes, many slices | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Requirement | 13 | 17/17 | typed requirements, elements, relationships, directions, styling, metadata | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
-| Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Historical review; detail re-audit pending |
+| Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Mindmap | 13 | 22/22 | hierarchy, shapes, text, CoSE-Bilkent, Dagre, tidy tree, configuration, themes | Historical review; detail re-audit pending |
 | Kanban | 13 | 17/17 | sections, tasks, metadata, priorities, ticket links, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 
-The two rows still marked "Historical review" preserve the former review record only.
-They do not satisfy the new manifest and perceptual checks and therefore are
-not current acceptance decisions.
+The Mindmap row still marked "Historical review" preserves the former review
+record only. It does not satisfy the new manifest and perceptual checks and
+therefore is not a current acceptance decision.
 
 ## Large-Scale Visual Matrix
 
@@ -272,6 +284,32 @@ ratios were `1.016-1.020`, `1.012-1.015`, and `0.967-1.144`; matrix ratios were
 were manually reviewed. The final translation preserves Mermaid's component
 insertion order and its browser fallback from an invalid negative bar-label
 font size to inherited `16px`.
+
+</details>
+
+<details open>
+<summary><strong>Quadrant Chart: 13 production scenarios</strong></summary>
+
+![Quadrant Chart complex Native and Official corpus](assets/stability-report/quadrant-complex-corpus.png)
+
+The replacement audit passed all 13 production scenarios and all 256 matrix
+pairs with no review queue. Production width, height, and foreground-ink
+ratios were `1.007-1.023`, `1.011-1.022`, and `1.025-1.036`; matrix ratios
+were `1.007-1.035`, `1.011-1.022`, and `1.024-1.048`. The production contact
+sheet and all 16 matrix contact sheets were manually reviewed.
+
+</details>
+
+<details open>
+<summary><strong>Timeline: 13 production scenarios</strong></summary>
+
+![Timeline complex Native and Official corpus](assets/stability-report/timeline-complex-corpus.png)
+
+The replacement audit passed all 13 production scenarios and all 256 matrix
+pairs with no review queue. Production width, height, and foreground-ink
+ratios were `1.029-1.051`, `1.042-1.078`, and `1.062-1.131`; matrix ratios
+were `1.026-1.053`, `1.038-1.087`, and `1.052-1.136`. The production contact
+sheet and all 16 matrix contact sheets were manually reviewed.
 
 </details>
 
@@ -412,10 +450,20 @@ contact sheets were manually reviewed.
 
 ![Git Graph complex Native and Official corpus](assets/stability-report/gitgraph-complex-corpus.png)
 
-The historical review recorded all 256 Git Graph pairs as acceptable, but
-`parity_gitgraph_005` visibly contradicted that conclusion. The legacy geometry
-ratios were `1.036-1.154` for width, `1.032-1.137` for height, and
-`1.044-1.427` for foreground ink.
+The replacement detail audit accepted all 13 production pairs:
+`12 pass / 1 manually reviewed / 0 fail`. The single review is a
+text-overlap threshold finding caused by browser/Compose text-bound
+differences; all four expected text elements match, no text is clipped,
+P95 normalized text-center distance is `0.052`, mask IoU is `0.742`, and edge
+F1 is `0.823`. Production width, height, and foreground-ink ratios are
+`1.048-1.129`, `1.047-1.146`, and `1.074-1.342`.
+
+The replacement matrix audit accepted all 256 pairs:
+`236 pass / 20 manually reviewed / 0 fail`. All 20 reviews have the same
+text-bound cause; expected text, clipping, paint order, and raster checks pass.
+Matrix ratios are `1.036-1.154`, `1.032-1.137`, and `1.027-1.415`. All 16
+contact sheets were manually reviewed, including the corrected
+`parity_gitgraph_005` commit-label paint order.
 
 </details>
 
@@ -428,6 +476,19 @@ The historical review recorded all 256 Mindmap pairs as acceptable across
 CoSE-Bilkent, Dagre, and tidy-tree inputs. That conclusion is pending the new
 detail re-audit. Icons and arbitrary CSS classes remain explicit unsupported
 boundaries.
+
+</details>
+
+<details open>
+<summary><strong>Kanban: 13 production scenarios</strong></summary>
+
+![Kanban complex Native and Official corpus](assets/stability-report/kanban-complex-corpus.png)
+
+The replacement audit passed all 13 production scenarios and all 256 matrix
+pairs with no review queue. Production width, height, and foreground-ink
+ratios were `1.041-1.127`, `0.870-1.134`, and `0.998-1.229`; matrix ratios
+were `1.041-1.071`, `0.864-1.230`, and `0.996-1.110`. The production contact
+sheet and all 16 matrix contact sheets were manually reviewed.
 
 </details>
 

@@ -14,10 +14,11 @@ layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
-Relationship, Gantt, Pie, User Journey, Requirement, and Kanban have completed
-the replacement detail gate and manual contact-sheet review. Git Graph and
-Mindmap remain in this index as legacy capture evidence pending replacement
-detail review.
+Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, and Kanban
+have completed the replacement detail gate and manual contact-sheet review.
+Mindmap remains in this index as legacy capture evidence pending replacement
+detail review. The accepted replacement total is `3,584/3,584` pairs:
+`3,481 pass / 103 manually reviewed / 0 fail` across 224 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -501,6 +502,14 @@ manually reviewed.
 
 <details>
 <summary><strong>Git Graph - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `236 pass / 20 manually reviewed / 0 fail`.
+Geometry ratios: width `1.036-1.154`, height `1.032-1.137`, foreground ink
+`1.027-1.415`. The reviews are text-overlap threshold findings caused by
+browser/Compose text-bound differences; every expected label is present,
+unclipped, and accepted by raster checks. All 16 pages below were manually
+reviewed, including the corrected `parity_gitgraph_005` commit-label paint
+order.
 
 ![Git Graph visual parity page 01](gitgraph-visual-parity-01.jpg)
 

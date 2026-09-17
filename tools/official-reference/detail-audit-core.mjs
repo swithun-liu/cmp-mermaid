@@ -642,31 +642,31 @@ function comparePaintOrder(native, official, thresholds, findings) {
       nativeProfile.coverageRatio >= thresholds.occlusionOverlapRatio;
     const officialOccluded =
       officialProfile.coverageRatio >= thresholds.occlusionOverlapRatio;
-    if (nativeOccluded !== officialOccluded) {
+    const nativeComparableRatio = nativeProfile.coverageRatio;
+    const officialComparableRatio = officialProfile.coverageRatio;
+    const commonTextArea = Math.min(
+      nativeProfile.textArea,
+      officialProfile.textArea,
+    );
+    const commonAreaDifference = Math.abs(
+      ratio(nativeProfile.coveredArea, commonTextArea) -
+        ratio(officialProfile.coveredArea, commonTextArea),
+    );
+    const comparableDifference = Math.abs(
+      nativeComparableRatio - officialComparableRatio,
+    );
+    const materiallyDifferent =
+      comparableDifference >
+        thresholds.maximumOcclusionOverlapRatioDifference &&
+      commonAreaDifference >
+        thresholds.maximumOcclusionOverlapRatioDifference;
+    if (nativeOccluded !== officialOccluded && materiallyDifferent) {
       mismatches.push({
         textOccurrence: key,
         nativeLaterOpaqueOverlaps: nativeProfile.overlaps,
         officialLaterOpaqueOverlaps: officialProfile.overlaps,
       });
-    } else if (nativeOccluded && officialOccluded) {
-      const nativeComparableRatio = nativeProfile.coverageRatio;
-      const officialComparableRatio = officialProfile.coverageRatio;
-      const commonTextArea = Math.min(
-        nativeProfile.textArea,
-        officialProfile.textArea,
-      );
-      const commonAreaDifference = Math.abs(
-        ratio(nativeProfile.coveredArea, commonTextArea) -
-          ratio(officialProfile.coveredArea, commonTextArea),
-      );
-      if (
-        Math.abs(nativeComparableRatio - officialComparableRatio) <=
-          thresholds.maximumOcclusionOverlapRatioDifference ||
-        commonAreaDifference <=
-          thresholds.maximumOcclusionOverlapRatioDifference
-      ) {
-        continue;
-      }
+    } else if (nativeOccluded && officialOccluded && materiallyDifferent) {
       ratioDifferences.push({
         textOccurrence: key,
         nativeLaterOpaqueOverlaps: nativeProfile.overlaps,

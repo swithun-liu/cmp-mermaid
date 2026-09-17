@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-17T07:24:03.235Z",
-  "caseCount": 158,
+  "generatedAt": "2026-09-17T11:00:54.054Z",
+  "caseCount": 197,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -590,6 +590,563 @@
       "nativeSha256": "63db40f24fabdd92aaccb1259b77ebbb245a338e29a1296adad9574d739cd914",
       "officialSha256": "6a3b3d9d0fc6f532df707db1d0f06a537aa33454598bbd6b1c622ee3052dbde6",
       "sourceSha256": "c11d078b6005ae8aca0f60b8ecc1db6ac992274922c77e01440c005698dcc0d4"
+    },
+    {
+      "id": "rc_quadrant_product_portfolio",
+      "kind": "quadrant",
+      "title": "Product investment portfolio",
+      "scenario": "Product initiatives are prioritized by customer value and delivery confidence.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_quadrant_product_portfolio_native.png",
+      "officialFile": "rc_quadrant_product_portfolio_official.png",
+      "nativeBytes": 55324,
+      "officialBytes": 52442,
+      "nativeSha256": "c617c4bbd5bc74e7aa106a7d8d468b30ff66d1161672f6a9cacf84433a7592a9",
+      "officialSha256": "b0abfbd3fad596ae5b179c0982d5144396a48e66689a6f993e30ad7a12f66a37",
+      "sourceSha256": "19fa7f3a56ae6fbf7aeb83ab5e76638676965095fbe584adb4b2ac0a2e937cad"
+    },
+    {
+      "id": "rc_quadrant_incident_risk",
+      "kind": "quadrant",
+      "title": "Incident risk assessment",
+      "scenario": "Operational risks are plotted by likelihood and customer impact.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_quadrant_incident_risk_native.png",
+      "officialFile": "rc_quadrant_incident_risk_official.png",
+      "nativeBytes": 54767,
+      "officialBytes": 54244,
+      "nativeSha256": "af48bf5a00b7f765112a804c8e5ff06e7a0be2f3ee5813673b898bc2f2c4de90",
+      "officialSha256": "13c87c347b08f47ef3081806ce2640735edcc1d492acc13e89d6b7b47b0d4c1d",
+      "sourceSha256": "6b1706af0595574eae8585113335fae0a1cbb04ef85f46684e389694d08e46e2"
+    },
+    {
+      "id": "rc_quadrant_delivery_framework",
+      "kind": "quadrant",
+      "title": "Delivery framework without observations",
+      "scenario": "An empty framework centers its axis and quadrant labels before initiatives exist.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_quadrant_delivery_framework_native.png",
+      "officialFile": "rc_quadrant_delivery_framework_official.png",
+      "nativeBytes": 34479,
+      "officialBytes": 32984,
+      "nativeSha256": "bdc281da6389409b6186ab78ef1ade9588668f068aa6d8a208bbcf6f7db92de6",
+      "officialSha256": "b9185fce88d7d012eb31da4bdf7dfc6f1e232fa7913d2022625f38a7e5507edc",
+      "sourceSha256": "bfd2c0a72fb2650c0258a28ec070054e7f6f11bbfa937086fb0f3d5c1e46daca"
+    },
+    {
+      "id": "rc_quadrant_governance_theme",
+      "kind": "quadrant",
+      "title": "Themed governance portfolio",
+      "scenario": "Frontmatter changes dimensions, axis placement, sizing mode, and every visible color family.",
+      "aspectRatio": 1.2,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_quadrant_governance_theme_native.png",
+      "officialFile": "rc_quadrant_governance_theme_official.png",
+      "nativeBytes": 56325,
+      "officialBytes": 53114,
+      "nativeSha256": "9614529b1075a9225f2d73352ecaff216fb49be4a95a36729fc13994ddfb7116",
+      "officialSha256": "0f9f9582aea7aaf96f29697f849b6c495cb7ce10219a386ff170a1e22b4d38b8",
+      "sourceSha256": "e6b9e524d90c8648187991df6db1bbc28ba67d464a172ce035684e0ba2fbd864"
+    },
+    {
+      "id": "rc_quadrant_unicode_market",
+      "kind": "quadrant",
+      "title": "International market assessment",
+      "scenario": "Unicode labels, comments, quoted punctuation, and boundary coordinates render together.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_quadrant_unicode_market_native.png",
+      "officialFile": "rc_quadrant_unicode_market_official.png",
+      "nativeBytes": 42689,
+      "officialBytes": 43174,
+      "nativeSha256": "f8eb219f26a6df7ff74d6047fb6011b87967c62bc0dd71b56a626cbbab07f6e5",
+      "officialSha256": "7f0e04aacd7a7035744963a2bd4fa74bb8017acb649f0770f783a622dc242a4d",
+      "sourceSha256": "69f6677e70011157a294a62121aa31f6a64e5827151336f5132f1a84e8949c00"
+    },
+    {
+      "id": "prod_quadrant_release_scoring",
+      "kind": "quadrant",
+      "title": "Release candidate scoring",
+      "scenario": "Release candidates are compared by readiness and expected customer value.",
+      "aspectRatio": 1,
+      "features": [
+        "title",
+        "x-axis",
+        "y-axis",
+        "quadrant-labels",
+        "points"
+      ],
+      "expectedTexts": [
+        "Release candidate scoring",
+        "Ready to ship",
+        "Candidate Alpha"
+      ],
+      "nativeFile": "prod_quadrant_release_scoring_native.png",
+      "officialFile": "prod_quadrant_release_scoring_official.png",
+      "nativeBytes": 56425,
+      "officialBytes": 53008,
+      "nativeSha256": "10986e5a1aa6e7216afcc7f9bdefae0476badb141033db4f21d04b9256f4cab2",
+      "officialSha256": "b38925e26464e7d4b4756461cac51dd651428aeac2121942d652aec3d08dc826",
+      "sourceSha256": "7d91958ce20d69043a0fd605587e12d9ccfd972fc64a4d0439a111e99d1595ea"
+    },
+    {
+      "id": "prod_quadrant_boundary_coordinates",
+      "kind": "quadrant",
+      "title": "Boundary coordinate coverage",
+      "scenario": "Points at every chart corner and center verify normalized coordinate projection.",
+      "aspectRatio": 1,
+      "features": [
+        "points",
+        "boundary-points",
+        "point-radius"
+      ],
+      "expectedTexts": [
+        "Origin",
+        "Upper right",
+        "Center"
+      ],
+      "nativeFile": "prod_quadrant_boundary_coordinates_native.png",
+      "officialFile": "prod_quadrant_boundary_coordinates_official.png",
+      "nativeBytes": 22912,
+      "officialBytes": 22913,
+      "nativeSha256": "865a8497e5a1e96a72888543a95acf1a8ad62d4615c4f6f57bf730d7b5bea715",
+      "officialSha256": "0499c9bae1cb1d8ab4e38d0a14519da35da8365fffad106e404bcb467062b957",
+      "sourceSha256": "3366520189e87ded62c0d50582d8034f7d618aed8b9a38e10654cfa00bfb680d"
+    },
+    {
+      "id": "prod_quadrant_empty_framework",
+      "kind": "quadrant",
+      "title": "Empty decision framework",
+      "scenario": "A framework without observations centers all semantic labels.",
+      "aspectRatio": 1,
+      "features": [
+        "title",
+        "x-axis",
+        "y-axis",
+        "quadrant-labels",
+        "empty-points"
+      ],
+      "expectedTexts": [
+        "Decision framework",
+        "Immediate action",
+        "Monitor"
+      ],
+      "nativeFile": "prod_quadrant_empty_framework_native.png",
+      "officialFile": "prod_quadrant_empty_framework_official.png",
+      "nativeBytes": 36524,
+      "officialBytes": 34773,
+      "nativeSha256": "40dea07133bd830442e28e8576d69397fe98505cb79f9ba2c061bce97baf36da",
+      "officialSha256": "6c672364ea852eae081f9fc470bb2948ecd3fddf9e8eb1e149204500fb09d9a0",
+      "sourceSha256": "40e0249c958349a7395248b1c324023e2c6a1e8c6930ba5c370bd1cfbab12951"
+    },
+    {
+      "id": "prod_quadrant_inline_styles",
+      "kind": "quadrant",
+      "title": "Inline observation styles",
+      "scenario": "Individual observations override radius, fill, and stroke independently.",
+      "aspectRatio": 1,
+      "features": [
+        "points",
+        "point-radius",
+        "point-color",
+        "point-stroke"
+      ],
+      "expectedTexts": [
+        "Critical exposure",
+        "Watch item"
+      ],
+      "nativeFile": "prod_quadrant_inline_styles_native.png",
+      "officialFile": "prod_quadrant_inline_styles_official.png",
+      "nativeBytes": 24248,
+      "officialBytes": 24527,
+      "nativeSha256": "5a64ee8ab68b7629db40e4d6cca589744ea40326485af5dc779820dfdcff0492",
+      "officialSha256": "e3a8bcf1509d25a80f751cf156e5ff6d4b73dfd1d6f69d602a6dce97399e39c8",
+      "sourceSha256": "2321fba2e4216f9d58966935d8da3ce3e6a262b29f29543d604331fb4b461d9a"
+    },
+    {
+      "id": "prod_quadrant_class_precedence",
+      "kind": "quadrant",
+      "title": "Reusable point classes",
+      "scenario": "Shared point classes apply first and local declarations retain precedence.",
+      "aspectRatio": 1,
+      "features": [
+        "points",
+        "class-styles",
+        "inline-precedence",
+        "point-color",
+        "point-stroke"
+      ],
+      "expectedTexts": [
+        "Shared style",
+        "Local override"
+      ],
+      "nativeFile": "prod_quadrant_class_precedence_native.png",
+      "officialFile": "prod_quadrant_class_precedence_official.png",
+      "nativeBytes": 21319,
+      "officialBytes": 21287,
+      "nativeSha256": "57b505d1a5192b467d7077f46fa4f12f7702110479cab2b064c69f6a40be43d3",
+      "officialSha256": "3df55769568d7134cfd2e8ee90d78444889552396ee50a5866536d236af266cd",
+      "sourceSha256": "387f9cc5d294309fbbb5749ea560ca3266292d2b0fdf82f75effddb6000004df"
+    },
+    {
+      "id": "prod_quadrant_dimension_config",
+      "kind": "quadrant",
+      "title": "Configured chart dimensions",
+      "scenario": "Frontmatter controls chart geometry, label metrics, borders, and responsive sizing.",
+      "aspectRatio": 1.3,
+      "features": [
+        "frontmatter-config",
+        "title",
+        "points"
+      ],
+      "expectedTexts": [
+        "Configured portfolio",
+        "Platform renewal"
+      ],
+      "nativeFile": "prod_quadrant_dimension_config_native.png",
+      "officialFile": "prod_quadrant_dimension_config_official.png",
+      "nativeBytes": 30178,
+      "officialBytes": 30818,
+      "nativeSha256": "a5a9c4eadcadd5efe545090abc66ddb3888af2d26d6b2ad1ea0ca58fb23421a2",
+      "officialSha256": "0c4a0589ecc0a6b91b169aa27edd8b402e59dcc62c437c3e9a84061c550392c6",
+      "sourceSha256": "dc0ea9092521ec0d84e4212e4dc64d8fe316fcb444a5206beb224de5080b31fb"
+    },
+    {
+      "id": "prod_quadrant_theme_metadata",
+      "kind": "quadrant",
+      "title": "Themed accessible assessment",
+      "scenario": "Theme variables and accessibility metadata travel through the production scene.",
+      "aspectRatio": 1,
+      "features": [
+        "theme-colors",
+        "metadata",
+        "quadrant-labels",
+        "points"
+      ],
+      "expectedTexts": [
+        "Themed assessment",
+        "Approve",
+        "Evidence review"
+      ],
+      "nativeFile": "prod_quadrant_theme_metadata_native.png",
+      "officialFile": "prod_quadrant_theme_metadata_official.png",
+      "nativeBytes": 25838,
+      "officialBytes": 24245,
+      "nativeSha256": "1cde8b18e7c5a301595b80218ca12070c9591539833e5662a8b63dc3bc89ddbf",
+      "officialSha256": "502d30e5da9f259d104cae48afb1838a6fe0725bc24d87cd3787ed5279c398f3",
+      "sourceSha256": "4161b1b6a1536d78aa96b74d47eac3983abeea761563893f137664d00aac48fb"
+    },
+    {
+      "id": "prod_quadrant_unicode_comments",
+      "kind": "quadrant",
+      "title": "Unicode regional assessment",
+      "scenario": "Unicode labels, quoted punctuation, comments, and direct colors share one chart.",
+      "aspectRatio": 1,
+      "features": [
+        "unicode",
+        "comments",
+        "x-axis",
+        "y-axis",
+        "points",
+        "point-color"
+      ],
+      "expectedTexts": [
+        "地域評価",
+        "São Paulo",
+        "서울"
+      ],
+      "nativeFile": "prod_quadrant_unicode_comments_native.png",
+      "officialFile": "prod_quadrant_unicode_comments_official.png",
+      "nativeBytes": 35801,
+      "officialBytes": 36303,
+      "nativeSha256": "17a1bc5614e8848d8a1345dcd36a1fd0a0e15f6b666a8a8d539a3506a20ec483",
+      "officialSha256": "d32599045e9dfa9e1ab01ae3d63a5778fa15da93f33727c2bd40b68693e43c4a",
+      "sourceSha256": "213e777c9dd30bc16515d6a15e580f6b6afe1b84d6fbf7d95cfd9eea0a5cd566"
+    },
+    {
+      "id": "rc_timeline_release_history",
+      "kind": "timeline",
+      "title": "Product release history",
+      "scenario": "Multiple periods and stacked events exercise the horizontal renderer.",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_timeline_release_history_native.png",
+      "officialFile": "rc_timeline_release_history_official.png",
+      "nativeBytes": 35513,
+      "officialBytes": 32997,
+      "nativeSha256": "4e814bb1401e917fad1c6cc639a3d2fabd1977709c8e2f052a48ee5df0ec4f55",
+      "officialSha256": "cf2bc40162cd636cdfc8956016c3dc56feb97048c1396836a9af224fab0ce13c",
+      "sourceSha256": "5d2a37648b20aeb81ace2d271aff2dc78f5e35572d57450e6d8c165a8242beb3"
+    },
+    {
+      "id": "rc_timeline_vertical_program",
+      "kind": "timeline",
+      "title": "Vertical program milestones",
+      "scenario": "Sections, tasks, and event stacks exercise the top-down renderer.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_timeline_vertical_program_native.png",
+      "officialFile": "rc_timeline_vertical_program_official.png",
+      "nativeBytes": 50576,
+      "officialBytes": 46684,
+      "nativeSha256": "859e885f1bf3fd582c20040e2eaee713b5a46b19870032311ec1a1a5c38e966c",
+      "officialSha256": "512aef9a3b7a9b2b67eda60e09221c95067ce0c04036186f53f663c822263cde",
+      "sourceSha256": "818989d033f9ab94bef44ed37b4e302e3a51cd5da36dc01d6f19429dae46b38b"
+    },
+    {
+      "id": "rc_timeline_sectionless_palette",
+      "kind": "timeline",
+      "title": "Sectionless multicolor delivery",
+      "scenario": "Each period receives a distinct color when no sections are declared.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_timeline_sectionless_palette_native.png",
+      "officialFile": "rc_timeline_sectionless_palette_official.png",
+      "nativeBytes": 29024,
+      "officialBytes": 27205,
+      "nativeSha256": "4c910e34daa56b709d9b8774e1b22f5efa8e31dc2cc022b55009dbb1321b5ed5",
+      "officialSha256": "2fb7bc32a62ce383d37b90695b4016e5649f99476519c66fcc27c973cdfaef14",
+      "sourceSha256": "09694075c3eaabc758ddb7ee40c31c1344db951aa1c49dbd48bb1acfa4a4de51"
+    },
+    {
+      "id": "rc_timeline_configured_theme",
+      "kind": "timeline",
+      "title": "Configured accessible timeline",
+      "scenario": "Spacing, sizing, colors, and accessibility metadata are configured together.",
+      "aspectRatio": 1.6,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_timeline_configured_theme_native.png",
+      "officialFile": "rc_timeline_configured_theme_official.png",
+      "nativeBytes": 35676,
+      "officialBytes": 33741,
+      "nativeSha256": "e64e98239e350f78b518fdb6250418f2931b1052fb5bed3e591231f829e8d329",
+      "officialSha256": "cd74d27452eac0307e9b9e5c2d84805ad3f54b65ef690c88d411a0391e77f611",
+      "sourceSha256": "4bd3b6b0667278437338e66d1decf90392e0aaee9b0b8c8ca235090060c791bb"
+    },
+    {
+      "id": "rc_timeline_unicode_vertical",
+      "kind": "timeline",
+      "title": "International vertical history",
+      "scenario": "Unicode, entities, HTML breaks, comments, and vertical layout render together.",
+      "aspectRatio": 1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_timeline_unicode_vertical_native.png",
+      "officialFile": "rc_timeline_unicode_vertical_official.png",
+      "nativeBytes": 29174,
+      "officialBytes": 27702,
+      "nativeSha256": "e1eb6d87e2b19d2553fa2557b9b5e315d426d621d870d9bb16eaafbb45fd0d11",
+      "officialSha256": "ed4ec084aaf586a32977292e2f53df7a7cce2deaa8579d236c53b839cf81ea9b",
+      "sourceSha256": "4a4bedc6a845591bf141de6d1d31ccc3c77b3b77e6841371b1e6c9911f3e65b9"
+    },
+    {
+      "id": "prod_timeline_release_history",
+      "kind": "timeline",
+      "title": "Product release history",
+      "scenario": "A horizontal timeline presents periods with one or more release events.",
+      "aspectRatio": 1.6,
+      "features": [
+        "lr",
+        "title",
+        "periods",
+        "events"
+      ],
+      "expectedTexts": [
+        "Product release history",
+        "2024",
+        "General availability"
+      ],
+      "nativeFile": "prod_timeline_release_history_native.png",
+      "officialFile": "prod_timeline_release_history_official.png",
+      "nativeBytes": 28252,
+      "officialBytes": 25633,
+      "nativeSha256": "191af748b1a86c4be22fcea350b915cb644dcd20dfb08eb6f4951fa2e4094b23",
+      "officialSha256": "2861c4a5b9f7bd8db4c7514a1a2a42195c55b0f1337a6fa2a449afa25f0cc59e",
+      "sourceSha256": "dd3160a0c3245bc3338631a380b3a95321cce298e8373c85bc3ceb8ad4e0321d"
+    },
+    {
+      "id": "prod_timeline_vertical_delivery",
+      "kind": "timeline",
+      "title": "Vertical delivery plan",
+      "scenario": "The TD renderer places periods and event stacks on opposite sides of the axis.",
+      "aspectRatio": 1,
+      "features": [
+        "td",
+        "sections",
+        "events",
+        "metadata"
+      ],
+      "expectedTexts": [
+        "Vertical delivery plan",
+        "Build",
+        "Release candidate"
+      ],
+      "nativeFile": "prod_timeline_vertical_delivery_native.png",
+      "officialFile": "prod_timeline_vertical_delivery_official.png",
+      "nativeBytes": 36310,
+      "officialBytes": 33962,
+      "nativeSha256": "28b53746121ea3a8c55e17114b4fd81a2db4ed423dc3714ced7f1e7452c9f90a",
+      "officialSha256": "3c2ca008726ac3b77a034958b3f5682c6903964a6e6fd4572da5f6ff7629b268",
+      "sourceSha256": "4442b97f40bb07856e5f20be0e23b648008383c5c76bdab5cbf0854757f4c1ed"
+    },
+    {
+      "id": "prod_timeline_continued_events",
+      "kind": "timeline",
+      "title": "Continued event stack",
+      "scenario": "Events on following lines attach to the most recent period.",
+      "aspectRatio": 1.4,
+      "features": [
+        "lr",
+        "continued-events",
+        "events"
+      ],
+      "expectedTexts": [
+        "Implementation",
+        "Accessibility review",
+        "Launch approval"
+      ],
+      "nativeFile": "prod_timeline_continued_events_native.png",
+      "officialFile": "prod_timeline_continued_events_official.png",
+      "nativeBytes": 20217,
+      "officialBytes": 17635,
+      "nativeSha256": "a9009decd35138610c2f48b54c7f33805eb209421b25db369c8f7af90b304b91",
+      "officialSha256": "ea02e22553ba7bbcd47a1f8bfac5ba60f150249d918ed9a255964e6f6e0b2dbc",
+      "sourceSha256": "9c035f55d1c8b534cb21b529677f0baf657e581420721aa23602ff463afa3e9f"
+    },
+    {
+      "id": "prod_timeline_industrial_sections",
+      "kind": "timeline",
+      "title": "Industrial eras",
+      "scenario": "Multiple sections group periods while preserving source order.",
+      "aspectRatio": 1.8,
+      "features": [
+        "lr",
+        "sections",
+        "html-breaks",
+        "unicode"
+      ],
+      "expectedTexts": [
+        "産業時代",
+        "17th-20th century",
+        "Industry 4.0"
+      ],
+      "nativeFile": "prod_timeline_industrial_sections_native.png",
+      "officialFile": "prod_timeline_industrial_sections_official.png",
+      "nativeBytes": 38106,
+      "officialBytes": 34413,
+      "nativeSha256": "abcd49428e3cc4fd957f84bcec3b969c054ebf16a65777256ae9b45ca5ad736f",
+      "officialSha256": "69664bb403af34c0001b86d84f34e6246f696729b9d1943a98a4f01b6150e1d2",
+      "sourceSha256": "ed5b4a4e9e79f0f378cb17b4177a252c9c87a15faf5cb4bb497c359e40c2859d"
+    },
+    {
+      "id": "prod_timeline_sectionless_palette",
+      "kind": "timeline",
+      "title": "Sectionless color rotation",
+      "scenario": "Periods without sections rotate through Mermaid color slots.",
+      "aspectRatio": 1.7,
+      "features": [
+        "lr",
+        "sectionless-colors",
+        "events",
+        "comments"
+      ],
+      "expectedTexts": [
+        "Discover",
+        "Deliver",
+        "Operate"
+      ],
+      "nativeFile": "prod_timeline_sectionless_palette_native.png",
+      "officialFile": "prod_timeline_sectionless_palette_official.png",
+      "nativeBytes": 18737,
+      "officialBytes": 19914,
+      "nativeSha256": "40020537ff8121dbd32908dbb9e61ea4f46c5bee35162dde6a274a089c19eb52",
+      "officialSha256": "5496be778300b7f7ae805de35c0ac77a14008aa7a1d8178623c0f6802ded5e04",
+      "sourceSha256": "d69d7683aea0fc261196b15d0e1a8ed629475fd66a5af22c5486164f8808b57a"
+    },
+    {
+      "id": "prod_timeline_disable_multicolor",
+      "kind": "timeline",
+      "title": "Monochrome sectionless timeline",
+      "scenario": "The timeline-specific switch keeps sectionless periods in one color slot.",
+      "aspectRatio": 1.7,
+      "features": [
+        "lr",
+        "disable-multicolor",
+        "frontmatter-config"
+      ],
+      "expectedTexts": [
+        "Plan",
+        "Build",
+        "Validate"
+      ],
+      "nativeFile": "prod_timeline_disable_multicolor_native.png",
+      "officialFile": "prod_timeline_disable_multicolor_official.png",
+      "nativeBytes": 16379,
+      "officialBytes": 14570,
+      "nativeSha256": "adbd32df1158b5402a17724fbbfb18c4dc412b0ddfe6b066a2318a5232f84d5e",
+      "officialSha256": "d0a8ce4b63b64bce61ed6832bdb56ea2bd15d127c89b9f1f86705fab91fb1b67",
+      "sourceSha256": "21e6d669abf84bffeb98ade200d7bb09a0c54da03c81015ca52743de2702f979"
+    },
+    {
+      "id": "prod_timeline_spacing_config",
+      "kind": "timeline",
+      "title": "Configured spacing",
+      "scenario": "Timeline padding, left margin, and intrinsic sizing come from frontmatter.",
+      "aspectRatio": 1.5,
+      "features": [
+        "lr",
+        "frontmatter-config",
+        "sections"
+      ],
+      "expectedTexts": [
+        "Configured spacing",
+        "Milestones",
+        "Production"
+      ],
+      "nativeFile": "prod_timeline_spacing_config_native.png",
+      "officialFile": "prod_timeline_spacing_config_official.png",
+      "nativeBytes": 25160,
+      "officialBytes": 22858,
+      "nativeSha256": "c772bc0ab10bf9bf199310e6ac5283bff8d86e5491289ab820d158b0893afbf7",
+      "officialSha256": "59ee4e4c63a1dd113349c76d50a1e7765e72f3a47158556cf6fed1049609f720",
+      "sourceSha256": "18579e60f4153051df3f66c8ec753d4204869fbee3e1d5d748fb64e3a22fa9ec"
+    },
+    {
+      "id": "prod_timeline_custom_colors",
+      "kind": "timeline",
+      "title": "Custom timeline colors",
+      "scenario": "Color scale variables style adjacent sections and their events.",
+      "aspectRatio": 1.6,
+      "features": [
+        "theme-colors",
+        "redux-theme",
+        "sections",
+        "events"
+      ],
+      "expectedTexts": [
+        "Custom timeline colors",
+        "Discovery",
+        "Delivery"
+      ],
+      "nativeFile": "prod_timeline_custom_colors_native.png",
+      "officialFile": "prod_timeline_custom_colors_official.png",
+      "nativeBytes": 29146,
+      "officialBytes": 28454,
+      "nativeSha256": "dffb7a5cde7486e11dda1d00b383e1ce76d1ff39351eef4273c14d1d59a5dcbf",
+      "officialSha256": "8374770aae8b8fd087788668c6cafc99217aa7321de96ef8a065fc06e4b9450d",
+      "sourceSha256": "4d42c71678ee8194259fa9d90090bf6735840d996b1d53944171cc0de7cb1ec3"
     },
     {
       "id": "rc_sequence_checkout_saga",
@@ -2989,9 +3546,9 @@
       "expectedTexts": [],
       "nativeFile": "rc_gitgraph_horizontal_labels_native.png",
       "officialFile": "rc_gitgraph_horizontal_labels_official.png",
-      "nativeBytes": 55147,
+      "nativeBytes": 53637,
       "officialBytes": 51894,
-      "nativeSha256": "523f3de1c5c670cbdc422ff315ceb0424fb30c56b01173e32c7e60210c1e6357",
+      "nativeSha256": "48cd2ec0fc34bf7cc1dc4130274f4b36bb9d9e51cbe535cd37aaeec74d14b3d3",
       "officialSha256": "c377262efb9a21fcd4e0982582469dc0f50f6d756b5197838af7460903c52909",
       "sourceSha256": "8a406ae2867890e6dde504df82df38a016ca69c2ed32bb82f42e10d70f81ee90"
     },
@@ -3171,9 +3728,9 @@
       ],
       "nativeFile": "prod_gitgraph_cherry_orientation_bottom_to_top_native.png",
       "officialFile": "prod_gitgraph_cherry_orientation_bottom_to_top_official.png",
-      "nativeBytes": 90605,
+      "nativeBytes": 92297,
       "officialBytes": 85481,
-      "nativeSha256": "2e62784073f462e1cff4d6674a539240904cb6b30db8bc7503befe4a1dc508b0",
+      "nativeSha256": "6be0887be2fef13095c429375551d0b2dec227c042053ab2d7bf43db0a6f205f",
       "officialSha256": "1bbe675768ecb4f996606894cb59a04cc41abb783e42807d8aaabeb5ed15b5f4",
       "sourceSha256": "7bf4f21eb4272a5eba4cf6e1414bb8f22fe1fb50c80415355191c470ddd5d8ea"
     },
@@ -3541,6 +4098,279 @@
       "nativeSha256": "8c2991477de46618de9551fa5ca8bc10b5c356c4d4e27be529b895d627f4f04e",
       "officialSha256": "154ef1709dd0e4219b3c5c81f2d460223a1b2314bdd94c476cf0a5739f2e8725",
       "sourceSha256": "d84aefc1efffd61a0ca7e3cb506b1a5cbed8eaa9b070d23e5d2b7da662c46930"
+    },
+    {
+      "id": "rc_kanban_release_workflow",
+      "kind": "kanban",
+      "title": "Release workflow board",
+      "scenario": "Three workflow stages organize delivery tasks in source order.",
+      "aspectRatio": 2.1,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_kanban_release_workflow_native.png",
+      "officialFile": "rc_kanban_release_workflow_official.png",
+      "nativeBytes": 49870,
+      "officialBytes": 44112,
+      "nativeSha256": "23bf16047c8caece2c8f4360641aef959312bb9e0d7f3f06576b8f9c230eec7f",
+      "officialSha256": "73e10666477d28e384411ac14ca97d5344f51e1a2ef0dbb821d61d46b2cd5dab",
+      "sourceSha256": "747a8b4745987a821d61cf29fcccd3717eda8dd66b0ad7b084da819eb7ac356f"
+    },
+    {
+      "id": "rc_kanban_priority_triage",
+      "kind": "kanban",
+      "title": "Priority triage board",
+      "scenario": "Ticket, assignee, and every supported priority marker render on task cards.",
+      "aspectRatio": 2,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_kanban_priority_triage_native.png",
+      "officialFile": "rc_kanban_priority_triage_official.png",
+      "nativeBytes": 67475,
+      "officialBytes": 57223,
+      "nativeSha256": "4ee13b0e8ab431f6915eac3e01695210050ff91d1bc3b5fe5526db3d0f67fb89",
+      "officialSha256": "80108004eccfc18e0a9892b57800f55b148145e9884803b935011b8c2271c52a",
+      "sourceSha256": "e3fdf3dbd601f5201cee841161662f23a6598a8526527909158b3a0694f38ae8"
+    },
+    {
+      "id": "rc_kanban_wrapped_empty_stage",
+      "kind": "kanban",
+      "title": "Wrapped tasks and empty stage",
+      "scenario": "Long task text wraps while an adjacent empty stage keeps its minimum height.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_kanban_wrapped_empty_stage_native.png",
+      "officialFile": "rc_kanban_wrapped_empty_stage_official.png",
+      "nativeBytes": 47646,
+      "officialBytes": 46748,
+      "nativeSha256": "3c6d4e6073bfa4ecc64659d8c1483d9273c6925169060acc7001bf49b7ec14f8",
+      "officialSha256": "fa75a549e2bc5215ec004c633d3849fec8bd2d149cb1ae891f1afdc1d025a8c5",
+      "sourceSha256": "9c9ad98d5c047fa100c583409f79b4ab84c5a6f7f73e45ecfdff7391573a986a"
+    },
+    {
+      "id": "rc_kanban_configured_links",
+      "kind": "kanban",
+      "title": "Configured linked tickets",
+      "scenario": "Section width, palette variables, classic look, and external ticket links combine.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_kanban_configured_links_native.png",
+      "officialFile": "rc_kanban_configured_links_official.png",
+      "nativeBytes": 30835,
+      "officialBytes": 27869,
+      "nativeSha256": "0cb27a385f624c0d5f14a5240aadeb18f87626c8c96f7b3b9654886fcc17ac20",
+      "officialSha256": "4347aeaa8cc8d38dd5f59589acd38c70afacdae2654de765d62533e219b76856",
+      "sourceSha256": "8d919a18eda6f50c723e8fa90ddfd093b3b9aeac61d58d080a352bdaf14a442f"
+    },
+    {
+      "id": "rc_kanban_unicode_indentation",
+      "kind": "kanban",
+      "title": "International nested board",
+      "scenario": "Unicode, comments, anonymous nodes, and deeper indentation share one board.",
+      "aspectRatio": 1.9,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_kanban_unicode_indentation_native.png",
+      "officialFile": "rc_kanban_unicode_indentation_official.png",
+      "nativeBytes": 38165,
+      "officialBytes": 36213,
+      "nativeSha256": "1ef23e3c396706d6d3bfb441f5ee173c7e1c59dffb8a8c6a250e2fec6b908719",
+      "officialSha256": "8147d2e47662337e3114be63282a2157338231a9deab01b308fc80cc04da991e",
+      "sourceSha256": "98c8556325a3aa7a48ce98f60e121eb40d8008aa352878efbd1b1cf320a40aae"
+    },
+    {
+      "id": "prod_kanban_delivery_board",
+      "kind": "kanban",
+      "title": "Delivery workflow",
+      "scenario": "Explicit stage and task identifiers form a three-column delivery board.",
+      "aspectRatio": 2.1,
+      "features": [
+        "sections",
+        "tasks",
+        "explicit-ids"
+      ],
+      "expectedTexts": [
+        "Backlog",
+        "Implement parser",
+        "Production release"
+      ],
+      "nativeFile": "prod_kanban_delivery_board_native.png",
+      "officialFile": "prod_kanban_delivery_board_official.png",
+      "nativeBytes": 41410,
+      "officialBytes": 38472,
+      "nativeSha256": "33b63af0995958f15f10508c35b4ac8d320e60fa3296c4bb9005bba1a3eaa185",
+      "officialSha256": "86085a572e033c49e72dd19f41929fbf034081c46f58397cf8ec3e88ad347423",
+      "sourceSha256": "5c7f957aea9e5b48aebc002cdbb41002c550a982fa2e958d4893fbf6a9943f07"
+    },
+    {
+      "id": "prod_kanban_anonymous_forms",
+      "kind": "kanban",
+      "title": "Anonymous and shaped labels",
+      "scenario": "Anonymous nodes and legacy shape delimiters retain their visible labels.",
+      "aspectRatio": 1.7,
+      "features": [
+        "anonymous-items",
+        "node-forms",
+        "tasks"
+      ],
+      "expectedTexts": [
+        "Planning",
+        "Rounded task",
+        "Hexagon task"
+      ],
+      "nativeFile": "prod_kanban_anonymous_forms_native.png",
+      "officialFile": "prod_kanban_anonymous_forms_official.png",
+      "nativeBytes": 48018,
+      "officialBytes": 40830,
+      "nativeSha256": "ff5d5e3b985e867042dbef451326215cadb0adedf8a3e7ba9ed9c1e691d5f20e",
+      "officialSha256": "2e9c75d9659e1cf3d37acdb9ed23770c4106ca3b59e211724e82d52047fe6d7f",
+      "sourceSha256": "a5944f791ef6b3fd14d9b5085a34cb8daac6e20b48ec471b18eb274504c11a2a"
+    },
+    {
+      "id": "prod_kanban_nested_comments",
+      "kind": "kanban",
+      "title": "Flattened nested tasks",
+      "scenario": "Deeper indentation and comments preserve task order in the current stage.",
+      "aspectRatio": 1.5,
+      "features": [
+        "deeper-indentation",
+        "comments",
+        "tasks"
+      ],
+      "expectedTexts": [
+        "Discovery",
+        "Interviews",
+        "Validated findings"
+      ],
+      "nativeFile": "prod_kanban_nested_comments_native.png",
+      "officialFile": "prod_kanban_nested_comments_official.png",
+      "nativeBytes": 55230,
+      "officialBytes": 46874,
+      "nativeSha256": "7925a7c9ecbd8109a194ec4b9b220af13891a3cfe16a6ad0f0a51676db5fcd74",
+      "officialSha256": "196b005580afa4d922ce1360b673c7df00154283dbb6f1696c06c9d8de89fe27",
+      "sourceSha256": "985606073404db7fee06bb020c3b3c2d9b3c3e76a6aa22ceffb432e283ade7f1"
+    },
+    {
+      "id": "prod_kanban_metadata",
+      "kind": "kanban",
+      "title": "Operational task metadata",
+      "scenario": "Ticket numbers, assignees, and all priority bands appear on task cards.",
+      "aspectRatio": 1.8,
+      "features": [
+        "ticket",
+        "assigned",
+        "priorities"
+      ],
+      "expectedTexts": [
+        "Incident response",
+        "OPS-401",
+        "Owner B"
+      ],
+      "nativeFile": "prod_kanban_metadata_native.png",
+      "officialFile": "prod_kanban_metadata_official.png",
+      "nativeBytes": 66430,
+      "officialBytes": 56886,
+      "nativeSha256": "2323e6940efac5fecffe7a64bba7105e2cf4d8a4791bf0e5200249afc023ab9e",
+      "officialSha256": "9b5d25a092fca39533575c8236b8e163da7fa4356a365dbb998af42fd52055fb",
+      "sourceSha256": "dfc6b273af4eb78672c77ac378930ec2606786e20a6f8d2c09770fbb12382a7b"
+    },
+    {
+      "id": "prod_kanban_ticket_links",
+      "kind": "kanban",
+      "title": "Linked delivery tickets",
+      "scenario": "A configured ticket URL creates external interactions for ticket labels.",
+      "aspectRatio": 1.7,
+      "features": [
+        "ticket",
+        "ticket-links",
+        "assigned"
+      ],
+      "expectedTexts": [
+        "Implementation",
+        "KB-501",
+        "Acceptance"
+      ],
+      "nativeFile": "prod_kanban_ticket_links_native.png",
+      "officialFile": "prod_kanban_ticket_links_official.png",
+      "nativeBytes": 35110,
+      "officialBytes": 33532,
+      "nativeSha256": "6553bf1060c7e31e68d3163f26d6339f039ee03f7478b8020525ac0f34a83e6c",
+      "officialSha256": "d5f364c02726898e4978754b211765007fb00187c8606a5e4140689cb349ee92",
+      "sourceSha256": "e7cd3fb79dd644d84ba2a7915f855994d272c4a21bf0de7b96d5c4785b835c5b"
+    },
+    {
+      "id": "prod_kanban_width_and_empty",
+      "kind": "kanban",
+      "title": "Configured columns",
+      "scenario": "Configured section width applies to wrapped cards and an empty stage.",
+      "aspectRatio": 1.9,
+      "features": [
+        "section-width",
+        "wrapped-labels",
+        "empty-sections"
+      ],
+      "expectedTexts": [
+        "Ready",
+        "deterministic rendering",
+        "Waiting"
+      ],
+      "nativeFile": "prod_kanban_width_and_empty_native.png",
+      "officialFile": "prod_kanban_width_and_empty_official.png",
+      "nativeBytes": 36518,
+      "officialBytes": 33436,
+      "nativeSha256": "3162c46fd70790622b58f01329ab2ac144fcb7ad7d3e177014906b7bd3178773",
+      "officialSha256": "115308660666fe69277f279d342968925262f9d15b61ee63531b65cfd0076397",
+      "sourceSha256": "2273ca5b258dee914f8c388cc971aa5f8501ec25fae6c14933786de14e0332c3"
+    },
+    {
+      "id": "prod_kanban_theme_markdown",
+      "kind": "kanban",
+      "title": "Themed markdown board",
+      "scenario": "Palette variables and Markdown emphasis style stages and card labels.",
+      "aspectRatio": 1.8,
+      "features": [
+        "theme-colors",
+        "markdown",
+        "sections"
+      ],
+      "expectedTexts": [
+        "Architecture",
+        "API contract",
+        "Visual review"
+      ],
+      "nativeFile": "prod_kanban_theme_markdown_native.png",
+      "officialFile": "prod_kanban_theme_markdown_official.png",
+      "nativeBytes": 29207,
+      "officialBytes": 25425,
+      "nativeSha256": "412b992000d58e134632efb5138311e0857438628a2c8ef0566911d5dbf4d5c0",
+      "officialSha256": "603bc61d663ec9197a0af0abaea0bfd5c49f07259274592be0c8591570c6887c",
+      "sourceSha256": "fc029a42f0d0872ea93eadb4234babdbf6243f3574e5114cac2fe17144387b47"
+    },
+    {
+      "id": "prod_kanban_unicode",
+      "kind": "kanban",
+      "title": "International workflow",
+      "scenario": "Unicode labels and metadata render in the same fixed-column layout.",
+      "aspectRatio": 1.8,
+      "features": [
+        "unicode",
+        "sections",
+        "assigned",
+        "ticket"
+      ],
+      "expectedTexts": [
+        "準備",
+        "東京で確認",
+        "서울 출시"
+      ],
+      "nativeFile": "prod_kanban_unicode_native.png",
+      "officialFile": "prod_kanban_unicode_official.png",
+      "nativeBytes": 28494,
+      "officialBytes": 27492,
+      "nativeSha256": "14e4d6a89f6da210c62cdb412732b4e2f8fbbbdd9a4a23782cddf1eadc447ffd",
+      "officialSha256": "17345b6a2c6056e599cd3aa6a68ac1889c5cc2a000c034edbd9fb5a2a388fc4a",
+      "sourceSha256": "3e15767e3f877dc5694d10cb97fbc729f660cdcbc19352452781253223ea515f"
     }
   ]
 }

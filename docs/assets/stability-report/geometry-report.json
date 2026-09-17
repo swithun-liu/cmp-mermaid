@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T07:24:02.458Z",
-  "inputDirectory": "captures/local/production-12",
+  "generatedAt": "2026-09-17T11:00:31.382Z",
+  "inputDirectory": "captures/local/production-15-merged",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 158,
+  "caseCount": 197,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -370,3334 +370,6 @@
       "widthRatio": 1.054054054054054,
       "heightRatio": 1.0256111757857975,
       "inkRatio": 1.203065134099617
-    },
-    {
-      "id": "rc_xy_service_latency",
-      "kind": "xychart",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 268987,
-        "inkRatio": 0.24906203703703703,
-        "contentBounds": {
-          "x": 40,
-          "y": 63,
-          "width": 1115,
-          "height": 784
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 240736,
-        "inkRatio": 0.22290370370370372,
-        "contentBounds": {
-          "x": 47,
-          "y": 65,
-          "width": 1101,
-          "height": 776
-        }
-      },
-      "widthRatio": 1.0127157129881925,
-      "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.1173526186361822
-    },
-    {
-      "id": "rc_xy_checkout_conversion",
-      "kind": "xychart",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 299827,
-        "inkRatio": 0.2776175925925926,
-        "contentBounds": {
-          "x": 37,
-          "y": 63,
-          "width": 1118,
-          "height": 796
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 287672,
-        "inkRatio": 0.26636296296296297,
-        "contentBounds": {
-          "x": 43,
-          "y": 65,
-          "width": 1104,
-          "height": 789
-        }
-      },
-      "widthRatio": 1.0126811594202898,
-      "heightRatio": 1.008871989860583,
-      "inkRatio": 1.0422529825634752
-    },
-    {
-      "id": "rc_xy_capacity_forecast",
-      "kind": "xychart",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 255643,
-        "inkRatio": 0.2367064814814815,
-        "contentBounds": {
-          "x": 40,
-          "y": 63,
-          "width": 1116,
-          "height": 788
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 261247,
-        "inkRatio": 0.24189537037037037,
-        "contentBounds": {
-          "x": 47,
-          "y": 65,
-          "width": 1102,
-          "height": 780
-        }
-      },
-      "widthRatio": 1.012704174228675,
-      "heightRatio": 1.0102564102564102,
-      "inkRatio": 0.978549035969791
-    },
-    {
-      "id": "rc_xy_queue_backlog",
-      "kind": "xychart",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 240750,
-        "inkRatio": 0.22291666666666668,
-        "contentBounds": {
-          "x": 40,
-          "y": 63,
-          "width": 1116,
-          "height": 784
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 229662,
-        "inkRatio": 0.21265,
-        "contentBounds": {
-          "x": 47,
-          "y": 65,
-          "width": 1101,
-          "height": 776
-        }
-      },
-      "widthRatio": 1.013623978201635,
-      "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.048279645740262
-    },
-    {
-      "id": "rc_xy_error_budget",
-      "kind": "xychart",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 32764,
-        "inkRatio": 0.030337037037037037,
-        "contentBounds": {
-          "x": 40,
-          "y": 63,
-          "width": 1115,
-          "height": 784
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 34621,
-        "inkRatio": 0.032056481481481484,
-        "contentBounds": {
-          "x": 47,
-          "y": 65,
-          "width": 1102,
-          "height": 776
-        }
-      },
-      "widthRatio": 1.0117967332123412,
-      "heightRatio": 1.0103092783505154,
-      "inkRatio": 0.9463620346032754
-    },
-    {
-      "id": "rc_sequence_checkout_saga",
-      "kind": "sequence",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 103592,
-        "inkRatio": 0.09591851851851851,
-        "contentBounds": {
-          "x": 85,
-          "y": 53,
-          "width": 1069,
-          "height": 796
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 97125,
-        "inkRatio": 0.08993055555555556,
-        "contentBounds": {
-          "x": 132,
-          "y": 31,
-          "width": 969,
-          "height": 818
-        }
-      },
-      "widthRatio": 1.1031991744066048,
-      "heightRatio": 0.9731051344743277,
-      "inkRatio": 1.0665842985842986
-    },
-    {
-      "id": "rc_sequence_oauth_refresh",
-      "kind": "sequence",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 78473,
-        "inkRatio": 0.07266018518518519,
-        "contentBounds": {
-          "x": 209,
-          "y": 15,
-          "width": 784,
-          "height": 872
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 62620,
-        "inkRatio": 0.05798148148148148,
-        "contentBounds": {
-          "x": 265,
-          "y": 29,
-          "width": 673,
-          "height": 824
-        }
-      },
-      "widthRatio": 1.1649331352154533,
-      "heightRatio": 1.058252427184466,
-      "inkRatio": 1.2531619290961356
-    },
-    {
-      "id": "rc_sequence_media_upload",
-      "kind": "sequence",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 68662,
-        "inkRatio": 0.06357592592592592,
-        "contentBounds": {
-          "x": 224,
-          "y": 14,
-          "width": 791,
-          "height": 874
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 55963,
-        "inkRatio": 0.051817592592592596,
-        "contentBounds": {
-          "x": 272,
-          "y": 28,
-          "width": 686,
-          "height": 828
-        }
-      },
-      "widthRatio": 1.153061224489796,
-      "heightRatio": 1.0555555555555556,
-      "inkRatio": 1.226917784965066
-    },
-    {
-      "id": "rc_sequence_webhook_retry",
-      "kind": "sequence",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 105596,
-        "inkRatio": 0.09777407407407407,
-        "contentBounds": {
-          "x": 54,
-          "y": 22,
-          "width": 1094,
-          "height": 858
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 84514,
-        "inkRatio": 0.0782537037037037,
-        "contentBounds": {
-          "x": 144,
-          "y": 32,
-          "width": 914,
-          "height": 814
-        }
-      },
-      "widthRatio": 1.1969365426695842,
-      "heightRatio": 1.054054054054054,
-      "inkRatio": 1.2494497953001868
-    },
-    {
-      "id": "rc_sequence_realtime_sync",
-      "kind": "sequence",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 86277,
-        "inkRatio": 0.07988611111111112,
-        "contentBounds": {
-          "x": 92,
-          "y": 77,
-          "width": 1064,
-          "height": 748
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 74856,
-        "inkRatio": 0.06931111111111112,
-        "contentBounds": {
-          "x": 96,
-          "y": 64,
-          "width": 1049,
-          "height": 753
-        }
-      },
-      "widthRatio": 1.0142993326978074,
-      "heightRatio": 0.9933598937583001,
-      "inkRatio": 1.152572940044886
-    },
-    {
-      "id": "rc_sequence_cache_stampede",
-      "kind": "sequence",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 77479,
-        "inkRatio": 0.07173981481481481,
-        "contentBounds": {
-          "x": 198,
-          "y": 15,
-          "width": 806,
-          "height": 872
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 60014,
-        "inkRatio": 0.05556851851851852,
-        "contentBounds": {
-          "x": 275,
-          "y": 30,
-          "width": 652,
-          "height": 821
-        }
-      },
-      "widthRatio": 1.2361963190184049,
-      "heightRatio": 1.0621193666260658,
-      "inkRatio": 1.2910154297330623
-    },
-    {
-      "id": "rc_class_commerce_domain",
-      "kind": "class",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 150813,
-        "inkRatio": 0.13964166666666666,
-        "contentBounds": {
-          "x": 16,
-          "y": 18,
-          "width": 1171,
-          "height": 867
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 161793,
-        "inkRatio": 0.14980833333333332,
-        "contentBounds": {
-          "x": 35,
-          "y": 38,
-          "width": 1134,
-          "height": 828
-        }
-      },
-      "widthRatio": 1.0326278659611994,
-      "heightRatio": 1.0471014492753623,
-      "inkRatio": 0.9321355064805029
-    },
-    {
-      "id": "rc_class_workflow_engine",
-      "kind": "class",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 136629,
-        "inkRatio": 0.12650833333333333,
-        "contentBounds": {
-          "x": 71,
-          "y": 15,
-          "width": 1058,
-          "height": 870
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 161278,
-        "inkRatio": 0.14933148148148148,
-        "contentBounds": {
-          "x": 58,
-          "y": 33,
-          "width": 1087,
-          "height": 837
-        }
-      },
-      "widthRatio": 0.9733210671573137,
-      "heightRatio": 1.039426523297491,
-      "inkRatio": 0.8471645233695855
-    },
-    {
-      "id": "rc_class_authorization_model",
-      "kind": "class",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 119251,
-        "inkRatio": 0.1104175925925926,
-        "contentBounds": {
-          "x": 213,
-          "y": 15,
-          "width": 777,
-          "height": 873
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 118389,
-        "inkRatio": 0.10961944444444445,
-        "contentBounds": {
-          "x": 235,
-          "y": 32,
-          "width": 733,
-          "height": 839
-        }
-      },
-      "widthRatio": 1.0600272851296044,
-      "heightRatio": 1.0405244338498212,
-      "inkRatio": 1.007281081857267
-    },
-    {
-      "id": "rc_class_notification_platform",
-      "kind": "class",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 159298,
-        "inkRatio": 0.14749814814814816,
-        "contentBounds": {
-          "x": 15,
-          "y": 183,
-          "width": 1173,
-          "height": 536
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 165777,
-        "inkRatio": 0.15349722222222223,
-        "contentBounds": {
-          "x": 32,
-          "y": 179,
-          "width": 1139,
-          "height": 545
-        }
-      },
-      "widthRatio": 1.0298507462686568,
-      "heightRatio": 0.9834862385321101,
-      "inkRatio": 0.9609173769582029
-    },
-    {
-      "id": "rc_class_document_editor",
-      "kind": "class",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 147225,
-        "inkRatio": 0.13631944444444444,
-        "contentBounds": {
-          "x": 15,
-          "y": 190,
-          "width": 1173,
-          "height": 522
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 148166,
-        "inkRatio": 0.13719074074074075,
-        "contentBounds": {
-          "x": 32,
-          "y": 203,
-          "width": 1139,
-          "height": 497
-        }
-      },
-      "widthRatio": 1.0298507462686568,
-      "heightRatio": 1.0503018108651911,
-      "inkRatio": 0.993649015293657
-    },
-    {
-      "id": "rc_state_order_fulfillment",
-      "kind": "state",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 76799,
-        "inkRatio": 0.07111018518518518,
-        "contentBounds": {
-          "x": 141,
-          "y": 14,
-          "width": 917,
-          "height": 874
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 52738,
-        "inkRatio": 0.04883148148148148,
-        "contentBounds": {
-          "x": 197,
-          "y": 31,
-          "width": 805,
-          "height": 839
-        }
-      },
-      "widthRatio": 1.1391304347826088,
-      "heightRatio": 1.0417163289630513,
-      "inkRatio": 1.4562364898175886
-    },
-    {
-      "id": "rc_state_payment_transaction",
-      "kind": "state",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 55151,
-        "inkRatio": 0.05106574074074074,
-        "contentBounds": {
-          "x": 276,
-          "y": 13,
-          "width": 651,
-          "height": 876
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 40355,
-        "inkRatio": 0.03736574074074074,
-        "contentBounds": {
-          "x": 306,
-          "y": 30,
-          "width": 591,
-          "height": 841
-        }
-      },
-      "widthRatio": 1.101522842639594,
-      "heightRatio": 1.0416171224732462,
-      "inkRatio": 1.3666460166026513
-    },
-    {
-      "id": "rc_state_deployment_rollout",
-      "kind": "state",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 26920,
-        "inkRatio": 0.024925925925925924,
-        "contentBounds": {
-          "x": 449,
-          "y": 12,
-          "width": 302,
-          "height": 878
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 19955,
-        "inkRatio": 0.018476851851851852,
-        "contentBounds": {
-          "x": 481,
-          "y": 24,
-          "width": 237,
-          "height": 853
-        }
-      },
-      "widthRatio": 1.2742616033755274,
-      "heightRatio": 1.0293083235638922,
-      "inkRatio": 1.3490353294913555
-    },
-    {
-      "id": "rc_state_media_processing",
-      "kind": "state",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 73133,
-        "inkRatio": 0.06771574074074074,
-        "contentBounds": {
-          "x": 139,
-          "y": 14,
-          "width": 924,
-          "height": 874
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 54417,
-        "inkRatio": 0.05038611111111111,
-        "contentBounds": {
-          "x": 162,
-          "y": 33,
-          "width": 879,
-          "height": 836
-        }
-      },
-      "widthRatio": 1.0511945392491469,
-      "heightRatio": 1.0454545454545454,
-      "inkRatio": 1.3439366374478565
-    },
-    {
-      "id": "rc_state_support_ticket",
-      "kind": "state",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 72306,
-        "inkRatio": 0.06695,
-        "contentBounds": {
-          "x": 16,
-          "y": 88,
-          "width": 1168,
-          "height": 726
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 71139,
-        "inkRatio": 0.06586944444444444,
-        "contentBounds": {
-          "x": 37,
-          "y": 46,
-          "width": 1131,
-          "height": 812
-        }
-      },
-      "widthRatio": 1.032714412024757,
-      "heightRatio": 0.8940886699507389,
-      "inkRatio": 1.016404503858643
-    },
-    {
-      "id": "rc_er_commerce_platform",
-      "kind": "er",
-      "native": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 44981,
-        "inkRatio": 0.0555320987654321,
-        "contentBounds": {
-          "x": 12,
-          "y": 200,
-          "width": 878,
-          "height": 502
-        }
-      },
-      "official": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 78658,
-        "inkRatio": 0.09710864197530865,
-        "contentBounds": {
-          "x": 26,
-          "y": 171,
-          "width": 850,
-          "height": 560
-        }
-      },
-      "widthRatio": 1.0329411764705883,
-      "heightRatio": 0.8964285714285715,
-      "inkRatio": 0.5718553738971243
-    },
-    {
-      "id": "rc_er_learning_platform",
-      "kind": "er",
-      "native": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 74083,
-        "inkRatio": 0.0914604938271605,
-        "contentBounds": {
-          "x": 14,
-          "y": 66,
-          "width": 875,
-          "height": 770
-        }
-      },
-      "official": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 135059,
-        "inkRatio": 0.1667395061728395,
-        "contentBounds": {
-          "x": 36,
-          "y": 29,
-          "width": 832,
-          "height": 845
-        }
-      },
-      "widthRatio": 1.0516826923076923,
-      "heightRatio": 0.9112426035502958,
-      "inkRatio": 0.5485232379922849
-    },
-    {
-      "id": "rc_er_messaging_system",
-      "kind": "er",
-      "native": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 67377,
-        "inkRatio": 0.08318148148148148,
-        "contentBounds": {
-          "x": 13,
-          "y": 214,
-          "width": 876,
-          "height": 474
-        }
-      },
-      "official": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 115981,
-        "inkRatio": 0.1431864197530864,
-        "contentBounds": {
-          "x": 30,
-          "y": 187,
-          "width": 843,
-          "height": 529
-        }
-      },
-      "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.8960302457466919,
-      "inkRatio": 0.580931359446806
-    },
-    {
-      "id": "rc_er_subscription_billing",
-      "kind": "er",
-      "native": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 75721,
-        "inkRatio": 0.09348271604938271,
-        "contentBounds": {
-          "x": 14,
-          "y": 176,
-          "width": 874,
-          "height": 551
-        }
-      },
-      "official": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 146031,
-        "inkRatio": 0.1802851851851852,
-        "contentBounds": {
-          "x": 31,
-          "y": 143,
-          "width": 841,
-          "height": 617
-        }
-      },
-      "widthRatio": 1.0392390011890607,
-      "heightRatio": 0.893030794165316,
-      "inkRatio": 0.5185268881264937
-    },
-    {
-      "id": "rc_er_inventory_network",
-      "kind": "er",
-      "native": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 43903,
-        "inkRatio": 0.054201234567901234,
-        "contentBounds": {
-          "x": 12,
-          "y": 272,
-          "width": 877,
-          "height": 357
-        }
-      },
-      "official": {
-        "width": 900,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 73786,
-        "inkRatio": 0.09109382716049383,
-        "contentBounds": {
-          "x": 27,
-          "y": 251,
-          "width": 848,
-          "height": 400
-        }
-      },
-      "widthRatio": 1.034198113207547,
-      "heightRatio": 0.8925,
-      "inkRatio": 0.5950044723931369
-    },
-    {
-      "id": "rc_gantt_mobile_release",
-      "kind": "gantt",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 231357,
-        "inkRatio": 0.21421944444444443,
-        "contentBounds": {
-          "x": 8,
-          "y": 243,
-          "width": 1147,
-          "height": 398
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 226535,
-        "inkRatio": 0.20975462962962962,
-        "contentBounds": {
-          "x": 28,
-          "y": 230,
-          "width": 1106,
-          "height": 414
-        }
-      },
-      "widthRatio": 1.0370705244122966,
-      "heightRatio": 0.961352657004831,
-      "inkRatio": 1.021285894011963
-    },
-    {
-      "id": "rc_gantt_database_migration",
-      "kind": "gantt",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 190423,
-        "inkRatio": 0.17631759259259258,
-        "contentBounds": {
-          "x": 8,
-          "y": 278,
-          "width": 1147,
-          "height": 328
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 186998,
-        "inkRatio": 0.1731462962962963,
-        "contentBounds": {
-          "x": 28,
-          "y": 266,
-          "width": 1106,
-          "height": 343
-        }
-      },
-      "widthRatio": 1.0370705244122966,
-      "heightRatio": 0.956268221574344,
-      "inkRatio": 1.0183157039112718
-    },
-    {
-      "id": "rc_gantt_regional_launch",
-      "kind": "gantt",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 164886,
-        "inkRatio": 0.1526722222222222,
-        "contentBounds": {
-          "x": 8,
-          "y": 278,
-          "width": 1147,
-          "height": 328
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 162537,
-        "inkRatio": 0.15049722222222223,
-        "contentBounds": {
-          "x": 28,
-          "y": 266,
-          "width": 1106,
-          "height": 343
-        }
-      },
-      "widthRatio": 1.0370705244122966,
-      "heightRatio": 0.956268221574344,
-      "inkRatio": 1.014452093984754
-    },
-    {
-      "id": "rc_gantt_incident_hardening",
-      "kind": "gantt",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 154690,
-        "inkRatio": 0.1432314814814815,
-        "contentBounds": {
-          "x": 8,
-          "y": 290,
-          "width": 1147,
-          "height": 304
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 152421,
-        "inkRatio": 0.14113055555555556,
-        "contentBounds": {
-          "x": 28,
-          "y": 278,
-          "width": 1106,
-          "height": 318
-        }
-      },
-      "widthRatio": 1.0370705244122966,
-      "heightRatio": 0.9559748427672956,
-      "inkRatio": 1.0148864001679558
-    },
-    {
-      "id": "rc_gantt_data_platform_upgrade",
-      "kind": "gantt",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 166163,
-        "inkRatio": 0.15385462962962962,
-        "contentBounds": {
-          "x": 8,
-          "y": 278,
-          "width": 1147,
-          "height": 329
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 163499,
-        "inkRatio": 0.15138796296296297,
-        "contentBounds": {
-          "x": 28,
-          "y": 266,
-          "width": 1106,
-          "height": 344
-        }
-      },
-      "widthRatio": 1.0370705244122966,
-      "heightRatio": 0.9563953488372093,
-      "inkRatio": 1.016293677637172
-    },
-    {
-      "id": "rc_pie_cloud_cost",
-      "kind": "pie",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 299719,
-        "inkRatio": 0.27751759259259257,
-        "contentBounds": {
-          "x": 74,
-          "y": 73,
-          "width": 1030,
-          "height": 705
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 277816,
-        "inkRatio": 0.25723703703703704,
-        "contentBounds": {
-          "x": 99,
-          "y": 84,
-          "width": 981,
-          "height": 679
-        }
-      },
-      "widthRatio": 1.0499490316004076,
-      "heightRatio": 1.0382916053019147,
-      "inkRatio": 1.0788399516226566
-    },
-    {
-      "id": "rc_pie_traffic_sources",
-      "kind": "pie",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 200789,
-        "inkRatio": 0.18591574074074074,
-        "contentBounds": {
-          "x": 307,
-          "y": 21,
-          "width": 529,
-          "height": 841
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 181187,
-        "inkRatio": 0.16776574074074074,
-        "contentBounds": {
-          "x": 323,
-          "y": 40,
-          "width": 500,
-          "height": 800
-        }
-      },
-      "widthRatio": 1.058,
-      "heightRatio": 1.05125,
-      "inkRatio": 1.1081865696766324
-    },
-    {
-      "id": "rc_pie_incident_causes",
-      "kind": "pie",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 304836,
-        "inkRatio": 0.28225555555555554,
-        "contentBounds": {
-          "x": 72,
-          "y": 84,
-          "width": 1035,
-          "height": 684
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 278409,
-        "inkRatio": 0.2577861111111111,
-        "contentBounds": {
-          "x": 96,
-          "y": 97,
-          "width": 987,
-          "height": 655
-        }
-      },
-      "widthRatio": 1.0486322188449848,
-      "heightRatio": 1.0442748091603054,
-      "inkRatio": 1.0949215003825308
-    },
-    {
-      "id": "rc_pie_subscription_mix",
-      "kind": "pie",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 268264,
-        "inkRatio": 0.24839259259259258,
-        "contentBounds": {
-          "x": 193,
-          "y": 27,
-          "width": 736,
-          "height": 791
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 236358,
-        "inkRatio": 0.21885,
-        "contentBounds": {
-          "x": 220,
-          "y": 49,
-          "width": 686,
-          "height": 744
-        }
-      },
-      "widthRatio": 1.0728862973760933,
-      "heightRatio": 1.0631720430107527,
-      "inkRatio": 1.1349901420726187
-    },
-    {
-      "id": "rc_pie_storage_allocation",
-      "kind": "pie",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 326065,
-        "inkRatio": 0.30191203703703706,
-        "contentBounds": {
-          "x": 39,
-          "y": 58,
-          "width": 1012,
-          "height": 733
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 300731,
-        "inkRatio": 0.27845462962962964,
-        "contentBounds": {
-          "x": 67,
-          "y": 69,
-          "width": 961,
-          "height": 707
-        }
-      },
-      "widthRatio": 1.0530697190426639,
-      "heightRatio": 1.0367751060820367,
-      "inkRatio": 1.0842413984590882
-    },
-    {
-      "id": "rc_journey_account_onboarding",
-      "kind": "journey",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 42690,
-        "inkRatio": 0.03952777777777778,
-        "contentBounds": {
-          "x": 14,
-          "y": 315,
-          "width": 1044,
-          "height": 234
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 42206,
-        "inkRatio": 0.03907962962962963,
-        "contentBounds": {
-          "x": 28,
-          "y": 328,
-          "width": 1020,
-          "height": 224
-        }
-      },
-      "widthRatio": 1.0235294117647058,
-      "heightRatio": 1.0446428571428572,
-      "inkRatio": 1.0114675638534805
-    },
-    {
-      "id": "rc_journey_incident_response",
-      "kind": "journey",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 36612,
-        "inkRatio": 0.0339,
-        "contentBounds": {
-          "x": 13,
-          "y": 330,
-          "width": 1042,
-          "height": 208
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 35893,
-        "inkRatio": 0.03323425925925926,
-        "contentBounds": {
-          "x": 26,
-          "y": 340,
-          "width": 1019,
-          "height": 202
-        }
-      },
-      "widthRatio": 1.0225711481844946,
-      "heightRatio": 1.0297029702970297,
-      "inkRatio": 1.0200317610676175
-    },
-    {
-      "id": "rc_journey_checkout_recovery",
-      "kind": "journey",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 40370,
-        "inkRatio": 0.03737962962962963,
-        "contentBounds": {
-          "x": 14,
-          "y": 317,
-          "width": 1037,
-          "height": 230
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 38859,
-        "inkRatio": 0.03598055555555556,
-        "contentBounds": {
-          "x": 27,
-          "y": 329,
-          "width": 1016,
-          "height": 222
-        }
-      },
-      "widthRatio": 1.0206692913385826,
-      "heightRatio": 1.0360360360360361,
-      "inkRatio": 1.0388841709771224
-    },
-    {
-      "id": "rc_journey_release_coordination",
-      "kind": "journey",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 39606,
-        "inkRatio": 0.036672222222222224,
-        "contentBounds": {
-          "x": 13,
-          "y": 323,
-          "width": 1064,
-          "height": 220
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 39100,
-        "inkRatio": 0.0362037037037037,
-        "contentBounds": {
-          "x": 27,
-          "y": 335,
-          "width": 1042,
-          "height": 212
-        }
-      },
-      "widthRatio": 1.021113243761996,
-      "heightRatio": 1.0377358490566038,
-      "inkRatio": 1.0129411764705882
-    },
-    {
-      "id": "rc_journey_privileged_access",
-      "kind": "journey",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 36773,
-        "inkRatio": 0.03404907407407407,
-        "contentBounds": {
-          "x": 13,
-          "y": 329,
-          "width": 1045,
-          "height": 210
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 36080,
-        "inkRatio": 0.033407407407407406,
-        "contentBounds": {
-          "x": 26,
-          "y": 339,
-          "width": 1022,
-          "height": 203
-        }
-      },
-      "widthRatio": 1.022504892367906,
-      "heightRatio": 1.0344827586206897,
-      "inkRatio": 1.0192073170731708
-    },
-    {
-      "id": "rc_requirement_checkout_assurance",
-      "kind": "requirement",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 96786,
-        "inkRatio": 0.08961666666666666,
-        "contentBounds": {
-          "x": 14,
-          "y": 221,
-          "width": 1174,
-          "height": 460
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 101325,
-        "inkRatio": 0.09381944444444444,
-        "contentBounds": {
-          "x": 32,
-          "y": 224,
-          "width": 1139,
-          "height": 455
-        }
-      },
-      "widthRatio": 1.0307287093942055,
-      "heightRatio": 1.010989010989011,
-      "inkRatio": 0.9552035529237601
-    },
-    {
-      "id": "rc_requirement_device_safety",
-      "kind": "requirement",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 215950,
-        "inkRatio": 0.19995370370370372,
-        "contentBounds": {
-          "x": 17,
-          "y": 32,
-          "width": 1170,
-          "height": 841
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 218650,
-        "inkRatio": 0.2024537037037037,
-        "contentBounds": {
-          "x": 40,
-          "y": 40,
-          "width": 1125,
-          "height": 824
-        }
-      },
-      "widthRatio": 1.04,
-      "heightRatio": 1.020631067961165,
-      "inkRatio": 0.9876514978275784
-    },
-    {
-      "id": "rc_requirement_data_retention",
-      "kind": "requirement",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 98555,
-        "inkRatio": 0.09125462962962963,
-        "contentBounds": {
-          "x": 14,
-          "y": 222,
-          "width": 1174,
-          "height": 459
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 101868,
-        "inkRatio": 0.09432222222222222,
-        "contentBounds": {
-          "x": 32,
-          "y": 225,
-          "width": 1139,
-          "height": 453
-        }
-      },
-      "widthRatio": 1.0307287093942055,
-      "heightRatio": 1.0132450331125828,
-      "inkRatio": 0.9674775199277497
-    },
-    {
-      "id": "rc_requirement_failover_evidence",
-      "kind": "requirement",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 137797,
-        "inkRatio": 0.12758981481481482,
-        "contentBounds": {
-          "x": 141,
-          "y": 15,
-          "width": 921,
-          "height": 873
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 134661,
-        "inkRatio": 0.12468611111111111,
-        "contentBounds": {
-          "x": 170,
-          "y": 34,
-          "width": 864,
-          "height": 835
-        }
-      },
-      "widthRatio": 1.0659722222222223,
-      "heightRatio": 1.0455089820359282,
-      "inkRatio": 1.0232881086580377
-    },
-    {
-      "id": "rc_requirement_access_controls",
-      "kind": "requirement",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 188091,
-        "inkRatio": 0.17415833333333333,
-        "contentBounds": {
-          "x": 13,
-          "y": 285,
-          "width": 1173,
-          "height": 334
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 171796,
-        "inkRatio": 0.15907037037037036,
-        "contentBounds": {
-          "x": 31,
-          "y": 292,
-          "width": 1137,
-          "height": 319
-        }
-      },
-      "widthRatio": 1.0316622691292876,
-      "heightRatio": 1.0470219435736676,
-      "inkRatio": 1.0948508696360801
-    },
-    {
-      "id": "rc_gitgraph_release_train",
-      "kind": "gitgraph",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 67688,
-        "inkRatio": 0.06267407407407408,
-        "contentBounds": {
-          "x": 20,
-          "y": 148,
-          "width": 1159,
-          "height": 599
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 61419,
-        "inkRatio": 0.056869444444444445,
-        "contentBounds": {
-          "x": 46,
-          "y": 161,
-          "width": 1106,
-          "height": 572
-        }
-      },
-      "widthRatio": 1.0479204339963835,
-      "heightRatio": 1.0472027972027973,
-      "inkRatio": 1.102069392207623
-    },
-    {
-      "id": "rc_gitgraph_parallel_bottom_to_top",
-      "kind": "gitgraph",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 97494,
-        "inkRatio": 0.09027222222222223,
-        "contentBounds": {
-          "x": 173,
-          "y": 28,
-          "width": 882,
-          "height": 853
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 84282,
-        "inkRatio": 0.0780388888888889,
-        "contentBounds": {
-          "x": 213,
-          "y": 65,
-          "width": 808,
-          "height": 781
-        }
-      },
-      "widthRatio": 1.0915841584158417,
-      "heightRatio": 1.092189500640205,
-      "inkRatio": 1.1567594504164591
-    },
-    {
-      "id": "rc_gitgraph_ordered_top_to_bottom",
-      "kind": "gitgraph",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 61732,
-        "inkRatio": 0.05715925925925926,
-        "contentBounds": {
-          "x": 227,
-          "y": 22,
-          "width": 752,
-          "height": 838
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 57480,
-        "inkRatio": 0.05322222222222222,
-        "contentBounds": {
-          "x": 249,
-          "y": 52,
-          "width": 709,
-          "height": 780
-        }
-      },
-      "widthRatio": 1.0606488011283497,
-      "heightRatio": 1.0743589743589743,
-      "inkRatio": 1.073973556019485
-    },
-    {
-      "id": "rc_gitgraph_metadata_and_theme",
-      "kind": "gitgraph",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          244,
-          244,
-          244,
-          255
-        ],
-        "backgroundColors": [
-          [
-            244,
-            244,
-            244,
-            255
-          ],
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 111435,
-        "inkRatio": 0.10318055555555555,
-        "contentBounds": {
-          "x": 31,
-          "y": 164,
-          "width": 1132,
-          "height": 562
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          244,
-          244,
-          244,
-          255
-        ],
-        "backgroundColors": [
-          [
-            244,
-            244,
-            244,
-            255
-          ],
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 100016,
-        "inkRatio": 0.0926074074074074,
-        "contentBounds": {
-          "x": 69,
-          "y": 187,
-          "width": 1054,
-          "height": 521
-        }
-      },
-      "widthRatio": 1.0740037950664136,
-      "heightRatio": 1.0786948176583493,
-      "inkRatio": 1.1141717325227964
-    },
-    {
-      "id": "rc_gitgraph_horizontal_labels",
-      "kind": "gitgraph",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 54453,
-        "inkRatio": 0.05041944444444445,
-        "contentBounds": {
-          "x": 20,
-          "y": 239,
-          "width": 1157,
-          "height": 415
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 41605,
-        "inkRatio": 0.03852314814814815,
-        "contentBounds": {
-          "x": 72,
-          "y": 254,
-          "width": 1057,
-          "height": 387
-        }
-      },
-      "widthRatio": 1.0946073793755913,
-      "heightRatio": 1.0723514211886305,
-      "inkRatio": 1.3088090373753156
-    },
-    {
-      "id": "rc_mindmap_product_strategy",
-      "kind": "mindmap",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 120236,
-        "inkRatio": 0.11132962962962963,
-        "contentBounds": {
-          "x": 17,
-          "y": 211,
-          "width": 1168,
-          "height": 480
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 158469,
-        "inkRatio": 0.14673055555555556,
-        "contentBounds": {
-          "x": 36,
-          "y": 172,
-          "width": 1130,
-          "height": 561
-        }
-      },
-      "widthRatio": 1.033628318584071,
-      "heightRatio": 0.8556149732620321,
-      "inkRatio": 0.7587351469372559
-    },
-    {
-      "id": "rc_mindmap_incident_response",
-      "kind": "mindmap",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 32575,
-        "inkRatio": 0.030162037037037036,
-        "contentBounds": {
-          "x": 12,
-          "y": 365,
-          "width": 1177,
-          "height": 171
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 36615,
-        "inkRatio": 0.033902777777777775,
-        "contentBounds": {
-          "x": 25,
-          "y": 363,
-          "width": 1151,
-          "height": 176
-        }
-      },
-      "widthRatio": 1.0225890529973936,
-      "heightRatio": 0.9715909090909091,
-      "inkRatio": 0.8896627065410352
-    },
-    {
-      "id": "rc_mindmap_platform_architecture",
-      "kind": "mindmap",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 106905,
-        "inkRatio": 0.09898611111111111,
-        "contentBounds": {
-          "x": 17,
-          "y": 318,
-          "width": 1168,
-          "height": 267
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 125604,
-        "inkRatio": 0.1163,
-        "contentBounds": {
-          "x": 35,
-          "y": 303,
-          "width": 1132,
-          "height": 299
-        }
-      },
-      "widthRatio": 1.0318021201413428,
-      "heightRatio": 0.8929765886287625,
-      "inkRatio": 0.8511273526320817
-    },
-    {
-      "id": "rc_mindmap_shape_and_text_matrix",
-      "kind": "mindmap",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 196522,
-        "inkRatio": 0.1819648148148148,
-        "contentBounds": {
-          "x": 113,
-          "y": 18,
-          "width": 976,
-          "height": 867
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          255,
-          255,
-          255,
-          255
-        ],
-        "backgroundColors": [
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 223680,
-        "inkRatio": 0.2071111111111111,
-        "contentBounds": {
-          "x": 77,
-          "y": 38,
-          "width": 1049,
-          "height": 831
-        }
-      },
-      "widthRatio": 0.9304099142040038,
-      "heightRatio": 1.0433212996389891,
-      "inkRatio": 0.8785854792560801
-    },
-    {
-      "id": "rc_mindmap_governance_theme",
-      "kind": "mindmap",
-      "native": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          244,
-          244,
-          244,
-          255
-        ],
-        "backgroundColors": [
-          [
-            244,
-            244,
-            244,
-            255
-          ],
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 53871,
-        "inkRatio": 0.04988055555555555,
-        "contentBounds": {
-          "x": 18,
-          "y": 312,
-          "width": 1165,
-          "height": 278
-        }
-      },
-      "official": {
-        "width": 1200,
-        "height": 900,
-        "background": [
-          244,
-          244,
-          244,
-          255
-        ],
-        "backgroundColors": [
-          [
-            244,
-            244,
-            244,
-            255
-          ],
-          [
-            255,
-            255,
-            255,
-            255
-          ]
-        ],
-        "inkPixels": 61415,
-        "inkRatio": 0.05686574074074074,
-        "contentBounds": {
-          "x": 32,
-          "y": 301,
-          "width": 1137,
-          "height": 300
-        }
-      },
-      "widthRatio": 1.0246262093227791,
-      "heightRatio": 0.9266666666666666,
-      "inkRatio": 0.8771635593910283
     },
     {
       "id": "prod_flowchart_orchestration_identity",
@@ -4172,6 +844,301 @@
       "inkRatio": 1.0835960044395114
     },
     {
+      "id": "rc_xy_service_latency",
+      "kind": "xychart",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 268987,
+        "inkRatio": 0.24906203703703703,
+        "contentBounds": {
+          "x": 40,
+          "y": 63,
+          "width": 1115,
+          "height": 784
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 240736,
+        "inkRatio": 0.22290370370370372,
+        "contentBounds": {
+          "x": 47,
+          "y": 65,
+          "width": 1101,
+          "height": 776
+        }
+      },
+      "widthRatio": 1.0127157129881925,
+      "heightRatio": 1.0103092783505154,
+      "inkRatio": 1.1173526186361822
+    },
+    {
+      "id": "rc_xy_checkout_conversion",
+      "kind": "xychart",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 299827,
+        "inkRatio": 0.2776175925925926,
+        "contentBounds": {
+          "x": 37,
+          "y": 63,
+          "width": 1118,
+          "height": 796
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 287672,
+        "inkRatio": 0.26636296296296297,
+        "contentBounds": {
+          "x": 43,
+          "y": 65,
+          "width": 1104,
+          "height": 789
+        }
+      },
+      "widthRatio": 1.0126811594202898,
+      "heightRatio": 1.008871989860583,
+      "inkRatio": 1.0422529825634752
+    },
+    {
+      "id": "rc_xy_capacity_forecast",
+      "kind": "xychart",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 255643,
+        "inkRatio": 0.2367064814814815,
+        "contentBounds": {
+          "x": 40,
+          "y": 63,
+          "width": 1116,
+          "height": 788
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 261247,
+        "inkRatio": 0.24189537037037037,
+        "contentBounds": {
+          "x": 47,
+          "y": 65,
+          "width": 1102,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.012704174228675,
+      "heightRatio": 1.0102564102564102,
+      "inkRatio": 0.978549035969791
+    },
+    {
+      "id": "rc_xy_queue_backlog",
+      "kind": "xychart",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 240750,
+        "inkRatio": 0.22291666666666668,
+        "contentBounds": {
+          "x": 40,
+          "y": 63,
+          "width": 1116,
+          "height": 784
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 229662,
+        "inkRatio": 0.21265,
+        "contentBounds": {
+          "x": 47,
+          "y": 65,
+          "width": 1101,
+          "height": 776
+        }
+      },
+      "widthRatio": 1.013623978201635,
+      "heightRatio": 1.0103092783505154,
+      "inkRatio": 1.048279645740262
+    },
+    {
+      "id": "rc_xy_error_budget",
+      "kind": "xychart",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32764,
+        "inkRatio": 0.030337037037037037,
+        "contentBounds": {
+          "x": 40,
+          "y": 63,
+          "width": 1115,
+          "height": 784
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 34621,
+        "inkRatio": 0.032056481481481484,
+        "contentBounds": {
+          "x": 47,
+          "y": 65,
+          "width": 1102,
+          "height": 776
+        }
+      },
+      "widthRatio": 1.0117967332123412,
+      "heightRatio": 1.0103092783505154,
+      "inkRatio": 0.9463620346032754
+    },
+    {
       "id": "prod_xychart_mixed_vertical_api_capacity",
       "kind": "xychart",
       "native": {
@@ -4642,6 +1609,1906 @@
       "widthRatio": 1.0145586897179253,
       "heightRatio": 1.008230452674897,
       "inkRatio": 0.9419425390197833
+    },
+    {
+      "id": "rc_quadrant_product_portfolio",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 304761,
+        "inkRatio": 0.28218611111111114,
+        "contentBounds": {
+          "x": 190,
+          "y": 50,
+          "width": 825,
+          "height": 816
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 297198,
+        "inkRatio": 0.27518333333333334,
+        "contentBounds": {
+          "x": 194,
+          "y": 52,
+          "width": 814,
+          "height": 803
+        }
+      },
+      "widthRatio": 1.0135135135135136,
+      "heightRatio": 1.016189290161893,
+      "inkRatio": 1.0254476813437507
+    },
+    {
+      "id": "rc_quadrant_incident_risk",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 302010,
+        "inkRatio": 0.2796388888888889,
+        "contentBounds": {
+          "x": 190,
+          "y": 50,
+          "width": 825,
+          "height": 816
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 293997,
+        "inkRatio": 0.27221944444444446,
+        "contentBounds": {
+          "x": 194,
+          "y": 52,
+          "width": 814,
+          "height": 803
+        }
+      },
+      "widthRatio": 1.0135135135135136,
+      "heightRatio": 1.016189290161893,
+      "inkRatio": 1.0272553801569404
+    },
+    {
+      "id": "rc_quadrant_delivery_framework",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 299877,
+        "inkRatio": 0.2776638888888889,
+        "contentBounds": {
+          "x": 190,
+          "y": 50,
+          "width": 825,
+          "height": 815
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 291932,
+        "inkRatio": 0.2703074074074074,
+        "contentBounds": {
+          "x": 194,
+          "y": 52,
+          "width": 814,
+          "height": 806
+        }
+      },
+      "widthRatio": 1.0135135135135136,
+      "heightRatio": 1.011166253101737,
+      "inkRatio": 1.0272152419056493
+    },
+    {
+      "id": "rc_quadrant_governance_theme",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 673990,
+        "inkRatio": 0.6240648148148148,
+        "contentBounds": {
+          "x": 103,
+          "y": 56,
+          "width": 988,
+          "height": 808
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 651239,
+        "inkRatio": 0.602999074074074,
+        "contentBounds": {
+          "x": 112,
+          "y": 55,
+          "width": 967,
+          "height": 797
+        }
+      },
+      "widthRatio": 1.0217166494312306,
+      "heightRatio": 1.013801756587202,
+      "inkRatio": 1.0349349470778009
+    },
+    {
+      "id": "rc_quadrant_unicode_market",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 303620,
+        "inkRatio": 0.2811296296296296,
+        "contentBounds": {
+          "x": 188,
+          "y": 52,
+          "width": 839,
+          "height": 816
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 293791,
+        "inkRatio": 0.2720287037037037,
+        "contentBounds": {
+          "x": 186,
+          "y": 47,
+          "width": 833,
+          "height": 805
+        }
+      },
+      "widthRatio": 1.007202881152461,
+      "heightRatio": 1.013664596273292,
+      "inkRatio": 1.033455755962572
+    },
+    {
+      "id": "prod_quadrant_release_scoring",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 305270,
+        "inkRatio": 0.2826574074074074,
+        "contentBounds": {
+          "x": 190,
+          "y": 50,
+          "width": 825,
+          "height": 816
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 297571,
+        "inkRatio": 0.2755287037037037,
+        "contentBounds": {
+          "x": 194,
+          "y": 52,
+          "width": 814,
+          "height": 803
+        }
+      },
+      "widthRatio": 1.0135135135135136,
+      "heightRatio": 1.016189290161893,
+      "inkRatio": 1.0258728169075617
+    },
+    {
+      "id": "prod_quadrant_boundary_coordinates",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 318186,
+        "inkRatio": 0.2946166666666667,
+        "contentBounds": {
+          "x": 171,
+          "y": 27,
+          "width": 870,
+          "height": 834
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 306985,
+        "inkRatio": 0.28424537037037034,
+        "contentBounds": {
+          "x": 175,
+          "y": 35,
+          "width": 856,
+          "height": 816
+        }
+      },
+      "widthRatio": 1.016355140186916,
+      "heightRatio": 1.0220588235294117,
+      "inkRatio": 1.0364871247780838
+    },
+    {
+      "id": "prod_quadrant_empty_framework",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 300159,
+        "inkRatio": 0.277925,
+        "contentBounds": {
+          "x": 190,
+          "y": 50,
+          "width": 825,
+          "height": 815
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 292097,
+        "inkRatio": 0.27046018518518516,
+        "contentBounds": {
+          "x": 194,
+          "y": 52,
+          "width": 814,
+          "height": 806
+        }
+      },
+      "widthRatio": 1.0135135135135136,
+      "heightRatio": 1.011166253101737,
+      "inkRatio": 1.027600420408289
+    },
+    {
+      "id": "prod_quadrant_inline_styles",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 329537,
+        "inkRatio": 0.30512685185185184,
+        "contentBounds": {
+          "x": 185,
+          "y": 50,
+          "width": 830,
+          "height": 815
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 318708,
+        "inkRatio": 0.2951,
+        "contentBounds": {
+          "x": 192,
+          "y": 52,
+          "width": 816,
+          "height": 806
+        }
+      },
+      "widthRatio": 1.017156862745098,
+      "heightRatio": 1.011166253101737,
+      "inkRatio": 1.0339778104095285
+    },
+    {
+      "id": "prod_quadrant_class_precedence",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 328303,
+        "inkRatio": 0.30398425925925926,
+        "contentBounds": {
+          "x": 185,
+          "y": 50,
+          "width": 830,
+          "height": 815
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 317352,
+        "inkRatio": 0.29384444444444446,
+        "contentBounds": {
+          "x": 192,
+          "y": 52,
+          "width": 816,
+          "height": 806
+        }
+      },
+      "widthRatio": 1.017156862745098,
+      "heightRatio": 1.011166253101737,
+      "inkRatio": 1.0345074239330458
+    },
+    {
+      "id": "prod_quadrant_dimension_config",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 355869,
+        "inkRatio": 0.32950833333333335,
+        "contentBounds": {
+          "x": 68,
+          "y": 67,
+          "width": 1065,
+          "height": 792
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 344357,
+        "inkRatio": 0.3188490740740741,
+        "contentBounds": {
+          "x": 78,
+          "y": 65,
+          "width": 1041,
+          "height": 782
+        }
+      },
+      "widthRatio": 1.0230547550432276,
+      "heightRatio": 1.0127877237851663,
+      "inkRatio": 1.0334304224975825
+    },
+    {
+      "id": "prod_quadrant_theme_metadata",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 636253,
+        "inkRatio": 0.5891231481481481,
+        "contentBounds": {
+          "x": 185,
+          "y": 50,
+          "width": 830,
+          "height": 815
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 615138,
+        "inkRatio": 0.5695722222222223,
+        "contentBounds": {
+          "x": 192,
+          "y": 52,
+          "width": 816,
+          "height": 806
+        }
+      },
+      "widthRatio": 1.017156862745098,
+      "heightRatio": 1.011166253101737,
+      "inkRatio": 1.0343256309966218
+    },
+    {
+      "id": "prod_quadrant_unicode_comments",
+      "kind": "quadrant",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 301064,
+        "inkRatio": 0.278762962962963,
+        "contentBounds": {
+          "x": 193,
+          "y": 53,
+          "width": 822,
+          "height": 815
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 292383,
+        "inkRatio": 0.270725,
+        "contentBounds": {
+          "x": 192,
+          "y": 49,
+          "width": 816,
+          "height": 803
+        }
+      },
+      "widthRatio": 1.0073529411764706,
+      "heightRatio": 1.0149439601494397,
+      "inkRatio": 1.0296905086821055
+    },
+    {
+      "id": "rc_timeline_release_history",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 140608,
+        "inkRatio": 0.13019259259259258,
+        "contentBounds": {
+          "x": 67,
+          "y": 159,
+          "width": 1066,
+          "height": 594
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 130412,
+        "inkRatio": 0.12075185185185185,
+        "contentBounds": {
+          "x": 87,
+          "y": 172,
+          "width": 1030,
+          "height": 564
+        }
+      },
+      "widthRatio": 1.0349514563106796,
+      "heightRatio": 1.053191489361702,
+      "inkRatio": 1.0781829892954635
+    },
+    {
+      "id": "rc_timeline_vertical_program",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 297115,
+        "inkRatio": 0.2751064814814815,
+        "contentBounds": {
+          "x": 155,
+          "y": 86,
+          "width": 896,
+          "height": 737
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 265794,
+        "inkRatio": 0.24610555555555555,
+        "contentBounds": {
+          "x": 170,
+          "y": 106,
+          "width": 860,
+          "height": 696
+        }
+      },
+      "widthRatio": 1.041860465116279,
+      "heightRatio": 1.0589080459770115,
+      "inkRatio": 1.117839379368985
+    },
+    {
+      "id": "rc_timeline_sectionless_palette",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 94360,
+        "inkRatio": 0.08737037037037038,
+        "contentBounds": {
+          "x": 50,
+          "y": 292,
+          "width": 1100,
+          "height": 325
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 87821,
+        "inkRatio": 0.08131574074074074,
+        "contentBounds": {
+          "x": 67,
+          "y": 299,
+          "width": 1069,
+          "height": 308
+        }
+      },
+      "widthRatio": 1.028999064546305,
+      "heightRatio": 1.0551948051948052,
+      "inkRatio": 1.074458273078193
+    },
+    {
+      "id": "rc_timeline_configured_theme",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 92001,
+        "inkRatio": 0.08518611111111112,
+        "contentBounds": {
+          "x": 49,
+          "y": 131,
+          "width": 1113,
+          "height": 650
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 86628,
+        "inkRatio": 0.08021111111111111,
+        "contentBounds": {
+          "x": 64,
+          "y": 145,
+          "width": 1077,
+          "height": 618
+        }
+      },
+      "widthRatio": 1.033426183844011,
+      "heightRatio": 1.051779935275081,
+      "inkRatio": 1.0620238260146835
+    },
+    {
+      "id": "rc_timeline_unicode_vertical",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 197421,
+        "inkRatio": 0.18279722222222222,
+        "contentBounds": {
+          "x": 95,
+          "y": 241,
+          "width": 1018,
+          "height": 430
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 178726,
+        "inkRatio": 0.16548703703703704,
+        "contentBounds": {
+          "x": 111,
+          "y": 253,
+          "width": 979,
+          "height": 399
+        }
+      },
+      "widthRatio": 1.0398365679264556,
+      "heightRatio": 1.0776942355889725,
+      "inkRatio": 1.1046014569788392
+    },
+    {
+      "id": "prod_timeline_release_history",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 120150,
+        "inkRatio": 0.11125,
+        "contentBounds": {
+          "x": 76,
+          "y": 156,
+          "width": 1054,
+          "height": 604
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 109131,
+        "inkRatio": 0.10104722222222222,
+        "contentBounds": {
+          "x": 97,
+          "y": 171,
+          "width": 1006,
+          "height": 567
+        }
+      },
+      "widthRatio": 1.047713717693837,
+      "heightRatio": 1.0652557319223985,
+      "inkRatio": 1.1009703933804327
+    },
+    {
+      "id": "prod_timeline_vertical_delivery",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 234319,
+        "inkRatio": 0.21696203703703704,
+        "contentBounds": {
+          "x": 94,
+          "y": 203,
+          "width": 1019,
+          "height": 503
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 214005,
+        "inkRatio": 0.1981527777777778,
+        "contentBounds": {
+          "x": 110,
+          "y": 218,
+          "width": 980,
+          "height": 472
+        }
+      },
+      "widthRatio": 1.0397959183673469,
+      "heightRatio": 1.0656779661016949,
+      "inkRatio": 1.0949230158173875
+    },
+    {
+      "id": "prod_timeline_continued_events",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 120693,
+        "inkRatio": 0.11175277777777778,
+        "contentBounds": {
+          "x": 232,
+          "y": 83,
+          "width": 736,
+          "height": 742
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 106679,
+        "inkRatio": 0.09877685185185185,
+        "contentBounds": {
+          "x": 253,
+          "y": 103,
+          "width": 700,
+          "height": 696
+        }
+      },
+      "widthRatio": 1.0514285714285714,
+      "heightRatio": 1.0660919540229885,
+      "inkRatio": 1.1313660607992202
+    },
+    {
+      "id": "prod_timeline_industrial_sections",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 183298,
+        "inkRatio": 0.16972037037037038,
+        "contentBounds": {
+          "x": 67,
+          "y": 134,
+          "width": 1066,
+          "height": 645
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 167442,
+        "inkRatio": 0.1550388888888889,
+        "contentBounds": {
+          "x": 87,
+          "y": 148,
+          "width": 1030,
+          "height": 609
+        }
+      },
+      "widthRatio": 1.0349514563106796,
+      "heightRatio": 1.0591133004926108,
+      "inkRatio": 1.0946954766426584
+    },
+    {
+      "id": "prod_timeline_sectionless_palette",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 96962,
+        "inkRatio": 0.08977962962962963,
+        "contentBounds": {
+          "x": 57,
+          "y": 293,
+          "width": 1086,
+          "height": 319
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 90790,
+        "inkRatio": 0.08406481481481481,
+        "contentBounds": {
+          "x": 75,
+          "y": 298,
+          "width": 1053,
+          "height": 306
+        }
+      },
+      "widthRatio": 1.0313390313390314,
+      "heightRatio": 1.042483660130719,
+      "inkRatio": 1.0679810551822888
+    },
+    {
+      "id": "prod_timeline_disable_multicolor",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 105531,
+        "inkRatio": 0.09771388888888889,
+        "contentBounds": {
+          "x": 67,
+          "y": 261,
+          "width": 1066,
+          "height": 383
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 97652,
+        "inkRatio": 0.09041851851851852,
+        "contentBounds": {
+          "x": 87,
+          "y": 268,
+          "width": 1030,
+          "height": 366
+        }
+      },
+      "widthRatio": 1.0349514563106796,
+      "heightRatio": 1.046448087431694,
+      "inkRatio": 1.080684471388195
+    },
+    {
+      "id": "prod_timeline_spacing_config",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 144461,
+        "inkRatio": 0.13376018518518518,
+        "contentBounds": {
+          "x": 45,
+          "y": 122,
+          "width": 1113,
+          "height": 670
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 136007,
+        "inkRatio": 0.1259324074074074,
+        "contentBounds": {
+          "x": 68,
+          "y": 135,
+          "width": 1064,
+          "height": 640
+        }
+      },
+      "widthRatio": 1.0460526315789473,
+      "heightRatio": 1.046875,
+      "inkRatio": 1.0621585653679588
+    },
+    {
+      "id": "prod_timeline_custom_colors",
+      "kind": "timeline",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 171037,
+        "inkRatio": 0.1583675925925926,
+        "contentBounds": {
+          "x": 80,
+          "y": 107,
+          "width": 1045,
+          "height": 700
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 159260,
+        "inkRatio": 0.14746296296296296,
+        "contentBounds": {
+          "x": 101,
+          "y": 124,
+          "width": 996,
+          "height": 661
+        }
+      },
+      "widthRatio": 1.0491967871485943,
+      "heightRatio": 1.059001512859304,
+      "inkRatio": 1.0739482607057642
+    },
+    {
+      "id": "rc_sequence_checkout_saga",
+      "kind": "sequence",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 103592,
+        "inkRatio": 0.09591851851851851,
+        "contentBounds": {
+          "x": 85,
+          "y": 53,
+          "width": 1069,
+          "height": 796
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 97125,
+        "inkRatio": 0.08993055555555556,
+        "contentBounds": {
+          "x": 132,
+          "y": 31,
+          "width": 969,
+          "height": 818
+        }
+      },
+      "widthRatio": 1.1031991744066048,
+      "heightRatio": 0.9731051344743277,
+      "inkRatio": 1.0665842985842986
+    },
+    {
+      "id": "rc_sequence_oauth_refresh",
+      "kind": "sequence",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 78473,
+        "inkRatio": 0.07266018518518519,
+        "contentBounds": {
+          "x": 209,
+          "y": 15,
+          "width": 784,
+          "height": 872
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 62620,
+        "inkRatio": 0.05798148148148148,
+        "contentBounds": {
+          "x": 265,
+          "y": 29,
+          "width": 673,
+          "height": 824
+        }
+      },
+      "widthRatio": 1.1649331352154533,
+      "heightRatio": 1.058252427184466,
+      "inkRatio": 1.2531619290961356
+    },
+    {
+      "id": "rc_sequence_media_upload",
+      "kind": "sequence",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 68662,
+        "inkRatio": 0.06357592592592592,
+        "contentBounds": {
+          "x": 224,
+          "y": 14,
+          "width": 791,
+          "height": 874
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 55963,
+        "inkRatio": 0.051817592592592596,
+        "contentBounds": {
+          "x": 272,
+          "y": 28,
+          "width": 686,
+          "height": 828
+        }
+      },
+      "widthRatio": 1.153061224489796,
+      "heightRatio": 1.0555555555555556,
+      "inkRatio": 1.226917784965066
+    },
+    {
+      "id": "rc_sequence_webhook_retry",
+      "kind": "sequence",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 105596,
+        "inkRatio": 0.09777407407407407,
+        "contentBounds": {
+          "x": 54,
+          "y": 22,
+          "width": 1094,
+          "height": 858
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 84514,
+        "inkRatio": 0.0782537037037037,
+        "contentBounds": {
+          "x": 144,
+          "y": 32,
+          "width": 914,
+          "height": 814
+        }
+      },
+      "widthRatio": 1.1969365426695842,
+      "heightRatio": 1.054054054054054,
+      "inkRatio": 1.2494497953001868
+    },
+    {
+      "id": "rc_sequence_realtime_sync",
+      "kind": "sequence",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 86277,
+        "inkRatio": 0.07988611111111112,
+        "contentBounds": {
+          "x": 92,
+          "y": 77,
+          "width": 1064,
+          "height": 748
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74856,
+        "inkRatio": 0.06931111111111112,
+        "contentBounds": {
+          "x": 96,
+          "y": 64,
+          "width": 1049,
+          "height": 753
+        }
+      },
+      "widthRatio": 1.0142993326978074,
+      "heightRatio": 0.9933598937583001,
+      "inkRatio": 1.152572940044886
+    },
+    {
+      "id": "rc_sequence_cache_stampede",
+      "kind": "sequence",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 77479,
+        "inkRatio": 0.07173981481481481,
+        "contentBounds": {
+          "x": 198,
+          "y": 15,
+          "width": 806,
+          "height": 872
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 60014,
+        "inkRatio": 0.05556851851851852,
+        "contentBounds": {
+          "x": 275,
+          "y": 30,
+          "width": 652,
+          "height": 821
+        }
+      },
+      "widthRatio": 1.2361963190184049,
+      "heightRatio": 1.0621193666260658,
+      "inkRatio": 1.2910154297330623
     },
     {
       "id": "prod_sequence_request_lifecycle_session_refresh",
@@ -5116,6 +3983,301 @@
       "inkRatio": 1.2559683714329162
     },
     {
+      "id": "rc_class_commerce_domain",
+      "kind": "class",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 150813,
+        "inkRatio": 0.13964166666666666,
+        "contentBounds": {
+          "x": 16,
+          "y": 18,
+          "width": 1171,
+          "height": 867
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 161793,
+        "inkRatio": 0.14980833333333332,
+        "contentBounds": {
+          "x": 35,
+          "y": 38,
+          "width": 1134,
+          "height": 828
+        }
+      },
+      "widthRatio": 1.0326278659611994,
+      "heightRatio": 1.0471014492753623,
+      "inkRatio": 0.9321355064805029
+    },
+    {
+      "id": "rc_class_workflow_engine",
+      "kind": "class",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 136629,
+        "inkRatio": 0.12650833333333333,
+        "contentBounds": {
+          "x": 71,
+          "y": 15,
+          "width": 1058,
+          "height": 870
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 161278,
+        "inkRatio": 0.14933148148148148,
+        "contentBounds": {
+          "x": 58,
+          "y": 33,
+          "width": 1087,
+          "height": 837
+        }
+      },
+      "widthRatio": 0.9733210671573137,
+      "heightRatio": 1.039426523297491,
+      "inkRatio": 0.8471645233695855
+    },
+    {
+      "id": "rc_class_authorization_model",
+      "kind": "class",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 119251,
+        "inkRatio": 0.1104175925925926,
+        "contentBounds": {
+          "x": 213,
+          "y": 15,
+          "width": 777,
+          "height": 873
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 118389,
+        "inkRatio": 0.10961944444444445,
+        "contentBounds": {
+          "x": 235,
+          "y": 32,
+          "width": 733,
+          "height": 839
+        }
+      },
+      "widthRatio": 1.0600272851296044,
+      "heightRatio": 1.0405244338498212,
+      "inkRatio": 1.007281081857267
+    },
+    {
+      "id": "rc_class_notification_platform",
+      "kind": "class",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 159298,
+        "inkRatio": 0.14749814814814816,
+        "contentBounds": {
+          "x": 15,
+          "y": 183,
+          "width": 1173,
+          "height": 536
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 165777,
+        "inkRatio": 0.15349722222222223,
+        "contentBounds": {
+          "x": 32,
+          "y": 179,
+          "width": 1139,
+          "height": 545
+        }
+      },
+      "widthRatio": 1.0298507462686568,
+      "heightRatio": 0.9834862385321101,
+      "inkRatio": 0.9609173769582029
+    },
+    {
+      "id": "rc_class_document_editor",
+      "kind": "class",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 147225,
+        "inkRatio": 0.13631944444444444,
+        "contentBounds": {
+          "x": 15,
+          "y": 190,
+          "width": 1173,
+          "height": 522
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 148166,
+        "inkRatio": 0.13719074074074075,
+        "contentBounds": {
+          "x": 32,
+          "y": 203,
+          "width": 1139,
+          "height": 497
+        }
+      },
+      "widthRatio": 1.0298507462686568,
+      "heightRatio": 1.0503018108651911,
+      "inkRatio": 0.993649015293657
+    },
+    {
       "id": "prod_class_domain_model_billing",
       "kind": "class",
       "native": {
@@ -5586,6 +4748,301 @@
       "widthRatio": 1.0970873786407767,
       "heightRatio": 1.0980392156862746,
       "inkRatio": 1.1801485897126827
+    },
+    {
+      "id": "rc_state_order_fulfillment",
+      "kind": "state",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 76799,
+        "inkRatio": 0.07111018518518518,
+        "contentBounds": {
+          "x": 141,
+          "y": 14,
+          "width": 917,
+          "height": 874
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 52738,
+        "inkRatio": 0.04883148148148148,
+        "contentBounds": {
+          "x": 197,
+          "y": 31,
+          "width": 805,
+          "height": 839
+        }
+      },
+      "widthRatio": 1.1391304347826088,
+      "heightRatio": 1.0417163289630513,
+      "inkRatio": 1.4562364898175886
+    },
+    {
+      "id": "rc_state_payment_transaction",
+      "kind": "state",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 55151,
+        "inkRatio": 0.05106574074074074,
+        "contentBounds": {
+          "x": 276,
+          "y": 13,
+          "width": 651,
+          "height": 876
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 40355,
+        "inkRatio": 0.03736574074074074,
+        "contentBounds": {
+          "x": 306,
+          "y": 30,
+          "width": 591,
+          "height": 841
+        }
+      },
+      "widthRatio": 1.101522842639594,
+      "heightRatio": 1.0416171224732462,
+      "inkRatio": 1.3666460166026513
+    },
+    {
+      "id": "rc_state_deployment_rollout",
+      "kind": "state",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 26920,
+        "inkRatio": 0.024925925925925924,
+        "contentBounds": {
+          "x": 449,
+          "y": 12,
+          "width": 302,
+          "height": 878
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 19955,
+        "inkRatio": 0.018476851851851852,
+        "contentBounds": {
+          "x": 481,
+          "y": 24,
+          "width": 237,
+          "height": 853
+        }
+      },
+      "widthRatio": 1.2742616033755274,
+      "heightRatio": 1.0293083235638922,
+      "inkRatio": 1.3490353294913555
+    },
+    {
+      "id": "rc_state_media_processing",
+      "kind": "state",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 73133,
+        "inkRatio": 0.06771574074074074,
+        "contentBounds": {
+          "x": 139,
+          "y": 14,
+          "width": 924,
+          "height": 874
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 54417,
+        "inkRatio": 0.05038611111111111,
+        "contentBounds": {
+          "x": 162,
+          "y": 33,
+          "width": 879,
+          "height": 836
+        }
+      },
+      "widthRatio": 1.0511945392491469,
+      "heightRatio": 1.0454545454545454,
+      "inkRatio": 1.3439366374478565
+    },
+    {
+      "id": "rc_state_support_ticket",
+      "kind": "state",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 72306,
+        "inkRatio": 0.06695,
+        "contentBounds": {
+          "x": 16,
+          "y": 88,
+          "width": 1168,
+          "height": 726
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71139,
+        "inkRatio": 0.06586944444444444,
+        "contentBounds": {
+          "x": 37,
+          "y": 46,
+          "width": 1131,
+          "height": 812
+        }
+      },
+      "widthRatio": 1.032714412024757,
+      "heightRatio": 0.8940886699507389,
+      "inkRatio": 1.016404503858643
     },
     {
       "id": "prod_state_nested_lifecycle_document",
@@ -6060,6 +5517,301 @@
       "inkRatio": 1.261746571701924
     },
     {
+      "id": "rc_er_commerce_platform",
+      "kind": "er",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 44981,
+        "inkRatio": 0.0555320987654321,
+        "contentBounds": {
+          "x": 12,
+          "y": 200,
+          "width": 878,
+          "height": 502
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 78658,
+        "inkRatio": 0.09710864197530865,
+        "contentBounds": {
+          "x": 26,
+          "y": 171,
+          "width": 850,
+          "height": 560
+        }
+      },
+      "widthRatio": 1.0329411764705883,
+      "heightRatio": 0.8964285714285715,
+      "inkRatio": 0.5718553738971243
+    },
+    {
+      "id": "rc_er_learning_platform",
+      "kind": "er",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74083,
+        "inkRatio": 0.0914604938271605,
+        "contentBounds": {
+          "x": 14,
+          "y": 66,
+          "width": 875,
+          "height": 770
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 135059,
+        "inkRatio": 0.1667395061728395,
+        "contentBounds": {
+          "x": 36,
+          "y": 29,
+          "width": 832,
+          "height": 845
+        }
+      },
+      "widthRatio": 1.0516826923076923,
+      "heightRatio": 0.9112426035502958,
+      "inkRatio": 0.5485232379922849
+    },
+    {
+      "id": "rc_er_messaging_system",
+      "kind": "er",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 67377,
+        "inkRatio": 0.08318148148148148,
+        "contentBounds": {
+          "x": 13,
+          "y": 214,
+          "width": 876,
+          "height": 474
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 115981,
+        "inkRatio": 0.1431864197530864,
+        "contentBounds": {
+          "x": 30,
+          "y": 187,
+          "width": 843,
+          "height": 529
+        }
+      },
+      "widthRatio": 1.0391459074733096,
+      "heightRatio": 0.8960302457466919,
+      "inkRatio": 0.580931359446806
+    },
+    {
+      "id": "rc_er_subscription_billing",
+      "kind": "er",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 75721,
+        "inkRatio": 0.09348271604938271,
+        "contentBounds": {
+          "x": 14,
+          "y": 176,
+          "width": 874,
+          "height": 551
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 146031,
+        "inkRatio": 0.1802851851851852,
+        "contentBounds": {
+          "x": 31,
+          "y": 143,
+          "width": 841,
+          "height": 617
+        }
+      },
+      "widthRatio": 1.0392390011890607,
+      "heightRatio": 0.893030794165316,
+      "inkRatio": 0.5185268881264937
+    },
+    {
+      "id": "rc_er_inventory_network",
+      "kind": "er",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 43903,
+        "inkRatio": 0.054201234567901234,
+        "contentBounds": {
+          "x": 12,
+          "y": 272,
+          "width": 877,
+          "height": 357
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 73786,
+        "inkRatio": 0.09109382716049383,
+        "contentBounds": {
+          "x": 27,
+          "y": 251,
+          "width": 848,
+          "height": 400
+        }
+      },
+      "widthRatio": 1.034198113207547,
+      "heightRatio": 0.8925,
+      "inkRatio": 0.5950044723931369
+    },
+    {
       "id": "prod_er_attribute_model_support",
       "kind": "er",
       "native": {
@@ -6530,6 +6282,301 @@
       "widthRatio": 1.1585677749360614,
       "heightRatio": 1.0851612903225807,
       "inkRatio": 1.2910810964837296
+    },
+    {
+      "id": "rc_gantt_mobile_release",
+      "kind": "gantt",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 231357,
+        "inkRatio": 0.21421944444444443,
+        "contentBounds": {
+          "x": 8,
+          "y": 243,
+          "width": 1147,
+          "height": 398
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 226535,
+        "inkRatio": 0.20975462962962962,
+        "contentBounds": {
+          "x": 28,
+          "y": 230,
+          "width": 1106,
+          "height": 414
+        }
+      },
+      "widthRatio": 1.0370705244122966,
+      "heightRatio": 0.961352657004831,
+      "inkRatio": 1.021285894011963
+    },
+    {
+      "id": "rc_gantt_database_migration",
+      "kind": "gantt",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 190423,
+        "inkRatio": 0.17631759259259258,
+        "contentBounds": {
+          "x": 8,
+          "y": 278,
+          "width": 1147,
+          "height": 328
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 186998,
+        "inkRatio": 0.1731462962962963,
+        "contentBounds": {
+          "x": 28,
+          "y": 266,
+          "width": 1106,
+          "height": 343
+        }
+      },
+      "widthRatio": 1.0370705244122966,
+      "heightRatio": 0.956268221574344,
+      "inkRatio": 1.0183157039112718
+    },
+    {
+      "id": "rc_gantt_regional_launch",
+      "kind": "gantt",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 164886,
+        "inkRatio": 0.1526722222222222,
+        "contentBounds": {
+          "x": 8,
+          "y": 278,
+          "width": 1147,
+          "height": 328
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 162537,
+        "inkRatio": 0.15049722222222223,
+        "contentBounds": {
+          "x": 28,
+          "y": 266,
+          "width": 1106,
+          "height": 343
+        }
+      },
+      "widthRatio": 1.0370705244122966,
+      "heightRatio": 0.956268221574344,
+      "inkRatio": 1.014452093984754
+    },
+    {
+      "id": "rc_gantt_incident_hardening",
+      "kind": "gantt",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 154690,
+        "inkRatio": 0.1432314814814815,
+        "contentBounds": {
+          "x": 8,
+          "y": 290,
+          "width": 1147,
+          "height": 304
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 152421,
+        "inkRatio": 0.14113055555555556,
+        "contentBounds": {
+          "x": 28,
+          "y": 278,
+          "width": 1106,
+          "height": 318
+        }
+      },
+      "widthRatio": 1.0370705244122966,
+      "heightRatio": 0.9559748427672956,
+      "inkRatio": 1.0148864001679558
+    },
+    {
+      "id": "rc_gantt_data_platform_upgrade",
+      "kind": "gantt",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 166163,
+        "inkRatio": 0.15385462962962962,
+        "contentBounds": {
+          "x": 8,
+          "y": 278,
+          "width": 1147,
+          "height": 329
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 163499,
+        "inkRatio": 0.15138796296296297,
+        "contentBounds": {
+          "x": 28,
+          "y": 266,
+          "width": 1106,
+          "height": 344
+        }
+      },
+      "widthRatio": 1.0370705244122966,
+      "heightRatio": 0.9563953488372093,
+      "inkRatio": 1.016293677637172
     },
     {
       "id": "prod_gantt_dependency_plan_key_rotation",
@@ -7004,6 +7051,301 @@
       "inkRatio": 1.003359337090814
     },
     {
+      "id": "rc_pie_cloud_cost",
+      "kind": "pie",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 299719,
+        "inkRatio": 0.27751759259259257,
+        "contentBounds": {
+          "x": 74,
+          "y": 73,
+          "width": 1030,
+          "height": 705
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 277816,
+        "inkRatio": 0.25723703703703704,
+        "contentBounds": {
+          "x": 99,
+          "y": 84,
+          "width": 981,
+          "height": 679
+        }
+      },
+      "widthRatio": 1.0499490316004076,
+      "heightRatio": 1.0382916053019147,
+      "inkRatio": 1.0788399516226566
+    },
+    {
+      "id": "rc_pie_traffic_sources",
+      "kind": "pie",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 200789,
+        "inkRatio": 0.18591574074074074,
+        "contentBounds": {
+          "x": 307,
+          "y": 21,
+          "width": 529,
+          "height": 841
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 181187,
+        "inkRatio": 0.16776574074074074,
+        "contentBounds": {
+          "x": 323,
+          "y": 40,
+          "width": 500,
+          "height": 800
+        }
+      },
+      "widthRatio": 1.058,
+      "heightRatio": 1.05125,
+      "inkRatio": 1.1081865696766324
+    },
+    {
+      "id": "rc_pie_incident_causes",
+      "kind": "pie",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 304836,
+        "inkRatio": 0.28225555555555554,
+        "contentBounds": {
+          "x": 72,
+          "y": 84,
+          "width": 1035,
+          "height": 684
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 278409,
+        "inkRatio": 0.2577861111111111,
+        "contentBounds": {
+          "x": 96,
+          "y": 97,
+          "width": 987,
+          "height": 655
+        }
+      },
+      "widthRatio": 1.0486322188449848,
+      "heightRatio": 1.0442748091603054,
+      "inkRatio": 1.0949215003825308
+    },
+    {
+      "id": "rc_pie_subscription_mix",
+      "kind": "pie",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 268264,
+        "inkRatio": 0.24839259259259258,
+        "contentBounds": {
+          "x": 193,
+          "y": 27,
+          "width": 736,
+          "height": 791
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 236358,
+        "inkRatio": 0.21885,
+        "contentBounds": {
+          "x": 220,
+          "y": 49,
+          "width": 686,
+          "height": 744
+        }
+      },
+      "widthRatio": 1.0728862973760933,
+      "heightRatio": 1.0631720430107527,
+      "inkRatio": 1.1349901420726187
+    },
+    {
+      "id": "rc_pie_storage_allocation",
+      "kind": "pie",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 326065,
+        "inkRatio": 0.30191203703703706,
+        "contentBounds": {
+          "x": 39,
+          "y": 58,
+          "width": 1012,
+          "height": 733
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 300731,
+        "inkRatio": 0.27845462962962964,
+        "contentBounds": {
+          "x": 67,
+          "y": 69,
+          "width": 961,
+          "height": 707
+        }
+      },
+      "widthRatio": 1.0530697190426639,
+      "heightRatio": 1.0367751060820367,
+      "inkRatio": 1.0842413984590882
+    },
+    {
       "id": "prod_pie_distribution_compute",
       "kind": "pie",
       "native": {
@@ -7474,6 +7816,301 @@
       "widthRatio": 1.0764411027568923,
       "heightRatio": 1.0631720430107527,
       "inkRatio": 1.1478238802182463
+    },
+    {
+      "id": "rc_journey_account_onboarding",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 42690,
+        "inkRatio": 0.03952777777777778,
+        "contentBounds": {
+          "x": 14,
+          "y": 315,
+          "width": 1044,
+          "height": 234
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 42206,
+        "inkRatio": 0.03907962962962963,
+        "contentBounds": {
+          "x": 28,
+          "y": 328,
+          "width": 1020,
+          "height": 224
+        }
+      },
+      "widthRatio": 1.0235294117647058,
+      "heightRatio": 1.0446428571428572,
+      "inkRatio": 1.0114675638534805
+    },
+    {
+      "id": "rc_journey_incident_response",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36612,
+        "inkRatio": 0.0339,
+        "contentBounds": {
+          "x": 13,
+          "y": 330,
+          "width": 1042,
+          "height": 208
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 35893,
+        "inkRatio": 0.03323425925925926,
+        "contentBounds": {
+          "x": 26,
+          "y": 340,
+          "width": 1019,
+          "height": 202
+        }
+      },
+      "widthRatio": 1.0225711481844946,
+      "heightRatio": 1.0297029702970297,
+      "inkRatio": 1.0200317610676175
+    },
+    {
+      "id": "rc_journey_checkout_recovery",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 40370,
+        "inkRatio": 0.03737962962962963,
+        "contentBounds": {
+          "x": 14,
+          "y": 317,
+          "width": 1037,
+          "height": 230
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 38859,
+        "inkRatio": 0.03598055555555556,
+        "contentBounds": {
+          "x": 27,
+          "y": 329,
+          "width": 1016,
+          "height": 222
+        }
+      },
+      "widthRatio": 1.0206692913385826,
+      "heightRatio": 1.0360360360360361,
+      "inkRatio": 1.0388841709771224
+    },
+    {
+      "id": "rc_journey_release_coordination",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39606,
+        "inkRatio": 0.036672222222222224,
+        "contentBounds": {
+          "x": 13,
+          "y": 323,
+          "width": 1064,
+          "height": 220
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39100,
+        "inkRatio": 0.0362037037037037,
+        "contentBounds": {
+          "x": 27,
+          "y": 335,
+          "width": 1042,
+          "height": 212
+        }
+      },
+      "widthRatio": 1.021113243761996,
+      "heightRatio": 1.0377358490566038,
+      "inkRatio": 1.0129411764705882
+    },
+    {
+      "id": "rc_journey_privileged_access",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36773,
+        "inkRatio": 0.03404907407407407,
+        "contentBounds": {
+          "x": 13,
+          "y": 329,
+          "width": 1045,
+          "height": 210
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36080,
+        "inkRatio": 0.033407407407407406,
+        "contentBounds": {
+          "x": 26,
+          "y": 339,
+          "width": 1022,
+          "height": 203
+        }
+      },
+      "widthRatio": 1.022504892367906,
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.0192073170731708
     },
     {
       "id": "prod_journey_multi_stage_support",
@@ -7948,6 +8585,301 @@
       "inkRatio": 1.077127933495181
     },
     {
+      "id": "rc_requirement_checkout_assurance",
+      "kind": "requirement",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 96786,
+        "inkRatio": 0.08961666666666666,
+        "contentBounds": {
+          "x": 14,
+          "y": 221,
+          "width": 1174,
+          "height": 460
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 101325,
+        "inkRatio": 0.09381944444444444,
+        "contentBounds": {
+          "x": 32,
+          "y": 224,
+          "width": 1139,
+          "height": 455
+        }
+      },
+      "widthRatio": 1.0307287093942055,
+      "heightRatio": 1.010989010989011,
+      "inkRatio": 0.9552035529237601
+    },
+    {
+      "id": "rc_requirement_device_safety",
+      "kind": "requirement",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 215950,
+        "inkRatio": 0.19995370370370372,
+        "contentBounds": {
+          "x": 17,
+          "y": 32,
+          "width": 1170,
+          "height": 841
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 218650,
+        "inkRatio": 0.2024537037037037,
+        "contentBounds": {
+          "x": 40,
+          "y": 40,
+          "width": 1125,
+          "height": 824
+        }
+      },
+      "widthRatio": 1.04,
+      "heightRatio": 1.020631067961165,
+      "inkRatio": 0.9876514978275784
+    },
+    {
+      "id": "rc_requirement_data_retention",
+      "kind": "requirement",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 98555,
+        "inkRatio": 0.09125462962962963,
+        "contentBounds": {
+          "x": 14,
+          "y": 222,
+          "width": 1174,
+          "height": 459
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 101868,
+        "inkRatio": 0.09432222222222222,
+        "contentBounds": {
+          "x": 32,
+          "y": 225,
+          "width": 1139,
+          "height": 453
+        }
+      },
+      "widthRatio": 1.0307287093942055,
+      "heightRatio": 1.0132450331125828,
+      "inkRatio": 0.9674775199277497
+    },
+    {
+      "id": "rc_requirement_failover_evidence",
+      "kind": "requirement",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 137797,
+        "inkRatio": 0.12758981481481482,
+        "contentBounds": {
+          "x": 141,
+          "y": 15,
+          "width": 921,
+          "height": 873
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 134661,
+        "inkRatio": 0.12468611111111111,
+        "contentBounds": {
+          "x": 170,
+          "y": 34,
+          "width": 864,
+          "height": 835
+        }
+      },
+      "widthRatio": 1.0659722222222223,
+      "heightRatio": 1.0455089820359282,
+      "inkRatio": 1.0232881086580377
+    },
+    {
+      "id": "rc_requirement_access_controls",
+      "kind": "requirement",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 188091,
+        "inkRatio": 0.17415833333333333,
+        "contentBounds": {
+          "x": 13,
+          "y": 285,
+          "width": 1173,
+          "height": 334
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 171796,
+        "inkRatio": 0.15907037037037036,
+        "contentBounds": {
+          "x": 31,
+          "y": 292,
+          "width": 1137,
+          "height": 319
+        }
+      },
+      "widthRatio": 1.0316622691292876,
+      "heightRatio": 1.0470219435736676,
+      "inkRatio": 1.0948508696360801
+    },
+    {
       "id": "prod_requirement_typed_fields_device",
       "kind": "requirement",
       "native": {
@@ -8420,6 +9352,313 @@
       "inkRatio": 1.161619757748372
     },
     {
+      "id": "rc_gitgraph_release_train",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 67688,
+        "inkRatio": 0.06267407407407408,
+        "contentBounds": {
+          "x": 20,
+          "y": 148,
+          "width": 1159,
+          "height": 599
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61419,
+        "inkRatio": 0.056869444444444445,
+        "contentBounds": {
+          "x": 46,
+          "y": 161,
+          "width": 1106,
+          "height": 572
+        }
+      },
+      "widthRatio": 1.0479204339963835,
+      "heightRatio": 1.0472027972027973,
+      "inkRatio": 1.102069392207623
+    },
+    {
+      "id": "rc_gitgraph_parallel_bottom_to_top",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 97494,
+        "inkRatio": 0.09027222222222223,
+        "contentBounds": {
+          "x": 173,
+          "y": 28,
+          "width": 882,
+          "height": 853
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 84282,
+        "inkRatio": 0.0780388888888889,
+        "contentBounds": {
+          "x": 213,
+          "y": 65,
+          "width": 808,
+          "height": 781
+        }
+      },
+      "widthRatio": 1.0915841584158417,
+      "heightRatio": 1.092189500640205,
+      "inkRatio": 1.1567594504164591
+    },
+    {
+      "id": "rc_gitgraph_ordered_top_to_bottom",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61732,
+        "inkRatio": 0.05715925925925926,
+        "contentBounds": {
+          "x": 227,
+          "y": 22,
+          "width": 752,
+          "height": 838
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 57480,
+        "inkRatio": 0.05322222222222222,
+        "contentBounds": {
+          "x": 249,
+          "y": 52,
+          "width": 709,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.0606488011283497,
+      "heightRatio": 1.0743589743589743,
+      "inkRatio": 1.073973556019485
+    },
+    {
+      "id": "rc_gitgraph_metadata_and_theme",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 111435,
+        "inkRatio": 0.10318055555555555,
+        "contentBounds": {
+          "x": 31,
+          "y": 164,
+          "width": 1132,
+          "height": 562
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 100016,
+        "inkRatio": 0.0926074074074074,
+        "contentBounds": {
+          "x": 69,
+          "y": 187,
+          "width": 1054,
+          "height": 521
+        }
+      },
+      "widthRatio": 1.0740037950664136,
+      "heightRatio": 1.0786948176583493,
+      "inkRatio": 1.1141717325227964
+    },
+    {
+      "id": "rc_gitgraph_horizontal_labels",
+      "kind": "gitgraph",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53850,
+        "inkRatio": 0.04986111111111111,
+        "contentBounds": {
+          "x": 20,
+          "y": 239,
+          "width": 1157,
+          "height": 415
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 41605,
+        "inkRatio": 0.03852314814814815,
+        "contentBounds": {
+          "x": 72,
+          "y": 254,
+          "width": 1057,
+          "height": 387
+        }
+      },
+      "widthRatio": 1.0946073793755913,
+      "heightRatio": 1.0723514211886305,
+      "inkRatio": 1.294315587068862
+    },
+    {
       "id": "prod_gitgraph_commit_metadata_release",
       "kind": "gitgraph",
       "native": {
@@ -8734,8 +9973,8 @@
             255
           ]
         ],
-        "inkPixels": 120401,
-        "inkRatio": 0.1114824074074074,
+        "inkPixels": 120923,
+        "inkRatio": 0.11196574074074074,
         "contentBounds": {
           "x": 43,
           "y": 56,
@@ -8771,7 +10010,7 @@
       },
       "widthRatio": 1.0776515151515151,
       "heightRatio": 1.057029177718833,
-      "inkRatio": 1.104626732845858
+      "inkRatio": 1.1094158554822608
     },
     {
       "id": "prod_gitgraph_configured_visibility_hidden_branches",
@@ -8914,6 +10153,313 @@
       "widthRatio": 1.0935550935550935,
       "heightRatio": 1.1462140992167102,
       "inkRatio": 1.1895168591514922
+    },
+    {
+      "id": "rc_mindmap_product_strategy",
+      "kind": "mindmap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 120236,
+        "inkRatio": 0.11132962962962963,
+        "contentBounds": {
+          "x": 17,
+          "y": 211,
+          "width": 1168,
+          "height": 480
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 158469,
+        "inkRatio": 0.14673055555555556,
+        "contentBounds": {
+          "x": 36,
+          "y": 172,
+          "width": 1130,
+          "height": 561
+        }
+      },
+      "widthRatio": 1.033628318584071,
+      "heightRatio": 0.8556149732620321,
+      "inkRatio": 0.7587351469372559
+    },
+    {
+      "id": "rc_mindmap_incident_response",
+      "kind": "mindmap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32575,
+        "inkRatio": 0.030162037037037036,
+        "contentBounds": {
+          "x": 12,
+          "y": 365,
+          "width": 1177,
+          "height": 171
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36615,
+        "inkRatio": 0.033902777777777775,
+        "contentBounds": {
+          "x": 25,
+          "y": 363,
+          "width": 1151,
+          "height": 176
+        }
+      },
+      "widthRatio": 1.0225890529973936,
+      "heightRatio": 0.9715909090909091,
+      "inkRatio": 0.8896627065410352
+    },
+    {
+      "id": "rc_mindmap_platform_architecture",
+      "kind": "mindmap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 106905,
+        "inkRatio": 0.09898611111111111,
+        "contentBounds": {
+          "x": 17,
+          "y": 318,
+          "width": 1168,
+          "height": 267
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 125604,
+        "inkRatio": 0.1163,
+        "contentBounds": {
+          "x": 35,
+          "y": 303,
+          "width": 1132,
+          "height": 299
+        }
+      },
+      "widthRatio": 1.0318021201413428,
+      "heightRatio": 0.8929765886287625,
+      "inkRatio": 0.8511273526320817
+    },
+    {
+      "id": "rc_mindmap_shape_and_text_matrix",
+      "kind": "mindmap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 196522,
+        "inkRatio": 0.1819648148148148,
+        "contentBounds": {
+          "x": 113,
+          "y": 18,
+          "width": 976,
+          "height": 867
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 223680,
+        "inkRatio": 0.2071111111111111,
+        "contentBounds": {
+          "x": 77,
+          "y": 38,
+          "width": 1049,
+          "height": 831
+        }
+      },
+      "widthRatio": 0.9304099142040038,
+      "heightRatio": 1.0433212996389891,
+      "inkRatio": 0.8785854792560801
+    },
+    {
+      "id": "rc_mindmap_governance_theme",
+      "kind": "mindmap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53871,
+        "inkRatio": 0.04988055555555555,
+        "contentBounds": {
+          "x": 18,
+          "y": 312,
+          "width": 1165,
+          "height": 278
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61415,
+        "inkRatio": 0.05686574074074074,
+        "contentBounds": {
+          "x": 32,
+          "y": 301,
+          "width": 1137,
+          "height": 300
+        }
+      },
+      "widthRatio": 1.0246262093227791,
+      "heightRatio": 0.9266666666666666,
+      "inkRatio": 0.8771635593910283
     },
     {
       "id": "prod_mindmap_hierarchy_service_ownership",
@@ -9410,6 +10956,797 @@
       "widthRatio": 1.0302491103202847,
       "heightRatio": 0.9688385269121813,
       "inkRatio": 0.9102928378959289
+    },
+    {
+      "id": "rc_kanban_release_workflow",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 127218,
+        "inkRatio": 0.11779444444444444,
+        "contentBounds": {
+          "x": 25,
+          "y": 311,
+          "width": 1153,
+          "height": 283
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 122242,
+        "inkRatio": 0.11318703703703703,
+        "contentBounds": {
+          "x": 52,
+          "y": 313,
+          "width": 1100,
+          "height": 281
+        }
+      },
+      "widthRatio": 1.048181818181818,
+      "heightRatio": 1.00711743772242,
+      "inkRatio": 1.0407061402791185
+    },
+    {
+      "id": "rc_kanban_priority_triage",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 221642,
+        "inkRatio": 0.2052240740740741,
+        "contentBounds": {
+          "x": 34,
+          "y": 168,
+          "width": 1137,
+          "height": 572
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 208037,
+        "inkRatio": 0.19262685185185185,
+        "contentBounds": {
+          "x": 68,
+          "y": 186,
+          "width": 1069,
+          "height": 538
+        }
+      },
+      "widthRatio": 1.0636108512628626,
+      "heightRatio": 1.063197026022305,
+      "inkRatio": 1.0653970207222754
+    },
+    {
+      "id": "rc_kanban_wrapped_empty_stage",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 118455,
+        "inkRatio": 0.10968055555555556,
+        "contentBounds": {
+          "x": 25,
+          "y": 312,
+          "width": 1153,
+          "height": 281
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 118663,
+        "inkRatio": 0.10987314814814815,
+        "contentBounds": {
+          "x": 52,
+          "y": 292,
+          "width": 1100,
+          "height": 323
+        }
+      },
+      "widthRatio": 1.048181818181818,
+      "heightRatio": 0.8699690402476781,
+      "inkRatio": 0.9982471368497341
+    },
+    {
+      "id": "rc_kanban_configured_links",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 22276,
+        "inkRatio": 0.020625925925925926,
+        "contentBounds": {
+          "x": 49,
+          "y": 351,
+          "width": 1102,
+          "height": 187
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 21827,
+        "inkRatio": 0.020210185185185185,
+        "contentBounds": {
+          "x": 82,
+          "y": 357,
+          "width": 1036,
+          "height": 176
+        }
+      },
+      "widthRatio": 1.0637065637065637,
+      "heightRatio": 1.0625,
+      "inkRatio": 1.0205708526137354
+    },
+    {
+      "id": "rc_kanban_unicode_indentation",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 185564,
+        "inkRatio": 0.1718185185185185,
+        "contentBounds": {
+          "x": 34,
+          "y": 202,
+          "width": 1137,
+          "height": 504
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 171442,
+        "inkRatio": 0.1587425925925926,
+        "contentBounds": {
+          "x": 68,
+          "y": 217,
+          "width": 1069,
+          "height": 476
+        }
+      },
+      "widthRatio": 1.0636108512628626,
+      "heightRatio": 1.0588235294117647,
+      "inkRatio": 1.0823718808693317
+    },
+    {
+      "id": "prod_kanban_delivery_board",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 121878,
+        "inkRatio": 0.11285,
+        "contentBounds": {
+          "x": 25,
+          "y": 328,
+          "width": 1153,
+          "height": 249
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 116909,
+        "inkRatio": 0.10824907407407408,
+        "contentBounds": {
+          "x": 52,
+          "y": 334,
+          "width": 1100,
+          "height": 239
+        }
+      },
+      "widthRatio": 1.048181818181818,
+      "heightRatio": 1.0418410041841004,
+      "inkRatio": 1.0425031434705625
+    },
+    {
+      "id": "prod_kanban_anonymous_forms",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 215999,
+        "inkRatio": 0.19999907407407408,
+        "contentBounds": {
+          "x": 238,
+          "y": 42,
+          "width": 730,
+          "height": 827
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 184840,
+        "inkRatio": 0.17114814814814816,
+        "contentBounds": {
+          "x": 273,
+          "y": 84,
+          "width": 661,
+          "height": 745
+        }
+      },
+      "widthRatio": 1.1043872919818456,
+      "heightRatio": 1.1100671140939598,
+      "inkRatio": 1.168572819735988
+    },
+    {
+      "id": "prod_kanban_nested_comments",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 293120,
+        "inkRatio": 0.27140740740740743,
+        "contentBounds": {
+          "x": 149,
+          "y": 50,
+          "width": 911,
+          "height": 813
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 238553,
+        "inkRatio": 0.22088240740740742,
+        "contentBounds": {
+          "x": 200,
+          "y": 99,
+          "width": 808,
+          "height": 717
+        }
+      },
+      "widthRatio": 1.1274752475247525,
+      "heightRatio": 1.1338912133891212,
+      "inkRatio": 1.2287416213587756
+    },
+    {
+      "id": "prod_kanban_metadata",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 169046,
+        "inkRatio": 0.15652407407407407,
+        "contentBounds": {
+          "x": 321,
+          "y": 34,
+          "width": 563,
+          "height": 840
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 151862,
+        "inkRatio": 0.14061296296296297,
+        "contentBounds": {
+          "x": 342,
+          "y": 69,
+          "width": 521,
+          "height": 772
+        }
+      },
+      "widthRatio": 1.0806142034548945,
+      "heightRatio": 1.0880829015544042,
+      "inkRatio": 1.1131553647390393
+    },
+    {
+      "id": "prod_kanban_ticket_links",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 157460,
+        "inkRatio": 0.14579629629629628,
+        "contentBounds": {
+          "x": 34,
+          "y": 321,
+          "width": 1137,
+          "height": 266
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 144934,
+        "inkRatio": 0.13419814814814815,
+        "contentBounds": {
+          "x": 68,
+          "y": 329,
+          "width": 1069,
+          "height": 252
+        }
+      },
+      "widthRatio": 1.0636108512628626,
+      "heightRatio": 1.0555555555555556,
+      "inkRatio": 1.0864255454206742
+    },
+    {
+      "id": "prod_kanban_width_and_empty",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 96350,
+        "inkRatio": 0.08921296296296297,
+        "contentBounds": {
+          "x": 23,
+          "y": 353,
+          "width": 1157,
+          "height": 198
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 92921,
+        "inkRatio": 0.08603796296296297,
+        "contentBounds": {
+          "x": 46,
+          "y": 353,
+          "width": 1111,
+          "height": 200
+        }
+      },
+      "widthRatio": 1.0414041404140415,
+      "heightRatio": 0.99,
+      "inkRatio": 1.0369023148696204
+    },
+    {
+      "id": "prod_kanban_theme_markdown",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 20007,
+        "inkRatio": 0.018525,
+        "contentBounds": {
+          "x": 55,
+          "y": 354,
+          "width": 1090,
+          "height": 180
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          244,
+          244,
+          244,
+          255
+        ],
+        "backgroundColors": [
+          [
+            244,
+            244,
+            244,
+            255
+          ],
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 19270,
+        "inkRatio": 0.017842592592592594,
+        "contentBounds": {
+          "x": 91,
+          "y": 359,
+          "width": 1018,
+          "height": 169
+        }
+      },
+      "widthRatio": 1.0707269155206287,
+      "heightRatio": 1.0650887573964498,
+      "inkRatio": 1.0382459782044628
+    },
+    {
+      "id": "prod_kanban_unicode",
+      "kind": "kanban",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 154311,
+        "inkRatio": 0.14288055555555557,
+        "contentBounds": {
+          "x": 34,
+          "y": 321,
+          "width": 1137,
+          "height": 266
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 141164,
+        "inkRatio": 0.1307074074074074,
+        "contentBounds": {
+          "x": 68,
+          "y": 329,
+          "width": 1069,
+          "height": 252
+        }
+      },
+      "widthRatio": 1.0636108512628626,
+      "heightRatio": 1.0555555555555556,
+      "inkRatio": 1.0931328100648892
     }
   ]
 }

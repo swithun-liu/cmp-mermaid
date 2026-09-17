@@ -19,8 +19,8 @@ rated Stable. A successful build alone is not sufficient.
 - Release status: **Not Stable; detail re-audit and full-family translation in progress**
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
   Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
-  User Journey, and Requirement (`3,328/3,328` accepted;
-  `3,245 pass / 83 manually reviewed / 0 fail`; every family geometry gate
+  User Journey, Requirement, and Git Graph (`3,584/3,584` accepted;
+  `3,481 pass / 103 manually reviewed / 0 fail`; every family geometry gate
   passing)
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -37,7 +37,7 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | Thirteen families have 3,328/3,328 accepted detail and geometry pairs: 3,245 automatic passes plus 83 manually accepted ER/Journey/Requirement text reviews; two implemented families still rely on legacy evidence | **Thirteen families passing; overall re-audit in progress** |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | Fourteen families have 3,584/3,584 accepted detail and geometry pairs: 3,481 automatic passes plus 103 manually accepted ER/Journey/Requirement/Git Graph text reviews; Mindmap still relies on legacy evidence | **Fourteen families passing; overall re-audit in progress** |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 257/257 points across 15 implemented families; 18 families remain | **Incomplete** |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 197-case corpus equality test for the implemented subset | Passing for the implemented subset |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 15 by 11 matrix: 165/165 renders | Passing for the implemented subset; detail parity pending |
@@ -130,8 +130,8 @@ open severity-1 correctness, crash, resource-exhaustion, or data-exposure
 defects.
 
 The full rule is not currently satisfied. The current 15-family matrix retains
-legacy evidence for two families, and that coarse geometry check did not
-detect a visible Git Graph paint-order defect. No family is promoted back to
-Stable until its 256-case detail queue is empty or every explicit exception is
-reviewed and justified; overall Stable additionally requires all 33 official
-families.
+legacy evidence for Mindmap. The former coarse geometry check missed a visible
+Git Graph paint-order defect; that defect is now corrected and Git Graph has
+passed the replacement detail gate. No family is promoted back to Stable until
+its 256-case detail queue is empty or every explicit exception is reviewed and
+justified; overall Stable additionally requires all 33 official families.
