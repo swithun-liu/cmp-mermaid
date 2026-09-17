@@ -18,8 +18,8 @@ rated Stable. A successful build alone is not sufficient.
 - Implemented families: 15; pending families: 18
 - Release status: **Not Stable; detail re-audit and full-family translation in progress**
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
-  Timeline, Kanban, Sequence, Class, State, and Entity Relationship
-  (`2,304/2,304` accepted; `2,244 pass / 60 manually reviewed / 0 fail`;
+  Timeline, Kanban, Sequence, Class, State, Entity Relationship, and Gantt
+  (`2,560/2,560` accepted; `2,500 pass / 60 manually reviewed / 0 fail`;
   every family geometry gate passing)
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -36,7 +36,7 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | Nine families have 2,304/2,304 accepted detail and geometry pairs: 2,244 automatic passes plus 60 manually accepted ER text-position reviews; the remaining implemented families still rely on legacy evidence | **Nine families passing; overall re-audit in progress** |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | Ten families have 2,560/2,560 accepted detail and geometry pairs: 2,500 automatic passes plus 60 manually accepted ER text-position reviews; the remaining implemented families still rely on legacy evidence | **Ten families passing; overall re-audit in progress** |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 257/257 points across 15 implemented families; 18 families remain | **Incomplete** |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 197-case corpus equality test for the implemented subset | Passing for the implemented subset |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 15 by 11 matrix: 165/165 renders | Passing for the implemented subset; detail parity pending |

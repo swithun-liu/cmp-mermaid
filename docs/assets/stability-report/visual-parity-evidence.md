@@ -250,6 +250,11 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Gantt - 256 Native/Official pairs</strong></summary>
 
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.035-1.037`, height `0.883-0.961`, foreground ink `0.964-1.023`.
+All 16 pages below were manually reviewed at the shared `1200 x 900`
+viewport.
+
 ![Gantt visual parity page 01](gantt-visual-parity-01.jpg)
 
 ![Gantt visual parity page 02](gantt-visual-parity-02.jpg)

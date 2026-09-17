@@ -25,7 +25,7 @@ randomized stress inputs.
 | Large-scale visual matrix | 3,072 unique Mermaid sources: 256 per diagram type |
 | Native core render results | 158 independent plus 3,072 matrix cases passed, 0 failed |
 | Web Native/Official captures | 6,144 matrix screenshots plus 316 independent-corpus screenshots, 0 render errors |
-| Manual visual review | 144 replacement-gate sheets across 9 families; the other implemented families remain pending |
+| Manual visual review | 160 replacement-gate sheets across 10 families; the other implemented families remain pending |
 | Automated visual geometry | 3,072/3,072 matrix pairs and 158/158 independent pairs passed |
 | Deterministic SceneGraph replay | 158 passed, 0 mismatches |
 | Built-in theme matrix | 132/132 renders passed: 12 diagram types by 11 themes |
@@ -44,11 +44,11 @@ Stable criteria and must not be used as a current Stable decision.
 ## Current Replacement-Gate Progress
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-and Entity Relationship are now the first nine families to complete the
+Entity Relationship, and Gantt are now the first ten families to complete the
 replacement visual gate. Each has 256 unique same-source Native/Official
 pairs, a 256/256 geometry result, and 16 paged contact sheets. The accepted
-replacement total is 2,304/2,304 pairs across 144 manually reviewed sheets:
-`2,244 pass / 60 manually reviewed / 0 fail`. All 60 reviews are ER
+replacement total is 2,560/2,560 pairs across 160 manually reviewed sheets:
+`2,500 pass / 60 manually reviewed / 0 fail`. All 60 reviews are ER
 text-position threshold findings with complete text, no clipping or overlap,
 and passing raster checks.
 
@@ -70,6 +70,8 @@ and passing raster checks.
   foreground ink `1.031-1.383`.
 - Entity Relationship content ratios: width `1.033-1.078`, height
   `0.882-1.043`, foreground ink `0.545-1.150`.
+- Gantt content ratios: width `1.035-1.037`, height `0.883-0.961`,
+  foreground ink `0.964-1.023`.
 - All 16 Flowchart contact sheets and all 256 same-source pairs were manually
   inspected after correcting Bang/Cloud edge intersection bounds. No
   unresolved marker, routing, label, clipping, overlap, or paint-order defect
@@ -102,6 +104,11 @@ and passing raster checks.
   mask IoU is at least `0.685`, and edge F1 is at least `0.922`. No unresolved
   entity, attribute, subgraph, relationship, marker, text-loss, clipping,
   overlap, or paint-order defect remains.
+- All 16 Gantt contact sheets and all 256 same-source pairs were manually
+  inspected at the shared `1200 x 900` viewport required by Mermaid's
+  parent-width renderer input. No unresolved task ordering, section band,
+  milestone, exclusion, axis, marker, label, clipping, overlap, or paint-order
+  defect remains.
 - Every Timeline sheet and representative first, middle, and final Quadrant
   sheets were manually inspected.
 
@@ -161,7 +168,7 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | Class | 13 | 16/16 | commerce, namespaces, generics, relations, annotations | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | State | 13 | 16/16 | fulfillment, nested composites, fork/join, concurrency, notes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Entity Relationship | 13 | 16/16 | commerce, aliases, attributes, cardinalities, nested subgraphs | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
-| Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Historical review; detail re-audit pending |
+| Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Pie | 13 | 16/16 | cost, escaped labels, donut, legends, themes, many slices | Historical review; detail re-audit pending |
 | User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Historical review; detail re-audit pending |
 | Requirement | 13 | 17/17 | typed requirements, elements, relationships, directions, styling, metadata | Historical review; detail re-audit pending |
@@ -307,12 +314,16 @@ matching Mermaid.js `12.0.0` `measureDagreGraph`.
 
 ![Gantt complex Native and Official corpus](assets/stability-report/gantt-complex-corpus.png)
 
-The former width mismatch came from the debug Official iframe shrinking
-Mermaid's temporary render container to `300px`, not from the Native timeline.
-The comparison host now preserves the full iframe width and rejects a collapsed
-Official Gantt viewBox. Multi-unit ticks also follow D3 `interval.every(count)`
-epoch and calendar-field anchoring; the `2week` case now starts on the same
-weeks as Mermaid.js.
+The replacement audit passed all 13 production scenarios and all 256 matrix
+pairs with `0 review / 0 fail`. Production width, height, and foreground-ink
+ratios were `1.035-1.037`, `0.883-0.961`, and `1.003-1.027`; matrix ratios
+were `1.035-1.037`, `0.883-0.961`, and `0.964-1.023`. All 16 matrix contact
+sheets were manually reviewed. The formal gate uses a shared `1200 x 900`
+viewport because Mermaid derives Gantt width from
+`elem.parentElement.offsetWidth` and uses `1200` only when that width is
+unavailable; the Kotlin scene uses the same `1200` default in the absence of
+a browser parent. Multi-unit ticks preserve D3 `interval.every(count)` epoch
+and calendar-field anchoring.
 
 </details>
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T06:43:31.473Z",
+  "generatedAt": "2026-09-17T07:24:02.458Z",
   "inputDirectory": "captures/local/production-12",
   "corpusSource": "production",
   "theme": null,
@@ -1931,7 +1931,7 @@
           "x": 8,
           "y": 243,
           "width": 1147,
-          "height": 417
+          "height": 398
         }
       },
       "official": {
@@ -1961,7 +1961,7 @@
         }
       },
       "widthRatio": 1.0370705244122966,
-      "heightRatio": 1.0072463768115942,
+      "heightRatio": 0.961352657004831,
       "inkRatio": 1.021285894011963
     },
     {
@@ -1990,7 +1990,7 @@
           "x": 8,
           "y": 278,
           "width": 1147,
-          "height": 346
+          "height": 328
         }
       },
       "official": {
@@ -2020,7 +2020,7 @@
         }
       },
       "widthRatio": 1.0370705244122966,
-      "heightRatio": 1.0087463556851313,
+      "heightRatio": 0.956268221574344,
       "inkRatio": 1.0183157039112718
     },
     {
@@ -2049,7 +2049,7 @@
           "x": 8,
           "y": 278,
           "width": 1147,
-          "height": 346
+          "height": 328
         }
       },
       "official": {
@@ -2079,7 +2079,7 @@
         }
       },
       "widthRatio": 1.0370705244122966,
-      "heightRatio": 1.0087463556851313,
+      "heightRatio": 0.956268221574344,
       "inkRatio": 1.014452093984754
     },
     {
@@ -2108,7 +2108,7 @@
           "x": 8,
           "y": 290,
           "width": 1147,
-          "height": 322
+          "height": 304
         }
       },
       "official": {
@@ -2138,7 +2138,7 @@
         }
       },
       "widthRatio": 1.0370705244122966,
-      "heightRatio": 1.0125786163522013,
+      "heightRatio": 0.9559748427672956,
       "inkRatio": 1.0148864001679558
     },
     {
@@ -2167,7 +2167,7 @@
           "x": 8,
           "y": 278,
           "width": 1147,
-          "height": 347
+          "height": 329
         }
       },
       "official": {
@@ -2197,7 +2197,7 @@
         }
       },
       "widthRatio": 1.0370705244122966,
-      "heightRatio": 1.0087209302325582,
+      "heightRatio": 0.9563953488372093,
       "inkRatio": 1.016293677637172
     },
     {
@@ -6557,7 +6557,7 @@
           "x": 22,
           "y": 361,
           "width": 1097,
-          "height": 180
+          "height": 162
         }
       },
       "official": {
@@ -6587,7 +6587,7 @@
         }
       },
       "widthRatio": 1.0358829084041548,
-      "heightRatio": 1.0344827586206897,
+      "heightRatio": 0.9310344827586207,
       "inkRatio": 1.0258302583025831
     },
     {
@@ -6616,7 +6616,7 @@
           "x": 22,
           "y": 361,
           "width": 1097,
-          "height": 180
+          "height": 162
         }
       },
       "official": {
@@ -6646,7 +6646,7 @@
         }
       },
       "widthRatio": 1.0358829084041548,
-      "heightRatio": 1.0344827586206897,
+      "heightRatio": 0.9310344827586207,
       "inkRatio": 1.0198733731973266
     },
     {
@@ -6675,7 +6675,7 @@
           "x": 22,
           "y": 373,
           "width": 1108,
-          "height": 156
+          "height": 138
         }
       },
       "official": {
@@ -6705,7 +6705,7 @@
         }
       },
       "widthRatio": 1.0345471521942111,
-      "heightRatio": 1.04,
+      "heightRatio": 0.92,
       "inkRatio": 1.0264022857633892
     },
     {
@@ -6734,7 +6734,7 @@
           "x": 22,
           "y": 373,
           "width": 1108,
-          "height": 156
+          "height": 138
         }
       },
       "official": {
@@ -6764,7 +6764,7 @@
         }
       },
       "widthRatio": 1.0364826941066416,
-      "heightRatio": 1.04,
+      "heightRatio": 0.92,
       "inkRatio": 1.0268934531450578
     },
     {
@@ -6787,8 +6787,8 @@
             255
           ]
         ],
-        "inkPixels": 27176,
-        "inkRatio": 0.025162962962962963,
+        "inkPixels": 27181,
+        "inkRatio": 0.025167592592592592,
         "contentBounds": {
           "x": 22,
           "y": 385,
@@ -6824,7 +6824,7 @@
       },
       "widthRatio": 1.0374181478016837,
       "heightRatio": 0.91875,
-      "inkRatio": 1.0139541825236922
+      "inkRatio": 1.0141407357659875
     },
     {
       "id": "prod_gantt_axis_controls_retention",
@@ -6846,8 +6846,8 @@
             255
           ]
         ],
-        "inkPixels": 26761,
-        "inkRatio": 0.024778703703703702,
+        "inkPixels": 26764,
+        "inkRatio": 0.02478148148148148,
         "contentBounds": {
           "x": 22,
           "y": 385,
@@ -6883,7 +6883,7 @@
       },
       "widthRatio": 1.0374181478016837,
       "heightRatio": 0.91875,
-      "inkRatio": 1.0168325860627707
+      "inkRatio": 1.016946576487575
     },
     {
       "id": "prod_gantt_compact_links_localization",
@@ -6911,7 +6911,7 @@
           "x": 22,
           "y": 408,
           "width": 1122,
-          "height": 86
+          "height": 68
         }
       },
       "official": {
@@ -6941,7 +6941,7 @@
         }
       },
       "widthRatio": 1.0350553505535056,
-      "heightRatio": 1.1168831168831168,
+      "heightRatio": 0.8831168831168831,
       "inkRatio": 1.0058050260289877
     },
     {
@@ -6970,7 +6970,7 @@
           "x": 22,
           "y": 408,
           "width": 1122,
-          "height": 86
+          "height": 68
         }
       },
       "official": {
@@ -7000,7 +7000,7 @@
         }
       },
       "widthRatio": 1.0350553505535056,
-      "heightRatio": 1.1168831168831168,
+      "heightRatio": 0.8831168831168831,
       "inkRatio": 1.003359337090814
     },
     {

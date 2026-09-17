@@ -39,7 +39,7 @@
 > remains available, but its old automated gate checked coarse geometry rather
 > than label paint order and other rendering details. Detailed re-audit is in
 > progress. Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence,
-> Class, State, and Entity Relationship have completed the replacement
+> Class, State, Entity Relationship, and Gantt have completed the replacement
 > 256-case gate; the
 > legacy report must not be read as proof of complete Mermaid compatibility or
 > as completed detail review for the other families.
@@ -54,7 +54,7 @@ Canvas painting are owned by the multiplatform libraries.
 
 The 15 implemented families retain repository-controlled tests and captures.
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-and Entity Relationship pass the replacement detail gate; the other
+Entity Relationship, and Gantt pass the replacement detail gate; the other
 implemented families are being upgraded and re-reviewed.
 
 | Evidence | Result |
@@ -66,8 +66,8 @@ implemented families are being upgraded and re-reviewed.
 | Declared capability coverage | 257/257 |
 | Large-scale visual matrix | 3,840 unique sources: 256 per implemented family |
 | Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots |
-| Matrix detail review | Nine families: 2,304/2,304 accepted; 2,244 automatic passes plus 60 manually accepted ER text-position reviews; remaining 6 families require re-audit |
-| Automated visual geometry | 3,840/3,840 passed; nine family detail gates passed |
+| Matrix detail review | Ten families: 2,560/2,560 accepted; 2,500 automatic passes plus 60 manually accepted ER text-position reviews; remaining 5 families require re-audit |
+| Automated visual geometry | 3,840/3,840 passed; ten family detail gates passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 |
 | Separate generated Native stress inputs | 3,840 |
@@ -136,7 +136,7 @@ large-scale matrix with 3,072 unique Mermaid sources:
 | Class | Detail gate passed | 13 | Compartments, generics, namespaces, relations, Dagre | [Compatibility](docs/class-compatibility.md) |
 | State | Detail gate passed | 13 | Composite states, concurrency, notes, forks/joins, Dagre | [Compatibility](docs/state-compatibility.md) |
 | Entity Relationship | Detail gate passed | 13 | Attributes, cardinalities, relationships, nested subgraphs | [Compatibility](docs/er-compatibility.md) |
-| Gantt | Detail re-audit | 13 | Dates, dependencies, exclusions, milestones, D3-style ticks | [Compatibility](docs/gantt-compatibility.md) |
+| Gantt | Detail gate passed | 13 | Dates, dependencies, exclusions, milestones, D3-style ticks | [Compatibility](docs/gantt-compatibility.md) |
 | Pie | Detail re-audit | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
 | User Journey | Detail re-audit | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
 | Requirement | Detail re-audit | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |

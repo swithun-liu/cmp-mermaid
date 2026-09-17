@@ -68,10 +68,22 @@ hour shifts are intentionally not reproduced.
   sections, compact mode, weekends, top axis, milestones, vertical markers,
   task states, dependencies, and tick intervals while checking finite bounds
   and retained task counts.
+- 13 independent production Native/Official pairs pass geometry and detail
+  review (`13 pass / 0 review / 0 fail`). Their width, height, and
+  foreground-ink ratios are `1.035-1.037`, `0.883-0.961`, and
+  `1.003-1.027`.
+- 256 same-source Native/Official matrix pairs pass geometry and detail review
+  (`256 pass / 0 review / 0 fail`). Their width, height, and foreground-ink
+  ratios are `1.035-1.037`, `0.883-0.961`, and `0.964-1.023`; all 16
+  contact sheets were manually inspected.
 - 20 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0`.
 - All 20 Native Android screenshots were compared side by side with 20
   Puppeteer-rendered official references.
+- The formal replacement gate uses a shared `1200 x 900` viewport. Mermaid
+  reads `elem.parentElement.offsetWidth` and falls back to `1200` only when
+  that width is unavailable; Kotlin uses the same `1200` scene-width default
+  because core compilation has no browser parent element.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
 

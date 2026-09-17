@@ -67,7 +67,9 @@ production so an upstream grammar diff can be translated incrementally.
   Android ICU rejects repetition of a zero-width lookahead.
 - Direct `topAxis` calls `enableTopAxis()` because Mermaid `12.0.0`'s generated
   action calls the nonexistent `TopAxis()` method.
-- Mermaid's missing-parent-width fallback remains 1200 scene units.
+- Mermaid reads `elem.parentElement.offsetWidth` and falls back to 1200 only
+  when that width is unavailable. Core compilation has no browser parent, so
+  `ganttUseWidth` owns the scene width and defaults to the same 1200 units.
 - DOM text measurement is supplied by `TextMetricProvider`; Compose uses the
   same font, size, and line-height inputs for measurement and painting.
 - SceneGraph interactions preserve sanitized links and callbacks while the
@@ -92,6 +94,10 @@ production so an upstream grammar diff can be translated incrementally.
 - The Web RC capture rejects an Official Gantt SVG whose viewBox is less than
   75% of its iframe width, preventing a flex-shrunk reference from masking or
   inventing Native layout differences.
+- The replacement Web gate uses a shared `1200 x 900` viewport. All 13
+  independent production pairs and all 256 matrix pairs pass geometry and
+  detail audit with no review queue. All 16 matrix contact sheets were
+  manually inspected.
 
 ## Upgrade Procedure
 
@@ -104,7 +110,9 @@ production so an upstream grammar diff can be translated incrementally.
 4. Regenerate the documentation fixtures and review their hash.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
-6. Install the Android sample and capture all 20 Native/Official Gantt pairs.
-7. Review the contact sheets at both the default official width and Mermaid's
-   1200-unit fallback where label placement is width-sensitive.
-8. Update this map and the compatibility matrix before publishing.
+6. Capture the 13 independent production pairs and 256 matrix pairs at the
+   shared `1200 x 900` viewport, then run geometry and detail audit.
+7. Review all 16 matrix contact sheets and resolve every non-passing result.
+8. Optionally install the Android sample and compare the 20 gallery pairs for
+   device-specific Canvas behavior.
+9. Update this map and the compatibility matrix before publishing.

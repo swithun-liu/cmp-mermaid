@@ -38,7 +38,7 @@
 > 现有 **[3,072 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
 > 仍保留为截图证据，但旧自动门禁只检查粗粒度几何，没有检查标签绘制顺序等细节。
 > 当前正在重新做细节验收。Flowchart、XY Chart、Quadrant Chart、Timeline、Kanban、
-> Sequence、Class、State 与 Entity Relationship 已完成新的 256 案例门禁；旧报告
+> Sequence、Class、State、Entity Relationship 与 Gantt 已完成新的 256 案例门禁；旧报告
 > 不能被理解为完整 Mermaid 兼容证明，也不能证明其他家族已完成细节审查。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
@@ -49,7 +49,7 @@ WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，�
 ## 当前验证状态
 
 已实现的 15 个家族仍有仓库内可复现的测试与截图。Flowchart、XY Chart、Quadrant Chart、
-Timeline、Kanban、Sequence、Class、State 与 Entity Relationship 已通过新的细节门禁，
+Timeline、Kanban、Sequence、Class、State、Entity Relationship 与 Gantt 已通过新的细节门禁，
 其他已实现家族的 Native/Official 证据正在升级并重新审查。
 
 | 证据 | 结果 |
@@ -61,8 +61,8 @@ Timeline、Kanban、Sequence、Class、State 与 Entity Relationship 已通过�
 | 已声明能力覆盖率 | 257/257 |
 | 大规模视觉矩阵 | 3,840 个唯一源码，每个已实现家族 256 个 |
 | Native/Official 截图 | 7,680 张矩阵截图，另有 394 张独立语料截图 |
-| 矩阵细节审查 | 9 个家族：2,304/2,304 验收；其中 2,244 个自动通过，60 个 ER 文本位置告警经人工复核通过；其余 6 个家族待重审 |
-| 自动视觉检查 | 3,840/3,840 几何通过；9 个家族的细节门禁通过 |
+| 矩阵细节审查 | 10 个家族：2,560/2,560 验收；其中 2,500 个自动通过，60 个 ER 文本位置告警经人工复核通过；其余 5 个家族待重审 |
+| 自动视觉检查 | 3,840/3,840 几何通过；10 个家族的细节门禁通过 |
 | 确定性 SceneGraph 重放 | 197 个通过，0 个不一致 |
 | 内置主题矩阵 | 165/165 |
 | 独立生成的 Native 压力输入 | 3,840 |
@@ -129,7 +129,7 @@ Timeline、Kanban、Sequence、Class、State 与 Entity Relationship 已通过�
 | Class | 细节门禁通过 | 13 | 分区、泛型、命名空间、关系、Dagre | [兼容性](docs/class-compatibility.md) |
 | State | 细节门禁通过 | 13 | 复合状态、并发、注释、分叉/汇合、Dagre | [兼容性](docs/state-compatibility.md) |
 | Entity Relationship | 细节门禁通过 | 13 | 属性、基数、关系、嵌套子图 | [兼容性](docs/er-compatibility.md) |
-| Gantt | 细节重审 | 13 | 日期、依赖、排除日期、里程碑、D3 风格刻度 | [兼容性](docs/gantt-compatibility.md) |
+| Gantt | 细节门禁通过 | 13 | 日期、依赖、排除日期、里程碑、D3 风格刻度 | [兼容性](docs/gantt-compatibility.md) |
 | Pie | 细节重审 | 13 | Langium 语法、D3 角度、环形图、图例、调色板 | [兼容性](docs/pie-compatibility.md) |
 | User Journey | 细节重审 | 13 | 分区、评分、参与者、满意度表情和文本策略 | [兼容性](docs/journey-compatibility.md) |
 | Requirement | 细节重审 | 13 | SysML 类型与字段、元素、七类关系、Dagre、样式 | [兼容性](docs/requirement-compatibility.md) |

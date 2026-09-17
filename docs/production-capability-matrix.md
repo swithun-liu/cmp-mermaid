@@ -70,10 +70,10 @@ profiles. All 3,840 sources render in the Native core test. The historical
 result
 did not catch a visible Git Graph paint-order defect and is not a detail-parity
 pass. Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class,
-State, and Entity Relationship add 2,304 Native/Official pairs accepted by the
-replacement detail gate. The first eight families contribute
-`2,048 pass / 0 review / 0 fail`; ER contributes
-`196 pass / 60 manually reviewed / 0 fail`. All 2,304 pairs also pass the
+State, Entity Relationship, and Gantt add 2,560 Native/Official pairs accepted
+by the replacement detail gate. Nine families contribute
+`2,304 pass / 0 review / 0 fail`; ER contributes
+`196 pass / 60 manually reviewed / 0 fail`. All 2,560 pairs also pass the
 geometry gate. This systematic matrix broadens layout and text-pressure
 coverage, but it is not counted as 3,840 independent topologies. The separate
 randomized stress corpus remains Native-only robustness evidence and is not
