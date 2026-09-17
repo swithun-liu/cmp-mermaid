@@ -14,10 +14,10 @@ layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
 Flowchart, XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
-Relationship, Gantt, Pie, User Journey, and Kanban have completed the
-replacement detail gate and manual contact-sheet review. Requirement,
-Git Graph, and Mindmap remain in this index as legacy capture evidence pending
-replacement detail review.
+Relationship, Gantt, Pie, User Journey, Requirement, and Kanban have completed
+the replacement detail gate and manual contact-sheet review. Git Graph and
+Mindmap remain in this index as legacy capture evidence pending replacement
+detail review.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -457,6 +457,13 @@ All 16 pages below were manually reviewed.
 
 <details>
 <summary><strong>Requirement - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `252 pass / 4 manually reviewed / 0 fail`. Geometry
+ratios: width `1.013-1.072`, height `1.004-1.053`, foreground ink
+`0.974-1.148`. The four reviews are benign greedy cross-matches between
+duplicate `<<contains>>` or `<<satisfies>>` labels; all 44 text elements match
+with no clipping or overlap, and raster checks pass. All 16 pages below were
+manually reviewed.
 
 ![Requirement visual parity page 01](requirement-visual-parity-01.jpg)
 

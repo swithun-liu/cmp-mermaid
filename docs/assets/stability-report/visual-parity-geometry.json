@@ -166421,8 +166421,8 @@
             255
           ]
         ],
-        "inkPixels": 119786,
-        "inkRatio": 0.11091296296296296,
+        "inkPixels": 119767,
+        "inkRatio": 0.11089537037037037,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -166458,7 +166458,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.979163771610741
+      "inkRatio": 0.9790084603751992
     },
     {
       "id": "parity_requirement_002",
@@ -166480,8 +166480,8 @@
             255
           ]
         ],
-        "inkPixels": 229433,
-        "inkRatio": 0.21243796296296297,
+        "inkPixels": 229410,
+        "inkRatio": 0.21241666666666667,
         "contentBounds": {
           "x": 17,
           "y": 59,
@@ -166517,7 +166517,7 @@
       },
       "widthRatio": 1.0372340425531914,
       "heightRatio": 1.016817593790427,
-      "inkRatio": 0.9879686685872013
+      "inkRatio": 0.9878696275626866
     },
     {
       "id": "parity_requirement_003",
@@ -166539,8 +166539,8 @@
             255
           ]
         ],
-        "inkPixels": 122297,
-        "inkRatio": 0.11323796296296296,
+        "inkPixels": 122338,
+        "inkRatio": 0.11327592592592593,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -166576,7 +166576,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.992219445706497
+      "inkRatio": 0.9925520867138314
     },
     {
       "id": "parity_requirement_004",
@@ -166598,8 +166598,8 @@
             255
           ]
         ],
-        "inkPixels": 152969,
-        "inkRatio": 0.14163796296296297,
+        "inkPixels": 152835,
+        "inkRatio": 0.14151388888888888,
         "contentBounds": {
           "x": 163,
           "y": 15,
@@ -166635,7 +166635,7 @@
       },
       "widthRatio": 1.0643203883495145,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0344620045579653
+      "inkRatio": 1.0335558215495728
     },
     {
       "id": "parity_requirement_005",
@@ -166657,13 +166657,13 @@
             255
           ]
         ],
-        "inkPixels": 216332,
-        "inkRatio": 0.2003074074074074,
+        "inkPixels": 216944,
+        "inkRatio": 0.20087407407407407,
         "contentBounds": {
           "x": 13,
           "y": 179,
           "width": 1173,
-          "height": 545
+          "height": 546
         }
       },
       "official": {
@@ -166693,8 +166693,8 @@
         }
       },
       "widthRatio": 1.0316622691292876,
-      "heightRatio": 1.0500963391136802,
-      "inkRatio": 1.0960900251815147
+      "heightRatio": 1.0520231213872833,
+      "inkRatio": 1.0991908475074352
     },
     {
       "id": "parity_requirement_006",
@@ -166716,8 +166716,8 @@
             255
           ]
         ],
-        "inkPixels": 204303,
-        "inkRatio": 0.18916944444444445,
+        "inkPixels": 204261,
+        "inkRatio": 0.18913055555555555,
         "contentBounds": {
           "x": 14,
           "y": 46,
@@ -166753,7 +166753,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0112359550561798,
-      "inkRatio": 0.9991148451712604
+      "inkRatio": 0.9989094501281274
     },
     {
       "id": "parity_requirement_007",
@@ -166775,8 +166775,8 @@
             255
           ]
         ],
-        "inkPixels": 145057,
-        "inkRatio": 0.13431203703703704,
+        "inkPixels": 145080,
+        "inkRatio": 0.13433333333333333,
         "contentBounds": {
           "x": 13,
           "y": 206,
@@ -166812,7 +166812,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.008230452674897,
-      "inkRatio": 0.9970032922546102
+      "inkRatio": 0.9971613754613623
     },
     {
       "id": "parity_requirement_008",
@@ -166834,8 +166834,8 @@
             255
           ]
         ],
-        "inkPixels": 91526,
-        "inkRatio": 0.08474629629629629,
+        "inkPixels": 91473,
+        "inkRatio": 0.08469722222222222,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -166871,7 +166871,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9788039526029858
+      "inkRatio": 0.9782371561791504
     },
     {
       "id": "parity_requirement_009",
@@ -166893,8 +166893,8 @@
             255
           ]
         ],
-        "inkPixels": 207867,
-        "inkRatio": 0.19246944444444444,
+        "inkPixels": 207861,
+        "inkRatio": 0.19246388888888888,
         "contentBounds": {
           "x": 17,
           "y": 16,
@@ -166930,7 +166930,7 @@
       },
       "widthRatio": 1.0646630236794172,
       "heightRatio": 1.0493975903614459,
-      "inkRatio": 1.0597024816982403
+      "inkRatio": 1.0596718937988132
     },
     {
       "id": "parity_requirement_010",
@@ -166952,8 +166952,8 @@
             255
           ]
         ],
-        "inkPixels": 189910,
-        "inkRatio": 0.1758425925925926,
+        "inkPixels": 189899,
+        "inkRatio": 0.1758324074074074,
         "contentBounds": {
           "x": 15,
           "y": 236,
@@ -166989,7 +166989,7 @@
       },
       "widthRatio": 1.0335689045936396,
       "heightRatio": 1.0435835351089588,
-      "inkRatio": 1.0870448704372564
+      "inkRatio": 1.0869819064354933
     },
     {
       "id": "parity_requirement_011",
@@ -167011,8 +167011,8 @@
             255
           ]
         ],
-        "inkPixels": 242574,
-        "inkRatio": 0.22460555555555556,
+        "inkPixels": 242898,
+        "inkRatio": 0.22490555555555555,
         "contentBounds": {
           "x": 298,
           "y": 20,
@@ -167048,7 +167048,7 @@
       },
       "widthRatio": 1.0134228187919463,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0784805399205057
+      "inkRatio": 1.0799210392936218
     },
     {
       "id": "parity_requirement_012",
@@ -167188,8 +167188,8 @@
             255
           ]
         ],
-        "inkPixels": 119786,
-        "inkRatio": 0.11091296296296296,
+        "inkPixels": 119767,
+        "inkRatio": 0.11089537037037037,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -167225,7 +167225,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.979163771610741
+      "inkRatio": 0.9790084603751992
     },
     {
       "id": "parity_requirement_015",
@@ -167247,8 +167247,8 @@
             255
           ]
         ],
-        "inkPixels": 229433,
-        "inkRatio": 0.21243796296296297,
+        "inkPixels": 229410,
+        "inkRatio": 0.21241666666666667,
         "contentBounds": {
           "x": 17,
           "y": 59,
@@ -167284,7 +167284,7 @@
       },
       "widthRatio": 1.0372340425531914,
       "heightRatio": 1.016817593790427,
-      "inkRatio": 0.9879686685872013
+      "inkRatio": 0.9878696275626866
     },
     {
       "id": "parity_requirement_016",
@@ -167306,8 +167306,8 @@
             255
           ]
         ],
-        "inkPixels": 122297,
-        "inkRatio": 0.11323796296296296,
+        "inkPixels": 122338,
+        "inkRatio": 0.11327592592592593,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -167343,7 +167343,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.992219445706497
+      "inkRatio": 0.9925520867138314
     },
     {
       "id": "parity_requirement_017",
@@ -167365,8 +167365,8 @@
             255
           ]
         ],
-        "inkPixels": 152969,
-        "inkRatio": 0.14163796296296297,
+        "inkPixels": 152835,
+        "inkRatio": 0.14151388888888888,
         "contentBounds": {
           "x": 163,
           "y": 15,
@@ -167402,7 +167402,7 @@
       },
       "widthRatio": 1.0643203883495145,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0344620045579653
+      "inkRatio": 1.0335558215495728
     },
     {
       "id": "parity_requirement_018",
@@ -167424,13 +167424,13 @@
             255
           ]
         ],
-        "inkPixels": 216332,
-        "inkRatio": 0.2003074074074074,
+        "inkPixels": 216944,
+        "inkRatio": 0.20087407407407407,
         "contentBounds": {
           "x": 13,
           "y": 179,
           "width": 1173,
-          "height": 545
+          "height": 546
         }
       },
       "official": {
@@ -167460,8 +167460,8 @@
         }
       },
       "widthRatio": 1.0316622691292876,
-      "heightRatio": 1.0500963391136802,
-      "inkRatio": 1.0960900251815147
+      "heightRatio": 1.0520231213872833,
+      "inkRatio": 1.0991908475074352
     },
     {
       "id": "parity_requirement_019",
@@ -167483,8 +167483,8 @@
             255
           ]
         ],
-        "inkPixels": 204303,
-        "inkRatio": 0.18916944444444445,
+        "inkPixels": 204261,
+        "inkRatio": 0.18913055555555555,
         "contentBounds": {
           "x": 14,
           "y": 46,
@@ -167520,7 +167520,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0112359550561798,
-      "inkRatio": 0.9991148451712604
+      "inkRatio": 0.9989094501281274
     },
     {
       "id": "parity_requirement_020",
@@ -167542,8 +167542,8 @@
             255
           ]
         ],
-        "inkPixels": 145057,
-        "inkRatio": 0.13431203703703704,
+        "inkPixels": 145080,
+        "inkRatio": 0.13433333333333333,
         "contentBounds": {
           "x": 13,
           "y": 206,
@@ -167579,7 +167579,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.008230452674897,
-      "inkRatio": 0.9970032922546102
+      "inkRatio": 0.9971613754613623
     },
     {
       "id": "parity_requirement_021",
@@ -167601,8 +167601,8 @@
             255
           ]
         ],
-        "inkPixels": 91526,
-        "inkRatio": 0.08474629629629629,
+        "inkPixels": 91473,
+        "inkRatio": 0.08469722222222222,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -167638,7 +167638,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9788039526029858
+      "inkRatio": 0.9782371561791504
     },
     {
       "id": "parity_requirement_022",
@@ -167660,8 +167660,8 @@
             255
           ]
         ],
-        "inkPixels": 207867,
-        "inkRatio": 0.19246944444444444,
+        "inkPixels": 207861,
+        "inkRatio": 0.19246388888888888,
         "contentBounds": {
           "x": 17,
           "y": 16,
@@ -167697,7 +167697,7 @@
       },
       "widthRatio": 1.0646630236794172,
       "heightRatio": 1.0493975903614459,
-      "inkRatio": 1.0597024816982403
+      "inkRatio": 1.0596718937988132
     },
     {
       "id": "parity_requirement_023",
@@ -167719,8 +167719,8 @@
             255
           ]
         ],
-        "inkPixels": 189910,
-        "inkRatio": 0.1758425925925926,
+        "inkPixels": 189899,
+        "inkRatio": 0.1758324074074074,
         "contentBounds": {
           "x": 15,
           "y": 236,
@@ -167756,7 +167756,7 @@
       },
       "widthRatio": 1.0335689045936396,
       "heightRatio": 1.0435835351089588,
-      "inkRatio": 1.0870448704372564
+      "inkRatio": 1.0869819064354933
     },
     {
       "id": "parity_requirement_024",
@@ -167778,8 +167778,8 @@
             255
           ]
         ],
-        "inkPixels": 242574,
-        "inkRatio": 0.22460555555555556,
+        "inkPixels": 242898,
+        "inkRatio": 0.22490555555555555,
         "contentBounds": {
           "x": 298,
           "y": 20,
@@ -167815,7 +167815,7 @@
       },
       "widthRatio": 1.0134228187919463,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0784805399205057
+      "inkRatio": 1.0799210392936218
     },
     {
       "id": "parity_requirement_025",
@@ -167955,8 +167955,8 @@
             255
           ]
         ],
-        "inkPixels": 128365,
-        "inkRatio": 0.11885648148148148,
+        "inkPixels": 128346,
+        "inkRatio": 0.11883888888888888,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -167992,7 +167992,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.982773800865138
+      "inkRatio": 0.9826283351835546
     },
     {
       "id": "parity_requirement_028",
@@ -168014,8 +168014,8 @@
             255
           ]
         ],
-        "inkPixels": 225283,
-        "inkRatio": 0.20859537037037038,
+        "inkPixels": 225272,
+        "inkRatio": 0.20858518518518518,
         "contentBounds": {
           "x": 16,
           "y": 74,
@@ -168051,7 +168051,7 @@
       },
       "widthRatio": 1.036283185840708,
       "heightRatio": 1.0161507402422612,
-      "inkRatio": 0.9771885383140599
+      "inkRatio": 0.9771408246653539
     },
     {
       "id": "parity_requirement_029",
@@ -168073,8 +168073,8 @@
             255
           ]
         ],
-        "inkPixels": 130997,
-        "inkRatio": 0.12129351851851852,
+        "inkPixels": 131038,
+        "inkRatio": 0.12133148148148148,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -168110,7 +168110,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.9954179331306992
+      "inkRatio": 0.9957294832826749
     },
     {
       "id": "parity_requirement_030",
@@ -168132,8 +168132,8 @@
             255
           ]
         ],
-        "inkPixels": 164232,
-        "inkRatio": 0.15206666666666666,
+        "inkPixels": 164121,
+        "inkRatio": 0.1519638888888889,
         "contentBounds": {
           "x": 163,
           "y": 15,
@@ -168169,7 +168169,7 @@
       },
       "widthRatio": 1.0643203883495145,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0421539574462684
+      "inkRatio": 1.0414495935630026
     },
     {
       "id": "parity_requirement_031",
@@ -168191,13 +168191,13 @@
             255
           ]
         ],
-        "inkPixels": 227824,
-        "inkRatio": 0.21094814814814813,
+        "inkPixels": 228334,
+        "inkRatio": 0.21142037037037037,
         "contentBounds": {
           "x": 13,
           "y": 179,
           "width": 1173,
-          "height": 545
+          "height": 546
         }
       },
       "official": {
@@ -168227,8 +168227,8 @@
         }
       },
       "widthRatio": 1.0316622691292876,
-      "heightRatio": 1.0500963391136802,
-      "inkRatio": 1.1033333817625322
+      "heightRatio": 1.0520231213872833,
+      "inkRatio": 1.1058032709080958
     },
     {
       "id": "parity_requirement_032",
@@ -168250,8 +168250,8 @@
             255
           ]
         ],
-        "inkPixels": 213061,
-        "inkRatio": 0.1972787037037037,
+        "inkPixels": 213019,
+        "inkRatio": 0.1972398148148148,
         "contentBounds": {
           "x": 14,
           "y": 46,
@@ -168287,7 +168287,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0112359550561798,
-      "inkRatio": 1.0001314350358865
+      "inkRatio": 0.9999342824820567
     },
     {
       "id": "parity_requirement_033",
@@ -168309,8 +168309,8 @@
             255
           ]
         ],
-        "inkPixels": 145565,
-        "inkRatio": 0.1347824074074074,
+        "inkPixels": 145587,
+        "inkRatio": 0.13480277777777777,
         "contentBounds": {
           "x": 13,
           "y": 211,
@@ -168346,7 +168346,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0041928721174005,
-      "inkRatio": 0.99462255384279
+      "inkRatio": 0.9947728763529026
     },
     {
       "id": "parity_requirement_034",
@@ -168368,8 +168368,8 @@
             255
           ]
         ],
-        "inkPixels": 98026,
-        "inkRatio": 0.09076481481481481,
+        "inkPixels": 97973,
+        "inkRatio": 0.09071574074074074,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -168405,7 +168405,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9814672046617339
+      "inkRatio": 0.9809365519589094
     },
     {
       "id": "parity_requirement_035",
@@ -168427,8 +168427,8 @@
             255
           ]
         ],
-        "inkPixels": 198715,
-        "inkRatio": 0.18399537037037036,
+        "inkPixels": 198798,
+        "inkRatio": 0.18407222222222222,
         "contentBounds": {
           "x": 16,
           "y": 42,
@@ -168464,7 +168464,7 @@
       },
       "widthRatio": 1.034452296819788,
       "heightRatio": 1.0186567164179106,
-      "inkRatio": 1.0071820292146905
+      "inkRatio": 1.0076027126478728
     },
     {
       "id": "parity_requirement_036",
@@ -168486,8 +168486,8 @@
             255
           ]
         ],
-        "inkPixels": 203269,
-        "inkRatio": 0.18821203703703704,
+        "inkPixels": 203258,
+        "inkRatio": 0.18820185185185184,
         "contentBounds": {
           "x": 15,
           "y": 236,
@@ -168523,7 +168523,7 @@
       },
       "widthRatio": 1.0335689045936396,
       "heightRatio": 1.0435835351089588,
-      "inkRatio": 1.0958429249936654
+      "inkRatio": 1.0957836229251015
     },
     {
       "id": "parity_requirement_037",
@@ -168545,8 +168545,8 @@
             255
           ]
         ],
-        "inkPixels": 261064,
-        "inkRatio": 0.24172592592592593,
+        "inkPixels": 261388,
+        "inkRatio": 0.24202592592592592,
         "contentBounds": {
           "x": 255,
           "y": 20,
@@ -168582,7 +168582,7 @@
       },
       "widthRatio": 1.032934131736527,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0910306667446779
+      "inkRatio": 1.092384717613527
     },
     {
       "id": "parity_requirement_038",
@@ -168722,8 +168722,8 @@
             255
           ]
         ],
-        "inkPixels": 130140,
-        "inkRatio": 0.1205,
+        "inkPixels": 130121,
+        "inkRatio": 0.12048240740740741,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -168759,7 +168759,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.982989908755816
+      "inkRatio": 0.9828463955526014
     },
     {
       "id": "parity_requirement_041",
@@ -168781,8 +168781,8 @@
             255
           ]
         ],
-        "inkPixels": 224582,
-        "inkRatio": 0.2079462962962963,
+        "inkPixels": 224618,
+        "inkRatio": 0.20797962962962963,
         "contentBounds": {
           "x": 16,
           "y": 80,
@@ -168818,7 +168818,7 @@
       },
       "widthRatio": 1.036283185840708,
       "heightRatio": 1.0163934426229508,
-      "inkRatio": 0.9918998657338705
+      "inkRatio": 0.992058865097873
     },
     {
       "id": "parity_requirement_042",
@@ -168840,8 +168840,8 @@
             255
           ]
         ],
-        "inkPixels": 132944,
-        "inkRatio": 0.1230962962962963,
+        "inkPixels": 132985,
+        "inkRatio": 0.12313425925925926,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -168877,7 +168877,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.9966713647404564
+      "inkRatio": 0.996978738717126
     },
     {
       "id": "parity_requirement_043",
@@ -168899,8 +168899,8 @@
             255
           ]
         ],
-        "inkPixels": 166661,
-        "inkRatio": 0.15431574074074075,
+        "inkPixels": 166565,
+        "inkRatio": 0.15422685185185186,
         "contentBounds": {
           "x": 163,
           "y": 15,
@@ -168936,7 +168936,7 @@
       },
       "widthRatio": 1.0643203883495145,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0424652221777424
+      "inkRatio": 1.0418647417934348
     },
     {
       "id": "parity_requirement_044",
@@ -168958,13 +168958,13 @@
             255
           ]
         ],
-        "inkPixels": 230528,
-        "inkRatio": 0.21345185185185186,
+        "inkPixels": 231054,
+        "inkRatio": 0.2139388888888889,
         "contentBounds": {
           "x": 13,
           "y": 179,
           "width": 1173,
-          "height": 545
+          "height": 546
         }
       },
       "official": {
@@ -168994,8 +168994,8 @@
         }
       },
       "widthRatio": 1.0316622691292876,
-      "heightRatio": 1.0500963391136802,
-      "inkRatio": 1.1027673467435242
+      "heightRatio": 1.0520231213872833,
+      "inkRatio": 1.1052835513884571
     },
     {
       "id": "parity_requirement_045",
@@ -169017,8 +169017,8 @@
             255
           ]
         ],
-        "inkPixels": 214875,
-        "inkRatio": 0.19895833333333332,
+        "inkPixels": 214833,
+        "inkRatio": 0.19891944444444445,
         "contentBounds": {
           "x": 14,
           "y": 46,
@@ -169054,7 +169054,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0112359550561798,
-      "inkRatio": 1.0001955006912344
+      "inkRatio": 1
     },
     {
       "id": "parity_requirement_046",
@@ -169076,8 +169076,8 @@
             255
           ]
         ],
-        "inkPixels": 144893,
-        "inkRatio": 0.1341601851851852,
+        "inkPixels": 144904,
+        "inkRatio": 0.13417037037037036,
         "contentBounds": {
           "x": 13,
           "y": 213,
@@ -169113,7 +169113,7 @@
       },
       "widthRatio": 1.027972027972028,
       "heightRatio": 1.0042194092827004,
-      "inkRatio": 0.9896048902093365
+      "inkRatio": 0.9896800191237236
     },
     {
       "id": "parity_requirement_047",
@@ -169135,8 +169135,8 @@
             255
           ]
         ],
-        "inkPixels": 99454,
-        "inkRatio": 0.09208703703703704,
+        "inkPixels": 99401,
+        "inkRatio": 0.09203796296296296,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -169172,7 +169172,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9829607226867502
+      "inkRatio": 0.9824368933957975
     },
     {
       "id": "parity_requirement_048",
@@ -169194,8 +169194,8 @@
             255
           ]
         ],
-        "inkPixels": 195781,
-        "inkRatio": 0.1812787037037037,
+        "inkPixels": 195797,
+        "inkRatio": 0.18129351851851852,
         "contentBounds": {
           "x": 16,
           "y": 48,
@@ -169231,7 +169231,7 @@
       },
       "widthRatio": 1.0353356890459364,
       "heightRatio": 1.0176322418136021,
-      "inkRatio": 1.0075703772322577
+      "inkRatio": 1.0076527198806031
     },
     {
       "id": "parity_requirement_049",
@@ -169253,8 +169253,8 @@
             255
           ]
         ],
-        "inkPixels": 206563,
-        "inkRatio": 0.19126203703703704,
+        "inkPixels": 206552,
+        "inkRatio": 0.19125185185185184,
         "contentBounds": {
           "x": 15,
           "y": 236,
@@ -169290,7 +169290,7 @@
       },
       "widthRatio": 1.0335689045936396,
       "heightRatio": 1.0435835351089588,
-      "inkRatio": 1.0971112019927873
+      "inkRatio": 1.0970527780580945
     },
     {
       "id": "parity_requirement_050",
@@ -169312,8 +169312,8 @@
             255
           ]
         ],
-        "inkPixels": 265525,
-        "inkRatio": 0.24585648148148148,
+        "inkPixels": 266026,
+        "inkRatio": 0.24632037037037038,
         "contentBounds": {
           "x": 244,
           "y": 20,
@@ -169349,7 +169349,7 @@
       },
       "widthRatio": 1.0348837209302326,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0910431938463563
+      "inkRatio": 1.0931018046744028
     },
     {
       "id": "parity_requirement_051",
@@ -169489,8 +169489,8 @@
             255
           ]
         ],
-        "inkPixels": 134143,
-        "inkRatio": 0.12420648148148149,
+        "inkPixels": 134124,
+        "inkRatio": 0.12418888888888889,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -169526,7 +169526,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.9846224988622853
+      "inkRatio": 0.9844830370381246
     },
     {
       "id": "parity_requirement_054",
@@ -169548,8 +169548,8 @@
             255
           ]
         ],
-        "inkPixels": 218252,
-        "inkRatio": 0.20208518518518517,
+        "inkPixels": 218164,
+        "inkRatio": 0.2020037037037037,
         "contentBounds": {
           "x": 16,
           "y": 90,
@@ -169585,7 +169585,7 @@
       },
       "widthRatio": 1.036283185840708,
       "heightRatio": 1.0154494382022472,
-      "inkRatio": 0.9862580379858377
+      "inkRatio": 0.9858603751587263
     },
     {
       "id": "parity_requirement_055",
@@ -169607,8 +169607,8 @@
             255
           ]
         ],
-        "inkPixels": 136990,
-        "inkRatio": 0.1268425925925926,
+        "inkPixels": 137031,
+        "inkRatio": 0.12688055555555555,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -169644,7 +169644,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.9980329302054495
+      "inkRatio": 0.9983316333964738
     },
     {
       "id": "parity_requirement_056",
@@ -169666,8 +169666,8 @@
             255
           ]
         ],
-        "inkPixels": 171623,
-        "inkRatio": 0.15891018518518518,
+        "inkPixels": 171510,
+        "inkRatio": 0.15880555555555556,
         "contentBounds": {
           "x": 163,
           "y": 15,
@@ -169703,7 +169703,7 @@
       },
       "widthRatio": 1.0643203883495145,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0436815859888104
+      "inkRatio": 1.0429944052541962
     },
     {
       "id": "parity_requirement_057",
@@ -169725,8 +169725,8 @@
             255
           ]
         ],
-        "inkPixels": 227234,
-        "inkRatio": 0.21040185185185184,
+        "inkPixels": 227346,
+        "inkRatio": 0.21050555555555556,
         "contentBounds": {
           "x": 14,
           "y": 184,
@@ -169762,7 +169762,7 @@
       },
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.0388349514563107,
-      "inkRatio": 1.0831704689540769
+      "inkRatio": 1.0837043463338831
     },
     {
       "id": "parity_requirement_058",
@@ -169784,8 +169784,8 @@
             255
           ]
         ],
-        "inkPixels": 218805,
-        "inkRatio": 0.20259722222222223,
+        "inkPixels": 218763,
+        "inkRatio": 0.20255833333333334,
         "contentBounds": {
           "x": 14,
           "y": 46,
@@ -169821,7 +169821,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0112359550561798,
-      "inkRatio": 1.0009973145703999
+      "inkRatio": 1.0008051713962862
     },
     {
       "id": "parity_requirement_059",
@@ -169843,8 +169843,8 @@
             255
           ]
         ],
-        "inkPixels": 146539,
-        "inkRatio": 0.13568425925925925,
+        "inkPixels": 146570,
+        "inkRatio": 0.13571296296296295,
         "contentBounds": {
           "x": 13,
           "y": 215,
@@ -169880,7 +169880,7 @@
       },
       "widthRatio": 1.027972027972028,
       "heightRatio": 1.004255319148936,
-      "inkRatio": 1.001113570530688
+      "inkRatio": 1.0013253538831501
     },
     {
       "id": "parity_requirement_060",
@@ -169902,8 +169902,8 @@
             255
           ]
         ],
-        "inkPixels": 102316,
-        "inkRatio": 0.09473703703703704,
+        "inkPixels": 102263,
+        "inkRatio": 0.09468796296296296,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -169939,7 +169939,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9822493159890558
+      "inkRatio": 0.9817405078481255
     },
     {
       "id": "parity_requirement_061",
@@ -169961,8 +169961,8 @@
             255
           ]
         ],
-        "inkPixels": 190746,
-        "inkRatio": 0.17661666666666667,
+        "inkPixels": 190841,
+        "inkRatio": 0.17670462962962963,
         "contentBounds": {
           "x": 16,
           "y": 59,
@@ -169998,7 +169998,7 @@
       },
       "widthRatio": 1.0344218887908208,
       "heightRatio": 1.0181347150259068,
-      "inkRatio": 1.001406986633627
+      "inkRatio": 1.001905731895547
     },
     {
       "id": "parity_requirement_062",
@@ -170020,8 +170020,8 @@
             255
           ]
         ],
-        "inkPixels": 205807,
-        "inkRatio": 0.19056203703703703,
+        "inkPixels": 205797,
+        "inkRatio": 0.19055277777777777,
         "contentBounds": {
           "x": 15,
           "y": 239,
@@ -170057,7 +170057,7 @@
       },
       "widthRatio": 1.0335689045936396,
       "heightRatio": 1.0290556900726393,
-      "inkRatio": 1.0655238647483056
+      "inkRatio": 1.0654720917831126
     },
     {
       "id": "parity_requirement_063",
@@ -170079,8 +170079,8 @@
             255
           ]
         ],
-        "inkPixels": 273759,
-        "inkRatio": 0.25348055555555554,
+        "inkPixels": 274083,
+        "inkRatio": 0.25378055555555556,
         "contentBounds": {
           "x": 225,
           "y": 20,
@@ -170116,7 +170116,7 @@
       },
       "widthRatio": 1.0416666666666667,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0953558439064206
+      "inkRatio": 1.0966522224489552
     },
     {
       "id": "parity_requirement_064",
@@ -170256,8 +170256,8 @@
             255
           ]
         ],
-        "inkPixels": 138316,
-        "inkRatio": 0.12807037037037036,
+        "inkPixels": 138297,
+        "inkRatio": 0.12805277777777777,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -170293,7 +170293,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.9850725009258468
+      "inkRatio": 0.9849371848559951
     },
     {
       "id": "parity_requirement_067",
@@ -170315,8 +170315,8 @@
             255
           ]
         ],
-        "inkPixels": 214197,
-        "inkRatio": 0.19833055555555557,
+        "inkPixels": 213909,
+        "inkRatio": 0.1980638888888889,
         "contentBounds": {
           "x": 16,
           "y": 101,
@@ -170352,7 +170352,7 @@
       },
       "widthRatio": 1.0353356890459364,
       "heightRatio": 1.0144508670520231,
-      "inkRatio": 0.9957556598949375
+      "inkRatio": 0.994416810004184
     },
     {
       "id": "parity_requirement_068",
@@ -170374,8 +170374,8 @@
             255
           ]
         ],
-        "inkPixels": 141190,
-        "inkRatio": 0.13073148148148148,
+        "inkPixels": 141231,
+        "inkRatio": 0.13076944444444444,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -170411,7 +170411,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.9993346734237422
+      "inkRatio": 0.9996248690580674
     },
     {
       "id": "parity_requirement_069",
@@ -170433,8 +170433,8 @@
             255
           ]
         ],
-        "inkPixels": 176497,
-        "inkRatio": 0.16342314814814815,
+        "inkPixels": 176341,
+        "inkRatio": 0.1632787037037037,
         "contentBounds": {
           "x": 156,
           "y": 15,
@@ -170470,7 +170470,7 @@
       },
       "widthRatio": 1.0619785458879618,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0428676096949931
+      "inkRatio": 1.041945852684322
     },
     {
       "id": "parity_requirement_070",
@@ -170492,13 +170492,13 @@
             255
           ]
         ],
-        "inkPixels": 220944,
-        "inkRatio": 0.20457777777777778,
+        "inkPixels": 221169,
+        "inkRatio": 0.2047861111111111,
         "contentBounds": {
           "x": 14,
           "y": 190,
           "width": 1172,
-          "height": 522
+          "height": 523
         }
       },
       "official": {
@@ -170528,8 +170528,8 @@
         }
       },
       "widthRatio": 1.0316901408450705,
-      "heightRatio": 1.044,
-      "inkRatio": 1.0858266168665225
+      "heightRatio": 1.046,
+      "inkRatio": 1.0869323766463534
     },
     {
       "id": "parity_requirement_071",
@@ -170551,8 +170551,8 @@
             255
           ]
         ],
-        "inkPixels": 223182,
-        "inkRatio": 0.20665,
+        "inkPixels": 223140,
+        "inkRatio": 0.2066111111111111,
         "contentBounds": {
           "x": 14,
           "y": 46,
@@ -170588,7 +170588,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0112359550561798,
-      "inkRatio": 1.0024479309369063
+      "inkRatio": 1.0022592830481905
     },
     {
       "id": "parity_requirement_072",
@@ -170610,8 +170610,8 @@
             255
           ]
         ],
-        "inkPixels": 146488,
-        "inkRatio": 0.13563703703703703,
+        "inkPixels": 146478,
+        "inkRatio": 0.1356277777777778,
         "contentBounds": {
           "x": 13,
           "y": 217,
@@ -170647,7 +170647,7 @@
       },
       "widthRatio": 1.027972027972028,
       "heightRatio": 1.0064516129032257,
-      "inkRatio": 1.0005122495953227
+      "inkRatio": 1.0004439496492799
     },
     {
       "id": "parity_requirement_073",
@@ -170669,8 +170669,8 @@
             255
           ]
         ],
-        "inkPixels": 105566,
-        "inkRatio": 0.09774629629629629,
+        "inkPixels": 105513,
+        "inkRatio": 0.09769722222222223,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -170706,7 +170706,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9851434330614606
+      "inkRatio": 0.9846488362978032
     },
     {
       "id": "parity_requirement_074",
@@ -170787,8 +170787,8 @@
             255
           ]
         ],
-        "inkPixels": 200848,
-        "inkRatio": 0.18597037037037037,
+        "inkPixels": 200836,
+        "inkRatio": 0.18595925925925927,
         "contentBounds": {
           "x": 15,
           "y": 245,
@@ -170824,7 +170824,7 @@
       },
       "widthRatio": 1.0317460317460319,
       "heightRatio": 1.0325,
-      "inkRatio": 1.0697401919533005
+      "inkRatio": 1.0696762785346783
     },
     {
       "id": "parity_requirement_076",
@@ -170846,8 +170846,8 @@
             255
           ]
         ],
-        "inkPixels": 282479,
-        "inkRatio": 0.2615546296296296,
+        "inkPixels": 282804,
+        "inkRatio": 0.26185555555555556,
         "contentBounds": {
           "x": 205,
           "y": 20,
@@ -170883,7 +170883,7 @@
       },
       "widthRatio": 1.0340314136125655,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.089945517965181
+      "inkRatio": 1.0911995308062725
     },
     {
       "id": "parity_requirement_077",
@@ -171023,8 +171023,8 @@
             255
           ]
         ],
-        "inkPixels": 140880,
-        "inkRatio": 0.13044444444444445,
+        "inkPixels": 140861,
+        "inkRatio": 0.13042685185185185,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -171060,7 +171060,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.9863543117994245
+      "inkRatio": 0.9862212855932618
     },
     {
       "id": "parity_requirement_080",
@@ -171082,8 +171082,8 @@
             255
           ]
         ],
-        "inkPixels": 209625,
-        "inkRatio": 0.19409722222222223,
+        "inkPixels": 209689,
+        "inkRatio": 0.19415648148148149,
         "contentBounds": {
           "x": 16,
           "y": 107,
@@ -171119,7 +171119,7 @@
       },
       "widthRatio": 1.0353356890459364,
       "heightRatio": 1.0147058823529411,
-      "inkRatio": 0.9898710865561695
+      "inkRatio": 0.990173301223025
     },
     {
       "id": "parity_requirement_081",
@@ -171141,8 +171141,8 @@
             255
           ]
         ],
-        "inkPixels": 143580,
-        "inkRatio": 0.13294444444444445,
+        "inkPixels": 143621,
+        "inkRatio": 0.1329824074074074,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -171178,7 +171178,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.999505746566331
+      "inkRatio": 0.9997911605209849
     },
     {
       "id": "parity_requirement_082",
@@ -171200,8 +171200,8 @@
             255
           ]
         ],
-        "inkPixels": 180236,
-        "inkRatio": 0.1668851851851852,
+        "inkPixels": 180118,
+        "inkRatio": 0.16677592592592594,
         "contentBounds": {
           "x": 146,
           "y": 15,
@@ -171237,7 +171237,7 @@
       },
       "widthRatio": 1.0630105017502918,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0463749941944174
+      "inkRatio": 1.045689935441921
     },
     {
       "id": "parity_requirement_083",
@@ -171259,8 +171259,8 @@
             255
           ]
         ],
-        "inkPixels": 216859,
-        "inkRatio": 0.20079537037037037,
+        "inkPixels": 216762,
+        "inkRatio": 0.20070555555555555,
         "contentBounds": {
           "x": 14,
           "y": 194,
@@ -171296,7 +171296,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0425963488843812,
-      "inkRatio": 1.07791910847338
+      "inkRatio": 1.077436960379356
     },
     {
       "id": "parity_requirement_084",
@@ -171318,8 +171318,8 @@
             255
           ]
         ],
-        "inkPixels": 221795,
-        "inkRatio": 0.20536574074074074,
+        "inkPixels": 221823,
+        "inkRatio": 0.20539166666666667,
         "contentBounds": {
           "x": 14,
           "y": 50,
@@ -171355,7 +171355,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.013906447534766,
-      "inkRatio": 1.0106121221510393
+      "inkRatio": 1.0107397045556032
     },
     {
       "id": "parity_requirement_085",
@@ -171377,8 +171377,8 @@
             255
           ]
         ],
-        "inkPixels": 147442,
-        "inkRatio": 0.13652037037037038,
+        "inkPixels": 147371,
+        "inkRatio": 0.13645462962962962,
         "contentBounds": {
           "x": 13,
           "y": 218,
@@ -171414,7 +171414,7 @@
       },
       "widthRatio": 1.027972027972028,
       "heightRatio": 1.0064794816414686,
-      "inkRatio": 1.003792082241209
+      "inkRatio": 1.0033087108962793
     },
     {
       "id": "parity_requirement_086",
@@ -171436,8 +171436,8 @@
             255
           ]
         ],
-        "inkPixels": 107386,
-        "inkRatio": 0.09943148148148148,
+        "inkPixels": 107333,
+        "inkRatio": 0.0993824074074074,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -171473,7 +171473,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9853915469177266
+      "inkRatio": 0.9849052102259171
     },
     {
       "id": "parity_requirement_087",
@@ -171495,8 +171495,8 @@
             255
           ]
         ],
-        "inkPixels": 184895,
-        "inkRatio": 0.1711990740740741,
+        "inkPixels": 184907,
+        "inkRatio": 0.1712101851851852,
         "contentBounds": {
           "x": 15,
           "y": 76,
@@ -171532,7 +171532,7 @@
       },
       "widthRatio": 1.0343915343915344,
       "heightRatio": 1.0148648648648648,
-      "inkRatio": 1.004236482633137
+      "inkRatio": 1.0043016592890313
     },
     {
       "id": "parity_requirement_088",
@@ -171554,8 +171554,8 @@
             255
           ]
         ],
-        "inkPixels": 197764,
-        "inkRatio": 0.1831148148148148,
+        "inkPixels": 198091,
+        "inkRatio": 0.1834175925925926,
         "contentBounds": {
           "x": 15,
           "y": 248,
@@ -171591,7 +171591,7 @@
       },
       "widthRatio": 1.0317460317460319,
       "heightRatio": 1.030379746835443,
-      "inkRatio": 1.0637105406117717
+      "inkRatio": 1.0654693710701972
     },
     {
       "id": "parity_requirement_089",
@@ -171613,12 +171613,12 @@
             255
           ]
         ],
-        "inkPixels": 287470,
-        "inkRatio": 0.2661759259259259,
+        "inkPixels": 288385,
+        "inkRatio": 0.26702314814814815,
         "contentBounds": {
-          "x": 193,
+          "x": 192,
           "y": 20,
-          "width": 814,
+          "width": 816,
           "height": 864
         }
       },
@@ -171648,9 +171648,9 @@
           "height": 821
         }
       },
-      "widthRatio": 1.038265306122449,
+      "widthRatio": 1.0408163265306123,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0927925188169998
+      "inkRatio": 1.0962708127423402
     },
     {
       "id": "parity_requirement_090",
@@ -171790,8 +171790,8 @@
             255
           ]
         ],
-        "inkPixels": 141485,
-        "inkRatio": 0.13100462962962964,
+        "inkPixels": 141466,
+        "inkRatio": 0.13098703703703704,
         "contentBounds": {
           "x": 14,
           "y": 126,
@@ -171827,7 +171827,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124416796267497,
-      "inkRatio": 0.9863981148386738
+      "inkRatio": 0.9862656515797987
     },
     {
       "id": "parity_requirement_093",
@@ -171849,8 +171849,8 @@
             255
           ]
         ],
-        "inkPixels": 207997,
-        "inkRatio": 0.19258981481481482,
+        "inkPixels": 208161,
+        "inkRatio": 0.19274166666666667,
         "contentBounds": {
           "x": 16,
           "y": 108,
@@ -171886,7 +171886,7 @@
       },
       "widthRatio": 1.0344218887908208,
       "heightRatio": 1.0147710487444608,
-      "inkRatio": 0.9912549086888558
+      "inkRatio": 0.9920364863319227
     },
     {
       "id": "parity_requirement_094",
@@ -171908,8 +171908,8 @@
             255
           ]
         ],
-        "inkPixels": 144177,
-        "inkRatio": 0.1334972222222222,
+        "inkPixels": 144218,
+        "inkRatio": 0.13353518518518517,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -171945,7 +171945,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.9985524912387627
+      "inkRatio": 0.9988364522876177
     },
     {
       "id": "parity_requirement_095",
@@ -171967,8 +171967,8 @@
             255
           ]
         ],
-        "inkPixels": 180806,
-        "inkRatio": 0.16741296296296296,
+        "inkPixels": 180642,
+        "inkRatio": 0.1672611111111111,
         "contentBounds": {
           "x": 144,
           "y": 15,
@@ -172004,7 +172004,7 @@
       },
       "widthRatio": 1.0614849187935034,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0442883711259225
+      "inkRatio": 1.0433411498342362
     },
     {
       "id": "parity_requirement_096",
@@ -172026,8 +172026,8 @@
             255
           ]
         ],
-        "inkPixels": 215545,
-        "inkRatio": 0.1995787037037037,
+        "inkPixels": 215606,
+        "inkRatio": 0.1996351851851852,
         "contentBounds": {
           "x": 14,
           "y": 195,
@@ -172063,7 +172063,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0427698574338085,
-      "inkRatio": 1.0777627216952592
+      "inkRatio": 1.078067732370633
     },
     {
       "id": "parity_requirement_097",
@@ -172085,8 +172085,8 @@
             255
           ]
         ],
-        "inkPixels": 220902,
-        "inkRatio": 0.20453888888888888,
+        "inkPixels": 220871,
+        "inkRatio": 0.20451018518518518,
         "contentBounds": {
           "x": 14,
           "y": 52,
@@ -172122,7 +172122,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0126742712294043,
-      "inkRatio": 1.0145452040324248
+      "inkRatio": 1.01440282912715
     },
     {
       "id": "parity_requirement_098",
@@ -172144,8 +172144,8 @@
             255
           ]
         ],
-        "inkPixels": 146394,
-        "inkRatio": 0.13555,
+        "inkPixels": 146384,
+        "inkRatio": 0.13554074074074074,
         "contentBounds": {
           "x": 13,
           "y": 219,
@@ -172181,7 +172181,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0043290043290043,
-      "inkRatio": 0.9976828819496504
+      "inkRatio": 0.9976147314187577
     },
     {
       "id": "parity_requirement_099",
@@ -172203,8 +172203,8 @@
             255
           ]
         ],
-        "inkPixels": 107906,
-        "inkRatio": 0.09991296296296297,
+        "inkPixels": 107853,
+        "inkRatio": 0.09986388888888889,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -172240,7 +172240,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9854609216606697
+      "inkRatio": 0.9849768945551517
     },
     {
       "id": "parity_requirement_100",
@@ -172262,8 +172262,8 @@
             255
           ]
         ],
-        "inkPixels": 184428,
-        "inkRatio": 0.17076666666666668,
+        "inkPixels": 184461,
+        "inkRatio": 0.1707972222222222,
         "contentBounds": {
           "x": 15,
           "y": 77,
@@ -172299,7 +172299,7 @@
       },
       "widthRatio": 1.0334801762114538,
       "heightRatio": 1.017663043478261,
-      "inkRatio": 1.0022117040989886
+      "inkRatio": 1.002391031458366
     },
     {
       "id": "parity_requirement_101",
@@ -172321,12 +172321,12 @@
             255
           ]
         ],
-        "inkPixels": 196897,
-        "inkRatio": 0.18231203703703705,
+        "inkPixels": 197231,
+        "inkRatio": 0.1826212962962963,
         "contentBounds": {
-          "x": 15,
+          "x": 14,
           "y": 250,
-          "width": 1170,
+          "width": 1172,
           "height": 404
         }
       },
@@ -172356,9 +172356,9 @@
           "height": 393
         }
       },
-      "widthRatio": 1.0317460317460319,
+      "widthRatio": 1.033509700176367,
       "heightRatio": 1.0279898218829517,
-      "inkRatio": 1.0649470763539206
+      "inkRatio": 1.0667535656529052
     },
     {
       "id": "parity_requirement_102",
@@ -172380,12 +172380,12 @@
             255
           ]
         ],
-        "inkPixels": 289189,
-        "inkRatio": 0.2677675925925926,
+        "inkPixels": 290320,
+        "inkRatio": 0.26881481481481484,
         "contentBounds": {
-          "x": 189,
+          "x": 188,
           "y": 20,
-          "width": 822,
+          "width": 824,
           "height": 864
         }
       },
@@ -172415,9 +172415,9 @@
           "height": 821
         }
       },
-      "widthRatio": 1.040506329113924,
+      "widthRatio": 1.0430379746835443,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0933338878344965
+      "inkRatio": 1.0976098479406584
     },
     {
       "id": "parity_requirement_103",
@@ -172557,8 +172557,8 @@
             255
           ]
         ],
-        "inkPixels": 141819,
-        "inkRatio": 0.1313138888888889,
+        "inkPixels": 141826,
+        "inkRatio": 0.13132037037037037,
         "contentBounds": {
           "x": 14,
           "y": 129,
@@ -172594,7 +172594,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.012558869701727,
-      "inkRatio": 0.9905705844142237
+      "inkRatio": 0.990619477680224
     },
     {
       "id": "parity_requirement_106",
@@ -172616,8 +172616,8 @@
             255
           ]
         ],
-        "inkPixels": 205895,
-        "inkRatio": 0.19064351851851852,
+        "inkPixels": 205864,
+        "inkRatio": 0.19061481481481482,
         "contentBounds": {
           "x": 15,
           "y": 112,
@@ -172653,7 +172653,7 @@
       },
       "widthRatio": 1.0343915343915344,
       "heightRatio": 1.0164670658682635,
-      "inkRatio": 0.9861580094355438
+      "inkRatio": 0.9860095313360635
     },
     {
       "id": "parity_requirement_107",
@@ -172675,8 +172675,8 @@
             255
           ]
         ],
-        "inkPixels": 146117,
-        "inkRatio": 0.1352935185185185,
+        "inkPixels": 146158,
+        "inkRatio": 0.13533148148148147,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -172712,7 +172712,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 0.998660406115656
+      "inkRatio": 0.9989406272853402
     },
     {
       "id": "parity_requirement_108",
@@ -172734,8 +172734,8 @@
             255
           ]
         ],
-        "inkPixels": 182951,
-        "inkRatio": 0.16939907407407406,
+        "inkPixels": 182835,
+        "inkRatio": 0.16929166666666667,
         "contentBounds": {
           "x": 137,
           "y": 15,
@@ -172771,7 +172771,7 @@
       },
       "widthRatio": 1.0605022831050228,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0428301897547265
+      "inkRatio": 1.042168983737752
     },
     {
       "id": "parity_requirement_109",
@@ -172793,8 +172793,8 @@
             255
           ]
         ],
-        "inkPixels": 213027,
-        "inkRatio": 0.1972472222222222,
+        "inkPixels": 213013,
+        "inkRatio": 0.19723425925925925,
         "contentBounds": {
           "x": 14,
           "y": 199,
@@ -172830,7 +172830,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0455486542443064,
-      "inkRatio": 1.0833019741057535
+      "inkRatio": 1.0832307801836802
     },
     {
       "id": "parity_requirement_110",
@@ -172852,8 +172852,8 @@
             255
           ]
         ],
-        "inkPixels": 218073,
-        "inkRatio": 0.20191944444444446,
+        "inkPixels": 218116,
+        "inkRatio": 0.20195925925925926,
         "contentBounds": {
           "x": 14,
           "y": 56,
@@ -172889,7 +172889,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0128040973111396,
-      "inkRatio": 1.0067354833944253
+      "inkRatio": 1.006933993186036
     },
     {
       "id": "parity_requirement_111",
@@ -172911,8 +172911,8 @@
             255
           ]
         ],
-        "inkPixels": 143813,
-        "inkRatio": 0.1331601851851852,
+        "inkPixels": 143821,
+        "inkRatio": 0.1331675925925926,
         "contentBounds": {
           "x": 13,
           "y": 220,
@@ -172948,7 +172948,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0043478260869565,
-      "inkRatio": 0.9794857823940064
+      "inkRatio": 0.979540269027754
     },
     {
       "id": "parity_requirement_112",
@@ -172970,8 +172970,8 @@
             255
           ]
         ],
-        "inkPixels": 109206,
-        "inkRatio": 0.10111666666666666,
+        "inkPixels": 109153,
+        "inkRatio": 0.1010675925925926,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -173007,7 +173007,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9844941672826929
+      "inkRatio": 0.9840163712745434
     },
     {
       "id": "parity_requirement_113",
@@ -173029,8 +173029,8 @@
             255
           ]
         ],
-        "inkPixels": 183398,
-        "inkRatio": 0.16981296296296297,
+        "inkPixels": 183413,
+        "inkRatio": 0.16982685185185184,
         "contentBounds": {
           "x": 15,
           "y": 81,
@@ -173066,7 +173066,7 @@
       },
       "widthRatio": 1.0334801762114538,
       "heightRatio": 1.0178571428571428,
-      "inkRatio": 1.0001145181783977
+      "inkRatio": 1.0001963168772527
     },
     {
       "id": "parity_requirement_114",
@@ -173088,12 +173088,12 @@
             255
           ]
         ],
-        "inkPixels": 193621,
-        "inkRatio": 0.1792787037037037,
+        "inkPixels": 194864,
+        "inkRatio": 0.18042962962962963,
         "contentBounds": {
-          "x": 15,
+          "x": 14,
           "y": 252,
-          "width": 1170,
+          "width": 1172,
           "height": 399
         }
       },
@@ -173123,9 +173123,9 @@
           "height": 387
         }
       },
-      "widthRatio": 1.0317460317460319,
+      "widthRatio": 1.033509700176367,
       "heightRatio": 1.0310077519379846,
-      "inkRatio": 1.0607568029540186
+      "inkRatio": 1.067566605124609
     },
     {
       "id": "parity_requirement_115",
@@ -173147,8 +173147,8 @@
             255
           ]
         ],
-        "inkPixels": 293305,
-        "inkRatio": 0.2715787037037037,
+        "inkPixels": 294192,
+        "inkRatio": 0.2724,
         "contentBounds": {
           "x": 179,
           "y": 20,
@@ -173184,7 +173184,7 @@
       },
       "widthRatio": 1.0318627450980393,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0869629668061325
+      "inkRatio": 1.0902501121038841
     },
     {
       "id": "parity_requirement_116",
@@ -173324,8 +173324,8 @@
             255
           ]
         ],
-        "inkPixels": 140608,
-        "inkRatio": 0.13019259259259258,
+        "inkPixels": 140588,
+        "inkRatio": 0.13017407407407408,
         "contentBounds": {
           "x": 14,
           "y": 133,
@@ -173361,7 +173361,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.011128775834658,
-      "inkRatio": 0.9970925697428695
+      "inkRatio": 0.9969507438766683
     },
     {
       "id": "parity_requirement_119",
@@ -173383,8 +173383,8 @@
             255
           ]
         ],
-        "inkPixels": 203416,
-        "inkRatio": 0.18834814814814815,
+        "inkPixels": 203365,
+        "inkRatio": 0.18830092592592593,
         "contentBounds": {
           "x": 15,
           "y": 118,
@@ -173420,7 +173420,7 @@
       },
       "widthRatio": 1.0343915343915344,
       "heightRatio": 1.013677811550152,
-      "inkRatio": 0.9874323438751487
+      "inkRatio": 0.9871847770685177
     },
     {
       "id": "parity_requirement_120",
@@ -173442,8 +173442,8 @@
             255
           ]
         ],
-        "inkPixels": 148946,
-        "inkRatio": 0.13791296296296296,
+        "inkPixels": 148987,
+        "inkRatio": 0.13795092592592592,
         "contentBounds": {
           "x": 14,
           "y": 127,
@@ -173479,7 +173479,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0124804992199687,
-      "inkRatio": 1.001789077212806
+      "inkRatio": 1.0020648372343288
     },
     {
       "id": "parity_requirement_121",
@@ -173501,8 +173501,8 @@
             255
           ]
         ],
-        "inkPixels": 186735,
-        "inkRatio": 0.17290277777777777,
+        "inkPixels": 186561,
+        "inkRatio": 0.17274166666666665,
         "contentBounds": {
           "x": 127,
           "y": 15,
@@ -173538,7 +173538,7 @@
       },
       "widthRatio": 1.0615212527964206,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0485369839014884
+      "inkRatio": 1.0475599553037491
     },
     {
       "id": "parity_requirement_122",
@@ -173560,8 +173560,8 @@
             255
           ]
         ],
-        "inkPixels": 208985,
-        "inkRatio": 0.19350462962962964,
+        "inkPixels": 209379,
+        "inkRatio": 0.19386944444444446,
         "contentBounds": {
           "x": 14,
           "y": 203,
@@ -173597,7 +173597,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0375782881002087,
-      "inkRatio": 1.0794345216573866
+      "inkRatio": 1.0814695825542597
     },
     {
       "id": "parity_requirement_123",
@@ -173619,8 +173619,8 @@
             255
           ]
         ],
-        "inkPixels": 214950,
-        "inkRatio": 0.19902777777777778,
+        "inkPixels": 214986,
+        "inkRatio": 0.1990611111111111,
         "contentBounds": {
           "x": 14,
           "y": 62,
@@ -173656,7 +173656,7 @@
       },
       "widthRatio": 1.0316066725197541,
       "heightRatio": 1.013003901170351,
-      "inkRatio": 1.0113485588459477
+      "inkRatio": 1.0115179403212602
     },
     {
       "id": "parity_requirement_124",
@@ -173678,8 +173678,8 @@
             255
           ]
         ],
-        "inkPixels": 146777,
-        "inkRatio": 0.13590462962962963,
+        "inkPixels": 146832,
+        "inkRatio": 0.13595555555555555,
         "contentBounds": {
           "x": 13,
           "y": 221,
@@ -173715,7 +173715,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0065645514223194,
-      "inkRatio": 0.999530119989649
+      "inkRatio": 0.9999046620268853
     },
     {
       "id": "parity_requirement_125",
@@ -173737,8 +173737,8 @@
             255
           ]
         ],
-        "inkPixels": 111416,
-        "inkRatio": 0.10316296296296296,
+        "inkPixels": 111363,
+        "inkRatio": 0.1031138888888889,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -173774,7 +173774,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9881597502461175
+      "inkRatio": 0.987689687896338
     },
     {
       "id": "parity_requirement_126",
@@ -173796,8 +173796,8 @@
             255
           ]
         ],
-        "inkPixels": 179853,
-        "inkRatio": 0.16653055555555554,
+        "inkPixels": 179860,
+        "inkRatio": 0.16653703703703704,
         "contentBounds": {
           "x": 15,
           "y": 88,
@@ -173833,7 +173833,7 @@
       },
       "widthRatio": 1.0325704225352113,
       "heightRatio": 1.01536312849162,
-      "inkRatio": 1.0020614765743832
+      "inkRatio": 1.0021004774825473
     },
     {
       "id": "parity_requirement_127",
@@ -173855,8 +173855,8 @@
             255
           ]
         ],
-        "inkPixels": 191021,
-        "inkRatio": 0.1768712962962963,
+        "inkPixels": 191434,
+        "inkRatio": 0.1772537037037037,
         "contentBounds": {
           "x": 14,
           "y": 255,
@@ -173892,7 +173892,7 @@
       },
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.031496062992126,
-      "inkRatio": 1.0612336735204084
+      "inkRatio": 1.0635281307118372
     },
     {
       "id": "parity_requirement_128",
@@ -173914,8 +173914,8 @@
             255
           ]
         ],
-        "inkPixels": 299024,
-        "inkRatio": 0.27687407407407405,
+        "inkPixels": 299565,
+        "inkRatio": 0.277375,
         "contentBounds": {
           "x": 166,
           "y": 20,
@@ -173951,7 +173951,7 @@
       },
       "widthRatio": 1.0382775119617225,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0902541291428154
+      "inkRatio": 1.0922266379844678
     },
     {
       "id": "parity_requirement_129",
@@ -174091,8 +174091,8 @@
             255
           ]
         ],
-        "inkPixels": 138260,
-        "inkRatio": 0.12801851851851853,
+        "inkPixels": 138293,
+        "inkRatio": 0.12804907407407407,
         "contentBounds": {
           "x": 14,
           "y": 140,
@@ -174128,7 +174128,7 @@
       },
       "widthRatio": 1.030701754385965,
       "heightRatio": 1.0113821138211383,
-      "inkRatio": 0.9919644138326876
+      "inkRatio": 0.992201176639403
     },
     {
       "id": "parity_requirement_132",
@@ -174150,8 +174150,8 @@
             255
           ]
         ],
-        "inkPixels": 197927,
-        "inkRatio": 0.18326574074074073,
+        "inkPixels": 197864,
+        "inkRatio": 0.1832074074074074,
         "contentBounds": {
           "x": 15,
           "y": 127,
@@ -174187,7 +174187,7 @@
       },
       "widthRatio": 1.0334801762114538,
       "heightRatio": 1.0140625,
-      "inkRatio": 0.9868865210389065
+      "inkRatio": 0.9865723958774811
     },
     {
       "id": "parity_requirement_133",
@@ -174209,8 +174209,8 @@
             255
           ]
         ],
-        "inkPixels": 151427,
-        "inkRatio": 0.1402101851851852,
+        "inkPixels": 151418,
+        "inkRatio": 0.14020185185185186,
         "contentBounds": {
           "x": 14,
           "y": 128,
@@ -174246,7 +174246,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0125195618153364,
-      "inkRatio": 0.9967023853404245
+      "inkRatio": 0.9966431467537256
     },
     {
       "id": "parity_requirement_134",
@@ -174268,8 +174268,8 @@
             255
           ]
         ],
-        "inkPixels": 192066,
-        "inkRatio": 0.17783888888888888,
+        "inkPixels": 191916,
+        "inkRatio": 0.1777,
         "contentBounds": {
           "x": 111,
           "y": 15,
@@ -174305,7 +174305,7 @@
       },
       "widthRatio": 1.0628385698808234,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0502698594106292
+      "inkRatio": 1.0494496180409356
     },
     {
       "id": "parity_requirement_135",
@@ -174327,8 +174327,8 @@
             255
           ]
         ],
-        "inkPixels": 203936,
-        "inkRatio": 0.18882962962962963,
+        "inkPixels": 203915,
+        "inkRatio": 0.1888101851851852,
         "contentBounds": {
           "x": 14,
           "y": 209,
@@ -174364,7 +174364,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0407725321888412,
-      "inkRatio": 1.0822388146827355
+      "inkRatio": 1.0821273727837657
     },
     {
       "id": "parity_requirement_136",
@@ -174386,8 +174386,8 @@
             255
           ]
         ],
-        "inkPixels": 210012,
-        "inkRatio": 0.19445555555555555,
+        "inkPixels": 210010,
+        "inkRatio": 0.1944537037037037,
         "contentBounds": {
           "x": 14,
           "y": 70,
@@ -174423,7 +174423,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0119521912350598,
-      "inkRatio": 1.0028891106792037
+      "inkRatio": 1.002879559900099
     },
     {
       "id": "parity_requirement_137",
@@ -174445,8 +174445,8 @@
             255
           ]
         ],
-        "inkPixels": 145336,
-        "inkRatio": 0.13457037037037037,
+        "inkPixels": 145379,
+        "inkRatio": 0.1346101851851852,
         "contentBounds": {
           "x": 13,
           "y": 224,
@@ -174482,7 +174482,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0066518847006651,
-      "inkRatio": 0.9985228545320884
+      "inkRatio": 0.9988182836256708
     },
     {
       "id": "parity_requirement_138",
@@ -174504,8 +174504,8 @@
             255
           ]
         ],
-        "inkPixels": 114406,
-        "inkRatio": 0.10593148148148149,
+        "inkPixels": 114353,
+        "inkRatio": 0.10588240740740741,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -174541,7 +174541,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9873907152165846
+      "inkRatio": 0.9869332942080143
     },
     {
       "id": "parity_requirement_139",
@@ -174563,8 +174563,8 @@
             255
           ]
         ],
-        "inkPixels": 176323,
-        "inkRatio": 0.16326203703703704,
+        "inkPixels": 176415,
+        "inkRatio": 0.16334722222222223,
         "contentBounds": {
           "x": 15,
           "y": 97,
@@ -174600,7 +174600,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.015759312320917,
-      "inkRatio": 1.0033516564808176
+      "inkRatio": 1.003875174980368
     },
     {
       "id": "parity_requirement_140",
@@ -174622,13 +174622,13 @@
             255
           ]
         ],
-        "inkPixels": 185999,
-        "inkRatio": 0.1722212962962963,
+        "inkPixels": 186780,
+        "inkRatio": 0.17294444444444446,
         "contentBounds": {
           "x": 14,
           "y": 260,
           "width": 1172,
-          "height": 382
+          "height": 383
         }
       },
       "official": {
@@ -174658,8 +174658,8 @@
         }
       },
       "widthRatio": 1.0316901408450705,
-      "heightRatio": 1.0296495956873315,
-      "inkRatio": 1.058785691516007
+      "heightRatio": 1.0323450134770888,
+      "inkRatio": 1.0632314768432078
     },
     {
       "id": "parity_requirement_141",
@@ -174681,12 +174681,12 @@
             255
           ]
         ],
-        "inkPixels": 307679,
-        "inkRatio": 0.284887962962963,
+        "inkPixels": 308810,
+        "inkRatio": 0.2859351851851852,
         "contentBounds": {
-          "x": 146,
+          "x": 145,
           "y": 20,
-          "width": 908,
+          "width": 910,
           "height": 864
         }
       },
@@ -174716,9 +174716,9 @@
           "height": 821
         }
       },
-      "widthRatio": 1.0341685649202734,
+      "widthRatio": 1.0364464692482915,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0888671045553637
+      "inkRatio": 1.092869680926361
     },
     {
       "id": "parity_requirement_142",
@@ -174858,8 +174858,8 @@
             255
           ]
         ],
-        "inkPixels": 137025,
-        "inkRatio": 0.126875,
+        "inkPixels": 136949,
+        "inkRatio": 0.12680462962962963,
         "contentBounds": {
           "x": 14,
           "y": 146,
@@ -174895,7 +174895,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0116086235489221,
-      "inkRatio": 0.9926254862615271
+      "inkRatio": 0.9920749331729968
     },
     {
       "id": "parity_requirement_145",
@@ -174917,8 +174917,8 @@
             255
           ]
         ],
-        "inkPixels": 193033,
-        "inkRatio": 0.17873425925925926,
+        "inkPixels": 192969,
+        "inkRatio": 0.178675,
         "contentBounds": {
           "x": 15,
           "y": 135,
@@ -174954,7 +174954,7 @@
       },
       "widthRatio": 1.0325704225352113,
       "heightRatio": 1.0095693779904307,
-      "inkRatio": 0.974653249382741
+      "inkRatio": 0.9743301035581384
     },
     {
       "id": "parity_requirement_146",
@@ -174976,8 +174976,8 @@
             255
           ]
         ],
-        "inkPixels": 149145,
-        "inkRatio": 0.13809722222222223,
+        "inkPixels": 149095,
+        "inkRatio": 0.13805092592592594,
         "contentBounds": {
           "x": 14,
           "y": 134,
@@ -175013,7 +175013,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0111642743221692,
-      "inkRatio": 0.9905885947317384
+      "inkRatio": 0.9902565056255895
     },
     {
       "id": "parity_requirement_147",
@@ -175035,8 +175035,8 @@
             255
           ]
         ],
-        "inkPixels": 196294,
-        "inkRatio": 0.1817537037037037,
+        "inkPixels": 196131,
+        "inkRatio": 0.18160277777777778,
         "contentBounds": {
           "x": 98,
           "y": 15,
@@ -175072,7 +175072,7 @@
       },
       "widthRatio": 1.0633579725448785,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0492628743091117
+      "inkRatio": 1.048391579982681
     },
     {
       "id": "parity_requirement_148",
@@ -175094,13 +175094,13 @@
             255
           ]
         ],
-        "inkPixels": 199316,
-        "inkRatio": 0.18455185185185186,
+        "inkPixels": 199770,
+        "inkRatio": 0.18497222222222223,
         "contentBounds": {
-          "x": 14,
+          "x": 13,
           "y": 213,
-          "width": 1173,
-          "height": 476
+          "width": 1174,
+          "height": 477
         }
       },
       "official": {
@@ -175129,9 +175129,9 @@
           "height": 459
         }
       },
-      "widthRatio": 1.0289473684210526,
-      "heightRatio": 1.037037037037037,
-      "inkRatio": 1.0740686853010437
+      "widthRatio": 1.0298245614035089,
+      "heightRatio": 1.0392156862745099,
+      "inkRatio": 1.0765151882567858
     },
     {
       "id": "parity_requirement_149",
@@ -175153,8 +175153,8 @@
             255
           ]
         ],
-        "inkPixels": 205600,
-        "inkRatio": 0.19037037037037038,
+        "inkPixels": 205598,
+        "inkRatio": 0.19036851851851852,
         "contentBounds": {
           "x": 14,
           "y": 77,
@@ -175190,7 +175190,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0121786197564275,
-      "inkRatio": 1.0176857548743485
+      "inkRatio": 1.0176758552074723
     },
     {
       "id": "parity_requirement_150",
@@ -175212,8 +175212,8 @@
             255
           ]
         ],
-        "inkPixels": 143520,
-        "inkRatio": 0.1328888888888889,
+        "inkPixels": 143490,
+        "inkRatio": 0.13286111111111112,
         "contentBounds": {
           "x": 13,
           "y": 228,
@@ -175249,7 +175249,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0045045045045045,
-      "inkRatio": 1.0038188761593017
+      "inkRatio": 1.0036090477989006
     },
     {
       "id": "parity_requirement_151",
@@ -175271,8 +175271,8 @@
             255
           ]
         ],
-        "inkPixels": 117136,
-        "inkRatio": 0.10845925925925926,
+        "inkPixels": 117083,
+        "inkRatio": 0.10841018518518518,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -175308,7 +175308,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9898426540925146
+      "inkRatio": 0.9893947844310365
     },
     {
       "id": "parity_requirement_152",
@@ -175330,8 +175330,8 @@
             255
           ]
         ],
-        "inkPixels": 172366,
-        "inkRatio": 0.15959814814814816,
+        "inkPixels": 172386,
+        "inkRatio": 0.15961666666666666,
         "contentBounds": {
           "x": 15,
           "y": 105,
@@ -175367,7 +175367,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.013157894736842,
-      "inkRatio": 1.003756092731815
+      "inkRatio": 1.003872560723499
     },
     {
       "id": "parity_requirement_153",
@@ -175389,8 +175389,8 @@
             255
           ]
         ],
-        "inkPixels": 182960,
-        "inkRatio": 0.1694074074074074,
+        "inkPixels": 183474,
+        "inkRatio": 0.16988333333333333,
         "contentBounds": {
           "x": 14,
           "y": 264,
@@ -175426,7 +175426,7 @@
       },
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.0302197802197801,
-      "inkRatio": 1.0613637154691324
+      "inkRatio": 1.064345465303802
     },
     {
       "id": "parity_requirement_154",
@@ -175448,8 +175448,8 @@
             255
           ]
         ],
-        "inkPixels": 314975,
-        "inkRatio": 0.2916435185185185,
+        "inkPixels": 315476,
+        "inkRatio": 0.2921074074074074,
         "contentBounds": {
           "x": 129,
           "y": 20,
@@ -175485,7 +175485,7 @@
       },
       "widthRatio": 1.0397350993377483,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0934050293680657
+      "inkRatio": 1.0951442020634017
     },
     {
       "id": "parity_requirement_155",
@@ -175625,8 +175625,8 @@
             255
           ]
         ],
-        "inkPixels": 136986,
-        "inkRatio": 0.1268388888888889,
+        "inkPixels": 137030,
+        "inkRatio": 0.12687962962962962,
         "contentBounds": {
           "x": 14,
           "y": 146,
@@ -175662,7 +175662,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0116086235489221,
-      "inkRatio": 0.996044499381953
+      "inkRatio": 0.9963644295790008
     },
     {
       "id": "parity_requirement_158",
@@ -175684,8 +175684,8 @@
             255
           ]
         ],
-        "inkPixels": 195293,
-        "inkRatio": 0.18082685185185185,
+        "inkPixels": 195269,
+        "inkRatio": 0.18080462962962962,
         "contentBounds": {
           "x": 15,
           "y": 135,
@@ -175721,7 +175721,7 @@
       },
       "widthRatio": 1.0325704225352113,
       "heightRatio": 1.011182108626198,
-      "inkRatio": 0.9919291758515253
+      "inkRatio": 0.9918072754238578
     },
     {
       "id": "parity_requirement_159",
@@ -175743,8 +175743,8 @@
             255
           ]
         ],
-        "inkPixels": 150295,
-        "inkRatio": 0.13916203703703703,
+        "inkPixels": 150313,
+        "inkRatio": 0.1391787037037037,
         "contentBounds": {
           "x": 14,
           "y": 134,
@@ -175780,7 +175780,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0144,
-      "inkRatio": 0.9981669777048701
+      "inkRatio": 0.9982865226371611
     },
     {
       "id": "parity_requirement_160",
@@ -175802,8 +175802,8 @@
             255
           ]
         ],
-        "inkPixels": 196843,
-        "inkRatio": 0.18226203703703703,
+        "inkPixels": 196746,
+        "inkRatio": 0.18217222222222224,
         "contentBounds": {
           "x": 97,
           "y": 15,
@@ -175839,7 +175839,7 @@
       },
       "widthRatio": 1.0621052631578947,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0516578157222691
+      "inkRatio": 1.051139581352111
     },
     {
       "id": "parity_requirement_161",
@@ -175861,12 +175861,12 @@
             255
           ]
         ],
-        "inkPixels": 198851,
-        "inkRatio": 0.18412129629629628,
+        "inkPixels": 198972,
+        "inkRatio": 0.18423333333333333,
         "contentBounds": {
-          "x": 14,
+          "x": 13,
           "y": 214,
-          "width": 1173,
+          "width": 1174,
           "height": 475
         }
       },
@@ -175896,9 +175896,9 @@
           "height": 458
         }
       },
-      "widthRatio": 1.0289473684210526,
+      "widthRatio": 1.0298245614035089,
       "heightRatio": 1.037117903930131,
-      "inkRatio": 1.072753756102824
+      "inkRatio": 1.0734065222668787
     },
     {
       "id": "parity_requirement_162",
@@ -175920,8 +175920,8 @@
             255
           ]
         ],
-        "inkPixels": 205741,
-        "inkRatio": 0.19050092592592593,
+        "inkPixels": 205798,
+        "inkRatio": 0.1905537037037037,
         "contentBounds": {
           "x": 14,
           "y": 77,
@@ -175957,7 +175957,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.013550135501355,
-      "inkRatio": 1.0125049212598425
+      "inkRatio": 1.012785433070866
     },
     {
       "id": "parity_requirement_163",
@@ -175979,8 +175979,8 @@
             255
           ]
         ],
-        "inkPixels": 142912,
-        "inkRatio": 0.13232592592592593,
+        "inkPixels": 142883,
+        "inkRatio": 0.13229907407407407,
         "contentBounds": {
           "x": 13,
           "y": 228,
@@ -176016,7 +176016,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0067720090293453,
-      "inkRatio": 1.0058983346706647
+      "inkRatio": 1.0056942156904147
     },
     {
       "id": "parity_requirement_164",
@@ -176038,8 +176038,8 @@
             255
           ]
         ],
-        "inkPixels": 117136,
-        "inkRatio": 0.10845925925925926,
+        "inkPixels": 117083,
+        "inkRatio": 0.10841018518518518,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -176075,7 +176075,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.987680970007673
+      "inkRatio": 0.987234078433687
     },
     {
       "id": "parity_requirement_165",
@@ -176097,8 +176097,8 @@
             255
           ]
         ],
-        "inkPixels": 172613,
-        "inkRatio": 0.15982685185185186,
+        "inkPixels": 172605,
+        "inkRatio": 0.15981944444444443,
         "contentBounds": {
           "x": 15,
           "y": 105,
@@ -176134,7 +176134,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.0161290322580645,
-      "inkRatio": 1.0036398099856385
+      "inkRatio": 1.0035932948420518
     },
     {
       "id": "parity_requirement_166",
@@ -176156,8 +176156,8 @@
             255
           ]
         ],
-        "inkPixels": 182223,
-        "inkRatio": 0.168725,
+        "inkPixels": 182612,
+        "inkRatio": 0.16908518518518517,
         "contentBounds": {
           "x": 14,
           "y": 265,
@@ -176193,7 +176193,7 @@
       },
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.0275482093663912,
-      "inkRatio": 1.0640448454059734
+      "inkRatio": 1.066316311932498
     },
     {
       "id": "parity_requirement_167",
@@ -176215,8 +176215,8 @@
             255
           ]
         ],
-        "inkPixels": 316449,
-        "inkRatio": 0.2930083333333333,
+        "inkPixels": 316774,
+        "inkRatio": 0.29330925925925927,
         "contentBounds": {
           "x": 126,
           "y": 20,
@@ -176252,7 +176252,7 @@
       },
       "widthRatio": 1.0440528634361232,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0969834160681107
+      "inkRatio": 1.0981100418758147
     },
     {
       "id": "parity_requirement_168",
@@ -176392,8 +176392,8 @@
             255
           ]
         ],
-        "inkPixels": 138006,
-        "inkRatio": 0.12778333333333333,
+        "inkPixels": 138069,
+        "inkRatio": 0.12784166666666666,
         "contentBounds": {
           "x": 14,
           "y": 144,
@@ -176429,7 +176429,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0098522167487685,
-      "inkRatio": 0.992656102771404
+      "inkRatio": 0.9931092521596524
     },
     {
       "id": "parity_requirement_171",
@@ -176451,8 +176451,8 @@
             255
           ]
         ],
-        "inkPixels": 196658,
-        "inkRatio": 0.18209074074074075,
+        "inkPixels": 196674,
+        "inkRatio": 0.18210555555555555,
         "contentBounds": {
           "x": 15,
           "y": 131,
@@ -176488,7 +176488,7 @@
       },
       "widthRatio": 1.0325704225352113,
       "heightRatio": 1.014240506329114,
-      "inkRatio": 0.9876107972379159
+      "inkRatio": 0.9876911487758945
     },
     {
       "id": "parity_requirement_172",
@@ -176510,8 +176510,8 @@
             255
           ]
         ],
-        "inkPixels": 151068,
-        "inkRatio": 0.13987777777777777,
+        "inkPixels": 151059,
+        "inkRatio": 0.13986944444444444,
         "contentBounds": {
           "x": 14,
           "y": 131,
@@ -176547,7 +176547,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0142630744849446,
-      "inkRatio": 1.0006292515880322
+      "inkRatio": 1.0005696382796923
     },
     {
       "id": "parity_requirement_173",
@@ -176569,8 +176569,8 @@
             255
           ]
         ],
-        "inkPixels": 193897,
-        "inkRatio": 0.17953425925925925,
+        "inkPixels": 193765,
+        "inkRatio": 0.17941203703703704,
         "contentBounds": {
           "x": 104,
           "y": 15,
@@ -176606,7 +176606,7 @@
       },
       "widthRatio": 1.060767590618337,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.045960394223663
+      "inkRatio": 1.0452483317779444
     },
     {
       "id": "parity_requirement_174",
@@ -176628,12 +176628,12 @@
             255
           ]
         ],
-        "inkPixels": 200759,
-        "inkRatio": 0.18588796296296295,
+        "inkPixels": 200867,
+        "inkRatio": 0.18598796296296297,
         "contentBounds": {
-          "x": 14,
+          "x": 13,
           "y": 211,
-          "width": 1173,
+          "width": 1174,
           "height": 480
         }
       },
@@ -176663,9 +176663,9 @@
           "height": 464
         }
       },
-      "widthRatio": 1.0289473684210526,
+      "widthRatio": 1.0298245614035089,
       "heightRatio": 1.0344827586206897,
-      "inkRatio": 1.0724420132693724
+      "inkRatio": 1.0730189425100696
     },
     {
       "id": "parity_requirement_175",
@@ -176687,8 +176687,8 @@
             255
           ]
         ],
-        "inkPixels": 207083,
-        "inkRatio": 0.1917435185185185,
+        "inkPixels": 207046,
+        "inkRatio": 0.19170925925925925,
         "contentBounds": {
           "x": 14,
           "y": 74,
@@ -176724,7 +176724,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0120805369127517,
-      "inkRatio": 1.011685907050139
+      "inkRatio": 1.011505146782223
     },
     {
       "id": "parity_requirement_176",
@@ -176746,8 +176746,8 @@
             255
           ]
         ],
-        "inkPixels": 144703,
-        "inkRatio": 0.13398425925925925,
+        "inkPixels": 144689,
+        "inkRatio": 0.13397129629629628,
         "contentBounds": {
           "x": 13,
           "y": 226,
@@ -176783,7 +176783,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0067114093959733,
-      "inkRatio": 1.0049587121238428
+      "inkRatio": 1.0048614824743556
     },
     {
       "id": "parity_requirement_177",
@@ -176805,8 +176805,8 @@
             255
           ]
         ],
-        "inkPixels": 115966,
-        "inkRatio": 0.10737592592592593,
+        "inkPixels": 115913,
+        "inkRatio": 0.10732685185185185,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -176842,7 +176842,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9875750479029168
+      "inkRatio": 0.987123695976155
     },
     {
       "id": "parity_requirement_178",
@@ -176864,8 +176864,8 @@
             255
           ]
         ],
-        "inkPixels": 174875,
-        "inkRatio": 0.16192129629629629,
+        "inkPixels": 174914,
+        "inkRatio": 0.1619574074074074,
         "contentBounds": {
           "x": 15,
           "y": 101,
@@ -176901,7 +176901,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.0159651669085632,
-      "inkRatio": 1.0077450138591952
+      "inkRatio": 1.007969757564931
     },
     {
       "id": "parity_requirement_179",
@@ -176923,8 +176923,8 @@
             255
           ]
         ],
-        "inkPixels": 183699,
-        "inkRatio": 0.17009166666666667,
+        "inkPixels": 183942,
+        "inkRatio": 0.17031666666666667,
         "contentBounds": {
           "x": 14,
           "y": 263,
@@ -176960,7 +176960,7 @@
       },
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.021680216802168,
-      "inkRatio": 1.054305342722843
+      "inkRatio": 1.0556999948346217
     },
     {
       "id": "parity_requirement_180",
@@ -176982,8 +176982,8 @@
             255
           ]
         ],
-        "inkPixels": 312234,
-        "inkRatio": 0.28910555555555556,
+        "inkPixels": 312558,
+        "inkRatio": 0.2894055555555556,
         "contentBounds": {
           "x": 136,
           "y": 20,
@@ -177019,7 +177019,7 @@
       },
       "widthRatio": 1.0497737556561086,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.1002833220568335
+      "inkRatio": 1.1014250676589987
     },
     {
       "id": "parity_requirement_181",
@@ -177159,8 +177159,8 @@
             255
           ]
         ],
-        "inkPixels": 137544,
-        "inkRatio": 0.12735555555555556,
+        "inkPixels": 137545,
+        "inkRatio": 0.1273564814814815,
         "contentBounds": {
           "x": 14,
           "y": 145,
@@ -177196,7 +177196,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0098846787479407,
-      "inkRatio": 0.9924095933504574
+      "inkRatio": 0.9924168085659039
     },
     {
       "id": "parity_requirement_184",
@@ -177218,8 +177218,8 @@
             255
           ]
         ],
-        "inkPixels": 196393,
-        "inkRatio": 0.18184537037037038,
+        "inkPixels": 196348,
+        "inkRatio": 0.18180370370370372,
         "contentBounds": {
           "x": 15,
           "y": 133,
@@ -177255,7 +177255,7 @@
       },
       "widthRatio": 1.0325704225352113,
       "heightRatio": 1.011111111111111,
-      "inkRatio": 0.9906280422292951
+      "inkRatio": 0.9904010572456129
     },
     {
       "id": "parity_requirement_185",
@@ -177277,8 +177277,8 @@
             255
           ]
         ],
-        "inkPixels": 150789,
-        "inkRatio": 0.13961944444444443,
+        "inkPixels": 150866,
+        "inkRatio": 0.13969074074074075,
         "contentBounds": {
           "x": 14,
           "y": 132,
@@ -177314,7 +177314,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0143084260731319,
-      "inkRatio": 1.0024131466634756
+      "inkRatio": 1.0029250262587586
     },
     {
       "id": "parity_requirement_186",
@@ -177336,8 +177336,8 @@
             255
           ]
         ],
-        "inkPixels": 195493,
-        "inkRatio": 0.18101203703703703,
+        "inkPixels": 195353,
+        "inkRatio": 0.1808824074074074,
         "contentBounds": {
           "x": 101,
           "y": 15,
@@ -177373,7 +177373,7 @@
       },
       "widthRatio": 1.0626326963906583,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0497903029196491
+      "inkRatio": 1.0490385080093008
     },
     {
       "id": "parity_requirement_187",
@@ -177395,12 +177395,12 @@
             255
           ]
         ],
-        "inkPixels": 199738,
-        "inkRatio": 0.1849425925925926,
+        "inkPixels": 199864,
+        "inkRatio": 0.18505925925925926,
         "contentBounds": {
-          "x": 14,
+          "x": 13,
           "y": 212,
-          "width": 1173,
+          "width": 1174,
           "height": 478
         }
       },
@@ -177430,9 +177430,9 @@
           "height": 462
         }
       },
-      "widthRatio": 1.0289473684210526,
+      "widthRatio": 1.0298245614035089,
       "heightRatio": 1.0346320346320346,
-      "inkRatio": 1.073502380926788
+      "inkRatio": 1.0741795745504188
     },
     {
       "id": "parity_requirement_188",
@@ -177454,8 +177454,8 @@
             255
           ]
         ],
-        "inkPixels": 207385,
-        "inkRatio": 0.19202314814814814,
+        "inkPixels": 207388,
+        "inkRatio": 0.19202592592592593,
         "contentBounds": {
           "x": 14,
           "y": 75,
@@ -177491,7 +177491,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.012113055181696,
-      "inkRatio": 1.0155626398703277
+      "inkRatio": 1.0155773308456615
     },
     {
       "id": "parity_requirement_189",
@@ -177513,8 +177513,8 @@
             255
           ]
         ],
-        "inkPixels": 143924,
-        "inkRatio": 0.13326296296296297,
+        "inkPixels": 143899,
+        "inkRatio": 0.1332398148148148,
         "contentBounds": {
           "x": 13,
           "y": 227,
@@ -177550,7 +177550,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.006741573033708,
-      "inkRatio": 1.0002223890139827
+      "inkRatio": 1.0000486475968087
     },
     {
       "id": "parity_requirement_190",
@@ -177572,8 +177572,8 @@
             255
           ]
         ],
-        "inkPixels": 116356,
-        "inkRatio": 0.10773703703703703,
+        "inkPixels": 116303,
+        "inkRatio": 0.10768796296296296,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -177609,7 +177609,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9875910302330714
+      "inkRatio": 0.9871411838598516
     },
     {
       "id": "parity_requirement_191",
@@ -177631,8 +177631,8 @@
             255
           ]
         ],
-        "inkPixels": 174192,
-        "inkRatio": 0.1612888888888889,
+        "inkPixels": 174235,
+        "inkRatio": 0.1613287037037037,
         "contentBounds": {
           "x": 15,
           "y": 103,
@@ -177668,7 +177668,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.014556040756914,
-      "inkRatio": 1.0125793475480735
+      "inkRatio": 1.012829306857023
     },
     {
       "id": "parity_requirement_192",
@@ -177690,8 +177690,8 @@
             255
           ]
         ],
-        "inkPixels": 183012,
-        "inkRatio": 0.16945555555555555,
+        "inkPixels": 183560,
+        "inkRatio": 0.16996296296296295,
         "contentBounds": {
           "x": 14,
           "y": 263,
@@ -177727,7 +177727,7 @@
       },
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.0245231607629428,
-      "inkRatio": 1.0564438851495666
+      "inkRatio": 1.0596072364547375
     },
     {
       "id": "parity_requirement_193",
@@ -177749,12 +177749,12 @@
             255
           ]
         ],
-        "inkPixels": 313711,
-        "inkRatio": 0.2904731481481482,
+        "inkPixels": 314626,
+        "inkRatio": 0.2913203703703704,
         "contentBounds": {
-          "x": 132,
+          "x": 131,
           "y": 20,
-          "width": 936,
+          "width": 938,
           "height": 864
         }
       },
@@ -177784,9 +177784,9 @@
           "height": 821
         }
       },
-      "widthRatio": 1.0469798657718121,
+      "widthRatio": 1.0492170022371365,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0984432555077803
+      "inkRatio": 1.1016470818919033
     },
     {
       "id": "parity_requirement_194",
@@ -177926,8 +177926,8 @@
             255
           ]
         ],
-        "inkPixels": 135880,
-        "inkRatio": 0.12581481481481482,
+        "inkPixels": 135888,
+        "inkRatio": 0.12582222222222222,
         "contentBounds": {
           "x": 14,
           "y": 151,
@@ -177963,7 +177963,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0100840336134453,
-      "inkRatio": 1.0010535078865748
+      "inkRatio": 1.0011124453907188
     },
     {
       "id": "parity_requirement_197",
@@ -177985,8 +177985,8 @@
             255
           ]
         ],
-        "inkPixels": 192706,
-        "inkRatio": 0.17843148148148147,
+        "inkPixels": 192750,
+        "inkRatio": 0.17847222222222223,
         "contentBounds": {
           "x": 15,
           "y": 140,
@@ -178022,7 +178022,7 @@
       },
       "widthRatio": 1.0325704225352113,
       "heightRatio": 1.0113636363636365,
-      "inkRatio": 0.9892505133470225
+      "inkRatio": 0.989476386036961
     },
     {
       "id": "parity_requirement_198",
@@ -178044,8 +178044,8 @@
             255
           ]
         ],
-        "inkPixels": 148876,
-        "inkRatio": 0.13784814814814814,
+        "inkPixels": 148850,
+        "inkRatio": 0.13782407407407407,
         "contentBounds": {
           "x": 14,
           "y": 139,
@@ -178081,7 +178081,7 @@
       },
       "widthRatio": 1.030701754385965,
       "heightRatio": 1.012965964343598,
-      "inkRatio": 1.0016281604478114
+      "inkRatio": 1.0014532341187077
     },
     {
       "id": "parity_requirement_199",
@@ -178103,8 +178103,8 @@
             255
           ]
         ],
-        "inkPixels": 200013,
-        "inkRatio": 0.18519722222222224,
+        "inkPixels": 199913,
+        "inkRatio": 0.18510462962962962,
         "contentBounds": {
           "x": 87,
           "y": 15,
@@ -178140,7 +178140,7 @@
       },
       "widthRatio": 1.06301652892562,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0517589525161697
+      "inkRatio": 1.0512331072198557
     },
     {
       "id": "parity_requirement_200",
@@ -178162,8 +178162,8 @@
             255
           ]
         ],
-        "inkPixels": 195562,
-        "inkRatio": 0.18107592592592592,
+        "inkPixels": 195938,
+        "inkRatio": 0.18142407407407407,
         "contentBounds": {
           "x": 13,
           "y": 217,
@@ -178199,7 +178199,7 @@
       },
       "widthRatio": 1.0298245614035089,
       "heightRatio": 1.042316258351893,
-      "inkRatio": 1.0794213265773598
+      "inkRatio": 1.081496691008042
     },
     {
       "id": "parity_requirement_201",
@@ -178221,8 +178221,8 @@
             255
           ]
         ],
-        "inkPixels": 201296,
-        "inkRatio": 0.18638518518518518,
+        "inkPixels": 201322,
+        "inkRatio": 0.18640925925925925,
         "contentBounds": {
           "x": 14,
           "y": 83,
@@ -178258,7 +178258,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0123626373626373,
-      "inkRatio": 1.012290547744051
+      "inkRatio": 1.0124212982519663
     },
     {
       "id": "parity_requirement_202",
@@ -178280,8 +178280,8 @@
             255
           ]
         ],
-        "inkPixels": 140599,
-        "inkRatio": 0.13018425925925925,
+        "inkPixels": 140623,
+        "inkRatio": 0.13020648148148148,
         "contentBounds": {
           "x": 13,
           "y": 230,
@@ -178317,7 +178317,7 @@
       },
       "widthRatio": 1.0261780104712042,
       "heightRatio": 1.0068493150684932,
-      "inkRatio": 0.998203788373612
+      "inkRatio": 0.9983741799903445
     },
     {
       "id": "parity_requirement_203",
@@ -178339,8 +178339,8 @@
             255
           ]
         ],
-        "inkPixels": 119216,
-        "inkRatio": 0.11038518518518518,
+        "inkPixels": 119163,
+        "inkRatio": 0.11033611111111111,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -178376,7 +178376,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.988966867419906
+      "inkRatio": 0.9885272012343835
     },
     {
       "id": "parity_requirement_204",
@@ -178398,8 +178398,8 @@
             255
           ]
         ],
-        "inkPixels": 171688,
-        "inkRatio": 0.15897037037037037,
+        "inkPixels": 171702,
+        "inkRatio": 0.15898333333333334,
         "contentBounds": {
           "x": 14,
           "y": 110,
@@ -178435,7 +178435,7 @@
       },
       "widthRatio": 1.031634446397188,
       "heightRatio": 1.0148809523809523,
-      "inkRatio": 1.00940096067353
+      "inkRatio": 1.0094832705230792
     },
     {
       "id": "parity_requirement_205",
@@ -178457,8 +178457,8 @@
             255
           ]
         ],
-        "inkPixels": 179427,
-        "inkRatio": 0.16613611111111112,
+        "inkPixels": 179574,
+        "inkRatio": 0.1662722222222222,
         "contentBounds": {
           "x": 14,
           "y": 268,
@@ -178494,7 +178494,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0280112044817926,
-      "inkRatio": 1.0615286315204082
+      "inkRatio": 1.0623983150620906
     },
     {
       "id": "parity_requirement_206",
@@ -178516,12 +178516,12 @@
             255
           ]
         ],
-        "inkPixels": 321440,
-        "inkRatio": 0.29762962962962963,
+        "inkPixels": 322355,
+        "inkRatio": 0.29847685185185185,
         "contentBounds": {
-          "x": 114,
+          "x": 113,
           "y": 20,
-          "width": 972,
+          "width": 974,
           "height": 864
         }
       },
@@ -178551,9 +178551,9 @@
           "height": 821
         }
       },
-      "widthRatio": 1.0340425531914894,
+      "widthRatio": 1.0361702127659576,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0894646222258375
+      "inkRatio": 1.092565854584401
     },
     {
       "id": "parity_requirement_207",
@@ -178693,8 +178693,8 @@
             255
           ]
         ],
-        "inkPixels": 138253,
-        "inkRatio": 0.12801203703703704,
+        "inkPixels": 138232,
+        "inkRatio": 0.1279925925925926,
         "contentBounds": {
           "x": 14,
           "y": 143,
@@ -178730,7 +178730,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0114942528735633,
-      "inkRatio": 0.988856384690761
+      "inkRatio": 0.9887061819170165
     },
     {
       "id": "parity_requirement_210",
@@ -178752,8 +178752,8 @@
             255
           ]
         ],
-        "inkPixels": 196461,
-        "inkRatio": 0.18190833333333334,
+        "inkPixels": 196434,
+        "inkRatio": 0.18188333333333334,
         "contentBounds": {
           "x": 15,
           "y": 131,
@@ -178789,7 +178789,7 @@
       },
       "widthRatio": 1.0325704225352113,
       "heightRatio": 1.0126382306477093,
-      "inkRatio": 0.9886720479890495
+      "inkRatio": 0.9885361729538227
     },
     {
       "id": "parity_requirement_211",
@@ -178811,8 +178811,8 @@
             255
           ]
         ],
-        "inkPixels": 151135,
-        "inkRatio": 0.13993981481481482,
+        "inkPixels": 151120,
+        "inkRatio": 0.13992592592592593,
         "contentBounds": {
           "x": 14,
           "y": 131,
@@ -178848,7 +178848,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0126382306477093,
-      "inkRatio": 0.995337289173686
+      "inkRatio": 0.9952385029273657
     },
     {
       "id": "parity_requirement_212",
@@ -178870,8 +178870,8 @@
             255
           ]
         ],
-        "inkPixels": 194406,
-        "inkRatio": 0.18000555555555556,
+        "inkPixels": 194277,
+        "inkRatio": 0.1798861111111111,
         "contentBounds": {
           "x": 104,
           "y": 15,
@@ -178907,7 +178907,7 @@
       },
       "widthRatio": 1.063034188034188,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0512239567843489
+      "inkRatio": 1.050526406860863
     },
     {
       "id": "parity_requirement_213",
@@ -178929,12 +178929,12 @@
             255
           ]
         ],
-        "inkPixels": 201160,
-        "inkRatio": 0.18625925925925926,
+        "inkPixels": 201296,
+        "inkRatio": 0.18638518518518518,
         "contentBounds": {
-          "x": 14,
+          "x": 13,
           "y": 211,
-          "width": 1173,
+          "width": 1174,
           "height": 480
         }
       },
@@ -178964,9 +178964,9 @@
           "height": 460
         }
       },
-      "widthRatio": 1.0289473684210526,
+      "widthRatio": 1.0298245614035089,
       "heightRatio": 1.0434782608695652,
-      "inkRatio": 1.0800246973235619
+      "inkRatio": 1.0807548790636494
     },
     {
       "id": "parity_requirement_214",
@@ -178988,8 +178988,8 @@
             255
           ]
         ],
-        "inkPixels": 208242,
-        "inkRatio": 0.19281666666666666,
+        "inkPixels": 208270,
+        "inkRatio": 0.1928425925925926,
         "contentBounds": {
           "x": 14,
           "y": 74,
@@ -179025,7 +179025,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0120805369127517,
-      "inkRatio": 1.0109374772439306
+      "inkRatio": 1.0110734068324037
     },
     {
       "id": "parity_requirement_215",
@@ -179047,8 +179047,8 @@
             255
           ]
         ],
-        "inkPixels": 144604,
-        "inkRatio": 0.1338925925925926,
+        "inkPixels": 144565,
+        "inkRatio": 0.1338564814814815,
         "contentBounds": {
           "x": 13,
           "y": 226,
@@ -179084,7 +179084,7 @@
       },
       "widthRatio": 1.0270742358078602,
       "heightRatio": 1.0067114093959733,
-      "inkRatio": 1.0006158530256373
+      "inkRatio": 1.0003459848458638
     },
     {
       "id": "parity_requirement_216",
@@ -179106,8 +179106,8 @@
             255
           ]
         ],
-        "inkPixels": 115836,
-        "inkRatio": 0.10725555555555556,
+        "inkPixels": 115783,
+        "inkRatio": 0.10720648148148149,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -179143,7 +179143,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.988606395780526
+      "inkRatio": 0.9881540654257454
     },
     {
       "id": "parity_requirement_217",
@@ -179165,8 +179165,8 @@
             255
           ]
         ],
-        "inkPixels": 174676,
-        "inkRatio": 0.16173703703703704,
+        "inkPixels": 174691,
+        "inkRatio": 0.16175092592592594,
         "contentBounds": {
           "x": 15,
           "y": 101,
@@ -179202,7 +179202,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.0159420289855072,
-      "inkRatio": 1.0048263603260525
+      "inkRatio": 1.0049126480553623
     },
     {
       "id": "parity_requirement_218",
@@ -179224,8 +179224,8 @@
             255
           ]
         ],
-        "inkPixels": 183837,
-        "inkRatio": 0.17021944444444445,
+        "inkPixels": 184331,
+        "inkRatio": 0.17067685185185186,
         "contentBounds": {
           "x": 14,
           "y": 262,
@@ -179261,7 +179261,7 @@
       },
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.0356164383561643,
-      "inkRatio": 1.0682856246295458
+      "inkRatio": 1.0711562823239542
     },
     {
       "id": "parity_requirement_219",
@@ -179283,8 +179283,8 @@
             255
           ]
         ],
-        "inkPixels": 311925,
-        "inkRatio": 0.28881944444444446,
+        "inkPixels": 312682,
+        "inkRatio": 0.2895203703703704,
         "contentBounds": {
           "x": 136,
           "y": 20,
@@ -179320,7 +179320,7 @@
       },
       "widthRatio": 1.031111111111111,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0874718915055694
+      "inkRatio": 1.0901110394477662
     },
     {
       "id": "parity_requirement_220",
@@ -179460,8 +179460,8 @@
             255
           ]
         ],
-        "inkPixels": 133376,
-        "inkRatio": 0.1234962962962963,
+        "inkPixels": 133427,
+        "inkRatio": 0.12354351851851852,
         "contentBounds": {
           "x": 13,
           "y": 157,
@@ -179497,7 +179497,7 @@
       },
       "widthRatio": 1.030674846625767,
       "heightRatio": 1.0102915951972555,
-      "inkRatio": 0.9965406196997886
+      "inkRatio": 0.9969216745492719
     },
     {
       "id": "parity_requirement_223",
@@ -179519,8 +179519,8 @@
             255
           ]
         ],
-        "inkPixels": 186489,
-        "inkRatio": 0.172675,
+        "inkPixels": 186531,
+        "inkRatio": 0.1727138888888889,
         "contentBounds": {
           "x": 15,
           "y": 147,
@@ -179556,7 +179556,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.0116472545757071,
-      "inkRatio": 0.9919733188650943
+      "inkRatio": 0.9921967254970798
     },
     {
       "id": "parity_requirement_224",
@@ -179578,8 +179578,8 @@
             255
           ]
         ],
-        "inkPixels": 146166,
-        "inkRatio": 0.1353388888888889,
+        "inkPixels": 146195,
+        "inkRatio": 0.13536574074074073,
         "contentBounds": {
           "x": 14,
           "y": 145,
@@ -179615,7 +179615,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0115702479338844,
-      "inkRatio": 0.9959457894127186
+      "inkRatio": 0.9961433895926028
     },
     {
       "id": "parity_requirement_225",
@@ -179637,8 +179637,8 @@
             255
           ]
         ],
-        "inkPixels": 204968,
-        "inkRatio": 0.1897851851851852,
+        "inkPixels": 204863,
+        "inkRatio": 0.18968796296296297,
         "contentBounds": {
           "x": 73,
           "y": 15,
@@ -179674,7 +179674,7 @@
       },
       "widthRatio": 1.0612449799196788,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.051840752106576
+      "inkRatio": 1.0513019202939458
     },
     {
       "id": "parity_requirement_226",
@@ -179696,8 +179696,8 @@
             255
           ]
         ],
-        "inkPixels": 191346,
-        "inkRatio": 0.17717222222222223,
+        "inkPixels": 191325,
+        "inkRatio": 0.17715277777777777,
         "contentBounds": {
           "x": 13,
           "y": 223,
@@ -179733,7 +179733,7 @@
       },
       "widthRatio": 1.0298245614035089,
       "heightRatio": 1.036281179138322,
-      "inkRatio": 1.0737107906402559
+      "inkRatio": 1.0735929521351213
     },
     {
       "id": "parity_requirement_227",
@@ -179755,8 +179755,8 @@
             255
           ]
         ],
-        "inkPixels": 196686,
-        "inkRatio": 0.18211666666666668,
+        "inkPixels": 196700,
+        "inkRatio": 0.18212962962962964,
         "contentBounds": {
           "x": 13,
           "y": 90,
@@ -179792,7 +179792,7 @@
       },
       "widthRatio": 1.0297723292469352,
       "heightRatio": 1.011204481792717,
-      "inkRatio": 1.0068390069106732
+      "inkRatio": 1.006910673150755
     },
     {
       "id": "parity_requirement_228",
@@ -179814,8 +179814,8 @@
             255
           ]
         ],
-        "inkPixels": 138118,
-        "inkRatio": 0.12788703703703705,
+        "inkPixels": 138184,
+        "inkRatio": 0.12794814814814814,
         "contentBounds": {
           "x": 12,
           "y": 234,
@@ -179851,7 +179851,7 @@
       },
       "widthRatio": 1.0270506108202444,
       "heightRatio": 1.0069605568445477,
-      "inkRatio": 0.9987562368934848
+      "inkRatio": 0.9992334948297057
     },
     {
       "id": "parity_requirement_229",
@@ -179873,8 +179873,8 @@
             255
           ]
         ],
-        "inkPixels": 122076,
-        "inkRatio": 0.11303333333333333,
+        "inkPixels": 122023,
+        "inkRatio": 0.11298425925925926,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -179910,7 +179910,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9892225661637197
+      "inkRatio": 0.9887930894770108
     },
     {
       "id": "parity_requirement_230",
@@ -179932,8 +179932,8 @@
             255
           ]
         ],
-        "inkPixels": 167599,
-        "inkRatio": 0.15518425925925927,
+        "inkPixels": 167624,
+        "inkRatio": 0.1552074074074074,
         "contentBounds": {
           "x": 14,
           "y": 118,
@@ -179969,7 +179969,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0152207001522071,
-      "inkRatio": 1.013190905408755
+      "inkRatio": 1.013342038605464
     },
     {
       "id": "parity_requirement_231",
@@ -179991,8 +179991,8 @@
             255
           ]
         ],
-        "inkPixels": 175827,
-        "inkRatio": 0.16280277777777777,
+        "inkPixels": 175963,
+        "inkRatio": 0.16292870370370371,
         "contentBounds": {
           "x": 14,
           "y": 272,
@@ -180028,7 +180028,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0227920227920229,
-      "inkRatio": 1.0618341908833973
+      "inkRatio": 1.0626555064376646
     },
     {
       "id": "parity_requirement_232",
@@ -180050,8 +180050,8 @@
             255
           ]
         ],
-        "inkPixels": 329649,
-        "inkRatio": 0.30523055555555556,
+        "inkPixels": 330188,
+        "inkRatio": 0.30572962962962963,
         "contentBounds": {
           "x": 95,
           "y": 20,
@@ -180087,7 +180087,7 @@
       },
       "widthRatio": 1.0433884297520661,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0952267041433683
+      "inkRatio": 1.0970174791602294
     },
     {
       "id": "parity_requirement_233",
@@ -180227,8 +180227,8 @@
             255
           ]
         ],
-        "inkPixels": 133582,
-        "inkRatio": 0.12368703703703704,
+        "inkPixels": 133485,
+        "inkRatio": 0.12359722222222222,
         "contentBounds": {
           "x": 13,
           "y": 157,
@@ -180264,7 +180264,7 @@
       },
       "widthRatio": 1.030674846625767,
       "heightRatio": 1.0085763293310464,
-      "inkRatio": 0.9989754634719075
+      "inkRatio": 0.9982500616965427
     },
     {
       "id": "parity_requirement_236",
@@ -180286,8 +180286,8 @@
             255
           ]
         ],
-        "inkPixels": 187144,
-        "inkRatio": 0.17328148148148148,
+        "inkPixels": 187057,
+        "inkRatio": 0.17320092592592592,
         "contentBounds": {
           "x": 15,
           "y": 148,
@@ -180323,7 +180323,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.0099833610648918,
-      "inkRatio": 0.9955474223458753
+      "inkRatio": 0.9950846096148015
     },
     {
       "id": "parity_requirement_237",
@@ -180345,8 +180345,8 @@
             255
           ]
         ],
-        "inkPixels": 146376,
-        "inkRatio": 0.13553333333333334,
+        "inkPixels": 146366,
+        "inkRatio": 0.13552407407407407,
         "contentBounds": {
           "x": 14,
           "y": 145,
@@ -180382,7 +180382,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.0115702479338844,
-      "inkRatio": 0.9973087326515457
+      "inkRatio": 0.9972405993009519
     },
     {
       "id": "parity_requirement_238",
@@ -180404,8 +180404,8 @@
             255
           ]
         ],
-        "inkPixels": 204580,
-        "inkRatio": 0.18942592592592591,
+        "inkPixels": 204481,
+        "inkRatio": 0.18933425925925926,
         "contentBounds": {
           "x": 72,
           "y": 15,
@@ -180441,7 +180441,7 @@
       },
       "widthRatio": 1.0632530120481927,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0491497261482285
+      "inkRatio": 1.0486420234261216
     },
     {
       "id": "parity_requirement_239",
@@ -180463,8 +180463,8 @@
             255
           ]
         ],
-        "inkPixels": 191824,
-        "inkRatio": 0.1776148148148148,
+        "inkPixels": 191781,
+        "inkRatio": 0.177575,
         "contentBounds": {
           "x": 13,
           "y": 222,
@@ -180500,7 +180500,7 @@
       },
       "widthRatio": 1.0298245614035089,
       "heightRatio": 1.0408163265306123,
-      "inkRatio": 1.0783111196056054
+      "inkRatio": 1.0780694012693024
     },
     {
       "id": "parity_requirement_240",
@@ -180522,8 +180522,8 @@
             255
           ]
         ],
-        "inkPixels": 196983,
-        "inkRatio": 0.18239166666666667,
+        "inkPixels": 197003,
+        "inkRatio": 0.18241018518518518,
         "contentBounds": {
           "x": 13,
           "y": 90,
@@ -180559,7 +180559,7 @@
       },
       "widthRatio": 1.0297723292469352,
       "heightRatio": 1.011204481792717,
-      "inkRatio": 1.0046821207252699
+      "inkRatio": 1.0047841277127483
     },
     {
       "id": "parity_requirement_241",
@@ -180581,8 +180581,8 @@
             255
           ]
         ],
-        "inkPixels": 138291,
-        "inkRatio": 0.12804722222222223,
+        "inkPixels": 138394,
+        "inkRatio": 0.12814259259259259,
         "contentBounds": {
           "x": 12,
           "y": 234,
@@ -180618,7 +180618,7 @@
       },
       "widthRatio": 1.0270506108202444,
       "heightRatio": 1.0069605568445477,
-      "inkRatio": 1
+      "inkRatio": 1.00074480624191
     },
     {
       "id": "parity_requirement_242",
@@ -180640,8 +180640,8 @@
             255
           ]
         ],
-        "inkPixels": 122206,
-        "inkRatio": 0.1131537037037037,
+        "inkPixels": 122153,
+        "inkRatio": 0.11310462962962962,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -180677,7 +180677,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9902759995462133
+      "inkRatio": 0.9898465228595044
     },
     {
       "id": "parity_requirement_243",
@@ -180699,8 +180699,8 @@
             255
           ]
         ],
-        "inkPixels": 167248,
-        "inkRatio": 0.15485925925925925,
+        "inkPixels": 167265,
+        "inkRatio": 0.154875,
         "contentBounds": {
           "x": 14,
           "y": 118,
@@ -180736,7 +180736,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0136986301369864,
-      "inkRatio": 1.0109528760366546
+      "inkRatio": 1.011055634807418
     },
     {
       "id": "parity_requirement_244",
@@ -180758,8 +180758,8 @@
             255
           ]
         ],
-        "inkPixels": 176058,
-        "inkRatio": 0.16301666666666667,
+        "inkPixels": 176289,
+        "inkRatio": 0.16323055555555555,
         "contentBounds": {
           "x": 14,
           "y": 272,
@@ -180795,7 +180795,7 @@
       },
       "widthRatio": 1.0298769771528997,
       "heightRatio": 1.0286532951289398,
-      "inkRatio": 1.061095340553637
+      "inkRatio": 1.0624875693854303
     },
     {
       "id": "parity_requirement_245",
@@ -180817,8 +180817,8 @@
             255
           ]
         ],
-        "inkPixels": 328967,
-        "inkRatio": 0.30459907407407405,
+        "inkPixels": 329667,
+        "inkRatio": 0.3052472222222222,
         "contentBounds": {
           "x": 96,
           "y": 20,
@@ -180854,7 +180854,7 @@
       },
       "widthRatio": 1.037037037037037,
       "heightRatio": 1.0523751522533495,
-      "inkRatio": 1.0907176912926135
+      "inkRatio": 1.093038600027851
     },
     {
       "id": "parity_requirement_246",
@@ -180994,8 +180994,8 @@
             255
           ]
         ],
-        "inkPixels": 131454,
-        "inkRatio": 0.12171666666666667,
+        "inkPixels": 131393,
+        "inkRatio": 0.12166018518518519,
         "contentBounds": {
           "x": 13,
           "y": 159,
@@ -181031,7 +181031,7 @@
       },
       "widthRatio": 1.0297723292469352,
       "heightRatio": 1.0121317157712304,
-      "inkRatio": 0.9884651246729029
+      "inkRatio": 0.9880064366709779
     },
     {
       "id": "parity_requirement_249",
@@ -181053,8 +181053,8 @@
             255
           ]
         ],
-        "inkPixels": 184843,
-        "inkRatio": 0.17115092592592593,
+        "inkPixels": 184846,
+        "inkRatio": 0.1711537037037037,
         "contentBounds": {
           "x": 15,
           "y": 151,
@@ -181090,7 +181090,7 @@
       },
       "widthRatio": 1.0316622691292876,
       "heightRatio": 1.0117845117845117,
-      "inkRatio": 0.9870928121328634
+      "inkRatio": 0.9871088326391113
     },
     {
       "id": "parity_requirement_250",
@@ -181112,8 +181112,8 @@
             255
           ]
         ],
-        "inkPixels": 145709,
-        "inkRatio": 0.13491574074074075,
+        "inkPixels": 145710,
+        "inkRatio": 0.13491666666666666,
         "contentBounds": {
           "x": 14,
           "y": 148,
@@ -181149,7 +181149,7 @@
       },
       "widthRatio": 1.0297984224364591,
       "heightRatio": 1.015075376884422,
-      "inkRatio": 1.0094495825972496
+      "inkRatio": 1.0094565104437285
     },
     {
       "id": "parity_requirement_251",
@@ -181171,8 +181171,8 @@
             255
           ]
         ],
-        "inkPixels": 207241,
-        "inkRatio": 0.19188981481481482,
+        "inkPixels": 207137,
+        "inkRatio": 0.19179351851851853,
         "contentBounds": {
           "x": 66,
           "y": 15,
@@ -181208,7 +181208,7 @@
       },
       "widthRatio": 1.0603960396039604,
       "heightRatio": 1.0442583732057416,
-      "inkRatio": 1.0513816947639172
+      "inkRatio": 1.0508540786249514
     },
     {
       "id": "parity_requirement_252",
@@ -181230,8 +181230,8 @@
             255
           ]
         ],
-        "inkPixels": 189303,
-        "inkRatio": 0.17528055555555555,
+        "inkPixels": 189453,
+        "inkRatio": 0.17541944444444443,
         "contentBounds": {
           "x": 13,
           "y": 225,
@@ -181267,7 +181267,7 @@
       },
       "widthRatio": 1.0280210157618213,
       "heightRatio": 1.0413793103448277,
-      "inkRatio": 1.081373030652698
+      "inkRatio": 1.0822298895223297
     },
     {
       "id": "parity_requirement_253",
@@ -181289,8 +181289,8 @@
             255
           ]
         ],
-        "inkPixels": 194875,
-        "inkRatio": 0.1804398148148148,
+        "inkPixels": 194890,
+        "inkRatio": 0.1804537037037037,
         "contentBounds": {
           "x": 13,
           "y": 93,
@@ -181326,7 +181326,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0127298444130128,
-      "inkRatio": 1.0110980823509879
+      "inkRatio": 1.0111759090154409
     },
     {
       "id": "parity_requirement_254",
@@ -181348,8 +181348,8 @@
             255
           ]
         ],
-        "inkPixels": 137588,
-        "inkRatio": 0.12739629629629629,
+        "inkPixels": 137625,
+        "inkRatio": 0.12743055555555555,
         "contentBounds": {
           "x": 12,
           "y": 236,
@@ -181385,7 +181385,7 @@
       },
       "widthRatio": 1.0270506108202444,
       "heightRatio": 1.0046728971962617,
-      "inkRatio": 0.9997529464765806
+      "inkRatio": 1.0000217988403015
     },
     {
       "id": "parity_requirement_255",
@@ -181407,8 +181407,8 @@
             255
           ]
         ],
-        "inkPixels": 123506,
-        "inkRatio": 0.11435740740740741,
+        "inkPixels": 123453,
+        "inkRatio": 0.11430833333333333,
         "contentBounds": {
           "x": 13,
           "y": 254,
@@ -181444,7 +181444,7 @@
       },
       "widthRatio": 1.0288713910761156,
       "heightRatio": 1.0051020408163265,
-      "inkRatio": 0.9893380968783294
+      "inkRatio": 0.9889135432604116
     },
     {
       "id": "parity_requirement_256",
@@ -181466,8 +181466,8 @@
             255
           ]
         ],
-        "inkPixels": 165977,
-        "inkRatio": 0.1536824074074074,
+        "inkPixels": 165990,
+        "inkRatio": 0.15369444444444444,
         "contentBounds": {
           "x": 14,
           "y": 121,
@@ -181503,7 +181503,7 @@
       },
       "widthRatio": 1.0307287093942055,
       "heightRatio": 1.0169491525423728,
-      "inkRatio": 1.0240500003084916
+      "inkRatio": 1.0241302081083916
     },
     {
       "id": "parity_gitgraph_001",

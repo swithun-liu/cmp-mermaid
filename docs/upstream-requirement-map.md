@@ -87,9 +87,14 @@ they are not silently approximated with Dagre.
 - `RequirementStressTest` renders 256 deterministic random legal diagrams.
 - `OfficialRequirementDocumentationTest` executes the examples extracted from
   Mermaid `12.0.0` documentation.
-- The legacy large-scale Web audit compares 256 unique same-source cases
-  against Mermaid.js `12.0.0`. Its former manual completion claim is withdrawn
-  pending the detail re-audit.
+- The replacement large-scale Web audit compares 256 unique same-source cases
+  against Mermaid.js `12.0.0`: `252 pass / 4 manually reviewed / 0 fail`, with
+  256/256 geometry passes and all 16 contact sheets reviewed. The four reviews
+  are comparator false positives from greedy matching of duplicate
+  `<<contains>>` or `<<satisfies>>` labels; text multiplicity, clipping,
+  overlap, paint order, markers, and raster checks pass.
+- The 13 independent production scenarios pass both replacement detail and
+  geometry audits with no review queue.
 
 ## Upgrade Procedure
 

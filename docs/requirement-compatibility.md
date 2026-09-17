@@ -56,9 +56,16 @@ not expose a functional rendering defect.
 - 13 independent production scenarios cover all 18 declared Requirement
   capability points.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
-  All pairs passed the legacy geometry gate. The former manual completion
-  claim is withdrawn pending the detail re-audit defined in
-  [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
+  The replacement audit accepted all pairs:
+  `252 pass / 4 manually reviewed / 0 fail`, with 256/256 geometry passes.
+  The four reviews are benign greedy cross-matches between duplicate
+  `<<contains>>` or `<<satisfies>>` labels; both renderers retain all 44 text
+  elements with no clipping or overlap and pass raster checks. All 16 contact
+  sheets were manually reviewed.
+- The 13 production scenarios pass the replacement detail audit with no review
+  queue. Production width, height, and foreground-ink ratios are
+  `1.011-1.078`, `1.003-1.055`, and `0.955-1.162`; matrix ratios are
+  `1.013-1.072`, `1.004-1.053`, and `0.974-1.148`.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
   complete mixed production corpus.
 

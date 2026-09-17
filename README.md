@@ -37,11 +37,10 @@
 >
 > The current **[3,840-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
 > covers all 15 implemented families. Flowchart, XY Chart, Quadrant Chart,
-> Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, and Pie
-> and User Journey have completed the replacement 256-case detail gate.
-> Requirement, Git Graph, and Mindmap remain legacy capture evidence pending
-> replacement detail review; the report does not prove complete Mermaid
-> compatibility.
+> Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
+> User Journey, and Requirement have completed the replacement 256-case detail
+> gate. Git Graph and Mindmap remain legacy capture evidence pending replacement
+> detail review; the report does not prove complete Mermaid compatibility.
 
 CMP Mermaid is designed for applications that render many diagrams without a
 WebView per diagram. The production path does not embed Mermaid.js and does not
@@ -53,8 +52,9 @@ Canvas painting are owned by the multiplatform libraries.
 
 The 15 implemented families retain repository-controlled tests and captures.
 Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, Pie, and User Journey pass the replacement detail
-gate; the other implemented families are being upgraded and re-reviewed.
+Entity Relationship, Gantt, Pie, User Journey, and Requirement pass the
+replacement detail gate; the other implemented families are being upgraded and
+re-reviewed.
 
 | Evidence | Result |
 | --- | ---: |
@@ -65,8 +65,8 @@ gate; the other implemented families are being upgraded and re-reviewed.
 | Declared capability coverage | 257/257 |
 | Large-scale visual matrix | 3,840 unique sources: 256 per implemented family |
 | Native/Official captures | 7,680 matrix screenshots plus 394 independent-corpus screenshots |
-| Matrix detail review | Twelve families: 3,072/3,072 accepted; 2,993 automatic passes plus 79 manually accepted ER/Journey text reviews; remaining 3 families require re-audit |
-| Automated visual geometry | 3,840/3,840 passed; twelve family detail gates passed |
+| Matrix detail review | Thirteen families: 3,328/3,328 accepted; 3,245 automatic passes plus 83 manually accepted ER/Journey/Requirement text reviews; remaining 2 families require re-audit |
+| Automated visual geometry | 3,840/3,840 passed; thirteen family detail gates passed |
 | Deterministic SceneGraph replay | 197 passed, 0 mismatches |
 | Built-in theme matrix | 165/165 |
 | Separate generated Native stress inputs | 3,840 |
@@ -138,7 +138,7 @@ large-scale matrix with 3,840 unique Mermaid sources:
 | Gantt | Detail gate passed | 13 | Dates, dependencies, exclusions, milestones, D3-style ticks | [Compatibility](docs/gantt-compatibility.md) |
 | Pie | Detail gate passed | 13 | Langium grammar, D3 angles, donut, legends, palettes | [Compatibility](docs/pie-compatibility.md) |
 | User Journey | Detail gate passed | 13 | Sections, scores, actors, satisfaction faces, text strategies | [Compatibility](docs/journey-compatibility.md) |
-| Requirement | Detail re-audit | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |
+| Requirement | Detail gate passed | 13 | SysML types and fields, elements, seven relationships, Dagre, styling | [Compatibility](docs/requirement-compatibility.md) |
 | Git Graph | Detail re-audit | 13 | Langium grammar, branches, merges, cherry-picks, orientations, themes | [Compatibility](docs/gitgraph-compatibility.md) |
 | Mindmap | Detail re-audit | 13 | Jison/Mindmap DB, CoSE-Bilkent, Dagre, tidy tree, shapes, themes | [Compatibility](docs/mindmap-compatibility.md) |
 
