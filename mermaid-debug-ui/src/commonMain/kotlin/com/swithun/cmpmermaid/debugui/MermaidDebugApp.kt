@@ -98,6 +98,7 @@ private enum class DebugScreen {
     Packet,
     Radar,
     Sankey,
+    Treemap,
     Playground,
     LoadTest,
 }
@@ -223,6 +224,12 @@ private val destinations = listOf(
         DebugScreen.Sankey,
         sankeyDiagramDocsSpec,
         "Directed quantities with CSV input and D3 Sankey layout",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Treemap,
+        treemapDiagramDocsSpec,
+        "Weighted hierarchies with D3 squarify layout and class styling",
         DiagramStability.Beta,
     ),
 )

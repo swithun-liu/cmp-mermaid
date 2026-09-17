@@ -3224,6 +3224,140 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_treemap_delivery_portfolio",
+        diagramId = "treemap",
+        title = "Delivery portfolio",
+        scenario = "Nested product areas and work streams compare release investment at three levels.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            treemap-beta
+            title Delivery portfolio
+            "Client"
+                "Android"
+                    "Foundation": 38
+                    "Features": 62
+                "iOS"
+                    "Foundation": 34
+                    "Features": 56
+            "Platform"
+                "Reliability": 48
+                "Developer tooling": 29
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_styled_risk",
+        diagramId = "treemap",
+        title = "Styled risk allocation",
+        scenario = "Section and leaf classes override fills, strokes, text, widths, and font style.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            treemap-beta
+            "Release risk"
+                "Critical":::critical
+                    "Parser gap": 24
+                    "Layout drift": 18
+                "Controlled": 42:::verified
+                "Accepted": 16
+            classDef critical fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#7f1d1d;
+            classDef verified fill:#dcfce7,stroke:#16a34a,color:#14532d,font-style:italic;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_financial_formatting",
+        diagramId = "treemap",
+        title = "Formatted annual budget",
+        scenario = "Intrinsic sizing, compact padding, custom fonts, and currency values combine.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              treemap:
+                useMaxWidth: false
+                padding: 6
+                diagramPadding: 20
+                nodeWidth: 120
+                nodeHeight: 48
+                borderWidth: 2
+                valueFontSize: 13
+                labelFontSize: 15
+                valueFormat: '$0,0'
+            ---
+            treemap
+            title Annual budget
+            "Operations"
+                "Salaries": 720000
+                "Infrastructure": 280000
+            "Growth"
+                "Campaigns": 360000
+                "Events": 140000
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_percentage_share",
+        diagramId = "treemap",
+        title = "Percentage market share",
+        scenario = "Fractional leaves are formatted as percentages across several outer groups.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            ---
+            config:
+              treemap:
+                valueFormat: '.1%'
+            ---
+            treemap-beta
+            "Core market"
+                "Company A": 0.35
+                "Company B": 0.25
+            "Growth market"
+                "Company C": 0.15
+                "Others": 0.25
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_accessible_regions",
+        diagramId = "treemap",
+        title = "Accessible regional capacity",
+        scenario = "Metadata, comments, hidden values, mixed scripts, and irregular indentation coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            title: Regional capacity
+            config:
+              treemap:
+                showValues: false
+                labelFontSize: 15
+            ---
+            treemap
+            accTitle: Accessible regional capacity
+            accDescr {
+              Capacity grouped by international operating region.
+            }
+            %% Different indentation widths still express parent-child relationships.
+            "アジア"
+              "North Asia"
+                  "東京": 44
+                  "서울": 36
+            "Europa"
+                "München": 28
+                "Zürich": 22
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -6432,6 +6566,140 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
             Collector,Hot storage,96
             Collector,Cold storage,54
             Collector,Alerts,26
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_delivery_portfolio",
+        diagramId = "treemap",
+        title = "Delivery portfolio",
+        scenario = "Nested product areas and work streams compare release investment at three levels.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            treemap-beta
+            title Delivery portfolio
+            "Client"
+                "Android"
+                    "Foundation": 38
+                    "Features": 62
+                "iOS"
+                    "Foundation": 34
+                    "Features": 56
+            "Platform"
+                "Reliability": 48
+                "Developer tooling": 29
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_styled_risk",
+        diagramId = "treemap",
+        title = "Styled risk allocation",
+        scenario = "Section and leaf classes override fills, strokes, text, widths, and font style.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            treemap-beta
+            "Release risk"
+                "Critical":::critical
+                    "Parser gap": 24
+                    "Layout drift": 18
+                "Controlled": 42:::verified
+                "Accepted": 16
+            classDef critical fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#7f1d1d;
+            classDef verified fill:#dcfce7,stroke:#16a34a,color:#14532d,font-style:italic;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_financial_formatting",
+        diagramId = "treemap",
+        title = "Formatted annual budget",
+        scenario = "Intrinsic sizing, compact padding, custom fonts, and currency values combine.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              treemap:
+                useMaxWidth: false
+                padding: 6
+                diagramPadding: 20
+                nodeWidth: 120
+                nodeHeight: 48
+                borderWidth: 2
+                valueFontSize: 13
+                labelFontSize: 15
+                valueFormat: '$0,0'
+            ---
+            treemap
+            title Annual budget
+            "Operations"
+                "Salaries": 720000
+                "Infrastructure": 280000
+            "Growth"
+                "Campaigns": 360000
+                "Events": 140000
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_percentage_share",
+        diagramId = "treemap",
+        title = "Percentage market share",
+        scenario = "Fractional leaves are formatted as percentages across several outer groups.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            ---
+            config:
+              treemap:
+                valueFormat: '.1%'
+            ---
+            treemap-beta
+            "Core market"
+                "Company A": 0.35
+                "Company B": 0.25
+            "Growth market"
+                "Company C": 0.15
+                "Others": 0.25
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treemap_accessible_regions",
+        diagramId = "treemap",
+        title = "Accessible regional capacity",
+        scenario = "Metadata, comments, hidden values, mixed scripts, and irregular indentation coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            title: Regional capacity
+            config:
+              treemap:
+                showValues: false
+                labelFontSize: 15
+            ---
+            treemap
+            accTitle: Accessible regional capacity
+            accDescr {
+              Capacity grouped by international operating region.
+            }
+            %% Different indentation widths still express parent-child relationships.
+            "アジア"
+              "North Asia"
+                  "東京": 44
+                  "서울": 36
+            "Europa"
+                "München": 28
+                "Zürich": 22
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -10230,6 +10498,211 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Legacy", "Bridge", "Modern"),
         features = setOf("sankey-beta-header", "frontmatter-title", "node-width", "node-padding", "hide-values"),
     ),
+    StabilityCorpusCase(
+        id = "prod_treemap_product_hierarchy",
+        diagramId = "treemap",
+        title = "Product hierarchy",
+        scenario = "Multiple product roots contain sections and weighted leaves at three levels.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            treemap-beta
+            title Product portfolio
+            "Electronics"
+                "Mobile"
+                    "Phones": 52
+                    "Tablets": 18
+                "Computers": 30
+            "Clothing"
+                "Men's": 42
+                "Women's": 58
+        """.trimIndent(),
+        expectedTexts = listOf("Product portfolio", "Electronics", "Phones", "Clothing"),
+        features = setOf("treemap-beta-header", "sections", "leaves", "numeric-values", "colon-values", "multiple-roots", "hierarchy", "deep-hierarchy", "title"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treemap_irregular_inventory",
+        diagramId = "treemap",
+        title = "Irregular inventory hierarchy",
+        scenario = "Comma values and changing indentation widths preserve hierarchy transitions.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            treemap
+            "Warehouses"
+              "Primary stock"
+                  "Fast moving", 72
+                  "Reserved", 28
+              "Archive", 18
+            "Cold storage"
+               "Perishable", 34
+               "Long term", 16
+        """.trimIndent(),
+        expectedTexts = listOf("Warehouses", "Primary stock", "Archive", "Cold storage"),
+        features = setOf("treemap-header", "sections", "leaves", "comma-values", "multiple-roots", "hierarchy", "irregular-indentation"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treemap_styled_risk",
+        diagramId = "treemap",
+        title = "Styled risk portfolio",
+        scenario = "Section and leaf classes customize every supported classDef paint property.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            treemap-beta
+            "Risk portfolio"
+                "Critical":::critical
+                    "Parser gap": 26
+                    "Layout drift": 19
+                "Controlled": 41:::verified
+                "Accepted": 14
+            classDef critical fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#7f1d1d;
+            classDef verified fill:#dcfce7,stroke:#16a34a,color:#14532d,font-style:italic;
+        """.trimIndent(),
+        expectedTexts = listOf("Risk portfolio", "Critical", "Layout drift", "Controlled"),
+        features = setOf("class-selectors", "class-definitions", "class-fill", "class-stroke", "class-stroke-width", "class-text-color", "class-font-style", "hierarchy"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treemap_responsive_geometry",
+        diagramId = "treemap",
+        title = "Responsive capacity geometry",
+        scenario = "Responsive sizing and all spacing and typography controls shape a dense chart.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            ---
+            config:
+              treemap:
+                useMaxWidth: true
+                padding: 5
+                diagramPadding: 16
+                showValues: true
+                nodeWidth: 112
+                nodeHeight: 46
+                borderWidth: 2
+                valueFontSize: 13
+                labelFontSize: 15
+            ---
+            treemap-beta
+            title Capacity plan
+            "Compute"
+                "Reserved": 68
+                "Burst": 32
+            "Storage"
+                "Hot": 44
+                "Archive": 56
+        """.trimIndent(),
+        expectedTexts = listOf("Capacity plan", "Compute", "Reserved", "Storage"),
+        features = setOf("responsive-sizing", "padding", "diagram-padding", "show-values", "node-width", "node-height", "border-width", "value-font-size", "label-font-size"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treemap_intrinsic_hidden_values",
+        diagramId = "treemap",
+        title = "Intrinsic hidden-value allocation",
+        scenario = "Frontmatter title and intrinsic sizing render labels without numeric values.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Allocation without values
+            config:
+              treemap:
+                useMaxWidth: false
+                showValues: false
+                nodeWidth: 128
+                nodeHeight: 52
+                borderWidth: 3
+                valueFontSize: 11
+                labelFontSize: 16
+            ---
+            treemap
+            "Engineering"
+                "Reliability": 46
+                "Features": 38
+            "Research": 24
+        """.trimIndent(),
+        expectedTexts = listOf("Allocation without values", "Engineering", "Reliability", "Research"),
+        features = setOf("frontmatter-title", "intrinsic-sizing", "hide-values", "node-width", "node-height", "border-width", "value-font-size", "label-font-size"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treemap_currency_budget",
+        diagramId = "treemap",
+        title = "Currency budget allocation",
+        scenario = "Dollar values use grouped thousands across nested financial categories.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              treemap:
+                valueFormat: '$0,0'
+            ---
+            treemap-beta
+            title Annual budget
+            "Operations"
+                "Salaries": 720000
+                "Infrastructure": 280000
+            "Growth"
+                "Campaigns": 360000
+                "Events": 140000
+        """.trimIndent(),
+        expectedTexts = listOf("Annual budget", "Operations", "Salaries", "Campaigns"),
+        features = setOf("currency-format", "thousands-format", "hierarchy", "show-values"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treemap_fixed_precision",
+        diagramId = "treemap",
+        title = "Fixed precision service cost",
+        scenario = "Decimal service costs use a two-place D3 fixed-point formatter.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            ---
+            config:
+              treemap:
+                valueFormat: '.2f'
+            ---
+            treemap
+            title Service cost
+            "Gateway": 18.625
+            "Search": 31.375
+            "Storage": 24.5
+            "Observability": 12.75
+        """.trimIndent(),
+        expectedTexts = listOf("Service cost", "Gateway", "Search", "Storage"),
+        features = setOf("fixed-format", "show-values", "numeric-values", "multiple-roots"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treemap_accessible_market_share",
+        diagramId = "treemap",
+        title = "Accessible international market share",
+        scenario = "Percentage values, theme selection, metadata, comments, and Unicode coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            title: 地域 market share
+            config:
+              theme: forest
+              treemap:
+                valueFormat: '.1%'
+            ---
+            treemap-beta
+            accTitle: Accessible regional market share
+            accDescr {
+              Market share grouped by international operating region.
+            }
+            %% Fractional values are formatted as percentages.
+            "アジア"
+                "東京": 0.34
+                "서울": 0.27
+            "Americas"
+                "São Paulo": 0.21
+                "Others": 0.18
+        """.trimIndent(),
+        expectedTexts = listOf("地域 market share", "東京", "서울", "São Paulo"),
+        features = setOf("percentage-format", "accessibility", "comments", "unicode", "theme", "frontmatter-title", "show-values"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -10276,6 +10749,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "packet",
             "radar",
             "sankey",
+            "treemap",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -10358,6 +10832,7 @@ private fun addVisualParityVariation(
     "packet" -> "${source.trimEnd()}\n  +1: \"${escapeQuotedVisualParityLabel(label)}\"\n"
     "radar" -> replaceOrInsertVisualParityTitle(source, "radar-beta", label)
     "sankey" -> "${source.trimEnd()}\n\"$label\",$evidenceId,${(ordinal % 17) + 3}\n"
+    "treemap" -> replaceOrInsertTreemapVisualParityTitle(source, label)
     else -> source
 }
 
@@ -10463,6 +10938,46 @@ private fun replaceOrInsertVisualParityTitle(
         val value = line.trim()
         value == declaration ||
             (declaration == "xychart" && value == "xychart horizontal")
+    }
+    if (declarationIndex < 0) return source
+    lines.add(declarationIndex + 1, "  title \"$suffix\"")
+    return lines.joinToString("\n")
+}
+
+private fun replaceOrInsertTreemapVisualParityTitle(
+    source: String,
+    suffix: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val sourceTitleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title ")
+    }
+    if (sourceTitleIndex >= 0) {
+        val line = lines[sourceTitleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title ")
+            .trim()
+            .removeSurrounding("\"")
+        lines[sourceTitleIndex] = "${indent}title \"$title - $suffix\""
+        return lines.joinToString("\n")
+    }
+    val frontmatterTitleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title:")
+    }
+    if (frontmatterTitleIndex >= 0) {
+        val line = lines[frontmatterTitleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title:")
+            .trim()
+            .removeSurrounding("\"")
+            .removeSurrounding("'")
+        lines[frontmatterTitleIndex] = "${indent}title: \"$title - $suffix\""
+        return lines.joinToString("\n")
+    }
+    val declarationIndex = lines.indexOfFirst { line ->
+        line.trim() == "treemap" || line.trim() == "treemap-beta"
     }
     if (declarationIndex < 0) return source
     lines.add(declarationIndex + 1, "  title \"$suffix\"")

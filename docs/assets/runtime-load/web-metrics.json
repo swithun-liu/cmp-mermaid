@@ -1,37 +1,37 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T16:00:17.397Z",
-  "caseCount": 236,
+  "generatedAt": "2026-09-17T17:08:09.673Z",
+  "caseCount": 249,
   "firstCaseId": "rc_flow_checkout_saga",
-  "lastCaseId": "prod_sankey_beta_compact",
-  "firstContentMillis": 525,
-  "scrollMillis": 7903,
-  "scrollEvents": 115,
+  "lastCaseId": "prod_treemap_accessible_market_share",
+  "firstContentMillis": 702,
+  "scrollMillis": 12048,
+  "scrollEvents": 120,
   "reachedLastCase": true,
   "before": {
     "LayoutCount": 0,
     "RecalcStyleCount": 0,
-    "TaskDuration": 0.015603,
-    "JSHeapUsedSize": 20387300,
+    "TaskDuration": 0.017281,
+    "JSHeapUsedSize": 20880620,
     "JSHeapTotalSize": 21594112
   },
   "afterScroll": {
-    "LayoutCount": 8,
-    "RecalcStyleCount": 8,
-    "TaskDuration": 2.816175,
-    "JSHeapUsedSize": 53772840,
-    "JSHeapTotalSize": 113278976
+    "LayoutCount": 12,
+    "RecalcStyleCount": 12,
+    "TaskDuration": 6.943715,
+    "JSHeapUsedSize": 31824136,
+    "JSHeapTotalSize": 112230400
   },
   "afterGc": {
-    "LayoutCount": 8,
-    "RecalcStyleCount": 8,
-    "TaskDuration": 2.831891,
-    "JSHeapUsedSize": 30080600,
-    "JSHeapTotalSize": 31227904
+    "LayoutCount": 12,
+    "RecalcStyleCount": 12,
+    "TaskDuration": 6.958396,
+    "JSHeapUsedSize": 31349652,
+    "JSHeapTotalSize": 32276480
   },
-  "retainedJsHeapBytes": 9693300,
-  "peakProcessRssBytes": 2315501568,
-  "finalProcessRssBytes": 2080587776,
+  "retainedJsHeapBytes": 10469032,
+  "peakProcessRssBytes": 1967128576,
+  "finalProcessRssBytes": 1820573696,
   "errors": [],
   "thresholds": {
     "maximumFirstContentMillis": 15000,

@@ -199,6 +199,19 @@ data class MermaidSankeyOptions(
     val nodeColors: Map<String, SceneColor> = emptyMap(),
 )
 
+data class MermaidTreemapOptions(
+    val useMaxWidth: Boolean = true,
+    val padding: Float = 10f,
+    val diagramPadding: Float = 8f,
+    val showValues: Boolean = true,
+    val nodeWidth: Float = 100f,
+    val nodeHeight: Float = 40f,
+    val borderWidth: Float = 1f,
+    val valueFontSize: Float = 12f,
+    val labelFontSize: Float = 14f,
+    val valueFormat: String = ",",
+)
+
 data class MermaidKanbanOptions(
     val padding: Float = 8f,
     val sectionWidth: Float = 200f,
@@ -308,6 +321,7 @@ data class MermaidRenderOptions(
     val packet: MermaidPacketOptions = MermaidPacketOptions(),
     val radar: MermaidRadarOptions = MermaidRadarOptions(),
     val sankey: MermaidSankeyOptions = MermaidSankeyOptions(),
+    val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
     val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val curve: String = "basis",

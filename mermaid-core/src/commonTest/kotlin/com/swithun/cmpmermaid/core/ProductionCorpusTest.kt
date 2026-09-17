@@ -36,7 +36,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryProductionCaseWithValidSceneGeometryAndExpectedText() {
-        assertEquals(236, productionCorpusCases.size)
+        assertEquals(249, productionCorpusCases.size)
         assertEquals(
             mapOf(
                 "flowchart" to 14,
@@ -57,13 +57,14 @@ class ProductionCorpusTest {
                 "packet" to 13,
                 "radar" to 13,
                 "sankey" to 13,
+                "treemap" to 13,
             ),
             productionCorpusCases.groupingBy(StabilityCorpusCase::diagramId).eachCount(),
         )
         val conformanceCases = productionCorpusCases.filter { case ->
             case.id.startsWith("prod_")
         }
-        assertEquals(144, conformanceCases.size)
+        assertEquals(152, conformanceCases.size)
         assertTrue(conformanceCases.all { case -> case.expectedTexts.isNotEmpty() })
         assertTrue(conformanceCases.all { case -> case.features.isNotEmpty() })
 
@@ -106,7 +107,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryLargeScaleVisualParityCase() {
-        assertEquals(4_608, visualParityCorpusCases.size)
+        assertEquals(4_864, visualParityCorpusCases.size)
         assertEquals(
             setOf(
                 "flowchart",
@@ -127,6 +128,7 @@ class ProductionCorpusTest {
                 "packet",
                 "radar",
                 "sankey",
+                "treemap",
             ).associateWith { 256 },
             visualParityCorpusCases
                 .groupingBy(StabilityCorpusCase::diagramId)
@@ -192,7 +194,7 @@ class ProductionCorpusTest {
             .groupBy(StabilityCorpusCase::diagramId)
             .mapValues { (_, cases) -> cases.first() }
 
-        assertEquals(18, representatives.size)
+        assertEquals(19, representatives.size)
         representatives.forEach { (diagramId, case) ->
             MermaidThemePreset.entries.forEach { preset ->
                 val result = engine.render(

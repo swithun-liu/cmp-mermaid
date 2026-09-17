@@ -17,6 +17,7 @@ import com.swithun.cmpmermaid.core.sankey.SankeyPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
 import com.swithun.cmpmermaid.core.statediagram.StatePlugin
 import com.swithun.cmpmermaid.core.timeline.TimelinePlugin
+import com.swithun.cmpmermaid.core.treemap.TreemapPlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
 
 data class MermaidRenderContext(
@@ -56,6 +57,7 @@ class MermaidEngine(
         PacketPlugin(),
         RadarPlugin(),
         SankeyPlugin(),
+        TreemapPlugin(),
         TimelinePlugin(),
         KanbanPlugin(),
     ),

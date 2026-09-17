@@ -363,6 +363,47 @@ export const requiredFeaturesByKind = {
     'frontmatter-title',
     'responsive-sizing',
   ],
+  treemap: [
+    'treemap-header',
+    'treemap-beta-header',
+    'sections',
+    'leaves',
+    'numeric-values',
+    'colon-values',
+    'comma-values',
+    'multiple-roots',
+    'hierarchy',
+    'deep-hierarchy',
+    'irregular-indentation',
+    'class-selectors',
+    'class-definitions',
+    'class-fill',
+    'class-stroke',
+    'class-stroke-width',
+    'class-text-color',
+    'class-font-style',
+    'title',
+    'frontmatter-title',
+    'accessibility',
+    'comments',
+    'unicode',
+    'theme',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'padding',
+    'diagram-padding',
+    'show-values',
+    'hide-values',
+    'node-width',
+    'node-height',
+    'border-width',
+    'value-font-size',
+    'label-font-size',
+    'thousands-format',
+    'currency-format',
+    'fixed-format',
+    'percentage-format',
+  ],
 };
 
 const flowchartCases = [
@@ -3600,6 +3641,265 @@ Bridge,Manual review,4
   },
 ];
 
+const treemapCases = [
+  {
+    id: 'prod_treemap_product_hierarchy',
+    kind: 'treemap',
+    title: 'Product hierarchy',
+    scenario: 'Multiple product roots contain sections and weighted leaves at three levels.',
+    aspectRatio: 1.45,
+    features: [
+      'treemap-beta-header',
+      'sections',
+      'leaves',
+      'numeric-values',
+      'colon-values',
+      'multiple-roots',
+      'hierarchy',
+      'deep-hierarchy',
+      'title',
+    ],
+    expectedTexts: ['Product portfolio', 'Electronics', 'Phones', 'Clothing'],
+    source: String.raw`
+treemap-beta
+title Product portfolio
+"Electronics"
+    "Mobile"
+        "Phones": 52
+        "Tablets": 18
+    "Computers": 30
+"Clothing"
+    "Men's": 42
+    "Women's": 58
+`,
+  },
+  {
+    id: 'prod_treemap_irregular_inventory',
+    kind: 'treemap',
+    title: 'Irregular inventory hierarchy',
+    scenario: 'Comma values and changing indentation widths preserve hierarchy transitions.',
+    aspectRatio: 1.4,
+    features: [
+      'treemap-header',
+      'sections',
+      'leaves',
+      'comma-values',
+      'multiple-roots',
+      'hierarchy',
+      'irregular-indentation',
+    ],
+    expectedTexts: ['Warehouses', 'Primary stock', 'Archive', 'Cold storage'],
+    source: String.raw`
+treemap
+"Warehouses"
+  "Primary stock"
+      "Fast moving", 72
+      "Reserved", 28
+  "Archive", 18
+"Cold storage"
+   "Perishable", 34
+   "Long term", 16
+`,
+  },
+  {
+    id: 'prod_treemap_styled_risk',
+    kind: 'treemap',
+    title: 'Styled risk portfolio',
+    scenario: 'Section and leaf classes customize every supported classDef paint property.',
+    aspectRatio: 1.4,
+    features: [
+      'class-selectors',
+      'class-definitions',
+      'class-fill',
+      'class-stroke',
+      'class-stroke-width',
+      'class-text-color',
+      'class-font-style',
+      'hierarchy',
+    ],
+    expectedTexts: ['Risk portfolio', 'Critical', 'Layout drift', 'Controlled'],
+    source: String.raw`
+treemap-beta
+"Risk portfolio"
+    "Critical":::critical
+        "Parser gap": 26
+        "Layout drift": 19
+    "Controlled": 41:::verified
+    "Accepted": 14
+classDef critical fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#7f1d1d;
+classDef verified fill:#dcfce7,stroke:#16a34a,color:#14532d,font-style:italic;
+`,
+  },
+  {
+    id: 'prod_treemap_responsive_geometry',
+    kind: 'treemap',
+    title: 'Responsive capacity geometry',
+    scenario: 'Responsive sizing and all spacing and typography controls shape a dense chart.',
+    aspectRatio: 1.55,
+    features: [
+      'responsive-sizing',
+      'padding',
+      'diagram-padding',
+      'show-values',
+      'node-width',
+      'node-height',
+      'border-width',
+      'value-font-size',
+      'label-font-size',
+    ],
+    expectedTexts: ['Capacity plan', 'Compute', 'Reserved', 'Storage'],
+    source: String.raw`
+---
+config:
+  treemap:
+    useMaxWidth: true
+    padding: 5
+    diagramPadding: 16
+    showValues: true
+    nodeWidth: 112
+    nodeHeight: 46
+    borderWidth: 2
+    valueFontSize: 13
+    labelFontSize: 15
+---
+treemap-beta
+title Capacity plan
+"Compute"
+    "Reserved": 68
+    "Burst": 32
+"Storage"
+    "Hot": 44
+    "Archive": 56
+`,
+  },
+  {
+    id: 'prod_treemap_intrinsic_hidden_values',
+    kind: 'treemap',
+    title: 'Intrinsic hidden-value allocation',
+    scenario: 'Frontmatter title and intrinsic sizing render labels without numeric values.',
+    aspectRatio: 1.6,
+    features: [
+      'frontmatter-title',
+      'intrinsic-sizing',
+      'hide-values',
+      'node-width',
+      'node-height',
+      'border-width',
+      'value-font-size',
+      'label-font-size',
+    ],
+    expectedTexts: ['Allocation without values', 'Engineering', 'Reliability', 'Research'],
+    source: String.raw`
+---
+title: Allocation without values
+config:
+  treemap:
+    useMaxWidth: false
+    showValues: false
+    nodeWidth: 128
+    nodeHeight: 52
+    borderWidth: 3
+    valueFontSize: 11
+    labelFontSize: 16
+---
+treemap
+"Engineering"
+    "Reliability": 46
+    "Features": 38
+"Research": 24
+`,
+  },
+  {
+    id: 'prod_treemap_currency_budget',
+    kind: 'treemap',
+    title: 'Currency budget allocation',
+    scenario: 'Dollar values use grouped thousands across nested financial categories.',
+    aspectRatio: 1.5,
+    features: [
+      'currency-format',
+      'thousands-format',
+      'hierarchy',
+      'show-values',
+    ],
+    expectedTexts: ['Annual budget', 'Operations', 'Salaries', 'Campaigns'],
+    source: String.raw`
+---
+config:
+  treemap:
+    valueFormat: '$0,0'
+---
+treemap-beta
+title Annual budget
+"Operations"
+    "Salaries": 720000
+    "Infrastructure": 280000
+"Growth"
+    "Campaigns": 360000
+    "Events": 140000
+`,
+  },
+  {
+    id: 'prod_treemap_fixed_precision',
+    kind: 'treemap',
+    title: 'Fixed precision service cost',
+    scenario: 'Decimal service costs use a two-place D3 fixed-point formatter.',
+    aspectRatio: 1.35,
+    features: ['fixed-format', 'show-values', 'numeric-values', 'multiple-roots'],
+    expectedTexts: ['Service cost', 'Gateway', 'Search', 'Storage'],
+    source: String.raw`
+---
+config:
+  treemap:
+    valueFormat: '.2f'
+---
+treemap
+title Service cost
+"Gateway": 18.625
+"Search": 31.375
+"Storage": 24.5
+"Observability": 12.75
+`,
+  },
+  {
+    id: 'prod_treemap_accessible_market_share',
+    kind: 'treemap',
+    title: 'Accessible international market share',
+    scenario: 'Percentage values, theme selection, metadata, comments, and Unicode coexist.',
+    aspectRatio: 1.4,
+    features: [
+      'percentage-format',
+      'accessibility',
+      'comments',
+      'unicode',
+      'theme',
+      'frontmatter-title',
+      'show-values',
+    ],
+    expectedTexts: ['地域 market share', '東京', '서울', 'São Paulo'],
+    source: String.raw`
+---
+title: 地域 market share
+config:
+  theme: forest
+  treemap:
+    valueFormat: '.1%'
+---
+treemap-beta
+accTitle: Accessible regional market share
+accDescr {
+  Market share grouped by international operating region.
+}
+%% Fractional values are formatted as percentages.
+"アジア"
+    "東京": 0.34
+    "서울": 0.27
+"Americas"
+    "São Paulo": 0.21
+    "Others": 0.18
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -3936,6 +4236,7 @@ export const conformanceCases = [
   ...packetCases,
   ...radarCases,
   ...sankeyCases,
+  ...treemapCases,
 ];
 
 export const cases = [

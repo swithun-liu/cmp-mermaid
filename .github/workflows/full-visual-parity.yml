@@ -69,6 +69,7 @@ jobs:
           - radar
           - sankey
           - kanban
+          - treemap
 
     steps:
       - name: Checkout

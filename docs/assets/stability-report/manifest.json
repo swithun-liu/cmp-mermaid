@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-17T15:50:10.477Z",
-  "caseCount": 236,
+  "generatedAt": "2026-09-17T16:46:03.186Z",
+  "caseCount": 249,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -5236,6 +5236,318 @@
       "nativeSha256": "d59afc790f454847fed4662d4204140e20da3eaf1e564c67b1b65bf8178286c0",
       "officialSha256": "c82c1e51ff06abab343022595c36e6389a02b101c8220b8d342bd34f4631cb96",
       "sourceSha256": "6e8be65c69383401d861bcedaaf844b9b06f95452166725d5e8cf73f5009abe0"
+    },
+    {
+      "id": "rc_treemap_delivery_portfolio",
+      "kind": "treemap",
+      "title": "Delivery portfolio",
+      "scenario": "Nested product areas and work streams compare release investment at three levels.",
+      "aspectRatio": 1.45,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_treemap_delivery_portfolio_native.png",
+      "officialFile": "rc_treemap_delivery_portfolio_official.png",
+      "nativeBytes": 40033,
+      "officialBytes": 37567,
+      "nativeSha256": "14bfc9995d64677c6726e40f77032b2e8b1f110f1395bfc56d567884008c9ec8",
+      "officialSha256": "70a3dc18fced24c28c5891b3adbad23c3aeac775dc8f431efbd616e5a8e0c468",
+      "sourceSha256": "76fa8e6f3a4bd0986535cc360b121c8f89ae58a53d8a191f375726428353b695"
+    },
+    {
+      "id": "rc_treemap_styled_risk",
+      "kind": "treemap",
+      "title": "Styled risk allocation",
+      "scenario": "Section and leaf classes override fills, strokes, text, widths, and font style.",
+      "aspectRatio": 1.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_treemap_styled_risk_native.png",
+      "officialFile": "rc_treemap_styled_risk_official.png",
+      "nativeBytes": 31315,
+      "officialBytes": 28695,
+      "nativeSha256": "c73ce353340306096cc54836ce0ce699f925ddcdf1a9c362c570b7af05e2bc05",
+      "officialSha256": "1a6a0bc68bbdcd1131af2f437a3a237cb99cadde8bcc906578eea943da5c0d38",
+      "sourceSha256": "9a8ada2f6610a39f55f5d15b6798fb38d2bab5fb2a192e0e330b39f6fd36ed68"
+    },
+    {
+      "id": "rc_treemap_financial_formatting",
+      "kind": "treemap",
+      "title": "Formatted annual budget",
+      "scenario": "Intrinsic sizing, compact padding, custom fonts, and currency values combine.",
+      "aspectRatio": 1.6,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_treemap_financial_formatting_native.png",
+      "officialFile": "rc_treemap_financial_formatting_official.png",
+      "nativeBytes": 35391,
+      "officialBytes": 33242,
+      "nativeSha256": "9dc56245e9ed22b58b91bcb63b93cbd9cb60d763b143a682e515dc802f150c1c",
+      "officialSha256": "b24f426363584b1d7423d9d174fff89f59d4f59e819ca9222b94d17d0b3e2c50",
+      "sourceSha256": "4f75ba843f7d3bec27a13e5b084a7b7000f1aa6d8c347c6f877f75ef8d3b5b57"
+    },
+    {
+      "id": "rc_treemap_percentage_share",
+      "kind": "treemap",
+      "title": "Percentage market share",
+      "scenario": "Fractional leaves are formatted as percentages across several outer groups.",
+      "aspectRatio": 1.35,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_treemap_percentage_share_native.png",
+      "officialFile": "rc_treemap_percentage_share_official.png",
+      "nativeBytes": 39656,
+      "officialBytes": 35247,
+      "nativeSha256": "dc4d4c2c30737a528c00ae3cb29d4c7b126d557b56fb9c31a481ad67cbcf6048",
+      "officialSha256": "527e53dba4bae25692c718bbf308f2c66febda5dc6df529984538ed6530ea8fc",
+      "sourceSha256": "84718925573b4ab36a22ee8fa15e470acd62bf11a45d798c9d31b92f21a538a7"
+    },
+    {
+      "id": "rc_treemap_accessible_regions",
+      "kind": "treemap",
+      "title": "Accessible regional capacity",
+      "scenario": "Metadata, comments, hidden values, mixed scripts, and irregular indentation coexist.",
+      "aspectRatio": 1.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_treemap_accessible_regions_native.png",
+      "officialFile": "rc_treemap_accessible_regions_official.png",
+      "nativeBytes": 22674,
+      "officialBytes": 22496,
+      "nativeSha256": "0c63a7d6657bb0adb18be554f3213a2312ec7e542025dd7bbb3169136fd8819f",
+      "officialSha256": "8521dd6df78cb2e27741dadd678f95db5a74f91eea48c889522c27d3205f97d0",
+      "sourceSha256": "a2a4efdf63e3054a16532967304c535fe1cc16f06db323b85fa282f145d7183b"
+    },
+    {
+      "id": "prod_treemap_product_hierarchy",
+      "kind": "treemap",
+      "title": "Product hierarchy",
+      "scenario": "Multiple product roots contain sections and weighted leaves at three levels.",
+      "aspectRatio": 1.45,
+      "features": [
+        "treemap-beta-header",
+        "sections",
+        "leaves",
+        "numeric-values",
+        "colon-values",
+        "multiple-roots",
+        "hierarchy",
+        "deep-hierarchy",
+        "title"
+      ],
+      "expectedTexts": [
+        "Product portfolio",
+        "Electronics",
+        "Phones",
+        "Clothing"
+      ],
+      "nativeFile": "prod_treemap_product_hierarchy_native.png",
+      "officialFile": "prod_treemap_product_hierarchy_official.png",
+      "nativeBytes": 33397,
+      "officialBytes": 29990,
+      "nativeSha256": "ec7d153ea14205ea1484f5365fcfd835288d0a4ffe9a4bb723200e8d012ea753",
+      "officialSha256": "19c5a5e3d47cf327de3d3921b2036f1baac51d892ef4013d23ad31dd4cbb14e0",
+      "sourceSha256": "901bdf43632e39eca1de06aba3b2a6060a92f036d5417e78834c433c9240ec15"
+    },
+    {
+      "id": "prod_treemap_irregular_inventory",
+      "kind": "treemap",
+      "title": "Irregular inventory hierarchy",
+      "scenario": "Comma values and changing indentation widths preserve hierarchy transitions.",
+      "aspectRatio": 1.4,
+      "features": [
+        "treemap-header",
+        "sections",
+        "leaves",
+        "comma-values",
+        "multiple-roots",
+        "hierarchy",
+        "irregular-indentation"
+      ],
+      "expectedTexts": [
+        "Warehouses",
+        "Primary stock",
+        "Archive",
+        "Cold storage"
+      ],
+      "nativeFile": "prod_treemap_irregular_inventory_native.png",
+      "officialFile": "prod_treemap_irregular_inventory_official.png",
+      "nativeBytes": 36042,
+      "officialBytes": 34506,
+      "nativeSha256": "23b206e6729156f46ade5cba373a4f98324c7fa39e4099de3db6675b152480ba",
+      "officialSha256": "1ad342e45a95aa704aed23849f892bbbc89e6b66672d736ad650bdfaec129ad9",
+      "sourceSha256": "10de17ecbf1dac9580a5a12c1ee759efda070f85de239700ccf2321ddbed3e38"
+    },
+    {
+      "id": "prod_treemap_styled_risk",
+      "kind": "treemap",
+      "title": "Styled risk portfolio",
+      "scenario": "Section and leaf classes customize every supported classDef paint property.",
+      "aspectRatio": 1.4,
+      "features": [
+        "class-selectors",
+        "class-definitions",
+        "class-fill",
+        "class-stroke",
+        "class-stroke-width",
+        "class-text-color",
+        "class-font-style",
+        "hierarchy"
+      ],
+      "expectedTexts": [
+        "Risk portfolio",
+        "Critical",
+        "Layout drift",
+        "Controlled"
+      ],
+      "nativeFile": "prod_treemap_styled_risk_native.png",
+      "officialFile": "prod_treemap_styled_risk_official.png",
+      "nativeBytes": 31345,
+      "officialBytes": 29263,
+      "nativeSha256": "04a132d7b8a39de6927c08c1425fcab4b56e97c97d8430f0ef88ce158b4bf737",
+      "officialSha256": "cd9594a8e52fadcb27ee4f45d2c4345dbbd0e40bf5445c44764d620321c72744",
+      "sourceSha256": "5515068f01d5961831eadf6f845a6e849dccf960b7a9719d1102f2676e2cca02"
+    },
+    {
+      "id": "prod_treemap_responsive_geometry",
+      "kind": "treemap",
+      "title": "Responsive capacity geometry",
+      "scenario": "Responsive sizing and all spacing and typography controls shape a dense chart.",
+      "aspectRatio": 1.55,
+      "features": [
+        "responsive-sizing",
+        "padding",
+        "diagram-padding",
+        "show-values",
+        "node-width",
+        "node-height",
+        "border-width",
+        "value-font-size",
+        "label-font-size"
+      ],
+      "expectedTexts": [
+        "Capacity plan",
+        "Compute",
+        "Reserved",
+        "Storage"
+      ],
+      "nativeFile": "prod_treemap_responsive_geometry_native.png",
+      "officialFile": "prod_treemap_responsive_geometry_official.png",
+      "nativeBytes": 24905,
+      "officialBytes": 22767,
+      "nativeSha256": "e86b02277c2ac2d77fdbd60739843b56969cd308a315d309b973f1e64b8b6c54",
+      "officialSha256": "138b326f051594dddeae8fffed46413ad66d9acf240813dae02a9f5bcf0c5348",
+      "sourceSha256": "308d6a56170647236e083b050c3c0e1ebbef10a6029c86b40e5b9d75bb546991"
+    },
+    {
+      "id": "prod_treemap_intrinsic_hidden_values",
+      "kind": "treemap",
+      "title": "Intrinsic hidden-value allocation",
+      "scenario": "Frontmatter title and intrinsic sizing render labels without numeric values.",
+      "aspectRatio": 1.6,
+      "features": [
+        "frontmatter-title",
+        "intrinsic-sizing",
+        "hide-values",
+        "node-width",
+        "node-height",
+        "border-width",
+        "value-font-size",
+        "label-font-size"
+      ],
+      "expectedTexts": [
+        "Allocation without values",
+        "Engineering",
+        "Reliability",
+        "Research"
+      ],
+      "nativeFile": "prod_treemap_intrinsic_hidden_values_native.png",
+      "officialFile": "prod_treemap_intrinsic_hidden_values_official.png",
+      "nativeBytes": 14822,
+      "officialBytes": 14822,
+      "nativeSha256": "34687f7464c56146fd48db6d458bcf41e0f6be55fe6d4ac0f0eb000eb11dd8f6",
+      "officialSha256": "89cdfd988f767f4ebff20a00ebab3b729156b0b79813a2dcfa329639acab77af",
+      "sourceSha256": "7fc2bf774d18004f69f1ceccb36b5f1f2cf79c7bb8bf3aab0045f616f2e0f9c8"
+    },
+    {
+      "id": "prod_treemap_currency_budget",
+      "kind": "treemap",
+      "title": "Currency budget allocation",
+      "scenario": "Dollar values use grouped thousands across nested financial categories.",
+      "aspectRatio": 1.5,
+      "features": [
+        "currency-format",
+        "thousands-format",
+        "hierarchy",
+        "show-values"
+      ],
+      "expectedTexts": [
+        "Annual budget",
+        "Operations",
+        "Salaries",
+        "Campaigns"
+      ],
+      "nativeFile": "prod_treemap_currency_budget_native.png",
+      "officialFile": "prod_treemap_currency_budget_official.png",
+      "nativeBytes": 36125,
+      "officialBytes": 34078,
+      "nativeSha256": "0a54af89b4602dfef0a780e1b46544b01caace93b0a0898a3f0ce0d577691f6d",
+      "officialSha256": "62055ebfd45bd0b673bb7e88f8283cac2374d65161b5aaac7ea45720b7cf09cf",
+      "sourceSha256": "2d715421f2078662b4ca2e636b12d67d8c17894a081a921f84472c1ec7072041"
+    },
+    {
+      "id": "prod_treemap_fixed_precision",
+      "kind": "treemap",
+      "title": "Fixed precision service cost",
+      "scenario": "Decimal service costs use a two-place D3 fixed-point formatter.",
+      "aspectRatio": 1.35,
+      "features": [
+        "fixed-format",
+        "show-values",
+        "numeric-values",
+        "multiple-roots"
+      ],
+      "expectedTexts": [
+        "Service cost",
+        "Gateway",
+        "Search",
+        "Storage"
+      ],
+      "nativeFile": "prod_treemap_fixed_precision_native.png",
+      "officialFile": "prod_treemap_fixed_precision_official.png",
+      "nativeBytes": 20471,
+      "officialBytes": 19281,
+      "nativeSha256": "d135c3e9b9f635cecf2256e6814c427447ee53d39036b902c7861c585a2d76e0",
+      "officialSha256": "8a03560aeff07d2ee7f3ec07b76b3ff90a49fcfa28bdc8f2b01b20a103bc6362",
+      "sourceSha256": "cbe35b70b698a433ec9b7b2c088bb08abbc9b54bf620d9fe2b71f620f76b83c4"
+    },
+    {
+      "id": "prod_treemap_accessible_market_share",
+      "kind": "treemap",
+      "title": "Accessible international market share",
+      "scenario": "Percentage values, theme selection, metadata, comments, and Unicode coexist.",
+      "aspectRatio": 1.4,
+      "features": [
+        "percentage-format",
+        "accessibility",
+        "comments",
+        "unicode",
+        "theme",
+        "frontmatter-title",
+        "show-values"
+      ],
+      "expectedTexts": [
+        "地域 market share",
+        "東京",
+        "서울",
+        "São Paulo"
+      ],
+      "nativeFile": "prod_treemap_accessible_market_share_native.png",
+      "officialFile": "prod_treemap_accessible_market_share_official.png",
+      "nativeBytes": 35403,
+      "officialBytes": 32668,
+      "nativeSha256": "235ccc4d2ef85a29fb4b17a2d5dc4d46209aaac43d48d6e4ea8adeb9e84d76a4",
+      "officialSha256": "c763d642450175d37dd0aab0e07dfed3754422fe9a0077a5f4c9e98b120c850d",
+      "sourceSha256": "bcc3805f7c1de83c0c648f637cbddd5778d1d876eccbd96b99512c7803fffc26"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T15:50:10.481Z",
-  "inputDirectory": "captures/local/production-17-merged",
+  "generatedAt": "2026-09-17T16:46:02.831Z",
+  "inputDirectory": "captures/local/production-19-merged",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 236,
+  "caseCount": 249,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -14060,6 +14060,773 @@
       "widthRatio": 1.0574162679425838,
       "heightRatio": 1.0572519083969465,
       "inkRatio": 1.1177231296939183
+    },
+    {
+      "id": "rc_treemap_delivery_portfolio",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 493022,
+        "inkRatio": 0.4565018518518518,
+        "contentBounds": {
+          "x": 16,
+          "y": 208,
+          "width": 1168,
+          "height": 489
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 458461,
+        "inkRatio": 0.4245009259259259,
+        "contentBounds": {
+          "x": 37,
+          "y": 216,
+          "width": 1126,
+          "height": 473
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0338266384778012,
+      "inkRatio": 1.0753848200828424
+    },
+    {
+      "id": "rc_treemap_styled_risk",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 495913,
+        "inkRatio": 0.45917870370370373,
+        "contentBounds": {
+          "x": 16,
+          "y": 237,
+          "width": 1168,
+          "height": 426
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 460060,
+        "inkRatio": 0.42598148148148146,
+        "contentBounds": {
+          "x": 37,
+          "y": 245,
+          "width": 1126,
+          "height": 410
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0390243902439025,
+      "inkRatio": 1.077931139416598
+    },
+    {
+      "id": "rc_treemap_financial_formatting",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 485132,
+        "inkRatio": 0.4491962962962963,
+        "contentBounds": {
+          "x": 26,
+          "y": 213,
+          "width": 1148,
+          "height": 478
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 453235,
+        "inkRatio": 0.41966203703703703,
+        "contentBounds": {
+          "x": 45,
+          "y": 220,
+          "width": 1110,
+          "height": 463
+        }
+      },
+      "widthRatio": 1.0342342342342343,
+      "heightRatio": 1.0323974082073435,
+      "inkRatio": 1.070376294858076
+    },
+    {
+      "id": "rc_treemap_percentage_share",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 490143,
+        "inkRatio": 0.4538361111111111,
+        "contentBounds": {
+          "x": 16,
+          "y": 237,
+          "width": 1168,
+          "height": 426
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 455023,
+        "inkRatio": 0.4213175925925926,
+        "contentBounds": {
+          "x": 37,
+          "y": 245,
+          "width": 1126,
+          "height": 410
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0390243902439025,
+      "inkRatio": 1.0771829116330383
+    },
+    {
+      "id": "rc_treemap_accessible_regions",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 492036,
+        "inkRatio": 0.4555888888888889,
+        "contentBounds": {
+          "x": 16,
+          "y": 208,
+          "width": 1168,
+          "height": 489
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 457511,
+        "inkRatio": 0.4236212962962963,
+        "contentBounds": {
+          "x": 37,
+          "y": 216,
+          "width": 1126,
+          "height": 473
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0338266384778012,
+      "inkRatio": 1.0754626664714073
+    },
+    {
+      "id": "prod_treemap_product_hierarchy",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 491447,
+        "inkRatio": 0.45504351851851854,
+        "contentBounds": {
+          "x": 16,
+          "y": 208,
+          "width": 1168,
+          "height": 489
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 457207,
+        "inkRatio": 0.4233398148148148,
+        "contentBounds": {
+          "x": 37,
+          "y": 216,
+          "width": 1126,
+          "height": 473
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0338266384778012,
+      "inkRatio": 1.0748894920681442
+    },
+    {
+      "id": "prod_treemap_irregular_inventory",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 490551,
+        "inkRatio": 0.45421388888888886,
+        "contentBounds": {
+          "x": 16,
+          "y": 237,
+          "width": 1168,
+          "height": 426
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 455538,
+        "inkRatio": 0.42179444444444447,
+        "contentBounds": {
+          "x": 37,
+          "y": 245,
+          "width": 1126,
+          "height": 410
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0390243902439025,
+      "inkRatio": 1.076860766829551
+    },
+    {
+      "id": "prod_treemap_styled_risk",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 496335,
+        "inkRatio": 0.4595694444444444,
+        "contentBounds": {
+          "x": 16,
+          "y": 237,
+          "width": 1168,
+          "height": 426
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 459803,
+        "inkRatio": 0.4257435185185185,
+        "contentBounds": {
+          "x": 37,
+          "y": 245,
+          "width": 1126,
+          "height": 410
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0390243902439025,
+      "inkRatio": 1.0794514172373821
+    },
+    {
+      "id": "prod_treemap_responsive_geometry",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 502006,
+        "inkRatio": 0.4648203703703704,
+        "contentBounds": {
+          "x": 23,
+          "y": 205,
+          "width": 1153,
+          "height": 494
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 468228,
+        "inkRatio": 0.43354444444444445,
+        "contentBounds": {
+          "x": 43,
+          "y": 212,
+          "width": 1114,
+          "height": 479
+        }
+      },
+      "widthRatio": 1.0350089766606823,
+      "heightRatio": 1.0313152400835073,
+      "inkRatio": 1.0721400685136302
+    },
+    {
+      "id": "prod_treemap_intrinsic_hidden_values",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 404545,
+        "inkRatio": 0.3745787037037037,
+        "contentBounds": {
+          "x": 14,
+          "y": 205,
+          "width": 910,
+          "height": 494
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 379394,
+        "inkRatio": 0.35129074074074074,
+        "contentBounds": {
+          "x": 33,
+          "y": 212,
+          "width": 881,
+          "height": 480
+        }
+      },
+      "widthRatio": 1.0329171396140748,
+      "heightRatio": 1.0291666666666666,
+      "inkRatio": 1.066292561295118
+    },
+    {
+      "id": "prod_treemap_currency_budget",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 491582,
+        "inkRatio": 0.45516851851851853,
+        "contentBounds": {
+          "x": 16,
+          "y": 208,
+          "width": 1168,
+          "height": 489
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 457198,
+        "inkRatio": 0.4233314814814815,
+        "contentBounds": {
+          "x": 37,
+          "y": 216,
+          "width": 1126,
+          "height": 473
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0338266384778012,
+      "inkRatio": 1.0752059282849007
+    },
+    {
+      "id": "prod_treemap_fixed_precision",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 5923,
+        "inkRatio": 0.005484259259259259,
+        "contentBounds": {
+          "x": 555,
+          "y": 208,
+          "width": 260,
+          "height": 449
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 6266,
+        "inkRatio": 0.0058018518518518514,
+        "contentBounds": {
+          "x": 557,
+          "y": 216,
+          "width": 249,
+          "height": 432
+        }
+      },
+      "widthRatio": 1.0441767068273093,
+      "heightRatio": 1.0393518518518519,
+      "inkRatio": 0.9452601340568146
+    },
+    {
+      "id": "prod_treemap_accessible_market_share",
+      "kind": "treemap",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 493445,
+        "inkRatio": 0.4568935185185185,
+        "contentBounds": {
+          "x": 16,
+          "y": 208,
+          "width": 1168,
+          "height": 490
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 459249,
+        "inkRatio": 0.42523055555555556,
+        "contentBounds": {
+          "x": 37,
+          "y": 214,
+          "width": 1126,
+          "height": 475
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0315789473684212,
+      "inkRatio": 1.0744606956139262
     }
   ]
 }

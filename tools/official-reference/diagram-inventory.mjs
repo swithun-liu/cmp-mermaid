@@ -105,8 +105,9 @@ export const diagramFamilies = Object.freeze([
     header('timeline', 'timeline'),
   ], true),
   family('treemap', 'Treemap', 'treemap.md', ['treemap'], [
+    header('treemap-beta', 'treemap'),
     header('treemap', 'treemap'),
-  ]),
+  ], true),
   family('treeview', 'TreeView', 'treeView.md', ['treeView'], [
     header('treeView-beta', 'treeView'),
   ]),

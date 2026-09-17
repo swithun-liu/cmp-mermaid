@@ -245,6 +245,7 @@ internal object MermaidPreprocessor {
         val packet = map.map("packet")
         val radar = map.map("radar")
         val sankey = map.map("sankey")
+        val treemap = map.map("treemap")
         val kanban = map.map("kanban")
         val pie = map.map("pie")
         val quadrantChart = map.map("quadrantChart")
@@ -1204,6 +1205,43 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'sankey.linkColor' has invalid color '$sankeyLinkColor'",
             )
         }
+        val treemapUseMaxWidth =
+            boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
+        val treemapPadding = float(treemap, "padding", "treemap.padding")
+        val treemapDiagramPadding =
+            float(treemap, "diagramPadding", "treemap.diagramPadding")
+        val treemapShowValues = boolean(treemap, "showValues", "treemap.showValues")
+        val treemapNodeWidth = float(treemap, "nodeWidth", "treemap.nodeWidth")
+        val treemapNodeHeight = float(treemap, "nodeHeight", "treemap.nodeHeight")
+        val treemapBorderWidth = float(treemap, "borderWidth", "treemap.borderWidth")
+        val treemapValueFontSize =
+            float(treemap, "valueFontSize", "treemap.valueFontSize")
+        val treemapLabelFontSize =
+            float(treemap, "labelFontSize", "treemap.labelFontSize")
+        val treemapValueFormat = string(treemap, "valueFormat", "treemap.valueFormat")
+        listOf(
+            "treemap.nodeWidth" to treemapNodeWidth,
+            "treemap.nodeHeight" to treemapNodeHeight,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value <= 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be positive",
+            )
+        }
+        listOf(
+            "treemap.padding" to treemapPadding,
+            "treemap.diagramPadding" to treemapDiagramPadding,
+            "treemap.borderWidth" to treemapBorderWidth,
+            "treemap.valueFontSize" to treemapValueFontSize,
+            "treemap.labelFontSize" to treemapLabelFontSize,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be non-negative",
+            )
+        }
         val kanbanPadding = float(kanban, "padding", "kanban.padding")
         val kanbanSectionWidth = float(kanban, "sectionWidth", "kanban.sectionWidth")
         val kanbanTicketBaseUrl =
@@ -1535,6 +1573,20 @@ internal object MermaidPreprocessor {
                         nodeColors = sankeyNodeColors,
                     )
                 },
+                treemap = treemap?.let {
+                    MermaidTreemapConfigOverride(
+                        useMaxWidth = treemapUseMaxWidth,
+                        padding = treemapPadding,
+                        diagramPadding = treemapDiagramPadding,
+                        showValues = treemapShowValues,
+                        nodeWidth = treemapNodeWidth,
+                        nodeHeight = treemapNodeHeight,
+                        borderWidth = treemapBorderWidth,
+                        valueFontSize = treemapValueFontSize,
+                        labelFontSize = treemapLabelFontSize,
+                        valueFormat = treemapValueFormat,
+                    )
+                },
                 kanban = kanban?.let {
                     MermaidKanbanConfigOverride(
                         padding = kanbanPadding,
@@ -1741,6 +1793,7 @@ internal data class MermaidConfigOverride(
     val packet: MermaidPacketConfigOverride? = null,
     val radar: MermaidRadarConfigOverride? = null,
     val sankey: MermaidSankeyConfigOverride? = null,
+    val treemap: MermaidTreemapConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
@@ -1852,6 +1905,11 @@ internal data class MermaidConfigOverride(
                 sankey?.merge(overrides.sankey) ?: overrides.sankey
             else -> sankey
         },
+        treemap = when {
+            overrides.treemap != null ->
+                treemap?.merge(overrides.treemap) ?: overrides.treemap
+            else -> treemap
+        },
         kanban = when {
             overrides.kanban != null ->
                 kanban?.merge(overrides.kanban) ?: overrides.kanban
@@ -1957,6 +2015,7 @@ internal data class MermaidConfigOverride(
                 packet = packet?.applyTo(options.packet) ?: options.packet,
                 radar = radar?.applyTo(options.radar) ?: options.radar,
                 sankey = sankey?.applyTo(options.sankey) ?: options.sankey,
+                treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
@@ -2094,6 +2153,46 @@ internal data class MermaidSankeyConfigOverride(
         nodePadding = nodePadding ?: options.nodePadding,
         labelStyle = labelStyle ?: options.labelStyle,
         nodeColors = options.nodeColors + nodeColors.orEmpty(),
+    )
+}
+
+internal data class MermaidTreemapConfigOverride(
+    val useMaxWidth: Boolean? = null,
+    val padding: Float? = null,
+    val diagramPadding: Float? = null,
+    val showValues: Boolean? = null,
+    val nodeWidth: Float? = null,
+    val nodeHeight: Float? = null,
+    val borderWidth: Float? = null,
+    val valueFontSize: Float? = null,
+    val labelFontSize: Float? = null,
+    val valueFormat: String? = null,
+) {
+    fun merge(overrides: MermaidTreemapConfigOverride): MermaidTreemapConfigOverride =
+        MermaidTreemapConfigOverride(
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            padding = overrides.padding ?: padding,
+            diagramPadding = overrides.diagramPadding ?: diagramPadding,
+            showValues = overrides.showValues ?: showValues,
+            nodeWidth = overrides.nodeWidth ?: nodeWidth,
+            nodeHeight = overrides.nodeHeight ?: nodeHeight,
+            borderWidth = overrides.borderWidth ?: borderWidth,
+            valueFontSize = overrides.valueFontSize ?: valueFontSize,
+            labelFontSize = overrides.labelFontSize ?: labelFontSize,
+            valueFormat = overrides.valueFormat ?: valueFormat,
+        )
+
+    fun applyTo(options: MermaidTreemapOptions): MermaidTreemapOptions = options.copy(
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        padding = padding ?: options.padding,
+        diagramPadding = diagramPadding ?: options.diagramPadding,
+        showValues = showValues ?: options.showValues,
+        nodeWidth = nodeWidth ?: options.nodeWidth,
+        nodeHeight = nodeHeight ?: options.nodeHeight,
+        borderWidth = borderWidth ?: options.borderWidth,
+        valueFontSize = valueFontSize ?: options.valueFontSize,
+        labelFontSize = labelFontSize ?: options.labelFontSize,
+        valueFormat = valueFormat ?: options.valueFormat,
     )
 }
 

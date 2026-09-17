@@ -20,6 +20,7 @@ export const kinds = [
   'packet',
   'radar',
   'sankey',
+  'treemap',
 ];
 
 export const casesPerKind = 256;
@@ -156,6 +157,8 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return replaceOrInsertTitle(source, 'radar-beta', label);
     case 'sankey':
       return `${source.trimEnd()}\n"${label}",${evidenceId},${(ordinal % 17) + 3}\n`;
+    case 'treemap':
+      return replaceOrInsertTreemapTitle(source, label);
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
@@ -219,6 +222,34 @@ function replaceOrInsertTitle(source, declaration, suffix) {
   const declarationPattern = new RegExp(`^(\\s*${declaration}(?:\\s+horizontal)?\\s*)$`, 'm');
   if (!declarationPattern.test(source)) {
     throw new Error(`Missing ${declaration} declaration while adding title`);
+  }
+  return source.replace(
+    declarationPattern,
+    `$1\n  title "${suffix}"`,
+  );
+}
+
+function replaceOrInsertTreemapTitle(source, suffix) {
+  const sourceTitlePattern = /^(\s*title\s+)(?:"([^"]*)"|(.+))$/m;
+  if (sourceTitlePattern.test(source)) {
+    return source.replace(sourceTitlePattern, (_, prefix, quoted, plain) => {
+      const title = (quoted ?? plain).trim();
+      return `${prefix}"${title} - ${suffix}"`;
+    });
+  }
+  const frontmatterTitlePattern = /^(\s*title:\s*)(?:"([^"]*)"|'([^']*)'|(.+))$/m;
+  if (frontmatterTitlePattern.test(source)) {
+    return source.replace(
+      frontmatterTitlePattern,
+      (_, prefix, doubleQuoted, singleQuoted, plain) => {
+        const title = (doubleQuoted ?? singleQuoted ?? plain).trim();
+        return `${prefix}"${title} - ${suffix}"`;
+      },
+    );
+  }
+  const declarationPattern = /^(\s*treemap(?:-beta)?\s*)$/m;
+  if (!declarationPattern.test(source)) {
+    throw new Error('Missing treemap declaration while adding title');
   }
   return source.replace(
     declarationPattern,

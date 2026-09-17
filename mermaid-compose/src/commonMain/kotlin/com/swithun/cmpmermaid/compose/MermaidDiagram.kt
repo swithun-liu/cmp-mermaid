@@ -2021,6 +2021,7 @@ private fun DrawScope.drawSceneText(
             ?.let(fontFamilyResolver::resolve)
             ?: FontFamily.Default,
         fontWeight = element.weight.toComposeWeight(),
+        fontStyle = if (element.italic) FontStyle.Italic else null,
         textAlign = when (element.horizontalAlignment) {
             SceneTextAlignment.Start -> TextAlign.Start
             SceneTextAlignment.Center -> TextAlign.Center

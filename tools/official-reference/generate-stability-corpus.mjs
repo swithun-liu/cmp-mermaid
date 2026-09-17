@@ -34,6 +34,7 @@ const kotlinGalleryFiles = {
   packet: ['PacketDemos.kt', 'PacketDemo'],
   radar: ['RadarDemos.kt', 'RadarDemo'],
   sankey: ['SankeyDemos.kt', 'SankeyDemo'],
+  treemap: ['TreemapDemos.kt', 'TreemapDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -54,6 +55,7 @@ const expectedKindCounts = new Map([
   ['packet', 5],
   ['radar', 5],
   ['sankey', 5],
+  ['treemap', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -74,6 +76,7 @@ const expectedProductionKindCounts = new Map([
   ['packet', 13],
   ['radar', 13],
   ['sankey', 13],
+  ['treemap', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -94,6 +97,7 @@ const supportedKinds = new Set([
   'packet',
   'radar',
   'sankey',
+  'treemap',
 ]);
 
 validateStabilityCases();
@@ -167,8 +171,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 343) {
-    throw new Error(`Expected 343 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 348) {
+    throw new Error(`Expected 348 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -188,14 +192,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 236) {
+  if (productionCases.length !== 249) {
     throw new Error(
-      `Expected 236 production cases, found ${productionCases.length}`,
+      `Expected 249 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 144) {
+  if (conformanceCases.length !== 152) {
     throw new Error(
-      `Expected 144 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 152 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -425,6 +429,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "packet",
             "radar",
             "sankey",
+            "treemap",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -507,6 +512,7 @@ private fun addVisualParityVariation(
     "packet" -> "\${source.trimEnd()}\\n  +1: \\"\${escapeQuotedVisualParityLabel(label)}\\"\\n"
     "radar" -> replaceOrInsertVisualParityTitle(source, "radar-beta", label)
     "sankey" -> "\${source.trimEnd()}\\n\\"\$label\\",\$evidenceId,\${(ordinal % 17) + 3}\\n"
+    "treemap" -> replaceOrInsertTreemapVisualParityTitle(source, label)
     else -> source
 }
 
@@ -612,6 +618,46 @@ private fun replaceOrInsertVisualParityTitle(
         val value = line.trim()
         value == declaration ||
             (declaration == "xychart" && value == "xychart horizontal")
+    }
+    if (declarationIndex < 0) return source
+    lines.add(declarationIndex + 1, "  title \\"\$suffix\\"")
+    return lines.joinToString("\\n")
+}
+
+private fun replaceOrInsertTreemapVisualParityTitle(
+    source: String,
+    suffix: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val sourceTitleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title ")
+    }
+    if (sourceTitleIndex >= 0) {
+        val line = lines[sourceTitleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title ")
+            .trim()
+            .removeSurrounding("\\"")
+        lines[sourceTitleIndex] = "\${indent}title \\"\$title - \$suffix\\""
+        return lines.joinToString("\\n")
+    }
+    val frontmatterTitleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title:")
+    }
+    if (frontmatterTitleIndex >= 0) {
+        val line = lines[frontmatterTitleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title:")
+            .trim()
+            .removeSurrounding("\\"")
+            .removeSurrounding("'")
+        lines[frontmatterTitleIndex] = "\${indent}title: \\"\$title - \$suffix\\""
+        return lines.joinToString("\\n")
+    }
+    val declarationIndex = lines.indexOfFirst { line ->
+        line.trim() == "treemap" || line.trim() == "treemap-beta"
     }
     if (declarationIndex < 0) return source
     lines.add(declarationIndex + 1, "  title \\"\$suffix\\"")

@@ -186,6 +186,7 @@ data class SceneText(
     val lineHeight: Float = 1.2f,
     val fontFamily: String? = null,
     val weight: SceneTextWeight = SceneTextWeight.Medium,
+    val italic: Boolean = false,
     val spans: List<SceneTextSpan> = emptyList(),
     val horizontalAlignment: SceneTextAlignment = SceneTextAlignment.Center,
     val rotationDegrees: Float = 0f,

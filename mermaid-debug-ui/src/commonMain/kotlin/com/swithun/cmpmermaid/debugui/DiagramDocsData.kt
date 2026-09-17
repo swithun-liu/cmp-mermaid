@@ -570,3 +570,41 @@ internal val sankeyDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val treemapDiagramDocsSpec = DiagramDocsSpec(
+    id = "treemap",
+    title = "Treemap",
+    syntaxTitle = "Treemap diagrams - Basic Syntax",
+    description = "Compare weighted hierarchical data using nested rectangles, D3 squarify " +
+        "layout, class styles, value formats, metadata, themes, and sizing controls.",
+    documentationUrl = "https://mermaid.js.org/syntax/treemap.html",
+    galleryTitle = "Treemap demo gallery",
+    cases = treemapDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1.45f,
+        )
+    },
+    syntaxLessons = lessons(
+        treemapDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1.45f,
+            )
+        },
+        listOf(
+            "Quoted sections and leaves form a hierarchy through indentation.",
+            "Multiple outer nodes share the synthetic root used by the D3 layout.",
+            "Class selectors apply reusable fill, stroke, text, width, and font styles.",
+            "Frontmatter controls spacing, sizing, typography, visibility, and value formats.",
+            "Titles, accessibility metadata, comments, and Unicode share the grammar.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

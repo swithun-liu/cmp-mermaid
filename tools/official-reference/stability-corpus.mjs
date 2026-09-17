@@ -2997,4 +2997,123 @@ Collector,Cold storage,54
 Collector,Alerts,26
 `,
   },
+  {
+    id: 'rc_treemap_delivery_portfolio',
+    kind: 'treemap',
+    title: 'Delivery portfolio',
+    scenario: 'Nested product areas and work streams compare release investment at three levels.',
+    aspectRatio: 1.45,
+    source: String.raw`
+treemap-beta
+title Delivery portfolio
+"Client"
+    "Android"
+        "Foundation": 38
+        "Features": 62
+    "iOS"
+        "Foundation": 34
+        "Features": 56
+"Platform"
+    "Reliability": 48
+    "Developer tooling": 29
+`,
+  },
+  {
+    id: 'rc_treemap_styled_risk',
+    kind: 'treemap',
+    title: 'Styled risk allocation',
+    scenario: 'Section and leaf classes override fills, strokes, text, widths, and font style.',
+    aspectRatio: 1.4,
+    source: String.raw`
+treemap-beta
+"Release risk"
+    "Critical":::critical
+        "Parser gap": 24
+        "Layout drift": 18
+    "Controlled": 42:::verified
+    "Accepted": 16
+classDef critical fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#7f1d1d;
+classDef verified fill:#dcfce7,stroke:#16a34a,color:#14532d,font-style:italic;
+`,
+  },
+  {
+    id: 'rc_treemap_financial_formatting',
+    kind: 'treemap',
+    title: 'Formatted annual budget',
+    scenario: 'Intrinsic sizing, compact padding, custom fonts, and currency values combine.',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+config:
+  treemap:
+    useMaxWidth: false
+    padding: 6
+    diagramPadding: 20
+    nodeWidth: 120
+    nodeHeight: 48
+    borderWidth: 2
+    valueFontSize: 13
+    labelFontSize: 15
+    valueFormat: '$0,0'
+---
+treemap
+title Annual budget
+"Operations"
+    "Salaries": 720000
+    "Infrastructure": 280000
+"Growth"
+    "Campaigns": 360000
+    "Events": 140000
+`,
+  },
+  {
+    id: 'rc_treemap_percentage_share',
+    kind: 'treemap',
+    title: 'Percentage market share',
+    scenario: 'Fractional leaves are formatted as percentages across several outer groups.',
+    aspectRatio: 1.35,
+    source: String.raw`
+---
+config:
+  treemap:
+    valueFormat: '.1%'
+---
+treemap-beta
+"Core market"
+    "Company A": 0.35
+    "Company B": 0.25
+"Growth market"
+    "Company C": 0.15
+    "Others": 0.25
+`,
+  },
+  {
+    id: 'rc_treemap_accessible_regions',
+    kind: 'treemap',
+    title: 'Accessible regional capacity',
+    scenario: 'Metadata, comments, hidden values, mixed scripts, and irregular indentation coexist.',
+    aspectRatio: 1.4,
+    source: String.raw`
+---
+title: Regional capacity
+config:
+  treemap:
+    showValues: false
+    labelFontSize: 15
+---
+treemap
+accTitle: Accessible regional capacity
+accDescr {
+  Capacity grouped by international operating region.
+}
+%% Different indentation widths still express parent-child relationships.
+"アジア"
+  "North Asia"
+      "東京": 44
+      "서울": 36
+"Europa"
+    "München": 28
+    "Zürich": 22
+`,
+  },
 ];

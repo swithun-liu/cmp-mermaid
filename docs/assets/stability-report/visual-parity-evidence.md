@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 4,608 source cases and
-9,216 screenshots from the large-scale
+This index contains 4,864 source cases and
+9,728 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 18 implemented families have completed the replacement detail gate and
+All 19 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`4,608/4,608` pairs: `4,398 pass / 210 manually reviewed / 0 fail` across
-288 contact sheets.
+`4,864/4,864` pairs: `4,417 pass / 447 manually reviewed / 0 fail` across
+304 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -707,6 +707,49 @@ All 16 pages below were manually reviewed.
 ![Sankey visual parity page 15](sankey-visual-parity-15.jpg)
 
 ![Sankey visual parity page 16](sankey-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Treemap - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `19 pass / 237 manually reviewed / 0 fail`.
+Geometry ratios: width `1.033-1.076`, height `1.029-1.039`, foreground ink
+`0.945-1.077`. The reviews contain only Canvas/SVG text-position and same-row
+label/value overlap-threshold differences. Expected hierarchy, rectangles,
+styles, values, clipping, and paint order were verified across all 16 pages.
+
+![Treemap visual parity page 01](treemap-visual-parity-01.jpg)
+
+![Treemap visual parity page 02](treemap-visual-parity-02.jpg)
+
+![Treemap visual parity page 03](treemap-visual-parity-03.jpg)
+
+![Treemap visual parity page 04](treemap-visual-parity-04.jpg)
+
+![Treemap visual parity page 05](treemap-visual-parity-05.jpg)
+
+![Treemap visual parity page 06](treemap-visual-parity-06.jpg)
+
+![Treemap visual parity page 07](treemap-visual-parity-07.jpg)
+
+![Treemap visual parity page 08](treemap-visual-parity-08.jpg)
+
+![Treemap visual parity page 09](treemap-visual-parity-09.jpg)
+
+![Treemap visual parity page 10](treemap-visual-parity-10.jpg)
+
+![Treemap visual parity page 11](treemap-visual-parity-11.jpg)
+
+![Treemap visual parity page 12](treemap-visual-parity-12.jpg)
+
+![Treemap visual parity page 13](treemap-visual-parity-13.jpg)
+
+![Treemap visual parity page 14](treemap-visual-parity-14.jpg)
+
+![Treemap visual parity page 15](treemap-visual-parity-15.jpg)
+
+![Treemap visual parity page 16](treemap-visual-parity-16.jpg)
 
 </details>
 
