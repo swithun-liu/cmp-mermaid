@@ -62,6 +62,7 @@ const kinds = [
   'kanban',
   'ishikawa',
   'cynefin',
+  'agentflow',
 ];
 const kindTitles = {
   flowchart: 'Flowchart',
@@ -86,6 +87,7 @@ const kindTitles = {
   kanban: 'Kanban',
   ishikawa: 'Ishikawa',
   cynefin: 'Cynefin',
+  agentflow: 'Agentflow',
 };
 const selectedKinds = kinds.filter(
   (kind) => corpusKind === 'all' || corpusKind === kind,

@@ -499,6 +499,40 @@ export const requiredFeaturesByKind = {
     'entities',
     'unicode',
   ],
+  agentflow: [
+    'agentflow-beta-header',
+    'directions',
+    'shape-aliases',
+    'canonical-shapes',
+    'sequence-edges',
+    'chained-edges',
+    'fan-out',
+    'labelled-edges',
+    'reference-edges',
+    'failure-edges',
+    'flows',
+    'nested-flows',
+    'global-nodes',
+    'collapsed-flows',
+    'connectors',
+    'connector-ref-bare',
+    'connector-ref-dotted',
+    'connector-ref-url',
+    'single-line-metadata',
+    'multiline-metadata',
+    'custom-metadata',
+    'container-metadata',
+    'frontmatter-title',
+    'accessibility',
+    'comments',
+    'entities',
+    'unicode',
+    'agentflow-config',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'theme',
+    'look',
+  ],
 };
 
 const flowchartCases = [
@@ -4680,6 +4714,303 @@ cynefin-beta:
   },
 ];
 
+const agentflowCases = [
+  {
+    id: 'prod_agentflow_typed_review',
+    kind: 'agentflow',
+    title: 'Typed review workflow',
+    scenario: 'All six Agentflow shape aliases and three edge semantics form one review workflow.',
+    layout: 'dagre',
+    aspectRatio: 1.5,
+    features: [
+      'agentflow-beta-header',
+      'shape-aliases',
+      'sequence-edges',
+      'chained-edges',
+      'labelled-edges',
+      'reference-edges',
+      'failure-edges',
+      'single-line-metadata',
+    ],
+    expectedTexts: ['Change request', 'Review change', 'run_checks', 'Approved?', 'Review policy', 'Publish change'],
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta TB
+  request["Change request"]@{ shape: input }
+  review["Review change"]@{ shape: task }
+  checks["run_checks"]@{ shape: tool }
+  decision["Approved?"]@{ shape: decision }
+  policy["Review policy"]@{ shape: refdoc }
+  publish["Publish change"]@{ shape: action }
+  request --> review --> checks --> decision
+  review -.- policy
+  decision -- approved --> publish
+  decision --x review
+`,
+  },
+  {
+    id: 'prod_agentflow_nested_global',
+    kind: 'agentflow',
+    title: 'Nested flows with global context',
+    scenario: 'Nested agent containers consult a shared top-level reference and hand work between flows.',
+    layout: 'dagre',
+    aspectRatio: 4 / 3,
+    features: [
+      'directions',
+      'flows',
+      'nested-flows',
+      'global-nodes',
+      'reference-edges',
+      'container-metadata',
+    ],
+    expectedTexts: ['Research Team', 'Discovery Agent', 'Synthesis Agent', 'Shared knowledge base'],
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta TD
+  global
+    knowledge["Shared knowledge base"]@{ shape: refdoc }
+  end
+  flow team["Research Team"]
+    flow discoverer["Discovery Agent"]
+      collect["Collect evidence"]@{ shape: task }
+      collect -.- knowledge
+    end
+    discoverer@{ model: "research-model", instruction: "Collect cited evidence." }
+    flow synthesizer["Synthesis Agent"]
+      summarize["Synthesize findings"]@{ shape: task }
+      summarize -.- knowledge
+    end
+    discoverer --> synthesizer
+  end
+`,
+  },
+  {
+    id: 'prod_agentflow_collapsed_boundary',
+    kind: 'agentflow',
+    title: 'Collapsed boundary handoff',
+    scenario: 'A collapsed flow retains incoming and outgoing edges as one summary node.',
+    layout: 'dagre',
+    aspectRatio: 1.4,
+    features: [
+      'flows',
+      'collapsed-flows',
+      'sequence-edges',
+      'container-metadata',
+    ],
+    expectedTexts: ['Raw request', 'Private processing', 'Delivered result'],
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta TB
+  input["Raw request"]@{ shape: input }
+  flow private["Private processing"]
+    validate["Validate request"]@{ shape: task }
+    transform["Transform payload"]@{ shape: tool }
+    validate --> transform
+  end
+  private@{ view: "collapsed", description: "Internal implementation" }
+  output["Delivered result"]@{ shape: action }
+  input --> validate
+  transform --> output
+`,
+  },
+  {
+    id: 'prod_agentflow_connector_contracts',
+    kind: 'agentflow',
+    title: 'Connector reference contracts',
+    scenario: 'Bare, dotted, and URL connector references coexist with preserved connector metadata.',
+    layout: 'dagre',
+    aspectRatio: 1.8,
+    features: [
+      'connectors',
+      'connector-ref-bare',
+      'connector-ref-dotted',
+      'connector-ref-url',
+      'custom-metadata',
+      'single-line-metadata',
+    ],
+    expectedTexts: ['Issue API', 'Create issue', 'Read issue', 'Notify callback'],
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta LR
+  connector issues["Issue API"]
+  issues@{ protocol: "http", endpoint: "https://example.com/issues", owner: "delivery" }
+  create["Create issue"]@{ shape: tool, connectorRef: "issues.create" }
+  read["Read issue"]@{ shape: tool, connectorRef: "issues" }
+  notify["Notify callback"]@{ shape: action, connectorRef: "https://example.com/hooks/release" }
+  create --> read --> notify
+`,
+  },
+  {
+    id: 'prod_agentflow_parallel_canonical',
+    kind: 'agentflow',
+    title: 'Parallel canonical tools',
+    scenario: 'A right-to-left fan-out combines an alias with canonical supported shape names.',
+    layout: 'dagre',
+    aspectRatio: 1.7,
+    features: [
+      'directions',
+      'canonical-shapes',
+      'fan-out',
+      'sequence-edges',
+    ],
+    expectedTexts: ['Orchestrate request', 'Retrieve context', 'Rank options', 'Verify result'],
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta RL
+  request["Orchestrate request"]@{ shape: task }
+  retrieve["Retrieve context"]@{ shape: subprocess }
+  rank["Rank options"]@{ shape: framed-rectangle }
+  verify["Verify result"]@{ shape: diamond }
+  request --> retrieve & rank & verify
+`,
+  },
+  {
+    id: 'prod_agentflow_metadata_contract',
+    kind: 'agentflow',
+    title: 'Typed metadata contract',
+    scenario: 'Single-line and multiline metadata preserve typed contracts and unknown consumer fields.',
+    layout: 'dagre',
+    aspectRatio: 1.5,
+    features: [
+      'multiline-metadata',
+      'single-line-metadata',
+      'custom-metadata',
+      'shape-aliases',
+      'directions',
+    ],
+    expectedTexts: ['Customer prompt', 'Generate answer', 'Send answer'],
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta BT
+  prompt["Customer prompt"]@{ shape: input, value: "Explain the release" }
+  generate["Generate answer"]@{
+    shape: tool
+    params: "prompt :: String"
+    returns: "Answer"
+    retry: 2
+    cache: "15m"
+  }
+  send["Send answer"]@{ shape: action, example: "published" }
+  prompt --> generate --> send
+`,
+  },
+  {
+    id: 'prod_agentflow_configured_accessible',
+    kind: 'agentflow',
+    title: 'Configured accessible workflow',
+    scenario: 'Frontmatter configuration, accessibility metadata, entities, comments, and Unicode render together.',
+    layout: 'dagre',
+    aspectRatio: 1.6,
+    features: [
+      'frontmatter-title',
+      'accessibility',
+      'comments',
+      'entities',
+      'unicode',
+      'agentflow-config',
+      'intrinsic-sizing',
+      'theme',
+      'look',
+    ],
+    expectedTexts: ['Regional workflow', 'München request', '서울 verification', 'São Paulo publish'],
+    source: String.raw`
+---
+title: Regional workflow
+config:
+  layout: dagre
+  theme: forest
+  look: classic
+  agentflow:
+    nodeSpacing: 68
+    rankSpacing: 76
+    diagramPadding: 24
+    useMaxWidth: false
+---
+agentflow-beta LR
+  accTitle: Accessible regional workflow
+  accDescr {
+    International requests move through verification and publication.
+  }
+  %% Encoded entities and mixed scripts use the shared preprocessing path.
+  request["東京 &amp; München request"]@{ shape: input }
+  verify["서울 verification"]@{ shape: task }
+  publish["São Paulo publish"]@{ shape: action }
+  request --> verify --> publish
+`,
+  },
+  {
+    id: 'prod_agentflow_responsive_handoff',
+    kind: 'agentflow',
+    title: 'Responsive agent handoff',
+    scenario: 'Per-diagram spacing and responsive sizing apply to a horizontal multi-agent handoff.',
+    layout: 'dagre',
+    aspectRatio: 1.8,
+    features: [
+      'directions',
+      'flows',
+      'agentflow-config',
+      'responsive-sizing',
+      'theme',
+      'look',
+      'container-metadata',
+    ],
+    expectedTexts: ['Intake Agent', 'Resolution Agent', 'Classify request', 'Resolve request'],
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+  agentflow:
+    nodeSpacing: 44
+    rankSpacing: 88
+    titleTopMargin: 18
+    useMaxWidth: true
+---
+agentflow-beta LR
+  flow intake["Intake Agent"]
+    classify["Classify request"]@{ shape: decision }
+  end
+  intake@{ instruction: "Assign a support category." }
+  flow resolution["Resolution Agent"]
+    resolve["Resolve request"]@{ shape: task }
+  end
+  resolution@{ model: "resolution-model" }
+  intake --> resolution
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -5020,6 +5351,7 @@ export const conformanceCases = [
   ...vennCases,
   ...ishikawaCases,
   ...cynefinCases,
+  ...agentflowCases,
 ];
 
 export const cases = [

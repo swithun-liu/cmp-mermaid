@@ -722,3 +722,41 @@ internal val cynefinDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val agentflowDiagramDocsSpec = DiagramDocsSpec(
+    id = "agentflow",
+    title = "Agentflow",
+    syntaxTitle = "Agentflow diagrams - Basic Syntax",
+    description = "Describe agentic workflows with typed work nodes, nested flows, " +
+        "semantic edges, shared references, collapsed containers, and connectors.",
+    documentationUrl = "https://mermaid.js.org/syntax/agentflow.html",
+    galleryTitle = "Agentflow demo gallery",
+    cases = agentflowDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 4f / 3f,
+        )
+    },
+    syntaxLessons = lessons(
+        agentflowDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 4f / 3f,
+            )
+        },
+        listOf(
+            "Shape aliases distinguish tasks, tools, inputs, decisions, references, and actions.",
+            "Sequence, reference, and failure edges preserve separate workflow semantics.",
+            "Flow blocks may nest, while global nodes remain outside every container.",
+            "Collapsed flows retain boundary-crossing edges through a summary node.",
+            "Connector and custom metadata remain attached to the semantic model.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

@@ -781,6 +781,88 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsAndMergesAgentflowConfigurationWithoutChangingFlowchartOptions() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  flowchart:
+                    nodeSpacing: 19
+                    rankSpacing: 23
+                    wrappingWidth: 210
+                  agentflow:
+                    useMaxWidth: false
+                    theme: forest
+                    look: classic
+                    titleTopMargin: 31
+                    diagramPadding: 17
+                    nodeSpacing: 71
+                    rankSpacing: 73
+                    wrappingWidth: 175
+                    minNodeWidth: 145
+                ---
+                %%{init: {'agentflow': {'theme': 'dark', 'nodeSpacing': 81}}}%%
+                agentflow-beta LR
+                  a --> b
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(
+                MermaidRenderOptions(
+                    agentflow = MermaidAgentflowOptions(
+                        theme = "neutral",
+                        nodeSpacing = 61f,
+                    ),
+                ),
+            ),
+        ).value
+
+        assertEquals(19f, options.nodeSpacing)
+        assertEquals(23f, options.rankSpacing)
+        assertEquals(210f, options.wrappingWidth)
+        assertEquals(false, options.agentflow.useMaxWidth)
+        assertEquals("dark", options.agentflow.theme)
+        assertEquals("classic", options.agentflow.look)
+        assertEquals(31f, options.agentflow.titleTopMargin)
+        assertEquals(17f, options.agentflow.diagramPadding)
+        assertEquals(81f, options.agentflow.nodeSpacing)
+        assertEquals(73f, options.agentflow.rankSpacing)
+        assertEquals(175f, options.agentflow.wrappingWidth)
+        assertEquals(145f, options.agentflow.minNodeWidth)
+    }
+
+    @Test
+    fun rejectsInvalidAgentflowConfiguration() {
+        listOf(
+            "useMaxWidth: sometimes" to "agentflow.useMaxWidth",
+            "titleTopMargin: -1" to "agentflow.titleTopMargin",
+            "diagramPadding: -1" to "agentflow.diagramPadding",
+            "nodeSpacing: -1" to "agentflow.nodeSpacing",
+            "rankSpacing: -1" to "agentflow.rankSpacing",
+            "wrappingWidth: 0" to "agentflow.wrappingWidth",
+            "minNodeWidth: 0" to "agentflow.minNodeWidth",
+        ).forEach { (config, path) ->
+            val result = MermaidPreprocessor.preprocess(
+                """
+                    ---
+                    config:
+                      agentflow:
+                        $config
+                    ---
+                    agentflow-beta TB
+                      a --> b
+                """.trimIndent(),
+            )
+
+            val error = assertIs<GMResult.Err<MermaidError>>(result, config).error
+            assertIs<MermaidError.Configuration>(error, config)
+            assertContains(error.message, path)
+        }
+    }
+
+    @Test
     fun rejectsKnownConfigurationWithoutANativePort() {
         val result = MermaidPreprocessor.preprocess(
             """

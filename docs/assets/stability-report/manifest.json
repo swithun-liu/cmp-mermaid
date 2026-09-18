@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-18T06:34:55.434Z",
-  "caseCount": 288,
+  "generatedAt": "2026-09-18T08:44:46.858Z",
+  "caseCount": 301,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -6435,6 +6435,324 @@
       "nativeSha256": "8ca4edc38f8bf8028ef44a3ea9e6555e479c1e7634e4ffedb2cb5341cc1a2786",
       "officialSha256": "7dd84fc7439e7c0a11461675b3a435562a3aca0c73cd991609297d7054c787c0",
       "sourceSha256": "91a204ce770a0aa90cd7dcf72a781f7cf29010297be6e1b09f40f382ea2f5236"
+    },
+    {
+      "id": "rc_agentflow_release_intelligence",
+      "kind": "agentflow",
+      "title": "Release intelligence workflow",
+      "scenario": "Two collaborating flows use typed work nodes and a top-level handoff.",
+      "layout": "dagre",
+      "aspectRatio": 1.3333333333333333,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_agentflow_release_intelligence_native.png",
+      "officialFile": "rc_agentflow_release_intelligence_official.png",
+      "nativeBytes": 41895,
+      "officialBytes": 37982,
+      "nativeSha256": "e56a9a356b69e9bc45aaeab46d990f6e00a36dd567066e8fbc8ff6b07d7f8241",
+      "officialSha256": "a84c7170fa56049b0b25e49e6cd9ffa59d0fa1cd50f95d923c27952ba01fc6c2",
+      "sourceSha256": "ec58d893627ea86bfad11eb24344e1e8550a319473269945b75d003a7ceffbdb"
+    },
+    {
+      "id": "rc_agentflow_failure_recovery",
+      "kind": "agentflow",
+      "title": "Failure recovery workflow",
+      "scenario": "Labelled sequence, failure, and reference edges remain visually distinct.",
+      "layout": "dagre",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_agentflow_failure_recovery_native.png",
+      "officialFile": "rc_agentflow_failure_recovery_official.png",
+      "nativeBytes": 36832,
+      "officialBytes": 37477,
+      "nativeSha256": "ec1bf6078bbb5ed3ec75265fd79394f87a96e0839770f4be2422f4729f455a3f",
+      "officialSha256": "f2692fe4d8bb84d8481df5d3d95fda561181c2692f27962d9e6d5982c9f43cd8",
+      "sourceSha256": "bd1b1269fabd4a0fc58d2ebfdaad7064f3abd4aac192ec619f2e1edc307dc261"
+    },
+    {
+      "id": "rc_agentflow_shared_policy",
+      "kind": "agentflow",
+      "title": "Shared policy reference",
+      "scenario": "Nested agents reference a global policy without moving it into either flow.",
+      "layout": "dagre",
+      "aspectRatio": 1.3333333333333333,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_agentflow_shared_policy_native.png",
+      "officialFile": "rc_agentflow_shared_policy_official.png",
+      "nativeBytes": 41336,
+      "officialBytes": 37597,
+      "nativeSha256": "1e41ab47d2c1046e799bd35cee864f4615375f0eee9a10a135bd69fafa8a5014",
+      "officialSha256": "e77013cb9f17bf52c05efc8756a28fb947bb42159c8295fed22a78779a1cb3dd",
+      "sourceSha256": "754e35821a5b7a5534ab9c59c98e6ee675998db7c052635e541279fa33593a8e"
+    },
+    {
+      "id": "rc_agentflow_collapsed_enrichment",
+      "kind": "agentflow",
+      "title": "Collapsed enrichment flow",
+      "scenario": "Edges crossing an intentionally collapsed flow terminate at its summary node.",
+      "layout": "dagre",
+      "aspectRatio": 1.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_agentflow_collapsed_enrichment_native.png",
+      "officialFile": "rc_agentflow_collapsed_enrichment_official.png",
+      "nativeBytes": 36825,
+      "officialBytes": 30097,
+      "nativeSha256": "07fb83d8eb03b2e4562415eed7e44f6d695deb58f32d8c484eeddc090efb4b11",
+      "officialSha256": "e52acdf3f39bde5cd9c61d1003bdcab59cd1fc0d429906fa495136596014820d",
+      "sourceSha256": "e224dc758328a1f1164c9958191b0cd60c458905354e17efec26877dce2e0e85"
+    },
+    {
+      "id": "rc_agentflow_regional_connector",
+      "kind": "agentflow",
+      "title": "Regional connector workflow",
+      "scenario": "Configuration, metadata, accessibility text, entities, and multilingual labels share one diagram.",
+      "layout": "dagre",
+      "aspectRatio": 1.6,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_agentflow_regional_connector_native.png",
+      "officialFile": "rc_agentflow_regional_connector_official.png",
+      "nativeBytes": 38675,
+      "officialBytes": 34368,
+      "nativeSha256": "cddee80e2bf60d548f163989d062f0be99e7369a6de7c95d6e2c9e40529a802b",
+      "officialSha256": "c1cce0ee23f623875baa5fbf326627f43b1ec05dd070de318937f14849dd9c4b",
+      "sourceSha256": "a16de22567ba35e4fdb7d72255f15cf3cb6748659389a152694988d82c35ee38"
+    },
+    {
+      "id": "prod_agentflow_typed_review",
+      "kind": "agentflow",
+      "title": "Typed review workflow",
+      "scenario": "All six Agentflow shape aliases and three edge semantics form one review workflow.",
+      "layout": "dagre",
+      "aspectRatio": 1.5,
+      "features": [
+        "agentflow-beta-header",
+        "shape-aliases",
+        "sequence-edges",
+        "chained-edges",
+        "labelled-edges",
+        "reference-edges",
+        "failure-edges",
+        "single-line-metadata"
+      ],
+      "expectedTexts": [
+        "Change request",
+        "Review change",
+        "run_checks",
+        "Approved?",
+        "Review policy",
+        "Publish change"
+      ],
+      "nativeFile": "prod_agentflow_typed_review_native.png",
+      "officialFile": "prod_agentflow_typed_review_official.png",
+      "nativeBytes": 41228,
+      "officialBytes": 41429,
+      "nativeSha256": "dee42f1a83c8b8f26196cc2ffdb3b7b047a0fcf11abd1b69d50a6c2e7c18dc5d",
+      "officialSha256": "46c5989cbaa8cc255c4ede2f6a72a5e752381605e820a928a7b998d356df507c",
+      "sourceSha256": "2ca728506265a5176eddf30be10473934d2e9dd3e56603a53596d5baefcb9a1c"
+    },
+    {
+      "id": "prod_agentflow_nested_global",
+      "kind": "agentflow",
+      "title": "Nested flows with global context",
+      "scenario": "Nested agent containers consult a shared top-level reference and hand work between flows.",
+      "layout": "dagre",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "directions",
+        "flows",
+        "nested-flows",
+        "global-nodes",
+        "reference-edges",
+        "container-metadata"
+      ],
+      "expectedTexts": [
+        "Research Team",
+        "Discovery Agent",
+        "Synthesis Agent",
+        "Shared knowledge base"
+      ],
+      "nativeFile": "prod_agentflow_nested_global_native.png",
+      "officialFile": "prod_agentflow_nested_global_official.png",
+      "nativeBytes": 52003,
+      "officialBytes": 44763,
+      "nativeSha256": "1fa32cd1be3ce2ad8125014b39b0c69ef49ade97954e829e24e9cd463229bb37",
+      "officialSha256": "93e5f5049262bb47696f5ad03281fe5d23b3af361477a01a8614e473ca4ff30e",
+      "sourceSha256": "214afe5d4864a8bf517085b36a0be4c004541fddd85f2fcf317f03031f878510"
+    },
+    {
+      "id": "prod_agentflow_collapsed_boundary",
+      "kind": "agentflow",
+      "title": "Collapsed boundary handoff",
+      "scenario": "A collapsed flow retains incoming and outgoing edges as one summary node.",
+      "layout": "dagre",
+      "aspectRatio": 1.4,
+      "features": [
+        "flows",
+        "collapsed-flows",
+        "sequence-edges",
+        "container-metadata"
+      ],
+      "expectedTexts": [
+        "Raw request",
+        "Private processing",
+        "Delivered result"
+      ],
+      "nativeFile": "prod_agentflow_collapsed_boundary_native.png",
+      "officialFile": "prod_agentflow_collapsed_boundary_official.png",
+      "nativeBytes": 38601,
+      "officialBytes": 31848,
+      "nativeSha256": "309724882615fa3d3f5c2170aaaf8346c4499ab7c56dee85a3824ea0fe431672",
+      "officialSha256": "9ac8aaf661b728279c71ed7c02cd0e0d5edeffe509423973beaf0a6b79c8a942",
+      "sourceSha256": "9af807f72ffe65d2ec6850bbe3d9d2348050500754c63c476918728b1acc6014"
+    },
+    {
+      "id": "prod_agentflow_connector_contracts",
+      "kind": "agentflow",
+      "title": "Connector reference contracts",
+      "scenario": "Bare, dotted, and URL connector references coexist with preserved connector metadata.",
+      "layout": "dagre",
+      "aspectRatio": 1.8,
+      "features": [
+        "connectors",
+        "connector-ref-bare",
+        "connector-ref-dotted",
+        "connector-ref-url",
+        "custom-metadata",
+        "single-line-metadata"
+      ],
+      "expectedTexts": [
+        "Issue API",
+        "Create issue",
+        "Read issue",
+        "Notify callback"
+      ],
+      "nativeFile": "prod_agentflow_connector_contracts_native.png",
+      "officialFile": "prod_agentflow_connector_contracts_official.png",
+      "nativeBytes": 23671,
+      "officialBytes": 21918,
+      "nativeSha256": "6c17b4ec698beab065f7d1da6dbd622bae3ff925e91ad5a6512c8dadf6cd467c",
+      "officialSha256": "a4b91342a0588fc023795d86a4ab23d4a34a6961d92603a4206a9b1ed6f5317f",
+      "sourceSha256": "5941068beec27a1b701d09df377af674bf57b263bf8f5122719c768958444704"
+    },
+    {
+      "id": "prod_agentflow_parallel_canonical",
+      "kind": "agentflow",
+      "title": "Parallel canonical tools",
+      "scenario": "A right-to-left fan-out combines an alias with canonical supported shape names.",
+      "layout": "dagre",
+      "aspectRatio": 1.7,
+      "features": [
+        "directions",
+        "canonical-shapes",
+        "fan-out",
+        "sequence-edges"
+      ],
+      "expectedTexts": [
+        "Orchestrate request",
+        "Retrieve context",
+        "Rank options",
+        "Verify result"
+      ],
+      "nativeFile": "prod_agentflow_parallel_canonical_native.png",
+      "officialFile": "prod_agentflow_parallel_canonical_official.png",
+      "nativeBytes": 45468,
+      "officialBytes": 38802,
+      "nativeSha256": "0ddae55327461947afa3cbc9ce4c2fc82782b11c474caafaaa0984cec76da47e",
+      "officialSha256": "dcab2b3e483b5dfbd6265660e077ef8c0bbdc9c0193001b5c8aa85305f9a8ddd",
+      "sourceSha256": "ae5d3432e9530cebbe5faf9995a436f2430a302adb0f269855aa7bf3cf9015d5"
+    },
+    {
+      "id": "prod_agentflow_metadata_contract",
+      "kind": "agentflow",
+      "title": "Typed metadata contract",
+      "scenario": "Single-line and multiline metadata preserve typed contracts and unknown consumer fields.",
+      "layout": "dagre",
+      "aspectRatio": 1.5,
+      "features": [
+        "multiline-metadata",
+        "single-line-metadata",
+        "custom-metadata",
+        "shape-aliases",
+        "directions"
+      ],
+      "expectedTexts": [
+        "Customer prompt",
+        "Generate answer",
+        "Send answer"
+      ],
+      "nativeFile": "prod_agentflow_metadata_contract_native.png",
+      "officialFile": "prod_agentflow_metadata_contract_official.png",
+      "nativeBytes": 39544,
+      "officialBytes": 30663,
+      "nativeSha256": "3ac704b905d41b7cfdca1d90fe55b7f62fa10259a60ac9ad69c65c78ee0a9e21",
+      "officialSha256": "29e5e289600cb16214a09a50d7d7b8c885b1b6d312f7a7225f03a5a412fc8f93",
+      "sourceSha256": "56f213ca6bb1698af2754df92b525cb37f318aa687cbd7a1430b01515f0c6896"
+    },
+    {
+      "id": "prod_agentflow_configured_accessible",
+      "kind": "agentflow",
+      "title": "Configured accessible workflow",
+      "scenario": "Frontmatter configuration, accessibility metadata, entities, comments, and Unicode render together.",
+      "layout": "dagre",
+      "aspectRatio": 1.6,
+      "features": [
+        "frontmatter-title",
+        "accessibility",
+        "comments",
+        "entities",
+        "unicode",
+        "agentflow-config",
+        "intrinsic-sizing",
+        "theme",
+        "look"
+      ],
+      "expectedTexts": [
+        "Regional workflow",
+        "München request",
+        "서울 verification",
+        "São Paulo publish"
+      ],
+      "nativeFile": "prod_agentflow_configured_accessible_native.png",
+      "officialFile": "prod_agentflow_configured_accessible_official.png",
+      "nativeBytes": 33291,
+      "officialBytes": 28314,
+      "nativeSha256": "e93236efb3d0704fea62ab44095061f801b00d45e297820f10a5c22ae72c07f8",
+      "officialSha256": "c0f2cf7babe25233689b72f90e4602655bff5db9023a88abb7376da2eb6786fa",
+      "sourceSha256": "466cbf597a9a3f74eec9d74d9de1fdab349c88d9ea03bb320c663d337304b8c7"
+    },
+    {
+      "id": "prod_agentflow_responsive_handoff",
+      "kind": "agentflow",
+      "title": "Responsive agent handoff",
+      "scenario": "Per-diagram spacing and responsive sizing apply to a horizontal multi-agent handoff.",
+      "layout": "dagre",
+      "aspectRatio": 1.8,
+      "features": [
+        "directions",
+        "flows",
+        "agentflow-config",
+        "responsive-sizing",
+        "theme",
+        "look",
+        "container-metadata"
+      ],
+      "expectedTexts": [
+        "Intake Agent",
+        "Resolution Agent",
+        "Classify request",
+        "Resolve request"
+      ],
+      "nativeFile": "prod_agentflow_responsive_handoff_native.png",
+      "officialFile": "prod_agentflow_responsive_handoff_official.png",
+      "nativeBytes": 32716,
+      "officialBytes": 28946,
+      "nativeSha256": "a0f8c94217fe2d35e0969a9aebdd8fceea4b7576957b520471fe314675b70541",
+      "officialSha256": "0d2252889f0ca8ef099b179af7fcd5f35c5e14ca73cb23ce98603d0b6564c867",
+      "sourceSha256": "c019c9f260962c340aea0b3cc652cdcb0465ea4d12b57715a21874df26dc555a"
     }
   ]
 }

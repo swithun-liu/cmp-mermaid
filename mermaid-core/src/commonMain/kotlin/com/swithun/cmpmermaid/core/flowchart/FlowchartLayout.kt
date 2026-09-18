@@ -68,6 +68,7 @@ internal class FlowchartLayout {
                     measuredLabel = textSize,
                     direction = resolvedDocument.direction,
                     defaultNodeStroke = context.theme.nodeStroke,
+                    defaultFlowContainerStroke = context.theme.flowContainerStroke,
                 )
             ) {
                 is GMResult.Ok -> shapeResult.value
@@ -285,13 +286,17 @@ internal class FlowchartLayout {
                 elements += SceneShape(
                     id = "subgraph_${subgraph.id}",
                     bounds = renderedBounds,
-                    kind = SceneShapeKind.Rectangle,
+                    kind = if (subgraph.cornerRadius > 0f) {
+                        SceneShapeKind.RoundedRectangle
+                    } else {
+                        SceneShapeKind.Rectangle
+                    },
                     fill = style.fill ?: context.theme.colorFill(subgraph.colorIndex),
                     stroke = style.stroke ?: context.theme.colorStroke(subgraph.colorIndex),
                     strokeWidth = style.strokeWidth ?: 1f,
                     strokePattern = style.strokePattern ?: SceneStrokePattern.Solid,
                     dashIntervals = style.dashIntervals,
-                    cornerRadius = 0f,
+                    cornerRadius = subgraph.cornerRadius,
                     shadow = context.theme.dropShadow.takeIf { subgraph.look == "neo" },
                     zIndex = index,
                 )

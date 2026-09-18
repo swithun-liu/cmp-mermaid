@@ -38,6 +38,7 @@ const kotlinGalleryFiles = {
   venn: ['VennDemos.kt', 'VennDemo'],
   ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
   cynefin: ['CynefinDemos.kt', 'CynefinDemo'],
+  agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -62,6 +63,7 @@ const expectedKindCounts = new Map([
   ['venn', 5],
   ['ishikawa', 5],
   ['cynefin', 5],
+  ['agentflow', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -86,6 +88,7 @@ const expectedProductionKindCounts = new Map([
   ['venn', 13],
   ['ishikawa', 13],
   ['cynefin', 13],
+  ['agentflow', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -110,6 +113,7 @@ const supportedKinds = new Set([
   'venn',
   'ishikawa',
   'cynefin',
+  'agentflow',
 ]);
 
 validateStabilityCases();
@@ -183,8 +187,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 363) {
-    throw new Error(`Expected 363 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 368) {
+    throw new Error(`Expected 368 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -204,14 +208,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 288) {
+  if (productionCases.length !== 301) {
     throw new Error(
-      `Expected 288 production cases, found ${productionCases.length}`,
+      `Expected 301 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 176) {
+  if (conformanceCases.length !== 184) {
     throw new Error(
-      `Expected 176 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 184 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -445,6 +449,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "venn",
             "ishikawa",
             "cynefin",
+            "agentflow",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -531,7 +536,27 @@ private fun addVisualParityVariation(
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "\${source.trimEnd()}\\n\$label\\n"
     "cynefin" -> insertCynefinVisualParityEvidence(source, label)
+    "agentflow" -> appendAgentflowVisualParityEvidence(
+        source = source,
+        evidenceId = evidenceId,
+        label = label,
+    )
     else -> source
+}
+
+private fun appendAgentflowVisualParityEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val anchorId = findFirstDiagramIdentifier(
+        source = source,
+        expectedRestPrefixes = listOf("[", "@", "-"),
+    )
+    return "\${source.trimEnd()}\\n" +
+        "  \$evidenceId[\\"\${escapeQuotedVisualParityLabel(label)}\\"]" +
+        "@{ shape: refdoc }\\n" +
+        "  \$anchorId -.- \$evidenceId\\n"
 }
 
 private fun insertCynefinVisualParityEvidence(

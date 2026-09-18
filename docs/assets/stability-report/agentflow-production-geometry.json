@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-18T08:44:45.853Z",
+  "inputDirectory": "captures/local/agentflow-production-final-20260918",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_agentflow_release_intelligence",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 119402,
+        "inkRatio": 0.11055740740740741,
+        "contentBounds": {
+          "x": 178,
+          "y": 22,
+          "width": 844,
+          "height": 856
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 125493,
+        "inkRatio": 0.11619722222222222,
+        "contentBounds": {
+          "x": 212,
+          "y": 47,
+          "width": 776,
+          "height": 805
+        }
+      },
+      "widthRatio": 1.0876288659793814,
+      "heightRatio": 1.0633540372670807,
+      "inkRatio": 0.9514634282390254
+    },
+    {
+      "id": "rc_agentflow_failure_recovery",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 131420,
+        "inkRatio": 0.12168518518518519,
+        "contentBounds": {
+          "x": 22,
+          "y": 282,
+          "width": 1156,
+          "height": 336
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 142283,
+        "inkRatio": 0.1317435185185185,
+        "contentBounds": {
+          "x": 48,
+          "y": 285,
+          "width": 1104,
+          "height": 330
+        }
+      },
+      "widthRatio": 1.0471014492753623,
+      "heightRatio": 1.018181818181818,
+      "inkRatio": 0.9236521580230949
+    },
+    {
+      "id": "rc_agentflow_shared_policy",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 93426,
+        "inkRatio": 0.08650555555555556,
+        "contentBounds": {
+          "x": 301,
+          "y": 20,
+          "width": 598,
+          "height": 860
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 91128,
+        "inkRatio": 0.08437777777777777,
+        "contentBounds": {
+          "x": 332,
+          "y": 43,
+          "width": 536,
+          "height": 814
+        }
+      },
+      "widthRatio": 1.1156716417910448,
+      "heightRatio": 1.0565110565110565,
+      "inkRatio": 1.0252172767974717
+    },
+    {
+      "id": "rc_agentflow_collapsed_enrichment",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 237269,
+        "inkRatio": 0.2196935185185185,
+        "contentBounds": {
+          "x": 329,
+          "y": 34,
+          "width": 542,
+          "height": 832
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 196822,
+        "inkRatio": 0.1822425925925926,
+        "contentBounds": {
+          "x": 354,
+          "y": 70,
+          "width": 492,
+          "height": 760
+        }
+      },
+      "widthRatio": 1.1016260162601625,
+      "heightRatio": 1.0947368421052632,
+      "inkRatio": 1.2055004013778947
+    },
+    {
+      "id": "rc_agentflow_regional_connector",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 149673,
+        "inkRatio": 0.1385861111111111,
+        "contentBounds": {
+          "x": 28,
+          "y": 181,
+          "width": 1143,
+          "height": 548
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 168816,
+        "inkRatio": 0.15631111111111112,
+        "contentBounds": {
+          "x": 64,
+          "y": 170,
+          "width": 1071,
+          "height": 570
+        }
+      },
+      "widthRatio": 1.0672268907563025,
+      "heightRatio": 0.9614035087719298,
+      "inkRatio": 0.8866043502985498
+    },
+    {
+      "id": "prod_agentflow_typed_review",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 109557,
+        "inkRatio": 0.10144166666666667,
+        "contentBounds": {
+          "x": 275,
+          "y": 20,
+          "width": 650,
+          "height": 860
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 103824,
+        "inkRatio": 0.09613333333333333,
+        "contentBounds": {
+          "x": 326,
+          "y": 42,
+          "width": 548,
+          "height": 816
+        }
+      },
+      "widthRatio": 1.186131386861314,
+      "heightRatio": 1.053921568627451,
+      "inkRatio": 1.0552184466019416
+    },
+    {
+      "id": "prod_agentflow_nested_global",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 118553,
+        "inkRatio": 0.1097712962962963,
+        "contentBounds": {
+          "x": 252,
+          "y": 23,
+          "width": 696,
+          "height": 854
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 114633,
+        "inkRatio": 0.10614166666666666,
+        "contentBounds": {
+          "x": 302,
+          "y": 48,
+          "width": 596,
+          "height": 804
+        }
+      },
+      "widthRatio": 1.167785234899329,
+      "heightRatio": 1.0621890547263682,
+      "inkRatio": 1.0341960866417175
+    },
+    {
+      "id": "prod_agentflow_collapsed_boundary",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 237269,
+        "inkRatio": 0.2196935185185185,
+        "contentBounds": {
+          "x": 329,
+          "y": 34,
+          "width": 542,
+          "height": 832
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 196822,
+        "inkRatio": 0.1822425925925926,
+        "contentBounds": {
+          "x": 354,
+          "y": 70,
+          "width": 492,
+          "height": 760
+        }
+      },
+      "widthRatio": 1.1016260162601625,
+      "heightRatio": 1.0947368421052632,
+      "inkRatio": 1.2055004013778947
+    },
+    {
+      "id": "prod_agentflow_connector_contracts",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 78473,
+        "inkRatio": 0.07266018518518519,
+        "contentBounds": {
+          "x": 24,
+          "y": 329,
+          "width": 1152,
+          "height": 242
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 102428,
+        "inkRatio": 0.09484074074074074,
+        "contentBounds": {
+          "x": 54,
+          "y": 309,
+          "width": 1092,
+          "height": 282
+        }
+      },
+      "widthRatio": 1.054945054945055,
+      "heightRatio": 0.8581560283687943,
+      "inkRatio": 0.7661284023899715
+    },
+    {
+      "id": "prod_agentflow_parallel_canonical",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 216162,
+        "inkRatio": 0.20015,
+        "contentBounds": {
+          "x": 131,
+          "y": 28,
+          "width": 937,
+          "height": 844
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 197082,
+        "inkRatio": 0.18248333333333333,
+        "contentBounds": {
+          "x": 185,
+          "y": 59,
+          "width": 830,
+          "height": 782
+        }
+      },
+      "widthRatio": 1.1289156626506025,
+      "heightRatio": 1.0792838874680306,
+      "inkRatio": 1.0968124942917161
+    },
+    {
+      "id": "prod_agentflow_metadata_contract",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 255928,
+        "inkRatio": 0.23697037037037036,
+        "contentBounds": {
+          "x": 272,
+          "y": 35,
+          "width": 656,
+          "height": 830
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 216147,
+        "inkRatio": 0.2001361111111111,
+        "contentBounds": {
+          "x": 316,
+          "y": 71,
+          "width": 568,
+          "height": 758
+        }
+      },
+      "widthRatio": 1.1549295774647887,
+      "heightRatio": 1.0949868073878628,
+      "inkRatio": 1.184046042739432
+    },
+    {
+      "id": "prod_agentflow_configured_accessible",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 69251,
+        "inkRatio": 0.0641212962962963,
+        "contentBounds": {
+          "x": 48,
+          "y": 369,
+          "width": 1103,
+          "height": 169
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 82911,
+        "inkRatio": 0.07676944444444445,
+        "contentBounds": {
+          "x": 70,
+          "y": 350,
+          "width": 1060,
+          "height": 206
+        }
+      },
+      "widthRatio": 1.040566037735849,
+      "heightRatio": 0.8203883495145631,
+      "inkRatio": 0.8352450217703321
+    },
+    {
+      "id": "prod_agentflow_responsive_handoff",
+      "kind": "agentflow",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 103509,
+        "inkRatio": 0.09584166666666667,
+        "contentBounds": {
+          "x": 25,
+          "y": 146,
+          "width": 1150,
+          "height": 608
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 109904,
+        "inkRatio": 0.10176296296296296,
+        "contentBounds": {
+          "x": 55,
+          "y": 160,
+          "width": 1090,
+          "height": 580
+        }
+      },
+      "widthRatio": 1.055045871559633,
+      "heightRatio": 1.0482758620689656,
+      "inkRatio": 0.9418128548551464
+    }
+  ]
+}

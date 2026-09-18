@@ -9,7 +9,7 @@ export const internalRegistryIds = Object.freeze(['error', '---', 'info']);
 export const diagramFamilies = Object.freeze([
   family('agentflow', 'Agentflow', 'agentflow.md', ['agentflow'], [
     header('agentflow-beta', 'agentflow'),
-  ]),
+  ], true),
   family('architecture', 'Architecture', 'architecture.md', ['architecture'], [
     header('architecture-beta', 'architecture'),
     header('architecture', 'architecture'),

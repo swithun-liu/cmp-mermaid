@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 5,632 source cases and
-11,264 screenshots from the large-scale
+This index contains 5,888 source cases and
+11,776 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 22 implemented families have completed the replacement detail gate and
+All 23 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`5,632/5,632` pairs: `5,145 automatic pass / 487 manually reviewed /
-0 unresolved` across 352 contact sheets.
+`5,888/5,888` pairs: `5,401 automatic pass / 487 manually reviewed /
+0 unresolved` across 368 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -95,6 +95,51 @@ the sheets. All 16 pages below were manually reviewed.
 ![Cynefin visual parity page 15](cynefin-visual-parity-15.jpg)
 
 ![Cynefin visual parity page 16](cynefin-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Agentflow - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.040-1.222`, height `0.854-1.086`, foreground ink `0.773-1.287`.
+Raw [detail](agentflow-visual-parity-detail.json) and
+[geometry](agentflow-visual-parity-geometry.json) reports are published with
+the sheets. Both renderers explicitly use Dagre; this evidence does not claim
+that Dagre is equivalent to Mermaid's default ELK layout. All 16 pages below
+were manually reviewed.
+
+![Agentflow visual parity page 01](agentflow-visual-parity-01.jpg)
+
+![Agentflow visual parity page 02](agentflow-visual-parity-02.jpg)
+
+![Agentflow visual parity page 03](agentflow-visual-parity-03.jpg)
+
+![Agentflow visual parity page 04](agentflow-visual-parity-04.jpg)
+
+![Agentflow visual parity page 05](agentflow-visual-parity-05.jpg)
+
+![Agentflow visual parity page 06](agentflow-visual-parity-06.jpg)
+
+![Agentflow visual parity page 07](agentflow-visual-parity-07.jpg)
+
+![Agentflow visual parity page 08](agentflow-visual-parity-08.jpg)
+
+![Agentflow visual parity page 09](agentflow-visual-parity-09.jpg)
+
+![Agentflow visual parity page 10](agentflow-visual-parity-10.jpg)
+
+![Agentflow visual parity page 11](agentflow-visual-parity-11.jpg)
+
+![Agentflow visual parity page 12](agentflow-visual-parity-12.jpg)
+
+![Agentflow visual parity page 13](agentflow-visual-parity-13.jpg)
+
+![Agentflow visual parity page 14](agentflow-visual-parity-14.jpg)
+
+![Agentflow visual parity page 15](agentflow-visual-parity-15.jpg)
+
+![Agentflow visual parity page 16](agentflow-visual-parity-16.jpg)
 
 </details>
 

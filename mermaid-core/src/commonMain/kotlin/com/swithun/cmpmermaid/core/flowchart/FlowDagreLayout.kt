@@ -456,10 +456,13 @@ internal object FlowDagreLayout {
                 toward = points[points.lastIndex - 1],
             )
         }
+        // Mermaid.js 12.0.0: rendering-util/rendering-elements/edges.js
+        // -> insertEdge. Marker offsets require a non-zero terminal segment.
+        val routedPoints = points.removeAdjacentDuplicates()
         val labelAnchor = edge.x?.let { x ->
             edge.y?.let { y -> ScenePoint(x + offsetX, y + offsetY) }
-        } ?: points.halfLengthPoint()
-        result[index] = FlowRoutedEdge(points, labelAnchor)
+        } ?: routedPoints.halfLengthPoint()
+        result[index] = FlowRoutedEdge(routedPoints, labelAnchor)
     }
 
     private fun selfLoopSide(
@@ -657,4 +660,9 @@ internal object FlowDagreLayout {
         }
         return last()
     }
+
+    private fun List<ScenePoint>.removeAdjacentDuplicates(): List<ScenePoint> =
+        filterIndexed { index, point ->
+            index == 0 || point != this[index - 1]
+        }
 }

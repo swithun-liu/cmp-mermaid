@@ -23,9 +23,24 @@ import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidTextPort
  * only converts Mermaid renderer data to the platform-neutral SceneGraph model.
  */
 internal object FlowchartDataAdapter {
-    fun convert(db: FlowDb): GMResult<FlowchartDocument, MermaidError> {
-        val data = db.getData()
-        val config = db.config()
+    fun convert(db: FlowDb): GMResult<FlowchartDocument, MermaidError> =
+        convert(
+            data = db.getData(),
+            config = db.config(),
+            directionSource = db.getDirection(),
+            titleSource = db.diagramTitle,
+            accessibilityTitleSource = db.accessibilityTitle,
+            accessibilityDescriptionSource = db.accessibilityDescription,
+        )
+
+    fun convert(
+        data: com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidFlowLayoutData,
+        config: MermaidRenderOptions,
+        directionSource: String?,
+        titleSource: String?,
+        accessibilityTitleSource: String?,
+        accessibilityDescriptionSource: String?,
+    ): GMResult<FlowchartDocument, MermaidError> {
         val nodes = linkedMapOf<String, FlowNode>()
         data.nodes.filterNot { it.isGroup }.forEach { node ->
             val shape = when (val mapped = shapeKind(node.shape)) {
@@ -120,6 +135,9 @@ internal object FlowchartDataAdapter {
                         parentId = group.parentId,
                         padding = group.padding,
                         look = group.look,
+                        // Mermaid.js 12.0.0:
+                        // rendering-util/rendering-elements/clusters.js -> flowGroup.
+                        cornerRadius = if (group.shape == "flowGroup") 10f else 0f,
                         inlineStyle = style,
                         metadata = group.metadata,
                         colorIndex = group.colorIndex,
@@ -186,18 +204,18 @@ internal object FlowchartDataAdapter {
                 )
             }
         }
-        val title = when (val rendered = renderOptional(db.diagramTitle, config)) {
+        val title = when (val rendered = renderOptional(titleSource, config)) {
             is GMResult.Ok -> rendered.value
             is GMResult.Err -> return rendered
         }
         val accessibilityTitle = when (
-            val rendered = renderOptional(db.accessibilityTitle, config)
+            val rendered = renderOptional(accessibilityTitleSource, config)
         ) {
             is GMResult.Ok -> rendered.value
             is GMResult.Err -> return rendered
         }
         val accessibilityDescription = when (
-            val rendered = renderOptional(db.accessibilityDescription, config)
+            val rendered = renderOptional(accessibilityDescriptionSource, config)
         ) {
             is GMResult.Ok -> rendered.value
             is GMResult.Err -> return rendered
@@ -205,7 +223,7 @@ internal object FlowchartDataAdapter {
 
         return GMResult.Ok(
             FlowchartDocument(
-                direction = direction(db.getDirection()) ?: FlowDirection.TopToBottom,
+                direction = direction(directionSource) ?: FlowDirection.TopToBottom,
                 nodes = nodes,
                 edges = edges,
                 subgraphs = subgraphs,

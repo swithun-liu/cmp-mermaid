@@ -247,6 +247,7 @@ internal object MermaidPreprocessor {
         val sankey = map.map("sankey")
         val ishikawa = map.map("ishikawa")
         val cynefin = map.map("cynefin")
+        val agentflow = map.map("agentflow")
         val treemap = map.map("treemap")
         val venn = map.map("venn")
         val kanban = map.map("kanban")
@@ -564,6 +565,46 @@ internal object MermaidPreprocessor {
         val wrappingWidth = float(flowchart, "wrappingWidth", "flowchart.wrappingWidth")
         val minNodeWidth = float(flowchart, "minNodeWidth", "flowchart.minNodeWidth")
         val padding = float(flowchart, "padding", "flowchart.padding")
+        val agentflowUseMaxWidth =
+            boolean(agentflow, "useMaxWidth", "agentflow.useMaxWidth")
+        val agentflowTheme = appearanceString(agentflow, "theme", "agentflow.theme")
+            ?.takeIf(USABLE_THEMES::contains)
+        val agentflowLook = appearanceString(agentflow, "look", "agentflow.look")
+            ?.takeIf(USABLE_LOOKS::contains)
+        val agentflowTitleTopMargin =
+            float(agentflow, "titleTopMargin", "agentflow.titleTopMargin")
+        val agentflowDiagramPadding =
+            float(agentflow, "diagramPadding", "agentflow.diagramPadding")
+        val agentflowNodeSpacing =
+            float(agentflow, "nodeSpacing", "agentflow.nodeSpacing")
+        val agentflowRankSpacing =
+            float(agentflow, "rankSpacing", "agentflow.rankSpacing")
+        val agentflowWrappingWidth =
+            float(agentflow, "wrappingWidth", "agentflow.wrappingWidth")
+        val agentflowMinNodeWidth =
+            float(agentflow, "minNodeWidth", "agentflow.minNodeWidth")
+        listOf(
+            "agentflow.titleTopMargin" to agentflowTitleTopMargin,
+            "agentflow.diagramPadding" to agentflowDiagramPadding,
+            "agentflow.nodeSpacing" to agentflowNodeSpacing,
+            "agentflow.rankSpacing" to agentflowRankSpacing,
+        ).forEach { (path, value) ->
+            if (value != null && (!value.isFinite() || value < 0f)) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must be non-negative",
+                )
+            }
+        }
+        listOf(
+            "agentflow.wrappingWidth" to agentflowWrappingWidth,
+            "agentflow.minNodeWidth" to agentflowMinNodeWidth,
+        ).forEach { (path, value) ->
+            if (value != null && (!value.isFinite() || value <= 0f)) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must be positive",
+                )
+            }
+        }
         val classPadding = float(classDiagram, "padding", "class.padding")
         val classHideEmptyMembersBox = boolean(
             classDiagram,
@@ -1546,6 +1587,19 @@ internal object MermaidPreprocessor {
                         disableMulticolor = timelineDisableMulticolor,
                     )
                 },
+                agentflow = agentflow?.let {
+                    MermaidAgentflowConfigOverride(
+                        useMaxWidth = agentflowUseMaxWidth,
+                        theme = agentflowTheme,
+                        look = agentflowLook,
+                        titleTopMargin = agentflowTitleTopMargin,
+                        diagramPadding = agentflowDiagramPadding,
+                        nodeSpacing = agentflowNodeSpacing,
+                        rankSpacing = agentflowRankSpacing,
+                        wrappingWidth = agentflowWrappingWidth,
+                        minNodeWidth = agentflowMinNodeWidth,
+                    )
+                },
                 pieTextPosition = pieTextPosition,
                 pieDonutHole = pieDonutHole,
                 pieLegendPosition = pieLegendPosition,
@@ -1891,6 +1945,7 @@ internal data class MermaidConfigOverride(
     val ganttUseWidth: Float? = null,
     val journey: MermaidJourneyConfigOverride? = null,
     val timeline: MermaidTimelineConfigOverride? = null,
+    val agentflow: MermaidAgentflowConfigOverride? = null,
     val pieTextPosition: Float? = null,
     val pieDonutHole: Float? = null,
     val pieLegendPosition: String? = null,
@@ -1978,6 +2033,11 @@ internal data class MermaidConfigOverride(
             overrides.timeline != null ->
                 timeline?.merge(overrides.timeline) ?: overrides.timeline
             else -> timeline
+        },
+        agentflow = when {
+            overrides.agentflow != null ->
+                agentflow?.merge(overrides.agentflow) ?: overrides.agentflow
+            else -> agentflow
         },
         pieTextPosition = overrides.pieTextPosition ?: pieTextPosition,
         pieDonutHole = overrides.pieDonutHole ?: pieDonutHole,
@@ -2128,6 +2188,7 @@ internal data class MermaidConfigOverride(
                 ganttUseWidth = ganttUseWidth ?: options.ganttUseWidth,
                 journey = journey?.applyTo(options.journey) ?: options.journey,
                 timeline = timeline?.applyTo(options.timeline) ?: options.timeline,
+                agentflow = agentflow?.applyTo(options.agentflow) ?: options.agentflow,
                 pieTextPosition = pieTextPosition ?: options.pieTextPosition,
                 pieDonutHole = pieDonutHole ?: options.pieDonutHole,
                 pieLegendPosition = pieLegendPosition ?: options.pieLegendPosition,
@@ -2168,6 +2229,43 @@ internal data class MermaidConfigOverride(
             ),
         )
     }
+}
+
+internal data class MermaidAgentflowConfigOverride(
+    val useMaxWidth: Boolean? = null,
+    val theme: String? = null,
+    val look: String? = null,
+    val titleTopMargin: Float? = null,
+    val diagramPadding: Float? = null,
+    val nodeSpacing: Float? = null,
+    val rankSpacing: Float? = null,
+    val wrappingWidth: Float? = null,
+    val minNodeWidth: Float? = null,
+) {
+    fun merge(overrides: MermaidAgentflowConfigOverride): MermaidAgentflowConfigOverride =
+        MermaidAgentflowConfigOverride(
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            theme = overrides.theme ?: theme,
+            look = overrides.look ?: look,
+            titleTopMargin = overrides.titleTopMargin ?: titleTopMargin,
+            diagramPadding = overrides.diagramPadding ?: diagramPadding,
+            nodeSpacing = overrides.nodeSpacing ?: nodeSpacing,
+            rankSpacing = overrides.rankSpacing ?: rankSpacing,
+            wrappingWidth = overrides.wrappingWidth ?: wrappingWidth,
+            minNodeWidth = overrides.minNodeWidth ?: minNodeWidth,
+        )
+
+    fun applyTo(options: MermaidAgentflowOptions): MermaidAgentflowOptions = options.copy(
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        theme = theme ?: options.theme,
+        look = look ?: options.look,
+        titleTopMargin = titleTopMargin ?: options.titleTopMargin,
+        diagramPadding = diagramPadding ?: options.diagramPadding,
+        nodeSpacing = nodeSpacing ?: options.nodeSpacing,
+        rankSpacing = rankSpacing ?: options.rankSpacing,
+        wrappingWidth = wrappingWidth ?: options.wrappingWidth,
+        minNodeWidth = minNodeWidth ?: options.minNodeWidth,
+    )
 }
 
 internal data class MermaidPacketConfigOverride(

@@ -1,5 +1,6 @@
 package com.swithun.cmpmermaid.core
 
+import com.swithun.cmpmermaid.core.agentflow.AgentflowPlugin
 import com.swithun.cmpmermaid.core.classdiagram.ClassPlugin
 import com.swithun.cmpmermaid.core.cynefin.CynefinPlugin
 import com.swithun.cmpmermaid.core.erdiagram.ErPlugin
@@ -45,6 +46,7 @@ interface MermaidDiagramPlugin {
 class MermaidEngine(
     plugins: List<MermaidDiagramPlugin> = listOf(
         FlowchartPlugin(),
+        AgentflowPlugin(),
         SequencePlugin(),
         ClassPlugin(),
         StatePlugin(),
@@ -112,6 +114,23 @@ class MermaidEngine(
                     look = resolvedOptions.timeline.look ?: resolvedOptions.look,
                     layout = resolvedOptions.timeline.layout ?: resolvedOptions.layout,
                 )
+            header == "agentflow-beta" -> resolvedOptions.agentflow.let { agentflow ->
+                resolvedOptions.copy(
+                    themeName = agentflow.theme
+                        ?: resolvedOptions.themeName
+                        ?: MermaidThemePreset.ReduxColor.configName.takeIf {
+                            context.theme == MermaidTheme.FlowchartDefault
+                        },
+                    look = agentflow.look ?: resolvedOptions.look,
+                    titleTopMargin = agentflow.titleTopMargin,
+                    diagramPadding = agentflow.diagramPadding,
+                    nodeSpacing = agentflow.nodeSpacing,
+                    rankSpacing = agentflow.rankSpacing,
+                    wrappingWidth = agentflow.wrappingWidth,
+                    minNodeWidth = agentflow.minNodeWidth,
+                    flowchartPadding = 8f,
+                )
+            }
             header == "venn-beta" &&
                 resolvedOptions.themeName == null &&
                 context.theme == MermaidTheme.FlowchartDefault ->
@@ -166,7 +185,12 @@ class MermaidEngine(
         val plugin = pluginsByHeader[header]
             ?: return GMResult.Err(MermaidError.UnsupportedDiagram(header.ifEmpty { "<empty>" }))
 
-        val parserSource = MermaidPreprocessor.encodeEntities(preprocessed.code.cleaned) + "\n"
+        val sourceForParser = if (plugin.id == "agentflow") {
+            preprocessed.code.withComments
+        } else {
+            preprocessed.code.cleaned
+        }
+        val parserSource = MermaidPreprocessor.encodeEntities(sourceForParser) + "\n"
         return plugin.compile(
             source = parserSource,
             context = context.copy(

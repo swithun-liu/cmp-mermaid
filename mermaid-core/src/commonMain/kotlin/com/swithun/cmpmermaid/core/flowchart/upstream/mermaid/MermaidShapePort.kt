@@ -136,6 +136,7 @@ internal object MermaidShapePort {
         measuredLabel: SceneSize,
         direction: FlowDirection,
         defaultNodeStroke: SceneColor,
+        defaultFlowContainerStroke: SceneColor = defaultNodeStroke,
     ): GMResult<MermaidShapeLayout, MermaidError> {
         val label = measuredLabel.copy(
             width = if (node.label.isNotEmpty()) {
@@ -149,7 +150,13 @@ internal object MermaidShapePort {
                 SceneShapeKind.Rectangle -> rectangle(label, node.padding, node.look)
                 SceneShapeKind.RoundedRectangle -> roundedRectangle(label, node.padding)
                 SceneShapeKind.CollapsedGroup ->
-                    collapsedGroup(label, node.padding, defaultNodeStroke)
+                    collapsedGroup(
+                        label = label,
+                        padding = node.padding,
+                        defaultNodeStroke = defaultNodeStroke,
+                        flowContainerStroke = defaultFlowContainerStroke,
+                        isFlowContainer = node.metadata["containerType"] == "flow",
+                    )
                 SceneShapeKind.Stadium -> stadium(label, node.padding, node.look)
                 SceneShapeKind.Subroutine -> subroutine(label, node.padding, node.look)
                 SceneShapeKind.Cylinder -> cylinder(label, node.padding, node.look, lined = false)
@@ -242,6 +249,8 @@ internal object MermaidShapePort {
         label: SceneSize,
         padding: Float,
         defaultNodeStroke: SceneColor,
+        flowContainerStroke: SceneColor,
+        isFlowContainer: Boolean,
     ): MermaidShapeLayout {
         val width = max(label.width + padding * 2f, 80f)
         val height = label.height + 8f + 20f + padding * 2f
@@ -255,6 +264,9 @@ internal object MermaidShapePort {
                     width / 2f - 8f to separatorY,
                     strokeWidth = 0.75f,
                     dashIntervals = listOf(3f, 3f),
+                    // Mermaid.js 12.0.0: rendering-elements/shapes/collapsedGroup.ts
+                    // -> getCollapsedStyle. Agentflow explicitly selects the flow style.
+                    strokeColor = flowContainerStroke.takeIf { isFlowContainer },
                 ),
             )
             for (index in -1..1) {
@@ -267,10 +279,14 @@ internal object MermaidShapePort {
                             radiusY = 2.5f,
                         ),
                         fill = SceneShapePaint.Stroke,
-                        stroke = SceneShapePaint.Stroke,
-                        strokeWidth = 2f,
-                        opacity = 0.6f,
-                        strokeColor = defaultNodeStroke,
+                        stroke = if (isFlowContainer) {
+                            SceneShapePaint.None
+                        } else {
+                            SceneShapePaint.Stroke
+                        },
+                        strokeWidth = 2f.takeUnless { isFlowContainer },
+                        opacity = if (isFlowContainer) 0.5f else 0.6f,
+                        strokeColor = defaultNodeStroke.takeUnless { isFlowContainer },
                     ),
                 )
             }

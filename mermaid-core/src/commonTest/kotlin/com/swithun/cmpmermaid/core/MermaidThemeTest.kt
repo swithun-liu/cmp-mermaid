@@ -83,6 +83,39 @@ class MermaidThemeTest {
     }
 
     @Test
+    fun matchesAndOverridesMermaid12AgentflowContainerStroke() {
+        val expected = mapOf(
+            MermaidThemePreset.Default to 0xFFEEEEBC,
+            MermaidThemePreset.Dark to 0xFF2F2F2F,
+            MermaidThemePreset.Forest to 0xFFB4E599,
+            MermaidThemePreset.Neutral to 0xFFE3E3E3,
+            MermaidThemePreset.Base to 0xFFDDBBEE,
+            MermaidThemePreset.Neo to 0xFFB3B3B3,
+            MermaidThemePreset.NeoDark to 0xFF2F2F2F,
+            MermaidThemePreset.Redux to 0xFFB3B3B3,
+            MermaidThemePreset.ReduxColor to 0xFFB3B3B3,
+            MermaidThemePreset.ReduxDark to 0xFF2F2F2F,
+            MermaidThemePreset.ReduxDarkColor to 0xFF2F2F2F,
+        )
+
+        expected.forEach { (preset, color) ->
+            assertEquals(
+                SceneColor(color),
+                MermaidTheme.preset(preset).flowContainerStroke,
+                preset.name,
+            )
+        }
+
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.MermaidDefault,
+                values = mapOf("flowContainerStroke" to "#102030"),
+            ),
+        ).value
+        assertEquals(SceneColor(0xFF102030), customized.flowContainerStroke)
+    }
+
+    @Test
     fun matchesMermaid12DefaultXyChartTextColors() {
         val expected = SceneColor(0xFF131300)
         val xyChart = MermaidTheme.preset(MermaidThemePreset.Default).xyChart

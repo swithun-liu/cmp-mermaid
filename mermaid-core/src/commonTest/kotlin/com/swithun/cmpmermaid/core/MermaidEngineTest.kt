@@ -301,6 +301,30 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersAgentflowBetaThroughRegisteredPlugin() {
+        val result = engine.render(
+            """
+                agentflow-beta LR
+                  input["Question"]@{ shape: input }
+                  tool["Search"]@{ shape: tool }
+                  input --> tool
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(scene.elements.filterIsInstance<SceneShape>().any { shape ->
+            shape.id == "input" && shape.kind == SceneShapeKind.Parallelogram
+        })
+        assertTrue(scene.elements.filterIsInstance<SceneShape>().any { shape ->
+            shape.id == "tool" && shape.kind == SceneShapeKind.Subroutine
+        })
+        assertTrue(scene.elements.filterIsInstance<ScenePath>().any { path ->
+            path.arrowEnd == SceneArrowHead.Triangle
+        })
+    }
+
+    @Test
     fun rejectsEffectiveHandDrawnLookForExistingDiagramTypes() {
         val result = engine.render(
             """
@@ -660,6 +684,83 @@ class MermaidEngineTest {
         assertEquals("neo", defaultContext?.options?.look)
         assertEquals("default", explicitContext?.options?.themeName)
         assertEquals("classic", explicitContext?.options?.look)
+    }
+
+    @Test
+    fun scopesAgentflowAppearanceAndLayoutConfiguration() {
+        val capturedContexts = mutableListOf<MermaidRenderContext>()
+        val capturingPlugin = object : MermaidDiagramPlugin {
+            override val id: String = "agentflow"
+            override val headers: Set<String> = setOf("agentflow-beta")
+
+            override fun compile(
+                source: String,
+                context: MermaidRenderContext,
+            ): GMResult<MermaidScene, MermaidError> {
+                capturedContexts += context
+                return GMResult.Ok(
+                    MermaidScene(
+                        width = 1f,
+                        height = 1f,
+                        background = context.theme.background,
+                        elements = emptyList(),
+                    ),
+                )
+            }
+        }
+        val agentflowEngine = MermaidEngine(listOf(capturingPlugin))
+
+        assertIs<GMResult.Ok<MermaidScene>>(
+            agentflowEngine.render("agentflow-beta TB\n  a --> b", context),
+        )
+        assertIs<GMResult.Ok<MermaidScene>>(
+            agentflowEngine.render(
+                """
+                    ---
+                    config:
+                      theme: dark
+                      look: classic
+                      flowchart:
+                        nodeSpacing: 999
+                        rankSpacing: 998
+                        wrappingWidth: 997
+                        minNodeWidth: 996
+                      agentflow:
+                        theme: forest
+                        look: neo
+                        titleTopMargin: 31
+                        diagramPadding: 17
+                        nodeSpacing: 71
+                        rankSpacing: 73
+                        wrappingWidth: 175
+                        minNodeWidth: 145
+                    ---
+                    agentflow-beta LR
+                      a --> b
+                """.trimIndent(),
+                context,
+            ),
+        )
+
+        val defaults = capturedContexts[0].options
+        assertEquals("redux-color", defaults.themeName)
+        assertEquals("neo", defaults.look)
+        assertEquals(25f, defaults.titleTopMargin)
+        assertEquals(8f, defaults.diagramPadding)
+        assertEquals(50f, defaults.nodeSpacing)
+        assertEquals(50f, defaults.rankSpacing)
+        assertEquals(120f, defaults.wrappingWidth)
+        assertEquals(120f, defaults.minNodeWidth)
+
+        val configured = capturedContexts[1].options
+        assertEquals("forest", configured.themeName)
+        assertEquals("neo", configured.look)
+        assertEquals(31f, configured.titleTopMargin)
+        assertEquals(17f, configured.diagramPadding)
+        assertEquals(71f, configured.nodeSpacing)
+        assertEquals(73f, configured.rankSpacing)
+        assertEquals(175f, configured.wrappingWidth)
+        assertEquals(145f, configured.minNodeWidth)
     }
 
     @Test

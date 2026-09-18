@@ -24,6 +24,7 @@ export const kinds = [
   'venn',
   'ishikawa',
   'cynefin',
+  'agentflow',
 ];
 
 export const casesPerKind = 256;
@@ -168,9 +169,19 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}\n${label}\n`;
     case 'cynefin':
       return insertCynefinEvidence(source, label);
+    case 'agentflow':
+      return appendAgentflowEvidence(source, evidenceId, label);
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
+}
+
+function appendAgentflowEvidence(source, evidenceId, label) {
+  const anchorId = findFirstDiagramIdentifier(source, ['[', '@', '-']);
+  return `${source.trimEnd()}
+  ${evidenceId}["${escapeQuotedLabel(label)}"]@{ shape: refdoc }
+  ${anchorId} -.- ${evidenceId}
+`;
 }
 
 function insertCynefinEvidence(source, label) {

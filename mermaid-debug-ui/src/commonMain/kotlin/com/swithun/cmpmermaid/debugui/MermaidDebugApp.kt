@@ -102,6 +102,7 @@ private enum class DebugScreen {
     Venn,
     Ishikawa,
     Cynefin,
+    Agentflow,
     Playground,
     LoadTest,
 }
@@ -251,6 +252,12 @@ private val destinations = listOf(
         DebugScreen.Cynefin,
         cynefinDiagramDocsSpec,
         "Five decision domains with organic boundaries and transitions",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Agentflow,
+        agentflowDiagramDocsSpec,
+        "Agent workflows with typed nodes, nested flows, and connectors",
         DiagramStability.Beta,
     ),
 )

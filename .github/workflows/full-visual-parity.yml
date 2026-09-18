@@ -73,6 +73,7 @@ jobs:
           - venn
           - ishikawa
           - cynefin
+          - agentflow
 
     steps:
       - name: Checkout

@@ -91,6 +91,7 @@ internal data class FlowSubgraph(
     val parentId: String? = null,
     val padding: Float,
     val look: String,
+    val cornerRadius: Float = 0f,
     val inlineStyle: FlowNodeStyle? = null,
     val metadata: Map<String, String> = emptyMap(),
     val colorIndex: Int? = null,

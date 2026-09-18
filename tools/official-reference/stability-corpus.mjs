@@ -3458,4 +3458,150 @@ cynefin-beta
     "São Paulo incident"
 `,
   },
+  {
+    id: 'rc_agentflow_release_intelligence',
+    kind: 'agentflow',
+    title: 'Release intelligence workflow',
+    scenario: 'Two collaborating flows use typed work nodes and a top-level handoff.',
+    layout: 'dagre',
+    aspectRatio: 4 / 3,
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta TB
+  request["Release request"]@{ shape: input }
+  flow planner["Planning Agent"]
+    inspect["Inspect changes"]@{ shape: task }
+    classify["Classify risk"]@{ shape: decision }
+    inspect --> classify
+  end
+  flow publisher["Publishing Agent"]
+    package["Build artifacts"]@{ shape: tool }
+    announce["Publish release"]@{ shape: action }
+    package --> announce
+  end
+  request --> planner --> publisher
+`,
+  },
+  {
+    id: 'rc_agentflow_failure_recovery',
+    kind: 'agentflow',
+    title: 'Failure recovery workflow',
+    scenario: 'Labelled sequence, failure, and reference edges remain visually distinct.',
+    layout: 'dagre',
+    aspectRatio: 1.5,
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta LR
+  validate["Validate package"]@{ shape: decision }
+  deploy["Deploy"]@{ shape: action }
+  repair["Repair package"]@{ shape: task }
+  runbook["Recovery runbook"]@{ shape: refdoc }
+  validate -- valid --> deploy
+  validate -- invalid --> repair
+  repair --x validate
+  repair -.- runbook
+`,
+  },
+  {
+    id: 'rc_agentflow_shared_policy',
+    kind: 'agentflow',
+    title: 'Shared policy reference',
+    scenario: 'Nested agents reference a global policy without moving it into either flow.',
+    layout: 'dagre',
+    aspectRatio: 4 / 3,
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta TB
+  global
+    policy["Deployment policy"]@{ shape: refdoc }
+  end
+  flow delivery["Delivery Team"]
+    flow verifier["Verification Agent"]
+      verify["Verify evidence"]@{ shape: task }
+      verify -.- policy
+    end
+    flow approver["Approval Agent"]
+      approve["Approve release"]@{ shape: decision }
+      approve -.- policy
+    end
+    verifier --> approver
+  end
+`,
+  },
+  {
+    id: 'rc_agentflow_collapsed_enrichment',
+    kind: 'agentflow',
+    title: 'Collapsed enrichment flow',
+    scenario: 'Edges crossing an intentionally collapsed flow terminate at its summary node.',
+    layout: 'dagre',
+    aspectRatio: 1.4,
+    source: String.raw`
+---
+config:
+  layout: dagre
+  theme: default
+  look: classic
+---
+agentflow-beta TB
+  source["Incoming record"]@{ shape: input }
+  flow enrichment["Enrichment Agent"]
+    normalize["Normalize fields"]@{ shape: task }
+    lookup["Lookup context"]@{ shape: tool }
+    normalize --> lookup
+  end
+  enrichment@{ view: "collapsed" }
+  sink["Store result"]@{ shape: action }
+  source --> normalize
+  lookup --> sink
+`,
+  },
+  {
+    id: 'rc_agentflow_regional_connector',
+    kind: 'agentflow',
+    title: 'Regional connector workflow',
+    scenario: 'Configuration, metadata, accessibility text, entities, and multilingual labels share one diagram.',
+    layout: 'dagre',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+title: Regional support workflow
+config:
+  layout: dagre
+  theme: neutral
+  look: classic
+  agentflow:
+    nodeSpacing: 62
+    rankSpacing: 74
+    useMaxWidth: false
+---
+agentflow-beta LR
+  accTitle: Regional support workflow
+  accDescr: International requests are sent to an external support connector
+  connector support["Support API"]
+  support@{ protocol: "http", endpoint: "https://example.com/support" }
+  request["東京 &amp; 서울 request"]@{ shape: input, value: "São Paulo" }
+  create["create_ticket"]@{
+    shape: tool
+    connectorRef: "support.create"
+    params: "request :: String"
+    returns: "Ticket"
+  }
+  request --> create
+`,
+  },
 ];

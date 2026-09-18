@@ -3745,6 +3745,162 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_release_intelligence",
+        diagramId = "agentflow",
+        title = "Release intelligence workflow",
+        scenario = "Two collaborating flows use typed work nodes and a top-level handoff.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              request["Release request"]@{ shape: input }
+              flow planner["Planning Agent"]
+                inspect["Inspect changes"]@{ shape: task }
+                classify["Classify risk"]@{ shape: decision }
+                inspect --> classify
+              end
+              flow publisher["Publishing Agent"]
+                package["Build artifacts"]@{ shape: tool }
+                announce["Publish release"]@{ shape: action }
+                package --> announce
+              end
+              request --> planner --> publisher
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_failure_recovery",
+        diagramId = "agentflow",
+        title = "Failure recovery workflow",
+        scenario = "Labelled sequence, failure, and reference edges remain visually distinct.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta LR
+              validate["Validate package"]@{ shape: decision }
+              deploy["Deploy"]@{ shape: action }
+              repair["Repair package"]@{ shape: task }
+              runbook["Recovery runbook"]@{ shape: refdoc }
+              validate -- valid --> deploy
+              validate -- invalid --> repair
+              repair --x validate
+              repair -.- runbook
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_shared_policy",
+        diagramId = "agentflow",
+        title = "Shared policy reference",
+        scenario = "Nested agents reference a global policy without moving it into either flow.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              global
+                policy["Deployment policy"]@{ shape: refdoc }
+              end
+              flow delivery["Delivery Team"]
+                flow verifier["Verification Agent"]
+                  verify["Verify evidence"]@{ shape: task }
+                  verify -.- policy
+                end
+                flow approver["Approval Agent"]
+                  approve["Approve release"]@{ shape: decision }
+                  approve -.- policy
+                end
+                verifier --> approver
+              end
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_collapsed_enrichment",
+        diagramId = "agentflow",
+        title = "Collapsed enrichment flow",
+        scenario = "Edges crossing an intentionally collapsed flow terminate at its summary node.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              source["Incoming record"]@{ shape: input }
+              flow enrichment["Enrichment Agent"]
+                normalize["Normalize fields"]@{ shape: task }
+                lookup["Lookup context"]@{ shape: tool }
+                normalize --> lookup
+              end
+              enrichment@{ view: "collapsed" }
+              sink["Store result"]@{ shape: action }
+              source --> normalize
+              lookup --> sink
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_regional_connector",
+        diagramId = "agentflow",
+        title = "Regional connector workflow",
+        scenario = "Configuration, metadata, accessibility text, entities, and multilingual labels share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Regional support workflow
+            config:
+              layout: dagre
+              theme: neutral
+              look: classic
+              agentflow:
+                nodeSpacing: 62
+                rankSpacing: 74
+                useMaxWidth: false
+            ---
+            agentflow-beta LR
+              accTitle: Regional support workflow
+              accDescr: International requests are sent to an external support connector
+              connector support["Support API"]
+              support@{ protocol: "http", endpoint: "https://example.com/support" }
+              request["東京 &amp; 서울 request"]@{ shape: input, value: "São Paulo" }
+              create["create_ticket"]@{
+                shape: tool
+                connectorRef: "support.create"
+                params: "request :: String"
+                returns: "Ticket"
+              }
+              request --> create
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -7474,6 +7630,162 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
                 "서울 runbook"
               chaotic
                 "São Paulo incident"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_release_intelligence",
+        diagramId = "agentflow",
+        title = "Release intelligence workflow",
+        scenario = "Two collaborating flows use typed work nodes and a top-level handoff.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              request["Release request"]@{ shape: input }
+              flow planner["Planning Agent"]
+                inspect["Inspect changes"]@{ shape: task }
+                classify["Classify risk"]@{ shape: decision }
+                inspect --> classify
+              end
+              flow publisher["Publishing Agent"]
+                package["Build artifacts"]@{ shape: tool }
+                announce["Publish release"]@{ shape: action }
+                package --> announce
+              end
+              request --> planner --> publisher
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_failure_recovery",
+        diagramId = "agentflow",
+        title = "Failure recovery workflow",
+        scenario = "Labelled sequence, failure, and reference edges remain visually distinct.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta LR
+              validate["Validate package"]@{ shape: decision }
+              deploy["Deploy"]@{ shape: action }
+              repair["Repair package"]@{ shape: task }
+              runbook["Recovery runbook"]@{ shape: refdoc }
+              validate -- valid --> deploy
+              validate -- invalid --> repair
+              repair --x validate
+              repair -.- runbook
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_shared_policy",
+        diagramId = "agentflow",
+        title = "Shared policy reference",
+        scenario = "Nested agents reference a global policy without moving it into either flow.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              global
+                policy["Deployment policy"]@{ shape: refdoc }
+              end
+              flow delivery["Delivery Team"]
+                flow verifier["Verification Agent"]
+                  verify["Verify evidence"]@{ shape: task }
+                  verify -.- policy
+                end
+                flow approver["Approval Agent"]
+                  approve["Approve release"]@{ shape: decision }
+                  approve -.- policy
+                end
+                verifier --> approver
+              end
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_collapsed_enrichment",
+        diagramId = "agentflow",
+        title = "Collapsed enrichment flow",
+        scenario = "Edges crossing an intentionally collapsed flow terminate at its summary node.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              source["Incoming record"]@{ shape: input }
+              flow enrichment["Enrichment Agent"]
+                normalize["Normalize fields"]@{ shape: task }
+                lookup["Lookup context"]@{ shape: tool }
+                normalize --> lookup
+              end
+              enrichment@{ view: "collapsed" }
+              sink["Store result"]@{ shape: action }
+              source --> normalize
+              lookup --> sink
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_agentflow_regional_connector",
+        diagramId = "agentflow",
+        title = "Regional connector workflow",
+        scenario = "Configuration, metadata, accessibility text, entities, and multilingual labels share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Regional support workflow
+            config:
+              layout: dagre
+              theme: neutral
+              look: classic
+              agentflow:
+                nodeSpacing: 62
+                rankSpacing: 74
+                useMaxWidth: false
+            ---
+            agentflow-beta LR
+              accTitle: Regional support workflow
+              accDescr: International requests are sent to an external support connector
+              connector support["Support API"]
+              support@{ protocol: "http", endpoint: "https://example.com/support" }
+              request["東京 &amp; 서울 request"]@{ shape: input, value: "São Paulo" }
+              create["create_ticket"]@{
+                shape: tool
+                connectorRef: "support.create"
+                params: "request :: String"
+                returns: "Ticket"
+              }
+              request --> create
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -12023,6 +12335,243 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Governed process", "Novel response"),
         features = setOf("colon-header", "cynefin-beta-header", "deterministic-seed"),
     ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_typed_review",
+        diagramId = "agentflow",
+        title = "Typed review workflow",
+        scenario = "All six Agentflow shape aliases and three edge semantics form one review workflow.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              request["Change request"]@{ shape: input }
+              review["Review change"]@{ shape: task }
+              checks["run_checks"]@{ shape: tool }
+              decision["Approved?"]@{ shape: decision }
+              policy["Review policy"]@{ shape: refdoc }
+              publish["Publish change"]@{ shape: action }
+              request --> review --> checks --> decision
+              review -.- policy
+              decision -- approved --> publish
+              decision --x review
+        """.trimIndent(),
+        expectedTexts = listOf("Change request", "Review change", "run_checks", "Approved?", "Review policy", "Publish change"),
+        features = setOf("agentflow-beta-header", "shape-aliases", "sequence-edges", "chained-edges", "labelled-edges", "reference-edges", "failure-edges", "single-line-metadata"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_nested_global",
+        diagramId = "agentflow",
+        title = "Nested flows with global context",
+        scenario = "Nested agent containers consult a shared top-level reference and hand work between flows.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TD
+              global
+                knowledge["Shared knowledge base"]@{ shape: refdoc }
+              end
+              flow team["Research Team"]
+                flow discoverer["Discovery Agent"]
+                  collect["Collect evidence"]@{ shape: task }
+                  collect -.- knowledge
+                end
+                discoverer@{ model: "research-model", instruction: "Collect cited evidence." }
+                flow synthesizer["Synthesis Agent"]
+                  summarize["Synthesize findings"]@{ shape: task }
+                  summarize -.- knowledge
+                end
+                discoverer --> synthesizer
+              end
+        """.trimIndent(),
+        expectedTexts = listOf("Research Team", "Discovery Agent", "Synthesis Agent", "Shared knowledge base"),
+        features = setOf("directions", "flows", "nested-flows", "global-nodes", "reference-edges", "container-metadata"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_collapsed_boundary",
+        diagramId = "agentflow",
+        title = "Collapsed boundary handoff",
+        scenario = "A collapsed flow retains incoming and outgoing edges as one summary node.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta TB
+              input["Raw request"]@{ shape: input }
+              flow private["Private processing"]
+                validate["Validate request"]@{ shape: task }
+                transform["Transform payload"]@{ shape: tool }
+                validate --> transform
+              end
+              private@{ view: "collapsed", description: "Internal implementation" }
+              output["Delivered result"]@{ shape: action }
+              input --> validate
+              transform --> output
+        """.trimIndent(),
+        expectedTexts = listOf("Raw request", "Private processing", "Delivered result"),
+        features = setOf("flows", "collapsed-flows", "sequence-edges", "container-metadata"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_connector_contracts",
+        diagramId = "agentflow",
+        title = "Connector reference contracts",
+        scenario = "Bare, dotted, and URL connector references coexist with preserved connector metadata.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta LR
+              connector issues["Issue API"]
+              issues@{ protocol: "http", endpoint: "https://example.com/issues", owner: "delivery" }
+              create["Create issue"]@{ shape: tool, connectorRef: "issues.create" }
+              read["Read issue"]@{ shape: tool, connectorRef: "issues" }
+              notify["Notify callback"]@{ shape: action, connectorRef: "https://example.com/hooks/release" }
+              create --> read --> notify
+        """.trimIndent(),
+        expectedTexts = listOf("Issue API", "Create issue", "Read issue", "Notify callback"),
+        features = setOf("connectors", "connector-ref-bare", "connector-ref-dotted", "connector-ref-url", "custom-metadata", "single-line-metadata"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_parallel_canonical",
+        diagramId = "agentflow",
+        title = "Parallel canonical tools",
+        scenario = "A right-to-left fan-out combines an alias with canonical supported shape names.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta RL
+              request["Orchestrate request"]@{ shape: task }
+              retrieve["Retrieve context"]@{ shape: subprocess }
+              rank["Rank options"]@{ shape: framed-rectangle }
+              verify["Verify result"]@{ shape: diamond }
+              request --> retrieve & rank & verify
+        """.trimIndent(),
+        expectedTexts = listOf("Orchestrate request", "Retrieve context", "Rank options", "Verify result"),
+        features = setOf("directions", "canonical-shapes", "fan-out", "sequence-edges"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_metadata_contract",
+        diagramId = "agentflow",
+        title = "Typed metadata contract",
+        scenario = "Single-line and multiline metadata preserve typed contracts and unknown consumer fields.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+            ---
+            agentflow-beta BT
+              prompt["Customer prompt"]@{ shape: input, value: "Explain the release" }
+              generate["Generate answer"]@{
+                shape: tool
+                params: "prompt :: String"
+                returns: "Answer"
+                retry: 2
+                cache: "15m"
+              }
+              send["Send answer"]@{ shape: action, example: "published" }
+              prompt --> generate --> send
+        """.trimIndent(),
+        expectedTexts = listOf("Customer prompt", "Generate answer", "Send answer"),
+        features = setOf("multiline-metadata", "single-line-metadata", "custom-metadata", "shape-aliases", "directions"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_configured_accessible",
+        diagramId = "agentflow",
+        title = "Configured accessible workflow",
+        scenario = "Frontmatter configuration, accessibility metadata, entities, comments, and Unicode render together.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Regional workflow
+            config:
+              layout: dagre
+              theme: forest
+              look: classic
+              agentflow:
+                nodeSpacing: 68
+                rankSpacing: 76
+                diagramPadding: 24
+                useMaxWidth: false
+            ---
+            agentflow-beta LR
+              accTitle: Accessible regional workflow
+              accDescr {
+                International requests move through verification and publication.
+              }
+              %% Encoded entities and mixed scripts use the shared preprocessing path.
+              request["東京 &amp; München request"]@{ shape: input }
+              verify["서울 verification"]@{ shape: task }
+              publish["São Paulo publish"]@{ shape: action }
+              request --> verify --> publish
+        """.trimIndent(),
+        expectedTexts = listOf("Regional workflow", "München request", "서울 verification", "São Paulo publish"),
+        features = setOf("frontmatter-title", "accessibility", "comments", "entities", "unicode", "agentflow-config", "intrinsic-sizing", "theme", "look"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_agentflow_responsive_handoff",
+        diagramId = "agentflow",
+        title = "Responsive agent handoff",
+        scenario = "Per-diagram spacing and responsive sizing apply to a horizontal multi-agent handoff.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              layout: dagre
+              theme: default
+              look: classic
+              agentflow:
+                nodeSpacing: 44
+                rankSpacing: 88
+                titleTopMargin: 18
+                useMaxWidth: true
+            ---
+            agentflow-beta LR
+              flow intake["Intake Agent"]
+                classify["Classify request"]@{ shape: decision }
+              end
+              intake@{ instruction: "Assign a support category." }
+              flow resolution["Resolution Agent"]
+                resolve["Resolve request"]@{ shape: task }
+              end
+              resolution@{ model: "resolution-model" }
+              intake --> resolution
+        """.trimIndent(),
+        expectedTexts = listOf("Intake Agent", "Resolution Agent", "Classify request", "Resolve request"),
+        features = setOf("directions", "flows", "agentflow-config", "responsive-sizing", "theme", "look", "container-metadata"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -12073,6 +12622,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "venn",
             "ishikawa",
             "cynefin",
+            "agentflow",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -12159,7 +12709,27 @@ private fun addVisualParityVariation(
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "${source.trimEnd()}\n$label\n"
     "cynefin" -> insertCynefinVisualParityEvidence(source, label)
+    "agentflow" -> appendAgentflowVisualParityEvidence(
+        source = source,
+        evidenceId = evidenceId,
+        label = label,
+    )
     else -> source
+}
+
+private fun appendAgentflowVisualParityEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val anchorId = findFirstDiagramIdentifier(
+        source = source,
+        expectedRestPrefixes = listOf("[", "@", "-"),
+    )
+    return "${source.trimEnd()}\n" +
+        "  $evidenceId[\"${escapeQuotedVisualParityLabel(label)}\"]" +
+        "@{ shape: refdoc }\n" +
+        "  $anchorId -.- $evidenceId\n"
 }
 
 private fun insertCynefinVisualParityEvidence(
