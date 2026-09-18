@@ -404,6 +404,46 @@ export const requiredFeaturesByKind = {
     'fixed-format',
     'percentage-format',
   ],
+  venn: [
+    'venn-beta-header',
+    'title',
+    'frontmatter-title',
+    'sets',
+    'quoted-identifiers',
+    'bracket-labels',
+    'unquoted-bracket-labels',
+    'default-sizes',
+    'explicit-sizes',
+    'pairwise-unions',
+    'multi-set-unions',
+    'synthetic-pairwise-layout',
+    'indented-text',
+    'explicit-text',
+    'labeled-text',
+    'unlabeled-text',
+    'numeric-text-identifiers',
+    'set-styles',
+    'intersection-styles',
+    'text-styles',
+    'fill',
+    'stroke',
+    'stroke-width',
+    'fill-opacity',
+    'text-color',
+    'hex-colors',
+    'rgb-colors',
+    'rgba-colors',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'width',
+    'height',
+    'padding',
+    'debug-layout',
+    'theme',
+    'theme-variables',
+    'comments',
+    'unicode',
+  ],
 };
 
 const flowchartCases = [
@@ -3900,6 +3940,236 @@ accDescr {
   },
 ];
 
+const vennCases = [
+  {
+    id: 'prod_venn_delivery_overlap',
+    kind: 'venn',
+    title: 'Weighted delivery overlap',
+    scenario: 'Two labeled delivery groups use explicit and default sizes with a shared region.',
+    aspectRatio: 1.75,
+    features: [
+      'venn-beta-header',
+      'title',
+      'sets',
+      'bracket-labels',
+      'default-sizes',
+      'explicit-sizes',
+      'pairwise-unions',
+    ],
+    expectedTexts: ['Delivery ownership', 'Product planning', 'Engineering delivery', 'Shared roadmap'],
+    source: String.raw`
+venn-beta
+  title Delivery ownership
+  set Product["Product planning"]:24
+  set Engineering["Engineering delivery"]
+  union Product,Engineering["Shared roadmap"]:6
+`,
+  },
+  {
+    id: 'prod_venn_quoted_multi_set',
+    kind: 'venn',
+    title: 'Quoted three-team alignment',
+    scenario: 'Quoted identifiers, unquoted labels, and a three-set union exercise synthetic pairs.',
+    aspectRatio: 1.75,
+    features: [
+      'sets',
+      'quoted-identifiers',
+      'unquoted-bracket-labels',
+      'explicit-sizes',
+      'multi-set-unions',
+      'synthetic-pairwise-layout',
+    ],
+    expectedTexts: ['Customer Need', 'Feasible', 'Viable', 'Ship ready'],
+    source: String.raw`
+venn-beta
+  set "Customer Need"[Customer Need]:30
+  set Feasible[Feasible]:24
+  set Viable[Viable]:20
+  union "Customer Need",Feasible,Viable[Ship ready]:3
+`,
+  },
+  {
+    id: 'prod_venn_indented_capabilities',
+    kind: 'venn',
+    title: 'Indented capability inventory',
+    scenario: 'Labeled, unlabeled, and numeric text identifiers are placed in set and union areas.',
+    aspectRatio: 1.75,
+    features: [
+      'sets',
+      'pairwise-unions',
+      'indented-text',
+      'labeled-text',
+      'unlabeled-text',
+      'numeric-text-identifiers',
+    ],
+    expectedTexts: ['Client', 'Compose UI', 'OfflineCache', '2026', 'Telemetry'],
+    source: String.raw`
+venn-beta
+  set Client["Client"]:22
+    text C1["Compose UI"]
+    text OfflineCache
+  set Platform["Platform"]:20
+    text 2026
+  union Client,Platform["Shared"]:7
+    text T1["Telemetry"]
+`,
+  },
+  {
+    id: 'prod_venn_explicit_contracts',
+    kind: 'venn',
+    title: 'Explicit cross-area contracts',
+    scenario: 'Explicit text statements target single and pairwise areas independently of indentation.',
+    aspectRatio: 1.75,
+    features: [
+      'sets',
+      'pairwise-unions',
+      'explicit-text',
+      'labeled-text',
+      'unlabeled-text',
+      'quoted-identifiers',
+    ],
+    expectedTexts: ['Runtime', 'Storage', 'Lifecycle contract', 'Schema contract'],
+    source: String.raw`
+venn-beta
+  set Runtime["Runtime"]:18
+  set Storage["Storage"]:16
+  union Runtime,Storage["Persistence"]:5
+text Runtime Lifecycle["Lifecycle contract"]
+text Runtime,Storage "Schema contract"
+`,
+  },
+  {
+    id: 'prod_venn_styled_release_risk',
+    kind: 'venn',
+    title: 'Styled release risk',
+    scenario: 'Set, intersection, and text-node styles cover every supported paint property and color form.',
+    aspectRatio: 1.75,
+    features: [
+      'set-styles',
+      'intersection-styles',
+      'text-styles',
+      'fill',
+      'stroke',
+      'stroke-width',
+      'fill-opacity',
+      'text-color',
+      'hex-colors',
+      'rgb-colors',
+      'rgba-colors',
+    ],
+    expectedTexts: ['Known risk', 'Unknown risk', 'Mitigation', 'Owner review'],
+    source: String.raw`
+venn-beta
+  set Known["Known risk"]:22
+    text Owner["Owner review"]
+  set Unknown["Unknown risk"]:18
+  union Known,Unknown["Mitigation"]:5
+  style Known fill:#ef4444,stroke:#7f1d1d,stroke-width:4px,fill-opacity:0.2,color:#450a0a
+  style Unknown fill:rgb(59, 130, 246),stroke:#1e3a8a,fill-opacity:0.18
+  style Known,Unknown fill:rgba(34, 197, 94, 0.35),color:#052e16
+  style Owner color:rgb(124, 45, 18)
+`,
+  },
+  {
+    id: 'prod_venn_responsive_debug',
+    kind: 'venn',
+    title: 'Responsive debug geometry',
+    scenario: 'Explicit dimensions, padding, responsive sizing, and debug guides shape text placement.',
+    aspectRatio: 1.75,
+    features: [
+      'responsive-sizing',
+      'width',
+      'height',
+      'padding',
+      'debug-layout',
+      'indented-text',
+    ],
+    expectedTexts: ['Responsive layout', 'Alpha', 'Review queue'],
+    source: String.raw`
+---
+config:
+  venn:
+    width: 840
+    height: 480
+    padding: 24
+    useMaxWidth: true
+    useDebugLayout: true
+---
+venn-beta
+  title Responsive layout
+  set Alpha:20
+    text A1["Review queue"]
+  set Beta:18
+  union Alpha,Beta:6
+`,
+  },
+  {
+    id: 'prod_venn_intrinsic_theme',
+    kind: 'venn',
+    title: 'Intrinsic themed comparison',
+    scenario: 'Frontmatter selects intrinsic sizing and overrides Venn palette and title colors.',
+    aspectRatio: 1.6,
+    features: [
+      'frontmatter-title',
+      'intrinsic-sizing',
+      'width',
+      'height',
+      'theme',
+      'theme-variables',
+      'hex-colors',
+    ],
+    expectedTexts: ['Security posture', 'Prevent', 'Detect', 'Respond'],
+    source: String.raw`
+---
+title: Security posture
+config:
+  theme: forest
+  themeVariables:
+    venn1: "#0f766e"
+    venn2: "#ca8a04"
+    vennTitleTextColor: "#172554"
+    vennSetTextColor: "#111827"
+  venn:
+    width: 720
+    height: 450
+    useMaxWidth: false
+---
+venn-beta
+  set Prevent["Prevent"]:26
+  set Detect["Detect"]:22
+  union Prevent,Detect["Respond"]:7
+`,
+  },
+  {
+    id: 'prod_venn_international_regions',
+    kind: 'venn',
+    title: 'International regions',
+    scenario: 'Comments, Unicode, and merged style declarations coexist.',
+    aspectRatio: 1.75,
+    features: [
+      'comments',
+      'unicode',
+      'set-styles',
+      'text-styles',
+      'text-color',
+      'fill',
+    ],
+    expectedTexts: ['地域 collaboration', '東京', '서울', '共有', '共同運用'],
+    source: String.raw`
+venn-beta
+  title 地域 collaboration
+  %% Mixed scripts and repeated styles exercise normalization.
+  set Tokyo["東京"]:20
+    text T1["共同運用"]
+  set Seoul["서울"]:18
+  union Tokyo,Seoul["共有"]:6
+  style Tokyo fill:#f97316
+  style Tokyo color:#431407
+  style T1 color:#7c2d12
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -4237,6 +4507,7 @@ export const conformanceCases = [
   ...radarCases,
   ...sankeyCases,
   ...treemapCases,
+  ...vennCases,
 ];
 
 export const cases = [

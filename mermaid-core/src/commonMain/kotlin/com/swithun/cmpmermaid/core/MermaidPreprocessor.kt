@@ -246,6 +246,7 @@ internal object MermaidPreprocessor {
         val radar = map.map("radar")
         val sankey = map.map("sankey")
         val treemap = map.map("treemap")
+        val venn = map.map("venn")
         val kanban = map.map("kanban")
         val pie = map.map("pie")
         val quadrantChart = map.map("quadrantChart")
@@ -1242,6 +1243,27 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName '${invalid.first}' must be non-negative",
             )
         }
+        val vennWidth = float(venn, "width", "venn.width")
+        val vennHeight = float(venn, "height", "venn.height")
+        val vennPadding = float(venn, "padding", "venn.padding")
+        val vennUseDebugLayout =
+            boolean(venn, "useDebugLayout", "venn.useDebugLayout")
+        val vennUseMaxWidth = boolean(venn, "useMaxWidth", "venn.useMaxWidth")
+        listOf(
+            "venn.width" to vennWidth,
+            "venn.height" to vennHeight,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value <= 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be positive",
+            )
+        }
+        if (vennPadding != null && (!vennPadding.isFinite() || vennPadding < 0f)) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'venn.padding' must be non-negative",
+            )
+        }
         val kanbanPadding = float(kanban, "padding", "kanban.padding")
         val kanbanSectionWidth = float(kanban, "sectionWidth", "kanban.sectionWidth")
         val kanbanTicketBaseUrl =
@@ -1587,6 +1609,15 @@ internal object MermaidPreprocessor {
                         valueFormat = treemapValueFormat,
                     )
                 },
+                venn = venn?.let {
+                    MermaidVennConfigOverride(
+                        width = vennWidth,
+                        height = vennHeight,
+                        padding = vennPadding,
+                        useDebugLayout = vennUseDebugLayout,
+                        useMaxWidth = vennUseMaxWidth,
+                    )
+                },
                 kanban = kanban?.let {
                     MermaidKanbanConfigOverride(
                         padding = kanbanPadding,
@@ -1794,6 +1825,7 @@ internal data class MermaidConfigOverride(
     val radar: MermaidRadarConfigOverride? = null,
     val sankey: MermaidSankeyConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
+    val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
     val themeVariables: Map<String, String>? = null,
     val themeColorArrays: Map<String, List<String>>? = null,
@@ -1910,6 +1942,10 @@ internal data class MermaidConfigOverride(
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
             else -> treemap
         },
+        venn = when {
+            overrides.venn != null -> venn?.merge(overrides.venn) ?: overrides.venn
+            else -> venn
+        },
         kanban = when {
             overrides.kanban != null ->
                 kanban?.merge(overrides.kanban) ?: overrides.kanban
@@ -2016,6 +2052,7 @@ internal data class MermaidConfigOverride(
                 radar = radar?.applyTo(options.radar) ?: options.radar,
                 sankey = sankey?.applyTo(options.sankey) ?: options.sankey,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
+                venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
                 themeVariables = options.themeVariables + themeVariables.orEmpty(),
                 themeColorArrays = options.themeColorArrays + themeColorArrays.orEmpty(),
@@ -2193,6 +2230,31 @@ internal data class MermaidTreemapConfigOverride(
         valueFontSize = valueFontSize ?: options.valueFontSize,
         labelFontSize = labelFontSize ?: options.labelFontSize,
         valueFormat = valueFormat ?: options.valueFormat,
+    )
+}
+
+internal data class MermaidVennConfigOverride(
+    val width: Float? = null,
+    val height: Float? = null,
+    val padding: Float? = null,
+    val useDebugLayout: Boolean? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(overrides: MermaidVennConfigOverride): MermaidVennConfigOverride =
+        MermaidVennConfigOverride(
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            padding = overrides.padding ?: padding,
+            useDebugLayout = overrides.useDebugLayout ?: useDebugLayout,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        )
+
+    fun applyTo(options: MermaidVennOptions): MermaidVennOptions = options.copy(
+        width = width ?: options.width,
+        height = height ?: options.height,
+        padding = padding ?: options.padding,
+        useDebugLayout = useDebugLayout ?: options.useDebugLayout,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
     )
 }
 

@@ -58,6 +58,7 @@ const kinds = [
   'radar',
   'sankey',
   'treemap',
+  'venn',
   'kanban',
 ];
 const kindTitles = {
@@ -79,6 +80,7 @@ const kindTitles = {
   radar: 'Radar',
   sankey: 'Sankey',
   treemap: 'Treemap',
+  venn: 'Venn',
   kanban: 'Kanban',
 };
 const selectedKinds = kinds.filter(

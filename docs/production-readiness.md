@@ -8,19 +8,19 @@ rated Stable. A successful build alone is not sufficient.
 - Mermaid compatibility baseline: `12.0.0`
 - Native renderers: Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban,
   Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey,
-  Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, and Treemap
+  Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, and Venn
 - Runtime implementation: Kotlin Multiplatform parser/layout/SceneGraph with
   Compose Canvas rendering
 - Official Mermaid.js usage: debug and release evidence only
 - Production JavaScript runtime: none; ELK requests return structured
   `UnsupportedFeature`
 - Official Mermaid families: 33
-- Implemented families: 19; pending families: 14
+- Implemented families: 20; pending families: 13
 - Release status: **Not Stable; full-family translation in progress**
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
   Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
-  User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, and
-  Treemap (`4,864/4,864` accepted; `4,417 pass / 447 manually reviewed / 0 fail`;
+  User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey,
+  Treemap, and Venn (`5,120/5,120` accepted; `4,633 automatic pass / 487 manually reviewed / 0 unresolved`;
   every implemented-family geometry gate passing)
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -37,15 +37,15 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | All 19 implemented families have 4,864/4,864 accepted detail and geometry pairs: 4,417 automatic passes plus 447 manually accepted ER/Journey/Requirement/Git Graph/Mindmap/Treemap reviews | **Implemented subset passing; 14 families remain untranslated** |
-| Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 365/365 points across 19 implemented families; 14 families remain | **Incomplete** |
-| Determinism | Repeated rendering returns the same SceneGraph | Full 249-case corpus equality test for the implemented subset | Passing for the implemented subset |
-| Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 19 by 11 matrix: 209/209 renders | Passing for the implemented subset |
-| Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 4,864 visual-matrix Native renders plus a separate 4,864 generated stress inputs | Passing for the implemented subset |
-| Core throughput | 1,245 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 466ms total, 1ms P95 | Passing; enforced by JVM test |
-| Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: 40,984 bytes | Passing; enforced by JVM test |
-| Runtime matrix | Android, iOS Simulator, Desktop, and Web render representative complex cases | Web reached the final Treemap case across all 249 current scenarios; Android, iOS, and Desktop retain the prior 236-scenario baseline | Current Web run passing; prior native baselines passing |
-| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | Current 249-diagram Web run and prior 236-diagram native runs recorded below | Passing for the recorded corpus on each platform |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | All 20 implemented families have 5,120/5,120 accepted detail and geometry pairs: 4,633 automatic passes plus 487 manually accepted ER/Journey/Requirement/Git Graph/Mindmap/Treemap/Venn reviews | **Implemented subset passing; 13 families remain untranslated** |
+| Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 404/404 points across 20 implemented families; 13 families remain | **Incomplete** |
+| Determinism | Repeated rendering returns the same SceneGraph | Full 262-case corpus equality test for the implemented subset | Passing for the implemented subset |
+| Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 20 by 11 matrix: 220/220 renders | Passing for the implemented subset |
+| Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 5,120 visual-matrix Native renders plus a separate 5,120 generated stress inputs | Passing for the implemented subset |
+| Core throughput | 1,310 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 587ms total, 1ms P95 | Passing; enforced by JVM test |
+| Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: 40,776 bytes | Passing; enforced by JVM test |
+| Runtime matrix | Android, iOS Simulator, Desktop, and Web render representative complex cases | Web reached the final Venn case across all 262 current scenarios; Android, iOS, and Desktop retain the prior 236-scenario baseline | Current Web run passing; prior native baselines passing |
+| Runtime load | A scrolling page with many mixed diagrams stays responsive and within a documented memory budget | Current 262-diagram Web run and prior 236-diagram native runs recorded below | Passing for the recorded corpus on each platform |
 | Production isolation | Core and Compose contain no WebView, JavaScript engine or bundle, network client, or debug-UI dependency | Source, dependency, JVM JAR, and Android AAR scans; debug/release APKs declare no Internet permission | Passing; source boundary and APK permission are enforced by the Quality Gate |
 | Public-source safety | Published source and artifacts contain no internal endpoint or credential material | Repository scan plus APK permission audit | Passing |
 
@@ -67,9 +67,9 @@ copies of the documentation gallery. CI must:
 6. Complete manual review for routing meaning and intentional renderer
    differences that automated metrics cannot prove.
 
-The regular Quality Gate runs the 249 independent cases on every push and pull
+The regular Quality Gate runs the 262 independent cases on every push and pull
 request. The weekly/manual Full Visual Parity workflow adds 256 unique sources
-per diagram type, or 4,864 Native/Official pairs total. Those matrix cases are
+per diagram type, or 5,120 Native/Official pairs total. Those matrix cases are
 deterministic combinations of 13 or 14 complex structural seeds per type and
 20 visible text/layout-pressure profiles; they are not represented as 256
 unrelated topologies per type.
@@ -91,10 +91,10 @@ The runtime load gate must record:
 
 | Platform | Corpus | Latency | Memory | Outcome |
 | --- | ---: | --- | --- | --- |
-| Android Emulator | 236 | See machine-readable prior baseline | See machine-readable prior baseline | Passed prior budget; Treemap not included |
-| iOS Simulator | 236 | See machine-readable prior baseline | See machine-readable prior baseline | Passed without a crash; Treemap not included |
-| Desktop | 236 | See machine-readable prior baseline | See machine-readable prior baseline | Passed without a crash; Treemap not included |
-| Web | 249 | 0.70s first content; 12.05s scroll | 10.0MiB retained JS heap | Passed 15s/96MiB budget through final Treemap case |
+| Android Emulator | 236 | See machine-readable prior baseline | See machine-readable prior baseline | Passed prior budget; Treemap and Venn not included |
+| iOS Simulator | 236 | See machine-readable prior baseline | See machine-readable prior baseline | Passed without a crash; Treemap and Venn not included |
+| Desktop | 236 | See machine-readable prior baseline | See machine-readable prior baseline | Passed without a crash; Treemap and Venn not included |
+| Web | 262 | 1.25s first content; 12.26s scroll | 10.3MiB retained JS heap | Passed 15s/96MiB budget through final Venn case |
 
 Headless Chromium process-tree RSS is recorded as diagnostic data but is not a
 renderer budget because it includes browser infrastructure outside the Web
@@ -129,7 +129,7 @@ latest full evidence is linked from the stability report, and there are no
 open severity-1 correctness, crash, resource-exhaustion, or data-exposure
 defects.
 
-The full rule is not currently satisfied. All 19 implemented families have
+The full rule is not currently satisfied. All 20 implemented families have
 passed the replacement detail gate. The former coarse geometry check missed a
 visible Git Graph paint-order defect; that defect is now corrected. No family
 is promoted back to Stable until its 256-case detail queue is empty or every

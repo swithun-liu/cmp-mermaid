@@ -35,6 +35,7 @@ const kotlinGalleryFiles = {
   radar: ['RadarDemos.kt', 'RadarDemo'],
   sankey: ['SankeyDemos.kt', 'SankeyDemo'],
   treemap: ['TreemapDemos.kt', 'TreemapDemo'],
+  venn: ['VennDemos.kt', 'VennDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -56,6 +57,7 @@ const expectedKindCounts = new Map([
   ['radar', 5],
   ['sankey', 5],
   ['treemap', 5],
+  ['venn', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -77,6 +79,7 @@ const expectedProductionKindCounts = new Map([
   ['radar', 13],
   ['sankey', 13],
   ['treemap', 13],
+  ['venn', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -98,6 +101,7 @@ const supportedKinds = new Set([
   'radar',
   'sankey',
   'treemap',
+  'venn',
 ]);
 
 validateStabilityCases();
@@ -171,8 +175,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 348) {
-    throw new Error(`Expected 348 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 353) {
+    throw new Error(`Expected 353 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -192,14 +196,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 249) {
+  if (productionCases.length !== 262) {
     throw new Error(
-      `Expected 249 production cases, found ${productionCases.length}`,
+      `Expected 262 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 152) {
+  if (conformanceCases.length !== 160) {
     throw new Error(
-      `Expected 152 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 160 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -430,6 +434,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "radar",
             "sankey",
             "treemap",
+            "venn",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -513,6 +518,7 @@ private fun addVisualParityVariation(
     "radar" -> replaceOrInsertVisualParityTitle(source, "radar-beta", label)
     "sankey" -> "\${source.trimEnd()}\\n\\"\$label\\",\$evidenceId,\${(ordinal % 17) + 3}\\n"
     "treemap" -> replaceOrInsertTreemapVisualParityTitle(source, label)
+    "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     else -> source
 }
 
@@ -661,6 +667,46 @@ private fun replaceOrInsertTreemapVisualParityTitle(
     }
     if (declarationIndex < 0) return source
     lines.add(declarationIndex + 1, "  title \\"\$suffix\\"")
+    return lines.joinToString("\\n")
+}
+
+private fun replaceOrInsertVennVisualParityTitle(
+    source: String,
+    suffix: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val sourceTitleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title ")
+    }
+    if (sourceTitleIndex >= 0) {
+        val line = lines[sourceTitleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title ")
+            .trim()
+            .removeSurrounding("\\"")
+        lines[sourceTitleIndex] = "\${indent}title \$title - \$suffix"
+        return lines.joinToString("\\n")
+    }
+    val frontmatterTitleIndex = lines.indexOfFirst { line ->
+        line.trimStart().startsWith("title:")
+    }
+    if (frontmatterTitleIndex >= 0) {
+        val line = lines[frontmatterTitleIndex]
+        val indent = line.takeWhile(Char::isWhitespace)
+        val title = line.trimStart()
+            .removePrefix("title:")
+            .trim()
+            .removeSurrounding("\\"")
+            .removeSurrounding("'")
+        lines[frontmatterTitleIndex] = "\${indent}title: \\"\$title - \$suffix\\""
+        return lines.joinToString("\\n")
+    }
+    val declarationIndex = lines.indexOfFirst { line ->
+        line.trim() == "venn-beta"
+    }
+    if (declarationIndex < 0) return source
+    lines.add(declarationIndex + 1, "  title \$suffix")
     return lines.joinToString("\\n")
 }
 

@@ -119,7 +119,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('venn', 'Venn', 'venn.md', ['venn'], [
     header('venn-beta', 'venn'),
-  ]),
+  ], true),
   family('wardley', 'Wardley Map', 'wardley.md', ['wardley'], [
     header('wardley-beta', 'wardley'),
   ]),

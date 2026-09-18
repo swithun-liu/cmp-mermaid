@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-17T23:36:16.788Z",
+  "inputDirectory": "captures/local/venn-production-20260918-pass5",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_venn_release_decision",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 107868,
+        "inkRatio": 0.13317037037037038,
+        "contentBounds": {
+          "x": 216,
+          "y": 214,
+          "width": 493,
+          "height": 464
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 104689,
+        "inkRatio": 0.12924567901234568,
+        "contentBounds": {
+          "x": 220,
+          "y": 216,
+          "width": 486,
+          "height": 459
+        }
+      },
+      "widthRatio": 1.01440329218107,
+      "heightRatio": 1.0108932461873639,
+      "inkRatio": 1.0303661320673616
+    },
+    {
+      "id": "rc_venn_capability_catalog",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 155212,
+        "inkRatio": 0.19161975308641976,
+        "contentBounds": {
+          "x": 109,
+          "y": 223,
+          "width": 682,
+          "height": 454
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 150223,
+        "inkRatio": 0.18546049382716048,
+        "contentBounds": {
+          "x": 115,
+          "y": 227,
+          "width": 670,
+          "height": 446
+        }
+      },
+      "widthRatio": 1.017910447761194,
+      "heightRatio": 1.0179372197309418,
+      "inkRatio": 1.0332106268680563
+    },
+    {
+      "id": "rc_venn_styled_ownership",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 231963,
+        "inkRatio": 0.28637407407407406,
+        "contentBounds": {
+          "x": 125,
+          "y": 214,
+          "width": 649,
+          "height": 465
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 222593,
+        "inkRatio": 0.27480617283950615,
+        "contentBounds": {
+          "x": 133,
+          "y": 216,
+          "width": 635,
+          "height": 459
+        }
+      },
+      "widthRatio": 1.022047244094488,
+      "heightRatio": 1.0130718954248366,
+      "inkRatio": 1.0420947648847898
+    },
+    {
+      "id": "rc_venn_intrinsic_geometry",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 284499,
+        "inkRatio": 0.35123333333333334,
+        "contentBounds": {
+          "x": 89,
+          "y": 187,
+          "width": 722,
+          "height": 516
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 275075,
+        "inkRatio": 0.33959876543209877,
+        "contentBounds": {
+          "x": 95,
+          "y": 190,
+          "width": 710,
+          "height": 511
+        }
+      },
+      "widthRatio": 1.0169014084507042,
+      "heightRatio": 1.009784735812133,
+      "inkRatio": 1.0342597473416342
+    },
+    {
+      "id": "rc_venn_international_regions",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 104715,
+        "inkRatio": 0.12927777777777777,
+        "contentBounds": {
+          "x": 229,
+          "y": 213,
+          "width": 442,
+          "height": 467
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 101329,
+        "inkRatio": 0.12509753086419753,
+        "contentBounds": {
+          "x": 233,
+          "y": 213,
+          "width": 434,
+          "height": 462
+        }
+      },
+      "widthRatio": 1.0184331797235022,
+      "heightRatio": 1.0108225108225108,
+      "inkRatio": 1.0334159026537317
+    },
+    {
+      "id": "prod_venn_delivery_overlap",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 69134,
+        "inkRatio": 0.08535061728395062,
+        "contentBounds": {
+          "x": 186,
+          "y": 214,
+          "width": 591,
+          "height": 464
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 67242,
+        "inkRatio": 0.08301481481481482,
+        "contentBounds": {
+          "x": 191,
+          "y": 216,
+          "width": 582,
+          "height": 459
+        }
+      },
+      "widthRatio": 1.0154639175257731,
+      "heightRatio": 1.0108932461873639,
+      "inkRatio": 1.0281371761696558
+    },
+    {
+      "id": "prod_venn_quoted_multi_set",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 111175,
+        "inkRatio": 0.1372530864197531,
+        "contentBounds": {
+          "x": 196,
+          "y": 223,
+          "width": 508,
+          "height": 454
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 107348,
+        "inkRatio": 0.1325283950617284,
+        "contentBounds": {
+          "x": 200,
+          "y": 227,
+          "width": 500,
+          "height": 446
+        }
+      },
+      "widthRatio": 1.016,
+      "heightRatio": 1.0179372197309418,
+      "inkRatio": 1.03565040801878
+    },
+    {
+      "id": "prod_venn_indented_capabilities",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 152965,
+        "inkRatio": 0.18884567901234567,
+        "contentBounds": {
+          "x": 107,
+          "y": 223,
+          "width": 686,
+          "height": 454
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 148012,
+        "inkRatio": 0.18273086419753087,
+        "contentBounds": {
+          "x": 113,
+          "y": 227,
+          "width": 674,
+          "height": 446
+        }
+      },
+      "widthRatio": 1.0178041543026706,
+      "heightRatio": 1.0179372197309418,
+      "inkRatio": 1.0334635029592194
+    },
+    {
+      "id": "prod_venn_explicit_contracts",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 149479,
+        "inkRatio": 0.18454197530864197,
+        "contentBounds": {
+          "x": 100,
+          "y": 223,
+          "width": 700,
+          "height": 454
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 144462,
+        "inkRatio": 0.17834814814814814,
+        "contentBounds": {
+          "x": 107,
+          "y": 227,
+          "width": 686,
+          "height": 446
+        }
+      },
+      "widthRatio": 1.0204081632653061,
+      "heightRatio": 1.0179372197309418,
+      "inkRatio": 1.034728856031344
+    },
+    {
+      "id": "prod_venn_styled_release_risk",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 257878,
+        "inkRatio": 0.3183679012345679,
+        "contentBounds": {
+          "x": 97,
+          "y": 222,
+          "width": 705,
+          "height": 456
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 247076,
+        "inkRatio": 0.3050320987654321,
+        "contentBounds": {
+          "x": 105,
+          "y": 228,
+          "width": 691,
+          "height": 444
+        }
+      },
+      "widthRatio": 1.020260492040521,
+      "heightRatio": 1.027027027027027,
+      "inkRatio": 1.0437193414172157
+    },
+    {
+      "id": "prod_venn_responsive_debug",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 145595,
+        "inkRatio": 0.17974691358024691,
+        "contentBounds": {
+          "x": 116,
+          "y": 210,
+          "width": 668,
+          "height": 473
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 140984,
+        "inkRatio": 0.17405432098765433,
+        "contentBounds": {
+          "x": 122,
+          "y": 212,
+          "width": 656,
+          "height": 468
+        }
+      },
+      "widthRatio": 1.0182926829268293,
+      "heightRatio": 1.0106837606837606,
+      "inkRatio": 1.0327058389604493
+    },
+    {
+      "id": "prod_venn_intrinsic_theme",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 283789,
+        "inkRatio": 0.3503567901234568,
+        "contentBounds": {
+          "x": 86,
+          "y": 187,
+          "width": 728,
+          "height": 516
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 274126,
+        "inkRatio": 0.33842716049382715,
+        "contentBounds": {
+          "x": 93,
+          "y": 190,
+          "width": 714,
+          "height": 511
+        }
+      },
+      "widthRatio": 1.0196078431372548,
+      "heightRatio": 1.009784735812133,
+      "inkRatio": 1.0352502134055142
+    },
+    {
+      "id": "prod_venn_international_regions",
+      "kind": "venn",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 232818,
+        "inkRatio": 0.28742962962962965,
+        "contentBounds": {
+          "x": 123,
+          "y": 213,
+          "width": 654,
+          "height": 467
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 225020,
+        "inkRatio": 0.2778024691358025,
+        "contentBounds": {
+          "x": 129,
+          "y": 213,
+          "width": 642,
+          "height": 462
+        }
+      },
+      "widthRatio": 1.0186915887850467,
+      "heightRatio": 1.0108225108225108,
+      "inkRatio": 1.0346546973602346
+    }
+  ]
+}

@@ -212,6 +212,14 @@ data class MermaidTreemapOptions(
     val valueFormat: String = ",",
 )
 
+data class MermaidVennOptions(
+    val width: Float = 800f,
+    val height: Float = 450f,
+    val padding: Float = 8f,
+    val useDebugLayout: Boolean = false,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidKanbanOptions(
     val padding: Float = 8f,
     val sectionWidth: Float = 200f,
@@ -322,6 +330,7 @@ data class MermaidRenderOptions(
     val radar: MermaidRadarOptions = MermaidRadarOptions(),
     val sankey: MermaidSankeyOptions = MermaidSankeyOptions(),
     val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
+    val venn: MermaidVennOptions = MermaidVennOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
     val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val curve: String = "basis",

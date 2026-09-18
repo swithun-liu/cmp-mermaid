@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 4,864 source cases and
-9,728 screenshots from the large-scale
+This index contains 5,120 source cases and
+10,240 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 19 implemented families have completed the replacement detail gate and
+All 20 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`4,864/4,864` pairs: `4,417 pass / 447 manually reviewed / 0 fail` across
-304 contact sheets.
+`5,120/5,120` pairs: `4,633 automatic pass / 487 manually reviewed /
+0 unresolved` across 320 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -750,6 +750,51 @@ styles, values, clipping, and paint order were verified across all 16 pages.
 ![Treemap visual parity page 15](treemap-visual-parity-15.jpg)
 
 ![Treemap visual parity page 16](treemap-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Venn - 256 Native/Official pairs</strong></summary>
+
+Raw replacement detail audit: `216 pass / 40 review / 0 fail`. All 40 review
+cases were manually accepted with 0 unresolved defects. The reviews repeat two
+text-overlap font-box threshold patterns. Geometry ratios:
+width `0.997-1.032`, height `0.992-1.026`, foreground ink `0.999-1.059`.
+Raw [detail](venn-visual-parity-detail.json) and
+[geometry](venn-visual-parity-geometry.json) reports are published with the sheets.
+All 16 pages below were manually reviewed.
+
+![Venn visual parity page 01](venn-visual-parity-01.jpg)
+
+![Venn visual parity page 02](venn-visual-parity-02.jpg)
+
+![Venn visual parity page 03](venn-visual-parity-03.jpg)
+
+![Venn visual parity page 04](venn-visual-parity-04.jpg)
+
+![Venn visual parity page 05](venn-visual-parity-05.jpg)
+
+![Venn visual parity page 06](venn-visual-parity-06.jpg)
+
+![Venn visual parity page 07](venn-visual-parity-07.jpg)
+
+![Venn visual parity page 08](venn-visual-parity-08.jpg)
+
+![Venn visual parity page 09](venn-visual-parity-09.jpg)
+
+![Venn visual parity page 10](venn-visual-parity-10.jpg)
+
+![Venn visual parity page 11](venn-visual-parity-11.jpg)
+
+![Venn visual parity page 12](venn-visual-parity-12.jpg)
+
+![Venn visual parity page 13](venn-visual-parity-13.jpg)
+
+![Venn visual parity page 14](venn-visual-parity-14.jpg)
+
+![Venn visual parity page 15](venn-visual-parity-15.jpg)
+
+![Venn visual parity page 16](venn-visual-parity-16.jpg)
 
 </details>
 

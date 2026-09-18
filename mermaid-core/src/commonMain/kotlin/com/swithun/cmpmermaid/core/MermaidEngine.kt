@@ -18,6 +18,7 @@ import com.swithun.cmpmermaid.core.sequence.SequencePlugin
 import com.swithun.cmpmermaid.core.statediagram.StatePlugin
 import com.swithun.cmpmermaid.core.timeline.TimelinePlugin
 import com.swithun.cmpmermaid.core.treemap.TreemapPlugin
+import com.swithun.cmpmermaid.core.venn.VennPlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
 
 data class MermaidRenderContext(
@@ -58,6 +59,7 @@ class MermaidEngine(
         RadarPlugin(),
         SankeyPlugin(),
         TreemapPlugin(),
+        VennPlugin(),
         TimelinePlugin(),
         KanbanPlugin(),
     ),
@@ -106,6 +108,10 @@ class MermaidEngine(
                     look = resolvedOptions.timeline.look ?: resolvedOptions.look,
                     layout = resolvedOptions.timeline.layout ?: resolvedOptions.layout,
                 )
+            header == "venn-beta" &&
+                resolvedOptions.themeName == null &&
+                context.theme == MermaidTheme.FlowchartDefault ->
+                resolvedOptions.copy(themeName = MermaidThemePreset.ReduxColor.configName)
             else -> resolvedOptions
         }
         if (diagramOptions.look == "handDrawn") {

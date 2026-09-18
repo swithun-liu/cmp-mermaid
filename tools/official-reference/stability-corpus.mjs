@@ -3116,4 +3116,109 @@ accDescr {
     "Zürich": 22
 `,
   },
+  {
+    id: 'rc_venn_release_decision',
+    kind: 'venn',
+    title: 'Release decision model',
+    scenario: 'Three weighted review domains and their pairwise and central overlaps drive a launch decision.',
+    aspectRatio: 1.75,
+    source: String.raw`
+venn-beta
+  title Release decision
+  set Value["Customer value"]:30
+  set Delivery["Delivery confidence"]:26
+  set Safety["Operational safety"]:22
+  union Value,Delivery["Validated scope"]:9
+  union Value,Safety["Responsible outcome"]:7
+  union Delivery,Safety["Controlled rollout"]:8
+  union Value,Delivery,Safety["Launch"]:3
+`,
+  },
+  {
+    id: 'rc_venn_capability_catalog',
+    kind: 'venn',
+    title: 'Capability catalog',
+    scenario: 'Indented and explicit text nodes populate independent and overlapping ownership areas.',
+    aspectRatio: 1.75,
+    source: String.raw`
+venn-beta
+  set Client["Client capabilities"]:24
+    text C1["Rendering"]
+    text C2["Offline state"]
+  set Service["Service capabilities"]:22
+    text S1["Persistence"]
+    text S2["Scheduling"]
+  union Client,Service["Shared contract"]:8
+    text CS1["Schema"]
+text Client,Service CS2["Telemetry"]
+`,
+  },
+  {
+    id: 'rc_venn_styled_ownership',
+    kind: 'venn',
+    title: 'Styled ownership map',
+    scenario: 'Independent set, shared-region, and text styles exercise merged paint declarations.',
+    aspectRatio: 1.75,
+    source: String.raw`
+venn-beta
+  title Ownership review
+  set Product["Product"]:22
+    text P1["Roadmap"]
+  set Engineering["Engineering"]:20
+    text E1["Implementation"]
+  union Product,Engineering["Planning"]:7
+  style Product fill:#2563eb,stroke:#1e3a8a,stroke-width:4px,fill-opacity:0.2
+  style Engineering fill:rgb(22, 163, 74),stroke:#14532d,fill-opacity:0.18
+  style Product,Engineering fill:rgba(250, 204, 21, 0.35),color:#111827
+  style P1 color:#dc2626
+  style E1 color:#166534
+`,
+  },
+  {
+    id: 'rc_venn_intrinsic_geometry',
+    kind: 'venn',
+    title: 'Intrinsic geometry controls',
+    scenario: 'A fixed viewport, compact padding, debug guides, and theme variables shape a weighted overlap.',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+title: Intrinsic service boundary
+config:
+  theme: neutral
+  themeVariables:
+    venn1: "#7c3aed"
+    venn2: "#0891b2"
+    vennTitleTextColor: "#18181b"
+  venn:
+    width: 720
+    height: 450
+    padding: 20
+    useMaxWidth: false
+    useDebugLayout: true
+---
+venn-beta
+  set Runtime["Runtime"]:28
+    text R1["Lifecycle"]
+  set Storage["Storage"]:24
+    text S1["Durability"]
+  union Runtime,Storage["State contract"]:8
+`,
+  },
+  {
+    id: 'rc_venn_international_regions',
+    kind: 'venn',
+    title: 'International regional collaboration',
+    scenario: 'Comments, quoted identifiers, Unicode, and a three-region overlap remain stable.',
+    aspectRatio: 1.75,
+    source: String.raw`
+venn-beta
+  title 地域 collaboration
+  %% Quoted identifiers preserve spaces while labels preserve mixed scripts.
+  set "Tokyo Team"["東京"]:24
+  set "Seoul Team"["서울"]:22
+  set "Sao Paulo Team"["São Paulo"]:20
+  union "Tokyo Team","Seoul Team"["共同運用"]:7
+  union "Tokyo Team","Seoul Team","Sao Paulo Team"["Global"]:3
+`,
+  },
 ];

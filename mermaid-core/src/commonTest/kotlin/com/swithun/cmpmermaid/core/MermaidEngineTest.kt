@@ -541,6 +541,59 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun appliesVennAppearanceDefaultWithoutOverridingExplicitTheme() {
+        var defaultContext: MermaidRenderContext? = null
+        var explicitContext: MermaidRenderContext? = null
+        val capturingPlugin = object : MermaidDiagramPlugin {
+            override val id: String = "venn"
+            override val headers: Set<String> = setOf("venn-beta")
+
+            override fun compile(
+                source: String,
+                context: MermaidRenderContext,
+            ): GMResult<MermaidScene, MermaidError> {
+                if (context.options.themeName == "default") {
+                    explicitContext = context
+                } else {
+                    defaultContext = context
+                }
+                return GMResult.Ok(
+                    MermaidScene(
+                        width = 1f,
+                        height = 1f,
+                        background = context.theme.background,
+                        elements = emptyList(),
+                    ),
+                )
+            }
+        }
+        val vennEngine = MermaidEngine(listOf(capturingPlugin))
+
+        assertIs<GMResult.Ok<MermaidScene>>(
+            vennEngine.render("venn-beta\nset A", context),
+        )
+        assertIs<GMResult.Ok<MermaidScene>>(
+            vennEngine.render(
+                """
+                    ---
+                    config:
+                      theme: default
+                      look: classic
+                    ---
+                    venn-beta
+                    set A
+                """.trimIndent(),
+                context,
+            ),
+        )
+
+        assertEquals("redux-color", defaultContext?.options?.themeName)
+        assertEquals("neo", defaultContext?.options?.look)
+        assertEquals("default", explicitContext?.options?.themeName)
+        assertEquals("classic", explicitContext?.options?.look)
+    }
+
+    @Test
     fun appliesConfiguredFontFamilyToNodesAndEdgeLabels() {
         val result = engine.render(
             """

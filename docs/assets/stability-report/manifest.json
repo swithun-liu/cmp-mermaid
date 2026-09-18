@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-17T16:46:03.186Z",
-  "caseCount": 249,
+  "generatedAt": "2026-09-17T23:36:18.508Z",
+  "caseCount": 262,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -5548,6 +5548,318 @@
       "nativeSha256": "235ccc4d2ef85a29fb4b17a2d5dc4d46209aaac43d48d6e4ea8adeb9e84d76a4",
       "officialSha256": "c763d642450175d37dd0aab0e07dfed3754422fe9a0077a5f4c9e98b120c850d",
       "sourceSha256": "bcc3805f7c1de83c0c648f637cbddd5778d1d876eccbd96b99512c7803fffc26"
+    },
+    {
+      "id": "rc_venn_release_decision",
+      "kind": "venn",
+      "title": "Release decision model",
+      "scenario": "Three weighted review domains and their pairwise and central overlaps drive a launch decision.",
+      "aspectRatio": 1.75,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_venn_release_decision_native.png",
+      "officialFile": "rc_venn_release_decision_official.png",
+      "nativeBytes": 68331,
+      "officialBytes": 67307,
+      "nativeSha256": "629a025fbc853f09bbd118605d7221b5acb47f8a99440a4c92fc3fc9a0301e50",
+      "officialSha256": "f976f4afc147200539f612f6ddbfa2e667085f307e7bc087e901d373e8ddfbf0",
+      "sourceSha256": "ae259d2a02c3eca69f750cf6c9fde8d8be88ba6d967fc9b6d3c7763c06cb3528"
+    },
+    {
+      "id": "rc_venn_capability_catalog",
+      "kind": "venn",
+      "title": "Capability catalog",
+      "scenario": "Indented and explicit text nodes populate independent and overlapping ownership areas.",
+      "aspectRatio": 1.75,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_venn_capability_catalog_native.png",
+      "officialFile": "rc_venn_capability_catalog_official.png",
+      "nativeBytes": 57211,
+      "officialBytes": 59291,
+      "nativeSha256": "7186a9ac80f1b3f965aadcabcf443fc04f736045485b4335b59130644df7cbf0",
+      "officialSha256": "8b88e2ccf2509a0c213391c60669dbb4fd4987ff5721cb41eb3f95f00b23b193",
+      "sourceSha256": "17144e11ff4587f56ac4aacdffaf3835fefa7195375c1153b8fe0fd3b2b2c008"
+    },
+    {
+      "id": "rc_venn_styled_ownership",
+      "kind": "venn",
+      "title": "Styled ownership map",
+      "scenario": "Independent set, shared-region, and text styles exercise merged paint declarations.",
+      "aspectRatio": 1.75,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_venn_styled_ownership_native.png",
+      "officialFile": "rc_venn_styled_ownership_official.png",
+      "nativeBytes": 53333,
+      "officialBytes": 48703,
+      "nativeSha256": "c975dc89bbb7487aeb109b893265afaf898409ffb208049fdad8fd67ddecadfc",
+      "officialSha256": "7521f2eec898e281396c0d448cf743ae4e99c4d9411c9bb1c3cd72fb9df5eaa7",
+      "sourceSha256": "e3cbbe12cc311d46889c6c1185cc374b845618e9042592292786c9db7f9dca39"
+    },
+    {
+      "id": "rc_venn_intrinsic_geometry",
+      "kind": "venn",
+      "title": "Intrinsic geometry controls",
+      "scenario": "A fixed viewport, compact padding, debug guides, and theme variables shape a weighted overlap.",
+      "aspectRatio": 1.6,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_venn_intrinsic_geometry_native.png",
+      "officialFile": "rc_venn_intrinsic_geometry_official.png",
+      "nativeBytes": 75389,
+      "officialBytes": 78489,
+      "nativeSha256": "849f4172c7a2edcfda3169e715e906da211221222c5a36e8988c39b5adebec7a",
+      "officialSha256": "28ea48c281a585f317506e57be4512894f3149072674a3f8ef0040445ec369d5",
+      "sourceSha256": "12dbfffae2f796e911e5407d63d9f515de3f2923fc8267310c6863a1b5907211"
+    },
+    {
+      "id": "rc_venn_international_regions",
+      "kind": "venn",
+      "title": "International regional collaboration",
+      "scenario": "Comments, quoted identifiers, Unicode, and a three-region overlap remain stable.",
+      "aspectRatio": 1.75,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_venn_international_regions_native.png",
+      "officialFile": "rc_venn_international_regions_official.png",
+      "nativeBytes": 47562,
+      "officialBytes": 47496,
+      "nativeSha256": "41efdf449f47a632edb0bfbb358adaf22ceda8939fe064c70a0696bf557ed860",
+      "officialSha256": "721b17e5361feada1dd471ba566125582bba6d419f502ad83b03484376d8ff62",
+      "sourceSha256": "bbe0aeea94aa4f59dc63e78664f17d6c118222f3d98e1c270c29205567470a8e"
+    },
+    {
+      "id": "prod_venn_delivery_overlap",
+      "kind": "venn",
+      "title": "Weighted delivery overlap",
+      "scenario": "Two labeled delivery groups use explicit and default sizes with a shared region.",
+      "aspectRatio": 1.75,
+      "features": [
+        "venn-beta-header",
+        "title",
+        "sets",
+        "bracket-labels",
+        "default-sizes",
+        "explicit-sizes",
+        "pairwise-unions"
+      ],
+      "expectedTexts": [
+        "Delivery ownership",
+        "Product planning",
+        "Engineering delivery",
+        "Shared roadmap"
+      ],
+      "nativeFile": "prod_venn_delivery_overlap_native.png",
+      "officialFile": "prod_venn_delivery_overlap_official.png",
+      "nativeBytes": 44778,
+      "officialBytes": 44461,
+      "nativeSha256": "e8ffdd867f8c23b165b4dd10918032fc53b8eabd02cf2b9bdc68d032d2137ce1",
+      "officialSha256": "03c744a39efcafbdb938452e9af1aecc8bfdc3497b60f1b2c0b9b67f30e89430",
+      "sourceSha256": "2bb0a80fe9c792fa19b410bb41ed942d7480cff98a9a2ae6c13e1f7dfac92aa7"
+    },
+    {
+      "id": "prod_venn_quoted_multi_set",
+      "kind": "venn",
+      "title": "Quoted three-team alignment",
+      "scenario": "Quoted identifiers, unquoted labels, and a three-set union exercise synthetic pairs.",
+      "aspectRatio": 1.75,
+      "features": [
+        "sets",
+        "quoted-identifiers",
+        "unquoted-bracket-labels",
+        "explicit-sizes",
+        "multi-set-unions",
+        "synthetic-pairwise-layout"
+      ],
+      "expectedTexts": [
+        "Customer Need",
+        "Feasible",
+        "Viable",
+        "Ship ready"
+      ],
+      "nativeFile": "prod_venn_quoted_multi_set_native.png",
+      "officialFile": "prod_venn_quoted_multi_set_official.png",
+      "nativeBytes": 44125,
+      "officialBytes": 44766,
+      "nativeSha256": "6188a2a32b366cc22e58b27013ac067a102649f0470855b67af68bbafb25f8ff",
+      "officialSha256": "8fbf62a062a0090df4b6f77f04e4396a0d5522cd5e6cdf1a6de1d0e7a2b79642",
+      "sourceSha256": "4dd28139f658bb325b20ae1eb1a34d69049e08a9b375fa49e5b2090785d4c165"
+    },
+    {
+      "id": "prod_venn_indented_capabilities",
+      "kind": "venn",
+      "title": "Indented capability inventory",
+      "scenario": "Labeled, unlabeled, and numeric text identifiers are placed in set and union areas.",
+      "aspectRatio": 1.75,
+      "features": [
+        "sets",
+        "pairwise-unions",
+        "indented-text",
+        "labeled-text",
+        "unlabeled-text",
+        "numeric-text-identifiers"
+      ],
+      "expectedTexts": [
+        "Client",
+        "Compose UI",
+        "OfflineCache",
+        "2026",
+        "Telemetry"
+      ],
+      "nativeFile": "prod_venn_indented_capabilities_native.png",
+      "officialFile": "prod_venn_indented_capabilities_official.png",
+      "nativeBytes": 45620,
+      "officialBytes": 47381,
+      "nativeSha256": "7a67d4e3f63c84e918f50d137a5947065b64b6eccdb955314fc9a1002f31a5e9",
+      "officialSha256": "3b7f33d3f53b8c6b22bcf36162d9abe5f66f162950b3d9e0c2deafb81861e2ba",
+      "sourceSha256": "d416ecac6b662912ae7015e9fc39249e1f7fba3102651600aa1008e9d5f5ec95"
+    },
+    {
+      "id": "prod_venn_explicit_contracts",
+      "kind": "venn",
+      "title": "Explicit cross-area contracts",
+      "scenario": "Explicit text statements target single and pairwise areas independently of indentation.",
+      "aspectRatio": 1.75,
+      "features": [
+        "sets",
+        "pairwise-unions",
+        "explicit-text",
+        "labeled-text",
+        "unlabeled-text",
+        "quoted-identifiers"
+      ],
+      "expectedTexts": [
+        "Runtime",
+        "Storage",
+        "Lifecycle contract",
+        "Schema contract"
+      ],
+      "nativeFile": "prod_venn_explicit_contracts_native.png",
+      "officialFile": "prod_venn_explicit_contracts_official.png",
+      "nativeBytes": 45961,
+      "officialBytes": 47846,
+      "nativeSha256": "3b0e1db31a2d38ee9a3f978a72b6e29b7f6756da0ed546352433bebb23667aaa",
+      "officialSha256": "0133b3cd28775e9bf26c760f27f1d438542cfb51442dc66c128370d721602bf5",
+      "sourceSha256": "a81842a0d243bef6d5f292714771c11c0d42c240d0a1784ec41628a618959d46"
+    },
+    {
+      "id": "prod_venn_styled_release_risk",
+      "kind": "venn",
+      "title": "Styled release risk",
+      "scenario": "Set, intersection, and text-node styles cover every supported paint property and color form.",
+      "aspectRatio": 1.75,
+      "features": [
+        "set-styles",
+        "intersection-styles",
+        "text-styles",
+        "fill",
+        "stroke",
+        "stroke-width",
+        "fill-opacity",
+        "text-color",
+        "hex-colors",
+        "rgb-colors",
+        "rgba-colors"
+      ],
+      "expectedTexts": [
+        "Known risk",
+        "Unknown risk",
+        "Mitigation",
+        "Owner review"
+      ],
+      "nativeFile": "prod_venn_styled_release_risk_native.png",
+      "officialFile": "prod_venn_styled_release_risk_official.png",
+      "nativeBytes": 47318,
+      "officialBytes": 44164,
+      "nativeSha256": "fb036cbfd4c5b7a492d7f7477b16530a0dd00d22158d07d1aaa9db1ed4455aa6",
+      "officialSha256": "f67034460646d5b4d3e279a945c82be189edb825273692cd54577c1edd934035",
+      "sourceSha256": "493870fca8d340efedbbe7f5b9417ebbfbbb0903c1ed04d4496d70e13e2b47ab"
+    },
+    {
+      "id": "prod_venn_responsive_debug",
+      "kind": "venn",
+      "title": "Responsive debug geometry",
+      "scenario": "Explicit dimensions, padding, responsive sizing, and debug guides shape text placement.",
+      "aspectRatio": 1.75,
+      "features": [
+        "responsive-sizing",
+        "width",
+        "height",
+        "padding",
+        "debug-layout",
+        "indented-text"
+      ],
+      "expectedTexts": [
+        "Responsive layout",
+        "Alpha",
+        "Review queue"
+      ],
+      "nativeFile": "prod_venn_responsive_debug_native.png",
+      "officialFile": "prod_venn_responsive_debug_official.png",
+      "nativeBytes": 52297,
+      "officialBytes": 53347,
+      "nativeSha256": "011e3e132422451edde9c483af3e8c0afd37f964e69bab569128802f2b564c66",
+      "officialSha256": "b0c50cb37db606e5769f66571267da65c5d45ce6071c8290fe92c068fbacb9b0",
+      "sourceSha256": "a9114cfeac31162021e9a575ee8655d62ba93d47289846fa2a12f3b8e1dc9cab"
+    },
+    {
+      "id": "prod_venn_intrinsic_theme",
+      "kind": "venn",
+      "title": "Intrinsic themed comparison",
+      "scenario": "Frontmatter selects intrinsic sizing and overrides Venn palette and title colors.",
+      "aspectRatio": 1.6,
+      "features": [
+        "frontmatter-title",
+        "intrinsic-sizing",
+        "width",
+        "height",
+        "theme",
+        "theme-variables",
+        "hex-colors"
+      ],
+      "expectedTexts": [
+        "Security posture",
+        "Prevent",
+        "Detect",
+        "Respond"
+      ],
+      "nativeFile": "prod_venn_intrinsic_theme_native.png",
+      "officialFile": "prod_venn_intrinsic_theme_official.png",
+      "nativeBytes": 49030,
+      "officialBytes": 49248,
+      "nativeSha256": "af535558444bc515afe512cd912a28b26f2dd2d2c9f9e1a9df3a630ab164609b",
+      "officialSha256": "f029b2bca0833eb163b36a0cd6ae83c83fef420608f3749c6fa4a2279da72f20",
+      "sourceSha256": "0739703606d5785679d748e15eb893150ca7000fa859818fdf0185b5d25f11e2"
+    },
+    {
+      "id": "prod_venn_international_regions",
+      "kind": "venn",
+      "title": "International regions",
+      "scenario": "Comments, Unicode, and merged style declarations coexist.",
+      "aspectRatio": 1.75,
+      "features": [
+        "comments",
+        "unicode",
+        "set-styles",
+        "text-styles",
+        "text-color",
+        "fill"
+      ],
+      "expectedTexts": [
+        "地域 collaboration",
+        "東京",
+        "서울",
+        "共有",
+        "共同運用"
+      ],
+      "nativeFile": "prod_venn_international_regions_native.png",
+      "officialFile": "prod_venn_international_regions_official.png",
+      "nativeBytes": 43316,
+      "officialBytes": 44254,
+      "nativeSha256": "fb8cbe2fb6df099c5f2f77a0590f8a2c089057816b4ff39df1464a8368153e8e",
+      "officialSha256": "623855131d5f36b5d9d5ed1492d9de0a8a324d453334db4639928966131da742",
+      "sourceSha256": "7f425f1eb6d628ef329c474f92f6b138e22fd29574b6f01eb1b4d69413948a58"
     }
   ]
 }

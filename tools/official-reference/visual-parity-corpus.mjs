@@ -21,6 +21,7 @@ export const kinds = [
   'radar',
   'sankey',
   'treemap',
+  'venn',
 ];
 
 export const casesPerKind = 256;
@@ -159,6 +160,8 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}\n"${label}",${evidenceId},${(ordinal % 17) + 3}\n`;
     case 'treemap':
       return replaceOrInsertTreemapTitle(source, label);
+    case 'venn':
+      return replaceOrInsertVennTitle(source, label);
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
@@ -254,6 +257,34 @@ function replaceOrInsertTreemapTitle(source, suffix) {
   return source.replace(
     declarationPattern,
     `$1\n  title "${suffix}"`,
+  );
+}
+
+function replaceOrInsertVennTitle(source, suffix) {
+  const sourceTitlePattern = /^(\s*title\s+)(?:"([^"]*)"|(.+))$/m;
+  if (sourceTitlePattern.test(source)) {
+    return source.replace(sourceTitlePattern, (_, prefix, quoted, plain) => {
+      const title = (quoted ?? plain).trim();
+      return `${prefix}${title} - ${suffix}`;
+    });
+  }
+  const frontmatterTitlePattern = /^(\s*title:\s*)(?:"([^"]*)"|'([^']*)'|(.+))$/m;
+  if (frontmatterTitlePattern.test(source)) {
+    return source.replace(
+      frontmatterTitlePattern,
+      (_, prefix, doubleQuoted, singleQuoted, plain) => {
+        const title = (doubleQuoted ?? singleQuoted ?? plain).trim();
+        return `${prefix}"${title} - ${suffix}"`;
+      },
+    );
+  }
+  const declarationPattern = /^(\s*venn-beta\s*)$/m;
+  if (!declarationPattern.test(source)) {
+    throw new Error('Missing venn-beta declaration while adding title');
+  }
+  return source.replace(
+    declarationPattern,
+    `$1\n  title ${suffix}`,
   );
 }
 

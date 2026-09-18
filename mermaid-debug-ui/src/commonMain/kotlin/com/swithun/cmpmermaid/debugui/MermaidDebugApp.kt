@@ -99,6 +99,7 @@ private enum class DebugScreen {
     Radar,
     Sankey,
     Treemap,
+    Venn,
     Playground,
     LoadTest,
 }
@@ -230,6 +231,12 @@ private val destinations = listOf(
         DebugScreen.Treemap,
         treemapDiagramDocsSpec,
         "Weighted hierarchies with D3 squarify layout and class styling",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Venn,
+        vennDiagramDocsSpec,
+        "Area-proportional set relationships with unions and nested text",
         DiagramStability.Beta,
     ),
 )

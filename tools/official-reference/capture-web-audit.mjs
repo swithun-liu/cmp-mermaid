@@ -57,6 +57,7 @@ const kotlinGalleryFiles = {
   radar: ['RadarDemos.kt', 'RadarDemo'],
   sankey: ['SankeyDemos.kt', 'SankeyDemo'],
   treemap: ['TreemapDemos.kt', 'TreemapDemo'],
+  venn: ['VennDemos.kt', 'VennDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [

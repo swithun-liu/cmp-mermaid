@@ -608,3 +608,41 @@ internal val treemapDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val vennDiagramDocsSpec = DiagramDocsSpec(
+    id = "venn",
+    title = "Venn",
+    syntaxTitle = "Venn diagrams - Basic Syntax",
+    description = "Compare set membership using area-proportional circles, labeled unions, " +
+        "nested text nodes, styles, themes, and sizing controls.",
+    documentationUrl = "https://mermaid.js.org/syntax/venn.html",
+    galleryTitle = "Venn demo gallery",
+    cases = vennDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 16f / 9f,
+        )
+    },
+    syntaxLessons = lessons(
+        vennDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 16f / 9f,
+            )
+        },
+        listOf(
+            "Set declarations establish identifiers and optional labels or areas.",
+            "Union declarations name intersections and may contain two or more sets.",
+            "Indented text nodes belong to the preceding set or union.",
+            "Style targets can address sets, unions, and individual text nodes.",
+            "Frontmatter controls width, height, padding, debug guides, and responsive sizing.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.ReduxColor,
+)
