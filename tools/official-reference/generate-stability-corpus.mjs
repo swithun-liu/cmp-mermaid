@@ -37,6 +37,7 @@ const kotlinGalleryFiles = {
   treemap: ['TreemapDemos.kt', 'TreemapDemo'],
   venn: ['VennDemos.kt', 'VennDemo'],
   ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
+  cynefin: ['CynefinDemos.kt', 'CynefinDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -60,6 +61,7 @@ const expectedKindCounts = new Map([
   ['treemap', 5],
   ['venn', 5],
   ['ishikawa', 5],
+  ['cynefin', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -83,6 +85,7 @@ const expectedProductionKindCounts = new Map([
   ['treemap', 13],
   ['venn', 13],
   ['ishikawa', 13],
+  ['cynefin', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -106,6 +109,7 @@ const supportedKinds = new Set([
   'treemap',
   'venn',
   'ishikawa',
+  'cynefin',
 ]);
 
 validateStabilityCases();
@@ -179,8 +183,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 358) {
-    throw new Error(`Expected 358 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 363) {
+    throw new Error(`Expected 363 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -200,14 +204,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 275) {
+  if (productionCases.length !== 288) {
     throw new Error(
-      `Expected 275 production cases, found ${productionCases.length}`,
+      `Expected 288 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 168) {
+  if (conformanceCases.length !== 176) {
     throw new Error(
-      `Expected 168 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 176 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -440,6 +444,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "treemap",
             "venn",
             "ishikawa",
+            "cynefin",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -525,7 +530,36 @@ private fun addVisualParityVariation(
     "treemap" -> replaceOrInsertTreemapVisualParityTitle(source, label)
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "\${source.trimEnd()}\\n\$label\\n"
+    "cynefin" -> insertCynefinVisualParityEvidence(source, label)
     else -> source
+}
+
+private fun insertCynefinVisualParityEvidence(
+    source: String,
+    label: String,
+): String {
+    val lines = source.trimEnd().lines().toMutableList()
+    val domainIndex = lines.indexOfLast { line ->
+        line.trim() in setOf(
+            "complex",
+            "complicated",
+            "clear",
+            "chaotic",
+        )
+    }
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    if (domainIndex >= 0) {
+        val indent = lines[domainIndex].takeWhile(Char::isWhitespace)
+        lines.add(domainIndex + 1, "\${indent}  \\"\$escapedLabel\\"")
+        return lines.joinToString("\\n") + "\\n"
+    }
+
+    val confusionLine = lines.firstOrNull { line -> line.trim() == "confusion" }
+        ?: return source
+    val indent = confusionLine.takeWhile(Char::isWhitespace)
+    lines += "\${indent}complex"
+    lines += "\${indent}  \\"\$escapedLabel\\""
+    return lines.joinToString("\\n") + "\\n"
 }
 
 private fun appendTimelineEvidence(

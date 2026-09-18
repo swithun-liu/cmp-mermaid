@@ -204,6 +204,16 @@ data class MermaidIshikawaOptions(
     val useMaxWidth: Boolean = false,
 )
 
+data class MermaidCynefinOptions(
+    val width: Float = 800f,
+    val height: Float = 600f,
+    val padding: Float = 40f,
+    val showDomainDescriptions: Boolean = true,
+    val boundaryAmplitude: Float = 8f,
+    val seed: Float = 0f,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidTreemapOptions(
     val useMaxWidth: Boolean = true,
     val padding: Float = 10f,
@@ -335,6 +345,7 @@ data class MermaidRenderOptions(
     val radar: MermaidRadarOptions = MermaidRadarOptions(),
     val sankey: MermaidSankeyOptions = MermaidSankeyOptions(),
     val ishikawa: MermaidIshikawaOptions = MermaidIshikawaOptions(),
+    val cynefin: MermaidCynefinOptions = MermaidCynefinOptions(),
     val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
     val venn: MermaidVennOptions = MermaidVennOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
@@ -631,6 +642,24 @@ data class MermaidRadarTheme(
     val legendFontSize: Float = 12f,
 )
 
+data class MermaidCynefinTheme(
+    val domainFontSize: Float = 16f,
+    val itemFontSize: Float = 12f,
+    val boundaryColor: SceneColor = SceneColor(0xFF333333),
+    val boundaryWidth: Float = 2f,
+    val cliffColor: SceneColor = SceneColor(0xFF8B0000),
+    val cliffWidth: Float = 4f,
+    val arrowColor: SceneColor = SceneColor(0xFF333333),
+    val arrowWidth: Float = 2f,
+    val complexBackground: SceneColor = SceneColor(0xFFE8F5E9),
+    val complicatedBackground: SceneColor = SceneColor(0xFFE3F2FD),
+    val chaoticBackground: SceneColor = SceneColor(0xFFFBE9E7),
+    val clearBackground: SceneColor = SceneColor(0xFFFFF8E1),
+    val confusionBackground: SceneColor = SceneColor(0xFFF3E5F5),
+    val textColor: SceneColor = SceneColor(0xFF333333),
+    val labelColor: SceneColor = SceneColor(0xFF131300),
+)
+
 data class MermaidTimelineTheme(
     val mainBackground: SceneColor = SceneColor(0xFFECECFF),
     val nodeBorder: SceneColor = SceneColor(0xFF9370DB),
@@ -708,6 +737,7 @@ data class MermaidTheme(
     val gitGraph: MermaidGitGraphTheme = MermaidGitGraphTheme(),
     val mindmap: MermaidMindmapTheme = MermaidMindmapTheme(),
     val radar: MermaidRadarTheme = MermaidRadarTheme(),
+    val cynefin: MermaidCynefinTheme = MermaidCynefinTheme(),
     val timeline: MermaidTimelineTheme = MermaidTimelineTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
@@ -745,6 +775,17 @@ data class MermaidTheme(
             gitGraph = gitGraphTheme("dark"),
             mindmap = mindmapTheme("dark"),
             radar = radarTheme("dark", 0xFFD3D3D3),
+            cynefin = cynefinTheme(
+                edge = 0xFFD3D3D3,
+                text = 0xFFCCCCCC,
+                label = 0xFFE0DFDF,
+                cliff = 0xFFFF6B6B,
+                complex = 0xFF1B5E20,
+                complicated = 0xFF0D47A1,
+                chaotic = 0xFFBF360C,
+                clear = 0xFFF57F17,
+                confusion = 0xFF4A148C,
+            ),
             timeline = timelineTheme("dark"),
             pie = darkPieTheme(),
             xyChart = xyChartTheme(
@@ -792,6 +833,11 @@ data class MermaidTheme(
             gitGraph = gitGraphTheme("redux"),
             mindmap = mindmapTheme("redux-color"),
             radar = radarTheme("redux-color", 0xFF000000),
+            cynefin = cynefinTheme(
+                edge = 0xFF000000,
+                text = 0xFF28253D,
+                label = 0xFF28253D,
+            ),
             timeline = timelineTheme("redux-color"),
             dropShadow = reduxShadow(dark = false),
         )
@@ -835,6 +881,17 @@ data class MermaidTheme(
                 gitGraph = gitGraphTheme("forest"),
                 mindmap = mindmapTheme("forest"),
                 radar = radarTheme("forest", 0xFF000000),
+                cynefin = cynefinTheme(
+                    edge = 0xFF000000,
+                    text = 0xFF000000,
+                    label = 0xFF321B67,
+                    cliff = 0xFF8B4513,
+                    complex = 0xFFC8E6C9,
+                    complicated = 0xFFDCEDC8,
+                    chaotic = 0xFFFFE0B2,
+                    clear = 0xFFFFF9C4,
+                    confusion = 0xFFD7CCC8,
+                ),
                 timeline = timelineTheme("forest"),
                 pie = forestPieTheme(),
                 xyChart = xyChartTheme(
@@ -880,6 +937,11 @@ data class MermaidTheme(
                 gitGraph = gitGraphTheme("neutral"),
                 mindmap = mindmapTheme("neutral"),
                 radar = radarTheme("neutral", 0xFF666666),
+                cynefin = cynefinTheme(
+                    edge = 0xFF666666,
+                    text = 0xFF333333,
+                    label = 0xFF111111,
+                ),
                 timeline = timelineTheme("neutral"),
                 pie = neutralPieTheme(),
                 xyChart = xyChartTheme(
@@ -919,6 +981,11 @@ data class MermaidTheme(
                 gitGraph = gitGraphTheme("base"),
                 mindmap = mindmapTheme("base"),
                 radar = radarTheme("base", 0xFF0B0B0B),
+                cynefin = cynefinTheme(
+                    edge = 0xFF0B0B0B,
+                    text = 0xFF333333,
+                    label = 0xFF333333,
+                ),
                 timeline = timelineTheme("base"),
                 pie = basePieTheme(),
                 xyChart = reduxXyChartTheme(background = 0xFFF4F4F4, text = 0xFF333333),
@@ -943,6 +1010,11 @@ data class MermaidTheme(
                 gitGraph = gitGraphTheme("neo"),
                 mindmap = mindmapTheme("neo"),
                 radar = radarTheme("neo", 0xFF000000),
+                cynefin = cynefinTheme(
+                    edge = 0xFF000000,
+                    text = 0xFF333333,
+                    label = 0xFF333333,
+                ),
                 timeline = timelineTheme("neo"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
@@ -976,6 +1048,11 @@ data class MermaidTheme(
                 gitGraph = gitGraphTheme("neo-dark"),
                 mindmap = mindmapTheme("neo-dark"),
                 radar = radarTheme("neo-dark", 0xFFCCCCCC),
+                cynefin = cynefinTheme(
+                    edge = 0xFFCCCCCC,
+                    text = 0xFFE0DFDF,
+                    label = 0xFFE0DFDF,
+                ),
                 timeline = timelineTheme("neo-dark"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
@@ -1008,6 +1085,11 @@ data class MermaidTheme(
                 gitGraph = gitGraphTheme("redux"),
                 mindmap = mindmapTheme("redux"),
                 radar = radarTheme("redux", 0xFF000000),
+                cynefin = cynefinTheme(
+                    edge = 0xFF000000,
+                    text = 0xFF28253D,
+                    label = 0xFF28253D,
+                ),
                 timeline = timelineTheme("redux"),
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
@@ -1386,6 +1468,62 @@ data class MermaidTheme(
                 legendBoxSize = radarLegendBoxSize,
                 legendFontSize = radarLegendFontSize,
             )
+            // Mermaid.js 12.0.0: cynefin/styles.ts -> getCynefinTheme and
+            // cynefinRenderer.ts -> getCynefinDomainColors. A partial nested
+            // override is merged onto the default Cynefin block, not the preset block.
+            val cynefinBase = if (values.keys.any { key -> key.startsWith("cynefin.") }) {
+                MermaidDefault.cynefin
+            } else {
+                theme.cynefin
+            }
+            val cynefinDomainFontSize =
+                number("cynefin.domainFontSize") ?: cynefinBase.domainFontSize
+            val cynefinItemFontSize =
+                number("cynefin.itemFontSize") ?: cynefinBase.itemFontSize
+            val cynefinBoundaryWidth =
+                number("cynefin.boundaryWidth") ?: cynefinBase.boundaryWidth
+            val cynefinCliffWidth =
+                number("cynefin.cliffWidth") ?: cynefinBase.cliffWidth
+            val cynefinArrowWidth =
+                number("cynefin.arrowWidth") ?: cynefinBase.arrowWidth
+            listOf(
+                "cynefin.domainFontSize" to cynefinDomainFontSize,
+                "cynefin.itemFontSize" to cynefinItemFontSize,
+            ).firstOrNull { (_, value) -> !value.isFinite() || value <= 0f }
+                ?.let { invalid ->
+                    invalidVariable = invalid.first to values[invalid.first].orEmpty()
+                }
+            listOf(
+                "cynefin.boundaryWidth" to cynefinBoundaryWidth,
+                "cynefin.cliffWidth" to cynefinCliffWidth,
+                "cynefin.arrowWidth" to cynefinArrowWidth,
+            ).firstOrNull { (_, value) -> !value.isFinite() || value < 0f }
+                ?.let { invalid ->
+                    invalidVariable = invalid.first to values[invalid.first].orEmpty()
+                }
+            val cynefin = cynefinBase.copy(
+                domainFontSize = cynefinDomainFontSize,
+                itemFontSize = cynefinItemFontSize,
+                boundaryColor =
+                    color("cynefin.boundaryColor") ?: cynefinBase.boundaryColor,
+                boundaryWidth = cynefinBoundaryWidth,
+                cliffColor = color("cynefin.cliffColor") ?: cynefinBase.cliffColor,
+                cliffWidth = cynefinCliffWidth,
+                arrowColor = color("cynefin.arrowColor") ?: cynefinBase.arrowColor,
+                arrowWidth = cynefinArrowWidth,
+                complexBackground =
+                    color("cynefin.complexBg") ?: cynefinBase.complexBackground,
+                complicatedBackground =
+                    color("cynefin.complicatedBg") ?: cynefinBase.complicatedBackground,
+                chaoticBackground =
+                    color("cynefin.chaoticBg") ?: cynefinBase.chaoticBackground,
+                clearBackground =
+                    color("cynefin.clearBg") ?: cynefinBase.clearBackground,
+                confusionBackground =
+                    color("cynefin.confusionBg") ?: cynefinBase.confusionBackground,
+                textColor = color("cynefin.textColor") ?: cynefinBase.textColor,
+                labelColor = color("cynefin.labelColor") ?: cynefinBase.labelColor,
+            )
             val timeline = theme.timeline.copy(
                 mainBackground = color("mainBkg") ?: theme.timeline.mainBackground,
                 nodeBorder = color("nodeBorder") ?: theme.timeline.nodeBorder,
@@ -1481,6 +1619,7 @@ data class MermaidTheme(
                 gitGraph = gitGraph,
                 mindmap = mindmap,
                 radar = radar,
+                cynefin = cynefin,
                 timeline = timeline,
                 dropShadow = dropShadow,
             )
@@ -1519,6 +1658,29 @@ data class MermaidTheme(
             }
         }
 
+        private fun cynefinTheme(
+            edge: Long,
+            text: Long,
+            label: Long,
+            cliff: Long = 0xFF8B0000,
+            complex: Long = 0xFFE8F5E9,
+            complicated: Long = 0xFFE3F2FD,
+            chaotic: Long = 0xFFFBE9E7,
+            clear: Long = 0xFFFFF8E1,
+            confusion: Long = 0xFFF3E5F5,
+        ): MermaidCynefinTheme = MermaidCynefinTheme(
+            boundaryColor = SceneColor(edge),
+            cliffColor = SceneColor(cliff),
+            arrowColor = SceneColor(edge),
+            complexBackground = SceneColor(complex),
+            complicatedBackground = SceneColor(complicated),
+            chaoticBackground = SceneColor(chaotic),
+            clearBackground = SceneColor(clear),
+            confusionBackground = SceneColor(confusion),
+            textColor = SceneColor(text),
+            labelColor = SceneColor(label),
+        )
+
         private fun reduxDark(): MermaidTheme = MermaidTheme(
             background = SceneColor(0xFF333333),
             nodeFill = SceneColor(0xFF111113),
@@ -1539,6 +1701,11 @@ data class MermaidTheme(
             gitGraph = gitGraphTheme("redux-dark"),
             mindmap = mindmapTheme("redux-dark"),
             radar = radarTheme("redux-dark", 0xFFCCCCCC),
+            cynefin = cynefinTheme(
+                edge = 0xFFCCCCCC,
+                text = 0xFFE0DFDF,
+                label = 0xFFE0DFDF,
+            ),
             timeline = timelineTheme("redux-dark"),
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,

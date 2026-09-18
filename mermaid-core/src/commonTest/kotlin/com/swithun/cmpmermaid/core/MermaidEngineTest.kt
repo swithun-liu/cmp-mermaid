@@ -257,6 +257,50 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersCynefinBetaThroughRegisteredPlugin() {
+        val result = engine.render(
+            """
+                cynefin-beta
+                  complex
+                    "Emergent practice"
+                  complicated
+                    "Expert analysis"
+                  complex --> complicated : "Pattern stabilizes"
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(scene.elements.filterIsInstance<SceneShape>().any { shape ->
+            shape.id == "cynefin-confusion" && shape.kind == SceneShapeKind.Ellipse
+        })
+        assertTrue(scene.elements.filterIsInstance<ScenePath>().any { path ->
+            path.id == "cynefin-transition-0" &&
+                path.arrowEnd == SceneArrowHead.Triangle
+        })
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any { text ->
+            text.text == "Emergent practice"
+        })
+    }
+
+    @Test
+    fun rendersCynefinColonHeaderThroughRegisteredPlugin() {
+        val result = engine.render(
+            """
+                cynefin-beta:
+                  clear
+                    "Governed process"
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any { text ->
+            text.text == "Governed process"
+        })
+    }
+
+    @Test
     fun rejectsEffectiveHandDrawnLookForExistingDiagramTypes() {
         val result = engine.render(
             """

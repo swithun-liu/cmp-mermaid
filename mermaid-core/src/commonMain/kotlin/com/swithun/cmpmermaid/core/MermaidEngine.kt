@@ -1,6 +1,7 @@
 package com.swithun.cmpmermaid.core
 
 import com.swithun.cmpmermaid.core.classdiagram.ClassPlugin
+import com.swithun.cmpmermaid.core.cynefin.CynefinPlugin
 import com.swithun.cmpmermaid.core.erdiagram.ErPlugin
 import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
@@ -60,6 +61,7 @@ class MermaidEngine(
         RadarPlugin(),
         SankeyPlugin(),
         IshikawaPlugin(),
+        CynefinPlugin(),
         TreemapPlugin(),
         VennPlugin(),
         TimelinePlugin(),

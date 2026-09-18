@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-18T04:34:36.540Z",
-  "caseCount": 275,
+  "generatedAt": "2026-09-18T06:34:55.434Z",
+  "caseCount": 288,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -6150,6 +6150,291 @@
       "nativeSha256": "db0e8cf097f2509c0573f10008ac1824ea716018ab5271cf229eeae3efdf2973",
       "officialSha256": "605829ba3d9043401c462587980f698d7309a197dea8d0cbd2f9e5dde6446efe",
       "sourceSha256": "31b966343508234620caaffe28a4cd406489647e62af12b9dbe58e50c7322a36"
+    },
+    {
+      "id": "rc_cynefin_product_portfolio",
+      "kind": "cynefin",
+      "title": "Product portfolio decisions",
+      "scenario": "A complete framework classifies product work across all five decision domains.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_cynefin_product_portfolio_native.png",
+      "officialFile": "rc_cynefin_product_portfolio_official.png",
+      "nativeBytes": 84432,
+      "officialBytes": 89085,
+      "nativeSha256": "22f9462ebd2d48ccee412064e8ac235b501d4295d9c001806af9635af363c14b",
+      "officialSha256": "b022cd091b832033739814b2a2a2860d67e8b3fcd40bdf7c4cf001dc1944e2ea",
+      "sourceSha256": "4f478f3bd4ab794e4ca025f3beafbc808acb00f08de1811a9886d1870ebe6edc"
+    },
+    {
+      "id": "rc_cynefin_operational_transitions",
+      "kind": "cynefin",
+      "title": "Operational domain transitions",
+      "scenario": "Operational work moves between domains as teams learn, codify, and stabilize.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_cynefin_operational_transitions_native.png",
+      "officialFile": "rc_cynefin_operational_transitions_official.png",
+      "nativeBytes": 84851,
+      "officialBytes": 97485,
+      "nativeSha256": "ea670125ac7da9e2c369fbe80acc321136d7fde1b1dc6a38ee759eb7fd11c122",
+      "officialSha256": "119b13f2755d5a932d258fa336bf6f6d8b937e54776f5b7ed19040a804507f8e",
+      "sourceSha256": "c7aeaadf91fd615576e2920014bda3862c35f36dc49900f50cddcc6d6cd9b2c8"
+    },
+    {
+      "id": "rc_cynefin_confusion_backlog",
+      "kind": "cynefin",
+      "title": "Unclassified work backlog",
+      "scenario": "A crowded confusion domain exercises the compact overflow presentation and outgoing decisions.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_cynefin_confusion_backlog_native.png",
+      "officialFile": "rc_cynefin_confusion_backlog_official.png",
+      "nativeBytes": 73274,
+      "officialBytes": 82114,
+      "nativeSha256": "d9606ba3a6351067341d37b2c7d3fb2e2b25500dbc1c479a2ef7d3f9405ccd4b",
+      "officialSha256": "0245546b553d1f57a134fda26b1876c3723a6de52c716e12877f827c1d1b028c",
+      "sourceSha256": "72935284d2bbc18cdbf41f90a63bfa9d41cb80a3dee1640f95aa0bb707791b77"
+    },
+    {
+      "id": "rc_cynefin_intrinsic_workshop",
+      "kind": "cynefin",
+      "title": "Intrinsic workshop template",
+      "scenario": "A compact fixed-size worksheet uses straight boundaries and hides explanatory subtitles.",
+      "aspectRatio": 1.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_cynefin_intrinsic_workshop_native.png",
+      "officialFile": "rc_cynefin_intrinsic_workshop_official.png",
+      "nativeBytes": 41869,
+      "officialBytes": 42986,
+      "nativeSha256": "82e432ac3d34d7455bc77a2bc797b35e896518b2e06637fd81a0c5656fc8dcfb",
+      "officialSha256": "66b1709fc0a723637de3085c640ea494eb2f34ac28f9ba461e4d9e197c79e481",
+      "sourceSha256": "ee95f9876f60acd776da7ec92f5fad39eb6e89f6bb8538cdf507b32bead4d86b"
+    },
+    {
+      "id": "rc_cynefin_accessible_regions",
+      "kind": "cynefin",
+      "title": "Accessible regional framework",
+      "scenario": "Theme overrides, metadata, entities, comments, and multilingual labels form one responsive diagram.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_cynefin_accessible_regions_native.png",
+      "officialFile": "rc_cynefin_accessible_regions_official.png",
+      "nativeBytes": 65065,
+      "officialBytes": 70992,
+      "nativeSha256": "0747521f9d96aa4f3965c930b81978fc3ae271b3c9c31b7867374fbba1cc107c",
+      "officialSha256": "3653603699bf0e26eb0ab9048b8a01e7612693f0c437a568baec92dcc218fd75",
+      "sourceSha256": "8076010a4849cec0de4974dfb2771e322fa2b181548c456585bd82e494dd950a"
+    },
+    {
+      "id": "prod_cynefin_delivery_domains",
+      "kind": "cynefin",
+      "title": "Delivery decision domains",
+      "scenario": "All five fixed domains classify delivery work and retain declaration-independent placement.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "cynefin-beta-header",
+        "domains",
+        "fixed-domain-layout",
+        "quoted-items",
+        "domain-descriptions",
+        "wavy-boundaries"
+      ],
+      "expectedTexts": [
+        "Product discovery",
+        "Architecture review",
+        "Release checklist",
+        "Incident containment",
+        "Untriaged request"
+      ],
+      "nativeFile": "prod_cynefin_delivery_domains_native.png",
+      "officialFile": "prod_cynefin_delivery_domains_official.png",
+      "nativeBytes": 72882,
+      "officialBytes": 78857,
+      "nativeSha256": "6e793c2085f4469698968b97640758972ebb210ae83c7e59ca519a80e5a61890",
+      "officialSha256": "8428d0db93fe238b4667ed072893b619ebb9af850b3f5757ad216249b665ba99",
+      "sourceSha256": "34b8fd565a525e910759b8fb6b05acb0288dea2c1686b29b8b222e8ecc8b7cf0"
+    },
+    {
+      "id": "prod_cynefin_transition_lifecycle",
+      "kind": "cynefin",
+      "title": "Operational transition lifecycle",
+      "scenario": "Labelled and unlabelled transitions connect domain centers while self-loops are filtered.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "transitions",
+        "transition-labels",
+        "unlabelled-transitions",
+        "self-loop-filtering"
+      ],
+      "expectedTexts": [
+        "Pattern identified",
+        "Best practice codified",
+        "Stabilized"
+      ],
+      "nativeFile": "prod_cynefin_transition_lifecycle_native.png",
+      "officialFile": "prod_cynefin_transition_lifecycle_official.png",
+      "nativeBytes": 76080,
+      "officialBytes": 88692,
+      "nativeSha256": "1c81582ca9b14dd06e828510a99c4dcd6dbe412a3290511c2e7aa3aca5511861",
+      "officialSha256": "b0d85f8dc7a05bf18d7f69c04b2aac9768c80f24d6a6aeaeac9a06d0e76d954f",
+      "sourceSha256": "ed810d52c144bfd7abe9028d69ad6435090f6c73aeea53a5456dbd6a07645eda"
+    },
+    {
+      "id": "prod_cynefin_confusion_overflow",
+      "kind": "cynefin",
+      "title": "Confusion overflow triage",
+      "scenario": "The center ellipse renders three unknowns and summarizes the remaining backlog.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "confusion-items",
+        "confusion-overflow",
+        "quoted-items"
+      ],
+      "expectedTexts": [
+        "Unknown owner",
+        "Unknown impact",
+        "Unknown urgency"
+      ],
+      "nativeFile": "prod_cynefin_confusion_overflow_native.png",
+      "officialFile": "prod_cynefin_confusion_overflow_official.png",
+      "nativeBytes": 64133,
+      "officialBytes": 69821,
+      "nativeSha256": "17f0d4c4666551c9908763c0edb11f534c798507f5c4ca0e45840624ee6f452b",
+      "officialSha256": "97931fd254f522543679c7631a8b3f1cfed94a53ccfe2b3cb309d5a555034fbc",
+      "sourceSha256": "12a3f8424c8c18d4451a32e1445cf0133880e94acc4b3ba86288676e7ab7c34f"
+    },
+    {
+      "id": "prod_cynefin_intrinsic_worksheet",
+      "kind": "cynefin",
+      "title": "Intrinsic decision worksheet",
+      "scenario": "Explicit geometry, straight boundaries, hidden descriptions, and intrinsic sizing produce a compact worksheet.",
+      "aspectRatio": 1.4,
+      "features": [
+        "empty-domains",
+        "hidden-domain-descriptions",
+        "straight-boundaries",
+        "deterministic-seed",
+        "width",
+        "height",
+        "padding",
+        "intrinsic-sizing"
+      ],
+      "expectedTexts": [
+        "Decision worksheet"
+      ],
+      "nativeFile": "prod_cynefin_intrinsic_worksheet_native.png",
+      "officialFile": "prod_cynefin_intrinsic_worksheet_official.png",
+      "nativeBytes": 41822,
+      "officialBytes": 43043,
+      "nativeSha256": "90a12bc94e0a9e0874731943bc2aa2ca4f14810e7a64f50e2fe16e2a4eb068ae",
+      "officialSha256": "3d4556f7f45cdbdd5c06d537235751e916c60035608afa46e35d365c34e8e234",
+      "sourceSha256": "5297bb1c23ca283a2b50d2ae792634ed06ef92c7693c140fa1762e4c4c1f5bec"
+    },
+    {
+      "id": "prod_cynefin_responsive_theme",
+      "kind": "cynefin",
+      "title": "Responsive themed operating model",
+      "scenario": "Nested Cynefin theme variables and responsive sizing customize every visual role.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "responsive-sizing",
+        "theme",
+        "theme-variables",
+        "deterministic-seed",
+        "wavy-boundaries"
+      ],
+      "expectedTexts": [
+        "Adaptive experiment",
+        "Expert diagnosis",
+        "Known remediation",
+        "Emergency action"
+      ],
+      "nativeFile": "prod_cynefin_responsive_theme_native.png",
+      "officialFile": "prod_cynefin_responsive_theme_official.png",
+      "nativeBytes": 71381,
+      "officialBytes": 76826,
+      "nativeSha256": "e6960360822cdd1ea7c76c84b6965583530ffb1313ac847562e15fb9710cb1bf",
+      "officialSha256": "ce170c96463e2f2a5f5ef0a624079748aedac2f709642efe1197b04bfa360380",
+      "sourceSha256": "b9f2ebf8010a4e6edf6967f575feaf032a488350234634721a58147653363bd8"
+    },
+    {
+      "id": "prod_cynefin_duplicate_domain",
+      "kind": "cynefin",
+      "title": "Latest domain declaration",
+      "scenario": "A repeated domain replaces its item list without changing its fixed visual position.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "duplicate-domain-replacement",
+        "domains",
+        "quoted-items"
+      ],
+      "expectedTexts": [
+        "Replacement experiment",
+        "Preserved analysis"
+      ],
+      "nativeFile": "prod_cynefin_duplicate_domain_native.png",
+      "officialFile": "prod_cynefin_duplicate_domain_official.png",
+      "nativeBytes": 61807,
+      "officialBytes": 67229,
+      "nativeSha256": "7d709f648ea0ce2cb7f828c0a8db94159df914776934a6c002c27ed2f06486a9",
+      "officialSha256": "6f339c333022163f9566e3227235a83e70e2bd54482e13191ed1e3118a763bc7",
+      "sourceSha256": "904aa767a7d9109010a8f7092c56e0993a3f0420b989f41f4a43aad132303643"
+    },
+    {
+      "id": "prod_cynefin_accessible_regions",
+      "kind": "cynefin",
+      "title": "Accessible regional decisions",
+      "scenario": "Frontmatter, accessibility metadata, comments, entities, and multilingual labels share one framework.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "frontmatter-title",
+        "accessibility",
+        "comments",
+        "entities",
+        "unicode"
+      ],
+      "expectedTexts": [
+        "Regional operating model",
+        "東京",
+        "서울 analysis",
+        "São Paulo response"
+      ],
+      "nativeFile": "prod_cynefin_accessible_regions_native.png",
+      "officialFile": "prod_cynefin_accessible_regions_official.png",
+      "nativeBytes": 69404,
+      "officialBytes": 74855,
+      "nativeSha256": "420422d1537e0f85169fda505946753213bd4d900352bf93c7cbf549b1bf9399",
+      "officialSha256": "64f7137e219ab9300a87ce3033fcb90996325de03a683765f9d428a8e7c40d56",
+      "sourceSha256": "a233a9e14c8ce253b09e8b45d1436bd7fe1bda3838e12ec7adb36a46b3dd6550"
+    },
+    {
+      "id": "prod_cynefin_colon_header",
+      "kind": "cynefin",
+      "title": "Colon declaration form",
+      "scenario": "The detector-compatible colon header preserves fixed domains and deterministic boundaries.",
+      "aspectRatio": 1.3333333333333333,
+      "features": [
+        "colon-header",
+        "cynefin-beta-header",
+        "deterministic-seed"
+      ],
+      "expectedTexts": [
+        "Governed process",
+        "Novel response"
+      ],
+      "nativeFile": "prod_cynefin_colon_header_native.png",
+      "officialFile": "prod_cynefin_colon_header_official.png",
+      "nativeBytes": 60242,
+      "officialBytes": 65854,
+      "nativeSha256": "8ca4edc38f8bf8028ef44a3ea9e6555e479c1e7634e4ffedb2cb5341cc1a2786",
+      "officialSha256": "7dd84fc7439e7c0a11461675b3a435562a3aca0c73cd991609297d7054c787c0",
+      "sourceSha256": "91a204ce770a0aa90cd7dcf72a781f7cf29010297be6e1b09f40f382ea2f5236"
     }
   ]
 }

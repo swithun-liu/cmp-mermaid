@@ -467,6 +467,38 @@ export const requiredFeaturesByKind = {
     'unicode',
     'long-wrapping',
   ],
+  cynefin: [
+    'cynefin-beta-header',
+    'colon-header',
+    'domains',
+    'fixed-domain-layout',
+    'quoted-items',
+    'empty-domains',
+    'duplicate-domain-replacement',
+    'transitions',
+    'transition-labels',
+    'unlabelled-transitions',
+    'self-loop-filtering',
+    'confusion-items',
+    'confusion-overflow',
+    'domain-descriptions',
+    'hidden-domain-descriptions',
+    'wavy-boundaries',
+    'straight-boundaries',
+    'deterministic-seed',
+    'width',
+    'height',
+    'padding',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'theme',
+    'theme-variables',
+    'frontmatter-title',
+    'accessibility',
+    'comments',
+    'entities',
+    'unicode',
+  ],
 };
 
 const flowchartCases = [
@@ -4404,6 +4436,250 @@ End to end production compatibility verification failure
   },
 ];
 
+const cynefinCases = [
+  {
+    id: 'prod_cynefin_delivery_domains',
+    kind: 'cynefin',
+    title: 'Delivery decision domains',
+    scenario: 'All five fixed domains classify delivery work and retain declaration-independent placement.',
+    aspectRatio: 4 / 3,
+    features: [
+      'cynefin-beta-header',
+      'domains',
+      'fixed-domain-layout',
+      'quoted-items',
+      'domain-descriptions',
+      'wavy-boundaries',
+    ],
+    expectedTexts: ['Product discovery', 'Architecture review', 'Release checklist', 'Incident containment', 'Untriaged request'],
+    source: String.raw`
+cynefin-beta
+  title Delivery decision domains
+  clear
+    "Release checklist"
+  chaotic
+    "Incident containment"
+  complex
+    "Product discovery"
+  confusion
+    "Untriaged request"
+  complicated
+    "Architecture review"
+`,
+  },
+  {
+    id: 'prod_cynefin_transition_lifecycle',
+    kind: 'cynefin',
+    title: 'Operational transition lifecycle',
+    scenario: 'Labelled and unlabelled transitions connect domain centers while self-loops are filtered.',
+    aspectRatio: 4 / 3,
+    features: [
+      'transitions',
+      'transition-labels',
+      'unlabelled-transitions',
+      'self-loop-filtering',
+    ],
+    expectedTexts: ['Pattern identified', 'Best practice codified', 'Stabilized'],
+    source: String.raw`
+cynefin-beta
+  complex
+    "Explore signal"
+  complicated
+    "Analyze evidence"
+  clear
+    "Codify response"
+  chaotic
+    "Contain impact"
+  complex --> complicated : "Pattern identified"
+  complicated --> clear : "Best practice codified"
+  chaotic --> complex : "Stabilized"
+  confusion --> chaotic
+  clear --> clear : "Ignored"
+`,
+  },
+  {
+    id: 'prod_cynefin_confusion_overflow',
+    kind: 'cynefin',
+    title: 'Confusion overflow triage',
+    scenario: 'The center ellipse renders three unknowns and summarizes the remaining backlog.',
+    aspectRatio: 4 / 3,
+    features: [
+      'confusion-items',
+      'confusion-overflow',
+      'quoted-items',
+    ],
+    expectedTexts: ['Unknown owner', 'Unknown impact', 'Unknown urgency'],
+    source: String.raw`
+cynefin-beta
+  confusion
+    "Unknown owner"
+    "Unknown impact"
+    "Unknown urgency"
+    "Unknown dependency"
+    "Unknown deadline"
+`,
+  },
+  {
+    id: 'prod_cynefin_intrinsic_worksheet',
+    kind: 'cynefin',
+    title: 'Intrinsic decision worksheet',
+    scenario: 'Explicit geometry, straight boundaries, hidden descriptions, and intrinsic sizing produce a compact worksheet.',
+    aspectRatio: 1.4,
+    features: [
+      'empty-domains',
+      'hidden-domain-descriptions',
+      'straight-boundaries',
+      'deterministic-seed',
+      'width',
+      'height',
+      'padding',
+      'intrinsic-sizing',
+    ],
+    expectedTexts: ['Decision worksheet'],
+    source: String.raw`
+---
+title: Decision worksheet
+config:
+  cynefin:
+    width: 700
+    height: 500
+    padding: 20
+    showDomainDescriptions: false
+    boundaryAmplitude: 0
+    seed: 42
+    useMaxWidth: false
+---
+cynefin-beta
+  complex
+  complicated
+  chaotic
+  clear
+`,
+  },
+  {
+    id: 'prod_cynefin_responsive_theme',
+    kind: 'cynefin',
+    title: 'Responsive themed operating model',
+    scenario: 'Nested Cynefin theme variables and responsive sizing customize every visual role.',
+    aspectRatio: 4 / 3,
+    features: [
+      'responsive-sizing',
+      'theme',
+      'theme-variables',
+      'deterministic-seed',
+      'wavy-boundaries',
+    ],
+    expectedTexts: ['Adaptive experiment', 'Expert diagnosis', 'Known remediation', 'Emergency action'],
+    source: String.raw`
+---
+config:
+  theme: forest
+  themeVariables:
+    cynefin:
+      complexBg: "#dcfce7"
+      complicatedBg: "#dbeafe"
+      chaoticBg: "#fee2e2"
+      clearBg: "#fef9c3"
+      confusionBg: "#ede9fe"
+      boundaryColor: "#334155"
+      cliffColor: "#be123c"
+      arrowColor: "#0369a1"
+      domainFontSize: 18
+      itemFontSize: 13
+  cynefin:
+    seed: 73
+    useMaxWidth: true
+---
+cynefin-beta
+  complex
+    "Adaptive experiment"
+  complicated
+    "Expert diagnosis"
+  clear
+    "Known remediation"
+  chaotic
+    "Emergency action"
+`,
+  },
+  {
+    id: 'prod_cynefin_duplicate_domain',
+    kind: 'cynefin',
+    title: 'Latest domain declaration',
+    scenario: 'A repeated domain replaces its item list without changing its fixed visual position.',
+    aspectRatio: 4 / 3,
+    features: [
+      'duplicate-domain-replacement',
+      'domains',
+      'quoted-items',
+    ],
+    expectedTexts: ['Replacement experiment', 'Preserved analysis'],
+    source: String.raw`
+cynefin-beta
+  complex
+    "Superseded experiment"
+  complicated
+    "Preserved analysis"
+  complex
+    "Replacement experiment"
+`,
+  },
+  {
+    id: 'prod_cynefin_accessible_regions',
+    kind: 'cynefin',
+    title: 'Accessible regional decisions',
+    scenario: 'Frontmatter, accessibility metadata, comments, entities, and multilingual labels share one framework.',
+    aspectRatio: 4 / 3,
+    features: [
+      'frontmatter-title',
+      'accessibility',
+      'comments',
+      'entities',
+      'unicode',
+    ],
+    expectedTexts: ['Regional operating model', '東京', '서울 analysis', 'São Paulo response'],
+    source: String.raw`
+---
+title: Regional operating model
+---
+cynefin-beta
+  accTitle: Accessible regional decisions
+  accDescr: Work classified across international operating regions
+  %% Entity decoding and mixed scripts use the shared preprocessing path.
+  complex
+    "東京 &amp; discovery"
+  complicated
+    "서울 analysis"
+  chaotic
+    "São Paulo response"
+`,
+  },
+  {
+    id: 'prod_cynefin_colon_header',
+    kind: 'cynefin',
+    title: 'Colon declaration form',
+    scenario: 'The detector-compatible colon header preserves fixed domains and deterministic boundaries.',
+    aspectRatio: 4 / 3,
+    features: [
+      'colon-header',
+      'cynefin-beta-header',
+      'deterministic-seed',
+    ],
+    expectedTexts: ['Governed process', 'Novel response'],
+    source: String.raw`
+---
+config:
+  cynefin:
+    seed: -17
+---
+cynefin-beta:
+  clear
+    "Governed process"
+  chaotic
+    "Novel response"
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -4743,6 +5019,7 @@ export const conformanceCases = [
   ...treemapCases,
   ...vennCases,
   ...ishikawaCases,
+  ...cynefinCases,
 ];
 
 export const cases = [

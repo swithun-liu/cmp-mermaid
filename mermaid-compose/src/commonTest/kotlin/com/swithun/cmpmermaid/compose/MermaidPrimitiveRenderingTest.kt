@@ -6,10 +6,14 @@ import kotlin.test.assertEquals
 
 class MermaidPrimitiveRenderingTest {
     @Test
-    fun dispatchesCircleToOvalWithoutChangingExistingPrimitiveKinds() {
+    fun dispatchesCircularShapesToOvalWithoutChangingExistingPrimitiveKinds() {
         assertEquals(
             PrimitiveCanvasShape.Oval,
             SceneShapeKind.Circle.primitiveCanvasShape(),
+        )
+        assertEquals(
+            PrimitiveCanvasShape.Oval,
+            SceneShapeKind.Ellipse.primitiveCanvasShape(),
         )
         assertEquals(
             PrimitiveCanvasShape.RoundedRectangle,

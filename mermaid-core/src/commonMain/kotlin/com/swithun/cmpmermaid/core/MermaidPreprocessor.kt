@@ -246,6 +246,7 @@ internal object MermaidPreprocessor {
         val radar = map.map("radar")
         val sankey = map.map("sankey")
         val ishikawa = map.map("ishikawa")
+        val cynefin = map.map("cynefin")
         val treemap = map.map("treemap")
         val venn = map.map("venn")
         val kanban = map.map("kanban")
@@ -525,7 +526,7 @@ internal object MermaidPreprocessor {
                         arrays[entryKey.content] = items.filterNotNull()
                     }
                     is YamlMap -> {
-                        if (entryKey.content !in setOf("xyChart", "radar")) {
+                        if (entryKey.content !in setOf("xyChart", "radar", "cynefin")) {
                             readError = MermaidError.Configuration(
                                 "Mermaid $sourceName '$path.${entryKey.content}' " +
                                     "does not support nested theme variables",
@@ -536,7 +537,8 @@ internal object MermaidPreprocessor {
                             val scalar = nestedValue as? YamlScalar
                             if (scalar == null) {
                                 readError = MermaidError.Configuration(
-                                    "Mermaid $sourceName '$path.xyChart.${nestedKey.content}' " +
+                                    "Mermaid $sourceName " +
+                                        "'$path.${entryKey.content}.${nestedKey.content}' " +
                                         "must be a scalar",
                                 )
                                 return null
@@ -1219,6 +1221,57 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'ishikawa.diagramPadding' must be non-negative",
             )
         }
+        val cynefinWidth = float(cynefin, "width", "cynefin.width")
+        val cynefinHeight = float(cynefin, "height", "cynefin.height")
+        val cynefinPadding = float(cynefin, "padding", "cynefin.padding")
+        val cynefinShowDomainDescriptions = boolean(
+            cynefin,
+            "showDomainDescriptions",
+            "cynefin.showDomainDescriptions",
+        )
+        val cynefinBoundaryAmplitude = float(
+            cynefin,
+            "boundaryAmplitude",
+            "cynefin.boundaryAmplitude",
+        )
+        val cynefinSeed = float(cynefin, "seed", "cynefin.seed")
+        val cynefinUseMaxWidth =
+            boolean(cynefin, "useMaxWidth", "cynefin.useMaxWidth")
+        listOf(
+            "cynefin.width" to cynefinWidth,
+            "cynefin.height" to cynefinHeight,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value <= 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be positive",
+            )
+        }
+        if (
+            cynefinPadding != null &&
+            (!cynefinPadding.isFinite() || cynefinPadding < 0f)
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'cynefin.padding' must be non-negative",
+            )
+        }
+        if (
+            cynefinBoundaryAmplitude != null &&
+            (
+                !cynefinBoundaryAmplitude.isFinite() ||
+                    cynefinBoundaryAmplitude !in 0f..50f
+                )
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'cynefin.boundaryAmplitude' " +
+                    "must be between 0 and 50",
+            )
+        }
+        if (cynefinSeed != null && !cynefinSeed.isFinite()) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'cynefin.seed' must be finite",
+            )
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -1614,6 +1667,17 @@ internal object MermaidPreprocessor {
                         useMaxWidth = ishikawaUseMaxWidth,
                     )
                 },
+                cynefin = cynefin?.let {
+                    MermaidCynefinConfigOverride(
+                        width = cynefinWidth,
+                        height = cynefinHeight,
+                        padding = cynefinPadding,
+                        showDomainDescriptions = cynefinShowDomainDescriptions,
+                        boundaryAmplitude = cynefinBoundaryAmplitude,
+                        seed = cynefinSeed,
+                        useMaxWidth = cynefinUseMaxWidth,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -1844,6 +1908,7 @@ internal data class MermaidConfigOverride(
     val radar: MermaidRadarConfigOverride? = null,
     val sankey: MermaidSankeyConfigOverride? = null,
     val ishikawa: MermaidIshikawaConfigOverride? = null,
+    val cynefin: MermaidCynefinConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -1962,6 +2027,11 @@ internal data class MermaidConfigOverride(
                 ishikawa?.merge(overrides.ishikawa) ?: overrides.ishikawa
             else -> ishikawa
         },
+        cynefin = when {
+            overrides.cynefin != null ->
+                cynefin?.merge(overrides.cynefin) ?: overrides.cynefin
+            else -> cynefin
+        },
         treemap = when {
             overrides.treemap != null ->
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
@@ -2077,6 +2147,7 @@ internal data class MermaidConfigOverride(
                 radar = radar?.applyTo(options.radar) ?: options.radar,
                 sankey = sankey?.applyTo(options.sankey) ?: options.sankey,
                 ishikawa = ishikawa?.applyTo(options.ishikawa) ?: options.ishikawa,
+                cynefin = cynefin?.applyTo(options.cynefin) ?: options.cynefin,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -2231,6 +2302,39 @@ internal data class MermaidIshikawaConfigOverride(
 
     fun applyTo(options: MermaidIshikawaOptions): MermaidIshikawaOptions = options.copy(
         diagramPadding = diagramPadding ?: options.diagramPadding,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+    )
+}
+
+internal data class MermaidCynefinConfigOverride(
+    val width: Float? = null,
+    val height: Float? = null,
+    val padding: Float? = null,
+    val showDomainDescriptions: Boolean? = null,
+    val boundaryAmplitude: Float? = null,
+    val seed: Float? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(overrides: MermaidCynefinConfigOverride): MermaidCynefinConfigOverride =
+        MermaidCynefinConfigOverride(
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            padding = overrides.padding ?: padding,
+            showDomainDescriptions =
+                overrides.showDomainDescriptions ?: showDomainDescriptions,
+            boundaryAmplitude = overrides.boundaryAmplitude ?: boundaryAmplitude,
+            seed = overrides.seed ?: seed,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        )
+
+    fun applyTo(options: MermaidCynefinOptions): MermaidCynefinOptions = options.copy(
+        width = width ?: options.width,
+        height = height ?: options.height,
+        padding = padding ?: options.padding,
+        showDomainDescriptions =
+            showDomainDescriptions ?: options.showDomainDescriptions,
+        boundaryAmplitude = boundaryAmplitude ?: options.boundaryAmplitude,
+        seed = seed ?: options.seed,
         useMaxWidth = useMaxWidth ?: options.useMaxWidth,
     )
 }

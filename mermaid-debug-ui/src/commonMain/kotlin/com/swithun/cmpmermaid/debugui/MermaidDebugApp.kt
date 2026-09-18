@@ -101,6 +101,7 @@ private enum class DebugScreen {
     Treemap,
     Venn,
     Ishikawa,
+    Cynefin,
     Playground,
     LoadTest,
 }
@@ -244,6 +245,12 @@ private val destinations = listOf(
         DebugScreen.Ishikawa,
         ishikawaDiagramDocsSpec,
         "Cause-and-effect fishbones with alternating and nested branches",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Cynefin,
+        cynefinDiagramDocsSpec,
+        "Five decision domains with organic boundaries and transitions",
         DiagramStability.Beta,
     ),
 )

@@ -116,6 +116,119 @@ class MermaidThemeTest {
     }
 
     @Test
+    fun matchesMermaid12CynefinThemePalettes() {
+        with(MermaidTheme.preset(MermaidThemePreset.Default).cynefin) {
+            assertEquals(SceneColor(0xFFE8F5E9), complexBackground)
+            assertEquals(SceneColor(0xFFE3F2FD), complicatedBackground)
+            assertEquals(SceneColor(0xFFFBE9E7), chaoticBackground)
+            assertEquals(SceneColor(0xFFFFF8E1), clearBackground)
+            assertEquals(SceneColor(0xFFF3E5F5), confusionBackground)
+            assertEquals(SceneColor(0xFF8B0000), cliffColor)
+        }
+        with(MermaidTheme.preset(MermaidThemePreset.Dark).cynefin) {
+            assertEquals(SceneColor(0xFF1B5E20), complexBackground)
+            assertEquals(SceneColor(0xFF0D47A1), complicatedBackground)
+            assertEquals(SceneColor(0xFFBF360C), chaoticBackground)
+            assertEquals(SceneColor(0xFFF57F17), clearBackground)
+            assertEquals(SceneColor(0xFF4A148C), confusionBackground)
+            assertEquals(SceneColor(0xFFFF6B6B), cliffColor)
+        }
+        with(MermaidTheme.preset(MermaidThemePreset.Forest).cynefin) {
+            assertEquals(SceneColor(0xFFC8E6C9), complexBackground)
+            assertEquals(SceneColor(0xFFDCEDC8), complicatedBackground)
+            assertEquals(SceneColor(0xFFFFE0B2), chaoticBackground)
+            assertEquals(SceneColor(0xFFFFF9C4), clearBackground)
+            assertEquals(SceneColor(0xFFD7CCC8), confusionBackground)
+            assertEquals(SceneColor(0xFF8B4513), cliffColor)
+        }
+    }
+
+    @Test
+    fun derivesCynefinLineAndTextColorsForEveryPreset() {
+        MermaidThemePreset.entries.forEach { preset ->
+            val theme = MermaidTheme.preset(preset)
+
+            assertEquals(theme.edge, theme.cynefin.boundaryColor, preset.name)
+            assertEquals(theme.edge, theme.cynefin.arrowColor, preset.name)
+            assertEquals(theme.textColor, theme.cynefin.textColor, preset.name)
+            assertEquals(theme.nodeText, theme.cynefin.labelColor, preset.name)
+        }
+    }
+
+    @Test
+    fun appliesAndValidatesNestedCynefinThemeVariables() {
+        val base = MermaidTheme.preset(MermaidThemePreset.Default)
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = base,
+                values = mapOf(
+                    "cynefin.domainFontSize" to "20",
+                    "cynefin.itemFontSize" to "13px",
+                    "cynefin.boundaryColor" to "#102030",
+                    "cynefin.boundaryWidth" to "3",
+                    "cynefin.cliffColor" to "#405060",
+                    "cynefin.cliffWidth" to "5",
+                    "cynefin.arrowColor" to "#708090",
+                    "cynefin.arrowWidth" to "4",
+                    "cynefin.complexBg" to "#112233",
+                    "cynefin.complicatedBg" to "#223344",
+                    "cynefin.chaoticBg" to "#334455",
+                    "cynefin.clearBg" to "#445566",
+                    "cynefin.confusionBg" to "#556677",
+                    "cynefin.textColor" to "#667788",
+                    "cynefin.labelColor" to "#778899",
+                ),
+            ),
+        ).value.cynefin
+
+        assertEquals(20f, customized.domainFontSize)
+        assertEquals(13f, customized.itemFontSize)
+        assertEquals(SceneColor(0xFF102030), customized.boundaryColor)
+        assertEquals(3f, customized.boundaryWidth)
+        assertEquals(SceneColor(0xFF405060), customized.cliffColor)
+        assertEquals(5f, customized.cliffWidth)
+        assertEquals(SceneColor(0xFF708090), customized.arrowColor)
+        assertEquals(4f, customized.arrowWidth)
+        assertEquals(SceneColor(0xFF112233), customized.complexBackground)
+        assertEquals(SceneColor(0xFF223344), customized.complicatedBackground)
+        assertEquals(SceneColor(0xFF334455), customized.chaoticBackground)
+        assertEquals(SceneColor(0xFF445566), customized.clearBackground)
+        assertEquals(SceneColor(0xFF556677), customized.confusionBackground)
+        assertEquals(SceneColor(0xFF667788), customized.textColor)
+        assertEquals(SceneColor(0xFF778899), customized.labelColor)
+
+        listOf(
+            "cynefin.domainFontSize" to "0",
+            "cynefin.itemFontSize" to "NaN",
+            "cynefin.boundaryWidth" to "-1",
+            "cynefin.cliffColor" to "not-a-color",
+        ).forEach { (name, value) ->
+            assertIs<GMResult.Err<MermaidError.Configuration>>(
+                MermaidTheme.withVariables(base, mapOf(name to value)),
+                "$name=$value",
+            )
+        }
+    }
+
+    @Test
+    fun mergesPartialCynefinOverridesOntoTheDefaultBlockLikeMermaid12() {
+        val defaultCynefin = MermaidTheme.preset(MermaidThemePreset.Default).cynefin
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.preset(MermaidThemePreset.Dark),
+                values = mapOf("cynefin.confusionBg" to "#581c87"),
+            ),
+        ).value.cynefin
+
+        assertEquals(defaultCynefin.complexBackground, customized.complexBackground)
+        assertEquals(defaultCynefin.boundaryColor, customized.boundaryColor)
+        assertEquals(defaultCynefin.cliffColor, customized.cliffColor)
+        assertEquals(defaultCynefin.textColor, customized.textColor)
+        assertEquals(defaultCynefin.labelColor, customized.labelColor)
+        assertEquals(SceneColor(0xFF581C87), customized.confusionBackground)
+    }
+
+    @Test
     fun appliesBrandVariablesWithoutMutatingTheBasePreset() {
         val base = MermaidTheme.preset(MermaidThemePreset.ReduxColor)
         val result = MermaidTheme.withVariables(

@@ -3602,6 +3602,149 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_product_portfolio",
+        diagramId = "cynefin",
+        title = "Product portfolio decisions",
+        scenario = "A complete framework classifies product work across all five decision domains.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              title Product portfolio decisions
+              complex
+                "Discover a new market"
+                "Prototype recommendation quality"
+              complicated
+                "Model unit economics"
+                "Review regulatory constraints"
+              clear
+                "Run release checklist"
+              chaotic
+                "Contain active data loss"
+              confusion
+                "Unclassified customer signal"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_operational_transitions",
+        diagramId = "cynefin",
+        title = "Operational domain transitions",
+        scenario = "Operational work moves between domains as teams learn, codify, and stabilize.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              title Operational transitions
+              complex
+                "Probe intermittent latency"
+              complicated
+                "Analyze dependency behavior"
+              clear
+                "Automate known mitigation"
+              chaotic
+                "Restore critical traffic"
+              complex --> complicated : "Evidence converges"
+              complicated --> clear : "Runbook approved"
+              clear --> chaotic : "Control fails"
+              chaotic --> complex : "Impact contained"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_confusion_backlog",
+        diagramId = "cynefin",
+        title = "Unclassified work backlog",
+        scenario = "A crowded confusion domain exercises the compact overflow presentation and outgoing decisions.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              confusion
+                "Unknown ownership"
+                "Unknown blast radius"
+                "Unknown urgency"
+                "Unknown dependency"
+                "Unknown customer segment"
+                "Unknown compliance impact"
+              confusion --> chaotic : "Immediate containment"
+              confusion --> complex : "Safe experiment"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_intrinsic_workshop",
+        diagramId = "cynefin",
+        title = "Intrinsic workshop template",
+        scenario = "A compact fixed-size worksheet uses straight boundaries and hides explanatory subtitles.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            title: Decision workshop
+            config:
+              cynefin:
+                width: 640
+                height: 480
+                padding: 18
+                showDomainDescriptions: false
+                boundaryAmplitude: 0
+                seed: 101
+                useMaxWidth: false
+            ---
+            cynefin-beta
+              complex
+              complicated
+              chaotic
+              clear
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_accessible_regions",
+        diagramId = "cynefin",
+        title = "Accessible regional framework",
+        scenario = "Theme overrides, metadata, entities, comments, and multilingual labels form one responsive diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            title: Regional decisions
+            config:
+              theme: dark
+              themeVariables:
+                cynefin:
+                  boundaryColor: "#e2e8f0"
+                  cliffColor: "#fb7185"
+                  confusionBg: "#581c87"
+              cynefin:
+                boundaryAmplitude: 6
+                seed: 202
+                useMaxWidth: true
+            ---
+            cynefin-beta
+              accTitle: Regional Cynefin framework
+              accDescr {
+                International operating decisions grouped by uncertainty.
+              }
+              %% Mixed scripts and an encoded ampersand exercise shared decoding.
+              complex
+                "東京 discovery"
+              complicated
+                "München &amp; analysis"
+              clear
+                "서울 runbook"
+              chaotic
+                "São Paulo incident"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -7188,6 +7331,149 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
                   Deterministic rendering verification evidence unavailable
               Operational readiness and rollback evidence incomplete
                 Customer facing result confirmation evidence delayed
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_product_portfolio",
+        diagramId = "cynefin",
+        title = "Product portfolio decisions",
+        scenario = "A complete framework classifies product work across all five decision domains.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              title Product portfolio decisions
+              complex
+                "Discover a new market"
+                "Prototype recommendation quality"
+              complicated
+                "Model unit economics"
+                "Review regulatory constraints"
+              clear
+                "Run release checklist"
+              chaotic
+                "Contain active data loss"
+              confusion
+                "Unclassified customer signal"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_operational_transitions",
+        diagramId = "cynefin",
+        title = "Operational domain transitions",
+        scenario = "Operational work moves between domains as teams learn, codify, and stabilize.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              title Operational transitions
+              complex
+                "Probe intermittent latency"
+              complicated
+                "Analyze dependency behavior"
+              clear
+                "Automate known mitigation"
+              chaotic
+                "Restore critical traffic"
+              complex --> complicated : "Evidence converges"
+              complicated --> clear : "Runbook approved"
+              clear --> chaotic : "Control fails"
+              chaotic --> complex : "Impact contained"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_confusion_backlog",
+        diagramId = "cynefin",
+        title = "Unclassified work backlog",
+        scenario = "A crowded confusion domain exercises the compact overflow presentation and outgoing decisions.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              confusion
+                "Unknown ownership"
+                "Unknown blast radius"
+                "Unknown urgency"
+                "Unknown dependency"
+                "Unknown customer segment"
+                "Unknown compliance impact"
+              confusion --> chaotic : "Immediate containment"
+              confusion --> complex : "Safe experiment"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_intrinsic_workshop",
+        diagramId = "cynefin",
+        title = "Intrinsic workshop template",
+        scenario = "A compact fixed-size worksheet uses straight boundaries and hides explanatory subtitles.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            title: Decision workshop
+            config:
+              cynefin:
+                width: 640
+                height: 480
+                padding: 18
+                showDomainDescriptions: false
+                boundaryAmplitude: 0
+                seed: 101
+                useMaxWidth: false
+            ---
+            cynefin-beta
+              complex
+              complicated
+              chaotic
+              clear
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_cynefin_accessible_regions",
+        diagramId = "cynefin",
+        title = "Accessible regional framework",
+        scenario = "Theme overrides, metadata, entities, comments, and multilingual labels form one responsive diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            title: Regional decisions
+            config:
+              theme: dark
+              themeVariables:
+                cynefin:
+                  boundaryColor: "#e2e8f0"
+                  cliffColor: "#fb7185"
+                  confusionBg: "#581c87"
+              cynefin:
+                boundaryAmplitude: 6
+                seed: 202
+                useMaxWidth: true
+            ---
+            cynefin-beta
+              accTitle: Regional Cynefin framework
+              accDescr {
+                International operating decisions grouped by uncertainty.
+              }
+              %% Mixed scripts and an encoded ampersand exercise shared decoding.
+              complex
+                "東京 discovery"
+              complicated
+                "München &amp; analysis"
+              clear
+                "서울 runbook"
+              chaotic
+                "São Paulo incident"
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -11533,6 +11819,210 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("End to end production compatibility verification failure", "Asynchronous replication completion evidence missing", "Operational readiness and rollback evidence incomplete"),
         features = setOf("nested-causes", "deep-hierarchy", "long-wrapping"),
     ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_delivery_domains",
+        diagramId = "cynefin",
+        title = "Delivery decision domains",
+        scenario = "All five fixed domains classify delivery work and retain declaration-independent placement.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              title Delivery decision domains
+              clear
+                "Release checklist"
+              chaotic
+                "Incident containment"
+              complex
+                "Product discovery"
+              confusion
+                "Untriaged request"
+              complicated
+                "Architecture review"
+        """.trimIndent(),
+        expectedTexts = listOf("Product discovery", "Architecture review", "Release checklist", "Incident containment", "Untriaged request"),
+        features = setOf("cynefin-beta-header", "domains", "fixed-domain-layout", "quoted-items", "domain-descriptions", "wavy-boundaries"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_transition_lifecycle",
+        diagramId = "cynefin",
+        title = "Operational transition lifecycle",
+        scenario = "Labelled and unlabelled transitions connect domain centers while self-loops are filtered.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              complex
+                "Explore signal"
+              complicated
+                "Analyze evidence"
+              clear
+                "Codify response"
+              chaotic
+                "Contain impact"
+              complex --> complicated : "Pattern identified"
+              complicated --> clear : "Best practice codified"
+              chaotic --> complex : "Stabilized"
+              confusion --> chaotic
+              clear --> clear : "Ignored"
+        """.trimIndent(),
+        expectedTexts = listOf("Pattern identified", "Best practice codified", "Stabilized"),
+        features = setOf("transitions", "transition-labels", "unlabelled-transitions", "self-loop-filtering"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_confusion_overflow",
+        diagramId = "cynefin",
+        title = "Confusion overflow triage",
+        scenario = "The center ellipse renders three unknowns and summarizes the remaining backlog.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              confusion
+                "Unknown owner"
+                "Unknown impact"
+                "Unknown urgency"
+                "Unknown dependency"
+                "Unknown deadline"
+        """.trimIndent(),
+        expectedTexts = listOf("Unknown owner", "Unknown impact", "Unknown urgency"),
+        features = setOf("confusion-items", "confusion-overflow", "quoted-items"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_intrinsic_worksheet",
+        diagramId = "cynefin",
+        title = "Intrinsic decision worksheet",
+        scenario = "Explicit geometry, straight boundaries, hidden descriptions, and intrinsic sizing produce a compact worksheet.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ---
+            title: Decision worksheet
+            config:
+              cynefin:
+                width: 700
+                height: 500
+                padding: 20
+                showDomainDescriptions: false
+                boundaryAmplitude: 0
+                seed: 42
+                useMaxWidth: false
+            ---
+            cynefin-beta
+              complex
+              complicated
+              chaotic
+              clear
+        """.trimIndent(),
+        expectedTexts = listOf("Decision worksheet"),
+        features = setOf("empty-domains", "hidden-domain-descriptions", "straight-boundaries", "deterministic-seed", "width", "height", "padding", "intrinsic-sizing"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_responsive_theme",
+        diagramId = "cynefin",
+        title = "Responsive themed operating model",
+        scenario = "Nested Cynefin theme variables and responsive sizing customize every visual role.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            config:
+              theme: forest
+              themeVariables:
+                cynefin:
+                  complexBg: "#dcfce7"
+                  complicatedBg: "#dbeafe"
+                  chaoticBg: "#fee2e2"
+                  clearBg: "#fef9c3"
+                  confusionBg: "#ede9fe"
+                  boundaryColor: "#334155"
+                  cliffColor: "#be123c"
+                  arrowColor: "#0369a1"
+                  domainFontSize: 18
+                  itemFontSize: 13
+              cynefin:
+                seed: 73
+                useMaxWidth: true
+            ---
+            cynefin-beta
+              complex
+                "Adaptive experiment"
+              complicated
+                "Expert diagnosis"
+              clear
+                "Known remediation"
+              chaotic
+                "Emergency action"
+        """.trimIndent(),
+        expectedTexts = listOf("Adaptive experiment", "Expert diagnosis", "Known remediation", "Emergency action"),
+        features = setOf("responsive-sizing", "theme", "theme-variables", "deterministic-seed", "wavy-boundaries"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_duplicate_domain",
+        diagramId = "cynefin",
+        title = "Latest domain declaration",
+        scenario = "A repeated domain replaces its item list without changing its fixed visual position.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            cynefin-beta
+              complex
+                "Superseded experiment"
+              complicated
+                "Preserved analysis"
+              complex
+                "Replacement experiment"
+        """.trimIndent(),
+        expectedTexts = listOf("Replacement experiment", "Preserved analysis"),
+        features = setOf("duplicate-domain-replacement", "domains", "quoted-items"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_accessible_regions",
+        diagramId = "cynefin",
+        title = "Accessible regional decisions",
+        scenario = "Frontmatter, accessibility metadata, comments, entities, and multilingual labels share one framework.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            title: Regional operating model
+            ---
+            cynefin-beta
+              accTitle: Accessible regional decisions
+              accDescr: Work classified across international operating regions
+              %% Entity decoding and mixed scripts use the shared preprocessing path.
+              complex
+                "東京 &amp; discovery"
+              complicated
+                "서울 analysis"
+              chaotic
+                "São Paulo response"
+        """.trimIndent(),
+        expectedTexts = listOf("Regional operating model", "東京", "서울 analysis", "São Paulo response"),
+        features = setOf("frontmatter-title", "accessibility", "comments", "entities", "unicode"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_cynefin_colon_header",
+        diagramId = "cynefin",
+        title = "Colon declaration form",
+        scenario = "The detector-compatible colon header preserves fixed domains and deterministic boundaries.",
+        layout = "dagre",
+        initialAspectRatio = 1.3333333333333333f,
+        source = """
+            ---
+            config:
+              cynefin:
+                seed: -17
+            ---
+            cynefin-beta:
+              clear
+                "Governed process"
+              chaotic
+                "Novel response"
+        """.trimIndent(),
+        expectedTexts = listOf("Governed process", "Novel response"),
+        features = setOf("colon-header", "cynefin-beta-header", "deterministic-seed"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -11582,6 +12072,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "treemap",
             "venn",
             "ishikawa",
+            "cynefin",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -11667,7 +12158,36 @@ private fun addVisualParityVariation(
     "treemap" -> replaceOrInsertTreemapVisualParityTitle(source, label)
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "${source.trimEnd()}\n$label\n"
+    "cynefin" -> insertCynefinVisualParityEvidence(source, label)
     else -> source
+}
+
+private fun insertCynefinVisualParityEvidence(
+    source: String,
+    label: String,
+): String {
+    val lines = source.trimEnd().lines().toMutableList()
+    val domainIndex = lines.indexOfLast { line ->
+        line.trim() in setOf(
+            "complex",
+            "complicated",
+            "clear",
+            "chaotic",
+        )
+    }
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    if (domainIndex >= 0) {
+        val indent = lines[domainIndex].takeWhile(Char::isWhitespace)
+        lines.add(domainIndex + 1, "${indent}  \"$escapedLabel\"")
+        return lines.joinToString("\n") + "\n"
+    }
+
+    val confusionLine = lines.firstOrNull { line -> line.trim() == "confusion" }
+        ?: return source
+    val indent = confusionLine.takeWhile(Char::isWhitespace)
+    lines += "${indent}complex"
+    lines += "${indent}  \"$escapedLabel\""
+    return lines.joinToString("\n") + "\n"
 }
 
 private fun appendTimelineEvidence(

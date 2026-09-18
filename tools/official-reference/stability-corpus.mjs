@@ -3330,4 +3330,132 @@ End to end production compatibility verification failure
     Customer facing result confirmation evidence delayed
 `,
   },
+  {
+    id: 'rc_cynefin_product_portfolio',
+    kind: 'cynefin',
+    title: 'Product portfolio decisions',
+    scenario: 'A complete framework classifies product work across all five decision domains.',
+    aspectRatio: 4 / 3,
+    source: String.raw`
+cynefin-beta
+  title Product portfolio decisions
+  complex
+    "Discover a new market"
+    "Prototype recommendation quality"
+  complicated
+    "Model unit economics"
+    "Review regulatory constraints"
+  clear
+    "Run release checklist"
+  chaotic
+    "Contain active data loss"
+  confusion
+    "Unclassified customer signal"
+`,
+  },
+  {
+    id: 'rc_cynefin_operational_transitions',
+    kind: 'cynefin',
+    title: 'Operational domain transitions',
+    scenario: 'Operational work moves between domains as teams learn, codify, and stabilize.',
+    aspectRatio: 4 / 3,
+    source: String.raw`
+cynefin-beta
+  title Operational transitions
+  complex
+    "Probe intermittent latency"
+  complicated
+    "Analyze dependency behavior"
+  clear
+    "Automate known mitigation"
+  chaotic
+    "Restore critical traffic"
+  complex --> complicated : "Evidence converges"
+  complicated --> clear : "Runbook approved"
+  clear --> chaotic : "Control fails"
+  chaotic --> complex : "Impact contained"
+`,
+  },
+  {
+    id: 'rc_cynefin_confusion_backlog',
+    kind: 'cynefin',
+    title: 'Unclassified work backlog',
+    scenario: 'A crowded confusion domain exercises the compact overflow presentation and outgoing decisions.',
+    aspectRatio: 4 / 3,
+    source: String.raw`
+cynefin-beta
+  confusion
+    "Unknown ownership"
+    "Unknown blast radius"
+    "Unknown urgency"
+    "Unknown dependency"
+    "Unknown customer segment"
+    "Unknown compliance impact"
+  confusion --> chaotic : "Immediate containment"
+  confusion --> complex : "Safe experiment"
+`,
+  },
+  {
+    id: 'rc_cynefin_intrinsic_workshop',
+    kind: 'cynefin',
+    title: 'Intrinsic workshop template',
+    scenario: 'A compact fixed-size worksheet uses straight boundaries and hides explanatory subtitles.',
+    aspectRatio: 1.4,
+    source: String.raw`
+---
+title: Decision workshop
+config:
+  cynefin:
+    width: 640
+    height: 480
+    padding: 18
+    showDomainDescriptions: false
+    boundaryAmplitude: 0
+    seed: 101
+    useMaxWidth: false
+---
+cynefin-beta
+  complex
+  complicated
+  chaotic
+  clear
+`,
+  },
+  {
+    id: 'rc_cynefin_accessible_regions',
+    kind: 'cynefin',
+    title: 'Accessible regional framework',
+    scenario: 'Theme overrides, metadata, entities, comments, and multilingual labels form one responsive diagram.',
+    aspectRatio: 4 / 3,
+    source: String.raw`
+---
+title: Regional decisions
+config:
+  theme: dark
+  themeVariables:
+    cynefin:
+      boundaryColor: "#e2e8f0"
+      cliffColor: "#fb7185"
+      confusionBg: "#581c87"
+  cynefin:
+    boundaryAmplitude: 6
+    seed: 202
+    useMaxWidth: true
+---
+cynefin-beta
+  accTitle: Regional Cynefin framework
+  accDescr {
+    International operating decisions grouped by uncertainty.
+  }
+  %% Mixed scripts and an encoded ampersand exercise shared decoding.
+  complex
+    "東京 discovery"
+  complicated
+    "München &amp; analysis"
+  clear
+    "서울 runbook"
+  chaotic
+    "São Paulo incident"
+`,
+  },
 ];

@@ -61,6 +61,7 @@ const kinds = [
   'venn',
   'kanban',
   'ishikawa',
+  'cynefin',
 ];
 const kindTitles = {
   flowchart: 'Flowchart',
@@ -84,6 +85,7 @@ const kindTitles = {
   venn: 'Venn',
   kanban: 'Kanban',
   ishikawa: 'Ishikawa',
+  cynefin: 'Cynefin',
 };
 const selectedKinds = kinds.filter(
   (kind) => corpusKind === 'all' || corpusKind === kind,

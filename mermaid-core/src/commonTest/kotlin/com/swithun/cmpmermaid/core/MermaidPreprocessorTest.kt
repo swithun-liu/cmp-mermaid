@@ -186,6 +186,111 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsAndMergesCynefinConfiguration() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  cynefin:
+                    width: 700
+                    height: 500
+                    padding: 24
+                    showDomainDescriptions: false
+                    boundaryAmplitude: 12
+                    seed: 42
+                    useMaxWidth: false
+                ---
+                %%{init: {'cynefin': {'width': 900, 'boundaryAmplitude': 0}}}%%
+                cynefin-beta
+                  complex
+                    "Adaptive work"
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.cynefin
+
+        assertEquals(900f, options.width)
+        assertEquals(500f, options.height)
+        assertEquals(24f, options.padding)
+        assertEquals(false, options.showDomainDescriptions)
+        assertEquals(0f, options.boundaryAmplitude)
+        assertEquals(42f, options.seed)
+        assertEquals(false, options.useMaxWidth)
+    }
+
+    @Test
+    fun rejectsInvalidCynefinConfiguration() {
+        listOf(
+            "width: 0" to "cynefin.width",
+            "height: -1" to "cynefin.height",
+            "padding: -1" to "cynefin.padding",
+            "boundaryAmplitude: 51" to "cynefin.boundaryAmplitude",
+            "seed: NaN" to "cynefin.seed",
+            "showDomainDescriptions: maybe" to "cynefin.showDomainDescriptions",
+            "useMaxWidth: sometimes" to "cynefin.useMaxWidth",
+        ).forEach { (config, path) ->
+            val result = MermaidPreprocessor.preprocess(
+                """
+                    ---
+                    config:
+                      cynefin:
+                        $config
+                    ---
+                    cynefin-beta
+                      complex
+                """.trimIndent(),
+            )
+
+            val error = assertIs<GMResult.Err<MermaidError>>(result, config).error
+            assertIs<MermaidError.Configuration>(error, config)
+            assertContains(error.message, path, message = config)
+        }
+    }
+
+    @Test
+    fun flattensNestedCynefinThemeVariablesAndReportsTheirExactPath() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  themeVariables:
+                    cynefin:
+                      domainFontSize: 18
+                      complexBg: "#112233"
+                ---
+                cynefin-beta
+                  complex
+            """.trimIndent(),
+        )
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value
+
+        assertEquals("18", options.themeVariables["cynefin.domainFontSize"])
+        assertEquals("#112233", options.themeVariables["cynefin.complexBg"])
+
+        val invalid = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  themeVariables:
+                    cynefin:
+                      complexBg:
+                        nested: nope
+                ---
+                cynefin-beta
+                  complex
+            """.trimIndent(),
+        )
+        val error = assertIs<GMResult.Err<MermaidError>>(invalid).error
+        assertContains(error.message, "themeVariables.cynefin.complexBg")
+    }
+
+    @Test
     fun directiveOverridesFrontmatterLikeCleanAndMerge() {
         val result = MermaidPreprocessor.preprocess(
             """

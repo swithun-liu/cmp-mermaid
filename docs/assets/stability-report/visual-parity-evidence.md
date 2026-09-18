@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 5,376 source cases and
-10,752 screenshots from the large-scale
+This index contains 5,632 source cases and
+11,264 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 21 implemented families have completed the replacement detail gate and
+All 22 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`5,376/5,376` pairs: `4,889 automatic pass / 487 manually reviewed /
-0 unresolved` across 336 contact sheets.
+`5,632/5,632` pairs: `5,145 automatic pass / 487 manually reviewed /
+0 unresolved` across 352 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -52,6 +52,49 @@ manual contact-sheet review. The accepted replacement total is
 ![Flowchart visual parity page 15](flowchart-visual-parity-15.jpg)
 
 ![Flowchart visual parity page 16](flowchart-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Cynefin - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.013-1.034`, height `1.009-1.019`, foreground ink `1.020-1.052`.
+Raw [detail](cynefin-visual-parity-detail.json) and
+[geometry](cynefin-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![Cynefin visual parity page 01](cynefin-visual-parity-01.jpg)
+
+![Cynefin visual parity page 02](cynefin-visual-parity-02.jpg)
+
+![Cynefin visual parity page 03](cynefin-visual-parity-03.jpg)
+
+![Cynefin visual parity page 04](cynefin-visual-parity-04.jpg)
+
+![Cynefin visual parity page 05](cynefin-visual-parity-05.jpg)
+
+![Cynefin visual parity page 06](cynefin-visual-parity-06.jpg)
+
+![Cynefin visual parity page 07](cynefin-visual-parity-07.jpg)
+
+![Cynefin visual parity page 08](cynefin-visual-parity-08.jpg)
+
+![Cynefin visual parity page 09](cynefin-visual-parity-09.jpg)
+
+![Cynefin visual parity page 10](cynefin-visual-parity-10.jpg)
+
+![Cynefin visual parity page 11](cynefin-visual-parity-11.jpg)
+
+![Cynefin visual parity page 12](cynefin-visual-parity-12.jpg)
+
+![Cynefin visual parity page 13](cynefin-visual-parity-13.jpg)
+
+![Cynefin visual parity page 14](cynefin-visual-parity-14.jpg)
+
+![Cynefin visual parity page 15](cynefin-visual-parity-15.jpg)
+
+![Cynefin visual parity page 16](cynefin-visual-parity-16.jpg)
 
 </details>
 

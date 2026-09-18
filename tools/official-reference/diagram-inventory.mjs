@@ -31,7 +31,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('cynefin', 'Cynefin', 'cynefin.md', ['cynefin'], [
     header('cynefin-beta', 'cynefin'),
-  ]),
+  ], true),
   family('er', 'Entity Relationship', 'entityRelationshipDiagram.md', ['er'], [
     header('erDiagram', 'er'),
   ], true),

@@ -684,3 +684,41 @@ internal val ishikawaDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val cynefinDiagramDocsSpec = DiagramDocsSpec(
+    id = "cynefin",
+    title = "Cynefin",
+    syntaxTitle = "Cynefin framework diagrams - Basic Syntax",
+    description = "Classify work into five fixed decision domains with domain-specific " +
+        "practices, organic boundaries, compact confusion handling, and transitions.",
+    documentationUrl = "https://mermaid.js.org/syntax/cynefin.html",
+    galleryTitle = "Cynefin demo gallery",
+    cases = cynefinDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 4f / 3f,
+        )
+    },
+    syntaxLessons = lessons(
+        cynefinDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 4f / 3f,
+            )
+        },
+        listOf(
+            "Quoted items belong to the most recently declared fixed domain.",
+            "Transitions connect domain centers and may carry quoted labels.",
+            "All four quadrants render even when the framework has no items.",
+            "Confusion renders at most three items followed by an overflow badge.",
+            "Frontmatter controls geometry, deterministic boundaries, theme, and sizing.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

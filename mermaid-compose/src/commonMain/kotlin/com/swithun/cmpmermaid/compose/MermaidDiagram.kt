@@ -2109,7 +2109,9 @@ internal enum class PrimitiveCanvasShape {
 }
 
 internal fun SceneShapeKind.primitiveCanvasShape(): PrimitiveCanvasShape = when (this) {
-    SceneShapeKind.Circle -> PrimitiveCanvasShape.Oval
+    SceneShapeKind.Circle,
+    SceneShapeKind.Ellipse,
+    -> PrimitiveCanvasShape.Oval
     SceneShapeKind.RoundedRectangle -> PrimitiveCanvasShape.RoundedRectangle
     else -> PrimitiveCanvasShape.Rectangle
 }

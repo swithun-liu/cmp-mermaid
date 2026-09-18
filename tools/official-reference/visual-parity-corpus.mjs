@@ -23,6 +23,7 @@ export const kinds = [
   'treemap',
   'venn',
   'ishikawa',
+  'cynefin',
 ];
 
 export const casesPerKind = 256;
@@ -165,9 +166,35 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return replaceOrInsertVennTitle(source, label);
     case 'ishikawa':
       return `${source.trimEnd()}\n${label}\n`;
+    case 'cynefin':
+      return insertCynefinEvidence(source, label);
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
+}
+
+function insertCynefinEvidence(source, label) {
+  const lines = source.trimEnd().split(/\r?\n/);
+  let domainIndex = -1;
+  lines.forEach((line, index) => {
+    if (/^\s*(?:complex|complicated|clear|chaotic)\s*$/.test(line)) {
+      domainIndex = index;
+    }
+  });
+  const escapedLabel = escapeQuotedLabel(label);
+  if (domainIndex >= 0) {
+    const indent = lines[domainIndex].match(/^\s*/)[0];
+    lines.splice(domainIndex + 1, 0, `${indent}  "${escapedLabel}"`);
+    return `${lines.join('\n')}\n`;
+  }
+
+  const confusionLine = lines.find((line) => /^\s*confusion\s*$/.test(line));
+  if (confusionLine == null) {
+    throw new Error('Missing domain while adding Cynefin evidence');
+  }
+  const indent = confusionLine.match(/^\s*/)[0];
+  lines.push(`${indent}complex`, `${indent}  "${escapedLabel}"`);
+  return `${lines.join('\n')}\n`;
 }
 
 function appendFlowchartEvidence(source, evidenceId, label) {

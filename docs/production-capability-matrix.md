@@ -1,7 +1,7 @@
 # Production Capability Matrix
 
 > [!WARNING]
-> This matrix covers the 21 currently implemented
+> This matrix covers the 22 currently implemented
 > families. It is not the Mermaid 12.0.0 full-family matrix and does not confer
 > Stable status. See
 > [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
@@ -14,16 +14,16 @@ and enforced by
 
 ## Current State
 
-- 21 supported diagram types
-- 275 production scenarios
-- 168 conformance scenarios created independently from the demo gallery
+- 22 supported diagram types
+- 288 production scenarios
+- 176 conformance scenarios created independently from the demo gallery
 - 16 required capability points for the original chart families, 17 for
   Quadrant Chart, Kanban, Requirement, and Packet, 24 for Git Graph, and 22
   for Mindmap, 25 for Radar, 27 for Sankey, 39 each for Treemap and Venn,
-  and 21 for Ishikawa
-- 424/424 declared capability points covered
-- 5,376 additional visual-matrix sources: 256 per diagram type
-- 5,376 separate Native-only randomized stress inputs
+  21 for Ishikawa, and 30 for Cynefin
+- 454/454 declared capability points covered
+- 5,632 additional visual-matrix sources: 256 per diagram type
+- 5,632 separate Native-only randomized stress inputs
 
 ## Coverage
 
@@ -50,20 +50,21 @@ and enforced by
 | Treemap | 13 | treemap and treemap-beta headers, hierarchy, multiple roots, irregular indentation, class styles, metadata, Unicode, value visibility and grouping/currency/fixed/percentage formats, padding, dimensions, borders, fonts, responsive and intrinsic sizing |
 | Venn | 13 | venn-beta header, weighted sets and pairwise/multi-set unions, synthetic pairwise constraints, quoted identifiers, bracket labels, indented and explicit text nodes, set/intersection/text styles, dimensions, padding, debug layout, responsive and intrinsic sizing, themes, comments, and Unicode |
 | Ishikawa | 13 | ishikawa and ishikawa-beta headers, effect and root-only diagrams, alternating top-level causes, recursive nested and leaf causes, first-cause indentation normalization, irregular indentation, comments, entities, HTML breaks, configuration, responsive and intrinsic sizing, themes, Unicode, and long wrapping |
+| Cynefin | 13 | cynefin-beta and colon headers, five domains, fixed layout, quoted items, empty and duplicate domains, labelled and unlabelled transitions, self-loop filtering, confusion overflow, descriptions, seeded wavy and straight boundaries, dimensions, padding, responsive and intrinsic sizing, themes, metadata, entities, and Unicode |
 
 ## Enforcement
 
 The corpus generator fails when:
 
 - a diagram type does not have its expected number of cases;
-- one of the 424 required capability points has no conformance case;
+- one of the 454 required capability points has no conformance case;
 - a case reuses a demo or prior RC source;
 - a case has no semantic text expectation;
 - a case declares an unknown capability point.
 
 `ProductionCorpusTest` then requires every source to render with finite,
 bounded geometry and expected semantic text, compares two complete SceneGraphs
-for determinism, and renders all 21 diagram types across all 11 built-in
+for determinism, and renders all 22 diagram types across all 11 built-in
 themes.
 The legacy Web audit captures Native and Mermaid.js output for every case and
 enforces blank-image and content-geometry limits. The replacement detail audit
@@ -73,12 +74,12 @@ foreground masks, edges, colors, and review heatmaps.
 
 The large-scale visual matrix adds 256 unique sources per type by combining 13
 or 14 complex production structures with 20 visible text and layout-pressure
-profiles. All 5,376 sources render in the Native core test and all 5,376
+profiles. All 5,632 sources render in the Native core test and all 5,632
 Native/Official pairs pass the geometry gate. The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
-defect and is not a detail-parity pass by itself. All 21 implemented families
-contribute 5,376 Native/Official pairs accepted by the replacement detail
-gate. Fourteen families contribute `3,584 pass / 0 review / 0 fail`; ER contributes
+defect and is not a detail-parity pass by itself. All 22 implemented families
+contribute 5,632 Native/Official pairs accepted by the replacement detail
+gate. Fifteen families contribute `3,840 pass / 0 review / 0 fail`; ER contributes
 `196 pass / 60 manually reviewed / 0 fail`; Journey contributes
 `237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
@@ -98,7 +99,7 @@ are Canvas/SVG text-position and same-row label/value overlap-threshold
 differences; all expected hierarchy, rectangles, styles, values, clipping, and
 paint order were manually verified. Venn reviews are two repeated
 text-overlap font-box patterns. All 40 were manually verified. The matrix is not
-counted as 5,376 independent topologies. The separate randomized stress corpus
+counted as 5,632 independent topologies. The separate randomized stress corpus
 remains Native-only robustness evidence and is not presented as Official
 parity.
 
