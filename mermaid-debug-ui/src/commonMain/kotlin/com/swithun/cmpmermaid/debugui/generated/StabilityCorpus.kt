@@ -3478,6 +3478,130 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_release_regression",
+        diagramId = "ishikawa",
+        title = "Release regression analysis",
+        scenario = "Four alternating ownership domains and nested evidence explain a release regression.",
+        layout = "dagre",
+        initialAspectRatio = 1.85f,
+        source = """
+            ishikawa-beta
+            Release regression
+              Process
+                Missing review
+                Incomplete checklist
+              People
+                Ownership gap
+              Platform
+                Capacity limit
+                  Saturated worker pool
+              Environment
+                Regional dependency
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_service_latency",
+        diagramId = "ishikawa",
+        title = "Service latency analysis",
+        scenario = "A broad cause tree stresses alternating branches and uneven descendant counts.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ishikawa
+            Elevated service latency
+              Application
+                Synchronous fan-out
+                Large response payload
+                Excessive retries
+              Data
+                Missing index
+                  Full table scan
+              Network
+                Cross-region route
+              Operations
+                Delayed mitigation
+                Incomplete runbook
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_normalized_indentation",
+        diagramId = "ishikawa",
+        title = "Normalized indentation hierarchy",
+        scenario = "The first cause establishes a baseline below an over-indented effect and irregular child depths.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ishikawa-beta
+                  Checkout failure
+            Client
+               Stale state
+                   Missing refresh
+            Service
+              Dependency timeout
+                 Retry storm
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_responsive_regions",
+        diagramId = "ishikawa",
+        title = "Responsive regional analysis",
+        scenario = "Frontmatter config, comments, entities, and multilingual labels render in a responsive viewport.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Regional reliability analysis
+            config:
+              theme: neutral
+              ishikawa:
+                diagramPadding: 30
+                useMaxWidth: true
+            ---
+            %% Mixed scripts and HTML-compatible text exercise sanitization.
+            ishikawa-beta
+            顧客影響 &amp; latency
+              東京 edge
+                Cache&lt;br/&gt;miss
+              서울 routing
+                Retry storm
+              São Paulo capacity
+                Saturated workers
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_long_evidence",
+        diagramId = "ishikawa",
+        title = "Long evidence hierarchy",
+        scenario = "Long effect and cause labels exercise multiline wrapping across a deep hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ---
+            config:
+              ishikawa:
+                diagramPadding: 18
+                useMaxWidth: false
+            ---
+            ishikawa
+            End to end production compatibility verification failure
+              Asynchronous replication completion evidence missing
+                Cross region validation label not recorded
+                  Deterministic rendering verification evidence unavailable
+              Operational readiness and rollback evidence incomplete
+                Customer facing result confirmation evidence delayed
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -6940,6 +7064,130 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               set "Sao Paulo Team"["São Paulo"]:20
               union "Tokyo Team","Seoul Team"["共同運用"]:7
               union "Tokyo Team","Seoul Team","Sao Paulo Team"["Global"]:3
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_release_regression",
+        diagramId = "ishikawa",
+        title = "Release regression analysis",
+        scenario = "Four alternating ownership domains and nested evidence explain a release regression.",
+        layout = "dagre",
+        initialAspectRatio = 1.85f,
+        source = """
+            ishikawa-beta
+            Release regression
+              Process
+                Missing review
+                Incomplete checklist
+              People
+                Ownership gap
+              Platform
+                Capacity limit
+                  Saturated worker pool
+              Environment
+                Regional dependency
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_service_latency",
+        diagramId = "ishikawa",
+        title = "Service latency analysis",
+        scenario = "A broad cause tree stresses alternating branches and uneven descendant counts.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ishikawa
+            Elevated service latency
+              Application
+                Synchronous fan-out
+                Large response payload
+                Excessive retries
+              Data
+                Missing index
+                  Full table scan
+              Network
+                Cross-region route
+              Operations
+                Delayed mitigation
+                Incomplete runbook
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_normalized_indentation",
+        diagramId = "ishikawa",
+        title = "Normalized indentation hierarchy",
+        scenario = "The first cause establishes a baseline below an over-indented effect and irregular child depths.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ishikawa-beta
+                  Checkout failure
+            Client
+               Stale state
+                   Missing refresh
+            Service
+              Dependency timeout
+                 Retry storm
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_responsive_regions",
+        diagramId = "ishikawa",
+        title = "Responsive regional analysis",
+        scenario = "Frontmatter config, comments, entities, and multilingual labels render in a responsive viewport.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Regional reliability analysis
+            config:
+              theme: neutral
+              ishikawa:
+                diagramPadding: 30
+                useMaxWidth: true
+            ---
+            %% Mixed scripts and HTML-compatible text exercise sanitization.
+            ishikawa-beta
+            顧客影響 &amp; latency
+              東京 edge
+                Cache&lt;br/&gt;miss
+              서울 routing
+                Retry storm
+              São Paulo capacity
+                Saturated workers
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_ishikawa_long_evidence",
+        diagramId = "ishikawa",
+        title = "Long evidence hierarchy",
+        scenario = "Long effect and cause labels exercise multiline wrapping across a deep hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ---
+            config:
+              ishikawa:
+                diagramPadding: 18
+                useMaxWidth: false
+            ---
+            ishikawa
+            End to end production compatibility verification failure
+              Asynchronous replication completion evidence missing
+                Cross region validation label not recorded
+                  Deterministic rendering verification evidence unavailable
+              Operational readiness and rollback evidence incomplete
+                Customer facing result confirmation evidence delayed
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -11115,6 +11363,176 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("地域 collaboration", "東京", "서울", "共有", "共同運用"),
         features = setOf("comments", "unicode", "set-styles", "text-styles", "text-color", "fill"),
     ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_photo_quality",
+        diagramId = "ishikawa",
+        title = "Photo quality investigation",
+        scenario = "The official beta header drives alternating top-level causes with nested and leaf causes.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ishikawa-beta
+              Blurry Photo
+              Process
+                Out of focus
+                Shutter speed too slow
+              User
+                Shaky hands
+              Equipment
+                Damaged lens
+              Environment
+                Too dark
+        """.trimIndent(),
+        expectedTexts = listOf("Blurry Photo", "Process", "Out of focus", "User", "Shaky hands"),
+        features = setOf("ishikawa-beta-header", "effect", "top-level-causes", "alternating-causes", "nested-causes", "leaf-causes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_root_only",
+        diagramId = "ishikawa",
+        title = "Root-only operational effect",
+        scenario = "The stable header renders a long effect without any cause branches.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            ishikawa
+            Customer visible request processing degradation
+        """.trimIndent(),
+        expectedTexts = listOf("Customer visible request processing degradation"),
+        features = setOf("ishikawa-header", "effect", "root-only", "long-wrapping"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_deep_hierarchy",
+        diagramId = "ishikawa",
+        title = "Deep ownership hierarchy",
+        scenario = "A deeply nested cause chain exercises alternating descendant ordering and indentation normalization.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            ishikawa-beta
+                Release incident
+            Delivery
+               Review
+                   Automation
+                      Capacity
+                         Queue saturation
+            People
+              Ownership gap
+        """.trimIndent(),
+        expectedTexts = listOf("Release incident", "Delivery", "Review", "Automation", "Capacity"),
+        features = setOf("nested-causes", "deep-hierarchy", "base-level-normalization", "irregular-indentation"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_encoded_regions",
+        diagramId = "ishikawa",
+        title = "Encoded regional causes",
+        scenario = "Comments, entities, HTML breaks, and multilingual labels share one hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            %% Mixed scripts and sanitized text exercise the shared text pipeline.
+            ishikawa
+            Regional outage
+              東京 &amp; edge
+                Cache&lt;br/&gt;miss
+              서울 routing
+                Retry storm
+              São Paulo capacity
+        """.trimIndent(),
+        expectedTexts = listOf("Regional outage", "東京", "서울", "São Paulo"),
+        features = setOf("comments", "entities", "html-breaks", "unicode", "nested-causes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_responsive_config",
+        diagramId = "ishikawa",
+        title = "Responsive configured analysis",
+        scenario = "Frontmatter title, theme, padding, and responsive sizing shape a multi-branch analysis.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Checkout reliability review
+            config:
+              theme: forest
+              ishikawa:
+                diagramPadding: 36
+                useMaxWidth: true
+            ---
+            ishikawa-beta
+            Payment failure
+              Client
+                Stale checkout state
+              Service
+                Dependency timeout
+              Data
+                Replica lag
+              Operations
+                Delayed escalation
+        """.trimIndent(),
+        expectedTexts = listOf("Payment failure", "Client", "Service"),
+        features = setOf("frontmatter-title", "diagram-padding", "responsive-sizing", "theme", "alternating-causes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_intrinsic_config",
+        diagramId = "ishikawa",
+        title = "Intrinsic configured analysis",
+        scenario = "Intrinsic sizing and compact diagram padding retain deterministic fishbone bounds.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            config:
+              ishikawa:
+                diagramPadding: 12
+                useMaxWidth: false
+            ---
+            ishikawa
+            Build delay
+              Toolchain
+              Dependencies
+              Infrastructure
+        """.trimIndent(),
+        expectedTexts = listOf("Build delay", "Toolchain", "Dependencies", "Infrastructure"),
+        features = setOf("diagram-padding", "intrinsic-sizing", "top-level-causes", "leaf-causes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_alternating_capacity",
+        diagramId = "ishikawa",
+        title = "Alternating capacity factors",
+        scenario = "Six top-level causes exercise repeated upper and lower branch pairing.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ishikawa-beta
+            Capacity shortfall
+              Traffic
+              Storage
+              Compute
+              Network
+              Scheduling
+              Operations
+        """.trimIndent(),
+        expectedTexts = listOf("Capacity shortfall", "Traffic", "Storage", "Compute", "Network", "Scheduling", "Operations"),
+        features = setOf("top-level-causes", "alternating-causes", "leaf-causes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_ishikawa_long_nested_labels",
+        diagramId = "ishikawa",
+        title = "Long nested evidence labels",
+        scenario = "Long labels at several depths exercise the renderer wrapping thresholds.",
+        layout = "dagre",
+        initialAspectRatio = 2.0f,
+        source = """
+            ishikawa
+            End to end production compatibility verification failure
+              Asynchronous replication completion evidence missing
+                Cross region validation label not recorded
+                  Deterministic rendering verification evidence unavailable
+              Operational readiness and rollback evidence incomplete
+                Customer facing result confirmation evidence delayed
+        """.trimIndent(),
+        expectedTexts = listOf("End to end production compatibility verification failure", "Asynchronous replication completion evidence missing", "Operational readiness and rollback evidence incomplete"),
+        features = setOf("nested-causes", "deep-hierarchy", "long-wrapping"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -11163,6 +11581,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "sankey",
             "treemap",
             "venn",
+            "ishikawa",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -11247,6 +11666,7 @@ private fun addVisualParityVariation(
     "sankey" -> "${source.trimEnd()}\n\"$label\",$evidenceId,${(ordinal % 17) + 3}\n"
     "treemap" -> replaceOrInsertTreemapVisualParityTitle(source, label)
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
+    "ishikawa" -> "${source.trimEnd()}\n$label\n"
     else -> source
 }
 

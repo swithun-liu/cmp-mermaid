@@ -3221,4 +3221,113 @@ venn-beta
   union "Tokyo Team","Seoul Team","Sao Paulo Team"["Global"]:3
 `,
   },
+  {
+    id: 'rc_ishikawa_release_regression',
+    kind: 'ishikawa',
+    title: 'Release regression analysis',
+    scenario: 'Four alternating ownership domains and nested evidence explain a release regression.',
+    aspectRatio: 1.85,
+    source: String.raw`
+ishikawa-beta
+Release regression
+  Process
+    Missing review
+    Incomplete checklist
+  People
+    Ownership gap
+  Platform
+    Capacity limit
+      Saturated worker pool
+  Environment
+    Regional dependency
+`,
+  },
+  {
+    id: 'rc_ishikawa_service_latency',
+    kind: 'ishikawa',
+    title: 'Service latency analysis',
+    scenario: 'A broad cause tree stresses alternating branches and uneven descendant counts.',
+    aspectRatio: 2,
+    source: String.raw`
+ishikawa
+Elevated service latency
+  Application
+    Synchronous fan-out
+    Large response payload
+    Excessive retries
+  Data
+    Missing index
+      Full table scan
+  Network
+    Cross-region route
+  Operations
+    Delayed mitigation
+    Incomplete runbook
+`,
+  },
+  {
+    id: 'rc_ishikawa_normalized_indentation',
+    kind: 'ishikawa',
+    title: 'Normalized indentation hierarchy',
+    scenario: 'The first cause establishes a baseline below an over-indented effect and irregular child depths.',
+    aspectRatio: 1.8,
+    source: String.raw`
+ishikawa-beta
+      Checkout failure
+Client
+   Stale state
+       Missing refresh
+Service
+  Dependency timeout
+     Retry storm
+`,
+  },
+  {
+    id: 'rc_ishikawa_responsive_regions',
+    kind: 'ishikawa',
+    title: 'Responsive regional analysis',
+    scenario: 'Frontmatter config, comments, entities, and multilingual labels render in a responsive viewport.',
+    aspectRatio: 1.8,
+    source: String.raw`
+---
+title: Regional reliability analysis
+config:
+  theme: neutral
+  ishikawa:
+    diagramPadding: 30
+    useMaxWidth: true
+---
+%% Mixed scripts and HTML-compatible text exercise sanitization.
+ishikawa-beta
+顧客影響 &amp; latency
+  東京 edge
+    Cache&lt;br/&gt;miss
+  서울 routing
+    Retry storm
+  São Paulo capacity
+    Saturated workers
+`,
+  },
+  {
+    id: 'rc_ishikawa_long_evidence',
+    kind: 'ishikawa',
+    title: 'Long evidence hierarchy',
+    scenario: 'Long effect and cause labels exercise multiline wrapping across a deep hierarchy.',
+    aspectRatio: 2,
+    source: String.raw`
+---
+config:
+  ishikawa:
+    diagramPadding: 18
+    useMaxWidth: false
+---
+ishikawa
+End to end production compatibility verification failure
+  Asynchronous replication completion evidence missing
+    Cross region validation label not recorded
+      Deterministic rendering verification evidence unavailable
+  Operational readiness and rollback evidence incomplete
+    Customer facing result confirmation evidence delayed
+`,
+  },
 ];

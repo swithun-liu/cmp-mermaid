@@ -100,6 +100,7 @@ private enum class DebugScreen {
     Sankey,
     Treemap,
     Venn,
+    Ishikawa,
     Playground,
     LoadTest,
 }
@@ -237,6 +238,12 @@ private val destinations = listOf(
         DebugScreen.Venn,
         vennDiagramDocsSpec,
         "Area-proportional set relationships with unions and nested text",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Ishikawa,
+        ishikawaDiagramDocsSpec,
+        "Cause-and-effect fishbones with alternating and nested branches",
         DiagramStability.Beta,
     ),
 )

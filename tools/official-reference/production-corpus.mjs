@@ -444,6 +444,29 @@ export const requiredFeaturesByKind = {
     'comments',
     'unicode',
   ],
+  ishikawa: [
+    'ishikawa-header',
+    'ishikawa-beta-header',
+    'effect',
+    'root-only',
+    'top-level-causes',
+    'alternating-causes',
+    'nested-causes',
+    'deep-hierarchy',
+    'leaf-causes',
+    'base-level-normalization',
+    'irregular-indentation',
+    'comments',
+    'entities',
+    'html-breaks',
+    'frontmatter-title',
+    'diagram-padding',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'theme',
+    'unicode',
+    'long-wrapping',
+  ],
 };
 
 const flowchartCases = [
@@ -4170,6 +4193,217 @@ venn-beta
   },
 ];
 
+const ishikawaCases = [
+  {
+    id: 'prod_ishikawa_photo_quality',
+    kind: 'ishikawa',
+    title: 'Photo quality investigation',
+    scenario: 'The official beta header drives alternating top-level causes with nested and leaf causes.',
+    aspectRatio: 1.8,
+    features: [
+      'ishikawa-beta-header',
+      'effect',
+      'top-level-causes',
+      'alternating-causes',
+      'nested-causes',
+      'leaf-causes',
+    ],
+    expectedTexts: ['Blurry Photo', 'Process', 'Out of focus', 'User', 'Shaky hands'],
+    source: String.raw`
+ishikawa-beta
+  Blurry Photo
+  Process
+    Out of focus
+    Shutter speed too slow
+  User
+    Shaky hands
+  Equipment
+    Damaged lens
+  Environment
+    Too dark
+`,
+  },
+  {
+    id: 'prod_ishikawa_root_only',
+    kind: 'ishikawa',
+    title: 'Root-only operational effect',
+    scenario: 'The stable header renders a long effect without any cause branches.',
+    aspectRatio: 1.4,
+    features: [
+      'ishikawa-header',
+      'effect',
+      'root-only',
+      'long-wrapping',
+    ],
+    expectedTexts: ['Customer visible request processing degradation'],
+    source: String.raw`
+ishikawa
+Customer visible request processing degradation
+`,
+  },
+  {
+    id: 'prod_ishikawa_deep_hierarchy',
+    kind: 'ishikawa',
+    title: 'Deep ownership hierarchy',
+    scenario: 'A deeply nested cause chain exercises alternating descendant ordering and indentation normalization.',
+    aspectRatio: 1.9,
+    features: [
+      'nested-causes',
+      'deep-hierarchy',
+      'base-level-normalization',
+      'irregular-indentation',
+    ],
+    expectedTexts: ['Release incident', 'Delivery', 'Review', 'Automation', 'Capacity'],
+    source: String.raw`
+ishikawa-beta
+    Release incident
+Delivery
+   Review
+       Automation
+          Capacity
+             Queue saturation
+People
+  Ownership gap
+`,
+  },
+  {
+    id: 'prod_ishikawa_encoded_regions',
+    kind: 'ishikawa',
+    title: 'Encoded regional causes',
+    scenario: 'Comments, entities, HTML breaks, and multilingual labels share one hierarchy.',
+    aspectRatio: 1.8,
+    features: [
+      'comments',
+      'entities',
+      'html-breaks',
+      'unicode',
+      'nested-causes',
+    ],
+    expectedTexts: ['Regional outage', '東京', '서울', 'São Paulo'],
+    source: String.raw`
+%% Mixed scripts and sanitized text exercise the shared text pipeline.
+ishikawa
+Regional outage
+  東京 &amp; edge
+    Cache&lt;br/&gt;miss
+  서울 routing
+    Retry storm
+  São Paulo capacity
+`,
+  },
+  {
+    id: 'prod_ishikawa_responsive_config',
+    kind: 'ishikawa',
+    title: 'Responsive configured analysis',
+    scenario: 'Frontmatter title, theme, padding, and responsive sizing shape a multi-branch analysis.',
+    aspectRatio: 1.8,
+    features: [
+      'frontmatter-title',
+      'diagram-padding',
+      'responsive-sizing',
+      'theme',
+      'alternating-causes',
+    ],
+    expectedTexts: ['Payment failure', 'Client', 'Service'],
+    source: String.raw`
+---
+title: Checkout reliability review
+config:
+  theme: forest
+  ishikawa:
+    diagramPadding: 36
+    useMaxWidth: true
+---
+ishikawa-beta
+Payment failure
+  Client
+    Stale checkout state
+  Service
+    Dependency timeout
+  Data
+    Replica lag
+  Operations
+    Delayed escalation
+`,
+  },
+  {
+    id: 'prod_ishikawa_intrinsic_config',
+    kind: 'ishikawa',
+    title: 'Intrinsic configured analysis',
+    scenario: 'Intrinsic sizing and compact diagram padding retain deterministic fishbone bounds.',
+    aspectRatio: 1.75,
+    features: [
+      'diagram-padding',
+      'intrinsic-sizing',
+      'top-level-causes',
+      'leaf-causes',
+    ],
+    expectedTexts: ['Build delay', 'Toolchain', 'Dependencies', 'Infrastructure'],
+    source: String.raw`
+---
+config:
+  ishikawa:
+    diagramPadding: 12
+    useMaxWidth: false
+---
+ishikawa
+Build delay
+  Toolchain
+  Dependencies
+  Infrastructure
+`,
+  },
+  {
+    id: 'prod_ishikawa_alternating_capacity',
+    kind: 'ishikawa',
+    title: 'Alternating capacity factors',
+    scenario: 'Six top-level causes exercise repeated upper and lower branch pairing.',
+    aspectRatio: 2,
+    features: [
+      'top-level-causes',
+      'alternating-causes',
+      'leaf-causes',
+    ],
+    expectedTexts: ['Capacity shortfall', 'Traffic', 'Storage', 'Compute', 'Network', 'Scheduling', 'Operations'],
+    source: String.raw`
+ishikawa-beta
+Capacity shortfall
+  Traffic
+  Storage
+  Compute
+  Network
+  Scheduling
+  Operations
+`,
+  },
+  {
+    id: 'prod_ishikawa_long_nested_labels',
+    kind: 'ishikawa',
+    title: 'Long nested evidence labels',
+    scenario: 'Long labels at several depths exercise the renderer wrapping thresholds.',
+    aspectRatio: 2,
+    features: [
+      'nested-causes',
+      'deep-hierarchy',
+      'long-wrapping',
+    ],
+    expectedTexts: [
+      'End to end production compatibility verification failure',
+      'Asynchronous replication completion evidence missing',
+      'Operational readiness and rollback evidence incomplete',
+    ],
+    source: String.raw`
+ishikawa
+End to end production compatibility verification failure
+  Asynchronous replication completion evidence missing
+    Cross region validation label not recorded
+      Deterministic rendering verification evidence unavailable
+  Operational readiness and rollback evidence incomplete
+    Customer facing result confirmation evidence delayed
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -4508,6 +4742,7 @@ export const conformanceCases = [
   ...sankeyCases,
   ...treemapCases,
   ...vennCases,
+  ...ishikawaCases,
 ];
 
 export const cases = [

@@ -5,6 +5,7 @@ import com.swithun.cmpmermaid.core.erdiagram.ErPlugin
 import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
 import com.swithun.cmpmermaid.core.gitgraph.GitGraphPlugin
+import com.swithun.cmpmermaid.core.ishikawa.IshikawaPlugin
 import com.swithun.cmpmermaid.core.journey.JourneyPlugin
 import com.swithun.cmpmermaid.core.kanban.KanbanPlugin
 import com.swithun.cmpmermaid.core.mindmap.MindmapPlugin
@@ -58,6 +59,7 @@ class MermaidEngine(
         PacketPlugin(),
         RadarPlugin(),
         SankeyPlugin(),
+        IshikawaPlugin(),
         TreemapPlugin(),
         VennPlugin(),
         TimelinePlugin(),

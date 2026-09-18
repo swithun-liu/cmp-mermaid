@@ -245,6 +245,7 @@ internal object MermaidPreprocessor {
         val packet = map.map("packet")
         val radar = map.map("radar")
         val sankey = map.map("sankey")
+        val ishikawa = map.map("ishikawa")
         val treemap = map.map("treemap")
         val venn = map.map("venn")
         val kanban = map.map("kanban")
@@ -1206,6 +1207,18 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'sankey.linkColor' has invalid color '$sankeyLinkColor'",
             )
         }
+        val ishikawaDiagramPadding =
+            float(ishikawa, "diagramPadding", "ishikawa.diagramPadding")
+        val ishikawaUseMaxWidth =
+            boolean(ishikawa, "useMaxWidth", "ishikawa.useMaxWidth")
+        if (
+            ishikawaDiagramPadding != null &&
+            (!ishikawaDiagramPadding.isFinite() || ishikawaDiagramPadding < 0f)
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'ishikawa.diagramPadding' must be non-negative",
+            )
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -1595,6 +1608,12 @@ internal object MermaidPreprocessor {
                         nodeColors = sankeyNodeColors,
                     )
                 },
+                ishikawa = ishikawa?.let {
+                    MermaidIshikawaConfigOverride(
+                        diagramPadding = ishikawaDiagramPadding,
+                        useMaxWidth = ishikawaUseMaxWidth,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -1824,6 +1843,7 @@ internal data class MermaidConfigOverride(
     val packet: MermaidPacketConfigOverride? = null,
     val radar: MermaidRadarConfigOverride? = null,
     val sankey: MermaidSankeyConfigOverride? = null,
+    val ishikawa: MermaidIshikawaConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -1936,6 +1956,11 @@ internal data class MermaidConfigOverride(
             overrides.sankey != null ->
                 sankey?.merge(overrides.sankey) ?: overrides.sankey
             else -> sankey
+        },
+        ishikawa = when {
+            overrides.ishikawa != null ->
+                ishikawa?.merge(overrides.ishikawa) ?: overrides.ishikawa
+            else -> ishikawa
         },
         treemap = when {
             overrides.treemap != null ->
@@ -2051,6 +2076,7 @@ internal data class MermaidConfigOverride(
                 packet = packet?.applyTo(options.packet) ?: options.packet,
                 radar = radar?.applyTo(options.radar) ?: options.radar,
                 sankey = sankey?.applyTo(options.sankey) ?: options.sankey,
+                ishikawa = ishikawa?.applyTo(options.ishikawa) ?: options.ishikawa,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -2190,6 +2216,22 @@ internal data class MermaidSankeyConfigOverride(
         nodePadding = nodePadding ?: options.nodePadding,
         labelStyle = labelStyle ?: options.labelStyle,
         nodeColors = options.nodeColors + nodeColors.orEmpty(),
+    )
+}
+
+internal data class MermaidIshikawaConfigOverride(
+    val diagramPadding: Float? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(overrides: MermaidIshikawaConfigOverride): MermaidIshikawaConfigOverride =
+        MermaidIshikawaConfigOverride(
+            diagramPadding = overrides.diagramPadding ?: diagramPadding,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        )
+
+    fun applyTo(options: MermaidIshikawaOptions): MermaidIshikawaOptions = options.copy(
+        diagramPadding = diagramPadding ?: options.diagramPadding,
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
     )
 }
 

@@ -232,6 +232,31 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersIshikawaAndIshikawaBetaThroughRegisteredPlugin() {
+        listOf("ishikawa", "ishikawa-beta").forEach { header ->
+            val result = engine.render(
+                """
+                    $header
+                    Blurry Photo
+                        Process
+                            Out of focus
+                        User
+                            Shaky hands
+                """.trimIndent(),
+                context,
+            )
+
+            val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+            assertTrue(scene.elements.filterIsInstance<ScenePath>().any {
+                path -> path.id == "ishikawa-spine"
+            })
+            assertTrue(scene.elements.filterIsInstance<SceneText>().any {
+                text -> text.text == "Blurry Photo"
+            })
+        }
+    }
+
+    @Test
     fun rejectsEffectiveHandDrawnLookForExistingDiagramTypes() {
         val result = engine.render(
             """

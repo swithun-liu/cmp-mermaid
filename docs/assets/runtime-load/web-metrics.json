@@ -1,37 +1,37 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T20:55:10.537Z",
-  "caseCount": 262,
+  "generatedAt": "2026-09-18T04:34:48.785Z",
+  "caseCount": 275,
   "firstCaseId": "rc_flow_checkout_saga",
-  "lastCaseId": "prod_venn_international_regions",
-  "firstContentMillis": 1251,
-  "scrollMillis": 12259,
-  "scrollEvents": 125,
+  "lastCaseId": "prod_ishikawa_long_nested_labels",
+  "firstContentMillis": 628,
+  "scrollMillis": 12543,
+  "scrollEvents": 130,
   "reachedLastCase": true,
   "before": {
     "LayoutCount": 0,
     "RecalcStyleCount": 0,
-    "TaskDuration": 0.014437,
-    "JSHeapUsedSize": 21284376,
-    "JSHeapTotalSize": 21856256
+    "TaskDuration": 0.012225,
+    "JSHeapUsedSize": 21619468,
+    "JSHeapTotalSize": 22380544
   },
   "afterScroll": {
     "LayoutCount": 12,
     "RecalcStyleCount": 12,
-    "TaskDuration": 7.003935,
-    "JSHeapUsedSize": 32791688,
+    "TaskDuration": 6.856729,
+    "JSHeapUsedSize": 54094868,
     "JSHeapTotalSize": 114589696
   },
   "afterGc": {
     "LayoutCount": 12,
     "RecalcStyleCount": 12,
-    "TaskDuration": 7.020863,
-    "JSHeapUsedSize": 32034604,
-    "JSHeapTotalSize": 33325056
+    "TaskDuration": 6.88089,
+    "JSHeapUsedSize": 32753208,
+    "JSHeapTotalSize": 34111488
   },
-  "retainedJsHeapBytes": 10750228,
-  "peakProcessRssBytes": 1924530176,
-  "finalProcessRssBytes": 1809645568,
+  "retainedJsHeapBytes": 11133740,
+  "peakProcessRssBytes": 2042920960,
+  "finalProcessRssBytes": 1960198144,
   "errors": [],
   "thresholds": {
     "maximumFirstContentMillis": 15000,

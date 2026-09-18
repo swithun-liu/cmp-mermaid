@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 5,120 source cases and
-10,240 screenshots from the large-scale
+This index contains 5,376 source cases and
+10,752 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,10 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 20 implemented families have completed the replacement detail gate and
+All 21 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`5,120/5,120` pairs: `4,633 automatic pass / 487 manually reviewed /
-0 unresolved` across 320 contact sheets.
+`5,376/5,376` pairs: `4,889 automatic pass / 487 manually reviewed /
+0 unresolved` across 336 contact sheets.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -795,6 +795,49 @@ All 16 pages below were manually reviewed.
 ![Venn visual parity page 15](venn-visual-parity-15.jpg)
 
 ![Venn visual parity page 16](venn-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Ishikawa - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.040-1.173`, height `1.023-1.119`, foreground ink `1.058-1.311`.
+Raw [detail](ishikawa-visual-parity-detail.json) and
+[geometry](ishikawa-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![Ishikawa visual parity page 01](ishikawa-visual-parity-01.jpg)
+
+![Ishikawa visual parity page 02](ishikawa-visual-parity-02.jpg)
+
+![Ishikawa visual parity page 03](ishikawa-visual-parity-03.jpg)
+
+![Ishikawa visual parity page 04](ishikawa-visual-parity-04.jpg)
+
+![Ishikawa visual parity page 05](ishikawa-visual-parity-05.jpg)
+
+![Ishikawa visual parity page 06](ishikawa-visual-parity-06.jpg)
+
+![Ishikawa visual parity page 07](ishikawa-visual-parity-07.jpg)
+
+![Ishikawa visual parity page 08](ishikawa-visual-parity-08.jpg)
+
+![Ishikawa visual parity page 09](ishikawa-visual-parity-09.jpg)
+
+![Ishikawa visual parity page 10](ishikawa-visual-parity-10.jpg)
+
+![Ishikawa visual parity page 11](ishikawa-visual-parity-11.jpg)
+
+![Ishikawa visual parity page 12](ishikawa-visual-parity-12.jpg)
+
+![Ishikawa visual parity page 13](ishikawa-visual-parity-13.jpg)
+
+![Ishikawa visual parity page 14](ishikawa-visual-parity-14.jpg)
+
+![Ishikawa visual parity page 15](ishikawa-visual-parity-15.jpg)
+
+![Ishikawa visual parity page 16](ishikawa-visual-parity-16.jpg)
 
 </details>
 

@@ -646,3 +646,41 @@ internal val vennDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.ReduxColor,
 )
+
+internal val ishikawaDiagramDocsSpec = DiagramDocsSpec(
+    id = "ishikawa",
+    title = "Ishikawa",
+    syntaxTitle = "Ishikawa diagrams - Basic Syntax",
+    description = "Trace causes of an event through an indentation-defined fishbone hierarchy, " +
+        "with alternating branches, nested causes, and responsive sizing.",
+    documentationUrl = "https://mermaid.js.org/syntax/ishikawa.html",
+    galleryTitle = "Ishikawa demo gallery",
+    cases = ishikawaDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 16f / 9f,
+        )
+    },
+    syntaxLessons = lessons(
+        ishikawaDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 16f / 9f,
+            )
+        },
+        listOf(
+            "The first content line is the effect shown at the fish head.",
+            "An effect without causes still renders the head and a zero-length spine.",
+            "Top-level causes alternate above and below the spine in declaration order.",
+            "Relative indentation builds nested causes after the first cause sets the baseline.",
+            "Frontmatter controls diagram padding and responsive maximum-width sizing.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

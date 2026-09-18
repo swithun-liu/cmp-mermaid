@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T23:36:16.788Z",
+  "generatedAt": "2026-09-18T04:34:35.591Z",
   "inputDirectory": "captures/local/production-20-merged",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 262,
+  "caseCount": 275,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -15594,6 +15594,773 @@
       "widthRatio": 1.0186915887850467,
       "heightRatio": 1.0108225108225108,
       "inkRatio": 1.0346546973602346
+    },
+    {
+      "id": "rc_ishikawa_release_regression",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 59401,
+        "inkRatio": 0.055000925925925925,
+        "contentBounds": {
+          "x": 250,
+          "y": 37,
+          "width": 702,
+          "height": 826
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53780,
+        "inkRatio": 0.0497962962962963,
+        "contentBounds": {
+          "x": 274,
+          "y": 60,
+          "width": 653,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.0750382848392037,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.1045184083302342
+    },
+    {
+      "id": "rc_ishikawa_service_latency",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 63538,
+        "inkRatio": 0.058831481481481485,
+        "contentBounds": {
+          "x": 285,
+          "y": 37,
+          "width": 631,
+          "height": 826
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 58897,
+        "inkRatio": 0.05453425925925926,
+        "contentBounds": {
+          "x": 311,
+          "y": 60,
+          "width": 579,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.0898100172711571,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0787985805728646
+    },
+    {
+      "id": "rc_ishikawa_normalized_indentation",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 35740,
+        "inkRatio": 0.03309259259259259,
+        "contentBounds": {
+          "x": 390,
+          "y": 37,
+          "width": 421,
+          "height": 826
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32128,
+        "inkRatio": 0.02974814814814815,
+        "contentBounds": {
+          "x": 409,
+          "y": 60,
+          "width": 383,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.0992167101827677,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.1124252988047807
+    },
+    {
+      "id": "rc_ishikawa_responsive_regions",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 57274,
+        "inkRatio": 0.05303148148148148,
+        "contentBounds": {
+          "x": 239,
+          "y": 50,
+          "width": 722,
+          "height": 800
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 49763,
+        "inkRatio": 0.046076851851851855,
+        "contentBounds": {
+          "x": 253,
+          "y": 73,
+          "width": 694,
+          "height": 754
+        }
+      },
+      "widthRatio": 1.0403458213256485,
+      "heightRatio": 1.0610079575596818,
+      "inkRatio": 1.1509354339569557
+    },
+    {
+      "id": "rc_ishikawa_long_evidence",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 106203,
+        "inkRatio": 0.09833611111111111,
+        "contentBounds": {
+          "x": 246,
+          "y": 34,
+          "width": 708,
+          "height": 832
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 99501,
+        "inkRatio": 0.09213055555555555,
+        "contentBounds": {
+          "x": 265,
+          "y": 57,
+          "width": 670,
+          "height": 786
+        }
+      },
+      "widthRatio": 1.0567164179104478,
+      "heightRatio": 1.0585241730279897,
+      "inkRatio": 1.0673561069737993
+    },
+    {
+      "id": "prod_ishikawa_photo_quality",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 51532,
+        "inkRatio": 0.047714814814814814,
+        "contentBounds": {
+          "x": 302,
+          "y": 37,
+          "width": 597,
+          "height": 826
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 47640,
+        "inkRatio": 0.04411111111111111,
+        "contentBounds": {
+          "x": 321,
+          "y": 60,
+          "width": 559,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.0679785330948122,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.081696053736356
+    },
+    {
+      "id": "prod_ishikawa_root_only",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 196957,
+        "inkRatio": 0.18236759259259258,
+        "contentBounds": {
+          "x": 404,
+          "y": 73,
+          "width": 392,
+          "height": 754
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 148483,
+        "inkRatio": 0.13748425925925925,
+        "contentBounds": {
+          "x": 435,
+          "y": 113,
+          "width": 330,
+          "height": 674
+        }
+      },
+      "widthRatio": 1.187878787878788,
+      "heightRatio": 1.1186943620178043,
+      "inkRatio": 1.3264616151343924
+    },
+    {
+      "id": "prod_ishikawa_deep_hierarchy",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 35521,
+        "inkRatio": 0.032889814814814816,
+        "contentBounds": {
+          "x": 388,
+          "y": 37,
+          "width": 426,
+          "height": 826
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32484,
+        "inkRatio": 0.030077777777777776,
+        "contentBounds": {
+          "x": 403,
+          "y": 60,
+          "width": 396,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.0757575757575757,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0934921807659157
+    },
+    {
+      "id": "prod_ishikawa_encoded_regions",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 51198,
+        "inkRatio": 0.047405555555555555,
+        "contentBounds": {
+          "x": 300,
+          "y": 36,
+          "width": 600,
+          "height": 828
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 44271,
+        "inkRatio": 0.04099166666666667,
+        "contentBounds": {
+          "x": 316,
+          "y": 60,
+          "width": 568,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.056338028169014,
+      "heightRatio": 1.0615384615384615,
+      "inkRatio": 1.156468116825913
+    },
+    {
+      "id": "prod_ishikawa_responsive_config",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 45706,
+        "inkRatio": 0.04232037037037037,
+        "contentBounds": {
+          "x": 326,
+          "y": 58,
+          "width": 550,
+          "height": 784
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 41396,
+        "inkRatio": 0.03832962962962963,
+        "contentBounds": {
+          "x": 345,
+          "y": 80,
+          "width": 511,
+          "height": 740
+        }
+      },
+      "widthRatio": 1.076320939334638,
+      "heightRatio": 1.0594594594594595,
+      "inkRatio": 1.1041163397429703
+    },
+    {
+      "id": "prod_ishikawa_intrinsic_config",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 253748,
+        "inkRatio": 0.23495185185185186,
+        "contentBounds": {
+          "x": 55,
+          "y": 138,
+          "width": 1090,
+          "height": 624
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 215617,
+        "inkRatio": 0.19964537037037036,
+        "contentBounds": {
+          "x": 106,
+          "y": 161,
+          "width": 987,
+          "height": 578
+        }
+      },
+      "widthRatio": 1.1043566362715298,
+      "heightRatio": 1.0795847750865053,
+      "inkRatio": 1.1768459815320684
+    },
+    {
+      "id": "prod_ishikawa_alternating_capacity",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 278534,
+        "inkRatio": 0.2579018518518518,
+        "contentBounds": {
+          "x": 88,
+          "y": 144,
+          "width": 1024,
+          "height": 612
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 242054,
+        "inkRatio": 0.2241240740740741,
+        "contentBounds": {
+          "x": 137,
+          "y": 163,
+          "width": 926,
+          "height": 574
+        }
+      },
+      "widthRatio": 1.1058315334773219,
+      "heightRatio": 1.0662020905923344,
+      "inkRatio": 1.1507101721103554
+    },
+    {
+      "id": "prod_ishikawa_long_nested_labels",
+      "kind": "ishikawa",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 105076,
+        "inkRatio": 0.0972925925925926,
+        "contentBounds": {
+          "x": 249,
+          "y": 37,
+          "width": 702,
+          "height": 826
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 96743,
+        "inkRatio": 0.08957685185185185,
+        "contentBounds": {
+          "x": 267,
+          "y": 60,
+          "width": 666,
+          "height": 780
+        }
+      },
+      "widthRatio": 1.054054054054054,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0861354309872548
     }
   ]
 }

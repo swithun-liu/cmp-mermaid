@@ -71,6 +71,7 @@ jobs:
           - kanban
           - treemap
           - venn
+          - ishikawa
 
     steps:
       - name: Checkout

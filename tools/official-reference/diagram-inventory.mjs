@@ -51,7 +51,7 @@ export const diagramFamilies = Object.freeze([
   family('ishikawa', 'Ishikawa', 'ishikawa.md', ['ishikawa'], [
     header('ishikawa-beta', 'ishikawa'),
     header('ishikawa', 'ishikawa'),
-  ]),
+  ], true),
   family('kanban', 'Kanban', 'kanban.md', ['kanban'], [
     header('kanban', 'kanban'),
   ], true),

@@ -43,6 +43,15 @@ internal object MermaidTextPort {
         }
     }
 
+    /**
+     * Mermaid.js 12.0.0: diagrams/common/common.ts -> sanitizeText.
+     *
+     * This boundary preserves entity references because callers such as the
+     * Ishikawa SVG renderer assign the sanitized result through textContent.
+     */
+    fun sanitizeText(source: String): GMResult<String, MermaidError> =
+        sanitizeSvgLiteral(source)
+
     private fun renderNonMarkdown(
         source: String,
         config: MermaidRenderOptions,

@@ -58,6 +58,7 @@ const kotlinGalleryFiles = {
   sankey: ['SankeyDemos.kt', 'SankeyDemo'],
   treemap: ['TreemapDemos.kt', 'TreemapDemo'],
   venn: ['VennDemos.kt', 'VennDemo'],
+  ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [

@@ -36,6 +36,7 @@ const kotlinGalleryFiles = {
   sankey: ['SankeyDemos.kt', 'SankeyDemo'],
   treemap: ['TreemapDemos.kt', 'TreemapDemo'],
   venn: ['VennDemos.kt', 'VennDemo'],
+  ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -58,6 +59,7 @@ const expectedKindCounts = new Map([
   ['sankey', 5],
   ['treemap', 5],
   ['venn', 5],
+  ['ishikawa', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -80,6 +82,7 @@ const expectedProductionKindCounts = new Map([
   ['sankey', 13],
   ['treemap', 13],
   ['venn', 13],
+  ['ishikawa', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -102,6 +105,7 @@ const supportedKinds = new Set([
   'sankey',
   'treemap',
   'venn',
+  'ishikawa',
 ]);
 
 validateStabilityCases();
@@ -175,8 +179,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 353) {
-    throw new Error(`Expected 353 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 358) {
+    throw new Error(`Expected 358 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -196,14 +200,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 262) {
+  if (productionCases.length !== 275) {
     throw new Error(
-      `Expected 262 production cases, found ${productionCases.length}`,
+      `Expected 275 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 160) {
+  if (conformanceCases.length !== 168) {
     throw new Error(
-      `Expected 160 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 168 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -435,6 +439,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "sankey",
             "treemap",
             "venn",
+            "ishikawa",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -519,6 +524,7 @@ private fun addVisualParityVariation(
     "sankey" -> "\${source.trimEnd()}\\n\\"\$label\\",\$evidenceId,\${(ordinal % 17) + 3}\\n"
     "treemap" -> replaceOrInsertTreemapVisualParityTitle(source, label)
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
+    "ishikawa" -> "\${source.trimEnd()}\\n\$label\\n"
     else -> source
 }
 

@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-17T23:36:18.508Z",
-  "caseCount": 262,
+  "generatedAt": "2026-09-18T04:34:36.540Z",
+  "caseCount": 275,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -5860,6 +5860,296 @@
       "nativeSha256": "fb8cbe2fb6df099c5f2f77a0590f8a2c089057816b4ff39df1464a8368153e8e",
       "officialSha256": "623855131d5f36b5d9d5ed1492d9de0a8a324d453334db4639928966131da742",
       "sourceSha256": "7f425f1eb6d628ef329c474f92f6b138e22fd29574b6f01eb1b4d69413948a58"
+    },
+    {
+      "id": "rc_ishikawa_release_regression",
+      "kind": "ishikawa",
+      "title": "Release regression analysis",
+      "scenario": "Four alternating ownership domains and nested evidence explain a release regression.",
+      "aspectRatio": 1.85,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_ishikawa_release_regression_native.png",
+      "officialFile": "rc_ishikawa_release_regression_official.png",
+      "nativeBytes": 57843,
+      "officialBytes": 54729,
+      "nativeSha256": "c377a32659644d4918f707ede3d1cf1861f8b36010a96f3bf31a98eb287d51f5",
+      "officialSha256": "edc59a3708e177693df9d2564201f91cd6061f5311d4312b66d63d94f24acb33",
+      "sourceSha256": "e6ae40eb7d55a8815762163cc954bf40e29b9c46158395fd016962ea6f839620"
+    },
+    {
+      "id": "rc_ishikawa_service_latency",
+      "kind": "ishikawa",
+      "title": "Service latency analysis",
+      "scenario": "A broad cause tree stresses alternating branches and uneven descendant counts.",
+      "aspectRatio": 2,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_ishikawa_service_latency_native.png",
+      "officialFile": "rc_ishikawa_service_latency_official.png",
+      "nativeBytes": 67079,
+      "officialBytes": 62418,
+      "nativeSha256": "a321493d65790b356c2f955ff3c264c12351e1d4d3676233c3860d4e7ba19b6f",
+      "officialSha256": "211ea1996e5d46c745870497e5d9212048ac76e3073f6a263e779b2dfc4faa47",
+      "sourceSha256": "1bfae23f1bac0be4037a7ae5824aa7668768a6c7502340e2c6606c5c10c7ded5"
+    },
+    {
+      "id": "rc_ishikawa_normalized_indentation",
+      "kind": "ishikawa",
+      "title": "Normalized indentation hierarchy",
+      "scenario": "The first cause establishes a baseline below an over-indented effect and irregular child depths.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_ishikawa_normalized_indentation_native.png",
+      "officialFile": "rc_ishikawa_normalized_indentation_official.png",
+      "nativeBytes": 37318,
+      "officialBytes": 34923,
+      "nativeSha256": "dec192a5f2cadccd36eec1ceb9104de283e6223e132f3d1819948c2fe54c67c2",
+      "officialSha256": "90f78f33d2bcc558473fc4caf4a231221d7117f4bde28d42b46f72a03bfe3762",
+      "sourceSha256": "0ef2dfbfc3853a851387d1312ca4ff79d83d90f444fdf6999d3dd24b1f8a8808"
+    },
+    {
+      "id": "rc_ishikawa_responsive_regions",
+      "kind": "ishikawa",
+      "title": "Responsive regional analysis",
+      "scenario": "Frontmatter config, comments, entities, and multilingual labels render in a responsive viewport.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_ishikawa_responsive_regions_native.png",
+      "officialFile": "rc_ishikawa_responsive_regions_official.png",
+      "nativeBytes": 44355,
+      "officialBytes": 41079,
+      "nativeSha256": "ebd88517b0b328e5ca5750c42a1c1da6a84cc3a1d663c213e19a27407c804a5e",
+      "officialSha256": "71f0becd0cbac8383a2ab16476cd4028fc5446564f94b0a15c10d9e06c354d25",
+      "sourceSha256": "6153059ddfe165620fa383b7a43fcfef3763a1c085264c149806101f568af2c4"
+    },
+    {
+      "id": "rc_ishikawa_long_evidence",
+      "kind": "ishikawa",
+      "title": "Long evidence hierarchy",
+      "scenario": "Long effect and cause labels exercise multiline wrapping across a deep hierarchy.",
+      "aspectRatio": 2,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_ishikawa_long_evidence_native.png",
+      "officialFile": "rc_ishikawa_long_evidence_official.png",
+      "nativeBytes": 78354,
+      "officialBytes": 74105,
+      "nativeSha256": "14ea6ae733b1b332314861c877c7b0ad9ec9020591cafc06e3b23015bd45d13b",
+      "officialSha256": "31e03bfeade0049b56bafa229d561c8db9714d307c94859b56bd54bb974b2993",
+      "sourceSha256": "f3bff1b6b572d9a1650e36bafbfec966c50e1e13d309f8d2414d322ad74deaf8"
+    },
+    {
+      "id": "prod_ishikawa_photo_quality",
+      "kind": "ishikawa",
+      "title": "Photo quality investigation",
+      "scenario": "The official beta header drives alternating top-level causes with nested and leaf causes.",
+      "aspectRatio": 1.8,
+      "features": [
+        "ishikawa-beta-header",
+        "effect",
+        "top-level-causes",
+        "alternating-causes",
+        "nested-causes",
+        "leaf-causes"
+      ],
+      "expectedTexts": [
+        "Blurry Photo",
+        "Process",
+        "Out of focus",
+        "User",
+        "Shaky hands"
+      ],
+      "nativeFile": "prod_ishikawa_photo_quality_native.png",
+      "officialFile": "prod_ishikawa_photo_quality_official.png",
+      "nativeBytes": 45911,
+      "officialBytes": 42857,
+      "nativeSha256": "d889562303f6806cd34fcbd8dff61a405a9b95b6d33f8ccf12d7c0fdcfb3b842",
+      "officialSha256": "c4007e23a9b58cdfbb72f22d8cd931aa8b6a94b0f6439834c1c5e9000d7b3916",
+      "sourceSha256": "9c07ddf30a4cfa32035b7982f60e794a5a02ce4c4b5947b25a7bf31418566b96"
+    },
+    {
+      "id": "prod_ishikawa_root_only",
+      "kind": "ishikawa",
+      "title": "Root-only operational effect",
+      "scenario": "The stable header renders a long effect without any cause branches.",
+      "aspectRatio": 1.4,
+      "features": [
+        "ishikawa-header",
+        "effect",
+        "root-only",
+        "long-wrapping"
+      ],
+      "expectedTexts": [
+        "Customer visible request processing degradation"
+      ],
+      "nativeFile": "prod_ishikawa_root_only_native.png",
+      "officialFile": "prod_ishikawa_root_only_official.png",
+      "nativeBytes": 45925,
+      "officialBytes": 39793,
+      "nativeSha256": "1515343558865f297b11af0fd4373fad8c8d1961887d17f7d1636854d362509c",
+      "officialSha256": "73d1b12967eaf8e680ed277053078327f0151570b05da3dbd350d1598caf126b",
+      "sourceSha256": "c4156198f94800757eecba3c1c425140a2e9def3a8ce77ae059eac3d7327d48f"
+    },
+    {
+      "id": "prod_ishikawa_deep_hierarchy",
+      "kind": "ishikawa",
+      "title": "Deep ownership hierarchy",
+      "scenario": "A deeply nested cause chain exercises alternating descendant ordering and indentation normalization.",
+      "aspectRatio": 1.9,
+      "features": [
+        "nested-causes",
+        "deep-hierarchy",
+        "base-level-normalization",
+        "irregular-indentation"
+      ],
+      "expectedTexts": [
+        "Release incident",
+        "Delivery",
+        "Review",
+        "Automation",
+        "Capacity"
+      ],
+      "nativeFile": "prod_ishikawa_deep_hierarchy_native.png",
+      "officialFile": "prod_ishikawa_deep_hierarchy_official.png",
+      "nativeBytes": 41181,
+      "officialBytes": 38141,
+      "nativeSha256": "def3543d018731d0e6acc593d32c212ad743c718eb72a6d55854f1f81cda1c58",
+      "officialSha256": "f1cf42470bf86a2c02ddfca35de248ddd2370d7ffe286cf2d02545b0aca4121c",
+      "sourceSha256": "dc6143a8e5d1e7bf1fae73a5978f49691eb7d2ab44c26dfd2893807833a0cc8e"
+    },
+    {
+      "id": "prod_ishikawa_encoded_regions",
+      "kind": "ishikawa",
+      "title": "Encoded regional causes",
+      "scenario": "Comments, entities, HTML breaks, and multilingual labels share one hierarchy.",
+      "aspectRatio": 1.8,
+      "features": [
+        "comments",
+        "entities",
+        "html-breaks",
+        "unicode",
+        "nested-causes"
+      ],
+      "expectedTexts": [
+        "Regional outage",
+        "東京",
+        "서울",
+        "São Paulo"
+      ],
+      "nativeFile": "prod_ishikawa_encoded_regions_native.png",
+      "officialFile": "prod_ishikawa_encoded_regions_official.png",
+      "nativeBytes": 39607,
+      "officialBytes": 37655,
+      "nativeSha256": "d80edb8351a031e483ed97b7e482d0fc7b3025d7685f9291cf18274da79f0f4c",
+      "officialSha256": "0d7be25f9f9a9bbf4b12bfd976b968dfa8a5552899e362f41e157287f4326869",
+      "sourceSha256": "6ace3f22bde5a7ba16d825e30fa2443085022c9c41d02d26c1541733b08b25ca"
+    },
+    {
+      "id": "prod_ishikawa_responsive_config",
+      "kind": "ishikawa",
+      "title": "Responsive configured analysis",
+      "scenario": "Frontmatter title, theme, padding, and responsive sizing shape a multi-branch analysis.",
+      "aspectRatio": 1.8,
+      "features": [
+        "frontmatter-title",
+        "diagram-padding",
+        "responsive-sizing",
+        "theme",
+        "alternating-causes"
+      ],
+      "expectedTexts": [
+        "Payment failure",
+        "Client",
+        "Service"
+      ],
+      "nativeFile": "prod_ishikawa_responsive_config_native.png",
+      "officialFile": "prod_ishikawa_responsive_config_official.png",
+      "nativeBytes": 44255,
+      "officialBytes": 40453,
+      "nativeSha256": "404b6c266eb7b40771b47c1d389dbc55f082cd0270dbf6e59186e4b7063e977e",
+      "officialSha256": "78de736c4e21fb727e8d21c2c6a38c9a61331bcce994ed4e15dad8c1d41238c8",
+      "sourceSha256": "c16f67bf2a52a88823b7fa36e981c0be7b8e76c88ab4b74903155e6e4f57d749"
+    },
+    {
+      "id": "prod_ishikawa_intrinsic_config",
+      "kind": "ishikawa",
+      "title": "Intrinsic configured analysis",
+      "scenario": "Intrinsic sizing and compact diagram padding retain deterministic fishbone bounds.",
+      "aspectRatio": 1.75,
+      "features": [
+        "diagram-padding",
+        "intrinsic-sizing",
+        "top-level-causes",
+        "leaf-causes"
+      ],
+      "expectedTexts": [
+        "Build delay",
+        "Toolchain",
+        "Dependencies",
+        "Infrastructure"
+      ],
+      "nativeFile": "prod_ishikawa_intrinsic_config_native.png",
+      "officialFile": "prod_ishikawa_intrinsic_config_official.png",
+      "nativeBytes": 44912,
+      "officialBytes": 40715,
+      "nativeSha256": "7e1432ac355e75f236c3f18f4bf8a17f8d0c9cb572ab8d3bca7e7a0eca0daa5d",
+      "officialSha256": "a84cbca2d34b83ee8e638c042febaf9df9a23a483bdebeaf2408814ddc731839",
+      "sourceSha256": "8c871ce1a71aba5d3b12285c4b8d86fa2e681b0a61108e8886663bef40edcdc1"
+    },
+    {
+      "id": "prod_ishikawa_alternating_capacity",
+      "kind": "ishikawa",
+      "title": "Alternating capacity factors",
+      "scenario": "Six top-level causes exercise repeated upper and lower branch pairing.",
+      "aspectRatio": 2,
+      "features": [
+        "top-level-causes",
+        "alternating-causes",
+        "leaf-causes"
+      ],
+      "expectedTexts": [
+        "Capacity shortfall",
+        "Traffic",
+        "Storage",
+        "Compute",
+        "Network",
+        "Scheduling",
+        "Operations"
+      ],
+      "nativeFile": "prod_ishikawa_alternating_capacity_native.png",
+      "officialFile": "prod_ishikawa_alternating_capacity_official.png",
+      "nativeBytes": 55931,
+      "officialBytes": 49722,
+      "nativeSha256": "2a96a848a215b4ac53b3f506f555df0667495771c6832f2a3be222dabaea9c26",
+      "officialSha256": "8d35308c13c1d515ff7baa150c3c6633607e0d1fb5e36a2af3f1d619f9aa7284",
+      "sourceSha256": "584671f3bbc854f5213717174783fd1736d3a6215feba88b322c8a5ea1e5c48f"
+    },
+    {
+      "id": "prod_ishikawa_long_nested_labels",
+      "kind": "ishikawa",
+      "title": "Long nested evidence labels",
+      "scenario": "Long labels at several depths exercise the renderer wrapping thresholds.",
+      "aspectRatio": 2,
+      "features": [
+        "nested-causes",
+        "deep-hierarchy",
+        "long-wrapping"
+      ],
+      "expectedTexts": [
+        "End to end production compatibility verification failure",
+        "Asynchronous replication completion evidence missing",
+        "Operational readiness and rollback evidence incomplete"
+      ],
+      "nativeFile": "prod_ishikawa_long_nested_labels_native.png",
+      "officialFile": "prod_ishikawa_long_nested_labels_official.png",
+      "nativeBytes": 79777,
+      "officialBytes": 73916,
+      "nativeSha256": "db0e8cf097f2509c0573f10008ac1824ea716018ab5271cf229eeae3efdf2973",
+      "officialSha256": "605829ba3d9043401c462587980f698d7309a197dea8d0cbd2f9e5dde6446efe",
+      "sourceSha256": "31b966343508234620caaffe28a4cd406489647e62af12b9dbe58e50c7322a36"
     }
   ]
 }

@@ -1,0 +1,3988 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-18T04:34:35.786Z",
+  "inputDirectory": "captures/local/ishikawa-production-20260918-pass4",
+  "corpusSource": "production",
+  "corpusKind": "ishikawa",
+  "theme": null,
+  "failOnReview": false,
+  "gridSize": 96,
+  "caseCount": 13,
+  "counts": {
+    "pass": 12,
+    "review": 1
+  },
+  "reviewQueue": [
+    {
+      "id": "prod_ishikawa_root_only",
+      "kind": "ishikawa",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/ishikawa-production-20260918-pass4/detail-diffs/prod_ishikawa_root_only_heatmap.png"
+    }
+  ],
+  "cases": [
+    {
+      "id": "rc_ishikawa_release_regression",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 27,
+          "typeCounts": {
+            "path": 12,
+            "text": 11,
+            "shape": 4
+          },
+          "textCount": 11,
+          "uniqueTextCount": 11,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 27,
+          "typeCounts": {
+            "path": 12,
+            "text": 11,
+            "shape": 4
+          },
+          "textCount": 11,
+          "uniqueTextCount": 11,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 11,
+          "maximumCenterDistance": 0.030371227823053182,
+          "p95CenterDistance": 0.02815630852769845,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 16
+          },
+          "officialStrokePatterns": {
+            "Solid": 16
+          },
+          "nativeMarkers": {
+            "start": 10,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 10,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7294210871395841,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6983814281364835,
+                "y": 0.4525024543973007
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6673417490607619,
+                "y": 0.2625122719865037
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.7294210871395841,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.7061413629598798,
+                "y": 0.7849852995169355
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.39435410159122897,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-3",
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.36331444258812845,
+                "y": 0.4525024543973007
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-4",
+              "pathOrder": 20,
+              "position": "start",
+              "point": {
+                "x": 0.2980784238913651,
+                "y": 0.4525024543973007
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-3",
+              "pathOrder": 22,
+              "position": "start",
+              "point": {
+                "x": 0.39435410159122897,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-5",
+              "pathOrder": 25,
+              "position": "start",
+              "point": {
+                "x": 0.37107435733890354,
+                "y": 0.7849852995169355
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7287431100779362,
+                "y": 0.6387685624652649
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6988282114339707,
+                "y": 0.4566404530531162
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6689133054103705,
+                "y": 0.27451238152690005
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.7287431100779362,
+                "y": 0.6387685624652649
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.7063069324051447,
+                "y": 0.7753646255814103
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.41162123015793384,
+                "y": 0.6387685624652649
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.381706316754699,
+                "y": 0.4566404530531162
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 20,
+              "position": "start",
+              "point": {
+                "x": 0.31883419129949353,
+                "y": 0.4566404530531162
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 22,
+              "position": "start",
+              "point": {
+                "x": 0.41162123015793384,
+                "y": 0.6387685624652649
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 25,
+              "position": "start",
+              "point": {
+                "x": 0.3891850451055077,
+                "y": 0.7753646255814103
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9290407358738502,
+        "exactMaskIou": 0.6158503026967529,
+        "edgeF1": 0.9829517083957485,
+        "colorError": 0.04486886853853276,
+        "exactColorError": 0.1577569864856601
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 250,
+          "y": 37,
+          "width": 702,
+          "height": 826
+        },
+        "foregroundCells": 1439,
+        "edgeCells": 2088
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 274,
+          "y": 60,
+          "width": 653,
+          "height": 780
+        },
+        "foregroundCells": 1497,
+        "edgeCells": 2172
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_ishikawa_service_latency",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 31,
+          "typeCounts": {
+            "path": 14,
+            "text": 13,
+            "shape": 4
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 31,
+          "typeCounts": {
+            "path": 14,
+            "text": 13,
+            "shape": 4
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 13,
+          "maximumCenterDistance": 0.02172256358617674,
+          "p95CenterDistance": 0.021375694881876274,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 18
+          },
+          "officialStrokePatterns": {
+            "Solid": 18
+          },
+          "nativeMarkers": {
+            "start": 12,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 12,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7389348186614701,
+                "y": 0.50000000863358
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.7196905094399401,
+                "y": 0.3931305159187416
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.7004461780942419,
+                "y": 0.2862610404710633
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.681201802500208,
+                "y": 0.17939155466308895
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 12,
+              "position": "start",
+              "point": {
+                "x": 0.7389348186614701,
+                "y": 0.50000000863358
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-3",
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.7132757396994299,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-4",
+              "pathOrder": 17,
+              "position": "start",
+              "point": {
+                "x": 0.6413721054951123,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 19,
+              "position": "start",
+              "point": {
+                "x": 0.3526517585173622,
+                "y": 0.50000000863358
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-5",
+              "pathOrder": 22,
+              "position": "start",
+              "point": {
+                "x": 0.3141631400743018,
+                "y": 0.2862610404710633
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-3",
+              "pathOrder": 24,
+              "position": "start",
+              "point": {
+                "x": 0.3526517585173622,
+                "y": 0.50000000863358
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-6",
+              "pathOrder": 27,
+              "position": "start",
+              "point": {
+                "x": 0.3269926795553219,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-7",
+              "pathOrder": 29,
+              "position": "start",
+              "point": {
+                "x": 0.3013336227174496,
+                "y": 0.7849852995169355
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7265050349609438,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.7078118136208575,
+                "y": 0.39972547345297066
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6891185922807713,
+                "y": 0.2972784157657222
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.6704253709406851,
+                "y": 0.19483135807847377
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 12,
+              "position": "start",
+              "point": {
+                "x": 0.7265050349609438,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.7015807371081559,
+                "y": 0.6387686080565504
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 17,
+              "position": "start",
+              "point": {
+                "x": 0.6317362466425831,
+                "y": 0.6387686080565504
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 19,
+              "position": "start",
+              "point": {
+                "x": 0.3599135627108446,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 22,
+              "position": "start",
+              "point": {
+                "x": 0.32252712003067213,
+                "y": 0.2972784157657222
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 24,
+              "position": "start",
+              "point": {
+                "x": 0.3599135627108446,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 27,
+              "position": "start",
+              "point": {
+                "x": 0.3349892566600376,
+                "y": 0.6387686080565504
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 29,
+              "position": "start",
+              "point": {
+                "x": 0.31006498340130667,
+                "y": 0.7753646849728817
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8823213326168726,
+        "exactMaskIou": 0.797331965110313,
+        "edgeF1": 0.9515736192969607,
+        "colorError": 0.04196070655111143,
+        "exactColorError": 0.11367451718159471
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 285,
+          "y": 37,
+          "width": 631,
+          "height": 826
+        },
+        "foregroundCells": 1669,
+        "edgeCells": 2385
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 311,
+          "y": 60,
+          "width": 579,
+          "height": 780
+        },
+        "foregroundCells": 1834,
+        "edgeCells": 2647
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_ishikawa_normalized_indentation",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 17,
+          "typeCounts": {
+            "path": 8,
+            "text": 7,
+            "shape": 2
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 17,
+          "typeCounts": {
+            "path": 8,
+            "text": 7,
+            "shape": 2
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "maximumCenterDistance": 0.02231722955119552,
+          "p95CenterDistance": 0.02141766826623013,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 10
+          },
+          "officialStrokePatterns": {
+            "Solid": 10
+          },
+          "nativeMarkers": {
+            "start": 6,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 6,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.597449338573328,
+                "y": 0.50000000863358
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5605135348572698,
+                "y": 0.3575073631919022
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.45700961506828536,
+                "y": 0.3575073631919022
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.597449338573328,
+                "y": 0.50000000863358
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.5605135348572698,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-3",
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.45700961506828536,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5954037227754831,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5601224429603548,
+                "y": 0.3655764542238879
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.46125494321310295,
+                "y": 0.3655764542238879
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.5954037227754831,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.5601224429603548,
+                "y": 0.6387686080565504
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.46125494321310295,
+                "y": 0.6387686080565504
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9094678645473393,
+        "exactMaskIou": 0.7565162110616656,
+        "edgeF1": 0.934923337186454,
+        "colorError": 0.039294700376057735,
+        "exactColorError": 0.12511623848522244
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 390,
+          "y": 37,
+          "width": 421,
+          "height": 826
+        },
+        "foregroundCells": 1350,
+        "edgeCells": 1627
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 409,
+          "y": 60,
+          "width": 383,
+          "height": 780
+        },
+        "foregroundCells": 1413,
+        "edgeCells": 1957
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_ishikawa_responsive_regions",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 18,
+          "typeCounts": {
+            "path": 8,
+            "text": 7,
+            "shape": 3
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 18,
+          "typeCounts": {
+            "path": 8,
+            "text": 7,
+            "shape": 3
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "maximumCenterDistance": 0.015681385240936246,
+          "p95CenterDistance": 0.015609152955259184,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 0.6666666666666666,
+          "officialPaletteCoverage": 0.6666666666666666,
+          "nativeStrokePatterns": {
+            "Solid": 11
+          },
+          "officialStrokePatterns": {
+            "Solid": 11
+          },
+          "nativeMarkers": {
+            "start": 6,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 6,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.6688419685670983,
+                "y": 0.6370497943788361
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6266365506943357,
+                "y": 0.3629502222287619
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6688419685670983,
+                "y": 0.6370497943788361
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 11,
+              "position": "start",
+              "point": {
+                "x": 0.6477392869239613,
+                "y": 0.7740995804538733
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.300937168131207,
+                "y": 0.6370497943788361
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 16,
+              "position": "start",
+              "point": {
+                "x": 0.2587317866494368,
+                "y": 0.3629502222287619
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.6653337446293754,
+                "y": 0.6343218077134795
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6253234087107026,
+                "y": 0.3698839336784273
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6653337446293754,
+                "y": 0.6343218077134795
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 11,
+              "position": "start",
+              "point": {
+                "x": 0.6453285766700391,
+                "y": 0.7665407325070387
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.3019554284234341,
+                "y": 0.6343218077134795
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 16,
+              "position": "start",
+              "point": {
+                "x": 0.2619451056648308,
+                "y": 0.3698839336784273
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9667747163695299,
+        "exactMaskIou": 0.8220720720720721,
+        "edgeF1": 0.9953451379677635,
+        "colorError": 0.043842164965159615,
+        "exactColorError": 0.1063210269092622
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 239,
+          "y": 50,
+          "width": 722,
+          "height": 800
+        },
+        "foregroundCells": 1232,
+        "edgeCells": 1547
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 253,
+          "y": 73,
+          "width": 694,
+          "height": 754
+        },
+        "foregroundCells": 1195,
+        "edgeCells": 1638
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_ishikawa_long_evidence",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 15,
+          "typeCounts": {
+            "path": 7,
+            "text": 6,
+            "shape": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 15,
+          "typeCounts": {
+            "path": 7,
+            "text": 6,
+            "shape": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.04686743947795832,
+          "p95CenterDistance": 0.01964600837365034,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 9
+          },
+          "nativeMarkers": {
+            "start": 5,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 5,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5659177226093175,
+                "y": 0.6434836763180227
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5345954215951682,
+                "y": 0.45217211368974286
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.46876537448090727,
+                "y": 0.45217211368974286
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.5659177226093175,
+                "y": 0.6434836763180227
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.5424260171041045,
+                "y": 0.7869673439424197
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5602155706379228,
+                "y": 0.6396934795049567
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.530496941005517,
+                "y": 0.45635145399531785
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.4680373140202086,
+                "y": 0.45635145399531785
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.5602155706379228,
+                "y": 0.6396934795049567
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.5379265947480097,
+                "y": 0.7771999795679615
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9141025641025641,
+        "exactMaskIou": 0.786597526924611,
+        "edgeF1": 0.9610207221506194,
+        "colorError": 0.04338578154810885,
+        "exactColorError": 0.11990009672264067
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 246,
+          "y": 34,
+          "width": 708,
+          "height": 832
+        },
+        "foregroundCells": 2258,
+        "edgeCells": 2413
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 265,
+          "y": 57,
+          "width": 670,
+          "height": 786
+        },
+        "foregroundCells": 2221,
+        "edgeCells": 2411
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_ishikawa_photo_quality",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 25,
+          "typeCounts": {
+            "path": 11,
+            "text": 10,
+            "shape": 4
+          },
+          "textCount": 10,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 25,
+          "typeCounts": {
+            "path": 11,
+            "text": 10,
+            "shape": 4
+          },
+          "textCount": 10,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 10,
+          "maximumCenterDistance": 0.022092134184276156,
+          "p95CenterDistance": 0.02013447789376108,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 15
+          },
+          "officialStrokePatterns": {
+            "Solid": 15
+          },
+          "nativeMarkers": {
+            "start": 9,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 9,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7394096003411128,
+                "y": 0.5854955544574025
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.7070282417405,
+                "y": 0.4145043937411172
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6746467900718873,
+                "y": 0.2435132330248319
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.7394096003411128,
+                "y": 0.5854955544574025
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.7070282417405,
+                "y": 0.7564867151736877
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.406883895599389,
+                "y": 0.5854955544574025
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-3",
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.35831179953096987,
+                "y": 0.32900881338297455
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-3",
+              "pathOrder": 20,
+              "position": "start",
+              "point": {
+                "x": 0.406883895599389,
+                "y": 0.5854955544574025
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-4",
+              "pathOrder": 23,
+              "position": "start",
+              "point": {
+                "x": 0.37450249046477624,
+                "y": 0.7564867151736877
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7253169119677111,
+                "y": 0.584130179815747
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.694487481642645,
+                "y": 0.42021488246469124
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6636580428673142,
+                "y": 0.256299597742281
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.7253169119677111,
+                "y": 0.584130179815747
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.694487481642645,
+                "y": 0.7480454519095118
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.4030275338017348,
+                "y": 0.584130179815747
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.35678339253926805,
+                "y": 0.3382572464178089
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 20,
+              "position": "start",
+              "point": {
+                "x": 0.4030275338017348,
+                "y": 0.584130179815747
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 23,
+              "position": "start",
+              "point": {
+                "x": 0.37219809502640416,
+                "y": 0.7480454519095118
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9113362887903736,
+        "exactMaskIou": 0.7495652173913043,
+        "edgeF1": 0.9939401946310957,
+        "colorError": 0.045169304800946726,
+        "exactColorError": 0.12445278014587477
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 302,
+          "y": 37,
+          "width": 597,
+          "height": 826
+        },
+        "foregroundCells": 1446,
+        "edgeCells": 2026
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 321,
+          "y": 60,
+          "width": 559,
+          "height": 780
+        },
+        "foregroundCells": 1572,
+        "edgeCells": 2135
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_ishikawa_root_only",
+      "kind": "ishikawa",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 2.000 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 3,
+          "typeCounts": {
+            "path": 2,
+            "text": 1
+          },
+          "textCount": 1,
+          "uniqueTextCount": 1,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 2,
+          "typeCounts": {
+            "path": 1,
+            "text": 1
+          },
+          "textCount": 1,
+          "uniqueTextCount": 1,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 1,
+          "maximumCenterDistance": 0.0075278171683335286,
+          "p95CenterDistance": 0.0075278171683335286,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 2,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 1,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 0.5,
+          "nativeStrokePatterns": {
+            "Solid": 2
+          },
+          "officialStrokePatterns": {
+            "Solid": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9916853213943077,
+        "exactMaskIou": 0.9916853213943077,
+        "edgeF1": 1,
+        "colorError": 0.018079430444839038,
+        "exactColorError": 0.05306679542086529
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 404,
+          "y": 73,
+          "width": 392,
+          "height": 754
+        },
+        "foregroundCells": 6254,
+        "edgeCells": 2344
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 435,
+          "y": 113,
+          "width": 330,
+          "height": 674
+        },
+        "foregroundCells": 6202,
+        "edgeCells": 2279
+      },
+      "heatmap": "captures/local/ishikawa-production-20260918-pass4/detail-diffs/prod_ishikawa_root_only_heatmap.png"
+    },
+    {
+      "id": "prod_ishikawa_deep_hierarchy",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 19,
+          "typeCounts": {
+            "path": 9,
+            "text": 8,
+            "shape": 2
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 19,
+          "typeCounts": {
+            "path": 9,
+            "text": 8,
+            "shape": 2
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 8,
+          "maximumCenterDistance": 0.024183184277288574,
+          "p95CenterDistance": 0.02257409592324202,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 11
+          },
+          "officialStrokePatterns": {
+            "Solid": 11
+          },
+          "nativeMarkers": {
+            "start": 7,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 7,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.6393075335224866,
+                "y": 0.7564867151736877
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6042035491003654,
+                "y": 0.6196938038678196
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.5017340983965265,
+                "y": 0.6196938038678196
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.4666301139744053,
+                "y": 0.4829008234933112
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-3",
+              "pathOrder": 12,
+              "position": "start",
+              "point": {
+                "x": 0.3641606632705663,
+                "y": 0.4829008234933112
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 14,
+              "position": "start",
+              "point": {
+                "x": 0.6393075335224866,
+                "y": 0.7564867151736877
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-4",
+              "pathOrder": 17,
+              "position": "start",
+              "point": {
+                "x": 0.6173675629643245,
+                "y": 0.8419822955318305
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.6329007658139995,
+                "y": 0.74804547085248
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.599939256586539,
+                "y": 0.6169132531774681
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.5037237371441292,
+                "y": 0.6169132531774681
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.47076223356333186,
+                "y": 0.48578101024516546
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 12,
+              "position": "start",
+              "point": {
+                "x": 0.37454670847425914,
+                "y": 0.48578101024516546
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 14,
+              "position": "start",
+              "point": {
+                "x": 0.6329007658139995,
+                "y": 0.74804547085248
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 17,
+              "position": "start",
+              "point": {
+                "x": 0.6122998246643352,
+                "y": 0.8300031068993623
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9439626417611742,
+        "exactMaskIou": 0.8076923076923077,
+        "edgeF1": 0.9958661705868922,
+        "colorError": 0.041888192712452095,
+        "exactColorError": 0.10728198640912114
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 388,
+          "y": 37,
+          "width": 426,
+          "height": 826
+        },
+        "foregroundCells": 1423,
+        "edgeCells": 2046
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 403,
+          "y": 60,
+          "width": 396,
+          "height": 780
+        },
+        "foregroundCells": 1491,
+        "edgeCells": 2101
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_ishikawa_encoded_regions",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 16,
+          "typeCounts": {
+            "path": 7,
+            "text": 6,
+            "shape": 3
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 16,
+          "typeCounts": {
+            "path": 7,
+            "text": 6,
+            "shape": 3
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.018083748044805267,
+          "p95CenterDistance": 0.016804782940926986,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 10
+          },
+          "officialStrokePatterns": {
+            "Solid": 10
+          },
+          "nativeMarkers": {
+            "start": 5,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 5,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7217827590688206,
+                "y": 0.5000000085890872
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6815830184671576,
+                "y": 0.28736253401987166
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.7217827590688206,
+                "y": 0.5000000085890872
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 11,
+              "position": "start",
+              "point": {
+                "x": 0.6815830184671576,
+                "y": 0.7126374659801283
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.2679543274434456,
+                "y": 0.5000000085890872
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7241481803639129,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6860295822302533,
+                "y": 0.2972784157657222
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.7241481803639129,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 11,
+              "position": "start",
+              "point": {
+                "x": 0.6860295822302533,
+                "y": 0.7070666465147161
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.27525789347725016,
+                "y": 0.5021725311402192
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8716951788491446,
+        "exactMaskIou": 0.6808659217877095,
+        "edgeF1": 0.9251763057220155,
+        "colorError": 0.047070921801951285,
+        "exactColorError": 0.14860426479716654
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 300,
+          "y": 36,
+          "width": 600,
+          "height": 828
+        },
+        "foregroundCells": 1186,
+        "edgeCells": 1407
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 316,
+          "y": 60,
+          "width": 568,
+          "height": 780
+        },
+        "foregroundCells": 1221,
+        "edgeCells": 1593
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_ishikawa_responsive_config",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 23,
+          "typeCounts": {
+            "path": 10,
+            "text": 9,
+            "shape": 4
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 23,
+          "typeCounts": {
+            "path": 10,
+            "text": 9,
+            "shape": 4
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 9,
+          "maximumCenterDistance": 0.0182864311346276,
+          "p95CenterDistance": 0.018273934983436848,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 14
+          },
+          "officialStrokePatterns": {
+            "Solid": 14
+          },
+          "nativeMarkers": {
+            "start": 8,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 8,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.7027462277775354,
+                "y": 0.5000000081815114
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.6641550793338152,
+                "y": 0.29745276989402797
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.7027462277775354,
+                "y": 0.5000000081815114
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 11,
+              "position": "start",
+              "point": {
+                "x": 0.6641550793338152,
+                "y": 0.702547230105972
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.36468299537834714,
+                "y": 0.5000000081815114
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 16,
+              "position": "start",
+              "point": {
+                "x": 0.3260918247515097,
+                "y": 0.29745276989402797
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-3",
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.36468299537834714,
+                "y": 0.5000000081815114
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-3",
+              "pathOrder": 21,
+              "position": "start",
+              "point": {
+                "x": 0.3260918247515097,
+                "y": 0.702547230105972
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.6955823480153164,
+                "y": 0.5020632444288371
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.658514462479148,
+                "y": 0.3074760948033182
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.6955823480153164,
+                "y": 0.5020632444288371
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 11,
+              "position": "start",
+              "point": {
+                "x": 0.658514462479148,
+                "y": 0.6966503940543559
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.36923184665049963,
+                "y": 0.5020632444288371
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 16,
+              "position": "start",
+              "point": {
+                "x": 0.33216396111433133,
+                "y": 0.3074760948033182
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.36923184665049963,
+                "y": 0.5020632444288371
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 21,
+              "position": "start",
+              "point": {
+                "x": 0.33216396111433133,
+                "y": 0.6966503940543559
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9662288930581614,
+        "exactMaskIou": 0.7643097643097643,
+        "edgeF1": 0.9908039689126991,
+        "colorError": 0.058028325957441416,
+        "exactColorError": 0.13706637911430938
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 326,
+          "y": 58,
+          "width": 550,
+          "height": 784
+        },
+        "foregroundCells": 1574,
+        "edgeCells": 2112
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 345,
+          "y": 80,
+          "width": 511,
+          "height": 740
+        },
+        "foregroundCells": 1570,
+        "edgeCells": 2128
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_ishikawa_intrinsic_config",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 12,
+          "typeCounts": {
+            "path": 5,
+            "text": 4,
+            "shape": 3
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 12,
+          "typeCounts": {
+            "path": 5,
+            "text": 4,
+            "shape": 3
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 1
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.057488280913754665,
+          "p95CenterDistance": 0.04950843442549374,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 8
+          },
+          "officialStrokePatterns": {
+            "Solid": 8
+          },
+          "nativeMarkers": {
+            "start": 3,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 3,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5223530222218689,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5223530222218689,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 9,
+              "position": "start",
+              "point": {
+                "x": 0.3083604940567622,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5320832615215988,
+                "y": 0.5068349836483569
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5320832615215988,
+                "y": 0.5068349836483569
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 9,
+              "position": "start",
+              "point": {
+                "x": 0.3409258743776145,
+                "y": 0.5068349836483569
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 1,
+          "officialOccludedTextCount": 1,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9285714285714286,
+        "exactMaskIou": 0.8268114112597829,
+        "edgeF1": 0.9525974762609243,
+        "colorError": 0.046595095223986124,
+        "exactColorError": 0.18546547795252072
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 55,
+          "y": 138,
+          "width": 1090,
+          "height": 624
+        },
+        "foregroundCells": 3572,
+        "edgeCells": 2482
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 106,
+          "y": 161,
+          "width": 987,
+          "height": 578
+        },
+        "foregroundCells": 3664,
+        "edgeCells": 2539
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_ishikawa_alternating_capacity",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 21,
+          "typeCounts": {
+            "path": 8,
+            "text": 7,
+            "shape": 6
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 4
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 21,
+          "typeCounts": {
+            "path": 8,
+            "text": 7,
+            "shape": 6
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 4
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "maximumCenterDistance": 0.04519028610941734,
+          "p95CenterDistance": 0.04319879590497826,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 14
+          },
+          "officialStrokePatterns": {
+            "Solid": 14
+          },
+          "nativeMarkers": {
+            "start": 6,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 6,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.575915339623447,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.575915339623447,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-2",
+              "pathOrder": 9,
+              "position": "start",
+              "point": {
+                "x": 0.45154093554768104,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-3",
+              "pathOrder": 12,
+              "position": "start",
+              "point": {
+                "x": 0.45154093554768104,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-4",
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.3111566409085087,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-5",
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.3111566409085087,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5747723572336207,
+                "y": 0.5063092833957933
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5747723572336207,
+                "y": 0.5063092833957933
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 9,
+              "position": "start",
+              "point": {
+                "x": 0.46050430214619137,
+                "y": 0.5063092833957933
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 12,
+              "position": "start",
+              "point": {
+                "x": 0.46050430214619137,
+                "y": 0.5063092833957933
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.3291527088649909,
+                "y": 0.5063092833957933
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.3291527088649909,
+                "y": 0.5063092833957933
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 4,
+          "officialOccludedTextCount": 4,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9748665480427047,
+        "exactMaskIou": 0.9139900840698426,
+        "edgeF1": 0.9925471644450689,
+        "colorError": 0.051830597940096514,
+        "exactColorError": 0.1569261461860019
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 88,
+          "y": 144,
+          "width": 1024,
+          "height": 612
+        },
+        "foregroundCells": 4383,
+        "edgeCells": 3169
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 137,
+          "y": 163,
+          "width": 926,
+          "height": 574
+        },
+        "foregroundCells": 4496,
+        "edgeCells": 3032
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_ishikawa_long_nested_labels",
+      "kind": "ishikawa",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 15,
+          "typeCounts": {
+            "path": 7,
+            "text": 6,
+            "shape": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 15,
+          "typeCounts": {
+            "path": 7,
+            "text": 6,
+            "shape": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.04640894613552336,
+          "p95CenterDistance": 0.01944132246612085,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 2,
+          "officialPaletteSize": 2,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 9
+          },
+          "nativeMarkers": {
+            "start": 5,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 5,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-0",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5653879390879801,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-0",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5343173767303073,
+                "y": 0.4525024543973007
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-1",
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.4690164084857262,
+                "y": 0.4525024543973007
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-branch-1",
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.5653879390879801,
+                "y": 0.6424926540752578
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "ishikawa-sub-branch-2",
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.5420850374123312,
+                "y": 0.7849852995169355
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.5597562044545028,
+                "y": 0.6387685624652649
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.5302642891640204,
+                "y": 0.4566404530531162
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 8,
+              "position": "start",
+              "point": {
+                "x": 0.46828114758210687,
+                "y": 0.4566404530531162
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "start",
+              "point": {
+                "x": 0.5597562044545028,
+                "y": 0.6387685624652649
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "start",
+              "point": {
+                "x": 0.5376372643489961,
+                "y": 0.7753646255814103
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9151227919000431,
+        "exactMaskIou": 0.7837078651685393,
+        "edgeF1": 0.9599757436647482,
+        "colorError": 0.03522226044413867,
+        "exactColorError": 0.11820833202194736
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 249,
+          "y": 37,
+          "width": 702,
+          "height": 826
+        },
+        "foregroundCells": 2228,
+        "edgeCells": 2445
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 267,
+          "y": 60,
+          "width": 666,
+          "height": 780
+        },
+        "foregroundCells": 2217,
+        "edgeCells": 2452
+      },
+      "heatmap": null
+    }
+  ]
+}

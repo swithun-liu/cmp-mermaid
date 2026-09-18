@@ -22,6 +22,7 @@ export const kinds = [
   'sankey',
   'treemap',
   'venn',
+  'ishikawa',
 ];
 
 export const casesPerKind = 256;
@@ -162,6 +163,8 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return replaceOrInsertTreemapTitle(source, label);
     case 'venn':
       return replaceOrInsertVennTitle(source, label);
+    case 'ishikawa':
+      return `${source.trimEnd()}\n${label}\n`;
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
