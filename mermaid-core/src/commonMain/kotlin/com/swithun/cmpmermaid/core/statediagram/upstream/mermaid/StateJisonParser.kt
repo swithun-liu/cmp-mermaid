@@ -92,7 +92,8 @@ internal class StateJisonParser(
         values: List<Any?>,
         db: StateDb,
         token: StateJisonToken,
-    ): GMResult<Any?, MermaidError> = when (production) {
+    ): GMResult<Any?, MermaidError> {
+        return when (production) {
         3 -> document(values.getOrNull(1), token, production).map { document ->
             db.setRootDocument(document)
             document
@@ -251,7 +252,8 @@ internal class StateJisonParser(
                 ),
             )
         }
-        else -> GMResult.Ok(values.firstOrNull())
+            else -> GMResult.Ok(values.firstOrNull())
+        }
     }
 
     private fun relation(

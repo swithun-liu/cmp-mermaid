@@ -1011,7 +1011,7 @@ internal class AgentflowJisonParser(
         val id: String,
     )
 
-    private data object EmptyStatement
+    private object EmptyStatement
 
     private companion object {
         val TRAILING_METADATA_WHITESPACE = Regex("""}[^\S\n]*\n""")

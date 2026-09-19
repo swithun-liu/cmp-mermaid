@@ -1537,8 +1537,8 @@ internal class ClassLayout {
         is SceneShape -> element.bounds
         is SceneText -> element.bounds
         is ScenePath -> {
-            val first = element.points.firstOrNull() ?: return null
-            element.points.drop(1).fold(
+            val first = element.points.firstOrNull()
+            if (first == null) null else element.points.drop(1).fold(
                 SceneRect(first.x, first.y, first.x, first.y),
             ) { bounds, point ->
                 SceneRect(

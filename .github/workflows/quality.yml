@@ -135,6 +135,64 @@ jobs:
             fi
           done
 
+  android-kotlin17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 11
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "11"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build and publish Kotlin 1.7 Android artifacts
+        run: |
+          ./android-legacy-build/gradlew -p android-legacy-build \
+            assembleRelease \
+            verifyLegacyPublicationCoordinates \
+            publishLegacyToReleaseRepository \
+            --console=plain
+
+      - name: Compile an external-coordinate consumer
+        run: |
+          ./android-legacy-build/gradlew \
+            -p android-legacy-build/consumer-smoke \
+            assembleRelease \
+            --console=plain
+
+  ios-binary:
+    runs-on: macos-14
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build static XCFramework
+        run: |
+          ./gradlew \
+            :mermaid-compose:podPublishReleaseXCFramework \
+            --console=plain
+
+      - name: Verify architectures, API, and resources
+        run: tools/release/verify-ios-xcframework.sh
+
   visual-regression:
     runs-on: ubuntu-latest
     timeout-minutes: 25

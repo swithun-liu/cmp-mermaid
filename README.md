@@ -198,23 +198,64 @@ substituted with another layout.
 
 The current publication coordinates are:
 
-| Module | Maven coordinate |
+| Consumer | Artifact |
 | --- | --- |
-| Core renderer | `com.swithun:mermaid-core:0.1.0` |
-| Compose renderer | `com.swithun:mermaid-compose:0.1.0` |
-| Debug and comparison UI | `com.swithun:mermaid-debug-ui:0.1.0` |
+| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.0` |
+| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.0` |
+| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.0` |
+| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.0` |
+| iOS binary | `CMPMermaid` CocoaPod `0.1.0` |
 
+Current Kotlin Multiplatform projects:
 ```kotlin
 dependencies {
-    implementation("com.swithun:mermaid-compose:0.1.0")
-    debugImplementation("com.swithun:mermaid-debug-ui:0.1.0")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.0")
 }
 ```
 
 > [!NOTE]
-> The coordinates and POMs are ready, but the first public artifact repository
+> These coordinates and release assets are prepared, but the first public
 > release has not been uploaded yet. Until then, consume the repository modules
-> directly or publish them to a local/internal Maven repository.
+> directly or publish them to a local Maven repository.
+
+Android projects pinned to Kotlin `1.7.21` use the isolated Android artifact:
+
+```kotlin
+dependencies {
+    implementation(
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.0",
+    )
+}
+```
+
+The Kotlin `1.7.21` artifacts are Android-only, target JVM 1.8, and require
+Android API 24 or newer. Their artifact names are intentionally distinct from
+the current KMP modules, so a consumer cannot accidentally resolve Kotlin 2.x
+metadata.
+
+Android View-based hosts can use the same Compose renderer without compiling
+Compose source:
+
+```kotlin
+val diagramView = CMPMermaidView(context).apply {
+    setMermaidSource("flowchart LR\n  A --> B")
+    setMermaidContentDescription("Example Mermaid diagram")
+}
+container.addView(diagramView)
+```
+
+`CMPMermaidView` is available from both the current Android target and the
+Kotlin `1.7.21` Android artifact.
+
+iOS projects can consume the precompiled static XCFramework through CocoaPods:
+
+```ruby
+pod 'CMPMermaid', '0.1.0'
+```
+
+The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`
+to Swift and includes all renderer font resources. It supports iOS device
+arm64 and simulator arm64/x86_64 with a deployment target of iOS 14.
 
 For a source checkout:
 
@@ -250,8 +291,23 @@ Generate all KMP publications under `build/maven-repository`:
 ```bash
 ./gradlew \
   :mermaid-core:publishAllPublicationsToBuildRepository \
-  :mermaid-compose:publishAllPublicationsToBuildRepository \
-  :mermaid-debug-ui:publishAllPublicationsToBuildRepository
+  :mermaid-compose:publishAllPublicationsToBuildRepository
+```
+
+Generate the Kotlin `1.7.21` Android artifacts with JDK 11:
+
+```bash
+./android-legacy-build/gradlew -p android-legacy-build \
+  assembleRelease \
+  verifyLegacyPublicationCoordinates \
+  publishLegacyToReleaseRepository
+```
+
+Generate and verify the static iOS binary with JDK 17:
+
+```bash
+./gradlew :mermaid-compose:podPublishReleaseXCFramework
+tools/release/verify-ios-xcframework.sh
 ```
 
 ## Themes

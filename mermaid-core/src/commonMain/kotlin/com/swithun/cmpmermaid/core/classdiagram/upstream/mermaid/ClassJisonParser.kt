@@ -95,7 +95,8 @@ internal class ClassJisonParser(
         values: List<Any?>,
         db: ClassDb,
         token: ClassJisonToken,
-    ): GMResult<Any?, MermaidError> = when (production) {
+    ): GMResult<Any?, MermaidError> {
+        return when (production) {
         8 -> stringValue(values, 1, token, production, "class label")
         9, 10, 13, 15 -> GMResult.Ok(values.firstOrNull())
         11, 14 -> concatenate(values, listOf(0, 2), ".", token, production)
@@ -332,7 +333,8 @@ internal class ClassJisonParser(
             GMResult.Ok(styles)
         }
         110 -> concatenate(values, listOf(0, 1), "", token, production)
-        else -> GMResult.Ok(values.firstOrNull())
+            else -> GMResult.Ok(values.firstOrNull())
+        }
     }
 
     private fun namespaceStatement(

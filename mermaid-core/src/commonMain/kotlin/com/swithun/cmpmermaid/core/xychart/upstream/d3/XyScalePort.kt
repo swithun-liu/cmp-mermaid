@@ -123,7 +123,7 @@ internal object XyScalePort {
             if (last * multiplier > stop) last -= 1
             increment = multiplier
         }
-        if (last < first && count in 0.5..<2.0) {
+        if (last < first && count >= 0.5 && count < 2.0) {
             return tickSpec(start, stop, count * 2.0)
         }
         return TickSpec(first, last, increment)

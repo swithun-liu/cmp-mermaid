@@ -188,22 +188,63 @@ Kotlin Dagre。ELK 名称和 `flowchart-elk` 仍会作为上游输入被识别�
 
 当前发布坐标如下：
 
-| 模块 | Maven 坐标 |
+| 使用方 | 制品 |
 | --- | --- |
-| Core 渲染器 | `com.swithun:mermaid-core:0.1.0` |
-| Compose 渲染器 | `com.swithun:mermaid-compose:0.1.0` |
-| Debug 与对比 UI | `com.swithun:mermaid-debug-ui:0.1.0` |
+| 当前 Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.0` |
+| 当前 Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.0` |
+| Kotlin `1.7.21` Android | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.0` |
+| Kotlin `1.7.21` Android Compose | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.0` |
+| iOS 二进制 | `CMPMermaid` CocoaPod `0.1.0` |
 
+当前 Kotlin Multiplatform 项目：
 ```kotlin
 dependencies {
-    implementation("com.swithun:mermaid-compose:0.1.0")
-    debugImplementation("com.swithun:mermaid-debug-ui:0.1.0")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.0")
 }
 ```
 
 > [!NOTE]
-> 发布坐标与 POM 已准备就绪，但首个公开制品仓库版本尚未上传。在此之前，
-> 请直接依赖仓库模块，或将其发布到本地/内部 Maven 仓库。
+> 这些坐标与发布资产已经准备就绪，但首个公开版本尚未上传。在此之前，
+> 请直接依赖仓库模块，或将其发布到本地 Maven 仓库。
+
+固定使用 Kotlin `1.7.21` 的 Android 项目应依赖隔离的 Android 制品：
+
+```kotlin
+dependencies {
+    implementation(
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.0",
+    )
+}
+```
+
+Kotlin `1.7.21` 制品仅支持 Android，目标为 JVM 1.8，最低 Android API
+为 24。其制品名与当前 KMP 模块刻意隔离，避免使用方意外解析 Kotlin 2.x
+元数据。
+
+基于 Android View 的宿主可以复用同一个 Compose 渲染器，无需编译 Compose
+源码：
+
+```kotlin
+val diagramView = CMPMermaidView(context).apply {
+    setMermaidSource("flowchart LR\n  A --> B")
+    setMermaidContentDescription("Mermaid 示例图")
+}
+container.addView(diagramView)
+```
+
+当前 Android target 与 Kotlin `1.7.21` Android 制品都提供
+`CMPMermaidView`。
+
+iOS 项目可以通过 CocoaPods 使用预编译的静态 XCFramework：
+
+```ruby
+pod 'CMPMermaid', '0.1.0'
+```
+
+二进制向 Swift 暴露
+`CMPMermaidViewControllerFactory.makeViewController(...)`，并包含渲染所需的
+全部字体资源。它支持 iOS arm64 真机以及 arm64/x86_64 模拟器，最低版本为
+iOS 14。
 
 直接依赖源码仓库模块：
 
@@ -239,8 +280,23 @@ fun Diagram(source: String) {
 ```bash
 ./gradlew \
   :mermaid-core:publishAllPublicationsToBuildRepository \
-  :mermaid-compose:publishAllPublicationsToBuildRepository \
-  :mermaid-debug-ui:publishAllPublicationsToBuildRepository
+  :mermaid-compose:publishAllPublicationsToBuildRepository
+```
+
+使用 JDK 11 生成 Kotlin `1.7.21` Android 制品：
+
+```bash
+./android-legacy-build/gradlew -p android-legacy-build \
+  assembleRelease \
+  verifyLegacyPublicationCoordinates \
+  publishLegacyToReleaseRepository
+```
+
+使用 JDK 17 生成并校验静态 iOS 二进制：
+
+```bash
+./gradlew :mermaid-compose:podPublishReleaseXCFramework
+tools/release/verify-ios-xcframework.sh
 ```
 
 ## 主题

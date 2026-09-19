@@ -84,7 +84,7 @@ internal object GanttDatePort {
         val pattern = format.trim().ifEmpty { "YYYY-MM-DD" }
         if (pattern == "x" && value.all(Char::isDigit)) {
             return value.toLongOrNull()
-                ?.let(GMResult<Long, MermaidError>::Ok)
+                ?.let { millis -> GMResult.Ok(millis) }
                 ?: invalidDate(source, format)
         }
         if (pattern == "X" && value.matches(Regex("""\d+(?:\.\d+)?"""))) {
@@ -567,7 +567,7 @@ internal object GanttDatePort {
         val offsetMinutes = parseOffset(values["Z"] ?: values["ZZ"] ?: "Z")
             ?: return invalidDate(source, format)
         return try {
-            val resolvedMonth = Month.entries.getOrNull(month - 1)
+            val resolvedMonth = Month.values().getOrNull(month - 1)
                 ?: return invalidDate(source, format)
             val local = LocalDateTime(
                 year = year,

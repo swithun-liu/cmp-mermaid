@@ -31,7 +31,7 @@ internal class GanttDb(
     private var excludes = emptyList<String>()
     private var inclusiveEndDates = false
     private var topAxis = false
-    private var weekday = GanttWeekday.entries.firstOrNull {
+    private var weekday = GanttWeekday.values().firstOrNull {
         it.name.equals(defaultWeekday, ignoreCase = true)
     } ?: GanttWeekday.Sunday
     private var weekendStart = GanttWeekday.Saturday
@@ -269,7 +269,7 @@ internal class GanttDb(
         }
         val day = GanttDatePort.weekday(millis)
         if ("weekends" in excludes) {
-            val secondWeekendDay = GanttWeekday.entries[(weekendStart.ordinal + 1) % 7]
+            val secondWeekendDay = GanttWeekday.values()[(weekendStart.ordinal + 1) % 7]
             if (day == weekendStart || day == secondWeekendDay) return true
         }
         if (day.name.lowercase() in excludes) return true
@@ -478,7 +478,7 @@ internal class GanttDb(
     private sealed interface DateResolution {
         data class Ready(val millis: Long) : DateResolution
 
-        data object Waiting : DateResolution
+        object Waiting : DateResolution
 
         data class Failed(val error: MermaidError) : DateResolution
     }
@@ -486,7 +486,7 @@ internal class GanttDb(
     private sealed interface GanttTaskCompileResult {
         data class Ready(val task: GanttTask) : GanttTaskCompileResult
 
-        data object Waiting : GanttTaskCompileResult
+        object Waiting : GanttTaskCompileResult
 
         data class Failed(val error: MermaidError) : GanttTaskCompileResult
     }

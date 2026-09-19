@@ -239,7 +239,7 @@ fun rememberMermaidScene(
             )
         }
     }
-    return produceState(
+    return produceState<GMResult<MermaidScene, MermaidError>?>(
         initialValue = null,
         source,
         theme,
@@ -1015,7 +1015,7 @@ private fun ScenePath.toComposeContours(): List<Path> {
                 current = command.point
             }
             is ScenePathCommand.QuadraticTo -> {
-                path().quadraticTo(
+                path().quadraticBezierTo(
                     command.control.x,
                     command.control.y,
                     command.end.x,
@@ -1405,13 +1405,13 @@ private fun DrawScope.drawErMarker(
         val secondControl = point(0f, 18f)
         val path = Path().apply {
             moveTo(root.x, root.y)
-            quadraticTo(
+            quadraticBezierTo(
                 firstControl.x,
                 firstControl.y,
                 coveredTip.x,
                 coveredTip.y,
             )
-            quadraticTo(
+            quadraticBezierTo(
                 secondControl.x,
                 secondControl.y,
                 root.x,

@@ -2,6 +2,7 @@
 agp = "9.0.1"
 kotlin = "2.3.20"
 compose = "1.9.3"
+mavenPublish = "0.37.0"
 kaml = "0.104.0"
 kotlinxCoroutines = "1.10.2"
 kotlinxDatetime = "0.7.1"
@@ -36,3 +37,5 @@ android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

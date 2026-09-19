@@ -13,7 +13,7 @@ internal enum class CynefinDomainName(
 
     companion object {
         fun fromSourceName(source: String): CynefinDomainName? =
-            entries.firstOrNull { domain -> domain.sourceName == source }
+            values().firstOrNull { domain -> domain.sourceName == source }
     }
 }
 

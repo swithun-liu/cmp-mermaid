@@ -519,8 +519,8 @@ internal class MindmapLayout {
                     }
                 }
             }
-            val first = points.firstOrNull() ?: return null
-            points.drop(1).fold(
+            val first = points.firstOrNull()
+            if (first == null) null else points.drop(1).fold(
                 SceneRect(first.x, first.y, first.x, first.y),
             ) { current, point ->
                 SceneRect(

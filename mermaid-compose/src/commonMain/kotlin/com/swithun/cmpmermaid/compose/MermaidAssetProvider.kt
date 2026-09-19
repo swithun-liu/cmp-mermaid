@@ -55,7 +55,7 @@ fun interface MermaidAssetProvider {
 internal expect fun rememberPlatformMermaidAssetProvider(): MermaidAssetProvider?
 
 internal sealed interface MermaidAssetState {
-    data object Loading : MermaidAssetState
+    object Loading : MermaidAssetState
 
     data class Resolved(
         val asset: MermaidResolvedAsset,

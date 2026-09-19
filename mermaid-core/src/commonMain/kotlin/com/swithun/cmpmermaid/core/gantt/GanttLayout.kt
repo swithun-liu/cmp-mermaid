@@ -767,7 +767,7 @@ internal class GanttLayout {
         }
         val day = GanttDatePort.weekday(millis)
         if ("weekends" in document.excludes) {
-            val next = GanttWeekday.entries[(document.weekendStart.ordinal + 1) % 7]
+            val next = GanttWeekday.values()[(document.weekendStart.ordinal + 1) % 7]
             if (day == document.weekendStart || day == next) return true
         }
         if (day.name.lowercase() in document.excludes) return true

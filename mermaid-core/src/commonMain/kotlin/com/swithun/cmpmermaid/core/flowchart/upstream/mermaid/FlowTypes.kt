@@ -143,5 +143,5 @@ internal sealed interface MermaidFlowDocumentItem {
 
     data class Direction(val value: String) : MermaidFlowDocumentItem
 
-    data object Empty : MermaidFlowDocumentItem
+    object Empty : MermaidFlowDocumentItem
 }

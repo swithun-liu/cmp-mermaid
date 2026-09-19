@@ -109,7 +109,8 @@ internal object Fmin {
                 for (point in 0 until dimensions) {
                     centroid[coordinate] += simplex[point].coordinates[coordinate]
                 }
-                centroid[coordinate] /= dimensions
+                centroid[coordinate] =
+                    centroid[coordinate] / dimensions.toDouble()
             }
 
             val worst = simplex[dimensions]

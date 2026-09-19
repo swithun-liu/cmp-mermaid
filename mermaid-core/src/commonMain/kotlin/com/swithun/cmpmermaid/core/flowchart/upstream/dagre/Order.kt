@@ -342,16 +342,17 @@ internal object Order {
         ids.forEach { id ->
             var child = graph.parent(id)
             while (child != null) {
-                val parent = graph.parent(child)
+                val currentChild = child
+                val parent = graph.parent(currentChild)
                 val previousChild = if (parent != null) {
-                    previous[parent].also { previous[parent] = child }
+                    previous[parent].also { previous[parent] = currentChild }
                 } else {
-                    rootPrevious.also { rootPrevious = child }
+                    rootPrevious.also { rootPrevious = currentChild }
                 }
-                if (previousChild != null && previousChild != child) {
+                if (previousChild != null && previousChild != currentChild) {
                     if (!constraints.hasNode(previousChild)) constraints.setNode(previousChild, Unit)
-                    if (!constraints.hasNode(child)) constraints.setNode(child, Unit)
-                    constraints.setEdge(previousChild, child, Unit)
+                    if (!constraints.hasNode(currentChild)) constraints.setNode(currentChild, Unit)
+                    constraints.setEdge(previousChild, currentChild, Unit)
                     return@forEach
                 }
                 child = parent

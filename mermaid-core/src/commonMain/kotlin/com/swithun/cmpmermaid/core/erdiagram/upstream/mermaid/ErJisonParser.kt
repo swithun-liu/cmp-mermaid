@@ -91,7 +91,8 @@ internal class ErJisonParser(
         values: List<Any?>,
         db: ErDb,
         token: ErJisonToken,
-    ): GMResult<Any?, MermaidError> = when (production) {
+    ): GMResult<Any?, MermaidError> {
+        return when (production) {
         2, 5, 6, 28, 29, 30 -> GMResult.Ok(mutableListOf<ErDocumentEntry>())
         3 -> document(values, token, production)
         4 -> GMResult.Ok(values.firstOrNull())
@@ -240,7 +241,8 @@ internal class ErJisonParser(
         81 -> GMResult.Ok(ErCardinality.MdParent)
         82 -> GMResult.Ok(ErIdentification.NonIdentifying)
         83 -> GMResult.Ok(ErIdentification.Identifying)
-        else -> GMResult.Ok(values.firstOrNull())
+            else -> GMResult.Ok(values.firstOrNull())
+        }
     }
 
     private fun document(

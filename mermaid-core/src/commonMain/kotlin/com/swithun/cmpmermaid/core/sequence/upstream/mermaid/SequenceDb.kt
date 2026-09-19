@@ -220,8 +220,8 @@ internal class SequenceDb {
 
     private fun addSignal(action: SequenceAction.Signal): GMResult<Unit, MermaidError> {
         if (action.typeRequiresInactiveValidation()) {
-            val activeCount = messages.sumOf { message ->
-                when {
+            val activeCount = messages.fold(0) { count, message ->
+                count + when {
                     message.type == SequenceLineType.ACTIVE_START && message.from == action.from -> 1
                     message.type == SequenceLineType.ACTIVE_END && message.from == action.from -> -1
                     else -> 0

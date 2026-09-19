@@ -88,7 +88,7 @@ internal class GitGraphParser(
 
         var direction = GitGraphDirection.LR
         val directionStart = cursor
-        val directionToken = GitGraphDirection.entries.firstOrNull { candidate ->
+        val directionToken = GitGraphDirection.values().firstOrNull { candidate ->
             content.regionMatches(cursor, candidate.name, 0, candidate.name.length) &&
                 content.getOrNull(cursor + candidate.name.length).let { next ->
                     next == ':' || next?.isHorizontalWhitespace() == true

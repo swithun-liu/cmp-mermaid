@@ -110,7 +110,7 @@ internal sealed interface SequenceAction {
         val data: SequenceBoxData,
     ) : SequenceAction
 
-    data object BoxEnd : SequenceAction
+    object BoxEnd : SequenceAction
 
     data class Links(
         val actor: String,

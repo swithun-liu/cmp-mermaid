@@ -675,9 +675,15 @@ private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
     is SceneAsset -> element.bounds.finiteOrNull()
     is SceneShape -> element.bounds.finiteOrNull()
     is SceneText -> {
-        val bounds = element.bounds.finiteOrNull() ?: return null
-        val pivot = element.rotationPivot ?: bounds.center
-        if (!pivot.x.isFinite() || !pivot.y.isFinite() || !element.rotationDegrees.isFinite()) {
+        val bounds = element.bounds.finiteOrNull()
+        val pivot = element.rotationPivot ?: bounds?.center
+        if (
+            bounds == null ||
+            pivot == null ||
+            !pivot.x.isFinite() ||
+            !pivot.y.isFinite() ||
+            !element.rotationDegrees.isFinite()
+        ) {
             null
         } else {
             rotatedRectPoints(bounds, element.rotationDegrees, pivot).boundsOrNull()

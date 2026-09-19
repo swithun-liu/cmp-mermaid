@@ -133,7 +133,7 @@ internal object MarkedLexer {
         ): GMResult<Unit, MermaidError> {
             var source = input
             while (source.isNotEmpty()) {
-                match(rules.block, "newline", source)?.let { match ->
+                if (match(rules.block, "newline", source)?.let { match ->
                     val raw = match.value
                     source = source.drop(raw.length)
                     val last = tokens.lastOrNull()
@@ -142,10 +142,10 @@ internal object MarkedLexer {
                     } else {
                         tokens += MarkedToken(MarkedTokenType.Space, raw)
                     }
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "code", source)?.let { match ->
+                if (match(rules.block, "code", source)?.let { match ->
                     val raw = match.value
                     val text = raw
                         .replace(CODE_REMOVE_INDENT, "")
@@ -158,10 +158,10 @@ internal object MarkedLexer {
                     } else {
                         tokens += MarkedToken(MarkedTokenType.Code, raw, text)
                     }
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "fences", source)?.let { match ->
+                if (match(rules.block, "fences", source)?.let { match ->
                     val raw = match.value
                     source = source.drop(raw.length)
                     tokens += MarkedToken(
@@ -169,10 +169,10 @@ internal object MarkedLexer {
                         raw = raw,
                         text = match.group(3).orEmpty(),
                     )
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "heading", source)?.let { match ->
+                if (match(rules.block, "heading", source)?.let { match ->
                     val raw = match.value
                     source = source.drop(raw.length)
                     tokens += MarkedToken(
@@ -180,21 +180,21 @@ internal object MarkedLexer {
                         raw = raw,
                         text = normalizeHeadingText(match.group(2).orEmpty()),
                     )
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "hr", source)?.let { match ->
+                if (match(rules.block, "hr", source)?.let { match ->
                     val raw = match.value.trimEnd('\n')
                     source = source.drop(match.value.length)
                     tokens += MarkedToken(MarkedTokenType.HorizontalRule, raw)
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "blockquote", source)?.let { match ->
+                if (match(rules.block, "blockquote", source)?.let { match ->
                     source = source.drop(match.value.length)
                     tokens += MarkedToken(MarkedTokenType.Blockquote, match.value.trimEnd('\n'))
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
                 when (val list = tokenizeList(source)) {
                     is GMResult.Err -> return list
@@ -208,13 +208,13 @@ internal object MarkedLexer {
                     }
                 }
 
-                match(rules.block, "html", source)?.let { match ->
+                if (match(rules.block, "html", source)?.let { match ->
                     source = source.drop(match.value.length)
                     tokens += MarkedToken(MarkedTokenType.Html, match.value, match.value)
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "def", source)?.let { match ->
+                if (match(rules.block, "def", source)?.let { match ->
                     val raw = match.value
                     val tag = match.group(1)
                         .orEmpty()
@@ -232,29 +232,30 @@ internal object MarkedLexer {
                         links[tag] = LinkDefinition(href, title)
                     }
                     tokens += MarkedToken(MarkedTokenType.Definition, raw)
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "table", source)?.let { match ->
+                if (match(rules.block, "table", source)?.let { match ->
                     if (match.group(2).orEmpty().contains('|') || match.group(2).orEmpty().contains(':')) {
                         source = source.drop(match.value.length)
                         tokens += MarkedToken(MarkedTokenType.Table, match.value)
-                        return@let
+                        true
+                    } else {
+                        false
                     }
-                    null
-                }?.also { continue }
+                } == true) continue
 
-                match(rules.block, "lheading", source)?.let { match ->
+                if (match(rules.block, "lheading", source)?.let { match ->
                     source = source.drop(match.value.length)
                     tokens += MarkedToken(
                         type = MarkedTokenType.Heading,
                         raw = match.value,
                         text = match.group(1).orEmpty(),
                     )
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "paragraph", source)?.let { match ->
+                if (match(rules.block, "paragraph", source)?.let { match ->
                     val raw = match.value
                     val captured = match.group(1).orEmpty()
                     val text = if (captured.endsWith('\n')) captured.dropLast(1) else captured
@@ -262,10 +263,10 @@ internal object MarkedLexer {
                     val token = MarkedToken(MarkedTokenType.Paragraph, raw, text)
                     tokens += token
                     inlineQueue += token
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.block, "text", source)?.let { match ->
+                if (match(rules.block, "text", source)?.let { match ->
                     val raw = match.value
                     source = source.drop(raw.length)
                     val last = tokens.lastOrNull()
@@ -277,8 +278,8 @@ internal object MarkedLexer {
                         tokens += token
                         inlineQueue += token
                     }
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
                 return parseError("Marked block lexer made no progress", source)
             }
@@ -440,17 +441,17 @@ internal object MarkedLexer {
                 }
                 keepPreviousCharacter = false
 
-                match(rules.inline, "escape", source)?.let { match ->
+                if (match(rules.inline, "escape", source)?.let { match ->
                     source = source.drop(match.value.length)
                     tokens += MarkedToken(
                         type = MarkedTokenType.Escape,
                         raw = match.value,
                         text = match.group(1).orEmpty(),
                     )
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.inline, "tag", source)?.let { match ->
+                if (match(rules.inline, "tag", source)?.let { match ->
                     val raw = match.value
                     if (!inLink && raw.startsWith("<a ", ignoreCase = true)) {
                         inLink = true
@@ -464,8 +465,8 @@ internal object MarkedLexer {
                     }
                     source = source.drop(raw.length)
                     tokens += MarkedToken(MarkedTokenType.Html, raw, raw)
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
                 when (val link = tokenizeLink(source)) {
                     is GMResult.Err -> return link
@@ -509,7 +510,7 @@ internal object MarkedLexer {
                     }
                 }
 
-                match(rules.inline, "code", source)?.let { match ->
+                if (match(rules.inline, "code", source)?.let { match ->
                     val raw = match.value
                     var text = match.group(2).orEmpty().replace('\n', ' ')
                     if (text.any { it != ' ' } && text.startsWith(' ') && text.endsWith(' ')) {
@@ -517,16 +518,16 @@ internal object MarkedLexer {
                     }
                     source = source.drop(raw.length)
                     tokens += MarkedToken(MarkedTokenType.CodeSpan, raw, text)
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.inline, "br", source)?.let { match ->
+                if (match(rules.inline, "br", source)?.let { match ->
                     source = source.drop(match.value.length)
                     tokens += MarkedToken(MarkedTokenType.Break, match.value)
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.inline, "del", source)?.let { match ->
+                if (match(rules.inline, "del", source)?.let { match ->
                     val raw = match.value
                     val text = match.group(2).orEmpty()
                     when (val nested = inlineTokens(text)) {
@@ -539,17 +540,17 @@ internal object MarkedLexer {
                         )
                     }
                     source = source.drop(raw.length)
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
-                match(rules.inline, "autolink", source)?.let { match ->
+                if (match(rules.inline, "autolink", source)?.let { match ->
                     source = source.drop(match.value.length)
                     tokens += MarkedToken(MarkedTokenType.Link, match.value, match.group(1).orEmpty())
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
                 if (!inLink) {
-                    match(rules.inline, "url", source)?.let { match ->
+                    if (match(rules.inline, "url", source)?.let { match ->
                         var raw = match.value
                         if (match.group(2) == null) {
                             var previous: String
@@ -563,11 +564,11 @@ internal object MarkedLexer {
                         }
                         source = source.drop(raw.length)
                         tokens += MarkedToken(MarkedTokenType.Link, raw, raw)
-                        return@let
-                    }?.also { continue }
+                        true
+                    } == true) continue
                 }
 
-                match(rules.inline, "text", source)?.let { match ->
+                if (match(rules.inline, "text", source)?.let { match ->
                     val raw = match.value
                     source = source.drop(raw.length)
                     if (!raw.endsWith('_')) {
@@ -581,8 +582,8 @@ internal object MarkedLexer {
                     } else {
                         tokens += MarkedToken(MarkedTokenType.Text, raw, raw)
                     }
-                    return@let
-                }?.also { continue }
+                    true
+                } == true) continue
 
                 return parseError("Marked inline lexer made no progress", source)
             }

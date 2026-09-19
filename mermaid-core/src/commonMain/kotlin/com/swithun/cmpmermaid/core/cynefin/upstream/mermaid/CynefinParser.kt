@@ -186,7 +186,7 @@ internal class CynefinParser(
         }
 
         fun parseDomainName(): GMResult<CynefinDomainName, MermaidError> {
-            val domain = CynefinDomainName.entries.firstOrNull { candidate ->
+            val domain = CynefinDomainName.values().firstOrNull { candidate ->
                 source.startsWith(candidate.sourceName, index) &&
                     source.getOrNull(index + candidate.sourceName.length)
                         ?.isIdentifierPart() != true

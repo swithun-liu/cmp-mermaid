@@ -87,7 +87,7 @@ internal sealed interface AgentflowDocumentItem {
 
     data class Direction(val value: String) : AgentflowDocumentItem
 
-    data object Empty : AgentflowDocumentItem
+    object Empty : AgentflowDocumentItem
 }
 
 internal data class AgentflowSourcePosition(

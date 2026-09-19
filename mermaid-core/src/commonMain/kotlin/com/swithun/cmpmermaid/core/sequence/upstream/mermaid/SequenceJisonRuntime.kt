@@ -15,7 +15,7 @@ internal sealed interface SequenceJisonCell {
 
     data class Reduce(val production: Int) : SequenceJisonCell
 
-    data object Accept : SequenceJisonCell
+    object Accept : SequenceJisonCell
 }
 
 internal data class SequenceJisonToken(

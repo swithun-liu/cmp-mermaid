@@ -15,7 +15,7 @@ internal sealed interface RequirementJisonCell {
 
     data class Reduce(val production: Int) : RequirementJisonCell
 
-    data object Accept : RequirementJisonCell
+    object Accept : RequirementJisonCell
 }
 
 internal data class RequirementJisonToken(

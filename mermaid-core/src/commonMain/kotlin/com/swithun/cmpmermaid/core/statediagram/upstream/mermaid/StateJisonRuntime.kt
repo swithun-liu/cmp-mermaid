@@ -15,7 +15,7 @@ internal sealed interface StateJisonCell {
 
     data class Reduce(val production: Int) : StateJisonCell
 
-    data object Accept : StateJisonCell
+    object Accept : StateJisonCell
 }
 
 internal data class StateJisonToken(

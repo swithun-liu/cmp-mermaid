@@ -15,7 +15,7 @@ internal sealed interface JourneyJisonCell {
 
     data class Reduce(val production: Int) : JourneyJisonCell
 
-    data object Accept : JourneyJisonCell
+    object Accept : JourneyJisonCell
 }
 
 internal data class JourneyJisonToken(

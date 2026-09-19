@@ -15,7 +15,7 @@ internal sealed interface ErJisonCell {
 
     data class Reduce(val production: Int) : ErJisonCell
 
-    data object Accept : ErJisonCell
+    object Accept : ErJisonCell
 }
 
 internal data class ErJisonToken(

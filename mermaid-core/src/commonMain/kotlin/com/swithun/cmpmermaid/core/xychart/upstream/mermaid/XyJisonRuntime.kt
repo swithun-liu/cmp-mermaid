@@ -15,7 +15,7 @@ internal sealed interface XyJisonCell {
 
     data class Reduce(val production: Int) : XyJisonCell
 
-    data object Accept : XyJisonCell
+    object Accept : XyJisonCell
 }
 
 internal data class XyJisonToken(

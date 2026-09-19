@@ -15,7 +15,7 @@ internal sealed interface GanttJisonCell {
 
     data class Reduce(val production: Int) : GanttJisonCell
 
-    data object Accept : GanttJisonCell
+    object Accept : GanttJisonCell
 }
 
 internal data class GanttJisonToken(

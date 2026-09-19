@@ -91,7 +91,8 @@ internal class SequenceJisonParser(
         values: List<Any?>,
         db: SequenceDb,
         token: SequenceJisonToken,
-    ): GMResult<Any?, MermaidError> = when (production) {
+    ): GMResult<Any?, MermaidError> {
+        return when (production) {
         3 -> when (val document = actionList(values.getOrNull(1), token, production, 1)) {
             is GMResult.Ok -> when (val applied = db.apply(document.value)) {
                 is GMResult.Ok -> GMResult.Ok(document.value)
@@ -353,7 +354,8 @@ internal class SequenceJisonParser(
             val trimmed = source.trim()
             GMResult.Ok(db.parseMessage(trimmed.drop(1)))
         }
-        else -> GMResult.Ok(values.firstOrNull())
+            else -> GMResult.Ok(values.firstOrNull())
+        }
     }
 
     private fun appendActions(

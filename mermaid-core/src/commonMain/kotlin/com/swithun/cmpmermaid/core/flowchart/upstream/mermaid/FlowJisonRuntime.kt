@@ -15,7 +15,7 @@ internal sealed interface JisonCell {
 
     data class Reduce(val production: Int) : JisonCell
 
-    data object Accept : JisonCell
+    object Accept : JisonCell
 }
 
 internal data class JisonToken(

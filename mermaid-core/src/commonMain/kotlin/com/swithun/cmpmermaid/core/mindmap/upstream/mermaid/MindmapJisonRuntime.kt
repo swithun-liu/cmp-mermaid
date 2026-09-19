@@ -15,7 +15,7 @@ internal sealed interface MindmapJisonCell {
 
     data class Reduce(val production: Int) : MindmapJisonCell
 
-    data object Accept : MindmapJisonCell
+    object Accept : MindmapJisonCell
 }
 
 internal data class MindmapJisonToken(

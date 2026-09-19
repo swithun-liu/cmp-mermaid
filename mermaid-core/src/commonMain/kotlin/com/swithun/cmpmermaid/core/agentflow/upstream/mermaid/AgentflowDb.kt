@@ -1262,7 +1262,7 @@ internal class AgentflowDb(
         GMResult.Err(MermaidError.Parse(1, 1, message))
 
     internal sealed interface LinkPosition {
-        data object Default : LinkPosition
+        object Default : LinkPosition
 
         data class Index(val value: Int) : LinkPosition
     }
