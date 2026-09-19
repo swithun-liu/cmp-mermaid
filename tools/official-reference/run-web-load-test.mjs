@@ -19,7 +19,10 @@ const maximumFirstContentMillis = readNumber(
   'MAXIMUM_FIRST_CONTENT_MILLIS',
   15_000,
 );
-const maximumScrollMillis = readNumber('MAXIMUM_SCROLL_MILLIS', 15_000);
+const maximumScrollMillis = readNumber(
+  'MAXIMUM_SCROLL_MILLIS',
+  Math.max(15_000, cases.length * 80),
+);
 const maximumRetainedJsHeapBytes = readNumber(
   'MAXIMUM_RETAINED_JS_HEAP_BYTES',
   96 * 1024 * 1024,

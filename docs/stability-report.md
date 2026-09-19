@@ -828,6 +828,10 @@ the first Flowchart to the final Ishikawa case. Android, iOS, and Desktop retain
 236-scenario run through the final Sankey case; those rows are historical
 baselines, not Treemap, Venn, or Ishikawa runtime evidence.
 
+The automated Web scroll budget scales with the corpus at 80ms per case, with
+a 15-second minimum. First content remains capped at 15 seconds and retained
+JavaScript heap at 96MiB.
+
 | Platform | Corpus | Result | Local evidence |
 | --- | ---: | --- | --- |
 | Android Emulator | 236 | Prior baseline passed | 21s auto-run; 230MiB peak PSS; 184MiB final PSS; final Sankey case reached |
