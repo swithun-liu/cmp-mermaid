@@ -1,5 +1,6 @@
 .gradle/
 .idea/
+docs/cmp_mermaid.code-workspace
 .kotlin/
 kotlin-js-store/
 .DS_Store
