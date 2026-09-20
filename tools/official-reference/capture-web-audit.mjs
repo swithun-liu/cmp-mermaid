@@ -60,6 +60,7 @@ const kotlinGalleryFiles = {
   venn: ['VennDemos.kt', 'VennDemo'],
   ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
   cynefin: ['CynefinDemos.kt', 'CynefinDemo'],
+  block: ['BlockDemos.kt', 'BlockDemo'],
   eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
 };

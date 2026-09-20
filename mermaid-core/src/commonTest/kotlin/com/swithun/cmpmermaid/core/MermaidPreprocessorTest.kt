@@ -7,6 +7,34 @@ import kotlin.test.assertIs
 
 class MermaidPreprocessorTest {
     @Test
+    fun encodesEntitiesLikeMermaidUtility() {
+        val source =
+            "style this; is ; everything :something#not-nothing; and this too; \n" +
+                "classDef this; is ; everything :something#not-nothing; and this too; \n" +
+                "Hello #there; #andHere;#77653;"
+
+        assertEquals(
+            "style this; is ; everything :something#not-nothing; and this too \n" +
+                "classDef this; is ; everything :something#not-nothing; and this too \n" +
+                "Hello ﬂ°there¶ß ﬂ°andHere¶ßﬂ°°77653¶ß",
+            MermaidPreprocessor.encodeEntities(source),
+        )
+    }
+
+    @Test
+    fun leavesCssHexColorsWithoutSemicolonsUnencoded() {
+        val source =
+            "classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;\n" +
+                "style archive fill:#dbeafe,stroke:#1d4ed8,stroke-width:3px"
+
+        assertEquals(
+            "classDef active fill:#dcfce7,stroke:#15803d,color:#14532d\n" +
+                "style archive fill:#dbeafe,stroke:#1d4ed8,stroke-width:3px",
+            MermaidPreprocessor.encodeEntities(source),
+        )
+    }
+
+    @Test
     fun usesNativeDagreDefaultWithoutAJavaScriptRuntime() {
         val result = MermaidPreprocessor.preprocess(
             """

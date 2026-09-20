@@ -62,6 +62,7 @@ const kinds = [
   'kanban',
   'ishikawa',
   'cynefin',
+  'block',
   'eventmodeling',
   'agentflow',
 ];
@@ -88,6 +89,7 @@ const kindTitles = {
   kanban: 'Kanban',
   ishikawa: 'Ishikawa',
   cynefin: 'Cynefin',
+  block: 'Block',
   eventmodeling: 'Event Modeling',
   agentflow: 'Agentflow',
 };

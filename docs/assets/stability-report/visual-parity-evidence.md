@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 6,144 source cases and
-12,288 screenshots from the large-scale
+This index contains 6,400 source cases and
+12,800 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,12 +13,13 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 24 implemented families have completed the replacement detail gate and
+All 25 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`6,144/6,144` pairs: `5,401 automatic pass / 743 manually reviewed /
-0 unresolved` across 384 contact sheets. Event Modeling contributes 256
-manual acceptances, all caused by the documented title/payload
-`text-segmentation` adaptation.
+`6,400/6,400` pairs: `5,654 automatic pass / 746 manually reviewed /
+0 unresolved` across 400 contact sheets. Block contributes three
+paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
+acceptances caused by the documented title/payload `text-segmentation`
+adaptation.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -142,6 +143,51 @@ were manually reviewed.
 ![Agentflow visual parity page 15](agentflow-visual-parity-15.jpg)
 
 ![Agentflow visual parity page 16](agentflow-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Block - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `253 pass / 3 review / 0 fail`. The reviews contain
+only paint-order overlap-ratio tolerance notices on intentionally overlapping
+official layouts. Geometry ratios: width `0.970-1.281`, height `0.856-1.078`,
+foreground ink `0.840-1.342`. Raw
+[detail](block-visual-parity-detail.json) and
+[geometry](block-visual-parity-geometry.json) reports are published with the
+sheets. All 16 pages below were manually reviewed.
+
+![Block visual parity page 01](block-visual-parity-01.jpg)
+
+![Block visual parity page 02](block-visual-parity-02.jpg)
+
+![Block visual parity page 03](block-visual-parity-03.jpg)
+
+![Block visual parity page 04](block-visual-parity-04.jpg)
+
+![Block visual parity page 05](block-visual-parity-05.jpg)
+
+![Block visual parity page 06](block-visual-parity-06.jpg)
+
+![Block visual parity page 07](block-visual-parity-07.jpg)
+
+![Block visual parity page 08](block-visual-parity-08.jpg)
+
+![Block visual parity page 09](block-visual-parity-09.jpg)
+
+![Block visual parity page 10](block-visual-parity-10.jpg)
+
+![Block visual parity page 11](block-visual-parity-11.jpg)
+
+![Block visual parity page 12](block-visual-parity-12.jpg)
+
+![Block visual parity page 13](block-visual-parity-13.jpg)
+
+![Block visual parity page 14](block-visual-parity-14.jpg)
+
+![Block visual parity page 15](block-visual-parity-15.jpg)
+
+![Block visual parity page 16](block-visual-parity-16.jpg)
 
 </details>
 

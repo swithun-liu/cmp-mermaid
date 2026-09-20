@@ -17,7 +17,7 @@ export const diagramFamilies = Object.freeze([
   family('block', 'Block', 'block.md', ['block'], [
     header('block-beta', 'block'),
     header('block', 'block'),
-  ]),
+  ], true),
   family('c4', 'C4', 'c4.md', ['c4'], [
     header('C4Context', 'c4'),
     header('C4Container', 'c4'),

@@ -38,6 +38,7 @@ const kotlinGalleryFiles = {
   venn: ['VennDemos.kt', 'VennDemo'],
   ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
   cynefin: ['CynefinDemos.kt', 'CynefinDemo'],
+  block: ['BlockDemos.kt', 'BlockDemo'],
   eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
 };
@@ -64,6 +65,7 @@ const expectedKindCounts = new Map([
   ['venn', 5],
   ['ishikawa', 5],
   ['cynefin', 5],
+  ['block', 5],
   ['eventmodeling', 5],
   ['agentflow', 5],
 ]);
@@ -90,6 +92,7 @@ const expectedProductionKindCounts = new Map([
   ['venn', 13],
   ['ishikawa', 13],
   ['cynefin', 13],
+  ['block', 13],
   ['eventmodeling', 13],
   ['agentflow', 13],
 ]);
@@ -116,6 +119,7 @@ const supportedKinds = new Set([
   'venn',
   'ishikawa',
   'cynefin',
+  'block',
   'eventmodeling',
   'agentflow',
 ]);
@@ -191,8 +195,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 373) {
-    throw new Error(`Expected 373 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 378) {
+    throw new Error(`Expected 378 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -212,14 +216,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 314) {
+  if (productionCases.length !== 327) {
     throw new Error(
-      `Expected 314 production cases, found ${productionCases.length}`,
+      `Expected 327 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 192) {
+  if (conformanceCases.length !== 200) {
     throw new Error(
-      `Expected 192 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 200 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -453,6 +457,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "venn",
             "ishikawa",
             "cynefin",
+            "block",
             "eventmodeling",
             "agentflow",
         )
@@ -541,6 +546,8 @@ private fun addVisualParityVariation(
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "\${source.trimEnd()}\\n\$label\\n"
     "cynefin" -> insertCynefinVisualParityEvidence(source, label)
+    "block" -> "\${source.trimEnd()}\\n" +
+        "  \$evidenceId[(\\"\${escapeQuotedVisualParityLabel(label)}\\")]\\n"
     "eventmodeling" -> "\${source.trimEnd()}\\n" +
         "  rf \${700 + ordinal} evt \$evidenceId { label: \$label }\\n"
     "agentflow" -> appendAgentflowVisualParityEvidence(

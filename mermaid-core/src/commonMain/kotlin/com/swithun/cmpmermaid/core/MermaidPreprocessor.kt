@@ -38,21 +38,121 @@ internal object MermaidPreprocessor {
     }
 
     fun encodeEntities(source: String): String {
-        val withoutStyleTerminators = STYLE_WITH_ENTITY.replace(source) { match ->
-            match.value.dropLast(1)
-        }
-        val withoutClassTerminators = CLASS_WITH_ENTITY.replace(withoutStyleTerminators) { match ->
-            match.value.dropLast(1)
-        }
-        return ENTITY.replace(withoutClassTerminators) { match ->
-            val body = match.value.substring(1, match.value.lastIndex)
-            if (SIGNED_INTEGER.matches(body)) {
-                "ﬂ°°$body¶ß"
-            } else {
-                "ﬂ°$body¶ß"
+        val withoutStyleTerminators = removeEntityStyleTerminator(source, "style")
+        val withoutClassTerminators = removeEntityStyleTerminator(
+            withoutStyleTerminators,
+            "classDef",
+        )
+        return buildString(withoutClassTerminators.length) {
+            var cursor = 0
+            while (cursor < withoutClassTerminators.length) {
+                val entityStart = withoutClassTerminators.indexOf('#', cursor)
+                if (entityStart < 0) {
+                    append(withoutClassTerminators, cursor, withoutClassTerminators.length)
+                    break
+                }
+                append(withoutClassTerminators, cursor, entityStart)
+                var entityEnd = entityStart + 1
+                while (
+                    entityEnd < withoutClassTerminators.length &&
+                    withoutClassTerminators[entityEnd].isAsciiWordCharacter()
+                ) {
+                    entityEnd += 1
+                }
+                if (
+                    entityEnd > entityStart + 1 &&
+                    withoutClassTerminators.getOrNull(entityEnd) == ';'
+                ) {
+                    val body = withoutClassTerminators.substring(entityStart + 1, entityEnd)
+                    append(if (body.all(Char::isDigit)) "ﬂ°°" else "ﬂ°")
+                    append(body)
+                    append("¶ß")
+                    cursor = entityEnd + 1
+                } else {
+                    append('#')
+                    cursor = entityStart + 1
+                }
             }
         }
     }
+
+    private fun removeEntityStyleTerminator(
+        source: String,
+        keyword: String,
+    ): String = buildString(source.length) {
+        var lineStart = 0
+        while (lineStart < source.length) {
+            var lineEnd = lineStart
+            while (lineEnd < source.length && !source[lineEnd].isEcmaScriptLineTerminator()) {
+                lineEnd += 1
+            }
+            val semicolon = source.lastIndexOf(';', startIndex = lineEnd - 1)
+            val removeAt = semicolon.takeIf { candidate ->
+                candidate >= lineStart &&
+                    hasEntityStyleMatch(
+                        source = source,
+                        keyword = keyword,
+                        lineStart = lineStart,
+                        matchEnd = candidate,
+                    )
+            }
+            if (removeAt == null) {
+                append(source, lineStart, lineEnd)
+            } else {
+                append(source, lineStart, removeAt)
+                append(source, removeAt + 1, lineEnd)
+            }
+            if (lineEnd < source.length) {
+                append(source[lineEnd])
+            }
+            lineStart = lineEnd + 1
+        }
+    }
+
+    private fun hasEntityStyleMatch(
+        source: String,
+        keyword: String,
+        lineStart: Int,
+        matchEnd: Int,
+    ): Boolean {
+        var keywordStart = source.indexOf(keyword, lineStart)
+        while (keywordStart >= lineStart && keywordStart < matchEnd) {
+            var colon = source.indexOf(':', keywordStart + keyword.length)
+            while (colon >= keywordStart + keyword.length && colon < matchEnd) {
+                var cursor = colon + 1
+                while (cursor < matchEnd && !source[cursor].isEcmaScriptWhitespace()) {
+                    if (source[cursor] == '#') {
+                        return true
+                    }
+                    cursor += 1
+                }
+                colon = source.indexOf(':', colon + 1)
+            }
+            keywordStart = source.indexOf(keyword, keywordStart + keyword.length)
+        }
+        return false
+    }
+
+    private fun Char.isAsciiWordCharacter(): Boolean =
+        this in 'A'..'Z' || this in 'a'..'z' || this in '0'..'9' || this == '_'
+
+    private fun Char.isEcmaScriptLineTerminator(): Boolean =
+        this == '\n' || this == '\r' || this == '\u2028' || this == '\u2029'
+
+    private fun Char.isEcmaScriptWhitespace(): Boolean =
+        this == '\u0009' ||
+            this == '\u000B' ||
+            this == '\u000C' ||
+            this == '\u0020' ||
+            this == '\u00A0' ||
+            this == '\u1680' ||
+            this in '\u2000'..'\u200A' ||
+            this == '\u2028' ||
+            this == '\u2029' ||
+            this == '\u202F' ||
+            this == '\u205F' ||
+            this == '\u3000' ||
+            this == '\uFEFF'
 
     fun decodeEntities(source: String): String = source
         .replace("ﬂ°°", "&#")
@@ -248,6 +348,7 @@ internal object MermaidPreprocessor {
         val ishikawa = map.map("ishikawa")
         val cynefin = map.map("cynefin")
         val eventModeling = map.map("eventmodeling")
+        val block = map.map("block")
         val agentflow = map.map("agentflow")
         val treemap = map.map("treemap")
         val venn = map.map("venn")
@@ -1333,6 +1434,13 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'eventmodeling.rowHeight' must be at least 1",
             )
         }
+        val blockPadding = float(block, "padding", "block.padding")
+        val blockUseMaxWidth = boolean(block, "useMaxWidth", "block.useMaxWidth")
+        if (blockPadding != null && (!blockPadding.isFinite() || blockPadding < 0f)) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'block.padding' must be non-negative",
+            )
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -1759,6 +1867,12 @@ internal object MermaidPreprocessor {
                         useMaxWidth = eventModelingUseMaxWidth,
                     )
                 },
+                block = block?.let {
+                    MermaidBlockConfigOverride(
+                        padding = blockPadding,
+                        useMaxWidth = blockUseMaxWidth,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -1904,10 +2018,6 @@ internal object MermaidPreprocessor {
     private val FRONT_MATTER = Regex(
         """^([^\S\n\r]*)-{3}\s*[\n\r]([\s\S]*?)[\n\r]\1-{3}\s*[\n\r]+""",
     )
-    private val STYLE_WITH_ENTITY = Regex("""style.*:\S*#.*;""")
-    private val CLASS_WITH_ENTITY = Regex("""classDef.*:\S*#.*;""")
-    private val ENTITY = Regex("""#\w+;""")
-    private val SIGNED_INTEGER = Regex("""^\+?\d+$""")
     private const val DIRECTIVE_OPEN = "%%{"
     private const val DIRECTIVE_CLOSE = "}%%"
     private const val COMMENT_PREFIX = "%%"
@@ -1992,6 +2102,7 @@ internal data class MermaidConfigOverride(
     val ishikawa: MermaidIshikawaConfigOverride? = null,
     val cynefin: MermaidCynefinConfigOverride? = null,
     val eventModeling: MermaidEventModelingConfigOverride? = null,
+    val block: MermaidBlockConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -2125,6 +2236,10 @@ internal data class MermaidConfigOverride(
                 eventModeling?.merge(overrides.eventModeling) ?: overrides.eventModeling
             else -> eventModeling
         },
+        block = when {
+            overrides.block != null -> block?.merge(overrides.block) ?: overrides.block
+            else -> block
+        },
         treemap = when {
             overrides.treemap != null ->
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
@@ -2244,6 +2359,7 @@ internal data class MermaidConfigOverride(
                 cynefin = cynefin?.applyTo(options.cynefin) ?: options.cynefin,
                 eventModeling =
                     eventModeling?.applyTo(options.eventModeling) ?: options.eventModeling,
+                block = block?.applyTo(options.block) ?: options.block,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -2489,6 +2605,23 @@ internal data class MermaidEventModelingConfigOverride(
         options.copy(
             padding = padding ?: options.padding,
             rowHeight = rowHeight ?: options.rowHeight,
+            useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        )
+}
+
+internal data class MermaidBlockConfigOverride(
+    val padding: Float? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(overrides: MermaidBlockConfigOverride): MermaidBlockConfigOverride =
+        MermaidBlockConfigOverride(
+            padding = overrides.padding ?: padding,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        )
+
+    fun applyTo(options: MermaidBlockOptions): MermaidBlockOptions =
+        options.copy(
+            padding = padding ?: options.padding,
             useMaxWidth = useMaxWidth ?: options.useMaxWidth,
         )
 }

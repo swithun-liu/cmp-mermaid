@@ -3459,6 +3459,123 @@ cynefin-beta
 `,
   },
   {
+    id: 'rc_block_service_platform',
+    kind: 'block',
+    title: 'Layered service platform',
+    scenario: 'Nested service boundaries combine explicit grids, storage shapes, and cross-boundary links.',
+    aspectRatio: 1.7,
+    source: String.raw`
+block
+  columns 3
+  clients(["Clients"]) gateway["Gateway"] auth("Authorized?")
+  block:services:2
+    columns 2
+    catalog["Catalog"] orders["Orders"]
+    billing["Billing"] notify["Notifications"]
+  end
+  data[("Primary data")]
+  clients --> gateway
+  gateway --> auth
+  auth --> catalog
+  orders --> data
+  billing --> data
+`,
+  },
+  {
+    id: 'rc_block_delivery_pipeline',
+    kind: 'block',
+    title: 'Delivery pipeline grid',
+    scenario: 'Spans, spaces, labelled links, and mixed edge patterns model a guarded delivery path.',
+    aspectRatio: 1.8,
+    source: String.raw`
+block
+  columns 4
+  source["Source"]:2 build["Build"] package["Package"]
+  space verify("Verified?"):2 publish["Publish"]
+  rollback["Rollback"]:2 complete((("Complete"))):2
+  source -- "commit" --> build
+  build ==> package
+  package -.-> verify
+  verify --> publish
+  verify --x rollback
+  publish --> complete
+`,
+  },
+  {
+    id: 'rc_block_direction_matrix',
+    kind: 'block',
+    title: 'Directional handoff matrix',
+    scenario: 'Every block-arrow direction and axis alias appears in a dense operational handoff grid.',
+    aspectRatio: 1.9,
+    source: String.raw`
+block-beta
+  columns 4
+  intake["Intake"] east<["East"]>(right) review["Review"] south<["South"]>(down)
+  west<["West"]>(left) horizontal<["Horizontal"]>(x) vertical<["Vertical"]>(y) north<["North"]>(up)
+  retry["Retry"] mixed<["Escalate"]>(right, down) resolve["Resolve"] done(("Done"))
+  audit["Audit"] validate["Validate"] publish["Publish"] archive["Archive"]
+`,
+  },
+  {
+    id: 'rc_block_styled_boundaries',
+    kind: 'block',
+    title: 'Styled ownership boundaries',
+    scenario: 'Composite palette slots, reusable classes, and inline overrides distinguish ownership.',
+    aspectRatio: 1.65,
+    source: String.raw`
+---
+config:
+  theme: redux-color
+  look: classic
+  themeVariables:
+    bkgColorArray: ["#e0f2fe", "#dcfce7", "#fef3c7"]
+    borderColorArray: ["#0369a1", "#15803d", "#b45309"]
+---
+block
+  columns 3
+  block:edge
+    ingress["Ingress"]
+    cache[("Cache")]
+  end
+  block:compute
+    worker["Worker"]
+    scheduler["Scheduler"]
+  end
+  block:storage
+    database[("Database")]
+    archive[["Archive"]]
+  end
+  classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+  class worker,scheduler active
+  style archive fill:#fef3c7,stroke:#b45309,stroke-width:3px
+`,
+  },
+  {
+    id: 'rc_block_regional_architecture',
+    kind: 'block',
+    title: 'Regional architecture map',
+    scenario: 'Intrinsic sizing, title metadata, entities, comments, Unicode, and overflow spans share one diagram.',
+    aspectRatio: 1.75,
+    source: String.raw`
+---
+title: Regional processing architecture
+config:
+  theme: dark
+  block:
+    padding: 18
+    useMaxWidth: false
+---
+block
+  %% The first row intentionally exceeds the configured column count.
+  columns 2
+  entry["Paris &amp; 東京"]:3
+  route("Region?") right<["Route"]>(right)
+  seoul["서울 processor"] sao[("São Paulo store")]
+  route --> seoul
+  route --> sao
+`,
+  },
+  {
     id: 'rc_eventmodeling_order_lifecycle',
     kind: 'eventmodeling',
     title: 'Order lifecycle event model',

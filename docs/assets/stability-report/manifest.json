@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-20T13:59:22.461Z",
-  "caseCount": 314,
+  "generatedAt": "2026-09-20T17:23:30.748Z",
+  "caseCount": 327,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -7041,6 +7041,306 @@
       "nativeSha256": "817d4ac95be691f41cf3cb313d074432e7422fc7b9d45084607d8fa77baa7b45",
       "officialSha256": "c1c729686e6af58cf2cdf3ffc0218c7d6dd2fe536c49a91347419432fa8017a8",
       "sourceSha256": "08014234c1032729eadd60f582fbf3e640ab538cdc21d6efc2126a1f91ab5ca7"
+    },
+    {
+      "id": "prod_block_auto_columns",
+      "kind": "block",
+      "title": "Automatic directional grid",
+      "scenario": "The beta header and automatic columns arrange every block-arrow direction.",
+      "aspectRatio": 1.9,
+      "features": [
+        "block-beta-header",
+        "auto-columns",
+        "block-arrows",
+        "arrow-directions",
+        "responsive-sizing"
+      ],
+      "expectedTexts": [
+        "Right",
+        "Left",
+        "Up",
+        "Down",
+        "Horizontal",
+        "Vertical",
+        "Mixed"
+      ],
+      "nativeFile": "prod_block_auto_columns_native.png",
+      "officialFile": "prod_block_auto_columns_official.png",
+      "nativeBytes": 19623,
+      "officialBytes": 25393,
+      "nativeSha256": "f0d1c1c5c62f2caefb9ad26ae5d6994c372c63809cdef9f52d3e6a9551f453dd",
+      "officialSha256": "ccef57a957c4d2f4186bcd359ede333759c95b71214d932cc1a8f89cb7007d6a",
+      "sourceSha256": "269c6660237eb5704546ecd269362a3f911181b76f2abc896c4d3a46888f80c3"
+    },
+    {
+      "id": "prod_block_classes_and_styles",
+      "kind": "block",
+      "title": "Classes, styles, and repeated declarations",
+      "scenario": "Class and inline styles compose after one node is redeclared with a final shape.",
+      "aspectRatio": 1.7,
+      "features": [
+        "classes",
+        "inline-styles",
+        "duplicate-declarations",
+        "columns"
+      ],
+      "expectedTexts": [
+        "Ingress",
+        "Worker",
+        "Final archive"
+      ],
+      "nativeFile": "prod_block_classes_and_styles_native.png",
+      "officialFile": "prod_block_classes_and_styles_official.png",
+      "nativeBytes": 30217,
+      "officialBytes": 32321,
+      "nativeSha256": "30011e394adfe556b0872db8826f30a2cfda66c59b8a3044e2eb1e5d7c2ca198",
+      "officialSha256": "5b7e39f8b974fded09e8921e8283a056841ab75b9ffb184d32868a70cc7e9610",
+      "sourceSha256": "0ddf42c2fd568f9cf6b131c1c3d6cfb0f68cca85bb6a8c96869789eb958d6bc9"
+    },
+    {
+      "id": "prod_block_column_spans",
+      "kind": "block",
+      "title": "Explicit grid with spans",
+      "scenario": "A four-column grid combines fixed spans and empty cells.",
+      "aspectRatio": 1.8,
+      "features": [
+        "block-header",
+        "columns",
+        "column-spans",
+        "spaces",
+        "responsive-sizing"
+      ],
+      "expectedTexts": [
+        "Input",
+        "Validation",
+        "Output"
+      ],
+      "nativeFile": "prod_block_column_spans_native.png",
+      "officialFile": "prod_block_column_spans_official.png",
+      "nativeBytes": 21438,
+      "officialBytes": 20663,
+      "nativeSha256": "0180e08b2c9aeb974b4f1131cbf95febf6a5538ec6bceea986d00b2974f612bf",
+      "officialSha256": "7e0bc309f53132c584d3c221fcce614eb7a251f2d81bf69435b3a54f4550767d",
+      "sourceSha256": "234c4b3512824bbef70b67f3c32955c2e13000bd87cfc51fcd3ce54b31008ea0"
+    },
+    {
+      "id": "prod_block_edge_markers",
+      "kind": "block",
+      "title": "Edge markers and styles",
+      "scenario": "Endpoint markers, labels, thickness, patterns, and occurrence IDs share one graph.",
+      "aspectRatio": 1.7,
+      "features": [
+        "links",
+        "labelled-links",
+        "link-markers",
+        "link-thickness",
+        "link-patterns",
+        "edge-numbering"
+      ],
+      "expectedTexts": [
+        "Alpha",
+        "Beta",
+        "Gamma",
+        "Delta",
+        "Epsilon",
+        "Zeta",
+        "approved"
+      ],
+      "nativeFile": "prod_block_edge_markers_native.png",
+      "officialFile": "prod_block_edge_markers_official.png",
+      "nativeBytes": 23605,
+      "officialBytes": 23521,
+      "nativeSha256": "a24bed445cd2758d95ab8fd208d0276e93f6c1a0693b2da637720983e2f1a637",
+      "officialSha256": "a97571dcd1de9599967cc46ba378779a022e324489a914926a8531c5cb442d6e",
+      "sourceSha256": "03a08dbf3fe401be6728909d0e268da36b23c0c7460e8080b61f2aeb60932fdb"
+    },
+    {
+      "id": "prod_block_nested_composites",
+      "kind": "block",
+      "title": "Nested service boundaries",
+      "scenario": "Named and anonymous composites preserve nested grid ownership.",
+      "aspectRatio": 1.55,
+      "features": [
+        "composites",
+        "nested-composites",
+        "columns"
+      ],
+      "expectedTexts": [
+        "Gateway",
+        "Authorize",
+        "Persist"
+      ],
+      "nativeFile": "prod_block_nested_composites_native.png",
+      "officialFile": "prod_block_nested_composites_official.png",
+      "nativeBytes": 39500,
+      "officialBytes": 50019,
+      "nativeSha256": "5fc95bb697e756a65ed9613d4c07772b23acf3369df4511d0cddebeda675d027",
+      "officialSha256": "f5dd22ffad3b75f69e2a97e0b3f4dc6729702ddf76803328cedb4c3c50694c91",
+      "sourceSha256": "05e20ff975d5ff069775602f936850c9335541a97184e5f507cb9050625f116d"
+    },
+    {
+      "id": "prod_block_palette_composites",
+      "kind": "block",
+      "title": "Configured composite palette",
+      "scenario": "Frontmatter selects intrinsic sizing, custom padding, and composite palette slots.",
+      "aspectRatio": 1.55,
+      "features": [
+        "frontmatter-title",
+        "padding",
+        "intrinsic-sizing",
+        "theme",
+        "palette-composites",
+        "composites"
+      ],
+      "expectedTexts": [
+        "Parse",
+        "Layout",
+        "Render"
+      ],
+      "nativeFile": "prod_block_palette_composites_native.png",
+      "officialFile": "prod_block_palette_composites_official.png",
+      "nativeBytes": 12086,
+      "officialBytes": 11805,
+      "nativeSha256": "89bbd96007160df35e74397eb841061cc2be4f6990416c6e6a437e4de03fbc72",
+      "officialSha256": "5bec2b54d0bdfa4f8b357e0455c85dca877aac2b66eaaa98db914fe3c47b22b0",
+      "sourceSha256": "0e4f6db3938b14cdc703d0e3bf32781b6fdbacdf0238019ffc06561bd67b439d"
+    },
+    {
+      "id": "prod_block_primary_shapes",
+      "kind": "block",
+      "title": "Block shape catalog",
+      "scenario": "Every documented shape delimiter shares one explicit grid.",
+      "aspectRatio": 1.9,
+      "features": [
+        "shape-delimiters",
+        "columns"
+      ],
+      "expectedTexts": [
+        "Square",
+        "Round",
+        "Database",
+        "Decision",
+        "Hexagon",
+        "Complete"
+      ],
+      "nativeFile": "prod_block_primary_shapes_native.png",
+      "officialFile": "prod_block_primary_shapes_official.png",
+      "nativeBytes": 91409,
+      "officialBytes": 87051,
+      "nativeSha256": "ebe18e3f1ce134dcd5dc771b8332b164c761e679e2325c09f6ea2e10aaf48a69",
+      "officialSha256": "32525d77a67c21ac0cdc0377881099eaa233cb5141a990a8ad2f384ec4455709",
+      "sourceSha256": "1b9a4bf835c23bb045de716c302434c1f5d241240237fe37ee580d1ce74fe0f5"
+    },
+    {
+      "id": "prod_block_width_overflow",
+      "kind": "block",
+      "title": "Regional architecture with width overflow",
+      "scenario": "An oversized span, comments, entities, safe HTML, and mixed scripts share one grid.",
+      "aspectRatio": 1.75,
+      "features": [
+        "columns",
+        "column-spans",
+        "spaces",
+        "width-overflow",
+        "block-arrows",
+        "comments",
+        "entities",
+        "unicode",
+        "sanitized-labels"
+      ],
+      "expectedTexts": [
+        "Paris",
+        "東京",
+        "서울 backend",
+        "São Paulo database"
+      ],
+      "nativeFile": "prod_block_width_overflow_native.png",
+      "officialFile": "prod_block_width_overflow_official.png",
+      "nativeBytes": 25765,
+      "officialBytes": 27132,
+      "nativeSha256": "a413c105ca2f542e382a01df08391b47b1dca34737a53c39523585498cd19ba9",
+      "officialSha256": "2f4e91be1cf7e2a7c4b80393acc86e9eb036de57cf63f446f3c9630e54b9b9d5",
+      "sourceSha256": "8f76204c482e9bf5dfd9afc33e0d0bc957cd15adb1276fab8c9788810e7306e2"
+    },
+    {
+      "id": "rc_block_delivery_pipeline",
+      "kind": "block",
+      "title": "Delivery pipeline grid",
+      "scenario": "Spans, spaces, labelled links, and mixed edge patterns model a guarded delivery path.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_block_delivery_pipeline_native.png",
+      "officialFile": "rc_block_delivery_pipeline_official.png",
+      "nativeBytes": 63250,
+      "officialBytes": 68200,
+      "nativeSha256": "30c864331754e32ee477061b2c14b12c79341933d5e639e90c48f369c37e1638",
+      "officialSha256": "bd64ec5b145605e96bdd5de67b51887c1b704f9f6adccf3003a9875c616c2f33",
+      "sourceSha256": "3ae4cf78580782020b876f1dd19f91b52d965aa1708b2a81571fb4487f4329cf"
+    },
+    {
+      "id": "rc_block_direction_matrix",
+      "kind": "block",
+      "title": "Directional handoff matrix",
+      "scenario": "Every block-arrow direction and axis alias appears in a dense operational handoff grid.",
+      "aspectRatio": 1.9,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_block_direction_matrix_native.png",
+      "officialFile": "rc_block_direction_matrix_official.png",
+      "nativeBytes": 56284,
+      "officialBytes": 64463,
+      "nativeSha256": "8195f962b60ce43da61a63d0baebe1a0e248f08f8c763255c362ba775579a092",
+      "officialSha256": "139db66869f0d0d168eff74fbbf618329e9aa01e02d55a310fa99af7b254fc00",
+      "sourceSha256": "ea8470892be1c21d42f2d2131d8533299336d41ff63c1728ee0d9fadc94bf99f"
+    },
+    {
+      "id": "rc_block_regional_architecture",
+      "kind": "block",
+      "title": "Regional architecture map",
+      "scenario": "Intrinsic sizing, title metadata, entities, comments, Unicode, and overflow spans share one diagram.",
+      "aspectRatio": 1.75,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_block_regional_architecture_native.png",
+      "officialFile": "rc_block_regional_architecture_official.png",
+      "nativeBytes": 41914,
+      "officialBytes": 51915,
+      "nativeSha256": "9dd44a5c9c99fe8e764dea3ce5e1f73135b9dc3aa594ca4c23fe8be543c6349a",
+      "officialSha256": "1f9b672d6f4d46f8c01852e81a88b444f679d444aa2bbf5d075db6e52ef51156",
+      "sourceSha256": "2473739fccec6bdc2e10ba266bc48de25d34eab4efef1327206136dd3a161536"
+    },
+    {
+      "id": "rc_block_service_platform",
+      "kind": "block",
+      "title": "Layered service platform",
+      "scenario": "Nested service boundaries combine explicit grids, storage shapes, and cross-boundary links.",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_block_service_platform_native.png",
+      "officialFile": "rc_block_service_platform_official.png",
+      "nativeBytes": 67859,
+      "officialBytes": 70607,
+      "nativeSha256": "915a1e96d3115b58cf6871a040d57719b545b2f3f2c0c1c4f5fe8a6f746560b9",
+      "officialSha256": "6d4f51b6a7695ba7de11ef441d4bab52484af4c41fc3b6c7c7b2c5dd26e60602",
+      "sourceSha256": "0a65acd7f3a4a5284116eeef0540701b9a14aaa04ee621acafde1f2d84d1dbb6"
+    },
+    {
+      "id": "rc_block_styled_boundaries",
+      "kind": "block",
+      "title": "Styled ownership boundaries",
+      "scenario": "Composite palette slots, reusable classes, and inline overrides distinguish ownership.",
+      "aspectRatio": 1.65,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_block_styled_boundaries_native.png",
+      "officialFile": "rc_block_styled_boundaries_official.png",
+      "nativeBytes": 25496,
+      "officialBytes": 27855,
+      "nativeSha256": "721c5e1f4f99c06631cbc8926dca177926f9fadd5a512c3bc7332ddcab08489f",
+      "officialSha256": "e678cd90f8cf110cac96304357b99340a5bf41a36321215d11f23f87434b6ded",
+      "sourceSha256": "704d918eefc64c26ecd28a3fb5db84d591fb5ad03b955d559291fb1c03ff0c3e"
     }
   ],
   "failures": []

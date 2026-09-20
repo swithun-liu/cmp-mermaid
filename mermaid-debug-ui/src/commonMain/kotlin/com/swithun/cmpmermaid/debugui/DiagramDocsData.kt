@@ -723,6 +723,44 @@ internal val cynefinDiagramDocsSpec = DiagramDocsSpec(
     initialTheme = MermaidThemePreset.Default,
 )
 
+internal val blockDiagramDocsSpec = DiagramDocsSpec(
+    id = "block",
+    title = "Block",
+    syntaxTitle = "Block diagrams - Basic Syntax",
+    description = "Arrange explicitly sized blocks, nested boundaries, shape variants, " +
+        "directional block arrows, and styled links on a deterministic grid.",
+    documentationUrl = "https://mermaid.js.org/syntax/block.html",
+    galleryTitle = "Block demo gallery",
+    cases = blockDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 16f / 9f,
+        )
+    },
+    syntaxLessons = lessons(
+        blockDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 16f / 9f,
+            )
+        },
+        listOf(
+            "Columns define the explicit grid; suffix spans and space blocks reserve cells.",
+            "Named or anonymous block/end pairs create nested composite boundaries.",
+            "Node delimiters select the documented Block shape variants.",
+            "Block arrows accept right, left, up, down, x, y, and mixed directions.",
+            "Classes, inline styles, themes, padding, and sizing follow Mermaid configuration.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
 internal val eventModelingDiagramDocsSpec = DiagramDocsSpec(
     id = "eventmodeling",
     title = "Event Modeling",

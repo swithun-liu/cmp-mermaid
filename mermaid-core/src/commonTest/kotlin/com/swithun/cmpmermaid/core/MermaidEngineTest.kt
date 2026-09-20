@@ -334,6 +334,37 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersBlockAndBlockBetaThroughRegisteredPlugin() {
+        listOf("block", "block-beta").forEach { header ->
+            val result = engine.render(
+                """
+                    $header
+                      columns 2
+                      source(("Source"))
+                      target{"Target"}
+                      source --> target
+                """.trimIndent(),
+                context,
+            )
+
+            val scene = assertIs<GMResult.Ok<MermaidScene>>(
+                result,
+                "$header: $result",
+            ).value
+            val shapes = scene.elements.filterIsInstance<SceneShape>()
+            assertTrue(shapes.any { shape ->
+                shape.id == "source" && shape.kind == SceneShapeKind.Circle
+            })
+            assertTrue(shapes.any { shape ->
+                shape.id == "target" && shape.kind == SceneShapeKind.Diamond
+            })
+            assertTrue(scene.elements.filterIsInstance<ScenePath>().any { path ->
+                path.id == "1-source-target"
+            })
+        }
+    }
+
+    @Test
     fun rendersAgentflowBetaThroughRegisteredPlugin() {
         val result = engine.render(
             """

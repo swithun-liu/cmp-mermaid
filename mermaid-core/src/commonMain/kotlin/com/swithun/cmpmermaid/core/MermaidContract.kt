@@ -220,6 +220,11 @@ data class MermaidEventModelingOptions(
     val useMaxWidth: Boolean = true,
 )
 
+data class MermaidBlockOptions(
+    val padding: Float = 8f,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidTreemapOptions(
     val useMaxWidth: Boolean = true,
     val padding: Float = 10f,
@@ -365,6 +370,7 @@ data class MermaidRenderOptions(
     val ishikawa: MermaidIshikawaOptions = MermaidIshikawaOptions(),
     val cynefin: MermaidCynefinOptions = MermaidCynefinOptions(),
     val eventModeling: MermaidEventModelingOptions = MermaidEventModelingOptions(),
+    val block: MermaidBlockOptions = MermaidBlockOptions(),
     val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
     val venn: MermaidVennOptions = MermaidVennOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),

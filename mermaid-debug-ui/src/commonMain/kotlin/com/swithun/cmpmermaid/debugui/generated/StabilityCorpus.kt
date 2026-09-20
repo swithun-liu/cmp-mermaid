@@ -3746,6 +3746,138 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_block_service_platform",
+        diagramId = "block",
+        title = "Layered service platform",
+        scenario = "Nested service boundaries combine explicit grids, storage shapes, and cross-boundary links.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            block
+              columns 3
+              clients(["Clients"]) gateway["Gateway"] auth("Authorized?")
+              block:services:2
+                columns 2
+                catalog["Catalog"] orders["Orders"]
+                billing["Billing"] notify["Notifications"]
+              end
+              data[("Primary data")]
+              clients --> gateway
+              gateway --> auth
+              auth --> catalog
+              orders --> data
+              billing --> data
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_delivery_pipeline",
+        diagramId = "block",
+        title = "Delivery pipeline grid",
+        scenario = "Spans, spaces, labelled links, and mixed edge patterns model a guarded delivery path.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            block
+              columns 4
+              source["Source"]:2 build["Build"] package["Package"]
+              space verify("Verified?"):2 publish["Publish"]
+              rollback["Rollback"]:2 complete((("Complete"))):2
+              source -- "commit" --> build
+              build ==> package
+              package -.-> verify
+              verify --> publish
+              verify --x rollback
+              publish --> complete
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_direction_matrix",
+        diagramId = "block",
+        title = "Directional handoff matrix",
+        scenario = "Every block-arrow direction and axis alias appears in a dense operational handoff grid.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            block-beta
+              columns 4
+              intake["Intake"] east<["East"]>(right) review["Review"] south<["South"]>(down)
+              west<["West"]>(left) horizontal<["Horizontal"]>(x) vertical<["Vertical"]>(y) north<["North"]>(up)
+              retry["Retry"] mixed<["Escalate"]>(right, down) resolve["Resolve"] done(("Done"))
+              audit["Audit"] validate["Validate"] publish["Publish"] archive["Archive"]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_styled_boundaries",
+        diagramId = "block",
+        title = "Styled ownership boundaries",
+        scenario = "Composite palette slots, reusable classes, and inline overrides distinguish ownership.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            config:
+              theme: redux-color
+              look: classic
+              themeVariables:
+                bkgColorArray: ["#e0f2fe", "#dcfce7", "#fef3c7"]
+                borderColorArray: ["#0369a1", "#15803d", "#b45309"]
+            ---
+            block
+              columns 3
+              block:edge
+                ingress["Ingress"]
+                cache[("Cache")]
+              end
+              block:compute
+                worker["Worker"]
+                scheduler["Scheduler"]
+              end
+              block:storage
+                database[("Database")]
+                archive[["Archive"]]
+              end
+              classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+              class worker,scheduler active
+              style archive fill:#fef3c7,stroke:#b45309,stroke-width:3px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_regional_architecture",
+        diagramId = "block",
+        title = "Regional architecture map",
+        scenario = "Intrinsic sizing, title metadata, entities, comments, Unicode, and overflow spans share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            title: Regional processing architecture
+            config:
+              theme: dark
+              block:
+                padding: 18
+                useMaxWidth: false
+            ---
+            block
+              %% The first row intentionally exceeds the configured column count.
+              columns 2
+              entry["Paris &amp; 東京"]:3
+              route("Region?") right<["Route"]>(right)
+              seoul["서울 processor"] sao[("São Paulo store")]
+              route --> seoul
+              route --> sao
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_eventmodeling_order_lifecycle",
         diagramId = "eventmodeling",
         title = "Order lifecycle event model",
@@ -7731,6 +7863,138 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
                 "서울 runbook"
               chaotic
                 "São Paulo incident"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_service_platform",
+        diagramId = "block",
+        title = "Layered service platform",
+        scenario = "Nested service boundaries combine explicit grids, storage shapes, and cross-boundary links.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            block
+              columns 3
+              clients(["Clients"]) gateway["Gateway"] auth("Authorized?")
+              block:services:2
+                columns 2
+                catalog["Catalog"] orders["Orders"]
+                billing["Billing"] notify["Notifications"]
+              end
+              data[("Primary data")]
+              clients --> gateway
+              gateway --> auth
+              auth --> catalog
+              orders --> data
+              billing --> data
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_delivery_pipeline",
+        diagramId = "block",
+        title = "Delivery pipeline grid",
+        scenario = "Spans, spaces, labelled links, and mixed edge patterns model a guarded delivery path.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            block
+              columns 4
+              source["Source"]:2 build["Build"] package["Package"]
+              space verify("Verified?"):2 publish["Publish"]
+              rollback["Rollback"]:2 complete((("Complete"))):2
+              source -- "commit" --> build
+              build ==> package
+              package -.-> verify
+              verify --> publish
+              verify --x rollback
+              publish --> complete
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_direction_matrix",
+        diagramId = "block",
+        title = "Directional handoff matrix",
+        scenario = "Every block-arrow direction and axis alias appears in a dense operational handoff grid.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            block-beta
+              columns 4
+              intake["Intake"] east<["East"]>(right) review["Review"] south<["South"]>(down)
+              west<["West"]>(left) horizontal<["Horizontal"]>(x) vertical<["Vertical"]>(y) north<["North"]>(up)
+              retry["Retry"] mixed<["Escalate"]>(right, down) resolve["Resolve"] done(("Done"))
+              audit["Audit"] validate["Validate"] publish["Publish"] archive["Archive"]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_styled_boundaries",
+        diagramId = "block",
+        title = "Styled ownership boundaries",
+        scenario = "Composite palette slots, reusable classes, and inline overrides distinguish ownership.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            config:
+              theme: redux-color
+              look: classic
+              themeVariables:
+                bkgColorArray: ["#e0f2fe", "#dcfce7", "#fef3c7"]
+                borderColorArray: ["#0369a1", "#15803d", "#b45309"]
+            ---
+            block
+              columns 3
+              block:edge
+                ingress["Ingress"]
+                cache[("Cache")]
+              end
+              block:compute
+                worker["Worker"]
+                scheduler["Scheduler"]
+              end
+              block:storage
+                database[("Database")]
+                archive[["Archive"]]
+              end
+              classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+              class worker,scheduler active
+              style archive fill:#fef3c7,stroke:#b45309,stroke-width:3px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_block_regional_architecture",
+        diagramId = "block",
+        title = "Regional architecture map",
+        scenario = "Intrinsic sizing, title metadata, entities, comments, Unicode, and overflow spans share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            ---
+            title: Regional processing architecture
+            config:
+              theme: dark
+              block:
+                padding: 18
+                useMaxWidth: false
+            ---
+            block
+              %% The first row intentionally exceeds the configured column count.
+              columns 2
+              entry["Paris &amp; 東京"]:3
+              route("Region?") right<["Route"]>(right)
+              seoul["서울 processor"] sao[("São Paulo store")]
+              route --> seoul
+              route --> sao
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -12538,6 +12802,170 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf("colon-header", "cynefin-beta-header", "deterministic-seed"),
     ),
     StabilityCorpusCase(
+        id = "prod_block_column_spans",
+        diagramId = "block",
+        title = "Explicit grid with spans",
+        scenario = "A four-column grid combines fixed spans and empty cells.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            block
+              columns 4
+              input["Input"] validation["Validation"]:2 output["Output"]
+              space:2 retry["Retry"]:2
+        """.trimIndent(),
+        expectedTexts = listOf("Input", "Validation", "Output"),
+        features = setOf("block-header", "columns", "column-spans", "spaces", "responsive-sizing"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_block_auto_columns",
+        diagramId = "block",
+        title = "Automatic directional grid",
+        scenario = "The beta header and automatic columns arrange every block-arrow direction.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            block-beta
+              columns auto
+              right<["Right"]>(right) left<["Left"]>(left)
+              up<["Up"]>(up) down<["Down"]>(down)
+              horizontal<["Horizontal"]>(x) vertical<["Vertical"]>(y)
+              mixed<["Mixed"]>(right, down)
+        """.trimIndent(),
+        expectedTexts = listOf("Right", "Left", "Up", "Down", "Horizontal", "Vertical", "Mixed"),
+        features = setOf("block-beta-header", "auto-columns", "block-arrows", "arrow-directions", "responsive-sizing"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_block_nested_composites",
+        diagramId = "block",
+        title = "Nested service boundaries",
+        scenario = "Named and anonymous composites preserve nested grid ownership.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            block
+              columns 2
+              gateway["Gateway"]
+              block:platform
+                columns 1
+                block
+                  authorize["Authorize"]
+                end
+                persist[("Persist")]
+              end
+        """.trimIndent(),
+        expectedTexts = listOf("Gateway", "Authorize", "Persist"),
+        features = setOf("composites", "nested-composites", "columns"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_block_primary_shapes",
+        diagramId = "block",
+        title = "Block shape catalog",
+        scenario = "Every documented shape delimiter shares one explicit grid.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            block
+              columns 4
+              square["Square"] round("Round") stadium(["Stadium"]) subroutine[["Subroutine"]]
+              database[("Database")] circle(("Circle")) decision{"Decision"}
+              asymmetric>"Asymmetric"] hexagon{{"Hexagon"}}
+              leanRight[/"Lean right"/] leanLeft[\"Lean left"\]
+              trapezoid[/"Trapezoid"\] inverse[\"Inverse"/]
+              complete((("Complete")))
+        """.trimIndent(),
+        expectedTexts = listOf("Square", "Round", "Database", "Decision", "Hexagon", "Complete"),
+        features = setOf("shape-delimiters", "columns"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_block_edge_markers",
+        diagramId = "block",
+        title = "Edge markers and styles",
+        scenario = "Endpoint markers, labels, thickness, patterns, and occurrence IDs share one graph.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            block
+              columns 6
+              alpha["Alpha"] beta["Beta"] gamma["Gamma"] delta["Delta"] epsilon["Epsilon"] zeta["Zeta"]
+              alpha -- "approved" --> beta
+              beta ==> gamma
+              gamma -.-> delta
+              delta --o epsilon
+              epsilon --x zeta
+              zeta <--> alpha
+        """.trimIndent(),
+        expectedTexts = listOf("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "approved"),
+        features = setOf("links", "labelled-links", "link-markers", "link-thickness", "link-patterns", "edge-numbering"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_block_classes_and_styles",
+        diagramId = "block",
+        title = "Classes, styles, and repeated declarations",
+        scenario = "Class and inline styles compose after one node is redeclared with a final shape.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            block
+              columns 3
+              ingress["Ingress"] worker["Worker"] archive
+              archive["Renamed archive"]
+              archive[("Final archive")]
+              classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+              class ingress,worker active
+              style archive fill:#dbeafe,stroke:#1d4ed8,stroke-width:3px
+        """.trimIndent(),
+        expectedTexts = listOf("Ingress", "Worker", "Final archive"),
+        features = setOf("classes", "inline-styles", "duplicate-declarations", "columns"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_block_palette_composites",
+        diagramId = "block",
+        title = "Configured composite palette",
+        scenario = "Frontmatter selects intrinsic sizing, custom padding, and composite palette slots.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            ---
+            title: Native block pipeline
+            config:
+              theme: redux-color
+              look: classic
+              block:
+                padding: 16
+                useMaxWidth: false
+            ---
+            block
+              block:frontend
+                parse["Parse"]
+                layout["Layout"]
+              end
+              block:backend
+                render["Render"]
+              end
+        """.trimIndent(),
+        expectedTexts = listOf("Parse", "Layout", "Render"),
+        features = setOf("frontmatter-title", "padding", "intrinsic-sizing", "theme", "palette-composites", "composites"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_block_width_overflow",
+        diagramId = "block",
+        title = "Regional architecture with width overflow",
+        scenario = "An oversized span, comments, entities, safe HTML, and mixed scripts share one grid.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            block
+              %% The first row intentionally exceeds the configured column count.
+              columns 2
+              frontend["<b>Paris &amp; 東京</b>"]:4
+              down<[" "]>(down) backend["서울 backend"]
+              space database[("São Paulo database")]
+        """.trimIndent(),
+        expectedTexts = listOf("Paris", "東京", "서울 backend", "São Paulo database"),
+        features = setOf("columns", "column-spans", "spaces", "width-overflow", "block-arrows", "comments", "entities", "unicode", "sanitized-labels"),
+    ),
+    StabilityCorpusCase(
         id = "prod_eventmodeling_compact_checkout",
         diagramId = "eventmodeling",
         title = "Compact checkout state change",
@@ -12974,6 +13402,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "venn",
             "ishikawa",
             "cynefin",
+            "block",
             "eventmodeling",
             "agentflow",
         )
@@ -13062,6 +13491,8 @@ private fun addVisualParityVariation(
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "${source.trimEnd()}\n$label\n"
     "cynefin" -> insertCynefinVisualParityEvidence(source, label)
+    "block" -> "${source.trimEnd()}\n" +
+        "  $evidenceId[(\"${escapeQuotedVisualParityLabel(label)}\")]\n"
     "eventmodeling" -> "${source.trimEnd()}\n" +
         "  rf ${700 + ordinal} evt $evidenceId { label: $label }\n"
     "agentflow" -> appendAgentflowVisualParityEvidence(

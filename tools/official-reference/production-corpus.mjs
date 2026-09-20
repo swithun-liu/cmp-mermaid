@@ -499,6 +499,39 @@ export const requiredFeaturesByKind = {
     'entities',
     'unicode',
   ],
+  block: [
+    'block-header',
+    'block-beta-header',
+    'columns',
+    'auto-columns',
+    'column-spans',
+    'spaces',
+    'composites',
+    'nested-composites',
+    'shape-delimiters',
+    'block-arrows',
+    'arrow-directions',
+    'links',
+    'labelled-links',
+    'link-markers',
+    'link-thickness',
+    'link-patterns',
+    'edge-numbering',
+    'classes',
+    'inline-styles',
+    'duplicate-declarations',
+    'frontmatter-title',
+    'comments',
+    'entities',
+    'unicode',
+    'sanitized-labels',
+    'width-overflow',
+    'padding',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'theme',
+    'palette-composites',
+  ],
   eventmodeling: [
     'eventmodeling-header',
     'compact-syntax',
@@ -4738,6 +4771,205 @@ cynefin-beta:
   },
 ];
 
+const blockCases = [
+  {
+    id: 'prod_block_column_spans',
+    kind: 'block',
+    title: 'Explicit grid with spans',
+    scenario: 'A four-column grid combines fixed spans and empty cells.',
+    aspectRatio: 1.8,
+    features: [
+      'block-header',
+      'columns',
+      'column-spans',
+      'spaces',
+      'responsive-sizing',
+    ],
+    expectedTexts: ['Input', 'Validation', 'Output'],
+    source: String.raw`
+block
+  columns 4
+  input["Input"] validation["Validation"]:2 output["Output"]
+  space:2 retry["Retry"]:2
+`,
+  },
+  {
+    id: 'prod_block_auto_columns',
+    kind: 'block',
+    title: 'Automatic directional grid',
+    scenario: 'The beta header and automatic columns arrange every block-arrow direction.',
+    aspectRatio: 1.9,
+    features: [
+      'block-beta-header',
+      'auto-columns',
+      'block-arrows',
+      'arrow-directions',
+      'responsive-sizing',
+    ],
+    expectedTexts: ['Right', 'Left', 'Up', 'Down', 'Horizontal', 'Vertical', 'Mixed'],
+    source: String.raw`
+block-beta
+  columns auto
+  right<["Right"]>(right) left<["Left"]>(left)
+  up<["Up"]>(up) down<["Down"]>(down)
+  horizontal<["Horizontal"]>(x) vertical<["Vertical"]>(y)
+  mixed<["Mixed"]>(right, down)
+`,
+  },
+  {
+    id: 'prod_block_nested_composites',
+    kind: 'block',
+    title: 'Nested service boundaries',
+    scenario: 'Named and anonymous composites preserve nested grid ownership.',
+    aspectRatio: 1.55,
+    features: [
+      'composites',
+      'nested-composites',
+      'columns',
+    ],
+    expectedTexts: ['Gateway', 'Authorize', 'Persist'],
+    source: String.raw`
+block
+  columns 2
+  gateway["Gateway"]
+  block:platform
+    columns 1
+    block
+      authorize["Authorize"]
+    end
+    persist[("Persist")]
+  end
+`,
+  },
+  {
+    id: 'prod_block_primary_shapes',
+    kind: 'block',
+    title: 'Block shape catalog',
+    scenario: 'Every documented shape delimiter shares one explicit grid.',
+    aspectRatio: 1.9,
+    features: ['shape-delimiters', 'columns'],
+    expectedTexts: ['Square', 'Round', 'Database', 'Decision', 'Hexagon', 'Complete'],
+    source: String.raw`
+block
+  columns 4
+  square["Square"] round("Round") stadium(["Stadium"]) subroutine[["Subroutine"]]
+  database[("Database")] circle(("Circle")) decision{"Decision"}
+  asymmetric>"Asymmetric"] hexagon{{"Hexagon"}}
+  leanRight[/"Lean right"/] leanLeft[\"Lean left"\]
+  trapezoid[/"Trapezoid"\] inverse[\"Inverse"/]
+  complete((("Complete")))
+`,
+  },
+  {
+    id: 'prod_block_edge_markers',
+    kind: 'block',
+    title: 'Edge markers and styles',
+    scenario: 'Endpoint markers, labels, thickness, patterns, and occurrence IDs share one graph.',
+    aspectRatio: 1.7,
+    features: [
+      'links',
+      'labelled-links',
+      'link-markers',
+      'link-thickness',
+      'link-patterns',
+      'edge-numbering',
+    ],
+    expectedTexts: ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'approved'],
+    source: String.raw`
+block
+  columns 6
+  alpha["Alpha"] beta["Beta"] gamma["Gamma"] delta["Delta"] epsilon["Epsilon"] zeta["Zeta"]
+  alpha -- "approved" --> beta
+  beta ==> gamma
+  gamma -.-> delta
+  delta --o epsilon
+  epsilon --x zeta
+  zeta <--> alpha
+`,
+  },
+  {
+    id: 'prod_block_classes_and_styles',
+    kind: 'block',
+    title: 'Classes, styles, and repeated declarations',
+    scenario: 'Class and inline styles compose after one node is redeclared with a final shape.',
+    aspectRatio: 1.7,
+    features: ['classes', 'inline-styles', 'duplicate-declarations', 'columns'],
+    expectedTexts: ['Ingress', 'Worker', 'Final archive'],
+    source: String.raw`
+block
+  columns 3
+  ingress["Ingress"] worker["Worker"] archive
+  archive["Renamed archive"]
+  archive[("Final archive")]
+  classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+  class ingress,worker active
+  style archive fill:#dbeafe,stroke:#1d4ed8,stroke-width:3px
+`,
+  },
+  {
+    id: 'prod_block_palette_composites',
+    kind: 'block',
+    title: 'Configured composite palette',
+    scenario: 'Frontmatter selects intrinsic sizing, custom padding, and composite palette slots.',
+    aspectRatio: 1.55,
+    features: [
+      'frontmatter-title',
+      'padding',
+      'intrinsic-sizing',
+      'theme',
+      'palette-composites',
+      'composites',
+    ],
+    expectedTexts: ['Parse', 'Layout', 'Render'],
+    source: String.raw`
+---
+title: Native block pipeline
+config:
+  theme: redux-color
+  look: classic
+  block:
+    padding: 16
+    useMaxWidth: false
+---
+block
+  block:frontend
+    parse["Parse"]
+    layout["Layout"]
+  end
+  block:backend
+    render["Render"]
+  end
+`,
+  },
+  {
+    id: 'prod_block_width_overflow',
+    kind: 'block',
+    title: 'Regional architecture with width overflow',
+    scenario: 'An oversized span, comments, entities, safe HTML, and mixed scripts share one grid.',
+    aspectRatio: 1.75,
+    features: [
+      'columns',
+      'column-spans',
+      'spaces',
+      'width-overflow',
+      'block-arrows',
+      'comments',
+      'entities',
+      'unicode',
+      'sanitized-labels',
+    ],
+    expectedTexts: ['Paris', '東京', '서울 backend', 'São Paulo database'],
+    source: String.raw`
+block
+  %% The first row intentionally exceeds the configured column count.
+  columns 2
+  frontend["<b>Paris &amp; 東京</b>"]:4
+  down<[" "]>(down) backend["서울 backend"]
+  space database[("São Paulo database")]
+`,
+  },
+];
+
 const eventModelingCases = [
   {
     id: 'prod_eventmodeling_compact_checkout',
@@ -5572,6 +5804,7 @@ export const conformanceCases = [
   ...vennCases,
   ...ishikawaCases,
   ...cynefinCases,
+  ...blockCases,
   ...eventModelingCases,
   ...agentflowCases,
 ];

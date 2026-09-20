@@ -24,6 +24,7 @@ export const kinds = [
   'venn',
   'ishikawa',
   'cynefin',
+  'block',
   'eventmodeling',
   'agentflow',
 ];
@@ -170,6 +171,10 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}\n${label}\n`;
     case 'cynefin':
       return insertCynefinEvidence(source, label);
+    case 'block':
+      return `${source.trimEnd()}
+  ${evidenceId}[("${escapeQuotedLabel(label)}")]
+`;
     case 'eventmodeling':
       return `${source.trimEnd()}
   rf ${700 + ordinal} evt ${evidenceId} { label: ${label} }
