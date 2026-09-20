@@ -27,8 +27,12 @@ import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPor
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidLineJumpPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapePort
+import com.swithun.cmpmermaid.core.swimlane.SwimlaneLayout
+import kotlin.math.PI
+import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.sin
 
 internal class FlowchartLayout {
     fun layout(
@@ -163,6 +167,18 @@ internal class FlowchartLayout {
                 is GMResult.Ok -> elk.value
                 is GMResult.Err -> return elk
             }
+            "swimlane" -> when (
+                val swimlane = SwimlaneLayout.layout(
+                    document = resolvedDocument,
+                    nodeSizes = nodeSizes,
+                    nodeShapeLayouts = nodeShapeLayouts,
+                    edgeLabelSizes = edgeLabelSizes,
+                    options = context.options,
+                )
+            ) {
+                is GMResult.Ok -> swimlane.value
+                is GMResult.Err -> return swimlane
+            }
             else -> return GMResult.Err(
                 MermaidError.UnsupportedFeature(
                     feature = "${context.options.layout} layout",
@@ -276,6 +292,19 @@ internal class FlowchartLayout {
                             "Subgraph '${subgraph.id}' has no measured label",
                         ),
                     )
+                if (context.options.layout == "swimlane" && subgraph.parentId == null) {
+                    addSwimlane(
+                        subgraph = subgraph,
+                        bounds = bounds,
+                        measured = measured,
+                        style = style,
+                        direction = document.direction,
+                        context = context,
+                        zIndex = index,
+                        elements = elements,
+                    )
+                    return@forEachIndexed
+                }
                 val renderedWidth = max(bounds.width, measured.width + subgraph.padding)
                 val renderedBounds = SceneRect(
                     left = bounds.center.x - renderedWidth / 2f,
@@ -321,6 +350,113 @@ internal class FlowchartLayout {
                 )
             }
         return GMResult.Ok(Unit)
+    }
+
+    /**
+     * Mermaid.js 12.0.0:
+     * rendering-util/rendering-elements/clusters/swimlane.js -> swimlane.
+     */
+    private fun addSwimlane(
+        subgraph: FlowSubgraph,
+        bounds: SceneRect,
+        measured: SceneSize,
+        style: FlowNodeStyle,
+        direction: FlowDirection,
+        context: MermaidRenderContext,
+        zIndex: Int,
+        elements: MutableList<SceneElement>,
+    ) {
+        val width = max(bounds.width, measured.width + subgraph.padding)
+        val renderedBounds = SceneRect(
+            left = bounds.center.x - width / 2f,
+            top = bounds.top,
+            right = bounds.center.x + width / 2f,
+            bottom = bounds.bottom,
+        )
+        val paletteEnabled = context.options.themeName in COLOR_THEMES
+        val paletteFill = context.theme.colorFill(subgraph.colorIndex)
+        val fill = style.fill ?: if (paletteEnabled) paletteFill else context.theme.groupFill
+        val bodyFill = style.fill ?: if (paletteEnabled) paletteFill else Transparent
+        val stroke = style.stroke ?: context.theme.colorStroke(subgraph.colorIndex)
+        val leftTitle = direction == FlowDirection.LeftToRight
+        val titleSize = if (leftTitle) {
+            min(renderedBounds.width, max(measured.height, 0f))
+        } else {
+            min(renderedBounds.height, max(measured.height, 0f))
+        }
+        val titleBounds = if (leftTitle) {
+            SceneRect(
+                left = renderedBounds.left,
+                top = renderedBounds.top,
+                right = renderedBounds.left + titleSize,
+                bottom = renderedBounds.bottom,
+            )
+        } else {
+            SceneRect(
+                left = renderedBounds.left,
+                top = renderedBounds.top,
+                right = renderedBounds.right,
+                bottom = renderedBounds.top + titleSize,
+            )
+        }
+        val bodyBounds = if (leftTitle) {
+            SceneRect(
+                left = titleBounds.right,
+                top = renderedBounds.top,
+                right = renderedBounds.right,
+                bottom = renderedBounds.bottom,
+            )
+        } else {
+            SceneRect(
+                left = renderedBounds.left,
+                top = titleBounds.bottom,
+                right = renderedBounds.right,
+                bottom = renderedBounds.bottom,
+            )
+        }
+        elements += SceneShape(
+            id = "subgraph_${subgraph.id}_body",
+            bounds = bodyBounds,
+            kind = SceneShapeKind.Rectangle,
+            fill = bodyFill,
+            stroke = stroke,
+            strokeWidth = style.strokeWidth ?: 1f,
+            strokePattern = style.strokePattern ?: SceneStrokePattern.Solid,
+            dashIntervals = style.dashIntervals,
+            zIndex = zIndex,
+        )
+        elements += SceneShape(
+            id = "subgraph_${subgraph.id}",
+            bounds = titleBounds,
+            kind = SceneShapeKind.Rectangle,
+            fill = fill,
+            stroke = stroke,
+            strokeWidth = style.strokeWidth ?: 1f,
+            strokePattern = style.strokePattern ?: SceneStrokePattern.Solid,
+            dashIntervals = style.dashIntervals,
+            zIndex = zIndex + 1,
+        )
+        val labelCenter = titleBounds.center
+        val labelBounds = SceneRect(
+            left = labelCenter.x - measured.width / 2f,
+            top = labelCenter.y - measured.height / 2f,
+            right = labelCenter.x + measured.width / 2f,
+            bottom = labelCenter.y + measured.height / 2f,
+        )
+        elements += SceneText(
+            text = subgraph.label,
+            bounds = labelBounds,
+            color = style.text ?: context.theme.groupText,
+            fontSize = textFontSize(style, context),
+            lineHeight = textLineHeight(style, context),
+            fontFamily = textFontFamily(style, context),
+            weight = style.fontWeight ?: SceneTextWeight.Normal,
+            spans = textSpans(subgraph.label, subgraph.labelSpans, style),
+            horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
+            rotationDegrees = if (leftTitle) -90f else 0f,
+            rotationPivot = labelCenter.takeIf { leftTitle },
+            zIndex = zIndex + 2,
+        )
     }
 
     private fun addEdges(
@@ -406,10 +542,12 @@ internal class FlowchartLayout {
                 zIndex = 7,
             )
         }
-        elements += if (context.options.layout == "elk" || context.options.layout.startsWith("elk.")) {
-            MermaidLineJumpPort.apply(paths, context.options.elk.lineHops)
-        } else {
-            paths
+        elements += when {
+            context.options.layout == "elk" || context.options.layout.startsWith("elk.") ->
+                MermaidLineJumpPort.apply(paths, context.options.elk.lineHops)
+            context.options.layout == "swimlane" ->
+                MermaidLineJumpPort.apply(paths, context.options.swimlane.lineHops)
+            else -> paths
         }
         elements += labels
         return GMResult.Ok(Unit)
@@ -701,7 +839,7 @@ internal class FlowchartLayout {
     private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
         is SceneAsset -> element.bounds
         is SceneShape -> element.bounds
-        is SceneText -> element.bounds
+        is SceneText -> rotatedTextBounds(element)
         is ScenePath -> {
             val first = element.points.firstOrNull()
             if (first == null) null else element.points.drop(1).fold(SceneRect(first.x, first.y, first.x, first.y)) { bounds, point ->
@@ -715,10 +853,40 @@ internal class FlowchartLayout {
         }
     }
 
+    private fun rotatedTextBounds(element: SceneText): SceneRect {
+        if (element.rotationDegrees == 0f) return element.bounds
+        val pivot = element.rotationPivot ?: element.bounds.center
+        val radians = element.rotationDegrees * PI.toFloat() / 180f
+        val cosine = cos(radians)
+        val sine = sin(radians)
+        val corners = listOf(
+            ScenePoint(element.bounds.left, element.bounds.top),
+            ScenePoint(element.bounds.right, element.bounds.top),
+            ScenePoint(element.bounds.right, element.bounds.bottom),
+            ScenePoint(element.bounds.left, element.bounds.bottom),
+        ).map { point ->
+            val x = point.x - pivot.x
+            val y = point.y - pivot.y
+            ScenePoint(
+                x = pivot.x + x * cosine - y * sine,
+                y = pivot.y + x * sine + y * cosine,
+            )
+        }
+        return SceneRect(
+            left = corners.minOf(ScenePoint::x),
+            top = corners.minOf(ScenePoint::y),
+            right = corners.maxOf(ScenePoint::x),
+            bottom = corners.maxOf(ScenePoint::y),
+        )
+    }
+
     private fun SceneElement.translate(dx: Float, dy: Float): SceneElement = when (this) {
         is SceneAsset -> copy(bounds = bounds.translate(dx, dy))
         is SceneShape -> copy(bounds = bounds.translate(dx, dy))
-        is SceneText -> copy(bounds = bounds.translate(dx, dy))
+        is SceneText -> copy(
+            bounds = bounds.translate(dx, dy),
+            rotationPivot = rotationPivot?.translate(dx, dy),
+        )
         is ScenePath -> copy(
             points = points.map { ScenePoint(it.x + dx, it.y + dy) },
             commands = commands.map { command -> command.translate(dx, dy) },
@@ -755,5 +923,7 @@ internal class FlowchartLayout {
         )
         const val TITLE_FONT_SIZE = 18f
         const val UNWRAPPED_LABEL_MAX_WIDTH = 100_000f
+        val COLOR_THEMES = setOf("redux-color", "redux-dark-color")
+        val Transparent = SceneColor(0x00000000)
     }
 }

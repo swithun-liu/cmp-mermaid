@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>在线 Web Demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>6,400 案例视觉报告</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>6,656 案例视觉报告</strong></a>
     ·
     <a href="docs/stability-report.md">完整 Stable 报告</a>
     ·
@@ -32,14 +32,14 @@
 
 > [!IMPORTANT]
 > **CMP Mermaid 当前实现了 Mermaid `12.0.0` 官方 33 个图表家族中的
-> 25 个。** 剩余 8 个家族见
+> 26 个。** 剩余 7 个家族见
 > **[全图表路线](docs/full-diagram-roadmap.md)**。
 >
-> 当前 **[6,400 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
-> 已覆盖全部 25 个已实现家族。Flowchart、XY Chart、Quadrant Chart、Timeline、
+> 当前 **[6,656 案例 Native/Official 视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
+> 已覆盖全部 26 个已实现家族。Flowchart、XY Chart、Quadrant Chart、Timeline、
 > Kanban、Sequence、Class、State、Entity Relationship、Gantt、Pie、User Journey、
-> Requirement、Git Graph、Mindmap、Packet、Radar、Sankey、Treemap、Venn、Ishikawa、Cynefin、Event Modeling、Agentflow 与 Block
-> 已完成新的 256 案例细节门禁。由于仍有 8 个官方家族待翻译，该报告不代表 Mermaid 已完整兼容。
+> Requirement、Git Graph、Mindmap、Packet、Radar、Sankey、Treemap、Venn、Ishikawa、Cynefin、Event Modeling、Agentflow、Block 与 Swimlanes
+> 已完成新的 256 案例细节门禁。由于仍有 7 个官方家族待翻译，该报告不代表 Mermaid 已完整兼容。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
 WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，也不需要
@@ -48,34 +48,34 @@ WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，�
 
 ## 当前验证状态
 
-已实现的 25 个家族仍有仓库内可复现的测试与截图。Flowchart、XY Chart、Quadrant Chart、
+已实现的 26 个家族仍有仓库内可复现的测试与截图。Flowchart、XY Chart、Quadrant Chart、
 Timeline、Kanban、Sequence、Class、State、Entity Relationship、Gantt、Pie、User Journey、
-Requirement、Git Graph、Mindmap、Packet、Radar、Sankey、Treemap、Venn、Ishikawa、Cynefin、Event Modeling、Agentflow 与 Block 已通过新的细节门禁。
+Requirement、Git Graph、Mindmap、Packet、Radar、Sankey、Treemap、Venn、Ishikawa、Cynefin、Event Modeling、Agentflow、Block 与 Swimlanes 已通过新的细节门禁。
 
 | 证据 | 结果 |
 | --- | ---: |
 | Mermaid 官方图表家族 | 33 |
-| 已实现图表家族 | 25/33 |
-| 待翻译 | 8 |
-| 独立生产场景 | 327 |
-| 已声明能力覆盖率 | 540/540 |
-| 大规模视觉矩阵 | 6,400 个唯一源码，每个已实现家族 256 个 |
-| Native/Official 截图 | 12,800 张矩阵截图，另有 654 张独立语料截图 |
-| 矩阵细节审查 | 全部 25 个已实现家族：6,400/6,400 验收；其中 5,654 个自动通过，746 个 ER/Journey/Requirement/Git Graph/Mindmap/Treemap/Venn/Event Modeling/Block 告警经人工复核通过 |
-| 自动视觉检查 | 6,400/6,400 几何通过；全部 25 个已实现家族的细节门禁通过 |
-| 确定性 SceneGraph 重放 | 327 个通过，0 个不一致 |
-| 内置主题矩阵 | 275/275 |
-| 独立生成的 Native 压力输入 | 6,400 |
-| JVM 测试 | 638 个通过，0 个失败 |
-| Core 生产场景压力测试 | 1,635 次渲染，总耗时 679ms，P95 为 1ms，保留堆 49,408 bytes |
+| 已实现图表家族 | 26/33 |
+| 待翻译 | 7 |
+| 独立生产场景 | 340 |
+| 已声明能力覆盖率 | 554/554 |
+| 大规模视觉矩阵 | 6,656 个唯一源码，每个已实现家族 256 个 |
+| Native/Official 截图 | 13,312 张矩阵截图，另有 680 张独立语料截图 |
+| 矩阵细节审查 | 全部 26 个已实现家族：6,656/6,656 验收；其中 5,850 个自动通过，806 个 ER/Journey/Requirement/Git Graph/Mindmap/Treemap/Venn/Event Modeling/Block/Swimlanes 告警经人工复核通过 |
+| 自动视觉检查 | 6,656/6,656 几何通过；全部 26 个已实现家族的细节门禁通过 |
+| 确定性 SceneGraph 重放 | 340 个通过，0 个不一致 |
+| 内置主题矩阵 | 286/286 |
+| 独立生成的 Native 压力输入 | 6,656 |
+| JVM 测试 | 646 个通过，0 个失败 |
+| Core 生产场景压力测试 | 1,700 次渲染，总耗时 593ms，P95 为 1ms，保留堆 51,008 bytes |
 | 运行时负载矩阵 | Web 保留此前 275 场景基线；Android、iOS、Desktop 保留此前 236 场景基线 |
 
 | 证据文档 | 内容 |
 | --- | --- |
-| **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单、当前 25/33 状态、缺失 8 类和新 Stable 门禁 |
+| **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单、当前 26/33 状态、缺失 7 类和新 Stable 门禁 |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
-| **[全部 6,400 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 400 页分页对比图，每页包含 16 组同源码结果 |
-| [生产能力矩阵](docs/production-capability-matrix.md) | 540 项被独立验证的能力 |
+| **[全部 6,656 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 416 页分页对比图，每页包含 16 组同源码结果 |
+| [生产能力矩阵](docs/production-capability-matrix.md) | 554 项被独立验证的能力 |
 | [生产就绪说明](docs/production-readiness.md) | 代码级 Stable 标准、资源预算和接入指引 |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | 当前 JVM、构建、发布、安全、APK、视觉和 Web 负载自动化结果 |
 | [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 已实现子集的每周/手动截图与细节门禁 |
@@ -110,9 +110,9 @@ Requirement、Git Graph、Mindmap、Packet、Radar、Sankey、Treemap、Venn、I
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native State Diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js State Diagram" width="700"> |
 
-测试报告包含 327 个独立生产场景对比，以及由 6,400 个唯一 Mermaid 源码组成的
+测试报告包含 340 个独立生产场景对比，以及由 6,656 个唯一 Mermaid 源码组成的
 独立大规模矩阵：
-**[查看全部 400 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
+**[查看全部 416 页视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
 
 </details>
 
@@ -145,8 +145,9 @@ Requirement、Git Graph、Mindmap、Packet、Radar、Sankey、Treemap、Venn、I
 | Event Modeling | 细节门禁通过 | 13 | Langium 语法、帧、泳道、数据、关系、校验与主题 | [兼容性](docs/eventmodeling-compatibility.md) |
 | Agentflow | 细节门禁通过 | 13 | Jison 语法、类型化节点与边、嵌套/全局/折叠 flow、连接器、元数据与 Dagre | [兼容性](docs/agentflow-compatibility.md) |
 | Block | 细节门禁通过 | 13 | Jison 语法、网格、跨列、复合块、形状、块箭头、连线、类与样式 | [兼容性](docs/block-compatibility.md) |
+| Swimlanes | 细节门禁通过 | 13 | Flowchart 语法与形状、泳道感知 Sugiyama 布局、正交路由、方向变换 | [兼容性](docs/swimlanes-compatibility.md) |
 
-在各自文档声明的兼容范围内，已实现的 25 类图均支持 Mermaid frontmatter、相关 metadata、
+在各自文档声明的兼容范围内，已实现的 26 类图均支持 Mermaid frontmatter、相关 metadata、
 Unicode 和相关主题变量。
 
 ## 在线体验

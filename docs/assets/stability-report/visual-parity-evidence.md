@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 6,400 source cases and
-12,800 screenshots from the large-scale
+This index contains 6,656 source cases and
+13,312 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,13 +13,14 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 25 implemented families have completed the replacement detail gate and
+All 26 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`6,400/6,400` pairs: `5,654 automatic pass / 746 manually reviewed /
-0 unresolved` across 400 contact sheets. Block contributes three
+`6,656/6,656` pairs: `5,850 automatic pass / 806 manually reviewed /
+0 unresolved` across 416 contact sheets. Block contributes three
 paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
 acceptances caused by the documented title/payload `text-segmentation`
-adaptation.
+adaptation; Swimlanes contributes 60 text-position reviews along semantically
+equivalent orthogonal routes.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -55,6 +56,50 @@ adaptation.
 ![Flowchart visual parity page 15](flowchart-visual-parity-15.jpg)
 
 ![Flowchart visual parity page 16](flowchart-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Swimlanes - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `196 pass / 60 review / 0 fail`. The reviews contain
+only text-position findings along semantically equivalent orthogonal routes.
+Geometry ratios: width `1.028-1.186`, height `0.883-1.070`, foreground ink
+`0.899-1.551`. Raw [detail](swimlanes-visual-parity-detail.json) and
+[geometry](swimlanes-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![Swimlanes visual parity page 01](swimlanes-visual-parity-01.jpg)
+
+![Swimlanes visual parity page 02](swimlanes-visual-parity-02.jpg)
+
+![Swimlanes visual parity page 03](swimlanes-visual-parity-03.jpg)
+
+![Swimlanes visual parity page 04](swimlanes-visual-parity-04.jpg)
+
+![Swimlanes visual parity page 05](swimlanes-visual-parity-05.jpg)
+
+![Swimlanes visual parity page 06](swimlanes-visual-parity-06.jpg)
+
+![Swimlanes visual parity page 07](swimlanes-visual-parity-07.jpg)
+
+![Swimlanes visual parity page 08](swimlanes-visual-parity-08.jpg)
+
+![Swimlanes visual parity page 09](swimlanes-visual-parity-09.jpg)
+
+![Swimlanes visual parity page 10](swimlanes-visual-parity-10.jpg)
+
+![Swimlanes visual parity page 11](swimlanes-visual-parity-11.jpg)
+
+![Swimlanes visual parity page 12](swimlanes-visual-parity-12.jpg)
+
+![Swimlanes visual parity page 13](swimlanes-visual-parity-13.jpg)
+
+![Swimlanes visual parity page 14](swimlanes-visual-parity-14.jpg)
+
+![Swimlanes visual parity page 15](swimlanes-visual-parity-15.jpg)
+
+![Swimlanes visual parity page 16](swimlanes-visual-parity-16.jpg)
 
 </details>
 

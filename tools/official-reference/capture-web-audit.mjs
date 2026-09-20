@@ -39,6 +39,7 @@ const minimumCaptureBytes = Number(process.env.MIN_CAPTURE_BYTES ?? 5_000);
 const skipExisting = (process.env.SKIP_EXISTING ?? 'false') === 'true';
 
 const kotlinGalleryFiles = {
+  swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],
@@ -93,10 +94,10 @@ if (!supportedAuditSources.includes(auditSource)) {
 }
 if (
   layoutOverride !== null &&
-  !['dagre', 'elk', 'cose-bilkent', 'tidy-tree'].includes(layoutOverride)
+  !['dagre', 'elk', 'cose-bilkent', 'tidy-tree', 'swimlane'].includes(layoutOverride)
 ) {
   throw new Error(
-    'CAPTURE_LAYOUT must be dagre, elk, cose-bilkent, or tidy-tree',
+    'CAPTURE_LAYOUT must be dagre, elk, cose-bilkent, tidy-tree, or swimlane',
   );
 }
 if (themeOverride !== null && !supportedThemes.includes(themeOverride)) {

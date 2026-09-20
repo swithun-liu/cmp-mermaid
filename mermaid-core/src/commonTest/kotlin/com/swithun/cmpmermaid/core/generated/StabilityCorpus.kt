@@ -4134,6 +4134,151 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_support_escalation",
+        diagramId = "swimlanes",
+        title = "Support escalation",
+        scenario = "Labelled handoffs cross customer, support, and engineering lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            swimlane-beta LR
+              subgraph Customer
+                request[Request service]
+                receive[Receive update]
+              end
+              subgraph Support
+                triage[Triage request]
+                answer[Send answer]
+              end
+              subgraph Engineering
+                investigate[Investigate issue]
+                fix[Prepare fix]
+              end
+              request --> triage
+              triage -->|Known issue| answer
+              triage -->|Needs code change| investigate
+              investigate --> fix --> answer
+              answer --> receive
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_vertical_cycle",
+        diagramId = "swimlanes",
+        title = "Vertical review cycle",
+        scenario = "A TB ownership layout includes a labelled retry cycle.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            swimlane-beta TB
+              subgraph Intake
+                collect[Collect request]
+                validate[Validate details]
+              end
+              subgraph Review
+                review[Review request]
+                decide{Ready?}
+              end
+              subgraph Delivery
+                schedule[Schedule work]
+                complete[Complete work]
+              end
+              collect --> validate --> review --> decide
+              decide -->|Yes| schedule --> complete
+              decide -->|No| collect
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_default_and_nested",
+        diagramId = "swimlanes",
+        title = "Default and nested lanes",
+        scenario = "A loose node and a nested team remain in their correct lane containers.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            swimlane-beta LR
+              external([External request])
+              subgraph Fulfillment
+                subgraph Warehouse
+                  pick[Pick items]
+                  pack[Pack order]
+                end
+                ship[Ship order]
+              end
+              external --> pick --> pack --> ship
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_configured_routes",
+        diagramId = "swimlanes",
+        title = "Configured routing",
+        scenario = "Scoped layering and line-hop settings exercise the alternate rank path.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              swimlane:
+                lineHops: gap
+                ignoreCrossLaneEdges: false
+                optimizeRanksByCrossings: true
+                automaticLaneOrdering: true
+            ---
+            swimlane-beta TB
+              subgraph Product
+                plan[Plan]
+              end
+              subgraph Engineering
+                build[Build]
+              end
+              subgraph Quality
+                verify[Verify]
+              end
+              plan --> build --> verify
+              plan --> verify
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_regional_accessibility",
+        diagramId = "swimlanes",
+        title = "Regional accessible handoff",
+        scenario = "Accessibility metadata, entities, styling, and multilingual labels share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Regional handoff
+            config:
+              theme: redux-color
+              look: neo
+            ---
+            swimlane-beta LR
+              accTitle: Regional handoff
+              accDescr: Work moves from Tokyo to Seoul and Sao Paulo.
+              subgraph jp [受付]
+                tokyo[東京 &amp; intake]
+              end
+              subgraph kr [검토]
+                seoul[서울 review]
+              end
+              subgraph br [São Paulo]
+                approve[Approve]
+              end
+              tokyo -->|검증| seoul --> approve
+              classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+              class approve active;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -8257,6 +8402,151 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_swimlanes_support_escalation",
+        diagramId = "swimlanes",
+        title = "Support escalation",
+        scenario = "Labelled handoffs cross customer, support, and engineering lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            swimlane-beta LR
+              subgraph Customer
+                request[Request service]
+                receive[Receive update]
+              end
+              subgraph Support
+                triage[Triage request]
+                answer[Send answer]
+              end
+              subgraph Engineering
+                investigate[Investigate issue]
+                fix[Prepare fix]
+              end
+              request --> triage
+              triage -->|Known issue| answer
+              triage -->|Needs code change| investigate
+              investigate --> fix --> answer
+              answer --> receive
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_vertical_cycle",
+        diagramId = "swimlanes",
+        title = "Vertical review cycle",
+        scenario = "A TB ownership layout includes a labelled retry cycle.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            swimlane-beta TB
+              subgraph Intake
+                collect[Collect request]
+                validate[Validate details]
+              end
+              subgraph Review
+                review[Review request]
+                decide{Ready?}
+              end
+              subgraph Delivery
+                schedule[Schedule work]
+                complete[Complete work]
+              end
+              collect --> validate --> review --> decide
+              decide -->|Yes| schedule --> complete
+              decide -->|No| collect
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_default_and_nested",
+        diagramId = "swimlanes",
+        title = "Default and nested lanes",
+        scenario = "A loose node and a nested team remain in their correct lane containers.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            swimlane-beta LR
+              external([External request])
+              subgraph Fulfillment
+                subgraph Warehouse
+                  pick[Pick items]
+                  pack[Pack order]
+                end
+                ship[Ship order]
+              end
+              external --> pick --> pack --> ship
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_configured_routes",
+        diagramId = "swimlanes",
+        title = "Configured routing",
+        scenario = "Scoped layering and line-hop settings exercise the alternate rank path.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              swimlane:
+                lineHops: gap
+                ignoreCrossLaneEdges: false
+                optimizeRanksByCrossings: true
+                automaticLaneOrdering: true
+            ---
+            swimlane-beta TB
+              subgraph Product
+                plan[Plan]
+              end
+              subgraph Engineering
+                build[Build]
+              end
+              subgraph Quality
+                verify[Verify]
+              end
+              plan --> build --> verify
+              plan --> verify
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_swimlanes_regional_accessibility",
+        diagramId = "swimlanes",
+        title = "Regional accessible handoff",
+        scenario = "Accessibility metadata, entities, styling, and multilingual labels share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Regional handoff
+            config:
+              theme: redux-color
+              look: neo
+            ---
+            swimlane-beta LR
+              accTitle: Regional handoff
+              accDescr: Work moves from Tokyo to Seoul and Sao Paulo.
+              subgraph jp [受付]
+                tokyo[東京 &amp; intake]
+              end
+              subgraph kr [검토]
+                seoul[서울 review]
+              end
+              subgraph br [São Paulo]
+                approve[Approve]
+              end
+              tokyo -->|검증| seoul --> approve
+              classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+              class approve active;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "prod_flowchart_orchestration_identity",
         diagramId = "flowchart",
         title = "Identity verification orchestration",
@@ -8441,6 +8731,222 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         """.trimIndent(),
         expectedTexts = listOf("Request", "Edge delivery"),
         features = setOf("advanced-shapes", "frontmatter-config"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_support_handoff",
+        diagramId = "swimlanes",
+        title = "Support escalation",
+        scenario = "A labelled handoff crosses customer, support, and engineering lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            swimlane-beta LR
+              subgraph Customer
+                request[Request service]
+                receive[Receive update]
+                close[Close request]
+              end
+              subgraph Support
+                triage[Triage request]
+                answer[Send answer]
+              end
+              subgraph Engineering
+                investigate[Investigate issue]
+                fix[Prepare fix]
+              end
+              request --> triage
+              triage -->|Known issue| answer
+              triage -->|Needs code change| investigate
+              investigate --> fix --> answer
+              answer --> receive --> close
+        """.trimIndent(),
+        expectedTexts = listOf("Request service", "Known issue", "Investigate issue"),
+        features = setOf("swimlane-beta-header", "directions", "top-level-lanes", "cross-lane-edges", "edge-labels"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_vertical_delivery",
+        diagramId = "swimlanes",
+        title = "Vertical delivery flow",
+        scenario = "Top-to-bottom ranks remain aligned across three ownership columns.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            swimlane-beta TB
+              subgraph Intake
+                collect[Collect request]
+                validate[Validate details]
+                notify[Notify owner]
+              end
+              subgraph Review
+                review[Review request]
+                decide{Ready?}
+              end
+              subgraph Delivery
+                schedule[Schedule work]
+                complete[Complete work]
+              end
+              collect --> validate --> notify --> review --> decide
+              decide -->|Yes| schedule --> complete
+              decide -->|No| collect
+        """.trimIndent(),
+        expectedTexts = listOf("Collect request", "Review request", "Complete work"),
+        features = setOf("directions", "top-level-lanes", "cross-lane-edges", "cycles"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_reverse_vertical",
+        diagramId = "swimlanes",
+        title = "Bottom-to-top incident recovery",
+        scenario = "BT direction mirrors rank progression while retaining lane ownership.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            swimlane-beta BT
+              subgraph Operations
+                detect[Detect]
+                confirm[Confirm]
+              end
+              subgraph Service
+                mitigate[Mitigate]
+                verify[Verify]
+              end
+              detect --> mitigate --> verify --> confirm
+              confirm -.-> detect
+        """.trimIndent(),
+        expectedTexts = listOf("Detect", "Mitigate", "Confirm"),
+        features = setOf("directions", "top-level-lanes", "cycles"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_reverse_horizontal",
+        diagramId = "swimlanes",
+        title = "Right-to-left approval",
+        scenario = "RL direction reverses process progression across horizontal lane strips.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            swimlane-beta RL
+              subgraph Author
+                submit[Submit]
+              end
+              subgraph Reviewer
+                decide{Approved?}
+              end
+              subgraph Publisher
+                publish[Publish]
+              end
+              submit --> decide
+              decide -->|Yes| publish
+              decide -->|No| submit
+        """.trimIndent(),
+        expectedTexts = listOf("Submit", "Approved?", "Publish"),
+        features = setOf("directions", "top-level-lanes", "edge-labels"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_default_lane",
+        diagramId = "swimlanes",
+        title = "Implicit and nested lanes",
+        scenario = "A loose node and nested warehouse remain in their respective lane containers.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            swimlane-beta LR
+              external([External request])
+              subgraph Processing
+                subgraph Warehouse
+                  validate{Validate}
+                  archive[(Archive)]
+                end
+              end
+              external --> validate --> archive
+        """.trimIndent(),
+        expectedTexts = listOf("External request", "Warehouse", "Archive"),
+        features = setOf("default-lane", "nested-subgraphs", "node-shapes", "cross-lane-edges"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_edge_semantics",
+        diagramId = "swimlanes",
+        title = "Edge semantics",
+        scenario = "Solid, dotted, thick, labelled, and marker edges cross ownership lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            swimlane-beta LR
+              subgraph Source
+                primary[Primary]
+                fallback[Fallback]
+              end
+              subgraph Target
+                approved[Approved]
+                rejected[Rejected]
+              end
+              primary ==>|Approved| approved
+              primary -.-> fallback
+              fallback --> rejected
+        """.trimIndent(),
+        expectedTexts = listOf("Primary", "Fallback", "Approved"),
+        features = setOf("cross-lane-edges", "edge-labels", "edge-patterns"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_configured_routing",
+        diagramId = "swimlanes",
+        title = "Configured and styled routing",
+        scenario = "Scoped layering, lane ordering, line hops, classes, and inline styles compose.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              swimlane:
+                lineHops: gap
+                ignoreCrossLaneEdges: false
+                optimizeRanksByCrossings: true
+                automaticLaneOrdering: true
+            ---
+            swimlane-beta TB
+              subgraph Product
+                plan[Plan]
+              end
+              subgraph Engineering
+                build[Build]
+              end
+              subgraph Quality
+                verify[Verify]
+              end
+              subgraph Operations
+                release[Release]
+              end
+              plan --> build --> verify --> release
+              plan --> verify
+              classDef attention fill:#fff2cc,stroke:#d6a500,color:#111;
+              class verify attention;
+              style release fill:#dcfce7,stroke:#15803d,color:#14532d
+        """.trimIndent(),
+        expectedTexts = listOf("Plan", "Build", "Verify", "Release"),
+        features = setOf("frontmatter-config", "line-hops", "cross-lane-edges", "classes-styles"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_swimlane_accessibility",
+        diagramId = "swimlanes",
+        title = "Accessible international handoff",
+        scenario = "Accessibility metadata and Unicode labels accompany a regional process.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            swimlane-beta LR
+              accTitle: Accessible support flow
+              accDescr: A request moves from intake to resolution.
+              subgraph jp [受付]
+                tokyo[東京]
+              end
+              subgraph kr [검토]
+                seoul[서울]
+              end
+              subgraph br [São Paulo]
+                approve[承認]
+              end
+              tokyo -->|검증| seoul --> approve
+        """.trimIndent(),
+        expectedTexts = listOf("受付", "검토", "São Paulo", "承認"),
+        features = setOf("accessibility", "unicode", "edge-labels", "top-level-lanes", "cross-lane-edges"),
     ),
     StabilityCorpusCase(
         id = "prod_xychart_mixed_vertical_api_capacity",
@@ -13381,6 +13887,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
     buildList {
         val kinds = listOf(
             "flowchart",
+            "swimlanes",
             "xychart",
             "quadrant",
             "timeline",
@@ -13453,6 +13960,7 @@ private fun addVisualParityVariation(
     ordinal: Int,
 ): String = when (kind) {
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
+    "swimlanes" -> appendFlowchartEvidence(source, evidenceId, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0

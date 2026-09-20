@@ -2,7 +2,7 @@
 
 ## Current State
 
-CMP Mermaid implements 25 of the 33 user-visible diagram families documented
+CMP Mermaid implements 26 of the 33 user-visible diagram families documented
 by Mermaid `12.0.0`. The source-controlled inventory is
 [`diagram-inventory.mjs`](../tools/official-reference/diagram-inventory.mjs);
 CI verifies it against Mermaid's 39 registered IDs and, when the pinned source
@@ -19,10 +19,10 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block |
-| Translation pending | Architecture, C4, Railroad, Swimlanes, TreeView, Use Case, Wardley Map, ZenUML |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes |
+| Translation pending | Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, ZenUML |
 
-The current 6,400-pair matrix covers all 25 implemented families with fresh
+The current 6,656-pair matrix covers all 26 implemented families with fresh
 replacement evidence. A Git Graph label paint-order defect was visible in the
 original 3,072-pair matrix and was not identified during the earlier review.
 That defect is now corrected and every implemented family has passed the
@@ -51,9 +51,9 @@ global label layers reports a `paint-order-occlusion` mismatch for
 Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
-All 25 implemented families have completed the replacement gate. Together they
-have 6,400 accepted same-source pairs:
-`5,654 automatic pass / 746 manually reviewed / 0 unresolved` across 400 reviewed contact
+All 26 implemented families have completed the replacement gate. Together they
+have 6,656 accepted same-source pairs:
+`5,850 automatic pass / 806 manually reviewed / 0 unresolved` across 416 reviewed contact
 sheets. The 60 ER reviews are text-position threshold findings, while the 19
 Journey reviews are benign line-segmentation differences for one complete long
 actor label. The four Requirement reviews are benign greedy cross-matches
@@ -70,7 +70,9 @@ for title/payload `text-segmentation`: Official uses one `foreignObject`, while
 Native uses separate bold-title and monospace-payload text elements. Block
 contributes 253 automatic passes and three manually accepted paint-order
 occlusion threshold reviews. Ishikawa, Cynefin, and Agentflow each contribute
-256 automatic passes. All
+256 automatic passes. Swimlanes contributes 196 automatic passes and 60
+manual acceptances for text-position differences along semantically
+equivalent orthogonal routes. All
 reviewed cases preserve expected text, hierarchy, shapes, colors, and edges,
 avoid clipping and paint-order defects, and were accepted by manual side-by-side review.
 Flowchart geometry ratios are `1.026-1.119` for width, `0.945-1.047` for height, and
@@ -105,6 +107,8 @@ Event Modeling ratios are `1.025-1.037`, `1.008-1.061`, and `0.998-1.132`,
 respectively.
 Block ratios are `0.970-1.281`, `0.856-1.078`, and `0.840-1.342`,
 respectively.
+Swimlanes ratios are `1.028-1.186`, `0.883-1.070`, and `0.899-1.551`,
+respectively.
 
 ## Expected Behavior
 
@@ -127,7 +131,7 @@ benefit, but a family is never marked Stable merely because its batch is done.
 1. Shared chart and partition foundations: Quadrant Chart, Timeline, Kanban,
    Sankey, Packet, Radar, Treemap, Venn.
 2. Shared graph and domain foundations: Agentflow and Event Modeling complete;
-   Block complete; Architecture, C4, TreeView, Use Case, and Swimlanes pending.
+   Block and Swimlanes complete; Architecture, C4, TreeView, and Use Case pending.
 3. Specialized renderers and grammars: Ishikawa and Cynefin complete;
    Wardley Map, Railroad (IR, EBNF, ABNF, PEG), and ZenUML pending.
 

@@ -3807,4 +3807,134 @@ agentflow-beta LR
   request --> create
 `,
   },
+  {
+    id: 'rc_swimlanes_support_escalation',
+    kind: 'swimlanes',
+    title: 'Support escalation',
+    scenario: 'Labelled handoffs cross customer, support, and engineering lanes.',
+    aspectRatio: 1.8,
+    source: String.raw`
+swimlane-beta LR
+  subgraph Customer
+    request[Request service]
+    receive[Receive update]
+  end
+  subgraph Support
+    triage[Triage request]
+    answer[Send answer]
+  end
+  subgraph Engineering
+    investigate[Investigate issue]
+    fix[Prepare fix]
+  end
+  request --> triage
+  triage -->|Known issue| answer
+  triage -->|Needs code change| investigate
+  investigate --> fix --> answer
+  answer --> receive
+`,
+  },
+  {
+    id: 'rc_swimlanes_vertical_cycle',
+    kind: 'swimlanes',
+    title: 'Vertical review cycle',
+    scenario: 'A TB ownership layout includes a labelled retry cycle.',
+    aspectRatio: 1.35,
+    source: String.raw`
+swimlane-beta TB
+  subgraph Intake
+    collect[Collect request]
+    validate[Validate details]
+  end
+  subgraph Review
+    review[Review request]
+    decide{Ready?}
+  end
+  subgraph Delivery
+    schedule[Schedule work]
+    complete[Complete work]
+  end
+  collect --> validate --> review --> decide
+  decide -->|Yes| schedule --> complete
+  decide -->|No| collect
+`,
+  },
+  {
+    id: 'rc_swimlanes_default_and_nested',
+    kind: 'swimlanes',
+    title: 'Default and nested lanes',
+    scenario: 'A loose node and a nested team remain in their correct lane containers.',
+    aspectRatio: 1.7,
+    source: String.raw`
+swimlane-beta LR
+  external([External request])
+  subgraph Fulfillment
+    subgraph Warehouse
+      pick[Pick items]
+      pack[Pack order]
+    end
+    ship[Ship order]
+  end
+  external --> pick --> pack --> ship
+`,
+  },
+  {
+    id: 'rc_swimlanes_configured_routes',
+    kind: 'swimlanes',
+    title: 'Configured routing',
+    scenario: 'Scoped layering and line-hop settings exercise the alternate rank path.',
+    aspectRatio: 1.8,
+    source: String.raw`
+---
+config:
+  swimlane:
+    lineHops: gap
+    ignoreCrossLaneEdges: false
+    optimizeRanksByCrossings: true
+    automaticLaneOrdering: true
+---
+swimlane-beta TB
+  subgraph Product
+    plan[Plan]
+  end
+  subgraph Engineering
+    build[Build]
+  end
+  subgraph Quality
+    verify[Verify]
+  end
+  plan --> build --> verify
+  plan --> verify
+`,
+  },
+  {
+    id: 'rc_swimlanes_regional_accessibility',
+    kind: 'swimlanes',
+    title: 'Regional accessible handoff',
+    scenario: 'Accessibility metadata, entities, styling, and multilingual labels share one diagram.',
+    aspectRatio: 1.8,
+    source: String.raw`
+---
+title: Regional handoff
+config:
+  theme: redux-color
+  look: neo
+---
+swimlane-beta LR
+  accTitle: Regional handoff
+  accDescr: Work moves from Tokyo to Seoul and Sao Paulo.
+  subgraph jp [受付]
+    tokyo[東京 &amp; intake]
+  end
+  subgraph kr [검토]
+    seoul[서울 review]
+  end
+  subgraph br [São Paulo]
+    approve[Approve]
+  end
+  tokyo -->|검증| seoul --> approve
+  classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
+  class approve active;
+`,
+  },
 ];

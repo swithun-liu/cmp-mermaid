@@ -3,6 +3,7 @@ import { cases as productionCases } from './production-corpus.mjs';
 
 export const kinds = [
   'flowchart',
+  'swimlanes',
   'xychart',
   'quadrant',
   'timeline',
@@ -106,6 +107,8 @@ function buildKindCases(kind) {
 function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
   switch (kind) {
     case 'flowchart':
+      return appendFlowchartEvidence(source, evidenceId, label);
+    case 'swimlanes':
       return appendFlowchartEvidence(source, evidenceId, label);
     case 'xychart':
       return replaceOrInsertTitle(source, 'xychart', label);

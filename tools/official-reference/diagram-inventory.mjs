@@ -100,7 +100,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('swimlanes', 'Swimlanes', 'swimlanes.md', ['swimlane'], [
     header('swimlane-beta', 'swimlane'),
-  ]),
+  ], true),
   family('timeline', 'Timeline', 'timeline.md', ['timeline'], [
     header('timeline', 'timeline'),
   ], true),

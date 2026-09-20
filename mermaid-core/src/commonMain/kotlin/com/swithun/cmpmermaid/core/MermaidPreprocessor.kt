@@ -350,6 +350,7 @@ internal object MermaidPreprocessor {
         val eventModeling = map.map("eventmodeling")
         val block = map.map("block")
         val agentflow = map.map("agentflow")
+        val swimlane = map.map("swimlane")
         val treemap = map.map("treemap")
         val venn = map.map("venn")
         val kanban = map.map("kanban")
@@ -577,12 +578,15 @@ internal object MermaidPreprocessor {
             return value
         }
 
-        fun lineHops(): MermaidElkLineHops? {
-            val scalar = elk?.node("lineHops") ?: return null
+        fun lineHops(
+            owner: YamlMap?,
+            path: String,
+        ): MermaidElkLineHops? {
+            val scalar = owner?.node("lineHops") ?: return null
             val value = (scalar as? YamlScalar)?.content?.lowercase()
                 ?: run {
                     readError = MermaidError.Configuration(
-                        "Mermaid $sourceName 'elk.lineHops' must be a boolean, 'arc', or 'gap'",
+                        "Mermaid $sourceName '$path' must be a boolean, 'arc', or 'gap'",
                     )
                     return null
                 }
@@ -592,7 +596,7 @@ internal object MermaidPreprocessor {
                 "gap" -> MermaidElkLineHops.Gap
                 else -> {
                     readError = MermaidError.Configuration(
-                        "Mermaid $sourceName 'elk.lineHops' must be a boolean, 'arc', or 'gap'",
+                        "Mermaid $sourceName '$path' must be a boolean, 'arc', or 'gap'",
                     )
                     null
                 }
@@ -685,6 +689,27 @@ internal object MermaidPreprocessor {
             float(agentflow, "wrappingWidth", "agentflow.wrappingWidth")
         val agentflowMinNodeWidth =
             float(agentflow, "minNodeWidth", "agentflow.minNodeWidth")
+        val swimlaneTheme = appearanceString(swimlane, "theme", "swimlane.theme")
+            ?.takeIf(USABLE_THEMES::contains)
+        val swimlaneLook = appearanceString(swimlane, "look", "swimlane.look")
+            ?.takeIf(USABLE_LOOKS::contains)
+        val swimlaneLayout = string(swimlane, "layout", "swimlane.layout")
+        val swimlaneLineHops = lineHops(swimlane, "swimlane.lineHops")
+        val swimlaneIgnoreCrossLaneEdges = boolean(
+            swimlane,
+            "ignoreCrossLaneEdges",
+            "swimlane.ignoreCrossLaneEdges",
+        )
+        val swimlaneOptimizeRanksByCrossings = boolean(
+            swimlane,
+            "optimizeRanksByCrossings",
+            "swimlane.optimizeRanksByCrossings",
+        )
+        val swimlaneAutomaticLaneOrdering = boolean(
+            swimlane,
+            "automaticLaneOrdering",
+            "swimlane.automaticLaneOrdering",
+        )
         listOf(
             "agentflow.titleTopMargin" to agentflowTitleTopMargin,
             "agentflow.diagramPadding" to agentflowDiagramPadding,
@@ -1577,7 +1602,7 @@ internal object MermaidPreprocessor {
         )
         val elkPreset = enumString(elk, "preset", "elk.preset", ELK_PRESETS)
         val elkStraightenEdges = boolean(elk, "straightenEdges", "elk.straightenEdges")
-        val elkLineHops = lineHops()
+        val elkLineHops = lineHops(elk, "elk.lineHops")
         val elkLayeringStrategy = enumString(
             elk,
             "layeringStrategy",
@@ -1726,6 +1751,17 @@ internal object MermaidPreprocessor {
                         rankSpacing = agentflowRankSpacing,
                         wrappingWidth = agentflowWrappingWidth,
                         minNodeWidth = agentflowMinNodeWidth,
+                    )
+                },
+                swimlane = swimlane?.let {
+                    MermaidSwimlaneConfigOverride(
+                        theme = swimlaneTheme,
+                        look = swimlaneLook,
+                        layout = swimlaneLayout,
+                        lineHops = swimlaneLineHops,
+                        ignoreCrossLaneEdges = swimlaneIgnoreCrossLaneEdges,
+                        optimizeRanksByCrossings = swimlaneOptimizeRanksByCrossings,
+                        automaticLaneOrdering = swimlaneAutomaticLaneOrdering,
                     )
                 },
                 pieTextPosition = pieTextPosition,
@@ -2083,6 +2119,7 @@ internal data class MermaidConfigOverride(
     val journey: MermaidJourneyConfigOverride? = null,
     val timeline: MermaidTimelineConfigOverride? = null,
     val agentflow: MermaidAgentflowConfigOverride? = null,
+    val swimlane: MermaidSwimlaneConfigOverride? = null,
     val pieTextPosition: Float? = null,
     val pieDonutHole: Float? = null,
     val pieLegendPosition: String? = null,
@@ -2177,6 +2214,11 @@ internal data class MermaidConfigOverride(
             overrides.agentflow != null ->
                 agentflow?.merge(overrides.agentflow) ?: overrides.agentflow
             else -> agentflow
+        },
+        swimlane = when {
+            overrides.swimlane != null ->
+                swimlane?.merge(overrides.swimlane) ?: overrides.swimlane
+            else -> swimlane
         },
         pieTextPosition = overrides.pieTextPosition ?: pieTextPosition,
         pieDonutHole = overrides.pieDonutHole ?: pieDonutHole,
@@ -2337,6 +2379,7 @@ internal data class MermaidConfigOverride(
                 journey = journey?.applyTo(options.journey) ?: options.journey,
                 timeline = timeline?.applyTo(options.timeline) ?: options.timeline,
                 agentflow = agentflow?.applyTo(options.agentflow) ?: options.agentflow,
+                swimlane = swimlane?.applyTo(options.swimlane) ?: options.swimlane,
                 pieTextPosition = pieTextPosition ?: options.pieTextPosition,
                 pieDonutHole = pieDonutHole ?: options.pieDonutHole,
                 pieLegendPosition = pieLegendPosition ?: options.pieLegendPosition,
@@ -2416,6 +2459,42 @@ internal data class MermaidAgentflowConfigOverride(
         rankSpacing = rankSpacing ?: options.rankSpacing,
         wrappingWidth = wrappingWidth ?: options.wrappingWidth,
         minNodeWidth = minNodeWidth ?: options.minNodeWidth,
+    )
+}
+
+internal data class MermaidSwimlaneConfigOverride(
+    val theme: String? = null,
+    val look: String? = null,
+    val layout: String? = null,
+    val lineHops: MermaidElkLineHops? = null,
+    val ignoreCrossLaneEdges: Boolean? = null,
+    val optimizeRanksByCrossings: Boolean? = null,
+    val automaticLaneOrdering: Boolean? = null,
+) {
+    fun merge(overrides: MermaidSwimlaneConfigOverride): MermaidSwimlaneConfigOverride =
+        MermaidSwimlaneConfigOverride(
+            theme = overrides.theme ?: theme,
+            look = overrides.look ?: look,
+            layout = overrides.layout ?: layout,
+            lineHops = overrides.lineHops ?: lineHops,
+            ignoreCrossLaneEdges =
+                overrides.ignoreCrossLaneEdges ?: ignoreCrossLaneEdges,
+            optimizeRanksByCrossings =
+                overrides.optimizeRanksByCrossings ?: optimizeRanksByCrossings,
+            automaticLaneOrdering =
+                overrides.automaticLaneOrdering ?: automaticLaneOrdering,
+        )
+
+    fun applyTo(options: MermaidSwimlaneOptions): MermaidSwimlaneOptions = options.copy(
+        theme = theme ?: options.theme,
+        look = look ?: options.look,
+        layout = layout ?: options.layout,
+        lineHops = lineHops ?: options.lineHops,
+        ignoreCrossLaneEdges = ignoreCrossLaneEdges ?: options.ignoreCrossLaneEdges,
+        optimizeRanksByCrossings =
+            optimizeRanksByCrossings ?: options.optimizeRanksByCrossings,
+        automaticLaneOrdering =
+            automaticLaneOrdering ?: options.automaticLaneOrdering,
     )
 }
 

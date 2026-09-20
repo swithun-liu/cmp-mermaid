@@ -309,6 +309,16 @@ data class MermaidAgentflowOptions(
     val minNodeWidth: Float = 120f,
 )
 
+data class MermaidSwimlaneOptions(
+    val theme: String? = null,
+    val look: String? = null,
+    val layout: String = "swimlane",
+    val lineHops: MermaidElkLineHops = MermaidElkLineHops.Arc,
+    val ignoreCrossLaneEdges: Boolean = true,
+    val optimizeRanksByCrossings: Boolean = true,
+    val automaticLaneOrdering: Boolean = false,
+)
+
 data class MermaidRenderOptions(
     val layout: String = "dagre",
     val classLayout: String? = null,
@@ -376,6 +386,7 @@ data class MermaidRenderOptions(
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
     val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val agentflow: MermaidAgentflowOptions = MermaidAgentflowOptions(),
+    val swimlane: MermaidSwimlaneOptions = MermaidSwimlaneOptions(),
     val curve: String = "basis",
     val fontSize: Float? = null,
     val fontFamily: String? = null,

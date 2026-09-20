@@ -647,6 +647,46 @@ internal val vennDiagramDocsSpec = DiagramDocsSpec(
     initialTheme = MermaidThemePreset.ReduxColor,
 )
 
+internal val swimlaneDiagramDocsSpec = DiagramDocsSpec(
+    id = "swimlanes",
+    title = "Swimlanes",
+    syntaxTitle = "Swimlane diagrams - Basic Syntax",
+    description = "Arrange a Flowchart process into ownership lanes with aligned ranks, " +
+        "orthogonal routing, lane-aware ordering, and configurable line hops.",
+    documentationUrl = "https://mermaid.js.org/syntax/swimlanes.html",
+    galleryTitle = "Swimlane demo gallery",
+    cases = swimlaneDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 16f / 9f,
+        )
+    },
+    syntaxLessons = lessons(
+        swimlaneDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 16f / 9f,
+            )
+        },
+        listOf(
+            "Top-level subgraphs become lanes while nested subgraphs remain regular groups.",
+            "Loose nodes are collected into an implicit default lane.",
+            "TB, BT, LR, and RL directions transform both lanes and routed edges.",
+            "Cross-lane edges use orthogonal routing, shape clipping, and optional line hops.",
+            "Scoped Swimlane configuration controls layering, lane ordering, theme, and look.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.ReduxColor,
+    nativeOptions = MermaidRenderOptions(layout = "swimlane"),
+    officialLayout = "swimlane",
+)
+
 internal val ishikawaDiagramDocsSpec = DiagramDocsSpec(
     id = "ishikawa",
     title = "Ishikawa",

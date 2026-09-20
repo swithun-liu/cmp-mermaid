@@ -19,6 +19,23 @@ export const requiredFeaturesByKind = {
     'frontmatter-config',
     'unicode',
   ],
+  swimlanes: [
+    'swimlane-beta-header',
+    'directions',
+    'top-level-lanes',
+    'default-lane',
+    'nested-subgraphs',
+    'node-shapes',
+    'cross-lane-edges',
+    'edge-labels',
+    'edge-patterns',
+    'cycles',
+    'classes-styles',
+    'frontmatter-config',
+    'line-hops',
+    'accessibility',
+    'unicode',
+  ],
   xychart: [
     'vertical',
     'horizontal',
@@ -771,6 +788,238 @@ flowchart LR
 `,
     expectedTexts: (value) => [value.labels[0], value.labels[4]],
   }),
+];
+
+const swimlaneCases = [
+  {
+    id: 'prod_swimlane_support_handoff',
+    kind: 'swimlanes',
+    title: 'Support escalation',
+    scenario: 'A labelled handoff crosses customer, support, and engineering lanes.',
+    aspectRatio: 1.8,
+    features: ['swimlane-beta-header', 'directions', 'top-level-lanes', 'cross-lane-edges', 'edge-labels'],
+    expectedTexts: ['Request service', 'Known issue', 'Investigate issue'],
+    source: String.raw`
+swimlane-beta LR
+  subgraph Customer
+    request[Request service]
+    receive[Receive update]
+    close[Close request]
+  end
+  subgraph Support
+    triage[Triage request]
+    answer[Send answer]
+  end
+  subgraph Engineering
+    investigate[Investigate issue]
+    fix[Prepare fix]
+  end
+  request --> triage
+  triage -->|Known issue| answer
+  triage -->|Needs code change| investigate
+  investigate --> fix --> answer
+  answer --> receive --> close
+`,
+  },
+  {
+    id: 'prod_swimlane_vertical_delivery',
+    kind: 'swimlanes',
+    title: 'Vertical delivery flow',
+    scenario: 'Top-to-bottom ranks remain aligned across three ownership columns.',
+    aspectRatio: 1.35,
+    features: ['directions', 'top-level-lanes', 'cross-lane-edges', 'cycles'],
+    expectedTexts: ['Collect request', 'Review request', 'Complete work'],
+    source: String.raw`
+swimlane-beta TB
+  subgraph Intake
+    collect[Collect request]
+    validate[Validate details]
+    notify[Notify owner]
+  end
+  subgraph Review
+    review[Review request]
+    decide{Ready?}
+  end
+  subgraph Delivery
+    schedule[Schedule work]
+    complete[Complete work]
+  end
+  collect --> validate --> notify --> review --> decide
+  decide -->|Yes| schedule --> complete
+  decide -->|No| collect
+`,
+  },
+  {
+    id: 'prod_swimlane_reverse_vertical',
+    kind: 'swimlanes',
+    title: 'Bottom-to-top incident recovery',
+    scenario: 'BT direction mirrors rank progression while retaining lane ownership.',
+    aspectRatio: 1.4,
+    features: ['directions', 'top-level-lanes', 'cycles'],
+    expectedTexts: ['Detect', 'Mitigate', 'Confirm'],
+    source: String.raw`
+swimlane-beta BT
+  subgraph Operations
+    detect[Detect]
+    confirm[Confirm]
+  end
+  subgraph Service
+    mitigate[Mitigate]
+    verify[Verify]
+  end
+  detect --> mitigate --> verify --> confirm
+  confirm -.-> detect
+`,
+  },
+  {
+    id: 'prod_swimlane_reverse_horizontal',
+    kind: 'swimlanes',
+    title: 'Right-to-left approval',
+    scenario: 'RL direction reverses process progression across horizontal lane strips.',
+    aspectRatio: 1.8,
+    features: ['directions', 'top-level-lanes', 'edge-labels'],
+    expectedTexts: ['Submit', 'Approved?', 'Publish'],
+    source: String.raw`
+swimlane-beta RL
+  subgraph Author
+    submit[Submit]
+  end
+  subgraph Reviewer
+    decide{Approved?}
+  end
+  subgraph Publisher
+    publish[Publish]
+  end
+  submit --> decide
+  decide -->|Yes| publish
+  decide -->|No| submit
+`,
+  },
+  {
+    id: 'prod_swimlane_default_lane',
+    kind: 'swimlanes',
+    title: 'Implicit and nested lanes',
+    scenario: 'A loose node and nested warehouse remain in their respective lane containers.',
+    aspectRatio: 1.6,
+    features: [
+      'default-lane',
+      'nested-subgraphs',
+      'node-shapes',
+      'cross-lane-edges',
+    ],
+    expectedTexts: ['External request', 'Warehouse', 'Archive'],
+    source: String.raw`
+swimlane-beta LR
+  external([External request])
+  subgraph Processing
+    subgraph Warehouse
+      validate{Validate}
+      archive[(Archive)]
+    end
+  end
+  external --> validate --> archive
+`,
+  },
+  {
+    id: 'prod_swimlane_edge_semantics',
+    kind: 'swimlanes',
+    title: 'Edge semantics',
+    scenario: 'Solid, dotted, thick, labelled, and marker edges cross ownership lanes.',
+    aspectRatio: 1.9,
+    features: ['cross-lane-edges', 'edge-labels', 'edge-patterns'],
+    expectedTexts: ['Primary', 'Fallback', 'Approved'],
+    source: String.raw`
+swimlane-beta LR
+  subgraph Source
+    primary[Primary]
+    fallback[Fallback]
+  end
+  subgraph Target
+    approved[Approved]
+    rejected[Rejected]
+  end
+  primary ==>|Approved| approved
+  primary -.-> fallback
+  fallback --> rejected
+`,
+  },
+  {
+    id: 'prod_swimlane_configured_routing',
+    kind: 'swimlanes',
+    title: 'Configured and styled routing',
+    scenario: 'Scoped layering, lane ordering, line hops, classes, and inline styles compose.',
+    aspectRatio: 1.8,
+    features: [
+      'frontmatter-config',
+      'line-hops',
+      'cross-lane-edges',
+      'classes-styles',
+    ],
+    expectedTexts: ['Plan', 'Build', 'Verify', 'Release'],
+    source: String.raw`
+---
+config:
+  swimlane:
+    lineHops: gap
+    ignoreCrossLaneEdges: false
+    optimizeRanksByCrossings: true
+    automaticLaneOrdering: true
+---
+swimlane-beta TB
+  subgraph Product
+    plan[Plan]
+  end
+  subgraph Engineering
+    build[Build]
+  end
+  subgraph Quality
+    verify[Verify]
+  end
+  subgraph Operations
+    release[Release]
+  end
+  plan --> build --> verify --> release
+  plan --> verify
+  classDef attention fill:#fff2cc,stroke:#d6a500,color:#111;
+  class verify attention;
+  style release fill:#dcfce7,stroke:#15803d,color:#14532d
+`,
+  },
+  {
+    id: 'prod_swimlane_accessibility',
+    kind: 'swimlanes',
+    title: 'Accessible international handoff',
+    scenario: 'Accessibility metadata and Unicode labels accompany a regional process.',
+    aspectRatio: 1.8,
+    features: [
+      'accessibility',
+      'unicode',
+      'edge-labels',
+      'top-level-lanes',
+      'cross-lane-edges',
+    ],
+    expectedTexts: [
+      '受付',
+      '검토',
+      'São Paulo',
+      '承認',
+    ],
+    source: String.raw`
+swimlane-beta LR
+  accTitle: Accessible support flow
+  accDescr: A request moves from intake to resolution.
+  subgraph jp [受付]
+    tokyo[東京]
+  end
+  subgraph kr [검토]
+    seoul[서울]
+  end
+  subgraph br [São Paulo]
+    approve[承認]
+  end
+  tokyo -->|검증| seoul --> approve
+`,
+  },
 ];
 
 const xyChartCases = [
@@ -5783,6 +6032,7 @@ kanban
 
 export const conformanceCases = [
   ...flowchartCases,
+  ...swimlaneCases,
   ...xyChartCases,
   ...quadrantCases,
   ...timelineCases,

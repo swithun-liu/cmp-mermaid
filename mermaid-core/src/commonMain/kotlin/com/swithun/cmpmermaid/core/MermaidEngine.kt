@@ -21,6 +21,7 @@ import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
 import com.swithun.cmpmermaid.core.sankey.SankeyPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
 import com.swithun.cmpmermaid.core.statediagram.StatePlugin
+import com.swithun.cmpmermaid.core.swimlane.SwimlanePlugin
 import com.swithun.cmpmermaid.core.timeline.TimelinePlugin
 import com.swithun.cmpmermaid.core.treemap.TreemapPlugin
 import com.swithun.cmpmermaid.core.venn.VennPlugin
@@ -68,6 +69,7 @@ class MermaidEngine(
         IshikawaPlugin(),
         CynefinPlugin(),
         EventModelingPlugin(),
+        SwimlanePlugin(),
         TreemapPlugin(),
         VennPlugin(),
         TimelinePlugin(),
@@ -133,6 +135,19 @@ class MermaidEngine(
                     wrappingWidth = agentflow.wrappingWidth,
                     minNodeWidth = agentflow.minNodeWidth,
                     flowchartPadding = 8f,
+                )
+            }
+            header == "swimlane-beta" -> resolvedOptions.swimlane.let { swimlane ->
+                resolvedOptions.copy(
+                    themeName = swimlane.theme
+                        ?: resolvedOptions.themeName
+                        ?: MermaidThemePreset.ReduxColor.configName.takeIf {
+                            context.theme == MermaidTheme.FlowchartDefault
+                        },
+                    look = swimlane.look ?: resolvedOptions.look,
+                    layout = preprocessed.config.swimlane?.layout
+                        ?: preprocessed.config.layout
+                        ?: swimlane.layout,
                 )
             }
             header == "venn-beta" &&

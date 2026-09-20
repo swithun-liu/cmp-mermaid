@@ -100,6 +100,7 @@ private enum class DebugScreen {
     Sankey,
     Treemap,
     Venn,
+    Swimlanes,
     Ishikawa,
     Cynefin,
     Block,
@@ -242,6 +243,12 @@ private val destinations = listOf(
         DebugScreen.Venn,
         vennDiagramDocsSpec,
         "Area-proportional set relationships with unions and nested text",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Swimlanes,
+        swimlaneDiagramDocsSpec,
+        "Lane-aware process ownership with orthogonal cross-lane routing",
         DiagramStability.Beta,
     ),
     DiagramDestination(

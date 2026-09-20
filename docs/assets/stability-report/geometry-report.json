@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T17:23:27.707Z",
+  "generatedAt": "2026-09-20T18:46:50.511Z",
   "inputDirectory": "multiple per-family production capture directories",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 327,
+  "caseCount": 340,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -19477,6 +19477,773 @@
       "widthRatio": 1.0502692998204668,
       "heightRatio": 0.9838709677419355,
       "inkRatio": 1.351703052743167
+    },
+    {
+      "id": "rc_swimlanes_support_escalation",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 252154,
+        "inkRatio": 0.23347592592592592,
+        "contentBounds": {
+          "x": 14,
+          "y": 185,
+          "width": 1172,
+          "height": 530
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 203780,
+        "inkRatio": 0.18868518518518518,
+        "contentBounds": {
+          "x": 34,
+          "y": 162,
+          "width": 1132,
+          "height": 576
+        }
+      },
+      "widthRatio": 1.0353356890459364,
+      "heightRatio": 0.9201388888888888,
+      "inkRatio": 1.2373834527431544
+    },
+    {
+      "id": "rc_swimlanes_vertical_cycle",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 325779,
+        "inkRatio": 0.30164722222222223,
+        "contentBounds": {
+          "x": 86,
+          "y": 18,
+          "width": 1028,
+          "height": 864
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 280856,
+        "inkRatio": 0.26005185185185187,
+        "contentBounds": {
+          "x": 92,
+          "y": 41,
+          "width": 1016,
+          "height": 818
+        }
+      },
+      "widthRatio": 1.0118110236220472,
+      "heightRatio": 1.0562347188264058,
+      "inkRatio": 1.1599502948130003
+    },
+    {
+      "id": "rc_swimlanes_default_and_nested",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 186560,
+        "inkRatio": 0.17274074074074075,
+        "contentBounds": {
+          "x": 13,
+          "y": 300,
+          "width": 1174,
+          "height": 300
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 196525,
+        "inkRatio": 0.1819675925925926,
+        "contentBounds": {
+          "x": 32,
+          "y": 288,
+          "width": 1136,
+          "height": 324
+        }
+      },
+      "widthRatio": 1.033450704225352,
+      "heightRatio": 0.9259259259259259,
+      "inkRatio": 0.9492939829538227
+    },
+    {
+      "id": "rc_swimlanes_configured_routes",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 184195,
+        "inkRatio": 0.17055092592592594,
+        "contentBounds": {
+          "x": 19,
+          "y": 225,
+          "width": 1162,
+          "height": 450
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 175958,
+        "inkRatio": 0.16292407407407408,
+        "contentBounds": {
+          "x": 44,
+          "y": 224,
+          "width": 1112,
+          "height": 452
+        }
+      },
+      "widthRatio": 1.0449640287769784,
+      "heightRatio": 0.995575221238938,
+      "inkRatio": 1.0468123074824673
+    },
+    {
+      "id": "rc_swimlanes_regional_accessibility",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 261952,
+        "inkRatio": 0.24254814814814815,
+        "contentBounds": {
+          "x": 99,
+          "y": 22,
+          "width": 1002,
+          "height": 861
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 240279,
+        "inkRatio": 0.22248055555555554,
+        "contentBounds": {
+          "x": 155,
+          "y": 41,
+          "width": 890,
+          "height": 818
+        }
+      },
+      "widthRatio": 1.1258426966292134,
+      "heightRatio": 1.0525672371638142,
+      "inkRatio": 1.090199309968828
+    },
+    {
+      "id": "prod_swimlane_support_handoff",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 181714,
+        "inkRatio": 0.1682537037037037,
+        "contentBounds": {
+          "x": 12,
+          "y": 263,
+          "width": 1176,
+          "height": 374
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 150056,
+        "inkRatio": 0.13894074074074075,
+        "contentBounds": {
+          "x": 28,
+          "y": 245,
+          "width": 1144,
+          "height": 410
+        }
+      },
+      "widthRatio": 1.027972027972028,
+      "heightRatio": 0.9121951219512195,
+      "inkRatio": 1.2109745694940555
+    },
+    {
+      "id": "prod_swimlane_vertical_delivery",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 286460,
+        "inkRatio": 0.2652407407407407,
+        "contentBounds": {
+          "x": 152,
+          "y": 17,
+          "width": 896,
+          "height": 866
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 252579,
+        "inkRatio": 0.23386944444444444,
+        "contentBounds": {
+          "x": 155,
+          "y": 38,
+          "width": 890,
+          "height": 824
+        }
+      },
+      "widthRatio": 1.006741573033708,
+      "heightRatio": 1.0509708737864079,
+      "inkRatio": 1.1341402095977893
+    },
+    {
+      "id": "prod_swimlane_reverse_vertical",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 59001,
+        "inkRatio": 0.05463055555555556,
+        "contentBounds": {
+          "x": 25,
+          "y": 218,
+          "width": 1150,
+          "height": 464
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 56706,
+        "inkRatio": 0.052505555555555555,
+        "contentBounds": {
+          "x": 57,
+          "y": 221,
+          "width": 1086,
+          "height": 458
+        }
+      },
+      "widthRatio": 1.0589318600368325,
+      "heightRatio": 1.0131004366812226,
+      "inkRatio": 1.0404719077346314
+    },
+    {
+      "id": "prod_swimlane_reverse_horizontal",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 219413,
+        "inkRatio": 0.2031601851851852,
+        "contentBounds": {
+          "x": 244,
+          "y": 18,
+          "width": 712,
+          "height": 864
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 136876,
+        "inkRatio": 0.12673703703703704,
+        "contentBounds": {
+          "x": 285,
+          "y": 41,
+          "width": 630,
+          "height": 819
+        }
+      },
+      "widthRatio": 1.1301587301587301,
+      "heightRatio": 1.054945054945055,
+      "inkRatio": 1.6030056401414419
+    },
+    {
+      "id": "prod_swimlane_default_lane",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 333867,
+        "inkRatio": 0.3091361111111111,
+        "contentBounds": {
+          "x": 93,
+          "y": 22,
+          "width": 1014,
+          "height": 856
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 287699,
+        "inkRatio": 0.26638796296296297,
+        "contentBounds": {
+          "x": 138,
+          "y": 50,
+          "width": 924,
+          "height": 800
+        }
+      },
+      "widthRatio": 1.0974025974025974,
+      "heightRatio": 1.07,
+      "inkRatio": 1.1604732724131819
+    },
+    {
+      "id": "prod_swimlane_edge_semantics",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 20155,
+        "inkRatio": 0.018662037037037036,
+        "contentBounds": {
+          "x": 14,
+          "y": 293,
+          "width": 1172,
+          "height": 314
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 21725,
+        "inkRatio": 0.02011574074074074,
+        "contentBounds": {
+          "x": 34,
+          "y": 278,
+          "width": 1132,
+          "height": 344
+        }
+      },
+      "widthRatio": 1.0353356890459364,
+      "heightRatio": 0.9127906976744186,
+      "inkRatio": 0.9277330264672037
+    },
+    {
+      "id": "prod_swimlane_configured_routing",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 157680,
+        "inkRatio": 0.146,
+        "contentBounds": {
+          "x": 16,
+          "y": 228,
+          "width": 1168,
+          "height": 444
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 155342,
+        "inkRatio": 0.14383518518518518,
+        "contentBounds": {
+          "x": 37,
+          "y": 225,
+          "width": 1126,
+          "height": 450
+        }
+      },
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 0.9866666666666667,
+      "inkRatio": 1.0150506624093936
+    },
+    {
+      "id": "prod_swimlane_accessibility",
+      "kind": "swimlanes",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 283706,
+        "inkRatio": 0.2626907407407407,
+        "contentBounds": {
+          "x": 70,
+          "y": 18,
+          "width": 1060,
+          "height": 864
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 227233,
+        "inkRatio": 0.21040092592592594,
+        "contentBounds": {
+          "x": 155,
+          "y": 41,
+          "width": 890,
+          "height": 818
+        }
+      },
+      "widthRatio": 1.1910112359550562,
+      "heightRatio": 1.0562347188264058,
+      "inkRatio": 1.2485246421074403
     }
   ]
 }

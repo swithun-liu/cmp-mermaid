@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-20T17:23:30.748Z",
-  "caseCount": 327,
+  "generatedAt": "2026-09-20T18:46:55.837Z",
+  "caseCount": 340,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -7341,6 +7341,287 @@
       "nativeSha256": "721c5e1f4f99c06631cbc8926dca177926f9fadd5a512c3bc7332ddcab08489f",
       "officialSha256": "e678cd90f8cf110cac96304357b99340a5bf41a36321215d11f23f87434b6ded",
       "sourceSha256": "704d918eefc64c26ecd28a3fb5db84d591fb5ad03b955d559291fb1c03ff0c3e"
+    },
+    {
+      "id": "rc_swimlanes_support_escalation",
+      "kind": "swimlanes",
+      "title": "Support escalation",
+      "scenario": "Labelled handoffs cross customer, support, and engineering lanes.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_swimlanes_support_escalation_native.png",
+      "officialFile": "rc_swimlanes_support_escalation_official.png",
+      "nativeBytes": 23549,
+      "officialBytes": 25833,
+      "nativeSha256": "3e44e3b65e96257f8ab1c66f15b700a9e0157fc0ff6927f65eaca0751db0135d",
+      "officialSha256": "309fcb3bd311b5d5966734970c6a9edd1389ff2dd05be14252a570174ca164f9",
+      "sourceSha256": "3e5764d39f1a6902f5eb339273c9f14d8c05066fd46c92a15fa2c0bd7ae53231"
+    },
+    {
+      "id": "rc_swimlanes_vertical_cycle",
+      "kind": "swimlanes",
+      "title": "Vertical review cycle",
+      "scenario": "A TB ownership layout includes a labelled retry cycle.",
+      "aspectRatio": 1.35,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_swimlanes_vertical_cycle_native.png",
+      "officialFile": "rc_swimlanes_vertical_cycle_official.png",
+      "nativeBytes": 34145,
+      "officialBytes": 33958,
+      "nativeSha256": "986839a5809757f6b289d5d175ea5785787ba5f07c630721a9233eb3992838c8",
+      "officialSha256": "fae146cfa33abf4aa65343cb9078fce16e846c59364e359ac90a98aae7550792",
+      "sourceSha256": "774ad9e925c92f15b33106ff0e9bad8f5c19af9700d5fb7abde13d9c1580bcb4"
+    },
+    {
+      "id": "rc_swimlanes_default_and_nested",
+      "kind": "swimlanes",
+      "title": "Default and nested lanes",
+      "scenario": "A loose node and a nested team remain in their correct lane containers.",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_swimlanes_default_and_nested_native.png",
+      "officialFile": "rc_swimlanes_default_and_nested_official.png",
+      "nativeBytes": 15075,
+      "officialBytes": 16785,
+      "nativeSha256": "c44ee8c1af196bf0f37c3b159db91e68d6bdc353e49e529f237459c7ccea8ba5",
+      "officialSha256": "9daf69181d6807bb3aa9009e0b3e352e156c2bbc2d87da97dfbac9e4c6ee2257",
+      "sourceSha256": "d4bc43d1c36a58bddd8299f5a52a5267ec637ee871b7427c8e4ebac86518fe8f"
+    },
+    {
+      "id": "rc_swimlanes_configured_routes",
+      "kind": "swimlanes",
+      "title": "Configured routing",
+      "scenario": "Scoped layering and line-hop settings exercise the alternate rank path.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_swimlanes_configured_routes_native.png",
+      "officialFile": "rc_swimlanes_configured_routes_official.png",
+      "nativeBytes": 18053,
+      "officialBytes": 17474,
+      "nativeSha256": "d8de61b1f9992a4cb929606bb42277d16c5b53e08fea800f124fadfe1b98303a",
+      "officialSha256": "b5a18245c4ffe43d00883e3214bcf97923304059b4502cf361d3c95b2beb74e5",
+      "sourceSha256": "209584916382a4f9a782e8a7ea3e0fc46a1ab34f6489825e3fbf9e315c010104"
+    },
+    {
+      "id": "rc_swimlanes_regional_accessibility",
+      "kind": "swimlanes",
+      "title": "Regional accessible handoff",
+      "scenario": "Accessibility metadata, entities, styling, and multilingual labels share one diagram.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_swimlanes_regional_accessibility_native.png",
+      "officialFile": "rc_swimlanes_regional_accessibility_official.png",
+      "nativeBytes": 22328,
+      "officialBytes": 23233,
+      "nativeSha256": "d55ccbef9c29d8c9f44ad3972e05c7c144e35b3f82ec29f6ab9d15b69bf9808e",
+      "officialSha256": "8f2c5b9ba4017a5c2fee195b4cbed26e3452a5438cc3ce64b5a3db0dff76c1c8",
+      "sourceSha256": "3aac54357216c6563bd1843b059ffb9fbcd0dd47abaaea9cb8ad8ddaee22eff9"
+    },
+    {
+      "id": "prod_swimlane_support_handoff",
+      "kind": "swimlanes",
+      "title": "Support escalation",
+      "scenario": "A labelled handoff crosses customer, support, and engineering lanes.",
+      "aspectRatio": 1.8,
+      "features": [
+        "swimlane-beta-header",
+        "directions",
+        "top-level-lanes",
+        "cross-lane-edges",
+        "edge-labels"
+      ],
+      "expectedTexts": [
+        "Request service",
+        "Known issue",
+        "Investigate issue"
+      ],
+      "nativeFile": "prod_swimlane_support_handoff_native.png",
+      "officialFile": "prod_swimlane_support_handoff_official.png",
+      "nativeBytes": 18255,
+      "officialBytes": 20756,
+      "nativeSha256": "4324f92305c1c96895b345459e21472c9d7fe81b620f45292ce967388c82b13d",
+      "officialSha256": "789ce8246cfb6e7354c7c8219a06952c2223deb13a28616e5df3b52391b60c6b",
+      "sourceSha256": "2cbe97d53d027b91444c6708fd60711b1ed664888cecb4e775718b45c08b22c1"
+    },
+    {
+      "id": "prod_swimlane_vertical_delivery",
+      "kind": "swimlanes",
+      "title": "Vertical delivery flow",
+      "scenario": "Top-to-bottom ranks remain aligned across three ownership columns.",
+      "aspectRatio": 1.35,
+      "features": [
+        "directions",
+        "top-level-lanes",
+        "cross-lane-edges",
+        "cycles"
+      ],
+      "expectedTexts": [
+        "Collect request",
+        "Review request",
+        "Complete work"
+      ],
+      "nativeFile": "prod_swimlane_vertical_delivery_native.png",
+      "officialFile": "prod_swimlane_vertical_delivery_official.png",
+      "nativeBytes": 34572,
+      "officialBytes": 32779,
+      "nativeSha256": "ec7f2a52ad5d37e628f21ba6b8b6e4cd4855b94d40799f421d38103e125e4dac",
+      "officialSha256": "459d24a5627c00f8efcb668aadceb1f3f8c211a5253324ece6de9e4583617bbd",
+      "sourceSha256": "dae0ccd83236f154288dcdd34542884f38e9eeeee276823557d710c93bae73d9"
+    },
+    {
+      "id": "prod_swimlane_reverse_vertical",
+      "kind": "swimlanes",
+      "title": "Bottom-to-top incident recovery",
+      "scenario": "BT direction mirrors rank progression while retaining lane ownership.",
+      "aspectRatio": 1.4,
+      "features": [
+        "directions",
+        "top-level-lanes",
+        "cycles"
+      ],
+      "expectedTexts": [
+        "Detect",
+        "Mitigate",
+        "Confirm"
+      ],
+      "nativeFile": "prod_swimlane_reverse_vertical_native.png",
+      "officialFile": "prod_swimlane_reverse_vertical_official.png",
+      "nativeBytes": 25822,
+      "officialBytes": 24752,
+      "nativeSha256": "d77ae61308a9cd11209d6fc342dc6b0662b1a5df30674257b61529fa329c14f3",
+      "officialSha256": "82810161d115d94990ae22d71cc125f1284f644bbd7f676e3459a69ecf292730",
+      "sourceSha256": "431e1889868df9d97cdfb793bebe1437f06d2163b8c60d34a0dee608a22a59c9"
+    },
+    {
+      "id": "prod_swimlane_reverse_horizontal",
+      "kind": "swimlanes",
+      "title": "Right-to-left approval",
+      "scenario": "RL direction reverses process progression across horizontal lane strips.",
+      "aspectRatio": 1.8,
+      "features": [
+        "directions",
+        "top-level-lanes",
+        "edge-labels"
+      ],
+      "expectedTexts": [
+        "Submit",
+        "Approved?",
+        "Publish"
+      ],
+      "nativeFile": "prod_swimlane_reverse_horizontal_native.png",
+      "officialFile": "prod_swimlane_reverse_horizontal_official.png",
+      "nativeBytes": 21484,
+      "officialBytes": 21771,
+      "nativeSha256": "be94a2f1a1aac6f0804b0bc188766d69e1905ae6b9ed493f909baaf5ca80668c",
+      "officialSha256": "8fd94ee5279c66689934e75079a36e71883be9a042131d96c649ec79c6d3f512",
+      "sourceSha256": "19d0526f0214113689310e739fd8446584cfc4af29581c41d25107647331a1d2"
+    },
+    {
+      "id": "prod_swimlane_default_lane",
+      "kind": "swimlanes",
+      "title": "Implicit and nested lanes",
+      "scenario": "A loose node and nested warehouse remain in their respective lane containers.",
+      "aspectRatio": 1.6,
+      "features": [
+        "default-lane",
+        "nested-subgraphs",
+        "node-shapes",
+        "cross-lane-edges"
+      ],
+      "expectedTexts": [
+        "External request",
+        "Warehouse",
+        "Archive"
+      ],
+      "nativeFile": "prod_swimlane_default_lane_native.png",
+      "officialFile": "prod_swimlane_default_lane_official.png",
+      "nativeBytes": 36693,
+      "officialBytes": 37378,
+      "nativeSha256": "be980dec966644ef53bd73fe5b9848f272d6d5c239ddef53d4b805870c5da2f3",
+      "officialSha256": "cfd0e32badba073248f714a08202a7cb632481afbccfe5f9a7687baa202386bb",
+      "sourceSha256": "36571aeaae6dc8b77c3b02dad72a3153206a66dc4861ed318631267adc580a52"
+    },
+    {
+      "id": "prod_swimlane_edge_semantics",
+      "kind": "swimlanes",
+      "title": "Edge semantics",
+      "scenario": "Solid, dotted, thick, labelled, and marker edges cross ownership lanes.",
+      "aspectRatio": 1.9,
+      "features": [
+        "cross-lane-edges",
+        "edge-labels",
+        "edge-patterns"
+      ],
+      "expectedTexts": [
+        "Primary",
+        "Fallback",
+        "Approved"
+      ],
+      "nativeFile": "prod_swimlane_edge_semantics_native.png",
+      "officialFile": "prod_swimlane_edge_semantics_official.png",
+      "nativeBytes": 14679,
+      "officialBytes": 16458,
+      "nativeSha256": "db5394984b255a7e03f22abb180fa80a24368ddfc65b1872d86a7fa10b88f5e5",
+      "officialSha256": "b300ecdcf50352b5d1528943536bef6a2794f71b614a300c470d5529bf057f32",
+      "sourceSha256": "ec0aa19ac7896d12dc574f04244f6006c61b84483d499157294b8f6b35c6f994"
+    },
+    {
+      "id": "prod_swimlane_configured_routing",
+      "kind": "swimlanes",
+      "title": "Configured and styled routing",
+      "scenario": "Scoped layering, lane ordering, line hops, classes, and inline styles compose.",
+      "aspectRatio": 1.8,
+      "features": [
+        "frontmatter-config",
+        "line-hops",
+        "cross-lane-edges",
+        "classes-styles"
+      ],
+      "expectedTexts": [
+        "Plan",
+        "Build",
+        "Verify",
+        "Release"
+      ],
+      "nativeFile": "prod_swimlane_configured_routing_native.png",
+      "officialFile": "prod_swimlane_configured_routing_official.png",
+      "nativeBytes": 18484,
+      "officialBytes": 18928,
+      "nativeSha256": "bbec445829b7700985e7607328b1458ea8c6c7d25a8feab86685bc05e17dcf60",
+      "officialSha256": "63fe7fc706b2fa3526779fb4ea6003f4fb0e50639f8f0f838904cb724e1fca25",
+      "sourceSha256": "f626ee2ee9d2bdd43bab35e5b2f7fff220938d601376688198ba342793ea20f2"
+    },
+    {
+      "id": "prod_swimlane_accessibility",
+      "kind": "swimlanes",
+      "title": "Accessible international handoff",
+      "scenario": "Accessibility metadata and Unicode labels accompany a regional process.",
+      "aspectRatio": 1.8,
+      "features": [
+        "accessibility",
+        "unicode",
+        "edge-labels",
+        "top-level-lanes",
+        "cross-lane-edges"
+      ],
+      "expectedTexts": [
+        "受付",
+        "검토",
+        "São Paulo",
+        "承認"
+      ],
+      "nativeFile": "prod_swimlane_accessibility_native.png",
+      "officialFile": "prod_swimlane_accessibility_official.png",
+      "nativeBytes": 16488,
+      "officialBytes": 16130,
+      "nativeSha256": "b7691c1c3bbb4a32e9c1450ebed83af79caa8ab751e7a3ea002d934eea69dc79",
+      "officialSha256": "2caf5e2e0d4effeeab46194637709be6a96f208dde7478d461fe38a46b73c7e9",
+      "sourceSha256": "9a6bc90d502f6d1a6dad87683b80e4810557e30f2cba56626492651c83ae49ad"
     }
   ],
   "failures": []

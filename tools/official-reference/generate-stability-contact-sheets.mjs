@@ -41,6 +41,7 @@ const pageSize = corpusSource === 'visual-parity'
 const corpusKind = process.env.CORPUS_KIND ?? 'all';
 const kinds = [
   'flowchart',
+  'swimlanes',
   'xychart',
   'quadrant',
   'timeline',
@@ -68,6 +69,7 @@ const kinds = [
 ];
 const kindTitles = {
   flowchart: 'Flowchart',
+  swimlanes: 'Swimlanes',
   xychart: 'XY Chart',
   quadrant: 'Quadrant Chart',
   timeline: 'Timeline',

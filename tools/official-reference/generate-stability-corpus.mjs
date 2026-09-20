@@ -17,6 +17,7 @@ import {
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
 const kotlinGalleryFiles = {
+  swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],
@@ -44,6 +45,7 @@ const kotlinGalleryFiles = {
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
+  ['swimlanes', 5],
   ['xychart', 5],
   ['quadrant', 5],
   ['timeline', 5],
@@ -71,6 +73,7 @@ const expectedKindCounts = new Map([
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
+  ['swimlanes', 13],
   ['xychart', 13],
   ['quadrant', 13],
   ['timeline', 13],
@@ -98,6 +101,7 @@ const expectedProductionKindCounts = new Map([
 ]);
 const supportedKinds = new Set([
   'flowchart',
+  'swimlanes',
   'xychart',
   'quadrant',
   'timeline',
@@ -195,8 +199,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 378) {
-    throw new Error(`Expected 378 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 383) {
+    throw new Error(`Expected 383 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -216,14 +220,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 327) {
+  if (productionCases.length !== 340) {
     throw new Error(
-      `Expected 327 production cases, found ${productionCases.length}`,
+      `Expected 340 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 200) {
+  if (conformanceCases.length !== 208) {
     throw new Error(
-      `Expected 200 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 208 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -436,6 +440,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
     buildList {
         val kinds = listOf(
             "flowchart",
+            "swimlanes",
             "xychart",
             "quadrant",
             "timeline",
@@ -508,6 +513,7 @@ private fun addVisualParityVariation(
     ordinal: Int,
 ): String = when (kind) {
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
+    "swimlanes" -> appendFlowchartEvidence(source, evidenceId, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0
