@@ -133,6 +133,12 @@ jobs:
           upload-artifact: false
           upload-release-assets: false
 
+      - name: Normalize SBOM workspace paths
+        run: |
+          node tools/release/normalize-sbom-paths.mjs \
+            "build/release/${{ steps.version.outputs.version }}/cmp-mermaid-${{ steps.version.outputs.version }}.cdx.json" \
+            "$GITHUB_WORKSPACE"
+
       - name: Verify release assets
         env:
           REQUIRE_SIGNATURES: "true"
