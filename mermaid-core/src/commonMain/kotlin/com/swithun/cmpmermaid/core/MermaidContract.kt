@@ -214,6 +214,12 @@ data class MermaidCynefinOptions(
     val useMaxWidth: Boolean = true,
 )
 
+data class MermaidEventModelingOptions(
+    val padding: Float = 30f,
+    val rowHeight: Float = 32f,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidTreemapOptions(
     val useMaxWidth: Boolean = true,
     val padding: Float = 10f,
@@ -358,6 +364,7 @@ data class MermaidRenderOptions(
     val sankey: MermaidSankeyOptions = MermaidSankeyOptions(),
     val ishikawa: MermaidIshikawaOptions = MermaidIshikawaOptions(),
     val cynefin: MermaidCynefinOptions = MermaidCynefinOptions(),
+    val eventModeling: MermaidEventModelingOptions = MermaidEventModelingOptions(),
     val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
     val venn: MermaidVennOptions = MermaidVennOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
@@ -673,6 +680,23 @@ data class MermaidCynefinTheme(
     val labelColor: SceneColor = SceneColor(0xFF131300),
 )
 
+data class MermaidEventModelingTheme(
+    val uiFill: SceneColor = SceneColor(0xFFFFFFFF),
+    val uiStroke: SceneColor = SceneColor(0xFFDBDADA),
+    val processorFill: SceneColor = SceneColor(0xFFEDB3F6),
+    val processorStroke: SceneColor = SceneColor(0xFFB88CBF),
+    val readModelFill: SceneColor = SceneColor(0xFFD3F1A2),
+    val readModelStroke: SceneColor = SceneColor(0xFFA3B732),
+    val commandFill: SceneColor = SceneColor(0xFFBCD6FE),
+    val commandStroke: SceneColor = SceneColor(0xFF679AC3),
+    val eventFill: SceneColor = SceneColor(0xFFFFB778),
+    val eventStroke: SceneColor = SceneColor(0xFFC19A0F),
+    val swimlaneBackgroundOdd: SceneColor = SceneColor(0xFFFAFAFA),
+    val swimlaneBackgroundStroke: SceneColor = SceneColor(0xFFF0F0F0),
+    val arrowhead: SceneColor? = null,
+    val relationStroke: SceneColor? = null,
+)
+
 data class MermaidTimelineTheme(
     val mainBackground: SceneColor = SceneColor(0xFFECECFF),
     val nodeBorder: SceneColor = SceneColor(0xFF9370DB),
@@ -752,6 +776,7 @@ data class MermaidTheme(
     val mindmap: MermaidMindmapTheme = MermaidMindmapTheme(),
     val radar: MermaidRadarTheme = MermaidRadarTheme(),
     val cynefin: MermaidCynefinTheme = MermaidCynefinTheme(),
+    val eventModeling: MermaidEventModelingTheme = MermaidEventModelingTheme(),
     val timeline: MermaidTimelineTheme = MermaidTimelineTheme(),
     val dropShadow: SceneShadow? = SceneShadow(
         color = SceneColor(0xFFB9B9B9),
@@ -800,6 +825,22 @@ data class MermaidTheme(
                 chaotic = 0xFFBF360C,
                 clear = 0xFFF57F17,
                 confusion = 0xFF4A148C,
+            ),
+            eventModeling = MermaidEventModelingTheme(
+                uiFill = SceneColor(0xFF2D2D2D),
+                uiStroke = SceneColor(0xFF555555),
+                processorFill = SceneColor(0xFF78517B),
+                processorStroke = SceneColor(0xFF8A6D8C),
+                readModelFill = SceneColor(0xFF547C3E),
+                readModelStroke = SceneColor(0xFF6D8C5C),
+                commandFill = SceneColor(0xFF3E547C),
+                commandStroke = SceneColor(0xFF5C6D8C),
+                eventFill = SceneColor(0xFF7C5F3E),
+                eventStroke = SceneColor(0xFF8C755C),
+                swimlaneBackgroundOdd = SceneColor(0xFF404040),
+                swimlaneBackgroundStroke = SceneColor(0xFF525252),
+                arrowhead = SceneColor(0xFFD3D3D3),
+                relationStroke = SceneColor(0xFFD3D3D3),
             ),
             timeline = timelineTheme("dark"),
             pie = darkPieTheme(),
@@ -1546,6 +1587,32 @@ data class MermaidTheme(
                 textColor = color("cynefin.textColor") ?: cynefinBase.textColor,
                 labelColor = color("cynefin.labelColor") ?: cynefinBase.labelColor,
             )
+            val eventModeling = theme.eventModeling.copy(
+                uiFill = color("emUiFill") ?: theme.eventModeling.uiFill,
+                uiStroke = color("emUiStroke") ?: theme.eventModeling.uiStroke,
+                processorFill =
+                    color("emProcessorFill") ?: theme.eventModeling.processorFill,
+                processorStroke =
+                    color("emProcessorStroke") ?: theme.eventModeling.processorStroke,
+                readModelFill =
+                    color("emReadModelFill") ?: theme.eventModeling.readModelFill,
+                readModelStroke =
+                    color("emReadModelStroke") ?: theme.eventModeling.readModelStroke,
+                commandFill = color("emCommandFill") ?: theme.eventModeling.commandFill,
+                commandStroke =
+                    color("emCommandStroke") ?: theme.eventModeling.commandStroke,
+                eventFill = color("emEventFill") ?: theme.eventModeling.eventFill,
+                eventStroke = color("emEventStroke") ?: theme.eventModeling.eventStroke,
+                swimlaneBackgroundOdd =
+                    color("emSwimlaneBackgroundOdd")
+                        ?: theme.eventModeling.swimlaneBackgroundOdd,
+                swimlaneBackgroundStroke =
+                    color("emSwimlaneBackgroundStroke")
+                        ?: theme.eventModeling.swimlaneBackgroundStroke,
+                arrowhead = color("emArrowhead") ?: theme.eventModeling.arrowhead,
+                relationStroke =
+                    color("emRelationStroke") ?: theme.eventModeling.relationStroke,
+            )
             val timeline = theme.timeline.copy(
                 mainBackground = color("mainBkg") ?: theme.timeline.mainBackground,
                 nodeBorder = color("nodeBorder") ?: theme.timeline.nodeBorder,
@@ -1644,6 +1711,7 @@ data class MermaidTheme(
                 mindmap = mindmap,
                 radar = radar,
                 cynefin = cynefin,
+                eventModeling = eventModeling,
                 timeline = timeline,
                 dropShadow = dropShadow,
             )

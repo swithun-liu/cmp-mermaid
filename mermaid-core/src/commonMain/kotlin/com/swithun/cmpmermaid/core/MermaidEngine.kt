@@ -4,6 +4,7 @@ import com.swithun.cmpmermaid.core.agentflow.AgentflowPlugin
 import com.swithun.cmpmermaid.core.classdiagram.ClassPlugin
 import com.swithun.cmpmermaid.core.cynefin.CynefinPlugin
 import com.swithun.cmpmermaid.core.erdiagram.ErPlugin
+import com.swithun.cmpmermaid.core.eventmodeling.EventModelingPlugin
 import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
 import com.swithun.cmpmermaid.core.gitgraph.GitGraphPlugin
@@ -64,6 +65,7 @@ class MermaidEngine(
         SankeyPlugin(),
         IshikawaPlugin(),
         CynefinPlugin(),
+        EventModelingPlugin(),
         TreemapPlugin(),
         VennPlugin(),
         TimelinePlugin(),

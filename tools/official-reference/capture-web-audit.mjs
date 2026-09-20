@@ -60,6 +60,7 @@ const kotlinGalleryFiles = {
   venn: ['VennDemos.kt', 'VennDemo'],
   ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
   cynefin: ['CynefinDemos.kt', 'CynefinDemo'],
+  eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];

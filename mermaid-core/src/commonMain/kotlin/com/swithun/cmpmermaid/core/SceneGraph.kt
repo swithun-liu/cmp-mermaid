@@ -270,6 +270,7 @@ data class ScenePath(
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val arrowStart: SceneArrowHead = SceneArrowHead.None,
     val arrowEnd: SceneArrowHead = SceneArrowHead.None,
+    val arrowColor: SceneColor? = null,
     val curve: String = "rounded",
     val look: String,
     val animated: Boolean,

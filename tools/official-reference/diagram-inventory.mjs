@@ -37,7 +37,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('eventmodeling', 'Event Modeling', 'eventmodeling.md', ['eventmodeling'], [
     header('eventmodeling', 'eventmodeling'),
-  ]),
+  ], true),
   family('flowchart', 'Flowchart', 'flowchart.md', ['flowchart-v2', 'flowchart-elk'], [
     header('flowchart LR', 'flowchart-v2'),
     header('graph LR', 'flowchart-v2'),

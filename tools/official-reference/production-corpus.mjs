@@ -499,6 +499,30 @@ export const requiredFeaturesByKind = {
     'entities',
     'unicode',
   ],
+  eventmodeling: [
+    'eventmodeling-header',
+    'compact-syntax',
+    'relaxed-syntax',
+    'timeframes',
+    'reset-frames',
+    'entity-type-aliases',
+    'default-swimlanes',
+    'namespaced-swimlanes',
+    'inferred-relations',
+    'explicit-relations',
+    'multiple-relations',
+    'inline-data',
+    'frontmatter-title',
+    'comments',
+    'entities',
+    'unicode',
+    'padding',
+    'row-height',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'theme',
+    'theme-variables',
+  ],
   agentflow: [
     'agentflow-beta-header',
     'directions',
@@ -4714,6 +4738,203 @@ cynefin-beta:
   },
 ];
 
+const eventModelingCases = [
+  {
+    id: 'prod_eventmodeling_compact_checkout',
+    kind: 'eventmodeling',
+    title: 'Compact checkout state change',
+    scenario: 'Compact frames infer the standard UI, command, and event progression.',
+    aspectRatio: 1.7,
+    features: [
+      'eventmodeling-header',
+      'compact-syntax',
+      'timeframes',
+      'default-swimlanes',
+      'inferred-relations',
+      'inline-data',
+      'responsive-sizing',
+    ],
+    expectedTexts: ['CheckoutUI', 'PlaceOrder', 'OrderPlaced', 'cartId: C-42'],
+    source: String.raw`
+eventmodeling
+  tf 01 ui CheckoutUI
+  tf 02 cmd PlaceOrder { cartId: C-42 }
+  tf 03 evt OrderPlaced
+`,
+  },
+  {
+    id: 'prod_eventmodeling_relaxed_state_view',
+    kind: 'eventmodeling',
+    title: 'Relaxed state view',
+    scenario: 'Relaxed aliases and qualified identifiers create source-ordered namespace lanes.',
+    aspectRatio: 1.35,
+    features: [
+      'relaxed-syntax',
+      'entity-type-aliases',
+      'namespaced-swimlanes',
+      'inferred-relations',
+    ],
+    expectedTexts: ['OrderPlaced', 'OrderSummary', 'OrdersPage'],
+    source: String.raw`
+eventmodeling
+  timeframe 01 event Sales.OrderPlaced
+  timeframe 02 readmodel Sales.OrderSummary
+  timeframe 03 ui Sales.OrdersPage
+`,
+  },
+  {
+    id: 'prod_eventmodeling_explicit_payload',
+    kind: 'eventmodeling',
+    title: 'Explicit command and event payload',
+    scenario: 'Inline payloads are projected into explicitly connected command and event cards.',
+    aspectRatio: 1.55,
+    features: [
+      'reset-frames',
+      'inline-data',
+      'explicit-relations',
+    ],
+    expectedTexts: ['SubmitOrder', 'OrderAccepted', 'orderId', 'total'],
+    source: String.raw`
+eventmodeling
+  rf 01 ui Checkout
+  tf 02 cmd SubmitOrder ->> 01 { orderId: A-17, total: 42 }
+  tf 03 evt OrderAccepted ->> 02 { orderId: A-17 }
+`,
+  },
+  {
+    id: 'prod_eventmodeling_projection_join',
+    kind: 'eventmodeling',
+    title: 'Projection from multiple events',
+    scenario: 'One read model explicitly consumes several reset event frames.',
+    aspectRatio: 1.8,
+    features: [
+      'reset-frames',
+      'explicit-relations',
+      'multiple-relations',
+    ],
+    expectedTexts: ['OrderCreated', 'ItemAdded', 'OrderCancelled', 'OrderHistory'],
+    source: String.raw`
+eventmodeling
+  rf 01 evt OrderCreated
+  rf 02 evt ItemAdded
+  rf 03 evt OrderCancelled
+  tf 04 rmo OrderHistory ->> 01 ->> 02 ->> 03
+`,
+  },
+  {
+    id: 'prod_eventmodeling_titled_reset',
+    kind: 'eventmodeling',
+    title: 'Titled reset flow',
+    scenario: 'Frontmatter title metadata accompanies a reset translation flow.',
+    aspectRatio: 1.6,
+    features: [
+      'reset-frames',
+      'frontmatter-title',
+      'inferred-relations',
+    ],
+    expectedTexts: [
+      'ExternalChange',
+      'InventoryProjector',
+      'ApplyInventory',
+    ],
+    source: String.raw`
+---
+title: Inventory synchronization
+---
+eventmodeling
+  rf 01 evt ExternalChange
+  tf 02 pcr InventoryProjector
+  tf 03 cmd ApplyInventory
+  tf 04 evt InventoryApplied
+`,
+  },
+  {
+    id: 'prod_eventmodeling_automation_cycle',
+    kind: 'eventmodeling',
+    title: 'Automation state-change cycle',
+    scenario: 'An explicit automation cycle exercises every rendered entity type and relaxed alias.',
+    aspectRatio: 1.75,
+    features: [
+      'reset-frames',
+      'entity-type-aliases',
+      'explicit-relations',
+    ],
+    expectedTexts: [
+      'PaymentRequested',
+      'PaymentRequest',
+      'PaymentProcessor',
+      'CapturePayment',
+      'PaymentCaptured',
+      'PaymentStatus',
+      'PaymentReceipt',
+    ],
+    source: String.raw`
+eventmodeling
+  rf 01 evt PaymentRequested
+  tf 02 rmo PaymentRequest ->> 01
+  tf 03 pcr PaymentProcessor ->> 02
+  tf 04 cmd CapturePayment ->> 03
+  tf 05 evt PaymentCaptured ->> 04
+  tf 06 rmo PaymentStatus ->> 05
+  tf 07 ui PaymentReceipt ->> 06
+`,
+  },
+  {
+    id: 'prod_eventmodeling_configured_theme',
+    kind: 'eventmodeling',
+    title: 'Configured intrinsic event model',
+    scenario: 'Diagram sizing and Event Modeling palette overrides are applied from frontmatter.',
+    aspectRatio: 1.65,
+    features: [
+      'padding',
+      'row-height',
+      'intrinsic-sizing',
+      'theme',
+      'theme-variables',
+    ],
+    expectedTexts: ['RequestForm', 'SubmitRequest', 'RequestSubmitted'],
+    source: String.raw`
+---
+config:
+  theme: dark
+  eventmodeling:
+    padding: 18
+    rowHeight: 44
+    useMaxWidth: false
+  themeVariables:
+    emCommandFill: "#1d4ed8"
+    emEventFill: "#b45309"
+    emRelationStroke: "#e2e8f0"
+---
+eventmodeling
+  tf 01 ui RequestForm
+  tf 02 command SubmitRequest
+  tf 03 event RequestSubmitted
+`,
+  },
+  {
+    id: 'prod_eventmodeling_regional_payload',
+    kind: 'eventmodeling',
+    title: 'Regional payload flow',
+    scenario: 'Comments, encoded entities, and mixed-script data survive preprocessing and rendering.',
+    aspectRatio: 1.6,
+    features: [
+      'comments',
+      'entities',
+      'unicode',
+      'inline-data',
+    ],
+    expectedTexts: ['RegionalRequest', 'RequestQueued', '東京', '서울'],
+    source: String.raw`
+eventmodeling
+  %% Regional labels remain inside data because identifiers are ASCII by grammar.
+  tf 01 ui RegionalRequest { region: 東京 &amp; 서울 }
+  tf 02 cmd QueueRequest
+  tf 03 evt RequestQueued
+`,
+  },
+];
+
 const agentflowCases = [
   {
     id: 'prod_agentflow_typed_review',
@@ -5351,6 +5572,7 @@ export const conformanceCases = [
   ...vennCases,
   ...ishikawaCases,
   ...cynefinCases,
+  ...eventModelingCases,
   ...agentflowCases,
 ];
 

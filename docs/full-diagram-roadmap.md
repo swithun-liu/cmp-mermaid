@@ -2,7 +2,7 @@
 
 ## Current State
 
-CMP Mermaid implements 23 of the 33 user-visible diagram families documented
+CMP Mermaid implements 24 of the 33 user-visible diagram families documented
 by Mermaid `12.0.0`. The source-controlled inventory is
 [`diagram-inventory.mjs`](../tools/official-reference/diagram-inventory.mjs);
 CI verifies it against Mermaid's 39 registered IDs and, when the pinned source
@@ -19,10 +19,10 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Agentflow |
-| Translation pending | Architecture, Block, C4, Event Modeling, Railroad, Swimlanes, TreeView, Use Case, Wardley Map, ZenUML |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow |
+| Translation pending | Architecture, Block, C4, Railroad, Swimlanes, TreeView, Use Case, Wardley Map, ZenUML |
 
-The current 5,888-pair matrix covers all 23 implemented families with fresh
+The current 6,144-pair matrix covers all 24 implemented families with fresh
 replacement evidence. A Git Graph label paint-order defect was visible in the
 original 3,072-pair matrix and was not identified during the earlier review.
 That defect is now corrected and every implemented family has passed the
@@ -51,9 +51,9 @@ global label layers reports a `paint-order-occlusion` mismatch for
 Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
-All 23 implemented families have completed the replacement gate. Together they
-have 5,888 accepted same-source pairs:
-`5,401 automatic pass / 487 manually reviewed / 0 unresolved` across 368 reviewed contact
+All 24 implemented families have completed the replacement gate. Together they
+have 6,144 accepted same-source pairs:
+`5,401 automatic pass / 743 manually reviewed / 0 unresolved` across 384 reviewed contact
 sheets. The 60 ER reviews are text-position threshold findings, while the 19
 Journey reviews are benign line-segmentation differences for one complete long
 actor label. The four Requirement reviews are benign greedy cross-matches
@@ -65,8 +65,10 @@ cross the foreground-mask threshold. The 237 Treemap reviews are
 text-position findings, with 198 also reporting label/value overlap-topology
 threshold differences caused by Canvas/SVG glyph bounds. Venn contributes 216
 automatic passes and 40 manual acceptances for two repeated text-overlap
-font-box threshold patterns. Ishikawa, Cynefin, and Agentflow each contribute
-256 automatic passes. All
+font-box threshold patterns. Event Modeling contributes 256 manual acceptances
+for title/payload `text-segmentation`: Official uses one `foreignObject`, while
+Native uses separate bold-title and monospace-payload text elements. Ishikawa,
+Cynefin, and Agentflow each contribute 256 automatic passes. All
 reviewed cases preserve expected text, hierarchy, shapes, colors, and edges,
 avoid clipping and paint-order defects, and were accepted by manual side-by-side review.
 Flowchart geometry ratios are `1.026-1.119` for width, `0.945-1.047` for height, and
@@ -97,6 +99,8 @@ Ishikawa ratios are `1.040-1.173`, `1.023-1.119`, and `1.058-1.311`,
 respectively. Cynefin ratios are `1.013-1.034`, `1.009-1.019`, and
 `1.020-1.052`, respectively. Agentflow ratios are `1.040-1.222`,
 `0.854-1.086`, and `0.773-1.287`, respectively.
+Event Modeling ratios are `1.025-1.037`, `1.008-1.061`, and `0.998-1.132`,
+respectively.
 
 ## Expected Behavior
 
@@ -118,8 +122,8 @@ benefit, but a family is never marked Stable merely because its batch is done.
 
 1. Shared chart and partition foundations: Quadrant Chart, Timeline, Kanban,
    Sankey, Packet, Radar, Treemap, Venn.
-2. Shared graph and domain foundations: Agentflow complete; Architecture,
-   Block, C4, TreeView, Use Case, Event Modeling, and Swimlanes pending.
+2. Shared graph and domain foundations: Agentflow and Event Modeling complete;
+   Architecture, Block, C4, TreeView, Use Case, and Swimlanes pending.
 3. Specialized renderers and grammars: Ishikawa and Cynefin complete;
    Wardley Map, Railroad (IR, EBNF, ABNF, PEG), and ZenUML pending.
 

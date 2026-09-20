@@ -3459,6 +3459,92 @@ cynefin-beta
 `,
   },
   {
+    id: 'rc_eventmodeling_order_lifecycle',
+    kind: 'eventmodeling',
+    title: 'Order lifecycle event model',
+    scenario: 'A complete state-change and state-view loop crosses all three default lanes.',
+    aspectRatio: 1.7,
+    source: String.raw`
+eventmodeling
+  tf 01 ui OrderForm
+  tf 02 cmd SubmitOrder { orderId: O-42 }
+  tf 03 evt OrderSubmitted
+  tf 04 rmo OrderSummary
+  tf 05 ui OrderStatus
+`,
+  },
+  {
+    id: 'rc_eventmodeling_inventory_translation',
+    kind: 'eventmodeling',
+    title: 'Inventory translation flow',
+    scenario: 'A reset event starts an automation pattern in qualified namespace lanes.',
+    aspectRatio: 1.45,
+    source: String.raw`
+eventmodeling
+  rf 01 evt External.InventoryChanged
+  tf 02 readmodel Inventory.ExternalInventory
+  tf 03 processor Inventory.Projector
+  tf 04 command Inventory.ApplyChange
+  tf 05 event Inventory.ChangeApplied
+`,
+  },
+  {
+    id: 'rc_eventmodeling_multi_event_projection',
+    kind: 'eventmodeling',
+    title: 'Multi-event order projection',
+    scenario: 'A read model explicitly joins four independent event streams.',
+    aspectRatio: 1.9,
+    source: String.raw`
+eventmodeling
+  rf 01 evt OrderCreated
+  rf 02 evt ItemAdded
+  rf 03 evt ItemRemoved
+  rf 04 evt OrderCancelled
+  tf 05 rmo OrderHistory ->> 01 ->> 02 ->> 03 ->> 04
+  tf 06 ui OrderHistoryPage
+`,
+  },
+  {
+    id: 'rc_eventmodeling_explicit_payload_trace',
+    kind: 'eventmodeling',
+    title: 'Explicit payload trace',
+    scenario: 'Commands and events carry inline payloads through an explicitly connected flow.',
+    aspectRatio: 1.55,
+    source: String.raw`
+eventmodeling
+  rf 01 ui Checkout
+  tf 02 cmd AuthorizePayment ->> 01 { paymentId: P-7, amount: 125.50 }
+  tf 03 evt PaymentAuthorized ->> 02 { paymentId: P-7, status: approved }
+`,
+  },
+  {
+    id: 'rc_eventmodeling_themed_regional',
+    kind: 'eventmodeling',
+    title: 'Themed regional event model',
+    scenario: 'Title metadata, theme overrides, comments, entities, and multilingual payload data share one intrinsic diagram.',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+title: Regional request lifecycle
+config:
+  theme: dark
+  eventmodeling:
+    padding: 20
+    rowHeight: 40
+    useMaxWidth: false
+  themeVariables:
+    emUiFill: "#164e63"
+    emCommandFill: "#1d4ed8"
+    emEventFill: "#b45309"
+---
+eventmodeling
+  %% Entity-safe mixed scripts are carried by the payload.
+  tf 01 ui RegionalRequest { region: 東京 &amp; 서울 }
+  tf 02 cmd QueueRequest
+  tf 03 evt RequestQueued
+`,
+  },
+  {
     id: 'rc_agentflow_release_intelligence',
     kind: 'agentflow',
     title: 'Release intelligence workflow',

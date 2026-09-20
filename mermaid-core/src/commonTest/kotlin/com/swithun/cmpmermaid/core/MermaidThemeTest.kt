@@ -189,6 +189,50 @@ class MermaidThemeTest {
     }
 
     @Test
+    fun matchesAndOverridesMermaid12EventModelingThemeVariables() {
+        val defaultTheme = MermaidTheme.preset(MermaidThemePreset.Default)
+        with(defaultTheme.eventModeling) {
+            assertEquals(SceneColor(0xFFFFFFFF), uiFill)
+            assertEquals(SceneColor(0xFFBCD6FE), commandFill)
+            assertEquals(SceneColor(0xFFFFB778), eventFill)
+            assertEquals(null, arrowhead)
+            assertEquals(null, relationStroke)
+        }
+        with(MermaidTheme.preset(MermaidThemePreset.Dark).eventModeling) {
+            assertEquals(SceneColor(0xFF2D2D2D), uiFill)
+            assertEquals(SceneColor(0xFF3E547C), commandFill)
+            assertEquals(SceneColor(0xFF7C5F3E), eventFill)
+            assertEquals(SceneColor(0xFFD3D3D3), arrowhead)
+            assertEquals(SceneColor(0xFFD3D3D3), relationStroke)
+        }
+
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = defaultTheme,
+                values = mapOf(
+                    "emUiFill" to "#102030",
+                    "emCommandStroke" to "#405060",
+                    "emSwimlaneBackgroundOdd" to "#708090",
+                    "emArrowhead" to "#a0b0c0",
+                    "emRelationStroke" to "#d0e0f0",
+                ),
+            ),
+        ).value.eventModeling
+        assertEquals(SceneColor(0xFF102030), customized.uiFill)
+        assertEquals(SceneColor(0xFF405060), customized.commandStroke)
+        assertEquals(SceneColor(0xFF708090), customized.swimlaneBackgroundOdd)
+        assertEquals(SceneColor(0xFFA0B0C0), customized.arrowhead)
+        assertEquals(SceneColor(0xFFD0E0F0), customized.relationStroke)
+
+        assertIs<GMResult.Err<MermaidError.Configuration>>(
+            MermaidTheme.withVariables(
+                theme = defaultTheme,
+                values = mapOf("emEventFill" to "not-a-color"),
+            ),
+        )
+    }
+
+    @Test
     fun appliesAndValidatesNestedCynefinThemeVariables() {
         val base = MermaidTheme.preset(MermaidThemePreset.Default)
         val customized = assertIs<GMResult.Ok<MermaidTheme>>(

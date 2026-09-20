@@ -951,7 +951,7 @@ private fun DrawScope.drawScenePath(
         commands = element.commands,
         position = MarkerPosition.Start,
         useMargin = useNeoMarkerMargin,
-        color = element.color.toComposeColor(),
+        color = (element.arrowColor ?: element.color).toComposeColor(),
         markerBackground = element.markerBackground?.toComposeColor() ?: Color.White,
         strokeWidth = element.strokeWidth,
     )
@@ -960,7 +960,7 @@ private fun DrawScope.drawScenePath(
         commands = element.commands,
         position = MarkerPosition.End,
         useMargin = useNeoMarkerMargin,
-        color = element.color.toComposeColor(),
+        color = (element.arrowColor ?: element.color).toComposeColor(),
         markerBackground = element.markerBackground?.toComposeColor() ?: Color.White,
         strokeWidth = element.strokeWidth,
     )

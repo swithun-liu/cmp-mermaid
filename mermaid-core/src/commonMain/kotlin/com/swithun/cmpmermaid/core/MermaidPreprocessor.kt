@@ -247,6 +247,7 @@ internal object MermaidPreprocessor {
         val sankey = map.map("sankey")
         val ishikawa = map.map("ishikawa")
         val cynefin = map.map("cynefin")
+        val eventModeling = map.map("eventmodeling")
         val agentflow = map.map("agentflow")
         val treemap = map.map("treemap")
         val venn = map.map("venn")
@@ -1313,6 +1314,25 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'cynefin.seed' must be finite",
             )
         }
+        val eventModelingPadding =
+            float(eventModeling, "padding", "eventmodeling.padding")
+        val eventModelingRowHeight =
+            float(eventModeling, "rowHeight", "eventmodeling.rowHeight")
+        val eventModelingUseMaxWidth =
+            boolean(eventModeling, "useMaxWidth", "eventmodeling.useMaxWidth")
+        if (eventModelingPadding != null && !eventModelingPadding.isFinite()) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'eventmodeling.padding' must be finite",
+            )
+        }
+        if (
+            eventModelingRowHeight != null &&
+            (!eventModelingRowHeight.isFinite() || eventModelingRowHeight < 1f)
+        ) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'eventmodeling.rowHeight' must be at least 1",
+            )
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -1732,6 +1752,13 @@ internal object MermaidPreprocessor {
                         useMaxWidth = cynefinUseMaxWidth,
                     )
                 },
+                eventModeling = eventModeling?.let {
+                    MermaidEventModelingConfigOverride(
+                        padding = eventModelingPadding,
+                        rowHeight = eventModelingRowHeight,
+                        useMaxWidth = eventModelingUseMaxWidth,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -1964,6 +1991,7 @@ internal data class MermaidConfigOverride(
     val sankey: MermaidSankeyConfigOverride? = null,
     val ishikawa: MermaidIshikawaConfigOverride? = null,
     val cynefin: MermaidCynefinConfigOverride? = null,
+    val eventModeling: MermaidEventModelingConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -2092,6 +2120,11 @@ internal data class MermaidConfigOverride(
                 cynefin?.merge(overrides.cynefin) ?: overrides.cynefin
             else -> cynefin
         },
+        eventModeling = when {
+            overrides.eventModeling != null ->
+                eventModeling?.merge(overrides.eventModeling) ?: overrides.eventModeling
+            else -> eventModeling
+        },
         treemap = when {
             overrides.treemap != null ->
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
@@ -2209,6 +2242,8 @@ internal data class MermaidConfigOverride(
                 sankey = sankey?.applyTo(options.sankey) ?: options.sankey,
                 ishikawa = ishikawa?.applyTo(options.ishikawa) ?: options.ishikawa,
                 cynefin = cynefin?.applyTo(options.cynefin) ?: options.cynefin,
+                eventModeling =
+                    eventModeling?.applyTo(options.eventModeling) ?: options.eventModeling,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -2435,6 +2470,27 @@ internal data class MermaidCynefinConfigOverride(
         seed = seed ?: options.seed,
         useMaxWidth = useMaxWidth ?: options.useMaxWidth,
     )
+}
+
+internal data class MermaidEventModelingConfigOverride(
+    val padding: Float? = null,
+    val rowHeight: Float? = null,
+    val useMaxWidth: Boolean? = null,
+) {
+    fun merge(
+        overrides: MermaidEventModelingConfigOverride,
+    ): MermaidEventModelingConfigOverride = MermaidEventModelingConfigOverride(
+        padding = overrides.padding ?: padding,
+        rowHeight = overrides.rowHeight ?: rowHeight,
+        useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+    )
+
+    fun applyTo(options: MermaidEventModelingOptions): MermaidEventModelingOptions =
+        options.copy(
+            padding = padding ?: options.padding,
+            rowHeight = rowHeight ?: options.rowHeight,
+            useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        )
 }
 
 internal data class MermaidTreemapConfigOverride(

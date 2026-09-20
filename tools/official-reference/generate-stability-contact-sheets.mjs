@@ -62,6 +62,7 @@ const kinds = [
   'kanban',
   'ishikawa',
   'cynefin',
+  'eventmodeling',
   'agentflow',
 ];
 const kindTitles = {
@@ -87,6 +88,7 @@ const kindTitles = {
   kanban: 'Kanban',
   ishikawa: 'Ishikawa',
   cynefin: 'Cynefin',
+  eventmodeling: 'Event Modeling',
   agentflow: 'Agentflow',
 };
 const selectedKinds = kinds.filter(

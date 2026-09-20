@@ -301,6 +301,39 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersEventModelingThroughRegisteredPlugin() {
+        val result = engine.render(
+            """
+                eventmodeling
+                tf 01 ui CartUI
+                tf 02 cmd AddItem
+                tf 03 evt ItemAdded
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertEquals(
+            3,
+            scene.elements.filterIsInstance<SceneShape>().count { shape ->
+                shape.id.startsWith("eventmodeling-swimlane-")
+            },
+        )
+        assertEquals(
+            3,
+            scene.elements.filterIsInstance<SceneShape>().count { shape ->
+                shape.id.startsWith("eventmodeling-box-")
+            },
+        )
+        assertEquals(
+            2,
+            scene.elements.filterIsInstance<ScenePath>().count { path ->
+                path.id.startsWith("eventmodeling-relation-")
+            },
+        )
+    }
+
+    @Test
     fun rendersAgentflowBetaThroughRegisteredPlugin() {
         val result = engine.render(
             """

@@ -3746,6 +3746,107 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_eventmodeling_order_lifecycle",
+        diagramId = "eventmodeling",
+        title = "Order lifecycle event model",
+        scenario = "A complete state-change and state-view loop crosses all three default lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            eventmodeling
+              tf 01 ui OrderForm
+              tf 02 cmd SubmitOrder { orderId: O-42 }
+              tf 03 evt OrderSubmitted
+              tf 04 rmo OrderSummary
+              tf 05 ui OrderStatus
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_inventory_translation",
+        diagramId = "eventmodeling",
+        title = "Inventory translation flow",
+        scenario = "A reset event starts an automation pattern in qualified namespace lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            eventmodeling
+              rf 01 evt External.InventoryChanged
+              tf 02 readmodel Inventory.ExternalInventory
+              tf 03 processor Inventory.Projector
+              tf 04 command Inventory.ApplyChange
+              tf 05 event Inventory.ChangeApplied
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_multi_event_projection",
+        diagramId = "eventmodeling",
+        title = "Multi-event order projection",
+        scenario = "A read model explicitly joins four independent event streams.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            eventmodeling
+              rf 01 evt OrderCreated
+              rf 02 evt ItemAdded
+              rf 03 evt ItemRemoved
+              rf 04 evt OrderCancelled
+              tf 05 rmo OrderHistory ->> 01 ->> 02 ->> 03 ->> 04
+              tf 06 ui OrderHistoryPage
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_explicit_payload_trace",
+        diagramId = "eventmodeling",
+        title = "Explicit payload trace",
+        scenario = "Commands and events carry inline payloads through an explicitly connected flow.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            eventmodeling
+              rf 01 ui Checkout
+              tf 02 cmd AuthorizePayment ->> 01 { paymentId: P-7, amount: 125.50 }
+              tf 03 evt PaymentAuthorized ->> 02 { paymentId: P-7, status: approved }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_themed_regional",
+        diagramId = "eventmodeling",
+        title = "Themed regional event model",
+        scenario = "Title metadata, theme overrides, comments, entities, and multilingual payload data share one intrinsic diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Regional request lifecycle
+            config:
+              theme: dark
+              eventmodeling:
+                padding: 20
+                rowHeight: 40
+                useMaxWidth: false
+              themeVariables:
+                emUiFill: "#164e63"
+                emCommandFill: "#1d4ed8"
+                emEventFill: "#b45309"
+            ---
+            eventmodeling
+              %% Entity-safe mixed scripts are carried by the payload.
+              tf 01 ui RegionalRequest { region: 東京 &amp; 서울 }
+              tf 02 cmd QueueRequest
+              tf 03 evt RequestQueued
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_agentflow_release_intelligence",
         diagramId = "agentflow",
         title = "Release intelligence workflow",
@@ -7630,6 +7731,107 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
                 "서울 runbook"
               chaotic
                 "São Paulo incident"
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_order_lifecycle",
+        diagramId = "eventmodeling",
+        title = "Order lifecycle event model",
+        scenario = "A complete state-change and state-view loop crosses all three default lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            eventmodeling
+              tf 01 ui OrderForm
+              tf 02 cmd SubmitOrder { orderId: O-42 }
+              tf 03 evt OrderSubmitted
+              tf 04 rmo OrderSummary
+              tf 05 ui OrderStatus
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_inventory_translation",
+        diagramId = "eventmodeling",
+        title = "Inventory translation flow",
+        scenario = "A reset event starts an automation pattern in qualified namespace lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            eventmodeling
+              rf 01 evt External.InventoryChanged
+              tf 02 readmodel Inventory.ExternalInventory
+              tf 03 processor Inventory.Projector
+              tf 04 command Inventory.ApplyChange
+              tf 05 event Inventory.ChangeApplied
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_multi_event_projection",
+        diagramId = "eventmodeling",
+        title = "Multi-event order projection",
+        scenario = "A read model explicitly joins four independent event streams.",
+        layout = "dagre",
+        initialAspectRatio = 1.9f,
+        source = """
+            eventmodeling
+              rf 01 evt OrderCreated
+              rf 02 evt ItemAdded
+              rf 03 evt ItemRemoved
+              rf 04 evt OrderCancelled
+              tf 05 rmo OrderHistory ->> 01 ->> 02 ->> 03 ->> 04
+              tf 06 ui OrderHistoryPage
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_explicit_payload_trace",
+        diagramId = "eventmodeling",
+        title = "Explicit payload trace",
+        scenario = "Commands and events carry inline payloads through an explicitly connected flow.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            eventmodeling
+              rf 01 ui Checkout
+              tf 02 cmd AuthorizePayment ->> 01 { paymentId: P-7, amount: 125.50 }
+              tf 03 evt PaymentAuthorized ->> 02 { paymentId: P-7, status: approved }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_eventmodeling_themed_regional",
+        diagramId = "eventmodeling",
+        title = "Themed regional event model",
+        scenario = "Title metadata, theme overrides, comments, entities, and multilingual payload data share one intrinsic diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Regional request lifecycle
+            config:
+              theme: dark
+              eventmodeling:
+                padding: 20
+                rowHeight: 40
+                useMaxWidth: false
+              themeVariables:
+                emUiFill: "#164e63"
+                emCommandFill: "#1d4ed8"
+                emEventFill: "#b45309"
+            ---
+            eventmodeling
+              %% Entity-safe mixed scripts are carried by the payload.
+              tf 01 ui RegionalRequest { region: 東京 &amp; 서울 }
+              tf 02 cmd QueueRequest
+              tf 03 evt RequestQueued
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -12336,6 +12538,156 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf("colon-header", "cynefin-beta-header", "deterministic-seed"),
     ),
     StabilityCorpusCase(
+        id = "prod_eventmodeling_compact_checkout",
+        diagramId = "eventmodeling",
+        title = "Compact checkout state change",
+        scenario = "Compact frames infer the standard UI, command, and event progression.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            eventmodeling
+              tf 01 ui CheckoutUI
+              tf 02 cmd PlaceOrder { cartId: C-42 }
+              tf 03 evt OrderPlaced
+        """.trimIndent(),
+        expectedTexts = listOf("CheckoutUI", "PlaceOrder", "OrderPlaced", "cartId: C-42"),
+        features = setOf("eventmodeling-header", "compact-syntax", "timeframes", "default-swimlanes", "inferred-relations", "inline-data", "responsive-sizing"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_eventmodeling_relaxed_state_view",
+        diagramId = "eventmodeling",
+        title = "Relaxed state view",
+        scenario = "Relaxed aliases and qualified identifiers create source-ordered namespace lanes.",
+        layout = "dagre",
+        initialAspectRatio = 1.35f,
+        source = """
+            eventmodeling
+              timeframe 01 event Sales.OrderPlaced
+              timeframe 02 readmodel Sales.OrderSummary
+              timeframe 03 ui Sales.OrdersPage
+        """.trimIndent(),
+        expectedTexts = listOf("OrderPlaced", "OrderSummary", "OrdersPage"),
+        features = setOf("relaxed-syntax", "entity-type-aliases", "namespaced-swimlanes", "inferred-relations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_eventmodeling_explicit_payload",
+        diagramId = "eventmodeling",
+        title = "Explicit command and event payload",
+        scenario = "Inline payloads are projected into explicitly connected command and event cards.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            eventmodeling
+              rf 01 ui Checkout
+              tf 02 cmd SubmitOrder ->> 01 { orderId: A-17, total: 42 }
+              tf 03 evt OrderAccepted ->> 02 { orderId: A-17 }
+        """.trimIndent(),
+        expectedTexts = listOf("SubmitOrder", "OrderAccepted", "orderId", "total"),
+        features = setOf("reset-frames", "inline-data", "explicit-relations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_eventmodeling_projection_join",
+        diagramId = "eventmodeling",
+        title = "Projection from multiple events",
+        scenario = "One read model explicitly consumes several reset event frames.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            eventmodeling
+              rf 01 evt OrderCreated
+              rf 02 evt ItemAdded
+              rf 03 evt OrderCancelled
+              tf 04 rmo OrderHistory ->> 01 ->> 02 ->> 03
+        """.trimIndent(),
+        expectedTexts = listOf("OrderCreated", "ItemAdded", "OrderCancelled", "OrderHistory"),
+        features = setOf("reset-frames", "explicit-relations", "multiple-relations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_eventmodeling_titled_reset",
+        diagramId = "eventmodeling",
+        title = "Titled reset flow",
+        scenario = "Frontmatter title metadata accompanies a reset translation flow.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Inventory synchronization
+            ---
+            eventmodeling
+              rf 01 evt ExternalChange
+              tf 02 pcr InventoryProjector
+              tf 03 cmd ApplyInventory
+              tf 04 evt InventoryApplied
+        """.trimIndent(),
+        expectedTexts = listOf("ExternalChange", "InventoryProjector", "ApplyInventory"),
+        features = setOf("reset-frames", "frontmatter-title", "inferred-relations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_eventmodeling_automation_cycle",
+        diagramId = "eventmodeling",
+        title = "Automation state-change cycle",
+        scenario = "An explicit automation cycle exercises every rendered entity type and relaxed alias.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            eventmodeling
+              rf 01 evt PaymentRequested
+              tf 02 rmo PaymentRequest ->> 01
+              tf 03 pcr PaymentProcessor ->> 02
+              tf 04 cmd CapturePayment ->> 03
+              tf 05 evt PaymentCaptured ->> 04
+              tf 06 rmo PaymentStatus ->> 05
+              tf 07 ui PaymentReceipt ->> 06
+        """.trimIndent(),
+        expectedTexts = listOf("PaymentRequested", "PaymentRequest", "PaymentProcessor", "CapturePayment", "PaymentCaptured", "PaymentStatus", "PaymentReceipt"),
+        features = setOf("reset-frames", "entity-type-aliases", "explicit-relations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_eventmodeling_configured_theme",
+        diagramId = "eventmodeling",
+        title = "Configured intrinsic event model",
+        scenario = "Diagram sizing and Event Modeling palette overrides are applied from frontmatter.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            config:
+              theme: dark
+              eventmodeling:
+                padding: 18
+                rowHeight: 44
+                useMaxWidth: false
+              themeVariables:
+                emCommandFill: "#1d4ed8"
+                emEventFill: "#b45309"
+                emRelationStroke: "#e2e8f0"
+            ---
+            eventmodeling
+              tf 01 ui RequestForm
+              tf 02 command SubmitRequest
+              tf 03 event RequestSubmitted
+        """.trimIndent(),
+        expectedTexts = listOf("RequestForm", "SubmitRequest", "RequestSubmitted"),
+        features = setOf("padding", "row-height", "intrinsic-sizing", "theme", "theme-variables"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_eventmodeling_regional_payload",
+        diagramId = "eventmodeling",
+        title = "Regional payload flow",
+        scenario = "Comments, encoded entities, and mixed-script data survive preprocessing and rendering.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            eventmodeling
+              %% Regional labels remain inside data because identifiers are ASCII by grammar.
+              tf 01 ui RegionalRequest { region: 東京 &amp; 서울 }
+              tf 02 cmd QueueRequest
+              tf 03 evt RequestQueued
+        """.trimIndent(),
+        expectedTexts = listOf("RegionalRequest", "RequestQueued", "東京", "서울"),
+        features = setOf("comments", "entities", "unicode", "inline-data"),
+    ),
+    StabilityCorpusCase(
         id = "prod_agentflow_typed_review",
         diagramId = "agentflow",
         title = "Typed review workflow",
@@ -12622,6 +12974,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "venn",
             "ishikawa",
             "cynefin",
+            "eventmodeling",
             "agentflow",
         )
         kinds.forEach { kind ->
@@ -12709,6 +13062,8 @@ private fun addVisualParityVariation(
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "${source.trimEnd()}\n$label\n"
     "cynefin" -> insertCynefinVisualParityEvidence(source, label)
+    "eventmodeling" -> "${source.trimEnd()}\n" +
+        "  rf ${700 + ordinal} evt $evidenceId { label: $label }\n"
     "agentflow" -> appendAgentflowVisualParityEvidence(
         source = source,
         evidenceId = evidenceId,

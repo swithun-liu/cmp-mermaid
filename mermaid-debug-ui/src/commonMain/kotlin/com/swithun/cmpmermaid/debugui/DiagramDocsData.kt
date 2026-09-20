@@ -723,6 +723,44 @@ internal val cynefinDiagramDocsSpec = DiagramDocsSpec(
     initialTheme = MermaidThemePreset.Default,
 )
 
+internal val eventModelingDiagramDocsSpec = DiagramDocsSpec(
+    id = "eventmodeling",
+    title = "Event Modeling",
+    syntaxTitle = "Event Modeling diagrams - Basic Syntax",
+    description = "Arrange state changes, state views, and automation flows across " +
+        "UI, command/read-model, and event swimlanes.",
+    documentationUrl = "https://mermaid.js.org/syntax/eventmodeling.html",
+    galleryTitle = "Event Modeling demo gallery",
+    cases = eventModelingDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 16f / 9f,
+        )
+    },
+    syntaxLessons = lessons(
+        eventModelingDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 16f / 9f,
+            )
+        },
+        listOf(
+            "Timeframes infer relations between UI, command, and event lanes.",
+            "Read models consume events and project state back to a UI.",
+            "Processors translate an external event into a local state change.",
+            "Reset frames and explicit sources model joins without inferred predecessors.",
+            "Frontmatter controls padding, sizing, theme colors, and title metadata.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
 internal val agentflowDiagramDocsSpec = DiagramDocsSpec(
     id = "agentflow",
     title = "Agentflow",

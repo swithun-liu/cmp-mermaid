@@ -24,6 +24,7 @@ export const kinds = [
   'venn',
   'ishikawa',
   'cynefin',
+  'eventmodeling',
   'agentflow',
 ];
 
@@ -169,6 +170,10 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}\n${label}\n`;
     case 'cynefin':
       return insertCynefinEvidence(source, label);
+    case 'eventmodeling':
+      return `${source.trimEnd()}
+  rf ${700 + ordinal} evt ${evidenceId} { label: ${label} }
+`;
     case 'agentflow':
       return appendAgentflowEvidence(source, evidenceId, label);
     default:

@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 5,888 source cases and
-11,776 screenshots from the large-scale
+This index contains 6,144 source cases and
+12,288 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,10 +13,12 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 23 implemented families have completed the replacement detail gate and
+All 24 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`5,888/5,888` pairs: `5,401 automatic pass / 487 manually reviewed /
-0 unresolved` across 368 contact sheets.
+`6,144/6,144` pairs: `5,401 automatic pass / 743 manually reviewed /
+0 unresolved` across 384 contact sheets. Event Modeling contributes 256
+manual acceptances, all caused by the documented title/payload
+`text-segmentation` adaptation.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -140,6 +142,52 @@ were manually reviewed.
 ![Agentflow visual parity page 15](agentflow-visual-parity-15.jpg)
 
 ![Agentflow visual parity page 16](agentflow-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Event Modeling - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `0 pass / 256 review / 0 fail`. Every review contains
+only `text-segmentation`: Official combines each card title and payload in one
+`foreignObject`, while Native represents the same visible content as a
+centered bold title and left-aligned monospace payload. Geometry ratios: width
+`1.025-1.037`, height `1.008-1.061`, foreground ink `0.998-1.132`. Raw
+[detail](eventmodeling-visual-parity-detail.json) and
+[geometry](eventmodeling-visual-parity-geometry.json) reports are published
+with the sheets. All 16 pages below were manually reviewed.
+
+![Event Modeling visual parity page 01](eventmodeling-visual-parity-01.jpg)
+
+![Event Modeling visual parity page 02](eventmodeling-visual-parity-02.jpg)
+
+![Event Modeling visual parity page 03](eventmodeling-visual-parity-03.jpg)
+
+![Event Modeling visual parity page 04](eventmodeling-visual-parity-04.jpg)
+
+![Event Modeling visual parity page 05](eventmodeling-visual-parity-05.jpg)
+
+![Event Modeling visual parity page 06](eventmodeling-visual-parity-06.jpg)
+
+![Event Modeling visual parity page 07](eventmodeling-visual-parity-07.jpg)
+
+![Event Modeling visual parity page 08](eventmodeling-visual-parity-08.jpg)
+
+![Event Modeling visual parity page 09](eventmodeling-visual-parity-09.jpg)
+
+![Event Modeling visual parity page 10](eventmodeling-visual-parity-10.jpg)
+
+![Event Modeling visual parity page 11](eventmodeling-visual-parity-11.jpg)
+
+![Event Modeling visual parity page 12](eventmodeling-visual-parity-12.jpg)
+
+![Event Modeling visual parity page 13](eventmodeling-visual-parity-13.jpg)
+
+![Event Modeling visual parity page 14](eventmodeling-visual-parity-14.jpg)
+
+![Event Modeling visual parity page 15](eventmodeling-visual-parity-15.jpg)
+
+![Event Modeling visual parity page 16](eventmodeling-visual-parity-16.jpg)
 
 </details>
 

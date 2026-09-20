@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-18T08:44:46.858Z",
-  "caseCount": 301,
+  "generatedAt": "2026-09-20T13:59:22.461Z",
+  "caseCount": 314,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -6753,6 +6753,295 @@
       "nativeSha256": "a0f8c94217fe2d35e0969a9aebdd8fceea4b7576957b520471fe314675b70541",
       "officialSha256": "0d2252889f0ca8ef099b179af7fcd5f35c5e14ca73cb23ce98603d0b6564c867",
       "sourceSha256": "c019c9f260962c340aea0b3cc652cdcb0465ea4d12b57715a21874df26dc555a"
+    },
+    {
+      "id": "rc_eventmodeling_order_lifecycle",
+      "kind": "eventmodeling",
+      "title": "Order lifecycle event model",
+      "scenario": "A complete state-change and state-view loop crosses all three default lanes.",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_eventmodeling_order_lifecycle_native.png",
+      "officialFile": "rc_eventmodeling_order_lifecycle_official.png",
+      "nativeBytes": 30236,
+      "officialBytes": 29905,
+      "nativeSha256": "bbfde9dc20efa1d31546ed92b3ac99dd928e48f0517351e0105aafffbd41ae74",
+      "officialSha256": "9da69f07e6ea323d8d7f98a92daee4e62340fd87447b6c8620da9f65d3403e1f",
+      "sourceSha256": "3793ed308bd9017e8b64e4f51dce0cf045b6900924cb15669e46fded7d0453be"
+    },
+    {
+      "id": "rc_eventmodeling_inventory_translation",
+      "kind": "eventmodeling",
+      "title": "Inventory translation flow",
+      "scenario": "A reset event starts an automation pattern in qualified namespace lanes.",
+      "aspectRatio": 1.45,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_eventmodeling_inventory_translation_native.png",
+      "officialFile": "rc_eventmodeling_inventory_translation_official.png",
+      "nativeBytes": 39268,
+      "officialBytes": 37671,
+      "nativeSha256": "6efb4f48afec5c53d76f007f85a5043032c5561d0a9b2f7aff200fd359630179",
+      "officialSha256": "e5d6304849631ddb572ad3cafb13baa3521153e42e615d698fa8eac0e32d401e",
+      "sourceSha256": "0b08b7cd62be1811146225ab092a591dd7226252e9ec7e588d8a6c3873eb4f2b"
+    },
+    {
+      "id": "rc_eventmodeling_multi_event_projection",
+      "kind": "eventmodeling",
+      "title": "Multi-event order projection",
+      "scenario": "A read model explicitly joins four independent event streams.",
+      "aspectRatio": 1.9,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_eventmodeling_multi_event_projection_native.png",
+      "officialFile": "rc_eventmodeling_multi_event_projection_official.png",
+      "nativeBytes": 23317,
+      "officialBytes": 23722,
+      "nativeSha256": "b9a8b21ccbd4ead1852fced1591ebc992f52adbee86430a8f08b9af8a25eb925",
+      "officialSha256": "482df0f5548e0ea392cb4809c30d61da88065502ecb06a6c2e415aeff25234b0",
+      "sourceSha256": "52076cd2f5c1968620a70aec1f528537d0ae81f9b3b406b8bc5bde898ef787ce"
+    },
+    {
+      "id": "rc_eventmodeling_explicit_payload_trace",
+      "kind": "eventmodeling",
+      "title": "Explicit payload trace",
+      "scenario": "Commands and events carry inline payloads through an explicitly connected flow.",
+      "aspectRatio": 1.55,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_eventmodeling_explicit_payload_trace_native.png",
+      "officialFile": "rc_eventmodeling_explicit_payload_trace_official.png",
+      "nativeBytes": 31269,
+      "officialBytes": 34259,
+      "nativeSha256": "946ba048673e0ce7bed0c42fdfb01479ab5cbad63195947cdd82bb0513c53f03",
+      "officialSha256": "3403a903f27a60bf23f655006f4a8ce7b572648bbf582cfa47f595b6bf1f1112",
+      "sourceSha256": "744ca725835ed701ed7da824e8457f77c1b74396dc35e2d66342c0d87428cea6"
+    },
+    {
+      "id": "rc_eventmodeling_themed_regional",
+      "kind": "eventmodeling",
+      "title": "Themed regional event model",
+      "scenario": "Title metadata, theme overrides, comments, entities, and multilingual payload data share one intrinsic diagram.",
+      "aspectRatio": 1.6,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_eventmodeling_themed_regional_native.png",
+      "officialFile": "rc_eventmodeling_themed_regional_official.png",
+      "nativeBytes": 30723,
+      "officialBytes": 28755,
+      "nativeSha256": "d9b4d7f11da9f1274078b352e2583578486dae6978315e5a6f17fdf9e6b1bd23",
+      "officialSha256": "62798d0fc3e661295e4de29b75b339f785c93a01a72986e44e83a433d7db5640",
+      "sourceSha256": "d0595b38416f08d64707fedb561b2267e0187b5db523dc6d530e763bf4e605fa"
+    },
+    {
+      "id": "prod_eventmodeling_compact_checkout",
+      "kind": "eventmodeling",
+      "title": "Compact checkout state change",
+      "scenario": "Compact frames infer the standard UI, command, and event progression.",
+      "aspectRatio": 1.7,
+      "features": [
+        "eventmodeling-header",
+        "compact-syntax",
+        "timeframes",
+        "default-swimlanes",
+        "inferred-relations",
+        "inline-data",
+        "responsive-sizing"
+      ],
+      "expectedTexts": [
+        "CheckoutUI",
+        "PlaceOrder",
+        "OrderPlaced",
+        "cartId: C-42"
+      ],
+      "nativeFile": "prod_eventmodeling_compact_checkout_native.png",
+      "officialFile": "prod_eventmodeling_compact_checkout_official.png",
+      "nativeBytes": 29109,
+      "officialBytes": 28596,
+      "nativeSha256": "e4a77acc46cfa9b9d127e168f41bd050408c13f11093266db609bf23eef8a9cb",
+      "officialSha256": "05e3b5b565b6b10958a31ed422661a2b7acb9fe1b577d39b719b7dea2602fe1a",
+      "sourceSha256": "edcc63cc17f825b0acad9cb17698e23b648fa5113cbc9a7e3b327df2733ee45d"
+    },
+    {
+      "id": "prod_eventmodeling_relaxed_state_view",
+      "kind": "eventmodeling",
+      "title": "Relaxed state view",
+      "scenario": "Relaxed aliases and qualified identifiers create source-ordered namespace lanes.",
+      "aspectRatio": 1.35,
+      "features": [
+        "relaxed-syntax",
+        "entity-type-aliases",
+        "namespaced-swimlanes",
+        "inferred-relations"
+      ],
+      "expectedTexts": [
+        "OrderPlaced",
+        "OrderSummary",
+        "OrdersPage"
+      ],
+      "nativeFile": "prod_eventmodeling_relaxed_state_view_native.png",
+      "officialFile": "prod_eventmodeling_relaxed_state_view_official.png",
+      "nativeBytes": 30294,
+      "officialBytes": 26533,
+      "nativeSha256": "41f5d3140e050af16683351dbd69defedd7110d63c5c531876a37b21d0ad0c29",
+      "officialSha256": "928151e4680410dc80f204e0542691f5881d52de353f63b10c82a64d48b02ada",
+      "sourceSha256": "f518453e765fe569f0e097bf6096d523adc1b456fa41d91d6f1041082def8f79"
+    },
+    {
+      "id": "prod_eventmodeling_explicit_payload",
+      "kind": "eventmodeling",
+      "title": "Explicit command and event payload",
+      "scenario": "Inline payloads are projected into explicitly connected command and event cards.",
+      "aspectRatio": 1.55,
+      "features": [
+        "reset-frames",
+        "inline-data",
+        "explicit-relations"
+      ],
+      "expectedTexts": [
+        "SubmitOrder",
+        "OrderAccepted",
+        "orderId",
+        "total"
+      ],
+      "nativeFile": "prod_eventmodeling_explicit_payload_native.png",
+      "officialFile": "prod_eventmodeling_explicit_payload_official.png",
+      "nativeBytes": 30682,
+      "officialBytes": 30521,
+      "nativeSha256": "94e5b21ea33a89b1ab7c094bb01e26f494107496dee9affeaae1b042c9e79464",
+      "officialSha256": "3de2e267ac52540e453dcff457ef2c7f2336737a12ef840362641496d1834467",
+      "sourceSha256": "68a6f21ff605342f573f7e85d38d484c80301794df7929fe6a8e19599456d78b"
+    },
+    {
+      "id": "prod_eventmodeling_projection_join",
+      "kind": "eventmodeling",
+      "title": "Projection from multiple events",
+      "scenario": "One read model explicitly consumes several reset event frames.",
+      "aspectRatio": 1.8,
+      "features": [
+        "reset-frames",
+        "explicit-relations",
+        "multiple-relations"
+      ],
+      "expectedTexts": [
+        "OrderCreated",
+        "ItemAdded",
+        "OrderCancelled",
+        "OrderHistory"
+      ],
+      "nativeFile": "prod_eventmodeling_projection_join_native.png",
+      "officialFile": "prod_eventmodeling_projection_join_official.png",
+      "nativeBytes": 22484,
+      "officialBytes": 21840,
+      "nativeSha256": "47df154e7d944d7fa2871f9e5c4658ec09cd0b2e109911ebbbe8e98e83895fdd",
+      "officialSha256": "c02c89c8cd224b3bdd55b13e2e85c477d1755eb747ff92c706958175789183f6",
+      "sourceSha256": "1ffe866a8091f94520bb2845f67edb8dadb05ceeb1a09d9706afcef607e4547d"
+    },
+    {
+      "id": "prod_eventmodeling_titled_reset",
+      "kind": "eventmodeling",
+      "title": "Titled reset flow",
+      "scenario": "Frontmatter title metadata accompanies a reset translation flow.",
+      "aspectRatio": 1.6,
+      "features": [
+        "reset-frames",
+        "frontmatter-title",
+        "inferred-relations"
+      ],
+      "expectedTexts": [
+        "ExternalChange",
+        "InventoryProjector",
+        "ApplyInventory"
+      ],
+      "nativeFile": "prod_eventmodeling_titled_reset_native.png",
+      "officialFile": "prod_eventmodeling_titled_reset_official.png",
+      "nativeBytes": 30090,
+      "officialBytes": 29944,
+      "nativeSha256": "3aefe42b7cb3f7cedb5c7408e7da0f09d5a1aa01aeac2a0b4cb59d7e7a01d74e",
+      "officialSha256": "4bd81b233f3e050ffc4865881bab3395d5aef45928a400680b7f7c0cfefebc14",
+      "sourceSha256": "bf24407fde689f3aeec604cc6c353b1e7a399f13b9f623ae4507bd3da1ad5378"
+    },
+    {
+      "id": "prod_eventmodeling_automation_cycle",
+      "kind": "eventmodeling",
+      "title": "Automation state-change cycle",
+      "scenario": "An explicit automation cycle exercises every rendered entity type and relaxed alias.",
+      "aspectRatio": 1.75,
+      "features": [
+        "reset-frames",
+        "entity-type-aliases",
+        "explicit-relations"
+      ],
+      "expectedTexts": [
+        "PaymentRequested",
+        "PaymentRequest",
+        "PaymentProcessor",
+        "CapturePayment",
+        "PaymentCaptured",
+        "PaymentStatus",
+        "PaymentReceipt"
+      ],
+      "nativeFile": "prod_eventmodeling_automation_cycle_native.png",
+      "officialFile": "prod_eventmodeling_automation_cycle_official.png",
+      "nativeBytes": 28529,
+      "officialBytes": 28742,
+      "nativeSha256": "55420ea2f690919ea05ccdb5eb3fc8168b8d99bb8f6c384ce55db6ed42a6526e",
+      "officialSha256": "f85a091f9006210e557656d4f5b573e85b40fa228def737b2db0497aeb92f93c",
+      "sourceSha256": "4354b681ef554e4d892e1a57482252e1f3145f38b312a60b9c270355ae15063d"
+    },
+    {
+      "id": "prod_eventmodeling_configured_theme",
+      "kind": "eventmodeling",
+      "title": "Configured intrinsic event model",
+      "scenario": "Diagram sizing and Event Modeling palette overrides are applied from frontmatter.",
+      "aspectRatio": 1.65,
+      "features": [
+        "padding",
+        "row-height",
+        "intrinsic-sizing",
+        "theme",
+        "theme-variables"
+      ],
+      "expectedTexts": [
+        "RequestForm",
+        "SubmitRequest",
+        "RequestSubmitted"
+      ],
+      "nativeFile": "prod_eventmodeling_configured_theme_native.png",
+      "officialFile": "prod_eventmodeling_configured_theme_official.png",
+      "nativeBytes": 30223,
+      "officialBytes": 27179,
+      "nativeSha256": "b6f1b250b0bebf9c5fca5e251a657610cf8aff08b11fa0c03013d0bd880f7a07",
+      "officialSha256": "8e86e817c77ab56326e205529c1c6484572d026e326bbf8b1a5fd0cb7c0030ac",
+      "sourceSha256": "55d25e5f759faba201ef2e08fd29395070e7fbfcec09ccb100e870ddfef2fcb9"
+    },
+    {
+      "id": "prod_eventmodeling_regional_payload",
+      "kind": "eventmodeling",
+      "title": "Regional payload flow",
+      "scenario": "Comments, encoded entities, and mixed-script data survive preprocessing and rendering.",
+      "aspectRatio": 1.6,
+      "features": [
+        "comments",
+        "entities",
+        "unicode",
+        "inline-data"
+      ],
+      "expectedTexts": [
+        "RegionalRequest",
+        "RequestQueued",
+        "東京",
+        "서울"
+      ],
+      "nativeFile": "prod_eventmodeling_regional_payload_native.png",
+      "officialFile": "prod_eventmodeling_regional_payload_official.png",
+      "nativeBytes": 29948,
+      "officialBytes": 29963,
+      "nativeSha256": "817d4ac95be691f41cf3cb313d074432e7422fc7b9d45084607d8fa77baa7b45",
+      "officialSha256": "c1c729686e6af58cf2cdf3ffc0218c7d6dd2fe536c49a91347419432fa8017a8",
+      "sourceSha256": "08014234c1032729eadd60f582fbf3e640ab538cdc21d6efc2126a1f91ab5ca7"
     }
-  ]
+  ],
+  "failures": []
 }

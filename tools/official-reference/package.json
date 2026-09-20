@@ -22,6 +22,7 @@
     "generate:venn-doc-fixtures": "node generate-venn-doc-fixtures.mjs",
     "generate:ishikawa-doc-fixtures": "node generate-ishikawa-doc-fixtures.mjs",
     "generate:cynefin-doc-fixtures": "node generate-cynefin-doc-fixtures.mjs",
+    "generate:eventmodeling-doc-fixtures": "node generate-eventmodeling-doc-fixtures.mjs",
     "generate:xychart-doc-fixtures": "node generate-xychart-doc-fixtures.mjs",
     "generate:quadrant-doc-fixtures": "node generate-quadrant-doc-fixtures.mjs",
     "generate:timeline-doc-fixtures": "node generate-timeline-doc-fixtures.mjs",

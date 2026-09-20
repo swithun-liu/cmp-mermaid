@@ -38,6 +38,7 @@ const kotlinGalleryFiles = {
   venn: ['VennDemos.kt', 'VennDemo'],
   ishikawa: ['IshikawaDemos.kt', 'IshikawaDemo'],
   cynefin: ['CynefinDemos.kt', 'CynefinDemo'],
+  eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
 };
 const expectedKindCounts = new Map([
@@ -63,6 +64,7 @@ const expectedKindCounts = new Map([
   ['venn', 5],
   ['ishikawa', 5],
   ['cynefin', 5],
+  ['eventmodeling', 5],
   ['agentflow', 5],
 ]);
 const expectedProductionKindCounts = new Map([
@@ -88,6 +90,7 @@ const expectedProductionKindCounts = new Map([
   ['venn', 13],
   ['ishikawa', 13],
   ['cynefin', 13],
+  ['eventmodeling', 13],
   ['agentflow', 13],
 ]);
 const supportedKinds = new Set([
@@ -113,6 +116,7 @@ const supportedKinds = new Set([
   'venn',
   'ishikawa',
   'cynefin',
+  'eventmodeling',
   'agentflow',
 ]);
 
@@ -187,8 +191,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 368) {
-    throw new Error(`Expected 368 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 373) {
+    throw new Error(`Expected 373 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -208,14 +212,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 301) {
+  if (productionCases.length !== 314) {
     throw new Error(
-      `Expected 301 production cases, found ${productionCases.length}`,
+      `Expected 314 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 184) {
+  if (conformanceCases.length !== 192) {
     throw new Error(
-      `Expected 184 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 192 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -449,6 +453,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "venn",
             "ishikawa",
             "cynefin",
+            "eventmodeling",
             "agentflow",
         )
         kinds.forEach { kind ->
@@ -536,6 +541,8 @@ private fun addVisualParityVariation(
     "venn" -> replaceOrInsertVennVisualParityTitle(source, label)
     "ishikawa" -> "\${source.trimEnd()}\\n\$label\\n"
     "cynefin" -> insertCynefinVisualParityEvidence(source, label)
+    "eventmodeling" -> "\${source.trimEnd()}\\n" +
+        "  rf \${700 + ordinal} evt \$evidenceId { label: \$label }\\n"
     "agentflow" -> appendAgentflowVisualParityEvidence(
         source = source,
         evidenceId = evidenceId,

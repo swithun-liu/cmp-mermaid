@@ -251,6 +251,51 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsAndValidatesEventModelingConfiguration() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  eventmodeling:
+                    padding: 24
+                    rowHeight: 40
+                    useMaxWidth: false
+                ---
+                eventmodeling
+                tf 01 ui UI
+            """.trimIndent(),
+        )
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.eventModeling
+
+        assertEquals(24f, options.padding)
+        assertEquals(40f, options.rowHeight)
+        assertEquals(false, options.useMaxWidth)
+
+        listOf(
+            "padding: NaN" to "eventmodeling.padding",
+            "rowHeight: 0" to "eventmodeling.rowHeight",
+            "useMaxWidth: sometimes" to "eventmodeling.useMaxWidth",
+        ).forEach { (config, path) ->
+            val invalid = MermaidPreprocessor.preprocess(
+                """
+                    ---
+                    config:
+                      eventmodeling:
+                        $config
+                    ---
+                    eventmodeling
+                """.trimIndent(),
+            )
+            val error = assertIs<GMResult.Err<MermaidError>>(invalid, config).error
+            assertIs<MermaidError.Configuration>(error, config)
+            assertContains(error.message, path, message = config)
+        }
+    }
+
+    @Test
     fun flattensNestedCynefinThemeVariablesAndReportsTheirExactPath() {
         val result = MermaidPreprocessor.preprocess(
             """
