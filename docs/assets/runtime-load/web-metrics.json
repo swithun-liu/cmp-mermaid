@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-18T04:34:48.785Z",
+  "caseCount": 275,
+  "firstCaseId": "rc_flow_checkout_saga",
+  "lastCaseId": "prod_ishikawa_long_nested_labels",
+  "firstContentMillis": 628,
+  "scrollMillis": 12543,
+  "scrollEvents": 130,
+  "reachedLastCase": true,
+  "before": {
+    "LayoutCount": 0,
+    "RecalcStyleCount": 0,
+    "TaskDuration": 0.012225,
+    "JSHeapUsedSize": 21619468,
+    "JSHeapTotalSize": 22380544
+  },
+  "afterScroll": {
+    "LayoutCount": 12,
+    "RecalcStyleCount": 12,
+    "TaskDuration": 6.856729,
+    "JSHeapUsedSize": 54094868,
+    "JSHeapTotalSize": 114589696
+  },
+  "afterGc": {
+    "LayoutCount": 12,
+    "RecalcStyleCount": 12,
+    "TaskDuration": 6.88089,
+    "JSHeapUsedSize": 32753208,
+    "JSHeapTotalSize": 34111488
+  },
+  "retainedJsHeapBytes": 11133740,
+  "peakProcessRssBytes": 2042920960,
+  "finalProcessRssBytes": 1960198144,
+  "errors": [],
+  "thresholds": {
+    "maximumFirstContentMillis": 15000,
+    "maximumScrollMillis": 15000,
+    "maximumRetainedJsHeapBytes": 100663296
+  }
+}

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; object-src 'none'; frame-src 'none'; worker-src blob:"
+  >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Official Mermaid</title>
+  <link rel="icon" href="data:,">
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #ffffff;
+      color: #28253d;
+      font-family: Arial, sans-serif;
+    }
+
+    #diagram {
+      box-sizing: border-box;
+      display: flex;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    #diagram > div {
+      width: 100%;
+    }
+
+    #diagram svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      overflow: visible;
+    }
+
+    #diagram.error {
+      padding: 24px;
+      color: #b91c1c;
+      font-size: 13px;
+      line-height: 1.45;
+      text-align: center;
+      white-space: pre-wrap;
+    }
+
+    #diagram.status {
+      color: #5f5b66;
+      font-size: 13px;
+    }
+
+    #diagram.status::before {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      border: 2px solid #d9dde2;
+      border-top-color: #008c95;
+      border-radius: 50%;
+      animation: loading-spin 0.8s linear infinite;
+      content: "";
+    }
+
+    @keyframes loading-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>
+    if (!Object.hasOwn) {
+      Object.hasOwn = (target, key) =>
+        Object.prototype.hasOwnProperty.call(target, key);
+    }
+    if (!Array.prototype.at) {
+      Object.defineProperty(Array.prototype, "at", {
+        value(index) {
+          const offset = Math.trunc(index) || 0;
+          return this[offset < 0 ? this.length + offset : offset];
+        },
+      });
+    }
+    if (!String.prototype.at) {
+      Object.defineProperty(String.prototype, "at", {
+        value(index) {
+          const offset = Math.trunc(index) || 0;
+          return this[offset < 0 ? this.length + offset : offset];
+        },
+      });
+    }
+    if (!window.structuredClone) {
+      window.structuredClone = (value) => {
+        const seen = new Map();
+        const clone = (input) => {
+          if (input === null || typeof input !== "object") {
+            return input;
+          }
+          if (seen.has(input)) {
+            return seen.get(input);
+          }
+          if (input instanceof Date) {
+            return new Date(input.getTime());
+          }
+          if (input instanceof RegExp) {
+            return new RegExp(input.source, input.flags);
+          }
+          if (input instanceof ArrayBuffer) {
+            return input.slice(0);
+          }
+          if (ArrayBuffer.isView(input)) {
+            return input instanceof DataView
+              ? new DataView(input.buffer.slice(0), input.byteOffset, input.byteLength)
+              : new input.constructor(input);
+          }
+          if (input instanceof Map) {
+            const output = new Map();
+            seen.set(input, output);
+            input.forEach((entryValue, entryKey) => {
+              output.set(clone(entryKey), clone(entryValue));
+            });
+            return output;
+          }
+          if (input instanceof Set) {
+            const output = new Set();
+            seen.set(input, output);
+            input.forEach((entry) => output.add(clone(entry)));
+            return output;
+          }
+
+          const output = Array.isArray(input)
+            ? []
+            : Object.create(Object.getPrototypeOf(input));
+          seen.set(input, output);
+          Reflect.ownKeys(input).forEach((key) => {
+            const descriptor = Object.getOwnPropertyDescriptor(input, key);
+            if (descriptor && Object.prototype.hasOwnProperty.call(descriptor, "value")) {
+              descriptor.value = clone(descriptor.value);
+            }
+            Object.defineProperty(output, key, descriptor);
+          });
+          return output;
+        };
+        return clone(value);
+      };
+    }
+  </script>
+  <script defer src="mermaid-12.0.0.min.js"></script>
+  <script defer src="mermaid-layout-tidy-tree-1.0.0.min.js"></script>
+</head>
+<body>
+  <div id="diagram" class="status" role="status" aria-live="polite">
+    Loading Official Mermaid.js...
+  </div>
+  <script>
+    (() => {
+      const diagram = document.querySelector("#diagram");
+      let requestId = 0;
+      let tidyTreeRegistered = false;
+      const viewBoxPadding = 12;
+      const parentMessagePrefix = "cmp-mermaid:";
+      const rendererLoadTimeout = window.setTimeout(() => {
+        if (requestId !== 0 || typeof window.mermaid !== "undefined") {
+          return;
+        }
+        const message =
+          "Official Mermaid.js did not finish loading. Check the network and retry.";
+        diagram.className = "error";
+        diagram.textContent = message;
+        notifyParent(`error:${message}`);
+      }, 30000);
+
+      const notifyParent = (message) => {
+        if (window.parent !== window) {
+          window.parent.postMessage(
+            `${parentMessagePrefix}${message}`,
+            window.location.origin,
+          );
+        }
+      };
+
+      const waitForLayout = async () => {
+        if (document.fonts?.ready) {
+          await document.fonts.ready;
+        }
+        await new Promise(requestAnimationFrame);
+        await new Promise(requestAnimationFrame);
+      };
+
+      const registerOptionalLayouts = () => {
+        if (tidyTreeRegistered) {
+          return;
+        }
+        if (!Array.isArray(window.cmpMermaidTidyTreeLayouts)) {
+          throw new Error("Official tidy-tree layout asset did not load");
+        }
+        mermaid.registerLayoutLoaders(window.cmpMermaidTidyTreeLayouts);
+        tidyTreeRegistered = true;
+      };
+
+      const normalizeViewBox = (svg, backgroundColor) => {
+        const original = svg.viewBox.baseVal;
+        const content = svg.getBBox();
+        const originalRight = original.x + original.width;
+        const originalBottom = original.y + original.height;
+        const contentRight = content.x + content.width;
+        const contentBottom = content.y + content.height;
+        const left = Math.min(original.x, content.x) - viewBoxPadding;
+        const top = Math.min(original.y, content.y) - viewBoxPadding;
+        const right = Math.max(originalRight, contentRight) + viewBoxPadding;
+        const bottom = Math.max(originalBottom, contentBottom) + viewBoxPadding;
+        const width = Math.max(right - left, 1);
+        const height = Math.max(bottom - top, 1);
+
+        svg.setAttribute("viewBox", `${left} ${top} ${width} ${height}`);
+        svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+        svg.removeAttribute("width");
+        svg.removeAttribute("height");
+        svg.style.width = "100%";
+        svg.style.height = "100%";
+        svg.style.maxWidth = "100%";
+        svg.style.maxHeight = "100%";
+        svg.style.backgroundColor = backgroundColor;
+        return { width, height };
+      };
+
+      window.renderDiagram = async (source, layout, themeName = null, look = null) => {
+        window.clearTimeout(rendererLoadTimeout);
+        const currentRequest = ++requestId;
+        diagram.className = "status";
+        diagram.textContent = "Rendering...";
+
+        try {
+          registerOptionalLayouts();
+          const config = {
+            startOnLoad: false,
+            securityLevel: "strict",
+            layout,
+          };
+          if (themeName) {
+            config.theme = themeName;
+          }
+          if (look) {
+            config.look = look;
+          }
+          mermaid.initialize(config);
+          const result = await mermaid.render(
+            `cmp-official-${currentRequest}`,
+            source,
+            diagram,
+          );
+          if (currentRequest !== requestId) {
+            return;
+          }
+          diagram.className = "";
+          diagram.innerHTML = result.svg;
+          const svg = diagram.querySelector("svg");
+          if (!svg) {
+            throw new Error("Official Mermaid did not produce an SVG");
+          }
+          const backgroundColor =
+            mermaid.mermaidAPI.getConfig()?.themeVariables?.background ?? "#ffffff";
+          document.documentElement.style.backgroundColor = backgroundColor;
+          document.body.style.backgroundColor = backgroundColor;
+          diagram.style.backgroundColor = backgroundColor;
+          result.bindFunctions?.(diagram);
+          await waitForLayout();
+          if (currentRequest !== requestId) {
+            return;
+          }
+          const size = normalizeViewBox(svg, backgroundColor);
+          window.CmpMermaidBridge?.onRenderReady(
+            String(size.width),
+            String(size.height),
+          );
+          notifyParent(`ready:${size.width}:${size.height}`);
+        } catch (failure) {
+          if (currentRequest !== requestId) {
+            return;
+          }
+          diagram.className = "error";
+          const message = failure?.message ?? String(failure);
+          diagram.textContent = message;
+          window.CmpMermaidBridge?.onRenderError(message);
+          notifyParent(`error:${message}`);
+        }
+      };
+    })();
+  </script>
+</body>
+</html>

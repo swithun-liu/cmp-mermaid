@@ -1,0 +1,174 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: macos-14
+    timeout-minutes: 120
+    env:
+      ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+      ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      CENTRAL_PORTAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+      CENTRAL_PORTAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+      COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+
+    steps:
+      - name: Checkout immutable tag
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Validate tag and version
+        id: version
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          version="$(sed -n 's/^VERSION_NAME=//p' gradle.properties)"
+          expected_tag="v$version"
+          test "$GITHUB_REF_TYPE" = "tag"
+          test "$GITHUB_REF_NAME" = "$expected_tag"
+          test "$(git tag --points-at HEAD --list "$expected_tag")" = "$expected_tag"
+          if gh release view "$expected_tag" >/dev/null 2>&1; then
+            echo "Release $expected_tag already exists" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$expected_tag" >> "$GITHUB_OUTPUT"
+
+      - name: Reject private material
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -I -n -E \
+            '(AKIA[0-9A-Z]{16}|-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----|gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,})'
+          then
+            echo "Credential-like material detected" >&2
+            exit 1
+          fi
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Test and build modern Maven and iOS artifacts
+        run: |
+          ./gradlew \
+            :mermaid-core:jvmTest \
+            :mermaid-compose:jvmTest \
+            verifyPublicationCoordinates \
+            :mermaid-core:publishAllPublicationsToBuildRepository \
+            :mermaid-compose:publishAllPublicationsToBuildRepository \
+            :mermaid-compose:podPublishReleaseXCFramework \
+            --console=plain
+          tools/release/verify-ios-xcframework.sh
+
+      - name: Set up Java 11 for Kotlin 1.7 artifacts
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "11"
+
+      - name: Build and consume Kotlin 1.7 Android artifacts
+        run: |
+          ./android-legacy-build/gradlew -p android-legacy-build \
+            assembleRelease \
+            verifyLegacyPublicationCoordinates \
+            publishLegacyToReleaseRepository \
+            --console=plain
+          ./android-legacy-build/gradlew \
+            -p android-legacy-build/consumer-smoke \
+            assembleRelease \
+            --console=plain
+
+      - name: Assemble release assets
+        run: |
+          tools/release/assemble-release-assets.sh \
+            "${{ steps.version.outputs.version }}"
+
+      - name: Generate CycloneDX SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: cyclonedx-json
+          output-file: build/release/${{ steps.version.outputs.version }}/cmp-mermaid-${{ steps.version.outputs.version }}.cdx.json
+          upload-artifact: false
+          upload-release-assets: false
+
+      - name: Verify release assets
+        env:
+          REQUIRE_SIGNATURES: "true"
+        run: |
+          tools/release/generate-checksums.sh \
+            "build/release/${{ steps.version.outputs.version }}"
+          tools/release/verify-release-assets.sh \
+            "build/release/${{ steps.version.outputs.version }}" \
+            "${{ steps.version.outputs.version }}"
+          DRY_RUN=true tools/release/upload-central-bundle.sh \
+            "build/release/${{ steps.version.outputs.version }}/cmp-mermaid-android-kotlin17-central-${{ steps.version.outputs.version }}.zip"
+
+      - name: Restore Java 17 for modern publication
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Publish verified artifacts
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          version="${{ steps.version.outputs.version }}"
+          tag="${{ steps.version.outputs.tag }}"
+          release_dir="build/release/$version"
+          release_created=false
+          release_finalized=false
+
+          cleanup_failed_release() {
+            if [[ "$release_created" == "true" && "$release_finalized" != "true" ]]; then
+              gh release delete "$tag" --yes || true
+            fi
+          }
+          trap cleanup_failed_release EXIT
+
+          gh release create "$tag" "$release_dir"/* \
+            --prerelease \
+            --verify-tag \
+            --title "CMP Mermaid $version" \
+            --generate-notes
+          release_created=true
+
+          pod spec lint "$release_dir/CMPMermaid.podspec" --allow-warnings
+
+          ./gradlew \
+            :mermaid-core:publishAndReleaseToMavenCentral \
+            :mermaid-compose:publishAndReleaseToMavenCentral \
+            --console=plain
+          tools/release/upload-central-bundle.sh \
+            "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" \
+            "cmp-mermaid-android-kotlin17-$version"
+          pod trunk push "$release_dir/CMPMermaid.podspec" --allow-warnings
+
+          gh release edit "$tag" --prerelease=false --latest
+          release_finalized=true

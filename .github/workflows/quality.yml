@@ -1,0 +1,280 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  multiplatform:
+    runs-on: macos-14
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Verify generated audit corpora
+        run: |
+          node tools/official-reference/generate-stability-corpus.mjs
+          git diff --exit-code -- \
+            mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/StabilityCorpus.kt \
+            mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/StabilityCorpus.kt
+
+      - name: Reject credential material
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -I -n -E \
+            '(AKIA[0-9A-Z]{16}|-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----|gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,})'
+          then
+            echo "Credential-like material detected" >&2
+            exit 1
+          fi
+
+      - name: Enforce production runtime isolation
+        shell: bash
+        run: |
+          set -euo pipefail
+          production_roots=(mermaid-core/src mermaid-compose/src)
+          bundled_scripts="$(
+            find "${production_roots[@]}" -type f \
+              \( -name '*.js' -o -name '*.mjs' -o -name '*.html' -o -name '*.wasm' \)
+          )"
+          if [[ -n "$bundled_scripts" ]]; then
+            printf '%s\n' "$bundled_scripts"
+            echo "Bundled Web asset detected in a production module" >&2
+            exit 1
+          fi
+          forbidden_runtime="$(
+            find "${production_roots[@]}" -path '*/src/*Main/*' -type f -name '*.kt' \
+              -exec grep -nEH \
+                'android\.webkit|java\.net\.(HttpURLConnection|URL)|javax\.script|JavaScriptCore|io\.github\.dokar3\.quickjs' \
+                {} + || true
+          )"
+          if [[ -n "$forbidden_runtime" ]]; then
+            printf '%s\n' "$forbidden_runtime"
+            echo "Network, WebView, or JavaScript runtime API detected in production code" >&2
+            exit 1
+          fi
+          if grep -nE 'mermaid-debug-ui|quickjs-kt|libs\.quickjs' \
+            mermaid-core/build.gradle.kts mermaid-compose/build.gradle.kts
+          then
+            echo "Debug UI or QuickJS dependency detected in a production module" >&2
+            exit 1
+          fi
+
+      - name: Test JVM modules
+        run: |
+          ./gradlew \
+            :mermaid-core:jvmTest \
+            :mermaid-compose:jvmTest
+
+      - name: Verify Maven publication coordinates
+        run: ./gradlew verifyPublicationCoordinates
+
+      - name: Build all targets
+        run: |
+          ./gradlew \
+            :sample:androidApp:assembleDebug \
+            :sample:androidApp:assembleRelease \
+            :sample:webApp:wasmJsBrowserDistribution \
+            :sample:desktopApp:createDistributable \
+            :mermaid-core:compileKotlinIosArm64 \
+            :mermaid-core:compileKotlinIosSimulatorArm64 \
+            :mermaid-core:compileKotlinIosX64 \
+            :mermaid-compose:compileKotlinIosArm64 \
+            :mermaid-compose:compileKotlinIosSimulatorArm64 \
+            :mermaid-compose:compileKotlinIosX64 \
+            :mermaid-debug-ui:compileKotlinIosArm64 \
+            :mermaid-debug-ui:compileKotlinIosSimulatorArm64 \
+            :mermaid-debug-ui:compileKotlinIosX64
+
+      - name: Reject Internet permission in sample APKs
+        shell: bash
+        run: |
+          set -euo pipefail
+          aapt2=""
+          for candidate in "$ANDROID_HOME"/build-tools/*/aapt2; do
+            if [[ -x "$candidate" ]]; then
+              aapt2="$candidate"
+            fi
+          done
+          test -n "$aapt2"
+          for apk in \
+            sample/androidApp/build/outputs/apk/debug/androidApp-debug.apk \
+            sample/androidApp/build/outputs/apk/release/androidApp-release-unsigned.apk
+          do
+            permissions="$("$aapt2" dump permissions "$apk")"
+            printf '%s\n' "$permissions"
+            if grep -q 'android.permission.INTERNET' <<<"$permissions"; then
+              echo "Unexpected android.permission.INTERNET declaration in $apk" >&2
+              exit 1
+            fi
+          done
+
+  android-kotlin17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 11
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "11"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build and publish Kotlin 1.7 Android artifacts
+        run: |
+          ./android-legacy-build/gradlew -p android-legacy-build \
+            assembleRelease \
+            verifyLegacyPublicationCoordinates \
+            publishLegacyToReleaseRepository \
+            --console=plain
+
+      - name: Compile an external-coordinate consumer
+        run: |
+          ./android-legacy-build/gradlew \
+            -p android-legacy-build/consumer-smoke \
+            assembleRelease \
+            --console=plain
+
+  ios-binary:
+    runs-on: macos-14
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build static XCFramework
+        run: |
+          ./gradlew \
+            :mermaid-compose:podPublishReleaseXCFramework \
+            --console=plain
+
+      - name: Verify architectures, API, and resources
+        run: tools/release/verify-ios-xcframework.sh
+
+  visual-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: tools/official-reference/package-lock.json
+
+      - name: Install visual audit dependencies
+        working-directory: tools/official-reference
+        run: npm ci
+
+      - name: Verify Mermaid diagram inventory
+        working-directory: tools/official-reference
+        run: |
+          npm run audit:diagram-inventory
+          npm run test:detail-audit
+
+      - name: Build Web production distribution
+        run: ./gradlew :sample:webApp:wasmJsBrowserDistribution
+
+      - name: Capture Native and Official stable corpus
+        working-directory: tools/official-reference
+        run: |
+          python3 -m http.server 8093 \
+            --directory ../../sample/webApp/build/dist/wasmJs/productionExecutable \
+            >/tmp/cmp-mermaid-web.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8093/ >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          AUDIT_SOURCE=production \
+          OUTPUT_DIR=captures/ci/production \
+          BASE_URL=http://127.0.0.1:8093/ \
+          VIEWPORT_WIDTH=1200 \
+          VIEWPORT_HEIGHT=900 \
+          npm run capture:web-audit
+          BASE_URL=http://127.0.0.1:8093/ \
+          OUTPUT_DIR=captures/ci/load-test-web \
+          npm run test:web-load
+
+      - name: Enforce stable visual geometry
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_SOURCE=production \
+          INPUT_DIR=captures/ci/production \
+          OUTPUT_FILE=captures/ci/production-geometry.json \
+          npm run audit:stability-geometry
+          CORPUS_SOURCE=production \
+          INPUT_DIR=captures/ci/production \
+          OUTPUT_DIR=captures/ci/contact-sheets \
+          npm run generate:stability-contact-sheets
+
+      - name: Enforce detailed Native and Official parity
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_SOURCE=production \
+          INPUT_DIR=captures/ci/production \
+          OUTPUT_FILE=captures/ci/production-detail.json \
+          HEATMAP_DIR=captures/ci/detail-diffs \
+          FAIL_ON_REVIEW=false \
+          npm run audit:detail
+
+      - name: Upload stable visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stable-visual-evidence
+          path: captures/ci
+          retention-days: 14

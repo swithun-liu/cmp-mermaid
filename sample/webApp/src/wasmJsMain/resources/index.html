@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f8fa">
+    <link rel="icon" href="data:,">
+    <title>CMP Mermaid</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: #f7f8fa;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .loading-shell {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            place-items: center;
+            color: #202124;
+        }
+
+        .loading-content {
+            width: min(560px, calc(100vw - 48px));
+            padding: 28px;
+            border: 1px solid #d9dde2;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        .loading-heading {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .loading-title {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 650;
+            letter-spacing: 0;
+        }
+
+        .loading-percent {
+            min-width: 54px;
+            color: #00777f;
+            font-size: 15px;
+            font-weight: 650;
+            letter-spacing: 0;
+            text-align: right;
+        }
+
+        .loading-status {
+            margin: 10px 0 16px;
+            color: #5f6368;
+            font-size: 14px;
+            letter-spacing: 0;
+        }
+
+        .loading-track {
+            width: 100%;
+            height: 4px;
+            overflow: hidden;
+            border-radius: 2px;
+            background: #dfe3e7;
+        }
+
+        .loading-progress {
+            width: 16%;
+            height: 100%;
+            border-radius: 2px;
+            background: #008c95;
+            animation: loading-slide 1.2s ease-in-out infinite alternate;
+            transition: width 180ms ease-out;
+        }
+
+        .loading-progress.determinate {
+            animation: none;
+        }
+
+        .loading-meta {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .loading-metric {
+            min-width: 0;
+        }
+
+        .loading-metric-label {
+            display: block;
+            color: #7a8087;
+            font-size: 11px;
+            letter-spacing: 0;
+        }
+
+        .loading-metric-value {
+            display: block;
+            margin-top: 3px;
+            overflow: hidden;
+            color: #303238;
+            font-size: 13px;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .loading-stages {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            margin: 24px 0 0;
+            padding: 18px 0 0;
+            border-top: 1px solid #e5e8eb;
+            list-style: none;
+        }
+
+        .loading-stage {
+            color: #8a9097;
+            font-size: 12px;
+            letter-spacing: 0;
+        }
+
+        .loading-stage::before {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 7px;
+            border: 1px solid #a9afb6;
+            background: transparent;
+            content: "";
+        }
+
+        .loading-stage.active {
+            color: #00777f;
+            font-weight: 600;
+        }
+
+        .loading-stage.active::before {
+            border-color: #008c95;
+            background: #008c95;
+        }
+
+        .loading-stage.complete {
+            color: #41464c;
+        }
+
+        .loading-stage.complete::before {
+            border-color: #41464c;
+            background: #41464c;
+        }
+
+        .loading-types {
+            margin: 22px 0 0;
+            color: #6c7279;
+            font-size: 12px;
+            line-height: 1.6;
+            letter-spacing: 0;
+        }
+
+        .loading-error .loading-percent,
+        .loading-error .loading-status {
+            color: #b3261e;
+        }
+
+        .loading-error .loading-progress {
+            animation: none;
+            background: #b3261e;
+            transform: none;
+        }
+
+        @keyframes loading-slide {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(525%);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .loading-content {
+                width: min(100%, calc(100vw - 32px));
+                padding: 22px;
+                box-sizing: border-box;
+            }
+
+            .loading-meta {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .loading-metric:last-child {
+                grid-column: 1 / -1;
+            }
+
+            .loading-stages {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        if (window.location.hostname.endsWith(".github.io")) {
+            const nativeFetch = window.fetch.bind(window);
+            const nativeInstantiate = WebAssembly.instantiate.bind(WebAssembly);
+            const directWasmTimeoutMs = 8000;
+            const loadingState = {
+                completedBytes: 0,
+                completedFiles: 0,
+                directModules: 0,
+                modulesReady: 0,
+                startedAt: Date.now(),
+                totalBytes: 0,
+                totalFiles: 0,
+            };
+            const stages = ["download", "compile", "open"];
+            const stageLabels = {
+                compile: "Compiling",
+                download: "Starting",
+                open: "Ready",
+            };
+
+            const setLoadingStage = (stage, message) => {
+                const status = document.querySelector("#loading-status");
+                const percentLabel = document.querySelector("#loading-percent");
+                if (status !== null) {
+                    status.textContent = message;
+                }
+                if (percentLabel !== null && loadingState.totalBytes === 0) {
+                    percentLabel.textContent = stageLabels[stage];
+                }
+
+                const activeIndex = stages.indexOf(stage);
+                document.querySelectorAll("[data-loading-stage]").forEach((element) => {
+                    const stageIndex = stages.indexOf(element.dataset.loadingStage);
+                    element.classList.toggle("complete", stageIndex < activeIndex);
+                    element.classList.toggle("active", stageIndex === activeIndex);
+                });
+            };
+
+            const formatMegabytes = (bytes) => {
+                return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+            };
+
+            const updateLoadingProgress = () => {
+                const progress = document.querySelector("#loading-progress");
+                const percentLabel = document.querySelector("#loading-percent");
+                const files = document.querySelector("#loading-files");
+                const data = document.querySelector("#loading-data");
+                if (
+                    progress === null ||
+                    percentLabel === null ||
+                    files === null ||
+                    data === null ||
+                    loadingState.totalBytes === 0
+                ) {
+                    return;
+                }
+
+                const percent = Math.round(
+                    loadingState.completedBytes * 100 / loadingState.totalBytes,
+                );
+                setLoadingStage("download", "Downloading renderer resources");
+                percentLabel.textContent = `${percent}%`;
+                files.textContent =
+                    `${loadingState.completedFiles} / ${loadingState.totalFiles}`;
+                data.textContent =
+                    `${formatMegabytes(loadingState.completedBytes)} / ` +
+                    formatMegabytes(loadingState.totalBytes);
+                if (loadingState.completedBytes === 0) {
+                    return;
+                }
+
+                progress.classList.add("determinate");
+                progress.style.transform = "none";
+                progress.style.width = `${percent}%`;
+                progress.setAttribute("aria-valuenow", `${percent}`);
+            };
+
+            const showLoadingError = () => {
+                const shell = document.querySelector("#loading-shell");
+                const percentLabel = document.querySelector("#loading-percent");
+                if (shell !== null) {
+                    shell.classList.add("loading-error");
+                }
+                if (percentLabel !== null) {
+                    percentLabel.textContent = "Error";
+                }
+                setLoadingStage("download", "Loading failed. Refresh to retry.");
+            };
+
+            const updateElapsedTime = () => {
+                const body = document.body;
+                if (body !== null && body.shadowRoot !== null) {
+                    window.clearInterval(loadingClock);
+                    return;
+                }
+                const elapsed = document.querySelector("#loading-elapsed");
+                if (elapsed !== null) {
+                    const seconds = Math.floor(
+                        (Date.now() - loadingState.startedAt) / 1000,
+                    );
+                    elapsed.textContent = `${seconds}s`;
+                }
+            };
+
+            const loadingClock = window.setInterval(updateElapsedTime, 1000);
+
+            const fetchChunkedWasm = async (requestUrl) => {
+                const manifestUrl = new URL(requestUrl);
+                manifestUrl.pathname = `${manifestUrl.pathname}.chunks.json`;
+                const manifestResponse = await nativeFetch(manifestUrl);
+                if (!manifestResponse.ok) {
+                    throw new Error(`Failed to load ${manifestUrl}`);
+                }
+
+                const manifest = await manifestResponse.json();
+                loadingState.totalBytes += manifest.byteLength;
+                loadingState.totalFiles += manifest.chunks.length;
+                updateLoadingProgress();
+
+                const chunks = [];
+                for (const chunkName of manifest.chunks) {
+                    const chunkUrl = new URL(chunkName, manifestUrl);
+                    const chunkResponse = await nativeFetch(chunkUrl);
+                    if (!chunkResponse.ok) {
+                        throw new Error(`Failed to load ${chunkUrl}`);
+                    }
+                    const chunkBytes = new Uint8Array(
+                        await chunkResponse.arrayBuffer(),
+                    );
+                    chunks.push(chunkBytes);
+                    loadingState.completedBytes += chunkBytes.byteLength;
+                    loadingState.completedFiles += 1;
+                    updateLoadingProgress();
+                }
+
+                const bytes = new Uint8Array(manifest.byteLength);
+                let offset = 0;
+                for (const chunk of chunks) {
+                    bytes.set(chunk, offset);
+                    offset += chunk.byteLength;
+                }
+                return bytes;
+            };
+
+            const fetchDirectWasm = async (input, options) => {
+                const controller = new AbortController();
+                let timeoutId = 0;
+                const timeout = new Promise((_, reject) => {
+                    timeoutId = window.setTimeout(() => {
+                        controller.abort();
+                        reject(new Error("Direct Wasm download timed out"));
+                    }, directWasmTimeoutMs);
+                });
+                const download = nativeFetch(input, {
+                    ...(options ?? {}),
+                    signal: controller.signal,
+                }).then(async (response) => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${response.url}`);
+                    }
+                    const bytes = new Uint8Array(await response.arrayBuffer());
+                    if (bytes.byteLength === 0) {
+                        throw new Error(`Empty Wasm response from ${response.url}`);
+                    }
+                    return bytes;
+                });
+
+                try {
+                    return await Promise.race([download, timeout]);
+                } finally {
+                    window.clearTimeout(timeoutId);
+                }
+            };
+
+            const createWasmResponse = (bytes) => new Response(bytes, {
+                headers: { "Content-Type": "application/wasm" },
+            });
+
+            window.fetch = async (input, options) => {
+                const requestUrl = new URL(
+                    input instanceof Request ? input.url : input,
+                    window.location.href,
+                );
+                if (!requestUrl.pathname.endsWith(".wasm")) {
+                    return nativeFetch(input, options);
+                }
+
+                setLoadingStage("download", "Trying fast renderer download");
+                try {
+                    const bytes = await fetchDirectWasm(input, options);
+                    loadingState.directModules += 1;
+                    setLoadingStage(
+                        "download",
+                        `Downloaded ${loadingState.directModules} / 2 renderer modules`,
+                    );
+                    const response = createWasmResponse(
+                        bytes,
+                    );
+                    return response;
+                } catch (directFailure) {
+                    setLoadingStage(
+                        "download",
+                        "Connection is slow. Continuing with reliable download",
+                    );
+                    try {
+                        const response = createWasmResponse(
+                            await fetchChunkedWasm(requestUrl),
+                        );
+                        return response;
+                    } catch (chunkFailure) {
+                        showLoadingError();
+                        throw chunkFailure;
+                    }
+                }
+            };
+
+            WebAssembly.instantiateStreaming = async (source, imports, options) => {
+                const response = await source;
+                setLoadingStage("compile", "Compiling renderer");
+                const result = await nativeInstantiate(
+                    await response.arrayBuffer(),
+                    imports,
+                    options,
+                );
+                loadingState.modulesReady += 1;
+                if (loadingState.modulesReady >= 2) {
+                    setLoadingStage("open", "Opening diagram workspace");
+                    const percentLabel = document.querySelector("#loading-percent");
+                    if (percentLabel !== null) {
+                        percentLabel.textContent = "Ready";
+                    }
+                }
+                return result;
+            };
+        }
+    </script>
+    <script defer type="application/javascript" src="cmp-mermaid.js"></script>
+</head>
+<body>
+    <main class="loading-shell" id="loading-shell" aria-busy="true">
+        <div class="loading-content">
+            <div class="loading-heading">
+                <h1 class="loading-title">CMP Mermaid</h1>
+                <span class="loading-percent" id="loading-percent">Starting</span>
+            </div>
+            <p class="loading-status" id="loading-status">Preparing renderer...</p>
+            <div class="loading-track">
+                <div
+                    class="loading-progress"
+                    id="loading-progress"
+                    role="progressbar"
+                    aria-label="Loading CMP Mermaid"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                ></div>
+            </div>
+            <div class="loading-meta" aria-live="polite">
+                <div class="loading-metric">
+                    <span class="loading-metric-label">Resources</span>
+                    <span class="loading-metric-value" id="loading-files">2 modules</span>
+                </div>
+                <div class="loading-metric">
+                    <span class="loading-metric-label">Downloaded</span>
+                    <span class="loading-metric-value" id="loading-data">Calculating...</span>
+                </div>
+                <div class="loading-metric">
+                    <span class="loading-metric-label">Elapsed</span>
+                    <span class="loading-metric-value" id="loading-elapsed">0s</span>
+                </div>
+            </div>
+            <ol class="loading-stages">
+                <li class="loading-stage active" data-loading-stage="download">
+                    Download
+                </li>
+                <li class="loading-stage" data-loading-stage="compile">
+                    Compile
+                </li>
+                <li class="loading-stage" data-loading-stage="open">
+                    Open workspace
+                </li>
+            </ol>
+            <p class="loading-types">
+                Flowchart · XY Chart · Sequence · Class · State · ER · Gantt · Pie
+            </p>
+        </div>
+    </main>
+</body>
+</html>

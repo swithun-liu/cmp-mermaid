@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "platform": "Desktop macOS",
+  "caseCount": 236,
+  "lastCaseId": "prod_sankey_beta_compact",
+  "autoRunItemDelayMillis": 75,
+  "completionMillis": 21000,
+  "peakRssKb": 442176,
+  "finalRssKb": 442176,
+  "completedRuns": 3,
+  "windowObserved": false,
+  "reachedLastCase": true,
+  "crashed": false
+}

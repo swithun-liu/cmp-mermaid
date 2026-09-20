@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "platform": "iOS Simulator",
+  "device": "iPhone 17 Pro",
+  "caseCount": 236,
+  "lastCaseId": "prod_sankey_beta_compact",
+  "autoRunItemDelayMillis": 75,
+  "completionMillis": 23000,
+  "peakHostRssKb": 366720,
+  "finalHostRssKb": 366720,
+  "reachedLastCase": true,
+  "crashed": false
+}

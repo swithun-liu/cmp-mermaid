@@ -1,0 +1,800 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-18T06:34:53.746Z",
+  "inputDirectory": "captures/local/cynefin-production-20260918",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_cynefin_product_portfolio",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 111216,
+        "inkRatio": 0.10297777777777778,
+        "contentBounds": {
+          "x": 97,
+          "y": 39,
+          "width": 1006,
+          "height": 789
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 108063,
+        "inkRatio": 0.10005833333333333,
+        "contentBounds": {
+          "x": 106,
+          "y": 44,
+          "width": 988,
+          "height": 777
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.0154440154440154,
+      "inkRatio": 1.029177424280281
+    },
+    {
+      "id": "rc_cynefin_operational_transitions",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 104672,
+        "inkRatio": 0.09691851851851851,
+        "contentBounds": {
+          "x": 97,
+          "y": 39,
+          "width": 1006,
+          "height": 789
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 102761,
+        "inkRatio": 0.09514907407407408,
+        "contentBounds": {
+          "x": 106,
+          "y": 44,
+          "width": 988,
+          "height": 777
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.0154440154440154,
+      "inkRatio": 1.0185965492745301
+    },
+    {
+      "id": "rc_cynefin_confusion_backlog",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 76144,
+        "inkRatio": 0.07050370370370371,
+        "contentBounds": {
+          "x": 97,
+          "y": 73,
+          "width": 1006,
+          "height": 755
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74243,
+        "inkRatio": 0.06874351851851852,
+        "contentBounds": {
+          "x": 106,
+          "y": 80,
+          "width": 988,
+          "height": 741
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.01889338731444,
+      "inkRatio": 1.0256051075522272
+    },
+    {
+      "id": "rc_cynefin_intrinsic_workshop",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71809,
+        "inkRatio": 0.06648981481481482,
+        "contentBounds": {
+          "x": 77,
+          "y": 32,
+          "width": 1046,
+          "height": 813
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 68993,
+        "inkRatio": 0.0638824074074074,
+        "contentBounds": {
+          "x": 88,
+          "y": 40,
+          "width": 1024,
+          "height": 798
+        }
+      },
+      "widthRatio": 1.021484375,
+      "heightRatio": 1.018796992481203,
+      "inkRatio": 1.0408157349296308
+    },
+    {
+      "id": "rc_cynefin_accessible_regions",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          51,
+          51,
+          51,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ],
+          [
+            51,
+            51,
+            51,
+            255
+          ]
+        ],
+        "inkPixels": 758947,
+        "inkRatio": 0.7027287037037037,
+        "contentBounds": {
+          "x": 97,
+          "y": 39,
+          "width": 1006,
+          "height": 789
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          51,
+          51,
+          51,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ],
+          [
+            51,
+            51,
+            51,
+            255
+          ]
+        ],
+        "inkPixels": 730037,
+        "inkRatio": 0.6759601851851852,
+        "contentBounds": {
+          "x": 106,
+          "y": 44,
+          "width": 988,
+          "height": 777
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.0154440154440154,
+      "inkRatio": 1.0396007325656096
+    },
+    {
+      "id": "prod_cynefin_delivery_domains",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 90894,
+        "inkRatio": 0.08416111111111112,
+        "contentBounds": {
+          "x": 97,
+          "y": 39,
+          "width": 1006,
+          "height": 789
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 88720,
+        "inkRatio": 0.08214814814814815,
+        "contentBounds": {
+          "x": 106,
+          "y": 44,
+          "width": 988,
+          "height": 777
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.0154440154440154,
+      "inkRatio": 1.0245040577096485
+    },
+    {
+      "id": "prod_cynefin_transition_lifecycle",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 91814,
+        "inkRatio": 0.08501296296296296,
+        "contentBounds": {
+          "x": 97,
+          "y": 73,
+          "width": 1006,
+          "height": 755
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 89476,
+        "inkRatio": 0.08284814814814814,
+        "contentBounds": {
+          "x": 106,
+          "y": 80,
+          "width": 988,
+          "height": 741
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.01889338731444,
+      "inkRatio": 1.0261299119316911
+    },
+    {
+      "id": "prod_cynefin_confusion_overflow",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 73820,
+        "inkRatio": 0.06835185185185186,
+        "contentBounds": {
+          "x": 97,
+          "y": 73,
+          "width": 1006,
+          "height": 755
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71701,
+        "inkRatio": 0.06638981481481482,
+        "contentBounds": {
+          "x": 106,
+          "y": 80,
+          "width": 988,
+          "height": 741
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.01889338731444,
+      "inkRatio": 1.0295532837756796
+    },
+    {
+      "id": "prod_cynefin_intrinsic_worksheet",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 72729,
+        "inkRatio": 0.06734166666666666,
+        "contentBounds": {
+          "x": 57,
+          "y": 35,
+          "width": 1084,
+          "height": 804
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71004,
+        "inkRatio": 0.06574444444444444,
+        "contentBounds": {
+          "x": 64,
+          "y": 41,
+          "width": 1070,
+          "height": 795
+        }
+      },
+      "widthRatio": 1.0130841121495326,
+      "heightRatio": 1.0113207547169811,
+      "inkRatio": 1.0242944059489607
+    },
+    {
+      "id": "prod_cynefin_responsive_theme",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 423016,
+        "inkRatio": 0.39168148148148146,
+        "contentBounds": {
+          "x": 97,
+          "y": 73,
+          "width": 1006,
+          "height": 755
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 408033,
+        "inkRatio": 0.37780833333333336,
+        "contentBounds": {
+          "x": 106,
+          "y": 79,
+          "width": 988,
+          "height": 742
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.017520215633423,
+      "inkRatio": 1.0367200692100882
+    },
+    {
+      "id": "prod_cynefin_duplicate_domain",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 79602,
+        "inkRatio": 0.07370555555555555,
+        "contentBounds": {
+          "x": 97,
+          "y": 73,
+          "width": 1006,
+          "height": 755
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 77159,
+        "inkRatio": 0.07144351851851852,
+        "contentBounds": {
+          "x": 106,
+          "y": 80,
+          "width": 988,
+          "height": 741
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.01889338731444,
+      "inkRatio": 1.031661892974248
+    },
+    {
+      "id": "prod_cynefin_accessible_regions",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 85498,
+        "inkRatio": 0.07916481481481481,
+        "contentBounds": {
+          "x": 97,
+          "y": 39,
+          "width": 1006,
+          "height": 789
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 82735,
+        "inkRatio": 0.07660648148148148,
+        "contentBounds": {
+          "x": 106,
+          "y": 44,
+          "width": 988,
+          "height": 777
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.0154440154440154,
+      "inkRatio": 1.033395781712697
+    },
+    {
+      "id": "prod_cynefin_colon_header",
+      "kind": "cynefin",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 76974,
+        "inkRatio": 0.07127222222222222,
+        "contentBounds": {
+          "x": 97,
+          "y": 73,
+          "width": 1006,
+          "height": 755
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74834,
+        "inkRatio": 0.06929074074074074,
+        "contentBounds": {
+          "x": 106,
+          "y": 80,
+          "width": 988,
+          "height": 741
+        }
+      },
+      "widthRatio": 1.0182186234817814,
+      "heightRatio": 1.01889338731444,
+      "inkRatio": 1.0285966272015394
+    }
+  ]
+}

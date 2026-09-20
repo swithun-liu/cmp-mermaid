@@ -1,0 +1,158 @@
+name: Full Visual Parity
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 2 * * 0"
+
+permissions:
+  contents: read
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Verify generated visual corpus
+        run: |
+          node tools/official-reference/generate-stability-corpus.mjs
+          git diff --exit-code -- \
+            mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/StabilityCorpus.kt \
+            mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/StabilityCorpus.kt
+
+      - name: Build Web production distribution
+        run: ./gradlew :sample:webApp:wasmJsBrowserDistribution
+
+      - name: Upload Web audit application
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-parity-web
+          path: sample/webApp/build/dist/wasmJs/productionExecutable
+          retention-days: 3
+
+  visual-parity:
+    needs: build-web
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        kind:
+          - flowchart
+          - xychart
+          - quadrant
+          - timeline
+          - sequence
+          - class
+          - state
+          - er
+          - gantt
+          - pie
+          - journey
+          - requirement
+          - gitgraph
+          - mindmap
+          - packet
+          - radar
+          - sankey
+          - kanban
+          - treemap
+          - venn
+          - ishikawa
+          - cynefin
+          - agentflow
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: tools/official-reference/package-lock.json
+
+      - name: Install visual audit dependencies
+        working-directory: tools/official-reference
+        run: |
+          npm ci
+          npm run test:detail-audit
+
+      - name: Download Web audit application
+        uses: actions/download-artifact@v4
+        with:
+          name: visual-parity-web
+          path: build/visual-parity-web
+
+      - name: Capture 256 Native and Official pairs
+        working-directory: tools/official-reference
+        run: |
+          python3 -m http.server 8093 \
+            --directory ../../build/visual-parity-web \
+            >/tmp/cmp-mermaid-visual-parity.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8093/ >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          AUDIT_SOURCE=visual-parity \
+          AUDIT_KIND=${{ matrix.kind }} \
+          OUTPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
+          BASE_URL=http://127.0.0.1:8093/ \
+          VIEWPORT_WIDTH=1200 \
+          VIEWPORT_HEIGHT=900 \
+          npm run capture:web-audit
+
+      - name: Enforce pair geometry
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_SOURCE=visual-parity \
+          CORPUS_KIND=${{ matrix.kind }} \
+          INPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
+          OUTPUT_FILE=captures/visual-parity/${{ matrix.kind }}-geometry.json \
+          npm run audit:stability-geometry
+
+      - name: Enforce pair detail
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_SOURCE=visual-parity \
+          CORPUS_KIND=${{ matrix.kind }} \
+          INPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
+          OUTPUT_FILE=captures/visual-parity/${{ matrix.kind }}-detail.json \
+          HEATMAP_DIR=captures/visual-parity/${{ matrix.kind }}-diffs \
+          npm run audit:detail
+
+      - name: Generate paged visual evidence
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_SOURCE=visual-parity \
+          CORPUS_KIND=${{ matrix.kind }} \
+          INPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
+          OUTPUT_DIR=captures/visual-parity/${{ matrix.kind }}-evidence \
+          CONTACT_SHEET_PAGE_SIZE=16 \
+          npm run generate:stability-contact-sheets
+
+      - name: Upload visual parity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-parity-${{ matrix.kind }}
+          path: captures/visual-parity
+          retention-days: 14
