@@ -62,6 +62,24 @@ jobs:
             exit 1
           fi
 
+      - name: Validate Maven publishing secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            ORG_GRADLE_PROJECT_mavenCentralUsername
+            ORG_GRADLE_PROJECT_mavenCentralPassword
+            ORG_GRADLE_PROJECT_signingInMemoryKey
+            ORG_GRADLE_PROJECT_signingInMemoryKeyId
+            ORG_GRADLE_PROJECT_signingInMemoryKeyPassword
+          )
+          for name in "${required[@]}"; do
+            if [[ -z "${!name:-}" ]]; then
+              echo "Missing required Maven publishing secret: $name" >&2
+              exit 1
+            fi
+          done
+
       - name: Set up Java 17
         uses: actions/setup-java@v6
         with:
@@ -168,7 +186,11 @@ jobs:
           tools/release/upload-central-bundle.sh \
             "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" \
             "cmp-mermaid-android-kotlin17-$version"
-          pod trunk push "$release_dir/CMPMermaid.podspec" --allow-warnings
+          if [[ -n "${COCOAPODS_TRUNK_TOKEN:-}" ]]; then
+            pod trunk push "$release_dir/CMPMermaid.podspec" --allow-warnings
+          else
+            echo "::notice::Skipping CocoaPods publication because COCOAPODS_TRUNK_TOKEN is not configured"
+          fi
 
           gh release edit "$tag" --prerelease=false --latest
           release_finalized=true
