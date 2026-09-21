@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-21T08:43:53.107Z",
-  "caseCount": 366,
+  "generatedAt": "2026-09-21T10:19:07.138Z",
+  "caseCount": 384,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -8202,6 +8202,443 @@
       "nativeSha256": "a0f8c94217fe2d35e0969a9aebdd8fceea4b7576957b520471fe314675b70541",
       "officialSha256": "0d2252889f0ca8ef099b179af7fcd5f35c5e14ca73cb23ce98603d0b6564c867",
       "sourceSha256": "c019c9f260962c340aea0b3cc652cdcb0465ea4d12b57715a21874df26dc555a"
+    },
+    {
+      "id": "rc_railroad_ir_protocol_frame",
+      "kind": "railroad",
+      "title": "Protocol frame grammar",
+      "scenario": "Explicit Railroad constructors describe a framed message with optional metadata and repeated fields.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_railroad_ir_protocol_frame_native.png",
+      "officialFile": "rc_railroad_ir_protocol_frame_official.png",
+      "nativeBytes": 33251,
+      "officialBytes": 32291,
+      "nativeSha256": "66072801fc92d78960b8b294d2d14c16019fceb76fc7be813afabf999f4fe86b",
+      "officialSha256": "9eba7472a64d618fe5170b01a1f7230a053857f5e198d0e56b6dd75a4537b1f3",
+      "sourceSha256": "b7cc59a884a888e507fd9015d2a936d9dc7fce0fbc75614e26e48d249cf73239"
+    },
+    {
+      "id": "rc_railroad_ebnf_command_language",
+      "kind": "railroad",
+      "title": "Command language grammar",
+      "scenario": "A command parser combines alternatives, optional flags, and repeated arguments.",
+      "aspectRatio": 1.75,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_railroad_ebnf_command_language_native.png",
+      "officialFile": "rc_railroad_ebnf_command_language_official.png",
+      "nativeBytes": 54415,
+      "officialBytes": 52497,
+      "nativeSha256": "84684679e1476eb138185ca142e339ac52d14cb54997a113b58420bbca114530",
+      "officialSha256": "5a6f77cdb073494916a550244b67c4d0535cf6e65264c71cbd3b8f158d69fd95",
+      "sourceSha256": "31039093b654156bfc23d8e3abbb35f24d70885454bfcefc2eb698fec334b341"
+    },
+    {
+      "id": "rc_railroad_ebnf_query_pipeline",
+      "kind": "railroad",
+      "title": "Query pipeline grammar",
+      "scenario": "ISO EBNF constructs describe filters, projections, ordering, and bounded-looking clauses.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_railroad_ebnf_query_pipeline_native.png",
+      "officialFile": "rc_railroad_ebnf_query_pipeline_official.png",
+      "nativeBytes": 62911,
+      "officialBytes": 64255,
+      "nativeSha256": "d9d324bd14d98a00195fb9678c69d028e4409a360c4f3b4b3ddc94f1b2a64054",
+      "officialSha256": "ee2d1eb6b8dfbdfa15b99598ee6158877e08b3e8c2200d267757498fa2b57c19",
+      "sourceSha256": "515387936508c85f69d86f7adaf11b26551bdbcfb30d66871ccbaec2e2eaf642"
+    },
+    {
+      "id": "rc_railroad_abnf_message_envelope",
+      "kind": "railroad",
+      "title": "Message envelope grammar",
+      "scenario": "ABNF repetition and numeric terminals define a transport envelope and payload.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_railroad_abnf_message_envelope_native.png",
+      "officialFile": "rc_railroad_abnf_message_envelope_official.png",
+      "nativeBytes": 54319,
+      "officialBytes": 51778,
+      "nativeSha256": "62364252dd2824c02ddeeebe96dcaf39c4290797b708f5497f65ec966a65dc95",
+      "officialSha256": "ba9148d1a22f6fcf2f6b4c2261e057bca0426226ad5faf574289eeaa21d54da4",
+      "sourceSha256": "54424de02fe130cf89a1e135b999a3a78b8743e1802978a9a085a566a0e36652"
+    },
+    {
+      "id": "rc_railroad_peg_policy_expression",
+      "kind": "railroad",
+      "title": "Policy expression grammar",
+      "scenario": "PEG lookahead, ordered choice, repetition, and any-character fallback model policy expressions.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_railroad_peg_policy_expression_native.png",
+      "officialFile": "rc_railroad_peg_policy_expression_official.png",
+      "nativeBytes": 48156,
+      "officialBytes": 51824,
+      "nativeSha256": "8fa8accc2c0c6649045871bd7cf4f93a6bc4094e9a16401d3fbed23f5ec9a7db",
+      "officialSha256": "1b1f93815c3e65912aeee24b26322af4ae0995589153b00bbc43d872e4cfb667",
+      "sourceSha256": "dc2fc12ec695c64a212a5369d7705e992e2b0a7db7420e80ee7d4fdb499c7f43"
+    },
+    {
+      "id": "prod_railroad_ir_primitives",
+      "kind": "railroad",
+      "title": "Railroad IR primitives",
+      "scenario": "Explicit constructors cover every shared Railroad AST node.",
+      "aspectRatio": 1.8,
+      "features": [
+        "ir-header",
+        "terminals",
+        "non-terminals",
+        "sequences",
+        "choices",
+        "optional",
+        "zero-or-more",
+        "one-or-more",
+        "special"
+      ],
+      "expectedTexts": [
+        "value =",
+        "null",
+        "item",
+        "number"
+      ],
+      "nativeFile": "prod_railroad_ir_primitives_native.png",
+      "officialFile": "prod_railroad_ir_primitives_official.png",
+      "nativeBytes": 37610,
+      "officialBytes": 41537,
+      "nativeSha256": "7a7170580afd4bfe7a64b431fa5183d4e6cd49b25d2937c105f0470a585e5105",
+      "officialSha256": "7b46145e11083b86bbf5ac504ac43fa9e81e2c4a239bcb56b26eaaac7837aa1c",
+      "sourceSha256": "1ffb969de1bc882bab39856546a3f8bc8f0fc432a3fd5f437c158c4ccefb57b3"
+    },
+    {
+      "id": "prod_railroad_ir_nested",
+      "kind": "railroad",
+      "title": "Nested IR expression",
+      "scenario": "Nested choices and repetitions form a compact expression grammar.",
+      "aspectRatio": 1.8,
+      "features": [
+        "ir-header",
+        "sequences",
+        "choices",
+        "zero-or-more",
+        "non-terminals"
+      ],
+      "expectedTexts": [
+        "expression =",
+        "term",
+        "+",
+        "-"
+      ],
+      "nativeFile": "prod_railroad_ir_nested_native.png",
+      "officialFile": "prod_railroad_ir_nested_official.png",
+      "nativeBytes": 28662,
+      "officialBytes": 28157,
+      "nativeSha256": "269abd6de5b4eda7eb9c77279a699309fa65ebb86c5162d32d5871579c9d968a",
+      "officialSha256": "99b91819ed53e4ffd0ce9cce14b883e4ce1c6175a77c500ab2cdc278ac4fe78b",
+      "sourceSha256": "43b5fefc6ead36bf884c012cdfd32d5380b40fe4811d09b84d999ba217f7a065"
+    },
+    {
+      "id": "prod_railroad_ebnf_choice",
+      "kind": "railroad",
+      "title": "EBNF digit choice",
+      "scenario": "An EBNF rule branches across ten terminal alternatives.",
+      "aspectRatio": 1.5,
+      "features": [
+        "ebnf-header",
+        "terminals",
+        "choices"
+      ],
+      "expectedTexts": [
+        "digit =",
+        "0",
+        "5",
+        "9"
+      ],
+      "nativeFile": "prod_railroad_ebnf_choice_native.png",
+      "officialFile": "prod_railroad_ebnf_choice_official.png",
+      "nativeBytes": 31009,
+      "officialBytes": 31039,
+      "nativeSha256": "4beb15e3a41d0706f5de1dd3ead2c90ec55d2654e3ba01442159d76f7323acc9",
+      "officialSha256": "9f9d46c0061319456450b31aaedd2bfbd9b6643fb79ce7784ee8e4689bb206df",
+      "sourceSha256": "cc19954eb98b4e78e1c12b5538089e56674a00bf9826cf73bd6fd60fbacc2fe7"
+    },
+    {
+      "id": "prod_railroad_ebnf_expression",
+      "kind": "railroad",
+      "title": "EBNF expression grammar",
+      "scenario": "Groups, optional terms, and repetitions compose arithmetic expressions.",
+      "aspectRatio": 1.8,
+      "features": [
+        "ebnf-header",
+        "non-terminals",
+        "sequences",
+        "choices",
+        "optional",
+        "zero-or-more",
+        "one-or-more"
+      ],
+      "expectedTexts": [
+        "expression =",
+        "factor",
+        "number",
+        "digit"
+      ],
+      "nativeFile": "prod_railroad_ebnf_expression_native.png",
+      "officialFile": "prod_railroad_ebnf_expression_official.png",
+      "nativeBytes": 45712,
+      "officialBytes": 48572,
+      "nativeSha256": "e25bc8db3ee01c57b4909b99a73886fb579c3f5dd82264c645498520e361df4e",
+      "officialSha256": "0901441edaf6c333c02932b3c163c142838b83ebc7dd3a15dba8c6cee36d1fda",
+      "sourceSha256": "e02f0a580b1db702a4d0174e352087c43ce2ea701596e009704b2edc9867f314"
+    },
+    {
+      "id": "prod_railroad_ebnf_iso",
+      "kind": "railroad",
+      "title": "ISO EBNF constructs",
+      "scenario": "ISO comments, comma sequences, brackets, braces, special sequences, and exceptions coexist.",
+      "aspectRatio": 1.7,
+      "features": [
+        "ebnf-header",
+        "ebnf-iso",
+        "ebnf-exception",
+        "comments",
+        "special",
+        "optional",
+        "zero-or-more"
+      ],
+      "expectedTexts": [
+        "token =",
+        "letter",
+        "-",
+        "unicode scalar"
+      ],
+      "nativeFile": "prod_railroad_ebnf_iso_native.png",
+      "officialFile": "prod_railroad_ebnf_iso_official.png",
+      "nativeBytes": 35833,
+      "officialBytes": 38846,
+      "nativeSha256": "a29579f1c07af57ddb99dade48b57d1e51c79b44ed42f9b958f8a41b2b7144d0",
+      "officialSha256": "207db770cfe8689796895ab668235e8f4cb3700a7bbaf8d727c8a3357e987d7c",
+      "sourceSha256": "f18dcd338063bbae0b8e8026ebccff463c34cb37d1b4cb564c7a5d997ee2d196"
+    },
+    {
+      "id": "prod_railroad_abnf_address",
+      "kind": "railroad",
+      "title": "ABNF email address",
+      "scenario": "ABNF sequences, slash alternatives, and open repetition model an address.",
+      "aspectRatio": 1.8,
+      "features": [
+        "abnf-header",
+        "terminals",
+        "non-terminals",
+        "sequences",
+        "choices",
+        "one-or-more",
+        "zero-or-more"
+      ],
+      "expectedTexts": [
+        "address =",
+        "local-part",
+        "@",
+        "domain"
+      ],
+      "nativeFile": "prod_railroad_abnf_address_native.png",
+      "officialFile": "prod_railroad_abnf_address_official.png",
+      "nativeBytes": 44280,
+      "officialBytes": 42489,
+      "nativeSha256": "00d3ced9a3657c6100de11a4dfb7d561c3ccae593a318f04974b8880284cb496",
+      "officialSha256": "f07176c24fecfd315a2501dd693c9b4ac4a2e23cff837f7b750d34c866062214",
+      "sourceSha256": "ee90c995de1f11ac56900ff0ce32af80dcead18bf4d950aeb39c61dd335c8b09"
+    },
+    {
+      "id": "prod_railroad_abnf_repetition",
+      "kind": "railroad",
+      "title": "ABNF repetition ranges",
+      "scenario": "Exact, bounded, optional, and unbounded prefixes share numeric terminals.",
+      "aspectRatio": 1.7,
+      "features": [
+        "abnf-header",
+        "abnf-bounded-repeat",
+        "abnf-numeric-value",
+        "optional",
+        "zero-or-more"
+      ],
+      "expectedTexts": [
+        "octet =",
+        "%x30-39",
+        "token",
+        "suffix"
+      ],
+      "nativeFile": "prod_railroad_abnf_repetition_native.png",
+      "officialFile": "prod_railroad_abnf_repetition_official.png",
+      "nativeBytes": 40486,
+      "officialBytes": 40623,
+      "nativeSha256": "7ff2b6c15d735b3e318d8ea8f727a2956978f531b85c7fa5c1d86c410670e77d",
+      "officialSha256": "435b0619dc979101df97be7fafff292c81fa04e21602f652d0d3c38149ed022b",
+      "sourceSha256": "408dfd5027c327c8be8d7851361bde98610867bc82e06e00ebd83d49a19c974c"
+    },
+    {
+      "id": "prod_railroad_peg_calculator",
+      "kind": "railroad",
+      "title": "PEG calculator",
+      "scenario": "Ordered choices and suffix repetition describe a recursive calculator grammar.",
+      "aspectRatio": 1.8,
+      "features": [
+        "peg-header",
+        "terminals",
+        "non-terminals",
+        "sequences",
+        "choices",
+        "zero-or-more",
+        "one-or-more"
+      ],
+      "expectedTexts": [
+        "Expression",
+        "Term",
+        "Factor",
+        "Digit"
+      ],
+      "nativeFile": "prod_railroad_peg_calculator_native.png",
+      "officialFile": "prod_railroad_peg_calculator_official.png",
+      "nativeBytes": 43813,
+      "officialBytes": 48312,
+      "nativeSha256": "80043b77bccecb6dddc26708aa33f04986d42fb4ca2f93a44b57bd8eae18559c",
+      "officialSha256": "05a871c8ef1929bf007ac298c7037539f243a9a7a5c291aa9f96d8897ca8f8be",
+      "sourceSha256": "bb63f22588cd65a5fe052fba8515df638bb5e9d449e9928742dc28ef0ebcc8b8"
+    },
+    {
+      "id": "prod_railroad_peg_predicates",
+      "kind": "railroad",
+      "title": "PEG predicates",
+      "scenario": "Positive and negative lookahead plus any-character matching become special nodes.",
+      "aspectRatio": 1.7,
+      "features": [
+        "peg-header",
+        "peg-predicates",
+        "peg-any",
+        "comments",
+        "special"
+      ],
+      "expectedTexts": [
+        "Identifier",
+        "!Keyword",
+        "&Letter",
+        "."
+      ],
+      "nativeFile": "prod_railroad_peg_predicates_native.png",
+      "officialFile": "prod_railroad_peg_predicates_official.png",
+      "nativeBytes": 43467,
+      "officialBytes": 47961,
+      "nativeSha256": "12d1c2c186b32babfebffb5340caa8231289e06ae26f795ea0f817c9fa78cc7d",
+      "officialSha256": "c6d7e2cc79024eb05872a5c16ecee8dd7d7ef37f6671dc6ee7a33bf0f0ffeece",
+      "sourceSha256": "3db7ece75eca3d3825c0d11bd3d1b0ffdf219dcdd83ec3f7dfe80a3f5b504fc7"
+    },
+    {
+      "id": "prod_railroad_metadata",
+      "kind": "railroad",
+      "title": "Accessible grammar metadata",
+      "scenario": "Title and accessibility metadata accompany an EBNF grammar.",
+      "aspectRatio": 1.6,
+      "features": [
+        "ebnf-header",
+        "accessibility",
+        "terminals",
+        "non-terminals"
+      ],
+      "expectedTexts": [
+        "document =",
+        "header",
+        "body"
+      ],
+      "nativeFile": "prod_railroad_metadata_native.png",
+      "officialFile": "prod_railroad_metadata_official.png",
+      "nativeBytes": 35882,
+      "officialBytes": 31474,
+      "nativeSha256": "9e29ebde1f461baab3a3c4833a6b7f14ae001140ae0219066160305b2538896f",
+      "officialSha256": "92bab8703bd236fc68da6a2889f6690dccae36d8b0faca44bfdebefb844a6f39",
+      "sourceSha256": "9593462093cbbe37607027dcef4769af42d4a806a8a8ff5c10f62ff02a654486"
+    },
+    {
+      "id": "prod_railroad_configured",
+      "kind": "railroad",
+      "title": "Configured railroad styles",
+      "scenario": "Scoped geometry, typography, colors, and intrinsic sizing style every symbol class.",
+      "aspectRatio": 1.8,
+      "features": [
+        "frontmatter-config",
+        "theme",
+        "ir-header",
+        "special"
+      ],
+      "expectedTexts": [
+        "configured =",
+        "start",
+        "payload",
+        "checksum"
+      ],
+      "nativeFile": "prod_railroad_configured_native.png",
+      "officialFile": "prod_railroad_configured_official.png",
+      "nativeBytes": 29483,
+      "officialBytes": 27144,
+      "nativeSha256": "ba406a8ec8c23089a1bd3023ea6324d26898ab4b3e3e2c6603c0ed9ffd973dbb",
+      "officialSha256": "6cf6c45434d5237dd1d24683374c6736ef1402e81490cff733a2115e326e1883",
+      "sourceSha256": "5d1434c4a37f0835a528da04baa89b2604c13eb355d6941497fc16f3000f3d07"
+    },
+    {
+      "id": "prod_railroad_unicode",
+      "kind": "railroad",
+      "title": "International grammar",
+      "scenario": "Unicode terminals and rule references retain multilingual labels.",
+      "aspectRatio": 1.7,
+      "features": [
+        "ebnf-header",
+        "unicode",
+        "terminals",
+        "non-terminals",
+        "choices"
+      ],
+      "expectedTexts": [
+        "regional =",
+        "東京",
+        "서울",
+        "São Paulo"
+      ],
+      "nativeFile": "prod_railroad_unicode_native.png",
+      "officialFile": "prod_railroad_unicode_official.png",
+      "nativeBytes": 44186,
+      "officialBytes": 44204,
+      "nativeSha256": "b08e27e1e7f78d1cc17ff31de3a47833b64ca29863a61a7efcaae1082a4afb4d",
+      "officialSha256": "2035a436c8831b4454941021f8b6a38c02a587306225ff484dc0c57fe36eb1ef",
+      "sourceSha256": "f77db5ad2f1988c607b3a8001f0436412c0694b8bce2ea25ede8a1ee5121556f"
+    },
+    {
+      "id": "prod_railroad_entities",
+      "kind": "railroad",
+      "title": "Encoded grammar tokens",
+      "scenario": "HTML entities pass through Mermaid preprocessing and render as visible grammar text.",
+      "aspectRatio": 1.7,
+      "features": [
+        "ir-header",
+        "entities",
+        "terminals",
+        "special"
+      ],
+      "expectedTexts": [
+        "comparison =",
+        "&lt;",
+        "&amp;",
+        "&gt;"
+      ],
+      "nativeFile": "prod_railroad_entities_native.png",
+      "officialFile": "prod_railroad_entities_official.png",
+      "nativeBytes": 31101,
+      "officialBytes": 27342,
+      "nativeSha256": "74059da0c7cdbd87667d60e2810cc6bfbc3ab8d26fc90c94327b0ee66ecae6da",
+      "officialSha256": "7931e62dcd3b1564b6ef130adfe7f7c8e21ab06c505bee1ab8364d9569956a29",
+      "sourceSha256": "0567f786fd0fa1ebbde2e9262a74f0101ff9ffeba92d7d1d50a9e0464901df54"
     }
   ]
 }

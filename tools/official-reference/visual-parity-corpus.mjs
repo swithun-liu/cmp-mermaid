@@ -6,6 +6,7 @@ export const kinds = [
   'swimlanes',
   'architecture',
   'c4',
+  'railroad',
   'xychart',
   'quadrant',
   'timeline',
@@ -118,6 +119,8 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}
   Person(${evidenceId}, "${escapeQuotedLabel(label)}", "Visual parity evidence")
 `;
+    case 'railroad':
+      return appendRailroadEvidence(source, evidenceId, label);
     case 'xychart':
       return replaceOrInsertTitle(source, 'xychart', label);
     case 'quadrant': {
@@ -195,6 +198,26 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
+}
+
+function appendRailroadEvidence(source, evidenceId, label) {
+  const declaration = firstDiagramDeclaration(source);
+  const operator = declaration === 'railroad-peg-beta' ? '<-' : '=';
+  const expression = declaration === 'railroad-beta'
+    ? `terminal("${escapeQuotedLabel(label)}")`
+    : `"${escapeQuotedLabel(label)}"`;
+  return `${source.trimEnd()}\n  ${evidenceId} ${operator} ${expression} ;\n`;
+}
+
+function firstDiagramDeclaration(source) {
+  const declaration = source
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .find((line) => /^railroad(?:-(?:ebnf|abnf|peg))?-beta$/.test(line));
+  if (declaration === undefined) {
+    throw new Error('Missing Railroad declaration while adding visual evidence');
+  }
+  return declaration;
 }
 
 function appendAgentflowEvidence(source, evidenceId, label) {

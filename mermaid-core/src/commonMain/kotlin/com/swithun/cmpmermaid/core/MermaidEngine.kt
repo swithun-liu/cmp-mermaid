@@ -19,6 +19,7 @@ import com.swithun.cmpmermaid.core.packet.PacketPlugin
 import com.swithun.cmpmermaid.core.pie.PiePlugin
 import com.swithun.cmpmermaid.core.quadrant.QuadrantPlugin
 import com.swithun.cmpmermaid.core.radar.RadarPlugin
+import com.swithun.cmpmermaid.core.railroad.RailroadPlugin
 import com.swithun.cmpmermaid.core.requirement.RequirementPlugin
 import com.swithun.cmpmermaid.core.sankey.SankeyPlugin
 import com.swithun.cmpmermaid.core.sequence.SequencePlugin
@@ -69,6 +70,7 @@ class MermaidEngine(
         MindmapPlugin(),
         PacketPlugin(),
         RadarPlugin(),
+        RailroadPlugin(),
         SankeyPlugin(),
         IshikawaPlugin(),
         CynefinPlugin(),

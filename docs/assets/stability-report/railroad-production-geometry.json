@@ -1,0 +1,1083 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-21T10:19:04.581Z",
+  "inputDirectory": "captures/local/railroad-production",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 18,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_railroad_ir_protocol_frame",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 76779,
+        "inkRatio": 0.07109166666666666,
+        "contentBounds": {
+          "x": 15,
+          "y": 299,
+          "width": 1143,
+          "height": 254
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71221,
+        "inkRatio": 0.06594537037037038,
+        "contentBounds": {
+          "x": 36,
+          "y": 303,
+          "width": 1095,
+          "height": 247
+        }
+      },
+      "widthRatio": 1.0438356164383562,
+      "heightRatio": 1.0283400809716599,
+      "inkRatio": 1.0780387806967044
+    },
+    {
+      "id": "rc_railroad_ebnf_command_language",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 122268,
+        "inkRatio": 0.11321111111111111,
+        "contentBounds": {
+          "x": 174,
+          "y": 25,
+          "width": 822,
+          "height": 797
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 107916,
+        "inkRatio": 0.09992222222222222,
+        "contentBounds": {
+          "x": 198,
+          "y": 53,
+          "width": 770,
+          "height": 745
+        }
+      },
+      "widthRatio": 1.0675324675324676,
+      "heightRatio": 1.0697986577181209,
+      "inkRatio": 1.132992327365729
+    },
+    {
+      "id": "rc_railroad_ebnf_query_pipeline",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 129896,
+        "inkRatio": 0.12027407407407407,
+        "contentBounds": {
+          "x": 210,
+          "y": 20,
+          "width": 758,
+          "height": 821
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 119738,
+        "inkRatio": 0.11086851851851852,
+        "contentBounds": {
+          "x": 222,
+          "y": 43,
+          "width": 730,
+          "height": 777
+        }
+      },
+      "widthRatio": 1.0383561643835617,
+      "heightRatio": 1.0566280566280566,
+      "inkRatio": 1.0848352235714644
+    },
+    {
+      "id": "rc_railroad_abnf_message_envelope",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 146531,
+        "inkRatio": 0.13567685185185185,
+        "contentBounds": {
+          "x": 17,
+          "y": 75,
+          "width": 1130,
+          "height": 688
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 132123,
+        "inkRatio": 0.12233611111111112,
+        "contentBounds": {
+          "x": 42,
+          "y": 86,
+          "width": 1072,
+          "height": 668
+        }
+      },
+      "widthRatio": 1.0541044776119404,
+      "heightRatio": 1.029940119760479,
+      "inkRatio": 1.1090499004715302
+    },
+    {
+      "id": "rc_railroad_peg_policy_expression",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 65007,
+        "inkRatio": 0.060191666666666664,
+        "contentBounds": {
+          "x": 352,
+          "y": 18,
+          "width": 478,
+          "height": 832
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 58710,
+        "inkRatio": 0.05436111111111111,
+        "contentBounds": {
+          "x": 363,
+          "y": 38,
+          "width": 453,
+          "height": 794
+        }
+      },
+      "widthRatio": 1.055187637969095,
+      "heightRatio": 1.0478589420654911,
+      "inkRatio": 1.1072560040878896
+    },
+    {
+      "id": "prod_railroad_ir_primitives",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 141645,
+        "inkRatio": 0.13115277777777778,
+        "contentBounds": {
+          "x": 19,
+          "y": 78,
+          "width": 1118,
+          "height": 666
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 123242,
+        "inkRatio": 0.11411296296296296,
+        "contentBounds": {
+          "x": 47,
+          "y": 101,
+          "width": 1055,
+          "height": 625
+        }
+      },
+      "widthRatio": 1.0597156398104266,
+      "heightRatio": 1.0656,
+      "inkRatio": 1.1493240940588436
+    },
+    {
+      "id": "prod_railroad_ir_nested",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 78283,
+        "inkRatio": 0.07248425925925926,
+        "contentBounds": {
+          "x": 21,
+          "y": 220,
+          "width": 1112,
+          "height": 377
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 70588,
+        "inkRatio": 0.06535925925925926,
+        "contentBounds": {
+          "x": 50,
+          "y": 235,
+          "width": 1047,
+          "height": 353
+        }
+      },
+      "widthRatio": 1.0620821394460362,
+      "heightRatio": 1.0679886685552409,
+      "inkRatio": 1.1090128633762113
+    },
+    {
+      "id": "prod_railroad_ebnf_choice",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 45155,
+        "inkRatio": 0.041810185185185186,
+        "contentBounds": {
+          "x": 442,
+          "y": 24,
+          "width": 288,
+          "height": 803
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39496,
+        "inkRatio": 0.03657037037037037,
+        "contentBounds": {
+          "x": 447,
+          "y": 50,
+          "width": 275,
+          "height": 755
+        }
+      },
+      "widthRatio": 1.0472727272727274,
+      "heightRatio": 1.0635761589403974,
+      "inkRatio": 1.1432803321855378
+    },
+    {
+      "id": "prod_railroad_ebnf_expression",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71273,
+        "inkRatio": 0.06599351851851852,
+        "contentBounds": {
+          "x": 337,
+          "y": 20,
+          "width": 504,
+          "height": 822
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 64989,
+        "inkRatio": 0.060175,
+        "contentBounds": {
+          "x": 347,
+          "y": 42,
+          "width": 482,
+          "height": 781
+        }
+      },
+      "widthRatio": 1.045643153526971,
+      "heightRatio": 1.0524967989756722,
+      "inkRatio": 1.0966932865561865
+    },
+    {
+      "id": "prod_railroad_ebnf_iso",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 101476,
+        "inkRatio": 0.09395925925925926,
+        "contentBounds": {
+          "x": 16,
+          "y": 168,
+          "width": 1134,
+          "height": 505
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 92285,
+        "inkRatio": 0.08544907407407408,
+        "contentBounds": {
+          "x": 40,
+          "y": 184,
+          "width": 1082,
+          "height": 477
+        }
+      },
+      "widthRatio": 1.0480591497227356,
+      "heightRatio": 1.0587002096436058,
+      "inkRatio": 1.099593650105651
+    },
+    {
+      "id": "prod_railroad_abnf_address",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 117310,
+        "inkRatio": 0.10862037037037037,
+        "contentBounds": {
+          "x": 228,
+          "y": 29,
+          "width": 712,
+          "height": 785
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 100057,
+        "inkRatio": 0.09264537037037036,
+        "contentBounds": {
+          "x": 253,
+          "y": 57,
+          "width": 656,
+          "height": 732
+        }
+      },
+      "widthRatio": 1.0853658536585367,
+      "heightRatio": 1.0724043715846994,
+      "inkRatio": 1.172431713923064
+    },
+    {
+      "id": "prod_railroad_abnf_repetition",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 133115,
+        "inkRatio": 0.12325462962962963,
+        "contentBounds": {
+          "x": 122,
+          "y": 35,
+          "width": 912,
+          "height": 755
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 105101,
+        "inkRatio": 0.09731574074074074,
+        "contentBounds": {
+          "x": 168,
+          "y": 70,
+          "width": 814,
+          "height": 691
+        }
+      },
+      "widthRatio": 1.1203931203931203,
+      "heightRatio": 1.0926193921852387,
+      "inkRatio": 1.2665436104318704
+    },
+    {
+      "id": "prod_railroad_peg_calculator",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 95021,
+        "inkRatio": 0.08798240740740741,
+        "contentBounds": {
+          "x": 261,
+          "y": 23,
+          "width": 651,
+          "height": 807
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 83253,
+        "inkRatio": 0.0770861111111111,
+        "contentBounds": {
+          "x": 284,
+          "y": 49,
+          "width": 601,
+          "height": 759
+        }
+      },
+      "widthRatio": 1.0831946755407653,
+      "heightRatio": 1.0632411067193677,
+      "inkRatio": 1.1413522635820932
+    },
+    {
+      "id": "prod_railroad_peg_predicates",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 94720,
+        "inkRatio": 0.0877037037037037,
+        "contentBounds": {
+          "x": 111,
+          "y": 24,
+          "width": 950,
+          "height": 801
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 82675,
+        "inkRatio": 0.07655092592592593,
+        "contentBounds": {
+          "x": 134,
+          "y": 51,
+          "width": 900,
+          "height": 751
+        }
+      },
+      "widthRatio": 1.0555555555555556,
+      "heightRatio": 1.066577896138482,
+      "inkRatio": 1.1456909585727244
+    },
+    {
+      "id": "prod_railroad_metadata",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 161393,
+        "inkRatio": 0.14943796296296297,
+        "contentBounds": {
+          "x": 26,
+          "y": 179,
+          "width": 1086,
+          "height": 433
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 129361,
+        "inkRatio": 0.1197787037037037,
+        "contentBounds": {
+          "x": 62,
+          "y": 200,
+          "width": 1005,
+          "height": 399
+        }
+      },
+      "widthRatio": 1.0805970149253732,
+      "heightRatio": 1.0852130325814537,
+      "inkRatio": 1.2476171334482573
+    },
+    {
+      "id": "prod_railroad_configured",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74321,
+        "inkRatio": 0.06881574074074075,
+        "contentBounds": {
+          "x": 21,
+          "y": 362,
+          "width": 1124,
+          "height": 104
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 66142,
+        "inkRatio": 0.06124259259259259,
+        "contentBounds": {
+          "x": 50,
+          "y": 372,
+          "width": 1056,
+          "height": 99
+        }
+      },
+      "widthRatio": 1.0643939393939394,
+      "heightRatio": 1.0505050505050506,
+      "inkRatio": 1.1236581899549456
+    },
+    {
+      "id": "prod_railroad_unicode",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 174830,
+        "inkRatio": 0.16187962962962962,
+        "contentBounds": {
+          "x": 86,
+          "y": 42,
+          "width": 972,
+          "height": 710
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 136439,
+        "inkRatio": 0.12633240740740742,
+        "contentBounds": {
+          "x": 130,
+          "y": 88,
+          "width": 874,
+          "height": 628
+        }
+      },
+      "widthRatio": 1.1121281464530892,
+      "heightRatio": 1.1305732484076434,
+      "inkRatio": 1.281378491487038
+    },
+    {
+      "id": "prod_railroad_entities",
+      "kind": "railroad",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 80888,
+        "inkRatio": 0.0748962962962963,
+        "contentBounds": {
+          "x": 22,
+          "y": 344,
+          "width": 1107,
+          "height": 127
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71188,
+        "inkRatio": 0.06591481481481481,
+        "contentBounds": {
+          "x": 52,
+          "y": 350,
+          "width": 1040,
+          "height": 120
+        }
+      },
+      "widthRatio": 1.064423076923077,
+      "heightRatio": 1.0583333333333333,
+      "inkRatio": 1.1362589200427038
+    }
+  ]
+}

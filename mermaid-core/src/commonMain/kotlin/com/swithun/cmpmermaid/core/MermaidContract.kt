@@ -269,6 +269,34 @@ data class MermaidC4Options(
     val elementStyles: Map<String, MermaidC4ElementOptions> = emptyMap(),
 )
 
+data class MermaidRailroadOptions(
+    val useMaxWidth: Boolean = true,
+    val compactMode: Boolean = false,
+    val padding: Float = 10f,
+    val verticalSeparation: Float = 8f,
+    val horizontalSeparation: Float = 10f,
+    val arcRadius: Float = 10f,
+    val fontSize: Float? = null,
+    val fontFamily: String? = null,
+    val terminalFill: SceneColor? = null,
+    val terminalStroke: SceneColor? = null,
+    val terminalTextColor: SceneColor? = null,
+    val nonTerminalFill: SceneColor? = null,
+    val nonTerminalStroke: SceneColor? = null,
+    val nonTerminalTextColor: SceneColor? = null,
+    val lineColor: SceneColor? = null,
+    val strokeWidth: Float = 2f,
+    val markerFill: SceneColor? = null,
+    val commentFill: SceneColor? = null,
+    val commentStroke: SceneColor? = null,
+    val commentTextColor: SceneColor? = null,
+    val specialFill: SceneColor? = null,
+    val specialStroke: SceneColor? = null,
+    val ruleNameColor: SceneColor? = null,
+    val showMarkers: Boolean = true,
+    val markerRadius: Float = 5f,
+)
+
 data class MermaidTreemapOptions(
     val useMaxWidth: Boolean = true,
     val padding: Float = 10f,
@@ -427,6 +455,7 @@ data class MermaidRenderOptions(
     val block: MermaidBlockOptions = MermaidBlockOptions(),
     val architecture: MermaidArchitectureOptions = MermaidArchitectureOptions(),
     val c4: MermaidC4Options = MermaidC4Options(),
+    val railroad: MermaidRailroadOptions = MermaidRailroadOptions(),
     val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
     val venn: MermaidVennOptions = MermaidVennOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),

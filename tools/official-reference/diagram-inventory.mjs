@@ -82,6 +82,7 @@ export const diagramFamilies = Object.freeze([
       header('railroad-abnf-beta', 'railroadAbnf'),
       header('railroad-peg-beta', 'railroadPeg'),
     ],
+    true,
   ),
   family('requirement', 'Requirement', 'requirementDiagram.md', ['requirement'], [
     header('requirementDiagram', 'requirement'),

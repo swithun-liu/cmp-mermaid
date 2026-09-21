@@ -84,6 +84,32 @@ export const requiredFeaturesByKind = {
     'comments',
     'named-attributes',
   ],
+  railroad: [
+    'ir-header',
+    'ebnf-header',
+    'abnf-header',
+    'peg-header',
+    'terminals',
+    'non-terminals',
+    'sequences',
+    'choices',
+    'optional',
+    'zero-or-more',
+    'one-or-more',
+    'special',
+    'ebnf-iso',
+    'ebnf-exception',
+    'abnf-bounded-repeat',
+    'abnf-numeric-value',
+    'peg-predicates',
+    'peg-any',
+    'comments',
+    'accessibility',
+    'frontmatter-config',
+    'theme',
+    'unicode',
+    'entities',
+  ],
   xychart: [
     'vertical',
     'horizontal',
@@ -1486,6 +1512,270 @@ C4Context
   System_Ext(sao, "São Paulo", $descr="Completes 承認")
   Rel(tokyo, seoul, "Requests 검증")
   Rel(seoul, sao, "Requests 承認")
+`,
+  },
+];
+
+const railroadCases = [
+  {
+    id: 'prod_railroad_ir_primitives',
+    kind: 'railroad',
+    title: 'Railroad IR primitives',
+    scenario: 'Explicit constructors cover every shared Railroad AST node.',
+    aspectRatio: 1.8,
+    features: [
+      'ir-header',
+      'terminals',
+      'non-terminals',
+      'sequences',
+      'choices',
+      'optional',
+      'zero-or-more',
+      'one-or-more',
+      'special',
+    ],
+    expectedTexts: ['value =', 'null', 'item', 'number'],
+    source: String.raw`
+railroad-beta
+  value = choice(terminal("null"), nonterminal("item"), special("number")) ;
+  list = sequence(terminal("["), optional(nonterminal("value")), zeroOrMore(nonterminal("value")), oneOrMore(terminal("]"))) ;
+`,
+  },
+  {
+    id: 'prod_railroad_ir_nested',
+    kind: 'railroad',
+    title: 'Nested IR expression',
+    scenario: 'Nested choices and repetitions form a compact expression grammar.',
+    aspectRatio: 1.8,
+    features: ['ir-header', 'sequences', 'choices', 'zero-or-more', 'non-terminals'],
+    expectedTexts: ['expression =', 'term', '+', '-'],
+    source: String.raw`
+railroad-beta
+  expression = sequence(
+    nonterminal("term"),
+    zeroOrMore(sequence(choice(terminal("+"), terminal("-")), nonterminal("term")))
+  ) ;
+`,
+  },
+  {
+    id: 'prod_railroad_ebnf_choice',
+    kind: 'railroad',
+    title: 'EBNF digit choice',
+    scenario: 'An EBNF rule branches across ten terminal alternatives.',
+    aspectRatio: 1.5,
+    features: ['ebnf-header', 'terminals', 'choices'],
+    expectedTexts: ['digit =', '0', '5', '9'],
+    source: String.raw`
+railroad-ebnf-beta
+  digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+`,
+  },
+  {
+    id: 'prod_railroad_ebnf_expression',
+    kind: 'railroad',
+    title: 'EBNF expression grammar',
+    scenario: 'Groups, optional terms, and repetitions compose arithmetic expressions.',
+    aspectRatio: 1.8,
+    features: [
+      'ebnf-header',
+      'non-terminals',
+      'sequences',
+      'choices',
+      'optional',
+      'zero-or-more',
+      'one-or-more',
+    ],
+    expectedTexts: ['expression =', 'factor', 'number', 'digit'],
+    source: String.raw`
+railroad-ebnf-beta
+  expression = term ( ( "+" | "-" ) term )* ;
+  term = factor ( ( "*" | "/" ) factor )* ;
+  factor = number | "(" expression ")" ;
+  number = digit+ ;
+  signed = ("+" | "-")? number ;
+`,
+  },
+  {
+    id: 'prod_railroad_ebnf_iso',
+    kind: 'railroad',
+    title: 'ISO EBNF constructs',
+    scenario: 'ISO comments, comma sequences, brackets, braces, special sequences, and exceptions coexist.',
+    aspectRatio: 1.7,
+    features: [
+      'ebnf-header',
+      'ebnf-iso',
+      'ebnf-exception',
+      'comments',
+      'special',
+      'optional',
+      'zero-or-more',
+    ],
+    expectedTexts: ['token =', 'letter', '-', 'unicode scalar'],
+    source: String.raw`
+railroad-ebnf-beta
+  (* ISO grammar fragment *)
+  token = letter, { letter | digit | "_" }, [ "-" ], ? unicode scalar ? ;
+  safe = letter - "x" ;
+`,
+  },
+  {
+    id: 'prod_railroad_abnf_address',
+    kind: 'railroad',
+    title: 'ABNF email address',
+    scenario: 'ABNF sequences, slash alternatives, and open repetition model an address.',
+    aspectRatio: 1.8,
+    features: [
+      'abnf-header',
+      'terminals',
+      'non-terminals',
+      'sequences',
+      'choices',
+      'one-or-more',
+      'zero-or-more',
+    ],
+    expectedTexts: ['address =', 'local-part', '@', 'domain'],
+    source: String.raw`
+railroad-abnf-beta
+  address = local-part "@" domain ;
+  local-part = 1*( ALPHA / DIGIT / "." / "-" ) ;
+  domain = label *( "." label ) ;
+`,
+  },
+  {
+    id: 'prod_railroad_abnf_repetition',
+    kind: 'railroad',
+    title: 'ABNF repetition ranges',
+    scenario: 'Exact, bounded, optional, and unbounded prefixes share numeric terminals.',
+    aspectRatio: 1.7,
+    features: [
+      'abnf-header',
+      'abnf-bounded-repeat',
+      'abnf-numeric-value',
+      'optional',
+      'zero-or-more',
+    ],
+    expectedTexts: ['octet =', '%x30-39', 'token', 'suffix'],
+    source: String.raw`
+railroad-abnf-beta
+  octet = 2*4%x30-39 ;
+  token = 3ALPHA *DIGIT ;
+  suffix = [ "." 1*8ALPHA ] ;
+`,
+  },
+  {
+    id: 'prod_railroad_peg_calculator',
+    kind: 'railroad',
+    title: 'PEG calculator',
+    scenario: 'Ordered choices and suffix repetition describe a recursive calculator grammar.',
+    aspectRatio: 1.8,
+    features: [
+      'peg-header',
+      'terminals',
+      'non-terminals',
+      'sequences',
+      'choices',
+      'zero-or-more',
+      'one-or-more',
+    ],
+    expectedTexts: ['Expression', 'Term', 'Factor', 'Digit'],
+    source: String.raw`
+railroad-peg-beta
+  Expression <- Term (("+" / "-") Term)* ;
+  Term <- Factor (("*" / "/") Factor)* ;
+  Factor <- Number / "(" Expression ")" ;
+  Number <- Digit+ ;
+`,
+  },
+  {
+    id: 'prod_railroad_peg_predicates',
+    kind: 'railroad',
+    title: 'PEG predicates',
+    scenario: 'Positive and negative lookahead plus any-character matching become special nodes.',
+    aspectRatio: 1.7,
+    features: ['peg-header', 'peg-predicates', 'peg-any', 'comments', 'special'],
+    expectedTexts: ['Identifier', '!Keyword', '&Letter', '.'],
+    source: String.raw`
+railroad-peg-beta
+  # Keywords are excluded from identifiers.
+  Identifier <- !Keyword &Letter Letter Letter* ;
+  Keyword <- "if" / "else" / "while" ;
+  Letter <- "a" / "b" / "_" / . ;
+`,
+  },
+  {
+    id: 'prod_railroad_metadata',
+    kind: 'railroad',
+    title: 'Accessible grammar metadata',
+    scenario: 'Title and accessibility metadata accompany an EBNF grammar.',
+    aspectRatio: 1.6,
+    features: ['ebnf-header', 'accessibility', 'terminals', 'non-terminals'],
+    expectedTexts: ['document =', 'header', 'body'],
+    source: String.raw`
+railroad-ebnf-beta
+  title "Document Grammar"
+  accTitle: Accessible document grammar
+  accDescr {
+    A document contains a header and body.
+  }
+  document = header body ;
+  header = "HEADER" ;
+`,
+  },
+  {
+    id: 'prod_railroad_configured',
+    kind: 'railroad',
+    title: 'Configured railroad styles',
+    scenario: 'Scoped geometry, typography, colors, and intrinsic sizing style every symbol class.',
+    aspectRatio: 1.8,
+    features: ['frontmatter-config', 'theme', 'ir-header', 'special'],
+    expectedTexts: ['configured =', 'start', 'payload', 'checksum'],
+    source: String.raw`
+---
+config:
+  theme: forest
+  railroad:
+    useMaxWidth: false
+    padding: 8
+    verticalSeparation: 12
+    horizontalSeparation: 14
+    arcRadius: 8
+    fontSize: 15
+    terminalFill: "#dcfce7"
+    terminalStroke: "#15803d"
+    nonTerminalFill: "#dbeafe"
+    nonTerminalStroke: "#1d4ed8"
+    lineColor: "#334155"
+    specialFill: "#fef3c7"
+    specialStroke: "#b45309"
+---
+railroad-beta
+  configured = sequence(terminal("start"), nonterminal("payload"), special("checksum")) ;
+`,
+  },
+  {
+    id: 'prod_railroad_unicode',
+    kind: 'railroad',
+    title: 'International grammar',
+    scenario: 'Unicode terminals and rule references retain multilingual labels.',
+    aspectRatio: 1.7,
+    features: ['ebnf-header', 'unicode', 'terminals', 'non-terminals', 'choices'],
+    expectedTexts: ['regional =', '東京', '서울', 'São Paulo'],
+    source: String.raw`
+railroad-ebnf-beta
+  regional = "東京" | "서울" | "São Paulo" | "承認" ;
+`,
+  },
+  {
+    id: 'prod_railroad_entities',
+    kind: 'railroad',
+    title: 'Encoded grammar tokens',
+    scenario: 'HTML entities pass through Mermaid preprocessing and render as visible grammar text.',
+    aspectRatio: 1.7,
+    features: ['ir-header', 'entities', 'terminals', 'special'],
+    expectedTexts: ['comparison =', '&lt;', '&amp;', '&gt;'],
+    source: String.raw`
+railroad-beta
+  comparison = sequence(terminal("&lt;"), terminal("&amp;"), special("&gt;")) ;
 `,
   },
 ];
@@ -6503,6 +6793,7 @@ export const conformanceCases = [
   ...swimlaneCases,
   ...architectureCases,
   ...c4Cases,
+  ...railroadCases,
   ...xyChartCases,
   ...quadrantCases,
   ...timelineCases,

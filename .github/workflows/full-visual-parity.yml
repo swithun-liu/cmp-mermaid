@@ -79,6 +79,7 @@ jobs:
           - swimlanes
           - architecture
           - c4
+          - railroad
 
     steps:
       - name: Checkout

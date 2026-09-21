@@ -4401,6 +4401,102 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_railroad_ir_protocol_frame",
+        diagramId = "railroad",
+        title = "Protocol frame grammar",
+        scenario = "Explicit Railroad constructors describe a framed message with optional metadata and repeated fields.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-beta
+              frame = sequence(
+                terminal("SOF"),
+                nonterminal("version"),
+                optional(nonterminal("metadata")),
+                oneOrMore(nonterminal("field")),
+                special("checksum"),
+                terminal("EOF")
+              ) ;
+              field = sequence(nonterminal("name"), terminal("="), nonterminal("value")) ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_ebnf_command_language",
+        diagramId = "railroad",
+        title = "Command language grammar",
+        scenario = "A command parser combines alternatives, optional flags, and repeated arguments.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            railroad-ebnf-beta
+              command = action [ flag ] { argument } ;
+              action = "deploy" | "inspect" | "rollback" ;
+              flag = "--dry-run" | "--force" ;
+              argument = name "=" value ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_ebnf_query_pipeline",
+        diagramId = "railroad",
+        title = "Query pipeline grammar",
+        scenario = "ISO EBNF constructs describe filters, projections, ordering, and bounded-looking clauses.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-ebnf-beta
+              (* Query pipeline *)
+              query = source, { filter }, [ projection ], [ ordering ] ;
+              source = "from" identifier ;
+              filter = "where" expression ;
+              projection = "select" identifier { "," identifier } ;
+              ordering = "order" "by" identifier ;
+              identifier = letter, { letter | digit | "_" }, ? normalized name ? ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_abnf_message_envelope",
+        diagramId = "railroad",
+        title = "Message envelope grammar",
+        scenario = "ABNF repetition and numeric terminals define a transport envelope and payload.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-abnf-beta
+              envelope = version SP request-id SP payload ;
+              version = "v" 1*2DIGIT ;
+              request-id = 8*16%x30-39 ;
+              payload = 1*( %x20-7E ) ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_peg_policy_expression",
+        diagramId = "railroad",
+        title = "Policy expression grammar",
+        scenario = "PEG lookahead, ordered choice, repetition, and any-character fallback model policy expressions.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-peg-beta
+              # Reserved words cannot become identifiers.
+              Policy <- Rule ("," Rule)* ;
+              Rule <- !Reserved Identifier "=" Value ;
+              Reserved <- "allow" / "deny" ;
+              Identifier <- &Letter Letter Letter* ;
+              Letter <- "a" / "b" / "c" / "_" ;
+              Value <- "true" / "false" / . ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_swimlanes_support_escalation",
         diagramId = "swimlanes",
         title = "Support escalation",
@@ -8934,6 +9030,102 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_railroad_ir_protocol_frame",
+        diagramId = "railroad",
+        title = "Protocol frame grammar",
+        scenario = "Explicit Railroad constructors describe a framed message with optional metadata and repeated fields.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-beta
+              frame = sequence(
+                terminal("SOF"),
+                nonterminal("version"),
+                optional(nonterminal("metadata")),
+                oneOrMore(nonterminal("field")),
+                special("checksum"),
+                terminal("EOF")
+              ) ;
+              field = sequence(nonterminal("name"), terminal("="), nonterminal("value")) ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_ebnf_command_language",
+        diagramId = "railroad",
+        title = "Command language grammar",
+        scenario = "A command parser combines alternatives, optional flags, and repeated arguments.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            railroad-ebnf-beta
+              command = action [ flag ] { argument } ;
+              action = "deploy" | "inspect" | "rollback" ;
+              flag = "--dry-run" | "--force" ;
+              argument = name "=" value ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_ebnf_query_pipeline",
+        diagramId = "railroad",
+        title = "Query pipeline grammar",
+        scenario = "ISO EBNF constructs describe filters, projections, ordering, and bounded-looking clauses.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-ebnf-beta
+              (* Query pipeline *)
+              query = source, { filter }, [ projection ], [ ordering ] ;
+              source = "from" identifier ;
+              filter = "where" expression ;
+              projection = "select" identifier { "," identifier } ;
+              ordering = "order" "by" identifier ;
+              identifier = letter, { letter | digit | "_" }, ? normalized name ? ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_abnf_message_envelope",
+        diagramId = "railroad",
+        title = "Message envelope grammar",
+        scenario = "ABNF repetition and numeric terminals define a transport envelope and payload.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-abnf-beta
+              envelope = version SP request-id SP payload ;
+              version = "v" 1*2DIGIT ;
+              request-id = 8*16%x30-39 ;
+              payload = 1*( %x20-7E ) ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_railroad_peg_policy_expression",
+        diagramId = "railroad",
+        title = "Policy expression grammar",
+        scenario = "PEG lookahead, ordered choice, repetition, and any-character fallback model policy expressions.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-peg-beta
+              # Reserved words cannot become identifiers.
+              Policy <- Rule ("," Rule)* ;
+              Rule <- !Reserved Identifier "=" Value ;
+              Reserved <- "allow" / "deny" ;
+              Identifier <- &Letter Letter Letter* ;
+              Letter <- "a" / "b" / "c" / "_" ;
+              Value <- "true" / "false" / . ;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_swimlanes_support_escalation",
         diagramId = "swimlanes",
         title = "Support escalation",
@@ -9839,6 +10031,232 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         """.trimIndent(),
         expectedTexts = listOf("受付", "서울 검토", "São Paulo", "承認"),
         features = setOf("accessibility", "unicode", "comments", "named-attributes", "people", "systems"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_ir_primitives",
+        diagramId = "railroad",
+        title = "Railroad IR primitives",
+        scenario = "Explicit constructors cover every shared Railroad AST node.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-beta
+              value = choice(terminal("null"), nonterminal("item"), special("number")) ;
+              list = sequence(terminal("["), optional(nonterminal("value")), zeroOrMore(nonterminal("value")), oneOrMore(terminal("]"))) ;
+        """.trimIndent(),
+        expectedTexts = listOf("value =", "null", "item", "number"),
+        features = setOf("ir-header", "terminals", "non-terminals", "sequences", "choices", "optional", "zero-or-more", "one-or-more", "special"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_ir_nested",
+        diagramId = "railroad",
+        title = "Nested IR expression",
+        scenario = "Nested choices and repetitions form a compact expression grammar.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-beta
+              expression = sequence(
+                nonterminal("term"),
+                zeroOrMore(sequence(choice(terminal("+"), terminal("-")), nonterminal("term")))
+              ) ;
+        """.trimIndent(),
+        expectedTexts = listOf("expression =", "term", "+", "-"),
+        features = setOf("ir-header", "sequences", "choices", "zero-or-more", "non-terminals"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_ebnf_choice",
+        diagramId = "railroad",
+        title = "EBNF digit choice",
+        scenario = "An EBNF rule branches across ten terminal alternatives.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            railroad-ebnf-beta
+              digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+        """.trimIndent(),
+        expectedTexts = listOf("digit =", "0", "5", "9"),
+        features = setOf("ebnf-header", "terminals", "choices"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_ebnf_expression",
+        diagramId = "railroad",
+        title = "EBNF expression grammar",
+        scenario = "Groups, optional terms, and repetitions compose arithmetic expressions.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-ebnf-beta
+              expression = term ( ( "+" | "-" ) term )* ;
+              term = factor ( ( "*" | "/" ) factor )* ;
+              factor = number | "(" expression ")" ;
+              number = digit+ ;
+              signed = ("+" | "-")? number ;
+        """.trimIndent(),
+        expectedTexts = listOf("expression =", "factor", "number", "digit"),
+        features = setOf("ebnf-header", "non-terminals", "sequences", "choices", "optional", "zero-or-more", "one-or-more"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_ebnf_iso",
+        diagramId = "railroad",
+        title = "ISO EBNF constructs",
+        scenario = "ISO comments, comma sequences, brackets, braces, special sequences, and exceptions coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            railroad-ebnf-beta
+              (* ISO grammar fragment *)
+              token = letter, { letter | digit | "_" }, [ "-" ], ? unicode scalar ? ;
+              safe = letter - "x" ;
+        """.trimIndent(),
+        expectedTexts = listOf("token =", "letter", "-", "unicode scalar"),
+        features = setOf("ebnf-header", "ebnf-iso", "ebnf-exception", "comments", "special", "optional", "zero-or-more"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_abnf_address",
+        diagramId = "railroad",
+        title = "ABNF email address",
+        scenario = "ABNF sequences, slash alternatives, and open repetition model an address.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-abnf-beta
+              address = local-part "@" domain ;
+              local-part = 1*( ALPHA / DIGIT / "." / "-" ) ;
+              domain = label *( "." label ) ;
+        """.trimIndent(),
+        expectedTexts = listOf("address =", "local-part", "@", "domain"),
+        features = setOf("abnf-header", "terminals", "non-terminals", "sequences", "choices", "one-or-more", "zero-or-more"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_abnf_repetition",
+        diagramId = "railroad",
+        title = "ABNF repetition ranges",
+        scenario = "Exact, bounded, optional, and unbounded prefixes share numeric terminals.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            railroad-abnf-beta
+              octet = 2*4%x30-39 ;
+              token = 3ALPHA *DIGIT ;
+              suffix = [ "." 1*8ALPHA ] ;
+        """.trimIndent(),
+        expectedTexts = listOf("octet =", "%x30-39", "token", "suffix"),
+        features = setOf("abnf-header", "abnf-bounded-repeat", "abnf-numeric-value", "optional", "zero-or-more"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_peg_calculator",
+        diagramId = "railroad",
+        title = "PEG calculator",
+        scenario = "Ordered choices and suffix repetition describe a recursive calculator grammar.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            railroad-peg-beta
+              Expression <- Term (("+" / "-") Term)* ;
+              Term <- Factor (("*" / "/") Factor)* ;
+              Factor <- Number / "(" Expression ")" ;
+              Number <- Digit+ ;
+        """.trimIndent(),
+        expectedTexts = listOf("Expression", "Term", "Factor", "Digit"),
+        features = setOf("peg-header", "terminals", "non-terminals", "sequences", "choices", "zero-or-more", "one-or-more"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_peg_predicates",
+        diagramId = "railroad",
+        title = "PEG predicates",
+        scenario = "Positive and negative lookahead plus any-character matching become special nodes.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            railroad-peg-beta
+              # Keywords are excluded from identifiers.
+              Identifier <- !Keyword &Letter Letter Letter* ;
+              Keyword <- "if" / "else" / "while" ;
+              Letter <- "a" / "b" / "_" / . ;
+        """.trimIndent(),
+        expectedTexts = listOf("Identifier", "!Keyword", "&Letter", "."),
+        features = setOf("peg-header", "peg-predicates", "peg-any", "comments", "special"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_metadata",
+        diagramId = "railroad",
+        title = "Accessible grammar metadata",
+        scenario = "Title and accessibility metadata accompany an EBNF grammar.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            railroad-ebnf-beta
+              title "Document Grammar"
+              accTitle: Accessible document grammar
+              accDescr {
+                A document contains a header and body.
+              }
+              document = header body ;
+              header = "HEADER" ;
+        """.trimIndent(),
+        expectedTexts = listOf("document =", "header", "body"),
+        features = setOf("ebnf-header", "accessibility", "terminals", "non-terminals"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_configured",
+        diagramId = "railroad",
+        title = "Configured railroad styles",
+        scenario = "Scoped geometry, typography, colors, and intrinsic sizing style every symbol class.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            config:
+              theme: forest
+              railroad:
+                useMaxWidth: false
+                padding: 8
+                verticalSeparation: 12
+                horizontalSeparation: 14
+                arcRadius: 8
+                fontSize: 15
+                terminalFill: "#dcfce7"
+                terminalStroke: "#15803d"
+                nonTerminalFill: "#dbeafe"
+                nonTerminalStroke: "#1d4ed8"
+                lineColor: "#334155"
+                specialFill: "#fef3c7"
+                specialStroke: "#b45309"
+            ---
+            railroad-beta
+              configured = sequence(terminal("start"), nonterminal("payload"), special("checksum")) ;
+        """.trimIndent(),
+        expectedTexts = listOf("configured =", "start", "payload", "checksum"),
+        features = setOf("frontmatter-config", "theme", "ir-header", "special"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_unicode",
+        diagramId = "railroad",
+        title = "International grammar",
+        scenario = "Unicode terminals and rule references retain multilingual labels.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            railroad-ebnf-beta
+              regional = "東京" | "서울" | "São Paulo" | "承認" ;
+        """.trimIndent(),
+        expectedTexts = listOf("regional =", "東京", "서울", "São Paulo"),
+        features = setOf("ebnf-header", "unicode", "terminals", "non-terminals", "choices"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_railroad_entities",
+        diagramId = "railroad",
+        title = "Encoded grammar tokens",
+        scenario = "HTML entities pass through Mermaid preprocessing and render as visible grammar text.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            railroad-beta
+              comparison = sequence(terminal("&lt;"), terminal("&amp;"), special("&gt;")) ;
+        """.trimIndent(),
+        expectedTexts = listOf("comparison =", "&lt;", "&amp;", "&gt;"),
+        features = setOf("ir-header", "entities", "terminals", "special"),
     ),
     StabilityCorpusCase(
         id = "prod_xychart_mixed_vertical_api_capacity",
@@ -14782,6 +15200,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "swimlanes",
             "architecture",
             "c4",
+            "railroad",
             "xychart",
             "quadrant",
             "timeline",
@@ -14860,6 +15279,11 @@ private fun addVisualParityVariation(
         "  Person($evidenceId, " +
         "\"${escapeQuotedVisualParityLabel(label)}\", " +
         "\"Visual parity evidence\")\n"
+    "railroad" -> appendRailroadVisualParityEvidence(
+        source = source,
+        evidenceId = evidenceId,
+        label = label,
+    )
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0
@@ -14908,6 +15332,30 @@ private fun addVisualParityVariation(
         label = label,
     )
     else -> source
+}
+
+private fun appendRailroadVisualParityEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val declaration = source.lineSequence()
+        .map(String::trim)
+        .firstOrNull { line ->
+            line == "railroad-beta" ||
+                line == "railroad-ebnf-beta" ||
+                line == "railroad-abnf-beta" ||
+                line == "railroad-peg-beta"
+        }
+        ?: return source
+    val operator = if (declaration == "railroad-peg-beta") "<-" else "="
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    val expression = if (declaration == "railroad-beta") {
+        "terminal(\"$escapedLabel\")"
+    } else {
+        "\"$escapedLabel\""
+    }
+    return "${source.trimEnd()}\n  $evidenceId $operator $expression ;\n"
 }
 
 private fun replaceArchitectureVisualParityServiceIcon(

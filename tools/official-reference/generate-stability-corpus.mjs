@@ -20,6 +20,7 @@ const kotlinGalleryFiles = {
   swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
   architecture: ['ArchitectureDemos.kt', 'ArchitectureDemo'],
   c4: ['C4Demos.kt', 'C4Demo'],
+  railroad: ['RailroadDemos.kt', 'RailroadDemo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],
@@ -50,6 +51,7 @@ const expectedKindCounts = new Map([
   ['swimlanes', 5],
   ['architecture', 5],
   ['c4', 5],
+  ['railroad', 5],
   ['xychart', 5],
   ['quadrant', 5],
   ['timeline', 5],
@@ -80,6 +82,7 @@ const expectedProductionKindCounts = new Map([
   ['swimlanes', 13],
   ['architecture', 13],
   ['c4', 13],
+  ['railroad', 18],
   ['xychart', 13],
   ['quadrant', 13],
   ['timeline', 13],
@@ -110,6 +113,7 @@ const supportedKinds = new Set([
   'swimlanes',
   'architecture',
   'c4',
+  'railroad',
   'xychart',
   'quadrant',
   'timeline',
@@ -207,8 +211,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 393) {
-    throw new Error(`Expected 393 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 398) {
+    throw new Error(`Expected 398 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -228,14 +232,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 366) {
+  if (productionCases.length !== 384) {
     throw new Error(
-      `Expected 366 production cases, found ${productionCases.length}`,
+      `Expected 384 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 224) {
+  if (conformanceCases.length !== 237) {
     throw new Error(
-      `Expected 224 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 237 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -319,9 +323,12 @@ function validateProductionCases() {
       );
     }
     const actualConformanceCount = kindCounts.get(kind) ?? 0;
-    if (actualConformanceCount !== 8) {
+    const expectedConformanceCount =
+      expectedCount - (expectedKindCounts.get(kind) ?? 0);
+    if (actualConformanceCount !== expectedConformanceCount) {
       throw new Error(
-        `Expected 8 ${kind} conformance cases, found ${actualConformanceCount}`,
+        `Expected ${expectedConformanceCount} ${kind} conformance cases, ` +
+          `found ${actualConformanceCount}`,
       );
     }
     const missingFeatures = requiredFeaturesByKind[kind].filter(
@@ -451,6 +458,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "swimlanes",
             "architecture",
             "c4",
+            "railroad",
             "xychart",
             "quadrant",
             "timeline",
@@ -529,6 +537,11 @@ private fun addVisualParityVariation(
         "  Person(\$evidenceId, " +
         "\\"\${escapeQuotedVisualParityLabel(label)}\\", " +
         "\\"Visual parity evidence\\")\\n"
+    "railroad" -> appendRailroadVisualParityEvidence(
+        source = source,
+        evidenceId = evidenceId,
+        label = label,
+    )
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0
@@ -577,6 +590,30 @@ private fun addVisualParityVariation(
         label = label,
     )
     else -> source
+}
+
+private fun appendRailroadVisualParityEvidence(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val declaration = source.lineSequence()
+        .map(String::trim)
+        .firstOrNull { line ->
+            line == "railroad-beta" ||
+                line == "railroad-ebnf-beta" ||
+                line == "railroad-abnf-beta" ||
+                line == "railroad-peg-beta"
+        }
+        ?: return source
+    val operator = if (declaration == "railroad-peg-beta") "<-" else "="
+    val escapedLabel = escapeQuotedVisualParityLabel(label)
+    val expression = if (declaration == "railroad-beta") {
+        "terminal(\\"\$escapedLabel\\")"
+    } else {
+        "\\"\$escapedLabel\\""
+    }
+    return "\${source.trimEnd()}\\n  \$evidenceId \$operator \$expression ;\\n"
 }
 
 private fun replaceArchitectureVisualParityServiceIcon(

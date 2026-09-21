@@ -4044,6 +4044,87 @@ C4Deployment
 `,
   },
   {
+    id: 'rc_railroad_ir_protocol_frame',
+    kind: 'railroad',
+    title: 'Protocol frame grammar',
+    scenario: 'Explicit Railroad constructors describe a framed message with optional metadata and repeated fields.',
+    aspectRatio: 1.8,
+    source: String.raw`
+railroad-beta
+  frame = sequence(
+    terminal("SOF"),
+    nonterminal("version"),
+    optional(nonterminal("metadata")),
+    oneOrMore(nonterminal("field")),
+    special("checksum"),
+    terminal("EOF")
+  ) ;
+  field = sequence(nonterminal("name"), terminal("="), nonterminal("value")) ;
+`,
+  },
+  {
+    id: 'rc_railroad_ebnf_command_language',
+    kind: 'railroad',
+    title: 'Command language grammar',
+    scenario: 'A command parser combines alternatives, optional flags, and repeated arguments.',
+    aspectRatio: 1.75,
+    source: String.raw`
+railroad-ebnf-beta
+  command = action [ flag ] { argument } ;
+  action = "deploy" | "inspect" | "rollback" ;
+  flag = "--dry-run" | "--force" ;
+  argument = name "=" value ;
+`,
+  },
+  {
+    id: 'rc_railroad_ebnf_query_pipeline',
+    kind: 'railroad',
+    title: 'Query pipeline grammar',
+    scenario: 'ISO EBNF constructs describe filters, projections, ordering, and bounded-looking clauses.',
+    aspectRatio: 1.8,
+    source: String.raw`
+railroad-ebnf-beta
+  (* Query pipeline *)
+  query = source, { filter }, [ projection ], [ ordering ] ;
+  source = "from" identifier ;
+  filter = "where" expression ;
+  projection = "select" identifier { "," identifier } ;
+  ordering = "order" "by" identifier ;
+  identifier = letter, { letter | digit | "_" }, ? normalized name ? ;
+`,
+  },
+  {
+    id: 'rc_railroad_abnf_message_envelope',
+    kind: 'railroad',
+    title: 'Message envelope grammar',
+    scenario: 'ABNF repetition and numeric terminals define a transport envelope and payload.',
+    aspectRatio: 1.8,
+    source: String.raw`
+railroad-abnf-beta
+  envelope = version SP request-id SP payload ;
+  version = "v" 1*2DIGIT ;
+  request-id = 8*16%x30-39 ;
+  payload = 1*( %x20-7E ) ;
+`,
+  },
+  {
+    id: 'rc_railroad_peg_policy_expression',
+    kind: 'railroad',
+    title: 'Policy expression grammar',
+    scenario: 'PEG lookahead, ordered choice, repetition, and any-character fallback model policy expressions.',
+    aspectRatio: 1.8,
+    source: String.raw`
+railroad-peg-beta
+  # Reserved words cannot become identifiers.
+  Policy <- Rule ("," Rule)* ;
+  Rule <- !Reserved Identifier "=" Value ;
+  Reserved <- "allow" / "deny" ;
+  Identifier <- &Letter Letter Letter* ;
+  Letter <- "a" / "b" / "c" / "_" ;
+  Value <- "true" / "false" / . ;
+`,
+  },
+  {
     id: 'rc_swimlanes_support_escalation',
     kind: 'swimlanes',
     title: 'Support escalation',

@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 7,168 source cases and
-14,336 screenshots from the large-scale
+This index contains 7,424 source cases and
+14,848 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -9,19 +9,19 @@ The matrix contains 256 cases per supported diagram type. Case IDs, structural
 seed IDs, label profiles, feature dimensions, source hashes, image hashes, and
 capture sizes are recorded in
 [`visual-parity-manifest.json`](visual-parity-manifest.json).
-Each type combines 13 or 14 complex structural seeds with 20 visible text and
-layout-pressure profiles. The 256 sources per type are unique, but they are not
-presented as 256 unrelated topologies.
+Each type combines at least 13 complex structural seeds with visible text and
+layout-pressure profiles. The 256 sources per type are unique, but they are
+not presented as 256 unrelated topologies.
 
-All 28 implemented families have completed the replacement detail gate and
+All 29 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`7,168/7,168` pairs: `6,362 automatic pass / 806 manually reviewed /
-0 unresolved` across 448 contact sheets. Block contributes three
+`7,424/7,424` pairs: `6,618 automatic pass / 806 manually reviewed /
+0 unresolved` across 464 contact sheets. Block contributes three
 paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
 acceptances caused by the documented title/payload `text-segmentation`
 adaptation; Swimlanes contributes 60 text-position reviews along semantically
 equivalent orthogonal routes. Architecture contributes 256 automatic passes.
-C4 contributes 256 automatic passes.
+C4 and Railroad each contribute 256 automatic passes.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -187,6 +187,49 @@ sheets. All 16 pages below were manually reviewed.
 ![C4 visual parity page 15](c4-visual-parity-15.jpg)
 
 ![C4 visual parity page 16](c4-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Railroad - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.035-1.116`, height `1.009-1.130`, foreground ink `1.023-1.319`.
+Raw [detail](railroad-visual-parity-detail.json) and
+[geometry](railroad-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![Railroad visual parity page 01](railroad-visual-parity-01.jpg)
+
+![Railroad visual parity page 02](railroad-visual-parity-02.jpg)
+
+![Railroad visual parity page 03](railroad-visual-parity-03.jpg)
+
+![Railroad visual parity page 04](railroad-visual-parity-04.jpg)
+
+![Railroad visual parity page 05](railroad-visual-parity-05.jpg)
+
+![Railroad visual parity page 06](railroad-visual-parity-06.jpg)
+
+![Railroad visual parity page 07](railroad-visual-parity-07.jpg)
+
+![Railroad visual parity page 08](railroad-visual-parity-08.jpg)
+
+![Railroad visual parity page 09](railroad-visual-parity-09.jpg)
+
+![Railroad visual parity page 10](railroad-visual-parity-10.jpg)
+
+![Railroad visual parity page 11](railroad-visual-parity-11.jpg)
+
+![Railroad visual parity page 12](railroad-visual-parity-12.jpg)
+
+![Railroad visual parity page 13](railroad-visual-parity-13.jpg)
+
+![Railroad visual parity page 14](railroad-visual-parity-14.jpg)
+
+![Railroad visual parity page 15](railroad-visual-parity-15.jpg)
+
+![Railroad visual parity page 16](railroad-visual-parity-16.jpg)
 
 </details>
 

@@ -763,6 +763,44 @@ internal val c4DiagramDocsSpec = DiagramDocsSpec(
     initialTheme = MermaidThemePreset.Default,
 )
 
+internal val railroadDiagramDocsSpec = DiagramDocsSpec(
+    id = "railroad",
+    title = "Railroad",
+    syntaxTitle = "Railroad diagrams - Basic Syntax",
+    description = "Visualize grammar rules written as Mermaid IR, EBNF, ABNF, or PEG using " +
+        "terminals, non-terminals, sequences, choices, optional branches, and repetitions.",
+    documentationUrl = "https://mermaid.js.org/syntax/railroad.html",
+    galleryTitle = "Railroad diagram gallery",
+    cases = railroadDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 16f / 9f,
+        )
+    },
+    syntaxLessons = lessons(
+        railroadDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 16f / 9f,
+            )
+        },
+        listOf(
+            "EBNF supports sequences, alternatives, groups, optional terms, and repetitions.",
+            "Quoted terminals and named non-terminals can describe nested data formats.",
+            "ABNF uses slash alternatives and prefix repetition ranges.",
+            "PEG adds ordered choice, suffix repetition, predicates, and the any-character token.",
+            "The IR header exposes Mermaid's shared Railroad AST through explicit constructors.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
 internal val ishikawaDiagramDocsSpec = DiagramDocsSpec(
     id = "ishikawa",
     title = "Ishikawa",

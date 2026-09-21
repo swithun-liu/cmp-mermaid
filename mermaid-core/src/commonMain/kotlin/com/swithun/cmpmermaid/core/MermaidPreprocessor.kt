@@ -351,6 +351,7 @@ internal object MermaidPreprocessor {
         val block = map.map("block")
         val architecture = map.map("architecture")
         val c4 = map.map("c4")
+        val railroad = map.map("railroad")
         val agentflow = map.map("agentflow")
         val swimlane = map.map("swimlane")
         val treemap = map.map("treemap")
@@ -1586,6 +1587,66 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'c4.c4BoundaryInRow' must be at least 1",
             )
         }
+        val railroadUseMaxWidth =
+            boolean(railroad, "useMaxWidth", "railroad.useMaxWidth")
+        val railroadCompactMode =
+            boolean(railroad, "compactMode", "railroad.compactMode")
+        val railroadPadding = float(railroad, "padding", "railroad.padding")
+        val railroadVerticalSeparation =
+            float(railroad, "verticalSeparation", "railroad.verticalSeparation")
+        val railroadHorizontalSeparation =
+            float(railroad, "horizontalSeparation", "railroad.horizontalSeparation")
+        val railroadArcRadius = float(railroad, "arcRadius", "railroad.arcRadius")
+        val railroadFontSize = fontSize(railroad, "fontSize", "railroad.fontSize")
+        val railroadFontFamily =
+            string(railroad, "fontFamily", "railroad.fontFamily")
+        val railroadTerminalFill =
+            color(railroad, "terminalFill", "railroad.terminalFill")
+        val railroadTerminalStroke =
+            color(railroad, "terminalStroke", "railroad.terminalStroke")
+        val railroadTerminalTextColor =
+            color(railroad, "terminalTextColor", "railroad.terminalTextColor")
+        val railroadNonTerminalFill =
+            color(railroad, "nonTerminalFill", "railroad.nonTerminalFill")
+        val railroadNonTerminalStroke =
+            color(railroad, "nonTerminalStroke", "railroad.nonTerminalStroke")
+        val railroadNonTerminalTextColor =
+            color(railroad, "nonTerminalTextColor", "railroad.nonTerminalTextColor")
+        val railroadLineColor = color(railroad, "lineColor", "railroad.lineColor")
+        val railroadStrokeWidth =
+            float(railroad, "strokeWidth", "railroad.strokeWidth")
+        val railroadMarkerFill = color(railroad, "markerFill", "railroad.markerFill")
+        val railroadCommentFill =
+            color(railroad, "commentFill", "railroad.commentFill")
+        val railroadCommentStroke =
+            color(railroad, "commentStroke", "railroad.commentStroke")
+        val railroadCommentTextColor =
+            color(railroad, "commentTextColor", "railroad.commentTextColor")
+        val railroadSpecialFill =
+            color(railroad, "specialFill", "railroad.specialFill")
+        val railroadSpecialStroke =
+            color(railroad, "specialStroke", "railroad.specialStroke")
+        val railroadRuleNameColor =
+            color(railroad, "ruleNameColor", "railroad.ruleNameColor")
+        val railroadShowMarkers =
+            boolean(railroad, "showMarkers", "railroad.showMarkers")
+        val railroadMarkerRadius =
+            float(railroad, "markerRadius", "railroad.markerRadius")
+        listOf(
+            "railroad.padding" to railroadPadding,
+            "railroad.verticalSeparation" to railroadVerticalSeparation,
+            "railroad.horizontalSeparation" to railroadHorizontalSeparation,
+            "railroad.arcRadius" to railroadArcRadius,
+            "railroad.fontSize" to railroadFontSize,
+            "railroad.strokeWidth" to railroadStrokeWidth,
+            "railroad.markerRadius" to railroadMarkerRadius,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be finite and non-negative",
+            )
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -2067,6 +2128,35 @@ internal object MermaidPreprocessor {
                         elementStyles = c4ElementStyles,
                     )
                 },
+                railroad = railroad?.let {
+                    MermaidRailroadConfigOverride(
+                        useMaxWidth = railroadUseMaxWidth,
+                        compactMode = railroadCompactMode,
+                        padding = railroadPadding,
+                        verticalSeparation = railroadVerticalSeparation,
+                        horizontalSeparation = railroadHorizontalSeparation,
+                        arcRadius = railroadArcRadius,
+                        fontSize = railroadFontSize,
+                        fontFamily = railroadFontFamily,
+                        terminalFill = railroadTerminalFill,
+                        terminalStroke = railroadTerminalStroke,
+                        terminalTextColor = railroadTerminalTextColor,
+                        nonTerminalFill = railroadNonTerminalFill,
+                        nonTerminalStroke = railroadNonTerminalStroke,
+                        nonTerminalTextColor = railroadNonTerminalTextColor,
+                        lineColor = railroadLineColor,
+                        strokeWidth = railroadStrokeWidth,
+                        markerFill = railroadMarkerFill,
+                        commentFill = railroadCommentFill,
+                        commentStroke = railroadCommentStroke,
+                        commentTextColor = railroadCommentTextColor,
+                        specialFill = railroadSpecialFill,
+                        specialStroke = railroadSpecialStroke,
+                        ruleNameColor = railroadRuleNameColor,
+                        showMarkers = railroadShowMarkers,
+                        markerRadius = railroadMarkerRadius,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -2322,6 +2412,7 @@ internal data class MermaidConfigOverride(
     val block: MermaidBlockConfigOverride? = null,
     val architecture: MermaidArchitectureConfigOverride? = null,
     val c4: MermaidC4ConfigOverride? = null,
+    val railroad: MermaidRailroadConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -2473,6 +2564,11 @@ internal data class MermaidConfigOverride(
             overrides.c4 != null -> c4?.merge(overrides.c4) ?: overrides.c4
             else -> c4
         },
+        railroad = when {
+            overrides.railroad != null ->
+                railroad?.merge(overrides.railroad) ?: overrides.railroad
+            else -> railroad
+        },
         treemap = when {
             overrides.treemap != null ->
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
@@ -2597,6 +2693,7 @@ internal data class MermaidConfigOverride(
                 architecture =
                     architecture?.applyTo(options.architecture) ?: options.architecture,
                 c4 = c4?.applyTo(options.c4) ?: options.c4,
+                railroad = railroad?.applyTo(options.railroad) ?: options.railroad,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -3053,6 +3150,92 @@ internal data class MermaidC4ConfigOverride(
                 }
             },
         )
+}
+
+internal data class MermaidRailroadConfigOverride(
+    val useMaxWidth: Boolean? = null,
+    val compactMode: Boolean? = null,
+    val padding: Float? = null,
+    val verticalSeparation: Float? = null,
+    val horizontalSeparation: Float? = null,
+    val arcRadius: Float? = null,
+    val fontSize: Float? = null,
+    val fontFamily: String? = null,
+    val terminalFill: SceneColor? = null,
+    val terminalStroke: SceneColor? = null,
+    val terminalTextColor: SceneColor? = null,
+    val nonTerminalFill: SceneColor? = null,
+    val nonTerminalStroke: SceneColor? = null,
+    val nonTerminalTextColor: SceneColor? = null,
+    val lineColor: SceneColor? = null,
+    val strokeWidth: Float? = null,
+    val markerFill: SceneColor? = null,
+    val commentFill: SceneColor? = null,
+    val commentStroke: SceneColor? = null,
+    val commentTextColor: SceneColor? = null,
+    val specialFill: SceneColor? = null,
+    val specialStroke: SceneColor? = null,
+    val ruleNameColor: SceneColor? = null,
+    val showMarkers: Boolean? = null,
+    val markerRadius: Float? = null,
+) {
+    fun merge(
+        overrides: MermaidRailroadConfigOverride,
+    ): MermaidRailroadConfigOverride = MermaidRailroadConfigOverride(
+        useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        compactMode = overrides.compactMode ?: compactMode,
+        padding = overrides.padding ?: padding,
+        verticalSeparation = overrides.verticalSeparation ?: verticalSeparation,
+        horizontalSeparation = overrides.horizontalSeparation ?: horizontalSeparation,
+        arcRadius = overrides.arcRadius ?: arcRadius,
+        fontSize = overrides.fontSize ?: fontSize,
+        fontFamily = overrides.fontFamily ?: fontFamily,
+        terminalFill = overrides.terminalFill ?: terminalFill,
+        terminalStroke = overrides.terminalStroke ?: terminalStroke,
+        terminalTextColor = overrides.terminalTextColor ?: terminalTextColor,
+        nonTerminalFill = overrides.nonTerminalFill ?: nonTerminalFill,
+        nonTerminalStroke = overrides.nonTerminalStroke ?: nonTerminalStroke,
+        nonTerminalTextColor = overrides.nonTerminalTextColor ?: nonTerminalTextColor,
+        lineColor = overrides.lineColor ?: lineColor,
+        strokeWidth = overrides.strokeWidth ?: strokeWidth,
+        markerFill = overrides.markerFill ?: markerFill,
+        commentFill = overrides.commentFill ?: commentFill,
+        commentStroke = overrides.commentStroke ?: commentStroke,
+        commentTextColor = overrides.commentTextColor ?: commentTextColor,
+        specialFill = overrides.specialFill ?: specialFill,
+        specialStroke = overrides.specialStroke ?: specialStroke,
+        ruleNameColor = overrides.ruleNameColor ?: ruleNameColor,
+        showMarkers = overrides.showMarkers ?: showMarkers,
+        markerRadius = overrides.markerRadius ?: markerRadius,
+    )
+
+    fun applyTo(options: MermaidRailroadOptions): MermaidRailroadOptions = options.copy(
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        compactMode = compactMode ?: options.compactMode,
+        padding = padding ?: options.padding,
+        verticalSeparation = verticalSeparation ?: options.verticalSeparation,
+        horizontalSeparation = horizontalSeparation ?: options.horizontalSeparation,
+        arcRadius = arcRadius ?: options.arcRadius,
+        fontSize = fontSize ?: options.fontSize,
+        fontFamily = fontFamily ?: options.fontFamily,
+        terminalFill = terminalFill ?: options.terminalFill,
+        terminalStroke = terminalStroke ?: options.terminalStroke,
+        terminalTextColor = terminalTextColor ?: options.terminalTextColor,
+        nonTerminalFill = nonTerminalFill ?: options.nonTerminalFill,
+        nonTerminalStroke = nonTerminalStroke ?: options.nonTerminalStroke,
+        nonTerminalTextColor = nonTerminalTextColor ?: options.nonTerminalTextColor,
+        lineColor = lineColor ?: options.lineColor,
+        strokeWidth = strokeWidth ?: options.strokeWidth,
+        markerFill = markerFill ?: options.markerFill,
+        commentFill = commentFill ?: options.commentFill,
+        commentStroke = commentStroke ?: options.commentStroke,
+        commentTextColor = commentTextColor ?: options.commentTextColor,
+        specialFill = specialFill ?: options.specialFill,
+        specialStroke = specialStroke ?: options.specialStroke,
+        ruleNameColor = ruleNameColor ?: options.ruleNameColor,
+        showMarkers = showMarkers ?: options.showMarkers,
+        markerRadius = markerRadius ?: options.markerRadius,
+    )
 }
 
 internal data class MermaidTreemapConfigOverride(
