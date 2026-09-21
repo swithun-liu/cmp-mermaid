@@ -32,7 +32,7 @@ class TreeViewLayoutTest {
     }
 
     @Test
-    fun rendersUpstreamRowsConnectorsAndDirectoryWeight() {
+    fun rendersUpstreamRowsConnectorsAndNormalizedViewport() {
         val scene = render(
             """
             treeView-beta
@@ -48,11 +48,12 @@ class TreeViewLayoutTest {
         assertEquals(SceneTextWeight.Bold, texts[1].weight)
         assertEquals(SceneTextWeight.Normal, texts[2].weight)
         assertEquals(5, paths.size)
-        assertEquals(-0.5f, paths[0].points.first().x)
-        assertEquals(0f, paths[0].points.last().x)
-        assertEquals(5f, paths[1].points.first().x)
-        assertEquals(104f, scene.width)
-        assertEquals(78f, scene.height)
+        assertEquals(12f, paths[0].points.first().x)
+        assertEquals(22f, paths[0].points.last().x)
+        assertEquals(27f, paths[1].points.first().x)
+        assertEquals(27f, texts[0].bounds.left)
+        assertEquals(138f, scene.width)
+        assertEquals(102f, scene.height)
         assertEquals(MermaidSceneViewportSizing.ResponsiveMaxWidth, scene.viewportSizing)
     }
 

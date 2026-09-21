@@ -43,22 +43,101 @@ internal class TreeViewLayout {
         }
         val renderer = Renderer(db.config, style, context)
         val rendered = renderer.drawTree(db.getRoot())
-        return GMResult.Ok(
-            MermaidScene(
-                width = rendered.width,
-                height = rendered.height,
-                background = context.theme.background,
-                elements = rendered.elements,
-                title = db.diagramTitle,
-                accessibilityTitle = db.accessibilityTitle,
-                accessibilityDescription = db.accessibilityDescription,
-                viewportSizing = if (db.config.useMaxWidth) {
-                    MermaidSceneViewportSizing.ResponsiveMaxWidth
-                } else {
-                    MermaidSceneViewportSizing.Intrinsic
-                },
-            ),
+        val scene = MermaidScene(
+            width = rendered.width,
+            height = rendered.height,
+            background = context.theme.background,
+            elements = rendered.elements,
+            title = db.diagramTitle,
+            accessibilityTitle = db.accessibilityTitle,
+            accessibilityDescription = db.accessibilityDescription,
+            viewportSizing = if (db.config.useMaxWidth) {
+                MermaidSceneViewportSizing.ResponsiveMaxWidth
+            } else {
+                MermaidSceneViewportSizing.Intrinsic
+            },
         )
+        return GMResult.Ok(normalizeViewport(scene))
+    }
+
+    /**
+     * Mermaid.js 12.0.0: treeView/renderer.ts -> final svg viewBox.
+     * Official reference isolation: official-mermaid.html -> normalizeViewBox.
+     *
+     * The browser reference unions the renderer viewBox with SVG getBBox(), then
+     * adds 12 px on every side. Scene coordinates are translated because
+     * MermaidScene has no negative viewBox origin.
+     */
+    private fun normalizeViewport(scene: MermaidScene): MermaidScene {
+        val rendererViewport = SceneRect(
+            left = 0f,
+            top = 0f,
+            right = scene.width,
+            bottom = scene.height,
+        )
+        val contentBounds = scene.elements
+            .mapNotNull(::elementBounds)
+            .reduceOrNull(SceneRect::union)
+        val union = contentBounds?.let(rendererViewport::union) ?: rendererViewport
+        val left = union.left - VIEWBOX_PADDING
+        val top = union.top - VIEWBOX_PADDING
+        val right = union.right + VIEWBOX_PADDING
+        val bottom = union.bottom + VIEWBOX_PADDING
+        return scene.copy(
+            width = (right - left).coerceAtLeast(1f),
+            height = (bottom - top).coerceAtLeast(1f),
+            elements = scene.elements.map { element ->
+                element.translate(dx = -left, dy = -top)
+            },
+        )
+    }
+
+    private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
+        is SceneAsset -> element.bounds
+        is SceneShape -> element.bounds
+        is SceneText -> element.bounds
+        is ScenePath -> {
+            val first = element.points.firstOrNull()
+            if (first == null) null else element.points.drop(1).fold(
+                SceneRect(first.x, first.y, first.x, first.y),
+            ) { bounds, point ->
+                bounds.union(SceneRect(point.x, point.y, point.x, point.y))
+            }
+        }
+    }
+
+    private fun SceneElement.translate(
+        dx: Float,
+        dy: Float,
+    ): SceneElement = when (this) {
+        is SceneAsset -> copy(bounds = bounds.translate(dx, dy))
+        is SceneShape -> copy(bounds = bounds.translate(dx, dy))
+        is SceneText -> copy(
+            bounds = bounds.translate(dx, dy),
+            rotationPivot = rotationPivot?.translate(dx, dy),
+        )
+        is ScenePath -> copy(
+            points = points.map { point -> point.translate(dx, dy) },
+            commands = commands.map { command -> command.translate(dx, dy) },
+        )
+    }
+
+    private fun ScenePathCommand.translate(
+        dx: Float,
+        dy: Float,
+    ): ScenePathCommand = when (this) {
+        is ScenePathCommand.MoveTo -> copy(point = point.translate(dx, dy))
+        is ScenePathCommand.LineTo -> copy(point = point.translate(dx, dy))
+        is ScenePathCommand.QuadraticTo -> copy(
+            control = control.translate(dx, dy),
+            end = end.translate(dx, dy),
+        )
+        is ScenePathCommand.CubicTo -> copy(
+            control1 = control1.translate(dx, dy),
+            control2 = control2.translate(dx, dy),
+            end = end.translate(dx, dy),
+        )
+        is ScenePathCommand.ArcTo -> copy(end = end.translate(dx, dy))
     }
 
     private class Renderer(
@@ -143,14 +222,9 @@ internal class TreeViewLayout {
             val indent = depth * (config.rowIndent + config.paddingX)
             val row = positionLabel(indent, totalHeight, node)
             rows += row
-            // Mermaid's SVG viewBox starts at -lineThickness / 2, clipping the
-            // root connector while retaining it in the rendered element tree.
-            val visibleConnectorStartX = max(
-                indent - config.rowIndent,
-                -config.lineThickness / 2f,
-            )
+            // Mermaid.js 12.0.0: treeView/renderer.ts -> drawTree.drawNode.
             connectorElements += line(
-                x1 = visibleConnectorStartX,
+                x1 = indent - config.rowIndent,
                 y1 = row.centerY,
                 x2 = indent,
                 y2 = row.centerY,
@@ -530,9 +604,15 @@ internal class TreeViewLayout {
         const val HIGHLIGHT_EXTRA_WIDTH = 8f
         const val HIGHLIGHT_CLASS = "highlight"
         const val MAX_TEXT_WIDTH = 100_000f
+        const val VIEWBOX_PADDING = 12f
         val WHITESPACE = Regex("""\s+""")
     }
 }
+
+private fun ScenePoint.translate(
+    dx: Float,
+    dy: Float,
+): ScenePoint = ScenePoint(x + dx, y + dy)
 
 private fun List<ScenePoint>.toLineCommands(): List<ScenePathCommand> =
     mapIndexed { index, point ->

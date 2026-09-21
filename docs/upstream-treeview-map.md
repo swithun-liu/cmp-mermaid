@@ -22,6 +22,7 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 | `treeview/upstream/mermaid/TreeViewTypes.kt` | `treeView/types.ts` | File and directory node types, annotations, descriptions, and child hierarchy |
 | `treeview/upstream/mermaid/TreeViewIcons.kt` | `treeView/icons.ts` | Explicit icon precedence, suppression, filename and extension maps, built-in qualification, and default pack resolution |
 | `treeview/TreeViewLayout.kt -> processNode` and `positionLabel` | `treeView/renderer.ts -> drawTree` and `positionLabel` | Preorder row layout, indentation, text measurement, connectors, node bounds, and responsive sizing |
+| `treeview/TreeViewLayout.kt -> normalizeViewport` | `treeView/renderer.ts -> final svg viewBox` and `tools/official-reference/official-mermaid.html -> normalizeViewBox` | Renderer viewport/content-bound union, 12 px reference padding, and non-negative SceneGraph translation |
 | `treeview/TreeViewLayout.kt -> renderIcon` | `treeView/icons.ts` and `renderer.ts -> resolveNodeIcons` | Built-in file and folder vectors plus external Iconify scene assets |
 | `treeview/TreeViewLayout.kt -> TreeViewStyle.resolve` and `MermaidPreprocessor.kt` | `treeView/styles.ts`, `defaultConfig.ts`, and `config.type.ts` | Scoped spacing, icon maps, typography, colors, highlights, validation, and frontmatter merging |
 
@@ -52,6 +53,8 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - JavaScript exceptions from box-drawing preprocessing become structured
   parse errors while retaining original input line numbers.
 - DOM `getBBox()` is replaced by `TextMetricProvider`.
+- The final SVG viewBox/getBBox union is represented by a translated,
+  non-negative SceneGraph viewport with the same 12 px reference padding.
 - Built-in file and folder SVGs become SceneGraph paths. Registered external
   icon references remain `SceneAsset` values resolved by the host asset
   provider.

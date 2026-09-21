@@ -1,7 +1,7 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "visual-parity",
-  "generatedAt": "2026-09-21T12:54:43.561Z",
+  "generatedAt": "2026-09-21T15:15:24.902Z",
   "caseCount": 7680,
   "cases": [
     {
@@ -213438,9 +213438,9 @@
       "sourceSha256": "d81c5947a5d1280fc062a0fa8ea479b123339213b6cb7f4aaefec607c01ab531",
       "nativeFile": "parity_treeview_001_native.png",
       "officialFile": "parity_treeview_001_official.png",
-      "nativeBytes": 76716,
+      "nativeBytes": 69694,
       "officialBytes": 65863,
-      "nativeSha256": "99ad7717965fffa8f05d8f8ae1bebcf9935eb9c6edb029220b347bef9e00af2c",
+      "nativeSha256": "71da6ef4de88448b149ca92bbcaa72c32ced055c872695d98d16795c80f1ca90",
       "officialSha256": "bda4480708d63f04a88893e5dbf5b604320ce39a255793668070362e8fb03793"
     },
     {
@@ -213462,9 +213462,9 @@
       "sourceSha256": "bbcd0aa3689cf0c158aa819eace33ba1e4d247f1a7a269f7ff249f89011d2aee",
       "nativeFile": "parity_treeview_002_native.png",
       "officialFile": "parity_treeview_002_official.png",
-      "nativeBytes": 55010,
+      "nativeBytes": 52461,
       "officialBytes": 48560,
-      "nativeSha256": "dd78fd4ebd97e41490463f611dbcee27def88d5db4b0d4bae94453e1cc16101f",
+      "nativeSha256": "bcae8b4d95fcd01e0c789744909e252a0b33e38ab920c229f64fb0b67e0b3382",
       "officialSha256": "2581ad7292e887034e433fa141cf71374d2f4a2933a6e4259d7ec806915b0ec1"
     },
     {
@@ -213486,9 +213486,9 @@
       "sourceSha256": "fa4de94010840646154a865ed0d9e1b04fbd97cc9f4a95ed88aca72b73837f93",
       "nativeFile": "parity_treeview_003_native.png",
       "officialFile": "parity_treeview_003_official.png",
-      "nativeBytes": 54662,
+      "nativeBytes": 50587,
       "officialBytes": 46602,
-      "nativeSha256": "5fbb7c46e7ca9951e22214550ef23c7d4778469544dfe7b5372ceda56d3b3bdb",
+      "nativeSha256": "122e319fcba3e3d21c7852060358c817694f3cdb0ce8e97e1c70efc67b9771c5",
       "officialSha256": "cf2fcdab3257a732cfc6989d23e138856ddc443c84520279663ecf555422010e"
     },
     {
@@ -213510,9 +213510,9 @@
       "sourceSha256": "29402791118c104028cbb881d6139fc42a6142c1d455cb5a10e941df8183bf21",
       "nativeFile": "parity_treeview_004_native.png",
       "officialFile": "parity_treeview_004_official.png",
-      "nativeBytes": 54711,
+      "nativeBytes": 51949,
       "officialBytes": 47173,
-      "nativeSha256": "4aaa8c6e8ad02d2b8db5cf6703090c90a3d3b66433b0c17cc381846b5202ae08",
+      "nativeSha256": "fca422671399ed9643130998f90850d0c876b5780d224cf384fa41d0cdc8decd",
       "officialSha256": "995dce9408c2fd14540f5dcbffaf76e317f3b5d54361b5f47edb4717e40e3ebf"
     },
     {
@@ -213534,9 +213534,9 @@
       "sourceSha256": "9ad525bd50d6c4918e612f2ffc4ab3fdceccab312f3d33b5de44af5be644fe29",
       "nativeFile": "parity_treeview_005_native.png",
       "officialFile": "parity_treeview_005_official.png",
-      "nativeBytes": 85409,
+      "nativeBytes": 75372,
       "officialBytes": 69197,
-      "nativeSha256": "2184634e685a1da61b4098cbbbd3c58df05b1d9d38ff8027fce929f16b992cfb",
+      "nativeSha256": "64fbfde875c68dd18766fec21272c36256d5c5e79ea2a7d94c9a3317bd30c2e7",
       "officialSha256": "8ef3048fc192bc6743f1599e8deb869b7a930e5e6d6cbd89755b7966f2061eaa"
     },
     {
@@ -213568,9 +213568,9 @@
       "sourceSha256": "744259093c6bbf542bd2abcacf2b01b3a24f4325f955717f1b1dbb34e32e49c0",
       "nativeFile": "parity_treeview_006_native.png",
       "officialFile": "parity_treeview_006_official.png",
-      "nativeBytes": 45342,
+      "nativeBytes": 41916,
       "officialBytes": 38459,
-      "nativeSha256": "e3a9f6e7633689531c1733e083c452415de3070d6b4cc08217147434e068b34b",
+      "nativeSha256": "4eb9df9e6348d76a58b01cfd3df2555056818ade6ef2e6c7293b718ec901e549",
       "officialSha256": "aa4ba43ad4626d1e0b47a9face346d1f71c69c2594da1c8314b78b6de18b87f5"
     },
     {
@@ -213599,9 +213599,9 @@
       "sourceSha256": "6de745a7ea3b767b1fa09e033ac55026a0bf3e5585f3ba24ef2c08bf7208823a",
       "nativeFile": "parity_treeview_007_native.png",
       "officialFile": "parity_treeview_007_official.png",
-      "nativeBytes": 44062,
+      "nativeBytes": 39181,
       "officialBytes": 37880,
-      "nativeSha256": "af5522ff39cde0fda2622a566f0594e1f64882b3c45d2f6b51747d3ab752fdbb",
+      "nativeSha256": "fe2fe1c263f1c6bafe856932bfdfe0dcbd1edf375d88f0255ca84ef1e68ded74",
       "officialSha256": "f6fdb28a059929b568538314e8ebcb48a1554f30063d2e4b8404c4e7b69cf5a3"
     },
     {
@@ -213630,9 +213630,9 @@
       "sourceSha256": "0b26eb3f1943ff0c1f5b30d05c0451da5ccd40f65741bfe265ec487acf8b9205",
       "nativeFile": "parity_treeview_008_native.png",
       "officialFile": "parity_treeview_008_official.png",
-      "nativeBytes": 49013,
+      "nativeBytes": 46257,
       "officialBytes": 41456,
-      "nativeSha256": "5d1ae525f6a2b5c2d69defbb4d589c21969106011cad3992123f684cef25d957",
+      "nativeSha256": "f08d398077453acb0f6d7caab46b0eeebdb6d663b39438ad05991ee0d54dff75",
       "officialSha256": "c8f2fa38675914e9da5d46c05413f0eba8875cdf33c92aa9c434dd8caa288ca8"
     },
     {
@@ -213660,9 +213660,9 @@
       "sourceSha256": "e3320a4dc502936205ed840aa8103c167b23de864dac2a6f5d691ff6a6e42ec9",
       "nativeFile": "parity_treeview_009_native.png",
       "officialFile": "parity_treeview_009_official.png",
-      "nativeBytes": 41516,
+      "nativeBytes": 38786,
       "officialBytes": 36128,
-      "nativeSha256": "e3ab3745128e2c484ee23501d1ba50bc258cf21d7033c1d6093348c7f3b2a750",
+      "nativeSha256": "4cdbfe4132d613e6f559c8f8046387f759cc733d95866a5f22cf200230b65ab4",
       "officialSha256": "b9f53745a019e861060182645bab26e21f7ef51e6da24f58d67013778ee13a91"
     },
     {
@@ -213692,9 +213692,9 @@
       "sourceSha256": "ccb3563ab7aa7955866c6eb65629070981a3d244f488e1cf2b786fa48698e07f",
       "nativeFile": "parity_treeview_010_native.png",
       "officialFile": "parity_treeview_010_official.png",
-      "nativeBytes": 67326,
+      "nativeBytes": 58792,
       "officialBytes": 60194,
-      "nativeSha256": "5067b436704444ab631f23abbf8b141f8ef9d20b9ef09c876b0c832fa7ee66fa",
+      "nativeSha256": "9aaf79ceb95defcc1fbbeb88c4546c0eda4606c81a25a990f688f67dca95b5bb",
       "officialSha256": "32875632cee903c2a092a65610ae457a7a5f76ee9f94008dfe90c61ef198f93e"
     },
     {
@@ -213724,9 +213724,9 @@
       "sourceSha256": "62300334562bb4d35f0ad47a0f2699e538592b0ffcd5a87ca4111cabe84cf429",
       "nativeFile": "parity_treeview_011_native.png",
       "officialFile": "parity_treeview_011_official.png",
-      "nativeBytes": 47554,
+      "nativeBytes": 43363,
       "officialBytes": 39862,
-      "nativeSha256": "80143d8bf7fa4df6291d3d8630c47f03c8d815332e0a3a736281951ab77144a6",
+      "nativeSha256": "62524c58c6731f477e23fc5cf69193cbf56d1659cf5bfc6f1f8bcca665c7226c",
       "officialSha256": "cde43f44e4ded465d02849510b7cea25326b8892a13c31d926327bc92d149bed"
     },
     {
@@ -213756,9 +213756,9 @@
       "sourceSha256": "b77d9b4bfbe9c6957258f5d14e8d4867ae675d9233e60d99e0aba9f35333d009",
       "nativeFile": "parity_treeview_012_native.png",
       "officialFile": "parity_treeview_012_official.png",
-      "nativeBytes": 68982,
+      "nativeBytes": 62641,
       "officialBytes": 58847,
-      "nativeSha256": "4e0276844367ca288f912b404cef6feef9e475acecb6860dd5c9663520189541",
+      "nativeSha256": "fdb6634cff3250e925bb6a77211faa481d7f560484dc22aba448940eababec44",
       "officialSha256": "0d0c4cfeb82aa9dfd98682305cfdfddf21c9c79f281bb1721f64bc02b7b303e7"
     },
     {
@@ -213787,9 +213787,9 @@
       "sourceSha256": "0d5974db8ffec73ce4754453993cc0c72dcceefedd0cdcd7ced77dcd395cb3f6",
       "nativeFile": "parity_treeview_013_native.png",
       "officialFile": "parity_treeview_013_official.png",
-      "nativeBytes": 38523,
+      "nativeBytes": 36190,
       "officialBytes": 33312,
-      "nativeSha256": "6a751a11c7bedfbd873be6f7467b6210c5902786f9362645c87fc051ce3d41d3",
+      "nativeSha256": "2eeff5fd4560046637f31c4e5072e938b25b2569b981b9856d5f7898dd77e9aa",
       "officialSha256": "3eca2ec9761ab8a75c413ed93d623516964a778f2885469851c313c13765fb56"
     },
     {
@@ -213811,9 +213811,9 @@
       "sourceSha256": "308d690246f78ac6ae5ac77e9b1e1864531b42c9b313b5c100f8981e90e82976",
       "nativeFile": "parity_treeview_014_native.png",
       "officialFile": "parity_treeview_014_official.png",
-      "nativeBytes": 80095,
+      "nativeBytes": 74182,
       "officialBytes": 67652,
-      "nativeSha256": "1fd5fefa2aba46538a8c7a1097f63c75137e7885bb6aaeb3af3dea48992f369a",
+      "nativeSha256": "364ff26dcb0aef9d48b137199441070b17be85808d333587e1fa99f68e025fd0",
       "officialSha256": "769e882ca141b37d128305d501a8443124774749ef9d2f8892e7a3dd17516fbe"
     },
     {
@@ -213835,9 +213835,9 @@
       "sourceSha256": "00198442094aad2f5b35e7f825765ea873e026ff6ea7cbb46ac37da0daf9fe49",
       "nativeFile": "parity_treeview_015_native.png",
       "officialFile": "parity_treeview_015_official.png",
-      "nativeBytes": 59345,
+      "nativeBytes": 54260,
       "officialBytes": 50368,
-      "nativeSha256": "015cefa130075f5cdab035fdebe396b6eab000abb1b987873ff9a7f32c0466c0",
+      "nativeSha256": "d5dbae0345ba7748fbb17ed2416526ebea1103600da4bfbdf905b775107abf70",
       "officialSha256": "7695f58680b57af400098ce99a0d4f927ab78b2d8a64991cf0c47dcb6a6dfa57"
     },
     {
@@ -213859,9 +213859,9 @@
       "sourceSha256": "d3faa6205079dac69f0f85da451a58474f266261868a4f3d79cf2a7ca47a9769",
       "nativeFile": "parity_treeview_016_native.png",
       "officialFile": "parity_treeview_016_official.png",
-      "nativeBytes": 53807,
+      "nativeBytes": 49676,
       "officialBytes": 46258,
-      "nativeSha256": "693c2ea0b7405e37add5f1b31fe1be0eb95b1b49c2e78e8de186c151d56dd17f",
+      "nativeSha256": "12880d1e421bc66980828f6e5f0c9edb455e71b90505587a5718194bb2a0fe08",
       "officialSha256": "eb4cc32b366e34e17aefe765319a43736054f3520f3d3b820221d34a6d3d3f49"
     },
     {
@@ -213883,9 +213883,9 @@
       "sourceSha256": "d6dc978fc62699074a5837f70507295b017a4e424820e64d54413ee0642879d8",
       "nativeFile": "parity_treeview_017_native.png",
       "officialFile": "parity_treeview_017_official.png",
-      "nativeBytes": 58916,
+      "nativeBytes": 54378,
       "officialBytes": 49691,
-      "nativeSha256": "b9d45145ea32b5c75679a0ae1851a0d4a90935335f21d51e5c4c538769f2cfdd",
+      "nativeSha256": "f67010ee786cdd844a09bb13aa45dddf90a081e7d95c3f194228086e8aa9806c",
       "officialSha256": "1de58772a57b15386425eb107852f3d955fca60399bfa693fa8a9465297fc593"
     },
     {
@@ -213907,9 +213907,9 @@
       "sourceSha256": "786489b716371912cb4e70168d37d16ce8575504cb590388a8583bf92abb73c6",
       "nativeFile": "parity_treeview_018_native.png",
       "officialFile": "parity_treeview_018_official.png",
-      "nativeBytes": 89331,
+      "nativeBytes": 78866,
       "officialBytes": 72433,
-      "nativeSha256": "99b0846be2587d189856346df4c5696369eb60ce277fe9b53924d05e424cec32",
+      "nativeSha256": "041a6e289e2117b5f4f36d35ed74f2196e505efa725e2838c37a4bb42e76ba98",
       "officialSha256": "920ebe6cf814b2e97dde3a83bc2cc9cba311943aeb220ae996b7cfb9fa43d777"
     },
     {
@@ -213941,9 +213941,9 @@
       "sourceSha256": "5370a34ca7a4c8781c77235cc938b766d4c0f69be66b1e58e3d423a7dc7481e6",
       "nativeFile": "parity_treeview_019_native.png",
       "officialFile": "parity_treeview_019_official.png",
-      "nativeBytes": 49614,
+      "nativeBytes": 45517,
       "officialBytes": 42683,
-      "nativeSha256": "d70415e949cbe9c669459fc45129d6145998e8c096e2e3a5f97c5c86ea0f7165",
+      "nativeSha256": "e88db7212b723b334606de15a840471693c64a2533bd75e1066e2e8cc401fd13",
       "officialSha256": "4db5132ef71caafe670edd4d4b4e042a45d1115ab466653f9ad097f8f731272b"
     },
     {
@@ -213972,9 +213972,9 @@
       "sourceSha256": "60c6aaae6be1ba6c261478f2a78c146dcc3013df74685dafe146f2042ea4f8c6",
       "nativeFile": "parity_treeview_020_native.png",
       "officialFile": "parity_treeview_020_official.png",
-      "nativeBytes": 48260,
+      "nativeBytes": 43854,
       "officialBytes": 41765,
-      "nativeSha256": "c5ba192c53039c5fd3595fd7469d1bcadb7a010f5eece02f41d62cd38cb08063",
+      "nativeSha256": "f6a1c7642f4f1c940dddb8720f72d474ffdc4e515c351bc01428fdcc9f61e567",
       "officialSha256": "f7689aa2f232d270b365dfd8ee3d3ab8a35ce3d9dbe7cb2fc453a1cb40469bcd"
     },
     {
@@ -214003,9 +214003,9 @@
       "sourceSha256": "10ffc58e8ace0126ae19c1bf3e8680d20bc2d994a68886ec8e20bdf903447836",
       "nativeFile": "parity_treeview_021_native.png",
       "officialFile": "parity_treeview_021_official.png",
-      "nativeBytes": 51972,
+      "nativeBytes": 47106,
       "officialBytes": 45267,
-      "nativeSha256": "307f7efe82fd0bee79f507f15bd951fe2289cba04ec7d8b21506534fe311c364",
+      "nativeSha256": "8055868f8dd2111c8f686c4226fbb618e8bb1b1c0fe08cbe14d064277050b232",
       "officialSha256": "f1a11046d82515b04de5c3e67d1c24be647f162cf87ec600e82e35af1e68d7c3"
     },
     {
@@ -214033,9 +214033,9 @@
       "sourceSha256": "44a889121ae138e92c6bb342b11f9de9e8347196ac0eaa1c1b654675b811fd21",
       "nativeFile": "parity_treeview_022_native.png",
       "officialFile": "parity_treeview_022_official.png",
-      "nativeBytes": 43674,
+      "nativeBytes": 42032,
       "officialBytes": 38696,
-      "nativeSha256": "f98cbc79e0f47439f8e910887b326ffffe3713ef07fb131d37dddfec5b0af4c9",
+      "nativeSha256": "30f042af7fd8aeb4dca069700911217629bb94d092f33711e314892495c048cc",
       "officialSha256": "cd06cfd6f606390d6ed041f2ad44848f88c03d20db0231382bd0ba2900404417"
     },
     {
@@ -214065,9 +214065,9 @@
       "sourceSha256": "a328656c7312282fc4759c935e68d0db6cc8a7af5771fde87bb62943c58aa0f0",
       "nativeFile": "parity_treeview_023_native.png",
       "officialFile": "parity_treeview_023_official.png",
-      "nativeBytes": 69946,
+      "nativeBytes": 63077,
       "officialBytes": 58607,
-      "nativeSha256": "1012c862b5f9201b7dbaeec26778a0ce41fe928bf8a2422158a6b90717df01ec",
+      "nativeSha256": "eabe6230cfd94a21b52804113ae6bdca666fdc76380b8dbb2558cc93afbd8e95",
       "officialSha256": "7f1977e087d0ef8b363884b59eea1297f86a437d86a35d904d56b5dc5fb5e408"
     },
     {
@@ -214097,9 +214097,9 @@
       "sourceSha256": "703a6644efe27095076f3187654e74bbb6269a5e7da6c32a3d5286628eafc79f",
       "nativeFile": "parity_treeview_024_native.png",
       "officialFile": "parity_treeview_024_official.png",
-      "nativeBytes": 52178,
+      "nativeBytes": 48567,
       "officialBytes": 45349,
-      "nativeSha256": "8dc7354aff12ad89d77b9c65c051258a254082cc47a8d6756326956e28c621b0",
+      "nativeSha256": "6a5d323b10a2f86139b6042011bad8888298f881514f6cab72c19f68e2f4a355",
       "officialSha256": "55c1aec4dd9407bcb5865fa8d5ef11f63ac1a9b2edf2ff68c6c7a3f67a7e10c1"
     },
     {
@@ -214129,9 +214129,9 @@
       "sourceSha256": "02dffddaad092ca5df10d2b095041e43bc784f11e85974b3adf9f5a85416aae0",
       "nativeFile": "parity_treeview_025_native.png",
       "officialFile": "parity_treeview_025_official.png",
-      "nativeBytes": 67152,
+      "nativeBytes": 63036,
       "officialBytes": 55555,
-      "nativeSha256": "9c1b06c7243aefe70a58888e8f5655adc452d84485c9136f2837586b311f1471",
+      "nativeSha256": "da83d8669227a95638255934f876ce116e1aabdd05cf99139c8893f7ce86cf9e",
       "officialSha256": "09d18f7e22911d0baf9ade0c85012233990b7799f647f82894c0286939559588"
     },
     {
@@ -214160,9 +214160,9 @@
       "sourceSha256": "66690b23c933c104e902ad15d77d9dfe5baeda3aa6f4c0689c2b686867646af8",
       "nativeFile": "parity_treeview_026_native.png",
       "officialFile": "parity_treeview_026_official.png",
-      "nativeBytes": 43584,
+      "nativeBytes": 40397,
       "officialBytes": 36976,
-      "nativeSha256": "6aec28a8a429c5224923ef95121f8ee34f9aeb1f65c05d58cc462dd47deb3858",
+      "nativeSha256": "b93dba37476b3076289b8e8e4736c0b3a9eb03acb992d55a26db0f15685d7dc0",
       "officialSha256": "0f5b2345055d3bb11df3427670707dc33ec79cf2e661a97828701c17c3210978"
     },
     {
@@ -214184,9 +214184,9 @@
       "sourceSha256": "88e4a3c1dfb86b7f3c0297acd334edbc9c3abf4a6d9d9729f5deaf32bf1c8969",
       "nativeFile": "parity_treeview_027_native.png",
       "officialFile": "parity_treeview_027_official.png",
-      "nativeBytes": 72261,
+      "nativeBytes": 69084,
       "officialBytes": 64951,
-      "nativeSha256": "98a9405d4d36ec57467ce15567407e3e7404ce9d32d820943bda0caf61c041bf",
+      "nativeSha256": "a22c8acbd2a9a3ef8307c10be15915f8fb391bbad801b4a3a6606c0f3d6508f0",
       "officialSha256": "948e10e22bbe563b2b3a3956a05287b3764ed656956ed9050933aab13e3a7590"
     },
     {
@@ -214208,9 +214208,9 @@
       "sourceSha256": "b1a5dde00a64ba96c15333cec4472cf170955df8a836def68eb37ab792326c39",
       "nativeFile": "parity_treeview_028_native.png",
       "officialFile": "parity_treeview_028_official.png",
-      "nativeBytes": 64685,
+      "nativeBytes": 59460,
       "officialBytes": 54371,
-      "nativeSha256": "faf7c9d0749efc276f3fe3ff4c7b00fe7276d44d93c8dc4864a1b1e86079b72e",
+      "nativeSha256": "83e9affeaa8bd950541060ffcdb6427fa312cbc793ba8960edda291b0c3748c8",
       "officialSha256": "632dac602599a20fbc4b1aeadef6e16598208f5fba05e412a7b39f73e3c31e7d"
     },
     {
@@ -214232,9 +214232,9 @@
       "sourceSha256": "126b1f56a970ce062707a3189bd151be97fe07b29a7aa121da4460b2378961ff",
       "nativeFile": "parity_treeview_029_native.png",
       "officialFile": "parity_treeview_029_official.png",
-      "nativeBytes": 49523,
+      "nativeBytes": 46220,
       "officialBytes": 44615,
-      "nativeSha256": "bdd95b3deed76ffcd9ba34c8f1a82aa598379299d5c7f877095684597b00bda9",
+      "nativeSha256": "11a716c9c344cedf6a13ed0d5534abc6ccc154bd8522a8cfdd8dd90693c59dbf",
       "officialSha256": "bf6976f9ae9eadf7952fb4bcffdca6e38631291adce36c6b44c9a6edeb038ec1"
     },
     {
@@ -214256,9 +214256,9 @@
       "sourceSha256": "171ec03b0a065e65b10ad6770df1cd78c0d297cc18a34a11e1f970676f53b08d",
       "nativeFile": "parity_treeview_030_native.png",
       "officialFile": "parity_treeview_030_official.png",
-      "nativeBytes": 59614,
+      "nativeBytes": 57437,
       "officialBytes": 51882,
-      "nativeSha256": "95920a0075c4afe7bdc22e9118a78852e3da3ed499f6a77e6d62124a912316e3",
+      "nativeSha256": "9cfce79e3eb2b41108b2207714a185726b6da4a08aa70e5a5de685a2ec80663d",
       "officialSha256": "76f1f604a26a415e2b92301a116e683b3286b4a8952b9537e4f4993eb3ed24c5"
     },
     {
@@ -214280,9 +214280,9 @@
       "sourceSha256": "c596a31b175c0ea0f4ee89bbf7c7aa9fe04ed8acc8bea4df20300f7bd6dfc458",
       "nativeFile": "parity_treeview_031_native.png",
       "officialFile": "parity_treeview_031_official.png",
-      "nativeBytes": 83977,
+      "nativeBytes": 77198,
       "officialBytes": 70260,
-      "nativeSha256": "b35d29b01a51d7b28531462ad8e561169a7d0096329997caf12bbbb9bf64d12a",
+      "nativeSha256": "23f07d1b2bc0904703adcaaf6c8d0ad56d23befd50e52a06e605431d39b671be",
       "officialSha256": "5bf043c0d1f31369419e4b0458fd1524a91bc7655e6b75da054ae41112becd5f"
     },
     {
@@ -214314,9 +214314,9 @@
       "sourceSha256": "71b56386d7d22a3814550bab02df83027f08bffa8f8cff88a20c28cd60316293",
       "nativeFile": "parity_treeview_032_native.png",
       "officialFile": "parity_treeview_032_official.png",
-      "nativeBytes": 44826,
+      "nativeBytes": 42819,
       "officialBytes": 39449,
-      "nativeSha256": "ffa2f5bab10f21165021e0f81dbeb9476b2a57a2086effca0955b1e7809c61f0",
+      "nativeSha256": "260cc806a257112c475f93f417d726d2847c3623ab437577faf30aa4656cbecb",
       "officialSha256": "937beeb983f01bf98e5d1fcaef8cbf9622005944272836be47858af4bfb90d03"
     },
     {
@@ -214345,9 +214345,9 @@
       "sourceSha256": "0f506b948e14bf5778781624138cfd50aa19458277587950d611602352c09ebf",
       "nativeFile": "parity_treeview_033_native.png",
       "officialFile": "parity_treeview_033_official.png",
-      "nativeBytes": 47477,
+      "nativeBytes": 45990,
       "officialBytes": 42384,
-      "nativeSha256": "0cdc52b191bae84f553bfb931451c8bc97a6f1f10724a36d48e6ab7c79250c7b",
+      "nativeSha256": "384b673e07ac1010f80fdaf200a9e8e6e4a21e0ee82d707f82112dca2fa2739b",
       "officialSha256": "fab59152dee968abbd78f98a9fb3afd70d1f0c0b9682f33764f79367b13f833c"
     },
     {
@@ -214376,9 +214376,9 @@
       "sourceSha256": "03d43e910acc87713ac63dddb8d4a63e58ecd68dca78d1eb6c88dc4cfaa35acb",
       "nativeFile": "parity_treeview_034_native.png",
       "officialFile": "parity_treeview_034_official.png",
-      "nativeBytes": 46854,
+      "nativeBytes": 44408,
       "officialBytes": 41849,
-      "nativeSha256": "f1e5ee9815728e24076a631f29cb387827bae604dace445bee4135eea5e1224c",
+      "nativeSha256": "555192a0e079c1f534024e5b9ca6da380ae5011fe8cde22393ea7e2b94836278",
       "officialSha256": "2aed2091d98890adaced080cf6dac347b9fccbb47286708c4c22d7785303db25"
     },
     {
@@ -214406,9 +214406,9 @@
       "sourceSha256": "4f6990aff872e425d886b3f90e48908eccfe57cf7494a9e518d8b17fba7db71d",
       "nativeFile": "parity_treeview_035_native.png",
       "officialFile": "parity_treeview_035_official.png",
-      "nativeBytes": 47214,
+      "nativeBytes": 45530,
       "officialBytes": 42378,
-      "nativeSha256": "cee865276e1c281198fb6114e9a66c148c579ad87b3bdf3866c84658b73c3e2b",
+      "nativeSha256": "8e614c3081d0d0f73dd33f3a6b90d506fe72e74c1f4e033a4db74e088fdbaab0",
       "officialSha256": "24edcfc2f5956316785c4b64b1616c2fdfcdd26aa2ab865e713134a5b872ac43"
     },
     {
@@ -214438,9 +214438,9 @@
       "sourceSha256": "990b33d1b110daad0d6b5ba568280c95a0d3f80431eb791e510458f4518cc668",
       "nativeFile": "parity_treeview_036_native.png",
       "officialFile": "parity_treeview_036_official.png",
-      "nativeBytes": 60074,
+      "nativeBytes": 56022,
       "officialBytes": 54409,
-      "nativeSha256": "0c3587552342099ad8980f5118213ebd1b181a186caca63429697962fb68df13",
+      "nativeSha256": "6ae60dba2a228d0d560758875fa7043370e5eab068e04cbc0e4a1f348990ab4a",
       "officialSha256": "f2ad3cae406844aaafa81c0914721420ae7b53b0283a56e780f2542713201618"
     },
     {
@@ -214470,9 +214470,9 @@
       "sourceSha256": "f16fef12beb7502d76f70be6823049719259e1fa7236803a1089c1ec2abe4c11",
       "nativeFile": "parity_treeview_037_native.png",
       "officialFile": "parity_treeview_037_official.png",
-      "nativeBytes": 48327,
+      "nativeBytes": 43933,
       "officialBytes": 41780,
-      "nativeSha256": "03baf66ee5832c0ff63b1b3e3a173289ff348fc53c5954b6aba17a8a9b627a29",
+      "nativeSha256": "182e0de71a4ac6a4019457188b57ef024eb835e7185de49daba59d9bc3ccbb00",
       "officialSha256": "ba9b562ae10987f4b96f012034e25f6eb1fc888b9d2e35aba5ad4bf979a080ba"
     },
     {
@@ -214502,9 +214502,9 @@
       "sourceSha256": "34a874527c4f78ce1132ae1e38a8beaf19c7b9fdee8c2e9c75b630e8f4f1a63a",
       "nativeFile": "parity_treeview_038_native.png",
       "officialFile": "parity_treeview_038_official.png",
-      "nativeBytes": 60947,
+      "nativeBytes": 57559,
       "officialBytes": 53678,
-      "nativeSha256": "1cf15f9ee5f7ab54ed7a41af7af50e5acfa3d82d463cdc741fffe1df109a14e8",
+      "nativeSha256": "8ef058d3e00d48b32bf346ac224e586baa43c39a6b6f0dddacbc3fb755cd8c6a",
       "officialSha256": "5e4963c245de6c4a225f5bb82e5d2b7a3171ee3d5645c06a927bc20d9e36c102"
     },
     {
@@ -214533,9 +214533,9 @@
       "sourceSha256": "02cbb9095283278c7ab4b2b34dce4299d8937e8719b847cfff8f0da61d8300d3",
       "nativeFile": "parity_treeview_039_native.png",
       "officialFile": "parity_treeview_039_official.png",
-      "nativeBytes": 47202,
+      "nativeBytes": 44682,
       "officialBytes": 40947,
-      "nativeSha256": "0d2fe91d759ce3c5ac7a17551c81102bb79312d131ea5108a26f48da46c5893c",
+      "nativeSha256": "3cf8fd514d51babe7a62f95e7b5ae81bb050e40fa332fab295ea467fd0627bac",
       "officialSha256": "4d583b1bccff5ea48e8b0e9b2526bc05c83caa3c1daa3edeef258e43c4790611"
     },
     {
@@ -214557,9 +214557,9 @@
       "sourceSha256": "47181276c32c957a72c43adfc31eb31f472edd3c2ecbec710291c23d8c1dbadc",
       "nativeFile": "parity_treeview_040_native.png",
       "officialFile": "parity_treeview_040_official.png",
-      "nativeBytes": 71483,
+      "nativeBytes": 65389,
       "officialBytes": 63124,
-      "nativeSha256": "71d124bfea80819413175635a1f4f45a4ff0d0ba70caaf53e5be376403d6d2e7",
+      "nativeSha256": "4973bfe7df470d275a2cb8a893106cf8b559567c62ecb4ca9e3f5bb1f65644e8",
       "officialSha256": "e2d9c40a5433c9428c07d3ee8c72f66b43f4051032b3e47480288e5187c6fddf"
     },
     {
@@ -214581,9 +214581,9 @@
       "sourceSha256": "b43e3323f3d7d6ddf7f3d26150c6738b27c069d627d99a8851a3dc1b543f10b4",
       "nativeFile": "parity_treeview_041_native.png",
       "officialFile": "parity_treeview_041_official.png",
-      "nativeBytes": 63561,
+      "nativeBytes": 58211,
       "officialBytes": 53405,
-      "nativeSha256": "0344ab0b0b5b7161652acfabe31fb1e64e9c171fa649b08f729f5e882ce5169d",
+      "nativeSha256": "25260c6c49f052c3d285d14fce757e8c8c423d0900289de9f7e5d4eb12ac9c51",
       "officialSha256": "9e5c3fb0905902865613fafac82caedb4f724d798731e5212c99a2102bf98b63"
     },
     {
@@ -214605,9 +214605,9 @@
       "sourceSha256": "32446cf693c990afc5755b34e07c84448cfe207fd3d0d510eb6cd4ccc9ef7d0d",
       "nativeFile": "parity_treeview_042_native.png",
       "officialFile": "parity_treeview_042_official.png",
-      "nativeBytes": 47100,
+      "nativeBytes": 44075,
       "officialBytes": 41353,
-      "nativeSha256": "cd3b72661b2ae055e47a934316596b816e0fc15533c762782606c958424bbd44",
+      "nativeSha256": "bc6c19a8d1584736ad4bdadf503bdf3bc566ce3acfa45eadd483c7fd6497e556",
       "officialSha256": "4764b6ebe94e1623f03acc72090babcd836b39f01d786fed232e60d9fed1c96c"
     },
     {
@@ -214629,9 +214629,9 @@
       "sourceSha256": "7bc757500e9bcfdb0b897313b8681a62d68c78407338d4f427df8e5fe938d722",
       "nativeFile": "parity_treeview_043_native.png",
       "officialFile": "parity_treeview_043_official.png",
-      "nativeBytes": 59279,
+      "nativeBytes": 55268,
       "officialBytes": 51172,
-      "nativeSha256": "7df8d7777f9f6abb989c9ccb92f24d644434d15b484d347869327af577f4c437",
+      "nativeSha256": "54cb6b2f8fe4586b408fa7c63e4e3784a471664b99f94a89f59fba7e71a4feba",
       "officialSha256": "66e3fd71c15d5ec8b6fb440e78c4aab5d1fd2ab8bbec798927f326f86ba1bfd4"
     },
     {
@@ -214653,9 +214653,9 @@
       "sourceSha256": "5e8c8d0b7844b8ef84d43136ab842bdc666e374b923280f6fdfe2e8ce68e4206",
       "nativeFile": "parity_treeview_044_native.png",
       "officialFile": "parity_treeview_044_official.png",
-      "nativeBytes": 78817,
+      "nativeBytes": 74779,
       "officialBytes": 67996,
-      "nativeSha256": "caa1bbad25b3d9b7d0d3531e1a779461c1283f538363e233b78455f1af184066",
+      "nativeSha256": "e3d072b6f981adffc4ed7ec4909c0d34c2ac02f96be30fcbb59690aa96a30b57",
       "officialSha256": "0ce9f98e961d580bd167ce79592c0dc2762a7357df41ac6fbe95b0b3b8d96e6d"
     },
     {
@@ -214687,9 +214687,9 @@
       "sourceSha256": "71f6944230b2f6ad9b0f5c106a0308d65b0e3632989ea35f80c5c30efda6bb25",
       "nativeFile": "parity_treeview_045_native.png",
       "officialFile": "parity_treeview_045_official.png",
-      "nativeBytes": 43093,
+      "nativeBytes": 40156,
       "officialBytes": 37817,
-      "nativeSha256": "26d5a6a1f0d531383f2c392776b275044f484c0bb7dd38c7cadd1f5f6018239b",
+      "nativeSha256": "8102260d11126f62fda138d7ba0a0070e7dc48a48ee6b724fd2b9831ddd88790",
       "officialSha256": "a9ae6d526cbb032271f361b013aef333ddf01e327540eda5ca1d7d776042ab94"
     },
     {
@@ -214718,9 +214718,9 @@
       "sourceSha256": "9b648c2fe8a911ff1a91cf3143d068a868cf94ccbc87d554168c5f34e0dee919",
       "nativeFile": "parity_treeview_046_native.png",
       "officialFile": "parity_treeview_046_official.png",
-      "nativeBytes": 46796,
+      "nativeBytes": 43152,
       "officialBytes": 39831,
-      "nativeSha256": "f0cc6437e30b4b6ecf152bdeee9e1f1748a019bca542a938daffac345d91579e",
+      "nativeSha256": "d82467d4c16aac0988e0a89eda2df0f79cad019b6032e6312cb86fc0f0ec124a",
       "officialSha256": "226dc396c0eea5ee6b19a1b47df79cba8752f0c5b44f4fcfc1405ef0605a552b"
     },
     {
@@ -214749,9 +214749,9 @@
       "sourceSha256": "d12afa7fdf91fbbcda1cf0c16d307930b455d0c5c7e9eaf71212fbbafcf608b3",
       "nativeFile": "parity_treeview_047_native.png",
       "officialFile": "parity_treeview_047_official.png",
-      "nativeBytes": 45003,
+      "nativeBytes": 42113,
       "officialBytes": 39083,
-      "nativeSha256": "5e13eca4519a57dff29d63a124761c72a895c3b26122a42d44e1a6ef8ea9399d",
+      "nativeSha256": "53fac147f16173e897e53715740b7096a1116d5532f8215d239fa42a644668e7",
       "officialSha256": "42b3f845661c005a11587e0dec68b3748dbe5ce7c1cc75ede64cc7ad82804de5"
     },
     {
@@ -214779,9 +214779,9 @@
       "sourceSha256": "266dcebb33d785519badc93c420fa5867483899c6110f777c6643fa9013640f4",
       "nativeFile": "parity_treeview_048_native.png",
       "officialFile": "parity_treeview_048_official.png",
-      "nativeBytes": 47155,
+      "nativeBytes": 45454,
       "officialBytes": 42812,
-      "nativeSha256": "7eef9a6b645dc1bf1917849da75d85f9d3c15aeb3663b7855b369726816555ea",
+      "nativeSha256": "165392424ca389eb0534a92933376dafb11ad28ce11b6859f9a14507b1bae0fb",
       "officialSha256": "464985a893c54cb7f619ebcfb90eec5fbbb8ef19a34ac51c3213492224a421dc"
     },
     {
@@ -214811,9 +214811,9 @@
       "sourceSha256": "239c309f2d4dc71bf6e633e36bf5df945b0c27373e88121dc44c91bba6ea41ad",
       "nativeFile": "parity_treeview_049_native.png",
       "officialFile": "parity_treeview_049_official.png",
-      "nativeBytes": 58505,
+      "nativeBytes": 55023,
       "officialBytes": 52587,
-      "nativeSha256": "632c9c994db449ca5932fd91b67ae32d173ed72496eae4da5e80703f7c324d0b",
+      "nativeSha256": "7160138cad4a529756e5b525dabc829167aa917678fd6805f912d7475890fe39",
       "officialSha256": "ca4bdc6791aa77954787ed02ef5147d2eb6ea69804362e35356699a9c0ab63ed"
     },
     {
@@ -214843,9 +214843,9 @@
       "sourceSha256": "431906f4e253740a7e61b296a81c00996732cc66ce072008b2717529dfff9720",
       "nativeFile": "parity_treeview_050_native.png",
       "officialFile": "parity_treeview_050_official.png",
-      "nativeBytes": 44910,
+      "nativeBytes": 42970,
       "officialBytes": 40388,
-      "nativeSha256": "9e0c22fd72e30889b389e2f2f0a28ac792fb6b6c6672bee95350d90d01456b89",
+      "nativeSha256": "ba72c484f5b37fb3226c5052e66a0441bcf5e66dd7932a520ef3dfd3352acf11",
       "officialSha256": "2be5dcbc0ff331fb2efb9546f8a8477058923e0c48e70bc72c8bcb2f15e04bd7"
     },
     {
@@ -214875,9 +214875,9 @@
       "sourceSha256": "f1c3fac949fbd1b7d8e280259cfab2812b40d2a5dfe7fa20f72ec6b5814c8cfe",
       "nativeFile": "parity_treeview_051_native.png",
       "officialFile": "parity_treeview_051_official.png",
-      "nativeBytes": 58948,
+      "nativeBytes": 54904,
       "officialBytes": 50498,
-      "nativeSha256": "e4c9b3c5939390e0804cf2edd4cbe3e7fadaa5c4351f223615bb643a124b3b6d",
+      "nativeSha256": "1d9c40756b3b6277afa38e6698372b31261b07c1bf87dee810c41564c599e9e7",
       "officialSha256": "1914ce9d2502a10e3e93f77b7b7a7d40710f8ac0a18a05c0fe96dd629d6ec03e"
     },
     {
@@ -214906,9 +214906,9 @@
       "sourceSha256": "9a5080c22606faabed80fa4a049b022b9e313fe7e1ae5163f963401622430245",
       "nativeFile": "parity_treeview_052_native.png",
       "officialFile": "parity_treeview_052_official.png",
-      "nativeBytes": 44404,
+      "nativeBytes": 42523,
       "officialBytes": 39021,
-      "nativeSha256": "c028d033e5c09c754a6fcfea922b7a232d79d24841585595dd4bc2ec321b58fa",
+      "nativeSha256": "8b0e095689c989270ac3d0b85e079ba758e901fc38fca83d74b967fc969290a1",
       "officialSha256": "3ac7c63a55a136f8ca53d104f4ca31fce44c36df37b718d47f4866b6c258c571"
     },
     {
@@ -214930,9 +214930,9 @@
       "sourceSha256": "cc121d05e30e06467fc2c3d613e69cc62d0d877001c74ea6eebd4903d546c10c",
       "nativeFile": "parity_treeview_053_native.png",
       "officialFile": "parity_treeview_053_official.png",
-      "nativeBytes": 68878,
+      "nativeBytes": 64595,
       "officialBytes": 60947,
-      "nativeSha256": "6d409c7006d5782c30c6ff6a9b860640cbce77198dcd0f9f45f8d23e1eb1ae66",
+      "nativeSha256": "55c392867e900efe3719095a4656ee341b683288fb78bdaf2726a418a4aec25a",
       "officialSha256": "c83ce416bc387c9827803d8eda30a169f21886667134e47c7ddfead754efb7f2"
     },
     {
@@ -214954,9 +214954,9 @@
       "sourceSha256": "7972ca1663ea6066cb8994ac5a471cf3f16d027af0ecddec927363d394a18f7d",
       "nativeFile": "parity_treeview_054_native.png",
       "officialFile": "parity_treeview_054_official.png",
-      "nativeBytes": 63737,
+      "nativeBytes": 58264,
       "officialBytes": 55077,
-      "nativeSha256": "df9f2c498bcbe314243edfae4fbda5d5bdf489c2f74d09856e74d62351f4bec8",
+      "nativeSha256": "d756f574cb016f131d34b2f711b1152528b9aafaee9259c6a0eec48bbe260fe4",
       "officialSha256": "5a7ab8fc5e0a871136297346466d289b7c46adb093ed6c455d71bf0e33e64902"
     },
     {
@@ -214978,9 +214978,9 @@
       "sourceSha256": "cc27e42df85e310ffedc3ff30d3f5708b530d2532592d71e19fb9b80a019a831",
       "nativeFile": "parity_treeview_055_native.png",
       "officialFile": "parity_treeview_055_official.png",
-      "nativeBytes": 46484,
+      "nativeBytes": 43084,
       "officialBytes": 41138,
-      "nativeSha256": "7f9574bd0400acbc6d98d73141fe4ade899aca2fb0b40c325f290ae838c1fd95",
+      "nativeSha256": "527bf0bc67fc1c8f6499606a2e1a74604076793efde19bdc094449502fadc62d",
       "officialSha256": "a829bbccd632b568dc183c0d707a342eceb0eb784c10598c12c5399d4643470b"
     },
     {
@@ -215002,9 +215002,9 @@
       "sourceSha256": "b61b86c8e3c98ca47314811f9e7e99076b346d4f5305677192543955e112626c",
       "nativeFile": "parity_treeview_056_native.png",
       "officialFile": "parity_treeview_056_official.png",
-      "nativeBytes": 57070,
+      "nativeBytes": 52445,
       "officialBytes": 50669,
-      "nativeSha256": "037aabad751e5f7aabc4ad5651d201a23cbcbf5414598f8bc376445bc00a2d42",
+      "nativeSha256": "6aae8fce46527524bd235d5a24332e8e554828da8ea162ddde581f5e2746f863",
       "officialSha256": "1321351bd2d6910e5391aab02ab8ffc45578d10020001a390d0f02d45f6f070a"
     },
     {
@@ -215026,9 +215026,9 @@
       "sourceSha256": "476d2c536e09dc2896c0c4d2034165d6c23fd1ef9ede56ba4ad9c40daf49e1c9",
       "nativeFile": "parity_treeview_057_native.png",
       "officialFile": "parity_treeview_057_official.png",
-      "nativeBytes": 76715,
+      "nativeBytes": 69914,
       "officialBytes": 69235,
-      "nativeSha256": "14e68f80a7cbbba2deae73811cffdacfd2076df7c362acf3f84d4442395ced7c",
+      "nativeSha256": "bbed50910765132a82c88665514e60719333c697dd8cbf9f8bc783964760556b",
       "officialSha256": "34dc077cb8b96ddcdf6a6cfd1c159ed3302d404a68e2f192722b11864547a149"
     },
     {
@@ -215060,9 +215060,9 @@
       "sourceSha256": "36e4ec89359c514ac3ceb843f3c7e62bcccc9f8bd69153c4a07e8483014e2aff",
       "nativeFile": "parity_treeview_058_native.png",
       "officialFile": "parity_treeview_058_official.png",
-      "nativeBytes": 43184,
+      "nativeBytes": 39427,
       "officialBytes": 38216,
-      "nativeSha256": "5e4e94ff9632c13d4c07fb12dba598748d06e5f80a79acb1bb294b12b38298b9",
+      "nativeSha256": "c1c081ce37ab87e6013c4933049a5a8b8a90a64d55c80bf26d2ea79d503c849f",
       "officialSha256": "1ac79af06766bf8408a6c1f7f5d3d4d150e9243048874b912b5d0527c757d5e9"
     },
     {
@@ -215091,9 +215091,9 @@
       "sourceSha256": "be2b2bef2406f0e1dfcbd87025765e044ea241db1034cf13971c0def51e01504",
       "nativeFile": "parity_treeview_059_native.png",
       "officialFile": "parity_treeview_059_official.png",
-      "nativeBytes": 45523,
+      "nativeBytes": 41487,
       "officialBytes": 40830,
-      "nativeSha256": "95cda678d824dd184d14fdf72e5a14a657d5a69afe4a0d0b2eaace0de1fb26d9",
+      "nativeSha256": "d63a7ce79085dda1f9edfd8596c8692d24e3ebd46a19373619fff50b3728be3f",
       "officialSha256": "68c0953fcf5a4edf7fe5163c34efacbcd5604a131ba52c76978debffa95e361e"
     },
     {
@@ -215122,9 +215122,9 @@
       "sourceSha256": "ed1fc63e4a24ee5a5345e55cafa9f36fdd82e7cec725196f545528cc2d2b54df",
       "nativeFile": "parity_treeview_060_native.png",
       "officialFile": "parity_treeview_060_official.png",
-      "nativeBytes": 45726,
+      "nativeBytes": 41666,
       "officialBytes": 39058,
-      "nativeSha256": "211ff22492b24a959bff9464e2488593f886ad9dbe378f08a7205924bf42b660",
+      "nativeSha256": "22641bccc02eca780c308953ae534317dc445b6223cfbc675bbdd2e711d449af",
       "officialSha256": "0886a4955f0d8806be6421e83e52f33d7cf3c2270b15de6c08c5feaca37c1bd4"
     },
     {
@@ -215152,9 +215152,9 @@
       "sourceSha256": "92330708cc82cfe63aab570891afe47967cdef4cf64aa711b205ad25ce20ef55",
       "nativeFile": "parity_treeview_061_native.png",
       "officialFile": "parity_treeview_061_official.png",
-      "nativeBytes": 48584,
+      "nativeBytes": 46426,
       "officialBytes": 43388,
-      "nativeSha256": "55d53d0c6838c2a59b166c62094ab0ba52bc49bdc65150f37c92ba04b6e5f391",
+      "nativeSha256": "43795c26aed68ec1ab29db142299a24b69cd8b4c7c57b2e780475836652d530d",
       "officialSha256": "cc7664e97b1535f595e9b361c8e075f72b661cf64d98c4b881469e7914aabf6e"
     },
     {
@@ -215184,9 +215184,9 @@
       "sourceSha256": "883bf36770316f1a19bfcd1454732e8a4c6a1c43be086bdf64a3b564d03a0489",
       "nativeFile": "parity_treeview_062_native.png",
       "officialFile": "parity_treeview_062_official.png",
-      "nativeBytes": 56451,
+      "nativeBytes": 54051,
       "officialBytes": 50954,
-      "nativeSha256": "ca54bc4ae2f99bfc57de11353d541955f4a7ca4d554d54bd609b017cabe9c641",
+      "nativeSha256": "7dd9c71999a6ca7153538f971f2da5295c02600c68ab5e58aaeda32343a62686",
       "officialSha256": "aad9a9f104e073d6f9c309174a36525d8cd6394eae91a4169db62bbf26df879c"
     },
     {
@@ -215216,9 +215216,9 @@
       "sourceSha256": "7d174bcba2232846e3ef4e257fe5c81ad17e967e70edbb046d76c5ba2df3f2eb",
       "nativeFile": "parity_treeview_063_native.png",
       "officialFile": "parity_treeview_063_official.png",
-      "nativeBytes": 46449,
+      "nativeBytes": 43104,
       "officialBytes": 40329,
-      "nativeSha256": "4fbb4080a35f6b91fc4fbccaa1bdcda39debc53998101c5ea96b8a17735d9aef",
+      "nativeSha256": "318df2e5a28220b0404c01ed5ade846b4e4853ceee2699eea6a7a9ad03c6bf82",
       "officialSha256": "af20014919a985130ec7c4544e2e75f4c3fddfdbd5b6d504557e8cb3b732a4eb"
     },
     {
@@ -215248,9 +215248,9 @@
       "sourceSha256": "46f17368c3b5a2d2fbdf666bc3e37d00226e558dbc9f384ad77aea378742d07b",
       "nativeFile": "parity_treeview_064_native.png",
       "officialFile": "parity_treeview_064_official.png",
-      "nativeBytes": 58149,
+      "nativeBytes": 53680,
       "officialBytes": 51074,
-      "nativeSha256": "d5dedb57721bb04ff085b7b4ceb0bfc4a9d659350afcb2d2a79cc7baafb149ff",
+      "nativeSha256": "e09e9950bc9e9e33849d41603f19be421a27b65f11377e2fc04d3acbc236325b",
       "officialSha256": "eff51faef4f8d0ad5482be4ba31511df152747f96cb183233ec04ada2cb94434"
     },
     {
@@ -215279,9 +215279,9 @@
       "sourceSha256": "b47e604f3add3d2b6d20c510113afc15a07da777b354251cd61a65b132822f33",
       "nativeFile": "parity_treeview_065_native.png",
       "officialFile": "parity_treeview_065_official.png",
-      "nativeBytes": 44523,
+      "nativeBytes": 39892,
       "officialBytes": 38771,
-      "nativeSha256": "c2d5b0675a198c730a9aca97ccf915cfc3c4b25d15372d376477551bb5d8837c",
+      "nativeSha256": "c5a82028b1bac8c2076c6e6da7410e2302945f80decd55be6a9ce72ec91fc6f0",
       "officialSha256": "5d31e92c4c1cc1db5ca96aea7a980c8b484224dc71865641a08b9a2c5cb211ef"
     },
     {
@@ -215303,9 +215303,9 @@
       "sourceSha256": "eaed453afe9539abcbb70aee0ec6258653fd97c32da3e21bea80d825bf13350a",
       "nativeFile": "parity_treeview_066_native.png",
       "officialFile": "parity_treeview_066_official.png",
-      "nativeBytes": 64024,
+      "nativeBytes": 62174,
       "officialBytes": 56048,
-      "nativeSha256": "bc670e5657268213454fc2a57650a9ddd25579e241716ed0ff8b59e2f24a83a3",
+      "nativeSha256": "742b09cd5a291d15cc54e8c7f3a13da3ccc8059e69c3792bdfb13173cc3416ea",
       "officialSha256": "e195faadb498922dbb3adbd65cb313c3be4173327880166356ea6cacb17f8b82"
     },
     {
@@ -215327,9 +215327,9 @@
       "sourceSha256": "d04e112a63d062878a365a49bb3576383e088f55ddcf189df4606e9c5594162e",
       "nativeFile": "parity_treeview_067_native.png",
       "officialFile": "parity_treeview_067_official.png",
-      "nativeBytes": 58558,
+      "nativeBytes": 55402,
       "officialBytes": 51317,
-      "nativeSha256": "487c0a2fc1faff970bf6c822c63359aa49c51447f19b12b1183776a3a0e7ac2b",
+      "nativeSha256": "497917e77e88282ea1a55d9207a0f507b5adf20815cfa0232e34534937c2c8eb",
       "officialSha256": "31e30342c4c26205bd1aaf9c3268114c56b7e10087c809180268ab3626770ad8"
     },
     {
@@ -215351,9 +215351,9 @@
       "sourceSha256": "38c5679bf9d9ad5811f71bdec355e8a4ef83bb7dfa22e6ef16577334febfd22d",
       "nativeFile": "parity_treeview_068_native.png",
       "officialFile": "parity_treeview_068_official.png",
-      "nativeBytes": 44295,
+      "nativeBytes": 39997,
       "officialBytes": 39613,
-      "nativeSha256": "d13b9492bccf75223631e58e4f32cbbbdbe21d1cf1e845b290d5657ef28eaa85",
+      "nativeSha256": "33b0172157ee5b1c0d072486a49571a9eec3d890e6154dbd52dd8f464316ff2d",
       "officialSha256": "ffbafbc707e0b0ebb0b6441174248ee0600e84d4d49afead4869c3670f4cb57a"
     },
     {
@@ -215375,9 +215375,9 @@
       "sourceSha256": "01bf2fe02436040aa18ca43bb912b6ed6723be25a7a7b5e834dc3a94abb4673a",
       "nativeFile": "parity_treeview_069_native.png",
       "officialFile": "parity_treeview_069_official.png",
-      "nativeBytes": 52971,
+      "nativeBytes": 50505,
       "officialBytes": 47416,
-      "nativeSha256": "9218514033ac0a8e0c0af73f738575db87b5bb248ca871e6ed3f1b567c2efe52",
+      "nativeSha256": "68a7c6b5ace72dc74174eec9000f3e32729d8ba4f41f5798bab5ad85a29e1db9",
       "officialSha256": "da3b3b3bf8b64fdfa45927673c0237c52983ab4569e0bf4e17303c62f02ae75e"
     },
     {
@@ -215399,9 +215399,9 @@
       "sourceSha256": "7e319d3dd713e50c7012f23d5c750f81a0723af95c741a3e4d399e16a21c2e59",
       "nativeFile": "parity_treeview_070_native.png",
       "officialFile": "parity_treeview_070_official.png",
-      "nativeBytes": 70301,
+      "nativeBytes": 67669,
       "officialBytes": 62512,
-      "nativeSha256": "3cc83fce1d7266935cf8220f52dddd8482f8c8a96778b1c6eef02b4937aecdda",
+      "nativeSha256": "b1b5b124ea28dc0a1bb2896bc5d2c54b4ba828b6cddbc2854ec053dedcd9a5d5",
       "officialSha256": "18c65505a9ab31f1062b1169ad083418653cdb52132cb8c84f878ac61fe92b29"
     },
     {
@@ -215433,9 +215433,9 @@
       "sourceSha256": "38762f3d414234dc42cddc083bd5313c86088ee8094dac030c12e6bab7aef06a",
       "nativeFile": "parity_treeview_071_native.png",
       "officialFile": "parity_treeview_071_official.png",
-      "nativeBytes": 37869,
+      "nativeBytes": 36023,
       "officialBytes": 35329,
-      "nativeSha256": "8e19421b98be63167b753411acc3ede73b38ea8d384debe676998a3190cf224f",
+      "nativeSha256": "3742dca9fe542f3d2571ae7e79e255e8ca1dd39b0a46a3a687dee0081aadeccf",
       "officialSha256": "400db2b411e236e42f15657a0616bb761fe53233422589aa74ba5fb24ed1380c"
     },
     {
@@ -215464,9 +215464,9 @@
       "sourceSha256": "dc9d3bc974b4d6328f72f762ffe5cec7350fbb92ebaea8cb28d7cb24e5a16dec",
       "nativeFile": "parity_treeview_072_native.png",
       "officialFile": "parity_treeview_072_official.png",
-      "nativeBytes": 41137,
+      "nativeBytes": 38622,
       "officialBytes": 37741,
-      "nativeSha256": "76ad8a3fd32834003ce85f2619ab0560137890f335fbd503780eaede3ae0fb2c",
+      "nativeSha256": "75b0ac64773420295e6209201940d3ac551db9d3d9d81bebe81965206b38bca6",
       "officialSha256": "1b297e62c6e6b7ddbc5dd5194e1fe6812097fda02293238d194fd891d1ca17b6"
     },
     {
@@ -215495,9 +215495,9 @@
       "sourceSha256": "de6fea8919028d006c4ccefce54103ce6d98c6da9507d7b31a703a435cfc65dc",
       "nativeFile": "parity_treeview_073_native.png",
       "officialFile": "parity_treeview_073_official.png",
-      "nativeBytes": 40757,
+      "nativeBytes": 38048,
       "officialBytes": 37313,
-      "nativeSha256": "b5083316dda3068ea64c3adc773bb584c12ececd766f7cac6f2e39bc4dcd77f9",
+      "nativeSha256": "7b9f187317deaf953e9622aae22fc0ba4c4d0b44cec6e3743462d0227e0c4c01",
       "officialSha256": "3d948a536bf02234c823948ebf21bbbedcea088fe18bd9b7f83a2f830906de52"
     },
     {
@@ -215525,9 +215525,9 @@
       "sourceSha256": "4de1393583d251d851443b69a06c40897c6a50832072121578c1e550f0496d1c",
       "nativeFile": "parity_treeview_074_native.png",
       "officialFile": "parity_treeview_074_official.png",
-      "nativeBytes": 47581,
+      "nativeBytes": 45642,
       "officialBytes": 43622,
-      "nativeSha256": "d6012ad66d4c8b048c6141aa8dbf920dbeb1d8cb742250e4f460d4256dabf3ad",
+      "nativeSha256": "4a608aec604c415a8c7ad776a9f56ab67b5caf294ea443340c814d098aeaeafb",
       "officialSha256": "7762d4146e3ada14cc6a637d138e5d270e77641d50009da4a01e80031454ed2f"
     },
     {
@@ -215557,9 +215557,9 @@
       "sourceSha256": "d2e8608949b4a93acd18262d54957e976fe33e7dc1ab76b6a28b96ca26a2a67a",
       "nativeFile": "parity_treeview_075_native.png",
       "officialFile": "parity_treeview_075_official.png",
-      "nativeBytes": 52864,
+      "nativeBytes": 50087,
       "officialBytes": 45949,
-      "nativeSha256": "460d8c55a2cff74c0942dfe4d4e62030eda88b41675d52558877931ff53f94f2",
+      "nativeSha256": "d30d67a912281cb8f91b8fb2abf7fd161dcdd7e9c0bceb55a174cd0caee7b912",
       "officialSha256": "01f8a22ff796da8cabc61c673de7c7349ec58725e2ce935d8c879376f83934c9"
     },
     {
@@ -215589,9 +215589,9 @@
       "sourceSha256": "ff89a3603520ab3039ff165c9cb2041f0fcc0660b45850c49c527670acf957ae",
       "nativeFile": "parity_treeview_076_native.png",
       "officialFile": "parity_treeview_076_official.png",
-      "nativeBytes": 42818,
+      "nativeBytes": 38763,
       "officialBytes": 37600,
-      "nativeSha256": "bd89ae7179348734652c70c19ec8335adb9a88e6c6f4986d52f61676458a3002",
+      "nativeSha256": "591c1510437d3a5110b429135112e88283aa9c2db60085409702060ccc889247",
       "officialSha256": "41bb8305a0261b016ed08efc587d4e62e32c1de77a94470b89f47898b151f365"
     },
     {
@@ -215621,9 +215621,9 @@
       "sourceSha256": "5036b7b072b38e10ca167573ab1f67acacef713658499a3bea5f5f47f698ee67",
       "nativeFile": "parity_treeview_077_native.png",
       "officialFile": "parity_treeview_077_official.png",
-      "nativeBytes": 52643,
+      "nativeBytes": 49634,
       "officialBytes": 46619,
-      "nativeSha256": "8c29da2d4897ede15e89c1a973e4c566c1664b06e941d00974a1df35f13c8743",
+      "nativeSha256": "9947f3fabbaf5b2dd75e1a35b0d1d245260e72a6c3854ab4195deb07f58f1c33",
       "officialSha256": "7764366da8d4bbb051eeffc87e695cafd2eb44d79db91a10601b269809986abb"
     },
     {
@@ -215652,9 +215652,9 @@
       "sourceSha256": "7f2ff454c45e8826db5e0a284a1ea49c34a54085020f23a6a18a935cedbc2dde",
       "nativeFile": "parity_treeview_078_native.png",
       "officialFile": "parity_treeview_078_official.png",
-      "nativeBytes": 40059,
+      "nativeBytes": 38104,
       "officialBytes": 37091,
-      "nativeSha256": "37b1800dd6ceeba03550f1c92f9454e90f69197fdc739104d433846fc66c4869",
+      "nativeSha256": "8cb2fa9edbbe8a2a8c1f94b047aad2ee194457cc0c6ef898a8d2e594a54a7efb",
       "officialSha256": "cedf36fd63a596354ad7e445d9e3fe18d68b0d8709753bf3e5d0a67d6be15478"
     },
     {
@@ -215676,9 +215676,9 @@
       "sourceSha256": "c7906658e2dc1666cc78ee386ba0b5f02439cbb4676dfabac644c1e86a3b1dbc",
       "nativeFile": "parity_treeview_079_native.png",
       "officialFile": "parity_treeview_079_official.png",
-      "nativeBytes": 62915,
+      "nativeBytes": 59217,
       "officialBytes": 55581,
-      "nativeSha256": "9f00ad4f172ff813f031f0189e89e8e3e3f2e53036688cf3f436ad2b11dd8569",
+      "nativeSha256": "f06be19a2845f49633ea238ad14ae2e4d093c09840c605e7071375f841cd0dfc",
       "officialSha256": "2a45120730c3761c2727808ae7e6b68b60a4990b3f99f44242f345617ba9a5c0"
     },
     {
@@ -215700,9 +215700,9 @@
       "sourceSha256": "1ec0eaf9ae88fba82adec8fa9d7974f76d7285d66a12da0e2ed1e43a6baef97c",
       "nativeFile": "parity_treeview_080_native.png",
       "officialFile": "parity_treeview_080_official.png",
-      "nativeBytes": 59201,
+      "nativeBytes": 54570,
       "officialBytes": 51150,
-      "nativeSha256": "109d8a65b445dc9f16ad86bc1f58a2b05385332e92a885f78ee0959773694fcc",
+      "nativeSha256": "669c0e45f7cdc4daeafd050129093d13e0f8f507862813e6d240aee4eb448ddb",
       "officialSha256": "fd23470efb3d53673dc37bd417a76abf73ef3fbf84d2129d24326008197d220f"
     },
     {
@@ -215724,9 +215724,9 @@
       "sourceSha256": "9d7e9d7c03e576550d4f2132961f56f8f1ffbd64530575526f209cf47f6d6295",
       "nativeFile": "parity_treeview_081_native.png",
       "officialFile": "parity_treeview_081_official.png",
-      "nativeBytes": 40615,
+      "nativeBytes": 38968,
       "officialBytes": 38366,
-      "nativeSha256": "a677dac6bcb0238837add988f1aee7ce8e524f24c0164e5a18719436027f0b06",
+      "nativeSha256": "83d9d0bc165e44e79df5f27b449e2d2b1d67c995c155a9c07d82e5e3a9fcea13",
       "officialSha256": "d732f39a94101ce2bfb040df856f021d183248b5003eab44139b82438eec7933"
     },
     {
@@ -215748,9 +215748,9 @@
       "sourceSha256": "379c83bc5173f20ff8599da5b1225818596d2c14f373b8321db5c6850a2528bb",
       "nativeFile": "parity_treeview_082_native.png",
       "officialFile": "parity_treeview_082_official.png",
-      "nativeBytes": 52363,
+      "nativeBytes": 48625,
       "officialBytes": 47176,
-      "nativeSha256": "f55207aad192685a240b69d37c6717d4eb27f8aa6c819ecf09ac5176ce63b38f",
+      "nativeSha256": "f4b0db8a67129fb0a1592cc12174f83f78a54be11196fa94abbc694d7c10b0aa",
       "officialSha256": "ecfb54e46f996221386f9397f1ca191dd34a84d60ba0f159cec9dfca293b7c9f"
     },
     {
@@ -215772,9 +215772,9 @@
       "sourceSha256": "257732c0794fc107b5343bc5bcdcc712aa63f038b8ba49ad584e51773eceb708",
       "nativeFile": "parity_treeview_083_native.png",
       "officialFile": "parity_treeview_083_official.png",
-      "nativeBytes": 73039,
+      "nativeBytes": 66113,
       "officialBytes": 63131,
-      "nativeSha256": "3f5ccf8502114f1dc46fb190e8b15c137199e943cd28fa6b1f9cb4f287e8460a",
+      "nativeSha256": "ce8459d04274db18a8b480a1fa8abd8f68f56935ccf6b420de939e5f6482ef37",
       "officialSha256": "d041879227cc77c3db34e9fa74f2ae2f0929ad4aa8ee7a88b72614d5950f1d32"
     },
     {
@@ -215806,9 +215806,9 @@
       "sourceSha256": "b032b77bbc86202e7881220c5afdd8cb59d6fe1ce121bee5d848a0cf991a5976",
       "nativeFile": "parity_treeview_084_native.png",
       "officialFile": "parity_treeview_084_official.png",
-      "nativeBytes": 39650,
+      "nativeBytes": 36150,
       "officialBytes": 35715,
-      "nativeSha256": "4247312789341b77342d065efe799d93d7f152c273d3eaf8cecea43082f48832",
+      "nativeSha256": "dfaec35c5d4bcb03da4594eef0eb1430257ec2f226d063fc3cdb14b819dc6337",
       "officialSha256": "47938ca501d0eafe00eb37a80dd2cd576a6940c879af38737ff1c9b335a56c36"
     },
     {
@@ -215837,9 +215837,9 @@
       "sourceSha256": "de9f142d0eda6a2ed2239e2890eedc2820e18f31333209883678686243be0df1",
       "nativeFile": "parity_treeview_085_native.png",
       "officialFile": "parity_treeview_085_official.png",
-      "nativeBytes": 42459,
+      "nativeBytes": 38265,
       "officialBytes": 37819,
-      "nativeSha256": "540ce58da95b0dff08cc65dedb5635c4110ddd1876f14af37ca63da3784dd3e4",
+      "nativeSha256": "a16f48636558ef2dc76fa569b94c3cd91c6a4e005707c0d30bd99899ffe5a98e",
       "officialSha256": "fb4754ea25aadd50f0213f132e5f577891e8c30fcdd908db5dcf68fda201a9a3"
     },
     {
@@ -215868,9 +215868,9 @@
       "sourceSha256": "f42e5103f669dc18eb944dd9700d8b11404913591d27a2460a048c66ca281ac0",
       "nativeFile": "parity_treeview_086_native.png",
       "officialFile": "parity_treeview_086_official.png",
-      "nativeBytes": 42270,
+      "nativeBytes": 38490,
       "officialBytes": 37408,
-      "nativeSha256": "6b7dc07b0d824e114bcaac2557c893f4d62d6d601d04e32075c9e8cb2b15af09",
+      "nativeSha256": "2fb0007f62a46bcd0fe9be4303b02a3fa0ae919c49908ba91b614f4e54e8762a",
       "officialSha256": "6196118937bc6e4fe9f6783b3e1c3c747c4c1fccbf61a82f8678bce98ce38339"
     },
     {
@@ -215898,9 +215898,9 @@
       "sourceSha256": "e0c8b5a2478387598afa24d02e96f14a490d936024bbef98aa1211b8313c8248",
       "nativeFile": "parity_treeview_087_native.png",
       "officialFile": "parity_treeview_087_official.png",
-      "nativeBytes": 49429,
+      "nativeBytes": 47345,
       "officialBytes": 43765,
-      "nativeSha256": "d2a2fcc3e62982dd573148b110c79b8c26c72805a15f4f493b36d5e1bbff4e7f",
+      "nativeSha256": "2b671e9c5843f4ddef0551da6792ed3eb94ff21f64716d10a9035f07e340a4a1",
       "officialSha256": "c254b87b6fe1b3a397c88ecc7bb4a0c028bae367a47efdf51c2357d8e2800d07"
     },
     {
@@ -215930,9 +215930,9 @@
       "sourceSha256": "f688fb4974dbbf183de049ab27c704824107a89b7dbd1766f3ceb9b9493066d6",
       "nativeFile": "parity_treeview_088_native.png",
       "officialFile": "parity_treeview_088_official.png",
-      "nativeBytes": 52350,
+      "nativeBytes": 48957,
       "officialBytes": 45897,
-      "nativeSha256": "6f14a486ae6af1e9030ca6151ac7770989a27a747c6259c163ef7d8ad6730862",
+      "nativeSha256": "f5a55c4fab57f867208d4fb0a1327109eb71f179d6846af5d14ab2b0100e88bd",
       "officialSha256": "6e8c814e25c2b4a66b0ed7f656d3131d4a7eb6937eaf00cd8988c4740dcc3dea"
     },
     {
@@ -215962,9 +215962,9 @@
       "sourceSha256": "790724339264a1df7781f391e85b77a3497247347c42c682d0fa8445d8f19500",
       "nativeFile": "parity_treeview_089_native.png",
       "officialFile": "parity_treeview_089_official.png",
-      "nativeBytes": 42018,
+      "nativeBytes": 38931,
       "officialBytes": 37704,
-      "nativeSha256": "a937f35fbab5bd56ae871517a8ebc621e4a733c0c303740900ad2d8707e659be",
+      "nativeSha256": "dc95625d0edb077855b2661069681bf128309ff88942b606f2531e46465b7ccd",
       "officialSha256": "bb1a08d1bbde6dca9991dda26a94b666eda1f7790e4ddd7fce59ba20ba3c1ba2"
     },
     {
@@ -215994,9 +215994,9 @@
       "sourceSha256": "fe821d328adc4a022d50d9ddf6e933c55d06c696d00c86f12398ab4cc118d4c2",
       "nativeFile": "parity_treeview_090_native.png",
       "officialFile": "parity_treeview_090_official.png",
-      "nativeBytes": 52555,
+      "nativeBytes": 49291,
       "officialBytes": 48931,
-      "nativeSha256": "31de9ed196da07c4056491c192b0009c5f3cae75cb638183f3f5cbbd79b8f44d",
+      "nativeSha256": "a332cbc556cff97b25100e5d39406af0b944eaec24a484423a3fe03508d197a8",
       "officialSha256": "674404988b13800baa2a952e68f0ab10f502325788eb135c65a61aeab179bd7c"
     },
     {
@@ -216025,9 +216025,9 @@
       "sourceSha256": "13d28dd4119afe939ab57fbaccb5e0fa57c454c12cc31d084bba69c4c3ecd30f",
       "nativeFile": "parity_treeview_091_native.png",
       "officialFile": "parity_treeview_091_official.png",
-      "nativeBytes": 39985,
+      "nativeBytes": 36536,
       "officialBytes": 35831,
-      "nativeSha256": "47501a2a5debcc42fac1db32961054f4ffcf7b5466fd9127e6bd4d3cfd29b6ee",
+      "nativeSha256": "e689cb2bc78b2bdab19a319ea456c982a9a0ce674c857447b5abbe7e1d6c5aae",
       "officialSha256": "344e765edbe2ba54d497e7623ad02821928de6d8288ce80d5416580a3fd3a49e"
     },
     {
@@ -216049,9 +216049,9 @@
       "sourceSha256": "ec15c74317c8e63b1601aeed0571db690f61aaac94b1a8edeb89a42114775c00",
       "nativeFile": "parity_treeview_092_native.png",
       "officialFile": "parity_treeview_092_official.png",
-      "nativeBytes": 62663,
+      "nativeBytes": 59649,
       "officialBytes": 55071,
-      "nativeSha256": "ca59739c6b4cc9691493461c03d8dfc2081f3b2a58c82d61d2abd9f3466af007",
+      "nativeSha256": "f3f0f38c01e2a94200dbb1cd673b27397a1eaf72260adb34e240555bb5686292",
       "officialSha256": "446655c4902f309deeb0c5e94dfa9bc52198f2f761c242de2c216e1af1c39190"
     },
     {
@@ -216073,9 +216073,9 @@
       "sourceSha256": "8a94c737e3b4b3d96e4854d654ea843ffaf598fa4e88e1a1fa5f53dae56dc815",
       "nativeFile": "parity_treeview_093_native.png",
       "officialFile": "parity_treeview_093_official.png",
-      "nativeBytes": 56675,
+      "nativeBytes": 54720,
       "officialBytes": 51868,
-      "nativeSha256": "dd5556cef5a084388da18fa66cafce3c6c126118db8af50cb49254b8ed8b5526",
+      "nativeSha256": "4d066532d32e959763855ec461de4051695630a47f246ecaff0fd200457de065",
       "officialSha256": "1c6c358dfab7cf4d30a1eff0dd9cad033643e0f24391ad23eaec0bfba5c9fd10"
     },
     {
@@ -216097,9 +216097,9 @@
       "sourceSha256": "1e7371e0c4219fab6cc1ce483599380f2fdf054ad095f997cf238c27f7269260",
       "nativeFile": "parity_treeview_094_native.png",
       "officialFile": "parity_treeview_094_official.png",
-      "nativeBytes": 41765,
+      "nativeBytes": 38518,
       "officialBytes": 38944,
-      "nativeSha256": "78abc8efa9fcb3465e137821186ab70b5f85ddf7e17773a9e7a204de86f844b1",
+      "nativeSha256": "300493742d8724b147a0095ac2987a375f0e14c29d0ee1b52d3cb28a968abc10",
       "officialSha256": "14207a277b015eec1cbffc20b215b6cb3bc95172d7fc145b8285c27b005fe86c"
     },
     {
@@ -216121,9 +216121,9 @@
       "sourceSha256": "08fa6d44f47bd5d661135fc9ca80244dabdf5e1f9a92e539dabc6c852e196cbf",
       "nativeFile": "parity_treeview_095_native.png",
       "officialFile": "parity_treeview_095_official.png",
-      "nativeBytes": 51312,
+      "nativeBytes": 49505,
       "officialBytes": 46291,
-      "nativeSha256": "2b7cdf7578ce427ea3e2a811b8dce78784c7a1ab08f436571f21631ff9550a9b",
+      "nativeSha256": "ea4afbebcf8ac422d194326e20181ba471c172478289821721cb539e503a2864",
       "officialSha256": "2bb8831eff0dfd91fa9ca75c4fd731b49bfea48d6329de779bd25600a06aafbc"
     },
     {
@@ -216145,9 +216145,9 @@
       "sourceSha256": "c2ba96998e6fef87005cefa47ff334ef891c3316ba5e4ffe8edf4d8f62b099d0",
       "nativeFile": "parity_treeview_096_native.png",
       "officialFile": "parity_treeview_096_official.png",
-      "nativeBytes": 72223,
+      "nativeBytes": 66041,
       "officialBytes": 61462,
-      "nativeSha256": "5eccf1e11be776d5220b73509a1648da807893f55ae8ba4d17d9e2d8d51579bb",
+      "nativeSha256": "82f325bb2f70290ac139d560ad096eaf45373223dd6f4d6e21d9856f5c19ccde",
       "officialSha256": "84c38f65601961a8306fbac0bd321c7c43a4446d80c1ab554b87e22668225e8a"
     },
     {
@@ -216179,9 +216179,9 @@
       "sourceSha256": "244d1fb3f4c0d89d11c964b0b7b5e7f3490e705c044a6f8d625a4b7b7d1eee94",
       "nativeFile": "parity_treeview_097_native.png",
       "officialFile": "parity_treeview_097_official.png",
-      "nativeBytes": 37551,
+      "nativeBytes": 36583,
       "officialBytes": 35143,
-      "nativeSha256": "c955bcfe38c35bf5ff18f861e7ac6bef431b68c9bcd20e5bf3edd50e262654ef",
+      "nativeSha256": "3cd19cf38ca3d848eb0676676ded164bcd6701e226b28f386cf32276626fe712",
       "officialSha256": "d542dbc134e9f027d5d2b960cb9c26a09bdea11b109efc8222ed2f8d2ddc0b71"
     },
     {
@@ -216210,9 +216210,9 @@
       "sourceSha256": "34b822f5ca1684fac59c0ce122de2d1fcda0e57be1939785cbdc9b03d9cdd166",
       "nativeFile": "parity_treeview_098_native.png",
       "officialFile": "parity_treeview_098_official.png",
-      "nativeBytes": 40775,
+      "nativeBytes": 39472,
       "officialBytes": 37758,
-      "nativeSha256": "0cefaece7c2fd244497ae37640009afb215d69eb450c6fc1f8f800574eaa4a03",
+      "nativeSha256": "50c629148e4be04dd2751119510cb5f114bf10384c4a11379470ff9dd0bcc0e2",
       "officialSha256": "1173e5f7d48e20c2b722465c1c000136b29c3fcbd6d2793d754e782db5f75069"
     },
     {
@@ -216241,9 +216241,9 @@
       "sourceSha256": "008ecb3d7d44ed915b60bac204dc00aa82dde230796a6da87f3c3bc7c992a909",
       "nativeFile": "parity_treeview_099_native.png",
       "officialFile": "parity_treeview_099_official.png",
-      "nativeBytes": 40181,
+      "nativeBytes": 38885,
       "officialBytes": 36858,
-      "nativeSha256": "96a7e3f22d7e4b5c3d57bccdfed3ae979964ccfc33dae31a98fc9465c5096f3e",
+      "nativeSha256": "0d595be3ea7774f8964db347247dd29f45414cc4f85e85602773efccfa16b09e",
       "officialSha256": "cda7ae18ef073af1ca3b284ae8d7c16ab14ec40ed0760d8c0a5dfdfcd42b0d51"
     },
     {
@@ -216271,9 +216271,9 @@
       "sourceSha256": "82824cc6845d5814dedbcf0f068784929cf9aebf5a1f2d05c15b38a046515aa7",
       "nativeFile": "parity_treeview_100_native.png",
       "officialFile": "parity_treeview_100_official.png",
-      "nativeBytes": 48185,
+      "nativeBytes": 47010,
       "officialBytes": 44628,
-      "nativeSha256": "1ad71026991d993e96c5d533cbebab8c8ab2d7fd8e16bba4bc030c6777a00ec0",
+      "nativeSha256": "713f1a4fa2c42c98bcbda9f46febe62fcd0120a3012404c0d2caa13e04bd1d2b",
       "officialSha256": "0cce474c1a16c3985bd5e8f75eb0741743e7e5b1b7612a5d9d66b522daa1b5dc"
     },
     {
@@ -216303,9 +216303,9 @@
       "sourceSha256": "61da0205a4931e0279a0f8e5af72c06ec10113662b3f28047b2a0fe9c8b386e6",
       "nativeFile": "parity_treeview_101_native.png",
       "officialFile": "parity_treeview_101_official.png",
-      "nativeBytes": 49703,
+      "nativeBytes": 45911,
       "officialBytes": 43339,
-      "nativeSha256": "a472daed130fec7cbbbc1a66d3bc5b24125e38863a233b144065521489360563",
+      "nativeSha256": "8ed1e0fa31a0fb860b3e77b87452b4925be8eb574ddb7e678bbce4d6ea234f66",
       "officialSha256": "4ddfba6119644c7bb8e8d3da601b1b09af5cdc7c9cc5e85da94b87615b0e85b6"
     },
     {
@@ -216335,9 +216335,9 @@
       "sourceSha256": "e935f01690f307d2dc02638a96eba75ed6f591e756a1fd3559fcbc801a6bbf7d",
       "nativeFile": "parity_treeview_102_native.png",
       "officialFile": "parity_treeview_102_official.png",
-      "nativeBytes": 39935,
+      "nativeBytes": 38257,
       "officialBytes": 37470,
-      "nativeSha256": "ee90af6bf95ac3d0f3f333e5e19fb31ad1051b79be568e0bf5fdb2ec6743698d",
+      "nativeSha256": "8c07432315044b97eedcd3129ae5be8b84a1d13e7afe168f97ca941889cb40f9",
       "officialSha256": "138dee3063f6385002acf5597335b0349ef743fcffbbeaeaf80f0c29d8954800"
     },
     {
@@ -216367,9 +216367,9 @@
       "sourceSha256": "1c42cce78d9adfd3ee0eb65fe5b4257162d3e7bfb341770801b12b97c08d8a66",
       "nativeFile": "parity_treeview_103_native.png",
       "officialFile": "parity_treeview_103_official.png",
-      "nativeBytes": 53143,
+      "nativeBytes": 50321,
       "officialBytes": 46937,
-      "nativeSha256": "e989956680d3156bb6a109e37e7136fd6e3152afc36400d883acca2873fa24bc",
+      "nativeSha256": "72a67e70dfdd06359a21740ae9bb20a00c134b03b1542fd870071a1c0dcf98a0",
       "officialSha256": "9e18d2e0966ff5da50356a246567717a5addbdf47b4547c904d1fa833b01836f"
     },
     {
@@ -216398,9 +216398,9 @@
       "sourceSha256": "5fd401d5609101d769ac54e75d0325e91836a7c88b2a9664502dafc3ea3745f1",
       "nativeFile": "parity_treeview_104_native.png",
       "officialFile": "parity_treeview_104_official.png",
-      "nativeBytes": 37253,
+      "nativeBytes": 37151,
       "officialBytes": 34842,
-      "nativeSha256": "f09f528f4ca8b3941866f9247cc700f5cdc40a010428064027d3b49340c09a79",
+      "nativeSha256": "731295beda20ba344b2212b3acaff88dd54be44a0d147c5799333f7666d8c516",
       "officialSha256": "6b9c8509d2f3b7f16946f5c63b0dff27754e9e297c181710821de2dfd4e7d252"
     },
     {
@@ -216422,9 +216422,9 @@
       "sourceSha256": "dd56ba64a6d101e8ee230f22de47ff2e95bfec4c0dd00fedbcbde39c736af4ab",
       "nativeFile": "parity_treeview_105_native.png",
       "officialFile": "parity_treeview_105_official.png",
-      "nativeBytes": 57598,
+      "nativeBytes": 56492,
       "officialBytes": 53178,
-      "nativeSha256": "a115669ee888b58b598ae19a05356e1dbaacab36e7063e52f8366313f8231e78",
+      "nativeSha256": "05189ceda54839722b3f5232cf8ac316ac809b2784aa18801b1206369fb414eb",
       "officialSha256": "fab8ea7d022ab0e794702b30d1367af31e391907085759be60cc391ed4fa94ff"
     },
     {
@@ -216446,9 +216446,9 @@
       "sourceSha256": "a882921bab53e47a81cc6d5181d60c40f1252bd51c25419423be326c6480b461",
       "nativeFile": "parity_treeview_106_native.png",
       "officialFile": "parity_treeview_106_official.png",
-      "nativeBytes": 55096,
+      "nativeBytes": 51314,
       "officialBytes": 48861,
-      "nativeSha256": "19216d543e7a86a896a114e916a28cc7f199dd073f9e33d162003c49888496fb",
+      "nativeSha256": "4c3e80317dd05624b07bb2f60daecff329226dbd618f716455bc6e359646a59a",
       "officialSha256": "2afbf41dc441b1686b1dffcae501ca091b916e3a6013a73f92d9c5e56297296a"
     },
     {
@@ -216470,9 +216470,9 @@
       "sourceSha256": "d39689d896eb725c4ac59556680b9a1928c6d8b3468eed8f657a7ed2777d7146",
       "nativeFile": "parity_treeview_107_native.png",
       "officialFile": "parity_treeview_107_official.png",
-      "nativeBytes": 39379,
+      "nativeBytes": 37001,
       "officialBytes": 36975,
-      "nativeSha256": "a3987e2af9775b001754b97e49c1cf97b52d471e27598d2289bd24cdd31cb698",
+      "nativeSha256": "a3ece7b813ed0375dbb86f110677468e14845689c71fca3af6fba906842faf3e",
       "officialSha256": "dde6da0f7ef16530fe6f056b4bbc01b7e29f0e0dab692c11021e9ad7c77a67e3"
     },
     {
@@ -216494,9 +216494,9 @@
       "sourceSha256": "3a75b60f68fa97cb5c923ccbea352b48856f52aa89a73128247c470b4ca45c12",
       "nativeFile": "parity_treeview_108_native.png",
       "officialFile": "parity_treeview_108_official.png",
-      "nativeBytes": 49499,
+      "nativeBytes": 46637,
       "officialBytes": 43358,
-      "nativeSha256": "457a548f9f576897d0d5099dda7213d438dd77f15f4312ed4661e22377668f0c",
+      "nativeSha256": "131ed73383a277b051bca08e611e49214378a90d1fecf7f63fe53d60c9b61df9",
       "officialSha256": "8bbfcd6aefef2937f9b6d7136260cc0c2422ada49eaa02859a7b7082b340806e"
     },
     {
@@ -216518,9 +216518,9 @@
       "sourceSha256": "73cb4191702d124d7f48bc927be4f4ca9d184fab49e453111a0550b962047195",
       "nativeFile": "parity_treeview_109_native.png",
       "officialFile": "parity_treeview_109_official.png",
-      "nativeBytes": 70001,
+      "nativeBytes": 65006,
       "officialBytes": 60766,
-      "nativeSha256": "615581f984e081b4650ba60baf1dde848b4b138e01c96bc8478836493006704f",
+      "nativeSha256": "5afde48ab4ed5bf5e9383ea9c0287e2625a234eddbd3beb06c31cbc4af120fa1",
       "officialSha256": "376ffa6bf157deca32e785f6eb2fd07b60af2c375b3a3c4a5aa897de51c8c3eb"
     },
     {
@@ -216552,9 +216552,9 @@
       "sourceSha256": "52b178979824ffa9bb4207de9189dc2993439f2b9af1a76d126898c40259aa58",
       "nativeFile": "parity_treeview_110_native.png",
       "officialFile": "parity_treeview_110_official.png",
-      "nativeBytes": 36181,
+      "nativeBytes": 34530,
       "officialBytes": 32471,
-      "nativeSha256": "bc04e1db38353ea055616c0cf80fdce98a85dbbf2b04075ed0b5b0cf8e6798bf",
+      "nativeSha256": "ba3a6462970d702e038db782a3b0e769e687ad657183826ab6c3091cb103ed33",
       "officialSha256": "aa3e31d64752baaa67a959c5916a4efd1aa8e5159f2a19cb01917ab82de2f466"
     },
     {
@@ -216583,9 +216583,9 @@
       "sourceSha256": "bf2a51708607083a6167a4bcc1ecba977fd45f849678c88404d72cd0ac4bf299",
       "nativeFile": "parity_treeview_111_native.png",
       "officialFile": "parity_treeview_111_official.png",
-      "nativeBytes": 37646,
+      "nativeBytes": 36457,
       "officialBytes": 33979,
-      "nativeSha256": "920340f3a7af0455076a5e6faac8783a8659b3b11da5042776560c6b1f49ebc7",
+      "nativeSha256": "18e0ab3e7f34e2cf07d1cd1e498154e88206694da306e8f01658971ce5a6ef6b",
       "officialSha256": "232b96045316e2c51906e90c023a9e823fb397c0ea273715726b7259818a1552"
     },
     {
@@ -216614,9 +216614,9 @@
       "sourceSha256": "bd7db1d74414c06357f2786bd3ce48a3a0ae9998244efbef9849491f0f330b90",
       "nativeFile": "parity_treeview_112_native.png",
       "officialFile": "parity_treeview_112_official.png",
-      "nativeBytes": 37705,
+      "nativeBytes": 35975,
       "officialBytes": 34202,
-      "nativeSha256": "8860bfa97c216524299f612adb750403a9a6577ac04ba668e33eebd99711ae3f",
+      "nativeSha256": "09acebb1c5037e7a9ef9908895a16c68901e1fd3d36081aeda9998e0104419de",
       "officialSha256": "217a7c2cede30c22ccbd862b740c9d38aa22ab514e7a83671b50db19a50571e9"
     },
     {
@@ -216644,9 +216644,9 @@
       "sourceSha256": "d968c0ab2cd791ced4f0fa50b22e57ae7a9a6d0b9145a327e4e98678a2f8f9fb",
       "nativeFile": "parity_treeview_113_native.png",
       "officialFile": "parity_treeview_113_official.png",
-      "nativeBytes": 48265,
+      "nativeBytes": 46201,
       "officialBytes": 43102,
-      "nativeSha256": "dced1ac920124a4ce57f3077785ac3ce018217a082c68e242856381981f55af6",
+      "nativeSha256": "9b08cf8ccc2999fcd1152515cf20cb4f8357163210ee97ba10194d081c2796de",
       "officialSha256": "a86a59316806513921ef654f982267bb422d877066e8d7b963ce2c5ae64b0791"
     },
     {
@@ -216676,9 +216676,9 @@
       "sourceSha256": "56f0b92a7b8c48f4339be4494d17c8429dfe887b278dca319b49d82e29549bcb",
       "nativeFile": "parity_treeview_114_native.png",
       "officialFile": "parity_treeview_114_official.png",
-      "nativeBytes": 47190,
+      "nativeBytes": 44534,
       "officialBytes": 41914,
-      "nativeSha256": "f14d69405962289a0bf05aaa9532cc0490f17091f134aaf52b3d2c0faf99349a",
+      "nativeSha256": "efce3dcf1b66c4e68f9bc17fb82d3aa7b6e0dac72d8b0e39102e49a8e14fc067",
       "officialSha256": "6ef1aba785d16c8da7eb2ef4c0ffc3a87397449e8afdbc4e6d161d8aae119c74"
     },
     {
@@ -216708,9 +216708,9 @@
       "sourceSha256": "3f86d5a647e66059dbecbc7d58f0de991d1f69e1600b2e95666767f827b5d1e8",
       "nativeFile": "parity_treeview_115_native.png",
       "officialFile": "parity_treeview_115_official.png",
-      "nativeBytes": 38727,
+      "nativeBytes": 37270,
       "officialBytes": 35590,
-      "nativeSha256": "ba031dca87131851276b329cd0b6bde28933b1cc5b4cf23c774172f676030663",
+      "nativeSha256": "8355c4224701da6a3c61c98f7facc2c17a41a7409a5ae0d4af9aac26d505b72d",
       "officialSha256": "6691b252e10d8712d524c77cc65f38418d35fc801e0d77c98693d455458cfa64"
     },
     {
@@ -216740,9 +216740,9 @@
       "sourceSha256": "3fdc88e0b6977eac785caf3954e9258f4d68960e10e538b43efe0880018f98f2",
       "nativeFile": "parity_treeview_116_native.png",
       "officialFile": "parity_treeview_116_official.png",
-      "nativeBytes": 49926,
+      "nativeBytes": 46292,
       "officialBytes": 42902,
-      "nativeSha256": "9083c898728fe121990a734b3af8595af54d778e5543c9d82716ca6e5c8a2945",
+      "nativeSha256": "9d1dd7d606e5efe44d2d3ec20829f7100d84ca4f2c9989b52bde9bd64aa7a61a",
       "officialSha256": "3f1fd915db05c0fca8ca94b28cbb42979607f782fe3a5470fa558e093f259411"
     },
     {
@@ -216771,9 +216771,9 @@
       "sourceSha256": "7cd6bb93ef67a062673bc7f5a6ef6b977f42513aebb3c7530b9b7e85e3032200",
       "nativeFile": "parity_treeview_117_native.png",
       "officialFile": "parity_treeview_117_official.png",
-      "nativeBytes": 36231,
+      "nativeBytes": 34642,
       "officialBytes": 33996,
-      "nativeSha256": "247f398fd272af8d8270b731988d9b8c0184fbfd40ebfa36277c6e3c81c9dc31",
+      "nativeSha256": "a3b1dc6f0964bb70c907a613171f7b85aa4625b619e609bc55fd220d26f41301",
       "officialSha256": "f72d242149b5ea03494ca9548acaacfcdf2b583aea94eb132173de753f156af4"
     },
     {
@@ -216795,9 +216795,9 @@
       "sourceSha256": "52da86fb9efcb859eb20e11475a43b62372b7e589dd755ecaf4aaf8d8700bf87",
       "nativeFile": "parity_treeview_118_native.png",
       "officialFile": "parity_treeview_118_official.png",
-      "nativeBytes": 57686,
+      "nativeBytes": 56383,
       "officialBytes": 52432,
-      "nativeSha256": "348e9e365215ab902904b715c2340fef55db3980ad385a6abda45da915847bfb",
+      "nativeSha256": "ddd8105843c2a9082675463d06a51fa7164c65ce0c28b77ef8d05a4cb06e8218",
       "officialSha256": "6d4f6eafde510b5820d829d79ecb7f4cffc4dedfaccf5de09e55d46a33dcc246"
     },
     {
@@ -216819,9 +216819,9 @@
       "sourceSha256": "2d86c4a1a6c342047d1609476af3e3128ba034efde57bd404da833fa11d4c145",
       "nativeFile": "parity_treeview_119_native.png",
       "officialFile": "parity_treeview_119_official.png",
-      "nativeBytes": 53040,
+      "nativeBytes": 51331,
       "officialBytes": 47759,
-      "nativeSha256": "57bea811430176427d50c37689c763857cc6ded6ab9cd0a6093828f617505e5d",
+      "nativeSha256": "5ee009568c8cc0821576a7f0e8a052a1181c290db025960134d1dbf358140fce",
       "officialSha256": "3e688abb2d427e57201faa2a7cd5ec9b732fa0469ec4d87a9b4c18711d8992d1"
     },
     {
@@ -216843,9 +216843,9 @@
       "sourceSha256": "9c8de3f72b40bbb5acd20898ae9773da6db0a8012dadddfb8d34458c9e2b83a5",
       "nativeFile": "parity_treeview_120_native.png",
       "officialFile": "parity_treeview_120_official.png",
-      "nativeBytes": 39557,
+      "nativeBytes": 37952,
       "officialBytes": 36653,
-      "nativeSha256": "b4c45fd8cd11992aa149e9970c705bdacc6404b58d48eed79b6e753c6d9f24fb",
+      "nativeSha256": "e0c906305e598222ad7d0ba9d74508a7282acac7358f45f117879706b1d3ca1b",
       "officialSha256": "c88e46467502b836f2df63857a0a7d05df777a45cc05ff863ad32db480c81b73"
     },
     {
@@ -216867,9 +216867,9 @@
       "sourceSha256": "3f790861321a8eb18c08da11eb3e8b16539e9312efa3254eacb29e170227e919",
       "nativeFile": "parity_treeview_121_native.png",
       "officialFile": "parity_treeview_121_official.png",
-      "nativeBytes": 47892,
+      "nativeBytes": 43398,
       "officialBytes": 43480,
-      "nativeSha256": "ed653c81f0b70f8806f56ceb5ee3840b2e3639884efba673601f0a023af9d471",
+      "nativeSha256": "2dcf309ac6a038e34da91854312b78513d97ce002a405e01a6a0d9ea8d0f2dd2",
       "officialSha256": "bb7e1e27cbb17ba3917f972bfe32a0eb87283c141384f64c059bc2cb7e8fb63d"
     },
     {
@@ -216891,9 +216891,9 @@
       "sourceSha256": "f09122d2aefc1df90c9fcbcdc899232dbde352de876a74667d67ca16c6465312",
       "nativeFile": "parity_treeview_122_native.png",
       "officialFile": "parity_treeview_122_official.png",
-      "nativeBytes": 67975,
+      "nativeBytes": 62475,
       "officialBytes": 57887,
-      "nativeSha256": "73ed558502c31204353262473cd8536947cc8c836eb44cdcdbc77612c32733cf",
+      "nativeSha256": "f571aebf9f164affd1638877a76681e5a4d4eb2e93745fb1d5411ada3efe6d83",
       "officialSha256": "481e7698462604eddc3ca8ab060bdb971ef44a5303c1d187ee84aa7f63c74ec5"
     },
     {
@@ -216925,9 +216925,9 @@
       "sourceSha256": "6f435e1ac803057913ee4c1490214ba3ec717fdcfe112540fdd1a9980f3d419a",
       "nativeFile": "parity_treeview_123_native.png",
       "officialFile": "parity_treeview_123_official.png",
-      "nativeBytes": 36487,
+      "nativeBytes": 34783,
       "officialBytes": 33893,
-      "nativeSha256": "f5191ddfaae927becaaba4d6a961cbd4b45a3fa95177e6750615dea1f2da0c4d",
+      "nativeSha256": "d1be30fe86668c28f93a40c5a09c85b4d6317842591d8ccf8a971292a82e7c7d",
       "officialSha256": "dc65c9a53d267de1041c6d855917a6a1de2e6833de257654d7ba88a0e295655e"
     },
     {
@@ -216956,9 +216956,9 @@
       "sourceSha256": "b8d55a291524e514075d9fae4b5a7a02108fe21c4ecea5d59b1b62a2603766c1",
       "nativeFile": "parity_treeview_124_native.png",
       "officialFile": "parity_treeview_124_official.png",
-      "nativeBytes": 38137,
+      "nativeBytes": 36439,
       "officialBytes": 35505,
-      "nativeSha256": "a91fb2457de9048d784ab044a5d3fdb65f28c3ecb40035646774b00e834f509a",
+      "nativeSha256": "14a5e26cbf61c7a287f91ce73cdd0f1e17cdcd7c35efcd644d65ee338bcdacff",
       "officialSha256": "def03fb5c1db4b399836141d977ff386daf7a25b5ffc2bf9bcf272c39df24827"
     },
     {
@@ -216987,9 +216987,9 @@
       "sourceSha256": "57801146c470261b10fe755cb0660ddb576750125be0435f9140cce80f757ac7",
       "nativeFile": "parity_treeview_125_native.png",
       "officialFile": "parity_treeview_125_official.png",
-      "nativeBytes": 37910,
+      "nativeBytes": 35821,
       "officialBytes": 34927,
-      "nativeSha256": "a29d8f4b527493e7503d5ea7760e2e528f7ecc68a181cc6dcd611c2325f189a2",
+      "nativeSha256": "1e2e3a451fee1aed56046576fa4ba9a2ab596a4a660c2062f9a75b06f8ed3b04",
       "officialSha256": "4fa393f85de7ea975b44f0a621f46fc224fe303da2ccd3bc9c06d41677060c8a"
     },
     {
@@ -217017,9 +217017,9 @@
       "sourceSha256": "9d4cc0721fa7cdb861dfa66b63ff8c62766e54423686bebd40ec55927b613848",
       "nativeFile": "parity_treeview_126_native.png",
       "officialFile": "parity_treeview_126_official.png",
-      "nativeBytes": 47707,
+      "nativeBytes": 45917,
       "officialBytes": 46318,
-      "nativeSha256": "ae93452db6f06f7ea12f9d28d688838e5616d4357fa6056f249078dff0e27e5b",
+      "nativeSha256": "cb8dd1abc22e3e36d051c8ea4b1d7b014ae281845111909a5d7888ed5b204f42",
       "officialSha256": "eb8eb9b179ad00f7b3b9c58d224e5d9446c9a2c767b2dd10f16622c3b379115e"
     },
     {
@@ -217049,9 +217049,9 @@
       "sourceSha256": "e181274c0ec8da4d1d91473c032e6513a9ad86f12a8f55809b365eebb7b47d50",
       "nativeFile": "parity_treeview_127_native.png",
       "officialFile": "parity_treeview_127_official.png",
-      "nativeBytes": 47405,
+      "nativeBytes": 44874,
       "officialBytes": 42653,
-      "nativeSha256": "4e910037de70ece2934583bd834226739bd508959e42282bc71336588cb8aee4",
+      "nativeSha256": "e5c83eeb13f9bac83e26165664464bd0b2823b370f796177afc05dac466ed4a3",
       "officialSha256": "d3d6938e8d592fb2b4696826824b4d99033b33465de4bddc00229b405e3ec6c5"
     },
     {
@@ -217081,9 +217081,9 @@
       "sourceSha256": "24b5a50c9e6b0eb722599cbee1da4bd69626438ca0b96e19df7f6269988982f8",
       "nativeFile": "parity_treeview_128_native.png",
       "officialFile": "parity_treeview_128_official.png",
-      "nativeBytes": 39096,
+      "nativeBytes": 37513,
       "officialBytes": 36152,
-      "nativeSha256": "da7933a3f6396de1cab874730096232e2dd8a53807858ba45816efebff9f5f65",
+      "nativeSha256": "adc2df6f388a32cffe4d3550491d2f1c9a3d6c46219a9e00e0136b8e4ecfb79b",
       "officialSha256": "bc8bee05691853cd40d7aab68a7fb260b70ee216a6a365d239dac94400585c60"
     },
     {
@@ -217113,9 +217113,9 @@
       "sourceSha256": "285693b1b5924862d257040332034e139b57b150459b9599f381d8c34cd7b21e",
       "nativeFile": "parity_treeview_129_native.png",
       "officialFile": "parity_treeview_129_official.png",
-      "nativeBytes": 49600,
+      "nativeBytes": 46589,
       "officialBytes": 46125,
-      "nativeSha256": "c605e74ae3ec1823db1ec61983aa29ec14f42000852ae7d6f284eddcaf20fb03",
+      "nativeSha256": "e9941875312b2321e7358df582463e53ffcf8ea5f2d0a27f3687b849f17105bc",
       "officialSha256": "95da8aed80f44c3116a71b548be9e3ebddbb092d5df528996ec7faa21fef9e91"
     },
     {
@@ -217144,9 +217144,9 @@
       "sourceSha256": "0a6158cc0014bf89dea05fc0664b99fa38be2a22cb263f69ee6a625bbbcc5032",
       "nativeFile": "parity_treeview_130_native.png",
       "officialFile": "parity_treeview_130_official.png",
-      "nativeBytes": 37746,
+      "nativeBytes": 36213,
       "officialBytes": 34763,
-      "nativeSha256": "63b4528b38c06de148af4957ccd68dc470e8b9d7361b88c19b56704de239ec25",
+      "nativeSha256": "300b90f5e21fdd302b1145cfebaaed31b9cabc8bdb2275e806138d04c4b9466a",
       "officialSha256": "1b195603aeebef316deeadd24c116925df161e031a885b704d0331c60f0b5458"
     },
     {
@@ -217168,9 +217168,9 @@
       "sourceSha256": "06304494cf62529d39699c2ef0b44189662bd0ea4b97441a51e1d25c12f702f2",
       "nativeFile": "parity_treeview_131_native.png",
       "officialFile": "parity_treeview_131_official.png",
-      "nativeBytes": 48114,
+      "nativeBytes": 53074,
       "officialBytes": 51639,
-      "nativeSha256": "d3d83a6a251cbf2ce6472c8fab686f11a3045f3d166cb590b1477f3d97e40cb0",
+      "nativeSha256": "d2c071223a00b91f2faba9332a73f9468ce13ea8e0a5bdd740c160ff46b231f6",
       "officialSha256": "d8716645936035a7bcb88424462a331b2580b9fe2f3f0a821b6199341b0bcd0b"
     },
     {
@@ -217192,9 +217192,9 @@
       "sourceSha256": "fe63b9c1fb23df6aa05ea3658afc1d564a35c5ca3e2464da5fa561b6b089f970",
       "nativeFile": "parity_treeview_132_native.png",
       "officialFile": "parity_treeview_132_official.png",
-      "nativeBytes": 51801,
+      "nativeBytes": 51231,
       "officialBytes": 47866,
-      "nativeSha256": "977390a5d1b862b75a73715efda80835ecd953db04c63b7f3d9eaa3e1d4afd9c",
+      "nativeSha256": "f4d3a133ea566c55a0d95cb9023946e7fc48472259b9333a10118faf208da83d",
       "officialSha256": "1974006d3b1283c70578deac4920a9f42e7d3d20e9417b142c967f88275d694f"
     },
     {
@@ -217216,9 +217216,9 @@
       "sourceSha256": "b2ad49cbff85e285241edb707ac1d0d6a7e5ab2cc96184868da7ab6303278869",
       "nativeFile": "parity_treeview_133_native.png",
       "officialFile": "parity_treeview_133_official.png",
-      "nativeBytes": 39310,
+      "nativeBytes": 37561,
       "officialBytes": 35429,
-      "nativeSha256": "afaf560ee744ac7e8fb1176f8de4d5e1b6a694cab842ce50209891e4ec466a2e",
+      "nativeSha256": "45dbf2de0c92e2505e617972de1eb1fb2e5f58aba7e5c99fd912f4efd7cd57f3",
       "officialSha256": "ec51a20d4a628057102080076106d0131b39aa9942710cfeb9b708b862c0cc2f"
     },
     {
@@ -217240,9 +217240,9 @@
       "sourceSha256": "e9dd906aac20a32f5b758ba62517ada95cdd423de721719ded7b3d363a9d0aa3",
       "nativeFile": "parity_treeview_134_native.png",
       "officialFile": "parity_treeview_134_official.png",
-      "nativeBytes": 46255,
+      "nativeBytes": 46494,
       "officialBytes": 43828,
-      "nativeSha256": "312e50738abbe551650c4c9ffb6b1121b670a411af1fca654b8bfd2e88eff1a3",
+      "nativeSha256": "5079fd2a6a1e432aeada7f034a76cd11170953571876ca05f4bdb293c3e1f905",
       "officialSha256": "9258eeee022f6652cd101086e6dadeddbbaf2f62d663149df1b7cabfb917947a"
     },
     {
@@ -217264,9 +217264,9 @@
       "sourceSha256": "7a717d2499e117c6463fefb957d84e34c6b75f0b186b97e71250ef593d380531",
       "nativeFile": "parity_treeview_135_native.png",
       "officialFile": "parity_treeview_135_official.png",
-      "nativeBytes": 66757,
+      "nativeBytes": 60451,
       "officialBytes": 56735,
-      "nativeSha256": "0fd667270cef7e8dc94ba39ca3343fbe1977821110a12b8defae2c3b12f30ca1",
+      "nativeSha256": "3f276f21745a0aa59c76bd320b86578ffa8101106e06d85e789e49e2b06c8f62",
       "officialSha256": "b632173a89fa91cfa9ecb3aa2ddcdaca3f5e145b23574e6b7d5ca458a5dc614a"
     },
     {
@@ -217298,9 +217298,9 @@
       "sourceSha256": "60aeabc5800a0228281a6fd803699635380c451a4d13fe36a2a51891227e9e74",
       "nativeFile": "parity_treeview_136_native.png",
       "officialFile": "parity_treeview_136_official.png",
-      "nativeBytes": 35965,
+      "nativeBytes": 35354,
       "officialBytes": 33707,
-      "nativeSha256": "a221f26f732b00434d95bd0eddacf6c7b177b521ff00e01fa2ecafc42810c21f",
+      "nativeSha256": "e3c5ab5cfbfa96a1a9e580c3d3df69fdfbf5fcdac717ff9b985afc902fe13084",
       "officialSha256": "b43a328048434cf56ee538a6b4c129066373b9ad0568f5b0d858c81ed72c4708"
     },
     {
@@ -217329,9 +217329,9 @@
       "sourceSha256": "d271c5dcb6b65e452c6f1909496843d2fbe86b7637b91de8197003749c63fee8",
       "nativeFile": "parity_treeview_137_native.png",
       "officialFile": "parity_treeview_137_official.png",
-      "nativeBytes": 36696,
+      "nativeBytes": 36723,
       "officialBytes": 35402,
-      "nativeSha256": "636405330b04cb8f95536f1015f26cda4e60aa6eab1ea0d5b97ac780958ea620",
+      "nativeSha256": "64fdf6d1fbcee640da6cf8f65556405206eb49c1f7ed8223e0126d2753c70195",
       "officialSha256": "02da217b9b471cf87efae8978a0b68eca100b27b62174526d697a0d829b54bd0"
     },
     {
@@ -217360,9 +217360,9 @@
       "sourceSha256": "858862a01a58db0e49f45d19eb02c74edb80cc86f0795f4db86146ab8a2a4165",
       "nativeFile": "parity_treeview_138_native.png",
       "officialFile": "parity_treeview_138_official.png",
-      "nativeBytes": 37328,
+      "nativeBytes": 36698,
       "officialBytes": 35312,
-      "nativeSha256": "acca34ad878308eabb66e1e238d44faa9ee85315708b59840230fb13fe0dd96a",
+      "nativeSha256": "d243f367b2e650db7116839639975b64a02e6f252a690b7fb5d8fd598a8e7cc8",
       "officialSha256": "78649da0147df6f837b2b288db5ab6adeb3169e3ff0caa758c1cbabae8c695bc"
     },
     {
@@ -217390,9 +217390,9 @@
       "sourceSha256": "f87b80da860b6594acda7ddd500f17c11f620d9b6a62350cb4fb2bd5e6f87b24",
       "nativeFile": "parity_treeview_139_native.png",
       "officialFile": "parity_treeview_139_official.png",
-      "nativeBytes": 46886,
+      "nativeBytes": 47005,
       "officialBytes": 44452,
-      "nativeSha256": "9eedc436d257464735f9e6fada4d2c17a0f46ec3af2de95cde85cb03652a8792",
+      "nativeSha256": "8426a3a4951745dea3ac7f7e4fa2b8a6ab6641b18777299e7b406bbbc2dd4cfa",
       "officialSha256": "b37f3444799733cf9d6fde6773103bb134eb24bb21aed09875be795e45256d2a"
     },
     {
@@ -217422,9 +217422,9 @@
       "sourceSha256": "b0f12a58662391ae681b680facaed056b1317c65e6d76de97303614048a34f85",
       "nativeFile": "parity_treeview_140_native.png",
       "officialFile": "parity_treeview_140_official.png",
-      "nativeBytes": 46089,
+      "nativeBytes": 44502,
       "officialBytes": 42442,
-      "nativeSha256": "95dcfa1f9402cc5c0fe20e745c9270de7c1b4f1d2177fe0a4d0cfc377f1ff732",
+      "nativeSha256": "f88ea4068a8f944fb1f9e440386391c8bb630e18048fbd17e8fc147065233113",
       "officialSha256": "bda3239ce152921f0cb7297b6328f952d462a901683e55a5f8a832ba9b590d9a"
     },
     {
@@ -217454,9 +217454,9 @@
       "sourceSha256": "785cb7aa668bc9b8c1d210896e97a4859c87973eeb6eed251615fd85b7dd91bf",
       "nativeFile": "parity_treeview_141_native.png",
       "officialFile": "parity_treeview_141_official.png",
-      "nativeBytes": 37359,
+      "nativeBytes": 36381,
       "officialBytes": 34618,
-      "nativeSha256": "125150e62561b419e7c4349e7a2d227e637303a2bd188fa72863079b2a3c74ea",
+      "nativeSha256": "3e5ba211fca16796980fac2f883993b163e2041d7a46bf9c54c5a9b76fed5c06",
       "officialSha256": "8f2f23d23a804ac632fabe53eab320da816e74bd29512abb7fab74319d62cebf"
     },
     {
@@ -217486,9 +217486,9 @@
       "sourceSha256": "69450d7b3b42faad95adc0c5f425dca140186f31c0be7f695045f91f1a4c2567",
       "nativeFile": "parity_treeview_142_native.png",
       "officialFile": "parity_treeview_142_official.png",
-      "nativeBytes": 48174,
+      "nativeBytes": 45382,
       "officialBytes": 42924,
-      "nativeSha256": "00b05ed460ef7c73b8d02f9ef79055f1f8e3010f0a1fd897eb2524ca8f3310ec",
+      "nativeSha256": "66aec756a474cf6331bfe10a6f3cd0f42333b29cc121976cc70e0b5a6f41732f",
       "officialSha256": "dc505bb0ceb52a7103ee98e0c634d77daa0d92b2a1b3dad3f5f60fceadb6f53c"
     },
     {
@@ -217517,9 +217517,9 @@
       "sourceSha256": "ffdf98cdc46f5298fd479d513ae5067bc45642220ac89346532b3f6f87b9610e",
       "nativeFile": "parity_treeview_143_native.png",
       "officialFile": "parity_treeview_143_official.png",
-      "nativeBytes": 36517,
+      "nativeBytes": 35712,
       "officialBytes": 33586,
-      "nativeSha256": "c8336be5b6f0f67395b8d432bfbf74a9914eff852765efe9e8986a499128d2e3",
+      "nativeSha256": "6d558c979fff3753b59b56f78c2535ddd4889adaa1d1da9c3f4cca51a4782e4b",
       "officialSha256": "4201e2dc5029c91b9c440c8a97c8bd7413f34aa9518950667bc1f6993c761bd4"
     },
     {
@@ -217541,9 +217541,9 @@
       "sourceSha256": "6caf564b3fc0eaf990b3827a76d0dd0449d794e03db31b2008a8d89ce1476d59",
       "nativeFile": "parity_treeview_144_native.png",
       "officialFile": "parity_treeview_144_official.png",
-      "nativeBytes": 53906,
+      "nativeBytes": 51871,
       "officialBytes": 49591,
-      "nativeSha256": "adb6ab12db32a562ff8238b70d1300dc5113b2e45953017417bf36a8d80c5554",
+      "nativeSha256": "d0a5dd6f066c0fe8ec0b4e5228bd151a328b652b3eb2bad0a717ca1d792e48fd",
       "officialSha256": "673edceeb6d7e91f00aad8875f7770e353250e963a7edb660d8b47a1b7d1cef3"
     },
     {
@@ -217565,9 +217565,9 @@
       "sourceSha256": "6a55587452c9ffd4ecfbd468c7832c7a030195535980b68354517fd8ffe0b7a4",
       "nativeFile": "parity_treeview_145_native.png",
       "officialFile": "parity_treeview_145_official.png",
-      "nativeBytes": 51315,
+      "nativeBytes": 49278,
       "officialBytes": 45308,
-      "nativeSha256": "ae667cc60248d15c64878b1f68e1cd38af60ae73eefff8ea457d13b27b98cd8b",
+      "nativeSha256": "48824bd63a53d75ca799f2647fefdcf02580c7359623f554c1b2fc1f11dca667",
       "officialSha256": "72c7fe86a2e8ed9f2454074185439273253436da732463c245762a0379e09484"
     },
     {
@@ -217589,9 +217589,9 @@
       "sourceSha256": "c903ac5b5f3ea12f40908f0b4e9c904d24e95ff4c25ba6ccfbc87d15c4fc833b",
       "nativeFile": "parity_treeview_146_native.png",
       "officialFile": "parity_treeview_146_official.png",
-      "nativeBytes": 37519,
+      "nativeBytes": 34472,
       "officialBytes": 35137,
-      "nativeSha256": "f8f2d24aee1c0a6c0ff272ceba7305a5ec4b8460a6cd8bafedd674190b531c0e",
+      "nativeSha256": "3f60044b6642ce03d197adcd38c78e90ab223e8c6a83ef20a3eef865bab4dce2",
       "officialSha256": "76a60ed26ac6492792a3494aeb27d269b9cca6bb5a0d691caac689cbd01fc403"
     },
     {
@@ -217613,9 +217613,9 @@
       "sourceSha256": "9e5c389c5a72fa62b2371d761f72284767226a3895615c1bcdfd924c89abfb29",
       "nativeFile": "parity_treeview_147_native.png",
       "officialFile": "parity_treeview_147_official.png",
-      "nativeBytes": 46463,
+      "nativeBytes": 43421,
       "officialBytes": 40659,
-      "nativeSha256": "e983e2ab11b9cf51cde2cc8eb2586ca02c4335b2f1317e939cf55f38f49b3126",
+      "nativeSha256": "1c239603420214bfed1f534e5dc94959f08082e5b1ab5df2a17fc40da3607e1f",
       "officialSha256": "4105ac3782f26a4e42416bb8b1f5fc5e104a711586b5af38a001d8b7bde46aa0"
     },
     {
@@ -217637,9 +217637,9 @@
       "sourceSha256": "bef3a5cfe32fe2c0e07320983eac5f8290dcf3738d77128dab7f15b236c0dd86",
       "nativeFile": "parity_treeview_148_native.png",
       "officialFile": "parity_treeview_148_official.png",
-      "nativeBytes": 62039,
+      "nativeBytes": 58666,
       "officialBytes": 55819,
-      "nativeSha256": "22f8d83cb825a233b2c8d9b4c6406a4ba891ee763d87dc5f307364ee11524e57",
+      "nativeSha256": "ddc5eeba7343517f54590c7e1ecb8e6df58b64d3e62424f9ff463a79376328cf",
       "officialSha256": "c950b616005b280cd316a76feb12b711736646fe252aa54cb46e7b5d103e0ac5"
     },
     {
@@ -217671,9 +217671,9 @@
       "sourceSha256": "9fde38912651472299cfd9b89377022c17a99762200f9bf35f31795d244ced37",
       "nativeFile": "parity_treeview_149_native.png",
       "officialFile": "parity_treeview_149_official.png",
-      "nativeBytes": 36128,
+      "nativeBytes": 33719,
       "officialBytes": 31921,
-      "nativeSha256": "2da136e81342db8a947fbc448ee3d19479306f68b2a289b2751a06f9782b5562",
+      "nativeSha256": "2d5f2c68427e97c60f2cfd04fb4e3774f099f6aa9cc43d8fa0065ea3e4b1295e",
       "officialSha256": "82c533ce642a572fe54841fa6993389286aa1536d45238781027b86cb8f7ac63"
     },
     {
@@ -217702,9 +217702,9 @@
       "sourceSha256": "7adce8b62ac68a9ab548e2cafc4039e2708605a0d795d1d92716ae7a3a772423",
       "nativeFile": "parity_treeview_150_native.png",
       "officialFile": "parity_treeview_150_official.png",
-      "nativeBytes": 37966,
+      "nativeBytes": 35274,
       "officialBytes": 33469,
-      "nativeSha256": "b5d192dd91cc93a792f4656f711c64405a9ebeaa2dab2208c202d7377b61047c",
+      "nativeSha256": "6f7fac001635b16d6bc94bd99418171097ab0481f1d706d551c2866a72f55a67",
       "officialSha256": "76194822896850fbddf1637695a06e127315d93de28f2d0cfe2db0bee94c24b2"
     },
     {
@@ -217733,9 +217733,9 @@
       "sourceSha256": "c9a7c20f88ad5f376ec448510a6b33e740562ed47609332630993641394e50e0",
       "nativeFile": "parity_treeview_151_native.png",
       "officialFile": "parity_treeview_151_official.png",
-      "nativeBytes": 37132,
+      "nativeBytes": 34461,
       "officialBytes": 32495,
-      "nativeSha256": "8918fac891381b17f17ca562030917c4a8f5335c7a156db629db0b0e0d082264",
+      "nativeSha256": "005a8ec14e0b7e1d46c6d78a6a3b9afa7817c8b70503ba5af0dc1a4ef4a66a38",
       "officialSha256": "775d54757de43fb66505299d28e6b4b0efd7a77c1032a0f403e140a1b81db712"
     },
     {
@@ -217763,9 +217763,9 @@
       "sourceSha256": "6be22b97b3dffe610227e08a1725502806c3b1d5e6e0600488a218b3b6dc017c",
       "nativeFile": "parity_treeview_152_native.png",
       "officialFile": "parity_treeview_152_official.png",
-      "nativeBytes": 46972,
+      "nativeBytes": 43645,
       "officialBytes": 41672,
-      "nativeSha256": "63226c043f583def8ceaf613f3b7cf524130668b8ab2f3a28dedb39f6cc3f36c",
+      "nativeSha256": "f7d983cd9aa70a4b64910f3d8497232e2781c031362494b85b35e761ae6f9008",
       "officialSha256": "b0e55c619ebe1097fae519c7509111d4a3701ec004b3003b103d339d02be7ef9"
     },
     {
@@ -217795,9 +217795,9 @@
       "sourceSha256": "82f44e5ecd827cae4a99d20afc028f373293dee3d4e7ad936842d0eb2e5ebc10",
       "nativeFile": "parity_treeview_153_native.png",
       "officialFile": "parity_treeview_153_official.png",
-      "nativeBytes": 45659,
+      "nativeBytes": 43236,
       "officialBytes": 41328,
-      "nativeSha256": "f6d4430b5e56bcd6e40483bdc70a8088cf0d1f5a5915b3ffffef19930fb1f782",
+      "nativeSha256": "f22898f7a866bf2780ea46a47866d6119f817725b399892dfc374054de74b719",
       "officialSha256": "5383a437650f69d601ebcb46998805ca16dd4be0c826a5f6d1d6b6333b68562c"
     },
     {
@@ -217827,9 +217827,9 @@
       "sourceSha256": "1c6f2c6a8b56105478a79516257c4ebb9ff2b4f95517ad490ec3ee9ef9a79683",
       "nativeFile": "parity_treeview_154_native.png",
       "officialFile": "parity_treeview_154_official.png",
-      "nativeBytes": 36591,
+      "nativeBytes": 33836,
       "officialBytes": 34377,
-      "nativeSha256": "c8810c36d3da827e4ffc73980b4ffb9d72ceddcafb0c54c757176a68fcf71be6",
+      "nativeSha256": "f7d41e15d8b2af67f60f58558eee06891823185f103ec033f9c96b1813540fd2",
       "officialSha256": "cd51ac7a9a86ba9c80395b7e3ce134739c32e7f119f5e99285f71e0b922ce663"
     },
     {
@@ -217859,9 +217859,9 @@
       "sourceSha256": "c26a3f04228316a362536a69414cc58a73b035d3b40aa3bc0e53cd0e49efe3bf",
       "nativeFile": "parity_treeview_155_native.png",
       "officialFile": "parity_treeview_155_official.png",
-      "nativeBytes": 46135,
+      "nativeBytes": 44292,
       "officialBytes": 41334,
-      "nativeSha256": "f9a819ed04f39d4cad500e1ac554ca3ab40f6f08dd05b6147bb9328e4ccbbbd8",
+      "nativeSha256": "c9ebf3f796cf36632d2176da021d9eca95e1f8f1bfd06f8c2bdd3a63b4476d9e",
       "officialSha256": "c41336985d7c7eb947e879f43bb35da741999bd26f5cf173fb0a75cabda7b7f7"
     },
     {
@@ -217890,9 +217890,9 @@
       "sourceSha256": "f71edea8c23c4f3d3110e8da260e3ab9a5e0e3fcd475ccacd441e17900f9e115",
       "nativeFile": "parity_treeview_156_native.png",
       "officialFile": "parity_treeview_156_official.png",
-      "nativeBytes": 36989,
+      "nativeBytes": 34546,
       "officialBytes": 32610,
-      "nativeSha256": "90ab23a2daaaabe5b4c173e9de72abc42ad5eadd6798484ff028619dedac8d7d",
+      "nativeSha256": "0e56b416d5f269a8d6323088111c6a29eee40c43f7e589a5821c8db3838aecad",
       "officialSha256": "e03868b3f72fd2ed9d56c6b8d4d75058d2f787ce1c1eef4f222e07b96e2cf8c8"
     },
     {
@@ -217914,9 +217914,9 @@
       "sourceSha256": "18af8128f856804f42e9da589c276ba95a0a674e336b0d2d36f02003d1fd3b9d",
       "nativeFile": "parity_treeview_157_native.png",
       "officialFile": "parity_treeview_157_official.png",
-      "nativeBytes": 53596,
+      "nativeBytes": 52012,
       "officialBytes": 49185,
-      "nativeSha256": "957e40212113636686ada8f7a841b1fd22eef1288b915c81370845e1d73adbb5",
+      "nativeSha256": "2615709743b0f2f3088ab520958bce370d9f8a05371f6e1f60783f1a162bd9ae",
       "officialSha256": "d5e5f53fd9742aa80247747bb44a277ba2a78fec3cc1a38b645ce4eb9ee3facd"
     },
     {
@@ -217938,9 +217938,9 @@
       "sourceSha256": "83a84eaaccecaa92f047f77b9d5e35cc965445d699965667f4a7a58e0d198d0e",
       "nativeFile": "parity_treeview_158_native.png",
       "officialFile": "parity_treeview_158_official.png",
-      "nativeBytes": 50108,
+      "nativeBytes": 48046,
       "officialBytes": 46756,
-      "nativeSha256": "5252dc4b40cef30cc6f8f66bfc3780493dd136f6e40089e66555b6b9f319260e",
+      "nativeSha256": "182ac6c3e6390ed617c36539f8f806a35874ba692c0dd0e151f37e130d6e0ec0",
       "officialSha256": "9f81ed39e619177c4ef28f53f596663a712b6e486516b9994e7d1825456cec60"
     },
     {
@@ -217962,9 +217962,9 @@
       "sourceSha256": "78bc01e6a74270f23fc9b677311d47deff6f06db7accf28132ae68eb61ce2544",
       "nativeFile": "parity_treeview_159_native.png",
       "officialFile": "parity_treeview_159_official.png",
-      "nativeBytes": 38180,
+      "nativeBytes": 36410,
       "officialBytes": 35449,
-      "nativeSha256": "d6dff38b8c646a6ee7f6b4f8c70c84b0b98a1e6646683fdba4defd2629c38770",
+      "nativeSha256": "323d6cc8d32a7185c57646ba19dbe3139cc3a1a61cacea364a7ae1e9be4ccea4",
       "officialSha256": "c07565a47f5ae6f4025037f645ae77678b0fb41af8ad725e9c942bb4a51bc0c1"
     },
     {
@@ -217986,9 +217986,9 @@
       "sourceSha256": "052b19ab7d9704387e1821ebea2f40080878b6aaa2e1a583471d4063707c1695",
       "nativeFile": "parity_treeview_160_native.png",
       "officialFile": "parity_treeview_160_official.png",
-      "nativeBytes": 45365,
+      "nativeBytes": 43472,
       "officialBytes": 41288,
-      "nativeSha256": "1a50c43f9a84c8023d5024dab1bbc0890aaa4b95471419cdd4a84263c1af90b2",
+      "nativeSha256": "979a7aaef9ce976e63c651c290d801dcc92dd8c2f74aa4dca0ceff6d510fa1a2",
       "officialSha256": "2f3305be87b9a591deff5949a49c25fe21fa2c909a07fb745a5d03dd401eabb6"
     },
     {
@@ -218010,9 +218010,9 @@
       "sourceSha256": "64720dddc24d96fb19d481a7197bb17c74a6e2505267963e2e570770f5b9cb4a",
       "nativeFile": "parity_treeview_161_native.png",
       "officialFile": "parity_treeview_161_official.png",
-      "nativeBytes": 61366,
+      "nativeBytes": 58741,
       "officialBytes": 55782,
-      "nativeSha256": "ac14f44428966e836e3699892e28496f601b8e5d567389fad3679e78f58e901e",
+      "nativeSha256": "de6adf3b4687d5f58e43ce41e008f9295b69b45dd731dc6a22f0750c0f673d03",
       "officialSha256": "04e2a66e88fcd4b128e8d61961dd8245837dee389ee5bd87586bfc2280e6bd5d"
     },
     {
@@ -218044,9 +218044,9 @@
       "sourceSha256": "ecfd2b91593c3b29a159f5e1932769a9d74bb8b96b7d6634c2a5018e1697432e",
       "nativeFile": "parity_treeview_162_native.png",
       "officialFile": "parity_treeview_162_official.png",
-      "nativeBytes": 34417,
+      "nativeBytes": 33501,
       "officialBytes": 32566,
-      "nativeSha256": "68d00164fcf2333192798dd00b807e135986b5b3442a711ed81f6b045f346b6d",
+      "nativeSha256": "ff3c1d1e1fb299af417e9ec4818ac6351c55a84522bb73d9f7fc8dc093db9bfb",
       "officialSha256": "7babb160a666024986bcbcd051a6f78eede37f3bf8c0f8ce7643871fd59bf2e3"
     },
     {
@@ -218075,9 +218075,9 @@
       "sourceSha256": "96ef669e0461c8b6d388526dadd9b6df69d8abfc2fb2fd5877c0c8acba4758f1",
       "nativeFile": "parity_treeview_163_native.png",
       "officialFile": "parity_treeview_163_official.png",
-      "nativeBytes": 36303,
+      "nativeBytes": 35606,
       "officialBytes": 34418,
-      "nativeSha256": "c11a3f5da71c3afd9d892f65a5fa55f88dc65891b5de8eddc5f0a2e56b575264",
+      "nativeSha256": "9e686a8e4b5d312407d380914c0e99bc08cd65a30bdb5dd495926c7ca090e462",
       "officialSha256": "66f32406ba2a38da9e55ffd020a68c7a348814523d74aebaa107692a1edf46a5"
     },
     {
@@ -218106,9 +218106,9 @@
       "sourceSha256": "dcb05a816a20ce7305bd153c2887b7d0ebc13a572d9a1581365300641d075290",
       "nativeFile": "parity_treeview_164_native.png",
       "officialFile": "parity_treeview_164_official.png",
-      "nativeBytes": 35622,
+      "nativeBytes": 34791,
       "officialBytes": 33724,
-      "nativeSha256": "2b65b9ef7475b0dfb777f88015f688132fd9f3235c34e99f3414458e495487f8",
+      "nativeSha256": "c43571d599707827d10549cfea1e1bcf11dadb3c854ca1c8bf9144343a7c4492",
       "officialSha256": "bd4f9e7f1e9e03d5d116e83186d20bb41bd10e0443f3dd686acd00b8b97fc2d3"
     },
     {
@@ -218136,9 +218136,9 @@
       "sourceSha256": "f785be119b403b6acac77b0dc2b1c36d8d9683723892fe4d97ca6e3c029da69e",
       "nativeFile": "parity_treeview_165_native.png",
       "officialFile": "parity_treeview_165_official.png",
-      "nativeBytes": 45538,
+      "nativeBytes": 42317,
       "officialBytes": 42531,
-      "nativeSha256": "48f4ec9b8b6a727379e94c625440b30081f0a17b254218be570259bf07a5d789",
+      "nativeSha256": "7b7cda48d83019cc65e4eabe9991914e8de5c16cfbd9d8b8747bf1ccf0a74e99",
       "officialSha256": "08f739a3538e0d2f6a93ea5cea6dde459f23c52d3de3b9636861cdeed6ae0ee5"
     },
     {
@@ -218168,9 +218168,9 @@
       "sourceSha256": "1bfd4761939b0ed98b98f1ffae00c66115a96960b360707861fd84b13d6a1b1f",
       "nativeFile": "parity_treeview_166_native.png",
       "officialFile": "parity_treeview_166_official.png",
-      "nativeBytes": 46191,
+      "nativeBytes": 42534,
       "officialBytes": 40475,
-      "nativeSha256": "7e41b7b755a2c54eb623652a0b6c49870d3fdc606c93ac775d4a39a578b1ebb8",
+      "nativeSha256": "cc6e29810c9548a948aef47b0679fb3be2505920971945bad085b75709eaff83",
       "officialSha256": "128b183f6f001fb9369ec0c28a2ee46fadcbde60155c0c2f2c27a3bb542b5e5e"
     },
     {
@@ -218200,9 +218200,9 @@
       "sourceSha256": "f6cedd979854e0946186bc012329561575279ae87df5d19243a315b3d4244e1b",
       "nativeFile": "parity_treeview_167_native.png",
       "officialFile": "parity_treeview_167_official.png",
-      "nativeBytes": 37375,
+      "nativeBytes": 35869,
       "officialBytes": 34312,
-      "nativeSha256": "cd59f9e4a54b784f7607bf886dd0898c36f344be7e34f8fb2b337b70d11cd8a4",
+      "nativeSha256": "294619f1b25a67862f3409f463e295cf21f05844c824d116494000897a1dd862",
       "officialSha256": "37ece170100aba7258e5b74b47106b1aa7a0e904e390742337280ac62489b83e"
     },
     {
@@ -218232,9 +218232,9 @@
       "sourceSha256": "a7ab8a596339b4a75f93cd2df0b050b0bbc4ff3c4a638adc97cdf6249a00d008",
       "nativeFile": "parity_treeview_168_native.png",
       "officialFile": "parity_treeview_168_official.png",
-      "nativeBytes": 45826,
+      "nativeBytes": 44174,
       "officialBytes": 41673,
-      "nativeSha256": "9a9920474f4d6b901407d8ad531d155890492440fd223b0b0072f4793eac530c",
+      "nativeSha256": "8ad0e1936aaf5193c5217eec5c2877af31b998e086148fee7ae984f01e6ab8c0",
       "officialSha256": "f86b4fb580bcbd873e0308f184a88c2fa205b99a1f1f6a5fbcf9320bd41675c0"
     },
     {
@@ -218263,9 +218263,9 @@
       "sourceSha256": "91d8dd3961a2407f3f1e47c7ee73048f71a6ed989c15586058a45de340e69cc8",
       "nativeFile": "parity_treeview_169_native.png",
       "officialFile": "parity_treeview_169_official.png",
-      "nativeBytes": 35527,
+      "nativeBytes": 34523,
       "officialBytes": 33141,
-      "nativeSha256": "0ab09efa4f2ed98484c98c8c209a79b574f416b8510ae567a0ef24dadcd7f574",
+      "nativeSha256": "b25b9f63ee005fddab3b8255634d7897034658cf77911f4e465dd3fdd9d6daff",
       "officialSha256": "dd03208a35473e9f666431d82188e446649a11b13097342ffd0e46b4d1cdd3a9"
     },
     {
@@ -218287,9 +218287,9 @@
       "sourceSha256": "3b25ed3f0f3ab0e97ccdc2f2808ad589212118ef67e5492ca672ace3b5e98e8a",
       "nativeFile": "parity_treeview_170_native.png",
       "officialFile": "parity_treeview_170_official.png",
-      "nativeBytes": 55759,
+      "nativeBytes": 52745,
       "officialBytes": 50925,
-      "nativeSha256": "11a527d0b79240eb72822d9df684c5c451615dfa30e11a9736503647b7fbcb86",
+      "nativeSha256": "67003b8ec16338ddb480e0603819ed5359ebfd00885d6ad7e546f92db239a959",
       "officialSha256": "26a7996a8ce7ba034484a29b6a3ea1dc70a639f95f584502d4d44472e6d58859"
     },
     {
@@ -218311,9 +218311,9 @@
       "sourceSha256": "489aa5daa403177ec4b3aa7c0302b7228f6c14a88d0a3dd1dd26463e5f1461c4",
       "nativeFile": "parity_treeview_171_native.png",
       "officialFile": "parity_treeview_171_official.png",
-      "nativeBytes": 49970,
+      "nativeBytes": 47621,
       "officialBytes": 46371,
-      "nativeSha256": "6d0900b5e29b94c293186c329c8ba5895049e20230e397d9f4f0861c9b459648",
+      "nativeSha256": "7dc6a3c6344248deeb7faad9412d60a9579a88d4668886f714ca6b1aaecc82d3",
       "officialSha256": "833a32b82c383597d2785eaae20f259ff9326944485c445bc1dc4994b153c6fa"
     },
     {
@@ -218335,9 +218335,9 @@
       "sourceSha256": "989116b9b9a4d88ce0fc55de1431f853e924049ecf90bcde334e259355fbcfd4",
       "nativeFile": "parity_treeview_172_native.png",
       "officialFile": "parity_treeview_172_official.png",
-      "nativeBytes": 38371,
+      "nativeBytes": 35013,
       "officialBytes": 35420,
-      "nativeSha256": "aa73b0718e6af746a70420cf6a94569e24a973e00fa091e9b406f8e75d3c50a4",
+      "nativeSha256": "1ef6446b21dc2490519a06f69a1fd9e89db89c4313ddb74bbcdb706a69deb47d",
       "officialSha256": "488700ae8ab67525b68abaecac80e0b741ca104648ec3b20177b2a099fb3ed4a"
     },
     {
@@ -218359,9 +218359,9 @@
       "sourceSha256": "bd762885f229c90ea89594a4eaa487fcfeb6e7cb9fca80c44a89aabd691faaf7",
       "nativeFile": "parity_treeview_173_native.png",
       "officialFile": "parity_treeview_173_official.png",
-      "nativeBytes": 45482,
+      "nativeBytes": 43403,
       "officialBytes": 43444,
-      "nativeSha256": "4ff6a89c1de21c80817c11428cd2d3dc82adfb3e98bde684df92a606f7a52707",
+      "nativeSha256": "6b81c4be5332a4b2a6c70624709f147e3f48cbe30b6a4a7cf9fe6205cc240b79",
       "officialSha256": "b65493afb8a03b2d168c99b0943153241ef7e74300a2926ccfbbc8c5e2baac93"
     },
     {
@@ -218383,9 +218383,9 @@
       "sourceSha256": "26d7e09434ad26fd482dbbf4ffa12a908100d46942ad473a5a2309f7a0bcfa2f",
       "nativeFile": "parity_treeview_174_native.png",
       "officialFile": "parity_treeview_174_official.png",
-      "nativeBytes": 62332,
+      "nativeBytes": 59464,
       "officialBytes": 55826,
-      "nativeSha256": "ef2f75e116f76763d31b1af336b26b8274e614a2a2fc1ed517d16bf1a4154030",
+      "nativeSha256": "77501c30ee96ed38d315550c9bdeeb7665e057a231b3ffcf8371cc8d26b540ec",
       "officialSha256": "beaa390c9c1a2c4869f4927d978d2e8ba7dc23862efc4d0634ea983744b88dca"
     },
     {
@@ -218417,9 +218417,9 @@
       "sourceSha256": "b27fa2aa67983efaa15ab500694caa41ce8537d1be0f41f6f0fbdbf62975568b",
       "nativeFile": "parity_treeview_175_native.png",
       "officialFile": "parity_treeview_175_official.png",
-      "nativeBytes": 34858,
+      "nativeBytes": 32918,
       "officialBytes": 33445,
-      "nativeSha256": "adbcd69a0f7df716f309378eb690ad46e4f9dd8e9418fbd8b407283c52afb600",
+      "nativeSha256": "20f15a3807b0faf36f51b8d09151afd23c4f95976d91b3acd4dd0edbdfe01dca",
       "officialSha256": "340a22208cf663323318229e9d891d28801f175f00d45f0ef733d3cc85352bb3"
     },
     {
@@ -218448,9 +218448,9 @@
       "sourceSha256": "bad3ccd70f9cb79a0c7dc8c51c3f746513c1ad01af39c41892a89ae4d68e7e8f",
       "nativeFile": "parity_treeview_176_native.png",
       "officialFile": "parity_treeview_176_official.png",
-      "nativeBytes": 36824,
+      "nativeBytes": 34748,
       "officialBytes": 34863,
-      "nativeSha256": "93b1cbb72f983c32ef8a504c47cf2a61c34a160c895b60da3613e4dab0fab131",
+      "nativeSha256": "be82db2f67f263efc8fa2104e38b9f804afbb39ec0714bd31c42a89b3c041edd",
       "officialSha256": "a17c32a14a056099075fb175c55237bb970bf260c60b8edd1a241404bc36806a"
     },
     {
@@ -218479,9 +218479,9 @@
       "sourceSha256": "06897e7e9c32af812ceed1c146fbba3b193ea6f6fb9d8f3813c0992202203238",
       "nativeFile": "parity_treeview_177_native.png",
       "officialFile": "parity_treeview_177_official.png",
-      "nativeBytes": 35471,
+      "nativeBytes": 34059,
       "officialBytes": 33792,
-      "nativeSha256": "12b8510e04673227874c30f44ae4fe3a2e6cc63efd390cfa85a3a7ed5cfe6501",
+      "nativeSha256": "25cec10270334b5a32d87fd733297fdef7a49b4d44685fefeb336e51217e6d4e",
       "officialSha256": "eccc95834a3cc5dc1b0ff63ab2e44ea057c701d6325fdc044c8d79a007b2dbbe"
     },
     {
@@ -218509,9 +218509,9 @@
       "sourceSha256": "8f133ffa59685a34f345229b6d16446a44d06528ad2ba588d13b2a5a309d54a1",
       "nativeFile": "parity_treeview_178_native.png",
       "officialFile": "parity_treeview_178_official.png",
-      "nativeBytes": 45006,
+      "nativeBytes": 42579,
       "officialBytes": 43552,
-      "nativeSha256": "6feae175b04116677c257992bfedb394de1df6ce28c165fdc4ac959f6b9e1d35",
+      "nativeSha256": "c5280bb20f2f6855dc278ad6ee3ac95cfa78aba6ef6d3c6151ed568a8e22601f",
       "officialSha256": "7a857b1560815fca1c53600f2d62f6dba942177c2a558ecd07f9c389d9962782"
     },
     {
@@ -218541,9 +218541,9 @@
       "sourceSha256": "1356bfadb63b7c590213c9a08bd669ac77520e3f22db6ee75f8e43aebac21976",
       "nativeFile": "parity_treeview_179_native.png",
       "officialFile": "parity_treeview_179_official.png",
-      "nativeBytes": 45562,
+      "nativeBytes": 42187,
       "officialBytes": 41499,
-      "nativeSha256": "b2dc63722665bdecff904e579afec35a5b53a4b8efb5754a0ce7591bea97df3c",
+      "nativeSha256": "f310609a60defa3cbbe9201abdf64abd2da74e7a3d3b505ff8dafe1036d6b4b4",
       "officialSha256": "53fe0284a9d06dffce9b94ec6d0aaa0878834370870026a80d12479b2cbe3866"
     },
     {
@@ -218573,9 +218573,9 @@
       "sourceSha256": "38b7e3895b968af5bf4c7b6cf0f75ee013c05699a26ab8576b6a09e5a1831aef",
       "nativeFile": "parity_treeview_180_native.png",
       "officialFile": "parity_treeview_180_official.png",
-      "nativeBytes": 37863,
+      "nativeBytes": 35338,
       "officialBytes": 35315,
-      "nativeSha256": "0be35ef65ab6db246d8be071f53163b32bfa94fffd6c12a6cac017f34fe4441c",
+      "nativeSha256": "9f6679658a82943ac58a5e53b3eac0e779c4e6a4570e97db334ef2b346381d2f",
       "officialSha256": "744dce32974c12c42993313c59004b940f502cefe20c1bab8913290b479d6b7f"
     },
     {
@@ -218605,9 +218605,9 @@
       "sourceSha256": "92a5d3c4fec866519766154d868a4883fa6b863632ce8cc15fa073829f9f8f43",
       "nativeFile": "parity_treeview_181_native.png",
       "officialFile": "parity_treeview_181_official.png",
-      "nativeBytes": 47769,
+      "nativeBytes": 44991,
       "officialBytes": 42062,
-      "nativeSha256": "5993ed2e8f2d8a1acd42ff343bf570c154a0462e53e5b6a5aae5ecf1eadb176e",
+      "nativeSha256": "c571f4dd9e84db3f6a56dc2915f4470468eb5feed5686648db852ccdde059c58",
       "officialSha256": "9246ea986536fb3b219d1741c719ffd1fd2600ac7167b13d126b8f5f80c9aab4"
     },
     {
@@ -218636,9 +218636,9 @@
       "sourceSha256": "11ae9dc4ef6df7e85704bc2fe4d88dab8aef8915d5b6a1853af256829640c44e",
       "nativeFile": "parity_treeview_182_native.png",
       "officialFile": "parity_treeview_182_official.png",
-      "nativeBytes": 35727,
+      "nativeBytes": 34109,
       "officialBytes": 34963,
-      "nativeSha256": "b684488fb6cbd3108c77ffa0d24a0ae957e4753df4d5cd7c5e3ae7fd04584e21",
+      "nativeSha256": "7586ca77ed66bc0114004ac96bee0ed9b7ce159e2e22ba33f84c0a5f93d7a427",
       "officialSha256": "cb025d5f04d581b3c0d6958786b3edc62e16393ecb3bf9e82cde0a0ab6060cad"
     },
     {
@@ -218660,9 +218660,9 @@
       "sourceSha256": "d97157871e4cc750263bfe8c8281ab25c4c724de30fdbbee2d9c403bbd31bcb2",
       "nativeFile": "parity_treeview_183_native.png",
       "officialFile": "parity_treeview_183_official.png",
-      "nativeBytes": 56545,
+      "nativeBytes": 53848,
       "officialBytes": 50230,
-      "nativeSha256": "0009000a56668fd260b90ae39c42fe4b93c4824b8afcfa296ef2f43b306d13cd",
+      "nativeSha256": "2451332a5386b0a68cbb95cab0fe1789c390220b4eba170ce7e5e63e78103dfb",
       "officialSha256": "bb74717296f931f475e5884487019b1cba2c16792de4f0a69f9e8df7f4187100"
     },
     {
@@ -218684,9 +218684,9 @@
       "sourceSha256": "cccba461e4c86186100281a89f35ae3e5ccaabfb129f09252382f5dbb524d90a",
       "nativeFile": "parity_treeview_184_native.png",
       "officialFile": "parity_treeview_184_official.png",
-      "nativeBytes": 53057,
+      "nativeBytes": 49151,
       "officialBytes": 46870,
-      "nativeSha256": "e18021e4d826ffd5874efe0068251db4fc9c0c1c5463f418fc52d2fb92441ff2",
+      "nativeSha256": "baabe1e3a48b57b0c4020f6c7acd05aa94c36c7871fb973bb03973b629761945",
       "officialSha256": "ff1e97622387cd7514f074de6829757799750b532deb0c9f6a3690562ac44cf1"
     },
     {
@@ -218708,9 +218708,9 @@
       "sourceSha256": "dad9903cb2b763a108873ed451bd886456c10e987ebb1a120a76a9637727ad1e",
       "nativeFile": "parity_treeview_185_native.png",
       "officialFile": "parity_treeview_185_official.png",
-      "nativeBytes": 37103,
+      "nativeBytes": 36229,
       "officialBytes": 36107,
-      "nativeSha256": "155cea320222b9c047f2714a7ea17c02504c46ecd49201fa612f4ee4aca590d6",
+      "nativeSha256": "9ba97a62cd4a160c6f510df351a0d98443f51077eda89a40ac61320550539860",
       "officialSha256": "87862143b6561526afa882c574bafe7bb25f65cdfded7aaa0d26ab9f58c63a32"
     },
     {
@@ -218732,9 +218732,9 @@
       "sourceSha256": "e3dbfb63dc6b70e46c160366219f76aaaab1e966af9d59a7db606a6270ac910b",
       "nativeFile": "parity_treeview_186_native.png",
       "officialFile": "parity_treeview_186_official.png",
-      "nativeBytes": 47488,
+      "nativeBytes": 43976,
       "officialBytes": 42681,
-      "nativeSha256": "594953f6b0c047a68811a969149a253f44bab6f5cbc58a40f7930dc0b07d51bd",
+      "nativeSha256": "fcc76d8d2c671519540ad566b5ce84b144c48d714ff8a3f55ce9465983d953ac",
       "officialSha256": "a2a49a3a291b99af407f3b1fb7cf4e9d260bd77e0418621fa8b4c7246886a6cd"
     },
     {
@@ -218756,9 +218756,9 @@
       "sourceSha256": "c82c7621e6568f4dfa4c500ccc8b9e7343efd59607991b3e662a669f7637662d",
       "nativeFile": "parity_treeview_187_native.png",
       "officialFile": "parity_treeview_187_official.png",
-      "nativeBytes": 64268,
+      "nativeBytes": 60858,
       "officialBytes": 56068,
-      "nativeSha256": "228e34dffd23827dcb5c9339f066fb3c42b5db317bfafbd2745a9b1e4b4d0827",
+      "nativeSha256": "15756d150a2c202f12cc48353bf5e0138ba4896df9b5bc301d7a38481d708a18",
       "officialSha256": "7cd4a4d719f57e5fc4928243f075b5f8453b4069917cda69a138239ec45e5830"
     },
     {
@@ -218790,9 +218790,9 @@
       "sourceSha256": "2c56ca572d5126cfb73a063dd16bfdea91b20bc216ebbb8ac0d311fe4a45c18c",
       "nativeFile": "parity_treeview_188_native.png",
       "officialFile": "parity_treeview_188_official.png",
-      "nativeBytes": 37055,
+      "nativeBytes": 34168,
       "officialBytes": 33846,
-      "nativeSha256": "e823c701d1fa023d680fc3bc819c061bd75763c78d59c7980545d0af44c7488a",
+      "nativeSha256": "c095e7380489bfbb394eb3ffed5e20ad0b77da736f6974bf9bf24cb88002ff95",
       "officialSha256": "0d7d77167dedebce0d9c2128edaa38fb2f6ffef5037a754d0e6520ce755966b9"
     },
     {
@@ -218821,9 +218821,9 @@
       "sourceSha256": "471e435b2a220085974648477aa61fb181ec0c4a39f9bd54b6ee5300439cdca4",
       "nativeFile": "parity_treeview_189_native.png",
       "officialFile": "parity_treeview_189_official.png",
-      "nativeBytes": 38666,
+      "nativeBytes": 35629,
       "officialBytes": 34722,
-      "nativeSha256": "0462b304111641e846146fb8f235610d53c333fccd1ff7019266b9eff87a56d4",
+      "nativeSha256": "797d9e48d0b5682b2ced5ec4a4942babe4ed155421f9b941a7b25878494bd920",
       "officialSha256": "ac50ae0821dfc4b4520bf4b65127ee415b33492764479e29da741f6fe3f26710"
     },
     {
@@ -218852,9 +218852,9 @@
       "sourceSha256": "f40d459c3fa72004eaa593eabd540bf3b642f2e014abc08360943ae6adb59bca",
       "nativeFile": "parity_treeview_190_native.png",
       "officialFile": "parity_treeview_190_official.png",
-      "nativeBytes": 38253,
+      "nativeBytes": 35173,
       "officialBytes": 34344,
-      "nativeSha256": "b824b92ee5166396773848d25c46b56ecf7411827cdcfad7b5e66c4639058b38",
+      "nativeSha256": "f565ab4a829021cb0a52025ae22f993441ed38ea5e77a9e4fa88d31ad6b34c26",
       "officialSha256": "acc6e20139eb5333c3e604b6b71c09df629418b8a5a993d29c531b67e93ce350"
     },
     {
@@ -218882,9 +218882,9 @@
       "sourceSha256": "a7dc2c6dd9e762488f4ef67a74f3938fe0c7630998d1a5e0db1871d6b1ad54ca",
       "nativeFile": "parity_treeview_191_native.png",
       "officialFile": "parity_treeview_191_official.png",
-      "nativeBytes": 46578,
+      "nativeBytes": 44600,
       "officialBytes": 43288,
-      "nativeSha256": "e823ea2506bfa4dbc972c52ef5ac097c801bc3a058ff6686fd95bd109c4c41cb",
+      "nativeSha256": "b91ab91e779bd33b3a5c97ed2685bf3978c8f85242aeaef8ee79309bb0f74154",
       "officialSha256": "78e7ca518e335e945226172f477e1c930fd877823a4c9863dfb6fcab28c667e5"
     },
     {
@@ -218914,9 +218914,9 @@
       "sourceSha256": "317183a0db36b927f1f3205957333746b598b28d40ab1267f5595429d9609b4f",
       "nativeFile": "parity_treeview_192_native.png",
       "officialFile": "parity_treeview_192_official.png",
-      "nativeBytes": 44321,
+      "nativeBytes": 43149,
       "officialBytes": 41804,
-      "nativeSha256": "0c567f45b2f9ff1dfcb1f1179944c93da7aacf53c470dcb7230fbb97543aafe7",
+      "nativeSha256": "de2b25bcbb525530b51efc1f16459f852abe1578ea14d777e94390284e520e9d",
       "officialSha256": "2c981283c7eade23fc0d8e59025b74624b87768706caf670e8ff715d0828b234"
     },
     {
@@ -218946,9 +218946,9 @@
       "sourceSha256": "13af6dc501a13c725aeb6c5866401fea01870b89ea1234452ba80efd3d94366f",
       "nativeFile": "parity_treeview_193_native.png",
       "officialFile": "parity_treeview_193_official.png",
-      "nativeBytes": 37344,
+      "nativeBytes": 35532,
       "officialBytes": 35304,
-      "nativeSha256": "4d772524fb9c755fd14daa47ba2d5e221c273f01df026292045b16fb2855c560",
+      "nativeSha256": "68f5be8ae3728f5fdc86feb60f21471a0d705f122e3c1322b2c507400e6719f8",
       "officialSha256": "d9e46af188ce778bdb7e9881b7bc16b6c88c3d0f75f021b8899d1f91d0b10470"
     },
     {
@@ -218978,9 +218978,9 @@
       "sourceSha256": "c36b8d90c3a259fdc43b265f155171fe3668fe4aa4e892fa0846e17f83b9b043",
       "nativeFile": "parity_treeview_194_native.png",
       "officialFile": "parity_treeview_194_official.png",
-      "nativeBytes": 46971,
+      "nativeBytes": 45054,
       "officialBytes": 41775,
-      "nativeSha256": "cbf8a683f60a61a97d264c4f73549ae173b4a3db89d529567889b46412b4ca0c",
+      "nativeSha256": "fbe19272dfedbb238c184caaf68281e7e27056d406b8df5b272c270ed95b91df",
       "officialSha256": "bb036b29fd14c0287ef6c3bd635a2b87bcbe7fd00f7eb0bd063af1cfd1154ea7"
     },
     {
@@ -219009,9 +219009,9 @@
       "sourceSha256": "5cad9f0b655623a7bc2d776ee21d3dc8cf1f48f2b4f10980423881c7f10a2c3d",
       "nativeFile": "parity_treeview_195_native.png",
       "officialFile": "parity_treeview_195_official.png",
-      "nativeBytes": 37603,
+      "nativeBytes": 34736,
       "officialBytes": 33622,
-      "nativeSha256": "5822d713c372e750f22a9a52640b83c9d2b9535ee32de973d63b7450131efe23",
+      "nativeSha256": "b69e6c66a57a2756386048d1a2bacb7c313c1d698a376cafe18ff4b7c1c94a22",
       "officialSha256": "1dac3bbe6a4be25372e662fdb26fa8f061df7477f45f192e59631e9d3783a47c"
     },
     {
@@ -219033,9 +219033,9 @@
       "sourceSha256": "9ed292dd4e95ee974b000ba265c7b20cfea3cd750627929027715a453d16dbe2",
       "nativeFile": "parity_treeview_196_native.png",
       "officialFile": "parity_treeview_196_official.png",
-      "nativeBytes": 52990,
+      "nativeBytes": 51520,
       "officialBytes": 48159,
-      "nativeSha256": "9a6fe5152a50a0cb56f6c5e18d2657bd09a95a855f5171e9d094f279128de5da",
+      "nativeSha256": "4c293a2e755170108ea687f85db5f056f75eb7dd2e6fdf645073469a3afc49f3",
       "officialSha256": "b9565602c82723f540b1c50ac1617f4f433e93d67585c79b5d8c2fda4654685d"
     },
     {
@@ -219057,9 +219057,9 @@
       "sourceSha256": "5877c5350b5f5c252c8d1d58aef09900c28a266fb96e6e2b05a9706d6f05e101",
       "nativeFile": "parity_treeview_197_native.png",
       "officialFile": "parity_treeview_197_official.png",
-      "nativeBytes": 48043,
+      "nativeBytes": 46646,
       "officialBytes": 43985,
-      "nativeSha256": "301d13978c046f87ae1f99cc31a2e774c68c050e72f637689a47a72d722147cf",
+      "nativeSha256": "420487fe8bdaee7583dffa07affb399d6e6a680c2b1f11eae998249144074b32",
       "officialSha256": "8770b98f897b3fa243f4466810671bb98622b7a83663f0330d3ca0d7c5e0c480"
     },
     {
@@ -219081,9 +219081,9 @@
       "sourceSha256": "0e32d1f21d84d600a52c281355cd1ca563d0e67b6d11ef0e22be1ff51b43cbba",
       "nativeFile": "parity_treeview_198_native.png",
       "officialFile": "parity_treeview_198_official.png",
-      "nativeBytes": 37543,
+      "nativeBytes": 34565,
       "officialBytes": 35837,
-      "nativeSha256": "fe2b5b3ca41759925efad578f7be7ada3cf102fe34fecf029fcd852d4876671e",
+      "nativeSha256": "80f5890f41522e9ff5ee089411a9ec53920ae29bfe0a13437255405d896b842d",
       "officialSha256": "7f69f00faf2093a1e7284aaa5268123edbe37fc3dac8f970926fe484a3c1e24d"
     },
     {
@@ -219105,9 +219105,9 @@
       "sourceSha256": "c9f5c426676d31827ff24a68d85341790782401cbd255f9ad50e0b86ec5b7177",
       "nativeFile": "parity_treeview_199_native.png",
       "officialFile": "parity_treeview_199_official.png",
-      "nativeBytes": 45154,
+      "nativeBytes": 42781,
       "officialBytes": 40318,
-      "nativeSha256": "00e7987d8e21a0b7890b934151ca861d3f45f84724f84262fa510511c32713e7",
+      "nativeSha256": "88aef515f6fd3bdbdc1449a7f6463f1552d01a7b1e4c9cab9ad702e0a205bb97",
       "officialSha256": "882ba9c0b5e7c372dd429faecdfc1b715aee208e7746ed24f4849aa67c90b2e1"
     },
     {
@@ -219129,9 +219129,9 @@
       "sourceSha256": "80524888f5b962db070b670d6b0b9d700a5911f42c286d030262b6291ffe58ab",
       "nativeFile": "parity_treeview_200_native.png",
       "officialFile": "parity_treeview_200_official.png",
-      "nativeBytes": 61617,
+      "nativeBytes": 57168,
       "officialBytes": 53900,
-      "nativeSha256": "8f6c45244868384439827bbfc897fed3259e444f3f58ee123478b29d4af02b56",
+      "nativeSha256": "e3ca212176620f5a3a19eb6a25010d77672d2c86961d3df0502fb5ef359fe645",
       "officialSha256": "3eed5460757073c01ed3e951c9c13fbbf2c64875bbd2339695329675aa89b29b"
     },
     {
@@ -219163,9 +219163,9 @@
       "sourceSha256": "94100da15452cae95c7ee59717d7ecfbf98aac436a4ab2a2891dd25f9a3b66c0",
       "nativeFile": "parity_treeview_201_native.png",
       "officialFile": "parity_treeview_201_official.png",
-      "nativeBytes": 34096,
+      "nativeBytes": 32764,
       "officialBytes": 31890,
-      "nativeSha256": "5dc93269544d90c4bc2bf5a94498b7d385ba29264a85501cbf66219e5991fd7c",
+      "nativeSha256": "de34a8463490687d01f28e8524cebc169f2edd51c2390200ecd84a12d0bf8447",
       "officialSha256": "635621ad285e12be6e8e91d43017fc4e11587ead7d229513215f47a418f418b0"
     },
     {
@@ -219194,9 +219194,9 @@
       "sourceSha256": "c6ae25ba3646e8f226f26710c8dcc95e5a45b6cd01dc99bf5806c61601c2a501",
       "nativeFile": "parity_treeview_202_native.png",
       "officialFile": "parity_treeview_202_official.png",
-      "nativeBytes": 36308,
+      "nativeBytes": 34777,
       "officialBytes": 33662,
-      "nativeSha256": "4da2f5f8553a77b6fc2d32f6765a0fa0fdb1909009ddbbbdbbec3dadaecf5708",
+      "nativeSha256": "58ad4c4ae4209c6d4743677e171881db1fc2b36ef140180fa9aa06e4c5b10c30",
       "officialSha256": "fb2a4b4dad1b831d035de4aed7f0cea49ada0100062db1f57b964ad4ec867207"
     },
     {
@@ -219225,9 +219225,9 @@
       "sourceSha256": "2d24620405d0e0dfb1f5a94c3bb9f01659a4eb30f02a905d40ff5ce94cf017c9",
       "nativeFile": "parity_treeview_203_native.png",
       "officialFile": "parity_treeview_203_official.png",
-      "nativeBytes": 35838,
+      "nativeBytes": 34510,
       "officialBytes": 33572,
-      "nativeSha256": "7979ec6f4ac793878a199dda2794a0b74a679a1c521f25ebed44e954bb4dc52c",
+      "nativeSha256": "36bd47c1acf55472427d12999f1797068cad53aaa33cf5b767363e51e38ec6b8",
       "officialSha256": "ac2cb7ea929b1f2094f1c1c32877d2227f43fe520a6cc3af2e383a826d9899c9"
     },
     {
@@ -219255,9 +219255,9 @@
       "sourceSha256": "a99691ac946584193164566ae78fcab6d4b2ce13516185f84f9f97944e777d33",
       "nativeFile": "parity_treeview_204_native.png",
       "officialFile": "parity_treeview_204_official.png",
-      "nativeBytes": 43556,
+      "nativeBytes": 42332,
       "officialBytes": 41303,
-      "nativeSha256": "6ca73b4a9bfcfd3a6fa0b3b2c945b90062c9bb4649c88c03f5db8e6cb3728432",
+      "nativeSha256": "df9b8424e6337f92e3383b3c61f3d982e4adc66dbfbf2d27ebe159dba508d94f",
       "officialSha256": "9f2d09f00d6608e102c69633275452c27aef43bbab9e85e15b9812ec8c4fbb4c"
     },
     {
@@ -219287,9 +219287,9 @@
       "sourceSha256": "b1b1e619338e6047969f673f9ea5945e00f0204783f3068be58d3de2f10e2c85",
       "nativeFile": "parity_treeview_205_native.png",
       "officialFile": "parity_treeview_205_official.png",
-      "nativeBytes": 42733,
+      "nativeBytes": 42506,
       "officialBytes": 39297,
-      "nativeSha256": "fe7c6230fdd109039ffa23d57e7885e436dcd05f6f29bfc83f791544e5abc231",
+      "nativeSha256": "f0bef501dfd8ca09988b96e096843fbc547b067496ad17823fd2d49bbb0070dc",
       "officialSha256": "c172035e41eb4130033b2370caddb90c70ad2e390536fb9e2afd44ac80bdee84"
     },
     {
@@ -219319,9 +219319,9 @@
       "sourceSha256": "cbc068694d4e6308be976accc43453f36ea13e695cdfb3ba961a14778e2ff974",
       "nativeFile": "parity_treeview_206_native.png",
       "officialFile": "parity_treeview_206_official.png",
-      "nativeBytes": 36763,
+      "nativeBytes": 34567,
       "officialBytes": 35462,
-      "nativeSha256": "4ff08722f598caba98cafca80d62bc1d83aab3bb18d9863be6904dfaaf528684",
+      "nativeSha256": "3cee348940f1757d542049218ff00e721b1f313f3428db1a892fc5342425e1be",
       "officialSha256": "be955c8bd652361bcd5b0198a7130b30045d632331c497f9f517bf7dfdedfc2e"
     },
     {
@@ -219351,9 +219351,9 @@
       "sourceSha256": "1c0d0beba1b63c73ad4a7b811ee18aefc1cf4f3b24ddd6c3b384f8d97d487559",
       "nativeFile": "parity_treeview_207_native.png",
       "officialFile": "parity_treeview_207_official.png",
-      "nativeBytes": 46456,
+      "nativeBytes": 43925,
       "officialBytes": 42365,
-      "nativeSha256": "1664d15e4e662af645822172d6179a34a10003402543936c9b9bc8582b9da0f5",
+      "nativeSha256": "4e7e512d2a378b8972af5fac20ad7a033f234ed609d01cadab6168479664a282",
       "officialSha256": "f056420a3f2b6741afbebd68a92c335a7eed652f052a4feaa1d766d849950307"
     },
     {
@@ -219382,9 +219382,9 @@
       "sourceSha256": "e02bfd9bbe79ef44e0469e2d72abbc3c13b2936e586fc7d7a1bc01af2e652dd7",
       "nativeFile": "parity_treeview_208_native.png",
       "officialFile": "parity_treeview_208_official.png",
-      "nativeBytes": 35391,
+      "nativeBytes": 33739,
       "officialBytes": 33319,
-      "nativeSha256": "65f3b97ac4f984387c15a10f55282b40c3f098f18c94b675a649d7a2fb6fa4ec",
+      "nativeSha256": "00c68c9a4da4833e8ed34cba66da2024999d8c5ff63ed9f4f04a8d6a7ab784ef",
       "officialSha256": "14e5856016a6646d9a570cbd3bbac7d86c29177eacda95f1a1ff4ed51d6c72f7"
     },
     {
@@ -219406,9 +219406,9 @@
       "sourceSha256": "abfce9a3c3c03aab61eecafe5bfed991544f410635a2d0b312418f47bfac4411",
       "nativeFile": "parity_treeview_209_native.png",
       "officialFile": "parity_treeview_209_official.png",
-      "nativeBytes": 56399,
+      "nativeBytes": 53292,
       "officialBytes": 48583,
-      "nativeSha256": "8bf8ed62a240a80c464bb57c54063bcb3d0cb9489f73ca5a5fccd8c7e79a6d14",
+      "nativeSha256": "240d003308f5acaffd5e07d4c6d4faf6eae0e9caabc71194c10e304c4823a3fd",
       "officialSha256": "529453dd6b9f96d899c6341653dc70c0931b08bd8edd448aac65370b4b541451"
     },
     {
@@ -219430,9 +219430,9 @@
       "sourceSha256": "4f015eb3907dfe9c5a60ff0912f1115772238cfbf1a7acf1c8af9ebc94a96912",
       "nativeFile": "parity_treeview_210_native.png",
       "officialFile": "parity_treeview_210_official.png",
-      "nativeBytes": 50667,
+      "nativeBytes": 49042,
       "officialBytes": 45554,
-      "nativeSha256": "c9ac9a83c584ab23852be7f0b8a2fe9533ff93d7ba5e0aad8ecaf4c5c75c86a3",
+      "nativeSha256": "59e7885eaa655562fa1ac9aec74c0b0164bd0d713473a7f9c47a0796bcff0f21",
       "officialSha256": "d5fe9f1155489daa0ccf1385896258c38b7e09b17972736b7658a3213bf8aae5"
     },
     {
@@ -219454,9 +219454,9 @@
       "sourceSha256": "85ac0ad01cbb2e3080004f0e3172f47579860ec7dc923a6b1a95ca10ebb90e37",
       "nativeFile": "parity_treeview_211_native.png",
       "officialFile": "parity_treeview_211_official.png",
-      "nativeBytes": 35704,
+      "nativeBytes": 34633,
       "officialBytes": 34170,
-      "nativeSha256": "24ceb95e8bcceb5bbf85e4eb916a21a87fb9adb031a7a04f09e87a0dc12bcde0",
+      "nativeSha256": "27bca4dea85a8e14bec86f3b336ed3f77484f99949c5d16991334f8626593dd3",
       "officialSha256": "c44b8c23f5e3b05b0c0fbdf8280736caf7fc0ddc6d1c2823a75e3774ba92abdf"
     },
     {
@@ -219478,9 +219478,9 @@
       "sourceSha256": "93ade4842241ca14addc305d203232762d9a74cdaccc46f4f154c78bd8ffcc1b",
       "nativeFile": "parity_treeview_212_native.png",
       "officialFile": "parity_treeview_212_official.png",
-      "nativeBytes": 44899,
+      "nativeBytes": 43605,
       "officialBytes": 40336,
-      "nativeSha256": "6f968e0040e4fb97c3948283c7af141a190ce528b81aeaea51d333ea77eb329a",
+      "nativeSha256": "541ef89c7c9d587382db161372dd125fc7a2ebabca946d2e27c47c7e4c8f4c18",
       "officialSha256": "fccf29135831801ba9e9add0dec36c566f27dbd6eb8d03ffed0cd9bee36c5ce8"
     },
     {
@@ -219502,9 +219502,9 @@
       "sourceSha256": "98d4524d36b60c641eb5e5c3b3155ed2823cb2362309c78f551690c16ca2b63a",
       "nativeFile": "parity_treeview_213_native.png",
       "officialFile": "parity_treeview_213_official.png",
-      "nativeBytes": 62392,
+      "nativeBytes": 59160,
       "officialBytes": 54399,
-      "nativeSha256": "4890541716d5e1662072d70a6f3f4122709fac2f637f468ad5c009509d43662f",
+      "nativeSha256": "420c141c0064690f54552c3d4fef9fbfaafd8da79f1c4b43a0d2f0273b542652",
       "officialSha256": "05b4a70d24867d99bb3f6db42b9e8b52a2fa11395b6b61e139c7d62fbb6f52c8"
     },
     {
@@ -219536,9 +219536,9 @@
       "sourceSha256": "99c489d3ac46dc524343be9f3ec72624a6c68153de5ec6db10e960e3c7111cf3",
       "nativeFile": "parity_treeview_214_native.png",
       "officialFile": "parity_treeview_214_official.png",
-      "nativeBytes": 34674,
+      "nativeBytes": 33389,
       "officialBytes": 31201,
-      "nativeSha256": "925200357586d83ab9ba0fe423c40a7d60e6d8c03e4e96319d5ad29f1a88d23f",
+      "nativeSha256": "45f9dfc984053af19f5741a5d449a8accbe87c61991404314a49b89a9f0cb048",
       "officialSha256": "d59bbf839f75c92a2e9e691d54788506d903234c5d098f6f38dcc3655e1f2c73"
     },
     {
@@ -219567,9 +219567,9 @@
       "sourceSha256": "82aced21c61085e345cd2799a92026bb072c4d8865d0316cc52fca18e84695ec",
       "nativeFile": "parity_treeview_215_native.png",
       "officialFile": "parity_treeview_215_official.png",
-      "nativeBytes": 36616,
+      "nativeBytes": 35173,
       "officialBytes": 32816,
-      "nativeSha256": "d1c08501249d230004c74159901c13356f7d794be2a8603b26aa5eb10abfe222",
+      "nativeSha256": "7e1cf1222620656b0caa3089594821cb075bf144352c57790d72e41bf18945f9",
       "officialSha256": "4a06eafce4c96ae35f387c05d2c91cf4f38d90c57633f52ba5eeaa9122e99809"
     },
     {
@@ -219598,9 +219598,9 @@
       "sourceSha256": "7acf6171732df9822a6dd6cabe4c153a9dbb06b48f5efdd4a2a465517e12070b",
       "nativeFile": "parity_treeview_216_native.png",
       "officialFile": "parity_treeview_216_official.png",
-      "nativeBytes": 35992,
+      "nativeBytes": 35211,
       "officialBytes": 33156,
-      "nativeSha256": "7bbda80531e42f9da3ffe354941fccbb460e59983110a9cf6daf1eea4dbf0ed0",
+      "nativeSha256": "7b53652ea8ccc52d6de5c5c6da887e6e5282980ac292c3bbdaeee2b04eacc625",
       "officialSha256": "6112d452994eb52449f4e141d64131762f6ef465e27266dc2235efe15f3da2a8"
     },
     {
@@ -219628,9 +219628,9 @@
       "sourceSha256": "d77ede946992cc004fb6c161be7a4e4084cfdb726cd7806b1406427629d733d6",
       "nativeFile": "parity_treeview_217_native.png",
       "officialFile": "parity_treeview_217_official.png",
-      "nativeBytes": 44337,
+      "nativeBytes": 42668,
       "officialBytes": 41319,
-      "nativeSha256": "1e4f882f068b0a3b8503cc98489703236fcbe7e92964df2ebaa254a802973cd6",
+      "nativeSha256": "86c30908ed12bd72381bf848ab1404e893728f512a9b63781bda2350e96581ad",
       "officialSha256": "50953cf0e8bc3de8329368d238574526a0d7b6f9777ed26ea29adca3db46d130"
     },
     {
@@ -219660,9 +219660,9 @@
       "sourceSha256": "3ee9cb60fd13ea55541080eafd2165e749624d26907c58509d2284d9b0abc6de",
       "nativeFile": "parity_treeview_218_native.png",
       "officialFile": "parity_treeview_218_official.png",
-      "nativeBytes": 44869,
+      "nativeBytes": 42873,
       "officialBytes": 40790,
-      "nativeSha256": "3315401c245e112e1a6877f81046c8abff231c758c7ed8163a67a87fb0af687a",
+      "nativeSha256": "d01c51942338b93d233e5f0b48de9f7259410cab80b7273e992b4edb2ef9abe5",
       "officialSha256": "f2f434d53b141175fd7e0df7595864c6f40cd2af7ace66af9435ef99f02b0fcd"
     },
     {
@@ -219692,9 +219692,9 @@
       "sourceSha256": "e297ffaab383e9599bbfdb15333cfb1a68269c86ace63cf78993c496d2b50e18",
       "nativeFile": "parity_treeview_219_native.png",
       "officialFile": "parity_treeview_219_official.png",
-      "nativeBytes": 36596,
+      "nativeBytes": 34888,
       "officialBytes": 33921,
-      "nativeSha256": "73dbd394802565cfecfe39d3e6b36ef4eef75ca09c6114a323eb773f2725da19",
+      "nativeSha256": "54b587afedbc4d6a4b5e3a6d48a69af1b8ba4dfef35f29e3733deeec8d143694",
       "officialSha256": "d1c9d90d3ebdfaae9cc81237bec5cd9175fa2d8a7c0554f89cd6e3131b64e6b2"
     },
     {
@@ -219724,9 +219724,9 @@
       "sourceSha256": "98c4e55deae6031e05253abfb2622b8247ae71f18379766fd45eca627bee9906",
       "nativeFile": "parity_treeview_220_native.png",
       "officialFile": "parity_treeview_220_official.png",
-      "nativeBytes": 47123,
+      "nativeBytes": 44840,
       "officialBytes": 40935,
-      "nativeSha256": "56db6933a1edbbaeab380b8a02f4a588c13ad1994c247beff263de4bb63f4bb7",
+      "nativeSha256": "dde0a298701cefb102680b039f673a7667d045cacae48585a4f4898716c82ea1",
       "officialSha256": "fa027d29bbb83ccb74585cb7eba751191a972f409abbd55c87b747ba8d401be5"
     },
     {
@@ -219755,9 +219755,9 @@
       "sourceSha256": "9cf9bf938b4c4c215761c6ee07ba62af6bf6da01df83929dbca40dcadbf8b54c",
       "nativeFile": "parity_treeview_221_native.png",
       "officialFile": "parity_treeview_221_official.png",
-      "nativeBytes": 35095,
+      "nativeBytes": 34322,
       "officialBytes": 31852,
-      "nativeSha256": "5aab4f19fe765efd1514d7c7de8be08adbef51ecbd9f01c2a8585107194ffbc7",
+      "nativeSha256": "a2733ea6971848caeabcc97ade389bc8feb3cc77f1451b06db2b3802dfc52f5b",
       "officialSha256": "81d7a9984b58535b97adfe49078debfae14565557b682f8fcf9e16722de560c8"
     },
     {
@@ -219779,9 +219779,9 @@
       "sourceSha256": "a1b1b8be92a05a7fbccea31611742564049b7a6cc7244c1ea2c282e32e23e3af",
       "nativeFile": "parity_treeview_222_native.png",
       "officialFile": "parity_treeview_222_official.png",
-      "nativeBytes": 52214,
+      "nativeBytes": 47818,
       "officialBytes": 47966,
-      "nativeSha256": "e2a6b7a3d92cd31a3fc1793431f3a963443f435892231fdf4bd3a6c6c02e0e10",
+      "nativeSha256": "f5928d8a71ac5b9346c225dd77da2ea0706e4195c2272175d7a8f768cf6d94c0",
       "officialSha256": "be40de567c6d124f54cdfdfc2a1385cb1909a30f4d2f92f090f830c014146878"
     },
     {
@@ -219803,9 +219803,9 @@
       "sourceSha256": "19039290f89066baf01ebb831780cdd5f7a5855bd68de106b7d22f2afe6f1184",
       "nativeFile": "parity_treeview_223_native.png",
       "officialFile": "parity_treeview_223_official.png",
-      "nativeBytes": 47936,
+      "nativeBytes": 45737,
       "officialBytes": 42849,
-      "nativeSha256": "be7c6064c73ea350c56f688ecd210593af1a04c451cb7edb5502a06359505a0c",
+      "nativeSha256": "a8d0cfc831dc7ef074257c23dedd5f4611082cbeb2da509a5c1e24e10c73efa4",
       "officialSha256": "b74833b15ba303b4a7e7c5a6249899e5e12429193238a3a02d41b9e91ff08ddd"
     },
     {
@@ -219827,9 +219827,9 @@
       "sourceSha256": "85d8e5af64093658a46af61194d14fbab294180377fa04a71db1cf9c5e04e3b9",
       "nativeFile": "parity_treeview_224_native.png",
       "officialFile": "parity_treeview_224_official.png",
-      "nativeBytes": 34770,
+      "nativeBytes": 34360,
       "officialBytes": 33431,
-      "nativeSha256": "83239d5770d1c4260b89e2926cbb6054863caca5dad4434c86951f0e75de07fa",
+      "nativeSha256": "65a76d306c10939974cef05b855e75d56dfda8468e00676c12fce9887fff1da3",
       "officialSha256": "0ed10ea03f924d91cc4b32cf0d7da535ade9633d5fde559a54069712eaf2a58d"
     },
     {
@@ -219851,9 +219851,9 @@
       "sourceSha256": "aa497bb3b145f3f22ff4e01b05547bb6950107890b774947ab8d0d0e967d8271",
       "nativeFile": "parity_treeview_225_native.png",
       "officialFile": "parity_treeview_225_official.png",
-      "nativeBytes": 43057,
+      "nativeBytes": 41143,
       "officialBytes": 38842,
-      "nativeSha256": "1905a86c83622bc298580a55192d1fd2f5d49243cb6ce0bee6f374b0c8db520b",
+      "nativeSha256": "7318416da2abe4196f6dcf7ca28ac2babe18832c1af9f77a59b53b969632c5a9",
       "officialSha256": "53c40c1099df84c6eff7b24701bc8c1654858439552d03638ff5b84898b02f2a"
     },
     {
@@ -219875,9 +219875,9 @@
       "sourceSha256": "ceae4629c9247b2fff6248997239a97657cb966708776c2130673a7b61956e56",
       "nativeFile": "parity_treeview_226_native.png",
       "officialFile": "parity_treeview_226_official.png",
-      "nativeBytes": 60209,
+      "nativeBytes": 55427,
       "officialBytes": 53935,
-      "nativeSha256": "eb762c6410c8e6a13d375ec6e40e67529fff8f8a12622e3b22a68c8dc1db917a",
+      "nativeSha256": "3eb09437089b92e8c013759d57f358704023a62b0f782c701b0f608f8c0cd3d9",
       "officialSha256": "902b31908dd9c576dc50d45bab67a75e8da81e6b3002181a3992aacd55fa5f3f"
     },
     {
@@ -219909,9 +219909,9 @@
       "sourceSha256": "ae1185b27e0f054825394163021af8de260cc9d9b97f688e83fb917ebbfb9875",
       "nativeFile": "parity_treeview_227_native.png",
       "officialFile": "parity_treeview_227_official.png",
-      "nativeBytes": 33245,
+      "nativeBytes": 31859,
       "officialBytes": 31120,
-      "nativeSha256": "629c5833cd5da5e3b7f0ed497dd0ade6ee2847e5029aa722f1502fe3a8a96488",
+      "nativeSha256": "0cd45d123ba796cba556bbf81bbdf6e327e0a78e6c66f3b4f4d5ee9b70616510",
       "officialSha256": "b8866acc3a6b5f8ca712d3675f76ec48fa0cf19a0c40837e9498380f89b24c6f"
     },
     {
@@ -219940,9 +219940,9 @@
       "sourceSha256": "4a42255356486a9252defae00698c4098822ce9fe25b50f974ed2fe0faf83052",
       "nativeFile": "parity_treeview_228_native.png",
       "officialFile": "parity_treeview_228_official.png",
-      "nativeBytes": 35023,
+      "nativeBytes": 33893,
       "officialBytes": 32953,
-      "nativeSha256": "61f12717dd2782dcfaf19ba495a1f29d641a1f01bb8c225a6cfcaa189d529fa3",
+      "nativeSha256": "05dcee42b5902848873d30b9354c556f4e0716528ba18560f29358501017c121",
       "officialSha256": "ccc4e636b6e9c6cc9e1f4c00a7fc6819b683b198e4507c863b4bfb4d7b0ed172"
     },
     {
@@ -219971,9 +219971,9 @@
       "sourceSha256": "f5220efd3808d75b23087c7a355eeac148dfa3bf19ed45504a443af8e4e83e01",
       "nativeFile": "parity_treeview_229_native.png",
       "officialFile": "parity_treeview_229_official.png",
-      "nativeBytes": 34940,
+      "nativeBytes": 33675,
       "officialBytes": 32373,
-      "nativeSha256": "f9a20eb7124c0ec9c26a45305c63fc689c39e441e480e46dd2227ea556f6ee9f",
+      "nativeSha256": "150158e784d9b5a2b1490d949fa2b233100f9b41731ff26625d30bedad4297bc",
       "officialSha256": "465b279c2a1bb675b61326e973cb50db8d96e88208698ac49304d44539d4203f"
     },
     {
@@ -220001,9 +220001,9 @@
       "sourceSha256": "05738d7eba9fe7d68e91edb0b4bdb4aa40373482da07e8b67b4d0220fe67bee9",
       "nativeFile": "parity_treeview_230_native.png",
       "officialFile": "parity_treeview_230_official.png",
-      "nativeBytes": 43520,
+      "nativeBytes": 41732,
       "officialBytes": 39666,
-      "nativeSha256": "5772ba2e4dd305520793ea5ee9bd999fe06732cb3cb42fb24755041239ac58b8",
+      "nativeSha256": "7e9717aa7be48b0c6448f985c1973280e22caf5ff6314651203de4d149ad4bc8",
       "officialSha256": "5cc3773362f32a081d4c80dd17636c6a759b78221253aeca504108efe2a34ed1"
     },
     {
@@ -220033,9 +220033,9 @@
       "sourceSha256": "6d4eb9e18dea0890ed7fd4c4a4f13c3bccac7485f34af9cd0e9139ffb021dd7a",
       "nativeFile": "parity_treeview_231_native.png",
       "officialFile": "parity_treeview_231_official.png",
-      "nativeBytes": 41514,
+      "nativeBytes": 39503,
       "officialBytes": 37682,
-      "nativeSha256": "52a1ef7b735a2386f0eb209a424851eb6baba322e0dd7b21c8190afcd835f4ab",
+      "nativeSha256": "b8c207f94e954979846c90b95802298a2bcb01be4e6e02ff092eb1a2d77c0b99",
       "officialSha256": "9be7114d49123edbd5d997ef101b39e36823f32c36673e5c51815622ec39061b"
     },
     {
@@ -220065,9 +220065,9 @@
       "sourceSha256": "37908795a818de6556f7c2d3eac59dc2a68ee6b7bee25ff7992f5f3863d48272",
       "nativeFile": "parity_treeview_232_native.png",
       "officialFile": "parity_treeview_232_official.png",
-      "nativeBytes": 34055,
+      "nativeBytes": 34179,
       "officialBytes": 32616,
-      "nativeSha256": "7a7a4ecb15af06b75301ec532f8729833d50ac93da60d72aa691755fcb53c6a9",
+      "nativeSha256": "5bb9aa2cc641807bb4bbeb8ec2e84edd1e52de7f7b062a5ad8a4abb52a9a1080",
       "officialSha256": "bac67ff3a9a7eadc5bc8dbb4edca2307a1972df6ec7d16a806ded19004a2cd2b"
     },
     {
@@ -220097,9 +220097,9 @@
       "sourceSha256": "d5c68bb13d1181b8a8150b8ed9f07d55a61e0be8662b56d93a088f5feefbb911",
       "nativeFile": "parity_treeview_233_native.png",
       "officialFile": "parity_treeview_233_official.png",
-      "nativeBytes": 46462,
+      "nativeBytes": 41556,
       "officialBytes": 40651,
-      "nativeSha256": "2e9ad26081e20bae1263b64a26034fa85f95fcfe3ee42df52954a450cae9f3ea",
+      "nativeSha256": "b5c80be18d79d304d5129bc3a24cc88dd1fc4060553f68a814ec7bf206857a60",
       "officialSha256": "f462191d59b32a1ae4bd7aa26b2fc60761d74d33bcb745f97420af752232a32b"
     },
     {
@@ -220128,9 +220128,9 @@
       "sourceSha256": "387d16e53cc8841278beb54f19224908deab1092db0ec64f6b7a2589771f08c5",
       "nativeFile": "parity_treeview_234_native.png",
       "officialFile": "parity_treeview_234_official.png",
-      "nativeBytes": 34113,
+      "nativeBytes": 33348,
       "officialBytes": 31474,
-      "nativeSha256": "c6333dd0e799d1f7115f116f1a280be3922eea67e52a86a661991994916f3020",
+      "nativeSha256": "e30aeb56a9435d968f7c322b3971ac7a55811dccd2437088bb3cb39a464b5fea",
       "officialSha256": "85e433af5b503476789cd3980f4c1a3781227b1054443234af5a0206a2354471"
     },
     {
@@ -220152,9 +220152,9 @@
       "sourceSha256": "2aef45557855a5ebb987ced9bc1575a9d72f6bb471066c734220a53ed8d92183",
       "nativeFile": "parity_treeview_235_native.png",
       "officialFile": "parity_treeview_235_official.png",
-      "nativeBytes": 52531,
+      "nativeBytes": 48887,
       "officialBytes": 47024,
-      "nativeSha256": "2ff6380bed01eb64c7e124f4037d608f716b35d231823c87975ff9f9c2b821c8",
+      "nativeSha256": "ed2987ac42e28b09b0a1c322141fbac329de7070b2d7f068261225799d15bdc4",
       "officialSha256": "5db588d0819fac5ddab8e39e13ba52e288d2d28de6eb6cca617a571fea6745c1"
     },
     {
@@ -220176,9 +220176,9 @@
       "sourceSha256": "be51cbf3836d906c4815455db07fc1c30068c35b487320a2bc1f1a3871d1aa5d",
       "nativeFile": "parity_treeview_236_native.png",
       "officialFile": "parity_treeview_236_official.png",
-      "nativeBytes": 48306,
+      "nativeBytes": 46322,
       "officialBytes": 43618,
-      "nativeSha256": "d17ad731dfd2934eb6dd7940e7ee3f12407c38176f436f43a0f6434ac07c6d6a",
+      "nativeSha256": "5ae163744256f98f838f97253b3745c1e677ccc5b847e340e5187b9e50ba740e",
       "officialSha256": "ecfe1c27e123d489c4b3e0ddc7d76b5ba076f9221b0339f6fe81257fecdfa939"
     },
     {
@@ -220200,9 +220200,9 @@
       "sourceSha256": "1e16368b22d03ac0d933fca8f9ada00fbe5afe196a6cb47f0be064a00e5f7ca0",
       "nativeFile": "parity_treeview_237_native.png",
       "officialFile": "parity_treeview_237_official.png",
-      "nativeBytes": 35576,
+      "nativeBytes": 34454,
       "officialBytes": 33568,
-      "nativeSha256": "7a5e138f167b829631664f1705f735f353a0caac4b9da8538e1a3f0fd7f6d80d",
+      "nativeSha256": "4da09a456bd7e88f2c645a75d1d4d41c37a75f9d88b20a7154e4c976be845afa",
       "officialSha256": "6b6ee6ec57359a49b9ca84d69318f99400b209ab006318a805e087d6021e8854"
     },
     {
@@ -220224,9 +220224,9 @@
       "sourceSha256": "a7749210460c9635a6d2d07468106516362b809e4414620ebd96594234e39dda",
       "nativeFile": "parity_treeview_238_native.png",
       "officialFile": "parity_treeview_238_official.png",
-      "nativeBytes": 43711,
+      "nativeBytes": 41998,
       "officialBytes": 38666,
-      "nativeSha256": "81f3320f9fd472c490d03b759e426978860abc17503363e908169a27cf161bf1",
+      "nativeSha256": "359760c724018e6be5385fcdd879d9b2b05f411354ce9a667a193789a5cfd154",
       "officialSha256": "dc59338f61d02c70d1aca0eaff439b9854445ff0edf73b8b27c3505fa208d276"
     },
     {
@@ -220248,9 +220248,9 @@
       "sourceSha256": "463685f4235707f98eb5fca05e384cd87697a0b47e69bad529a7bfd13e293278",
       "nativeFile": "parity_treeview_239_native.png",
       "officialFile": "parity_treeview_239_official.png",
-      "nativeBytes": 60596,
+      "nativeBytes": 55281,
       "officialBytes": 53398,
-      "nativeSha256": "70f1a6a57c9faedf53a1fd3fc7b3f63028124c9467df59983f57c516c56d35b5",
+      "nativeSha256": "dd7dfe2ec4f7ef1692e559c5e142794ca3076eb81cdec37a5f15041e3e656bd1",
       "officialSha256": "782a2b56da2b28b66ca7eb9afd22e28b2fb76a8eceaf4a7847456e45647cdf31"
     },
     {
@@ -220282,9 +220282,9 @@
       "sourceSha256": "8ae93f93f334b58fc723513718b2abf1ad6b22168f041cf212c0dc7d7acf749a",
       "nativeFile": "parity_treeview_240_native.png",
       "officialFile": "parity_treeview_240_official.png",
-      "nativeBytes": 33660,
+      "nativeBytes": 32491,
       "officialBytes": 31149,
-      "nativeSha256": "c5ab15dc3e083771a29f2ccda2334ea12be3df46ca06f44569a02f61805155cb",
+      "nativeSha256": "ebe0ee26747d79d37d39de81fb71e7dd6e9958917400775ab0fce5010539d886",
       "officialSha256": "3113dde966bbad02ec32959b5ef9a2e1a83803219a74a7f7c068695dd1276ad2"
     },
     {
@@ -220313,9 +220313,9 @@
       "sourceSha256": "9d1f99b81b298cde1616487c72e19d0ec3f66d290f2834fc740a7de702df4729",
       "nativeFile": "parity_treeview_241_native.png",
       "officialFile": "parity_treeview_241_official.png",
-      "nativeBytes": 34459,
+      "nativeBytes": 33594,
       "officialBytes": 32240,
-      "nativeSha256": "2565397e4dbd02221a4d9ba344547d455708d4a96678ffbd5529de452eb9394f",
+      "nativeSha256": "b26b8231e4632d47bcea9c6dbdc21d6d401e172aecc7ce47e71b1592bdc5ca3c",
       "officialSha256": "da9e1f9cde2658c1aa53d2fc516abb1081060d500dfdabc68d0928da4d2e50a9"
     },
     {
@@ -220344,9 +220344,9 @@
       "sourceSha256": "53b7f40c4bdbaa61cb3bc6a58fdbd0ba35d70cfabd140eb74c48ccae89ce021c",
       "nativeFile": "parity_treeview_242_native.png",
       "officialFile": "parity_treeview_242_official.png",
-      "nativeBytes": 34408,
+      "nativeBytes": 33762,
       "officialBytes": 31355,
-      "nativeSha256": "18e0b606dc61f053996f1fdcc1f369e69a317f0be7b54c955c34f6ad7e750c7b",
+      "nativeSha256": "fbd2cc76d2ef67583268c7466aa2ee6d6485c529cf1f6f30115c1eb8bc535c82",
       "officialSha256": "e4b933f82807118132c0049cc426ac371d18f116c00bb58ae39c4b0fe66923b5"
     },
     {
@@ -220374,9 +220374,9 @@
       "sourceSha256": "d668069a2f0a7ccc055572eb9799f55ec8ede2d73f7f13bafe7502ba64ba4792",
       "nativeFile": "parity_treeview_243_native.png",
       "officialFile": "parity_treeview_243_official.png",
-      "nativeBytes": 43486,
+      "nativeBytes": 41876,
       "officialBytes": 38342,
-      "nativeSha256": "8d8c80bab645f401f27d9cf0728b0fec008b32efbc3dc9bc47995d760e05ff91",
+      "nativeSha256": "0f87b29cd26bf4abdb946e3ad7f563510f7dffaa9244dc6e3a56b97882d97d1c",
       "officialSha256": "640c438e0fc2808386dceec0e7c2c72ca7296a72227c0462a49cb5b120546c22"
     },
     {
@@ -220406,9 +220406,9 @@
       "sourceSha256": "d800fec19ad4b078c2b265d9de3bd88a39f07688735f82a00ee151402b48e8ef",
       "nativeFile": "parity_treeview_244_native.png",
       "officialFile": "parity_treeview_244_official.png",
-      "nativeBytes": 41214,
+      "nativeBytes": 39910,
       "officialBytes": 38331,
-      "nativeSha256": "776c7bd19e003ffd09a33af7d4d920a2d3100b4b6d787f2faf60dba52c3a1627",
+      "nativeSha256": "f26127001341c302f154687e1104ee04fd39f67e4c7cd50b4d6a385975b45717",
       "officialSha256": "3202a8b1f52a6a9b20d976040418318068b5c66082bf0e2ab8e459ebdb8d85f1"
     },
     {
@@ -220438,9 +220438,9 @@
       "sourceSha256": "a701a88ba7d4b7f5629e151a61f34f2403a4aa54be014f054fe79ab09a6a2d68",
       "nativeFile": "parity_treeview_245_native.png",
       "officialFile": "parity_treeview_245_official.png",
-      "nativeBytes": 34613,
+      "nativeBytes": 34114,
       "officialBytes": 32774,
-      "nativeSha256": "ffb853d16fa0498410f6bc674073852e256ffb537900d732e7c4dbe25e01472f",
+      "nativeSha256": "0519e23aab597f825a3760b9f5dce07b59467a6e9b52e61a159d58b10de2ad41",
       "officialSha256": "1f537a165e18ad995c2a6004ef0fbcfd073843f2d5c4e01e6dc39fca0b578264"
     },
     {
@@ -220470,9 +220470,9 @@
       "sourceSha256": "98eeed934f7848293c7178c8a74f3063462d18c78173eed21f8a7447468a949d",
       "nativeFile": "parity_treeview_246_native.png",
       "officialFile": "parity_treeview_246_official.png",
-      "nativeBytes": 45187,
+      "nativeBytes": 42294,
       "officialBytes": 40337,
-      "nativeSha256": "e1697318ac57ed5fa0b5297c9ceb1b752c4cd3c13369340f84282dd6dff5f96b",
+      "nativeSha256": "0b05e5f1fb9688708274cb8470e7f0e3310d4ee59f710ba44310e475177119e5",
       "officialSha256": "dd6c81b85df374d2f666f7a798f0b4b2a13c7edad21d145d51eceb716406acc0"
     },
     {
@@ -220501,9 +220501,9 @@
       "sourceSha256": "9408abd5c1682a316f371199c99d142a05b0d3abca8eee3d46a37c4b7ab646ef",
       "nativeFile": "parity_treeview_247_native.png",
       "officialFile": "parity_treeview_247_official.png",
-      "nativeBytes": 33869,
+      "nativeBytes": 33274,
       "officialBytes": 31991,
-      "nativeSha256": "ec03abbd35ee220502f50f9b975ca368ee00b3e83437cd6d9055405a2d13fe81",
+      "nativeSha256": "8aa50d234512a45435e535914e2cd385e2c59d2f216af7d65518dda0914d9d9e",
       "officialSha256": "fc69e55408cae8546f7a95b1adad7e6c833c255509f2f7edc3c3e8b9deabde53"
     },
     {
@@ -220525,9 +220525,9 @@
       "sourceSha256": "853e027c3bf5ad3dbd3394bb7970479fe7bb9bc8e3c463ceff12939a9700ce0b",
       "nativeFile": "parity_treeview_248_native.png",
       "officialFile": "parity_treeview_248_official.png",
-      "nativeBytes": 50689,
+      "nativeBytes": 48258,
       "officialBytes": 44408,
-      "nativeSha256": "8b937ea1272dcc6e763db04a86b944ff517e3ba01f867f124feeda13517e0883",
+      "nativeSha256": "86047b949eac2604ed8b374fd3e010e0d99842b1a5ebe82e69c9a95ba2c9a323",
       "officialSha256": "343654f85233e14c89983ab7b4f5ea55bf9c717394314dd79ab189939ebf454b"
     },
     {
@@ -220549,9 +220549,9 @@
       "sourceSha256": "46b3d3499c3d52fb95b30859cbead933310f46dc8db57252bdc8f83679592d81",
       "nativeFile": "parity_treeview_249_native.png",
       "officialFile": "parity_treeview_249_official.png",
-      "nativeBytes": 46244,
+      "nativeBytes": 44724,
       "officialBytes": 42401,
-      "nativeSha256": "e2180721156a234d7bac6799eedf54f0d8d1dfaad1491ed0f82c7c35f323036a",
+      "nativeSha256": "155a8ee544de082266e72fb00b8d61e655d37a36c0ef2283e99538443d158b1f",
       "officialSha256": "cf98b6105d339f3966ba5060735d88cd3ba2fa845adf94bd6c48a45daf6618e2"
     },
     {
@@ -220573,9 +220573,9 @@
       "sourceSha256": "f6db6010860fbf252663c829a12965c6bae3f4cba295264f6f3f4e6d06594b38",
       "nativeFile": "parity_treeview_250_native.png",
       "officialFile": "parity_treeview_250_official.png",
-      "nativeBytes": 34805,
+      "nativeBytes": 33321,
       "officialBytes": 33660,
-      "nativeSha256": "894ac3292d302345866f54216ef81068bc87fc6c4fc8854f45058eac68d443c2",
+      "nativeSha256": "879d05a5aad2ded447f6c9b237b9d85803e9f82d31bcfdd1e820d5ef12fa3808",
       "officialSha256": "1871526cb4694e7a7e432fe8c66e08068fe7cf1f6f9455b1d1c46e1631d7318a"
     },
     {
@@ -220597,9 +220597,9 @@
       "sourceSha256": "0e8874f331f5e24d9ef82c55d313ca542baf59df800d97d16ee7e5db9968c130",
       "nativeFile": "parity_treeview_251_native.png",
       "officialFile": "parity_treeview_251_official.png",
-      "nativeBytes": 39624,
+      "nativeBytes": 39116,
       "officialBytes": 37529,
-      "nativeSha256": "e9256616afe7fc17ad9fbfa381a5cb69f01c94ef2b8e97debd20652b4fd3d618",
+      "nativeSha256": "b98783722edb1cc8944663f7eb3a963727e3014557c64fe34cffcc6234a9c331",
       "officialSha256": "c6a43c7074f9e5a8891def0cfb1c57c5ca0d5a85e20f7507cafd679cbf0bec56"
     },
     {
@@ -220621,9 +220621,9 @@
       "sourceSha256": "a7bd1b1f7b5fcaebe8cc7f166a9ad2079818228c090315b738fe92b55e49a0cf",
       "nativeFile": "parity_treeview_252_native.png",
       "officialFile": "parity_treeview_252_official.png",
-      "nativeBytes": 57807,
+      "nativeBytes": 51510,
       "officialBytes": 50154,
-      "nativeSha256": "73a301f548b2d082e89e0151ab7d0a6c5f86e0ea26827d88f7dd57a75fe53795",
+      "nativeSha256": "6ac5c0c2fc47ea20a7b373ca3c6bb9a76ec026e62f27eab9dacef9160e74fdf3",
       "officialSha256": "51b331021a90f9bff9ac128c1abe071f43079dd7b6841bd8e4a599c871268831"
     },
     {
@@ -220655,9 +220655,9 @@
       "sourceSha256": "9afb0d36345d82edb87d9f822ce5786a5b173cd5d9161728267bd576bed32be7",
       "nativeFile": "parity_treeview_253_native.png",
       "officialFile": "parity_treeview_253_official.png",
-      "nativeBytes": 32889,
+      "nativeBytes": 30951,
       "officialBytes": 30503,
-      "nativeSha256": "0cca236924dd3b65b49959b145b4f3bf00f5c7db7a6eb2ab5af374e6af2f18ec",
+      "nativeSha256": "735726284a2ef4d94e07dca317b505188daa8c4674e3694e38494adaa0a45393",
       "officialSha256": "fd7b310db0760064947f5b5147a00b34670045bf48bdae62bc1e250d47cb73cc"
     },
     {
@@ -220686,9 +220686,9 @@
       "sourceSha256": "001486c717b88fe448d1d7f65e32665a372342aad79a702a88f3ed0279d71f31",
       "nativeFile": "parity_treeview_254_native.png",
       "officialFile": "parity_treeview_254_official.png",
-      "nativeBytes": 34284,
+      "nativeBytes": 32508,
       "officialBytes": 31715,
-      "nativeSha256": "154250fe9cf3fa1c171ecfdb72a5e6da6df8130910d1e86a5fa0bc469f0266e3",
+      "nativeSha256": "68f443e1c1901bb8ad9a1fe6683fcc9dd439d3b9bc3eed033b75283ef650f0d9",
       "officialSha256": "3a4e519d052284d8f1f056dccaa272ed98f66a8ee2b9bc22134534dad0b796de"
     },
     {
@@ -220717,9 +220717,9 @@
       "sourceSha256": "62bb8574a126ba5879ee60a18d1913b6788a408746ad153235f3bf7b595779fc",
       "nativeFile": "parity_treeview_255_native.png",
       "officialFile": "parity_treeview_255_official.png",
-      "nativeBytes": 32977,
+      "nativeBytes": 31763,
       "officialBytes": 31402,
-      "nativeSha256": "951993c1e8bcd6a0266a107c38679b3d4681dcba7af00aaa2b122119df656a96",
+      "nativeSha256": "ffd05ee0e09b7e0a6c40157fbe0b8cf0c69f9482c18e4ff10541d3c5a3dbd91e",
       "officialSha256": "41234d1e2756035b5ac6f3d0311bfcaa673e3e8962f857b0641fde4d97593cd2"
     },
     {
@@ -220747,9 +220747,9 @@
       "sourceSha256": "5499d367c67033f1622c3d5819d61f4da7454d2b6bea74db36949c6d2cd897b2",
       "nativeFile": "parity_treeview_256_native.png",
       "officialFile": "parity_treeview_256_official.png",
-      "nativeBytes": 41131,
+      "nativeBytes": 38268,
       "officialBytes": 38726,
-      "nativeSha256": "d1a5ef6e01d13b62569b7730caf701a31b8a28cd243c9d1c23a007b97d253ee9",
+      "nativeSha256": "3b0a1a2a0cd99b0a56318c8a6227990dc260e2bd1907e57b83f6af1ffbf72968",
       "officialSha256": "953ff170ebfeff63dd90769fc3a72ef79382f53eaca07faea3829d3c484435fd"
     }
   ]

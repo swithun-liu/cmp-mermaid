@@ -619,11 +619,11 @@ and all 16 matrix contact sheets were manually reviewed.
 
 The production geometry and detail audits passed all 13 pairs with
 `13 pass / 0 review / 0 fail`. Width, height, and foreground-ink ratios were
-`1.049-1.279`, `1.101-1.229`, and `1.089-1.411`.
+`1.011-1.169`, `0.975-1.062`, and `0.930-1.050`.
 
 The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `1.033-1.141`,
-`1.006-1.138`, and `0.954-1.229`. The raw
+`256 pass / 0 review / 0 fail`; matrix ratios were `1.011-1.085`,
+`0.939-1.031`, and `0.852-1.030`. The raw
 [production detail](assets/stability-report/treeview-production-detail.json),
 [production geometry](assets/stability-report/treeview-production-geometry.json),
 [matrix detail](assets/stability-report/treeview-visual-parity-detail.json),

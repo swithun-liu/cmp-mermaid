@@ -22,7 +22,7 @@ change in a later upstream release.
 | Database semantics | Supported | Synthetic `/` root, stack-based hierarchy construction, metadata, sanitization, and typed malformed-input failures |
 | Annotations | Supported | `:::class`, `:::highlight`, `icon(name)`, `icon(none)`, and `## description` |
 | Icon resolution | Supported | Explicit icons, suppression, exact filename maps, case-insensitive extension maps, default file/folder icons, and external `SceneAsset` references |
-| Layout and paths | Supported | Preorder rows, indentation, horizontal/vertical connectors, aligned descriptions, directory emphasis, and full-row highlights |
+| Layout and paths | Supported | Preorder rows, indentation, full root and child connectors, aligned descriptions, directory emphasis, full-row highlights, and normalized reference viewports |
 | Configuration | Supported | Responsive sizing, row indent, horizontal/vertical padding, line thickness, icon visibility, default icon pack, filename maps, extension maps, and typed validation |
 | Themes | Supported | TreeView-scoped label, line, icon, description, and highlight colors plus label font size |
 
@@ -39,10 +39,10 @@ change in a later upstream release.
 - 256 deterministic same-source matrix cases exercise 13 structural seeds and
   visible text and layout-pressure profiles.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
-  were `1.049-1.279`, `1.101-1.229`, and `1.089-1.411`.
+  were `1.011-1.169`, `0.975-1.062`, and `0.930-1.050`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
-- Matrix geometry passed `256/256`. Ratios were `1.033-1.141`,
-  `1.006-1.138`, and `0.954-1.229`.
+- Matrix geometry passed `256/256`. Ratios were `1.011-1.085`,
+  `0.939-1.031`, and `0.852-1.030`.
 - Matrix detail produced `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved hierarchy, connector, icon, highlight, description,
