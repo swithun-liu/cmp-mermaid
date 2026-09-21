@@ -199,20 +199,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Install deterministic CJK audit font
+      - name: Install deterministic audit fonts
         shell: bash
         run: |
           set -euo pipefail
           font_dir="$HOME/.local/share/fonts"
-          mkdir -p "$font_dir"
+          fontconfig_dir="$HOME/.config/fontconfig/conf.d"
+          mkdir -p "$font_dir" "$fontconfig_dir"
           cp \
+            mermaid-compose/src/commonMain/composeResources/font/arimo_bold.ttf \
+            mermaid-compose/src/commonMain/composeResources/font/arimo_bolditalic.ttf \
+            mermaid-compose/src/commonMain/composeResources/font/arimo_italic.ttf \
+            mermaid-compose/src/commonMain/composeResources/font/arimo_regular.ttf \
             mermaid-compose/src/commonMain/composeResources/font/droid_sans_fallback.ttf \
             "$font_dir/"
+          cp \
+            .github/fontconfig/visual-audit-fonts.conf \
+            "$fontconfig_dir/99-cmp-mermaid-visual-audit-fonts.conf"
           fc-cache -f "$font_dir"
-          fc-match -s -f '%{family}\n' ':charset=6587' |
-            grep -F 'Droid Sans Fallback'
-          fc-match -s -f '%{family}\n' ':charset=C11C' |
-            grep -F 'Droid Sans Fallback'
+          test "$(fc-match -f '%{family}\n' 'Trebuchet MS')" = "Arimo"
+          test "$(fc-match -f '%{family}|%{style}\n' 'Trebuchet MS:style=Bold')" = "Arimo|Bold"
+          test "$(fc-match -f '%{family}\n' 'Trebuchet MS:charset=6587')" = "Droid Sans Fallback"
+          test "$(fc-match -f '%{family}\n' 'Trebuchet MS:charset=C11C')" = "Droid Sans Fallback"
 
       - name: Set up Java 17
         uses: actions/setup-java@v6
