@@ -3126,7 +3126,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
             ---
             config:
               sankey:
-                prefix: "$"
+                prefix: "${'$'}"
                 suffix: "M"
                 labelStyle: outlined
                 linkColor: source
@@ -3288,7 +3288,7 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
                 borderWidth: 2
                 valueFontSize: 13
                 labelFontSize: 15
-                valueFormat: '$0,0'
+                valueFormat: '${'$'}0,0'
             ---
             treemap
             title Annual budget
@@ -4261,6 +4261,141 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
               tokyo:R --> L:seoul
               seoul:R -[承認]-> L:sao
               align row tokyo seoul sao
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_context_ecosystem",
+        diagramId = "c4",
+        title = "Partner ordering ecosystem",
+        scenario = "Customers, operators, and partner systems surround the central ordering platform.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            C4Context
+              title Partner ordering ecosystem
+              Person(customer, "Customer", "Creates and tracks orders")
+              Person_Ext(operator, "Support Operator", "Resolves exceptions")
+              System(platform, "Ordering Platform", "Coordinates fulfilment")
+              System_Ext(payment, "Payment Network", "Authorizes transactions")
+              SystemQueue_Ext(carrier, "Carrier Events", "Publishes delivery updates")
+              Rel(customer, platform, "Places orders")
+              Rel(operator, platform, "Investigates orders")
+              Rel(platform, payment, "Authorizes payment", "HTTPS")
+              Rel(carrier, platform, "Publishes status", "Events")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_container_eventing",
+        diagramId = "c4",
+        title = "Event-driven containers",
+        scenario = "A bounded application routes commands and events through storage and queues.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            C4Container
+              Person(user, "Operations User")
+              System_Boundary(ops, "Operations Platform") {
+                Container(portal, "Operations Portal", "Kotlin/Wasm")
+                Container(command, "Command API", "Kotlin/JVM")
+                ContainerQueue(events, "Operations Events", "Kafka")
+                ContainerDb(store, "Operations Store", "PostgreSQL")
+              }
+              Rel(user, portal, "Uses", "HTTPS")
+              Rel(portal, command, "Submits commands", "JSON")
+              Rel(command, store, "Persists state", "SQL")
+              Rel(command, events, "Publishes changes", "Events")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_component_policy",
+        diagramId = "c4",
+        title = "Policy evaluation components",
+        scenario = "Styled components collaborate inside a policy service boundary.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            C4Component
+              Container_Boundary(policy, "Policy Service") {
+                Component(endpoint, "Policy Endpoint", "HTTP")
+                Component(evaluator, "Policy Evaluator", "Kotlin")
+                ComponentDb(rules, "Rule Repository", "SQL")
+                ComponentQueue(audit, "Audit Publisher", "Kafka")
+              }
+              Rel(endpoint, evaluator, "Evaluates request")
+              Rel(evaluator, rules, "Loads rules")
+              Rel(evaluator, audit, "Publishes decision")
+              UpdateElementStyle(evaluator, ${'$'}bgColor="#1d4ed8", ${'$'}fontColor="#ffffff", ${'$'}borderColor="#1e3a8a", ${'$'}shape="component")
+              UpdateRelStyle(evaluator, audit, ${'$'}textColor="#9a3412", ${'$'}lineColor="#ea580c", ${'$'}offsetX="8", ${'$'}offsetY="-10")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_dynamic_recovery",
+        diagramId = "c4",
+        title = "Checkout recovery sequence",
+        scenario = "A numbered dynamic flow shows a failed authorization and compensating response.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            C4Dynamic
+              Person(customer, "Customer")
+              Container(checkout, "Checkout UI", "Kotlin/Wasm")
+              Container(orchestrator, "Checkout Orchestrator", "Kotlin/JVM")
+              System_Ext(payment, "Payment Provider")
+              ContainerQueue(events, "Order Events", "Kafka")
+              Rel(customer, checkout, "Confirms purchase")
+              Rel(checkout, orchestrator, "Starts checkout")
+              Rel(orchestrator, payment, "Requests authorization")
+              Rel_Back(payment, orchestrator, "Declines payment")
+              Rel(orchestrator, events, "Publishes failure")
+              Rel(orchestrator, checkout, "Returns recovery options")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_deployment_multiregion",
+        diagramId = "c4",
+        title = "Configured multi-region deployment",
+        scenario = "Nested deployment nodes, metadata, multilingual labels, and scoped sizing share one view.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Multi-region deployment
+            config:
+              c4:
+                diagramMarginX: 42
+                diagramMarginY: 18
+                c4ShapeInRow: 2
+                c4BoundaryInRow: 2
+                wrap: true
+                containerFontSize: 15
+            ---
+            C4Deployment
+              accTitle: Multi-region deployment
+              accDescr: Traffic reaches Tokyo and Seoul before data replication completes.
+              Deployment_Node(cloud, "Global Cloud", "Managed infrastructure") {
+                Node_L(tokyo, "東京 Region", "Linux") {
+                  Container(apiTokyo, "受付 API", "Kotlin/JVM")
+                }
+                Node_R(seoul, "서울 Region", "Linux") {
+                  Container(apiSeoul, "검토 API", "Kotlin/JVM")
+                }
+                Node(data, "Data Plane", "PostgreSQL") {
+                  ContainerDb(primary, "São Paulo Primary", "PostgreSQL")
+                }
+              }
+              UpdateLayoutConfig(${'$'}c4ShapeInRow="2", ${'$'}c4BoundaryInRow="2")
+              Rel(apiTokyo, primary, "Replicates")
+              Rel(apiSeoul, primary, "Replicates")
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -7524,7 +7659,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
             ---
             config:
               sankey:
-                prefix: "$"
+                prefix: "${'$'}"
                 suffix: "M"
                 labelStyle: outlined
                 linkColor: source
@@ -7686,7 +7821,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
                 borderWidth: 2
                 valueFontSize: 13
                 labelFontSize: 15
-                valueFormat: '$0,0'
+                valueFormat: '${'$'}0,0'
             ---
             treemap
             title Annual budget
@@ -8664,6 +8799,141 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_c4_context_ecosystem",
+        diagramId = "c4",
+        title = "Partner ordering ecosystem",
+        scenario = "Customers, operators, and partner systems surround the central ordering platform.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            C4Context
+              title Partner ordering ecosystem
+              Person(customer, "Customer", "Creates and tracks orders")
+              Person_Ext(operator, "Support Operator", "Resolves exceptions")
+              System(platform, "Ordering Platform", "Coordinates fulfilment")
+              System_Ext(payment, "Payment Network", "Authorizes transactions")
+              SystemQueue_Ext(carrier, "Carrier Events", "Publishes delivery updates")
+              Rel(customer, platform, "Places orders")
+              Rel(operator, platform, "Investigates orders")
+              Rel(platform, payment, "Authorizes payment", "HTTPS")
+              Rel(carrier, platform, "Publishes status", "Events")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_container_eventing",
+        diagramId = "c4",
+        title = "Event-driven containers",
+        scenario = "A bounded application routes commands and events through storage and queues.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            C4Container
+              Person(user, "Operations User")
+              System_Boundary(ops, "Operations Platform") {
+                Container(portal, "Operations Portal", "Kotlin/Wasm")
+                Container(command, "Command API", "Kotlin/JVM")
+                ContainerQueue(events, "Operations Events", "Kafka")
+                ContainerDb(store, "Operations Store", "PostgreSQL")
+              }
+              Rel(user, portal, "Uses", "HTTPS")
+              Rel(portal, command, "Submits commands", "JSON")
+              Rel(command, store, "Persists state", "SQL")
+              Rel(command, events, "Publishes changes", "Events")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_component_policy",
+        diagramId = "c4",
+        title = "Policy evaluation components",
+        scenario = "Styled components collaborate inside a policy service boundary.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            C4Component
+              Container_Boundary(policy, "Policy Service") {
+                Component(endpoint, "Policy Endpoint", "HTTP")
+                Component(evaluator, "Policy Evaluator", "Kotlin")
+                ComponentDb(rules, "Rule Repository", "SQL")
+                ComponentQueue(audit, "Audit Publisher", "Kafka")
+              }
+              Rel(endpoint, evaluator, "Evaluates request")
+              Rel(evaluator, rules, "Loads rules")
+              Rel(evaluator, audit, "Publishes decision")
+              UpdateElementStyle(evaluator, ${'$'}bgColor="#1d4ed8", ${'$'}fontColor="#ffffff", ${'$'}borderColor="#1e3a8a", ${'$'}shape="component")
+              UpdateRelStyle(evaluator, audit, ${'$'}textColor="#9a3412", ${'$'}lineColor="#ea580c", ${'$'}offsetX="8", ${'$'}offsetY="-10")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_dynamic_recovery",
+        diagramId = "c4",
+        title = "Checkout recovery sequence",
+        scenario = "A numbered dynamic flow shows a failed authorization and compensating response.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            C4Dynamic
+              Person(customer, "Customer")
+              Container(checkout, "Checkout UI", "Kotlin/Wasm")
+              Container(orchestrator, "Checkout Orchestrator", "Kotlin/JVM")
+              System_Ext(payment, "Payment Provider")
+              ContainerQueue(events, "Order Events", "Kafka")
+              Rel(customer, checkout, "Confirms purchase")
+              Rel(checkout, orchestrator, "Starts checkout")
+              Rel(orchestrator, payment, "Requests authorization")
+              Rel_Back(payment, orchestrator, "Declines payment")
+              Rel(orchestrator, events, "Publishes failure")
+              Rel(orchestrator, checkout, "Returns recovery options")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_c4_deployment_multiregion",
+        diagramId = "c4",
+        title = "Configured multi-region deployment",
+        scenario = "Nested deployment nodes, metadata, multilingual labels, and scoped sizing share one view.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Multi-region deployment
+            config:
+              c4:
+                diagramMarginX: 42
+                diagramMarginY: 18
+                c4ShapeInRow: 2
+                c4BoundaryInRow: 2
+                wrap: true
+                containerFontSize: 15
+            ---
+            C4Deployment
+              accTitle: Multi-region deployment
+              accDescr: Traffic reaches Tokyo and Seoul before data replication completes.
+              Deployment_Node(cloud, "Global Cloud", "Managed infrastructure") {
+                Node_L(tokyo, "東京 Region", "Linux") {
+                  Container(apiTokyo, "受付 API", "Kotlin/JVM")
+                }
+                Node_R(seoul, "서울 Region", "Linux") {
+                  Container(apiSeoul, "검토 API", "Kotlin/JVM")
+                }
+                Node(data, "Data Plane", "PostgreSQL") {
+                  ContainerDb(primary, "São Paulo Primary", "PostgreSQL")
+                }
+              }
+              UpdateLayoutConfig(${'$'}c4ShapeInRow="2", ${'$'}c4BoundaryInRow="2")
+              Rel(apiTokyo, primary, "Replicates")
+              Rel(apiSeoul, primary, "Replicates")
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_swimlanes_support_escalation",
         diagramId = "swimlanes",
         title = "Support escalation",
@@ -9383,6 +9653,192 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         """.trimIndent(),
         expectedTexts = listOf("受付", "검토", "São Paulo", "承認"),
         features = setOf("accessibility", "unicode", "groups", "built-in-icons"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_context_landscape",
+        diagramId = "c4",
+        title = "Ordering system context",
+        scenario = "People and external software systems exchange requests across a system context.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            C4Context
+              title Ordering system context
+              Person(customer, "Customer", "Places orders")
+              System(ordering, "Ordering System", "Processes orders")
+              System_Ext(payment, "Payment Provider", "Authorizes payments")
+              Rel(customer, ordering, "Places orders")
+              Rel(ordering, payment, "Requests authorization", "HTTPS")
+        """.trimIndent(),
+        expectedTexts = listOf("Customer", "Ordering System", "Payment Provider", "Places orders"),
+        features = setOf("c4-context-header", "people", "systems", "external-elements", "relationships"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_container_storage",
+        diagramId = "c4",
+        title = "Container storage topology",
+        scenario = "Application, database, queue, and external containers share one system boundary.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            C4Container
+              System_Boundary(platform, "Order Platform") {
+                Container(web, "Web Application", "Kotlin/Wasm", "Customer interface")
+                ContainerDb(store, "Order Store", "PostgreSQL", "Persists orders")
+                ContainerQueue(events, "Event Queue", "Kafka", "Publishes order events")
+                Container_Ext(notify, "Notification API", "HTTPS", "Sends updates")
+              }
+              Rel_D(web, store, "Reads and writes", "SQL")
+              Rel_R(web, events, "Publishes", "Events")
+              Rel_L(events, notify, "Delivers", "HTTPS")
+        """.trimIndent(),
+        expectedTexts = listOf("Web Application", "Order Store", "Event Queue", "Notification API"),
+        features = setOf("c4-container-header", "boundaries", "database-shapes", "queue-shapes", "external-elements", "directional-relationships"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_component_boundaries",
+        diagramId = "c4",
+        title = "Nested component boundaries",
+        scenario = "Components are grouped inside nested system and container boundaries.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            C4Component
+              System_Boundary(system, "Ordering System") {
+                Container_Boundary(api, "Order API") {
+                  Component(validator, "Validator", "Kotlin", "Checks order input")
+                  ComponentDb(repository, "Repository", "SQL", "Stores aggregate state")
+                  ComponentQueue(outbox, "Outbox", "Kafka", "Publishes domain events")
+                }
+              }
+              Rel(validator, repository, "Persists")
+              Rel(repository, outbox, "Emits")
+              UpdateElementStyle(validator, ${'$'}bgColor="#0f766e", ${'$'}fontColor="#ffffff", ${'$'}borderColor="#115e59", ${'$'}shape="component")
+        """.trimIndent(),
+        expectedTexts = listOf("Order API", "Validator", "Repository", "Outbox"),
+        features = setOf("c4-component-header", "nested-boundaries", "database-shapes", "queue-shapes", "element-styles"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_dynamic_checkout",
+        diagramId = "c4",
+        title = "Dynamic checkout interaction",
+        scenario = "A dynamic view numbers the checkout request and response path in source order.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            C4Dynamic
+              Person(customer, "Customer")
+              Container(web, "Checkout UI", "Kotlin/Wasm")
+              Container(api, "Order API", "Kotlin/JVM")
+              ContainerDb(store, "Order Store", "PostgreSQL")
+              Rel(customer, web, "Submits cart")
+              Rel(web, api, "Creates order")
+              Rel(api, store, "Persists order")
+              BiRel(api, web, "Returns receipt")
+              Rel(web, customer, "Shows confirmation")
+        """.trimIndent(),
+        expectedTexts = listOf("Checkout UI", "Order API", "Submits cart", "Returns receipt"),
+        features = setOf("c4-dynamic-header", "dynamic-indexes", "people", "relationships", "bidirectional-relationships"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_deployment_zones",
+        diagramId = "c4",
+        title = "Multi-zone deployment",
+        scenario = "Nested deployment nodes place application containers across two zones.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            C4Deployment
+              Deployment_Node(region, "Cloud Region", "Managed infrastructure") {
+                Node_L(primary, "Primary Zone", "Linux") {
+                  Container(apiA, "API A", "Kotlin/JVM")
+                }
+                Node_R(secondary, "Secondary Zone", "Linux") {
+                  Container(apiB, "API B", "Kotlin/JVM")
+                }
+                Node(databaseNode, "Database Node", "PostgreSQL") {
+                  ContainerDb(database, "Orders Cluster", "PostgreSQL")
+                }
+              }
+              Rel(apiA, database, "Reads and writes")
+              Rel(apiB, database, "Reads and writes")
+        """.trimIndent(),
+        expectedTexts = listOf("Cloud Region", "Primary Zone", "Secondary Zone", "Orders Cluster"),
+        features = setOf("c4-deployment-header", "deployment-nodes", "nested-boundaries", "database-shapes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_relationship_contracts",
+        diagramId = "c4",
+        title = "Relationship contracts",
+        scenario = "Directional, reverse, bidirectional, and styled relationships share one view.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            C4Context
+              Person(client, "Client")
+              System(gateway, "Gateway")
+              SystemQueue(cache, "Cache Queue")
+              SystemDb(database, "Database")
+              Rel_Right(client, gateway, "Calls")
+              Rel_Down(gateway, cache, "cached read")
+              BiRel(cache, database, "Synchronizes")
+              Rel_Back(database, gateway, "Invalidates")
+              UpdateRelStyle(gateway, cache, ${'$'}textColor="#7c2d12", ${'$'}lineColor="#ea580c", ${'$'}offsetX="-12", ${'$'}offsetY="16")
+        """.trimIndent(),
+        expectedTexts = listOf("Client", "Gateway", "Cache", "Database", "cached read"),
+        features = setOf("relationships", "directional-relationships", "bidirectional-relationships", "back-relationships", "relationship-styles"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_configured_grid",
+        diagramId = "c4",
+        title = "Configured C4 grid",
+        scenario = "Frontmatter and source layout controls configure sizing, wrapping, and row counts.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            config:
+              c4:
+                diagramMarginX: 36
+                diagramMarginY: 18
+                c4ShapeMargin: 42
+                c4ShapePadding: 16
+                c4ShapeInRow: 2
+                wrap: true
+                personFontSize: 16
+                system_bg_color: "#155e75"
+            ---
+            C4Container
+              Container(api, "Configured API", ${'$'}techn="Kotlin/JVM", ${'$'}descr="Coordinates requests")
+              ContainerDb(store, "Configured Store", ${'$'}techn="PostgreSQL", ${'$'}tags="primary")
+              ContainerQueue(queue, "Configured Queue", ${'$'}techn="Kafka", ${'$'}link="https://example.com/queue")
+              UpdateLayoutConfig(${'$'}c4ShapeInRow="2", ${'$'}c4BoundaryInRow="1")
+              Rel(api, store, "Stores")
+              Rel(api, queue, "Publishes")
+        """.trimIndent(),
+        expectedTexts = listOf("Configured API", "Configured Store", "Configured Queue"),
+        features = setOf("frontmatter-config", "layout-config", "named-attributes", "database-shapes", "queue-shapes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_c4_accessible_regional",
+        diagramId = "c4",
+        title = "Accessible regional systems",
+        scenario = "Comments, accessibility metadata, named attributes, and multilingual labels coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            C4Context
+              %% Regional support route
+              accTitle: Regional support systems
+              accDescr: Requests move from Tokyo through Seoul to Sao Paulo.
+              Person(tokyo, "受付", ${'$'}descr="東京 customer", ${'$'}tags="regional")
+              System(seoul, "서울 검토", ${'$'}descr="Validates requests")
+              System_Ext(sao, "São Paulo", ${'$'}descr="Completes 承認")
+              Rel(tokyo, seoul, "Requests 검증")
+              Rel(seoul, sao, "Requests 承認")
+        """.trimIndent(),
+        expectedTexts = listOf("受付", "서울 검토", "São Paulo", "承認"),
+        features = setOf("accessibility", "unicode", "comments", "named-attributes", "people", "systems"),
     ),
     StabilityCorpusCase(
         id = "prod_xychart_mixed_vertical_api_capacity",
@@ -12904,7 +13360,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
             config:
               sankey:
                 nodeAlignment: center
-                prefix: "$"
+                prefix: "${'$'}"
                 suffix: "k"
             ---
             sankey
@@ -13129,7 +13585,7 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
             ---
             config:
               treemap:
-                valueFormat: '$0,0'
+                valueFormat: '${'$'}0,0'
             ---
             treemap-beta
             title Annual budget
@@ -14325,6 +14781,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "flowchart",
             "swimlanes",
             "architecture",
+            "c4",
             "xychart",
             "quadrant",
             "timeline",
@@ -14399,6 +14856,10 @@ private fun addVisualParityVariation(
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "swimlanes" -> appendFlowchartEvidence(source, evidenceId, label)
     "architecture" -> replaceArchitectureVisualParityServiceIcon(source, label)
+    "c4" -> "${source.trimEnd()}\n" +
+        "  Person($evidenceId, " +
+        "\"${escapeQuotedVisualParityLabel(label)}\", " +
+        "\"Visual parity evidence\")\n"
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0

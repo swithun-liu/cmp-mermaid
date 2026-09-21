@@ -238,6 +238,37 @@ data class MermaidArchitectureOptions(
     val seed: Float = 1f,
 )
 
+data class MermaidC4ElementOptions(
+    val fontSize: Float = 14f,
+    val fontFamily: String = "\"Open Sans\", sans-serif",
+    val fontWeight: String = "normal",
+    val background: SceneColor? = null,
+    val border: SceneColor? = null,
+)
+
+data class MermaidC4Options(
+    val diagramMarginX: Float = 50f,
+    val diagramMarginY: Float = 10f,
+    val c4ShapeMargin: Float = 50f,
+    val c4ShapePadding: Float = 20f,
+    val width: Float = 216f,
+    val height: Float = 60f,
+    val boxMargin: Float = 10f,
+    val useMaxWidth: Boolean = true,
+    val c4ShapeInRow: Int = 4,
+    val nextLinePaddingX: Float = 0f,
+    val c4BoundaryInRow: Int = 2,
+    val wrap: Boolean = true,
+    val wrapPadding: Float = 10f,
+    val boundaryFontSize: Float = 14f,
+    val boundaryFontFamily: String = "\"Open Sans\", sans-serif",
+    val boundaryFontWeight: String = "normal",
+    val messageFontSize: Float = 12f,
+    val messageFontFamily: String = "\"Open Sans\", sans-serif",
+    val messageFontWeight: String = "normal",
+    val elementStyles: Map<String, MermaidC4ElementOptions> = emptyMap(),
+)
+
 data class MermaidTreemapOptions(
     val useMaxWidth: Boolean = true,
     val padding: Float = 10f,
@@ -395,6 +426,7 @@ data class MermaidRenderOptions(
     val eventModeling: MermaidEventModelingOptions = MermaidEventModelingOptions(),
     val block: MermaidBlockOptions = MermaidBlockOptions(),
     val architecture: MermaidArchitectureOptions = MermaidArchitectureOptions(),
+    val c4: MermaidC4Options = MermaidC4Options(),
     val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
     val venn: MermaidVennOptions = MermaidVennOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),

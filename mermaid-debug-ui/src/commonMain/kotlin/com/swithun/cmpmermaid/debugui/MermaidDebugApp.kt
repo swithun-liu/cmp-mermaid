@@ -102,6 +102,7 @@ private enum class DebugScreen {
     Venn,
     Swimlanes,
     Architecture,
+    C4,
     Ishikawa,
     Cynefin,
     Block,
@@ -256,6 +257,12 @@ private val destinations = listOf(
         DebugScreen.Architecture,
         architectureDiagramDocsSpec,
         "Services, groups, junctions, directional ports, and constrained alignment",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.C4,
+        c4DiagramDocsSpec,
+        "Context, container, component, dynamic, and deployment views",
         DiagramStability.Beta,
     ),
     DiagramDestination(

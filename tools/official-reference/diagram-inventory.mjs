@@ -24,7 +24,7 @@ export const diagramFamilies = Object.freeze([
     header('C4Component', 'c4'),
     header('C4Dynamic', 'c4'),
     header('C4Deployment', 'c4'),
-  ]),
+  ], true),
   family('class', 'Class', 'classDiagram.md', ['classDiagram'], [
     header('classDiagram', 'classDiagram'),
     header('classDiagram-v2', 'classDiagram'),

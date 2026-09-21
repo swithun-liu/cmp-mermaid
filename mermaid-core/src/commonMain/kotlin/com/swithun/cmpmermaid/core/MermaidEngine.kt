@@ -3,6 +3,7 @@ package com.swithun.cmpmermaid.core
 import com.swithun.cmpmermaid.core.agentflow.AgentflowPlugin
 import com.swithun.cmpmermaid.core.architecture.ArchitecturePlugin
 import com.swithun.cmpmermaid.core.block.BlockPlugin
+import com.swithun.cmpmermaid.core.c4.C4Plugin
 import com.swithun.cmpmermaid.core.classdiagram.ClassPlugin
 import com.swithun.cmpmermaid.core.cynefin.CynefinPlugin
 import com.swithun.cmpmermaid.core.erdiagram.ErPlugin
@@ -52,6 +53,7 @@ class MermaidEngine(
         FlowchartPlugin(),
         BlockPlugin(),
         ArchitecturePlugin(),
+        C4Plugin(),
         AgentflowPlugin(),
         SequencePlugin(),
         ClassPlugin(),

@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-21T08:44:36.615Z",
+  "inputDirectory": "captures/local/production-c4-final",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_c4_context_ecosystem",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 112704,
+        "inkRatio": 0.10435555555555555,
+        "contentBounds": {
+          "x": 318,
+          "y": 86,
+          "width": 564,
+          "height": 702
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 103075,
+        "inkRatio": 0.09543981481481481,
+        "contentBounds": {
+          "x": 335,
+          "y": 105,
+          "width": 530,
+          "height": 670
+        }
+      },
+      "widthRatio": 1.0641509433962264,
+      "heightRatio": 1.0477611940298508,
+      "inkRatio": 1.0934174145040019
+    },
+    {
+      "id": "rc_c4_container_eventing",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 79106,
+        "inkRatio": 0.0732462962962963,
+        "contentBounds": {
+          "x": 295,
+          "y": 177,
+          "width": 609,
+          "height": 620
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71375,
+        "inkRatio": 0.06608796296296296,
+        "contentBounds": {
+          "x": 312,
+          "y": 180,
+          "width": 575,
+          "height": 606
+        }
+      },
+      "widthRatio": 1.0591304347826087,
+      "heightRatio": 1.023102310231023,
+      "inkRatio": 1.1083152364273205
+    },
+    {
+      "id": "rc_c4_component_policy",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 91259,
+        "inkRatio": 0.08449907407407407,
+        "contentBounds": {
+          "x": 197,
+          "y": 215,
+          "width": 806,
+          "height": 516
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 87127,
+        "inkRatio": 0.08067314814814815,
+        "contentBounds": {
+          "x": 209,
+          "y": 214,
+          "width": 782,
+          "height": 510
+        }
+      },
+      "widthRatio": 1.030690537084399,
+      "heightRatio": 1.011764705882353,
+      "inkRatio": 1.0474250232419342
+    },
+    {
+      "id": "rc_c4_dynamic_recovery",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 122627,
+        "inkRatio": 0.11354351851851852,
+        "contentBounds": {
+          "x": 264,
+          "y": 230,
+          "width": 672,
+          "height": 538
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 104570,
+        "inkRatio": 0.09682407407407408,
+        "contentBounds": {
+          "x": 299,
+          "y": 226,
+          "width": 602,
+          "height": 533
+        }
+      },
+      "widthRatio": 1.1162790697674418,
+      "heightRatio": 1.0093808630393997,
+      "inkRatio": 1.1726785885053075
+    },
+    {
+      "id": "rc_c4_deployment_multiregion",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 54092,
+        "inkRatio": 0.050085185185185184,
+        "contentBounds": {
+          "x": 262,
+          "y": 93,
+          "width": 662,
+          "height": 714
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 51249,
+        "inkRatio": 0.04745277777777778,
+        "contentBounds": {
+          "x": 276,
+          "y": 110,
+          "width": 635,
+          "height": 682
+        }
+      },
+      "widthRatio": 1.04251968503937,
+      "heightRatio": 1.0469208211143695,
+      "inkRatio": 1.055474253156159
+    },
+    {
+      "id": "prod_c4_context_landscape",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 113948,
+        "inkRatio": 0.10550740740740741,
+        "contentBounds": {
+          "x": 239,
+          "y": 108,
+          "width": 722,
+          "height": 651
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 95022,
+        "inkRatio": 0.08798333333333333,
+        "contentBounds": {
+          "x": 277,
+          "y": 124,
+          "width": 646,
+          "height": 626
+        }
+      },
+      "widthRatio": 1.1176470588235294,
+      "heightRatio": 1.0399361022364217,
+      "inkRatio": 1.1991749279114312
+    },
+    {
+      "id": "prod_c4_container_storage",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 123725,
+        "inkRatio": 0.11456018518518518,
+        "contentBounds": {
+          "x": 197,
+          "y": 192,
+          "width": 806,
+          "height": 561
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 114032,
+        "inkRatio": 0.10558518518518518,
+        "contentBounds": {
+          "x": 208,
+          "y": 197,
+          "width": 784,
+          "height": 544
+        }
+      },
+      "widthRatio": 1.028061224489796,
+      "heightRatio": 1.03125,
+      "inkRatio": 1.0850024554511015
+    },
+    {
+      "id": "prod_c4_component_boundaries",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71527,
+        "inkRatio": 0.0662287037037037,
+        "contentBounds": {
+          "x": 179,
+          "y": 172,
+          "width": 842,
+          "height": 598
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71264,
+        "inkRatio": 0.06598518518518519,
+        "contentBounds": {
+          "x": 196,
+          "y": 174,
+          "width": 808,
+          "height": 588
+        }
+      },
+      "widthRatio": 1.0420792079207921,
+      "heightRatio": 1.0170068027210883,
+      "inkRatio": 1.0036905029187246
+    },
+    {
+      "id": "prod_c4_dynamic_checkout",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 141941,
+        "inkRatio": 0.13142685185185185,
+        "contentBounds": {
+          "x": 220,
+          "y": 291,
+          "width": 760,
+          "height": 429
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 133814,
+        "inkRatio": 0.12390185185185185,
+        "contentBounds": {
+          "x": 248,
+          "y": 262,
+          "width": 704,
+          "height": 476
+        }
+      },
+      "widthRatio": 1.0795454545454546,
+      "heightRatio": 0.9012605042016807,
+      "inkRatio": 1.060733555532306
+    },
+    {
+      "id": "prod_c4_deployment_zones",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 66131,
+        "inkRatio": 0.06123240740740741,
+        "contentBounds": {
+          "x": 219,
+          "y": 139,
+          "width": 762,
+          "height": 657
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 62450,
+        "inkRatio": 0.057824074074074076,
+        "contentBounds": {
+          "x": 239,
+          "y": 148,
+          "width": 722,
+          "height": 634
+        }
+      },
+      "widthRatio": 1.0554016620498614,
+      "heightRatio": 1.0362776025236593,
+      "inkRatio": 1.058943154523619
+    },
+    {
+      "id": "prod_c4_relationship_contracts",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 126729,
+        "inkRatio": 0.11734166666666666,
+        "contentBounds": {
+          "x": 220,
+          "y": 295,
+          "width": 760,
+          "height": 421
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 123996,
+        "inkRatio": 0.11481111111111111,
+        "contentBounds": {
+          "x": 236,
+          "y": 262,
+          "width": 728,
+          "height": 476
+        }
+      },
+      "widthRatio": 1.043956043956044,
+      "heightRatio": 0.884453781512605,
+      "inkRatio": 1.0220410335817285
+    },
+    {
+      "id": "prod_c4_configured_grid",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 111608,
+        "inkRatio": 0.10334074074074075,
+        "contentBounds": {
+          "x": 186,
+          "y": 360,
+          "width": 819,
+          "height": 342
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 110262,
+        "inkRatio": 0.10209444444444445,
+        "contentBounds": {
+          "x": 204,
+          "y": 350,
+          "width": 783,
+          "height": 351
+        }
+      },
+      "widthRatio": 1.0459770114942528,
+      "heightRatio": 0.9743589743589743,
+      "inkRatio": 1.0122072880956268
+    },
+    {
+      "id": "prod_c4_accessible_regional",
+      "kind": "c4",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 114820,
+        "inkRatio": 0.10631481481481482,
+        "contentBounds": {
+          "x": 243,
+          "y": 107,
+          "width": 713,
+          "height": 653
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 95463,
+        "inkRatio": 0.08839166666666666,
+        "contentBounds": {
+          "x": 277,
+          "y": 124,
+          "width": 646,
+          "height": 626
+        }
+      },
+      "widthRatio": 1.1037151702786379,
+      "heightRatio": 1.0431309904153354,
+      "inkRatio": 1.2027696594492108
+    }
+  ]
+}

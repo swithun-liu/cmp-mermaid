@@ -19,6 +19,7 @@ const repositoryRoot = resolve(root, '../..');
 const kotlinGalleryFiles = {
   swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
   architecture: ['ArchitectureDemos.kt', 'ArchitectureDemo'],
+  c4: ['C4Demos.kt', 'C4Demo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],
@@ -48,6 +49,7 @@ const expectedKindCounts = new Map([
   ['flowchart', 6],
   ['swimlanes', 5],
   ['architecture', 5],
+  ['c4', 5],
   ['xychart', 5],
   ['quadrant', 5],
   ['timeline', 5],
@@ -77,6 +79,7 @@ const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
   ['swimlanes', 13],
   ['architecture', 13],
+  ['c4', 13],
   ['xychart', 13],
   ['quadrant', 13],
   ['timeline', 13],
@@ -106,6 +109,7 @@ const supportedKinds = new Set([
   'flowchart',
   'swimlanes',
   'architecture',
+  'c4',
   'xychart',
   'quadrant',
   'timeline',
@@ -203,8 +207,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 388) {
-    throw new Error(`Expected 388 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 393) {
+    throw new Error(`Expected 393 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -224,14 +228,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 353) {
+  if (productionCases.length !== 366) {
     throw new Error(
-      `Expected 353 production cases, found ${productionCases.length}`,
+      `Expected 366 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 216) {
+  if (conformanceCases.length !== 224) {
     throw new Error(
-      `Expected 216 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 224 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -341,7 +345,7 @@ function validateVisualParityCases() {
   const ids = new Set();
   const sources = new Set();
   for (const entry of visualParityCases) {
-    if (!/^parity_[a-z]+_\d{3}$/.test(entry.id)) {
+    if (!/^parity_[a-z0-9]+_\d{3}$/.test(entry.id)) {
       throw new Error(`Invalid visual parity case id: ${entry.id}`);
     }
     if (ids.has(entry.id)) {
@@ -446,6 +450,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "flowchart",
             "swimlanes",
             "architecture",
+            "c4",
             "xychart",
             "quadrant",
             "timeline",
@@ -520,6 +525,10 @@ private fun addVisualParityVariation(
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "swimlanes" -> appendFlowchartEvidence(source, evidenceId, label)
     "architecture" -> replaceArchitectureVisualParityServiceIcon(source, label)
+    "c4" -> "\${source.trimEnd()}\\n" +
+        "  Person(\$evidenceId, " +
+        "\\"\${escapeQuotedVisualParityLabel(label)}\\", " +
+        "\\"Visual parity evidence\\")\\n"
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0
@@ -846,7 +855,9 @@ ${indent(escapeKotlinRawString(entry.source.trim()), 12)}
 }
 
 function escapeKotlinRawString(value) {
-  return value.replaceAll('"""', '${"\\"\\"\\""}');
+  return value
+    .replaceAll('$', () => "${'$'}")
+    .replaceAll('"""', '${"\\"\\"\\""}');
 }
 
 function renderStringCollection(values = [], constructorName) {

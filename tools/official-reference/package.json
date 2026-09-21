@@ -26,6 +26,7 @@
     "generate:block-doc-fixtures": "node generate-block-doc-fixtures.mjs",
     "generate:swimlane-doc-fixtures": "node generate-swimlane-doc-fixtures.mjs",
     "generate:architecture-doc-fixtures": "node generate-architecture-doc-fixtures.mjs",
+    "generate:c4-doc-fixtures": "node generate-c4-doc-fixtures.mjs",
     "generate:xychart-doc-fixtures": "node generate-xychart-doc-fixtures.mjs",
     "generate:quadrant-doc-fixtures": "node generate-quadrant-doc-fixtures.mjs",
     "generate:timeline-doc-fixtures": "node generate-timeline-doc-fixtures.mjs",

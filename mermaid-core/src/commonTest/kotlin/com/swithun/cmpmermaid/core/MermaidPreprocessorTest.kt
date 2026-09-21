@@ -907,6 +907,107 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun portsAndMergesCompleteC4Configuration() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  c4:
+                    diagramMarginX: 31
+                    diagramMarginY: 12
+                    c4ShapeMargin: 42
+                    c4ShapePadding: 17
+                    width: 240
+                    height: 84
+                    boxMargin: 9
+                    useMaxWidth: false
+                    c4ShapeInRow: 3
+                    nextLinePaddingX: 19
+                    c4BoundaryInRow: 1
+                    wrap: false
+                    wrapPadding: 8
+                    boundaryFontSize: 16px
+                    boundaryFontFamily: Boundary Sans
+                    boundaryFontWeight: bold
+                    messageFontSize: 13px
+                    messageFontFamily: Message Sans
+                    messageFontWeight: 500
+                    personFontSize: 18px
+                    personFontFamily: Person Sans
+                    personFontWeight: 600
+                    person_bg_color: "#112233"
+                    person_border_color: "#445566"
+                ---
+                %%{init: {'c4': {
+                  'diagramMarginX': 41,
+                  'personFontSize': '20px',
+                  'person_border_color': '#778899'
+                }}}%%
+                C4Context
+                Person(user, "User")
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.c4
+        val person = options.elementStyles.getValue("person")
+
+        assertEquals(41f, options.diagramMarginX)
+        assertEquals(12f, options.diagramMarginY)
+        assertEquals(42f, options.c4ShapeMargin)
+        assertEquals(17f, options.c4ShapePadding)
+        assertEquals(240f, options.width)
+        assertEquals(84f, options.height)
+        assertEquals(9f, options.boxMargin)
+        assertEquals(false, options.useMaxWidth)
+        assertEquals(3, options.c4ShapeInRow)
+        assertEquals(19f, options.nextLinePaddingX)
+        assertEquals(1, options.c4BoundaryInRow)
+        assertEquals(false, options.wrap)
+        assertEquals(8f, options.wrapPadding)
+        assertEquals(16f, options.boundaryFontSize)
+        assertEquals("Boundary Sans", options.boundaryFontFamily)
+        assertEquals("bold", options.boundaryFontWeight)
+        assertEquals(13f, options.messageFontSize)
+        assertEquals("Message Sans", options.messageFontFamily)
+        assertEquals("500", options.messageFontWeight)
+        assertEquals(20f, person.fontSize)
+        assertEquals("Person Sans", person.fontFamily)
+        assertEquals("600", person.fontWeight)
+        assertEquals(SceneColor(0xFF112233), person.background)
+        assertEquals(SceneColor(0xFF778899), person.border)
+    }
+
+    @Test
+    fun rejectsInvalidC4Configuration() {
+        listOf(
+            "diagramMarginX: -1" to "c4.diagramMarginX",
+            "c4ShapeInRow: 0" to "c4.c4ShapeInRow",
+            "c4BoundaryInRow: 0" to "c4.c4BoundaryInRow",
+            "wrap: sometimes" to "c4.wrap",
+            "person_bg_color: invalid" to "c4.person_bg_color",
+        ).forEach { (config, path) ->
+            val result = MermaidPreprocessor.preprocess(
+                """
+                    ---
+                    config:
+                      c4:
+                        $config
+                    ---
+                    C4Context
+                    Person(user, "User")
+                """.trimIndent(),
+            )
+
+            val error = assertIs<GMResult.Err<MermaidError>>(result, config).error
+            assertIs<MermaidError.Configuration>(error, config)
+            assertContains(error.message, path)
+        }
+    }
+
+    @Test
     fun rejectsInvalidAgentflowConfiguration() {
         listOf(
             "useMaxWidth: sometimes" to "agentflow.useMaxWidth",

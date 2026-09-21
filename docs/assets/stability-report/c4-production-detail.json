@@ -1,0 +1,3064 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-21T08:44:37.824Z",
+  "inputDirectory": "captures/local/production-c4-final",
+  "corpusSource": "production",
+  "corpusKind": "c4",
+  "theme": null,
+  "failOnReview": false,
+  "gridSize": 96,
+  "caseCount": 13,
+  "counts": {
+    "pass": 12,
+    "review": 1
+  },
+  "reviewQueue": [
+    {
+      "id": "prod_c4_component_boundaries",
+      "kind": "c4",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/production-c4-final/c4-detail-diffs/prod_c4_component_boundaries_heatmap.png"
+    }
+  ],
+  "cases": [
+    {
+      "id": "rc_c4_context_ecosystem",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 31,
+          "typeCounts": {
+            "shape": 5,
+            "text": 22,
+            "path": 4
+          },
+          "textCount": 22,
+          "uniqueTextCount": 19,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 33,
+          "typeCounts": {
+            "shape": 6,
+            "text": 22,
+            "path": 5
+          },
+          "textCount": 22,
+          "uniqueTextCount": 19,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 22,
+          "maximumCenterDistance": 0.03222665476257603,
+          "p95CenterDistance": 0.02531754282268598,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.0909090909090908,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 9,
+          "officialPaletteSize": 9,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 11
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 4
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 4
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-customer-platform",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.31009615384615385,
+                "y": 0.5873907864553417
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-operator-platform",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.38353997596153844,
+                "y": 0.5873907864553417
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-platform-payment",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.6392650661928927
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-4-carrier-platform",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.31009615384615385,
+                "y": 0.6911393459304437
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.3154205607476636,
+                "y": 0.5931876435855429
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.3848281931654315,
+                "y": 0.5931876783772907
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.5584112149532711,
+                "y": 0.6423296303780388
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 29,
+              "position": "end",
+              "point": {
+                "x": 0.3189164277549102,
+                "y": 0.691471582378787
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9186119873817035,
+        "exactMaskIou": 0.8330319469559976,
+        "edgeF1": 0.933869208219606,
+        "colorError": 0.03110569476232467,
+        "exactColorError": 0.10933273450026987
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 318,
+          "y": 86,
+          "width": 564,
+          "height": 702
+        },
+        "foregroundCells": 2963,
+        "edgeCells": 1756
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 335,
+          "y": 105,
+          "width": 530,
+          "height": 670
+        },
+        "foregroundCells": 3119,
+        "edgeCells": 1944
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_c4_container_eventing",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 30,
+          "typeCounts": {
+            "shape": 6,
+            "text": 20,
+            "path": 4
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 31,
+          "typeCounts": {
+            "shape": 5,
+            "text": 20,
+            "path": 6
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 20,
+          "maximumCenterDistance": 0.02475292510770993,
+          "p95CenterDistance": 0.023517937748230317,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.1818181818181819,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 1,
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 10,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 4
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 4
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-user-portal",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.32426488197424896,
+                "y": 0.5567496117954243
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-portal-command",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.5536480686695279,
+                "y": 0.5953039898676923
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-command-store",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.6695278969957081,
+                "y": 0.742462293275226
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-4-command-events",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.3769033261802575,
+                "y": 0.7424622498336733
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.32243713346906566,
+                "y": 0.5583831952011878
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.5414158715690439,
+                "y": 0.5944006352169618
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.6664533527533486,
+                "y": 0.731771127439599
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.3810722569640525,
+                "y": 0.7317519541592845
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8947778643803586,
+        "exactMaskIou": 0.708362614195362,
+        "edgeF1": 0.904146717738117,
+        "colorError": 0.037511540253250326,
+        "exactColorError": 0.12634588621112536
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 295,
+          "y": 177,
+          "width": 609,
+          "height": 620
+        },
+        "foregroundCells": 2458,
+        "edgeCells": 2008
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 312,
+          "y": 180,
+          "width": 575,
+          "height": 606
+        },
+        "foregroundCells": 2404,
+        "edgeCells": 2009
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_c4_component_policy",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 21,
+          "typeCounts": {
+            "shape": 5,
+            "text": 13,
+            "path": 3
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 21,
+          "typeCounts": {
+            "shape": 3,
+            "text": 13,
+            "path": 5
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 13,
+          "maximumCenterDistance": 0.026277701139602913,
+          "p95CenterDistance": 0.02514057311130503,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.5,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 1,
+            "Solid": 7
+          },
+          "officialStrokePatterns": {
+            "Solid": 7,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-endpoint-evaluator",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.5536480686695279,
+                "y": 0.40925880386519986
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-evaluator-rules",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.4003430472103004,
+                "y": 0.6389489038156428
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-evaluator-audit",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.6695278969957081,
+                "y": 0.6350666648358438
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.5414158715690439,
+                "y": 0.3977281605202926
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.4108917270522368,
+                "y": 0.6185258418547313
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.6607737368160266,
+                "y": 0.6107083691933684
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8657373440939105,
+        "exactMaskIou": 0.6768875700626442,
+        "edgeF1": 0.8279536753141531,
+        "colorError": 0.02587509230496322,
+        "exactColorError": 0.10772569276089379
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 197,
+          "y": 215,
+          "width": 806,
+          "height": 516
+        },
+        "foregroundCells": 2547,
+        "edgeCells": 1692
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 209,
+          "y": 214,
+          "width": 782,
+          "height": 510
+        },
+        "foregroundCells": 2539,
+        "edgeCells": 1685
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_c4_dynamic_recovery",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 27,
+          "typeCounts": {
+            "shape": 5,
+            "text": 16,
+            "path": 6
+          },
+          "textCount": 16,
+          "uniqueTextCount": 16,
+          "clippedTextCount": 0,
+          "textOverlapCount": 2
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 28,
+          "typeCounts": {
+            "shape": 5,
+            "text": 16,
+            "path": 7
+          },
+          "textCount": 16,
+          "uniqueTextCount": 16,
+          "clippedTextCount": 0,
+          "textOverlapCount": 2
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 16,
+          "maximumCenterDistance": 0.041888686888515374,
+          "p95CenterDistance": 0.04019653904167945,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.0833333333333333,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 11
+          },
+          "officialStrokePatterns": {
+            "Solid": 12
+          },
+          "nativeMarkers": {
+            "start": 1,
+            "end": 5
+          },
+          "officialMarkers": {
+            "start": 1,
+            "end": 5
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-customer-checkout",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.3133928831739701
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-checkout-orchestrator",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.37395448317307695,
+                "y": 0.5534330258421448
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-orchestrator-payment",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.6039206868711176
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-4-payment-orchestrator",
+              "pathOrder": 18,
+              "position": "start",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.6039206868711176
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-5-orchestrator-events",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.31009615384615385,
+                "y": 0.7966271682494904
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-6-orchestrator-checkout",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.6260455528846154,
+                "y": 0.3541247210201181
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.5584112149532712,
+                "y": 0.30885683375348627
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.3664690178131389,
+                "y": 0.5769688169982233
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.5584112149532712,
+                "y": 0.6231019329672366
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 22,
+              "position": "start",
+              "point": {
+                "x": 0.5584112149532712,
+                "y": 0.6231019329672366
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.32510914312344846,
+                "y": 0.798935893931867
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.6335310178382374,
+                "y": 0.33589624245754407
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 2,
+          "officialCount": 2,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7140444015444015,
+        "exactMaskIou": 0.6015783540022548,
+        "edgeF1": 0.6730334524867243,
+        "colorError": 0.04132834861849407,
+        "exactColorError": 0.1943188098238168
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 264,
+          "y": 230,
+          "width": 672,
+          "height": 538
+        },
+        "foregroundCells": 3580,
+        "edgeCells": 2048
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 299,
+          "y": 226,
+          "width": 602,
+          "height": 533
+        },
+        "foregroundCells": 3523,
+        "edgeCells": 2106
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_c4_deployment_multiregion",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 26,
+          "typeCounts": {
+            "shape": 7,
+            "text": 17,
+            "path": 2
+          },
+          "textCount": 17,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 26,
+          "typeCounts": {
+            "shape": 6,
+            "text": 17,
+            "path": 3
+          },
+          "textCount": 17,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 17,
+          "maximumCenterDistance": 0.018711315691942124,
+          "p95CenterDistance": 0.015989991152843632,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.1111111111111112,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 9
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-apiTokyo-primary",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.3152804642166344,
+                "y": 0.7199052417486477
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-apiSeoul-primary",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.3575466150870406,
+                "y": 0.7210151833660932
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.3194706994328923,
+                "y": 0.7005412104553104
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.368914714157018,
+                "y": 0.7024267646835061
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8275694106186069,
+        "exactMaskIou": 0.6137634408602151,
+        "edgeF1": 0.9368019942040904,
+        "colorError": 0.03987826516631853,
+        "exactColorError": 0.1113809825005271
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 262,
+          "y": 93,
+          "width": 662,
+          "height": 714
+        },
+        "foregroundCells": 1880,
+        "edgeCells": 2771
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 276,
+          "y": 110,
+          "width": 635,
+          "height": 682
+        },
+        "foregroundCells": 1872,
+        "edgeCells": 2575
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_c4_context_landscape",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 18,
+          "typeCounts": {
+            "shape": 3,
+            "text": 13,
+            "path": 2
+          },
+          "textCount": 13,
+          "uniqueTextCount": 11,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 19,
+          "typeCounts": {
+            "shape": 4,
+            "text": 13,
+            "path": 2
+          },
+          "textCount": 13,
+          "uniqueTextCount": 11,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 13,
+          "maximumCenterDistance": 0.03268475882493099,
+          "p95CenterDistance": 0.030762212390914548,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 5
+          },
+          "officialStrokePatterns": {
+            "Solid": 6
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-customer-ordering",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.440856906820385
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-ordering-payment",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.3818290384615385,
+                "y": 0.7146438895366285
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.5584112149532708,
+                "y": 0.42547436176722503
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.3741527806932681,
+                "y": 0.7236161520165816
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8649868371568259,
+        "exactMaskIou": 0.7381703470031545,
+        "edgeF1": 0.7989218172102907,
+        "colorError": 0.04007878100909619,
+        "exactColorError": 0.17393868167666646
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 239,
+          "y": 108,
+          "width": 722,
+          "height": 651
+        },
+        "foregroundCells": 2489,
+        "edgeCells": 1247
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 277,
+          "y": 124,
+          "width": 646,
+          "height": 626
+        },
+        "foregroundCells": 2470,
+        "edgeCells": 1412
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_c4_container_storage",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 28,
+          "typeCounts": {
+            "shape": 5,
+            "text": 20,
+            "path": 3
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 28,
+          "typeCounts": {
+            "shape": 3,
+            "text": 20,
+            "path": 5
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 20,
+          "maximumCenterDistance": 0.02055920978225557,
+          "p95CenterDistance": 0.020476078003110378,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.25,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 1,
+            "Solid": 7
+          },
+          "officialStrokePatterns": {
+            "Solid": 7,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-web-store",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.5536480686695279,
+                "y": 0.4212328322918376
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-web-events",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.33047210300429186,
+                "y": 0.649478258741099
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-events-notify",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.5536480686695279,
+                "y": 0.7067378043392077
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.5388883805021094,
+                "y": 0.41889812949677396
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.3370105893886092,
+                "y": 0.6502277154916587
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.5631738127748053,
+                "y": 0.7044839129330452
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9377173569396143,
+        "exactMaskIou": 0.8127772848269743,
+        "edgeF1": 0.9191664322413842,
+        "colorError": 0.023016624994516822,
+        "exactColorError": 0.08741196961876539
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 197,
+          "y": 192,
+          "width": 806,
+          "height": 561
+        },
+        "foregroundCells": 3080,
+        "edgeCells": 1927
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 208,
+          "y": 197,
+          "width": 784,
+          "height": 544
+        },
+        "foregroundCells": 3049,
+        "edgeCells": 1841
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_c4_component_boundaries",
+      "kind": "c4",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.571 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 22,
+          "typeCounts": {
+            "shape": 5,
+            "text": 15,
+            "path": 2
+          },
+          "textCount": 15,
+          "uniqueTextCount": 15,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 22,
+          "typeCounts": {
+            "shape": 3,
+            "text": 15,
+            "path": 4
+          },
+          "textCount": 15,
+          "uniqueTextCount": 15,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 15,
+          "maximumCenterDistance": 0.017829748888647443,
+          "p95CenterDistance": 0.017680981127898177,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.5714285714285714,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 2,
+            "Solid": 5
+          },
+          "officialStrokePatterns": {
+            "Solid": 5,
+            "Dashed": 2
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-validator-repository",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.5484496124031008,
+                "y": 0.44714678220367554
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-repository-outbox",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.3968774709302325,
+                "y": 0.6571693759331049
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.5473484848484848,
+                "y": 0.4426018467066935
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.40612200534704956,
+                "y": 0.6572924391126977
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.912781954887218,
+        "exactMaskIou": 0.7259158751696065,
+        "edgeF1": 0.9695805422189,
+        "colorError": 0.02190692197276921,
+        "exactColorError": 0.07981305593245891
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 179,
+          "y": 172,
+          "width": 842,
+          "height": 598
+        },
+        "foregroundCells": 1851,
+        "edgeCells": 1892
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 196,
+          "y": 174,
+          "width": 808,
+          "height": 588
+        },
+        "foregroundCells": 1965,
+        "edgeCells": 1896
+      },
+      "heatmap": "captures/local/production-c4-final/c4-detail-diffs/prod_c4_component_boundaries_heatmap.png"
+    },
+    {
+      "id": "prod_c4_dynamic_checkout",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 22,
+          "typeCounts": {
+            "shape": 4,
+            "text": 13,
+            "path": 5
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 2
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 23,
+          "typeCounts": {
+            "shape": 4,
+            "text": 13,
+            "path": 6
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 2
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 13,
+          "maximumCenterDistance": 0.0339206227052859,
+          "p95CenterDistance": 0.03109344734727905,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 10
+          },
+          "nativeMarkers": {
+            "start": 1,
+            "end": 5
+          },
+          "officialMarkers": {
+            "start": 1,
+            "end": 5
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-customer-web",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.3823850856445772
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-web-api",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.37395448317307695,
+                "y": 0.6752691153733361
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-api-store",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.7460861703659871
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-4-api-web",
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.37395448317307695,
+                "y": 0.6752691153733361
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-4-api-web",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.6260455528846154,
+                "y": 0.4320838763303064
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-5-web-customer",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.39395192307692306,
+                "y": 0.39762067547377383
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.5584112149532711,
+                "y": 0.36109182738715184
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.3664690178131389,
+                "y": 0.674547886615897
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5584112149532711,
+                "y": 0.7442005279505346
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 19,
+              "position": "start",
+              "point": {
+                "x": 0.3664690178131389,
+                "y": 0.674547886615897
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.6335310178382373,
+                "y": 0.39270423946092575
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.36641839285877265,
+                "y": 0.3949676511418915
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 2,
+          "officialCount": 2,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8333333333333334,
+        "exactMaskIou": 0.7629644752960392,
+        "edgeF1": 0.750682306006546,
+        "colorError": 0.03487912657954763,
+        "exactColorError": 0.1390275342476721
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 220,
+          "y": 291,
+          "width": 760,
+          "height": 429
+        },
+        "foregroundCells": 4510,
+        "edgeCells": 1912
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 248,
+          "y": 262,
+          "width": 704,
+          "height": 476
+        },
+        "foregroundCells": 4125,
+        "edgeCells": 1855
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_c4_deployment_zones",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 25,
+          "typeCounts": {
+            "shape": 7,
+            "text": 16,
+            "path": 2
+          },
+          "textCount": 16,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 25,
+          "typeCounts": {
+            "shape": 6,
+            "text": 16,
+            "path": 3
+          },
+          "textCount": 16,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 16,
+          "maximumCenterDistance": 0.016962954466566933,
+          "p95CenterDistance": 0.01403908243586138,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.1111111111111112,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 9
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-apiA-database",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.33086876155268025,
+                "y": 0.6845139393888785
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-apiB-database",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.37331571164510163,
+                "y": 0.6859098202964297
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.33453887884267625,
+                "y": 0.6658358452396135
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.3841031507385143,
+                "y": 0.668162793301998
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8852772466539197,
+        "exactMaskIou": 0.6876337184424476,
+        "edgeF1": 0.9212807239260388,
+        "colorError": 0.03002899092864491,
+        "exactColorError": 0.07755879416379304
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 219,
+          "y": 139,
+          "width": 762,
+          "height": 657
+        },
+        "foregroundCells": 1888,
+        "edgeCells": 2357
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 239,
+          "y": 148,
+          "width": 722,
+          "height": 634
+        },
+        "foregroundCells": 2056,
+        "edgeCells": 2610
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_c4_relationship_contracts",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 20,
+          "typeCounts": {
+            "shape": 4,
+            "text": 12,
+            "path": 4
+          },
+          "textCount": 12,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 21,
+          "typeCounts": {
+            "shape": 3,
+            "text": 12,
+            "path": 6
+          },
+          "textCount": 12,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 12,
+          "maximumCenterDistance": 0.04181780521151977,
+          "p95CenterDistance": 0.0385878956695364,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.2222222222222223,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 8
+          },
+          "officialStrokePatterns": {
+            "Solid": 9
+          },
+          "nativeMarkers": {
+            "start": 2,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 2,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-client-gateway",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.3852387900394145
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-gateway-cache",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.3516010456730769,
+                "y": 0.6798233256856888
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-cache-database",
+              "pathOrder": 14,
+              "position": "start",
+              "point": {
+                "x": 0.43920156250000003,
+                "y": 0.729336639783181
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-3-cache-database",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.7404937308056555
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-4-database-gateway",
+              "pathOrder": 15,
+              "position": "start",
+              "point": {
+                "x": 0.6899038461538461,
+                "y": 0.6798233256856888
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.5461196993826793,
+                "y": 0.361153209454115
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.3505997549015164,
+                "y": 0.674547886615897
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 17,
+              "position": "start",
+              "point": {
+                "x": 0.45290787022192885,
+                "y": 0.7235864685985627
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5681312837517725,
+                "y": 0.7374359188798285
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 19,
+              "position": "start",
+              "point": {
+                "x": 0.6873781672675118,
+                "y": 0.6745614397022724
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8152703643536784,
+        "exactMaskIou": 0.7332151562153778,
+        "edgeF1": 0.7432889669869518,
+        "colorError": 0.048510286044364394,
+        "exactColorError": 0.17405085381519475
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 220,
+          "y": 295,
+          "width": 760,
+          "height": 421
+        },
+        "foregroundCells": 4099,
+        "edgeCells": 1883
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 236,
+          "y": 262,
+          "width": 728,
+          "height": 476
+        },
+        "foregroundCells": 3723,
+        "edgeCells": 1911
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_c4_configured_grid",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 14,
+          "typeCounts": {
+            "shape": 3,
+            "text": 9,
+            "path": 2
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 14,
+          "typeCounts": {
+            "shape": 1,
+            "text": 9,
+            "path": 4
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 9,
+          "maximumCenterDistance": 0.02469280982790932,
+          "p95CenterDistance": 0.02408810245266528,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.4,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 5
+          },
+          "officialStrokePatterns": {
+            "Solid": 5
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-api-store",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.552,
+                "y": 0.4711561931234256
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-api-queue",
+              "pathOrder": 11,
+              "position": "end",
+              "point": {
+                "x": 0.296,
+                "y": 0.737676447445077
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.5503875968992248,
+                "y": 0.4656458030382144
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.31316001162664525,
+                "y": 0.7334502093287444
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9412935323383085,
+        "exactMaskIou": 0.8813886210221794,
+        "edgeF1": 0.798282800063163,
+        "colorError": 0.020062203717605094,
+        "exactColorError": 0.08514190632858737
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 186,
+          "y": 360,
+          "width": 819,
+          "height": 342
+        },
+        "foregroundCells": 3857,
+        "edgeCells": 1315
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 204,
+          "y": 350,
+          "width": 783,
+          "height": 351
+        },
+        "foregroundCells": 3947,
+        "edgeCells": 1371
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_c4_accessible_regional",
+      "kind": "c4",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 17,
+          "typeCounts": {
+            "shape": 3,
+            "text": 12,
+            "path": 2
+          },
+          "textCount": 12,
+          "uniqueTextCount": 11,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 18,
+          "typeCounts": {
+            "shape": 4,
+            "text": 12,
+            "path": 2
+          },
+          "textCount": 12,
+          "uniqueTextCount": 11,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 12,
+          "maximumCenterDistance": 0.03425696738815737,
+          "p95CenterDistance": 0.03114222570215352,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 5
+          },
+          "officialStrokePatterns": {
+            "Solid": 6
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-1-tokyo-seoul",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5600961538461539,
+                "y": 0.4382433308583923
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "c4-relation-2-seoul-sao",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.38173932692307694,
+                "y": 0.7148940265622225
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.5584112149532708,
+                "y": 0.4256829229901614
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.37410639825268327,
+                "y": 0.7237516268060085
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.875282592313489,
+        "exactMaskIou": 0.7592788971367974,
+        "edgeF1": 0.8053533472142629,
+        "colorError": 0.039451080559937894,
+        "exactColorError": 0.15754568116866166
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 243,
+          "y": 107,
+          "width": 713,
+          "height": 653
+        },
+        "foregroundCells": 2532,
+        "edgeCells": 1168
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 277,
+          "y": 124,
+          "width": 646,
+          "height": 626
+        },
+        "foregroundCells": 2445,
+        "edgeCells": 1295
+      },
+      "heatmap": null
+    }
+  ]
+}

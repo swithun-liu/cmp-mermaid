@@ -56,6 +56,34 @@ export const requiredFeaturesByKind = {
     'accessibility',
     'unicode',
   ],
+  c4: [
+    'c4-context-header',
+    'c4-container-header',
+    'c4-component-header',
+    'c4-dynamic-header',
+    'c4-deployment-header',
+    'people',
+    'systems',
+    'external-elements',
+    'database-shapes',
+    'queue-shapes',
+    'boundaries',
+    'nested-boundaries',
+    'deployment-nodes',
+    'relationships',
+    'directional-relationships',
+    'bidirectional-relationships',
+    'back-relationships',
+    'dynamic-indexes',
+    'element-styles',
+    'relationship-styles',
+    'layout-config',
+    'frontmatter-config',
+    'accessibility',
+    'unicode',
+    'comments',
+    'named-attributes',
+  ],
   xychart: [
     'vertical',
     'horizontal',
@@ -1228,6 +1256,236 @@ architecture-beta
   service sao(database)[São Paulo 承認] in regions
   tokyo:R --> L:seoul
   seoul:R --> L:sao
+`,
+  },
+];
+
+const c4Cases = [
+  {
+    id: 'prod_c4_context_landscape',
+    kind: 'c4',
+    title: 'Ordering system context',
+    scenario: 'People and external software systems exchange requests across a system context.',
+    aspectRatio: 1.65,
+    features: [
+      'c4-context-header',
+      'people',
+      'systems',
+      'external-elements',
+      'relationships',
+    ],
+    expectedTexts: ['Customer', 'Ordering System', 'Payment Provider', 'Places orders'],
+    source: String.raw`
+C4Context
+  title Ordering system context
+  Person(customer, "Customer", "Places orders")
+  System(ordering, "Ordering System", "Processes orders")
+  System_Ext(payment, "Payment Provider", "Authorizes payments")
+  Rel(customer, ordering, "Places orders")
+  Rel(ordering, payment, "Requests authorization", "HTTPS")
+`,
+  },
+  {
+    id: 'prod_c4_container_storage',
+    kind: 'c4',
+    title: 'Container storage topology',
+    scenario: 'Application, database, queue, and external containers share one system boundary.',
+    aspectRatio: 1.7,
+    features: [
+      'c4-container-header',
+      'boundaries',
+      'database-shapes',
+      'queue-shapes',
+      'external-elements',
+      'directional-relationships',
+    ],
+    expectedTexts: ['Web Application', 'Order Store', 'Event Queue', 'Notification API'],
+    source: String.raw`
+C4Container
+  System_Boundary(platform, "Order Platform") {
+    Container(web, "Web Application", "Kotlin/Wasm", "Customer interface")
+    ContainerDb(store, "Order Store", "PostgreSQL", "Persists orders")
+    ContainerQueue(events, "Event Queue", "Kafka", "Publishes order events")
+    Container_Ext(notify, "Notification API", "HTTPS", "Sends updates")
+  }
+  Rel_D(web, store, "Reads and writes", "SQL")
+  Rel_R(web, events, "Publishes", "Events")
+  Rel_L(events, notify, "Delivers", "HTTPS")
+`,
+  },
+  {
+    id: 'prod_c4_component_boundaries',
+    kind: 'c4',
+    title: 'Nested component boundaries',
+    scenario: 'Components are grouped inside nested system and container boundaries.',
+    aspectRatio: 1.6,
+    features: [
+      'c4-component-header',
+      'nested-boundaries',
+      'database-shapes',
+      'queue-shapes',
+      'element-styles',
+    ],
+    expectedTexts: ['Order API', 'Validator', 'Repository', 'Outbox'],
+    source: String.raw`
+C4Component
+  System_Boundary(system, "Ordering System") {
+    Container_Boundary(api, "Order API") {
+      Component(validator, "Validator", "Kotlin", "Checks order input")
+      ComponentDb(repository, "Repository", "SQL", "Stores aggregate state")
+      ComponentQueue(outbox, "Outbox", "Kafka", "Publishes domain events")
+    }
+  }
+  Rel(validator, repository, "Persists")
+  Rel(repository, outbox, "Emits")
+  UpdateElementStyle(validator, $bgColor="#0f766e", $fontColor="#ffffff", $borderColor="#115e59", $shape="component")
+`,
+  },
+  {
+    id: 'prod_c4_dynamic_checkout',
+    kind: 'c4',
+    title: 'Dynamic checkout interaction',
+    scenario: 'A dynamic view numbers the checkout request and response path in source order.',
+    aspectRatio: 1.75,
+    features: [
+      'c4-dynamic-header',
+      'dynamic-indexes',
+      'people',
+      'relationships',
+      'bidirectional-relationships',
+    ],
+    expectedTexts: ['Checkout UI', 'Order API', 'Submits cart', 'Returns receipt'],
+    source: String.raw`
+C4Dynamic
+  Person(customer, "Customer")
+  Container(web, "Checkout UI", "Kotlin/Wasm")
+  Container(api, "Order API", "Kotlin/JVM")
+  ContainerDb(store, "Order Store", "PostgreSQL")
+  Rel(customer, web, "Submits cart")
+  Rel(web, api, "Creates order")
+  Rel(api, store, "Persists order")
+  BiRel(api, web, "Returns receipt")
+  Rel(web, customer, "Shows confirmation")
+`,
+  },
+  {
+    id: 'prod_c4_deployment_zones',
+    kind: 'c4',
+    title: 'Multi-zone deployment',
+    scenario: 'Nested deployment nodes place application containers across two zones.',
+    aspectRatio: 1.7,
+    features: [
+      'c4-deployment-header',
+      'deployment-nodes',
+      'nested-boundaries',
+      'database-shapes',
+    ],
+    expectedTexts: ['Cloud Region', 'Primary Zone', 'Secondary Zone', 'Orders Cluster'],
+    source: String.raw`
+C4Deployment
+  Deployment_Node(region, "Cloud Region", "Managed infrastructure") {
+    Node_L(primary, "Primary Zone", "Linux") {
+      Container(apiA, "API A", "Kotlin/JVM")
+    }
+    Node_R(secondary, "Secondary Zone", "Linux") {
+      Container(apiB, "API B", "Kotlin/JVM")
+    }
+    Node(databaseNode, "Database Node", "PostgreSQL") {
+      ContainerDb(database, "Orders Cluster", "PostgreSQL")
+    }
+  }
+  Rel(apiA, database, "Reads and writes")
+  Rel(apiB, database, "Reads and writes")
+`,
+  },
+  {
+    id: 'prod_c4_relationship_contracts',
+    kind: 'c4',
+    title: 'Relationship contracts',
+    scenario: 'Directional, reverse, bidirectional, and styled relationships share one view.',
+    aspectRatio: 1.8,
+    features: [
+      'relationships',
+      'directional-relationships',
+      'bidirectional-relationships',
+      'back-relationships',
+      'relationship-styles',
+    ],
+    expectedTexts: ['Client', 'Gateway', 'Cache', 'Database', 'cached read'],
+    source: String.raw`
+C4Context
+  Person(client, "Client")
+  System(gateway, "Gateway")
+  SystemQueue(cache, "Cache Queue")
+  SystemDb(database, "Database")
+  Rel_Right(client, gateway, "Calls")
+  Rel_Down(gateway, cache, "cached read")
+  BiRel(cache, database, "Synchronizes")
+  Rel_Back(database, gateway, "Invalidates")
+  UpdateRelStyle(gateway, cache, $textColor="#7c2d12", $lineColor="#ea580c", $offsetX="-12", $offsetY="16")
+`,
+  },
+  {
+    id: 'prod_c4_configured_grid',
+    kind: 'c4',
+    title: 'Configured C4 grid',
+    scenario: 'Frontmatter and source layout controls configure sizing, wrapping, and row counts.',
+    aspectRatio: 1.65,
+    features: [
+      'frontmatter-config',
+      'layout-config',
+      'named-attributes',
+      'database-shapes',
+      'queue-shapes',
+    ],
+    expectedTexts: ['Configured API', 'Configured Store', 'Configured Queue'],
+    source: String.raw`
+---
+config:
+  c4:
+    diagramMarginX: 36
+    diagramMarginY: 18
+    c4ShapeMargin: 42
+    c4ShapePadding: 16
+    c4ShapeInRow: 2
+    wrap: true
+    personFontSize: 16
+    system_bg_color: "#155e75"
+---
+C4Container
+  Container(api, "Configured API", $techn="Kotlin/JVM", $descr="Coordinates requests")
+  ContainerDb(store, "Configured Store", $techn="PostgreSQL", $tags="primary")
+  ContainerQueue(queue, "Configured Queue", $techn="Kafka", $link="https://example.com/queue")
+  UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
+  Rel(api, store, "Stores")
+  Rel(api, queue, "Publishes")
+`,
+  },
+  {
+    id: 'prod_c4_accessible_regional',
+    kind: 'c4',
+    title: 'Accessible regional systems',
+    scenario: 'Comments, accessibility metadata, named attributes, and multilingual labels coexist.',
+    aspectRatio: 1.7,
+    features: [
+      'accessibility',
+      'unicode',
+      'comments',
+      'named-attributes',
+      'people',
+      'systems',
+    ],
+    expectedTexts: ['受付', '서울 검토', 'São Paulo', '承認'],
+    source: String.raw`
+C4Context
+  %% Regional support route
+  accTitle: Regional support systems
+  accDescr: Requests move from Tokyo through Seoul to Sao Paulo.
+  Person(tokyo, "受付", $descr="東京 customer", $tags="regional")
+  System(seoul, "서울 검토", $descr="Validates requests")
+  System_Ext(sao, "São Paulo", $descr="Completes 承認")
+  Rel(tokyo, seoul, "Requests 검증")
+  Rel(seoul, sao, "Requests 承認")
 `,
   },
 ];
@@ -6244,6 +6502,7 @@ export const conformanceCases = [
   ...flowchartCases,
   ...swimlaneCases,
   ...architectureCases,
+  ...c4Cases,
   ...xyChartCases,
   ...quadrantCases,
   ...timelineCases,

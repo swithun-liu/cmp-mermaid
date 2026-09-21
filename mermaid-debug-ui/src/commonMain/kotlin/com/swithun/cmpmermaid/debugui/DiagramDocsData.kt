@@ -725,6 +725,44 @@ internal val architectureDiagramDocsSpec = DiagramDocsSpec(
     initialTheme = MermaidThemePreset.Default,
 )
 
+internal val c4DiagramDocsSpec = DiagramDocsSpec(
+    id = "c4",
+    title = "C4",
+    syntaxTitle = "C4 diagrams - Basic Syntax",
+    description = "Model software context, containers, components, dynamic interactions, and " +
+        "deployment boundaries with C4-PlantUML-compatible declarations.",
+    documentationUrl = "https://mermaid.js.org/syntax/c4.html",
+    galleryTitle = "C4 diagram gallery",
+    cases = c4Demos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1.5f,
+        )
+    },
+    syntaxLessons = lessons(
+        c4Demos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1.5f,
+            )
+        },
+        listOf(
+            "Context diagrams connect people, software systems, and external dependencies.",
+            "Container boundaries group executable applications and data stores.",
+            "Component diagrams expose responsibilities within a selected container.",
+            "Dynamic diagrams number relationships in declaration order.",
+            "Deployment nodes nest runtime infrastructure and support scoped layout configuration.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
 internal val ishikawaDiagramDocsSpec = DiagramDocsSpec(
     id = "ishikawa",
     title = "Ishikawa",

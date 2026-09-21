@@ -3924,6 +3924,126 @@ architecture-beta
 `,
   },
   {
+    id: 'rc_c4_context_ecosystem',
+    kind: 'c4',
+    title: 'Partner ordering ecosystem',
+    scenario: 'Customers, operators, and partner systems surround the central ordering platform.',
+    aspectRatio: 1.7,
+    source: String.raw`
+C4Context
+  title Partner ordering ecosystem
+  Person(customer, "Customer", "Creates and tracks orders")
+  Person_Ext(operator, "Support Operator", "Resolves exceptions")
+  System(platform, "Ordering Platform", "Coordinates fulfilment")
+  System_Ext(payment, "Payment Network", "Authorizes transactions")
+  SystemQueue_Ext(carrier, "Carrier Events", "Publishes delivery updates")
+  Rel(customer, platform, "Places orders")
+  Rel(operator, platform, "Investigates orders")
+  Rel(platform, payment, "Authorizes payment", "HTTPS")
+  Rel(carrier, platform, "Publishes status", "Events")
+`,
+  },
+  {
+    id: 'rc_c4_container_eventing',
+    kind: 'c4',
+    title: 'Event-driven containers',
+    scenario: 'A bounded application routes commands and events through storage and queues.',
+    aspectRatio: 1.75,
+    source: String.raw`
+C4Container
+  Person(user, "Operations User")
+  System_Boundary(ops, "Operations Platform") {
+    Container(portal, "Operations Portal", "Kotlin/Wasm")
+    Container(command, "Command API", "Kotlin/JVM")
+    ContainerQueue(events, "Operations Events", "Kafka")
+    ContainerDb(store, "Operations Store", "PostgreSQL")
+  }
+  Rel(user, portal, "Uses", "HTTPS")
+  Rel(portal, command, "Submits commands", "JSON")
+  Rel(command, store, "Persists state", "SQL")
+  Rel(command, events, "Publishes changes", "Events")
+`,
+  },
+  {
+    id: 'rc_c4_component_policy',
+    kind: 'c4',
+    title: 'Policy evaluation components',
+    scenario: 'Styled components collaborate inside a policy service boundary.',
+    aspectRatio: 1.65,
+    source: String.raw`
+C4Component
+  Container_Boundary(policy, "Policy Service") {
+    Component(endpoint, "Policy Endpoint", "HTTP")
+    Component(evaluator, "Policy Evaluator", "Kotlin")
+    ComponentDb(rules, "Rule Repository", "SQL")
+    ComponentQueue(audit, "Audit Publisher", "Kafka")
+  }
+  Rel(endpoint, evaluator, "Evaluates request")
+  Rel(evaluator, rules, "Loads rules")
+  Rel(evaluator, audit, "Publishes decision")
+  UpdateElementStyle(evaluator, $bgColor="#1d4ed8", $fontColor="#ffffff", $borderColor="#1e3a8a", $shape="component")
+  UpdateRelStyle(evaluator, audit, $textColor="#9a3412", $lineColor="#ea580c", $offsetX="8", $offsetY="-10")
+`,
+  },
+  {
+    id: 'rc_c4_dynamic_recovery',
+    kind: 'c4',
+    title: 'Checkout recovery sequence',
+    scenario: 'A numbered dynamic flow shows a failed authorization and compensating response.',
+    aspectRatio: 1.8,
+    source: String.raw`
+C4Dynamic
+  Person(customer, "Customer")
+  Container(checkout, "Checkout UI", "Kotlin/Wasm")
+  Container(orchestrator, "Checkout Orchestrator", "Kotlin/JVM")
+  System_Ext(payment, "Payment Provider")
+  ContainerQueue(events, "Order Events", "Kafka")
+  Rel(customer, checkout, "Confirms purchase")
+  Rel(checkout, orchestrator, "Starts checkout")
+  Rel(orchestrator, payment, "Requests authorization")
+  Rel_Back(payment, orchestrator, "Declines payment")
+  Rel(orchestrator, events, "Publishes failure")
+  Rel(orchestrator, checkout, "Returns recovery options")
+`,
+  },
+  {
+    id: 'rc_c4_deployment_multiregion',
+    kind: 'c4',
+    title: 'Configured multi-region deployment',
+    scenario: 'Nested deployment nodes, metadata, multilingual labels, and scoped sizing share one view.',
+    aspectRatio: 1.8,
+    source: String.raw`
+---
+title: Multi-region deployment
+config:
+  c4:
+    diagramMarginX: 42
+    diagramMarginY: 18
+    c4ShapeInRow: 2
+    c4BoundaryInRow: 2
+    wrap: true
+    containerFontSize: 15
+---
+C4Deployment
+  accTitle: Multi-region deployment
+  accDescr: Traffic reaches Tokyo and Seoul before data replication completes.
+  Deployment_Node(cloud, "Global Cloud", "Managed infrastructure") {
+    Node_L(tokyo, "東京 Region", "Linux") {
+      Container(apiTokyo, "受付 API", "Kotlin/JVM")
+    }
+    Node_R(seoul, "서울 Region", "Linux") {
+      Container(apiSeoul, "검토 API", "Kotlin/JVM")
+    }
+    Node(data, "Data Plane", "PostgreSQL") {
+      ContainerDb(primary, "São Paulo Primary", "PostgreSQL")
+    }
+  }
+  UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="2")
+  Rel(apiTokyo, primary, "Replicates")
+  Rel(apiSeoul, primary, "Replicates")
+`,
+  },
+  {
     id: 'rc_swimlanes_support_escalation',
     kind: 'swimlanes',
     title: 'Support escalation',

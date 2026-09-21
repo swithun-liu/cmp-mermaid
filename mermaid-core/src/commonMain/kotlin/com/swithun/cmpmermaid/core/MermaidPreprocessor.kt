@@ -350,6 +350,7 @@ internal object MermaidPreprocessor {
         val eventModeling = map.map("eventmodeling")
         val block = map.map("block")
         val architecture = map.map("architecture")
+        val c4 = map.map("c4")
         val agentflow = map.map("agentflow")
         val swimlane = map.map("swimlane")
         val treemap = map.map("treemap")
@@ -1502,6 +1503,89 @@ internal object MermaidPreprocessor {
                 )
             }
         }
+        val c4DiagramMarginX = float(c4, "diagramMarginX", "c4.diagramMarginX")
+        val c4DiagramMarginY = float(c4, "diagramMarginY", "c4.diagramMarginY")
+        val c4ShapeMargin = float(c4, "c4ShapeMargin", "c4.c4ShapeMargin")
+        val c4ShapePadding = float(c4, "c4ShapePadding", "c4.c4ShapePadding")
+        val c4Width = float(c4, "width", "c4.width")
+        val c4Height = float(c4, "height", "c4.height")
+        val c4BoxMargin = float(c4, "boxMargin", "c4.boxMargin")
+        val c4UseMaxWidth = boolean(c4, "useMaxWidth", "c4.useMaxWidth")
+        val c4ShapeInRow = int(c4, "c4ShapeInRow", "c4.c4ShapeInRow")
+        val c4NextLinePaddingX =
+            float(c4, "nextLinePaddingX", "c4.nextLinePaddingX")
+        val c4BoundaryInRow = int(c4, "c4BoundaryInRow", "c4.c4BoundaryInRow")
+        val c4Wrap = boolean(c4, "wrap", "c4.wrap")
+        val c4WrapPadding = float(c4, "wrapPadding", "c4.wrapPadding")
+        val c4BoundaryFontSize =
+            fontSize(c4, "boundaryFontSize", "c4.boundaryFontSize")
+        val c4BoundaryFontFamily =
+            string(c4, "boundaryFontFamily", "c4.boundaryFontFamily")
+        val c4BoundaryFontWeight =
+            string(c4, "boundaryFontWeight", "c4.boundaryFontWeight")
+        val c4MessageFontSize =
+            fontSize(c4, "messageFontSize", "c4.messageFontSize")
+        val c4MessageFontFamily =
+            string(c4, "messageFontFamily", "c4.messageFontFamily")
+        val c4MessageFontWeight =
+            string(c4, "messageFontWeight", "c4.messageFontWeight")
+        val c4ElementStyles = C4_ELEMENT_TYPES.mapNotNull { type ->
+            val fontSize = fontSize(c4, "${type}FontSize", "c4.${type}FontSize")
+            val fontFamily =
+                string(c4, "${type}FontFamily", "c4.${type}FontFamily")
+            val fontWeight =
+                string(c4, "${type}FontWeight", "c4.${type}FontWeight")
+            val background =
+                color(c4, "${type}_bg_color", "c4.${type}_bg_color")
+            val border =
+                color(c4, "${type}_border_color", "c4.${type}_border_color")
+            if (
+                fontSize == null &&
+                fontFamily == null &&
+                fontWeight == null &&
+                background == null &&
+                border == null
+            ) {
+                null
+            } else {
+                type to MermaidC4ElementConfigOverride(
+                    fontSize = fontSize,
+                    fontFamily = fontFamily,
+                    fontWeight = fontWeight,
+                    background = background,
+                    border = border,
+                )
+            }
+        }.toMap()
+        listOf(
+            "c4.diagramMarginX" to c4DiagramMarginX,
+            "c4.diagramMarginY" to c4DiagramMarginY,
+            "c4.c4ShapeMargin" to c4ShapeMargin,
+            "c4.c4ShapePadding" to c4ShapePadding,
+            "c4.width" to c4Width,
+            "c4.height" to c4Height,
+            "c4.boxMargin" to c4BoxMargin,
+            "c4.wrapPadding" to c4WrapPadding,
+            "c4.boundaryFontSize" to c4BoundaryFontSize,
+            "c4.messageFontSize" to c4MessageFontSize,
+            "c4.nextLinePaddingX" to c4NextLinePaddingX,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be finite and non-negative",
+            )
+        }
+        if (c4ShapeInRow != null && c4ShapeInRow < 1) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'c4.c4ShapeInRow' must be at least 1",
+            )
+        }
+        if (c4BoundaryInRow != null && c4BoundaryInRow < 1) {
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName 'c4.c4BoundaryInRow' must be at least 1",
+            )
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -1959,6 +2043,30 @@ internal object MermaidPreprocessor {
                         seed = architectureSeed,
                     )
                 },
+                c4 = c4?.let {
+                    MermaidC4ConfigOverride(
+                        diagramMarginX = c4DiagramMarginX,
+                        diagramMarginY = c4DiagramMarginY,
+                        c4ShapeMargin = c4ShapeMargin,
+                        c4ShapePadding = c4ShapePadding,
+                        width = c4Width,
+                        height = c4Height,
+                        boxMargin = c4BoxMargin,
+                        useMaxWidth = c4UseMaxWidth,
+                        c4ShapeInRow = c4ShapeInRow,
+                        nextLinePaddingX = c4NextLinePaddingX,
+                        c4BoundaryInRow = c4BoundaryInRow,
+                        wrap = c4Wrap,
+                        wrapPadding = c4WrapPadding,
+                        boundaryFontSize = c4BoundaryFontSize,
+                        boundaryFontFamily = c4BoundaryFontFamily,
+                        boundaryFontWeight = c4BoundaryFontWeight,
+                        messageFontSize = c4MessageFontSize,
+                        messageFontFamily = c4MessageFontFamily,
+                        messageFontWeight = c4MessageFontWeight,
+                        elementStyles = c4ElementStyles,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -2044,6 +2152,28 @@ internal object MermaidPreprocessor {
     private val TOP_LEVEL_UNTRANSLATED_KEYS = setOf(
         "altFontFamily",
         "themeCSS",
+    )
+    private val C4_ELEMENT_TYPES = listOf(
+        "person",
+        "external_person",
+        "system",
+        "external_system",
+        "system_db",
+        "external_system_db",
+        "system_queue",
+        "external_system_queue",
+        "container",
+        "external_container",
+        "container_db",
+        "external_container_db",
+        "container_queue",
+        "external_container_queue",
+        "component",
+        "external_component",
+        "component_db",
+        "external_component_db",
+        "component_queue",
+        "external_component_queue",
     )
     private val FLOWCHART_UNTRANSLATED_KEYS = emptySet<String>()
     private val USABLE_THEMES = setOf(
@@ -2191,6 +2321,7 @@ internal data class MermaidConfigOverride(
     val eventModeling: MermaidEventModelingConfigOverride? = null,
     val block: MermaidBlockConfigOverride? = null,
     val architecture: MermaidArchitectureConfigOverride? = null,
+    val c4: MermaidC4ConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -2338,6 +2469,10 @@ internal data class MermaidConfigOverride(
                 architecture?.merge(overrides.architecture) ?: overrides.architecture
             else -> architecture
         },
+        c4 = when {
+            overrides.c4 != null -> c4?.merge(overrides.c4) ?: overrides.c4
+            else -> c4
+        },
         treemap = when {
             overrides.treemap != null ->
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
@@ -2461,6 +2596,7 @@ internal data class MermaidConfigOverride(
                 block = block?.applyTo(options.block) ?: options.block,
                 architecture =
                     architecture?.applyTo(options.architecture) ?: options.architecture,
+                c4 = c4?.applyTo(options.c4) ?: options.c4,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -2804,6 +2940,118 @@ internal data class MermaidArchitectureConfigOverride(
             edgeElasticity = edgeElasticity ?: options.edgeElasticity,
             numIter = numIter ?: options.numIter,
             seed = seed ?: options.seed,
+        )
+}
+
+internal data class MermaidC4ElementConfigOverride(
+    val fontSize: Float? = null,
+    val fontFamily: String? = null,
+    val fontWeight: String? = null,
+    val background: SceneColor? = null,
+    val border: SceneColor? = null,
+) {
+    fun merge(overrides: MermaidC4ElementConfigOverride): MermaidC4ElementConfigOverride =
+        MermaidC4ElementConfigOverride(
+            fontSize = overrides.fontSize ?: fontSize,
+            fontFamily = overrides.fontFamily ?: fontFamily,
+            fontWeight = overrides.fontWeight ?: fontWeight,
+            background = overrides.background ?: background,
+            border = overrides.border ?: border,
+        )
+
+    fun applyTo(options: MermaidC4ElementOptions): MermaidC4ElementOptions =
+        options.copy(
+            fontSize = fontSize ?: options.fontSize,
+            fontFamily = fontFamily ?: options.fontFamily,
+            fontWeight = fontWeight ?: options.fontWeight,
+            background = background ?: options.background,
+            border = border ?: options.border,
+        )
+}
+
+internal data class MermaidC4ConfigOverride(
+    val diagramMarginX: Float? = null,
+    val diagramMarginY: Float? = null,
+    val c4ShapeMargin: Float? = null,
+    val c4ShapePadding: Float? = null,
+    val width: Float? = null,
+    val height: Float? = null,
+    val boxMargin: Float? = null,
+    val useMaxWidth: Boolean? = null,
+    val c4ShapeInRow: Int? = null,
+    val nextLinePaddingX: Float? = null,
+    val c4BoundaryInRow: Int? = null,
+    val wrap: Boolean? = null,
+    val wrapPadding: Float? = null,
+    val boundaryFontSize: Float? = null,
+    val boundaryFontFamily: String? = null,
+    val boundaryFontWeight: String? = null,
+    val messageFontSize: Float? = null,
+    val messageFontFamily: String? = null,
+    val messageFontWeight: String? = null,
+    val elementStyles: Map<String, MermaidC4ElementConfigOverride> = emptyMap(),
+) {
+    fun merge(overrides: MermaidC4ConfigOverride): MermaidC4ConfigOverride =
+        MermaidC4ConfigOverride(
+            diagramMarginX = overrides.diagramMarginX ?: diagramMarginX,
+            diagramMarginY = overrides.diagramMarginY ?: diagramMarginY,
+            c4ShapeMargin = overrides.c4ShapeMargin ?: c4ShapeMargin,
+            c4ShapePadding = overrides.c4ShapePadding ?: c4ShapePadding,
+            width = overrides.width ?: width,
+            height = overrides.height ?: height,
+            boxMargin = overrides.boxMargin ?: boxMargin,
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            c4ShapeInRow = overrides.c4ShapeInRow ?: c4ShapeInRow,
+            nextLinePaddingX = overrides.nextLinePaddingX ?: nextLinePaddingX,
+            c4BoundaryInRow = overrides.c4BoundaryInRow ?: c4BoundaryInRow,
+            wrap = overrides.wrap ?: wrap,
+            wrapPadding = overrides.wrapPadding ?: wrapPadding,
+            boundaryFontSize = overrides.boundaryFontSize ?: boundaryFontSize,
+            boundaryFontFamily = overrides.boundaryFontFamily ?: boundaryFontFamily,
+            boundaryFontWeight = overrides.boundaryFontWeight ?: boundaryFontWeight,
+            messageFontSize = overrides.messageFontSize ?: messageFontSize,
+            messageFontFamily = overrides.messageFontFamily ?: messageFontFamily,
+            messageFontWeight = overrides.messageFontWeight ?: messageFontWeight,
+            elementStyles = buildMap {
+                putAll(elementStyles)
+                overrides.elementStyles.forEach { (type, override) ->
+                    put(type, elementStyles[type]?.merge(override) ?: override)
+                }
+            },
+        )
+
+    fun applyTo(options: MermaidC4Options): MermaidC4Options =
+        options.copy(
+            diagramMarginX = diagramMarginX ?: options.diagramMarginX,
+            diagramMarginY = diagramMarginY ?: options.diagramMarginY,
+            c4ShapeMargin = c4ShapeMargin ?: options.c4ShapeMargin,
+            c4ShapePadding = c4ShapePadding ?: options.c4ShapePadding,
+            width = width ?: options.width,
+            height = height ?: options.height,
+            boxMargin = boxMargin ?: options.boxMargin,
+            useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+            c4ShapeInRow = c4ShapeInRow ?: options.c4ShapeInRow,
+            nextLinePaddingX = nextLinePaddingX ?: options.nextLinePaddingX,
+            c4BoundaryInRow = c4BoundaryInRow ?: options.c4BoundaryInRow,
+            wrap = wrap ?: options.wrap,
+            wrapPadding = wrapPadding ?: options.wrapPadding,
+            boundaryFontSize = boundaryFontSize ?: options.boundaryFontSize,
+            boundaryFontFamily = boundaryFontFamily ?: options.boundaryFontFamily,
+            boundaryFontWeight = boundaryFontWeight ?: options.boundaryFontWeight,
+            messageFontSize = messageFontSize ?: options.messageFontSize,
+            messageFontFamily = messageFontFamily ?: options.messageFontFamily,
+            messageFontWeight = messageFontWeight ?: options.messageFontWeight,
+            elementStyles = buildMap {
+                putAll(options.elementStyles)
+                elementStyles.forEach { (type, override) ->
+                    put(
+                        type,
+                        override.applyTo(
+                            options.elementStyles[type] ?: MermaidC4ElementOptions(),
+                        ),
+                    )
+                }
+            },
         )
 }
 

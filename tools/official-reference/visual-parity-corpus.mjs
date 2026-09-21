@@ -5,6 +5,7 @@ export const kinds = [
   'flowchart',
   'swimlanes',
   'architecture',
+  'c4',
   'xychart',
   'quadrant',
   'timeline',
@@ -113,6 +114,10 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return appendFlowchartEvidence(source, evidenceId, label);
     case 'architecture':
       return replaceArchitectureServiceIcon(source, label);
+    case 'c4':
+      return `${source.trimEnd()}
+  Person(${evidenceId}, "${escapeQuotedLabel(label)}", "Visual parity evidence")
+`;
     case 'xychart':
       return replaceOrInsertTitle(source, 'xychart', label);
     case 'quadrant': {
@@ -374,7 +379,7 @@ function validateCorpus() {
     }
   }
   for (const entry of cases) {
-    if (!/^parity_[a-z]+_\d{3}$/.test(entry.id)) {
+    if (!/^parity_[a-z0-9]+_\d{3}$/.test(entry.id)) {
       throw new Error(`Invalid visual parity id: ${entry.id}`);
     }
     if (ids.has(entry.id)) {

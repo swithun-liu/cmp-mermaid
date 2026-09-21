@@ -78,6 +78,7 @@ jobs:
           - block
           - swimlanes
           - architecture
+          - c4
 
     steps:
       - name: Checkout
