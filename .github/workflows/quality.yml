@@ -199,6 +199,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Install deterministic CJK audit font
+        shell: bash
+        run: |
+          set -euo pipefail
+          font_dir="$HOME/.local/share/fonts"
+          mkdir -p "$font_dir"
+          cp \
+            mermaid-compose/src/commonMain/composeResources/font/droid_sans_fallback.ttf \
+            "$font_dir/"
+          fc-cache -f "$font_dir"
+          fc-match -s -f '%{family}\n' ':charset=6587' |
+            grep -F 'Droid Sans Fallback'
+          fc-match -s -f '%{family}\n' ':charset=C11C' |
+            grep -F 'Droid Sans Fallback'
+
       - name: Set up Java 17
         uses: actions/setup-java@v6
         with:
