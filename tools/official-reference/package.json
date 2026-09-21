@@ -28,6 +28,7 @@
     "generate:architecture-doc-fixtures": "node generate-architecture-doc-fixtures.mjs",
     "generate:c4-doc-fixtures": "node generate-c4-doc-fixtures.mjs",
     "generate:railroad-doc-fixtures": "node generate-railroad-doc-fixtures.mjs",
+    "generate:treeview-doc-fixtures": "node generate-treeview-doc-fixtures.mjs",
     "generate:xychart-doc-fixtures": "node generate-xychart-doc-fixtures.mjs",
     "generate:quadrant-doc-fixtures": "node generate-quadrant-doc-fixtures.mjs",
     "generate:timeline-doc-fixtures": "node generate-timeline-doc-fixtures.mjs",

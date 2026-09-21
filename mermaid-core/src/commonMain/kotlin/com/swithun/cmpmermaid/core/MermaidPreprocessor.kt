@@ -352,6 +352,7 @@ internal object MermaidPreprocessor {
         val architecture = map.map("architecture")
         val c4 = map.map("c4")
         val railroad = map.map("railroad")
+        val treeView = map.map("treeView")
         val agentflow = map.map("agentflow")
         val swimlane = map.map("swimlane")
         val treemap = map.map("treemap")
@@ -548,6 +549,33 @@ internal object MermaidPreprocessor {
             return result
         }
 
+        fun stringMap(
+            owner: YamlMap?,
+            key: String,
+            path: String,
+        ): Map<String, String>? {
+            val node = owner?.node(key) ?: return null
+            val yamlMap = node as? YamlMap
+            if (yamlMap == null) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must be a string map",
+                )
+                return null
+            }
+            val result = linkedMapOf<String, String>()
+            yamlMap.entries.forEach { (entryKey, entryValue) ->
+                val value = (entryValue as? YamlScalar)?.content
+                if (value == null) {
+                    readError = MermaidError.Configuration(
+                        "Mermaid $sourceName '$path.${entryKey.content}' must be a string",
+                    )
+                    return null
+                }
+                result[entryKey.content] = value
+            }
+            return result
+        }
+
         fun appearanceString(
             owner: YamlMap?,
             key: String,
@@ -636,7 +664,10 @@ internal object MermaidPreprocessor {
                         arrays[entryKey.content] = items.filterNotNull()
                     }
                     is YamlMap -> {
-                        if (entryKey.content !in setOf("xyChart", "radar", "cynefin")) {
+                        if (
+                            entryKey.content !in
+                            setOf("xyChart", "radar", "cynefin", "treeView")
+                        ) {
                             readError = MermaidError.Configuration(
                                 "Mermaid $sourceName '$path.${entryKey.content}' " +
                                     "does not support nested theme variables",
@@ -1647,6 +1678,32 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName '${invalid.first}' must be finite and non-negative",
             )
         }
+        val treeViewUseMaxWidth =
+            boolean(treeView, "useMaxWidth", "treeView.useMaxWidth")
+        val treeViewRowIndent = float(treeView, "rowIndent", "treeView.rowIndent")
+        val treeViewPaddingX = float(treeView, "paddingX", "treeView.paddingX")
+        val treeViewPaddingY = float(treeView, "paddingY", "treeView.paddingY")
+        val treeViewLineThickness =
+            float(treeView, "lineThickness", "treeView.lineThickness")
+        val treeViewShowIcons = boolean(treeView, "showIcons", "treeView.showIcons")
+        val treeViewDefaultIconPack =
+            string(treeView, "defaultIconPack", "treeView.defaultIconPack")
+        val treeViewFilenameIcons =
+            stringMap(treeView, "filenameIcons", "treeView.filenameIcons")
+        val treeViewExtensionIcons =
+            stringMap(treeView, "extensionIcons", "treeView.extensionIcons")
+        listOf(
+            "treeView.rowIndent" to treeViewRowIndent,
+            "treeView.paddingX" to treeViewPaddingX,
+            "treeView.paddingY" to treeViewPaddingY,
+            "treeView.lineThickness" to treeViewLineThickness,
+        ).firstOrNull { (_, value) ->
+            value != null && (!value.isFinite() || value < 0f)
+        }?.let { invalid ->
+            readError = MermaidError.Configuration(
+                "Mermaid $sourceName '${invalid.first}' must be finite and non-negative",
+            )
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -2157,6 +2214,19 @@ internal object MermaidPreprocessor {
                         markerRadius = railroadMarkerRadius,
                     )
                 },
+                treeView = treeView?.let {
+                    MermaidTreeViewConfigOverride(
+                        useMaxWidth = treeViewUseMaxWidth,
+                        rowIndent = treeViewRowIndent,
+                        paddingX = treeViewPaddingX,
+                        paddingY = treeViewPaddingY,
+                        lineThickness = treeViewLineThickness,
+                        showIcons = treeViewShowIcons,
+                        defaultIconPack = treeViewDefaultIconPack,
+                        filenameIcons = treeViewFilenameIcons,
+                        extensionIcons = treeViewExtensionIcons,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -2413,6 +2483,7 @@ internal data class MermaidConfigOverride(
     val architecture: MermaidArchitectureConfigOverride? = null,
     val c4: MermaidC4ConfigOverride? = null,
     val railroad: MermaidRailroadConfigOverride? = null,
+    val treeView: MermaidTreeViewConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -2569,6 +2640,11 @@ internal data class MermaidConfigOverride(
                 railroad?.merge(overrides.railroad) ?: overrides.railroad
             else -> railroad
         },
+        treeView = when {
+            overrides.treeView != null ->
+                treeView?.merge(overrides.treeView) ?: overrides.treeView
+            else -> treeView
+        },
         treemap = when {
             overrides.treemap != null ->
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
@@ -2694,6 +2770,7 @@ internal data class MermaidConfigOverride(
                     architecture?.applyTo(options.architecture) ?: options.architecture,
                 c4 = c4?.applyTo(options.c4) ?: options.c4,
                 railroad = railroad?.applyTo(options.railroad) ?: options.railroad,
+                treeView = treeView?.applyTo(options.treeView) ?: options.treeView,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -3235,6 +3312,51 @@ internal data class MermaidRailroadConfigOverride(
         ruleNameColor = ruleNameColor ?: options.ruleNameColor,
         showMarkers = showMarkers ?: options.showMarkers,
         markerRadius = markerRadius ?: options.markerRadius,
+    )
+}
+
+internal data class MermaidTreeViewConfigOverride(
+    val useMaxWidth: Boolean? = null,
+    val rowIndent: Float? = null,
+    val paddingX: Float? = null,
+    val paddingY: Float? = null,
+    val lineThickness: Float? = null,
+    val showIcons: Boolean? = null,
+    val defaultIconPack: String? = null,
+    val filenameIcons: Map<String, String>? = null,
+    val extensionIcons: Map<String, String>? = null,
+) {
+    fun merge(overrides: MermaidTreeViewConfigOverride): MermaidTreeViewConfigOverride =
+        MermaidTreeViewConfigOverride(
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            rowIndent = overrides.rowIndent ?: rowIndent,
+            paddingX = overrides.paddingX ?: paddingX,
+            paddingY = overrides.paddingY ?: paddingY,
+            lineThickness = overrides.lineThickness ?: lineThickness,
+            showIcons = overrides.showIcons ?: showIcons,
+            defaultIconPack = overrides.defaultIconPack ?: defaultIconPack,
+            filenameIcons = when {
+                overrides.filenameIcons != null ->
+                    filenameIcons.orEmpty() + overrides.filenameIcons
+                else -> filenameIcons
+            },
+            extensionIcons = when {
+                overrides.extensionIcons != null ->
+                    extensionIcons.orEmpty() + overrides.extensionIcons
+                else -> extensionIcons
+            },
+        )
+
+    fun applyTo(options: MermaidTreeViewOptions): MermaidTreeViewOptions = options.copy(
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        rowIndent = rowIndent ?: options.rowIndent,
+        paddingX = paddingX ?: options.paddingX,
+        paddingY = paddingY ?: options.paddingY,
+        lineThickness = lineThickness ?: options.lineThickness,
+        showIcons = showIcons ?: options.showIcons,
+        defaultIconPack = defaultIconPack ?: options.defaultIconPack,
+        filenameIcons = options.filenameIcons + filenameIcons.orEmpty(),
+        extensionIcons = options.extensionIcons + extensionIcons.orEmpty(),
     )
 }
 

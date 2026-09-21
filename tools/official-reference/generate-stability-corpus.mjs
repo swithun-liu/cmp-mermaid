@@ -21,6 +21,7 @@ const kotlinGalleryFiles = {
   architecture: ['ArchitectureDemos.kt', 'ArchitectureDemo'],
   c4: ['C4Demos.kt', 'C4Demo'],
   railroad: ['RailroadDemos.kt', 'RailroadDemo'],
+  treeview: ['TreeViewDemos.kt', 'TreeViewDemo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],
@@ -52,6 +53,7 @@ const expectedKindCounts = new Map([
   ['architecture', 5],
   ['c4', 5],
   ['railroad', 5],
+  ['treeview', 5],
   ['xychart', 5],
   ['quadrant', 5],
   ['timeline', 5],
@@ -83,6 +85,7 @@ const expectedProductionKindCounts = new Map([
   ['architecture', 13],
   ['c4', 13],
   ['railroad', 18],
+  ['treeview', 13],
   ['xychart', 13],
   ['quadrant', 13],
   ['timeline', 13],
@@ -114,6 +117,7 @@ const supportedKinds = new Set([
   'architecture',
   'c4',
   'railroad',
+  'treeview',
   'xychart',
   'quadrant',
   'timeline',
@@ -211,8 +215,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 398) {
-    throw new Error(`Expected 398 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 403) {
+    throw new Error(`Expected 403 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -232,14 +236,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 384) {
+  if (productionCases.length !== 397) {
     throw new Error(
-      `Expected 384 production cases, found ${productionCases.length}`,
+      `Expected 397 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 237) {
+  if (conformanceCases.length !== 245) {
     throw new Error(
-      `Expected 237 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 245 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -459,6 +463,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "architecture",
             "c4",
             "railroad",
+            "treeview",
             "xychart",
             "quadrant",
             "timeline",
@@ -542,6 +547,8 @@ private fun addVisualParityVariation(
         evidenceId = evidenceId,
         label = label,
     )
+    "treeview" -> "\${source.trimEnd()}\\n" +
+        "\\"\${escapeQuotedVisualParityLabel(label)}\\" ## \$evidenceId\\n"
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0

@@ -4497,6 +4497,132 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_treeview_application_workspace",
+        diagramId = "treeview",
+        title = "Application workspace",
+        scenario = "A nested source tree combines directories, files, highlights, and descriptions.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            treeView-beta
+                application/
+                    src/
+                        App.kt :::highlight ## application entry point
+                        Router.kt ## navigation routes
+                    tests/
+                        AppTest.kt
+                    README.md
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_box_drawing_monorepo",
+        diagramId = "treeview",
+        title = "Box-drawing monorepo",
+        scenario = "Tree-command output preserves a deeply nested package hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            treeView-beta
+            ├── packages/
+            │   ├── core/
+            │   │   ├── parser.kt
+            │   │   └── renderer.kt
+            │   └── compose/
+            │       └── canvas.kt
+            ├── tests/
+            │   └── parity.kt
+            └── README.md
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_icon_catalog",
+        diagramId = "treeview",
+        title = "Configured icon catalog",
+        scenario = "Default, mapped, explicit, and suppressed icons share a single hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              treeView:
+                showIcons: true
+                filenameIcons:
+                  Dockerfile: folder
+                extensionIcons:
+                  .ts: file
+                  .txt: none
+            ---
+            treeView-beta
+                source/
+                    App.ts icon(file)
+                    utils.ts
+                Dockerfile
+                notes.txt
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_accessible_release",
+        diagramId = "treeview",
+        title = "Accessible release tree",
+        scenario = "Metadata and multilingual labels describe a release artifact hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            treeView-beta
+              title Release artifacts
+              accTitle: Accessible release artifact tree
+              accDescr: Packages for Tokyo, Seoul, and Sao Paulo.
+                releases/
+                    東京/
+                        android.aar
+                    서울/
+                        shared.framework
+                    São Paulo/
+                        web.zip
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_themed_highlights",
+        diagramId = "treeview",
+        title = "Themed highlighted tree",
+        scenario = "Scoped spacing and theme variables style highlighted rows and descriptions.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            config:
+              treeView:
+                rowIndent: 24
+                paddingX: 8
+                paddingY: 6
+                lineThickness: 2
+              themeVariables:
+                treeView:
+                  labelFontSize: 18px
+                  labelColor: "#17324d"
+                  lineColor: "#486581"
+                  descriptionColor: "#2f855a"
+                  highlightBg: "rgba(255, 193, 7, 0.15)"
+                  highlightStroke: "#d69e2e"
+            ---
+            treeView-beta
+                validation/
+                    parser-tests.kt :::highlight ## syntax coverage
+                    visual-tests.kt ## geometry coverage
+                    release-gates.kt ## publication coverage
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_swimlanes_support_escalation",
         diagramId = "swimlanes",
         title = "Support escalation",
@@ -9126,6 +9252,132 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_treeview_application_workspace",
+        diagramId = "treeview",
+        title = "Application workspace",
+        scenario = "A nested source tree combines directories, files, highlights, and descriptions.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            treeView-beta
+                application/
+                    src/
+                        App.kt :::highlight ## application entry point
+                        Router.kt ## navigation routes
+                    tests/
+                        AppTest.kt
+                    README.md
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_box_drawing_monorepo",
+        diagramId = "treeview",
+        title = "Box-drawing monorepo",
+        scenario = "Tree-command output preserves a deeply nested package hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            treeView-beta
+            ├── packages/
+            │   ├── core/
+            │   │   ├── parser.kt
+            │   │   └── renderer.kt
+            │   └── compose/
+            │       └── canvas.kt
+            ├── tests/
+            │   └── parity.kt
+            └── README.md
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_icon_catalog",
+        diagramId = "treeview",
+        title = "Configured icon catalog",
+        scenario = "Default, mapped, explicit, and suppressed icons share a single hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              treeView:
+                showIcons: true
+                filenameIcons:
+                  Dockerfile: folder
+                extensionIcons:
+                  .ts: file
+                  .txt: none
+            ---
+            treeView-beta
+                source/
+                    App.ts icon(file)
+                    utils.ts
+                Dockerfile
+                notes.txt
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_accessible_release",
+        diagramId = "treeview",
+        title = "Accessible release tree",
+        scenario = "Metadata and multilingual labels describe a release artifact hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            treeView-beta
+              title Release artifacts
+              accTitle: Accessible release artifact tree
+              accDescr: Packages for Tokyo, Seoul, and Sao Paulo.
+                releases/
+                    東京/
+                        android.aar
+                    서울/
+                        shared.framework
+                    São Paulo/
+                        web.zip
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_treeview_themed_highlights",
+        diagramId = "treeview",
+        title = "Themed highlighted tree",
+        scenario = "Scoped spacing and theme variables style highlighted rows and descriptions.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            ---
+            config:
+              treeView:
+                rowIndent: 24
+                paddingX: 8
+                paddingY: 6
+                lineThickness: 2
+              themeVariables:
+                treeView:
+                  labelFontSize: 18px
+                  labelColor: "#17324d"
+                  lineColor: "#486581"
+                  descriptionColor: "#2f855a"
+                  highlightBg: "rgba(255, 193, 7, 0.15)"
+                  highlightStroke: "#d69e2e"
+            ---
+            treeView-beta
+                validation/
+                    parser-tests.kt :::highlight ## syntax coverage
+                    visual-tests.kt ## geometry coverage
+                    release-gates.kt ## publication coverage
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_swimlanes_support_escalation",
         diagramId = "swimlanes",
         title = "Support escalation",
@@ -10257,6 +10509,168 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         """.trimIndent(),
         expectedTexts = listOf("comparison =", "&lt;", "&amp;", "&gt;"),
         features = setOf("ir-header", "entities", "terminals", "special"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_indented_project",
+        diagramId = "treeview",
+        title = "Indented project tree",
+        scenario = "Indentation builds a hierarchy of directories and files.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            treeView-beta
+                project/
+                    src/
+                        index.ts
+                    README.md
+        """.trimIndent(),
+        expectedTexts = listOf("/", "project", "src", "index.ts", "README.md"),
+        features = setOf("treeview-beta-header", "indentation", "files", "directories", "bare-labels"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_quoted_names",
+        diagramId = "treeview",
+        title = "Quoted names",
+        scenario = "Quoted and bare labels preserve spaces while directory suffixes remain semantic.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            treeView-beta
+                "my project/"
+                    "folder with spaces/"
+                        plain file.md
+        """.trimIndent(),
+        expectedTexts = listOf("my project", "folder with spaces", "plain file.md"),
+        features = setOf("indentation", "quoted-labels", "bare-labels", "directories"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_box_drawing",
+        diagramId = "treeview",
+        title = "Box-drawing tree",
+        scenario = "Standard tree-command glyphs are normalized to indentation.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            treeView-beta
+            ├── packages/
+            │   └── core/
+            │       └── Engine.kt
+            └── README.md
+        """.trimIndent(),
+        expectedTexts = listOf("packages", "core", "Engine.kt", "README.md"),
+        features = setOf("box-drawing", "files", "directories"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_heavy_box_drawing",
+        diagramId = "treeview",
+        title = "Heavy box-drawing tree",
+        scenario = "Heavy Unicode branch and continuation glyphs preserve nesting.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            treeView-beta
+            ┣━━ services/
+            ┃   ┣━━ core.kt
+            ┃   ┣━━ verify.kt
+            ┃   ┗━━ generated-integration-validation-results.json
+            ┗━━ README.md
+        """.trimIndent(),
+        expectedTexts = listOf("services", "core.kt", "verify.kt", "generated-integration-validation-results.json"),
+        features = setOf("heavy-box-drawing", "unicode"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_highlight",
+        diagramId = "treeview",
+        title = "Highlighted source node",
+        scenario = "The highlight class expands its background across the rendered tree.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            treeView-beta
+                application/
+                    App.kt :::highlight ## main component
+                    Routes.kt ## navigation table
+        """.trimIndent(),
+        expectedTexts = listOf("application", "App.kt", "main component", "Routes.kt", "navigation table"),
+        features = setOf("class-annotation", "highlight", "description"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_explicit_icons",
+        diagramId = "treeview",
+        title = "Explicit icons",
+        scenario = "Explicit built-in and registered-pack references override default icon selection.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              treeView:
+                showIcons: true
+            ---
+            treeView-beta
+                assets/ icon(folder)
+                    App.tsx icon(file)
+                    manifest.json icon(file)
+                    hidden.txt icon(none)
+        """.trimIndent(),
+        expectedTexts = listOf("assets", "App.tsx", "manifest.json", "hidden.txt"),
+        features = setOf("explicit-icons", "default-icons", "icon-suppression", "frontmatter-config"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_icon_maps",
+        diagramId = "treeview",
+        title = "Configured icon maps",
+        scenario = "Filename matches override case-insensitive extension mappings.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              treeView:
+                showIcons: true
+                filenameIcons:
+                  Dockerfile: folder
+                extensionIcons:
+                  .ts: file
+                  .txt: none
+                useMaxWidth: false
+                rowIndent: 24
+                paddingX: 8
+                paddingY: 6
+                lineThickness: 2
+              themeVariables:
+                treeView:
+                  labelFontSize: 18px
+                  labelColor: "#123456"
+                  lineColor: "#234567"
+            ---
+            treeView-beta
+                Dockerfile ## exact filename mapping
+                module.ts ## extension mapping
+                notes.txt
+        """.trimIndent(),
+        expectedTexts = listOf("Dockerfile", "module.ts", "notes.txt"),
+        features = setOf("filename-icons", "extension-icons", "default-icons", "frontmatter-config", "theme"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_treeview_metadata",
+        diagramId = "treeview",
+        title = "Tree metadata",
+        scenario = "Title, accessibility metadata, and comments coexist with the hierarchy.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            treeView-beta
+              title Source tree
+              accTitle: Accessible source tree
+              accDescr: Grouped project files
+                %% generated directory
+                文档/
+                    résumé &amp; notes.md
+                    서울.txt
+        """.trimIndent(),
+        expectedTexts = listOf("文档", "résumé &amp; notes.md", "서울.txt"),
+        features = setOf("accessibility", "comments", "unicode", "entities"),
     ),
     StabilityCorpusCase(
         id = "prod_xychart_mixed_vertical_api_capacity",
@@ -15201,6 +15615,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "architecture",
             "c4",
             "railroad",
+            "treeview",
             "xychart",
             "quadrant",
             "timeline",
@@ -15284,6 +15699,8 @@ private fun addVisualParityVariation(
         evidenceId = evidenceId,
         label = label,
     )
+    "treeview" -> "${source.trimEnd()}\n" +
+        "\"${escapeQuotedVisualParityLabel(label)}\" ## $evidenceId\n"
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0

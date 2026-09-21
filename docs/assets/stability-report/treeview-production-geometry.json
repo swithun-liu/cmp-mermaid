@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-21T12:42:09.854Z",
+  "inputDirectory": "captures/local/treeview-production",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_treeview_application_workspace",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 139827,
+        "inkRatio": 0.12946944444444444,
+        "contentBounds": {
+          "x": 24,
+          "y": 60,
+          "width": 1163,
+          "height": 774
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 114931,
+        "inkRatio": 0.10641759259259259,
+        "contentBounds": {
+          "x": 55,
+          "y": 93,
+          "width": 1087,
+          "height": 703
+        }
+      },
+      "widthRatio": 1.0699172033118676,
+      "heightRatio": 1.10099573257468,
+      "inkRatio": 1.2166169266777458
+    },
+    {
+      "id": "rc_treeview_box_drawing_monorepo",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32787,
+        "inkRatio": 0.030358333333333334,
+        "contentBounds": {
+          "x": 391,
+          "y": 31,
+          "width": 411,
+          "height": 834
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 28438,
+        "inkRatio": 0.02633148148148148,
+        "contentBounds": {
+          "x": 399,
+          "y": 68,
+          "width": 389,
+          "height": 755
+        }
+      },
+      "widthRatio": 1.056555269922879,
+      "heightRatio": 1.104635761589404,
+      "inkRatio": 1.1529291792671779
+    },
+    {
+      "id": "rc_treeview_icon_catalog",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53191,
+        "inkRatio": 0.04925092592592593,
+        "contentBounds": {
+          "x": 294,
+          "y": 47,
+          "width": 600,
+          "height": 799
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 40619,
+        "inkRatio": 0.037610185185185184,
+        "contentBounds": {
+          "x": 324,
+          "y": 100,
+          "width": 531,
+          "height": 687
+        }
+      },
+      "widthRatio": 1.1299435028248588,
+      "heightRatio": 1.1630276564774382,
+      "inkRatio": 1.309510327679165
+    },
+    {
+      "id": "rc_treeview_accessible_release",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39022,
+        "inkRatio": 0.03613148148148148,
+        "contentBounds": {
+          "x": 248,
+          "y": 36,
+          "width": 698,
+          "height": 834
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32602,
+        "inkRatio": 0.030187037037037037,
+        "contentBounds": {
+          "x": 269,
+          "y": 80,
+          "width": 647,
+          "height": 740
+        }
+      },
+      "widthRatio": 1.0788253477588872,
+      "heightRatio": 1.127027027027027,
+      "inkRatio": 1.1969204343291822
+    },
+    {
+      "id": "rc_treeview_themed_highlights",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 122354,
+        "inkRatio": 0.11329074074074075,
+        "contentBounds": {
+          "x": 28,
+          "y": 239,
+          "width": 1160,
+          "height": 431
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 101339,
+        "inkRatio": 0.0938324074074074,
+        "contentBounds": {
+          "x": 46,
+          "y": 258,
+          "width": 1106,
+          "height": 384
+        }
+      },
+      "widthRatio": 1.0488245931283906,
+      "heightRatio": 1.1223958333333333,
+      "inkRatio": 1.207373271889401
+    },
+    {
+      "id": "prod_treeview_indented_project",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 45847,
+        "inkRatio": 0.04245092592592593,
+        "contentBounds": {
+          "x": 167,
+          "y": 54,
+          "width": 849,
+          "height": 782
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32494,
+        "inkRatio": 0.030087037037037037,
+        "contentBounds": {
+          "x": 254,
+          "y": 114,
+          "width": 664,
+          "height": 656
+        }
+      },
+      "widthRatio": 1.2786144578313252,
+      "heightRatio": 1.1920731707317074,
+      "inkRatio": 1.410937403828399
+    },
+    {
+      "id": "prod_treeview_quoted_names",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 65656,
+        "inkRatio": 0.06079259259259259,
+        "contentBounds": {
+          "x": 37,
+          "y": 126,
+          "width": 1144,
+          "height": 660
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 48029,
+        "inkRatio": 0.044471296296296293,
+        "contentBounds": {
+          "x": 82,
+          "y": 167,
+          "width": 1008,
+          "height": 567
+        }
+      },
+      "widthRatio": 1.1349206349206349,
+      "heightRatio": 1.164021164021164,
+      "inkRatio": 1.3670074330092237
+    },
+    {
+      "id": "prod_treeview_box_drawing",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 55429,
+        "inkRatio": 0.051323148148148146,
+        "contentBounds": {
+          "x": 211,
+          "y": 54,
+          "width": 770,
+          "height": 782
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39287,
+        "inkRatio": 0.036376851851851855,
+        "contentBounds": {
+          "x": 260,
+          "y": 114,
+          "width": 655,
+          "height": 656
+        }
+      },
+      "widthRatio": 1.1755725190839694,
+      "heightRatio": 1.1920731707317074,
+      "inkRatio": 1.4108738259475142
+    },
+    {
+      "id": "prod_treeview_heavy_box_drawing",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 30766,
+        "inkRatio": 0.028487037037037036,
+        "contentBounds": {
+          "x": 23,
+          "y": 192,
+          "width": 1162,
+          "height": 511
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 28259,
+        "inkRatio": 0.02616574074074074,
+        "contentBounds": {
+          "x": 51,
+          "y": 214,
+          "width": 1082,
+          "height": 462
+        }
+      },
+      "widthRatio": 1.0739371534195934,
+      "heightRatio": 1.106060606060606,
+      "inkRatio": 1.0887150996142823
+    },
+    {
+      "id": "prod_treeview_highlight",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 160001,
+        "inkRatio": 0.14814907407407407,
+        "contentBounds": {
+          "x": 29,
+          "y": 222,
+          "width": 1156,
+          "height": 464
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 127293,
+        "inkRatio": 0.11786388888888889,
+        "contentBounds": {
+          "x": 64,
+          "y": 242,
+          "width": 1068,
+          "height": 416
+        }
+      },
+      "widthRatio": 1.0823970037453183,
+      "heightRatio": 1.1153846153846154,
+      "inkRatio": 1.2569505000274956
+    },
+    {
+      "id": "prod_treeview_explicit_icons",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 66201,
+        "inkRatio": 0.061297222222222225,
+        "contentBounds": {
+          "x": 116,
+          "y": 54,
+          "width": 951,
+          "height": 782
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 47285,
+        "inkRatio": 0.04378240740740741,
+        "contentBounds": {
+          "x": 175,
+          "y": 114,
+          "width": 822,
+          "height": 656
+        }
+      },
+      "widthRatio": 1.1569343065693432,
+      "heightRatio": 1.1920731707317074,
+      "inkRatio": 1.4000422967114308
+    },
+    {
+      "id": "prod_treeview_icon_maps",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 37098,
+        "inkRatio": 0.03435,
+        "contentBounds": {
+          "x": 31,
+          "y": 265,
+          "width": 1147,
+          "height": 368
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 32050,
+        "inkRatio": 0.029675925925925925,
+        "contentBounds": {
+          "x": 50,
+          "y": 284,
+          "width": 1080,
+          "height": 322
+        }
+      },
+      "widthRatio": 1.0620370370370371,
+      "heightRatio": 1.1428571428571428,
+      "inkRatio": 1.1575039001560061
+    },
+    {
+      "id": "prod_treeview_metadata",
+      "kind": "treeview",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 37221,
+        "inkRatio": 0.03446388888888889,
+        "contentBounds": {
+          "x": 33,
+          "y": 162,
+          "width": 1148,
+          "height": 575
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 29417,
+        "inkRatio": 0.027237962962962964,
+        "contentBounds": {
+          "x": 72,
+          "y": 211,
+          "width": 1031,
+          "height": 468
+        }
+      },
+      "widthRatio": 1.1134820562560621,
+      "heightRatio": 1.2286324786324787,
+      "inkRatio": 1.2652887785974096
+    }
+  ]
+}

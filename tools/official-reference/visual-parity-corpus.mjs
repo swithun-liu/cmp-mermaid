@@ -7,6 +7,7 @@ export const kinds = [
   'architecture',
   'c4',
   'railroad',
+  'treeview',
   'xychart',
   'quadrant',
   'timeline',
@@ -121,6 +122,8 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
 `;
     case 'railroad':
       return appendRailroadEvidence(source, evidenceId, label);
+    case 'treeview':
+      return `${source.trimEnd()}\n"${escapeQuotedLabel(label)}" ## ${evidenceId}\n`;
     case 'xychart':
       return replaceOrInsertTitle(source, 'xychart', label);
     case 'quadrant': {

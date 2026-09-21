@@ -27,6 +27,7 @@ import com.swithun.cmpmermaid.core.statediagram.StatePlugin
 import com.swithun.cmpmermaid.core.swimlane.SwimlanePlugin
 import com.swithun.cmpmermaid.core.timeline.TimelinePlugin
 import com.swithun.cmpmermaid.core.treemap.TreemapPlugin
+import com.swithun.cmpmermaid.core.treeview.TreeViewPlugin
 import com.swithun.cmpmermaid.core.venn.VennPlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
 
@@ -71,6 +72,7 @@ class MermaidEngine(
         PacketPlugin(),
         RadarPlugin(),
         RailroadPlugin(),
+        TreeViewPlugin(),
         SankeyPlugin(),
         IshikawaPlugin(),
         CynefinPlugin(),

@@ -111,7 +111,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('treeview', 'TreeView', 'treeView.md', ['treeView'], [
     header('treeView-beta', 'treeView'),
-  ]),
+  ], true),
   family('usecase', 'Use Case', 'usecase.md', ['usecase'], [
     header('usecase-beta', 'usecase'),
   ]),

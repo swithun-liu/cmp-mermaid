@@ -2,7 +2,7 @@
 
 ## Current State
 
-CMP Mermaid implements 29 of the 33 user-visible diagram families documented
+CMP Mermaid implements 30 of the 33 user-visible diagram families documented
 by Mermaid `12.0.0`. The source-controlled inventory is
 [`diagram-inventory.mjs`](../tools/official-reference/diagram-inventory.mjs);
 CI verifies it against Mermaid's 39 registered IDs and, when the pinned source
@@ -19,10 +19,10 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes, Architecture, C4, Railroad |
-| Translation pending | TreeView, Use Case, Wardley Map, ZenUML |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView |
+| Translation pending | Use Case, Wardley Map, ZenUML |
 
-The current 7,424-pair matrix covers all 29 implemented families with fresh
+The current 7,680-pair matrix covers all 30 implemented families with fresh
 replacement evidence. A Git Graph label paint-order defect was visible in the
 original 3,072-pair matrix and was not identified during the earlier review.
 That defect is now corrected and every implemented family has passed the
@@ -51,9 +51,9 @@ global label layers reports a `paint-order-occlusion` mismatch for
 Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
-All 29 implemented families have completed the replacement gate. Together they
-have 7,424 accepted same-source pairs:
-`6,618 automatic pass / 806 manually reviewed / 0 unresolved` across 464 reviewed contact
+All 30 implemented families have completed the replacement gate. Together they
+have 7,680 accepted same-source pairs:
+`6,874 automatic pass / 806 manually reviewed / 0 unresolved` across 480 reviewed contact
 sheets. The 60 ER reviews are text-position threshold findings, while the 19
 Journey reviews are benign line-segmentation differences for one complete long
 actor label. The four Requirement reviews are benign greedy cross-matches
@@ -72,8 +72,8 @@ contributes 253 automatic passes and three manually accepted paint-order
 occlusion threshold reviews. Ishikawa, Cynefin, and Agentflow each contribute
 256 automatic passes. Swimlanes contributes 196 automatic passes and 60
 manual acceptances for text-position differences along semantically
-equivalent orthogonal routes. Architecture, C4, and Railroad each contribute
-256 automatic passes.
+equivalent orthogonal routes. Architecture, C4, Railroad, and TreeView each
+contribute 256 automatic passes.
 All
 reviewed cases preserve expected text, hierarchy, shapes, colors, and edges,
 avoid clipping and paint-order defects, and were accepted by manual side-by-side review.
@@ -117,6 +117,8 @@ C4 ratios are `0.996-1.153`, `0.992-1.046`, and `1.005-1.252`,
 respectively.
 Railroad ratios are `1.035-1.116`, `1.009-1.130`, and `1.023-1.319`,
 respectively.
+TreeView ratios are `1.033-1.141`, `1.006-1.138`, and `0.954-1.229`,
+respectively.
 
 ## Expected Behavior
 
@@ -139,8 +141,7 @@ benefit, but a family is never marked Stable merely because its batch is done.
 1. Shared chart and partition foundations: Quadrant Chart, Timeline, Kanban,
    Sankey, Packet, Radar, Treemap, Venn.
 2. Shared graph and domain foundations: Agentflow and Event Modeling complete;
-   Block, Swimlanes, Architecture, and C4 complete; TreeView and Use Case
-   pending.
+   Block, Swimlanes, Architecture, C4, and TreeView complete; Use Case pending.
 3. Specialized renderers and grammars: Ishikawa and Cynefin complete;
    Railroad (IR, EBNF, ABNF, PEG) complete; Wardley Map and ZenUML pending.
 

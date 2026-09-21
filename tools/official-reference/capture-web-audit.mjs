@@ -43,6 +43,7 @@ const kotlinGalleryFiles = {
   architecture: ['ArchitectureDemos.kt', 'ArchitectureDemo'],
   c4: ['C4Demos.kt', 'C4Demo'],
   railroad: ['RailroadDemos.kt', 'RailroadDemo'],
+  treeview: ['TreeViewDemos.kt', 'TreeViewDemo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],

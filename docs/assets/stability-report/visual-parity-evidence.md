@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 7,424 source cases and
-14,848 screenshots from the large-scale
+This index contains 7,680 source cases and
+15,360 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,15 +13,15 @@ Each type combines at least 13 complex structural seeds with visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are
 not presented as 256 unrelated topologies.
 
-All 29 implemented families have completed the replacement detail gate and
+All 30 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`7,424/7,424` pairs: `6,618 automatic pass / 806 manually reviewed /
-0 unresolved` across 464 contact sheets. Block contributes three
+`7,680/7,680` pairs: `6,874 automatic pass / 806 manually reviewed /
+0 unresolved` across 480 contact sheets. Block contributes three
 paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
 acceptances caused by the documented title/payload `text-segmentation`
 adaptation; Swimlanes contributes 60 text-position reviews along semantically
-equivalent orthogonal routes. Architecture contributes 256 automatic passes.
-C4 and Railroad each contribute 256 automatic passes.
+equivalent orthogonal routes. Architecture, C4, Railroad, and TreeView each
+contribute 256 automatic passes.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -230,6 +230,49 @@ the sheets. All 16 pages below were manually reviewed.
 ![Railroad visual parity page 15](railroad-visual-parity-15.jpg)
 
 ![Railroad visual parity page 16](railroad-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>TreeView - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.033-1.141`, height `1.006-1.138`, foreground ink `0.954-1.229`.
+Raw [detail](treeview-visual-parity-detail.json) and
+[geometry](treeview-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![TreeView visual parity page 01](treeview-visual-parity-01.jpg)
+
+![TreeView visual parity page 02](treeview-visual-parity-02.jpg)
+
+![TreeView visual parity page 03](treeview-visual-parity-03.jpg)
+
+![TreeView visual parity page 04](treeview-visual-parity-04.jpg)
+
+![TreeView visual parity page 05](treeview-visual-parity-05.jpg)
+
+![TreeView visual parity page 06](treeview-visual-parity-06.jpg)
+
+![TreeView visual parity page 07](treeview-visual-parity-07.jpg)
+
+![TreeView visual parity page 08](treeview-visual-parity-08.jpg)
+
+![TreeView visual parity page 09](treeview-visual-parity-09.jpg)
+
+![TreeView visual parity page 10](treeview-visual-parity-10.jpg)
+
+![TreeView visual parity page 11](treeview-visual-parity-11.jpg)
+
+![TreeView visual parity page 12](treeview-visual-parity-12.jpg)
+
+![TreeView visual parity page 13](treeview-visual-parity-13.jpg)
+
+![TreeView visual parity page 14](treeview-visual-parity-14.jpg)
+
+![TreeView visual parity page 15](treeview-visual-parity-15.jpg)
+
+![TreeView visual parity page 16](treeview-visual-parity-16.jpg)
 
 </details>
 

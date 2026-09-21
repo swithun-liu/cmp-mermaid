@@ -4125,6 +4125,117 @@ railroad-peg-beta
 `,
   },
   {
+    id: 'rc_treeview_application_workspace',
+    kind: 'treeview',
+    title: 'Application workspace',
+    scenario: 'A nested source tree combines directories, files, highlights, and descriptions.',
+    aspectRatio: 1.55,
+    source: String.raw`
+treeView-beta
+    application/
+        src/
+            App.kt :::highlight ## application entry point
+            Router.kt ## navigation routes
+        tests/
+            AppTest.kt
+        README.md
+`,
+  },
+  {
+    id: 'rc_treeview_box_drawing_monorepo',
+    kind: 'treeview',
+    title: 'Box-drawing monorepo',
+    scenario: 'Tree-command output preserves a deeply nested package hierarchy.',
+    aspectRatio: 1.5,
+    source: String.raw`
+treeView-beta
+├── packages/
+│   ├── core/
+│   │   ├── parser.kt
+│   │   └── renderer.kt
+│   └── compose/
+│       └── canvas.kt
+├── tests/
+│   └── parity.kt
+└── README.md
+`,
+  },
+  {
+    id: 'rc_treeview_icon_catalog',
+    kind: 'treeview',
+    title: 'Configured icon catalog',
+    scenario: 'Default, mapped, explicit, and suppressed icons share a single hierarchy.',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+config:
+  treeView:
+    showIcons: true
+    filenameIcons:
+      Dockerfile: folder
+    extensionIcons:
+      .ts: file
+      .txt: none
+---
+treeView-beta
+    source/
+        App.ts icon(file)
+        utils.ts
+    Dockerfile
+    notes.txt
+`,
+  },
+  {
+    id: 'rc_treeview_accessible_release',
+    kind: 'treeview',
+    title: 'Accessible release tree',
+    scenario: 'Metadata and multilingual labels describe a release artifact hierarchy.',
+    aspectRatio: 1.6,
+    source: String.raw`
+treeView-beta
+  title Release artifacts
+  accTitle: Accessible release artifact tree
+  accDescr: Packages for Tokyo, Seoul, and Sao Paulo.
+    releases/
+        東京/
+            android.aar
+        서울/
+            shared.framework
+        São Paulo/
+            web.zip
+`,
+  },
+  {
+    id: 'rc_treeview_themed_highlights',
+    kind: 'treeview',
+    title: 'Themed highlighted tree',
+    scenario: 'Scoped spacing and theme variables style highlighted rows and descriptions.',
+    aspectRatio: 1.65,
+    source: String.raw`
+---
+config:
+  treeView:
+    rowIndent: 24
+    paddingX: 8
+    paddingY: 6
+    lineThickness: 2
+  themeVariables:
+    treeView:
+      labelFontSize: 18px
+      labelColor: "#17324d"
+      lineColor: "#486581"
+      descriptionColor: "#2f855a"
+      highlightBg: "rgba(255, 193, 7, 0.15)"
+      highlightStroke: "#d69e2e"
+---
+treeView-beta
+    validation/
+        parser-tests.kt :::highlight ## syntax coverage
+        visual-tests.kt ## geometry coverage
+        release-gates.kt ## publication coverage
+`,
+  },
+  {
     id: 'rc_swimlanes_support_escalation',
     kind: 'swimlanes',
     title: 'Support escalation',

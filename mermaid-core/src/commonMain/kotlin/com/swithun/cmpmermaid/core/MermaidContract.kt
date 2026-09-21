@@ -297,6 +297,18 @@ data class MermaidRailroadOptions(
     val markerRadius: Float = 5f,
 )
 
+data class MermaidTreeViewOptions(
+    val useMaxWidth: Boolean = true,
+    val rowIndent: Float = 10f,
+    val paddingX: Float = 5f,
+    val paddingY: Float = 5f,
+    val lineThickness: Float = 1f,
+    val showIcons: Boolean = false,
+    val defaultIconPack: String = "",
+    val filenameIcons: Map<String, String> = emptyMap(),
+    val extensionIcons: Map<String, String> = emptyMap(),
+)
+
 data class MermaidTreemapOptions(
     val useMaxWidth: Boolean = true,
     val padding: Float = 10f,
@@ -456,6 +468,7 @@ data class MermaidRenderOptions(
     val architecture: MermaidArchitectureOptions = MermaidArchitectureOptions(),
     val c4: MermaidC4Options = MermaidC4Options(),
     val railroad: MermaidRailroadOptions = MermaidRailroadOptions(),
+    val treeView: MermaidTreeViewOptions = MermaidTreeViewOptions(),
     val treemap: MermaidTreemapOptions = MermaidTreemapOptions(),
     val venn: MermaidVennOptions = MermaidVennOptions(),
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),

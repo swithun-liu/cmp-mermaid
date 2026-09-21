@@ -801,6 +801,44 @@ internal val railroadDiagramDocsSpec = DiagramDocsSpec(
     initialTheme = MermaidThemePreset.Default,
 )
 
+internal val treeViewDiagramDocsSpec = DiagramDocsSpec(
+    id = "treeview",
+    title = "TreeView",
+    syntaxTitle = "TreeView diagrams - Basic Syntax",
+    description = "Render indentation or box-drawing based hierarchies with directories, " +
+        "file icons, highlighted rows, descriptions, and accessibility metadata.",
+    documentationUrl = "https://mermaid.js.org/syntax/treeView.html",
+    galleryTitle = "TreeView diagram gallery",
+    cases = treeViewDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 4f / 3f,
+        )
+    },
+    syntaxLessons = lessons(
+        treeViewDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 4f / 3f,
+            )
+        },
+        listOf(
+            "Indentation controls hierarchy and a trailing slash marks directories.",
+            "Standard and heavy box-drawing trees are normalized before parsing.",
+            "Class, icon, and description annotations may be combined on one node.",
+            "Default icons, filename maps, extension maps, and explicit overrides share one resolver.",
+            "Title and accessibility metadata are retained in the native scene.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
 internal val ishikawaDiagramDocsSpec = DiagramDocsSpec(
     id = "ishikawa",
     title = "Ishikawa",

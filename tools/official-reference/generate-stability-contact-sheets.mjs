@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import {
+  existsSync,
   mkdirSync,
   readFileSync,
   statSync,
@@ -45,6 +46,7 @@ const kinds = [
   'architecture',
   'c4',
   'railroad',
+  'treeview',
   'xychart',
   'quadrant',
   'timeline',
@@ -76,6 +78,7 @@ const kindTitles = {
   architecture: 'Architecture',
   c4: 'C4',
   railroad: 'Railroad',
+  treeview: 'TreeView',
   xychart: 'XY Chart',
   quadrant: 'Quadrant Chart',
   timeline: 'Timeline',
@@ -107,6 +110,10 @@ const selectedKinds = kinds.filter(
 if (selectedKinds.length === 0) {
   throw new Error(`Unsupported CORPUS_KIND: ${corpusKind}`);
 }
+const manifestFileName = corpusSource === 'visual-parity'
+  ? 'visual-parity-manifest.json'
+  : 'manifest.json';
+const manifestPath = resolve(outputDirectory, manifestFileName);
 
 mkdirSync(outputDirectory, { recursive: true });
 const manifest = [];
@@ -127,7 +134,7 @@ try {
       const pageNumber = pageIndex + 1;
       const htmlPath = resolve(
         outputDirectory,
-        `.${kind}-contact-sheet-${pageNumber}.html`,
+        `.${corpusSource}-${kind}-contact-sheet-${pageNumber}.html`,
       );
       writeFileSync(
         htmlPath,
@@ -165,29 +172,59 @@ try {
   await browser.close();
 }
 
+const persistedManifest = mergePartialManifest(manifestPath, manifest);
 writeFileSync(
-  resolve(
-    outputDirectory,
-    corpusSource === 'visual-parity'
-      ? 'visual-parity-manifest.json'
-      : 'manifest.json',
-  ),
+  manifestPath,
   `${JSON.stringify({
     mermaidVersion: '12.0.0',
     corpusSource,
     generatedAt: new Date().toISOString(),
-    caseCount: manifest.length,
-    cases: manifest.map(({ nativePath, officialPath, source, ...entry }) => ({
+    caseCount: persistedManifest.length,
+    cases: persistedManifest.map(({ nativePath, officialPath, source, ...entry }) => ({
       ...entry,
       sourceSha256: entry.sourceSha256 ?? sha256Value(source),
     })),
   }, null, 2)}\n`,
 );
-if (corpusSource === 'visual-parity') {
+if (corpusSource === 'visual-parity' && corpusKind === 'all') {
   writeFileSync(
     resolve(outputDirectory, 'visual-parity-evidence.md'),
-    renderEvidenceIndex(),
+    renderEvidenceIndex(persistedManifest, kinds),
   );
+}
+
+function mergePartialManifest(path, currentRecords) {
+  if (corpusKind === 'all' || !existsSync(path)) {
+    return currentRecords;
+  }
+  const previous = JSON.parse(readFileSync(path, 'utf8'));
+  if (!Array.isArray(previous.cases)) {
+    throw new Error(`Existing manifest has no cases array: ${path}`);
+  }
+  const recordsByKind = new Map(
+    selectedKinds.map((kind) => [
+      kind,
+      currentRecords.filter((entry) => entry.kind === kind),
+    ]),
+  );
+  const emittedKinds = new Set();
+  const mergedRecords = [];
+  for (const entry of previous.cases) {
+    if (!selectedKinds.includes(entry.kind)) {
+      mergedRecords.push(entry);
+      continue;
+    }
+    if (!emittedKinds.has(entry.kind)) {
+      mergedRecords.push(...(recordsByKind.get(entry.kind) ?? []));
+      emittedKinds.add(entry.kind);
+    }
+  }
+  for (const kind of selectedKinds) {
+    if (!emittedKinds.has(kind)) {
+      mergedRecords.push(...(recordsByKind.get(kind) ?? []));
+    }
+  }
+  return mergedRecords;
 }
 
 function captureRecord(entry) {
@@ -281,10 +318,10 @@ function renderContactSheet(kind, records, pageNumber, pageCount) {
 </html>`;
 }
 
-function renderEvidenceIndex() {
-  const caseCount = manifest.length;
+function renderEvidenceIndex(records, evidenceKinds) {
+  const caseCount = records.length;
   const screenshotCount = caseCount * 2;
-  const sections = selectedKinds.map((kind) => {
+  const sections = evidenceKinds.map((kind) => {
     const pageCount = Math.ceil(
       cases.filter((entry) => entry.kind === kind).length / pageSize,
     );

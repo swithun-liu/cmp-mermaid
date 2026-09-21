@@ -110,6 +110,30 @@ export const requiredFeaturesByKind = {
     'unicode',
     'entities',
   ],
+  treeview: [
+    'treeview-beta-header',
+    'indentation',
+    'box-drawing',
+    'heavy-box-drawing',
+    'files',
+    'directories',
+    'quoted-labels',
+    'bare-labels',
+    'class-annotation',
+    'highlight',
+    'description',
+    'explicit-icons',
+    'default-icons',
+    'icon-suppression',
+    'filename-icons',
+    'extension-icons',
+    'frontmatter-config',
+    'theme',
+    'accessibility',
+    'comments',
+    'unicode',
+    'entities',
+  ],
   xychart: [
     'vertical',
     'horizontal',
@@ -1776,6 +1800,179 @@ railroad-ebnf-beta
     source: String.raw`
 railroad-beta
   comparison = sequence(terminal("&lt;"), terminal("&amp;"), special("&gt;")) ;
+`,
+  },
+];
+
+const treeViewCases = [
+  {
+    id: 'prod_treeview_indented_project',
+    kind: 'treeview',
+    title: 'Indented project tree',
+    scenario: 'Indentation builds a hierarchy of directories and files.',
+    aspectRatio: 1.4,
+    features: ['treeview-beta-header', 'indentation', 'files', 'directories', 'bare-labels'],
+    expectedTexts: ['/', 'project', 'src', 'index.ts', 'README.md'],
+    source: String.raw`
+treeView-beta
+    project/
+        src/
+            index.ts
+        README.md
+`,
+  },
+  {
+    id: 'prod_treeview_quoted_names',
+    kind: 'treeview',
+    title: 'Quoted names',
+    scenario: 'Quoted and bare labels preserve spaces while directory suffixes remain semantic.',
+    aspectRatio: 1.5,
+    features: ['indentation', 'quoted-labels', 'bare-labels', 'directories'],
+    expectedTexts: ['my project', 'folder with spaces', 'plain file.md'],
+    source: String.raw`
+treeView-beta
+    "my project/"
+        "folder with spaces/"
+            plain file.md
+`,
+  },
+  {
+    id: 'prod_treeview_box_drawing',
+    kind: 'treeview',
+    title: 'Box-drawing tree',
+    scenario: 'Standard tree-command glyphs are normalized to indentation.',
+    aspectRatio: 1.4,
+    features: ['box-drawing', 'files', 'directories'],
+    expectedTexts: ['packages', 'core', 'Engine.kt', 'README.md'],
+    source: String.raw`
+treeView-beta
+├── packages/
+│   └── core/
+│       └── Engine.kt
+└── README.md
+`,
+  },
+  {
+    id: 'prod_treeview_heavy_box_drawing',
+    kind: 'treeview',
+    title: 'Heavy box-drawing tree',
+    scenario: 'Heavy Unicode branch and continuation glyphs preserve nesting.',
+    aspectRatio: 1.4,
+    features: ['heavy-box-drawing', 'unicode'],
+    expectedTexts: [
+      'services',
+      'core.kt',
+      'verify.kt',
+      'generated-integration-validation-results.json',
+    ],
+    source: String.raw`
+treeView-beta
+┣━━ services/
+┃   ┣━━ core.kt
+┃   ┣━━ verify.kt
+┃   ┗━━ generated-integration-validation-results.json
+┗━━ README.md
+`,
+  },
+  {
+    id: 'prod_treeview_highlight',
+    kind: 'treeview',
+    title: 'Highlighted source node',
+    scenario: 'The highlight class expands its background across the rendered tree.',
+    aspectRatio: 1.5,
+    features: ['class-annotation', 'highlight', 'description'],
+    expectedTexts: ['application', 'App.kt', 'main component', 'Routes.kt', 'navigation table'],
+    source: String.raw`
+treeView-beta
+    application/
+        App.kt :::highlight ## main component
+        Routes.kt ## navigation table
+`,
+  },
+  {
+    id: 'prod_treeview_explicit_icons',
+    kind: 'treeview',
+    title: 'Explicit icons',
+    scenario: 'Explicit built-in and registered-pack references override default icon selection.',
+    aspectRatio: 1.5,
+    features: [
+      'explicit-icons',
+      'default-icons',
+      'icon-suppression',
+      'frontmatter-config',
+    ],
+    expectedTexts: ['assets', 'App.tsx', 'manifest.json', 'hidden.txt'],
+    source: String.raw`
+---
+config:
+  treeView:
+    showIcons: true
+---
+treeView-beta
+    assets/ icon(folder)
+        App.tsx icon(file)
+        manifest.json icon(file)
+        hidden.txt icon(none)
+`,
+  },
+  {
+    id: 'prod_treeview_icon_maps',
+    kind: 'treeview',
+    title: 'Configured icon maps',
+    scenario: 'Filename matches override case-insensitive extension mappings.',
+    aspectRatio: 1.6,
+    features: [
+      'filename-icons',
+      'extension-icons',
+      'default-icons',
+      'frontmatter-config',
+      'theme',
+    ],
+    expectedTexts: ['Dockerfile', 'module.ts', 'notes.txt'],
+    source: String.raw`
+---
+config:
+  treeView:
+    showIcons: true
+    filenameIcons:
+      Dockerfile: folder
+    extensionIcons:
+      .ts: file
+      .txt: none
+    useMaxWidth: false
+    rowIndent: 24
+    paddingX: 8
+    paddingY: 6
+    lineThickness: 2
+  themeVariables:
+    treeView:
+      labelFontSize: 18px
+      labelColor: "#123456"
+      lineColor: "#234567"
+---
+treeView-beta
+    Dockerfile ## exact filename mapping
+    module.ts ## extension mapping
+    notes.txt
+`,
+  },
+  {
+    id: 'prod_treeview_metadata',
+    kind: 'treeview',
+    title: 'Tree metadata',
+    scenario: 'Title, accessibility metadata, and comments coexist with the hierarchy.',
+    aspectRatio: 1.5,
+    features: ['accessibility', 'comments', 'unicode', 'entities'],
+    expectedTexts: ['文档', 'résumé &amp; notes.md', '서울.txt'],
+    source: String.raw`
+treeView-beta
+  title Source tree
+  accTitle: Accessible source tree
+  accDescr: Grouped project files
+    %% generated directory
+    文档/
+        résumé &amp; notes.md
+        서울.txt
 `,
   },
 ];
@@ -6794,6 +6991,7 @@ export const conformanceCases = [
   ...architectureCases,
   ...c4Cases,
   ...railroadCases,
+  ...treeViewCases,
   ...xyChartCases,
   ...quadrantCases,
   ...timelineCases,

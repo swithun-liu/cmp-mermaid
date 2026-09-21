@@ -104,6 +104,7 @@ private enum class DebugScreen {
     Architecture,
     C4,
     Railroad,
+    TreeView,
     Ishikawa,
     Cynefin,
     Block,
@@ -270,6 +271,12 @@ private val destinations = listOf(
         DebugScreen.Railroad,
         railroadDiagramDocsSpec,
         "IR, EBNF, ABNF, and PEG grammar visualizations",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.TreeView,
+        treeViewDiagramDocsSpec,
+        "Directory-like hierarchies with annotations, descriptions, and icons",
         DiagramStability.Beta,
     ),
     DiagramDestination(
