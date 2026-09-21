@@ -1,41 +1,41 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T04:34:48.785Z",
-  "caseCount": 275,
+  "generatedAt": "2026-09-21T05:28:23.130Z",
+  "caseCount": 353,
   "firstCaseId": "rc_flow_checkout_saga",
-  "lastCaseId": "prod_ishikawa_long_nested_labels",
-  "firstContentMillis": 628,
-  "scrollMillis": 12543,
-  "scrollEvents": 130,
+  "lastCaseId": "prod_agentflow_responsive_handoff",
+  "firstContentMillis": 972,
+  "scrollMillis": 19698,
+  "scrollEvents": 165,
   "reachedLastCase": true,
   "before": {
     "LayoutCount": 0,
     "RecalcStyleCount": 0,
-    "TaskDuration": 0.012225,
-    "JSHeapUsedSize": 21619468,
-    "JSHeapTotalSize": 22380544
+    "TaskDuration": 0.024004,
+    "JSHeapUsedSize": 24394572,
+    "JSHeapTotalSize": 25165824
   },
   "afterScroll": {
-    "LayoutCount": 12,
-    "RecalcStyleCount": 12,
-    "TaskDuration": 6.856729,
-    "JSHeapUsedSize": 54094868,
-    "JSHeapTotalSize": 114589696
+    "LayoutCount": 33,
+    "RecalcStyleCount": 33,
+    "TaskDuration": 9.181674,
+    "JSHeapUsedSize": 67767604,
+    "JSHeapTotalSize": 116326400
   },
   "afterGc": {
-    "LayoutCount": 12,
-    "RecalcStyleCount": 12,
-    "TaskDuration": 6.88089,
-    "JSHeapUsedSize": 32753208,
-    "JSHeapTotalSize": 34111488
+    "LayoutCount": 33,
+    "RecalcStyleCount": 33,
+    "TaskDuration": 9.201627,
+    "JSHeapUsedSize": 42136760,
+    "JSHeapTotalSize": 43974656
   },
-  "retainedJsHeapBytes": 11133740,
-  "peakProcessRssBytes": 2042920960,
-  "finalProcessRssBytes": 1960198144,
+  "retainedJsHeapBytes": 17742188,
+  "peakProcessRssBytes": 0,
+  "finalProcessRssBytes": 0,
   "errors": [],
   "thresholds": {
     "maximumFirstContentMillis": 15000,
-    "maximumScrollMillis": 15000,
+    "maximumScrollMillis": 28240,
     "maximumRetainedJsHeapBytes": 100663296
   }
 }

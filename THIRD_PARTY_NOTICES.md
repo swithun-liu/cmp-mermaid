@@ -5,7 +5,8 @@
 The KMP runtime contains Kotlin translations of selected Mermaid Flowchart,
 XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity
 Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap,
-Packet, Radar, Sankey, Treemap, and Venn parsing, layout-adapter, and
+Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling,
+Agentflow, Block, Swimlanes, and Architecture parsing, layout-adapter, and
 rendering algorithms.
 The reference-rendering tool also downloads Mermaid.js from npm. Mermaid.js
 itself is not embedded in the runtime libraries.
@@ -342,6 +343,37 @@ The corresponding source is available from the upstream `elkjs 0.9.3`
 release:
 
 https://github.com/kieler/elkjs/tree/0.9.3
+
+## cytoscape-fcose
+
+The KMP runtime contains a Kotlin adaptation of the seeded compound layout,
+alignment constraints, relative-placement constraints, and overlap handling
+used by Mermaid Architecture through `cytoscape-fcose 2.2.0`,
+`cose-base 2.2.0`, and `layout-base 2.0.1`.
+
+Copyright (c) 2018 - present, iVis-at-Bilkent.
+
+Copyright (c) 2019 - present, iVis@Bilkent.
+
+Copyright (c) 2019 iVis@Bilkent.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ## cytoscape-cose-bilkent
 

@@ -42,6 +42,7 @@ const corpusKind = process.env.CORPUS_KIND ?? 'all';
 const kinds = [
   'flowchart',
   'swimlanes',
+  'architecture',
   'xychart',
   'quadrant',
   'timeline',
@@ -70,6 +71,7 @@ const kinds = [
 const kindTitles = {
   flowchart: 'Flowchart',
   swimlanes: 'Swimlanes',
+  architecture: 'Architecture',
   xychart: 'XY Chart',
   quadrant: 'Quadrant Chart',
   timeline: 'Timeline',

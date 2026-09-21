@@ -4135,6 +4135,137 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_architecture_cloud_runtime",
+        diagramId = "architecture",
+        title = "Cloud runtime",
+        scenario = "Nested runtime groups connect an edge gateway to compute and persistence.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            architecture-beta
+              group cloud(cloud)[Cloud runtime]
+              group compute(server)[Compute] in cloud
+              group persistence(database)[Persistence] in cloud
+              service edge(internet)[Edge gateway] in cloud
+              service api(server)[Public API] in compute
+              service worker(server)[Worker] in compute
+              service data(database)[Primary data] in persistence
+              edge{group}:R --> L:api{group}
+              api:B --> T:worker
+              worker{group}:R --> L:data{group}
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_junction_routes",
+        diagramId = "architecture",
+        title = "Junction routes",
+        scenario = "Two invisible junctions branch and merge a multi-service route.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            architecture-beta
+              service ingress(internet)[Ingress]
+              junction fanout
+              service commands(server)[Commands]
+              service queries(server)[Queries]
+              junction merge
+              service store(database)[Store]
+              ingress:R --> L:fanout
+              fanout:T --> B:commands
+              fanout:B --> T:queries
+              commands:R --> L:merge
+              queries:R --> L:merge
+              merge:R --> L:store
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_alignment_grid",
+        diagramId = "architecture",
+        title = "Aligned processing grid",
+        scenario = "Combined row and column directives constrain six connected services.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            architecture-beta
+              service input_a(server)[Input A]
+              service input_b(server)[Input B]
+              service process_a(server)[Process A]
+              service process_b(server)[Process B]
+              service output_a(disk)[Output A]
+              service output_b(disk)[Output B]
+              input_a:B --> T:process_a
+              input_b:B --> T:process_b
+              process_a:B --> T:output_a
+              process_b:B --> T:output_b
+              align row input_a input_b
+              align row process_a process_b
+              align row output_a output_b
+              align column input_a process_a output_a
+              align column input_b process_b output_b
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_edge_contracts",
+        diagramId = "architecture",
+        title = "Directional edge contracts",
+        scenario = "Straight and bent routes combine labels, arrows, and bidirectional markers.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            architecture-beta
+              service client(internet)[Client]
+              service gateway(server)[Gateway]
+              service cache(disk)[Cache]
+              service database(database)[Database]
+              client:R --> L:gateway
+              gateway:B -[lookup]-> T:cache
+              cache:R <--> L:database
+              database:T <-- B:gateway
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_configured_regional",
+        diagramId = "architecture",
+        title = "Configured regional services",
+        scenario = "Seeded configuration, icon text, metadata, and Unicode labels share one group.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Regional service architecture
+            config:
+              architecture:
+                padding: 36
+                iconSize: 72
+                nodeSeparation: 96
+                idealEdgeLengthMultiplier: 1.6
+                edgeElasticity: 0.5
+                numIter: 1200
+                seed: 31
+            ---
+            architecture-beta
+              accTitle: Regional service architecture
+              accDescr: Requests move through Tokyo, Seoul, and Sao Paulo.
+              group regions(cloud)[Regions]
+              service tokyo "東京"[受付] in regions
+              service seoul(server)[서울 검토] in regions
+              service sao(database)[São Paulo] in regions
+              tokyo:R --> L:seoul
+              seoul:R -[承認]-> L:sao
+              align row tokyo seoul sao
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_swimlanes_support_escalation",
         diagramId = "swimlanes",
         title = "Support escalation",
@@ -8402,6 +8533,137 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         features = setOf(),
     ),
     StabilityCorpusCase(
+        id = "rc_architecture_cloud_runtime",
+        diagramId = "architecture",
+        title = "Cloud runtime",
+        scenario = "Nested runtime groups connect an edge gateway to compute and persistence.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            architecture-beta
+              group cloud(cloud)[Cloud runtime]
+              group compute(server)[Compute] in cloud
+              group persistence(database)[Persistence] in cloud
+              service edge(internet)[Edge gateway] in cloud
+              service api(server)[Public API] in compute
+              service worker(server)[Worker] in compute
+              service data(database)[Primary data] in persistence
+              edge{group}:R --> L:api{group}
+              api:B --> T:worker
+              worker{group}:R --> L:data{group}
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_junction_routes",
+        diagramId = "architecture",
+        title = "Junction routes",
+        scenario = "Two invisible junctions branch and merge a multi-service route.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            architecture-beta
+              service ingress(internet)[Ingress]
+              junction fanout
+              service commands(server)[Commands]
+              service queries(server)[Queries]
+              junction merge
+              service store(database)[Store]
+              ingress:R --> L:fanout
+              fanout:T --> B:commands
+              fanout:B --> T:queries
+              commands:R --> L:merge
+              queries:R --> L:merge
+              merge:R --> L:store
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_alignment_grid",
+        diagramId = "architecture",
+        title = "Aligned processing grid",
+        scenario = "Combined row and column directives constrain six connected services.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            architecture-beta
+              service input_a(server)[Input A]
+              service input_b(server)[Input B]
+              service process_a(server)[Process A]
+              service process_b(server)[Process B]
+              service output_a(disk)[Output A]
+              service output_b(disk)[Output B]
+              input_a:B --> T:process_a
+              input_b:B --> T:process_b
+              process_a:B --> T:output_a
+              process_b:B --> T:output_b
+              align row input_a input_b
+              align row process_a process_b
+              align row output_a output_b
+              align column input_a process_a output_a
+              align column input_b process_b output_b
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_edge_contracts",
+        diagramId = "architecture",
+        title = "Directional edge contracts",
+        scenario = "Straight and bent routes combine labels, arrows, and bidirectional markers.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            architecture-beta
+              service client(internet)[Client]
+              service gateway(server)[Gateway]
+              service cache(disk)[Cache]
+              service database(database)[Database]
+              client:R --> L:gateway
+              gateway:B -[lookup]-> T:cache
+              cache:R <--> L:database
+              database:T <-- B:gateway
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_architecture_configured_regional",
+        diagramId = "architecture",
+        title = "Configured regional services",
+        scenario = "Seeded configuration, icon text, metadata, and Unicode labels share one group.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            ---
+            title: Regional service architecture
+            config:
+              architecture:
+                padding: 36
+                iconSize: 72
+                nodeSeparation: 96
+                idealEdgeLengthMultiplier: 1.6
+                edgeElasticity: 0.5
+                numIter: 1200
+                seed: 31
+            ---
+            architecture-beta
+              accTitle: Regional service architecture
+              accDescr: Requests move through Tokyo, Seoul, and Sao Paulo.
+              group regions(cloud)[Regions]
+              service tokyo "東京"[受付] in regions
+              service seoul(server)[서울 검토] in regions
+              service sao(database)[São Paulo] in regions
+              tokyo:R --> L:seoul
+              seoul:R -[承認]-> L:sao
+              align row tokyo seoul sao
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
         id = "rc_swimlanes_support_escalation",
         diagramId = "swimlanes",
         title = "Support escalation",
@@ -8947,6 +9209,180 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         """.trimIndent(),
         expectedTexts = listOf("受付", "검토", "São Paulo", "承認"),
         features = setOf("accessibility", "unicode", "edge-labels", "top-level-lanes", "cross-lane-edges"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_service_mesh",
+        diagramId = "architecture",
+        title = "Service mesh",
+        scenario = "Built-in service icons connect through explicit horizontal and vertical ports.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            architecture-beta
+              service gateway(internet)[Gateway]
+              service app(server)[Application]
+              service database(database)[Database]
+              gateway:R --> L:app
+              app:B --> T:database
+        """.trimIndent(),
+        expectedTexts = listOf("Gateway", "Application", "Database"),
+        features = setOf("architecture-beta-header", "services", "built-in-icons", "directional-ports", "arrowheads"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_nested_groups",
+        diagramId = "architecture",
+        title = "Nested platform groups",
+        scenario = "Nested compute and storage groups retain compound bounds and boundary routes.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            architecture-beta
+              group platform(cloud)[Platform]
+              group compute(server)[Compute] in platform
+              group storage(disk)[Storage] in platform
+              service api(server)[API] in compute
+              service worker(server)[Worker] in compute
+              service primary(database)[Primary] in storage
+              api:R --> L:worker
+              worker{group}:R --> L:primary{group}
+        """.trimIndent(),
+        expectedTexts = listOf("Platform", "Compute", "Storage", "Worker"),
+        features = setOf("groups", "nested-groups", "group-boundary-modifier", "built-in-icons"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_junction_fanout",
+        diagramId = "architecture",
+        title = "Junction fan-out",
+        scenario = "Invisible junctions split a gateway route across two services.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            architecture-beta
+              group runtime(cloud)[Runtime]
+              service gateway(internet)[Gateway] in runtime
+              junction split in runtime
+              service api(server)[API] in runtime
+              service jobs(server)[Jobs] in runtime
+              gateway:B --> T:split
+              split:R --> L:api
+              split:B --> T:jobs
+        """.trimIndent(),
+        expectedTexts = listOf("Gateway", "API", "Jobs"),
+        features = setOf("junctions", "directional-ports", "arrowheads"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_edge_semantics",
+        diagramId = "architecture",
+        title = "Architecture edge semantics",
+        scenario = "One-way, incoming, bidirectional, bent, and labelled edges share a diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            architecture-beta
+              service client(internet)[Client]
+              service api(server)[API]
+              service cache(disk)[Cache]
+              service database(database)[Database]
+              client:R --> L:api
+              api:B -[cached read]-> T:cache
+              cache:R <--> L:database
+        """.trimIndent(),
+        expectedTexts = listOf("Client", "Cache", "Database", "cached read"),
+        features = setOf("directional-ports", "arrowheads", "bidirectional-edges", "edge-labels"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_row_alignment",
+        diagramId = "architecture",
+        title = "Aligned service row",
+        scenario = "A declared row aligns three sibling services while preserving order.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            architecture-beta
+              group delivery(cloud)[Delivery]
+              service source(server)[Source] in delivery
+              service build(server)[Build] in delivery
+              service publish(internet)[Publish] in delivery
+              source:R --> L:build
+              build:R --> L:publish
+              align row source build publish
+        """.trimIndent(),
+        expectedTexts = listOf("Source", "Build", "Publish"),
+        features = setOf("align-row", "groups", "services"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_grid_alignment",
+        diagramId = "architecture",
+        title = "Architecture alignment grid",
+        scenario = "Row and column hints combine into a constrained service grid.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            architecture-beta
+              service source_a(server)[Source A]
+              service source_b(server)[Source B]
+              service database_a(database)[Database A]
+              service database_b(database)[Database B]
+              source_a:B --> T:database_a
+              source_b:B --> T:database_b
+              align row source_a source_b
+              align row database_a database_b
+              align column source_a database_a
+              align column source_b database_b
+        """.trimIndent(),
+        expectedTexts = listOf("Source A", "Source B", "Database A", "Database B"),
+        features = setOf("align-row", "align-column", "directional-ports"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_configured_icons",
+        diagramId = "architecture",
+        title = "Configured architecture icons",
+        scenario = "Scoped sizing and force controls apply to icon text and deterministic layout.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              architecture:
+                padding: 28
+                iconSize: 64
+                fontSize: 14
+                nodeSeparation: 85
+                idealEdgeLengthMultiplier: 1.8
+                edgeElasticity: 0.55
+                numIter: 800
+                seed: 23
+            ---
+            architecture-beta
+              service source "SRC"[Source]
+              service processor(server)[Processor]
+              service artifact(disk)[Artifact]
+              source:R --> L:processor
+              processor:R -[publishes]-> L:artifact
+        """.trimIndent(),
+        expectedTexts = listOf("SRC", "Processor", "Artifact", "publishes"),
+        features = setOf("icon-text", "frontmatter-config", "deterministic-seed", "edge-labels"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_architecture_accessible_unicode",
+        diagramId = "architecture",
+        title = "Accessible regional architecture",
+        scenario = "Accessibility metadata and Unicode labels accompany a grouped service route.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            architecture-beta
+              accTitle: Regional architecture
+              accDescr: Work moves through three regional services.
+              group regions(cloud)[Regional services]
+              service tokyo(internet)[受付] in regions
+              service seoul(server)[검토] in regions
+              service sao(database)[São Paulo 承認] in regions
+              tokyo:R --> L:seoul
+              seoul:R --> L:sao
+        """.trimIndent(),
+        expectedTexts = listOf("受付", "검토", "São Paulo", "承認"),
+        features = setOf("accessibility", "unicode", "groups", "built-in-icons"),
     ),
     StabilityCorpusCase(
         id = "prod_xychart_mixed_vertical_api_capacity",
@@ -13888,6 +14324,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
         val kinds = listOf(
             "flowchart",
             "swimlanes",
+            "architecture",
             "xychart",
             "quadrant",
             "timeline",
@@ -13961,6 +14398,7 @@ private fun addVisualParityVariation(
 ): String = when (kind) {
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "swimlanes" -> appendFlowchartEvidence(source, evidenceId, label)
+    "architecture" -> replaceArchitectureVisualParityServiceIcon(source, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0
@@ -14009,6 +14447,18 @@ private fun addVisualParityVariation(
         label = label,
     )
     else -> source
+}
+
+private fun replaceArchitectureVisualParityServiceIcon(
+    source: String,
+    label: String,
+): String {
+    val serviceIconPattern =
+        Regex("""(?m)^(\s*service\s+[A-Za-z_][\w-]*)\([^)]+\)""")
+    val match = serviceIconPattern.find(source) ?: return source
+    val replacement =
+        "${match.groupValues[1]} \"${escapeQuotedVisualParityLabel(label)}\""
+    return source.replaceRange(match.range, replacement)
 }
 
 private fun appendAgentflowVisualParityEvidence(

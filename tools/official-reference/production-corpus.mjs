@@ -36,6 +36,26 @@ export const requiredFeaturesByKind = {
     'accessibility',
     'unicode',
   ],
+  architecture: [
+    'architecture-beta-header',
+    'services',
+    'built-in-icons',
+    'icon-text',
+    'groups',
+    'nested-groups',
+    'junctions',
+    'directional-ports',
+    'arrowheads',
+    'bidirectional-edges',
+    'edge-labels',
+    'group-boundary-modifier',
+    'align-row',
+    'align-column',
+    'frontmatter-config',
+    'deterministic-seed',
+    'accessibility',
+    'unicode',
+  ],
   xychart: [
     'vertical',
     'horizontal',
@@ -1018,6 +1038,196 @@ swimlane-beta LR
     approve[承認]
   end
   tokyo -->|검증| seoul --> approve
+`,
+  },
+];
+
+const architectureCases = [
+  {
+    id: 'prod_architecture_service_mesh',
+    kind: 'architecture',
+    title: 'Service mesh',
+    scenario: 'Built-in service icons connect through explicit horizontal and vertical ports.',
+    aspectRatio: 1.6,
+    features: [
+      'architecture-beta-header',
+      'services',
+      'built-in-icons',
+      'directional-ports',
+      'arrowheads',
+    ],
+    expectedTexts: ['Gateway', 'Application', 'Database'],
+    source: String.raw`
+architecture-beta
+  service gateway(internet)[Gateway]
+  service app(server)[Application]
+  service database(database)[Database]
+  gateway:R --> L:app
+  app:B --> T:database
+`,
+  },
+  {
+    id: 'prod_architecture_nested_groups',
+    kind: 'architecture',
+    title: 'Nested platform groups',
+    scenario: 'Nested compute and storage groups retain compound bounds and boundary routes.',
+    aspectRatio: 1.7,
+    features: [
+      'groups',
+      'nested-groups',
+      'group-boundary-modifier',
+      'built-in-icons',
+    ],
+    expectedTexts: ['Platform', 'Compute', 'Storage', 'Worker'],
+    source: String.raw`
+architecture-beta
+  group platform(cloud)[Platform]
+  group compute(server)[Compute] in platform
+  group storage(disk)[Storage] in platform
+  service api(server)[API] in compute
+  service worker(server)[Worker] in compute
+  service primary(database)[Primary] in storage
+  api:R --> L:worker
+  worker{group}:R --> L:primary{group}
+`,
+  },
+  {
+    id: 'prod_architecture_junction_fanout',
+    kind: 'architecture',
+    title: 'Junction fan-out',
+    scenario: 'Invisible junctions split a gateway route across two services.',
+    aspectRatio: 1.45,
+    features: ['junctions', 'directional-ports', 'arrowheads'],
+    expectedTexts: ['Gateway', 'API', 'Jobs'],
+    source: String.raw`
+architecture-beta
+  group runtime(cloud)[Runtime]
+  service gateway(internet)[Gateway] in runtime
+  junction split in runtime
+  service api(server)[API] in runtime
+  service jobs(server)[Jobs] in runtime
+  gateway:B --> T:split
+  split:R --> L:api
+  split:B --> T:jobs
+`,
+  },
+  {
+    id: 'prod_architecture_edge_semantics',
+    kind: 'architecture',
+    title: 'Architecture edge semantics',
+    scenario: 'One-way, incoming, bidirectional, bent, and labelled edges share a diagram.',
+    aspectRatio: 1.7,
+    features: [
+      'directional-ports',
+      'arrowheads',
+      'bidirectional-edges',
+      'edge-labels',
+    ],
+    expectedTexts: ['Client', 'Cache', 'Database', 'cached read'],
+    source: String.raw`
+architecture-beta
+  service client(internet)[Client]
+  service api(server)[API]
+  service cache(disk)[Cache]
+  service database(database)[Database]
+  client:R --> L:api
+  api:B -[cached read]-> T:cache
+  cache:R <--> L:database
+`,
+  },
+  {
+    id: 'prod_architecture_row_alignment',
+    kind: 'architecture',
+    title: 'Aligned service row',
+    scenario: 'A declared row aligns three sibling services while preserving order.',
+    aspectRatio: 1.8,
+    features: ['align-row', 'groups', 'services'],
+    expectedTexts: ['Source', 'Build', 'Publish'],
+    source: String.raw`
+architecture-beta
+  group delivery(cloud)[Delivery]
+  service source(server)[Source] in delivery
+  service build(server)[Build] in delivery
+  service publish(internet)[Publish] in delivery
+  source:R --> L:build
+  build:R --> L:publish
+  align row source build publish
+`,
+  },
+  {
+    id: 'prod_architecture_grid_alignment',
+    kind: 'architecture',
+    title: 'Architecture alignment grid',
+    scenario: 'Row and column hints combine into a constrained service grid.',
+    aspectRatio: 1.4,
+    features: ['align-row', 'align-column', 'directional-ports'],
+    expectedTexts: ['Source A', 'Source B', 'Database A', 'Database B'],
+    source: String.raw`
+architecture-beta
+  service source_a(server)[Source A]
+  service source_b(server)[Source B]
+  service database_a(database)[Database A]
+  service database_b(database)[Database B]
+  source_a:B --> T:database_a
+  source_b:B --> T:database_b
+  align row source_a source_b
+  align row database_a database_b
+  align column source_a database_a
+  align column source_b database_b
+`,
+  },
+  {
+    id: 'prod_architecture_configured_icons',
+    kind: 'architecture',
+    title: 'Configured architecture icons',
+    scenario: 'Scoped sizing and force controls apply to icon text and deterministic layout.',
+    aspectRatio: 1.6,
+    features: [
+      'icon-text',
+      'frontmatter-config',
+      'deterministic-seed',
+      'edge-labels',
+    ],
+    expectedTexts: ['SRC', 'Processor', 'Artifact', 'publishes'],
+    source: String.raw`
+---
+config:
+  architecture:
+    padding: 28
+    iconSize: 64
+    fontSize: 14
+    nodeSeparation: 85
+    idealEdgeLengthMultiplier: 1.8
+    edgeElasticity: 0.55
+    numIter: 800
+    seed: 23
+---
+architecture-beta
+  service source "SRC"[Source]
+  service processor(server)[Processor]
+  service artifact(disk)[Artifact]
+  source:R --> L:processor
+  processor:R -[publishes]-> L:artifact
+`,
+  },
+  {
+    id: 'prod_architecture_accessible_unicode',
+    kind: 'architecture',
+    title: 'Accessible regional architecture',
+    scenario: 'Accessibility metadata and Unicode labels accompany a grouped service route.',
+    aspectRatio: 1.7,
+    features: ['accessibility', 'unicode', 'groups', 'built-in-icons'],
+    expectedTexts: ['受付', '검토', 'São Paulo', '承認'],
+    source: String.raw`
+architecture-beta
+  accTitle: Regional architecture
+  accDescr: Work moves through three regional services.
+  group regions(cloud)[Regional services]
+  service tokyo(internet)[受付] in regions
+  service seoul(server)[검토] in regions
+  service sao(database)[São Paulo 承認] in regions
+  tokyo:R --> L:seoul
+  seoul:R --> L:sao
 `,
   },
 ];
@@ -6033,6 +6243,7 @@ kanban
 export const conformanceCases = [
   ...flowchartCases,
   ...swimlaneCases,
+  ...architectureCases,
   ...xyChartCases,
   ...quadrantCases,
   ...timelineCases,

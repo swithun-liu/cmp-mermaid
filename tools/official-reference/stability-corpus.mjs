@@ -3808,6 +3808,122 @@ agentflow-beta LR
 `,
   },
   {
+    id: 'rc_architecture_cloud_runtime',
+    kind: 'architecture',
+    title: 'Cloud runtime',
+    scenario: 'Nested runtime groups connect an edge gateway to compute and persistence.',
+    aspectRatio: 1.7,
+    source: String.raw`
+architecture-beta
+  group cloud(cloud)[Cloud runtime]
+  group compute(server)[Compute] in cloud
+  group persistence(database)[Persistence] in cloud
+  service edge(internet)[Edge gateway] in cloud
+  service api(server)[Public API] in compute
+  service worker(server)[Worker] in compute
+  service data(database)[Primary data] in persistence
+  edge{group}:R --> L:api{group}
+  api:B --> T:worker
+  worker{group}:R --> L:data{group}
+`,
+  },
+  {
+    id: 'rc_architecture_junction_routes',
+    kind: 'architecture',
+    title: 'Junction routes',
+    scenario: 'Two invisible junctions branch and merge a multi-service route.',
+    aspectRatio: 1.55,
+    source: String.raw`
+architecture-beta
+  service ingress(internet)[Ingress]
+  junction fanout
+  service commands(server)[Commands]
+  service queries(server)[Queries]
+  junction merge
+  service store(database)[Store]
+  ingress:R --> L:fanout
+  fanout:T --> B:commands
+  fanout:B --> T:queries
+  commands:R --> L:merge
+  queries:R --> L:merge
+  merge:R --> L:store
+`,
+  },
+  {
+    id: 'rc_architecture_alignment_grid',
+    kind: 'architecture',
+    title: 'Aligned processing grid',
+    scenario: 'Combined row and column directives constrain six connected services.',
+    aspectRatio: 1.45,
+    source: String.raw`
+architecture-beta
+  service input_a(server)[Input A]
+  service input_b(server)[Input B]
+  service process_a(server)[Process A]
+  service process_b(server)[Process B]
+  service output_a(disk)[Output A]
+  service output_b(disk)[Output B]
+  input_a:B --> T:process_a
+  input_b:B --> T:process_b
+  process_a:B --> T:output_a
+  process_b:B --> T:output_b
+  align row input_a input_b
+  align row process_a process_b
+  align row output_a output_b
+  align column input_a process_a output_a
+  align column input_b process_b output_b
+`,
+  },
+  {
+    id: 'rc_architecture_edge_contracts',
+    kind: 'architecture',
+    title: 'Directional edge contracts',
+    scenario: 'Straight and bent routes combine labels, arrows, and bidirectional markers.',
+    aspectRatio: 1.7,
+    source: String.raw`
+architecture-beta
+  service client(internet)[Client]
+  service gateway(server)[Gateway]
+  service cache(disk)[Cache]
+  service database(database)[Database]
+  client:R --> L:gateway
+  gateway:B -[lookup]-> T:cache
+  cache:R <--> L:database
+  database:T <-- B:gateway
+`,
+  },
+  {
+    id: 'rc_architecture_configured_regional',
+    kind: 'architecture',
+    title: 'Configured regional services',
+    scenario: 'Seeded configuration, icon text, metadata, and Unicode labels share one group.',
+    aspectRatio: 1.8,
+    source: String.raw`
+---
+title: Regional service architecture
+config:
+  architecture:
+    padding: 36
+    iconSize: 72
+    nodeSeparation: 96
+    idealEdgeLengthMultiplier: 1.6
+    edgeElasticity: 0.5
+    numIter: 1200
+    seed: 31
+---
+architecture-beta
+  accTitle: Regional service architecture
+  accDescr: Requests move through Tokyo, Seoul, and Sao Paulo.
+  group regions(cloud)[Regions]
+  service tokyo "東京"[受付] in regions
+  service seoul(server)[서울 검토] in regions
+  service sao(database)[São Paulo] in regions
+  tokyo:R --> L:seoul
+  seoul:R -[承認]-> L:sao
+  align row tokyo seoul sao
+`,
+  },
+  {
     id: 'rc_swimlanes_support_escalation',
     kind: 'swimlanes',
     title: 'Support escalation',

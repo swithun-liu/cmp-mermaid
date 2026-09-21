@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 6,656 source cases and
-13,312 screenshots from the large-scale
+This index contains 6,912 source cases and
+13,824 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,14 +13,14 @@ Each type combines 13 or 14 complex structural seeds with 20 visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are not
 presented as 256 unrelated topologies.
 
-All 26 implemented families have completed the replacement detail gate and
+All 27 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`6,656/6,656` pairs: `5,850 automatic pass / 806 manually reviewed /
-0 unresolved` across 416 contact sheets. Block contributes three
+`6,912/6,912` pairs: `6,106 automatic pass / 806 manually reviewed /
+0 unresolved` across 432 contact sheets. Block contributes three
 paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
 acceptances caused by the documented title/payload `text-segmentation`
 adaptation; Swimlanes contributes 60 text-position reviews along semantically
-equivalent orthogonal routes.
+equivalent orthogonal routes. Architecture contributes 256 automatic passes.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -100,6 +100,49 @@ the sheets. All 16 pages below were manually reviewed.
 ![Swimlanes visual parity page 15](swimlanes-visual-parity-15.jpg)
 
 ![Swimlanes visual parity page 16](swimlanes-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Architecture - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.020-1.232`, height `0.996-1.236`, foreground ink `0.986-1.584`.
+Raw [detail](architecture-visual-parity-detail.json) and
+[geometry](architecture-visual-parity-geometry.json) reports are published
+with the sheets. All 16 pages below were manually reviewed.
+
+![Architecture visual parity page 01](architecture-visual-parity-01.jpg)
+
+![Architecture visual parity page 02](architecture-visual-parity-02.jpg)
+
+![Architecture visual parity page 03](architecture-visual-parity-03.jpg)
+
+![Architecture visual parity page 04](architecture-visual-parity-04.jpg)
+
+![Architecture visual parity page 05](architecture-visual-parity-05.jpg)
+
+![Architecture visual parity page 06](architecture-visual-parity-06.jpg)
+
+![Architecture visual parity page 07](architecture-visual-parity-07.jpg)
+
+![Architecture visual parity page 08](architecture-visual-parity-08.jpg)
+
+![Architecture visual parity page 09](architecture-visual-parity-09.jpg)
+
+![Architecture visual parity page 10](architecture-visual-parity-10.jpg)
+
+![Architecture visual parity page 11](architecture-visual-parity-11.jpg)
+
+![Architecture visual parity page 12](architecture-visual-parity-12.jpg)
+
+![Architecture visual parity page 13](architecture-visual-parity-13.jpg)
+
+![Architecture visual parity page 14](architecture-visual-parity-14.jpg)
+
+![Architecture visual parity page 15](architecture-visual-parity-15.jpg)
+
+![Architecture visual parity page 16](architecture-visual-parity-16.jpg)
 
 </details>
 

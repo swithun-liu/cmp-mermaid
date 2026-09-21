@@ -13,7 +13,7 @@ export const diagramFamilies = Object.freeze([
   family('architecture', 'Architecture', 'architecture.md', ['architecture'], [
     header('architecture-beta', 'architecture'),
     header('architecture', 'architecture'),
-  ]),
+  ], true),
   family('block', 'Block', 'block.md', ['block'], [
     header('block-beta', 'block'),
     header('block', 'block'),

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T18:46:50.511Z",
+  "generatedAt": "2026-09-21T04:43:53.182Z",
   "inputDirectory": "multiple per-family production capture directories",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 340,
+  "caseCount": 353,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -20244,6 +20244,773 @@
       "widthRatio": 1.1910112359550562,
       "heightRatio": 1.0562347188264058,
       "inkRatio": 1.2485246421074403
+    },
+    {
+      "id": "rc_architecture_cloud_runtime",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 107603,
+        "inkRatio": 0.0996324074074074,
+        "contentBounds": {
+          "x": 77,
+          "y": 83,
+          "width": 1046,
+          "height": 734
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 81463,
+        "inkRatio": 0.0754287037037037,
+        "contentBounds": {
+          "x": 92,
+          "y": 97,
+          "width": 1016,
+          "height": 706
+        }
+      },
+      "widthRatio": 1.029527559055118,
+      "heightRatio": 1.0396600566572238,
+      "inkRatio": 1.3208818727520468
+    },
+    {
+      "id": "rc_architecture_junction_routes",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 70036,
+        "inkRatio": 0.06484814814814815,
+        "contentBounds": {
+          "x": 70,
+          "y": 166,
+          "width": 1060,
+          "height": 567
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71100,
+        "inkRatio": 0.06583333333333333,
+        "contentBounds": {
+          "x": 97,
+          "y": 164,
+          "width": 1006,
+          "height": 569
+        }
+      },
+      "widthRatio": 1.0536779324055665,
+      "heightRatio": 0.9964850615114236,
+      "inkRatio": 0.9850351617440227
+    },
+    {
+      "id": "rc_architecture_alignment_grid",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 126343,
+        "inkRatio": 0.11698425925925926,
+        "contentBounds": {
+          "x": 386,
+          "y": 80,
+          "width": 428,
+          "height": 738
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 80919,
+        "inkRatio": 0.074925,
+        "contentBounds": {
+          "x": 413,
+          "y": 90,
+          "width": 374,
+          "height": 719
+        }
+      },
+      "widthRatio": 1.1443850267379678,
+      "heightRatio": 1.0264255910987483,
+      "inkRatio": 1.5613514749317217
+    },
+    {
+      "id": "rc_architecture_edge_contracts",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 183660,
+        "inkRatio": 0.17005555555555554,
+        "contentBounds": {
+          "x": 289,
+          "y": 113,
+          "width": 622,
+          "height": 664
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 134325,
+        "inkRatio": 0.124375,
+        "contentBounds": {
+          "x": 299,
+          "y": 132,
+          "width": 602,
+          "height": 628
+        }
+      },
+      "widthRatio": 1.0332225913621262,
+      "heightRatio": 1.0573248407643312,
+      "inkRatio": 1.3672808486878838
+    },
+    {
+      "id": "rc_architecture_configured_regional",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 87942,
+        "inkRatio": 0.08142777777777778,
+        "contentBounds": {
+          "x": 83,
+          "y": 274,
+          "width": 1034,
+          "height": 352
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 69641,
+        "inkRatio": 0.0644824074074074,
+        "contentBounds": {
+          "x": 104,
+          "y": 292,
+          "width": 992,
+          "height": 316
+        }
+      },
+      "widthRatio": 1.0423387096774193,
+      "heightRatio": 1.1139240506329113,
+      "inkRatio": 1.2627905974928564
+    },
+    {
+      "id": "prod_architecture_service_mesh",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 135184,
+        "inkRatio": 0.12517037037037038,
+        "contentBounds": {
+          "x": 287,
+          "y": 114,
+          "width": 626,
+          "height": 662
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 89590,
+        "inkRatio": 0.08295370370370371,
+        "contentBounds": {
+          "x": 301,
+          "y": 126,
+          "width": 597,
+          "height": 640
+        }
+      },
+      "widthRatio": 1.04857621440536,
+      "heightRatio": 1.034375,
+      "inkRatio": 1.5089184060721061
+    },
+    {
+      "id": "prod_architecture_nested_groups",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 75301,
+        "inkRatio": 0.06972314814814815,
+        "contentBounds": {
+          "x": 73,
+          "y": 233,
+          "width": 1054,
+          "height": 434
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 58787,
+        "inkRatio": 0.05443240740740741,
+        "contentBounds": {
+          "x": 88,
+          "y": 259,
+          "width": 1024,
+          "height": 382
+        }
+      },
+      "widthRatio": 1.029296875,
+      "heightRatio": 1.1361256544502618,
+      "inkRatio": 1.2809124466293567
+    },
+    {
+      "id": "prod_architecture_junction_fanout",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 58946,
+        "inkRatio": 0.05457962962962963,
+        "contentBounds": {
+          "x": 313,
+          "y": 69,
+          "width": 574,
+          "height": 762
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39430,
+        "inkRatio": 0.03650925925925926,
+        "contentBounds": {
+          "x": 367,
+          "y": 80,
+          "width": 466,
+          "height": 740
+        }
+      },
+      "widthRatio": 1.2317596566523605,
+      "heightRatio": 1.0297297297297296,
+      "inkRatio": 1.4949530814100938
+    },
+    {
+      "id": "prod_architecture_edge_semantics",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 163275,
+        "inkRatio": 0.15118055555555557,
+        "contentBounds": {
+          "x": 108,
+          "y": 131,
+          "width": 984,
+          "height": 629
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 106104,
+        "inkRatio": 0.09824444444444444,
+        "contentBounds": {
+          "x": 119,
+          "y": 145,
+          "width": 962,
+          "height": 602
+        }
+      },
+      "widthRatio": 1.022869022869023,
+      "heightRatio": 1.0448504983388704,
+      "inkRatio": 1.538820402623841
+    },
+    {
+      "id": "prod_architecture_row_alignment",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 100949,
+        "inkRatio": 0.0934712962962963,
+        "contentBounds": {
+          "x": 92,
+          "y": 256,
+          "width": 1016,
+          "height": 388
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 69322,
+        "inkRatio": 0.06418703703703704,
+        "contentBounds": {
+          "x": 105,
+          "y": 289,
+          "width": 990,
+          "height": 322
+        }
+      },
+      "widthRatio": 1.0262626262626262,
+      "heightRatio": 1.204968944099379,
+      "inkRatio": 1.4562332304318975
+    },
+    {
+      "id": "prod_architecture_grid_alignment",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 180142,
+        "inkRatio": 0.16679814814814814,
+        "contentBounds": {
+          "x": 286,
+          "y": 114,
+          "width": 629,
+          "height": 662
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 118323,
+        "inkRatio": 0.10955833333333333,
+        "contentBounds": {
+          "x": 323,
+          "y": 126,
+          "width": 554,
+          "height": 640
+        }
+      },
+      "widthRatio": 1.135379061371841,
+      "heightRatio": 1.034375,
+      "inkRatio": 1.5224597077491273
+    },
+    {
+      "id": "prod_architecture_configured_icons",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 103926,
+        "inkRatio": 0.09622777777777777,
+        "contentBounds": {
+          "x": 87,
+          "y": 336,
+          "width": 1026,
+          "height": 220
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74259,
+        "inkRatio": 0.06875833333333334,
+        "contentBounds": {
+          "x": 108,
+          "y": 347,
+          "width": 984,
+          "height": 197
+        }
+      },
+      "widthRatio": 1.0426829268292683,
+      "heightRatio": 1.116751269035533,
+      "inkRatio": 1.3995071304488342
+    },
+    {
+      "id": "prod_architecture_accessible_unicode",
+      "kind": "architecture",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 103852,
+        "inkRatio": 0.09615925925925926,
+        "contentBounds": {
+          "x": 92,
+          "y": 256,
+          "width": 1016,
+          "height": 388
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 67264,
+        "inkRatio": 0.06228148148148148,
+        "contentBounds": {
+          "x": 102,
+          "y": 293,
+          "width": 996,
+          "height": 314
+        }
+      },
+      "widthRatio": 1.0200803212851406,
+      "heightRatio": 1.2356687898089171,
+      "inkRatio": 1.5439462416745957
     }
   ]
 }

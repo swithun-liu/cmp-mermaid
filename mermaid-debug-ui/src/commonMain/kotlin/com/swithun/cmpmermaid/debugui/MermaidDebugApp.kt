@@ -101,6 +101,7 @@ private enum class DebugScreen {
     Treemap,
     Venn,
     Swimlanes,
+    Architecture,
     Ishikawa,
     Cynefin,
     Block,
@@ -249,6 +250,12 @@ private val destinations = listOf(
         DebugScreen.Swimlanes,
         swimlaneDiagramDocsSpec,
         "Lane-aware process ownership with orthogonal cross-lane routing",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Architecture,
+        architectureDiagramDocsSpec,
+        "Services, groups, junctions, directional ports, and constrained alignment",
         DiagramStability.Beta,
     ),
     DiagramDestination(

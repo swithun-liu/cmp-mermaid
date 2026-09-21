@@ -1,0 +1,1992 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-21T04:43:54.527Z",
+  "inputDirectory": "captures/local/architecture-production",
+  "corpusSource": "production",
+  "corpusKind": "architecture",
+  "theme": null,
+  "failOnReview": true,
+  "gridSize": 96,
+  "caseCount": 13,
+  "counts": {
+    "pass": 13
+  },
+  "reviewQueue": [],
+  "cases": [
+    {
+      "id": "rc_architecture_cloud_runtime",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 97,
+          "typeCounts": {
+            "path": 44,
+            "shape": 46,
+            "text": 7
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 97,
+          "typeCounts": {
+            "path": 44,
+            "shape": 46,
+            "text": 7
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "maximumCenterDistance": 0.05026468925385364,
+          "p95CenterDistance": 0.04377410537442712,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 77,
+            "Dashed": 3
+          },
+          "officialStrokePatterns": {
+            "Solid": 68,
+            "Dashed": 3
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.5761812921890067,
+        "exactMaskIou": 0.40844463593278757,
+        "edgeF1": 0.760634130676113,
+        "colorError": 0.090332158099833,
+        "exactColorError": 0.22711249658559388
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 77,
+          "y": 83,
+          "width": 1046,
+          "height": 734
+        },
+        "foregroundCells": 1886,
+        "edgeCells": 2314
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 92,
+          "y": 97,
+          "width": 1016,
+          "height": 706
+        },
+        "foregroundCells": 1383,
+        "edgeCells": 1818
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_architecture_junction_routes",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 69,
+          "typeCounts": {
+            "path": 33,
+            "shape": 32,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 71,
+          "typeCounts": {
+            "path": 33,
+            "shape": 34,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.03560553483791522,
+          "p95CenterDistance": 0.03459984455151459,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 0.9701492537313433,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 55
+          },
+          "officialStrokePatterns": {
+            "Solid": 49
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7855822550831792,
+        "exactMaskIou": 0.577572128470332,
+        "edgeF1": 0.8930966549443081,
+        "colorError": 0.07118695975071013,
+        "exactColorError": 0.22988105784865207
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 70,
+          "y": 166,
+          "width": 1060,
+          "height": 567
+        },
+        "foregroundCells": 1438,
+        "edgeCells": 1506
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 97,
+          "y": 164,
+          "width": 1006,
+          "height": 569
+        },
+        "foregroundCells": 1460,
+        "edgeCells": 1466
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_architecture_alignment_grid",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 108,
+          "typeCounts": {
+            "path": 38,
+            "shape": 64,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 108,
+          "typeCounts": {
+            "path": 38,
+            "shape": 64,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.024235705137716418,
+          "p95CenterDistance": 0.0242357000546397,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 92
+          },
+          "officialStrokePatterns": {
+            "Solid": 78
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.6944878375362642,
+        "exactMaskIou": 0.6640368178829718,
+        "edgeF1": 0.7989991544115341,
+        "colorError": 0.07399596145142072,
+        "exactColorError": 0.22739855530202438
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 386,
+          "y": 80,
+          "width": 428,
+          "height": 738
+        },
+        "foregroundCells": 4481,
+        "edgeCells": 2714
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 413,
+          "y": 90,
+          "width": 374,
+          "height": 719
+        },
+        "foregroundCells": 3112,
+        "edgeCells": 2441
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_architecture_edge_contracts",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 57,
+          "typeCounts": {
+            "path": 24,
+            "shape": 28,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 57,
+          "typeCounts": {
+            "path": 24,
+            "shape": 28,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 5,
+          "maximumCenterDistance": 0.038636870120669575,
+          "p95CenterDistance": 0.014704404629898792,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 43
+          },
+          "officialStrokePatterns": {
+            "Solid": 39
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8070353802358683,
+        "exactMaskIou": 0.7276438569206843,
+        "edgeF1": 0.7952436562271169,
+        "colorError": 0.06235991579957269,
+        "exactColorError": 0.21522708098273005
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 289,
+          "y": 113,
+          "width": 622,
+          "height": 664
+        },
+        "foregroundCells": 4861,
+        "edgeCells": 2928
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 299,
+          "y": 132,
+          "width": 602,
+          "height": 628
+        },
+        "foregroundCells": 4026,
+        "edgeCells": 2753
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_architecture_configured_regional",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 40,
+          "typeCounts": {
+            "path": 16,
+            "shape": 18,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 40,
+          "typeCounts": {
+            "path": 16,
+            "shape": 18,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.061751944275395994,
+          "p95CenterDistance": 0.05312693122995319,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 27,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 24,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8015322874863189,
+        "exactMaskIou": 0.6876281613123718,
+        "edgeF1": 0.9096354756701969,
+        "colorError": 0.04289886850797667,
+        "exactColorError": 0.1481529134779909
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 83,
+          "y": 274,
+          "width": 1034,
+          "height": 352
+        },
+        "foregroundCells": 2648,
+        "edgeCells": 2094
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 104,
+          "y": 292,
+          "width": 992,
+          "height": 316
+        },
+        "foregroundCells": 2290,
+        "edgeCells": 1945
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_service_mesh",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 41,
+          "typeCounts": {
+            "path": 21,
+            "shape": 17,
+            "text": 3
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 41,
+          "typeCounts": {
+            "path": 21,
+            "shape": 17,
+            "text": 3
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 3,
+          "maximumCenterDistance": 0.03278853456908856,
+          "p95CenterDistance": 0.03216211949220385,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 33
+          },
+          "officialStrokePatterns": {
+            "Solid": 30
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7274768453550379,
+        "exactMaskIou": 0.6510193133047211,
+        "edgeF1": 0.7111276921122498,
+        "colorError": 0.06984684421032095,
+        "exactColorError": 0.24328767987881847
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 287,
+          "y": 114,
+          "width": 626,
+          "height": 662
+        },
+        "foregroundCells": 3524,
+        "edgeCells": 2027
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 301,
+          "y": 126,
+          "width": 597,
+          "height": 640
+        },
+        "foregroundCells": 2631,
+        "edgeCells": 1714
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_nested_groups",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 88,
+          "typeCounts": {
+            "path": 33,
+            "shape": 49,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 88,
+          "typeCounts": {
+            "path": 33,
+            "shape": 49,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.038082319109600755,
+          "p95CenterDistance": 0.035663675184734796,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 71,
+            "Dashed": 3
+          },
+          "officialStrokePatterns": {
+            "Solid": 61,
+            "Dashed": 3
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.716111364673665,
+        "exactMaskIou": 0.5447822514379622,
+        "edgeF1": 0.8348600083488475,
+        "colorError": 0.056966993364388555,
+        "exactColorError": 0.17458928792004338
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 73,
+          "y": 233,
+          "width": 1054,
+          "height": 434
+        },
+        "foregroundCells": 2112,
+        "edgeCells": 2568
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 88,
+          "y": 259,
+          "width": 1024,
+          "height": 382
+        },
+        "foregroundCells": 1648,
+        "edgeCells": 1963
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_junction_fanout",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 59,
+          "typeCounts": {
+            "path": 26,
+            "shape": 29,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 60,
+          "typeCounts": {
+            "path": 26,
+            "shape": 30,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.03125375944645801,
+          "p95CenterDistance": 0.022422948433389427,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 0.9821428571428571,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 47,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 41,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8291666666666667,
+        "exactMaskIou": 0.6521505376344086,
+        "edgeF1": 0.9443985003053743,
+        "colorError": 0.07789077212806027,
+        "exactColorError": 0.16845245625131772
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 313,
+          "y": 69,
+          "width": 574,
+          "height": 762
+        },
+        "foregroundCells": 1670,
+        "edgeCells": 1521
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 367,
+          "y": 80,
+          "width": 466,
+          "height": 740
+        },
+        "foregroundCells": 1403,
+        "edgeCells": 1428
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_edge_semantics",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 55,
+          "typeCounts": {
+            "path": 23,
+            "shape": 27,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 55,
+          "typeCounts": {
+            "path": 23,
+            "shape": 27,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 5,
+          "maximumCenterDistance": 0.03970927036646521,
+          "p95CenterDistance": 0.03249530918008497,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 42
+          },
+          "officialStrokePatterns": {
+            "Solid": 38
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.6415794802564968,
+        "exactMaskIou": 0.6021080368906456,
+        "edgeF1": 0.7379139787528011,
+        "colorError": 0.04441351625150302,
+        "exactColorError": 0.2505894408707708
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 108,
+          "y": 131,
+          "width": 984,
+          "height": 629
+        },
+        "foregroundCells": 2921,
+        "edgeCells": 1786
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 119,
+          "y": 145,
+          "width": 962,
+          "height": 602
+        },
+        "foregroundCells": 1943,
+        "edgeCells": 1436
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_row_alignment",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 57,
+          "typeCounts": {
+            "path": 25,
+            "shape": 28,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 57,
+          "typeCounts": {
+            "path": 25,
+            "shape": 28,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.050343137439953244,
+          "p95CenterDistance": 0.018415878620594444,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 46,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 40,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7289840960727036,
+        "exactMaskIou": 0.6370620774431469,
+        "edgeF1": 0.8800935566752601,
+        "colorError": 0.04884057387499832,
+        "exactColorError": 0.18108753027947505
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 92,
+          "y": 256,
+          "width": 1016,
+          "height": 388
+        },
+        "foregroundCells": 3048,
+        "edgeCells": 2334
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 105,
+          "y": 289,
+          "width": 990,
+          "height": 322
+        },
+        "foregroundCells": 2279,
+        "edgeCells": 1784
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_grid_alignment",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 60,
+          "typeCounts": {
+            "path": 28,
+            "shape": 28,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 60,
+          "typeCounts": {
+            "path": 28,
+            "shape": 28,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.029557993194659578,
+          "p95CenterDistance": 0.02955799319465957,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 50
+          },
+          "officialStrokePatterns": {
+            "Solid": 44
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7861111111111111,
+        "exactMaskIou": 0.7227947238252267,
+        "edgeF1": 0.7484507890762118,
+        "colorError": 0.06187166467467018,
+        "exactColorError": 0.21896098367898958
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 286,
+          "y": 114,
+          "width": 629,
+          "height": 662
+        },
+        "foregroundCells": 4680,
+        "edgeCells": 2500
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 323,
+          "y": 126,
+          "width": 554,
+          "height": 640
+        },
+        "foregroundCells": 3679,
+        "edgeCells": 2234
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_configured_icons",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 38,
+          "typeCounts": {
+            "path": 11,
+            "shape": 22,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 38,
+          "typeCounts": {
+            "path": 11,
+            "shape": 22,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 5,
+          "maximumCenterDistance": 0.07231566160365815,
+          "p95CenterDistance": 0.03154403006213674,
+          "maximumSizeRatio": 1.1428571428571428
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 3,
+          "officialPaletteSize": 3,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 28
+          },
+          "officialStrokePatterns": {
+            "Solid": 24
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7527079501328429,
+        "exactMaskIou": 0.6658896658896659,
+        "edgeF1": 0.7170147622614903,
+        "colorError": 0.04885031552261958,
+        "exactColorError": 0.2323303421342637
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 87,
+          "y": 336,
+          "width": 1026,
+          "height": 220
+        },
+        "foregroundCells": 4690,
+        "edgeCells": 2439
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 108,
+          "y": 347,
+          "width": 984,
+          "height": 197
+        },
+        "foregroundCells": 3886,
+        "edgeCells": 2432
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_architecture_accessible_unicode",
+      "kind": "architecture",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 45,
+          "typeCounts": {
+            "path": 22,
+            "shape": 19,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 45,
+          "typeCounts": {
+            "path": 22,
+            "shape": 19,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.062251724418131774,
+          "p95CenterDistance": 0.022378228872869,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 34,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 31,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 0
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 0
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [],
+          "official": [],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.6799501867995019,
+        "exactMaskIou": 0.5997628224132819,
+        "edgeF1": 0.8639009216012317,
+        "colorError": 0.05187840300282606,
+        "exactColorError": 0.19385043472868937
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 92,
+          "y": 256,
+          "width": 1016,
+          "height": 388
+        },
+        "foregroundCells": 3176,
+        "edgeCells": 2607
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 102,
+          "y": 293,
+          "width": 996,
+          "height": 314
+        },
+        "foregroundCells": 2220,
+        "edgeCells": 1944
+      },
+      "heatmap": null
+    }
+  ]
+}

@@ -349,6 +349,7 @@ internal object MermaidPreprocessor {
         val cynefin = map.map("cynefin")
         val eventModeling = map.map("eventmodeling")
         val block = map.map("block")
+        val architecture = map.map("architecture")
         val agentflow = map.map("agentflow")
         val swimlane = map.map("swimlane")
         val treemap = map.map("treemap")
@@ -1466,6 +1467,41 @@ internal object MermaidPreprocessor {
                 "Mermaid $sourceName 'block.padding' must be non-negative",
             )
         }
+        val architectureUseMaxWidth =
+            boolean(architecture, "useMaxWidth", "architecture.useMaxWidth")
+        val architecturePadding = float(architecture, "padding", "architecture.padding")
+        val architectureIconSize = float(architecture, "iconSize", "architecture.iconSize")
+        val architectureFontSize = float(architecture, "fontSize", "architecture.fontSize")
+        val architectureRandomize =
+            boolean(architecture, "randomize", "architecture.randomize")
+        val architectureNodeSeparation =
+            float(architecture, "nodeSeparation", "architecture.nodeSeparation")
+        val architectureIdealEdgeLengthMultiplier = float(
+            architecture,
+            "idealEdgeLengthMultiplier",
+            "architecture.idealEdgeLengthMultiplier",
+        )
+        val architectureEdgeElasticity =
+            float(architecture, "edgeElasticity", "architecture.edgeElasticity")
+        val architectureNumIter = float(architecture, "numIter", "architecture.numIter")
+        val architectureSeed = float(architecture, "seed", "architecture.seed")
+        listOf(
+            "architecture.padding" to architecturePadding,
+            "architecture.iconSize" to architectureIconSize,
+            "architecture.fontSize" to architectureFontSize,
+            "architecture.nodeSeparation" to architectureNodeSeparation,
+            "architecture.idealEdgeLengthMultiplier" to
+                architectureIdealEdgeLengthMultiplier,
+            "architecture.edgeElasticity" to architectureEdgeElasticity,
+            "architecture.numIter" to architectureNumIter,
+            "architecture.seed" to architectureSeed,
+        ).forEach { (path, value) ->
+            if (value != null && !value.isFinite()) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must be finite",
+                )
+            }
+        }
         val treemapUseMaxWidth =
             boolean(treemap, "useMaxWidth", "treemap.useMaxWidth")
         val treemapPadding = float(treemap, "padding", "treemap.padding")
@@ -1909,6 +1945,20 @@ internal object MermaidPreprocessor {
                         useMaxWidth = blockUseMaxWidth,
                     )
                 },
+                architecture = architecture?.let {
+                    MermaidArchitectureConfigOverride(
+                        useMaxWidth = architectureUseMaxWidth,
+                        padding = architecturePadding,
+                        iconSize = architectureIconSize,
+                        fontSize = architectureFontSize,
+                        randomize = architectureRandomize,
+                        nodeSeparation = architectureNodeSeparation,
+                        idealEdgeLengthMultiplier = architectureIdealEdgeLengthMultiplier,
+                        edgeElasticity = architectureEdgeElasticity,
+                        numIter = architectureNumIter,
+                        seed = architectureSeed,
+                    )
+                },
                 treemap = treemap?.let {
                     MermaidTreemapConfigOverride(
                         useMaxWidth = treemapUseMaxWidth,
@@ -2140,6 +2190,7 @@ internal data class MermaidConfigOverride(
     val cynefin: MermaidCynefinConfigOverride? = null,
     val eventModeling: MermaidEventModelingConfigOverride? = null,
     val block: MermaidBlockConfigOverride? = null,
+    val architecture: MermaidArchitectureConfigOverride? = null,
     val treemap: MermaidTreemapConfigOverride? = null,
     val venn: MermaidVennConfigOverride? = null,
     val kanban: MermaidKanbanConfigOverride? = null,
@@ -2282,6 +2333,11 @@ internal data class MermaidConfigOverride(
             overrides.block != null -> block?.merge(overrides.block) ?: overrides.block
             else -> block
         },
+        architecture = when {
+            overrides.architecture != null ->
+                architecture?.merge(overrides.architecture) ?: overrides.architecture
+            else -> architecture
+        },
         treemap = when {
             overrides.treemap != null ->
                 treemap?.merge(overrides.treemap) ?: overrides.treemap
@@ -2403,6 +2459,8 @@ internal data class MermaidConfigOverride(
                 eventModeling =
                     eventModeling?.applyTo(options.eventModeling) ?: options.eventModeling,
                 block = block?.applyTo(options.block) ?: options.block,
+                architecture =
+                    architecture?.applyTo(options.architecture) ?: options.architecture,
                 treemap = treemap?.applyTo(options.treemap) ?: options.treemap,
                 venn = venn?.applyTo(options.venn) ?: options.venn,
                 kanban = kanban?.applyTo(options.kanban) ?: options.kanban,
@@ -2702,6 +2760,50 @@ internal data class MermaidBlockConfigOverride(
         options.copy(
             padding = padding ?: options.padding,
             useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        )
+}
+
+internal data class MermaidArchitectureConfigOverride(
+    val useMaxWidth: Boolean? = null,
+    val padding: Float? = null,
+    val iconSize: Float? = null,
+    val fontSize: Float? = null,
+    val randomize: Boolean? = null,
+    val nodeSeparation: Float? = null,
+    val idealEdgeLengthMultiplier: Float? = null,
+    val edgeElasticity: Float? = null,
+    val numIter: Float? = null,
+    val seed: Float? = null,
+) {
+    fun merge(
+        overrides: MermaidArchitectureConfigOverride,
+    ): MermaidArchitectureConfigOverride = MermaidArchitectureConfigOverride(
+        useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+        padding = overrides.padding ?: padding,
+        iconSize = overrides.iconSize ?: iconSize,
+        fontSize = overrides.fontSize ?: fontSize,
+        randomize = overrides.randomize ?: randomize,
+        nodeSeparation = overrides.nodeSeparation ?: nodeSeparation,
+        idealEdgeLengthMultiplier =
+            overrides.idealEdgeLengthMultiplier ?: idealEdgeLengthMultiplier,
+        edgeElasticity = overrides.edgeElasticity ?: edgeElasticity,
+        numIter = overrides.numIter ?: numIter,
+        seed = overrides.seed ?: seed,
+    )
+
+    fun applyTo(options: MermaidArchitectureOptions): MermaidArchitectureOptions =
+        options.copy(
+            useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+            padding = padding ?: options.padding,
+            iconSize = iconSize ?: options.iconSize,
+            fontSize = fontSize ?: options.fontSize,
+            randomize = randomize ?: options.randomize,
+            nodeSeparation = nodeSeparation ?: options.nodeSeparation,
+            idealEdgeLengthMultiplier =
+                idealEdgeLengthMultiplier ?: options.idealEdgeLengthMultiplier,
+            edgeElasticity = edgeElasticity ?: options.edgeElasticity,
+            numIter = numIter ?: options.numIter,
+            seed = seed ?: options.seed,
         )
 }
 

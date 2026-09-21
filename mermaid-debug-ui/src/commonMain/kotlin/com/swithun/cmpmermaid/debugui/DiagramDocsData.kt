@@ -687,6 +687,44 @@ internal val swimlaneDiagramDocsSpec = DiagramDocsSpec(
     officialLayout = "swimlane",
 )
 
+internal val architectureDiagramDocsSpec = DiagramDocsSpec(
+    id = "architecture",
+    title = "Architecture",
+    syntaxTitle = "Architecture diagrams - Basic Syntax",
+    description = "Compose services, junctions, nested groups, directional ports, group-boundary " +
+        "connections, and explicit row or column alignment.",
+    documentationUrl = "https://mermaid.js.org/syntax/architecture.html",
+    galleryTitle = "Architecture diagram gallery",
+    cases = architectureDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 1.5f,
+        )
+    },
+    syntaxLessons = lessons(
+        architectureDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 1.5f,
+            )
+        },
+        listOf(
+            "Services use built-in or registered icons and connect through explicit side ports.",
+            "Groups may nest and compound bounds follow their services and child groups.",
+            "Invisible junctions split or merge routes without adding visible nodes.",
+            "Arrowheads, labels, and group-boundary modifiers preserve edge intent.",
+            "Alignment directives and scoped configuration control deterministic placement.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
 internal val ishikawaDiagramDocsSpec = DiagramDocsSpec(
     id = "ishikawa",
     title = "Ishikawa",

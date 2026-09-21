@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-20T18:46:55.837Z",
-  "caseCount": 340,
+  "generatedAt": "2026-09-21T05:10:11.368Z",
+  "caseCount": 353,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -7622,6 +7622,289 @@
       "nativeSha256": "b7691c1c3bbb4a32e9c1450ebed83af79caa8ab751e7a3ea002d934eea69dc79",
       "officialSha256": "2caf5e2e0d4effeeab46194637709be6a96f208dde7478d461fe38a46b73c7e9",
       "sourceSha256": "9a6bc90d502f6d1a6dad87683b80e4810557e30f2cba56626492651c83ae49ad"
+    },
+    {
+      "id": "rc_architecture_cloud_runtime",
+      "kind": "architecture",
+      "title": "Cloud runtime",
+      "scenario": "Nested runtime groups connect an edge gateway to compute and persistence.",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_architecture_cloud_runtime_native.png",
+      "officialFile": "rc_architecture_cloud_runtime_official.png",
+      "nativeBytes": 48220,
+      "officialBytes": 45290,
+      "nativeSha256": "db6f4ded57f48b69b9d0b0173df5a7586eab68a32edd9080cda282df024254cd",
+      "officialSha256": "a15e34fe69a826189a6c69b6e1c4752ad9c55c86bb0c19662d476436fdcb80de",
+      "sourceSha256": "437b5730f30cd6a21b6873d25743eded5234bc95f178d0c4545f481c4d0aa846"
+    },
+    {
+      "id": "rc_architecture_junction_routes",
+      "kind": "architecture",
+      "title": "Junction routes",
+      "scenario": "Two invisible junctions branch and merge a multi-service route.",
+      "aspectRatio": 1.55,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_architecture_junction_routes_native.png",
+      "officialFile": "rc_architecture_junction_routes_official.png",
+      "nativeBytes": 29279,
+      "officialBytes": 32037,
+      "nativeSha256": "b08fc82d6bf19a175e1b9fc6d7ecf2ee058d08ba98b2c46c554206f2950f0f6d",
+      "officialSha256": "ddd375a3268b95e4e504cfc55ebc17058a1745822474243045c1aaeed6c42fa1",
+      "sourceSha256": "be47c066675461d03c31ada4acc353ef95757b63f8e536e4ebb950f500e8da08"
+    },
+    {
+      "id": "rc_architecture_alignment_grid",
+      "kind": "architecture",
+      "title": "Aligned processing grid",
+      "scenario": "Combined row and column directives constrain six connected services.",
+      "aspectRatio": 1.45,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_architecture_alignment_grid_native.png",
+      "officialFile": "rc_architecture_alignment_grid_official.png",
+      "nativeBytes": 28988,
+      "officialBytes": 25906,
+      "nativeSha256": "fcdc346d9af3f1d5822a9aeedcb292dcc7fdf2a952ae43374709622ea5ba3cbb",
+      "officialSha256": "ebd80503bc181f7156ac645117010d80856450c7e08061b806936c603f0cda16",
+      "sourceSha256": "5f9012e898dad6bf67da0457d4f1b653cd9a8d897fe9c1ca55ee20db14c25047"
+    },
+    {
+      "id": "rc_architecture_edge_contracts",
+      "kind": "architecture",
+      "title": "Directional edge contracts",
+      "scenario": "Straight and bent routes combine labels, arrows, and bidirectional markers.",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_architecture_edge_contracts_native.png",
+      "officialFile": "rc_architecture_edge_contracts_official.png",
+      "nativeBytes": 44015,
+      "officialBytes": 43395,
+      "nativeSha256": "b886d17db67a9d5a57a7a9ff1262fc8bc39c76792f0b6f3646c99f4326292db2",
+      "officialSha256": "b9fd46c8c581b91f34b63fbd8a8a7213e0fc710de5a3bd5d25919a886d845334",
+      "sourceSha256": "8d68b215ca3d9ba9e23419a6d685b22556f8650c71d420457839ff83bdc447b6"
+    },
+    {
+      "id": "rc_architecture_configured_regional",
+      "kind": "architecture",
+      "title": "Configured regional services",
+      "scenario": "Seeded configuration, icon text, metadata, and Unicode labels share one group.",
+      "aspectRatio": 1.8,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_architecture_configured_regional_native.png",
+      "officialFile": "rc_architecture_configured_regional_official.png",
+      "nativeBytes": 29789,
+      "officialBytes": 28406,
+      "nativeSha256": "430a8fab435f23d1c4336a65c6e195b032b9eea5ad6919fc9914223e153dfd6d",
+      "officialSha256": "b4ec2ce1b1228dbb5a362bf4b885231d469425e12421eb705635bdfb8c46c679",
+      "sourceSha256": "fd544fc27750b0d8d6a9f11958b610249ea2d0182704a44b1bffe359a89d5e44"
+    },
+    {
+      "id": "prod_architecture_service_mesh",
+      "kind": "architecture",
+      "title": "Service mesh",
+      "scenario": "Built-in service icons connect through explicit horizontal and vertical ports.",
+      "aspectRatio": 1.6,
+      "features": [
+        "architecture-beta-header",
+        "services",
+        "built-in-icons",
+        "directional-ports",
+        "arrowheads"
+      ],
+      "expectedTexts": [
+        "Gateway",
+        "Application",
+        "Database"
+      ],
+      "nativeFile": "prod_architecture_service_mesh_native.png",
+      "officialFile": "prod_architecture_service_mesh_official.png",
+      "nativeBytes": 31378,
+      "officialBytes": 28960,
+      "nativeSha256": "a33285a5211ffb6ad067d8b32dc5bd285def381b1464c3c61ef0b7fac8e762f9",
+      "officialSha256": "4c878910005a45a77ad173c012c6c4a0266a959048dbff735457575c5b5d63c6",
+      "sourceSha256": "b483dbdb0d62dd6a9915f694304529a8b26110c51a82516a7e4487c3a664e40a"
+    },
+    {
+      "id": "prod_architecture_nested_groups",
+      "kind": "architecture",
+      "title": "Nested platform groups",
+      "scenario": "Nested compute and storage groups retain compound bounds and boundary routes.",
+      "aspectRatio": 1.7,
+      "features": [
+        "groups",
+        "nested-groups",
+        "group-boundary-modifier",
+        "built-in-icons"
+      ],
+      "expectedTexts": [
+        "Platform",
+        "Compute",
+        "Storage",
+        "Worker"
+      ],
+      "nativeFile": "prod_architecture_nested_groups_native.png",
+      "officialFile": "prod_architecture_nested_groups_official.png",
+      "nativeBytes": 33365,
+      "officialBytes": 31950,
+      "nativeSha256": "61d66eb18ed2159a8a8bb3afea258398fa21379d2a8b86567e6d4525efcef452",
+      "officialSha256": "931bae22ffff048cefd71ee71055762278d43741cfcb3e813174c182c132f61d",
+      "sourceSha256": "6c86273fb026369a4440a373e080c3991703882c1061f05a7ef78415e720eda1"
+    },
+    {
+      "id": "prod_architecture_junction_fanout",
+      "kind": "architecture",
+      "title": "Junction fan-out",
+      "scenario": "Invisible junctions split a gateway route across two services.",
+      "aspectRatio": 1.45,
+      "features": [
+        "junctions",
+        "directional-ports",
+        "arrowheads"
+      ],
+      "expectedTexts": [
+        "Gateway",
+        "API",
+        "Jobs"
+      ],
+      "nativeFile": "prod_architecture_junction_fanout_native.png",
+      "officialFile": "prod_architecture_junction_fanout_official.png",
+      "nativeBytes": 24965,
+      "officialBytes": 22893,
+      "nativeSha256": "d3193b05f186657eb50c9b819ed9cf38b28754683379d5ff93db62ac14e07346",
+      "officialSha256": "6fd8ab7da514393b5a7a12d1d17777c5e2e8676b1d340eeac1a287e4cd7bf9ef",
+      "sourceSha256": "cd549b94980761373c13deb6bd777ffe6fa6847a964a2308dc9b9ca3e628802b"
+    },
+    {
+      "id": "prod_architecture_edge_semantics",
+      "kind": "architecture",
+      "title": "Architecture edge semantics",
+      "scenario": "One-way, incoming, bidirectional, bent, and labelled edges share a diagram.",
+      "aspectRatio": 1.7,
+      "features": [
+        "directional-ports",
+        "arrowheads",
+        "bidirectional-edges",
+        "edge-labels"
+      ],
+      "expectedTexts": [
+        "Client",
+        "Cache",
+        "Database",
+        "cached read"
+      ],
+      "nativeFile": "prod_architecture_edge_semantics_native.png",
+      "officialFile": "prod_architecture_edge_semantics_official.png",
+      "nativeBytes": 39583,
+      "officialBytes": 35145,
+      "nativeSha256": "35cd38b95fa162f44015c5b5f5cf6bb3f28c3464d58f8b7975ac782e967e5a5f",
+      "officialSha256": "308c2224fe1a4b2dc9b1f5112c54eda2706b00d85592b667c530dff6bb0c0c30",
+      "sourceSha256": "3b454501a4d6ac432440aa92bc3a7640cb47109cb64e02a8af15f122f2b80a57"
+    },
+    {
+      "id": "prod_architecture_row_alignment",
+      "kind": "architecture",
+      "title": "Aligned service row",
+      "scenario": "A declared row aligns three sibling services while preserving order.",
+      "aspectRatio": 1.8,
+      "features": [
+        "align-row",
+        "groups",
+        "services"
+      ],
+      "expectedTexts": [
+        "Source",
+        "Build",
+        "Publish"
+      ],
+      "nativeFile": "prod_architecture_row_alignment_native.png",
+      "officialFile": "prod_architecture_row_alignment_official.png",
+      "nativeBytes": 28000,
+      "officialBytes": 25283,
+      "nativeSha256": "7f5a1c8f1226fa902148494b9dcb5bf41106bd5dcd2e2a957f972d71c8302536",
+      "officialSha256": "55ef7c8e95e769ca325832f16b1ae5bf91d8da8dc80dd8852a6189c85f1ff8ce",
+      "sourceSha256": "d89739a4b6a06603d9195750052e5f5a6b83c55d0f3ae1d271d509116e3f5ec9"
+    },
+    {
+      "id": "prod_architecture_grid_alignment",
+      "kind": "architecture",
+      "title": "Architecture alignment grid",
+      "scenario": "Row and column hints combine into a constrained service grid.",
+      "aspectRatio": 1.4,
+      "features": [
+        "align-row",
+        "align-column",
+        "directional-ports"
+      ],
+      "expectedTexts": [
+        "Source A",
+        "Source B",
+        "Database A",
+        "Database B"
+      ],
+      "nativeFile": "prod_architecture_grid_alignment_native.png",
+      "officialFile": "prod_architecture_grid_alignment_official.png",
+      "nativeBytes": 33567,
+      "officialBytes": 27789,
+      "nativeSha256": "74abcaf5033a7031e6ab438ff626e90452a417ece950512d61f061226101826d",
+      "officialSha256": "ed0223a3a5ed7d6c04fd58642a6c7d1e7e17d7447b7d800bc0a18a6112af0ecf",
+      "sourceSha256": "4be38858e8bda492377d4082900a51090d364ae64007107541f0f905a957ddbf"
+    },
+    {
+      "id": "prod_architecture_configured_icons",
+      "kind": "architecture",
+      "title": "Configured architecture icons",
+      "scenario": "Scoped sizing and force controls apply to icon text and deterministic layout.",
+      "aspectRatio": 1.6,
+      "features": [
+        "icon-text",
+        "frontmatter-config",
+        "deterministic-seed",
+        "edge-labels"
+      ],
+      "expectedTexts": [
+        "SRC",
+        "Processor",
+        "Artifact",
+        "publishes"
+      ],
+      "nativeFile": "prod_architecture_configured_icons_native.png",
+      "officialFile": "prod_architecture_configured_icons_official.png",
+      "nativeBytes": 27327,
+      "officialBytes": 24771,
+      "nativeSha256": "ab5a9957be0e62d9f2a2b028eb885c19c52bc1375334503f39075f08c4afda9a",
+      "officialSha256": "5272a53b9fabec1c56e72566cfbf2318ef06e5895225f11545745dc56d9e2f82",
+      "sourceSha256": "ddae17682e7f72d2ae28c9208555822581501ebe1b302d5b24175be4deec6be9"
+    },
+    {
+      "id": "prod_architecture_accessible_unicode",
+      "kind": "architecture",
+      "title": "Accessible regional architecture",
+      "scenario": "Accessibility metadata and Unicode labels accompany a grouped service route.",
+      "aspectRatio": 1.7,
+      "features": [
+        "accessibility",
+        "unicode",
+        "groups",
+        "built-in-icons"
+      ],
+      "expectedTexts": [
+        "受付",
+        "검토",
+        "São Paulo",
+        "承認"
+      ],
+      "nativeFile": "prod_architecture_accessible_unicode_native.png",
+      "officialFile": "prod_architecture_accessible_unicode_official.png",
+      "nativeBytes": 33975,
+      "officialBytes": 31294,
+      "nativeSha256": "aa007982b7a3cc5eb337ce092d3ddef824b729570e192b8aa31dd386238e1b9d",
+      "officialSha256": "ebc65e71ed715a1e8e3a1ac2b8bf2fca6f54ec75752b4a3d0783d57cc1afe9d8",
+      "sourceSha256": "00eec5f36f23f0cf20b090c20a852a44e9919683412350a7df013d71bc87f195"
     }
   ],
   "failures": []

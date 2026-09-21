@@ -40,6 +40,7 @@ const skipExisting = (process.env.SKIP_EXISTING ?? 'false') === 'true';
 
 const kotlinGalleryFiles = {
   swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
+  architecture: ['ArchitectureDemos.kt', 'ArchitectureDemo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],

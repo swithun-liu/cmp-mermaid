@@ -1,6 +1,7 @@
 package com.swithun.cmpmermaid.core
 
 import com.swithun.cmpmermaid.core.agentflow.AgentflowPlugin
+import com.swithun.cmpmermaid.core.architecture.ArchitecturePlugin
 import com.swithun.cmpmermaid.core.block.BlockPlugin
 import com.swithun.cmpmermaid.core.classdiagram.ClassPlugin
 import com.swithun.cmpmermaid.core.cynefin.CynefinPlugin
@@ -50,6 +51,7 @@ class MermaidEngine(
     plugins: List<MermaidDiagramPlugin> = listOf(
         FlowchartPlugin(),
         BlockPlugin(),
+        ArchitecturePlugin(),
         AgentflowPlugin(),
         SequencePlugin(),
         ClassPlugin(),

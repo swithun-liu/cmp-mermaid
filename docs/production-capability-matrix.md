@@ -1,7 +1,7 @@
 # Production Capability Matrix
 
 > [!WARNING]
-> This matrix covers the 26 currently implemented
+> This matrix covers the 27 currently implemented
 > families. It is not the Mermaid 12.0.0 full-family matrix and does not confer
 > Stable status. See
 > [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
@@ -14,16 +14,17 @@ and enforced by
 
 ## Current State
 
-- 26 supported diagram types
-- 340 production scenarios
-- 208 conformance scenarios created independently from the demo gallery
+- 27 supported diagram types
+- 353 production scenarios
+- 216 conformance scenarios created independently from the demo gallery
 - 16 required capability points for Flowchart, XY Chart, Timeline, Sequence,
   Class, State, Entity Relationship, Gantt, Pie, and User Journey; 17 for
-  Quadrant Chart, Kanban, Requirement, and Packet; 15 for Swimlanes; and the
-  per-family counts shown below for the remaining families
-- 554/554 declared capability points covered
-- 6,656 additional visual-matrix sources: 256 per diagram type
-- 6,656 separate Native-only randomized stress inputs
+  Quadrant Chart, Kanban, Requirement, and Packet; 15 for Swimlanes; 18 for
+  Architecture; and the per-family counts shown below for the remaining
+  families
+- 572/572 declared capability points covered
+- 6,912 additional visual-matrix sources: 256 per diagram type
+- 6,912 separate Native-only randomized stress inputs
 
 ## Coverage
 
@@ -31,6 +32,7 @@ and enforced by
 | --- | ---: | --- |
 | Flowchart | 14 | directions, classic shapes, advanced shapes, subgraphs, nested subgraphs, subgraph direction, solid edges, dotted/thick edges, edge labels, circle/cross markers, bidirectional edges, minimum length, classes/styles, Markdown/HTML, frontmatter config, Unicode |
 | Swimlanes | 13 | swimlane-beta header, all directions, top-level and default lanes, nested subgraphs, flowchart node shapes, cross-lane edges, edge labels and patterns, cycles, classes/styles, frontmatter config, line hops, accessibility, and Unicode |
+| Architecture | 13 | architecture-beta header, services, built-in icons, icon text, groups, nested groups, junctions, directional ports, arrowheads, bidirectional edges, edge labels, group-boundary modifiers, row/column alignment, frontmatter configuration, deterministic seed, accessibility, and Unicode |
 | XY Chart | 13 | vertical, horizontal, categorical axis, numeric axis, explicit domain, automatic domain, bars, lines, mixed plots, legend, data labels, outside labels, point labels, axis rotation, theme palette, component visibility |
 | Quadrant Chart | 13 | title, axes, quadrant labels, points, boundary points, empty charts, point radius/fill/stroke, classes, direct-style precedence, frontmatter config, theme colors, metadata, Unicode, comments |
 | Timeline | 13 | LR, TD, title, periods, events, continued events, sections, sectionless colors, disabled multicolor, HTML breaks, frontmatter config, theme colors, Redux themes, metadata, Unicode, comments |
@@ -61,14 +63,14 @@ and enforced by
 The corpus generator fails when:
 
 - a diagram type does not have its expected number of cases;
-- one of the 554 required capability points has no conformance case;
+- one of the 572 required capability points has no conformance case;
 - a case reuses a demo or prior RC source;
 - a case has no semantic text expectation;
 - a case declares an unknown capability point.
 
 `ProductionCorpusTest` then requires every source to render with finite,
 bounded geometry and expected semantic text, compares two complete SceneGraphs
-for determinism, and renders all 26 diagram types across all 11 built-in
+for determinism, and renders all 27 diagram types across all 11 built-in
 themes.
 The legacy Web audit captures Native and Mermaid.js output for every case and
 enforces blank-image and content-geometry limits. The replacement detail audit
@@ -78,12 +80,12 @@ foreground masks, edges, colors, and review heatmaps.
 
 The large-scale visual matrix adds 256 unique sources per type by combining 13
 or 14 complex production structures with 20 visible text and layout-pressure
-profiles. All 6,656 sources render in the Native core test and all 6,656
+profiles. All 6,912 sources render in the Native core test and all 6,912
 Native/Official pairs pass the geometry gate. The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
-defect and is not a detail-parity pass by itself. All 26 implemented families
-contribute 6,656 Native/Official pairs accepted by the replacement detail
-gate. Sixteen families contribute `4,096 pass / 0 review / 0 fail`; ER contributes
+defect and is not a detail-parity pass by itself. All 27 implemented families
+contribute 6,912 Native/Official pairs accepted by the replacement detail
+gate. Seventeen families contribute `4,352 pass / 0 review / 0 fail`; ER contributes
 `196 pass / 60 manually reviewed / 0 fail`; Journey contributes
 `237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
@@ -92,9 +94,10 @@ gate. Sixteen families contribute `4,096 pass / 0 review / 0 fail`; ER contribut
 `19 pass / 237 manually reviewed / 0 fail`; Venn contributes
 `216 automatic pass / 40 manually accepted / 0 unresolved`; Event Modeling
 contributes `0 automatic pass / 256 manually accepted / 0 unresolved`; Block
-contributes `253 automatic pass / 3 manually accepted / 0 unresolved`; and
+contributes `253 automatic pass / 3 manually accepted / 0 unresolved`;
 Swimlanes contributes `196 automatic pass / 60 manually accepted / 0
-unresolved`.
+unresolved`; and Architecture contributes `256 automatic pass / 0 review / 0
+fail`.
 Journey reviews are benign
 platform-font line-segmentation differences for one complete long actor label.
 Requirement reviews are benign greedy cross-matches between duplicate
@@ -114,7 +117,7 @@ reviews are three paint-order occlusion ratio threshold findings with matching
 visible shapes, labels, edges, and markers. Swimlanes reviews contain only
 text-position findings along semantically equivalent orthogonal routes; all
 lanes, shapes, labels, markers, and endpoints were manually verified. The
-matrix is not counted as 6,656
+matrix is not counted as 6,912
 independent topologies. The separate randomized stress corpus
 remains Native-only robustness evidence and is not presented as Official
 parity.

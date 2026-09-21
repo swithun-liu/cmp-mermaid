@@ -4,6 +4,7 @@ import { cases as productionCases } from './production-corpus.mjs';
 export const kinds = [
   'flowchart',
   'swimlanes',
+  'architecture',
   'xychart',
   'quadrant',
   'timeline',
@@ -110,6 +111,8 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return appendFlowchartEvidence(source, evidenceId, label);
     case 'swimlanes':
       return appendFlowchartEvidence(source, evidenceId, label);
+    case 'architecture':
+      return replaceArchitectureServiceIcon(source, label);
     case 'xychart':
       return replaceOrInsertTitle(source, 'xychart', label);
     case 'quadrant': {
@@ -195,6 +198,18 @@ function appendAgentflowEvidence(source, evidenceId, label) {
   ${evidenceId}["${escapeQuotedLabel(label)}"]@{ shape: refdoc }
   ${anchorId} -.- ${evidenceId}
 `;
+}
+
+function replaceArchitectureServiceIcon(source, label) {
+  const serviceIconPattern = /^(\s*service\s+[A-Za-z_][\w-]*)\([^)]+\)/m;
+  const result = source.replace(
+    serviceIconPattern,
+    `$1 "${escapeQuotedLabel(label)}"`,
+  );
+  if (result === source) {
+    throw new Error('Missing built-in Architecture service icon for visual evidence');
+  }
+  return result;
 }
 
 function insertCynefinEvidence(source, label) {

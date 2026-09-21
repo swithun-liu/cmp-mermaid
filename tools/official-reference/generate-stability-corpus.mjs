@@ -18,6 +18,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
 const kotlinGalleryFiles = {
   swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
+  architecture: ['ArchitectureDemos.kt', 'ArchitectureDemo'],
   xychart: ['XyChartDemos.kt', 'XyChartDemo'],
   quadrant: ['QuadrantDemos.kt', 'QuadrantDemo'],
   timeline: ['TimelineDemos.kt', 'TimelineDemo'],
@@ -46,6 +47,7 @@ const kotlinGalleryFiles = {
 const expectedKindCounts = new Map([
   ['flowchart', 6],
   ['swimlanes', 5],
+  ['architecture', 5],
   ['xychart', 5],
   ['quadrant', 5],
   ['timeline', 5],
@@ -74,6 +76,7 @@ const expectedKindCounts = new Map([
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
   ['swimlanes', 13],
+  ['architecture', 13],
   ['xychart', 13],
   ['quadrant', 13],
   ['timeline', 13],
@@ -102,6 +105,7 @@ const expectedProductionKindCounts = new Map([
 const supportedKinds = new Set([
   'flowchart',
   'swimlanes',
+  'architecture',
   'xychart',
   'quadrant',
   'timeline',
@@ -199,8 +203,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 383) {
-    throw new Error(`Expected 383 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 388) {
+    throw new Error(`Expected 388 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -220,14 +224,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 340) {
+  if (productionCases.length !== 353) {
     throw new Error(
-      `Expected 340 production cases, found ${productionCases.length}`,
+      `Expected 353 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 208) {
+  if (conformanceCases.length !== 216) {
     throw new Error(
-      `Expected 208 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 216 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -441,6 +445,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
         val kinds = listOf(
             "flowchart",
             "swimlanes",
+            "architecture",
             "xychart",
             "quadrant",
             "timeline",
@@ -514,6 +519,7 @@ private fun addVisualParityVariation(
 ): String = when (kind) {
     "flowchart" -> appendFlowchartEvidence(source, evidenceId, label)
     "swimlanes" -> appendFlowchartEvidence(source, evidenceId, label)
+    "architecture" -> replaceArchitectureVisualParityServiceIcon(source, label)
     "xychart" -> replaceOrInsertVisualParityTitle(source, "xychart", label)
     "quadrant" -> {
         val x = ((ordinal % 8) + 1) / 10.0
@@ -562,6 +568,18 @@ private fun addVisualParityVariation(
         label = label,
     )
     else -> source
+}
+
+private fun replaceArchitectureVisualParityServiceIcon(
+    source: String,
+    label: String,
+): String {
+    val serviceIconPattern =
+        Regex("""(?m)^(\\s*service\\s+[A-Za-z_][\\w-]*)\\([^)]+\\)""")
+    val match = serviceIconPattern.find(source) ?: return source
+    val replacement =
+        "\${match.groupValues[1]} \\"\${escapeQuotedVisualParityLabel(label)}\\""
+    return source.replaceRange(match.range, replacement)
 }
 
 private fun appendAgentflowVisualParityEvidence(
