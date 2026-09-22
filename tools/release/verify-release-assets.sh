@@ -2,7 +2,11 @@
 
 set -euo pipefail
 
-root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+root_dir="$(
+  cd "${CMP_MERMAID_ROOT_DIR:-$script_dir/../..}"
+  pwd
+)"
 version="${2:-$(sed -n 's/^VERSION_NAME=//p' "$root_dir/gradle.properties")}"
 release_dir="${1:-$root_dir/build/release/$version}"
 maven_repo="$root_dir/build/maven-repository"
@@ -16,6 +20,7 @@ required_release_files=(
   "THIRD_PARTY_NOTICES.md"
   "cmp-mermaid-$version.cdx.json"
   "cmp-mermaid-android-kotlin17-central-$version.zip"
+  "cmp-mermaid-maven-central-$version.zip"
   "cmp-mermaid-maven-$version.zip"
   "SHA256SUMS"
 )
@@ -69,35 +74,59 @@ done
 temporary_dir="$(mktemp -d "$root_dir/build/cmp-mermaid-verify.XXXXXX")"
 trap 'rm -rf "$temporary_dir"' EXIT
 unzip -q "$release_dir/CMPMermaid-$version.zip" -d "$temporary_dir"
-"$root_dir/tools/release/verify-ios-xcframework.sh" \
+"$script_dir/verify-ios-xcframework.sh" \
   "$temporary_dir/CMPMermaid.xcframework"
 
 unzip -tq "$release_dir/cmp-mermaid-maven-$version.zip" >/dev/null
 unzip -tq \
+  "$release_dir/cmp-mermaid-maven-central-$version.zip" \
+  >/dev/null
+unzip -tq \
   "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" \
   >/dev/null
-legacy_bundle_dir="$temporary_dir/legacy-central"
-mkdir -p "$legacy_bundle_dir"
-unzip -q \
-  "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" \
-  -d "$legacy_bundle_dir"
-if find "$legacy_bundle_dir" -type f -name 'maven-metadata*' | grep -q .; then
-  echo "Legacy Central bundle must not contain Maven metadata" >&2
-  exit 1
-fi
-while IFS= read -r -d '' artifact; do
-  for checksum_extension in md5 sha1; do
-    if [[ ! -s "$artifact.$checksum_extension" ]]; then
-      echo "Missing $checksum_extension checksum for $artifact" >&2
+
+verify_central_bundle() {
+  local bundle="$1"
+  local label="$2"
+  local extracted_dir="$temporary_dir/$label"
+  local artifact
+  local checksum_extension
+
+  mkdir -p "$extracted_dir"
+  unzip -q "$bundle" -d "$extracted_dir"
+  if find "$extracted_dir" -type f -name 'maven-metadata*' | grep -q .; then
+    echo "$label Central bundle must not contain Maven metadata" >&2
+    exit 1
+  fi
+  while IFS= read -r -d '' artifact; do
+    for checksum_extension in md5 sha1; do
+      if [[ ! -s "$artifact.$checksum_extension" ]]; then
+        echo "Missing $checksum_extension checksum for $artifact" >&2
+        exit 1
+      fi
+    done
+    if [[ \
+      "${REQUIRE_SIGNATURES:-false}" == "true" \
+      && "$artifact" != *.asc \
+      && ! -s "$artifact.asc" \
+    ]]; then
+      echo "Missing signature for $artifact" >&2
       exit 1
     fi
-  done
-done < <(
-  find "$legacy_bundle_dir" -type f \
-    ! -name '*.md5' \
-    ! -name '*.sha1' \
-    -print0
-)
+  done < <(
+    find "$extracted_dir" -type f \
+      ! -name '*.md5' \
+      ! -name '*.sha1' \
+      -print0
+  )
+}
+
+verify_central_bundle \
+  "$release_dir/cmp-mermaid-maven-central-$version.zip" \
+  "modern"
+verify_central_bundle \
+  "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" \
+  "legacy"
 
 for module in \
   mermaid-core \
@@ -127,18 +156,20 @@ do
 done
 
 if [[ "${REQUIRE_SIGNATURES:-false}" == "true" ]]; then
-  signature_count="$(
-    unzip -Z1 \
-      "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" |
-      grep -cE '\.asc$'
-  )"
-  if (( signature_count < 6 )); then
-    echo "Legacy Central bundle has too few signatures: $signature_count" >&2
-    exit 1
-  fi
+  for bundle in \
+    "$release_dir/cmp-mermaid-maven-central-$version.zip" \
+    "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip"
+  do
+    signature_count="$(unzip -Z1 "$bundle" | grep -cE '\.asc$')"
+    if (( signature_count < 6 )); then
+      echo "Central bundle has too few signatures: $bundle ($signature_count)" >&2
+      exit 1
+    fi
+  done
 fi
 
-"$root_dir/tools/release/verify-release-privacy.sh" \
+CMP_MERMAID_ROOT_DIR="$root_dir" \
+  "$script_dir/verify-release-privacy.sh" \
   "$release_dir" \
   "$version"
 

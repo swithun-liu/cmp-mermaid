@@ -2,7 +2,10 @@
 
 set -euo pipefail
 
-root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+root_dir="$(
+  cd "${CMP_MERMAID_ROOT_DIR:-$(dirname "${BASH_SOURCE[0]}")/../..}"
+  pwd
+)"
 xcframework="${1:-$root_dir/mermaid-compose/build/cocoapods/publish/release/CMPMermaid.xcframework}"
 
 if [[ ! -d "$xcframework" ]]; then

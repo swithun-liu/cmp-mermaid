@@ -345,6 +345,18 @@ Generate and verify the static iOS binary with JDK 17:
 tools/release/verify-ios-xcframework.sh
 ```
 
+### Release automation
+
+Pushing a `v*` tag runs the modern KMP, iOS XCFramework, and Kotlin `1.7.21`
+Android builds in parallel. Their signed outputs are joined and verified before
+any public registry is updated.
+
+An interrupted publication keeps its prerelease and verified workflow artifact
+for 14 days. Re-run the failed jobs, or manually run the `Release` workflow
+with the same immutable tag. Maven Central and CocoaPods are checked before
+each write, so an already-published version is verified and skipped instead of
+being uploaded again.
+
 ## Themes
 
 All 11 Mermaid `12.0.0` presets are included:

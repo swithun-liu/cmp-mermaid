@@ -306,6 +306,17 @@ fun Diagram(source: String) {
 tools/release/verify-ios-xcframework.sh
 ```
 
+### 自动发布
+
+推送 `v*` tag 后，现代 KMP、iOS XCFramework 与 Kotlin `1.7.21` Android
+三条构建任务会并行执行。只有三路签名产物汇合并通过完整校验后，流水线才会写入
+公开制品仓库。
+
+发布中断时会保留 prerelease 和 14 天有效的已验证 workflow artifact。可以直接
+重跑失败任务，也可以在 `Release` workflow 中手动指定同一个不可变 tag 恢复发布。
+每次写入前都会先核对 Maven Central 和 CocoaPods；已经公开的版本只做回读验证，
+不会重复上传。
+
 ## 主题
 
 包含 Mermaid `12.0.0` 的全部 11 个预设主题：

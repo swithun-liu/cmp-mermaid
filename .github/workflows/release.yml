@@ -4,49 +4,55 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing immutable tag to build or recover
+        required: true
+        type: string
 
 permissions:
   contents: write
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-${{ inputs.tag || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
-  publish:
-    runs-on: macos-14
-    timeout-minutes: 120
-    env:
-      ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
-      ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
-      ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
-      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
-      CENTRAL_PORTAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
-      CENTRAL_PORTAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-      COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+      version: ${{ steps.version.outputs.version }}
 
     steps:
       - name: Checkout immutable tag
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          ref: ${{ inputs.tag || github.ref }}
 
       - name: Validate tag and version
         id: version
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
+          REQUESTED_TAG: ${{ inputs.tag || github.ref_name }}
         run: |
           set -euo pipefail
           version="$(sed -n 's/^VERSION_NAME=//p' gradle.properties)"
           expected_tag="v$version"
-          test "$GITHUB_REF_TYPE" = "tag"
-          test "$GITHUB_REF_NAME" = "$expected_tag"
+          test "$REQUESTED_TAG" = "$expected_tag"
           test "$(git tag --points-at HEAD --list "$expected_tag")" = "$expected_tag"
-          if gh release view "$expected_tag" >/dev/null 2>&1; then
-            echo "Release $expected_tag already exists" >&2
-            exit 1
+          if release_json="$(gh release view "$expected_tag" --json isDraft,isPrerelease 2>/dev/null)"; then
+            is_draft="$(jq -r '.isDraft' <<<"$release_json")"
+            is_prerelease="$(jq -r '.isPrerelease' <<<"$release_json")"
+            if [[ "$is_draft" != "true" && "$is_prerelease" != "true" ]]; then
+              echo "Release $expected_tag is already finalized" >&2
+              exit 1
+            fi
+            echo "::notice::Resuming existing unfinished release $expected_tag"
           fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "tag=$expected_tag" >> "$GITHUB_OUTPUT"
@@ -62,22 +68,31 @@ jobs:
             exit 1
           fi
 
-      - name: Validate Maven publishing secrets
+  build-modern-maven:
+    needs: validate
+    runs-on: macos-14
+    timeout-minutes: 75
+
+    steps:
+      - name: Checkout immutable tag
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ needs.validate.outputs.tag }}
+
+      - name: Validate signing secrets
         shell: bash
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-          required=(
-            ORG_GRADLE_PROJECT_mavenCentralUsername
-            ORG_GRADLE_PROJECT_mavenCentralPassword
-            ORG_GRADLE_PROJECT_signingInMemoryKey
-            ORG_GRADLE_PROJECT_signingInMemoryKeyId
-            ORG_GRADLE_PROJECT_signingInMemoryKeyPassword
-          )
-          for name in "${required[@]}"; do
-            if [[ -z "${!name:-}" ]]; then
-              echo "Missing required Maven publishing secret: $name" >&2
+          for name in SIGNING_KEY SIGNING_KEY_ID SIGNING_KEY_PASSWORD; do
+            test -n "${!name:-}" || {
+              echo "Missing required signing secret: $name" >&2
               exit 1
-            fi
+            }
           done
 
       - name: Set up Java 17
@@ -89,7 +104,11 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
 
-      - name: Test and build modern Maven and iOS artifacts
+      - name: Test and build modern Maven artifacts
+        env:
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
         run: |
           ./gradlew \
             :mermaid-core:jvmTest \
@@ -97,17 +116,95 @@ jobs:
             verifyPublicationCoordinates \
             :mermaid-core:publishAllPublicationsToBuildRepository \
             :mermaid-compose:publishAllPublicationsToBuildRepository \
+            --console=plain
+
+      - name: Upload modern Maven repository
+        uses: actions/upload-artifact@v7
+        with:
+          name: modern-maven-repository
+          path: build/maven-repository
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: true
+          retention-days: 14
+
+  build-ios:
+    needs: validate
+    runs-on: macos-14
+    timeout-minutes: 75
+
+    steps:
+      - name: Checkout immutable tag
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ needs.validate.outputs.tag }}
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build and verify iOS XCFramework
+        run: |
+          ./gradlew \
             :mermaid-compose:podPublishReleaseXCFramework \
             --console=plain
           tools/release/verify-ios-xcframework.sh
 
-      - name: Set up Java 11 for Kotlin 1.7 artifacts
+      - name: Upload iOS publication
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-publication
+          path: mermaid-compose/build/cocoapods/publish/release
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: true
+          retention-days: 14
+
+  build-kotlin17-android:
+    needs: validate
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout immutable tag
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ needs.validate.outputs.tag }}
+
+      - name: Validate signing secrets
+        shell: bash
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          for name in SIGNING_KEY SIGNING_KEY_PASSWORD; do
+            test -n "${!name:-}" || {
+              echo "Missing required signing secret: $name" >&2
+              exit 1
+            }
+          done
+
+      - name: Set up Java 11
         uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: "11"
 
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
       - name: Build and consume Kotlin 1.7 Android artifacts
+        env:
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
         run: |
           ./android-legacy-build/gradlew -p android-legacy-build \
             assembleRelease \
@@ -119,84 +216,211 @@ jobs:
             assembleRelease \
             --console=plain
 
+      - name: Upload Kotlin 1.7 Maven repository
+        uses: actions/upload-artifact@v7
+        with:
+          name: kotlin17-maven-repository
+          path: build/maven-repository
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: true
+          retention-days: 14
+
+  package-and-publish:
+    needs:
+      - validate
+      - build-modern-maven
+      - build-ios
+      - build-kotlin17-android
+    runs-on: macos-14
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout immutable tag
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ needs.validate.outputs.tag }}
+
+      - name: Checkout current release tooling
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          path: .release-tooling
+          ref: ${{ github.workflow_sha }}
+          sparse-checkout: tools/release
+
+      - name: Use current release tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          tooling_dir="$RUNNER_TEMP/cmp-mermaid-release-tooling"
+          rm -rf "$tooling_dir"
+          mkdir -p "$tooling_dir"
+          cp -R .release-tooling/tools/release/. "$tooling_dir/"
+          rm -rf .release-tooling
+          echo "RELEASE_TOOLING_DIR=$tooling_dir" >> "$GITHUB_ENV"
+
+      - name: Download modern Maven repository
+        uses: actions/download-artifact@v8
+        with:
+          name: modern-maven-repository
+          path: build/maven-repository
+
+      - name: Download Kotlin 1.7 Maven repository
+        uses: actions/download-artifact@v8
+        with:
+          name: kotlin17-maven-repository
+          path: build/maven-repository
+
+      - name: Download iOS publication
+        uses: actions/download-artifact@v8
+        with:
+          name: ios-publication
+          path: mermaid-compose/build/cocoapods/publish/release
+
       - name: Assemble release assets
         run: |
-          tools/release/assemble-release-assets.sh \
-            "${{ steps.version.outputs.version }}"
+          CMP_MERMAID_ROOT_DIR="$GITHUB_WORKSPACE" \
+            "$RELEASE_TOOLING_DIR/assemble-release-assets.sh" \
+            "${{ needs.validate.outputs.version }}"
 
       - name: Generate CycloneDX SBOM
         uses: anchore/sbom-action@v0
         with:
           path: .
           format: cyclonedx-json
-          output-file: build/release/${{ steps.version.outputs.version }}/cmp-mermaid-${{ steps.version.outputs.version }}.cdx.json
+          output-file: build/release/${{ needs.validate.outputs.version }}/cmp-mermaid-${{ needs.validate.outputs.version }}.cdx.json
           upload-artifact: false
           upload-release-assets: false
 
       - name: Normalize SBOM workspace paths
         run: |
-          node tools/release/normalize-sbom-paths.mjs \
-            "build/release/${{ steps.version.outputs.version }}/cmp-mermaid-${{ steps.version.outputs.version }}.cdx.json" \
+          node "$RELEASE_TOOLING_DIR/normalize-sbom-paths.mjs" \
+            "build/release/${{ needs.validate.outputs.version }}/cmp-mermaid-${{ needs.validate.outputs.version }}.cdx.json" \
             "$GITHUB_WORKSPACE"
 
       - name: Verify release assets
         env:
           REQUIRE_SIGNATURES: "true"
         run: |
-          tools/release/generate-checksums.sh \
-            "build/release/${{ steps.version.outputs.version }}"
-          tools/release/verify-release-assets.sh \
-            "build/release/${{ steps.version.outputs.version }}" \
-            "${{ steps.version.outputs.version }}"
-          DRY_RUN=true tools/release/upload-central-bundle.sh \
-            "build/release/${{ steps.version.outputs.version }}/cmp-mermaid-android-kotlin17-central-${{ steps.version.outputs.version }}.zip"
+          "$RELEASE_TOOLING_DIR/generate-checksums.sh" \
+            "build/release/${{ needs.validate.outputs.version }}"
+          CMP_MERMAID_ROOT_DIR="$GITHUB_WORKSPACE" \
+            "$RELEASE_TOOLING_DIR/verify-release-assets.sh" \
+            "build/release/${{ needs.validate.outputs.version }}" \
+            "${{ needs.validate.outputs.version }}"
+          DRY_RUN=true "$RELEASE_TOOLING_DIR/upload-central-bundle.sh" \
+            "build/release/${{ needs.validate.outputs.version }}/cmp-mermaid-maven-central-${{ needs.validate.outputs.version }}.zip"
+          DRY_RUN=true "$RELEASE_TOOLING_DIR/upload-central-bundle.sh" \
+            "build/release/${{ needs.validate.outputs.version }}/cmp-mermaid-android-kotlin17-central-${{ needs.validate.outputs.version }}.zip"
 
-      - name: Restore Java 17 for modern publication
-        uses: actions/setup-java@v6
+      - name: Preserve verified release assets
+        uses: actions/upload-artifact@v7
         with:
-          distribution: temurin
-          java-version: "17"
+          name: verified-release-assets
+          path: build/release/${{ needs.validate.outputs.version }}
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: true
+          retention-days: 14
 
       - name: Publish verified artifacts
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
+          CENTRAL_PORTAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          CENTRAL_PORTAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
         run: |
           set -euo pipefail
-          version="${{ steps.version.outputs.version }}"
-          tag="${{ steps.version.outputs.tag }}"
+          version="${{ needs.validate.outputs.version }}"
+          tag="${{ needs.validate.outputs.tag }}"
           release_dir="build/release/$version"
-          release_created=false
-          release_finalized=false
 
-          cleanup_failed_release() {
-            if [[ "$release_created" == "true" && "$release_finalized" != "true" ]]; then
-              gh release delete "$tag" --yes || true
+          if release_json="$(gh release view "$tag" --json isDraft,isPrerelease 2>/dev/null)"; then
+            is_draft="$(jq -r '.isDraft' <<<"$release_json")"
+            is_prerelease="$(jq -r '.isPrerelease' <<<"$release_json")"
+            if [[ "$is_draft" != "true" && "$is_prerelease" != "true" ]]; then
+              echo "Release $tag is already finalized" >&2
+              exit 1
             fi
-          }
-          trap cleanup_failed_release EXIT
-
-          gh release create "$tag" "$release_dir"/* \
-            --prerelease \
-            --verify-tag \
-            --title "CMP Mermaid $version" \
-            --generate-notes
-          release_created=true
+            gh release upload "$tag" "$release_dir"/* --clobber
+          else
+            gh release create "$tag" "$release_dir"/* \
+              --prerelease \
+              --verify-tag \
+              --title "CMP Mermaid $version" \
+              --generate-notes
+          fi
 
           pod spec lint "$release_dir/CMPMermaid.podspec" --allow-warnings
 
-          ./gradlew \
-            :mermaid-core:publishAndReleaseToMavenCentral \
-            :mermaid-compose:publishAndReleaseToMavenCentral \
-            --console=plain
-          tools/release/upload-central-bundle.sh \
+          "$RELEASE_TOOLING_DIR/publish-central-bundle-if-needed.sh" \
+            "$release_dir/cmp-mermaid-maven-central-$version.zip" \
+            "cmp-mermaid-modern-$version" &
+          modern_publish_pid=$!
+          "$RELEASE_TOOLING_DIR/publish-central-bundle-if-needed.sh" \
             "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" \
-            "cmp-mermaid-android-kotlin17-$version"
-          if [[ -n "${COCOAPODS_TRUNK_TOKEN:-}" ]]; then
-            pod trunk push "$release_dir/CMPMermaid.podspec" --allow-warnings
-          else
-            echo "::notice::Skipping CocoaPods publication because COCOAPODS_TRUNK_TOKEN is not configured"
+            "cmp-mermaid-android-kotlin17-$version" &
+          legacy_publish_pid=$!
+          "$RELEASE_TOOLING_DIR/publish-cocoapods-if-needed.sh" \
+            "$release_dir/CMPMermaid.podspec" \
+            "$version" &
+          cocoapods_publish_pid=$!
+
+          publish_failed=false
+          for pid in \
+            "$modern_publish_pid" \
+            "$legacy_publish_pid" \
+            "$cocoapods_publish_pid"
+          do
+            if ! wait "$pid"; then
+              publish_failed=true
+            fi
+          done
+          if [[ "$publish_failed" == "true" ]]; then
+            echo "At least one publication channel failed" >&2
+            exit 1
           fi
 
+          modern_state_file="$(mktemp)"
+          legacy_state_file="$(mktemp)"
+          trap 'rm -f "$modern_state_file" "$legacy_state_file"' EXIT
+          (
+            MAVEN_STATUS_ATTEMPTS=40 \
+              "$RELEASE_TOOLING_DIR/central-bundle-state.sh" \
+              "$release_dir/cmp-mermaid-maven-central-$version.zip" \
+              > "$modern_state_file"
+          ) &
+          modern_verify_pid=$!
+          (
+            MAVEN_STATUS_ATTEMPTS=40 \
+              "$RELEASE_TOOLING_DIR/central-bundle-state.sh" \
+              "$release_dir/cmp-mermaid-android-kotlin17-central-$version.zip" \
+              > "$legacy_state_file"
+          ) &
+          legacy_verify_pid=$!
+          "$RELEASE_TOOLING_DIR/cocoapods-version-published.sh" \
+            CMPMermaid \
+            "$version" &
+          cocoapods_verify_pid=$!
+
+          verify_failed=false
+          for pid in \
+            "$modern_verify_pid" \
+            "$legacy_verify_pid" \
+            "$cocoapods_verify_pid"
+          do
+            if ! wait "$pid"; then
+              verify_failed=true
+            fi
+          done
+          if [[ "$verify_failed" == "true" ]]; then
+            echo "At least one public repository verification failed" >&2
+            exit 1
+          fi
+          test "$(cat "$modern_state_file")" = "published"
+          test "$(cat "$legacy_state_file")" = "published"
+
           gh release edit "$tag" --prerelease=false --latest
-          release_finalized=true

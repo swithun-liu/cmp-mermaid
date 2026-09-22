@@ -2,7 +2,10 @@
 
 set -euo pipefail
 
-root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+root_dir="$(
+  cd "${CMP_MERMAID_ROOT_DIR:-$(dirname "${BASH_SOURCE[0]}")/../..}"
+  pwd
+)"
 version="${2:-$(sed -n 's/^VERSION_NAME=//p' "$root_dir/gradle.properties")}"
 release_dir="${1:-$root_dir/build/release/$version}"
 
