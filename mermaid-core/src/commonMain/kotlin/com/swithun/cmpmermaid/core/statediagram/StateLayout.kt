@@ -819,11 +819,9 @@ internal class StateLayout {
                     weight = SceneTextWeight.Normal,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "State title measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "State title measurement failed"),
             )
         }
         elements += SceneText(

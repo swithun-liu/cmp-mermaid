@@ -7,6 +7,12 @@ func makeMermaidViewController() -> UIViewController {
         flowchart LR
             Source --> Consumer
         """,
-        contentDescription: "Mermaid release smoke test"
+        contentDescription: "Mermaid release smoke test",
+        onContentSizeChanged: nil,
+        onError: { error in
+            _ = error.type
+            _ = error.message
+            _ = error.source
+        }
     )
 }

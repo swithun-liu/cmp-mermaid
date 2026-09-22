@@ -12,6 +12,7 @@ import com.caverock.androidsvg.SVG
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayInputStream
@@ -89,7 +90,9 @@ class AndroidMermaidAssetProvider(
             } else {
                 Uri.decode(payload).encodeToByteArray()
             }
-        } catch (failure: Throwable) {
+        } catch (cancelled: CancellationException) {
+            throw cancelled
+        } catch (failure: Exception) {
             return loadFailure(source, failure.message)
         }
         if (bytes.size > MAX_ASSET_BYTES) {
@@ -120,7 +123,9 @@ class AndroidMermaidAssetProvider(
     ): GMResult<MermaidResolvedAsset, MermaidAssetError> {
         val svg = try {
             SVG.getFromInputStream(ByteArrayInputStream(bytes))
-        } catch (failure: Throwable) {
+        } catch (cancelled: CancellationException) {
+            throw cancelled
+        } catch (failure: Exception) {
             return loadFailure(asset.source, failure.message)
         }
         val viewBox = svg.documentViewBox
@@ -145,7 +150,9 @@ class AndroidMermaidAssetProvider(
                 svg.setDocumentHeight(targetHeight.toFloat())
                 svg.renderToCanvas(Canvas(target))
             }
-        } catch (failure: Throwable) {
+        } catch (cancelled: CancellationException) {
+            throw cancelled
+        } catch (failure: Exception) {
             return loadFailure(asset.source, failure.message)
         }
         return GMResult.Ok(

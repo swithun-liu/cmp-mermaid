@@ -207,11 +207,11 @@ internal class MindmapLayout {
                 ),
             ),
         )
-    } catch (failure: Throwable) {
+    } catch (failure: Exception) {
         GMResult.Err(
-            MermaidError.Layout(
-                "Text measurement failed for Mindmap node '${node.nodeId}': " +
-                    (failure.message ?: "unknown error"),
+            MermaidError.Unexpected.from(
+                failure,
+                "Text measurement failed for Mindmap node '${node.nodeId}'",
             ),
         )
     }

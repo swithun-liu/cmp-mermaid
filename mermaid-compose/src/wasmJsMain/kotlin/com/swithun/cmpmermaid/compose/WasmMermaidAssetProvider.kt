@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.toComposeImageBitmap
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
+import kotlinx.coroutines.CancellationException
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 import kotlin.js.ExperimentalWasmJsInterop
@@ -88,7 +89,7 @@ class WasmMermaidAssetProvider : MermaidAssetProvider {
                 decodeUriComponent(payload).encodeToByteArray()
             }
         } catch (failure: Throwable) {
-            return loadFailure(source, failure.message)
+            return recoverLoadFailure(source, failure)
         }
         if (bytes.size > MAX_ASSET_BYTES) {
             return loadFailure(source, "Asset exceeds the ${MAX_ASSET_BYTES / 1_048_576} MiB limit")
@@ -118,7 +119,7 @@ class WasmMermaidAssetProvider : MermaidAssetProvider {
             )
         }
     } catch (failure: Throwable) {
-        loadFailure(asset.source, failure.message)
+        recoverLoadFailure(asset.source, failure)
     }
 
     private fun decodeSvg(
@@ -128,7 +129,7 @@ class WasmMermaidAssetProvider : MermaidAssetProvider {
         val svg = try {
             SVGDOM(Data.makeFromBytes(bytes))
         } catch (failure: Throwable) {
-            return loadFailure(asset.source, failure.message)
+            return recoverLoadFailure(asset.source, failure)
         }
         return try {
             val root = svg.root
@@ -171,7 +172,7 @@ class WasmMermaidAssetProvider : MermaidAssetProvider {
                 surface.close()
             }
         } catch (failure: Throwable) {
-            loadFailure(asset.source, failure.message)
+            recoverLoadFailure(asset.source, failure)
         } finally {
             svg.close()
         }
@@ -186,6 +187,17 @@ class WasmMermaidAssetProvider : MermaidAssetProvider {
 
     private fun positiveDimension(value: Float?): Float? =
         value?.takeIf { it.isFinite() && it > 0f }
+
+    // JavaScript interop can surface throwable values outside Kotlin's Exception hierarchy.
+    private fun <T> recoverLoadFailure(
+        source: String,
+        failure: Throwable,
+    ): GMResult<T, MermaidAssetError> {
+        if (failure is CancellationException || failure is Error) {
+            throw failure
+        }
+        return loadFailure(source, failure.message)
+    }
 
     private fun <T> loadFailure(
         source: String,

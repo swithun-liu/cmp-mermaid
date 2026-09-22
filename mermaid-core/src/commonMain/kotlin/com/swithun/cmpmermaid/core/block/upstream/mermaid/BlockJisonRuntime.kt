@@ -15,7 +15,7 @@ internal class BlockJisonLexerPattern(
     } else {
         try {
             GMResult.Ok(Regex(source))
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(failure.message ?: "Invalid Block lexer pattern $rule")
         }
     }
@@ -33,7 +33,7 @@ internal class BlockJisonLexerPattern(
                         ?.takeIf { match -> match.range.first == 0 }
                         ?.value,
                 )
-            } catch (failure: Throwable) {
+            } catch (failure: Exception) {
                 GMResult.Err(
                     MermaidError.Parse(
                         line = 1,

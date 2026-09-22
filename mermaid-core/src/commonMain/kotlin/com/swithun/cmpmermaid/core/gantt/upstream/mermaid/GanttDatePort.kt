@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core.gantt.upstream.mermaid
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
+import kotlinx.coroutines.CancellationException
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
@@ -149,7 +150,9 @@ internal object GanttDatePort {
                 millis + duration.value.roundToLong()
         }
         GMResult.Ok(result)
-    } catch (failure: Throwable) {
+    } catch (cancelled: CancellationException) {
+        throw cancelled
+    } catch (failure: Exception) {
         GMResult.Err(
             MermaidError.Layout(
                 "Invalid Gantt duration '${duration.value}${duration.unit.suffix}': " +
@@ -538,7 +541,7 @@ internal object GanttDatePort {
         if (dayOfYear != null) {
             val resolved = try {
                 LocalDate(year, 1, 1).plus(dayOfYear - 1, DateTimeUnit.DAY)
-            } catch (_: Throwable) {
+            } catch (_: Exception) {
                 return invalidDate(source, format)
             }
             month = resolved.month.number
@@ -582,7 +585,7 @@ internal object GanttDatePort {
                 local.toInstant(TimeZone.UTC).toEpochMilliseconds() -
                     offsetMinutes * MILLIS_PER_MINUTE,
             )
-        } catch (_: Throwable) {
+        } catch (_: Exception) {
             invalidDate(source, format)
         }
     }

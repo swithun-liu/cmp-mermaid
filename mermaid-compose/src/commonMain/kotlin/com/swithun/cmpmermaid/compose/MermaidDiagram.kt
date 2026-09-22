@@ -72,6 +72,7 @@ import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderContext
+import com.swithun.cmpmermaid.core.MermaidRenderErrorInfo
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.MermaidSceneViewportSizing
@@ -103,6 +104,7 @@ import com.swithun.cmpmermaid.core.SceneTextWeight
 import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
 import com.swithun.cmpmermaid.core.TextMetricsRequest
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withContext
 import kotlin.math.PI
 import kotlin.math.atan2
@@ -125,6 +127,37 @@ fun MermaidDiagram(
     respectSourceViewportSizing: Boolean = true,
     onRenderResult: ((GMResult<MermaidScene, MermaidError>) -> Unit)? = null,
 ) {
+    MermaidDiagram(
+        source = source,
+        modifier = modifier,
+        theme = theme,
+        options = options,
+        fontFamilyResolver = fontFamilyResolver,
+        contentDescription = contentDescription,
+        assetProvider = assetProvider,
+        onAssetError = onAssetError,
+        onNodeInteraction = onNodeInteraction,
+        respectSourceViewportSizing = respectSourceViewportSizing,
+        onRenderResult = onRenderResult,
+        onError = null,
+    )
+}
+
+@Composable
+fun MermaidDiagram(
+    source: String,
+    modifier: Modifier = Modifier,
+    theme: MermaidTheme = MermaidTheme.FlowchartDefault,
+    options: MermaidRenderOptions = MermaidRenderOptions(),
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
+    contentDescription: String = "Mermaid diagram",
+    assetProvider: MermaidAssetProvider? = null,
+    onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
+    onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
+    respectSourceViewportSizing: Boolean = true,
+    onError: ((MermaidRenderErrorInfo) -> Unit)?,
+    onRenderResult: ((GMResult<MermaidScene, MermaidError>) -> Unit)? = null,
+) {
     val platformAssetProvider = rememberPlatformMermaidAssetProvider()
     val effectiveAssetProvider = remember(assetProvider, platformAssetProvider) {
         (assetProvider ?: platformAssetProvider)?.cached()
@@ -140,13 +173,20 @@ fun MermaidDiagram(
         assetMetrics = assetMetrics,
     ).value
     val currentRenderResultHandler by rememberUpdatedState(onRenderResult)
+    val currentErrorHandler by rememberUpdatedState(onError)
     LaunchedEffect(sceneResult) {
-        sceneResult?.let { result -> currentRenderResultHandler?.invoke(result) }
+        sceneResult?.let { result ->
+            if (result is GMResult.Err) {
+                reportMermaidRenderError(result.error, source, currentErrorHandler)
+            }
+            currentRenderResultHandler?.invoke(result)
+        }
     }
     when (sceneResult) {
         null -> Box(modifier = modifier)
-        is GMResult.Ok -> MermaidSceneCanvas(
+        is GMResult.Ok -> MermaidSceneCanvasInternal(
             scene = sceneResult.value,
+            renderErrorKey = source,
             modifier = modifier,
             contentDescription = contentDescription,
             fontFamilyResolver = fontFamilyResolver,
@@ -165,6 +205,9 @@ fun MermaidDiagram(
             },
             onNodeInteraction = onNodeInteraction,
             respectSourceViewportSizing = respectSourceViewportSizing,
+            onRenderException = { error ->
+                reportMermaidRenderError(error, source, currentErrorHandler)
+            },
         )
         is GMResult.Err -> Box(
             modifier = modifier,
@@ -176,6 +219,20 @@ fun MermaidDiagram(
             )
         }
     }
+}
+
+internal fun reportMermaidRenderError(
+    error: MermaidError,
+    source: String,
+    onError: ((MermaidRenderErrorInfo) -> Unit)?,
+) {
+    onError?.invoke(
+        MermaidRenderErrorInfo(
+            type = error.renderErrorType,
+            message = error.message,
+            source = source,
+        ),
+    )
 }
 
 @Composable
@@ -276,6 +333,35 @@ fun MermaidSceneCanvas(
     onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
     respectSourceViewportSizing: Boolean = true,
 ) {
+    MermaidSceneCanvasInternal(
+        scene = scene,
+        renderErrorKey = scene,
+        modifier = modifier,
+        contentDescription = contentDescription,
+        fontFamilyResolver = fontFamilyResolver,
+        assetProvider = assetProvider,
+        onAssetError = onAssetError,
+        onAssetResolved = onAssetResolved,
+        onNodeInteraction = onNodeInteraction,
+        respectSourceViewportSizing = respectSourceViewportSizing,
+        onRenderException = null,
+    )
+}
+
+@Composable
+private fun MermaidSceneCanvasInternal(
+    scene: MermaidScene,
+    renderErrorKey: Any?,
+    modifier: Modifier,
+    contentDescription: String,
+    fontFamilyResolver: MermaidFontFamilyResolver?,
+    assetProvider: MermaidAssetProvider?,
+    onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)?,
+    onAssetResolved: ((SceneAsset, MermaidResolvedAsset) -> Unit)?,
+    onNodeInteraction: ((SceneNodeInteraction) -> Unit)?,
+    respectSourceViewportSizing: Boolean,
+    onRenderException: ((MermaidError.Unexpected) -> Unit)? = null,
+) {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
     val monospaceFontFamily = rememberMermaidMonospaceFontFamily()
@@ -306,6 +392,10 @@ fun MermaidSceneCanvas(
     val currentInteractionHandler by rememberUpdatedState(onNodeInteraction)
     val currentAssetErrorHandler by rememberUpdatedState(onAssetError)
     val currentAssetResolvedHandler by rememberUpdatedState(onAssetResolved)
+    val currentRenderExceptionHandler by rememberUpdatedState(onRenderException)
+    val renderExceptionReporter = remember(scene, renderErrorKey) {
+        MermaidRenderExceptionReporter()
+    }
     var viewport by remember(scene) { mutableStateOf(DiagramViewport()) }
     val sceneAssets = remember(scene) {
         scene.elements.filterIsInstance<SceneAsset>()
@@ -424,59 +514,86 @@ fun MermaidSceneCanvas(
                 }
             },
     ) {
-        drawRect(scene.background.toComposeColor())
-        if (scene.width <= 0f || scene.height <= 0f) {
+        if (renderExceptionReporter.hasFailed) {
             return@Canvas
         }
-        val viewportPadding = scene.viewportPadding.coerceAtLeast(0f)
-        val paddedSceneWidth = scene.width + viewportPadding * 2f
-        val paddedSceneHeight = scene.height + viewportPadding * 2f
-        val fitScale = min(size.width / paddedSceneWidth, size.height / paddedSceneHeight)
-        val scale = fitScale * viewport.zoom
-        val contentWidth = paddedSceneWidth * scale
-        val contentHeight = paddedSceneHeight * scale
-        val baseOffset = Offset(
-            x = (size.width - contentWidth) / 2f,
-            y = (size.height - contentHeight) / 2f,
-        )
-
-        withTransform({
-            translate(
-                baseOffset.x + viewport.panX + viewportPadding * scale,
-                baseOffset.y + viewport.panY + viewportPadding * scale,
+        try {
+            drawRect(scene.background.toComposeColor())
+            if (scene.width <= 0f || scene.height <= 0f) {
+                return@Canvas
+            }
+            val viewportPadding = scene.viewportPadding.coerceAtLeast(0f)
+            val paddedSceneWidth = scene.width + viewportPadding * 2f
+            val paddedSceneHeight = scene.height + viewportPadding * 2f
+            val fitScale = min(size.width / paddedSceneWidth, size.height / paddedSceneHeight)
+            val scale = fitScale * viewport.zoom
+            val contentWidth = paddedSceneWidth * scale
+            val contentHeight = paddedSceneHeight * scale
+            val baseOffset = Offset(
+                x = (size.width - contentWidth) / 2f,
+                y = (size.height - contentHeight) / 2f,
             )
-            scale(scale, scale, Offset.Zero)
-        }) {
-            scene.elements.forEach { element ->
-                when (element) {
-                    is SceneAsset -> when (val state = assetStates[element.id]) {
-                        is MermaidAssetState.Resolved -> drawSceneAsset(
-                            asset = element,
-                            image = state.asset.image,
-                        )
-                        is MermaidAssetState.Failed -> drawSceneAssetFailure(
-                            asset = element,
+
+            withTransform({
+                translate(
+                    baseOffset.x + viewport.panX + viewportPadding * scale,
+                    baseOffset.y + viewport.panY + viewportPadding * scale,
+                )
+                scale(scale, scale, Offset.Zero)
+            }) {
+                scene.elements.forEach { element ->
+                    when (element) {
+                        is SceneAsset -> when (val state = assetStates[element.id]) {
+                            is MermaidAssetState.Resolved -> drawSceneAsset(
+                                asset = element,
+                                image = state.asset.image,
+                            )
+                            is MermaidAssetState.Failed -> drawSceneAssetFailure(
+                                asset = element,
+                                textMeasurer = textMeasurer,
+                                density = density.density,
+                                fontScale = density.fontScale,
+                            )
+                            MermaidAssetState.Loading, null -> drawSceneAssetLoading(element)
+                        }
+                        is SceneShape -> drawSceneShape(element)
+                        is ScenePath -> drawScenePath(element, animationTimeMillis)
+                        is SceneText -> drawSceneText(
+                            element = element,
                             textMeasurer = textMeasurer,
                             density = density.density,
                             fontScale = density.fontScale,
+                            fontFamilyResolver = effectiveFontFamilyResolver,
+                            monospaceFontFamily = monospaceFontFamily,
+                            cjkFontFamily = cjkFontFamily,
+                            symbolFontFamily = symbolFontFamily,
                         )
-                        MermaidAssetState.Loading, null -> drawSceneAssetLoading(element)
                     }
-                    is SceneShape -> drawSceneShape(element)
-                    is ScenePath -> drawScenePath(element, animationTimeMillis)
-                    is SceneText -> drawSceneText(
-                        element = element,
-                        textMeasurer = textMeasurer,
-                        density = density.density,
-                        fontScale = density.fontScale,
-                        fontFamilyResolver = effectiveFontFamilyResolver,
-                        monospaceFontFamily = monospaceFontFamily,
-                        cjkFontFamily = cjkFontFamily,
-                        symbolFontFamily = symbolFontFamily,
-                    )
                 }
             }
+        } catch (cancelled: CancellationException) {
+            throw cancelled
+        } catch (exception: Exception) {
+            renderExceptionReporter.report(exception, currentRenderExceptionHandler)
         }
+    }
+}
+
+internal class MermaidRenderExceptionReporter {
+    private var failure: MermaidError.Unexpected? = null
+    val hasFailed: Boolean
+        get() = failure != null
+
+    fun report(
+        exception: Exception,
+        onRenderException: ((MermaidError.Unexpected) -> Unit)?,
+    ) {
+        if (failure != null) {
+            return
+        }
+        val error = MermaidError.Unexpected.from(exception)
+        failure = error
+        onRenderException?.invoke(error)
     }
 }
 

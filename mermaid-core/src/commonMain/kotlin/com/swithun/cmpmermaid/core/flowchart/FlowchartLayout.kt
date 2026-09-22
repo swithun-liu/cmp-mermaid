@@ -57,11 +57,9 @@ internal class FlowchartLayout {
                         spans = textSpans(node.label, node.labelSpans, style),
                     ),
                 )
-            } catch (failure: Throwable) {
+            } catch (failure: Exception) {
                 return GMResult.Err(
-                    MermaidError.Layout(
-                        "Text measurement failed for '$id': ${failure.message ?: "unknown error"}",
-                    ),
+                    MermaidError.Unexpected.from(failure, "Text measurement failed for '$id'"),
                 )
             }
             val textSize = SceneSize(measured.width, measured.height)
@@ -97,11 +95,11 @@ internal class FlowchartLayout {
                         spans = textSpans(label, edge.labelSpans, edgeStyle),
                     ),
                 )
-            } catch (failure: Throwable) {
+            } catch (failure: Exception) {
                 return GMResult.Err(
-                    MermaidError.Layout(
-                        "Edge label measurement failed for '${edge.id}': " +
-                            (failure.message ?: "unknown error"),
+                    MermaidError.Unexpected.from(
+                        failure,
+                        "Edge label measurement failed for '${edge.id}'",
                     ),
                 )
             }
@@ -122,11 +120,11 @@ internal class FlowchartLayout {
                         spans = textSpans(subgraph.label, subgraph.labelSpans, style),
                     ),
                 )
-            } catch (failure: Throwable) {
+            } catch (failure: Exception) {
                 return GMResult.Err(
-                    MermaidError.Layout(
-                        "Subgraph label measurement failed for '${subgraph.id}': " +
-                            (failure.message ?: "unknown error"),
+                    MermaidError.Unexpected.from(
+                        failure,
+                        "Subgraph label measurement failed for '${subgraph.id}'",
                     ),
                 )
             }
@@ -762,11 +760,9 @@ internal class FlowchartLayout {
                     weight = SceneTextWeight.Normal,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "Title measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "Title measurement failed"),
             )
         }
         val centerX = graphBounds.left + graphBounds.width / 2f

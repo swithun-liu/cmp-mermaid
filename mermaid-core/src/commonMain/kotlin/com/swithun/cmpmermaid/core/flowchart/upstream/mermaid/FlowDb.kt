@@ -749,7 +749,7 @@ internal class FlowDb(
         }
         val parsed = try {
             Yaml.default.parseToYamlNode(yamlSource)
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return flowError(failure.message ?: "Invalid flowchart metadata")
         }
         val map = parsed as? YamlMap

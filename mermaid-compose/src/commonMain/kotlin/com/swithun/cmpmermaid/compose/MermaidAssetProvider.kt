@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.ImageBitmap
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.SceneAsset
+import kotlinx.coroutines.CancellationException
 import com.swithun.cmpmermaid.core.SceneAssetKind
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -77,7 +78,9 @@ internal suspend fun resolveMermaidAssets(
         } else {
             try {
                 provider.resolve(asset)
-            } catch (failure: Throwable) {
+            } catch (cancelled: CancellationException) {
+                throw cancelled
+            } catch (failure: Exception) {
                 GMResult.Err(
                     MermaidAssetError.LoadFailed(
                         source = asset.source,

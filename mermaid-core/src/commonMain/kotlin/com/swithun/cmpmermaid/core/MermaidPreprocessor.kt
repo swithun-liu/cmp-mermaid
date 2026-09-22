@@ -313,7 +313,7 @@ internal object MermaidPreprocessor {
     ): GMResult<YamlMap, MermaidError> {
         val parsed = try {
             Yaml.default.parseToYamlNode(source)
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return configurationError(
                 "Invalid Mermaid $sourceName: ${failure.message ?: "invalid YAML/JSON"}",
             )

@@ -740,11 +740,9 @@ internal class JourneyLayout {
                 ),
             ),
         )
-    } catch (failure: Throwable) {
+    } catch (failure: Exception) {
         GMResult.Err(
-            MermaidError.Layout(
-                "Journey text measurement failed: ${failure.message ?: "unknown error"}",
-            ),
+            MermaidError.Unexpected.from(failure, "Journey text measurement failed"),
         )
     }
 

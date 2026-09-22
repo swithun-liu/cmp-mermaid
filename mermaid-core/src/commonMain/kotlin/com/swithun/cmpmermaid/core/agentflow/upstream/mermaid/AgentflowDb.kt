@@ -1092,7 +1092,7 @@ internal class AgentflowDb(
     ): GMResult<YamlNode, MermaidError> =
         try {
             GMResult.Ok(Yaml.default.parseToYamlNode(yamlSource))
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             positionedParseError(
                 message = failure.message ?: "Invalid agentflow metadata",
                 location = location,

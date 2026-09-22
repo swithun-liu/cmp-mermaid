@@ -337,11 +337,9 @@ internal class RequirementLayout {
                     weight = weight,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    "Requirement text measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "Requirement text measurement failed"),
             )
         }
     }
@@ -632,11 +630,9 @@ internal class RequirementLayout {
                     weight = SceneTextWeight.Normal,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "Requirement title measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "Requirement title measurement failed"),
             )
         }
         elements += SceneText(

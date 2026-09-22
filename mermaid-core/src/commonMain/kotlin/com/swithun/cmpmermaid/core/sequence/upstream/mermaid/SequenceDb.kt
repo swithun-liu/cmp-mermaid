@@ -334,7 +334,7 @@ internal class SequenceDb {
         val yamlSource = if ('\n' in source) "$source\n" else "{\n$source\n}"
         val node = try {
             Yaml.default.parseToYamlNode(yamlSource)
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return sequenceError(failure.message ?: "Invalid Sequence participant metadata.")
         }
         val map = node as? YamlMap
@@ -354,7 +354,7 @@ internal class SequenceDb {
     private fun parseStringObject(source: String): Map<String, String>? {
         val objectValue = try {
             Json.parseToJsonElement(source) as? JsonObject
-        } catch (_: Throwable) {
+        } catch (_: Exception) {
             null
         } ?: return null
         return buildMap {

@@ -10,6 +10,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AbstractComposeView
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidRenderErrorInfo
 
 /**
  * Stable Android View entry point for hosts that do not compile Compose source.
@@ -22,6 +23,7 @@ class CMPMermaidView @JvmOverloads constructor(
     private var sourceState by mutableStateOf("")
     private var contentDescriptionState by mutableStateOf("Mermaid diagram")
     private var contentSizeListener: ((Float, Float) -> Unit)? = null
+    private var errorListener: ((MermaidRenderErrorInfo) -> Unit)? = null
     private var lastContentSize: MermaidContentSize? = null
 
     fun setMermaidSource(source: String?) {
@@ -41,6 +43,12 @@ class CMPMermaidView @JvmOverloads constructor(
         lastContentSize?.let { size -> listener?.invoke(size.width, size.height) }
     }
 
+    fun setMermaidErrorListener(
+        listener: ((MermaidRenderErrorInfo) -> Unit)?,
+    ) {
+        errorListener = listener
+    }
+
     @Composable
     override fun Content() {
         MermaidDiagram(
@@ -56,6 +64,7 @@ class CMPMermaidView @JvmOverloads constructor(
                     }
                 }
             },
+            onError = { error -> errorListener?.invoke(error) },
         )
     }
 }

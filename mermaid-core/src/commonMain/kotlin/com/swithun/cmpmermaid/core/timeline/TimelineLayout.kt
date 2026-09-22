@@ -542,10 +542,8 @@ internal class TimelineLayout {
                     weight = SceneTextWeight.Bold,
                 ),
             )
-        } catch (failure: Throwable) {
-            return MermaidError.Layout(
-                "Timeline title measurement failed: ${failure.message ?: "unknown error"}",
-            )
+        } catch (failure: Exception) {
+            return MermaidError.Unexpected.from(failure, "Timeline title measurement failed")
         }
         elements += SceneText(
             text = text,
@@ -896,12 +894,9 @@ private class TimelineNodeFactory(
                         weight = if (redux) SceneTextWeight.Bold else SceneTextWeight.Normal,
                     ),
                 ).width
-            } catch (failure: Throwable) {
+            } catch (failure: Exception) {
                 return GMResult.Err(
-                    MermaidError.Layout(
-                        "Timeline text measurement failed: " +
-                            (failure.message ?: "unknown error"),
-                    ),
+                    MermaidError.Unexpected.from(failure, "Timeline text measurement failed"),
                 )
             }
             if (current.isNotEmpty() && measuredWidth > width) {

@@ -64,11 +64,9 @@ internal class SequenceLayout {
 
         return try {
             GMResult.Ok(buildScene(db, context))
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    failure.message ?: "Sequence layout failed.",
-                ),
+                MermaidError.Unexpected.from(failure, "Sequence layout failed"),
             )
         }
     }

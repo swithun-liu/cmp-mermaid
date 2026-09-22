@@ -25,23 +25,15 @@ class BlockPlugin : MermaidDiagramPlugin {
                 diagramTitle = context.diagramTitle,
                 lineOffset = context.frontmatterLineOffset,
             ).parse(source)
-        } catch (failure: Throwable) {
-            return GMResult.Err(
-                MermaidError.Parse(
-                    line = context.frontmatterLineOffset + 1,
-                    column = 1,
-                    message = "Block parser failed: ${failure.message ?: "Unknown failure"}",
-                ),
-            )
+        } catch (failure: Exception) {
+            return GMResult.Err(MermaidError.Unexpected.from(failure, "Block parser failed"))
         }
         return when (parsed) {
             is GMResult.Ok -> try {
                 BlockLayout().layout(parsed.value, context)
-            } catch (failure: Throwable) {
+            } catch (failure: Exception) {
                 GMResult.Err(
-                    MermaidError.Layout(
-                        "Block layout failed: ${failure.message ?: "Unknown failure"}",
-                    ),
+                    MermaidError.Unexpected.from(failure, "Block layout failed"),
                 )
             }
             is GMResult.Err -> parsed

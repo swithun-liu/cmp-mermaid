@@ -35,7 +35,7 @@ internal class MindmapJisonLexerPattern(
     } else {
         try {
             GMResult.Ok(Regex(source, RegexOption.IGNORE_CASE))
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(failure.message ?: "Invalid Mindmap lexer pattern $rule")
         }
     }

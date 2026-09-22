@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.ComposeUIViewController
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidRenderErrorInfo
 import platform.UIKit.UIViewController
 
 /**
@@ -17,12 +18,25 @@ class CMPMermaidViewControllerFactory {
         source = source,
         contentDescription = contentDescription,
         onContentSizeChanged = null,
+        onError = null,
     )
 
     fun makeViewController(
         source: String,
         contentDescription: String,
         onContentSizeChanged: ((Double, Double) -> Unit)?,
+    ): UIViewController = makeViewController(
+        source = source,
+        contentDescription = contentDescription,
+        onContentSizeChanged = onContentSizeChanged,
+        onError = null,
+    )
+
+    fun makeViewController(
+        source: String,
+        contentDescription: String,
+        onContentSizeChanged: ((Double, Double) -> Unit)?,
+        onError: ((MermaidRenderErrorInfo) -> Unit)?,
     ): UIViewController = ComposeUIViewController {
         MermaidDiagram(
             source = source,
@@ -37,6 +51,7 @@ class CMPMermaidViewControllerFactory {
                     )
                 }
             },
+            onError = onError,
         )
     }
 }

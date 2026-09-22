@@ -449,11 +449,11 @@ internal class IshikawaLayout {
                     ),
                 )
             }
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "Text measurement failed for Ishikawa label '$source': " +
-                        (failure.message ?: "unknown error"),
+                MermaidError.Unexpected.from(
+                    failure,
+                    "Text measurement failed for Ishikawa label '$source'",
                 ),
             )
         }

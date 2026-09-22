@@ -798,11 +798,9 @@ internal class GanttLayout {
                 fontSize = fontSize,
             ),
         )
-    } catch (failure: Throwable) {
+    } catch (failure: Exception) {
         GMResult.Err(
-            MermaidError.Layout(
-                "Gantt text measurement failed: ${failure.message ?: "unknown error"}",
-            ),
+            MermaidError.Unexpected.from(failure, "Gantt text measurement failed"),
         )
     }
 

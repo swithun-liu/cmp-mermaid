@@ -415,11 +415,9 @@ internal class ErLayout {
                     softWrap = softWrap,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    "ER text measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "ER text measurement failed"),
             )
         }
     }
@@ -798,11 +796,9 @@ internal class ErLayout {
                     weight = SceneTextWeight.Normal,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "ER title measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "ER title measurement failed"),
             )
         }
         elements += SceneText(

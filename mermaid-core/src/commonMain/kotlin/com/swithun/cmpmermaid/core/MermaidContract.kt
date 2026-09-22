@@ -1,5 +1,7 @@
 package com.swithun.cmpmermaid.core
 
+import kotlinx.coroutines.CancellationException
+
 private const val MERMAID_CLASSIC_FONT_FAMILY =
     "\"trebuchet ms\", verdana, arial, sans-serif"
 private const val MERMAID_REDUX_FONT_FAMILY =
@@ -10,8 +12,15 @@ object MermaidCompatibility {
     const val BASELINE_VERSION: String = "12.0.0"
 }
 
+enum class MermaidRenderErrorType {
+    CONTENT_ERROR,
+    UNEXPECTED_EXCEPTION,
+}
+
 sealed interface MermaidError {
     val message: String
+    val renderErrorType: MermaidRenderErrorType
+        get() = MermaidRenderErrorType.CONTENT_ERROR
 
     data class UnsupportedDiagram(
         val header: String,
@@ -45,7 +54,49 @@ sealed interface MermaidError {
         val feature: String,
         override val message: String = "Unsupported Mermaid feature: $feature",
     ) : MermaidError
+
+    data class Unexpected(
+        val exceptionType: String,
+        override val message: String,
+    ) : MermaidError {
+        override val renderErrorType: MermaidRenderErrorType =
+            MermaidRenderErrorType.UNEXPECTED_EXCEPTION
+
+        companion object {
+            fun from(
+                exception: Exception,
+                context: String? = null,
+            ): Unexpected {
+                if (exception is CancellationException) {
+                    throw exception
+                }
+                val exceptionType = exception::class.simpleName ?: "Exception"
+                val detail = exception.message?.takeIf(String::isNotBlank)
+                val prefix = context?.takeIf(String::isNotBlank)
+                    ?: "Unexpected Mermaid rendering exception"
+                return Unexpected(
+                    exceptionType = exceptionType,
+                    message = if (detail == null) {
+                        "$prefix: $exceptionType"
+                    } else {
+                        "$prefix ($exceptionType): $detail"
+                    },
+                )
+            }
+        }
+    }
 }
+
+/**
+ * Stable host-facing render failure payload.
+ *
+ * [source] is the unmodified input supplied to the renderer.
+ */
+data class MermaidRenderErrorInfo(
+    val type: MermaidRenderErrorType,
+    val message: String,
+    val source: String,
+)
 
 data class MermaidXyAxisOptions(
     val showLabel: Boolean = true,

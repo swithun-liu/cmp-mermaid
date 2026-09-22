@@ -64,11 +64,9 @@ internal object FlowElkLayout {
         }
         val graph = try {
             Json.parseToJsonElement(output) as? JsonObject
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "elkjs returned invalid JSON: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "elkjs returned invalid JSON"),
             )
         } ?: return GMResult.Err(MermaidError.Layout("elkjs did not return a graph object"))
 

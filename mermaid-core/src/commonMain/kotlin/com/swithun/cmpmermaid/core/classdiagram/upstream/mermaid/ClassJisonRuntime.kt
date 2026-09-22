@@ -40,7 +40,7 @@ internal class ClassJisonLexerPattern(
     } else {
         try {
             GMResult.Ok(Regex(source, RegexOption.IGNORE_CASE))
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(failure.message ?: "Invalid Class lexer pattern $rule")
         }
     }

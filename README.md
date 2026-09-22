@@ -251,6 +251,9 @@ Compose source:
 val diagramView = CMPMermaidView(context).apply {
     setMermaidSource("flowchart LR\n  A --> B")
     setMermaidContentDescription("Example Mermaid diagram")
+    setMermaidErrorListener { error ->
+        reportRenderFailure(error.type, error.message, error.source)
+    }
 }
 container.addView(diagramView)
 ```
@@ -267,6 +270,17 @@ pod 'CMPMermaid', '0.1.1'
 The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`
 to Swift and includes all renderer font resources. It supports iOS device
 arm64 and simulator arm64/x86_64 with a deployment target of iOS 14.
+
+```swift
+CMPMermaidViewControllerFactory().makeViewController(
+    source: source,
+    contentDescription: "Mermaid diagram",
+    onContentSizeChanged: nil,
+    onError: { error in
+        reportRenderFailure(error.type, error.message, error.source)
+    }
+)
+```
 
 For a source checkout:
 
@@ -294,9 +308,19 @@ fun Diagram(source: String) {
         modifier = Modifier.fillMaxWidth(),
         theme = MermaidTheme.preset(MermaidThemePreset.Default),
         contentDescription = "Mermaid diagram",
+        onError = { error ->
+            reportRenderFailure(error.type, error.message, error.source)
+        },
     )
 }
 ```
+
+The error callback receives `MermaidRenderErrorInfo`, including the original
+source passed to the renderer.
+`CONTENT_ERROR` represents structured parse, configuration, resource-limit, or
+unsupported-content failures. `UNEXPECTED_EXCEPTION` represents an ordinary
+exception caught inside the render pipeline or Compose drawing boundary.
+Coroutine cancellation and fatal process errors continue to propagate.
 
 Generate all KMP publications under `build/maven-repository`:
 ```bash

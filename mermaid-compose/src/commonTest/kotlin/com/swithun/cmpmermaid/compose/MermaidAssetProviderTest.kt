@@ -4,9 +4,11 @@ import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
 import com.swithun.cmpmermaid.core.SceneRect
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertIs
 
 class MermaidAssetProviderTest {
@@ -59,6 +61,32 @@ class MermaidAssetProviderTest {
             assertEquals(
                 "network failed",
                 assertIs<MermaidAssetError.LoadFailed>(failure.error).message,
+            )
+        }
+    }
+
+    @Test
+    fun doesNotConvertCoroutineCancellationToAssetFailure() = runTest {
+        assertFailsWith<CancellationException> {
+            resolveMermaidAssets(
+                assets = listOf(asset()),
+                provider = MermaidAssetProvider {
+                    throw CancellationException("asset load cancelled")
+                },
+                onResolved = { _, _ -> },
+            )
+        }
+    }
+
+    @Test
+    fun doesNotConvertFatalErrorToAssetFailure() = runTest {
+        assertFailsWith<AssertionError> {
+            resolveMermaidAssets(
+                assets = listOf(asset()),
+                provider = MermaidAssetProvider {
+                    throw AssertionError("fatal asset failure")
+                },
+                onResolved = { _, _ -> },
             )
         }
     }

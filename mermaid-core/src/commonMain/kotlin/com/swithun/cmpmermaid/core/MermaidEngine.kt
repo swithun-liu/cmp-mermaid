@@ -30,6 +30,7 @@ import com.swithun.cmpmermaid.core.treemap.TreemapPlugin
 import com.swithun.cmpmermaid.core.treeview.TreeViewPlugin
 import com.swithun.cmpmermaid.core.venn.VennPlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
+import kotlinx.coroutines.CancellationException
 
 data class MermaidRenderContext(
     val textMetrics: TextMetricProvider,
@@ -92,7 +93,21 @@ class MermaidEngine(
         }
     }
 
+    /**
+     * Mermaid.js 12.0.0: packages/mermaid/src/mermaid.ts -> handleError/render.
+     *
+     * Expected parser and layout failures remain typed [MermaidError] values. This final public
+     * boundary converts unexpected library exceptions without swallowing coroutine cancellation
+     * or fatal [Error] instances.
+     */
     fun render(
+        source: String,
+        context: MermaidRenderContext,
+    ): GMResult<MermaidScene, MermaidError> = renderSafely {
+        renderInternal(source, context)
+    }
+
+    private fun renderInternal(
         source: String,
         context: MermaidRenderContext,
     ): GMResult<MermaidScene, MermaidError> {
@@ -218,7 +233,7 @@ class MermaidEngine(
             preprocessed.code.cleaned
         }
         val parserSource = MermaidPreprocessor.encodeEntities(sourceForParser) + "\n"
-        return plugin.compile(
+        return plugin.compileSafely(
             source = parserSource,
             context = context.copy(
                 theme = resolvedTheme,
@@ -228,4 +243,21 @@ class MermaidEngine(
             ),
         )
     }
+}
+
+private fun MermaidDiagramPlugin.compileSafely(
+    source: String,
+    context: MermaidRenderContext,
+): GMResult<MermaidScene, MermaidError> = renderSafely {
+    compile(source, context)
+}
+
+private inline fun <T> renderSafely(
+    block: () -> GMResult<T, MermaidError>,
+): GMResult<T, MermaidError> = try {
+    block()
+} catch (cancelled: CancellationException) {
+    throw cancelled
+} catch (exception: Exception) {
+    GMResult.Err(MermaidError.Unexpected.from(exception))
 }

@@ -230,7 +230,7 @@ internal class KanbanParser(
         }
         val yaml = try {
             Yaml.default.parseToYamlNode(yamlSource)
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return parseError(
                 lineIndex + 1,
                 column,

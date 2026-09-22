@@ -166,11 +166,11 @@ internal class BlockLayout {
                     spans = spans,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "Text measurement failed for Block '${block.id}': " +
-                        (failure.message ?: "unknown error"),
+                MermaidError.Unexpected.from(
+                    failure,
+                    "Text measurement failed for Block '${block.id}'",
                 ),
             )
         }
@@ -441,11 +441,11 @@ internal class BlockLayout {
                             spans = textSpans(label.text, label.spans, style),
                         ),
                     )
-                } catch (failure: Throwable) {
+                } catch (failure: Exception) {
                     return GMResult.Err(
-                        MermaidError.Layout(
-                            "Text measurement failed for Block '${block.id}': " +
-                                (failure.message ?: "unknown error"),
+                        MermaidError.Unexpected.from(
+                            failure,
+                            "Text measurement failed for Block '${block.id}'",
                         ),
                     )
                 }
@@ -600,11 +600,11 @@ internal class BlockLayout {
                         spans = rendered.spans,
                     ),
                 )
-            } catch (failure: Throwable) {
+            } catch (failure: Exception) {
                 return GMResult.Err(
-                    MermaidError.Layout(
-                        "Edge label measurement failed for Block edge '$index': " +
-                            (failure.message ?: "unknown error"),
+                    MermaidError.Unexpected.from(
+                        failure,
+                        "Edge label measurement failed for Block edge '$index'",
                     ),
                 )
             }

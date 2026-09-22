@@ -381,11 +381,9 @@ private class KanbanNodeFactory(
                     spans = rendered.spans,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "Kanban text measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "Kanban text measurement failed"),
             )
         }
         return GMResult.Ok(

@@ -342,11 +342,11 @@ internal class ClassLayout {
                     methodsHeight = methodsHeight,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    "Text measurement failed for class '${node.id}': " +
-                        (failure.message ?: "unknown error"),
+                MermaidError.Unexpected.from(
+                    failure,
+                    "Text measurement failed for class '${node.id}'",
                 ),
             )
         }
@@ -471,11 +471,11 @@ internal class ClassLayout {
                     ),
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    "Text measurement failed for note '${note.id}': " +
-                        (failure.message ?: "unknown error"),
+                MermaidError.Unexpected.from(
+                    failure,
+                    "Text measurement failed for note '${note.id}'",
                 ),
             )
         }
@@ -515,12 +515,9 @@ internal class ClassLayout {
                 )
             }
             GMResult.Ok(visuals)
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    "Namespace text measurement failed: " +
-                        (failure.message ?: "unknown error"),
-                ),
+                MermaidError.Unexpected.from(failure, "Namespace text measurement failed"),
             )
         }
     }
@@ -569,12 +566,9 @@ internal class ClassLayout {
                 )
             }
             GMResult.Ok(visuals)
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    "Interface text measurement failed: " +
-                        (failure.message ?: "unknown error"),
-                ),
+                MermaidError.Unexpected.from(failure, "Interface text measurement failed"),
             )
         }
     }
@@ -620,12 +614,9 @@ internal class ClassLayout {
                 )
             }
             GMResult.Ok(visuals)
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             GMResult.Err(
-                MermaidError.Layout(
-                    "Class relation text measurement failed: " +
-                        (failure.message ?: "unknown error"),
-                ),
+                MermaidError.Unexpected.from(failure, "Class relation text measurement failed"),
             )
         }
     }
@@ -1263,11 +1254,9 @@ internal class ClassLayout {
                     weight = SceneTextWeight.Normal,
                 ),
             )
-        } catch (failure: Throwable) {
+        } catch (failure: Exception) {
             return GMResult.Err(
-                MermaidError.Layout(
-                    "Class title measurement failed: ${failure.message ?: "unknown error"}",
-                ),
+                MermaidError.Unexpected.from(failure, "Class title measurement failed"),
             )
         }
         elements += SceneText(

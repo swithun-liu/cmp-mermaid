@@ -69,7 +69,7 @@ internal object MermaidUrlSanitizer {
             }
             val decoded = try {
                 bytes.toByteArray().decodeToString(throwOnInvalidSequence = true)
-            } catch (_: Throwable) {
+            } catch (_: Exception) {
                 return source
             }
             output.append(decoded)
