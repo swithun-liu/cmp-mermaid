@@ -68,6 +68,7 @@ const kotlinGalleryFiles = {
   block: ['BlockDemos.kt', 'BlockDemo'],
   eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
+  usecase: ['UsecaseDemos.kt', 'UsecaseDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [
@@ -487,6 +488,9 @@ async function extractOfficialManifest(page, caseId) {
       }
       const tag = element.localName;
       const textElement = tag === 'text' || tag === 'foreignObject';
+      const usecaseIconFallback =
+        textElement &&
+        element.closest('.usecase-actor-icon-symbol') != null;
       const textSegments = textElement ? renderedTextSegments(element) : [];
       const text = textElement ? normalizeText(renderedText(element)) : null;
       const elementBounds = bounds(element);
@@ -518,7 +522,9 @@ async function extractOfficialManifest(page, caseId) {
         number(style.strokeOpacity, 1),
         opacity,
       );
-      const type = textElement
+      const type = usecaseIconFallback
+        ? 'asset'
+        : textElement
         ? 'text'
         : tag === 'image' || tag === 'use'
           ? 'asset'
@@ -552,7 +558,7 @@ async function extractOfficialManifest(page, caseId) {
         id: element.id || null,
         classes: [...element.classList],
         bounds: elementBounds,
-        ...(textElement ? {
+        ...(textElement && !usecaseIconFallback ? {
           text,
           ...(textSegments.length > 0 ? { textSegments } : {}),
           fontSize: number(style.fontSize, null),
@@ -595,9 +601,15 @@ async function extractOfficialManifest(page, caseId) {
 }
 
 function assertExpectedTexts(auditCase, preview, manifest) {
-  const renderedText = manifest.elements
-    .filter((element) => element.type === 'text')
-    .map((element) => element.text ?? '')
+  const renderedText = [
+    manifest.title,
+    manifest.accessibilityTitle,
+    manifest.accessibilityDescription,
+    ...manifest.elements
+      .filter((element) => element.type === 'text')
+      .map((element) => element.text ?? ''),
+  ]
+    .filter((text) => text != null)
     .join('\n')
     .replace(/\s+/g, ' ')
     .trim();

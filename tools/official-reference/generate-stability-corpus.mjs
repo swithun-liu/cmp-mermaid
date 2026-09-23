@@ -46,6 +46,7 @@ const kotlinGalleryFiles = {
   block: ['BlockDemos.kt', 'BlockDemo'],
   eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
+  usecase: ['UsecaseDemos.kt', 'UsecaseDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -78,6 +79,7 @@ const expectedKindCounts = new Map([
   ['block', 5],
   ['eventmodeling', 5],
   ['agentflow', 5],
+  ['usecase', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -110,6 +112,7 @@ const expectedProductionKindCounts = new Map([
   ['block', 13],
   ['eventmodeling', 13],
   ['agentflow', 13],
+  ['usecase', 18],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -142,6 +145,7 @@ const supportedKinds = new Set([
   'block',
   'eventmodeling',
   'agentflow',
+  'usecase',
 ]);
 
 validateStabilityCases();
@@ -215,8 +219,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 403) {
-    throw new Error(`Expected 403 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 408) {
+    throw new Error(`Expected 408 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -236,14 +240,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 397) {
+  if (productionCases.length !== 415) {
     throw new Error(
-      `Expected 397 production cases, found ${productionCases.length}`,
+      `Expected 415 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 245) {
+  if (conformanceCases.length !== 258) {
     throw new Error(
-      `Expected 245 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 258 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -488,6 +492,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "block",
             "eventmodeling",
             "agentflow",
+            "usecase",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -596,6 +601,8 @@ private fun addVisualParityVariation(
         evidenceId = evidenceId,
         label = label,
     )
+    "usecase" -> "\${source.trimEnd()}\\n" +
+        "\$evidenceId(\\"\${escapeQuotedVisualParityLabel(label)}\\")\\n"
     else -> source
 }
 

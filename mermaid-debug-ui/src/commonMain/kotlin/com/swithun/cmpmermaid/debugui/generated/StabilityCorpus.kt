@@ -4767,6 +4767,144 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_usecase_account_recovery",
+        diagramId = "usecase",
+        title = "Account recovery",
+        scenario = "Customers and support staff interact with a package boundary through recovery use cases.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            usecase-beta
+            direction LR
+            actor Customer
+            actor Support("Support specialist")@{ type: hollow }
+            systemBoundary identity["Identity platform"]@{ type: package }:::system
+              SignIn("Sign in")
+              Reset("Reset password")
+              Unlock[Unlock account]
+            end
+            note for Reset "Requires a verified recovery channel"
+            Customer --> SignIn
+            Customer --> Reset
+            Support --> Unlock
+            Reset ..> : include Unlock
+            classDef system stroke:#36558f,stroke-width:2px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_order_operations",
+        diagramId = "usecase",
+        title = "Order operations",
+        scenario = "Business actors, stereotypes, and rectangular reviews model an order administration workflow.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            usecase-beta
+            direction TB
+            actor Buyer("Business buyer")@{ business: true } <<Customer>>
+            actor Clerk("Order clerk")@{ type: hollow, business: true } <<Employee>>
+            Create("Create order")@{ business: true } <<Core>>
+            Review[Review order] <<Control>>
+            Approve("Approve payment")
+            Buyer --> Create
+            Create --> Review
+            Clerk --> Review
+            Review --> Approve
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_policy_dependencies",
+        diagramId = "usecase",
+        title = "Policy dependencies",
+        scenario = "Association markers, include, extend, and same-kind generalization document policy evaluation.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            usecase-beta
+            direction LR
+            actor Operator
+            actor Administrator
+            Evaluate("Evaluate policy")
+            Authenticate("Authenticate request")
+            Override("Override decision")
+            Audit[Record audit]
+            Administrator --|> Operator
+            Operator -- "submits request" --> Evaluate
+            Evaluate ..> : include Authenticate
+            Override ..> : extend Evaluate
+            Override --|> Evaluate
+            Evaluate --o Audit
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_compliance_evidence",
+        diagramId = "usecase",
+        title = "Compliance evidence review",
+        scenario = "A styled use case, note, animated edge, and JSON table present compliance evidence.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            usecase-beta
+            actor Auditor:::external
+            Collect("Collect evidence")
+            Inspect[Inspect evidence]:::critical
+            json Evidence@{
+              "control": "AC-2",
+              "status": "ready",
+              "owners": ["Security", "Operations"]
+            }:::data
+            note for Inspect "`Review the **complete** evidence set`"
+            Auditor starts@-- "opens review" ---> Collect
+            Collect --> Inspect
+            Inspect --> Evidence
+            classDef external,critical stroke-width:3px
+            classDef data stroke:#3572a5
+            starts@{ animation: slow }
+            style Inspect stroke:#c33,stroke-width:4px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_regional_service",
+        diagramId = "usecase",
+        title = "Regional service access",
+        scenario = "Theme, intrinsic sizing, accessibility metadata, color rotation, entities, and Unicode coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Regional service access
+            config:
+              theme: redux-color
+              usecase:
+                useMaxWidth: false
+                nodeSpacing: 58
+                rankSpacing: 72
+                diagramPadding: 22
+                colorScheme: rotate
+            ---
+            usecase-beta
+            direction LR
+            accTitle: Accessible regional service use cases
+            accDescr: Teams in Tokyo, Seoul, and Sao Paulo coordinate service access.
+            %% Encoded entities and mixed scripts use the shared preprocessing path.
+            actor Customer("東京 &amp; customer")
+            Request("서울 access request")
+            Approve["São Paulo approval"]
+            Customer --> Request
+            Request --> Approve
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -9518,6 +9656,144 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
               tokyo -->|검증| seoul --> approve
               classDef active fill:#dcfce7,stroke:#15803d,color:#14532d;
               class approve active;
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_account_recovery",
+        diagramId = "usecase",
+        title = "Account recovery",
+        scenario = "Customers and support staff interact with a package boundary through recovery use cases.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            usecase-beta
+            direction LR
+            actor Customer
+            actor Support("Support specialist")@{ type: hollow }
+            systemBoundary identity["Identity platform"]@{ type: package }:::system
+              SignIn("Sign in")
+              Reset("Reset password")
+              Unlock[Unlock account]
+            end
+            note for Reset "Requires a verified recovery channel"
+            Customer --> SignIn
+            Customer --> Reset
+            Support --> Unlock
+            Reset ..> : include Unlock
+            classDef system stroke:#36558f,stroke-width:2px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_order_operations",
+        diagramId = "usecase",
+        title = "Order operations",
+        scenario = "Business actors, stereotypes, and rectangular reviews model an order administration workflow.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            usecase-beta
+            direction TB
+            actor Buyer("Business buyer")@{ business: true } <<Customer>>
+            actor Clerk("Order clerk")@{ type: hollow, business: true } <<Employee>>
+            Create("Create order")@{ business: true } <<Core>>
+            Review[Review order] <<Control>>
+            Approve("Approve payment")
+            Buyer --> Create
+            Create --> Review
+            Clerk --> Review
+            Review --> Approve
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_policy_dependencies",
+        diagramId = "usecase",
+        title = "Policy dependencies",
+        scenario = "Association markers, include, extend, and same-kind generalization document policy evaluation.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            usecase-beta
+            direction LR
+            actor Operator
+            actor Administrator
+            Evaluate("Evaluate policy")
+            Authenticate("Authenticate request")
+            Override("Override decision")
+            Audit[Record audit]
+            Administrator --|> Operator
+            Operator -- "submits request" --> Evaluate
+            Evaluate ..> : include Authenticate
+            Override ..> : extend Evaluate
+            Override --|> Evaluate
+            Evaluate --o Audit
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_compliance_evidence",
+        diagramId = "usecase",
+        title = "Compliance evidence review",
+        scenario = "A styled use case, note, animated edge, and JSON table present compliance evidence.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            usecase-beta
+            actor Auditor:::external
+            Collect("Collect evidence")
+            Inspect[Inspect evidence]:::critical
+            json Evidence@{
+              "control": "AC-2",
+              "status": "ready",
+              "owners": ["Security", "Operations"]
+            }:::data
+            note for Inspect "`Review the **complete** evidence set`"
+            Auditor starts@-- "opens review" ---> Collect
+            Collect --> Inspect
+            Inspect --> Evidence
+            classDef external,critical stroke-width:3px
+            classDef data stroke:#3572a5
+            starts@{ animation: slow }
+            style Inspect stroke:#c33,stroke-width:4px
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_usecase_regional_service",
+        diagramId = "usecase",
+        title = "Regional service access",
+        scenario = "Theme, intrinsic sizing, accessibility metadata, color rotation, entities, and Unicode coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Regional service access
+            config:
+              theme: redux-color
+              usecase:
+                useMaxWidth: false
+                nodeSpacing: 58
+                rankSpacing: 72
+                diagramPadding: 22
+                colorScheme: rotate
+            ---
+            usecase-beta
+            direction LR
+            accTitle: Accessible regional service use cases
+            accDescr: Teams in Tokyo, Seoul, and Sao Paulo coordinate service access.
+            %% Encoded entities and mixed scripts use the shared preprocessing path.
+            actor Customer("東京 &amp; customer")
+            Request("서울 access request")
+            Approve["São Paulo approval"]
+            Customer --> Request
+            Request --> Approve
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -15582,6 +15858,321 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Intake Agent", "Resolution Agent", "Classify request", "Resolve request"),
         features = setOf("directions", "flows", "agentflow-config", "responsive-sizing", "theme", "look", "container-metadata"),
     ),
+    StabilityCorpusCase(
+        id = "prod_usecase_account_entry",
+        diagramId = "usecase",
+        title = "Account entry",
+        scenario = "Actors connect to ellipse and rectangular use cases in a left-to-right flow.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            usecase-beta
+            direction LR
+            actor Customer
+            SignIn("Sign in")
+            Review[Review activity]
+            Customer --> SignIn
+            Customer --> Review
+        """.trimIndent(),
+        expectedTexts = listOf("Customer", "Sign in", "Review activity"),
+        features = setOf("usecase-beta-header", "directions", "actors", "ellipse-usecases", "rectangle-usecases", "associations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_actor_catalog",
+        diagramId = "usecase",
+        title = "Actor geometry catalog",
+        scenario = "Normal, hollow, awesome, registered-icon, and missing-icon actors share one target.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            usecase-beta
+            actor Normal("Normal operator")
+            actor Hollow("Hollow operator")@{ type: hollow }
+            actor Awesome("Awesome operator")@{ type: awesome }
+            actor Icon("Icon operator")@{ icon: "fa:user" }
+            actor Fallback("Fallback operator")@{ icon: "missing:user" }
+            Operate("Operate service")
+            Normal --> Operate
+            Hollow --> Operate
+            Awesome --> Operate
+            Icon --> Operate
+            Fallback --> Operate
+        """.trimIndent(),
+        expectedTexts = listOf("Normal operator", "Hollow operator", "Awesome operator", "Icon operator"),
+        features = setOf("actors", "actor-variants", "actor-icons", "associations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_business_roles",
+        diagramId = "usecase",
+        title = "Business role workflow",
+        scenario = "Business actors and use cases preserve compatible geometry and visible stereotypes.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            usecase-beta
+            actor Sales("Sales agent")@{ business: true } <<Employee>>
+            actor Broker("Partner broker")@{ type: hollow, business: true } <<Partner>>
+            Quote("Prepare quote")@{ business: true } <<Core>>
+            Archive[Archive quote] <<Record>>
+            Sales --> Quote
+            Broker --> Quote
+            Quote --> Archive
+        """.trimIndent(),
+        expectedTexts = listOf("Sales agent", "Partner broker", "Prepare quote", "Archive quote"),
+        features = setOf("actors", "business-elements", "stereotypes", "ellipse-usecases"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_service_boundaries",
+        diagramId = "usecase",
+        title = "Service boundaries",
+        scenario = "Rectangular and package system boundaries contain globally addressable declarations.",
+        layout = "dagre",
+        initialAspectRatio = 1.75f,
+        source = """
+            usecase-beta
+            direction LR
+            systemBoundary portal["Customer portal"]@{ type: rect }:::system
+              actor Customer
+              Browse("Browse account")
+            end
+            systemBoundary payment["Payment service"]@{ type: package }:::system
+              actor Clerk("Payment clerk")
+              Authorize("Authorize payment")
+            end
+            Customer --> Browse
+            Clerk --> Authorize
+            Browse --> Authorize
+            classDef system stroke:#36558f,stroke-width:2px
+        """.trimIndent(),
+        expectedTexts = listOf("Customer portal", "Payment service", "Browse account", "Authorize payment"),
+        features = setOf("directions", "actors", "system-boundaries", "package-boundaries", "classes", "associations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_association_matrix",
+        diagramId = "usecase",
+        title = "Association marker matrix",
+        scenario = "Labels, minimum length, direction, circle markers, cross markers, and markerless links coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.8f,
+        source = """
+            usecase-beta
+            actor User
+            actor Support
+            Start("Start session")
+            Finish("Finish session")
+            Audit[Audit session]
+            User -- "opens session" ---> Start
+            Start <-- Support
+            Start -- Finish
+            User --o Audit
+            Finish x-- Support
+        """.trimIndent(),
+        expectedTexts = listOf("User", "Support", "Start session", "Finish session"),
+        features = setOf("actors", "associations", "association-markers", "edge-labels", "minimum-length"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_dependency_semantics",
+        diagramId = "usecase",
+        title = "Dependency semantics",
+        scenario = "Include, extend, actor generalization, and use-case generalization enforce endpoint kinds.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            usecase-beta
+            actor Administrator
+            actor Person
+            Checkout
+            Payment
+            ApplyCoupon("Apply coupon")
+            Administrator --|> Person
+            Checkout ..> : include Payment
+            ApplyCoupon ..> : extend Checkout
+            ApplyCoupon --|> Checkout
+        """.trimIndent(),
+        expectedTexts = listOf("Administrator", "Person", "Checkout", "Payment", "Apply coupon"),
+        features = setOf("actors", "include", "extend", "generalization"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_edge_metadata",
+        diagramId = "usecase",
+        title = "Styled edge metadata",
+        scenario = "Explicit edge IDs receive class, direct style, animation, and minimum-length metadata.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            usecase-beta
+            actor Customer
+            Checkout
+            Payment
+            Customer opens@-- "starts checkout" ---> Checkout
+            Checkout payment@..> : include Payment
+            classDef emphasized stroke:#d33,stroke-width:3px
+            class opens,payment emphasized
+            style opens stroke:#06c,stroke-width:4px
+            opens@{ animation: fast }
+            payment@{ animate: false }
+        """.trimIndent(),
+        expectedTexts = listOf("Customer", "Checkout", "Payment"),
+        features = setOf("edge-ids", "edge-classes", "edge-styles", "edge-animation", "minimum-length", "include"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_markdown_notes",
+        diagramId = "usecase",
+        title = "Markdown notes and labels",
+        scenario = "Markdown actor, use-case, relationship, and note labels retain their visible text.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            usecase-beta
+            actor Reviewer("`**Reviewer**`")
+            Login("`**Sign in**
+            to the service`")
+            note for Login "`Requires an **active session**`"
+            Reviewer -- "`opens **form**`" --> Login
+        """.trimIndent(),
+        expectedTexts = listOf("Reviewer", "Sign in", "active session"),
+        features = setOf("actors", "notes", "markdown", "edge-labels"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_payload_table",
+        diagramId = "usecase",
+        title = "Structured payload table",
+        scenario = "Nested JSON values preserve source order and accept classes and direct styles.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            usecase-beta
+            Inspect("Inspect payload")
+            json Payload@{
+              "enabled": true,
+              "count": 3,
+              "colors": ["Red", "Green"],
+              "address": { "city": "Oslo" },
+              "items": [{ "name": "Book" }]
+            }:::data
+            Inspect --> Payload
+            classDef data stroke:#3572a5
+            style Payload stroke-width:3px
+        """.trimIndent(),
+        expectedTexts = listOf("Inspect payload", "enabled", "colors", "Oslo"),
+        features = setOf("json-tables", "classes", "inline-styles", "associations"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_semantic_styles",
+        diagramId = "usecase",
+        title = "Semantic element styles",
+        scenario = "Classes and direct styles apply to actors, use cases, boundaries, JSON, and explicit edges.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            usecase-beta
+            actor Customer("External customer"):::external
+            systemBoundary Account:::system
+              Profile[Edit profile]:::critical
+            end
+            json Session@{ "active": true }:::data
+            Customer profile@--> Profile
+            Profile --> Session
+            classDef external,critical stroke-width:3px
+            classDef system fill:#eef4ff,stroke:#36558f,color:#172554
+            classDef data stroke:#3572a5
+            class profile critical
+            style Customer stroke:#0f766e
+            style Account stroke-width:3px
+        """.trimIndent(),
+        expectedTexts = listOf("External customer", "Edit profile", "Session"),
+        features = setOf("system-boundaries", "json-tables", "classes", "inline-styles", "edge-ids", "edge-classes"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_responsive_config",
+        diagramId = "usecase",
+        title = "Responsive configured workflow",
+        scenario = "The upstream parser clears the frontmatter title while spacing and typography drive responsive sizing.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            ---
+            title: Responsive account workflow
+            config:
+              usecase:
+                useMaxWidth: true
+                wrappingWidth: 180
+                minNodeWidth: 140
+                actorFontSize: 16
+                actorFontFamily: Arial
+                actorFontWeight: bold
+                usecaseFontSize: 14
+                usecaseFontFamily: Georgia
+                usecaseFontWeight: normal
+                nodeSpacing: 60
+                rankSpacing: 70
+                diagramPadding: 24
+            ---
+            usecase-beta
+            direction LR
+            actor Customer
+            Browse("Browse catalog")
+            Customer --> Browse
+        """.trimIndent(),
+        expectedTexts = listOf("Customer", "Browse catalog"),
+        features = setOf("frontmatter-title-reset", "frontmatter-config", "responsive-sizing", "directions"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_intrinsic_palette",
+        diagramId = "usecase",
+        title = "Intrinsic rotating palette",
+        scenario = "Intrinsic sizing, Redux colors, role variables, and per-element rotation apply together.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            config:
+              theme: redux-color
+              themeVariables:
+                usecaseActorBkg: "#dbeafe"
+                usecaseActorBorder: "#1d4ed8"
+                usecaseBkg: "#dcfce7"
+                usecaseBorder: "#15803d"
+              usecase:
+                useMaxWidth: false
+                colorScheme: rotate
+            ---
+            usecase-beta
+            direction LR
+            actor Customer
+            actor Auditor
+            Browse("Browse catalogue")
+            Checkout("Checkout")
+            Customer --> Browse
+            Browse --> Checkout
+            Auditor --> Checkout
+        """.trimIndent(),
+        expectedTexts = listOf("Customer", "Auditor", "Browse catalogue", "Checkout"),
+        features = setOf("frontmatter-config", "intrinsic-sizing", "theme", "theme-variables", "color-rotation"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_usecase_accessible_regions",
+        diagramId = "usecase",
+        title = "Accessible regional workflow",
+        scenario = "Accessibility metadata, comments, entities, and mixed-script labels share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            usecase-beta
+            accTitle: Regional service access
+            accDescr {
+              Teams in Tokyo, Seoul, and Sao Paulo coordinate access.
+            }
+            %% Encoded entities and mixed scripts use the shared preprocessing path.
+            actor Customer("Tokyo &amp; customer")
+            Verify("서울 verification")
+            Approve["São Paulo approval"]
+            Customer --> Verify
+            Verify --> Approve
+        """.trimIndent(),
+        expectedTexts = listOf("Regional service access", "Tokyo", "서울 verification", "São Paulo approval"),
+        features = setOf("accessibility", "comments", "entities", "unicode", "actors"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -15640,6 +16231,7 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "block",
             "eventmodeling",
             "agentflow",
+            "usecase",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -15748,6 +16340,8 @@ private fun addVisualParityVariation(
         evidenceId = evidenceId,
         label = label,
     )
+    "usecase" -> "${source.trimEnd()}\n" +
+        "$evidenceId(\"${escapeQuotedVisualParityLabel(label)}\")\n"
     else -> source
 }
 

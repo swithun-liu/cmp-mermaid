@@ -25,6 +25,24 @@ test('reads a valid manifest viewport background', () => {
   );
 });
 
+test('accepts expected text from accessibility metadata', () => {
+  const native = {
+    ...manifest([]),
+    accessibilityTitle: 'Regional service access',
+  };
+  const official = {
+    ...manifest([]),
+    title: 'Regional service access',
+    accessibilityTitle: 'Regional service access',
+  };
+
+  const result = compareDetailManifests(native, official, [
+    'Regional service access',
+  ]);
+
+  assert.equal(result.status, 'pass');
+});
+
 test('detects a later opaque label background covering earlier text', () => {
   const official = manifest([
     text('cherry-pick:prepare-follow-up-correction', 0),
@@ -534,6 +552,26 @@ test('detects a declared marker hidden beneath a later opaque node', () => {
     result.markerVisibilityComparison.official[0].occlusionDepth,
     0,
   );
+});
+
+test('does not treat an ellipse corner as opaque marker coverage', () => {
+  const marker = {
+    ...path(0, 'Solid', []),
+    arrowEnd: 'Triangle',
+    markerEndPoint: { x: 62, y: 32 },
+  };
+  const ellipse = {
+    ...shape('target-node', 1),
+    role: 'Ellipse',
+    bounds: { x: 60, y: 30, width: 30, height: 40 },
+  };
+
+  const result = compareDetailManifests(
+    manifest([marker, ellipse]),
+    manifest([{ ...marker, arrowEnd: 'Marker' }, { ...ellipse, role: 'ellipse' }]),
+  );
+
+  assert.equal(result.status, 'pass');
 });
 
 test('does not accept matching marker metadata without endpoint anchors', () => {

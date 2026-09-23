@@ -705,6 +705,46 @@ export const requiredFeaturesByKind = {
     'theme',
     'look',
   ],
+  usecase: [
+    'usecase-beta-header',
+    'directions',
+    'actors',
+    'actor-variants',
+    'actor-icons',
+    'business-elements',
+    'stereotypes',
+    'ellipse-usecases',
+    'rectangle-usecases',
+    'system-boundaries',
+    'package-boundaries',
+    'associations',
+    'association-markers',
+    'edge-labels',
+    'minimum-length',
+    'include',
+    'extend',
+    'generalization',
+    'edge-ids',
+    'edge-classes',
+    'edge-styles',
+    'edge-animation',
+    'notes',
+    'json-tables',
+    'classes',
+    'inline-styles',
+    'frontmatter-title-reset',
+    'frontmatter-config',
+    'accessibility',
+    'comments',
+    'entities',
+    'unicode',
+    'markdown',
+    'responsive-sizing',
+    'intrinsic-sizing',
+    'theme',
+    'theme-variables',
+    'color-rotation',
+  ],
 };
 
 const flowchartCases = [
@@ -6668,6 +6708,400 @@ agentflow-beta LR
   },
 ];
 
+const usecaseCases = [
+  {
+    id: 'prod_usecase_account_entry',
+    kind: 'usecase',
+    title: 'Account entry',
+    scenario: 'Actors connect to ellipse and rectangular use cases in a left-to-right flow.',
+    layout: 'dagre',
+    aspectRatio: 1.55,
+    features: [
+      'usecase-beta-header',
+      'directions',
+      'actors',
+      'ellipse-usecases',
+      'rectangle-usecases',
+      'associations',
+    ],
+    expectedTexts: ['Customer', 'Sign in', 'Review activity'],
+    source: String.raw`
+usecase-beta
+direction LR
+actor Customer
+SignIn("Sign in")
+Review[Review activity]
+Customer --> SignIn
+Customer --> Review
+`,
+  },
+  {
+    id: 'prod_usecase_actor_catalog',
+    kind: 'usecase',
+    title: 'Actor geometry catalog',
+    scenario: 'Normal, hollow, awesome, registered-icon, and missing-icon actors share one target.',
+    layout: 'dagre',
+    aspectRatio: 1.8,
+    features: [
+      'actors',
+      'actor-variants',
+      'actor-icons',
+      'associations',
+    ],
+    expectedTexts: ['Normal operator', 'Hollow operator', 'Awesome operator', 'Icon operator'],
+    source: String.raw`
+usecase-beta
+actor Normal("Normal operator")
+actor Hollow("Hollow operator")@{ type: hollow }
+actor Awesome("Awesome operator")@{ type: awesome }
+actor Icon("Icon operator")@{ icon: "fa:user" }
+actor Fallback("Fallback operator")@{ icon: "missing:user" }
+Operate("Operate service")
+Normal --> Operate
+Hollow --> Operate
+Awesome --> Operate
+Icon --> Operate
+Fallback --> Operate
+`,
+  },
+  {
+    id: 'prod_usecase_business_roles',
+    kind: 'usecase',
+    title: 'Business role workflow',
+    scenario: 'Business actors and use cases preserve compatible geometry and visible stereotypes.',
+    layout: 'dagre',
+    aspectRatio: 1.6,
+    features: [
+      'actors',
+      'business-elements',
+      'stereotypes',
+      'ellipse-usecases',
+    ],
+    expectedTexts: ['Sales agent', 'Partner broker', 'Prepare quote', 'Archive quote'],
+    source: String.raw`
+usecase-beta
+actor Sales("Sales agent")@{ business: true } <<Employee>>
+actor Broker("Partner broker")@{ type: hollow, business: true } <<Partner>>
+Quote("Prepare quote")@{ business: true } <<Core>>
+Archive[Archive quote] <<Record>>
+Sales --> Quote
+Broker --> Quote
+Quote --> Archive
+`,
+  },
+  {
+    id: 'prod_usecase_service_boundaries',
+    kind: 'usecase',
+    title: 'Service boundaries',
+    scenario: 'Rectangular and package system boundaries contain globally addressable declarations.',
+    layout: 'dagre',
+    aspectRatio: 1.75,
+    features: [
+      'directions',
+      'actors',
+      'system-boundaries',
+      'package-boundaries',
+      'classes',
+      'associations',
+    ],
+    expectedTexts: ['Customer portal', 'Payment service', 'Browse account', 'Authorize payment'],
+    source: String.raw`
+usecase-beta
+direction LR
+systemBoundary portal["Customer portal"]@{ type: rect }:::system
+  actor Customer
+  Browse("Browse account")
+end
+systemBoundary payment["Payment service"]@{ type: package }:::system
+  actor Clerk("Payment clerk")
+  Authorize("Authorize payment")
+end
+Customer --> Browse
+Clerk --> Authorize
+Browse --> Authorize
+classDef system stroke:#36558f,stroke-width:2px
+`,
+  },
+  {
+    id: 'prod_usecase_association_matrix',
+    kind: 'usecase',
+    title: 'Association marker matrix',
+    scenario: 'Labels, minimum length, direction, circle markers, cross markers, and markerless links coexist.',
+    layout: 'dagre',
+    aspectRatio: 1.8,
+    features: [
+      'actors',
+      'associations',
+      'association-markers',
+      'edge-labels',
+      'minimum-length',
+    ],
+    expectedTexts: ['User', 'Support', 'Start session', 'Finish session'],
+    source: String.raw`
+usecase-beta
+actor User
+actor Support
+Start("Start session")
+Finish("Finish session")
+Audit[Audit session]
+User -- "opens session" ---> Start
+Start <-- Support
+Start -- Finish
+User --o Audit
+Finish x-- Support
+`,
+  },
+  {
+    id: 'prod_usecase_dependency_semantics',
+    kind: 'usecase',
+    title: 'Dependency semantics',
+    scenario: 'Include, extend, actor generalization, and use-case generalization enforce endpoint kinds.',
+    layout: 'dagre',
+    aspectRatio: 1.7,
+    features: [
+      'actors',
+      'include',
+      'extend',
+      'generalization',
+    ],
+    expectedTexts: ['Administrator', 'Person', 'Checkout', 'Payment', 'Apply coupon'],
+    source: String.raw`
+usecase-beta
+actor Administrator
+actor Person
+Checkout
+Payment
+ApplyCoupon("Apply coupon")
+Administrator --|> Person
+Checkout ..> : include Payment
+ApplyCoupon ..> : extend Checkout
+ApplyCoupon --|> Checkout
+`,
+  },
+  {
+    id: 'prod_usecase_edge_metadata',
+    kind: 'usecase',
+    title: 'Styled edge metadata',
+    scenario: 'Explicit edge IDs receive class, direct style, animation, and minimum-length metadata.',
+    layout: 'dagre',
+    aspectRatio: 1.65,
+    features: [
+      'edge-ids',
+      'edge-classes',
+      'edge-styles',
+      'edge-animation',
+      'minimum-length',
+      'include',
+    ],
+    expectedTexts: ['Customer', 'Checkout', 'Payment'],
+    source: String.raw`
+usecase-beta
+actor Customer
+Checkout
+Payment
+Customer opens@-- "starts checkout" ---> Checkout
+Checkout payment@..> : include Payment
+classDef emphasized stroke:#d33,stroke-width:3px
+class opens,payment emphasized
+style opens stroke:#06c,stroke-width:4px
+opens@{ animation: fast }
+payment@{ animate: false }
+`,
+  },
+  {
+    id: 'prod_usecase_markdown_notes',
+    kind: 'usecase',
+    title: 'Markdown notes and labels',
+    scenario: 'Markdown actor, use-case, relationship, and note labels retain their visible text.',
+    layout: 'dagre',
+    aspectRatio: 1.45,
+    features: [
+      'actors',
+      'notes',
+      'markdown',
+      'edge-labels',
+    ],
+    expectedTexts: ['Reviewer', 'Sign in', 'active session'],
+    source: String.raw`
+usecase-beta
+actor Reviewer("${'`'}**Reviewer**${'`'}")
+Login("${'`'}**Sign in**
+to the service${'`'}")
+note for Login "${'`'}Requires an **active session**${'`'}"
+Reviewer -- "${'`'}opens **form**${'`'}" --> Login
+`,
+  },
+  {
+    id: 'prod_usecase_payload_table',
+    kind: 'usecase',
+    title: 'Structured payload table',
+    scenario: 'Nested JSON values preserve source order and accept classes and direct styles.',
+    layout: 'dagre',
+    aspectRatio: 1.45,
+    features: [
+      'json-tables',
+      'classes',
+      'inline-styles',
+      'associations',
+    ],
+    expectedTexts: ['Inspect payload', 'enabled', 'colors', 'Oslo'],
+    source: String.raw`
+usecase-beta
+Inspect("Inspect payload")
+json Payload@{
+  "enabled": true,
+  "count": 3,
+  "colors": ["Red", "Green"],
+  "address": { "city": "Oslo" },
+  "items": [{ "name": "Book" }]
+}:::data
+Inspect --> Payload
+classDef data stroke:#3572a5
+style Payload stroke-width:3px
+`,
+  },
+  {
+    id: 'prod_usecase_semantic_styles',
+    kind: 'usecase',
+    title: 'Semantic element styles',
+    scenario: 'Classes and direct styles apply to actors, use cases, boundaries, JSON, and explicit edges.',
+    layout: 'dagre',
+    aspectRatio: 1.65,
+    features: [
+      'system-boundaries',
+      'json-tables',
+      'classes',
+      'inline-styles',
+      'edge-ids',
+      'edge-classes',
+    ],
+    expectedTexts: ['External customer', 'Edit profile', 'Session'],
+    source: String.raw`
+usecase-beta
+actor Customer("External customer"):::external
+systemBoundary Account:::system
+  Profile[Edit profile]:::critical
+end
+json Session@{ "active": true }:::data
+Customer profile@--> Profile
+Profile --> Session
+classDef external,critical stroke-width:3px
+classDef system fill:#eef4ff,stroke:#36558f,color:#172554
+classDef data stroke:#3572a5
+class profile critical
+style Customer stroke:#0f766e
+style Account stroke-width:3px
+`,
+  },
+  {
+    id: 'prod_usecase_responsive_config',
+    kind: 'usecase',
+    title: 'Responsive configured workflow',
+    scenario: 'The upstream parser clears the frontmatter title while spacing and typography drive responsive sizing.',
+    layout: 'dagre',
+    aspectRatio: 1.55,
+    features: [
+      'frontmatter-title-reset',
+      'frontmatter-config',
+      'responsive-sizing',
+      'directions',
+    ],
+    expectedTexts: ['Customer', 'Browse catalog'],
+    source: String.raw`
+---
+title: Responsive account workflow
+config:
+  usecase:
+    useMaxWidth: true
+    wrappingWidth: 180
+    minNodeWidth: 140
+    actorFontSize: 16
+    actorFontFamily: Arial
+    actorFontWeight: bold
+    usecaseFontSize: 14
+    usecaseFontFamily: Georgia
+    usecaseFontWeight: normal
+    nodeSpacing: 60
+    rankSpacing: 70
+    diagramPadding: 24
+---
+usecase-beta
+direction LR
+actor Customer
+Browse("Browse catalog")
+Customer --> Browse
+`,
+  },
+  {
+    id: 'prod_usecase_intrinsic_palette',
+    kind: 'usecase',
+    title: 'Intrinsic rotating palette',
+    scenario: 'Intrinsic sizing, Redux colors, role variables, and per-element rotation apply together.',
+    layout: 'dagre',
+    aspectRatio: 1.6,
+    features: [
+      'frontmatter-config',
+      'intrinsic-sizing',
+      'theme',
+      'theme-variables',
+      'color-rotation',
+    ],
+    expectedTexts: ['Customer', 'Auditor', 'Browse catalogue', 'Checkout'],
+    source: String.raw`
+---
+config:
+  theme: redux-color
+  themeVariables:
+    usecaseActorBkg: "#dbeafe"
+    usecaseActorBorder: "#1d4ed8"
+    usecaseBkg: "#dcfce7"
+    usecaseBorder: "#15803d"
+  usecase:
+    useMaxWidth: false
+    colorScheme: rotate
+---
+usecase-beta
+direction LR
+actor Customer
+actor Auditor
+Browse("Browse catalogue")
+Checkout("Checkout")
+Customer --> Browse
+Browse --> Checkout
+Auditor --> Checkout
+`,
+  },
+  {
+    id: 'prod_usecase_accessible_regions',
+    kind: 'usecase',
+    title: 'Accessible regional workflow',
+    scenario: 'Accessibility metadata, comments, entities, and mixed-script labels share one diagram.',
+    layout: 'dagre',
+    aspectRatio: 1.6,
+    features: [
+      'accessibility',
+      'comments',
+      'entities',
+      'unicode',
+      'actors',
+    ],
+    expectedTexts: ['Regional service access', 'Tokyo', '서울 verification', 'São Paulo approval'],
+    source: String.raw`
+usecase-beta
+accTitle: Regional service access
+accDescr {
+  Teams in Tokyo, Seoul, and Sao Paulo coordinate access.
+}
+%% Encoded entities and mixed scripts use the shared preprocessing path.
+actor Customer("Tokyo &amp; customer")
+Verify("서울 verification")
+Approve["São Paulo approval"]
+Customer --> Verify
+Verify --> Approve
+`,
+  },
+];
+
 const timelineCases = [
   {
     id: 'prod_timeline_release_history',
@@ -7016,6 +7450,7 @@ export const conformanceCases = [
   ...blockCases,
   ...eventModelingCases,
   ...agentflowCases,
+  ...usecaseCases,
 ];
 
 export const cases = [

@@ -1028,3 +1028,44 @@ internal val agentflowDiagramDocsSpec = DiagramDocsSpec(
     ),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val usecaseDiagramDocsSpec = DiagramDocsSpec(
+    id = "usecase",
+    title = "Use Case",
+    syntaxTitle = "Use Case diagrams - Basic Syntax",
+    description = "Model actors, system boundaries, use cases, associations, dependencies, " +
+        "generalization, notes, structured data, and semantic styling.",
+    documentationUrl = "https://mermaid.js.org/syntax/useCase.html",
+    galleryTitle = "Use Case diagram gallery",
+    cases = usecaseDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 4f / 3f,
+        )
+    },
+    syntaxLessons = lessons(
+        usecaseDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 4f / 3f,
+            )
+        },
+        listOf(
+            "Actors connect to ellipse or rectangular use cases through associations.",
+            "Actor metadata selects built-in variants, icons, business marks, and stereotypes.",
+            "System boundaries group declarations and may use rectangular or package geometry.",
+            "Include, extend, and generalization preserve UML-specific endpoint semantics.",
+            "Notes, JSON tables, classes, direct styles, and accessibility metadata share one model.",
+        ),
+    ),
+    nativeOptions = MermaidRenderOptions(layout = "dagre"),
+    officialLayout = "dagre",
+    playgroundLayouts = listOf("dagre"),
+    initialTheme = MermaidThemePreset.Default,
+)

@@ -32,6 +32,7 @@ export const kinds = [
   'block',
   'eventmodeling',
   'agentflow',
+  'usecase',
 ];
 
 export const casesPerKind = 256;
@@ -198,6 +199,10 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
 `;
     case 'agentflow':
       return appendAgentflowEvidence(source, evidenceId, label);
+    case 'usecase':
+      return `${source.trimEnd()}
+${evidenceId}("${escapeQuotedLabel(label)}")
+`;
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }

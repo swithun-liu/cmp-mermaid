@@ -444,6 +444,28 @@ data class MermaidAgentflowOptions(
     val minNodeWidth: Float = 120f,
 )
 
+/**
+ * Mermaid.js 12.0.0:
+ * packages/mermaid/src/config.type.ts -> UsecaseDiagramConfig.
+ */
+data class MermaidUsecaseOptions(
+    val useMaxWidth: Boolean = true,
+    val theme: String? = null,
+    val look: String? = null,
+    val wrappingWidth: Float = 120f,
+    val minNodeWidth: Float = 120f,
+    val actorFontSize: Float = 14f,
+    val actorFontFamily: String = "\"Open Sans\", sans-serif",
+    val actorFontWeight: String = "normal",
+    val usecaseFontSize: Float = 12f,
+    val usecaseFontFamily: String = "\"Open Sans\", sans-serif",
+    val usecaseFontWeight: String = "normal",
+    val nodeSpacing: Float = 50f,
+    val rankSpacing: Float = 50f,
+    val diagramPadding: Float = 20f,
+    val colorScheme: String = "role",
+)
+
 data class MermaidSwimlaneOptions(
     val theme: String? = null,
     val look: String? = null,
@@ -525,6 +547,7 @@ data class MermaidRenderOptions(
     val kanban: MermaidKanbanOptions = MermaidKanbanOptions(),
     val timeline: MermaidTimelineOptions = MermaidTimelineOptions(),
     val agentflow: MermaidAgentflowOptions = MermaidAgentflowOptions(),
+    val usecase: MermaidUsecaseOptions = MermaidUsecaseOptions(),
     val swimlane: MermaidSwimlaneOptions = MermaidSwimlaneOptions(),
     val curve: String = "basis",
     val fontSize: Float? = null,

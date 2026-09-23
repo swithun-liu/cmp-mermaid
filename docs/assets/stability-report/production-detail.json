@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T15:36:19.038Z",
+  "generatedAt": "2026-09-23T03:08:42.111Z",
   "inputDirectory": "captures/local/treeview-viewport-full",
   "corpusSource": "production",
   "corpusKind": "all",
   "theme": null,
   "failOnReview": false,
   "gridSize": 96,
-  "caseCount": 397,
+  "caseCount": 415,
   "counts": {
-    "pass": 359,
-    "review": 38
+    "pass": 364,
+    "review": 51
   },
   "reviewQueue": [
     {
@@ -367,6 +367,123 @@
         "element-count"
       ],
       "heatmap": "captures/local/treeview-viewport-full/published-global-detail-diffs/prod_agentflow_parallel_canonical_heatmap.png"
+    },
+    {
+      "id": "rc_usecase_order_operations",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "text-segmentation"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_order_operations_heatmap.png"
+    },
+    {
+      "id": "rc_usecase_policy_dependencies",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_policy_dependencies_heatmap.png"
+    },
+    {
+      "id": "rc_usecase_regional_service",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_regional_service_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_account_entry",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_account_entry_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_business_roles",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "text-segmentation"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_business_roles_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_service_boundaries",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_service_boundaries_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_association_matrix",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_association_matrix_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_dependency_semantics",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_dependency_semantics_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_edge_metadata",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_edge_metadata_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_markdown_notes",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_markdown_notes_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_responsive_config",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_responsive_config_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_intrinsic_palette",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_intrinsic_palette_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_accessible_regions",
+      "kind": "usecase",
+      "status": "review",
+      "findingCodes": [
+        "element-count"
+      ],
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_accessible_regions_heatmap.png"
     }
   ],
   "cases": [
@@ -88161,6 +88278,4181 @@
         "edgeCells": 1464
       },
       "heatmap": null
+    },
+    {
+      "id": "rc_usecase_account_recovery",
+      "kind": "usecase",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 22,
+          "typeCounts": {
+            "shape": 9,
+            "text": 8,
+            "path": 5
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 23,
+          "typeCounts": {
+            "shape": 6,
+            "text": 8,
+            "path": 9
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 8,
+          "maximumCenterDistance": 0.04019051865341832,
+          "p95CenterDistance": 0.035260257367350896,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.2666666666666666,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 10,
+          "officialPaletteSize": 9,
+          "nativePaletteCoverage": 0.9,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 11,
+            "Dotted": 2
+          },
+          "officialStrokePatterns": {
+            "Solid": 15,
+            "Dashed": 2
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 4
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 4
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.3422222222222222,
+                "y": 0.5077605321507761
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.4109850666666667,
+                "y": 0.7546175166297117
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.7849815555555556,
+                "y": 0.7374227050997783
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-3",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.7022568148148148,
+                "y": 0.8047190687361419
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.3457997954373638,
+                "y": 0.48414985590778087
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.4140248046093298,
+                "y": 0.7292391935526237
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.7759747298439098,
+                "y": 0.7126974349521193
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-3",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.6969288853003957,
+                "y": 0.7761056920178915
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.926784993949173,
+        "exactMaskIou": 0.8742397488718854,
+        "edgeF1": 0.7996566735116697,
+        "colorError": 0.029182449394134894,
+        "exactColorError": 0.06968676948249708
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 32,
+          "y": 195,
+          "width": 836,
+          "height": 529
+        },
+        "foregroundCells": 4807,
+        "edgeCells": 1535
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 53,
+          "y": 184,
+          "width": 797,
+          "height": 554
+        },
+        "foregroundCells": 4746,
+        "edgeCells": 1777
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_usecase_order_operations",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "text-segmentation",
+          "message": "Rendered text content matches but element segmentation differs",
+          "absentInNative": [
+            {
+              "text": "«Control» Review order",
+              "officialCount": 1
+            }
+          ],
+          "absentInOfficial": [
+            {
+              "text": "«Control»",
+              "nativeCount": 1
+            },
+            {
+              "text": "Review order",
+              "nativeCount": 1
+            }
+          ]
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 18,
+          "typeCounts": {
+            "path": 4,
+            "shape": 5,
+            "text": 9
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 21,
+          "typeCounts": {
+            "path": 9,
+            "text": 8,
+            "shape": 4
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [
+            {
+              "text": "«Control» Review order",
+              "officialCount": 1
+            }
+          ],
+          "absentInOfficial": [
+            {
+              "text": "«Control»",
+              "nativeCount": 1
+            },
+            {
+              "text": "Review order",
+              "nativeCount": 1
+            }
+          ],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "maximumCenterDistance": 0.026714320250660673,
+          "p95CenterDistance": 0.026453362654948433,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1.125,
+            "geometry": 1.3076923076923077,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 0.8,
+          "nativeStrokePatterns": {
+            "Solid": 9
+          },
+          "officialStrokePatterns": {
+            "Solid": 17
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 4
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 4
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.29411764705882354,
+                "y": 0.4050179211469534
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.40773147058823533,
+                "y": 0.6773413620071684
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.6952097058823529,
+                "y": 0.6773413620071684
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.5514705882352942,
+                "y": 0.8602150537634409
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3012144387948061,
+                "y": 0.4112903225806452
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.40140857352686266,
+                "y": 0.6740403206117691
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.6821942169706264,
+                "y": 0.6740403206117691
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.5418014055080471,
+                "y": 0.8483870967741935
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9882352941176471,
+        "exactMaskIou": 0.8315964985410588,
+        "edgeF1": 0.99262483343266,
+        "colorError": 0.023718661149868554,
+        "exactColorError": 0.07164804507324675
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 210,
+          "y": 50,
+          "width": 464,
+          "height": 816
+        },
+        "foregroundCells": 2209,
+        "edgeCells": 1817
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 233,
+          "y": 74,
+          "width": 418,
+          "height": 767
+        },
+        "foregroundCells": 2185,
+        "edgeCells": 1863
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_order_operations_heatmap.png"
+    },
+    {
+      "id": "rc_usecase_policy_dependencies",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.917 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 24,
+          "typeCounts": {
+            "path": 6,
+            "shape": 9,
+            "text": 9
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 21,
+          "typeCounts": {
+            "path": 8,
+            "text": 9,
+            "shape": 4
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 9,
+          "maximumCenterDistance": 0.024945596872490112,
+          "p95CenterDistance": 0.023672760199144147,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.9166666666666667,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 5,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 0.8,
+          "officialPaletteCoverage": 0.8,
+          "nativeStrokePatterns": {
+            "Solid": 10,
+            "Dotted": 2
+          },
+          "officialStrokePatterns": {
+            "Solid": 10,
+            "Dashed": 2
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 6
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.22636674259681094,
+                "y": 0.296875
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.5722575170842824,
+                "y": 0.65852171875
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.7904328018223234,
+                "y": 0.3916015625
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.5136674259681093,
+                "y": 0.7666015625
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-4",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.5096299544419135,
+                "y": 0.8282290625
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-5",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.7995444191343963,
+                "y": 0.7666015625
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.23034208296777967,
+                "y": 0.3156996587030715
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.5682833747806678,
+                "y": 0.6443003371307059
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.7842116566461956,
+                "y": 0.4035836177474399
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.5125835128846914,
+                "y": 0.7448805460750849
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-4",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.5086640922012351,
+                "y": 0.8025290323198859
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-5",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.7930193496155236,
+                "y": 0.7448805460750849
+              },
+              "occlusionDepth": 0,
+              "occluder": {
+                "order": 19,
+                "id": null,
+                "depth": 0
+              }
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9666353383458647,
+        "exactMaskIou": 0.8979591836734694,
+        "edgeF1": 0.9876209260824645,
+        "colorError": 0.02221375840504067,
+        "exactColorError": 0.05963985594237695
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 36,
+          "y": 348,
+          "width": 838,
+          "height": 214
+        },
+        "foregroundCells": 2122,
+        "edgeCells": 1718
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 56,
+          "y": 349,
+          "width": 799,
+          "height": 212
+        },
+        "foregroundCells": 2063,
+        "edgeCells": 1757
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_policy_dependencies_heatmap.png"
+    },
+    {
+      "id": "rc_usecase_compliance_evidence",
+      "kind": "usecase",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 23,
+          "typeCounts": {
+            "path": 4,
+            "shape": 6,
+            "text": 13
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 32,
+          "typeCounts": {
+            "path": 7,
+            "text": 13,
+            "shape": 12
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 13,
+          "maximumCenterDistance": 0.023320200893706042,
+          "p95CenterDistance": 0.022042811582132046,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.2105263157894737,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 10,
+          "officialPaletteSize": 9,
+          "nativePaletteCoverage": 0.9,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 1,
+            "Solid": 7,
+            "Dotted": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 27,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "starts",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.29328621908127206,
+                "y": 0.29343629343629346
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.5931421672555948,
+                "y": 0.4438496525096525
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.7785630153121319,
+                "y": 0.525096525096525
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-starts",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.30406351795154773,
+                "y": 0.3130287648054145
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.5919011733143167,
+                "y": 0.44634516630479326
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.7734203950764519,
+                "y": 0.5245346869712354
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9225505443234837,
+        "exactMaskIou": 0.8628691983122363,
+        "edgeF1": 0.9340290000433988,
+        "colorError": 0.0368444849740752,
+        "exactColorError": 0.10083797231972959
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 42,
+          "y": 343,
+          "width": 832,
+          "height": 225
+        },
+        "foregroundCells": 2974,
+        "edgeCells": 2039
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 63,
+          "y": 345,
+          "width": 794,
+          "height": 225
+        },
+        "foregroundCells": 3207,
+        "edgeCells": 1960
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_usecase_regional_service",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 8,
+          "typeCounts": {
+            "path": 2,
+            "shape": 3,
+            "text": 3
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 8,
+          "typeCounts": {
+            "path": 3,
+            "text": 3,
+            "shape": 2
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 3,
+          "maximumCenterDistance": 0.03628637966919644,
+          "p95CenterDistance": 0.011574618502588924,
+          "maximumSizeRatio": 1.1666666666666667
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.8,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 5,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 5
+          },
+          "officialStrokePatterns": {
+            "Solid": 5
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3553459119496855,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.720125786163522,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3644578313253012,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.7138554216867471,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8414755732801595,
+        "exactMaskIou": 0.5189144736842105,
+        "edgeF1": 0.9496512719378675,
+        "colorError": 0.08262675484394942,
+        "exactColorError": 0.220906432748538
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 84,
+          "y": 366,
+          "width": 783,
+          "height": 163
+        },
+        "foregroundCells": 876,
+        "edgeCells": 1543
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 102,
+          "y": 369,
+          "width": 744,
+          "height": 154
+        },
+        "foregroundCells": 971,
+        "edgeCells": 1597
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_regional_service_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_account_entry",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 8,
+          "typeCounts": {
+            "path": 2,
+            "shape": 3,
+            "text": 3
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 8,
+          "typeCounts": {
+            "path": 3,
+            "text": 3,
+            "shape": 2
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 3,
+          "maximumCenterDistance": 0.043990514831880045,
+          "p95CenterDistance": 0.03483231485960917,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.8,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 5
+          },
+          "officialStrokePatterns": {
+            "Solid": 5
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.43730886850152906,
+                "y": 0.25824175824175827
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.44954128440366975,
+                "y": 0.7857142857142857
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.44740230072962556,
+                "y": 0.2850467289719627
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.4586798337692731,
+                "y": 0.7523364485981309
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9569920844327177,
+        "exactMaskIou": 0.8762964836832785,
+        "edgeF1": 0.9651771598582686,
+        "colorError": 0.018781929700780756,
+        "exactColorError": 0.06862397880983914
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 86,
+          "y": 255,
+          "width": 759,
+          "height": 397
+        },
+        "foregroundCells": 3722,
+        "edgeCells": 1737
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 120,
+          "y": 264,
+          "width": 689,
+          "height": 382
+        },
+        "foregroundCells": 3695,
+        "edgeCells": 1693
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_account_entry_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_actor_catalog",
+      "kind": "usecase",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 19,
+          "typeCounts": {
+            "path": 5,
+            "shape": 6,
+            "asset": 2,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 22,
+          "typeCounts": {
+            "path": 8,
+            "text": 6,
+            "shape": 6,
+            "asset": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.02378811638363143,
+          "p95CenterDistance": 0.02054782688774155,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.2142857142857142,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.5,
+          "nativeStrokePatterns": {
+            "Solid": 11
+          },
+          "officialStrokePatterns": {
+            "Solid": 20
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 5
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 5
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.7137312499999999,
+                "y": 0.4617094
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.6894310416666666,
+                "y": 0.4628587
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.5208333333333334,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.6894310416666666,
+                "y": 0.5371412999999999
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-4",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.7137312499999999,
+                "y": 0.5382906
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.70328751306041,
+                "y": 0.4624326857379171
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.6803039365264055,
+                "y": 0.4635028729367448
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.5234042553191488,
+                "y": 0.5000000000000001
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.6803039365264055,
+                "y": 0.5364971270632551
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-4",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.70328751306041,
+                "y": 0.5375673142620828
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9750479846449136,
+        "exactMaskIou": 0.7634961439588689,
+        "edgeF1": 0.9926767575800493,
+        "colorError": 0.04703580062161851,
+        "exactColorError": 0.09800561184199473
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 269,
+          "y": 37,
+          "width": 374,
+          "height": 824
+        },
+        "foregroundCells": 1039,
+        "edgeCells": 1659
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 286,
+          "y": 57,
+          "width": 339,
+          "height": 782
+        },
+        "foregroundCells": 1019,
+        "edgeCells": 1625
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_usecase_business_roles",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "text-segmentation",
+          "message": "Rendered text content matches but element segmentation differs",
+          "absentInNative": [
+            {
+              "text": "«Record» Archive quote",
+              "officialCount": 1
+            }
+          ],
+          "absentInOfficial": [
+            {
+              "text": "«Record»",
+              "nativeCount": 1
+            },
+            {
+              "text": "Archive quote",
+              "nativeCount": 1
+            }
+          ]
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 15,
+          "typeCounts": {
+            "path": 3,
+            "shape": 4,
+            "text": 8
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 18,
+          "typeCounts": {
+            "path": 8,
+            "text": 7,
+            "shape": 3
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [
+            {
+              "text": "«Record» Archive quote",
+              "officialCount": 1
+            }
+          ],
+          "absentInOfficial": [
+            {
+              "text": "«Record»",
+              "nativeCount": 1
+            },
+            {
+              "text": "Archive quote",
+              "nativeCount": 1
+            }
+          ],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.03773957869674628,
+          "p95CenterDistance": 0.03270833046867377,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1.1428571428571428,
+            "geometry": 1.3636363636363635,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 0.8,
+          "nativeStrokePatterns": {
+            "Solid": 7
+          },
+          "officialStrokePatterns": {
+            "Solid": 15
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3882089605734767,
+                "y": 0.40356065714285716
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.38820894265232975,
+                "y": 0.5964393428571428
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.6845878136200717,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3949038037332203,
+                "y": 0.4074477769842195
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.3949038037332203,
+                "y": 0.5925522230157805
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.6788977225721224,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9608187134502923,
+        "exactMaskIou": 0.8514632799558255,
+        "edgeF1": 0.9871558259958563,
+        "colorError": 0.02000704473406129,
+        "exactColorError": 0.06280717330186263
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 54,
+          "y": 215,
+          "width": 810,
+          "height": 463
+        },
+        "foregroundCells": 1652,
+        "edgeCells": 1338
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 79,
+          "y": 213,
+          "width": 764,
+          "height": 465
+        },
+        "foregroundCells": 1701,
+        "edgeCells": 1305
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_business_roles_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_service_boundaries",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 16,
+          "typeCounts": {
+            "shape": 7,
+            "text": 6,
+            "path": 3
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 16,
+          "typeCounts": {
+            "shape": 5,
+            "text": 6,
+            "path": 5
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.025920087765202725,
+          "p95CenterDistance": 0.02547283286489616,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.8,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 0.8333333333333334,
+          "officialPaletteCoverage": 0.8333333333333334,
+          "nativeStrokePatterns": {
+            "Solid": 10
+          },
+          "officialStrokePatterns": {
+            "Solid": 10
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.3029827315541601,
+                "y": 0.7382075471698113
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.6767406593406593,
+                "y": 0.26720212264150944
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.7090964835164835,
+                "y": 0.3334646698113207
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.31396408619093796,
+                "y": 0.7263948497854078
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.6714899763457923,
+                "y": 0.2784377658827622
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.702769360454866,
+                "y": 0.34179183239588923
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9790521978021978,
+        "exactMaskIou": 0.960871044572984,
+        "edgeF1": 0.9545727827552168,
+        "colorError": 0.014751119834059013,
+        "exactColorError": 0.03492095261604698
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 34,
+          "y": 182,
+          "width": 832,
+          "height": 536
+        },
+        "foregroundCells": 5749,
+        "edgeCells": 1573
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 55,
+          "y": 186,
+          "width": 793,
+          "height": 533
+        },
+        "foregroundCells": 5777,
+        "edgeCells": 1605
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_service_boundaries_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_association_matrix",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.900 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 17,
+          "typeCounts": {
+            "path": 5,
+            "shape": 6,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 16,
+          "typeCounts": {
+            "path": 7,
+            "text": 6,
+            "shape": 3
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.03950109545391439,
+          "p95CenterDistance": 0.029296774191063378,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.9,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 5,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 0.8,
+          "officialPaletteCoverage": 0.8,
+          "nativeStrokePatterns": {
+            "Solid": 10
+          },
+          "officialStrokePatterns": {
+            "Solid": 10
+          },
+          "nativeMarkers": {
+            "start": 2,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 2,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.397196261682243,
+                "y": 0.5755102040816327
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.5700768691588785,
+                "y": 0.4727017959183673
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.1658878504672897,
+                "y": 0.25170068027210885
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-4",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.8341121495327103,
+                "y": 0.7442176870748299
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.40090090090090097,
+                "y": 0.571921749136939
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.568762392611117,
+                "y": 0.4806536113708288
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.17792792792792791,
+                "y": 0.27963176064441886
+              },
+              "occlusionDepth": 0,
+              "occluder": {
+                "order": 14,
+                "id": null,
+                "depth": 0
+              }
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-4",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.8220720720720722,
+                "y": 0.7192174913693904
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9245122985581001,
+        "exactMaskIou": 0.790138067061144,
+        "edgeF1": 0.9525201075760564,
+        "colorError": 0.02996293928199299,
+        "exactColorError": 0.10426370679764345
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 48,
+          "y": 382,
+          "width": 812,
+          "height": 146
+        },
+        "foregroundCells": 2282,
+        "edgeCells": 1605
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 67,
+          "y": 381,
+          "width": 773,
+          "height": 145
+        },
+        "foregroundCells": 2256,
+        "edgeCells": 1559
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_association_matrix_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_dependency_semantics",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 2.111 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 18,
+          "typeCounts": {
+            "path": 4,
+            "shape": 7,
+            "text": 7
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 16,
+          "typeCounts": {
+            "path": 6,
+            "text": 7,
+            "shape": 3
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "maximumCenterDistance": 0.026751722438477534,
+          "p95CenterDistance": 0.02675171207127812,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 2.111111111111111,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 5,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 0.8,
+          "officialPaletteCoverage": 0.8,
+          "nativeStrokePatterns": {
+            "Solid": 7,
+            "Dotted": 2
+          },
+          "officialStrokePatterns": {
+            "Solid": 7,
+            "Dashed": 2
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 4
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 4
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.4215328467153285,
+                "y": 0.296875
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.7313868613138687,
+                "y": 0.81640625
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.4233609197080292,
+                "y": 0.7261789453125
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.36278566423357667,
+                "y": 0.8548883203125
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.4215411849632104,
+                "y": 0.3156996587030719
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.7261200287657474,
+                "y": 0.7918088737201365
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.4242185282526582,
+                "y": 0.7085699400397293
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-3",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.3680073255087225,
+                "y": 0.8276621327058449
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9850438370293966,
+        "exactMaskIou": 0.8867647058823529,
+        "edgeF1": 0.9954225263525004,
+        "colorError": 0.018883971188058665,
+        "exactColorError": 0.06820069204152249
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 32,
+          "y": 319,
+          "width": 837,
+          "height": 275
+        },
+        "foregroundCells": 1935,
+        "edgeCells": 1357
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 53,
+          "y": 322,
+          "width": 794,
+          "height": 268
+        },
+        "foregroundCells": 1914,
+        "edgeCells": 1280
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_dependency_semantics_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_edge_metadata",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 2.200 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 12,
+          "typeCounts": {
+            "path": 2,
+            "shape": 5,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 10,
+          "typeCounts": {
+            "path": 3,
+            "text": 5,
+            "shape": 2
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 5,
+          "maximumCenterDistance": 0.04931218535405575,
+          "p95CenterDistance": 0.011149908499035271,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 2.2,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 0.8333333333333334,
+          "officialPaletteCoverage": 0.7142857142857143,
+          "nativeStrokePatterns": {
+            "Dashed": 1,
+            "Dotted": 1,
+            "Solid": 3
+          },
+          "officialStrokePatterns": {
+            "Solid": 4,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "opens",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.38115942028985506,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "payment",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.7333333333333333,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-opens",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3887207536891612,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-payment",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.7293752157404211,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.995846313603323,
+        "exactMaskIou": 0.9277833500501504,
+        "edgeF1": 0.9858769156527781,
+        "colorError": 0.019813978619119293,
+        "exactColorError": 0.06854113538873702
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 45,
+          "y": 387,
+          "width": 825,
+          "height": 121
+        },
+        "foregroundCells": 2889,
+        "edgeCells": 1583
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 67,
+          "y": 389,
+          "width": 780,
+          "height": 115
+        },
+        "foregroundCells": 2877,
+        "edgeCells": 1495
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_edge_metadata_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_markdown_notes",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.667 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 10,
+          "typeCounts": {
+            "path": 2,
+            "shape": 4,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 10,
+          "typeCounts": {
+            "path": 5,
+            "text": 4,
+            "shape": 1
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.028696334761281063,
+          "p95CenterDistance": 0.017443612208143756,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.6666666666666667,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 0.875,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 4,
+            "Dotted": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 6,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.6488488063063063,
+                "y": 0.4374451515151515
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.6417457084068807,
+                "y": 0.4428712951861594
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9704918032786886,
+        "exactMaskIou": 0.8936589208349744,
+        "edgeF1": 0.970450679095492,
+        "colorError": 0.026720885168866906,
+        "exactColorError": 0.07878558539077965
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 45,
+          "y": 241,
+          "width": 812,
+          "height": 439
+        },
+        "foregroundCells": 2438,
+        "edgeCells": 1497
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 72,
+          "y": 246,
+          "width": 755,
+          "height": 434
+        },
+        "foregroundCells": 2370,
+        "edgeCells": 1367
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_markdown_notes_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_payload_table",
+      "kind": "usecase",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 16,
+          "typeCounts": {
+            "path": 1,
+            "shape": 2,
+            "text": 13
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 29,
+          "typeCounts": {
+            "path": 1,
+            "shape": 15,
+            "text": 13
+          },
+          "textCount": 13,
+          "uniqueTextCount": 13,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 13,
+          "maximumCenterDistance": 0.02393802980060166,
+          "p95CenterDistance": 0.0223007311932273,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 5,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 3
+          },
+          "officialStrokePatterns": {
+            "Solid": 28
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.5243619489559165,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.5176198729058347,
+                "y": 0.4999999999999999
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9894279781008117,
+        "exactMaskIou": 0.9500370096225018,
+        "edgeF1": 0.9744083124879738,
+        "colorError": 0.028572479681944648,
+        "exactColorError": 0.08109364643957756
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 47,
+          "y": 254,
+          "width": 809,
+          "height": 397
+        },
+        "foregroundCells": 5297,
+        "edgeCells": 2594
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 74,
+          "y": 230,
+          "width": 759,
+          "height": 448
+        },
+        "foregroundCells": 5241,
+        "edgeCells": 2603
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_usecase_semantic_styles",
+      "kind": "usecase",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 12,
+          "typeCounts": {
+            "shape": 4,
+            "text": 6,
+            "path": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 15,
+          "typeCounts": {
+            "shape": 6,
+            "text": 6,
+            "path": 3
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "maximumCenterDistance": 0.06404939509105387,
+          "p95CenterDistance": 0.056416022800900835,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.4444444444444444,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 0.875,
+          "officialPaletteCoverage": 0.875,
+          "nativeStrokePatterns": {
+            "Solid": 6
+          },
+          "officialStrokePatterns": {
+            "Solid": 12
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "profile",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.3832752613240418,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.7787456445993032,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-profile",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.37031656371911575,
+                "y": 0.49999999999999967
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.7267706697622495,
+                "y": 0.49999999999999967
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8317109696742793,
+        "exactMaskIou": 0.7777979651162791,
+        "edgeF1": 0.6458138403131789,
+        "colorError": 0.06491092030383952,
+        "exactColorError": 0.14320684184526522
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 53,
+          "y": 364,
+          "width": 812,
+          "height": 172
+        },
+        "foregroundCells": 4777,
+        "edgeCells": 2171
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 74,
+          "y": 371,
+          "width": 772,
+          "height": 163
+        },
+        "foregroundCells": 5008,
+        "edgeCells": 2122
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_usecase_responsive_config",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 2.333 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 5,
+          "typeCounts": {
+            "path": 1,
+            "shape": 2,
+            "text": 2
+          },
+          "textCount": 2,
+          "uniqueTextCount": 2,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 5,
+          "typeCounts": {
+            "path": 2,
+            "text": 2,
+            "shape": 1
+          },
+          "textCount": 2,
+          "uniqueTextCount": 2,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 2,
+          "maximumCenterDistance": 0.04785888022648802,
+          "p95CenterDistance": 0.009325755965308186,
+          "maximumSizeRatio": 1.1428571428571428
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 2.3333333333333335,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 3
+          },
+          "officialStrokePatterns": {
+            "Solid": 3
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.4652956298200514,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.472027607115738,
+                "y": 0.5000000000000001
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9844458846403111,
+        "exactMaskIou": 0.9251807607670544,
+        "edgeF1": 0.980354267310789,
+        "colorError": 0.02210326990281274,
+        "exactColorError": 0.07551454407603972
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 82,
+          "y": 336,
+          "width": 761,
+          "height": 217
+        },
+        "foregroundCells": 3063,
+        "edgeCells": 1583
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 113,
+          "y": 340,
+          "width": 698,
+          "height": 205
+        },
+        "foregroundCells": 3061,
+        "edgeCells": 1450
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_responsive_config_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_intrinsic_palette",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 2.143 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 11,
+          "typeCounts": {
+            "path": 3,
+            "shape": 4,
+            "text": 4
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 11,
+          "typeCounts": {
+            "path": 5,
+            "text": 4,
+            "shape": 2
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "maximumCenterDistance": 0.0361662431727258,
+          "p95CenterDistance": 0.01969401569194653,
+          "maximumSizeRatio": 1.1666666666666667
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 2.142857142857143,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 5,
+          "officialPaletteSize": 5,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 7
+          },
+          "officialStrokePatterns": {
+            "Solid": 7
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.26629422718808193,
+                "y": 0.26666666666666666
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.737430279329609,
+                "y": 0.40888905263157893
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.737430279329609,
+                "y": 0.5911109824561404
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.2810191540277393,
+                "y": 0.28505392912172584
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.7278963968248479,
+                "y": 0.4147303600340668
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-2",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.7278963968248479,
+                "y": 0.5852696399659332
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8773181169757489,
+        "exactMaskIou": 0.6048780487804878,
+        "edgeF1": 0.9963093314521212,
+        "colorError": 0.06533249385381064,
+        "exactColorError": 0.19821775864817473
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 55,
+          "y": 260,
+          "width": 811,
+          "height": 374
+        },
+        "foregroundCells": 700,
+        "edgeCells": 1368
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 81,
+          "y": 263,
+          "width": 756,
+          "height": 364
+        },
+        "foregroundCells": 616,
+        "edgeCells": 1273
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_intrinsic_palette_heatmap.png"
+    },
+    {
+      "id": "prod_usecase_accessible_regions",
+      "kind": "usecase",
+      "status": "review",
+      "findings": [
+        {
+          "severity": "review",
+          "code": "element-count",
+          "type": "geometry",
+          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
+        }
+      ],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "review",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 8,
+          "typeCounts": {
+            "path": 2,
+            "shape": 3,
+            "text": 3
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 8,
+          "typeCounts": {
+            "path": 3,
+            "text": 3,
+            "shape": 2
+          },
+          "textCount": 3,
+          "uniqueTextCount": 3,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 3,
+          "maximumCenterDistance": 0.04031734691490106,
+          "p95CenterDistance": 0.012059375594680885,
+          "maximumSizeRatio": 1.3333333333333333
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "geometry": 1.8,
+            "asset": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 0.75,
+          "officialPaletteCoverage": 0.75,
+          "nativeStrokePatterns": {
+            "Solid": 5
+          },
+          "officialStrokePatterns": {
+            "Solid": 5
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3435374149659864,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.7006802721088435,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-0",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.3538961038961039,
+                "y": 0.4999999999999997
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "usecase-cmp-official-1-edge-1",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.6948051948051948,
+                "y": 0.4999999999999997
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9726547664261299,
+        "exactMaskIou": 0.8880407124681934,
+        "edgeF1": 0.9540835653155428,
+        "colorError": 0.029234810587648423,
+        "exactColorError": 0.09763769799692566
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 80,
+          "y": 360,
+          "width": 786,
+          "height": 173
+        },
+        "foregroundCells": 2577,
+        "edgeCells": 1570
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 100,
+          "y": 363,
+          "width": 745,
+          "height": 166
+        },
+        "foregroundCells": 2617,
+        "edgeCells": 1394
+      },
+      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_accessible_regions_heatmap.png"
     }
   ]
 }

@@ -354,6 +354,7 @@ internal object MermaidPreprocessor {
         val railroad = map.map("railroad")
         val treeView = map.map("treeView")
         val agentflow = map.map("agentflow")
+        val usecase = map.map("usecase")
         val swimlane = map.map("swimlane")
         val treemap = map.map("treemap")
         val venn = map.map("venn")
@@ -723,6 +724,40 @@ internal object MermaidPreprocessor {
             float(agentflow, "wrappingWidth", "agentflow.wrappingWidth")
         val agentflowMinNodeWidth =
             float(agentflow, "minNodeWidth", "agentflow.minNodeWidth")
+        val usecaseUseMaxWidth =
+            boolean(usecase, "useMaxWidth", "usecase.useMaxWidth")
+        val usecaseTheme = appearanceString(usecase, "theme", "usecase.theme")
+            ?.takeIf(USABLE_THEMES::contains)
+        val usecaseLook = appearanceString(usecase, "look", "usecase.look")
+            ?.takeIf(USABLE_LOOKS::contains)
+        val usecaseWrappingWidth =
+            float(usecase, "wrappingWidth", "usecase.wrappingWidth")
+        val usecaseMinNodeWidth =
+            float(usecase, "minNodeWidth", "usecase.minNodeWidth")
+        val usecaseActorFontSize =
+            fontSize(usecase, "actorFontSize", "usecase.actorFontSize")
+        val usecaseActorFontFamily =
+            string(usecase, "actorFontFamily", "usecase.actorFontFamily")
+        val usecaseActorFontWeight =
+            string(usecase, "actorFontWeight", "usecase.actorFontWeight")
+        val usecaseFontSize =
+            fontSize(usecase, "usecaseFontSize", "usecase.usecaseFontSize")
+        val usecaseFontFamily =
+            string(usecase, "usecaseFontFamily", "usecase.usecaseFontFamily")
+        val usecaseFontWeight =
+            string(usecase, "usecaseFontWeight", "usecase.usecaseFontWeight")
+        val usecaseNodeSpacing =
+            float(usecase, "nodeSpacing", "usecase.nodeSpacing")
+        val usecaseRankSpacing =
+            float(usecase, "rankSpacing", "usecase.rankSpacing")
+        val usecaseDiagramPadding =
+            float(usecase, "diagramPadding", "usecase.diagramPadding")
+        val usecaseColorScheme = enumString(
+            usecase,
+            "colorScheme",
+            "usecase.colorScheme",
+            setOf("role", "rotate"),
+        )
         val swimlaneTheme = appearanceString(swimlane, "theme", "swimlane.theme")
             ?.takeIf(USABLE_THEMES::contains)
         val swimlaneLook = appearanceString(swimlane, "look", "swimlane.look")
@@ -759,10 +794,45 @@ internal object MermaidPreprocessor {
         listOf(
             "agentflow.wrappingWidth" to agentflowWrappingWidth,
             "agentflow.minNodeWidth" to agentflowMinNodeWidth,
+            "usecase.wrappingWidth" to usecaseWrappingWidth,
+            "usecase.minNodeWidth" to usecaseMinNodeWidth,
+            "usecase.actorFontSize" to usecaseActorFontSize,
+            "usecase.usecaseFontSize" to usecaseFontSize,
         ).forEach { (path, value) ->
             if (value != null && (!value.isFinite() || value <= 0f)) {
                 readError = MermaidError.Configuration(
                     "Mermaid $sourceName '$path' must be positive",
+                )
+            }
+        }
+        listOf(
+            "usecase.nodeSpacing" to usecaseNodeSpacing,
+            "usecase.rankSpacing" to usecaseRankSpacing,
+            "usecase.diagramPadding" to usecaseDiagramPadding,
+        ).forEach { (path, value) ->
+            if (value != null && (!value.isFinite() || value < 0f)) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' must be non-negative",
+                )
+            }
+        }
+        listOf(
+            "usecase.actorFontFamily" to usecaseActorFontFamily,
+            "usecase.usecaseFontFamily" to usecaseFontFamily,
+        ).forEach { (path, value) ->
+            if (value != null && value.any { it in ";<>(){}\\" }) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' contains unsafe CSS characters",
+                )
+            }
+        }
+        listOf(
+            "usecase.actorFontWeight" to usecaseActorFontWeight,
+            "usecase.usecaseFontWeight" to usecaseFontWeight,
+        ).forEach { (path, value) ->
+            if (value != null && !USECASE_FONT_WEIGHT.matches(value)) {
+                readError = MermaidError.Configuration(
+                    "Mermaid $sourceName '$path' has invalid font weight '$value'",
                 )
             }
         }
@@ -1991,6 +2061,25 @@ internal object MermaidPreprocessor {
                         minNodeWidth = agentflowMinNodeWidth,
                     )
                 },
+                usecase = usecase?.let {
+                    MermaidUsecaseConfigOverride(
+                        useMaxWidth = usecaseUseMaxWidth,
+                        theme = usecaseTheme,
+                        look = usecaseLook,
+                        wrappingWidth = usecaseWrappingWidth,
+                        minNodeWidth = usecaseMinNodeWidth,
+                        actorFontSize = usecaseActorFontSize,
+                        actorFontFamily = usecaseActorFontFamily,
+                        actorFontWeight = usecaseActorFontWeight,
+                        usecaseFontSize = usecaseFontSize,
+                        usecaseFontFamily = usecaseFontFamily,
+                        usecaseFontWeight = usecaseFontWeight,
+                        nodeSpacing = usecaseNodeSpacing,
+                        rankSpacing = usecaseRankSpacing,
+                        diagramPadding = usecaseDiagramPadding,
+                        colorScheme = usecaseColorScheme,
+                    )
+                },
                 swimlane = swimlane?.let {
                     MermaidSwimlaneConfigOverride(
                         theme = swimlaneTheme,
@@ -2351,6 +2440,9 @@ internal object MermaidPreprocessor {
         "redux-dark-color",
     )
     private val USABLE_LOOKS = setOf("classic", "handDrawn", "neo")
+    private val USECASE_FONT_WEIGHT = Regex(
+        """^(normal|bold|bolder|lighter|inherit|initial|revert|unset|[1-9][0-9]{0,3})$""",
+    )
     private val ELK_NODE_PLACEMENT_STRATEGIES = setOf(
         "SIMPLE",
         "NETWORK_SIMPLEX",
@@ -2459,6 +2551,7 @@ internal data class MermaidConfigOverride(
     val journey: MermaidJourneyConfigOverride? = null,
     val timeline: MermaidTimelineConfigOverride? = null,
     val agentflow: MermaidAgentflowConfigOverride? = null,
+    val usecase: MermaidUsecaseConfigOverride? = null,
     val swimlane: MermaidSwimlaneConfigOverride? = null,
     val pieTextPosition: Float? = null,
     val pieDonutHole: Float? = null,
@@ -2558,6 +2651,11 @@ internal data class MermaidConfigOverride(
             overrides.agentflow != null ->
                 agentflow?.merge(overrides.agentflow) ?: overrides.agentflow
             else -> agentflow
+        },
+        usecase = when {
+            overrides.usecase != null ->
+                usecase?.merge(overrides.usecase) ?: overrides.usecase
+            else -> usecase
         },
         swimlane = when {
             overrides.swimlane != null ->
@@ -2742,6 +2840,7 @@ internal data class MermaidConfigOverride(
                 journey = journey?.applyTo(options.journey) ?: options.journey,
                 timeline = timeline?.applyTo(options.timeline) ?: options.timeline,
                 agentflow = agentflow?.applyTo(options.agentflow) ?: options.agentflow,
+                usecase = usecase?.applyTo(options.usecase) ?: options.usecase,
                 swimlane = swimlane?.applyTo(options.swimlane) ?: options.swimlane,
                 pieTextPosition = pieTextPosition ?: options.pieTextPosition,
                 pieDonutHole = pieDonutHole ?: options.pieDonutHole,
@@ -2827,6 +2926,61 @@ internal data class MermaidAgentflowConfigOverride(
         rankSpacing = rankSpacing ?: options.rankSpacing,
         wrappingWidth = wrappingWidth ?: options.wrappingWidth,
         minNodeWidth = minNodeWidth ?: options.minNodeWidth,
+    )
+}
+
+internal data class MermaidUsecaseConfigOverride(
+    val useMaxWidth: Boolean? = null,
+    val theme: String? = null,
+    val look: String? = null,
+    val wrappingWidth: Float? = null,
+    val minNodeWidth: Float? = null,
+    val actorFontSize: Float? = null,
+    val actorFontFamily: String? = null,
+    val actorFontWeight: String? = null,
+    val usecaseFontSize: Float? = null,
+    val usecaseFontFamily: String? = null,
+    val usecaseFontWeight: String? = null,
+    val nodeSpacing: Float? = null,
+    val rankSpacing: Float? = null,
+    val diagramPadding: Float? = null,
+    val colorScheme: String? = null,
+) {
+    fun merge(overrides: MermaidUsecaseConfigOverride): MermaidUsecaseConfigOverride =
+        MermaidUsecaseConfigOverride(
+            useMaxWidth = overrides.useMaxWidth ?: useMaxWidth,
+            theme = overrides.theme ?: theme,
+            look = overrides.look ?: look,
+            wrappingWidth = overrides.wrappingWidth ?: wrappingWidth,
+            minNodeWidth = overrides.minNodeWidth ?: minNodeWidth,
+            actorFontSize = overrides.actorFontSize ?: actorFontSize,
+            actorFontFamily = overrides.actorFontFamily ?: actorFontFamily,
+            actorFontWeight = overrides.actorFontWeight ?: actorFontWeight,
+            usecaseFontSize = overrides.usecaseFontSize ?: usecaseFontSize,
+            usecaseFontFamily = overrides.usecaseFontFamily ?: usecaseFontFamily,
+            usecaseFontWeight = overrides.usecaseFontWeight ?: usecaseFontWeight,
+            nodeSpacing = overrides.nodeSpacing ?: nodeSpacing,
+            rankSpacing = overrides.rankSpacing ?: rankSpacing,
+            diagramPadding = overrides.diagramPadding ?: diagramPadding,
+            colorScheme = overrides.colorScheme ?: colorScheme,
+        )
+
+    fun applyTo(options: MermaidUsecaseOptions): MermaidUsecaseOptions = options.copy(
+        useMaxWidth = useMaxWidth ?: options.useMaxWidth,
+        theme = theme ?: options.theme,
+        look = look ?: options.look,
+        wrappingWidth = wrappingWidth ?: options.wrappingWidth,
+        minNodeWidth = minNodeWidth ?: options.minNodeWidth,
+        actorFontSize = actorFontSize ?: options.actorFontSize,
+        actorFontFamily = actorFontFamily ?: options.actorFontFamily,
+        actorFontWeight = actorFontWeight ?: options.actorFontWeight,
+        usecaseFontSize = usecaseFontSize ?: options.usecaseFontSize,
+        usecaseFontFamily = usecaseFontFamily ?: options.usecaseFontFamily,
+        usecaseFontWeight = usecaseFontWeight ?: options.usecaseFontWeight,
+        nodeSpacing = nodeSpacing ?: options.nodeSpacing,
+        rankSpacing = rankSpacing ?: options.rankSpacing,
+        diagramPadding = diagramPadding ?: options.diagramPadding,
+        colorScheme = colorScheme ?: options.colorScheme,
     )
 }
 

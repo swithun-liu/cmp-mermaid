@@ -28,6 +28,7 @@ import com.swithun.cmpmermaid.core.swimlane.SwimlanePlugin
 import com.swithun.cmpmermaid.core.timeline.TimelinePlugin
 import com.swithun.cmpmermaid.core.treemap.TreemapPlugin
 import com.swithun.cmpmermaid.core.treeview.TreeViewPlugin
+import com.swithun.cmpmermaid.core.usecase.UsecasePlugin
 import com.swithun.cmpmermaid.core.venn.VennPlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
 import kotlinx.coroutines.CancellationException
@@ -83,6 +84,7 @@ class MermaidEngine(
         VennPlugin(),
         TimelinePlugin(),
         KanbanPlugin(),
+        UsecasePlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {
@@ -158,6 +160,21 @@ class MermaidEngine(
                     wrappingWidth = agentflow.wrappingWidth,
                     minNodeWidth = agentflow.minNodeWidth,
                     flowchartPadding = 8f,
+                )
+            }
+            header == "usecase-beta" -> resolvedOptions.usecase.let { usecase ->
+                resolvedOptions.copy(
+                    themeName = usecase.theme
+                        ?: resolvedOptions.themeName
+                        ?: MermaidThemePreset.ReduxColor.configName.takeIf {
+                            context.theme == MermaidTheme.FlowchartDefault
+                        },
+                    look = usecase.look ?: resolvedOptions.look,
+                    diagramPadding = usecase.diagramPadding,
+                    nodeSpacing = usecase.nodeSpacing,
+                    rankSpacing = usecase.rankSpacing,
+                    wrappingWidth = usecase.wrappingWidth,
+                    minNodeWidth = usecase.minNodeWidth,
                 )
             }
             header == "swimlane-beta" -> resolvedOptions.swimlane.let { swimlane ->

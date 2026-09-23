@@ -36,7 +36,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryProductionCaseWithValidSceneGeometryAndExpectedText() {
-        assertEquals(397, productionCorpusCases.size)
+        assertEquals(415, productionCorpusCases.size)
         assertEquals(
             mapOf(
                 "flowchart" to 14,
@@ -69,13 +69,14 @@ class ProductionCorpusTest {
                 "block" to 13,
                 "eventmodeling" to 13,
                 "agentflow" to 13,
+                "usecase" to 18,
             ),
             productionCorpusCases.groupingBy(StabilityCorpusCase::diagramId).eachCount(),
         )
         val conformanceCases = productionCorpusCases.filter { case ->
             case.id.startsWith("prod_")
         }
-        assertEquals(245, conformanceCases.size)
+        assertEquals(258, conformanceCases.size)
         assertTrue(conformanceCases.all { case -> case.expectedTexts.isNotEmpty() })
         assertTrue(conformanceCases.all { case -> case.features.isNotEmpty() })
 
@@ -118,7 +119,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryLargeScaleVisualParityCase() {
-        assertEquals(7_680, visualParityCorpusCases.size)
+        assertEquals(7_936, visualParityCorpusCases.size)
         assertEquals(
             setOf(
                 "flowchart",
@@ -151,6 +152,7 @@ class ProductionCorpusTest {
                 "block",
                 "eventmodeling",
                 "agentflow",
+                "usecase",
             ).associateWith { 256 },
             visualParityCorpusCases
                 .groupingBy(StabilityCorpusCase::diagramId)
@@ -216,7 +218,7 @@ class ProductionCorpusTest {
             .groupBy(StabilityCorpusCase::diagramId)
             .mapValues { (_, cases) -> cases.first() }
 
-        assertEquals(30, representatives.size)
+        assertEquals(31, representatives.size)
         representatives.forEach { (diagramId, case) ->
             MermaidThemePreset.entries.forEach { preset ->
                 val result = engine.render(

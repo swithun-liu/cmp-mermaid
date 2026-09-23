@@ -110,6 +110,7 @@ private enum class DebugScreen {
     Block,
     EventModeling,
     Agentflow,
+    Usecase,
     Playground,
     LoadTest,
 }
@@ -307,6 +308,12 @@ private val destinations = listOf(
         DebugScreen.Agentflow,
         agentflowDiagramDocsSpec,
         "Agent workflows with typed nodes, nested flows, and connectors",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Usecase,
+        usecaseDiagramDocsSpec,
+        "Actors, use cases, boundaries, UML relationships, notes, and structured data",
         DiagramStability.Beta,
     ),
 )

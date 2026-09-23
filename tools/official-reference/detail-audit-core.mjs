@@ -235,9 +235,15 @@ function analyzeManifest(manifest, thresholds, findings, renderer) {
 
 function validateExpectedText(analysis, expectedText, findings) {
   const normalizedExpected = normalizeText(expectedText);
-  const found = analysis.texts.some((element) =>
-    element.normalizedText.includes(normalizedExpected)
-  );
+  const semanticTexts = [
+    analysis.manifest?.title,
+    analysis.manifest?.accessibilityTitle,
+    analysis.manifest?.accessibilityDescription,
+    ...analysis.texts.map((element) => element.normalizedText),
+  ]
+    .filter((text) => typeof text === 'string')
+    .map(normalizeText);
+  const found = semanticTexts.some((text) => text.includes(normalizedExpected));
   if (!found) {
     findings.push({
       severity: 'error',
@@ -565,7 +571,7 @@ function markerVisibilityProfiles(analysis) {
           .map((candidate) => ({
             order: candidate.order,
             id: candidate.id ?? null,
-            depth: pointInsetDepth(point, candidate.normalizedBounds),
+            depth: pointInsetDepth(point, candidate),
           }))
           .filter(({ depth }) => depth > 0)
           .sort((left, right) => right.depth - left.depth);
@@ -589,7 +595,8 @@ function isOpaqueMarkerOccluder(element) {
   return (element.fill?.a ?? 0) >= 230;
 }
 
-function pointInsetDepth(point, bounds) {
+function pointInsetDepth(point, element) {
+  const bounds = element.normalizedBounds;
   const right = bounds.x + bounds.width;
   const bottom = bounds.y + bounds.height;
   if (
@@ -599,6 +606,20 @@ function pointInsetDepth(point, bounds) {
     point.y >= bottom
   ) {
     return 0;
+  }
+  if (String(element.role).toLowerCase() === 'ellipse') {
+    const radiusX = bounds.width / 2;
+    const radiusY = bounds.height / 2;
+    const deltaX = point.x - (bounds.x + radiusX);
+    const deltaY = point.y - (bounds.y + radiusY);
+    const radialDistance = Math.hypot(deltaX / radiusX, deltaY / radiusY);
+    if (radialDistance >= 1) return 0;
+    if (radialDistance === 0) return Math.min(radiusX, radiusY);
+    const boundaryScale = 1 / radialDistance;
+    return Math.hypot(
+      deltaX * boundaryScale - deltaX,
+      deltaY * boundaryScale - deltaY,
+    );
   }
   return Math.min(
     point.x - bounds.x,

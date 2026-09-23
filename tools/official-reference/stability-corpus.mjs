@@ -4365,4 +4365,132 @@ swimlane-beta LR
   class approve active;
 `,
   },
+  {
+    id: 'rc_usecase_account_recovery',
+    kind: 'usecase',
+    title: 'Account recovery',
+    scenario: 'Customers and support staff interact with a package boundary through recovery use cases.',
+    layout: 'dagre',
+    aspectRatio: 1.55,
+    source: String.raw`
+usecase-beta
+direction LR
+actor Customer
+actor Support("Support specialist")@{ type: hollow }
+systemBoundary identity["Identity platform"]@{ type: package }:::system
+  SignIn("Sign in")
+  Reset("Reset password")
+  Unlock[Unlock account]
+end
+note for Reset "Requires a verified recovery channel"
+Customer --> SignIn
+Customer --> Reset
+Support --> Unlock
+Reset ..> : include Unlock
+classDef system stroke:#36558f,stroke-width:2px
+`,
+  },
+  {
+    id: 'rc_usecase_order_operations',
+    kind: 'usecase',
+    title: 'Order operations',
+    scenario: 'Business actors, stereotypes, and rectangular reviews model an order administration workflow.',
+    layout: 'dagre',
+    aspectRatio: 1.65,
+    source: String.raw`
+usecase-beta
+direction TB
+actor Buyer("Business buyer")@{ business: true } <<Customer>>
+actor Clerk("Order clerk")@{ type: hollow, business: true } <<Employee>>
+Create("Create order")@{ business: true } <<Core>>
+Review[Review order] <<Control>>
+Approve("Approve payment")
+Buyer --> Create
+Create --> Review
+Clerk --> Review
+Review --> Approve
+`,
+  },
+  {
+    id: 'rc_usecase_policy_dependencies',
+    kind: 'usecase',
+    title: 'Policy dependencies',
+    scenario: 'Association markers, include, extend, and same-kind generalization document policy evaluation.',
+    layout: 'dagre',
+    aspectRatio: 1.7,
+    source: String.raw`
+usecase-beta
+direction LR
+actor Operator
+actor Administrator
+Evaluate("Evaluate policy")
+Authenticate("Authenticate request")
+Override("Override decision")
+Audit[Record audit]
+Administrator --|> Operator
+Operator -- "submits request" --> Evaluate
+Evaluate ..> : include Authenticate
+Override ..> : extend Evaluate
+Override --|> Evaluate
+Evaluate --o Audit
+`,
+  },
+  {
+    id: 'rc_usecase_compliance_evidence',
+    kind: 'usecase',
+    title: 'Compliance evidence review',
+    scenario: 'A styled use case, note, animated edge, and JSON table present compliance evidence.',
+    layout: 'dagre',
+    aspectRatio: 1.5,
+    source: String.raw`
+usecase-beta
+actor Auditor:::external
+Collect("Collect evidence")
+Inspect[Inspect evidence]:::critical
+json Evidence@{
+  "control": "AC-2",
+  "status": "ready",
+  "owners": ["Security", "Operations"]
+}:::data
+note for Inspect "${'`'}Review the **complete** evidence set${'`'}"
+Auditor starts@-- "opens review" ---> Collect
+Collect --> Inspect
+Inspect --> Evidence
+classDef external,critical stroke-width:3px
+classDef data stroke:#3572a5
+starts@{ animation: slow }
+style Inspect stroke:#c33,stroke-width:4px
+`,
+  },
+  {
+    id: 'rc_usecase_regional_service',
+    kind: 'usecase',
+    title: 'Regional service access',
+    scenario: 'Theme, intrinsic sizing, accessibility metadata, color rotation, entities, and Unicode coexist.',
+    layout: 'dagre',
+    aspectRatio: 1.6,
+    source: String.raw`
+---
+title: Regional service access
+config:
+  theme: redux-color
+  usecase:
+    useMaxWidth: false
+    nodeSpacing: 58
+    rankSpacing: 72
+    diagramPadding: 22
+    colorScheme: rotate
+---
+usecase-beta
+direction LR
+accTitle: Accessible regional service use cases
+accDescr: Teams in Tokyo, Seoul, and Sao Paulo coordinate service access.
+%% Encoded entities and mixed scripts use the shared preprocessing path.
+actor Customer("東京 &amp; customer")
+Request("서울 access request")
+Approve["São Paulo approval"]
+Customer --> Request
+Request --> Approve
+`,
+  },
 ];

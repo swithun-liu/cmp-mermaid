@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T15:35:50.628Z",
+  "generatedAt": "2026-09-23T03:08:42.372Z",
   "inputDirectory": "captures/local/treeview-viewport-full",
   "corpusSource": "production",
   "theme": null,
-  "caseCount": 397,
+  "caseCount": 415,
   "thresholds": {
     "minimumInkPixels": 100,
     "minimumContentSize": 20,
@@ -23607,6 +23607,1068 @@
       "widthRatio": 1.055045871559633,
       "heightRatio": 1.0482758620689656,
       "inkRatio": 0.9418128548551464
+    },
+    {
+      "id": "rc_usecase_account_recovery",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 215365,
+        "inkRatio": 0.26588271604938274,
+        "contentBounds": {
+          "x": 32,
+          "y": 195,
+          "width": 836,
+          "height": 529
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 218303,
+        "inkRatio": 0.2695098765432099,
+        "contentBounds": {
+          "x": 53,
+          "y": 184,
+          "width": 797,
+          "height": 554
+        }
+      },
+      "widthRatio": 1.0489335006273526,
+      "heightRatio": 0.9548736462093863,
+      "inkRatio": 0.9865416416631929
+    },
+    {
+      "id": "rc_usecase_order_operations",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74871,
+        "inkRatio": 0.09243333333333334,
+        "contentBounds": {
+          "x": 210,
+          "y": 50,
+          "width": 464,
+          "height": 816
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 63414,
+        "inkRatio": 0.0782888888888889,
+        "contentBounds": {
+          "x": 233,
+          "y": 74,
+          "width": 418,
+          "height": 767
+        }
+      },
+      "widthRatio": 1.1100478468899522,
+      "heightRatio": 1.0638852672750978,
+      "inkRatio": 1.1806698836219132
+    },
+    {
+      "id": "rc_usecase_policy_dependencies",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36442,
+        "inkRatio": 0.044990123456790126,
+        "contentBounds": {
+          "x": 36,
+          "y": 348,
+          "width": 838,
+          "height": 214
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 34297,
+        "inkRatio": 0.04234197530864198,
+        "contentBounds": {
+          "x": 56,
+          "y": 349,
+          "width": 799,
+          "height": 212
+        }
+      },
+      "widthRatio": 1.048811013767209,
+      "heightRatio": 1.009433962264151,
+      "inkRatio": 1.0625419132868765
+    },
+    {
+      "id": "rc_usecase_compliance_evidence",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 57935,
+        "inkRatio": 0.0715246913580247,
+        "contentBounds": {
+          "x": 42,
+          "y": 343,
+          "width": 832,
+          "height": 225
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 60331,
+        "inkRatio": 0.07448271604938271,
+        "contentBounds": {
+          "x": 63,
+          "y": 345,
+          "width": 794,
+          "height": 225
+        }
+      },
+      "widthRatio": 1.0478589420654911,
+      "heightRatio": 1,
+      "inkRatio": 0.9602857569077258
+    },
+    {
+      "id": "rc_usecase_regional_service",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 10098,
+        "inkRatio": 0.012466666666666666,
+        "contentBounds": {
+          "x": 84,
+          "y": 366,
+          "width": 783,
+          "height": 163
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 9354,
+        "inkRatio": 0.011548148148148148,
+        "contentBounds": {
+          "x": 102,
+          "y": 369,
+          "width": 744,
+          "height": 154
+        }
+      },
+      "widthRatio": 1.0524193548387097,
+      "heightRatio": 1.0584415584415585,
+      "inkRatio": 1.079538165490699
+    },
+    {
+      "id": "prod_usecase_account_entry",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 113406,
+        "inkRatio": 0.1400074074074074,
+        "contentBounds": {
+          "x": 86,
+          "y": 255,
+          "width": 759,
+          "height": 397
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 98972,
+        "inkRatio": 0.12218765432098766,
+        "contentBounds": {
+          "x": 120,
+          "y": 264,
+          "width": 689,
+          "height": 382
+        }
+      },
+      "widthRatio": 1.1015965166908563,
+      "heightRatio": 1.0392670157068062,
+      "inkRatio": 1.1458392272561937
+    },
+    {
+      "id": "prod_usecase_actor_catalog",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 26388,
+        "inkRatio": 0.032577777777777775,
+        "contentBounds": {
+          "x": 269,
+          "y": 37,
+          "width": 374,
+          "height": 824
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 23205,
+        "inkRatio": 0.02864814814814815,
+        "contentBounds": {
+          "x": 286,
+          "y": 57,
+          "width": 339,
+          "height": 782
+        }
+      },
+      "widthRatio": 1.103244837758112,
+      "heightRatio": 1.0537084398976981,
+      "inkRatio": 1.1371687136393018
+    },
+    {
+      "id": "prod_usecase_business_roles",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 55632,
+        "inkRatio": 0.06868148148148148,
+        "contentBounds": {
+          "x": 54,
+          "y": 215,
+          "width": 810,
+          "height": 463
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53942,
+        "inkRatio": 0.06659506172839506,
+        "contentBounds": {
+          "x": 79,
+          "y": 213,
+          "width": 764,
+          "height": 465
+        }
+      },
+      "widthRatio": 1.0602094240837696,
+      "heightRatio": 0.9956989247311828,
+      "inkRatio": 1.0313299469800896
+    },
+    {
+      "id": "prod_usecase_service_boundaries",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 272145,
+        "inkRatio": 0.3359814814814815,
+        "contentBounds": {
+          "x": 34,
+          "y": 182,
+          "width": 832,
+          "height": 536
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 260003,
+        "inkRatio": 0.32099135802469136,
+        "contentBounds": {
+          "x": 55,
+          "y": 186,
+          "width": 793,
+          "height": 533
+        }
+      },
+      "widthRatio": 1.0491803278688525,
+      "heightRatio": 1.0056285178236397,
+      "inkRatio": 1.0466994611600635
+    },
+    {
+      "id": "prod_usecase_association_matrix",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 28213,
+        "inkRatio": 0.03483086419753086,
+        "contentBounds": {
+          "x": 48,
+          "y": 382,
+          "width": 812,
+          "height": 146
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 26562,
+        "inkRatio": 0.032792592592592595,
+        "contentBounds": {
+          "x": 67,
+          "y": 381,
+          "width": 773,
+          "height": 145
+        }
+      },
+      "widthRatio": 1.0504527813712807,
+      "heightRatio": 1.006896551724138,
+      "inkRatio": 1.0621564641216774
+    },
+    {
+      "id": "prod_usecase_dependency_semantics",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 45107,
+        "inkRatio": 0.055687654320987656,
+        "contentBounds": {
+          "x": 32,
+          "y": 319,
+          "width": 837,
+          "height": 275
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 40145,
+        "inkRatio": 0.049561728395061726,
+        "contentBounds": {
+          "x": 53,
+          "y": 322,
+          "width": 794,
+          "height": 268
+        }
+      },
+      "widthRatio": 1.0541561712846348,
+      "heightRatio": 1.0261194029850746,
+      "inkRatio": 1.1236019429567818
+    },
+    {
+      "id": "prod_usecase_edge_metadata",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 30637,
+        "inkRatio": 0.03782345679012346,
+        "contentBounds": {
+          "x": 45,
+          "y": 387,
+          "width": 825,
+          "height": 121
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 27072,
+        "inkRatio": 0.03342222222222222,
+        "contentBounds": {
+          "x": 67,
+          "y": 389,
+          "width": 780,
+          "height": 115
+        }
+      },
+      "widthRatio": 1.0576923076923077,
+      "heightRatio": 1.0521739130434782,
+      "inkRatio": 1.1316858747044918
+    },
+    {
+      "id": "prod_usecase_markdown_notes",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 86614,
+        "inkRatio": 0.10693086419753087,
+        "contentBounds": {
+          "x": 45,
+          "y": 241,
+          "width": 812,
+          "height": 439
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 78444,
+        "inkRatio": 0.09684444444444444,
+        "contentBounds": {
+          "x": 72,
+          "y": 246,
+          "width": 755,
+          "height": 434
+        }
+      },
+      "widthRatio": 1.0754966887417219,
+      "heightRatio": 1.0115207373271888,
+      "inkRatio": 1.1041507317321912
+    },
+    {
+      "id": "prod_usecase_payload_table",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 182916,
+        "inkRatio": 0.22582222222222223,
+        "contentBounds": {
+          "x": 47,
+          "y": 254,
+          "width": 809,
+          "height": 397
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 191413,
+        "inkRatio": 0.23631234567901235,
+        "contentBounds": {
+          "x": 74,
+          "y": 230,
+          "width": 759,
+          "height": 448
+        }
+      },
+      "widthRatio": 1.0658761528326746,
+      "heightRatio": 0.8861607142857143,
+      "inkRatio": 0.9556090756636174
+    },
+    {
+      "id": "prod_usecase_semantic_styles",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 73081,
+        "inkRatio": 0.09022345679012346,
+        "contentBounds": {
+          "x": 53,
+          "y": 364,
+          "width": 812,
+          "height": 172
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 68555,
+        "inkRatio": 0.0846358024691358,
+        "contentBounds": {
+          "x": 74,
+          "y": 371,
+          "width": 772,
+          "height": 163
+        }
+      },
+      "widthRatio": 1.0518134715025906,
+      "heightRatio": 1.0552147239263803,
+      "inkRatio": 1.0660199839544893
+    },
+    {
+      "id": "prod_usecase_responsive_config",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 52699,
+        "inkRatio": 0.06506049382716049,
+        "contentBounds": {
+          "x": 82,
+          "y": 336,
+          "width": 761,
+          "height": 217
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 44837,
+        "inkRatio": 0.05535432098765432,
+        "contentBounds": {
+          "x": 113,
+          "y": 340,
+          "width": 698,
+          "height": 205
+        }
+      },
+      "widthRatio": 1.0902578796561604,
+      "heightRatio": 1.0585365853658537,
+      "inkRatio": 1.1753462542096929
+    },
+    {
+      "id": "prod_usecase_intrinsic_palette",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 15012,
+        "inkRatio": 0.018533333333333332,
+        "contentBounds": {
+          "x": 55,
+          "y": 260,
+          "width": 811,
+          "height": 374
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 11642,
+        "inkRatio": 0.01437283950617284,
+        "contentBounds": {
+          "x": 81,
+          "y": 263,
+          "width": 756,
+          "height": 364
+        }
+      },
+      "widthRatio": 1.0727513227513228,
+      "heightRatio": 1.0274725274725274,
+      "inkRatio": 1.2894691633739905
+    },
+    {
+      "id": "prod_usecase_accessible_regions",
+      "kind": "usecase",
+      "native": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36482,
+        "inkRatio": 0.04503950617283951,
+        "contentBounds": {
+          "x": 80,
+          "y": 360,
+          "width": 786,
+          "height": 173
+        }
+      },
+      "official": {
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 33842,
+        "inkRatio": 0.041780246913580246,
+        "contentBounds": {
+          "x": 100,
+          "y": 363,
+          "width": 745,
+          "height": 166
+        }
+      },
+      "widthRatio": 1.0550335570469798,
+      "heightRatio": 1.0421686746987953,
+      "inkRatio": 1.0780095739022517
     }
   ]
 }

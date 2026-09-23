@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 7,680 source cases and
-15,360 screenshots from the large-scale
+This index contains 7,936 source cases and
+15,872 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,15 +13,17 @@ Each type combines at least 13 complex structural seeds with visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are
 not presented as 256 unrelated topologies.
 
-All 30 implemented families have completed the replacement detail gate and
+All 31 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`7,680/7,680` pairs: `6,874 automatic pass / 806 manually reviewed /
-0 unresolved` across 480 contact sheets. Block contributes three
+`7,936/7,936` pairs: `6,946 automatic pass / 990 manually reviewed /
+0 unresolved` across 496 contact sheets. Block contributes three
 paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
 acceptances caused by the documented title/payload `text-segmentation`
 adaptation; Swimlanes contributes 60 text-position reviews along semantically
-equivalent orthogonal routes. Architecture, C4, Railroad, and TreeView each
-contribute 256 automatic passes.
+equivalent orthogonal routes. Use Case contributes 72 automatic passes and
+184 manual acceptances for element-count and text-segmentation representation
+differences. Architecture, C4, Railroad, and TreeView each contribute 256
+automatic passes.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -273,6 +275,52 @@ the sheets. All 16 pages below were manually reviewed.
 ![TreeView visual parity page 15](treeview-visual-parity-15.jpg)
 
 ![TreeView visual parity page 16](treeview-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Use Case - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `72 pass / 184 review / 0 fail`. The 184 reviews
+contain 155 element-count and 29 text-segmentation representation differences;
+all preserve complete labels, actor/use-case semantics, boundaries, notes,
+tables, markers, styles, colors, clipping, and paint order. Geometry ratios:
+width `1.043-1.127`, height `0.927-1.084`, foreground ink `0.942-1.274`.
+Raw [detail](usecase-visual-parity-detail.json) and
+[geometry](usecase-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![Use Case visual parity page 01](usecase-visual-parity-01.jpg)
+
+![Use Case visual parity page 02](usecase-visual-parity-02.jpg)
+
+![Use Case visual parity page 03](usecase-visual-parity-03.jpg)
+
+![Use Case visual parity page 04](usecase-visual-parity-04.jpg)
+
+![Use Case visual parity page 05](usecase-visual-parity-05.jpg)
+
+![Use Case visual parity page 06](usecase-visual-parity-06.jpg)
+
+![Use Case visual parity page 07](usecase-visual-parity-07.jpg)
+
+![Use Case visual parity page 08](usecase-visual-parity-08.jpg)
+
+![Use Case visual parity page 09](usecase-visual-parity-09.jpg)
+
+![Use Case visual parity page 10](usecase-visual-parity-10.jpg)
+
+![Use Case visual parity page 11](usecase-visual-parity-11.jpg)
+
+![Use Case visual parity page 12](usecase-visual-parity-12.jpg)
+
+![Use Case visual parity page 13](usecase-visual-parity-13.jpg)
+
+![Use Case visual parity page 14](usecase-visual-parity-14.jpg)
+
+![Use Case visual parity page 15](usecase-visual-parity-15.jpg)
+
+![Use Case visual parity page 16](usecase-visual-parity-16.jpg)
 
 </details>
 
