@@ -308,9 +308,11 @@ tools/release/verify-ios-xcframework.sh
 
 ### 自动发布
 
-推送 `v*` tag 后，现代 KMP、iOS XCFramework 与 Kotlin `1.7.21` Android
-三条构建任务会并行执行。只有三路签名产物汇合并通过完整校验后，流水线才会写入
-公开制品仓库。
+Quality Gate 只构建一次 iOS XCFramework，并在完整校验后连同精确 source commit
+保存。推送 `v*` tag 后，现代 KMP 与 Kotlin `1.7.21` Android 制品会并行构建，
+iOS 则只复用该不可变 tag commit 对应的、整个 `main` push Quality Gate
+成功后保留的已验证制品。三路产物汇合后仍会再次执行完整发布校验，随后流水线
+才会写入公开制品仓库。
 
 发布中断时会保留 prerelease 和 14 天有效的已验证 workflow artifact。可以直接
 重跑失败任务，也可以在 `Release` workflow 中手动指定同一个不可变 tag 恢复发布。

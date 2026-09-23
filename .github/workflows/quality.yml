@@ -10,8 +10,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: quality-${{ github.ref }}
-  cancel-in-progress: true
+  group: quality-${{ github.event_name == 'push' && github.sha || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'push' }}
 
 jobs:
   multiplatform:
@@ -165,9 +165,22 @@ jobs:
             assembleRelease \
             --console=plain
 
-  ios-binary:
+  ios-frameworks:
     runs-on: macos-14
-    timeout-minutes: 60
+    timeout-minutes: 30
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - target: IosArm64
+            directory: iosArm64
+            architecture: arm64
+          - target: IosSimulatorArm64
+            directory: iosSimulatorArm64
+            architecture: arm64
+          - target: IosX64
+            directory: iosX64
+            architecture: x86_64
 
     steps:
       - name: Checkout
@@ -182,14 +195,112 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
 
-      - name: Build static XCFramework
+      - name: Link ${{ matrix.directory }} framework
         run: |
           ./gradlew \
+            :mermaid-compose:linkPodReleaseFramework${{ matrix.target }} \
+            --console=plain
+
+      - name: Verify and package ${{ matrix.directory }} framework
+        shell: bash
+        env:
+          ARCHITECTURE: ${{ matrix.architecture }}
+          TARGET_DIRECTORY: ${{ matrix.directory }}
+        run: |
+          set -euo pipefail
+          framework="mermaid-compose/build/bin/$TARGET_DIRECTORY/podReleaseFramework/CMPMermaid.framework"
+          test -f "$framework/CMPMermaid"
+          test -f "$framework/Headers/CMPMermaid.h"
+          test -f "$framework/Modules/module.modulemap"
+          test -f "$framework/Info.plist"
+          test "$(lipo -archs "$framework/CMPMermaid")" = "$ARCHITECTURE"
+
+          archive="$RUNNER_TEMP/verified-ios-framework-$TARGET_DIRECTORY.tar"
+          COPYFILE_DISABLE=1 tar -cf "$archive" "$framework"
+          (
+            cd "$RUNNER_TEMP"
+            shasum -a 256 "$(basename "$archive")" \
+              > "$(basename "$archive").sha256"
+          )
+
+      - name: Preserve ${{ matrix.directory }} framework
+        uses: actions/upload-artifact@v7
+        with:
+          name: verified-ios-framework-${{ matrix.directory }}
+          path: |
+            ${{ runner.temp }}/verified-ios-framework-${{ matrix.directory }}.tar
+            ${{ runner.temp }}/verified-ios-framework-${{ matrix.directory }}.tar.sha256
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: true
+          retention-days: 1
+
+  ios-binary:
+    needs: ios-frameworks
+    runs-on: macos-14
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Download verified architecture frameworks
+        uses: actions/download-artifact@v8
+        with:
+          pattern: verified-ios-framework-*
+          path: build/verified-ios-frameworks
+          merge-multiple: true
+
+      - name: Assemble static XCFramework
+        shell: bash
+        run: |
+          set -euo pipefail
+          for archive in build/verified-ios-frameworks/*.tar; do
+            (
+              cd "$(dirname "$archive")"
+              shasum -a 256 -c "$(basename "$archive").sha256"
+            )
+            tar -xf "$archive" -C "$GITHUB_WORKSPACE"
+          done
+          test -d mermaid-compose/build/bin/iosArm64/podReleaseFramework/CMPMermaid.framework
+          test -d mermaid-compose/build/bin/iosSimulatorArm64/podReleaseFramework/CMPMermaid.framework
+          test -d mermaid-compose/build/bin/iosX64/podReleaseFramework/CMPMermaid.framework
+
+          ./gradlew \
             :mermaid-compose:podPublishReleaseXCFramework \
+            -x :mermaid-compose:linkPodReleaseFrameworkIosArm64 \
+            -x :mermaid-compose:linkPodReleaseFrameworkIosSimulatorArm64 \
+            -x :mermaid-compose:linkPodReleaseFrameworkIosX64 \
             --console=plain
 
       - name: Verify architectures, API, and resources
         run: tools/release/verify-ios-xcframework.sh
+
+      - name: Record verified artifact provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' "$GITHUB_SHA" \
+            > mermaid-compose/build/cocoapods/publish/release/quality-source-commit.txt
+
+      - name: Preserve verified iOS publication
+        uses: actions/upload-artifact@v7
+        with:
+          name: verified-ios-publication
+          path: mermaid-compose/build/cocoapods/publish/release
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: true
+          retention-days: 14
 
   visual-regression:
     runs-on: ubuntu-latest
@@ -259,7 +370,7 @@ jobs:
             >/tmp/cmp-mermaid-web.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
-          for attempt in {1..30}; do
+          for _ in {1..30}; do
             if curl --fail --silent http://127.0.0.1:8093/ >/dev/null; then
               break
             fi

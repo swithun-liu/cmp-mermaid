@@ -347,9 +347,12 @@ tools/release/verify-ios-xcframework.sh
 
 ### Release automation
 
-Pushing a `v*` tag runs the modern KMP, iOS XCFramework, and Kotlin `1.7.21`
-Android builds in parallel. Their signed outputs are joined and verified before
-any public registry is updated.
+The Quality Gate builds and verifies the iOS XCFramework once and preserves it
+with its exact source commit. Pushing a `v*` tag then builds the modern KMP and
+Kotlin `1.7.21` Android artifacts in parallel while reusing only the successful
+verified iOS artifact from the successful `main` push Quality Gate for that
+immutable tag commit. All outputs are joined and verified again before any
+public registry is updated.
 
 An interrupted publication keeps its prerelease and verified workflow artifact
 for 14 days. Re-run the failed jobs, or manually run the `Release` workflow
