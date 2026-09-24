@@ -186,16 +186,17 @@ private fun StringBuilder.appendText(text: SceneText) {
 internal fun SceneText.auditBounds(): SceneRect {
     // MermaidDiagram.drawSceneText applies the same 4px horizontal inset.
     // Report the painted glyph box rather than the SceneText layout box.
-    val paintedBounds = when (horizontalAlignment) {
-        SceneTextAlignment.Start,
-        SceneTextAlignment.End,
-        -> SceneRect(
-            left = bounds.left + 4f,
+    val paintedBounds = when {
+        horizontalAlignment == SceneTextAlignment.Center -> bounds
+        bounds.width > TEXT_HORIZONTAL_INSET * 2f -> SceneRect(
+            left = bounds.left + TEXT_HORIZONTAL_INSET,
             top = bounds.top,
-            right = bounds.right - 4f,
+            right = bounds.right - TEXT_HORIZONTAL_INSET,
             bottom = bounds.bottom,
         )
-        SceneTextAlignment.Center -> bounds
+        horizontalAlignment == SceneTextAlignment.Start ->
+            bounds.translateX(TEXT_HORIZONTAL_INSET)
+        else -> bounds.translateX(-TEXT_HORIZONTAL_INSET)
     }
     if (rotationDegrees == 0f) return paintedBounds
     val pivot = rotationPivot ?: bounds.center
@@ -222,6 +223,13 @@ internal fun SceneText.auditBounds(): SceneRect {
         bottom = corners.maxOf(ScenePoint::y),
     )
 }
+
+private fun SceneRect.translateX(offset: Float): SceneRect = SceneRect(
+    left = left + offset,
+    top = top,
+    right = right + offset,
+    bottom = bottom,
+)
 
 private fun StringBuilder.appendAsset(asset: SceneAsset) {
     append(",\"type\":\"asset\",\"role\":")
@@ -441,3 +449,5 @@ private fun StringBuilder.appendJsonString(value: String) {
     }
     append('"')
 }
+
+private const val TEXT_HORIZONTAL_INSET = 4f

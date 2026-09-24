@@ -27,6 +27,25 @@ class SceneAuditManifestTest {
         assertEquals(bounds, text(bounds, SceneTextAlignment.Center).auditBounds())
     }
 
+    @Test
+    fun preservesNarrowTextWidthWhenApplyingStartAndEndInsets() {
+        val bounds = SceneRect(left = 2f, top = 3f, right = 8f, bottom = 19f)
+        val insetBoundaryBounds = SceneRect(left = 2f, top = 3f, right = 10f, bottom = 19f)
+
+        assertEquals(
+            SceneRect(left = 6f, top = 3f, right = 12f, bottom = 19f),
+            text(bounds, SceneTextAlignment.Start).auditBounds(),
+        )
+        assertEquals(
+            SceneRect(left = -2f, top = 3f, right = 4f, bottom = 19f),
+            text(bounds, SceneTextAlignment.End).auditBounds(),
+        )
+        assertEquals(
+            SceneRect(left = 6f, top = 3f, right = 14f, bottom = 19f),
+            text(insetBoundaryBounds, SceneTextAlignment.Start).auditBounds(),
+        )
+    }
+
     private fun text(
         bounds: SceneRect,
         alignment: SceneTextAlignment,
