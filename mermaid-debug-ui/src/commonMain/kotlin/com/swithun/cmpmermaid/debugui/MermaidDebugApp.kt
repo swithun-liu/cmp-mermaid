@@ -51,6 +51,7 @@ import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidCompatibility
 import com.swithun.cmpmermaid.core.MermaidTheme
 import com.swithun.cmpmermaid.core.MermaidThemePreset
+import com.swithun.cmpmermaid.debugui.generated.invalidSourceCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.productionCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.stabilityCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.visualParityCorpusCases
@@ -377,6 +378,21 @@ private val visualParityAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>>
         }
     }
 
+private val invalidSourceAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
+    invalidSourceCorpusCases.mapNotNull { corpusCase ->
+        destinations.firstOrNull { destination ->
+            destination.spec.id == corpusCase.diagramId
+        }?.let { destination ->
+            destination.spec to DiagramDocsCase(
+                id = corpusCase.id,
+                title = corpusCase.title,
+                category = "Malformed-source safety corpus",
+                source = corpusCase.source,
+                initialAspectRatio = 4f / 3f,
+            )
+        }
+    }
+
 @Composable
 fun MermaidDebugApp(
     options: MermaidDebugLaunchOptions = MermaidDebugLaunchOptions(),
@@ -420,6 +436,8 @@ fun MermaidDebugApp(
             } ?: productionAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId
             } ?: visualParityAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            } ?: invalidSourceAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId
             }
         }
@@ -689,7 +707,9 @@ private fun DiagramAuditScreen(
                         is GMResult.Ok ->
                             "$AUDIT_STATUS_READY_PREFIX${result.value.toAuditManifestJson()}"
                         is GMResult.Err ->
-                            "$AUDIT_STATUS_ERROR_PREFIX${result.error.message}"
+                            "$AUDIT_STATUS_ERROR_PREFIX" +
+                                "${result.error.renderErrorType.name}:" +
+                                result.error.message
                     }
                 },
             )

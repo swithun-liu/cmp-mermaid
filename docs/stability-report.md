@@ -22,15 +22,16 @@ Native-only randomized stress inputs.
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
 | Large-scale visual matrix | 8,448 Native/Official evidence pairs |
+| Malformed-source safety | 33/33 Native `CONTENT_ERROR` results; 33/33 Official error states; 66 screenshots; 0 crashes or timeouts |
 | Native core render results | 441 independent plus 8,448 matrix cases passed, 0 failed |
-| Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus screenshots, 0 render errors |
+| Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 66 malformed-source screenshots |
 | Manual visual review | 528 replacement-gate sheets across all 33 families |
 | Replacement detail audit | 8,448/8,448 matrix pairs accepted: 7,458 pass plus 990 manually reviewed; production 390 pass plus 51 manually reviewed |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | 787 passed, 0 failed |
+| JVM tests | 789 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Runtime load matrix | Web retains the preceding 397-scenario baseline; Android Emulator, iOS Simulator, and Desktop retain the prior 236-scenario baseline |
 | Platform build matrix | Android debug/release, Web production, Desktop distributable, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
@@ -40,6 +41,24 @@ Native-only randomized stress inputs.
 **Current conclusion:** all 33 families pass the Native core, determinism,
 theme, replacement detail, geometry, and manual contact-sheet gates. The
 supported Mermaid `12.0.0` contract is rated **Stable**.
+
+## Malformed-Source Safety Gate
+
+An independent error corpus contains one malformed source for every supported
+diagram family. The same source is sent unchanged to CMP Native and the pinned
+Mermaid.js `12.0.0` renderer. All 33 cases passed:
+
+- CMP Native returned `CONTENT_ERROR` with a non-empty deterministic message;
+- Mermaid.js displayed a non-empty parse or render error;
+- all 66 error-state screenshots were captured without a crash or timeout;
+- a malformed render did not poison the next valid Native render.
+
+**[Open the 3 paged Native/Official malformed-source comparison images](assets/invalid-source-report/invalid-source-evidence.md).**
+The machine-readable
+[manifest](assets/invalid-source-report/invalid-source-manifest.json) records
+the source hash, both screenshot hashes, capture sizes, Native error type, and
+both error messages. This gate is intentionally separate from the 8,448 legal
+source visual matrix and does not change its counts.
 
 ## Completed Replacement Gate
 
@@ -1074,8 +1093,9 @@ The repository-level
 [`Quality Gate`](../.github/workflows/quality.yml) repeats the JVM tests,
 cross-platform builds, generated-corpus and capability-coverage checks, source
 and credential scan, production runtime-isolation check, debug/release APK
-permission audit, independent-corpus capture, visual geometry gate, and Web load test
-on every push to `main` and every pull request. The
+permission audit, independent-corpus capture, malformed-source error capture,
+visual geometry gate, and Web load test on every push to `main` and every pull
+request. The
 [`Full Visual Parity`](../.github/workflows/full-visual-parity.yml) workflow
 runs the 8,448-pair matrix weekly and on demand in 33 parallel diagram jobs.
 
@@ -1115,9 +1135,9 @@ errors: 0
 The current source-level JVM suite also passes:
 
 ```text
-mermaid-core: 756 tests
+mermaid-core: 758 tests
 mermaid-compose: 31 tests
-total: 787 tests
+total: 789 tests
 failures: 0
 errors: 0
 ```
@@ -1130,6 +1150,11 @@ SceneGraphs, and non-deterministic replay. The 274 conformance cases also
 require selected semantic text to survive parsing and layout. The test renders
 a representative of all 33 implemented diagram types with each of the 11 built-in
 themes.
+
+[`InvalidSourceCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/InvalidSourceCorpusTest.kt)
+requires all 33 malformed sources to return deterministic, non-empty
+`CONTENT_ERROR` results and verifies that every family can render a valid
+source immediately after its malformed case.
 
 `ProductionCorpusTest` additionally renders all 8,448 visual-matrix sources,
 checks the expected visible text, and rejects empty, invalid, or non-finite
@@ -1227,6 +1252,7 @@ com.swithun.cmpmermaid.sample.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ```bash
 cd tools/official-reference
 npm run generate:stability-corpus
+npm run generate:invalid-source-corpus
 
 cd ../..
 JAVA_HOME=$(/usr/libexec/java_home -v 17) \
@@ -1252,6 +1278,13 @@ VIEWPORT_WIDTH=1200 \
 VIEWPORT_HEIGHT=900 \
 npm run capture:web-audit
 
+AUDIT_SOURCE=invalid-source \
+OUTPUT_DIR=captures/local/invalid-source \
+BASE_URL=http://127.0.0.1:8093/ \
+VIEWPORT_WIDTH=1200 \
+VIEWPORT_HEIGHT=900 \
+npm run capture:web-audit
+
 CORPUS_SOURCE=production \
 INPUT_DIR=captures/local/production-corpus \
 OUTPUT_FILE=captures/local/production-corpus/geometry-report.json \
@@ -1265,6 +1298,10 @@ CORPUS_SOURCE=production \
 INPUT_DIR=captures/local/production-corpus \
 OUTPUT_DIR=captures/local/production-contact-sheets \
 npm run generate:stability-contact-sheets
+
+INPUT_DIR=captures/local/invalid-source \
+OUTPUT_DIR=docs/assets/invalid-source-report \
+npm run generate:invalid-source-contact-sheets
 
 AUDIT_SOURCE=visual-parity \
 OUTPUT_DIR=captures/local/visual-parity \
@@ -1296,6 +1333,9 @@ appear, if Mermaid reports an error, if an Official Gantt viewBox collapses, or
 if a screenshot is below the minimum size. The geometry gate rejects blank
 images and severe width, height, or foreground-density differences. The
 contact-sheet generator verifies every expected pair and records its SHA-256.
+For `AUDIT_SOURCE=invalid-source`, the expectation is inverted: capture fails
+if either renderer succeeds, if Native does not return `CONTENT_ERROR`, or if
+either error message is empty.
 Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 33 diagram IDs to reproduce
 a single 256-case partition instead of the complete matrix.
 

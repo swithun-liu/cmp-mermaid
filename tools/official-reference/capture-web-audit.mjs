@@ -9,6 +9,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import { cases as flowchartCases } from './cases.mjs';
+import { cases as invalidSourceCases } from './invalid-source-corpus.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
@@ -78,6 +79,7 @@ const supportedAuditSources = [
   'stability',
   'production',
   'visual-parity',
+  'invalid-source',
 ];
 const supportedThemes = [
   'default',
@@ -115,6 +117,7 @@ const corpusCases = {
   stability: stabilityCases,
   production: productionCases,
   'visual-parity': visualParityCases,
+  'invalid-source': invalidSourceCases,
 }[auditSource] ?? [];
 const sourceCases = supportedAuditSources.slice(1).includes(auditSource)
   ? corpusCases.filter(({ kind }) => auditKind === 'all' || auditKind === kind)
@@ -178,10 +181,11 @@ try {
         waitUntil: 'domcontentloaded',
         timeout: 60_000,
       });
-      let manifest;
+      let manifest = null;
       if (preview.toLowerCase() === 'official') {
-        await waitForOfficialSvg(page, auditCase);
+        manifest = await waitForOfficialSvg(page, auditCase);
         if (
+          auditCase.expectedOutcome !== 'error' &&
           supportedAuditSources.slice(1).includes(auditSource) &&
           auditCase.kind === 'gantt'
         ) {
@@ -193,10 +197,12 @@ try {
       await page.evaluate(() => new Promise((resolveFrame) => {
         requestAnimationFrame(() => requestAnimationFrame(resolveFrame));
       }));
-      if (preview.toLowerCase() === 'official') {
+      if (preview.toLowerCase() === 'official' && manifest === null) {
         manifest = await extractOfficialManifest(page, auditCase.id);
       }
-      assertExpectedTexts(auditCase, preview, manifest);
+      if (auditCase.expectedOutcome !== 'error') {
+        assertExpectedTexts(auditCase, preview, manifest);
+      }
       writeFileSync(
         manifestTarget,
         `${JSON.stringify(manifest, null, 2)}\n`,
@@ -260,8 +266,11 @@ async function waitForNativeCanvas(page, auditCase) {
   const outcome = await outcomeHandle.jsonValue();
   await outcomeHandle.dispose();
   if (outcome.status === 'error') {
+    return expectedErrorManifest(auditCase, 'native', outcome.message);
+  }
+  if (auditCase.expectedOutcome === 'error') {
     throw new Error(
-      `${auditCase.id}/Native rendering failed: ${outcome.message}`,
+      `${auditCase.id}/Native unexpectedly rendered malformed source`,
     );
   }
   let manifest;
@@ -327,10 +336,44 @@ async function waitForOfficialSvg(page, auditCase) {
   const outcome = await outcomeHandle.jsonValue();
   await outcomeHandle.dispose();
   if (outcome.status === 'error') {
+    return expectedErrorManifest(auditCase, 'official', outcome.message);
+  }
+  if (auditCase.expectedOutcome === 'error') {
     throw new Error(
-      `${auditCase.id}/Official Mermaid.js rendering failed: ${outcome.message}`,
+      `${auditCase.id}/Official Mermaid.js unexpectedly rendered malformed source`,
     );
   }
+  return null;
+}
+
+function expectedErrorManifest(auditCase, renderer, payload) {
+  if (auditCase.expectedOutcome !== 'error') {
+    throw new Error(
+      `${auditCase.id}/${renderer} rendering failed: ${payload}`,
+    );
+  }
+  const separator = renderer === 'native' ? payload.indexOf(':') : -1;
+  const errorType = separator > 0 ? payload.slice(0, separator) : null;
+  const message = (separator > 0 ? payload.slice(separator + 1) : payload).trim();
+  if (message.length === 0) {
+    throw new Error(`${auditCase.id}/${renderer} returned an empty error`);
+  }
+  if (
+    renderer === 'native' &&
+    errorType !== auditCase.expectedNativeErrorType
+  ) {
+    throw new Error(
+      `${auditCase.id}/Native returned ${errorType ?? 'no error type'}; ` +
+        `expected ${auditCase.expectedNativeErrorType}`,
+    );
+  }
+  return {
+    schemaVersion: 1,
+    renderer,
+    outcome: 'error',
+    ...(errorType === null ? {} : { errorType }),
+    message,
+  };
 }
 
 async function extractOfficialManifest(page, caseId) {

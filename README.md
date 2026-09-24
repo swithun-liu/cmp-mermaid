@@ -61,12 +61,13 @@ geometry gates.
 | Declared capability coverage | 738/738 |
 | Large-scale visual matrix | 8,448 Native/Official pairs |
 | Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus screenshots |
+| Malformed-source safety | 33/33 Native `CONTENT_ERROR` results, 66 Native/Official screenshots, 0 crashes |
 | Matrix detail review | 33 families: 8,448/8,448 accepted; 7,458 automatic passes plus 990 manually accepted reviews |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 787 passed, 0 failed |
+| JVM tests | 789 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Runtime load matrix | Web retains the prior 397-scenario baseline; Android, iOS, and Desktop retain the prior 236-scenario baseline |
 
@@ -75,6 +76,7 @@ geometry gates.
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and the completed 33/33 family gates |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
 | **[All 8,448 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 same-source pairs per page |
+| **[Malformed-source Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 33 family-specific invalid sources, 66 screenshots, and 3 comparison sheets |
 | [Production capability matrix](docs/production-capability-matrix.md) | The 738 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
@@ -206,16 +208,16 @@ The current publication coordinates are:
 
 | Consumer | Artifact |
 | --- | --- |
-| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.6` |
-| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.6` |
-| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.6` |
-| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.6` |
-| iOS binary | `CMPMermaid` CocoaPod `0.1.6` |
+| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.7` |
+| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.7` |
+| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.7` |
+| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.7` |
+| iOS binary | `CMPMermaid` CocoaPod `0.1.7` |
 
 Current Kotlin Multiplatform projects:
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.6")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.7")
 }
 ```
 
@@ -229,7 +231,7 @@ Android projects pinned to Kotlin `1.7.21` use the isolated Android artifact:
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.6",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.7",
     )
 }
 ```
@@ -259,7 +261,7 @@ Kotlin `1.7.21` Android artifact.
 iOS projects can consume the precompiled static XCFramework through CocoaPods:
 
 ```ruby
-pod 'CMPMermaid', '0.1.6'
+pod 'CMPMermaid', '0.1.7'
 ```
 
 The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`

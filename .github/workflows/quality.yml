@@ -37,9 +37,12 @@ jobs:
       - name: Verify generated audit corpora
         run: |
           node tools/official-reference/generate-stability-corpus.mjs
+          node tools/official-reference/generate-invalid-source-corpus.mjs
           git diff --exit-code -- \
             mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/StabilityCorpus.kt \
-            mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/StabilityCorpus.kt
+            mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/StabilityCorpus.kt \
+            mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/InvalidSourceCorpus.kt \
+            mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/InvalidSourceCorpus.kt
 
       - name: Reject credential material
         shell: bash
@@ -382,6 +385,12 @@ jobs:
           VIEWPORT_WIDTH=1200 \
           VIEWPORT_HEIGHT=900 \
           npm run capture:web-audit
+          AUDIT_SOURCE=invalid-source \
+          OUTPUT_DIR=captures/ci/invalid-source \
+          BASE_URL=http://127.0.0.1:8093/ \
+          VIEWPORT_WIDTH=1200 \
+          VIEWPORT_HEIGHT=900 \
+          npm run capture:web-audit
           BASE_URL=http://127.0.0.1:8093/ \
           OUTPUT_DIR=captures/ci/load-test-web \
           npm run test:web-load
@@ -397,6 +406,9 @@ jobs:
           INPUT_DIR=captures/ci/production \
           OUTPUT_DIR=captures/ci/contact-sheets \
           npm run generate:stability-contact-sheets
+          INPUT_DIR=captures/ci/invalid-source \
+          OUTPUT_DIR=captures/ci/invalid-source-evidence \
+          npm run generate:invalid-source-contact-sheets
 
       - name: Enforce detailed Native and Official parity
         working-directory: tools/official-reference
