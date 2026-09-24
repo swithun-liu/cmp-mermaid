@@ -1460,20 +1460,19 @@ internal class UsecaseParser(
 
         val IDENTIFIER = Regex("""[A-Za-z0-9_]+""")
         val DIRECTION = Regex("""direction\s+(TD|TB|BT|LR|RL)""")
-        val ACCESSIBILITY_TITLE = Regex("""accTitle[\t ]*:(.*)""", RegexOption.DOT_MATCHES_ALL)
+        // DOT_MATCHES_ALL is not available to common metadata; [\s\S] preserves multiline matching.
+        val ACCESSIBILITY_TITLE = Regex("""accTitle[\t ]*:([\s\S]*)""")
         val ACCESSIBILITY_DESCRIPTION =
-            Regex("""accDescr[\t ]*:(.*)""", RegexOption.DOT_MATCHES_ALL)
+            Regex("""accDescr[\t ]*:([\s\S]*)""")
         val CLASS_DEF = Regex(
-            """classDef\s+([A-Za-z0-9_]+(?:\s*,\s*[A-Za-z0-9_]+)*)\s+(.+)""",
-            RegexOption.DOT_MATCHES_ALL,
+            """classDef\s+([A-Za-z0-9_]+(?:\s*,\s*[A-Za-z0-9_]+)*)\s+([\s\S]+)""",
         )
         val CLASS_ASSIGNMENT = Regex(
             """class\s+([A-Za-z0-9_]+(?:\s*,\s*[A-Za-z0-9_]+)*)\s+""" +
                 """([A-Za-z0-9_]+(?:\s*,\s*[A-Za-z0-9_]+)*)""",
         )
         val STYLE_ASSIGNMENT = Regex(
-            """style\s+([A-Za-z0-9_]+)\s+(.+)""",
-            RegexOption.DOT_MATCHES_ALL,
+            """style\s+([A-Za-z0-9_]+)\s+([\s\S]+)""",
         )
         val FORBIDDEN_PLANT_UML = setOf(
             "allowmixing",

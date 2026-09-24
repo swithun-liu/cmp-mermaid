@@ -199,16 +199,16 @@ Kotlin Dagre。ELK 名称和 `flowchart-elk` 仍会作为上游输入被识别�
 
 | 使用方 | 制品 |
 | --- | --- |
-| 当前 Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.3` |
-| 当前 Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.3` |
-| Kotlin `1.7.21` Android | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.3` |
-| Kotlin `1.7.21` Android Compose | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.3` |
-| iOS 二进制 | `CMPMermaid` CocoaPod `0.1.3` |
+| 当前 Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.4` |
+| 当前 Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.4` |
+| Kotlin `1.7.21` Android | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.4` |
+| Kotlin `1.7.21` Android Compose | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.4` |
+| iOS 二进制 | `CMPMermaid` CocoaPod `0.1.4` |
 
 当前 Kotlin Multiplatform 项目：
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.3")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.4")
 }
 ```
 
@@ -221,7 +221,7 @@ dependencies {
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.3",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.4",
     )
 }
 ```
@@ -247,7 +247,7 @@ container.addView(diagramView)
 iOS 项目可以通过 CocoaPods 使用预编译的静态 XCFramework：
 
 ```ruby
-pod 'CMPMermaid', '0.1.3'
+pod 'CMPMermaid', '0.1.4'
 ```
 
 二进制向 Swift 暴露
