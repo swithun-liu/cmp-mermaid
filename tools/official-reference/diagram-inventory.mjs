@@ -2,6 +2,7 @@ export const mermaidBaseline = Object.freeze({
   version: '12.0.0',
   sourceCommit: '98a0945418c76238f15df2afaddbba4272656c3b',
   zenUmlVersion: '1.0.0',
+  zenUmlCoreVersion: '3.49.2',
 });
 
 export const internalRegistryIds = Object.freeze(['error', '---', 'info']);
@@ -114,7 +115,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('usecase', 'Use Case', 'usecase.md', ['usecase'], [
     header('usecase-beta', 'usecase'),
-  ]),
+  ], true),
   family('journey', 'User Journey', 'userJourney.md', ['journey'], [
     header('journey', 'journey'),
   ], true),
@@ -123,7 +124,7 @@ export const diagramFamilies = Object.freeze([
   ], true),
   family('wardley', 'Wardley Map', 'wardley.md', ['wardley'], [
     header('wardley-beta', 'wardley'),
-  ]),
+  ], true),
   family('xychart', 'XY Chart', 'xyChart.md', ['xychart'], [
     header('xychart', 'xychart'),
     header('xychart-beta', 'xychart'),
@@ -134,7 +135,7 @@ export const diagramFamilies = Object.freeze([
     documentation: 'zenuml.md',
     registryIds: Object.freeze([]),
     headers: Object.freeze([header('zenuml', null)]),
-    implemented: false,
+    implemented: true,
     officialExternalPlugin: Object.freeze({
       packageName: '@mermaid-js/mermaid-zenuml',
       version: mermaidBaseline.zenUmlVersion,

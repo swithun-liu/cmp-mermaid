@@ -2,8 +2,8 @@
 
 ## Current State
 
-CMP Mermaid implements 31 of the 33 user-visible diagram families documented
-by Mermaid `12.0.0`. The source-controlled inventory is
+CMP Mermaid now implements all 33 user-visible diagram families documented by
+Mermaid `12.0.0`. The source-controlled inventory is
 [`diagram-inventory.mjs`](../tools/official-reference/diagram-inventory.mjs);
 CI verifies it against Mermaid's 39 registered IDs and, when the pinned source
 tree is available, all 33 syntax documents.
@@ -19,15 +19,14 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case |
-| Translation pending | Wardley Map, ZenUML |
+| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, ZenUML |
 
-The current 7,936-pair matrix covers all 31 implemented families with fresh
-replacement evidence. A Git Graph label paint-order defect was visible in the
-original 3,072-pair matrix and was not identified during the earlier review.
-That defect is now corrected and every implemented family has passed the
-replacement gate; no family can use a legacy geometry result alone to satisfy
-the new Stable gate.
+The generated source matrix now contains 8,448 cases across all 33 families,
+and all cases pass the Native SceneGraph, Native/Official geometry, replacement
+detail, and manual contact-sheet gates. A Git Graph label paint-order defect
+was visible in the original 3,072-pair matrix and was not identified during
+the earlier review. That defect is corrected; no family uses a legacy geometry
+result alone to satisfy the Stable gate.
 
 The replacement audit now emits a JSON manifest beside every Native and
 Official PNG. Native manifests preserve actual SceneGraph paint order;
@@ -51,9 +50,9 @@ global label layers reports a `paint-order-occlusion` mismatch for
 Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
-All 31 implemented families have completed the replacement gate. Together they
-have 7,936 accepted same-source pairs:
-`6,946 automatic pass / 990 manually reviewed / 0 unresolved` across 496 reviewed contact
+All 33 families have completed the replacement gate. Together they have 8,448
+accepted same-source pairs:
+`7,458 automatic pass / 990 manually reviewed / 0 unresolved` across 528 reviewed contact
 sheets. The 60 ER reviews are text-position threshold findings, while the 19
 Journey reviews are benign line-segmentation differences for one complete long
 actor label. The four Requirement reviews are benign greedy cross-matches
@@ -74,8 +73,8 @@ occlusion threshold reviews. Ishikawa, Cynefin, and Agentflow each contribute
 manual acceptances for text-position differences along semantically
 equivalent orthogonal routes. Use Case contributes 72 automatic passes and 184
 manual acceptances for element-count and text-segmentation representation
-differences. Architecture, C4, Railroad, and TreeView each contribute 256
-automatic passes.
+differences. Architecture, C4, Railroad, TreeView, Wardley Map, and ZenUML each
+contribute 256 automatic passes.
 All
 reviewed cases preserve expected text, hierarchy, shapes, colors, and edges,
 avoid clipping and paint-order defects, and were accepted by manual side-by-side review.
@@ -123,6 +122,10 @@ TreeView ratios are `1.033-1.141`, `1.006-1.138`, and `0.954-1.229`,
 respectively.
 Use Case ratios are `1.043-1.127`, `0.927-1.084`, and `0.942-1.274`,
 respectively.
+Wardley Map ratios are `0.998-1.015`, `1.019-1.020`, and `0.960-1.104`,
+respectively.
+ZenUML ratios are `1.038-1.089`, `1.031-1.096`, and `0.999-1.347`,
+respectively.
 
 ## Expected Behavior
 
@@ -146,8 +149,9 @@ benefit, but a family is never marked Stable merely because its batch is done.
    Sankey, Packet, Radar, Treemap, Venn.
 2. Shared graph and domain foundations: Agentflow and Event Modeling complete;
    Block, Swimlanes, Architecture, C4, TreeView, and Use Case complete.
-3. Specialized renderers and grammars: Ishikawa and Cynefin complete;
-   Railroad (IR, EBNF, ABNF, PEG) complete; Wardley Map and ZenUML pending.
+3. Specialized renderers and grammars: Ishikawa, Cynefin, Railroad
+   (IR, EBNF, ABNF, PEG), Wardley Map, and ZenUML translations and visual
+   gates complete.
 
 ## Per-Family Stable Gate
 
@@ -174,7 +178,7 @@ Each of the 33 families must pass all of the following:
 
 ## Overall Stable Gate
 
-Overall Mermaid `12.0.0` support reaches Stable only after all 33 family gates
-pass, producing at least 8,448 same-source Native/Official pairs. Until then,
-status must be reported as `implemented`, `translation pending`, or
-`detail re-audit pending`, never as complete Mermaid compatibility.
+Overall Mermaid `12.0.0` support is **Stable**: all 33 family gates pass and
+the report contains 8,448 same-source Native/Official pairs. Future changes
+must keep every family gate passing; a regression returns the affected family
+and the overall rating to a pending state.

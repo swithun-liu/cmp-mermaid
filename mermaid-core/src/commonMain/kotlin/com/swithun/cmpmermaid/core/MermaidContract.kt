@@ -265,6 +265,22 @@ data class MermaidCynefinOptions(
     val useMaxWidth: Boolean = true,
 )
 
+/**
+ * Mermaid.js 12.0.0:
+ * packages/mermaid/src/config.type.ts -> WardleyDiagramConfig.
+ */
+data class MermaidWardleyOptions(
+    val width: Float = 900f,
+    val height: Float = 600f,
+    val padding: Float = 48f,
+    val nodeRadius: Float = 6f,
+    val nodeLabelOffset: Float = 8f,
+    val axisFontSize: Float = 12f,
+    val labelFontSize: Float = 10f,
+    val showGrid: Boolean = false,
+    val useMaxWidth: Boolean = true,
+)
+
 data class MermaidEventModelingOptions(
     val padding: Float = 30f,
     val rowHeight: Float = 32f,
@@ -536,6 +552,7 @@ data class MermaidRenderOptions(
     val sankey: MermaidSankeyOptions = MermaidSankeyOptions(),
     val ishikawa: MermaidIshikawaOptions = MermaidIshikawaOptions(),
     val cynefin: MermaidCynefinOptions = MermaidCynefinOptions(),
+    val wardley: MermaidWardleyOptions = MermaidWardleyOptions(),
     val eventModeling: MermaidEventModelingOptions = MermaidEventModelingOptions(),
     val block: MermaidBlockOptions = MermaidBlockOptions(),
     val architecture: MermaidArchitectureOptions = MermaidArchitectureOptions(),

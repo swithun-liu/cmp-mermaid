@@ -30,7 +30,9 @@ import com.swithun.cmpmermaid.core.treemap.TreemapPlugin
 import com.swithun.cmpmermaid.core.treeview.TreeViewPlugin
 import com.swithun.cmpmermaid.core.usecase.UsecasePlugin
 import com.swithun.cmpmermaid.core.venn.VennPlugin
+import com.swithun.cmpmermaid.core.wardley.WardleyPlugin
 import com.swithun.cmpmermaid.core.xychart.XyChartPlugin
+import com.swithun.cmpmermaid.core.zenuml.ZenUmlPlugin
 import kotlinx.coroutines.CancellationException
 
 data class MermaidRenderContext(
@@ -85,6 +87,8 @@ class MermaidEngine(
         TimelinePlugin(),
         KanbanPlugin(),
         UsecasePlugin(),
+        WardleyPlugin(),
+        ZenUmlPlugin(),
     ),
 ) {
     private val pluginsByHeader: Map<String, MermaidDiagramPlugin> = buildMap {

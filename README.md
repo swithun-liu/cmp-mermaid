@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Live Web demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>7,680-case visual report</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448-case visual report</strong></a>
     ·
     <a href="docs/stability-report.md">Full Stable report</a>
     ·
@@ -31,19 +31,13 @@
 </div>
 
 > [!IMPORTANT]
-> **CMP Mermaid currently implements 30 of Mermaid `12.0.0`'s 33 official
-> diagram families.** The remaining 3 families are on the
-> **[full-diagram roadmap](docs/full-diagram-roadmap.md)**.
+> **CMP Mermaid now implements all 33 official diagram families from Mermaid
+> `12.0.0`, and all 33 family gates pass.** The supported Mermaid `12.0.0`
+> contract is rated **Stable**.
 >
-> The current **[7,680-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
-> covers all 30 implemented families. Flowchart, XY Chart, Quadrant Chart,
-> Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
-> User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey,
-> Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block,
-> Swimlanes, Architecture, C4, Railroad, and TreeView have completed the replacement
-> 256-case detail gate. The report does not prove complete Mermaid
-> compatibility because 3 official families remain
-> untranslated.
+> The current **[8,448-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
+> covers every family with 256 same-source pairs, automated detail and geometry
+> audits, and manual review of all 528 contact sheets.
 
 CMP Mermaid is designed for applications that render many diagrams without a
 WebView per diagram. The production path does not embed Mermaid.js and does not
@@ -53,42 +47,40 @@ Canvas painting are owned by the multiplatform libraries.
 
 ## Current Verification
 
-The 30 implemented families retain repository-controlled tests and captures.
-Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State,
-Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph,
-Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling,
-Agentflow, Block, Swimlanes, Architecture, C4, Railroad, and TreeView pass the
-replacement detail gate.
+All 33 implemented families retain repository-controlled tests and corpus
+data, published Native/Official captures, and passing replacement detail and
+geometry gates.
 
 | Evidence | Result |
 | --- | ---: |
 | Official Mermaid diagram families | 33 |
-| Implemented diagram families | 30/33 |
-| Translation pending | 3 |
-| Independent production scenarios | 397 |
-| Declared capability coverage | 644/644 |
-| Large-scale visual matrix | 7,680 unique sources: 256 per implemented family |
-| Native/Official captures | 15,360 matrix screenshots plus 794 independent-corpus screenshots |
-| Matrix detail review | All 30 implemented families: 7,680/7,680 accepted; 6,874 automatic passes plus 806 manually accepted ER/Journey/Requirement/Git Graph/Mindmap/Treemap/Venn/Event Modeling/Block/Swimlanes reviews |
-| Automated visual geometry | 7,680/7,680 passed; all 30 implemented-family detail gates passed |
-| Deterministic SceneGraph replay | 397 passed, 0 mismatches |
-| Built-in theme matrix | 330/330 |
-| Separate generated Native stress inputs | 7,680 |
-| JVM tests | 707 passed, 0 failed |
-| Core production soak | 1,985 renders, 779ms total, 1ms P95, 62,304 bytes retained heap |
-| Runtime load matrix | Web passed the current 397-scenario corpus; Android, iOS, and Desktop retain the prior 236-scenario baseline |
+| Implemented diagram families | 33/33 |
+| Translation pending | 0 |
+| Visual family gates pending | 0 |
+| Independent production scenarios | 441 Native/Official pairs |
+| Declared capability coverage | 738/738 |
+| Large-scale visual matrix | 8,448 Native/Official pairs |
+| Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus screenshots |
+| Matrix detail review | 33 families: 8,448/8,448 accepted; 7,458 automatic passes plus 990 manually accepted reviews |
+| Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
+| Deterministic SceneGraph replay | 441 passed, 0 mismatches |
+| Built-in theme matrix | 363/363 |
+| Separate generated Native stress inputs | 7,936 retained historical baseline |
+| JVM tests | 787 passed, 0 failed |
+| Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
+| Runtime load matrix | Web retains the prior 397-scenario baseline; Android, iOS, and Desktop retain the prior 236-scenario baseline |
 
 | Evidence document | What it contains |
 | --- | --- |
-| **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory, current 30/33 state, missing 3 families, and the new Stable gate |
+| **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and the completed 33/33 family gates |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
-| **[All 7,680 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 480 paged contact sheets, with 16 same-source pairs per page |
-| [Production capability matrix](docs/production-capability-matrix.md) | The 644 independently exercised capabilities |
+| **[All 8,448 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 same-source pairs per page |
+| [Production capability matrix](docs/production-capability-matrix.md) | The 738 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
-| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual capture and detail enforcement for the implemented subset |
+| [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual capture and detail enforcement for all 33 families |
 
-Overall Mermaid `12.0.0` support is not Stable until all 33 family gates pass.
+Overall Mermaid `12.0.0` support is **Stable** because all 33 family gates pass.
 A legal feature that cannot be represented faithfully returns
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation.
@@ -120,9 +112,9 @@ not pixel-identical browser output; platform font metrics may differ.
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native state diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js state diagram" width="700"> |
 
-The report contains the 397 independent production comparisons and a separate
-large-scale matrix with 7,680 unique Mermaid sources:
-**[open all 480 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
+The current published report contains 441 independent production comparisons
+and a separate large-scale matrix with 8,448 unique Mermaid sources:
+**[open all 528 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
 
 </details>
 
@@ -160,8 +152,11 @@ large-scale matrix with 7,680 unique Mermaid sources:
 | C4 | Detail gate passed | 13 | Five C4 levels, nested boundaries, deployment nodes, relation variants, styles, and configuration | [Compatibility](docs/c4-compatibility.md) |
 | Railroad | Detail gate passed | 18 | Railroad IR, EBNF, ABNF, PEG, shared AST, routed grammar paths, styles, and configuration | [Compatibility](docs/railroad-compatibility.md) |
 | TreeView | Detail gate passed | 13 | Indentation and box-drawing syntax, hierarchy, annotations, descriptions, icons, styles, and configuration | [Compatibility](docs/treeview-compatibility.md) |
+| Use Case | Detail gate passed | 18 | Actors, boundaries, UML relationships, notes, JSON tables, styles, and configuration | [Compatibility](docs/usecase-compatibility.md) |
+| Wardley Map | Detail gate passed | 13 | Value chains, sourcing, evolution, pipelines, annotations, and strategic forces | [Compatibility](docs/wardley-compatibility.md) |
+| ZenUML | Detail gate passed | 13 | Participants, nested calls, replies, groups, fragments, and participant icons | [Compatibility](docs/zenuml-compatibility.md) |
 
-All 30 implemented types support Mermaid frontmatter, relevant metadata, Unicode, and
+All 33 implemented types support Mermaid frontmatter, relevant metadata, Unicode, and
 the relevant theme variables within their documented compatibility boundaries.
 
 ## Try It

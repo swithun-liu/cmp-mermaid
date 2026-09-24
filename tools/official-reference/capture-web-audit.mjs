@@ -69,6 +69,8 @@ const kotlinGalleryFiles = {
   eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
   usecase: ['UsecaseDemos.kt', 'UsecaseDemo'],
+  wardley: ['WardleyDemos.kt', 'WardleyDemo'],
+  zenuml: ['ZenUmlDemos.kt', 'ZenUmlDemo'],
 };
 const supportedAuditKinds = ['all', 'flowchart', ...Object.keys(kotlinGalleryFiles)];
 const supportedAuditSources = [

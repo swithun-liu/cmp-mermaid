@@ -347,6 +347,10 @@ internal object MermaidPreprocessor {
         val sankey = map.map("sankey")
         val ishikawa = map.map("ishikawa")
         val cynefin = map.map("cynefin")
+        // Mermaid.js 12.0.0: defaultConfig.ts -> configKeys and
+        // utils/sanitizeDirective.ts -> sanitizeDirective.
+        // `wardley-beta` is declared in config.schema.yaml but absent from defaultConfig,
+        // so source frontmatter/directives discard it. Caller options remain supported.
         val eventModeling = map.map("eventmodeling")
         val block = map.map("block")
         val architecture = map.map("architecture")
@@ -667,7 +671,7 @@ internal object MermaidPreprocessor {
                     is YamlMap -> {
                         if (
                             entryKey.content !in
-                            setOf("xyChart", "radar", "cynefin", "treeView")
+                            setOf("xyChart", "radar", "cynefin", "treeView", "wardley")
                         ) {
                             readError = MermaidError.Configuration(
                                 "Mermaid $sourceName '$path.${entryKey.content}' " +

@@ -31,8 +31,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.PathMeasure
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
@@ -41,6 +43,7 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.withTransform
+import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
@@ -77,6 +80,7 @@ import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.MermaidSceneViewportSizing
 import com.swithun.cmpmermaid.core.MermaidTheme
+import com.swithun.cmpmermaid.core.SceneAffineTransform
 import com.swithun.cmpmermaid.core.SceneArrowHead
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneAssetKind
@@ -93,8 +97,11 @@ import com.swithun.cmpmermaid.core.SceneShape
 import com.swithun.cmpmermaid.core.SceneShapeKind
 import com.swithun.cmpmermaid.core.SceneShapePaint
 import com.swithun.cmpmermaid.core.SceneShapePath
+import com.swithun.cmpmermaid.core.SceneShapeViewportFit
 import com.swithun.cmpmermaid.core.SceneShadow
 import com.swithun.cmpmermaid.core.SceneSize
+import com.swithun.cmpmermaid.core.SceneStrokeCap
+import com.swithun.cmpmermaid.core.SceneStrokeJoin
 import com.swithun.cmpmermaid.core.SceneStrokePattern
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
@@ -842,16 +849,47 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
     }
 
     geometry.paths.forEach { primitive ->
-        if (primitive.points.isEmpty()) {
+        if (primitive.points.isEmpty() && primitive.pathData.isNullOrBlank()) {
             return@forEach
         }
-        val path = primitive.toComposePath(bounds)
+        val path = when (
+            val result = primitive.toComposePath(
+                bounds = bounds,
+                viewBox = geometry.viewBox?.toComposeRect(),
+                viewportFit = geometry.viewportFit,
+            )
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return@forEach
+        }
         val opacity = primitive.opacity.coerceIn(0f, 1f)
+        val primitiveFill = primitive.fillColor?.toComposeColor()
+        val primitiveFillGradient = primitive.fillGradient?.toComposeBrush(bounds)
         val primitiveStroke = primitive.strokeColor?.toComposeColor()
         when (primitive.fill) {
             SceneShapePaint.None -> Unit
-            SceneShapePaint.Fill -> drawPath(path, fill.copy(alpha = fill.alpha * opacity), style = Fill)
-            SceneShapePaint.Stroke -> drawPath(path, stroke.copy(alpha = stroke.alpha * opacity), style = Fill)
+            SceneShapePaint.Fill -> when {
+                primitiveFillGradient != null -> drawPath(
+                    path = path,
+                    brush = primitiveFillGradient,
+                    alpha = opacity,
+                    style = Fill,
+                )
+                else -> drawPath(
+                    path = path,
+                    color = (primitiveFill ?: fill).let { color ->
+                        color.copy(alpha = color.alpha * opacity)
+                    },
+                    style = Fill,
+                )
+            }
+            SceneShapePaint.Stroke -> drawPath(
+                path = path,
+                color = (primitiveFill ?: stroke).let { color ->
+                    color.copy(alpha = color.alpha * opacity)
+                },
+                style = Fill,
+            )
         }
         when (primitive.stroke) {
             SceneShapePaint.None -> Unit
@@ -860,42 +898,70 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
                 (primitiveStroke ?: fill).let { color ->
                     color.copy(alpha = color.alpha * opacity)
                 },
-                style = primitive.strokeStyle(shape),
+                style = primitive.strokeStyle(shape, bounds, geometry.viewBox, geometry.viewportFit),
             )
             SceneShapePaint.Stroke -> when {
                 primitiveStroke != null -> drawPath(
                     path = path,
                     color = primitiveStroke.copy(alpha = primitiveStroke.alpha * opacity),
-                    style = primitive.strokeStyle(shape),
+                    style = primitive.strokeStyle(
+                        shape,
+                        bounds,
+                        geometry.viewBox,
+                        geometry.viewportFit,
+                    ),
                 )
                 strokeGradient != null -> drawPath(
                     path = path,
                     brush = strokeGradient,
                     alpha = opacity,
-                    style = primitive.strokeStyle(shape),
+                    style = primitive.strokeStyle(
+                        shape,
+                        bounds,
+                        geometry.viewBox,
+                        geometry.viewportFit,
+                    ),
                 )
                 else -> drawPath(
                     path = path,
                     color = stroke.copy(alpha = stroke.alpha * opacity),
-                    style = primitive.strokeStyle(shape),
+                    style = primitive.strokeStyle(
+                        shape,
+                        bounds,
+                        geometry.viewBox,
+                        geometry.viewportFit,
+                    ),
                 )
             }
         }
     }
 }
 
-private fun SceneLinearGradient.toComposeBrush(bounds: Rect): Brush =
-    Brush.linearGradient(
-        colors = listOf(startColor.toComposeColor(), endColor.toComposeColor()),
-        start = Offset(
-            x = bounds.left + bounds.width * start.x,
-            y = bounds.top + bounds.height * start.y,
-        ),
-        end = Offset(
-            x = bounds.left + bounds.width * end.x,
-            y = bounds.top + bounds.height * end.y,
-        ),
+private fun SceneLinearGradient.toComposeBrush(bounds: Rect): Brush {
+    val startOffset = Offset(
+        x = bounds.left + bounds.width * start.x,
+        y = bounds.top + bounds.height * start.y,
     )
+    val endOffset = Offset(
+        x = bounds.left + bounds.width * end.x,
+        y = bounds.top + bounds.height * end.y,
+    )
+    return if (colorStops.isEmpty()) {
+        Brush.linearGradient(
+            colors = listOf(startColor.toComposeColor(), endColor.toComposeColor()),
+            start = startOffset,
+            end = endOffset,
+        )
+    } else {
+        Brush.linearGradient(
+            *colorStops.map { stop ->
+                stop.offset.coerceIn(0f, 1f) to stop.color.toComposeColor()
+            }.toTypedArray(),
+            start = startOffset,
+            end = endOffset,
+        )
+    }
+}
 
 private fun DrawScope.drawSceneShapeShadow(
     shape: SceneShape,
@@ -906,10 +972,21 @@ private fun DrawScope.drawSceneShapeShadow(
     val primitive = shape.geometry
         ?.paths
         ?.firstOrNull { path ->
-            path.points.isNotEmpty() &&
+            (path.points.isNotEmpty() || !path.pathData.isNullOrBlank()) &&
                 (path.fill != SceneShapePaint.None || path.stroke != SceneShapePaint.None)
         }
-    val primitivePath = primitive?.toComposePath(bounds)
+    val primitivePath = primitive?.let { path ->
+        when (
+            val result = path.toComposePath(
+                bounds = bounds,
+                viewBox = shape.geometry?.viewBox?.toComposeRect(),
+                viewportFit = shape.geometry?.viewportFit ?: SceneShapeViewportFit.Stretch,
+            )
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> null
+        }
+    }
     shadow.samples().forEach { sample ->
         val color = shadowColor.copy(alpha = shadowColor.alpha * sample.alpha)
         withTransform({
@@ -937,20 +1014,53 @@ private fun DrawScope.drawSceneShapeShadow(
                 else -> drawPath(
                     path = primitivePath,
                     color = color,
-                    style = primitive.strokeStyle(shape),
+                    style = primitive.strokeStyle(
+                        shape,
+                        bounds,
+                        shape.geometry?.viewBox,
+                        shape.geometry?.viewportFit ?: SceneShapeViewportFit.Stretch,
+                    ),
                 )
             }
         }
     }
 }
 
-private fun SceneShapePath.toComposePath(bounds: Rect): Path = Path().apply {
-    points.forEachIndexed { index, point ->
-        val x = bounds.center.x + point.x
-        val y = bounds.center.y + point.y
-        if (index == 0) moveTo(x, y) else lineTo(x, y)
+internal data class SceneSvgPathError(
+    val cause: Exception,
+)
+
+internal fun SceneShapePath.toComposePath(
+    bounds: Rect,
+    viewBox: Rect?,
+    viewportFit: SceneShapeViewportFit,
+): GMResult<Path, SceneSvgPathError> = try {
+    val svgPathData = pathData
+    if (svgPathData == null) {
+        GMResult.Ok(
+            Path().apply {
+                points.forEachIndexed { index, point ->
+                    val x = bounds.center.x + point.x
+                    val y = bounds.center.y + point.y
+                    if (index == 0) moveTo(x, y) else lineTo(x, y)
+                }
+                if (closed) close()
+            },
+        )
+    } else {
+        val path = PathParser().parsePathString(svgPathData).toPath()
+        path.fillType = when (fillRule) {
+            com.swithun.cmpmermaid.core.ScenePathFillRule.NonZero -> PathFillType.NonZero
+            com.swithun.cmpmermaid.core.ScenePathFillRule.EvenOdd -> PathFillType.EvenOdd
+        }
+        transform?.let { path.transform(it.toComposeMatrix()) }
+        viewBox?.let { source ->
+            path.transform(source.toViewportMatrix(bounds, viewportFit))
+        }
+        GMResult.Ok(path)
     }
-    if (closed) close()
+} catch (failure: Exception) {
+    GMResult.Err(SceneSvgPathError(failure))
 }
 
 private fun SceneShadow.samples(): List<ShadowSample> {
@@ -978,19 +1088,102 @@ private data class ShadowSample(
 
 private fun SceneShapePath.strokeStyle(
     shape: SceneShape,
+    bounds: Rect,
+    viewBox: com.swithun.cmpmermaid.core.SceneRect?,
+    viewportFit: SceneShapeViewportFit,
 ): Stroke = Stroke(
-    width = strokeWidth ?: shape.strokeWidth,
-    cap = StrokeCap.Butt,
-    join = StrokeJoin.Miter,
+    width = (strokeWidth ?: shape.strokeWidth) * strokeScale(bounds, viewBox, viewportFit),
+    cap = when (strokeCap) {
+        SceneStrokeCap.Butt -> StrokeCap.Butt
+        SceneStrokeCap.Round -> StrokeCap.Round
+        SceneStrokeCap.Square -> StrokeCap.Square
+    },
+    join = when (strokeJoin) {
+        SceneStrokeJoin.Miter -> StrokeJoin.Miter
+        SceneStrokeJoin.Round -> StrokeJoin.Round
+        SceneStrokeJoin.Bevel -> StrokeJoin.Bevel
+    },
     pathEffect = when {
         dashIntervals.size >= 2 && dashIntervals.all { it.isFinite() && it > 0f } ->
-            PathEffect.dashPathEffect(dashIntervals.toFloatArray())
+            PathEffect.dashPathEffect(
+                dashIntervals.map { interval ->
+                    interval * strokeScale(bounds, viewBox, viewportFit)
+                }.toFloatArray(),
+            )
         strokePattern != SceneStrokePattern.Solid -> strokePattern.toPathEffect()
         shape.dashIntervals.size >= 2 && shape.dashIntervals.all { it.isFinite() && it > 0f } ->
             PathEffect.dashPathEffect(shape.dashIntervals.toFloatArray())
         else -> shape.strokePattern.toPathEffect()
     },
 )
+
+private fun SceneShapePath.strokeScale(
+    bounds: Rect,
+    viewBox: com.swithun.cmpmermaid.core.SceneRect?,
+    viewportFit: SceneShapeViewportFit,
+): Float {
+    if (pathData == null || viewBox == null || viewBox.width <= 0f || viewBox.height <= 0f) {
+        return 1f
+    }
+    val scaleX = bounds.width / viewBox.width
+    val scaleY = bounds.height / viewBox.height
+    return when (viewportFit) {
+        SceneShapeViewportFit.Stretch -> min(scaleX, scaleY)
+        SceneShapeViewportFit.MeetStart,
+        SceneShapeViewportFit.MeetCenter,
+        -> min(scaleX, scaleY)
+    }
+}
+
+internal fun SceneAffineTransform.toComposeMatrix(): Matrix = Matrix().also { matrix ->
+    matrix[0, 0] = scaleX
+    matrix[0, 1] = skewY
+    matrix[1, 0] = skewX
+    matrix[1, 1] = scaleY
+    matrix[3, 0] = translateX
+    matrix[3, 1] = translateY
+}
+
+internal fun Rect.toViewportMatrix(
+    bounds: Rect,
+    viewportFit: SceneShapeViewportFit,
+): Matrix {
+    if (width <= 0f || height <= 0f) {
+        return Matrix()
+    }
+    val rawScaleX = bounds.width / width
+    val rawScaleY = bounds.height / height
+    val scaleX: Float
+    val scaleY: Float
+    val alignX: Float
+    val alignY: Float
+    when (viewportFit) {
+        SceneShapeViewportFit.Stretch -> {
+            scaleX = rawScaleX
+            scaleY = rawScaleY
+            alignX = 0f
+            alignY = 0f
+        }
+        SceneShapeViewportFit.MeetStart -> {
+            scaleX = min(rawScaleX, rawScaleY)
+            scaleY = scaleX
+            alignX = 0f
+            alignY = 0f
+        }
+        SceneShapeViewportFit.MeetCenter -> {
+            scaleX = min(rawScaleX, rawScaleY)
+            scaleY = scaleX
+            alignX = (bounds.width - width * scaleX) / 2f
+            alignY = (bounds.height - height * scaleY) / 2f
+        }
+    }
+    return Matrix().also { matrix ->
+        matrix[0, 0] = scaleX
+        matrix[1, 1] = scaleY
+        matrix[3, 0] = bounds.left + alignX - left * scaleX
+        matrix[3, 1] = bounds.top + alignY - top * scaleY
+    }
+}
 
 private fun List<Float>.toPathEffect(): PathEffect? =
     takeIf { size >= 2 && all { interval -> interval.isFinite() && interval > 0f } }

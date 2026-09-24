@@ -6,8 +6,8 @@ The KMP runtime contains Kotlin translations of selected Mermaid Flowchart,
 XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity
 Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap,
 Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling,
-Agentflow, Block, Swimlanes, and Architecture parsing, layout-adapter, and
-rendering algorithms.
+Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case,
+Wardley Map, and ZenUML parsing, layout-adapter, and rendering algorithms.
 The reference-rendering tool also downloads Mermaid.js from npm. Mermaid.js
 itself is not embedded in the runtime libraries.
 
@@ -27,6 +27,67 @@ Bundled Chrome 87-compatible file SHA-256:
 Mermaid is distributed under the MIT License:
 
 Copyright (c) 2014 - 2022 Knut Sveidqvist
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## @mermaid-js/mermaid-zenuml
+
+The Android debug sample bundles `@mermaid-js/mermaid-zenuml 1.0.0` only for
+on-demand comparison against the official ZenUML renderer. It is not included
+in `mermaid-core` or `mermaid-compose`.
+
+Bundled debug asset SHA-256:
+
+`c31f63f892c44d01d83f323cc97b48f5d5e102bec3ec3188a7b0b01b596f6bd6`
+
+`@mermaid-js/mermaid-zenuml` is distributed under the MIT License:
+
+Copyright (c) 2014 - 2022 Knut Sveidqvist
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## @zenuml/core
+
+The ZenUML Kotlin implementation translates parser, positioning, geometry, and
+vector behavior from `@zenuml/core 3.49.2`, the version resolved by Mermaid
+`12.0.0`'s lockfile. The JavaScript package is used only to build the isolated
+official-reference asset and is not included in the production libraries.
+
+`@zenuml/core` is distributed under the MIT License:
+
+Copyright (c) 2022 Peng Xiao
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

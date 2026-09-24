@@ -4493,4 +4493,220 @@ Customer --> Request
 Request --> Approve
 `,
   },
+  {
+    id: 'rc_wardley_customer_delivery',
+    kind: 'wardley',
+    title: 'Customer delivery chain',
+    scenario: 'A customer-facing value chain connects experience, platform, data, and utility components.',
+    aspectRatio: 1.45,
+    source: String.raw`
+wardley-beta
+title Customer Delivery Chain
+anchor Customer [0.94, 0.88]
+component Digital Experience [0.80, 0.64]
+component Service Platform [0.64, 0.54]
+component Customer Data [0.46, 0.72]
+component Cloud Utility [0.24, 0.91]
+Customer -> Digital Experience
+Digital Experience -> Service Platform
+Service Platform -> Customer Data
+Customer Data -> Cloud Utility
+`,
+  },
+  {
+    id: 'rc_wardley_sourcing_transition',
+    kind: 'wardley',
+    title: 'Sourcing transition',
+    scenario: 'Sourcing strategies, inertia, labelled flow, and planned evolution share one strategic map.',
+    aspectRatio: 1.45,
+    source: String.raw`
+wardley-beta
+title Sourcing Transition
+anchor Operator [0.92, 0.86]
+component Bespoke Console [0.76, 0.34] (build)
+component Identity Suite [0.62, 0.68] (buy)
+component Managed Support [0.50, 0.48] (outsource)
+component Legacy Store [0.38, 0.42] (inertia)
+component Compute Utility [0.20, 0.92] (market)
+Operator -> Bespoke Console
+Bespoke Console +'authenticates'> Identity Suite
+Bespoke Console -> Managed Support
+Identity Suite +<> Legacy Store
+Legacy Store -> Compute Utility
+evolve Legacy Store 0.66
+`,
+  },
+  {
+    id: 'rc_wardley_data_pipeline',
+    kind: 'wardley',
+    title: 'Data capability pipeline',
+    scenario: 'A pipeline compares file, warehouse, and managed analytics stages under one capability.',
+    aspectRatio: 1.5,
+    source: String.raw`
+wardley-beta
+title Data Capability Pipeline
+evolution Novel@0.22 -> Bespoke@0.48 -> Product@0.76 -> Utility@1.0
+anchor Decision Maker [0.90, 0.92]
+component Analytics Platform [0.56, 0.58]
+Decision Maker -> Analytics Platform
+pipeline Analytics Platform {
+  component File Reports [0.24]
+  component Data Warehouse [0.55] label [-48, 16]
+  component Managed Analytics [0.86]
+}
+File Reports +'feeds'> Data Warehouse
+Data Warehouse -> Managed Analytics
+`,
+  },
+  {
+    id: 'rc_wardley_decision_annotations',
+    kind: 'wardley',
+    title: 'Decision annotations',
+    scenario: 'Numbered annotations, a strategic note, and opposing forces document modernization choices.',
+    aspectRatio: 1.4,
+    source: String.raw`
+wardley-beta
+title Modernisation Decisions
+component Legacy Core [0.34, 0.30] (inertia)
+component Integration API [0.60, 0.57]
+component Automation [0.72, 0.44]
+Legacy Core -> Integration API
+Integration API -> Automation
+note "Sequence migration before automation" [0.48, 0.52]
+annotations [0.12, 0.88]
+annotation 1,[0.34, 0.27] "Legacy constraint"
+annotation 2,[0.60, 0.54] "Integration boundary"
+annotation 3,[0.72, 0.41] "Automation target"
+accelerator "Platform investment" [0.24, 0.84]
+deaccelerator "Migration risk" [0.45, 0.24]
+`,
+  },
+  {
+    id: 'rc_wardley_regional_strategy',
+    kind: 'wardley',
+    title: 'Regional strategy map',
+    scenario: 'Accessibility metadata, explicit sizing, entities, and Unicode coexist.',
+    aspectRatio: 1.5,
+    source: String.raw`
+wardley-beta
+title Regional Service Strategy
+size [1000, 680]
+accTitle: Regional strategy map
+accDescr: Teams coordinate services across Tokyo, Seoul, and Sao Paulo.
+anchor "東京 Customer" [0.92, 0.90]
+component "서울 Verification" [0.68, 0.58]
+component "São Paulo Approval" [0.48, 0.76]
+"東京 Customer" -> "서울 Verification"
+"서울 Verification" -> "São Paulo Approval"
+note "Privacy &amp; residency review" [0.36, 0.42]
+`,
+  },
+  {
+    id: 'rc_zenuml_service_conversation',
+    kind: 'zenuml',
+    title: 'Service conversation',
+    scenario: 'Declared participants and aliases exchange asynchronous request and response messages.',
+    aspectRatio: 1.55,
+    source: String.raw`
+zenuml
+title Service Conversation
+Client as "Mobile Client"
+Gateway as "API Gateway"
+Service as "Account Service"
+Client->Gateway: Submit request
+Gateway->Service: Validate account
+Service->Gateway: Return result
+Gateway->Client: Complete request
+`,
+  },
+  {
+    id: 'rc_zenuml_nested_transaction',
+    kind: 'zenuml',
+    title: 'Nested transaction',
+    scenario: 'Nested synchronous calls, assignments, creation, and explicit replies model one transaction.',
+    aspectRatio: 1.6,
+    source: String.raw`
+zenuml
+title Nested Transaction
+transaction = new Transaction(region="eu")
+result = Gateway.process(transaction) {
+  validation = Policy.validate(transaction)
+  Repository.save(transaction) {
+    return stored
+  }
+  return result
+}
+`,
+  },
+  {
+    id: 'rc_zenuml_conditional_fulfillment',
+    kind: 'zenuml',
+    title: 'Conditional fulfillment',
+    scenario: 'Alternative, optional, and loop fragments describe inventory and payment decisions.',
+    aspectRatio: 1.5,
+    source: String.raw`
+zenuml
+title Conditional Fulfillment
+Customer->Checkout: Place order
+if(in_stock) {
+  loop(each_item) {
+    Inventory.reserve()
+  }
+  opt(payment_required) {
+    Payment.authorize()
+  }
+} else {
+  Checkout->Customer: Report unavailable
+}
+`,
+  },
+  {
+    id: 'rc_zenuml_parallel_delivery',
+    kind: 'zenuml',
+    title: 'Parallel delivery',
+    scenario: 'Parallel, critical, section, and reference fragments coordinate independent service work.',
+    aspectRatio: 1.65,
+    source: String.raw`
+zenuml
+title Parallel Delivery
+par {
+  Coordinator->Inventory: Reserve stock
+  Coordinator->Billing: Authorize payment
+}
+critical(commit_order) {
+  OrderStore.save()
+}
+section(notify_channels) {
+  Coordinator->Mailer: Send receipt
+}
+ref(Coordinator, Inventory, Billing)
+`,
+  },
+  {
+    id: 'rc_zenuml_regional_recovery',
+    kind: 'zenuml',
+    title: 'Regional recovery',
+    scenario: 'Grouped typed participants, comments, Unicode, and try/catch/finally recovery share one diagram.',
+    aspectRatio: 1.7,
+    source: String.raw`
+zenuml
+title Regional Recovery
+@Actor 利用者
+group "Regional Services" {
+  @EC2 Gateway
+  @Database Store
+}
+// **Tokyo** request with regional recovery.
+利用者->Gateway: 東京で開始
+try {
+  Gateway.persist() {
+    Store.save()
+  }
+} catch(error) {
+  Gateway->利用者: 서울 fallback
+} finally {
+  Gateway.cleanup()
+}
+`,
+  },
 ];

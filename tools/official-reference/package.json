@@ -52,6 +52,7 @@
     "generate:requirement-parser": "node generate-requirement-parser.mjs",
     "generate:mindmap-parser": "node generate-mindmap-parser.mjs",
     "generate:mindmap-tidy-tree-asset": "node generate-mindmap-tidy-tree-asset.mjs",
+    "generate:zenuml-asset": "node generate-zenuml-asset.mjs",
     "generate:xychart-parser": "node generate-xychart-parser.mjs",
     "render:flowchart-contact-sheets": "node render-flowchart-contact-sheets.mjs",
     "render:class-gallery": "node render-class-gallery.mjs",
@@ -78,6 +79,8 @@
   },
   "dependencies": {
     "@mermaid-js/layout-tidy-tree": "1.0.0",
+    "@mermaid-js/mermaid-zenuml": "1.0.0",
+    "@zenuml/core": "3.49.2",
     "mermaid": "12.0.0",
     "puppeteer": "25.10.0"
   },

@@ -301,6 +301,32 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersWardleyBetaThroughRegisteredPlugin() {
+        val result = engine.render(
+            """
+                wardley-beta
+                  title Strategic map
+                  anchor Customer [0.9, 0.95]
+                  component Service [0.7, 0.6]
+                  Customer +> Service
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        assertTrue(scene.elements.filterIsInstance<ScenePath>().any { path ->
+            path.id == "wardley-link-0" &&
+                path.arrowEnd == SceneArrowHead.Triangle
+        })
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any { text ->
+            text.text == "Strategic map"
+        })
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any { text ->
+            text.text == "Customer"
+        })
+    }
+
+    @Test
     fun rendersEventModelingThroughRegisteredPlugin() {
         val result = engine.render(
             """

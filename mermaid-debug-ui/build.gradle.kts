@@ -47,6 +47,9 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.ui)
         }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.webkit)

@@ -48,14 +48,14 @@ validateUnique(
 if (diagramFamilies.length !== 33) {
   failures.push(`Expected 33 diagram families, found ${diagramFamilies.length}`);
 }
-if (implementedDiagramFamilies.length !== 30) {
+if (implementedDiagramFamilies.length !== 33) {
   failures.push(
-    `Expected 30 implemented diagram families, found ${implementedDiagramFamilies.length}`,
+    `Expected 33 implemented diagram families, found ${implementedDiagramFamilies.length}`,
   );
 }
-if (pendingDiagramFamilies.length !== 3) {
+if (pendingDiagramFamilies.length !== 0) {
   failures.push(
-    `Expected 3 pending diagram families, found ${pendingDiagramFamilies.length}`,
+    `Expected 0 pending diagram families, found ${pendingDiagramFamilies.length}`,
   );
 }
 
@@ -145,6 +145,17 @@ function validateSourceTree(directory) {
     failures.push(
       `ZenUML source package is ${zenUmlPackage?.version ?? 'missing'}; ` +
         `expected ${mermaidBaseline.zenUmlVersion}`,
+    );
+  }
+
+  const upstreamLockPath = path.join(directory, 'pnpm-lock.yaml');
+  const upstreamLock = fs.existsSync(upstreamLockPath)
+    ? fs.readFileSync(upstreamLockPath, 'utf8')
+    : '';
+  if (!upstreamLock.includes(`'@zenuml/core@${mermaidBaseline.zenUmlCoreVersion}':`)) {
+    failures.push(
+      `ZenUML core lock does not contain @zenuml/core@` +
+        `${mermaidBaseline.zenUmlCoreVersion}`,
     );
   }
 }

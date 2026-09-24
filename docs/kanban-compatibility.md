@@ -71,6 +71,6 @@ test.
 - All 16 paged contact sheets were manually inspected, including the corrected
   three-line titles in cases 114 and 117.
 
-The Kanban family has completed its per-family Stable gate. Overall Mermaid
-`12.0.0` support remains Not Stable until the other implemented families pass
-the replacement audit and all 33 official families are translated.
+The Kanban family has completed its per-family Stable gate. All 33 Mermaid
+`12.0.0` family gates now pass, so overall supported compatibility is
+**Stable**.

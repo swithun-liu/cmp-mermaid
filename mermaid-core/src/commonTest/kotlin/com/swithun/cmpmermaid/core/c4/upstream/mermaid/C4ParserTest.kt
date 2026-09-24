@@ -150,7 +150,7 @@ class C4ParserTest {
         shapeCases.forEach { case ->
             case.fields.forEach { field ->
                 val db = parse(
-                    "${case.header}\n${case.declaration.format("${'$'}$field=\"V\"")}",
+                    "${case.header}\n${case.declaration.replace("%s", "${'$'}$field=\"V\"")}",
                 )
 
                 assertField(db.getC4ShapeArray().single(), field)
@@ -179,7 +179,7 @@ class C4ParserTest {
                 val db = parse(
                     """
                         ${case.header}
-                        ${case.declaration.format("${'$'}$field=\"V\"")} {
+                        ${case.declaration.replace("%s", "${'$'}$field=\"V\"")} {
                           Container(i, "I")
                         }
                     """.trimIndent(),

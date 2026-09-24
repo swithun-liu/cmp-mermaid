@@ -111,6 +111,8 @@ private enum class DebugScreen {
     EventModeling,
     Agentflow,
     Usecase,
+    Wardley,
+    ZenUml,
     Playground,
     LoadTest,
 }
@@ -314,6 +316,18 @@ private val destinations = listOf(
         DebugScreen.Usecase,
         usecaseDiagramDocsSpec,
         "Actors, use cases, boundaries, UML relationships, notes, and structured data",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.Wardley,
+        wardleyDiagramDocsSpec,
+        "Strategic value chains across visibility and evolution",
+        DiagramStability.Beta,
+    ),
+    DiagramDestination(
+        DebugScreen.ZenUml,
+        zenUmlDiagramDocsSpec,
+        "Participant lifelines, nested calls, replies, and control fragments",
         DiagramStability.Beta,
     ),
 )

@@ -80,6 +80,10 @@ jobs:
           - architecture
           - c4
           - railroad
+          - treeview
+          - usecase
+          - wardley
+          - zenuml
 
     steps:
       - name: Checkout
@@ -112,7 +116,7 @@ jobs:
             >/tmp/cmp-mermaid-visual-parity.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
-          for attempt in {1..30}; do
+          for _ in {1..30}; do
             if curl --fail --silent http://127.0.0.1:8093/ >/dev/null; then
               break
             fi

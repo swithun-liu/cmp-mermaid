@@ -50,6 +50,6 @@ Evidence:
 
 ## Status
 
-Use Case has completed its per-family replacement gate. Overall Mermaid
-compatibility remains **Not Stable** until Wardley Map and ZenUML complete the
-same gate.
+Use Case has completed its per-family replacement gate. All 33 Mermaid
+`12.0.0` family gates now pass, so overall supported compatibility is
+**Stable**.

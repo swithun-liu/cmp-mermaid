@@ -1069,3 +1069,79 @@ internal val usecaseDiagramDocsSpec = DiagramDocsSpec(
     playgroundLayouts = listOf("dagre"),
     initialTheme = MermaidThemePreset.Default,
 )
+
+internal val wardleyDiagramDocsSpec = DiagramDocsSpec(
+    id = "wardley",
+    title = "Wardley Map",
+    syntaxTitle = "Wardley maps - Basic Syntax",
+    description = "Map value-chain visibility against evolution with components, dependencies, " +
+        "pipelines, movement, sourcing strategies, notes, annotations, and forces.",
+    documentationUrl = "https://mermaid.js.org/syntax/wardley.html",
+    galleryTitle = "Wardley Map gallery",
+    cases = wardleyDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 4f / 3f,
+        )
+    },
+    syntaxLessons = lessons(
+        wardleyDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 4f / 3f,
+            )
+        },
+        listOf(
+            "Anchors and components use visibility and evolution coordinates.",
+            "Build, buy, outsource, market, and inertia markers encode strategic posture.",
+            "Flow links and evolve directives show dependencies and future movement.",
+            "Pipelines place alternatives along a shared value-chain component.",
+            "Notes, numbered annotations, accelerators, and deaccelerators record context.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)
+
+internal val zenUmlDiagramDocsSpec = DiagramDocsSpec(
+    id = "zenuml",
+    title = "ZenUML",
+    syntaxTitle = "ZenUML sequence diagrams - Basic Syntax",
+    description = "Describe participants, asynchronous and synchronous messages, creation, " +
+        "replies, nested calls, groups, and structured control fragments.",
+    documentationUrl = "https://mermaid.js.org/syntax/zenuml.html",
+    galleryTitle = "ZenUML diagram gallery",
+    cases = zenUmlDemos.map { demo ->
+        DiagramDocsCase(
+            id = demo.id,
+            title = demo.title,
+            category = demo.category,
+            source = demo.source,
+            initialAspectRatio = 4f / 3f,
+        )
+    },
+    syntaxLessons = lessons(
+        zenUmlDemos.map { demo ->
+            DiagramDocsCase(
+                id = demo.id,
+                title = demo.title,
+                category = demo.category,
+                source = demo.source,
+                initialAspectRatio = 4f / 3f,
+            )
+        },
+        listOf(
+            "Declared participants and aliases fix display names and ordering.",
+            "Synchronous calls may nest and return values to their caller.",
+            "If, else, and optional fragments group conditional interactions.",
+            "Parallel and try/catch/finally fragments preserve concurrent and recovery paths.",
+            "Groups, participant annotators, and creation messages describe runtime roles.",
+        ),
+    ),
+    initialTheme = MermaidThemePreset.Default,
+)

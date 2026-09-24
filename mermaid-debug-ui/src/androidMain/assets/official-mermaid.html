@@ -157,6 +157,7 @@
   </script>
   <script defer src="mermaid-12.0.0.min.js"></script>
   <script defer src="mermaid-layout-tidy-tree-1.0.0.min.js"></script>
+  <script defer src="mermaid-zenuml-1.0.0.min.js"></script>
 </head>
 <body>
   <div id="diagram" class="status" role="status" aria-live="polite">
@@ -167,6 +168,7 @@
       const diagram = document.querySelector("#diagram");
       let requestId = 0;
       let tidyTreeRegistered = false;
+      let zenUmlRegistered = false;
       const viewBoxPadding = 12;
       const parentMessagePrefix = "cmp-mermaid:";
       const rendererLoadTimeout = window.setTimeout(() => {
@@ -208,8 +210,46 @@
         tidyTreeRegistered = true;
       };
 
+      const registerOptionalDiagrams = async () => {
+        if (zenUmlRegistered) {
+          return;
+        }
+        if (!window.cmpMermaidZenUmlDiagram) {
+          throw new Error("Official ZenUML diagram asset did not load");
+        }
+        await mermaid.registerExternalDiagrams([
+          window.cmpMermaidZenUmlDiagram,
+        ]);
+        zenUmlRegistered = true;
+      };
+
       const normalizeViewBox = (svg, backgroundColor) => {
         const original = svg.viewBox.baseVal;
+        const wardleyBackground = svg.querySelector(".wardley-background");
+        const renderedBackgroundColor = wardleyBackground
+          ? getComputedStyle(wardleyBackground).fill
+          : backgroundColor;
+
+        if (svg.querySelector(".wardley-map")) {
+          svg.setAttribute(
+            "viewBox",
+            `${original.x} ${original.y} ${original.width} ${original.height}`,
+          );
+          svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+          svg.removeAttribute("width");
+          svg.removeAttribute("height");
+          svg.style.width = "100%";
+          svg.style.height = "100%";
+          svg.style.maxWidth = "100%";
+          svg.style.maxHeight = "100%";
+          svg.style.backgroundColor = renderedBackgroundColor;
+          return {
+            width: original.width,
+            height: original.height,
+            backgroundColor: renderedBackgroundColor,
+          };
+        }
+
         const content = svg.getBBox();
         const originalRight = original.x + original.width;
         const originalBottom = original.y + original.height;
@@ -230,8 +270,8 @@
         svg.style.height = "100%";
         svg.style.maxWidth = "100%";
         svg.style.maxHeight = "100%";
-        svg.style.backgroundColor = backgroundColor;
-        return { width, height };
+        svg.style.backgroundColor = renderedBackgroundColor;
+        return { width, height, backgroundColor: renderedBackgroundColor };
       };
 
       window.renderDiagram = async (source, layout, themeName = null, look = null) => {
@@ -242,6 +282,7 @@
 
         try {
           registerOptionalLayouts();
+          await registerOptionalDiagrams();
           const config = {
             startOnLoad: false,
             securityLevel: "strict",
@@ -270,15 +311,15 @@
           }
           const backgroundColor =
             mermaid.mermaidAPI.getConfig()?.themeVariables?.background ?? "#ffffff";
-          document.documentElement.style.backgroundColor = backgroundColor;
-          document.body.style.backgroundColor = backgroundColor;
-          diagram.style.backgroundColor = backgroundColor;
           result.bindFunctions?.(diagram);
           await waitForLayout();
           if (currentRequest !== requestId) {
             return;
           }
           const size = normalizeViewBox(svg, backgroundColor);
+          document.documentElement.style.backgroundColor = size.backgroundColor;
+          document.body.style.backgroundColor = size.backgroundColor;
+          diagram.style.backgroundColor = size.backgroundColor;
           window.CmpMermaidBridge?.onRenderReady(
             String(size.width),
             String(size.height),

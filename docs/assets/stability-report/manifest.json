@@ -1,8 +1,8 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-09-23T03:08:43.404Z",
-  "caseCount": 415,
+  "generatedAt": "2026-09-23T17:28:35.660Z",
+  "caseCount": 441,
   "cases": [
     {
       "id": "rc_flow_checkout_saga",
@@ -9366,6 +9366,592 @@
       "nativeSha256": "0dcb434fe60b4e39a581836ab1f6cae45aafcffe4259ead35a8bd7a49b828774",
       "officialSha256": "c5d16e9219e6297f4716cdd458629279138a20821196b8e2e84f15bd3dd35226",
       "sourceSha256": "b6676129b5459bed6a7634c96bdb6f0601908cfbe925f18e0186e48a1bc5dd97"
+    },
+    {
+      "id": "rc_wardley_customer_delivery",
+      "kind": "wardley",
+      "title": "Customer delivery chain",
+      "scenario": "A customer-facing value chain connects experience, platform, data, and utility components.",
+      "aspectRatio": 1.45,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_wardley_customer_delivery_native.png",
+      "officialFile": "rc_wardley_customer_delivery_official.png",
+      "nativeBytes": 38899,
+      "officialBytes": 36899,
+      "nativeSha256": "f160731dd41bfc577d94c69a7749f622bbfb12948e31e4755fc820398167548b",
+      "officialSha256": "51b048cceb0273be7d4947ebac6a344e671229d751c3dbb79befd33e7387bf8d",
+      "sourceSha256": "dd8935c6df119009d0330475d0c1fb8c619e1df52a4c992601cffaaf4c0de402"
+    },
+    {
+      "id": "rc_wardley_sourcing_transition",
+      "kind": "wardley",
+      "title": "Sourcing transition",
+      "scenario": "Sourcing strategies, inertia, labelled flow, and planned evolution share one strategic map.",
+      "aspectRatio": 1.45,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_wardley_sourcing_transition_native.png",
+      "officialFile": "rc_wardley_sourcing_transition_official.png",
+      "nativeBytes": 54826,
+      "officialBytes": 53033,
+      "nativeSha256": "8090283640687182f800f2d0ec6d24ffd2fb01d2c3925e53a1c6d404a904cd74",
+      "officialSha256": "c8928cd0e0e5671182ff788fc3a91ce0d76f57ecb8c3af3c301fcd15fe4b932a",
+      "sourceSha256": "301c66a79f5bee78a1a33068c09676be67b7422f69a8dfdb198c30c6ae830832"
+    },
+    {
+      "id": "rc_wardley_data_pipeline",
+      "kind": "wardley",
+      "title": "Data capability pipeline",
+      "scenario": "A pipeline compares file, warehouse, and managed analytics stages under one capability.",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_wardley_data_pipeline_native.png",
+      "officialFile": "rc_wardley_data_pipeline_official.png",
+      "nativeBytes": 37008,
+      "officialBytes": 36661,
+      "nativeSha256": "d65d4c0cc3050435d2f511dd5068ba57bdbcfb07779e1fa6c5b6a85b869461f0",
+      "officialSha256": "d818762a56f60f8de5af6390406a71fa17acc33efc3f16d1bfbb2745926247e5",
+      "sourceSha256": "3a58a5bab49ddfd9706eda891d6dc2d5f508c2bbde5b53dd30a2525f23dbe37e"
+    },
+    {
+      "id": "rc_wardley_decision_annotations",
+      "kind": "wardley",
+      "title": "Decision annotations",
+      "scenario": "Numbered annotations, a strategic note, and opposing forces document modernization choices.",
+      "aspectRatio": 1.4,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_wardley_decision_annotations_native.png",
+      "officialFile": "rc_wardley_decision_annotations_official.png",
+      "nativeBytes": 50965,
+      "officialBytes": 51693,
+      "nativeSha256": "c3376a1d756bb6d9fac819ecb8ec400f9584a29e2fe2ec320f6abdaa581e5c77",
+      "officialSha256": "096fbbcb61556ec5fa3df3cb212343c841e6fa2016ffdd6c56223e47d7ac35bd",
+      "sourceSha256": "e95fb011c1d16fb99766c566426e8c05f4deafc68172611f1aa4e4ff658be58f"
+    },
+    {
+      "id": "rc_wardley_regional_strategy",
+      "kind": "wardley",
+      "title": "Regional strategy map",
+      "scenario": "Accessibility metadata, explicit sizing, entities, and Unicode coexist.",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_wardley_regional_strategy_native.png",
+      "officialFile": "rc_wardley_regional_strategy_official.png",
+      "nativeBytes": 35236,
+      "officialBytes": 35790,
+      "nativeSha256": "c8706779bd76ddeff355ffc603b02b517b61e2c4b818faa50bd15615d9a2d924",
+      "officialSha256": "7f635fe373c6c6008284041835f21b4c8bac6f80ad0732f55449fe8d292f7386",
+      "sourceSha256": "033104e2dffe2117c9c3e6880013d25f6ac55252e5f695003e452d8bd6d7bbd4"
+    },
+    {
+      "id": "prod_wardley_value_chain",
+      "kind": "wardley",
+      "title": "Product value chain",
+      "scenario": "An anchor and ordered components form a visible customer-to-utility dependency chain.",
+      "aspectRatio": 1.45,
+      "features": [
+        "wardley-beta-header",
+        "titles",
+        "anchors",
+        "components",
+        "coordinates",
+        "dependencies"
+      ],
+      "expectedTexts": [
+        "Product Value Chain",
+        "Customer",
+        "Digital Product",
+        "Cloud Utility"
+      ],
+      "nativeFile": "prod_wardley_value_chain_native.png",
+      "officialFile": "prod_wardley_value_chain_official.png",
+      "nativeBytes": 38173,
+      "officialBytes": 37515,
+      "nativeSha256": "5fd32b349d9192ad9519e442b717905068ba1a22ee0246a60911a14f6de47047",
+      "officialSha256": "d93c8a84fa8327b0a20c78eb31a4adb06409ea4d5c794bd77699058d1447f32d",
+      "sourceSha256": "a15613ef62ef6b946984dc181b4593f6f40d589ff7da7cd387a78e25f7683e7c"
+    },
+    {
+      "id": "prod_wardley_sourcing_posture",
+      "kind": "wardley",
+      "title": "Sourcing posture",
+      "scenario": "Every sourcing marker, inertia, and an explicit label offset are visible together.",
+      "aspectRatio": 1.5,
+      "features": [
+        "components",
+        "label-offsets",
+        "inertia",
+        "sourcing-strategies",
+        "dependencies"
+      ],
+      "expectedTexts": [
+        "Custom Portal",
+        "Identity Product",
+        "Managed Review",
+        "Legacy Ledger"
+      ],
+      "nativeFile": "prod_wardley_sourcing_posture_native.png",
+      "officialFile": "prod_wardley_sourcing_posture_official.png",
+      "nativeBytes": 46294,
+      "officialBytes": 45477,
+      "nativeSha256": "c9b93f315d0414d9b6b9f17afae0ae2a1375fad7a97c9f52143bd6dd795202c4",
+      "officialSha256": "d339c6f161f1b46d73134f6d3e9ed27c4ae1300e9d5c86b77364e982a4aab920",
+      "sourceSha256": "99d1dbd3581cff5640365a1c7d95b7536e7fc3a860d4171e3fcaf35e333f026c"
+    },
+    {
+      "id": "prod_wardley_link_semantics",
+      "kind": "wardley",
+      "title": "Dependency flow semantics",
+      "scenario": "Plain, dashed, directional, bidirectional, and labelled links share one map.",
+      "aspectRatio": 1.45,
+      "features": [
+        "dependencies",
+        "dashed-links",
+        "flow-links",
+        "link-labels"
+      ],
+      "expectedTexts": [
+        "Application",
+        "Gateway",
+        "Cache",
+        "Database",
+        "replicates"
+      ],
+      "nativeFile": "prod_wardley_link_semantics_native.png",
+      "officialFile": "prod_wardley_link_semantics_official.png",
+      "nativeBytes": 37547,
+      "officialBytes": 36067,
+      "nativeSha256": "71049b2b11e43fad34ebc0e6e825fa3eeb603d85c54b3ca5c49c96f35c948fd6",
+      "officialSha256": "254f32159280d367149bd11475ab76bff17d1290526eb518d537695022229b02",
+      "sourceSha256": "1b3bc0f4233509b69e2b7f2aa23b44de9080874d5819b3a9dec5d14f06ef9dad"
+    },
+    {
+      "id": "prod_wardley_evolution_plan",
+      "kind": "wardley",
+      "title": "Evolution plan",
+      "scenario": "Custom stage names, explicit stage widths, and component movement describe a future state.",
+      "aspectRatio": 1.45,
+      "features": [
+        "custom-evolution-stages",
+        "custom-stage-widths",
+        "evolution-trends",
+        "components"
+      ],
+      "expectedTexts": [
+        "Evolution Plan",
+        "Novel",
+        "Established",
+        "Decision Engine"
+      ],
+      "nativeFile": "prod_wardley_evolution_plan_native.png",
+      "officialFile": "prod_wardley_evolution_plan_official.png",
+      "nativeBytes": 33286,
+      "officialBytes": 32441,
+      "nativeSha256": "5bd4a372cc5cc2807cea7e6115954baf0c69566d27d0caa3899f315fdd097a5b",
+      "officialSha256": "c6b7c8e158e5421d44513749e4d61257e0252a582922469ff8b29ac841661a60",
+      "sourceSha256": "8ce2b94058092abf51acc0dbf834b7cae5144a17453f4efefb155593466be01a"
+    },
+    {
+      "id": "prod_wardley_platform_pipeline",
+      "kind": "wardley",
+      "title": "Platform pipeline",
+      "scenario": "Pipeline alternatives occupy distinct evolution positions under one parent capability.",
+      "aspectRatio": 1.55,
+      "features": [
+        "anchors",
+        "pipelines",
+        "label-offsets",
+        "dependencies"
+      ],
+      "expectedTexts": [
+        "Platform Pipeline",
+        "Analytics Platform",
+        "Batch Reports",
+        "Managed Insights"
+      ],
+      "nativeFile": "prod_wardley_platform_pipeline_native.png",
+      "officialFile": "prod_wardley_platform_pipeline_official.png",
+      "nativeBytes": 36439,
+      "officialBytes": 34702,
+      "nativeSha256": "73d9c384ee9d3f9ef4559cda98c80207d333eac981342e6fd35e7d7c23fd2fba",
+      "officialSha256": "352c580c1a7b25908c6988bb4e10db58898eb2d23bfd509771b4ccd7fd73ae17",
+      "sourceSha256": "f6ae2b2f9c8daad36442af739a429b1078c2eced7416f8d0925be5cec651f8f8"
+    },
+    {
+      "id": "prod_wardley_decision_record",
+      "kind": "wardley",
+      "title": "Strategic decision record",
+      "scenario": "Notes and numbered annotations retain strategic context beside mapped capabilities.",
+      "aspectRatio": 1.4,
+      "features": [
+        "notes",
+        "annotations",
+        "components",
+        "dependencies"
+      ],
+      "expectedTexts": [
+        "Strategic Decision Record",
+        "Phase migration",
+        "Integration boundary"
+      ],
+      "nativeFile": "prod_wardley_decision_record_native.png",
+      "officialFile": "prod_wardley_decision_record_official.png",
+      "nativeBytes": 46967,
+      "officialBytes": 46203,
+      "nativeSha256": "ab7f98a8d1750cfdedd4fa8f79b30c967fbb3ccd08bda47ba86576fe44a51296",
+      "officialSha256": "6f1f37be76bcef2b3a3f5746c28ce1d6dbb3221e015a8bd09becdd46decdd49d",
+      "sourceSha256": "2eb2cf8b2577de0a345213783f4a26a7b4eb0102c4f71ffb75ebf8fd87ad07e8"
+    },
+    {
+      "id": "prod_wardley_configured_forces",
+      "kind": "wardley",
+      "title": "Configured strategic forces",
+      "scenario": "Explicit source size and opposing forces exercise the Wardley layout.",
+      "aspectRatio": 1.55,
+      "features": [
+        "size",
+        "accelerators",
+        "deaccelerators",
+        "responsive-sizing"
+      ],
+      "expectedTexts": [
+        "Configured Strategic Forces",
+        "Modern Service",
+        "Cloud Investment",
+        "Migration Cost"
+      ],
+      "nativeFile": "prod_wardley_configured_forces_native.png",
+      "officialFile": "prod_wardley_configured_forces_official.png",
+      "nativeBytes": 33021,
+      "officialBytes": 34018,
+      "nativeSha256": "f76cc602f9f4f19254ed800469197518e507471d92b42e6a1851b7b63b3d0073",
+      "officialSha256": "d6b7c3a0ebf5dcb2b94dfad45b225bd45540c1cdf43d3867b1879525a9cae710",
+      "sourceSha256": "ad8f96c69f1721ed34a1956000d894f33bcdea956fcad249367d6242151217fd"
+    },
+    {
+      "id": "prod_wardley_accessible_regions",
+      "kind": "wardley",
+      "title": "Accessible regional strategy",
+      "scenario": "Theme variables, accessibility metadata, comments, entities, and Unicode coexist.",
+      "aspectRatio": 1.5,
+      "features": [
+        "accessibility",
+        "comments",
+        "entities",
+        "unicode",
+        "theme",
+        "theme-variables"
+      ],
+      "expectedTexts": [
+        "Regional Strategy",
+        "東京 Customer",
+        "서울 Verification",
+        "Privacy"
+      ],
+      "nativeFile": "prod_wardley_accessible_regions_native.png",
+      "officialFile": "prod_wardley_accessible_regions_official.png",
+      "nativeBytes": 37731,
+      "officialBytes": 35660,
+      "nativeSha256": "4e09e890a886b4eb9c5ee1d84c4c993470ffaae6a8efd4a917cd34858c665900",
+      "officialSha256": "9aa900a1bb970756af9767e0c529c516451493bcf3b2e15cfe30bdc9d7c3603b",
+      "sourceSha256": "ecfa60145c4c60f9fb8e790a683dcf023942cd939bdf94a39f4b2f0920b43e09"
+    },
+    {
+      "id": "rc_zenuml_service_conversation",
+      "kind": "zenuml",
+      "title": "Service conversation",
+      "scenario": "Declared participants and aliases exchange asynchronous request and response messages.",
+      "aspectRatio": 1.55,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_zenuml_service_conversation_native.png",
+      "officialFile": "rc_zenuml_service_conversation_official.png",
+      "nativeBytes": 55405,
+      "officialBytes": 50976,
+      "nativeSha256": "5c339bcaa4c06e632f2f20b40b4c54cec614562357fef249ca79635bbc94f654",
+      "officialSha256": "fa636c643f6747365f11bb23c851e9e2009b09bb524b2298b0a86a2f39ccd671",
+      "sourceSha256": "407108862fcc9de68a61157026eadd8e00457f026ecd773b914b6c95a7efa7f6"
+    },
+    {
+      "id": "rc_zenuml_nested_transaction",
+      "kind": "zenuml",
+      "title": "Nested transaction",
+      "scenario": "Nested synchronous calls, assignments, creation, and explicit replies model one transaction.",
+      "aspectRatio": 1.6,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_zenuml_nested_transaction_native.png",
+      "officialFile": "rc_zenuml_nested_transaction_official.png",
+      "nativeBytes": 61012,
+      "officialBytes": 52824,
+      "nativeSha256": "830d568a6ed01cca142927fc32125b36e28bb91aefafb07d56b14d3725e056f9",
+      "officialSha256": "892f7a7dee6d0faf8eb841fe05d023fa0213f2033ae718606aaad93020c47445",
+      "sourceSha256": "3bc0c81be3988b73ec7427d3fbf97d3b0426818072b6057f7ef75966fb6295dd"
+    },
+    {
+      "id": "rc_zenuml_conditional_fulfillment",
+      "kind": "zenuml",
+      "title": "Conditional fulfillment",
+      "scenario": "Alternative, optional, and loop fragments describe inventory and payment decisions.",
+      "aspectRatio": 1.5,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_zenuml_conditional_fulfillment_native.png",
+      "officialFile": "rc_zenuml_conditional_fulfillment_official.png",
+      "nativeBytes": 51170,
+      "officialBytes": 44593,
+      "nativeSha256": "3dcce6324dc3f9d1a2081d67a3aa2051989b70d00ea4edb879e6f5a226dfa90c",
+      "officialSha256": "7cc9894aab13f7548d68559633e92c71332e9048c52a4bdbdb69e5af46b21746",
+      "sourceSha256": "ecedef7f2150f5f8f6c423e6bc4a267d9f0317ca683a1a8a98919e8f4c392d23"
+    },
+    {
+      "id": "rc_zenuml_parallel_delivery",
+      "kind": "zenuml",
+      "title": "Parallel delivery",
+      "scenario": "Parallel, critical, section, and reference fragments coordinate independent service work.",
+      "aspectRatio": 1.65,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_zenuml_parallel_delivery_native.png",
+      "officialFile": "rc_zenuml_parallel_delivery_official.png",
+      "nativeBytes": 58652,
+      "officialBytes": 49299,
+      "nativeSha256": "11f6a9dfc3bdff166862700c178219532a236b580cdac8cc9932bc71b86139ee",
+      "officialSha256": "18c817556da092a10b12fcea82c56ef64807e829dfc116ad4e89654299e21f67",
+      "sourceSha256": "6dbabe2ee4cab037368ad675cb297c9f520abc917b2d95ad72245142d7869137"
+    },
+    {
+      "id": "rc_zenuml_regional_recovery",
+      "kind": "zenuml",
+      "title": "Regional recovery",
+      "scenario": "Grouped typed participants, comments, Unicode, and try/catch/finally recovery share one diagram.",
+      "aspectRatio": 1.7,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_zenuml_regional_recovery_native.png",
+      "officialFile": "rc_zenuml_regional_recovery_official.png",
+      "nativeBytes": 60683,
+      "officialBytes": 56201,
+      "nativeSha256": "18d2a5bac990a6ea7ba7bcd88732136310c1963196124d70435ca6a7151943da",
+      "officialSha256": "c8f8db4afd19d33789d5597e34e70d9ea4ef02a3c32d666cfde5fe0124214779",
+      "sourceSha256": "d3a17caf2813ac4d0e43fbea508884c0926d3ccc376f49fe130f858741a6f45e"
+    },
+    {
+      "id": "prod_zenuml_participant_exchange",
+      "kind": "zenuml",
+      "title": "Participant exchange",
+      "scenario": "Declared participants and aliases exchange asynchronous messages in source order.",
+      "aspectRatio": 1.55,
+      "features": [
+        "zenuml-header",
+        "titles",
+        "participants",
+        "aliases",
+        "async-messages"
+      ],
+      "expectedTexts": [
+        "Participant Exchange",
+        "Mobile Client",
+        "API Gateway",
+        "Submit request"
+      ],
+      "nativeFile": "prod_zenuml_participant_exchange_native.png",
+      "officialFile": "prod_zenuml_participant_exchange_official.png",
+      "nativeBytes": 54272,
+      "officialBytes": 49894,
+      "nativeSha256": "95311eb1084fde2c734b6bb850d4ec8ce4544ea8c6558af3be831b1d56abb6e9",
+      "officialSha256": "ed738718ed7037d2a01c158b6ee878dbeb38a67cc4791b3c40ca0ede87d160c0",
+      "sourceSha256": "1ece4eb5b04c9db15031e7c60f4130bf4940f3739625fe8dd2b96f5a7ee98a28"
+    },
+    {
+      "id": "prod_zenuml_grouped_participants",
+      "kind": "zenuml",
+      "title": "Grouped participant roles",
+      "scenario": "Participant annotators and a named group describe user, compute, and data roles.",
+      "aspectRatio": 1.6,
+      "features": [
+        "participants",
+        "annotators",
+        "participant-groups",
+        "async-messages"
+      ],
+      "expectedTexts": [
+        "Grouped Participant Roles",
+        "Customer",
+        "Regional Services",
+        "Open session"
+      ],
+      "nativeFile": "prod_zenuml_grouped_participants_native.png",
+      "officialFile": "prod_zenuml_grouped_participants_official.png",
+      "nativeBytes": 56268,
+      "officialBytes": 53433,
+      "nativeSha256": "bf92ccd7449fc84a46fc88fe43d72d1c037b795047a8611a1056678fa28c4294",
+      "officialSha256": "9f66756d1fe945f1952a298a1fdddc4293291a0a166c5da1450f124686ed65d5",
+      "sourceSha256": "e377b9f7fb937b10baf56daf591e45c5c06132a3714cfd71bc966ee418751553"
+    },
+    {
+      "id": "prod_zenuml_nested_transaction",
+      "kind": "zenuml",
+      "title": "Nested transaction",
+      "scenario": "A created participant enters nested synchronous calls with assignments and returns.",
+      "aspectRatio": 1.6,
+      "features": [
+        "sync-messages",
+        "nested-messages",
+        "creation-messages",
+        "assignments",
+        "return-messages"
+      ],
+      "expectedTexts": [
+        "Nested Payment Transaction",
+        "PaymentTransaction",
+        "submit(transaction)",
+        "validate(transaction)"
+      ],
+      "nativeFile": "prod_zenuml_nested_transaction_native.png",
+      "officialFile": "prod_zenuml_nested_transaction_official.png",
+      "nativeBytes": 58860,
+      "officialBytes": 50945,
+      "nativeSha256": "071587f2c903a9144155bff3244398664646e30edd373cb910e74fd3eb846b64",
+      "officialSha256": "ef58d629e51d72f4b3e32b5e9bf1d391a307b0d338a69e2f08f65075721d76be",
+      "sourceSha256": "f74fbef3d8ec27f32bb13b008c07c0ecfe817acbbc433e13a8236f9c35e5cd36"
+    },
+    {
+      "id": "prod_zenuml_reply_forms",
+      "kind": "zenuml",
+      "title": "Reply forms",
+      "scenario": "Dashed return arrows and the return annotator cover both reply spellings.",
+      "aspectRatio": 1.45,
+      "features": [
+        "async-messages",
+        "return-messages",
+        "return-annotator"
+      ],
+      "expectedTexts": [
+        "Reply Forms",
+        "Request data",
+        "Cached result",
+        "Fresh result"
+      ],
+      "nativeFile": "prod_zenuml_reply_forms_native.png",
+      "officialFile": "prod_zenuml_reply_forms_official.png",
+      "nativeBytes": 48677,
+      "officialBytes": 41289,
+      "nativeSha256": "c06e04979b3b36a9e5c65f590b90596be12de931f6b462c10815b812c2634ae4",
+      "officialSha256": "0daf8e9eafd55f7ddc895ef2f50f6bb2681ea050827020232ec3b66c332de600",
+      "sourceSha256": "315ca7828a96d69bc5c7607e340cd2a3fe3a007c6295c30ec2f17049471ca14f"
+    },
+    {
+      "id": "prod_zenuml_conditional_loop",
+      "kind": "zenuml",
+      "title": "Conditional item processing",
+      "scenario": "Alternative, loop, and optional fragments model conditional item processing.",
+      "aspectRatio": 1.5,
+      "features": [
+        "if-else",
+        "loop",
+        "opt",
+        "async-messages",
+        "sync-messages"
+      ],
+      "expectedTexts": [
+        "Conditional Item Processing",
+        "Place order",
+        "Report unavailable",
+        "authorize()"
+      ],
+      "nativeFile": "prod_zenuml_conditional_loop_native.png",
+      "officialFile": "prod_zenuml_conditional_loop_official.png",
+      "nativeBytes": 52716,
+      "officialBytes": 45663,
+      "nativeSha256": "103bfd57a274f05d193a01eeba650c5a10cb521793f8f89cf86d9ddcb31dc249",
+      "officialSha256": "1df611aea16e570649a150c8041b737d78f5767881786dd978893d174756b48d",
+      "sourceSha256": "658fe27f714ce4abb1fc0090484beb002781f5bc71f9a7783a4b60c9273ef4e7"
+    },
+    {
+      "id": "prod_zenuml_parallel_sections",
+      "kind": "zenuml",
+      "title": "Parallel delivery sections",
+      "scenario": "Parallel, critical, section, and reference fragments coordinate service work.",
+      "aspectRatio": 1.7,
+      "features": [
+        "par",
+        "critical",
+        "section",
+        "ref",
+        "async-messages",
+        "sync-messages"
+      ],
+      "expectedTexts": [
+        "Parallel Delivery Sections",
+        "Reserve stock",
+        "Authorize payment",
+        "Send receipt"
+      ],
+      "nativeFile": "prod_zenuml_parallel_sections_native.png",
+      "officialFile": "prod_zenuml_parallel_sections_official.png",
+      "nativeBytes": 60617,
+      "officialBytes": 51114,
+      "nativeSha256": "128c1a028a58523bd69091c8fa8e773a78e0728b87a67be849912f2c7e153e79",
+      "officialSha256": "408541476d25ef8a2e757780c77b0030a8a40dff4d37cd28ea7550be590c175e",
+      "sourceSha256": "a2f1e53dffbc4596d62318c43aef21d29758dcfd2f0767ad04ed227de7ed89ec"
+    },
+    {
+      "id": "prod_zenuml_recovery_flow",
+      "kind": "zenuml",
+      "title": "Recovery flow",
+      "scenario": "Try, catch, and finally sections preserve success, failure, and cleanup interactions.",
+      "aspectRatio": 1.55,
+      "features": [
+        "try-catch-finally",
+        "nested-messages",
+        "async-messages",
+        "sync-messages"
+      ],
+      "expectedTexts": [
+        "Recovery Flow",
+        "Book request",
+        "Show failure",
+        "rollback()"
+      ],
+      "nativeFile": "prod_zenuml_recovery_flow_native.png",
+      "officialFile": "prod_zenuml_recovery_flow_official.png",
+      "nativeBytes": 46915,
+      "officialBytes": 40292,
+      "nativeSha256": "2bf7ef55ca9c33a1be14f1deba9163bce699e8fde7c2a5cf111ead65ed7b2350",
+      "officialSha256": "a63bc4ad40c4fe20740d5aaeeb72ea1d4dd73a989c1a760ec89b656127744591",
+      "sourceSha256": "2c9c6fd68b8e0789a6fd507fdc85bab6e4d95cec4f0cb44e607f58a8e5be01aa"
+    },
+    {
+      "id": "prod_zenuml_documented_context",
+      "kind": "zenuml",
+      "title": "Documented regional context",
+      "scenario": "An ignored frontmatter title, styled comments, dividers, and Unicode labels share one interaction.",
+      "aspectRatio": 1.6,
+      "features": [
+        "frontmatter-title",
+        "comments",
+        "markdown",
+        "dividers",
+        "unicode",
+        "async-messages"
+      ],
+      "expectedTexts": [
+        "Tokyo review",
+        "서울 승인",
+        "phase two"
+      ],
+      "nativeFile": "prod_zenuml_documented_context_native.png",
+      "officialFile": "prod_zenuml_documented_context_official.png",
+      "nativeBytes": 38143,
+      "officialBytes": 34742,
+      "nativeSha256": "2616f6fd5e973ba7cd927813738f2035085ceba5373ccca1dec6755cc56f6a56",
+      "officialSha256": "748c24e3b43d719551761e0cad885811ac26b18ac4067cdd408a3e457938d6ab",
+      "sourceSha256": "022751551fb2a81db51cf297948612968154445a146fc5529070545b6c1396f9"
     }
   ]
 }

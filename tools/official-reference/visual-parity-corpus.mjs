@@ -33,6 +33,8 @@ export const kinds = [
   'eventmodeling',
   'agentflow',
   'usecase',
+  'wardley',
+  'zenuml',
 ];
 
 export const casesPerKind = 256;
@@ -203,9 +205,34 @@ function addVisibleVariation(kind, source, evidenceId, label, ordinal) {
       return `${source.trimEnd()}
 ${evidenceId}("${escapeQuotedLabel(label)}")
 `;
+    case 'wardley':
+      return `${source.trimEnd()}
+note "${escapeQuotedLabel(label)}" [0.08, 0.92]
+`;
+    case 'zenuml':
+      return insertZenUmlParticipant(source, evidenceId, label);
     default:
       throw new Error(`Unsupported visual parity kind: ${kind}`);
   }
+}
+
+function insertZenUmlParticipant(source, evidenceId, label) {
+  const lines = source.split(/\r?\n/);
+  const declarationIndex = lines.findIndex((line) => line.trim() === 'zenuml');
+  if (declarationIndex < 0) {
+    throw new Error('Missing ZenUML declaration while adding visual evidence');
+  }
+  const titleIndex = lines.findIndex(
+    (line, index) =>
+      index > declarationIndex && line.trimStart().startsWith('title '),
+  );
+  const insertionIndex = titleIndex >= 0 ? titleIndex + 1 : declarationIndex + 1;
+  lines.splice(
+    insertionIndex,
+    0,
+    `  ${evidenceId} as "${escapeQuotedLabel(label)}"`,
+  );
+  return lines.join('\n');
 }
 
 function appendRailroadEvidence(source, evidenceId, label) {

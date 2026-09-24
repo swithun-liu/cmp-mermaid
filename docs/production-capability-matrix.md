@@ -1,9 +1,9 @@
 # Production Capability Matrix
 
-> [!WARNING]
-> This matrix covers the 31 currently implemented
-> families. It is not the Mermaid 12.0.0 full-family matrix and does not confer
-> Stable status. See
+> [!NOTE]
+> This matrix covers all 33 implemented families and feeds the completed Stable
+> gate. It defines tested coverage, not support for every possible legal
+> Mermaid program. See
 > [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
 
 This matrix defines the major Mermaid `12.0.0` capabilities exercised by the
@@ -14,18 +14,18 @@ and enforced by
 
 ## Current State
 
-- 31 supported diagram types
-- 415 production scenarios
-- 258 conformance scenarios created independently from the demo gallery
+- 33 supported diagram types
+- 441 production scenarios
+- 274 conformance scenarios created independently from the demo gallery
 - 16 required capability points for Flowchart, XY Chart, Timeline, Sequence,
   Class, State, Entity Relationship, Gantt, Pie, and User Journey; 17 for
   Quadrant Chart, Kanban, Requirement, and Packet; 15 for Swimlanes; 18 for
-  Architecture; 24 for Railroad; 22 for TreeView; 26 for C4; 38 for Use Case;
-  and the per-family counts shown
+  Architecture; 24 for Railroad; 22 for TreeView; 26 for C4 and ZenUML; 30 for
+  Wardley Map; 38 for Use Case; and the per-family counts shown
   below for the remaining families
-- 682/682 declared capability points covered
-- 7,936 additional visual-matrix sources: 256 per diagram type
-- 7,936 separate Native-only randomized stress inputs
+- 738/738 declared capability points covered
+- 8,448 additional visual-matrix sources: 256 per diagram type
+- 8,448 published Native/Official matrix pairs
 
 ## Coverage
 
@@ -38,6 +38,8 @@ and enforced by
 | Railroad | 13 | Railroad IR, EBNF, ABNF, and PEG headers; terminals, non-terminals, sequences, choices, optionals, zero-or-more and one-or-more repetition, special nodes, ISO EBNF and exceptions, bounded ABNF repetition and numeric values, PEG predicates and any-character matching, comments, accessibility, frontmatter configuration, themes, Unicode, and entities |
 | TreeView | 13 | treeView-beta header, indentation, standard and heavy box-drawing syntax, files, directories, quoted and bare labels, classes, highlights, descriptions, explicit/default/suppressed icons, filename and extension icon maps, frontmatter configuration, themes, accessibility, comments, Unicode, and entities |
 | Use Case | 18 | usecase-beta header, directions, actor variants and icons, business elements, stereotypes, ellipse and rectangle use cases, system and package boundaries, association markers and labels, minimum length, include/extend/generalization, edge IDs/classes/styles/animation, notes, JSON tables, classes, inline styles, frontmatter title reset and configuration, accessibility, comments, entities, Unicode, Markdown, responsive/intrinsic sizing, themes, theme variables, and color rotation |
+| Wardley Map | 13 | wardley-beta header, titles, size, anchors, components, coordinates, label offsets, inertia, build/buy/outsource/market sourcing, plain/dashed/directional/bidirectional dependencies, labels, evolution trends, custom stages and widths, pipelines, notes, annotations, accelerators/deaccelerators, accessibility, comments, entities, Unicode, themes, theme variables, and responsive sizing; caller configuration is covered separately because Mermaid.js 12.0.0 sanitizes `wardley-beta` source configuration |
+| ZenUML | 13 | zenuml header, source/frontmatter titles, explicit and inferred participants, aliases, annotators, groups, asynchronous/synchronous/nested/creation/return messages, assignments, return annotators, comments, Markdown, dividers, if/else, loop, parallel, optional, critical, section, reference, try/catch/finally, and Unicode |
 | XY Chart | 13 | vertical, horizontal, categorical axis, numeric axis, explicit domain, automatic domain, bars, lines, mixed plots, legend, data labels, outside labels, point labels, axis rotation, theme palette, component visibility |
 | Quadrant Chart | 13 | title, axes, quadrant labels, points, boundary points, empty charts, point radius/fill/stroke, classes, direct-style precedence, frontmatter config, theme colors, metadata, Unicode, comments |
 | Timeline | 13 | LR, TD, title, periods, events, continued events, sections, sectionless colors, disabled multicolor, HTML breaks, frontmatter config, theme colors, Redux themes, metadata, Unicode, comments |
@@ -68,14 +70,14 @@ and enforced by
 The corpus generator fails when:
 
 - a diagram type does not have its expected number of cases;
-- one of the 682 required capability points has no conformance case;
+- one of the 738 required capability points has no conformance case;
 - a case reuses a demo or prior RC source;
 - a case has no semantic text expectation;
 - a case declares an unknown capability point.
 
 `ProductionCorpusTest` then requires every source to render with finite,
 bounded geometry and expected semantic text, compares two complete SceneGraphs
-for determinism, and renders all 31 diagram types across all 11 built-in
+for determinism, and renders all 33 diagram types across all 11 built-in
 themes.
 The legacy Web audit captures Native and Mermaid.js output for every case and
 enforces blank-image and content-geometry limits. The replacement detail audit
@@ -85,12 +87,14 @@ foreground masks, edges, colors, and review heatmaps.
 
 The large-scale visual matrix adds 256 unique sources per type by combining at
 least 13 complex production structures with visible text and layout-pressure
-profiles. All 7,936 sources render in the Native core test and all 7,936
-Native/Official pairs pass the geometry gate. The original 12-family report
+profiles. All 8,448 sources render in the Native core test. The 7,936
+Native/Official pairs from the prior 31-family gate and the additional 512
+Wardley Map and ZenUML pairs pass the geometry gate.
+The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
-defect and is not a detail-parity pass by itself. All 31 implemented families
-contribute 7,936 Native/Official pairs accepted by the replacement detail
-gate. Twenty families contribute `5,120 pass / 0 review / 0 fail`; ER contributes
+defect and is not a detail-parity pass by itself. All 33 families contribute
+8,448 Native/Official pairs accepted by the replacement detail gate. Twenty-two
+families contribute `5,632 pass / 0 review / 0 fail`; ER contributes
 `196 pass / 60 manually reviewed / 0 fail`; Journey contributes
 `237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
@@ -102,7 +106,8 @@ contributes `0 automatic pass / 256 manually accepted / 0 unresolved`; Block
 contributes `253 automatic pass / 3 manually accepted / 0 unresolved`;
 Swimlanes contributes `196 automatic pass / 60 manually accepted / 0
 unresolved`; Architecture, C4, Railroad, and TreeView each contribute
-`256 automatic pass / 0 review / 0 fail`; Use Case contributes
+`256 automatic pass / 0 review / 0 fail`; Wardley Map and ZenUML each
+contribute `256 automatic pass / 0 review / 0 fail`; Use Case contributes
 `72 automatic pass / 184 manually reviewed / 0 unresolved`.
 Journey reviews are benign
 platform-font line-segmentation differences for one complete long actor label.
@@ -123,8 +128,8 @@ reviews are three paint-order occlusion ratio threshold findings with matching
 visible shapes, labels, edges, and markers. Swimlanes reviews contain only
 text-position findings along semantically equivalent orthogonal routes; all
 lanes, shapes, labels, markers, and endpoints were manually verified. The
-matrix is not counted as 7,936
-independent topologies. The separate randomized stress corpus
+matrix is not counted as 8,448
+independent topologies. The prior separate randomized stress corpus
 remains Native-only robustness evidence and is not presented as Official
 parity.
 

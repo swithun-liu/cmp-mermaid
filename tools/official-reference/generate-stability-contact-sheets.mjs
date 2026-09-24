@@ -72,6 +72,8 @@ const kinds = [
   'eventmodeling',
   'agentflow',
   'usecase',
+  'wardley',
+  'zenuml',
 ];
 const kindTitles = {
   flowchart: 'Flowchart',
@@ -105,6 +107,8 @@ const kindTitles = {
   eventmodeling: 'Event Modeling',
   agentflow: 'Agentflow',
   usecase: 'Use Case',
+  wardley: 'Wardley Map',
+  zenuml: 'ZenUML',
 };
 const selectedKinds = kinds.filter(
   (kind) => corpusKind === 'all' || corpusKind === kind,

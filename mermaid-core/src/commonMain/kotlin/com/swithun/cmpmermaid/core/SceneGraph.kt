@@ -119,6 +119,12 @@ data class SceneLinearGradient(
     val endColor: SceneColor,
     val start: ScenePoint = ScenePoint(0f, 0f),
     val end: ScenePoint = ScenePoint(1f, 0f),
+    val colorStops: List<SceneGradientStop> = emptyList(),
+)
+
+data class SceneGradientStop(
+    val offset: Float,
+    val color: SceneColor,
 )
 
 data class SceneShape(
@@ -157,8 +163,40 @@ enum class SceneShapePaint {
     Stroke,
 }
 
+enum class ScenePathFillRule {
+    NonZero,
+    EvenOdd,
+}
+
+enum class SceneStrokeCap {
+    Butt,
+    Round,
+    Square,
+}
+
+enum class SceneStrokeJoin {
+    Miter,
+    Round,
+    Bevel,
+}
+
+enum class SceneShapeViewportFit {
+    Stretch,
+    MeetStart,
+    MeetCenter,
+}
+
+data class SceneAffineTransform(
+    val scaleX: Float = 1f,
+    val skewY: Float = 0f,
+    val skewX: Float = 0f,
+    val scaleY: Float = 1f,
+    val translateX: Float = 0f,
+    val translateY: Float = 0f,
+)
+
 data class SceneShapePath(
-    val points: List<ScenePoint>,
+    val points: List<ScenePoint> = emptyList(),
     val closed: Boolean = true,
     val fill: SceneShapePaint = SceneShapePaint.Fill,
     val stroke: SceneShapePaint = SceneShapePaint.Stroke,
@@ -166,7 +204,14 @@ data class SceneShapePath(
     val strokePattern: SceneStrokePattern = SceneStrokePattern.Solid,
     val dashIntervals: List<Float> = emptyList(),
     val opacity: Float = 1f,
+    val pathData: String? = null,
+    val fillRule: ScenePathFillRule = ScenePathFillRule.NonZero,
+    val fillColor: SceneColor? = null,
+    val fillGradient: SceneLinearGradient? = null,
     val strokeColor: SceneColor? = null,
+    val strokeCap: SceneStrokeCap = SceneStrokeCap.Butt,
+    val strokeJoin: SceneStrokeJoin = SceneStrokeJoin.Miter,
+    val transform: SceneAffineTransform? = null,
 )
 
 /**
@@ -176,6 +221,8 @@ data class SceneShapePath(
 data class SceneShapeGeometry(
     val paths: List<SceneShapePath>,
     val outline: List<ScenePoint>,
+    val viewBox: SceneRect? = null,
+    val viewportFit: SceneShapeViewportFit = SceneShapeViewportFit.Stretch,
 )
 
 data class SceneText(

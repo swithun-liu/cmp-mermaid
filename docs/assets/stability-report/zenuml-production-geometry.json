@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-23T17:08:53.224Z",
+  "inputDirectory": "captures/local/zenuml-production-final",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_zenuml_service_conversation",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 73109,
+        "inkRatio": 0.06769351851851851,
+        "contentBounds": {
+          "x": 8,
+          "y": 80,
+          "width": 1184,
+          "height": 740
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 65486,
+        "inkRatio": 0.06063518518518519,
+        "contentBounds": {
+          "x": 46,
+          "y": 103,
+          "width": 1108,
+          "height": 694
+        }
+      },
+      "widthRatio": 1.068592057761733,
+      "heightRatio": 1.0662824207492796,
+      "inkRatio": 1.116406560180802
+    },
+    {
+      "id": "rc_zenuml_nested_transaction",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 62819,
+        "inkRatio": 0.05816574074074074,
+        "contentBounds": {
+          "x": 8,
+          "y": 93,
+          "width": 1184,
+          "height": 714
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53825,
+        "inkRatio": 0.049837962962962966,
+        "contentBounds": {
+          "x": 34,
+          "y": 108,
+          "width": 1132,
+          "height": 684
+        }
+      },
+      "widthRatio": 1.0459363957597174,
+      "heightRatio": 1.043859649122807,
+      "inkRatio": 1.1670970738504411
+    },
+    {
+      "id": "rc_zenuml_conditional_fulfillment",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 138579,
+        "inkRatio": 0.1283138888888889,
+        "contentBounds": {
+          "x": 154,
+          "y": 8,
+          "width": 892,
+          "height": 884
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 117242,
+        "inkRatio": 0.10855740740740741,
+        "contentBounds": {
+          "x": 181,
+          "y": 32,
+          "width": 838,
+          "height": 836
+        }
+      },
+      "widthRatio": 1.0644391408114557,
+      "heightRatio": 1.0574162679425838,
+      "inkRatio": 1.18199109534126
+    },
+    {
+      "id": "rc_zenuml_parallel_delivery",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 184457,
+        "inkRatio": 0.1707935185185185,
+        "contentBounds": {
+          "x": 75,
+          "y": 8,
+          "width": 1050,
+          "height": 884
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 157054,
+        "inkRatio": 0.14542037037037037,
+        "contentBounds": {
+          "x": 107,
+          "y": 33,
+          "width": 986,
+          "height": 834
+        }
+      },
+      "widthRatio": 1.0649087221095335,
+      "heightRatio": 1.0599520383693046,
+      "inkRatio": 1.1744813885669896
+    },
+    {
+      "id": "rc_zenuml_regional_recovery",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 89498,
+        "inkRatio": 0.08286851851851852,
+        "contentBounds": {
+          "x": 206,
+          "y": 8,
+          "width": 788,
+          "height": 884
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 72532,
+        "inkRatio": 0.06715925925925927,
+        "contentBounds": {
+          "x": 232,
+          "y": 34,
+          "width": 736,
+          "height": 832
+        }
+      },
+      "widthRatio": 1.0706521739130435,
+      "heightRatio": 1.0625,
+      "inkRatio": 1.2339105498262835
+    },
+    {
+      "id": "prod_zenuml_participant_exchange",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 73587,
+        "inkRatio": 0.0681361111111111,
+        "contentBounds": {
+          "x": 8,
+          "y": 80,
+          "width": 1184,
+          "height": 740
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 65882,
+        "inkRatio": 0.06100185185185185,
+        "contentBounds": {
+          "x": 46,
+          "y": 103,
+          "width": 1108,
+          "height": 694
+        }
+      },
+      "widthRatio": 1.068592057761733,
+      "heightRatio": 1.0662824207492796,
+      "inkRatio": 1.1169515193831394
+    },
+    {
+      "id": "prod_zenuml_grouped_participants",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 71788,
+        "inkRatio": 0.06647037037037037,
+        "contentBounds": {
+          "x": 8,
+          "y": 159,
+          "width": 1184,
+          "height": 583
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 65728,
+        "inkRatio": 0.06085925925925926,
+        "contentBounds": {
+          "x": 46,
+          "y": 178,
+          "width": 1108,
+          "height": 544
+        }
+      },
+      "widthRatio": 1.068592057761733,
+      "heightRatio": 1.0716911764705883,
+      "inkRatio": 1.0921981499513145
+    },
+    {
+      "id": "prod_zenuml_nested_transaction",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53244,
+        "inkRatio": 0.0493,
+        "contentBounds": {
+          "x": 8,
+          "y": 130,
+          "width": 1184,
+          "height": 640
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 48859,
+        "inkRatio": 0.045239814814814816,
+        "contentBounds": {
+          "x": 32,
+          "y": 142,
+          "width": 1136,
+          "height": 616
+        }
+      },
+      "widthRatio": 1.0422535211267605,
+      "heightRatio": 1.0389610389610389,
+      "inkRatio": 1.0897480505126997
+    },
+    {
+      "id": "prod_zenuml_reply_forms",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 75486,
+        "inkRatio": 0.06989444444444444,
+        "contentBounds": {
+          "x": 8,
+          "y": 44,
+          "width": 1184,
+          "height": 812
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 65150,
+        "inkRatio": 0.06032407407407407,
+        "contentBounds": {
+          "x": 53,
+          "y": 75,
+          "width": 1094,
+          "height": 750
+        }
+      },
+      "widthRatio": 1.0822669104204754,
+      "heightRatio": 1.0826666666666667,
+      "inkRatio": 1.158649270913277
+    },
+    {
+      "id": "prod_zenuml_conditional_loop",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 138976,
+        "inkRatio": 0.12868148148148148,
+        "contentBounds": {
+          "x": 154,
+          "y": 8,
+          "width": 892,
+          "height": 884
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 117732,
+        "inkRatio": 0.10901111111111111,
+        "contentBounds": {
+          "x": 181,
+          "y": 32,
+          "width": 838,
+          "height": 836
+        }
+      },
+      "widthRatio": 1.0644391408114557,
+      "heightRatio": 1.0574162679425838,
+      "inkRatio": 1.180443719634424
+    },
+    {
+      "id": "prod_zenuml_parallel_sections",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 185414,
+        "inkRatio": 0.17167962962962963,
+        "contentBounds": {
+          "x": 75,
+          "y": 8,
+          "width": 1050,
+          "height": 884
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 158079,
+        "inkRatio": 0.14636944444444444,
+        "contentBounds": {
+          "x": 107,
+          "y": 33,
+          "width": 986,
+          "height": 834
+        }
+      },
+      "widthRatio": 1.0649087221095335,
+      "heightRatio": 1.0599520383693046,
+      "inkRatio": 1.1729198691793343
+    },
+    {
+      "id": "prod_zenuml_recovery_flow",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 88478,
+        "inkRatio": 0.08192407407407408,
+        "contentBounds": {
+          "x": 174,
+          "y": 8,
+          "width": 852,
+          "height": 884
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 74761,
+        "inkRatio": 0.06922314814814814,
+        "contentBounds": {
+          "x": 204,
+          "y": 34,
+          "width": 792,
+          "height": 832
+        }
+      },
+      "widthRatio": 1.0757575757575757,
+      "heightRatio": 1.0625,
+      "inkRatio": 1.18347801661294
+    },
+    {
+      "id": "prod_zenuml_documented_context",
+      "kind": "zenuml",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 72863,
+        "inkRatio": 0.06746574074074074,
+        "contentBounds": {
+          "x": 236,
+          "y": 8,
+          "width": 728,
+          "height": 884
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 59813,
+        "inkRatio": 0.05538240740740741,
+        "contentBounds": {
+          "x": 269,
+          "y": 49,
+          "width": 662,
+          "height": 802
+        }
+      },
+      "widthRatio": 1.0996978851963746,
+      "heightRatio": 1.1022443890274314,
+      "inkRatio": 1.218179994315617
+    }
+  ]
+}

@@ -36,7 +36,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryProductionCaseWithValidSceneGeometryAndExpectedText() {
-        assertEquals(415, productionCorpusCases.size)
+        assertEquals(441, productionCorpusCases.size)
         assertEquals(
             mapOf(
                 "flowchart" to 14,
@@ -70,13 +70,15 @@ class ProductionCorpusTest {
                 "eventmodeling" to 13,
                 "agentflow" to 13,
                 "usecase" to 18,
+                "wardley" to 13,
+                "zenuml" to 13,
             ),
             productionCorpusCases.groupingBy(StabilityCorpusCase::diagramId).eachCount(),
         )
         val conformanceCases = productionCorpusCases.filter { case ->
             case.id.startsWith("prod_")
         }
-        assertEquals(258, conformanceCases.size)
+        assertEquals(274, conformanceCases.size)
         assertTrue(conformanceCases.all { case -> case.expectedTexts.isNotEmpty() })
         assertTrue(conformanceCases.all { case -> case.features.isNotEmpty() })
 
@@ -119,7 +121,7 @@ class ProductionCorpusTest {
 
     @Test
     fun rendersEveryLargeScaleVisualParityCase() {
-        assertEquals(7_936, visualParityCorpusCases.size)
+        assertEquals(8_448, visualParityCorpusCases.size)
         assertEquals(
             setOf(
                 "flowchart",
@@ -153,6 +155,8 @@ class ProductionCorpusTest {
                 "eventmodeling",
                 "agentflow",
                 "usecase",
+                "wardley",
+                "zenuml",
             ).associateWith { 256 },
             visualParityCorpusCases
                 .groupingBy(StabilityCorpusCase::diagramId)
@@ -218,7 +222,7 @@ class ProductionCorpusTest {
             .groupBy(StabilityCorpusCase::diagramId)
             .mapValues { (_, cases) -> cases.first() }
 
-        assertEquals(31, representatives.size)
+        assertEquals(33, representatives.size)
         representatives.forEach { (diagramId, case) ->
             MermaidThemePreset.entries.forEach { preset ->
                 val result = engine.render(

@@ -745,6 +745,64 @@ export const requiredFeaturesByKind = {
     'theme-variables',
     'color-rotation',
   ],
+  wardley: [
+    'wardley-beta-header',
+    'titles',
+    'size',
+    'anchors',
+    'components',
+    'coordinates',
+    'label-offsets',
+    'inertia',
+    'sourcing-strategies',
+    'dependencies',
+    'dashed-links',
+    'flow-links',
+    'link-labels',
+    'evolution-trends',
+    'custom-evolution-stages',
+    'custom-stage-widths',
+    'pipelines',
+    'notes',
+    'annotations',
+    'accelerators',
+    'deaccelerators',
+    'accessibility',
+    'comments',
+    'entities',
+    'unicode',
+    'theme',
+    'theme-variables',
+    'responsive-sizing',
+  ],
+  zenuml: [
+    'zenuml-header',
+    'titles',
+    'frontmatter-title',
+    'participants',
+    'aliases',
+    'annotators',
+    'participant-groups',
+    'async-messages',
+    'sync-messages',
+    'nested-messages',
+    'creation-messages',
+    'assignments',
+    'return-messages',
+    'return-annotator',
+    'comments',
+    'markdown',
+    'dividers',
+    'if-else',
+    'loop',
+    'par',
+    'opt',
+    'critical',
+    'section',
+    'ref',
+    'try-catch-finally',
+    'unicode',
+  ],
 };
 
 const flowchartCases = [
@@ -7419,6 +7477,460 @@ kanban
   },
 ];
 
+const wardleyCases = [
+  {
+    id: 'prod_wardley_value_chain',
+    kind: 'wardley',
+    title: 'Product value chain',
+    scenario: 'An anchor and ordered components form a visible customer-to-utility dependency chain.',
+    aspectRatio: 1.45,
+    features: [
+      'wardley-beta-header',
+      'titles',
+      'anchors',
+      'components',
+      'coordinates',
+      'dependencies',
+    ],
+    expectedTexts: ['Product Value Chain', 'Customer', 'Digital Product', 'Cloud Utility'],
+    source: String.raw`
+wardley-beta
+title Product Value Chain
+anchor Customer [0.94, 0.90]
+component Digital Product [0.80, 0.62]
+component Service API [0.64, 0.55]
+component Data Store [0.43, 0.72]
+component Cloud Utility [0.20, 0.92]
+Customer -> Digital Product
+Digital Product -> Service API
+Service API -> Data Store
+Data Store -> Cloud Utility
+`,
+  },
+  {
+    id: 'prod_wardley_sourcing_posture',
+    kind: 'wardley',
+    title: 'Sourcing posture',
+    scenario: 'Every sourcing marker, inertia, and an explicit label offset are visible together.',
+    aspectRatio: 1.5,
+    features: [
+      'components',
+      'label-offsets',
+      'inertia',
+      'sourcing-strategies',
+      'dependencies',
+    ],
+    expectedTexts: ['Custom Portal', 'Identity Product', 'Managed Review', 'Legacy Ledger'],
+    source: String.raw`
+wardley-beta
+title Sourcing Posture
+component Custom Portal [0.78, 0.34] label [-58, 14] (build)
+component Identity Product [0.64, 0.66] (buy)
+component Managed Review [0.52, 0.46] (outsource)
+component Compute Utility [0.26, 0.91] (market)
+component Legacy Ledger [0.40, 0.39] (inertia)
+Custom Portal -> Identity Product
+Custom Portal -> Managed Review
+Identity Product -> Legacy Ledger
+Legacy Ledger -> Compute Utility
+`,
+  },
+  {
+    id: 'prod_wardley_link_semantics',
+    kind: 'wardley',
+    title: 'Dependency flow semantics',
+    scenario: 'Plain, dashed, directional, bidirectional, and labelled links share one map.',
+    aspectRatio: 1.45,
+    features: [
+      'dependencies',
+      'dashed-links',
+      'flow-links',
+      'link-labels',
+    ],
+    expectedTexts: ['Application', 'Gateway', 'Cache', 'Database', 'replicates'],
+    source: String.raw`
+wardley-beta
+title Dependency Flow Semantics
+component Application [0.82, 0.78]
+component Gateway [0.70, 0.62]
+component Cache [0.58, 0.48]
+component Database [0.38, 0.72]
+Application -> Gateway
+Gateway -.-> Cache
+Gateway +> Database
+Cache +<> Database
+Cache +'replicates'> Database
+`,
+  },
+  {
+    id: 'prod_wardley_evolution_plan',
+    kind: 'wardley',
+    title: 'Evolution plan',
+    scenario: 'Custom stage names, explicit stage widths, and component movement describe a future state.',
+    aspectRatio: 1.45,
+    features: [
+      'custom-evolution-stages',
+      'custom-stage-widths',
+      'evolution-trends',
+      'components',
+    ],
+    expectedTexts: ['Evolution Plan', 'Novel', 'Established', 'Decision Engine'],
+    source: String.raw`
+wardley-beta
+title Evolution Plan
+evolution Novel@0.20 -> Emerging@0.46 -> Established@0.76 -> Utility@1.0
+component Decision Engine [0.68, 0.38]
+component Model Runtime [0.52, 0.57]
+component Compute [0.28, 0.88]
+Decision Engine -> Model Runtime
+Model Runtime -> Compute
+evolve Decision Engine 0.72
+evolve Model Runtime 0.80
+`,
+  },
+  {
+    id: 'prod_wardley_platform_pipeline',
+    kind: 'wardley',
+    title: 'Platform pipeline',
+    scenario: 'Pipeline alternatives occupy distinct evolution positions under one parent capability.',
+    aspectRatio: 1.55,
+    features: [
+      'anchors',
+      'pipelines',
+      'label-offsets',
+      'dependencies',
+    ],
+    expectedTexts: ['Platform Pipeline', 'Analytics Platform', 'Batch Reports', 'Managed Insights'],
+    source: String.raw`
+wardley-beta
+title Platform Pipeline
+anchor Analyst [0.92, 0.90]
+component Analytics Platform [0.58, 0.58]
+Analyst -> Analytics Platform
+pipeline Analytics Platform {
+  component Batch Reports [0.25]
+  component Data Warehouse [0.52] label [-52, 18]
+  component Managed Insights [0.84]
+}
+Batch Reports -> Data Warehouse
+Data Warehouse -> Managed Insights
+`,
+  },
+  {
+    id: 'prod_wardley_decision_record',
+    kind: 'wardley',
+    title: 'Strategic decision record',
+    scenario: 'Notes and numbered annotations retain strategic context beside mapped capabilities.',
+    aspectRatio: 1.4,
+    features: [
+      'notes',
+      'annotations',
+      'components',
+      'dependencies',
+    ],
+    expectedTexts: ['Strategic Decision Record', 'Phase migration', 'Integration boundary'],
+    source: String.raw`
+wardley-beta
+title Strategic Decision Record
+component Legacy Core [0.34, 0.30] (inertia)
+component Integration API [0.60, 0.56]
+component Automation [0.72, 0.43]
+Legacy Core -> Integration API
+Integration API -> Automation
+note "Phase migration before automation" [0.48, 0.52]
+annotations [0.12, 0.88]
+annotation 1,[0.34, 0.27] "Legacy constraint"
+annotation 2,[0.60, 0.53] "Integration boundary"
+annotation 3,[0.72, 0.40] "Automation target"
+`,
+  },
+  {
+    id: 'prod_wardley_configured_forces',
+    kind: 'wardley',
+    title: 'Configured strategic forces',
+    scenario: 'Explicit source size and opposing forces exercise the Wardley layout.',
+    aspectRatio: 1.55,
+    features: [
+      'size',
+      'accelerators',
+      'deaccelerators',
+      'responsive-sizing',
+    ],
+    expectedTexts: ['Configured Strategic Forces', 'Modern Service', 'Cloud Investment', 'Migration Cost'],
+    source: String.raw`
+wardley-beta
+title Configured Strategic Forces
+size [960, 640]
+component Legacy Service [0.36, 0.32]
+component Modern Service [0.66, 0.62]
+Legacy Service -> Modern Service
+accelerator "Cloud Investment" [0.24, 0.84]
+deaccelerator "Migration Cost" [0.44, 0.26]
+`,
+  },
+  {
+    id: 'prod_wardley_accessible_regions',
+    kind: 'wardley',
+    title: 'Accessible regional strategy',
+    scenario: 'Theme variables, accessibility metadata, comments, entities, and Unicode coexist.',
+    aspectRatio: 1.5,
+    features: [
+      'accessibility',
+      'comments',
+      'entities',
+      'unicode',
+      'theme',
+      'theme-variables',
+    ],
+    expectedTexts: ['Regional Strategy', '東京 Customer', '서울 Verification', 'Privacy'],
+    source: String.raw`
+---
+config:
+  theme: base
+  themeVariables:
+    wardley:
+      backgroundColor: "#f8fafc"
+      axisColor: "#334155"
+---
+wardley-beta
+title Regional Strategy
+accTitle: Accessible regional strategy
+accDescr: Teams coordinate services across Tokyo, Seoul, and Sao Paulo.
+%% Regional labels exercise decoded and mixed-script text.
+anchor "東京 Customer" [0.92, 0.90]
+component "서울 Verification" [0.68, 0.58]
+component "São Paulo Approval" [0.48, 0.76]
+"東京 Customer" -> "서울 Verification"
+"서울 Verification" -> "São Paulo Approval"
+note "Privacy &amp; residency" [0.36, 0.42]
+`,
+  },
+];
+
+const zenUmlCases = [
+  {
+    id: 'prod_zenuml_participant_exchange',
+    kind: 'zenuml',
+    title: 'Participant exchange',
+    scenario: 'Declared participants and aliases exchange asynchronous messages in source order.',
+    aspectRatio: 1.55,
+    features: [
+      'zenuml-header',
+      'titles',
+      'participants',
+      'aliases',
+      'async-messages',
+    ],
+    expectedTexts: ['Participant Exchange', 'Mobile Client', 'API Gateway', 'Submit request'],
+    source: String.raw`
+zenuml
+title Participant Exchange
+Client as "Mobile Client"
+Gateway as "API Gateway"
+Service as "Account Service"
+Client->Gateway: Submit request
+Gateway->Service: Validate account
+Service->Gateway: Return result
+Gateway->Client: Complete request
+`,
+  },
+  {
+    id: 'prod_zenuml_grouped_participants',
+    kind: 'zenuml',
+    title: 'Grouped participant roles',
+    scenario: 'Participant annotators and a named group describe user, compute, and data roles.',
+    aspectRatio: 1.6,
+    features: [
+      'participants',
+      'annotators',
+      'participant-groups',
+      'async-messages',
+    ],
+    expectedTexts: ['Grouped Participant Roles', 'Customer', 'Regional Services', 'Open session'],
+    source: String.raw`
+zenuml
+title Grouped Participant Roles
+@Actor Customer
+group "Regional Services" {
+  @EC2 Gateway
+  @Database SessionStore
+}
+Customer->Gateway: Open session
+Gateway->SessionStore: Persist session
+`,
+  },
+  {
+    id: 'prod_zenuml_nested_transaction',
+    kind: 'zenuml',
+    title: 'Nested transaction',
+    scenario: 'A created participant enters nested synchronous calls with assignments and returns.',
+    aspectRatio: 1.6,
+    features: [
+      'sync-messages',
+      'nested-messages',
+      'creation-messages',
+      'assignments',
+      'return-messages',
+    ],
+    expectedTexts: [
+      'Nested Payment Transaction',
+      'PaymentTransaction',
+      'submit(transaction)',
+      'validate(transaction)',
+    ],
+    source: String.raw`
+zenuml
+title Nested Payment Transaction
+transaction = new PaymentTransaction(region="eu")
+result = PaymentGateway.submit(transaction) {
+  validation = Policy.validate(transaction)
+  Ledger.save(transaction) {
+    return stored
+  }
+  return result
+}
+`,
+  },
+  {
+    id: 'prod_zenuml_reply_forms',
+    kind: 'zenuml',
+    title: 'Reply forms',
+    scenario: 'Dashed return arrows and the return annotator cover both reply spellings.',
+    aspectRatio: 1.45,
+    features: [
+      'async-messages',
+      'return-messages',
+      'return-annotator',
+    ],
+    expectedTexts: ['Reply Forms', 'Request data', 'Cached result', 'Fresh result'],
+    source: String.raw`
+zenuml
+title Reply Forms
+Client->Service: Request data
+Service-->Client: Cached result
+@return
+Database->Service: Fresh result
+`,
+  },
+  {
+    id: 'prod_zenuml_conditional_loop',
+    kind: 'zenuml',
+    title: 'Conditional item processing',
+    scenario: 'Alternative, loop, and optional fragments model conditional item processing.',
+    aspectRatio: 1.5,
+    features: [
+      'if-else',
+      'loop',
+      'opt',
+      'async-messages',
+      'sync-messages',
+    ],
+    expectedTexts: ['Conditional Item Processing', 'Place order', 'Report unavailable', 'authorize()'],
+    source: String.raw`
+zenuml
+title Conditional Item Processing
+Customer->Checkout: Place order
+if(in_stock) {
+  loop(each_item) {
+    Inventory.reserve()
+  }
+  opt(payment_required) {
+    Payment.authorize()
+  }
+} else {
+  Checkout->Customer: Report unavailable
+}
+`,
+  },
+  {
+    id: 'prod_zenuml_parallel_sections',
+    kind: 'zenuml',
+    title: 'Parallel delivery sections',
+    scenario: 'Parallel, critical, section, and reference fragments coordinate service work.',
+    aspectRatio: 1.7,
+    features: [
+      'par',
+      'critical',
+      'section',
+      'ref',
+      'async-messages',
+      'sync-messages',
+    ],
+    expectedTexts: ['Parallel Delivery Sections', 'Reserve stock', 'Authorize payment', 'Send receipt'],
+    source: String.raw`
+zenuml
+title Parallel Delivery Sections
+par {
+  Coordinator->Inventory: Reserve stock
+  Coordinator->Billing: Authorize payment
+}
+critical(commit_order) {
+  OrderStore.save()
+}
+section(notify_channels) {
+  Coordinator->Mailer: Send receipt
+}
+ref(Coordinator, Inventory, Billing)
+`,
+  },
+  {
+    id: 'prod_zenuml_recovery_flow',
+    kind: 'zenuml',
+    title: 'Recovery flow',
+    scenario: 'Try, catch, and finally sections preserve success, failure, and cleanup interactions.',
+    aspectRatio: 1.55,
+    features: [
+      'try-catch-finally',
+      'nested-messages',
+      'async-messages',
+      'sync-messages',
+    ],
+    expectedTexts: ['Recovery Flow', 'Book request', 'Show failure', 'rollback()'],
+    source: String.raw`
+zenuml
+title Recovery Flow
+try {
+  Consumer->API: Book request
+  API.startBooking() {
+    BookingService.reserve()
+  }
+} catch(error) {
+  API->Consumer: Show failure
+} finally {
+  BookingService.rollback()
+}
+`,
+  },
+  {
+    id: 'prod_zenuml_documented_context',
+    kind: 'zenuml',
+    title: 'Documented regional context',
+    scenario: 'An ignored frontmatter title, styled comments, dividers, and Unicode labels share one interaction.',
+    aspectRatio: 1.6,
+    features: [
+      'frontmatter-title',
+      'comments',
+      'markdown',
+      'dividers',
+      'unicode',
+      'async-messages',
+    ],
+    expectedTexts: ['Tokyo review', '서울 승인', 'phase two'],
+    source: String.raw`
+---
+title: Documented Regional Context
+---
+zenuml
+利用者
+Gateway
+// **Tokyo review**
+利用者->Gateway: 東京 request
+===== phase two =====
+Gateway->利用者: 서울 승인
+`,
+  },
+];
+
 export const conformanceCases = [
   ...flowchartCases,
   ...swimlaneCases,
@@ -7451,6 +7963,8 @@ export const conformanceCases = [
   ...eventModelingCases,
   ...agentflowCases,
   ...usecaseCases,
+  ...wardleyCases,
+  ...zenUmlCases,
 ];
 
 export const cases = [

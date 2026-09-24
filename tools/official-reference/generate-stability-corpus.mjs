@@ -47,6 +47,8 @@ const kotlinGalleryFiles = {
   eventmodeling: ['EventModelingDemos.kt', 'EventModelingDemo'],
   agentflow: ['AgentflowDemos.kt', 'AgentflowDemo'],
   usecase: ['UsecaseDemos.kt', 'UsecaseDemo'],
+  wardley: ['WardleyDemos.kt', 'WardleyDemo'],
+  zenuml: ['ZenUmlDemos.kt', 'ZenUmlDemo'],
 };
 const expectedKindCounts = new Map([
   ['flowchart', 6],
@@ -80,6 +82,8 @@ const expectedKindCounts = new Map([
   ['eventmodeling', 5],
   ['agentflow', 5],
   ['usecase', 5],
+  ['wardley', 5],
+  ['zenuml', 5],
 ]);
 const expectedProductionKindCounts = new Map([
   ['flowchart', 14],
@@ -113,6 +117,8 @@ const expectedProductionKindCounts = new Map([
   ['eventmodeling', 13],
   ['agentflow', 13],
   ['usecase', 18],
+  ['wardley', 13],
+  ['zenuml', 13],
 ]);
 const supportedKinds = new Set([
   'flowchart',
@@ -146,6 +152,8 @@ const supportedKinds = new Set([
   'eventmodeling',
   'agentflow',
   'usecase',
+  'wardley',
+  'zenuml',
 ]);
 
 validateStabilityCases();
@@ -219,8 +227,8 @@ function validateStabilityCases() {
   }
 
   const demoCases = readDemoCases();
-  if (demoCases.length !== 408) {
-    throw new Error(`Expected 408 demo cases, found ${demoCases.length}`);
+  if (demoCases.length !== 418) {
+    throw new Error(`Expected 418 demo cases, found ${demoCases.length}`);
   }
   const demoIds = new Set(demoCases.map((entry) => entry.id));
   const demoSources = new Map(
@@ -240,14 +248,14 @@ function validateStabilityCases() {
 }
 
 function validateProductionCases() {
-  if (productionCases.length !== 415) {
+  if (productionCases.length !== 441) {
     throw new Error(
-      `Expected 415 production cases, found ${productionCases.length}`,
+      `Expected 441 production cases, found ${productionCases.length}`,
     );
   }
-  if (conformanceCases.length !== 258) {
+  if (conformanceCases.length !== 274) {
     throw new Error(
-      `Expected 258 independent conformance cases, found ${conformanceCases.length}`,
+      `Expected 274 independent conformance cases, found ${conformanceCases.length}`,
     );
   }
 
@@ -493,6 +501,8 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "eventmodeling",
             "agentflow",
             "usecase",
+            "wardley",
+            "zenuml",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -603,7 +613,36 @@ private fun addVisualParityVariation(
     )
     "usecase" -> "\${source.trimEnd()}\\n" +
         "\$evidenceId(\\"\${escapeQuotedVisualParityLabel(label)}\\")\\n"
+    "wardley" -> "\${source.trimEnd()}\\n" +
+        "note \\"\${escapeQuotedVisualParityLabel(label)}\\" [0.08, 0.92]\\n"
+    "zenuml" -> insertZenUmlVisualParityParticipant(
+        source = source,
+        evidenceId = evidenceId,
+        label = label,
+    )
     else -> source
+}
+
+private fun insertZenUmlVisualParityParticipant(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val declarationIndex = lines.indexOfFirst { line -> line.trim() == "zenuml" }
+    if (declarationIndex < 0) return source
+    val titleIndex = lines.withIndex()
+        .firstOrNull { (index, line) ->
+            index > declarationIndex && line.trimStart().startsWith("title ")
+        }
+        ?.index
+        ?: -1
+    val insertionIndex = if (titleIndex >= 0) titleIndex + 1 else declarationIndex + 1
+    lines.add(
+        insertionIndex,
+        "  \$evidenceId as \\"\${escapeQuotedVisualParityLabel(label)}\\"",
+    )
+    return lines.joinToString("\\n")
 }
 
 private fun appendRailroadVisualParityEvidence(

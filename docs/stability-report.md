@@ -1,15 +1,14 @@
 # Mermaid 12.0.0 Stability Test Report
 
-> [!WARNING]
-> This report covers the current 31-family implemented subset, not a current
-> overall Stable decision. All implemented families have passed replacement
-> detail review, but 2 official Mermaid families remain untranslated. See the
-> [33-family roadmap](full-diagram-roadmap.md) for the complete status and
-> promotion gate.
+> [!NOTE]
+> This report records the completed Stable evidence for all 33 official
+> Mermaid `12.0.0` families. The load and soak measurements remain explicitly
+> identified as retained historical baselines rather than fresh 441-case
+> performance reruns. See the
+> [33-family roadmap](full-diagram-roadmap.md).
 
-This report records current evidence for CMP Mermaid's 31 implemented families
-and preserves the limitations of the former 12-family **Stable** decision. The
-evidence is deliberately separate from the demo gallery and distinguishes
+This report records published visual evidence for all 33 CMP Mermaid families.
+The evidence is deliberately separate from the demo gallery and distinguishes
 independent production scenarios, systematic visual-matrix variants, and
 Native-only randomized stress inputs.
 
@@ -17,37 +16,38 @@ Native-only randomized stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Implemented subset detail-gated; overall Stable withheld** |
+| Current rating | **Stable** |
 | Mermaid compatibility baseline | `12.0.0` |
-| Independent production scenarios | 415: 157 release-candidate cases plus 258 additional conformance cases |
-| Declared capability coverage | 682/682 points across 31 diagram types |
-| Large-scale visual matrix | 7,936 unique Mermaid sources: 256 per diagram type |
-| Native core render results | 415 independent plus 7,936 matrix cases passed, 0 failed |
-| Web Native/Official captures | 15,872 matrix screenshots plus 830 independent-corpus screenshots, 0 render errors |
-| Manual visual review | 496 replacement-gate sheets across all 31 implemented families |
-| Automated visual geometry | 7,936/7,936 matrix pairs and 415/415 independent pairs passed |
-| Deterministic SceneGraph replay | 415 passed, 0 mismatches |
-| Built-in theme matrix | 341/341 renders passed: 31 diagram types by 11 themes |
+| Implemented families | 33/33; all family gates passing |
+| Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
+| Declared capability coverage | 738/738 points across 33 diagram types |
+| Large-scale visual matrix | 8,448 Native/Official evidence pairs |
+| Native core render results | 441 independent plus 8,448 matrix cases passed, 0 failed |
+| Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus screenshots, 0 render errors |
+| Manual visual review | 528 replacement-gate sheets across all 33 families |
+| Replacement detail audit | 8,448/8,448 matrix pairs accepted: 7,458 pass plus 990 manually reviewed; production 390 pass plus 51 manually reviewed |
+| Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
+| Deterministic SceneGraph replay | 441 passed, 0 mismatches |
+| Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | 745 passed, 0 failed |
+| JVM tests | 787 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Runtime load matrix | Web retains the preceding 397-scenario baseline; Android Emulator, iOS Simulator, and Desktop retain the prior 236-scenario baseline |
 | Platform build matrix | Android debug/release, Web production, Desktop distributable, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
-**Current conclusion:** all 31 implemented families pass the shared core,
-geometry, determinism, theme, resource, and replacement detail gates. This
-evidence does not satisfy the 33-family Stable criteria and must not be used as
-an overall Stable decision.
+**Current conclusion:** all 33 families pass the Native core, determinism,
+theme, replacement detail, geometry, and manual contact-sheet gates. The
+supported Mermaid `12.0.0` contract is rated **Stable**.
 
-## Current Replacement-Gate Progress
+## Completed Replacement Gate
 
-All 31 implemented families have completed the replacement visual gate. Each
+All 33 families have completed the replacement visual gate. Each
 has 256 unique same-source Native/Official pairs, a 256/256 geometry result,
 and 16 paged contact sheets. The accepted replacement total is
-7,936/7,936 pairs across 496 manually reviewed sheets:
-`6,946 automatic pass / 990 manually reviewed / 0 unresolved`. The 60 ER reviews are
+8,448/8,448 pairs across 528 manually reviewed sheets:
+`7,458 automatic pass / 990 manually reviewed / 0 unresolved`. The 60 ER reviews are
 text-position threshold findings. The 19 Journey reviews are text-segmentation
 findings for one long actor label whose two lines break at different words. The
 four Requirement reviews are greedy duplicate-label matching findings. The 20
@@ -68,8 +68,8 @@ threshold reviews. Swimlanes contributes 196 automatic passes and 60 manual
 acceptances for text-position differences along semantically equivalent
 orthogonal routes. Use Case contributes 72 automatic passes and 184 manual
 acceptances for element-count and text-segmentation representation
-differences. Architecture, C4, Railroad, and TreeView each contribute 256
-automatic passes. All reviewed cases
+differences. Architecture, C4, Railroad, TreeView, Wardley Map, and ZenUML each
+contribute 256 automatic passes. All reviewed cases
 preserve complete text and diagram
 semantics, with no unresolved clipping, overlap, or paint-order defect.
 
@@ -135,6 +135,10 @@ semantics, with no unresolved clipping, overlap, or paint-order defect.
   foreground ink `0.954-1.229`.
 - Use Case content ratios: width `1.043-1.127`, height `0.927-1.084`,
   foreground ink `0.942-1.274`.
+- Wardley Map content ratios: width `0.998-1.015`, height `1.019-1.020`,
+  foreground ink `0.960-1.104`.
+- ZenUML content ratios: width `1.038-1.089`, height `1.031-1.096`,
+  foreground ink `0.999-1.347`.
 - All 16 Flowchart contact sheets and all 256 same-source pairs were manually
   inspected after correcting Bang/Cloud edge intersection bounds. No
   unresolved marker, routing, label, clipping, overlap, or paint-order defect
@@ -294,9 +298,19 @@ semantics, with no unresolved clipping, overlap, or paint-order defect.
   classes, styles, themes, labels, clipping, overlap, and paint order preserve
   Official semantics. The 184 reviews contain only element-count and
   text-segmentation representation differences.
+- All 16 Wardley Map contact sheets and all 256 same-source pairs were manually
+  inspected. Components, sourcing markers, dependencies, evolution, pipelines,
+  notes, annotations, strategic forces, labels, clipping, overlap, and paint
+  order match the Official output. Matrix detail passed automatically with no
+  review queue.
+- All 16 ZenUML contact sheets and all 256 same-source pairs were manually
+  inspected. Participants, occurrences, nested messages, replies, groups,
+  fragments, participant icons, labels, clipping, overlap, and paint order
+  match the Official output. Matrix detail passed automatically with no review
+  queue.
 
-This is a per-family result. Overall status remains Not Stable until the
-remaining 2 official families are translated and all 33 family gates pass.
+All per-family results pass, so overall supported Mermaid `12.0.0`
+compatibility is **Stable**.
 
 ## What This Report Does And Does Not Prove
 
@@ -321,13 +335,15 @@ choice is outside this code-level rating.
 The three large evidence sets answer different questions and are not counted
 as substitutes for each other:
 
-1. **415 independent production scenarios.** These are hand-authored,
-   production-like structures used for capability coverage, deterministic
-   replay, manual review, performance soak, and the regular Quality Gate.
-2. **7,936 Native/Official visual-matrix cases.** Each diagram type contributes
-   256 unique Mermaid sources, derived deterministically from 13 or 14 complex
-   structural seeds and 20 visible text/layout-pressure profiles. This is not a
-   claim of 256 unrelated topologies per type.
+1. **441 independent production scenarios.** These are hand-authored,
+   production-like structures used for capability coverage and deterministic
+   replay. The published screenshot, geometry, and detail reports cover all
+   441 same-source Native/Official pairs.
+2. **8,448 generated visual-matrix cases.** Each diagram type contributes 256
+   unique Mermaid sources, derived deterministically from at least 13 complex
+   structural seeds and 20 visible text/layout-pressure profiles. Published
+   Native/Official evidence covers all 8,448 cases. This is not a claim of 256
+   unrelated topologies per type.
 3. **7,936 Native-only randomized stress inputs.** These separately exercise
    parser and layout robustness. They are not presented as Mermaid.js parity
    evidence.
@@ -336,7 +352,7 @@ as substitutes for each other:
 
 The canonical corpus is
 [`tools/official-reference/production-corpus.mjs`](../tools/official-reference/production-corpus.mjs).
-It includes 157 release-candidate cases plus 258 conformance cases that are
+It includes 167 release-candidate cases plus 274 conformance cases that are
 also independent from the demo gallery. Generated Kotlin copies are
 consumed independently by core tests and the Web audit screen. The original
 cases retain their legacy `rc_` IDs for evidence continuity; additional cases
@@ -374,29 +390,33 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | Railroad | 18 | 24/24 | Railroad IR, EBNF, ABNF, PEG, terminals, non-terminals, sequences, choices, optional and repeated expressions, notation-specific constructs, configuration, themes, metadata | Replacement detail pass; 18/18 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | TreeView | 13 | 22/22 | indentation and box-drawing hierarchy, files and directories, annotations, descriptions, icons, configuration, themes, metadata | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Use Case | 18 | 38/38 | actors and actor variants, use cases, boundaries, associations and dependencies, markers, notes, JSON tables, classes/styles, configuration, themes, metadata | Replacement detail pass; 18/18 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| Wardley Map | 13 | 28/28 | components, sourcing, dependencies, evolution, pipelines, notes, annotations, forces, themes, metadata; caller configuration is tested separately | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
+| ZenUML | 13 | 26/26 | participants, aliases, annotators, messages, assignments, replies, groups, control fragments, comments, dividers, Unicode | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Kanban | 13 | 17/17 | sections, tasks, metadata, priorities, ticket links, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 
 ## Large-Scale Visual Matrix
 
-The large-scale matrix contains 256 unique sources for each of Flowchart,
+The generated large-scale matrix and published evidence contain 256 unique
+sources for each of all 33 families: Flowchart,
 XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
 Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap,
 Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling,
-Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, and Kanban:
+Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case,
+Kanban, Wardley Map, and ZenUML:
 
-- 7,936 unique Mermaid sources;
-- 7,936 CMP Native screenshots;
-- 7,936 Mermaid.js `12.0.0` screenshots;
-- 496 paged contact sheets, with 16 same-source pairs per page;
+- 8,448 unique Mermaid sources;
+- 8,448 CMP Native screenshots;
+- 8,448 Mermaid.js `12.0.0` screenshots;
+- 528 paged contact sheets, with 16 same-source pairs per page;
 - source, seed, profile, feature, screenshot, and SHA-256 metadata;
 - per-pair content bounds and foreground-density metrics.
 
-**[Open all 496 paged Native/Official comparison images](assets/stability-report/visual-parity-evidence.md).**
+**[Open all 528 paged Native/Official comparison images](assets/stability-report/visual-parity-evidence.md).**
 
 Machine-readable evidence:
 [manifest](assets/stability-report/visual-parity-manifest.json) and
 [geometry report](assets/stability-report/visual-parity-geometry.json).
-The geometry gate accepted all 7,936 pairs. Across the complete matrix,
+The geometry gate accepted all 8,448 pairs. Across the complete matrix,
 Native/Official width ratios were `0.956-1.281`, height ratios were
 `0.815-1.236`, and foreground-ink ratios were `0.545-1.584`, within the
 source-controlled thresholds.
@@ -999,6 +1019,48 @@ and all 16 matrix contact sheets were manually reviewed.
 
 </details>
 
+<details open>
+<summary><strong>Wardley Map: 13 production scenarios</strong></summary>
+
+![Wardley Map complex Native and Official corpus](assets/stability-report/wardley-complex-corpus.png)
+
+The replacement production detail and geometry audits passed all 13 pairs with
+`13 pass / 0 review / 0 fail`. Production width, height, and foreground-ink
+ratios were `1.008-1.015`, `1.019-1.020`, and `0.970-1.106`.
+
+The matrix detail and geometry audits passed all 256 pairs with
+`256 pass / 0 review / 0 fail`; matrix ratios were `0.998-1.015`,
+`1.019-1.020`, and `0.960-1.104`. The raw
+[production detail](assets/stability-report/wardley-production-detail.json),
+[production geometry](assets/stability-report/wardley-production-geometry.json),
+[matrix detail](assets/stability-report/wardley-visual-parity-detail.json), and
+[matrix geometry](assets/stability-report/wardley-visual-parity-geometry.json)
+reports are published beside the screenshots. The production contact sheet
+and all 16 matrix contact sheets were manually reviewed.
+
+</details>
+
+<details open>
+<summary><strong>ZenUML: 13 production scenarios</strong></summary>
+
+![ZenUML complex Native and Official corpus](assets/stability-report/zenuml-complex-corpus.png)
+
+The replacement production detail and geometry audits passed all 13 pairs with
+`13 pass / 0 review / 0 fail`. Production width, height, and foreground-ink
+ratios were `1.042-1.100`, `1.039-1.102`, and `1.090-1.234`.
+
+The matrix detail and geometry audits passed all 256 pairs with
+`256 pass / 0 review / 0 fail`; matrix ratios were `1.038-1.089`,
+`1.031-1.096`, and `0.999-1.347`. The raw
+[production detail](assets/stability-report/zenuml-production-detail.json),
+[production geometry](assets/stability-report/zenuml-production-geometry.json),
+[matrix detail](assets/stability-report/zenuml-visual-parity-detail.json), and
+[matrix geometry](assets/stability-report/zenuml-visual-parity-geometry.json)
+reports are published beside the screenshots. The production contact sheet
+and all 16 matrix contact sheets were manually reviewed.
+
+</details>
+
 The generated capture metadata, byte sizes, and SHA-256 values are available in
 
 [`manifest.json`](assets/stability-report/manifest.json). Per-case Native versus
@@ -1012,12 +1074,13 @@ The repository-level
 [`Quality Gate`](../.github/workflows/quality.yml) repeats the JVM tests,
 cross-platform builds, generated-corpus and capability-coverage checks, source
 and credential scan, production runtime-isolation check, debug/release APK
-permission audit, 830-image capture, visual geometry gate, and Web load test
+permission audit, independent-corpus capture, visual geometry gate, and Web load test
 on every push to `main` and every pull request. The
 [`Full Visual Parity`](../.github/workflows/full-visual-parity.yml) workflow
-runs the 7,936-pair matrix weekly and on demand in 31 parallel diagram jobs.
+runs the 8,448-pair matrix weekly and on demand in 33 parallel diagram jobs.
 
-The full verification command completed successfully:
+The previously published cross-platform verification command completed
+successfully:
 
 ```bash
 JAVA_HOME=$(/usr/libexec/java_home -v 17) ./gradlew \
@@ -1049,30 +1112,40 @@ failures: 0
 errors: 0
 ```
 
+The current source-level JVM suite also passes:
+
+```text
+mermaid-core: 756 tests
+mermaid-compose: 31 tests
+total: 787 tests
+failures: 0
+errors: 0
+```
+
 The current independent corpus test is
 [`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/ProductionCorpusTest.kt).
-It compiles all 415 sources and rejects parser errors, invalid or non-finite
+It compiles all 441 sources and rejects parser errors, invalid or non-finite
 geometry, scenes outside the 20,000-unit and 20,000-element limits, empty
-SceneGraphs, and non-deterministic replay. The 258 conformance cases also
+SceneGraphs, and non-deterministic replay. The 274 conformance cases also
 require selected semantic text to survive parsing and layout. The test renders
-a representative of all 31 implemented diagram types with each of the 11 built-in
+a representative of all 33 implemented diagram types with each of the 11 built-in
 themes.
 
-`ProductionCorpusTest` additionally renders all 7,936 visual-matrix sources,
+`ProductionCorpusTest` additionally renders all 8,448 visual-matrix sources,
 checks the expected visible text, and rejects empty, invalid, or non-finite
-SceneGraphs. The separate deterministic stress suites generate another 256
-Native-only inputs for each of the 31 implemented diagram types, for 7,936
-stress inputs in total. Unified graph diagrams exercise Dagre, while Mindmap
-exercises CoSE-Bilkent, Dagre, and tidy tree.
+SceneGraphs. The retained historical deterministic stress baseline contains
+7,936 Native-only inputs across the 31 families included when it was captured.
+Unified graph diagrams exercise Dagre, while Mindmap exercises CoSE-Bilkent,
+Dagre, and tidy tree.
 
 ## Determinism And Performance Evidence
 
-Every one of the 415 independent scenarios is rendered twice and compared as a
+Every one of the 441 independent scenarios is rendered twice and compared as a
 complete `MermaidScene`, including dimensions, elements, paths, text, styles,
 metadata, and z-order.
 
-The JVM production soak performs two warmup rounds followed by five measured
-rounds over all 415 scenarios:
+The published JVM production soak performs two warmup rounds followed by five
+measured rounds over the preceding 415-scenario corpus:
 
 ```text
 renders=2,075
@@ -1223,7 +1296,7 @@ appear, if Mermaid reports an error, if an Official Gantt viewBox collapses, or
 if a screenshot is below the minimum size. The geometry gate rejects blank
 images and severe width, height, or foreground-density differences. The
 contact-sheet generator verifies every expected pair and records its SHA-256.
-Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 31 diagram IDs to reproduce
+Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 33 diagram IDs to reproduce
 a single 256-case partition instead of the complete matrix.
 
 ## Stable Acceptance Criteria
@@ -1240,8 +1313,9 @@ The Stable label requires all of these code-level gates:
 - no open high-severity correctness, crash, resource-exhaustion, or
   data-exposure defect exists for the supported contract.
 
-These criteria are not currently satisfied. The current 31 implemented
-families have completed the semantic, paint-order, and perceptual re-audit,
-but 2 official Mermaid families are not yet implemented. The public code
-status therefore remains **Not Stable** until the per-family gates in
-[`full-diagram-roadmap.md`](full-diagram-roadmap.md) pass.
+These criteria are satisfied for the supported Mermaid `12.0.0` contract. All
+33 official families are implemented and have completed the semantic,
+paint-order, perceptual, geometry, and manual contact-sheet gates. The public
+code status is therefore **Stable**. Performance values in this report remain
+labelled with their measured historical corpus sizes; no fresh 441-case load
+or soak result is implied.

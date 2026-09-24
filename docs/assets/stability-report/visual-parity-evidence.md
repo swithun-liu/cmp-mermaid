@@ -1,7 +1,7 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 7,936 source cases and
-15,872 screenshots from the large-scale
+This index contains 8,448 source cases and
+16,896 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
@@ -13,17 +13,17 @@ Each type combines at least 13 complex structural seeds with visible text and
 layout-pressure profiles. The 256 sources per type are unique, but they are
 not presented as 256 unrelated topologies.
 
-All 31 implemented families have completed the replacement detail gate and
+All 33 implemented families have completed the replacement detail gate and
 manual contact-sheet review. The accepted replacement total is
-`7,936/7,936` pairs: `6,946 automatic pass / 990 manually reviewed /
-0 unresolved` across 496 contact sheets. Block contributes three
+`8,448/8,448` pairs: `7,458 automatic pass / 990 manually reviewed /
+0 unresolved` across 528 contact sheets. Block contributes three
 paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
 acceptances caused by the documented title/payload `text-segmentation`
 adaptation; Swimlanes contributes 60 text-position reviews along semantically
 equivalent orthogonal routes. Use Case contributes 72 automatic passes and
 184 manual acceptances for element-count and text-segmentation representation
 differences. Architecture, C4, Railroad, and TreeView each contribute 256
-automatic passes.
+automatic passes. Wardley Map and ZenUML add 256 automatic passes each.
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
@@ -1327,5 +1327,91 @@ All 16 pages below were manually reviewed.
 ![Kanban visual parity page 15](kanban-visual-parity-15.jpg)
 
 ![Kanban visual parity page 16](kanban-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Wardley Map - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `0.998-1.015`, height `1.019-1.020`, foreground ink `0.960-1.104`.
+Raw [detail](wardley-visual-parity-detail.json) and
+[geometry](wardley-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![Wardley Map visual parity page 01](wardley-visual-parity-01.jpg)
+
+![Wardley Map visual parity page 02](wardley-visual-parity-02.jpg)
+
+![Wardley Map visual parity page 03](wardley-visual-parity-03.jpg)
+
+![Wardley Map visual parity page 04](wardley-visual-parity-04.jpg)
+
+![Wardley Map visual parity page 05](wardley-visual-parity-05.jpg)
+
+![Wardley Map visual parity page 06](wardley-visual-parity-06.jpg)
+
+![Wardley Map visual parity page 07](wardley-visual-parity-07.jpg)
+
+![Wardley Map visual parity page 08](wardley-visual-parity-08.jpg)
+
+![Wardley Map visual parity page 09](wardley-visual-parity-09.jpg)
+
+![Wardley Map visual parity page 10](wardley-visual-parity-10.jpg)
+
+![Wardley Map visual parity page 11](wardley-visual-parity-11.jpg)
+
+![Wardley Map visual parity page 12](wardley-visual-parity-12.jpg)
+
+![Wardley Map visual parity page 13](wardley-visual-parity-13.jpg)
+
+![Wardley Map visual parity page 14](wardley-visual-parity-14.jpg)
+
+![Wardley Map visual parity page 15](wardley-visual-parity-15.jpg)
+
+![Wardley Map visual parity page 16](wardley-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>ZenUML - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
+width `1.038-1.089`, height `1.031-1.096`, foreground ink `0.999-1.347`.
+Raw [detail](zenuml-visual-parity-detail.json) and
+[geometry](zenuml-visual-parity-geometry.json) reports are published with
+the sheets. All 16 pages below were manually reviewed.
+
+![ZenUML visual parity page 01](zenuml-visual-parity-01.jpg)
+
+![ZenUML visual parity page 02](zenuml-visual-parity-02.jpg)
+
+![ZenUML visual parity page 03](zenuml-visual-parity-03.jpg)
+
+![ZenUML visual parity page 04](zenuml-visual-parity-04.jpg)
+
+![ZenUML visual parity page 05](zenuml-visual-parity-05.jpg)
+
+![ZenUML visual parity page 06](zenuml-visual-parity-06.jpg)
+
+![ZenUML visual parity page 07](zenuml-visual-parity-07.jpg)
+
+![ZenUML visual parity page 08](zenuml-visual-parity-08.jpg)
+
+![ZenUML visual parity page 09](zenuml-visual-parity-09.jpg)
+
+![ZenUML visual parity page 10](zenuml-visual-parity-10.jpg)
+
+![ZenUML visual parity page 11](zenuml-visual-parity-11.jpg)
+
+![ZenUML visual parity page 12](zenuml-visual-parity-12.jpg)
+
+![ZenUML visual parity page 13](zenuml-visual-parity-13.jpg)
+
+![ZenUML visual parity page 14](zenuml-visual-parity-14.jpg)
+
+![ZenUML visual parity page 15](zenuml-visual-parity-15.jpg)
+
+![ZenUML visual parity page 16](zenuml-visual-parity-16.jpg)
 
 </details>

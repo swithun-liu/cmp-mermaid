@@ -4905,6 +4905,252 @@ internal val stabilityCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf(),
         features = setOf(),
     ),
+    StabilityCorpusCase(
+        id = "rc_wardley_customer_delivery",
+        diagramId = "wardley",
+        title = "Customer delivery chain",
+        scenario = "A customer-facing value chain connects experience, platform, data, and utility components.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            wardley-beta
+            title Customer Delivery Chain
+            anchor Customer [0.94, 0.88]
+            component Digital Experience [0.80, 0.64]
+            component Service Platform [0.64, 0.54]
+            component Customer Data [0.46, 0.72]
+            component Cloud Utility [0.24, 0.91]
+            Customer -> Digital Experience
+            Digital Experience -> Service Platform
+            Service Platform -> Customer Data
+            Customer Data -> Cloud Utility
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_sourcing_transition",
+        diagramId = "wardley",
+        title = "Sourcing transition",
+        scenario = "Sourcing strategies, inertia, labelled flow, and planned evolution share one strategic map.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            wardley-beta
+            title Sourcing Transition
+            anchor Operator [0.92, 0.86]
+            component Bespoke Console [0.76, 0.34] (build)
+            component Identity Suite [0.62, 0.68] (buy)
+            component Managed Support [0.50, 0.48] (outsource)
+            component Legacy Store [0.38, 0.42] (inertia)
+            component Compute Utility [0.20, 0.92] (market)
+            Operator -> Bespoke Console
+            Bespoke Console +'authenticates'> Identity Suite
+            Bespoke Console -> Managed Support
+            Identity Suite +<> Legacy Store
+            Legacy Store -> Compute Utility
+            evolve Legacy Store 0.66
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_data_pipeline",
+        diagramId = "wardley",
+        title = "Data capability pipeline",
+        scenario = "A pipeline compares file, warehouse, and managed analytics stages under one capability.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            wardley-beta
+            title Data Capability Pipeline
+            evolution Novel@0.22 -> Bespoke@0.48 -> Product@0.76 -> Utility@1.0
+            anchor Decision Maker [0.90, 0.92]
+            component Analytics Platform [0.56, 0.58]
+            Decision Maker -> Analytics Platform
+            pipeline Analytics Platform {
+              component File Reports [0.24]
+              component Data Warehouse [0.55] label [-48, 16]
+              component Managed Analytics [0.86]
+            }
+            File Reports +'feeds'> Data Warehouse
+            Data Warehouse -> Managed Analytics
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_decision_annotations",
+        diagramId = "wardley",
+        title = "Decision annotations",
+        scenario = "Numbered annotations, a strategic note, and opposing forces document modernization choices.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            wardley-beta
+            title Modernisation Decisions
+            component Legacy Core [0.34, 0.30] (inertia)
+            component Integration API [0.60, 0.57]
+            component Automation [0.72, 0.44]
+            Legacy Core -> Integration API
+            Integration API -> Automation
+            note "Sequence migration before automation" [0.48, 0.52]
+            annotations [0.12, 0.88]
+            annotation 1,[0.34, 0.27] "Legacy constraint"
+            annotation 2,[0.60, 0.54] "Integration boundary"
+            annotation 3,[0.72, 0.41] "Automation target"
+            accelerator "Platform investment" [0.24, 0.84]
+            deaccelerator "Migration risk" [0.45, 0.24]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_regional_strategy",
+        diagramId = "wardley",
+        title = "Regional strategy map",
+        scenario = "Accessibility metadata, explicit sizing, entities, and Unicode coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            wardley-beta
+            title Regional Service Strategy
+            size [1000, 680]
+            accTitle: Regional strategy map
+            accDescr: Teams coordinate services across Tokyo, Seoul, and Sao Paulo.
+            anchor "東京 Customer" [0.92, 0.90]
+            component "서울 Verification" [0.68, 0.58]
+            component "São Paulo Approval" [0.48, 0.76]
+            "東京 Customer" -> "서울 Verification"
+            "서울 Verification" -> "São Paulo Approval"
+            note "Privacy &amp; residency review" [0.36, 0.42]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_service_conversation",
+        diagramId = "zenuml",
+        title = "Service conversation",
+        scenario = "Declared participants and aliases exchange asynchronous request and response messages.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            zenuml
+            title Service Conversation
+            Client as "Mobile Client"
+            Gateway as "API Gateway"
+            Service as "Account Service"
+            Client->Gateway: Submit request
+            Gateway->Service: Validate account
+            Service->Gateway: Return result
+            Gateway->Client: Complete request
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_nested_transaction",
+        diagramId = "zenuml",
+        title = "Nested transaction",
+        scenario = "Nested synchronous calls, assignments, creation, and explicit replies model one transaction.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            zenuml
+            title Nested Transaction
+            transaction = new Transaction(region="eu")
+            result = Gateway.process(transaction) {
+              validation = Policy.validate(transaction)
+              Repository.save(transaction) {
+                return stored
+              }
+              return result
+            }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_conditional_fulfillment",
+        diagramId = "zenuml",
+        title = "Conditional fulfillment",
+        scenario = "Alternative, optional, and loop fragments describe inventory and payment decisions.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            zenuml
+            title Conditional Fulfillment
+            Customer->Checkout: Place order
+            if(in_stock) {
+              loop(each_item) {
+                Inventory.reserve()
+              }
+              opt(payment_required) {
+                Payment.authorize()
+              }
+            } else {
+              Checkout->Customer: Report unavailable
+            }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_parallel_delivery",
+        diagramId = "zenuml",
+        title = "Parallel delivery",
+        scenario = "Parallel, critical, section, and reference fragments coordinate independent service work.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            zenuml
+            title Parallel Delivery
+            par {
+              Coordinator->Inventory: Reserve stock
+              Coordinator->Billing: Authorize payment
+            }
+            critical(commit_order) {
+              OrderStore.save()
+            }
+            section(notify_channels) {
+              Coordinator->Mailer: Send receipt
+            }
+            ref(Coordinator, Inventory, Billing)
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_regional_recovery",
+        diagramId = "zenuml",
+        title = "Regional recovery",
+        scenario = "Grouped typed participants, comments, Unicode, and try/catch/finally recovery share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            zenuml
+            title Regional Recovery
+            @Actor 利用者
+            group "Regional Services" {
+              @EC2 Gateway
+              @Database Store
+            }
+            // **Tokyo** request with regional recovery.
+            利用者->Gateway: 東京で開始
+            try {
+              Gateway.persist() {
+                Store.save()
+              }
+            } catch(error) {
+              Gateway->利用者: 서울 fallback
+            } finally {
+              Gateway.cleanup()
+            }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
 )
 
 internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
@@ -9794,6 +10040,252 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
             Approve["São Paulo approval"]
             Customer --> Request
             Request --> Approve
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_customer_delivery",
+        diagramId = "wardley",
+        title = "Customer delivery chain",
+        scenario = "A customer-facing value chain connects experience, platform, data, and utility components.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            wardley-beta
+            title Customer Delivery Chain
+            anchor Customer [0.94, 0.88]
+            component Digital Experience [0.80, 0.64]
+            component Service Platform [0.64, 0.54]
+            component Customer Data [0.46, 0.72]
+            component Cloud Utility [0.24, 0.91]
+            Customer -> Digital Experience
+            Digital Experience -> Service Platform
+            Service Platform -> Customer Data
+            Customer Data -> Cloud Utility
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_sourcing_transition",
+        diagramId = "wardley",
+        title = "Sourcing transition",
+        scenario = "Sourcing strategies, inertia, labelled flow, and planned evolution share one strategic map.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            wardley-beta
+            title Sourcing Transition
+            anchor Operator [0.92, 0.86]
+            component Bespoke Console [0.76, 0.34] (build)
+            component Identity Suite [0.62, 0.68] (buy)
+            component Managed Support [0.50, 0.48] (outsource)
+            component Legacy Store [0.38, 0.42] (inertia)
+            component Compute Utility [0.20, 0.92] (market)
+            Operator -> Bespoke Console
+            Bespoke Console +'authenticates'> Identity Suite
+            Bespoke Console -> Managed Support
+            Identity Suite +<> Legacy Store
+            Legacy Store -> Compute Utility
+            evolve Legacy Store 0.66
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_data_pipeline",
+        diagramId = "wardley",
+        title = "Data capability pipeline",
+        scenario = "A pipeline compares file, warehouse, and managed analytics stages under one capability.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            wardley-beta
+            title Data Capability Pipeline
+            evolution Novel@0.22 -> Bespoke@0.48 -> Product@0.76 -> Utility@1.0
+            anchor Decision Maker [0.90, 0.92]
+            component Analytics Platform [0.56, 0.58]
+            Decision Maker -> Analytics Platform
+            pipeline Analytics Platform {
+              component File Reports [0.24]
+              component Data Warehouse [0.55] label [-48, 16]
+              component Managed Analytics [0.86]
+            }
+            File Reports +'feeds'> Data Warehouse
+            Data Warehouse -> Managed Analytics
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_decision_annotations",
+        diagramId = "wardley",
+        title = "Decision annotations",
+        scenario = "Numbered annotations, a strategic note, and opposing forces document modernization choices.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            wardley-beta
+            title Modernisation Decisions
+            component Legacy Core [0.34, 0.30] (inertia)
+            component Integration API [0.60, 0.57]
+            component Automation [0.72, 0.44]
+            Legacy Core -> Integration API
+            Integration API -> Automation
+            note "Sequence migration before automation" [0.48, 0.52]
+            annotations [0.12, 0.88]
+            annotation 1,[0.34, 0.27] "Legacy constraint"
+            annotation 2,[0.60, 0.54] "Integration boundary"
+            annotation 3,[0.72, 0.41] "Automation target"
+            accelerator "Platform investment" [0.24, 0.84]
+            deaccelerator "Migration risk" [0.45, 0.24]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_wardley_regional_strategy",
+        diagramId = "wardley",
+        title = "Regional strategy map",
+        scenario = "Accessibility metadata, explicit sizing, entities, and Unicode coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            wardley-beta
+            title Regional Service Strategy
+            size [1000, 680]
+            accTitle: Regional strategy map
+            accDescr: Teams coordinate services across Tokyo, Seoul, and Sao Paulo.
+            anchor "東京 Customer" [0.92, 0.90]
+            component "서울 Verification" [0.68, 0.58]
+            component "São Paulo Approval" [0.48, 0.76]
+            "東京 Customer" -> "서울 Verification"
+            "서울 Verification" -> "São Paulo Approval"
+            note "Privacy &amp; residency review" [0.36, 0.42]
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_service_conversation",
+        diagramId = "zenuml",
+        title = "Service conversation",
+        scenario = "Declared participants and aliases exchange asynchronous request and response messages.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            zenuml
+            title Service Conversation
+            Client as "Mobile Client"
+            Gateway as "API Gateway"
+            Service as "Account Service"
+            Client->Gateway: Submit request
+            Gateway->Service: Validate account
+            Service->Gateway: Return result
+            Gateway->Client: Complete request
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_nested_transaction",
+        diagramId = "zenuml",
+        title = "Nested transaction",
+        scenario = "Nested synchronous calls, assignments, creation, and explicit replies model one transaction.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            zenuml
+            title Nested Transaction
+            transaction = new Transaction(region="eu")
+            result = Gateway.process(transaction) {
+              validation = Policy.validate(transaction)
+              Repository.save(transaction) {
+                return stored
+              }
+              return result
+            }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_conditional_fulfillment",
+        diagramId = "zenuml",
+        title = "Conditional fulfillment",
+        scenario = "Alternative, optional, and loop fragments describe inventory and payment decisions.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            zenuml
+            title Conditional Fulfillment
+            Customer->Checkout: Place order
+            if(in_stock) {
+              loop(each_item) {
+                Inventory.reserve()
+              }
+              opt(payment_required) {
+                Payment.authorize()
+              }
+            } else {
+              Checkout->Customer: Report unavailable
+            }
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_parallel_delivery",
+        diagramId = "zenuml",
+        title = "Parallel delivery",
+        scenario = "Parallel, critical, section, and reference fragments coordinate independent service work.",
+        layout = "dagre",
+        initialAspectRatio = 1.65f,
+        source = """
+            zenuml
+            title Parallel Delivery
+            par {
+              Coordinator->Inventory: Reserve stock
+              Coordinator->Billing: Authorize payment
+            }
+            critical(commit_order) {
+              OrderStore.save()
+            }
+            section(notify_channels) {
+              Coordinator->Mailer: Send receipt
+            }
+            ref(Coordinator, Inventory, Billing)
+        """.trimIndent(),
+        expectedTexts = listOf(),
+        features = setOf(),
+    ),
+    StabilityCorpusCase(
+        id = "rc_zenuml_regional_recovery",
+        diagramId = "zenuml",
+        title = "Regional recovery",
+        scenario = "Grouped typed participants, comments, Unicode, and try/catch/finally recovery share one diagram.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            zenuml
+            title Regional Recovery
+            @Actor 利用者
+            group "Regional Services" {
+              @EC2 Gateway
+              @Database Store
+            }
+            // **Tokyo** request with regional recovery.
+            利用者->Gateway: 東京で開始
+            try {
+              Gateway.persist() {
+                Store.save()
+              }
+            } catch(error) {
+              Gateway->利用者: 서울 fallback
+            } finally {
+              Gateway.cleanup()
+            }
         """.trimIndent(),
         expectedTexts = listOf(),
         features = setOf(),
@@ -16173,6 +16665,374 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
         expectedTexts = listOf("Regional service access", "Tokyo", "서울 verification", "São Paulo approval"),
         features = setOf("accessibility", "comments", "entities", "unicode", "actors"),
     ),
+    StabilityCorpusCase(
+        id = "prod_wardley_value_chain",
+        diagramId = "wardley",
+        title = "Product value chain",
+        scenario = "An anchor and ordered components form a visible customer-to-utility dependency chain.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            wardley-beta
+            title Product Value Chain
+            anchor Customer [0.94, 0.90]
+            component Digital Product [0.80, 0.62]
+            component Service API [0.64, 0.55]
+            component Data Store [0.43, 0.72]
+            component Cloud Utility [0.20, 0.92]
+            Customer -> Digital Product
+            Digital Product -> Service API
+            Service API -> Data Store
+            Data Store -> Cloud Utility
+        """.trimIndent(),
+        expectedTexts = listOf("Product Value Chain", "Customer", "Digital Product", "Cloud Utility"),
+        features = setOf("wardley-beta-header", "titles", "anchors", "components", "coordinates", "dependencies"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_wardley_sourcing_posture",
+        diagramId = "wardley",
+        title = "Sourcing posture",
+        scenario = "Every sourcing marker, inertia, and an explicit label offset are visible together.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            wardley-beta
+            title Sourcing Posture
+            component Custom Portal [0.78, 0.34] label [-58, 14] (build)
+            component Identity Product [0.64, 0.66] (buy)
+            component Managed Review [0.52, 0.46] (outsource)
+            component Compute Utility [0.26, 0.91] (market)
+            component Legacy Ledger [0.40, 0.39] (inertia)
+            Custom Portal -> Identity Product
+            Custom Portal -> Managed Review
+            Identity Product -> Legacy Ledger
+            Legacy Ledger -> Compute Utility
+        """.trimIndent(),
+        expectedTexts = listOf("Custom Portal", "Identity Product", "Managed Review", "Legacy Ledger"),
+        features = setOf("components", "label-offsets", "inertia", "sourcing-strategies", "dependencies"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_wardley_link_semantics",
+        diagramId = "wardley",
+        title = "Dependency flow semantics",
+        scenario = "Plain, dashed, directional, bidirectional, and labelled links share one map.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            wardley-beta
+            title Dependency Flow Semantics
+            component Application [0.82, 0.78]
+            component Gateway [0.70, 0.62]
+            component Cache [0.58, 0.48]
+            component Database [0.38, 0.72]
+            Application -> Gateway
+            Gateway -.-> Cache
+            Gateway +> Database
+            Cache +<> Database
+            Cache +'replicates'> Database
+        """.trimIndent(),
+        expectedTexts = listOf("Application", "Gateway", "Cache", "Database", "replicates"),
+        features = setOf("dependencies", "dashed-links", "flow-links", "link-labels"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_wardley_evolution_plan",
+        diagramId = "wardley",
+        title = "Evolution plan",
+        scenario = "Custom stage names, explicit stage widths, and component movement describe a future state.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            wardley-beta
+            title Evolution Plan
+            evolution Novel@0.20 -> Emerging@0.46 -> Established@0.76 -> Utility@1.0
+            component Decision Engine [0.68, 0.38]
+            component Model Runtime [0.52, 0.57]
+            component Compute [0.28, 0.88]
+            Decision Engine -> Model Runtime
+            Model Runtime -> Compute
+            evolve Decision Engine 0.72
+            evolve Model Runtime 0.80
+        """.trimIndent(),
+        expectedTexts = listOf("Evolution Plan", "Novel", "Established", "Decision Engine"),
+        features = setOf("custom-evolution-stages", "custom-stage-widths", "evolution-trends", "components"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_wardley_platform_pipeline",
+        diagramId = "wardley",
+        title = "Platform pipeline",
+        scenario = "Pipeline alternatives occupy distinct evolution positions under one parent capability.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            wardley-beta
+            title Platform Pipeline
+            anchor Analyst [0.92, 0.90]
+            component Analytics Platform [0.58, 0.58]
+            Analyst -> Analytics Platform
+            pipeline Analytics Platform {
+              component Batch Reports [0.25]
+              component Data Warehouse [0.52] label [-52, 18]
+              component Managed Insights [0.84]
+            }
+            Batch Reports -> Data Warehouse
+            Data Warehouse -> Managed Insights
+        """.trimIndent(),
+        expectedTexts = listOf("Platform Pipeline", "Analytics Platform", "Batch Reports", "Managed Insights"),
+        features = setOf("anchors", "pipelines", "label-offsets", "dependencies"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_wardley_decision_record",
+        diagramId = "wardley",
+        title = "Strategic decision record",
+        scenario = "Notes and numbered annotations retain strategic context beside mapped capabilities.",
+        layout = "dagre",
+        initialAspectRatio = 1.4f,
+        source = """
+            wardley-beta
+            title Strategic Decision Record
+            component Legacy Core [0.34, 0.30] (inertia)
+            component Integration API [0.60, 0.56]
+            component Automation [0.72, 0.43]
+            Legacy Core -> Integration API
+            Integration API -> Automation
+            note "Phase migration before automation" [0.48, 0.52]
+            annotations [0.12, 0.88]
+            annotation 1,[0.34, 0.27] "Legacy constraint"
+            annotation 2,[0.60, 0.53] "Integration boundary"
+            annotation 3,[0.72, 0.40] "Automation target"
+        """.trimIndent(),
+        expectedTexts = listOf("Strategic Decision Record", "Phase migration", "Integration boundary"),
+        features = setOf("notes", "annotations", "components", "dependencies"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_wardley_configured_forces",
+        diagramId = "wardley",
+        title = "Configured strategic forces",
+        scenario = "Explicit source size and opposing forces exercise the Wardley layout.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            wardley-beta
+            title Configured Strategic Forces
+            size [960, 640]
+            component Legacy Service [0.36, 0.32]
+            component Modern Service [0.66, 0.62]
+            Legacy Service -> Modern Service
+            accelerator "Cloud Investment" [0.24, 0.84]
+            deaccelerator "Migration Cost" [0.44, 0.26]
+        """.trimIndent(),
+        expectedTexts = listOf("Configured Strategic Forces", "Modern Service", "Cloud Investment", "Migration Cost"),
+        features = setOf("size", "accelerators", "deaccelerators", "responsive-sizing"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_wardley_accessible_regions",
+        diagramId = "wardley",
+        title = "Accessible regional strategy",
+        scenario = "Theme variables, accessibility metadata, comments, entities, and Unicode coexist.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            ---
+            config:
+              theme: base
+              themeVariables:
+                wardley:
+                  backgroundColor: "#f8fafc"
+                  axisColor: "#334155"
+            ---
+            wardley-beta
+            title Regional Strategy
+            accTitle: Accessible regional strategy
+            accDescr: Teams coordinate services across Tokyo, Seoul, and Sao Paulo.
+            %% Regional labels exercise decoded and mixed-script text.
+            anchor "東京 Customer" [0.92, 0.90]
+            component "서울 Verification" [0.68, 0.58]
+            component "São Paulo Approval" [0.48, 0.76]
+            "東京 Customer" -> "서울 Verification"
+            "서울 Verification" -> "São Paulo Approval"
+            note "Privacy &amp; residency" [0.36, 0.42]
+        """.trimIndent(),
+        expectedTexts = listOf("Regional Strategy", "東京 Customer", "서울 Verification", "Privacy"),
+        features = setOf("accessibility", "comments", "entities", "unicode", "theme", "theme-variables"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_participant_exchange",
+        diagramId = "zenuml",
+        title = "Participant exchange",
+        scenario = "Declared participants and aliases exchange asynchronous messages in source order.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            zenuml
+            title Participant Exchange
+            Client as "Mobile Client"
+            Gateway as "API Gateway"
+            Service as "Account Service"
+            Client->Gateway: Submit request
+            Gateway->Service: Validate account
+            Service->Gateway: Return result
+            Gateway->Client: Complete request
+        """.trimIndent(),
+        expectedTexts = listOf("Participant Exchange", "Mobile Client", "API Gateway", "Submit request"),
+        features = setOf("zenuml-header", "titles", "participants", "aliases", "async-messages"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_grouped_participants",
+        diagramId = "zenuml",
+        title = "Grouped participant roles",
+        scenario = "Participant annotators and a named group describe user, compute, and data roles.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            zenuml
+            title Grouped Participant Roles
+            @Actor Customer
+            group "Regional Services" {
+              @EC2 Gateway
+              @Database SessionStore
+            }
+            Customer->Gateway: Open session
+            Gateway->SessionStore: Persist session
+        """.trimIndent(),
+        expectedTexts = listOf("Grouped Participant Roles", "Customer", "Regional Services", "Open session"),
+        features = setOf("participants", "annotators", "participant-groups", "async-messages"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_nested_transaction",
+        diagramId = "zenuml",
+        title = "Nested transaction",
+        scenario = "A created participant enters nested synchronous calls with assignments and returns.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            zenuml
+            title Nested Payment Transaction
+            transaction = new PaymentTransaction(region="eu")
+            result = PaymentGateway.submit(transaction) {
+              validation = Policy.validate(transaction)
+              Ledger.save(transaction) {
+                return stored
+              }
+              return result
+            }
+        """.trimIndent(),
+        expectedTexts = listOf("Nested Payment Transaction", "PaymentTransaction", "submit(transaction)", "validate(transaction)"),
+        features = setOf("sync-messages", "nested-messages", "creation-messages", "assignments", "return-messages"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_reply_forms",
+        diagramId = "zenuml",
+        title = "Reply forms",
+        scenario = "Dashed return arrows and the return annotator cover both reply spellings.",
+        layout = "dagre",
+        initialAspectRatio = 1.45f,
+        source = """
+            zenuml
+            title Reply Forms
+            Client->Service: Request data
+            Service-->Client: Cached result
+            @return
+            Database->Service: Fresh result
+        """.trimIndent(),
+        expectedTexts = listOf("Reply Forms", "Request data", "Cached result", "Fresh result"),
+        features = setOf("async-messages", "return-messages", "return-annotator"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_conditional_loop",
+        diagramId = "zenuml",
+        title = "Conditional item processing",
+        scenario = "Alternative, loop, and optional fragments model conditional item processing.",
+        layout = "dagre",
+        initialAspectRatio = 1.5f,
+        source = """
+            zenuml
+            title Conditional Item Processing
+            Customer->Checkout: Place order
+            if(in_stock) {
+              loop(each_item) {
+                Inventory.reserve()
+              }
+              opt(payment_required) {
+                Payment.authorize()
+              }
+            } else {
+              Checkout->Customer: Report unavailable
+            }
+        """.trimIndent(),
+        expectedTexts = listOf("Conditional Item Processing", "Place order", "Report unavailable", "authorize()"),
+        features = setOf("if-else", "loop", "opt", "async-messages", "sync-messages"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_parallel_sections",
+        diagramId = "zenuml",
+        title = "Parallel delivery sections",
+        scenario = "Parallel, critical, section, and reference fragments coordinate service work.",
+        layout = "dagre",
+        initialAspectRatio = 1.7f,
+        source = """
+            zenuml
+            title Parallel Delivery Sections
+            par {
+              Coordinator->Inventory: Reserve stock
+              Coordinator->Billing: Authorize payment
+            }
+            critical(commit_order) {
+              OrderStore.save()
+            }
+            section(notify_channels) {
+              Coordinator->Mailer: Send receipt
+            }
+            ref(Coordinator, Inventory, Billing)
+        """.trimIndent(),
+        expectedTexts = listOf("Parallel Delivery Sections", "Reserve stock", "Authorize payment", "Send receipt"),
+        features = setOf("par", "critical", "section", "ref", "async-messages", "sync-messages"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_recovery_flow",
+        diagramId = "zenuml",
+        title = "Recovery flow",
+        scenario = "Try, catch, and finally sections preserve success, failure, and cleanup interactions.",
+        layout = "dagre",
+        initialAspectRatio = 1.55f,
+        source = """
+            zenuml
+            title Recovery Flow
+            try {
+              Consumer->API: Book request
+              API.startBooking() {
+                BookingService.reserve()
+              }
+            } catch(error) {
+              API->Consumer: Show failure
+            } finally {
+              BookingService.rollback()
+            }
+        """.trimIndent(),
+        expectedTexts = listOf("Recovery Flow", "Book request", "Show failure", "rollback()"),
+        features = setOf("try-catch-finally", "nested-messages", "async-messages", "sync-messages"),
+    ),
+    StabilityCorpusCase(
+        id = "prod_zenuml_documented_context",
+        diagramId = "zenuml",
+        title = "Documented regional context",
+        scenario = "An ignored frontmatter title, styled comments, dividers, and Unicode labels share one interaction.",
+        layout = "dagre",
+        initialAspectRatio = 1.6f,
+        source = """
+            ---
+            title: Documented Regional Context
+            ---
+            zenuml
+            利用者
+            Gateway
+            // **Tokyo review**
+            利用者->Gateway: 東京 request
+            ===== phase two =====
+            Gateway->利用者: 서울 승인
+        """.trimIndent(),
+        expectedTexts = listOf("Tokyo review", "서울 승인", "phase two"),
+        features = setOf("frontmatter-title", "comments", "markdown", "dividers", "unicode", "async-messages"),
+    ),
 )
 
 private val visualParityLabelProfiles: List<String> = listOf(
@@ -16232,6 +17092,8 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             "eventmodeling",
             "agentflow",
             "usecase",
+            "wardley",
+            "zenuml",
         )
         kinds.forEach { kind ->
             val seeds = productionCorpusCases.filter { case ->
@@ -16342,7 +17204,36 @@ private fun addVisualParityVariation(
     )
     "usecase" -> "${source.trimEnd()}\n" +
         "$evidenceId(\"${escapeQuotedVisualParityLabel(label)}\")\n"
+    "wardley" -> "${source.trimEnd()}\n" +
+        "note \"${escapeQuotedVisualParityLabel(label)}\" [0.08, 0.92]\n"
+    "zenuml" -> insertZenUmlVisualParityParticipant(
+        source = source,
+        evidenceId = evidenceId,
+        label = label,
+    )
     else -> source
+}
+
+private fun insertZenUmlVisualParityParticipant(
+    source: String,
+    evidenceId: String,
+    label: String,
+): String {
+    val lines = source.lines().toMutableList()
+    val declarationIndex = lines.indexOfFirst { line -> line.trim() == "zenuml" }
+    if (declarationIndex < 0) return source
+    val titleIndex = lines.withIndex()
+        .firstOrNull { (index, line) ->
+            index > declarationIndex && line.trimStart().startsWith("title ")
+        }
+        ?.index
+        ?: -1
+    val insertionIndex = if (titleIndex >= 0) titleIndex + 1 else declarationIndex + 1
+    lines.add(
+        insertionIndex,
+        "  $evidenceId as \"${escapeQuotedVisualParityLabel(label)}\"",
+    )
+    return lines.joinToString("\n")
 }
 
 private fun appendRailroadVisualParityEvidence(
