@@ -958,6 +958,9 @@ data class MermaidTheme(
     val noteStroke: SceneColor = SceneColor(0xFFAAAA33),
     val noteText: SceneColor = SceneColor(0xFF000000),
     val textColor: SceneColor = SceneColor(0xFF333333),
+    /** ER attribute row fills (Mermaid themeVariables rowOdd/rowEven); null derives them from [nodeFill]. */
+    val rowOdd: SceneColor? = null,
+    val rowEven: SceneColor? = null,
     val fontSize: Float = 16f,
     val fontFamily: String = MERMAID_CLASSIC_FONT_FAMILY,
     val strokeWidth: Float = 1f,
@@ -1893,6 +1896,8 @@ data class MermaidTheme(
                 noteStroke = color("noteBorderColor") ?: theme.noteStroke,
                 noteText = color("noteTextColor") ?: theme.noteText,
                 textColor = color("textColor") ?: theme.textColor,
+                rowOdd = color("rowOdd") ?: theme.rowOdd,
+                rowEven = color("rowEven") ?: theme.rowEven,
                 fontSize = number("fontSize") ?: theme.fontSize,
                 fontFamily = values["fontFamily"] ?: theme.fontFamily,
                 strokeWidth = number("strokeWidth") ?: theme.strokeWidth,

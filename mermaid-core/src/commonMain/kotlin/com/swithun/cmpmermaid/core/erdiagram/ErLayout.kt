@@ -5,6 +5,9 @@ import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
+import com.swithun.cmpmermaid.core.MermaidTheme
+import com.swithun.cmpmermaid.core.mermaidDarken
+import com.swithun.cmpmermaid.core.mermaidLighten
 import com.swithun.cmpmermaid.core.SceneArrowHead
 import com.swithun.cmpmermaid.core.SceneAsset
 import com.swithun.cmpmermaid.core.SceneColor
@@ -679,7 +682,7 @@ internal class ErLayout {
                     id = "${visual.source.id}-row-$index",
                     bounds = rowBounds,
                     kind = SceneShapeKind.Rectangle,
-                    fill = if (index % 2 == 0) ER_ROW_ODD else ER_ROW_EVEN,
+                    fill = if (index % 2 == 0) context.theme.erRowOdd() else context.theme.erRowEven(),
                     stroke = TRANSPARENT,
                     strokeWidth = 0f,
                     cornerRadius = 0f,
@@ -1064,8 +1067,6 @@ internal class ErLayout {
 
     private companion object {
         val TRANSPARENT = SceneColor(0x00000000)
-        val ER_ROW_ODD = SceneColor(0xFFFFFFFF)
-        val ER_ROW_EVEN = SceneColor(0xFFF7F7F7)
         val ER_DASH_INTERVALS = listOf(8f, 8f)
         val HTML_BREAK = Regex("""<br\s*/?>""", RegexOption.IGNORE_CASE)
         const val DEFAULT_LINE_HEIGHT = 1.5f
@@ -1079,4 +1080,26 @@ internal class ErLayout {
         const val UNWRAPPED_TEXT_WIDTH = 100_000f
         const val ER_CURVE = "basis"
     }
+}
+
+// Mermaid.js 12.0.0: packages/mermaid/src/themes/theme-*.js -> updateColors (rowOdd/rowEven)
+// Light themes resolve to near-white rows (lighten(mainBkg, 75) / '#ffffff'); the dark theme uses
+// lighten(mainBkg, 5) / darken(mainBkg, 10). A hard-coded white made dark-theme attributes unreadable.
+private fun MermaidTheme.isDarkNodeFill(): Boolean {
+    val c = nodeFill.argb
+    val r = (c shr 16) and 0xFF
+    val g = (c shr 8) and 0xFF
+    val b = c and 0xFF
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) < 128
+}
+
+internal fun MermaidTheme.erRowOdd(): SceneColor =
+    rowOdd ?: if (isDarkNodeFill()) nodeFill.mermaidLighten(5.0) else ErLayoutRowDefaults.ODD
+
+internal fun MermaidTheme.erRowEven(): SceneColor =
+    rowEven ?: if (isDarkNodeFill()) nodeFill.mermaidDarken(10.0) else ErLayoutRowDefaults.EVEN
+
+private object ErLayoutRowDefaults {
+    val ODD = SceneColor(0xFFFFFFFF)
+    val EVEN = SceneColor(0xFFF7F7F7)
 }
