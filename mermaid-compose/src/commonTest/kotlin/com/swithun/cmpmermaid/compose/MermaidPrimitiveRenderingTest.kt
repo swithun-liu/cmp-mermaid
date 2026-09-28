@@ -1,5 +1,6 @@
 package com.swithun.cmpmermaid.compose
 
+import androidx.compose.ui.text.style.LineHeightStyle
 import com.swithun.cmpmermaid.core.SceneShapeKind
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -44,5 +45,31 @@ class MermaidPrimitiveRenderingTest {
     fun preservesDefaultTextScaleWhileAllowingSvgTextOverride() {
         assertEquals(1.06f, mermaidTextHorizontalScale(null))
         assertEquals(1f, mermaidTextHorizontalScale(1f))
+    }
+
+    @Test
+    fun preservesCssLeadingAtTheFirstAndLastTextLines() {
+        assertEquals(
+            LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None,
+            ),
+            MERMAID_LINE_HEIGHT_STYLE,
+        )
+    }
+
+    @Test
+    fun convertsExplicitHorizontalScaleIntoLayoutWidth() {
+        assertEquals(
+            209,
+            205f.mermaidTextConstraint(
+                spans = emptyList(),
+                horizontalScale = 0.98f,
+            ),
+        )
+        assertEquals(
+            205,
+            205f.mermaidTextConstraint(spans = emptyList()),
+        )
     }
 }

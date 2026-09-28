@@ -62,6 +62,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.BaselineShift
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -294,7 +295,10 @@ fun rememberMermaidScene(
                 softWrap = true,
                 maxLines = 8,
                 constraints = Constraints(
-                    maxWidth = request.maxWidth.mermaidTextConstraint(request.spans),
+                    maxWidth = request.maxWidth.mermaidTextConstraint(
+                        spans = request.spans,
+                        horizontalScale = request.horizontalScale,
+                    ),
                 ),
             )
             TextMetrics(
@@ -2325,6 +2329,7 @@ private fun DrawScope.drawSceneText(
         color = element.color.toComposeColor(),
         fontSize = normalizedSp(element.fontSize, density, fontScale),
         lineHeight = normalizedSp(element.fontSize * element.lineHeight, density, fontScale),
+        lineHeightStyle = MERMAID_LINE_HEIGHT_STYLE,
         textGeometricTransform = TextGeometricTransform(
             scaleX = mermaidTextHorizontalScale(element.horizontalScale),
         ),
@@ -2351,7 +2356,12 @@ private fun DrawScope.drawSceneText(
         maxLines = mermaidTextMaxLines(element.text, element.softWrap, element.maxLines),
         overflow = if (element.overflowEllipsis) TextOverflow.Ellipsis else TextOverflow.Clip,
         constraints = if (element.softWrap) {
-            Constraints(maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1))
+            Constraints(
+                maxWidth = element.bounds.width.mermaidTextConstraint(
+                    spans = element.spans,
+                    horizontalScale = element.horizontalScale,
+                ),
+            )
         } else {
             Constraints()
         },
@@ -2378,7 +2388,12 @@ private fun DrawScope.drawSceneText(
                     TextOverflow.Clip
                 },
                 constraints = if (element.softWrap) {
-                    Constraints(maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1))
+                    Constraints(
+                        maxWidth = element.bounds.width.mermaidTextConstraint(
+                            spans = element.spans,
+                            horizontalScale = element.horizontalScale,
+                        ),
+                    )
                 } else {
                     Constraints()
                 },
@@ -2453,6 +2468,7 @@ private fun TextMetricsRequest.toTextStyle(
 ): TextStyle = TextStyle(
     fontSize = normalizedSp(fontSize, density, fontScale),
     lineHeight = normalizedSp(fontSize * lineHeight, density, fontScale),
+    lineHeightStyle = MERMAID_LINE_HEIGHT_STYLE,
     textGeometricTransform = TextGeometricTransform(
         scaleX = mermaidTextHorizontalScale(horizontalScale),
     ),
@@ -2462,16 +2478,27 @@ private fun TextMetricsRequest.toTextStyle(
     fontWeight = weight.toComposeWeight(),
 )
 
+// Mermaid.js 12.0.0: packages/mermaid/src/rendering-util/createText.ts -> addHtmlSpan.
+// CSS line-height keeps the leading above the first and below the last line.
+internal val MERMAID_LINE_HEIGHT_STYLE = LineHeightStyle(
+    alignment = LineHeightStyle.Alignment.Center,
+    trim = LineHeightStyle.Trim.None,
+)
+
 private fun normalizedSp(
     sceneUnits: Float,
     density: Float,
     fontScale: Float,
 ) = (sceneUnits / density / fontScale).sp
 
-private fun Float.mermaidTextConstraint(
+internal fun Float.mermaidTextConstraint(
     spans: List<com.swithun.cmpmermaid.core.SceneTextSpan>,
+    horizontalScale: Float? = null,
 ): Int {
-    val widthScale = if (
+    val explicitScale = horizontalScale?.takeIf { scale ->
+        scale.isFinite() && scale > 0f
+    }
+    val widthScale = explicitScale ?: if (
         spans.any { span -> span.fontFamily == SceneTextFontFamily.Monospace }
     ) {
         MERMAID_FONT_WIDTH_SCALE

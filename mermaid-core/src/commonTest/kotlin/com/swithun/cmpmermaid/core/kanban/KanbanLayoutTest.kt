@@ -74,7 +74,7 @@ class KanbanLayoutTest {
     }
 
     @Test
-    fun reservesBundledFontCompensationInsideUpstreamTitleWidth() {
+    fun measuresItemTitleAtUpstreamWidthMinusTen() {
         val label = "Authorization And Policy Evaluation Label"
         val scene = assertIs<GMResult.Ok<MermaidScene>>(
             engine.render(
@@ -96,7 +96,8 @@ class KanbanLayoutTest {
             .single { it.id == "task" }
 
         assertEquals(185f, item.bounds.width)
-        assertEquals(170f, title.bounds.width)
+        assertEquals(175f, title.bounds.width)
+        assertEquals(0.98f, title.horizontalScale)
     }
 
     @Test

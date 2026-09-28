@@ -152,6 +152,7 @@ internal class KanbanLayout {
                 fontFamily = factory.fontFamily,
                 weight = SceneTextWeight.Normal,
                 spans = section.label.rendered.spans,
+                horizontalScale = KANBAN_TEXT_HORIZONTAL_SCALE,
                 horizontalAlignment = SceneTextAlignment.Center,
                 softWrap = true,
                 zIndex = SECTION_Z_START + section.index * SECTION_Z_STRIDE + 1,
@@ -379,6 +380,7 @@ private class KanbanNodeFactory(
                     fontFamily = fontFamily,
                     weight = SceneTextWeight.Normal,
                     spans = rendered.spans,
+                    horizontalScale = KANBAN_TEXT_HORIZONTAL_SCALE,
                 ),
             )
         } catch (failure: Exception) {
@@ -404,7 +406,7 @@ private class KanbanNodeFactory(
         val title = when (
             val measured = measure(
                 node.label,
-                width - UPSTREAM_TITLE_WIDTH_REDUCTION - BUNDLED_FONT_WRAP_COMPENSATION,
+                width - UPSTREAM_TITLE_WIDTH_REDUCTION,
             )
         ) {
             is GMResult.Ok -> measured.value
@@ -473,10 +475,8 @@ private class KanbanNodeFactory(
     }
 
     private companion object {
-        // Mermaid passes width - 10 to browser Trebuchet. Bundled Arimo is
-        // narrower for some word runs, so reserve 5 units to retain its wraps.
+        // Mermaid.js 12.0.0: rendering-elements/shapes/kanbanItem.ts -> kanbanItem.
         const val UPSTREAM_TITLE_WIDTH_REDUCTION = 10f
-        const val BUNDLED_FONT_WRAP_COMPENSATION = 5f
         const val ITEM_VERTICAL_PADDING = 20f
         const val HTML_LINE_HEIGHT = 1.5f
         const val SVG_LINE_HEIGHT = 1.1f
@@ -575,11 +575,16 @@ private fun KanbanTextVisual.toSceneText(
         fontFamily = fontFamily,
         weight = SceneTextWeight.Normal,
         spans = spans,
+        horizontalScale = KANBAN_TEXT_HORIZONTAL_SCALE,
         horizontalAlignment = alignment,
         softWrap = true,
         zIndex = zIndex,
     )
 }
+
+// Mermaid.js 12.0.0 uses Trebuchet MS for Kanban labels. Compress the
+// bundled Arial-compatible Arimo advances to preserve its boundary wraps.
+private const val KANBAN_TEXT_HORIZONTAL_SCALE = 0.98f
 
 private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
     is SceneAsset -> element.bounds
