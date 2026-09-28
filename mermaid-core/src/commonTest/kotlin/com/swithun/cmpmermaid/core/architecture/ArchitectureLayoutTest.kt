@@ -185,6 +185,25 @@ class ArchitectureLayoutTest {
     }
 
     @Test
+    fun clampsIconTextToTheUpstreamComputedLineCountWithEllipsis() {
+        val label = "Deterministic Rendering Verification Evidence Label"
+        val scene = render(
+            """
+                architecture-beta
+                  service app "$label"[Application]
+            """.trimIndent(),
+        )
+        val iconText = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == label }
+
+        assertEquals(4, iconText.maxLines)
+        assertTrue(iconText.overflowEllipsis)
+        assertTrue(iconText.clipToBounds)
+        assertEquals(76f, iconText.bounds.width, 0.01f)
+        assertEquals(76f, iconText.bounds.height, 0.01f)
+    }
+
+    @Test
     fun preservesAccessibilityMetadataAndSeededDeterminism() {
         val source = """
             architecture-beta

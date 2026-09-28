@@ -244,6 +244,8 @@ data class SceneText(
     val horizontalScale: Float? = null,
     val outlineColor: SceneColor? = null,
     val outlineWidth: Float = 0f,
+    val maxLines: Int? = null,
+    val overflowEllipsis: Boolean = false,
 ) : SceneElement
 
 data class SceneTextSpan(

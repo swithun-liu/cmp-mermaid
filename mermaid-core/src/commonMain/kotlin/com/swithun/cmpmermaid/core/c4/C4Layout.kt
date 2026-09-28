@@ -277,6 +277,7 @@ internal class C4Layout {
                 measuredLabel = labelSize,
                 direction = FlowDirection.TopToBottom,
                 defaultNodeStroke = shape.typeC4Shape.defaultStroke,
+                explicitNodeWidth = context.options.c4.width,
             )
         ) {
             is GMResult.Ok -> result.value

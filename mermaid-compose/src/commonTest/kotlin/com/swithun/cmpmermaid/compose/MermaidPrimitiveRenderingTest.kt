@@ -30,6 +30,14 @@ class MermaidPrimitiveRenderingTest {
         assertEquals(1, mermaidTextMaxLines("main", softWrap = false))
         assertEquals(3, mermaidTextMaxLines("release\ncandidate\nready", softWrap = false))
         assertEquals(8, mermaidTextMaxLines("release\ncandidate", softWrap = true))
+        assertEquals(
+            4,
+            mermaidTextMaxLines(
+                text = "release candidate",
+                softWrap = true,
+                explicitMaxLines = 4,
+            ),
+        )
     }
 
     @Test

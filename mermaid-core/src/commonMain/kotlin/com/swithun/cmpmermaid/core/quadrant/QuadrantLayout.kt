@@ -24,8 +24,6 @@ import com.swithun.cmpmermaid.core.SceneTextWeight
 import com.swithun.cmpmermaid.core.TextMetrics
 import com.swithun.cmpmermaid.core.TextMetricsRequest
 import com.swithun.cmpmermaid.core.mermaidAdjustSaturationAndLightness
-import com.swithun.cmpmermaid.core.mermaidDarken
-import com.swithun.cmpmermaid.core.mermaidLighten
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.max
@@ -151,11 +149,10 @@ internal class QuadrantLayout {
                 primaryText.adjustRgb(-10),
                 primaryText.adjustRgb(-15),
             ),
-            pointFill = if (primary.isDark()) {
-                primary.mermaidLighten(10.0)
-            } else {
-                primary.mermaidDarken(10.0)
-            },
+            // Mermaid.js 12.0.0: theme-*.js calls Khroma 2.1.0
+            // lighten/darken without an amount. Khroma emits an invalid HSL
+            // value, so the SVG fill attribute falls back to its initial black.
+            pointFill = SVG_INITIAL_FILL,
             pointTextFill = primaryText,
             xAxisTextFill = primaryText,
             yAxisTextFill = primaryText,
@@ -216,6 +213,7 @@ internal class QuadrantLayout {
     companion object {
         private val BARE_HEX_COLOR = Regex("""(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})""")
         private const val QUADRANT_VIEWPORT_PADDING = 12f
+        private val SVG_INITIAL_FILL = SceneColor(0xFF000000)
         private val QUADRANT_THEME_VARIABLES = listOf(
             "quadrant1Fill",
             "quadrant2Fill",

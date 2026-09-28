@@ -393,6 +393,17 @@ internal class ArchitectureLayout {
                 bounds = bounds,
             )
             service.iconText != null -> {
+                val fontSize = minOf(16f, db.config.fontSize)
+                // Mermaid.js 12.0.0: architecture/svgDraw.ts -> drawServices.
+                val maxLines = if (
+                    fontSize.isFinite() &&
+                    fontSize > 0f &&
+                    iconSize.isFinite()
+                ) {
+                    ((iconSize - 2f) / fontSize).toInt().coerceAtLeast(1)
+                } else {
+                    1
+                }
                 elements += iconBackground(
                     id = "architecture-service-icon-${service.id}",
                     bounds = bounds,
@@ -401,10 +412,12 @@ internal class ArchitectureLayout {
                     text = service.iconText,
                     bounds = bounds.inflate(-2f, -2f),
                     color = WHITE,
-                    fontSize = minOf(16f, db.config.fontSize),
+                    fontSize = fontSize,
                     fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
                     weight = SceneTextWeight.Medium,
                     softWrap = true,
+                    maxLines = maxLines,
+                    overflowEllipsis = true,
                     clipToBounds = true,
                     zIndex = 15,
                 )

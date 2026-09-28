@@ -87,6 +87,7 @@ class QuadrantLayoutTest {
                 shape.bounds.center.y in 226.59f..226.61f
         }
         assertEquals(10f, campaignA.bounds.width)
+        assertEquals(SceneColor(0xFF000000), campaignA.fill)
     }
 
     @Test

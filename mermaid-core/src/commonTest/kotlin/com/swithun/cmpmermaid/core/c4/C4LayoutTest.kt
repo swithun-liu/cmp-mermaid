@@ -7,6 +7,7 @@ import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.SceneArrowHead
 import com.swithun.cmpmermaid.core.ScenePath
+import com.swithun.cmpmermaid.core.ScenePoint
 import com.swithun.cmpmermaid.core.SceneRect
 import com.swithun.cmpmermaid.core.SceneShape
 import com.swithun.cmpmermaid.core.SceneShapeKind
@@ -17,6 +18,7 @@ import com.swithun.cmpmermaid.core.TextMetrics
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 class C4LayoutTest {
@@ -72,6 +74,27 @@ class C4LayoutTest {
         assertEquals(SceneArrowHead.Triangle, relations.first().arrowEnd)
         assertEquals(SceneArrowHead.None, relations.last().arrowStart)
         assertEquals(SceneArrowHead.Triangle, relations.last().arrowEnd)
+    }
+
+    @Test
+    fun appliesConfiguredPersonWidthBeforeBuildingCircularHeadGeometry() {
+        val scene = render(
+            """
+                C4Context
+                Person(user, "U")
+                System(system, "S")
+                SystemDb(database, "D")
+            """.trimIndent(),
+        )
+        val person = scene.shape("c4-shape-user")
+        val headPoints = assertNotNull(person.geometry).paths[1].points
+        val headWidth = headPoints.maxOf(ScenePoint::x) - headPoints.minOf(ScenePoint::x)
+        val headHeight = headPoints.maxOf(ScenePoint::y) - headPoints.minOf(ScenePoint::y)
+
+        assertEquals(216f, person.bounds.width, 0.01f)
+        assertEquals(headWidth, headHeight, 0.25f)
+        assertEquals(216f, scene.shape("c4-shape-system").bounds.width, 0.01f)
+        assertEquals(216f, scene.shape("c4-shape-database").bounds.width, 0.01f)
     }
 
     @Test

@@ -64,6 +64,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.IntOffset
@@ -2347,7 +2348,8 @@ private fun DrawScope.drawSceneText(
         ),
         style = style,
         softWrap = element.softWrap,
-        maxLines = mermaidTextMaxLines(element.text, element.softWrap),
+        maxLines = mermaidTextMaxLines(element.text, element.softWrap, element.maxLines),
+        overflow = if (element.overflowEllipsis) TextOverflow.Ellipsis else TextOverflow.Clip,
         constraints = if (element.softWrap) {
             Constraints(maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1))
         } else {
@@ -2369,7 +2371,12 @@ private fun DrawScope.drawSceneText(
                     drawStyle = Stroke(width = element.outlineWidth),
                 ),
                 softWrap = element.softWrap,
-                maxLines = mermaidTextMaxLines(element.text, element.softWrap),
+                maxLines = mermaidTextMaxLines(element.text, element.softWrap, element.maxLines),
+                overflow = if (element.overflowEllipsis) {
+                    TextOverflow.Ellipsis
+                } else {
+                    TextOverflow.Clip
+                },
                 constraints = if (element.softWrap) {
                     Constraints(maxWidth = element.bounds.width.roundToInt().coerceAtLeast(1))
                 } else {
@@ -2429,7 +2436,8 @@ internal fun SceneShapeKind.primitiveCanvasShape(): PrimitiveCanvasShape = when 
 internal fun mermaidTextMaxLines(
     text: String,
     softWrap: Boolean,
-): Int = if (softWrap) {
+    explicitMaxLines: Int? = null,
+): Int = explicitMaxLines?.coerceAtLeast(1) ?: if (softWrap) {
     MAX_SOFT_TEXT_LINES
 } else {
     text.count { character -> character == '\n' } + 1

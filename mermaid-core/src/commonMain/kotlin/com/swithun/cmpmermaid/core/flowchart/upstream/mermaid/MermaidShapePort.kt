@@ -137,6 +137,7 @@ internal object MermaidShapePort {
         direction: FlowDirection,
         defaultNodeStroke: SceneColor,
         defaultFlowContainerStroke: SceneColor = defaultNodeStroke,
+        explicitNodeWidth: Float? = null,
     ): GMResult<MermaidShapeLayout, MermaidError> {
         val label = measuredLabel.copy(
             width = if (node.label.isNotEmpty()) {
@@ -165,7 +166,7 @@ internal object MermaidShapePort {
                 SceneShapeKind.Bucket -> bucket(label, node.padding)
                 SceneShapeKind.Console -> console(label, node.padding)
                 SceneShapeKind.Browser -> browser(label, node.padding)
-                SceneShapeKind.Person -> person(label, node.padding)
+                SceneShapeKind.Person -> person(label, node.padding, explicitNodeWidth)
                 SceneShapeKind.Circle -> circle(label, node.padding, node.look)
                 SceneShapeKind.Bang -> bang(label, node.padding)
                 SceneShapeKind.Cloud -> cloud(label, node.padding)
@@ -507,8 +508,14 @@ internal object MermaidShapePort {
         )
     }
 
-    private fun person(label: SceneSize, padding: Float): MermaidShapeLayout {
-        val width = max(label.width + padding * 2f, 100f)
+    private fun person(
+        label: SceneSize,
+        padding: Float,
+        explicitNodeWidth: Float?,
+    ): MermaidShapeLayout {
+        // Mermaid.js 12.0.0:
+        // rendering-elements/shapes/person.ts -> person (node.width).
+        val width = maxOf(label.width + padding * 2f, explicitNodeWidth ?: 0f, 100f)
         val headRadius = (width * 0.23f).coerceIn(16f, 56f)
         val overlap = headRadius * 0.27f
         val bodyHeight = label.height + padding * 2f
