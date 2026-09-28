@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T06:31:50.115Z",
-  "inputDirectory": "captures/local/cynefin-visual-parity-20260918",
+  "generatedAt": "2026-09-28T14:09:30.636Z",
+  "inputDirectory": "captures/local/visual-parity-20260928-45924b4",
   "corpusSource": "visual-parity",
   "theme": null,
   "caseCount": 256,
@@ -96,8 +96,8 @@
             255
           ]
         ],
-        "inkPixels": 107093,
-        "inkRatio": 0.09916018518518518,
+        "inkPixels": 107083,
+        "inkRatio": 0.09915092592592592,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -133,7 +133,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0212171491780142
+      "inkRatio": 1.0211217912041803
     },
     {
       "id": "parity_cynefin_003",
@@ -155,8 +155,8 @@
             255
           ]
         ],
-        "inkPixels": 78355,
-        "inkRatio": 0.07255092592592592,
+        "inkPixels": 78354,
+        "inkRatio": 0.07255,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -192,7 +192,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0262203187824972
+      "inkRatio": 1.0262072217201683
     },
     {
       "id": "parity_cynefin_004",
@@ -214,13 +214,13 @@
             255
           ]
         ],
-        "inkPixels": 75681,
-        "inkRatio": 0.070075,
+        "inkPixels": 75468,
+        "inkRatio": 0.06987777777777777,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -249,9 +249,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0438182720953326
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.040880503144654
     },
     {
       "id": "parity_cynefin_005",
@@ -403,8 +403,8 @@
             255
           ]
         ],
-        "inkPixels": 94169,
-        "inkRatio": 0.08719351851851852,
+        "inkPixels": 94170,
+        "inkRatio": 0.08719444444444445,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -440,7 +440,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0282366814801873
+      "inkRatio": 1.0282476005372176
     },
     {
       "id": "parity_cynefin_008",
@@ -521,11 +521,11 @@
             255
           ]
         ],
-        "inkPixels": 76249,
-        "inkRatio": 0.07060092592592593,
+        "inkPixels": 76244,
+        "inkRatio": 0.0705962962962963,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -558,7 +558,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0276422545082078
+      "inkRatio": 1.0275748672470957
     },
     {
       "id": "parity_cynefin_010",
@@ -875,8 +875,8 @@
             255
           ]
         ],
-        "inkPixels": 109284,
-        "inkRatio": 0.10118888888888888,
+        "inkPixels": 109313,
+        "inkRatio": 0.10121574074074075,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -912,7 +912,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0201540256709452
+      "inkRatio": 1.0204247374562427
     },
     {
       "id": "parity_cynefin_016",
@@ -934,8 +934,8 @@
             255
           ]
         ],
-        "inkPixels": 80878,
-        "inkRatio": 0.07488703703703704,
+        "inkPixels": 80877,
+        "inkRatio": 0.07488611111111111,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -971,7 +971,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0288905568206395
+      "inkRatio": 1.0288778353072883
     },
     {
       "id": "parity_cynefin_017",
@@ -993,13 +993,13 @@
             255
           ]
         ],
-        "inkPixels": 79731,
-        "inkRatio": 0.073825,
+        "inkPixels": 79516,
+        "inkRatio": 0.07362592592592593,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -1028,9 +1028,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0444744288409138
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0416579333473066
     },
     {
       "id": "parity_cynefin_018",
@@ -1182,8 +1182,8 @@
             255
           ]
         ],
-        "inkPixels": 96486,
-        "inkRatio": 0.08933888888888888,
+        "inkPixels": 96489,
+        "inkRatio": 0.08934166666666667,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -1219,7 +1219,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0281969309462915
+      "inkRatio": 1.0282289002557545
     },
     {
       "id": "parity_cynefin_021",
@@ -1300,11 +1300,11 @@
             255
           ]
         ],
-        "inkPixels": 79907,
-        "inkRatio": 0.07398796296296296,
+        "inkPixels": 79902,
+        "inkRatio": 0.07398333333333333,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -1337,7 +1337,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.028245316038707
+      "inkRatio": 1.0281809759110563
     },
     {
       "id": "parity_cynefin_023",
@@ -1654,8 +1654,8 @@
             255
           ]
         ],
-        "inkPixels": 112132,
-        "inkRatio": 0.10382592592592593,
+        "inkPixels": 112123,
+        "inkRatio": 0.10381759259259259,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -1691,7 +1691,7 @@
       },
       "widthRatio": 1.01417004048583,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0222441016664845
+      "inkRatio": 1.0221620537505014
     },
     {
       "id": "parity_cynefin_029",
@@ -1713,8 +1713,8 @@
             255
           ]
         ],
-        "inkPixels": 83494,
-        "inkRatio": 0.07730925925925926,
+        "inkPixels": 83493,
+        "inkRatio": 0.07730833333333334,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -1750,7 +1750,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0305102317888968
+      "inkRatio": 1.0304978894621215
     },
     {
       "id": "parity_cynefin_030",
@@ -1772,13 +1772,13 @@
             255
           ]
         ],
-        "inkPixels": 84445,
-        "inkRatio": 0.07818981481481481,
+        "inkPixels": 84200,
+        "inkRatio": 0.07796296296296296,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -1807,9 +1807,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0477437125451319
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0447038971673883
     },
     {
       "id": "parity_cynefin_031",
@@ -1961,8 +1961,8 @@
             255
           ]
         ],
-        "inkPixels": 99123,
-        "inkRatio": 0.09178055555555556,
+        "inkPixels": 99125,
+        "inkRatio": 0.09178240740740741,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -1998,7 +1998,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0281722281577064
+      "inkRatio": 1.0281929735392659
     },
     {
       "id": "parity_cynefin_034",
@@ -2079,11 +2079,11 @@
             255
           ]
         ],
-        "inkPixels": 84195,
-        "inkRatio": 0.07795833333333334,
+        "inkPixels": 84190,
+        "inkRatio": 0.0779537037037037,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -2116,7 +2116,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0319785257274534
+      "inkRatio": 1.031917240703062
     },
     {
       "id": "parity_cynefin_036",
@@ -2433,8 +2433,8 @@
             255
           ]
         ],
-        "inkPixels": 112808,
-        "inkRatio": 0.10445185185185185,
+        "inkPixels": 112800,
+        "inkRatio": 0.10444444444444445,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -2470,7 +2470,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.023201814058957
+      "inkRatio": 1.0231292517006803
     },
     {
       "id": "parity_cynefin_042",
@@ -2492,8 +2492,8 @@
             255
           ]
         ],
-        "inkPixels": 84040,
-        "inkRatio": 0.07781481481481481,
+        "inkPixels": 84039,
+        "inkRatio": 0.07781388888888889,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -2529,7 +2529,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0313934365872215
+      "inkRatio": 1.0313811639380477
     },
     {
       "id": "parity_cynefin_043",
@@ -2551,13 +2551,13 @@
             255
           ]
         ],
-        "inkPixels": 85568,
-        "inkRatio": 0.07922962962962964,
+        "inkPixels": 85282,
+        "inkRatio": 0.07896481481481482,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -2586,9 +2586,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0490645612142315
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0455581982688866
     },
     {
       "id": "parity_cynefin_044",
@@ -2740,8 +2740,8 @@
             255
           ]
         ],
-        "inkPixels": 99826,
-        "inkRatio": 0.09243148148148148,
+        "inkPixels": 99839,
+        "inkRatio": 0.09244351851851852,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -2777,7 +2777,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0295054916722528
+      "inkRatio": 1.0296395606662199
     },
     {
       "id": "parity_cynefin_047",
@@ -2858,11 +2858,11 @@
             255
           ]
         ],
-        "inkPixels": 85189,
-        "inkRatio": 0.0788787037037037,
+        "inkPixels": 85184,
+        "inkRatio": 0.07887407407407407,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -2895,7 +2895,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0326815608597093
+      "inkRatio": 1.0326209496563343
     },
     {
       "id": "parity_cynefin_049",
@@ -3212,8 +3212,8 @@
             255
           ]
         ],
-        "inkPixels": 113705,
-        "inkRatio": 0.10528240740740741,
+        "inkPixels": 113733,
+        "inkRatio": 0.10530833333333334,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -3249,7 +3249,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0226649278229978
+      "inkRatio": 1.0229167603543645
     },
     {
       "id": "parity_cynefin_055",
@@ -3271,8 +3271,8 @@
             255
           ]
         ],
-        "inkPixels": 85006,
-        "inkRatio": 0.07870925925925926,
+        "inkPixels": 85005,
+        "inkRatio": 0.07870833333333334,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -3308,7 +3308,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0333317125352524
+      "inkRatio": 1.0333195565496451
     },
     {
       "id": "parity_cynefin_056",
@@ -3330,13 +3330,13 @@
             255
           ]
         ],
-        "inkPixels": 87378,
-        "inkRatio": 0.08090555555555555,
+        "inkPixels": 87092,
+        "inkRatio": 0.08064074074074074,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -3365,9 +3365,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.051429534077782
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.047988063149788
     },
     {
       "id": "parity_cynefin_057",
@@ -3637,11 +3637,11 @@
             255
           ]
         ],
-        "inkPixels": 86861,
-        "inkRatio": 0.08042685185185185,
+        "inkPixels": 86856,
+        "inkRatio": 0.08042222222222223,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -3674,7 +3674,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0357858335320773
+      "inkRatio": 1.0357262103505844
     },
     {
       "id": "parity_cynefin_062",
@@ -3991,8 +3991,8 @@
             255
           ]
         ],
-        "inkPixels": 114890,
-        "inkRatio": 0.10637962962962963,
+        "inkPixels": 114878,
+        "inkRatio": 0.10636851851851852,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -4028,7 +4028,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0219893611343378
+      "inkRatio": 1.0218826166628119
     },
     {
       "id": "parity_cynefin_068",
@@ -4050,8 +4050,8 @@
             255
           ]
         ],
-        "inkPixels": 85943,
-        "inkRatio": 0.07957685185185186,
+        "inkPixels": 85942,
+        "inkRatio": 0.07957592592592592,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -4087,7 +4087,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0304668952782907
+      "inkRatio": 1.0304549051581497
     },
     {
       "id": "parity_cynefin_069",
@@ -4109,13 +4109,13 @@
             255
           ]
         ],
-        "inkPixels": 89250,
-        "inkRatio": 0.08263888888888889,
+        "inkPixels": 88970,
+        "inkRatio": 0.08237962962962964,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -4144,9 +4144,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0478057714433304
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0445185376505672
     },
     {
       "id": "parity_cynefin_070",
@@ -4298,8 +4298,8 @@
             255
           ]
         ],
-        "inkPixels": 102025,
-        "inkRatio": 0.09446759259259259,
+        "inkPixels": 102026,
+        "inkRatio": 0.09446851851851852,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -4335,7 +4335,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.029172929297005
+      "inkRatio": 1.0291830167552682
     },
     {
       "id": "parity_cynefin_073",
@@ -4416,11 +4416,11 @@
             255
           ]
         ],
-        "inkPixels": 88506,
-        "inkRatio": 0.08195,
+        "inkPixels": 88501,
+        "inkRatio": 0.08194537037037038,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -4453,7 +4453,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0317909977966635
+      "inkRatio": 1.0317327084717707
     },
     {
       "id": "parity_cynefin_075",
@@ -4770,8 +4770,8 @@
             255
           ]
         ],
-        "inkPixels": 115397,
-        "inkRatio": 0.10684907407407407,
+        "inkPixels": 115385,
+        "inkRatio": 0.10683796296296297,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -4807,7 +4807,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0214745377132184
+      "inkRatio": 1.0213683157624522
     },
     {
       "id": "parity_cynefin_081",
@@ -4829,8 +4829,8 @@
             255
           ]
         ],
-        "inkPixels": 86674,
-        "inkRatio": 0.0802537037037037,
+        "inkPixels": 86673,
+        "inkRatio": 0.08025277777777778,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -4866,7 +4866,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.033124739257405
+      "inkRatio": 1.0331128195959236
     },
     {
       "id": "parity_cynefin_082",
@@ -4888,13 +4888,13 @@
             255
           ]
         ],
-        "inkPixels": 90475,
-        "inkRatio": 0.08377314814814815,
+        "inkPixels": 90226,
+        "inkRatio": 0.0835425925925926,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -4923,9 +4923,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0502518979407054
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0473614561326121
     },
     {
       "id": "parity_cynefin_083",
@@ -5077,8 +5077,8 @@
             255
           ]
         ],
-        "inkPixels": 102861,
-        "inkRatio": 0.09524166666666667,
+        "inkPixels": 102864,
+        "inkRatio": 0.09524444444444445,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -5114,7 +5114,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.031850009028349
+      "inkRatio": 1.0318801035250686
     },
     {
       "id": "parity_cynefin_086",
@@ -5195,11 +5195,11 @@
             255
           ]
         ],
-        "inkPixels": 89627,
-        "inkRatio": 0.08298796296296296,
+        "inkPixels": 89622,
+        "inkRatio": 0.08298333333333334,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -5232,7 +5232,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.03453569573498
+      "inkRatio": 1.0344779823397012
     },
     {
       "id": "parity_cynefin_088",
@@ -5549,8 +5549,8 @@
             255
           ]
         ],
-        "inkPixels": 115685,
-        "inkRatio": 0.10711574074074075,
+        "inkPixels": 115670,
+        "inkRatio": 0.10710185185185185,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -5586,7 +5586,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.022277402707575
+      "inkRatio": 1.022144851719628
     },
     {
       "id": "parity_cynefin_094",
@@ -5608,8 +5608,8 @@
             255
           ]
         ],
-        "inkPixels": 86808,
-        "inkRatio": 0.08037777777777778,
+        "inkPixels": 86807,
+        "inkRatio": 0.08037685185185185,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -5645,7 +5645,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0325558159174983
+      "inkRatio": 1.0325439212094538
     },
     {
       "id": "parity_cynefin_095",
@@ -5667,13 +5667,13 @@
             255
           ]
         ],
-        "inkPixels": 90870,
-        "inkRatio": 0.08413888888888889,
+        "inkPixels": 90588,
+        "inkRatio": 0.08387777777777777,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -5702,9 +5702,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0515778875863586
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0483144897179821
     },
     {
       "id": "parity_cynefin_096",
@@ -5856,8 +5856,8 @@
             255
           ]
         ],
-        "inkPixels": 103021,
-        "inkRatio": 0.09538981481481482,
+        "inkPixels": 103023,
+        "inkRatio": 0.09539166666666667,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -5893,7 +5893,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.031458064257752
+      "inkRatio": 1.0314780884870693
     },
     {
       "id": "parity_cynefin_099",
@@ -5974,11 +5974,11 @@
             255
           ]
         ],
-        "inkPixels": 89969,
-        "inkRatio": 0.08330462962962963,
+        "inkPixels": 89964,
+        "inkRatio": 0.0833,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -6011,7 +6011,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0354713593518017
+      "inkRatio": 1.0354138133437683
     },
     {
       "id": "parity_cynefin_101",
@@ -6328,8 +6328,8 @@
             255
           ]
         ],
-        "inkPixels": 116439,
-        "inkRatio": 0.10781388888888889,
+        "inkPixels": 116429,
+        "inkRatio": 0.10780462962962963,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -6365,7 +6365,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0216367034297598
+      "inkRatio": 1.0215489633509691
     },
     {
       "id": "parity_cynefin_107",
@@ -6387,8 +6387,8 @@
             255
           ]
         ],
-        "inkPixels": 87390,
-        "inkRatio": 0.08091666666666666,
+        "inkPixels": 87389,
+        "inkRatio": 0.08091574074074075,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -6424,7 +6424,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.030518148156883
+      "inkRatio": 1.0305063559821703
     },
     {
       "id": "parity_cynefin_108",
@@ -6446,13 +6446,13 @@
             255
           ]
         ],
-        "inkPixels": 91876,
-        "inkRatio": 0.08507037037037037,
+        "inkPixels": 91587,
+        "inkRatio": 0.08480277777777778,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -6481,9 +6481,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0467455823544825
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0434529980745788
     },
     {
       "id": "parity_cynefin_109",
@@ -6635,8 +6635,8 @@
             255
           ]
         ],
-        "inkPixels": 103532,
-        "inkRatio": 0.09586296296296297,
+        "inkPixels": 103543,
+        "inkRatio": 0.09587314814814815,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -6672,7 +6672,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0282456697918323
+      "inkRatio": 1.0283549181630383
     },
     {
       "id": "parity_cynefin_112",
@@ -6753,11 +6753,11 @@
             255
           ]
         ],
-        "inkPixels": 90831,
-        "inkRatio": 0.08410277777777778,
+        "inkPixels": 90826,
+        "inkRatio": 0.08409814814814814,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -6790,7 +6790,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0305777434873378
+      "inkRatio": 1.03052101297994
     },
     {
       "id": "parity_cynefin_114",
@@ -7107,8 +7107,8 @@
             255
           ]
         ],
-        "inkPixels": 117134,
-        "inkRatio": 0.1084574074074074,
+        "inkPixels": 117122,
+        "inkRatio": 0.10844629629629629,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -7144,7 +7144,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.023397637520095
+      "inkRatio": 1.0232927937373313
     },
     {
       "id": "parity_cynefin_120",
@@ -7166,8 +7166,8 @@
             255
           ]
         ],
-        "inkPixels": 88180,
-        "inkRatio": 0.08164814814814815,
+        "inkPixels": 88179,
+        "inkRatio": 0.08164722222222222,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -7203,7 +7203,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.034502985722498
+      "inkRatio": 1.0344912540034492
     },
     {
       "id": "parity_cynefin_121",
@@ -7225,13 +7225,13 @@
             255
           ]
         ],
-        "inkPixels": 93134,
-        "inkRatio": 0.08623518518518518,
+        "inkPixels": 92842,
+        "inkRatio": 0.08596481481481481,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -7260,9 +7260,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0514942476827023
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0481975319792713
     },
     {
       "id": "parity_cynefin_122",
@@ -7414,8 +7414,8 @@
             255
           ]
         ],
-        "inkPixels": 104335,
-        "inkRatio": 0.09660648148148149,
+        "inkPixels": 104337,
+        "inkRatio": 0.09660833333333334,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -7451,7 +7451,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0312737839894832
+      "inkRatio": 1.0312935525002225
     },
     {
       "id": "parity_cynefin_125",
@@ -7532,11 +7532,11 @@
             255
           ]
         ],
-        "inkPixels": 92033,
-        "inkRatio": 0.08521574074074074,
+        "inkPixels": 92028,
+        "inkRatio": 0.08521111111111111,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -7569,7 +7569,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0353466605168127
+      "inkRatio": 1.0352904118527184
     },
     {
       "id": "parity_cynefin_127",
@@ -7886,8 +7886,8 @@
             255
           ]
         ],
-        "inkPixels": 118228,
-        "inkRatio": 0.10947037037037037,
+        "inkPixels": 118229,
+        "inkRatio": 0.1094712962962963,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -7923,7 +7923,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0220704560190188
+      "inkRatio": 1.022079100929328
     },
     {
       "id": "parity_cynefin_133",
@@ -7945,8 +7945,8 @@
             255
           ]
         ],
-        "inkPixels": 89102,
-        "inkRatio": 0.08250185185185185,
+        "inkPixels": 89101,
+        "inkRatio": 0.08250092592592592,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -7982,7 +7982,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0319898077368543
+      "inkRatio": 1.0319782256196433
     },
     {
       "id": "parity_cynefin_134",
@@ -8004,13 +8004,13 @@
             255
           ]
         ],
-        "inkPixels": 95028,
-        "inkRatio": 0.0879888888888889,
+        "inkPixels": 94741,
+        "inkRatio": 0.08772314814814815,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1046,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1044,
+          "height": 812
         }
       },
       "official": {
@@ -8039,9 +8039,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.021484375,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.048503839703416
+      "widthRatio": 1.01953125,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0453371877482567
     },
     {
       "id": "parity_cynefin_135",
@@ -8193,8 +8193,8 @@
             255
           ]
         ],
-        "inkPixels": 105496,
-        "inkRatio": 0.09768148148148148,
+        "inkPixels": 105498,
+        "inkRatio": 0.09768333333333333,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -8230,7 +8230,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0303349936517237
+      "inkRatio": 1.0303545268092587
     },
     {
       "id": "parity_cynefin_138",
@@ -8311,11 +8311,11 @@
             255
           ]
         ],
-        "inkPixels": 93787,
-        "inkRatio": 0.08683981481481481,
+        "inkPixels": 93782,
+        "inkRatio": 0.08683518518518518,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -8348,7 +8348,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0335566771726432
+      "inkRatio": 1.0335015758964978
     },
     {
       "id": "parity_cynefin_140",
@@ -8665,8 +8665,8 @@
             255
           ]
         ],
-        "inkPixels": 119139,
-        "inkRatio": 0.11031388888888889,
+        "inkPixels": 119131,
+        "inkRatio": 0.11030648148148148,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -8702,7 +8702,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0227313698053928
+      "inkRatio": 1.0226626949721438
     },
     {
       "id": "parity_cynefin_146",
@@ -8724,8 +8724,8 @@
             255
           ]
         ],
-        "inkPixels": 90064,
-        "inkRatio": 0.08339259259259259,
+        "inkPixels": 90063,
+        "inkRatio": 0.08339166666666667,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -8761,7 +8761,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0340535948012584
+      "inkRatio": 1.0340421134813658
     },
     {
       "id": "parity_cynefin_147",
@@ -8783,13 +8783,13 @@
             255
           ]
         ],
-        "inkPixels": 96135,
-        "inkRatio": 0.08901388888888889,
+        "inkPixels": 95847,
+        "inkRatio": 0.08874722222222223,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1060,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1058,
+          "height": 812
         }
       },
       "official": {
@@ -8818,9 +8818,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.029126213592233,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0477358182115417
+      "widthRatio": 1.0271844660194174,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0445970246853034
     },
     {
       "id": "parity_cynefin_148",
@@ -8972,8 +8972,8 @@
             255
           ]
         ],
-        "inkPixels": 106361,
-        "inkRatio": 0.09848240740740741,
+        "inkPixels": 106362,
+        "inkRatio": 0.09848333333333334,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -9009,7 +9009,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0305699281049552
+      "inkRatio": 1.030579617464101
     },
     {
       "id": "parity_cynefin_151",
@@ -9090,11 +9090,11 @@
             255
           ]
         ],
-        "inkPixels": 95169,
-        "inkRatio": 0.08811944444444444,
+        "inkPixels": 95164,
+        "inkRatio": 0.08811481481481481,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -9127,7 +9127,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0344568962706115
+      "inkRatio": 1.0344025478537808
     },
     {
       "id": "parity_cynefin_153",
@@ -9444,8 +9444,8 @@
             255
           ]
         ],
-        "inkPixels": 119392,
-        "inkRatio": 0.11054814814814815,
+        "inkPixels": 119399,
+        "inkRatio": 0.11055462962962963,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -9481,7 +9481,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.024199843871975
+      "inkRatio": 1.024259893112352
     },
     {
       "id": "parity_cynefin_159",
@@ -9503,8 +9503,8 @@
             255
           ]
         ],
-        "inkPixels": 90242,
-        "inkRatio": 0.08355740740740741,
+        "inkPixels": 90241,
+        "inkRatio": 0.08355648148148148,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -9540,7 +9540,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0351583559883915
+      "inkRatio": 1.0351468850728978
     },
     {
       "id": "parity_cynefin_160",
@@ -9562,13 +9562,13 @@
             255
           ]
         ],
-        "inkPixels": 96491,
-        "inkRatio": 0.08934351851851852,
+        "inkPixels": 96205,
+        "inkRatio": 0.0890787037037037,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1064,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1062,
+          "height": 812
         }
       },
       "official": {
@@ -9597,9 +9597,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.032007759456838,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0509056057157171
+      "widthRatio": 1.0300678952473328,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0477907141379048
     },
     {
       "id": "parity_cynefin_161",
@@ -9751,8 +9751,8 @@
             255
           ]
         ],
-        "inkPixels": 106552,
-        "inkRatio": 0.09865925925925927,
+        "inkPixels": 106563,
+        "inkRatio": 0.09866944444444445,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -9788,7 +9788,7 @@
       },
       "widthRatio": 1.0151821862348178,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0316209360416708
+      "inkRatio": 1.0317274364386269
     },
     {
       "id": "parity_cynefin_164",
@@ -9869,11 +9869,11 @@
             255
           ]
         ],
-        "inkPixels": 95511,
-        "inkRatio": 0.0884361111111111,
+        "inkPixels": 95506,
+        "inkRatio": 0.08843148148148149,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -9906,7 +9906,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0367769178163977
+      "inkRatio": 1.0367226425539768
     },
     {
       "id": "parity_cynefin_166",
@@ -10223,8 +10223,8 @@
             255
           ]
         ],
-        "inkPixels": 118748,
-        "inkRatio": 0.10995185185185186,
+        "inkPixels": 118738,
+        "inkRatio": 0.10994259259259259,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -10260,7 +10260,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0247762713912165
+      "inkRatio": 1.0246899729885999
     },
     {
       "id": "parity_cynefin_172",
@@ -10282,8 +10282,8 @@
             255
           ]
         ],
-        "inkPixels": 89610,
-        "inkRatio": 0.08297222222222222,
+        "inkPixels": 89609,
+        "inkRatio": 0.08297129629629629,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -10319,7 +10319,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.035606559650522
+      "inkRatio": 1.0355950028314207
     },
     {
       "id": "parity_cynefin_173",
@@ -10341,13 +10341,13 @@
             255
           ]
         ],
-        "inkPixels": 95643,
-        "inkRatio": 0.08855833333333334,
+        "inkPixels": 95351,
+        "inkRatio": 0.08828796296296296,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1053,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1051,
+          "height": 812
         }
       },
       "official": {
@@ -10376,9 +10376,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.0283203125,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0516113426205895
+      "widthRatio": 1.0263671875,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0484007520698413
     },
     {
       "id": "parity_cynefin_174",
@@ -10530,8 +10530,8 @@
             255
           ]
         ],
-        "inkPixels": 105923,
-        "inkRatio": 0.09807685185185185,
+        "inkPixels": 105925,
+        "inkRatio": 0.09807870370370371,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -10567,7 +10567,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0324684185901434
+      "inkRatio": 1.032487913287586
     },
     {
       "id": "parity_cynefin_177",
@@ -10648,11 +10648,11 @@
             255
           ]
         ],
-        "inkPixels": 94568,
-        "inkRatio": 0.08756296296296297,
+        "inkPixels": 94563,
+        "inkRatio": 0.08755833333333334,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -10685,7 +10685,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0384670290451876
+      "inkRatio": 1.0384121232086971
     },
     {
       "id": "parity_cynefin_179",
@@ -11002,8 +11002,8 @@
             255
           ]
         ],
-        "inkPixels": 119000,
-        "inkRatio": 0.11018518518518519,
+        "inkPixels": 118988,
+        "inkRatio": 0.11017407407407408,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -11039,7 +11039,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.024546057219606
+      "inkRatio": 1.0244427416508106
     },
     {
       "id": "parity_cynefin_185",
@@ -11061,8 +11061,8 @@
             255
           ]
         ],
-        "inkPixels": 89965,
-        "inkRatio": 0.08330092592592593,
+        "inkPixels": 89964,
+        "inkRatio": 0.0833,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -11098,7 +11098,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0367258982691465
+      "inkRatio": 1.0367143746110765
     },
     {
       "id": "parity_cynefin_186",
@@ -11120,13 +11120,13 @@
             255
           ]
         ],
-        "inkPixels": 96035,
-        "inkRatio": 0.08892129629629629,
+        "inkPixels": 95748,
+        "inkRatio": 0.08865555555555556,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1059,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1057,
+          "height": 812
         }
       },
       "official": {
@@ -11155,9 +11155,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.0341796875,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0509756284404173
+      "widthRatio": 1.0322265625,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0478347943136677
     },
     {
       "id": "parity_cynefin_187",
@@ -11309,8 +11309,8 @@
             255
           ]
         ],
-        "inkPixels": 106306,
-        "inkRatio": 0.09843148148148148,
+        "inkPixels": 106307,
+        "inkRatio": 0.09843240740740741,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -11346,7 +11346,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0334616581116813
+      "inkRatio": 1.0334713796857986
     },
     {
       "id": "parity_cynefin_190",
@@ -11427,11 +11427,11 @@
             255
           ]
         ],
-        "inkPixels": 95040,
-        "inkRatio": 0.088,
+        "inkPixels": 95035,
+        "inkRatio": 0.08799537037037038,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -11464,7 +11464,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0388588293162813
+      "inkRatio": 1.038804175547904
     },
     {
       "id": "parity_cynefin_192",
@@ -11781,8 +11781,8 @@
             255
           ]
         ],
-        "inkPixels": 119953,
-        "inkRatio": 0.11106759259259259,
+        "inkPixels": 119943,
+        "inkRatio": 0.11105833333333333,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -11818,7 +11818,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.021311196253725
+      "inkRatio": 1.0212260536398468
     },
     {
       "id": "parity_cynefin_198",
@@ -11840,8 +11840,8 @@
             255
           ]
         ],
-        "inkPixels": 90965,
-        "inkRatio": 0.08422685185185186,
+        "inkPixels": 90964,
+        "inkRatio": 0.08422592592592593,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -11877,7 +11877,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0330123327806675
+      "inkRatio": 1.03300097662904
     },
     {
       "id": "parity_cynefin_199",
@@ -11899,13 +11899,13 @@
             255
           ]
         ],
-        "inkPixels": 97732,
-        "inkRatio": 0.0904925925925926,
+        "inkPixels": 97390,
+        "inkRatio": 0.09017592592592592,
         "contentBounds": {
-          "x": 76,
-          "y": 32,
-          "width": 1078,
-          "height": 813
+          "x": 77,
+          "y": 33,
+          "width": 1076,
+          "height": 812
         }
       },
       "official": {
@@ -11934,9 +11934,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.0286259541984732,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0486716168075885
+      "widthRatio": 1.0267175572519085,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0450019314133654
     },
     {
       "id": "parity_cynefin_200",
@@ -12088,8 +12088,8 @@
             255
           ]
         ],
-        "inkPixels": 107222,
-        "inkRatio": 0.09927962962962963,
+        "inkPixels": 107224,
+        "inkRatio": 0.09928148148148148,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -12125,7 +12125,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.029347669562713
+      "inkRatio": 1.0293668698699179
     },
     {
       "id": "parity_cynefin_203",
@@ -12206,11 +12206,11 @@
             255
           ]
         ],
-        "inkPixels": 96338,
-        "inkRatio": 0.08920185185185185,
+        "inkPixels": 96331,
+        "inkRatio": 0.08919537037037037,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1092,
           "height": 804
         }
@@ -12243,7 +12243,7 @@
       },
       "widthRatio": 1.0186567164179106,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0312242429432354
+      "inkRatio": 1.0311493133235567
     },
     {
       "id": "parity_cynefin_205",
@@ -12560,8 +12560,8 @@
             255
           ]
         ],
-        "inkPixels": 118692,
-        "inkRatio": 0.1099,
+        "inkPixels": 118710,
+        "inkRatio": 0.10991666666666666,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -12597,7 +12597,7 @@
       },
       "widthRatio": 1.0172064777327936,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.020549947550343
+      "inkRatio": 1.0207047170298016
     },
     {
       "id": "parity_cynefin_211",
@@ -12619,8 +12619,8 @@
             255
           ]
         ],
-        "inkPixels": 89674,
-        "inkRatio": 0.08303148148148148,
+        "inkPixels": 89673,
+        "inkRatio": 0.08303055555555555,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -12656,7 +12656,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0317436575965022
+      "inkRatio": 1.031732152102629
     },
     {
       "id": "parity_cynefin_212",
@@ -12678,13 +12678,13 @@
             255
           ]
         ],
-        "inkPixels": 95691,
-        "inkRatio": 0.08860277777777778,
+        "inkPixels": 95402,
+        "inkRatio": 0.08833518518518518,
         "contentBounds": {
-          "x": 77,
-          "y": 32,
-          "width": 1054,
-          "height": 813
+          "x": 78,
+          "y": 33,
+          "width": 1052,
+          "height": 812
         }
       },
       "official": {
@@ -12713,9 +12713,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.02729044834308,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0451407850761267
+      "widthRatio": 1.0253411306042886,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0419843159527296
     },
     {
       "id": "parity_cynefin_213",
@@ -12867,8 +12867,8 @@
             255
           ]
         ],
-        "inkPixels": 105832,
-        "inkRatio": 0.09799259259259259,
+        "inkPixels": 105876,
+        "inkRatio": 0.09803333333333333,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -12904,7 +12904,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0273255870390323
+      "inkRatio": 1.0277527010105127
     },
     {
       "id": "parity_cynefin_216",
@@ -12985,11 +12985,11 @@
             255
           ]
         ],
-        "inkPixels": 94650,
-        "inkRatio": 0.08763888888888889,
+        "inkPixels": 94645,
+        "inkRatio": 0.08763425925925926,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1084,
           "height": 804
         }
@@ -13022,7 +13022,7 @@
       },
       "widthRatio": 1.0130841121495326,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0317313247364808
+      "inkRatio": 1.031676822289321
     },
     {
       "id": "parity_cynefin_218",
@@ -13398,8 +13398,8 @@
             255
           ]
         ],
-        "inkPixels": 92168,
-        "inkRatio": 0.08534074074074074,
+        "inkPixels": 92167,
+        "inkRatio": 0.08533981481481481,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -13435,7 +13435,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0374255709510034
+      "inkRatio": 1.0374143151401911
     },
     {
       "id": "parity_cynefin_225",
@@ -13457,12 +13457,12 @@
             255
           ]
         ],
-        "inkPixels": 99470,
-        "inkRatio": 0.09210185185185185,
+        "inkPixels": 99234,
+        "inkRatio": 0.09188333333333333,
         "contentBounds": {
-          "x": 66,
-          "y": 32,
-          "width": 1098,
+          "x": 67,
+          "y": 33,
+          "width": 1096,
           "height": 812
         }
       },
@@ -13492,9 +13492,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.032925682031985,
+      "widthRatio": 1.0310442144873,
       "heightRatio": 1.0175438596491229,
-      "inkRatio": 1.0516466670190834
+      "inkRatio": 1.0491515568007612
     },
     {
       "id": "parity_cynefin_226",
@@ -13646,8 +13646,8 @@
             255
           ]
         ],
-        "inkPixels": 108267,
-        "inkRatio": 0.10024722222222222,
+        "inkPixels": 108270,
+        "inkRatio": 0.10025,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -13683,7 +13683,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0316251858063041
+      "inkRatio": 1.0316537713915463
     },
     {
       "id": "parity_cynefin_229",
@@ -13764,11 +13764,11 @@
             255
           ]
         ],
-        "inkPixels": 97820,
-        "inkRatio": 0.09057407407407407,
+        "inkPixels": 97810,
+        "inkRatio": 0.09056481481481482,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1111,
           "height": 804
         }
@@ -13801,7 +13801,7 @@
       },
       "widthRatio": 1.0230202578268877,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0375367253211145
+      "inkRatio": 1.0374306594117586
     },
     {
       "id": "parity_cynefin_231",
@@ -14118,8 +14118,8 @@
             255
           ]
         ],
-        "inkPixels": 121107,
-        "inkRatio": 0.11213611111111112,
+        "inkPixels": 121093,
+        "inkRatio": 0.11212314814814815,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -14155,7 +14155,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.0228199822642625
+      "inkRatio": 1.0227017440141886
     },
     {
       "id": "parity_cynefin_237",
@@ -14177,8 +14177,8 @@
             255
           ]
         ],
-        "inkPixels": 91988,
-        "inkRatio": 0.08517407407407407,
+        "inkPixels": 91987,
+        "inkRatio": 0.08517314814814815,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -14214,7 +14214,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.033422084414636
+      "inkRatio": 1.033410850100547
     },
     {
       "id": "parity_cynefin_238",
@@ -14236,13 +14236,13 @@
             255
           ]
         ],
-        "inkPixels": 99330,
-        "inkRatio": 0.09197222222222222,
+        "inkPixels": 99081,
+        "inkRatio": 0.09174166666666667,
         "contentBounds": {
-          "x": 67,
-          "y": 32,
-          "width": 1096,
-          "height": 813
+          "x": 68,
+          "y": 33,
+          "width": 1094,
+          "height": 812
         }
       },
       "official": {
@@ -14271,9 +14271,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.0281425891181988,
-      "heightRatio": 1.018796992481203,
-      "inkRatio": 1.0473428932939688
+      "widthRatio": 1.026266416510319,
+      "heightRatio": 1.0175438596491229,
+      "inkRatio": 1.0447174188106283
     },
     {
       "id": "parity_cynefin_239",
@@ -14425,8 +14425,8 @@
             255
           ]
         ],
-        "inkPixels": 108210,
-        "inkRatio": 0.10019444444444445,
+        "inkPixels": 108217,
+        "inkRatio": 0.10020092592592593,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -14462,7 +14462,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.02939497716895
+      "inkRatio": 1.0294615677321157
     },
     {
       "id": "parity_cynefin_242",
@@ -14543,11 +14543,11 @@
             255
           ]
         ],
-        "inkPixels": 97688,
-        "inkRatio": 0.09045185185185185,
+        "inkPixels": 97678,
+        "inkRatio": 0.09044259259259259,
         "contentBounds": {
           "x": 57,
-          "y": 35,
+          "y": 36,
           "width": 1110,
           "height": 804
         }
@@ -14580,7 +14580,7 @@
       },
       "widthRatio": 1.019283746556474,
       "heightRatio": 1.0113207547169811,
-      "inkRatio": 1.0334183160723165
+      "inkRatio": 1.0333125284304288
     },
     {
       "id": "parity_cynefin_244",
@@ -14897,8 +14897,8 @@
             255
           ]
         ],
-        "inkPixels": 121513,
-        "inkRatio": 0.11251203703703704,
+        "inkPixels": 121502,
+        "inkRatio": 0.11250185185185185,
         "contentBounds": {
           "x": 97,
           "y": 39,
@@ -14934,7 +14934,7 @@
       },
       "widthRatio": 1.0172064777327936,
       "heightRatio": 1.0154440154440154,
-      "inkRatio": 1.021031846063356
+      "inkRatio": 1.0209394168557264
     },
     {
       "id": "parity_cynefin_250",
@@ -14956,8 +14956,8 @@
             255
           ]
         ],
-        "inkPixels": 92661,
-        "inkRatio": 0.08579722222222222,
+        "inkPixels": 92660,
+        "inkRatio": 0.0857962962962963,
         "contentBounds": {
           "x": 97,
           "y": 73,
@@ -14993,7 +14993,7 @@
       },
       "widthRatio": 1.0182186234817814,
       "heightRatio": 1.01889338731444,
-      "inkRatio": 1.0330676180389096
+      "inkRatio": 1.0330564691454374
     },
     {
       "id": "parity_cynefin_251",
@@ -15015,13 +15015,13 @@
             255
           ]
         ],
-        "inkPixels": 100387,
-        "inkRatio": 0.09295092592592592,
+        "inkPixels": 100103,
+        "inkRatio": 0.09268796296296296,
         "contentBounds": {
-          "x": 61,
-          "y": 32,
-          "width": 1108,
-          "height": 812
+          "x": 62,
+          "y": 33,
+          "width": 1106,
+          "height": 811
         }
       },
       "official": {
@@ -15050,9 +15050,9 @@
           "height": 798
         }
       },
-      "widthRatio": 1.0268767377201111,
-      "heightRatio": 1.0175438596491229,
-      "inkRatio": 1.0461338057523968
+      "widthRatio": 1.0250231696014829,
+      "heightRatio": 1.0162907268170427,
+      "inkRatio": 1.043174239266361
     },
     {
       "id": "parity_cynefin_252",
@@ -15322,11 +15322,11 @@
             255
           ]
         ],
-        "inkPixels": 97856,
-        "inkRatio": 0.09060740740740741,
+        "inkPixels": 97867,
+        "inkRatio": 0.0906175925925926,
         "contentBounds": {
           "x": 57,
-          "y": 36,
+          "y": 37,
           "width": 1118,
           "height": 802
         }
@@ -15359,7 +15359,7 @@
       },
       "widthRatio": 1.0154405086285194,
       "heightRatio": 1.0088050314465409,
-      "inkRatio": 1.0241232430848448
+      "inkRatio": 1.024238364852278
     }
   ]
 }

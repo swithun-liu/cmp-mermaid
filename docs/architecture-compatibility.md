@@ -43,7 +43,7 @@ change in a later upstream release.
   were `1.020-1.232`, `0.996-1.236`, and `0.985-1.561`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
 - Matrix geometry passed `256/256`. Ratios were `1.020-1.232`,
-  `0.996-1.236`, and `0.986-1.584`.
+  `0.998-1.236`, and `0.991-1.578`.
 - Matrix detail produced `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved service, icon, group, junction, edge, arrow, label,

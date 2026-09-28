@@ -2329,7 +2329,7 @@ private fun DrawScope.drawSceneText(
         color = element.color.toComposeColor(),
         fontSize = normalizedSp(element.fontSize, density, fontScale),
         lineHeight = normalizedSp(element.fontSize * element.lineHeight, density, fontScale),
-        lineHeightStyle = MERMAID_LINE_HEIGHT_STYLE,
+        lineHeightStyle = mermaidLineHeightStyle(element.lineHeight),
         textGeometricTransform = TextGeometricTransform(
             scaleX = mermaidTextHorizontalScale(element.horizontalScale),
         ),
@@ -2468,7 +2468,7 @@ private fun TextMetricsRequest.toTextStyle(
 ): TextStyle = TextStyle(
     fontSize = normalizedSp(fontSize, density, fontScale),
     lineHeight = normalizedSp(fontSize * lineHeight, density, fontScale),
-    lineHeightStyle = MERMAID_LINE_HEIGHT_STYLE,
+    lineHeightStyle = mermaidLineHeightStyle(lineHeight),
     textGeometricTransform = TextGeometricTransform(
         scaleX = mermaidTextHorizontalScale(horizontalScale),
     ),
@@ -2478,12 +2478,17 @@ private fun TextMetricsRequest.toTextStyle(
     fontWeight = weight.toComposeWeight(),
 )
 
-// Mermaid.js 12.0.0: packages/mermaid/src/rendering-util/createText.ts -> addHtmlSpan.
-// CSS line-height keeps the leading above the first and below the last line.
-internal val MERMAID_LINE_HEIGHT_STYLE = LineHeightStyle(
-    alignment = LineHeightStyle.Alignment.Center,
-    trim = LineHeightStyle.Trim.None,
-)
+// Mermaid.js 12.0.0: packages/mermaid/src/rendering-util/createText.ts.
+// addHtmlSpan uses CSS line-height 1.5, while SVG text uses tspan positioning.
+internal fun mermaidLineHeightStyle(lineHeight: Float): LineHeightStyle? =
+    if (lineHeight > SVG_TEXT_MAX_LINE_HEIGHT) {
+        LineHeightStyle(
+            alignment = LineHeightStyle.Alignment.Center,
+            trim = LineHeightStyle.Trim.None,
+        )
+    } else {
+        null
+    }
 
 private fun normalizedSp(
     sceneUnits: Float,
@@ -2644,6 +2649,7 @@ private const val HIGH_SURROGATE_START = 0xD800
 private const val LOW_SURROGATE_START = 0xDC00
 private const val SUPPLEMENTARY_CODE_POINT_OFFSET = 0x10000
 private const val MAX_SOFT_TEXT_LINES = 8
+private const val SVG_TEXT_MAX_LINE_HEIGHT = 1.2f
 
 private fun com.swithun.cmpmermaid.core.SceneTextSpan.toComposeTextDecoration(): TextDecoration? {
     val decorations = buildList {

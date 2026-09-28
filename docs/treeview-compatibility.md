@@ -41,8 +41,8 @@ change in a later upstream release.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.011-1.169`, `0.975-1.062`, and `0.930-1.050`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
-- Matrix geometry passed `256/256`. Ratios were `1.011-1.085`,
-  `0.939-1.031`, and `0.852-1.030`.
+- Matrix geometry passed `256/256`. Ratios were `0.990-1.055`,
+  `0.969-1.063`, and `0.853-1.046`.
 - Matrix detail produced `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved hierarchy, connector, icon, highlight, description,

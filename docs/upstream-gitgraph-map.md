@@ -84,10 +84,11 @@ the grammar behavior; it does not bundle the Langium runtime.
   Mermaid `12.0.0` documentation.
 - The large-scale Web audit compares 256 unique same-source cases against
   Mermaid.js `12.0.0`. The replacement gate accepted all 256:
-  `236 pass / 20 manually reviewed / 0 fail`, with all 16 contact sheets
-  reviewed. The 20 reviews are text-overlap threshold findings caused by
-  browser/Compose text-bound differences; semantic text, clipping, paint
-  order, and raster checks pass.
+  `235 pass / 21 manually reviewed / 0 fail`, with all 16 contact sheets
+  reviewed. Twenty reviews are text-overlap threshold findings caused by
+  browser/Compose text-bound differences and one is a paint-order
+  occlusion-ratio threshold finding; semantic text, clipping, paint order,
+  and raster checks pass.
 - Case `parity_gitgraph_005` proves the paint-order correction: the Native
   SceneGraph now emits labels in upstream commit order instead of legacy
   global label layers, matching the Official cherry-pick label occlusion.

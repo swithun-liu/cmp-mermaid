@@ -86,8 +86,8 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`.
 - Matrix geometry passes `256/256`; detail is
-  `253 pass / 3 review / 0 fail`.
-- The three matrix reviews are paint-order occlusion ratio threshold notices.
+  `252 pass / 4 review / 0 fail`.
+- The four matrix reviews are paint-order occlusion ratio threshold notices.
   The production contact sheet and all 16 matrix contact sheets were manually
   reviewed with no unresolved shape, grid, edge, marker, color, text, clipping,
   overlap, or paint-order defect.

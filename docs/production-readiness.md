@@ -26,7 +26,7 @@ rated Stable. A successful build alone is not sufficient.
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
   (`8,448/8,448` accepted;
-  `7,458 automatic pass / 990 manually reviewed / 0 unresolved`;
+  `7,429 automatic pass / 1,019 manually reviewed / 0 unresolved`;
   every listed-family geometry gate passing)
 - Pending replacement detail gates: none
 - Detailed conformance scope:

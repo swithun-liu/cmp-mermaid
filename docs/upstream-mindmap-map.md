@@ -83,11 +83,11 @@ Jison production.
 - The replacement Web audit compares 13 independent production scenarios and
   256 unique same-source matrix cases against Mermaid.js `12.0.0`. Production
   results are `9 pass / 4 manually reviewed / 0 fail`; matrix results are
-  `149 pass / 107 manually reviewed / 0 fail`, with 256/256 geometry passes.
+  `153 pass / 103 manually reviewed / 0 fail`, with 256/256 geometry passes.
   The reviews are CoSE-Bilkent branch rotations or mirrors under platform
-  text-size perturbations; expected text, nodes, hierarchy edges, shapes,
-  colors, clipping, overlap, and paint order all pass manual review across 16
-  contact sheets.
+  text-size perturbations; 69 also cross the raster-mask threshold. Expected
+  text, nodes, hierarchy edges, shapes, colors, clipping, overlap, and paint
+  order all pass manual review across 16 contact sheets.
 
 ## Upgrade Procedure
 

@@ -38,7 +38,7 @@ does not expose a functional rendering defect.
   height `1.015-1.021`, and foreground ink `1.035-1.037`.
 - The replacement 256-case Native/Official audit accepted all pairs:
   `256 pass / 0 review / 0 fail`; geometry ratios are width `1.004-1.036`,
-  height `1.007-1.021`, and foreground ink `1.005-1.036`.
+  height `1.004-1.020`, and foreground ink `1.006-1.037`.
   All 16 contact sheets were manually reviewed with no missing axis, curve,
   graticule, legend, title, clipping, overlap, or paint-order defect.
 - 256 deterministic randomized Native inputs exercise both curve entry forms,

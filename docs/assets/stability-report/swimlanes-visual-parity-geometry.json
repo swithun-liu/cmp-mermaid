@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T18:55:12.354Z",
-  "inputDirectory": "captures/local/swimlanes-visual-parity-20260920",
+  "generatedAt": "2026-09-28T14:09:30.636Z",
+  "inputDirectory": "captures/local/visual-parity-20260928-45924b4",
   "corpusSource": "visual-parity",
   "theme": null,
   "caseCount": 256,
@@ -37,13 +37,13 @@
             255
           ]
         ],
-        "inkPixels": 256080,
-        "inkRatio": 0.2371111111111111,
+        "inkPixels": 281646,
+        "inkRatio": 0.2607833333333333,
         "contentBounds": {
           "x": 14,
-          "y": 82,
+          "y": 42,
           "width": 1172,
-          "height": 736
+          "height": 816
         }
       },
       "official": {
@@ -73,8 +73,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9246231155778895,
-      "inkRatio": 1.2173011926775588
+      "heightRatio": 1.0251256281407035,
+      "inkRatio": 1.3388316608593551
     },
     {
       "id": "parity_swimlanes_002",
@@ -96,13 +96,13 @@
             255
           ]
         ],
-        "inkPixels": 210522,
-        "inkRatio": 0.19492777777777778,
+        "inkPixels": 214450,
+        "inkRatio": 0.1985648148148148,
         "contentBounds": {
           "x": 16,
-          "y": 109,
+          "y": 97,
           "width": 1168,
-          "height": 682
+          "height": 706
         }
       },
       "official": {
@@ -132,8 +132,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9970760233918129,
-      "inkRatio": 1.0302383737147836
+      "heightRatio": 1.0321637426900585,
+      "inkRatio": 1.0494609553544776
     },
     {
       "id": "parity_swimlanes_003",
@@ -155,13 +155,13 @@
             255
           ]
         ],
-        "inkPixels": 184541,
-        "inkRatio": 0.1708712962962963,
+        "inkPixels": 204263,
+        "inkRatio": 0.18913240740740742,
         "contentBounds": {
-          "x": 13,
-          "y": 299,
-          "width": 1174,
-          "height": 302
+          "x": 14,
+          "y": 282,
+          "width": 1172,
+          "height": 336
         }
       },
       "official": {
@@ -190,9 +190,9 @@
           "height": 326
         }
       },
-      "widthRatio": 1.033450704225352,
-      "heightRatio": 0.9263803680981595,
-      "inkRatio": 0.9578584034049621
+      "widthRatio": 1.0316901408450705,
+      "heightRatio": 1.030674846625767,
+      "inkRatio": 1.0602252673102874
     },
     {
       "id": "parity_swimlanes_004",
@@ -214,13 +214,13 @@
             255
           ]
         ],
-        "inkPixels": 111735,
-        "inkRatio": 0.10345833333333333,
+        "inkPixels": 116260,
+        "inkRatio": 0.10764814814814815,
         "contentBounds": {
           "x": 16,
-          "y": 280,
+          "y": 271,
           "width": 1168,
-          "height": 340
+          "height": 358
         }
       },
       "official": {
@@ -250,8 +250,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9883720930232558,
-      "inkRatio": 1.0321558556727695
+      "heightRatio": 1.0406976744186047,
+      "inkRatio": 1.0739556967871855
     },
     {
       "id": "parity_swimlanes_005",
@@ -273,12 +273,12 @@
             255
           ]
         ],
-        "inkPixels": 147780,
-        "inkRatio": 0.13683333333333333,
+        "inkPixels": 141165,
+        "inkRatio": 0.13070833333333334,
         "contentBounds": {
-          "x": 222,
+          "x": 251,
           "y": 18,
-          "width": 756,
+          "width": 698,
           "height": 867
         }
       },
@@ -308,9 +308,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1216617210682494,
+      "widthRatio": 1.0356083086053411,
       "heightRatio": 1.0420673076923077,
-      "inkRatio": 1.073896708838683
+      "inkRatio": 1.0258264237597288
     },
     {
       "id": "parity_swimlanes_006",
@@ -332,13 +332,13 @@
             255
           ]
         ],
-        "inkPixels": 185756,
-        "inkRatio": 0.17199629629629629,
+        "inkPixels": 206542,
+        "inkRatio": 0.1912425925925926,
         "contentBounds": {
           "x": 12,
-          "y": 189,
+          "y": 159,
           "width": 1176,
-          "height": 522
+          "height": 582
         }
       },
       "official": {
@@ -368,8 +368,8 @@
         }
       },
       "widthRatio": 1.027972027972028,
-      "heightRatio": 0.9157894736842105,
-      "inkRatio": 1.1965268026229339
+      "heightRatio": 1.0210526315789474,
+      "inkRatio": 1.3304175308864643
     },
     {
       "id": "parity_swimlanes_007",
@@ -391,13 +391,13 @@
             255
           ]
         ],
-        "inkPixels": 244247,
-        "inkRatio": 0.22615462962962962,
+        "inkPixels": 249121,
+        "inkRatio": 0.2306675925925926,
         "contentBounds": {
           "x": 16,
-          "y": 57,
+          "y": 43,
           "width": 1168,
-          "height": 786
+          "height": 814
         }
       },
       "official": {
@@ -427,8 +427,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9974619289340102,
-      "inkRatio": 1.0293532589914112
+      "heightRatio": 1.032994923857868,
+      "inkRatio": 1.049894218693369
     },
     {
       "id": "parity_swimlanes_008",
@@ -450,13 +450,13 @@
             255
           ]
         ],
-        "inkPixels": 135172,
-        "inkRatio": 0.12515925925925925,
+        "inkPixels": 142238,
+        "inkRatio": 0.13170185185185185,
         "contentBounds": {
           "x": 19,
-          "y": 294,
+          "y": 286,
           "width": 1162,
-          "height": 312
+          "height": 328
         }
       },
       "official": {
@@ -486,8 +486,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9936305732484076,
-      "inkRatio": 1.0178231241293625
+      "heightRatio": 1.0445859872611465,
+      "inkRatio": 1.0710289522231844
     },
     {
       "id": "parity_swimlanes_009",
@@ -509,12 +509,12 @@
             255
           ]
         ],
-        "inkPixels": 134404,
-        "inkRatio": 0.12444814814814815,
+        "inkPixels": 131114,
+        "inkRatio": 0.12140185185185186,
         "contentBounds": {
-          "x": 313,
+          "x": 322,
           "y": 15,
-          "width": 574,
+          "width": 556,
           "height": 870
         }
       },
@@ -544,9 +544,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.12109375,
+      "widthRatio": 1.0859375,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.5513285163554098
+      "inkRatio": 1.5133544172303146
     },
     {
       "id": "parity_swimlanes_010",
@@ -568,12 +568,12 @@
             255
           ]
         ],
-        "inkPixels": 343502,
-        "inkRatio": 0.3180574074074074,
+        "inkPixels": 329360,
+        "inkRatio": 0.30496296296296294,
         "contentBounds": {
-          "x": 47,
+          "x": 63,
           "y": 22,
-          "width": 1106,
+          "width": 1074,
           "height": 856
         }
       },
@@ -603,9 +603,9 @@
           "height": 800
         }
       },
-      "widthRatio": 1.1037924151696608,
+      "widthRatio": 1.0718562874251496,
       "heightRatio": 1.07,
-      "inkRatio": 1.1812107769811384
+      "inkRatio": 1.1325802513711936
     },
     {
       "id": "parity_swimlanes_011",
@@ -627,13 +627,13 @@
             255
           ]
         ],
-        "inkPixels": 197044,
-        "inkRatio": 0.18244814814814814,
+        "inkPixels": 217818,
+        "inkRatio": 0.20168333333333333,
         "contentBounds": {
           "x": 14,
-          "y": 188,
+          "y": 160,
           "width": 1172,
-          "height": 524
+          "height": 580
         }
       },
       "official": {
@@ -663,8 +663,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9225352112676056,
-      "inkRatio": 0.9415868646902535
+      "heightRatio": 1.0211267605633803,
+      "inkRatio": 1.0408567004988818
     },
     {
       "id": "parity_swimlanes_012",
@@ -686,13 +686,13 @@
             255
           ]
         ],
-        "inkPixels": 181729,
-        "inkRatio": 0.16826759259259258,
+        "inkPixels": 188998,
+        "inkRatio": 0.17499814814814815,
         "contentBounds": {
           "x": 14,
-          "y": 272,
+          "y": 263,
           "width": 1172,
-          "height": 356
+          "height": 374
         }
       },
       "official": {
@@ -722,8 +722,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9834254143646409,
-      "inkRatio": 1.0207601961434116
+      "heightRatio": 1.0331491712707181,
+      "inkRatio": 1.0615897052793584
     },
     {
       "id": "parity_swimlanes_013",
@@ -745,12 +745,12 @@
             255
           ]
         ],
-        "inkPixels": 157966,
-        "inkRatio": 0.14626481481481482,
+        "inkPixels": 148410,
+        "inkRatio": 0.13741666666666666,
         "contentBounds": {
-          "x": 207,
+          "x": 230,
           "y": 15,
-          "width": 786,
+          "width": 740,
           "height": 870
         }
       },
@@ -780,9 +780,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1661721068249258,
+      "widthRatio": 1.0979228486646884,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.2085874080931578
+      "inkRatio": 1.1354750847340918
     },
     {
       "id": "parity_swimlanes_014",
@@ -804,13 +804,13 @@
             255
           ]
         ],
-        "inkPixels": 256329,
-        "inkRatio": 0.23734166666666667,
+        "inkPixels": 281921,
+        "inkRatio": 0.26103796296296294,
         "contentBounds": {
           "x": 14,
-          "y": 82,
+          "y": 42,
           "width": 1172,
-          "height": 736
+          "height": 816
         }
       },
       "official": {
@@ -840,8 +840,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9246231155778895,
-      "inkRatio": 1.2168016405738211
+      "heightRatio": 1.0251256281407035,
+      "inkRatio": 1.338287651074253
     },
     {
       "id": "parity_swimlanes_015",
@@ -863,13 +863,13 @@
             255
           ]
         ],
-        "inkPixels": 210903,
-        "inkRatio": 0.19528055555555557,
+        "inkPixels": 214827,
+        "inkRatio": 0.1989138888888889,
         "contentBounds": {
           "x": 16,
-          "y": 109,
+          "y": 97,
           "width": 1168,
-          "height": 682
+          "height": 706
         }
       },
       "official": {
@@ -899,8 +899,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9970760233918129,
-      "inkRatio": 1.0299154690224002
+      "heightRatio": 1.0321637426900585,
+      "inkRatio": 1.0490777772894417
     },
     {
       "id": "parity_swimlanes_016",
@@ -922,13 +922,13 @@
             255
           ]
         ],
-        "inkPixels": 184755,
-        "inkRatio": 0.17106944444444444,
+        "inkPixels": 204515,
+        "inkRatio": 0.18936574074074075,
         "contentBounds": {
-          "x": 13,
-          "y": 299,
-          "width": 1174,
-          "height": 302
+          "x": 14,
+          "y": 282,
+          "width": 1172,
+          "height": 336
         }
       },
       "official": {
@@ -957,9 +957,9 @@
           "height": 326
         }
       },
-      "widthRatio": 1.033450704225352,
-      "heightRatio": 0.9263803680981595,
-      "inkRatio": 0.9576569011631523
+      "widthRatio": 1.0316901408450705,
+      "heightRatio": 1.030674846625767,
+      "inkRatio": 1.060080653521594
     },
     {
       "id": "parity_swimlanes_017",
@@ -981,13 +981,13 @@
             255
           ]
         ],
-        "inkPixels": 112116,
-        "inkRatio": 0.10381111111111112,
+        "inkPixels": 116641,
+        "inkRatio": 0.10800092592592593,
         "contentBounds": {
           "x": 16,
-          "y": 280,
+          "y": 271,
           "width": 1168,
-          "height": 340
+          "height": 358
         }
       },
       "official": {
@@ -1017,8 +1017,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9883720930232558,
-      "inkRatio": 1.0317676507398956
+      "heightRatio": 1.0406976744186047,
+      "inkRatio": 1.0734097769270412
     },
     {
       "id": "parity_swimlanes_018",
@@ -1040,12 +1040,12 @@
             255
           ]
         ],
-        "inkPixels": 148056,
-        "inkRatio": 0.1370888888888889,
+        "inkPixels": 141433,
+        "inkRatio": 0.13095648148148148,
         "contentBounds": {
-          "x": 222,
+          "x": 251,
           "y": 18,
-          "width": 756,
+          "width": 698,
           "height": 867
         }
       },
@@ -1075,9 +1075,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1216617210682494,
+      "widthRatio": 1.0356083086053411,
       "heightRatio": 1.0420673076923077,
-      "inkRatio": 1.0733440143831694
+      "inkRatio": 1.0253300371903522
     },
     {
       "id": "parity_swimlanes_019",
@@ -1099,13 +1099,13 @@
             255
           ]
         ],
-        "inkPixels": 185881,
-        "inkRatio": 0.17211203703703704,
+        "inkPixels": 206692,
+        "inkRatio": 0.19138148148148149,
         "contentBounds": {
           "x": 12,
-          "y": 189,
+          "y": 159,
           "width": 1176,
-          "height": 522
+          "height": 582
         }
       },
       "official": {
@@ -1135,8 +1135,8 @@
         }
       },
       "widthRatio": 1.027972027972028,
-      "heightRatio": 0.9157894736842105,
-      "inkRatio": 1.1960068975279567
+      "heightRatio": 1.0210526315789474,
+      "inkRatio": 1.3299103063995161
     },
     {
       "id": "parity_swimlanes_020",
@@ -1158,13 +1158,13 @@
             255
           ]
         ],
-        "inkPixels": 244663,
-        "inkRatio": 0.2265398148148148,
+        "inkPixels": 249523,
+        "inkRatio": 0.2310398148148148,
         "contentBounds": {
           "x": 16,
-          "y": 57,
+          "y": 43,
           "width": 1168,
-          "height": 786
+          "height": 814
         }
       },
       "official": {
@@ -1194,8 +1194,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9974619289340102,
-      "inkRatio": 1.029033479138627
+      "heightRatio": 1.032994923857868,
+      "inkRatio": 1.049474259757739
     },
     {
       "id": "parity_swimlanes_021",
@@ -1217,13 +1217,13 @@
             255
           ]
         ],
-        "inkPixels": 135721,
-        "inkRatio": 0.12566759259259258,
+        "inkPixels": 142787,
+        "inkRatio": 0.13221018518518518,
         "contentBounds": {
           "x": 19,
-          "y": 294,
+          "y": 286,
           "width": 1162,
-          "height": 312
+          "height": 328
         }
       },
       "official": {
@@ -1253,8 +1253,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9936305732484076,
-      "inkRatio": 1.0172310413574972
+      "heightRatio": 1.0445859872611465,
+      "inkRatio": 1.0701908231026367
     },
     {
       "id": "parity_swimlanes_022",
@@ -1276,12 +1276,12 @@
             255
           ]
         ],
-        "inkPixels": 134698,
-        "inkRatio": 0.12472037037037037,
+        "inkPixels": 131415,
+        "inkRatio": 0.12168055555555556,
         "contentBounds": {
-          "x": 313,
+          "x": 322,
           "y": 15,
-          "width": 574,
+          "width": 556,
           "height": 870
         }
       },
@@ -1311,9 +1311,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.12109375,
+      "widthRatio": 1.0859375,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.549303550683797
+      "inkRatio": 1.511542310302389
     },
     {
       "id": "parity_swimlanes_023",
@@ -1335,12 +1335,12 @@
             255
           ]
         ],
-        "inkPixels": 344456,
-        "inkRatio": 0.31894074074074075,
+        "inkPixels": 330348,
+        "inkRatio": 0.3058777777777778,
         "contentBounds": {
-          "x": 47,
+          "x": 63,
           "y": 22,
-          "width": 1106,
+          "width": 1074,
           "height": 856
         }
       },
@@ -1370,9 +1370,9 @@
           "height": 800
         }
       },
-      "widthRatio": 1.1037924151696608,
+      "widthRatio": 1.0718562874251496,
       "heightRatio": 1.07,
-      "inkRatio": 1.1804604555206
+      "inkRatio": 1.1321119404519566
     },
     {
       "id": "parity_swimlanes_024",
@@ -1394,13 +1394,13 @@
             255
           ]
         ],
-        "inkPixels": 197311,
-        "inkRatio": 0.18269537037037037,
+        "inkPixels": 218112,
+        "inkRatio": 0.20195555555555555,
         "contentBounds": {
           "x": 14,
-          "y": 188,
+          "y": 160,
           "width": 1172,
-          "height": 524
+          "height": 580
         }
       },
       "official": {
@@ -1430,8 +1430,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9225352112676056,
-      "inkRatio": 0.9413872402145079
+      "heightRatio": 1.0211267605633803,
+      "inkRatio": 1.040630546384473
     },
     {
       "id": "parity_swimlanes_025",
@@ -1453,13 +1453,13 @@
             255
           ]
         ],
-        "inkPixels": 182015,
-        "inkRatio": 0.1685324074074074,
+        "inkPixels": 189284,
+        "inkRatio": 0.17526296296296295,
         "contentBounds": {
           "x": 14,
-          "y": 272,
+          "y": 263,
           "width": 1172,
-          "height": 356
+          "height": 374
         }
       },
       "official": {
@@ -1489,8 +1489,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9834254143646409,
-      "inkRatio": 1.0205208712960108
+      "heightRatio": 1.0331491712707181,
+      "inkRatio": 1.0612766673207927
     },
     {
       "id": "parity_swimlanes_026",
@@ -1512,12 +1512,12 @@
             255
           ]
         ],
-        "inkPixels": 158298,
-        "inkRatio": 0.14657222222222221,
+        "inkPixels": 148765,
+        "inkRatio": 0.13774537037037038,
         "contentBounds": {
-          "x": 207,
+          "x": 230,
           "y": 15,
-          "width": 786,
+          "width": 740,
           "height": 870
         }
       },
@@ -1547,9 +1547,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1661721068249258,
+      "widthRatio": 1.0979228486646884,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.207634973794829
+      "inkRatio": 1.1349089494282163
     },
     {
       "id": "parity_swimlanes_027",
@@ -1571,13 +1571,13 @@
             255
           ]
         ],
-        "inkPixels": 270531,
-        "inkRatio": 0.25049166666666667,
+        "inkPixels": 296137,
+        "inkRatio": 0.27420092592592593,
         "contentBounds": {
-          "x": 14,
-          "y": 55,
-          "width": 1172,
-          "height": 790
+          "x": 15,
+          "y": 16,
+          "width": 1170,
+          "height": 868
         }
       },
       "official": {
@@ -1606,9 +1606,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.0464285714285715,
-      "heightRatio": 0.9495192307692307,
-      "inkRatio": 1.2652455136869378
+      "widthRatio": 1.0446428571428572,
+      "heightRatio": 1.0432692307692308,
+      "inkRatio": 1.3850021279879523
     },
     {
       "id": "parity_swimlanes_028",
@@ -1630,13 +1630,13 @@
             255
           ]
         ],
-        "inkPixels": 218715,
-        "inkRatio": 0.20251388888888888,
+        "inkPixels": 222584,
+        "inkRatio": 0.2060962962962963,
         "contentBounds": {
           "x": 16,
-          "y": 97,
+          "y": 85,
           "width": 1168,
-          "height": 706
+          "height": 730
         }
       },
       "official": {
@@ -1666,8 +1666,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1,
-      "inkRatio": 1.0364559145491938
+      "heightRatio": 1.0339943342776203,
+      "inkRatio": 1.0547904957776915
     },
     {
       "id": "parity_swimlanes_029",
@@ -1689,13 +1689,13 @@
             255
           ]
         ],
-        "inkPixels": 211869,
-        "inkRatio": 0.196175,
+        "inkPixels": 233568,
+        "inkRatio": 0.21626666666666666,
         "contentBounds": {
-          "x": 14,
-          "y": 281,
-          "width": 1172,
-          "height": 337
+          "x": 15,
+          "y": 264,
+          "width": 1170,
+          "height": 372
         }
       },
       "official": {
@@ -1724,9 +1724,9 @@
           "height": 360
         }
       },
-      "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9361111111111111,
-      "inkRatio": 0.961301826695342
+      "widthRatio": 1.0317460317460319,
+      "heightRatio": 1.0333333333333334,
+      "inkRatio": 1.0597555331718074
     },
     {
       "id": "parity_swimlanes_030",
@@ -1748,13 +1748,13 @@
             255
           ]
         ],
-        "inkPixels": 120566,
-        "inkRatio": 0.11163518518518518,
+        "inkPixels": 125449,
+        "inkRatio": 0.11615648148148149,
         "contentBounds": {
           "x": 16,
-          "y": 268,
+          "y": 259,
           "width": 1168,
-          "height": 364
+          "height": 382
         }
       },
       "official": {
@@ -1784,8 +1784,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9891304347826086,
-      "inkRatio": 1.0334553371677395
+      "heightRatio": 1.0380434782608696,
+      "inkRatio": 1.0753109383437767
     },
     {
       "id": "parity_swimlanes_031",
@@ -1807,13 +1807,13 @@
             255
           ]
         ],
-        "inkPixels": 135543,
-        "inkRatio": 0.12550277777777777,
+        "inkPixels": 129654,
+        "inkRatio": 0.12005,
         "contentBounds": {
-          "x": 257,
-          "y": 18,
-          "width": 686,
-          "height": 867
+          "x": 279,
+          "y": 17,
+          "width": 642,
+          "height": 868
         }
       },
       "official": {
@@ -1842,9 +1842,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.0993589743589745,
-      "heightRatio": 1.0420673076923077,
-      "inkRatio": 1.0707413024931272
+      "widthRatio": 1.0288461538461537,
+      "heightRatio": 1.0432692307692308,
+      "inkRatio": 1.024220305242203
     },
     {
       "id": "parity_swimlanes_032",
@@ -1866,13 +1866,13 @@
             255
           ]
         ],
-        "inkPixels": 195660,
-        "inkRatio": 0.18116666666666667,
+        "inkPixels": 215516,
+        "inkRatio": 0.19955185185185184,
         "contentBounds": {
-          "x": 12,
-          "y": 171,
-          "width": 1176,
-          "height": 558
+          "x": 13,
+          "y": 141,
+          "width": 1174,
+          "height": 618
         }
       },
       "official": {
@@ -1901,9 +1901,9 @@
           "height": 600
         }
       },
-      "widthRatio": 1.0297723292469352,
-      "heightRatio": 0.93,
-      "inkRatio": 1.2458452722063038
+      "widthRatio": 1.0280210157618213,
+      "heightRatio": 1.03,
+      "inkRatio": 1.3722763451130213
     },
     {
       "id": "parity_swimlanes_033",
@@ -1925,13 +1925,13 @@
             255
           ]
         ],
-        "inkPixels": 251794,
-        "inkRatio": 0.2331425925925926,
+        "inkPixels": 257281,
+        "inkRatio": 0.23822314814814816,
         "contentBounds": {
           "x": 16,
-          "y": 45,
+          "y": 31,
           "width": 1168,
-          "height": 810
+          "height": 838
         }
       },
       "official": {
@@ -1961,8 +1961,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1,
-      "inkRatio": 1.0327383393762408
+      "heightRatio": 1.0345679012345679,
+      "inkRatio": 1.055243384246879
     },
     {
       "id": "parity_swimlanes_034",
@@ -1984,13 +1984,13 @@
             255
           ]
         ],
-        "inkPixels": 141870,
-        "inkRatio": 0.13136111111111112,
+        "inkPixels": 148171,
+        "inkRatio": 0.13719537037037038,
         "contentBounds": {
           "x": 19,
-          "y": 278,
+          "y": 270,
           "width": 1162,
-          "height": 344
+          "height": 360
         }
       },
       "official": {
@@ -2020,8 +2020,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 1,
-      "inkRatio": 1.0354265195305659
+      "heightRatio": 1.0465116279069768,
+      "inkRatio": 1.0814138494774335
     },
     {
       "id": "parity_swimlanes_035",
@@ -2043,12 +2043,12 @@
             255
           ]
         ],
-        "inkPixels": 127328,
-        "inkRatio": 0.11789629629629629,
+        "inkPixels": 124358,
+        "inkRatio": 0.1151462962962963,
         "contentBounds": {
-          "x": 328,
+          "x": 336,
           "y": 15,
-          "width": 544,
+          "width": 528,
           "height": 870
         }
       },
@@ -2078,9 +2078,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.110204081632653,
+      "widthRatio": 1.0775510204081633,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.53014553014553
+      "inkRatio": 1.4944539915638182
     },
     {
       "id": "parity_swimlanes_036",
@@ -2102,13 +2102,13 @@
             255
           ]
         ],
-        "inkPixels": 335648,
-        "inkRatio": 0.31078518518518516,
+        "inkPixels": 325063,
+        "inkRatio": 0.30098425925925926,
         "contentBounds": {
-          "x": 79,
-          "y": 22,
-          "width": 1042,
-          "height": 856
+          "x": 92,
+          "y": 21,
+          "width": 1016,
+          "height": 858
         }
       },
       "official": {
@@ -2137,9 +2137,9 @@
           "height": 802
         }
       },
-      "widthRatio": 1.0968421052631578,
-      "heightRatio": 1.0673316708229426,
-      "inkRatio": 1.158737446792351
+      "widthRatio": 1.0694736842105264,
+      "heightRatio": 1.0698254364089776,
+      "inkRatio": 1.1221954865414423
     },
     {
       "id": "parity_swimlanes_037",
@@ -2161,13 +2161,13 @@
             255
           ]
         ],
-        "inkPixels": 228950,
-        "inkRatio": 0.21199074074074073,
+        "inkPixels": 250468,
+        "inkRatio": 0.23191481481481482,
         "contentBounds": {
-          "x": 14,
-          "y": 161,
-          "width": 1172,
-          "height": 578
+          "x": 15,
+          "y": 133,
+          "width": 1170,
+          "height": 634
         }
       },
       "official": {
@@ -2196,9 +2196,9 @@
           "height": 616
         }
       },
-      "widthRatio": 1.0371681415929204,
-      "heightRatio": 0.9383116883116883,
-      "inkRatio": 0.9730462574163168
+      "widthRatio": 1.0353982300884956,
+      "heightRatio": 1.0292207792207793,
+      "inkRatio": 1.0644985804872245
     },
     {
       "id": "parity_swimlanes_038",
@@ -2220,13 +2220,13 @@
             255
           ]
         ],
-        "inkPixels": 189368,
-        "inkRatio": 0.17534074074074074,
+        "inkPixels": 198024,
+        "inkRatio": 0.18335555555555555,
         "contentBounds": {
           "x": 14,
-          "y": 262,
+          "y": 253,
           "width": 1172,
-          "height": 376
+          "height": 394
         }
       },
       "official": {
@@ -2256,8 +2256,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9842931937172775,
-      "inkRatio": 1.0120028644413805
+      "heightRatio": 1.031413612565445,
+      "inkRatio": 1.0582614550934684
     },
     {
       "id": "parity_swimlanes_039",
@@ -2279,12 +2279,12 @@
             255
           ]
         ],
-        "inkPixels": 142331,
-        "inkRatio": 0.13178796296296297,
+        "inkPixels": 136247,
+        "inkRatio": 0.12615462962962962,
         "contentBounds": {
-          "x": 243,
+          "x": 261,
           "y": 15,
-          "width": 714,
+          "width": 678,
           "height": 870
         }
       },
@@ -2314,9 +2314,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1442307692307692,
+      "widthRatio": 1.0865384615384615,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.1875563194606682
+      "inkRatio": 1.1367937122451022
     },
     {
       "id": "parity_swimlanes_040",
@@ -2338,13 +2338,13 @@
             255
           ]
         ],
-        "inkPixels": 284331,
-        "inkRatio": 0.26326944444444444,
+        "inkPixels": 278242,
+        "inkRatio": 0.25763148148148146,
         "contentBounds": {
-          "x": 15,
-          "y": 28,
-          "width": 1170,
-          "height": 844
+          "x": 48,
+          "y": 15,
+          "width": 1104,
+          "height": 870
         }
       },
       "official": {
@@ -2373,9 +2373,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.099624060150376,
-      "heightRatio": 1.0144230769230769,
-      "inkRatio": 1.4082484745225454
+      "widthRatio": 1.037593984962406,
+      "heightRatio": 1.0456730769230769,
+      "inkRatio": 1.3780905777002932
     },
     {
       "id": "parity_swimlanes_041",
@@ -2397,13 +2397,13 @@
             255
           ]
         ],
-        "inkPixels": 226126,
-        "inkRatio": 0.20937592592592594,
+        "inkPixels": 229854,
+        "inkRatio": 0.21282777777777778,
         "contentBounds": {
           "x": 16,
-          "y": 85,
+          "y": 73,
           "width": 1168,
-          "height": 730
+          "height": 754
         }
       },
       "official": {
@@ -2433,8 +2433,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1,
-      "inkRatio": 1.0318273701694267
+      "heightRatio": 1.0328767123287672,
+      "inkRatio": 1.0488384721037094
     },
     {
       "id": "parity_swimlanes_042",
@@ -2456,13 +2456,13 @@
             255
           ]
         ],
-        "inkPixels": 243679,
-        "inkRatio": 0.2256287037037037,
+        "inkPixels": 262448,
+        "inkRatio": 0.2430074074074074,
         "contentBounds": {
           "x": 15,
-          "y": 264,
+          "y": 247,
           "width": 1170,
-          "height": 372
+          "height": 406
         }
       },
       "official": {
@@ -2492,8 +2492,8 @@
         }
       },
       "widthRatio": 1.0353982300884956,
-      "heightRatio": 0.9441624365482234,
-      "inkRatio": 0.9873621342150259
+      "heightRatio": 1.0304568527918783,
+      "inkRatio": 1.063412183242976
     },
     {
       "id": "parity_swimlanes_043",
@@ -2515,13 +2515,13 @@
             255
           ]
         ],
-        "inkPixels": 127941,
-        "inkRatio": 0.11846388888888888,
+        "inkPixels": 134243,
+        "inkRatio": 0.12429907407407408,
         "contentBounds": {
           "x": 16,
-          "y": 256,
+          "y": 247,
           "width": 1168,
-          "height": 388
+          "height": 406
         }
       },
       "official": {
@@ -2551,8 +2551,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9948717948717949,
-      "inkRatio": 1.040432954647106
+      "heightRatio": 1.041025641025641,
+      "inkRatio": 1.0916816433410046
     },
     {
       "id": "parity_swimlanes_044",
@@ -2574,12 +2574,12 @@
             255
           ]
         ],
-        "inkPixels": 124497,
-        "inkRatio": 0.115275,
+        "inkPixels": 118993,
+        "inkRatio": 0.11017870370370371,
         "contentBounds": {
-          "x": 284,
+          "x": 303,
           "y": 17,
-          "width": 632,
+          "width": 594,
           "height": 869
         }
       },
@@ -2609,9 +2609,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.0859106529209621,
+      "widthRatio": 1.0206185567010309,
       "heightRatio": 1.0444711538461537,
-      "inkRatio": 1.0488108977869137
+      "inkRatio": 1.0024430722054203
     },
     {
       "id": "parity_swimlanes_045",
@@ -2633,13 +2633,13 @@
             255
           ]
         ],
-        "inkPixels": 204606,
-        "inkRatio": 0.18945,
+        "inkPixels": 224433,
+        "inkRatio": 0.20780833333333334,
         "contentBounds": {
-          "x": 12,
-          "y": 153,
-          "width": 1176,
-          "height": 594
+          "x": 13,
+          "y": 123,
+          "width": 1174,
+          "height": 654
         }
       },
       "official": {
@@ -2668,9 +2668,9 @@
           "height": 632
         }
       },
-      "widthRatio": 1.0297723292469352,
-      "heightRatio": 0.939873417721519,
-      "inkRatio": 1.2278545581113438
+      "widthRatio": 1.0280210157618213,
+      "heightRatio": 1.0348101265822784,
+      "inkRatio": 1.346837737117207
     },
     {
       "id": "parity_swimlanes_046",
@@ -2692,13 +2692,13 @@
             255
           ]
         ],
-        "inkPixels": 259499,
-        "inkRatio": 0.24027685185185185,
+        "inkPixels": 264518,
+        "inkRatio": 0.24492407407407407,
         "contentBounds": {
           "x": 16,
-          "y": 33,
+          "y": 19,
           "width": 1168,
-          "height": 834
+          "height": 862
         }
       },
       "official": {
@@ -2728,8 +2728,8 @@
         }
       },
       "widthRatio": 1.0465949820788532,
-      "heightRatio": 1.0096852300242132,
-      "inkRatio": 1.0540812803379571
+      "heightRatio": 1.0435835351089588,
+      "inkRatio": 1.074468387594695
     },
     {
       "id": "parity_swimlanes_047",
@@ -2751,13 +2751,13 @@
             255
           ]
         ],
-        "inkPixels": 147922,
-        "inkRatio": 0.13696481481481482,
+        "inkPixels": 153241,
+        "inkRatio": 0.1418898148148148,
         "contentBounds": {
           "x": 19,
-          "y": 262,
+          "y": 254,
           "width": 1162,
-          "height": 376
+          "height": 392
         }
       },
       "official": {
@@ -2787,8 +2787,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 1.0026666666666666,
-      "inkRatio": 1.0346366370567253
+      "heightRatio": 1.0453333333333332,
+      "inkRatio": 1.0718402462054977
     },
     {
       "id": "parity_swimlanes_048",
@@ -2810,12 +2810,12 @@
             255
           ]
         ],
-        "inkPixels": 119996,
-        "inkRatio": 0.1111074074074074,
+        "inkPixels": 117179,
+        "inkRatio": 0.10849907407407407,
         "contentBounds": {
-          "x": 341,
+          "x": 348,
           "y": 15,
-          "width": 518,
+          "width": 504,
           "height": 870
         }
       },
@@ -2845,9 +2845,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.102127659574468,
+      "widthRatio": 1.0723404255319149,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.498900769461377
+      "inkRatio": 1.4637129009693213
     },
     {
       "id": "parity_swimlanes_049",
@@ -2869,12 +2869,12 @@
             255
           ]
         ],
-        "inkPixels": 335668,
-        "inkRatio": 0.3108037037037037,
+        "inkPixels": 325262,
+        "inkRatio": 0.3011685185185185,
         "contentBounds": {
-          "x": 99,
+          "x": 111,
           "y": 21,
-          "width": 1002,
+          "width": 978,
           "height": 858
         }
       },
@@ -2904,9 +2904,9 @@
           "height": 802
         }
       },
-      "widthRatio": 1.1084070796460177,
+      "widthRatio": 1.081858407079646,
       "heightRatio": 1.0698254364089776,
-      "inkRatio": 1.185653531514475
+      "inkRatio": 1.1488972406290177
     },
     {
       "id": "parity_swimlanes_050",
@@ -2928,13 +2928,13 @@
             255
           ]
         ],
-        "inkPixels": 256356,
-        "inkRatio": 0.23736666666666667,
+        "inkPixels": 282167,
+        "inkRatio": 0.2612657407407407,
         "contentBounds": {
-          "x": 15,
-          "y": 134,
-          "width": 1170,
-          "height": 632
+          "x": 16,
+          "y": 106,
+          "width": 1168,
+          "height": 688
         }
       },
       "official": {
@@ -2963,9 +2963,9 @@
           "height": 664
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 0.9655120464911322
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0627238590954113
     },
     {
       "id": "parity_swimlanes_051",
@@ -2987,13 +2987,13 @@
             255
           ]
         ],
-        "inkPixels": 196190,
-        "inkRatio": 0.1816574074074074,
+        "inkPixels": 203921,
+        "inkRatio": 0.18881574074074073,
         "contentBounds": {
           "x": 14,
-          "y": 252,
+          "y": 243,
           "width": 1172,
-          "height": 396
+          "height": 414
         }
       },
       "official": {
@@ -3023,8 +3023,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.99,
-      "inkRatio": 1.0252511000324
+      "heightRatio": 1.035,
+      "inkRatio": 1.0656518149228147
     },
     {
       "id": "parity_swimlanes_052",
@@ -3046,12 +3046,12 @@
             255
           ]
         ],
-        "inkPixels": 131118,
-        "inkRatio": 0.12140555555555556,
+        "inkPixels": 125553,
+        "inkRatio": 0.11625277777777777,
         "contentBounds": {
-          "x": 271,
+          "x": 286,
           "y": 15,
-          "width": 658,
+          "width": 628,
           "height": 870
         }
       },
@@ -3081,9 +3081,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1305841924398625,
+      "widthRatio": 1.0790378006872852,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.1689221717036642
+      "inkRatio": 1.1193099759293927
     },
     {
       "id": "parity_swimlanes_053",
@@ -3105,13 +3105,13 @@
             255
           ]
         ],
-        "inkPixels": 284469,
-        "inkRatio": 0.2633972222222222,
+        "inkPixels": 278359,
+        "inkRatio": 0.25773981481481484,
         "contentBounds": {
-          "x": 15,
-          "y": 28,
-          "width": 1170,
-          "height": 844
+          "x": 48,
+          "y": 15,
+          "width": 1104,
+          "height": 870
         }
       },
       "official": {
@@ -3140,9 +3140,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.099624060150376,
-      "heightRatio": 1.0144230769230769,
-      "inkRatio": 1.4078651073706925
+      "widthRatio": 1.037593984962406,
+      "heightRatio": 1.0456730769230769,
+      "inkRatio": 1.3776261154030793
     },
     {
       "id": "parity_swimlanes_054",
@@ -3164,13 +3164,13 @@
             255
           ]
         ],
-        "inkPixels": 226285,
-        "inkRatio": 0.20952314814814815,
+        "inkPixels": 230027,
+        "inkRatio": 0.21298796296296296,
         "contentBounds": {
           "x": 16,
-          "y": 85,
+          "y": 73,
           "width": 1168,
-          "height": 730
+          "height": 754
         }
       },
       "official": {
@@ -3200,8 +3200,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1,
-      "inkRatio": 1.0315926238289532
+      "heightRatio": 1.0328767123287672,
+      "inkRatio": 1.0486517289325523
     },
     {
       "id": "parity_swimlanes_055",
@@ -3223,13 +3223,13 @@
             255
           ]
         ],
-        "inkPixels": 243798,
-        "inkRatio": 0.22573888888888888,
+        "inkPixels": 262566,
+        "inkRatio": 0.24311666666666668,
         "contentBounds": {
           "x": 15,
-          "y": 264,
+          "y": 247,
           "width": 1170,
-          "height": 372
+          "height": 406
         }
       },
       "official": {
@@ -3259,8 +3259,8 @@
         }
       },
       "widthRatio": 1.0353982300884956,
-      "heightRatio": 0.9441624365482234,
-      "inkRatio": 0.9872082994205469
+      "heightRatio": 1.0304568527918783,
+      "inkRatio": 1.06320533534178
     },
     {
       "id": "parity_swimlanes_056",
@@ -3282,13 +3282,13 @@
             255
           ]
         ],
-        "inkPixels": 128075,
-        "inkRatio": 0.11858796296296296,
+        "inkPixels": 134377,
+        "inkRatio": 0.12442314814814814,
         "contentBounds": {
           "x": 16,
-          "y": 256,
+          "y": 247,
           "width": 1168,
-          "height": 388
+          "height": 406
         }
       },
       "official": {
@@ -3318,8 +3318,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9948717948717949,
-      "inkRatio": 1.0400172151980966
+      "heightRatio": 1.041025641025641,
+      "inkRatio": 1.09119182765313
     },
     {
       "id": "parity_swimlanes_057",
@@ -3341,12 +3341,12 @@
             255
           ]
         ],
-        "inkPixels": 124584,
-        "inkRatio": 0.11535555555555556,
+        "inkPixels": 119092,
+        "inkRatio": 0.11027037037037037,
         "contentBounds": {
-          "x": 284,
+          "x": 303,
           "y": 17,
-          "width": 632,
+          "width": 594,
           "height": 869
         }
       },
@@ -3376,9 +3376,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.0859106529209621,
+      "widthRatio": 1.0206185567010309,
       "heightRatio": 1.0444711538461537,
-      "inkRatio": 1.0484927033714295
+      "inkRatio": 1.002272306475232
     },
     {
       "id": "parity_swimlanes_058",
@@ -3400,13 +3400,13 @@
             255
           ]
         ],
-        "inkPixels": 204676,
-        "inkRatio": 0.1895148148148148,
+        "inkPixels": 224505,
+        "inkRatio": 0.207875,
         "contentBounds": {
-          "x": 12,
-          "y": 153,
-          "width": 1176,
-          "height": 594
+          "x": 13,
+          "y": 123,
+          "width": 1174,
+          "height": 654
         }
       },
       "official": {
@@ -3435,9 +3435,9 @@
           "height": 632
         }
       },
-      "widthRatio": 1.0297723292469352,
-      "heightRatio": 0.939873417721519,
-      "inkRatio": 1.2276410573226249
+      "widthRatio": 1.0280210157618213,
+      "heightRatio": 1.0348101265822784,
+      "inkRatio": 1.346574857698098
     },
     {
       "id": "parity_swimlanes_059",
@@ -3459,13 +3459,13 @@
             255
           ]
         ],
-        "inkPixels": 259648,
-        "inkRatio": 0.2404148148148148,
+        "inkPixels": 264681,
+        "inkRatio": 0.245075,
         "contentBounds": {
           "x": 16,
-          "y": 33,
+          "y": 19,
           "width": 1168,
-          "height": 834
+          "height": 862
         }
       },
       "official": {
@@ -3495,8 +3495,8 @@
         }
       },
       "widthRatio": 1.0465949820788532,
-      "heightRatio": 1.0096852300242132,
-      "inkRatio": 1.0539587181100443
+      "heightRatio": 1.0435835351089588,
+      "inkRatio": 1.074388585577723
     },
     {
       "id": "parity_swimlanes_060",
@@ -3518,13 +3518,13 @@
             255
           ]
         ],
-        "inkPixels": 148238,
-        "inkRatio": 0.1372574074074074,
+        "inkPixels": 153557,
+        "inkRatio": 0.1421824074074074,
         "contentBounds": {
           "x": 19,
-          "y": 262,
+          "y": 254,
           "width": 1162,
-          "height": 376
+          "height": 392
         }
       },
       "official": {
@@ -3554,8 +3554,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 1.0026666666666666,
-      "inkRatio": 1.034798573153791
+      "heightRatio": 1.0453333333333332,
+      "inkRatio": 1.0719286856121686
     },
     {
       "id": "parity_swimlanes_061",
@@ -3577,12 +3577,12 @@
             255
           ]
         ],
-        "inkPixels": 120092,
-        "inkRatio": 0.1111962962962963,
+        "inkPixels": 117275,
+        "inkRatio": 0.10858796296296297,
         "contentBounds": {
-          "x": 341,
+          "x": 348,
           "y": 15,
-          "width": 518,
+          "width": 504,
           "height": 870
         }
       },
@@ -3612,9 +3612,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.102127659574468,
+      "widthRatio": 1.0723404255319149,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4978920847157433
+      "inkRatio": 1.4627560056876296
     },
     {
       "id": "parity_swimlanes_062",
@@ -3636,12 +3636,12 @@
             255
           ]
         ],
-        "inkPixels": 335979,
-        "inkRatio": 0.31109166666666666,
+        "inkPixels": 325576,
+        "inkRatio": 0.30145925925925926,
         "contentBounds": {
-          "x": 99,
+          "x": 111,
           "y": 21,
-          "width": 1002,
+          "width": 978,
           "height": 858
         }
       },
@@ -3662,8 +3662,8 @@
             255
           ]
         ],
-        "inkPixels": 283441,
-        "inkRatio": 0.26244537037037036,
+        "inkPixels": 283442,
+        "inkRatio": 0.2624462962962963,
         "contentBounds": {
           "x": 148,
           "y": 49,
@@ -3671,9 +3671,9 @@
           "height": 802
         }
       },
-      "widthRatio": 1.1084070796460177,
+      "widthRatio": 1.081858407079646,
       "heightRatio": 1.0698254364089776,
-      "inkRatio": 1.185357799330372
+      "inkRatio": 1.1486512231779342
     },
     {
       "id": "parity_swimlanes_063",
@@ -3695,13 +3695,13 @@
             255
           ]
         ],
-        "inkPixels": 256460,
-        "inkRatio": 0.23746296296296296,
+        "inkPixels": 282298,
+        "inkRatio": 0.26138703703703703,
         "contentBounds": {
-          "x": 15,
-          "y": 134,
-          "width": 1170,
-          "height": 632
+          "x": 16,
+          "y": 106,
+          "width": 1168,
+          "height": 688
         }
       },
       "official": {
@@ -3730,9 +3730,9 @@
           "height": 664
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 0.965285697617085
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.062536933112017
     },
     {
       "id": "parity_swimlanes_064",
@@ -3754,13 +3754,13 @@
             255
           ]
         ],
-        "inkPixels": 196302,
-        "inkRatio": 0.18176111111111112,
+        "inkPixels": 204033,
+        "inkRatio": 0.18891944444444445,
         "contentBounds": {
           "x": 14,
-          "y": 252,
+          "y": 243,
           "width": 1172,
-          "height": 396
+          "height": 414
         }
       },
       "official": {
@@ -3790,8 +3790,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.99,
-      "inkRatio": 1.0251292495691682
+      "heightRatio": 1.035,
+      "inkRatio": 1.06550211499295
     },
     {
       "id": "parity_swimlanes_065",
@@ -3813,12 +3813,12 @@
             255
           ]
         ],
-        "inkPixels": 131252,
-        "inkRatio": 0.12152962962962963,
+        "inkPixels": 125666,
+        "inkRatio": 0.11635740740740741,
         "contentBounds": {
-          "x": 271,
+          "x": 286,
           "y": 15,
-          "width": 658,
+          "width": 628,
           "height": 870
         }
       },
@@ -3848,9 +3848,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1305841924398625,
+      "widthRatio": 1.0790378006872852,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.1687830593599173
+      "inkRatio": 1.1190404103367826
     },
     {
       "id": "parity_swimlanes_066",
@@ -3872,12 +3872,12 @@
             255
           ]
         ],
-        "inkPixels": 281198,
-        "inkRatio": 0.2603685185185185,
+        "inkPixels": 261021,
+        "inkRatio": 0.2416861111111111,
         "contentBounds": {
-          "x": 34,
+          "x": 79,
           "y": 15,
-          "width": 1132,
+          "width": 1042,
           "height": 870
         }
       },
@@ -3907,9 +3907,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1185770750988142,
+      "widthRatio": 1.0296442687747036,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4766165705703813
+      "inkRatio": 1.3706638520432275
     },
     {
       "id": "parity_swimlanes_067",
@@ -3931,13 +3931,13 @@
             255
           ]
         ],
-        "inkPixels": 233634,
-        "inkRatio": 0.21632777777777779,
+        "inkPixels": 237465,
+        "inkRatio": 0.219875,
         "contentBounds": {
           "x": 16,
-          "y": 73,
+          "y": 61,
           "width": 1168,
-          "height": 754
+          "height": 778
         }
       },
       "official": {
@@ -3967,8 +3967,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.002659574468085,
-      "inkRatio": 1.0357310682968783
+      "heightRatio": 1.0345744680851063,
+      "inkRatio": 1.0527144085754563
     },
     {
       "id": "parity_swimlanes_068",
@@ -3990,13 +3990,13 @@
             255
           ]
         ],
-        "inkPixels": 275275,
-        "inkRatio": 0.2548842592592593,
+        "inkPixels": 292842,
+        "inkRatio": 0.27115,
         "contentBounds": {
-          "x": 15,
-          "y": 246,
-          "width": 1170,
-          "height": 408
+          "x": 16,
+          "y": 229,
+          "width": 1168,
+          "height": 442
         }
       },
       "official": {
@@ -4025,9 +4025,9 @@
           "height": 428
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9532710280373832,
-      "inkRatio": 0.9992558443444172
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.0327102803738317,
+      "inkRatio": 1.0630245389864963
     },
     {
       "id": "parity_swimlanes_069",
@@ -4049,13 +4049,13 @@
             255
           ]
         ],
-        "inkPixels": 135980,
-        "inkRatio": 0.1259074074074074,
+        "inkPixels": 140710,
+        "inkRatio": 0.13028703703703703,
         "contentBounds": {
           "x": 16,
-          "y": 244,
+          "y": 235,
           "width": 1168,
-          "height": 412
+          "height": 430
         }
       },
       "official": {
@@ -4085,8 +4085,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9951690821256038,
-      "inkRatio": 1.036519830168688
+      "heightRatio": 1.038647342995169,
+      "inkRatio": 1.072574682328549
     },
     {
       "id": "parity_swimlanes_070",
@@ -4108,12 +4108,12 @@
             255
           ]
         ],
-        "inkPixels": 116510,
-        "inkRatio": 0.10787962962962963,
+        "inkPixels": 111846,
+        "inkRatio": 0.10356111111111112,
         "contentBounds": {
-          "x": 307,
+          "x": 322,
           "y": 18,
-          "width": 586,
+          "width": 556,
           "height": 868
         }
       },
@@ -4143,9 +4143,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0732600732600732,
+      "widthRatio": 1.0183150183150182,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.047017379895397
+      "inkRatio": 1.0051043332913963
     },
     {
       "id": "parity_swimlanes_071",
@@ -4167,13 +4167,13 @@
             255
           ]
         ],
-        "inkPixels": 214966,
-        "inkRatio": 0.1990425925925926,
+        "inkPixels": 234037,
+        "inkRatio": 0.21670092592592594,
         "contentBounds": {
           "x": 13,
-          "y": 134,
+          "y": 105,
           "width": 1174,
-          "height": 632
+          "height": 690
         }
       },
       "official": {
@@ -4203,8 +4203,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 1.2638590838806023
+      "heightRatio": 1.0391566265060241,
+      "inkRatio": 1.3759840552187999
     },
     {
       "id": "parity_swimlanes_072",
@@ -4226,13 +4226,13 @@
             255
           ]
         ],
-        "inkPixels": 266580,
-        "inkRatio": 0.24683333333333332,
+        "inkPixels": 261934,
+        "inkRatio": 0.2425314814814815,
         "contentBounds": {
-          "x": 16,
-          "y": 21,
-          "width": 1168,
-          "height": 858
+          "x": 27,
+          "y": 16,
+          "width": 1146,
+          "height": 868
         }
       },
       "official": {
@@ -4261,9 +4261,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0735294117647058,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.1002381414238134
+      "widthRatio": 1.0533088235294117,
+      "heightRatio": 1.0483091787439613,
+      "inkRatio": 1.0810630104873027
     },
     {
       "id": "parity_swimlanes_073",
@@ -4285,13 +4285,13 @@
             255
           ]
         ],
-        "inkPixels": 153782,
-        "inkRatio": 0.14239074074074073,
+        "inkPixels": 159099,
+        "inkRatio": 0.14731388888888888,
         "contentBounds": {
           "x": 19,
-          "y": 246,
+          "y": 238,
           "width": 1162,
-          "height": 408
+          "height": 424
         }
       },
       "official": {
@@ -4321,8 +4321,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9927007299270073,
-      "inkRatio": 1.0422506574131807
+      "heightRatio": 1.0316301703163018,
+      "inkRatio": 1.0782863881584297
     },
     {
       "id": "parity_swimlanes_074",
@@ -4344,12 +4344,12 @@
             255
           ]
         ],
-        "inkPixels": 113174,
-        "inkRatio": 0.10479074074074074,
+        "inkPixels": 111563,
+        "inkRatio": 0.10329907407407407,
         "contentBounds": {
-          "x": 353,
+          "x": 358,
           "y": 15,
-          "width": 494,
+          "width": 484,
           "height": 870
         }
       },
@@ -4379,9 +4379,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.092920353982301,
+      "widthRatio": 1.0707964601769913,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4808117550080468
+      "inkRatio": 1.459732816936423
     },
     {
       "id": "parity_swimlanes_075",
@@ -4403,12 +4403,12 @@
             255
           ]
         ],
-        "inkPixels": 339745,
-        "inkRatio": 0.3145787037037037,
+        "inkPixels": 328175,
+        "inkRatio": 0.30386574074074074,
         "contentBounds": {
-          "x": 109,
+          "x": 121,
           "y": 21,
-          "width": 982,
+          "width": 958,
           "height": 858
         }
       },
@@ -4438,9 +4438,9 @@
           "height": 804
         }
       },
-      "widthRatio": 1.1058558558558558,
+      "widthRatio": 1.0788288288288288,
       "heightRatio": 1.0671641791044777,
-      "inkRatio": 1.172444137693038
+      "inkRatio": 1.1325166077128808
     },
     {
       "id": "parity_swimlanes_076",
@@ -4462,13 +4462,13 @@
             255
           ]
         ],
-        "inkPixels": 290752,
-        "inkRatio": 0.2692148148148148,
+        "inkPixels": 314397,
+        "inkRatio": 0.29110833333333336,
         "contentBounds": {
-          "x": 15,
-          "y": 108,
-          "width": 1170,
-          "height": 684
+          "x": 16,
+          "y": 80,
+          "width": 1168,
+          "height": 740
         }
       },
       "official": {
@@ -4497,9 +4497,9 @@
           "height": 712
         }
       },
-      "widthRatio": 1.0390763765541742,
-      "heightRatio": 0.9606741573033708,
-      "inkRatio": 0.9888380255344619
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0393258426966292,
+      "inkRatio": 1.0692538958079678
     },
     {
       "id": "parity_swimlanes_077",
@@ -4521,13 +4521,13 @@
             255
           ]
         ],
-        "inkPixels": 201379,
-        "inkRatio": 0.18646203703703704,
+        "inkPixels": 211354,
+        "inkRatio": 0.19569814814814815,
         "contentBounds": {
           "x": 14,
-          "y": 243,
+          "y": 233,
           "width": 1172,
-          "height": 414
+          "height": 434
         }
       },
       "official": {
@@ -4557,8 +4557,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9857142857142858,
-      "inkRatio": 1.0078474158079385
+      "heightRatio": 1.0333333333333334,
+      "inkRatio": 1.0577695922646901
     },
     {
       "id": "parity_swimlanes_078",
@@ -4580,12 +4580,12 @@
             255
           ]
         ],
-        "inkPixels": 119643,
-        "inkRatio": 0.11078055555555555,
+        "inkPixels": 116933,
+        "inkRatio": 0.1082712962962963,
         "contentBounds": {
-          "x": 294,
+          "x": 307,
           "y": 15,
-          "width": 612,
+          "width": 586,
           "height": 870
         }
       },
@@ -4615,9 +4615,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.120879120879121,
+      "widthRatio": 1.0732600732600732,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1400869051476052
+      "inkRatio": 1.1142631167692632
     },
     {
       "id": "parity_swimlanes_079",
@@ -4639,12 +4639,12 @@
             255
           ]
         ],
-        "inkPixels": 281267,
-        "inkRatio": 0.2604324074074074,
+        "inkPixels": 261109,
+        "inkRatio": 0.2417675925925926,
         "contentBounds": {
-          "x": 34,
+          "x": 79,
           "y": 15,
-          "width": 1132,
+          "width": 1042,
           "height": 870
         }
       },
@@ -4674,9 +4674,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1185770750988142,
+      "widthRatio": 1.0296442687747036,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4763431942723972
+      "inkRatio": 1.3705358080161247
     },
     {
       "id": "parity_swimlanes_080",
@@ -4698,13 +4698,13 @@
             255
           ]
         ],
-        "inkPixels": 233799,
-        "inkRatio": 0.21648055555555556,
+        "inkPixels": 237599,
+        "inkRatio": 0.21999907407407407,
         "contentBounds": {
           "x": 16,
-          "y": 73,
+          "y": 61,
           "width": 1168,
-          "height": 754
+          "height": 778
         }
       },
       "official": {
@@ -4734,8 +4734,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.002659574468085,
-      "inkRatio": 1.035649897453389
+      "heightRatio": 1.0345744680851063,
+      "inkRatio": 1.0524826025133887
     },
     {
       "id": "parity_swimlanes_081",
@@ -4757,13 +4757,13 @@
             255
           ]
         ],
-        "inkPixels": 275349,
-        "inkRatio": 0.25495277777777775,
+        "inkPixels": 292933,
+        "inkRatio": 0.27123425925925926,
         "contentBounds": {
-          "x": 15,
-          "y": 246,
-          "width": 1170,
-          "height": 408
+          "x": 16,
+          "y": 229,
+          "width": 1168,
+          "height": 442
         }
       },
       "official": {
@@ -4792,9 +4792,9 @@
           "height": 428
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9532710280373832,
-      "inkRatio": 0.9991980259099321
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.0327102803738317,
+      "inkRatio": 1.0630075842798563
     },
     {
       "id": "parity_swimlanes_082",
@@ -4816,13 +4816,13 @@
             255
           ]
         ],
-        "inkPixels": 136093,
-        "inkRatio": 0.12601203703703703,
+        "inkPixels": 140823,
+        "inkRatio": 0.13039166666666666,
         "contentBounds": {
           "x": 16,
-          "y": 244,
+          "y": 235,
           "width": 1168,
-          "height": 412
+          "height": 430
         }
       },
       "official": {
@@ -4852,8 +4852,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9951690821256038,
-      "inkRatio": 1.0362831993177388
+      "heightRatio": 1.038647342995169,
+      "inkRatio": 1.0722998903508771
     },
     {
       "id": "parity_swimlanes_083",
@@ -4875,12 +4875,12 @@
             255
           ]
         ],
-        "inkPixels": 116607,
-        "inkRatio": 0.10796944444444445,
+        "inkPixels": 111949,
+        "inkRatio": 0.10365648148148149,
         "contentBounds": {
-          "x": 307,
+          "x": 322,
           "y": 18,
-          "width": 586,
+          "width": 556,
           "height": 868
         }
       },
@@ -4910,9 +4910,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0732600732600732,
+      "widthRatio": 1.0183150183150182,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0467508684997173
+      "inkRatio": 1.0049372076948626
     },
     {
       "id": "parity_swimlanes_084",
@@ -4934,13 +4934,13 @@
             255
           ]
         ],
-        "inkPixels": 215023,
-        "inkRatio": 0.19909537037037037,
+        "inkPixels": 234123,
+        "inkRatio": 0.21678055555555556,
         "contentBounds": {
           "x": 13,
-          "y": 134,
+          "y": 105,
           "width": 1174,
-          "height": 632
+          "height": 690
         }
       },
       "official": {
@@ -4970,8 +4970,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 1.2634588038969128
+      "heightRatio": 1.0391566265060241,
+      "inkRatio": 1.3756889520877158
     },
     {
       "id": "parity_swimlanes_085",
@@ -4993,13 +4993,13 @@
             255
           ]
         ],
-        "inkPixels": 266750,
-        "inkRatio": 0.24699074074074073,
+        "inkPixels": 262095,
+        "inkRatio": 0.24268055555555557,
         "contentBounds": {
-          "x": 16,
-          "y": 21,
-          "width": 1168,
-          "height": 858
+          "x": 27,
+          "y": 16,
+          "width": 1146,
+          "height": 868
         }
       },
       "official": {
@@ -5028,9 +5028,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0735294117647058,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.1002404649263549
+      "widthRatio": 1.0533088235294117,
+      "heightRatio": 1.0483091787439613,
+      "inkRatio": 1.0810403923331697
     },
     {
       "id": "parity_swimlanes_086",
@@ -5052,13 +5052,13 @@
             255
           ]
         ],
-        "inkPixels": 154050,
-        "inkRatio": 0.1426388888888889,
+        "inkPixels": 159367,
+        "inkRatio": 0.14756203703703705,
         "contentBounds": {
           "x": 19,
-          "y": 246,
+          "y": 238,
           "width": 1162,
-          "height": 408
+          "height": 424
         }
       },
       "official": {
@@ -5088,8 +5088,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9927007299270073,
-      "inkRatio": 1.0418286950934976
+      "heightRatio": 1.0316301703163018,
+      "inkRatio": 1.077787170730058
     },
     {
       "id": "parity_swimlanes_087",
@@ -5111,12 +5111,12 @@
             255
           ]
         ],
-        "inkPixels": 113286,
-        "inkRatio": 0.10489444444444444,
+        "inkPixels": 111661,
+        "inkRatio": 0.10338981481481481,
         "contentBounds": {
-          "x": 353,
+          "x": 358,
           "y": 15,
-          "width": 494,
+          "width": 484,
           "height": 870
         }
       },
@@ -5146,9 +5146,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.092920353982301,
+      "widthRatio": 1.0707964601769913,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4797601786903876
+      "inkRatio": 1.4585341640868894
     },
     {
       "id": "parity_swimlanes_088",
@@ -5170,12 +5170,12 @@
             255
           ]
         ],
-        "inkPixels": 340093,
-        "inkRatio": 0.31490092592592595,
+        "inkPixels": 328525,
+        "inkRatio": 0.30418981481481483,
         "contentBounds": {
-          "x": 109,
+          "x": 121,
           "y": 21,
-          "width": 982,
+          "width": 958,
           "height": 858
         }
       },
@@ -5205,9 +5205,9 @@
           "height": 804
         }
       },
-      "widthRatio": 1.1058558558558558,
+      "widthRatio": 1.0788288288288288,
       "heightRatio": 1.0671641791044777,
-      "inkRatio": 1.172293861962228
+      "inkRatio": 1.1324191941649517
     },
     {
       "id": "parity_swimlanes_089",
@@ -5229,13 +5229,13 @@
             255
           ]
         ],
-        "inkPixels": 290891,
-        "inkRatio": 0.2693435185185185,
+        "inkPixels": 314550,
+        "inkRatio": 0.29125,
         "contentBounds": {
-          "x": 15,
-          "y": 108,
-          "width": 1170,
-          "height": 684
+          "x": 16,
+          "y": 80,
+          "width": 1168,
+          "height": 740
         }
       },
       "official": {
@@ -5264,9 +5264,9 @@
           "height": 712
         }
       },
-      "widthRatio": 1.0390763765541742,
-      "heightRatio": 0.9606741573033708,
-      "inkRatio": 0.9887525492861997
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0393258426966292,
+      "inkRatio": 1.0691706322229775
     },
     {
       "id": "parity_swimlanes_090",
@@ -5288,13 +5288,13 @@
             255
           ]
         ],
-        "inkPixels": 201508,
-        "inkRatio": 0.1865814814814815,
+        "inkPixels": 211483,
+        "inkRatio": 0.1958175925925926,
         "contentBounds": {
           "x": 14,
-          "y": 243,
+          "y": 233,
           "width": 1172,
-          "height": 414
+          "height": 434
         }
       },
       "official": {
@@ -5324,8 +5324,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9857142857142858,
-      "inkRatio": 1.0077213898501731
+      "heightRatio": 1.0333333333333334,
+      "inkRatio": 1.057605368966414
     },
     {
       "id": "parity_swimlanes_091",
@@ -5347,12 +5347,12 @@
             255
           ]
         ],
-        "inkPixels": 119755,
-        "inkRatio": 0.11088425925925927,
+        "inkPixels": 117039,
+        "inkRatio": 0.10836944444444445,
         "contentBounds": {
-          "x": 294,
+          "x": 307,
           "y": 15,
-          "width": 612,
+          "width": 586,
           "height": 870
         }
       },
@@ -5382,9 +5382,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.120879120879121,
+      "widthRatio": 1.0732600732600732,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1400460759300866
+      "inkRatio": 1.1141902440881917
     },
     {
       "id": "parity_swimlanes_092",
@@ -5406,12 +5406,12 @@
             255
           ]
         ],
-        "inkPixels": 281316,
-        "inkRatio": 0.26047777777777775,
+        "inkPixels": 261133,
+        "inkRatio": 0.24178981481481482,
         "contentBounds": {
-          "x": 34,
+          "x": 79,
           "y": 15,
-          "width": 1132,
+          "width": 1042,
           "height": 870
         }
       },
@@ -5441,9 +5441,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1185770750988142,
+      "widthRatio": 1.0296442687747036,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.476243952099579
+      "inkRatio": 1.370330915922377
     },
     {
       "id": "parity_swimlanes_093",
@@ -5465,13 +5465,13 @@
             255
           ]
         ],
-        "inkPixels": 233806,
-        "inkRatio": 0.21648703703703703,
+        "inkPixels": 237678,
+        "inkRatio": 0.22007222222222222,
         "contentBounds": {
           "x": 16,
-          "y": 73,
+          "y": 61,
           "width": 1168,
-          "height": 754
+          "height": 778
         }
       },
       "official": {
@@ -5501,8 +5501,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.002659574468085,
-      "inkRatio": 1.0355066012959002
+      "heightRatio": 1.0345744680851063,
+      "inkRatio": 1.052655355221025
     },
     {
       "id": "parity_swimlanes_094",
@@ -5524,13 +5524,13 @@
             255
           ]
         ],
-        "inkPixels": 275388,
-        "inkRatio": 0.2549888888888889,
+        "inkPixels": 293002,
+        "inkRatio": 0.2712981481481481,
         "contentBounds": {
-          "x": 15,
-          "y": 246,
-          "width": 1170,
-          "height": 408
+          "x": 16,
+          "y": 229,
+          "width": 1168,
+          "height": 442
         }
       },
       "official": {
@@ -5559,9 +5559,9 @@
           "height": 428
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9532710280373832,
-      "inkRatio": 0.9992488978392204
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.0327102803738317,
+      "inkRatio": 1.0631615232496958
     },
     {
       "id": "parity_swimlanes_095",
@@ -5583,13 +5583,13 @@
             255
           ]
         ],
-        "inkPixels": 136180,
-        "inkRatio": 0.1260925925925926,
+        "inkPixels": 140910,
+        "inkRatio": 0.1304722222222222,
         "contentBounds": {
           "x": 16,
-          "y": 244,
+          "y": 235,
           "width": 1168,
-          "height": 412
+          "height": 430
         }
       },
       "official": {
@@ -5619,8 +5619,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9951690821256038,
-      "inkRatio": 1.0365273517479696
+      "heightRatio": 1.038647342995169,
+      "inkRatio": 1.0725295133999588
     },
     {
       "id": "parity_swimlanes_096",
@@ -5642,12 +5642,12 @@
             255
           ]
         ],
-        "inkPixels": 116654,
-        "inkRatio": 0.10801296296296296,
+        "inkPixels": 111972,
+        "inkRatio": 0.10367777777777777,
         "contentBounds": {
-          "x": 307,
+          "x": 322,
           "y": 18,
-          "width": 586,
+          "width": 556,
           "height": 868
         }
       },
@@ -5677,9 +5677,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0732600732600732,
+      "widthRatio": 1.0183150183150182,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0469472191558296
+      "inkRatio": 1.004927169435395
     },
     {
       "id": "parity_swimlanes_097",
@@ -5701,13 +5701,13 @@
             255
           ]
         ],
-        "inkPixels": 215049,
-        "inkRatio": 0.19911944444444443,
+        "inkPixels": 234127,
+        "inkRatio": 0.21678425925925926,
         "contentBounds": {
           "x": 13,
-          "y": 134,
+          "y": 105,
           "width": 1174,
-          "height": 632
+          "height": 690
         }
       },
       "official": {
@@ -5737,8 +5737,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 1.263596728323971
+      "heightRatio": 1.0391566265060241,
+      "inkRatio": 1.3756962888100217
     },
     {
       "id": "parity_swimlanes_098",
@@ -5760,13 +5760,13 @@
             255
           ]
         ],
-        "inkPixels": 266765,
-        "inkRatio": 0.24700462962962963,
+        "inkPixels": 262136,
+        "inkRatio": 0.24271851851851853,
         "contentBounds": {
-          "x": 16,
-          "y": 21,
-          "width": 1168,
-          "height": 858
+          "x": 27,
+          "y": 16,
+          "width": 1146,
+          "height": 868
         }
       },
       "official": {
@@ -5795,9 +5795,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0735294117647058,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.1002115751834272
+      "widthRatio": 1.0533088235294117,
+      "heightRatio": 1.0483091787439613,
+      "inkRatio": 1.081120317404018
     },
     {
       "id": "parity_swimlanes_099",
@@ -5819,13 +5819,13 @@
             255
           ]
         ],
-        "inkPixels": 154114,
-        "inkRatio": 0.14269814814814816,
+        "inkPixels": 159431,
+        "inkRatio": 0.1476212962962963,
         "contentBounds": {
           "x": 19,
-          "y": 246,
+          "y": 238,
           "width": 1162,
-          "height": 408
+          "height": 424
         }
       },
       "official": {
@@ -5855,8 +5855,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9927007299270073,
-      "inkRatio": 1.0419726042216004
+      "heightRatio": 1.0316301703163018,
+      "inkRatio": 1.0779211120576584
     },
     {
       "id": "parity_swimlanes_100",
@@ -5878,12 +5878,12 @@
             255
           ]
         ],
-        "inkPixels": 113331,
-        "inkRatio": 0.1049361111111111,
+        "inkPixels": 111687,
+        "inkRatio": 0.10341388888888889,
         "contentBounds": {
-          "x": 353,
+          "x": 358,
           "y": 15,
-          "width": 494,
+          "width": 484,
           "height": 870
         }
       },
@@ -5913,9 +5913,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.092920353982301,
+      "widthRatio": 1.0707964601769913,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.479826073331244
+      "inkRatio": 1.4583594484487623
     },
     {
       "id": "parity_swimlanes_101",
@@ -5937,12 +5937,12 @@
             255
           ]
         ],
-        "inkPixels": 340048,
-        "inkRatio": 0.3148592592592593,
+        "inkPixels": 328512,
+        "inkRatio": 0.30417777777777777,
         "contentBounds": {
-          "x": 109,
+          "x": 121,
           "y": 21,
-          "width": 982,
+          "width": 958,
           "height": 858
         }
       },
@@ -5972,9 +5972,9 @@
           "height": 804
         }
       },
-      "widthRatio": 1.1058558558558558,
+      "widthRatio": 1.0788288288288288,
       "heightRatio": 1.0671641791044777,
-      "inkRatio": 1.172288259466615
+      "inkRatio": 1.132518822912932
     },
     {
       "id": "parity_swimlanes_102",
@@ -5996,13 +5996,13 @@
             255
           ]
         ],
-        "inkPixels": 290905,
-        "inkRatio": 0.2693564814814815,
+        "inkPixels": 314589,
+        "inkRatio": 0.29128611111111113,
         "contentBounds": {
-          "x": 15,
-          "y": 108,
-          "width": 1170,
-          "height": 684
+          "x": 16,
+          "y": 80,
+          "width": 1168,
+          "height": 740
         }
       },
       "official": {
@@ -6031,9 +6031,9 @@
           "height": 712
         }
       },
-      "widthRatio": 1.0390763765541742,
-      "heightRatio": 0.9606741573033708,
-      "inkRatio": 0.9887934140488509
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0393258426966292,
+      "inkRatio": 1.0692959259284438
     },
     {
       "id": "parity_swimlanes_103",
@@ -6055,13 +6055,13 @@
             255
           ]
         ],
-        "inkPixels": 201519,
-        "inkRatio": 0.18659166666666666,
+        "inkPixels": 211494,
+        "inkRatio": 0.19582777777777777,
         "contentBounds": {
           "x": 14,
-          "y": 243,
+          "y": 233,
           "width": 1172,
-          "height": 414
+          "height": 434
         }
       },
       "official": {
@@ -6091,8 +6091,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9857142857142858,
-      "inkRatio": 1.0079024102351215
+      "heightRatio": 1.0333333333333334,
+      "inkRatio": 1.057792626751159
     },
     {
       "id": "parity_swimlanes_104",
@@ -6114,12 +6114,12 @@
             255
           ]
         ],
-        "inkPixels": 119787,
-        "inkRatio": 0.1109138888888889,
+        "inkPixels": 117077,
+        "inkRatio": 0.10840462962962963,
         "contentBounds": {
-          "x": 294,
+          "x": 307,
           "y": 15,
-          "width": 612,
+          "width": 586,
           "height": 870
         }
       },
@@ -6149,9 +6149,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.120879120879121,
+      "widthRatio": 1.0732600732600732,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.140350710178592
+      "inkRatio": 1.1145519972582918
     },
     {
       "id": "parity_swimlanes_105",
@@ -6173,13 +6173,13 @@
             255
           ]
         ],
-        "inkPixels": 284745,
-        "inkRatio": 0.2636527777777778,
+        "inkPixels": 278700,
+        "inkRatio": 0.25805555555555554,
         "contentBounds": {
-          "x": 15,
-          "y": 28,
-          "width": 1170,
-          "height": 844
+          "x": 48,
+          "y": 15,
+          "width": 1104,
+          "height": 870
         }
       },
       "official": {
@@ -6208,9 +6208,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.099624060150376,
-      "heightRatio": 1.0144230769230769,
-      "inkRatio": 1.407253102435987
+      "widthRatio": 1.037593984962406,
+      "heightRatio": 1.0456730769230769,
+      "inkRatio": 1.3773777929337108
     },
     {
       "id": "parity_swimlanes_106",
@@ -6232,13 +6232,13 @@
             255
           ]
         ],
-        "inkPixels": 226674,
-        "inkRatio": 0.20988333333333334,
+        "inkPixels": 230411,
+        "inkRatio": 0.21334351851851852,
         "contentBounds": {
           "x": 16,
-          "y": 85,
+          "y": 73,
           "width": 1168,
-          "height": 730
+          "height": 754
         }
       },
       "official": {
@@ -6268,8 +6268,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1,
-      "inkRatio": 1.0312598099207018
+      "heightRatio": 1.0328767123287672,
+      "inkRatio": 1.048261397706128
     },
     {
       "id": "parity_swimlanes_107",
@@ -6291,13 +6291,13 @@
             255
           ]
         ],
-        "inkPixels": 244044,
-        "inkRatio": 0.22596666666666668,
+        "inkPixels": 262903,
+        "inkRatio": 0.2434287037037037,
         "contentBounds": {
           "x": 15,
-          "y": 264,
+          "y": 247,
           "width": 1170,
-          "height": 372
+          "height": 406
         }
       },
       "official": {
@@ -6327,8 +6327,8 @@
         }
       },
       "widthRatio": 1.0353982300884956,
-      "heightRatio": 0.9441624365482234,
-      "inkRatio": 0.9868098630845996
+      "heightRatio": 1.0304568527918783,
+      "inkRatio": 1.0630676166368789
     },
     {
       "id": "parity_swimlanes_108",
@@ -6350,13 +6350,13 @@
             255
           ]
         ],
-        "inkPixels": 128475,
-        "inkRatio": 0.11895833333333333,
+        "inkPixels": 134777,
+        "inkRatio": 0.12479351851851851,
         "contentBounds": {
           "x": 16,
-          "y": 256,
+          "y": 247,
           "width": 1168,
-          "height": 388
+          "height": 406
         }
       },
       "official": {
@@ -6386,8 +6386,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9948717948717949,
-      "inkRatio": 1.0393492488532574
+      "heightRatio": 1.041025641025641,
+      "inkRatio": 1.090331766590352
     },
     {
       "id": "parity_swimlanes_109",
@@ -6409,12 +6409,12 @@
             255
           ]
         ],
-        "inkPixels": 124900,
-        "inkRatio": 0.11564814814814815,
+        "inkPixels": 119374,
+        "inkRatio": 0.11053148148148148,
         "contentBounds": {
-          "x": 284,
+          "x": 303,
           "y": 17,
-          "width": 632,
+          "width": 594,
           "height": 869
         }
       },
@@ -6444,9 +6444,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.0859106529209621,
+      "widthRatio": 1.0206185567010309,
       "heightRatio": 1.0444711538461537,
-      "inkRatio": 1.0481793234250036
+      "inkRatio": 1.0018043118857995
     },
     {
       "id": "parity_swimlanes_110",
@@ -6468,13 +6468,13 @@
             255
           ]
         ],
-        "inkPixels": 204843,
-        "inkRatio": 0.18966944444444445,
+        "inkPixels": 224699,
+        "inkRatio": 0.20805462962962962,
         "contentBounds": {
-          "x": 12,
-          "y": 153,
-          "width": 1176,
-          "height": 594
+          "x": 13,
+          "y": 123,
+          "width": 1174,
+          "height": 654
         }
       },
       "official": {
@@ -6503,9 +6503,9 @@
           "height": 632
         }
       },
-      "widthRatio": 1.0297723292469352,
-      "heightRatio": 0.939873417721519,
-      "inkRatio": 1.2271485568455482
+      "widthRatio": 1.0280210157618213,
+      "heightRatio": 1.0348101265822784,
+      "inkRatio": 1.3460994692258843
     },
     {
       "id": "parity_swimlanes_111",
@@ -6527,13 +6527,13 @@
             255
           ]
         ],
-        "inkPixels": 260012,
-        "inkRatio": 0.24075185185185186,
+        "inkPixels": 265009,
+        "inkRatio": 0.2453787037037037,
         "contentBounds": {
           "x": 16,
-          "y": 33,
+          "y": 19,
           "width": 1168,
-          "height": 834
+          "height": 862
         }
       },
       "official": {
@@ -6563,8 +6563,8 @@
         }
       },
       "widthRatio": 1.0465949820788532,
-      "heightRatio": 1.0096852300242132,
-      "inkRatio": 1.0538492092442628
+      "heightRatio": 1.0435835351089588,
+      "inkRatio": 1.0741024456279435
     },
     {
       "id": "parity_swimlanes_112",
@@ -6586,13 +6586,13 @@
             255
           ]
         ],
-        "inkPixels": 148831,
-        "inkRatio": 0.13780648148148147,
+        "inkPixels": 154150,
+        "inkRatio": 0.1427314814814815,
         "contentBounds": {
           "x": 19,
-          "y": 262,
+          "y": 254,
           "width": 1162,
-          "height": 376
+          "height": 392
         }
       },
       "official": {
@@ -6622,8 +6622,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 1.0026666666666666,
-      "inkRatio": 1.0350652692486908
+      "heightRatio": 1.0453333333333332,
+      "inkRatio": 1.0720569723692355
     },
     {
       "id": "parity_swimlanes_113",
@@ -6645,12 +6645,12 @@
             255
           ]
         ],
-        "inkPixels": 120425,
-        "inkRatio": 0.11150462962962963,
+        "inkPixels": 117563,
+        "inkRatio": 0.10885462962962963,
         "contentBounds": {
-          "x": 341,
+          "x": 348,
           "y": 15,
-          "width": 518,
+          "width": 504,
           "height": 870
         }
       },
@@ -6680,9 +6680,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.102127659574468,
+      "widthRatio": 1.0723404255319149,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.496762245671601
+      "inkRatio": 1.4611904495569061
     },
     {
       "id": "parity_swimlanes_114",
@@ -6704,12 +6704,12 @@
             255
           ]
         ],
-        "inkPixels": 336840,
-        "inkRatio": 0.3118888888888889,
+        "inkPixels": 326399,
+        "inkRatio": 0.3022212962962963,
         "contentBounds": {
-          "x": 99,
+          "x": 111,
           "y": 21,
-          "width": 1002,
+          "width": 978,
           "height": 858
         }
       },
@@ -6739,9 +6739,9 @@
           "height": 802
         }
       },
-      "widthRatio": 1.1084070796460177,
+      "widthRatio": 1.081858407079646,
       "heightRatio": 1.0698254364089776,
-      "inkRatio": 1.1849173153975228
+      "inkRatio": 1.1481885370752762
     },
     {
       "id": "parity_swimlanes_115",
@@ -6763,13 +6763,13 @@
             255
           ]
         ],
-        "inkPixels": 256760,
-        "inkRatio": 0.23774074074074075,
+        "inkPixels": 282621,
+        "inkRatio": 0.2616861111111111,
         "contentBounds": {
-          "x": 15,
-          "y": 134,
-          "width": 1170,
-          "height": 632
+          "x": 16,
+          "y": 106,
+          "width": 1168,
+          "height": 688
         }
       },
       "official": {
@@ -6798,9 +6798,9 @@
           "height": 664
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 0.9651434220566621
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0623531667124004
     },
     {
       "id": "parity_swimlanes_116",
@@ -6822,13 +6822,13 @@
             255
           ]
         ],
-        "inkPixels": 196586,
-        "inkRatio": 0.18202407407407406,
+        "inkPixels": 204317,
+        "inkRatio": 0.1891824074074074,
         "contentBounds": {
           "x": 14,
-          "y": 252,
+          "y": 243,
           "width": 1172,
-          "height": 396
+          "height": 414
         }
       },
       "official": {
@@ -6858,8 +6858,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.99,
-      "inkRatio": 1.0250439298582252
+      "heightRatio": 1.035,
+      "inkRatio": 1.065355114895481
     },
     {
       "id": "parity_swimlanes_117",
@@ -6881,12 +6881,12 @@
             255
           ]
         ],
-        "inkPixels": 131531,
-        "inkRatio": 0.12178796296296296,
+        "inkPixels": 125946,
+        "inkRatio": 0.11661666666666666,
         "contentBounds": {
-          "x": 271,
+          "x": 286,
           "y": 15,
-          "width": 658,
+          "width": 628,
           "height": 870
         }
       },
@@ -6916,9 +6916,9 @@
           "height": 832
         }
       },
-      "widthRatio": 1.1305841924398625,
+      "widthRatio": 1.0790378006872852,
       "heightRatio": 1.0456730769230769,
-      "inkRatio": 1.1683336294190796
+      "inkRatio": 1.1187244626043702
     },
     {
       "id": "parity_swimlanes_118",
@@ -6940,12 +6940,12 @@
             255
           ]
         ],
-        "inkPixels": 281488,
-        "inkRatio": 0.26063703703703706,
+        "inkPixels": 261315,
+        "inkRatio": 0.24195833333333333,
         "contentBounds": {
-          "x": 34,
+          "x": 79,
           "y": 15,
-          "width": 1132,
+          "width": 1042,
           "height": 870
         }
       },
@@ -6975,9 +6975,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1185770750988142,
+      "widthRatio": 1.0296442687747036,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4759228187919464
+      "inkRatio": 1.3701499580536913
     },
     {
       "id": "parity_swimlanes_119",
@@ -6999,13 +6999,13 @@
             255
           ]
         ],
-        "inkPixels": 234001,
-        "inkRatio": 0.2166675925925926,
+        "inkPixels": 237867,
+        "inkRatio": 0.22024722222222223,
         "contentBounds": {
           "x": 16,
-          "y": 73,
+          "y": 61,
           "width": 1168,
-          "height": 754
+          "height": 778
         }
       },
       "official": {
@@ -7035,8 +7035,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.002659574468085,
-      "inkRatio": 1.0354393075861092
+      "heightRatio": 1.0345744680851063,
+      "inkRatio": 1.0525461078268257
     },
     {
       "id": "parity_swimlanes_120",
@@ -7058,13 +7058,13 @@
             255
           ]
         ],
-        "inkPixels": 275562,
-        "inkRatio": 0.25515,
+        "inkPixels": 293194,
+        "inkRatio": 0.2714759259259259,
         "contentBounds": {
-          "x": 15,
-          "y": 246,
-          "width": 1170,
-          "height": 408
+          "x": 16,
+          "y": 229,
+          "width": 1168,
+          "height": 442
         }
       },
       "official": {
@@ -7093,9 +7093,9 @@
           "height": 428
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9532710280373832,
-      "inkRatio": 0.9990464968730174
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.0327102803738317,
+      "inkRatio": 1.0629710867397806
     },
     {
       "id": "parity_swimlanes_121",
@@ -7117,13 +7117,13 @@
             255
           ]
         ],
-        "inkPixels": 136352,
-        "inkRatio": 0.12625185185185187,
+        "inkPixels": 141082,
+        "inkRatio": 0.1306314814814815,
         "contentBounds": {
           "x": 16,
-          "y": 244,
+          "y": 235,
           "width": 1168,
-          "height": 412
+          "height": 430
         }
       },
       "official": {
@@ -7153,8 +7153,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9951690821256038,
-      "inkRatio": 1.0366135506629366
+      "heightRatio": 1.038647342995169,
+      "inkRatio": 1.0725732879211776
     },
     {
       "id": "parity_swimlanes_122",
@@ -7176,12 +7176,12 @@
             255
           ]
         ],
-        "inkPixels": 116768,
-        "inkRatio": 0.10811851851851852,
+        "inkPixels": 112120,
+        "inkRatio": 0.10381481481481482,
         "contentBounds": {
-          "x": 307,
+          "x": 322,
           "y": 18,
-          "width": 586,
+          "width": 556,
           "height": 868
         }
       },
@@ -7211,9 +7211,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0732600732600732,
+      "widthRatio": 1.0183150183150182,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.046645871428059
+      "inkRatio": 1.004983686493851
     },
     {
       "id": "parity_swimlanes_123",
@@ -7235,13 +7235,13 @@
             255
           ]
         ],
-        "inkPixels": 215185,
-        "inkRatio": 0.19924537037037038,
+        "inkPixels": 234241,
+        "inkRatio": 0.2168898148148148,
         "contentBounds": {
           "x": 13,
-          "y": 134,
+          "y": 105,
           "width": 1174,
-          "height": 632
+          "height": 690
         }
       },
       "official": {
@@ -7271,8 +7271,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 1.2633269144963954
+      "heightRatio": 1.0391566265060241,
+      "inkRatio": 1.3752025456167956
     },
     {
       "id": "parity_swimlanes_124",
@@ -7294,13 +7294,13 @@
             255
           ]
         ],
-        "inkPixels": 266948,
-        "inkRatio": 0.24717407407407407,
+        "inkPixels": 262323,
+        "inkRatio": 0.24289166666666667,
         "contentBounds": {
-          "x": 16,
-          "y": 21,
-          "width": 1168,
-          "height": 858
+          "x": 27,
+          "y": 16,
+          "width": 1146,
+          "height": 868
         }
       },
       "official": {
@@ -7329,9 +7329,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0735294117647058,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.1000589284904827
+      "widthRatio": 1.0533088235294117,
+      "heightRatio": 1.0483091787439613,
+      "inkRatio": 1.0809998887364165
     },
     {
       "id": "parity_swimlanes_125",
@@ -7353,13 +7353,13 @@
             255
           ]
         ],
-        "inkPixels": 154500,
-        "inkRatio": 0.14305555555555555,
+        "inkPixels": 159817,
+        "inkRatio": 0.1479787037037037,
         "contentBounds": {
           "x": 19,
-          "y": 246,
+          "y": 238,
           "width": 1162,
-          "height": 408
+          "height": 424
         }
       },
       "official": {
@@ -7389,8 +7389,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9927007299270073,
-      "inkRatio": 1.0420319961151427
+      "heightRatio": 1.0316301703163018,
+      "inkRatio": 1.0778927347775649
     },
     {
       "id": "parity_swimlanes_126",
@@ -7412,12 +7412,12 @@
             255
           ]
         ],
-        "inkPixels": 113495,
-        "inkRatio": 0.10508796296296297,
+        "inkPixels": 111871,
+        "inkRatio": 0.10358425925925926,
         "contentBounds": {
-          "x": 353,
+          "x": 358,
           "y": 15,
-          "width": 494,
+          "width": 484,
           "height": 870
         }
       },
@@ -7447,9 +7447,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.092920353982301,
+      "widthRatio": 1.0707964601769913,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.478974185225244
+      "inkRatio": 1.4578115430224527
     },
     {
       "id": "parity_swimlanes_127",
@@ -7471,12 +7471,12 @@
             255
           ]
         ],
-        "inkPixels": 340599,
-        "inkRatio": 0.3153694444444444,
+        "inkPixels": 328950,
+        "inkRatio": 0.3045833333333333,
         "contentBounds": {
-          "x": 109,
+          "x": 121,
           "y": 21,
-          "width": 982,
+          "width": 958,
           "height": 858
         }
       },
@@ -7506,9 +7506,9 @@
           "height": 804
         }
       },
-      "widthRatio": 1.1058558558558558,
+      "widthRatio": 1.0788288288288288,
       "heightRatio": 1.0671641791044777,
-      "inkRatio": 1.1722157213656388
+      "inkRatio": 1.1321241740088106
     },
     {
       "id": "parity_swimlanes_128",
@@ -7530,13 +7530,13 @@
             255
           ]
         ],
-        "inkPixels": 291125,
-        "inkRatio": 0.2695601851851852,
+        "inkPixels": 314790,
+        "inkRatio": 0.29147222222222224,
         "contentBounds": {
-          "x": 15,
-          "y": 108,
-          "width": 1170,
-          "height": 684
+          "x": 16,
+          "y": 80,
+          "width": 1168,
+          "height": 740
         }
       },
       "official": {
@@ -7565,9 +7565,9 @@
           "height": 712
         }
       },
-      "widthRatio": 1.0390763765541742,
-      "heightRatio": 0.9606741573033708,
-      "inkRatio": 0.988643965918314
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0393258426966292,
+      "inkRatio": 1.0690089618941214
     },
     {
       "id": "parity_swimlanes_129",
@@ -7589,13 +7589,13 @@
             255
           ]
         ],
-        "inkPixels": 201657,
-        "inkRatio": 0.18671944444444444,
+        "inkPixels": 211632,
+        "inkRatio": 0.19595555555555555,
         "contentBounds": {
           "x": 14,
-          "y": 243,
+          "y": 233,
           "width": 1172,
-          "height": 414
+          "height": 434
         }
       },
       "official": {
@@ -7625,8 +7625,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9857142857142858,
-      "inkRatio": 1.007680391764941
+      "heightRatio": 1.0333333333333334,
+      "inkRatio": 1.0575254847091744
     },
     {
       "id": "parity_swimlanes_130",
@@ -7648,12 +7648,12 @@
             255
           ]
         ],
-        "inkPixels": 119971,
-        "inkRatio": 0.11108425925925926,
+        "inkPixels": 117244,
+        "inkRatio": 0.10855925925925926,
         "contentBounds": {
-          "x": 294,
+          "x": 307,
           "y": 15,
-          "width": 612,
+          "width": 586,
           "height": 870
         }
       },
@@ -7683,9 +7683,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.120879120879121,
+      "widthRatio": 1.0732600732600732,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.140126964818581
+      "inkRatio": 1.114211316594758
     },
     {
       "id": "parity_swimlanes_131",
@@ -7707,12 +7707,12 @@
             255
           ]
         ],
-        "inkPixels": 263414,
-        "inkRatio": 0.24390185185185184,
+        "inkPixels": 244822,
+        "inkRatio": 0.22668703703703705,
         "contentBounds": {
-          "x": 66,
+          "x": 106,
           "y": 15,
-          "width": 1068,
+          "width": 988,
           "height": 870
         }
       },
@@ -7742,9 +7742,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.107883817427386,
+      "widthRatio": 1.0248962655601659,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.449408217278625
+      "inkRatio": 1.3471076653882768
     },
     {
       "id": "parity_swimlanes_132",
@@ -7766,13 +7766,13 @@
             255
           ]
         ],
-        "inkPixels": 241269,
-        "inkRatio": 0.22339722222222222,
+        "inkPixels": 245343,
+        "inkRatio": 0.22716944444444445,
         "contentBounds": {
           "x": 16,
-          "y": 61,
+          "y": 49,
           "width": 1168,
-          "height": 778
+          "height": 802
         }
       },
       "official": {
@@ -7802,8 +7802,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.0025773195876289,
-      "inkRatio": 1.032250749793566
+      "heightRatio": 1.0335051546391754,
+      "inkRatio": 1.049681043592848
     },
     {
       "id": "parity_swimlanes_133",
@@ -7825,13 +7825,13 @@
             255
           ]
         ],
-        "inkPixels": 306030,
-        "inkRatio": 0.2833611111111111,
+        "inkPixels": 326013,
+        "inkRatio": 0.3018638888888889,
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 211,
           "width": 1168,
-          "height": 444
+          "height": 478
         }
       },
       "official": {
@@ -7861,8 +7861,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.961038961038961,
-      "inkRatio": 1.0044143951950375
+      "heightRatio": 1.0346320346320346,
+      "inkRatio": 1.0700001641039105
     },
     {
       "id": "parity_swimlanes_134",
@@ -7884,13 +7884,13 @@
             255
           ]
         ],
-        "inkPixels": 144004,
-        "inkRatio": 0.13333703703703703,
+        "inkPixels": 149103,
+        "inkRatio": 0.13805833333333334,
         "contentBounds": {
           "x": 16,
-          "y": 232,
+          "y": 223,
           "width": 1168,
-          "height": 436
+          "height": 454
         }
       },
       "official": {
@@ -7920,8 +7920,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9954337899543378,
-      "inkRatio": 1.0344148894140635
+      "heightRatio": 1.0365296803652968,
+      "inkRatio": 1.0710422158850108
     },
     {
       "id": "parity_swimlanes_135",
@@ -7943,12 +7943,12 @@
             255
           ]
         ],
-        "inkPixels": 108961,
-        "inkRatio": 0.10088981481481482,
+        "inkPixels": 105095,
+        "inkRatio": 0.09731018518518518,
         "contentBounds": {
-          "x": 326,
+          "x": 338,
           "y": 18,
-          "width": 548,
+          "width": 524,
           "height": 868
         }
       },
@@ -7978,9 +7978,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.062015503875969,
+      "widthRatio": 1.0155038759689923,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.030919739244794
+      "inkRatio": 0.9943421040182414
     },
     {
       "id": "parity_swimlanes_136",
@@ -8002,13 +8002,13 @@
             255
           ]
         ],
-        "inkPixels": 225359,
-        "inkRatio": 0.20866574074074073,
+        "inkPixels": 246041,
+        "inkRatio": 0.22781574074074074,
         "contentBounds": {
           "x": 13,
-          "y": 116,
+          "y": 86,
           "width": 1174,
-          "height": 668
+          "height": 728
         }
       },
       "official": {
@@ -8038,8 +8038,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9597701149425287,
-      "inkRatio": 1.2391690448304493
+      "heightRatio": 1.0459770114942528,
+      "inkRatio": 1.3528920121190127
     },
     {
       "id": "parity_swimlanes_137",
@@ -8061,12 +8061,12 @@
             255
           ]
         ],
-        "inkPixels": 266177,
-        "inkRatio": 0.2464601851851852,
+        "inkPixels": 257350,
+        "inkRatio": 0.23828703703703705,
         "contentBounds": {
-          "x": 25,
+          "x": 42,
           "y": 16,
-          "width": 1150,
+          "width": 1116,
           "height": 868
         }
       },
@@ -8096,9 +8096,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0849056603773586,
+      "widthRatio": 1.0528301886792453,
       "heightRatio": 1.0483091787439613,
-      "inkRatio": 1.1284519963710054
+      "inkRatio": 1.09103010878505
     },
     {
       "id": "parity_swimlanes_138",
@@ -8120,13 +8120,13 @@
             255
           ]
         ],
-        "inkPixels": 159483,
-        "inkRatio": 0.14766944444444444,
+        "inkPixels": 164793,
+        "inkRatio": 0.15258611111111112,
         "contentBounds": {
           "x": 19,
-          "y": 229,
+          "y": 222,
           "width": 1162,
-          "height": 442
+          "height": 456
         }
       },
       "official": {
@@ -8156,8 +8156,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9932584269662922,
-      "inkRatio": 1.0435047175366738
+      "heightRatio": 1.0247191011235954,
+      "inkRatio": 1.0782482955363337
     },
     {
       "id": "parity_swimlanes_139",
@@ -8179,12 +8179,12 @@
             255
           ]
         ],
-        "inkPixels": 108376,
-        "inkRatio": 0.10034814814814814,
+        "inkPixels": 105982,
+        "inkRatio": 0.09813148148148149,
         "contentBounds": {
-          "x": 363,
+          "x": 368,
           "y": 15,
-          "width": 474,
+          "width": 464,
           "height": 870
         }
       },
@@ -8214,9 +8214,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0871559633027523,
+      "widthRatio": 1.0642201834862386,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4725
+      "inkRatio": 1.4399728260869564
     },
     {
       "id": "parity_swimlanes_140",
@@ -8238,12 +8238,12 @@
             255
           ]
         ],
-        "inkPixels": 344940,
-        "inkRatio": 0.3193888888888889,
+        "inkPixels": 332934,
+        "inkRatio": 0.3082722222222222,
         "contentBounds": {
-          "x": 119,
+          "x": 130,
           "y": 21,
-          "width": 962,
+          "width": 940,
           "height": 858
         }
       },
@@ -8273,9 +8273,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.103211009174312,
+      "widthRatio": 1.0779816513761469,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.1762258746504808
+      "inkRatio": 1.1352860942508356
     },
     {
       "id": "parity_swimlanes_141",
@@ -8297,13 +8297,13 @@
             255
           ]
         ],
-        "inkPixels": 327016,
-        "inkRatio": 0.3027925925925926,
+        "inkPixels": 351642,
+        "inkRatio": 0.32559444444444446,
         "contentBounds": {
           "x": 16,
-          "y": 81,
+          "y": 53,
           "width": 1168,
-          "height": 738
+          "height": 794
         }
       },
       "official": {
@@ -8333,8 +8333,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.9736147757255936,
-      "inkRatio": 1.0091871657423952
+      "heightRatio": 1.0474934036939314,
+      "inkRatio": 1.0851841907918491
     },
     {
       "id": "parity_swimlanes_142",
@@ -8356,13 +8356,13 @@
             255
           ]
         ],
-        "inkPixels": 209575,
-        "inkRatio": 0.19405092592592593,
+        "inkPixels": 216950,
+        "inkRatio": 0.20087962962962963,
         "contentBounds": {
           "x": 14,
-          "y": 233,
+          "y": 224,
           "width": 1172,
-          "height": 434
+          "height": 452
         }
       },
       "official": {
@@ -8392,8 +8392,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9908675799086758,
-      "inkRatio": 1.019219639826284
+      "heightRatio": 1.0319634703196348,
+      "inkRatio": 1.0550862500790281
     },
     {
       "id": "parity_swimlanes_143",
@@ -8415,12 +8415,12 @@
             255
           ]
         ],
-        "inkPixels": 112990,
-        "inkRatio": 0.10462037037037036,
+        "inkPixels": 108317,
+        "inkRatio": 0.10029351851851852,
         "contentBounds": {
-          "x": 314,
+          "x": 325,
           "y": 15,
-          "width": 572,
+          "width": 550,
           "height": 870
         }
       },
@@ -8450,9 +8450,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1085271317829457,
+      "widthRatio": 1.065891472868217,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1362744999446897
+      "inkRatio": 1.089280865656332
     },
     {
       "id": "parity_swimlanes_144",
@@ -8474,12 +8474,12 @@
             255
           ]
         ],
-        "inkPixels": 263479,
-        "inkRatio": 0.24396203703703703,
+        "inkPixels": 244887,
+        "inkRatio": 0.2267472222222222,
         "contentBounds": {
-          "x": 66,
+          "x": 106,
           "y": 15,
-          "width": 1068,
+          "width": 988,
           "height": 870
         }
       },
@@ -8509,9 +8509,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.107883817427386,
+      "widthRatio": 1.0248962655601659,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4491200087999119
+      "inkRatio": 1.3468650313496864
     },
     {
       "id": "parity_swimlanes_145",
@@ -8533,13 +8533,13 @@
             255
           ]
         ],
-        "inkPixels": 241396,
-        "inkRatio": 0.2235148148148148,
+        "inkPixels": 245458,
+        "inkRatio": 0.22727592592592594,
         "contentBounds": {
           "x": 16,
-          "y": 61,
+          "y": 49,
           "width": 1168,
-          "height": 778
+          "height": 802
         }
       },
       "official": {
@@ -8569,8 +8569,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.0025773195876289,
-      "inkRatio": 1.0321890981237278
+      "heightRatio": 1.0335051546391754,
+      "inkRatio": 1.0495578702515949
     },
     {
       "id": "parity_swimlanes_146",
@@ -8592,13 +8592,13 @@
             255
           ]
         ],
-        "inkPixels": 306098,
-        "inkRatio": 0.28342407407407405,
+        "inkPixels": 326122,
+        "inkRatio": 0.3019648148148148,
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 211,
           "width": 1168,
-          "height": 444
+          "height": 478
         }
       },
       "official": {
@@ -8628,8 +8628,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.961038961038961,
-      "inkRatio": 1.0043573842569804
+      "heightRatio": 1.0346320346320346,
+      "inkRatio": 1.0700593890474783
     },
     {
       "id": "parity_swimlanes_147",
@@ -8651,13 +8651,13 @@
             255
           ]
         ],
-        "inkPixels": 144110,
-        "inkRatio": 0.13343518518518518,
+        "inkPixels": 149209,
+        "inkRatio": 0.1381564814814815,
         "contentBounds": {
           "x": 16,
-          "y": 232,
+          "y": 223,
           "width": 1168,
-          "height": 436
+          "height": 454
         }
       },
       "official": {
@@ -8687,8 +8687,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9954337899543378,
-      "inkRatio": 1.0344184043354987
+      "heightRatio": 1.0365296803652968,
+      "inkRatio": 1.0710189139719342
     },
     {
       "id": "parity_swimlanes_148",
@@ -8710,12 +8710,12 @@
             255
           ]
         ],
-        "inkPixels": 109033,
-        "inkRatio": 0.10095648148148148,
+        "inkPixels": 105176,
+        "inkRatio": 0.09738518518518519,
         "contentBounds": {
-          "x": 326,
+          "x": 338,
           "y": 18,
-          "width": 548,
+          "width": 524,
           "height": 868
         }
       },
@@ -8745,9 +8745,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.062015503875969,
+      "widthRatio": 1.0155038759689923,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0308304655296299
+      "inkRatio": 0.9943652384373937
     },
     {
       "id": "parity_swimlanes_149",
@@ -8769,13 +8769,13 @@
             255
           ]
         ],
-        "inkPixels": 225396,
-        "inkRatio": 0.2087,
+        "inkPixels": 246095,
+        "inkRatio": 0.22786574074074073,
         "contentBounds": {
           "x": 13,
-          "y": 116,
+          "y": 86,
           "width": 1174,
-          "height": 668
+          "height": 728
         }
       },
       "official": {
@@ -8805,8 +8805,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9597701149425287,
-      "inkRatio": 1.238990979501866
+      "heightRatio": 1.0459770114942528,
+      "inkRatio": 1.3527723877110143
     },
     {
       "id": "parity_swimlanes_150",
@@ -8828,12 +8828,12 @@
             255
           ]
         ],
-        "inkPixels": 266329,
-        "inkRatio": 0.24660092592592592,
+        "inkPixels": 257457,
+        "inkRatio": 0.2383861111111111,
         "contentBounds": {
-          "x": 25,
+          "x": 42,
           "y": 16,
-          "width": 1150,
+          "width": 1116,
           "height": 868
         }
       },
@@ -8863,9 +8863,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0849056603773586,
+      "widthRatio": 1.0528301886792453,
       "heightRatio": 1.0483091787439613,
-      "inkRatio": 1.1287279354114133
+      "inkRatio": 1.0911275455065585
     },
     {
       "id": "parity_swimlanes_151",
@@ -8887,13 +8887,13 @@
             255
           ]
         ],
-        "inkPixels": 159587,
-        "inkRatio": 0.14776574074074075,
+        "inkPixels": 164897,
+        "inkRatio": 0.1526824074074074,
         "contentBounds": {
           "x": 19,
-          "y": 229,
+          "y": 222,
           "width": 1162,
-          "height": 442
+          "height": 456
         }
       },
       "official": {
@@ -8923,8 +8923,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9932584269662922,
-      "inkRatio": 1.043209109866189
+      "heightRatio": 1.0247191011235954,
+      "inkRatio": 1.0779202102276813
     },
     {
       "id": "parity_swimlanes_152",
@@ -8946,12 +8946,12 @@
             255
           ]
         ],
-        "inkPixels": 108448,
-        "inkRatio": 0.10041481481481482,
+        "inkPixels": 106020,
+        "inkRatio": 0.09816666666666667,
         "contentBounds": {
-          "x": 363,
+          "x": 368,
           "y": 15,
-          "width": 474,
+          "width": 464,
           "height": 870
         }
       },
@@ -8981,9 +8981,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0871559633027523,
+      "widthRatio": 1.0642201834862386,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4718184655890778
+      "inkRatio": 1.4388664956638575
     },
     {
       "id": "parity_swimlanes_153",
@@ -9005,12 +9005,12 @@
             255
           ]
         ],
-        "inkPixels": 345192,
-        "inkRatio": 0.3196222222222222,
+        "inkPixels": 333153,
+        "inkRatio": 0.308475,
         "contentBounds": {
-          "x": 119,
+          "x": 130,
           "y": 21,
-          "width": 962,
+          "width": 940,
           "height": 858
         }
       },
@@ -9040,9 +9040,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.103211009174312,
+      "widthRatio": 1.0779816513761469,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.1762268548491517
+      "inkRatio": 1.1352044814872868
     },
     {
       "id": "parity_swimlanes_154",
@@ -9064,13 +9064,13 @@
             255
           ]
         ],
-        "inkPixels": 327150,
-        "inkRatio": 0.30291666666666667,
+        "inkPixels": 351794,
+        "inkRatio": 0.3257351851851852,
         "contentBounds": {
           "x": 16,
-          "y": 81,
+          "y": 53,
           "width": 1168,
-          "height": 738
+          "height": 794
         }
       },
       "official": {
@@ -9100,8 +9100,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.9736147757255936,
-      "inkRatio": 1.0091522380877467
+      "heightRatio": 1.0474934036939314,
+      "inkRatio": 1.0851710299429644
     },
     {
       "id": "parity_swimlanes_155",
@@ -9123,13 +9123,13 @@
             255
           ]
         ],
-        "inkPixels": 209664,
-        "inkRatio": 0.19413333333333332,
+        "inkPixels": 217039,
+        "inkRatio": 0.20096203703703705,
         "contentBounds": {
           "x": 14,
-          "y": 233,
+          "y": 224,
           "width": 1172,
-          "height": 434
+          "height": 452
         }
       },
       "official": {
@@ -9159,8 +9159,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9908675799086758,
-      "inkRatio": 1.0191915067374437
+      "heightRatio": 1.0319634703196348,
+      "inkRatio": 1.0550419024285909
     },
     {
       "id": "parity_swimlanes_156",
@@ -9182,12 +9182,12 @@
             255
           ]
         ],
-        "inkPixels": 113107,
-        "inkRatio": 0.1047287037037037,
+        "inkPixels": 108412,
+        "inkRatio": 0.10038148148148149,
         "contentBounds": {
-          "x": 314,
+          "x": 325,
           "y": 15,
-          "width": 572,
+          "width": 550,
           "height": 870
         }
       },
@@ -9217,9 +9217,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1085271317829457,
+      "widthRatio": 1.065891472868217,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1362284772868823
+      "inkRatio": 1.089064352158801
     },
     {
       "id": "parity_swimlanes_157",
@@ -9241,12 +9241,12 @@
             255
           ]
         ],
-        "inkPixels": 263544,
-        "inkRatio": 0.24402222222222222,
+        "inkPixels": 244910,
+        "inkRatio": 0.2267685185185185,
         "contentBounds": {
-          "x": 66,
+          "x": 106,
           "y": 15,
-          "width": 1068,
+          "width": 988,
           "height": 870
         }
       },
@@ -9276,9 +9276,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.107883817427386,
+      "widthRatio": 1.0248962655601659,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4490790124814428
+      "inkRatio": 1.3466212129543078
     },
     {
       "id": "parity_swimlanes_158",
@@ -9300,13 +9300,13 @@
             255
           ]
         ],
-        "inkPixels": 241424,
-        "inkRatio": 0.22354074074074073,
+        "inkPixels": 245534,
+        "inkRatio": 0.2273462962962963,
         "contentBounds": {
           "x": 16,
-          "y": 61,
+          "y": 49,
           "width": 1168,
-          "height": 778
+          "height": 802
         }
       },
       "official": {
@@ -9336,8 +9336,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.0025773195876289,
-      "inkRatio": 1.0319558192418827
+      "heightRatio": 1.0335051546391754,
+      "inkRatio": 1.0495238258074444
     },
     {
       "id": "parity_swimlanes_159",
@@ -9359,13 +9359,13 @@
             255
           ]
         ],
-        "inkPixels": 306142,
-        "inkRatio": 0.28346481481481484,
+        "inkPixels": 326221,
+        "inkRatio": 0.3020564814814815,
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 211,
           "width": 1168,
-          "height": 444
+          "height": 478
         }
       },
       "official": {
@@ -9395,8 +9395,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.961038961038961,
-      "inkRatio": 1.0045149393305028
+      "heightRatio": 1.0346320346320346,
+      "inkRatio": 1.0703982727732098
     },
     {
       "id": "parity_swimlanes_160",
@@ -9418,13 +9418,13 @@
             255
           ]
         ],
-        "inkPixels": 144159,
-        "inkRatio": 0.13348055555555555,
+        "inkPixels": 149258,
+        "inkRatio": 0.13820185185185185,
         "contentBounds": {
           "x": 16,
-          "y": 232,
+          "y": 223,
           "width": 1168,
-          "height": 436
+          "height": 454
         }
       },
       "official": {
@@ -9454,8 +9454,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9954337899543378,
-      "inkRatio": 1.0343395062171297
+      "heightRatio": 1.0365296803652968,
+      "inkRatio": 1.0709247845708998
     },
     {
       "id": "parity_swimlanes_161",
@@ -9477,12 +9477,12 @@
             255
           ]
         ],
-        "inkPixels": 109060,
-        "inkRatio": 0.10098148148148148,
+        "inkPixels": 105200,
+        "inkRatio": 0.0974074074074074,
         "contentBounds": {
-          "x": 326,
+          "x": 338,
           "y": 18,
-          "width": 548,
+          "width": 524,
           "height": 868
         }
       },
@@ -9512,9 +9512,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.062015503875969,
+      "widthRatio": 1.0155038759689923,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0309492749513167
+      "inkRatio": 0.9944605146238632
     },
     {
       "id": "parity_swimlanes_162",
@@ -9536,13 +9536,13 @@
             255
           ]
         ],
-        "inkPixels": 225429,
-        "inkRatio": 0.20873055555555556,
+        "inkPixels": 246107,
+        "inkRatio": 0.22787685185185186,
         "contentBounds": {
           "x": 13,
-          "y": 116,
+          "y": 86,
           "width": 1174,
-          "height": 668
+          "height": 728
         }
       },
       "official": {
@@ -9572,8 +9572,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9597701149425287,
-      "inkRatio": 1.238899971971708
+      "heightRatio": 1.0459770114942528,
+      "inkRatio": 1.3525409570287812
     },
     {
       "id": "parity_swimlanes_163",
@@ -9595,12 +9595,12 @@
             255
           ]
         ],
-        "inkPixels": 266372,
-        "inkRatio": 0.24664074074074074,
+        "inkPixels": 257533,
+        "inkRatio": 0.2384564814814815,
         "contentBounds": {
-          "x": 25,
+          "x": 42,
           "y": 16,
-          "width": 1150,
+          "width": 1116,
           "height": 868
         }
       },
@@ -9630,9 +9630,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0849056603773586,
+      "widthRatio": 1.0528301886792453,
       "heightRatio": 1.0483091787439613,
-      "inkRatio": 1.1283889114816321
+      "inkRatio": 1.0909456757489495
     },
     {
       "id": "parity_swimlanes_164",
@@ -9654,13 +9654,13 @@
             255
           ]
         ],
-        "inkPixels": 159671,
-        "inkRatio": 0.1478435185185185,
+        "inkPixels": 164981,
+        "inkRatio": 0.1527601851851852,
         "contentBounds": {
           "x": 19,
-          "y": 229,
+          "y": 222,
           "width": 1162,
-          "height": 442
+          "height": 456
         }
       },
       "official": {
@@ -9690,8 +9690,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9932584269662922,
-      "inkRatio": 1.0434376306984525
+      "heightRatio": 1.0247191011235954,
+      "inkRatio": 1.078138069845253
     },
     {
       "id": "parity_swimlanes_165",
@@ -9713,12 +9713,12 @@
             255
           ]
         ],
-        "inkPixels": 108483,
-        "inkRatio": 0.10044722222222222,
+        "inkPixels": 106077,
+        "inkRatio": 0.09821944444444444,
         "contentBounds": {
-          "x": 363,
+          "x": 368,
           "y": 15,
-          "width": 474,
+          "width": 464,
           "height": 870
         }
       },
@@ -9748,9 +9748,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0871559633027523,
+      "widthRatio": 1.0642201834862386,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.471594454542988
+      "inkRatio": 1.4389565642041293
     },
     {
       "id": "parity_swimlanes_166",
@@ -9772,12 +9772,12 @@
             255
           ]
         ],
-        "inkPixels": 345335,
-        "inkRatio": 0.31975462962962964,
+        "inkPixels": 333270,
+        "inkRatio": 0.3085833333333333,
         "contentBounds": {
-          "x": 119,
+          "x": 130,
           "y": 21,
-          "width": 962,
+          "width": 940,
           "height": 858
         }
       },
@@ -9798,8 +9798,8 @@
             255
           ]
         ],
-        "inkPixels": 293591,
-        "inkRatio": 0.2718435185185185,
+        "inkPixels": 293592,
+        "inkRatio": 0.27184444444444444,
         "contentBounds": {
           "x": 164,
           "y": 47,
@@ -9807,9 +9807,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.103211009174312,
+      "widthRatio": 1.0779816513761469,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.1762451846275943
+      "inkRatio": 1.1351467342434398
     },
     {
       "id": "parity_swimlanes_167",
@@ -9831,13 +9831,13 @@
             255
           ]
         ],
-        "inkPixels": 327188,
-        "inkRatio": 0.30295185185185186,
+        "inkPixels": 351847,
+        "inkRatio": 0.32578425925925925,
         "contentBounds": {
           "x": 16,
-          "y": 81,
+          "y": 53,
           "width": 1168,
-          "height": 738
+          "height": 794
         }
       },
       "official": {
@@ -9867,8 +9867,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.9736147757255936,
-      "inkRatio": 1.0091605031182724
+      "heightRatio": 1.0474934036939314,
+      "inkRatio": 1.0852173537558063
     },
     {
       "id": "parity_swimlanes_168",
@@ -9890,13 +9890,13 @@
             255
           ]
         ],
-        "inkPixels": 209704,
-        "inkRatio": 0.19417037037037038,
+        "inkPixels": 217079,
+        "inkRatio": 0.20099907407407408,
         "contentBounds": {
           "x": 14,
-          "y": 233,
+          "y": 224,
           "width": 1172,
-          "height": 434
+          "height": 452
         }
       },
       "official": {
@@ -9926,8 +9926,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9908675799086758,
-      "inkRatio": 1.0192472198460223
+      "heightRatio": 1.0319634703196348,
+      "inkRatio": 1.0550927366047127
     },
     {
       "id": "parity_swimlanes_169",
@@ -9949,12 +9949,12 @@
             255
           ]
         ],
-        "inkPixels": 113122,
-        "inkRatio": 0.1047425925925926,
+        "inkPixels": 108469,
+        "inkRatio": 0.10043425925925926,
         "contentBounds": {
-          "x": 314,
+          "x": 325,
           "y": 15,
-          "width": 572,
+          "width": 550,
           "height": 870
         }
       },
@@ -9984,9 +9984,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1085271317829457,
+      "widthRatio": 1.065891472868217,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1360596139554502
+      "inkRatio": 1.0893305481350553
     },
     {
       "id": "parity_swimlanes_170",
@@ -10008,12 +10008,12 @@
             255
           ]
         ],
-        "inkPixels": 281691,
-        "inkRatio": 0.260825,
+        "inkPixels": 261501,
+        "inkRatio": 0.24213055555555554,
         "contentBounds": {
-          "x": 34,
+          "x": 79,
           "y": 15,
-          "width": 1132,
+          "width": 1042,
           "height": 870
         }
       },
@@ -10043,9 +10043,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1742738589211619,
+      "widthRatio": 1.0809128630705394,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.5494724914465505
+      "inkRatio": 1.4384151640832132
     },
     {
       "id": "parity_swimlanes_171",
@@ -10067,13 +10067,13 @@
             255
           ]
         ],
-        "inkPixels": 234245,
-        "inkRatio": 0.2168935185185185,
+        "inkPixels": 238078,
+        "inkRatio": 0.22044259259259258,
         "contentBounds": {
           "x": 16,
-          "y": 73,
+          "y": 61,
           "width": 1168,
-          "height": 754
+          "height": 778
         }
       },
       "official": {
@@ -10103,8 +10103,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9716494845360825,
-      "inkRatio": 1.001929048649666
+      "heightRatio": 1.0025773195876289,
+      "inkRatio": 1.0183238235369598
     },
     {
       "id": "parity_swimlanes_172",
@@ -10126,13 +10126,13 @@
             255
           ]
         ],
-        "inkPixels": 275803,
-        "inkRatio": 0.25537314814814815,
+        "inkPixels": 293405,
+        "inkRatio": 0.27167129629629627,
         "contentBounds": {
-          "x": 15,
-          "y": 246,
-          "width": 1170,
-          "height": 408
+          "x": 16,
+          "y": 229,
+          "width": 1168,
+          "height": 442
         }
       },
       "official": {
@@ -10161,9 +10161,9 @@
           "height": 462
         }
       },
-      "widthRatio": 1.0390763765541742,
-      "heightRatio": 0.8831168831168831,
-      "inkRatio": 0.9053377582137663
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 0.9567099567099567,
+      "inkRatio": 0.963117242918714
     },
     {
       "id": "parity_swimlanes_173",
@@ -10185,13 +10185,13 @@
             255
           ]
         ],
-        "inkPixels": 136625,
-        "inkRatio": 0.12650462962962963,
+        "inkPixels": 141355,
+        "inkRatio": 0.13088425925925926,
         "contentBounds": {
           "x": 16,
-          "y": 244,
+          "y": 235,
           "width": 1168,
-          "height": 412
+          "height": 430
         }
       },
       "official": {
@@ -10221,8 +10221,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9406392694063926,
-      "inkRatio": 0.9811419666645123
+      "heightRatio": 0.9817351598173516,
+      "inkRatio": 1.015109406754709
     },
     {
       "id": "parity_swimlanes_174",
@@ -10244,12 +10244,12 @@
             255
           ]
         ],
-        "inkPixels": 116935,
-        "inkRatio": 0.10827314814814815,
+        "inkPixels": 112264,
+        "inkRatio": 0.10394814814814815,
         "contentBounds": {
-          "x": 307,
+          "x": 322,
           "y": 18,
-          "width": 586,
+          "width": 556,
           "height": 868
         }
       },
@@ -10279,9 +10279,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1356589147286822,
+      "widthRatio": 1.0775193798449612,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.1060088719059464
+      "inkRatio": 1.0618290502898977
     },
     {
       "id": "parity_swimlanes_175",
@@ -10303,13 +10303,13 @@
             255
           ]
         ],
-        "inkPixels": 215298,
-        "inkRatio": 0.19935,
+        "inkPixels": 234400,
+        "inkRatio": 0.21703703703703703,
         "contentBounds": {
           "x": 13,
-          "y": 134,
+          "y": 105,
           "width": 1174,
-          "height": 632
+          "height": 690
         }
       },
       "official": {
@@ -10339,8 +10339,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9080459770114943,
-      "inkRatio": 1.1837430379538043
+      "heightRatio": 0.9913793103448276,
+      "inkRatio": 1.2887689068006751
     },
     {
       "id": "parity_swimlanes_176",
@@ -10362,13 +10362,13 @@
             255
           ]
         ],
-        "inkPixels": 267223,
-        "inkRatio": 0.2474287037037037,
+        "inkPixels": 262571,
+        "inkRatio": 0.2431212962962963,
         "contentBounds": {
-          "x": 16,
-          "y": 21,
-          "width": 1168,
-          "height": 858
+          "x": 27,
+          "y": 16,
+          "width": 1146,
+          "height": 868
         }
       },
       "official": {
@@ -10397,9 +10397,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.1018867924528302,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.1326704051745697
+      "widthRatio": 1.0811320754716982,
+      "heightRatio": 1.0483091787439613,
+      "inkRatio": 1.1129521072553334
     },
     {
       "id": "parity_swimlanes_177",
@@ -10421,13 +10421,13 @@
             255
           ]
         ],
-        "inkPixels": 154843,
-        "inkRatio": 0.14337314814814814,
+        "inkPixels": 160160,
+        "inkRatio": 0.1482962962962963,
         "contentBounds": {
           "x": 19,
-          "y": 246,
+          "y": 238,
           "width": 1162,
-          "height": 408
+          "height": 424
         }
       },
       "official": {
@@ -10457,8 +10457,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9168539325842696,
-      "inkRatio": 1.0130057898007916
+      "heightRatio": 0.952808988764045,
+      "inkRatio": 1.0477903895849006
     },
     {
       "id": "parity_swimlanes_178",
@@ -10480,12 +10480,12 @@
             255
           ]
         ],
-        "inkPixels": 113679,
-        "inkRatio": 0.10525833333333333,
+        "inkPixels": 112028,
+        "inkRatio": 0.10372962962962963,
         "contentBounds": {
-          "x": 353,
+          "x": 358,
           "y": 15,
-          "width": 494,
+          "width": 484,
           "height": 870
         }
       },
@@ -10515,9 +10515,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1330275229357798,
+      "widthRatio": 1.110091743119266,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.5435449706713011
+      "inkRatio": 1.5211275255268302
     },
     {
       "id": "parity_swimlanes_179",
@@ -10539,12 +10539,12 @@
             255
           ]
         ],
-        "inkPixels": 341149,
-        "inkRatio": 0.3158787037037037,
+        "inkPixels": 329569,
+        "inkRatio": 0.3051564814814815,
         "contentBounds": {
-          "x": 109,
+          "x": 121,
           "y": 21,
-          "width": 982,
+          "width": 958,
           "height": 858
         }
       },
@@ -10574,9 +10574,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.1261467889908257,
+      "widthRatio": 1.098623853211009,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.162723879961146
+      "inkRatio": 1.1232562498934922
     },
     {
       "id": "parity_swimlanes_180",
@@ -10598,13 +10598,13 @@
             255
           ]
         ],
-        "inkPixels": 291336,
-        "inkRatio": 0.2697555555555556,
+        "inkPixels": 315102,
+        "inkRatio": 0.29176111111111114,
         "contentBounds": {
-          "x": 15,
-          "y": 108,
-          "width": 1170,
-          "height": 684
+          "x": 16,
+          "y": 80,
+          "width": 1168,
+          "height": 740
         }
       },
       "official": {
@@ -10633,9 +10633,9 @@
           "height": 758
         }
       },
-      "widthRatio": 1.0409252669039146,
-      "heightRatio": 0.9023746701846965,
-      "inkRatio": 0.898769088385007
+      "widthRatio": 1.0391459074733096,
+      "heightRatio": 0.9762532981530343,
+      "inkRatio": 0.9720869967607589
     },
     {
       "id": "parity_swimlanes_181",
@@ -10657,13 +10657,13 @@
             255
           ]
         ],
-        "inkPixels": 201836,
-        "inkRatio": 0.18688518518518518,
+        "inkPixels": 211811,
+        "inkRatio": 0.1961212962962963,
         "contentBounds": {
           "x": 14,
-          "y": 243,
+          "y": 233,
           "width": 1172,
-          "height": 414
+          "height": 434
         }
       },
       "official": {
@@ -10693,8 +10693,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9452054794520548,
-      "inkRatio": 0.9814443817711473
+      "heightRatio": 0.9908675799086758,
+      "inkRatio": 1.0299486511193667
     },
     {
       "id": "parity_swimlanes_182",
@@ -10716,12 +10716,12 @@
             255
           ]
         ],
-        "inkPixels": 120153,
-        "inkRatio": 0.11125277777777778,
+        "inkPixels": 117438,
+        "inkRatio": 0.10873888888888888,
         "contentBounds": {
-          "x": 294,
+          "x": 307,
           "y": 15,
-          "width": 612,
+          "width": 586,
           "height": 870
         }
       },
@@ -10751,9 +10751,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.186046511627907,
+      "widthRatio": 1.1356589147286822,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.2075678391959799
+      "inkRatio": 1.180281407035176
     },
     {
       "id": "parity_swimlanes_183",
@@ -10775,12 +10775,12 @@
             255
           ]
         ],
-        "inkPixels": 281755,
-        "inkRatio": 0.26088425925925923,
+        "inkPixels": 261610,
+        "inkRatio": 0.2422314814814815,
         "contentBounds": {
-          "x": 34,
+          "x": 79,
           "y": 15,
-          "width": 1132,
+          "width": 1042,
           "height": 870
         }
       },
@@ -10810,9 +10810,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1185770750988142,
+      "widthRatio": 1.0296442687747036,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.474801880175455
+      "inkRatio": 1.3693560713126682
     },
     {
       "id": "parity_swimlanes_184",
@@ -10834,13 +10834,13 @@
             255
           ]
         ],
-        "inkPixels": 234393,
-        "inkRatio": 0.21703055555555556,
+        "inkPixels": 238212,
+        "inkRatio": 0.22056666666666666,
         "contentBounds": {
           "x": 16,
-          "y": 73,
+          "y": 61,
           "width": 1168,
-          "height": 754
+          "height": 778
         }
       },
       "official": {
@@ -10870,8 +10870,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.002659574468085,
-      "inkRatio": 1.0352178924913544
+      "heightRatio": 1.0345744680851063,
+      "inkRatio": 1.0520848515363108
     },
     {
       "id": "parity_swimlanes_185",
@@ -10893,13 +10893,13 @@
             255
           ]
         ],
-        "inkPixels": 275857,
-        "inkRatio": 0.25542314814814815,
+        "inkPixels": 293562,
+        "inkRatio": 0.27181666666666665,
         "contentBounds": {
-          "x": 15,
-          "y": 246,
-          "width": 1170,
-          "height": 408
+          "x": 16,
+          "y": 229,
+          "width": 1168,
+          "height": 442
         }
       },
       "official": {
@@ -10928,9 +10928,9 @@
           "height": 428
         }
       },
-      "widthRatio": 1.0372340425531914,
-      "heightRatio": 0.9532710280373832,
-      "inkRatio": 0.9988377061170695
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.0327102803738317,
+      "inkRatio": 1.0629449123391435
     },
     {
       "id": "parity_swimlanes_186",
@@ -10952,13 +10952,13 @@
             255
           ]
         ],
-        "inkPixels": 136720,
-        "inkRatio": 0.1265925925925926,
+        "inkPixels": 141450,
+        "inkRatio": 0.1309722222222222,
         "contentBounds": {
           "x": 16,
-          "y": 244,
+          "y": 235,
           "width": 1168,
-          "height": 412
+          "height": 430
         }
       },
       "official": {
@@ -10988,8 +10988,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9951690821256038,
-      "inkRatio": 1.035694806375371
+      "heightRatio": 1.038647342995169,
+      "inkRatio": 1.071525968123144
     },
     {
       "id": "parity_swimlanes_187",
@@ -11011,12 +11011,12 @@
             255
           ]
         ],
-        "inkPixels": 117010,
-        "inkRatio": 0.10834259259259259,
+        "inkPixels": 112360,
+        "inkRatio": 0.10403703703703704,
         "contentBounds": {
-          "x": 307,
+          "x": 322,
           "y": 18,
-          "width": 586,
+          "width": 556,
           "height": 868
         }
       },
@@ -11046,9 +11046,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0732600732600732,
+      "widthRatio": 1.0183150183150182,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0460677472129594
+      "inkRatio": 1.0044968128950356
     },
     {
       "id": "parity_swimlanes_188",
@@ -11070,13 +11070,13 @@
             255
           ]
         ],
-        "inkPixels": 215344,
-        "inkRatio": 0.1993925925925926,
+        "inkPixels": 234432,
+        "inkRatio": 0.21706666666666666,
         "contentBounds": {
           "x": 13,
-          "y": 134,
+          "y": 105,
           "width": 1174,
-          "height": 632
+          "height": 690
         }
       },
       "official": {
@@ -11106,8 +11106,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9518072289156626,
-      "inkRatio": 1.2627480414692498
+      "heightRatio": 1.0391566265060241,
+      "inkRatio": 1.37467748745133
     },
     {
       "id": "parity_swimlanes_189",
@@ -11129,13 +11129,13 @@
             255
           ]
         ],
-        "inkPixels": 267360,
-        "inkRatio": 0.24755555555555556,
+        "inkPixels": 262685,
+        "inkRatio": 0.24322685185185186,
         "contentBounds": {
-          "x": 16,
-          "y": 21,
-          "width": 1168,
-          "height": 858
+          "x": 27,
+          "y": 16,
+          "width": 1146,
+          "height": 868
         }
       },
       "official": {
@@ -11164,9 +11164,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0735294117647058,
-      "heightRatio": 1.036231884057971,
-      "inkRatio": 1.1002378581246246
+      "widthRatio": 1.0533088235294117,
+      "heightRatio": 1.0483091787439613,
+      "inkRatio": 1.0809993333388204
     },
     {
       "id": "parity_swimlanes_190",
@@ -11188,13 +11188,13 @@
             255
           ]
         ],
-        "inkPixels": 155118,
-        "inkRatio": 0.14362777777777777,
+        "inkPixels": 160435,
+        "inkRatio": 0.14855092592592592,
         "contentBounds": {
           "x": 19,
-          "y": 246,
+          "y": 238,
           "width": 1162,
-          "height": 408
+          "height": 424
         }
       },
       "official": {
@@ -11224,8 +11224,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9927007299270073,
-      "inkRatio": 1.0417455776282385
+      "heightRatio": 1.0316301703163018,
+      "inkRatio": 1.0774536272179016
     },
     {
       "id": "parity_swimlanes_191",
@@ -11247,12 +11247,12 @@
             255
           ]
         ],
-        "inkPixels": 113740,
-        "inkRatio": 0.10531481481481482,
+        "inkPixels": 112090,
+        "inkRatio": 0.10378703703703704,
         "contentBounds": {
-          "x": 353,
+          "x": 358,
           "y": 15,
-          "width": 494,
+          "width": 484,
           "height": 870
         }
       },
@@ -11282,9 +11282,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.092920353982301,
+      "widthRatio": 1.0707964601769913,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.476989403698317
+      "inkRatio": 1.4555630583835446
     },
     {
       "id": "parity_swimlanes_192",
@@ -11306,12 +11306,12 @@
             255
           ]
         ],
-        "inkPixels": 341323,
-        "inkRatio": 0.3160398148148148,
+        "inkPixels": 329744,
+        "inkRatio": 0.30531851851851854,
         "contentBounds": {
-          "x": 109,
+          "x": 121,
           "y": 21,
-          "width": 982,
+          "width": 958,
           "height": 858
         }
       },
@@ -11341,9 +11341,9 @@
           "height": 804
         }
       },
-      "widthRatio": 1.1058558558558558,
+      "widthRatio": 1.0788288288288288,
       "heightRatio": 1.0671641791044777,
-      "inkRatio": 1.1716106931019332
+      "inkRatio": 1.1318651142355012
     },
     {
       "id": "parity_swimlanes_193",
@@ -11365,13 +11365,13 @@
             255
           ]
         ],
-        "inkPixels": 291424,
-        "inkRatio": 0.26983703703703704,
+        "inkPixels": 315136,
+        "inkRatio": 0.2917925925925926,
         "contentBounds": {
-          "x": 15,
-          "y": 108,
-          "width": 1170,
-          "height": 684
+          "x": 16,
+          "y": 80,
+          "width": 1168,
+          "height": 740
         }
       },
       "official": {
@@ -11400,9 +11400,9 @@
           "height": 712
         }
       },
-      "widthRatio": 1.0390763765541742,
-      "heightRatio": 0.9606741573033708,
-      "inkRatio": 0.9885179896136143
+      "widthRatio": 1.0373001776198933,
+      "heightRatio": 1.0393258426966292,
+      "inkRatio": 1.0689497267722492
     },
     {
       "id": "parity_swimlanes_194",
@@ -11424,13 +11424,13 @@
             255
           ]
         ],
-        "inkPixels": 201904,
-        "inkRatio": 0.18694814814814814,
+        "inkPixels": 211879,
+        "inkRatio": 0.19618425925925925,
         "contentBounds": {
           "x": 14,
-          "y": 243,
+          "y": 233,
           "width": 1172,
-          "height": 414
+          "height": 434
         }
       },
       "official": {
@@ -11460,8 +11460,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9857142857142858,
-      "inkRatio": 1.0074396371492866
+      "heightRatio": 1.0333333333333334,
+      "inkRatio": 1.057211857514233
     },
     {
       "id": "parity_swimlanes_195",
@@ -11483,12 +11483,12 @@
             255
           ]
         ],
-        "inkPixels": 120253,
-        "inkRatio": 0.11134537037037037,
+        "inkPixels": 117531,
+        "inkRatio": 0.108825,
         "contentBounds": {
-          "x": 294,
+          "x": 307,
           "y": 15,
-          "width": 612,
+          "width": 586,
           "height": 870
         }
       },
@@ -11518,9 +11518,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.120879120879121,
+      "widthRatio": 1.0732600732600732,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.139514829906188
+      "inkRatio": 1.113721216715626
     },
     {
       "id": "parity_swimlanes_196",
@@ -11542,12 +11542,12 @@
             255
           ]
         ],
-        "inkPixels": 263664,
-        "inkRatio": 0.24413333333333334,
+        "inkPixels": 245081,
+        "inkRatio": 0.22692685185185185,
         "contentBounds": {
-          "x": 66,
+          "x": 106,
           "y": 15,
-          "width": 1068,
+          "width": 988,
           "height": 870
         }
       },
@@ -11577,9 +11577,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.158351409978308,
+      "widthRatio": 1.0715835140997831,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.5236818381452115
+      "inkRatio": 1.4162929659508563
     },
     {
       "id": "parity_swimlanes_197",
@@ -11601,13 +11601,13 @@
             255
           ]
         ],
-        "inkPixels": 241599,
-        "inkRatio": 0.22370277777777778,
+        "inkPixels": 245646,
+        "inkRatio": 0.22745,
         "contentBounds": {
           "x": 16,
-          "y": 61,
+          "y": 49,
           "width": 1168,
-          "height": 778
+          "height": 802
         }
       },
       "official": {
@@ -11637,8 +11637,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.974937343358396,
-      "inkRatio": 1.003509806690647
+      "heightRatio": 1.005012531328321,
+      "inkRatio": 1.0203194962492834
     },
     {
       "id": "parity_swimlanes_198",
@@ -11660,13 +11660,13 @@
             255
           ]
         ],
-        "inkPixels": 306339,
-        "inkRatio": 0.2836472222222222,
+        "inkPixels": 326363,
+        "inkRatio": 0.30218796296296296,
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 211,
           "width": 1168,
-          "height": 444
+          "height": 478
         }
       },
       "official": {
@@ -11696,8 +11696,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.8951612903225806,
-      "inkRatio": 0.9190124049379753
+      "heightRatio": 0.9637096774193549,
+      "inkRatio": 0.9790841045794771
     },
     {
       "id": "parity_swimlanes_199",
@@ -11719,13 +11719,13 @@
             255
           ]
         ],
-        "inkPixels": 144312,
-        "inkRatio": 0.13362222222222223,
+        "inkPixels": 149411,
+        "inkRatio": 0.13834351851851853,
         "contentBounds": {
           "x": 16,
-          "y": 232,
+          "y": 223,
           "width": 1168,
-          "height": 436
+          "height": 454
         }
       },
       "official": {
@@ -11755,8 +11755,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9437229437229437,
-      "inkRatio": 0.9872617565367302
+      "heightRatio": 0.9826839826839827,
+      "inkRatio": 1.022144841079809
     },
     {
       "id": "parity_swimlanes_200",
@@ -11778,12 +11778,12 @@
             255
           ]
         ],
-        "inkPixels": 109186,
-        "inkRatio": 0.10109814814814815,
+        "inkPixels": 105326,
+        "inkRatio": 0.09752407407407407,
         "contentBounds": {
-          "x": 326,
+          "x": 338,
           "y": 18,
-          "width": 548,
+          "width": 524,
           "height": 868
         }
       },
@@ -11813,9 +11813,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1183673469387756,
+      "widthRatio": 1.0693877551020408,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0941467667424918
+      "inkRatio": 1.0554659237807016
     },
     {
       "id": "parity_swimlanes_201",
@@ -11837,13 +11837,13 @@
             255
           ]
         ],
-        "inkPixels": 225503,
-        "inkRatio": 0.20879907407407408,
+        "inkPixels": 246176,
+        "inkRatio": 0.22794074074074075,
         "contentBounds": {
           "x": 13,
-          "y": 116,
+          "y": 86,
           "width": 1174,
-          "height": 668
+          "height": 728
         }
       },
       "official": {
@@ -11873,8 +11873,8 @@
         }
       },
       "widthRatio": 1.031634446397188,
-      "heightRatio": 0.9201101928374655,
-      "inkRatio": 1.2340911080950923
+      "heightRatio": 1.002754820936639,
+      "inkRatio": 1.3472264787005823
     },
     {
       "id": "parity_swimlanes_202",
@@ -11896,12 +11896,12 @@
             255
           ]
         ],
-        "inkPixels": 266502,
-        "inkRatio": 0.2467611111111111,
+        "inkPixels": 257640,
+        "inkRatio": 0.23855555555555555,
         "contentBounds": {
-          "x": 25,
+          "x": 42,
           "y": 16,
-          "width": 1150,
+          "width": 1116,
           "height": 868
         }
       },
@@ -11931,9 +11931,9 @@
           "height": 830
         }
       },
-      "widthRatio": 1.1121856866537718,
+      "widthRatio": 1.079303675048356,
       "heightRatio": 1.0457831325301206,
-      "inkRatio": 1.155223608865462
+      "inkRatio": 1.11680891921298
     },
     {
       "id": "parity_swimlanes_203",
@@ -11955,13 +11955,13 @@
             255
           ]
         ],
-        "inkPixels": 159985,
-        "inkRatio": 0.14813425925925927,
+        "inkPixels": 165295,
+        "inkRatio": 0.15305092592592592,
         "contentBounds": {
           "x": 19,
-          "y": 229,
+          "y": 222,
           "width": 1162,
-          "height": 442
+          "height": 456
         }
       },
       "official": {
@@ -11991,8 +11991,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9305263157894736,
-      "inkRatio": 1.0171986266531028
+      "heightRatio": 0.96,
+      "inkRatio": 1.0509600712105798
     },
     {
       "id": "parity_swimlanes_204",
@@ -12014,12 +12014,12 @@
             255
           ]
         ],
-        "inkPixels": 108589,
-        "inkRatio": 0.10054537037037037,
+        "inkPixels": 106185,
+        "inkRatio": 0.09831944444444445,
         "contentBounds": {
-          "x": 363,
+          "x": 368,
           "y": 15,
-          "width": 474,
+          "width": 464,
           "height": 870
         }
       },
@@ -12049,9 +12049,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1232227488151658,
+      "widthRatio": 1.099526066350711,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.528432283309405
+      "inkRatio": 1.4945950510936576
     },
     {
       "id": "parity_swimlanes_205",
@@ -12073,12 +12073,12 @@
             255
           ]
         ],
-        "inkPixels": 345651,
-        "inkRatio": 0.3200472222222222,
+        "inkPixels": 333580,
+        "inkRatio": 0.30887037037037035,
         "contentBounds": {
-          "x": 119,
+          "x": 130,
           "y": 21,
-          "width": 962,
+          "width": 940,
           "height": 858
         }
       },
@@ -12108,9 +12108,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.121212121212121,
+      "widthRatio": 1.0955710955710956,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.160264780619455
+      "inkRatio": 1.1197454239074611
     },
     {
       "id": "parity_swimlanes_206",
@@ -12132,13 +12132,13 @@
             255
           ]
         ],
-        "inkPixels": 327357,
-        "inkRatio": 0.3031083333333333,
+        "inkPixels": 352031,
+        "inkRatio": 0.3259546296296296,
         "contentBounds": {
           "x": 16,
-          "y": 81,
+          "y": 53,
           "width": 1168,
-          "height": 738
+          "height": 794
         }
       },
       "official": {
@@ -12168,8 +12168,8 @@
         }
       },
       "widthRatio": 1.0409982174688057,
-      "heightRatio": 0.9156327543424317,
-      "inkRatio": 0.9231075079309128
+      "heightRatio": 0.9851116625310173,
+      "inkRatio": 0.9926852308776877
     },
     {
       "id": "parity_swimlanes_207",
@@ -12191,13 +12191,13 @@
             255
           ]
         ],
-        "inkPixels": 209793,
-        "inkRatio": 0.19425277777777777,
+        "inkPixels": 217168,
+        "inkRatio": 0.20108148148148147,
         "contentBounds": {
           "x": 14,
-          "y": 233,
+          "y": 224,
           "width": 1172,
-          "height": 434
+          "height": 452
         }
       },
       "official": {
@@ -12227,8 +12227,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9475982532751092,
-      "inkRatio": 0.9861752235185726
+      "heightRatio": 0.9868995633187773,
+      "inkRatio": 1.0208429306081774
     },
     {
       "id": "parity_swimlanes_208",
@@ -12250,12 +12250,12 @@
             255
           ]
         ],
-        "inkPixels": 113265,
-        "inkRatio": 0.104875,
+        "inkPixels": 108580,
+        "inkRatio": 0.10053703703703704,
         "contentBounds": {
-          "x": 314,
+          "x": 325,
           "y": 15,
-          "width": 572,
+          "width": 550,
           "height": 870
         }
       },
@@ -12285,9 +12285,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1673469387755102,
+      "widthRatio": 1.1224489795918366,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.2076833676309082
+      "inkRatio": 1.1577297493255996
     },
     {
       "id": "parity_swimlanes_209",
@@ -12309,12 +12309,12 @@
             255
           ]
         ],
-        "inkPixels": 263506,
-        "inkRatio": 0.24398703703703703,
+        "inkPixels": 244899,
+        "inkRatio": 0.22675833333333334,
         "contentBounds": {
-          "x": 66,
+          "x": 106,
           "y": 15,
-          "width": 1068,
+          "width": 988,
           "height": 870
         }
       },
@@ -12344,9 +12344,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.107883817427386,
+      "widthRatio": 1.0248962655601659,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4488700720294714
+      "inkRatio": 1.3465607301918954
     },
     {
       "id": "parity_swimlanes_210",
@@ -12368,13 +12368,13 @@
             255
           ]
         ],
-        "inkPixels": 241410,
-        "inkRatio": 0.22352777777777777,
+        "inkPixels": 245459,
+        "inkRatio": 0.22727685185185184,
         "contentBounds": {
           "x": 16,
-          "y": 61,
+          "y": 49,
           "width": 1168,
-          "height": 778
+          "height": 802
         }
       },
       "official": {
@@ -12404,8 +12404,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.0025773195876289,
-      "inkRatio": 1.0321253890618052
+      "heightRatio": 1.0335051546391754,
+      "inkRatio": 1.0494365016930602
     },
     {
       "id": "parity_swimlanes_211",
@@ -12427,13 +12427,13 @@
             255
           ]
         ],
-        "inkPixels": 306103,
-        "inkRatio": 0.2834287037037037,
+        "inkPixels": 326126,
+        "inkRatio": 0.3019685185185185,
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 211,
           "width": 1168,
-          "height": 444
+          "height": 478
         }
       },
       "official": {
@@ -12463,8 +12463,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.961038961038961,
-      "inkRatio": 1.004541889412869
+      "heightRatio": 1.0346320346320346,
+      "inkRatio": 1.0702516088593097
     },
     {
       "id": "parity_swimlanes_212",
@@ -12486,13 +12486,13 @@
             255
           ]
         ],
-        "inkPixels": 144068,
-        "inkRatio": 0.1333962962962963,
+        "inkPixels": 149167,
+        "inkRatio": 0.1381175925925926,
         "contentBounds": {
           "x": 16,
-          "y": 232,
+          "y": 223,
           "width": 1168,
-          "height": 436
+          "height": 454
         }
       },
       "official": {
@@ -12522,8 +12522,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9954337899543378,
-      "inkRatio": 1.0338794520154722
+      "heightRatio": 1.0365296803652968,
+      "inkRatio": 1.0704715566176524
     },
     {
       "id": "parity_swimlanes_213",
@@ -12545,12 +12545,12 @@
             255
           ]
         ],
-        "inkPixels": 109020,
-        "inkRatio": 0.10094444444444445,
+        "inkPixels": 105165,
+        "inkRatio": 0.097375,
         "contentBounds": {
-          "x": 326,
+          "x": 338,
           "y": 18,
-          "width": 548,
+          "width": 524,
           "height": 868
         }
       },
@@ -12580,9 +12580,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.062015503875969,
+      "widthRatio": 1.0155038759689923,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.030756285041648
+      "inkRatio": 0.9943082435920466
     },
     {
       "id": "parity_swimlanes_214",
@@ -12604,13 +12604,13 @@
             255
           ]
         ],
-        "inkPixels": 225395,
-        "inkRatio": 0.20869907407407406,
+        "inkPixels": 246061,
+        "inkRatio": 0.22783425925925926,
         "contentBounds": {
           "x": 13,
-          "y": 116,
+          "y": 86,
           "width": 1174,
-          "height": 668
+          "height": 728
         }
       },
       "official": {
@@ -12640,8 +12640,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9597701149425287,
-      "inkRatio": 1.2390399700952663
+      "heightRatio": 1.0459770114942528,
+      "inkRatio": 1.352644974740395
     },
     {
       "id": "parity_swimlanes_215",
@@ -12663,12 +12663,12 @@
             255
           ]
         ],
-        "inkPixels": 266311,
-        "inkRatio": 0.24658425925925925,
+        "inkPixels": 257443,
+        "inkRatio": 0.23837314814814814,
         "contentBounds": {
-          "x": 25,
+          "x": 42,
           "y": 16,
-          "width": 1150,
+          "width": 1116,
           "height": 868
         }
       },
@@ -12698,9 +12698,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0849056603773586,
+      "widthRatio": 1.0528301886792453,
       "heightRatio": 1.0483091787439613,
-      "inkRatio": 1.1285129500305104
+      "inkRatio": 1.090934131127534
     },
     {
       "id": "parity_swimlanes_216",
@@ -12722,13 +12722,13 @@
             255
           ]
         ],
-        "inkPixels": 159619,
-        "inkRatio": 0.14779537037037038,
+        "inkPixels": 164929,
+        "inkRatio": 0.15271203703703704,
         "contentBounds": {
           "x": 19,
-          "y": 229,
+          "y": 222,
           "width": 1162,
-          "height": 442
+          "height": 456
         }
       },
       "official": {
@@ -12758,8 +12758,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9932584269662922,
-      "inkRatio": 1.042981946014467
+      "heightRatio": 1.0247191011235954,
+      "inkRatio": 1.077678530589842
     },
     {
       "id": "parity_swimlanes_217",
@@ -12781,12 +12781,12 @@
             255
           ]
         ],
-        "inkPixels": 108417,
-        "inkRatio": 0.1003861111111111,
+        "inkPixels": 106009,
+        "inkRatio": 0.09815648148148148,
         "contentBounds": {
-          "x": 363,
+          "x": 368,
           "y": 15,
-          "width": 474,
+          "width": 464,
           "height": 870
         }
       },
@@ -12816,9 +12816,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0871559633027523,
+      "widthRatio": 1.0642201834862386,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.47191712939707
+      "inkRatio": 1.439225056681646
     },
     {
       "id": "parity_swimlanes_218",
@@ -12840,12 +12840,12 @@
             255
           ]
         ],
-        "inkPixels": 345188,
-        "inkRatio": 0.3196185185185185,
+        "inkPixels": 333124,
+        "inkRatio": 0.30844814814814814,
         "contentBounds": {
-          "x": 119,
+          "x": 130,
           "y": 21,
-          "width": 962,
+          "width": 940,
           "height": 858
         }
       },
@@ -12875,9 +12875,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.103211009174312,
+      "widthRatio": 1.0779816513761469,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.1760369040399568
+      "inkRatio": 1.1349355065106739
     },
     {
       "id": "parity_swimlanes_219",
@@ -12899,13 +12899,13 @@
             255
           ]
         ],
-        "inkPixels": 327146,
-        "inkRatio": 0.30291296296296294,
+        "inkPixels": 351757,
+        "inkRatio": 0.3257009259259259,
         "contentBounds": {
           "x": 16,
-          "y": 81,
+          "y": 53,
           "width": 1168,
-          "height": 738
+          "height": 794
         }
       },
       "official": {
@@ -12935,8 +12935,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.9736147757255936,
-      "inkRatio": 1.0091367865162992
+      "heightRatio": 1.0474934036939314,
+      "inkRatio": 1.0850535498358957
     },
     {
       "id": "parity_swimlanes_220",
@@ -12958,13 +12958,13 @@
             255
           ]
         ],
-        "inkPixels": 209656,
-        "inkRatio": 0.19412592592592592,
+        "inkPixels": 217031,
+        "inkRatio": 0.20095462962962962,
         "contentBounds": {
           "x": 14,
-          "y": 233,
+          "y": 224,
           "width": 1172,
-          "height": 434
+          "height": 452
         }
       },
       "official": {
@@ -12994,8 +12994,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9908675799086758,
-      "inkRatio": 1.019221981312773
+      "heightRatio": 1.0319634703196348,
+      "inkRatio": 1.0550748169682356
     },
     {
       "id": "parity_swimlanes_221",
@@ -13017,12 +13017,12 @@
             255
           ]
         ],
-        "inkPixels": 113078,
-        "inkRatio": 0.10470185185185185,
+        "inkPixels": 108390,
+        "inkRatio": 0.10036111111111111,
         "contentBounds": {
-          "x": 314,
+          "x": 325,
           "y": 15,
-          "width": 572,
+          "width": 550,
           "height": 870
         }
       },
@@ -13052,9 +13052,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1085271317829457,
+      "widthRatio": 1.065891472868217,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.136154008460016
+      "inkRatio": 1.0890512122338663
     },
     {
       "id": "parity_swimlanes_222",
@@ -13076,12 +13076,12 @@
             255
           ]
         ],
-        "inkPixels": 263794,
-        "inkRatio": 0.2442537037037037,
+        "inkPixels": 245163,
+        "inkRatio": 0.22700277777777778,
         "contentBounds": {
-          "x": 66,
+          "x": 106,
           "y": 15,
-          "width": 1068,
+          "width": 988,
           "height": 870
         }
       },
@@ -13111,9 +13111,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.107883817427386,
+      "widthRatio": 1.0248962655601659,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4485182276937945
+      "inkRatio": 1.3462136146238872
     },
     {
       "id": "parity_swimlanes_223",
@@ -13135,13 +13135,13 @@
             255
           ]
         ],
-        "inkPixels": 241739,
-        "inkRatio": 0.2238324074074074,
+        "inkPixels": 245787,
+        "inkRatio": 0.22758055555555556,
         "contentBounds": {
           "x": 16,
-          "y": 61,
+          "y": 49,
           "width": 1168,
-          "height": 778
+          "height": 802
         }
       },
       "official": {
@@ -13171,8 +13171,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.0025773195876289,
-      "inkRatio": 1.0318864211654124
+      "heightRatio": 1.0335051546391754,
+      "inkRatio": 1.04916570267513
     },
     {
       "id": "parity_swimlanes_224",
@@ -13194,13 +13194,13 @@
             255
           ]
         ],
-        "inkPixels": 306430,
-        "inkRatio": 0.2837314814814815,
+        "inkPixels": 326475,
+        "inkRatio": 0.3022916666666667,
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 211,
           "width": 1168,
-          "height": 444
+          "height": 478
         }
       },
       "official": {
@@ -13230,8 +13230,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.961038961038961,
-      "inkRatio": 1.0042571878963462
+      "heightRatio": 1.0346320346320346,
+      "inkRatio": 1.0699502836486625
     },
     {
       "id": "parity_swimlanes_225",
@@ -13253,13 +13253,13 @@
             255
           ]
         ],
-        "inkPixels": 144469,
-        "inkRatio": 0.1337675925925926,
+        "inkPixels": 149568,
+        "inkRatio": 0.13848888888888888,
         "contentBounds": {
           "x": 16,
-          "y": 232,
+          "y": 223,
           "width": 1168,
-          "height": 436
+          "height": 454
         }
       },
       "official": {
@@ -13289,8 +13289,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9954337899543378,
-      "inkRatio": 1.0335307836488248
+      "heightRatio": 1.0365296803652968,
+      "inkRatio": 1.070009014036142
     },
     {
       "id": "parity_swimlanes_226",
@@ -13312,12 +13312,12 @@
             255
           ]
         ],
-        "inkPixels": 109285,
-        "inkRatio": 0.10118981481481482,
+        "inkPixels": 105418,
+        "inkRatio": 0.09760925925925926,
         "contentBounds": {
-          "x": 326,
+          "x": 338,
           "y": 18,
-          "width": 548,
+          "width": 524,
           "height": 868
         }
       },
@@ -13347,9 +13347,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.062015503875969,
+      "widthRatio": 1.0155038759689923,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0303976013803378
+      "inkRatio": 0.9939374510894674
     },
     {
       "id": "parity_swimlanes_227",
@@ -13371,13 +13371,13 @@
             255
           ]
         ],
-        "inkPixels": 225573,
-        "inkRatio": 0.20886388888888888,
+        "inkPixels": 246293,
+        "inkRatio": 0.22804907407407407,
         "contentBounds": {
           "x": 13,
-          "y": 116,
+          "y": 86,
           "width": 1174,
-          "height": 668
+          "height": 728
         }
       },
       "official": {
@@ -13407,8 +13407,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9597701149425287,
-      "inkRatio": 1.2385478265166614
+      "heightRatio": 1.0459770114942528,
+      "inkRatio": 1.3523145936626642
     },
     {
       "id": "parity_swimlanes_228",
@@ -13430,12 +13430,12 @@
             255
           ]
         ],
-        "inkPixels": 266641,
-        "inkRatio": 0.2468898148148148,
+        "inkPixels": 257838,
+        "inkRatio": 0.2387388888888889,
         "contentBounds": {
-          "x": 25,
+          "x": 42,
           "y": 16,
-          "width": 1150,
+          "width": 1116,
           "height": 868
         }
       },
@@ -13465,9 +13465,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0849056603773586,
+      "widthRatio": 1.0528301886792453,
       "heightRatio": 1.0483091787439613,
-      "inkRatio": 1.1280900302498253
+      "inkRatio": 1.0908467835762485
     },
     {
       "id": "parity_swimlanes_229",
@@ -13489,13 +13489,13 @@
             255
           ]
         ],
-        "inkPixels": 160242,
-        "inkRatio": 0.1483722222222222,
+        "inkPixels": 165552,
+        "inkRatio": 0.1532888888888889,
         "contentBounds": {
           "x": 19,
-          "y": 229,
+          "y": 222,
           "width": 1162,
-          "height": 442
+          "height": 456
         }
       },
       "official": {
@@ -13525,8 +13525,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9932584269662922,
-      "inkRatio": 1.0428008980574626
+      "heightRatio": 1.0247191011235954,
+      "inkRatio": 1.0773565873816418
     },
     {
       "id": "parity_swimlanes_230",
@@ -13548,12 +13548,12 @@
             255
           ]
         ],
-        "inkPixels": 108699,
-        "inkRatio": 0.10064722222222222,
+        "inkPixels": 106298,
+        "inkRatio": 0.09842407407407408,
         "contentBounds": {
-          "x": 363,
+          "x": 368,
           "y": 15,
-          "width": 474,
+          "width": 464,
           "height": 870
         }
       },
@@ -13583,9 +13583,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0871559633027523,
+      "widthRatio": 1.0642201834862386,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4689649580388395
+      "inkRatio": 1.4365176966633784
     },
     {
       "id": "parity_swimlanes_231",
@@ -13607,12 +13607,12 @@
             255
           ]
         ],
-        "inkPixels": 345927,
-        "inkRatio": 0.32030277777777777,
+        "inkPixels": 333855,
+        "inkRatio": 0.309125,
         "contentBounds": {
-          "x": 119,
+          "x": 130,
           "y": 21,
-          "width": 962,
+          "width": 940,
           "height": 858
         }
       },
@@ -13642,9 +13642,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.103211009174312,
+      "widthRatio": 1.0779816513761469,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.1757506338837187
+      "inkRatio": 1.134719833592778
     },
     {
       "id": "parity_swimlanes_232",
@@ -13666,13 +13666,13 @@
             255
           ]
         ],
-        "inkPixels": 327463,
-        "inkRatio": 0.3032064814814815,
+        "inkPixels": 352202,
+        "inkRatio": 0.32611296296296294,
         "contentBounds": {
           "x": 16,
-          "y": 81,
+          "y": 53,
           "width": 1168,
-          "height": 738
+          "height": 794
         }
       },
       "official": {
@@ -13702,8 +13702,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.9736147757255936,
-      "inkRatio": 1.0087796853483995
+      "heightRatio": 1.0474934036939314,
+      "inkRatio": 1.0849904347638573
     },
     {
       "id": "parity_swimlanes_233",
@@ -13725,13 +13725,13 @@
             255
           ]
         ],
-        "inkPixels": 209901,
-        "inkRatio": 0.1943527777777778,
+        "inkPixels": 217276,
+        "inkRatio": 0.2011814814814815,
         "contentBounds": {
           "x": 14,
-          "y": 233,
+          "y": 224,
           "width": 1172,
-          "height": 434
+          "height": 452
         }
       },
       "official": {
@@ -13761,8 +13761,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9908675799086758,
-      "inkRatio": 1.0190061460487607
+      "heightRatio": 1.0319634703196348,
+      "inkRatio": 1.0548095501636034
     },
     {
       "id": "parity_swimlanes_234",
@@ -13784,12 +13784,12 @@
             255
           ]
         ],
-        "inkPixels": 113384,
-        "inkRatio": 0.10498518518518518,
+        "inkPixels": 108710,
+        "inkRatio": 0.1006574074074074,
         "contentBounds": {
-          "x": 314,
+          "x": 325,
           "y": 15,
-          "width": 572,
+          "width": 550,
           "height": 870
         }
       },
@@ -13819,9 +13819,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1085271317829457,
+      "widthRatio": 1.065891472868217,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1358732130513618
+      "inkRatio": 1.0890493984231775
     },
     {
       "id": "parity_swimlanes_235",
@@ -13843,12 +13843,12 @@
             255
           ]
         ],
-        "inkPixels": 263828,
-        "inkRatio": 0.2442851851851852,
+        "inkPixels": 245184,
+        "inkRatio": 0.2270222222222222,
         "contentBounds": {
-          "x": 66,
+          "x": 106,
           "y": 15,
-          "width": 1068,
+          "width": 988,
           "height": 870
         }
       },
@@ -13878,9 +13878,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.107883817427386,
+      "widthRatio": 1.0248962655601659,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4480767541933786
+      "inkRatio": 1.3457451479757618
     },
     {
       "id": "parity_swimlanes_236",
@@ -13902,13 +13902,13 @@
             255
           ]
         ],
-        "inkPixels": 241816,
-        "inkRatio": 0.22390370370370372,
+        "inkPixels": 245861,
+        "inkRatio": 0.2276490740740741,
         "contentBounds": {
           "x": 16,
-          "y": 61,
+          "y": 49,
           "width": 1168,
-          "height": 778
+          "height": 802
         }
       },
       "official": {
@@ -13938,8 +13938,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.0025773195876289,
-      "inkRatio": 1.0318319138404821
+      "heightRatio": 1.0335051546391754,
+      "inkRatio": 1.0490919797231564
     },
     {
       "id": "parity_swimlanes_237",
@@ -13961,13 +13961,13 @@
             255
           ]
         ],
-        "inkPixels": 306441,
-        "inkRatio": 0.28374166666666667,
+        "inkPixels": 326508,
+        "inkRatio": 0.3023222222222222,
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 211,
           "width": 1168,
-          "height": 444
+          "height": 478
         }
       },
       "official": {
@@ -13997,8 +13997,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.961038961038961,
-      "inkRatio": 1.004092505701329
+      "heightRatio": 1.0346320346320346,
+      "inkRatio": 1.0698445568691186
     },
     {
       "id": "parity_swimlanes_238",
@@ -14020,13 +14020,13 @@
             255
           ]
         ],
-        "inkPixels": 144550,
-        "inkRatio": 0.1338425925925926,
+        "inkPixels": 149649,
+        "inkRatio": 0.13856388888888888,
         "contentBounds": {
           "x": 16,
-          "y": 232,
+          "y": 223,
           "width": 1168,
-          "height": 436
+          "height": 454
         }
       },
       "official": {
@@ -14056,8 +14056,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 0.9954337899543378,
-      "inkRatio": 1.033954922283499
+      "heightRatio": 1.0365296803652968,
+      "inkRatio": 1.0704276732258964
     },
     {
       "id": "parity_swimlanes_239",
@@ -14079,12 +14079,12 @@
             255
           ]
         ],
-        "inkPixels": 109318,
-        "inkRatio": 0.10122037037037038,
+        "inkPixels": 105455,
+        "inkRatio": 0.09764351851851852,
         "contentBounds": {
-          "x": 326,
+          "x": 338,
           "y": 18,
-          "width": 548,
+          "width": 524,
           "height": 868
         }
       },
@@ -14114,9 +14114,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.062015503875969,
+      "widthRatio": 1.0155038759689923,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0299318830612112
+      "inkRatio": 0.9935368990305349
     },
     {
       "id": "parity_swimlanes_240",
@@ -14138,13 +14138,13 @@
             255
           ]
         ],
-        "inkPixels": 225565,
-        "inkRatio": 0.20885648148148148,
+        "inkPixels": 246323,
+        "inkRatio": 0.22807685185185186,
         "contentBounds": {
           "x": 13,
-          "y": 116,
+          "y": 86,
           "width": 1174,
-          "height": 668
+          "height": 728
         }
       },
       "official": {
@@ -14174,8 +14174,8 @@
         }
       },
       "widthRatio": 1.0298245614035089,
-      "heightRatio": 0.9597701149425287,
-      "inkRatio": 1.2382319520000877
+      "heightRatio": 1.0459770114942528,
+      "inkRatio": 1.3521823381841935
     },
     {
       "id": "parity_swimlanes_241",
@@ -14197,12 +14197,12 @@
             255
           ]
         ],
-        "inkPixels": 266724,
-        "inkRatio": 0.24696666666666667,
+        "inkPixels": 257798,
+        "inkRatio": 0.23870185185185186,
         "contentBounds": {
-          "x": 25,
+          "x": 42,
           "y": 16,
-          "width": 1150,
+          "width": 1116,
           "height": 868
         }
       },
@@ -14232,9 +14232,9 @@
           "height": 828
         }
       },
-      "widthRatio": 1.0849056603773586,
+      "widthRatio": 1.0528301886792453,
       "heightRatio": 1.0483091787439613,
-      "inkRatio": 1.1284889255568953
+      "inkRatio": 1.0907236995197902
     },
     {
       "id": "parity_swimlanes_242",
@@ -14256,13 +14256,13 @@
             255
           ]
         ],
-        "inkPixels": 160222,
-        "inkRatio": 0.1483537037037037,
+        "inkPixels": 165532,
+        "inkRatio": 0.15327037037037036,
         "contentBounds": {
           "x": 19,
-          "y": 229,
+          "y": 222,
           "width": 1162,
-          "height": 442
+          "height": 456
         }
       },
       "official": {
@@ -14292,8 +14292,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9932584269662922,
-      "inkRatio": 1.0420400889709804
+      "heightRatio": 1.0247191011235954,
+      "inkRatio": 1.076574877404753
     },
     {
       "id": "parity_swimlanes_243",
@@ -14315,12 +14315,12 @@
             255
           ]
         ],
-        "inkPixels": 108707,
-        "inkRatio": 0.10065462962962964,
+        "inkPixels": 106323,
+        "inkRatio": 0.09844722222222223,
         "contentBounds": {
-          "x": 363,
+          "x": 368,
           "y": 15,
-          "width": 474,
+          "width": 464,
           "height": 870
         }
       },
@@ -14350,9 +14350,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0871559633027523,
+      "widthRatio": 1.0642201834862386,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4687753337296654
+      "inkRatio": 1.436564340917689
     },
     {
       "id": "parity_swimlanes_244",
@@ -14374,12 +14374,12 @@
             255
           ]
         ],
-        "inkPixels": 345980,
-        "inkRatio": 0.32035185185185183,
+        "inkPixels": 333923,
+        "inkRatio": 0.30918796296296297,
         "contentBounds": {
-          "x": 119,
+          "x": 130,
           "y": 21,
-          "width": 962,
+          "width": 940,
           "height": 858
         }
       },
@@ -14409,9 +14409,9 @@
           "height": 806
         }
       },
-      "widthRatio": 1.103211009174312,
+      "widthRatio": 1.0779816513761469,
       "heightRatio": 1.064516129032258,
-      "inkRatio": 1.175247716456797
+      "inkRatio": 1.1342917024752963
     },
     {
       "id": "parity_swimlanes_245",
@@ -14433,13 +14433,13 @@
             255
           ]
         ],
-        "inkPixels": 327553,
-        "inkRatio": 0.3032898148148148,
+        "inkPixels": 352265,
+        "inkRatio": 0.3261712962962963,
         "contentBounds": {
           "x": 16,
-          "y": 81,
+          "y": 53,
           "width": 1168,
-          "height": 738
+          "height": 794
         }
       },
       "official": {
@@ -14469,8 +14469,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.9736147757255936,
-      "inkRatio": 1.0089139681943209
+      "heightRatio": 1.0474934036939314,
+      "inkRatio": 1.085030755346379
     },
     {
       "id": "parity_swimlanes_246",
@@ -14492,13 +14492,13 @@
             255
           ]
         ],
-        "inkPixels": 209938,
-        "inkRatio": 0.19438703703703702,
+        "inkPixels": 217313,
+        "inkRatio": 0.20121574074074075,
         "contentBounds": {
           "x": 14,
-          "y": 233,
+          "y": 224,
           "width": 1172,
-          "height": 434
+          "height": 452
         }
       },
       "official": {
@@ -14528,8 +14528,8 @@
         }
       },
       "widthRatio": 1.033509700176367,
-      "heightRatio": 0.9908675799086758,
-      "inkRatio": 1.018943383405732
+      "heightRatio": 1.0319634703196348,
+      "inkRatio": 1.0547382726235834
     },
     {
       "id": "parity_swimlanes_247",
@@ -14551,12 +14551,12 @@
             255
           ]
         ],
-        "inkPixels": 113377,
-        "inkRatio": 0.1049787037037037,
+        "inkPixels": 108692,
+        "inkRatio": 0.10064074074074074,
         "contentBounds": {
-          "x": 314,
+          "x": 325,
           "y": 15,
-          "width": 572,
+          "width": 550,
           "height": 870
         }
       },
@@ -14586,9 +14586,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.1085271317829457,
+      "widthRatio": 1.065891472868217,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1351321585903082
+      "inkRatio": 1.0882258710452544
     },
     {
       "id": "parity_swimlanes_248",
@@ -14610,12 +14610,12 @@
             255
           ]
         ],
-        "inkPixels": 248105,
-        "inkRatio": 0.22972685185185185,
+        "inkPixels": 228443,
+        "inkRatio": 0.2115212962962963,
         "contentBounds": {
-          "x": 95,
+          "x": 130,
           "y": 15,
-          "width": 1010,
+          "width": 940,
           "height": 870
         }
       },
@@ -14645,9 +14645,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0954446854663775,
+      "widthRatio": 1.0195227765726682,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4319891030191791
+      "inkRatio": 1.3185058207654434
     },
     {
       "id": "parity_swimlanes_249",
@@ -14669,13 +14669,13 @@
             255
           ]
         ],
-        "inkPixels": 249358,
-        "inkRatio": 0.23088703703703703,
+        "inkPixels": 253887,
+        "inkRatio": 0.23508055555555554,
         "contentBounds": {
           "x": 16,
-          "y": 49,
+          "y": 37,
           "width": 1168,
-          "height": 802
+          "height": 826
         }
       },
       "official": {
@@ -14705,8 +14705,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1.005012531328321,
-      "inkRatio": 1.0344143830217953
+      "heightRatio": 1.0350877192982457,
+      "inkRatio": 1.0532020807924931
     },
     {
       "id": "parity_swimlanes_250",
@@ -14728,13 +14728,13 @@
             255
           ]
         ],
-        "inkPixels": 339051,
-        "inkRatio": 0.31393611111111114,
+        "inkPixels": 359448,
+        "inkRatio": 0.33282222222222224,
         "contentBounds": {
           "x": 16,
-          "y": 209,
+          "y": 192,
           "width": 1168,
-          "height": 482
+          "height": 516
         }
       },
       "official": {
@@ -14764,8 +14764,8 @@
         }
       },
       "widthRatio": 1.0391459074733096,
-      "heightRatio": 0.9717741935483871,
-      "inkRatio": 1.0162729076619648
+      "heightRatio": 1.0403225806451613,
+      "inkRatio": 1.0774109621068155
     },
     {
       "id": "parity_swimlanes_251",
@@ -14787,13 +14787,13 @@
             255
           ]
         ],
-        "inkPixels": 153478,
-        "inkRatio": 0.14210925925925927,
+        "inkPixels": 157049,
+        "inkRatio": 0.14541574074074073,
         "contentBounds": {
           "x": 16,
-          "y": 219,
+          "y": 211,
           "width": 1168,
-          "height": 462
+          "height": 478
         }
       },
       "official": {
@@ -14823,8 +14823,8 @@
         }
       },
       "widthRatio": 1.0373001776198933,
-      "heightRatio": 1,
-      "inkRatio": 1.047989074769546
+      "heightRatio": 1.0346320346320346,
+      "inkRatio": 1.0723728234892453
     },
     {
       "id": "parity_swimlanes_252",
@@ -14846,12 +14846,12 @@
             255
           ]
         ],
-        "inkPixels": 103326,
-        "inkRatio": 0.09567222222222223,
+        "inkPixels": 99407,
+        "inkRatio": 0.09204351851851852,
         "contentBounds": {
-          "x": 342,
+          "x": 353,
           "y": 18,
-          "width": 516,
+          "width": 494,
           "height": 868
         }
       },
@@ -14881,9 +14881,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.0530612244897959,
+      "widthRatio": 1.0081632653061225,
       "heightRatio": 1.040767386091127,
-      "inkRatio": 1.0335183795948988
+      "inkRatio": 0.9943185796449113
     },
     {
       "id": "parity_swimlanes_253",
@@ -14905,13 +14905,13 @@
             255
           ]
         ],
-        "inkPixels": 234776,
-        "inkRatio": 0.21738518518518518,
+        "inkPixels": 255228,
+        "inkRatio": 0.2363222222222222,
         "contentBounds": {
-          "x": 13,
-          "y": 97,
-          "width": 1174,
-          "height": 706
+          "x": 14,
+          "y": 68,
+          "width": 1172,
+          "height": 764
         }
       },
       "official": {
@@ -14940,9 +14940,9 @@
           "height": 726
         }
       },
-      "widthRatio": 1.031634446397188,
-      "heightRatio": 0.9724517906336089,
-      "inkRatio": 1.2837848182941634
+      "widthRatio": 1.0298769771528997,
+      "heightRatio": 1.0523415977961432,
+      "inkRatio": 1.3956189372149739
     },
     {
       "id": "parity_swimlanes_254",
@@ -14964,13 +14964,13 @@
             255
           ]
         ],
-        "inkPixels": 260756,
-        "inkRatio": 0.24144074074074073,
+        "inkPixels": 251616,
+        "inkRatio": 0.23297777777777778,
         "contentBounds": {
-          "x": 40,
-          "y": 16,
-          "width": 1120,
-          "height": 868
+          "x": 56,
+          "y": 15,
+          "width": 1088,
+          "height": 870
         }
       },
       "official": {
@@ -14999,9 +14999,9 @@
           "height": 830
         }
       },
-      "widthRatio": 1.0831721470019342,
-      "heightRatio": 1.0457831325301206,
-      "inkRatio": 1.1291658005958567
+      "widthRatio": 1.0522243713733075,
+      "heightRatio": 1.0481927710843373,
+      "inkRatio": 1.0895863645811683
     },
     {
       "id": "parity_swimlanes_255",
@@ -15023,13 +15023,13 @@
             255
           ]
         ],
-        "inkPixels": 167995,
-        "inkRatio": 0.15555092592592593,
+        "inkPixels": 170986,
+        "inkRatio": 0.15832037037037036,
         "contentBounds": {
           "x": 19,
-          "y": 213,
+          "y": 206,
           "width": 1162,
-          "height": 474
+          "height": 488
         }
       },
       "official": {
@@ -15059,8 +15059,8 @@
         }
       },
       "widthRatio": 1.0449640287769784,
-      "heightRatio": 0.9978947368421053,
-      "inkRatio": 1.06571468446294
+      "heightRatio": 1.0273684210526315,
+      "inkRatio": 1.0846887766753786
     },
     {
       "id": "parity_swimlanes_256",
@@ -15082,13 +15082,13 @@
             255
           ]
         ],
-        "inkPixels": 103781,
-        "inkRatio": 0.09609351851851852,
+        "inkPixels": 103656,
+        "inkRatio": 0.09597777777777777,
         "contentBounds": {
-          "x": 372,
-          "y": 15,
-          "width": 456,
-          "height": 870
+          "x": 376,
+          "y": 14,
+          "width": 448,
+          "height": 872
         }
       },
       "official": {
@@ -15117,9 +15117,9 @@
           "height": 834
         }
       },
-      "widthRatio": 1.080568720379147,
-      "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.4567390022739397
+      "widthRatio": 1.061611374407583,
+      "heightRatio": 1.0455635491606714,
+      "inkRatio": 1.45498441930322
     }
   ]
 }

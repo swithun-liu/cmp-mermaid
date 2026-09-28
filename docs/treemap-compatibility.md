@@ -43,6 +43,9 @@ colors closely enough that side-by-side review exposes no functional defect.
   Automated review flags on branch title/value pairs are caused by Canvas/SVG
   glyph bounds around Mermaid's intentional same-row placement, not visible
   text overlap.
+- The fresh 256-case matrix accepted `19 pass / 237 review / 0 fail`; geometry
+  passed `256/256` with width `1.033-1.076`, height `1.029-1.039`, and
+  foreground ink `0.945-1.077`. All 16 contact sheets were manually reviewed.
 - The shared production test renders all 13 cases deterministically and renders
   a Treemap representative under every built-in theme.
 

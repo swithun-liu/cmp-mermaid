@@ -37,7 +37,7 @@ that a side-by-side comparison does not expose a functional rendering defect.
   height `1.016-1.049`, and foreground ink `1.008-1.023`.
 - The replacement 256-case Native/Official audit accepted all pairs:
   `256 pass / 0 review / 0 fail`; geometry ratios are width `1.011-1.015`,
-  height `1.006-1.056`, and foreground ink `0.977-1.039`.
+  height `1.003-1.065`, and foreground ink `0.977-1.039`.
   All 16 contact sheets were manually reviewed with no missing fields,
   incorrect row split, bit-number mismatch, clipping, overlap, or paint-order
   defect.

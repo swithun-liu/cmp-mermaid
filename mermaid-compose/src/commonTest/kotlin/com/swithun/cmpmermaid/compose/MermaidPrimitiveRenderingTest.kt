@@ -48,14 +48,16 @@ class MermaidPrimitiveRenderingTest {
     }
 
     @Test
-    fun preservesCssLeadingAtTheFirstAndLastTextLines() {
+    fun preservesCssLeadingOnlyForHtmlTextLineHeight() {
         assertEquals(
             LineHeightStyle(
                 alignment = LineHeightStyle.Alignment.Center,
                 trim = LineHeightStyle.Trim.None,
             ),
-            MERMAID_LINE_HEIGHT_STYLE,
+            mermaidLineHeightStyle(1.5f),
         )
+        assertEquals(null, mermaidLineHeightStyle(1.2f))
+        assertEquals(null, mermaidLineHeightStyle(1.1f))
     }
 
     @Test

@@ -54,12 +54,13 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   `9 pass / 4 manually reviewed / 0 fail`; geometry ratios are width
   `0.930-1.079`, height `0.856-1.049`, and foreground ink `0.759-1.037`.
 - The replacement 256-case Native/Official audit accepted all pairs:
-  `149 pass / 107 manually reviewed / 0 fail`; geometry ratios are width
-  `0.956-1.155`, height `0.861-1.212`, and foreground ink `0.771-1.431`.
+  `153 pass / 103 manually reviewed / 0 fail`; geometry ratios are width
+  `0.930-1.276`, height `0.877-1.104`, and foreground ink `0.794-1.277`.
   The reviews are CoSE-Bilkent branch rotations or mirrors under platform
-  text-size perturbations; every expected node, label, hierarchy edge, shape,
-  and section color is preserved, with no clipping, overlap, or paint-order
-  mismatch. All 16 contact sheets were manually reviewed.
+  text-size perturbations; 69 also cross the raster-mask threshold. Every
+  expected node, label, hierarchy edge, shape, and section color is preserved,
+  with no clipping, overlap, or paint-order mismatch. All 16 contact sheets
+  were manually reviewed.
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
 - All 11 built-in themes are rendered by the shared production theme matrix.

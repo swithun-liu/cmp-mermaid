@@ -54,7 +54,7 @@ typed `MermaidTheme.journey` API.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
   The replacement audit reports `237 pass / 19 manually reviewed / 0 fail`;
   all 256 pass geometry with width ratios `1.020-1.032`, height ratios
-  `1.036-1.057`, and foreground-ink ratios `0.983-1.073`. The 19 reviews are
+  `1.041-1.061`, and foreground-ink ratios `0.983-1.073`. The 19 reviews are
   benign platform-font line-segmentation differences for the complete
   `Regional Compliance Review Coordination Team` actor label. Both sides
   retain ten text elements with no clipping or overlap. All 16 contact sheets

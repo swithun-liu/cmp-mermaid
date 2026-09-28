@@ -43,8 +43,8 @@ and theme colors.
   silhouettes into multiple paths, while Native records each visible
   silhouette as one semantic shape. Side-by-side pixels, expected text,
   geometry, colors, and paint order were manually verified.
-- Matrix geometry passed `256/256`. Ratios were `0.996-1.153`,
-  `0.992-1.046`, and `1.005-1.252`.
+- Matrix geometry passed `256/256`. Ratios were `0.967-1.071`,
+  `1.028-1.060`, and `0.987-1.128`.
 - Matrix detail produced `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved element, boundary, relation, dynamic-index, label,

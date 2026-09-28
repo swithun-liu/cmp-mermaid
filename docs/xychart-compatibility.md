@@ -58,8 +58,11 @@ presentation flags do not alter the fixed intrinsic SceneGraph dimensions.
   geometry width `1.016-1.020`, height `1.012-1.015`, and foreground ink
   `0.967-1.144`.
 - 256 same-source visual-parity cases pass both the replacement detail and
-  geometry gates: `256 pass / 0 review / 0 fail`; width `1.008-1.029`, height
-  `0.995-1.041`, and foreground ink `0.918-1.163`.
+  geometry gates: `236 pass / 20 review / 0 fail`; width `1.002-1.024`, height
+  `0.988-1.033`, and foreground ink `0.895-1.136`. The reviews are
+  paint-order occlusion-ratio threshold findings on intentional chart
+  layering; all bars, lines, axes, labels, legends, clipping, and visible
+  paint order remain complete.
 - All 16 matrix contact sheets and all 256 pairs were manually reviewed. No
   unresolved blank, clipping, geometry, label, legend, line, bar, overlap, or
   paint-order defect remains. Browser/Compose font rasterization differences,

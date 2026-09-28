@@ -83,8 +83,9 @@ Mermaid browser text measurement is supplied by the shared
   height `0.910-1.111`, and foreground ink `0.939-1.327`.
 - The large-scale Web audit compares 256 unique same-source cases against
   Mermaid.js `12.0.0`. It passes the replacement detail and geometry gates
-  with `256 pass / 0 review / 0 fail`; width `1.023-1.068`, height
-  `0.893-1.045`, and foreground ink `0.926-1.148`.
+  with `246 pass / 10 review / 0 fail`; width `1.019-1.237`, height
+  `0.919-1.113`, and foreground ink `0.925-1.294`. The reviews are
+  text-segmentation representation differences.
 - All 16 matrix contact sheets were manually reviewed with no unresolved
   visual defect.
 

@@ -62,12 +62,12 @@ geometry gates.
 | Large-scale visual matrix | 8,448 Native/Official pairs |
 | Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus screenshots |
 | Malformed-source safety | 33/33 Native `CONTENT_ERROR` results, 66 Native/Official screenshots, 0 crashes |
-| Matrix detail review | 33 families: 8,448/8,448 accepted; 7,458 automatic passes plus 990 manually accepted reviews |
+| Matrix detail review | 33 families: 8,448/8,448 accepted; 7,429 automatic passes plus 1,019 manually accepted reviews |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 791 passed, 0 failed |
+| JVM tests | 795 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T04:41:53.957Z",
-  "inputDirectory": "captures/local/ishikawa-visual-parity-20260918-pass2",
+  "generatedAt": "2026-09-28T14:09:30.636Z",
+  "inputDirectory": "captures/local/visual-parity-20260928-45924b4",
   "corpusSource": "visual-parity",
   "theme": null,
   "caseCount": 256,
@@ -37,12 +37,12 @@
             255
           ]
         ],
-        "inkPixels": 64898,
-        "inkRatio": 0.06009074074074074,
+        "inkPixels": 64002,
+        "inkRatio": 0.05926111111111111,
         "contentBounds": {
-          "x": 210,
+          "x": 209,
           "y": 37,
-          "width": 780,
+          "width": 782,
           "height": 826
         }
       },
@@ -72,9 +72,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0773480662983426,
+      "widthRatio": 1.080110497237569,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.106134205996148
+      "inkRatio": 1.090862606739275
     },
     {
       "id": "parity_ishikawa_002",
@@ -96,12 +96,12 @@
             255
           ]
         ],
-        "inkPixels": 68700,
-        "inkRatio": 0.0636111111111111,
+        "inkPixels": 68066,
+        "inkRatio": 0.06302407407407408,
         "contentBounds": {
-          "x": 247,
+          "x": 246,
           "y": 37,
-          "width": 706,
+          "width": 708,
           "height": 826
         }
       },
@@ -131,9 +131,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0928792569659442,
+      "widthRatio": 1.0959752321981424,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0775963484071336
+      "inkRatio": 1.067651718350509
     },
     {
       "id": "parity_ishikawa_003",
@@ -155,8 +155,8 @@
             255
           ]
         ],
-        "inkPixels": 40934,
-        "inkRatio": 0.03790185185185185,
+        "inkPixels": 40522,
+        "inkRatio": 0.03752037037037037,
         "contentBounds": {
           "x": 352,
           "y": 37,
@@ -192,7 +192,7 @@
       },
       "widthRatio": 1.1022222222222222,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1094427580225499
+      "inkRatio": 1.0982762359063312
     },
     {
       "id": "parity_ishikawa_004",
@@ -214,12 +214,12 @@
             255
           ]
         ],
-        "inkPixels": 61979,
-        "inkRatio": 0.05738796296296296,
+        "inkPixels": 58734,
+        "inkRatio": 0.05438333333333333,
         "contentBounds": {
-          "x": 239,
+          "x": 236,
           "y": 50,
-          "width": 722,
+          "width": 728,
           "height": 800
         }
       },
@@ -249,9 +249,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0403458213256485,
+      "widthRatio": 1.0489913544668588,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1461673601479425
+      "inkRatio": 1.0861581137309293
     },
     {
       "id": "parity_ishikawa_005",
@@ -273,12 +273,12 @@
             255
           ]
         ],
-        "inkPixels": 111693,
-        "inkRatio": 0.10341944444444444,
+        "inkPixels": 110361,
+        "inkRatio": 0.10218611111111112,
         "contentBounds": {
-          "x": 223,
+          "x": 222,
           "y": 34,
-          "width": 754,
+          "width": 756,
           "height": 832
         }
       },
@@ -308,9 +308,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0619718309859154,
+      "widthRatio": 1.064788732394366,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0701433334610815
+      "inkRatio": 1.0573812900011499
     },
     {
       "id": "parity_ishikawa_006",
@@ -332,12 +332,12 @@
             255
           ]
         ],
-        "inkPixels": 57097,
-        "inkRatio": 0.05286759259259259,
+        "inkPixels": 56019,
+        "inkRatio": 0.05186944444444445,
         "contentBounds": {
-          "x": 263,
+          "x": 262,
           "y": 37,
-          "width": 674,
+          "width": 676,
           "height": 826
         }
       },
@@ -367,9 +367,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0732484076433122,
+      "widthRatio": 1.0764331210191083,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.088702450185909
+      "inkRatio": 1.0681475831823817
     },
     {
       "id": "parity_ishikawa_007",
@@ -391,13 +391,13 @@
             255
           ]
         ],
-        "inkPixels": 221213,
-        "inkRatio": 0.20482685185185184,
+        "inkPixels": 221577,
+        "inkRatio": 0.2051638888888889,
         "contentBounds": {
-          "x": 282,
-          "y": 73,
-          "width": 636,
-          "height": 754
+          "x": 280,
+          "y": 74,
+          "width": 640,
+          "height": 752
         }
       },
       "official": {
@@ -426,9 +426,9 @@
           "height": 674
         }
       },
-      "widthRatio": 1.1734317343173433,
-      "heightRatio": 1.1186943620178043,
-      "inkRatio": 1.3111249407302037
+      "widthRatio": 1.1808118081180812,
+      "heightRatio": 1.1157270029673592,
+      "inkRatio": 1.313282361308677
     },
     {
       "id": "parity_ishikawa_008",
@@ -450,12 +450,12 @@
             255
           ]
         ],
-        "inkPixels": 41044,
-        "inkRatio": 0.038003703703703706,
+        "inkPixels": 40408,
+        "inkRatio": 0.03741481481481482,
         "contentBounds": {
-          "x": 347,
+          "x": 346,
           "y": 37,
-          "width": 506,
+          "width": 508,
           "height": 826
         }
       },
@@ -485,9 +485,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0765957446808512,
+      "widthRatio": 1.0808510638297872,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.097902846137385
+      "inkRatio": 1.080890220415151
     },
     {
       "id": "parity_ishikawa_009",
@@ -509,13 +509,13 @@
             255
           ]
         ],
-        "inkPixels": 56380,
-        "inkRatio": 0.052203703703703704,
+        "inkPixels": 53629,
+        "inkRatio": 0.04965648148148148,
         "contentBounds": {
-          "x": 300,
-          "y": 36,
-          "width": 600,
-          "height": 828
+          "x": 298,
+          "y": 37,
+          "width": 604,
+          "height": 826
         }
       },
       "official": {
@@ -544,9 +544,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.056338028169014,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.154428928293542
+      "widthRatio": 1.0633802816901408,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0980998402883002
     },
     {
       "id": "parity_ishikawa_010",
@@ -568,8 +568,8 @@
             255
           ]
         ],
-        "inkPixels": 50349,
-        "inkRatio": 0.04661944444444444,
+        "inkPixels": 49779,
+        "inkRatio": 0.04609166666666667,
         "contentBounds": {
           "x": 289,
           "y": 58,
@@ -605,7 +605,7 @@
       },
       "widthRatio": 1.0798611111111112,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0982201282554638
+      "inkRatio": 1.0857872006281901
     },
     {
       "id": "parity_ishikawa_011",
@@ -627,13 +627,13 @@
             255
           ]
         ],
-        "inkPixels": 267926,
-        "inkRatio": 0.24807962962962962,
+        "inkPixels": 259387,
+        "inkRatio": 0.24017314814814814,
         "contentBounds": {
           "x": 55,
-          "y": 138,
+          "y": 140,
           "width": 1090,
-          "height": 624
+          "height": 620
         }
       },
       "official": {
@@ -663,8 +663,8 @@
         }
       },
       "widthRatio": 1.1043566362715298,
-      "heightRatio": 1.0795847750865053,
-      "inkRatio": 1.1730406343174127
+      "heightRatio": 1.0726643598615917,
+      "inkRatio": 1.135654960749202
     },
     {
       "id": "parity_ishikawa_012",
@@ -686,13 +686,13 @@
             255
           ]
         ],
-        "inkPixels": 242967,
-        "inkRatio": 0.22496944444444444,
+        "inkPixels": 236151,
+        "inkRatio": 0.21865833333333334,
         "contentBounds": {
           "x": 80,
-          "y": 172,
+          "y": 174,
           "width": 1040,
-          "height": 556
+          "height": 552
         }
       },
       "official": {
@@ -722,8 +722,8 @@
         }
       },
       "widthRatio": 1.1005291005291005,
-      "heightRatio": 1.053030303030303,
-      "inkRatio": 1.1215759590084475
+      "heightRatio": 1.0454545454545454,
+      "inkRatio": 1.090112172829248
     },
     {
       "id": "parity_ishikawa_013",
@@ -745,12 +745,12 @@
             255
           ]
         ],
-        "inkPixels": 110495,
-        "inkRatio": 0.10231018518518518,
+        "inkPixels": 109032,
+        "inkRatio": 0.10095555555555556,
         "contentBounds": {
-          "x": 226,
+          "x": 225,
           "y": 37,
-          "width": 748,
+          "width": 750,
           "height": 826
         }
       },
@@ -780,9 +780,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0594900849858357,
+      "widthRatio": 1.0623229461756374,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0852633233150648
+      "inkRatio": 1.0708939831457365
     },
     {
       "id": "parity_ishikawa_014",
@@ -804,12 +804,12 @@
             255
           ]
         ],
-        "inkPixels": 69064,
-        "inkRatio": 0.06394814814814814,
+        "inkPixels": 68116,
+        "inkRatio": 0.06307037037037037,
         "contentBounds": {
-          "x": 183,
+          "x": 182,
           "y": 37,
-          "width": 834,
+          "width": 836,
           "height": 826
         }
       },
@@ -839,9 +839,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.074742268041237,
+      "widthRatio": 1.077319587628866,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1016749082788322
+      "inkRatio": 1.0865528792470889
     },
     {
       "id": "parity_ishikawa_015",
@@ -863,12 +863,12 @@
             255
           ]
         ],
-        "inkPixels": 72877,
-        "inkRatio": 0.06747870370370371,
+        "inkPixels": 72017,
+        "inkRatio": 0.06668240740740741,
         "contentBounds": {
-          "x": 220,
+          "x": 219,
           "y": 37,
-          "width": 760,
+          "width": 762,
           "height": 826
         }
       },
@@ -898,9 +898,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0872675250357653,
+      "widthRatio": 1.090128755364807,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0773131107070528
+      "inkRatio": 1.064600056173962
     },
     {
       "id": "parity_ishikawa_016",
@@ -922,8 +922,8 @@
             255
           ]
         ],
-        "inkPixels": 45183,
-        "inkRatio": 0.04183611111111111,
+        "inkPixels": 44720,
+        "inkRatio": 0.04140740740740741,
         "contentBounds": {
           "x": 325,
           "y": 37,
@@ -959,7 +959,7 @@
       },
       "widthRatio": 1.095617529880478,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1050160189782092
+      "inkRatio": 1.0936926801829343
     },
     {
       "id": "parity_ishikawa_017",
@@ -981,12 +981,12 @@
             255
           ]
         ],
-        "inkPixels": 65723,
-        "inkRatio": 0.06085462962962963,
+        "inkPixels": 62304,
+        "inkRatio": 0.05768888888888889,
         "contentBounds": {
-          "x": 239,
+          "x": 236,
           "y": 50,
-          "width": 722,
+          "width": 728,
           "height": 800
         }
       },
@@ -1016,9 +1016,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0403458213256485,
+      "widthRatio": 1.0489913544668588,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1388099528694204
+      "inkRatio": 1.0795675076240643
     },
     {
       "id": "parity_ishikawa_018",
@@ -1040,12 +1040,12 @@
             255
           ]
         ],
-        "inkPixels": 116045,
-        "inkRatio": 0.10744907407407407,
+        "inkPixels": 114372,
+        "inkRatio": 0.1059,
         "contentBounds": {
-          "x": 196,
+          "x": 195,
           "y": 34,
-          "width": 808,
+          "width": 810,
           "height": 832
         }
       },
@@ -1075,9 +1075,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.057591623036649,
+      "widthRatio": 1.0602094240837696,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0685248105485115
+      "inkRatio": 1.0531200795558133
     },
     {
       "id": "parity_ishikawa_019",
@@ -1099,12 +1099,12 @@
             255
           ]
         ],
-        "inkPixels": 61412,
-        "inkRatio": 0.05686296296296296,
+        "inkPixels": 60215,
+        "inkRatio": 0.055754629629629626,
         "contentBounds": {
-          "x": 236,
+          "x": 235,
           "y": 37,
-          "width": 728,
+          "width": 730,
           "height": 826
         }
       },
@@ -1134,9 +1134,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.067448680351906,
+      "widthRatio": 1.0703812316715542,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.087920069443214
+      "inkRatio": 1.0667150879554996
     },
     {
       "id": "parity_ishikawa_020",
@@ -1158,12 +1158,12 @@
             255
           ]
         ],
-        "inkPixels": 233064,
-        "inkRatio": 0.2158,
+        "inkPixels": 233502,
+        "inkRatio": 0.21620555555555557,
         "contentBounds": {
-          "x": 219,
+          "x": 216,
           "y": 74,
-          "width": 762,
+          "width": 768,
           "height": 752
         }
       },
@@ -1193,9 +1193,9 @@
           "height": 674
         }
       },
-      "widthRatio": 1.1545454545454545,
+      "widthRatio": 1.1636363636363636,
       "heightRatio": 1.1157270029673592,
-      "inkRatio": 1.303898312670635
+      "inkRatio": 1.3063487445732445
     },
     {
       "id": "parity_ishikawa_021",
@@ -1217,12 +1217,12 @@
             255
           ]
         ],
-        "inkPixels": 45300,
-        "inkRatio": 0.041944444444444444,
+        "inkPixels": 44416,
+        "inkRatio": 0.04112592592592593,
         "contentBounds": {
-          "x": 320,
+          "x": 319,
           "y": 37,
-          "width": 560,
+          "width": 562,
           "height": 826
         }
       },
@@ -1252,9 +1252,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0727969348659003,
+      "widthRatio": 1.0766283524904214,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.094546596757436
+      "inkRatio": 1.0731872327059222
     },
     {
       "id": "parity_ishikawa_022",
@@ -1276,13 +1276,13 @@
             255
           ]
         ],
-        "inkPixels": 60484,
-        "inkRatio": 0.0560037037037037,
+        "inkPixels": 57625,
+        "inkRatio": 0.053356481481481484,
         "contentBounds": {
-          "x": 300,
-          "y": 36,
-          "width": 600,
-          "height": 828
+          "x": 298,
+          "y": 37,
+          "width": 604,
+          "height": 826
         }
       },
       "official": {
@@ -1311,9 +1311,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.056338028169014,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1502795633486744
+      "widthRatio": 1.0633802816901408,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.095907344718725
     },
     {
       "id": "parity_ishikawa_023",
@@ -1335,12 +1335,12 @@
             255
           ]
         ],
-        "inkPixels": 54093,
-        "inkRatio": 0.05008611111111111,
+        "inkPixels": 53481,
+        "inkRatio": 0.04951944444444444,
         "contentBounds": {
-          "x": 264,
+          "x": 263,
           "y": 58,
-          "width": 672,
+          "width": 674,
           "height": 784
         }
       },
@@ -1370,9 +1370,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.073482428115016,
+      "widthRatio": 1.0766773162939298,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.094357563373728
+      "inkRatio": 1.081976167836695
     },
     {
       "id": "parity_ishikawa_024",
@@ -1394,13 +1394,13 @@
             255
           ]
         ],
-        "inkPixels": 265922,
-        "inkRatio": 0.24622407407407407,
+        "inkPixels": 257190,
+        "inkRatio": 0.2381388888888889,
         "contentBounds": {
           "x": 53,
-          "y": 149,
+          "y": 151,
           "width": 1094,
-          "height": 602
+          "height": 598
         }
       },
       "official": {
@@ -1430,8 +1430,8 @@
         }
       },
       "widthRatio": 1.105050505050505,
-      "heightRatio": 1.0598591549295775,
-      "inkRatio": 1.1404836039559798
+      "heightRatio": 1.0528169014084507,
+      "inkRatio": 1.1030338900182703
     },
     {
       "id": "parity_ishikawa_025",
@@ -1453,13 +1453,13 @@
             255
           ]
         ],
-        "inkPixels": 208168,
-        "inkRatio": 0.19274814814814814,
+        "inkPixels": 201677,
+        "inkRatio": 0.18673796296296297,
         "contentBounds": {
           "x": 73,
-          "y": 200,
+          "y": 202,
           "width": 1054,
-          "height": 500
+          "height": 496
         }
       },
       "official": {
@@ -1489,8 +1489,8 @@
         }
       },
       "widthRatio": 1.0888429752066116,
-      "heightRatio": 1.0548523206751055,
-      "inkRatio": 1.1204538481826158
+      "heightRatio": 1.0464135021097047,
+      "inkRatio": 1.085516365339175
     },
     {
       "id": "parity_ishikawa_026",
@@ -1512,8 +1512,8 @@
             255
           ]
         ],
-        "inkPixels": 114796,
-        "inkRatio": 0.10629259259259259,
+        "inkPixels": 112871,
+        "inkRatio": 0.10451018518518519,
         "contentBounds": {
           "x": 198,
           "y": 37,
@@ -1549,7 +1549,7 @@
       },
       "widthRatio": 1.0606860158311346,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0831855066993772
+      "inkRatio": 1.0650217022079638
     },
     {
       "id": "parity_ishikawa_027",
@@ -1571,12 +1571,12 @@
             255
           ]
         ],
-        "inkPixels": 73941,
-        "inkRatio": 0.0684638888888889,
+        "inkPixels": 72949,
+        "inkRatio": 0.06754537037037037,
         "contentBounds": {
-          "x": 151,
+          "x": 150,
           "y": 37,
-          "width": 898,
+          "width": 900,
           "height": 826
         }
       },
@@ -1606,9 +1606,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0767386091127098,
+      "widthRatio": 1.079136690647482,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1013450109477636
+      "inkRatio": 1.0865692539136393
     },
     {
       "id": "parity_ishikawa_028",
@@ -1630,12 +1630,12 @@
             255
           ]
         ],
-        "inkPixels": 77981,
-        "inkRatio": 0.07220462962962963,
+        "inkPixels": 77125,
+        "inkRatio": 0.07141203703703704,
         "contentBounds": {
-          "x": 188,
+          "x": 187,
           "y": 37,
-          "width": 824,
+          "width": 826,
           "height": 826
         }
       },
@@ -1665,9 +1665,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0885072655217967,
+      "widthRatio": 1.0911492734478203,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.08234787919165
+      "inkRatio": 1.0704669109482567
     },
     {
       "id": "parity_ishikawa_029",
@@ -1689,8 +1689,8 @@
             255
           ]
         ],
-        "inkPixels": 50192,
-        "inkRatio": 0.04647407407407408,
+        "inkPixels": 49746,
+        "inkRatio": 0.04606111111111111,
         "contentBounds": {
           "x": 293,
           "y": 37,
@@ -1726,7 +1726,7 @@
       },
       "widthRatio": 1.0964285714285715,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.108260283954161
+      "inkRatio": 1.0984124180264523
     },
     {
       "id": "parity_ishikawa_030",
@@ -1748,12 +1748,12 @@
             255
           ]
         ],
-        "inkPixels": 70115,
-        "inkRatio": 0.0649212962962963,
+        "inkPixels": 66554,
+        "inkRatio": 0.061624074074074074,
         "contentBounds": {
-          "x": 239,
+          "x": 236,
           "y": 50,
-          "width": 722,
+          "width": 728,
           "height": 800
         }
       },
@@ -1783,9 +1783,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0403458213256485,
+      "widthRatio": 1.0489913544668588,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1355759264058045
+      "inkRatio": 1.0779023062969681
     },
     {
       "id": "parity_ishikawa_031",
@@ -1807,8 +1807,8 @@
             255
           ]
         ],
-        "inkPixels": 120703,
-        "inkRatio": 0.11176203703703703,
+        "inkPixels": 119333,
+        "inkRatio": 0.11049351851851852,
         "contentBounds": {
           "x": 163,
           "y": 34,
@@ -1844,7 +1844,7 @@
       },
       "widthRatio": 1.0632603406326033,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0679224249287773
+      "inkRatio": 1.0558013200502538
     },
     {
       "id": "parity_ishikawa_032",
@@ -1866,12 +1866,12 @@
             255
           ]
         ],
-        "inkPixels": 66560,
-        "inkRatio": 0.06162962962962963,
+        "inkPixels": 65096,
+        "inkRatio": 0.06027407407407408,
         "contentBounds": {
-          "x": 204,
+          "x": 203,
           "y": 37,
-          "width": 792,
+          "width": 794,
           "height": 826
         }
       },
@@ -1901,9 +1901,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0717185385656292,
+      "widthRatio": 1.0744248985115021,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0938552811056879
+      "inkRatio": 1.0697957238409834
     },
     {
       "id": "parity_ishikawa_033",
@@ -1925,13 +1925,13 @@
             255
           ]
         ],
-        "inkPixels": 254353,
-        "inkRatio": 0.23551203703703705,
+        "inkPixels": 254153,
+        "inkRatio": 0.23532685185185184,
         "contentBounds": {
-          "x": 143,
-          "y": 73,
-          "width": 914,
-          "height": 754
+          "x": 140,
+          "y": 74,
+          "width": 920,
+          "height": 752
         }
       },
       "official": {
@@ -1960,9 +1960,9 @@
           "height": 674
         }
       },
-      "widthRatio": 1.1598984771573604,
-      "heightRatio": 1.1186943620178043,
-      "inkRatio": 1.2907781623311378
+      "widthRatio": 1.16751269035533,
+      "heightRatio": 1.1157270029673592,
+      "inkRatio": 1.2897632121144458
     },
     {
       "id": "parity_ishikawa_034",
@@ -1984,12 +1984,12 @@
             255
           ]
         ],
-        "inkPixels": 50122,
-        "inkRatio": 0.04640925925925926,
+        "inkPixels": 49124,
+        "inkRatio": 0.045485185185185184,
         "contentBounds": {
-          "x": 288,
+          "x": 287,
           "y": 37,
-          "width": 624,
+          "width": 626,
           "height": 826
         }
       },
@@ -2019,9 +2019,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0758620689655172,
+      "widthRatio": 1.0793103448275863,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.100759871744191
+      "inkRatio": 1.078842183862608
     },
     {
       "id": "parity_ishikawa_035",
@@ -2043,13 +2043,13 @@
             255
           ]
         ],
-        "inkPixels": 65442,
-        "inkRatio": 0.060594444444444444,
+        "inkPixels": 62531,
+        "inkRatio": 0.057899074074074075,
         "contentBounds": {
-          "x": 277,
-          "y": 36,
-          "width": 646,
-          "height": 828
+          "x": 275,
+          "y": 37,
+          "width": 650,
+          "height": 826
         }
       },
       "official": {
@@ -2078,9 +2078,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0590163934426229,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1494361892717884
+      "widthRatio": 1.0655737704918034,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0983068113956511
     },
     {
       "id": "parity_ishikawa_036",
@@ -2102,8 +2102,8 @@
             255
           ]
         ],
-        "inkPixels": 58708,
-        "inkRatio": 0.05435925925925926,
+        "inkPixels": 57838,
+        "inkRatio": 0.0535537037037037,
         "contentBounds": {
           "x": 233,
           "y": 58,
@@ -2139,7 +2139,7 @@
       },
       "widthRatio": 1.0794117647058823,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0952372068727496
+      "inkRatio": 1.0790067720090293
     },
     {
       "id": "parity_ishikawa_037",
@@ -2161,13 +2161,13 @@
             255
           ]
         ],
-        "inkPixels": 214864,
-        "inkRatio": 0.19894814814814815,
+        "inkPixels": 208429,
+        "inkRatio": 0.1929898148148148,
         "contentBounds": {
           "x": 47,
-          "y": 188,
+          "y": 190,
           "width": 1106,
-          "height": 524
+          "height": 520
         }
       },
       "official": {
@@ -2197,8 +2197,8 @@
         }
       },
       "widthRatio": 1.092885375494071,
-      "heightRatio": 1.048,
-      "inkRatio": 1.1093419245583058
+      "heightRatio": 1.04,
+      "inkRatio": 1.0761180467354379
     },
     {
       "id": "parity_ishikawa_038",
@@ -2220,13 +2220,13 @@
             255
           ]
         ],
-        "inkPixels": 176727,
-        "inkRatio": 0.16363611111111112,
+        "inkPixels": 170516,
+        "inkRatio": 0.15788518518518518,
         "contentBounds": {
           "x": 66,
-          "y": 227,
+          "y": 229,
           "width": 1068,
-          "height": 446
+          "height": 442
         }
       },
       "official": {
@@ -2256,8 +2256,8 @@
         }
       },
       "widthRatio": 1.0809716599190284,
-      "heightRatio": 1.0420560747663552,
-      "inkRatio": 1.1043159848281292
+      "heightRatio": 1.0327102803738317,
+      "inkRatio": 1.065505239544344
     },
     {
       "id": "parity_ishikawa_039",
@@ -2279,8 +2279,8 @@
             255
           ]
         ],
-        "inkPixels": 119493,
-        "inkRatio": 0.11064166666666667,
+        "inkPixels": 117469,
+        "inkRatio": 0.1087675925925926,
         "contentBounds": {
           "x": 166,
           "y": 37,
@@ -2316,7 +2316,7 @@
       },
       "widthRatio": 1.0637254901960784,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0833847102342786
+      "inkRatio": 1.0650340900848625
     },
     {
       "id": "parity_ishikawa_040",
@@ -2338,12 +2338,12 @@
             255
           ]
         ],
-        "inkPixels": 75187,
-        "inkRatio": 0.06961759259259259,
+        "inkPixels": 74042,
+        "inkRatio": 0.06855740740740741,
         "contentBounds": {
-          "x": 144,
+          "x": 143,
           "y": 37,
-          "width": 912,
+          "width": 914,
           "height": 826
         }
       },
@@ -2373,9 +2373,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0754716981132075,
+      "widthRatio": 1.0778301886792452,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.100512295081967
+      "inkRatio": 1.0837529274004685
     },
     {
       "id": "parity_ishikawa_041",
@@ -2397,12 +2397,12 @@
             255
           ]
         ],
-        "inkPixels": 79036,
-        "inkRatio": 0.07318148148148149,
+        "inkPixels": 78118,
+        "inkRatio": 0.07233148148148148,
         "contentBounds": {
-          "x": 181,
+          "x": 180,
           "y": 37,
-          "width": 838,
+          "width": 840,
           "height": 826
         }
       },
@@ -2432,9 +2432,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0883116883116883,
+      "widthRatio": 1.0909090909090908,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0819586852660543
+      "inkRatio": 1.0693917781215347
     },
     {
       "id": "parity_ishikawa_042",
@@ -2456,8 +2456,8 @@
             255
           ]
         ],
-        "inkPixels": 51224,
-        "inkRatio": 0.04742962962962963,
+        "inkPixels": 50799,
+        "inkRatio": 0.04703611111111111,
         "contentBounds": {
           "x": 286,
           "y": 37,
@@ -2493,7 +2493,7 @@
       },
       "widthRatio": 1.0940766550522647,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1099698801707512
+      "inkRatio": 1.1007605798608855
     },
     {
       "id": "parity_ishikawa_043",
@@ -2515,12 +2515,12 @@
             255
           ]
         ],
-        "inkPixels": 71123,
-        "inkRatio": 0.06585462962962962,
+        "inkPixels": 67438,
+        "inkRatio": 0.06244259259259259,
         "contentBounds": {
-          "x": 239,
+          "x": 236,
           "y": 50,
-          "width": 722,
+          "width": 728,
           "height": 800
         }
       },
@@ -2550,9 +2550,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0403458213256485,
+      "widthRatio": 1.0489913544668588,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1347000638162092
+      "inkRatio": 1.0759093809827696
     },
     {
       "id": "parity_ishikawa_044",
@@ -2574,12 +2574,12 @@
             255
           ]
         ],
-        "inkPixels": 121578,
-        "inkRatio": 0.11257222222222223,
+        "inkPixels": 120225,
+        "inkRatio": 0.11131944444444444,
         "contentBounds": {
-          "x": 157,
+          "x": 156,
           "y": 34,
-          "width": 886,
+          "width": 888,
           "height": 832
         }
       },
@@ -2609,9 +2609,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0598086124401913,
+      "widthRatio": 1.062200956937799,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0670352817272248
+      "inkRatio": 1.0551606108478147
     },
     {
       "id": "parity_ishikawa_045",
@@ -2633,12 +2633,12 @@
             255
           ]
         ],
-        "inkPixels": 67643,
-        "inkRatio": 0.0626324074074074,
+        "inkPixels": 66103,
+        "inkRatio": 0.06120648148148148,
         "contentBounds": {
-          "x": 197,
+          "x": 196,
           "y": 37,
-          "width": 806,
+          "width": 808,
           "height": 826
         }
       },
@@ -2668,9 +2668,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.071808510638298,
+      "widthRatio": 1.074468085106383,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0942636210689787
+      "inkRatio": 1.0693509770933092
     },
     {
       "id": "parity_ishikawa_046",
@@ -2692,13 +2692,13 @@
             255
           ]
         ],
-        "inkPixels": 260277,
-        "inkRatio": 0.24099722222222222,
+        "inkPixels": 260129,
+        "inkRatio": 0.24086018518518518,
         "contentBounds": {
-          "x": 127,
-          "y": 73,
-          "width": 946,
-          "height": 754
+          "x": 123,
+          "y": 74,
+          "width": 954,
+          "height": 752
         }
       },
       "official": {
@@ -2727,9 +2727,9 @@
           "height": 674
         }
       },
-      "widthRatio": 1.156479217603912,
-      "heightRatio": 1.1186943620178043,
-      "inkRatio": 1.2889147497957265
+      "widthRatio": 1.1662591687041566,
+      "heightRatio": 1.1157270029673592,
+      "inkRatio": 1.2881818406913117
     },
     {
       "id": "parity_ishikawa_047",
@@ -2751,12 +2751,12 @@
             255
           ]
         ],
-        "inkPixels": 51168,
-        "inkRatio": 0.047377777777777776,
+        "inkPixels": 50092,
+        "inkRatio": 0.04638148148148148,
         "contentBounds": {
-          "x": 281,
+          "x": 280,
           "y": 37,
-          "width": 638,
+          "width": 640,
           "height": 826
         }
       },
@@ -2786,9 +2786,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0777027027027026,
+      "widthRatio": 1.0810810810810811,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0973428553046387
+      "inkRatio": 1.0742670870059405
     },
     {
       "id": "parity_ishikawa_048",
@@ -2810,13 +2810,13 @@
             255
           ]
         ],
-        "inkPixels": 66634,
-        "inkRatio": 0.06169814814814815,
+        "inkPixels": 63586,
+        "inkRatio": 0.05887592592592593,
         "contentBounds": {
-          "x": 271,
-          "y": 36,
-          "width": 658,
-          "height": 828
+          "x": 268,
+          "y": 37,
+          "width": 664,
+          "height": 826
         }
       },
       "official": {
@@ -2845,9 +2845,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0578778135048232,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1487234299308704
+      "widthRatio": 1.067524115755627,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0961780474770286
     },
     {
       "id": "parity_ishikawa_049",
@@ -2869,12 +2869,12 @@
             255
           ]
         ],
-        "inkPixels": 59672,
-        "inkRatio": 0.05525185185185185,
+        "inkPixels": 58703,
+        "inkRatio": 0.05435462962962963,
         "contentBounds": {
-          "x": 227,
+          "x": 226,
           "y": 58,
-          "width": 746,
+          "width": 748,
           "height": 784
         }
       },
@@ -2904,9 +2904,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.07492795389049,
+      "widthRatio": 1.0778097982708934,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0990533023906877
+      "inkRatio": 1.0812060264485945
     },
     {
       "id": "parity_ishikawa_050",
@@ -2928,13 +2928,13 @@
             255
           ]
         ],
-        "inkPixels": 207092,
-        "inkRatio": 0.19175185185185184,
+        "inkPixels": 199255,
+        "inkRatio": 0.18449537037037037,
         "contentBounds": {
           "x": 46,
-          "y": 195,
+          "y": 197,
           "width": 1108,
-          "height": 510
+          "height": 506
         }
       },
       "official": {
@@ -2964,8 +2964,8 @@
         }
       },
       "widthRatio": 1.0905511811023623,
-      "heightRatio": 1.0450819672131149,
-      "inkRatio": 1.0997222709000438
+      "heightRatio": 1.0368852459016393,
+      "inkRatio": 1.0581053883693636
     },
     {
       "id": "parity_ishikawa_051",
@@ -2987,13 +2987,13 @@
             255
           ]
         ],
-        "inkPixels": 169434,
-        "inkRatio": 0.15688333333333335,
+        "inkPixels": 164563,
+        "inkRatio": 0.15237314814814815,
         "contentBounds": {
           "x": 64,
-          "y": 232,
+          "y": 234,
           "width": 1072,
-          "height": 436
+          "height": 432
         }
       },
       "official": {
@@ -3023,8 +3023,8 @@
         }
       },
       "widthRatio": 1.0806451612903225,
-      "heightRatio": 1.0430622009569377,
-      "inkRatio": 1.0944995316688737
+      "heightRatio": 1.0334928229665072,
+      "inkRatio": 1.063034139724169
     },
     {
       "id": "parity_ishikawa_052",
@@ -3046,12 +3046,12 @@
             255
           ]
         ],
-        "inkPixels": 120409,
-        "inkRatio": 0.11148981481481482,
+        "inkPixels": 118440,
+        "inkRatio": 0.10966666666666666,
         "contentBounds": {
-          "x": 160,
+          "x": 159,
           "y": 37,
-          "width": 880,
+          "width": 882,
           "height": 826
         }
       },
@@ -3081,9 +3081,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0602409638554218,
+      "widthRatio": 1.0626506024096385,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0846387360038914
+      "inkRatio": 1.0669020745318114
     },
     {
       "id": "parity_ishikawa_053",
@@ -3105,8 +3105,8 @@
             255
           ]
         ],
-        "inkPixels": 77037,
-        "inkRatio": 0.07133055555555555,
+        "inkPixels": 75876,
+        "inkRatio": 0.07025555555555556,
         "contentBounds": {
           "x": 131,
           "y": 37,
@@ -3142,7 +3142,7 @@
       },
       "widthRatio": 1.0806451612903225,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1036345142758908
+      "inkRatio": 1.0870019913184248
     },
     {
       "id": "parity_ishikawa_054",
@@ -3164,8 +3164,8 @@
             255
           ]
         ],
-        "inkPixels": 80730,
-        "inkRatio": 0.07475,
+        "inkPixels": 80014,
+        "inkRatio": 0.07408703703703703,
         "contentBounds": {
           "x": 168,
           "y": 37,
@@ -3201,7 +3201,7 @@
       },
       "widthRatio": 1.0922882427307206,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0834787276875586
+      "inkRatio": 1.0738692792913702
     },
     {
       "id": "parity_ishikawa_055",
@@ -3223,12 +3223,12 @@
             255
           ]
         ],
-        "inkPixels": 53305,
-        "inkRatio": 0.04935648148148148,
+        "inkPixels": 52764,
+        "inkRatio": 0.048855555555555555,
         "contentBounds": {
-          "x": 274,
+          "x": 273,
           "y": 37,
-          "width": 652,
+          "width": 654,
           "height": 826
         }
       },
@@ -3258,9 +3258,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0976430976430978,
+      "widthRatio": 1.101010101010101,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1131645992565677
+      "inkRatio": 1.1018669339681744
     },
     {
       "id": "parity_ishikawa_056",
@@ -3282,12 +3282,12 @@
             255
           ]
         ],
-        "inkPixels": 73058,
-        "inkRatio": 0.0676462962962963,
+        "inkPixels": 69127,
+        "inkRatio": 0.06400648148148148,
         "contentBounds": {
-          "x": 229,
+          "x": 226,
           "y": 50,
-          "width": 742,
+          "width": 747,
           "height": 800
         }
       },
@@ -3317,9 +3317,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0480225988700564,
+      "widthRatio": 1.055084745762712,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.140195083886071
+      "inkRatio": 1.0788451033944597
     },
     {
       "id": "parity_ishikawa_057",
@@ -3341,12 +3341,12 @@
             255
           ]
         ],
-        "inkPixels": 123524,
-        "inkRatio": 0.11437407407407407,
+        "inkPixels": 122211,
+        "inkRatio": 0.11315833333333333,
         "contentBounds": {
-          "x": 144,
+          "x": 143,
           "y": 34,
-          "width": 912,
+          "width": 914,
           "height": 832
         }
       },
@@ -3376,9 +3376,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0654205607476634,
+      "widthRatio": 1.0677570093457944,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.072825020192984
+      "inkRatio": 1.0614214123798191
     },
     {
       "id": "parity_ishikawa_058",
@@ -3400,8 +3400,8 @@
             255
           ]
         ],
-        "inkPixels": 69745,
-        "inkRatio": 0.06457870370370371,
+        "inkPixels": 68139,
+        "inkRatio": 0.06309166666666667,
         "contentBounds": {
           "x": 184,
           "y": 37,
@@ -3437,7 +3437,7 @@
       },
       "widthRatio": 1.074935400516796,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.099281278567601
+      "inkRatio": 1.0739684140844183
     },
     {
       "id": "parity_ishikawa_059",
@@ -3459,13 +3459,13 @@
             255
           ]
         ],
-        "inkPixels": 270591,
-        "inkRatio": 0.2505472222222222,
+        "inkPixels": 269693,
+        "inkRatio": 0.24971574074074074,
         "contentBounds": {
-          "x": 79,
-          "y": 74,
-          "width": 1042,
-          "height": 752
+          "x": 76,
+          "y": 75,
+          "width": 1048,
+          "height": 750
         }
       },
       "official": {
@@ -3494,9 +3494,9 @@
           "height": 674
         }
       },
-      "widthRatio": 1.1526548672566372,
-      "heightRatio": 1.1157270029673592,
-      "inkRatio": 1.2908028431045173
+      "widthRatio": 1.1592920353982301,
+      "heightRatio": 1.1127596439169138,
+      "inkRatio": 1.2865191050899203
     },
     {
       "id": "parity_ishikawa_060",
@@ -3518,12 +3518,12 @@
             255
           ]
         ],
-        "inkPixels": 53338,
-        "inkRatio": 0.049387037037037035,
+        "inkPixels": 51954,
+        "inkRatio": 0.048105555555555554,
         "contentBounds": {
-          "x": 268,
+          "x": 267,
           "y": 37,
-          "width": 664,
+          "width": 665,
           "height": 826
         }
       },
@@ -3553,9 +3553,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0814332247557004,
+      "widthRatio": 1.0830618892508144,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1074246325056059
+      "inkRatio": 1.0786894776181382
     },
     {
       "id": "parity_ishikawa_061",
@@ -3577,13 +3577,13 @@
             255
           ]
         ],
-        "inkPixels": 68615,
-        "inkRatio": 0.06353240740740741,
+        "inkPixels": 65605,
+        "inkRatio": 0.06074537037037037,
         "contentBounds": {
-          "x": 258,
-          "y": 36,
-          "width": 684,
-          "height": 828
+          "x": 256,
+          "y": 37,
+          "width": 688,
+          "height": 826
         }
       },
       "official": {
@@ -3612,9 +3612,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.062111801242236,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.153232041413157
+      "widthRatio": 1.0683229813664596,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.1026421056169957
     },
     {
       "id": "parity_ishikawa_062",
@@ -3636,12 +3636,12 @@
             255
           ]
         ],
-        "inkPixels": 61384,
-        "inkRatio": 0.05683703703703704,
+        "inkPixels": 60407,
+        "inkRatio": 0.05593240740740741,
         "contentBounds": {
-          "x": 215,
+          "x": 214,
           "y": 58,
-          "width": 770,
+          "width": 772,
           "height": 784
         }
       },
@@ -3671,9 +3671,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.0784313725490196,
+      "widthRatio": 1.0812324929971988,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.1009793019334937
+      "inkRatio": 1.083455895541127
     },
     {
       "id": "parity_ishikawa_063",
@@ -3695,13 +3695,13 @@
             255
           ]
         ],
-        "inkPixels": 197050,
-        "inkRatio": 0.1824537037037037,
+        "inkPixels": 190833,
+        "inkRatio": 0.17669722222222223,
         "contentBounds": {
           "x": 44,
-          "y": 207,
+          "y": 208,
           "width": 1112,
-          "height": 486
+          "height": 484
         }
       },
       "official": {
@@ -3731,8 +3731,8 @@
         }
       },
       "widthRatio": 1.0880626223091976,
-      "heightRatio": 1.0384615384615385,
-      "inkRatio": 1.0900230119042351
+      "heightRatio": 1.0341880341880343,
+      "inkRatio": 1.0556323848298446
     },
     {
       "id": "parity_ishikawa_064",
@@ -3754,13 +3754,13 @@
             255
           ]
         ],
-        "inkPixels": 159816,
-        "inkRatio": 0.1479777777777778,
+        "inkPixels": 155024,
+        "inkRatio": 0.14354074074074075,
         "contentBounds": {
           "x": 62,
-          "y": 241,
+          "y": 243,
           "width": 1076,
-          "height": 418
+          "height": 414
         }
       },
       "official": {
@@ -3790,8 +3790,8 @@
         }
       },
       "widthRatio": 1.0781563126252505,
-      "heightRatio": 1.0346534653465347,
-      "inkRatio": 1.0752462457613434
+      "heightRatio": 1.0247524752475248,
+      "inkRatio": 1.0430055438936434
     },
     {
       "id": "parity_ishikawa_065",
@@ -3813,12 +3813,12 @@
             255
           ]
         ],
-        "inkPixels": 122103,
-        "inkRatio": 0.11305833333333333,
+        "inkPixels": 120327,
+        "inkRatio": 0.1114138888888889,
         "contentBounds": {
-          "x": 147,
+          "x": 146,
           "y": 37,
-          "width": 906,
+          "width": 908,
           "height": 826
         }
       },
@@ -3848,9 +3848,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0658823529411765,
+      "widthRatio": 1.068235294117647,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0838089489708063
+      "inkRatio": 1.068044842492078
     },
     {
       "id": "parity_ishikawa_066",
@@ -3872,8 +3872,8 @@
             255
           ]
         ],
-        "inkPixels": 79030,
-        "inkRatio": 0.07317592592592592,
+        "inkPixels": 77846,
+        "inkRatio": 0.07207962962962963,
         "contentBounds": {
           "x": 118,
           "y": 37,
@@ -3909,7 +3909,7 @@
       },
       "widthRatio": 1.0758928571428572,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0991196473026161
+      "inkRatio": 1.082653018650126
     },
     {
       "id": "parity_ishikawa_067",
@@ -3931,8 +3931,8 @@
             255
           ]
         ],
-        "inkPixels": 82818,
-        "inkRatio": 0.07668333333333334,
+        "inkPixels": 82042,
+        "inkRatio": 0.07596481481481482,
         "contentBounds": {
           "x": 155,
           "y": 37,
@@ -3968,7 +3968,7 @@
       },
       "widthRatio": 1.0853658536585367,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0817963320967658
+      "inkRatio": 1.071659961335493
     },
     {
       "id": "parity_ishikawa_068",
@@ -3990,12 +3990,12 @@
             255
           ]
         ],
-        "inkPixels": 55369,
-        "inkRatio": 0.051267592592592594,
+        "inkPixels": 54781,
+        "inkRatio": 0.05072314814814815,
         "contentBounds": {
-          "x": 261,
+          "x": 260,
           "y": 37,
-          "width": 678,
+          "width": 680,
           "height": 826
         }
       },
@@ -4025,9 +4025,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0865384615384615,
+      "widthRatio": 1.0897435897435896,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1066717300927407
+      "inkRatio": 1.0949192516789257
     },
     {
       "id": "parity_ishikawa_069",
@@ -4049,12 +4049,12 @@
             255
           ]
         ],
-        "inkPixels": 74782,
-        "inkRatio": 0.06924259259259259,
+        "inkPixels": 71005,
+        "inkRatio": 0.06574537037037037,
         "contentBounds": {
-          "x": 216,
+          "x": 214,
           "y": 50,
-          "width": 767,
+          "width": 772,
           "height": 800
         }
       },
@@ -4084,9 +4084,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0421195652173914,
+      "widthRatio": 1.048913043478261,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1315689923888208
+      "inkRatio": 1.0744170563045683
     },
     {
       "id": "parity_ishikawa_070",
@@ -4108,12 +4108,12 @@
             255
           ]
         ],
-        "inkPixels": 125503,
-        "inkRatio": 0.11620648148148148,
+        "inkPixels": 123798,
+        "inkRatio": 0.11462777777777777,
         "contentBounds": {
-          "x": 131,
+          "x": 130,
           "y": 34,
-          "width": 938,
+          "width": 940,
           "height": 832
         }
       },
@@ -4143,9 +4143,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0610859728506787,
+      "widthRatio": 1.0633484162895928,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0712743164921086
+      "inkRatio": 1.05672069857366
     },
     {
       "id": "parity_ishikawa_071",
@@ -4167,8 +4167,8 @@
             255
           ]
         ],
-        "inkPixels": 71601,
-        "inkRatio": 0.06629722222222222,
+        "inkPixels": 69969,
+        "inkRatio": 0.06478611111111111,
         "contentBounds": {
           "x": 171,
           "y": 37,
@@ -4204,7 +4204,7 @@
       },
       "widthRatio": 1.0698254364089776,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0951011730878055
+      "inkRatio": 1.0701405564137467
     },
     {
       "id": "parity_ishikawa_072",
@@ -4226,13 +4226,13 @@
             255
           ]
         ],
-        "inkPixels": 235479,
-        "inkRatio": 0.21803611111111112,
+        "inkPixels": 230784,
+        "inkRatio": 0.2136888888888889,
         "contentBounds": {
           "x": 70,
-          "y": 107,
+          "y": 110,
           "width": 1060,
-          "height": 686
+          "height": 680
         }
       },
       "official": {
@@ -4262,8 +4262,8 @@
         }
       },
       "widthRatio": 1.0816326530612246,
-      "heightRatio": 1.071875,
-      "inkRatio": 1.1878900082226471
+      "heightRatio": 1.0625,
+      "inkRatio": 1.1642057578707885
     },
     {
       "id": "parity_ishikawa_073",
@@ -4285,12 +4285,12 @@
             255
           ]
         ],
-        "inkPixels": 55171,
-        "inkRatio": 0.05108425925925926,
+        "inkPixels": 53728,
+        "inkRatio": 0.049748148148148146,
         "contentBounds": {
-          "x": 255,
+          "x": 254,
           "y": 37,
-          "width": 690,
+          "width": 691,
           "height": 826
         }
       },
@@ -4320,9 +4320,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.074766355140187,
+      "widthRatio": 1.0763239875389408,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0988706754038282
+      "inkRatio": 1.0701296631943753
     },
     {
       "id": "parity_ishikawa_074",
@@ -4344,13 +4344,13 @@
             255
           ]
         ],
-        "inkPixels": 70688,
-        "inkRatio": 0.06545185185185186,
+        "inkPixels": 67639,
+        "inkRatio": 0.0626287037037037,
         "contentBounds": {
-          "x": 245,
-          "y": 36,
-          "width": 710,
-          "height": 828
+          "x": 243,
+          "y": 37,
+          "width": 714,
+          "height": 826
         }
       },
       "official": {
@@ -4379,9 +4379,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.056547619047619,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1452828048800248
+      "widthRatio": 1.0625,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0958830867937979
     },
     {
       "id": "parity_ishikawa_075",
@@ -4403,12 +4403,12 @@
             255
           ]
         ],
-        "inkPixels": 63001,
-        "inkRatio": 0.05833425925925926,
+        "inkPixels": 62183,
+        "inkRatio": 0.05757685185185185,
         "contentBounds": {
-          "x": 203,
+          "x": 202,
           "y": 58,
-          "width": 794,
+          "width": 796,
           "height": 784
         }
       },
@@ -4438,9 +4438,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.072972972972973,
+      "widthRatio": 1.0756756756756756,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0890594478729105
+      "inkRatio": 1.074919186157064
     },
     {
       "id": "parity_ishikawa_076",
@@ -4462,13 +4462,13 @@
             255
           ]
         ],
-        "inkPixels": 187902,
-        "inkRatio": 0.17398333333333332,
+        "inkPixels": 183311,
+        "inkRatio": 0.16973240740740742,
         "contentBounds": {
           "x": 43,
-          "y": 218,
+          "y": 219,
           "width": 1114,
-          "height": 464
+          "height": 462
         }
       },
       "official": {
@@ -4498,8 +4498,8 @@
         }
       },
       "widthRatio": 1.0815533980582523,
-      "heightRatio": 1.045045045045045,
-      "inkRatio": 1.0913431102076376
+      "heightRatio": 1.0405405405405406,
+      "inkRatio": 1.0646783795556847
     },
     {
       "id": "parity_ishikawa_077",
@@ -4521,13 +4521,13 @@
             255
           ]
         ],
-        "inkPixels": 152183,
-        "inkRatio": 0.1409101851851852,
+        "inkPixels": 146179,
+        "inkRatio": 0.13535092592592593,
         "contentBounds": {
           "x": 60,
-          "y": 249,
+          "y": 251,
           "width": 1080,
-          "height": 402
+          "height": 398
         }
       },
       "official": {
@@ -4557,8 +4557,8 @@
         }
       },
       "widthRatio": 1.073558648111332,
-      "heightRatio": 1.0414507772020725,
-      "inkRatio": 1.0924603203089667
+      "heightRatio": 1.0310880829015545,
+      "inkRatio": 1.0493600281400974
     },
     {
       "id": "parity_ishikawa_078",
@@ -4580,12 +4580,12 @@
             255
           ]
         ],
-        "inkPixels": 123941,
-        "inkRatio": 0.11476018518518519,
+        "inkPixels": 122184,
+        "inkRatio": 0.11313333333333334,
         "contentBounds": {
-          "x": 134,
+          "x": 133,
           "y": 37,
-          "width": 932,
+          "width": 934,
           "height": 826
         }
       },
@@ -4615,9 +4615,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.061503416856492,
+      "widthRatio": 1.0637813211845102,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0860775688322615
+      "inkRatio": 1.0706812246972433
     },
     {
       "id": "parity_ishikawa_079",
@@ -4639,12 +4639,12 @@
             255
           ]
         ],
-        "inkPixels": 80444,
-        "inkRatio": 0.07448518518518518,
+        "inkPixels": 79135,
+        "inkRatio": 0.07327314814814814,
         "contentBounds": {
-          "x": 110,
+          "x": 109,
           "y": 37,
-          "width": 980,
+          "width": 982,
           "height": 826
         }
       },
@@ -4674,9 +4674,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0769230769230769,
+      "widthRatio": 1.079120879120879,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1030605528740676
+      "inkRatio": 1.085111342694164
     },
     {
       "id": "parity_ishikawa_080",
@@ -4698,12 +4698,12 @@
             255
           ]
         ],
-        "inkPixels": 84137,
-        "inkRatio": 0.07790462962962963,
+        "inkPixels": 83279,
+        "inkRatio": 0.07711018518518518,
         "contentBounds": {
-          "x": 147,
+          "x": 146,
           "y": 37,
-          "width": 906,
+          "width": 908,
           "height": 826
         }
       },
@@ -4733,9 +4733,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0889423076923077,
+      "widthRatio": 1.0913461538461537,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0824541992589545
+      "inkRatio": 1.0714157060518732
     },
     {
       "id": "parity_ishikawa_081",
@@ -4757,8 +4757,8 @@
             255
           ]
         ],
-        "inkPixels": 56386,
-        "inkRatio": 0.05220925925925926,
+        "inkPixels": 55961,
+        "inkRatio": 0.05181574074074074,
         "contentBounds": {
           "x": 252,
           "y": 37,
@@ -4794,7 +4794,7 @@
       },
       "widthRatio": 1.0943396226415094,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.10782349011749
+      "inkRatio": 1.0994734567173563
     },
     {
       "id": "parity_ishikawa_082",
@@ -4816,12 +4816,12 @@
             255
           ]
         ],
-        "inkPixels": 76037,
-        "inkRatio": 0.07040462962962964,
+        "inkPixels": 72177,
+        "inkRatio": 0.06683055555555556,
         "contentBounds": {
-          "x": 208,
+          "x": 206,
           "y": 50,
-          "width": 784,
+          "width": 788,
           "height": 800
         }
       },
@@ -4851,9 +4851,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0467289719626167,
+      "widthRatio": 1.0520694259012016,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1326322374986968
+      "inkRatio": 1.0751344346297649
     },
     {
       "id": "parity_ishikawa_083",
@@ -4875,12 +4875,12 @@
             255
           ]
         ],
-        "inkPixels": 126640,
-        "inkRatio": 0.11725925925925926,
+        "inkPixels": 125335,
+        "inkRatio": 0.11605092592592593,
         "contentBounds": {
-          "x": 122,
+          "x": 121,
           "y": 34,
-          "width": 956,
+          "width": 958,
           "height": 832
         }
       },
@@ -4910,9 +4910,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.064587973273942,
+      "widthRatio": 1.066815144766147,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0726567396791515
+      "inkRatio": 1.0616032254239298
     },
     {
       "id": "parity_ishikawa_084",
@@ -4934,12 +4934,12 @@
             255
           ]
         ],
-        "inkPixels": 72973,
-        "inkRatio": 0.0675675925925926,
+        "inkPixels": 71195,
+        "inkRatio": 0.0659212962962963,
         "contentBounds": {
-          "x": 163,
+          "x": 162,
           "y": 37,
-          "width": 874,
+          "width": 876,
           "height": 826
         }
       },
@@ -4969,9 +4969,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0737100737100738,
+      "widthRatio": 1.076167076167076,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0983293196869355
+      "inkRatio": 1.0715683323299217
     },
     {
       "id": "parity_ishikawa_085",
@@ -4993,13 +4993,13 @@
             255
           ]
         ],
-        "inkPixels": 214155,
-        "inkRatio": 0.19829166666666667,
+        "inkPixels": 210431,
+        "inkRatio": 0.19484351851851853,
         "contentBounds": {
           "x": 66,
-          "y": 127,
+          "y": 130,
           "width": 1068,
-          "height": 646
+          "height": 640
         }
       },
       "official": {
@@ -5029,8 +5029,8 @@
         }
       },
       "widthRatio": 1.0809716599190284,
-      "heightRatio": 1.0555555555555556,
-      "inkRatio": 1.1554398554047858
+      "heightRatio": 1.0457516339869282,
+      "inkRatio": 1.135347595025493
     },
     {
       "id": "parity_ishikawa_086",
@@ -5052,12 +5052,12 @@
             255
           ]
         ],
-        "inkPixels": 56327,
-        "inkRatio": 0.05215462962962963,
+        "inkPixels": 54973,
+        "inkRatio": 0.050900925925925926,
         "contentBounds": {
-          "x": 247,
+          "x": 246,
           "y": 37,
-          "width": 706,
+          "width": 708,
           "height": 826
         }
       },
@@ -5087,9 +5087,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.076219512195122,
+      "widthRatio": 1.079268292682927,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0975001461333125
+      "inkRatio": 1.071118212107632
     },
     {
       "id": "parity_ishikawa_087",
@@ -5111,13 +5111,13 @@
             255
           ]
         ],
-        "inkPixels": 72004,
-        "inkRatio": 0.06667037037037037,
+        "inkPixels": 68911,
+        "inkRatio": 0.06380648148148148,
         "contentBounds": {
-          "x": 237,
-          "y": 36,
-          "width": 726,
-          "height": 828
+          "x": 234,
+          "y": 37,
+          "width": 732,
+          "height": 826
         }
       },
       "official": {
@@ -5146,9 +5146,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0583090379008746,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1483342104843468
+      "widthRatio": 1.0670553935860059,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0990064271246989
     },
     {
       "id": "parity_ishikawa_088",
@@ -5170,12 +5170,12 @@
             255
           ]
         ],
-        "inkPixels": 64213,
-        "inkRatio": 0.05945648148148148,
+        "inkPixels": 63302,
+        "inkRatio": 0.058612962962962964,
         "contentBounds": {
-          "x": 195,
+          "x": 194,
           "y": 58,
-          "width": 810,
+          "width": 812,
           "height": 784
         }
       },
@@ -5205,9 +5205,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.077127659574468,
+      "widthRatio": 1.0797872340425532,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0904073765898554
+      "inkRatio": 1.074937594457369
     },
     {
       "id": "parity_ishikawa_089",
@@ -5229,13 +5229,13 @@
             255
           ]
         ],
-        "inkPixels": 184727,
-        "inkRatio": 0.1710435185185185,
+        "inkPixels": 176919,
+        "inkRatio": 0.1638138888888889,
         "contentBounds": {
           "x": 42,
-          "y": 224,
+          "y": 226,
           "width": 1116,
-          "height": 452
+          "height": 448
         }
       },
       "official": {
@@ -5265,8 +5265,8 @@
         }
       },
       "widthRatio": 1.0813953488372092,
-      "heightRatio": 1.0414746543778801,
-      "inkRatio": 1.0974685273970568
+      "heightRatio": 1.032258064516129,
+      "inkRatio": 1.0510809702889123
     },
     {
       "id": "parity_ishikawa_090",
@@ -5288,13 +5288,13 @@
             255
           ]
         ],
-        "inkPixels": 147991,
-        "inkRatio": 0.1370287037037037,
+        "inkPixels": 143258,
+        "inkRatio": 0.1326462962962963,
         "contentBounds": {
           "x": 59,
-          "y": 254,
+          "y": 256,
           "width": 1082,
-          "height": 392
+          "height": 388
         }
       },
       "official": {
@@ -5324,8 +5324,8 @@
         }
       },
       "widthRatio": 1.0734126984126984,
-      "heightRatio": 1.037037037037037,
-      "inkRatio": 1.0811653918367048
+      "heightRatio": 1.0264550264550265,
+      "inkRatio": 1.0465879121280528
     },
     {
       "id": "parity_ishikawa_091",
@@ -5347,12 +5347,12 @@
             255
           ]
         ],
-        "inkPixels": 125390,
-        "inkRatio": 0.11610185185185184,
+        "inkPixels": 123257,
+        "inkRatio": 0.11412685185185185,
         "contentBounds": {
-          "x": 126,
+          "x": 125,
           "y": 37,
-          "width": 948,
+          "width": 950,
           "height": 826
         }
       },
@@ -5382,9 +5382,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.062780269058296,
+      "widthRatio": 1.0650224215246638,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.086813320158788
+      "inkRatio": 1.0683256192903081
     },
     {
       "id": "parity_ishikawa_092",
@@ -5406,12 +5406,12 @@
             255
           ]
         ],
-        "inkPixels": 80822,
-        "inkRatio": 0.07483518518518519,
+        "inkPixels": 79468,
+        "inkRatio": 0.07358148148148148,
         "contentBounds": {
-          "x": 107,
+          "x": 106,
           "y": 37,
-          "width": 986,
+          "width": 988,
           "height": 826
         }
       },
@@ -5441,9 +5441,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0787746170678336,
+      "widthRatio": 1.0809628008752736,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1009221799953688
+      "inkRatio": 1.0824785800879955
     },
     {
       "id": "parity_ishikawa_093",
@@ -5465,12 +5465,12 @@
             255
           ]
         ],
-        "inkPixels": 84620,
-        "inkRatio": 0.07835185185185185,
+        "inkPixels": 83789,
+        "inkRatio": 0.0775824074074074,
         "contentBounds": {
-          "x": 144,
+          "x": 143,
           "y": 37,
-          "width": 912,
+          "width": 914,
           "height": 826
         }
       },
@@ -5500,9 +5500,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0909090909090908,
+      "widthRatio": 1.0933014354066986,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0862365536186491
+      "inkRatio": 1.0755693050242614
     },
     {
       "id": "parity_ishikawa_094",
@@ -5524,8 +5524,8 @@
             255
           ]
         ],
-        "inkPixels": 56904,
-        "inkRatio": 0.05268888888888889,
+        "inkPixels": 56423,
+        "inkRatio": 0.052243518518518516,
         "contentBounds": {
           "x": 249,
           "y": 37,
@@ -5561,7 +5561,7 @@
       },
       "widthRatio": 1.096875,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1128842994602206
+      "inkRatio": 1.1034772745052022
     },
     {
       "id": "parity_ishikawa_095",
@@ -5583,12 +5583,12 @@
             255
           ]
         ],
-        "inkPixels": 76423,
-        "inkRatio": 0.07076203703703704,
+        "inkPixels": 72587,
+        "inkRatio": 0.06721018518518518,
         "contentBounds": {
-          "x": 205,
+          "x": 203,
           "y": 50,
-          "width": 789,
+          "width": 794,
           "height": 800
         }
       },
@@ -5618,9 +5618,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0492021276595744,
+      "widthRatio": 1.0558510638297873,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.134410996318727
+      "inkRatio": 1.0774700154375965
     },
     {
       "id": "parity_ishikawa_096",
@@ -5642,12 +5642,12 @@
             255
           ]
         ],
-        "inkPixels": 127153,
-        "inkRatio": 0.11773425925925926,
+        "inkPixels": 125772,
+        "inkRatio": 0.11645555555555556,
         "contentBounds": {
-          "x": 119,
+          "x": 118,
           "y": 34,
-          "width": 962,
+          "width": 964,
           "height": 832
         }
       },
@@ -5677,9 +5677,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0665188470066518,
+      "widthRatio": 1.0687361419068737,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.071601338311267
+      "inkRatio": 1.0599627497745605
     },
     {
       "id": "parity_ishikawa_097",
@@ -5701,12 +5701,12 @@
             255
           ]
         ],
-        "inkPixels": 73423,
-        "inkRatio": 0.06798425925925926,
+        "inkPixels": 71637,
+        "inkRatio": 0.06633055555555556,
         "contentBounds": {
-          "x": 160,
+          "x": 159,
           "y": 37,
-          "width": 880,
+          "width": 882,
           "height": 826
         }
       },
@@ -5736,9 +5736,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.075794621026895,
+      "widthRatio": 1.078239608801956,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1004811223189797
+      "inkRatio": 1.073712135973261
     },
     {
       "id": "parity_ishikawa_098",
@@ -5760,13 +5760,13 @@
             255
           ]
         ],
-        "inkPixels": 206154,
-        "inkRatio": 0.19088333333333332,
+        "inkPixels": 202464,
+        "inkRatio": 0.18746666666666667,
         "contentBounds": {
           "x": 65,
-          "y": 133,
+          "y": 136,
           "width": 1070,
-          "height": 634
+          "height": 628
         }
       },
       "official": {
@@ -5796,8 +5796,8 @@
         }
       },
       "widthRatio": 1.0808080808080809,
-      "heightRatio": 1.0496688741721854,
-      "inkRatio": 1.1346968879690886
+      "heightRatio": 1.0397350993377483,
+      "inkRatio": 1.1143866756200393
     },
     {
       "id": "parity_ishikawa_099",
@@ -5819,12 +5819,12 @@
             255
           ]
         ],
-        "inkPixels": 56823,
-        "inkRatio": 0.05261388888888889,
+        "inkPixels": 55447,
+        "inkRatio": 0.05133981481481482,
         "contentBounds": {
-          "x": 244,
+          "x": 243,
           "y": 37,
-          "width": 712,
+          "width": 714,
           "height": 826
         }
       },
@@ -5854,9 +5854,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0787878787878789,
+      "widthRatio": 1.0818181818181818,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1020966271649955
+      "inkRatio": 1.0754087550185225
     },
     {
       "id": "parity_ishikawa_100",
@@ -5878,13 +5878,13 @@
             255
           ]
         ],
-        "inkPixels": 72485,
-        "inkRatio": 0.06711574074074074,
+        "inkPixels": 69354,
+        "inkRatio": 0.06421666666666667,
         "contentBounds": {
-          "x": 234,
-          "y": 36,
-          "width": 732,
-          "height": 828
+          "x": 231,
+          "y": 37,
+          "width": 738,
+          "height": 826
         }
       },
       "official": {
@@ -5913,9 +5913,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0624092888243832,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1513962575849033
+      "widthRatio": 1.0711175616835995,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.1016615306414208
     },
     {
       "id": "parity_ishikawa_101",
@@ -5937,12 +5937,12 @@
             255
           ]
         ],
-        "inkPixels": 64582,
-        "inkRatio": 0.05979814814814815,
+        "inkPixels": 63712,
+        "inkRatio": 0.05899259259259259,
         "contentBounds": {
-          "x": 192,
+          "x": 191,
           "y": 58,
-          "width": 816,
+          "width": 818,
           "height": 784
         }
       },
@@ -5972,9 +5972,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.0793650793650793,
+      "widthRatio": 1.082010582010582,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0935536854225578
+      "inkRatio": 1.0788221548673316
     },
     {
       "id": "parity_ishikawa_102",
@@ -5996,13 +5996,13 @@
             255
           ]
         ],
-        "inkPixels": 180968,
-        "inkRatio": 0.16756296296296297,
+        "inkPixels": 176428,
+        "inkRatio": 0.16335925925925926,
         "contentBounds": {
           "x": 41,
-          "y": 227,
+          "y": 228,
           "width": 1118,
-          "height": 446
+          "height": 444
         }
       },
       "official": {
@@ -6032,8 +6032,8 @@
         }
       },
       "widthRatio": 1.081237911025145,
-      "heightRatio": 1.0372093023255815,
-      "inkRatio": 1.0876591959515096
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0603727544280366
     },
     {
       "id": "parity_ishikawa_103",
@@ -6055,13 +6055,13 @@
             255
           ]
         ],
-        "inkPixels": 146353,
-        "inkRatio": 0.13551203703703704,
+        "inkPixels": 141616,
+        "inkRatio": 0.13112592592592592,
         "contentBounds": {
           "x": 58,
-          "y": 256,
+          "y": 258,
           "width": 1084,
-          "height": 388
+          "height": 384
         }
       },
       "official": {
@@ -6091,8 +6091,8 @@
         }
       },
       "widthRatio": 1.0732673267326733,
-      "heightRatio": 1.0319148936170213,
-      "inkRatio": 1.0782338986547217
+      "heightRatio": 1.0212765957446808,
+      "inkRatio": 1.0433347576878305
     },
     {
       "id": "parity_ishikawa_104",
@@ -6114,12 +6114,12 @@
             255
           ]
         ],
-        "inkPixels": 125866,
-        "inkRatio": 0.11654259259259259,
+        "inkPixels": 123712,
+        "inkRatio": 0.11454814814814815,
         "contentBounds": {
-          "x": 123,
+          "x": 122,
           "y": 37,
-          "width": 954,
+          "width": 956,
           "height": 826
         }
       },
@@ -6149,9 +6149,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0647321428571428,
+      "widthRatio": 1.0669642857142858,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0880156287818539
+      "inkRatio": 1.0693959406659521
     },
     {
       "id": "parity_ishikawa_105",
@@ -6173,12 +6173,12 @@
             255
           ]
         ],
-        "inkPixels": 81846,
-        "inkRatio": 0.07578333333333333,
+        "inkPixels": 80538,
+        "inkRatio": 0.07457222222222222,
         "contentBounds": {
-          "x": 100,
+          "x": 99,
           "y": 37,
-          "width": 1000,
+          "width": 1002,
           "height": 826
         }
       },
@@ -6208,9 +6208,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0729613733905579,
+      "widthRatio": 1.0751072961373391,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.098722010417226
+      "inkRatio": 1.0811630779144068
     },
     {
       "id": "parity_ishikawa_106",
@@ -6232,12 +6232,12 @@
             255
           ]
         ],
-        "inkPixels": 85691,
-        "inkRatio": 0.07934351851851852,
+        "inkPixels": 85044,
+        "inkRatio": 0.07874444444444445,
         "contentBounds": {
-          "x": 137,
+          "x": 136,
           "y": 37,
-          "width": 926,
+          "width": 928,
           "height": 826
         }
       },
@@ -6267,9 +6267,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0843091334894615,
+      "widthRatio": 1.0866510538641687,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.07893278940344
+      "inkRatio": 1.0707864319709905
     },
     {
       "id": "parity_ishikawa_107",
@@ -6291,8 +6291,8 @@
             255
           ]
         ],
-        "inkPixels": 57972,
-        "inkRatio": 0.053677777777777776,
+        "inkPixels": 57564,
+        "inkRatio": 0.0533,
         "contentBounds": {
           "x": 242,
           "y": 37,
@@ -6328,7 +6328,7 @@
       },
       "widthRatio": 1.088145896656535,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1019826258862888
+      "inkRatio": 1.094227004010873
     },
     {
       "id": "parity_ishikawa_108",
@@ -6350,12 +6350,12 @@
             255
           ]
         ],
-        "inkPixels": 77576,
-        "inkRatio": 0.07182962962962963,
+        "inkPixels": 73534,
+        "inkRatio": 0.06808703703703704,
         "contentBounds": {
-          "x": 199,
+          "x": 196,
           "y": 50,
-          "width": 802,
+          "width": 808,
           "height": 800
         }
       },
@@ -6385,9 +6385,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0415584415584416,
+      "widthRatio": 1.0493506493506493,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1290515070805862
+      "inkRatio": 1.0702236970411445
     },
     {
       "id": "parity_ishikawa_109",
@@ -6409,12 +6409,12 @@
             255
           ]
         ],
-        "inkPixels": 128189,
-        "inkRatio": 0.11869351851851852,
+        "inkPixels": 126883,
+        "inkRatio": 0.11748425925925926,
         "contentBounds": {
-          "x": 112,
+          "x": 111,
           "y": 34,
-          "width": 976,
+          "width": 978,
           "height": 832
         }
       },
@@ -6444,9 +6444,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0608695652173914,
+      "widthRatio": 1.0630434782608695,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.070150101013474
+      "inkRatio": 1.0592473243951714
     },
     {
       "id": "parity_ishikawa_110",
@@ -6468,12 +6468,12 @@
             255
           ]
         ],
-        "inkPixels": 74430,
-        "inkRatio": 0.06891666666666667,
+        "inkPixels": 72574,
+        "inkRatio": 0.06719814814814815,
         "contentBounds": {
-          "x": 154,
+          "x": 153,
           "y": 37,
-          "width": 892,
+          "width": 894,
           "height": 826
         }
       },
@@ -6503,9 +6503,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0669856459330143,
+      "widthRatio": 1.069377990430622,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.092149669845928
+      "inkRatio": 1.0649156272927365
     },
     {
       "id": "parity_ishikawa_111",
@@ -6527,13 +6527,13 @@
             255
           ]
         ],
-        "inkPixels": 194373,
-        "inkRatio": 0.179975,
+        "inkPixels": 191531,
+        "inkRatio": 0.1773435185185185,
         "contentBounds": {
           "x": 63,
-          "y": 145,
+          "y": 148,
           "width": 1074,
-          "height": 610
+          "height": 604
         }
       },
       "official": {
@@ -6563,8 +6563,8 @@
         }
       },
       "widthRatio": 1.0718562874251496,
-      "heightRatio": 1.073943661971831,
-      "inkRatio": 1.1752758714514617
+      "heightRatio": 1.0633802816901408,
+      "inkRatio": 1.1580917253680805
     },
     {
       "id": "parity_ishikawa_112",
@@ -6586,12 +6586,12 @@
             255
           ]
         ],
-        "inkPixels": 57577,
-        "inkRatio": 0.05331203703703704,
+        "inkPixels": 56227,
+        "inkRatio": 0.05206203703703704,
         "contentBounds": {
-          "x": 238,
+          "x": 237,
           "y": 37,
-          "width": 724,
+          "width": 726,
           "height": 826
         }
       },
@@ -6621,9 +6621,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0678466076696165,
+      "widthRatio": 1.0707964601769913,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0922110934061766
+      "inkRatio": 1.066602170119129
     },
     {
       "id": "parity_ishikawa_113",
@@ -6645,13 +6645,13 @@
             255
           ]
         ],
-        "inkPixels": 73455,
-        "inkRatio": 0.06801388888888889,
+        "inkPixels": 70359,
+        "inkRatio": 0.06514722222222222,
         "contentBounds": {
-          "x": 228,
-          "y": 36,
-          "width": 744,
-          "height": 828
+          "x": 225,
+          "y": 37,
+          "width": 750,
+          "height": 826
         }
       },
       "official": {
@@ -6680,9 +6680,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0508474576271187,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1410485436893203
+      "widthRatio": 1.0593220338983051,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0929553398058252
     },
     {
       "id": "parity_ishikawa_114",
@@ -6704,12 +6704,12 @@
             255
           ]
         ],
-        "inkPixels": 65673,
-        "inkRatio": 0.06080833333333333,
+        "inkPixels": 64556,
+        "inkRatio": 0.05977407407407408,
         "contentBounds": {
-          "x": 186,
+          "x": 185,
           "y": 58,
-          "width": 828,
+          "width": 830,
           "height": 784
         }
       },
@@ -6739,9 +6739,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.069767441860465,
+      "widthRatio": 1.0723514211886305,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0910586124401913
+      "inkRatio": 1.0725013290802765
     },
     {
       "id": "parity_ishikawa_115",
@@ -6763,13 +6763,13 @@
             255
           ]
         ],
-        "inkPixels": 178495,
-        "inkRatio": 0.16527314814814814,
+        "inkPixels": 170675,
+        "inkRatio": 0.1580324074074074,
         "contentBounds": {
           "x": 41,
-          "y": 231,
+          "y": 233,
           "width": 1118,
-          "height": 438
+          "height": 434
         }
       },
       "official": {
@@ -6799,8 +6799,8 @@
         }
       },
       "widthRatio": 1.075,
-      "heightRatio": 1.0682926829268293,
-      "inkRatio": 1.132158646192098
+      "heightRatio": 1.0585365853658537,
+      "inkRatio": 1.0825579256496616
     },
     {
       "id": "parity_ishikawa_116",
@@ -6822,13 +6822,13 @@
             255
           ]
         ],
-        "inkPixels": 142811,
-        "inkRatio": 0.1322324074074074,
+        "inkPixels": 139488,
+        "inkRatio": 0.12915555555555555,
         "contentBounds": {
           "x": 57,
-          "y": 260,
+          "y": 261,
           "width": 1086,
-          "height": 380
+          "height": 378
         }
       },
       "official": {
@@ -6858,8 +6858,8 @@
         }
       },
       "widthRatio": 1.0710059171597632,
-      "heightRatio": 1.0382513661202186,
-      "inkRatio": 1.068153090150263
+      "heightRatio": 1.0327868852459017,
+      "inkRatio": 1.0432987531694327
     },
     {
       "id": "parity_ishikawa_117",
@@ -6881,8 +6881,8 @@
             255
           ]
         ],
-        "inkPixels": 126867,
-        "inkRatio": 0.11746944444444445,
+        "inkPixels": 124607,
+        "inkRatio": 0.11537685185185186,
         "contentBounds": {
           "x": 116,
           "y": 37,
@@ -6918,7 +6918,7 @@
       },
       "widthRatio": 1.0590809628008753,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0838145844723894
+      "inkRatio": 1.0645075861126299
     },
     {
       "id": "parity_ishikawa_118",
@@ -6940,12 +6940,12 @@
             255
           ]
         ],
-        "inkPixels": 82992,
-        "inkRatio": 0.07684444444444445,
+        "inkPixels": 81618,
+        "inkRatio": 0.07557222222222222,
         "contentBounds": {
-          "x": 93,
+          "x": 92,
           "y": 37,
-          "width": 1014,
+          "width": 1016,
           "height": 826
         }
       },
@@ -6975,9 +6975,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0741525423728813,
+      "widthRatio": 1.076271186440678,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0995521873923528
+      "inkRatio": 1.08134820742468
     },
     {
       "id": "parity_ishikawa_119",
@@ -6999,12 +6999,12 @@
             255
           ]
         ],
-        "inkPixels": 86726,
-        "inkRatio": 0.08030185185185185,
+        "inkPixels": 86172,
+        "inkRatio": 0.0797888888888889,
         "contentBounds": {
-          "x": 130,
+          "x": 129,
           "y": 37,
-          "width": 940,
+          "width": 942,
           "height": 826
         }
       },
@@ -7034,9 +7034,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0854503464203233,
+      "widthRatio": 1.0877598152424943,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0825053672175344
+      "inkRatio": 1.0755903939288032
     },
     {
       "id": "parity_ishikawa_120",
@@ -7058,12 +7058,12 @@
             255
           ]
         ],
-        "inkPixels": 59166,
-        "inkRatio": 0.05478333333333334,
+        "inkPixels": 58662,
+        "inkRatio": 0.054316666666666666,
         "contentBounds": {
-          "x": 235,
+          "x": 234,
           "y": 37,
-          "width": 730,
+          "width": 732,
           "height": 826
         }
       },
@@ -7093,9 +7093,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0895522388059702,
+      "widthRatio": 1.0925373134328358,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1111611921798412
+      "inkRatio": 1.1016958701898698
     },
     {
       "id": "parity_ishikawa_121",
@@ -7117,12 +7117,12 @@
             255
           ]
         ],
-        "inkPixels": 78538,
-        "inkRatio": 0.07272037037037037,
+        "inkPixels": 74638,
+        "inkRatio": 0.06910925925925926,
         "contentBounds": {
-          "x": 192,
+          "x": 189,
           "y": 50,
-          "width": 816,
+          "width": 822,
           "height": 800
         }
       },
@@ -7152,9 +7152,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0434782608695652,
+      "widthRatio": 1.051150895140665,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1287925607600213
+      "inkRatio": 1.0727395547379164
     },
     {
       "id": "parity_ishikawa_122",
@@ -7176,12 +7176,12 @@
             255
           ]
         ],
-        "inkPixels": 129623,
-        "inkRatio": 0.12002129629629629,
+        "inkPixels": 128020,
+        "inkRatio": 0.11853703703703704,
         "contentBounds": {
-          "x": 105,
+          "x": 104,
           "y": 34,
-          "width": 990,
+          "width": 992,
           "height": 832
         }
       },
@@ -7211,9 +7211,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0622317596566524,
+      "widthRatio": 1.0643776824034334,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0716364357876287
+      "inkRatio": 1.058383901850229
     },
     {
       "id": "parity_ishikawa_123",
@@ -7235,8 +7235,8 @@
             255
           ]
         ],
-        "inkPixels": 75774,
-        "inkRatio": 0.0701611111111111,
+        "inkPixels": 73894,
+        "inkRatio": 0.06842037037037037,
         "contentBounds": {
           "x": 145,
           "y": 37,
@@ -7272,7 +7272,7 @@
       },
       "widthRatio": 1.0731132075471699,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.099448636099826
+      "inkRatio": 1.0721706326175275
     },
     {
       "id": "parity_ishikawa_124",
@@ -7294,13 +7294,13 @@
             255
           ]
         ],
-        "inkPixels": 179363,
-        "inkRatio": 0.16607685185185186,
+        "inkPixels": 176615,
+        "inkRatio": 0.1635324074074074,
         "contentBounds": {
           "x": 60,
-          "y": 161,
+          "y": 164,
           "width": 1080,
-          "height": 578
+          "height": 572
         }
       },
       "official": {
@@ -7330,8 +7330,8 @@
         }
       },
       "widthRatio": 1.0714285714285714,
-      "heightRatio": 1.0547445255474452,
-      "inkRatio": 1.1388560834063521
+      "heightRatio": 1.0437956204379562,
+      "inkRatio": 1.1214077996622094
     },
     {
       "id": "parity_ishikawa_125",
@@ -7353,8 +7353,8 @@
             255
           ]
         ],
-        "inkPixels": 59037,
-        "inkRatio": 0.05466388888888889,
+        "inkPixels": 57423,
+        "inkRatio": 0.05316944444444444,
         "contentBounds": {
           "x": 229,
           "y": 37,
@@ -7390,7 +7390,7 @@
       },
       "widthRatio": 1.0784883720930232,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1002665076318094
+      "inkRatio": 1.0701865553422667
     },
     {
       "id": "parity_ishikawa_126",
@@ -7412,13 +7412,13 @@
             255
           ]
         ],
-        "inkPixels": 74706,
-        "inkRatio": 0.06917222222222222,
+        "inkPixels": 71567,
+        "inkRatio": 0.06626574074074074,
         "contentBounds": {
-          "x": 219,
-          "y": 36,
-          "width": 762,
-          "height": 828
+          "x": 217,
+          "y": 37,
+          "width": 766,
+          "height": 826
         }
       },
       "official": {
@@ -7447,9 +7447,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0612813370473537,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.14435832235532
+      "widthRatio": 1.0668523676880224,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0962746239392174
     },
     {
       "id": "parity_ishikawa_127",
@@ -7471,12 +7471,12 @@
             255
           ]
         ],
-        "inkPixels": 66856,
-        "inkRatio": 0.061903703703703704,
+        "inkPixels": 65764,
+        "inkRatio": 0.060892592592592595,
         "contentBounds": {
-          "x": 178,
+          "x": 177,
           "y": 58,
-          "width": 844,
+          "width": 846,
           "height": 784
         }
       },
@@ -7506,9 +7506,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.0765306122448979,
+      "widthRatio": 1.0790816326530612,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.093848167539267
+      "inkRatio": 1.0759816753926703
     },
     {
       "id": "parity_ishikawa_128",
@@ -7530,13 +7530,13 @@
             255
           ]
         ],
-        "inkPixels": 165758,
-        "inkRatio": 0.15347962962962963,
+        "inkPixels": 158119,
+        "inkRatio": 0.14640648148148147,
         "contentBounds": {
           "x": 39,
-          "y": 242,
+          "y": 244,
           "width": 1122,
-          "height": 416
+          "height": 412
         }
       },
       "official": {
@@ -7566,8 +7566,8 @@
         }
       },
       "widthRatio": 1.0747126436781609,
-      "heightRatio": 1.0505050505050506,
-      "inkRatio": 1.0978223434974965
+      "heightRatio": 1.0404040404040404,
+      "inkRatio": 1.0472289188544783
     },
     {
       "id": "parity_ishikawa_129",
@@ -7589,13 +7589,13 @@
             255
           ]
         ],
-        "inkPixels": 140668,
-        "inkRatio": 0.13024814814814814,
+        "inkPixels": 137325,
+        "inkRatio": 0.12715277777777778,
         "contentBounds": {
           "x": 56,
-          "y": 264,
+          "y": 265,
           "width": 1088,
-          "height": 372
+          "height": 370
         }
       },
       "official": {
@@ -7625,8 +7625,8 @@
         }
       },
       "widthRatio": 1.0708661417322836,
-      "heightRatio": 1.0333333333333334,
-      "inkRatio": 1.0649325086493402
+      "heightRatio": 1.0277777777777777,
+      "inkRatio": 1.0396241984692371
     },
     {
       "id": "parity_ishikawa_130",
@@ -7648,12 +7648,12 @@
             255
           ]
         ],
-        "inkPixels": 127967,
-        "inkRatio": 0.11848796296296296,
+        "inkPixels": 126131,
+        "inkRatio": 0.11678796296296297,
         "contentBounds": {
-          "x": 108,
+          "x": 107,
           "y": 37,
-          "width": 984,
+          "width": 986,
           "height": 826
         }
       },
@@ -7683,9 +7683,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.062634989200864,
+      "widthRatio": 1.0647948164146868,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0862611943465896
+      "inkRatio": 1.070676117312508
     },
     {
       "id": "parity_ishikawa_131",
@@ -7707,12 +7707,12 @@
             255
           ]
         ],
-        "inkPixels": 85132,
-        "inkRatio": 0.07882592592592592,
+        "inkPixels": 83753,
+        "inkRatio": 0.07754907407407408,
         "contentBounds": {
-          "x": 79,
+          "x": 78,
           "y": 37,
-          "width": 1042,
+          "width": 1044,
           "height": 826
         }
       },
@@ -7742,9 +7742,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0720164609053497,
+      "widthRatio": 1.0740740740740742,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0979957180075839
+      "inkRatio": 1.0802099723992056
     },
     {
       "id": "parity_ishikawa_132",
@@ -7766,12 +7766,12 @@
             255
           ]
         ],
-        "inkPixels": 89022,
-        "inkRatio": 0.08242777777777778,
+        "inkPixels": 88221,
+        "inkRatio": 0.08168611111111111,
         "contentBounds": {
-          "x": 116,
+          "x": 115,
           "y": 37,
-          "width": 968,
+          "width": 970,
           "height": 826
         }
       },
@@ -7801,9 +7801,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0827740492170022,
+      "widthRatio": 1.0850111856823266,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0837442021839963
+      "inkRatio": 1.0739929147949308
     },
     {
       "id": "parity_ishikawa_133",
@@ -7825,8 +7825,8 @@
             255
           ]
         ],
-        "inkPixels": 61057,
-        "inkRatio": 0.056534259259259256,
+        "inkPixels": 60676,
+        "inkRatio": 0.05618148148148148,
         "contentBounds": {
           "x": 221,
           "y": 37,
@@ -7862,7 +7862,7 @@
       },
       "widthRatio": 1.0859598853868195,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.103007858368711
+      "inkRatio": 1.0961250112907597
     },
     {
       "id": "parity_ishikawa_134",
@@ -7884,12 +7884,12 @@
             255
           ]
         ],
-        "inkPixels": 80367,
-        "inkRatio": 0.07441388888888889,
+        "inkPixels": 76359,
+        "inkRatio": 0.07070277777777778,
         "contentBounds": {
-          "x": 179,
+          "x": 176,
           "y": 50,
-          "width": 842,
+          "width": 848,
           "height": 800
         }
       },
@@ -7919,9 +7919,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0420792079207921,
+      "widthRatio": 1.0495049504950495,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.126250735726898
+      "inkRatio": 1.0700832422433364
     },
     {
       "id": "parity_ishikawa_135",
@@ -7943,12 +7943,12 @@
             255
           ]
         ],
-        "inkPixels": 131558,
-        "inkRatio": 0.12181296296296296,
+        "inkPixels": 130225,
+        "inkRatio": 0.1205787037037037,
         "contentBounds": {
-          "x": 91,
+          "x": 90,
           "y": 34,
-          "width": 1018,
+          "width": 1020,
           "height": 832
         }
       },
@@ -7978,9 +7978,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0604166666666666,
+      "widthRatio": 1.0625,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0684306272942858
+      "inkRatio": 1.057604846831043
     },
     {
       "id": "parity_ishikawa_136",
@@ -8002,12 +8002,12 @@
             255
           ]
         ],
-        "inkPixels": 77937,
-        "inkRatio": 0.07216388888888889,
+        "inkPixels": 75843,
+        "inkRatio": 0.070225,
         "contentBounds": {
-          "x": 132,
+          "x": 131,
           "y": 37,
-          "width": 936,
+          "width": 938,
           "height": 826
         }
       },
@@ -8037,9 +8037,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0684931506849316,
+      "widthRatio": 1.0707762557077625,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0964224920163752
+      "inkRatio": 1.0669639716950605
     },
     {
       "id": "parity_ishikawa_137",
@@ -8061,13 +8061,13 @@
             255
           ]
         ],
-        "inkPixels": 159315,
-        "inkRatio": 0.1475138888888889,
+        "inkPixels": 156672,
+        "inkRatio": 0.14506666666666668,
         "contentBounds": {
           "x": 56,
-          "y": 183,
+          "y": 185,
           "width": 1088,
-          "height": 534
+          "height": 530
         }
       },
       "official": {
@@ -8097,8 +8097,8 @@
         }
       },
       "widthRatio": 1.0666666666666667,
-      "heightRatio": 1.0595238095238095,
-      "inkRatio": 1.1403753650575503
+      "heightRatio": 1.0515873015873016,
+      "inkRatio": 1.1214567943652294
     },
     {
       "id": "parity_ishikawa_138",
@@ -8120,12 +8120,12 @@
             255
           ]
         ],
-        "inkPixels": 61061,
-        "inkRatio": 0.056537962962962963,
+        "inkPixels": 59490,
+        "inkRatio": 0.05508333333333333,
         "contentBounds": {
-          "x": 216,
+          "x": 215,
           "y": 37,
-          "width": 768,
+          "width": 770,
           "height": 826
         }
       },
@@ -8155,9 +8155,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0726256983240223,
+      "widthRatio": 1.0754189944134078,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0960706528568094
+      "inkRatio": 1.0678705415641996
     },
     {
       "id": "parity_ishikawa_139",
@@ -8179,13 +8179,13 @@
             255
           ]
         ],
-        "inkPixels": 76784,
-        "inkRatio": 0.0710962962962963,
+        "inkPixels": 73617,
+        "inkRatio": 0.06816388888888888,
         "contentBounds": {
-          "x": 206,
-          "y": 36,
-          "width": 788,
-          "height": 828
+          "x": 203,
+          "y": 37,
+          "width": 794,
+          "height": 826
         }
       },
       "official": {
@@ -8214,9 +8214,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0563002680965148,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.143469843633656
+      "widthRatio": 1.064343163538874,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0963067758749068
     },
     {
       "id": "parity_ishikawa_140",
@@ -8238,8 +8238,8 @@
             255
           ]
         ],
-        "inkPixels": 68581,
-        "inkRatio": 0.06350092592592592,
+        "inkPixels": 67552,
+        "inkRatio": 0.06254814814814814,
         "contentBounds": {
           "x": 165,
           "y": 58,
@@ -8275,7 +8275,7 @@
       },
       "widthRatio": 1.0740740740740742,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0855546410029124
+      "inkRatio": 1.0692668101810814
     },
     {
       "id": "parity_ishikawa_141",
@@ -8297,13 +8297,13 @@
             255
           ]
         ],
-        "inkPixels": 148250,
-        "inkRatio": 0.1372685185185185,
+        "inkPixels": 140919,
+        "inkRatio": 0.13048055555555554,
         "contentBounds": {
           "x": 37,
-          "y": 258,
+          "y": 260,
           "width": 1126,
-          "height": 384
+          "height": 380
         }
       },
       "official": {
@@ -8333,8 +8333,8 @@
         }
       },
       "widthRatio": 1.0683111954459203,
-      "heightRatio": 1.054945054945055,
-      "inkRatio": 1.115030536418063
+      "heightRatio": 1.043956043956044,
+      "inkRatio": 1.0598919943439935
     },
     {
       "id": "parity_ishikawa_142",
@@ -8356,13 +8356,13 @@
             255
           ]
         ],
-        "inkPixels": 136457,
-        "inkRatio": 0.12634907407407409,
+        "inkPixels": 133071,
+        "inkRatio": 0.12321388888888889,
         "contentBounds": {
           "x": 54,
-          "y": 271,
+          "y": 272,
           "width": 1092,
-          "height": 358
+          "height": 356
         }
       },
       "official": {
@@ -8392,8 +8392,8 @@
         }
       },
       "widthRatio": 1.0684931506849316,
-      "heightRatio": 1.0346820809248556,
-      "inkRatio": 1.071907182077406
+      "heightRatio": 1.0289017341040463,
+      "inkRatio": 1.0453092228777012
     },
     {
       "id": "parity_ishikawa_143",
@@ -8415,12 +8415,12 @@
             255
           ]
         ],
-        "inkPixels": 130178,
-        "inkRatio": 0.12053518518518519,
+        "inkPixels": 127989,
+        "inkRatio": 0.11850833333333333,
         "contentBounds": {
-          "x": 95,
+          "x": 94,
           "y": 37,
-          "width": 1010,
+          "width": 1012,
           "height": 826
         }
       },
@@ -8450,9 +8450,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0587002096436058,
+      "widthRatio": 1.0607966457023061,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0859840995737085
+      "inkRatio": 1.067722802012163
     },
     {
       "id": "parity_ishikawa_144",
@@ -8474,12 +8474,12 @@
             255
           ]
         ],
-        "inkPixels": 86690,
-        "inkRatio": 0.08026851851851852,
+        "inkPixels": 85417,
+        "inkRatio": 0.07908981481481482,
         "contentBounds": {
-          "x": 68,
+          "x": 67,
           "y": 37,
-          "width": 1064,
+          "width": 1066,
           "height": 826
         }
       },
@@ -8509,9 +8509,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0747474747474748,
+      "widthRatio": 1.0767676767676768,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.095220648617235
+      "inkRatio": 1.079137872222152
     },
     {
       "id": "parity_ishikawa_145",
@@ -8533,8 +8533,8 @@
             255
           ]
         ],
-        "inkPixels": 90398,
-        "inkRatio": 0.08370185185185185,
+        "inkPixels": 89693,
+        "inkRatio": 0.08304907407407408,
         "contentBounds": {
           "x": 105,
           "y": 37,
@@ -8570,7 +8570,7 @@
       },
       "widthRatio": 1.0855263157894737,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0829609574353383
+      "inkRatio": 1.0745151126711632
     },
     {
       "id": "parity_ishikawa_146",
@@ -8592,12 +8592,12 @@
             255
           ]
         ],
-        "inkPixels": 62831,
-        "inkRatio": 0.058176851851851855,
+        "inkPixels": 62397,
+        "inkRatio": 0.057775,
         "contentBounds": {
-          "x": 211,
+          "x": 210,
           "y": 37,
-          "width": 778,
+          "width": 780,
           "height": 826
         }
       },
@@ -8627,9 +8627,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0865921787709498,
+      "widthRatio": 1.089385474860335,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1066276837451785
+      "inkRatio": 1.0989837434172287
     },
     {
       "id": "parity_ishikawa_147",
@@ -8651,12 +8651,12 @@
             255
           ]
         ],
-        "inkPixels": 81890,
-        "inkRatio": 0.07582407407407407,
+        "inkPixels": 77643,
+        "inkRatio": 0.07189166666666667,
         "contentBounds": {
-          "x": 168,
+          "x": 166,
           "y": 50,
-          "width": 864,
+          "width": 868,
           "height": 800
         }
       },
@@ -8686,9 +8686,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0460048426150121,
+      "widthRatio": 1.0508474576271187,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1261930302280165
+      "inkRatio": 1.0677861209670765
     },
     {
       "id": "parity_ishikawa_148",
@@ -8710,8 +8710,8 @@
             255
           ]
         ],
-        "inkPixels": 133220,
-        "inkRatio": 0.12335185185185185,
+        "inkPixels": 131781,
+        "inkRatio": 0.12201944444444444,
         "contentBounds": {
           "x": 80,
           "y": 34,
@@ -8747,7 +8747,7 @@
       },
       "widthRatio": 1.0633946830265848,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.071667028661985
+      "inkRatio": 1.0600912228201849
     },
     {
       "id": "parity_ishikawa_149",
@@ -8769,12 +8769,12 @@
             255
           ]
         ],
-        "inkPixels": 79651,
-        "inkRatio": 0.07375092592592593,
+        "inkPixels": 77563,
+        "inkRatio": 0.07181759259259259,
         "contentBounds": {
-          "x": 121,
+          "x": 120,
           "y": 37,
-          "width": 958,
+          "width": 960,
           "height": 826
         }
       },
@@ -8804,9 +8804,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0715883668903803,
+      "widthRatio": 1.0738255033557047,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0995292720972931
+      "inkRatio": 1.0707058157673142
     },
     {
       "id": "parity_ishikawa_150",
@@ -8828,13 +8828,13 @@
             255
           ]
         ],
-        "inkPixels": 146707,
-        "inkRatio": 0.1358398148148148,
+        "inkPixels": 143138,
+        "inkRatio": 0.13253518518518517,
         "contentBounds": {
           "x": 53,
-          "y": 198,
+          "y": 200,
           "width": 1094,
-          "height": 504
+          "height": 500
         }
       },
       "official": {
@@ -8864,8 +8864,8 @@
         }
       },
       "widthRatio": 1.0642023346303502,
-      "heightRatio": 1.0543933054393306,
-      "inkRatio": 1.130829235204341
+      "heightRatio": 1.0460251046025104,
+      "inkRatio": 1.103319099079655
     },
     {
       "id": "parity_ishikawa_151",
@@ -8887,12 +8887,12 @@
             255
           ]
         ],
-        "inkPixels": 62901,
-        "inkRatio": 0.058241666666666664,
+        "inkPixels": 61120,
+        "inkRatio": 0.05659259259259259,
         "contentBounds": {
-          "x": 205,
+          "x": 204,
           "y": 37,
-          "width": 790,
+          "width": 792,
           "height": 826
         }
       },
@@ -8922,9 +8922,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0733695652173914,
+      "widthRatio": 1.076086956521739,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0972890935733723
+      "inkRatio": 1.0662200823389854
     },
     {
       "id": "parity_ishikawa_152",
@@ -8946,13 +8946,13 @@
             255
           ]
         ],
-        "inkPixels": 78344,
-        "inkRatio": 0.07254074074074074,
+        "inkPixels": 75254,
+        "inkRatio": 0.06967962962962963,
         "contentBounds": {
-          "x": 195,
-          "y": 36,
-          "width": 810,
-          "height": 828
+          "x": 193,
+          "y": 37,
+          "width": 814,
+          "height": 826
         }
       },
       "official": {
@@ -8981,9 +8981,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0602094240837696,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1438583171511585
+      "widthRatio": 1.0654450261780104,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0987429005270766
     },
     {
       "id": "parity_ishikawa_153",
@@ -9005,8 +9005,8 @@
             255
           ]
         ],
-        "inkPixels": 70146,
-        "inkRatio": 0.06495,
+        "inkPixels": 68928,
+        "inkRatio": 0.06382222222222222,
         "contentBounds": {
           "x": 155,
           "y": 58,
@@ -9042,7 +9042,7 @@
       },
       "widthRatio": 1.0748792270531402,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.089697383955757
+      "inkRatio": 1.070776113838315
     },
     {
       "id": "parity_ishikawa_154",
@@ -9064,13 +9064,13 @@
             255
           ]
         ],
-        "inkPixels": 134281,
-        "inkRatio": 0.12433425925925926,
+        "inkPixels": 130294,
+        "inkRatio": 0.12064259259259259,
         "contentBounds": {
           "x": 35,
-          "y": 270,
+          "y": 271,
           "width": 1130,
-          "height": 360
+          "height": 358
         }
       },
       "official": {
@@ -9100,8 +9100,8 @@
         }
       },
       "widthRatio": 1.0660377358490567,
-      "heightRatio": 1.0465116279069768,
-      "inkRatio": 1.0978203996206546
+      "heightRatio": 1.0406976744186047,
+      "inkRatio": 1.0652245004741816
     },
     {
       "id": "parity_ishikawa_155",
@@ -9123,13 +9123,13 @@
             255
           ]
         ],
-        "inkPixels": 132640,
-        "inkRatio": 0.12281481481481482,
+        "inkPixels": 129226,
+        "inkRatio": 0.1196537037037037,
         "contentBounds": {
           "x": 53,
-          "y": 276,
+          "y": 277,
           "width": 1094,
-          "height": 348
+          "height": 346
         }
       },
       "official": {
@@ -9159,8 +9159,8 @@
         }
       },
       "widthRatio": 1.0642023346303502,
-      "heightRatio": 1.0419161676646707,
-      "inkRatio": 1.0806847161002795
+      "heightRatio": 1.035928143712575,
+      "inkRatio": 1.0528691429642243
     },
     {
       "id": "parity_ishikawa_156",
@@ -9182,12 +9182,12 @@
             255
           ]
         ],
-        "inkPixels": 131720,
-        "inkRatio": 0.12196296296296297,
+        "inkPixels": 129850,
+        "inkRatio": 0.12023148148148148,
         "contentBounds": {
-          "x": 84,
+          "x": 83,
           "y": 37,
-          "width": 1032,
+          "width": 1034,
           "height": 826
         }
       },
@@ -9217,9 +9217,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0617283950617284,
+      "widthRatio": 1.0637860082304527,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.084124149169952
+      "inkRatio": 1.068733075992395
     },
     {
       "id": "parity_ishikawa_157",
@@ -9241,12 +9241,12 @@
             255
           ]
         ],
-        "inkPixels": 87182,
-        "inkRatio": 0.08072407407407407,
+        "inkPixels": 85715,
+        "inkRatio": 0.07936574074074074,
         "contentBounds": {
-          "x": 66,
+          "x": 65,
           "y": 37,
-          "width": 1068,
+          "width": 1070,
           "height": 826
         }
       },
@@ -9276,9 +9276,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0766129032258065,
+      "widthRatio": 1.0786290322580645,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0999079015429647
+      "inkRatio": 1.0813998965469387
     },
     {
       "id": "parity_ishikawa_158",
@@ -9300,12 +9300,12 @@
             255
           ]
         ],
-        "inkPixels": 90761,
-        "inkRatio": 0.08403796296296297,
+        "inkPixels": 90040,
+        "inkRatio": 0.08337037037037037,
         "contentBounds": {
-          "x": 103,
+          "x": 102,
           "y": 37,
-          "width": 994,
+          "width": 996,
           "height": 826
         }
       },
@@ -9335,9 +9335,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.087527352297593,
+      "widthRatio": 1.0897155361050328,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.085748806718266
+      "inkRatio": 1.0771236826050028
     },
     {
       "id": "parity_ishikawa_159",
@@ -9359,8 +9359,8 @@
             255
           ]
         ],
-        "inkPixels": 63136,
-        "inkRatio": 0.05845925925925926,
+        "inkPixels": 62703,
+        "inkRatio": 0.05805833333333334,
         "contentBounds": {
           "x": 208,
           "y": 37,
@@ -9396,7 +9396,7 @@
       },
       "widthRatio": 1.0919220055710306,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1090695100743058
+      "inkRatio": 1.1014632775308728
     },
     {
       "id": "parity_ishikawa_160",
@@ -9418,12 +9418,12 @@
             255
           ]
         ],
-        "inkPixels": 82121,
-        "inkRatio": 0.07603796296296296,
+        "inkPixels": 77880,
+        "inkRatio": 0.07211111111111111,
         "contentBounds": {
-          "x": 166,
+          "x": 163,
           "y": 50,
-          "width": 868,
+          "width": 874,
           "height": 800
         }
       },
@@ -9453,9 +9453,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0483091787439613,
+      "widthRatio": 1.0555555555555556,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1273852996897393
+      "inkRatio": 1.06916339474479
     },
     {
       "id": "parity_ishikawa_161",
@@ -9477,12 +9477,12 @@
             255
           ]
         ],
-        "inkPixels": 133632,
-        "inkRatio": 0.12373333333333333,
+        "inkPixels": 132297,
+        "inkRatio": 0.12249722222222222,
         "contentBounds": {
-          "x": 78,
+          "x": 77,
           "y": 34,
-          "width": 1044,
+          "width": 1046,
           "height": 832
         }
       },
@@ -9512,9 +9512,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0653061224489795,
+      "widthRatio": 1.0673469387755101,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0737288680336825
+      "inkRatio": 1.0630021855113452
     },
     {
       "id": "parity_ishikawa_162",
@@ -9536,12 +9536,12 @@
             255
           ]
         ],
-        "inkPixels": 79999,
-        "inkRatio": 0.07407314814814815,
+        "inkPixels": 77810,
+        "inkRatio": 0.0720462962962963,
         "contentBounds": {
-          "x": 119,
+          "x": 118,
           "y": 37,
-          "width": 962,
+          "width": 964,
           "height": 826
         }
       },
@@ -9571,9 +9571,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0736607142857142,
+      "widthRatio": 1.0758928571428572,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1018842456130686
+      "inkRatio": 1.071733561058924
     },
     {
       "id": "parity_ishikawa_163",
@@ -9595,13 +9595,13 @@
             255
           ]
         ],
-        "inkPixels": 143921,
-        "inkRatio": 0.13326018518518518,
+        "inkPixels": 140396,
+        "inkRatio": 0.1299962962962963,
         "contentBounds": {
           "x": 53,
-          "y": 201,
+          "y": 203,
           "width": 1094,
-          "height": 498
+          "height": 494
         }
       },
       "official": {
@@ -9631,8 +9631,8 @@
         }
       },
       "widthRatio": 1.0642023346303502,
-      "heightRatio": 1.046218487394958,
-      "inkRatio": 1.1135603973878865
+      "heightRatio": 1.0378151260504203,
+      "inkRatio": 1.086286404011018
     },
     {
       "id": "parity_ishikawa_164",
@@ -9654,12 +9654,12 @@
             255
           ]
         ],
-        "inkPixels": 63100,
-        "inkRatio": 0.05842592592592592,
+        "inkPixels": 61485,
+        "inkRatio": 0.056930555555555554,
         "contentBounds": {
-          "x": 203,
+          "x": 202,
           "y": 37,
-          "width": 794,
+          "width": 796,
           "height": 826
         }
       },
@@ -9689,9 +9689,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0773405698778833,
+      "widthRatio": 1.0800542740841248,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0979068432133348
+      "inkRatio": 1.0698066918379063
     },
     {
       "id": "parity_ishikawa_165",
@@ -9713,13 +9713,13 @@
             255
           ]
         ],
-        "inkPixels": 78757,
-        "inkRatio": 0.07292314814814815,
+        "inkPixels": 75570,
+        "inkRatio": 0.06997222222222223,
         "contentBounds": {
-          "x": 193,
-          "y": 36,
-          "width": 814,
-          "height": 828
+          "x": 190,
+          "y": 37,
+          "width": 820,
+          "height": 826
         }
       },
       "official": {
@@ -9748,9 +9748,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0626631853785902,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1470579667928926
+      "widthRatio": 1.0704960835509139,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.1006408389163997
     },
     {
       "id": "parity_ishikawa_166",
@@ -9772,12 +9772,12 @@
             255
           ]
         ],
-        "inkPixels": 70543,
-        "inkRatio": 0.0653175925925926,
+        "inkPixels": 69342,
+        "inkRatio": 0.06420555555555556,
         "contentBounds": {
-          "x": 153,
+          "x": 152,
           "y": 58,
-          "width": 894,
+          "width": 896,
           "height": 784
         }
       },
@@ -9807,9 +9807,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.0771084337349397,
+      "widthRatio": 1.0795180722891566,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0930120855283545
+      "inkRatio": 1.0744034707158352
     },
     {
       "id": "parity_ishikawa_167",
@@ -9831,13 +9831,13 @@
             255
           ]
         ],
-        "inkPixels": 133032,
-        "inkRatio": 0.12317777777777777,
+        "inkPixels": 127529,
+        "inkRatio": 0.11808240740740741,
         "contentBounds": {
           "x": 34,
-          "y": 272,
+          "y": 273,
           "width": 1132,
-          "height": 356
+          "height": 354
         }
       },
       "official": {
@@ -9867,8 +9867,8 @@
         }
       },
       "widthRatio": 1.0659133709981168,
-      "heightRatio": 1.04093567251462,
-      "inkRatio": 1.089372574067705
+      "heightRatio": 1.0350877192982457,
+      "inkRatio": 1.0443096021880476
     },
     {
       "id": "parity_ishikawa_168",
@@ -9890,13 +9890,13 @@
             255
           ]
         ],
-        "inkPixels": 132108,
-        "inkRatio": 0.12232222222222222,
+        "inkPixels": 127177,
+        "inkRatio": 0.11775648148148148,
         "contentBounds": {
           "x": 53,
-          "y": 277,
+          "y": 279,
           "width": 1094,
-          "height": 346
+          "height": 342
         }
       },
       "official": {
@@ -9926,8 +9926,8 @@
         }
       },
       "widthRatio": 1.0642023346303502,
-      "heightRatio": 1.0421686746987953,
-      "inkRatio": 1.0806115187357366
+      "heightRatio": 1.0301204819277108,
+      "inkRatio": 1.0402771302135734
     },
     {
       "id": "parity_ishikawa_169",
@@ -9949,12 +9949,12 @@
             255
           ]
         ],
-        "inkPixels": 132216,
-        "inkRatio": 0.12242222222222222,
+        "inkPixels": 129972,
+        "inkRatio": 0.12034444444444445,
         "contentBounds": {
-          "x": 82,
+          "x": 81,
           "y": 37,
-          "width": 1036,
+          "width": 1038,
           "height": 826
         }
       },
@@ -9984,9 +9984,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0636550308008215,
+      "widthRatio": 1.0657084188911705,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0868110640746373
+      "inkRatio": 1.0683654597016152
     },
     {
       "id": "parity_ishikawa_170",
@@ -10008,12 +10008,12 @@
             255
           ]
         ],
-        "inkPixels": 86005,
-        "inkRatio": 0.07963425925925927,
+        "inkPixels": 84706,
+        "inkRatio": 0.07843148148148148,
         "contentBounds": {
-          "x": 73,
+          "x": 72,
           "y": 37,
-          "width": 1054,
+          "width": 1056,
           "height": 826
         }
       },
@@ -10043,9 +10043,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0799180327868851,
+      "widthRatio": 1.0819672131147542,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1022042804049725
+      "inkRatio": 1.0855568371139306
     },
     {
       "id": "parity_ishikawa_171",
@@ -10067,12 +10067,12 @@
             255
           ]
         ],
-        "inkPixels": 89967,
-        "inkRatio": 0.08330277777777778,
+        "inkPixels": 89054,
+        "inkRatio": 0.08245740740740741,
         "contentBounds": {
-          "x": 110,
+          "x": 109,
           "y": 37,
-          "width": 980,
+          "width": 982,
           "height": 826
         }
       },
@@ -10102,9 +10102,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0913140311804008,
+      "widthRatio": 1.0935412026726057,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0903372801861526
+      "inkRatio": 1.0792723570831264
     },
     {
       "id": "parity_ishikawa_172",
@@ -10126,12 +10126,12 @@
             255
           ]
         ],
-        "inkPixels": 62147,
-        "inkRatio": 0.05754351851851852,
+        "inkPixels": 61704,
+        "inkRatio": 0.057133333333333335,
         "contentBounds": {
-          "x": 215,
+          "x": 214,
           "y": 37,
-          "width": 770,
+          "width": 772,
           "height": 826
         }
       },
@@ -10161,9 +10161,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0968660968660968,
+      "widthRatio": 1.0997150997150997,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1156449151781709
+      "inkRatio": 1.1076923076923078
     },
     {
       "id": "parity_ishikawa_173",
@@ -10185,12 +10185,12 @@
             255
           ]
         ],
-        "inkPixels": 81335,
-        "inkRatio": 0.07531018518518519,
+        "inkPixels": 77273,
+        "inkRatio": 0.07154907407407407,
         "contentBounds": {
-          "x": 172,
+          "x": 170,
           "y": 50,
-          "width": 855,
+          "width": 860,
           "height": 800
         }
       },
@@ -10220,9 +10220,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0529556650246306,
+      "widthRatio": 1.0591133004926108,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1344901175847015
+      "inkRatio": 1.0778318664304745
     },
     {
       "id": "parity_ishikawa_174",
@@ -10244,12 +10244,12 @@
             255
           ]
         ],
-        "inkPixels": 132676,
-        "inkRatio": 0.12284814814814815,
+        "inkPixels": 131094,
+        "inkRatio": 0.12138333333333333,
         "contentBounds": {
-          "x": 85,
+          "x": 84,
           "y": 34,
-          "width": 1030,
+          "width": 1032,
           "height": 832
         }
       },
@@ -10279,9 +10279,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0684647302904564,
+      "widthRatio": 1.070539419087137,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0767233123955138
+      "inkRatio": 1.0638846959146906
     },
     {
       "id": "parity_ishikawa_175",
@@ -10303,8 +10303,8 @@
             255
           ]
         ],
-        "inkPixels": 78913,
-        "inkRatio": 0.07306759259259259,
+        "inkPixels": 76885,
+        "inkRatio": 0.07118981481481482,
         "contentBounds": {
           "x": 125,
           "y": 37,
@@ -10340,7 +10340,7 @@
       },
       "widthRatio": 1.0795454545454546,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1057506375585011
+      "inkRatio": 1.0773337443600595
     },
     {
       "id": "parity_ishikawa_176",
@@ -10362,13 +10362,13 @@
             255
           ]
         ],
-        "inkPixels": 151570,
-        "inkRatio": 0.1403425925925926,
+        "inkPixels": 148007,
+        "inkRatio": 0.1370435185185185,
         "contentBounds": {
           "x": 54,
-          "y": 192,
+          "y": 194,
           "width": 1092,
-          "height": 516
+          "height": 512
         }
       },
       "official": {
@@ -10398,8 +10398,8 @@
         }
       },
       "widthRatio": 1.0684931506849316,
-      "heightRatio": 1.036144578313253,
-      "inkRatio": 1.1058257031335499
+      "heightRatio": 1.0281124497991967,
+      "inkRatio": 1.0798307372414546
     },
     {
       "id": "parity_ishikawa_177",
@@ -10421,8 +10421,8 @@
             255
           ]
         ],
-        "inkPixels": 62226,
-        "inkRatio": 0.05761666666666666,
+        "inkPixels": 60443,
+        "inkRatio": 0.05596574074074074,
         "contentBounds": {
           "x": 209,
           "y": 37,
@@ -10458,7 +10458,7 @@
       },
       "widthRatio": 1.0846047156726768,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1068106223653082
+      "inkRatio": 1.0750964941925614
     },
     {
       "id": "parity_ishikawa_178",
@@ -10480,13 +10480,13 @@
             255
           ]
         ],
-        "inkPixels": 77831,
-        "inkRatio": 0.07206574074074074,
+        "inkPixels": 74609,
+        "inkRatio": 0.06908240740740741,
         "contentBounds": {
-          "x": 200,
-          "y": 36,
-          "width": 800,
-          "height": 828
+          "x": 197,
+          "y": 37,
+          "width": 806,
+          "height": 826
         }
       },
       "official": {
@@ -10515,9 +10515,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0666666666666667,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1514824239554975
+      "widthRatio": 1.0746666666666667,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.103814060835602
     },
     {
       "id": "parity_ishikawa_179",
@@ -10539,8 +10539,8 @@
             255
           ]
         ],
-        "inkPixels": 69625,
-        "inkRatio": 0.06446759259259259,
+        "inkPixels": 68354,
+        "inkRatio": 0.06329074074074074,
         "contentBounds": {
           "x": 159,
           "y": 58,
@@ -10576,7 +10576,7 @@
       },
       "widthRatio": 1.0835380835380835,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0989661431615498
+      "inkRatio": 1.0789045852734591
     },
     {
       "id": "parity_ishikawa_180",
@@ -10598,13 +10598,13 @@
             255
           ]
         ],
-        "inkPixels": 139775,
-        "inkRatio": 0.12942129629629628,
+        "inkPixels": 134136,
+        "inkRatio": 0.1242,
         "contentBounds": {
           "x": 35,
-          "y": 265,
+          "y": 267,
           "width": 1130,
-          "height": 370
+          "height": 366
         }
       },
       "official": {
@@ -10634,8 +10634,8 @@
         }
       },
       "widthRatio": 1.0700757575757576,
-      "heightRatio": 1.0335195530726258,
-      "inkRatio": 1.073425284531617
+      "heightRatio": 1.0223463687150838,
+      "inkRatio": 1.0301196491928672
     },
     {
       "id": "parity_ishikawa_181",
@@ -10657,13 +10657,13 @@
             255
           ]
         ],
-        "inkPixels": 134446,
-        "inkRatio": 0.12448703703703703,
+        "inkPixels": 131064,
+        "inkRatio": 0.12135555555555555,
         "contentBounds": {
           "x": 54,
-          "y": 274,
+          "y": 275,
           "width": 1092,
-          "height": 352
+          "height": 350
         }
       },
       "official": {
@@ -10693,8 +10693,8 @@
         }
       },
       "widthRatio": 1.06640625,
-      "heightRatio": 1.0232558139534884,
-      "inkRatio": 1.0577886877365243
+      "heightRatio": 1.0174418604651163,
+      "inkRatio": 1.0311799277739748
     },
     {
       "id": "parity_ishikawa_182",
@@ -10716,12 +10716,12 @@
             255
           ]
         ],
-        "inkPixels": 131070,
-        "inkRatio": 0.12136111111111111,
+        "inkPixels": 129096,
+        "inkRatio": 0.11953333333333334,
         "contentBounds": {
-          "x": 88,
+          "x": 87,
           "y": 37,
-          "width": 1024,
+          "width": 1026,
           "height": 826
         }
       },
@@ -10751,9 +10751,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.068893528183716,
+      "widthRatio": 1.07098121085595,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0884404583956153
+      "inkRatio": 1.0720478325859493
     },
     {
       "id": "parity_ishikawa_183",
@@ -10775,12 +10775,12 @@
             255
           ]
         ],
-        "inkPixels": 86449,
-        "inkRatio": 0.08004537037037036,
+        "inkPixels": 85268,
+        "inkRatio": 0.07895185185185186,
         "contentBounds": {
-          "x": 70,
+          "x": 69,
           "y": 37,
-          "width": 1060,
+          "width": 1062,
           "height": 826
         }
       },
@@ -10810,9 +10810,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.079429735234216,
+      "widthRatio": 1.0814663951120163,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1010647782561072
+      "inkRatio": 1.0860228749012915
     },
     {
       "id": "parity_ishikawa_184",
@@ -10834,12 +10834,12 @@
             255
           ]
         ],
-        "inkPixels": 90363,
-        "inkRatio": 0.08366944444444445,
+        "inkPixels": 89464,
+        "inkRatio": 0.08283703703703704,
         "contentBounds": {
-          "x": 107,
+          "x": 106,
           "y": 37,
-          "width": 986,
+          "width": 988,
           "height": 826
         }
       },
@@ -10869,9 +10869,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0907079646017699,
+      "widthRatio": 1.092920353982301,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0886190321298204
+      "inkRatio": 1.0777886202368476
     },
     {
       "id": "parity_ishikawa_185",
@@ -10893,12 +10893,12 @@
             255
           ]
         ],
-        "inkPixels": 62636,
-        "inkRatio": 0.057996296296296296,
+        "inkPixels": 62190,
+        "inkRatio": 0.057583333333333334,
         "contentBounds": {
-          "x": 212,
+          "x": 211,
           "y": 37,
-          "width": 776,
+          "width": 778,
           "height": 826
         }
       },
@@ -10928,9 +10928,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0960451977401129,
+      "widthRatio": 1.0988700564971752,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1132518128821272
+      "inkRatio": 1.1053248969145457
     },
     {
       "id": "parity_ishikawa_186",
@@ -10952,12 +10952,12 @@
             255
           ]
         ],
-        "inkPixels": 81717,
-        "inkRatio": 0.07566388888888889,
+        "inkPixels": 77645,
+        "inkRatio": 0.07189351851851852,
         "contentBounds": {
-          "x": 169,
+          "x": 167,
           "y": 50,
-          "width": 861,
+          "width": 866,
           "height": 800
         }
       },
@@ -10987,9 +10987,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0525672371638142,
+      "widthRatio": 1.058679706601467,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1324888784178944
+      "inkRatio": 1.0760563770666742
     },
     {
       "id": "parity_ishikawa_187",
@@ -11011,12 +11011,12 @@
             255
           ]
         ],
-        "inkPixels": 133239,
-        "inkRatio": 0.12336944444444445,
+        "inkPixels": 131703,
+        "inkRatio": 0.12194722222222222,
         "contentBounds": {
-          "x": 82,
+          "x": 81,
           "y": 34,
-          "width": 1036,
+          "width": 1038,
           "height": 832
         }
       },
@@ -11046,9 +11046,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.068041237113402,
+      "widthRatio": 1.0701030927835051,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0778895082152884
+      "inkRatio": 1.0654634296300491
     },
     {
       "id": "parity_ishikawa_188",
@@ -11070,8 +11070,8 @@
             255
           ]
         ],
-        "inkPixels": 79409,
-        "inkRatio": 0.07352685185185186,
+        "inkPixels": 77408,
+        "inkRatio": 0.07167407407407407,
         "contentBounds": {
           "x": 122,
           "y": 37,
@@ -11107,7 +11107,7 @@
       },
       "widthRatio": 1.0790067720090293,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1043599193380154
+      "inkRatio": 1.0765315346637923
     },
     {
       "id": "parity_ishikawa_189",
@@ -11129,13 +11129,13 @@
             255
           ]
         ],
-        "inkPixels": 147918,
-        "inkRatio": 0.13696111111111112,
+        "inkPixels": 144368,
+        "inkRatio": 0.13367407407407408,
         "contentBounds": {
           "x": 53,
-          "y": 196,
+          "y": 199,
           "width": 1094,
-          "height": 508
+          "height": 502
         }
       },
       "official": {
@@ -11165,8 +11165,8 @@
         }
       },
       "widthRatio": 1.068359375,
-      "heightRatio": 1.036734693877551,
-      "inkRatio": 1.1000237974834162
+      "heightRatio": 1.0244897959183674,
+      "inkRatio": 1.0736234643186484
     },
     {
       "id": "parity_ishikawa_190",
@@ -11188,8 +11188,8 @@
             255
           ]
         ],
-        "inkPixels": 62719,
-        "inkRatio": 0.05807314814814815,
+        "inkPixels": 60929,
+        "inkRatio": 0.05641574074074074,
         "contentBounds": {
           "x": 206,
           "y": 37,
@@ -11225,7 +11225,7 @@
       },
       "widthRatio": 1.0824175824175823,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1063698424738486
+      "inkRatio": 1.0747940517560726
     },
     {
       "id": "parity_ishikawa_191",
@@ -11247,13 +11247,13 @@
             255
           ]
         ],
-        "inkPixels": 78265,
-        "inkRatio": 0.0724675925925926,
+        "inkPixels": 75080,
+        "inkRatio": 0.06951851851851852,
         "contentBounds": {
-          "x": 197,
-          "y": 36,
-          "width": 806,
-          "height": 828
+          "x": 194,
+          "y": 37,
+          "width": 812,
+          "height": 826
         }
       },
       "official": {
@@ -11282,9 +11282,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0633245382585752,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.151023589622919
+      "widthRatio": 1.071240105540897,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.1041825989764105
     },
     {
       "id": "parity_ishikawa_192",
@@ -11306,8 +11306,8 @@
             255
           ]
         ],
-        "inkPixels": 69957,
-        "inkRatio": 0.064775,
+        "inkPixels": 68722,
+        "inkRatio": 0.06363148148148148,
         "contentBounds": {
           "x": 156,
           "y": 58,
@@ -11343,7 +11343,7 @@
       },
       "widthRatio": 1.0829268292682928,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.096779756678791
+      "inkRatio": 1.0774175341778502
     },
     {
       "id": "parity_ishikawa_193",
@@ -11365,13 +11365,13 @@
             255
           ]
         ],
-        "inkPixels": 136346,
-        "inkRatio": 0.1262462962962963,
+        "inkPixels": 130777,
+        "inkRatio": 0.12108981481481482,
         "contentBounds": {
           "x": 35,
-          "y": 268,
+          "y": 270,
           "width": 1130,
-          "height": 364
+          "height": 360
         }
       },
       "official": {
@@ -11401,8 +11401,8 @@
         }
       },
       "widthRatio": 1.0680529300567108,
-      "heightRatio": 1.0340909090909092,
-      "inkRatio": 1.0718688091569448
+      "heightRatio": 1.0227272727272727,
+      "inkRatio": 1.0280887393478193
     },
     {
       "id": "parity_ishikawa_194",
@@ -11424,13 +11424,13 @@
             255
           ]
         ],
-        "inkPixels": 134292,
-        "inkRatio": 0.12434444444444444,
+        "inkPixels": 129374,
+        "inkRatio": 0.11979074074074074,
         "contentBounds": {
           "x": 53,
-          "y": 275,
+          "y": 277,
           "width": 1094,
-          "height": 350
+          "height": 346
         }
       },
       "official": {
@@ -11460,8 +11460,8 @@
         }
       },
       "widthRatio": 1.068359375,
-      "heightRatio": 1.0294117647058822,
-      "inkRatio": 1.069680749378704
+      "heightRatio": 1.0176470588235293,
+      "inkRatio": 1.0305072325240554
     },
     {
       "id": "parity_ishikawa_195",
@@ -11483,12 +11483,12 @@
             255
           ]
         ],
-        "inkPixels": 131557,
-        "inkRatio": 0.12181203703703704,
+        "inkPixels": 129577,
+        "inkRatio": 0.1199787037037037,
         "contentBounds": {
-          "x": 85,
+          "x": 84,
           "y": 37,
-          "width": 1030,
+          "width": 1032,
           "height": 826
         }
       },
@@ -11518,9 +11518,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0684647302904564,
+      "widthRatio": 1.070539419087137,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0880482338248796
+      "inkRatio": 1.0716725525386441
     },
     {
       "id": "parity_ishikawa_196",
@@ -11542,12 +11542,12 @@
             255
           ]
         ],
-        "inkPixels": 88427,
-        "inkRatio": 0.08187685185185185,
+        "inkPixels": 86974,
+        "inkRatio": 0.08053148148148148,
         "contentBounds": {
-          "x": 58,
+          "x": 57,
           "y": 37,
-          "width": 1084,
+          "width": 1086,
           "height": 826
         }
       },
@@ -11577,9 +11577,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0711462450592886,
+      "widthRatio": 1.0731225296442688,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.093973846667739
+      "inkRatio": 1.0759980700473828
     },
     {
       "id": "parity_ishikawa_197",
@@ -11601,12 +11601,12 @@
             255
           ]
         ],
-        "inkPixels": 91819,
-        "inkRatio": 0.08501759259259259,
+        "inkPixels": 90899,
+        "inkRatio": 0.08416574074074074,
         "contentBounds": {
-          "x": 95,
+          "x": 94,
           "y": 37,
-          "width": 1010,
+          "width": 1012,
           "height": 826
         }
       },
@@ -11636,9 +11636,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0813704496788008,
+      "widthRatio": 1.0835117773019272,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.082503153700145
+      "inkRatio": 1.0716567831079566
     },
     {
       "id": "parity_ishikawa_198",
@@ -11660,8 +11660,8 @@
             255
           ]
         ],
-        "inkPixels": 64333,
-        "inkRatio": 0.059567592592592596,
+        "inkPixels": 63970,
+        "inkRatio": 0.05923148148148148,
         "contentBounds": {
           "x": 200,
           "y": 37,
@@ -11697,7 +11697,7 @@
       },
       "widthRatio": 1.084010840108401,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0998410066161763
+      "inkRatio": 1.0936351358282188
     },
     {
       "id": "parity_ishikawa_199",
@@ -11719,12 +11719,12 @@
             255
           ]
         ],
-        "inkPixels": 82683,
-        "inkRatio": 0.07655833333333334,
+        "inkPixels": 78610,
+        "inkRatio": 0.07278703703703704,
         "contentBounds": {
-          "x": 158,
+          "x": 156,
           "y": 50,
-          "width": 883,
+          "width": 888,
           "height": 800
         }
       },
@@ -11754,9 +11754,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0412735849056605,
+      "widthRatio": 1.0471698113207548,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1159805641787015
+      "inkRatio": 1.061006883520043
     },
     {
       "id": "parity_ishikawa_200",
@@ -11778,12 +11778,12 @@
             255
           ]
         ],
-        "inkPixels": 134699,
-        "inkRatio": 0.1247212962962963,
+        "inkPixels": 133430,
+        "inkRatio": 0.12354629629629629,
         "contentBounds": {
-          "x": 70,
+          "x": 69,
           "y": 34,
-          "width": 1060,
+          "width": 1062,
           "height": 832
         }
       },
@@ -11813,9 +11813,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.06,
+      "widthRatio": 1.062,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0701012909632572
+      "inkRatio": 1.0600198609731877
     },
     {
       "id": "parity_ishikawa_201",
@@ -11837,12 +11837,12 @@
             255
           ]
         ],
-        "inkPixels": 81264,
-        "inkRatio": 0.07524444444444445,
+        "inkPixels": 79071,
+        "inkRatio": 0.07321388888888888,
         "contentBounds": {
-          "x": 111,
+          "x": 110,
           "y": 37,
-          "width": 978,
+          "width": 980,
           "height": 826
         }
       },
@@ -11872,9 +11872,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0676855895196506,
+      "widthRatio": 1.0698689956331877,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0958076565217978
+      "inkRatio": 1.0662360603568009
     },
     {
       "id": "parity_ishikawa_202",
@@ -11896,13 +11896,13 @@
             255
           ]
         ],
-        "inkPixels": 135610,
-        "inkRatio": 0.12556481481481482,
+        "inkPixels": 132090,
+        "inkRatio": 0.12230555555555556,
         "contentBounds": {
           "x": 51,
-          "y": 211,
+          "y": 213,
           "width": 1098,
-          "height": 478
+          "height": 474
         }
       },
       "official": {
@@ -11932,8 +11932,8 @@
         }
       },
       "widthRatio": 1.0598455598455598,
-      "heightRatio": 1.0575221238938053,
-      "inkRatio": 1.1386421266520008
+      "heightRatio": 1.0486725663716814,
+      "inkRatio": 1.1090866345362642
     },
     {
       "id": "parity_ishikawa_203",
@@ -11955,12 +11955,12 @@
             255
           ]
         ],
-        "inkPixels": 64376,
-        "inkRatio": 0.05960740740740741,
+        "inkPixels": 62665,
+        "inkRatio": 0.05802314814814815,
         "contentBounds": {
-          "x": 195,
+          "x": 194,
           "y": 37,
-          "width": 810,
+          "width": 812,
           "height": 826
         }
       },
@@ -11990,9 +11990,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0686015831134565,
+      "widthRatio": 1.071240105540897,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0905641199390141
+      "inkRatio": 1.061578858207691
     },
     {
       "id": "parity_ishikawa_204",
@@ -12014,13 +12014,13 @@
             255
           ]
         ],
-        "inkPixels": 79979,
-        "inkRatio": 0.07405462962962962,
+        "inkPixels": 76768,
+        "inkRatio": 0.07108148148148148,
         "contentBounds": {
-          "x": 185,
-          "y": 36,
-          "width": 830,
-          "height": 828
+          "x": 182,
+          "y": 37,
+          "width": 836,
+          "height": 826
         }
       },
       "official": {
@@ -12049,9 +12049,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0546378653113089,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1403416219915592
+      "widthRatio": 1.062261753494282,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0945591422379377
     },
     {
       "id": "parity_ishikawa_205",
@@ -12073,12 +12073,12 @@
             255
           ]
         ],
-        "inkPixels": 71430,
-        "inkRatio": 0.06613888888888889,
+        "inkPixels": 70395,
+        "inkRatio": 0.06518055555555556,
         "contentBounds": {
-          "x": 146,
+          "x": 145,
           "y": 58,
-          "width": 908,
+          "width": 910,
           "height": 784
         }
       },
@@ -12108,9 +12108,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.068235294117647,
+      "widthRatio": 1.0705882352941176,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.085545812373672
+      "inkRatio": 1.0698165681372624
     },
     {
       "id": "parity_ishikawa_206",
@@ -12132,13 +12132,13 @@
             255
           ]
         ],
-        "inkPixels": 126206,
-        "inkRatio": 0.11685740740740741,
+        "inkPixels": 120812,
+        "inkRatio": 0.11186296296296297,
         "contentBounds": {
           "x": 33,
-          "y": 279,
+          "y": 280,
           "width": 1134,
-          "height": 342
+          "height": 340
         }
       },
       "official": {
@@ -12168,8 +12168,8 @@
         }
       },
       "widthRatio": 1.0637898686679175,
-      "heightRatio": 1.0555555555555556,
-      "inkRatio": 1.1125254537601044
+      "heightRatio": 1.0493827160493827,
+      "inkRatio": 1.0649765076118864
     },
     {
       "id": "parity_ishikawa_207",
@@ -12191,13 +12191,13 @@
             255
           ]
         ],
-        "inkPixels": 125167,
-        "inkRatio": 0.11589537037037037,
+        "inkPixels": 120325,
+        "inkRatio": 0.11141203703703703,
         "contentBounds": {
           "x": 51,
-          "y": 284,
+          "y": 286,
           "width": 1098,
-          "height": 332
+          "height": 328
         }
       },
       "official": {
@@ -12227,8 +12227,8 @@
         }
       },
       "widthRatio": 1.0598455598455598,
-      "heightRatio": 1.0506329113924051,
-      "inkRatio": 1.1068693514440848
+      "heightRatio": 1.0379746835443038,
+      "inkRatio": 1.0640508657434429
     },
     {
       "id": "parity_ishikawa_208",
@@ -12250,12 +12250,12 @@
             255
           ]
         ],
-        "inkPixels": 133345,
-        "inkRatio": 0.12346759259259259,
+        "inkPixels": 131029,
+        "inkRatio": 0.12132314814814815,
         "contentBounds": {
-          "x": 74,
+          "x": 73,
           "y": 37,
-          "width": 1052,
+          "width": 1054,
           "height": 826
         }
       },
@@ -12285,9 +12285,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0583501006036218,
+      "widthRatio": 1.0603621730382293,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0831194359607512
+      "inkRatio": 1.0643072974202352
     },
     {
       "id": "parity_ishikawa_209",
@@ -12309,12 +12309,12 @@
             255
           ]
         ],
-        "inkPixels": 86005,
-        "inkRatio": 0.07963425925925927,
+        "inkPixels": 84706,
+        "inkRatio": 0.07843148148148148,
         "contentBounds": {
-          "x": 73,
+          "x": 72,
           "y": 37,
-          "width": 1054,
+          "width": 1056,
           "height": 826
         }
       },
@@ -12344,9 +12344,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0689655172413792,
+      "widthRatio": 1.0709939148073022,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0910878528385666
+      "inkRatio": 1.0746083095464636
     },
     {
       "id": "parity_ishikawa_210",
@@ -12368,12 +12368,12 @@
             255
           ]
         ],
-        "inkPixels": 89967,
-        "inkRatio": 0.08330277777777778,
+        "inkPixels": 89054,
+        "inkRatio": 0.08245740740740741,
         "contentBounds": {
-          "x": 110,
+          "x": 109,
           "y": 37,
-          "width": 980,
+          "width": 982,
           "height": 826
         }
       },
@@ -12403,9 +12403,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.079295154185022,
+      "widthRatio": 1.0814977973568283,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0814511185104156
+      "inkRatio": 1.0704763736461875
     },
     {
       "id": "parity_ishikawa_211",
@@ -12427,12 +12427,12 @@
             255
           ]
         ],
-        "inkPixels": 62066,
-        "inkRatio": 0.057468518518518516,
+        "inkPixels": 61653,
+        "inkRatio": 0.05708611111111111,
         "contentBounds": {
-          "x": 216,
+          "x": 215,
           "y": 37,
-          "width": 768,
+          "width": 770,
           "height": 826
         }
       },
@@ -12462,9 +12462,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0786516853932584,
+      "widthRatio": 1.0814606741573034,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0981439869778304
+      "inkRatio": 1.0908367097790121
     },
     {
       "id": "parity_ishikawa_212",
@@ -12486,12 +12486,12 @@
             255
           ]
         ],
-        "inkPixels": 81335,
-        "inkRatio": 0.07531018518518519,
+        "inkPixels": 77273,
+        "inkRatio": 0.07154907407407407,
         "contentBounds": {
-          "x": 172,
+          "x": 170,
           "y": 50,
-          "width": 855,
+          "width": 860,
           "height": 800
         }
       },
@@ -12521,9 +12521,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0401459854014599,
+      "widthRatio": 1.0462287104622872,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1227912755383767
+      "inkRatio": 1.066717283268912
     },
     {
       "id": "parity_ishikawa_213",
@@ -12545,12 +12545,12 @@
             255
           ]
         ],
-        "inkPixels": 132676,
-        "inkRatio": 0.12284814814814815,
+        "inkPixels": 131094,
+        "inkRatio": 0.12138333333333333,
         "contentBounds": {
-          "x": 85,
+          "x": 84,
           "y": 34,
-          "width": 1030,
+          "width": 1032,
           "height": 832
         }
       },
@@ -12580,9 +12580,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.057494866529774,
+      "widthRatio": 1.0595482546201231,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0702784679423059
+      "inkRatio": 1.0575166983963085
     },
     {
       "id": "parity_ishikawa_214",
@@ -12604,8 +12604,8 @@
             255
           ]
         ],
-        "inkPixels": 78913,
-        "inkRatio": 0.07306759259259259,
+        "inkPixels": 76885,
+        "inkRatio": 0.07118981481481482,
         "contentBounds": {
           "x": 125,
           "y": 37,
@@ -12641,7 +12641,7 @@
       },
       "widthRatio": 1.0674157303370786,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0932049594791162
+      "inkRatio": 1.065110480016624
     },
     {
       "id": "parity_ishikawa_215",
@@ -12663,13 +12663,13 @@
             255
           ]
         ],
-        "inkPixels": 151570,
-        "inkRatio": 0.1403425925925926,
+        "inkPixels": 148007,
+        "inkRatio": 0.1370435185185185,
         "contentBounds": {
           "x": 54,
-          "y": 192,
+          "y": 194,
           "width": 1092,
-          "height": 516
+          "height": 512
         }
       },
       "official": {
@@ -12699,8 +12699,8 @@
         }
       },
       "widthRatio": 1.064327485380117,
-      "heightRatio": 1.0661157024793388,
-      "inkRatio": 1.1455758867499566
+      "heightRatio": 1.0578512396694215,
+      "inkRatio": 1.118646501749692
     },
     {
       "id": "parity_ishikawa_216",
@@ -12722,8 +12722,8 @@
             255
           ]
         ],
-        "inkPixels": 62226,
-        "inkRatio": 0.05761666666666666,
+        "inkPixels": 60443,
+        "inkRatio": 0.05596574074074074,
         "contentBounds": {
           "x": 209,
           "y": 37,
@@ -12759,7 +12759,7 @@
       },
       "widthRatio": 1.0683060109289617,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0915693084938427
+      "inkRatio": 1.0602918990983405
     },
     {
       "id": "parity_ishikawa_217",
@@ -12781,13 +12781,13 @@
             255
           ]
         ],
-        "inkPixels": 77831,
-        "inkRatio": 0.07206574074074074,
+        "inkPixels": 74609,
+        "inkRatio": 0.06908240740740741,
         "contentBounds": {
-          "x": 200,
-          "y": 36,
-          "width": 800,
-          "height": 828
+          "x": 197,
+          "y": 37,
+          "width": 806,
+          "height": 826
         }
       },
       "official": {
@@ -12816,9 +12816,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0512483574244416,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1398298258717394
+      "widthRatio": 1.0591327201051248,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.092643849860141
     },
     {
       "id": "parity_ishikawa_218",
@@ -12840,8 +12840,8 @@
             255
           ]
         ],
-        "inkPixels": 69625,
-        "inkRatio": 0.06446759259259259,
+        "inkPixels": 68354,
+        "inkRatio": 0.06329074074074074,
         "contentBounds": {
           "x": 159,
           "y": 58,
@@ -12877,7 +12877,7 @@
       },
       "widthRatio": 1.0703883495145632,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.08436643408921
+      "inkRatio": 1.0645713929728384
     },
     {
       "id": "parity_ishikawa_219",
@@ -12899,13 +12899,13 @@
             255
           ]
         ],
-        "inkPixels": 139775,
-        "inkRatio": 0.12942129629629628,
+        "inkPixels": 134136,
+        "inkRatio": 0.1242,
         "contentBounds": {
           "x": 35,
-          "y": 265,
+          "y": 267,
           "width": 1130,
-          "height": 370
+          "height": 366
         }
       },
       "official": {
@@ -12935,8 +12935,8 @@
         }
       },
       "widthRatio": 1.0660377358490567,
-      "heightRatio": 1.0632183908045978,
-      "inkRatio": 1.1197945874925894
+      "heightRatio": 1.0517241379310345,
+      "inkRatio": 1.0746182563971094
     },
     {
       "id": "parity_ishikawa_220",
@@ -12958,13 +12958,13 @@
             255
           ]
         ],
-        "inkPixels": 134446,
-        "inkRatio": 0.12448703703703703,
+        "inkPixels": 131064,
+        "inkRatio": 0.12135555555555555,
         "contentBounds": {
           "x": 54,
-          "y": 274,
+          "y": 275,
           "width": 1092,
-          "height": 352
+          "height": 350
         }
       },
       "official": {
@@ -12994,8 +12994,8 @@
         }
       },
       "widthRatio": 1.064327485380117,
-      "heightRatio": 1.0414201183431953,
-      "inkRatio": 1.074021409170794
+      "heightRatio": 1.0355029585798816,
+      "inkRatio": 1.047004313788145
     },
     {
       "id": "parity_ishikawa_221",
@@ -13017,12 +13017,12 @@
             255
           ]
         ],
-        "inkPixels": 131070,
-        "inkRatio": 0.12136111111111111,
+        "inkPixels": 129096,
+        "inkRatio": 0.11953333333333334,
         "contentBounds": {
-          "x": 88,
+          "x": 87,
           "y": 37,
-          "width": 1024,
+          "width": 1026,
           "height": 826
         }
       },
@@ -13052,9 +13052,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0578512396694215,
+      "widthRatio": 1.0599173553719008,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.081301819081797
+      "inkRatio": 1.065016705853236
     },
     {
       "id": "parity_ishikawa_222",
@@ -13076,12 +13076,12 @@
             255
           ]
         ],
-        "inkPixels": 90283,
-        "inkRatio": 0.08359537037037038,
+        "inkPixels": 88836,
+        "inkRatio": 0.08225555555555555,
         "contentBounds": {
-          "x": 46,
+          "x": 45,
           "y": 37,
-          "width": 1108,
+          "width": 1110,
           "height": 826
         }
       },
@@ -13111,9 +13111,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.075728155339806,
+      "widthRatio": 1.0776699029126213,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0985738969604049
+      "inkRatio": 1.0809666350295684
     },
     {
       "id": "parity_ishikawa_223",
@@ -13135,12 +13135,12 @@
             255
           ]
         ],
-        "inkPixels": 93304,
-        "inkRatio": 0.08639259259259259,
+        "inkPixels": 92616,
+        "inkRatio": 0.08575555555555556,
         "contentBounds": {
-          "x": 83,
+          "x": 82,
           "y": 37,
-          "width": 1034,
+          "width": 1036,
           "height": 826
         }
       },
@@ -13170,9 +13170,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0861344537815125,
+      "widthRatio": 1.088235294117647,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.084917617237009
+      "inkRatio": 1.0769177102591831
     },
     {
       "id": "parity_ishikawa_224",
@@ -13194,12 +13194,12 @@
             255
           ]
         ],
-        "inkPixels": 66274,
-        "inkRatio": 0.061364814814814816,
+        "inkPixels": 65916,
+        "inkRatio": 0.061033333333333335,
         "contentBounds": {
-          "x": 188,
+          "x": 187,
           "y": 37,
-          "width": 824,
+          "width": 825,
           "height": 826
         }
       },
@@ -13229,9 +13229,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.08994708994709,
+      "widthRatio": 1.0912698412698412,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1056354475993462
+      "inkRatio": 1.0996630075739882
     },
     {
       "id": "parity_ishikawa_225",
@@ -13253,12 +13253,12 @@
             255
           ]
         ],
-        "inkPixels": 83755,
-        "inkRatio": 0.07755092592592593,
+        "inkPixels": 79737,
+        "inkRatio": 0.07383055555555555,
         "contentBounds": {
-          "x": 147,
+          "x": 144,
           "y": 50,
-          "width": 906,
+          "width": 912,
           "height": 800
         }
       },
@@ -13288,9 +13288,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.046189376443418,
+      "widthRatio": 1.0531177829099307,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.1186574241027902
+      "inkRatio": 1.0649917858716993
     },
     {
       "id": "parity_ishikawa_226",
@@ -13312,12 +13312,12 @@
             255
           ]
         ],
-        "inkPixels": 136749,
-        "inkRatio": 0.12661944444444445,
+        "inkPixels": 135198,
+        "inkRatio": 0.12518333333333334,
         "contentBounds": {
-          "x": 58,
+          "x": 57,
           "y": 34,
-          "width": 1084,
+          "width": 1086,
           "height": 832
         }
       },
@@ -13347,9 +13347,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0648330058939097,
+      "widthRatio": 1.0667976424361494,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0737370247648361
+      "inkRatio": 1.0615587556337256
     },
     {
       "id": "parity_ishikawa_227",
@@ -13371,12 +13371,12 @@
             255
           ]
         ],
-        "inkPixels": 83181,
-        "inkRatio": 0.07701944444444445,
+        "inkPixels": 81012,
+        "inkRatio": 0.07501111111111111,
         "contentBounds": {
-          "x": 99,
+          "x": 98,
           "y": 37,
-          "width": 1002,
+          "width": 1004,
           "height": 826
         }
       },
@@ -13406,9 +13406,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0728051391862956,
+      "widthRatio": 1.0749464668094217,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1012683365990574
+      "inkRatio": 1.0725520309272891
     },
     {
       "id": "parity_ishikawa_228",
@@ -13430,13 +13430,13 @@
             255
           ]
         ],
-        "inkPixels": 123917,
-        "inkRatio": 0.11473796296296296,
+        "inkPixels": 121424,
+        "inkRatio": 0.11242962962962963,
         "contentBounds": {
           "x": 48,
-          "y": 225,
+          "y": 227,
           "width": 1104,
-          "height": 450
+          "height": 446
         }
       },
       "official": {
@@ -13466,8 +13466,8 @@
         }
       },
       "widthRatio": 1.0595009596928984,
-      "heightRatio": 1.0416666666666667,
-      "inkRatio": 1.1179808733309275
+      "heightRatio": 1.0324074074074074,
+      "inkRatio": 1.0954889931432696
     },
     {
       "id": "parity_ishikawa_229",
@@ -13489,12 +13489,12 @@
             255
           ]
         ],
-        "inkPixels": 66377,
-        "inkRatio": 0.06146018518518519,
+        "inkPixels": 64607,
+        "inkRatio": 0.059821296296296296,
         "contentBounds": {
-          "x": 183,
+          "x": 182,
           "y": 37,
-          "width": 834,
+          "width": 836,
           "height": 826
         }
       },
@@ -13524,9 +13524,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.074742268041237,
+      "widthRatio": 1.077319587628866,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.09824782011615
+      "inkRatio": 1.0689620940121445
     },
     {
       "id": "parity_ishikawa_230",
@@ -13548,13 +13548,13 @@
             255
           ]
         ],
-        "inkPixels": 81929,
-        "inkRatio": 0.07586018518518518,
+        "inkPixels": 78729,
+        "inkRatio": 0.07289722222222222,
         "contentBounds": {
-          "x": 173,
-          "y": 36,
-          "width": 854,
-          "height": 828
+          "x": 170,
+          "y": 37,
+          "width": 860,
+          "height": 826
         }
       },
       "official": {
@@ -13583,9 +13583,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0595533498759304,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.145828088724791
+      "widthRatio": 1.066997518610422,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.1010740958294873
     },
     {
       "id": "parity_ishikawa_231",
@@ -13607,12 +13607,12 @@
             255
           ]
         ],
-        "inkPixels": 73369,
-        "inkRatio": 0.06793425925925926,
+        "inkPixels": 72155,
+        "inkRatio": 0.06681018518518518,
         "contentBounds": {
-          "x": 134,
+          "x": 133,
           "y": 58,
-          "width": 932,
+          "width": 934,
           "height": 784
         }
       },
@@ -13642,9 +13642,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.0762124711316396,
+      "widthRatio": 1.0785219399538106,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0904699622484468
+      "inkRatio": 1.0724265033738591
     },
     {
       "id": "parity_ishikawa_232",
@@ -13666,13 +13666,13 @@
             255
           ]
         ],
-        "inkPixels": 115003,
-        "inkRatio": 0.10648425925925926,
+        "inkPixels": 111300,
+        "inkRatio": 0.10305555555555555,
         "contentBounds": {
           "x": 32,
-          "y": 289,
+          "y": 290,
           "width": 1136,
-          "height": 322
+          "height": 320
         }
       },
       "official": {
@@ -13702,8 +13702,8 @@
         }
       },
       "widthRatio": 1.0597014925373134,
-      "heightRatio": 1.038709677419355,
-      "inkRatio": 1.0776648081338145
+      "heightRatio": 1.032258064516129,
+      "inkRatio": 1.0429649065267301
     },
     {
       "id": "parity_ishikawa_233",
@@ -13725,13 +13725,13 @@
             255
           ]
         ],
-        "inkPixels": 114045,
-        "inkRatio": 0.10559722222222222,
+        "inkPixels": 110776,
+        "inkRatio": 0.10257037037037037,
         "contentBounds": {
           "x": 48,
-          "y": 294,
+          "y": 295,
           "width": 1104,
-          "height": 312
+          "height": 310
         }
       },
       "official": {
@@ -13761,8 +13761,8 @@
         }
       },
       "widthRatio": 1.0595009596928984,
-      "heightRatio": 1.033112582781457,
-      "inkRatio": 1.06707773494517
+      "heightRatio": 1.0264900662251655,
+      "inkRatio": 1.036490886634979
     },
     {
       "id": "parity_ishikawa_234",
@@ -13784,8 +13784,8 @@
             255
           ]
         ],
-        "inkPixels": 135309,
-        "inkRatio": 0.1252861111111111,
+        "inkPixels": 132838,
+        "inkRatio": 0.12299814814814815,
         "contentBounds": {
           "x": 61,
           "y": 37,
@@ -13821,7 +13821,7 @@
       },
       "widthRatio": 1.065217391304348,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0872559260747288
+      "inkRatio": 1.0674005624748895
     },
     {
       "id": "parity_ishikawa_235",
@@ -13843,12 +13843,12 @@
             255
           ]
         ],
-        "inkPixels": 90283,
-        "inkRatio": 0.08359537037037038,
+        "inkPixels": 88836,
+        "inkRatio": 0.08225555555555555,
         "contentBounds": {
-          "x": 46,
+          "x": 45,
           "y": 37,
-          "width": 1108,
+          "width": 1110,
           "height": 826
         }
       },
@@ -13878,9 +13878,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0715667311411992,
+      "widthRatio": 1.0735009671179885,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.094339393939394
+      "inkRatio": 1.0768
     },
     {
       "id": "parity_ishikawa_236",
@@ -13902,12 +13902,12 @@
             255
           ]
         ],
-        "inkPixels": 93304,
-        "inkRatio": 0.08639259259259259,
+        "inkPixels": 92616,
+        "inkRatio": 0.08575555555555556,
         "contentBounds": {
-          "x": 83,
+          "x": 82,
           "y": 37,
-          "width": 1034,
+          "width": 1036,
           "height": 826
         }
       },
@@ -13937,9 +13937,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0815899581589958,
+      "widthRatio": 1.0836820083682008,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0823878796315631
+      "inkRatio": 1.0744066262963736
     },
     {
       "id": "parity_ishikawa_237",
@@ -13961,12 +13961,12 @@
             255
           ]
         ],
-        "inkPixels": 66274,
-        "inkRatio": 0.061364814814814816,
+        "inkPixels": 65916,
+        "inkRatio": 0.061033333333333335,
         "contentBounds": {
-          "x": 188,
+          "x": 187,
           "y": 37,
-          "width": 824,
+          "width": 825,
           "height": 826
         }
       },
@@ -13996,9 +13996,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0842105263157895,
+      "widthRatio": 1.0855263157894737,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.1034999500482867
+      "inkRatio": 1.0975390455892637
     },
     {
       "id": "parity_ishikawa_238",
@@ -14020,12 +14020,12 @@
             255
           ]
         ],
-        "inkPixels": 83755,
-        "inkRatio": 0.07755092592592593,
+        "inkPixels": 79737,
+        "inkRatio": 0.07383055555555555,
         "contentBounds": {
-          "x": 147,
+          "x": 144,
           "y": 50,
-          "width": 906,
+          "width": 912,
           "height": 800
         }
       },
@@ -14055,9 +14055,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.043778801843318,
+      "widthRatio": 1.0506912442396312,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.116629114615969
+      "inkRatio": 1.0630607809937738
     },
     {
       "id": "parity_ishikawa_239",
@@ -14079,12 +14079,12 @@
             255
           ]
         ],
-        "inkPixels": 136749,
-        "inkRatio": 0.12661944444444445,
+        "inkPixels": 135198,
+        "inkRatio": 0.12518333333333334,
         "contentBounds": {
-          "x": 58,
+          "x": 57,
           "y": 34,
-          "width": 1084,
+          "width": 1086,
           "height": 832
         }
       },
@@ -14114,9 +14114,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.060665362035225,
+      "widthRatio": 1.0626223091976517,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0722804651418087
+      "inkRatio": 1.0601187162337
     },
     {
       "id": "parity_ishikawa_240",
@@ -14138,12 +14138,12 @@
             255
           ]
         ],
-        "inkPixels": 83181,
-        "inkRatio": 0.07701944444444445,
+        "inkPixels": 81012,
+        "inkRatio": 0.07501111111111111,
         "contentBounds": {
-          "x": 99,
+          "x": 98,
           "y": 37,
-          "width": 1002,
+          "width": 1004,
           "height": 826
         }
       },
@@ -14173,9 +14173,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.068230277185501,
+      "widthRatio": 1.070362473347548,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0974181036188768
+      "inkRatio": 1.0688021953375464
     },
     {
       "id": "parity_ishikawa_241",
@@ -14197,13 +14197,13 @@
             255
           ]
         ],
-        "inkPixels": 123917,
-        "inkRatio": 0.11473796296296296,
+        "inkPixels": 121424,
+        "inkRatio": 0.11242962962962963,
         "contentBounds": {
           "x": 48,
-          "y": 225,
+          "y": 227,
           "width": 1104,
-          "height": 450
+          "height": 446
         }
       },
       "official": {
@@ -14233,8 +14233,8 @@
         }
       },
       "widthRatio": 1.0595009596928984,
-      "heightRatio": 1.0514018691588785,
-      "inkRatio": 1.125719944039681
+      "heightRatio": 1.0420560747663552,
+      "inkRatio": 1.1030723668671307
     },
     {
       "id": "parity_ishikawa_242",
@@ -14256,12 +14256,12 @@
             255
           ]
         ],
-        "inkPixels": 66377,
-        "inkRatio": 0.06146018518518519,
+        "inkPixels": 64607,
+        "inkRatio": 0.059821296296296296,
         "contentBounds": {
-          "x": 183,
+          "x": 182,
           "y": 37,
-          "width": 834,
+          "width": 836,
           "height": 826
         }
       },
@@ -14291,9 +14291,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0719794344473008,
+      "widthRatio": 1.0745501285347043,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0932553734661945
+      "inkRatio": 1.0641027752614676
     },
     {
       "id": "parity_ishikawa_243",
@@ -14315,13 +14315,13 @@
             255
           ]
         ],
-        "inkPixels": 81929,
-        "inkRatio": 0.07586018518518518,
+        "inkPixels": 78729,
+        "inkRatio": 0.07289722222222222,
         "contentBounds": {
-          "x": 173,
-          "y": 36,
-          "width": 854,
-          "height": 828
+          "x": 170,
+          "y": 37,
+          "width": 860,
+          "height": 826
         }
       },
       "official": {
@@ -14350,9 +14350,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.056930693069307,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.140611730638043
+      "widthRatio": 1.0643564356435644,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.096061479346782
     },
     {
       "id": "parity_ishikawa_244",
@@ -14374,12 +14374,12 @@
             255
           ]
         ],
-        "inkPixels": 73369,
-        "inkRatio": 0.06793425925925926,
+        "inkPixels": 72155,
+        "inkRatio": 0.06681018518518518,
         "contentBounds": {
-          "x": 134,
+          "x": 133,
           "y": 58,
-          "width": 932,
+          "width": 934,
           "height": 784
         }
       },
@@ -14409,9 +14409,9 @@
           "height": 740
         }
       },
-      "widthRatio": 1.071264367816092,
+      "widthRatio": 1.0735632183908046,
       "heightRatio": 1.0594594594594595,
-      "inkRatio": 1.0881572117167222
+      "inkRatio": 1.0701520207638116
     },
     {
       "id": "parity_ishikawa_245",
@@ -14433,13 +14433,13 @@
             255
           ]
         ],
-        "inkPixels": 115003,
-        "inkRatio": 0.10648425925925926,
+        "inkPixels": 111300,
+        "inkRatio": 0.10305555555555555,
         "contentBounds": {
           "x": 32,
-          "y": 289,
+          "y": 290,
           "width": 1136,
-          "height": 322
+          "height": 320
         }
       },
       "official": {
@@ -14469,8 +14469,8 @@
         }
       },
       "widthRatio": 1.0597014925373134,
-      "heightRatio": 1.0454545454545454,
-      "inkRatio": 1.0935482337279514
+      "heightRatio": 1.0389610389610389,
+      "inkRatio": 1.0583368991584652
     },
     {
       "id": "parity_ishikawa_246",
@@ -14492,13 +14492,13 @@
             255
           ]
         ],
-        "inkPixels": 114045,
-        "inkRatio": 0.10559722222222222,
+        "inkPixels": 110776,
+        "inkRatio": 0.10257037037037037,
         "contentBounds": {
           "x": 48,
-          "y": 294,
+          "y": 295,
           "width": 1104,
-          "height": 312
+          "height": 310
         }
       },
       "official": {
@@ -14528,8 +14528,8 @@
         }
       },
       "widthRatio": 1.0595009596928984,
-      "heightRatio": 1.0469798657718121,
-      "inkRatio": 1.089473533373456
+      "heightRatio": 1.0402684563758389,
+      "inkRatio": 1.0582447291242751
     },
     {
       "id": "parity_ishikawa_247",
@@ -14551,8 +14551,8 @@
             255
           ]
         ],
-        "inkPixels": 135309,
-        "inkRatio": 0.1252861111111111,
+        "inkPixels": 132838,
+        "inkRatio": 0.12299814814814815,
         "contentBounds": {
           "x": 61,
           "y": 37,
@@ -14588,7 +14588,7 @@
       },
       "widthRatio": 1.061023622047244,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0851457992493503
+      "inkRatio": 1.0653289705835178
     },
     {
       "id": "parity_ishikawa_248",
@@ -14610,12 +14610,12 @@
             255
           ]
         ],
-        "inkPixels": 91258,
-        "inkRatio": 0.08449814814814814,
+        "inkPixels": 90003,
+        "inkRatio": 0.08333611111111111,
         "contentBounds": {
-          "x": 39,
+          "x": 38,
           "y": 37,
-          "width": 1122,
+          "width": 1124,
           "height": 826
         }
       },
@@ -14645,9 +14645,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0685714285714285,
+      "widthRatio": 1.0704761904761906,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0910286452106546
+      "inkRatio": 1.0760245803644015
     },
     {
       "id": "parity_ishikawa_249",
@@ -14669,12 +14669,12 @@
             255
           ]
         ],
-        "inkPixels": 94355,
-        "inkRatio": 0.08736574074074074,
+        "inkPixels": 93494,
+        "inkRatio": 0.08656851851851852,
         "contentBounds": {
-          "x": 76,
+          "x": 75,
           "y": 37,
-          "width": 1048,
+          "width": 1050,
           "height": 826
         }
       },
@@ -14704,9 +14704,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0781893004115226,
+      "widthRatio": 1.0802469135802468,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0839297407207436
+      "inkRatio": 1.0740387597789751
     },
     {
       "id": "parity_ishikawa_250",
@@ -14728,12 +14728,12 @@
             255
           ]
         ],
-        "inkPixels": 67447,
-        "inkRatio": 0.062450925925925924,
+        "inkPixels": 67037,
+        "inkRatio": 0.0620712962962963,
         "contentBounds": {
-          "x": 181,
+          "x": 180,
           "y": 37,
-          "width": 838,
+          "width": 840,
           "height": 826
         }
       },
@@ -14763,9 +14763,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0798969072164948,
+      "widthRatio": 1.0824742268041236,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.100995755794972
+      "inkRatio": 1.0943029709435195
     },
     {
       "id": "parity_ishikawa_251",
@@ -14787,12 +14787,12 @@
             255
           ]
         ],
-        "inkPixels": 84512,
-        "inkRatio": 0.07825185185185185,
+        "inkPixels": 80504,
+        "inkRatio": 0.07454074074074074,
         "contentBounds": {
-          "x": 140,
+          "x": 137,
           "y": 50,
-          "width": 920,
+          "width": 926,
           "height": 800
         }
       },
@@ -14822,9 +14822,9 @@
           "height": 754
         }
       },
-      "widthRatio": 1.0407239819004526,
+      "widthRatio": 1.0475113122171946,
       "heightRatio": 1.0610079575596818,
-      "inkRatio": 1.116849477996564
+      "inkRatio": 1.0638826483414827
     },
     {
       "id": "parity_ishikawa_252",
@@ -14846,12 +14846,12 @@
             255
           ]
         ],
-        "inkPixels": 137735,
-        "inkRatio": 0.1275324074074074,
+        "inkPixels": 136380,
+        "inkRatio": 0.12627777777777777,
         "contentBounds": {
-          "x": 50,
+          "x": 49,
           "y": 34,
-          "width": 1100,
+          "width": 1102,
           "height": 832
         }
       },
@@ -14881,9 +14881,9 @@
           "height": 786
         }
       },
-      "widthRatio": 1.0597302504816957,
+      "widthRatio": 1.0616570327552985,
       "heightRatio": 1.0585241730279897,
-      "inkRatio": 1.0693711180124224
+      "inkRatio": 1.0588509316770185
     },
     {
       "id": "parity_ishikawa_253",
@@ -14905,12 +14905,12 @@
             255
           ]
         ],
-        "inkPixels": 84275,
-        "inkRatio": 0.07803240740740741,
+        "inkPixels": 82097,
+        "inkRatio": 0.07601574074074074,
         "contentBounds": {
-          "x": 92,
+          "x": 91,
           "y": 37,
-          "width": 1016,
+          "width": 1018,
           "height": 826
         }
       },
@@ -14940,9 +14940,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0649895178197064,
+      "widthRatio": 1.0670859538784068,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0941679000804965
+      "inkRatio": 1.065890265119057
     },
     {
       "id": "parity_ishikawa_254",
@@ -14964,13 +14964,13 @@
             255
           ]
         ],
-        "inkPixels": 118771,
-        "inkRatio": 0.10997314814814815,
+        "inkPixels": 116307,
+        "inkRatio": 0.10769166666666667,
         "contentBounds": {
           "x": 47,
-          "y": 232,
+          "y": 234,
           "width": 1106,
-          "height": 436
+          "height": 432
         }
       },
       "official": {
@@ -15000,8 +15000,8 @@
         }
       },
       "widthRatio": 1.0553435114503817,
-      "heightRatio": 1.058252427184466,
-      "inkRatio": 1.1373264387628077
+      "heightRatio": 1.0485436893203883,
+      "inkRatio": 1.1137316862970412
     },
     {
       "id": "parity_ishikawa_255",
@@ -15023,8 +15023,8 @@
             255
           ]
         ],
-        "inkPixels": 67682,
-        "inkRatio": 0.06266851851851851,
+        "inkPixels": 65605,
+        "inkRatio": 0.06074537037037037,
         "contentBounds": {
           "x": 175,
           "y": 37,
@@ -15060,7 +15060,7 @@
       },
       "widthRatio": 1.070528967254408,
       "heightRatio": 1.058974358974359,
-      "inkRatio": 1.0943988099088027
+      "inkRatio": 1.0608143069659144
     },
     {
       "id": "parity_ishikawa_256",
@@ -15082,13 +15082,13 @@
             255
           ]
         ],
-        "inkPixels": 83068,
-        "inkRatio": 0.07691481481481481,
+        "inkPixels": 79822,
+        "inkRatio": 0.07390925925925926,
         "contentBounds": {
-          "x": 166,
-          "y": 36,
-          "width": 868,
-          "height": 828
+          "x": 163,
+          "y": 37,
+          "width": 874,
+          "height": 826
         }
       },
       "official": {
@@ -15117,9 +15117,9 @@
           "height": 780
         }
       },
-      "widthRatio": 1.0533980582524272,
-      "heightRatio": 1.0615384615384615,
-      "inkRatio": 1.1381360808922258
+      "widthRatio": 1.0606796116504855,
+      "heightRatio": 1.058974358974359,
+      "inkRatio": 1.0936617981530705
     }
   ]
 }

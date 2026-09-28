@@ -74,7 +74,7 @@ hour shifts are intentionally not reproduced.
   `1.003-1.027`.
 - 256 same-source Native/Official matrix pairs pass geometry and detail review
   (`256 pass / 0 review / 0 fail`). Their width, height, and foreground-ink
-  ratios are `1.035-1.037`, `0.883-0.961`, and `0.964-1.023`; all 16
+  ratios are `1.035-1.037`, `0.883-0.964`, and `0.963-1.023`; all 16
   contact sheets were manually inspected.
 - 20 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0`.

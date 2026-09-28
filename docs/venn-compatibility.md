@@ -37,8 +37,8 @@ that side-by-side review exposes no functional defect.
   themes, finite geometry, and deterministic replay.
 - The production Native/Official geometry audit accepted all 13 pairs: width
   `1.014-1.022`, height `1.010-1.027`, and foreground ink `1.028-1.044`.
-- The 256-case matrix geometry audit passed every pair: width `0.997-1.032`,
-  height `0.992-1.026`, and foreground ink `0.999-1.059`.
+- The 256-case matrix geometry audit passed every pair: width `0.995-1.026`,
+  height `0.990-1.022`, and foreground ink `0.989-1.048`.
 - The replacement detail audit produced `216 pass / 40 review / 0 fail`.
   Manual review accepted all 40 review cases with 0 unresolved defects. The
   reviews are repeated text-overlap threshold findings for two known label

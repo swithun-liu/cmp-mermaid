@@ -111,8 +111,9 @@ production so an upstream grammar diff can be translated incrementally.
 - The large-scale Web audit compares 256 unique same-source cases against
   Mermaid.js `12.0.0`, including long title and label-pressure profiles. It
   passes the replacement detail and geometry gates with
-  `256 pass / 0 review / 0 fail`; width `1.008-1.029`, height `0.995-1.041`,
-  and foreground ink `0.918-1.163`.
+  `236 pass / 20 review / 0 fail`; width `1.002-1.024`, height `0.988-1.033`,
+  and foreground ink `0.895-1.136`. The reviews are paint-order
+  occlusion-ratio threshold findings on intentional chart layering.
 - All 16 matrix contact sheets were manually reviewed with no unresolved
   visual defect.
 

@@ -67,7 +67,7 @@ test.
   `1.018-1.206`.
 - All 256 visual-matrix pairs pass the detail audit with
   `256 pass / 0 review / 0 fail` and the geometry gate. Their ratios are width
-  `1.041-1.071`, height `0.864-1.230`, and foreground ink `0.996-1.110`.
+  `1.036-1.089`, height `0.852-1.088`, and foreground ink `0.992-1.105`.
 - All 16 paged contact sheets were manually inspected, including the corrected
   three-line titles in cases 114 and 117.
 

@@ -43,9 +43,9 @@ release.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `0.970-1.116`, `0.880-1.069`, and `0.908-1.388`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
-- Matrix geometry passed `256/256`. Ratios were `0.970-1.281`,
-  `0.856-1.078`, and `0.840-1.342`.
-- Matrix detail produced `253 pass / 3 review / 0 fail`. The three reviews are
+- Matrix geometry passed `256/256`. Ratios were `0.978-1.189`,
+  `0.922-1.080`, and `0.925-1.403`.
+- Matrix detail produced `252 pass / 4 review / 0 fail`. The four reviews are
   paint-order overlap-ratio tolerance notices on otherwise matching,
   intentionally overlapping official layouts.
 - The production contact sheet and all 16 matrix contact sheets were manually

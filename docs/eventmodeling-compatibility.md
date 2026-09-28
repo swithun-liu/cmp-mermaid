@@ -54,7 +54,7 @@ weakening the Official visual gate.
   were `1.029-1.044`, `1.013-1.044`, and `1.029-1.115`.
 - Production detail produced `7 pass / 6 review / 0 fail`.
 - Matrix geometry passed `256/256`. Ratios were `1.025-1.037`,
-  `1.008-1.061`, and `0.998-1.132`.
+  `1.008-1.063`, and `0.995-1.126`.
 - Matrix detail produced `0 pass / 256 review / 0 fail`. Every review has only
   `text-segmentation`: Official represents a card title and payload in one
   `foreignObject`, while Native preserves the same visible content as a

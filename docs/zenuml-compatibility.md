@@ -38,8 +38,8 @@ Supported behavior includes:
   Native/Official content ratios are width `1.042-1.100`, height
   `1.039-1.102`, and foreground ink `1.090-1.234`.
 - All 256 visual-matrix pairs pass the replacement detail and geometry audits
-  with `256 pass / 0 review / 0 fail`. Ratios are width `1.038-1.089`,
-  height `1.031-1.096`, and foreground ink `0.999-1.347`.
+  with `256 pass / 0 review / 0 fail`. Ratios are width `1.031-1.101`,
+  height `1.025-1.102`, and foreground ink `0.970-1.264`.
 - All 16 visual-matrix contact sheets were manually reviewed with no unresolved
   participant, occurrence, message, fragment, icon, clipping, overlap, or
   paint-order defect.

@@ -52,7 +52,7 @@ in a later upstream release.
   are compound-shape element-count classifications. Manual review confirmed
   matching visible structure, labels, edge semantics, and paint order.
 - The matrix geometry and detail audits passed all 256 pairs. Ratios were
-  `1.040-1.222`, `0.854-1.086`, and `0.773-1.287`; detail was
+  `1.040-1.145`, `0.947-1.100`, and `0.894-1.244`; detail was
   `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for shapes, nested and collapsed containers, connectors, edge

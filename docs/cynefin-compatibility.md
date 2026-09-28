@@ -39,7 +39,7 @@ functional defect.
   height, and foreground-ink ratios were `1.013-1.021`, `1.011-1.019`, and
   `1.019-1.041`; detail was `13 pass / 0 review / 0 fail`.
 - The matrix geometry and detail audits passed all 256 pairs. Ratios were
-  `1.013-1.034`, `1.009-1.019`, and `1.020-1.052`; detail was
+  `1.013-1.032`, `1.009-1.019`, and `1.020-1.049`; detail was
   `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for domains, boundaries, cliff and confusion geometry, item

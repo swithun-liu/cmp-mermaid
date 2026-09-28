@@ -57,7 +57,8 @@ would change the feature's meaning.
 - All 20 Native Android screenshots were compared side by side with 20
   Puppeteer-rendered official references.
 - The replacement matrix detail audit reports
-  `256 pass / 0 review / 0 fail`; all 16 contact sheets were manually reviewed.
+  `255 pass / 1 review / 0 fail`; the single text-overlap font-box threshold
+  review and all 16 contact sheets were manually reviewed.
   Native/Official geometry ratios are `0.992-1.050` for width,
   `0.994-1.019` for height, and `0.993-1.042` for foreground ink.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,

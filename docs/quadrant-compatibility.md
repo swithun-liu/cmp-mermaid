@@ -29,7 +29,7 @@ Baseline: Mermaid `12.0.0`.
   (`256 pass / 0 review / 0 fail`) and the geometry gate at a shared
   `1200 x 900` capture viewport.
 - Across the 256-pair matrix, Native/Official content ratios are
-  `1.007-1.035` for width, `1.011-1.022` for height, and `1.024-1.048`
+  `1.007-1.035` for width, `1.011-1.022` for height, and `1.025-1.048`
   for foreground ink.
 - Sixteen paged contact sheets cover every pair; representative first,
   middle, and final pages were checked for blank output, clipping, label

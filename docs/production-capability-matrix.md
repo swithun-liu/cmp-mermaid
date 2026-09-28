@@ -93,17 +93,21 @@ Wardley Map and ZenUML pairs pass the geometry gate.
 The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
 defect and is not a detail-parity pass by itself. All 33 families contribute
-8,448 Native/Official pairs accepted by the replacement detail gate. Twenty-two
-families contribute `5,632 pass / 0 review / 0 fail`; ER contributes
+8,448 Native/Official pairs accepted by the replacement detail gate:
+`7,429 automatic pass / 1,019 manually reviewed / 0 unresolved`. Nineteen
+families contribute `4,864 pass / 0 review / 0 fail`; ER contributes
 `196 pass / 60 manually reviewed / 0 fail`; Journey contributes
 `237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
-`236 pass / 20 manually reviewed / 0 fail`; Mindmap contributes
-`149 pass / 107 manually reviewed / 0 fail`; Treemap contributes
+`235 pass / 21 manually reviewed / 0 fail`; Mindmap contributes
+`153 pass / 103 manually reviewed / 0 fail`; Pie contributes
+`255 pass / 1 manually reviewed / 0 fail`; Sequence contributes
+`246 pass / 10 manually reviewed / 0 fail`; XY Chart contributes
+`236 pass / 20 manually reviewed / 0 fail`; Treemap contributes
 `19 pass / 237 manually reviewed / 0 fail`; Venn contributes
 `216 automatic pass / 40 manually accepted / 0 unresolved`; Event Modeling
 contributes `0 automatic pass / 256 manually accepted / 0 unresolved`; Block
-contributes `253 automatic pass / 3 manually accepted / 0 unresolved`;
+contributes `252 automatic pass / 4 manually accepted / 0 unresolved`;
 Swimlanes contributes `196 automatic pass / 60 manually accepted / 0
 unresolved`; Architecture, C4, Railroad, and TreeView each contribute
 `256 automatic pass / 0 review / 0 fail`; Wardley Map and ZenUML each
@@ -112,19 +116,24 @@ contribute `256 automatic pass / 0 review / 0 fail`; Use Case contributes
 Journey reviews are benign
 platform-font line-segmentation differences for one complete long actor label.
 Requirement reviews are benign greedy cross-matches between duplicate
-relationship labels. Git Graph reviews are text-overlap threshold findings
-caused by browser/Compose text-bound differences; expected text, clipping,
-paint order, and raster checks pass. Mindmap reviews are CoSE-Bilkent branch
+relationship labels. Twenty Git Graph reviews are text-overlap threshold
+findings caused by browser/Compose text-bound differences; one is a
+paint-order occlusion-ratio threshold finding. Expected text, clipping, paint
+order, and raster checks pass. Mindmap reviews are CoSE-Bilkent branch
 rotation or mirror differences under platform text-size perturbations; all
 expected text, nodes, hierarchy edges, shapes, and colors are preserved. This
-systematic matrix broadens layout and text-pressure coverage. Treemap reviews
+systematic matrix broadens layout and text-pressure coverage. The Pie review
+is a text-overlap font-box threshold finding. Sequence reviews are
+text-segmentation representation differences. XY Chart reviews are
+paint-order occlusion-ratio threshold findings on intentional chart layering.
+Treemap reviews
 are Canvas/SVG text-position and same-row label/value overlap-threshold
 differences; all expected hierarchy, rectangles, styles, values, clipping, and
 paint order were manually verified. Venn reviews are two repeated
 text-overlap font-box patterns. All 40 were manually verified. Event Modeling
 reviews contain only the documented title/payload text-segmentation difference
 between one Official `foreignObject` and two Native text elements. Block
-reviews are three paint-order occlusion ratio threshold findings with matching
+reviews are four paint-order occlusion ratio threshold findings with matching
 visible shapes, labels, edges, and markers. Swimlanes reviews contain only
 text-position findings along semantically equivalent orthogonal routes; all
 lanes, shapes, labels, markers, and endpoints were manually verified. The

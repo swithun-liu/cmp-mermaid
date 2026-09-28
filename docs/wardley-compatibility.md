@@ -39,8 +39,8 @@ through `MermaidWardleyOptions`, matching Mermaid's `initialize()` path.
   Native/Official content ratios are width `1.008-1.015`, height
   `1.019-1.020`, and foreground ink `0.970-1.106`.
 - All 256 visual-matrix pairs pass the replacement detail and geometry audits
-  with `256 pass / 0 review / 0 fail`. Ratios are width `0.998-1.015`,
-  height `1.019-1.020`, and foreground ink `0.960-1.104`.
+  with `256 pass / 0 review / 0 fail`. Ratios are width `0.999-1.016`,
+  height `1.016-1.019`, and foreground ink `0.960-1.106`.
 - All 16 visual-matrix contact sheets were manually reviewed with no unresolved
   text, component, dependency, marker, annotation, clipping, overlap, or paint
   order defect.

@@ -1,32 +1,68 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 8,448 source cases and
-16,896 screenshots from the large-scale
-visual parity matrix. Every page shows the same Mermaid source on the left in
-CMP Native and on the right in Mermaid.js 12.0.0.
+This index contains 8,448 source cases and 16,896 screenshots from the
+large-scale visual parity matrix. Every page shows the same Mermaid source on
+the left in CMP Native and on the right in Mermaid.js 12.0.0.
 
 The matrix contains 256 cases per supported diagram type. Case IDs, structural
 seed IDs, label profiles, feature dimensions, source hashes, image hashes, and
 capture sizes are recorded in
-[`visual-parity-manifest.json`](visual-parity-manifest.json).
-Each type combines at least 13 complex structural seeds with visible text and
-layout-pressure profiles. The 256 sources per type are unique, but they are
-not presented as 256 unrelated topologies.
+[`visual-parity-manifest.json`](visual-parity-manifest.json). Each type
+combines at least 13 complex structural seeds with visible text and layout-pressure
+profiles. The 256 sources per type are unique, but they are not presented as
+256 unrelated topologies.
 
-All 33 implemented families have completed the replacement detail gate and
-manual contact-sheet review. The accepted replacement total is
-`8,448/8,448` pairs: `7,458 automatic pass / 990 manually reviewed /
-0 unresolved` across 528 contact sheets. Block contributes three
-paint-order overlap-ratio reviews; Event Modeling contributes 256 manual
-acceptances caused by the documented title/payload `text-segmentation`
-adaptation; Swimlanes contributes 60 text-position reviews along semantically
-equivalent orthogonal routes. Use Case contributes 72 automatic passes and
-184 manual acceptances for element-count and text-segmentation representation
-differences. Architecture, C4, Railroad, and TreeView each contribute 256
-automatic passes. Wardley Map and ZenUML add 256 automatic passes each.
+All 33 families completed the fresh 2026-09-28 replacement detail, geometry,
+and manual contact-sheet gates. The accepted total is `8,448/8,448` pairs:
+`7,429 automatic pass / 1,019 manually reviewed / 0 unresolved` across 528
+contact sheets. The aggregate
+[geometry report](visual-parity-geometry.json) has `0` failures, with width
+ratios `0.930-1.276`, height ratios `0.852-1.236`, and foreground-ink ratios
+`0.567-1.578`. Review findings are limited to the documented text-position,
+text-segmentation, text-overlap, raster-mask, element-count, and paint-order
+occlusion-ratio representation thresholds; manual review found no missing
+semantic content, clipping defect, or incorrect visible paint order.
+
+| Family | Pass | Review | Fail | Width ratio | Height ratio | Ink ratio |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Flowchart | 256 | 0 | 0 | `1.021-1.083` | `0.965-1.048` | `0.957-1.187` |
+| Swimlanes | 196 | 60 | 0 | `1.008-1.136` | `0.953-1.070` | `0.963-1.521` |
+| Architecture | 256 | 0 | 0 | `1.020-1.232` | `0.998-1.236` | `0.991-1.578` |
+| C4 | 256 | 0 | 0 | `0.967-1.071` | `1.028-1.060` | `0.987-1.128` |
+| Railroad | 256 | 0 | 0 | `1.024-1.116` | `1.023-1.146` | `1.048-1.338` |
+| TreeView | 256 | 0 | 0 | `0.990-1.055` | `0.969-1.063` | `0.853-1.046` |
+| Use Case | 72 | 184 | 0 | `1.036-1.160` | `0.971-1.115` | `1.043-1.316` |
+| Cynefin | 256 | 0 | 0 | `1.013-1.032` | `1.009-1.019` | `1.020-1.049` |
+| Agentflow | 256 | 0 | 0 | `1.040-1.145` | `0.947-1.100` | `0.894-1.244` |
+| Block | 252 | 4 | 0 | `0.978-1.189` | `0.922-1.080` | `0.925-1.403` |
+| Event Modeling | 0 | 256 | 0 | `1.025-1.037` | `1.008-1.063` | `0.995-1.126` |
+| XY Chart | 236 | 20 | 0 | `1.002-1.024` | `0.988-1.033` | `0.895-1.136` |
+| Quadrant Chart | 256 | 0 | 0 | `1.007-1.035` | `1.011-1.022` | `1.025-1.048` |
+| Timeline | 256 | 0 | 0 | `1.026-1.053` | `1.038-1.087` | `1.052-1.136` |
+| Sequence | 246 | 10 | 0 | `1.019-1.237` | `0.919-1.113` | `0.925-1.294` |
+| Class | 256 | 0 | 0 | `1.025-1.184` | `0.916-1.056` | `0.776-1.199` |
+| State | 256 | 0 | 0 | `0.959-1.131` | `0.963-1.089` | `0.984-1.382` |
+| Entity Relationship | 196 | 60 | 0 | `1.010-1.139` | `0.980-1.089` | `0.567-1.253` |
+| Gantt | 256 | 0 | 0 | `1.035-1.037` | `0.883-0.964` | `0.963-1.023` |
+| Pie | 255 | 1 | 0 | `0.992-1.050` | `0.994-1.019` | `0.993-1.042` |
+| User Journey | 237 | 19 | 0 | `1.020-1.032` | `1.041-1.061` | `0.983-1.073` |
+| Requirement | 252 | 4 | 0 | `1.013-1.072` | `1.004-1.053` | `0.974-1.148` |
+| Git Graph | 235 | 21 | 0 | `1.035-1.141` | `1.032-1.145` | `1.035-1.421` |
+| Mindmap | 153 | 103 | 0 | `0.930-1.276` | `0.877-1.104` | `0.794-1.277` |
+| Packet | 256 | 0 | 0 | `1.011-1.015` | `1.003-1.065` | `0.977-1.039` |
+| Radar | 256 | 0 | 0 | `1.004-1.036` | `1.004-1.020` | `1.006-1.037` |
+| Sankey | 256 | 0 | 0 | `1.043-1.053` | `1.026-1.053` | `1.053-1.112` |
+| Treemap | 19 | 237 | 0 | `1.033-1.076` | `1.029-1.039` | `0.945-1.077` |
+| Venn | 216 | 40 | 0 | `0.995-1.026` | `0.990-1.022` | `0.989-1.048` |
+| Ishikawa | 256 | 0 | 0 | `1.046-1.181` | `1.017-1.116` | `1.028-1.313` |
+| Kanban | 256 | 0 | 0 | `1.036-1.089` | `0.852-1.088` | `0.992-1.105` |
+| Wardley Map | 256 | 0 | 0 | `0.999-1.016` | `1.016-1.019` | `0.960-1.106` |
+| ZenUML | 256 | 0 | 0 | `1.031-1.101` | `1.025-1.102` | `0.970-1.264` |
 
 <details>
 <summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
+
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.021-1.083`, height `0.965-1.048`, foreground ink `0.957-1.187`. All 16 pages below were manually reviewed.
 
 ![Flowchart visual parity page 01](flowchart-visual-parity-01.jpg)
 
@@ -65,12 +101,7 @@ automatic passes. Wardley Map and ZenUML add 256 automatic passes each.
 <details>
 <summary><strong>Swimlanes - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `196 pass / 60 review / 0 fail`. The reviews contain
-only text-position findings along semantically equivalent orthogonal routes.
-Geometry ratios: width `1.028-1.186`, height `0.883-1.070`, foreground ink
-`0.899-1.551`. Raw [detail](swimlanes-visual-parity-detail.json) and
-[geometry](swimlanes-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `196 pass / 60 review / 0 fail`. The 60 reviews contain only text-position findings along semantically equivalent orthogonal routes. Geometry ratios: width `1.008-1.136`, height `0.953-1.070`, foreground ink `0.963-1.521`. Raw [detail](swimlanes-visual-parity-detail.json) and [geometry](swimlanes-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Swimlanes visual parity page 01](swimlanes-visual-parity-01.jpg)
 
@@ -109,11 +140,7 @@ the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Architecture - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.020-1.232`, height `0.996-1.236`, foreground ink `0.986-1.584`.
-Raw [detail](architecture-visual-parity-detail.json) and
-[geometry](architecture-visual-parity-geometry.json) reports are published
-with the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.020-1.232`, height `0.998-1.236`, foreground ink `0.991-1.578`. Raw [detail](architecture-visual-parity-detail.json) and [geometry](architecture-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Architecture visual parity page 01](architecture-visual-parity-01.jpg)
 
@@ -152,11 +179,7 @@ with the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>C4 - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `0.996-1.153`, height `0.992-1.046`, foreground ink `1.005-1.252`.
-Raw [detail](c4-visual-parity-detail.json) and
-[geometry](c4-visual-parity-geometry.json) reports are published with the
-sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.967-1.071`, height `1.028-1.060`, foreground ink `0.987-1.128`. Raw [detail](c4-visual-parity-detail.json) and [geometry](c4-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![C4 visual parity page 01](c4-visual-parity-01.jpg)
 
@@ -195,11 +218,7 @@ sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Railroad - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.035-1.116`, height `1.009-1.130`, foreground ink `1.023-1.319`.
-Raw [detail](railroad-visual-parity-detail.json) and
-[geometry](railroad-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.024-1.116`, height `1.023-1.146`, foreground ink `1.048-1.338`. Raw [detail](railroad-visual-parity-detail.json) and [geometry](railroad-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Railroad visual parity page 01](railroad-visual-parity-01.jpg)
 
@@ -238,11 +257,7 @@ the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>TreeView - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.033-1.141`, height `1.006-1.138`, foreground ink `0.954-1.229`.
-Raw [detail](treeview-visual-parity-detail.json) and
-[geometry](treeview-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.990-1.055`, height `0.969-1.063`, foreground ink `0.853-1.046`. Raw [detail](treeview-visual-parity-detail.json) and [geometry](treeview-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![TreeView visual parity page 01](treeview-visual-parity-01.jpg)
 
@@ -281,14 +296,7 @@ the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Use Case - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `72 pass / 184 review / 0 fail`. The 184 reviews
-contain 155 element-count and 29 text-segmentation representation differences;
-all preserve complete labels, actor/use-case semantics, boundaries, notes,
-tables, markers, styles, colors, clipping, and paint order. Geometry ratios:
-width `1.043-1.127`, height `0.927-1.084`, foreground ink `0.942-1.274`.
-Raw [detail](usecase-visual-parity-detail.json) and
-[geometry](usecase-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `72 pass / 184 review / 0 fail`. The 184 reviews are element-count or text-segmentation representation differences with complete actors, use cases, relationships, labels, styles, clipping, and paint order. Geometry ratios: width `1.036-1.160`, height `0.971-1.115`, foreground ink `1.043-1.316`. Raw [detail](usecase-visual-parity-detail.json) and [geometry](usecase-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Use Case visual parity page 01](usecase-visual-parity-01.jpg)
 
@@ -327,11 +335,7 @@ the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Cynefin - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.013-1.034`, height `1.009-1.019`, foreground ink `1.020-1.052`.
-Raw [detail](cynefin-visual-parity-detail.json) and
-[geometry](cynefin-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.013-1.032`, height `1.009-1.019`, foreground ink `1.020-1.049`. Raw [detail](cynefin-visual-parity-detail.json) and [geometry](cynefin-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Cynefin visual parity page 01](cynefin-visual-parity-01.jpg)
 
@@ -370,13 +374,7 @@ the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Agentflow - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.040-1.222`, height `0.854-1.086`, foreground ink `0.773-1.287`.
-Raw [detail](agentflow-visual-parity-detail.json) and
-[geometry](agentflow-visual-parity-geometry.json) reports are published with
-the sheets. Both renderers explicitly use Dagre; this evidence does not claim
-that Dagre is equivalent to Mermaid's default ELK layout. All 16 pages below
-were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.040-1.145`, height `0.947-1.100`, foreground ink `0.894-1.244`. Raw [detail](agentflow-visual-parity-detail.json) and [geometry](agentflow-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Agentflow visual parity page 01](agentflow-visual-parity-01.jpg)
 
@@ -415,13 +413,7 @@ were manually reviewed.
 <details>
 <summary><strong>Block - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `253 pass / 3 review / 0 fail`. The reviews contain
-only paint-order overlap-ratio tolerance notices on intentionally overlapping
-official layouts. Geometry ratios: width `0.970-1.281`, height `0.856-1.078`,
-foreground ink `0.840-1.342`. Raw
-[detail](block-visual-parity-detail.json) and
-[geometry](block-visual-parity-geometry.json) reports are published with the
-sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `252 pass / 4 review / 0 fail`. The four reviews are paint-order occlusion-ratio threshold findings on intentional overlaps; visible shapes, labels, edges, markers, clipping, and paint order remain complete. Geometry ratios: width `0.978-1.189`, height `0.922-1.080`, foreground ink `0.925-1.403`. Raw [detail](block-visual-parity-detail.json) and [geometry](block-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Block visual parity page 01](block-visual-parity-01.jpg)
 
@@ -460,14 +452,7 @@ sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Event Modeling - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `0 pass / 256 review / 0 fail`. Every review contains
-only `text-segmentation`: Official combines each card title and payload in one
-`foreignObject`, while Native represents the same visible content as a
-centered bold title and left-aligned monospace payload. Geometry ratios: width
-`1.025-1.037`, height `1.008-1.061`, foreground ink `0.998-1.132`. Raw
-[detail](eventmodeling-visual-parity-detail.json) and
-[geometry](eventmodeling-visual-parity-geometry.json) reports are published
-with the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `0 pass / 256 review / 0 fail`. All 256 reviews contain only the documented title/payload text-segmentation difference between one Official foreignObject and separate Native title and payload elements. Geometry ratios: width `1.025-1.037`, height `1.008-1.063`, foreground ink `0.995-1.126`. Raw [detail](eventmodeling-visual-parity-detail.json) and [geometry](eventmodeling-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Event Modeling visual parity page 01](eventmodeling-visual-parity-01.jpg)
 
@@ -506,6 +491,8 @@ with the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>XY Chart - 256 Native/Official pairs</strong></summary>
 
+Replacement detail audit: `236 pass / 20 review / 0 fail`. The 20 reviews are paint-order occlusion-ratio threshold findings on intentional chart layering; bars, lines, axes, labels, legends, clipping, and visible paint order remain complete. Geometry ratios: width `1.002-1.024`, height `0.988-1.033`, foreground ink `0.895-1.136`. All 16 pages below were manually reviewed.
+
 ![XY Chart visual parity page 01](xychart-visual-parity-01.jpg)
 
 ![XY Chart visual parity page 02](xychart-visual-parity-02.jpg)
@@ -543,9 +530,7 @@ with the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Quadrant Chart - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.007-1.035`, height `1.011-1.022`, foreground ink `1.024-1.048`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.007-1.035`, height `1.011-1.022`, foreground ink `1.025-1.048`. All 16 pages below were manually reviewed.
 
 ![Quadrant Chart visual parity page 01](quadrant-visual-parity-01.jpg)
 
@@ -584,9 +569,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Timeline - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.026-1.053`, height `1.038-1.087`, foreground ink `1.052-1.136`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.026-1.053`, height `1.038-1.087`, foreground ink `1.052-1.136`. All 16 pages below were manually reviewed.
 
 ![Timeline visual parity page 01](timeline-visual-parity-01.jpg)
 
@@ -625,9 +608,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Sequence - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.023-1.068`, height `0.893-1.045`, foreground ink `0.926-1.148`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `246 pass / 10 review / 0 fail`. The ten reviews are text-segmentation representation differences; participants, messages, notes, control regions, labels, clipping, and paint order remain complete. Geometry ratios: width `1.019-1.237`, height `0.919-1.113`, foreground ink `0.925-1.294`. All 16 pages below were manually reviewed.
 
 ![Sequence visual parity page 01](sequence-visual-parity-01.jpg)
 
@@ -666,9 +647,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Class - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.030-1.208`, height `0.897-1.055`, foreground ink `0.781-1.227`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.025-1.184`, height `0.916-1.056`, foreground ink `0.776-1.199`. All 16 pages below were manually reviewed.
 
 ![Class visual parity page 01](class-visual-parity-01.jpg)
 
@@ -707,9 +686,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>State - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `0.963-1.224`, height `0.968-1.089`, foreground ink `1.031-1.383`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.959-1.131`, height `0.963-1.089`, foreground ink `0.984-1.382`. All 16 pages below were manually reviewed.
 
 ![State visual parity page 01](state-visual-parity-01.jpg)
 
@@ -748,6 +725,8 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Entity Relationship - 256 Native/Official pairs</strong></summary>
 
+Replacement detail audit: `196 pass / 60 review / 0 fail`. The 60 reviews contain only text-position findings on large repeated structures; all text, relationships, markers, clipping, overlap, and paint order remain complete. Geometry ratios: width `1.010-1.139`, height `0.980-1.089`, foreground ink `0.567-1.253`. All 16 pages below were manually reviewed.
+
 ![Entity Relationship visual parity page 01](er-visual-parity-01.jpg)
 
 ![Entity Relationship visual parity page 02](er-visual-parity-02.jpg)
@@ -785,10 +764,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Gantt - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.035-1.037`, height `0.883-0.961`, foreground ink `0.964-1.023`.
-All 16 pages below were manually reviewed at the shared `1200 x 900`
-viewport.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.035-1.037`, height `0.883-0.964`, foreground ink `0.963-1.023`. All 16 pages below were manually reviewed.
 
 ![Gantt visual parity page 01](gantt-visual-parity-01.jpg)
 
@@ -827,9 +803,7 @@ viewport.
 <details>
 <summary><strong>Pie - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `0.992-1.050`, height `0.994-1.019`, foreground ink `0.993-1.042`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `255 pass / 1 review / 0 fail`. The single review is a text-overlap font-box threshold finding; slices, labels, values, legend, clipping, and paint order remain complete. Geometry ratios: width `0.992-1.050`, height `0.994-1.019`, foreground ink `0.993-1.042`. All 16 pages below were manually reviewed.
 
 ![Pie visual parity page 01](pie-visual-parity-01.jpg)
 
@@ -868,6 +842,8 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>User Journey - 256 Native/Official pairs</strong></summary>
 
+Replacement detail audit: `237 pass / 19 review / 0 fail`. The 19 reviews are benign text-segmentation differences for one complete long actor label. Geometry ratios: width `1.020-1.032`, height `1.041-1.061`, foreground ink `0.983-1.073`. All 16 pages below were manually reviewed.
+
 ![User Journey visual parity page 01](journey-visual-parity-01.jpg)
 
 ![User Journey visual parity page 02](journey-visual-parity-02.jpg)
@@ -905,12 +881,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Requirement - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `252 pass / 4 manually reviewed / 0 fail`. Geometry
-ratios: width `1.013-1.072`, height `1.004-1.053`, foreground ink
-`0.974-1.148`. The four reviews are benign greedy cross-matches between
-duplicate `<<contains>>` or `<<satisfies>>` labels; all 44 text elements match
-with no clipping or overlap, and raster checks pass. All 16 pages below were
-manually reviewed.
+Replacement detail audit: `252 pass / 4 review / 0 fail`. The four reviews are benign duplicate-label text-position cross-matches. Geometry ratios: width `1.013-1.072`, height `1.004-1.053`, foreground ink `0.974-1.148`. All 16 pages below were manually reviewed.
 
 ![Requirement visual parity page 01](requirement-visual-parity-01.jpg)
 
@@ -949,13 +920,7 @@ manually reviewed.
 <details>
 <summary><strong>Git Graph - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `236 pass / 20 manually reviewed / 0 fail`.
-Geometry ratios: width `1.036-1.154`, height `1.032-1.137`, foreground ink
-`1.027-1.415`. The reviews are text-overlap threshold findings caused by
-browser/Compose text-bound differences; every expected label is present,
-unclipped, and accepted by raster checks. All 16 pages below were manually
-reviewed, including the corrected `parity_gitgraph_005` commit-label paint
-order.
+Replacement detail audit: `235 pass / 21 review / 0 fail`. Twenty reviews are text-overlap font-bound threshold findings and one is a paint-order occlusion-ratio threshold finding; expected labels, clipping, commit order, and raster checks pass. Geometry ratios: width `1.035-1.141`, height `1.032-1.145`, foreground ink `1.035-1.421`. All 16 pages below were manually reviewed.
 
 ![Git Graph visual parity page 01](gitgraph-visual-parity-01.jpg)
 
@@ -994,12 +959,7 @@ order.
 <details>
 <summary><strong>Mindmap - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `149 pass / 107 manually reviewed / 0 fail`.
-Geometry ratios: width `0.956-1.155`, height `0.861-1.212`, foreground ink
-`0.771-1.431`. The reviews are CoSE-Bilkent branch rotations or mirrors under
-platform text-size perturbations; every expected node, label, hierarchy edge,
-shape, and section color is preserved, with no clipping, overlap, or
-paint-order mismatch. All 16 pages below were manually reviewed.
+Replacement detail audit: `153 pass / 103 review / 0 fail`. All 103 reviews are text-position findings from equivalent CoSE-Bilkent branch rotations or mirrors; 69 also cross the raster-mask threshold. Geometry ratios: width `0.930-1.276`, height `0.877-1.104`, foreground ink `0.794-1.277`. All 16 pages below were manually reviewed.
 
 ![Mindmap visual parity page 01](mindmap-visual-parity-01.jpg)
 
@@ -1038,9 +998,7 @@ paint-order mismatch. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Packet - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.011-1.015`, height `1.006-1.056`, foreground ink `0.977-1.039`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.011-1.015`, height `1.003-1.065`, foreground ink `0.977-1.039`. All 16 pages below were manually reviewed.
 
 ![Packet visual parity page 01](packet-visual-parity-01.jpg)
 
@@ -1079,9 +1037,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Radar - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.004-1.036`, height `1.007-1.021`, foreground ink `1.005-1.036`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.004-1.036`, height `1.004-1.020`, foreground ink `1.006-1.037`. All 16 pages below were manually reviewed.
 
 ![Radar visual parity page 01](radar-visual-parity-01.jpg)
 
@@ -1120,9 +1076,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Sankey - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.048-1.060`, height `1.028-1.059`, foreground ink `1.062-1.124`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.043-1.053`, height `1.026-1.053`, foreground ink `1.053-1.112`. All 16 pages below were manually reviewed.
 
 ![Sankey visual parity page 01](sankey-visual-parity-01.jpg)
 
@@ -1161,11 +1115,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Treemap - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `19 pass / 237 manually reviewed / 0 fail`.
-Geometry ratios: width `1.033-1.076`, height `1.029-1.039`, foreground ink
-`0.945-1.077`. The reviews contain only Canvas/SVG text-position and same-row
-label/value overlap-threshold differences. Expected hierarchy, rectangles,
-styles, values, clipping, and paint order were verified across all 16 pages.
+Replacement detail audit: `19 pass / 237 review / 0 fail`. The 237 reviews are text-position findings; 198 also report same-row label/value overlap-threshold differences caused by Canvas/SVG glyph bounds. Geometry ratios: width `1.033-1.076`, height `1.029-1.039`, foreground ink `0.945-1.077`. All 16 pages below were manually reviewed.
 
 ![Treemap visual parity page 01](treemap-visual-parity-01.jpg)
 
@@ -1204,13 +1154,7 @@ styles, values, clipping, and paint order were verified across all 16 pages.
 <details>
 <summary><strong>Venn - 256 Native/Official pairs</strong></summary>
 
-Raw replacement detail audit: `216 pass / 40 review / 0 fail`. All 40 review
-cases were manually accepted with 0 unresolved defects. The reviews repeat two
-text-overlap font-box threshold patterns. Geometry ratios:
-width `0.997-1.032`, height `0.992-1.026`, foreground ink `0.999-1.059`.
-Raw [detail](venn-visual-parity-detail.json) and
-[geometry](venn-visual-parity-geometry.json) reports are published with the sheets.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `216 pass / 40 review / 0 fail`. The 40 reviews repeat text-overlap font-box threshold patterns with complete sets, intersections, labels, and values. Geometry ratios: width `0.995-1.026`, height `0.990-1.022`, foreground ink `0.989-1.048`. Raw [detail](venn-visual-parity-detail.json) and [geometry](venn-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Venn visual parity page 01](venn-visual-parity-01.jpg)
 
@@ -1249,11 +1193,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Ishikawa - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.040-1.173`, height `1.023-1.119`, foreground ink `1.058-1.311`.
-Raw [detail](ishikawa-visual-parity-detail.json) and
-[geometry](ishikawa-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.046-1.181`, height `1.017-1.116`, foreground ink `1.028-1.313`. Raw [detail](ishikawa-visual-parity-detail.json) and [geometry](ishikawa-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Ishikawa visual parity page 01](ishikawa-visual-parity-01.jpg)
 
@@ -1292,9 +1232,7 @@ the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Kanban - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.041-1.071`, height `0.864-1.230`, foreground ink `0.996-1.110`.
-All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.036-1.089`, height `0.852-1.088`, foreground ink `0.992-1.105`. All 16 pages below were manually reviewed.
 
 ![Kanban visual parity page 01](kanban-visual-parity-01.jpg)
 
@@ -1333,11 +1271,7 @@ All 16 pages below were manually reviewed.
 <details>
 <summary><strong>Wardley Map - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `0.998-1.015`, height `1.019-1.020`, foreground ink `0.960-1.104`.
-Raw [detail](wardley-visual-parity-detail.json) and
-[geometry](wardley-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.999-1.016`, height `1.016-1.019`, foreground ink `0.960-1.106`. Raw [detail](wardley-visual-parity-detail.json) and [geometry](wardley-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Wardley Map visual parity page 01](wardley-visual-parity-01.jpg)
 
@@ -1376,11 +1310,7 @@ the sheets. All 16 pages below were manually reviewed.
 <details>
 <summary><strong>ZenUML - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios:
-width `1.038-1.089`, height `1.031-1.096`, foreground ink `0.999-1.347`.
-Raw [detail](zenuml-visual-parity-detail.json) and
-[geometry](zenuml-visual-parity-geometry.json) reports are published with
-the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.031-1.101`, height `1.025-1.102`, foreground ink `0.970-1.264`. Raw [detail](zenuml-visual-parity-detail.json) and [geometry](zenuml-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![ZenUML visual parity page 01](zenuml-visual-parity-01.jpg)
 

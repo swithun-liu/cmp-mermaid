@@ -42,8 +42,8 @@ that side-by-side review exposes no functional defect.
   root-only review is a manifest-only element-count difference: Native retains
   the zero-length spine while Official omits it from visible geometry. Raster
   output and effect semantics match.
-- The 256-case matrix geometry audit passed every pair: width `1.040-1.173`,
-  height `1.023-1.119`, and foreground ink `1.058-1.311`.
+- The 256-case matrix geometry audit passed every pair: width `1.046-1.181`,
+  height `1.017-1.116`, and foreground ink `1.028-1.313`.
 - The matrix detail audit produced `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for hierarchy, branch direction, fish-head geometry, labels,

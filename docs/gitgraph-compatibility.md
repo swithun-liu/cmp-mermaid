@@ -55,11 +55,12 @@ side-by-side comparison does not expose a functional rendering defect.
   capability points.
 - 256 same-source Native/Official visual cases were captured at `1200 x 900`.
   The replacement audit accepted all 256:
-  `236 pass / 20 manually reviewed / 0 fail`. All 20 reviews are
-  text-overlap threshold findings caused by browser/Compose text-bound
-  differences; expected labels, clipping, paint order, and raster checks pass.
-  Geometry ratios are width `1.036-1.154`, height `1.032-1.137`, and
-  foreground ink `1.027-1.415`. All 16 contact sheets were manually reviewed.
+  `235 pass / 21 manually reviewed / 0 fail`. Twenty reviews are text-overlap
+  threshold findings caused by browser/Compose text-bound differences and one
+  is a paint-order occlusion-ratio threshold finding; expected labels,
+  clipping, paint order, and raster checks pass. Geometry ratios are width
+  `1.035-1.141`, height `1.032-1.145`, and foreground ink `1.035-1.421`.
+  All 16 contact sheets were manually reviewed.
 - The 13 production pairs are also accepted:
   `12 pass / 1 manually reviewed / 0 fail`. The single review has the same
   text-bound cause and passes semantic, clipping, paint-order, and raster

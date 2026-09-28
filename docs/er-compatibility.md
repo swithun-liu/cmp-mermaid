@@ -63,7 +63,8 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   (`196 pass / 60 manually reviewed / 0 fail`) across 16 manually inspected
   contact sheets. The review queue contains only text-position threshold
   findings on repeated large structures; text presence, clipping, overlap,
-  paint order, markers, and raster checks pass.
+  paint order, markers, and raster checks pass. Geometry ratios are width
+  `1.010-1.139`, height `0.980-1.089`, and foreground ink `0.567-1.253`.
 - 20 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0` with Dagre.
 - The 20 Native Android screenshots are compared side by side with 20

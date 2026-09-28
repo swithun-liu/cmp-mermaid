@@ -63,8 +63,8 @@ navigation; the native renderer does not execute arbitrary URLs or JavaScript.
 - 13 independent production scenarios and 256 systematic visual-matrix cases
   render identical source through Native Compose and Mermaid.js `12.0.0`.
 - The replacement detail audit reports `256 pass / 0 review / 0 fail`; matrix
-  geometry ratios are width `0.963-1.224`, height `0.968-1.089`, and
-  foreground ink `1.031-1.383`.
+  geometry ratios are width `0.959-1.131`, height `0.963-1.089`, and
+  foreground ink `0.984-1.382`.
 - All 16 matrix contact sheets were manually reviewed for state semantics,
   nested boundaries, notes, pseudostates, routing, labels, clipping, overlap,
   and paint order.

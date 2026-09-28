@@ -82,8 +82,9 @@ grammar is Langium-based rather than Jison-based.
 - The Android gallery compares 20 identical sources against official Mermaid
   `12.0.0` output.
 - The replacement gate compares 256 deterministic same-source matrix cases:
-  `256 pass / 0 review / 0 fail`, 256/256 geometry passes, and 16/16 manually
-  reviewed contact sheets.
+  `255 pass / 1 review / 0 fail`, 256/256 geometry passes, and 16/16 manually
+  reviewed contact sheets. The review is a text-overlap font-box threshold
+  finding.
 
 ## Upgrade Procedure
 

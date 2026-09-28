@@ -61,7 +61,7 @@ arbitrary URLs or JavaScript.
   height `0.906-1.055`, and foreground ink `0.723-1.230`.
 - 256 deterministic same-source Native/Official matrix pairs pass the detail
   audit with `256 pass / 0 review / 0 fail`; geometry ratios are width
-  `1.030-1.208`, height `0.897-1.055`, and foreground ink `0.781-1.227`.
+  `1.025-1.184`, height `0.916-1.056`, and foreground ink `0.776-1.199`.
 - All 16 matrix contact sheets were manually reviewed with no unresolved
   class, namespace, relation, marker, cardinality, note, label, clipping,
   overlap, or paint-order defect.

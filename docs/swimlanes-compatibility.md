@@ -41,8 +41,8 @@ in a later upstream release.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.007-1.191`, `0.912-1.070`, and `0.928-1.603`.
 - Production detail produced `10 pass / 3 review / 0 fail`.
-- Matrix geometry passed `256/256`. Ratios were `1.028-1.186`,
-  `0.883-1.070`, and `0.899-1.551`.
+- Matrix geometry passed `256/256`. Ratios were `1.008-1.136`,
+  `0.953-1.070`, and `0.963-1.521`.
 - Matrix detail produced `196 pass / 60 review / 0 fail`. Every review contains
   only `text-position`, caused by browser/Compose label placement along
   semantically equivalent orthogonal routes.

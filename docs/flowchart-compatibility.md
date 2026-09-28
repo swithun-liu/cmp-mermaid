@@ -92,8 +92,8 @@ Additional platform limitations:
   and resource limits.
 - The replacement visual gate passes all 14 production scenarios and all 256
   same-source matrix cases with `0` review and `0` failure results. Matrix
-  Native/Official ratios are `1.026-1.119` for width, `0.945-1.047` for
-  height, and `0.948-1.241` for foreground ink.
+  Native/Official ratios are `1.021-1.083` for width, `0.965-1.048` for
+  height, and `0.957-1.187` for foreground ink.
 - All 16 matrix contact sheets were manually reviewed for topology, advanced
   shapes, marker visibility, labels, clipping, overlap, and paint order.
 - Marker manifests include actual path endpoint anchors. The detail auditor
