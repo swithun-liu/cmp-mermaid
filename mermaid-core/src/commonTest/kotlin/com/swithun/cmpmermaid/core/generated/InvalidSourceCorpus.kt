@@ -4,9 +4,18 @@ package com.swithun.cmpmermaid.core.generated
 
 internal data class InvalidSourceCorpusCase(
     val id: String,
+    val seedId: String,
+    val profileId: String,
+    val profileIndex: Int,
     val diagramId: String,
     val title: String,
     val scenario: String,
+    val source: String,
+)
+
+private data class InvalidSourceCorpusSeed(
+    val diagramId: String,
+    val diagramTitle: String,
     val source: String,
 )
 
@@ -15,236 +24,225 @@ internal data class InvalidSourceCorpusCase(
  * packages/mermaid/src/mermaid.ts -> parse
  * packages/mermaid/src/mermaidAPI.ts -> render
  */
-internal val invalidSourceCorpusCases: List<InvalidSourceCorpusCase> = listOf(
-    InvalidSourceCorpusCase(
-        id = "invalid_flowchart_001",
+internal const val invalidSourceCasesPerDiagram: Int = 256
+
+private val invalidSourceCorpusSeeds: List<InvalidSourceCorpusSeed> = listOf(
+    InvalidSourceCorpusSeed(
         diagramId = "flowchart",
-        title = "Flowchart malformed source",
-        scenario = "Malformed Flowchart syntax must report an error without crashing the renderer.",
+        diagramTitle = "Flowchart",
         source = "flowchart TD\nA[",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_swimlanes_001",
+    InvalidSourceCorpusSeed(
         diagramId = "swimlanes",
-        title = "Swimlanes malformed source",
-        scenario = "Malformed Swimlanes syntax must report an error without crashing the renderer.",
+        diagramTitle = "Swimlanes",
         source = "swimlane-beta TD\nA[",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_architecture_001",
+    InvalidSourceCorpusSeed(
         diagramId = "architecture",
-        title = "Architecture malformed source",
-        scenario = "Malformed Architecture syntax must report an error without crashing the renderer.",
+        diagramTitle = "Architecture",
         source = "architecture-beta\n  service app(server)[Application] in missing",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_c4_001",
+    InvalidSourceCorpusSeed(
         diagramId = "c4",
-        title = "C4 malformed source",
-        scenario = "Malformed C4 syntax must report an error without crashing the renderer.",
+        diagramTitle = "C4",
         source = "C4Context\nUnknown(a, \"A\")",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_railroad_001",
+    InvalidSourceCorpusSeed(
         diagramId = "railroad",
-        title = "Railroad malformed source",
-        scenario = "Malformed Railroad syntax must report an error without crashing the renderer.",
+        diagramTitle = "Railroad",
         source = "railroad-beta\nrule = terminal(\"a\")",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_treeview_001",
+    InvalidSourceCorpusSeed(
         diagramId = "treeview",
-        title = "TreeView malformed source",
-        scenario = "Malformed TreeView syntax must report an error without crashing the renderer.",
+        diagramTitle = "TreeView",
         source = "treeView-beta\n\"unterminated",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_xychart_001",
+    InvalidSourceCorpusSeed(
         diagramId = "xychart",
-        title = "XY Chart malformed source",
-        scenario = "Malformed XY Chart syntax must report an error without crashing the renderer.",
+        diagramTitle = "XY Chart",
         source = "xychart-beta\nx-axis [a, b]\nline [1,]",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_quadrant_001",
+    InvalidSourceCorpusSeed(
         diagramId = "quadrant",
-        title = "Quadrant Chart malformed source",
-        scenario = "Malformed Quadrant Chart syntax must report an error without crashing the renderer.",
+        diagramTitle = "Quadrant Chart",
         source = "quadrantChart\nPoint: [0.2, 1.1]",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_timeline_001",
+    InvalidSourceCorpusSeed(
         diagramId = "timeline",
-        title = "Timeline malformed source",
-        scenario = "Malformed Timeline syntax must report an error without crashing the renderer.",
+        diagramTitle = "Timeline",
         source = "timeline\n  : orphan event",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_kanban_001",
+    InvalidSourceCorpusSeed(
         diagramId = "kanban",
-        title = "Kanban malformed source",
-        scenario = "Malformed Kanban syntax must report an error without crashing the renderer.",
+        diagramTitle = "Kanban",
         source = "kanban\n  root@{ ticket: [",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_sequence_001",
+    InvalidSourceCorpusSeed(
         diagramId = "sequence",
-        title = "Sequence malformed source",
-        scenario = "Malformed Sequence syntax must report an error without crashing the renderer.",
+        diagramTitle = "Sequence",
         source = "sequenceDiagram\n  Alice->>:missing participant",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_class_001",
+    InvalidSourceCorpusSeed(
         diagramId = "class",
-        title = "Class malformed source",
-        scenario = "Malformed Class syntax must report an error without crashing the renderer.",
+        diagramTitle = "Class",
         source = "classDiagram\nclass A {",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_state_001",
+    InvalidSourceCorpusSeed(
         diagramId = "state",
-        title = "State malformed source",
-        scenario = "Malformed State syntax must report an error without crashing the renderer.",
+        diagramTitle = "State",
         source = "stateDiagram-v2\nstate A {",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_er_001",
+    InvalidSourceCorpusSeed(
         diagramId = "er",
-        title = "Entity Relationship malformed source",
-        scenario = "Malformed Entity Relationship syntax must report an error without crashing the renderer.",
+        diagramTitle = "Entity Relationship",
         source = "erDiagram\nA ||--o{",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_gantt_001",
+    InvalidSourceCorpusSeed(
         diagramId = "gantt",
-        title = "Gantt malformed source",
-        scenario = "Malformed Gantt syntax must report an error without crashing the renderer.",
+        diagramTitle = "Gantt",
         source = "gantt\nsection",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_pie_001",
+    InvalidSourceCorpusSeed(
         diagramId = "pie",
-        title = "Pie malformed source",
-        scenario = "Malformed Pie syntax must report an error without crashing the renderer.",
+        diagramTitle = "Pie",
         source = "pie\n\"A\" : nope",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_journey_001",
+    InvalidSourceCorpusSeed(
         diagramId = "journey",
-        title = "User Journey malformed source",
-        scenario = "Malformed User Journey syntax must report an error without crashing the renderer.",
+        diagramTitle = "User Journey",
         source = "journey\n:",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_requirement_001",
+    InvalidSourceCorpusSeed(
         diagramId = "requirement",
-        title = "Requirement malformed source",
-        scenario = "Malformed Requirement syntax must report an error without crashing the renderer.",
+        diagramTitle = "Requirement",
         source = "requirementDiagram\n  requirement broken {\n    risk: impossible\n  }",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_gitgraph_001",
+    InvalidSourceCorpusSeed(
         diagramId = "gitgraph",
-        title = "Git Graph malformed source",
-        scenario = "Malformed Git Graph syntax must report an error without crashing the renderer.",
+        diagramTitle = "Git Graph",
         source = "gitGraph XX:\ncommit",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_mindmap_001",
+    InvalidSourceCorpusSeed(
         diagramId = "mindmap",
-        title = "Mindmap malformed source",
-        scenario = "Malformed Mindmap syntax must report an error without crashing the renderer.",
+        diagramTitle = "Mindmap",
         source = "mindmap\n  Root\nOther root",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_packet_001",
+    InvalidSourceCorpusSeed(
         diagramId = "packet",
-        title = "Packet malformed source",
-        scenario = "Malformed Packet syntax must report an error without crashing the renderer.",
+        diagramTitle = "Packet",
         source = "packet\n  +0: \"zero\"",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_radar_001",
+    InvalidSourceCorpusSeed(
         diagramId = "radar",
-        title = "Radar malformed source",
-        scenario = "Malformed Radar syntax must report an error without crashing the renderer.",
+        diagramTitle = "Radar",
         source = "radar-beta\naxis",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_sankey_001",
+    InvalidSourceCorpusSeed(
         diagramId = "sankey",
-        title = "Sankey malformed source",
-        scenario = "Malformed Sankey syntax must report an error without crashing the renderer.",
+        diagramTitle = "Sankey",
         source = "sankey-beta\nA,B",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_treemap_001",
+    InvalidSourceCorpusSeed(
         diagramId = "treemap",
-        title = "Treemap malformed source",
-        scenario = "Malformed Treemap syntax must report an error without crashing the renderer.",
+        diagramTitle = "Treemap",
         source = "treemap-beta\n\"Root\"\n  \"Leaf\": nope",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_venn_001",
+    InvalidSourceCorpusSeed(
         diagramId = "venn",
-        title = "Venn malformed source",
-        scenario = "Malformed Venn syntax must report an error without crashing the renderer.",
+        diagramTitle = "Venn",
         source = "venn-beta\n  set A\n  union A,B",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_ishikawa_001",
+    InvalidSourceCorpusSeed(
         diagramId = "ishikawa",
-        title = "Ishikawa malformed source",
-        scenario = "Malformed Ishikawa syntax must report an error without crashing the renderer.",
+        diagramTitle = "Ishikawa",
         source = "ishikawaish\nEffect",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_cynefin_001",
+    InvalidSourceCorpusSeed(
         diagramId = "cynefin",
-        title = "Cynefin malformed source",
-        scenario = "Malformed Cynefin syntax must report an error without crashing the renderer.",
+        diagramTitle = "Cynefin",
         source = "cynefin-beta\nunknown",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_block_001",
+    InvalidSourceCorpusSeed(
         diagramId = "block",
-        title = "Block malformed source",
-        scenario = "Malformed Block syntax must report an error without crashing the renderer.",
+        diagramTitle = "Block",
         source = "block\nA[\"unterminated",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_eventmodeling_001",
+    InvalidSourceCorpusSeed(
         diagramId = "eventmodeling",
-        title = "Event Modeling malformed source",
-        scenario = "Malformed Event Modeling syntax must report an error without crashing the renderer.",
+        diagramTitle = "Event Modeling",
         source = "eventmodeling\ntf 1000 ui UI",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_agentflow_001",
+    InvalidSourceCorpusSeed(
         diagramId = "agentflow",
-        title = "Agentflow malformed source",
-        scenario = "Malformed Agentflow syntax must report an error without crashing the renderer.",
+        diagramTitle = "Agentflow",
         source = "agentflow-beta TB\n  flow orphan[\"Orphan\"]\n    a --> b",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_usecase_001",
+    InvalidSourceCorpusSeed(
         diagramId = "usecase",
-        title = "Use Case malformed source",
-        scenario = "Malformed Use Case syntax must report an error without crashing the renderer.",
+        diagramTitle = "Use Case",
         source = "usecase-beta\nunknown command",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_wardley_001",
+    InvalidSourceCorpusSeed(
         diagramId = "wardley",
-        title = "Wardley Map malformed source",
-        scenario = "Malformed Wardley Map syntax must report an error without crashing the renderer.",
+        diagramTitle = "Wardley Map",
         source = "wardley-beta\ncomponent A [0, 1]",
     ),
-    InvalidSourceCorpusCase(
-        id = "invalid_zenuml_001",
+    InvalidSourceCorpusSeed(
         diagramId = "zenuml",
-        title = "ZenUML malformed source",
-        scenario = "Malformed ZenUML syntax must report an error without crashing the renderer.",
+        diagramTitle = "ZenUML",
         source = "zenu-ml\nA.m()",
     ),
 )
+
+internal val invalidSourceCorpusCases: List<InvalidSourceCorpusCase> =
+    invalidSourceCorpusSeeds.flatMap { seed ->
+        (1..invalidSourceCasesPerDiagram).map { profileIndex ->
+            val profileId = profileIndex.toString().padStart(3, '0')
+            InvalidSourceCorpusCase(
+                id = "invalid_" + seed.diagramId + "_" + profileId,
+                seedId = "invalid_" + seed.diagramId + "_seed",
+                profileId = "profile_" + profileId,
+                profileIndex = profileIndex,
+                diagramId = seed.diagramId,
+                title = if (profileIndex == 1) {
+                    seed.diagramTitle + " malformed source"
+                } else {
+                    seed.diagramTitle + " malformed source variant " + profileId
+                },
+                scenario = "Malformed " + seed.diagramTitle +
+                    " syntax under deterministic context " + profileId +
+                    " must report an error without crashing the renderer.",
+                source = invalidSourceVariantSource(seed.source, profileIndex),
+            )
+        }
+    }
+
+private fun invalidSourceVariantSource(
+    seedSource: String,
+    profileIndex: Int,
+): String {
+    if (profileIndex == 1) {
+        return seedSource
+    }
+
+    val variantIndex = profileIndex - 1
+    val profileId = profileIndex.toString().padStart(3, '0')
+    val lineEnding = if ((variantIndex and 0x40) == 0) "\n" else "\r\n"
+    val leadingBlankLineCount = variantIndex and 0x03
+    val trailingBlankLineCount = (variantIndex shr 2) and 0x03
+    val contextLineCount = ((variantIndex shr 4) and 0x03) + 1
+    val commentSpacer = if ((variantIndex and 0x80) == 0) " " else "  "
+    val contextLines = (0 until contextLineCount).joinToString(lineEnding) { index ->
+        if (index == 0) {
+            "%%" + commentSpacer + "invalid-source-profile:" + profileId
+        } else {
+            "%%" + commentSpacer + "invalid-source-context:" + index
+        }
+    }
+
+    return lineEnding.repeat(leadingBlankLineCount) +
+        contextLines +
+        lineEnding +
+        seedSource +
+        lineEnding.repeat(trailingBlankLineCount)
+}

@@ -60,8 +60,8 @@ geometry gates.
 | Independent production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
 | Large-scale visual matrix | 8,448 Native/Official pairs |
-| Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus screenshots |
-| Malformed-source safety | 33/33 Native `CONTENT_ERROR` results, 66 Native/Official screenshots, 0 crashes |
+| Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
+| Malformed-source safety | 8,448/8,448 Native `CONTENT_ERROR` results, 8,448/8,448 Official error states, 0 crashes |
 | Matrix detail review | 33 families: 8,448/8,448 accepted; 7,429 automatic passes plus 1,019 manually accepted reviews |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
@@ -77,13 +77,14 @@ geometry gates.
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and the completed 33/33 family gates |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
 | **[All 8,448 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 same-source pairs per page |
-| **[Malformed-source Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 33 family-specific invalid sources, 66 screenshots, and 3 comparison sheets |
+| **[Malformed-source Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 systematic invalid-source cases, 16,896 screenshots, and 528 comparison sheets |
 | **[Android physical-device report](docs/android-real-device-compatibility.md)** | Separate Kotlin 2.3.20 and Kotlin 1.7.21 matrices across Android 9-16 |
 | **[iOS physical-device report](docs/ios-real-device-compatibility.md)** | Six-device iOS 14.3-26.0 matrix with complete 441-case loads |
 | [Production capability matrix](docs/production-capability-matrix.md) | The 738 independently exercised capabilities |
 | [Production readiness](docs/production-readiness.md) | Code-level Stable criteria, resource budgets, and integration guidance |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | Current automated JVM, build, publication, security, APK, visual, and Web load results |
 | [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual capture and detail enforcement for all 33 families |
+| [Full Invalid Source Matrix](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-invalid-source.yml) | Weekly/manual 33 × 256 Native/Official malformed-source safety matrix |
 
 Overall Mermaid `12.0.0` support is **Stable** because all 33 family gates pass.
 A legal feature that cannot be represented faithfully returns

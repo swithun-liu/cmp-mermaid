@@ -1,0 +1,148 @@
+name: Full Invalid Source Matrix
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "47 3 * * 0"
+
+permissions:
+  contents: read
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Verify generated invalid-source corpus
+        run: |
+          node tools/official-reference/generate-invalid-source-corpus.mjs
+          git diff --exit-code -- \
+            mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/InvalidSourceCorpus.kt \
+            mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/InvalidSourceCorpus.kt
+
+      - name: Build Web production distribution
+        run: ./gradlew :sample:webApp:wasmJsBrowserDistribution
+
+      - name: Upload Web audit application
+        uses: actions/upload-artifact@v4
+        with:
+          name: invalid-source-web
+          path: sample/webApp/build/dist/wasmJs/productionExecutable
+          retention-days: 3
+
+  invalid-source:
+    needs: build-web
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        kind:
+          - flowchart
+          - xychart
+          - quadrant
+          - timeline
+          - sequence
+          - class
+          - state
+          - er
+          - gantt
+          - pie
+          - journey
+          - requirement
+          - gitgraph
+          - mindmap
+          - packet
+          - radar
+          - sankey
+          - kanban
+          - treemap
+          - venn
+          - ishikawa
+          - cynefin
+          - eventmodeling
+          - agentflow
+          - block
+          - swimlanes
+          - architecture
+          - c4
+          - railroad
+          - treeview
+          - usecase
+          - wardley
+          - zenuml
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: tools/official-reference/package-lock.json
+
+      - name: Install visual audit dependencies
+        working-directory: tools/official-reference
+        run: npm ci
+
+      - name: Download Web audit application
+        uses: actions/download-artifact@v4
+        with:
+          name: invalid-source-web
+          path: build/invalid-source-web
+
+      - name: Capture 256 Native and Official error pairs
+        working-directory: tools/official-reference
+        run: |
+          python3 -m http.server 8093 \
+            --directory ../../build/invalid-source-web \
+            >/tmp/cmp-mermaid-invalid-source.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8093/ >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          AUDIT_SOURCE=invalid-source \
+          AUDIT_KIND=${{ matrix.kind }} \
+          INVALID_SOURCE_SCOPE=full \
+          OUTPUT_DIR=captures/invalid-source/${{ matrix.kind }} \
+          BASE_URL=http://127.0.0.1:8093/ \
+          VIEWPORT_WIDTH=1200 \
+          VIEWPORT_HEIGHT=900 \
+          npm run capture:web-audit
+
+      - name: Generate paged error evidence
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_KIND=${{ matrix.kind }} \
+          INVALID_SOURCE_SCOPE=full \
+          INPUT_DIR=captures/invalid-source/${{ matrix.kind }} \
+          OUTPUT_DIR=captures/invalid-source/${{ matrix.kind }}-evidence \
+          CONTACT_SHEET_PAGE_SIZE=16 \
+          npm run generate:invalid-source-contact-sheets
+
+      - name: Upload invalid-source evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: invalid-source-${{ matrix.kind }}
+          path: captures/invalid-source
+          retention-days: 14

@@ -23,10 +23,10 @@ Native-only randomized stress inputs.
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
 | Large-scale visual matrix | 8,448 Native/Official evidence pairs |
-| Malformed-source safety | 33/33 Native `CONTENT_ERROR` results; 33/33 Official error states; 66 screenshots; 0 crashes or timeouts |
+| Malformed-source safety | 8,448/8,448 Native `CONTENT_ERROR` results; 8,448/8,448 Official error states; 16,896 screenshots; 0 crashes or timeouts |
 | Native core render results | 441 independent plus 8,448 matrix cases passed, 0 failed |
-| Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 66 malformed-source screenshots |
-| Manual visual review | 528 replacement-gate sheets across all 33 families |
+| Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
+| Manual visual review | 528 replacement-gate sheets plus 528 malformed-source safety sheets across all 33 families |
 | Replacement detail audit | 8,448/8,448 matrix pairs accepted: 7,429 pass plus 1,019 manually reviewed; production 390 pass plus 51 manually reviewed |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
@@ -46,21 +46,25 @@ supported Mermaid `12.0.0` contract is rated **Stable**.
 
 ## Malformed-Source Safety Gate
 
-An independent error corpus contains one malformed source for every supported
-diagram family. The same source is sent unchanged to CMP Native and the pinned
-Mermaid.js `12.0.0` renderer. All 33 cases passed:
+An independent error corpus contains one verified malformed seed for every
+supported diagram family. Each seed is expanded into 256 deterministic
+comment, blank-line, and line-ending contexts. These 8,448 unique sources are
+systematic parser-safety variants, not 8,448 unrelated error root causes. Every
+generated source is sent unchanged to CMP Native and the pinned Mermaid.js
+`12.0.0` renderer. All 8,448 cases passed:
 
 - CMP Native returned `CONTENT_ERROR` with a non-empty deterministic message;
 - Mermaid.js displayed a non-empty parse or render error;
-- all 66 error-state screenshots were captured without a crash or timeout;
-- a malformed render did not poison the next valid Native render.
+- all 16,896 error-state screenshots were captured without a crash or timeout;
+- each family seed was followed by a valid Native render without poisoning
+  engine state.
 
-**[Open the 3 paged Native/Official malformed-source comparison images](assets/invalid-source-report/invalid-source-evidence.md).**
+**[Open the 528 paged Native/Official malformed-source comparison images](assets/invalid-source-report/invalid-source-evidence.md).**
 The machine-readable
 [manifest](assets/invalid-source-report/invalid-source-manifest.json) records
-the source hash, both screenshot hashes, capture sizes, Native error type, and
-both error messages. This gate is intentionally separate from the 8,448 legal
-source visual matrix and does not change its counts.
+the seed and profile IDs, source hash, both screenshot hashes, capture sizes,
+Native error type, and both error messages. This gate is intentionally separate
+from the 8,448 legal-source visual matrix and does not change its counts.
 
 ## Completed Replacement Gate
 
@@ -1103,9 +1107,9 @@ errors: 0
 The current source-level JVM suite also passes:
 
 ```text
-mermaid-core: 758 tests
-mermaid-compose: 31 tests
-total: 789 tests
+mermaid-core: 762 tests
+mermaid-compose: 33 tests
+total: 795 tests
 failures: 0
 errors: 0
 ```
@@ -1120,9 +1124,9 @@ a representative of all 33 implemented diagram types with each of the 11 built-i
 themes.
 
 [`InvalidSourceCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/InvalidSourceCorpusTest.kt)
-requires all 33 malformed sources to return deterministic, non-empty
+requires all 8,448 malformed-source variants to return deterministic, non-empty
 `CONTENT_ERROR` results and verifies that every family can render a valid
-source immediately after its malformed case.
+source immediately after its malformed seed.
 
 `ProductionCorpusTest` additionally renders all 8,448 visual-matrix sources,
 checks the expected visible text, and rejects empty, invalid, or non-finite
@@ -1271,6 +1275,7 @@ VIEWPORT_HEIGHT=900 \
 npm run capture:web-audit
 
 AUDIT_SOURCE=invalid-source \
+INVALID_SOURCE_SCOPE=full \
 OUTPUT_DIR=captures/local/invalid-source \
 BASE_URL=http://127.0.0.1:8093/ \
 VIEWPORT_WIDTH=1200 \
@@ -1293,6 +1298,8 @@ npm run generate:stability-contact-sheets
 
 INPUT_DIR=captures/local/invalid-source \
 OUTPUT_DIR=docs/assets/invalid-source-report \
+INVALID_SOURCE_SCOPE=full \
+CONTACT_SHEET_PAGE_SIZE=16 \
 npm run generate:invalid-source-contact-sheets
 
 AUDIT_SOURCE=visual-parity \
@@ -1329,7 +1336,11 @@ For `AUDIT_SOURCE=invalid-source`, the expectation is inverted: capture fails
 if either renderer succeeds, if Native does not return `CONTENT_ERROR`, or if
 either error message is empty.
 Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 33 diagram IDs to reproduce
-a single 256-case partition instead of the complete matrix.
+a single 256-case partition instead of the complete matrix. The
+[`Full Invalid Source Matrix`](../.github/workflows/full-invalid-source.yml)
+workflow runs those 33 partitions in parallel. The regular Quality Gate uses
+`INVALID_SOURCE_SCOPE=smoke`, which preserves profile `001` from every family
+without serially recapturing all 16,896 error-state screenshots on every push.
 
 ## Stable Acceptance Criteria
 

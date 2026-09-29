@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core
 
 import com.swithun.cmpmermaid.core.generated.InvalidSourceCorpusCase
 import com.swithun.cmpmermaid.core.generated.StabilityCorpusCase
+import com.swithun.cmpmermaid.core.generated.invalidSourceCasesPerDiagram
 import com.swithun.cmpmermaid.core.generated.invalidSourceCorpusCases
 import com.swithun.cmpmermaid.core.generated.productionCorpusCases
 import kotlin.test.Test
@@ -23,6 +24,31 @@ class InvalidSourceCorpusTest {
     @Test
     fun returnsStableContentErrorsForEveryDiagramFamily() {
         assertEquals(EXPECTED_DIAGRAM_IDS, invalidSourceCorpusCases.map { it.diagramId }.toSet())
+        assertEquals(
+            EXPECTED_DIAGRAM_IDS.size * invalidSourceCasesPerDiagram,
+            invalidSourceCorpusCases.size,
+        )
+        assertEquals(
+            invalidSourceCorpusCases.size,
+            invalidSourceCorpusCases.map(InvalidSourceCorpusCase::id).toSet().size,
+        )
+        assertEquals(
+            invalidSourceCorpusCases.size,
+            invalidSourceCorpusCases.map(InvalidSourceCorpusCase::source).toSet().size,
+        )
+        invalidSourceCorpusCases.groupBy(InvalidSourceCorpusCase::diagramId)
+            .forEach { (diagramId, cases) ->
+                assertEquals(
+                    invalidSourceCasesPerDiagram,
+                    cases.size,
+                    "$diagramId has the wrong malformed-source case count",
+                )
+                assertEquals(
+                    (1..invalidSourceCasesPerDiagram).toSet(),
+                    cases.map(InvalidSourceCorpusCase::profileIndex).toSet(),
+                    "$diagramId has incomplete malformed-source profiles",
+                )
+            }
 
         invalidSourceCorpusCases.forEach { case ->
             val first = renderError(case)
@@ -31,16 +57,16 @@ class InvalidSourceCorpusTest {
             assertEquals(
                 MermaidRenderErrorType.CONTENT_ERROR,
                 first.renderErrorType,
-                "${case.diagramId} classified malformed source as ${first.renderErrorType}",
+                "${case.id} classified malformed source as ${first.renderErrorType}",
             )
             assertTrue(
                 first.message.isNotBlank(),
-                "${case.diagramId} returned an empty error message",
+                "${case.id} returned an empty error message",
             )
             assertEquals(
                 first,
                 second,
-                "${case.diagramId} returned a non-deterministic error",
+                "${case.id} returned a non-deterministic error",
             )
         }
     }
@@ -52,22 +78,24 @@ class InvalidSourceCorpusTest {
             .mapValues { (_, cases) -> cases.first() }
 
         assertEquals(EXPECTED_DIAGRAM_IDS, representatives.keys)
-        invalidSourceCorpusCases.forEach { invalidCase ->
-            renderError(invalidCase)
+        invalidSourceCorpusCases
+            .filter { it.profileIndex == 1 }
+            .forEach { invalidCase ->
+                renderError(invalidCase)
 
-            val validCase = representatives.getValue(invalidCase.diagramId)
-            val validResult = engine.render(
-                source = validCase.source,
-                context = context.copy(
-                    options = MermaidRenderOptions(layout = validCase.layout),
-                ),
-            )
-            assertIs<GMResult.Ok<MermaidScene>>(
-                validResult,
-                "${invalidCase.diagramId} failed after malformed input: " +
-                    "${(validResult as? GMResult.Err)?.error}",
-            )
-        }
+                val validCase = representatives.getValue(invalidCase.diagramId)
+                val validResult = engine.render(
+                    source = validCase.source,
+                    context = context.copy(
+                        options = MermaidRenderOptions(layout = validCase.layout),
+                    ),
+                )
+                assertIs<GMResult.Ok<MermaidScene>>(
+                    validResult,
+                    "${invalidCase.diagramId} failed after malformed input: " +
+                        "${(validResult as? GMResult.Err)?.error}",
+                )
+            }
     }
 
     private fun renderError(case: InvalidSourceCorpusCase): MermaidError {

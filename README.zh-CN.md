@@ -58,7 +58,8 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 独立生产场景 | 441 组 Native/Official 对拍 |
 | 已声明能力覆盖率 | 738/738 |
 | 大规模视觉矩阵 | 8,448 组 Native/Official 对拍 |
-| Native/Official 截图 | 16,896 张矩阵截图，另有 882 张独立语料截图 |
+| Native/Official 截图 | 16,896 张矩阵截图，另有 882 张独立语料截图和 16,896 张异常源码截图 |
+| 异常源码安全性 | 8,448/8,448 个 Native `CONTENT_ERROR`，8,448/8,448 个 Official 错误态，0 崩溃 |
 | 矩阵细节审查 | 33 个家族：8,448/8,448 验收；其中 7,429 个自动通过、1,019 个经人工复核通过 |
 | 自动视觉检查 | 8,448/8,448 个矩阵对拍及 441/441 个独立场景通过 |
 | 确定性 SceneGraph 重放 | 441 个通过，0 个不一致 |
@@ -74,13 +75,14 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单和已完成的 33/33 家族门禁 |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
 | **[全部 8,448 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 528 页分页对比图，每页包含 16 组同源码结果 |
-| **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 33 个图表家族各一组异常源码、66 张截图和 3 张对比图 |
+| **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 个系统化异常源码用例、16,896 张截图和 528 张对比图 |
 | **[Android 物理设备兼容性报告](docs/android-real-device-compatibility.md)** | Kotlin 2.3.20 与 Kotlin 1.7.21 分别覆盖 Android 9-16 |
 | **[iOS 物理设备兼容性报告](docs/ios-real-device-compatibility.md)** | iOS 14.3-26.0 共 6 台设备的完整 441 场景负载 |
 | [生产能力矩阵](docs/production-capability-matrix.md) | 738 项被独立验证的能力 |
 | [生产就绪说明](docs/production-readiness.md) | 代码级 Stable 标准、资源预算和接入指引 |
 | [Quality Gate](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/quality.yml) | 当前 JVM、构建、发布、安全、APK、视觉和 Web 负载自动化结果 |
 | [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 全部 33 个家族的每周/手动截图与细节门禁 |
+| [Full Invalid Source Matrix](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-invalid-source.yml) | 每周/手动执行 33 × 256 组 Native/Official 异常源码安全矩阵 |
 
 全部 33 个家族均已通过新门禁，整体 Mermaid `12.0.0` 支持评级为
 **Stable**。

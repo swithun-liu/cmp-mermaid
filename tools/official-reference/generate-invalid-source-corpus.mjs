@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cases } from './invalid-source-corpus.mjs';
+import { cases, casesPerKind } from './invalid-source-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -70,10 +70,12 @@ for (const output of outputs) {
 
 function validateCases() {
   const ids = new Set();
-  const kinds = new Set();
   const sources = new Set();
+  const profilesByKind = new Map(
+    [...expectedKinds].map((kind) => [kind, new Set()]),
+  );
   for (const entry of cases) {
-    if (!/^invalid_[a-z0-9]+_001$/.test(entry.id)) {
+    if (!/^invalid_[a-z0-9]+_\d{3}$/.test(entry.id)) {
       throw new Error(`Invalid malformed-source case id: ${entry.id}`);
     }
     if (!expectedKinds.has(entry.kind)) {
@@ -82,8 +84,26 @@ function validateCases() {
     if (ids.has(entry.id)) {
       throw new Error(`Duplicate malformed-source case id: ${entry.id}`);
     }
-    if (kinds.has(entry.kind)) {
-      throw new Error(`Duplicate malformed-source kind: ${entry.kind}`);
+    if (
+      !Number.isInteger(entry.profileIndex) ||
+      entry.profileIndex < 1 ||
+      entry.profileIndex > casesPerKind
+    ) {
+      throw new Error(`Invalid profile index for ${entry.id}`);
+    }
+    const profileId = String(entry.profileIndex).padStart(3, '0');
+    if (
+      entry.id !== `invalid_${entry.kind}_${profileId}` ||
+      entry.seedId !== `invalid_${entry.kind}_seed` ||
+      entry.profileId !== `profile_${profileId}`
+    ) {
+      throw new Error(`Invalid profile metadata for ${entry.id}`);
+    }
+    const profiles = profilesByKind.get(entry.kind);
+    if (profiles.has(entry.profileIndex)) {
+      throw new Error(
+        `Duplicate malformed-source profile ${entry.profileIndex} for ${entry.kind}`,
+      );
     }
     if (entry.source.trim().length === 0) {
       throw new Error(`Empty malformed source for ${entry.id}`);
@@ -98,28 +118,38 @@ function validateCases() {
       throw new Error(`Invalid expected outcome for ${entry.id}`);
     }
     ids.add(entry.id);
-    kinds.add(entry.kind);
+    profiles.add(entry.profileIndex);
     sources.add(entry.source);
   }
 
-  if (cases.length !== expectedKinds.size) {
+  const expectedCaseCount = expectedKinds.size * casesPerKind;
+  if (cases.length !== expectedCaseCount) {
     throw new Error(
-      `Expected ${expectedKinds.size} malformed-source cases, found ${cases.length}`,
+      `Expected ${expectedCaseCount} malformed-source cases, found ${cases.length}`,
     );
   }
-  for (const kind of expectedKinds) {
-    if (!kinds.has(kind)) {
-      throw new Error(`Missing malformed-source case for ${kind}`);
+  for (const [kind, profiles] of profilesByKind) {
+    if (profiles.size !== casesPerKind) {
+      throw new Error(
+        `Expected ${casesPerKind} malformed-source profiles for ${kind}, ` +
+          `found ${profiles.size}`,
+      );
+    }
+    for (let profileIndex = 1; profileIndex <= casesPerKind; profileIndex += 1) {
+      if (!profiles.has(profileIndex)) {
+        throw new Error(
+          `Missing malformed-source profile ${profileIndex} for ${kind}`,
+        );
+      }
     }
   }
 }
 
 function renderKotlin(packageName) {
-  const entries = cases.map((entry) => `    InvalidSourceCorpusCase(
-        id = ${kotlinString(entry.id)},
+  const seeds = cases.filter((entry) => entry.profileIndex === 1);
+  const entries = seeds.map((entry) => `    InvalidSourceCorpusSeed(
         diagramId = ${kotlinString(entry.kind)},
-        title = ${kotlinString(entry.title)},
-        scenario = ${kotlinString(entry.scenario)},
+        diagramTitle = ${kotlinString(entry.diagramTitle)},
         source = ${kotlinString(entry.source)},
     ),`).join('\n');
 
@@ -129,9 +159,18 @@ package ${packageName}
 
 internal data class InvalidSourceCorpusCase(
     val id: String,
+    val seedId: String,
+    val profileId: String,
+    val profileIndex: Int,
     val diagramId: String,
     val title: String,
     val scenario: String,
+    val source: String,
+)
+
+private data class InvalidSourceCorpusSeed(
+    val diagramId: String,
+    val diagramTitle: String,
     val source: String,
 )
 
@@ -140,9 +179,64 @@ internal data class InvalidSourceCorpusCase(
  * packages/mermaid/src/mermaid.ts -> parse
  * packages/mermaid/src/mermaidAPI.ts -> render
  */
-internal val invalidSourceCorpusCases: List<InvalidSourceCorpusCase> = listOf(
+internal const val invalidSourceCasesPerDiagram: Int = ${casesPerKind}
+
+private val invalidSourceCorpusSeeds: List<InvalidSourceCorpusSeed> = listOf(
 ${entries}
 )
+
+internal val invalidSourceCorpusCases: List<InvalidSourceCorpusCase> =
+    invalidSourceCorpusSeeds.flatMap { seed ->
+        (1..invalidSourceCasesPerDiagram).map { profileIndex ->
+            val profileId = profileIndex.toString().padStart(3, '0')
+            InvalidSourceCorpusCase(
+                id = "invalid_" + seed.diagramId + "_" + profileId,
+                seedId = "invalid_" + seed.diagramId + "_seed",
+                profileId = "profile_" + profileId,
+                profileIndex = profileIndex,
+                diagramId = seed.diagramId,
+                title = if (profileIndex == 1) {
+                    seed.diagramTitle + " malformed source"
+                } else {
+                    seed.diagramTitle + " malformed source variant " + profileId
+                },
+                scenario = "Malformed " + seed.diagramTitle +
+                    " syntax under deterministic context " + profileId +
+                    " must report an error without crashing the renderer.",
+                source = invalidSourceVariantSource(seed.source, profileIndex),
+            )
+        }
+    }
+
+private fun invalidSourceVariantSource(
+    seedSource: String,
+    profileIndex: Int,
+): String {
+    if (profileIndex == 1) {
+        return seedSource
+    }
+
+    val variantIndex = profileIndex - 1
+    val profileId = profileIndex.toString().padStart(3, '0')
+    val lineEnding = if ((variantIndex and 0x40) == 0) "\\n" else "\\r\\n"
+    val leadingBlankLineCount = variantIndex and 0x03
+    val trailingBlankLineCount = (variantIndex shr 2) and 0x03
+    val contextLineCount = ((variantIndex shr 4) and 0x03) + 1
+    val commentSpacer = if ((variantIndex and 0x80) == 0) " " else "  "
+    val contextLines = (0 until contextLineCount).joinToString(lineEnding) { index ->
+        if (index == 0) {
+            "%%" + commentSpacer + "invalid-source-profile:" + profileId
+        } else {
+            "%%" + commentSpacer + "invalid-source-context:" + index
+        }
+    }
+
+    return lineEnding.repeat(leadingBlankLineCount) +
+        contextLines +
+        lineEnding +
+        seedSource +
+        lineEnding.repeat(trailingBlankLineCount)
+}
 `;
 }
 

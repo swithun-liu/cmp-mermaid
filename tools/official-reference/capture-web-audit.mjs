@@ -24,6 +24,7 @@ const outputDirectory = resolve(
 );
 const auditKind = process.env.AUDIT_KIND ?? 'all';
 const auditSource = process.env.AUDIT_SOURCE ?? 'gallery';
+const invalidSourceScope = process.env.INVALID_SOURCE_SCOPE ?? 'full';
 const layoutOverride = process.env.CAPTURE_LAYOUT ?? null;
 const themeOverride = process.env.CAPTURE_THEME ?? null;
 const selectedIds = new Set(
@@ -101,6 +102,9 @@ if (!supportedAuditKinds.includes(auditKind)) {
 if (!supportedAuditSources.includes(auditSource)) {
   throw new Error(`AUDIT_SOURCE must be one of: ${supportedAuditSources.join(', ')}`);
 }
+if (!['full', 'smoke'].includes(invalidSourceScope)) {
+  throw new Error('INVALID_SOURCE_SCOPE must be full or smoke');
+}
 if (
   layoutOverride !== null &&
   !['dagre', 'elk', 'cose-bilkent', 'tidy-tree', 'swimlane'].includes(layoutOverride)
@@ -133,7 +137,13 @@ const sourceCases = supportedAuditSources.slice(1).includes(auditSource)
       ),
     ];
 const availableCases = sourceCases.filter(
-  ({ id }) => selectedIds.size === 0 || selectedIds.has(id),
+  ({ id, profileIndex }) =>
+    (selectedIds.size === 0 || selectedIds.has(id)) &&
+    (
+      auditSource !== 'invalid-source' ||
+      invalidSourceScope === 'full' ||
+      profileIndex === 1
+    ),
 );
 
 if (availableCases.length === 0) {

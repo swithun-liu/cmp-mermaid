@@ -386,6 +386,7 @@ jobs:
           VIEWPORT_HEIGHT=900 \
           npm run capture:web-audit
           AUDIT_SOURCE=invalid-source \
+          INVALID_SOURCE_SCOPE=smoke \
           OUTPUT_DIR=captures/ci/invalid-source \
           BASE_URL=http://127.0.0.1:8093/ \
           VIEWPORT_WIDTH=1200 \
@@ -408,6 +409,7 @@ jobs:
           npm run generate:stability-contact-sheets
           INPUT_DIR=captures/ci/invalid-source \
           OUTPUT_DIR=captures/ci/invalid-source-evidence \
+          INVALID_SOURCE_SCOPE=smoke \
           npm run generate:invalid-source-contact-sheets
 
       - name: Enforce detailed Native and Official parity
