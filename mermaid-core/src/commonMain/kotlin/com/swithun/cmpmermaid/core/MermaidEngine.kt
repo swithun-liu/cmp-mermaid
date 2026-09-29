@@ -246,7 +246,14 @@ class MermaidEngine(
         }
 
         val plugin = pluginsByHeader[header]
-            ?: return GMResult.Err(MermaidError.UnsupportedDiagram(header.ifEmpty { "<empty>" }))
+            ?: return GMResult.Err(
+                MermaidError.UnsupportedDiagram(
+                    header = header.ifEmpty { "<empty>" },
+                    message = MermaidUpstreamErrorFormatter.unsupportedDiagramMessage(
+                        preprocessed.code.cleaned,
+                    ),
+                ),
+            )
 
         val sourceForParser = if (plugin.id == "agentflow") {
             preprocessed.code.withComments
@@ -254,15 +261,26 @@ class MermaidEngine(
             preprocessed.code.cleaned
         }
         val parserSource = MermaidPreprocessor.encodeEntities(sourceForParser) + "\n"
-        return plugin.compileSafely(
-            source = parserSource,
-            context = context.copy(
-                theme = resolvedTheme,
-                options = diagramOptions,
-                diagramTitle = preprocessed.title,
-                frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,
-            ),
-        )
+        return when (
+            val compiled = plugin.compileSafely(
+                source = parserSource,
+                context = context.copy(
+                    theme = resolvedTheme,
+                    options = diagramOptions,
+                    diagramTitle = preprocessed.title,
+                    frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,
+                ),
+            )
+        ) {
+            is GMResult.Ok -> compiled
+            is GMResult.Err -> GMResult.Err(
+                MermaidUpstreamErrorFormatter.format(
+                    diagramId = plugin.id,
+                    source = parserSource,
+                    error = compiled.error,
+                ),
+            )
+        }
     }
 }
 

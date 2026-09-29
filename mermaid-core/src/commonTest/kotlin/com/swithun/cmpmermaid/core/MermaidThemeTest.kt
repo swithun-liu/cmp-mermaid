@@ -83,6 +83,41 @@ class MermaidThemeTest {
     }
 
     @Test
+    fun matchesAndOverridesMermaid12ErrorColors() {
+        val expected = mapOf(
+            MermaidThemePreset.Default to (0xFF552222 to 0xFF552222),
+            MermaidThemePreset.Dark to (0xFFA44141 to 0xFFDDDDDD),
+            MermaidThemePreset.Forest to (0xFF552222 to 0xFF552222),
+            MermaidThemePreset.Neutral to (0xFF552222 to 0xFF552222),
+            MermaidThemePreset.Base to (0xFFF7F9FF to 0xFF090600),
+            MermaidThemePreset.Neo to (0xFFFFFFFF to 0xFF000000),
+            MermaidThemePreset.NeoDark to (0xFF201F1F to 0xFFDFE0E0),
+            MermaidThemePreset.Redux to (0xFFFFFFFF to 0xFF000000),
+            MermaidThemePreset.ReduxColor to (0xFFFFFFFF to 0xFF000000),
+            MermaidThemePreset.ReduxDark to (0xFF201F1F to 0xFFDFE0E0),
+            MermaidThemePreset.ReduxDarkColor to (0xFF201F1F to 0xFFDFE0E0),
+        )
+
+        expected.forEach { (preset, colors) ->
+            val theme = MermaidTheme.preset(preset)
+            assertEquals(SceneColor(colors.first), theme.errorBackground, preset.name)
+            assertEquals(SceneColor(colors.second), theme.errorText, preset.name)
+        }
+
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.MermaidDefault,
+                values = mapOf(
+                    "errorBkgColor" to "#102030",
+                    "errorTextColor" to "#405060",
+                ),
+            ),
+        ).value
+        assertEquals(SceneColor(0xFF102030), customized.errorBackground)
+        assertEquals(SceneColor(0xFF405060), customized.errorText)
+    }
+
+    @Test
     fun matchesAndOverridesMermaid12AgentflowContainerStroke() {
         val expected = mapOf(
             MermaidThemePreset.Default to 0xFFEEEEBC,

@@ -11,7 +11,6 @@ import androidx.compose.foundation.gestures.calculatePan
 import androidx.compose.foundation.gestures.calculateZoom
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
@@ -21,7 +20,6 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -218,15 +216,11 @@ fun MermaidDiagram(
                 reportMermaidRenderError(error, source, currentErrorHandler)
             },
         )
-        is GMResult.Err -> Box(
+        is GMResult.Err -> MermaidErrorDiagram(
             modifier = modifier,
-            contentAlignment = Alignment.Center,
-        ) {
-            BasicText(
-                text = sceneResult.error.message,
-                style = TextStyle(color = Color(0xFFB91C1C), fontSize = 13.sp),
-            )
-        }
+            theme = theme,
+            fontFamilyResolver = fontFamilyResolver,
+        )
     }
 }
 

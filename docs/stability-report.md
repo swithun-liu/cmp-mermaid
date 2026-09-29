@@ -23,7 +23,7 @@ Native-only randomized stress inputs.
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
 | Large-scale visual matrix | 8,448 Native/Official evidence pairs |
-| Malformed-source safety | 8,448/8,448 Native `CONTENT_ERROR` results; 8,448/8,448 Official error states; 16,896 screenshots; 0 crashes or timeouts |
+| Malformed-source parity | 8,448/8,448 Native `CONTENT_ERROR` results; 8,448/8,448 exact Official diagnostic-message matches; Mermaid.js 12.0.0 standard error diagram on both sides; 16,896 screenshots; 0 crashes or timeouts |
 | Native core render results | 441 independent plus 8,448 matrix cases passed, 0 failed |
 | Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Manual visual review | 528 replacement-gate sheets plus 528 malformed-source safety sheets across all 33 families |
@@ -32,7 +32,7 @@ Native-only randomized stress inputs.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | 795 passed, 0 failed |
+| JVM tests | 802 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -54,7 +54,9 @@ generated source is sent unchanged to CMP Native and the pinned Mermaid.js
 `12.0.0` renderer. All 8,448 cases passed:
 
 - CMP Native returned `CONTENT_ERROR` with a non-empty deterministic message;
-- Mermaid.js displayed a non-empty parse or render error;
+- every Native detailed error message exactly matched Mermaid.js;
+- both renderers displayed Mermaid.js `12.0.0`'s standard error diagram while
+  retaining the detailed diagnostic separately;
 - all 16,896 error-state screenshots were captured without a crash or timeout;
 - each family seed was followed by a valid Native render without poisoning
   engine state.
@@ -1107,9 +1109,9 @@ errors: 0
 The current source-level JVM suite also passes:
 
 ```text
-mermaid-core: 762 tests
-mermaid-compose: 33 tests
-total: 795 tests
+mermaid-core: 768 tests
+mermaid-compose: 34 tests
+total: 802 tests
 failures: 0
 errors: 0
 ```
@@ -1127,6 +1129,9 @@ themes.
 requires all 8,448 malformed-source variants to return deterministic, non-empty
 `CONTENT_ERROR` results and verifies that every family can render a valid
 source immediately after its malformed seed.
+[`InvalidSourceOfficialErrorParityTest`](../mermaid-core/src/jvmTest/kotlin/com/swithun/cmpmermaid/core/InvalidSourceOfficialErrorParityTest.kt)
+also verifies exact detailed-message parity against the published Mermaid.js
+manifest for all 8,448 cases.
 
 `ProductionCorpusTest` additionally renders all 8,448 visual-matrix sources,
 checks the expected visible text, and rejects empty, invalid, or non-finite
@@ -1334,7 +1339,9 @@ images and severe width, height, or foreground-density differences. The
 contact-sheet generator verifies every expected pair and records its SHA-256.
 For `AUDIT_SOURCE=invalid-source`, the expectation is inverted: capture fails
 if either renderer succeeds, if Native does not return `CONTENT_ERROR`, or if
-either error message is empty.
+either error message is empty. The contact-sheet generator additionally fails
+unless every Native detailed error message exactly matches its Official
+counterpart.
 Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 33 diagram IDs to reproduce
 a single 256-case partition instead of the complete matrix. The
 [`Full Invalid Source Matrix`](../.github/workflows/full-invalid-source.yml)

@@ -61,13 +61,13 @@ geometry gates.
 | Declared capability coverage | 738/738 |
 | Large-scale visual matrix | 8,448 Native/Official pairs |
 | Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
-| Malformed-source safety | 8,448/8,448 Native `CONTENT_ERROR` results, 8,448/8,448 Official error states, 0 crashes |
+| Malformed-source parity | 8,448/8,448 Native `CONTENT_ERROR` results with exact Official diagnostic-message matches and the Mermaid.js 12.0.0 standard error diagram on both sides; 0 crashes |
 | Matrix detail review | 33 families: 8,448/8,448 accepted; 7,429 automatic passes plus 1,019 manually accepted reviews |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 795 passed, 0 failed |
+| JVM tests | 802 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -77,7 +77,7 @@ geometry gates.
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and the completed 33/33 family gates |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
 | **[All 8,448 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 same-source pairs per page |
-| **[Malformed-source Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 systematic invalid-source cases, 16,896 screenshots, and 528 comparison sheets |
+| **[Malformed-source Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 systematic invalid-source cases with exact detailed-message parity, 16,896 screenshots, and 528 comparison sheets |
 | **[Android physical-device report](docs/android-real-device-compatibility.md)** | Separate Kotlin 2.3.20 and Kotlin 1.7.21 matrices across Android 9-16 |
 | **[iOS physical-device report](docs/ios-real-device-compatibility.md)** | Six-device iOS 14.3-26.0 matrix with complete 441-case loads |
 | [Production capability matrix](docs/production-capability-matrix.md) | The 738 independently exercised capabilities |
@@ -321,6 +321,10 @@ source passed to the renderer.
 `CONTENT_ERROR` represents structured parse, configuration, resource-limit, or
 unsupported-content failures. `UNEXPECTED_EXCEPTION` represents an ordinary
 exception caught inside the render pipeline or Compose drawing boundary.
+The Compose surface renders Mermaid.js `12.0.0`'s standard error diagram while
+the callback and `onRenderResult` retain the detailed typed diagnostic. The
+published malformed-source corpus verifies exact Native/Official diagnostic
+message parity for all 8,448 cases.
 Coroutine cancellation and fatal process errors continue to propagate.
 
 Generate all KMP publications under `build/maven-repository`:

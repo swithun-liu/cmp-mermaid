@@ -24,9 +24,8 @@ sealed interface MermaidError {
 
     data class UnsupportedDiagram(
         val header: String,
-    ) : MermaidError {
-        override val message: String = "Unsupported Mermaid diagram: $header"
-    }
+        override val message: String = "Unsupported Mermaid diagram: $header",
+    ) : MermaidError
 
     data class Parse(
         val line: Int,
@@ -980,6 +979,8 @@ data class MermaidTheme(
         offsetY = 2f,
         blurRadius = 2f,
     ),
+    val errorBackground: SceneColor = SceneColor(0xFF552222),
+    val errorText: SceneColor = SceneColor(0xFF552222),
 ) {
     internal fun colorFill(index: Int?): SceneColor =
         paletteColor(bkgColorArray, index) ?: groupFill
@@ -1005,6 +1006,8 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFF2F2F2F),
             noteText = SceneColor(0xFFB8B6B6),
             textColor = SceneColor(0xFFCCCCCC),
+            errorBackground = SceneColor(0xFFA44141),
+            errorText = SceneColor(0xFFDDDDDD),
             gantt = darkGanttTheme(),
             journey = darkJourneyTheme(),
             requirement = darkRequirementTheme(),
@@ -1073,6 +1076,8 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
             textColor = SceneColor(0xFF28253D),
+            errorBackground = SceneColor(0xFFFFFFFF),
+            errorText = SceneColor(0xFF000000),
             gantt = reduxColorGanttTheme(),
             journey = reduxColorJourneyTheme(dark = false),
             fontSize = 14f,
@@ -1231,6 +1236,8 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 textColor = SceneColor(0xFF333333),
+                errorBackground = SceneColor(0xFFF7F9FF),
+                errorText = SceneColor(0xFF090600),
                 gantt = baseGanttTheme(),
                 journey = baseJourneyTheme(),
                 requirement = baseRequirementTheme(),
@@ -1261,6 +1268,8 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 textColor = SceneColor(0xFF333333),
+                errorBackground = SceneColor(0xFFFFFFFF),
+                errorText = SceneColor(0xFF000000),
                 gantt = neoGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = false),
                 requirement = neoRequirementTheme(dark = false),
@@ -1300,6 +1309,8 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 textColor = SceneColor(0xFFE0DFDF),
+                errorBackground = SceneColor(0xFF201F1F),
+                errorText = SceneColor(0xFFDFE0E0),
                 gantt = neoDarkGanttTheme(),
                 journey = neoJourneyTheme(dark = true, redux = false),
                 requirement = neoRequirementTheme(dark = true),
@@ -1338,6 +1349,8 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFFACC15),
                 noteText = SceneColor(0xFF28253D),
                 textColor = SceneColor(0xFF28253D),
+                errorBackground = SceneColor(0xFFFFFFFF),
+                errorText = SceneColor(0xFF000000),
                 gantt = reduxGanttTheme(),
                 journey = neoJourneyTheme(dark = false, redux = true),
                 requirement = reduxRequirementTheme(dark = false),
@@ -1893,6 +1906,9 @@ data class MermaidTheme(
                 noteStroke = color("noteBorderColor") ?: theme.noteStroke,
                 noteText = color("noteTextColor") ?: theme.noteText,
                 textColor = color("textColor") ?: theme.textColor,
+                errorBackground =
+                    color("errorBkgColor") ?: theme.errorBackground,
+                errorText = color("errorTextColor") ?: theme.errorText,
                 fontSize = number("fontSize") ?: theme.fontSize,
                 fontFamily = values["fontFamily"] ?: theme.fontFamily,
                 strokeWidth = number("strokeWidth") ?: theme.strokeWidth,
@@ -1984,6 +2000,8 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
             textColor = SceneColor(0xFFE0DFDF),
+            errorBackground = SceneColor(0xFF201F1F),
+            errorText = SceneColor(0xFFDFE0E0),
             gantt = reduxDarkGanttTheme(),
             journey = neoJourneyTheme(dark = true, redux = true),
             requirement = reduxRequirementTheme(dark = true),

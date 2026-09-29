@@ -47,8 +47,17 @@ if (!Number.isInteger(pageSize) || pageSize <= 0) {
 }
 
 mkdirSync(outputDirectory, { recursive: true });
-removeStaleContactSheets();
 const records = selectedCases.map(captureRecord);
+const errorMessageParityCount = records.filter(
+  (entry) => entry.nativeErrorMessage === entry.officialErrorMessage,
+).length;
+if (errorMessageParityCount !== records.length) {
+  throw new Error(
+    `Detailed error message parity failed: ` +
+      `${errorMessageParityCount}/${records.length}`,
+  );
+}
+removeStaleContactSheets();
 const pageGroups = corpusScope === 'full'
   ? selectedKinds.map((kind) => ({
       kind,
@@ -133,6 +142,9 @@ writeFileSync(
     caseCount: persistedRecords.length,
     screenshotCount: persistedRecords.length * 2,
     contactSheetCount: contactSheetCount(persistedRecords),
+    detailedErrorMessageParityCount: persistedRecords.filter(
+      (entry) => entry.nativeErrorMessage === entry.officialErrorMessage,
+    ).length,
     cases: persistedRecords.map(({
       nativePath,
       officialPath,
@@ -384,8 +396,9 @@ This CI smoke evidence contains ${caseCount} malformed Mermaid sources, one
 seed for every supported diagram family, and ${screenshotCount} screenshots.
 
 Passing means CMP Native returns \`CONTENT_ERROR\`, Mermaid.js displays a parse
-or render error, both messages are non-empty, and neither page crashes or times
-out. This is an error-state safety gate, not a pixel-similarity gate.
+or render error, both detailed messages match exactly, both renderers preserve
+their error UI, and neither page crashes or times out. This is an error-state
+safety and diagnostic-parity gate, not a pixel-similarity gate.
 
 ${images}
 `;
@@ -422,8 +435,10 @@ causes. Each generated source is sent unchanged to CMP Native and Mermaid.js
 12.0.0.
 
 Passing means CMP Native returns \`CONTENT_ERROR\`, Mermaid.js displays a parse
-or render error, both messages are non-empty, and neither page crashes or times
-out. This is an error-state safety gate, not a pixel-similarity gate.
+or render error, all ${caseCount.toLocaleString('en-US')} detailed messages
+match exactly, both renderers display Mermaid.js 12.0.0's standard error
+diagram, and neither page crashes or times out. This is an error-state safety,
+diagnostic-parity, and visual-review gate, not a pixel-similarity gate.
 
 Case IDs, source hashes, screenshot hashes, capture sizes, and both error
 messages are recorded in

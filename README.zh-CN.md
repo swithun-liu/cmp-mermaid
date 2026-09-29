@@ -59,13 +59,13 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 已声明能力覆盖率 | 738/738 |
 | 大规模视觉矩阵 | 8,448 组 Native/Official 对拍 |
 | Native/Official 截图 | 16,896 张矩阵截图，另有 882 张独立语料截图和 16,896 张异常源码截图 |
-| 异常源码安全性 | 8,448/8,448 个 Native `CONTENT_ERROR`，8,448/8,448 个 Official 错误态，0 崩溃 |
+| 异常源码对齐 | 8,448/8,448 个 Native `CONTENT_ERROR` 与 Official 详细诊断文案完全一致，两侧均显示 Mermaid.js 12.0.0 标准错误图；0 崩溃 |
 | 矩阵细节审查 | 33 个家族：8,448/8,448 验收；其中 7,429 个自动通过、1,019 个经人工复核通过 |
 | 自动视觉检查 | 8,448/8,448 个矩阵对拍及 441/441 个独立场景通过 |
 | 确定性 SceneGraph 重放 | 441 个通过，0 个不一致 |
 | 内置主题矩阵 | 363/363 |
 | 独立生成的 Native 压力输入 | 保留的历史基线 7,936 个 |
-| JVM 测试 | 795 个通过，0 个失败 |
+| JVM 测试 | 802 个通过，0 个失败 |
 | Core 生产场景压力测试 | 历史 415 场景基线：2,075 次渲染，总耗时 674ms，P95 为 1ms，保留堆 63,968 bytes |
 | 物理设备运行时矩阵 | Kotlin 2.3.20 Android 8/8、Kotlin 1.7.21 Android 8/8、iOS 6/6 通过；9,702 次语料渲染；人工审阅 198 张代表图和 22 张完成截图；0 崩溃、0 Android ANR |
 | 运行时负载矩阵 | 三条物理设备轨道均完整通过 441 个场景；Web 保留此前 397 场景基线；iOS 模拟器和 Desktop 保留此前 236 场景基线 |
@@ -75,7 +75,7 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单和已完成的 33/33 家族门禁 |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
 | **[全部 8,448 个 Native/Official 对比](docs/assets/stability-report/visual-parity-evidence.md)** | 528 页分页对比图，每页包含 16 组同源码结果 |
-| **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 个系统化异常源码用例、16,896 张截图和 528 张对比图 |
+| **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 个详细文案完全一致的系统化异常源码用例、16,896 张截图和 528 张对比图 |
 | **[Android 物理设备兼容性报告](docs/android-real-device-compatibility.md)** | Kotlin 2.3.20 与 Kotlin 1.7.21 分别覆盖 Android 9-16 |
 | **[iOS 物理设备兼容性报告](docs/ios-real-device-compatibility.md)** | iOS 14.3-26.0 共 6 台设备的完整 441 场景负载 |
 | [生产能力矩阵](docs/production-capability-matrix.md) | 738 项被独立验证的能力 |
@@ -290,6 +290,10 @@ fun Diagram(source: String) {
     )
 }
 ```
+
+渲染失败时，Compose 画面显示 Mermaid.js `12.0.0` 的标准错误图；
+`onError` 与 `onRenderResult` 仍保留带原始源码的详细类型化诊断。已发布的
+异常源码语料验证了全部 8,448 个用例的 Native/Official 详细文案完全一致。
 
 在 `build/maven-repository` 下生成全部 KMP 发布制品：
 ```bash

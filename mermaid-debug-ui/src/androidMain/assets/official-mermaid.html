@@ -278,6 +278,7 @@
         window.clearTimeout(rendererLoadTimeout);
         const currentRequest = ++requestId;
         diagram.className = "status";
+        diagram.style.padding = "";
         diagram.textContent = "Rendering...";
 
         try {
@@ -329,9 +330,27 @@
           if (currentRequest !== requestId) {
             return;
           }
-          diagram.className = "error";
           const message = failure?.message ?? String(failure);
-          diagram.textContent = message;
+          const errorSvg = diagram.querySelector("svg");
+          if (errorSvg) {
+            // Mermaid.js 12.0.0: mermaidAPI.ts -> render and
+            // diagrams/error/errorRenderer.ts -> draw.
+            // A parse failure rejects the render promise after drawing the
+            // official error SVG into the supplied container. Keep that SVG
+            // visible while reporting the detailed parser error separately.
+            diagram.className = "";
+            diagram.style.padding = "0";
+            const backgroundColor =
+              mermaid.mermaidAPI.getConfig()?.themeVariables?.background ?? "#ffffff";
+            await waitForLayout();
+            const size = normalizeViewBox(errorSvg, backgroundColor);
+            document.documentElement.style.backgroundColor = size.backgroundColor;
+            document.body.style.backgroundColor = size.backgroundColor;
+            diagram.style.backgroundColor = size.backgroundColor;
+          } else {
+            diagram.className = "error";
+            diagram.textContent = message;
+          }
           window.CmpMermaidBridge?.onRenderError(message);
           notifyParent(`error:${message}`);
         }

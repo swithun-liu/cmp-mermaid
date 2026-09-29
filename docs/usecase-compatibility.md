@@ -32,7 +32,7 @@ Supported behavior includes:
 - Visual detail: 72 automatic passes, 184 manually accepted representation
   differences, 0 failures.
 - All 16 visual-matrix contact sheets were manually reviewed.
-- JVM core and Compose tests pass as part of the 795-test suite.
+- JVM core and Compose tests pass as part of the 802-test suite.
 
 The accepted reviews contain only element-count differences caused by compound
 SVG shapes versus Native scene primitives, and text-segmentation differences

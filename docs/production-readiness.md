@@ -49,6 +49,7 @@ contract.
 | Determinism | Repeated rendering returns the same SceneGraph | Full 441-case corpus equality test | Passing |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 33 by 11 matrix: 363/363 renders | Passing |
 | Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 8,448 visual-matrix Native renders pass; the separate 7,936-case randomized stress baseline remains published | Passing |
+| Error-state parity | Malformed input retains typed diagnostics while rendering Mermaid.js 12.0.0's standard error diagram | 8,448/8,448 malformed-source cases return `CONTENT_ERROR`, match the Official detailed message exactly, and retain the standard error diagram on both sides | Passing |
 | Core throughput | 2,075 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 674ms total, 1ms P95 | Passing; enforced by JVM test |
 | Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: 63,968 bytes | Passing; enforced by JVM test |
 | Runtime matrix | Android, iOS, Desktop, and Web render representative complex cases | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 physical devices passed all 441 cases; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline | Passing for the recorded corpus on each platform |

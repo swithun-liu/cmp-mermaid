@@ -10,8 +10,10 @@ causes. Each generated source is sent unchanged to CMP Native and Mermaid.js
 12.0.0.
 
 Passing means CMP Native returns `CONTENT_ERROR`, Mermaid.js displays a parse
-or render error, both messages are non-empty, and neither page crashes or times
-out. This is an error-state safety gate, not a pixel-similarity gate.
+or render error, all 8,448 detailed messages
+match exactly, both renderers display Mermaid.js 12.0.0's standard error
+diagram, and neither page crashes or times out. This is an error-state safety,
+diagnostic-parity, and visual-review gate, not a pixel-similarity gate.
 
 Case IDs, source hashes, screenshot hashes, capture sizes, and both error
 messages are recorded in

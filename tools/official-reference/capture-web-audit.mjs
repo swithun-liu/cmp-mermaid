@@ -316,22 +316,20 @@ async function waitForNativeCanvas(page, auditCase) {
 
 async function waitForOfficialSvg(page, auditCase) {
   const outcomeHandle = await page.waitForFunction(
-    () => {
+    (expectsError) => {
       const roots = [document];
+      let errorMessage = null;
+      let frame = null;
       for (let index = 0; index < roots.length; index += 1) {
         const root = roots[index];
-        const frame = root.querySelector?.(
+        frame ??= root.querySelector?.(
           'iframe[title="Official Mermaid.js rendering"]',
-        );
-        if (frame?.contentDocument?.querySelector('#diagram svg') != null) {
-          return { status: 'ready' };
-        }
-        const error = frame?.contentDocument?.querySelector('#diagram.error');
-        if (error != null) {
-          return {
-            status: 'error',
-            message: error.textContent?.trim() ?? 'Unknown rendering error',
-          };
+        ) ?? null;
+        for (const element of root.querySelectorAll?.('[aria-label]') ?? []) {
+          const label = element.getAttribute('aria-label') ?? '';
+          if (label.startsWith('cmp-mermaid-audit:error:')) {
+            errorMessage = label.slice('cmp-mermaid-audit:error:'.length);
+          }
         }
         root.querySelectorAll?.('*').forEach((element) => {
           if (element.shadowRoot !== null) {
@@ -339,12 +337,38 @@ async function waitForOfficialSvg(page, auditCase) {
           }
         });
       }
+      const svg = frame?.contentDocument?.querySelector('#diagram svg');
+      if (expectsError) {
+        if (errorMessage !== null) {
+          return {
+            status: svg == null ? 'error-without-svg' : 'error',
+            message: errorMessage,
+          };
+        }
+        return null;
+      }
+      if (svg != null) {
+        return { status: 'ready' };
+      }
+      const error = frame?.contentDocument?.querySelector('#diagram.error');
+      if (error != null) {
+        return {
+          status: 'error',
+          message: error.textContent?.trim() ?? 'Unknown rendering error',
+        };
+      }
       return null;
     },
     { timeout: 60_000 },
+    auditCase.expectedOutcome === 'error',
   );
   const outcome = await outcomeHandle.jsonValue();
   await outcomeHandle.dispose();
+  if (outcome.status === 'error-without-svg') {
+    throw new Error(
+      `${auditCase.id}/Official Mermaid.js error did not retain its SVG`,
+    );
+  }
   if (outcome.status === 'error') {
     return expectedErrorManifest(auditCase, 'official', outcome.message);
   }
