@@ -30,6 +30,23 @@ class StateJisonParserTest {
     }
 
     @Test
+    fun handlesEofBeforeStateConditionZeroLengthRules() {
+        val incompleteDeclaration = parse("stateDiagram-v2\n  state")
+        val aliasedState = parse(
+            """
+            stateDiagram-v2
+              state "Authorization policy" as Policy
+            """.trimIndent(),
+        )
+
+        assertTrue(incompleteDeclaration.getStates().isEmpty())
+        assertEquals(
+            listOf("Authorization policy"),
+            aliasedState.getStates().getValue("Policy").descriptions,
+        )
+    }
+
+    @Test
     fun translatesNestedStartEndAndConcurrencyRegions() {
         val db = parse(
             """

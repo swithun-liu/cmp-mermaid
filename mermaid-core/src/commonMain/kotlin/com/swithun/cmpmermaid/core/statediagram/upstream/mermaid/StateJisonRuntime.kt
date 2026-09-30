@@ -88,9 +88,20 @@ internal class StateJisonLexer(
                 tokenColumn = column,
             )
         }
-
         while (true) {
             val condition = conditionStack.lastOrNull() ?: INITIAL
+            // Mermaid.js 12.0.0 generated Jison lexer -> next(): empty input returns EOF before
+            // state-specific zero-length regular expressions are evaluated. INITIAL is the
+            // exception because stateDiagram.jison defines <<EOF>> there as one final NL.
+            if (offset >= input.length && condition != INITIAL) {
+                grammarEofEmitted = true
+                return token(
+                    symbol = PHYSICAL_EOF,
+                    text = "",
+                    tokenLine = line,
+                    tokenColumn = column,
+                )
+            }
             val rules = StateJisonTables.lexerConditions[condition]
                 ?: return lexError("Unknown Jison lexer condition '$condition'")
             val remaining = input.substring(offset)

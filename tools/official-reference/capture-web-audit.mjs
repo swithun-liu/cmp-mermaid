@@ -35,9 +35,18 @@ const selectedIds = new Set(
 const previews = (process.env.CAPTURE_PREVIEWS ?? 'Native Official')
   .split(/[\s,]+/)
   .filter(Boolean);
+const capturePreviews = auditSource === 'invalid-source'
+  ? [...previews].sort((left, right) => {
+      const rank = (value) => value.toLowerCase() === 'official' ? 0 : 1;
+      return rank(left) - rank(right);
+    })
+  : previews;
 const viewportWidth = Number(process.env.VIEWPORT_WIDTH ?? 900);
 const viewportHeight = Number(process.env.VIEWPORT_HEIGHT ?? 900);
-const minimumCaptureBytes = Number(process.env.MIN_CAPTURE_BYTES ?? 5_000);
+const minimumCaptureBytes = Number(
+  process.env.MIN_CAPTURE_BYTES ??
+    (auditSource === 'invalid-source' ? 1_000 : 5_000),
+);
 const skipExisting = (process.env.SKIP_EXISTING ?? 'false') === 'true';
 
 const kotlinGalleryFiles = {
@@ -106,6 +115,17 @@ if (!['full', 'smoke'].includes(invalidSourceScope)) {
   throw new Error('INVALID_SOURCE_SCOPE must be full or smoke');
 }
 if (
+  auditSource === 'invalid-source' &&
+  (
+    !capturePreviews.some((preview) => preview.toLowerCase() === 'official') ||
+    !capturePreviews.some((preview) => preview.toLowerCase() === 'native')
+  )
+) {
+  throw new Error(
+    'AI-mutation audit requires both Official and Native previews',
+  );
+}
+if (
   layoutOverride !== null &&
   !['dagre', 'elk', 'cose-bilkent', 'tidy-tree', 'swimlane'].includes(layoutOverride)
 ) {
@@ -137,12 +157,13 @@ const sourceCases = supportedAuditSources.slice(1).includes(auditSource)
       ),
     ];
 const availableCases = sourceCases.filter(
-  ({ id, profileIndex }) =>
+  ({ id, profileIndex, caseIndex, mutationVariant }) =>
     (selectedIds.size === 0 || selectedIds.has(id)) &&
     (
       auditSource !== 'invalid-source' ||
       invalidSourceScope === 'full' ||
-      profileIndex === 1
+      mutationVariant === 1 ||
+      (mutationVariant === undefined && (profileIndex === 1 || caseIndex === 1))
     ),
 );
 
@@ -161,10 +182,28 @@ try {
   });
 
   for (const auditCase of availableCases) {
-    for (const preview of previews) {
+    let officialOutcome = null;
+    for (const preview of capturePreviews) {
+      const renderer = preview.toLowerCase();
+      const effectiveAuditCase = auditSource === 'invalid-source'
+        ? {
+            ...auditCase,
+            expectedOutcome:
+              renderer === 'official' ? 'oracle' : officialOutcome,
+          }
+        : auditCase;
+      if (
+        auditSource === 'invalid-source' &&
+        renderer === 'native' &&
+        officialOutcome === null
+      ) {
+        throw new Error(
+          `${auditCase.id}/Native capture started before the Official oracle`,
+        );
+      }
       const suffix = [
         themeOverride,
-        preview.toLowerCase(),
+        renderer,
       ].filter(Boolean).join('_');
       const target = resolve(
         outputDirectory,
@@ -177,7 +216,16 @@ try {
         statSync(target).size >= minimumCaptureBytes &&
         existsSync(manifestTarget)
       ) {
-        continue;
+        const existingManifest = readReusableManifest(
+          manifestTarget,
+          auditCase,
+        );
+        if (existingManifest !== null) {
+          if (renderer === 'official' && auditSource === 'invalid-source') {
+            officialOutcome = existingManifest.outcome;
+          }
+          continue;
+        }
       }
       const url = new URL(baseUrl);
       const captureLayout = layoutOverride ?? auditCase.layout ?? 'dagre';
@@ -192,25 +240,35 @@ try {
         timeout: 60_000,
       });
       let manifest = null;
-      if (preview.toLowerCase() === 'official') {
-        manifest = await waitForOfficialSvg(page, auditCase);
+      if (renderer === 'official') {
+        manifest = await waitForOfficialSvg(page, effectiveAuditCase);
         if (
-          auditCase.expectedOutcome !== 'error' &&
+          manifest?.outcome !== 'error' &&
           supportedAuditSources.slice(1).includes(auditSource) &&
           auditCase.kind === 'gantt'
         ) {
           await assertOfficialGanttWidth(page, auditCase.id);
         }
       } else {
-        manifest = await waitForNativeCanvas(page, auditCase);
+        manifest = await waitForNativeCanvas(page, effectiveAuditCase);
       }
       await page.evaluate(() => new Promise((resolveFrame) => {
         requestAnimationFrame(() => requestAnimationFrame(resolveFrame));
       }));
-      if (preview.toLowerCase() === 'official' && manifest === null) {
+      if (renderer === 'official' && manifest === null) {
         manifest = await extractOfficialManifest(page, auditCase.id);
       }
-      if (auditCase.expectedOutcome !== 'error') {
+      manifest = {
+        ...manifest,
+        outcome: manifest.outcome ?? 'success',
+        ...(auditSource === 'invalid-source'
+          ? { sourceFingerprint: auditCase.sourceFingerprint }
+          : {}),
+      };
+      if (renderer === 'official' && auditSource === 'invalid-source') {
+        officialOutcome = manifest.outcome;
+      }
+      if (manifest.outcome !== 'error') {
         assertExpectedTexts(auditCase, preview, manifest);
       }
       writeFileSync(
@@ -238,9 +296,29 @@ try {
 }
 
 console.log(
-  `Captured ${availableCases.length * previews.length} Web audit images to ` +
+  `Captured ${availableCases.length * capturePreviews.length} Web audit images to ` +
     outputDirectory,
 );
+
+function readReusableManifest(path, auditCase) {
+  try {
+    const manifest = JSON.parse(readFileSync(path, 'utf8'));
+    const outcome = manifest.outcome ??
+      (typeof manifest.message === 'string' ? 'error' : 'success');
+    if (!['success', 'error'].includes(outcome)) {
+      return null;
+    }
+    if (
+      auditSource === 'invalid-source' &&
+      manifest.sourceFingerprint !== auditCase.sourceFingerprint
+    ) {
+      return null;
+    }
+    return { ...manifest, outcome };
+  } catch {
+    return null;
+  }
+}
 
 async function waitForNativeCanvas(page, auditCase) {
   const outcomeHandle = await page.waitForFunction(
@@ -316,9 +394,10 @@ async function waitForNativeCanvas(page, auditCase) {
 
 async function waitForOfficialSvg(page, auditCase) {
   const outcomeHandle = await page.waitForFunction(
-    (expectsError) => {
+    (expectedOutcome) => {
       const roots = [document];
       let errorMessage = null;
+      let ready = false;
       let frame = null;
       for (let index = 0; index < roots.length; index += 1) {
         const root = roots[index];
@@ -330,6 +409,9 @@ async function waitForOfficialSvg(page, auditCase) {
           if (label.startsWith('cmp-mermaid-audit:error:')) {
             errorMessage = label.slice('cmp-mermaid-audit:error:'.length);
           }
+          if (label.startsWith('cmp-mermaid-audit:ready:')) {
+            ready = true;
+          }
         }
         root.querySelectorAll?.('*').forEach((element) => {
           if (element.shadowRoot !== null) {
@@ -338,7 +420,7 @@ async function waitForOfficialSvg(page, auditCase) {
         });
       }
       const svg = frame?.contentDocument?.querySelector('#diagram svg');
-      if (expectsError) {
+      if (expectedOutcome === 'error') {
         if (errorMessage !== null) {
           return {
             status: svg == null ? 'error-without-svg' : 'error',
@@ -346,6 +428,15 @@ async function waitForOfficialSvg(page, auditCase) {
           };
         }
         return null;
+      }
+      if (expectedOutcome === 'oracle' && errorMessage !== null) {
+        return {
+          status: svg == null ? 'error-without-svg' : 'error',
+          message: errorMessage,
+        };
+      }
+      if (expectedOutcome === 'oracle') {
+        return ready && svg != null ? { status: 'ready' } : null;
       }
       if (svg != null) {
         return { status: 'ready' };
@@ -360,17 +451,20 @@ async function waitForOfficialSvg(page, auditCase) {
       return null;
     },
     { timeout: 60_000 },
-    auditCase.expectedOutcome === 'error',
+    auditCase.expectedOutcome,
   );
   const outcome = await outcomeHandle.jsonValue();
   await outcomeHandle.dispose();
   if (outcome.status === 'error-without-svg') {
-    throw new Error(
-      `${auditCase.id}/Official Mermaid.js error did not retain its SVG`,
+    return expectedErrorManifest(
+      auditCase,
+      'official',
+      outcome.message,
+      'text',
     );
   }
   if (outcome.status === 'error') {
-    return expectedErrorManifest(auditCase, 'official', outcome.message);
+    return expectedErrorManifest(auditCase, 'official', outcome.message, 'svg');
   }
   if (auditCase.expectedOutcome === 'error') {
     throw new Error(
@@ -380,8 +474,16 @@ async function waitForOfficialSvg(page, auditCase) {
   return null;
 }
 
-function expectedErrorManifest(auditCase, renderer, payload) {
-  if (auditCase.expectedOutcome !== 'error') {
+function expectedErrorManifest(
+  auditCase,
+  renderer,
+  payload,
+  errorPresentation = null,
+) {
+  if (
+    auditCase.expectedOutcome !== 'error' &&
+    auditCase.expectedOutcome !== 'oracle'
+  ) {
     throw new Error(
       `${auditCase.id}/${renderer} rendering failed: ${payload}`,
     );
@@ -406,6 +508,7 @@ function expectedErrorManifest(auditCase, renderer, payload) {
     renderer,
     outcome: 'error',
     ...(errorType === null ? {} : { errorType }),
+    ...(errorPresentation === null ? {} : { errorPresentation }),
     message,
   };
 }

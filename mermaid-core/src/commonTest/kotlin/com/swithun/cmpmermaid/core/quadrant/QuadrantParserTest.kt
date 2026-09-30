@@ -73,6 +73,21 @@ class QuadrantParserTest {
     }
 
     @Test
+    fun acceptsEmptyTitleLikeUpstreamTitleLexer() {
+        val result = parser().parse(
+            """
+            quadrantChart
+              title
+              Valid point: [0.2, 0.4]
+            """.trimIndent(),
+        )
+        val document = assertIs<GMResult.Ok<QuadrantDocument>>(result).value
+
+        assertEquals(null, document.title)
+        assertEquals("Valid point", document.points.single().text)
+    }
+
+    @Test
     fun returnsStructuredParseErrorsForMalformedUpstreamInputs() {
         val invalidSources = listOf(
             "quadrant-1 Missing header",
@@ -83,6 +98,10 @@ class QuadrantParserTest {
             "quadrantChart\nPoint: [0.2, 0.4] stroke-width: 30",
             "quadrantChart\nclassDef invalid unsupported: value",
             "quadrantChart\nx-axis",
+            "quadrantChart\nx-axis Left\" --> \"Right\"",
+            "quadrantChart\nx-axis Low --> High y-axis Bottom --> Top",
+            "quadrantChart\nx-axis Lower readiness -－> Higher readiness",
+            "quadrantChart\nquadrant-1 First quadrant-2 Second",
             "quadrantChart\naccDescr { unterminated",
         )
 

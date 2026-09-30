@@ -114,6 +114,26 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun ignoresNonMapFrontmatterLikeMermaidJs() {
+        val frontmatterBodies = listOf(
+            "title  Transport protocol header",
+            "1",
+            "- 1\n- 2",
+            "null",
+        )
+
+        frontmatterBodies.forEach { body ->
+            val result = MermaidPreprocessor.preprocess(
+                "---\n$body\n---\npacket\n  0: \"Bit\"",
+            )
+            val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result)
+
+            assertEquals("packet\n  0: \"Bit\"", processed.value.code.cleaned)
+            assertEquals(null, processed.value.title)
+        }
+    }
+
+    @Test
     fun portsMermaidElkConfiguration() {
         val result = MermaidPreprocessor.preprocess(
             """
@@ -596,6 +616,91 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun preservesInvalidXyPaletteSlotsAsTransparentLikeInvalidCssColors() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  themeVariables:
+                    xyChart:
+                      plotColorPalette: "#2563eb， #f97316"
+                ---
+                xychart
+                  line [1, 2]
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value
+        val theme = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.MermaidDefault,
+                values = options.themeVariables,
+                colorArrays = options.themeColorArrays,
+                themeName = options.themeName,
+            ),
+        ).value
+
+        assertEquals(listOf(SceneColor(0x00000000)), theme.xyChart.plotColorPalette)
+    }
+
+    @Test
+    fun ignoresNullNestedThemeVariablesLikeMermaidAssignWithDepth() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  themeVariables:
+                    treeView:
+                      labelColor: #17324d"
+                      lineColor: "#486581"
+                ---
+                treeView-beta
+                    source/
+                        Main.kt
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value
+
+        assertEquals(null, options.themeVariables["treeView.labelColor"])
+        assertEquals("#486581", options.themeVariables["treeView.lineColor"])
+    }
+
+    @Test
+    fun sanitizesMalformedRootThemeVariablesLikeMermaidDirectiveSanitizer() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  theme: dark
+                  themeVariables:
+                    emCommandFill: "#1d4ed8
+                    emEventFill: "#b45309"
+                    emRelationStroke: "#e2e8f0"
+                ---
+                eventmodeling
+                  tf 01 command SubmitRequest
+                  tf 02 event RequestSubmitted
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value
+
+        assertEquals("", options.themeVariables["emCommandFill"])
+        assertEquals(null, options.themeVariables["emEventFill"])
+        assertEquals("#e2e8f0", options.themeVariables["emRelationStroke"])
+    }
+
+    @Test
     fun portsFontFamilyAndPreservesThemeVariablePrecedence() {
         val result = MermaidPreprocessor.preprocess(
             """
@@ -616,7 +721,7 @@ class MermaidPreprocessorTest {
         ).value
 
         assertEquals("Arial, sans-serif", options.fontFamily)
-        assertEquals("Verdana, sans-serif", options.themeVariables["fontFamily"])
+        assertEquals("Arial, sans-serif", options.themeVariables["fontFamily"])
     }
 
     @Test
@@ -1097,5 +1202,27 @@ class MermaidPreprocessorTest {
         assertEquals(9f, sankey.nodePadding)
         assertEquals("outlined", sankey.labelStyle)
         assertEquals(SceneColor(0xFF112233), sankey.nodeColors["Input"])
+    }
+
+    @Test
+    fun ignoresYamlNullConfigurationValuesLikeMermaidSanitizer() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  sankey:
+                    linkColor: #64748b"
+                ---
+                sankey
+                Input,Output,1
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val sankey = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value.sankey
+
+        assertEquals("gradient", sankey.linkColor)
     }
 }

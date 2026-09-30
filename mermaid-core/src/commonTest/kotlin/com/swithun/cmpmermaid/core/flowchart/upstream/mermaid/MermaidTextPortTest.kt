@@ -132,6 +132,22 @@ class MermaidTextPortTest {
     }
 
     @Test
+    fun removesUnknownHtmlTagsLikeDompurify() {
+        val sanitized = MermaidTextPort.sanitizeText("<<fork>>")
+        val rendered = MermaidTextPort.render(
+            source = "<<fork>>",
+            labelType = FlowLabelType.Markdown,
+            config = MermaidRenderOptions(),
+        )
+
+        assertEquals("<>", assertIs<GMResult.Ok<String>>(sanitized).value)
+        assertEquals(
+            "<>",
+            assertIs<GMResult.Ok<MermaidRenderedText>>(rendered).value.text,
+        )
+    }
+
+    @Test
     fun decodesBrowserHtmlEntitiesAndPreservesUnknownNames() {
         val result = MermaidTextPort.render(
             source = "&copy; &euro; &Alpha; &NotEqualTilde; &bogus;",

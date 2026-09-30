@@ -42,9 +42,27 @@ internal class TreeViewParser(
         while (lineIndex < lines.size) {
             val rawLine = lines[lineIndex]
             val trimmed = rawLine.trim()
-            if (trimmed.isEmpty() || trimmed.startsWith(COMMENT_PREFIX)) {
+            if (trimmed.isEmpty()) {
+                if (rawLine.isNotEmpty()) {
+                    return parseError(
+                        line = sourceLine(lineIndex, preprocessed),
+                        column = 1,
+                        message = "Expected a TreeView node after indentation",
+                    )
+                }
                 lineIndex += 1
                 continue
+            }
+            if (trimmed.startsWith(COMMENT_PREFIX)) {
+                lineIndex += 1
+                continue
+            }
+            if (trimmed == HEADER) {
+                return parseError(
+                    line = sourceLine(lineIndex, preprocessed),
+                    column = 1,
+                    message = "Unexpected '$HEADER' after diagram header",
+                )
             }
 
             when {
@@ -57,7 +75,12 @@ internal class TreeViewParser(
                         is GMResult.Err -> return result
                     }
                 }
-                metadataAllowed && hasKeyword(trimmed, ACCESSIBILITY_TITLE_KEYWORD) -> {
+                metadataAllowed &&
+                    hasMetadataDelimiter(
+                        trimmed,
+                        ACCESSIBILITY_TITLE_KEYWORD,
+                        setOf(':'),
+                    ) -> {
                     val value = when (
                         val result = parseColonMetadata(
                             content = trimmed,
@@ -73,7 +96,12 @@ internal class TreeViewParser(
                         is GMResult.Err -> return result
                     }
                 }
-                metadataAllowed && hasKeyword(trimmed, ACCESSIBILITY_DESCRIPTION_KEYWORD) -> {
+                metadataAllowed &&
+                    hasMetadataDelimiter(
+                        trimmed,
+                        ACCESSIBILITY_DESCRIPTION_KEYWORD,
+                        setOf(':', '{'),
+                    ) -> {
                     val parsed = when (
                         val result = parseAccessibilityDescription(
                             lines = lines,
@@ -90,35 +118,115 @@ internal class TreeViewParser(
                     }
                     lineIndex = parsed.lastLineIndex
                 }
+                !metadataAllowed && isMetadataToken(trimmed) -> {
+                    return parseError(
+                        line = sourceLine(lineIndex, preprocessed),
+                        column = 1,
+                        message = "Metadata must appear before TreeView nodes",
+                    )
+                }
                 else -> {
                     metadataAllowed = false
-                    val parsed = when (
-                        val result = parseNode(
-                            rawLine = rawLine,
+                    val nodeSource = collectNodeSource(lines, lineIndex)
+                    val parsedNodes = when (
+                        val result = parseNodes(
+                            rawLine = nodeSource.source,
                             line = sourceLine(lineIndex, preprocessed),
                         )
                     ) {
                         is GMResult.Ok -> result.value
                         is GMResult.Err -> return result
                     }
-                    when (
-                        val result = db.addNode(
-                            level = parsed.level,
-                            name = parsed.name,
-                            nodeType = parsed.nodeType,
-                            cssClass = parsed.cssClass,
-                            icon = parsed.icon,
-                            description = parsed.description,
-                        )
-                    ) {
-                        is GMResult.Ok -> Unit
-                        is GMResult.Err -> return result
+                    parsedNodes.forEach { parsed ->
+                        when (
+                            val result = db.addNode(
+                                level = parsed.level,
+                                name = parsed.name,
+                                nodeType = parsed.nodeType,
+                                cssClass = parsed.cssClass,
+                                icon = parsed.icon,
+                                description = parsed.description,
+                            )
+                        ) {
+                            is GMResult.Ok -> Unit
+                            is GMResult.Err -> return result
+                        }
                     }
+                    lineIndex = nodeSource.lastLineIndex
                 }
             }
             lineIndex += 1
         }
         return GMResult.Ok(db)
+    }
+
+    /**
+     * Mermaid.js 12.0.0:
+     * packages/parser/src/language/treeView/treeView.langium -> TreeNode*.
+     *
+     * Newlines are hidden tokens, so a quoted name followed by non-annotation
+     * text on the same physical line is lexed as another TreeNode.
+     */
+    private fun parseNodes(
+        rawLine: String,
+        line: Int,
+    ): GMResult<List<ParsedNode>, MermaidError> {
+        val nodes = mutableListOf<ParsedNode>()
+        var remaining = rawLine
+        while (remaining.isNotEmpty()) {
+            val parsed = when (val result = parseNode(remaining, line)) {
+                is GMResult.Ok -> result.value
+                is GMResult.Err -> return result
+            }
+            nodes += parsed
+            if (parsed.consumedCharacters >= remaining.length) {
+                break
+            }
+            if (parsed.consumedCharacters <= 0) {
+                return parseError(
+                    line,
+                    1,
+                    "TreeView parser did not consume node content",
+                )
+            }
+            remaining = remaining.substring(parsed.consumedCharacters)
+        }
+        return GMResult.Ok(nodes)
+    }
+
+    /**
+     * Mermaid.js 12.0.0:
+     * packages/parser/src/language/treeView/treeView.langium -> QUOTED_NAME.
+     *
+     * The negated quote class also matches newlines, so a quoted node name can
+     * consume physical lines until the next matching quote.
+     */
+    private fun collectNodeSource(
+        lines: List<String>,
+        startLineIndex: Int,
+    ): CollectedNodeSource {
+        val firstLine = lines[startLineIndex]
+        val contentStart = firstLine.indexOfFirst { character ->
+            character != ' ' && character != '\t'
+        }
+        val quote = firstLine.getOrNull(contentStart)
+            ?.takeIf { character -> character == '"' || character == '\'' }
+            ?: return CollectedNodeSource(firstLine, startLineIndex)
+        if (firstLine.indexOf(quote, startIndex = contentStart + 1) >= 0) {
+            return CollectedNodeSource(firstLine, startLineIndex)
+        }
+
+        val source = StringBuilder(firstLine)
+        var lineIndex = startLineIndex + 1
+        while (lineIndex < lines.size) {
+            val line = lines[lineIndex]
+            source.append('\n').append(line)
+            if (quote in line) {
+                return CollectedNodeSource(source.toString(), lineIndex)
+            }
+            lineIndex += 1
+        }
+        return CollectedNodeSource(source.toString(), lines.lastIndex)
     }
 
     private fun parseNode(
@@ -132,6 +240,7 @@ internal class TreeViewParser(
             return parseError(line, 1, "Expected a TreeView node")
         }
         val content = rawLine.substring(level)
+        val quotedName = content.firstOrNull() == '"' || content.firstOrNull() == '\''
         var cursor: Int
         val rawName: String
         when (val quote = content.firstOrNull()) {
@@ -157,14 +266,16 @@ internal class TreeViewParser(
             }
         }
 
-        if (rawName.isEmpty() && content.firstOrNull() !in setOf('"', '\'')) {
+        if (rawName.isEmpty() && !quotedName) {
             return parseError(line, level + 1, "Expected a TreeView node name")
         }
 
         var cssClass: String? = null
         var icon: String? = null
         var description: String? = null
+        var consumedCharacters = content.length
         while (cursor < content.length) {
+            val whitespaceStart = cursor
             cursor = skipHorizontalWhitespace(content, cursor)
             if (cursor >= content.length) {
                 break
@@ -221,6 +332,14 @@ internal class TreeViewParser(
                     description = value.ifEmpty { null }
                     cursor = content.length
                 }
+                whitespaceStart < cursor -> {
+                    consumedCharacters = whitespaceStart
+                    break
+                }
+                quotedName -> {
+                    consumedCharacters = cursor
+                    break
+                }
                 else -> {
                     return parseError(
                         line,
@@ -244,6 +363,7 @@ internal class TreeViewParser(
                 cssClass = cssClass,
                 icon = icon,
                 description = description,
+                consumedCharacters = level + consumedCharacters,
             ),
         )
     }
@@ -393,6 +513,27 @@ internal class TreeViewParser(
             character == ':' || character == '{' || character.isWhitespace()
         } != false
 
+    private fun hasMetadataDelimiter(
+        content: String,
+        keyword: String,
+        delimiters: Set<Char>,
+    ): Boolean {
+        if (!content.startsWith(keyword)) {
+            return false
+        }
+        val delimiter = skipHorizontalWhitespace(content, keyword.length)
+        return content.getOrNull(delimiter) in delimiters
+    }
+
+    private fun isMetadataToken(content: String): Boolean =
+        hasKeyword(content, TITLE_KEYWORD) ||
+            hasMetadataDelimiter(content, ACCESSIBILITY_TITLE_KEYWORD, setOf(':')) ||
+            hasMetadataDelimiter(
+                content,
+                ACCESSIBILITY_DESCRIPTION_KEYWORD,
+                setOf(':', '{'),
+            )
+
     private fun skipHorizontalWhitespace(
         value: String,
         start: Int,
@@ -429,6 +570,12 @@ internal class TreeViewParser(
         val cssClass: String?,
         val icon: String?,
         val description: String?,
+        val consumedCharacters: Int,
+    )
+
+    private data class CollectedNodeSource(
+        val source: String,
+        val lastLineIndex: Int,
     )
 
     private data class ParsedMetadata(

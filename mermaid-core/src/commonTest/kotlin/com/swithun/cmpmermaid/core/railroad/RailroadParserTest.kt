@@ -115,6 +115,18 @@ class RailroadParserTest {
     }
 
     @Test
+    fun rejectsAbnfContentAfterTerminatorLikeUpstreamCommentToken() {
+        val result = parser().parse(
+            """
+            railroad-abnf-beta
+              payload = 1*( %x20-7E ) ; other = "value" ;
+            """.trimIndent(),
+        )
+
+        assertIs<GMResult.Err<MermaidError>>(result)
+    }
+
+    @Test
     fun parsesPegOrderedChoiceSuffixesPredicatesAndAny() {
         val db = parse(
             """

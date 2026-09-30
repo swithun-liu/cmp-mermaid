@@ -204,8 +204,8 @@ class ZenUmlLayoutTest {
     }
 
     @Test
-    fun returnsStructuredParseAndRuntimeFailures() {
-        assertIs<GMResult.Err<MermaidError>>(
+    fun recoversMissingBlockCloserAndReturnsStructuredRuntimeFailures() {
+        assertIs<GMResult.Ok<MermaidScene>>(
             MermaidEngine().render("zenuml\nif(x) {", context),
         )
 

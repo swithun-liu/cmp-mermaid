@@ -54,6 +54,7 @@ class SankeyParserTest {
             "sankey\nA,B,1,extra",
             "sankey\n\"A,B,1",
             "sankey A,B,1",
+            "sankey\n\"North， region\",Deferred,12.5",
         ).forEach { source ->
             assertIs<GMResult.Err<MermaidError>>(parser().parse(source), source)
         }

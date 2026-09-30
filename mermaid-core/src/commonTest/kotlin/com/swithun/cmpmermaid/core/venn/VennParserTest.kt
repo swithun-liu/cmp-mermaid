@@ -74,6 +74,64 @@ class VennParserTest {
     }
 
     @Test
+    fun parsesAdjacentSetAndUnionStatementsWithoutANewlineLikeUpstreamGrammar() {
+        val db = parse(
+            """
+            venn-beta
+              set "Tokyo Team":24
+              set "Seoul Team":22
+              set "Sao Paulo Team":20 union "Tokyo Team","Seoul Team":7
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            listOf(
+                listOf("Tokyo Team"),
+                listOf("Seoul Team"),
+                listOf("Sao Paulo Team"),
+                listOf("Seoul Team", "Tokyo Team"),
+            ),
+            db.getSubsetData().map { data -> data.sets },
+        )
+    }
+
+    @Test
+    fun parsesAnIndentedTextAndUnionWithoutANewlineLikeUpstreamGrammar() {
+        val db = parse(
+            """
+            venn-beta
+              set Product["Product"]:22
+              set Engineering["Engineering"]:20
+                text E1["Implementation"] union Product,Engineering["Planning"]:7
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            listOf(Triple(listOf("Engineering"), "E1", "Implementation")),
+            db.getTextData().map { data -> Triple(data.sets, data.id, data.label) },
+        )
+        assertEquals(
+            listOf("Engineering", "Product"),
+            db.getSubsetData().last().sets,
+        )
+    }
+
+    @Test
+    fun rejectsMismatchedRgbDelimiterAsStructuredError() {
+        val result = parser().parse(
+            """
+            venn-beta
+              set Product
+              set Engineering
+              style Engineering fill:rgb(22, 163, 74],stroke:#14532d
+            """.trimIndent(),
+        )
+
+        val error = assertIs<GMResult.Err<MermaidError>>(result).error
+        assertEquals(4, assertIs<MermaidError.Parse>(error).line)
+    }
+
+    @Test
     fun returnsStructuredErrorsForInvalidUnionAndFrontmatterOffset() {
         val unknown = assertIs<GMResult.Err<MermaidError>>(
             parser(lineOffset = 4).parse(

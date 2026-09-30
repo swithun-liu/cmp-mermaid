@@ -7,7 +7,8 @@ import com.swithun.cmpmermaid.core.MermaidRenderOptions
 /**
  * Kotlin translation of Mermaid.js 12.0.0:
  * packages/parser/src/language/eventmodeling/event-modeling.langium,
- * tokenBuilder.ts, and event-modeling-validator.ts.
+ * tokenBuilder.ts, and packages/parser/src/parse.ts. The public parse path reports lexer/parser
+ * errors but does not run the registered Langium reference validators.
  */
 internal class EventModelingParser(
     private val options: MermaidRenderOptions,
@@ -111,10 +112,6 @@ internal class EventModelingParser(
             accessibilityTitle = accessibilityTitle,
             accessibilityDescription = accessibilityDescription,
         )
-        when (val validated = validateReferences(ast, cursor)) {
-            is GMResult.Ok -> Unit
-            is GMResult.Err -> return validated
-        }
         return GMResult.Ok(
             EventModelingDb(
                 config = options.eventModeling,
@@ -124,99 +121,6 @@ internal class EventModelingParser(
             ),
         )
     }
-
-    private fun validateReferences(
-        ast: EventModelingAst,
-        cursor: Cursor,
-    ): GMResult<Unit, MermaidError> {
-        val framesByName = ast.frames.associateBy(EventModelingFrame::name)
-        val dataNames = ast.dataEntities.mapTo(mutableSetOf(), EventModelingDataEntity::name)
-        val entityNames = ast.modelEntities.toSet()
-
-        ast.frames.forEach { frame ->
-            frame.sourceFrameNames.forEach { sourceName ->
-                val source = framesByName[sourceName]
-                    ?: return cursor.errorAtEnd(
-                        "Could not resolve source frame '$sourceName'",
-                    )
-                val expected = expectedSource(frame.modelEntityType)
-                if (expected != null && source.modelEntityType !in expected.allowedTypes) {
-                    return cursor.errorAtEnd(
-                        "A ${expected.targetLabel} can only receive input from a " +
-                            "${expected.sourceLabel}, not from '${source.modelEntityType}'.",
-                    )
-                }
-            }
-            frame.dataReference?.let { reference ->
-                if (reference !in dataNames) {
-                    return cursor.errorAtEnd(
-                        "Could not resolve data entity '$reference'",
-                    )
-                }
-            }
-        }
-        ast.noteEntities.forEach { note ->
-            if (note.sourceFrameName !in framesByName) {
-                return cursor.errorAtEnd(
-                    "Could not resolve note source frame '${note.sourceFrameName}'",
-                )
-            }
-        }
-        ast.gwtEntities.forEach { gwt ->
-            if (gwt.sourceFrameName !in framesByName) {
-                return cursor.errorAtEnd(
-                    "Could not resolve gwt source frame '${gwt.sourceFrameName}'",
-                )
-            }
-            (
-                gwt.givenStatements +
-                    gwt.whenStatements +
-                    gwt.thenStatements
-                ).forEach { statement ->
-                if (statement.entityIdentifier !in entityNames) {
-                    return cursor.errorAtEnd(
-                        "Could not resolve model entity '${statement.entityIdentifier}'",
-                    )
-                }
-            }
-        }
-        return GMResult.Ok(Unit)
-    }
-
-    private fun expectedSource(targetType: String): SourceExpectation? = when (targetType) {
-        "cmd", "command" -> SourceExpectation(
-            allowedTypes = setOf("ui", "pcr", "processor"),
-            targetLabel = "command",
-            sourceLabel = "ui or processor",
-        )
-        "evt", "event" -> SourceExpectation(
-            allowedTypes = setOf("cmd", "command"),
-            targetLabel = "event",
-            sourceLabel = "command",
-        )
-        "rmo", "readmodel" -> SourceExpectation(
-            allowedTypes = setOf("evt", "event"),
-            targetLabel = "read model",
-            sourceLabel = "event",
-        )
-        "pcr", "processor" -> SourceExpectation(
-            allowedTypes = setOf("rmo", "readmodel"),
-            targetLabel = "processor",
-            sourceLabel = "read model",
-        )
-        "ui" -> SourceExpectation(
-            allowedTypes = setOf("rmo", "readmodel"),
-            targetLabel = "ui",
-            sourceLabel = "read model",
-        )
-        else -> null
-    }
-
-    private data class SourceExpectation(
-        val allowedTypes: Set<String>,
-        val targetLabel: String,
-        val sourceLabel: String,
-    )
 
     private class Cursor(
         private val source: String,

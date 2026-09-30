@@ -3,6 +3,7 @@ package com.swithun.cmpmermaid.core
 import kotlin.math.ceil
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
 class OfficialAgentflowDocumentationTest {
@@ -82,6 +83,24 @@ class OfficialAgentflowDocumentationTest {
             officialAgentflowDocumentationCases.count { case ->
                 case.expectedUnsupportedFeature == null
             },
+        )
+    }
+
+    @Test
+    fun rejectsExpandedFlowWithoutVisibleChildrenLikeMermaidDagre() {
+        val result = engine.render(
+            """
+                agentflow-beta LR
+                  flow empty["Empty flow"]
+                  end
+            """.trimIndent(),
+            context,
+        )
+
+        val error = assertIs<GMResult.Err<MermaidError>>(result).error
+        assertEquals(
+            "No such shape: flowGroup. Please check your syntax.",
+            error.message,
         )
     }
 

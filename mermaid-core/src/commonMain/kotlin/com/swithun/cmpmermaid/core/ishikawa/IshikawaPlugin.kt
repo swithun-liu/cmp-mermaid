@@ -11,6 +11,9 @@ class IshikawaPlugin : MermaidDiagramPlugin {
     override val id: String = "ishikawa"
     override val headers: Set<String> = setOf("ishikawa", "ishikawa-beta")
 
+    // Mermaid.js 12.0.0: diagrams/ishikawa/ishikawaDetector.ts -> detector.
+    override fun detect(source: String): Boolean = DETECTOR.containsMatchIn(source)
+
     override fun compile(
         source: String,
         context: MermaidRenderContext,
@@ -23,5 +26,9 @@ class IshikawaPlugin : MermaidDiagramPlugin {
     ) {
         is GMResult.Ok -> IshikawaLayout().layout(parsed.value, context)
         is GMResult.Err -> parsed
+    }
+
+    private companion object {
+        val DETECTOR = Regex("""^\s*ishikawa(?:-beta)?\b""", RegexOption.IGNORE_CASE)
     }
 }

@@ -73,6 +73,51 @@ class GanttJisonParserTest {
     }
 
     @Test
+    fun acceptsEmptyEndExpressionAsZeroDurationLikeUpstream() {
+        val document = parse(
+            """
+            gantt
+                dateFormat YYYY-MM-DD
+                Baseline :base, 2028-09-01, 14d
+                Decision :milestone, decision, after base,
+            """.trimIndent(),
+        ).compile().value()
+
+        val decision = document.tasks.last()
+        assertTrue(decision.flags.milestone)
+        assertEquals(document.tasks.first().endMillis, decision.startMillis)
+        assertEquals(decision.startMillis, decision.endMillis)
+    }
+
+    @Test
+    fun fallsBackToIsoDateWhenMergedDirectiveCorruptsDateFormat() {
+        val document = parse(
+            """
+            gantt
+                dateFormat YYYY-MM-DD axisFormat %b %d
+                Task :task, 2027-01-04, 5d
+            """.trimIndent(),
+        ).compile().value()
+
+        assertEquals("2027-01-04", GanttDatePort.dateOnly(document.tasks.single().startMillis))
+        assertEquals("2027-01-09", GanttDatePort.dateOnly(document.tasks.single().endMillis))
+    }
+
+    @Test
+    fun extractsDelimitedIsoDateLikeJavaScriptDateFallback() {
+        val document = parse(
+            """
+            gantt
+                dateFormat YYYY-MM-DD
+                Build candidate :build， 2028-05-01, 5d
+            """.trimIndent(),
+        ).compile().value()
+
+        assertEquals("2028-05-01", GanttDatePort.dateOnly(document.tasks.single().startMillis))
+        assertEquals("2028-05-06", GanttDatePort.dateOnly(document.tasks.single().endMillis))
+    }
+
+    @Test
     fun sanitizesLinksAndKeepsCallbacksLooseOnly() {
         val strict = parse(
             """

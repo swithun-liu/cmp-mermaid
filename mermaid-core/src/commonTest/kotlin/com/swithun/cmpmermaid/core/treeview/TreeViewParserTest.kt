@@ -69,6 +69,76 @@ class TreeViewParserTest {
     }
 
     @Test
+    fun parsesQuotedAndBareNodesFromOneLineLikeLangiumTokenStream() {
+        val db = parse(
+            """
+            treeView-beta
+            pie
+              "Broken" : nope
+            """.trimIndent(),
+        )
+
+        val pie = db.getRoot().children.single()
+        assertEquals("pie", pie.name)
+        assertEquals(
+            listOf("Broken", ": nope"),
+            pie.children.map { node -> node.name },
+        )
+        assertEquals(listOf(2, 1), pie.children.map { node -> node.level })
+
+        val annotationSplit = parse(
+            """
+            treeView-beta
+                App.ts icon(file) utils.ts
+            """.trimIndent(),
+        )
+        val app = annotationSplit.getRoot().children.first()
+        assertEquals("App.ts", app.name)
+        assertEquals("file", app.icon)
+        assertEquals("utils.ts", annotationSplit.getRoot().children.last().name)
+        assertEquals(1, annotationSplit.getRoot().children.last().level)
+    }
+
+    @Test
+    fun letsQuotedNamesConsumeNewlinesLikeLangiumTerminal() {
+        val db = parse(
+            """
+            treeView-beta
+                "my project/"
+                    "folder with spaces/
+                        plain file.md
+            "Privacy Preserving Data" ## evidence
+            """.trimIndent(),
+        )
+
+        val project = db.getRoot().children.first()
+        assertEquals("my project", project.name)
+        assertEquals(
+            "folder with spaces/\n            plain file.md\n",
+            project.children.single().name,
+        )
+        assertEquals("Privacy Preserving Data\"", db.getRoot().children.last().name)
+        assertEquals("evidence", db.getRoot().children.last().description)
+    }
+
+    @Test
+    fun treatsMetadataKeywordsWithoutDelimitersAsNodesLikeLangiumTerminals() {
+        val db = parse(
+            """
+            treeView-beta
+              title Release artifacts
+              accDescr  Packages for multiple regions.
+                releases/
+            """.trimIndent(),
+        )
+
+        val descriptionNode = db.getRoot().children.single()
+        assertEquals("accDescr  Packages for multiple regions.", descriptionNode.name)
+        assertEquals("releases", descriptionNode.children.single().name)
+        assertNull(db.accessibilityDescription)
+    }
+
+    @Test
     fun boxDrawingAndIndentFormatsBuildEquivalentTrees() {
         val indent = parse(
             """
@@ -165,11 +235,13 @@ class TreeViewParserTest {
     fun rejectsMalformedInputsWithoutThrowing() {
         val malformed = listOf(
             "not-tree\nfile.txt",
+            "treeView-beta\ntreeView-beta\nfile.txt",
+            "treeView-beta\n   ",
             "treeView-beta\n\"unterminated",
             "treeView-beta\nfile.txt icon(logos:)",
             "treeView-beta\n:::highlight",
-            "treeView-beta\naccTitle missing colon",
             "treeView-beta\naccDescr { missing close",
+            "treeView-beta\naccTitle missing colon\naccDescr: valid metadata",
             "treeView-beta\n├── ",
         )
 

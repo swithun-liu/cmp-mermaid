@@ -278,6 +278,26 @@ class QuadrantLayoutTest {
     }
 
     @Test
+    fun usesSvgInitialColorForInvalidQuadrantFillLikeMermaidJs() {
+        val scene = render(
+            """
+            ---
+            config:
+              themeVariables:
+                quadrant4Fill: "#fef3c7
+                quadrantPointFill: "#111827"
+            ---
+            quadrantChart
+              quadrant-4 Recheck
+            """.trimIndent(),
+        )
+        val fourth = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "quadrant-area-4" }
+
+        assertEquals(SceneColor(0xFF000000), fourth.fill)
+    }
+
+    @Test
     fun enforcesPointResourceLimit() {
         val result = engine.render(
             """

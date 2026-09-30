@@ -90,6 +90,53 @@ class TreemapParserTest {
         assertEquals(8, assertIs<MermaidError.Parse>(error).line)
     }
 
+    @Test
+    fun rejectsDanglingIndentationAtEndOfInputLikeLangium() {
+        val danglingIndentation = assertIs<GMResult.Err<MermaidError>>(
+            parser().parse("treemap-beta\n\"Root\"\n  \"Leaf\": 1\n   "),
+        ).error
+        assertEquals(4, assertIs<MermaidError.Parse>(danglingIndentation).line)
+
+        assertIs<GMResult.Ok<TreemapDb>>(
+            parser().parse("treemap-beta\n\"Root\"\n  \"Leaf\": 1\n"),
+        )
+    }
+
+    @Test
+    fun parsesAdjacentRowsWhenThePhysicalNewlineIsMissing() {
+        val db = parse(
+            """
+            treemap
+            "Operations" "Salaries": 720000
+                "Infrastructure": 280000
+            "Growth"
+                "Campaigns": 360000
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            listOf("Operations", "Salaries", "Infrastructure", "Growth", "Campaigns"),
+            db.getNodes().map { node -> node.name },
+        )
+        assertEquals(listOf(0, 1, 1, 0, 1), db.getLevels().map { pair -> pair.second })
+    }
+
+    @Test
+    fun parsesClassDefinitionAfterAnItemOnTheSamePhysicalLine() {
+        val db = parse(
+            """
+            treemap
+            "Root"
+                "Leaf": 1:::hot classDef hot fill:red,color:blue;
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            listOf("fill:red", "color:blue"),
+            db.getNodes()[1].cssCompiledStyles,
+        )
+    }
+
     private fun parse(
         source: String,
         diagramTitle: String? = null,

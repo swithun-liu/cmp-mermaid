@@ -31,6 +31,20 @@ internal class TreemapParser(
                 "Expected 'treemap' or 'treemap-beta' diagram header",
             )
         }
+        // Mermaid.js 12.0.0:
+        // packages/parser/src/language/treemap/treemap.langium -> INDENTATION, TreemapRow.
+        // A trailing horizontal-whitespace token starts a row and must be followed by an item.
+        val trailingContentIndex = lines.indexOfLast(String::isNotEmpty)
+        if (
+            trailingContentIndex > headerIndex &&
+            lines[trailingContentIndex].all(::isHorizontalWhitespace)
+        ) {
+            return parseError(
+                trailingContentIndex + 1,
+                1,
+                "Expected a quoted Treemap item or classDef after indentation",
+            )
+        }
 
         val rows = mutableListOf<TreemapRow>()
         var title: String? = null
@@ -91,22 +105,13 @@ internal class TreemapParser(
                         )
                     }
                 }
-                statement.startsWith(CLASS_DEF_KEYWORD) -> {
-                    val match = CLASS_DEF.matchEntire(statement)
-                        ?: return parseError(
-                            lineIndex + 1,
-                            indentation + 1,
-                            "Invalid Treemap classDef statement",
-                        )
-                    rows += TreemapRow.ClassDefinition(
-                        id = match.groupValues[1],
-                        style = match.groupValues.getOrElse(2) { "" },
-                    )
-                }
-                statement.firstOrNull() == '"' || statement.firstOrNull() == '\'' -> {
-                    val item = when (
-                        val parsed = parseItem(
+                statement.startsWith(CLASS_DEF_KEYWORD) ||
+                    statement.firstOrNull() == '"' ||
+                    statement.firstOrNull() == '\'' -> {
+                    val parsedRows = when (
+                        val parsed = parseRows(
                             statement = statement,
+                            initialIndentation = indentation,
                             line = lineIndex + 1,
                             column = indentation + 1,
                         )
@@ -114,7 +119,7 @@ internal class TreemapParser(
                         is GMResult.Ok -> parsed.value
                         is GMResult.Err -> return parsed
                     }
-                    rows += TreemapRow.Item(indentation = indentation, item = item)
+                    rows += parsedRows
                 }
                 else -> return parseError(
                     lineIndex + 1,
@@ -151,37 +156,115 @@ internal class TreemapParser(
         return GMResult.Ok(db)
     }
 
-    private fun parseItem(
+    private fun parseRows(
         statement: String,
+        initialIndentation: Int,
         line: Int,
         column: Int,
-    ): GMResult<ParsedItem, MermaidError> {
-        val quote = statement.first()
-        val closing = statement.indexOf(quote, startIndex = 1)
-        if (closing < 0) {
-            return parseError(line, column, "Unterminated quoted Treemap item")
+    ): GMResult<List<TreemapRow>, MermaidError> {
+        val rows = mutableListOf<TreemapRow>()
+        var cursor = 0
+        var indentation = initialIndentation
+        while (cursor < statement.length) {
+            when {
+                statement[cursor] == '"' || statement[cursor] == '\'' -> {
+                    val parsed = when (
+                        val result = parseItemPrefix(statement, cursor, line, column)
+                    ) {
+                        is GMResult.Ok -> result.value
+                        is GMResult.Err -> return result
+                    }
+                    rows += TreemapRow.Item(indentation = indentation, item = parsed.item)
+                    cursor = parsed.nextItemIndex ?: break
+                    indentation = parsed.nextItemIndentation
+                }
+                statement.startsWith(CLASS_DEF_KEYWORD, startIndex = cursor) -> {
+                    val parsed = when (
+                        val result = parseClassDefinitionPrefix(
+                            statement,
+                            cursor,
+                            line,
+                            column,
+                        )
+                    ) {
+                        is GMResult.Ok -> result.value
+                        is GMResult.Err -> return result
+                    }
+                    rows += parsed.row
+                    val nextIndex = statement.skipHorizontalWhitespace(parsed.endIndex)
+                    if (nextIndex == statement.length) {
+                        break
+                    }
+                    indentation = nextIndex - parsed.endIndex
+                    cursor = nextIndex
+                }
+                else -> return parseError(
+                    line,
+                    column + cursor,
+                    "Expected a quoted Treemap item or classDef",
+                )
+            }
         }
-        val name = statement.substring(1, closing)
+        return GMResult.Ok(rows)
+    }
+
+    private fun parseItemPrefix(
+        statement: String,
+        startIndex: Int,
+        line: Int,
+        column: Int,
+    ): GMResult<ParsedItemPrefix, MermaidError> {
+        val quote = statement.getOrNull(startIndex)
+            ?: return parseError(line, column + startIndex, "Expected a quoted Treemap item")
+        if (quote != '"' && quote != '\'') {
+            return parseError(line, column + startIndex, "Expected a quoted Treemap item")
+        }
+        val closing = statement.indexOf(quote, startIndex = startIndex + 1)
+        if (closing < 0) {
+            return parseError(
+                line,
+                column + startIndex,
+                "Unterminated quoted Treemap item",
+            )
+        }
+        val name = statement.substring(startIndex + 1, closing)
         var cursor = closing + 1
         cursor = statement.skipHorizontalWhitespace(cursor)
         if (statement.startsWith(STYLE_SEPARATOR, startIndex = cursor)) {
-            val parsedClass = parseClassSelector(statement, cursor, line, column)
-            return when (parsedClass) {
-                is GMResult.Ok -> GMResult.Ok(
-                    ParsedItem(
-                        name = name,
-                        type = TreemapItemType.Section,
-                        classSelector = parsedClass.value,
-                    ),
-                )
-                is GMResult.Err -> parsedClass
+            val parsedClass = when (
+                val result = parseClassSelectorPrefix(statement, cursor, line, column)
+            ) {
+                is GMResult.Ok -> result.value
+                is GMResult.Err -> return result
             }
+            return finishItemPrefix(
+                statement = statement,
+                cursor = parsedClass.endIndex,
+                line = line,
+                column = column,
+                item = ParsedItem(
+                    name = name,
+                    type = TreemapItemType.Section,
+                    classSelector = parsedClass.value,
+                ),
+            )
         }
         if (cursor == statement.length) {
             return GMResult.Ok(
-                ParsedItem(
-                    name = name,
-                    type = TreemapItemType.Section,
+                ParsedItemPrefix(
+                    item = ParsedItem(
+                        name = name,
+                        type = TreemapItemType.Section,
+                    ),
+                ),
+            )
+        }
+        if (statement[cursor] == '"' || statement[cursor] == '\'') {
+            return GMResult.Ok(
+                ParsedItemPrefix(
+                    item = ParsedItem(name = name, type = TreemapItemType.Section),
+                    nextItemIndex = cursor,
+                    nextItemIndentation = cursor - closing - 1,
                 ),
             )
         }
@@ -199,24 +282,35 @@ internal class TreemapParser(
             ?: return parseError(line, column + cursor, "Expected a Treemap leaf value")
         val numberSource = numberMatch.value
         cursor = numberMatch.range.last + 1
-        cursor = statement.skipHorizontalWhitespace(cursor)
-        val classSelector = if (statement.startsWith(STYLE_SEPARATOR, startIndex = cursor)) {
-            when (val parsed = parseClassSelector(statement, cursor, line, column)) {
-                is GMResult.Ok -> parsed.value
+        val valueEnd = cursor
+        val selectorStart = statement.skipHorizontalWhitespace(cursor)
+        val classSelector = if (
+            statement.startsWith(STYLE_SEPARATOR, startIndex = selectorStart)
+        ) {
+            when (
+                val parsed = parseClassSelectorPrefix(
+                    statement,
+                    selectorStart,
+                    line,
+                    column,
+                )
+            ) {
+                is GMResult.Ok -> {
+                    cursor = parsed.value.endIndex
+                    parsed.value.value
+                }
                 is GMResult.Err -> return parsed
             }
         } else {
-            if (cursor != statement.length) {
-                return parseError(
-                    line,
-                    column + cursor,
-                    "Unexpected text after Treemap leaf value",
-                )
-            }
+            cursor = valueEnd
             null
         }
-        return GMResult.Ok(
-            ParsedItem(
+        return finishItemPrefix(
+            statement = statement,
+            cursor = cursor,
+            line = line,
+            column = column,
+            item = ParsedItem(
                 name = name,
                 type = TreemapItemType.Leaf,
                 value = javascriptParseFloat(numberSource.replace(",", "")),
@@ -225,12 +319,67 @@ internal class TreemapParser(
         )
     }
 
-    private fun parseClassSelector(
+    private fun finishItemPrefix(
+        statement: String,
+        cursor: Int,
+        line: Int,
+        column: Int,
+        item: ParsedItem,
+    ): GMResult<ParsedItemPrefix, MermaidError> {
+        val nextItemIndex = statement.skipHorizontalWhitespace(cursor)
+        if (nextItemIndex == statement.length) {
+            return GMResult.Ok(ParsedItemPrefix(item = item))
+        }
+        if (
+            statement[nextItemIndex] != '"' &&
+            statement[nextItemIndex] != '\'' &&
+            !statement.startsWith(CLASS_DEF_KEYWORD, startIndex = nextItemIndex)
+        ) {
+            return parseError(
+                line,
+                column + nextItemIndex,
+                "Unexpected text after Treemap item",
+            )
+        }
+        return GMResult.Ok(
+            ParsedItemPrefix(
+                item = item,
+                nextItemIndex = nextItemIndex,
+                nextItemIndentation = nextItemIndex - cursor,
+            ),
+        )
+    }
+
+    private fun parseClassDefinitionPrefix(
+        statement: String,
+        startIndex: Int,
+        line: Int,
+        column: Int,
+    ): GMResult<ParsedClassDefinitionPrefix, MermaidError> {
+        val match = CLASS_DEF.find(statement, startIndex)
+            ?.takeIf { result -> result.range.first == startIndex }
+            ?: return parseError(
+                line,
+                column + startIndex,
+                "Invalid Treemap classDef statement",
+            )
+        return GMResult.Ok(
+            ParsedClassDefinitionPrefix(
+                row = TreemapRow.ClassDefinition(
+                    id = match.groupValues[1],
+                    style = match.groupValues.getOrElse(2) { "" },
+                ),
+                endIndex = match.range.last + 1,
+            ),
+        )
+    }
+
+    private fun parseClassSelectorPrefix(
         statement: String,
         separatorIndex: Int,
         line: Int,
         column: Int,
-    ): GMResult<String, MermaidError> {
+    ): GMResult<ParsedClassSelector, MermaidError> {
         val selectorStart = separatorIndex + STYLE_SEPARATOR.length
         val match = IDENTIFIER.find(statement, startIndex = selectorStart)
             ?.takeIf { result -> result.range.first == selectorStart }
@@ -240,14 +389,7 @@ internal class TreemapParser(
                 "Expected a Treemap class selector",
             )
         val end = match.range.last + 1
-        if (statement.substring(end).isNotBlank()) {
-            return parseError(
-                line,
-                column + end,
-                "Unexpected text after Treemap class selector",
-            )
-        }
-        return GMResult.Ok(match.value)
+        return GMResult.Ok(ParsedClassSelector(value = match.value, endIndex = end))
     }
 
     private fun parseAccessibilityDescriptionBlock(
@@ -381,6 +523,22 @@ internal class TreemapParser(
         val type: TreemapItemType,
         val value: Double? = null,
         val classSelector: String? = null,
+    )
+
+    private data class ParsedItemPrefix(
+        val item: ParsedItem,
+        val nextItemIndex: Int? = null,
+        val nextItemIndentation: Int = 0,
+    )
+
+    private data class ParsedClassSelector(
+        val value: String,
+        val endIndex: Int,
+    )
+
+    private data class ParsedClassDefinitionPrefix(
+        val row: TreemapRow.ClassDefinition,
+        val endIndex: Int,
     )
 
     private data class ParsedAccessibilityDescription(

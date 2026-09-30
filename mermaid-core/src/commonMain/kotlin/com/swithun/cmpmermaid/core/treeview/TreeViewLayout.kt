@@ -488,7 +488,6 @@ internal class TreeViewLayout {
                             val result = parseColor(
                                 variables["treeView.labelColor"],
                                 DEFAULT_LABEL_COLOR,
-                                "treeView.labelColor",
                             )
                         ) {
                             is GMResult.Ok -> result.value
@@ -498,7 +497,6 @@ internal class TreeViewLayout {
                             val result = parseColor(
                                 variables["treeView.lineColor"],
                                 DEFAULT_LINE_COLOR,
-                                "treeView.lineColor",
                             )
                         ) {
                             is GMResult.Ok -> result.value
@@ -508,7 +506,6 @@ internal class TreeViewLayout {
                             val result = parseColor(
                                 variables["treeView.iconColor"],
                                 DEFAULT_ICON_COLOR,
-                                "treeView.iconColor",
                             )
                         ) {
                             is GMResult.Ok -> result.value
@@ -518,7 +515,6 @@ internal class TreeViewLayout {
                             val result = parseColor(
                                 variables["treeView.descriptionColor"],
                                 DEFAULT_DESCRIPTION_COLOR,
-                                "treeView.descriptionColor",
                             )
                         ) {
                             is GMResult.Ok -> result.value
@@ -528,7 +524,6 @@ internal class TreeViewLayout {
                             val result = parseColor(
                                 variables["treeView.highlightBg"],
                                 DEFAULT_HIGHLIGHT_BACKGROUND,
-                                "treeView.highlightBg",
                             )
                         ) {
                             is GMResult.Ok -> result.value
@@ -538,7 +533,6 @@ internal class TreeViewLayout {
                             val result = parseColor(
                                 variables["treeView.highlightStroke"],
                                 DEFAULT_HIGHLIGHT_STROKE,
-                                "treeView.highlightStroke",
                             )
                         ) {
                             is GMResult.Ok -> result.value
@@ -571,13 +565,14 @@ internal class TreeViewLayout {
             private fun parseColor(
                 value: String?,
                 fallback: SceneColor,
-                path: String,
             ): GMResult<SceneColor, MermaidError> {
                 if (value == null) {
                     return GMResult.Ok(fallback)
                 }
-                return CssColorParser.parse(value)?.let { color -> GMResult.Ok(color) }
-                    ?: configurationError("themeVariables.$path must be a valid color")
+                // Mermaid.js 12.0.0: diagrams/treeView/styles.ts -> styles.
+                // Invalid CSS declarations do not abort rendering; the browser
+                // keeps the property's inherited/default color.
+                return GMResult.Ok(CssColorParser.parse(value) ?: fallback)
             }
 
             private fun <T> configurationError(

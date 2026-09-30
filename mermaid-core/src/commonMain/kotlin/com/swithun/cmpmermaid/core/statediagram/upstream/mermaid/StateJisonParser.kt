@@ -181,6 +181,9 @@ internal class StateJisonParser(
             GMResult.Ok(
                 StateNodeStatement(
                     id = id.trim(),
+                    // Mermaid.js 12.0.0: stateDiagram.jison -> note notePosition ID NOTE_TEXT.
+                    // The generated statement omits `type`; dataFetcher observes that omission.
+                    sourceTypeDefined = false,
                     note = StateNote(
                         position = position.trim(),
                         text = text.trim(),

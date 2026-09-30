@@ -113,6 +113,50 @@ class TimelineParserTest {
     }
 
     @Test
+    fun rejectsATrailingBareEventDelimiterLikeUpstreamLexer() {
+        val result = parser().parse(
+            """
+            timeline
+              Implementation : Core complete
+              Long Running Background Verification Label 125 :
+            """.trimIndent(),
+        )
+        val error = assertIs<GMResult.Err<MermaidError>>(result).error
+
+        assertEquals(3, assertIs<MermaidError.Parse>(error).line)
+    }
+
+    @Test
+    fun rejectsASectionAndEventMergedBeforeAnyPeriodLikeUpstream() {
+        val result = parser().parse(
+            """
+            timeline
+              title Industry
+              section 17th-20th century Industry 1.0 : Machinery
+              Industry 2.0 : Electricity
+            """.trimIndent(),
+        )
+        val error = assertIs<GMResult.Err<MermaidError>>(result).error
+
+        assertEquals(3, assertIs<MermaidError.Parse>(error).line)
+    }
+
+    @Test
+    fun returnsStructuredErrorWhenTimelineHeaderIsRepeatedInBody() {
+        val result = parser().parse(
+            """
+            timeline
+            timeline
+              2024 : Shipped
+            """.trimIndent(),
+        )
+        val error = assertIs<GMResult.Err<MermaidError>>(result).error
+        val parse = assertIs<MermaidError.Parse>(error)
+
+        assertEquals(2, parse.line)
+    }
+
+    @Test
     fun returnsStructuredErrorsForInvalidHeaderAndAccessibilityBlocks() {
         val invalidSources = listOf(
             "timeline BT\n  2024",

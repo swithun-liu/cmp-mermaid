@@ -161,15 +161,164 @@ class ZenUmlParserTest {
     }
 
     @Test
+    fun acceptsTrailingProseSentenceLikeUpstreamAntlrRecovery() {
+        val document = parse(
+            """
+                zenuml
+                Customer->Checkout: Place order
+                This diagram shows generated result 1.
+            """.trimIndent(),
+        )
+
+        val message = assertIs<ZenUmlMessage>(document.statements.last())
+        assertEquals("This diagram shows generated result 1", message.label)
+        assertEquals(message.from, message.to)
+    }
+
+    @Test
+    fun acceptsMismatchedBlockCloserLikeUpstreamAntlrRecovery() {
+        val document = parse(
+            """
+                zenuml
+                par {
+                  Coordinator->Inventory: Reserve stock
+                )
+                critical(commit_order) {
+                  OrderStore.save()
+                }
+            """.trimIndent(),
+        )
+
+        val fragments = document.statements.filterIsInstance<ZenUmlFragment>()
+        assertEquals(
+            listOf(ZenUmlFragmentKind.Par, ZenUmlFragmentKind.Critical),
+            fragments.map { it.kind },
+        )
+        assertEquals(1, fragments.first().sections.single().statements.size)
+    }
+
+    @Test
+    fun acceptsMissingBlockCloserAtEofLikeUpstreamAntlrRecovery() {
+        val document = parse(
+            """
+                zenuml
+                classDiagram
+                class Broken {
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            ZenUmlFragmentKind.Section,
+            assertIs<ZenUmlFragment>(document.statements.single()).kind,
+        )
+    }
+
+    @Test
+    fun acceptsMissingEmptyBlockAtEofLikeUpstreamAntlrRecovery() {
+        val document = parse(
+            """
+                zenuml
+                gantt
+                section
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            ZenUmlFragmentKind.Section,
+            assertIs<ZenUmlFragment>(document.statements.single()).kind,
+        )
+    }
+
+    @Test
+    fun acceptsParticipantGroupWithoutClosingBraceLikeUpstreamGrammar() {
+        val document = parse(
+            """
+                zenuml
+                @Actor Customer
+                group "Regional Services" {
+                  @EC2 Gateway
+                  @Database SessionS
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            listOf("Regional Services", "Regional Services"),
+            document.participants.takeLast(2).map { participant -> participant.groupId },
+        )
+    }
+
+    @Test
+    fun acceptsSingleTrailingBlockCloserAtEofLikeUpstreamAntlrRecovery() {
+        val document = parse(
+            """
+                zenuml
+                title Nested Transaction
+                ParityEvidence132 as "Multi Stage Delivery Coordination Evidence Label 132"
+                transaction = new Transaction(region="eu")
+                validation = Policy.validate(transaction)
+                Repository.save(transaction) {
+                  return stored
+                }
+                return result
+                }
+            """.trimIndent(),
+        )
+
+        assertEquals("Nested Transaction", document.title)
+        assertEquals(4, document.statements.size)
+    }
+
+    @Test
+    fun stopsAtUnexpectedTopLevelBlockCloserLikeUpstreamAntlrRecovery() {
+        val document = parse(
+            """
+                zenuml
+                title Conditional Fulfillment
+                Customer->Checkout: Place order
+                if(in_stock) {
+                  Inventory.reserve()
+                }
+                opt(payment_required) {
+                  Payment.authorize()
+                }
+                } else {
+                  Checkout->Customer: Report unavailable
+                }
+            """.trimIndent(),
+        )
+
+        assertEquals(3, document.statements.size)
+        assertEquals(
+            listOf(ZenUmlFragmentKind.Alt, ZenUmlFragmentKind.Opt),
+            document.statements.filterIsInstance<ZenUmlFragment>().map { it.kind },
+        )
+    }
+
+    @Test
+    fun acceptsRefWithoutClosingParenthesisAtEofLikeUpstreamAntlrRecovery() {
+        val document = parse(
+            """
+                zenuml
+                ref(Coordinator, Inventory, Billi
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            "ref(Coordinator,Inventory,Billi",
+            assertIs<ZenUmlFragment>(document.statements.single()).label,
+        )
+    }
+
+    @Test
     fun returnsStructuredErrorsAndAppliesMessageLimit() {
         val invalid = ZenUmlParser(
             options = MermaidRenderOptions(),
             lineOffset = 4,
-        ).parse("zenuml\nif(x) {\nA.m()")
+        ).parse("sequenceDiagram\nA->B")
         val parseError = assertIs<MermaidError.Parse>(
             assertIs<GMResult.Err<MermaidError>>(invalid).error,
         )
-        assertEquals(7, parseError.line)
+        assertEquals(5, parseError.line)
 
         val limited = ZenUmlParser(
             options = MermaidRenderOptions(maxEdges = 1),

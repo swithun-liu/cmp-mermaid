@@ -69,6 +69,104 @@ class C4ParserTest {
     }
 
     @Test
+    fun preservesQuoteSuffixOnUnquotedAttributeLikeUpstreamLexer() {
+        val db = parse(
+            """
+                C4Deployment
+                Deployment_Node(cloud, Global Cloud", "Managed infrastructure") {
+                  Container(api, "API", "Kotlin/JVM")
+                }
+            """.trimIndent(),
+        )
+
+        val boundary = db.getBoundaries().single { it.alias == "cloud" }
+        assertEquals("Global Cloud\"", boundary.label.text)
+        assertEquals("Managed infrastructure", boundary.type.text)
+    }
+
+    @Test
+    fun acceptsBoundaryCloseAfterDeclarationOnTheSameLineLikeUpstreamLexer() {
+        val db = parse(
+            """
+                C4Deployment
+                Deployment_Node(region, "Cloud Region", "Managed infrastructure") {
+                  Node(databaseNode, "Database Node", "PostgreSQL") {
+                    ContainerDb(database, "Orders Cluster", "PostgreSQL") }
+                }
+            """.trimIndent(),
+        )
+
+        assertEquals("databaseNode", db.getC4Shape("database")?.parentBoundary)
+        assertTrue(db.isAtGlobalBoundary())
+    }
+
+    @Test
+    fun rejectsTextImmediatelyAfterAQuotedAttributeLikeUpstreamLexer() {
+        val malformed = listOf(
+            """
+                C4Context
+                Person(customer, "Customer, "Places orders")
+            """.trimIndent(),
+            """
+                C4Dynamic
+                Container(web, "Checkout UI", Kotlin/Wasm")
+            """.trimIndent(),
+        )
+
+        malformed.forEach { source ->
+            val result = C4Parser(
+                options = MermaidRenderOptions(),
+                frontmatterTitle = null,
+                lineOffset = 0,
+            ).parse(source)
+            assertIs<GMResult.Err<MermaidError>>(result, source)
+        }
+    }
+
+    @Test
+    fun letsUnquotedAttributeConsumeTheFollowingStatementLikeUpstreamLexer() {
+        val db = parse(
+            """
+                C4Context
+                Person(client, "Client")
+                System(gateway, "Gateway")
+                SystemQueue(cache, "Cache Queue")
+                SystemDb(database, Database")
+                Rel_Right(client, gateway, "Calls")
+                Rel_Down(gateway, cache, "cached read")
+                BiRel(cache, database, "Synchronizes")
+                Rel_Back(database, gateway, "Invalidates")
+            """.trimIndent(),
+        )
+
+        val database = db.getC4Shape("database")
+        assertEquals("Database\")\nRel_Right(client", database?.label?.text)
+        assertEquals(
+            listOf(
+                "gateway" to "cache",
+                "cache" to "database",
+                "database" to "gateway",
+            ),
+            db.getRelations().map { relation -> relation.from to relation.to },
+        )
+    }
+
+    @Test
+    fun parsesAdjacentQuotedAndUnquotedAttributesLikeUpstreamLexer() {
+        val db = parse(
+            """
+                C4Container
+                ContainerQueue(events, "Event Queue, "Kafka", "Publishes order events")
+            """.trimIndent(),
+        )
+
+        val queue = db.getC4Shape("events")
+        assertEquals("Event Queue, ", queue?.label?.text)
+        assertEquals("Kafka\"", queue?.techn?.text)
+        assertEquals("Publishes order events", queue?.descr?.text)
+    }
+
+    @Test
     fun tracksBoundaryDepthWhenAnAliasMatchesTheUpstreamGlobalAlias() {
         val db = parse(
             """
@@ -240,6 +338,21 @@ class C4ParserTest {
 
         assertTrue(unknown.message.contains("Unknown C4 declaration"))
         assertTrue(unclosed.message.contains("Unclosed C4 boundary"))
+    }
+
+    @Test
+    fun rejectsOpeningBraceAfterMalformedNonBoundaryLikeUpstreamParser() {
+        val error = parseError(
+            """
+                C4Deployment
+                Deployment_Node(region, "Region") {
+                  Container(api, "API", "Kotlin"
+                }
+                Node(secondary, "Secondary") {
+            """.trimIndent(),
+        )
+
+        assertTrue(error.message.contains("Unexpected '{'"))
     }
 
     private fun parse(source: String): C4Db {

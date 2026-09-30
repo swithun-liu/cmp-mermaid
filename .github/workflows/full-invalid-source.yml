@@ -106,7 +106,7 @@ jobs:
           name: invalid-source-web
           path: build/invalid-source-web
 
-      - name: Capture 256 Native and Official error pairs
+      - name: Capture 256 Native and Official mutation pairs
         working-directory: tools/official-reference
         run: |
           python3 -m http.server 8093 \
@@ -129,7 +129,7 @@ jobs:
           VIEWPORT_HEIGHT=900 \
           npm run capture:web-audit
 
-      - name: Generate paged error evidence
+      - name: Generate paged mutation evidence
         working-directory: tools/official-reference
         run: |
           CORPUS_KIND=${{ matrix.kind }} \

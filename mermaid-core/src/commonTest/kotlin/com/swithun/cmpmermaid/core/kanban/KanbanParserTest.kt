@@ -51,6 +51,58 @@ class KanbanParserTest {
     }
 
     @Test
+    fun acceptsTheFirstNodeEndTokenWithoutRequiringDelimiterPairing() {
+        val document = parse(
+            """
+            kanban
+              [Planning]
+                (Rounded task)
+                circle((Circle task)
+                cloud(-Cloud task-)
+                hex{{Hexagon task}}
+            """.trimIndent(),
+        )
+
+        assertEquals(
+            listOf("Rounded task", "Circle task", "Cloud task-", "Hexagon task"),
+            document.sections.single().items.map(KanbanNode::label),
+        )
+    }
+
+    @Test
+    fun continuesAnUnclosedNodeAcrossLinesLikeTheUpstreamLexer() {
+        val document = parse(
+            """
+            kanban
+              discovery[Discovery
+                interviews[Interviews]
+                  synthesis[Research synthesis]
+            """.trimIndent(),
+        )
+
+        val section = document.sections.single()
+        assertEquals("discovery", section.node.id)
+        assertEquals("Discovery\n    interviews[Interviews", section.node.label)
+        assertEquals(listOf("synthesis"), section.items.map(KanbanNode::id))
+    }
+
+    @Test
+    fun attachesMetadataAfterTheFirstMultilineNodeClosingDelimiter() {
+        val document = parse(
+            """
+            kanban
+              triage[Triage]
+              planned[Planned
+                docs[Refresh runbook]@{ priority: Low }
+              later[Later]
+            """.trimIndent(),
+        )
+
+        assertEquals(listOf("triage", "planned", "later"), document.sections.map { it.node.id })
+        assertEquals("Planned\n    docs[Refresh runbook", document.sections[1].node.label)
+    }
+
+    @Test
     fun parsesInlineAndMultilineMetadata() {
         val document = parse(
             """
@@ -75,6 +127,19 @@ class KanbanParserTest {
         assertEquals("MC-43", second.ticket)
         assertEquals("Lin", second.assigned)
         assertEquals("Very Low", second.priority)
+    }
+
+    @Test
+    fun keepsAnApostropheInsideAYamlPlainScalarLikeTheUpstreamParser() {
+        val document = parse(
+            """
+            kanban
+              active[Incident response]
+                mitigate[Reduce load]@{ ticket: OPS-402, assigned: Owner B', priority: High }
+            """.trimIndent(),
+        )
+
+        assertEquals("Owner B'", document.sections.single().items.single().assigned)
     }
 
     @Test
@@ -112,6 +177,8 @@ class KanbanParserTest {
             "kanban\n  root@{ ticket: [",
             "kanban\n  ::icon(star)",
             "kanban\n",
+            "kanban\nkanban\n  root",
+            "kanban\n  ready[Ready}\n    child[Child]",
         )
 
         sources.forEach { source ->

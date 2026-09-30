@@ -39,90 +39,85 @@ internal class VennParser(
             if (content.isBlank()) {
                 return@forEachIndexed
             }
-            statementCount += 1
-            if (statementCount > maximumStatements) {
-                return GMResult.Err(
-                    MermaidError.ResourceLimit(
-                        resource = "Venn statements",
-                        actual = statementCount,
-                        maximum = maximumStatements,
-                    ),
-                )
-            }
             val indentation = content.takeWhile(::isHorizontalWhitespace).length
-            val statement = content.drop(indentation).trimEnd()
-            val keyword = statement.takeWhile { character -> !character.isWhitespace() }
-            val remainder = statement.drop(keyword.length).trimStart()
-            when (keyword.lowercase()) {
-                "title" -> {
-                    if (remainder.isEmpty()) {
-                        return parseError(lineIndex, indentation + 1, "Expected a Venn title")
-                    }
-                    db.setDiagramTitle(remainder.substringBefore('#').substringBefore(';').trim())
+            var statement = content.drop(indentation).trimEnd()
+            var atLineStart = true
+            while (statement.isNotEmpty()) {
+                statementCount += 1
+                if (statementCount > maximumStatements) {
+                    return GMResult.Err(
+                        MermaidError.ResourceLimit(
+                            resource = "Venn statements",
+                            actual = statementCount,
+                            maximum = maximumStatements,
+                        ),
+                    )
                 }
-                "set" -> {
-                    when (
-                        val parsed = parseSubset(
-                            source = remainder,
-                            union = false,
-                            line = lineIndex,
-                            column = indentation + keyword.length + 2,
-                            db = db,
+                val keyword = statement.takeWhile { character -> !character.isWhitespace() }
+                val remainder = statement.drop(keyword.length).trimStart()
+                when (keyword.lowercase()) {
+                    "title" -> {
+                        if (remainder.isEmpty()) {
+                            return parseError(lineIndex, indentation + 1, "Expected a Venn title")
+                        }
+                        db.setDiagramTitle(
+                            remainder.substringBefore('#').substringBefore(';').trim(),
                         )
-                    ) {
-                        is GMResult.Ok -> Unit
-                        is GMResult.Err -> return parsed
+                        statement = ""
                     }
-                    indentMode = true
-                }
-                "union" -> {
-                    when (
-                        val parsed = parseSubset(
-                            source = remainder,
-                            union = true,
-                            line = lineIndex,
-                            column = indentation + keyword.length + 2,
-                            db = db,
-                        )
-                    ) {
-                        is GMResult.Ok -> Unit
-                        is GMResult.Err -> return parsed
+                    "set", "union" -> {
+                        val consumed = when (
+                            val parsed = parseSubset(
+                                source = remainder,
+                                union = keyword.equals("union", ignoreCase = true),
+                                line = lineIndex,
+                                column = indentation + keyword.length + 2,
+                                db = db,
+                            )
+                        ) {
+                            is GMResult.Ok -> parsed.value
+                            is GMResult.Err -> return parsed
+                        }
+                        indentMode = true
+                        statement = remainder.drop(consumed).trimStart()
                     }
-                    indentMode = true
-                }
-                "text" -> {
-                    val indented = indentMode && indentation > 0
-                    when (
-                        val parsed = parseText(
-                            source = remainder,
-                            currentSets = db.currentSets.takeIf { indented },
-                            line = lineIndex,
-                            column = indentation + keyword.length + 2,
-                            db = db,
-                        )
-                    ) {
-                        is GMResult.Ok -> Unit
-                        is GMResult.Err -> return parsed
+                    "text" -> {
+                        val indented = atLineStart && indentMode && indentation > 0
+                        val consumed = when (
+                            val parsed = parseText(
+                                source = remainder,
+                                currentSets = db.currentSets.takeIf { indented },
+                                line = lineIndex,
+                                column = indentation + keyword.length + 2,
+                                db = db,
+                            )
+                        ) {
+                            is GMResult.Ok -> parsed.value
+                            is GMResult.Err -> return parsed
+                        }
+                        statement = remainder.drop(consumed).trimStart()
                     }
-                }
-                "style" -> {
-                    when (
-                        val parsed = parseStyle(
-                            source = remainder,
-                            line = lineIndex,
-                            column = indentation + keyword.length + 2,
-                            db = db,
-                        )
-                    ) {
-                        is GMResult.Ok -> Unit
-                        is GMResult.Err -> return parsed
+                    "style" -> {
+                        when (
+                            val parsed = parseStyle(
+                                source = remainder,
+                                line = lineIndex,
+                                column = indentation + keyword.length + 2,
+                                db = db,
+                            )
+                        ) {
+                            is GMResult.Ok -> Unit
+                            is GMResult.Err -> return parsed
+                        }
+                        statement = ""
                     }
+                    else -> return parseError(
+                        lineIndex,
+                        indentation + 1,
+                        "Expected title, set, union, text, or style",
+                    )
                 }
-                else -> return parseError(
-                    lineIndex,
-                    indentation + 1,
-                    "Expected title, set, union, text, or style",
-                )
+                atLineStart = false
             }
         }
         return GMResult.Ok(db)
@@ -134,7 +129,7 @@ internal class VennParser(
         line: Int,
         column: Int,
         db: VennDb,
-    ): GMResult<Unit, MermaidError> {
+    ): GMResult<Int, MermaidError> {
         val scanner = Scanner(source)
         val identifiers = when (val parsed = scanner.identifierList()) {
             is GMResult.Ok -> parsed.value
@@ -162,9 +157,6 @@ internal class VennParser(
                 "Expected numeric Venn size",
             )
         }
-        if (!scanner.atEnd()) {
-            return parseError(line, column + scanner.position, "Unexpected text in Venn statement")
-        }
         if (union) {
             when (
                 val validation = db.validateUnionIdentifiers(
@@ -179,7 +171,7 @@ internal class VennParser(
             }
         }
         db.addSubsetData(identifiers, label, size)
-        return GMResult.Ok(Unit)
+        return GMResult.Ok(scanner.position)
     }
 
     private fun parseText(
@@ -188,7 +180,7 @@ internal class VennParser(
         line: Int,
         column: Int,
         db: VennDb,
-    ): GMResult<Unit, MermaidError> {
+    ): GMResult<Int, MermaidError> {
         val scanner = Scanner(source)
         val sets = if (currentSets != null) {
             currentSets
@@ -218,11 +210,8 @@ internal class VennParser(
                 "Invalid Venn text bracket label",
             )
         }
-        if (!scanner.atEnd()) {
-            return parseError(line, column + scanner.position, "Unexpected text in Venn text node")
-        }
         db.addTextData(sets, id, label)
-        return GMResult.Ok(Unit)
+        return GMResult.Ok(scanner.position)
     }
 
     private fun parseStyle(
@@ -385,7 +374,10 @@ internal class VennParser(
                 }
                 val key = field.substring(0, separator).trim()
                 val value = field.substring(separator + 1).trim()
-                if (!BARE_IDENTIFIER.matches(key) || value.isEmpty()) {
+                if (
+                    !BARE_IDENTIFIER.matches(key) ||
+                    !isValidStyleValue(value)
+                ) {
                     return GMResult.Err(position)
                 }
                 declarations += key to normalizeStyleValue(value)
@@ -436,6 +428,16 @@ internal class VennParser(
         const val HEADER = "venn-beta"
         val BARE_IDENTIFIER = Regex("""[A-Za-z_][A-Za-z0-9\-_]*""")
         val NUMBER = Regex("""[+-]?(?:\d+(?:\.\d+)?|\.\d+)""")
+        val HEX_COLOR = Regex("""#[0-9a-fA-F]{3,8}""")
+        val RGB_COLOR = Regex(
+            """rgb\(\s*[0-9.]+\s*,\s*[0-9.]+\s*,\s*[0-9.]+\s*\)""",
+            RegexOption.IGNORE_CASE,
+        )
+        val RGBA_COLOR = Regex(
+            """rgba\(\s*[0-9.]+\s*,\s*[0-9.]+\s*,\s*[0-9.]+\s*,\s*[0-9.]+\s*\)""",
+            RegexOption.IGNORE_CASE,
+        )
+        val QUOTED_STYLE_VALUE = Regex(""""[^"]*"""")
 
         fun isHorizontalWhitespace(character: Char): Boolean =
             character == ' ' || character == '\t'
@@ -451,6 +453,44 @@ internal class VennParser(
             } else {
                 trimmed
             }
+        }
+
+        // Mermaid.js 12.0.0: venn/parser/venn.jison -> styleValue/valueTokens/valueToken.
+        fun isValidStyleValue(value: String): Boolean {
+            val trimmed = value.trim()
+            if (trimmed.isEmpty()) {
+                return false
+            }
+            if (trimmed.startsWith('"')) {
+                return QUOTED_STYLE_VALUE.matches(trimmed)
+            }
+
+            var position = 0
+            var tokenCount = 0
+            while (position < trimmed.length) {
+                while (
+                    position < trimmed.length &&
+                    isHorizontalWhitespace(trimmed[position])
+                ) {
+                    position += 1
+                }
+                if (position >= trimmed.length) {
+                    break
+                }
+                val token = sequenceOf(
+                    RGBA_COLOR,
+                    RGB_COLOR,
+                    HEX_COLOR,
+                    NUMBER,
+                    BARE_IDENTIFIER,
+                ).mapNotNull { pattern ->
+                    pattern.find(trimmed, position)
+                        ?.takeIf { match -> match.range.first == position }
+                }.firstOrNull() ?: return false
+                position = token.range.last + 1
+                tokenCount += 1
+            }
+            return tokenCount > 0
         }
 
         fun splitStyleFields(source: String): List<String> {

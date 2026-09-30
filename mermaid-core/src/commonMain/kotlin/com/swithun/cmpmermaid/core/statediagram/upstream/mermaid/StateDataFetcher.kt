@@ -3,6 +3,7 @@ package com.swithun.cmpmermaid.core.statediagram.upstream.mermaid
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.SceneStrokePattern
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidTextPort
 
 /**
  * Kotlin translation of Mermaid 12.0.0 state/dataFetcher.ts.
@@ -145,11 +146,27 @@ internal object StateDataFetcher {
                     addAll(db.getClasses()[className]?.styles.orEmpty())
                 }
             }
+            if (itemId !in nodes && !parsed.sourceTypeDefined) {
+                // Mermaid.js 12.0.0: state/dataFetcher.ts -> dataFetcher and
+                // rendering-util/rendering-elements/nodes.ts -> insertNode.
+                // A note statement omits `type`; when it is the first occurrence of a state,
+                // upstream stores an undefined shape and the shared renderer rejects it.
+                return GMResult.Err(
+                    MermaidError.Layout(
+                        "No such shape: undefined. Please check your syntax.",
+                    ),
+                )
+            }
+            val sanitizedItemId = when (val result = MermaidTextPort.sanitizeText(itemId)) {
+                is GMResult.Ok -> result.value
+                is GMResult.Err -> return result
+            }
             val current = nodes.getOrPut(itemId) {
                 MutableStateRenderNode(
                     id = itemId,
                     type = typeFor(parsed),
-                    labels = mutableListOf(itemId),
+                    // Mermaid.js 12.0.0: state/dataFetcher.ts -> dataFetcher.
+                    labels = mutableListOf(sanitizedItemId),
                     parentId = parent?.id?.takeUnless { it == ROOT_ID },
                     styles = styles.toMutableList(),
                 )
@@ -163,10 +180,14 @@ internal object StateDataFetcher {
             parsed.descriptions.forEach { description ->
                 val normalized = description.trim()
                 if (normalized.isEmpty()) return@forEach
+                val sanitized = when (val result = MermaidTextPort.sanitizeText(normalized)) {
+                    is GMResult.Ok -> result.value
+                    is GMResult.Err -> return result
+                }
                 if (current.labels.size == 1 && current.labels.first() == itemId) {
-                    current.labels[0] = normalized
-                } else if (normalized !in current.labels) {
-                    current.labels += normalized
+                    current.labels[0] = sanitized
+                } else if (sanitized !in current.labels) {
+                    current.labels += sanitized
                 }
             }
             if (parsed.document != null) {

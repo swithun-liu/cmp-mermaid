@@ -159,9 +159,11 @@ internal class SankeyParser(
                         index += 1
                         return GMResult.Ok(value.toString())
                     }
-                } else {
+                } else if (character.isSankeyEscapedTextData()) {
                     value.append(character)
                     index += 1
+                } else {
+                    return error("Invalid character in quoted Sankey CSV field")
                 }
             }
             index = opening
@@ -195,5 +197,10 @@ internal class SankeyParser(
 
         fun Char.isSankeyTextData(): Boolean =
             code in 0x20..0x21 || code in 0x23..0x2B || code in 0x2D..0x7E
+
+        // Mermaid.js 12.0.0:
+        // diagrams/sankey/parser/sankey.jison -> escaped_text ESCAPED_TEXT.
+        fun Char.isSankeyEscapedTextData(): Boolean =
+            isSankeyTextData() || this == ',' || this == '\r' || this == '\n'
     }
 }

@@ -48,6 +48,8 @@ interface MermaidDiagramPlugin {
     val id: String
     val headers: Set<String>
 
+    fun detect(source: String): Boolean = false
+
     fun compile(
         source: String,
         context: MermaidRenderContext,
@@ -55,7 +57,7 @@ interface MermaidDiagramPlugin {
 }
 
 class MermaidEngine(
-    plugins: List<MermaidDiagramPlugin> = listOf(
+    private val plugins: List<MermaidDiagramPlugin> = listOf(
         FlowchartPlugin(),
         BlockPlugin(),
         ArchitecturePlugin(),
@@ -246,6 +248,9 @@ class MermaidEngine(
         }
 
         val plugin = pluginsByHeader[header]
+            ?: plugins.firstOrNull { candidate ->
+                candidate.detect(preprocessed.code.cleaned)
+            }
             ?: return GMResult.Err(
                 MermaidError.UnsupportedDiagram(
                     header = header.ifEmpty { "<empty>" },

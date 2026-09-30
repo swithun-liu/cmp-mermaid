@@ -130,6 +130,15 @@ internal class C4Parser(
                                     if (parsed.value.isBoundary && !parsed.value.hasOpeningBrace) {
                                         waitingForBoundaryBrace = true
                                     }
+                                    repeat(parsed.value.trailingClosingBraceCount) {
+                                        if (!db.popBoundaryParseStack()) {
+                                            return parseError(
+                                                lineNumber,
+                                                1,
+                                                "Unexpected C4 boundary closing brace",
+                                            )
+                                        }
+                                    }
                                 }
                                 is GMResult.Err -> return parsed
                             }
@@ -187,17 +196,23 @@ internal class C4Parser(
         val close = findClosingParenthesis(content, open)
             ?: return parseError(line, open + 1, "Unclosed C4 declaration")
         val trailing = content.substring(close + 1).trim()
-        if (trailing.isNotEmpty() && trailing != "{") {
+        val trailingClosingBraceCount = trailing.count { character -> character == '}' }
+        val hasOnlyClosingBraces = trailing.isNotEmpty() &&
+            trailing.all { character -> character == '}' || character.isWhitespace() }
+        if (trailing.isNotEmpty() && trailing != "{" && !hasOnlyClosingBraces) {
             return parseError(line, close + 2, "Unexpected text after C4 declaration")
         }
         val name = content.substring(0, open).trim()
+        val boundary = name in BOUNDARY_MACROS
+        if (trailing == "{" && !boundary) {
+            return parseError(line, close + 2, "Unexpected '{' after C4 declaration")
+        }
         val attributes = when (
             val result = parseAttributes(content.substring(open + 1, close), line)
         ) {
             is GMResult.Ok -> result.value
             is GMResult.Err -> return result
         }
-        val boundary = name in BOUNDARY_MACROS
 
         when (name) {
             "Person" -> db.addPersonOrSystem(C4ElementType.Person, attributes)
@@ -256,6 +271,7 @@ internal class C4Parser(
             ParsedMacro(
                 isBoundary = boundary,
                 hasOpeningBrace = trailing == "{",
+                trailingClosingBraceCount = trailingClosingBraceCount,
             ),
         )
     }
@@ -270,7 +286,17 @@ internal class C4Parser(
         var start = 0
         source.forEachIndexed { index, character ->
             when {
-                character == '"' -> quote = !quote
+                character == '"' && quote -> {
+                    quote = false
+                    val next = source.indexOfFirstFrom(index + 1) { candidate ->
+                        !candidate.isWhitespace()
+                    }
+                    if (next >= 0 && source[next] != ',') {
+                        values += source.substring(start, index + 1)
+                        start = index + 1
+                    }
+                }
+                character == '"' && isOpeningAttributeQuote(source, index) -> quote = true
                 character == ',' && !quote -> {
                     values += source.substring(start, index)
                     start = index + 1
@@ -309,32 +335,15 @@ internal class C4Parser(
     ): GMResult<CollectedStatement, MermaidError> {
         val builder = StringBuilder()
         var index = startIndex
-        var quote = false
-        var depth = 0
-        var sawOpen = false
         while (index < lines.size) {
             val line = stripComment(lines[index])
-            if (builder.isNotEmpty()) builder.append(' ')
-            builder.append(line.trim())
-            line.forEach { character ->
-                when {
-                    character == '"' -> quote = !quote
-                    quote -> Unit
-                    character == '(' -> {
-                        depth += 1
-                        sawOpen = true
-                    }
-                    character == ')' -> depth -= 1
-                }
+            if (builder.isEmpty()) {
+                builder.append(line.trim())
+            } else {
+                builder.append('\n').append(line)
             }
-            if (depth < 0) {
-                return parseError(
-                    lineOffset + index + 1,
-                    1,
-                    "Unexpected ')' in C4 declaration",
-                )
-            }
-            if (sawOpen && depth == 0 && !quote) {
+            val open = builder.indexOf("(")
+            if (open >= 0 && findClosingParenthesis(builder.toString(), open) != null) {
                 return GMResult.Ok(
                     CollectedStatement(builder.toString(), index),
                 )
@@ -399,20 +408,82 @@ internal class C4Parser(
         source: String,
         open: Int,
     ): Int? {
-        var quote = false
-        var depth = 0
-        for (index in open until source.length) {
-            when {
-                source[index] == '"' -> quote = !quote
-                quote -> Unit
-                source[index] == '(' -> depth += 1
-                source[index] == ')' -> {
-                    depth -= 1
-                    if (depth == 0) return index
+        var state = AttributeLexerState.BetweenAttributes
+        var index = open + 1
+        while (index < source.length) {
+            val character = source[index]
+            when (state) {
+                AttributeLexerState.BetweenAttributes -> {
+                    when {
+                        character.isWhitespace() -> Unit
+                        character == ',' -> Unit
+                        character == ')' -> return index
+                        character == '"' -> state = AttributeLexerState.Quoted
+                        character == '$' -> state = AttributeLexerState.NamedKey
+                        else -> state = AttributeLexerState.Unquoted
+                    }
+                }
+                AttributeLexerState.Unquoted -> {
+                    if (character == ',') {
+                        state = AttributeLexerState.BetweenAttributes
+                    }
+                }
+                AttributeLexerState.Quoted -> {
+                    if (character == '"') {
+                        state = AttributeLexerState.BetweenAttributes
+                    }
+                }
+                AttributeLexerState.NamedKey -> {
+                    if (character == '=') {
+                        state = AttributeLexerState.NamedValueStart
+                    }
+                }
+                AttributeLexerState.NamedValueStart -> {
+                    when {
+                        character.isWhitespace() -> Unit
+                        character == '"' -> state = AttributeLexerState.NamedValue
+                        else -> state = AttributeLexerState.Unquoted
+                    }
+                }
+                AttributeLexerState.NamedValue -> {
+                    if (character == '"') {
+                        state = AttributeLexerState.BetweenAttributes
+                    }
                 }
             }
+            index += 1
         }
         return null
+    }
+
+    /**
+     * Mermaid.js 12.0.0:
+     * packages/mermaid/src/diagrams/c4/parser/c4Diagram.jison ->
+     * `<attribute>[ ]*["]` and `<string_kv_key>[=][ ]*["]`.
+     *
+     * A quote starts a string only at an attribute boundary or after `=`.
+     * Quotes embedded in an unquoted attribute remain literal characters.
+     */
+    private fun isOpeningAttributeQuote(
+        source: CharSequence,
+        quoteIndex: Int,
+        lowerBound: Int = 0,
+    ): Boolean {
+        var index = quoteIndex - 1
+        while (index >= lowerBound && source[index].isWhitespace()) {
+            index -= 1
+        }
+        return index < lowerBound || source[index] == ',' || source[index] == '='
+    }
+
+    private inline fun CharSequence.indexOfFirstFrom(
+        startIndex: Int,
+        predicate: (Char) -> Boolean,
+    ): Int {
+        for (index in startIndex until length) {
+            if (predicate(this[index])) return index
+        }
+        return -1
     }
 
     private fun List<C4Attribute>.withInsertedType(value: String): List<C4Attribute> =
@@ -463,6 +534,7 @@ internal class C4Parser(
     private data class ParsedMacro(
         val isBoundary: Boolean,
         val hasOpeningBrace: Boolean,
+        val trailingClosingBraceCount: Int,
     )
 
     private data class CollectedStatement(
@@ -474,6 +546,15 @@ internal class C4Parser(
         val value: String,
         val lastLineIndex: Int,
     )
+
+    private enum class AttributeLexerState {
+        BetweenAttributes,
+        Unquoted,
+        Quoted,
+        NamedKey,
+        NamedValueStart,
+        NamedValue,
+    }
 
     private companion object {
         val DIRECTIONS = setOf("TB", "BT", "RL", "LR")

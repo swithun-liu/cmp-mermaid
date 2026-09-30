@@ -161,24 +161,23 @@ internal class QuadrantLayout {
             titleFill = primaryText,
         )
         val variables = context.options.themeVariables
-        fun color(name: String): GMResult<SceneColor?, MermaidError> {
-            val value = variables[name] ?: return GMResult.Ok(null)
+        fun color(name: String): SceneColor? {
+            val value = variables[name] ?: return null
             val parsed = CssColorParser.parse(value)
                 ?: value.takeIf(BARE_HEX_COLOR::matches)
                     ?.let { bareHex -> CssColorParser.parse("#$bareHex") }
-            return parsed?.let { color -> GMResult.Ok(color) }
-                ?: GMResult.Err(
-                    MermaidError.Configuration(
-                        "Mermaid theme variable '$name' has invalid value '$value'",
-                    ),
-                )
+            // Mermaid.js 12.0.0: quadrantRenderer.ts writes these values
+            // directly to SVG presentation attributes. Invalid values retain
+            // the browser's initial fill/stroke instead of aborting rendering.
+            return parsed ?: if (name.endsWith("StrokeFill")) {
+                SVG_INITIAL_STROKE
+            } else {
+                SVG_INITIAL_FILL
+            }
         }
         val resolved = linkedMapOf<String, SceneColor?>()
         QUADRANT_THEME_VARIABLES.forEach { name ->
-            when (val parsed = color(name)) {
-                is GMResult.Ok -> resolved[name] = parsed.value
-                is GMResult.Err -> return parsed
-            }
+            resolved[name] = color(name)
         }
         return GMResult.Ok(
             inherited.copy(
@@ -214,6 +213,7 @@ internal class QuadrantLayout {
         private val BARE_HEX_COLOR = Regex("""(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})""")
         private const val QUADRANT_VIEWPORT_PADDING = 12f
         private val SVG_INITIAL_FILL = SceneColor(0xFF000000)
+        private val SVG_INITIAL_STROKE = SceneColor(0x00000000)
         private val QUADRANT_THEME_VARIABLES = listOf(
             "quadrant1Fill",
             "quadrant2Fill",

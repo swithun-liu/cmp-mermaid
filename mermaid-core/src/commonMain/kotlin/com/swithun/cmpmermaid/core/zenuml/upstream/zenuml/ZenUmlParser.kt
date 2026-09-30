@@ -144,7 +144,6 @@ internal class ZenUmlParser(
         }
 
         private fun parseGroup(): GMResult<Unit, MermaidError> {
-            val groupToken = current()
             index++
             skipInlineTrivia()
             val groupName = if (!at(TokenKind.LBrace) && isName(current())) {
@@ -162,7 +161,12 @@ internal class ZenUmlParser(
                     return GMResult.Ok(Unit)
                 }
                 if (at(TokenKind.Eof)) {
-                    return error(groupToken, "Unclosed ZenUML participant group")
+                    // @zenuml/core 3.49.2: generated sequenceParser.js -> group().
+                    // The participant-group closing CBRACE is optional.
+                    return GMResult.Ok(Unit)
+                }
+                if (!isParticipantStart() || isStatementStart()) {
+                    return GMResult.Ok(Unit)
                 }
                 when (val result = parseParticipant(groupName)) {
                     is GMResult.Ok -> Unit
@@ -266,19 +270,27 @@ internal class ZenUmlParser(
                     index++
                 }
                 if (at(TokenKind.Eof)) {
-                    return if (stopAtBrace) {
-                        error(current(), "Unclosed ZenUML block")
-                    } else {
-                        GMResult.Ok(statements)
-                    }
+                    // @zenuml/core 3.49.2: generated sequenceParser.js ->
+                    // braceBlock()/match(CBRACE). ANTLR inserts a missing CBRACE at EOF.
+                    return GMResult.Ok(statements)
                 }
                 if (at(TokenKind.RBrace)) {
                     return if (stopAtBrace) {
                         index++
                         GMResult.Ok(statements)
                     } else {
-                        error(current(), "Unexpected '}' in ZenUML diagram")
+                        // @zenuml/core 3.49.2: generated sequenceParser.js ->
+                        // prog()/block()/match(EOF). block() stops before a top-level
+                        // CBRACE, then ANTLR's EOF recovery discards the trailing input.
+                        GMResult.Ok(statements)
                     }
+                }
+                if (stopAtBrace && current().kind in MISMATCHED_BLOCK_CLOSERS) {
+                    // @zenuml/core 3.49.2: generated sequenceParser.js ->
+                    // braceBlock()/match(CBRACE). ANTLR's default recovery
+                    // tolerates a mismatched ')' or ']' at this boundary.
+                    index++
+                    return GMResult.Ok(statements)
                 }
 
                 val comment = pendingComments.joinToString("\n").takeIf(String::isNotBlank)
@@ -508,7 +520,7 @@ internal class ZenUmlParser(
                 skipInlineTrivia()
                 consume(TokenKind.Comma)
             }
-            if (!consume(TokenKind.RParen)) {
+            if (!consume(TokenKind.RParen) && !at(TokenKind.Eof)) {
                 return error(current(), "Expected ')' after ref participants")
             }
             return GMResult.Ok(
@@ -764,6 +776,15 @@ internal class ZenUmlParser(
             val body = headerTokens.subList(bodyStart, headerTokens.size)
             val bodyArrow = if (arrowIndex >= bodyStart) arrowIndex - bodyStart else -1
             val dot = findTopLevel(body, TokenKind.Dot)
+            // @zenuml/core 3.49.2: sequenceParser.g4 -> block/stat/message.
+            // Its ANTLR recovery accepts trailing prose ending in a period as
+            // implicit self-call statements. Preserve that accepted outcome
+            // without reproducing parser-recovery artifacts as separate nodes.
+            val trailingSentence =
+                bodyArrow < 0 &&
+                    dot == body.lastIndex &&
+                    body.size > 2 &&
+                    body.dropLast(1).all(::isName)
             val providedFrom = bodyArrow >= 0
             val from = if (providedFrom) {
                 nameFrom(body.subList(0, bodyArrow))
@@ -773,14 +794,20 @@ internal class ZenUmlParser(
             }
             val targetStart = if (providedFrom) bodyArrow + 1 else 0
             val targetEnd = if (dot >= 0) dot else targetStart
-            val to = if (dot >= 0) {
+            val to = if (trailingSentence) {
+                origin
+            } else if (dot >= 0) {
                 nameFrom(body.subList(targetStart, targetEnd))
                     ?: return error(headerTokens.first(), "Expected receiver before method name")
             } else {
                 origin
             }
             val signatureStart = if (dot >= 0) dot + 1 else targetStart
-            val label = formatText(rawRange(body, signatureStart, body.size))
+            val label = if (trailingSentence) {
+                formatText(rawRange(body, 0, body.lastIndex))
+            } else {
+                formatText(rawRange(body, signatureStart, body.size))
+            }
             if (label.isBlank()) {
                 return error(headerTokens.first(), "Expected ZenUML method signature")
             }
@@ -825,6 +852,11 @@ internal class ZenUmlParser(
         ): GMResult<List<ZenUmlStatement>, MermaidError> {
             skipTrivia()
             if (!consume(TokenKind.LBrace)) {
+                if (at(TokenKind.Eof)) {
+                    // @zenuml/core 3.49.2: generated sequenceParser.js ->
+                    // braceBlock(). ANTLR inserts the missing empty brace block at EOF.
+                    return GMResult.Ok(emptyList())
+                }
                 return error(owner, "Expected '{' for ZenUML block")
             }
             return parseBlock(origin, returnTarget, stopAtBrace = true)
@@ -1520,6 +1552,10 @@ internal class ZenUmlParser(
         private val LOOP_WORDS = setOf("while", "for", "foreach", "loop")
         private val RETURN_ANNOTATIONS = setOf("@return", "@reply")
         private val MODIFIERS = setOf("const", "readonly", "static", "await")
+        private val MISMATCHED_BLOCK_CLOSERS = setOf(
+            TokenKind.RParen,
+            TokenKind.RBracket,
+        )
         private val BODY_MESSAGE_KINDS = setOf(
             ZenUmlMessageKind.Sync,
             ZenUmlMessageKind.Creation,

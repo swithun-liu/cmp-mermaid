@@ -59,6 +59,9 @@ internal class KanbanParser(
             }
             val indentation = uncommented.takeWhile(Char::isWhitespace).length
             val statement = uncommented.drop(indentation).trimEnd()
+            if (statement.equals("kanban", ignoreCase = true)) {
+                return parseError(lineNumber, indentation + 1, "Unexpected kanban declaration")
+            }
 
             when {
                 statement.startsWith(ICON_PREFIX) -> {
@@ -100,11 +103,23 @@ internal class KanbanParser(
                     lineIndex++
                 }
                 else -> {
-                    val metadataStart = findMetadataStart(statement)
+                    val collectedStatement = when (
+                        val collected = collectNodeStatement(
+                            lines = lines,
+                            lineIndex = lineIndex,
+                            firstStatement = statement,
+                        )
+                    ) {
+                        is GMResult.Ok -> collected.value
+                        is GMResult.Err -> return collected
+                    }
+                    lineIndex = collectedStatement.lastLineIndex
+                    val completeStatement = collectedStatement.source
+                    val metadataStart = findMetadataStart(completeStatement)
                     val nodeSource = if (metadataStart >= 0) {
-                        statement.substring(0, metadataStart).trimEnd()
+                        completeStatement.substring(0, metadataStart).trimEnd()
                     } else {
-                        statement
+                        completeStatement
                     }
                     val parsedNode = when (
                         val parsed = parseNode(nodeSource, lineNumber, indentation + 1)
@@ -118,7 +133,7 @@ internal class KanbanParser(
                                 lines = lines,
                                 lineIndex = lineIndex,
                                 column = indentation + metadataStart + 1,
-                                firstStatement = statement,
+                                firstStatement = completeStatement,
                                 metadataStart = metadataStart,
                             )
                         ) {
@@ -150,6 +165,74 @@ internal class KanbanParser(
         return db.getData()
     }
 
+    private fun collectNodeStatement(
+        lines: List<String>,
+        lineIndex: Int,
+        firstStatement: String,
+    ): GMResult<CollectedNodeStatement, MermaidError> {
+        val metadataStart = findMetadataStart(firstStatement)
+        val nodeSource = if (metadataStart >= 0) {
+            firstStatement.substring(0, metadataStart)
+        } else {
+            firstStatement
+        }
+        val opener = findNodeDelimiter(nodeSource)
+            ?: return GMResult.Ok(CollectedNodeStatement(firstStatement, lineIndex))
+        val contentStart = opener.second + opener.first.open.length
+        val scan = scanNodeEnd(
+            source = nodeSource,
+            start = contentStart,
+        )
+        when (scan) {
+            is NodeScan.End -> {
+                return GMResult.Ok(CollectedNodeStatement(firstStatement, lineIndex))
+            }
+            is NodeScan.Invalid -> {
+                return parseError(
+                    line = lineIndex + 1,
+                    column = scan.index + 1,
+                    message = "Invalid Kanban node description",
+                )
+            }
+            null -> Unit
+        }
+
+        val source = StringBuilder(firstStatement)
+        var lastLineIndex = lineIndex
+        while (++lastLineIndex < lines.size) {
+            source.append('\n').append(lines[lastLineIndex])
+            val currentSource = source.toString()
+            when (
+                val currentScan = scanNodeEnd(
+                    source = currentSource,
+                    start = contentStart,
+                )
+            ) {
+                is NodeScan.End -> {
+                    return GMResult.Ok(
+                        CollectedNodeStatement(
+                            source = currentSource,
+                            lastLineIndex = lastLineIndex,
+                        ),
+                    )
+                }
+                is NodeScan.Invalid -> {
+                    return parseError(
+                        line = lineIndex + 1,
+                        column = currentScan.index + 1,
+                        message = "Invalid Kanban node description",
+                    )
+                }
+                null -> Unit
+            }
+        }
+        return parseError(
+            line = lineIndex + 1,
+            column = opener.second + 1,
+            message = "Unterminated Kanban node",
+        )
+    }
+
     private fun parseNode(
         source: String,
         line: Int,
@@ -158,31 +241,37 @@ internal class KanbanParser(
         if (source.isBlank()) {
             return parseError(line, column, "Expected Kanban node")
         }
-        val opener = NODE_DELIMITERS
-            .mapNotNull { delimiter ->
-                val index = source.indexOf(delimiter.open)
-                index.takeIf { it >= 0 }?.let { delimiter to it }
-            }
-            .minWithOrNull(compareBy<Pair<NodeDelimiter, Int>>({ it.second }, { -it.first.open.length }))
+        val opener = findNodeDelimiter(source)
         if (opener == null) {
             val value = source.trim()
             return GMResult.Ok(ParsedNode(value, value))
         }
         val delimiter = opener.first
         val openIndex = opener.second
-        val closeIndex = findClosingDelimiter(
-            source = source,
-            start = openIndex + delimiter.open.length,
-            close = delimiter.close,
-        )
-        if (closeIndex < 0) {
+        val close = when (
+            val scan = scanNodeEnd(
+                source = source,
+                start = openIndex + delimiter.open.length,
+            )
+        ) {
+            is NodeScan.End -> scan
+            is NodeScan.Invalid -> {
+                return parseError(
+                    line,
+                    column + scan.index,
+                    "Invalid Kanban node description",
+                )
+            }
+            null -> null
+        }
+        if (close == null) {
             return parseError(line, column + openIndex, "Unterminated Kanban node")
         }
-        if (source.substring(closeIndex + delimiter.close.length).isNotBlank()) {
-            return parseError(line, column + closeIndex, "Unexpected text after Kanban node")
+        if (source.substring(close.index + close.token.length).isNotBlank()) {
+            return parseError(line, column + close.index, "Unexpected text after Kanban node")
         }
         val description = unquote(
-            source.substring(openIndex + delimiter.open.length, closeIndex),
+            source.substring(openIndex + delimiter.open.length, close.index),
         )
         if (description.isEmpty()) {
             return parseError(line, column + openIndex, "Expected Kanban node label")
@@ -195,6 +284,14 @@ internal class KanbanParser(
             ),
         )
     }
+
+    private fun findNodeDelimiter(source: String): Pair<NodeDelimiter, Int>? =
+        NODE_DELIMITERS
+            .mapNotNull { delimiter ->
+                val index = source.indexOf(delimiter.open)
+                index.takeIf { it >= 0 }?.let { delimiter to it }
+            }
+            .minWithOrNull(compareBy<Pair<NodeDelimiter, Int>>({ it.second }, { -it.first.open.length }))
 
     private fun collectMetadata(
         lines: List<String>,
@@ -268,24 +365,23 @@ internal class KanbanParser(
     }
 
     private fun findMetadataStart(source: String): Int {
+        val nodeEnd = findNodeDelimiter(source)?.let { (delimiter, openIndex) ->
+            (
+                scanNodeEnd(
+                    source = source,
+                    start = openIndex + delimiter.open.length,
+                ) as? NodeScan.End
+            )?.let { close -> close.index + close.token.length }
+        } ?: 0
         var quote: Char? = null
-        var squareDepth = 0
-        var parenthesisDepth = 0
-        var index = 0
+        var index = nodeEnd
         while (index < source.length - 1) {
             val char = source[index]
             when {
                 quote != null && char == quote -> quote = null
                 quote != null -> Unit
-                char == '"' || char == '\'' -> quote = char
-                char == '[' -> squareDepth++
-                char == ']' -> squareDepth = (squareDepth - 1).coerceAtLeast(0)
-                char == '(' -> parenthesisDepth++
-                char == ')' -> parenthesisDepth = (parenthesisDepth - 1).coerceAtLeast(0)
-                char == '@' &&
-                    source[index + 1] == '{' &&
-                    squareDepth == 0 &&
-                    parenthesisDepth == 0 -> return index
+                char == '"' -> quote = char
+                char == '@' && source[index + 1] == '{' -> return index
             }
             index++
         }
@@ -298,29 +394,64 @@ internal class KanbanParser(
             when {
                 quote != null && char == quote -> quote = null
                 quote != null -> Unit
-                char == '"' || char == '\'' -> quote = char
+                char == '"' -> quote = char
                 char == '}' -> return index
             }
         }
         return -1
     }
 
-    private fun findClosingDelimiter(
+    private fun scanNodeEnd(
         source: String,
         start: Int,
-        close: String,
-    ): Int {
-        var quoted = false
+    ): NodeScan? {
         var index = start
-        while (index <= source.length - close.length) {
-            if (source[index] == '"') {
-                quoted = !quoted
-            } else if (!quoted && source.startsWith(close, index)) {
-                return index
+        while (index < source.length) {
+            when {
+                source.startsWith("\"`", index) -> {
+                    val quotedEnd = source.indexOf("`\"", startIndex = index + 2)
+                    if (quotedEnd < 0) {
+                        return null
+                    }
+                    index = quotedEnd + 2
+                }
+                source[index] == '"' -> {
+                    val quotedEnd = source.indexOf('"', startIndex = index + 1)
+                    if (quotedEnd < 0) {
+                        return null
+                    }
+                    index = quotedEnd + 1
+                }
+                source.startsWith("-)", index) -> {
+                    return NodeScan.End(index = index, token = "-)")
+                }
+                source[index] !in NODE_END_START_CHARACTERS -> {
+                    val next = source.indexOfAny(
+                        chars = NODE_END_START_CHARACTERS,
+                        startIndex = index,
+                    )
+                    if (next < 0) {
+                        return null
+                    }
+                    index = next
+                }
+                else -> {
+                    // Mermaid.js 12.0.0: kanban.jison -> NODE lexer state.
+                    // NODE_DEND accepts the first lexer end token regardless of NODE_DSTART.
+                    val token = NODE_END_TOKENS.firstOrNull { candidate ->
+                        source.startsWith(candidate, index)
+                    }
+                    if (token != null) {
+                        return NodeScan.End(index = index, token = token)
+                    }
+                    if (source[index] == '}') {
+                        return NodeScan.Invalid(index)
+                    }
+                    index++
+                }
             }
-            index++
         }
-        return -1
+        return null
     }
 
     private fun unquote(source: String): String {
@@ -342,7 +473,7 @@ internal class KanbanParser(
             when {
                 quote != null && char == quote -> quote = null
                 quote != null -> Unit
-                char == '"' || char == '\'' -> quote = char
+                char == '"' -> quote = char
                 char == '%' && source[index + 1] == '%' -> return source.substring(0, index)
             }
             index++
@@ -372,24 +503,41 @@ internal class KanbanParser(
         val lastLineIndex: Int,
     )
 
+    private data class CollectedNodeStatement(
+        val source: String,
+        val lastLineIndex: Int,
+    )
+
     private data class NodeDelimiter(
         val open: String,
-        val close: String,
     )
+
+    private sealed interface NodeScan {
+        data class End(
+            val index: Int,
+            val token: String,
+        ) : NodeScan
+
+        data class Invalid(
+            val index: Int,
+        ) : NodeScan
+    }
 
     private companion object {
         const val COMMENT_PREFIX = "%%"
         const val ICON_PREFIX = "::icon("
         const val CLASS_PREFIX = ":::"
+        val NODE_END_START_CHARACTERS = charArrayOf(')', ']', '}', '(')
+        val NODE_END_TOKENS = listOf("))", ")", "]", "}}", "(-", "((", "(")
         val NODE_DELIMITERS = listOf(
-            NodeDelimiter("((", "))"),
-            NodeDelimiter("{{", "}}"),
-            NodeDelimiter("(-", ")"),
-            NodeDelimiter("-)", "(-"),
-            NodeDelimiter("))", "(("),
-            NodeDelimiter("(", ")"),
-            NodeDelimiter(")", "("),
-            NodeDelimiter("[", "]"),
+            NodeDelimiter("(("),
+            NodeDelimiter("{{"),
+            NodeDelimiter("(-"),
+            NodeDelimiter("-)"),
+            NodeDelimiter("))"),
+            NodeDelimiter("("),
+            NodeDelimiter(")"),
+            NodeDelimiter("["),
         )
     }
 }

@@ -9,7 +9,6 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertIs
 import kotlin.test.fail
 
 class InvalidSourceOfficialErrorParityTest {
@@ -24,26 +23,30 @@ class InvalidSourceOfficialErrorParityTest {
     )
 
     @Test
-    fun matchesMermaid12OfficialErrorMessagesForFullInvalidSourceCorpus() {
+    fun matchesMermaid12OfficialOutcomesForFullAiMutationCorpus() {
         val manifest = Json.parseToJsonElement(
             Files.readString(findManifest()),
         ).jsonObject
-        val expectedMessages = manifest.getValue("cases")
+        assertEquals(
+            "256 distinct AI-like mutations from 256 valid bases per diagram family",
+            manifest.getValue("variantModel").jsonPrimitive.content,
+            "Regenerate the AI-mutation evidence before running this test",
+        )
+        val records = manifest.getValue("cases")
             .jsonArray
             .associate { entry ->
                 val record = entry.jsonObject
-                record.getValue("id").jsonPrimitive.content to
-                    record.getValue("officialErrorMessage").jsonPrimitive.content
+                record.getValue("id").jsonPrimitive.content to record
             }
 
-        assertEquals(invalidSourceCorpusCases.size, expectedMessages.size)
+        assertEquals(invalidSourceCorpusCases.size, records.size)
         val mismatches = invalidSourceCorpusCases.mapNotNull { case ->
-            val result = assertIs<GMResult.Err<MermaidError>>(
-                engine.render(case.source, context),
-                "${case.id} unexpectedly rendered malformed source",
-            )
-            val actual = result.error.message
-            val expected = expectedMessages.getValue(case.id)
+            val record = records.getValue(case.id)
+            val expected = record.getValue("officialOutcome").jsonPrimitive.content
+            val actual = when (engine.render(case.source, context)) {
+                is GMResult.Ok -> "success"
+                is GMResult.Err -> "error"
+            }
             if (actual == expected) {
                 null
             } else {
@@ -61,15 +64,13 @@ class InvalidSourceOfficialErrorParityTest {
                 .eachCount()
                 .entries
                 .joinToString { (diagramId, count) -> "$diagramId=$count" }
-            val representatives = mismatches
-                .distinctBy(Mismatch::diagramId)
-                .joinToString("\n\n") { mismatch ->
-                    "${mismatch.id}\nEXPECTED:\n${mismatch.expected}\n" +
-                        "ACTUAL:\n${mismatch.actual}"
-                }
             fail(
-                "${mismatches.size}/${invalidSourceCorpusCases.size} Official error " +
-                    "message mismatches ($summary):\n\n$representatives",
+                "${mismatches.size}/${invalidSourceCorpusCases.size} Official/Native " +
+                    "outcome mismatches ($summary): " +
+                    mismatches.take(20).joinToString { mismatch ->
+                        "${mismatch.id} expected=${mismatch.expected} " +
+                            "actual=${mismatch.actual}"
+                    },
             )
         }
     }

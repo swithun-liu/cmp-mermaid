@@ -105,9 +105,38 @@ class IshikawaParserTest {
         assertEquals(5, assertIs<MermaidError.Parse>(missingEffect).line)
 
         val badHeader = assertIs<GMResult.Err<MermaidError>>(
-            parser().parse("ishikawaish\nEffect"),
+            parser().parse("not-ishikawa\nEffect"),
         ).error
         assertEquals(1, assertIs<MermaidError.Parse>(badHeader).line)
+    }
+
+    @Test
+    fun preservesTextAfterTheDetectedHeaderTokenLikeUpstreamLexer() {
+        val db = parse(
+            """
+            ishikawa-xbeta
+            Payment failure
+              Operations
+            """.trimIndent(),
+        )
+
+        assertEquals("-xbeta", db.getRoot()?.text)
+    }
+
+    @Test
+    fun rejectsDuplicateDiagramHeaderLikeUpstreamLexer() {
+        listOf("ishikawa", "ishikawa-beta").forEach { duplicate ->
+            val result = parser().parse(
+                """
+                ishikawa
+                $duplicate
+                Effect
+                """.trimIndent(),
+            )
+
+            val error = assertIs<GMResult.Err<MermaidError>>(result).error
+            assertEquals(2, assertIs<MermaidError.Parse>(error).line)
+        }
     }
 
     @Test

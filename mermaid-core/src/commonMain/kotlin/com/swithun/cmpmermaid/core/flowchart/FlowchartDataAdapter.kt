@@ -351,7 +351,10 @@ internal object FlowStyleAdapter {
                 val pair = style.split(':', limit = 2)
                 val key = pair.firstOrNull()?.trim().orEmpty()
                 val value = pair.getOrNull(1)?.trim()
-                if (key.isNotEmpty() && value != null) {
+                // Mermaid.js 12.0.0:
+                // rendering-elements/shapes/handDrawnShapeStyles.ts -> styles2Map/styles2String.
+                // Empty values become invalid inline CSS declarations and are ignored by the DOM.
+                if (key.isNotEmpty() && !value.isNullOrBlank()) {
                     declarations[key] = value
                 }
             }
@@ -378,8 +381,13 @@ internal object FlowStyleAdapter {
         }
         val strokeWidth = when (val value = declarations["stroke-width"]) {
             null -> null
-            else -> parsePixelNumber(value)
-                ?: return invalidCss(owner, "stroke-width", value)
+            else -> parsePixelNumber(value) ?: if (isPotentialCssLength(value)) {
+                return invalidCss(owner, "stroke-width", value)
+            } else {
+                // Mermaid emits this declaration into an inline style attribute.
+                // Browsers discard syntactically invalid CSS values without failing render.
+                null
+            }
         }
         val dashOffset = when (val value = declarations["stroke-dashoffset"]) {
             null -> null
@@ -549,6 +557,13 @@ internal object FlowStyleAdapter {
         return (amount * multiplier).toInt().takeIf { it > 0 }
     }
 
+    private fun isPotentialCssLength(value: String): Boolean {
+        val normalized = value.trim().lowercase()
+        return CSS_LENGTH.matches(normalized) ||
+            normalized in CSS_WIDE_KEYWORDS ||
+            CSS_LENGTH_FUNCTION.matches(normalized)
+    }
+
     private fun invalidCss(
         owner: String,
         property: String,
@@ -580,7 +595,16 @@ internal object FlowStyleAdapter {
         "text-decoration",
     )
     private val TEXT_DECORATIONS = setOf("underline", "line-through")
+    private val CSS_WIDE_KEYWORDS = setOf(
+        "inherit",
+        "initial",
+        "revert",
+        "revert-layer",
+        "unset",
+    )
     private val NUMBER = Regex("""^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$""")
+    private val CSS_LENGTH = Regex("""^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:%|[a-z]+)?$""")
+    private val CSS_LENGTH_FUNCTION = Regex("""^(?:calc|min|max|clamp|var)\(.+\)$""")
     private val DASH_SEPARATOR = Regex("""[\s,]+""")
     private val WHITESPACE = Regex("""\s+""")
     private val ANIMATION_DURATION = Regex("""(?:^|\s)(\d+(?:\.\d+)?)(ms|s)(?:\s|$)""")

@@ -23,16 +23,16 @@ Native-only randomized stress inputs.
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
 | Large-scale visual matrix | 8,448 Native/Official evidence pairs |
-| Malformed-source parity | 8,448/8,448 Native `CONTENT_ERROR` results; 8,448/8,448 exact Official diagnostic-message matches; Mermaid.js 12.0.0 standard error diagram on both sides; 16,896 screenshots; 0 crashes or timeouts |
+| Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; all 6,292 Native rejections were `CONTENT_ERROR`; 16,896 screenshots; 0 crashes or timeouts |
 | Native core render results | 441 independent plus 8,448 matrix cases passed, 0 failed |
 | Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
-| Manual visual review | 528 replacement-gate sheets plus 528 malformed-source safety sheets across all 33 families |
+| Visual evidence review | 528 replacement-gate sheets plus 528 freshly generated source-mutation sheets across all 33 families; all source-mutation sheets decoded and passed full-montage review |
 | Replacement detail audit | 8,448/8,448 matrix pairs accepted: 7,429 pass plus 1,019 manually reviewed; production 390 pass plus 51 manually reviewed |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | 802 passed, 0 failed |
+| JVM tests | 859 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -44,29 +44,34 @@ Native-only randomized stress inputs.
 theme, replacement detail, geometry, and manual contact-sheet gates. The
 supported Mermaid `12.0.0` contract is rated **Stable**.
 
-## Malformed-Source Safety Gate
+## AI-Like Source-Mutation Safety Gate
 
-An independent error corpus contains one verified malformed seed for every
-supported diagram family. Each seed is expanded into 256 deterministic
-comment, blank-line, and line-ending contexts. These 8,448 unique sources are
-systematic parser-safety variants, not 8,448 unrelated error root causes. Every
-generated source is sent unchanged to CMP Native and the pinned Mermaid.js
-`12.0.0` renderer. All 8,448 cases passed:
+An independent corpus starts from 256 distinct valid bases for every supported
+diagram family and applies 16 mutation classes, with 16 variants per class.
+These 8,448 AI-like sources cover declaration typos, response wrappers, mixed
+syntax, truncation, omission, line-break loss, delimiter and operator damage,
+punctuation substitution, and token splitting. Mermaid.js `12.0.0` is the
+accept/error oracle. Every generated source is sent unchanged to CMP Native and
+the pinned Official renderer. All 8,448 cases passed:
 
-- CMP Native returned `CONTENT_ERROR` with a non-empty deterministic message;
-- every Native detailed error message exactly matched Mermaid.js;
-- both renderers displayed Mermaid.js `12.0.0`'s standard error diagram while
-  retaining the detailed diagnostic separately;
-- all 16,896 error-state screenshots were captured without a crash or timeout;
-- each family seed was followed by a valid Native render without poisoning
-  engine state.
+- Official accepted 2,156 mutations and rejected 6,292; Native matched every
+  accept/reject outcome;
+- all 6,292 Native rejections returned a non-empty deterministic
+  `CONTENT_ERROR`, with no runtime error;
+- exact diagnostics matched for 1,798/6,292 paired errors and are reported
+  independently rather than synthesized as a compatibility requirement;
+- all 16,896 corresponding rendered/error-state screenshots were captured
+  without a crash or timeout;
+- each mutation profile was followed by a valid Native render without
+  poisoning engine state.
 
-**[Open the 528 paged Native/Official malformed-source comparison images](assets/invalid-source-report/invalid-source-evidence.md).**
+**[Open the 528 paged Native/Official source-mutation comparison images](assets/invalid-source-report/invalid-source-evidence.md).**
 The machine-readable
 [manifest](assets/invalid-source-report/invalid-source-manifest.json) records
-the seed and profile IDs, source hash, both screenshot hashes, capture sizes,
-Native error type, and both error messages. This gate is intentionally separate
-from the 8,448 legal-source visual matrix and does not change its counts.
+the base and mutation IDs, source hash, both screenshot hashes, capture sizes,
+both outcomes, Native error type, and both error messages. This gate is
+intentionally separate from the 8,448 legal-source visual matrix and does not
+change its counts.
 
 ## Completed Replacement Gate
 
@@ -1109,9 +1114,9 @@ errors: 0
 The current source-level JVM suite also passes:
 
 ```text
-mermaid-core: 768 tests
+mermaid-core: 825 tests
 mermaid-compose: 34 tests
-total: 802 tests
+total: 859 tests
 failures: 0
 errors: 0
 ```
@@ -1126,11 +1131,11 @@ a representative of all 33 implemented diagram types with each of the 11 built-i
 themes.
 
 [`InvalidSourceCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/InvalidSourceCorpusTest.kt)
-requires all 8,448 malformed-source variants to return deterministic, non-empty
-`CONTENT_ERROR` results and verifies that every family can render a valid
-source immediately after its malformed seed.
+requires all 8,448 source mutations to return deterministic results, verifies
+that every rejection is a non-empty `CONTENT_ERROR`, and checks that every
+family can render a valid source after each mutation profile.
 [`InvalidSourceOfficialErrorParityTest`](../mermaid-core/src/jvmTest/kotlin/com/swithun/cmpmermaid/core/InvalidSourceOfficialErrorParityTest.kt)
-also verifies exact detailed-message parity against the published Mermaid.js
+verifies Native accept/reject outcomes against the published Mermaid.js
 manifest for all 8,448 cases.
 
 `ProductionCorpusTest` additionally renders all 8,448 visual-matrix sources,
@@ -1337,17 +1342,18 @@ appear, if Mermaid reports an error, if an Official Gantt viewBox collapses, or
 if a screenshot is below the minimum size. The geometry gate rejects blank
 images and severe width, height, or foreground-density differences. The
 contact-sheet generator verifies every expected pair and records its SHA-256.
-For `AUDIT_SOURCE=invalid-source`, the expectation is inverted: capture fails
-if either renderer succeeds, if Native does not return `CONTENT_ERROR`, or if
-either error message is empty. The contact-sheet generator additionally fails
-unless every Native detailed error message exactly matches its Official
-counterpart.
+For `AUDIT_SOURCE=invalid-source`, Mermaid.js is captured first as the outcome
+oracle. Capture fails if Native disagrees, if a Native rejection is not
+`CONTENT_ERROR`, or if either rejection has an empty message. The contact-sheet
+generator enforces outcome parity and records exact diagnostic-message equality
+as a separate metric.
 Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 33 diagram IDs to reproduce
 a single 256-case partition instead of the complete matrix. The
 [`Full Invalid Source Matrix`](../.github/workflows/full-invalid-source.yml)
 workflow runs those 33 partitions in parallel. The regular Quality Gate uses
-`INVALID_SOURCE_SCOPE=smoke`, which preserves profile `001` from every family
-without serially recapturing all 16,896 error-state screenshots on every push.
+`INVALID_SOURCE_SCOPE=smoke`, which keeps the first variant of all 16 mutation
+classes for every family without serially recapturing all 16,896 screenshots
+on every push.
 
 ## Stable Acceptance Criteria
 

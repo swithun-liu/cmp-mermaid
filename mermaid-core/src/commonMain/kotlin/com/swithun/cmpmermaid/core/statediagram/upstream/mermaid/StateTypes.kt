@@ -5,6 +5,7 @@ internal sealed interface StateStatement
 internal data class StateNodeStatement(
     var id: String,
     var type: StateNodeType = StateNodeType.Default,
+    val sourceTypeDefined: Boolean = true,
     var descriptions: MutableList<String> = mutableListOf(),
     var document: MutableList<StateStatement>? = null,
     var note: StateNote? = null,

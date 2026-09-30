@@ -168,6 +168,21 @@ class BlockLayoutTest {
     }
 
     @Test
+    fun ignoresMalformedCssValueConsumedByTheJisonStyleToken() {
+        val scene = render(
+            """
+            block
+              A
+              style A stroke-width:3px B["Merged"]
+            """.trimIndent(),
+        )
+
+        assertTrue(scene.elements.filterIsInstance<SceneShape>().none { shape ->
+            shape.id == "B"
+        })
+    }
+
+    @Test
     fun appliesBlockConfigurationAndRejectsInvalidPadding() {
         val intrinsic = render(
             """

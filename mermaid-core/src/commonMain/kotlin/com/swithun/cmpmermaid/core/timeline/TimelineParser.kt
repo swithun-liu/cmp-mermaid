@@ -170,6 +170,9 @@ internal class TimelineParser(
         if (text.isBlank() || text.startsWith(COMMENT_PREFIX) || text.startsWith("#")) {
             return GMResult.Ok(Unit)
         }
+        if (HEADER.matches(text)) {
+            return parseError(line, 1, "Unexpected timeline declaration")
+        }
 
         TITLE.matchEntire(text)?.let { match ->
             onTitle(decode(match.groupValues[1]))
@@ -178,6 +181,12 @@ internal class TimelineParser(
         SECTION.matchEntire(text)?.let { match ->
             onSection(decode(match.groupValues[1]))
             return GMResult.Ok(Unit)
+        }
+        SECTION_WITH_SUFFIX.matchEntire(text)?.let { match ->
+            onSection(decode(match.groupValues[1]))
+            val task = tasks.lastOrNull()
+                ?: return parseError(line, 1, "Timeline event must follow a time period")
+            return appendEvents(match.groupValues[2], line, task)
         }
         ACCESSIBILITY_TITLE.matchEntire(text)?.let { match ->
             val value = match.groupValues[1].trim()
@@ -221,17 +230,32 @@ internal class TimelineParser(
             return GMResult.Ok(Unit)
         }
 
-        val firstEvent = EVENT_DELIMITER.find(text)
+        val discoveredEvent = EVENT_DELIMITER.find(text)
+        val commentStart = text.indexOf('#')
+        val content = if (
+            commentStart >= 0 &&
+            (discoveredEvent == null || commentStart < discoveredEvent.range.first)
+        ) {
+            text.substring(0, commentStart)
+        } else {
+            text
+        }
+        val firstEvent = EVENT_DELIMITER.find(content)
+        val invalidColon = content
+            .substring(0, firstEvent?.range?.first ?: content.length)
+            .indexOf(':')
+        if (invalidColon >= 0) {
+            // Mermaid.js 12.0.0: timeline.jison -> event / INVALID lexer rules.
+            return parseError(line, invalidColon + 1, "Invalid timeline token ':'")
+        }
         if (firstEvent?.range?.first == 0) {
             val task = tasks.lastOrNull()
                 ?: return parseError(line, 1, "Timeline event must follow a time period")
-            return appendEvents(text, line, task)
+            return appendEvents(content, line, task)
         }
 
-        val periodEnd = firstEvent?.range?.first ?: text.indexOf('#').let { comment ->
-            if (comment >= 0) comment else text.length
-        }
-        val period = text.substring(0, periodEnd)
+        val periodEnd = firstEvent?.range?.first ?: content.length
+        val period = content.substring(0, periodEnd)
         if (period.isBlank()) {
             return GMResult.Ok(Unit)
         }
@@ -242,7 +266,7 @@ internal class TimelineParser(
         )
         tasks += task
         if (firstEvent != null) {
-            return appendEvents(text.substring(firstEvent.range.first), line, task)
+            return appendEvents(content.substring(firstEvent.range.first), line, task)
         }
         return GMResult.Ok(Unit)
     }
@@ -293,6 +317,7 @@ internal class TimelineParser(
         val HEADER = Regex("""(?i)^timeline(?:[ \t]+(LR|TD))?[ \t]*$""")
         val TITLE = Regex("""(?i)^title\s+(.+)$""")
         val SECTION = Regex("""(?i)^section\s+([^:\n]+)$""")
+        val SECTION_WITH_SUFFIX = Regex("""(?i)^section\s+([^:\n]+)(:.*)$""")
         val ACCESSIBILITY_TITLE = Regex("""(?i)^accTitle\s*:\s*(.*)$""")
         val ACCESSIBILITY_DESCRIPTION = Regex("""(?i)^accDescr\s*:\s*(.*)$""")
         val ACCESSIBILITY_DESCRIPTION_BLOCK = Regex("""(?i)^accDescr\s*\{\s*""")

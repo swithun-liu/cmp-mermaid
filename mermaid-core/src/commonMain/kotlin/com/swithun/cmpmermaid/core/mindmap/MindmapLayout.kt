@@ -260,12 +260,10 @@ internal class MindmapLayout {
             "elk.box",
             "elk.rectpacking",
             -> unsupportedElkLayout(context.options.mindmap.layoutAlgorithm)
-            else -> GMResult.Err(
-                MermaidError.UnsupportedFeature(
-                    feature = "${context.options.mindmap.layoutAlgorithm} Mindmap layout",
-                    message = "Native Mindmap has not connected the requested layout engine",
-                ),
-            )
+            // Mermaid.js 12.0.0:
+            // diagrams/mindmap/mindmapRenderer.ts -> getRegisteredLayoutAlgorithm.
+            // Unknown algorithms fall back to Mindmap's registered cose-bilkent layout.
+            else -> positionWithCose(document, visuals)
         }
 
     private fun unsupportedElkLayout(

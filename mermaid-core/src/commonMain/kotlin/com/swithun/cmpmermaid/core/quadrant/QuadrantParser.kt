@@ -80,8 +80,11 @@ internal class QuadrantParser(
                 return@forEach
             }
             when {
-                text.startsWith("title", ignoreCase = true) &&
-                    text.getOrNull(5)?.isWhitespace() == true -> {
+                text.equals("title", ignoreCase = true) ||
+                    (
+                        text.startsWith("title", ignoreCase = true) &&
+                            text.getOrNull(5)?.isWhitespace() == true
+                        ) -> {
                     title = decode(text.substring(5).trim())
                 }
                 text.startsWith("accTitle", ignoreCase = true) -> {
@@ -127,7 +130,21 @@ internal class QuadrantParser(
                     val match = QUADRANT_PREFIX.find(text)
                         ?: return parseError(statement.line, 1, "Invalid quadrant label")
                     val index = match.groupValues[1].toInt() - 1
-                    quadrantTexts[index] = decodeText(match.groupValues[2])
+                    val nestedQuadrant = QUADRANT_KEYWORD.find(match.groupValues[2])
+                    if (nestedQuadrant != null) {
+                        return parseError(
+                            line = statement.line,
+                            column = match.range.first + nestedQuadrant.range.first + 1,
+                            message = "Unexpected quadrant keyword inside Quadrant label",
+                        )
+                    }
+                    val label = when (
+                        val result = parseGrammarText(match.groupValues[2], statement.line)
+                    ) {
+                        is GMResult.Ok -> result.value
+                        is GMResult.Err -> return result
+                    }
+                    quadrantTexts[index] = label
                 }
                 text.startsWith("classDef", ignoreCase = true) -> {
                     val match = CLASS_DEFINITION.matchEntire(text)
@@ -198,9 +215,13 @@ internal class QuadrantParser(
             is GMResult.Ok -> result.value
             is GMResult.Err -> return result
         }
+        val label = when (val result = parseGrammarText(rawLabel, line)) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
         return GMResult.Ok(
             QuadrantPoint(
-                text = decodeText(rawLabel),
+                text = label,
                 className = className,
                 x = x,
                 y = y,
@@ -254,15 +275,36 @@ internal class QuadrantParser(
         source: String,
         line: Int,
     ): GMResult<Pair<String, String>, MermaidError> {
+        val nestedAxis = AXIS_KEYWORD.find(source)
+        if (nestedAxis != null) {
+            return parseError(
+                line = line,
+                column = nestedAxis.range.first + 1,
+                message = "Unexpected axis keyword inside Quadrant axis labels",
+            )
+        }
         val delimiter = source.indexOf("-->")
-        val left = decodeText(if (delimiter >= 0) source.substring(0, delimiter) else source)
+        val left = when (
+            val result = parseGrammarText(
+                if (delimiter >= 0) source.substring(0, delimiter) else source,
+                line,
+            )
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
         if (left.isEmpty()) {
             return parseError(line, 1, "Expected axis label")
         }
         if (delimiter < 0) {
             return GMResult.Ok(left to "")
         }
-        val right = decodeText(source.substring(delimiter + 3))
+        val right = when (
+            val result = parseGrammarText(source.substring(delimiter + 3), line)
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
         return if (right.isEmpty()) {
             GMResult.Ok("$left ⟶ " to "")
         } else {
@@ -370,6 +412,44 @@ internal class QuadrantParser(
         return decode(unquoted)
     }
 
+    private fun parseGrammarText(
+        source: String,
+        line: Int,
+    ): GMResult<String, MermaidError> {
+        val trimmed = source.trim()
+        val quoted = trimmed.length >= 2 &&
+            trimmed.startsWith('"') &&
+            trimmed.endsWith('"') &&
+            '"' !in trimmed.substring(1, trimmed.lastIndex)
+        val markdown = trimmed.length >= 4 &&
+            trimmed.startsWith("\"`") &&
+            trimmed.endsWith("`\"") &&
+            '"' !in trimmed.substring(2, trimmed.length - 2)
+        if ('"' in trimmed && !quoted && !markdown) {
+            return parseError(
+                line = line,
+                column = trimmed.indexOf('"') + 1,
+                message = "Invalid quoted Quadrant text",
+            )
+        }
+        if (!quoted && !markdown) {
+            val invalidCharacter = trimmed.indexOfFirst { character ->
+                character.code <= 0x7F &&
+                    !character.isLetterOrDigit() &&
+                    !character.isWhitespace() &&
+                    character !in UNQUOTED_TEXT_PUNCTUATION
+            }
+            if (invalidCharacter >= 0) {
+                return parseError(
+                    line = line,
+                    column = invalidCharacter + 1,
+                    message = "Unrecognized character in Quadrant text",
+                )
+            }
+        }
+        return GMResult.Ok(decodeText(trimmed))
+    }
+
     private fun decode(source: String): String = MermaidHtmlEntityDecoder.decode(source)
 
     private fun parseHexColor(source: String): SceneColor? =
@@ -407,6 +487,8 @@ internal class QuadrantParser(
     companion object {
         private val QUADRANT_PREFIX =
             Regex("""(?i)^quadrant-([1-4])\s+(.+)$""")
+        private val QUADRANT_KEYWORD = Regex("""(?i)(?:^|\s)quadrant-[1-4](?:\s|$)""")
+        private val AXIS_KEYWORD = Regex("""(?i)(?:^|\s)[xy]-axis(?:\s|$)""")
         private val CLASS_DEFINITION =
             Regex("""(?i)^classDef\s+([A-Za-z0-9_]+)\s+(.+)$""")
         private val CLASS_NAME = Regex("""[A-Za-z0-9_]+""")
@@ -418,5 +500,9 @@ internal class QuadrantParser(
         private val ACC_DESCRIPTION_START = Regex("""(?i)accDescr\s*\{""")
         private val HTML_ENTITY =
             Regex("""&(?:#[0-9]+|#x[0-9A-Fa-f]+|[A-Za-z][A-Za-z0-9]+);""")
+        // Mermaid.js 12.0.0: quadrant.jison -> textNoTagsToken lexer terminals.
+        private val UNQUOTED_TEXT_PUNCTUATION = setOf(
+            '!', '#', '$', '%', '&', '\'', '*', '+', ',', '-', '.', '`', '?', '\\', '_', '/', '=',
+        )
     }
 }

@@ -1094,7 +1094,9 @@ internal class AgentflowDb(
             GMResult.Ok(Yaml.default.parseToYamlNode(yamlSource))
         } catch (failure: Exception) {
             positionedParseError(
-                message = failure.message ?: "Invalid agentflow metadata",
+                message = failure.message
+                    ?.takeIf(String::isNotBlank)
+                    ?: "Invalid agentflow metadata",
                 location = location,
                 source = originalSource,
             )

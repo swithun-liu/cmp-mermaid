@@ -170,13 +170,25 @@ class VennLayoutTest {
     }
 
     @Test
-    fun rejectsInvalidStylesAndDirectConfigurationWithoutThrowing() {
+    fun ignoresInvalidCssValuesLikeTheOfficialBrowserRenderer() {
         val invalidStyle = MermaidEngine().render(
-            "venn-beta\nset A\nstyle A fill:not-a-color",
+            """
+            venn-beta
+              set Known
+                text Owner["Owner review"]
+              style Known fill:not-a-color
+              style Owner color:r
+            """.trimIndent(),
             context(),
         )
-        assertIs<GMResult.Err<MermaidError>>(invalidStyle)
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(invalidStyle).value
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any { text ->
+            text.text == "Owner review"
+        })
+    }
 
+    @Test
+    fun rejectsInvalidDirectConfigurationWithoutThrowing() {
         val invalidConfig = MermaidEngine().render(
             "venn-beta\nset A",
             context().copy(
@@ -186,6 +198,18 @@ class VennLayoutTest {
             ),
         )
         assertIs<GMResult.Err<MermaidError>>(invalidConfig)
+    }
+
+    @Test
+    fun rejectsTitleOnlyDiagramWithoutThrowingLikeOfficialRenderer() {
+        val result = MermaidEngine().render(
+            "venn-beta\n  title Delivery ow",
+            context(),
+        )
+
+        val error = assertIs<GMResult.Err<MermaidError>>(result).error
+        assertIs<MermaidError.Layout>(error)
+        assertEquals("Mermaid Venn requires at least one set", error.message)
     }
 
     private fun render(source: String): MermaidScene =

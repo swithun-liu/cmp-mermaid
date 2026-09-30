@@ -145,15 +145,6 @@ internal class GanttDb(
                 ),
             )
         }
-        if (endExpression.isEmpty()) {
-            return GMResult.Err(
-                MermaidError.Parse(
-                    line = 1,
-                    column = 1,
-                    message = "Gantt task '${description.trim()}' has no end date or duration",
-                ),
-            )
-        }
         val rawTask = GanttRawTask(
             section = currentSection,
             description = description.trim(),
@@ -346,7 +337,14 @@ internal class GanttDb(
         }
         return when (val parsed = GanttDatePort.parse(expression, dateFormat)) {
             is GMResult.Ok -> DateResolution.Ready(parsed.value)
-            is GMResult.Err -> DateResolution.Failed(parsed.error)
+            is GMResult.Err -> {
+                // Mermaid.js 12.0.0: ganttDb.js -> getStartDate falls back to
+                // `new Date(str)` when strict Day.js parsing with dateFormat fails.
+                when (val fallback = GanttDatePort.parseJavaScriptDateFallback(expression)) {
+                    is GMResult.Ok -> DateResolution.Ready(fallback.value)
+                    is GMResult.Err -> DateResolution.Failed(parsed.error)
+                }
+            }
         }
     }
 

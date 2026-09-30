@@ -171,6 +171,16 @@ class UsecaseParserTest {
             "usecase-beta\nsystemBoundary A:::system@{ type: package }\nend",
             "usecase-beta\nsystemBoundary A <<S>>\nend",
             "usecase-beta\nsystemBoundary [Payment service]\nend",
+            "usecase-beta\nsystemBoundary identity[Identity platform\"]\nend",
+            "usecase-beta\ndirection ",
+            "usecase-beta\nactor ",
+            "usecase-beta\nsystemBoundary ",
+            "usecase-beta\nnote ",
+            "usecase-beta\njson ",
+            "usecase-beta\nclassDef ",
+            "usecase-beta\nclass ",
+            "usecase-beta\nstyle ",
+            "usecase-beta\nLogin\nnote for Login `Requires an active session`\"",
         )
 
         sources.forEach { source ->

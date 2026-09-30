@@ -185,13 +185,13 @@ internal object MermaidPreprocessor {
                     if (line.startsWith(indent)) line.drop(indent.length) else line
                 }
         }
-        val root = when (val parsed = parseYamlMap(body, "frontmatter")) {
-            is GMResult.Ok -> parsed.value
+        val root = when (val parsed = parseYamlNode(body, "frontmatter")) {
+            is GMResult.Ok -> parsed.value as? YamlMap
             is GMResult.Err -> return parsed
         }
         val config = when (
             val parsed = parseConfig(
-                map = root.map("config"),
+                map = root?.map("config"),
                 sourceName = "frontmatter.config",
                 stripSecureKeys = true,
             )
@@ -199,7 +199,7 @@ internal object MermaidPreprocessor {
             is GMResult.Ok -> parsed.value
             is GMResult.Err -> return parsed
         }
-        val displayMode = root.scalar("displayMode")
+        val displayMode = root?.scalar("displayMode")
         if (displayMode != null && displayMode !in setOf("", "compact")) {
             return configurationError(
                 "Mermaid frontmatter 'displayMode' must be empty or compact",
@@ -208,7 +208,7 @@ internal object MermaidPreprocessor {
         return GMResult.Ok(
             FrontmatterResult(
                 text = source.drop(match.value.length),
-                title = root.scalar("title"),
+                title = root?.scalar("title"),
                 config = config.copy(
                     ganttDisplayMode = displayMode ?: config.ganttDisplayMode,
                 ),
@@ -311,6 +311,20 @@ internal object MermaidPreprocessor {
         source: String,
         sourceName: String,
     ): GMResult<YamlMap, MermaidError> {
+        val parsed = when (val result = parseYamlNode(source, sourceName)) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
+        return when (parsed) {
+            is YamlMap -> GMResult.Ok(parsed)
+            else -> configurationError("Mermaid $sourceName must be a map")
+        }
+    }
+
+    private fun parseYamlNode(
+        source: String,
+        sourceName: String,
+    ): GMResult<YamlNode, MermaidError> {
         val parsed = try {
             Yaml.default.parseToYamlNode(source)
         } catch (failure: Exception) {
@@ -318,10 +332,7 @@ internal object MermaidPreprocessor {
                 "Invalid Mermaid $sourceName: ${failure.message ?: "invalid YAML/JSON"}",
             )
         }
-        return when (parsed) {
-            is YamlMap -> GMResult.Ok(parsed)
-            else -> configurationError("Mermaid $sourceName must be a map")
-        }
+        return GMResult.Ok(parsed)
     }
 
     private fun parseConfig(
@@ -370,8 +381,10 @@ internal object MermaidPreprocessor {
         val xyYAxis = xyChart?.map("yAxis")
         val elk = map.map("elk")
         val unsupported = buildSet {
-            TOP_LEVEL_UNTRANSLATED_KEYS.filterTo(this) { map.node(it) != null }
-            FLOWCHART_UNTRANSLATED_KEYS.filterTo(this) { flowchart?.node(it) != null }
+            TOP_LEVEL_UNTRANSLATED_KEYS.filterTo(this) { map.nonNullNode(it) != null }
+            FLOWCHART_UNTRANSLATED_KEYS.filterTo(this) {
+                flowchart?.nonNullNode(it) != null
+            }
         }
         if (unsupported.isNotEmpty()) {
             return GMResult.Err(
@@ -390,7 +403,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): Float? {
-            val scalar = owner?.node(key) ?: return null
+            val scalar = owner?.nonNullNode(key) ?: return null
             return (scalar as? YamlScalar)?.content?.toFloatOrNull()
                 ?: run {
                     readError = MermaidError.Configuration(
@@ -405,7 +418,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): Float? {
-            val scalar = owner?.node(key) ?: return null
+            val scalar = owner?.nonNullNode(key) ?: return null
             return (scalar as? YamlScalar)
                 ?.content
                 ?.removeSuffix("px")
@@ -424,7 +437,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): Int? {
-            val scalar = owner?.node(key) ?: return null
+            val scalar = owner?.nonNullNode(key) ?: return null
             return (scalar as? YamlScalar)?.content?.toIntOrNull()
                 ?: run {
                     readError = MermaidError.Configuration(
@@ -439,7 +452,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): Boolean? {
-            val scalar = owner?.node(key) ?: return null
+            val scalar = owner?.nonNullNode(key) ?: return null
             return (scalar as? YamlScalar)
                 ?.content
                 ?.lowercase()
@@ -463,7 +476,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): String? {
-            val node = owner?.node(key) ?: return null
+            val node = owner?.nonNullNode(key) ?: return null
             return (node as? YamlScalar)?.content
                 ?: run {
                     readError = MermaidError.Configuration(
@@ -497,7 +510,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): List<SceneColor>? {
-            val node = owner?.node(key) ?: return null
+            val node = owner?.nonNullNode(key) ?: return null
             val list = node as? YamlList
             if (list == null) {
                 readError = MermaidError.Configuration(
@@ -531,7 +544,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): Map<String, SceneColor>? {
-            val node = owner?.node(key) ?: return null
+            val node = owner?.nonNullNode(key) ?: return null
             val yamlMap = node as? YamlMap
             if (yamlMap == null) {
                 readError = MermaidError.Configuration(
@@ -559,7 +572,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): Map<String, String>? {
-            val node = owner?.node(key) ?: return null
+            val node = owner?.nonNullNode(key) ?: return null
             val yamlMap = node as? YamlMap
             if (yamlMap == null) {
                 readError = MermaidError.Configuration(
@@ -618,7 +631,7 @@ internal object MermaidPreprocessor {
             owner: YamlMap?,
             path: String,
         ): MermaidElkLineHops? {
-            val scalar = owner?.node("lineHops") ?: return null
+            val scalar = owner?.nonNullNode("lineHops") ?: return null
             val value = (scalar as? YamlScalar)?.content?.lowercase()
                 ?: run {
                     readError = MermaidError.Configuration(
@@ -644,7 +657,7 @@ internal object MermaidPreprocessor {
             key: String,
             path: String,
         ): ParsedThemeVariables? {
-            val node = owner?.node(key) ?: return null
+            val node = owner?.nonNullNode(key) ?: return null
             val yamlMap = node as? YamlMap
             if (yamlMap == null) {
                 readError = MermaidError.Configuration(
@@ -656,7 +669,14 @@ internal object MermaidPreprocessor {
             val arrays = linkedMapOf<String, List<String>>()
             yamlMap.entries.forEach { (entryKey, entryValue) ->
                 when (entryValue) {
-                    is YamlScalar -> scalars[entryKey.content] = entryValue.content
+                    is YamlNull -> Unit
+                    is YamlScalar -> {
+                        // Mermaid.js 12.0.0: utils/sanitizeDirective.ts ->
+                        // sanitizeDirective(themeVariables).
+                        scalars[entryKey.content] = entryValue.content
+                            .takeIf(THEME_VARIABLE_VALUE::matches)
+                            .orEmpty()
+                    }
                     is YamlList -> {
                         val items = entryValue.items.map { item -> (item as? YamlScalar)?.content }
                         if (items.any { item -> item == null }) {
@@ -680,16 +700,22 @@ internal object MermaidPreprocessor {
                             return null
                         }
                         entryValue.entries.forEach { (nestedKey, nestedValue) ->
-                            val scalar = nestedValue as? YamlScalar
-                            if (scalar == null) {
-                                readError = MermaidError.Configuration(
-                                    "Mermaid $sourceName " +
-                                        "'$path.${entryKey.content}.${nestedKey.content}' " +
-                                        "must be a scalar",
-                                )
-                                return null
+                            when (nestedValue) {
+                                is YamlNull -> Unit
+                                is YamlScalar -> {
+                                    scalars[
+                                        "${entryKey.content}.${nestedKey.content}"
+                                    ] = nestedValue.content
+                                }
+                                else -> {
+                                    readError = MermaidError.Configuration(
+                                        "Mermaid $sourceName " +
+                                            "'$path.${entryKey.content}.${nestedKey.content}' " +
+                                            "must be a scalar",
+                                    )
+                                    return null
+                                }
                             }
-                            scalars["${entryKey.content}.${nestedKey.content}"] = scalar.content
                         }
                     }
                     else -> {
@@ -1859,7 +1885,7 @@ internal object MermaidPreprocessor {
         val topLook = appearanceString(map, "look", "look")
             ?.takeIf(USABLE_LOOKS::contains)
         val titleTopMargin = float(flowchart, "titleTopMargin", "flowchart.titleTopMargin")
-        val subGraphTitleMarginNode = flowchart?.node("subGraphTitleMargin")
+        val subGraphTitleMarginNode = flowchart?.nonNullNode("subGraphTitleMargin")
         val subGraphTitleMargin = when (subGraphTitleMarginNode) {
             null -> null
             is YamlMap -> subGraphTitleMarginNode
@@ -1896,6 +1922,17 @@ internal object MermaidPreprocessor {
         val markdownAutoWrap = boolean(map, "markdownAutoWrap", "markdownAutoWrap")
         val fontSize = float(map, "fontSize", "fontSize")
         val fontFamily = string(map, "fontFamily", "fontFamily")
+        val resolvedThemeVariables = if (
+            fontFamily != null &&
+            parsedThemeVariables?.scalars?.get("fontFamily").isNullOrEmpty()
+        ) {
+            ParsedThemeVariables(
+                scalars = parsedThemeVariables?.scalars.orEmpty() + ("fontFamily" to fontFamily),
+                arrays = parsedThemeVariables?.arrays.orEmpty(),
+            )
+        } else {
+            parsedThemeVariables
+        }
         val topLayout = string(map, "layout", "layout")
         val layout = string(flowchart, "layout", "flowchart.layout") ?: topLayout
         val classLayout = string(classDiagram, "layout", "class.layout")
@@ -2350,8 +2387,8 @@ internal object MermaidPreprocessor {
                         ticketBaseUrl = kanbanTicketBaseUrl,
                     )
                 },
-                themeVariables = parsedThemeVariables?.scalars,
-                themeColorArrays = parsedThemeVariables?.arrays,
+                themeVariables = resolvedThemeVariables?.scalars,
+                themeColorArrays = resolvedThemeVariables?.arrays,
                 look = flowLook ?: topLook,
                 requirementLook = requirementLook,
                 titleTopMargin = titleTopMargin,
@@ -2392,6 +2429,9 @@ internal object MermaidPreprocessor {
 
     private fun YamlMap.node(key: String): YamlNode? =
         entries.entries.firstOrNull { it.key.content == key }?.value
+
+    private fun YamlMap.nonNullNode(key: String): YamlNode? =
+        node(key)?.takeUnless { node -> node is YamlNull }
 
     private fun YamlMap.scalar(key: String): String? =
         (node(key) as? YamlScalar)?.content
@@ -2447,6 +2487,7 @@ internal object MermaidPreprocessor {
     private val USECASE_FONT_WEIGHT = Regex(
         """^(normal|bold|bolder|lighter|inherit|initial|revert|unset|[1-9][0-9]{0,3})$""",
     )
+    private val THEME_VARIABLE_VALUE = Regex("""^[\d "#%(),.;A-Za-z]+$""")
     private val ELK_NODE_PLACEMENT_STRATEGIES = setOf(
         "SIMPLE",
         "NETWORK_SIMPLEX",

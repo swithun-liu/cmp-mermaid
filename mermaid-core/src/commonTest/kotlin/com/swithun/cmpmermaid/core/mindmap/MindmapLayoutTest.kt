@@ -440,7 +440,7 @@ class MindmapLayoutTest {
     }
 
     @Test
-    fun returnsUnsupportedFeatureForExternalStylingAndUnavailableLayouts() {
+    fun rejectsExternalStylingAndElkButFallsBackForUnknownLayouts() {
         val icon = engine.render(
             "mindmap\n  Root\n    Child\n    ::icon(fa fa-book)",
             context,
@@ -476,7 +476,7 @@ class MindmapLayoutTest {
 
         assertIs<GMResult.Err<MermaidError.UnsupportedFeature>>(icon)
         assertIs<GMResult.Err<MermaidError.UnsupportedFeature>>(cssClass)
-        assertIs<GMResult.Err<MermaidError.UnsupportedFeature>>(layout)
+        assertIs<GMResult.Ok<MermaidScene>>(layout)
         val elkError = assertIs<GMResult.Err<MermaidError.UnsupportedFeature>>(elk).error
         assertTrue(elkError.message.contains("Mermaid.js 12.0.0 fails"))
     }

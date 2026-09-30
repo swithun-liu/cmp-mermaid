@@ -192,6 +192,23 @@ class WardleyParserTest {
         assertEquals("backup", document.data.links[6].label)
     }
 
+    @Test
+    fun parsesLinkWithoutOptionalArrowBetweenDistinctNameTokens() {
+        val document = parse(
+            """
+                wardley-beta
+                anchor "東京 Customer" [0.92, 0.90]
+                component "서울 Verification" [0.68, 0.58]
+                "東京 Customer"   "서울 Verification"
+            """.trimIndent(),
+        )
+
+        val link = document.data.links.single()
+        assertEquals("東京 Customer", link.source)
+        assertEquals("서울 Verification", link.target)
+        assertNull(link.flow)
+    }
+
     private fun com.swithun.cmpmermaid.core.wardley.upstream.mermaid.WardleyAnnotation.x():
         Float = coordinates.single().x
 

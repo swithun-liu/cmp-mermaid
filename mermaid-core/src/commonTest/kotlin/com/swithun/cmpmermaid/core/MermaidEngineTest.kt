@@ -23,6 +23,16 @@ class MermaidEngineTest {
     private val engine = MermaidEngine()
 
     @Test
+    fun acceptsTrailingStateIdentifierWithoutChangingItsEofSemantics() {
+        val result = engine.render(
+            "stateDiagram-v2\n  state",
+            context,
+        )
+
+        assertIs<GMResult.Ok<MermaidScene>>(result, result.toString())
+    }
+
+    @Test
     fun rendersCommonFlowchartSyntaxIntoSceneGraph() {
         val result = engine.render(
             """
@@ -254,6 +264,26 @@ class MermaidEngineTest {
                 text -> text.text == "Blurry Photo"
             })
         }
+    }
+
+    @Test
+    fun usesTheUpstreamIshikawaDetectorBeforeRejectingAnUnknownHeader() {
+        val detected = engine.render(
+            """
+                ishikawa-xbeta
+                Payment failure
+                  Operations
+            """.trimIndent(),
+            context,
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(detected).value
+        assertTrue(scene.elements.filterIsInstance<SceneText>().any { text ->
+            text.text == "-xbeta"
+        })
+
+        val rejected = engine.render("ishikawaish\nEffect", context)
+        assertIs<GMResult.Err<MermaidError>>(rejected)
+        assertIs<MermaidError.UnsupportedDiagram>(rejected.error)
     }
 
     @Test
@@ -903,7 +933,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun honorsDropShadowThemeVariable() {
+    fun sanitizesDropShadowThemeVariableLikeMermaidDirectiveSanitizer() {
         val result = engine.render(
             """
                 ---
@@ -917,18 +947,10 @@ class MermaidEngineTest {
             context,
         )
 
-        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
         val node = scene.elements.filterIsInstance<SceneShape>().first { it.id == "A" }
 
-        assertEquals(
-            SceneShadow(
-                color = SceneColor(0x800A141E),
-                offsetX = 2f,
-                offsetY = 3f,
-                blurRadius = 4f,
-            ),
-            node.shadow,
-        )
+        assertNull(node.shadow)
     }
 
     @Test

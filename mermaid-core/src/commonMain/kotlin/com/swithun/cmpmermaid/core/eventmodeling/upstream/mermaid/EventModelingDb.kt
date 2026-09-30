@@ -132,23 +132,19 @@ internal class EventModelingDb(
                 .trim()
         }
         frame.dataReference?.let { reference ->
-            val dataEntity = dataEntities.find { entity -> entity.name == reference }
-                ?: return GMResult.Err(
-                    MermaidError.Layout(
-                        "Event Modeling data entity '$reference' was not found",
-                    ),
-                )
-            renderedData = dataEntity.dataBlockValue
-                .let { block ->
-                    // Preserve db.ts' two end-exclusive substring operations.
-                    val contentAfterOpening =
-                        block.substring((block.indexOf("{\n") + 2).coerceAtLeast(0))
-                    val upstreamEndExclusive =
-                        (contentAfterOpening.lastIndexOf('}') - 1).coerceAtLeast(0)
-                    contentAfterOpening.substring(0, upstreamEndExclusive)
-                }
-                .trim()
-            referenceAddsBreak = true
+            dataEntities.find { entity -> entity.name == reference }?.let { dataEntity ->
+                renderedData = dataEntity.dataBlockValue
+                    .let { block ->
+                        // Preserve db.ts' two end-exclusive substring operations.
+                        val contentAfterOpening =
+                            block.substring((block.indexOf("{\n") + 2).coerceAtLeast(0))
+                        val upstreamEndExclusive =
+                            (contentAfterOpening.lastIndexOf('}') - 1).coerceAtLeast(0)
+                        contentAfterOpening.substring(0, upstreamEndExclusive)
+                    }
+                    .trim()
+                referenceAddsBreak = true
+            }
         }
 
         val wrappedData = renderedData?.let { value ->

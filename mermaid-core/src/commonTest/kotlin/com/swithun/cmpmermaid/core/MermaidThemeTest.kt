@@ -259,12 +259,13 @@ class MermaidThemeTest {
         assertEquals(SceneColor(0xFFA0B0C0), customized.arrowhead)
         assertEquals(SceneColor(0xFFD0E0F0), customized.relationStroke)
 
-        assertIs<GMResult.Err<MermaidError.Configuration>>(
+        val invalidCssColor = assertIs<GMResult.Ok<MermaidTheme>>(
             MermaidTheme.withVariables(
                 theme = defaultTheme,
                 values = mapOf("emEventFill" to "not-a-color"),
             ),
-        )
+        ).value
+        assertEquals(defaultTheme.eventModeling.eventFill, invalidCssColor.eventModeling.eventFill)
     }
 
     @Test
@@ -313,13 +314,19 @@ class MermaidThemeTest {
             "cynefin.domainFontSize" to "0",
             "cynefin.itemFontSize" to "NaN",
             "cynefin.boundaryWidth" to "-1",
-            "cynefin.cliffColor" to "not-a-color",
         ).forEach { (name, value) ->
             assertIs<GMResult.Err<MermaidError.Configuration>>(
                 MermaidTheme.withVariables(base, mapOf(name to value)),
                 "$name=$value",
             )
         }
+        val invalidCssColor = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                base,
+                mapOf("cynefin.cliffColor" to "not-a-color"),
+            ),
+        ).value
+        assertEquals(base.cynefin.cliffColor, invalidCssColor.cynefin.cliffColor)
     }
 
     @Test

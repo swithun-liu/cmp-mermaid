@@ -150,6 +150,27 @@ class TreeViewLayoutTest {
     }
 
     @Test
+    fun fallsBackForInvalidTreeViewCssColorsLikeMermaidJs() {
+        val scene = render(
+            """
+            ---
+            config:
+              themeVariables:
+                treeView:
+                  labelColor: "#123456
+                    lineColor: "#234567"
+            ---
+            treeView-beta
+                file.ts
+            """.trimIndent(),
+        )
+
+        val label = scene.elements.filterIsInstance<SceneText>()
+            .first { text -> text.text == "file.ts" }
+        assertEquals(SceneColor(0xFF000000), label.color)
+    }
+
+    @Test
     fun carriesAccessibilityMetadata() {
         val scene = render(
             """

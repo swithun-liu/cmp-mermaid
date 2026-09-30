@@ -93,6 +93,13 @@ internal class IshikawaParser(
         if (text.isEmpty()) {
             return GMResult.Ok(edgeCount)
         }
+        if (BODY_HEADER.matches(text)) {
+            return parseError(
+                line = line,
+                column = indentation + 1,
+                detail = "Unexpected Ishikawa diagram header",
+            )
+        }
         val nextEdgeCount = if (db.getRoot() == null) edgeCount else edgeCount + 1
         if (nextEdgeCount > options.maxEdges) {
             return GMResult.Err(
@@ -130,7 +137,11 @@ internal class IshikawaParser(
     private companion object {
         const val COMMENT_PREFIX = "%%"
         val HEADER = Regex(
-            pattern = "^ishikawa(?:-beta)?(?=\\s|$)(.*)$",
+            pattern = "^ishikawa(?:-beta)?(.*)$",
+            option = RegexOption.IGNORE_CASE,
+        )
+        val BODY_HEADER = Regex(
+            pattern = "^ishikawa(?:-beta)?.*$",
             option = RegexOption.IGNORE_CASE,
         )
 

@@ -131,24 +131,17 @@ class EventModelingParserTest {
     }
 
     @Test
-    fun returnsStructuredErrorsForReferencesValidationAndMalformedInput() {
+    fun returnsStructuredErrorsForMalformedInput() {
         val invalidSources = listOf(
             "eventmodel\n",
             "eventmodeling\ntf 1000 ui UI",
             "eventmodeling\ntf 01 unknown UI",
             "eventmodeling\ntf 01 ui 1UI",
-            "eventmodeling\ntf 01 ui UI ->> 99",
-            "eventmodeling\ntf 01 ui UI [[Missing]]",
             "eventmodeling\ndata D { value }",
             "eventmodeling\ntf 01 ui UI `xml`{ value }",
             "eventmodeling\n/* unterminated",
             "eventmodeling\ntf 01 ui UI\n/* unterminated",
             "eventmodeling\ndata D {\n  value: 1\n  }",
-            """
-                eventmodeling
-                rf 01 evt Event
-                tf 02 cmd Command ->> 01
-            """.trimIndent(),
         )
 
         invalidSources.forEach { source ->

@@ -33,6 +33,13 @@ internal object MermaidHtmlFragmentTokenizer {
                 is GMResult.Err -> return result
             }
             if (parsed == null) {
+                if (rawBody.startsWith('<')) {
+                    // Browser HTML parsing keeps the first '<' in malformed fragments such as
+                    // `<<custom>>`, then parses `<custom>` as the following element.
+                    tokens += MermaidHtmlFragmentToken.Text("<")
+                    cursor = tagStart + 1
+                    continue
+                }
                 tokens += MermaidHtmlFragmentToken.Text(source.substring(tagStart, tagEnd + 1))
             } else {
                 tokens += parsed

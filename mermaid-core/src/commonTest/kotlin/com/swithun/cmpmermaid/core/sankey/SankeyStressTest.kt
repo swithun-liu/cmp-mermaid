@@ -56,7 +56,9 @@ class SankeyStressTest {
             when (index) {
                 1 -> "Node, $caseIndex-$index"
                 2 -> "Review \"ready\" $caseIndex-$index"
-                3 -> "東京 $caseIndex-$index"
+                // Mermaid.js 12.0.0: sankey.jison ESCAPED_TEXT follows RFC 4180's
+                // ASCII TEXTDATA range; keep this success corpus inside that grammar.
+                3 -> "Tokyo $caseIndex-$index"
                 else -> "Node $caseIndex-$index"
             }
         }
@@ -109,11 +111,13 @@ class SankeyStressTest {
     private fun csv(value: String): String =
         "\"${value.replace("\"", "\"\"")}\""
 
-    private fun render(source: String): MermaidScene =
-        assertIs<GMResult.Ok<MermaidScene>>(
-            engine.render(source, context),
-            "Expected randomized Sankey render success:\n$source",
+    private fun render(source: String): MermaidScene {
+        val result = engine.render(source, context)
+        return assertIs<GMResult.Ok<MermaidScene>>(
+            result,
+            "Expected randomized Sankey render success:\n$source\n$result",
         ).value
+    }
 
     private fun validateScene(
         scene: MermaidScene,

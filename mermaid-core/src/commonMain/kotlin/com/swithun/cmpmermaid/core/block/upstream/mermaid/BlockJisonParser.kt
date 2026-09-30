@@ -15,7 +15,9 @@ internal class BlockJisonParser(
 ) {
     fun parse(source: String): GMResult<BlockDb, MermaidError> {
         val db = BlockDb(config, diagramTitle)
-        val lexer = BlockJisonLexer(prepareTextForParsing(source))
+        // Mermaid.js 12.0.0:
+        // diagrams/block/blockDiagram.ts passes source directly to parser/block.jison.
+        val lexer = BlockJisonLexer(source)
         val states = mutableListOf(0)
         val values = mutableListOf<Any?>(null)
         var lookahead: BlockJisonToken? = null
@@ -438,28 +440,5 @@ internal class BlockJisonParser(
 
     private companion object {
         const val PHYSICAL_EOF = 1
-
-        // Mermaid.js 12.0.0:
-        // packages/mermaid/src/diagrams/block/blockUtils.ts -> prepareTextForParsing.
-        fun prepareTextForParsing(source: String): String {
-            val normalized = StringBuilder(source.length)
-            var index = 0
-            while (index < source.length) {
-                val character = source[index]
-                if (character == '\r' || character == '\n') {
-                    normalized.append('\n')
-                    do {
-                        index += 1
-                    } while (
-                        index < source.length &&
-                        (source[index] == '\r' || source[index] == '\n')
-                    )
-                } else {
-                    normalized.append(character)
-                    index += 1
-                }
-            }
-            return normalized.toString().trim()
-        }
     }
 }

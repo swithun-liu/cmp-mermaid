@@ -87,6 +87,23 @@ class TreemapLayoutTest {
     }
 
     @Test
+    fun ignoresEmptyClassStyleValuesLikeBrowserCss() {
+        val scene = render(
+            """
+            treemap-beta
+            "Root"
+                "Leaf": 1:::empty
+            classDef empty font-style:
+            """.trimIndent(),
+        )
+
+        val leaf = scene.elements
+            .filterIsInstance<SceneText>()
+            .first { text -> text.text == "Leaf" }
+        assertEquals(false, leaf.italic)
+    }
+
+    @Test
     fun hidesValuesAndRejectsInvalidDirectConfigurationWithoutThrowing() {
         val noValues = render(
             """

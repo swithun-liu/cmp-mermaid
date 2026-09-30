@@ -1400,11 +1400,11 @@ data class MermaidTheme(
                 val entry = names.firstNotNullOfOrNull { name ->
                     values[name]?.let { value -> name to value }
                 } ?: return null
-                return CssColorParser.parse(entry.second).also { parsed ->
-                    if (parsed == null && invalidVariable == null) {
-                        invalidVariable = entry
-                    }
-                }
+                // Mermaid.js 12.0.0: themes/theme-*.js -> calculate and the SVG/CSS
+                // renderer. Invalid CSS colors do not abort rendering; the browser ignores
+                // the declaration. Canvas cannot retain an invalid CSS token, so preserve
+                // the inherited Kotlin theme value by returning null.
+                return CssColorParser.parse(entry.second)
             }
 
             fun number(name: String): Float? {
@@ -1837,23 +1837,21 @@ data class MermaidTheme(
             val xyPalette = if (xyPaletteSource == null) {
                 theme.xyChart.plotColorPalette
             } else {
-                val sourceColors = xyPaletteSource
+                /*
+                 * Mermaid.js 12.0.0:
+                 * packages/mermaid/src/diagrams/xychart/xychartDb.ts ->
+                 * setConfig.
+                 *
+                 * The browser keeps invalid CSS palette entries and renders the
+                 * corresponding plot without a valid stroke/fill. Preserve that
+                 * slot with a transparent color instead of rejecting the chart.
+                 */
+                xyPaletteSource
                     .split(',')
                     .map(String::trim)
-                    .filter(String::isNotEmpty)
-                val parsedColors = sourceColors.map(CssColorParser::parse)
-                val invalidIndex = parsedColors.indexOfFirst { parsed -> parsed == null }
-                when {
-                    sourceColors.isEmpty() -> {
-                        invalidVariable = "xyChart.plotColorPalette" to xyPaletteSource
-                        emptyList()
+                    .map { sourceColor ->
+                        CssColorParser.parse(sourceColor) ?: SceneColor(0x00000000)
                     }
-                    invalidIndex >= 0 -> {
-                        invalidVariable = "xyChart.plotColorPalette" to sourceColors[invalidIndex]
-                        emptyList()
-                    }
-                    else -> parsedColors.filterNotNull()
-                }
             }
             val xyChart = theme.xyChart.copy(
                 backgroundColor =
@@ -3028,6 +3026,13 @@ data class MermaidTheme(
             inherited: SceneShadow?,
         ): GMResult<SceneShadow?, MermaidError> {
             val value = source?.trim() ?: return GMResult.Ok(inherited)
+            // Mermaid.js 12.0.0:
+            // utils/sanitizeDirective.ts + themes/theme-default.js -> calculate.
+            // A filtered theme-variable value becomes an empty override, which disables
+            // the CSS filter instead of aborting diagram rendering.
+            if (value.isEmpty()) {
+                return GMResult.Ok(null)
+            }
             if (value.equals("none", ignoreCase = true)) {
                 return GMResult.Ok(null)
             }

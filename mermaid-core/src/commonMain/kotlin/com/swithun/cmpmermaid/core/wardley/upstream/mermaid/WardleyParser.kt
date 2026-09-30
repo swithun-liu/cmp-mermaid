@@ -627,36 +627,111 @@ internal class WardleyParser(
         } else {
             null
         }
-        val operator = findLinkOperator(statement)
-            ?: return parseError(lineIndex, 1, "Expected a Wardley statement or dependency")
-        val from = when (
-            val parsed = parseName(statement.substring(0, operator.start).trim(), lineIndex)
-        ) {
-            is GMResult.Ok -> parsed.value
-            is GMResult.Err -> return parsed
+        val trailingPort = FLOW_PORTS.firstOrNull { port -> statement.endsWith(port) }
+        val linkSource = if (trailingPort == null) {
+            statement
+        } else {
+            statement.dropLast(trailingPort.length).trim()
         }
-        var targetSource = statement.substring(operator.endExclusive).trim()
-        val trailingPort = FLOW_PORTS.firstOrNull { port -> targetSource.endsWith(port) }
-        if (trailingPort != null) {
-            targetSource = targetSource.dropLast(trailingPort.length).trim()
+        val operator = findLinkOperator(linkSource)
+        val from: String
+        val target: String
+        var arrow: String? = null
+        var fromPort: String? = null
+        if (operator == null) {
+            when (val endpoints = parseLinkWithoutOperator(linkSource, lineIndex)) {
+                is GMResult.Ok -> {
+                    from = endpoints.value.first
+                    target = endpoints.value.second
+                }
+                is GMResult.Err -> return endpoints
+            }
+        } else {
+            from = when (
+                val parsed = parseName(
+                    linkSource.substring(0, operator.start).trim(),
+                    lineIndex,
+                )
+            ) {
+                is GMResult.Ok -> parsed.value
+                is GMResult.Err -> return parsed
+            }
+            var targetSource = linkSource.substring(operator.endExclusive).trim()
+            if (operator.token in FLOW_PORTS) {
+                fromPort = operator.token
+                val nextOperator = findLinkOperator(targetSource)
+                if (
+                    nextOperator?.start == 0 &&
+                    nextOperator.token !in FLOW_PORTS
+                ) {
+                    arrow = nextOperator.token
+                    targetSource = targetSource
+                        .substring(nextOperator.endExclusive)
+                        .trim()
+                }
+            } else {
+                arrow = operator.token
+            }
+            target = when (val parsed = parseName(targetSource, lineIndex)) {
+                is GMResult.Ok -> parsed.value
+                is GMResult.Err -> return parsed
+            }
         }
-        val target = when (val parsed = parseName(targetSource, lineIndex)) {
-            is GMResult.Ok -> parsed.value
-            is GMResult.Err -> return parsed
-        }
-        val customFlow = CUSTOM_FLOW_PATTERN.matchEntire(operator.token)
-        val flow = flowFromOperator(operator.token)
+        val customFlow = arrow?.let(CUSTOM_FLOW_PATTERN::matchEntire)
+        val flow = fromPort?.let(::flowFromOperator)
             ?: trailingPort?.let(::flowFromOperator)
+            ?: arrow?.let(::flowFromOperator)
         val flowLabel = customFlow?.groupValues?.get(1)?.decodeWardleyText()
         return GMResult.Ok(
             WardleyLink(
                 source = builder.resolveNodeId(from),
                 target = builder.resolveNodeId(target),
-                dashed = operator.token == "-.->",
+                dashed = arrow == "-.->",
                 label = flowLabel ?: annotation?.decodeWardleyText(),
                 flow = flow,
             ),
         )
+    }
+
+    /**
+     * Mermaid.js 12.0.0: wardley.langium -> Link.
+     *
+     * The arrow is optional, so independently tokenized names such as two quoted strings
+     * still form a link.
+     */
+    private fun parseLinkWithoutOperator(
+        source: String,
+        lineIndex: Int,
+    ): GMResult<Pair<String, String>, MermaidError> {
+        val trimmed = source.trim()
+        if (trimmed.firstOrNull() == '"' || trimmed.firstOrNull() == '\'') {
+            return when (val first = parseLeadingQuoted(trimmed, lineIndex)) {
+                is GMResult.Ok -> when (
+                    val second = parseName(first.value.remaining.trim(), lineIndex)
+                ) {
+                    is GMResult.Ok -> GMResult.Ok(first.value.value to second.value)
+                    is GMResult.Err -> second
+                }
+                is GMResult.Err -> first
+            }
+        }
+
+        val secondNameStart = trimmed.indexOfFirst { character ->
+            character == '"' || character == '\''
+        }
+        if (secondNameStart <= 0) {
+            return parseError(lineIndex, 1, "Expected a Wardley statement or dependency")
+        }
+        val first = when (
+            val parsed = parseName(trimmed.substring(0, secondNameStart).trim(), lineIndex)
+        ) {
+            is GMResult.Ok -> parsed.value
+            is GMResult.Err -> return parsed
+        }
+        return when (val second = parseName(trimmed.substring(secondNameStart), lineIndex)) {
+            is GMResult.Ok -> GMResult.Ok(first to second.value)
+            is GMResult.Err -> second
+        }
     }
 
     private fun parseName(

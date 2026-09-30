@@ -1,45 +1,16 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cases, casesPerKind } from './invalid-source-corpus.mjs';
+import {
+  cases,
+  casesPerKind,
+  casesPerMutation,
+  mutationProfiles,
+} from './invalid-source-corpus.mjs';
+import { kinds } from './visual-parity-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
-const expectedKinds = new Set([
-  'flowchart',
-  'swimlanes',
-  'architecture',
-  'c4',
-  'railroad',
-  'treeview',
-  'xychart',
-  'quadrant',
-  'timeline',
-  'kanban',
-  'sequence',
-  'class',
-  'state',
-  'er',
-  'gantt',
-  'pie',
-  'journey',
-  'requirement',
-  'gitgraph',
-  'mindmap',
-  'packet',
-  'radar',
-  'sankey',
-  'treemap',
-  'venn',
-  'ishikawa',
-  'cynefin',
-  'block',
-  'eventmodeling',
-  'agentflow',
-  'usecase',
-  'wardley',
-  'zenuml',
-]);
 
 validateCases();
 
@@ -71,74 +42,73 @@ for (const output of outputs) {
 function validateCases() {
   const ids = new Set();
   const sources = new Set();
-  const profilesByKind = new Map(
-    [...expectedKinds].map((kind) => [kind, new Set()]),
-  );
+  if (mutationProfiles.length * casesPerMutation !== casesPerKind) {
+    throw new Error('Mutation profile dimensions do not match casesPerKind');
+  }
   for (const entry of cases) {
     if (!/^invalid_[a-z0-9]+_\d{3}$/.test(entry.id)) {
-      throw new Error(`Invalid malformed-source case id: ${entry.id}`);
+      throw new Error(`Invalid AI-mutation case id: ${entry.id}`);
     }
-    if (!expectedKinds.has(entry.kind)) {
-      throw new Error(`Unsupported malformed-source kind: ${entry.kind}`);
+    if (!kinds.includes(entry.kind)) {
+      throw new Error(`Unsupported AI-mutation kind: ${entry.kind}`);
     }
     if (ids.has(entry.id)) {
-      throw new Error(`Duplicate malformed-source case id: ${entry.id}`);
-    }
-    if (
-      !Number.isInteger(entry.profileIndex) ||
-      entry.profileIndex < 1 ||
-      entry.profileIndex > casesPerKind
-    ) {
-      throw new Error(`Invalid profile index for ${entry.id}`);
-    }
-    const profileId = String(entry.profileIndex).padStart(3, '0');
-    if (
-      entry.id !== `invalid_${entry.kind}_${profileId}` ||
-      entry.seedId !== `invalid_${entry.kind}_seed` ||
-      entry.profileId !== `profile_${profileId}`
-    ) {
-      throw new Error(`Invalid profile metadata for ${entry.id}`);
-    }
-    const profiles = profilesByKind.get(entry.kind);
-    if (profiles.has(entry.profileIndex)) {
-      throw new Error(
-        `Duplicate malformed-source profile ${entry.profileIndex} for ${entry.kind}`,
-      );
-    }
-    if (entry.source.trim().length === 0) {
-      throw new Error(`Empty malformed source for ${entry.id}`);
+      throw new Error(`Duplicate AI-mutation case id: ${entry.id}`);
     }
     if (sources.has(entry.source)) {
-      throw new Error(`Duplicate malformed source for ${entry.id}`);
+      throw new Error(`Duplicate AI-mutation source for ${entry.id}`);
     }
     if (
-      entry.expectedOutcome !== 'error' ||
+      !Number.isInteger(entry.caseIndex) ||
+      entry.caseIndex < 1 ||
+      entry.caseIndex > casesPerKind
+    ) {
+      throw new Error(`Invalid case index for ${entry.id}`);
+    }
+    if (
+      !Number.isInteger(entry.mutationIndex) ||
+      entry.mutationIndex < 1 ||
+      entry.mutationIndex > mutationProfiles.length ||
+      !Number.isInteger(entry.mutationVariant) ||
+      entry.mutationVariant < 1 ||
+      entry.mutationVariant > casesPerMutation
+    ) {
+      throw new Error(`Invalid mutation metadata for ${entry.id}`);
+    }
+    if (
+      entry.expectedOutcome !== 'oracle' ||
       entry.expectedNativeErrorType !== 'CONTENT_ERROR'
     ) {
       throw new Error(`Invalid expected outcome for ${entry.id}`);
     }
     ids.add(entry.id);
-    profiles.add(entry.profileIndex);
     sources.add(entry.source);
   }
 
-  const expectedCaseCount = expectedKinds.size * casesPerKind;
+  const expectedCaseCount = kinds.length * casesPerKind;
   if (cases.length !== expectedCaseCount) {
     throw new Error(
-      `Expected ${expectedCaseCount} malformed-source cases, found ${cases.length}`,
+      `Expected ${expectedCaseCount} AI-mutation cases, found ${cases.length}`,
     );
   }
-  for (const [kind, profiles] of profilesByKind) {
-    if (profiles.size !== casesPerKind) {
+  for (const kind of kinds) {
+    const kindCases = cases.filter((entry) => entry.kind === kind);
+    if (kindCases.length !== casesPerKind) {
       throw new Error(
-        `Expected ${casesPerKind} malformed-source profiles for ${kind}, ` +
-          `found ${profiles.size}`,
+        `Expected ${casesPerKind} AI-mutation cases for ${kind}, ` +
+          `found ${kindCases.length}`,
       );
     }
-    for (let profileIndex = 1; profileIndex <= casesPerKind; profileIndex += 1) {
-      if (!profiles.has(profileIndex)) {
+    if (new Set(kindCases.map((entry) => entry.baseCaseId)).size !== casesPerKind) {
+      throw new Error(`${kind} does not use ${casesPerKind} unique base cases`);
+    }
+    for (const profile of mutationProfiles) {
+      const count = kindCases.filter(
+        (entry) => entry.mutationId === profile.id,
+      ).length;
+      if (count !== casesPerMutation) {
         throw new Error(
-          `Missing malformed-source profile ${profileIndex} for ${kind}`,
+          `Expected ${casesPerMutation} ${kind}/${profile.id} cases, found ${count}`,
         );
       }
     }
@@ -146,12 +116,37 @@ function validateCases() {
 }
 
 function renderKotlin(packageName) {
-  const seeds = cases.filter((entry) => entry.profileIndex === 1);
-  const entries = seeds.map((entry) => `    InvalidSourceCorpusSeed(
-        diagramId = ${kotlinString(entry.kind)},
-        diagramTitle = ${kotlinString(entry.diagramTitle)},
-        source = ${kotlinString(entry.source)},
+  const diagramEntries = kinds.map((kind) => {
+    const example = cases.find((entry) => entry.kind === kind);
+    return `    InvalidSourceDiagram(
+        id = ${kotlinString(kind)},
+        title = ${kotlinString(example.diagramTitle)},
+    ),`;
+  }).join('\n');
+  const mutationEntries = mutationProfiles.map((profile) => `    InvalidSourceMutation(
+        id = ${kotlinString(profile.id)},
+        category = ${kotlinString(profile.category)},
+        scenario = ${kotlinString(profile.scenario)},
     ),`).join('\n');
+  const fingerprintDispatch = kinds
+    .map((kind) =>
+      `    ${kotlinString(kind)} -> invalidSourceFingerprint_${kind}(caseOffset)`,
+    )
+    .join('\n');
+  const fingerprintFunctions = kinds.map((kind) => {
+    const entries = cases
+      .filter((entry) => entry.kind === kind)
+      .map(
+        (entry, index) =>
+          `    ${index} -> ${entry.sourceFingerprint}`,
+      )
+      .join('\n');
+    return `private fun invalidSourceFingerprint_${kind}(caseOffset: Int): Int =
+    when (caseOffset) {
+${entries}
+        else -> Int.MIN_VALUE
+    }`;
+  }).join('\n\n');
 
   return `// Generated by tools/official-reference/generate-invalid-source-corpus.mjs.
 // Do not edit by hand.
@@ -159,84 +154,396 @@ package ${packageName}
 
 internal data class InvalidSourceCorpusCase(
     val id: String,
-    val seedId: String,
-    val profileId: String,
-    val profileIndex: Int,
+    val baseCaseId: String,
+    val mutationId: String,
+    val mutationCategory: String,
+    val mutationIndex: Int,
+    val mutationVariant: Int,
+    val caseIndex: Int,
     val diagramId: String,
     val title: String,
     val scenario: String,
     val source: String,
+    val expectedOutcome: String,
 )
 
-private data class InvalidSourceCorpusSeed(
-    val diagramId: String,
-    val diagramTitle: String,
-    val source: String,
+private data class InvalidSourceDiagram(
+    val id: String,
+    val title: String,
+)
+
+private data class InvalidSourceMutation(
+    val id: String,
+    val category: String,
+    val scenario: String,
 )
 
 /**
  * Mermaid.js 12.0.0:
  * packages/mermaid/src/mermaid.ts -> parse
  * packages/mermaid/src/mermaidAPI.ts -> render
+ *
+ * Each case starts from a distinct valid visual-parity source. The mutation is
+ * intentionally not assumed to be rejected: Mermaid.js is the accept/error
+ * oracle, and Native must match that outcome without throwing.
  */
 internal const val invalidSourceCasesPerDiagram: Int = ${casesPerKind}
+internal const val invalidSourceCasesPerMutation: Int = ${casesPerMutation}
 
-private val invalidSourceCorpusSeeds: List<InvalidSourceCorpusSeed> = listOf(
-${entries}
+private val invalidSourceDiagrams: List<InvalidSourceDiagram> = listOf(
+${diagramEntries}
 )
 
-internal val invalidSourceCorpusCases: List<InvalidSourceCorpusCase> =
-    invalidSourceCorpusSeeds.flatMap { seed ->
-        (1..invalidSourceCasesPerDiagram).map { profileIndex ->
-            val profileId = profileIndex.toString().padStart(3, '0')
-            InvalidSourceCorpusCase(
-                id = "invalid_" + seed.diagramId + "_" + profileId,
-                seedId = "invalid_" + seed.diagramId + "_seed",
-                profileId = "profile_" + profileId,
-                profileIndex = profileIndex,
-                diagramId = seed.diagramId,
-                title = if (profileIndex == 1) {
-                    seed.diagramTitle + " malformed source"
-                } else {
-                    seed.diagramTitle + " malformed source variant " + profileId
-                },
-                scenario = "Malformed " + seed.diagramTitle +
-                    " syntax under deterministic context " + profileId +
-                    " must report an error without crashing the renderer.",
-                source = invalidSourceVariantSource(seed.source, profileIndex),
+private val invalidSourceMutations: List<InvalidSourceMutation> = listOf(
+${mutationEntries}
+)
+
+internal val invalidSourceCorpusCases: List<InvalidSourceCorpusCase> by lazy {
+    buildList {
+        invalidSourceDiagrams.forEach { diagram ->
+            val baseCases = visualParityCorpusCases.filter { case ->
+                case.diagramId == diagram.id
+            }
+            check(baseCases.size == invalidSourceCasesPerDiagram)
+            baseCases.forEachIndexed { caseOffset, baseCase ->
+                val caseIndex = caseOffset + 1
+                val mutationIndex = caseOffset / invalidSourceCasesPerMutation
+                val mutationVariant = caseOffset % invalidSourceCasesPerMutation
+                val mutation = invalidSourceMutations[mutationIndex]
+                val suffix = caseIndex.toString().padStart(3, '0')
+                val source = applyInvalidSourceMutation(
+                    mutationId = mutation.id,
+                    source = normalizeInvalidSourceBase(baseCase.source),
+                    variant = mutationVariant,
+                )
+                val expectedFingerprint = invalidSourceExpectedFingerprint(
+                    diagramId = diagram.id,
+                    caseOffset = caseOffset,
+                )
+                check(invalidSourceFingerprint(source) == expectedFingerprint) {
+                    "Generated source drift for invalid_\${diagram.id}_\$suffix"
+                }
+                add(
+                    InvalidSourceCorpusCase(
+                        id = "invalid_\${diagram.id}_\$suffix",
+                        baseCaseId = baseCase.id,
+                        mutationId = mutation.id,
+                        mutationCategory = mutation.category,
+                        mutationIndex = mutationIndex + 1,
+                        mutationVariant = mutationVariant + 1,
+                        caseIndex = caseIndex,
+                        diagramId = diagram.id,
+                        title = diagram.title + " " + mutation.id + " " +
+                            (mutationVariant + 1).toString().padStart(2, '0'),
+                        scenario = mutation.scenario,
+                        source = source,
+                        expectedOutcome = "oracle",
+                    ),
+                )
+            }
+        }
+    }
+}
+
+private fun applyInvalidSourceMutation(
+    mutationId: String,
+    source: String,
+    variant: Int,
+): String = when (mutationId) {
+    "diagram-keyword-typo" -> mutateInvalidDiagramKeyword(source, variant)
+    "markdown-fence-wrapper" -> "\`\`\`mermaid\\n\${source.trimEnd()}\\n\`\`\`"
+    "leading-explanation" ->
+        "Here is the requested Mermaid diagram \${variant + 1}:\\n\$source"
+    "trailing-explanation" ->
+        "\${source.trimEnd()}\\nThis diagram shows generated result \${variant + 1}."
+    "duplicate-declaration" -> duplicateInvalidDeclaration(source)
+    "foreign-diagram-fragment" -> appendForeignDiagramFragment(source, variant)
+    "truncated-line" -> truncateInsideInvalidBodyLine(source, variant)
+    "truncated-document" -> truncateInvalidDocument(source, variant)
+    "missing-body-line" -> removeInvalidBodyLine(source, variant)
+    "merged-body-lines" -> mergeInvalidBodyLines(source, variant)
+    "unclosed-quote" -> removeInvalidQuote(source, variant)
+    "missing-closing-delimiter" -> removeInvalidClosingDelimiter(source, variant)
+    "mismatched-delimiter" -> mismatchInvalidClosingDelimiter(source, variant)
+    "missing-separator" -> removeInvalidSeparator(source, variant)
+    "fullwidth-punctuation" -> replaceInvalidFullwidthPunctuation(source, variant)
+    "split-body-keyword" -> splitInvalidBodyKeyword(source, variant)
+    else -> source
+}
+
+private fun mutateInvalidDiagramKeyword(
+    source: String,
+    variant: Int,
+): String {
+    val lines = source.split("\\n").toMutableList()
+    val lineIndex = invalidDeclarationLineIndex(lines)
+    val line = lines[lineIndex]
+    val indentLength = line.indexOfFirst { character -> !character.isWhitespace() }
+        .let { index -> if (index < 0) line.length else index }
+    var tokenEnd = indentLength
+    while (tokenEnd < line.length && !line[tokenEnd].isWhitespace()) {
+        tokenEnd += 1
+    }
+    val token = line.substring(indentLength, tokenEnd)
+    if (token.isEmpty()) {
+        return source + "x"
+    }
+    val insertionIndex = (variant % maxOf(1, token.length - 1))
+        .coerceIn(1, token.length - 1)
+    lines[lineIndex] =
+        line.substring(0, indentLength) +
+        token.substring(0, insertionIndex) +
+        "x" +
+        token.substring(insertionIndex) +
+        line.substring(tokenEnd)
+    return lines.joinToString("\\n")
+}
+
+private fun duplicateInvalidDeclaration(source: String): String {
+    val lines = source.split("\\n").toMutableList()
+    val lineIndex = invalidDeclarationLineIndex(lines)
+    lines.add(lineIndex + 1, lines[lineIndex])
+    return lines.joinToString("\\n")
+}
+
+private fun appendForeignDiagramFragment(
+    source: String,
+    variant: Int,
+): String {
+    val fragments = listOf(
+        "sequenceDiagram\\n  Alice->>Bob: incomplete",
+        "classDiagram\\n  class Broken {",
+        "erDiagram\\n  A ||--o{",
+        "gantt\\n  section",
+        "pie\\n  \\"Broken\\" : nope",
+    )
+    return source.trimEnd() + "\\n" + fragments[variant % fragments.size]
+}
+
+private fun truncateInsideInvalidBodyLine(
+    source: String,
+    variant: Int,
+): String {
+    val lines = source.split("\\n")
+    val lineIndex = pickInvalidIndex(invalidBodyLineIndices(lines), variant)
+        ?: return source.substring(0, maxOf(1, source.length / 2))
+    val line = lines[lineIndex]
+    val cut = if (line.length <= 1) {
+        0
+    } else {
+        minOf(
+            line.length - 1,
+            maxOf(1, line.length * ((variant % 5) + 2) / 7),
+        )
+    }
+    return (lines.take(lineIndex) + line.substring(0, cut)).joinToString("\\n")
+}
+
+private fun truncateInvalidDocument(
+    source: String,
+    variant: Int,
+): String {
+    val removedCharacterCount = minOf(source.length - 1, variant + 1)
+    return source.substring(0, source.length - removedCharacterCount)
+}
+
+private fun removeInvalidBodyLine(
+    source: String,
+    variant: Int,
+): String {
+    val lines = source.split("\\n").toMutableList()
+    val lineIndex = pickInvalidIndex(invalidBodyLineIndices(lines), variant)
+        ?: return source.dropLast(1)
+    lines.removeAt(lineIndex)
+    return lines.joinToString("\\n")
+}
+
+private fun mergeInvalidBodyLines(
+    source: String,
+    variant: Int,
+): String {
+    val lines = source.split("\\n").toMutableList()
+    val candidates = invalidBodyLineIndices(lines).filter { index ->
+        index + 1 < lines.size
+    }
+    val lineIndex = pickInvalidIndex(candidates, variant)
+        ?: return source.replaceFirst("\\n", "")
+    val merged = lines[lineIndex].trimEnd() + " " + lines[lineIndex + 1].trimStart()
+    lines[lineIndex] = merged
+    lines.removeAt(lineIndex + 1)
+    return lines.joinToString("\\n")
+}
+
+private fun removeInvalidQuote(
+    source: String,
+    variant: Int,
+): String {
+    val indices = source.indices.filter { index ->
+        source[index] == '"' || source[index] == '\\''
+    }
+    val index = pickInvalidIndex(indices, variant)
+        ?: return source + "\\n\\"unterminated"
+    return source.replaceInvalidRange(index, 1, "")
+}
+
+private fun removeInvalidClosingDelimiter(
+    source: String,
+    variant: Int,
+): String {
+    val indices = invalidClosingDelimiterIndices(source)
+    val index = pickInvalidIndex(indices, variant)
+        ?: return source + "\\nBroken["
+    return source.replaceInvalidRange(index, 1, "")
+}
+
+private fun mismatchInvalidClosingDelimiter(
+    source: String,
+    variant: Int,
+): String {
+    val index = pickInvalidIndex(invalidClosingDelimiterIndices(source), variant)
+        ?: return source + "\\nBroken[}"
+    val replacement = when (source[index]) {
+        ']' -> "}"
+        '}' -> ")"
+        else -> "]"
+    }
+    return source.replaceInvalidRange(index, 1, replacement)
+}
+
+private fun removeInvalidSeparator(
+    source: String,
+    variant: Int,
+): String {
+    val patterns = listOf(
+        Regex("--?>"),
+        Regex(":"),
+        Regex(","),
+        Regex("=|<-"),
+        Regex("\\\\.\\\\.>"),
+    )
+    patterns.forEach { pattern ->
+        val match = pattern.findAll(source).toList().let { matches ->
+            if (matches.isEmpty()) null else matches[variant % matches.size]
+        }
+        if (match != null) {
+            return source.replaceInvalidRange(
+                index = match.range.first,
+                length = match.value.length,
+                replacement = " ",
             )
         }
     }
-
-private fun invalidSourceVariantSource(
-    seedSource: String,
-    profileIndex: Int,
-): String {
-    if (profileIndex == 1) {
-        return seedSource
-    }
-
-    val variantIndex = profileIndex - 1
-    val profileId = profileIndex.toString().padStart(3, '0')
-    val lineEnding = if ((variantIndex and 0x40) == 0) "\\n" else "\\r\\n"
-    val leadingBlankLineCount = variantIndex and 0x03
-    val trailingBlankLineCount = (variantIndex shr 2) and 0x03
-    val contextLineCount = ((variantIndex shr 4) and 0x03) + 1
-    val commentSpacer = if ((variantIndex and 0x80) == 0) " " else "  "
-    val contextLines = (0 until contextLineCount).joinToString(lineEnding) { index ->
-        if (index == 0) {
-            "%%" + commentSpacer + "invalid-source-profile:" + profileId
-        } else {
-            "%%" + commentSpacer + "invalid-source-context:" + index
-        }
-    }
-
-    return lineEnding.repeat(leadingBlankLineCount) +
-        contextLines +
-        lineEnding +
-        seedSource +
-        lineEnding.repeat(trailingBlankLineCount)
+    return source + "\\nBroken separator"
 }
+
+private fun replaceInvalidFullwidthPunctuation(
+    source: String,
+    variant: Int,
+): String {
+    val indices = source.indices.filter { index ->
+        source[index] in charArrayOf(':', ',', '>', '-', '[', ']')
+    }
+    val index = pickInvalidIndex(indices, variant)
+        ?: return source + "?"
+    val replacement = when (source[index]) {
+        ':' -> "\uff1a"
+        ',' -> "\uff0c"
+        '>' -> "\uff1e"
+        '-' -> "\uff0d"
+        '[' -> "\uff3b"
+        else -> "\uff3d"
+    }
+    return source.replaceInvalidRange(index, 1, replacement)
+}
+
+private fun splitInvalidBodyKeyword(
+    source: String,
+    variant: Int,
+): String {
+    val lines = source.split("\\n").toMutableList()
+    val lineIndex = pickInvalidIndex(invalidBodyLineIndices(lines), variant)
+        ?: return source + "\\ninvalid keyword"
+    val match = Regex("^(\\\\s*)([A-Za-z]{2,})(.*)$").matchEntire(lines[lineIndex])
+        ?: return source + "\\ninvalid keyword"
+    val token = match.groupValues[2]
+    val splitIndex = (variant % token.length).coerceIn(1, token.length - 1)
+    lines[lineIndex] =
+        match.groupValues[1] +
+        token.substring(0, splitIndex) +
+        " " +
+        token.substring(splitIndex) +
+        match.groupValues[3]
+    return lines.joinToString("\\n")
+}
+
+private fun invalidDeclarationLineIndex(lines: List<String>): Int {
+    var index = 0
+    while (index < lines.size && lines[index].trim().isEmpty()) {
+        index += 1
+    }
+    if (lines.getOrNull(index)?.trim() == "---") {
+        index += 1
+        while (index < lines.size && lines[index].trim() != "---") {
+            index += 1
+        }
+        index += 1
+    }
+    while (index < lines.size && lines[index].trim().isEmpty()) {
+        index += 1
+    }
+    return minOf(index, lines.lastIndex)
+}
+
+private fun invalidBodyLineIndices(lines: List<String>): List<Int> {
+    val declarationIndex = invalidDeclarationLineIndex(lines)
+    return lines.indices.filter { index ->
+        index > declarationIndex &&
+            lines[index].trim().isNotEmpty() &&
+            !lines[index].trim().startsWith("%%")
+    }
+}
+
+private fun invalidClosingDelimiterIndices(source: String): List<Int> =
+    source.indices.filter { index ->
+        source[index] == ']' || source[index] == '}' || source[index] == ')'
+    }
+
+private fun pickInvalidIndex(
+    values: List<Int>,
+    variant: Int,
+): Int? = if (values.isEmpty()) null else values[variant % values.size]
+
+private fun String.replaceInvalidRange(
+    index: Int,
+    length: Int,
+    replacement: String,
+): String = substring(0, index) + replacement + substring(index + length)
+
+private fun normalizeInvalidSourceBase(value: String): String {
+    val lines = value.trim().replace("\\r\\n", "\\n").split("\\n")
+    val commonIndent = lines
+        .filter { line -> line.trim().isNotEmpty() }
+        .minOf { line -> line.takeWhile(Char::isWhitespace).length }
+    return lines.joinToString("\\n") { line -> line.drop(commonIndent) }
+}
+
+private fun invalidSourceFingerprint(value: String): Int {
+    var fingerprint = -2128831035
+    value.forEach { character ->
+        fingerprint = (fingerprint xor character.code) * 16777619
+    }
+    return fingerprint
+}
+
+private fun invalidSourceExpectedFingerprint(
+    diagramId: String,
+    caseOffset: Int,
+): Int = when (diagramId) {
+${fingerprintDispatch}
+    else -> Int.MIN_VALUE
+}
+
+${fingerprintFunctions}
 `;
 }
 

@@ -184,6 +184,22 @@ internal class RailroadParser(
                 is GMResult.Ok -> Unit
                 is GMResult.Err -> return skipped
             }
+            if (
+                notation == RailroadNotation.Abnf &&
+                source.getOrNull(index) == ';' &&
+                source.indexOf('\n', startIndex = index)
+                    .let { lineEnd -> if (lineEnd < 0) source.length else lineEnd } > index + 1
+            ) {
+                /*
+                 * Mermaid.js 12.0.0:
+                 * packages/parser/src/language/railroad-abnf/railroad-abnf.langium ->
+                 * ABNF_COMMENT.
+                 *
+                 * A semicolon with any same-line suffix is tokenized as a hidden
+                 * ABNF comment, so it cannot also satisfy the rule terminator.
+                 */
+                return errorAt(index, "Expected ';' after Railroad rule")
+            }
             when (val terminator = expect(";", "Expected ';' after Railroad rule")) {
                 is GMResult.Ok -> Unit
                 is GMResult.Err -> return terminator

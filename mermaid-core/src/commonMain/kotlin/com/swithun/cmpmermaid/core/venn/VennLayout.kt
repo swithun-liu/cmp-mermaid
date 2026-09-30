@@ -61,10 +61,13 @@ internal class VennLayout {
         if (!config.padding.isFinite() || config.padding < 0f) {
             return configurationError("padding must be non-negative")
         }
-        val styles = when (val parsed = buildStyleByKey(db.getStyleData())) {
-            is GMResult.Ok -> parsed.value
-            is GMResult.Err -> return parsed
+        if (db.getSubsetData().isEmpty()) {
+            // Mermaid.js 12.0.0: vennRenderer.ts -> VennDiagram(). The upstream
+            // renderer throws inside venn.js for empty data; keep outcome parity
+            // while converting that dependency exception to a content error.
+            return GMResult.Err(MermaidError.Layout("Mermaid Venn requires at least one set"))
         }
+        val styles = buildStyleByKey(db.getStyleData())
         val renderSets = VennLayoutEngine.ensurePairwiseSubsets(db.getSubsetData())
         val width = config.width
         val height = config.height
@@ -601,7 +604,7 @@ internal class VennLayout {
 
     private fun buildStyleByKey(
         styleData: List<VennStyleData>,
-    ): GMResult<Map<String, VennResolvedStyle>, MermaidError> {
+    ): Map<String, VennResolvedStyle> {
         val declarations = linkedMapOf<String, MutableMap<String, String>>()
         styleData.forEach { entry ->
             declarations.getOrPut(stableSetsKey(entry.targets)) { linkedMapOf() }
@@ -609,34 +612,20 @@ internal class VennLayout {
         }
         val result = linkedMapOf<String, VennResolvedStyle>()
         declarations.forEach { (key, styles) ->
-            val fill = when (val source = styles["fill"]) {
-                null -> null
-                else -> CssColorParser.parse(source)
-                    ?: return invalidStyle(key, "fill", source)
-            }
-            val stroke = when (val source = styles["stroke"]) {
-                null -> null
-                else -> CssColorParser.parse(source)
-                    ?: return invalidStyle(key, "stroke", source)
-            }
-            val color = when (val source = styles["color"]) {
-                null -> null
-                else -> CssColorParser.parse(source)
-                    ?: return invalidStyle(key, "color", source)
-            }
-            val opacity = when (val source = styles["fill-opacity"]) {
-                null -> null
-                else -> source.toFloatOrNull()
-                    ?.takeIf(Float::isFinite)
-                    ?.coerceIn(0f, 1f)
-                    ?: return invalidStyle(key, "fill-opacity", source)
-            }
-            val strokeWidth = when (val source = styles["stroke-width"]) {
-                null -> null
-                else -> source.removeSuffix("px").trim().toFloatOrNull()
-                    ?.takeIf { value -> value.isFinite() && value >= 0f }
-                    ?: return invalidStyle(key, "stroke-width", source)
-            }
+            // Mermaid.js 12.0.0: vennRenderer.ts -> draw. Invalid CSS declarations
+            // are ignored by the browser and leave the renderer fallback in effect.
+            val fill = styles["fill"]?.let(CssColorParser::parse)
+            val stroke = styles["stroke"]?.let(CssColorParser::parse)
+            val color = styles["color"]?.let(CssColorParser::parse)
+            val opacity = styles["fill-opacity"]
+                ?.toFloatOrNull()
+                ?.takeIf(Float::isFinite)
+                ?.coerceIn(0f, 1f)
+            val strokeWidth = styles["stroke-width"]
+                ?.removeSuffix("px")
+                ?.trim()
+                ?.toFloatOrNull()
+                ?.takeIf { value -> value.isFinite() && value >= 0f }
             result[key] = VennResolvedStyle(
                 fill = fill,
                 color = color,
@@ -645,7 +634,7 @@ internal class VennLayout {
                 fillOpacity = opacity,
             )
         }
-        return GMResult.Ok(result)
+        return result
     }
 
     private fun vennPalette(context: MermaidRenderContext): List<SceneColor> {
@@ -700,16 +689,6 @@ internal class VennLayout {
         val luminance = 0.2126 * linear(red) + 0.7152 * linear(green) + 0.0722 * linear(blue)
         return luminance < 0.5
     }
-
-    private fun <T> invalidStyle(
-        target: String,
-        property: String,
-        value: String,
-    ): GMResult<T, MermaidError> = GMResult.Err(
-        MermaidError.Configuration(
-            "Mermaid Venn style '$property' has invalid value '$value' on '$target'",
-        ),
-    )
 
     private fun <T> configurationError(message: String): GMResult<T, MermaidError> =
         GMResult.Err(MermaidError.Configuration("Mermaid Venn $message"))

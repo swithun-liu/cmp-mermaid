@@ -350,7 +350,10 @@ internal object MermaidTextPort {
                 is MermaidHtmlFragmentToken.Tag -> {
                     if (token.name in FORBIDDEN_CONTENT_TAGS) {
                         updateSuppressedTags(suppressedTags, token)
-                    } else if (suppressedTags.isEmpty()) {
+                    } else if (
+                        suppressedTags.isEmpty() &&
+                        token.name in DOMPURIFY_ALLOWED_TAGS
+                    ) {
                         output.append(token.toSanitizedLiteral())
                     }
                 }
@@ -462,6 +465,9 @@ internal object MermaidTextPort {
         ): GMResult<Unit, MermaidError> {
             if (tag.name in FORBIDDEN_CONTENT_TAGS) {
                 updateSuppressedTags(suppressedTags, tag)
+                return GMResult.Ok(Unit)
+            }
+            if (tag.name !in DOMPURIFY_ALLOWED_TAGS) {
                 return GMResult.Ok(Unit)
             }
             if (isSuppressingContent()) {
@@ -770,6 +776,27 @@ internal object MermaidTextPort {
     private val LEADING_NEWLINE = Regex("""^\r?\n""")
     private val WHITESPACE = Regex("""\s+""")
     private val IMPORTANT = Regex("""\s*!important\s*$""", RegexOption.IGNORE_CASE)
+    // Mermaid.js 12.0.0: DOMPurify 3.4.12 src/tags.ts default allow-list.
+    // Unknown/custom elements are removed while their text content is retained.
+    private val DOMPURIFY_ALLOWED_TAGS = """
+        a abbr acronym address area article aside audio b bdi bdo big blink blockquote body br
+        button canvas caption center cite code col colgroup content data datalist dd decorator del
+        details dfn dialog dir div dl dt element em fieldset figcaption figure font footer form h1
+        h2 h3 h4 h5 h6 head header hgroup hr html i img input ins kbd label legend li main map mark
+        marquee menu menuitem meter nav nobr ol optgroup option output p picture pre progress q rp
+        rt ruby s samp search section select shadow slot small source spacer span strike strong
+        style sub summary sup table tbody td template textarea tfoot th thead time tr track tt u ul
+        var video wbr svg altglyph altglyphdef altglyphitem animatecolor animatemotion
+        animatetransform circle clippath defs desc ellipse enterkeyhint exportparts filter glyph g
+        glyphref hkern image inputmode line lineargradient marker mask metadata mpath part path
+        pattern polygon polyline radialgradient rect stop switch symbol text textpath title tref
+        tspan view vkern feblend fecolormatrix fecomponenttransfer fecomposite feconvolvematrix
+        fediffuselighting fedisplacementmap fedistantlight fedropshadow feflood fefunca fefuncb
+        fefuncg fefuncr fegaussianblur feimage femerge femergenode femorphology feoffset
+        fepointlight fespecularlighting fespotlight fetile feturbulence math menclose merror mfenced
+        mfrac mglyph mi mlabeledtr mmultiscripts mn mo mover mpadded mphantom mroot mrow ms mspace
+        msqrt mstyle msub msup msubsup mtable mtd mtext mtr munder munderover mprescripts
+    """.trimIndent().split(WHITESPACE).toSet()
     private val FORBIDDEN_CONTENT_TAGS = setOf(
         "embed",
         "iframe",

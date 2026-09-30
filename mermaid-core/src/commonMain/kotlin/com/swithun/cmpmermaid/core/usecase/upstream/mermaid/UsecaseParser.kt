@@ -48,7 +48,7 @@ internal class UsecaseParser(
             }
             if (parentBoundary != null) {
                 when {
-                    trimmed.startsWith("$ACTOR_KEYWORD ") -> when (
+                    trimmed.startsWithKeyword(ACTOR_KEYWORD) -> when (
                         val result = parseActorStatement(statement, builder, parentBoundary)
                     ) {
                         is GMResult.Ok -> {
@@ -61,7 +61,7 @@ internal class UsecaseParser(
                         }
                         is GMResult.Err -> return result
                     }
-                    trimmed.startsWith("$SYSTEM_BOUNDARY_KEYWORD ") ->
+                    trimmed.startsWithKeyword(SYSTEM_BOUNDARY_KEYWORD) ->
                         return parseError(
                             statement,
                             "Nested system boundaries are not supported",
@@ -96,49 +96,49 @@ internal class UsecaseParser(
                     is GMResult.Ok -> builder.setAccessibilityDescription(result.value)
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$DIRECTION_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(DIRECTION_KEYWORD) -> when (
                     val result = parseDirection(statement)
                 ) {
                     is GMResult.Ok -> builder.setDirection(result.value)
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$ACTOR_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(ACTOR_KEYWORD) -> when (
                     val result = parseActorStatement(statement, builder, parent = null)
                 ) {
                     is GMResult.Ok -> Unit
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$SYSTEM_BOUNDARY_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(SYSTEM_BOUNDARY_KEYWORD) -> when (
                     val result = parseBoundary(statement, builder)
                 ) {
                     is GMResult.Ok -> parentBoundary = result.value
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$NOTE_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(NOTE_KEYWORD) -> when (
                     val result = parseNote(statement, builder)
                 ) {
                     is GMResult.Ok -> Unit
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$JSON_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(JSON_KEYWORD) -> when (
                     val result = parseJson(statement, builder)
                 ) {
                     is GMResult.Ok -> Unit
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$CLASS_DEF_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(CLASS_DEF_KEYWORD) -> when (
                     val result = parseClassDefinition(statement, builder)
                 ) {
                     is GMResult.Ok -> Unit
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$CLASS_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(CLASS_KEYWORD) -> when (
                     val result = parseClassAssignment(statement, builder)
                 ) {
                     is GMResult.Ok -> Unit
                     is GMResult.Err -> return result
                 }
-                trimmed.startsWith("$STYLE_KEYWORD ") -> when (
+                trimmed.startsWithKeyword(STYLE_KEYWORD) -> when (
                     val result = parseStyleAssignment(statement, builder)
                 ) {
                     is GMResult.Ok -> Unit
@@ -815,6 +815,8 @@ internal class UsecaseParser(
                     )
                 }
             }
+            value.any { character -> character == '"' || character == '\'' } ->
+                parseError(location.line, location.column, "Unexpected quote in plain label")
             value.isEmpty() ->
                 parseError(location.line, location.column, "Expected a label")
             else -> GMResult.Ok(UsecaseLabel(value, UsecaseLabelType.Text))
@@ -1137,8 +1139,12 @@ internal class UsecaseParser(
                 if (end < 0 || '\n' in source.substring(start, end)) {
                     return parseError(this, "Unterminated '$opening' label")
                 }
+                val text = source.substring(start, end)
+                if (text.any { character -> character == '"' || character == '\'' }) {
+                    return parseError(this, "Unterminated quoted string")
+                }
                 position = end
-                UsecaseLabel(source.substring(start, end).trim(), UsecaseLabelType.Text)
+                UsecaseLabel(text.trim(), UsecaseLabelType.Text)
             }
             skipWhitespace()
             if (!consume(closing)) return parseError(this, "Expected '$closing'")

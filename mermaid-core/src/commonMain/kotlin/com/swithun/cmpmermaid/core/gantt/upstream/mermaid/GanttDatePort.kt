@@ -104,6 +104,30 @@ internal object GanttDatePort {
         return buildMillis(values, source, format)
     }
 
+    /**
+     * Portable subset of JavaScript's `new Date(string)` fallback used by Mermaid Gantt.
+     *
+     * JavaScript accepts an ISO date token after punctuation or whitespace even when the
+     * surrounding task field is malformed. Keep the token boundary rule explicit so
+     * ordinary identifiers containing date-shaped text are not silently accepted.
+     */
+    fun parseJavaScriptDateFallback(source: String): GMResult<Long, MermaidError> {
+        val value = source.trim()
+        when (val direct = parse(value, "YYYY-MM-DD")) {
+            is GMResult.Ok -> return direct
+            is GMResult.Err -> Unit
+        }
+        val match = ISO_DATE_TOKEN.findAll(value).firstOrNull { candidate ->
+            val start = candidate.range.first
+            val endExclusive = candidate.range.last + 1
+            val leftBoundary = start == 0 || !value[start - 1].isLetterOrDigit()
+            val rightBoundary =
+                endExclusive == value.length || !value[endExclusive].isLetterOrDigit()
+            leftBoundary && rightBoundary
+        } ?: return invalidDate(source, "JavaScript Date")
+        return parse(match.value, "YYYY-MM-DD")
+    }
+
     fun parseDuration(source: String): GanttDuration? {
         val match = DURATION.matchEntire(source.trim()) ?: return null
         val value = match.groupValues[1].toDoubleOrNull()?.takeIf(Double::isFinite) ?: return null
@@ -753,6 +777,7 @@ internal object GanttDatePort {
     private const val MILLIS_PER_WEEK = 7L * MILLIS_PER_DAY
     private const val MAX_TICKS = 10_000
     private val DURATION = Regex("""(\d+(?:\.\d+)?)(M|ms|[dhmswy])""")
+    private val ISO_DATE_TOKEN = Regex("""\d{4}-\d{2}-\d{2}""")
     private val TICK_INTERVAL =
         Regex("""([1-9]\d*)(millisecond|second|minute|hour|day|week|month)""")
     private val AUTO_INTERVALS = listOf(

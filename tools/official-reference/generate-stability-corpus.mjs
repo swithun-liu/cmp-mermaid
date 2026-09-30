@@ -571,7 +571,7 @@ private fun addVisualParityVariation(
         "\${source.trimEnd()}\\n  \\"\$label\\": [" +
             "\$x, \$y]\\n"
     }
-    "timeline" -> appendTimelineEvidence(source, label)
+    "timeline" -> appendTimelineEvidence(source, label, ordinal)
     "kanban" -> appendKanbanEvidence(source, evidenceId, label, ordinal)
     "sequence" -> insertAfterDeclaration(
         source = source,
@@ -727,7 +727,9 @@ private fun insertCynefinVisualParityEvidence(
 private fun appendTimelineEvidence(
     source: String,
     label: String,
-): String = "\${source.trimEnd()}\\n  \$label : Parity evidence\\n"
+    ordinal: Int,
+): String = "\${source.trimEnd()}\\n  \$label : Evidence " +
+    ordinal.toString().padStart(3, '0') + "\\n"
 
 private fun appendKanbanEvidence(
     source: String,

@@ -208,6 +208,7 @@ class BlockParserTest {
             "block\nA[\"`**bold**`\"]",
             "block\nA -- \"`**edge**`\" --> B",
             "block\nstyle A fill:#f00\nA",
+            "block\nA\nclass ",
         ).forEach { source ->
             assertIs<MermaidError.Parse>(
                 assertIs<GMResult.Err<MermaidError>>(

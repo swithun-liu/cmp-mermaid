@@ -158,6 +158,26 @@ class EventModelingLayoutTest {
     }
 
     @Test
+    fun ignoresUnresolvedReferencesLikeUpstreamParseAndRenderPath() {
+        val options = MermaidRenderOptions()
+        val db = parse(
+            """
+            eventmodeling
+              rf 01 ui Checkout
+              tf 03 evt PaymentAuthorized ->> 02 [[MissingData]]
+              rf 834 evt Evidence
+            """.trimIndent(),
+            options,
+        )
+        val state = assertIs<GMResult.Ok<EventModelingContext>>(
+            db.getState(context(options)),
+        ).value
+
+        assertEquals(3, state.boxes.size)
+        assertTrue(state.relations.isEmpty())
+    }
+
+    @Test
     fun enforcesRelationLimitAndConfigurationBounds() {
         val limitedOptions = MermaidRenderOptions(maxEdges = 1)
         val limited = parse(
