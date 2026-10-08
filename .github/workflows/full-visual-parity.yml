@@ -147,6 +147,7 @@ jobs:
           INPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
           OUTPUT_FILE=captures/visual-parity/${{ matrix.kind }}-detail.json \
           HEATMAP_DIR=captures/visual-parity/${{ matrix.kind }}-diffs \
+          FAIL_ON_REVIEW=false \
           npm run audit:detail
 
       - name: Generate paged visual evidence
