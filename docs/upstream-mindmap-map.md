@@ -50,6 +50,15 @@ Jison production.
 | `SceneGraph.kt` | Mermaid SVG output semantics | Platform-independent shapes, gradients, paths, text, metadata, and bounds |
 | `mermaid-compose/.../MermaidDiagram.kt` | Mermaid Mindmap SVG output | Native Canvas geometry, gradients, paths, and text painting |
 
+`MindmapLayout.kt` maps `createText.ts -> addHtmlSpan` by using the upstream
+CSS `line-height: 1.5` for both label measurement and SceneGraph text. Browser
+and Compose glyph widths and line breaks can still differ, and those measured
+size perturbations can select a different equivalent CoSE-Bilkent rotation or
+mirror. The portable resolver maps browser Trebuchet MS to bundled
+Arimo-compatible metrics; the refreshed corpus has both narrower and wider
+Native labels (`0.888-1.180` across matched single-line labels), so no uniform
+width multiplier can remove the residual without regressing other inputs.
+
 ## Explicit Translation Boundaries
 
 - `::icon(...)` is parsed and retained, then returns
@@ -80,12 +89,12 @@ Jison production.
 - `CoseBilkentLayoutTest`, `MindmapDagreLayoutTest`, and
   `NonLayeredTidyTreeLayoutTest` cover the translated algorithm boundaries.
 - `MindmapStressTest` renders 256 deterministic randomized Native diagrams.
-- The replacement Web audit compares 13 independent production scenarios and
+- The refreshed Web audit compares 13 independent production scenarios and
   256 unique same-source matrix cases against Mermaid.js `12.0.0`. Production
   results are `9 pass / 4 manually reviewed / 0 fail`; matrix results are
-  `153 pass / 103 manually reviewed / 0 fail`, with 256/256 geometry passes.
+  `159 pass / 97 manually reviewed / 0 fail`, with 256/256 geometry passes.
   The reviews are CoSE-Bilkent branch rotations or mirrors under platform
-  text-size perturbations; 69 also cross the raster-mask threshold. Expected
+  text-size perturbations; 48 also cross the raster-mask threshold. Expected
   text, nodes, hierarchy edges, shapes, colors, clipping, overlap, and paint
   order all pass manual review across 16 contact sheets.
 

@@ -393,6 +393,24 @@ class MindmapLayoutTest {
     }
 
     @Test
+    fun usesMermaidHtmlLabelLineHeightForMeasurementAndDrawing() {
+        val measuredLineHeights = mutableListOf<Float>()
+        val configured = context.copy(
+            textMetrics = TextMetricProvider { request ->
+                measuredLineHeights += request.lineHeight
+                TextMetrics(width = 40f, height = request.fontSize * request.lineHeight)
+            },
+        )
+
+        val scene = render("mindmap\n  Root\n    Child", configured)
+        val labels = scene.elements.filterIsInstance<SceneText>()
+
+        assertTrue(measuredLineHeights.isNotEmpty())
+        assertTrue(measuredLineHeights.all { lineHeight -> lineHeight == 1.5f })
+        assertTrue(labels.all { label -> label.lineHeight == 1.5f })
+    }
+
+    @Test
     fun followsUpstreamShapeSpecificLabelWidthFallback() {
         val measuredWidths = mutableMapOf<String, Float>()
         val configured = context.copy(

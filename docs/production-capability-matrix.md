@@ -94,13 +94,13 @@ The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
 defect and is not a detail-parity pass by itself. All 33 families contribute
 8,448 Native/Official pairs accepted by the replacement detail gate:
-`7,429 automatic pass / 1,019 manually reviewed / 0 unresolved`. Nineteen
+`7,435 automatic pass / 1,013 manually reviewed / 0 unresolved`. Nineteen
 families contribute `4,864 pass / 0 review / 0 fail`; ER contributes
 `196 pass / 60 manually reviewed / 0 fail`; Journey contributes
 `237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
 `235 pass / 21 manually reviewed / 0 fail`; Mindmap contributes
-`153 pass / 103 manually reviewed / 0 fail`; Pie contributes
+`159 pass / 97 manually reviewed / 0 fail`; Pie contributes
 `255 pass / 1 manually reviewed / 0 fail`; Sequence contributes
 `246 pass / 10 manually reviewed / 0 fail`; XY Chart contributes
 `236 pass / 20 manually reviewed / 0 fail`; Treemap contributes
@@ -120,7 +120,8 @@ relationship labels. Twenty Git Graph reviews are text-overlap threshold
 findings caused by browser/Compose text-bound differences; one is a
 paint-order occlusion-ratio threshold finding. Expected text, clipping, paint
 order, and raster checks pass. Mindmap reviews are CoSE-Bilkent branch
-rotation or mirror differences under platform text-size perturbations; all
+rotation or mirror differences under remaining browser/Compose glyph-width
+and line-break perturbations after aligning the HTML label line height; all
 expected text, nodes, hierarchy edges, shapes, and colors are preserved. This
 systematic matrix broadens layout and text-pressure coverage. The Pie review
 is a text-overlap font-box threshold finding. Sequence reviews are

@@ -21,7 +21,7 @@ rendered as a different feature.
 | Parser | Supported | Kotlin Jison `0.4.18` runtime with generated Mermaid `mindmap.jison` tables and semantic actions |
 | Hierarchy | Supported | Indentation-based parent selection, irregular indentation, deep and wide trees, and deterministic source order |
 | Shapes | Supported | Default, square, rounded rectangle, circle, cloud, bang, and hexagon |
-| Text | Supported with explicit boundaries | Mermaid/Marked emphasis, entities, explicit HTML breaks, wrapping, and measured node sizing |
+| Text | Supported with explicit boundaries | Mermaid/Marked emphasis, entities, explicit HTML breaks, wrapping, measured node sizing, and HTML-label `line-height: 1.5` |
 | CoSE-Bilkent | Supported | Pure Kotlin translation of Mermaid's deterministic flat-tree CoSE path |
 | Dagre | Supported | Pure Kotlin Graphlib/Dagre translation with top-to-bottom ranks and routed edges |
 | Tidy tree | Supported | Pure Kotlin translation of Mermaid's bidirectional non-layered tidy-tree adapter |
@@ -50,17 +50,32 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   assert the exact structured unsupported boundary.
 - 13 independent production scenarios cover all 22 declared Mindmap
   capability points.
-- The replacement production audit accepted all 13 pairs:
+- The refreshed production audit accepted all 13 pairs:
   `9 pass / 4 manually reviewed / 0 fail`; geometry ratios are width
-  `0.930-1.079`, height `0.856-1.049`, and foreground ink `0.759-1.037`.
-- The replacement 256-case Native/Official audit accepted all pairs:
-  `153 pass / 103 manually reviewed / 0 fail`; geometry ratios are width
-  `0.930-1.276`, height `0.877-1.104`, and foreground ink `0.794-1.277`.
-  The reviews are CoSE-Bilkent branch rotations or mirrors under platform
-  text-size perturbations; 69 also cross the raster-mask threshold. Every
-  expected node, label, hierarchy edge, shape, and section color is preserved,
-  with no clipping, overlap, or paint-order mismatch. All 16 contact sheets
-  were manually reviewed.
+  `0.949-1.122`, height `0.863-1.049`, and foreground ink `0.742-1.049`.
+  The refreshed production contact sheet was manually reviewed with no
+  clipping, overlap, or missing content. Machine-readable
+  [detail](assets/stability-report/mindmap-production-detail.json) and
+  [geometry](assets/stability-report/mindmap-production-geometry.json) reports
+  preserve the audit results.
+- The refreshed 256-case Native/Official audit accepted all pairs:
+  `159 pass / 97 manually reviewed / 0 fail`; geometry ratios are width
+  `0.896-1.226`, height `0.967-1.150`, and foreground ink `0.774-1.313`.
+  Aligning Native Markdown labels with Mermaid's HTML `line-height: 1.5`
+  increased automatic passes by six and reduced raster-mask findings from 69
+  to 48. The remaining reviews are CoSE-Bilkent branch rotations or mirrors
+  under unavoidable browser/Compose glyph-width and line-break perturbations.
+  Across 3,624 matched single-line labels, width ratios span `0.888-1.180`
+  around a `1.011` median, so a uniform width correction would regress labels
+  on the opposite side of the distribution. The browser uses Trebuchet MS
+  where available, while the portable renderer maps that CSS family to its
+  bundled Arimo-compatible font and explicit CJK fallbacks.
+  Every expected node, label, hierarchy edge, shape, and section color is
+  preserved, with no clipping, overlap, or paint-order mismatch. All 16
+  refreshed contact sheets were manually reviewed. The machine-readable
+  [detail](assets/stability-report/mindmap-visual-parity-detail.json) and
+  [geometry](assets/stability-report/mindmap-visual-parity-geometry.json)
+  reports preserve the complete audit evidence.
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
 - All 11 built-in themes are rendered by the shared production theme matrix.

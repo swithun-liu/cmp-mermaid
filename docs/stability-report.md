@@ -27,7 +27,7 @@ Native-only randomized stress inputs.
 | Native core render results | 441 independent plus 8,448 matrix cases passed, 0 failed |
 | Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Visual evidence review | 528 replacement-gate sheets plus 528 freshly generated source-mutation sheets across all 33 families; all source-mutation sheets decoded and passed full-montage review |
-| Replacement detail audit | 8,448/8,448 matrix pairs accepted: 7,429 pass plus 1,019 manually reviewed; production 390 pass plus 51 manually reviewed |
+| Replacement detail audit | 8,448/8,448 matrix pairs accepted: 7,435 pass plus 1,013 manually reviewed; production 390 pass plus 51 manually reviewed |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
@@ -79,15 +79,15 @@ All 33 families have completed the replacement visual gate. Each
 has 256 unique same-source Native/Official pairs, a 256/256 geometry result,
 and 16 paged contact sheets. The accepted replacement total is
 8,448/8,448 pairs across 528 manually reviewed sheets:
-`7,429 automatic pass / 1,019 manually reviewed / 0 unresolved`. Review
+`7,435 automatic pass / 1,013 manually reviewed / 0 unresolved`. Review
 findings are limited to documented representation thresholds:
 
-- text position: ER 60, Mindmap 103, Requirement 4, Swimlanes 60, and
+- text position: ER 60, Mindmap 97, Requirement 4, Swimlanes 60, and
   Treemap 237;
 - text segmentation: Event Modeling 256, Journey 19, Sequence 10, and
   Use Case 29;
 - text overlap: Git Graph 20, Pie 1, Treemap 198, and Venn 40;
-- raster mask: 69 of the Mindmap text-position reviews;
+- raster mask: 48 of the Mindmap text-position reviews;
 - element count: 155 of the Use Case reviews;
 - paint-order occlusion ratio: Block 4, Git Graph 1, and XY Chart 20.
 
@@ -111,7 +111,7 @@ clipping, and visible paint order.
 | User Journey | 237 | 19 | `1.020-1.032` | `1.041-1.061` | `0.983-1.073` |
 | Requirement | 252 | 4 | `1.013-1.072` | `1.004-1.053` | `0.974-1.148` |
 | Git Graph | 235 | 21 | `1.035-1.141` | `1.032-1.145` | `1.035-1.421` |
-| Mindmap | 153 | 103 | `0.930-1.276` | `0.877-1.104` | `0.794-1.277` |
+| Mindmap | 159 | 97 | `0.896-1.226` | `0.967-1.150` | `0.774-1.313` |
 | Packet | 256 | 0 | `1.011-1.015` | `1.003-1.065` | `0.977-1.039` |
 | Radar | 256 | 0 | `1.004-1.036` | `1.004-1.020` | `1.006-1.037` |
 | Sankey | 256 | 0 | `1.043-1.053` | `1.026-1.053` | `1.053-1.112` |
@@ -408,7 +408,7 @@ Machine-readable evidence:
 [manifest](assets/stability-report/visual-parity-manifest.json) and
 [geometry report](assets/stability-report/visual-parity-geometry.json).
 The geometry gate accepted all 8,448 pairs. Across the complete matrix,
-Native/Official width ratios were `0.930-1.276`, height ratios were
+Native/Official width ratios were `0.896-1.237`, height ratios were
 `0.852-1.236`, and foreground-ink ratios were `0.567-1.578`, within the
 source-controlled thresholds.
 
@@ -885,19 +885,25 @@ contact sheets were manually reviewed, including the corrected
 
 ![Mindmap complex Native and Official corpus](assets/stability-report/mindmap-complex-corpus.png)
 
-The replacement production audit accepted all 13 pairs:
+The refreshed production audit accepted all 13 pairs:
 `9 pass / 4 manually reviewed / 0 fail`. Production width, height, and
-foreground-ink ratios are `0.930-1.079`, `0.856-1.049`, and `0.759-1.037`.
+foreground-ink ratios are `0.949-1.122`, `0.863-1.049`, and `0.742-1.049`.
+The refreshed production contact sheet was manually reviewed with no missing
+content, clipping, or overlap.
 
-The replacement matrix audit accepted all 256 pairs:
-`153 pass / 103 manually reviewed / 0 fail`. The queued cases are
+The refreshed matrix audit accepted all 256 pairs:
+`159 pass / 97 manually reviewed / 0 fail`. Mermaid's HTML-label
+`line-height: 1.5` is now used for Native measurement and drawing, increasing
+automatic passes by six and reducing raster-mask findings from 69 to 48. The
+queued cases are
 text-position findings from CoSE-Bilkent branch rotations or mirrors under
-platform text-size perturbations; 69 also cross the foreground-mask threshold.
+remaining browser/Compose glyph-width and line-break perturbations; 48 also
+cross the foreground-mask threshold.
 Every expected text, node, hierarchy edge, shape, and section color is
 preserved, with no clipping, overlap, or paint-order mismatch. Matrix ratios
-are `0.930-1.276`, `0.877-1.104`, and `0.794-1.277`. All 16 contact sheets
-were manually reviewed. Icons and arbitrary CSS classes remain explicit
-unsupported boundaries.
+are `0.896-1.226`, `0.967-1.150`, and `0.774-1.313`. All 16 refreshed contact
+sheets were manually reviewed. Icons and arbitrary CSS classes remain
+explicit unsupported boundaries.
 
 </details>
 

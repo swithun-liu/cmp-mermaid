@@ -590,7 +590,9 @@ internal class MindmapLayout {
 
     private companion object {
         const val NEO_LOOK = "neo"
-        const val TEXT_LINE_HEIGHT = 1.2f
+        // Mermaid.js 12.0.0: packages/mermaid/src/rendering-util/createText.ts -> addHtmlSpan.
+        // Mindmap labels are Markdown HTML labels with CSS line-height 1.5.
+        const val TEXT_LINE_HEIGHT = 1.5f
         const val MINDMAP_COLOR_LIMIT = 12
         const val CYTOSCAPE_EDGE_RADIUS = 15f
         val TRANSPARENT = SceneColor(0x00000000)

@@ -52,7 +52,7 @@ on both sides and passes with no findings.
 
 All 33 families have completed the replacement gate. Together they have 8,448
 accepted same-source pairs:
-`7,429 automatic pass / 1,019 manually reviewed / 0 unresolved` across 528
+`7,435 automatic pass / 1,013 manually reviewed / 0 unresolved` across 528
 reviewed contact sheets. The review queue contains only the documented
 text-position, text-segmentation, text-overlap, raster-mask, element-count,
 and paint-order occlusion-ratio representation thresholds. Manual review
@@ -62,7 +62,7 @@ and visible paint order.
 The fresh per-family pass/review counts and width, height, and foreground-ink
 ranges are published in the
 [8,448-case visual evidence index](assets/stability-report/visual-parity-evidence.md).
-Across the complete matrix, width ratios are `0.930-1.276`, height ratios are
+Across the complete matrix, width ratios are `0.896-1.237`, height ratios are
 `0.852-1.236`, and foreground-ink ratios are `0.567-1.578`.
 
 ## Expected Behavior

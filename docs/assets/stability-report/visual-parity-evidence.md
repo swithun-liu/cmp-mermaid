@@ -12,12 +12,13 @@ combines at least 13 complex structural seeds with visible text and layout-press
 profiles. The 256 sources per type are unique, but they are not presented as
 256 unrelated topologies.
 
-All 33 families completed the fresh 2026-09-28 replacement detail, geometry,
-and manual contact-sheet gates. The accepted total is `8,448/8,448` pairs:
-`7,429 automatic pass / 1,019 manually reviewed / 0 unresolved` across 528
-contact sheets. The aggregate
+All 33 families completed the replacement detail, geometry, and manual
+contact-sheet gates. Mindmap evidence was refreshed on 2026-10-08 after
+aligning its HTML-label line height. The accepted total is `8,448/8,448`
+pairs: `7,435 automatic pass / 1,013 manually reviewed / 0 unresolved` across
+528 contact sheets. The aggregate
 [geometry report](visual-parity-geometry.json) has `0` failures, with width
-ratios `0.930-1.276`, height ratios `0.852-1.236`, and foreground-ink ratios
+ratios `0.896-1.237`, height ratios `0.852-1.236`, and foreground-ink ratios
 `0.567-1.578`. Review findings are limited to the documented text-position,
 text-segmentation, text-overlap, raster-mask, element-count, and paint-order
 occlusion-ratio representation thresholds; manual review found no missing
@@ -48,7 +49,7 @@ semantic content, clipping defect, or incorrect visible paint order.
 | User Journey | 237 | 19 | 0 | `1.020-1.032` | `1.041-1.061` | `0.983-1.073` |
 | Requirement | 252 | 4 | 0 | `1.013-1.072` | `1.004-1.053` | `0.974-1.148` |
 | Git Graph | 235 | 21 | 0 | `1.035-1.141` | `1.032-1.145` | `1.035-1.421` |
-| Mindmap | 153 | 103 | 0 | `0.930-1.276` | `0.877-1.104` | `0.794-1.277` |
+| Mindmap | 159 | 97 | 0 | `0.896-1.226` | `0.967-1.150` | `0.774-1.313` |
 | Packet | 256 | 0 | 0 | `1.011-1.015` | `1.003-1.065` | `0.977-1.039` |
 | Radar | 256 | 0 | 0 | `1.004-1.036` | `1.004-1.020` | `1.006-1.037` |
 | Sankey | 256 | 0 | 0 | `1.043-1.053` | `1.026-1.053` | `1.053-1.112` |
@@ -959,7 +960,7 @@ Replacement detail audit: `235 pass / 21 review / 0 fail`. Twenty reviews are te
 <details>
 <summary><strong>Mindmap - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `153 pass / 103 review / 0 fail`. All 103 reviews are text-position findings from equivalent CoSE-Bilkent branch rotations or mirrors; 69 also cross the raster-mask threshold. Geometry ratios: width `0.930-1.276`, height `0.877-1.104`, foreground ink `0.794-1.277`. All 16 pages below were manually reviewed.
+Refreshed detail audit: `159 pass / 97 review / 0 fail`. All 97 reviews are text-position findings from equivalent CoSE-Bilkent branch rotations or mirrors under remaining browser/Compose glyph-width and line-break differences; 48 also cross the raster-mask threshold. Geometry ratios: width `0.896-1.226`, height `0.967-1.150`, foreground ink `0.774-1.313`. All 16 refreshed pages below were manually reviewed. Machine-readable [detail](mindmap-visual-parity-detail.json) and [geometry](mindmap-visual-parity-geometry.json) reports contain the complete results.
 
 ![Mindmap visual parity page 01](mindmap-visual-parity-01.jpg)
 
