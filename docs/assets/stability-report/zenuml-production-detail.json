@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-23T17:08:55.836Z",
-  "inputDirectory": "captures/local/zenuml-production-final",
+  "generatedAt": "2026-10-09T08:07:31.655Z",
+  "inputDirectory": "captures/local/zenuml-production-arrow-final",
   "corpusSource": "production",
   "corpusKind": "zenuml",
   "theme": null,
@@ -63,6 +63,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 12,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.038760032348579894,
           "p95CenterDistance": 0.023866676263791773,
           "maximumSizeRatio": 1
@@ -70,8 +72,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -122,11 +126,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9576999339061467,
-        "exactMaskIou": 0.8116207951070337,
-        "edgeF1": 0.9884309472161966,
-        "colorError": 0.060459523968859445,
-        "exactColorError": 0.09890587835541964
+        "maskIou": 0.9662921348314607,
+        "exactMaskIou": 0.8151311775472849,
+        "edgeF1": 0.9895269050198627,
+        "colorError": 0.05973567695329404,
+        "exactColorError": 0.09699920643465847
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -143,8 +147,8 @@
           "width": 1184,
           "height": 740
         },
-        "foregroundCells": 1449,
-        "edgeCells": 2669
+        "foregroundCells": 1462,
+        "edgeCells": 2684
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -216,6 +220,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 23,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.02614948880387624,
           "p95CenterDistance": 0.020023118238349107,
           "maximumSizeRatio": 1
@@ -223,8 +229,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.972972972972973,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -275,11 +283,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.94106463878327,
-        "exactMaskIou": 0.7633851468048359,
-        "edgeF1": 0.97446536865624,
-        "colorError": 0.046250418552872465,
-        "exactColorError": 0.09054977968926968
+        "maskIou": 0.9435994930291508,
+        "exactMaskIou": 0.7656879677605066,
+        "edgeF1": 0.9744735162731333,
+        "colorError": 0.04595183809958092,
+        "exactColorError": 0.0898205530533073
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -296,8 +304,8 @@
           "width": 1184,
           "height": 714
         },
-        "foregroundCells": 1539,
-        "edgeCells": 3213
+        "foregroundCells": 1543,
+        "edgeCells": 3214
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -369,6 +377,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 29,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.023559240133317432,
           "p95CenterDistance": 0.0199541653394365,
           "maximumSizeRatio": 1
@@ -376,8 +386,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.9714285714285714,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -428,11 +440,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9701704545454546,
-        "exactMaskIou": 0.7882929345023207,
-        "edgeF1": 0.9804278926423374,
-        "colorError": 0.023811728130482736,
-        "exactColorError": 0.04131062774086771
+        "maskIou": 0.9696195343554799,
+        "exactMaskIou": 0.7883475122454241,
+        "edgeF1": 0.9804410244883839,
+        "colorError": 0.023685192802839865,
+        "exactColorError": 0.04108666238687621
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -449,8 +461,8 @@
           "width": 892,
           "height": 884
         },
-        "foregroundCells": 3505,
-        "edgeCells": 4526
+        "foregroundCells": 3507,
+        "edgeCells": 4530
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -522,15 +534,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 28,
-          "maximumCenterDistance": 0.024262336708523156,
-          "p95CenterDistance": 0.022216433488616853,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03347944804517658,
+          "p95CenterDistance": 0.025323736497978498,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.8837209302325582,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -581,11 +597,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8488275862068966,
-        "exactMaskIou": 0.7044760935910478,
-        "edgeF1": 0.9393875473271359,
-        "colorError": 0.026698706435616993,
-        "exactColorError": 0.041915504757345456
+        "maskIou": 0.8504827586206897,
+        "exactMaskIou": 0.7060020345879959,
+        "edgeF1": 0.9394327243089281,
+        "colorError": 0.026496472155707766,
+        "exactColorError": 0.041622284722637785
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -602,8 +618,8 @@
           "width": 1050,
           "height": 884
         },
-        "foregroundCells": 3261,
-        "edgeCells": 4303
+        "foregroundCells": 3267,
+        "edgeCells": 4309
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -675,6 +691,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 21,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.03933922234358047,
           "p95CenterDistance": 0.022116666680353548,
           "maximumSizeRatio": 1
@@ -682,8 +700,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.9487179487179487,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -734,11 +754,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.7974904147786686,
-        "exactMaskIou": 0.6963815789473684,
-        "edgeF1": 0.962408776013674,
-        "colorError": 0.030470485638409116,
-        "exactColorError": 0.05624828001375989
+        "maskIou": 0.7961097603334492,
+        "exactMaskIou": 0.6970790941910076,
+        "edgeF1": 0.9630865649446307,
+        "colorError": 0.03018357533508691,
+        "exactColorError": 0.05533139850404662
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -755,8 +775,8 @@
           "width": 788,
           "height": 884
         },
-        "foregroundCells": 2817,
-        "edgeCells": 4089
+        "foregroundCells": 2831,
+        "edgeCells": 4101
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -828,6 +848,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 12,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.038825720776716366,
           "p95CenterDistance": 0.023866676263791773,
           "maximumSizeRatio": 1
@@ -835,8 +857,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -887,11 +911,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9592641261498029,
-        "exactMaskIou": 0.8127659574468085,
-        "edgeF1": 0.9884601514605121,
-        "colorError": 0.06301406890439792,
-        "exactColorError": 0.10287939289190853
+        "maskIou": 0.9678055190538765,
+        "exactMaskIou": 0.8162522741055185,
+        "edgeF1": 0.9895533141210374,
+        "colorError": 0.06228218100056212,
+        "exactColorError": 0.10097464496208834
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -908,8 +932,8 @@
           "width": 1184,
           "height": 740
         },
-        "foregroundCells": 1460,
-        "edgeCells": 2679
+        "foregroundCells": 1473,
+        "edgeCells": 2694
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -981,6 +1005,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 9,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04547230270983471,
           "p95CenterDistance": 0.02201089973726804,
           "maximumSizeRatio": 1
@@ -988,8 +1014,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.9473684210526315,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1040,11 +1068,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9833852544132918,
-        "exactMaskIou": 0.7427007299270073,
+        "maskIou": 0.9875389408099688,
+        "exactMaskIou": 0.7463503649635036,
         "edgeF1": 1,
-        "colorError": 0.06421688647477178,
-        "exactColorError": 0.11404513143456896
+        "colorError": 0.06349089055494832,
+        "exactColorError": 0.11294487381327227
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1061,8 +1089,8 @@
           "width": 1184,
           "height": 583
         },
-        "foregroundCells": 1894,
-        "edgeCells": 3446
+        "foregroundCells": 1902,
+        "edgeCells": 3453
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1134,6 +1162,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 23,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.025346298579468744,
           "p95CenterDistance": 0.019668885663851172,
           "maximumSizeRatio": 1
@@ -1141,8 +1171,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.972972972972973,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1193,11 +1225,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9189686924493554,
-        "exactMaskIou": 0.7965517241379311,
-        "edgeF1": 0.983763607415603,
-        "colorError": 0.04660897411459724,
-        "exactColorError": 0.07735632183908046
+        "maskIou": 0.917841814837523,
+        "exactMaskIou": 0.7977011494252874,
+        "edgeF1": 0.9837643390195002,
+        "colorError": 0.046223204307629794,
+        "exactColorError": 0.07633310795582601
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1214,8 +1246,8 @@
           "width": 1184,
           "height": 640
         },
-        "foregroundCells": 1596,
-        "edgeCells": 3049
+        "foregroundCells": 1598,
+        "edgeCells": 3051
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1287,6 +1319,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 10,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04455122123141797,
           "p95CenterDistance": 0.025456986776557666,
           "maximumSizeRatio": 1
@@ -1294,8 +1328,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1346,11 +1382,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.7905869910100476,
-        "exactMaskIou": 0.7135627530364372,
-        "edgeF1": 0.9858498418511737,
-        "colorError": 0.07882059636063846,
-        "exactColorError": 0.11868169670027255
+        "maskIou": 0.7894459102902375,
+        "exactMaskIou": 0.7152250885179565,
+        "edgeF1": 0.9858686616791356,
+        "colorError": 0.07845906724271628,
+        "exactColorError": 0.11766358878739491
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1367,8 +1403,8 @@
           "width": 1184,
           "height": 812
         },
-        "foregroundCells": 1890,
-        "edgeCells": 3046
+        "foregroundCells": 1895,
+        "edgeCells": 3050
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1440,6 +1476,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 29,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.022266036927311536,
           "p95CenterDistance": 0.0199541653394365,
           "maximumSizeRatio": 1
@@ -1447,8 +1485,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.9714285714285714,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1499,11 +1539,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9700564971751412,
-        "exactMaskIou": 0.7900410677618069,
-        "edgeF1": 0.9800862743029557,
-        "colorError": 0.023823770922656844,
-        "exactColorError": 0.04155762236448309
+        "maskIou": 0.9695087521174478,
+        "exactMaskIou": 0.7900949448293559,
+        "edgeF1": 0.9800994209133849,
+        "colorError": 0.02369794699472333,
+        "exactColorError": 0.041334628111787015
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1520,8 +1560,8 @@
           "width": 892,
           "height": 884
         },
-        "foregroundCells": 3525,
-        "edgeCells": 4522
+        "foregroundCells": 3527,
+        "edgeCells": 4526
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1593,6 +1633,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 28,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.02336568074032063,
           "p95CenterDistance": 0.022216433488616853,
           "maximumSizeRatio": 1
@@ -1600,8 +1642,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.8837209302325582,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1652,11 +1696,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8479803493449781,
-        "exactMaskIou": 0.7051120624527827,
-        "edgeF1": 0.9395596856204118,
-        "colorError": 0.02671294211586629,
-        "exactColorError": 0.042236607561684965
+        "maskIou": 0.849617903930131,
+        "exactMaskIou": 0.7066230168723243,
+        "edgeF1": 0.9396045445030163,
+        "colorError": 0.026512872460778703,
+        "exactColorError": 0.041946267300674994
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1673,8 +1717,8 @@
           "width": 1050,
           "height": 884
         },
-        "foregroundCells": 3291,
-        "edgeCells": 4318
+        "foregroundCells": 3297,
+        "edgeCells": 4324
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1746,6 +1790,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 19,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.02737639264048566,
           "p95CenterDistance": 0.025853896990523647,
           "maximumSizeRatio": 1
@@ -1753,8 +1799,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.9696969696969697,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1805,11 +1853,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9126365054602185,
-        "exactMaskIou": 0.8401500938086304,
-        "edgeF1": 0.9611820720641959,
-        "colorError": 0.03633846311935338,
-        "exactColorError": 0.04798685452917877
+        "maskIou": 0.9177067082683308,
+        "exactMaskIou": 0.843644544431946,
+        "edgeF1": 0.9613967659443037,
+        "colorError": 0.03556995405422895,
+        "exactColorError": 0.04733035821502704
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1826,8 +1874,8 @@
           "width": 852,
           "height": 884
         },
-        "foregroundCells": 2368,
-        "edgeCells": 3519
+        "foregroundCells": 2381,
+        "edgeCells": 3530
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1899,15 +1947,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 8,
-          "maximumCenterDistance": 0.029395143280891354,
-          "p95CenterDistance": 0.026943033948906472,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.01929564826807533,
+          "p95CenterDistance": 0.01876646493055292,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1958,11 +2010,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.995682676740421,
-        "exactMaskIou": 0.8261728395061728,
+        "maskIou": 0.9919398173025256,
+        "exactMaskIou": 0.8288110508140109,
         "edgeF1": 0.9993256911665543,
-        "colorError": 0.04801490698163677,
-        "exactColorError": 0.09364512224642943
+        "colorError": 0.0475172390689933,
+        "exactColorError": 0.09138976754984184
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1979,8 +2031,8 @@
           "width": 728,
           "height": 884
         },
-        "foregroundCells": 1852,
-        "edgeCells": 2882
+        "foregroundCells": 1861,
+        "edgeCells": 2888
       },
       "officialRaster": {
         "imageWidth": 1200,

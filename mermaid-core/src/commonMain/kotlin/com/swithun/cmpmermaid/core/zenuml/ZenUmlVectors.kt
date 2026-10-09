@@ -17,6 +17,8 @@ import com.swithun.cmpmermaid.core.zenuml.upstream.zenuml.ZenUmlFragmentKind
  * src/svg/components/message.ts, return.ts and fragment.ts.
  */
 internal object ZenUmlVectors {
+    private val BLACK = SceneColor(0xFF000000)
+
     val openArrow = arrow(filled = false)
     val filledArrow = arrow(filled = true)
 
@@ -247,6 +249,4 @@ internal object ZenUmlVectors {
         },
         dashIntervals = dashIntervals,
     )
-
-    private val BLACK = SceneColor(0xFF000000)
 }

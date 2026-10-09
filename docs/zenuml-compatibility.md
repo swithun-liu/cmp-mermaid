@@ -36,13 +36,16 @@ Supported behavior includes:
   `@zenuml/core@3.49.2`.
 - All 13 production pairs pass the replacement detail and geometry audits.
   Native/Official content ratios are width `1.042-1.100`, height
-  `1.039-1.102`, and foreground ink `1.090-1.234`.
+  `1.039-1.102`, and foreground ink `1.094-1.238`.
 - All 256 visual-matrix pairs pass the replacement detail and geometry audits
   with `256 pass / 0 review / 0 fail`. Ratios are width `1.031-1.101`,
-  height `1.025-1.102`, and foreground ink `0.970-1.264`.
-- All 16 visual-matrix contact sheets were manually reviewed with no unresolved
-  participant, occurrence, message, fragment, icon, clipping, overlap, or
-  paint-order defect.
+  height `1.025-1.102`, and foreground ink `0.972-1.266`.
+- The cached open and filled message-arrow vectors have explicit black
+  primitive paint, with a regression test protecting Kotlin object
+  initialization order.
+- All 16 freshly generated visual-matrix contact sheets were manually reviewed
+  with no unresolved participant, occurrence, message arrow, fragment, icon,
+  clipping, overlap, or paint-order defect.
 - Parser, coordinate, layout, malformed-input, and resource-limit tests are
   included in the JVM suite.
 

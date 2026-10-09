@@ -125,7 +125,7 @@ clipping, and visible paint order.
 | TreeView | 256 | 0 | `0.990-1.055` | `0.969-1.063` | `0.853-1.046` |
 | Use Case | 256 | 0 | `1.036-1.160` | `0.971-1.115` | `1.043-1.316` |
 | Wardley Map | 256 | 0 | `0.999-1.016` | `1.016-1.019` | `0.960-1.106` |
-| ZenUML | 256 | 0 | `1.031-1.101` | `1.025-1.102` | `0.970-1.264` |
+| ZenUML | 256 | 0 | `1.031-1.101` | `1.025-1.102` | `0.972-1.266` |
 - All 16 Flowchart contact sheets and all 256 same-source pairs were manually
   inspected after correcting Bang/Cloud edge intersection bounds. No
   unresolved marker, routing, label, clipping, overlap, or paint-order defect
@@ -291,10 +291,11 @@ clipping, and visible paint order.
   order match the Official output. Matrix detail passed automatically with no
   review queue.
 - All 16 ZenUML contact sheets and all 256 same-source pairs were manually
-  inspected. Participants, occurrences, nested messages, replies, groups,
-  fragments, participant icons, labels, clipping, overlap, and paint order
-  match the Official output. Matrix detail passed automatically with no review
-  queue.
+  inspected after restoring the cached message-arrow primitive paint.
+  Participants, occurrences, ordinary and nested message arrows, replies,
+  groups, fragments, participant icons, labels, clipping, overlap, and paint
+  order match the Official output. Matrix detail passed automatically with no
+  review queue.
 
 All per-family results pass, so overall supported Mermaid `12.0.0`
 compatibility is **Stable**.
@@ -1053,11 +1054,11 @@ and all 16 matrix contact sheets were manually reviewed.
 
 The replacement production detail and geometry audits passed all 13 pairs with
 `13 pass / 0 review / 0 fail`. Production width, height, and foreground-ink
-ratios were `1.042-1.100`, `1.039-1.102`, and `1.090-1.234`.
+ratios were `1.042-1.100`, `1.039-1.102`, and `1.094-1.238`.
 
 The matrix detail and geometry audits passed all 256 pairs with
 `256 pass / 0 review / 0 fail`; matrix ratios were `1.031-1.101`,
-`1.025-1.102`, and `0.970-1.264`. The raw
+`1.025-1.102`, and `0.972-1.266`. The raw
 [production detail](assets/stability-report/zenuml-production-detail.json),
 [production geometry](assets/stability-report/zenuml-production-geometry.json),
 [matrix detail](assets/stability-report/zenuml-visual-parity-detail.json), and

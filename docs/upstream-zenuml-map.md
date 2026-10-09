@@ -38,6 +38,9 @@
   upstream constants and ordering.
 - Participant and fragment SVG assets are converted to reusable SceneGraph
   vector paths; the generator remains outside production modules.
+- Cached open and filled message arrows preserve the upstream black primitive
+  fill/stroke paint. Their palette is initialized before the cached vector
+  definitions to retain the SVG component semantics on Kotlin targets.
 - Parsing and layout expose structured `GMResult` failures, with the engine
   preserving a final unexpected-error boundary.
 
@@ -46,7 +49,8 @@
 - Parser and model behavior: `ZenUmlParserTest.kt`
 - Horizontal and vertical coordinates: `ZenUmlCoordinatesTest.kt` and
   `ZenUmlVerticalCoordinatesTest.kt`
-- Geometry and scene rendering: `ZenUmlLayoutTest.kt`
+- Geometry, scene rendering, and cached arrow primitive paint:
+  `ZenUmlLayoutTest.kt`
 - Official documentation fixtures: `OfficialZenUmlDocumentationTest.kt`
 - Production, determinism, themes, and 256-case Native matrix:
   `ProductionCorpusTest.kt`

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-28T14:09:30.636Z",
-  "inputDirectory": "captures/local/visual-parity-20260928-45924b4",
+  "generatedAt": "2026-10-09T08:06:08.086Z",
+  "inputDirectory": "captures/local/zenuml-arrow-final",
   "corpusSource": "visual-parity",
   "theme": null,
   "caseCount": 256,
@@ -37,8 +37,8 @@
             255
           ]
         ],
-        "inkPixels": 58025,
-        "inkRatio": 0.05372685185185185,
+        "inkPixels": 58411,
+        "inkRatio": 0.05408425925925926,
         "contentBounds": {
           "x": 8,
           "y": 149,
@@ -74,7 +74,7 @@
       },
       "widthRatio": 1.0571428571428572,
       "heightRatio": 1.0524475524475525,
-      "inkRatio": 1.1167458958024596
+      "inkRatio": 1.124174830154545
     },
     {
       "id": "parity_zenuml_002",
@@ -96,8 +96,8 @@
             255
           ]
         ],
-        "inkPixels": 59761,
-        "inkRatio": 0.05533425925925926,
+        "inkPixels": 59927,
+        "inkRatio": 0.05548796296296296,
         "contentBounds": {
           "x": 8,
           "y": 112,
@@ -133,7 +133,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.04,
-      "inkRatio": 1.138825367787179
+      "inkRatio": 1.1419887186523363
     },
     {
       "id": "parity_zenuml_003",
@@ -155,8 +155,8 @@
             255
           ]
         ],
-        "inkPixels": 159783,
-        "inkRatio": 0.14794722222222223,
+        "inkPixels": 159986,
+        "inkRatio": 0.14813518518518518,
         "contentBounds": {
           "x": 84,
           "y": 8,
@@ -192,7 +192,7 @@
       },
       "widthRatio": 1.0639175257731959,
       "heightRatio": 1.0574162679425838,
-      "inkRatio": 1.1983754959387398
+      "inkRatio": 1.1998979997449992
     },
     {
       "id": "parity_zenuml_004",
@@ -214,8 +214,8 @@
             255
           ]
         ],
-        "inkPixels": 208976,
-        "inkRatio": 0.1934962962962963,
+        "inkPixels": 209133,
+        "inkRatio": 0.19364166666666666,
         "contentBounds": {
           "x": 8,
           "y": 15,
@@ -251,7 +251,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.1458211107516683
+      "inkRatio": 1.1466819460360453
     },
     {
       "id": "parity_zenuml_005",
@@ -273,8 +273,8 @@
             255
           ]
         ],
-        "inkPixels": 100388,
-        "inkRatio": 0.09295185185185185,
+        "inkPixels": 100710,
+        "inkRatio": 0.09325,
         "contentBounds": {
           "x": 126,
           "y": 8,
@@ -310,7 +310,7 @@
       },
       "widthRatio": 1.0675675675675675,
       "heightRatio": 1.0625,
-      "inkRatio": 1.216072488522247
+      "inkRatio": 1.2199731075335247
     },
     {
       "id": "parity_zenuml_006",
@@ -332,8 +332,8 @@
             255
           ]
         ],
-        "inkPixels": 58421,
-        "inkRatio": 0.05409351851851852,
+        "inkPixels": 58807,
+        "inkRatio": 0.05445092592592592,
         "contentBounds": {
           "x": 8,
           "y": 149,
@@ -369,7 +369,7 @@
       },
       "widthRatio": 1.0571428571428572,
       "heightRatio": 1.0524475524475525,
-      "inkRatio": 1.116395948786547
+      "inkRatio": 1.123772214790751
     },
     {
       "id": "parity_zenuml_007",
@@ -391,8 +391,8 @@
             255
           ]
         ],
-        "inkPixels": 55821,
-        "inkRatio": 0.05168611111111111,
+        "inkPixels": 56035,
+        "inkRatio": 0.05188425925925926,
         "contentBounds": {
           "x": 8,
           "y": 214,
@@ -428,7 +428,7 @@
       },
       "widthRatio": 1.0590339892665475,
       "heightRatio": 1.0605381165919283,
-      "inkRatio": 1.110180783993954
+      "inkRatio": 1.1144368648197132
     },
     {
       "id": "parity_zenuml_008",
@@ -450,8 +450,8 @@
             255
           ]
         ],
-        "inkPixels": 53748,
-        "inkRatio": 0.04976666666666667,
+        "inkPixels": 53907,
+        "inkRatio": 0.04991388888888889,
         "contentBounds": {
           "x": 8,
           "y": 145,
@@ -487,7 +487,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0374149659863945,
-      "inkRatio": 1.1315606644350407
+      "inkRatio": 1.1349081033284911
     },
     {
       "id": "parity_zenuml_009",
@@ -509,8 +509,8 @@
             255
           ]
         ],
-        "inkPixels": 56482,
-        "inkRatio": 0.05229814814814815,
+        "inkPixels": 56628,
+        "inkRatio": 0.05243333333333333,
         "contentBounds": {
           "x": 8,
           "y": 133,
@@ -546,7 +546,7 @@
       },
       "widthRatio": 1.0666666666666667,
       "heightRatio": 1.0673400673400673,
-      "inkRatio": 1.115209193042036
+      "inkRatio": 1.1180918909313482
     },
     {
       "id": "parity_zenuml_010",
@@ -568,8 +568,8 @@
             255
           ]
         ],
-        "inkPixels": 160143,
-        "inkRatio": 0.14828055555555555,
+        "inkPixels": 160346,
+        "inkRatio": 0.14846851851851853,
         "contentBounds": {
           "x": 84,
           "y": 8,
@@ -605,7 +605,7 @@
       },
       "widthRatio": 1.0639175257731959,
       "heightRatio": 1.0574162679425838,
-      "inkRatio": 1.1969728679273488
+      "inkRatio": 1.198490171163764
     },
     {
       "id": "parity_zenuml_011",
@@ -627,8 +627,8 @@
             255
           ]
         ],
-        "inkPixels": 209839,
-        "inkRatio": 0.19429537037037037,
+        "inkPixels": 209996,
+        "inkRatio": 0.19444074074074075,
         "contentBounds": {
           "x": 8,
           "y": 15,
@@ -664,7 +664,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.0431654676258992,
-      "inkRatio": 1.144803242824487
+      "inkRatio": 1.1456597762101943
     },
     {
       "id": "parity_zenuml_012",
@@ -686,8 +686,8 @@
             255
           ]
         ],
-        "inkPixels": 102095,
-        "inkRatio": 0.09453240740740741,
+        "inkPixels": 102417,
+        "inkRatio": 0.09483055555555556,
         "contentBounds": {
           "x": 91,
           "y": 8,
@@ -723,7 +723,7 @@
       },
       "widthRatio": 1.071578947368421,
       "heightRatio": 1.0625,
-      "inkRatio": 1.152339781936387
+      "inkRatio": 1.1559741754892887
     },
     {
       "id": "parity_zenuml_013",
@@ -745,8 +745,8 @@
             255
           ]
         ],
-        "inkPixels": 85454,
-        "inkRatio": 0.07912407407407407,
+        "inkPixels": 85856,
+        "inkRatio": 0.0794962962962963,
         "contentBounds": {
           "x": 82,
           "y": 8,
@@ -782,7 +782,7 @@
       },
       "widthRatio": 1.099787685774947,
       "heightRatio": 1.1022443890274314,
-      "inkRatio": 1.2312192029507534
+      "inkRatio": 1.237011209405527
     },
     {
       "id": "parity_zenuml_014",
@@ -804,8 +804,8 @@
             255
           ]
         ],
-        "inkPixels": 54422,
-        "inkRatio": 0.05039074074074074,
+        "inkPixels": 54763,
+        "inkRatio": 0.050706481481481484,
         "contentBounds": {
           "x": 8,
           "y": 166,
@@ -841,7 +841,7 @@
       },
       "widthRatio": 1.0552584670231728,
       "heightRatio": 1.0518518518518518,
-      "inkRatio": 1.0999231981890942
+      "inkRatio": 1.1068151501677512
     },
     {
       "id": "parity_zenuml_015",
@@ -863,8 +863,8 @@
             255
           ]
         ],
-        "inkPixels": 57243,
-        "inkRatio": 0.05300277777777778,
+        "inkPixels": 57400,
+        "inkRatio": 0.053148148148148146,
         "contentBounds": {
           "x": 8,
           "y": 126,
@@ -900,7 +900,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0384615384615385,
-      "inkRatio": 1.180828021535986
+      "inkRatio": 1.1840666707923344
     },
     {
       "id": "parity_zenuml_016",
@@ -922,8 +922,8 @@
             255
           ]
         ],
-        "inkPixels": 166517,
-        "inkRatio": 0.1541824074074074,
+        "inkPixels": 166724,
+        "inkRatio": 0.15437407407407408,
         "contentBounds": {
           "x": 61,
           "y": 8,
@@ -959,7 +959,7 @@
       },
       "widthRatio": 1.0631163708086786,
       "heightRatio": 1.0574162679425838,
-      "inkRatio": 1.1798419952527721
+      "inkRatio": 1.1813086760902682
     },
     {
       "id": "parity_zenuml_017",
@@ -981,8 +981,8 @@
             255
           ]
         ],
-        "inkPixels": 202951,
-        "inkRatio": 0.18791759259259258,
+        "inkPixels": 203140,
+        "inkRatio": 0.1880925925925926,
         "contentBounds": {
           "x": 8,
           "y": 32,
@@ -1018,7 +1018,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0398009950248757,
-      "inkRatio": 1.0951026839191478
+      "inkRatio": 1.0961225084445787
     },
     {
       "id": "parity_zenuml_018",
@@ -1040,8 +1040,8 @@
             255
           ]
         ],
-        "inkPixels": 106655,
-        "inkRatio": 0.09875462962962962,
+        "inkPixels": 106962,
+        "inkRatio": 0.09903888888888888,
         "contentBounds": {
           "x": 99,
           "y": 8,
@@ -1077,7 +1077,7 @@
       },
       "widthRatio": 1.068230277185501,
       "heightRatio": 1.0625,
-      "inkRatio": 1.2292257335822787
+      "inkRatio": 1.2327639858930917
     },
     {
       "id": "parity_zenuml_019",
@@ -1099,8 +1099,8 @@
             255
           ]
         ],
-        "inkPixels": 54740,
-        "inkRatio": 0.05068518518518519,
+        "inkPixels": 55081,
+        "inkRatio": 0.05100092592592593,
         "contentBounds": {
           "x": 8,
           "y": 166,
@@ -1136,7 +1136,7 @@
       },
       "widthRatio": 1.0552584670231728,
       "heightRatio": 1.0518518518518518,
-      "inkRatio": 1.1014306122859614
+      "inkRatio": 1.1082919173424013
     },
     {
       "id": "parity_zenuml_020",
@@ -1158,8 +1158,8 @@
             255
           ]
         ],
-        "inkPixels": 52286,
-        "inkRatio": 0.04841296296296296,
+        "inkPixels": 52482,
+        "inkRatio": 0.04859444444444445,
         "contentBounds": {
           "x": 8,
           "y": 228,
@@ -1195,7 +1195,7 @@
       },
       "widthRatio": 1.0552584670231728,
       "heightRatio": 1.0545023696682465,
-      "inkRatio": 1.0736124514897025
+      "inkRatio": 1.0776370095069916
     },
     {
       "id": "parity_zenuml_021",
@@ -1217,8 +1217,8 @@
             255
           ]
         ],
-        "inkPixels": 52607,
-        "inkRatio": 0.04871018518518518,
+        "inkPixels": 52740,
+        "inkRatio": 0.04883333333333333,
         "contentBounds": {
           "x": 8,
           "y": 156,
@@ -1254,7 +1254,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.03886925795053,
-      "inkRatio": 1.148499072153695
+      "inkRatio": 1.151402685296365
     },
     {
       "id": "parity_zenuml_022",
@@ -1276,8 +1276,8 @@
             255
           ]
         ],
-        "inkPixels": 51523,
-        "inkRatio": 0.04770648148148148,
+        "inkPixels": 51647,
+        "inkRatio": 0.0478212962962963,
         "contentBounds": {
           "x": 8,
           "y": 155,
@@ -1313,7 +1313,7 @@
       },
       "widthRatio": 1.0628366247755834,
       "heightRatio": 1.0611510791366907,
-      "inkRatio": 1.1269740583577583
+      "inkRatio": 1.1296863379850388
     },
     {
       "id": "parity_zenuml_023",
@@ -1335,8 +1335,8 @@
             255
           ]
         ],
-        "inkPixels": 166920,
-        "inkRatio": 0.15455555555555556,
+        "inkPixels": 167127,
+        "inkRatio": 0.15474722222222223,
         "contentBounds": {
           "x": 61,
           "y": 8,
@@ -1372,7 +1372,7 @@
       },
       "widthRatio": 1.0631163708086786,
       "heightRatio": 1.0574162679425838,
-      "inkRatio": 1.1782477341389728
+      "inkRatio": 1.1797088968574414
     },
     {
       "id": "parity_zenuml_024",
@@ -1394,8 +1394,8 @@
             255
           ]
         ],
-        "inkPixels": 203863,
-        "inkRatio": 0.18876203703703703,
+        "inkPixels": 204052,
+        "inkRatio": 0.18893703703703704,
         "contentBounds": {
           "x": 8,
           "y": 32,
@@ -1431,7 +1431,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0398009950248757,
-      "inkRatio": 1.0939908128877154
+      "inkRatio": 1.0950050443256703
     },
     {
       "id": "parity_zenuml_025",
@@ -1453,8 +1453,8 @@
             255
           ]
         ],
-        "inkPixels": 108782,
-        "inkRatio": 0.10072407407407408,
+        "inkPixels": 109132,
+        "inkRatio": 0.10104814814814815,
         "contentBounds": {
           "x": 63,
           "y": 8,
@@ -1490,7 +1490,7 @@
       },
       "widthRatio": 1.0718562874251496,
       "heightRatio": 1.0625,
-      "inkRatio": 1.1868119879117163
+      "inkRatio": 1.1906304890954518
     },
     {
       "id": "parity_zenuml_026",
@@ -1512,8 +1512,8 @@
             255
           ]
         ],
-        "inkPixels": 92297,
-        "inkRatio": 0.08546018518518518,
+        "inkPixels": 92697,
+        "inkRatio": 0.08583055555555555,
         "contentBounds": {
           "x": 31,
           "y": 8,
@@ -1549,7 +1549,7 @@
       },
       "widthRatio": 1.1005802707930368,
       "heightRatio": 1.1022443890274314,
-      "inkRatio": 1.2231572530414268
+      "inkRatio": 1.2284582151660524
     },
     {
       "id": "parity_zenuml_027",
@@ -1571,8 +1571,8 @@
             255
           ]
         ],
-        "inkPixels": 46173,
-        "inkRatio": 0.04275277777777778,
+        "inkPixels": 46451,
+        "inkRatio": 0.043010185185185186,
         "contentBounds": {
           "x": 8,
           "y": 202,
@@ -1608,7 +1608,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0464135021097047,
-      "inkRatio": 1.0700083426028921
+      "inkRatio": 1.0764506859473488
     },
     {
       "id": "parity_zenuml_028",
@@ -1630,8 +1630,8 @@
             255
           ]
         ],
-        "inkPixels": 55505,
-        "inkRatio": 0.05139351851851852,
+        "inkPixels": 55639,
+        "inkRatio": 0.051517592592592594,
         "contentBounds": {
           "x": 8,
           "y": 155,
@@ -1667,7 +1667,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0387323943661972,
-      "inkRatio": 1.2423062288771012
+      "inkRatio": 1.2453054007475548
     },
     {
       "id": "parity_zenuml_029",
@@ -1689,8 +1689,8 @@
             255
           ]
         ],
-        "inkPixels": 178405,
-        "inkRatio": 0.16518981481481482,
+        "inkPixels": 178590,
+        "inkRatio": 0.1653611111111111,
         "contentBounds": {
           "x": 8,
           "y": 12,
@@ -1726,7 +1726,7 @@
       },
       "widthRatio": 1.0533807829181494,
       "heightRatio": 1.0478468899521531,
-      "inkRatio": 1.145354510669988
+      "inkRatio": 1.1465422048740401
     },
     {
       "id": "parity_zenuml_030",
@@ -1748,8 +1748,8 @@
             255
           ]
         ],
-        "inkPixels": 189144,
-        "inkRatio": 0.17513333333333334,
+        "inkPixels": 189293,
+        "inkRatio": 0.1752712962962963,
         "contentBounds": {
           "x": 8,
           "y": 71,
@@ -1785,7 +1785,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.03551912568306,
-      "inkRatio": 1.1327955153888998
+      "inkRatio": 1.1336878859203094
     },
     {
       "id": "parity_zenuml_031",
@@ -1807,8 +1807,8 @@
             255
           ]
         ],
-        "inkPixels": 118502,
-        "inkRatio": 0.10972407407407407,
+        "inkPixels": 118805,
+        "inkRatio": 0.11000462962962963,
         "contentBounds": {
           "x": 31,
           "y": 8,
@@ -1844,7 +1844,7 @@
       },
       "widthRatio": 1.0695488721804511,
       "heightRatio": 1.0625,
-      "inkRatio": 1.2417948610470722
+      "inkRatio": 1.2449700297606572
     },
     {
       "id": "parity_zenuml_032",
@@ -1866,8 +1866,8 @@
             255
           ]
         ],
-        "inkPixels": 46466,
-        "inkRatio": 0.043024074074074076,
+        "inkPixels": 46744,
+        "inkRatio": 0.04328148148148148,
         "contentBounds": {
           "x": 8,
           "y": 202,
@@ -1903,7 +1903,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0464135021097047,
-      "inkRatio": 1.0706945020507856
+      "inkRatio": 1.0771003272040187
     },
     {
       "id": "parity_zenuml_033",
@@ -1925,8 +1925,8 @@
             255
           ]
         ],
-        "inkPixels": 45167,
-        "inkRatio": 0.041821296296296294,
+        "inkPixels": 45316,
+        "inkRatio": 0.04195925925925926,
         "contentBounds": {
           "x": 8,
           "y": 256,
@@ -1962,7 +1962,7 @@
       },
       "widthRatio": 1.0515097690941386,
       "heightRatio": 1.0486486486486486,
-      "inkRatio": 1.071221895455839
+      "inkRatio": 1.0747557157764918
     },
     {
       "id": "parity_zenuml_034",
@@ -1984,8 +1984,8 @@
             255
           ]
         ],
-        "inkPixels": 48166,
-        "inkRatio": 0.04459814814814815,
+        "inkPixels": 48281,
+        "inkRatio": 0.04470462962962963,
         "contentBounds": {
           "x": 8,
           "y": 181,
@@ -2021,7 +2021,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0346153846153847,
-      "inkRatio": 1.157669566889391
+      "inkRatio": 1.1604335913089459
     },
     {
       "id": "parity_zenuml_035",
@@ -2043,8 +2043,8 @@
             255
           ]
         ],
-        "inkPixels": 44874,
-        "inkRatio": 0.04155,
+        "inkPixels": 44959,
+        "inkRatio": 0.0416287037037037,
         "contentBounds": {
           "x": 8,
           "y": 198,
@@ -2080,7 +2080,7 @@
       },
       "widthRatio": 1.0552584670231728,
       "heightRatio": 1.0543933054393306,
-      "inkRatio": 1.0808844782734366
+      "inkRatio": 1.08293188168417
     },
     {
       "id": "parity_zenuml_036",
@@ -2102,8 +2102,8 @@
             255
           ]
         ],
-        "inkPixels": 178812,
-        "inkRatio": 0.16556666666666667,
+        "inkPixels": 178997,
+        "inkRatio": 0.16573796296296298,
         "contentBounds": {
           "x": 8,
           "y": 12,
@@ -2139,7 +2139,7 @@
       },
       "widthRatio": 1.0533807829181494,
       "heightRatio": 1.0478468899521531,
-      "inkRatio": 1.1441844393680531
+      "inkRatio": 1.1453682196584314
     },
     {
       "id": "parity_zenuml_037",
@@ -2161,8 +2161,8 @@
             255
           ]
         ],
-        "inkPixels": 189833,
-        "inkRatio": 0.1757712962962963,
+        "inkPixels": 189982,
+        "inkRatio": 0.17590925925925927,
         "contentBounds": {
           "x": 8,
           "y": 71,
@@ -2198,7 +2198,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.03551912568306,
-      "inkRatio": 1.1317232827385566
+      "inkRatio": 1.1326115728099775
     },
     {
       "id": "parity_zenuml_038",
@@ -2220,8 +2220,8 @@
             255
           ]
         ],
-        "inkPixels": 115156,
-        "inkRatio": 0.10662592592592593,
+        "inkPixels": 115470,
+        "inkRatio": 0.10691666666666666,
         "contentBounds": {
           "x": 8,
           "y": 18,
@@ -2257,7 +2257,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.0409638554216867,
-      "inkRatio": 1.160402265261291
+      "inkRatio": 1.16356637578347
     },
     {
       "id": "parity_zenuml_039",
@@ -2279,8 +2279,8 @@
             255
           ]
         ],
-        "inkPixels": 76502,
-        "inkRatio": 0.07083518518518518,
+        "inkPixels": 76765,
+        "inkRatio": 0.0710787037037037,
         "contentBounds": {
           "x": 8,
           "y": 74,
@@ -2316,7 +2316,7 @@
       },
       "widthRatio": 1.0666666666666667,
       "heightRatio": 1.0681818181818181,
-      "inkRatio": 1.1598768894886062
+      "inkRatio": 1.1638643358551783
     },
     {
       "id": "parity_zenuml_040",
@@ -2338,8 +2338,8 @@
             255
           ]
         ],
-        "inkPixels": 41524,
-        "inkRatio": 0.03844814814814815,
+        "inkPixels": 41801,
+        "inkRatio": 0.03870462962962963,
         "contentBounds": {
           "x": 8,
           "y": 209,
@@ -2375,7 +2375,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0387931034482758,
-      "inkRatio": 0.9798480343574497
+      "inkRatio": 0.9863844447590732
     },
     {
       "id": "parity_zenuml_041",
@@ -2397,8 +2397,8 @@
             255
           ]
         ],
-        "inkPixels": 52829,
-        "inkRatio": 0.04891574074074074,
+        "inkPixels": 52954,
+        "inkRatio": 0.04903148148148148,
         "contentBounds": {
           "x": 8,
           "y": 161,
@@ -2434,7 +2434,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0321428571428573,
-      "inkRatio": 1.1780091869954956
+      "inkRatio": 1.1807965035900638
     },
     {
       "id": "parity_zenuml_042",
@@ -2456,8 +2456,8 @@
             255
           ]
         ],
-        "inkPixels": 175058,
-        "inkRatio": 0.16209074074074073,
+        "inkPixels": 175267,
+        "inkRatio": 0.16228425925925927,
         "contentBounds": {
           "x": 8,
           "y": 21,
@@ -2493,7 +2493,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.03125,
-      "inkRatio": 1.0931013812223693
+      "inkRatio": 1.0944064240577467
     },
     {
       "id": "parity_zenuml_043",
@@ -2515,8 +2515,8 @@
             255
           ]
         ],
-        "inkPixels": 185356,
-        "inkRatio": 0.17162592592592593,
+        "inkPixels": 185516,
+        "inkRatio": 0.17177407407407408,
         "contentBounds": {
           "x": 8,
           "y": 78,
@@ -2552,7 +2552,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0333333333333334,
-      "inkRatio": 1.115064158480169
+      "inkRatio": 1.11602668607764
     },
     {
       "id": "parity_zenuml_044",
@@ -2574,8 +2574,8 @@
             255
           ]
         ],
-        "inkPixels": 116828,
-        "inkRatio": 0.10817407407407408,
+        "inkPixels": 117145,
+        "inkRatio": 0.10846759259259259,
         "contentBounds": {
           "x": 17,
           "y": 8,
@@ -2611,7 +2611,7 @@
       },
       "widthRatio": 1.0716911764705883,
       "heightRatio": 1.0625,
-      "inkRatio": 1.1770608741209423
+      "inkRatio": 1.180254700062466
     },
     {
       "id": "parity_zenuml_045",
@@ -2633,8 +2633,8 @@
             255
           ]
         ],
-        "inkPixels": 41749,
-        "inkRatio": 0.03865648148148148,
+        "inkPixels": 42026,
+        "inkRatio": 0.03891296296296296,
         "contentBounds": {
           "x": 8,
           "y": 209,
@@ -2670,7 +2670,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0387931034482758,
-      "inkRatio": 0.98142880650697
+      "inkRatio": 0.9879404781494627
     },
     {
       "id": "parity_zenuml_046",
@@ -2692,8 +2692,8 @@
             255
           ]
         ],
-        "inkPixels": 43057,
-        "inkRatio": 0.03986759259259259,
+        "inkPixels": 43183,
+        "inkRatio": 0.03998425925925926,
         "contentBounds": {
           "x": 8,
           "y": 262,
@@ -2729,7 +2729,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0414364640883977,
-      "inkRatio": 0.9885434842501607
+      "inkRatio": 0.9914363118743686
     },
     {
       "id": "parity_zenuml_047",
@@ -2751,8 +2751,8 @@
             255
           ]
         ],
-        "inkPixels": 48131,
-        "inkRatio": 0.04456574074074074,
+        "inkPixels": 48239,
+        "inkRatio": 0.04466574074074074,
         "contentBounds": {
           "x": 8,
           "y": 186,
@@ -2788,7 +2788,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.03125,
-      "inkRatio": 1.1339348819676764
+      "inkRatio": 1.1364792913348727
     },
     {
       "id": "parity_zenuml_048",
@@ -2810,8 +2810,8 @@
             255
           ]
         ],
-        "inkPixels": 42803,
-        "inkRatio": 0.03963240740740741,
+        "inkPixels": 42901,
+        "inkRatio": 0.039723148148148146,
         "contentBounds": {
           "x": 8,
           "y": 206,
@@ -2847,7 +2847,7 @@
       },
       "widthRatio": 1.0552584670231728,
       "heightRatio": 1.0472103004291846,
-      "inkRatio": 1.1164349617882574
+      "inkRatio": 1.1189911056626412
     },
     {
       "id": "parity_zenuml_049",
@@ -2869,8 +2869,8 @@
             255
           ]
         ],
-        "inkPixels": 175467,
-        "inkRatio": 0.16246944444444444,
+        "inkPixels": 175676,
+        "inkRatio": 0.16266296296296295,
         "contentBounds": {
           "x": 8,
           "y": 21,
@@ -2906,7 +2906,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.03125,
-      "inkRatio": 1.0921771713826889
+      "inkRatio": 1.093478071431239
     },
     {
       "id": "parity_zenuml_050",
@@ -2928,8 +2928,8 @@
             255
           ]
         ],
-        "inkPixels": 186071,
-        "inkRatio": 0.17228796296296298,
+        "inkPixels": 186231,
+        "inkRatio": 0.17243611111111112,
         "contentBounds": {
           "x": 8,
           "y": 78,
@@ -2965,7 +2965,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0333333333333334,
-      "inkRatio": 1.1141442326116116
+      "inkRatio": 1.1151022705499138
     },
     {
       "id": "parity_zenuml_051",
@@ -2987,8 +2987,8 @@
             255
           ]
         ],
-        "inkPixels": 110567,
-        "inkRatio": 0.10237685185185186,
+        "inkPixels": 110889,
+        "inkRatio": 0.102675,
         "contentBounds": {
           "x": 8,
           "y": 29,
@@ -3024,7 +3024,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.0343980343980343,
-      "inkRatio": 1.1230206693413234
+      "inkRatio": 1.1262911990249351
     },
     {
       "id": "parity_zenuml_052",
@@ -3046,8 +3046,8 @@
             255
           ]
         ],
-        "inkPixels": 70255,
-        "inkRatio": 0.06505092592592593,
+        "inkPixels": 70520,
+        "inkRatio": 0.0652962962962963,
         "contentBounds": {
           "x": 8,
           "y": 89,
@@ -3083,7 +3083,7 @@
       },
       "widthRatio": 1.064748201438849,
       "heightRatio": 1.0586510263929618,
-      "inkRatio": 1.1117704772756045
+      "inkRatio": 1.1159640460817826
     },
     {
       "id": "parity_zenuml_053",
@@ -3105,8 +3105,8 @@
             255
           ]
         ],
-        "inkPixels": 43768,
-        "inkRatio": 0.040525925925925924,
+        "inkPixels": 44012,
+        "inkRatio": 0.04075185185185185,
         "contentBounds": {
           "x": 8,
           "y": 220,
@@ -3142,7 +3142,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.0407239819004526,
-      "inkRatio": 1.1433049474949062
+      "inkRatio": 1.149678700172405
     },
     {
       "id": "parity_zenuml_054",
@@ -3164,8 +3164,8 @@
             255
           ]
         ],
-        "inkPixels": 49860,
-        "inkRatio": 0.04616666666666667,
+        "inkPixels": 49984,
+        "inkRatio": 0.04628148148148148,
         "contentBounds": {
           "x": 8,
           "y": 171,
@@ -3201,7 +3201,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0333333333333334,
-      "inkRatio": 1.1915686836822486
+      "inkRatio": 1.1945320715036802
     },
     {
       "id": "parity_zenuml_055",
@@ -3223,8 +3223,8 @@
             255
           ]
         ],
-        "inkPixels": 172362,
-        "inkRatio": 0.15959444444444446,
+        "inkPixels": 172538,
+        "inkRatio": 0.1597574074074074,
         "contentBounds": {
           "x": 8,
           "y": 36,
@@ -3260,7 +3260,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.032418952618454,
-      "inkRatio": 1.1555510860820597
+      "inkRatio": 1.1567310270850095
     },
     {
       "id": "parity_zenuml_056",
@@ -3282,8 +3282,8 @@
             255
           ]
         ],
-        "inkPixels": 181430,
-        "inkRatio": 0.16799074074074075,
+        "inkPixels": 181530,
+        "inkRatio": 0.16808333333333333,
         "contentBounds": {
           "x": 8,
           "y": 91,
@@ -3319,7 +3319,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0345821325648414,
-      "inkRatio": 1.1244987387119367
+      "inkRatio": 1.125118536286049
     },
     {
       "id": "parity_zenuml_057",
@@ -3341,8 +3341,8 @@
             255
           ]
         ],
-        "inkPixels": 116598,
-        "inkRatio": 0.1079611111111111,
+        "inkPixels": 116905,
+        "inkRatio": 0.10824537037037037,
         "contentBounds": {
           "x": 8,
           "y": 20,
@@ -3378,7 +3378,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.039855072463768,
-      "inkRatio": 1.1541728121318908
+      "inkRatio": 1.1572117240628372
     },
     {
       "id": "parity_zenuml_058",
@@ -3400,8 +3400,8 @@
             255
           ]
         ],
-        "inkPixels": 43955,
-        "inkRatio": 0.040699074074074075,
+        "inkPixels": 44199,
+        "inkRatio": 0.040925,
         "contentBounds": {
           "x": 8,
           "y": 220,
@@ -3437,7 +3437,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.0407239819004526,
-      "inkRatio": 1.1447210792228761
+      "inkRatio": 1.151075576852961
     },
     {
       "id": "parity_zenuml_059",
@@ -3459,8 +3459,8 @@
             255
           ]
         ],
-        "inkPixels": 39488,
-        "inkRatio": 0.036562962962962964,
+        "inkPixels": 39613,
+        "inkRatio": 0.036678703703703706,
         "contentBounds": {
           "x": 8,
           "y": 271,
@@ -3496,7 +3496,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.0436046511627908,
-      "inkRatio": 1.035479218565622
+      "inkRatio": 1.0387570473318475
     },
     {
       "id": "parity_zenuml_060",
@@ -3518,8 +3518,8 @@
             255
           ]
         ],
-        "inkPixels": 46656,
-        "inkRatio": 0.0432,
+        "inkPixels": 46755,
+        "inkRatio": 0.043291666666666666,
         "contentBounds": {
           "x": 8,
           "y": 194,
@@ -3555,7 +3555,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.032258064516129,
-      "inkRatio": 1.1393128372933505
+      "inkRatio": 1.141730360674953
     },
     {
       "id": "parity_zenuml_061",
@@ -3577,8 +3577,8 @@
             255
           ]
         ],
-        "inkPixels": 37779,
-        "inkRatio": 0.034980555555555556,
+        "inkPixels": 37864,
+        "inkRatio": 0.03505925925925926,
         "contentBounds": {
           "x": 8,
           "y": 219,
@@ -3614,7 +3614,7 @@
       },
       "widthRatio": 1.0515097690941386,
       "heightRatio": 1.0452488687782806,
-      "inkRatio": 0.9955990091182206
+      "inkRatio": 0.9978390344173299
     },
     {
       "id": "parity_zenuml_062",
@@ -3636,8 +3636,8 @@
             255
           ]
         ],
-        "inkPixels": 172706,
-        "inkRatio": 0.15991296296296295,
+        "inkPixels": 172882,
+        "inkRatio": 0.16007592592592593,
         "contentBounds": {
           "x": 8,
           "y": 36,
@@ -3673,7 +3673,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.032418952618454,
-      "inkRatio": 1.1540353081107086
+      "inkRatio": 1.1552113541903324
     },
     {
       "id": "parity_zenuml_063",
@@ -3695,8 +3695,8 @@
             255
           ]
         ],
-        "inkPixels": 182105,
-        "inkRatio": 0.16861574074074073,
+        "inkPixels": 182205,
+        "inkRatio": 0.16870833333333332,
         "contentBounds": {
           "x": 8,
           "y": 91,
@@ -3732,7 +3732,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0345821325648414,
-      "inkRatio": 1.1233837536396387
+      "inkRatio": 1.1240006415634407
     },
     {
       "id": "parity_zenuml_064",
@@ -3754,8 +3754,8 @@
             255
           ]
         ],
-        "inkPixels": 106201,
-        "inkRatio": 0.09833425925925926,
+        "inkPixels": 106488,
+        "inkRatio": 0.0986,
         "contentBounds": {
           "x": 8,
           "y": 47,
@@ -3791,7 +3791,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0333333333333334,
-      "inkRatio": 1.130687988416413
+      "inkRatio": 1.1337435853757214
     },
     {
       "id": "parity_zenuml_065",
@@ -3813,8 +3813,8 @@
             255
           ]
         ],
-        "inkPixels": 69257,
-        "inkRatio": 0.06412685185185185,
+        "inkPixels": 69488,
+        "inkRatio": 0.06434074074074074,
         "contentBounds": {
           "x": 8,
           "y": 112,
@@ -3850,7 +3850,7 @@
       },
       "widthRatio": 1.060931899641577,
       "heightRatio": 1.0595611285266457,
-      "inkRatio": 1.1969961458027274
+      "inkRatio": 1.2009886102421403
     },
     {
       "id": "parity_zenuml_066",
@@ -3872,8 +3872,8 @@
             255
           ]
         ],
-        "inkPixels": 40864,
-        "inkRatio": 0.03783703703703704,
+        "inkPixels": 41083,
+        "inkRatio": 0.03803981481481482,
         "contentBounds": {
           "x": 8,
           "y": 230,
@@ -3909,7 +3909,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.042654028436019,
-      "inkRatio": 1.0655818926177996
+      "inkRatio": 1.0712926021539024
     },
     {
       "id": "parity_zenuml_067",
@@ -3931,8 +3931,8 @@
             255
           ]
         ],
-        "inkPixels": 46995,
-        "inkRatio": 0.04351388888888889,
+        "inkPixels": 47107,
+        "inkRatio": 0.04361759259259259,
         "contentBounds": {
           "x": 8,
           "y": 181,
@@ -3968,7 +3968,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0346153846153847,
-      "inkRatio": 1.1718574670224173
+      "inkRatio": 1.1746502755404833
     },
     {
       "id": "parity_zenuml_068",
@@ -3990,8 +3990,8 @@
             255
           ]
         ],
-        "inkPixels": 164218,
-        "inkRatio": 0.1520537037037037,
+        "inkPixels": 164385,
+        "inkRatio": 0.15220833333333333,
         "contentBounds": {
           "x": 8,
           "y": 51,
@@ -4027,7 +4027,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0336787564766838,
-      "inkRatio": 1.1396588338168139
+      "inkRatio": 1.1408177994919981
     },
     {
       "id": "parity_zenuml_069",
@@ -4049,8 +4049,8 @@
             255
           ]
         ],
-        "inkPixels": 174378,
-        "inkRatio": 0.1614611111111111,
+        "inkPixels": 174480,
+        "inkRatio": 0.16155555555555556,
         "contentBounds": {
           "x": 8,
           "y": 104,
@@ -4086,7 +4086,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0328358208955224,
-      "inkRatio": 1.1174280532895875
+      "inkRatio": 1.1180816773788393
     },
     {
       "id": "parity_zenuml_070",
@@ -4108,8 +4108,8 @@
             255
           ]
         ],
-        "inkPixels": 109662,
-        "inkRatio": 0.10153888888888889,
+        "inkPixels": 109972,
+        "inkRatio": 0.10182592592592593,
         "contentBounds": {
           "x": 8,
           "y": 39,
@@ -4145,7 +4145,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0417721518987342,
-      "inkRatio": 1.132977239619386
+      "inkRatio": 1.1361800167370935
     },
     {
       "id": "parity_zenuml_071",
@@ -4167,8 +4167,8 @@
             255
           ]
         ],
-        "inkPixels": 40970,
-        "inkRatio": 0.03793518518518518,
+        "inkPixels": 41189,
+        "inkRatio": 0.038137962962962964,
         "contentBounds": {
           "x": 8,
           "y": 230,
@@ -4204,7 +4204,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.042654028436019,
-      "inkRatio": 1.0685967657798645
+      "inkRatio": 1.0743088158581118
     },
     {
       "id": "parity_zenuml_072",
@@ -4226,8 +4226,8 @@
             255
           ]
         ],
-        "inkPixels": 37580,
-        "inkRatio": 0.0347962962962963,
+        "inkPixels": 37700,
+        "inkRatio": 0.03490740740740741,
         "contentBounds": {
           "x": 8,
           "y": 279,
@@ -4263,7 +4263,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.045731707317073,
-      "inkRatio": 1.0645590776465257
+      "inkRatio": 1.0679584147757855
     },
     {
       "id": "parity_zenuml_073",
@@ -4285,8 +4285,8 @@
             255
           ]
         ],
-        "inkPixels": 44885,
-        "inkRatio": 0.041560185185185186,
+        "inkPixels": 44990,
+        "inkRatio": 0.04165740740740741,
         "contentBounds": {
           "x": 8,
           "y": 202,
@@ -4322,7 +4322,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0333333333333334,
-      "inkRatio": 1.1701295654214134
+      "inkRatio": 1.1728668630569097
     },
     {
       "id": "parity_zenuml_074",
@@ -4344,8 +4344,8 @@
             255
           ]
         ],
-        "inkPixels": 35916,
-        "inkRatio": 0.03325555555555555,
+        "inkPixels": 35992,
+        "inkRatio": 0.033325925925925926,
         "contentBounds": {
           "x": 8,
           "y": 231,
@@ -4381,7 +4381,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0478468899521531,
-      "inkRatio": 1.0330485805505218
+      "inkRatio": 1.0352345615094773
     },
     {
       "id": "parity_zenuml_075",
@@ -4403,8 +4403,8 @@
             255
           ]
         ],
-        "inkPixels": 164541,
-        "inkRatio": 0.15235277777777778,
+        "inkPixels": 164708,
+        "inkRatio": 0.1525074074074074,
         "contentBounds": {
           "x": 8,
           "y": 51,
@@ -4440,7 +4440,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0336787564766838,
-      "inkRatio": 1.1387708491937159
+      "inkRatio": 1.1399266385216968
     },
     {
       "id": "parity_zenuml_076",
@@ -4462,8 +4462,8 @@
             255
           ]
         ],
-        "inkPixels": 174997,
-        "inkRatio": 0.16203425925925927,
+        "inkPixels": 175099,
+        "inkRatio": 0.1621287037037037,
         "contentBounds": {
           "x": 8,
           "y": 104,
@@ -4499,7 +4499,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0328358208955224,
-      "inkRatio": 1.116593501952477
+      "inkRatio": 1.117244327607769
     },
     {
       "id": "parity_zenuml_077",
@@ -4521,8 +4521,8 @@
             255
           ]
         ],
-        "inkPixels": 99328,
-        "inkRatio": 0.09197037037037037,
+        "inkPixels": 99602,
+        "inkRatio": 0.09222407407407407,
         "contentBounds": {
           "x": 8,
           "y": 64,
@@ -4558,7 +4558,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.03485254691689,
-      "inkRatio": 1.0737233536559
+      "inkRatio": 1.076685259653219
     },
     {
       "id": "parity_zenuml_078",
@@ -4580,8 +4580,8 @@
             255
           ]
         ],
-        "inkPixels": 59370,
-        "inkRatio": 0.05497222222222222,
+        "inkPixels": 59548,
+        "inkRatio": 0.05513703703703704,
         "contentBounds": {
           "x": 8,
           "y": 134,
@@ -4617,7 +4617,7 @@
       },
       "widthRatio": 1.0571428571428572,
       "heightRatio": 1.0568561872909699,
-      "inkRatio": 1.1125269371310784
+      "inkRatio": 1.1158624566663544
     },
     {
       "id": "parity_zenuml_079",
@@ -4639,8 +4639,8 @@
             255
           ]
         ],
-        "inkPixels": 36840,
-        "inkRatio": 0.03411111111111111,
+        "inkPixels": 37036,
+        "inkRatio": 0.03429259259259259,
         "contentBounds": {
           "x": 8,
           "y": 237,
@@ -4676,7 +4676,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0390243902439025,
-      "inkRatio": 1.0491243058522
+      "inkRatio": 1.0547059661113483
     },
     {
       "id": "parity_zenuml_080",
@@ -4698,8 +4698,8 @@
             255
           ]
         ],
-        "inkPixels": 49325,
-        "inkRatio": 0.04567129629629629,
+        "inkPixels": 49450,
+        "inkRatio": 0.045787037037037036,
         "contentBounds": {
           "x": 8,
           "y": 186,
@@ -4735,7 +4735,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.035294117647059,
-      "inkRatio": 1.2202815368249178
+      "inkRatio": 1.2233739887682145
     },
     {
       "id": "parity_zenuml_081",
@@ -4757,8 +4757,8 @@
             255
           ]
         ],
-        "inkPixels": 163227,
-        "inkRatio": 0.1511361111111111,
+        "inkPixels": 163379,
+        "inkRatio": 0.15127685185185186,
         "contentBounds": {
           "x": 8,
           "y": 60,
@@ -4794,7 +4794,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0317460317460319,
-      "inkRatio": 1.1546983212954252
+      "inkRatio": 1.1557735977192822
     },
     {
       "id": "parity_zenuml_082",
@@ -4816,8 +4816,8 @@
             255
           ]
         ],
-        "inkPixels": 170026,
-        "inkRatio": 0.15743148148148148,
+        "inkPixels": 170145,
+        "inkRatio": 0.15754166666666666,
         "contentBounds": {
           "x": 8,
           "y": 111,
@@ -4853,7 +4853,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0335365853658536,
-      "inkRatio": 1.1058385852633767
+      "inkRatio": 1.1066125539013871
     },
     {
       "id": "parity_zenuml_083",
@@ -4875,8 +4875,8 @@
             255
           ]
         ],
-        "inkPixels": 106273,
-        "inkRatio": 0.09840092592592592,
+        "inkPixels": 106511,
+        "inkRatio": 0.09862129629629629,
         "contentBounds": {
           "x": 8,
           "y": 50,
@@ -4912,7 +4912,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0402597402597402,
-      "inkRatio": 1.0998613180990229
+      "inkRatio": 1.1023244742507037
     },
     {
       "id": "parity_zenuml_084",
@@ -4934,8 +4934,8 @@
             255
           ]
         ],
-        "inkPixels": 36979,
-        "inkRatio": 0.03423981481481481,
+        "inkPixels": 37175,
+        "inkRatio": 0.0344212962962963,
         "contentBounds": {
           "x": 8,
           "y": 237,
@@ -4971,7 +4971,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0390243902439025,
-      "inkRatio": 1.0500326546838172
+      "inkRatio": 1.0555981486214043
     },
     {
       "id": "parity_zenuml_085",
@@ -4993,8 +4993,8 @@
             255
           ]
         ],
-        "inkPixels": 35790,
-        "inkRatio": 0.03313888888888889,
+        "inkPixels": 35898,
+        "inkRatio": 0.03323888888888889,
         "contentBounds": {
           "x": 8,
           "y": 284,
@@ -5030,7 +5030,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.0471698113207548,
-      "inkRatio": 1.0427410191416835
+      "inkRatio": 1.0458875972380037
     },
     {
       "id": "parity_zenuml_086",
@@ -5052,8 +5052,8 @@
             255
           ]
         ],
-        "inkPixels": 44210,
-        "inkRatio": 0.040935185185185186,
+        "inkPixels": 44300,
+        "inkRatio": 0.04101851851851852,
         "contentBounds": {
           "x": 8,
           "y": 207,
@@ -5089,7 +5089,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0296610169491525,
-      "inkRatio": 1.158148429518246
+      "inkRatio": 1.1605061168889006
     },
     {
       "id": "parity_zenuml_087",
@@ -5111,8 +5111,8 @@
             255
           ]
         ],
-        "inkPixels": 34342,
-        "inkRatio": 0.031798148148148145,
+        "inkPixels": 34413,
+        "inkRatio": 0.031863888888888886,
         "contentBounds": {
           "x": 8,
           "y": 238,
@@ -5148,7 +5148,7 @@
       },
       "widthRatio": 1.0487156775907882,
       "heightRatio": 1.0443349753694582,
-      "inkRatio": 1.0199281280627246
+      "inkRatio": 1.0220367675447715
     },
     {
       "id": "parity_zenuml_088",
@@ -5170,8 +5170,8 @@
             255
           ]
         ],
-        "inkPixels": 163567,
-        "inkRatio": 0.15145092592592593,
+        "inkPixels": 163719,
+        "inkRatio": 0.15159166666666668,
         "contentBounds": {
           "x": 8,
           "y": 60,
@@ -5207,7 +5207,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0317460317460319,
-      "inkRatio": 1.153244683851317
+      "inkRatio": 1.154316374301991
     },
     {
       "id": "parity_zenuml_089",
@@ -5229,8 +5229,8 @@
             255
           ]
         ],
-        "inkPixels": 170629,
-        "inkRatio": 0.1579898148148148,
+        "inkPixels": 170748,
+        "inkRatio": 0.1581,
         "contentBounds": {
           "x": 8,
           "y": 111,
@@ -5266,7 +5266,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0335365853658536,
-      "inkRatio": 1.1047952655978865
+      "inkRatio": 1.1055657714122917
     },
     {
       "id": "parity_zenuml_090",
@@ -5288,8 +5288,8 @@
             255
           ]
         ],
-        "inkPixels": 97232,
-        "inkRatio": 0.09002962962962963,
+        "inkPixels": 97493,
+        "inkRatio": 0.0902712962962963,
         "contentBounds": {
           "x": 8,
           "y": 74,
@@ -5325,7 +5325,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.121515162000992
+      "inkRatio": 1.1245256467928533
     },
     {
       "id": "parity_zenuml_091",
@@ -5347,8 +5347,8 @@
             255
           ]
         ],
-        "inkPixels": 56742,
-        "inkRatio": 0.05253888888888889,
+        "inkPixels": 56946,
+        "inkRatio": 0.052727777777777776,
         "contentBounds": {
           "x": 8,
           "y": 146,
@@ -5384,7 +5384,7 @@
       },
       "widthRatio": 1.0571428571428572,
       "heightRatio": 1.0555555555555556,
-      "inkRatio": 1.141070243529672
+      "inkRatio": 1.145172642628753
     },
     {
       "id": "parity_zenuml_092",
@@ -5406,8 +5406,8 @@
             255
           ]
         ],
-        "inkPixels": 37136,
-        "inkRatio": 0.034385185185185185,
+        "inkPixels": 37349,
+        "inkRatio": 0.03458240740740741,
         "contentBounds": {
           "x": 8,
           "y": 239,
@@ -5443,7 +5443,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0394088669950738,
-      "inkRatio": 1.0374343502067271
+      "inkRatio": 1.0433847357246622
     },
     {
       "id": "parity_zenuml_093",
@@ -5465,8 +5465,8 @@
             255
           ]
         ],
-        "inkPixels": 46765,
-        "inkRatio": 0.04330092592592592,
+        "inkPixels": 46889,
+        "inkRatio": 0.04341574074074074,
         "contentBounds": {
           "x": 8,
           "y": 189,
@@ -5502,7 +5502,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0316205533596838,
-      "inkRatio": 1.16856992928359
+      "inkRatio": 1.1716684574826957
     },
     {
       "id": "parity_zenuml_094",
@@ -5524,8 +5524,8 @@
             255
           ]
         ],
-        "inkPixels": 162297,
-        "inkRatio": 0.150275,
+        "inkPixels": 162428,
+        "inkRatio": 0.1503962962962963,
         "contentBounds": {
           "x": 8,
           "y": 64,
@@ -5561,7 +5561,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.032085561497326,
-      "inkRatio": 1.1842433617664012
+      "inkRatio": 1.1851992382175458
     },
     {
       "id": "parity_zenuml_095",
@@ -5583,8 +5583,8 @@
             255
           ]
         ],
-        "inkPixels": 169842,
-        "inkRatio": 0.1572611111111111,
+        "inkPixels": 169965,
+        "inkRatio": 0.157375,
         "contentBounds": {
           "x": 8,
           "y": 114,
@@ -5620,7 +5620,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0338461538461539,
-      "inkRatio": 1.1264151318800113
+      "inkRatio": 1.1272308845278913
     },
     {
       "id": "parity_zenuml_096",
@@ -5642,8 +5642,8 @@
             255
           ]
         ],
-        "inkPixels": 108518,
-        "inkRatio": 0.10047962962962963,
+        "inkPixels": 108756,
+        "inkRatio": 0.1007,
         "contentBounds": {
           "x": 8,
           "y": 54,
@@ -5679,7 +5679,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.037958115183246,
-      "inkRatio": 1.139954829560376
+      "inkRatio": 1.1424549608697936
     },
     {
       "id": "parity_zenuml_097",
@@ -5701,8 +5701,8 @@
             255
           ]
         ],
-        "inkPixels": 37246,
-        "inkRatio": 0.03448703703703704,
+        "inkPixels": 37459,
+        "inkRatio": 0.03468425925925926,
         "contentBounds": {
           "x": 8,
           "y": 239,
@@ -5738,7 +5738,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0394088669950738,
-      "inkRatio": 1.0371463577634217
+      "inkRatio": 1.0430775228335933
     },
     {
       "id": "parity_zenuml_098",
@@ -5760,8 +5760,8 @@
             255
           ]
         ],
-        "inkPixels": 35341,
-        "inkRatio": 0.03272314814814815,
+        "inkPixels": 35446,
+        "inkRatio": 0.03282037037037037,
         "contentBounds": {
           "x": 8,
           "y": 286,
@@ -5797,7 +5797,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0411392405063291,
-      "inkRatio": 1.0533202193609918
+      "inkRatio": 1.0564496900333809
     },
     {
       "id": "parity_zenuml_099",
@@ -5819,8 +5819,8 @@
             255
           ]
         ],
-        "inkPixels": 43811,
-        "inkRatio": 0.04056574074074074,
+        "inkPixels": 43909,
+        "inkRatio": 0.04065648148148148,
         "contentBounds": {
           "x": 8,
           "y": 209,
@@ -5856,7 +5856,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0299145299145298,
-      "inkRatio": 1.1901605498356471
+      "inkRatio": 1.192822797533346
     },
     {
       "id": "parity_zenuml_100",
@@ -5878,8 +5878,8 @@
             255
           ]
         ],
-        "inkPixels": 37049,
-        "inkRatio": 0.03430462962962963,
+        "inkPixels": 37117,
+        "inkRatio": 0.034367592592592595,
         "contentBounds": {
           "x": 8,
           "y": 240,
@@ -5915,7 +5915,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.044776119402985,
-      "inkRatio": 1.0652999022370464
+      "inkRatio": 1.0672551613088737
     },
     {
       "id": "parity_zenuml_101",
@@ -5937,8 +5937,8 @@
             255
           ]
         ],
-        "inkPixels": 162611,
-        "inkRatio": 0.15056574074074075,
+        "inkPixels": 162742,
+        "inkRatio": 0.15068703703703704,
         "contentBounds": {
           "x": 8,
           "y": 64,
@@ -5974,7 +5974,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.032085561497326,
-      "inkRatio": 1.1835550832654014
+      "inkRatio": 1.184508559450332
     },
     {
       "id": "parity_zenuml_102",
@@ -5996,8 +5996,8 @@
             255
           ]
         ],
-        "inkPixels": 170386,
-        "inkRatio": 0.1577648148148148,
+        "inkPixels": 170509,
+        "inkRatio": 0.15787870370370372,
         "contentBounds": {
           "x": 8,
           "y": 114,
@@ -6033,7 +6033,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0338461538461539,
-      "inkRatio": 1.125506982151586
+      "inkRatio": 1.1263194747202516
     },
     {
       "id": "parity_zenuml_103",
@@ -6055,8 +6055,8 @@
             255
           ]
         ],
-        "inkPixels": 100612,
-        "inkRatio": 0.09315925925925926,
+        "inkPixels": 100862,
+        "inkRatio": 0.09339074074074075,
         "contentBounds": {
           "x": 8,
           "y": 77,
@@ -6092,7 +6092,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0361111111111112,
-      "inkRatio": 1.1790652978952796
+      "inkRatio": 1.1819950311723622
     },
     {
       "id": "parity_zenuml_104",
@@ -6114,8 +6114,8 @@
             255
           ]
         ],
-        "inkPixels": 55930,
-        "inkRatio": 0.051787037037037034,
+        "inkPixels": 56115,
+        "inkRatio": 0.051958333333333336,
         "contentBounds": {
           "x": 8,
           "y": 150,
@@ -6151,7 +6151,7 @@
       },
       "widthRatio": 1.0552584670231728,
       "heightRatio": 1.056338028169014,
-      "inkRatio": 1.1285538449121248
+      "inkRatio": 1.1322867693052725
     },
     {
       "id": "parity_zenuml_105",
@@ -6173,8 +6173,8 @@
             255
           ]
         ],
-        "inkPixels": 35795,
-        "inkRatio": 0.03314351851851852,
+        "inkPixels": 35991,
+        "inkRatio": 0.033325,
         "contentBounds": {
           "x": 8,
           "y": 244,
@@ -6210,7 +6210,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.035175879396985,
-      "inkRatio": 1.023445318084346
+      "inkRatio": 1.0290493209435312
     },
     {
       "id": "parity_zenuml_106",
@@ -6232,8 +6232,8 @@
             255
           ]
         ],
-        "inkPixels": 45512,
-        "inkRatio": 0.04214074074074074,
+        "inkPixels": 45611,
+        "inkRatio": 0.042232407407407406,
         "contentBounds": {
           "x": 8,
           "y": 193,
@@ -6269,7 +6269,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0321285140562249,
-      "inkRatio": 1.1678427548690051
+      "inkRatio": 1.1703831053860563
     },
     {
       "id": "parity_zenuml_107",
@@ -6291,8 +6291,8 @@
             255
           ]
         ],
-        "inkPixels": 154088,
-        "inkRatio": 0.14267407407407406,
+        "inkPixels": 154252,
+        "inkRatio": 0.14282592592592594,
         "contentBounds": {
           "x": 8,
           "y": 71,
@@ -6328,7 +6328,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0298913043478262,
-      "inkRatio": 1.124976272176389
+      "inkRatio": 1.1261736146601449
     },
     {
       "id": "parity_zenuml_108",
@@ -6350,8 +6350,8 @@
             255
           ]
         ],
-        "inkPixels": 167327,
-        "inkRatio": 0.1549324074074074,
+        "inkPixels": 167451,
+        "inkRatio": 0.15504722222222223,
         "contentBounds": {
           "x": 8,
           "y": 120,
@@ -6387,7 +6387,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.03125,
-      "inkRatio": 1.1206909254087216
+      "inkRatio": 1.1215214290019893
     },
     {
       "id": "parity_zenuml_109",
@@ -6409,8 +6409,8 @@
             255
           ]
         ],
-        "inkPixels": 103788,
-        "inkRatio": 0.0961,
+        "inkPixels": 104010,
+        "inkRatio": 0.09630555555555556,
         "contentBounds": {
           "x": 8,
           "y": 62,
@@ -6446,7 +6446,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0374331550802138,
-      "inkRatio": 1.1381760757994475
+      "inkRatio": 1.140610606658771
     },
     {
       "id": "parity_zenuml_110",
@@ -6468,8 +6468,8 @@
             255
           ]
         ],
-        "inkPixels": 38020,
-        "inkRatio": 0.0352037037037037,
+        "inkPixels": 38213,
+        "inkRatio": 0.035382407407407404,
         "contentBounds": {
           "x": 8,
           "y": 243,
@@ -6505,7 +6505,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0402010050251256,
-      "inkRatio": 1.1400983567230418
+      "inkRatio": 1.1458858102434928
     },
     {
       "id": "parity_zenuml_111",
@@ -6527,8 +6527,8 @@
             255
           ]
         ],
-        "inkPixels": 35641,
-        "inkRatio": 0.03300092592592593,
+        "inkPixels": 35747,
+        "inkRatio": 0.03309907407407407,
         "contentBounds": {
           "x": 8,
           "y": 289,
@@ -6564,7 +6564,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0419354838709678,
-      "inkRatio": 1.1144081045588143
+      "inkRatio": 1.11772246888875
     },
     {
       "id": "parity_zenuml_112",
@@ -6586,8 +6586,8 @@
             255
           ]
         ],
-        "inkPixels": 42774,
-        "inkRatio": 0.039605555555555554,
+        "inkPixels": 42878,
+        "inkRatio": 0.03970185185185185,
         "contentBounds": {
           "x": 8,
           "y": 212,
@@ -6623,7 +6623,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0303030303030303,
-      "inkRatio": 1.1691676916769167
+      "inkRatio": 1.1720103867705343
     },
     {
       "id": "parity_zenuml_113",
@@ -6645,8 +6645,8 @@
             255
           ]
         ],
-        "inkPixels": 37289,
-        "inkRatio": 0.03452685185185185,
+        "inkPixels": 37351,
+        "inkRatio": 0.03458425925925926,
         "contentBounds": {
           "x": 8,
           "y": 245,
@@ -6682,7 +6682,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.0459183673469388,
-      "inkRatio": 1.2169641982964001
+      "inkRatio": 1.2189876309519925
     },
     {
       "id": "parity_zenuml_114",
@@ -6704,8 +6704,8 @@
             255
           ]
         ],
-        "inkPixels": 156147,
-        "inkRatio": 0.14458055555555555,
+        "inkPixels": 156303,
+        "inkRatio": 0.144725,
         "contentBounds": {
           "x": 8,
           "y": 70,
@@ -6741,7 +6741,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.029810298102981,
-      "inkRatio": 1.1277490087318267
+      "inkRatio": 1.1288756960544277
     },
     {
       "id": "parity_zenuml_115",
@@ -6763,8 +6763,8 @@
             255
           ]
         ],
-        "inkPixels": 166776,
-        "inkRatio": 0.1544222222222222,
+        "inkPixels": 166908,
+        "inkRatio": 0.15454444444444446,
         "contentBounds": {
           "x": 8,
           "y": 119,
@@ -6800,7 +6800,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.034375,
-      "inkRatio": 1.1291078222956412
+      "inkRatio": 1.1300014894452495
     },
     {
       "id": "parity_zenuml_116",
@@ -6822,8 +6822,8 @@
             255
           ]
         ],
-        "inkPixels": 96848,
-        "inkRatio": 0.08967407407407407,
+        "inkPixels": 97082,
+        "inkRatio": 0.08989074074074074,
         "contentBounds": {
           "x": 8,
           "y": 84,
@@ -6859,7 +6859,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0338983050847457,
-      "inkRatio": 1.1291198862112786
+      "inkRatio": 1.131848017441386
     },
     {
       "id": "parity_zenuml_117",
@@ -6881,8 +6881,8 @@
             255
           ]
         ],
-        "inkPixels": 51080,
-        "inkRatio": 0.047296296296296295,
+        "inkPixels": 51255,
+        "inkRatio": 0.04745833333333333,
         "contentBounds": {
           "x": 8,
           "y": 159,
@@ -6918,7 +6918,7 @@
       },
       "widthRatio": 1.0552584670231728,
       "heightRatio": 1.0505415162454874,
-      "inkRatio": 1.0767965933764783
+      "inkRatio": 1.0804856968189387
     },
     {
       "id": "parity_zenuml_118",
@@ -6940,8 +6940,8 @@
             255
           ]
         ],
-        "inkPixels": 36680,
-        "inkRatio": 0.033962962962962966,
+        "inkPixels": 36867,
+        "inkRatio": 0.03413611111111111,
         "contentBounds": {
           "x": 8,
           "y": 248,
@@ -6977,7 +6977,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.041237113402062,
-      "inkRatio": 1.1433558804276676
+      "inkRatio": 1.1491848757831737
     },
     {
       "id": "parity_zenuml_119",
@@ -6999,8 +6999,8 @@
             255
           ]
         ],
-        "inkPixels": 44134,
-        "inkRatio": 0.04086481481481481,
+        "inkPixels": 44235,
+        "inkRatio": 0.04095833333333333,
         "contentBounds": {
           "x": 8,
           "y": 197,
@@ -7036,7 +7036,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0326530612244897,
-      "inkRatio": 1.1019725343320848
+      "inkRatio": 1.1044943820224717
     },
     {
       "id": "parity_zenuml_120",
@@ -7058,8 +7058,8 @@
             255
           ]
         ],
-        "inkPixels": 153486,
-        "inkRatio": 0.14211666666666667,
+        "inkPixels": 153615,
+        "inkRatio": 0.14223611111111112,
         "contentBounds": {
           "x": 8,
           "y": 78,
@@ -7095,7 +7095,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0304709141274238,
-      "inkRatio": 1.121121369718927
+      "inkRatio": 1.122063635832408
     },
     {
       "id": "parity_zenuml_121",
@@ -7117,8 +7117,8 @@
             255
           ]
         ],
-        "inkPixels": 163441,
-        "inkRatio": 0.15133425925925925,
+        "inkPixels": 163553,
+        "inkRatio": 0.15143796296296297,
         "contentBounds": {
           "x": 8,
           "y": 126,
@@ -7154,7 +7154,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0318471337579618,
-      "inkRatio": 1.1138970482999269
+      "inkRatio": 1.1146603602559821
     },
     {
       "id": "parity_zenuml_122",
@@ -7176,8 +7176,8 @@
             255
           ]
         ],
-        "inkPixels": 101575,
-        "inkRatio": 0.09405092592592593,
+        "inkPixels": 101815,
+        "inkRatio": 0.09427314814814815,
         "contentBounds": {
           "x": 8,
           "y": 71,
@@ -7213,7 +7213,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.03551912568306,
-      "inkRatio": 1.1484278720589731
+      "inkRatio": 1.1511413614933237
     },
     {
       "id": "parity_zenuml_123",
@@ -7235,8 +7235,8 @@
             255
           ]
         ],
-        "inkPixels": 34921,
-        "inkRatio": 0.03233425925925926,
+        "inkPixels": 35105,
+        "inkRatio": 0.032504629629629626,
         "contentBounds": {
           "x": 8,
           "y": 249,
@@ -7272,7 +7272,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0360824742268042,
-      "inkRatio": 1.0733693981680703
+      "inkRatio": 1.0790250199790987
     },
     {
       "id": "parity_zenuml_124",
@@ -7294,8 +7294,8 @@
             255
           ]
         ],
-        "inkPixels": 37100,
-        "inkRatio": 0.03435185185185185,
+        "inkPixels": 37195,
+        "inkRatio": 0.03443981481481481,
         "contentBounds": {
           "x": 8,
           "y": 293,
@@ -7331,7 +7331,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0397350993377483,
-      "inkRatio": 1.1347647886462346
+      "inkRatio": 1.1376705205848168
     },
     {
       "id": "parity_zenuml_125",
@@ -7353,8 +7353,8 @@
             255
           ]
         ],
-        "inkPixels": 41794,
-        "inkRatio": 0.03869814814814815,
+        "inkPixels": 41893,
+        "inkRatio": 0.03878981481481481,
         "contentBounds": {
           "x": 8,
           "y": 217,
@@ -7390,7 +7390,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0309734513274336,
-      "inkRatio": 1.2634602013361953
+      "inkRatio": 1.2664530366697904
     },
     {
       "id": "parity_zenuml_126",
@@ -7412,8 +7412,8 @@
             255
           ]
         ],
-        "inkPixels": 36144,
-        "inkRatio": 0.033466666666666665,
+        "inkPixels": 36205,
+        "inkRatio": 0.03352314814814815,
         "contentBounds": {
           "x": 8,
           "y": 251,
@@ -7449,7 +7449,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.0418848167539267,
-      "inkRatio": 1.0930865541643984
+      "inkRatio": 1.0949313494223674
     },
     {
       "id": "parity_zenuml_127",
@@ -7471,8 +7471,8 @@
             255
           ]
         ],
-        "inkPixels": 153782,
-        "inkRatio": 0.14239074074074073,
+        "inkPixels": 153911,
+        "inkRatio": 0.14251018518518518,
         "contentBounds": {
           "x": 8,
           "y": 78,
@@ -7508,7 +7508,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0304709141274238,
-      "inkRatio": 1.1207048586566
+      "inkRatio": 1.1216449617035542
     },
     {
       "id": "parity_zenuml_128",
@@ -7530,8 +7530,8 @@
             255
           ]
         ],
-        "inkPixels": 164018,
-        "inkRatio": 0.1518685185185185,
+        "inkPixels": 164130,
+        "inkRatio": 0.15197222222222223,
         "contentBounds": {
           "x": 8,
           "y": 126,
@@ -7567,7 +7567,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0318471337579618,
-      "inkRatio": 1.1128389885132337
+      "inkRatio": 1.113598892711026
     },
     {
       "id": "parity_zenuml_129",
@@ -7589,8 +7589,8 @@
             255
           ]
         ],
-        "inkPixels": 95728,
-        "inkRatio": 0.08863703703703704,
+        "inkPixels": 95937,
+        "inkRatio": 0.08883055555555555,
         "contentBounds": {
           "x": 8,
           "y": 94,
@@ -7626,7 +7626,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0318840579710145,
-      "inkRatio": 1.1945096081856752
+      "inkRatio": 1.1971175442974793
     },
     {
       "id": "parity_zenuml_130",
@@ -7648,8 +7648,8 @@
             255
           ]
         ],
-        "inkPixels": 50286,
-        "inkRatio": 0.04656111111111111,
+        "inkPixels": 50463,
+        "inkRatio": 0.046725,
         "contentBounds": {
           "x": 8,
           "y": 169,
@@ -7685,7 +7685,7 @@
       },
       "widthRatio": 1.0533807829181494,
       "heightRatio": 1.0524344569288389,
-      "inkRatio": 1.1330269027984317
+      "inkRatio": 1.1370150060835473
     },
     {
       "id": "parity_zenuml_131",
@@ -7707,8 +7707,8 @@
             255
           ]
         ],
-        "inkPixels": 34142,
-        "inkRatio": 0.03161296296296296,
+        "inkPixels": 34315,
+        "inkRatio": 0.03177314814814815,
         "contentBounds": {
           "x": 8,
           "y": 257,
@@ -7744,7 +7744,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0376344086021505,
-      "inkRatio": 1.1544209636517326
+      "inkRatio": 1.1602704987320371
     },
     {
       "id": "parity_zenuml_132",
@@ -7766,8 +7766,8 @@
             255
           ]
         ],
-        "inkPixels": 43326,
-        "inkRatio": 0.04011666666666667,
+        "inkPixels": 43429,
+        "inkRatio": 0.04021203703703704,
         "contentBounds": {
           "x": 8,
           "y": 206,
@@ -7803,7 +7803,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.029535864978903,
-      "inkRatio": 1.155082780132768
+      "inkRatio": 1.1578287877576048
     },
     {
       "id": "parity_zenuml_133",
@@ -7825,8 +7825,8 @@
             255
           ]
         ],
-        "inkPixels": 149259,
-        "inkRatio": 0.13820277777777779,
+        "inkPixels": 149401,
+        "inkRatio": 0.13833425925925927,
         "contentBounds": {
           "x": 8,
           "y": 91,
@@ -7862,7 +7862,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0286532951289398,
-      "inkRatio": 1.1209249232109464
+      "inkRatio": 1.121991333538605
     },
     {
       "id": "parity_zenuml_134",
@@ -7884,8 +7884,8 @@
             255
           ]
         ],
-        "inkPixels": 159638,
-        "inkRatio": 0.14781296296296295,
+        "inkPixels": 159723,
+        "inkRatio": 0.14789166666666667,
         "contentBounds": {
           "x": 8,
           "y": 136,
@@ -7921,7 +7921,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0328947368421053,
-      "inkRatio": 1.1060088542785287
+      "inkRatio": 1.1065977538676848
     },
     {
       "id": "parity_zenuml_135",
@@ -7943,8 +7943,8 @@
             255
           ]
         ],
-        "inkPixels": 97225,
-        "inkRatio": 0.09002314814814814,
+        "inkPixels": 97444,
+        "inkRatio": 0.09022592592592593,
         "contentBounds": {
           "x": 8,
           "y": 86,
@@ -7980,7 +7980,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0355113636363635,
-      "inkRatio": 1.1228979950106255
+      "inkRatio": 1.1254273306846532
     },
     {
       "id": "parity_zenuml_136",
@@ -8002,8 +8002,8 @@
             255
           ]
         ],
-        "inkPixels": 34308,
-        "inkRatio": 0.031766666666666665,
+        "inkPixels": 34481,
+        "inkRatio": 0.03192685185185185,
         "contentBounds": {
           "x": 8,
           "y": 257,
@@ -8039,7 +8039,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0376344086021505,
-      "inkRatio": 1.1534427111350187
+      "inkRatio": 1.1592590102205487
     },
     {
       "id": "parity_zenuml_137",
@@ -8061,8 +8061,8 @@
             255
           ]
         ],
-        "inkPixels": 32309,
-        "inkRatio": 0.02991574074074074,
+        "inkPixels": 32393,
+        "inkRatio": 0.02999351851851852,
         "contentBounds": {
           "x": 8,
           "y": 300,
@@ -8098,7 +8098,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0451388888888888,
-      "inkRatio": 1.0657408629106742
+      "inkRatio": 1.0685116770022431
     },
     {
       "id": "parity_zenuml_138",
@@ -8120,8 +8120,8 @@
             255
           ]
         ],
-        "inkPixels": 41342,
-        "inkRatio": 0.03827962962962963,
+        "inkPixels": 41436,
+        "inkRatio": 0.03836666666666667,
         "contentBounds": {
           "x": 8,
           "y": 224,
@@ -8157,7 +8157,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0272727272727273,
-      "inkRatio": 1.1567431449356465
+      "inkRatio": 1.1593732512590935
     },
     {
       "id": "parity_zenuml_139",
@@ -8179,8 +8179,8 @@
             255
           ]
         ],
-        "inkPixels": 32403,
-        "inkRatio": 0.030002777777777778,
+        "inkPixels": 32456,
+        "inkRatio": 0.03005185185185185,
         "contentBounds": {
           "x": 8,
           "y": 260,
@@ -8216,7 +8216,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.043956043956044,
-      "inkRatio": 1.1712633291162118
+      "inkRatio": 1.173179107175131
     },
     {
       "id": "parity_zenuml_140",
@@ -8238,8 +8238,8 @@
             255
           ]
         ],
-        "inkPixels": 149545,
-        "inkRatio": 0.1384675925925926,
+        "inkPixels": 149687,
+        "inkRatio": 0.13859907407407407,
         "contentBounds": {
           "x": 8,
           "y": 91,
@@ -8275,7 +8275,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0286532951289398,
-      "inkRatio": 1.120455839602002
+      "inkRatio": 1.1215197650373123
     },
     {
       "id": "parity_zenuml_141",
@@ -8297,8 +8297,8 @@
             255
           ]
         ],
-        "inkPixels": 160170,
-        "inkRatio": 0.14830555555555555,
+        "inkPixels": 160255,
+        "inkRatio": 0.14838425925925927,
         "contentBounds": {
           "x": 8,
           "y": 136,
@@ -8334,7 +8334,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0328947368421053,
-      "inkRatio": 1.105337253115813
+      "inkRatio": 1.105923840282666
     },
     {
       "id": "parity_zenuml_142",
@@ -8356,8 +8356,8 @@
             255
           ]
         ],
-        "inkPixels": 87930,
-        "inkRatio": 0.08141666666666666,
+        "inkPixels": 88137,
+        "inkRatio": 0.08160833333333334,
         "contentBounds": {
           "x": 8,
           "y": 107,
@@ -8393,7 +8393,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.033132530120482,
-      "inkRatio": 1.119471392559774
+      "inkRatio": 1.122106790925063
     },
     {
       "id": "parity_zenuml_143",
@@ -8415,8 +8415,8 @@
             255
           ]
         ],
-        "inkPixels": 48892,
-        "inkRatio": 0.04527037037037037,
+        "inkPixels": 49037,
+        "inkRatio": 0.04540462962962963,
         "contentBounds": {
           "x": 8,
           "y": 184,
@@ -8452,7 +8452,7 @@
       },
       "widthRatio": 1.0515097690941386,
       "heightRatio": 1.051383399209486,
-      "inkRatio": 1.2218723446793622
+      "inkRatio": 1.2254960763732694
     },
     {
       "id": "parity_zenuml_144",
@@ -8474,8 +8474,8 @@
             255
           ]
         ],
-        "inkPixels": 33622,
-        "inkRatio": 0.031131481481481482,
+        "inkPixels": 33782,
+        "inkRatio": 0.03127962962962963,
         "contentBounds": {
           "x": 8,
           "y": 263,
@@ -8511,7 +8511,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.038888888888889,
-      "inkRatio": 1.1671468740236748
+      "inkRatio": 1.1727010795987087
     },
     {
       "id": "parity_zenuml_145",
@@ -8533,8 +8533,8 @@
             255
           ]
         ],
-        "inkPixels": 41411,
-        "inkRatio": 0.03834351851851852,
+        "inkPixels": 41511,
+        "inkRatio": 0.03843611111111111,
         "contentBounds": {
           "x": 8,
           "y": 212,
@@ -8570,7 +8570,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0303030303030303,
-      "inkRatio": 1.1601994788894183
+      "inkRatio": 1.1630011486846161
     },
     {
       "id": "parity_zenuml_146",
@@ -8592,8 +8592,8 @@
             255
           ]
         ],
-        "inkPixels": 143703,
-        "inkRatio": 0.13305833333333333,
+        "inkPixels": 143832,
+        "inkRatio": 0.13317777777777778,
         "contentBounds": {
           "x": 8,
           "y": 100,
@@ -8629,7 +8629,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0324483775811208,
-      "inkRatio": 1.1484479892589987
+      "inkRatio": 1.1494789335720224
     },
     {
       "id": "parity_zenuml_147",
@@ -8651,8 +8651,8 @@
             255
           ]
         ],
-        "inkPixels": 157174,
-        "inkRatio": 0.14553148148148148,
+        "inkPixels": 157280,
+        "inkRatio": 0.14562962962962964,
         "contentBounds": {
           "x": 8,
           "y": 144,
@@ -8688,7 +8688,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0337837837837838,
-      "inkRatio": 1.1228238118030305
+      "inkRatio": 1.1235810574292227
     },
     {
       "id": "parity_zenuml_148",
@@ -8710,8 +8710,8 @@
             255
           ]
         ],
-        "inkPixels": 92818,
-        "inkRatio": 0.0859425925925926,
+        "inkPixels": 92984,
+        "inkRatio": 0.0860962962962963,
         "contentBounds": {
           "x": 8,
           "y": 97,
@@ -8747,7 +8747,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0382352941176471,
-      "inkRatio": 1.1259810998022637
+      "inkRatio": 1.1279948564288573
     },
     {
       "id": "parity_zenuml_149",
@@ -8769,8 +8769,8 @@
             255
           ]
         ],
-        "inkPixels": 33730,
-        "inkRatio": 0.03123148148148148,
+        "inkPixels": 33890,
+        "inkRatio": 0.03137962962962963,
         "contentBounds": {
           "x": 8,
           "y": 263,
@@ -8806,7 +8806,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.038888888888889,
-      "inkRatio": 1.1651525095858233
+      "inkRatio": 1.1706794707934645
     },
     {
       "id": "parity_zenuml_150",
@@ -8828,8 +8828,8 @@
             255
           ]
         ],
-        "inkPixels": 31357,
-        "inkRatio": 0.02903425925925926,
+        "inkPixels": 31437,
+        "inkRatio": 0.029108333333333333,
         "contentBounds": {
           "x": 8,
           "y": 305,
@@ -8865,7 +8865,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0392857142857144,
-      "inkRatio": 0.9814090325811399
+      "inkRatio": 0.983912866576946
     },
     {
       "id": "parity_zenuml_151",
@@ -8887,8 +8887,8 @@
             255
           ]
         ],
-        "inkPixels": 39446,
-        "inkRatio": 0.03652407407407408,
+        "inkPixels": 39530,
+        "inkRatio": 0.03660185185185185,
         "contentBounds": {
           "x": 8,
           "y": 229,
@@ -8924,7 +8924,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.027906976744186,
-      "inkRatio": 1.1176720596152212
+      "inkRatio": 1.1200521349842745
     },
     {
       "id": "parity_zenuml_152",
@@ -8946,8 +8946,8 @@
             255
           ]
         ],
-        "inkPixels": 29239,
-        "inkRatio": 0.02707314814814815,
+        "inkPixels": 29286,
+        "inkRatio": 0.027116666666666667,
         "contentBounds": {
           "x": 8,
           "y": 267,
@@ -8983,7 +8983,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0457142857142858,
-      "inkRatio": 1.1061970338983051
+      "inkRatio": 1.107975181598063
     },
     {
       "id": "parity_zenuml_153",
@@ -9005,8 +9005,8 @@
             255
           ]
         ],
-        "inkPixels": 143988,
-        "inkRatio": 0.13332222222222223,
+        "inkPixels": 144117,
+        "inkRatio": 0.13344166666666665,
         "contentBounds": {
           "x": 8,
           "y": 100,
@@ -9042,7 +9042,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0324483775811208,
-      "inkRatio": 1.1476439456736596
+      "inkRatio": 1.1486721290569406
     },
     {
       "id": "parity_zenuml_154",
@@ -9064,8 +9064,8 @@
             255
           ]
         ],
-        "inkPixels": 157709,
-        "inkRatio": 0.14602685185185185,
+        "inkPixels": 157815,
+        "inkRatio": 0.146125,
         "contentBounds": {
           "x": 8,
           "y": 144,
@@ -9101,7 +9101,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0337837837837838,
-      "inkRatio": 1.121909057280255
+      "inkRatio": 1.122663119255613
     },
     {
       "id": "parity_zenuml_155",
@@ -9123,8 +9123,8 @@
             255
           ]
         ],
-        "inkPixels": 91129,
-        "inkRatio": 0.0843787037037037,
+        "inkPixels": 91327,
+        "inkRatio": 0.08456203703703703,
         "contentBounds": {
           "x": 8,
           "y": 117,
@@ -9160,7 +9160,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0341614906832297,
-      "inkRatio": 1.244659637237762
+      "inkRatio": 1.247363964160839
     },
     {
       "id": "parity_zenuml_156",
@@ -9182,8 +9182,8 @@
             255
           ]
         ],
-        "inkPixels": 42874,
-        "inkRatio": 0.03969814814814815,
+        "inkPixels": 42991,
+        "inkRatio": 0.039806481481481484,
         "contentBounds": {
           "x": 8,
           "y": 196,
@@ -9219,7 +9219,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0495867768595042,
-      "inkRatio": 1.1494678141505135
+      "inkRatio": 1.1526046274699056
     },
     {
       "id": "parity_zenuml_157",
@@ -9241,8 +9241,8 @@
             255
           ]
         ],
-        "inkPixels": 32225,
-        "inkRatio": 0.029837962962962962,
+        "inkPixels": 32379,
+        "inkRatio": 0.029980555555555555,
         "contentBounds": {
           "x": 8,
           "y": 265,
@@ -9278,7 +9278,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0335195530726258,
-      "inkRatio": 1.0944133129563594
+      "inkRatio": 1.0996434029546611
     },
     {
       "id": "parity_zenuml_158",
@@ -9300,8 +9300,8 @@
             255
           ]
         ],
-        "inkPixels": 42314,
-        "inkRatio": 0.03917962962962963,
+        "inkPixels": 42405,
+        "inkRatio": 0.03926388888888889,
         "contentBounds": {
           "x": 8,
           "y": 213,
@@ -9337,7 +9337,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0304347826086957,
-      "inkRatio": 1.1788928203270832
+      "inkRatio": 1.1814281336193686
     },
     {
       "id": "parity_zenuml_159",
@@ -9359,8 +9359,8 @@
             255
           ]
         ],
-        "inkPixels": 144645,
-        "inkRatio": 0.13393055555555555,
+        "inkPixels": 144771,
+        "inkRatio": 0.13404722222222223,
         "contentBounds": {
           "x": 8,
           "y": 102,
@@ -9396,7 +9396,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.029585798816568,
-      "inkRatio": 1.150176130535389
+      "inkRatio": 1.151178046899228
     },
     {
       "id": "parity_zenuml_160",
@@ -9418,8 +9418,8 @@
             255
           ]
         ],
-        "inkPixels": 154105,
-        "inkRatio": 0.14268981481481482,
+        "inkPixels": 154177,
+        "inkRatio": 0.14275648148148148,
         "contentBounds": {
           "x": 8,
           "y": 146,
@@ -9455,7 +9455,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0305084745762711,
-      "inkRatio": 1.1235418489355498
+      "inkRatio": 1.1240667833187519
     },
     {
       "id": "parity_zenuml_161",
@@ -9477,8 +9477,8 @@
             255
           ]
         ],
-        "inkPixels": 94215,
-        "inkRatio": 0.08723611111111111,
+        "inkPixels": 94403,
+        "inkRatio": 0.08741018518518519,
         "contentBounds": {
           "x": 8,
           "y": 99,
@@ -9514,7 +9514,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0353982300884956,
-      "inkRatio": 1.08705434406369
+      "inkRatio": 1.0892234914041767
     },
     {
       "id": "parity_zenuml_162",
@@ -9536,8 +9536,8 @@
             255
           ]
         ],
-        "inkPixels": 32354,
-        "inkRatio": 0.02995740740740741,
+        "inkPixels": 32508,
+        "inkRatio": 0.0301,
         "contentBounds": {
           "x": 8,
           "y": 265,
@@ -9573,7 +9573,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0335195530726258,
-      "inkRatio": 1.094001487793332
+      "inkRatio": 1.0992087644552648
     },
     {
       "id": "parity_zenuml_163",
@@ -9595,8 +9595,8 @@
             255
           ]
         ],
-        "inkPixels": 31637,
-        "inkRatio": 0.029293518518518517,
+        "inkPixels": 31718,
+        "inkRatio": 0.02936851851851852,
         "contentBounds": {
           "x": 8,
           "y": 306,
@@ -9632,7 +9632,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.039568345323741,
-      "inkRatio": 1.0354454408588072
+      "inkRatio": 1.0380964849119592
     },
     {
       "id": "parity_zenuml_164",
@@ -9654,8 +9654,8 @@
             255
           ]
         ],
-        "inkPixels": 40480,
-        "inkRatio": 0.037481481481481484,
+        "inkPixels": 40560,
+        "inkRatio": 0.03755555555555556,
         "contentBounds": {
           "x": 8,
           "y": 230,
@@ -9691,7 +9691,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.02803738317757,
-      "inkRatio": 1.1795902905265614
+      "inkRatio": 1.1819214966343212
     },
     {
       "id": "parity_zenuml_165",
@@ -9713,8 +9713,8 @@
             255
           ]
         ],
-        "inkPixels": 31526,
-        "inkRatio": 0.02919074074074074,
+        "inkPixels": 31573,
+        "inkRatio": 0.02923425925925926,
         "contentBounds": {
           "x": 8,
           "y": 268,
@@ -9750,7 +9750,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.04,
-      "inkRatio": 1.1883599080251799
+      "inkRatio": 1.1901315541482906
     },
     {
       "id": "parity_zenuml_166",
@@ -9772,8 +9772,8 @@
             255
           ]
         ],
-        "inkPixels": 144922,
-        "inkRatio": 0.13418703703703705,
+        "inkPixels": 145048,
+        "inkRatio": 0.1343037037037037,
         "contentBounds": {
           "x": 8,
           "y": 102,
@@ -9809,7 +9809,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.029585798816568,
-      "inkRatio": 1.1492351490448285
+      "inkRatio": 1.1502343322522064
     },
     {
       "id": "parity_zenuml_167",
@@ -9831,8 +9831,8 @@
             255
           ]
         ],
-        "inkPixels": 154567,
-        "inkRatio": 0.1431175925925926,
+        "inkPixels": 154639,
+        "inkRatio": 0.14318425925925926,
         "contentBounds": {
           "x": 8,
           "y": 146,
@@ -9868,7 +9868,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0305084745762711,
-      "inkRatio": 1.1226050578853333
+      "inkRatio": 1.123127986868672
     },
     {
       "id": "parity_zenuml_168",
@@ -9890,8 +9890,8 @@
             255
           ]
         ],
-        "inkPixels": 87616,
-        "inkRatio": 0.08112592592592592,
+        "inkPixels": 87824,
+        "inkRatio": 0.08131851851851851,
         "contentBounds": {
           "x": 8,
           "y": 119,
@@ -9927,7 +9927,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0311526479750779,
-      "inkRatio": 1.1407590651650281
+      "inkRatio": 1.1434672221860556
     },
     {
       "id": "parity_zenuml_169",
@@ -9949,8 +9949,8 @@
             255
           ]
         ],
-        "inkPixels": 44335,
-        "inkRatio": 0.04105092592592593,
+        "inkPixels": 44457,
+        "inkRatio": 0.04116388888888889,
         "contentBounds": {
           "x": 8,
           "y": 198,
@@ -9986,7 +9986,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.045643153526971,
-      "inkRatio": 1.2043299921223483
+      "inkRatio": 1.2076440387906446
     },
     {
       "id": "parity_zenuml_170",
@@ -10008,8 +10008,8 @@
             255
           ]
         ],
-        "inkPixels": 32423,
-        "inkRatio": 0.030021296296296296,
+        "inkPixels": 32583,
+        "inkRatio": 0.030169444444444443,
         "contentBounds": {
           "x": 8,
           "y": 261,
@@ -10045,7 +10045,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0384615384615385,
-      "inkRatio": 1.1027856195367505
+      "inkRatio": 1.1082276113057379
     },
     {
       "id": "parity_zenuml_171",
@@ -10067,8 +10067,8 @@
             255
           ]
         ],
-        "inkPixels": 42601,
-        "inkRatio": 0.039445370370370374,
+        "inkPixels": 42687,
+        "inkRatio": 0.039525,
         "contentBounds": {
           "x": 8,
           "y": 210,
@@ -10104,7 +10104,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0300429184549356,
-      "inkRatio": 1.1774086562379085
+      "inkRatio": 1.179785528715936
     },
     {
       "id": "parity_zenuml_172",
@@ -10126,8 +10126,8 @@
             255
           ]
         ],
-        "inkPixels": 148771,
-        "inkRatio": 0.13775092592592592,
+        "inkPixels": 148889,
+        "inkRatio": 0.1378601851851852,
         "contentBounds": {
           "x": 8,
           "y": 96,
@@ -10163,7 +10163,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.032069970845481,
-      "inkRatio": 1.155179910859876
+      "inkRatio": 1.1560961595204449
     },
     {
       "id": "parity_zenuml_173",
@@ -10185,8 +10185,8 @@
             255
           ]
         ],
-        "inkPixels": 158953,
-        "inkRatio": 0.1471787037037037,
+        "inkPixels": 159032,
+        "inkRatio": 0.14725185185185186,
         "contentBounds": {
           "x": 8,
           "y": 141,
@@ -10222,7 +10222,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0334448160535117,
-      "inkRatio": 1.1358166721449703
+      "inkRatio": 1.1363811755963016
     },
     {
       "id": "parity_zenuml_174",
@@ -10244,8 +10244,8 @@
             255
           ]
         ],
-        "inkPixels": 93828,
-        "inkRatio": 0.08687777777777778,
+        "inkPixels": 93994,
+        "inkRatio": 0.08703148148148149,
         "contentBounds": {
           "x": 8,
           "y": 93,
@@ -10281,7 +10281,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.036231884057971,
-      "inkRatio": 1.1514757317297661
+      "inkRatio": 1.1535129164876972
     },
     {
       "id": "parity_zenuml_175",
@@ -10303,8 +10303,8 @@
             255
           ]
         ],
-        "inkPixels": 32534,
-        "inkRatio": 0.030124074074074074,
+        "inkPixels": 32694,
+        "inkRatio": 0.03027222222222222,
         "contentBounds": {
           "x": 8,
           "y": 261,
@@ -10340,7 +10340,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0384615384615385,
-      "inkRatio": 1.1035582239408432
+      "inkRatio": 1.108985448254808
     },
     {
       "id": "parity_zenuml_176",
@@ -10362,8 +10362,8 @@
             255
           ]
         ],
-        "inkPixels": 31475,
-        "inkRatio": 0.02914351851851852,
+        "inkPixels": 31564,
+        "inkRatio": 0.029225925925925926,
         "contentBounds": {
           "x": 8,
           "y": 303,
@@ -10399,7 +10399,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0387323943661972,
-      "inkRatio": 0.9695056214384722
+      "inkRatio": 0.9722470352687509
     },
     {
       "id": "parity_zenuml_177",
@@ -10421,8 +10421,8 @@
             255
           ]
         ],
-        "inkPixels": 39959,
-        "inkRatio": 0.03699907407407407,
+        "inkPixels": 40039,
+        "inkRatio": 0.03707314814814815,
         "contentBounds": {
           "x": 8,
           "y": 227,
@@ -10458,7 +10458,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0276497695852536,
-      "inkRatio": 1.1147097386113203
+      "inkRatio": 1.116941445588194
     },
     {
       "id": "parity_zenuml_178",
@@ -10480,8 +10480,8 @@
             255
           ]
         ],
-        "inkPixels": 31478,
-        "inkRatio": 0.029146296296296295,
+        "inkPixels": 31532,
+        "inkRatio": 0.029196296296296297,
         "contentBounds": {
           "x": 8,
           "y": 264,
@@ -10517,7 +10517,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0449438202247192,
-      "inkRatio": 1.1797024322602405
+      "inkRatio": 1.1817261927069669
     },
     {
       "id": "parity_zenuml_179",
@@ -10539,8 +10539,8 @@
             255
           ]
         ],
-        "inkPixels": 149038,
-        "inkRatio": 0.13799814814814815,
+        "inkPixels": 149156,
+        "inkRatio": 0.1381074074074074,
         "contentBounds": {
           "x": 8,
           "y": 96,
@@ -10576,7 +10576,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.032069970845481,
-      "inkRatio": 1.153857469128634
+      "inkRatio": 1.154771029303604
     },
     {
       "id": "parity_zenuml_180",
@@ -10598,8 +10598,8 @@
             255
           ]
         ],
-        "inkPixels": 159483,
-        "inkRatio": 0.14766944444444444,
+        "inkPixels": 159562,
+        "inkRatio": 0.1477425925925926,
         "contentBounds": {
           "x": 8,
           "y": 141,
@@ -10635,7 +10635,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0334448160535117,
-      "inkRatio": 1.1347630262624249
+      "inkRatio": 1.1353251318101931
     },
     {
       "id": "parity_zenuml_181",
@@ -10657,8 +10657,8 @@
             255
           ]
         ],
-        "inkPixels": 92157,
-        "inkRatio": 0.08533055555555556,
+        "inkPixels": 92354,
+        "inkRatio": 0.08551296296296296,
         "contentBounds": {
           "x": 8,
           "y": 113,
@@ -10694,7 +10694,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0337423312883436,
-      "inkRatio": 1.1864129665151848
+      "inkRatio": 1.1889491097750942
     },
     {
       "id": "parity_zenuml_182",
@@ -10716,8 +10716,8 @@
             255
           ]
         ],
-        "inkPixels": 44653,
-        "inkRatio": 0.04134537037037037,
+        "inkPixels": 44789,
+        "inkRatio": 0.0414712962962963,
         "contentBounds": {
           "x": 8,
           "y": 191,
@@ -10753,7 +10753,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0528455284552845,
-      "inkRatio": 1.130656065631884
+      "inkRatio": 1.1340997138733446
     },
     {
       "id": "parity_zenuml_183",
@@ -10775,8 +10775,8 @@
             255
           ]
         ],
-        "inkPixels": 32562,
-        "inkRatio": 0.03015,
+        "inkPixels": 32731,
+        "inkRatio": 0.030306481481481483,
         "contentBounds": {
           "x": 8,
           "y": 263,
@@ -10812,7 +10812,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0331491712707181,
-      "inkRatio": 1.0356211436931493
+      "inkRatio": 1.0409961198397049
     },
     {
       "id": "parity_zenuml_184",
@@ -10834,8 +10834,8 @@
             255
           ]
         ],
-        "inkPixels": 42445,
-        "inkRatio": 0.03930092592592593,
+        "inkPixels": 42535,
+        "inkRatio": 0.03938425925925926,
         "contentBounds": {
           "x": 8,
           "y": 211,
@@ -10871,7 +10871,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0301724137931034,
-      "inkRatio": 1.1741680267780574
+      "inkRatio": 1.1766577222053167
     },
     {
       "id": "parity_zenuml_185",
@@ -10893,8 +10893,8 @@
             255
           ]
         ],
-        "inkPixels": 148401,
-        "inkRatio": 0.13740833333333333,
+        "inkPixels": 148520,
+        "inkRatio": 0.1375185185185185,
         "contentBounds": {
           "x": 8,
           "y": 99,
@@ -10930,7 +10930,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.029325513196481,
-      "inkRatio": 1.1737428223420916
+      "inkRatio": 1.174684024866729
     },
     {
       "id": "parity_zenuml_186",
@@ -10952,8 +10952,8 @@
             255
           ]
         ],
-        "inkPixels": 156122,
-        "inkRatio": 0.1445574074074074,
+        "inkPixels": 156193,
+        "inkRatio": 0.14462314814814814,
         "contentBounds": {
           "x": 8,
           "y": 143,
@@ -10989,7 +10989,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0302013422818792,
-      "inkRatio": 1.0978425967596759
+      "inkRatio": 1.0983418654365436
     },
     {
       "id": "parity_zenuml_187",
@@ -11011,8 +11011,8 @@
             255
           ]
         ],
-        "inkPixels": 93169,
-        "inkRatio": 0.08626759259259259,
+        "inkPixels": 93364,
+        "inkRatio": 0.08644814814814815,
         "contentBounds": {
           "x": 8,
           "y": 96,
@@ -11048,7 +11048,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.033527696793003,
-      "inkRatio": 1.104840622331847
+      "inkRatio": 1.1071530215349588
     },
     {
       "id": "parity_zenuml_188",
@@ -11070,8 +11070,8 @@
             255
           ]
         ],
-        "inkPixels": 32663,
-        "inkRatio": 0.030243518518518517,
+        "inkPixels": 32832,
+        "inkRatio": 0.0304,
         "contentBounds": {
           "x": 8,
           "y": 263,
@@ -11107,7 +11107,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0331491712707181,
-      "inkRatio": 1.0352445247377262
+      "inkRatio": 1.0406009318246647
     },
     {
       "id": "parity_zenuml_189",
@@ -11129,8 +11129,8 @@
             255
           ]
         ],
-        "inkPixels": 32614,
-        "inkRatio": 0.030198148148148148,
+        "inkPixels": 32697,
+        "inkRatio": 0.030275,
         "contentBounds": {
           "x": 8,
           "y": 304,
@@ -11166,7 +11166,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0354609929078014,
-      "inkRatio": 1.0252106123475417
+      "inkRatio": 1.0278196906827612
     },
     {
       "id": "parity_zenuml_190",
@@ -11188,8 +11188,8 @@
             255
           ]
         ],
-        "inkPixels": 40466,
-        "inkRatio": 0.03746851851851852,
+        "inkPixels": 40549,
+        "inkRatio": 0.03754537037037037,
         "contentBounds": {
           "x": 8,
           "y": 228,
@@ -11225,7 +11225,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0277777777777777,
-      "inkRatio": 1.1609145939122703
+      "inkRatio": 1.1632957512120952
     },
     {
       "id": "parity_zenuml_191",
@@ -11247,8 +11247,8 @@
             255
           ]
         ],
-        "inkPixels": 31671,
-        "inkRatio": 0.029325,
+        "inkPixels": 31721,
+        "inkRatio": 0.029371296296296295,
         "contentBounds": {
           "x": 8,
           "y": 266,
@@ -11284,7 +11284,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.03954802259887,
-      "inkRatio": 1.0733749067986174
+      "inkRatio": 1.0750694773944283
     },
     {
       "id": "parity_zenuml_192",
@@ -11306,8 +11306,8 @@
             255
           ]
         ],
-        "inkPixels": 148670,
-        "inkRatio": 0.1376574074074074,
+        "inkPixels": 148789,
+        "inkRatio": 0.13776759259259258,
         "contentBounds": {
           "x": 8,
           "y": 99,
@@ -11343,7 +11343,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.029325513196481,
-      "inkRatio": 1.1727908114163104
+      "inkRatio": 1.1737295489326791
     },
     {
       "id": "parity_zenuml_193",
@@ -11365,8 +11365,8 @@
             255
           ]
         ],
-        "inkPixels": 156613,
-        "inkRatio": 0.14501203703703705,
+        "inkPixels": 156684,
+        "inkRatio": 0.14507777777777778,
         "contentBounds": {
           "x": 8,
           "y": 143,
@@ -11402,7 +11402,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0302013422818792,
-      "inkRatio": 1.0970139321813077
+      "inkRatio": 1.0975112599202876
     },
     {
       "id": "parity_zenuml_194",
@@ -11424,8 +11424,8 @@
             255
           ]
         ],
-        "inkPixels": 88548,
-        "inkRatio": 0.08198888888888889,
+        "inkPixels": 88759,
+        "inkRatio": 0.08218425925925926,
         "contentBounds": {
           "x": 8,
           "y": 116,
@@ -11461,7 +11461,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0308641975308641,
-      "inkRatio": 1.13075125464506
+      "inkRatio": 1.1334457086669478
     },
     {
       "id": "parity_zenuml_195",
@@ -11483,8 +11483,8 @@
             255
           ]
         ],
-        "inkPixels": 46490,
-        "inkRatio": 0.0430462962962963,
+        "inkPixels": 46615,
+        "inkRatio": 0.04316203703703704,
         "contentBounds": {
           "x": 8,
           "y": 194,
@@ -11520,7 +11520,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.0491803278688525,
-      "inkRatio": 1.1413630560738486
+      "inkRatio": 1.1444318962977513
     },
     {
       "id": "parity_zenuml_196",
@@ -11542,8 +11542,8 @@
             255
           ]
         ],
-        "inkPixels": 31135,
-        "inkRatio": 0.028828703703703704,
+        "inkPixels": 31295,
+        "inkRatio": 0.02897685185185185,
         "contentBounds": {
           "x": 8,
           "y": 269,
@@ -11579,7 +11579,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0342857142857143,
-      "inkRatio": 1.0599870629489667
+      "inkRatio": 1.0654342423313927
     },
     {
       "id": "parity_zenuml_197",
@@ -11601,8 +11601,8 @@
             255
           ]
         ],
-        "inkPixels": 39474,
-        "inkRatio": 0.03655,
+        "inkPixels": 39572,
+        "inkRatio": 0.03664074074074074,
         "contentBounds": {
           "x": 8,
           "y": 218,
@@ -11638,7 +11638,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0265486725663717,
-      "inkRatio": 1.132390487392065
+      "inkRatio": 1.1352018130181587
     },
     {
       "id": "parity_zenuml_198",
@@ -11660,8 +11660,8 @@
             255
           ]
         ],
-        "inkPixels": 141271,
-        "inkRatio": 0.13080648148148147,
+        "inkPixels": 141391,
+        "inkRatio": 0.13091759259259259,
         "contentBounds": {
           "x": 8,
           "y": 109,
@@ -11697,7 +11697,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0271084337349397,
-      "inkRatio": 1.122454492725987
+      "inkRatio": 1.123407940631977
     },
     {
       "id": "parity_zenuml_199",
@@ -11719,8 +11719,8 @@
             255
           ]
         ],
-        "inkPixels": 152724,
-        "inkRatio": 0.1414111111111111,
+        "inkPixels": 152831,
+        "inkRatio": 0.14151018518518518,
         "contentBounds": {
           "x": 8,
           "y": 151,
@@ -11756,7 +11756,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0310344827586206,
-      "inkRatio": 1.1012611677158368
+      "inkRatio": 1.1020327225791564
     },
     {
       "id": "parity_zenuml_200",
@@ -11778,8 +11778,8 @@
             255
           ]
         ],
-        "inkPixels": 92208,
-        "inkRatio": 0.08537777777777777,
+        "inkPixels": 92408,
+        "inkRatio": 0.08556296296296297,
         "contentBounds": {
           "x": 8,
           "y": 107,
@@ -11815,7 +11815,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.033132530120482,
-      "inkRatio": 1.172652355275206
+      "inkRatio": 1.1751958490182115
     },
     {
       "id": "parity_zenuml_201",
@@ -11837,8 +11837,8 @@
             255
           ]
         ],
-        "inkPixels": 31242,
-        "inkRatio": 0.028927777777777778,
+        "inkPixels": 31402,
+        "inkRatio": 0.029075925925925925,
         "contentBounds": {
           "x": 8,
           "y": 269,
@@ -11874,7 +11874,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0342857142857143,
-      "inkRatio": 1.0621833882976914
+      "inkRatio": 1.0676231598272872
     },
     {
       "id": "parity_zenuml_202",
@@ -11896,8 +11896,8 @@
             255
           ]
         ],
-        "inkPixels": 29710,
-        "inkRatio": 0.027509259259259258,
+        "inkPixels": 29791,
+        "inkRatio": 0.02758425925925926,
         "contentBounds": {
           "x": 8,
           "y": 309,
@@ -11933,7 +11933,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.036764705882353,
-      "inkRatio": 1.0732606025576186
+      "inkRatio": 1.0761866917130265
     },
     {
       "id": "parity_zenuml_203",
@@ -11955,8 +11955,8 @@
             255
           ]
         ],
-        "inkPixels": 39121,
-        "inkRatio": 0.03622314814814815,
+        "inkPixels": 39194,
+        "inkRatio": 0.03629074074074074,
         "contentBounds": {
           "x": 8,
           "y": 234,
@@ -11992,7 +11992,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0285714285714285,
-      "inkRatio": 1.2633125585300482
+      "inkRatio": 1.2656699066748474
     },
     {
       "id": "parity_zenuml_204",
@@ -12014,8 +12014,8 @@
             255
           ]
         ],
-        "inkPixels": 28661,
-        "inkRatio": 0.026537962962962965,
+        "inkPixels": 28707,
+        "inkRatio": 0.026580555555555555,
         "contentBounds": {
           "x": 8,
           "y": 273,
@@ -12051,7 +12051,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0411764705882354,
-      "inkRatio": 1.034992055467283
+      "inkRatio": 1.0366531850353893
     },
     {
       "id": "parity_zenuml_205",
@@ -12073,8 +12073,8 @@
             255
           ]
         ],
-        "inkPixels": 141549,
-        "inkRatio": 0.1310638888888889,
+        "inkPixels": 141669,
+        "inkRatio": 0.131175,
         "contentBounds": {
           "x": 8,
           "y": 109,
@@ -12110,7 +12110,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0271084337349397,
-      "inkRatio": 1.1216421813340942
+      "inkRatio": 1.1225930680359437
     },
     {
       "id": "parity_zenuml_206",
@@ -12132,8 +12132,8 @@
             255
           ]
         ],
-        "inkPixels": 153211,
-        "inkRatio": 0.14186203703703704,
+        "inkPixels": 153318,
+        "inkRatio": 0.14196111111111112,
         "contentBounds": {
           "x": 8,
           "y": 151,
@@ -12169,7 +12169,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0310344827586206,
-      "inkRatio": 1.100171620195173
+      "inkRatio": 1.1009399616547346
     },
     {
       "id": "parity_zenuml_207",
@@ -12191,8 +12191,8 @@
             255
           ]
         ],
-        "inkPixels": 86712,
-        "inkRatio": 0.0802888888888889,
+        "inkPixels": 86919,
+        "inkRatio": 0.08048055555555556,
         "contentBounds": {
           "x": 8,
           "y": 127,
@@ -12228,7 +12228,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0286624203821657,
-      "inkRatio": 1.1954175110633196
+      "inkRatio": 1.198271227097895
     },
     {
       "id": "parity_zenuml_208",
@@ -12250,8 +12250,8 @@
             255
           ]
         ],
-        "inkPixels": 42556,
-        "inkRatio": 0.039403703703703705,
+        "inkPixels": 42678,
+        "inkRatio": 0.039516666666666665,
         "contentBounds": {
           "x": 8,
           "y": 205,
@@ -12287,7 +12287,7 @@
       },
       "widthRatio": 1.047787610619469,
       "heightRatio": 1.047008547008547,
-      "inkRatio": 1.0445753559155622
+      "inkRatio": 1.0475699558173786
     },
     {
       "id": "parity_zenuml_209",
@@ -12309,8 +12309,8 @@
             255
           ]
         ],
-        "inkPixels": 32578,
-        "inkRatio": 0.030164814814814814,
+        "inkPixels": 32738,
+        "inkRatio": 0.03031296296296296,
         "contentBounds": {
           "x": 8,
           "y": 261,
@@ -12346,7 +12346,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0327868852459017,
-      "inkRatio": 1.049616599007668
+      "inkRatio": 1.05477157033314
     },
     {
       "id": "parity_zenuml_210",
@@ -12368,8 +12368,8 @@
             255
           ]
         ],
-        "inkPixels": 42688,
-        "inkRatio": 0.03952592592592592,
+        "inkPixels": 42774,
+        "inkRatio": 0.039605555555555554,
         "contentBounds": {
           "x": 8,
           "y": 210,
@@ -12405,7 +12405,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0300429184549356,
-      "inkRatio": 1.2639308343696334
+      "inkRatio": 1.26647717178895
     },
     {
       "id": "parity_zenuml_211",
@@ -12427,8 +12427,8 @@
             255
           ]
         ],
-        "inkPixels": 146480,
-        "inkRatio": 0.13562962962962963,
+        "inkPixels": 146616,
+        "inkRatio": 0.13575555555555555,
         "contentBounds": {
           "x": 8,
           "y": 96,
@@ -12464,7 +12464,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0290697674418605,
-      "inkRatio": 1.1296280587024083
+      "inkRatio": 1.1306768668399256
     },
     {
       "id": "parity_zenuml_212",
@@ -12486,8 +12486,8 @@
             255
           ]
         ],
-        "inkPixels": 159011,
-        "inkRatio": 0.1472324074074074,
+        "inkPixels": 159090,
+        "inkRatio": 0.14730555555555555,
         "contentBounds": {
           "x": 8,
           "y": 141,
@@ -12523,7 +12523,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.03,
-      "inkRatio": 1.1244281016865254
+      "inkRatio": 1.1249867411519288
     },
     {
       "id": "parity_zenuml_213",
@@ -12545,8 +12545,8 @@
             255
           ]
         ],
-        "inkPixels": 93850,
-        "inkRatio": 0.08689814814814815,
+        "inkPixels": 94016,
+        "inkRatio": 0.08705185185185185,
         "contentBounds": {
           "x": 8,
           "y": 93,
@@ -12582,7 +12582,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.033236994219653,
-      "inkRatio": 1.1064476957357259
+      "inkRatio": 1.1084047582556207
     },
     {
       "id": "parity_zenuml_214",
@@ -12604,8 +12604,8 @@
             255
           ]
         ],
-        "inkPixels": 32624,
-        "inkRatio": 0.03020740740740741,
+        "inkPixels": 32784,
+        "inkRatio": 0.030355555555555556,
         "contentBounds": {
           "x": 8,
           "y": 261,
@@ -12641,7 +12641,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0327868852459017,
-      "inkRatio": 1.0501512908002317
+      "inkRatio": 1.0553016159145046
     },
     {
       "id": "parity_zenuml_215",
@@ -12663,8 +12663,8 @@
             255
           ]
         ],
-        "inkPixels": 31618,
-        "inkRatio": 0.029275925925925927,
+        "inkPixels": 31707,
+        "inkRatio": 0.029358333333333334,
         "contentBounds": {
           "x": 8,
           "y": 303,
@@ -12700,7 +12700,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0387323943661972,
-      "inkRatio": 1.0409218106995886
+      "inkRatio": 1.0438518518518518
     },
     {
       "id": "parity_zenuml_216",
@@ -12722,8 +12722,8 @@
             255
           ]
         ],
-        "inkPixels": 40045,
-        "inkRatio": 0.037078703703703704,
+        "inkPixels": 40125,
+        "inkRatio": 0.03715277777777778,
         "contentBounds": {
           "x": 8,
           "y": 227,
@@ -12759,7 +12759,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0276497695852536,
-      "inkRatio": 1.1377066878799933
+      "inkRatio": 1.1399795442922893
     },
     {
       "id": "parity_zenuml_217",
@@ -12781,8 +12781,8 @@
             255
           ]
         ],
-        "inkPixels": 31540,
-        "inkRatio": 0.029203703703703704,
+        "inkPixels": 31594,
+        "inkRatio": 0.029253703703703705,
         "contentBounds": {
           "x": 8,
           "y": 264,
@@ -12818,7 +12818,7 @@
       },
       "widthRatio": 1.0440917107583774,
       "heightRatio": 1.0449438202247192,
-      "inkRatio": 1.0865745685051849
+      "inkRatio": 1.0884349054328728
     },
     {
       "id": "parity_zenuml_218",
@@ -12840,8 +12840,8 @@
             255
           ]
         ],
-        "inkPixels": 149135,
-        "inkRatio": 0.13808796296296297,
+        "inkPixels": 149253,
+        "inkRatio": 0.13819722222222222,
         "contentBounds": {
           "x": 8,
           "y": 96,
@@ -12877,7 +12877,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0290697674418605,
-      "inkRatio": 1.1388784946811354
+      "inkRatio": 1.1397796088553558
     },
     {
       "id": "parity_zenuml_219",
@@ -12899,8 +12899,8 @@
             255
           ]
         ],
-        "inkPixels": 159526,
-        "inkRatio": 0.14770925925925926,
+        "inkPixels": 159605,
+        "inkRatio": 0.14778240740740742,
         "contentBounds": {
           "x": 8,
           "y": 141,
@@ -12936,7 +12936,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.03,
-      "inkRatio": 1.1234304466932867
+      "inkRatio": 1.1239867886393569
     },
     {
       "id": "parity_zenuml_220",
@@ -12958,8 +12958,8 @@
             255
           ]
         ],
-        "inkPixels": 92371,
-        "inkRatio": 0.0855287037037037,
+        "inkPixels": 92568,
+        "inkRatio": 0.08571111111111111,
         "contentBounds": {
           "x": 8,
           "y": 113,
@@ -12995,7 +12995,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0305810397553516,
-      "inkRatio": 1.1719531071582634
+      "inkRatio": 1.1744525362226903
     },
     {
       "id": "parity_zenuml_221",
@@ -13017,8 +13017,8 @@
             255
           ]
         ],
-        "inkPixels": 44779,
-        "inkRatio": 0.04146203703703704,
+        "inkPixels": 44915,
+        "inkRatio": 0.041587962962962965,
         "contentBounds": {
           "x": 8,
           "y": 191,
@@ -13054,7 +13054,7 @@
       },
       "widthRatio": 1.049645390070922,
       "heightRatio": 1.048582995951417,
-      "inkRatio": 1.0683287605869023
+      "inkRatio": 1.0715734224024813
     },
     {
       "id": "parity_zenuml_222",
@@ -13076,8 +13076,8 @@
             255
           ]
         ],
-        "inkPixels": 28871,
-        "inkRatio": 0.026732407407407406,
+        "inkPixels": 29017,
+        "inkRatio": 0.026867592592592592,
         "contentBounds": {
           "x": 8,
           "y": 275,
@@ -13113,7 +13113,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0355029585798816,
-      "inkRatio": 1.066098002289428
+      "inkRatio": 1.0714892359957164
     },
     {
       "id": "parity_zenuml_223",
@@ -13135,8 +13135,8 @@
             255
           ]
         ],
-        "inkPixels": 40444,
-        "inkRatio": 0.03744814814814815,
+        "inkPixels": 40539,
+        "inkRatio": 0.03753611111111111,
         "contentBounds": {
           "x": 8,
           "y": 224,
@@ -13172,7 +13172,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0319634703196348,
-      "inkRatio": 1.2580173566829451
+      "inkRatio": 1.260972347506921
     },
     {
       "id": "parity_zenuml_224",
@@ -13194,8 +13194,8 @@
             255
           ]
         ],
-        "inkPixels": 140000,
-        "inkRatio": 0.12962962962962962,
+        "inkPixels": 140109,
+        "inkRatio": 0.12973055555555554,
         "contentBounds": {
           "x": 8,
           "y": 118,
@@ -13231,7 +13231,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.031055900621118,
-      "inkRatio": 1.1299799832117259
+      "inkRatio": 1.1308597533415121
     },
     {
       "id": "parity_zenuml_225",
@@ -13253,8 +13253,8 @@
             255
           ]
         ],
-        "inkPixels": 150056,
-        "inkRatio": 0.13894074074074075,
+        "inkPixels": 150134,
+        "inkRatio": 0.13901296296296295,
         "contentBounds": {
           "x": 8,
           "y": 160,
@@ -13290,7 +13290,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0283687943262412,
-      "inkRatio": 1.0946360963795656
+      "inkRatio": 1.0952050947236345
     },
     {
       "id": "parity_zenuml_226",
@@ -13312,8 +13312,8 @@
             255
           ]
         ],
-        "inkPixels": 87830,
-        "inkRatio": 0.08132407407407408,
+        "inkPixels": 88013,
+        "inkRatio": 0.08149351851851852,
         "contentBounds": {
           "x": 8,
           "y": 118,
@@ -13349,7 +13349,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0375,
-      "inkRatio": 1.1444990292021213
+      "inkRatio": 1.1468836736555426
     },
     {
       "id": "parity_zenuml_227",
@@ -13371,8 +13371,8 @@
             255
           ]
         ],
-        "inkPixels": 29014,
-        "inkRatio": 0.026864814814814814,
+        "inkPixels": 29160,
+        "inkRatio": 0.027,
         "contentBounds": {
           "x": 8,
           "y": 275,
@@ -13408,7 +13408,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0355029585798816,
-      "inkRatio": 1.0698377581120944
+      "inkRatio": 1.075221238938053
     },
     {
       "id": "parity_zenuml_228",
@@ -13430,8 +13430,8 @@
             255
           ]
         ],
-        "inkPixels": 30295,
-        "inkRatio": 0.028050925925925927,
+        "inkPixels": 30367,
+        "inkRatio": 0.028117592592592593,
         "contentBounds": {
           "x": 8,
           "y": 314,
@@ -13467,7 +13467,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0381679389312977,
-      "inkRatio": 1.0748243808983184
+      "inkRatio": 1.077378840559143
     },
     {
       "id": "parity_zenuml_229",
@@ -13489,8 +13489,8 @@
             255
           ]
         ],
-        "inkPixels": 38813,
-        "inkRatio": 0.03593796296296296,
+        "inkPixels": 38889,
+        "inkRatio": 0.03600833333333334,
         "contentBounds": {
           "x": 8,
           "y": 239,
@@ -13526,7 +13526,7 @@
       },
       "widthRatio": 1.0313588850174216,
       "heightRatio": 1.0292682926829269,
-      "inkRatio": 1.1793679732604072
+      "inkRatio": 1.1816773017319964
     },
     {
       "id": "parity_zenuml_230",
@@ -13548,8 +13548,8 @@
             255
           ]
         ],
-        "inkPixels": 27541,
-        "inkRatio": 0.025500925925925927,
+        "inkPixels": 27584,
+        "inkRatio": 0.025540740740740742,
         "contentBounds": {
           "x": 8,
           "y": 280,
@@ -13585,7 +13585,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0429447852760736,
-      "inkRatio": 1.075526223298317
+      "inkRatio": 1.0772054516343188
     },
     {
       "id": "parity_zenuml_231",
@@ -13607,8 +13607,8 @@
             255
           ]
         ],
-        "inkPixels": 140224,
-        "inkRatio": 0.12983703703703703,
+        "inkPixels": 140333,
+        "inkRatio": 0.12993796296296295,
         "contentBounds": {
           "x": 8,
           "y": 118,
@@ -13644,7 +13644,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.031055900621118,
-      "inkRatio": 1.1291086238827601
+      "inkRatio": 1.1299863112972057
     },
     {
       "id": "parity_zenuml_232",
@@ -13666,8 +13666,8 @@
             255
           ]
         ],
-        "inkPixels": 150515,
-        "inkRatio": 0.13936574074074073,
+        "inkPixels": 150593,
+        "inkRatio": 0.13943796296296296,
         "contentBounds": {
           "x": 8,
           "y": 160,
@@ -13703,7 +13703,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0283687943262412,
-      "inkRatio": 1.0937238858571252
+      "inkRatio": 1.0942906762972597
     },
     {
       "id": "parity_zenuml_233",
@@ -13725,8 +13725,8 @@
             255
           ]
         ],
-        "inkPixels": 84739,
-        "inkRatio": 0.07846203703703704,
+        "inkPixels": 84937,
+        "inkRatio": 0.07864537037037037,
         "contentBounds": {
           "x": 8,
           "y": 137,
@@ -13762,7 +13762,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.033003300330033,
-      "inkRatio": 1.1495489384792785
+      "inkRatio": 1.1522349589635759
     },
     {
       "id": "parity_zenuml_234",
@@ -13784,8 +13784,8 @@
             255
           ]
         ],
-        "inkPixels": 39672,
-        "inkRatio": 0.03673333333333333,
+        "inkPixels": 39787,
+        "inkRatio": 0.03683981481481481,
         "contentBounds": {
           "x": 8,
           "y": 216,
@@ -13821,7 +13821,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.0493273542600896,
-      "inkRatio": 1.0561737926627974
+      "inkRatio": 1.0592353974761726
     },
     {
       "id": "parity_zenuml_235",
@@ -13843,8 +13843,8 @@
             255
           ]
         ],
-        "inkPixels": 28865,
-        "inkRatio": 0.026726851851851852,
+        "inkPixels": 29011,
+        "inkRatio": 0.02686203703703704,
         "contentBounds": {
           "x": 8,
           "y": 275,
@@ -13880,7 +13880,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0355029585798816,
-      "inkRatio": 1.0733276317257279
+      "inkRatio": 1.0787565537500465
     },
     {
       "id": "parity_zenuml_236",
@@ -13902,8 +13902,8 @@
             255
           ]
         ],
-        "inkPixels": 40496,
-        "inkRatio": 0.0374962962962963,
+        "inkPixels": 40591,
+        "inkRatio": 0.03758425925925926,
         "contentBounds": {
           "x": 8,
           "y": 224,
@@ -13939,7 +13939,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0319634703196348,
-      "inkRatio": 1.1977521443359953
+      "inkRatio": 1.2005619639160012
     },
     {
       "id": "parity_zenuml_237",
@@ -13961,8 +13961,8 @@
             255
           ]
         ],
-        "inkPixels": 140046,
-        "inkRatio": 0.12967222222222222,
+        "inkPixels": 140155,
+        "inkRatio": 0.12977314814814814,
         "contentBounds": {
           "x": 8,
           "y": 118,
@@ -13987,8 +13987,8 @@
             255
           ]
         ],
-        "inkPixels": 121988,
-        "inkRatio": 0.11295185185185184,
+        "inkPixels": 121968,
+        "inkRatio": 0.11293333333333333,
         "contentBounds": {
           "x": 28,
           "y": 128,
@@ -13998,7 +13998,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.031055900621118,
-      "inkRatio": 1.1480309538643145
+      "inkRatio": 1.1491128820674275
     },
     {
       "id": "parity_zenuml_238",
@@ -14020,8 +14020,8 @@
             255
           ]
         ],
-        "inkPixels": 150093,
-        "inkRatio": 0.138975,
+        "inkPixels": 150171,
+        "inkRatio": 0.1390472222222222,
         "contentBounds": {
           "x": 8,
           "y": 160,
@@ -14057,7 +14057,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0320284697508897,
-      "inkRatio": 1.1136065172390766
+      "inkRatio": 1.1141852338237583
     },
     {
       "id": "parity_zenuml_239",
@@ -14079,8 +14079,8 @@
             255
           ]
         ],
-        "inkPixels": 87877,
-        "inkRatio": 0.08136759259259259,
+        "inkPixels": 88060,
+        "inkRatio": 0.08153703703703703,
         "contentBounds": {
           "x": 8,
           "y": 118,
@@ -14116,7 +14116,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0375,
-      "inkRatio": 1.1533625577488449
+      "inkRatio": 1.1557643847123056
     },
     {
       "id": "parity_zenuml_240",
@@ -14138,8 +14138,8 @@
             255
           ]
         ],
-        "inkPixels": 29013,
-        "inkRatio": 0.02686388888888889,
+        "inkPixels": 29159,
+        "inkRatio": 0.026999074074074075,
         "contentBounds": {
           "x": 8,
           "y": 275,
@@ -14175,7 +14175,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0355029585798816,
-      "inkRatio": 1.0765891127685627
+      "inkRatio": 1.0820067534973468
     },
     {
       "id": "parity_zenuml_241",
@@ -14197,8 +14197,8 @@
             255
           ]
         ],
-        "inkPixels": 30297,
-        "inkRatio": 0.028052777777777777,
+        "inkPixels": 30369,
+        "inkRatio": 0.028119444444444443,
         "contentBounds": {
           "x": 8,
           "y": 314,
@@ -14234,7 +14234,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0381679389312977,
-      "inkRatio": 1.0621954212390001
+      "inkRatio": 1.0647196998913158
     },
     {
       "id": "parity_zenuml_242",
@@ -14256,8 +14256,8 @@
             255
           ]
         ],
-        "inkPixels": 38816,
-        "inkRatio": 0.03594074074074074,
+        "inkPixels": 38892,
+        "inkRatio": 0.03601111111111111,
         "contentBounds": {
           "x": 8,
           "y": 239,
@@ -14293,7 +14293,7 @@
       },
       "widthRatio": 1.0313588850174216,
       "heightRatio": 1.0292682926829269,
-      "inkRatio": 1.1653306914047254
+      "inkRatio": 1.1676123570206252
     },
     {
       "id": "parity_zenuml_243",
@@ -14315,8 +14315,8 @@
             255
           ]
         ],
-        "inkPixels": 27578,
-        "inkRatio": 0.025535185185185185,
+        "inkPixels": 27621,
+        "inkRatio": 0.025575,
         "contentBounds": {
           "x": 8,
           "y": 280,
@@ -14352,7 +14352,7 @@
       },
       "widthRatio": 1.0422535211267605,
       "heightRatio": 1.0429447852760736,
-      "inkRatio": 1.0853207398661944
+      "inkRatio": 1.087012987012987
     },
     {
       "id": "parity_zenuml_244",
@@ -14374,8 +14374,8 @@
             255
           ]
         ],
-        "inkPixels": 140287,
-        "inkRatio": 0.12989537037037038,
+        "inkPixels": 140396,
+        "inkRatio": 0.1299962962962963,
         "contentBounds": {
           "x": 8,
           "y": 118,
@@ -14400,8 +14400,8 @@
             255
           ]
         ],
-        "inkPixels": 122274,
-        "inkRatio": 0.11321666666666666,
+        "inkPixels": 122276,
+        "inkRatio": 0.11321851851851852,
         "contentBounds": {
           "x": 28,
           "y": 128,
@@ -14411,7 +14411,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.031055900621118,
-      "inkRatio": 1.1473166822055385
+      "inkRatio": 1.1481893421440021
     },
     {
       "id": "parity_zenuml_245",
@@ -14433,8 +14433,8 @@
             255
           ]
         ],
-        "inkPixels": 150549,
-        "inkRatio": 0.13939722222222223,
+        "inkPixels": 150627,
+        "inkRatio": 0.13946944444444445,
         "contentBounds": {
           "x": 8,
           "y": 160,
@@ -14470,7 +14470,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0320284697508897,
-      "inkRatio": 1.1130341564394501
+      "inkRatio": 1.1136108235989945
     },
     {
       "id": "parity_zenuml_246",
@@ -14492,8 +14492,8 @@
             255
           ]
         ],
-        "inkPixels": 84817,
-        "inkRatio": 0.07853425925925926,
+        "inkPixels": 85015,
+        "inkRatio": 0.07871759259259259,
         "contentBounds": {
           "x": 8,
           "y": 137,
@@ -14529,7 +14529,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.033003300330033,
-      "inkRatio": 1.196560577845494
+      "inkRatio": 1.1993538739348795
     },
     {
       "id": "parity_zenuml_247",
@@ -14551,8 +14551,8 @@
             255
           ]
         ],
-        "inkPixels": 39715,
-        "inkRatio": 0.036773148148148145,
+        "inkPixels": 39830,
+        "inkRatio": 0.03687962962962963,
         "contentBounds": {
           "x": 8,
           "y": 216,
@@ -14588,7 +14588,7 @@
       },
       "widthRatio": 1.0459363957597174,
       "heightRatio": 1.0493273542600896,
-      "inkRatio": 1.0879331598411175
+      "inkRatio": 1.091083413231064
     },
     {
       "id": "parity_zenuml_248",
@@ -14610,8 +14610,8 @@
             255
           ]
         ],
-        "inkPixels": 28608,
-        "inkRatio": 0.026488888888888888,
+        "inkPixels": 28743,
+        "inkRatio": 0.02661388888888889,
         "contentBounds": {
           "x": 8,
           "y": 279,
@@ -14647,7 +14647,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0301204819277108,
-      "inkRatio": 1.0445069188360292
+      "inkRatio": 1.049435904925335
     },
     {
       "id": "parity_zenuml_249",
@@ -14669,8 +14669,8 @@
             255
           ]
         ],
-        "inkPixels": 38523,
-        "inkRatio": 0.03566944444444444,
+        "inkPixels": 38601,
+        "inkRatio": 0.035741666666666665,
         "contentBounds": {
           "x": 8,
           "y": 227,
@@ -14706,7 +14706,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0324074074074074,
-      "inkRatio": 1.2287646327070907
+      "inkRatio": 1.2312525916238717
     },
     {
       "id": "parity_zenuml_250",
@@ -14728,8 +14728,8 @@
             255
           ]
         ],
-        "inkPixels": 136498,
-        "inkRatio": 0.12638703703703705,
+        "inkPixels": 136620,
+        "inkRatio": 0.1265,
         "contentBounds": {
           "x": 8,
           "y": 124,
@@ -14765,7 +14765,7 @@
       },
       "widthRatio": 1.034965034965035,
       "heightRatio": 1.0251572327044025,
-      "inkRatio": 1.1378531356024042
+      "inkRatio": 1.1388701327931579
     },
     {
       "id": "parity_zenuml_251",
@@ -14787,8 +14787,8 @@
             255
           ]
         ],
-        "inkPixels": 146588,
-        "inkRatio": 0.13572962962962962,
+        "inkPixels": 146679,
+        "inkRatio": 0.1358138888888889,
         "contentBounds": {
           "x": 8,
           "y": 164,
@@ -14824,7 +14824,7 @@
       },
       "widthRatio": 1.0331588132635252,
       "heightRatio": 1.0287769784172662,
-      "inkRatio": 1.0950107941345644
+      "inkRatio": 1.095690563162495
     },
     {
       "id": "parity_zenuml_252",
@@ -14846,8 +14846,8 @@
             255
           ]
         ],
-        "inkPixels": 87411,
-        "inkRatio": 0.08093611111111111,
+        "inkPixels": 87546,
+        "inkRatio": 0.08106111111111111,
         "contentBounds": {
           "x": 8,
           "y": 125,
@@ -14883,7 +14883,7 @@
       },
       "widthRatio": 1.0367775831873904,
       "heightRatio": 1.0333333333333334,
-      "inkRatio": 1.1549163649816347
+      "inkRatio": 1.156700050207436
     },
     {
       "id": "parity_zenuml_253",
@@ -14905,8 +14905,8 @@
             255
           ]
         ],
-        "inkPixels": 28693,
-        "inkRatio": 0.026567592592592594,
+        "inkPixels": 28828,
+        "inkRatio": 0.026692592592592594,
         "contentBounds": {
           "x": 8,
           "y": 279,
@@ -14942,7 +14942,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0301204819277108,
-      "inkRatio": 1.0447114509375568
+      "inkRatio": 1.0496267977425815
     },
     {
       "id": "parity_zenuml_254",
@@ -14964,8 +14964,8 @@
             255
           ]
         ],
-        "inkPixels": 28723,
-        "inkRatio": 0.02659537037037037,
+        "inkPixels": 28800,
+        "inkRatio": 0.02666666666666667,
         "contentBounds": {
           "x": 8,
           "y": 317,
@@ -15001,7 +15001,7 @@
       },
       "widthRatio": 1.03859649122807,
       "heightRatio": 1.0348837209302326,
-      "inkRatio": 1.0886934768600993
+      "inkRatio": 1.09161202289353
     },
     {
       "id": "parity_zenuml_255",
@@ -15023,8 +15023,8 @@
             255
           ]
         ],
-        "inkPixels": 36215,
-        "inkRatio": 0.03353240740740741,
+        "inkPixels": 36283,
+        "inkRatio": 0.03359537037037037,
         "contentBounds": {
           "x": 8,
           "y": 242,
@@ -15060,7 +15060,7 @@
       },
       "widthRatio": 1.0313588850174216,
       "heightRatio": 1.0297029702970297,
-      "inkRatio": 1.1819902738340025
+      "inkRatio": 1.1842096674173441
     },
     {
       "id": "parity_zenuml_256",
@@ -15082,8 +15082,8 @@
             255
           ]
         ],
-        "inkPixels": 29289,
-        "inkRatio": 0.027119444444444446,
+        "inkPixels": 29327,
+        "inkRatio": 0.02715462962962963,
         "contentBounds": {
           "x": 8,
           "y": 283,
@@ -15119,7 +15119,7 @@
       },
       "widthRatio": 1.0404217926186292,
       "heightRatio": 1.0372670807453417,
-      "inkRatio": 0.9976157226063559
+      "inkRatio": 0.9989100446200484
     }
   ]
 }

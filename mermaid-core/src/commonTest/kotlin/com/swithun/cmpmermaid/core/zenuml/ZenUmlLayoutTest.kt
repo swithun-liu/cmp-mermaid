@@ -7,9 +7,12 @@ import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.SceneArrowHead
+import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.ScenePath
 import com.swithun.cmpmermaid.core.ScenePathFillRule
 import com.swithun.cmpmermaid.core.SceneShape
+import com.swithun.cmpmermaid.core.SceneShapePaint
+import com.swithun.cmpmermaid.core.SceneShapeViewportFit
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
@@ -72,6 +75,26 @@ class ZenUmlLayoutTest {
         )
         assertTrue(paths.containsKey("zenuml-lifeline-A"))
         assertTrue(paths.containsKey("zenuml-lifeline-B"))
+    }
+
+    @Test
+    fun initializesCachedNormalArrowPaintsBeforeVectorDefinitions() {
+        val black = SceneColor(0xFF000000)
+        val open = ZenUmlVectors.openArrow.paths.single()
+        val filled = ZenUmlVectors.filledArrow.paths.single()
+
+        assertEquals(SceneShapePaint.None, open.fill)
+        assertEquals(SceneShapePaint.Stroke, open.stroke)
+        assertEquals(black, open.strokeColor)
+        assertEquals(SceneShapeViewportFit.MeetCenter, ZenUmlVectors.openArrow.viewportFit)
+        assertEquals(SceneShapePaint.Fill, filled.fill)
+        assertEquals(SceneShapePaint.Stroke, filled.stroke)
+        assertEquals(black, filled.fillColor)
+        assertEquals(black, filled.strokeColor)
+        assertEquals(
+            SceneShapeViewportFit.Stretch,
+            ZenUmlVectors.openTipArrow(pointsLeft = false).viewportFit,
+        )
     }
 
     @Test
