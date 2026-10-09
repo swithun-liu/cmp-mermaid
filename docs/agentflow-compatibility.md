@@ -47,9 +47,10 @@ in a later upstream release.
 - The production geometry audit passed all 13 pairs. Width, height, and
   foreground-ink ratios were `1.041-1.186`, `0.820-1.095`, and
   `0.766-1.206`.
-- The production detail audit produced `9 pass / 4 review / 0 fail`. Two
-  reviews are collapsed compound-shape stroke-pattern classifications; two
-  are compound-shape element-count classifications. Manual review confirmed
+- The production detail audit produced `11 pass / 2 review / 0 fail`. The two
+  reviews are collapsed compound-shape stroke-pattern classifications.
+  Geometry counts compare both render objects and expanded primitives,
+  eliminating the former decomposition-only reviews. Manual review confirmed
   matching visible structure, labels, edge semantics, and paint order.
 - The matrix geometry and detail audits passed all 256 pairs. Ratios were
   `1.040-1.145`, `0.947-1.100`, and `0.894-1.244`; detail was

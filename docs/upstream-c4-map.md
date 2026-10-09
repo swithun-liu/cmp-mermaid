@@ -69,9 +69,8 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   configuration, malformed input, endpoint validation, and determinism.
 - The replacement Web gate compares 13 independent production scenarios and
   256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
-- Production geometry passes `13/13`; detail reports
-  `12 pass / 1 reviewed / 0 fail`. The reviewed case is an equivalent
-  SceneGraph representation of SVG database and queue subpaths.
+- Production geometry and detail pass `13/13`. Geometry counts compare both
+  render objects and expanded primitives for SVG database and queue subpaths.
 - Matrix geometry and detail pass `256/256`, with
   `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually

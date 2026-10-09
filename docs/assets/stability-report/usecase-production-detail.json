@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-23T03:08:42.111Z",
+  "generatedAt": "2026-10-09T04:15:59.703Z",
   "inputDirectory": "captures/local/usecase-production-20260923-1108",
   "corpusSource": "production",
   "corpusKind": "usecase",
@@ -9,128 +9,9 @@
   "gridSize": 96,
   "caseCount": 18,
   "counts": {
-    "pass": 5,
-    "review": 13
+    "pass": 18
   },
-  "reviewQueue": [
-    {
-      "id": "rc_usecase_order_operations",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_order_operations_heatmap.png"
-    },
-    {
-      "id": "rc_usecase_policy_dependencies",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_policy_dependencies_heatmap.png"
-    },
-    {
-      "id": "rc_usecase_regional_service",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_regional_service_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_account_entry",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_account_entry_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_business_roles",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_business_roles_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_service_boundaries",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_service_boundaries_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_association_matrix",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_association_matrix_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_dependency_semantics",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_dependency_semantics_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_edge_metadata",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_edge_metadata_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_markdown_notes",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_markdown_notes_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_responsive_config",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_responsive_config_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_intrinsic_palette",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_intrinsic_palette_heatmap.png"
-    },
-    {
-      "id": "prod_usecase_accessible_regions",
-      "kind": "usecase",
-      "status": "review",
-      "findingCodes": [
-        "element-count"
-      ],
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_accessible_regions_heatmap.png"
-    }
-  ],
+  "reviewQueue": [],
   "cases": [
     {
       "id": "rc_usecase_account_recovery",
@@ -182,6 +63,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 8,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04019051865341832,
           "p95CenterDistance": 0.035260257367350896,
           "maximumSizeRatio": 1.3333333333333333
@@ -189,8 +72,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.2666666666666666,
-            "asset": 1
+            "asset": 1,
+            "geometry": 0.9333333333333333,
+            "geometryObject": 0.9333333333333333,
+            "geometryExpanded": 1.2666666666666666
           }
         },
         "styleComparison": {
@@ -386,30 +271,8 @@
     {
       "id": "rc_usecase_order_operations",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "«Control» Review order",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "«Control»",
-              "nativeCount": 1
-            },
-            {
-              "text": "Review order",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -423,7 +286,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 18,
@@ -469,15 +332,31 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 7,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "«Control»",
+                "Review order"
+              ],
+              "officialTexts": [
+                "«Control» Review order"
+              ],
+              "centerDistance": 0.010312058372023605,
+              "sizeRatio": 1.6136484861349567
+            }
+          ],
           "maximumCenterDistance": 0.026714320250660673,
           "p95CenterDistance": 0.026453362654948433,
-          "maximumSizeRatio": 1.3333333333333333
+          "maximumSizeRatio": 1.6136484861349567
         },
         "elementComparison": {
           "ratios": {
             "text": 1.125,
+            "asset": 1,
             "geometry": 1.3076923076923077,
-            "asset": 1
+            "geometryObject": 0.6923076923076923,
+            "geometryExpanded": 1.3076923076923077
           }
         },
         "styleComparison": {
@@ -666,20 +545,13 @@
         "foregroundCells": 2185,
         "edgeCells": 1863
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_order_operations_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "rc_usecase_policy_dependencies",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 1.917 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -693,7 +565,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 24,
@@ -725,6 +597,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 9,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.024945596872490112,
           "p95CenterDistance": 0.023672760199144147,
           "maximumSizeRatio": 1.3333333333333333
@@ -732,8 +606,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.9166666666666667,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1.25,
+            "geometryObject": 1.25,
+            "geometryExpanded": 1.9166666666666667
           }
         },
         "styleComparison": {
@@ -976,7 +852,7 @@
         "foregroundCells": 2063,
         "edgeCells": 1757
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_policy_dependencies_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "rc_usecase_compliance_evidence",
@@ -1028,6 +904,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 13,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.023320200893706042,
           "p95CenterDistance": 0.022042811582132046,
           "maximumSizeRatio": 1.3333333333333333
@@ -1035,8 +913,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1.2105263157894737,
-            "asset": 1
+            "geometryObject": 0.5263157894736842,
+            "geometryExpanded": 1.2105263157894737
           }
         },
         "styleComparison": {
@@ -1209,15 +1089,8 @@
     {
       "id": "rc_usecase_regional_service",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -1231,7 +1104,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 8,
@@ -1263,6 +1136,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 3,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.03628637966919644,
           "p95CenterDistance": 0.011574618502588924,
           "maximumSizeRatio": 1.1666666666666667
@@ -1270,8 +1145,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.8,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1.8
           }
         },
         "styleComparison": {
@@ -1412,20 +1289,13 @@
         "foregroundCells": 971,
         "edgeCells": 1597
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/rc_usecase_regional_service_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_account_entry",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -1439,7 +1309,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 8,
@@ -1471,6 +1341,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 3,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.043990514831880045,
           "p95CenterDistance": 0.03483231485960917,
           "maximumSizeRatio": 1.3333333333333333
@@ -1478,8 +1350,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.8,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1.8
           }
         },
         "styleComparison": {
@@ -1620,7 +1494,7 @@
         "foregroundCells": 3695,
         "edgeCells": 1693
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_account_entry_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_actor_catalog",
@@ -1674,6 +1548,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.02378811638363143,
           "p95CenterDistance": 0.02054782688774155,
           "maximumSizeRatio": 1.3333333333333333
@@ -1681,8 +1557,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1.2142857142857142,
-            "asset": 1
+            "geometryObject": 0.7857142857142857,
+            "geometryExpanded": 1.2142857142857142
           }
         },
         "styleComparison": {
@@ -1900,30 +1778,8 @@
     {
       "id": "prod_usecase_business_roles",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "«Record» Archive quote",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "«Record»",
-              "nativeCount": 1
-            },
-            {
-              "text": "Archive quote",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -1937,7 +1793,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 15,
@@ -1983,15 +1839,31 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "«Record»",
+                "Archive quote"
+              ],
+              "officialTexts": [
+                "«Record» Archive quote"
+              ],
+              "centerDistance": 0.012419646419870756,
+              "sizeRatio": 1.5454974671588446
+            }
+          ],
           "maximumCenterDistance": 0.03773957869674628,
           "p95CenterDistance": 0.03270833046867377,
-          "maximumSizeRatio": 1.3333333333333333
+          "maximumSizeRatio": 1.5454974671588446
         },
         "elementComparison": {
           "ratios": {
             "text": 1.1428571428571428,
+            "asset": 1,
             "geometry": 1.3636363636363635,
-            "asset": 1
+            "geometryObject": 0.6363636363636364,
+            "geometryExpanded": 1.3636363636363635
           }
         },
         "styleComparison": {
@@ -2156,20 +2028,13 @@
         "foregroundCells": 1701,
         "edgeCells": 1305
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_business_roles_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_service_boundaries",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -2183,7 +2048,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 16,
@@ -2215,6 +2080,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.025920087765202725,
           "p95CenterDistance": 0.02547283286489616,
           "maximumSizeRatio": 1.3333333333333333
@@ -2222,8 +2089,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.8,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1.8
           }
         },
         "styleComparison": {
@@ -2388,20 +2257,13 @@
         "foregroundCells": 5777,
         "edgeCells": 1605
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_service_boundaries_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_association_matrix",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 1.900 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -2415,7 +2277,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 17,
@@ -2447,6 +2309,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.03950109545391439,
           "p95CenterDistance": 0.029296774191063378,
           "maximumSizeRatio": 1.3333333333333333
@@ -2454,8 +2318,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.9,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1.1,
+            "geometryObject": 1.1,
+            "geometryExpanded": 1.9
           }
         },
         "styleComparison": {
@@ -2648,20 +2514,13 @@
         "foregroundCells": 2256,
         "edgeCells": 1559
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_association_matrix_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_dependency_semantics",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 2.111 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -2675,7 +2534,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 18,
@@ -2707,6 +2566,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 7,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.026751722438477534,
           "p95CenterDistance": 0.02675171207127812,
           "maximumSizeRatio": 1.3333333333333333
@@ -2714,8 +2575,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 2.111111111111111,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1.2222222222222223,
+            "geometryObject": 1.2222222222222223,
+            "geometryExpanded": 2.111111111111111
           }
         },
         "styleComparison": {
@@ -2906,20 +2769,13 @@
         "foregroundCells": 1914,
         "edgeCells": 1280
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_dependency_semantics_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_edge_metadata",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 2.200 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -2933,7 +2789,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 12,
@@ -2965,6 +2821,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 5,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04931218535405575,
           "p95CenterDistance": 0.011149908499035271,
           "maximumSizeRatio": 1.3333333333333333
@@ -2972,8 +2830,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 2.2,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1.4,
+            "geometryObject": 1.4,
+            "geometryExpanded": 2.2
           }
         },
         "styleComparison": {
@@ -3117,20 +2977,13 @@
         "foregroundCells": 2877,
         "edgeCells": 1495
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_edge_metadata_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_markdown_notes",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 1.667 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -3144,7 +2997,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 10,
@@ -3176,6 +3029,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 4,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.028696334761281063,
           "p95CenterDistance": 0.017443612208143756,
           "maximumSizeRatio": 1.3333333333333333
@@ -3183,8 +3038,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.6666666666666667,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1.6666666666666667
           }
         },
         "styleComparison": {
@@ -3303,7 +3160,7 @@
         "foregroundCells": 2370,
         "edgeCells": 1367
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_markdown_notes_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_payload_table",
@@ -3355,6 +3212,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 13,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.02393802980060166,
           "p95CenterDistance": 0.0223007311932273,
           "maximumSizeRatio": 1.3333333333333333
@@ -3362,8 +3221,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.1875,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -3532,6 +3393,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.06404939509105387,
           "p95CenterDistance": 0.056416022800900835,
           "maximumSizeRatio": 1.3333333333333333
@@ -3539,8 +3402,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1.4444444444444444,
-            "asset": 1
+            "geometryObject": 0.6666666666666666,
+            "geometryExpanded": 1.4444444444444444
           }
         },
         "styleComparison": {
@@ -3686,15 +3551,8 @@
     {
       "id": "prod_usecase_responsive_config",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 2.333 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -3708,7 +3566,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 5,
@@ -3740,6 +3598,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 2,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04785888022648802,
           "p95CenterDistance": 0.009325755965308186,
           "maximumSizeRatio": 1.1428571428571428
@@ -3747,8 +3607,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 2.3333333333333335,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 2.3333333333333335
           }
         },
         "styleComparison": {
@@ -3865,20 +3727,13 @@
         "foregroundCells": 3061,
         "edgeCells": 1450
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_responsive_config_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_intrinsic_palette",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 2.143 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -3892,7 +3747,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 11,
@@ -3924,6 +3779,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 4,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.0361662431727258,
           "p95CenterDistance": 0.01969401569194653,
           "maximumSizeRatio": 1.1666666666666667
@@ -3931,8 +3788,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 2.142857142857143,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 2.142857142857143
           }
         },
         "styleComparison": {
@@ -4097,20 +3956,13 @@
         "foregroundCells": 616,
         "edgeCells": 1273
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_intrinsic_palette_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_usecase_accessible_regions",
       "kind": "usecase",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "element-count",
-          "type": "geometry",
-          "message": "geometry count ratio 1.800 is outside [0.667, 1.500]"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -4124,7 +3976,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 8,
@@ -4156,6 +4008,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 3,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04031734691490106,
           "p95CenterDistance": 0.012059375594680885,
           "maximumSizeRatio": 1.3333333333333333
@@ -4163,8 +4017,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
-            "geometry": 1.8,
-            "asset": 1
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1.8
           }
         },
         "styleComparison": {
@@ -4305,7 +4161,7 @@
         "foregroundCells": 2617,
         "edgeCells": 1394
       },
-      "heatmap": "captures/local/usecase-production-20260923-1108/detail-diffs/prod_usecase_accessible_regions_heatmap.png"
+      "heatmap": null
     }
   ]
 }

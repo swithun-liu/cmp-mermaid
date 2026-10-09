@@ -90,15 +90,13 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   configuration, and typed failures.
 - The replacement Web gate compares 13 independent production scenarios and
   256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
-- Production geometry passes `13/13`; detail is
-  `7 pass / 6 review / 0 fail`.
-- Matrix geometry passes `256/256`; detail is
-  `0 pass / 256 review / 0 fail`.
-- Every review has only `text-segmentation` from the documented
-  `foreignObject` to SceneGraph text adaptation. The production contact sheet
-  and all 16 matrix contact sheets were manually reviewed with no unresolved
-  swimlane, card, relation, marker, color, text, clipping, overlap, or
-  paint-order defect.
+- Production geometry and detail pass `13/13`.
+- Matrix geometry and detail pass `256/256`.
+- The audit compares the combined bounds of spatially equivalent text
+  segments for the documented `foreignObject` to SceneGraph adaptation. The
+  production contact sheet and all 16 matrix contact sheets were manually
+  reviewed with no unresolved swimlane, card, relation, marker, color, text,
+  clipping, overlap, or paint-order defect.
 
 ## Upgrade Procedure
 

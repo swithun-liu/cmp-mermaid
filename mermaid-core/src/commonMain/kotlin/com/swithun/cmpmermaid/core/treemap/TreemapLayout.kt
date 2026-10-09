@@ -198,12 +198,22 @@ internal class TreemapLayout {
             weight = style.fontWeight ?: SceneTextWeight.Bold,
             context = context,
         )
+        val labelWidth = measureWidth(
+            text = label,
+            fontSize = labelSize,
+            fontFamily = style.fontFamily ?: context.theme.fontFamily,
+            weight = style.fontWeight ?: SceneTextWeight.Bold,
+            context = context,
+        )
+        // Mermaid.js 12.0.0 renderer.ts -> treemapSectionLabel x=6.
+        // Keep the upstream anchor while exposing the painted glyph width.
+        val labelBoundsLeft = bounds.left + SECTION_LABEL_X - TEXT_ALIGNMENT_INSET
         elements += SceneText(
             text = label,
             bounds = SceneRect(
-                left = bounds.left + SECTION_LABEL_X - TEXT_ALIGNMENT_INSET,
+                left = labelBoundsLeft,
                 top = bounds.top,
-                right = bounds.left + SECTION_LABEL_X + availableWidth - TEXT_ALIGNMENT_INSET,
+                right = labelBoundsLeft + labelWidth + 2f * TEXT_ALIGNMENT_INSET,
                 bottom = bounds.top + SECTION_HEADER_HEIGHT,
             ),
             color = style.text ?: colors.label(node.data.name),
@@ -217,16 +227,27 @@ internal class TreemapLayout {
             zIndex = elements.size + 1,
         )
         if (valueText.isNotEmpty()) {
+            val valueFontSize = style.fontSize ?: SECTION_VALUE_FONT_SIZE
+            val valueWidth = measureWidth(
+                text = valueText,
+                fontSize = valueFontSize,
+                fontFamily = style.fontFamily ?: context.theme.fontFamily,
+                weight = style.fontWeight ?: SceneTextWeight.Normal,
+                context = context,
+            )
+            // Mermaid.js 12.0.0 renderer.ts -> treemapSectionValue text-anchor=end.
+            val valueBoundsRight =
+                bounds.right - SECTION_VALUE_RIGHT_PADDING + TEXT_ALIGNMENT_INSET
             elements += SceneText(
                 text = valueText,
                 bounds = SceneRect(
-                    left = bounds.left,
+                    left = valueBoundsRight - valueWidth - 2f * TEXT_ALIGNMENT_INSET,
                     top = bounds.top,
-                    right = bounds.right - SECTION_VALUE_RIGHT_PADDING + TEXT_ALIGNMENT_INSET,
+                    right = valueBoundsRight,
                     bottom = bounds.top + SECTION_HEADER_HEIGHT,
                 ),
                 color = style.text ?: colors.label(node.data.name),
-                fontSize = style.fontSize ?: SECTION_VALUE_FONT_SIZE,
+                fontSize = valueFontSize,
                 fontFamily = style.fontFamily ?: context.theme.fontFamily,
                 weight = style.fontWeight ?: SceneTextWeight.Normal,
                 italic = style.italic ?: true,

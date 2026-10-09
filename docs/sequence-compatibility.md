@@ -62,9 +62,12 @@ not silently discarded.
   `14 pass / 0 review / 0 fail`; geometry width `1.019-1.254`, height
   `0.910-1.111`, and foreground ink `0.939-1.327`.
 - 256 same-source visual-parity cases pass both the replacement detail and
-  geometry gates: `246 pass / 10 review / 0 fail`; width `1.019-1.237`, height
-  `0.919-1.113`, and foreground ink `0.925-1.294`. The reviews are
-  text-segmentation representation differences with complete visible labels.
+  geometry gates: `256 pass / 0 review / 0 fail`; width `1.019-1.237`, height
+  `0.919-1.113`, and foreground ink `0.925-1.294`. Spatially equivalent
+  segmented labels are compared by their combined bounds while position,
+  size, clipping, overlap, and raster checks remain active. The raw
+  [detail report](assets/stability-report/sequence-visual-parity-detail.json)
+  is published with the evidence.
 - All 16 matrix contact sheets and all 256 pairs were manually reviewed. No
   unresolved blank, clipping, participant, lifecycle, message, marker, note,
   activation, control-frame, overlap, or paint-order defect remains.

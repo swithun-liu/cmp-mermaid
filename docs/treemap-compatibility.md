@@ -38,14 +38,21 @@ colors closely enough that side-by-side review exposes no functional defect.
   themes, finite geometry, and deterministic replay.
 - The production Native/Official geometry audit accepted all 13 pairs: width
   `1.033-1.044`, height `1.029-1.039`, and foreground ink `0.945-1.079`.
-- Manual production contact-sheet review found matching hierarchy, rectangle
-  geometry, labels, values, formats, styles, colors, clipping, and paint order.
-  Automated review flags on branch title/value pairs are caused by Canvas/SVG
-  glyph bounds around Mermaid's intentional same-row placement, not visible
-  text overlap.
-- The fresh 256-case matrix accepted `19 pass / 237 review / 0 fail`; geometry
-  passed `256/256` with width `1.033-1.076`, height `1.029-1.039`, and
-  foreground ink `0.945-1.077`. All 16 contact sheets were manually reviewed.
+- Production detail passed `13/13`. Manual contact-sheet review found matching
+  hierarchy, rectangle geometry, labels, values, formats, styles, colors,
+  clipping, and paint order.
+- The fresh 256-case matrix passed both detail and geometry gates `256/256`,
+  with width `1.033-1.076`, height `1.029-1.039`, and foreground ink
+  `0.945-1.077`. Native keeps Mermaid's section-label and value anchors while
+  exposing measured glyph widths in the manifest, eliminating layout-slot
+  false positives. All 16 contact sheets were manually reviewed.
+- Raw
+  [production detail](assets/stability-report/treemap-production-detail.json),
+  [production geometry](assets/stability-report/treemap-production-geometry.json),
+  [matrix detail](assets/stability-report/treemap-visual-parity-detail.json),
+  and
+  [matrix geometry](assets/stability-report/treemap-visual-parity-geometry.json)
+  reports are published with the evidence.
 - The shared production test renders all 13 cases deterministically and renders
   a Treemap representative under every built-in theme.
 

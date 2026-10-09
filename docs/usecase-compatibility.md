@@ -25,20 +25,18 @@ Supported behavior includes:
 
 - 18 independent production scenarios cover 38/38 declared capability points.
 - Production geometry: 18/18 passed.
-- Production detail: 5 automatic passes, 13 manually accepted representation
-  differences, 0 failures.
+- Production detail: 18/18 passed.
 - Visual matrix: 256/256 Native/Official pairs passed geometry; width
   `1.036-1.160`, height `0.971-1.115`, and foreground ink `1.043-1.316`.
-- Visual detail: 72 automatic passes, 184 manually accepted representation
-  differences, 0 failures.
+- Visual detail: 256/256 passed.
 - All 16 visual-matrix contact sheets were manually reviewed.
 - JVM core and Compose tests pass as part of the 859-test suite.
 
-The accepted reviews contain only element-count differences caused by compound
-SVG shapes versus Native scene primitives, and text-segmentation differences
-where Official groups rich text differently. Labels, actor and use-case
-semantics, boundaries, notes, tables, markers, styles, colors, clipping, and
-paint order remain intact.
+The detail audit compares both render-object and expanded-primitive geometry
+counts, preserving review when both representations diverge. Spatially
+equivalent rich-text segments are compared by their combined bounds. Labels,
+actor and use-case semantics, boundaries, notes, tables, markers, styles,
+colors, clipping, paint order, and raster checks remain intact.
 
 Evidence:
 

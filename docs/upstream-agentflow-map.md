@@ -92,9 +92,9 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   256 deterministic same-source matrix cases against Mermaid.js `12.0.0`,
   with Dagre selected explicitly for both renderers.
 - Production geometry passes 13/13. Its detail result is
-  `9 pass / 4 review / 0 fail`; the four structural comparator findings were
-  manually accepted with no visible semantic, clipping, overlap, or paint-order
-  defect.
+  `11 pass / 2 review / 0 fail`; both remaining findings are collapsed-shape
+  stroke-pattern classifications. Geometry counts compare both render objects
+  and expanded primitives, eliminating decomposition-only reviews.
 - Matrix geometry passes 256/256 and matrix detail is
   `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually

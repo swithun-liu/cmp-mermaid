@@ -32,9 +32,11 @@
   Kotlin layout port; no browser layout dependency enters production.
 - Compound SVG actor/table shapes become explicit ordered SceneGraph
   primitives. This can change element counts without changing visible
-  semantics.
+  semantics; the detail audit compares both render-object and expanded-path
+  counts.
 - Official rich-text groups may become multiple Native text elements. These
-  text-segmentation differences are retained in the review evidence.
+  are compared by combined text content and spatial bounds while preserving
+  position, size, clipping, overlap, paint-order, and raster checks.
 - CSS cascade behavior is resolved before scene creation. Direct role rules on
   actor glyph primitives override inherited group stroke values exactly where
   Mermaid's generated CSS does so.

@@ -53,6 +53,7 @@ export function compareDetailManifests(
     official,
     thresholds,
     findings,
+    textComparison,
   );
   const styleComparison = compareStyles(
     native,
@@ -279,13 +280,48 @@ function compareTexts(native, official, thresholds, findings) {
     absentInOfficial.length > 0 &&
     compactTextSequence(absentInNative) ===
       compactTextSequence(absentInOfficial);
-  if (absentInNative.length > 0 || absentInOfficial.length > 0) {
+  const matches = matchTextElements(native.texts, official.texts);
+  const matchedNative = new Set(matches.map((match) => match.native));
+  const matchedOfficial = new Set(matches.map((match) => match.official));
+  const segmentationGroups = segmentationOnly
+    ? matchSegmentedTextGroups(
+      native.texts.filter((text) => !matchedNative.has(text)),
+      official.texts.filter((text) => !matchedOfficial.has(text)),
+    )
+    : null;
+  const segmentationDiagnostics = segmentationGroups?.map(
+    ({ native: nativeGroup, official: officialGroup }) => {
+      const nativeBounds = unionBounds(
+        nativeGroup.map((text) => text.normalizedBounds),
+      );
+      const officialBounds = unionBounds(
+        officialGroup.map((text) => text.normalizedBounds),
+      );
+      return {
+        nativeTexts: nativeGroup.map((text) => text.normalizedText),
+        officialTexts: officialGroup.map((text) => text.normalizedText),
+        centerDistance: centerDistance(nativeBounds, officialBounds),
+        sizeLogRatio: boundsSizeLogRatio(nativeBounds, officialBounds),
+      };
+    },
+  ) ?? [];
+  const segmentationEquivalent =
+    segmentationDiagnostics.length > 0 &&
+    segmentationDiagnostics.every(
+      (diagnostic) =>
+        diagnostic.centerDistance <= thresholds.maximumTextCenterDistance &&
+        diagnostic.sizeLogRatio <= thresholds.maximumTextSizeLogRatio,
+    );
+  if (
+    (absentInNative.length > 0 || absentInOfficial.length > 0) &&
+    !segmentationEquivalent
+  ) {
     findings.push({
       severity: segmentationOnly ? 'review' : 'error',
       code: segmentationOnly ? 'text-segmentation' : 'text-presence',
       message:
         segmentationOnly
-          ? 'Rendered text content matches but element segmentation differs'
+          ? 'Rendered text content matches but segmented bounds differ'
           : `${absentInNative.length} text values are absent in Native and ` +
             `${absentInOfficial.length} are absent in Official`,
       absentInNative,
@@ -303,13 +339,18 @@ function compareTexts(native, official, thresholds, findings) {
     });
   }
 
-  const matches = matchTextElements(native.texts, official.texts);
-  const centerDistances = matches.map(({ native: left, official: right }) =>
-    centerDistance(left.normalizedBounds, right.normalizedBounds)
-  );
-  const sizeLogRatios = matches.map(({ native: left, official: right }) =>
-    textSizeLogRatio(left, right)
-  );
+  const centerDistances = [
+    ...matches.map(({ native: left, official: right }) =>
+      centerDistance(left.normalizedBounds, right.normalizedBounds)
+    ),
+    ...segmentationDiagnostics.map((diagnostic) => diagnostic.centerDistance),
+  ];
+  const sizeLogRatios = [
+    ...matches.map(({ native: left, official: right }) =>
+      textSizeLogRatio(left, right)
+    ),
+    ...segmentationDiagnostics.map((diagnostic) => diagnostic.sizeLogRatio),
+  ];
   const maximumCenterDistance = maximum(centerDistances);
   const maximumSizeLogRatio = maximum(sizeLogRatios);
   if (maximumCenterDistance > thresholds.maximumTextCenterDistance) {
@@ -353,6 +394,13 @@ function compareTexts(native, official, thresholds, findings) {
     absentInOfficial,
     multiplicityDifferences,
     matchedCount: matches.length,
+    segmentationEquivalent,
+    segmentationGroups: segmentationDiagnostics.map((diagnostic) => ({
+      nativeTexts: diagnostic.nativeTexts,
+      officialTexts: diagnostic.officialTexts,
+      centerDistance: diagnostic.centerDistance,
+      sizeRatio: Math.exp(diagnostic.sizeLogRatio),
+    })),
     maximumCenterDistance,
     p95CenterDistance: percentile(centerDistances, 0.95),
     maximumSizeRatio: Math.exp(maximumSizeLogRatio),
@@ -369,16 +417,22 @@ function textSizeLogRatio(left, right) {
   );
 }
 
-function compareElementCounts(native, official, thresholds, findings) {
+function boundsSizeLogRatio(left, right) {
+  return Math.max(
+    absoluteLogRatio(left.width, right.width),
+    absoluteLogRatio(left.height, right.height),
+  );
+}
+
+function compareElementCounts(
+  native,
+  official,
+  thresholds,
+  findings,
+  textComparison,
+) {
   const categories = {
     text: (analysis) => analysis.typeCounts.text ?? 0,
-    geometry: (analysis) => analysis.elements
-      .filter((element) => element.type === 'shape' || element.type === 'path')
-      .reduce(
-        (sum, element) =>
-          sum + Math.max(1, element.geometryPathCount ?? 1),
-        0,
-      ),
     asset: (analysis) => analysis.typeCounts.asset ?? 0,
   };
   const ratios = {};
@@ -388,6 +442,9 @@ function compareElementCounts(native, official, thresholds, findings) {
       Math.max(1, count(official)),
     );
     const countRatio = ratios[category];
+    if (category === 'text' && textComparison.segmentationEquivalent) {
+      continue;
+    }
     if (
       countRatio > thresholds.maximumElementCountRatio ||
       countRatio < 1 / thresholds.maximumElementCountRatio
@@ -403,7 +460,53 @@ function compareElementCounts(native, official, thresholds, findings) {
       });
     }
   }
+  const objectGeometryRatio = ratio(
+    Math.max(1, geometryObjectCount(native)),
+    Math.max(1, geometryObjectCount(official)),
+  );
+  const expandedGeometryRatio = ratio(
+    Math.max(1, expandedGeometryCount(native)),
+    Math.max(1, expandedGeometryCount(official)),
+  );
+  const geometryRatio = [objectGeometryRatio, expandedGeometryRatio]
+    .sort((left, right) =>
+      Math.abs(Math.log(left)) - Math.abs(Math.log(right))
+    )[0];
+  ratios.geometry = geometryRatio;
+  ratios.geometryObject = objectGeometryRatio;
+  ratios.geometryExpanded = expandedGeometryRatio;
+  if (
+    geometryRatio > thresholds.maximumElementCountRatio ||
+    geometryRatio < 1 / thresholds.maximumElementCountRatio
+  ) {
+    findings.push({
+      severity: 'review',
+      code: 'element-count',
+      type: 'geometry',
+      message:
+        `geometry object/expanded ratios ` +
+        `${format(objectGeometryRatio)}/${format(expandedGeometryRatio)} are ` +
+        `outside [${format(1 / thresholds.maximumElementCountRatio)}, ` +
+        `${format(thresholds.maximumElementCountRatio)}]`,
+    });
+  }
   return { ratios };
+}
+
+function geometryObjectCount(analysis) {
+  return analysis.elements.filter(
+    (element) => element.type === 'shape' || element.type === 'path',
+  ).length;
+}
+
+function expandedGeometryCount(analysis) {
+  return analysis.elements
+    .filter((element) => element.type === 'shape' || element.type === 'path')
+    .reduce(
+      (sum, element) =>
+        sum + Math.max(1, element.geometryPathCount ?? 1),
+      0,
+    );
 }
 
 function compareStyles(native, official, thresholds, findings) {
@@ -898,6 +1001,63 @@ function matchTextElements(nativeTexts, officialTexts) {
   return matches;
 }
 
+function matchSegmentedTextGroups(nativeTexts, officialTexts) {
+  const groups = [];
+  let nativeIndex = 0;
+  let officialIndex = 0;
+  let nativeGroup = [];
+  let officialGroup = [];
+  let nativeContent = '';
+  let officialContent = '';
+
+  while (
+    nativeIndex < nativeTexts.length ||
+    officialIndex < officialTexts.length
+  ) {
+    if (nativeContent.length > 0 && nativeContent === officialContent) {
+      groups.push({ native: nativeGroup, official: officialGroup });
+      nativeGroup = [];
+      officialGroup = [];
+      nativeContent = '';
+      officialContent = '';
+      continue;
+    }
+    if (
+      nativeIndex < nativeTexts.length &&
+      (
+        nativeContent.length === 0 ||
+        officialContent.startsWith(nativeContent)
+      )
+    ) {
+      const text = nativeTexts[nativeIndex];
+      nativeIndex += 1;
+      nativeGroup.push(text);
+      nativeContent += compactText(text.normalizedText);
+      continue;
+    }
+    if (
+      officialIndex < officialTexts.length &&
+      (
+        officialContent.length === 0 ||
+        nativeContent.startsWith(officialContent)
+      )
+    ) {
+      const text = officialTexts[officialIndex];
+      officialIndex += 1;
+      officialGroup.push(text);
+      officialContent += compactText(text.normalizedText);
+      continue;
+    }
+    return null;
+  }
+  if (nativeContent.length > 0 && nativeContent === officialContent) {
+    groups.push({ native: nativeGroup, official: officialGroup });
+  } else if (nativeContent.length > 0 || officialContent.length > 0) {
+    return null;
+  }
+  return groups.length > 0 ? groups : null;
+}
+
 function occurrenceKeys(elements) {
   const occurrences = new Map();
   return elements.map((element) => {
@@ -923,6 +1083,23 @@ function normalizeBounds(bounds, viewport) {
     y: (finite(bounds?.y) ? bounds.y - viewport.y : 0) / viewport.height,
     width: (finite(bounds?.width) ? bounds.width : 0) / viewport.width,
     height: (finite(bounds?.height) ? bounds.height : 0) / viewport.height,
+  };
+}
+
+function unionBounds(boundsList) {
+  const left = Math.min(...boundsList.map((bounds) => bounds.x));
+  const top = Math.min(...boundsList.map((bounds) => bounds.y));
+  const right = Math.max(
+    ...boundsList.map((bounds) => bounds.x + bounds.width),
+  );
+  const bottom = Math.max(
+    ...boundsList.map((bounds) => bounds.y + bounds.height),
+  );
+  return {
+    x: left,
+    y: top,
+    width: right - left,
+    height: bottom - top,
   };
 }
 
@@ -1369,6 +1546,10 @@ function compactTextSequence(entries) {
     .map((entry) => entry.text)
     .join('')
     .replace(/\s+/g, '');
+}
+
+function compactText(value) {
+  return value.replace(/\s+/g, '');
 }
 
 function round(value, digits) {

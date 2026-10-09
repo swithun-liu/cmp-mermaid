@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-09T04:40:04.742Z",
+  "inputDirectory": "captures/local/review-optimization-journey-production",
+  "corpusSource": "production",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "rc_journey_account_onboarding",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 42685,
+        "inkRatio": 0.03952314814814815,
+        "contentBounds": {
+          "x": 14,
+          "y": 315,
+          "width": 1044,
+          "height": 234
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 41723,
+        "inkRatio": 0.03863240740740741,
+        "contentBounds": {
+          "x": 28,
+          "y": 328,
+          "width": 1020,
+          "height": 224
+        }
+      },
+      "widthRatio": 1.0235294117647058,
+      "heightRatio": 1.0446428571428572,
+      "inkRatio": 1.0230568271696665
+    },
+    {
+      "id": "rc_journey_incident_response",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36596,
+        "inkRatio": 0.033885185185185185,
+        "contentBounds": {
+          "x": 13,
+          "y": 330,
+          "width": 1042,
+          "height": 208
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 35320,
+        "inkRatio": 0.03270370370370371,
+        "contentBounds": {
+          "x": 26,
+          "y": 340,
+          "width": 1019,
+          "height": 202
+        }
+      },
+      "widthRatio": 1.0225711481844946,
+      "heightRatio": 1.0297029702970297,
+      "inkRatio": 1.0361268403171007
+    },
+    {
+      "id": "rc_journey_checkout_recovery",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39520,
+        "inkRatio": 0.03659259259259259,
+        "contentBounds": {
+          "x": 14,
+          "y": 317,
+          "width": 1037,
+          "height": 230
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39102,
+        "inkRatio": 0.03620555555555555,
+        "contentBounds": {
+          "x": 27,
+          "y": 329,
+          "width": 1015,
+          "height": 222
+        }
+      },
+      "widthRatio": 1.0216748768472907,
+      "heightRatio": 1.0360360360360361,
+      "inkRatio": 1.0106899902818272
+    },
+    {
+      "id": "rc_journey_release_coordination",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39623,
+        "inkRatio": 0.036687962962962964,
+        "contentBounds": {
+          "x": 13,
+          "y": 323,
+          "width": 1064,
+          "height": 220
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 38477,
+        "inkRatio": 0.035626851851851854,
+        "contentBounds": {
+          "x": 27,
+          "y": 335,
+          "width": 1042,
+          "height": 211
+        }
+      },
+      "widthRatio": 1.021113243761996,
+      "heightRatio": 1.042654028436019,
+      "inkRatio": 1.0297840268212177
+    },
+    {
+      "id": "rc_journey_privileged_access",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36717,
+        "inkRatio": 0.03399722222222222,
+        "contentBounds": {
+          "x": 13,
+          "y": 329,
+          "width": 1045,
+          "height": 210
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 36310,
+        "inkRatio": 0.03362037037037037,
+        "contentBounds": {
+          "x": 26,
+          "y": 339,
+          "width": 1022,
+          "height": 203
+        }
+      },
+      "widthRatio": 1.022504892367906,
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.011209033324153
+    },
+    {
+      "id": "prod_journey_multi_stage_support",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 43122,
+        "inkRatio": 0.03992777777777778,
+        "contentBounds": {
+          "x": 16,
+          "y": 272,
+          "width": 985,
+          "height": 308
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 41876,
+        "inkRatio": 0.03877407407407407,
+        "contentBounds": {
+          "x": 31,
+          "y": 289,
+          "width": 962,
+          "height": 296
+        }
+      },
+      "widthRatio": 1.023908523908524,
+      "heightRatio": 1.0405405405405406,
+      "inkRatio": 1.029754513325055
+    },
+    {
+      "id": "prod_journey_multi_stage_procurement",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 40365,
+        "inkRatio": 0.037375,
+        "contentBounds": {
+          "x": 16,
+          "y": 279,
+          "width": 971,
+          "height": 296
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 39060,
+        "inkRatio": 0.036166666666666666,
+        "contentBounds": {
+          "x": 31,
+          "y": 295,
+          "width": 948,
+          "height": 285
+        }
+      },
+      "widthRatio": 1.0242616033755274,
+      "heightRatio": 1.03859649122807,
+      "inkRatio": 1.0334101382488479
+    },
+    {
+      "id": "prod_journey_metadata_edges_automation",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 106113,
+        "inkRatio": 0.09825277777777777,
+        "contentBounds": {
+          "x": 24,
+          "y": 103,
+          "width": 966,
+          "height": 601
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 99237,
+        "inkRatio": 0.09188611111111111,
+        "contentBounds": {
+          "x": 47,
+          "y": 140,
+          "width": 932,
+          "height": 570
+        }
+      },
+      "widthRatio": 1.036480686695279,
+      "heightRatio": 1.0543859649122806,
+      "inkRatio": 1.069288672571722
+    },
+    {
+      "id": "prod_journey_metadata_edges_recovery",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 62586,
+        "inkRatio": 0.05795,
+        "contentBounds": {
+          "x": 20,
+          "y": 185,
+          "width": 877,
+          "height": 459
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 58865,
+        "inkRatio": 0.05450462962962963,
+        "contentBounds": {
+          "x": 39,
+          "y": 211,
+          "width": 852,
+          "height": 439
+        }
+      },
+      "widthRatio": 1.0293427230046948,
+      "heightRatio": 1.0455580865603644,
+      "inkRatio": 1.0632124352331607
+    },
+    {
+      "id": "prod_journey_configured_text_compliance",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61373,
+        "inkRatio": 0.05682685185185185,
+        "contentBounds": {
+          "x": 18,
+          "y": 235,
+          "width": 875,
+          "height": 373
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 56850,
+        "inkRatio": 0.05263888888888889,
+        "contentBounds": {
+          "x": 35,
+          "y": 258,
+          "width": 847,
+          "height": 352
+        }
+      },
+      "widthRatio": 1.0330578512396693,
+      "heightRatio": 1.0596590909090908,
+      "inkRatio": 1.0795602462620932
+    },
+    {
+      "id": "prod_journey_configured_text_continuity",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 61601,
+        "inkRatio": 0.057037962962962964,
+        "contentBounds": {
+          "x": 18,
+          "y": 235,
+          "width": 875,
+          "height": 373
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 58998,
+        "inkRatio": 0.054627777777777775,
+        "contentBounds": {
+          "x": 35,
+          "y": 254,
+          "width": 853,
+          "height": 360
+        }
+      },
+      "widthRatio": 1.0257913247362251,
+      "heightRatio": 1.0361111111111112,
+      "inkRatio": 1.0441201396657513
+    },
+    {
+      "id": "prod_journey_theme_actor_order_release",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 72271,
+        "inkRatio": 0.0669175925925926,
+        "contentBounds": {
+          "x": 24,
+          "y": 111,
+          "width": 901,
+          "height": 587
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 68291,
+        "inkRatio": 0.0632324074074074,
+        "contentBounds": {
+          "x": 46,
+          "y": 145,
+          "width": 874,
+          "height": 560
+        }
+      },
+      "widthRatio": 1.0308924485125859,
+      "heightRatio": 1.0482142857142858,
+      "inkRatio": 1.0582800076144736
+    },
+    {
+      "id": "prod_journey_theme_actor_order_migration",
+      "kind": "journey",
+      "native": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 72953,
+        "inkRatio": 0.06754907407407408,
+        "contentBounds": {
+          "x": 24,
+          "y": 111,
+          "width": 949,
+          "height": 587
+        }
+      },
+      "official": {
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 67936,
+        "inkRatio": 0.0629037037037037,
+        "contentBounds": {
+          "x": 46,
+          "y": 146,
+          "width": 915,
+          "height": 557
+        }
+      },
+      "widthRatio": 1.037158469945355,
+      "heightRatio": 1.0538599640933572,
+      "inkRatio": 1.0738489166274143
+    }
+  ]
+}

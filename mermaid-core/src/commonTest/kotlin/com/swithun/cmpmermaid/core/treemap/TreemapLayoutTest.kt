@@ -11,6 +11,7 @@ import com.swithun.cmpmermaid.core.MermaidTreemapOptions
 import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.SceneShape
 import com.swithun.cmpmermaid.core.SceneText
+import com.swithun.cmpmermaid.core.SceneTextAlignment
 import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
 import kotlin.test.Test
@@ -44,6 +45,20 @@ class TreemapLayoutTest {
         assertTrue(texts.any { text -> text.text == "100" && text.italic })
         assertTrue(texts.any { text -> text.text == "Phones" })
         assertTrue(texts.any { text -> text.text == "50" })
+        val sectionLabel = texts.first { text -> text.text == "Hardware" }
+        assertEquals(SceneTextAlignment.Start, sectionLabel.horizontalAlignment)
+        assertEquals(
+            expectedSingleLineBoundsWidth("Hardware", sectionLabel.fontSize),
+            sectionLabel.bounds.width,
+            0.001f,
+        )
+        val sectionValue = texts.first { text -> text.text == "80" && text.italic }
+        assertEquals(SceneTextAlignment.End, sectionValue.horizontalAlignment)
+        assertEquals(
+            expectedSingleLineBoundsWidth("80", sectionValue.fontSize),
+            sectionValue.bounds.width,
+            0.001f,
+        )
         assertEquals(8f, scene.viewportPadding)
         assertEquals(MermaidSceneViewportSizing.ResponsiveMaxWidth, scene.viewportSizing)
     }
@@ -166,4 +181,9 @@ class TreemapLayoutTest {
         },
         options = MermaidRenderOptions(treemap = treemap),
     )
+
+    private fun expectedSingleLineBoundsWidth(
+        text: String,
+        fontSize: Float,
+    ): Float = text.length * fontSize * 0.58f + 8f
 }

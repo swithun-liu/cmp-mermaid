@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T04:34:35.786Z",
+  "generatedAt": "2026-10-09T04:17:48.160Z",
   "inputDirectory": "captures/local/ishikawa-production-20260918-pass4",
   "corpusSource": "production",
   "corpusKind": "ishikawa",
@@ -20,7 +20,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/ishikawa-production-20260918-pass4/detail-diffs/prod_ishikawa_root_only_heatmap.png"
+      "heatmap": "captures/local/ishikawa-production-20260918-pass4/detail-review-optimization-diffs/prod_ishikawa_root_only_heatmap.png"
     }
   ],
   "cases": [
@@ -74,6 +74,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 11,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.030371227823053182,
           "p95CenterDistance": 0.02815630852769845,
           "maximumSizeRatio": 1
@@ -81,8 +83,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -467,6 +471,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 13,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.02172256358617674,
           "p95CenterDistance": 0.021375694881876274,
           "maximumSizeRatio": 1
@@ -474,8 +480,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -908,6 +916,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 7,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.02231722955119552,
           "p95CenterDistance": 0.02141766826623013,
           "maximumSizeRatio": 1
@@ -915,8 +925,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1205,6 +1217,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 7,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.015681385240936246,
           "p95CenterDistance": 0.015609152955259184,
           "maximumSizeRatio": 1
@@ -1212,8 +1226,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1502,6 +1518,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04686743947795832,
           "p95CenterDistance": 0.01964600837365034,
           "maximumSizeRatio": 1
@@ -1509,8 +1527,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1775,6 +1795,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 10,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.022092134184276156,
           "p95CenterDistance": 0.02013447789376108,
           "maximumSizeRatio": 1
@@ -1782,8 +1804,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2103,7 +2127,7 @@
           "severity": "review",
           "code": "element-count",
           "type": "geometry",
-          "message": "geometry count ratio 2.000 is outside [0.667, 1.500]"
+          "message": "geometry object/expanded ratios 2.000/2.000 are outside [0.667, 1.500]"
         }
       ],
       "manifest": {
@@ -2149,6 +2173,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 1,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.0075278171683335286,
           "p95CenterDistance": 0.0075278171683335286,
           "maximumSizeRatio": 1
@@ -2156,8 +2182,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 2,
-            "asset": 1
+            "geometryObject": 2,
+            "geometryExpanded": 2
           }
         },
         "styleComparison": {
@@ -2248,7 +2276,7 @@
         "foregroundCells": 6202,
         "edgeCells": 2279
       },
-      "heatmap": "captures/local/ishikawa-production-20260918-pass4/detail-diffs/prod_ishikawa_root_only_heatmap.png"
+      "heatmap": "captures/local/ishikawa-production-20260918-pass4/detail-review-optimization-diffs/prod_ishikawa_root_only_heatmap.png"
     },
     {
       "id": "prod_ishikawa_deep_hierarchy",
@@ -2300,6 +2328,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 8,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.024183184277288574,
           "p95CenterDistance": 0.02257409592324202,
           "maximumSizeRatio": 1
@@ -2307,8 +2337,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2621,6 +2653,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.018083748044805267,
           "p95CenterDistance": 0.016804782940926986,
           "maximumSizeRatio": 1
@@ -2628,8 +2662,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2894,6 +2930,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 9,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.0182864311346276,
           "p95CenterDistance": 0.018273934983436848,
           "maximumSizeRatio": 1
@@ -2901,8 +2939,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -3239,6 +3279,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 4,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.057488280913754665,
           "p95CenterDistance": 0.04950843442549374,
           "maximumSizeRatio": 1
@@ -3246,8 +3288,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -3464,6 +3508,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 7,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04519028610941734,
           "p95CenterDistance": 0.04319879590497826,
           "maximumSizeRatio": 1
@@ -3471,8 +3517,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -3761,6 +3809,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04640894613552336,
           "p95CenterDistance": 0.01944132246612085,
           "maximumSizeRatio": 1
@@ -3768,8 +3818,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {

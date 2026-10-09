@@ -52,13 +52,13 @@ weakening the Official visual gate.
   20 visible text/layout-pressure profiles.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.029-1.044`, `1.013-1.044`, and `1.029-1.115`.
-- Production detail produced `7 pass / 6 review / 0 fail`.
+- Production detail passed `13/13`.
 - Matrix geometry passed `256/256`. Ratios were `1.025-1.037`,
   `1.008-1.063`, and `0.995-1.126`.
-- Matrix detail produced `0 pass / 256 review / 0 fail`. Every review has only
-  `text-segmentation`: Official represents a card title and payload in one
-  `foreignObject`, while Native preserves the same visible content as a
-  centered bold title plus a left-aligned monospace payload.
+- Matrix detail passed `256/256`. The audit compares the combined bounds of
+  spatially equivalent segments, so Official's single `foreignObject` and
+  Native's centered title plus monospace payload remain independently
+  validated without a representation-only review.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved swimlane, card, relation, marker, color, label,
   clipping, overlap, or paint-order defect remains.

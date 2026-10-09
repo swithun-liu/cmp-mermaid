@@ -88,7 +88,8 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   fallback.
 - DOM text measurement is supplied by `TextMetricProvider`. Leaf labels follow
   Mermaid's adaptive font reduction and visibility rules before entering the
-  SceneGraph.
+  SceneGraph. Section labels and values retain Mermaid's fixed anchors while
+  their SceneGraph bounds expose measured glyph widths.
 - Compose has no SVG `getBBox()`, so the viewport is normalized to actual
   painted bounds and then applies `diagramPadding`.
 
@@ -102,6 +103,8 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   and verifies finite, stable SceneGraphs.
 - The replacement Web gate compares 13 independent production scenarios and
   256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
+  Production detail and geometry pass `13/13`; matrix detail and geometry pass
+  `256/256`.
 
 ## Upgrade Procedure
 

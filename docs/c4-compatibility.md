@@ -38,11 +38,10 @@ and theme colors.
   20 visible text and layout-pressure profiles.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.028-1.118`, `0.884-1.048`, and `1.004-1.203`.
-- Production detail produced `12 pass / 1 reviewed / 0 fail`. The sole review
-  is `prod_c4_component_boundaries`: Official SVG splits database and queue
-  silhouettes into multiple paths, while Native records each visible
-  silhouette as one semantic shape. Side-by-side pixels, expected text,
-  geometry, colors, and paint order were manually verified.
+- Production detail passed `13/13`. Geometry counts compare both render
+  objects and expanded primitives, so Official's decomposed database and queue
+  paths and Native's semantic shapes are validated without a
+  representation-only review.
 - Matrix geometry passed `256/256`. Ratios were `0.967-1.071`,
   `1.028-1.060`, and `0.987-1.128`.
 - Matrix detail produced `256 pass / 0 review / 0 fail`.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T13:59:21.213Z",
+  "generatedAt": "2026-10-09T04:15:59.840Z",
   "inputDirectory": "captures/local/eventmodeling-production-20260920",
   "corpusSource": "production",
   "corpusKind": "eventmodeling",
@@ -9,93 +9,15 @@
   "gridSize": 96,
   "caseCount": 13,
   "counts": {
-    "review": 6,
-    "pass": 7
+    "pass": 13
   },
-  "reviewQueue": [
-    {
-      "id": "rc_eventmodeling_order_lifecycle",
-      "kind": "eventmodeling",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/rc_eventmodeling_order_lifecycle_heatmap.png"
-    },
-    {
-      "id": "rc_eventmodeling_explicit_payload_trace",
-      "kind": "eventmodeling",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/rc_eventmodeling_explicit_payload_trace_heatmap.png"
-    },
-    {
-      "id": "rc_eventmodeling_themed_regional",
-      "kind": "eventmodeling",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/rc_eventmodeling_themed_regional_heatmap.png"
-    },
-    {
-      "id": "prod_eventmodeling_compact_checkout",
-      "kind": "eventmodeling",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/prod_eventmodeling_compact_checkout_heatmap.png"
-    },
-    {
-      "id": "prod_eventmodeling_explicit_payload",
-      "kind": "eventmodeling",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/prod_eventmodeling_explicit_payload_heatmap.png"
-    },
-    {
-      "id": "prod_eventmodeling_regional_payload",
-      "kind": "eventmodeling",
-      "status": "review",
-      "findingCodes": [
-        "text-segmentation"
-      ],
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/prod_eventmodeling_regional_payload_heatmap.png"
-    }
-  ],
+  "reviewQueue": [],
   "cases": [
     {
       "id": "rc_eventmodeling_order_lifecycle",
       "kind": "eventmodeling",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "SubmitOrder orderId: O-42",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "SubmitOrder",
-              "nativeCount": 1
-            },
-            {
-              "text": "orderId: O-42",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -109,7 +31,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 21,
@@ -155,15 +77,31 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 7,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "SubmitOrder",
+                "orderId: O-42"
+              ],
+              "officialTexts": [
+                "SubmitOrder orderId: O-42"
+              ],
+              "centerDistance": 0.0005367495895200897,
+              "sizeRatio": 1.4581105544063542
+            }
+          ],
           "maximumCenterDistance": 0.06831875669253352,
           "p95CenterDistance": 0.05021356511876121,
-          "maximumSizeRatio": 1
+          "maximumSizeRatio": 1.4581105544063542
         },
         "elementComparison": {
           "ratios": {
             "text": 1.125,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -352,7 +290,7 @@
         "foregroundCells": 1885,
         "edgeCells": 1300
       },
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/rc_eventmodeling_order_lifecycle_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "rc_eventmodeling_inventory_translation",
@@ -404,6 +342,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 10,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04348959620805989,
           "p95CenterDistance": 0.03889045603136108,
           "maximumSizeRatio": 1
@@ -411,8 +351,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -653,6 +595,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 9,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.05239366941211074,
           "p95CenterDistance": 0.04140581108984589,
           "maximumSizeRatio": 1
@@ -660,8 +604,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -879,42 +825,8 @@
     {
       "id": "rc_eventmodeling_explicit_payload_trace",
       "kind": "eventmodeling",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "AuthorizePayment paymentId: P-7, amount: 125.50",
-              "officialCount": 1
-            },
-            {
-              "text": "PaymentAuthorized paymentId: P-7, status: approved",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "AuthorizePayment",
-              "nativeCount": 1
-            },
-            {
-              "text": "paymentId: P-7, amount: 125.50",
-              "nativeCount": 1
-            },
-            {
-              "text": "PaymentAuthorized",
-              "nativeCount": 1
-            },
-            {
-              "text": "paymentId: P-7, status: approved",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -928,7 +840,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 16,
@@ -986,15 +898,42 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 4,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "AuthorizePayment",
+                "paymentId: P-7, amount: 125.50"
+              ],
+              "officialTexts": [
+                "AuthorizePayment paymentId: P-7, amount: 125.50"
+              ],
+              "centerDistance": 0.0011718911767678358,
+              "sizeRatio": 1.4581106952116292
+            },
+            {
+              "nativeTexts": [
+                "PaymentAuthorized",
+                "paymentId: P-7, status: approved"
+              ],
+              "officialTexts": [
+                "PaymentAuthorized paymentId: P-7, status: approved"
+              ],
+              "centerDistance": 0.0163391445963313,
+              "sizeRatio": 1.4581110347248276
+            }
+          ],
           "maximumCenterDistance": 0.07196141601157764,
           "p95CenterDistance": 0.05176984820172538,
-          "maximumSizeRatio": 1
+          "maximumSizeRatio": 1.4581110347248276
         },
         "elementComparison": {
           "ratios": {
             "text": 1.3333333333333333,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1135,35 +1074,13 @@
         "foregroundCells": 1944,
         "edgeCells": 1115
       },
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/rc_eventmodeling_explicit_payload_trace_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "rc_eventmodeling_themed_regional",
       "kind": "eventmodeling",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "RegionalRequest region: 東京 & 서울",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "RegionalRequest",
-              "nativeCount": 1
-            },
-            {
-              "text": "region: 東京 & 서울",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -1177,7 +1094,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 15,
@@ -1223,15 +1140,31 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 5,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "RegionalRequest",
+                "region: 東京 & 서울"
+              ],
+              "officialTexts": [
+                "RegionalRequest region: 東京 & 서울"
+              ],
+              "centerDistance": 0.047273381656393096,
+              "sizeRatio": 1.5757129645192618
+            }
+          ],
           "maximumCenterDistance": 0.1122175978626128,
           "p95CenterDistance": 0.08505477897939154,
-          "maximumSizeRatio": 1
+          "maximumSizeRatio": 1.5757129645192618
         },
         "elementComparison": {
           "ratios": {
             "text": 1.1666666666666667,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1372,35 +1305,13 @@
         "foregroundCells": 4948,
         "edgeCells": 1497
       },
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/rc_eventmodeling_themed_regional_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_eventmodeling_compact_checkout",
       "kind": "eventmodeling",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "PlaceOrder cartId: C-42",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "PlaceOrder",
-              "nativeCount": 1
-            },
-            {
-              "text": "cartId: C-42",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -1414,7 +1325,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 15,
@@ -1460,15 +1371,31 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 5,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "PlaceOrder",
+                "cartId: C-42"
+              ],
+              "officialTexts": [
+                "PlaceOrder cartId: C-42"
+              ],
+              "centerDistance": 0.006939194170026177,
+              "sizeRatio": 1.4581110763926106
+            }
+          ],
           "maximumCenterDistance": 0.09228977795256461,
           "p95CenterDistance": 0.063730850247165,
-          "maximumSizeRatio": 1
+          "maximumSizeRatio": 1.4581110763926106
         },
         "elementComparison": {
           "ratios": {
             "text": 1.1666666666666667,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1609,7 +1536,7 @@
         "foregroundCells": 1761,
         "edgeCells": 1233
       },
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/prod_eventmodeling_compact_checkout_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_eventmodeling_relaxed_state_view",
@@ -1661,6 +1588,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.08257683215676824,
           "p95CenterDistance": 0.07568660785626104,
           "maximumSizeRatio": 1
@@ -1668,8 +1597,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1815,42 +1746,8 @@
     {
       "id": "prod_eventmodeling_explicit_payload",
       "kind": "eventmodeling",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "SubmitOrder orderId: A-17, total: 42",
-              "officialCount": 1
-            },
-            {
-              "text": "OrderAccepted orderId: A-17",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "SubmitOrder",
-              "nativeCount": 1
-            },
-            {
-              "text": "orderId: A-17, total: 42",
-              "nativeCount": 1
-            },
-            {
-              "text": "OrderAccepted",
-              "nativeCount": 1
-            },
-            {
-              "text": "orderId: A-17",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -1864,7 +1761,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 16,
@@ -1922,15 +1819,42 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 4,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "SubmitOrder",
+                "orderId: A-17, total: 42"
+              ],
+              "officialTexts": [
+                "SubmitOrder orderId: A-17, total: 42"
+              ],
+              "centerDistance": 0.004357036089240832,
+              "sizeRatio": 1.458111433161549
+            },
+            {
+              "nativeTexts": [
+                "OrderAccepted",
+                "orderId: A-17"
+              ],
+              "officialTexts": [
+                "OrderAccepted orderId: A-17"
+              ],
+              "centerDistance": 0.017511177657203864,
+              "sizeRatio": 1.4581097969963825
+            }
+          ],
           "maximumCenterDistance": 0.08073459207140968,
           "p95CenterDistance": 0.056664286607824806,
-          "maximumSizeRatio": 1
+          "maximumSizeRatio": 1.458111433161549
         },
         "elementComparison": {
           "ratios": {
             "text": 1.3333333333333333,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2071,7 +1995,7 @@
         "foregroundCells": 1861,
         "edgeCells": 1170
       },
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/prod_eventmodeling_explicit_payload_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_eventmodeling_projection_join",
@@ -2123,6 +2047,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.07146091517351098,
           "p95CenterDistance": 0.037910582947220446,
           "maximumSizeRatio": 1
@@ -2130,8 +2056,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2348,6 +2276,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 7,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.0746487493438527,
           "p95CenterDistance": 0.053159378874492125,
           "maximumSizeRatio": 1
@@ -2355,8 +2285,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2573,6 +2505,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 10,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.04867307913433292,
           "p95CenterDistance": 0.03971081860300391,
           "maximumSizeRatio": 1
@@ -2580,8 +2514,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2870,6 +2806,8 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
           "maximumCenterDistance": 0.0919391513831798,
           "p95CenterDistance": 0.06352761885642283,
           "maximumSizeRatio": 1
@@ -2877,8 +2815,10 @@
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -3024,30 +2964,8 @@
     {
       "id": "prod_eventmodeling_regional_payload",
       "kind": "eventmodeling",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-segmentation",
-          "message": "Rendered text content matches but element segmentation differs",
-          "absentInNative": [
-            {
-              "text": "RegionalRequest region: 東京 & 서울",
-              "officialCount": 1
-            }
-          ],
-          "absentInOfficial": [
-            {
-              "text": "RegionalRequest",
-              "nativeCount": 1
-            },
-            {
-              "text": "region: 東京 & 서울",
-              "nativeCount": 1
-            }
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -3061,7 +2979,7 @@
           "clippingTolerance": 0.01,
           "maximumMarkerOcclusionDepthDifference": 0.01
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 15,
@@ -3107,15 +3025,31 @@
           ],
           "multiplicityDifferences": [],
           "matchedCount": 5,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "RegionalRequest",
+                "region: 東京 & 서울"
+              ],
+              "officialTexts": [
+                "RegionalRequest region: 東京 & 서울"
+              ],
+              "centerDistance": 0.014682895878607322,
+              "sizeRatio": 1.4043055254603707
+            }
+          ],
           "maximumCenterDistance": 0.08200906705670002,
           "p95CenterDistance": 0.057600479213808044,
-          "maximumSizeRatio": 1
+          "maximumSizeRatio": 1.4043055254603707
         },
         "elementComparison": {
           "ratios": {
             "text": 1.1666666666666667,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -3256,7 +3190,7 @@
         "foregroundCells": 1463,
         "edgeCells": 1041
       },
-      "heatmap": "captures/local/eventmodeling-production-20260920/detail-diffs/prod_eventmodeling_regional_payload_heatmap.png"
+      "heatmap": null
     }
   ]
 }

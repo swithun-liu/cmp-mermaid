@@ -14,15 +14,16 @@ profiles. The 256 sources per type are unique, but they are not presented as
 
 All 33 families completed the replacement detail, geometry, and manual
 contact-sheet gates. Mindmap evidence was refreshed on 2026-10-08 after
-aligning its HTML-label line height. The accepted total is `8,448/8,448`
-pairs: `7,435 automatic pass / 1,013 manually reviewed / 0 unresolved` across
+aligning its HTML-label line height. Treemap evidence and representation-aware
+detail auditing were refreshed on 2026-10-09. The accepted total is `8,448/8,448`
+pairs: `8,141 automatic pass / 307 manually reviewed / 0 unresolved` across
 528 contact sheets. The aggregate
 [geometry report](visual-parity-geometry.json) has `0` failures, with width
 ratios `0.896-1.237`, height ratios `0.852-1.236`, and foreground-ink ratios
 `0.567-1.578`. Review findings are limited to the documented text-position,
-text-segmentation, text-overlap, raster-mask, element-count, and paint-order
-occlusion-ratio representation thresholds; manual review found no missing
-semantic content, clipping defect, or incorrect visible paint order.
+text-overlap, raster-mask, and paint-order occlusion-ratio representation
+thresholds; manual review found no missing semantic content, clipping defect,
+or incorrect visible paint order.
 
 | Family | Pass | Review | Fail | Width ratio | Height ratio | Ink ratio |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -32,28 +33,28 @@ semantic content, clipping defect, or incorrect visible paint order.
 | C4 | 256 | 0 | 0 | `0.967-1.071` | `1.028-1.060` | `0.987-1.128` |
 | Railroad | 256 | 0 | 0 | `1.024-1.116` | `1.023-1.146` | `1.048-1.338` |
 | TreeView | 256 | 0 | 0 | `0.990-1.055` | `0.969-1.063` | `0.853-1.046` |
-| Use Case | 72 | 184 | 0 | `1.036-1.160` | `0.971-1.115` | `1.043-1.316` |
+| Use Case | 256 | 0 | 0 | `1.036-1.160` | `0.971-1.115` | `1.043-1.316` |
 | Cynefin | 256 | 0 | 0 | `1.013-1.032` | `1.009-1.019` | `1.020-1.049` |
 | Agentflow | 256 | 0 | 0 | `1.040-1.145` | `0.947-1.100` | `0.894-1.244` |
 | Block | 252 | 4 | 0 | `0.978-1.189` | `0.922-1.080` | `0.925-1.403` |
-| Event Modeling | 0 | 256 | 0 | `1.025-1.037` | `1.008-1.063` | `0.995-1.126` |
+| Event Modeling | 256 | 0 | 0 | `1.025-1.037` | `1.008-1.063` | `0.995-1.126` |
 | XY Chart | 236 | 20 | 0 | `1.002-1.024` | `0.988-1.033` | `0.895-1.136` |
 | Quadrant Chart | 256 | 0 | 0 | `1.007-1.035` | `1.011-1.022` | `1.025-1.048` |
 | Timeline | 256 | 0 | 0 | `1.026-1.053` | `1.038-1.087` | `1.052-1.136` |
-| Sequence | 246 | 10 | 0 | `1.019-1.237` | `0.919-1.113` | `0.925-1.294` |
+| Sequence | 256 | 0 | 0 | `1.019-1.237` | `0.919-1.113` | `0.925-1.294` |
 | Class | 256 | 0 | 0 | `1.025-1.184` | `0.916-1.056` | `0.776-1.199` |
 | State | 256 | 0 | 0 | `0.959-1.131` | `0.963-1.089` | `0.984-1.382` |
 | Entity Relationship | 196 | 60 | 0 | `1.010-1.139` | `0.980-1.089` | `0.567-1.253` |
 | Gantt | 256 | 0 | 0 | `1.035-1.037` | `0.883-0.964` | `0.963-1.023` |
 | Pie | 255 | 1 | 0 | `0.992-1.050` | `0.994-1.019` | `0.993-1.042` |
-| User Journey | 237 | 19 | 0 | `1.020-1.032` | `1.041-1.061` | `0.983-1.073` |
+| User Journey | 256 | 0 | 0 | `1.020-1.032` | `1.041-1.061` | `0.983-1.073` |
 | Requirement | 252 | 4 | 0 | `1.013-1.072` | `1.004-1.053` | `0.974-1.148` |
 | Git Graph | 235 | 21 | 0 | `1.035-1.141` | `1.032-1.145` | `1.035-1.421` |
 | Mindmap | 159 | 97 | 0 | `0.896-1.226` | `0.967-1.150` | `0.774-1.313` |
 | Packet | 256 | 0 | 0 | `1.011-1.015` | `1.003-1.065` | `0.977-1.039` |
 | Radar | 256 | 0 | 0 | `1.004-1.036` | `1.004-1.020` | `1.006-1.037` |
 | Sankey | 256 | 0 | 0 | `1.043-1.053` | `1.026-1.053` | `1.053-1.112` |
-| Treemap | 19 | 237 | 0 | `1.033-1.076` | `1.029-1.039` | `0.945-1.077` |
+| Treemap | 256 | 0 | 0 | `1.033-1.076` | `1.029-1.039` | `0.945-1.077` |
 | Venn | 216 | 40 | 0 | `0.995-1.026` | `0.990-1.022` | `0.989-1.048` |
 | Ishikawa | 256 | 0 | 0 | `1.046-1.181` | `1.017-1.116` | `1.028-1.313` |
 | Kanban | 256 | 0 | 0 | `1.036-1.089` | `0.852-1.088` | `0.992-1.105` |
@@ -297,7 +298,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 <details>
 <summary><strong>Use Case - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `72 pass / 184 review / 0 fail`. The 184 reviews are element-count or text-segmentation representation differences with complete actors, use cases, relationships, labels, styles, clipping, and paint order. Geometry ratios: width `1.036-1.160`, height `0.971-1.115`, foreground ink `1.043-1.316`. Raw [detail](usecase-visual-parity-detail.json) and [geometry](usecase-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry counts compare both render objects and expanded primitives, and spatially equivalent segmented text is compared by its combined bounds. Geometry ratios: width `1.036-1.160`, height `0.971-1.115`, foreground ink `1.043-1.316`. Raw [detail](usecase-visual-parity-detail.json) and [geometry](usecase-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Use Case visual parity page 01](usecase-visual-parity-01.jpg)
 
@@ -453,7 +454,7 @@ Replacement detail audit: `252 pass / 4 review / 0 fail`. The four reviews are p
 <details>
 <summary><strong>Event Modeling - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `0 pass / 256 review / 0 fail`. All 256 reviews contain only the documented title/payload text-segmentation difference between one Official foreignObject and separate Native title and payload elements. Geometry ratios: width `1.025-1.037`, height `1.008-1.063`, foreground ink `0.995-1.126`. Raw [detail](eventmodeling-visual-parity-detail.json) and [geometry](eventmodeling-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Official's single title/payload foreignObject and Native's separate text elements are compared by their combined spatial bounds. Geometry ratios: width `1.025-1.037`, height `1.008-1.063`, foreground ink `0.995-1.126`. Raw [detail](eventmodeling-visual-parity-detail.json) and [geometry](eventmodeling-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Event Modeling visual parity page 01](eventmodeling-visual-parity-01.jpg)
 
@@ -609,7 +610,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 <details>
 <summary><strong>Sequence - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `246 pass / 10 review / 0 fail`. The ten reviews are text-segmentation representation differences; participants, messages, notes, control regions, labels, clipping, and paint order remain complete. Geometry ratios: width `1.019-1.237`, height `0.919-1.113`, foreground ink `0.925-1.294`. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Spatially equivalent segmented labels are compared by their combined bounds while position, size, clipping, overlap, paint-order, and raster checks remain active. Geometry ratios: width `1.019-1.237`, height `0.919-1.113`, foreground ink `0.925-1.294`. Raw [detail](sequence-visual-parity-detail.json) is published with the sheets. All 16 pages below were manually reviewed.
 
 ![Sequence visual parity page 01](sequence-visual-parity-01.jpg)
 
@@ -843,7 +844,7 @@ Replacement detail audit: `255 pass / 1 review / 0 fail`. The single review is a
 <details>
 <summary><strong>User Journey - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `237 pass / 19 review / 0 fail`. The 19 reviews are benign text-segmentation differences for one complete long actor label. Geometry ratios: width `1.020-1.032`, height `1.041-1.061`, foreground ink `0.983-1.073`. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Spatially equivalent line breaks for the complete long actor label are compared by their combined bounds while the remaining text and raster gates stay active. Geometry ratios: width `1.020-1.032`, height `1.041-1.061`, foreground ink `0.983-1.073`. Raw [detail](journey-visual-parity-detail.json) is published with the sheets. All 16 pages below were manually reviewed.
 
 ![User Journey visual parity page 01](journey-visual-parity-01.jpg)
 
@@ -1116,7 +1117,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 <details>
 <summary><strong>Treemap - 256 Native/Official pairs</strong></summary>
 
-Replacement detail audit: `19 pass / 237 review / 0 fail`. The 237 reviews are text-position findings; 198 also report same-row label/value overlap-threshold differences caused by Canvas/SVG glyph bounds. Geometry ratios: width `1.033-1.076`, height `1.029-1.039`, foreground ink `0.945-1.077`. All 16 pages below were manually reviewed.
+Replacement detail audit: `256 pass / 0 review / 0 fail`. Native keeps Mermaid's section-label and value anchors while exposing measured glyph widths in the manifest. Geometry ratios: width `1.033-1.076`, height `1.029-1.039`, foreground ink `0.945-1.077`. Raw [detail](treemap-visual-parity-detail.json) and [geometry](treemap-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
 
 ![Treemap visual parity page 01](treemap-visual-parity-01.jpg)
 

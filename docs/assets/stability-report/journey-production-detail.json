@@ -1,0 +1,2427 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-09T04:40:04.747Z",
+  "inputDirectory": "captures/local/review-optimization-journey-production",
+  "corpusSource": "production",
+  "corpusKind": "journey",
+  "theme": null,
+  "failOnReview": false,
+  "gridSize": 96,
+  "caseCount": 13,
+  "counts": {
+    "pass": 13
+  },
+  "reviewQueue": [],
+  "cases": [
+    {
+      "id": "rc_journey_account_onboarding",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 94,
+          "typeCounts": {
+            "path": 19,
+            "shape": 57,
+            "text": 18
+          },
+          "textCount": 18,
+          "uniqueTextCount": 18,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 94,
+          "typeCounts": {
+            "shape": 57,
+            "text": 18,
+            "path": 19
+          },
+          "textCount": 18,
+          "uniqueTextCount": 18,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 18,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.0329645254921331,
+          "p95CenterDistance": 0.029346787852234338,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 12,
+          "officialPaletteSize": 12,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 9,
+            "Solid": 67
+          },
+          "officialStrokePatterns": {
+            "Solid": 67,
+            "Dashed": 9
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.8865401207937877,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 93,
+              "position": "end",
+              "point": {
+                "x": 0.8814439847273406,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9310344827586207,
+        "exactMaskIou": 0.7543859649122807,
+        "edgeF1": 0.963235294117647,
+        "colorError": 0.025291082475619307,
+        "exactColorError": 0.08261667239995413
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 14,
+          "y": 315,
+          "width": 1044,
+          "height": 234
+        },
+        "foregroundCells": 2095,
+        "edgeCells": 2386
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 28,
+          "y": 328,
+          "width": 1020,
+          "height": 224
+        },
+        "foregroundCells": 2105,
+        "edgeCells": 2679
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_journey_incident_response",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 106,
+          "typeCounts": {
+            "path": 21,
+            "shape": 65,
+            "text": 20
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 106,
+          "typeCounts": {
+            "shape": 65,
+            "text": 20,
+            "path": 21
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 20,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03257449189382436,
+          "p95CenterDistance": 0.02822964767211745,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 13,
+          "officialPaletteSize": 13,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 10,
+            "Solid": 76
+          },
+          "officialStrokePatterns": {
+            "Solid": 76,
+            "Dashed": 10
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.8836671802773498,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 105,
+              "position": "end",
+              "point": {
+                "x": 0.8798762827618264,
+                "y": 0.4202127659574466
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8854404381560931,
+        "exactMaskIou": 0.7335291649181703,
+        "edgeF1": 0.93466126684691,
+        "colorError": 0.02938334754191532,
+        "exactColorError": 0.06328980606090527
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 13,
+          "y": 330,
+          "width": 1042,
+          "height": 208
+        },
+        "foregroundCells": 1986,
+        "edgeCells": 2404
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 26,
+          "y": 340,
+          "width": 1019,
+          "height": 202
+        },
+        "foregroundCells": 2145,
+        "edgeCells": 2677
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_journey_checkout_recovery",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 100,
+          "typeCounts": {
+            "path": 19,
+            "shape": 61,
+            "text": 20
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 100,
+          "typeCounts": {
+            "shape": 61,
+            "text": 20,
+            "path": 19
+          },
+          "textCount": 20,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 20,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03459350008168669,
+          "p95CenterDistance": 0.0293718008430393,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 12,
+          "officialPaletteSize": 12,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 9,
+            "Solid": 71
+          },
+          "officialStrokePatterns": {
+            "Solid": 71,
+            "Dashed": 9
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.8806287170773152,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 99,
+              "position": "end",
+              "point": {
+                "x": 0.8772234501631407,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9576190476190476,
+        "exactMaskIou": 0.7449066213921901,
+        "edgeF1": 0.9581118503483298,
+        "colorError": 0.02439461128353579,
+        "exactColorError": 0.07754752155531143
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 14,
+          "y": 317,
+          "width": 1037,
+          "height": 230
+        },
+        "foregroundCells": 2090,
+        "edgeCells": 2564
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 27,
+          "y": 329,
+          "width": 1015,
+          "height": 222
+        },
+        "foregroundCells": 2021,
+        "edgeCells": 2463
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_journey_release_coordination",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 122,
+          "typeCounts": {
+            "path": 21,
+            "shape": 78,
+            "text": 23
+          },
+          "textCount": 23,
+          "uniqueTextCount": 23,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 122,
+          "typeCounts": {
+            "shape": 78,
+            "text": 23,
+            "path": 21
+          },
+          "textCount": 23,
+          "uniqueTextCount": 23,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 23,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.0319941821312636,
+          "p95CenterDistance": 0.028857319492227352,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 13,
+          "officialPaletteSize": 13,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 10,
+            "Solid": 89
+          },
+          "officialStrokePatterns": {
+            "Solid": 89,
+            "Dashed": 10
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.902586903799515,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 121,
+              "position": "end",
+              "point": {
+                "x": 0.8997892677052757,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9178700361010831,
+        "exactMaskIou": 0.7095736122284795,
+        "edgeF1": 0.9399392749620874,
+        "colorError": 0.03763918265718986,
+        "exactColorError": 0.08043579995688273
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 13,
+          "y": 323,
+          "width": 1064,
+          "height": 220
+        },
+        "foregroundCells": 2134,
+        "edgeCells": 2596
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 27,
+          "y": 335,
+          "width": 1042,
+          "height": 211
+        },
+        "foregroundCells": 2116,
+        "edgeCells": 2845
+      },
+      "heatmap": null
+    },
+    {
+      "id": "rc_journey_privileged_access",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 105,
+          "typeCounts": {
+            "path": 21,
+            "shape": 63,
+            "text": 21
+          },
+          "textCount": 21,
+          "uniqueTextCount": 21,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 105,
+          "typeCounts": {
+            "shape": 63,
+            "text": 21,
+            "path": 21
+          },
+          "textCount": 21,
+          "uniqueTextCount": 21,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 21,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03279493735009154,
+          "p95CenterDistance": 0.028311994456588104,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 13,
+          "officialPaletteSize": 13,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 10,
+            "Solid": 74
+          },
+          "officialStrokePatterns": {
+            "Solid": 74,
+            "Dashed": 10
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.8860465116279069,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 104,
+              "position": "end",
+              "point": {
+                "x": 0.8822866190087798,
+                "y": 0.4202127659574466
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9087488240827846,
+        "exactMaskIou": 0.8019538188277087,
+        "edgeF1": 0.9400184735528865,
+        "colorError": 0.03158859149912605,
+        "exactColorError": 0.07625930182611826
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 13,
+          "y": 329,
+          "width": 1045,
+          "height": 210
+        },
+        "foregroundCells": 1932,
+        "edgeCells": 2199
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 26,
+          "y": 339,
+          "width": 1022,
+          "height": 203
+        },
+        "foregroundCells": 2126,
+        "edgeCells": 2591
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_multi_stage_support",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 62,
+          "typeCounts": {
+            "path": 13,
+            "shape": 37,
+            "text": 12
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 62,
+          "typeCounts": {
+            "shape": 37,
+            "text": 12,
+            "path": 13
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 12,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03263196198546418,
+          "p95CenterDistance": 0.027764862301489918,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 9,
+          "officialPaletteSize": 9,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 6,
+            "Solid": 44
+          },
+          "officialStrokePatterns": {
+            "Solid": 44,
+            "Dashed": 6
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.8386363636363636,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 61,
+              "position": "end",
+              "point": {
+                "x": 0.8346199733314619,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8430051813471503,
+        "exactMaskIou": 0.6286630036630036,
+        "edgeF1": 0.9169200848348178,
+        "colorError": 0.030432847206289255,
+        "exactColorError": 0.11918348535995595
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 16,
+          "y": 272,
+          "width": 985,
+          "height": 308
+        },
+        "foregroundCells": 1650,
+        "edgeCells": 2039
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 31,
+          "y": 289,
+          "width": 962,
+          "height": 296
+        },
+        "foregroundCells": 1907,
+        "edgeCells": 2448
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_multi_stage_procurement",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 62,
+          "typeCounts": {
+            "path": 13,
+            "shape": 37,
+            "text": 12
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 62,
+          "typeCounts": {
+            "shape": 37,
+            "text": 12,
+            "path": 13
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 12,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.033419323255417424,
+          "p95CenterDistance": 0.028560479521390073,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 9,
+          "officialPaletteSize": 9,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 6,
+            "Solid": 44
+          },
+          "officialStrokePatterns": {
+            "Solid": 44,
+            "Dashed": 6
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.8263964950711938,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 61,
+              "position": "end",
+              "point": {
+                "x": 0.8225544581247464,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9372384937238494,
+        "exactMaskIou": 0.6594982078853047,
+        "edgeF1": 0.9422313501058195,
+        "colorError": 0.03248121484907639,
+        "exactColorError": 0.11228711317262867
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 16,
+          "y": 279,
+          "width": 971,
+          "height": 296
+        },
+        "foregroundCells": 1617,
+        "edgeCells": 2010
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 31,
+          "y": 295,
+          "width": 948,
+          "height": 285
+        },
+        "foregroundCells": 1624,
+        "edgeCells": 2087
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_metadata_edges_automation",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 31,
+          "typeCounts": {
+            "path": 7,
+            "shape": 17,
+            "text": 7
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 31,
+          "typeCounts": {
+            "shape": 17,
+            "text": 7,
+            "path": 7
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03364987633690049,
+          "p95CenterDistance": 0.030508673833084594,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 3,
+            "Solid": 21
+          },
+          "officialStrokePatterns": {
+            "Solid": 21,
+            "Dashed": 3
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.8288888888888889,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 30,
+              "position": "end",
+              "point": {
+                "x": 0.8203463203463204,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9524258125294395,
+        "exactMaskIou": 0.7299666110183639,
+        "edgeF1": 0.9576031190624619,
+        "colorError": 0.03380801560245965,
+        "exactColorError": 0.11969786245048938
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 24,
+          "y": 103,
+          "width": 966,
+          "height": 601
+        },
+        "foregroundCells": 2080,
+        "edgeCells": 1932
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 47,
+          "y": 140,
+          "width": 932,
+          "height": 570
+        },
+        "foregroundCells": 2065,
+        "edgeCells": 2138
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_metadata_edges_recovery",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 31,
+          "typeCounts": {
+            "path": 7,
+            "shape": 17,
+            "text": 7
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 31,
+          "typeCounts": {
+            "shape": 17,
+            "text": 7,
+            "path": 7
+          },
+          "textCount": 7,
+          "uniqueTextCount": 7,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 7,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.032891688794027124,
+          "p95CenterDistance": 0.028334276480614762,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 3,
+            "Solid": 21
+          },
+          "officialStrokePatterns": {
+            "Solid": 21,
+            "Dashed": 3
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.7508474576271187,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 30,
+              "position": "end",
+              "point": {
+                "x": 0.7461666406777899,
+                "y": 0.4202127659574468
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9815005138746146,
+        "exactMaskIou": 0.8538461538461538,
+        "edgeF1": 0.9995044598612488,
+        "colorError": 0.022230019255281643,
+        "exactColorError": 0.07605392156862745
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 20,
+          "y": 185,
+          "width": 877,
+          "height": 459
+        },
+        "foregroundCells": 1910,
+        "edgeCells": 1874
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 39,
+          "y": 211,
+          "width": 852,
+          "height": 439
+        },
+        "foregroundCells": 1946,
+        "edgeCells": 2019
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_configured_text_compliance",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 33,
+          "typeCounts": {
+            "path": 7,
+            "shape": 18,
+            "text": 8
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 33,
+          "typeCounts": {
+            "shape": 18,
+            "text": 8,
+            "path": 7
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [
+            {
+              "text": "Regional Compliance Review",
+              "officialCount": 1
+            },
+            {
+              "text": "Coordination Team",
+              "officialCount": 1
+            }
+          ],
+          "absentInOfficial": [
+            {
+              "text": "Regional Compliance",
+              "nativeCount": 1
+            },
+            {
+              "text": "Review Coordination Team",
+              "nativeCount": 1
+            }
+          ],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "segmentationEquivalent": true,
+          "segmentationGroups": [
+            {
+              "nativeTexts": [
+                "Regional Compliance",
+                "Review Coordination Team"
+              ],
+              "officialTexts": [
+                "Regional Compliance Review",
+                "Coordination Team"
+              ],
+              "centerDistance": 0.02905096507553474,
+              "sizeRatio": 1.0456184287118577
+            }
+          ],
+          "maximumCenterDistance": 0.033261949889631645,
+          "p95CenterDistance": 0.02905096507553474,
+          "maximumSizeRatio": 1.0456184287118577
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 3,
+            "Solid": 22
+          },
+          "officialStrokePatterns": {
+            "Solid": 22,
+            "Dashed": 3
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.7470709855272226,
+                "y": 0.4831858407079646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 32,
+              "position": "end",
+              "point": {
+                "x": 0.7394989561586639,
+                "y": 0.50531914893617
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8961160505381376,
+        "exactMaskIou": 0.838475499092559,
+        "edgeF1": 0.9648449941162469,
+        "colorError": 0.04852937084342043,
+        "exactColorError": 0.11819567512425418
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 18,
+          "y": 235,
+          "width": 875,
+          "height": 373
+        },
+        "foregroundCells": 1926,
+        "edgeCells": 1796
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 35,
+          "y": 258,
+          "width": 847,
+          "height": 352
+        },
+        "foregroundCells": 2126,
+        "edgeCells": 2064
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_configured_text_continuity",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 33,
+          "typeCounts": {
+            "path": 7,
+            "shape": 18,
+            "text": 8
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 33,
+          "typeCounts": {
+            "shape": 18,
+            "text": 8,
+            "path": 7
+          },
+          "textCount": 8,
+          "uniqueTextCount": 8,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 8,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03302533093295735,
+          "p95CenterDistance": 0.0288431977132095,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 3,
+            "Solid": 22
+          },
+          "officialStrokePatterns": {
+            "Solid": 22,
+            "Dashed": 3
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.7470709855272226,
+                "y": 0.4831858407079646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 32,
+              "position": "end",
+              "point": {
+                "x": 0.7443242322272863,
+                "y": 0.5053191489361701
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9033162073797291,
+        "exactMaskIou": 0.7975297750330834,
+        "edgeF1": 0.9499093492045261,
+        "colorError": 0.052522549019607845,
+        "exactColorError": 0.13149796310231193
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 18,
+          "y": 235,
+          "width": 875,
+          "height": 373
+        },
+        "foregroundCells": 1934,
+        "edgeCells": 1815
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 35,
+          "y": 254,
+          "width": 853,
+          "height": 360
+        },
+        "foregroundCells": 2141,
+        "edgeCells": 2169
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_theme_actor_order_release",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 34,
+          "typeCounts": {
+            "path": 5,
+            "shape": 20,
+            "text": 9
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 34,
+          "typeCounts": {
+            "shape": 20,
+            "text": 9,
+            "path": 5
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 9,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.033068022535828114,
+          "p95CenterDistance": 0.029911749173669636,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 11,
+          "officialPaletteSize": 11,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 2,
+            "Solid": 23
+          },
+          "officialStrokePatterns": {
+            "Solid": 23,
+            "Dashed": 2
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.7130434782608696,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 33,
+              "position": "end",
+              "point": {
+                "x": 0.7084551980856156,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9584969153112731,
+        "exactMaskIou": 0.8102643856920684,
+        "edgeF1": 0.9606077658975802,
+        "colorError": 0.03944208376707225,
+        "exactColorError": 0.1238963599955275
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 24,
+          "y": 111,
+          "width": 901,
+          "height": 587
+        },
+        "foregroundCells": 1754,
+        "edgeCells": 1847
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 46,
+          "y": 145,
+          "width": 874,
+          "height": 560
+        },
+        "foregroundCells": 1738,
+        "edgeCells": 1763
+      },
+      "heatmap": null
+    },
+    {
+      "id": "prod_journey_theme_actor_order_migration",
+      "kind": "journey",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 34,
+          "typeCounts": {
+            "path": 5,
+            "shape": 20,
+            "text": 9
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 34,
+          "typeCounts": {
+            "shape": 20,
+            "text": 9,
+            "path": 5
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 9,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.032689178667847596,
+          "p95CenterDistance": 0.02961645868551117,
+          "maximumSizeRatio": 1.0084851991129111
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 11,
+          "officialPaletteSize": 11,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 2,
+            "Solid": 23
+          },
+          "officialStrokePatterns": {
+            "Solid": 23,
+            "Dashed": 2
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "journey-activity-line",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.7125813449023861,
+                "y": 0.39823008849557523
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": null,
+              "pathOrder": 33,
+              "position": "end",
+              "point": {
+                "x": 0.7071676300578035,
+                "y": 0.42021276595744683
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9420549581839904,
+        "exactMaskIou": 0.8325817361894025,
+        "edgeF1": 0.9519470067479725,
+        "colorError": 0.040114558081970404,
+        "exactColorError": 0.11632586894209018
+      },
+      "nativeRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 24,
+          "y": 111,
+          "width": 949,
+          "height": 587
+        },
+        "foregroundCells": 1587,
+        "edgeCells": 1590
+      },
+      "officialRaster": {
+        "imageWidth": 1200,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 46,
+          "y": 146,
+          "width": 915,
+          "height": 557
+        },
+        "foregroundCells": 1664,
+        "edgeCells": 1760
+      },
+      "heatmap": null
+    }
+  ]
+}

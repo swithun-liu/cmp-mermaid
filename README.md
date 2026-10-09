@@ -62,7 +62,7 @@ geometry gates.
 | Large-scale visual matrix | 8,448 Native/Official pairs |
 | Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Matrix detail review | 33 families: 8,448/8,448 accepted; 7,435 automatic passes plus 1,013 manually accepted reviews |
+| Matrix detail review | 33 families: 8,448/8,448 accepted; 8,141 automatic passes plus 307 manually accepted reviews |
 | Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |

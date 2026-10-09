@@ -94,27 +94,24 @@ The original 12-family report
 used a legacy coarse gate that did not catch a visible Git Graph paint-order
 defect and is not a detail-parity pass by itself. All 33 families contribute
 8,448 Native/Official pairs accepted by the replacement detail gate:
-`7,435 automatic pass / 1,013 manually reviewed / 0 unresolved`. Nineteen
-families contribute `4,864 pass / 0 review / 0 fail`; ER contributes
-`196 pass / 60 manually reviewed / 0 fail`; Journey contributes
-`237 pass / 19 manually reviewed / 0 fail`; Requirement contributes
+`8,141 automatic pass / 307 manually reviewed / 0 unresolved`. Twenty-four
+families contribute `6,144 pass / 0 review / 0 fail`. The remaining nine
+families account for the complete review queue: ER contributes
+`196 pass / 60 manually reviewed / 0 fail`; Requirement contributes
 `252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
 `235 pass / 21 manually reviewed / 0 fail`; Mindmap contributes
 `159 pass / 97 manually reviewed / 0 fail`; Pie contributes
-`255 pass / 1 manually reviewed / 0 fail`; Sequence contributes
-`246 pass / 10 manually reviewed / 0 fail`; XY Chart contributes
-`236 pass / 20 manually reviewed / 0 fail`; Treemap contributes
-`19 pass / 237 manually reviewed / 0 fail`; Venn contributes
-`216 automatic pass / 40 manually accepted / 0 unresolved`; Event Modeling
-contributes `0 automatic pass / 256 manually accepted / 0 unresolved`; Block
+`255 pass / 1 manually reviewed / 0 fail`; XY Chart contributes
+`236 pass / 20 manually reviewed / 0 fail`; Venn contributes
+`216 automatic pass / 40 manually accepted / 0 unresolved`; Block
 contributes `252 automatic pass / 4 manually accepted / 0 unresolved`;
 Swimlanes contributes `196 automatic pass / 60 manually accepted / 0
-unresolved`; Architecture, C4, Railroad, and TreeView each contribute
-`256 automatic pass / 0 review / 0 fail`; Wardley Map and ZenUML each
-contribute `256 automatic pass / 0 review / 0 fail`; Use Case contributes
-`72 automatic pass / 184 manually reviewed / 0 unresolved`.
-Journey reviews are benign
-platform-font line-segmentation differences for one complete long actor label.
+unresolved`.
+Journey, Sequence, and Event Modeling now normalize spatially equivalent text
+segments by their combined bounds. Use Case compares both render-object and
+expanded-primitive geometry counts. Treemap reports measured glyph bounds
+while preserving Mermaid's text anchors. All five families retain the
+position, size, clipping, overlap, paint-order, and raster gates.
 Requirement reviews are benign greedy cross-matches between duplicate
 relationship labels. Twenty Git Graph reviews are text-overlap threshold
 findings caused by browser/Compose text-bound differences; one is a
@@ -124,21 +121,17 @@ rotation or mirror differences under remaining browser/Compose glyph-width
 and line-break perturbations after aligning the HTML label line height; all
 expected text, nodes, hierarchy edges, shapes, and colors are preserved. This
 systematic matrix broadens layout and text-pressure coverage. The Pie review
-is a text-overlap font-box threshold finding. Sequence reviews are
-text-segmentation representation differences. XY Chart reviews are
+is a text-overlap font-box threshold finding. XY Chart reviews are
 paint-order occlusion-ratio threshold findings on intentional chart layering.
-Treemap reviews
-are Canvas/SVG text-position and same-row label/value overlap-threshold
-differences; all expected hierarchy, rectangles, styles, values, clipping, and
-paint order were manually verified. Venn reviews are two repeated
+Venn reviews are two repeated
 text-overlap font-box patterns. All 40 were manually verified. Event Modeling
-reviews contain only the documented title/payload text-segmentation difference
-between one Official `foreignObject` and two Native text elements. Block
-reviews are four paint-order occlusion ratio threshold findings with matching
-visible shapes, labels, edges, and markers. Swimlanes reviews contain only
-text-position findings along semantically equivalent orthogonal routes; all
-lanes, shapes, labels, markers, and endpoints were manually verified. The
-matrix is not counted as 8,448
+title/payload representation is validated as equivalent between one Official
+`foreignObject` and two Native text elements. Block reviews are four
+paint-order occlusion ratio threshold findings with matching visible shapes,
+labels, edges, and markers. Swimlanes reviews contain only text-position
+findings along semantically equivalent orthogonal routes; all lanes, shapes,
+labels, markers, and endpoints were manually verified. The matrix is not
+counted as 8,448
 independent topologies. The prior separate randomized stress corpus
 remains Native-only robustness evidence and is not presented as Official
 parity.

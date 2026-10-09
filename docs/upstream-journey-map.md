@@ -79,9 +79,9 @@ Jison production so an upstream grammar diff can be translated incrementally.
 - `OfficialJourneyDocumentationTest` executes the official documentation
   example extracted from Mermaid `12.0.0`.
 - The replacement large-scale Web audit compares 256 unique same-source cases
-  against Mermaid.js `12.0.0`: `237 pass / 19 manually reviewed / 0 fail`.
-  All 19 reviews are benign platform-font line-segmentation differences for
-  one complete long actor label; all 16 contact sheets were manually reviewed.
+  against Mermaid.js `12.0.0`: `256 pass / 0 review / 0 fail`. Spatially
+  equivalent line breaks for one complete long actor label are compared by
+  their combined bounds; all 16 contact sheets were manually reviewed.
 
 ## Upgrade Procedure
 

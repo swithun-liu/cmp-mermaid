@@ -254,25 +254,51 @@ test('separates missing text from harmless element multiplicity', () => {
   );
 });
 
-test('treats equivalent wrapped text as a segmentation review', () => {
+test('accepts spatially equivalent segmented text', () => {
   const official = manifest([
-    text('[Another request owns', 0),
-    text('refresh]', 1),
+    {
+      ...text('[Another request owns', 0),
+      bounds: { x: 10, y: 10, width: 80, height: 10 },
+    },
+    {
+      ...text('refresh]', 1),
+      bounds: { x: 10, y: 24, width: 80, height: 10 },
+    },
   ]);
   const native = manifest([
+    {
+      ...text('[Another request owns refresh]', 0),
+      bounds: { x: 10, y: 10, width: 80, height: 24 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.textComparison.segmentationEquivalent, true);
+  assert.equal(result.textComparison.segmentationGroups.length, 1);
+});
+
+test('keeps spatially divergent segmented text in review', () => {
+  const official = manifest([
     text('[Another request owns refresh]', 0),
+  ]);
+  const native = manifest([
+    text('[Another request owns', 0),
+    {
+      ...text('refresh]', 1),
+      bounds: { x: 85, y: 85, width: 10, height: 10 },
+    },
   ]);
 
   const result = compareDetailManifests(native, official);
 
   assert.equal(result.status, 'review');
+  assert.equal(result.textComparison.segmentationEquivalent, false);
   assert.ok(
     result.findings.some((finding) =>
       finding.code === 'text-segmentation'
     ),
-  );
-  assert.ok(
-    result.findings.every((finding) => finding.code !== 'text-presence'),
   );
 });
 
@@ -633,6 +659,51 @@ test('accepts equivalent stroke classes across decomposed SVG geometry', () => {
   const result = compareDetailManifests(native, official);
 
   assert.equal(result.status, 'pass');
+});
+
+test('accepts equivalent geometry across compound and decomposed objects', () => {
+  const native = manifest([
+    {
+      ...shape('compound-actor', 0),
+      geometryPathCount: 6,
+    },
+  ]);
+  const official = manifest([
+    path(0, 'Solid', []),
+    path(1, 'Solid', []),
+    path(2, 'Solid', []),
+    path(3, 'Solid', []),
+    path(4, 'Solid', []),
+    path(5, 'Solid', []),
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.elementComparison.ratios.geometryObject, 1 / 6);
+  assert.equal(result.elementComparison.ratios.geometryExpanded, 1);
+  assert.equal(result.elementComparison.ratios.geometry, 1);
+});
+
+test('reports geometry count when object and expanded counts both diverge', () => {
+  const native = manifest([
+    {
+      ...shape('compound-actor', 0),
+      geometryPathCount: 6,
+    },
+    shape('second-object', 1),
+    shape('third-object', 2),
+  ]);
+  const official = manifest([
+    path(0, 'Solid', []),
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'review');
+  assert.ok(
+    result.findings.some((finding) => finding.code === 'element-count'),
+  );
 });
 
 test('reports raster mask, edge, and color divergence', () => {
