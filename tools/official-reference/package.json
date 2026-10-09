@@ -54,6 +54,7 @@
     "generate:requirement-parser": "node generate-requirement-parser.mjs",
     "generate:mindmap-parser": "node generate-mindmap-parser.mjs",
     "generate:mindmap-tidy-tree-asset": "node generate-mindmap-tidy-tree-asset.mjs",
+    "generate:cose-bilkent-parity-fixtures": "node generate-cose-bilkent-parity-fixtures.mjs",
     "generate:zenuml-asset": "node generate-zenuml-asset.mjs",
     "generate:xychart-parser": "node generate-xychart-parser.mjs",
     "render:flowchart-contact-sheets": "node render-flowchart-contact-sheets.mjs",

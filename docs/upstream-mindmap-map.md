@@ -86,8 +86,14 @@ width multiplier can remove the residual without regressing other inputs.
   examples and the three explicit unsupported cases.
 - `MindmapLayoutTest` covers hierarchy, all shapes, text, themes,
   configuration, metadata, unsupported features, and each layout selector.
-- `CoseBilkentLayoutTest`, `MindmapDagreLayoutTest`, and
-  `NonLayeredTidyTreeLayoutTest` cover the translated algorithm boundaries.
+- `CoseBilkentLayoutTest` compares Kotlin output with generated
+  `cytoscape-cose-bilkent 4.1.0` fixtures for identical node sizes and edges.
+  Relative centers for a minimal tree and a branched tree are checked without
+  involving font measurement, SVG, Canvas, or raster output. Regenerate the
+  fixtures with `npm run generate:cose-bilkent-parity-fixtures` from
+  `tools/official-reference`.
+- `MindmapDagreLayoutTest` and `NonLayeredTidyTreeLayoutTest` cover their
+  translated algorithm boundaries.
 - `MindmapStressTest` renders 256 deterministic randomized Native diagrams.
 - The refreshed Web audit compares 13 independent production scenarios and
   256 unique same-source matrix cases against Mermaid.js `12.0.0`. Production

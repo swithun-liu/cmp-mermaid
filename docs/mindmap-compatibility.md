@@ -78,6 +78,10 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   reports preserve the complete audit evidence.
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
+- The CoSE-Bilkent algorithm gate uses identical fixed node dimensions and
+  edges on official JavaScript and Kotlin implementations, then compares
+  translation-normalized node centers for a minimal tree and a branched tree.
+  Text measurement and raster output are intentionally outside this gate.
 - All 11 built-in themes are rendered by the shared production theme matrix.
 
 ## Reference Workflow
@@ -96,6 +100,13 @@ Regenerate official documentation fixtures:
 cd tools/official-reference
 MERMAID_SOURCE_DIR=/path/to/mermaid-12 \
   npm run generate:mindmap-doc-fixtures
+```
+
+Regenerate the fixed-geometry CoSE-Bilkent parity fixtures:
+
+```bash
+cd tools/official-reference
+npm run generate:cose-bilkent-parity-fixtures
 ```
 
 Capture the 256-case Mindmap partition:

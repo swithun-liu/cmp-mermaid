@@ -46,36 +46,37 @@ class CoseBilkentLayoutTest {
     }
 
     @Test
-    fun matchesMermaid1200CoseBilkentRelativeNodePositions() {
-        val result = assertIs<GMResult.Ok<CoseLayoutResult>>(
-            CoseBilkentLayout.layout(
-                nodeInputs = listOf(
-                    CoseNodeInput("0", SceneSize(72.1875f, 34f)),
-                    CoseNodeInput("1", SceneSize(69.09375f, 44f)),
-                    CoseNodeInput("2", SceneSize(101.79352f, 71.85897f)),
-                    CoseNodeInput("3", SceneSize(64.10216f, 64.10216f)),
-                    CoseNodeInput("4", SceneSize(158.33984f, 80f)),
+    fun matchesMermaid1200CoseBilkentForFixedNodeGeometry() {
+        coseBilkentParityFixtures.forEach { fixture ->
+            val result = assertIs<GMResult.Ok<CoseLayoutResult>>(
+                CoseBilkentLayout.layout(
+                    nodeInputs = fixture.nodes,
+                    edgeInputs = fixture.edges,
                 ),
-                edgeInputs = listOf(
-                    CoseEdgeInput("edge_0_1", "0", "1"),
-                    CoseEdgeInput("edge_1_2", "1", "2"),
-                    CoseEdgeInput("edge_0_3", "0", "3"),
-                    CoseEdgeInput("edge_3_4", "3", "4"),
-                ),
-            ),
-        ).value
-        val root = result.nodeCenters.getValue("0")
-        val expectedDeltas = mapOf(
-            "1" to (-13.174703f to -91.96764f),
-            "2" to (-3.553519f to -203.19424f),
-            "3" to (-6.899124f to 102.41664f),
-            "4" to (-15.008171f to 227.83658f),
-        )
+                fixture.id,
+            ).value
+            val anchor = result.nodeCenters.getValue(fixture.anchorId)
 
-        expectedDeltas.forEach { (id, expected) ->
-            val point = result.nodeCenters.getValue(id)
-            assertEquals(expected.first, point.x - root.x, 0.02f, "$id x")
-            assertEquals(expected.second, point.y - root.y, 0.02f, "$id y")
+            assertEquals(
+                fixture.expectedRelativeCenters.keys,
+                result.nodeCenters.keys,
+                fixture.id,
+            )
+            fixture.expectedRelativeCenters.forEach { (nodeId, expected) ->
+                val actual = result.nodeCenters.getValue(nodeId)
+                assertEquals(
+                    expected.x,
+                    actual.x - anchor.x,
+                    0.001f,
+                    "${fixture.id}/$nodeId x",
+                )
+                assertEquals(
+                    expected.y,
+                    actual.y - anchor.y,
+                    0.001f,
+                    "${fixture.id}/$nodeId y",
+                )
+            }
         }
     }
 
