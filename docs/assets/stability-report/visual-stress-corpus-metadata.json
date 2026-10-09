@@ -1,0 +1,216 @@
+{
+  "mermaidVersion": "12.0.0",
+  "structuralCoverage": {
+    "role": "semantic-and-structural-coverage",
+    "source": "tools/official-reference/production-corpus.mjs",
+    "scenarioCount": 441
+  },
+  "stressCoverage": {
+    "role": "text-layout-stress",
+    "source": "tools/official-reference/visual-parity-corpus.mjs",
+    "sampleCount": 8448,
+    "samplesPerDiagramFamily": 256,
+    "availableTextLayoutProfileCount": 20,
+    "addsStructuralCoverage": false
+  },
+  "diagramFamilies": [
+    {
+      "kind": "flowchart",
+      "structuralScenarioCount": 14,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 19
+    },
+    {
+      "kind": "swimlanes",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "architecture",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "c4",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "railroad",
+      "structuralScenarioCount": 18,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 15
+    },
+    {
+      "kind": "treeview",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "xychart",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "quadrant",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "timeline",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "kanban",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "sequence",
+      "structuralScenarioCount": 14,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 19
+    },
+    {
+      "kind": "class",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "state",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "er",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "gantt",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "pie",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "journey",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "requirement",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "gitgraph",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "mindmap",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "packet",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "radar",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "sankey",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "treemap",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "venn",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "ishikawa",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "cynefin",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "block",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "eventmodeling",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "agentflow",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "usecase",
+      "structuralScenarioCount": 18,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 15
+    },
+    {
+      "kind": "wardley",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    },
+    {
+      "kind": "zenuml",
+      "structuralScenarioCount": 13,
+      "stressSampleCount": 256,
+      "appliedTextLayoutProfileCount": 20
+    }
+  ]
+}

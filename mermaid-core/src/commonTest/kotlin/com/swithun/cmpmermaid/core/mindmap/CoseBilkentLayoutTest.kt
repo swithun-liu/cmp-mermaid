@@ -6,6 +6,8 @@ import com.swithun.cmpmermaid.core.SceneSize
 import com.swithun.cmpmermaid.core.mindmap.upstream.cose.CoseBilkentLayout
 import com.swithun.cmpmermaid.core.mindmap.upstream.cose.CoseEdgeInput
 import com.swithun.cmpmermaid.core.mindmap.upstream.cose.CoseLayoutResult
+import com.swithun.cmpmermaid.core.mindmap.upstream.cose.CoseLayoutTraceRequest
+import com.swithun.cmpmermaid.core.mindmap.upstream.cose.CoseLayoutTraceSnapshot
 import com.swithun.cmpmermaid.core.mindmap.upstream.cose.CoseNodeInput
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -48,34 +50,88 @@ class CoseBilkentLayoutTest {
     @Test
     fun matchesMermaid1200CoseBilkentForFixedNodeGeometry() {
         coseBilkentParityFixtures.forEach { fixture ->
+            val traceSnapshots = mutableListOf<CoseLayoutTraceSnapshot>()
             val result = assertIs<GMResult.Ok<CoseLayoutResult>>(
                 CoseBilkentLayout.layout(
                     nodeInputs = fixture.nodes,
                     edgeInputs = fixture.edges,
+                    trace = CoseLayoutTraceRequest(
+                        iterations = fixture.expectedTraceSnapshots
+                            .mapTo(linkedSetOf(), CoseBilkentExpectedTraceSnapshot::iteration),
+                        onSnapshot = traceSnapshots::add,
+                    ),
                 ),
                 fixture.id,
             ).value
-            val anchor = result.nodeCenters.getValue(fixture.anchorId)
 
             assertEquals(
-                fixture.expectedRelativeCenters.keys,
-                result.nodeCenters.keys,
-                fixture.id,
+                fixture.expectedTraceSnapshots.map { snapshot -> snapshot.iteration },
+                traceSnapshots.map { snapshot -> snapshot.iteration },
+                "${fixture.id} trace iterations",
             )
-            fixture.expectedRelativeCenters.forEach { (nodeId, expected) ->
-                val actual = result.nodeCenters.getValue(nodeId)
+            val traceDeviations = mutableListOf<String>()
+            fixture.expectedTraceSnapshots.zip(traceSnapshots).forEach {
+                    (expectedSnapshot, actualSnapshot) ->
+                val traceAnchor =
+                    actualSnapshot.nodeCenters.getValue(fixture.anchorId)
+                var maximumDelta = 0f
+                var maximumDeltaLabel = ""
+                expectedSnapshot.relativeCenters.forEach { (nodeId, expected) ->
+                    val actual = actualSnapshot.nodeCenters.getValue(nodeId)
+                    val deltaX = kotlin.math.abs(
+                        expected.x - (actual.x - traceAnchor.x),
+                    )
+                    val deltaY = kotlin.math.abs(
+                        expected.y - (actual.y - traceAnchor.y),
+                    )
+                    if (deltaX > maximumDelta) {
+                        maximumDelta = deltaX
+                        maximumDeltaLabel = "$nodeId x"
+                    }
+                    if (deltaY > maximumDelta) {
+                        maximumDelta = deltaY
+                        maximumDeltaLabel = "$nodeId y"
+                    }
+                }
+                if (maximumDelta > 0.001f) {
+                    traceDeviations +=
+                        "iteration ${expectedSnapshot.iteration}: " +
+                        "$maximumDeltaLabel delta=$maximumDelta"
+                }
+            }
+            assertTrue(
+                traceDeviations.isEmpty(),
+                "${fixture.id} trace deviations:\n${traceDeviations.joinToString("\n")}",
+            )
+
+            if (fixture.compareFinalCoordinates) {
+                val anchor = result.nodeCenters.getValue(fixture.anchorId)
                 assertEquals(
-                    expected.x,
-                    actual.x - anchor.x,
-                    0.001f,
-                    "${fixture.id}/$nodeId x",
+                    fixture.expectedRelativeCenters.keys,
+                    result.nodeCenters.keys,
+                    fixture.id,
                 )
-                assertEquals(
-                    expected.y,
-                    actual.y - anchor.y,
-                    0.001f,
-                    "${fixture.id}/$nodeId y",
-                )
+                fixture.expectedRelativeCenters.forEach { (nodeId, expected) ->
+                    val actual = result.nodeCenters.getValue(nodeId)
+                    assertEquals(
+                        expected.x,
+                        actual.x - anchor.x,
+                        0.001f,
+                        "${fixture.id}/$nodeId x",
+                    )
+                    assertEquals(
+                        expected.y,
+                        actual.y - anchor.y,
+                        0.001f,
+                        "${fixture.id}/$nodeId y",
+                    )
+                }
+            } else {
+                val repeated = assertIs<GMResult.Ok<CoseLayoutResult>>(
+                    CoseBilkentLayout.layout(fixture.nodes, fixture.edges),
+                    "${fixture.id} deterministic replay",
+                ).value
+                assertEquals(result, repeated, "${fixture.id} deterministic replay")
             }
         }
     }

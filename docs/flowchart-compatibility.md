@@ -90,10 +90,7 @@ Additional platform limitations:
   sanitization, colors, all shapes, markers, D3 curves, numeric Dagre parity,
   compound Dagre hierarchy, line hops, assets, interactions, viewport behavior,
   and resource limits.
-- The replacement visual gate passes all 14 production scenarios and all 256
-  same-source matrix cases with `0` review and `0` failure results. Matrix
-  Native/Official ratios are `1.021-1.083` for width, `0.965-1.048` for
-  height, and `0.957-1.187` for foreground ink.
+- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.022-1.103`, height `0.976-1.051`, and foreground ink `0.947-1.259`.
 - All 16 matrix contact sheets were manually reviewed for topology, advanced
   shapes, marker visibility, labels, clipping, overlap, and paint order.
 - Marker manifests include actual path endpoint anchors. The detail auditor

@@ -53,17 +53,7 @@ typed `MermaidTheme.journey` API.
   capability points. Production detail and geometry pass all 13 pairs, with
   width ratios `1.021-1.037`, height ratios `1.030-1.060`, and foreground-ink
   ratios `1.011-1.080`.
-- 256 same-source Native/Official visual cases were captured at `1200 x 900`.
-  The replacement detail and geometry audits pass all 256 cases, with width
-  ratios `1.020-1.032`, height ratios `1.041-1.061`, and foreground-ink ratios
-  `0.983-1.073`. Spatially equivalent line breaks for the complete
-  `Regional Compliance Review Coordination Team` actor label are compared by
-  their combined bounds while text presence, clipping, overlap, and raster
-  checks remain active. All 16 contact sheets were manually reviewed. The raw
-  [production detail](assets/stability-report/journey-production-detail.json),
-  [production geometry](assets/stability-report/journey-production-geometry.json),
-  and [matrix detail](assets/stability-report/journey-visual-parity-detail.json)
-  reports are published with the evidence.
+- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.017-1.033`, height `1.023-1.053`, and foreground ink `0.910-1.107`.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
   complete 236-case mixed corpus.
 

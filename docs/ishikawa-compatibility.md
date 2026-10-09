@@ -32,19 +32,13 @@ that side-by-side review exposes no functional defect.
   runs in a JVM test.
 - 13 independent production scenarios cover all 21 declared Ishikawa
   capability points.
-- 256 deterministic same-source matrix cases exercise both headers,
-  root-only and deep trees, alternating branches, indentation normalization,
-  comments, entities, HTML breaks, configuration, themes, Unicode, and long
-  wrapping.
+- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.037-1.148`, height `1.017-1.119`, and foreground ink `0.992-1.299`.
 - The production Native/Official geometry audit accepted all 13 pairs: width
   `1.040-1.188`, height `1.059-1.119`, and foreground ink `1.067-1.326`.
 - The production detail audit produced `12 pass / 1 review / 0 fail`. The
   root-only review is a manifest-only element-count difference: Native retains
   the zero-length spine while Official omits it from visible geometry. Raster
   output and effect semantics match.
-- The 256-case matrix geometry audit passed every pair: width `1.046-1.181`,
-  height `1.017-1.116`, and foreground ink `1.028-1.313`.
-- The matrix detail audit produced `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for hierarchy, branch direction, fish-head geometry, labels,
   wrapping, themes, clipping, and paint order. Raw

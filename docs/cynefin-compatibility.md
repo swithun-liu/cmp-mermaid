@@ -38,9 +38,7 @@ functional defect.
 - The production geometry and detail audits passed all 13 pairs. Width,
   height, and foreground-ink ratios were `1.013-1.021`, `1.011-1.019`, and
   `1.019-1.041`; detail was `13 pass / 0 review / 0 fail`.
-- The matrix geometry and detail audits passed all 256 pairs. Ratios were
-  `1.013-1.032`, `1.009-1.019`, and `1.020-1.049`; detail was
-  `256 pass / 0 review / 0 fail`.
+- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.014-1.023`, height `1.011-1.019`, and foreground ink `1.027-1.050`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for domains, boundaries, cliff and confusion geometry, item
   placement, overflow, transitions, themes, labels, clipping, and paint

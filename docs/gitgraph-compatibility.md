@@ -53,14 +53,7 @@ side-by-side comparison does not expose a functional rendering defect.
   SceneGraphs.
 - 13 independent production scenarios cover all 24 declared Git Graph
   capability points.
-- 256 same-source Native/Official visual cases were captured at `1200 x 900`.
-  The replacement audit accepted all 256:
-  `235 pass / 21 manually reviewed / 0 fail`. Twenty reviews are text-overlap
-  threshold findings caused by browser/Compose text-bound differences and one
-  is a paint-order occlusion-ratio threshold finding; expected labels,
-  clipping, paint order, and raster checks pass. Geometry ratios are width
-  `1.035-1.141`, height `1.032-1.145`, and foreground ink `1.035-1.421`.
-  All 16 contact sheets were manually reviewed.
+- The fresh 256-case structural Native/Official audit reports `249 pass / 7 review / 0 fail`; geometry has 0 hard failures with width `1.033-1.143`, height `1.035-1.137`, and foreground ink `1.022-1.333`.
 - The 13 production pairs are also accepted:
   `12 pass / 1 manually reviewed / 0 fail`. The single review has the same
   text-bound cause and passes semantic, clipping, paint-order, and raster

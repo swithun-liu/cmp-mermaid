@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Live Web demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448-case visual report</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448-case structural visual report</strong></a>
     ·
     <a href="docs/stability-report.md">Full Stable report</a>
     ·
@@ -35,9 +35,11 @@
 > `12.0.0`, and all 33 family gates pass.** The supported Mermaid `12.0.0`
 > contract is rated **Stable**.
 >
-> The current **[8,448-case Native/Official visual report](docs/assets/stability-report/visual-parity-evidence.md)**
-> covers every family with 256 same-source pairs, automated detail and geometry
-> audits, and manual review of all 528 contact sheets.
+> The current **[8,448-case Native/Official structural visual report](docs/assets/stability-report/visual-parity-evidence.md)**
+> covers every family with 256 structurally distinct same-source pairs,
+> automated detail and geometry audits, and 528 regenerated contact sheets.
+> The 441 hand-authored production scenarios and 8,448 text/layout stress
+> inputs remain separate evidence layers.
 
 CMP Mermaid is designed for applications that render many diagrams without a
 WebView per diagram. The production path does not embed Mermaid.js and does not
@@ -57,17 +59,18 @@ geometry gates.
 | Implemented diagram families | 33/33 |
 | Translation pending | 0 |
 | Visual family gates pending | 0 |
-| Independent production scenarios | 441 Native/Official pairs |
+| Independent structural/production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
-| Large-scale visual matrix | 8,448 Native/Official pairs |
-| Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
+| Structural visual matrix | 8,448 structurally distinct Native/Official pairs; 256 per family |
+| Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
+| Native/Official captures | 16,896 structural-matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Matrix detail review | 33 families: 8,448/8,448 accepted; 8,141 automatic passes plus 307 manually accepted reviews |
-| Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
+| Structural detail audit | 33 families: 7,953 pass, 495 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 structural pairs have 0 hard failures; 4 Mindmap CoSE ratio findings remain review-only |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 859 passed, 0 failed |
+| JVM tests | 883 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -76,8 +79,8 @@ geometry gates.
 | --- | --- |
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and the completed 33/33 family gates |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
-| **[All 8,448 Native/Official pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 same-source pairs per page |
-| **[Source-mutation Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 AI-like mutations from distinct valid bases, 16,896 screenshots, and 528 comparison sheets |
+| **[All 8,448 Native/Official structural pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 structurally distinct same-source pairs per page |
+| **[Source-mutation Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 AI-like mutations from byte-distinct stress bases derived from 441 structural scenarios, 16,896 screenshots, and 528 comparison sheets |
 | **[Android physical-device report](docs/android-real-device-compatibility.md)** | Separate Kotlin 2.3.20 and Kotlin 1.7.21 matrices across Android 9-16 |
 | **[iOS physical-device report](docs/ios-real-device-compatibility.md)** | Six-device iOS 14.3-26.0 matrix with complete 441-case loads |
 | [Production capability matrix](docs/production-capability-matrix.md) | The 738 independently exercised capabilities |
@@ -119,8 +122,10 @@ not pixel-identical browser output; platform font metrics may differ.
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native state diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js state diagram" width="700"> |
 
 The current published report contains 441 independent production comparisons
-and a separate large-scale matrix with 8,448 unique Mermaid sources:
-**[open all 528 visual evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
+plus 8,448 structurally distinct visual cases. A separate 8,448-input
+text/layout stress corpus remains available for wrapping and layout-pressure
+regressions:
+**[open all 528 structural visual-evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
 
 </details>
 
@@ -324,7 +329,7 @@ exception caught inside the render pipeline or Compose drawing boundary.
 The Compose surface renders Mermaid.js `12.0.0`'s standard error diagram while
 the callback and `onRenderResult` retain the detailed typed diagnostic. The
 published source-mutation corpus verifies Official accept/reject outcome parity
-for all 8,448 cases. Native rejected inputs remain typed `CONTENT_ERROR`;
+for all 8,448 mutations. Native rejected inputs remain typed `CONTENT_ERROR`;
 exact diagnostic-message equality is reported separately for 1,798/6,292
 paired errors and is not manufactured as a compatibility requirement.
 Coroutine cancellation and fatal process errors continue to propagate.

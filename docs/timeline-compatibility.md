@@ -27,13 +27,7 @@ Baseline: Mermaid `12.0.0`.
   finite SceneGraphs.
 - 13 independent production cases pass detail audit:
   `13 pass / 0 review / 0 fail`.
-- The source-controlled visual matrix contains 256 unique Timeline sources.
-  All 256 same-source Native/Official pairs pass both the detail audit
-  (`256 pass / 0 review / 0 fail`) and the geometry gate at a shared
-  `1200 x 900` capture viewport.
-- Across the 256-pair matrix, Native/Official content ratios are
-  `1.026-1.053` for width, `1.038-1.087` for height, and `1.052-1.136`
-  for foreground ink.
+- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.020-1.056`, height `1.032-1.072`, and foreground ink `1.036-1.136`.
 - Sixteen paged contact sheets cover every pair. All pages were checked for
   blank output, clipping, overlap, geometry, color, text, and LR/TD connector
   differences.

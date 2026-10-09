@@ -2,10 +2,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
+import { compareDetailManifests } from './detail-audit-core.mjs';
+import { classifyGeometryRatio } from './geometry-audit-policy.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
-import { cases as visualParityCases } from './visual-parity-corpus.mjs';
+import { cases as visualParityCases } from './visual-structure-corpus.mjs';
 
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -74,22 +76,41 @@ const thresholds = {
 const browser = await puppeteer.launch(puppeteerLaunchOptions);
 const results = [];
 const failures = [];
+const reviews = [];
 
 try {
   const page = await browser.newPage();
   for (const auditCase of cases) {
     const themeSuffix = themeOverride === null ? '' : `_${themeOverride}`;
+    const prefix = capturePrefix(auditCase, themeSuffix);
     const native = await analyzePng(
       page,
-      path.join(inputDirectory, `${auditCase.id}${themeSuffix}_native.png`),
+      `${prefix}_native.png`,
     );
     const official = await analyzePng(
       page,
-      path.join(inputDirectory, `${auditCase.id}${themeSuffix}_official.png`),
+      `${prefix}_official.png`,
     );
+    const detail = compareDetailManifests(
+      readJson(`${prefix}_native.manifest.json`),
+      readJson(`${prefix}_official.manifest.json`),
+      auditCase.expectedTexts ?? [],
+    );
+    const structuralErrors = detail.findings.filter(
+      (finding) => finding.severity === 'error',
+    );
+    structuralErrors.forEach((finding) => {
+      failures.push(
+        `${auditCase.id}/structure ${finding.code}: ${finding.message}`,
+      );
+    });
+    const reviewIterativeGeometry =
+      auditCase.layout === 'cose-bilkent' &&
+      structuralErrors.length === 0;
     const result = {
       id: auditCase.id,
       kind: auditCase.kind,
+      layout: auditCase.layout ?? null,
       native,
       official,
       widthRatio: ratio(native.contentBounds.width, official.contentBounds.width),
@@ -107,18 +128,21 @@ try {
       result.widthRatio,
       thresholds.minimumWidthRatio,
       thresholds.maximumWidthRatio,
+      reviewIterativeGeometry,
     );
     validateRatio(
       `${auditCase.id}/height`,
       result.heightRatio,
       thresholds.minimumHeightRatio,
       thresholds.maximumHeightRatio,
+      reviewIterativeGeometry,
     );
     validateRatio(
       `${auditCase.id}/ink`,
       result.inkRatio,
       thresholds.minimumInkRatio,
       thresholds.maximumInkRatio,
+      reviewIterativeGeometry,
     );
   }
 } finally {
@@ -134,6 +158,7 @@ const report = {
   caseCount: results.length,
   thresholds,
   failures,
+  reviews,
   cases: results,
 };
 
@@ -157,6 +182,12 @@ if (failures.length > 0) {
   }
   process.exitCode = 1;
 }
+if (reviews.length > 0) {
+  console.log('Iterative-layout geometry review queue:');
+  for (const review of reviews) {
+    console.log(`- ${review}`);
+  }
+}
 
 function validateCapture(label, capture) {
   if (capture.inkPixels < thresholds.minimumInkPixels) {
@@ -176,13 +207,26 @@ function validateCapture(label, capture) {
   }
 }
 
-function validateRatio(label, value, minimum, maximum) {
-  if (!Number.isFinite(value) || value < minimum || value > maximum) {
-    failures.push(
-      `${label} ratio ${value.toFixed(3)} is outside ` +
-        `[${minimum.toFixed(3)}, ${maximum.toFixed(3)}]`,
-    );
+function validateRatio(label, value, minimum, maximum, reviewOnly = false) {
+  const result = classifyGeometryRatio({
+    label,
+    value,
+    minimum,
+    maximum,
+    iterativeLayoutWithMatchingStructure: reviewOnly,
+  });
+  if (result.status === 'review') {
+    reviews.push(result.message);
+  } else if (result.status === 'failure') {
+    failures.push(result.message);
   }
+}
+
+function readJson(fileName) {
+  if (!fs.existsSync(fileName)) {
+    throw new Error(`Missing capture manifest: ${fileName}`);
+  }
+  return JSON.parse(fs.readFileSync(fileName, 'utf8'));
 }
 
 async function analyzePng(page, fileName) {
@@ -291,6 +335,15 @@ function range(values) {
   const minimum = Math.min(...values);
   const maximum = Math.max(...values);
   return `${minimum.toFixed(3)}-${maximum.toFixed(3)}`;
+}
+
+function capturePrefix(auditCase, themeSuffix) {
+  const filePrefix = `${auditCase.id}${themeSuffix}`;
+  const directPrefix = path.join(inputDirectory, filePrefix);
+  if (fs.existsSync(`${directPrefix}_native.png`)) {
+    return directPrefix;
+  }
+  return path.join(inputDirectory, auditCase.kind, filePrefix);
 }
 
 function readNumber(name, fallback) {

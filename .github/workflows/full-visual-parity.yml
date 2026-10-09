@@ -29,7 +29,9 @@ jobs:
       - name: Verify generated visual corpus
         run: |
           node tools/official-reference/generate-stability-corpus.mjs
+          node --test tools/official-reference/visual-structure-corpus.test.mjs
           git diff --exit-code -- \
+            docs/assets/stability-report/visual-structure-corpus-metadata.json \
             mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/StabilityCorpus.kt \
             mermaid-debug-ui/src/commonMain/kotlin/com/swithun/cmpmermaid/debugui/generated/StabilityCorpus.kt
 

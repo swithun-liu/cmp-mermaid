@@ -24,8 +24,10 @@ and enforced by
   Wardley Map; 38 for Use Case; and the per-family counts shown
   below for the remaining families
 - 738/738 declared capability points covered
-- 8,448 additional visual-matrix sources: 256 per diagram type
-- 8,448 published Native/Official matrix pairs
+- 8,448 structurally distinct visual cases: 256 per diagram type
+- 8,448 published Native/Official structural pairs
+- 8,448 separate text/layout stress inputs derived from the 441 production
+  scenarios; no additional structural coverage is claimed for that corpus
 
 ## Coverage
 
@@ -35,7 +37,7 @@ and enforced by
 | Swimlanes | 13 | swimlane-beta header, all directions, top-level and default lanes, nested subgraphs, flowchart node shapes, cross-lane edges, edge labels and patterns, cycles, classes/styles, frontmatter config, line hops, accessibility, and Unicode |
 | Architecture | 13 | architecture-beta header, services, built-in icons, icon text, groups, nested groups, junctions, directional ports, arrowheads, bidirectional edges, edge labels, group-boundary modifiers, row/column alignment, frontmatter configuration, deterministic seed, accessibility, and Unicode |
 | C4 | 13 | all five C4 headers, people, systems, containers, components, external elements, database and queue shapes, nested boundaries, deployment nodes, standard/directional/back/bidirectional relations, dynamic indexes, element and relation styles, layout/frontmatter configuration, accessibility, named attributes, comments, and Unicode |
-| Railroad | 13 | Railroad IR, EBNF, ABNF, and PEG headers; terminals, non-terminals, sequences, choices, optionals, zero-or-more and one-or-more repetition, special nodes, ISO EBNF and exceptions, bounded ABNF repetition and numeric values, PEG predicates and any-character matching, comments, accessibility, frontmatter configuration, themes, Unicode, and entities |
+| Railroad | 18 | Railroad IR, EBNF, ABNF, and PEG headers; terminals, non-terminals, sequences, choices, optionals, zero-or-more and one-or-more repetition, special nodes, ISO EBNF and exceptions, bounded ABNF repetition and numeric values, PEG predicates and any-character matching, comments, accessibility, frontmatter configuration, themes, Unicode, and entities |
 | TreeView | 13 | treeView-beta header, indentation, standard and heavy box-drawing syntax, files, directories, quoted and bare labels, classes, highlights, descriptions, explicit/default/suppressed icons, filename and extension icon maps, frontmatter configuration, themes, accessibility, comments, Unicode, and entities |
 | Use Case | 18 | usecase-beta header, directions, actor variants and icons, business elements, stereotypes, ellipse and rectangle use cases, system and package boundaries, association markers and labels, minimum length, include/extend/generalization, edge IDs/classes/styles/animation, notes, JSON tables, classes, inline styles, frontmatter title reset and configuration, accessibility, comments, entities, Unicode, Markdown, responsive/intrinsic sizing, themes, theme variables, and color rotation |
 | Wardley Map | 13 | wardley-beta header, titles, size, anchors, components, coordinates, label offsets, inertia, build/buy/outsource/market sourcing, plain/dashed/directional/bidirectional dependencies, labels, evolution trends, custom stages and widths, pipelines, notes, annotations, accelerators/deaccelerators, accessibility, comments, entities, Unicode, themes, theme variables, and responsive sizing; caller configuration is covered separately because Mermaid.js 12.0.0 sanitizes `wardley-beta` source configuration |
@@ -85,56 +87,30 @@ also exports renderer manifests and checks semantic text, normalized element
 geometry, style categories, markers, clipping, overlap, paint-order occlusion,
 foreground masks, edges, colors, and review heatmaps.
 
-The large-scale visual matrix adds 256 unique sources per type by combining at
-least 13 complex production structures with visible text and layout-pressure
-profiles. All 8,448 sources render in the Native core test. The 7,936
-Native/Official pairs from the prior 31-family gate and the additional 512
-Wardley Map and ZenUML pairs pass the geometry gate.
-The original 12-family report
-used a legacy coarse gate that did not catch a visible Git Graph paint-order
-defect and is not a detail-parity pass by itself. All 33 families contribute
-8,448 Native/Official pairs accepted by the replacement detail gate:
-`8,141 automatic pass / 307 manually reviewed / 0 unresolved`. Twenty-four
-families contribute `6,144 pass / 0 review / 0 fail`. The remaining nine
-families account for the complete review queue: ER contributes
-`196 pass / 60 manually reviewed / 0 fail`; Requirement contributes
-`252 pass / 4 manually reviewed / 0 fail`; Git Graph contributes
-`235 pass / 21 manually reviewed / 0 fail`; Mindmap contributes
-`159 pass / 97 manually reviewed / 0 fail`; Pie contributes
-`255 pass / 1 manually reviewed / 0 fail`; XY Chart contributes
-`236 pass / 20 manually reviewed / 0 fail`; Venn contributes
-`216 automatic pass / 40 manually accepted / 0 unresolved`; Block
-contributes `252 automatic pass / 4 manually accepted / 0 unresolved`;
-Swimlanes contributes `196 automatic pass / 60 manually accepted / 0
-unresolved`.
-Journey, Sequence, and Event Modeling now normalize spatially equivalent text
-segments by their combined bounds. Use Case compares both render-object and
-expanded-primitive geometry counts. Treemap reports measured glyph bounds
-while preserving Mermaid's text anchors. All five families retain the
-position, size, clipping, overlap, paint-order, and raster gates.
-Requirement reviews are benign greedy cross-matches between duplicate
-relationship labels. Twenty Git Graph reviews are text-overlap threshold
-findings caused by browser/Compose text-bound differences; one is a
-paint-order occlusion-ratio threshold finding. Expected text, clipping, paint
-order, and raster checks pass. Mindmap reviews are CoSE-Bilkent branch
-rotation or mirror differences under remaining browser/Compose glyph-width
-and line-break perturbations after aligning the HTML label line height; all
-expected text, nodes, hierarchy edges, shapes, and colors are preserved. This
-systematic matrix broadens layout and text-pressure coverage. The Pie review
-is a text-overlap font-box threshold finding. XY Chart reviews are
-paint-order occlusion-ratio threshold findings on intentional chart layering.
-Venn reviews are two repeated
-text-overlap font-box patterns. All 40 were manually verified. Event Modeling
-title/payload representation is validated as equivalent between one Official
-`foreignObject` and two Native text elements. Block reviews are four
-paint-order occlusion ratio threshold findings with matching visible shapes,
-labels, edges, and markers. Swimlanes reviews contain only text-position
-findings along semantically equivalent orthogonal routes; all lanes, shapes,
-labels, markers, and endpoints were manually verified. The matrix is not
-counted as 8,448
-independent topologies. The prior separate randomized stress corpus
-remains Native-only robustness evidence and is not presented as Official
-parity.
+The large-scale structural matrix generates 256 structurally distinct cases
+per type. Its uniqueness signature uses the curated seed scenario, seed
+feature set, generated structural item count, and family-specific
+syntax/topology variant rather than labels or ordinals. All 8,448 cases render
+in the Native core test and have fresh Native/Official captures.
+
+The replacement detail gate reports
+`7,953 pass / 495 review / 0 fail`. Review findings are retained for text
+position, text overlap, raster mask, stroke pattern, element count, equivalent
+text segmentation/size, paint-order overlap ratio, and one Treemap text
+multiplicity difference. No expected-text loss, structural-manifest error, or
+clipping error was recorded. The geometry gate has 0 hard failures; four
+out-of-range ratios from three CoSE-Bilkent Mindmap cases remain review-only
+because their detail manifests match structurally. Fixed-input CoSE algorithm
+parity is covered separately, and final large-tree coordinate equality is not
+claimed.
+
+Machine-readable structural counts are published in
+[`visual-structure-corpus-metadata.json`](assets/stability-report/visual-structure-corpus-metadata.json).
+The independent text/layout stress corpus still derives 8,448 byte-distinct
+inputs from the 441 production scenarios and is accounted for in
+[`visual-stress-corpus-metadata.json`](assets/stability-report/visual-stress-corpus-metadata.json).
+It does not add structural coverage. The prior randomized stress corpus remains
+Native-only robustness evidence and is not presented as Official parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.
 Unsupported legal features must return `MermaidError.UnsupportedFeature`

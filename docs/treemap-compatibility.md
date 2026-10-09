@@ -41,11 +41,7 @@ colors closely enough that side-by-side review exposes no functional defect.
 - Production detail passed `13/13`. Manual contact-sheet review found matching
   hierarchy, rectangle geometry, labels, values, formats, styles, colors,
   clipping, and paint order.
-- The fresh 256-case matrix passed both detail and geometry gates `256/256`,
-  with width `1.033-1.076`, height `1.029-1.039`, and foreground ink
-  `0.945-1.077`. Native keeps Mermaid's section-label and value anchors while
-  exposing measured glyph widths in the manifest, eliminating layout-slot
-  false positives. All 16 contact sheets were manually reviewed.
+- The fresh 256-case structural Native/Official audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `1.033-1.045`, height `1.034-1.047`, and foreground ink `1.067-1.093`.
 - Raw
   [production detail](assets/stability-report/treemap-production-detail.json),
   [production geometry](assets/stability-report/treemap-production-geometry.json),

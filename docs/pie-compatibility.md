@@ -44,6 +44,7 @@ would change the feature's meaning.
 - 13 independent production scenarios and 256 deterministic same-source
   Native/Official matrix cases exercise complex structures under visible text
   and layout pressure.
+- The fresh 256-case structural Native/Official audit reports `241 pass / 15 review / 0 fail`; geometry has 0 hard failures with width `1.011-1.020`, height `0.999-1.014`, and foreground ink `1.002-1.039`.
 - Parser and layout tests cover quoting, escapes, comments, metadata,
   duplicates, negative and zero values, one-percent filtering, input order,
   donut geometry, static highlighting, all five legend positions, themes,

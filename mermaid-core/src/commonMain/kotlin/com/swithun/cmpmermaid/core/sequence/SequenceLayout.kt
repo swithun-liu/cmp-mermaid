@@ -307,7 +307,15 @@ internal class SequenceLayout {
                         },
                     )
                     val messageTop = vertical + MESSAGE_TOP_PADDING
-                    val lineY = messageTop + metrics.height + MESSAGE_LINE_GAP
+                    // Mermaid.js 12.0.0:
+                    // sequenceRenderer.ts -> boundMessage.
+                    // The renderer advances by the first line height and then
+                    // by the complete text height plus the box margin.
+                    val lineCount = text.lineSequence().count().coerceAtLeast(1)
+                    val lineHeight = metrics.height / lineCount
+                    val totalOffset =
+                        metrics.height - MESSAGE_TOP_PADDING + BOX_MARGIN
+                    val lineY = messageTop + lineHeight + totalOffset
                     val activeFrom = activationStarts[from.source.id].orEmpty().size
                     val activeTo = activationStarts[to.source.id].orEmpty().size
                     val created = db.getCreatedActors()[to.source.id] == messageIndex
@@ -2054,7 +2062,6 @@ internal class SequenceLayout {
         const val LABEL_BOX_WIDTH = 50f
         const val LABEL_BOX_HEIGHT = 20f
         const val MESSAGE_TOP_PADDING = 10f
-        const val MESSAGE_LINE_GAP = 10f
         const val SELF_MESSAGE_WIDTH = 60f
         const val SELF_MESSAGE_HEIGHT = 30f
         const val ACTIVATION_WIDTH = 10f

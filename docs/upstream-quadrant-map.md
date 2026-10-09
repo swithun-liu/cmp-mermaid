@@ -58,9 +58,8 @@ execute Mermaid.js and does not require a WebView.
   checks finite SceneGraph geometry.
 - The production detail audit passes all 13 independent Quadrant cases.
 - The large-scale matrix contains 256 unique same-source Native/Official
-  Quadrant cases. At a shared `1200 x 900` viewport, all 256 pass the
-  manifest/raster detail audit with no review queue and all 256 pass the
-  geometry gate.
+  Quadrant cases. The fresh result is `253 pass / 3 review / 0 fail`, with
+  0 geometry hard failures at the shared `1200 x 900` viewport.
 - Sixteen contact sheets cover the complete matrix. Representative first,
   middle, and final sheets were inspected for clipping, overlap, paint order,
   geometry, color, and missing content.

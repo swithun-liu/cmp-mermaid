@@ -223,6 +223,26 @@
         zenUmlRegistered = true;
       };
 
+      const deterministicVennRandom = () => {
+        let state = BigInt.asIntN(64, -7046029254386353131n);
+        return () => {
+          state = BigInt.asIntN(
+            64,
+            state ^ BigInt.asIntN(64, state << 13n),
+          );
+          state = BigInt.asIntN(64, state ^ (BigInt.asUintN(64, state) >> 7n));
+          state = BigInt.asIntN(
+            64,
+            state ^ BigInt.asIntN(64, state << 17n),
+          );
+          const positive = BigInt.asUintN(64, state) >> 11n;
+          return Number(positive) / 9007199254740992;
+        };
+      };
+
+      const isVennSource = (source) =>
+        /(?:^|\n)\s*venn-beta(?:\s|$)/.test(source);
+
       const normalizeViewBox = (svg, backgroundColor) => {
         const original = svg.viewBox.baseVal;
         const wardleyBackground = svg.querySelector(".wardley-background");
@@ -281,6 +301,12 @@
         diagram.style.padding = "";
         diagram.textContent = "Rendering...";
 
+        const originalRandom = Math.random;
+        if (isVennSource(source)) {
+          // @upsetjs/venn.js 2.0.0: src/layout.js ->
+          // constrainedMDSLayout. Match the deterministic KMP oracle seed.
+          Math.random = deterministicVennRandom();
+        }
         try {
           registerOptionalLayouts();
           await registerOptionalDiagrams();
@@ -353,6 +379,8 @@
           }
           window.CmpMermaidBridge?.onRenderError(message);
           notifyParent(`error:${message}`);
+        } finally {
+          Math.random = originalRandom;
         }
       };
     })();

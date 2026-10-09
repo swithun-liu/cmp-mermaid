@@ -30,6 +30,16 @@ internal data class CoseLayoutResult(
     val nodeCenters: Map<String, ScenePoint>,
 )
 
+internal data class CoseLayoutTraceSnapshot(
+    val iteration: Int,
+    val nodeCenters: Map<String, ScenePoint>,
+)
+
+internal data class CoseLayoutTraceRequest(
+    val iterations: Set<Int>,
+    val onSnapshot: (CoseLayoutTraceSnapshot) -> Unit,
+)
+
 /**
  * Flat-forest translation of the exact CoSE path selected by Mermaid 12.0.0
  * Mindmap:
@@ -46,6 +56,7 @@ internal object CoseBilkentLayout {
     fun layout(
         nodeInputs: List<CoseNodeInput>,
         edgeInputs: List<CoseEdgeInput>,
+        trace: CoseLayoutTraceRequest? = null,
     ): GMResult<CoseLayoutResult, MermaidError> {
         if (nodeInputs.isEmpty()) {
             return GMResult.Err(MermaidError.Layout("CoSE-Bilkent requires at least one node"))
@@ -103,7 +114,8 @@ internal object CoseBilkentLayout {
             )
         }
         positionNodesRadially(forest)
-        runSpringEmbedder(nodes.values.toList(), edges)
+        emitTrace(nodes.values, iteration = 0, trace)
+        runSpringEmbedder(nodes.values.toList(), edges, trace)
 
         return GMResult.Ok(
             CoseLayoutResult(
@@ -327,6 +339,7 @@ internal object CoseBilkentLayout {
     private fun runSpringEmbedder(
         nodes: List<Node>,
         edges: List<Edge>,
+        trace: CoseLayoutTraceRequest?,
     ) {
         var totalIterations = 0
         var totalDisplacement = 0.0
@@ -358,6 +371,7 @@ internal object CoseBilkentLayout {
         while (true) {
             totalIterations += 1
             if (totalIterations == maximumIterations) {
+                emitTrace(nodes, totalIterations, trace)
                 break
             }
             if (totalIterations % CONVERGENCE_CHECK_PERIOD == 0) {
@@ -366,6 +380,7 @@ internal object CoseBilkentLayout {
                 val converged = totalDisplacement < totalDisplacementThreshold
                 oldTotalDisplacement = totalDisplacement
                 if (converged || oscillating) {
+                    emitTrace(nodes, totalIterations, trace)
                     break
                 }
                 coolingCycle += 1
@@ -421,7 +436,33 @@ internal object CoseBilkentLayout {
                 totalDisplacement += abs(dx) + abs(dy)
                 node.resetForces()
             }
+            emitTrace(nodes, totalIterations, trace)
         }
+    }
+
+    /**
+     * Test-only checkpoint surface for comparing the translated iteration
+     * path with cose-base 1.0.3 CoSELayout.positionNodesRadially / tick.
+     */
+    private fun emitTrace(
+        nodes: Collection<Node>,
+        iteration: Int,
+        trace: CoseLayoutTraceRequest?,
+    ) {
+        if (trace == null || iteration !in trace.iterations) {
+            return
+        }
+        trace.onSnapshot(
+            CoseLayoutTraceSnapshot(
+                iteration = iteration,
+                nodeCenters = nodes.associate { node ->
+                    node.id to ScenePoint(
+                        node.rect.centerX.toFloat(),
+                        node.rect.centerY.toFloat(),
+                    )
+                },
+            ),
+        )
     }
 
     private fun applySpringForce(edge: Edge) {
@@ -629,37 +670,177 @@ internal object CoseBilkentLayout {
         rectA: Rect,
         rectB: Rect,
     ): ClippedLine {
+        // layout-base 1.0.2:
+        // src/util/IGeometry.js -> IGeometry.getIntersection2
+        val centerAX = rectA.centerX
+        val centerAY = rectA.centerY
+        val centerBX = rectB.centerX
+        val centerBY = rectB.centerY
         if (rectA.intersects(rectB)) {
             return ClippedLine(
-                a = PointD(rectA.centerX, rectA.centerY),
-                b = PointD(rectB.centerX, rectB.centerY),
+                a = PointD(centerAX, centerAY),
+                b = PointD(centerBX, centerBY),
                 overlap = true,
             )
         }
-        val dx = rectB.centerX - rectA.centerX
-        val dy = rectB.centerY - rectA.centerY
-        fun boundary(rect: Rect, directionX: Double, directionY: Double): PointD {
-            val xScale = if (directionX == 0.0) {
-                Double.POSITIVE_INFINITY
+
+        if (centerAX == centerBX) {
+            return if (centerAY > centerBY) {
+                ClippedLine(
+                    a = PointD(centerAX, rectA.y),
+                    b = PointD(centerBX, rectB.bottom),
+                    overlap = false,
+                )
             } else {
-                rect.width / 2.0 / abs(directionX)
+                ClippedLine(
+                    a = PointD(centerAX, rectA.bottom),
+                    b = PointD(centerBX, rectB.y),
+                    overlap = false,
+                )
             }
-            val yScale = if (directionY == 0.0) {
-                Double.POSITIVE_INFINITY
-            } else {
-                rect.height / 2.0 / abs(directionY)
-            }
-            val scale = min(xScale, yScale)
-            return PointD(
-                x = rect.centerX + directionX * scale,
-                y = rect.centerY + directionY * scale,
-            )
         }
+        if (centerAY == centerBY) {
+            return if (centerAX > centerBX) {
+                ClippedLine(
+                    a = PointD(rectA.x, centerAY),
+                    b = PointD(rectB.right, centerBY),
+                    overlap = false,
+                )
+            } else {
+                ClippedLine(
+                    a = PointD(rectA.right, centerAY),
+                    b = PointD(rectB.x, centerBY),
+                    overlap = false,
+                )
+            }
+        }
+
+        val slopeA = rectA.height / rectA.width
+        val slopeB = rectB.height / rectB.width
+        val slopePrime = (centerBY - centerAY) / (centerBX - centerAX)
+        var clipAX = 0.0
+        var clipAY = 0.0
+        var clipBX = 0.0
+        var clipBY = 0.0
+        var clipAFound = false
+        var clipBFound = false
+
+        if (-slopeA == slopePrime) {
+            if (centerAX > centerBX) {
+                clipAX = rectA.x
+                clipAY = rectA.bottom
+            } else {
+                clipAX = rectA.right
+                clipAY = rectA.y
+            }
+            clipAFound = true
+        } else if (slopeA == slopePrime) {
+            if (centerAX > centerBX) {
+                clipAX = rectA.x
+                clipAY = rectA.y
+            } else {
+                clipAX = rectA.right
+                clipAY = rectA.bottom
+            }
+            clipAFound = true
+        }
+
+        if (-slopeB == slopePrime) {
+            if (centerBX > centerAX) {
+                clipBX = rectB.x
+                clipBY = rectB.bottom
+            } else {
+                clipBX = rectB.right
+                clipBY = rectB.y
+            }
+            clipBFound = true
+        } else if (slopeB == slopePrime) {
+            if (centerBX > centerAX) {
+                clipBX = rectB.x
+                clipBY = rectB.y
+            } else {
+                clipBX = rectB.right
+                clipBY = rectB.bottom
+            }
+            clipBFound = true
+        }
+
+        val cardinalDirectionA: Int
+        val cardinalDirectionB: Int
+        if (centerAX > centerBX) {
+            if (centerAY > centerBY) {
+                cardinalDirectionA = cardinalDirection(slopeA, slopePrime, 4)
+                cardinalDirectionB = cardinalDirection(slopeB, slopePrime, 2)
+            } else {
+                cardinalDirectionA = cardinalDirection(-slopeA, slopePrime, 3)
+                cardinalDirectionB = cardinalDirection(-slopeB, slopePrime, 1)
+            }
+        } else if (centerAY > centerBY) {
+            cardinalDirectionA = cardinalDirection(-slopeA, slopePrime, 1)
+            cardinalDirectionB = cardinalDirection(-slopeB, slopePrime, 3)
+        } else {
+            cardinalDirectionA = cardinalDirection(slopeA, slopePrime, 2)
+            cardinalDirectionB = cardinalDirection(slopeB, slopePrime, 4)
+        }
+
+        if (!clipAFound) {
+            when (cardinalDirectionA) {
+                1 -> {
+                    clipAX = centerAX + (-rectA.height / 2.0) / slopePrime
+                    clipAY = rectA.y
+                }
+                2 -> {
+                    clipAX = rectA.right
+                    clipAY = centerAY + rectA.width / 2.0 * slopePrime
+                }
+                3 -> {
+                    clipAX = centerAX + rectA.height / 2.0 / slopePrime
+                    clipAY = rectA.bottom
+                }
+                else -> {
+                    clipAX = rectA.x
+                    clipAY = centerAY + (-rectA.width / 2.0) * slopePrime
+                }
+            }
+        }
+        if (!clipBFound) {
+            when (cardinalDirectionB) {
+                1 -> {
+                    clipBX = centerBX + (-rectB.height / 2.0) / slopePrime
+                    clipBY = rectB.y
+                }
+                2 -> {
+                    clipBX = rectB.right
+                    clipBY = centerBY + rectB.width / 2.0 * slopePrime
+                }
+                3 -> {
+                    clipBX = centerBX + rectB.height / 2.0 / slopePrime
+                    clipBY = rectB.bottom
+                }
+                else -> {
+                    clipBX = rectB.x
+                    clipBY = centerBY + (-rectB.width / 2.0) * slopePrime
+                }
+            }
+        }
+
         return ClippedLine(
-            a = boundary(rectA, dx, dy),
-            b = boundary(rectB, -dx, -dy),
+            a = PointD(clipAX, clipAY),
+            b = PointD(clipBX, clipBY),
             overlap = false,
         )
+    }
+
+    private fun cardinalDirection(
+        slope: Double,
+        slopePrime: Double,
+        line: Int,
+    ): Int {
+        return if (slope > slopePrime) {
+            line
+        } else {
+            1 + line % 4
+        }
     }
 
     private fun sign(value: Double): Double = when {

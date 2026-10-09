@@ -58,30 +58,20 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   [detail](assets/stability-report/mindmap-production-detail.json) and
   [geometry](assets/stability-report/mindmap-production-geometry.json) reports
   preserve the audit results.
-- The refreshed 256-case Native/Official audit accepted all pairs:
-  `159 pass / 97 manually reviewed / 0 fail`; geometry ratios are width
-  `0.896-1.226`, height `0.967-1.150`, and foreground ink `0.774-1.313`.
-  Aligning Native Markdown labels with Mermaid's HTML `line-height: 1.5`
-  increased automatic passes by six and reduced raster-mask findings from 69
-  to 48. The remaining reviews are CoSE-Bilkent branch rotations or mirrors
-  under unavoidable browser/Compose glyph-width and line-break perturbations.
-  Across 3,624 matched single-line labels, width ratios span `0.888-1.180`
-  around a `1.011` median, so a uniform width correction would regress labels
-  on the opposite side of the distribution. The browser uses Trebuchet MS
-  where available, while the portable renderer maps that CSS family to its
-  bundled Arimo-compatible font and explicit CJK fallbacks.
-  Every expected node, label, hierarchy edge, shape, and section color is
-  preserved, with no clipping, overlap, or paint-order mismatch. All 16
-  refreshed contact sheets were manually reviewed. The machine-readable
-  [detail](assets/stability-report/mindmap-visual-parity-detail.json) and
-  [geometry](assets/stability-report/mindmap-visual-parity-geometry.json)
-  reports preserve the complete audit evidence.
+- The fresh 256-case structural Native/Official audit reports `161 pass / 95 review / 0 fail`; geometry has 0 hard failures with width `0.878-1.464`, height `0.798-1.442`, and foreground ink `0.745-1.336`. Four CoSE-Bilkent width/height ratios remain review-only; final large-tree coordinate identity is not claimed.
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
 - The CoSE-Bilkent algorithm gate uses identical fixed node dimensions and
-  edges on official JavaScript and Kotlin implementations, then compares
-  translation-normalized node centers for a minimal tree and a branched tree.
-  Text measurement and raster output are intentionally outside this gate.
+  edges on official JavaScript and Kotlin implementations. A minimal tree and
+  a branched tree require final relative-coordinate identity. A 19-node mixed
+  tree matches radial initialization and iterations through 20 within `0.001`,
+  then checks deterministic Kotlin replay because a confirmed one-ULP
+  V8/JVM `sin` difference makes later force iterations chaotic. Text
+  measurement and raster output are intentionally outside this gate.
+- Geometry thresholds are unchanged. A CoSE-Bilkent ratio exceedance becomes
+  an explicit review only after the Native and Official detail manifests pass
+  structural comparison. Blank output, missing content, structural mismatch,
+  and non-CoSE ratio exceedances remain hard failures.
 - All 11 built-in themes are rendered by the shared production theme matrix.
 
 ## Reference Workflow

@@ -35,14 +35,13 @@ that side-by-side review exposes no functional defect.
 - 256 deterministic randomized Native inputs exercise two-to-four-set
   topology, pairwise and multi-set intersections, text, styles, sizing,
   themes, finite geometry, and deterministic replay.
+- Constrained-MDS restarts use a fixed xorshift64 stream in Kotlin and in the
+  isolated Official `venn-beta` renderer. The first five generated doubles are
+  locked by an oracle test; the Official renderer restores `Math.random` after
+  every render.
 - The production Native/Official geometry audit accepted all 13 pairs: width
   `1.014-1.022`, height `1.010-1.027`, and foreground ink `1.028-1.044`.
-- The 256-case matrix geometry audit passed every pair: width `0.995-1.026`,
-  height `0.990-1.022`, and foreground ink `0.989-1.048`.
-- The replacement detail audit produced `216 pass / 40 review / 0 fail`.
-  Manual review accepted all 40 review cases with 0 unresolved defects. The
-  reviews are repeated text-overlap threshold findings for two known label
-  pairs.
+- The fresh 256-case structural Native/Official audit reports `143 pass / 113 review / 0 fail`; geometry has 0 hard failures with width `1.007-1.147`, height `0.967-1.081`, and foreground ink `0.784-1.406`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for circle topology, overlap size, labels, text placement, styles,
   clipping, and paint order. Raw [production detail](assets/stability-report/venn-production-detail.json), [production geometry](assets/stability-report/venn-production-geometry.json), [matrix detail](assets/stability-report/venn-visual-parity-detail.json), and [matrix geometry](assets/stability-report/venn-visual-parity-geometry.json) reports are published with the evidence.

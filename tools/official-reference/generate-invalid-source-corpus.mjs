@@ -183,9 +183,10 @@ private data class InvalidSourceMutation(
  * packages/mermaid/src/mermaid.ts -> parse
  * packages/mermaid/src/mermaidAPI.ts -> render
  *
- * Each case starts from a distinct valid visual-parity source. The mutation is
- * intentionally not assumed to be rejected: Mermaid.js is the accept/error
- * oracle, and Native must match that outcome without throwing.
+ * Each mutation starts from a byte-distinct valid text/layout stress sample.
+ * Those bases reuse the production structural scenarios and are not additional
+ * semantic coverage. Mermaid.js remains the accept/error oracle, and Native
+ * must match that outcome without throwing.
  */
 internal const val invalidSourceCasesPerDiagram: Int = ${casesPerKind}
 internal const val invalidSourceCasesPerMutation: Int = ${casesPerMutation}
@@ -201,7 +202,7 @@ ${mutationEntries}
 internal val invalidSourceCorpusCases: List<InvalidSourceCorpusCase> by lazy {
     buildList {
         invalidSourceDiagrams.forEach { diagram ->
-            val baseCases = visualParityCorpusCases.filter { case ->
+            val baseCases = visualStressCorpusSamples.filter { case ->
                 case.diagramId == diagram.id
             }
             check(baseCases.size == invalidSourceCasesPerDiagram)

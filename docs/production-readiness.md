@@ -25,9 +25,9 @@ rated Stable. A successful build alone is not sufficient.
   Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block,
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
-  (`8,448/8,448` accepted;
-  `8,141 automatic pass / 307 manually reviewed / 0 unresolved`;
-  every listed-family geometry gate passing)
+  (`8,448/8,448` structurally distinct cases processed;
+  `7,953 pass / 495 review / 0 fail`;
+  geometry has 0 hard failures and 4 Mindmap CoSE reviews)
 - Pending replacement detail gates: none
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -44,11 +44,11 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | All 33 families have 8,448/8,448 accepted detail and geometry pairs across 528 manually reviewed contact sheets | Passing |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | 441 independent production pairs plus 8,448/8,448 structurally distinct visual pairs; 528 structural contact sheets regenerated; 0 detail or geometry hard failures | Passing |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 738/738 points across all 33 families | Passing |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 441-case corpus equality test | Passing |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 33 by 11 matrix: 363/363 renders | Passing |
-| Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 8,448 visual-matrix Native renders pass; the separate 7,936-case randomized stress baseline remains published | Passing |
+| Parser/layout robustness | Systematic matrix and deterministic randomized corpus pass resource limits | 8,448 structural visual cases render; 8,448 derived text/layout stress inputs and the separate 7,936-case randomized baseline remain independently tracked | Passing |
 | Source-mutation outcome parity | AI-like mutations match Mermaid.js 12.0.0 acceptance/rejection; rejected inputs retain typed diagnostics and the standard error UI | 8,448/8,448 outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; exact messages matched for 1,798/6,292 paired errors and are tracked separately | Passing |
 | Core throughput | 2,075 warmed production renders complete within 45s and P95 is at most 500ms | Local baseline: 674ms total, 1ms P95 | Passing; enforced by JVM test |
 | Core retained heap | The same soak retains at most 64 MiB after forced GC | Local baseline: 63,968 bytes | Passing; enforced by JVM test |
@@ -76,12 +76,14 @@ copies of the documentation gallery. CI must:
    differences that automated metrics cannot prove.
 
 The regular Quality Gate runs the 441 independent cases on every push and pull
-request. The weekly/manual Full Visual Parity workflow now defines 256 unique
-sources per diagram type, or 8,448 Native/Official pairs total. The published
-accepted evidence covers all 8,448 pairs. Those matrix cases are
-deterministic combinations of at least 13 complex structural seeds per type
-and visible text/layout-pressure profiles; they are not represented as 256
-unrelated topologies per type.
+request. The weekly/manual Full Visual Parity workflow defines 256
+structurally distinct sources per diagram type, or 8,448 Native/Official pairs
+total. Structural uniqueness is enforced from curated seeds, seed feature
+sets, generated item counts, and family-specific syntax/topology profiles.
+Machine-readable accounting is published in
+[`visual-structure-corpus-metadata.json`](assets/stability-report/visual-structure-corpus-metadata.json).
+The separate 8,448-input text/layout stress corpus remains documented in
+[`visual-stress-corpus-metadata.json`](assets/stability-report/visual-stress-corpus-metadata.json).
 
 ## Performance Gate
 

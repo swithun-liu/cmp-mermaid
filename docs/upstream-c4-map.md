@@ -68,11 +68,12 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   attributes, metadata, nested boundaries, styles, dynamic indexes,
   configuration, malformed input, endpoint validation, and determinism.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
+  256 structurally distinct same-source cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`. Geometry counts compare both
   render objects and expanded primitives for SVG database and queue subpaths.
-- Matrix geometry and detail pass `256/256`, with
-  `256 pass / 0 review / 0 fail`.
+- Structural geometry has 0 hard failures; detail reports
+  `250 pass / 6 review / 0 fail`. The reviews are text-overlap
+  representation differences.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed with no unresolved shape, boundary, relation, label, clipping,
   overlap, or paint-order defect.

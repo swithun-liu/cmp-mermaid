@@ -26,11 +26,10 @@ Supported behavior includes:
 - 18 independent production scenarios cover 38/38 declared capability points.
 - Production geometry: 18/18 passed.
 - Production detail: 18/18 passed.
-- Visual matrix: 256/256 Native/Official pairs passed geometry; width
-  `1.036-1.160`, height `0.971-1.115`, and foreground ink `1.043-1.316`.
+- The fresh 256-case structural Native/Official audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `0.984-1.150`, height `0.969-1.117`, and foreground ink `0.910-1.405`.
 - Visual detail: 256/256 passed.
 - All 16 visual-matrix contact sheets were manually reviewed.
-- JVM core and Compose tests pass as part of the 859-test suite.
+- JVM core and Compose tests pass as part of the 883-test suite.
 
 The detail audit compares both render-object and expanded-primitive geometry
 counts, preserving review when both representations diverge. Spatially

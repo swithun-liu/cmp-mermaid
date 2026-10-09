@@ -37,7 +37,7 @@ export const kinds = [
   'zenuml',
 ];
 
-export const casesPerKind = 256;
+export const stressSamplesPerKind = 256;
 
 export const labelProfiles = [
   'A',
@@ -62,16 +62,39 @@ export const labelProfiles = [
   'End To End Production Compatibility Verification Evidence Label',
 ];
 
-export const cases = kinds.flatMap((kind) => buildKindCases(kind));
+export const samples = kinds.flatMap((kind) => buildKindSamples(kind));
+
+// Compatibility alias for capture tools that still use the historical
+// "visual-parity" corpus name. These are stress samples, not independent cases.
+export const cases = samples;
+
+export const corpusSummary = Object.freeze({
+  diagramFamilyCount: kinds.length,
+  structuralScenarioCount: productionCases.length,
+  stressSampleCount: samples.length,
+  stressSamplesPerKind,
+  availableTextLayoutProfileCount: labelProfiles.length,
+  countsByKind: Object.freeze(kinds.map((kind) => {
+    const kindSamples = samples.filter((entry) => entry.kind === kind);
+    return Object.freeze({
+      kind,
+      structuralScenarioCount:
+        new Set(kindSamples.map((entry) => entry.structuralScenarioId)).size,
+      stressSampleCount: kindSamples.length,
+      appliedTextLayoutProfileCount:
+        new Set(kindSamples.map((entry) => entry.textLayoutProfileId)).size,
+    });
+  })),
+});
 
 validateCorpus();
 
-function buildKindCases(kind) {
+function buildKindSamples(kind) {
   const seeds = productionCases.filter((entry) => entry.kind === kind);
   if (seeds.length < 13) {
     throw new Error(`Expected at least 13 ${kind} production seeds, found ${seeds.length}`);
   }
-  return Array.from({ length: casesPerKind }, (_, index) => {
+  return Array.from({ length: stressSamplesPerKind }, (_, index) => {
     const seed = seeds[index % seeds.length];
     const profileIndex = Math.floor(index / seeds.length);
     const profileLabel = labelProfiles[profileIndex];
@@ -93,8 +116,9 @@ function buildKindCases(kind) {
       kind,
       title: `${seed.title} - profile ${String(profileIndex + 1).padStart(2, '0')}`,
       scenario:
-        `Structural seed ${seed.id}; visible label profile ${profileIndex + 1}; ` +
-        `matrix case ${ordinal} of ${casesPerKind}.`,
+        `Text/layout stress sample ${ordinal} of ${stressSamplesPerKind}; ` +
+        `derived from structural scenario ${seed.id}; visible label profile ` +
+        `${profileIndex + 1}. This sample does not add structural coverage.`,
       layout: seed.layout ?? 'dagre',
       aspectRatio: seed.aspectRatio,
       features: [
@@ -103,6 +127,9 @@ function buildKindCases(kind) {
         `label-profile:${profileIndex + 1}`,
       ],
       expectedTexts: [...(seed.expectedTexts ?? []), visibleLabel],
+      coverageRole: 'text-layout-stress',
+      structuralScenarioId: seed.id,
+      textLayoutProfileId: `label-${String(profileIndex + 1).padStart(2, '0')}`,
       seedId: seed.id,
       profileId: `label-${String(profileIndex + 1).padStart(2, '0')}`,
       source,
@@ -423,28 +450,55 @@ function replaceOrInsertVennTitle(source, suffix) {
 function validateCorpus() {
   const ids = new Set();
   const sources = new Set();
-  if (cases.length !== kinds.length * casesPerKind) {
-    throw new Error(`Expected ${kinds.length * casesPerKind} cases, found ${cases.length}`);
+  if (samples.length !== kinds.length * stressSamplesPerKind) {
+    throw new Error(
+      `Expected ${kinds.length * stressSamplesPerKind} stress samples, ` +
+        `found ${samples.length}`,
+    );
   }
   for (const kind of kinds) {
-    const kindCases = cases.filter((entry) => entry.kind === kind);
-    if (kindCases.length !== casesPerKind) {
-      throw new Error(`Expected ${casesPerKind} ${kind} cases, found ${kindCases.length}`);
+    const kindSamples = samples.filter((entry) => entry.kind === kind);
+    if (kindSamples.length !== stressSamplesPerKind) {
+      throw new Error(
+        `Expected ${stressSamplesPerKind} ${kind} stress samples, ` +
+          `found ${kindSamples.length}`,
+      );
     }
-    const seedCount = new Set(kindCases.map((entry) => entry.seedId)).size;
-    if (seedCount < 13) {
-      throw new Error(`${kind} matrix only has ${seedCount} structural seeds`);
+    const expectedStructuralScenarioIds = new Set(
+      productionCases
+        .filter((entry) => entry.kind === kind)
+        .map((entry) => entry.id),
+    );
+    const actualStructuralScenarioIds = new Set(
+      kindSamples.map((entry) => entry.structuralScenarioId),
+    );
+    if (
+      actualStructuralScenarioIds.size !== expectedStructuralScenarioIds.size ||
+      [...expectedStructuralScenarioIds].some(
+        (id) => !actualStructuralScenarioIds.has(id),
+      )
+    ) {
+      throw new Error(
+        `${kind} stress matrix does not cover every structural scenario`,
+      );
     }
   }
-  for (const entry of cases) {
+  for (const entry of samples) {
     if (!/^parity_[a-z0-9]+_\d{3}$/.test(entry.id)) {
-      throw new Error(`Invalid visual parity id: ${entry.id}`);
+      throw new Error(`Invalid visual stress sample id: ${entry.id}`);
     }
     if (ids.has(entry.id)) {
-      throw new Error(`Duplicate visual parity id: ${entry.id}`);
+      throw new Error(`Duplicate visual stress sample id: ${entry.id}`);
     }
     if (sources.has(entry.source)) {
-      throw new Error(`Duplicate visual parity source: ${entry.id}`);
+      throw new Error(`Duplicate visual stress sample source: ${entry.id}`);
+    }
+    if (
+      entry.coverageRole !== 'text-layout-stress' ||
+      entry.structuralScenarioId !== entry.seedId ||
+      entry.textLayoutProfileId !== entry.profileId
+    ) {
+      throw new Error(`Invalid visual stress metadata: ${entry.id}`);
     }
     if (!entry.source.includes(entry.expectedTexts.at(-1))) {
       throw new Error(`${entry.id} is missing its visible profile label`);

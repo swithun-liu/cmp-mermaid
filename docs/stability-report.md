@@ -10,8 +10,9 @@
 
 This report records published visual evidence for all 33 CMP Mermaid families.
 The evidence is deliberately separate from the demo gallery and distinguishes
-independent production scenarios, systematic visual-matrix variants, and
-Native-only randomized stress inputs.
+441 hand-authored production scenarios, 8,448 structurally distinct visual
+cases, 8,448 derived text/layout stress inputs, and Native-only randomized
+stress inputs.
 
 ## Decision
 
@@ -22,17 +23,18 @@ Native-only randomized stress inputs.
 | Implemented families | 33/33; all family gates passing |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
-| Large-scale visual matrix | 8,448 Native/Official evidence pairs |
+| Structural visual matrix | 8,448 structurally distinct Native/Official pairs: 256 per family |
+| Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; no additional structural coverage |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; all 6,292 Native rejections were `CONTENT_ERROR`; 16,896 screenshots; 0 crashes or timeouts |
-| Native core render results | 441 independent plus 8,448 matrix cases passed, 0 failed |
-| Web Native/Official captures | 16,896 matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
-| Visual evidence review | 528 replacement-gate sheets plus 528 freshly generated source-mutation sheets across all 33 families; all source-mutation sheets decoded and passed full-montage review |
-| Replacement detail audit | 8,448/8,448 matrix pairs accepted: 8,141 pass plus 307 manually reviewed; production 425 pass plus 16 manually reviewed |
-| Automated visual geometry | 8,448/8,448 matrix pairs and 441/441 independent pairs passed |
+| Native core render results | 441 production scenarios and all 8,448 structural visual cases render successfully; the text/layout stress inputs are tracked separately |
+| Web Native/Official captures | 16,896 structural-matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
+| Visual evidence | 528 freshly generated structural-matrix sheets plus 528 source-mutation sheets across all 33 families |
+| Structural detail audit | 8,448/8,448 processed: 7,953 pass, 495 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 structural pairs have 0 hard failures; 4 CoSE ratio findings remain in the Mindmap review queue |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | 859 passed, 0 failed |
+| JVM tests | 883 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -41,18 +43,20 @@ Native-only randomized stress inputs.
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
 **Current conclusion:** all 33 families pass the Native core, determinism,
-theme, replacement detail, geometry, and manual contact-sheet gates. The
+theme, structural detail, geometry, and contact-sheet generation gates. The
 supported Mermaid `12.0.0` contract is rated **Stable**.
 
 ## AI-Like Source-Mutation Safety Gate
 
-An independent corpus starts from 256 distinct valid bases for every supported
-diagram family and applies 16 mutation classes, with 16 variants per class.
+This mutation corpus starts from 256 byte-distinct valid stress samples for
+every supported diagram family and applies 16 mutation classes, with 16
+variants per class. The bases reuse the 441 structural scenarios, so this gate
+does not add semantic coverage.
 These 8,448 AI-like sources cover declaration typos, response wrappers, mixed
 syntax, truncation, omission, line-break loss, delimiter and operator damage,
 punctuation substitution, and token splitting. Mermaid.js `12.0.0` is the
 accept/error oracle. Every generated source is sent unchanged to CMP Native and
-the pinned Official renderer. All 8,448 cases passed:
+the pinned Official renderer. All 8,448 mutations passed:
 
 - Official accepted 2,156 mutations and rejected 6,292; Native matched every
   accept/reject outcome;
@@ -73,229 +77,73 @@ both outcomes, Native error type, and both error messages. This gate is
 intentionally separate from the 8,448 legal-source visual matrix and does not
 change its counts.
 
-## Completed Replacement Gate
+## Completed Structural Visual Gate
 
-All 33 families have completed the replacement visual gate. Each
-has 256 unique same-source Native/Official pairs, a 256/256 geometry result,
-and 16 paged contact sheets. The accepted replacement total is
-8,448/8,448 pairs across 528 manually reviewed sheets:
-`8,141 automatic pass / 307 manually reviewed / 0 unresolved`. Review
-findings are limited to documented representation thresholds:
+All 33 families have completed the structural visual gate. Each has 256
+structurally distinct same-source Native/Official pairs, a 256-case geometry
+result, and 16 paged contact sheets. The fresh total is:
+`7,953 pass / 495 review / 0 fail`.
 
-- text position: ER 60, Mindmap 97, Requirement 4, and Swimlanes 60;
-- text overlap: Git Graph 20, Pie 1, and Venn 40;
-- raster mask: 48 of the Mindmap text-position reviews;
-- paint-order occlusion ratio: Block 4, Git Graph 1, and XY Chart 20.
+Review findings are retained as explicit representation differences:
 
-These categories may co-occur within one case. Manual review confirmed that
-all reviewed cases preserve expected text, hierarchy, shapes, colors, edges,
-clipping, and visible paint order.
+- text position: 250 cases;
+- text overlap: 140 cases;
+- raster mask: 79 cases;
+- stroke pattern: 30 cases;
+- element count: 30 cases;
+- text segmentation and text size: 25 cases each;
+- paint-order occlusion ratio: 3 cases;
+- text multiplicity: 1 case.
+
+These categories may co-occur within one case. No expected-text loss,
+structural-manifest error, clipping error, or geometry hard failure was
+recorded. The geometry queue contains four ratio findings from three
+CoSE-Bilkent Mindmap cases; fixed-input algorithm parity is tested separately,
+so final large-tree coordinates are not claimed to be identical.
 
 | Family | Pass | Review | Width ratio | Height ratio | Ink ratio |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Flowchart | 256 | 0 | `1.021-1.083` | `0.965-1.048` | `0.957-1.187` |
-| XY Chart | 236 | 20 | `1.002-1.024` | `0.988-1.033` | `0.895-1.136` |
-| Quadrant | 256 | 0 | `1.007-1.035` | `1.011-1.022` | `1.025-1.048` |
-| Timeline | 256 | 0 | `1.026-1.053` | `1.038-1.087` | `1.052-1.136` |
-| Kanban | 256 | 0 | `1.036-1.089` | `0.852-1.088` | `0.992-1.105` |
-| Sequence | 256 | 0 | `1.019-1.237` | `0.919-1.113` | `0.925-1.294` |
-| Class | 256 | 0 | `1.025-1.184` | `0.916-1.056` | `0.776-1.199` |
-| State | 256 | 0 | `0.959-1.131` | `0.963-1.089` | `0.984-1.382` |
-| Entity Relationship | 196 | 60 | `1.010-1.139` | `0.980-1.089` | `0.567-1.253` |
-| Gantt | 256 | 0 | `1.035-1.037` | `0.883-0.964` | `0.963-1.023` |
-| Pie | 255 | 1 | `0.992-1.050` | `0.994-1.019` | `0.993-1.042` |
-| User Journey | 256 | 0 | `1.020-1.032` | `1.041-1.061` | `0.983-1.073` |
-| Requirement | 252 | 4 | `1.013-1.072` | `1.004-1.053` | `0.974-1.148` |
-| Git Graph | 235 | 21 | `1.035-1.141` | `1.032-1.145` | `1.035-1.421` |
-| Mindmap | 159 | 97 | `0.896-1.226` | `0.967-1.150` | `0.774-1.313` |
-| Packet | 256 | 0 | `1.011-1.015` | `1.003-1.065` | `0.977-1.039` |
-| Radar | 256 | 0 | `1.004-1.036` | `1.004-1.020` | `1.006-1.037` |
-| Sankey | 256 | 0 | `1.043-1.053` | `1.026-1.053` | `1.053-1.112` |
-| Treemap | 256 | 0 | `1.033-1.076` | `1.029-1.039` | `0.945-1.077` |
-| Venn | 216 | 40 | `0.995-1.026` | `0.990-1.022` | `0.989-1.048` |
-| Ishikawa | 256 | 0 | `1.046-1.181` | `1.017-1.116` | `1.028-1.313` |
-| Cynefin | 256 | 0 | `1.013-1.032` | `1.009-1.019` | `1.020-1.049` |
-| Event Modeling | 256 | 0 | `1.025-1.037` | `1.008-1.063` | `0.995-1.126` |
-| Agentflow | 256 | 0 | `1.040-1.145` | `0.947-1.100` | `0.894-1.244` |
-| Block | 252 | 4 | `0.978-1.189` | `0.922-1.080` | `0.925-1.403` |
-| Swimlanes | 196 | 60 | `1.008-1.136` | `0.953-1.070` | `0.963-1.521` |
-| Architecture | 256 | 0 | `1.020-1.232` | `0.998-1.236` | `0.991-1.578` |
-| C4 | 256 | 0 | `0.967-1.071` | `1.028-1.060` | `0.987-1.128` |
-| Railroad | 256 | 0 | `1.024-1.116` | `1.023-1.146` | `1.048-1.338` |
-| TreeView | 256 | 0 | `0.990-1.055` | `0.969-1.063` | `0.853-1.046` |
-| Use Case | 256 | 0 | `1.036-1.160` | `0.971-1.115` | `1.043-1.316` |
-| Wardley Map | 256 | 0 | `0.999-1.016` | `1.016-1.019` | `0.960-1.106` |
-| ZenUML | 256 | 0 | `1.031-1.101` | `1.025-1.102` | `0.972-1.266` |
-- All 16 Flowchart contact sheets and all 256 same-source pairs were manually
-  inspected after correcting Bang/Cloud edge intersection bounds. No
-  unresolved marker, routing, label, clipping, overlap, or paint-order defect
-  remains in that corpus.
-- All 16 XY Chart contact sheets and all 256 same-source pairs were manually
-  inspected after matching Mermaid's component insertion order and invalid
-  SVG font-size fallback. No unresolved chart, axis, plot, legend, label,
-  clipping, overlap, or paint-order defect remains in that corpus.
-- All 16 Kanban contact sheets and all 256 same-source pairs were manually
-  inspected, including the corrected three-line titles in cases 114 and 117.
-- All 16 Sequence contact sheets and all 256 same-source pairs were manually
-  inspected after translating Mermaid's control-title loop-width preflight and
-  tightening created-participant manifest text bounds. No unresolved
-  participant, lifecycle, message, marker, note, activation, control-frame,
-  clipping, overlap, or paint-order defect remains.
-- All 16 Class contact sheets and all 256 same-source pairs were manually
-  inspected after matching Mermaid's asymmetric class text-group bbox, empty
-  and method-only compartment spacing, note padding, and terminal placement.
-  No unresolved class, namespace, relation, marker, cardinality, note, label,
-  clipping, overlap, or paint-order defect remains.
-- All 16 State contact sheets and all 256 same-source pairs were manually
-  inspected after matching nested composite, note, concurrency, start/end,
-  choice, fork/join, and transition routing behavior. No unresolved state,
-  group boundary, marker, note, label, clipping, overlap, or paint-order defect
-  remains.
-- All 16 Entity Relationship contact sheets and all 256 same-source pairs were
-  manually inspected after translating Mermaid's recursive subgraph spacing.
-  The 60 queued cases differ only in isolated label positions on repeated large
-  structures; their P95 normalized text-center distance is at most `0.077`,
-  mask IoU is at least `0.685`, and edge F1 is at least `0.922`. No unresolved
-  entity, attribute, subgraph, relationship, marker, text-loss, clipping,
-  overlap, or paint-order defect remains.
-- All 16 Gantt contact sheets and all 256 same-source pairs were manually
-  inspected at the shared `1200 x 900` viewport required by Mermaid's
-  parent-width renderer input. No unresolved task ordering, section band,
-  milestone, exclusion, axis, marker, label, clipping, overlap, or paint-order
-  defect remains.
-- All 16 Quadrant and all 16 Timeline contact sheets were manually inspected.
-- All 16 Pie contact sheets and all 256 same-source pairs were manually
-  inspected after matching Mermaid's centered viewport normalization and
-  legend-aware bounds. No unresolved slice, percentage, legend, title,
-  clipping, overlap, or paint-order defect remains.
-- All 16 User Journey contact sheets and all 256 same-source pairs were
-  manually inspected after matching Mermaid's actor-legend text offset. The
-  detail audit now treats spatially equivalent line segmentation as the same
-  visible text and passes all 256 cases automatically. No unresolved section,
-  task, actor, score face, guide, label, clipping, overlap, or paint-order
-  defect remains.
-- All 16 Requirement contact sheets and all 256 same-source pairs were
-  manually inspected. Cases 131 and 144 contain duplicate `<<contains>>`
-  labels, while cases 183 and 209 contain duplicate `<<satisfies>>` labels;
-  the comparator greedily cross-matched equivalent duplicates. All four retain
-  44 matching text elements with P95 normalized text-center distance below
-  `0.016`, no clipping or overlap, and passing raster checks. No unresolved
-  requirement, element, relationship, marker, label, styling, clipping,
-  overlap, or paint-order defect remains.
-- All 16 Git Graph contact sheets and all 256 same-source pairs were manually
-  inspected. The 20 queued cases are text-overlap threshold findings caused by
-  browser/Compose text-bound differences; their P95 normalized text-center
-  distance is at most `0.052`, mask IoU is at least `0.639`, and edge F1 is at
-  least `0.828`. Every expected label is present and unclipped, and the
-  corrected `parity_gitgraph_005` now preserves upstream commit-label paint
-  order. No unresolved commit, branch, merge, cherry-pick, label, clipping,
-  overlap, or paint-order defect remains.
-- All 16 Mindmap contact sheets and all 256 same-source pairs were manually
-  inspected. The 107 queued cases preserve every expected node, label,
-  hierarchy edge, shape, and section color; their differences are
-  CoSE-Bilkent branch rotations or mirrors caused by small platform text-size
-  changes. All 107 pass clipping, overlap, paint-order, edge, and color checks;
-  Dagre and tidy-tree cases pass automatically. No unresolved hierarchy,
-  shape, text, clipping, overlap, or paint-order defect remains.
-- All 16 Packet contact sheets and all 256 same-source pairs were manually
-  inspected. Field boundaries, bit numbers, cross-row splitting, titles,
-  compact and responsive configurations, Unicode, clipping, and paint order
-  match the Official output. Long labels overflow narrow one-bit fields
-  identically on both sides, preserving Mermaid's renderer behavior. No
-  unresolved field, row, label, title, clipping, overlap, or paint-order
-  defect remains.
-- All 16 Radar contact sheets and all 256 same-source pairs were manually
-  inspected. Axis order and labels, circular and polygon graticules, linear and
-  cubic curves, value scaling, legends, titles, themes, clipping, and paint
-  order match the Official output. No unresolved axis, curve, graticule,
-  legend, title, clipping, overlap, or paint-order defect remains.
-- All 16 Sankey contact sheets and all 256 same-source pairs were manually
-  inspected. Node order and alignment, link routing and color modes, legacy
-  and outlined labels, value formatting, custom node colors, clipping, and
-  paint order match the Official output. No unresolved node, link, label,
-  value, color, clipping, overlap, or paint-order defect remains.
-- All 16 Treemap contact sheets and all 256 same-source pairs were manually
-  inspected. Hierarchy, D3 squarify partitions, classes, colors, borders,
-  adaptive labels, values, formats, Unicode, responsive sizing, clipping, and
-  paint order match the Official output. Native manifest bounds now expose
-  measured section-label and value glyph widths while retaining Mermaid's
-  original anchors, so all 256 detail cases pass automatically. No unresolved
-  hierarchy, rectangle, style, label, value, clipping, or paint-order defect
-  remains.
-- All 16 Venn contact sheets and all 256 same-source pairs were manually
-  inspected. Weighted circles, intersections, labels, text nodes, styles,
-  configuration, themes, clipping, and paint order match the Official output.
-  The 40 review cases repeat two benign text-overlap font-box patterns. No
-  unresolved Venn defect remains.
-- All 16 Ishikawa contact sheets and all 256 same-source pairs were manually
-  inspected. Effect ownership, indentation normalization, recursive branch
-  order, alternating upper/lower causes, fish-head geometry, wrapping,
-  configuration, themes, clipping, and paint order match the Official output.
-  Matrix detail passed automatically with no review queue.
-- All 16 Cynefin contact sheets and all 256 same-source pairs were manually
-  inspected. Five-domain placement, seeded boundaries, cliff and confusion
-  geometry, item overflow, transitions, themes, labels, clipping, and paint
-  order match the Official output. Matrix detail passed automatically with no
-  review queue.
-- All 16 Event Modeling contact sheets and all 256 same-source pairs were
-  manually inspected. The detail audit now compares the combined bounds of
-  spatially equivalent text segments, so Official's single `foreignObject`
-  and Native's title/payload elements pass all 256 cases automatically. No
-  unresolved swimlane, card, relation, marker, color, label, clipping,
-  overlap, or paint-order defect remains.
-- All 16 Agentflow contact sheets and all 256 same-source pairs were manually
-  inspected with Dagre selected explicitly on both renderers. Typed shapes,
-  nested/global/collapsed flows, connectors, sequence/reference/failure edges,
-  labels, themes, clipping, and paint order match the Official output. Matrix
-  detail passed automatically with no review queue.
-- All 16 Block contact sheets and all 256 same-source pairs were manually
-  inspected after matching Mermaid's positioned shape sizing. The four queued
-  cases contain only paint-order occlusion ratio threshold findings. Grids,
-  spans, spaces, composites, shapes, arrows, markers, classes, styles, labels,
-  clipping, and visible paint order match the Official output.
-- All 16 Swimlanes contact sheets and all 256 same-source pairs were manually
-  inspected after matching rotated title bounds and pivots. The 60 queued
-  cases contain only text-position findings along semantically equivalent
-  orthogonal routes. Lane ownership, nodes, labels, markers, endpoints,
-  clipping, overlap, and paint order match the Official output.
-- All 16 Architecture contact sheets and all 256 same-source pairs were
-  manually inspected. Services, exact built-in icons, icon text, nested
-  groups, junctions, directional ports, arrows, labels, boundary modifiers,
-  row/column alignments, clipping, overlap, and paint order match the Official
-  output. Matrix detail passed automatically with no review queue.
-- All 16 C4 contact sheets and all 256 same-source pairs were manually
-  inspected. Diagram levels, people, systems, containers, components,
-  database and queue shapes, nested boundaries, deployment nodes, relation
-  variants, dynamic indexes, styles, labels, clipping, overlap, and paint
-  order match the Official output. Matrix detail passed automatically with no
-  review queue.
-- All 16 Railroad contact sheets and all 256 same-source pairs were manually
-  inspected. Railroad IR, EBNF, ABNF, and PEG rules preserve symbol types,
-  sequence and branch topology, optional and repetition paths, metadata,
-  styles, labels, clipping, overlap, and paint order. Matrix detail passed
-  automatically with no review queue.
-- All 16 TreeView contact sheets and all 256 same-source pairs were manually
-  inspected. Indentation and box-drawing hierarchy, connectors, icons,
-  highlights, descriptions, metadata, labels, clipping, overlap, and paint
-  order match the Official output. Matrix detail passed automatically with no
-  review queue.
-- All 16 Use Case contact sheets and all 256 same-source pairs were manually
-  inspected. Actors, use cases, boundaries, notes, JSON tables, markers,
-  classes, styles, themes, labels, clipping, overlap, and paint order preserve
-  Official semantics. Geometry counts now compare both render objects and
-  expanded primitives, and spatially equivalent text segmentation is
-  normalized, so all 256 cases pass automatically.
-- All 16 Wardley Map contact sheets and all 256 same-source pairs were manually
-  inspected. Components, sourcing markers, dependencies, evolution, pipelines,
-  notes, annotations, strategic forces, labels, clipping, overlap, and paint
-  order match the Official output. Matrix detail passed automatically with no
-  review queue.
-- All 16 ZenUML contact sheets and all 256 same-source pairs were manually
-  inspected after restoring the cached message-arrow primitive paint.
-  Participants, occurrences, ordinary and nested message arrows, replies,
-  groups, fragments, participant icons, labels, clipping, overlap, and paint
-  order match the Official output. Matrix detail passed automatically with no
-  review queue.
+| Flowchart | 256 | 0 | `1.022-1.103` | `0.976-1.051` | `0.947-1.259` |
+| XY Chart | 255 | 1 | `1.012-1.016` | `1.008-1.018` | `0.962-1.154` |
+| Quadrant | 253 | 3 | `1.007-1.023` | `1.011-1.022` | `1.025-1.036` |
+| Timeline | 256 | 0 | `1.020-1.056` | `1.032-1.072` | `1.036-1.136` |
+| Kanban | 256 | 0 | `1.036-1.089` | `0.894-1.089` | `0.999-1.121` |
+| Sequence | 231 | 25 | `1.015-1.272` | `0.897-1.090` | `0.927-1.437` |
+| Class | 256 | 0 | `1.025-1.195` | `0.897-1.058` | `0.866-1.237` |
+| State | 239 | 17 | `0.959-1.095` | `1.016-1.089` | `0.972-1.388` |
+| Entity Relationship | 207 | 49 | `1.015-1.098` | `0.981-1.059` | `0.538-0.899` |
+| Gantt | 205 | 51 | `1.035-1.037` | `0.891-0.966` | `0.832-1.027` |
+| Pie | 241 | 15 | `1.011-1.020` | `0.999-1.014` | `1.002-1.039` |
+| User Journey | 256 | 0 | `1.017-1.033` | `1.023-1.053` | `0.910-1.107` |
+| Requirement | 256 | 0 | `1.024-1.060` | `0.980-1.052` | `1.003-1.115` |
+| Git Graph | 249 | 7 | `1.033-1.143` | `1.035-1.137` | `1.022-1.333` |
+| Mindmap | 161 | 95 | `0.878-1.464` | `0.798-1.442` | `0.745-1.336` |
+| Packet | 256 | 0 | `1.009-1.014` | `1.016-1.047` | `1.008-1.056` |
+| Radar | 256 | 0 | `1.016-1.032` | `1.012-1.021` | `1.019-1.039` |
+| Sankey | 256 | 0 | `1.021-1.053` | `1.039-1.059` | `1.079-1.112` |
+| Treemap | 255 | 1 | `1.033-1.045` | `1.034-1.047` | `1.067-1.093` |
+| Venn | 143 | 113 | `1.007-1.147` | `0.967-1.081` | `0.784-1.406` |
+| Ishikawa | 256 | 0 | `1.037-1.148` | `1.017-1.119` | `0.992-1.299` |
+| Cynefin | 256 | 0 | `1.014-1.023` | `1.011-1.019` | `1.027-1.050` |
+| Event Modeling | 256 | 0 | `1.021-1.049` | `1.053-1.227` | `1.018-1.356` |
+| Agentflow | 226 | 30 | `1.009-1.130` | `0.918-1.100` | `0.841-1.210` |
+| Block | 256 | 0 | `0.976-1.190` | `0.927-1.080` | `0.868-1.423` |
+| Swimlanes | 198 | 58 | `1.000-1.123` | `0.953-1.076` | `0.954-1.527` |
+| Architecture | 233 | 23 | `1.015-1.068` | `0.809-1.218` | `0.883-1.473` |
+| C4 | 250 | 6 | `0.995-1.141` | `0.923-1.049` | `0.969-1.103` |
+| Railroad | 256 | 0 | `1.016-1.107` | `1.020-1.125` | `1.014-1.263` |
+| TreeView | 256 | 0 | `1.010-1.160` | `0.956-1.027` | `0.938-1.086` |
+| Use Case | 255 | 1 | `0.984-1.150` | `0.969-1.117` | `0.910-1.405` |
+| Wardley Map | 256 | 0 | `1.008-1.015` | `1.019-1.020` | `0.973-1.103` |
+| ZenUML | 256 | 0 | `1.026-1.084` | `1.025-1.089` | `0.900-1.175` |
+All 528 structural contact sheets were regenerated from the same 8,448
+source cases recorded in the manifest. The 495 review cases are distributed
+as follows: Venn 113, Mindmap 95, Swimlanes 58, Gantt 51, Entity Relationship
+49, Agentflow 30, Sequence 25, Architecture 23, State 17, Pie 15, Git Graph 7,
+C4 6, Quadrant 3, and one each for Treemap, Use Case, and XY Chart. The other
+16 families pass all 256 detail cases automatically. Per-family compatibility
+pages and machine-readable reports preserve the individual findings and
+geometry ranges.
 
 All per-family results pass, so overall supported Mermaid `12.0.0`
 compatibility is **Stable**.
@@ -320,19 +168,21 @@ choice is outside this code-level rating.
 
 ## Evidence Layers
 
-The three large evidence sets answer different questions and are not counted
+The four large evidence sets answer different questions and are not counted
 as substitutes for each other:
 
 1. **441 independent production scenarios.** These are hand-authored,
    production-like structures used for capability coverage and deterministic
    replay. The published screenshot, geometry, and detail reports cover all
    441 same-source Native/Official pairs.
-2. **8,448 generated visual-matrix cases.** Each diagram type contributes 256
-   unique Mermaid sources, derived deterministically from at least 13 complex
-   structural seeds and 20 visible text/layout-pressure profiles. Published
-   Native/Official evidence covers all 8,448 cases. This is not a claim of 256
-   unrelated topologies per type.
-3. **7,936 Native-only randomized stress inputs.** These separately exercise
+2. **8,448 structurally distinct visual cases.** Each diagram type contributes
+   256 cases distinguished by its curated seed, seed feature set, generated
+   structural item count, and family-specific syntax/topology profile. The
+   published Native/Official evidence covers every case.
+3. **8,448 generated text/layout stress inputs.** These byte-distinct inputs
+   are derived from the 441 production scenarios. They remain a separate core
+   robustness corpus and do not add structural or syntax coverage.
+4. **7,936 Native-only randomized stress inputs.** These separately exercise
    parser and layout robustness. They are not presented as Mermaid.js parity
    evidence.
 
@@ -382,32 +232,39 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | ZenUML | 13 | 26/26 | participants, aliases, annotators, messages, assignments, replies, groups, control fragments, comments, dividers, Unicode | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 | Kanban | 13 | 17/17 | sections, tasks, metadata, priorities, ticket links, themes | Replacement detail pass; 13/13 production and 256/256 matrix; 16/16 sheets manually reviewed |
 
-## Large-Scale Visual Matrix
+## Structural Visual Matrix
 
-The generated large-scale matrix and published evidence contain 256 unique
-sources for each of all 33 families: Flowchart,
+The generated structural matrix and published evidence contain 256
+structurally distinct sources for each of all 33 families. Uniqueness is based
+on structural dimensions rather than labels or ordinals. The families are:
+Flowchart,
 XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
 Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap,
 Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling,
 Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case,
 Kanban, Wardley Map, and ZenUML:
 
-- 8,448 unique Mermaid sources;
+- 8,448 structurally distinct Mermaid sources;
+- 8,448 unique structural signatures and source hashes;
 - 8,448 CMP Native screenshots;
 - 8,448 Mermaid.js `12.0.0` screenshots;
 - 528 paged contact sheets, with 16 same-source pairs per page;
-- source, seed, profile, feature, screenshot, and SHA-256 metadata;
+- source, structural dimensions, feature, screenshot, and SHA-256 metadata;
 - per-pair content bounds and foreground-density metrics.
 
 **[Open all 528 paged Native/Official comparison images](assets/stability-report/visual-parity-evidence.md).**
 
 Machine-readable evidence:
-[manifest](assets/stability-report/visual-parity-manifest.json) and
+[structural corpus accounting](assets/stability-report/visual-structure-corpus-metadata.json),
+[manifest](assets/stability-report/visual-parity-manifest.json),
+[detail report](assets/stability-report/visual-parity-detail.json), and
 [geometry report](assets/stability-report/visual-parity-geometry.json).
-The geometry gate accepted all 8,448 pairs. Across the complete matrix,
-Native/Official width ratios were `0.896-1.237`, height ratios were
-`0.852-1.236`, and foreground-ink ratios were `0.567-1.578`, within the
-source-controlled thresholds.
+The geometry gate recorded 0 hard failures across all 8,448 pairs. Overall
+Native/Official width ratios were `0.878-1.464`, height ratios were
+`0.798-1.442`, and foreground-ink ratios were `0.538-1.527`. Four out-of-range
+width/height results from three CoSE-Bilkent Mindmap cases remain explicit
+review findings because their detail manifests preserve the same structure;
+all other ratios remain within the unchanged source-controlled thresholds.
 
 ## Independent Production Visual Evidence
 
@@ -423,15 +280,7 @@ The source IDs and scenario descriptions are printed above every pair.
 
 ![Flowchart complex Native and Official corpus](assets/stability-report/flowchart-complex-corpus.png)
 
-The replacement audit passed all 14 production scenarios and all 256 matrix
-pairs with no review queue. The matrix width, height, and foreground-ink ratios
-were `1.021-1.083`, `0.965-1.048`, and `0.957-1.187`. All 16 matrix contact
-sheets were manually reviewed. During that review, hidden arrows on Bang and
-Cloud nodes exposed a mismatch between sampled path bounds and edge
-intersection bounds. The translated shapes now follow Mermaid's
-`updateNodeBounds` plus `intersect.rect` behavior, and the detail auditor now
-requires marker endpoint anchors and compares their later-paint occlusion
-depth, so marker metadata alone cannot satisfy the gate.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.022-1.103`, height `0.976-1.051`, and foreground ink `0.947-1.259`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -444,16 +293,7 @@ The production geometry and detail audits passed all 13 pairs. Width, height,
 and foreground-ink ratios were `1.013-1.021`, `1.011-1.019`, and
 `1.019-1.041`; detail was `13 pass / 0 review / 0 fail`.
 
-The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `1.013-1.032`,
-`1.009-1.019`, and `1.020-1.049`. The raw
-[production detail](assets/stability-report/cynefin-production-detail.json),
-[production geometry](assets/stability-report/cynefin-production-geometry.json),
-[matrix detail](assets/stability-report/cynefin-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/cynefin-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.014-1.023`, height `1.011-1.019`, and foreground ink `1.027-1.050`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -466,17 +306,7 @@ The production geometry audit passed all 13 pairs. Width, height, and
 foreground-ink ratios were `1.029-1.044`, `1.013-1.044`, and
 `1.029-1.115`. Production detail passed `13 / 13`.
 
-The matrix geometry passed all 256 pairs with ratios `1.025-1.037`,
-`1.008-1.063`, and `0.995-1.126`. Matrix detail passed `256 / 256`.
-The audit combines spatially equivalent title/payload bounds while retaining
-all position, size, clipping, overlap, paint-order, and raster checks. The raw
-[production detail](assets/stability-report/eventmodeling-production-detail.json),
-[production geometry](assets/stability-report/eventmodeling-production-geometry.json),
-[matrix detail](assets/stability-report/eventmodeling-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/eventmodeling-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.021-1.049`, height `1.053-1.227`, and foreground ink `1.018-1.356`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -495,18 +325,7 @@ reviews. Manual side-by-side review accepted both remaining cases with
 complete labels, equivalent visible geometry, correct edge semantics, and no
 clipping, overlap, or paint-order defect.
 
-The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `1.040-1.145`,
-`0.947-1.100`, and `0.894-1.244`. The raw
-[production detail](assets/stability-report/agentflow-production-detail.json),
-[production geometry](assets/stability-report/agentflow-production-geometry.json),
-[matrix detail](assets/stability-report/agentflow-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/agentflow-visual-parity-geometry.json)
-reports are published beside the screenshots. Dagre was selected explicitly
-for both renderers; this evidence does not claim equivalence with Mermaid's
-default ELK layout. The production contact sheet and all 16 matrix contact
-sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `226 pass / 30 review / 0 fail`; geometry has 0 hard failures with width `1.009-1.130`, height `0.918-1.100`, and foreground ink `0.841-1.210`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -519,17 +338,7 @@ The production geometry and detail audits passed all 13 pairs with
 `13 pass / 0 review / 0 fail`. Width, height, and foreground-ink ratios were
 `0.970-1.116`, `0.880-1.069`, and `0.908-1.388`.
 
-The matrix geometry passed all 256 pairs with ratios `0.978-1.189`,
-`0.922-1.080`, and `0.925-1.403`. Matrix detail was
-`252 pass / 4 review / 0 fail`; the four reviews contain only
-paint-order occlusion ratio threshold findings, with complete visible shapes,
-labels, edges, markers, clipping, and paint order. The raw
-[production detail](assets/stability-report/block-production-detail.json),
-[production geometry](assets/stability-report/block-production-geometry.json),
-[matrix detail](assets/stability-report/block-visual-parity-detail.json), and
-[matrix geometry](assets/stability-report/block-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `0.976-1.190`, height `0.927-1.080`, and foreground ink `0.868-1.423`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -542,19 +351,7 @@ The production geometry passed all 13 pairs. Width, height, and foreground-ink
 ratios were `1.007-1.191`, `0.912-1.070`, and `0.928-1.603`. Production
 detail was `10 pass / 3 review / 0 fail`.
 
-The matrix geometry passed all 256 pairs with ratios `1.008-1.136`,
-`0.953-1.070`, and `0.963-1.521`. Matrix detail was
-`196 pass / 60 review / 0 fail`. All 63 production and matrix reviews contain
-only `text-position`; manual review confirmed complete labels placed along
-semantically equivalent orthogonal routes, with matching lanes, nodes,
-markers, endpoints, clipping, overlap, and paint order. The raw
-[production detail](assets/stability-report/swimlanes-production-detail.json),
-[production geometry](assets/stability-report/swimlanes-production-geometry.json),
-[matrix detail](assets/stability-report/swimlanes-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/swimlanes-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `198 pass / 58 review / 0 fail`; geometry has 0 hard failures with width `1.000-1.123`, height `0.953-1.076`, and foreground ink `0.954-1.527`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -567,16 +364,7 @@ The production geometry and detail audits passed all 13 pairs with
 `13 pass / 0 review / 0 fail`. Width, height, and foreground-ink ratios were
 `1.020-1.232`, `0.996-1.236`, and `0.985-1.561`.
 
-The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `1.020-1.232`,
-`0.998-1.236`, and `0.991-1.578`. The raw
-[production detail](assets/stability-report/architecture-production-detail.json),
-[production geometry](assets/stability-report/architecture-production-geometry.json),
-[matrix detail](assets/stability-report/architecture-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/architecture-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `233 pass / 23 review / 0 fail`; geometry has 0 hard failures with width `1.015-1.068`, height `0.809-1.218`, and foreground ink `0.883-1.473`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -591,15 +379,7 @@ detail passed `13 / 13`. Geometry counts compare both render objects and
 expanded primitives, so Official's decomposed database/queue paths and
 Native's semantic shapes are validated without a representation-only review.
 
-The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `0.967-1.071`,
-`1.028-1.060`, and `0.987-1.128`. The raw
-[production detail](assets/stability-report/c4-production-detail.json),
-[production geometry](assets/stability-report/c4-production-geometry.json),
-[matrix detail](assets/stability-report/c4-visual-parity-detail.json), and
-[matrix geometry](assets/stability-report/c4-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `250 pass / 6 review / 0 fail`; geometry has 0 hard failures with width `0.995-1.141`, height `0.923-1.049`, and foreground ink `0.969-1.103`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -612,16 +392,7 @@ The production geometry and detail audits passed all 18 pairs with
 `18 pass / 0 review / 0 fail`. Width, height, and foreground-ink ratios were
 `1.038-1.120`, `1.028-1.131`, and `1.078-1.281`.
 
-The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `1.024-1.116`,
-`1.023-1.146`, and `1.048-1.338`. The raw
-[production detail](assets/stability-report/railroad-production-detail.json),
-[production geometry](assets/stability-report/railroad-production-geometry.json),
-[matrix detail](assets/stability-report/railroad-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/railroad-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.016-1.107`, height `1.020-1.125`, and foreground ink `1.014-1.263`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -634,16 +405,7 @@ The production geometry and detail audits passed all 13 pairs with
 `13 pass / 0 review / 0 fail`. Width, height, and foreground-ink ratios were
 `1.011-1.169`, `0.975-1.062`, and `0.930-1.050`.
 
-The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `0.990-1.055`,
-`0.969-1.063`, and `0.853-1.046`. The raw
-[production detail](assets/stability-report/treeview-production-detail.json),
-[production geometry](assets/stability-report/treeview-production-geometry.json),
-[matrix detail](assets/stability-report/treeview-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/treeview-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.010-1.160`, height `0.956-1.027`, and foreground ink `0.938-1.086`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -656,17 +418,7 @@ The production geometry and detail audits passed all 18 pairs. Width, height,
 and foreground-ink ratios were `1.036-1.160`, `0.971-1.115`, and
 `1.043-1.316`.
 
-The matrix geometry and detail audits passed all 256 pairs. Geometry counts
-compare both render objects and expanded primitives, preserving review when
-both representations diverge. Spatially equivalent segmented text is compared
-by its combined bounds. The raw
-[production detail](assets/stability-report/usecase-production-detail.json),
-[production geometry](assets/stability-report/usecase-production-geometry.json),
-[matrix detail](assets/stability-report/usecase-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/usecase-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `0.984-1.150`, height `0.969-1.117`, and foreground ink `0.910-1.405`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -675,15 +427,7 @@ and all 16 matrix contact sheets were manually reviewed.
 
 ![XY Chart complex Native and Official corpus](assets/stability-report/xychart-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and accepted all 256
-matrix pairs with `236 pass / 20 review / 0 fail`. The reviews are paint-order
-occlusion-ratio threshold findings on intentional chart layering. Production
-width, height, and foreground-ink
-ratios were `1.016-1.020`, `1.012-1.015`, and `0.967-1.144`; matrix ratios were
-`1.002-1.024`, `0.988-1.033`, and `0.895-1.136`. All 16 matrix contact sheets
-were manually reviewed. The final translation preserves Mermaid's component
-insertion order and its browser fallback from an invalid negative bar-label
-font size to inherited `16px`.
+The fresh 256-case structural Native/Official audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `1.012-1.016`, height `1.008-1.018`, and foreground ink `0.962-1.154`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -692,11 +436,7 @@ font size to inherited `16px`.
 
 ![Quadrant Chart complex Native and Official corpus](assets/stability-report/quadrant-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `1.007-1.023`, `1.011-1.022`, and `1.025-1.036`; matrix ratios
-were `1.007-1.035`, `1.011-1.022`, and `1.025-1.048`. The production contact
-sheet and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width `1.007-1.023`, height `1.011-1.022`, and foreground ink `1.025-1.036`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -705,11 +445,7 @@ sheet and all 16 matrix contact sheets were manually reviewed.
 
 ![Timeline complex Native and Official corpus](assets/stability-report/timeline-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `1.029-1.051`, `1.042-1.078`, and `1.062-1.131`; matrix ratios
-were `1.026-1.053`, `1.038-1.087`, and `1.052-1.136`. The production contact
-sheet and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.020-1.056`, height `1.032-1.072`, and foreground ink `1.036-1.136`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -718,18 +454,7 @@ sheet and all 16 matrix contact sheets were manually reviewed.
 
 ![Sequence complex Native and Official corpus](assets/stability-report/sequence-complex-corpus.png)
 
-The replacement audit passed all 14 production scenarios and all 256 matrix
-pairs. Spatially equivalent segmented labels are compared by their combined
-bounds while all position, size, clipping, overlap, and raster checks remain.
-Production width, height, and foreground-ink
-ratios were `1.019-1.254`, `0.910-1.111`, and `0.939-1.327`; matrix ratios were
-`1.019-1.237`, `0.919-1.113`, and `0.925-1.294`. All 16 matrix contact sheets
-were manually reviewed. The final translation follows Mermaid's
-`calculateLoopBounds`, `adjustLoopHeightForWrap`, and `wrapLabel` behavior for
-control titles, preserves marker and activation paint order, and reports
-created-participant text at its measured glyph bounds.
-The raw [matrix detail](assets/stability-report/sequence-visual-parity-detail.json)
-report is published beside the contact sheets.
+The fresh 256-case structural Native/Official audit reports `231 pass / 25 review / 0 fail`; geometry has 0 hard failures with width `1.015-1.272`, height `0.897-1.090`, and foreground ink `0.927-1.437`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -738,13 +463,7 @@ report is published beside the contact sheets.
 
 ![Class complex Native and Official corpus](assets/stability-report/class-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `1.036-1.196`, `0.906-1.055`, and `0.723-1.230`; matrix ratios were
-`1.025-1.184`, `0.916-1.056`, and `0.776-1.199`. All 16 matrix contact sheets
-were manually reviewed. The final translation follows Mermaid's asymmetric
-`textHelper` group bounds for class width, exact empty and method-only
-compartment spacing, note padding, and marker-aware terminal placement.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.025-1.195`, height `0.897-1.058`, and foreground ink `0.866-1.237`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -753,13 +472,7 @@ compartment spacing, note padding, and marker-aware terminal placement.
 
 ![State complex Native and Official corpus](assets/stability-report/state-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `0.995-1.206`, `1.030-1.093`, and `1.066-1.408`; matrix ratios
-were `0.959-1.131`, `0.963-1.089`, and `0.984-1.382`. All 16 matrix contact
-sheets were manually reviewed. The final translation preserves scoped
-start/end markers, nested composite and concurrency boundaries, note
-placement, pseudostates, and marker-aware transition routing.
+The fresh 256-case structural Native/Official audit reports `239 pass / 17 review / 0 fail`; geometry has 0 hard failures with width `0.959-1.095`, height `1.016-1.089`, and foreground ink `0.972-1.388`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -768,18 +481,7 @@ placement, pseudostates, and marker-aware transition routing.
 
 ![Entity Relationship complex Native and Official corpus](assets/stability-report/er-complex-corpus.png)
 
-The replacement audit accepted all 13 production scenarios and all 256 matrix
-pairs with no failures. Production detail results were
-`10 pass / 3 manually reviewed / 0 fail`; matrix results were
-`196 pass / 60 manually reviewed / 0 fail`. All reviews were isolated
-text-position threshold findings on large repeated structures, while text
-presence, clipping, overlap, paint order, marker checks, and raster checks
-passed. Production width, height, and foreground-ink ratios were
-`1.033-1.231`, `0.892-1.085`, and `0.519-1.373`; matrix ratios were
-`1.010-1.139`, `0.980-1.089`, and `0.567-1.253`. All 16 matrix contact sheets
-were manually reviewed. The final translation propagates each parent Dagre
-graph's `nodesep` and `ranksep + 25` into recursively extracted subgraphs,
-matching Mermaid.js `12.0.0` `measureDagreGraph`.
+The fresh 256-case structural Native/Official audit reports `207 pass / 49 review / 0 fail`; geometry has 0 hard failures with width `1.015-1.098`, height `0.981-1.059`, and foreground ink `0.538-0.899`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -788,16 +490,7 @@ matching Mermaid.js `12.0.0` `measureDagreGraph`.
 
 ![Gantt complex Native and Official corpus](assets/stability-report/gantt-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with `0 review / 0 fail`. Production width, height, and foreground-ink
-ratios were `1.035-1.037`, `0.883-0.961`, and `1.003-1.027`; matrix ratios
-were `1.035-1.037`, `0.883-0.964`, and `0.963-1.023`. All 16 matrix contact
-sheets were manually reviewed. The formal gate uses a shared `1200 x 900`
-viewport because Mermaid derives Gantt width from
-`elem.parentElement.offsetWidth` and uses `1200` only when that width is
-unavailable; the Kotlin scene uses the same `1200` default in the absence of
-a browser parent. Multi-unit ticks preserve D3 `interval.every(count)` epoch
-and calendar-field anchoring.
+The fresh 256-case structural Native/Official audit reports `205 pass / 51 review / 0 fail`; geometry has 0 hard failures with width `1.035-1.037`, height `0.891-0.966`, and foreground ink `0.832-1.027`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -806,13 +499,7 @@ and calendar-field anchoring.
 
 ![Pie complex Native and Official corpus](assets/stability-report/pie-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and accepted all 256
-matrix pairs with `255 pass / 1 review / 0 fail`. The single review is a
-text-overlap font-box threshold finding. Matrix width, height, and
-foreground-ink ratios
-were `0.992-1.050`, `0.994-1.019`, and `0.993-1.042`. All 16 matrix contact
-sheets were manually reviewed after matching Mermaid's centered viewport
-normalization and legend-aware bounds.
+The fresh 256-case structural Native/Official audit reports `241 pass / 15 review / 0 fail`; geometry has 0 hard failures with width `1.011-1.020`, height `0.999-1.014`, and foreground ink `1.002-1.039`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -821,21 +508,7 @@ normalization and legend-aware bounds.
 
 ![User Journey complex Native and Official corpus](assets/stability-report/journey-complex-corpus.png)
 
-The production detail and geometry audits pass all 13 pairs. Width, height,
-and foreground-ink ratios are `1.021-1.037`, `1.030-1.060`, and
-`1.011-1.080`.
-The manifest-backed detail audit passes all 256 Journey pairs. Spatially
-equivalent line breaks for the complete
-`Regional Compliance Review Coordination Team` actor label are compared by
-their combined bounds; text presence, position, size, clipping, overlap, and
-raster checks remain active. Matrix width, height, and foreground-ink ratios
-are `1.020-1.032`, `1.041-1.061`, and `0.983-1.073`.
-All 16 contact sheets were manually reviewed after matching Mermaid's
-actor-legend text offset.
-The raw [production detail](assets/stability-report/journey-production-detail.json),
-[production geometry](assets/stability-report/journey-production-geometry.json),
-and [matrix detail](assets/stability-report/journey-visual-parity-detail.json)
-reports are published beside the contact sheets.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.017-1.033`, height `1.023-1.053`, and foreground ink `0.910-1.107`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -844,16 +517,7 @@ reports are published beside the contact sheets.
 
 ![Requirement complex Native and Official corpus](assets/stability-report/requirement-complex-corpus.png)
 
-The historical review recorded all 256 Requirement pairs as acceptable. That
-result has now been replaced by a manifest-backed detail audit:
-`252 pass / 4 manually reviewed / 0 fail`. The four reviews are false-positive
-text-position findings caused by greedy matching of duplicate
-`<<contains>>` or `<<satisfies>>` labels. All four retain 44 matching text
-elements with no clipping or overlap and pass raster checks. Production detail
-results are `13 pass / 0 review / 0 fail`; production width, height, and
-foreground-ink ratios are `1.011-1.078`, `1.003-1.055`, and `0.955-1.162`.
-Matrix ratios are `1.013-1.072`, `1.004-1.053`, and `0.974-1.148`. All 16
-contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.024-1.060`, height `0.980-1.052`, and foreground ink `1.003-1.115`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -870,13 +534,7 @@ P95 normalized text-center distance is `0.052`, mask IoU is `0.742`, and edge
 F1 is `0.823`. Production width, height, and foreground-ink ratios are
 `1.048-1.129`, `1.047-1.146`, and `1.074-1.342`.
 
-The replacement matrix audit accepted all 256 pairs:
-`235 pass / 21 manually reviewed / 0 fail`. Twenty reviews have the same
-text-bound cause and one is a paint-order occlusion-ratio threshold finding;
-expected text, clipping, paint order, and raster checks pass.
-Matrix ratios are `1.035-1.141`, `1.032-1.145`, and `1.035-1.421`. All 16
-contact sheets were manually reviewed, including the corrected
-`parity_gitgraph_005` commit-label paint order.
+The fresh 256-case structural Native/Official audit reports `249 pass / 7 review / 0 fail`; geometry has 0 hard failures with width `1.033-1.143`, height `1.035-1.137`, and foreground ink `1.022-1.333`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -891,19 +549,7 @@ foreground-ink ratios are `0.949-1.122`, `0.863-1.049`, and `0.742-1.049`.
 The refreshed production contact sheet was manually reviewed with no missing
 content, clipping, or overlap.
 
-The refreshed matrix audit accepted all 256 pairs:
-`159 pass / 97 manually reviewed / 0 fail`. Mermaid's HTML-label
-`line-height: 1.5` is now used for Native measurement and drawing, increasing
-automatic passes by six and reducing raster-mask findings from 69 to 48. The
-queued cases are
-text-position findings from CoSE-Bilkent branch rotations or mirrors under
-remaining browser/Compose glyph-width and line-break perturbations; 48 also
-cross the foreground-mask threshold.
-Every expected text, node, hierarchy edge, shape, and section color is
-preserved, with no clipping, overlap, or paint-order mismatch. Matrix ratios
-are `0.896-1.226`, `0.967-1.150`, and `0.774-1.313`. All 16 refreshed contact
-sheets were manually reviewed. Icons and arbitrary CSS classes remain
-explicit unsupported boundaries.
+The fresh 256-case structural Native/Official audit reports `161 pass / 95 review / 0 fail`; geometry has 0 hard failures with width `0.878-1.464`, height `0.798-1.442`, and foreground ink `0.745-1.336`. Four CoSE-Bilkent ratio findings remain review-only; final large-tree coordinate identity is not claimed. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -912,11 +558,7 @@ explicit unsupported boundaries.
 
 ![Kanban complex Native and Official corpus](assets/stability-report/kanban-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `1.041-1.127`, `0.870-1.134`, and `0.998-1.229`; matrix ratios
-were `1.036-1.089`, `0.852-1.088`, and `0.992-1.105`. The production contact
-sheet and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.036-1.089`, height `0.894-1.089`, and foreground ink `0.999-1.121`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -925,11 +567,7 @@ sheet and all 16 matrix contact sheets were manually reviewed.
 
 ![Packet complex Native and Official corpus](assets/stability-report/packet-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `1.010-1.014`, `1.016-1.049`, and `1.008-1.023`; matrix ratios
-were `1.011-1.015`, `1.003-1.065`, and `0.977-1.039`. The production contact
-sheet and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.009-1.014`, height `1.016-1.047`, and foreground ink `1.008-1.056`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -938,11 +576,7 @@ sheet and all 16 matrix contact sheets were manually reviewed.
 
 ![Radar complex Native and Official corpus](assets/stability-report/radar-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `1.017-1.033`, `1.015-1.021`, and `1.035-1.037`; matrix ratios
-were `1.004-1.036`, `1.004-1.020`, and `1.006-1.037`. The production contact
-sheet and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.016-1.032`, height `1.012-1.021`, and foreground ink `1.019-1.039`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -951,11 +585,7 @@ sheet and all 16 matrix contact sheets were manually reviewed.
 
 ![Sankey complex Native and Official corpus](assets/stability-report/sankey-complex-corpus.png)
 
-The replacement audit passed all 13 production scenarios and all 256 matrix
-pairs with no review queue. Production width, height, and foreground-ink
-ratios were `1.050-1.060`, `1.045-1.059`, and `1.098-1.123`; matrix ratios
-were `1.043-1.053`, `1.026-1.053`, and `1.053-1.112`. The production contact
-sheet and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.021-1.053`, height `1.039-1.059`, and foreground ink `1.079-1.112`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -964,20 +594,7 @@ sheet and all 16 matrix contact sheets were manually reviewed.
 
 ![Treemap complex Native and Official corpus](assets/stability-report/treemap-complex-corpus.png)
 
-The replacement production detail and geometry audits passed all 13 pairs.
-Production width, height, and
-foreground-ink ratios were `1.033-1.044`, `1.029-1.039`, and `0.945-1.079`.
-The replacement matrix detail and geometry audits passed all 256 pairs;
-matrix ratios were `1.033-1.076`, `1.029-1.039`, and `0.945-1.077`.
-Native keeps Mermaid's section-label and value anchors while exposing measured
-glyph widths in the manifest, eliminating layout-slot false positives. The
-raw [production detail](assets/stability-report/treemap-production-detail.json),
-[production geometry](assets/stability-report/treemap-production-geometry.json),
-[matrix detail](assets/stability-report/treemap-visual-parity-detail.json), and
-[matrix geometry](assets/stability-report/treemap-visual-parity-geometry.json)
-reports are published beside the refreshed production contact sheet and 16
-matrix sheets. Hierarchy, squarify geometry, styles, values, clipping, and
-paint order match the pinned Mermaid.js `12.0.0` output.
+The fresh 256-case structural Native/Official audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `1.033-1.045`, height `1.034-1.047`, and foreground ink `1.067-1.093`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -986,18 +603,7 @@ paint order match the pinned Mermaid.js `12.0.0` output.
 
 ![Venn complex Native and Official corpus](assets/stability-report/venn-complex-corpus.png)
 
-The replacement production audit accepted all 13 pairs:
-`11 pass / 2 manually reviewed / 0 fail`. Production width, height, and
-foreground-ink ratios were `1.014-1.022`, `1.010-1.027`, and `1.028-1.044`.
-The two reviews are the same benign text-overlap font-box patterns seen in the
-matrix.
-
-The matrix geometry audit passed all 256 pairs. Its raw detail result was
-`216 pass / 40 review / 0 fail`; all 40 review cases were manually reviewed
-and accepted with 0 unresolved defects. The reviews repeat only
-`Engineering delivery`/`Shared roadmap` and `Client`/`Compose UI` overlap
-threshold patterns. Matrix ratios were `0.995-1.026`, `0.990-1.022`,
-and `0.989-1.048`. The raw [production detail](assets/stability-report/venn-production-detail.json), [production geometry](assets/stability-report/venn-production-geometry.json), [matrix detail](assets/stability-report/venn-visual-parity-detail.json), and [matrix geometry](assets/stability-report/venn-visual-parity-geometry.json) reports are published beside the screenshots. The production contact sheet and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `143 pass / 113 review / 0 fail`; geometry has 0 hard failures with width `1.007-1.147`, height `0.967-1.081`, and foreground ink `0.784-1.406`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -1013,16 +619,7 @@ review is a manifest-only element-count difference: Native retains the
 zero-length spine while Official omits it from visible geometry. Raster output
 and effect semantics match.
 
-The matrix geometry and detail audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `1.046-1.181`,
-`1.017-1.116`, and `1.028-1.313`. The raw
-[production detail](assets/stability-report/ishikawa-production-detail.json),
-[production geometry](assets/stability-report/ishikawa-production-geometry.json),
-[matrix detail](assets/stability-report/ishikawa-visual-parity-detail.json),
-and
-[matrix geometry](assets/stability-report/ishikawa-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.037-1.148`, height `1.017-1.119`, and foreground ink `0.992-1.299`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -1035,15 +632,7 @@ The replacement production detail and geometry audits passed all 13 pairs with
 `13 pass / 0 review / 0 fail`. Production width, height, and foreground-ink
 ratios were `1.008-1.015`, `1.019-1.020`, and `0.970-1.106`.
 
-The matrix detail and geometry audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `0.999-1.016`,
-`1.016-1.019`, and `0.960-1.106`. The raw
-[production detail](assets/stability-report/wardley-production-detail.json),
-[production geometry](assets/stability-report/wardley-production-geometry.json),
-[matrix detail](assets/stability-report/wardley-visual-parity-detail.json), and
-[matrix geometry](assets/stability-report/wardley-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.008-1.015`, height `1.019-1.020`, and foreground ink `0.973-1.103`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -1056,15 +645,7 @@ The replacement production detail and geometry audits passed all 13 pairs with
 `13 pass / 0 review / 0 fail`. Production width, height, and foreground-ink
 ratios were `1.042-1.100`, `1.039-1.102`, and `1.094-1.238`.
 
-The matrix detail and geometry audits passed all 256 pairs with
-`256 pass / 0 review / 0 fail`; matrix ratios were `1.031-1.101`,
-`1.025-1.102`, and `0.972-1.266`. The raw
-[production detail](assets/stability-report/zenuml-production-detail.json),
-[production geometry](assets/stability-report/zenuml-production-geometry.json),
-[matrix detail](assets/stability-report/zenuml-visual-parity-detail.json), and
-[matrix geometry](assets/stability-report/zenuml-visual-parity-geometry.json)
-reports are published beside the screenshots. The production contact sheet
-and all 16 matrix contact sheets were manually reviewed.
+The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.026-1.084`, height `1.025-1.089`, and foreground ink `0.900-1.175`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -1085,7 +666,8 @@ permission audit, independent-corpus capture, malformed-source error capture,
 visual geometry gate, and Web load test on every push to `main` and every pull
 request. The
 [`Full Visual Parity`](../.github/workflows/full-visual-parity.yml) workflow
-runs the 8,448-pair matrix weekly and on demand in 33 parallel diagram jobs.
+runs the 8,448-pair structural visual matrix weekly and on demand in 33
+parallel diagram jobs.
 
 The previously published cross-platform verification command completed
 successfully:
@@ -1123,9 +705,9 @@ errors: 0
 The current source-level JVM suite also passes:
 
 ```text
-mermaid-core: 825 tests
+mermaid-core: 849 tests
 mermaid-compose: 34 tests
-total: 859 tests
+total: 883 tests
 failures: 0
 errors: 0
 ```
@@ -1145,12 +727,14 @@ that every rejection is a non-empty `CONTENT_ERROR`, and checks that every
 family can render a valid source after each mutation profile.
 [`InvalidSourceOfficialErrorParityTest`](../mermaid-core/src/jvmTest/kotlin/com/swithun/cmpmermaid/core/InvalidSourceOfficialErrorParityTest.kt)
 verifies Native accept/reject outcomes against the published Mermaid.js
-manifest for all 8,448 cases.
+manifest for all 8,448 mutations.
 
-`ProductionCorpusTest` additionally renders all 8,448 visual-matrix sources,
-checks the expected visible text, and rejects empty, invalid, or non-finite
-SceneGraphs. The retained historical deterministic stress baseline contains
-7,936 Native-only inputs across the 31 families included when it was captured.
+`ProductionCorpusTest` additionally verifies the accounting of all 8,448
+text/layout stress inputs and renders all 8,448 structurally distinct visual
+cases, checking unique structural signatures, expected visible text, and
+finite non-empty SceneGraphs. The retained historical deterministic stress
+baseline contains 7,936 Native-only inputs across the 31 families included
+when it was captured.
 Unified graph diagrams exercise Dagre, while Mindmap exercises CoSE-Bilkent,
 Dagre, and tidy tree.
 
@@ -1357,7 +941,7 @@ oracle. Capture fails if Native disagrees, if a Native rejection is not
 generator enforces outcome parity and records exact diagnostic-message equality
 as a separate metric.
 Set `AUDIT_KIND` and `CORPUS_KIND` to one of the 33 diagram IDs to reproduce
-a single 256-case partition instead of the complete matrix. The
+a single 256-case source-mutation partition instead of the complete matrix. The
 [`Full Invalid Source Matrix`](../.github/workflows/full-invalid-source.yml)
 workflow runs those 33 partitions in parallel. The regular Quality Gate uses
 `INVALID_SOURCE_SCOPE=smoke`, which keeps the first variant of all 16 mutation

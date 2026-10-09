@@ -108,12 +108,11 @@ production so an upstream grammar diff can be translated incrementally.
 - The independent production audit passes `13 pass / 0 review / 0 fail`.
   Geometry ratios are width `1.016-1.020`, height `1.012-1.015`, and
   foreground ink `0.967-1.144`.
-- The large-scale Web audit compares 256 unique same-source cases against
-  Mermaid.js `12.0.0`, including long title and label-pressure profiles. It
-  passes the replacement detail and geometry gates with
-  `236 pass / 20 review / 0 fail`; width `1.002-1.024`, height `0.988-1.033`,
-  and foreground ink `0.895-1.136`. The reviews are paint-order
-  occlusion-ratio threshold findings on intentional chart layering.
+- The structural Web audit compares 256 structurally distinct same-source
+  cases against Mermaid.js `12.0.0`: `255 pass / 1 review / 0 fail`; geometry
+  has 0 hard failures with width `1.012-1.016`, height `1.008-1.018`, and
+  foreground ink `0.962-1.154`. The review is a paint-order occlusion-ratio
+  representation difference.
 - All 16 matrix contact sheets were manually reviewed with no unresolved
   visual defect.
 

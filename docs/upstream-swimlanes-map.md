@@ -98,12 +98,12 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - Focused tests cover lane ownership, directions, default lanes, edge routing,
   scoped layout fallback, configuration, and accessibility.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
+  256 structurally distinct same-source cases against Mermaid.js `12.0.0`.
 - Production geometry passes `13/13`; detail is
   `10 pass / 3 review / 0 fail`.
-- Matrix geometry passes `256/256`; detail is
-  `196 pass / 60 review / 0 fail`.
-- All 63 review findings are text-position tolerances along semantically
+- Structural geometry has 0 hard failures; detail reports
+  `198 pass / 58 review / 0 fail`.
+- All 61 production and structural review findings are text-position tolerances along semantically
   correct orthogonal routes. The production contact sheet and all 16 matrix
   contact sheets were manually reviewed with no unresolved lane, node, edge,
   marker, label, clipping, overlap, or paint-order defect.

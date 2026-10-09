@@ -49,6 +49,6 @@
 3. Recheck shared `kanbanItem`, `kanbanSection`, and text rendering helpers.
 4. Regenerate the 3 official documentation fixtures and both production
    corpora.
-5. Re-run focused tests, 256-case deterministic stress, 13-case production
-   detail/geometry capture, and 256-case visual parity.
+5. Re-run focused tests, 256-sample deterministic stress, 13-case production
+   detail/geometry capture, and 256-case structural visual parity.
 6. Review all 16 contact sheets before changing the family status.

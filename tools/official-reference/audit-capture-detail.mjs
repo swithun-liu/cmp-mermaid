@@ -15,7 +15,7 @@ import {
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
-import { cases as visualParityCases } from './visual-parity-corpus.mjs';
+import { cases as visualParityCases } from './visual-structure-corpus.mjs';
 
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -71,7 +71,7 @@ try {
   const page = await browser.newPage();
   for (const auditCase of cases) {
     const themeSuffix = themeOverride === null ? '' : `_${themeOverride}`;
-    const prefix = path.join(inputDirectory, `${auditCase.id}${themeSuffix}`);
+    const prefix = capturePrefix(auditCase, themeSuffix);
     const nativeManifest = readJson(`${prefix}_native.manifest.json`);
     const officialManifest = readJson(`${prefix}_official.manifest.json`);
     const manifest = compareDetailManifests(
@@ -165,6 +165,15 @@ if (
   (failOnReview && (counts.review ?? 0) > 0)
 ) {
   process.exitCode = 1;
+}
+
+function capturePrefix(auditCase, themeSuffix) {
+  const filePrefix = `${auditCase.id}${themeSuffix}`;
+  const directPrefix = path.join(inputDirectory, filePrefix);
+  if (existsSync(`${directPrefix}_native.png`)) {
+    return directPrefix;
+  }
+  return path.join(inputDirectory, auditCase.kind, filePrefix);
 }
 
 async function analyzePng(page, fileName, size, declaredBackground) {

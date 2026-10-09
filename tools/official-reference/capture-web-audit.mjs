@@ -13,7 +13,7 @@ import { cases as invalidSourceCases } from './invalid-source-corpus.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
-import { cases as visualParityCases } from './visual-parity-corpus.mjs';
+import { cases as visualParityCases } from './visual-structure-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -41,6 +41,11 @@ const capturePreviews = auditSource === 'invalid-source'
       return rank(left) - rank(right);
     })
   : previews;
+const captureCombinedPreviews =
+  auditSource !== 'invalid-source' &&
+  capturePreviews.length === 2 &&
+  capturePreviews.some((preview) => preview.toLowerCase() === 'native') &&
+  capturePreviews.some((preview) => preview.toLowerCase() === 'official');
 const viewportWidth = Number(process.env.VIEWPORT_WIDTH ?? 900);
 const viewportHeight = Number(process.env.VIEWPORT_HEIGHT ?? 900);
 const minimumCaptureBytes = Number(
@@ -48,6 +53,7 @@ const minimumCaptureBytes = Number(
     (auditSource === 'invalid-source' ? 1_000 : 5_000),
 );
 const skipExisting = (process.env.SKIP_EXISTING ?? 'false') === 'true';
+let combinedPageInitialized = false;
 
 const kotlinGalleryFiles = {
   swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
@@ -182,6 +188,10 @@ try {
   });
 
   for (const auditCase of availableCases) {
+    if (captureCombinedPreviews) {
+      await captureCombinedPreviewPair(page, auditCase);
+      continue;
+    }
     let officialOutcome = null;
     for (const preview of capturePreviews) {
       const renderer = preview.toLowerCase();
@@ -299,6 +309,174 @@ console.log(
   `Captured ${availableCases.length * capturePreviews.length} Web audit images to ` +
     outputDirectory,
 );
+
+async function captureCombinedPreviewPair(page, auditCase) {
+  const themeSuffix = themeOverride === null ? '' : `_${themeOverride}`;
+  const nativeTarget = resolve(
+    outputDirectory,
+    `${auditCase.id}${themeSuffix}_native.png`,
+  );
+  const officialTarget = resolve(
+    outputDirectory,
+    `${auditCase.id}${themeSuffix}_official.png`,
+  );
+  const nativeManifestTarget = nativeTarget.replace(/\.png$/, '.manifest.json');
+  const officialManifestTarget =
+    officialTarget.replace(/\.png$/, '.manifest.json');
+  if (
+    skipExisting &&
+    reusableCaptureExists(nativeTarget, nativeManifestTarget, auditCase) &&
+    reusableCaptureExists(officialTarget, officialManifestTarget, auditCase)
+  ) {
+    return;
+  }
+
+  const url = new URL(baseUrl);
+  const captureLayout = layoutOverride ?? auditCase.layout ?? 'dagre';
+  url.searchParams.set('auditDemoId', auditCase.id);
+  url.searchParams.set('auditPreview', 'Both');
+  url.searchParams.set('auditLayout', captureLayout);
+  if (themeOverride !== null) {
+    url.searchParams.set('auditTheme', themeOverride);
+  }
+  if (!combinedPageInitialized) {
+    await page.goto(url.href, {
+      waitUntil: 'domcontentloaded',
+      timeout: 60_000,
+    });
+    combinedPageInitialized = true;
+  } else {
+    await page.evaluate((detail) => {
+      const roots = [document];
+      for (let index = 0; index < roots.length; index += 1) {
+        const root = roots[index];
+        for (const element of root.querySelectorAll?.('[aria-label]') ?? []) {
+          if (
+            (element.getAttribute('aria-label') ?? '')
+              .startsWith('cmp-mermaid-audit:')
+          ) {
+            element.setAttribute('aria-label', 'cmp-mermaid-audit:loading');
+          }
+        }
+        root.querySelectorAll?.('*').forEach((element) => {
+          if (element.shadowRoot !== null) {
+            roots.push(element.shadowRoot);
+          }
+        });
+      }
+      window.dispatchEvent(new CustomEvent(
+        'cmp-mermaid:set-audit-case',
+        { detail },
+      ));
+    }, {
+      demoId: auditCase.id,
+      preview: 'Both',
+      layout: captureLayout,
+      themeName: themeOverride ?? '',
+    });
+    await page.waitForFunction(
+      () => {
+        const roots = [document];
+        for (let index = 0; index < roots.length; index += 1) {
+          const root = roots[index];
+          for (const element of root.querySelectorAll?.('[aria-label]') ?? []) {
+            if (
+              element.getAttribute('aria-label') ===
+                'cmp-mermaid-audit:loading'
+            ) {
+              return true;
+            }
+          }
+          root.querySelectorAll?.('*').forEach((element) => {
+            if (element.shadowRoot !== null) {
+              roots.push(element.shadowRoot);
+            }
+          });
+        }
+        return false;
+      },
+      { timeout: 60_000 },
+    );
+  }
+  const nativeManifest = await waitForNativeCanvas(page, auditCase);
+  let officialManifest = await waitForOfficialSvg(page, auditCase);
+  officialManifest ??= await extractOfficialManifest(page, auditCase.id);
+  if (officialManifest === null) {
+    throw new Error(
+      `${auditCase.id}/Official did not expose an audit manifest`,
+    );
+  }
+  assertExpectedTexts(auditCase, 'Native', nativeManifest);
+  assertExpectedTexts(auditCase, 'Official', officialManifest);
+  writeFileSync(
+    nativeManifestTarget,
+    `${JSON.stringify(nativeManifest, null, 2)}\n`,
+  );
+  writeFileSync(
+    officialManifestTarget,
+    `${JSON.stringify(officialManifest, null, 2)}\n`,
+  );
+
+  await setOfficialFrameVisibility(page, false);
+  await page.screenshot({ path: nativeTarget, omitBackground: false });
+  await setOfficialFrameVisibility(page, true);
+  await page.screenshot({ path: officialTarget, omitBackground: false });
+  for (const [preview, target] of [
+    ['Native', nativeTarget],
+    ['Official', officialTarget],
+  ]) {
+    const captureBytes = statSync(target).size;
+    if (captureBytes < minimumCaptureBytes) {
+      throw new Error(
+        `${auditCase.id}/${preview} produced only ${captureBytes} bytes`,
+      );
+    }
+    console.log(
+      `${auditCase.kind}/${auditCase.id}/${preview}: ${captureBytes} bytes`,
+    );
+  }
+}
+
+function reusableCaptureExists(target, manifestTarget, auditCase) {
+  if (
+    !existsSync(target) ||
+    statSync(target).size < minimumCaptureBytes ||
+    !existsSync(manifestTarget)
+  ) {
+    return false;
+  }
+  return readReusableManifest(manifestTarget, auditCase) !== null;
+}
+
+async function setOfficialFrameVisibility(page, visible) {
+  const frameCount = await page.evaluate((show) => {
+    const roots = [document];
+    let count = 0;
+    for (let index = 0; index < roots.length; index += 1) {
+      const root = roots[index];
+      for (
+        const frame of root.querySelectorAll?.(
+          'iframe[title="Official Mermaid.js rendering"]',
+        ) ?? []
+      ) {
+        frame.style.visibility = show ? 'visible' : 'hidden';
+        count += 1;
+      }
+      root.querySelectorAll?.('*').forEach((element) => {
+        if (element.shadowRoot !== null) {
+          roots.push(element.shadowRoot);
+        }
+      });
+    }
+    return count;
+  }, visible);
+  if (frameCount === 0) {
+    throw new Error('Combined audit page has no Official Mermaid iframe');
+  }
+  await page.evaluate(() => new Promise((resolveFrame) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolveFrame));
+  }));
+}
 
 function readReusableManifest(path, auditCase) {
   try {

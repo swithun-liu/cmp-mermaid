@@ -40,10 +40,7 @@ in a later upstream release.
   vertices, edges, containers, and connectors.
 - 13 independent production scenarios cover all 32 declared Agentflow
   capability points.
-- 256 deterministic same-source matrix cases exercise all structural seeds,
-  20 visible text/layout-pressure profiles, directions, node kinds, edge
-  semantics, nested/global/collapsed flows, connectors, metadata,
-  configuration, themes, accessibility, entities, Unicode, and long labels.
+- The fresh 256-case structural Native/Official audit reports `226 pass / 30 review / 0 fail`; geometry has 0 hard failures with width `1.009-1.130`, height `0.918-1.100`, and foreground ink `0.841-1.210`.
 - The production geometry audit passed all 13 pairs. Width, height, and
   foreground-ink ratios were `1.041-1.186`, `0.820-1.095`, and
   `0.766-1.206`.
@@ -52,9 +49,6 @@ in a later upstream release.
   Geometry counts compare both render objects and expanded primitives,
   eliminating the former decomposition-only reviews. Manual review confirmed
   matching visible structure, labels, edge semantics, and paint order.
-- The matrix geometry and detail audits passed all 256 pairs. Ratios were
-  `1.040-1.145`, `0.947-1.100`, and `0.894-1.244`; detail was
-  `256 pass / 0 review / 0 fail`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for shapes, nested and collapsed containers, connectors, edge
   semantics, routing, markers, themes, labels, clipping, and paint order. Raw

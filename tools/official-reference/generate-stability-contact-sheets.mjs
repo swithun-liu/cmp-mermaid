@@ -13,7 +13,10 @@ import puppeteer from 'puppeteer';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
-import { cases as visualParityCases } from './visual-parity-corpus.mjs';
+import {
+  cases as visualStructureCases,
+  corpusSummary as visualStructureCorpusSummary,
+} from './visual-structure-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -29,7 +32,7 @@ const corpusSource = process.env.CORPUS_SOURCE ?? 'stability';
 const cases = {
   stability: stabilityCases,
   production: productionCases,
-  'visual-parity': visualParityCases,
+  'visual-parity': visualStructureCases,
 }[corpusSource];
 if (cases === undefined) {
   throw new Error(
@@ -39,6 +42,14 @@ if (cases === undefined) {
 const pageSize = corpusSource === 'visual-parity'
   ? Number(process.env.CONTACT_SHEET_PAGE_SIZE ?? 16)
   : Number.POSITIVE_INFINITY;
+const generationMode = process.env.CONTACT_SHEET_MODE ?? 'full';
+if (!['full', 'render-only', 'manifest-only'].includes(generationMode)) {
+  throw new Error(
+    'CONTACT_SHEET_MODE must be full, render-only, or manifest-only',
+  );
+}
+const shouldRenderContactSheets = generationMode !== 'manifest-only';
+const shouldWriteManifest = generationMode !== 'render-only';
 const corpusKind = process.env.CORPUS_KIND ?? 'all';
 const kinds = [
   'flowchart',
@@ -123,80 +134,103 @@ const manifestPath = resolve(outputDirectory, manifestFileName);
 
 mkdirSync(outputDirectory, { recursive: true });
 const manifest = [];
-const browser = await puppeteer.launch(puppeteerLaunchOptions);
-try {
-  const page = await browser.newPage();
-  await page.setViewport({
-    width: 1600,
-    height: 900,
-    deviceScaleFactor: 1,
-  });
+if (shouldRenderContactSheets) {
+  const browser = await puppeteer.launch(puppeteerLaunchOptions);
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({
+      width: 1600,
+      height: 900,
+      deviceScaleFactor: 1,
+    });
 
+    for (const kind of selectedKinds) {
+      const kindCases = cases.filter((entry) => entry.kind === kind);
+      const kindRecords = kindCases.map((entry) => captureRecord(entry));
+      const pages = chunk(kindRecords, pageSize);
+      for (const [pageIndex, records] of pages.entries()) {
+        const pageNumber = pageIndex + 1;
+        const htmlPath = resolve(
+          outputDirectory,
+          `.${corpusSource}-${kind}-contact-sheet-${pageNumber}.html`,
+        );
+        writeFileSync(
+          htmlPath,
+          renderContactSheet(kind, records, pageNumber, pages.length),
+        );
+        await page.goto(pathToFileURL(htmlPath).href, {
+          waitUntil: 'networkidle0',
+          timeout: 60_000,
+        });
+        await page.waitForFunction(
+          () => [...document.images]
+            .every((image) => image.complete && image.naturalWidth > 0),
+          { timeout: 60_000 },
+        );
+        const outputPath = resolve(
+          outputDirectory,
+          corpusSource === 'visual-parity'
+            ? `${kind}-visual-parity-${String(pageNumber).padStart(2, '0')}.jpg`
+            : `${kind}-complex-corpus.png`,
+        );
+        await page.screenshot({
+          path: outputPath,
+          fullPage: true,
+          omitBackground: false,
+          ...(corpusSource === 'visual-parity'
+            ? { type: 'jpeg', quality: 82 }
+            : {}),
+        });
+        unlinkSync(htmlPath);
+        console.log(`Generated ${outputPath}`);
+      }
+      manifest.push(...kindRecords);
+    }
+  } finally {
+    await browser.close();
+  }
+} else {
   for (const kind of selectedKinds) {
     const kindCases = cases.filter((entry) => entry.kind === kind);
-    const kindRecords = kindCases.map((entry) => captureRecord(entry));
-    const pages = chunk(kindRecords, pageSize);
-    for (const [pageIndex, records] of pages.entries()) {
-      const pageNumber = pageIndex + 1;
-      const htmlPath = resolve(
-        outputDirectory,
-        `.${corpusSource}-${kind}-contact-sheet-${pageNumber}.html`,
-      );
-      writeFileSync(
-        htmlPath,
-        renderContactSheet(kind, records, pageNumber, pages.length),
-      );
-      await page.goto(pathToFileURL(htmlPath).href, {
-        waitUntil: 'networkidle0',
-        timeout: 60_000,
-      });
-      await page.waitForFunction(
-        () => [...document.images]
-          .every((image) => image.complete && image.naturalWidth > 0),
-        { timeout: 60_000 },
-      );
-      const outputPath = resolve(
-        outputDirectory,
-        corpusSource === 'visual-parity'
-          ? `${kind}-visual-parity-${String(pageNumber).padStart(2, '0')}.jpg`
-          : `${kind}-complex-corpus.png`,
-      );
-      await page.screenshot({
-        path: outputPath,
-        fullPage: true,
-        omitBackground: false,
-        ...(corpusSource === 'visual-parity'
-          ? { type: 'jpeg', quality: 82 }
-          : {}),
-      });
-      unlinkSync(htmlPath);
-      console.log(`Generated ${outputPath}`);
-    }
-    manifest.push(...kindRecords);
+    manifest.push(...kindCases.map((entry) => captureRecord(entry)));
   }
-} finally {
-  await browser.close();
 }
 
-const persistedManifest = mergePartialManifest(manifestPath, manifest);
-writeFileSync(
-  manifestPath,
-  `${JSON.stringify({
-    mermaidVersion: '12.0.0',
-    corpusSource,
-    generatedAt: new Date().toISOString(),
-    caseCount: persistedManifest.length,
-    cases: persistedManifest.map(({ nativePath, officialPath, source, ...entry }) => ({
-      ...entry,
-      sourceSha256: entry.sourceSha256 ?? sha256Value(source),
-    })),
-  }, null, 2)}\n`,
-);
-if (corpusSource === 'visual-parity' && corpusKind === 'all') {
+if (shouldWriteManifest) {
+  const persistedManifest = mergePartialManifest(manifestPath, manifest);
   writeFileSync(
-    resolve(outputDirectory, 'visual-parity-evidence.md'),
-    renderEvidenceIndex(persistedManifest, kinds),
+    manifestPath,
+    `${JSON.stringify({
+      mermaidVersion: '12.0.0',
+      corpusSource,
+      generatedAt: new Date().toISOString(),
+      caseCount: persistedManifest.length,
+      ...(corpusSource === 'visual-parity'
+        ? {
+            corpusRole: 'structural-and-syntax-visual-coverage',
+            structuralCaseCount: persistedManifest.length,
+            structuralCasesPerDiagram:
+              visualStructureCorpusSummary.structuralCasesPerKind,
+            uniquenessBasis: [
+              'curated-seed-scenario',
+              'seed-feature-set',
+              'generated-structural-item-count',
+              'family-specific-structural-variant',
+            ],
+          }
+        : {}),
+      cases: persistedManifest.map(({ nativePath, officialPath, source, ...entry }) => ({
+        ...entry,
+        sourceSha256: entry.sourceSha256 ?? sha256Value(source),
+      })),
+    }, null, 2)}\n`,
   );
+  if (corpusSource === 'visual-parity' && corpusKind === 'all') {
+    writeFileSync(
+      resolve(outputDirectory, 'visual-parity-evidence.md'),
+      renderEvidenceIndex(persistedManifest, kinds),
+    );
+  }
 }
 
 function mergePartialManifest(path, currentRecords) {
@@ -234,8 +268,8 @@ function mergePartialManifest(path, currentRecords) {
 }
 
 function captureRecord(entry) {
-  const nativePath = resolve(inputDirectory, `${entry.id}_native.png`);
-  const officialPath = resolve(inputDirectory, `${entry.id}_official.png`);
+  const nativePath = resolveCapturePath(entry, 'native');
+  const officialPath = resolveCapturePath(entry, 'official');
   return {
     ...entry,
     nativeFile: `${entry.id}_native.png`,
@@ -247,6 +281,15 @@ function captureRecord(entry) {
     nativeSha256: sha256File(nativePath),
     officialSha256: sha256File(officialPath),
   };
+}
+
+function resolveCapturePath(entry, renderer) {
+  const fileName = `${entry.id}_${renderer}.png`;
+  const directPath = resolve(inputDirectory, fileName);
+  if (existsSync(directPath)) {
+    return directPath;
+  }
+  return resolve(inputDirectory, entry.kind, fileName);
 }
 
 function sha256File(path) {
@@ -328,6 +371,8 @@ function renderEvidenceIndex(records, evidenceKinds) {
   const caseCount = records.length;
   const screenshotCount = caseCount * 2;
   const sections = evidenceKinds.map((kind) => {
+    const kindSummary = visualStructureCorpusSummary.countsByKind
+      .find((entry) => entry.kind === kind);
     const pageCount = Math.ceil(
       cases.filter((entry) => entry.kind === kind).length / pageSize,
     );
@@ -337,7 +382,7 @@ function renderEvidenceIndex(records, evidenceKinds) {
       return `![${kindTitles[kind]} visual parity page ${page}](${file})`;
     }).join('\n\n');
     return `<details>
-<summary><strong>${kindTitles[kind]} - 256 Native/Official pairs</strong></summary>
+<summary><strong>${kindTitles[kind]} - ${kindSummary.structuralCaseCount} structurally distinct Native/Official pairs</strong></summary>
 
 ${images}
 
@@ -345,18 +390,22 @@ ${images}
   }).join('\n\n');
   return `# Large-Scale Native/Official Visual Evidence
 
-This index contains ${caseCount.toLocaleString('en-US')} source cases and
+This index contains ${caseCount.toLocaleString('en-US')} structurally distinct
+source cases and
 ${screenshotCount.toLocaleString('en-US')} screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
-The matrix contains 256 cases per supported diagram type. Case IDs, structural
-seed IDs, label profiles, feature dimensions, source hashes, image hashes, and
-capture sizes are recorded in
+The matrix contains 256 structurally distinct cases per supported diagram
+type. Uniqueness is determined from the curated seed scenario, seed feature
+set, generated structural item count, and family-specific syntax/topology
+variant. Ordinal numbers and label length are not uniqueness dimensions.
+
+Case IDs, structural signatures, profile dimensions, source hashes, image
+hashes, and capture sizes are recorded in
 [\`visual-parity-manifest.json\`](visual-parity-manifest.json).
-Each type combines 13 or 14 complex structural seeds with 20 visible text and
-layout-pressure profiles. The 256 sources per type are unique, but they are not
-presented as 256 unrelated topologies.
+Corpus accounting is published separately in
+[\`visual-structure-corpus-metadata.json\`](visual-structure-corpus-metadata.json).
 
 ${sections}
 `;

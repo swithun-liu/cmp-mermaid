@@ -88,11 +88,8 @@ they are not silently approximated with Dagre.
 - `OfficialRequirementDocumentationTest` executes the examples extracted from
   Mermaid `12.0.0` documentation.
 - The replacement large-scale Web audit compares 256 unique same-source cases
-  against Mermaid.js `12.0.0`: `252 pass / 4 manually reviewed / 0 fail`, with
-  256/256 geometry passes and all 16 contact sheets reviewed. The four reviews
-  are comparator false positives from greedy matching of duplicate
-  `<<contains>>` or `<<satisfies>>` labels; text multiplicity, clipping,
-  overlap, paint order, markers, and raster checks pass.
+  against Mermaid.js `12.0.0`: `256 pass / 0 review / 0 fail`, with 0
+  geometry hard failures and all 16 contact sheets regenerated.
 - The 13 independent production scenarios pass both replacement detail and
   geometry audits with no review queue.
 

@@ -41,7 +41,7 @@ Jison production.
 | Kotlin source | Upstream source | Translation boundary |
 | --- | --- | --- |
 | `mindmap/MindmapLayout.kt` | `mindmapRenderer.ts` | Node measurement, layout selection, section colors, curves, title, viewport sizing, and SceneGraph orchestration |
-| `mindmap/upstream/cose/CoseBilkentLayout.kt` | `cytoscape-cose-bilkent/src/index.js`, `cose-base` `CoSELayout`, and `layout-base` force helpers | Mermaid's deterministic flat-tree radial initialization and spring embedder path |
+| `mindmap/upstream/cose/CoseBilkentLayout.kt` | `cytoscape-cose-bilkent/src/index.js`, `cose-base` `CoSELayout`, and `layout-base` force and `IGeometry.getIntersection2` helpers | Mermaid's deterministic flat-tree radial initialization, rectangle clipping, and spring embedder path |
 | `mindmap/upstream/dagre/MindmapDagreLayout.kt` | Mermaid unified Dagre adapter | Measured top-to-bottom graph placement, edge routing, and shape intersection |
 | `mindmap/upstream/tidytree/MindmapTidyTreeLayout.kt` | `@mermaid-js/layout-tidy-tree/src/layout.ts` | Root splitting, left/right tree placement, bounds, and edge projection |
 | `mindmap/upstream/tidytree/NonLayeredTidyTreeLayout.kt` | `non-layered-tidy-tree-layout/src/algorithm.js` and `src/helpers.js` | First walk, second walk, contour threading, spacing, and final bounds |
@@ -58,6 +58,15 @@ mirror. The portable resolver maps browser Trebuchet MS to bundled
 Arimo-compatible metrics; the refreshed corpus has both narrower and wider
 Native labels (`0.888-1.180` across matched single-line labels), so no uniform
 width multiplier can remove the residual without regressing other inputs.
+
+For identical fixed node geometry, the JavaScript and Kotlin CoSE translations
+match through the recorded radial initialization and iterations
+`1, 2, 3, 4, 5, 10, 20` within `0.001`. A 19-node diagnostic tree then becomes
+chaotic after a confirmed one-ULP `sin` difference between V8 and the JVM feeds
+the iterative force simulation. Therefore the gate compares the shared early
+trajectory and requires deterministic Kotlin replay, but does not claim final
+coordinate identity for that wide diagnostic tree. The two smaller fixtures
+continue to require final relative-coordinate identity.
 
 ## Explicit Translation Boundaries
 
@@ -88,21 +97,29 @@ width multiplier can remove the residual without regressing other inputs.
   configuration, metadata, unsupported features, and each layout selector.
 - `CoseBilkentLayoutTest` compares Kotlin output with generated
   `cytoscape-cose-bilkent 4.1.0` fixtures for identical node sizes and edges.
-  Relative centers for a minimal tree and a branched tree are checked without
-  involving font measurement, SVG, Canvas, or raster output. Regenerate the
-  fixtures with `npm run generate:cose-bilkent-parity-fixtures` from
+  Relative centers for a minimal tree and a branched tree are checked through
+  the final iteration. A 19-node mixed tree checks radial initialization and
+  iterations through 20, then requires deterministic Kotlin replay instead of
+  cross-runtime final-coordinate identity. These checks do not involve font
+  measurement, SVG, Canvas, or raster output. Regenerate the fixtures with
+  `npm run generate:cose-bilkent-parity-fixtures` from
   `tools/official-reference`.
 - `MindmapDagreLayoutTest` and `NonLayeredTidyTreeLayoutTest` cover their
   translated algorithm boundaries.
 - `MindmapStressTest` renders 256 deterministic randomized Native diagrams.
 - The refreshed Web audit compares 13 independent production scenarios and
-  256 unique same-source matrix cases against Mermaid.js `12.0.0`. Production
+  256 structurally distinct same-source cases against Mermaid.js `12.0.0`. Production
   results are `9 pass / 4 manually reviewed / 0 fail`; matrix results are
-  `159 pass / 97 manually reviewed / 0 fail`, with 256/256 geometry passes.
+  `161 pass / 95 review / 0 fail`, with 256/256 geometry passes.
   The reviews are CoSE-Bilkent branch rotations or mirrors under platform
-  text-size perturbations; 48 also cross the raster-mask threshold. Expected
+  text-size perturbations; 41 also cross the raster-mask threshold. Expected
   text, nodes, hierarchy edges, shapes, colors, clipping, overlap, and paint
   order all pass manual review across 16 contact sheets.
+- The geometry gate keeps the shared numeric thresholds unchanged. A
+  CoSE-Bilkent ratio outside those thresholds is queued for review only when
+  the Native and Official detail manifests have no structural error. Blank
+  output, missing text or shapes, hierarchy mismatches, and every non-CoSE
+  ratio violation remain hard failures.
 
 ## Upgrade Procedure
 

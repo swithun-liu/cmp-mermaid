@@ -2,7 +2,14 @@ package com.swithun.cmpmermaid.core
 
 import com.swithun.cmpmermaid.core.generated.StabilityCorpusCase
 import com.swithun.cmpmermaid.core.generated.productionCorpusCases
-import com.swithun.cmpmermaid.core.generated.visualParityCorpusCases
+import com.swithun.cmpmermaid.core.generated.visualStressCorpusSamples
+import com.swithun.cmpmermaid.core.generated.visualStressSampleCount
+import com.swithun.cmpmermaid.core.generated.visualStressSamplesPerDiagram
+import com.swithun.cmpmermaid.core.generated.visualStressStructuralScenarioCount
+import com.swithun.cmpmermaid.core.generated.visualStressStructuralScenarioCountsByDiagram
+import com.swithun.cmpmermaid.core.generated.visualStructureCaseCount
+import com.swithun.cmpmermaid.core.generated.visualStructureCasesPerDiagram
+import com.swithun.cmpmermaid.core.generated.visualStructureCorpusCases
 import kotlin.math.ceil
 import kotlin.math.min
 import kotlin.test.Test
@@ -120,88 +127,119 @@ class ProductionCorpusTest {
     }
 
     @Test
-    fun rendersEveryLargeScaleVisualParityCase() {
-        assertEquals(8_448, visualParityCorpusCases.size)
+    fun tracksTextLayoutStressSamplesWithoutCountingThemAsStructuralCoverage() {
+        assertEquals(441, visualStressStructuralScenarioCount)
+        assertEquals(8_448, visualStressSampleCount)
+        assertEquals(visualStressSampleCount, visualStressCorpusSamples.size)
         assertEquals(
-            setOf(
-                "flowchart",
-                "swimlanes",
-                "architecture",
-                "c4",
-                "railroad",
-                "treeview",
-                "xychart",
-                "quadrant",
-                "timeline",
-                "kanban",
-                "sequence",
-                "class",
-                "state",
-                "er",
-                "gantt",
-                "pie",
-                "journey",
-                "requirement",
-                "gitgraph",
-                "mindmap",
-                "packet",
-                "radar",
-                "sankey",
-                "treemap",
-                "venn",
-                "ishikawa",
-                "cynefin",
-                "block",
-                "eventmodeling",
-                "agentflow",
-                "usecase",
-                "wardley",
-                "zenuml",
-            ).associateWith { 256 },
-            visualParityCorpusCases
+            visualStressStructuralScenarioCountsByDiagram.keys
+                .associateWith { visualStressSamplesPerDiagram },
+            visualStressCorpusSamples
                 .groupingBy(StabilityCorpusCase::diagramId)
                 .eachCount(),
         )
         assertEquals(
-            visualParityCorpusCases.size,
-            visualParityCorpusCases.map(StabilityCorpusCase::source).toSet().size,
+            visualStressSampleCount,
+            visualStressCorpusSamples.map(StabilityCorpusCase::source).toSet().size,
+        )
+        assertEquals(
+            visualStressStructuralScenarioCount,
+            visualStressCorpusSamples
+                .flatMap(StabilityCorpusCase::features)
+                .filter { feature -> feature.startsWith(STRUCTURAL_SCENARIO_PREFIX) }
+                .mapTo(mutableSetOf()) { feature ->
+                    feature.removePrefix(STRUCTURAL_SCENARIO_PREFIX)
+                }
+                .size,
+        )
+    }
+
+    @Test
+    fun renders256StructurallyDistinctCasesForEveryDiagramFamily() {
+        assertEquals(8_448, visualStructureCaseCount)
+        assertEquals(visualStructureCaseCount, visualStructureCorpusCases.size)
+        assertEquals(
+            productionCorpusCases
+                .map(StabilityCorpusCase::diagramId)
+                .toSet()
+                .associateWith { visualStructureCasesPerDiagram },
+            visualStructureCorpusCases
+                .groupingBy(StabilityCorpusCase::diagramId)
+                .eachCount(),
+        )
+        assertEquals(
+            visualStructureCaseCount,
+            visualStructureCorpusCases.map(StabilityCorpusCase::source).toSet().size,
+        )
+        assertEquals(
+            visualStructureCaseCount,
+            visualStructureCorpusCases
+                .map { case ->
+                    case.features.single { feature ->
+                        feature.startsWith(STRUCTURAL_SIGNATURE_PREFIX)
+                    }
+                }
+                .toSet()
+                .size,
         )
 
-        visualParityCorpusCases.forEach { case ->
-            val scene = render(case)
-
-            assertTrue(
-                scene.width.isFinite() && scene.width in 1f..MAX_SCENE_SIZE,
-                "${case.id} produced invalid width ${scene.width}",
-            )
-            assertTrue(
-                scene.height.isFinite() && scene.height in 1f..MAX_SCENE_SIZE,
-                "${case.id} produced invalid height ${scene.height}",
-            )
-            assertTrue(
-                scene.elements.size in 1..MAX_SCENE_ELEMENTS,
-                "${case.id} produced ${scene.elements.size} elements",
-            )
-            scene.elements.forEach { element ->
-                assertFiniteGeometry(case.id, element)
-            }
-
-            val renderedText = buildList {
-                scene.title?.let(::add)
-                scene.accessibilityTitle?.let(::add)
-                scene.accessibilityDescription?.let(::add)
-                scene.elements.filterIsInstance<SceneText>().mapTo(this, SceneText::text)
-            }
-            case.expectedTexts.forEach { expectedText ->
-                assertTrue(
-                    renderedText.any { text ->
-                        expectedText in text.replace(WHITESPACE, " ")
-                    },
-                    "${case.id} did not render expected text '$expectedText'; " +
-                        "actual=$renderedText",
+        val renderFailures = mutableListOf<String>()
+        visualStructureCorpusCases.forEach { case ->
+            when (
+                val result = engine.render(
+                    source = case.source,
+                    context = context.copy(
+                        options = MermaidRenderOptions(layout = case.layout),
+                    ),
                 )
+            ) {
+                is GMResult.Err -> renderFailures += "${case.id}: ${result.error}"
+                is GMResult.Ok -> {
+                    val scene = result.value
+                    assertTrue(
+                        scene.width.isFinite() && scene.width in 1f..MAX_SCENE_SIZE,
+                        "${case.id} produced invalid width ${scene.width}",
+                    )
+                    assertTrue(
+                        scene.height.isFinite() && scene.height in 1f..MAX_SCENE_SIZE,
+                        "${case.id} produced invalid height ${scene.height}",
+                    )
+                    assertTrue(
+                        scene.elements.size in 1..MAX_SCENE_ELEMENTS,
+                        "${case.id} produced ${scene.elements.size} elements",
+                    )
+                    scene.elements.forEach { element ->
+                        assertFiniteGeometry(case.id, element)
+                    }
+
+                    val renderedText = buildList {
+                        scene.title?.let(::add)
+                        scene.accessibilityTitle?.let(::add)
+                        scene.accessibilityDescription?.let(::add)
+                        scene.elements
+                            .filterIsInstance<SceneText>()
+                            .mapTo(this, SceneText::text)
+                    }
+                    case.expectedTexts.forEach { expectedText ->
+                        if (
+                            renderedText.none { text ->
+                                expectedText in text.replace(WHITESPACE, " ")
+                            }
+                        ) {
+                            renderFailures +=
+                                "${case.id}: missing '$expectedText'; actual=$renderedText"
+                        }
+                    }
+                }
             }
         }
+        assertTrue(
+            renderFailures.isEmpty(),
+            renderFailures.joinToString(
+                prefix = "${renderFailures.size} structural cases failed:\n",
+                separator = "\n",
+            ),
+        )
     }
 
     @Test
@@ -342,6 +380,8 @@ class ProductionCorpusTest {
     private fun Int?.orZero(): Int = this ?: 0
 
     private companion object {
+        const val STRUCTURAL_SCENARIO_PREFIX = "seed:"
+        const val STRUCTURAL_SIGNATURE_PREFIX = "structural-signature:"
         const val MAX_SCENE_SIZE = 20_000f
         const val MAX_SCENE_ELEMENTS = 20_000
         val WHITESPACE = Regex("""\s+""")

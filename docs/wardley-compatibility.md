@@ -33,14 +33,12 @@ through `MermaidWardleyOptions`, matching Mermaid's `initialize()` path.
   structures.
 - The 256-case generated Native matrix renders with finite deterministic
   SceneGraphs.
-- All 256 generated visual-matrix sources render successfully through the
-  isolated Mermaid.js `12.0.0` reference renderer.
+- All 256 structurally distinct visual-matrix sources render successfully
+  through the isolated Mermaid.js `12.0.0` reference renderer.
 - All 13 production pairs pass the replacement detail and geometry audits.
   Native/Official content ratios are width `1.008-1.015`, height
   `1.019-1.020`, and foreground ink `0.970-1.106`.
-- All 256 visual-matrix pairs pass the replacement detail and geometry audits
-  with `256 pass / 0 review / 0 fail`. Ratios are width `0.999-1.016`,
-  height `1.016-1.019`, and foreground ink `0.960-1.106`.
+- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.008-1.015`, height `1.019-1.020`, and foreground ink `0.973-1.103`.
 - All 16 visual-matrix contact sheets were manually reviewed with no unresolved
   text, component, dependency, marker, annotation, clipping, overlap, or paint
   order defect.

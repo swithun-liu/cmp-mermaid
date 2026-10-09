@@ -1,4 +1,4 @@
-import { cases as visualParityCases, kinds } from './visual-parity-corpus.mjs';
+import { kinds, samples as visualStressSamples } from './visual-parity-corpus.mjs';
 
 const kindTitles = Object.freeze({
   flowchart: 'Flowchart',
@@ -151,7 +151,7 @@ export const mutationProfiles = Object.freeze([
 
 export const cases = Object.freeze(
   kinds.flatMap((kind) => {
-    const baseCases = visualParityCases.filter((entry) => entry.kind === kind);
+    const baseCases = visualStressSamples.filter((entry) => entry.kind === kind);
     if (baseCases.length !== casesPerKind) {
       throw new Error(
         `Expected ${casesPerKind} ${kind} base cases, found ${baseCases.length}`,

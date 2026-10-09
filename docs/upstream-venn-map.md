@@ -71,6 +71,11 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   and layout failures return `GMResult.Err`.
 - The generic Venn.js and fmin APIs are narrowed to Mermaid's exact invocation
   and retain JavaScript number semantics for finite optimization inputs.
+- Upstream constrained MDS calls `Math.random` for ten restart vectors.
+  Production Kotlin replaces that process-global source with a fixed xorshift64
+  stream. The isolated Official renderer temporarily installs the same stream
+  only while rendering `venn-beta` and restores `Math.random` in `finally`.
+  `VennJsLayoutTest` locks the first five doubles on both sides of this oracle.
 - Multi-set unions synthesize pairwise overlap entries exactly at Mermaid's
   renderer boundary before entering the translated Venn.js layout.
 - Browser DOM and SVG measurement are replaced by `TextMetricProvider` and
@@ -81,7 +86,7 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - SVG percentage title coordinates are re-resolved after viewBox
   normalization; the SceneGraph translation preserves that upstream shift.
 - Venn title bounds apply a local Compose/Trebuchet metric correction so the
-  256-case matrix has no unresolved clipping mismatch without changing shared
+  256-case structural matrix has no unresolved clipping mismatch without changing shared
   text rendering.
 
 ## Parity Gate
@@ -89,14 +94,16 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - Parser, database, circle geometry, Venn.js optimization, fmin routines,
   pairwise completion, configuration, styles, metadata, and structured-error
   tests pass.
+- The deterministic constrained-MDS oracle test verifies the first five random
+  values consumed by Kotlin against the isolated JavaScript renderer.
 - All four active examples extracted from Mermaid's Venn documentation render
   in the JVM test.
 - A separate deterministic randomized test renders 256 Venn inputs twice and
   verifies finite, stable SceneGraphs.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
+  256 structurally distinct same-source cases against Mermaid.js `12.0.0`.
 - All 16 matrix contact sheets were manually reviewed. The final result is
-  `216 automatic pass + 40 manual acceptance + 0 unresolved`.
+  `143 pass + 113 review + 0 fail`.
 
 ## Upgrade Procedure
 

@@ -1,70 +1,24 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 8,448 source cases and 16,896 screenshots from the
-large-scale visual parity matrix. Every page shows the same Mermaid source on
-the left in CMP Native and on the right in Mermaid.js 12.0.0.
+This index contains 8,448 structurally distinct
+source cases and
+16,896 screenshots from the large-scale
+visual parity matrix. Every page shows the same Mermaid source on the left in
+CMP Native and on the right in Mermaid.js 12.0.0.
 
-The matrix contains 256 cases per supported diagram type. Case IDs, structural
-seed IDs, label profiles, feature dimensions, source hashes, image hashes, and
-capture sizes are recorded in
-[`visual-parity-manifest.json`](visual-parity-manifest.json). Each type
-combines at least 13 complex structural seeds with visible text and layout-pressure
-profiles. The 256 sources per type are unique, but they are not presented as
-256 unrelated topologies.
+The matrix contains 256 structurally distinct cases per supported diagram
+type. Uniqueness is determined from the curated seed scenario, seed feature
+set, generated structural item count, and family-specific syntax/topology
+variant. Ordinal numbers and label length are not uniqueness dimensions.
 
-All 33 families completed the replacement detail, geometry, and manual
-contact-sheet gates. Mindmap evidence was refreshed on 2026-10-08 after
-aligning its HTML-label line height. Treemap evidence and representation-aware
-detail auditing were refreshed on 2026-10-09. The accepted total is `8,448/8,448`
-pairs: `8,141 automatic pass / 307 manually reviewed / 0 unresolved` across
-528 contact sheets. The aggregate
-[geometry report](visual-parity-geometry.json) has `0` failures, with width
-ratios `0.896-1.237`, height ratios `0.852-1.236`, and foreground-ink ratios
-`0.567-1.578`. Review findings are limited to the documented text-position,
-text-overlap, raster-mask, and paint-order occlusion-ratio representation
-thresholds; manual review found no missing semantic content, clipping defect,
-or incorrect visible paint order.
-
-| Family | Pass | Review | Fail | Width ratio | Height ratio | Ink ratio |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Flowchart | 256 | 0 | 0 | `1.021-1.083` | `0.965-1.048` | `0.957-1.187` |
-| Swimlanes | 196 | 60 | 0 | `1.008-1.136` | `0.953-1.070` | `0.963-1.521` |
-| Architecture | 256 | 0 | 0 | `1.020-1.232` | `0.998-1.236` | `0.991-1.578` |
-| C4 | 256 | 0 | 0 | `0.967-1.071` | `1.028-1.060` | `0.987-1.128` |
-| Railroad | 256 | 0 | 0 | `1.024-1.116` | `1.023-1.146` | `1.048-1.338` |
-| TreeView | 256 | 0 | 0 | `0.990-1.055` | `0.969-1.063` | `0.853-1.046` |
-| Use Case | 256 | 0 | 0 | `1.036-1.160` | `0.971-1.115` | `1.043-1.316` |
-| Cynefin | 256 | 0 | 0 | `1.013-1.032` | `1.009-1.019` | `1.020-1.049` |
-| Agentflow | 256 | 0 | 0 | `1.040-1.145` | `0.947-1.100` | `0.894-1.244` |
-| Block | 252 | 4 | 0 | `0.978-1.189` | `0.922-1.080` | `0.925-1.403` |
-| Event Modeling | 256 | 0 | 0 | `1.025-1.037` | `1.008-1.063` | `0.995-1.126` |
-| XY Chart | 236 | 20 | 0 | `1.002-1.024` | `0.988-1.033` | `0.895-1.136` |
-| Quadrant Chart | 256 | 0 | 0 | `1.007-1.035` | `1.011-1.022` | `1.025-1.048` |
-| Timeline | 256 | 0 | 0 | `1.026-1.053` | `1.038-1.087` | `1.052-1.136` |
-| Sequence | 256 | 0 | 0 | `1.019-1.237` | `0.919-1.113` | `0.925-1.294` |
-| Class | 256 | 0 | 0 | `1.025-1.184` | `0.916-1.056` | `0.776-1.199` |
-| State | 256 | 0 | 0 | `0.959-1.131` | `0.963-1.089` | `0.984-1.382` |
-| Entity Relationship | 196 | 60 | 0 | `1.010-1.139` | `0.980-1.089` | `0.567-1.253` |
-| Gantt | 256 | 0 | 0 | `1.035-1.037` | `0.883-0.964` | `0.963-1.023` |
-| Pie | 255 | 1 | 0 | `0.992-1.050` | `0.994-1.019` | `0.993-1.042` |
-| User Journey | 256 | 0 | 0 | `1.020-1.032` | `1.041-1.061` | `0.983-1.073` |
-| Requirement | 252 | 4 | 0 | `1.013-1.072` | `1.004-1.053` | `0.974-1.148` |
-| Git Graph | 235 | 21 | 0 | `1.035-1.141` | `1.032-1.145` | `1.035-1.421` |
-| Mindmap | 159 | 97 | 0 | `0.896-1.226` | `0.967-1.150` | `0.774-1.313` |
-| Packet | 256 | 0 | 0 | `1.011-1.015` | `1.003-1.065` | `0.977-1.039` |
-| Radar | 256 | 0 | 0 | `1.004-1.036` | `1.004-1.020` | `1.006-1.037` |
-| Sankey | 256 | 0 | 0 | `1.043-1.053` | `1.026-1.053` | `1.053-1.112` |
-| Treemap | 256 | 0 | 0 | `1.033-1.076` | `1.029-1.039` | `0.945-1.077` |
-| Venn | 216 | 40 | 0 | `0.995-1.026` | `0.990-1.022` | `0.989-1.048` |
-| Ishikawa | 256 | 0 | 0 | `1.046-1.181` | `1.017-1.116` | `1.028-1.313` |
-| Kanban | 256 | 0 | 0 | `1.036-1.089` | `0.852-1.088` | `0.992-1.105` |
-| Wardley Map | 256 | 0 | 0 | `0.999-1.016` | `1.016-1.019` | `0.960-1.106` |
-| ZenUML | 256 | 0 | 0 | `1.031-1.101` | `1.025-1.102` | `0.970-1.264` |
+Case IDs, structural signatures, profile dimensions, source hashes, image
+hashes, and capture sizes are recorded in
+[`visual-parity-manifest.json`](visual-parity-manifest.json).
+Corpus accounting is published separately in
+[`visual-structure-corpus-metadata.json`](visual-structure-corpus-metadata.json).
 
 <details>
-<summary><strong>Flowchart - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.021-1.083`, height `0.965-1.048`, foreground ink `0.957-1.187`. All 16 pages below were manually reviewed.
+<summary><strong>Flowchart - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Flowchart visual parity page 01](flowchart-visual-parity-01.jpg)
 
@@ -101,9 +55,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Swimlanes - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `196 pass / 60 review / 0 fail`. The 60 reviews contain only text-position findings along semantically equivalent orthogonal routes. Geometry ratios: width `1.008-1.136`, height `0.953-1.070`, foreground ink `0.963-1.521`. Raw [detail](swimlanes-visual-parity-detail.json) and [geometry](swimlanes-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>Swimlanes - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Swimlanes visual parity page 01](swimlanes-visual-parity-01.jpg)
 
@@ -140,9 +92,7 @@ Replacement detail audit: `196 pass / 60 review / 0 fail`. The 60 reviews contai
 </details>
 
 <details>
-<summary><strong>Architecture - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.020-1.232`, height `0.998-1.236`, foreground ink `0.991-1.578`. Raw [detail](architecture-visual-parity-detail.json) and [geometry](architecture-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>Architecture - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Architecture visual parity page 01](architecture-visual-parity-01.jpg)
 
@@ -179,9 +129,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>C4 - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.967-1.071`, height `1.028-1.060`, foreground ink `0.987-1.128`. Raw [detail](c4-visual-parity-detail.json) and [geometry](c4-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>C4 - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![C4 visual parity page 01](c4-visual-parity-01.jpg)
 
@@ -218,9 +166,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Railroad - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.024-1.116`, height `1.023-1.146`, foreground ink `1.048-1.338`. Raw [detail](railroad-visual-parity-detail.json) and [geometry](railroad-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>Railroad - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Railroad visual parity page 01](railroad-visual-parity-01.jpg)
 
@@ -257,9 +203,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>TreeView - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.990-1.055`, height `0.969-1.063`, foreground ink `0.853-1.046`. Raw [detail](treeview-visual-parity-detail.json) and [geometry](treeview-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>TreeView - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![TreeView visual parity page 01](treeview-visual-parity-01.jpg)
 
@@ -296,204 +240,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Use Case - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry counts compare both render objects and expanded primitives, and spatially equivalent segmented text is compared by its combined bounds. Geometry ratios: width `1.036-1.160`, height `0.971-1.115`, foreground ink `1.043-1.316`. Raw [detail](usecase-visual-parity-detail.json) and [geometry](usecase-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
-
-![Use Case visual parity page 01](usecase-visual-parity-01.jpg)
-
-![Use Case visual parity page 02](usecase-visual-parity-02.jpg)
-
-![Use Case visual parity page 03](usecase-visual-parity-03.jpg)
-
-![Use Case visual parity page 04](usecase-visual-parity-04.jpg)
-
-![Use Case visual parity page 05](usecase-visual-parity-05.jpg)
-
-![Use Case visual parity page 06](usecase-visual-parity-06.jpg)
-
-![Use Case visual parity page 07](usecase-visual-parity-07.jpg)
-
-![Use Case visual parity page 08](usecase-visual-parity-08.jpg)
-
-![Use Case visual parity page 09](usecase-visual-parity-09.jpg)
-
-![Use Case visual parity page 10](usecase-visual-parity-10.jpg)
-
-![Use Case visual parity page 11](usecase-visual-parity-11.jpg)
-
-![Use Case visual parity page 12](usecase-visual-parity-12.jpg)
-
-![Use Case visual parity page 13](usecase-visual-parity-13.jpg)
-
-![Use Case visual parity page 14](usecase-visual-parity-14.jpg)
-
-![Use Case visual parity page 15](usecase-visual-parity-15.jpg)
-
-![Use Case visual parity page 16](usecase-visual-parity-16.jpg)
-
-</details>
-
-<details>
-<summary><strong>Cynefin - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.013-1.032`, height `1.009-1.019`, foreground ink `1.020-1.049`. Raw [detail](cynefin-visual-parity-detail.json) and [geometry](cynefin-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
-
-![Cynefin visual parity page 01](cynefin-visual-parity-01.jpg)
-
-![Cynefin visual parity page 02](cynefin-visual-parity-02.jpg)
-
-![Cynefin visual parity page 03](cynefin-visual-parity-03.jpg)
-
-![Cynefin visual parity page 04](cynefin-visual-parity-04.jpg)
-
-![Cynefin visual parity page 05](cynefin-visual-parity-05.jpg)
-
-![Cynefin visual parity page 06](cynefin-visual-parity-06.jpg)
-
-![Cynefin visual parity page 07](cynefin-visual-parity-07.jpg)
-
-![Cynefin visual parity page 08](cynefin-visual-parity-08.jpg)
-
-![Cynefin visual parity page 09](cynefin-visual-parity-09.jpg)
-
-![Cynefin visual parity page 10](cynefin-visual-parity-10.jpg)
-
-![Cynefin visual parity page 11](cynefin-visual-parity-11.jpg)
-
-![Cynefin visual parity page 12](cynefin-visual-parity-12.jpg)
-
-![Cynefin visual parity page 13](cynefin-visual-parity-13.jpg)
-
-![Cynefin visual parity page 14](cynefin-visual-parity-14.jpg)
-
-![Cynefin visual parity page 15](cynefin-visual-parity-15.jpg)
-
-![Cynefin visual parity page 16](cynefin-visual-parity-16.jpg)
-
-</details>
-
-<details>
-<summary><strong>Agentflow - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.040-1.145`, height `0.947-1.100`, foreground ink `0.894-1.244`. Raw [detail](agentflow-visual-parity-detail.json) and [geometry](agentflow-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
-
-![Agentflow visual parity page 01](agentflow-visual-parity-01.jpg)
-
-![Agentflow visual parity page 02](agentflow-visual-parity-02.jpg)
-
-![Agentflow visual parity page 03](agentflow-visual-parity-03.jpg)
-
-![Agentflow visual parity page 04](agentflow-visual-parity-04.jpg)
-
-![Agentflow visual parity page 05](agentflow-visual-parity-05.jpg)
-
-![Agentflow visual parity page 06](agentflow-visual-parity-06.jpg)
-
-![Agentflow visual parity page 07](agentflow-visual-parity-07.jpg)
-
-![Agentflow visual parity page 08](agentflow-visual-parity-08.jpg)
-
-![Agentflow visual parity page 09](agentflow-visual-parity-09.jpg)
-
-![Agentflow visual parity page 10](agentflow-visual-parity-10.jpg)
-
-![Agentflow visual parity page 11](agentflow-visual-parity-11.jpg)
-
-![Agentflow visual parity page 12](agentflow-visual-parity-12.jpg)
-
-![Agentflow visual parity page 13](agentflow-visual-parity-13.jpg)
-
-![Agentflow visual parity page 14](agentflow-visual-parity-14.jpg)
-
-![Agentflow visual parity page 15](agentflow-visual-parity-15.jpg)
-
-![Agentflow visual parity page 16](agentflow-visual-parity-16.jpg)
-
-</details>
-
-<details>
-<summary><strong>Block - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `252 pass / 4 review / 0 fail`. The four reviews are paint-order occlusion-ratio threshold findings on intentional overlaps; visible shapes, labels, edges, markers, clipping, and paint order remain complete. Geometry ratios: width `0.978-1.189`, height `0.922-1.080`, foreground ink `0.925-1.403`. Raw [detail](block-visual-parity-detail.json) and [geometry](block-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
-
-![Block visual parity page 01](block-visual-parity-01.jpg)
-
-![Block visual parity page 02](block-visual-parity-02.jpg)
-
-![Block visual parity page 03](block-visual-parity-03.jpg)
-
-![Block visual parity page 04](block-visual-parity-04.jpg)
-
-![Block visual parity page 05](block-visual-parity-05.jpg)
-
-![Block visual parity page 06](block-visual-parity-06.jpg)
-
-![Block visual parity page 07](block-visual-parity-07.jpg)
-
-![Block visual parity page 08](block-visual-parity-08.jpg)
-
-![Block visual parity page 09](block-visual-parity-09.jpg)
-
-![Block visual parity page 10](block-visual-parity-10.jpg)
-
-![Block visual parity page 11](block-visual-parity-11.jpg)
-
-![Block visual parity page 12](block-visual-parity-12.jpg)
-
-![Block visual parity page 13](block-visual-parity-13.jpg)
-
-![Block visual parity page 14](block-visual-parity-14.jpg)
-
-![Block visual parity page 15](block-visual-parity-15.jpg)
-
-![Block visual parity page 16](block-visual-parity-16.jpg)
-
-</details>
-
-<details>
-<summary><strong>Event Modeling - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Official's single title/payload foreignObject and Native's separate text elements are compared by their combined spatial bounds. Geometry ratios: width `1.025-1.037`, height `1.008-1.063`, foreground ink `0.995-1.126`. Raw [detail](eventmodeling-visual-parity-detail.json) and [geometry](eventmodeling-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
-
-![Event Modeling visual parity page 01](eventmodeling-visual-parity-01.jpg)
-
-![Event Modeling visual parity page 02](eventmodeling-visual-parity-02.jpg)
-
-![Event Modeling visual parity page 03](eventmodeling-visual-parity-03.jpg)
-
-![Event Modeling visual parity page 04](eventmodeling-visual-parity-04.jpg)
-
-![Event Modeling visual parity page 05](eventmodeling-visual-parity-05.jpg)
-
-![Event Modeling visual parity page 06](eventmodeling-visual-parity-06.jpg)
-
-![Event Modeling visual parity page 07](eventmodeling-visual-parity-07.jpg)
-
-![Event Modeling visual parity page 08](eventmodeling-visual-parity-08.jpg)
-
-![Event Modeling visual parity page 09](eventmodeling-visual-parity-09.jpg)
-
-![Event Modeling visual parity page 10](eventmodeling-visual-parity-10.jpg)
-
-![Event Modeling visual parity page 11](eventmodeling-visual-parity-11.jpg)
-
-![Event Modeling visual parity page 12](eventmodeling-visual-parity-12.jpg)
-
-![Event Modeling visual parity page 13](eventmodeling-visual-parity-13.jpg)
-
-![Event Modeling visual parity page 14](eventmodeling-visual-parity-14.jpg)
-
-![Event Modeling visual parity page 15](eventmodeling-visual-parity-15.jpg)
-
-![Event Modeling visual parity page 16](eventmodeling-visual-parity-16.jpg)
-
-</details>
-
-<details>
-<summary><strong>XY Chart - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `236 pass / 20 review / 0 fail`. The 20 reviews are paint-order occlusion-ratio threshold findings on intentional chart layering; bars, lines, axes, labels, legends, clipping, and visible paint order remain complete. Geometry ratios: width `1.002-1.024`, height `0.988-1.033`, foreground ink `0.895-1.136`. All 16 pages below were manually reviewed.
+<summary><strong>XY Chart - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![XY Chart visual parity page 01](xychart-visual-parity-01.jpg)
 
@@ -530,9 +277,7 @@ Replacement detail audit: `236 pass / 20 review / 0 fail`. The 20 reviews are pa
 </details>
 
 <details>
-<summary><strong>Quadrant Chart - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.007-1.035`, height `1.011-1.022`, foreground ink `1.025-1.048`. All 16 pages below were manually reviewed.
+<summary><strong>Quadrant Chart - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Quadrant Chart visual parity page 01](quadrant-visual-parity-01.jpg)
 
@@ -569,9 +314,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Timeline - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.026-1.053`, height `1.038-1.087`, foreground ink `1.052-1.136`. All 16 pages below were manually reviewed.
+<summary><strong>Timeline - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Timeline visual parity page 01](timeline-visual-parity-01.jpg)
 
@@ -608,9 +351,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Sequence - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Spatially equivalent segmented labels are compared by their combined bounds while position, size, clipping, overlap, paint-order, and raster checks remain active. Geometry ratios: width `1.019-1.237`, height `0.919-1.113`, foreground ink `0.925-1.294`. Raw [detail](sequence-visual-parity-detail.json) is published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>Sequence - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Sequence visual parity page 01](sequence-visual-parity-01.jpg)
 
@@ -647,9 +388,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Spatially equivalent s
 </details>
 
 <details>
-<summary><strong>Class - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.025-1.184`, height `0.916-1.056`, foreground ink `0.776-1.199`. All 16 pages below were manually reviewed.
+<summary><strong>Class - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Class visual parity page 01](class-visual-parity-01.jpg)
 
@@ -686,9 +425,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>State - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.959-1.131`, height `0.963-1.089`, foreground ink `0.984-1.382`. All 16 pages below were manually reviewed.
+<summary><strong>State - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![State visual parity page 01](state-visual-parity-01.jpg)
 
@@ -725,9 +462,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Entity Relationship - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `196 pass / 60 review / 0 fail`. The 60 reviews contain only text-position findings on large repeated structures; all text, relationships, markers, clipping, overlap, and paint order remain complete. Geometry ratios: width `1.010-1.139`, height `0.980-1.089`, foreground ink `0.567-1.253`. All 16 pages below were manually reviewed.
+<summary><strong>Entity Relationship - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Entity Relationship visual parity page 01](er-visual-parity-01.jpg)
 
@@ -764,9 +499,7 @@ Replacement detail audit: `196 pass / 60 review / 0 fail`. The 60 reviews contai
 </details>
 
 <details>
-<summary><strong>Gantt - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.035-1.037`, height `0.883-0.964`, foreground ink `0.963-1.023`. All 16 pages below were manually reviewed.
+<summary><strong>Gantt - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Gantt visual parity page 01](gantt-visual-parity-01.jpg)
 
@@ -803,9 +536,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Pie - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `255 pass / 1 review / 0 fail`. The single review is a text-overlap font-box threshold finding; slices, labels, values, legend, clipping, and paint order remain complete. Geometry ratios: width `0.992-1.050`, height `0.994-1.019`, foreground ink `0.993-1.042`. All 16 pages below were manually reviewed.
+<summary><strong>Pie - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Pie visual parity page 01](pie-visual-parity-01.jpg)
 
@@ -842,9 +573,7 @@ Replacement detail audit: `255 pass / 1 review / 0 fail`. The single review is a
 </details>
 
 <details>
-<summary><strong>User Journey - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Spatially equivalent line breaks for the complete long actor label are compared by their combined bounds while the remaining text and raster gates stay active. Geometry ratios: width `1.020-1.032`, height `1.041-1.061`, foreground ink `0.983-1.073`. Raw [detail](journey-visual-parity-detail.json) is published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>User Journey - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![User Journey visual parity page 01](journey-visual-parity-01.jpg)
 
@@ -881,9 +610,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Spatially equivalent l
 </details>
 
 <details>
-<summary><strong>Requirement - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `252 pass / 4 review / 0 fail`. The four reviews are benign duplicate-label text-position cross-matches. Geometry ratios: width `1.013-1.072`, height `1.004-1.053`, foreground ink `0.974-1.148`. All 16 pages below were manually reviewed.
+<summary><strong>Requirement - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Requirement visual parity page 01](requirement-visual-parity-01.jpg)
 
@@ -920,9 +647,7 @@ Replacement detail audit: `252 pass / 4 review / 0 fail`. The four reviews are b
 </details>
 
 <details>
-<summary><strong>Git Graph - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `235 pass / 21 review / 0 fail`. Twenty reviews are text-overlap font-bound threshold findings and one is a paint-order occlusion-ratio threshold finding; expected labels, clipping, commit order, and raster checks pass. Geometry ratios: width `1.035-1.141`, height `1.032-1.145`, foreground ink `1.035-1.421`. All 16 pages below were manually reviewed.
+<summary><strong>Git Graph - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Git Graph visual parity page 01](gitgraph-visual-parity-01.jpg)
 
@@ -959,9 +684,7 @@ Replacement detail audit: `235 pass / 21 review / 0 fail`. Twenty reviews are te
 </details>
 
 <details>
-<summary><strong>Mindmap - 256 Native/Official pairs</strong></summary>
-
-Refreshed detail audit: `159 pass / 97 review / 0 fail`. All 97 reviews are text-position findings from equivalent CoSE-Bilkent branch rotations or mirrors under remaining browser/Compose glyph-width and line-break differences; 48 also cross the raster-mask threshold. Geometry ratios: width `0.896-1.226`, height `0.967-1.150`, foreground ink `0.774-1.313`. All 16 refreshed pages below were manually reviewed. Machine-readable [detail](mindmap-visual-parity-detail.json) and [geometry](mindmap-visual-parity-geometry.json) reports contain the complete results.
+<summary><strong>Mindmap - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Mindmap visual parity page 01](mindmap-visual-parity-01.jpg)
 
@@ -998,9 +721,7 @@ Refreshed detail audit: `159 pass / 97 review / 0 fail`. All 97 reviews are text
 </details>
 
 <details>
-<summary><strong>Packet - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.011-1.015`, height `1.003-1.065`, foreground ink `0.977-1.039`. All 16 pages below were manually reviewed.
+<summary><strong>Packet - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Packet visual parity page 01](packet-visual-parity-01.jpg)
 
@@ -1037,9 +758,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Radar - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.004-1.036`, height `1.004-1.020`, foreground ink `1.006-1.037`. All 16 pages below were manually reviewed.
+<summary><strong>Radar - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Radar visual parity page 01](radar-visual-parity-01.jpg)
 
@@ -1076,9 +795,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Sankey - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.043-1.053`, height `1.026-1.053`, foreground ink `1.053-1.112`. All 16 pages below were manually reviewed.
+<summary><strong>Sankey - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Sankey visual parity page 01](sankey-visual-parity-01.jpg)
 
@@ -1115,9 +832,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Treemap - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Native keeps Mermaid's section-label and value anchors while exposing measured glyph widths in the manifest. Geometry ratios: width `1.033-1.076`, height `1.029-1.039`, foreground ink `0.945-1.077`. Raw [detail](treemap-visual-parity-detail.json) and [geometry](treemap-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>Treemap - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Treemap visual parity page 01](treemap-visual-parity-01.jpg)
 
@@ -1154,9 +869,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Native keeps Mermaid's
 </details>
 
 <details>
-<summary><strong>Venn - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `216 pass / 40 review / 0 fail`. The 40 reviews repeat text-overlap font-box threshold patterns with complete sets, intersections, labels, and values. Geometry ratios: width `0.995-1.026`, height `0.990-1.022`, foreground ink `0.989-1.048`. Raw [detail](venn-visual-parity-detail.json) and [geometry](venn-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>Venn - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Venn visual parity page 01](venn-visual-parity-01.jpg)
 
@@ -1193,48 +906,7 @@ Replacement detail audit: `216 pass / 40 review / 0 fail`. The 40 reviews repeat
 </details>
 
 <details>
-<summary><strong>Ishikawa - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.046-1.181`, height `1.017-1.116`, foreground ink `1.028-1.313`. Raw [detail](ishikawa-visual-parity-detail.json) and [geometry](ishikawa-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
-
-![Ishikawa visual parity page 01](ishikawa-visual-parity-01.jpg)
-
-![Ishikawa visual parity page 02](ishikawa-visual-parity-02.jpg)
-
-![Ishikawa visual parity page 03](ishikawa-visual-parity-03.jpg)
-
-![Ishikawa visual parity page 04](ishikawa-visual-parity-04.jpg)
-
-![Ishikawa visual parity page 05](ishikawa-visual-parity-05.jpg)
-
-![Ishikawa visual parity page 06](ishikawa-visual-parity-06.jpg)
-
-![Ishikawa visual parity page 07](ishikawa-visual-parity-07.jpg)
-
-![Ishikawa visual parity page 08](ishikawa-visual-parity-08.jpg)
-
-![Ishikawa visual parity page 09](ishikawa-visual-parity-09.jpg)
-
-![Ishikawa visual parity page 10](ishikawa-visual-parity-10.jpg)
-
-![Ishikawa visual parity page 11](ishikawa-visual-parity-11.jpg)
-
-![Ishikawa visual parity page 12](ishikawa-visual-parity-12.jpg)
-
-![Ishikawa visual parity page 13](ishikawa-visual-parity-13.jpg)
-
-![Ishikawa visual parity page 14](ishikawa-visual-parity-14.jpg)
-
-![Ishikawa visual parity page 15](ishikawa-visual-parity-15.jpg)
-
-![Ishikawa visual parity page 16](ishikawa-visual-parity-16.jpg)
-
-</details>
-
-<details>
-<summary><strong>Kanban - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.036-1.089`, height `0.852-1.088`, foreground ink `0.992-1.105`. All 16 pages below were manually reviewed.
+<summary><strong>Kanban - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Kanban visual parity page 01](kanban-visual-parity-01.jpg)
 
@@ -1271,9 +943,229 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>Wardley Map - 256 Native/Official pairs</strong></summary>
+<summary><strong>Ishikawa - 256 structurally distinct Native/Official pairs</strong></summary>
 
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `0.999-1.016`, height `1.016-1.019`, foreground ink `0.960-1.106`. Raw [detail](wardley-visual-parity-detail.json) and [geometry](wardley-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+![Ishikawa visual parity page 01](ishikawa-visual-parity-01.jpg)
+
+![Ishikawa visual parity page 02](ishikawa-visual-parity-02.jpg)
+
+![Ishikawa visual parity page 03](ishikawa-visual-parity-03.jpg)
+
+![Ishikawa visual parity page 04](ishikawa-visual-parity-04.jpg)
+
+![Ishikawa visual parity page 05](ishikawa-visual-parity-05.jpg)
+
+![Ishikawa visual parity page 06](ishikawa-visual-parity-06.jpg)
+
+![Ishikawa visual parity page 07](ishikawa-visual-parity-07.jpg)
+
+![Ishikawa visual parity page 08](ishikawa-visual-parity-08.jpg)
+
+![Ishikawa visual parity page 09](ishikawa-visual-parity-09.jpg)
+
+![Ishikawa visual parity page 10](ishikawa-visual-parity-10.jpg)
+
+![Ishikawa visual parity page 11](ishikawa-visual-parity-11.jpg)
+
+![Ishikawa visual parity page 12](ishikawa-visual-parity-12.jpg)
+
+![Ishikawa visual parity page 13](ishikawa-visual-parity-13.jpg)
+
+![Ishikawa visual parity page 14](ishikawa-visual-parity-14.jpg)
+
+![Ishikawa visual parity page 15](ishikawa-visual-parity-15.jpg)
+
+![Ishikawa visual parity page 16](ishikawa-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Cynefin - 256 structurally distinct Native/Official pairs</strong></summary>
+
+![Cynefin visual parity page 01](cynefin-visual-parity-01.jpg)
+
+![Cynefin visual parity page 02](cynefin-visual-parity-02.jpg)
+
+![Cynefin visual parity page 03](cynefin-visual-parity-03.jpg)
+
+![Cynefin visual parity page 04](cynefin-visual-parity-04.jpg)
+
+![Cynefin visual parity page 05](cynefin-visual-parity-05.jpg)
+
+![Cynefin visual parity page 06](cynefin-visual-parity-06.jpg)
+
+![Cynefin visual parity page 07](cynefin-visual-parity-07.jpg)
+
+![Cynefin visual parity page 08](cynefin-visual-parity-08.jpg)
+
+![Cynefin visual parity page 09](cynefin-visual-parity-09.jpg)
+
+![Cynefin visual parity page 10](cynefin-visual-parity-10.jpg)
+
+![Cynefin visual parity page 11](cynefin-visual-parity-11.jpg)
+
+![Cynefin visual parity page 12](cynefin-visual-parity-12.jpg)
+
+![Cynefin visual parity page 13](cynefin-visual-parity-13.jpg)
+
+![Cynefin visual parity page 14](cynefin-visual-parity-14.jpg)
+
+![Cynefin visual parity page 15](cynefin-visual-parity-15.jpg)
+
+![Cynefin visual parity page 16](cynefin-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Block - 256 structurally distinct Native/Official pairs</strong></summary>
+
+![Block visual parity page 01](block-visual-parity-01.jpg)
+
+![Block visual parity page 02](block-visual-parity-02.jpg)
+
+![Block visual parity page 03](block-visual-parity-03.jpg)
+
+![Block visual parity page 04](block-visual-parity-04.jpg)
+
+![Block visual parity page 05](block-visual-parity-05.jpg)
+
+![Block visual parity page 06](block-visual-parity-06.jpg)
+
+![Block visual parity page 07](block-visual-parity-07.jpg)
+
+![Block visual parity page 08](block-visual-parity-08.jpg)
+
+![Block visual parity page 09](block-visual-parity-09.jpg)
+
+![Block visual parity page 10](block-visual-parity-10.jpg)
+
+![Block visual parity page 11](block-visual-parity-11.jpg)
+
+![Block visual parity page 12](block-visual-parity-12.jpg)
+
+![Block visual parity page 13](block-visual-parity-13.jpg)
+
+![Block visual parity page 14](block-visual-parity-14.jpg)
+
+![Block visual parity page 15](block-visual-parity-15.jpg)
+
+![Block visual parity page 16](block-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Event Modeling - 256 structurally distinct Native/Official pairs</strong></summary>
+
+![Event Modeling visual parity page 01](eventmodeling-visual-parity-01.jpg)
+
+![Event Modeling visual parity page 02](eventmodeling-visual-parity-02.jpg)
+
+![Event Modeling visual parity page 03](eventmodeling-visual-parity-03.jpg)
+
+![Event Modeling visual parity page 04](eventmodeling-visual-parity-04.jpg)
+
+![Event Modeling visual parity page 05](eventmodeling-visual-parity-05.jpg)
+
+![Event Modeling visual parity page 06](eventmodeling-visual-parity-06.jpg)
+
+![Event Modeling visual parity page 07](eventmodeling-visual-parity-07.jpg)
+
+![Event Modeling visual parity page 08](eventmodeling-visual-parity-08.jpg)
+
+![Event Modeling visual parity page 09](eventmodeling-visual-parity-09.jpg)
+
+![Event Modeling visual parity page 10](eventmodeling-visual-parity-10.jpg)
+
+![Event Modeling visual parity page 11](eventmodeling-visual-parity-11.jpg)
+
+![Event Modeling visual parity page 12](eventmodeling-visual-parity-12.jpg)
+
+![Event Modeling visual parity page 13](eventmodeling-visual-parity-13.jpg)
+
+![Event Modeling visual parity page 14](eventmodeling-visual-parity-14.jpg)
+
+![Event Modeling visual parity page 15](eventmodeling-visual-parity-15.jpg)
+
+![Event Modeling visual parity page 16](eventmodeling-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Agentflow - 256 structurally distinct Native/Official pairs</strong></summary>
+
+![Agentflow visual parity page 01](agentflow-visual-parity-01.jpg)
+
+![Agentflow visual parity page 02](agentflow-visual-parity-02.jpg)
+
+![Agentflow visual parity page 03](agentflow-visual-parity-03.jpg)
+
+![Agentflow visual parity page 04](agentflow-visual-parity-04.jpg)
+
+![Agentflow visual parity page 05](agentflow-visual-parity-05.jpg)
+
+![Agentflow visual parity page 06](agentflow-visual-parity-06.jpg)
+
+![Agentflow visual parity page 07](agentflow-visual-parity-07.jpg)
+
+![Agentflow visual parity page 08](agentflow-visual-parity-08.jpg)
+
+![Agentflow visual parity page 09](agentflow-visual-parity-09.jpg)
+
+![Agentflow visual parity page 10](agentflow-visual-parity-10.jpg)
+
+![Agentflow visual parity page 11](agentflow-visual-parity-11.jpg)
+
+![Agentflow visual parity page 12](agentflow-visual-parity-12.jpg)
+
+![Agentflow visual parity page 13](agentflow-visual-parity-13.jpg)
+
+![Agentflow visual parity page 14](agentflow-visual-parity-14.jpg)
+
+![Agentflow visual parity page 15](agentflow-visual-parity-15.jpg)
+
+![Agentflow visual parity page 16](agentflow-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Use Case - 256 structurally distinct Native/Official pairs</strong></summary>
+
+![Use Case visual parity page 01](usecase-visual-parity-01.jpg)
+
+![Use Case visual parity page 02](usecase-visual-parity-02.jpg)
+
+![Use Case visual parity page 03](usecase-visual-parity-03.jpg)
+
+![Use Case visual parity page 04](usecase-visual-parity-04.jpg)
+
+![Use Case visual parity page 05](usecase-visual-parity-05.jpg)
+
+![Use Case visual parity page 06](usecase-visual-parity-06.jpg)
+
+![Use Case visual parity page 07](usecase-visual-parity-07.jpg)
+
+![Use Case visual parity page 08](usecase-visual-parity-08.jpg)
+
+![Use Case visual parity page 09](usecase-visual-parity-09.jpg)
+
+![Use Case visual parity page 10](usecase-visual-parity-10.jpg)
+
+![Use Case visual parity page 11](usecase-visual-parity-11.jpg)
+
+![Use Case visual parity page 12](usecase-visual-parity-12.jpg)
+
+![Use Case visual parity page 13](usecase-visual-parity-13.jpg)
+
+![Use Case visual parity page 14](usecase-visual-parity-14.jpg)
+
+![Use Case visual parity page 15](usecase-visual-parity-15.jpg)
+
+![Use Case visual parity page 16](usecase-visual-parity-16.jpg)
+
+</details>
+
+<details>
+<summary><strong>Wardley Map - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![Wardley Map visual parity page 01](wardley-visual-parity-01.jpg)
 
@@ -1310,9 +1202,7 @@ Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width
 </details>
 
 <details>
-<summary><strong>ZenUML - 256 Native/Official pairs</strong></summary>
-
-Replacement detail audit: `256 pass / 0 review / 0 fail`. Geometry ratios: width `1.031-1.101`, height `1.025-1.102`, foreground ink `0.970-1.264`. Raw [detail](zenuml-visual-parity-detail.json) and [geometry](zenuml-visual-parity-geometry.json) reports are published with the sheets. All 16 pages below were manually reviewed.
+<summary><strong>ZenUML - 256 structurally distinct Native/Official pairs</strong></summary>
 
 ![ZenUML visual parity page 01](zenuml-visual-parity-01.jpg)
 

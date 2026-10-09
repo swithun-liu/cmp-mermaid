@@ -22,6 +22,24 @@ internal data class VennLayoutArea(
 )
 
 /**
+ * Deterministic replacement for the Math.random calls made by
+ * @upsetjs/venn.js 2.0.0 src/layout.js -> constrainedMDSLayout.
+ */
+internal class VennDeterministicRandom(
+    seed: Long = VENN_RANDOM_SEED,
+) {
+    private var state = seed.takeUnless { it == 0L } ?: VENN_RANDOM_SEED
+
+    fun nextDouble(): Double {
+        state = state xor (state shl 13)
+        state = state xor (state ushr 7)
+        state = state xor (state shl 17)
+        val positive = state ushr 11
+        return positive.toDouble() / (1L shl 53).toDouble()
+    }
+}
+
+/**
  * Kotlin translation of @upsetjs/venn.js 2.0.0:
  * src/layout.js and the geometry-only portions of src/diagram.js.
  */
@@ -241,7 +259,10 @@ internal object VennLayoutEngine {
                 distances[row][column] / norm
             }
         }
-        val random = DeterministicRandom(seedFor(areas))
+        // @upsetjs/venn.js 2.0.0 uses Math.random for every constrained-MDS
+        // restart. A fixed initial state makes the same upstream search path
+        // reproducible across KMP targets and the isolated Official oracle.
+        val random = VennDeterministicRandom()
         var best: Fmin.Result? = null
         repeat(CONSTRAINED_MDS_RESTARTS) {
             val initial = DoubleArray(distances.size * 2) { random.nextDouble() }
@@ -746,19 +767,6 @@ internal object VennLayoutEngine {
     private fun VennCircle.isFinite(): Boolean =
         x.isFinite() && y.isFinite() && radius.isFinite() && radius >= 0.0
 
-    private fun seedFor(areas: List<VennData>): Long {
-        var hash = FNV_OFFSET
-        areas.forEach { area ->
-            area.sets.forEach { setId ->
-                setId.forEach { character ->
-                    hash = (hash xor character.code.toLong()) * FNV_PRIME
-                }
-            }
-            hash = (hash xor area.size.toBits()) * FNV_PRIME
-        }
-        return hash
-    }
-
     private fun <T> layoutError(message: String): GMResult<T, MermaidError> =
         GMResult.Err(MermaidError.Layout("Mermaid Venn $message"))
 
@@ -789,21 +797,8 @@ internal object VennLayoutEngine {
         val bounds: Bounds,
     )
 
-    private class DeterministicRandom(seed: Long) {
-        private var state = seed.takeUnless { it == 0L } ?: GOLDEN_RATIO
-
-        fun nextDouble(): Double {
-            state = state xor (state shl 13)
-            state = state xor (state ushr 7)
-            state = state xor (state shl 17)
-            val positive = state ushr 11
-            return positive.toDouble() / (1L shl 53).toDouble()
-        }
-    }
-
     private const val SMALL = 1e-10
     private const val CONSTRAINED_MDS_RESTARTS = 10
-    private const val FNV_OFFSET = -3750763034362895579L
-    private const val FNV_PRIME = 1099511628211L
-    private const val GOLDEN_RATIO = -7046029254386353131L
 }
+
+private const val VENN_RANDOM_SEED = -7046029254386353131L

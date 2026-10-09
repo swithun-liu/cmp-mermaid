@@ -3,6 +3,7 @@ package com.swithun.cmpmermaid.core.venn
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.venn.upstream.mermaid.VennData
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennCircle
+import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennDeterministicRandom
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennGeometry
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennLayoutArea
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennLayoutEngine
@@ -13,6 +14,24 @@ import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
 class VennJsLayoutTest {
+    @Test
+    fun matchesTheIsolatedOfficialConstrainedMdsRandomOracle() {
+        val random = VennDeterministicRandom()
+
+        val actual = List(5) { random.nextDouble() }
+
+        assertEquals(
+            listOf(
+                0.8597941207808165,
+                0.39430133835633674,
+                0.48058787404949177,
+                0.18894988582774552,
+                0.17546217903306627,
+            ),
+            actual,
+        )
+    }
+
     @Test
     fun matchesUpstreamCircleIntersectionPrimitives() {
         assertClose(0.0, VennGeometry.circleArea(10.0, 0.0))

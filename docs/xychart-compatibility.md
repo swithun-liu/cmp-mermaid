@@ -57,18 +57,7 @@ presentation flags do not alter the fixed intrinsic SceneGraph dimensions.
   Compose and Mermaid.js `12.0.0`: detail audit `13 pass / 0 review / 0 fail`;
   geometry width `1.016-1.020`, height `1.012-1.015`, and foreground ink
   `0.967-1.144`.
-- 256 same-source visual-parity cases pass both the replacement detail and
-  geometry gates: `236 pass / 20 review / 0 fail`; width `1.002-1.024`, height
-  `0.988-1.033`, and foreground ink `0.895-1.136`. The reviews are
-  paint-order occlusion-ratio threshold findings on intentional chart
-  layering; all bars, lines, axes, labels, legends, clipping, and visible
-  paint order remain complete.
-- All 16 matrix contact sheets and all 256 pairs were manually reviewed. No
-  unresolved blank, clipping, geometry, label, legend, line, bar, overlap, or
-  paint-order defect remains. Browser/Compose font rasterization differences,
-  point labels touching the left axis, and legend coverage of a horizontal
-  data label were retained only where the pinned Mermaid result exhibits the
-  same behavior.
+- The fresh 256-case structural Native/Official audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `1.012-1.016`, height `1.008-1.018`, and foreground ink `0.962-1.154`.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
 

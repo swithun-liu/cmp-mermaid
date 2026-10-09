@@ -19,11 +19,13 @@ Mermaid's registry count is not the public family count:
 
 | State | Diagram families |
 | --- | --- |
-| Implemented, 256-case detail gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, ZenUML |
+| Implemented, independent production corpus and 256-case structural visual gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, ZenUML |
 
-The generated source matrix now contains 8,448 cases across all 33 families,
-and all cases pass the Native SceneGraph, Native/Official geometry, replacement
-detail, and manual contact-sheet gates. A Git Graph label paint-order defect
+The repository contains 441 hand-authored production scenarios and a generated
+visual matrix of 8,448 structurally distinct cases across all 33 families.
+All cases pass Native rendering and complete the Native/Official detail and
+geometry audits without a hard failure. A separate 8,448-input text/layout
+stress corpus remains isolated from structural coverage. A Git Graph label paint-order defect
 was visible in the original 3,072-pair matrix and was not identified during
 the earlier review. That defect is corrected; no family uses a legacy geometry
 result alone to satisfy the Stable gate.
@@ -50,19 +52,18 @@ global label layers reports a `paint-order-occlusion` mismatch for
 Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
-All 33 families have completed the replacement gate. Together they have 8,448
-accepted same-source pairs:
-`8,141 automatic pass / 307 manually reviewed / 0 unresolved` across 528
-reviewed contact sheets. The review queue contains only the documented
-text-position, text-overlap, raster-mask, and paint-order occlusion-ratio
-representation thresholds. Manual review confirmed complete expected text,
-hierarchy, shapes, colors, edges, clipping, and visible paint order.
+All 33 families have completed the structural visual gate. Together they have
+8,448 same-source pairs:
+`7,953 pass / 495 review / 0 fail` across 528 regenerated contact sheets.
+Geometry has 0 hard failures and retains four CoSE-Bilkent ratio reviews from
+three Mindmap cases; fixed-input algorithm parity is tested separately.
 
 The fresh per-family pass/review counts and width, height, and foreground-ink
 ranges are published in the
-[8,448-case visual evidence index](assets/stability-report/visual-parity-evidence.md).
-Across the complete matrix, width ratios are `0.896-1.237`, height ratios are
-`0.852-1.236`, and foreground-ink ratios are `0.567-1.578`.
+[8,448-case structural visual evidence index](assets/stability-report/visual-parity-evidence.md).
+Across the complete matrix, width ratios are `0.878-1.464`, height ratios are
+`0.798-1.442`, and foreground-ink ratios are `0.538-1.527`; the out-of-range
+width/height values are the four documented Mindmap reviews.
 
 ## Expected Behavior
 
@@ -105,7 +106,7 @@ Each of the 33 families must pass all of the following:
    perceptual difference, clipping, and overlap diagnostics are recorded.
    Font rasterization receives explicit tolerance; missing or wrongly layered
    content does not.
-5. **Visual review:** all 256 Native/Official pairs are reviewed from paged
+5. **Visual review:** all 256 structurally distinct Native/Official pairs are reviewed from paged
    contact sheets and every anomaly is resolved or documented as an allowed
    platform-font difference.
 6. **Stress and replay:** at least 256 separately generated legal inputs render
@@ -115,7 +116,9 @@ Each of the 33 families must pass all of the following:
 
 ## Overall Stable Gate
 
-Overall Mermaid `12.0.0` support is **Stable**: all 33 family gates pass and
-the report contains 8,448 same-source Native/Official pairs. Future changes
+Overall Mermaid `12.0.0` support is **Stable**: all 33 family gates pass, the
+report covers 441 independent production scenarios and 8,448 structurally
+distinct same-source Native/Official pairs. The derived text/layout stress
+corpus remains a separate robustness layer. Future changes
 must keep every family gate passing; a regression returns the affected family
 and the overall rating to a pending state.

@@ -54,11 +54,12 @@ import com.swithun.cmpmermaid.core.MermaidThemePreset
 import com.swithun.cmpmermaid.debugui.generated.invalidSourceCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.productionCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.stabilityCorpusCases
-import com.swithun.cmpmermaid.debugui.generated.visualParityCorpusCases
+import com.swithun.cmpmermaid.debugui.generated.visualStructureCorpusCases
 
 enum class MermaidDebugPreview {
     Native,
     Official,
+    Both,
     ;
 
     companion object {
@@ -364,14 +365,14 @@ private val productionAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
     }
 
 private val visualParityAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
-    visualParityCorpusCases.mapNotNull { corpusCase ->
+    visualStructureCorpusCases.mapNotNull { corpusCase ->
         destinations.firstOrNull { destination ->
             destination.spec.id == corpusCase.diagramId
         }?.let { destination ->
             destination.spec to DiagramDocsCase(
                 id = corpusCase.id,
                 title = corpusCase.title,
-                category = "Large-scale visual parity corpus",
+                category = "Structural visual parity corpus",
                 source = corpusCase.source,
                 initialAspectRatio = corpusCase.initialAspectRatio,
             )
@@ -680,8 +681,22 @@ private fun DiagramAuditScreen(
             themeName = themePreset.configName,
         )
     }
-    var auditStatus by remember(demo.id, preview, layoutOverride, themePreset) {
+    var nativeAuditStatus by remember(demo.id, preview, layoutOverride, themePreset) {
         mutableStateOf(AUDIT_STATUS_LOADING)
+    }
+    var officialAuditStatus by remember(demo.id, preview, layoutOverride, themePreset) {
+        mutableStateOf(AUDIT_STATUS_LOADING)
+    }
+    val auditStatus = when (preview) {
+        MermaidDebugPreview.Native -> nativeAuditStatus
+        MermaidDebugPreview.Official -> officialAuditStatus
+        MermaidDebugPreview.Both -> when {
+            nativeAuditStatus.startsWith(AUDIT_STATUS_ERROR_PREFIX) -> nativeAuditStatus
+            officialAuditStatus.startsWith(AUDIT_STATUS_ERROR_PREFIX) -> officialAuditStatus
+            nativeAuditStatus.startsWith(AUDIT_STATUS_READY_PREFIX) &&
+                officialAuditStatus.startsWith(AUDIT_STATUS_READY_PREFIX) -> nativeAuditStatus
+            else -> AUDIT_STATUS_LOADING
+        }
     }
 
     Box(
@@ -703,9 +718,9 @@ private fun DiagramAuditScreen(
                 contentDescription = "${demo.title} native audit preview",
                 respectSourceViewportSizing = false,
                 onRenderResult = { result ->
-                    auditStatus = when (result) {
+                    nativeAuditStatus = when (result) {
                         is GMResult.Ok -> {
-                            if (!auditStatus.startsWith(AUDIT_STATUS_READY_PREFIX)) {
+                            if (!nativeAuditStatus.startsWith(AUDIT_STATUS_READY_PREFIX)) {
                                 println("$VISUAL_TEST_COMPLETE_MARKER ${demo.id}")
                             }
                             "$AUDIT_STATUS_READY_PREFIX${result.value.toAuditManifestJson()}"
@@ -728,7 +743,7 @@ private fun DiagramAuditScreen(
                 look = spec.nativeOptions.look,
                 modifier = Modifier.fillMaxSize(),
                 onRenderResult = { result ->
-                    auditStatus = when (result) {
+                    officialAuditStatus = when (result) {
                         OfficialRenderResult.Loading -> AUDIT_STATUS_LOADING
                         is OfficialRenderResult.Ready -> AUDIT_STATUS_READY_PREFIX
                         is OfficialRenderResult.Error -> {
@@ -737,6 +752,42 @@ private fun DiagramAuditScreen(
                     }
                 },
             )
+            MermaidDebugPreview.Both -> {
+                MermaidDiagram(
+                    source = demo.source,
+                    modifier = Modifier.fillMaxSize(),
+                    theme = MermaidTheme.preset(themePreset),
+                    options = nativeOptions,
+                    contentDescription = "${demo.title} native audit preview",
+                    respectSourceViewportSizing = false,
+                    onRenderResult = { result ->
+                        nativeAuditStatus = when (result) {
+                            is GMResult.Ok ->
+                                "$AUDIT_STATUS_READY_PREFIX" +
+                                    result.value.toAuditManifestJson()
+                            is GMResult.Err ->
+                                "$AUDIT_STATUS_ERROR_PREFIX" +
+                                    "${result.error.renderErrorType.name}:" +
+                                    result.error.message
+                        }
+                    },
+                )
+                OfficialMermaidDiagram(
+                    source = demo.source,
+                    layout = if (usesCorpusLayout) layoutOverride else spec.officialLayout,
+                    themeName = themePreset.configName,
+                    look = spec.nativeOptions.look,
+                    modifier = Modifier.fillMaxSize(),
+                    onRenderResult = { result ->
+                        officialAuditStatus = when (result) {
+                            OfficialRenderResult.Loading -> AUDIT_STATUS_LOADING
+                            is OfficialRenderResult.Ready -> AUDIT_STATUS_READY_PREFIX
+                            is OfficialRenderResult.Error ->
+                                "$AUDIT_STATUS_ERROR_PREFIX${result.message}"
+                        }
+                    },
+                )
+            }
         }
     }
 }

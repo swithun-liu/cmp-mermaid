@@ -206,6 +206,14 @@ private fun PlaygroundContent(
 ) {
     var examplesExpanded by remember(spec.id) { mutableStateOf(false) }
     val hasPendingChanges = draftSource != renderedSource
+    val selectableRenderers = MermaidDebugPreview.entries.filter { renderer ->
+        renderer != MermaidDebugPreview.Both
+    }
+    val effectiveRenderer = if (selectedRenderer == MermaidDebugPreview.Both) {
+        MermaidDebugPreview.Native
+    } else {
+        selectedRenderer
+    }
     val availableLayouts = remember(spec.playgroundLayouts) {
         PlaygroundLayout.entries.filter { layout ->
             layout.option in spec.playgroundLayouts
@@ -405,19 +413,20 @@ private fun PlaygroundContent(
             SingleChoiceSegmentedButtonRow(
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                MermaidDebugPreview.entries.forEachIndexed { index, renderer ->
+                selectableRenderers.forEachIndexed { index, renderer ->
                     SegmentedButton(
-                        selected = selectedRenderer == renderer,
+                        selected = effectiveRenderer == renderer,
                         onClick = { onRendererSelected(renderer) },
                         shape = SegmentedButtonDefaults.itemShape(
                             index = index,
-                            count = MermaidDebugPreview.entries.size,
+                            count = selectableRenderers.size,
                         ),
                         label = {
                             Text(
                                 when (renderer) {
                                     MermaidDebugPreview.Native -> "CMP Native"
                                     MermaidDebugPreview.Official -> "Official JS"
+                                    MermaidDebugPreview.Both -> "Both"
                                 },
                             )
                         },
@@ -438,7 +447,7 @@ private fun PlaygroundContent(
                     .padding(8.dp),
                 contentAlignment = Alignment.Center,
             ) {
-                when (selectedRenderer) {
+                when (effectiveRenderer) {
                     MermaidDebugPreview.Native -> MermaidDiagram(
                         source = renderedSource,
                         modifier = Modifier.fillMaxSize(),
@@ -454,6 +463,7 @@ private fun PlaygroundContent(
                         look = renderOptions.look,
                         modifier = Modifier.fillMaxSize(),
                     )
+                    MermaidDebugPreview.Both -> Unit
                 }
             }
         }

@@ -6,7 +6,7 @@ import com.swithun.cmpmermaid.core.generated.invalidSourceCasesPerDiagram
 import com.swithun.cmpmermaid.core.generated.invalidSourceCasesPerMutation
 import com.swithun.cmpmermaid.core.generated.invalidSourceCorpusCases
 import com.swithun.cmpmermaid.core.generated.productionCorpusCases
-import com.swithun.cmpmermaid.core.generated.visualParityCorpusCases
+import com.swithun.cmpmermaid.core.generated.visualStressCorpusSamples
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -66,7 +66,7 @@ class InvalidSourceCorpusTest {
                 }
             }
 
-        val validSourcesById = visualParityCorpusCases.associateBy(
+        val validSourcesById = visualStressCorpusSamples.associateBy(
             StabilityCorpusCase::id,
         )
         invalidSourceCorpusCases.forEach { case ->

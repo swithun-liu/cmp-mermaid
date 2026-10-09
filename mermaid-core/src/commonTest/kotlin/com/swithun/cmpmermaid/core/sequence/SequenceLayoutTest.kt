@@ -69,6 +69,29 @@ class SequenceLayoutTest {
     }
 
     @Test
+    fun advancesMessagesByTheMermaid1200BoundMessageFormula() {
+        val scene = render(
+            """
+            sequenceDiagram
+                participant A
+                participant B
+                A->>B:First
+                B->>A:Second
+            """.trimIndent(),
+        )
+        val messages = scene.elements.filterIsInstance<ScenePath>()
+            .filter { path -> path.id.startsWith("message-") }
+            .associateBy(ScenePath::id)
+
+        assertClose(
+            expected = 48.4f,
+            actual =
+                messages.getValue("message-1").points.first().y -
+                    messages.getValue("message-0").points.first().y,
+        )
+    }
+
+    @Test
     fun rendersSelfMessageWithCubicPath() {
         val scene = render(
             """

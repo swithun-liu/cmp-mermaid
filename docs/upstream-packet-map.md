@@ -78,7 +78,7 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - `OfficialPacketDocumentationTest` executes both active examples extracted
   from Mermaid's Packet documentation.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 deterministic same-source matrix cases against Mermaid.js `12.0.0`.
+  256 structurally distinct same-source cases against Mermaid.js `12.0.0`.
   Both corpora report `0 review / 0 fail`, all 269 geometry pairs pass, and all
   16 matrix contact sheets were manually reviewed.
 

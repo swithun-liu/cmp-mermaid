@@ -40,11 +40,7 @@ accessibility directive is not silently accepted as a CSV record.
 - The production audit accepted all 13 pairs:
   `13 pass / 0 review / 0 fail`; geometry ratios are width `1.050-1.060`,
   height `1.045-1.059`, and foreground ink `1.098-1.123`.
-- The 256-case Native/Official audit accepted all pairs:
-  `256 pass / 0 review / 0 fail`; geometry ratios are width `1.043-1.053`,
-  height `1.026-1.053`, and foreground ink `1.053-1.112`.
-  All 16 contact sheets were manually reviewed with no missing node, link,
-  label, value, color, clipping, overlap, alignment, or paint-order defect.
+- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.021-1.053`, height `1.039-1.059`, and foreground ink `1.079-1.112`.
 - 256 deterministic randomized Native inputs exercise DAG topology, quoted
   labels, all alignments and link colors, dimensions, value labels, themes,
   finite geometry, and deterministic replay.

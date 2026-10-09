@@ -9,10 +9,16 @@ import {
 } from './production-corpus.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
 import {
-  cases as visualParityCases,
-  casesPerKind as visualParityCasesPerKind,
-  labelProfiles as visualParityLabelProfiles,
+  corpusSummary as visualStressCorpusSummary,
+  labelProfiles as visualStressLabelProfiles,
+  samples as visualStressSamples,
+  stressSamplesPerKind as visualStressSamplesPerKind,
 } from './visual-parity-corpus.mjs';
+import {
+  cases as visualStructureCases,
+  casesPerKind as visualStructureCasesPerKind,
+  corpusSummary as visualStructureCorpusSummary,
+} from './visual-structure-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
@@ -158,7 +164,8 @@ const supportedKinds = new Set([
 
 validateStabilityCases();
 validateProductionCases();
-validateVisualParityCases();
+validateVisualStructureCases();
+validateVisualStressSamples();
 
 const outputs = [
   {
@@ -184,6 +191,26 @@ for (const output of outputs) {
   writeFileSync(output.path, renderKotlin(output.packageName));
   console.log(`Generated ${output.path}`);
 }
+
+const visualStressMetadataPath = resolve(
+  repositoryRoot,
+  'docs/assets/stability-report/visual-stress-corpus-metadata.json',
+);
+writeFileSync(
+  visualStressMetadataPath,
+  `${JSON.stringify(renderVisualStressCorpusMetadata(), null, 2)}\n`,
+);
+console.log(`Generated ${visualStressMetadataPath}`);
+
+const visualStructureMetadataPath = resolve(
+  repositoryRoot,
+  'docs/assets/stability-report/visual-structure-corpus-metadata.json',
+);
+writeFileSync(
+  visualStructureMetadataPath,
+  `${JSON.stringify(renderVisualStructureCorpusMetadata(), null, 2)}\n`,
+);
+console.log(`Generated ${visualStructureMetadataPath}`);
 
 function validateStabilityCases() {
   const ids = new Set();
@@ -358,47 +385,130 @@ function validateProductionCases() {
   }
 }
 
-function validateVisualParityCases() {
-  const expectedCount = supportedKinds.size * visualParityCasesPerKind;
-  if (visualParityCases.length !== expectedCount) {
+function validateVisualStructureCases() {
+  const expectedCount = supportedKinds.size * visualStructureCasesPerKind;
+  if (visualStructureCases.length !== expectedCount) {
     throw new Error(
-      `Expected ${expectedCount} visual parity cases, found ${visualParityCases.length}`,
+      `Expected ${expectedCount} visual structure cases, ` +
+        `found ${visualStructureCases.length}`,
     );
   }
   const ids = new Set();
   const sources = new Set();
-  for (const entry of visualParityCases) {
-    if (!/^parity_[a-z0-9]+_\d{3}$/.test(entry.id)) {
-      throw new Error(`Invalid visual parity case id: ${entry.id}`);
+  for (const entry of visualStructureCases) {
+    if (!/^visual_[a-z0-9]+_\d{3}$/.test(entry.id)) {
+      throw new Error(`Invalid visual structure case id: ${entry.id}`);
     }
     if (ids.has(entry.id)) {
-      throw new Error(`Duplicate visual parity case id: ${entry.id}`);
+      throw new Error(`Duplicate visual structure case id: ${entry.id}`);
     }
-    if (sources.has(normalizeMermaidSource(entry.source))) {
-      throw new Error(`Duplicate visual parity source: ${entry.id}`);
+    if (sources.has(entry.source)) {
+      throw new Error(`Duplicate visual structure source: ${entry.id}`);
     }
     if (!supportedKinds.has(entry.kind)) {
-      throw new Error(`Unsupported visual parity kind: ${entry.kind}`);
+      throw new Error(`Unsupported visual structure kind: ${entry.kind}`);
+    }
+    if (
+      entry.coverageRole !== 'structural-visual-case' ||
+      entry.structuralSignature.length !== 64 ||
+      entry.sourceSha256.length !== 64
+    ) {
+      throw new Error(`Invalid visual structure metadata: ${entry.id}`);
+    }
+    ids.add(entry.id);
+    sources.add(entry.source);
+  }
+  for (const kind of supportedKinds) {
+    const kindCases = visualStructureCases.filter((entry) => entry.kind === kind);
+    const signatureCount = new Set(
+      kindCases.map((entry) => entry.structuralSignature),
+    ).size;
+    if (
+      kindCases.length !== visualStructureCasesPerKind ||
+      signatureCount !== visualStructureCasesPerKind
+    ) {
+      throw new Error(
+        `${kind} has ${kindCases.length} cases and ` +
+          `${signatureCount} unique structural signatures`,
+      );
+    }
+  }
+  if (
+    visualStructureCorpusSummary.structuralCaseCount !==
+      visualStructureCases.length ||
+    visualStructureCorpusSummary.structuralCasesPerKind !==
+      visualStructureCasesPerKind
+  ) {
+    throw new Error('Visual structure corpus summary is inconsistent');
+  }
+}
+
+function validateVisualStressSamples() {
+  const expectedCount = supportedKinds.size * visualStressSamplesPerKind;
+  if (visualStressSamples.length !== expectedCount) {
+    throw new Error(
+      `Expected ${expectedCount} visual stress samples, ` +
+        `found ${visualStressSamples.length}`,
+    );
+  }
+  const ids = new Set();
+  const sources = new Set();
+  const structuralScenarioIds = new Set();
+  for (const entry of visualStressSamples) {
+    if (!/^parity_[a-z0-9]+_\d{3}$/.test(entry.id)) {
+      throw new Error(`Invalid visual stress sample id: ${entry.id}`);
+    }
+    if (ids.has(entry.id)) {
+      throw new Error(`Duplicate visual stress sample id: ${entry.id}`);
+    }
+    if (sources.has(normalizeMermaidSource(entry.source))) {
+      throw new Error(`Duplicate visual stress source: ${entry.id}`);
+    }
+    if (!supportedKinds.has(entry.kind)) {
+      throw new Error(`Unsupported visual stress kind: ${entry.kind}`);
     }
     if (!Array.isArray(entry.expectedTexts) || entry.expectedTexts.length === 0) {
-      throw new Error(`Missing visual parity text expectations for ${entry.id}`);
+      throw new Error(`Missing visual stress text expectations for ${entry.id}`);
     }
     if (!Array.isArray(entry.features) || entry.features.length === 0) {
-      throw new Error(`Missing visual parity dimensions for ${entry.id}`);
+      throw new Error(`Missing visual stress dimensions for ${entry.id}`);
     }
     if (entry.sourceSha256.length !== 64) {
       throw new Error(`Invalid source hash for ${entry.id}`);
     }
+    if (
+      entry.coverageRole !== 'text-layout-stress' ||
+      !productionCases.some((candidate) =>
+        candidate.id === entry.structuralScenarioId &&
+        candidate.kind === entry.kind
+      )
+    ) {
+      throw new Error(`Invalid structural scenario metadata for ${entry.id}`);
+    }
     ids.add(entry.id);
     sources.add(normalizeMermaidSource(entry.source));
+    structuralScenarioIds.add(entry.structuralScenarioId);
   }
   for (const kind of supportedKinds) {
-    const count = visualParityCases.filter((entry) => entry.kind === kind).length;
-    if (count !== visualParityCasesPerKind) {
+    const count = visualStressSamples.filter((entry) => entry.kind === kind).length;
+    if (count !== visualStressSamplesPerKind) {
       throw new Error(
-        `Expected ${visualParityCasesPerKind} ${kind} visual parity cases, found ${count}`,
+        `Expected ${visualStressSamplesPerKind} ${kind} visual stress samples, ` +
+          `found ${count}`,
       );
     }
+  }
+  if (structuralScenarioIds.size !== productionCases.length) {
+    throw new Error(
+      `Expected ${productionCases.length} structural scenarios in the stress ` +
+        `matrix, found ${structuralScenarioIds.size}`,
+    );
+  }
+  if (
+    visualStressCorpusSummary.structuralScenarioCount !== productionCases.length ||
+    visualStressCorpusSummary.stressSampleCount !== visualStressSamples.length
+  ) {
+    throw new Error('Visual stress corpus summary is inconsistent');
   }
 }
 
@@ -435,13 +545,61 @@ function normalizeMermaidSource(value) {
   return lines.map((line) => line.slice(commonIndent)).join('\n');
 }
 
+function renderVisualStressCorpusMetadata() {
+  return {
+    mermaidVersion: '12.0.0',
+    structuralCoverage: {
+      role: 'semantic-and-structural-coverage',
+      source: 'tools/official-reference/production-corpus.mjs',
+      scenarioCount: visualStressCorpusSummary.structuralScenarioCount,
+    },
+    stressCoverage: {
+      role: 'text-layout-stress',
+      source: 'tools/official-reference/visual-parity-corpus.mjs',
+      sampleCount: visualStressCorpusSummary.stressSampleCount,
+      samplesPerDiagramFamily: visualStressCorpusSummary.stressSamplesPerKind,
+      availableTextLayoutProfileCount:
+        visualStressCorpusSummary.availableTextLayoutProfileCount,
+      addsStructuralCoverage: false,
+    },
+    diagramFamilies: visualStressCorpusSummary.countsByKind,
+  };
+}
+
+function renderVisualStructureCorpusMetadata() {
+  return {
+    mermaidVersion: '12.0.0',
+    role: 'structural-and-syntax-visual-coverage',
+    source: 'tools/official-reference/visual-structure-corpus.mjs',
+    diagramFamilyCount: visualStructureCorpusSummary.diagramFamilyCount,
+    caseCount: visualStructureCorpusSummary.structuralCaseCount,
+    casesPerDiagramFamily:
+      visualStructureCorpusSummary.structuralCasesPerKind,
+    uniquenessBasis: [
+      'curated-seed-scenario',
+      'seed-feature-set',
+      'generated-structural-item-count',
+      'family-specific-structural-variant',
+    ],
+    diagramFamilies: visualStructureCorpusSummary.countsByKind,
+  };
+}
+
 function renderKotlin(packageName) {
   const stabilityEntries = renderEntries(stabilityCases);
   const productionEntries = renderEntries(productionCases);
+  const visualStructureRecordChunks = renderVisualStructureRecordChunks();
+  const structuralScenarioCounts = visualStressCorpusSummary.countsByKind
+    .map(({ kind, structuralScenarioCount }) =>
+      `${JSON.stringify(kind)} to ${structuralScenarioCount},`
+    )
+    .join('\n');
 
   return `// Generated by tools/official-reference/generate-stability-corpus.mjs.
 // Do not edit by hand.
 package ${packageName}
+
+import kotlin.io.encoding.Base64
 
 internal data class StabilityCorpusCase(
     val id: String,
@@ -463,11 +621,76 @@ internal val productionCorpusCases: List<StabilityCorpusCase> = listOf(
 ${productionEntries}
 )
 
-private val visualParityLabelProfiles: List<String> = listOf(
-${indent(visualParityLabelProfiles.map((value) => `${JSON.stringify(value)},`).join('\n'), 4)}
+internal const val visualStructureCaseCount: Int =
+    ${visualStructureCorpusSummary.structuralCaseCount}
+internal const val visualStructureCasesPerDiagram: Int =
+    ${visualStructureCasesPerKind}
+
+private val visualStructureCorpusRecordChunks: List<String> = listOf(
+${visualStructureRecordChunks}
 )
 
-internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
+internal val visualStructureCorpusCases: List<StabilityCorpusCase> by lazy {
+    val seedsById = productionCorpusCases.associateBy(StabilityCorpusCase::id)
+    visualStructureCorpusRecordChunks
+        .asSequence()
+        .flatMap(String::lineSequence)
+        .filter(String::isNotBlank)
+        .map { record ->
+            val fields = record.split('|', limit = 9)
+            val id = fields[0]
+            val seed = seedsById.getValue(fields[1])
+            val variant = fields[2]
+            val itemCount = fields[3].toInt()
+            val expectedTextPayload = Base64.decode(fields[7]).decodeToString()
+            val payload = Base64.decode(fields[8]).decodeToString()
+            val source = if (fields[6] == "a") {
+                seed.source.trimEnd() + "\\n" + payload
+            } else {
+                payload
+            }
+            seed.copy(
+                id = id,
+                title = "\${seed.title} - \$variant \$itemCount",
+                scenario = "Structural visual case \${id.takeLast(3).toInt()} of " +
+                    "$visualStructureCasesPerDiagram; combines \${seed.id} with " +
+                    "the \$variant profile containing \$itemCount generated " +
+                    "structural item(s).",
+                source = source,
+                expectedTexts = if (expectedTextPayload.isEmpty()) {
+                    emptyList()
+                } else {
+                    expectedTextPayload.split('\\u0000')
+                },
+                features = seed.features + setOf(
+                    "structural-seed:\${seed.id}",
+                    "structural-profile:\$variant",
+                    "structural-item-count:\$itemCount",
+                    "structural-signature:\${fields[4]}",
+                    "structural-source-sha256:\${fields[5]}",
+                ),
+            )
+        }
+        .toList()
+}
+
+internal const val visualStressStructuralScenarioCount: Int =
+    ${visualStressCorpusSummary.structuralScenarioCount}
+internal const val visualStressSampleCount: Int =
+    ${visualStressCorpusSummary.stressSampleCount}
+internal const val visualStressSamplesPerDiagram: Int =
+    ${visualStressSamplesPerKind}
+
+internal val visualStressStructuralScenarioCountsByDiagram: Map<String, Int> =
+    mapOf(
+${indent(structuralScenarioCounts, 8)}
+    )
+
+private val visualStressLabelProfiles: List<String> = listOf(
+${indent(visualStressLabelProfiles.map((value) => `${JSON.stringify(value)},`).join('\n'), 4)}
+)
+
+internal val visualStressCorpusSamples: List<StabilityCorpusCase> by lazy {
     buildList {
         val kinds = listOf(
             "flowchart",
@@ -508,22 +731,24 @@ internal val visualParityCorpusCases: List<StabilityCorpusCase> by lazy {
             val seeds = productionCorpusCases.filter { case ->
                 case.diagramId == kind
             }
-            repeat(${visualParityCasesPerKind}) { index ->
+            repeat(${visualStressSamplesPerKind}) { index ->
                 val seed = seeds[index % seeds.size]
                 val profileIndex = index / seeds.size
                 val ordinal = index + 1
                 val suffix = ordinal.toString().padStart(3, '0')
                 val evidenceId = "ParityEvidence\$suffix"
                 val visibleLabel =
-                    "\${visualParityLabelProfiles[profileIndex]} \$suffix"
+                    "\${visualStressLabelProfiles[profileIndex]} \$suffix"
                 add(
                     seed.copy(
                         id = "parity_\${kind}_\$suffix",
                         title = "\${seed.title} - profile " +
                             (profileIndex + 1).toString().padStart(2, '0'),
-                        scenario = "Structural seed \${seed.id}; visible label " +
-                            "profile \${profileIndex + 1}; matrix case \$ordinal " +
-                            "of ${visualParityCasesPerKind}.",
+                        scenario = "Text/layout stress sample \$ordinal of " +
+                            "${visualStressSamplesPerKind}; derived from structural " +
+                            "scenario \${seed.id}; visible label profile " +
+                            "\${profileIndex + 1}. This sample does not add " +
+                            "structural coverage.",
                         source = addVisualParityVariation(
                             kind = kind,
                             source = seed.source,
@@ -928,6 +1153,52 @@ private fun insertAfterDeclaration(
     return lines.joinToString("\\n")
 }
 `;
+}
+
+function renderVisualStructureRecordChunks() {
+  const seedsById = new Map(productionCases.map((entry) => [entry.id, entry]));
+  const records = visualStructureCases.map((entry) => {
+    const seed = seedsById.get(entry.structuralScenarioId);
+    if (seed === undefined) {
+      throw new Error(
+        `Missing structural seed ${entry.structuralScenarioId} for ${entry.id}`,
+      );
+    }
+    const appendPrefix = `${seed.source.trim()}\n`;
+    const appendOnly = entry.source.startsWith(appendPrefix);
+    const payload = appendOnly
+      ? entry.source.slice(appendPrefix.length)
+      : entry.source;
+    return [
+      entry.id,
+      entry.structuralScenarioId,
+      entry.structuralDimensions.variant,
+      entry.structuralDimensions.itemCount,
+      entry.structuralSignature,
+      entry.sourceSha256,
+      appendOnly ? 'a' : 'f',
+      Buffer.from(entry.expectedTexts.join('\u0000'), 'utf8').toString('base64'),
+      Buffer.from(payload, 'utf8').toString('base64'),
+    ].join('|');
+  });
+  const chunks = [];
+  let current = [];
+  let currentLength = 0;
+  for (const record of records) {
+    if (current.length > 0 && currentLength + record.length + 1 > 48_000) {
+      chunks.push(current);
+      current = [];
+      currentLength = 0;
+    }
+    current.push(record);
+    currentLength += record.length + 1;
+  }
+  if (current.length > 0) {
+    chunks.push(current);
+  }
+  return chunks.map((chunk) => `    """
+${indent(chunk.join('\n'), 8)}
+    """.trimIndent(),`).join('\n');
 }
 
 function renderEntries(entries) {
