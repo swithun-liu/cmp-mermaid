@@ -29,7 +29,9 @@ jobs:
       - name: Verify generated visual corpus
         run: |
           node tools/official-reference/generate-stability-corpus.mjs
-          node --test tools/official-reference/visual-structure-corpus.test.mjs
+          node --test \
+            tools/official-reference/visual-structure-corpus.test.mjs \
+            tools/official-reference/audit-visual-scenario-duplicates.test.mjs
           git diff --exit-code -- \
             docs/assets/stability-report/visual-structure-corpus-metadata.json \
             mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/generated/StabilityCorpus.kt \
@@ -131,6 +133,14 @@ jobs:
           VIEWPORT_WIDTH=1200 \
           VIEWPORT_HEIGHT=900 \
           npm run capture:web-audit
+
+      - name: Reject duplicate visual scenarios
+        working-directory: tools/official-reference
+        run: |
+          CORPUS_KIND=${{ matrix.kind }} \
+          INPUT_DIR=captures/visual-parity/${{ matrix.kind }} \
+          OUTPUT_FILE=captures/visual-parity/${{ matrix.kind }}-duplicate-audit.json \
+          npm run audit:visual-scenario-duplicates
 
       - name: Enforce pair geometry
         working-directory: tools/official-reference

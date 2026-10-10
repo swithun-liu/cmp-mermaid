@@ -395,6 +395,7 @@ function validateVisualStructureCases() {
   }
   const ids = new Set();
   const sources = new Set();
+  const blueprintIds = new Set();
   for (const entry of visualStructureCases) {
     if (!/^visual_[a-z0-9]+_\d{3}$/.test(entry.id)) {
       throw new Error(`Invalid visual structure case id: ${entry.id}`);
@@ -409,27 +410,40 @@ function validateVisualStructureCases() {
       throw new Error(`Unsupported visual structure kind: ${entry.kind}`);
     }
     if (
-      entry.coverageRole !== 'structural-visual-case' ||
+      entry.coverageRole !== 'independent-visual-scenario' ||
+      entry.scenarioBlueprintId.length === 0 ||
+      entry.normalizedSemanticSignature.length !== 64 ||
       entry.structuralSignature.length !== 64 ||
       entry.sourceSha256.length !== 64
     ) {
       throw new Error(`Invalid visual structure metadata: ${entry.id}`);
     }
+    if (blueprintIds.has(entry.scenarioBlueprintId)) {
+      throw new Error(
+        `Duplicate visual scenario blueprint: ${entry.scenarioBlueprintId}`,
+      );
+    }
     ids.add(entry.id);
     sources.add(entry.source);
+    blueprintIds.add(entry.scenarioBlueprintId);
   }
   for (const kind of supportedKinds) {
     const kindCases = visualStructureCases.filter((entry) => entry.kind === kind);
-    const signatureCount = new Set(
-      kindCases.map((entry) => entry.structuralSignature),
+    const normalizedSignatureCount = new Set(
+      kindCases.map((entry) => entry.normalizedSemanticSignature),
+    ).size;
+    const blueprintCount = new Set(
+      kindCases.map((entry) => entry.scenarioBlueprintId),
     ).size;
     if (
       kindCases.length !== visualStructureCasesPerKind ||
-      signatureCount !== visualStructureCasesPerKind
+      normalizedSignatureCount !== visualStructureCasesPerKind ||
+      blueprintCount !== visualStructureCasesPerKind
     ) {
       throw new Error(
         `${kind} has ${kindCases.length} cases and ` +
-          `${signatureCount} unique structural signatures`,
+          `${normalizedSignatureCount} normalized structures and ` +
+          `${blueprintCount} independent blueprints`,
       );
     }
   }
@@ -569,17 +583,17 @@ function renderVisualStressCorpusMetadata() {
 function renderVisualStructureCorpusMetadata() {
   return {
     mermaidVersion: '12.0.0',
-    role: 'structural-and-syntax-visual-coverage',
+    role: 'independent-scenario-visual-coverage',
     source: 'tools/official-reference/visual-structure-corpus.mjs',
     diagramFamilyCount: visualStructureCorpusSummary.diagramFamilyCount,
     caseCount: visualStructureCorpusSummary.structuralCaseCount,
     casesPerDiagramFamily:
       visualStructureCorpusSummary.structuralCasesPerKind,
     uniquenessBasis: [
-      'curated-seed-scenario',
-      'seed-feature-set',
-      'generated-structural-item-count',
-      'family-specific-structural-variant',
+      'unique-scenario-blueprint-id',
+      'explicit-256-entry-business-scenario-catalog',
+      'label-stripped-normalized-mermaid-source',
+      'eight-rendered-semantic-decisions',
     ],
     diagramFamilies: visualStructureCorpusSummary.countsByKind,
   };
@@ -631,44 +645,33 @@ ${visualStructureRecordChunks}
 )
 
 internal val visualStructureCorpusCases: List<StabilityCorpusCase> by lazy {
-    val seedsById = productionCorpusCases.associateBy(StabilityCorpusCase::id)
     visualStructureCorpusRecordChunks
         .asSequence()
         .flatMap(String::lineSequence)
         .filter(String::isNotBlank)
         .map { record ->
             val fields = record.split('|', limit = 9)
-            val id = fields[0]
-            val seed = seedsById.getValue(fields[1])
-            val variant = fields[2]
-            val itemCount = fields[3].toInt()
-            val expectedTextPayload = Base64.decode(fields[7]).decodeToString()
+            val expectedTextPayload = Base64.decode(fields[6]).decodeToString()
+            val featurePayload = Base64.decode(fields[7]).decodeToString()
             val payload = Base64.decode(fields[8]).decodeToString()
-            val source = if (fields[6] == "a") {
-                seed.source.trimEnd() + "\\n" + payload
-            } else {
-                payload
-            }
-            seed.copy(
-                id = id,
-                title = "\${seed.title} - \$variant \$itemCount",
-                scenario = "Structural visual case \${id.takeLast(3).toInt()} of " +
-                    "$visualStructureCasesPerDiagram; combines \${seed.id} with " +
-                    "the \$variant profile containing \$itemCount generated " +
-                    "structural item(s).",
-                source = source,
+            StabilityCorpusCase(
+                id = fields[0],
+                diagramId = fields[1],
+                title = Base64.decode(fields[2]).decodeToString(),
+                scenario = Base64.decode(fields[3]).decodeToString(),
+                layout = fields[4],
+                initialAspectRatio = fields[5].toFloat(),
+                source = payload,
                 expectedTexts = if (expectedTextPayload.isEmpty()) {
                     emptyList()
                 } else {
                     expectedTextPayload.split('\\u0000')
                 },
-                features = seed.features + setOf(
-                    "structural-seed:\${seed.id}",
-                    "structural-profile:\$variant",
-                    "structural-item-count:\$itemCount",
-                    "structural-signature:\${fields[4]}",
-                    "structural-source-sha256:\${fields[5]}",
-                ),
+                features = if (featurePayload.isEmpty()) {
+                    emptySet()
+                } else {
+                    featurePayload.split('\\u0000').toSet()
+                },
             )
         }
         .toList()
@@ -1156,29 +1159,17 @@ private fun insertAfterDeclaration(
 }
 
 function renderVisualStructureRecordChunks() {
-  const seedsById = new Map(productionCases.map((entry) => [entry.id, entry]));
   const records = visualStructureCases.map((entry) => {
-    const seed = seedsById.get(entry.structuralScenarioId);
-    if (seed === undefined) {
-      throw new Error(
-        `Missing structural seed ${entry.structuralScenarioId} for ${entry.id}`,
-      );
-    }
-    const appendPrefix = `${seed.source.trim()}\n`;
-    const appendOnly = entry.source.startsWith(appendPrefix);
-    const payload = appendOnly
-      ? entry.source.slice(appendPrefix.length)
-      : entry.source;
     return [
       entry.id,
-      entry.structuralScenarioId,
-      entry.structuralDimensions.variant,
-      entry.structuralDimensions.itemCount,
-      entry.structuralSignature,
-      entry.sourceSha256,
-      appendOnly ? 'a' : 'f',
+      entry.kind,
+      Buffer.from(entry.title, 'utf8').toString('base64'),
+      Buffer.from(entry.scenario, 'utf8').toString('base64'),
+      entry.layout,
+      entry.aspectRatio,
       Buffer.from(entry.expectedTexts.join('\u0000'), 'utf8').toString('base64'),
-      Buffer.from(payload, 'utf8').toString('base64'),
+      Buffer.from(entry.features.join('\u0000'), 'utf8').toString('base64'),
+      Buffer.from(entry.source, 'utf8').toString('base64'),
     ].join('|');
   });
   const chunks = [];

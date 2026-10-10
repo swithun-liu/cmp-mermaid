@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { cases as productionCases } from './production-corpus.mjs';
+import { businessScenarios } from './independent-scenario-catalog.mjs';
 
 export const kinds = [
   'flowchart',
@@ -38,27 +38,71 @@ export const kinds = [
 ];
 
 export const casesPerKind = 256;
-export const profileVariantCount = 4;
-export const maximumProfileItemCount = 8;
 
-export const structuralSeedsByKind = Object.freeze(
-  Object.fromEntries(kinds.map((kind) => [kind, selectStructuralSeeds(kind)])),
+const aspectRatios = Object.freeze({
+  flowchart: 1.7,
+  swimlanes: 1.7,
+  architecture: 1.7,
+  c4: 1.7,
+  railroad: 1.8,
+  treeview: 1.3,
+  xychart: 1.5,
+  quadrant: 1.1,
+  timeline: 1.8,
+  kanban: 1.6,
+  sequence: 1.4,
+  class: 1.6,
+  state: 1.6,
+  er: 1.6,
+  gantt: 1.8,
+  pie: 1.2,
+  journey: 1.7,
+  requirement: 1.7,
+  gitgraph: 1.8,
+  mindmap: 1.4,
+  packet: 1.8,
+  radar: 1.2,
+  sankey: 1.7,
+  treemap: 1.4,
+  venn: 1.2,
+  ishikawa: 1.8,
+  cynefin: 1.5,
+  block: 1.6,
+  eventmodeling: 1.8,
+  agentflow: 1.7,
+  usecase: 1.6,
+  wardley: 1.7,
+  zenuml: 1.5,
+});
+
+export const scenarioBlueprintsByKind = Object.freeze(
+  Object.fromEntries(kinds.map((kind) => [
+    kind,
+    Object.freeze(Array.from(
+      { length: casesPerKind },
+      (_, index) => createScenarioBlueprint(kind, index),
+    )),
+  ])),
 );
 
-export const cases = kinds.flatMap((kind) => buildKindCases(kind));
+export const cases = Object.freeze(
+  kinds.flatMap((kind) => scenarioBlueprintsByKind[kind]),
+);
 
 export const corpusSummary = Object.freeze({
   diagramFamilyCount: kinds.length,
   structuralCaseCount: cases.length,
   structuralCasesPerKind: casesPerKind,
+  independentScenarioCount: cases.length,
   countsByKind: Object.freeze(kinds.map((kind) => {
-    const kindCases = cases.filter((entry) => entry.kind === kind);
+    const kindCases = scenarioBlueprintsByKind[kind];
     return Object.freeze({
       kind,
-      structuralSeedCount: structuralSeedsByKind[kind].length,
-      structuralCaseCount: kindCases.length,
-      structuralProfileCount:
-        new Set(kindCases.map((entry) => entry.structuralProfileId)).size,
+      independentScenarioCount: kindCases.length,
+      uniqueBlueprintCount:
+        new Set(kindCases.map((entry) => entry.scenarioBlueprintId)).size,
+      normalizedSemanticStructureCount:
+        new Set(kindCases.map((entry) => entry.normalizedSemanticSignature)).size,
       structuralSignatureCount:
         new Set(kindCases.map((entry) => entry.structuralSignature)).size,
     });
@@ -67,1322 +111,1125 @@ export const corpusSummary = Object.freeze({
 
 validateCorpus();
 
-function selectStructuralSeeds(kind) {
-  const kindCases = productionCases.filter((entry) => entry.kind === kind);
-  const releaseCandidates = kindCases.filter((entry) => entry.id.startsWith('rc_'));
-  const conformanceRepresentatives = [];
-  const conformanceFeatureSets = new Set();
-  for (const entry of kindCases.filter((candidate) =>
-    candidate.id.startsWith('prod_')
-  )) {
-    const featureSet = [...entry.features].sort().join('|');
-    if (conformanceFeatureSets.has(featureSet)) {
-      continue;
-    }
-    conformanceFeatureSets.add(featureSet);
-    conformanceRepresentatives.push(entry);
-  }
-  const seeds = [...releaseCandidates, ...conformanceRepresentatives];
-  if (seeds.length < 9) {
-    throw new Error(
-      `Expected at least 9 structurally distinct ${kind} seeds, found ${seeds.length}`,
-    );
-  }
-  if (Math.ceil(casesPerKind / seeds.length) > maximumProfileItemCount * profileVariantCount) {
-    throw new Error(`Not enough structural profiles for ${kind}`);
-  }
-  return Object.freeze(seeds);
-}
-
-function buildKindCases(kind) {
-  const seeds = structuralSeedsByKind[kind];
-  return Array.from({ length: casesPerKind }, (_, index) => {
-    const seed = seeds[index % seeds.length];
-    const profileIndex = Math.floor(index / seeds.length);
-    const itemCount = Math.floor(profileIndex / profileVariantCount) + 1;
-    const variantIndex = profileIndex % profileVariantCount;
-    const ordinal = index + 1;
-    const profile = addStructuralVariation({
-      kind,
-      source: seed.source,
-      ordinal,
-      itemCount,
-      variantIndex,
-    });
-    const structuralDimensions = Object.freeze({
-      seedScenarioId: seed.id,
-      seedFeatureSet: [...seed.features].sort(),
-      itemCount,
-      variant: profile.variant,
-    });
-    const structuralSignature = sha256(JSON.stringify({
-      kind,
-      ...structuralDimensions,
-    }));
-    const sourceSha256 = sha256(profile.source);
-    return Object.freeze({
-      id: `visual_${kind}_${String(ordinal).padStart(3, '0')}`,
-      kind,
-      title: `${seed.title} - ${profile.variant} ${itemCount}`,
-      scenario:
-        `Structural visual case ${ordinal} of ${casesPerKind}; combines ` +
-        `${seed.id} with the ${profile.variant} profile containing ` +
-        `${itemCount} generated structural item(s).`,
-      layout: seed.layout ?? 'dagre',
-      aspectRatio: seed.aspectRatio,
-      features: [
-        ...(seed.features ?? []),
-        `structural-seed:${seed.id}`,
-        `structural-profile:${profile.variant}`,
-        `structural-item-count:${itemCount}`,
-        `structural-signature:${structuralSignature}`,
-        `structural-source-sha256:${sourceSha256}`,
-      ],
-      expectedTexts: structuralExpectedTexts(kind, ordinal, variantIndex),
-      coverageRole: 'structural-visual-case',
-      structuralScenarioId: seed.id,
-      structuralProfileId:
-        `${profile.variant}-${String(itemCount).padStart(2, '0')}`,
-      structuralDimensions,
-      structuralSignature,
-      source: profile.source,
-      sourceSha256,
-    });
+function createScenarioBlueprint(kind, index) {
+  const ordinal = index + 1;
+  const businessScenario = businessScenarios[index];
+  const domainModel = businessScenario.domain;
+  const goalModel = businessScenario.goal;
+  const bits = Array.from({ length: 8 }, (_, bit) => (index >> bit) & 1);
+  const title = businessScenario.title;
+  const context = Object.freeze({
+    domain: domainModel,
+    goal: goalModel,
+    title,
+    label: (slot) =>
+      `${domainModel.object} ${goalModel.stages[slot % goalModel.stages.length]}`,
+  });
+  const rendered = renderFamilyScenario(kind, bits, context);
+  const source = `${rendered.source.trim()}\n`;
+  const normalizedSemanticStructure = deepFreeze({
+    grammar: kind,
+    decisions: rendered.decisions,
+    normalizedSource: normalizeSourceWithContext(source, context),
+  });
+  const normalizedSemanticSignature = sha256(
+    JSON.stringify(normalizedSemanticStructure),
+  );
+  const sourceSha256 = sha256(source);
+  const scenarioBlueprintId = `${kind}/${businessScenario.code}`;
+  return Object.freeze({
+    id: `visual_${kind}_${String(ordinal).padStart(3, '0')}`,
+    kind,
+    title,
+    scenario:
+      `${domainModel.name} ${goalModel.name} is an independently generated ` +
+      `${kind} scenario whose topology is defined by eight semantic decisions.`,
+    layout: rendered.layout ?? 'dagre',
+    aspectRatio: aspectRatios[kind],
+    features: Object.freeze([
+      'independent-scenario-blueprint',
+      `scenario-domain:${domainModel.code}`,
+      `scenario-goal:${goalModel.code}`,
+      ...rendered.features,
+      `normalized-semantic-signature:${normalizedSemanticSignature}`,
+      `structural-signature:${normalizedSemanticSignature}`,
+      `structural-source-sha256:${sourceSha256}`,
+    ]),
+    expectedTexts: Object.freeze(rendered.expectedTexts),
+    coverageRole: 'independent-visual-scenario',
+    scenarioBlueprintId,
+    normalizedSemanticStructure,
+    normalizedSemanticSignature,
+    structuralDimensions: normalizedSemanticStructure,
+    structuralSignature: normalizedSemanticSignature,
+    source,
+    sourceSha256,
   });
 }
 
-function addStructuralVariation({
-  kind,
-  source,
-  ordinal,
-  itemCount,
-  variantIndex,
-}) {
+export function normalizeScenarioSource(entry) {
+  const parts = entry.scenarioBlueprintId.split('/');
+  if (parts.length !== 2 || parts[0] !== entry.kind) {
+    throw new Error(`Invalid scenario blueprint id: ${entry.scenarioBlueprintId}`);
+  }
+  const businessScenario = businessScenarios.find(
+    (candidate) => candidate.code === parts[1],
+  );
+  if (businessScenario === undefined) {
+    throw new Error(`Unknown scenario blueprint id: ${entry.scenarioBlueprintId}`);
+  }
+  const domainModel = businessScenario.domain;
+  const goalModel = businessScenario.goal;
+  const context = {
+    domain: domainModel,
+    goal: goalModel,
+    title: businessScenario.title,
+    label: (slot) =>
+      `${domainModel.object} ${goalModel.stages[slot % goalModel.stages.length]}`,
+  };
+  return normalizeSourceWithContext(entry.source, context);
+}
+
+function normalizeSourceWithContext(source, context) {
+  const scenarioText = new Set([
+    context.title,
+    context.domain.code,
+    context.domain.name,
+    context.domain.actor,
+    context.domain.platform,
+    context.domain.object,
+    context.goal.code,
+    context.goal.name,
+    ...context.goal.stages,
+    ...context.goal.stages.map((stage) => stage.toLowerCase()),
+    ...context.goal.stages.map(identifierToken),
+    ...Array.from({ length: 8 }, (_, index) => context.label(index)),
+  ]);
+  let normalized = source;
+  for (const value of [...scenarioText].sort((left, right) =>
+    right.length - left.length
+  )) {
+    normalized = normalized.replaceAll(value, 'TEXT');
+  }
+  return normalized
+    .split(/\r?\n/)
+    .map((line) => line.trimEnd())
+    .filter((line) => line.trim().length > 0)
+    .join('\n');
+}
+
+function renderFamilyScenario(kind, bits, context) {
   switch (kind) {
     case 'flowchart':
+      return renderFlowchart(bits, context);
     case 'swimlanes':
-      return appendFlowNodes(source, ordinal, itemCount, variantIndex);
+      return renderSwimlanes(bits, context);
     case 'architecture':
-      return appendArchitectureServices(source, ordinal, itemCount, variantIndex);
+      return renderArchitecture(bits, context);
     case 'c4':
-      return appendC4Elements(source, ordinal, itemCount, variantIndex);
+      return renderC4(bits, context);
     case 'railroad':
-      return appendRailroadRules(source, ordinal, itemCount, variantIndex);
+      return renderRailroad(bits, context);
     case 'treeview':
-      return appendTreeEntries(source, ordinal, itemCount, variantIndex);
+      return renderTreeView(bits, context);
     case 'xychart':
-      return appendXySeries(source, ordinal, itemCount, variantIndex);
+      return renderXyChart(bits, context);
     case 'quadrant':
-      return appendQuadrantPoints(source, ordinal, itemCount, variantIndex);
+      return renderQuadrant(bits, context);
     case 'timeline':
-      return appendTimelineStructure(source, ordinal, itemCount, variantIndex);
+      return renderTimeline(bits, context);
     case 'kanban':
-      return appendKanbanStructure(source, ordinal, itemCount, variantIndex);
+      return renderKanban(bits, context);
     case 'sequence':
-      return appendSequenceStructure(source, ordinal, itemCount, variantIndex);
+      return renderSequence(bits, context);
     case 'class':
-      return appendClassStructure(source, ordinal, itemCount, variantIndex);
+      return renderClass(bits, context);
     case 'state':
-      return appendStateStructure(source, ordinal, itemCount, variantIndex);
+      return renderState(bits, context);
     case 'er':
-      return appendErStructure(source, ordinal, itemCount, variantIndex);
+      return renderEr(bits, context);
     case 'gantt':
-      return appendGanttStructure(source, ordinal, itemCount, variantIndex);
+      return renderGantt(bits, context);
     case 'pie':
-      return appendPieStructure(source, ordinal, itemCount, variantIndex);
+      return renderPie(bits, context);
     case 'journey':
-      return appendJourneyStructure(source, ordinal, itemCount, variantIndex);
+      return renderJourney(bits, context);
     case 'requirement':
-      return appendRequirementStructure(source, ordinal, itemCount, variantIndex);
+      return renderRequirement(bits, context);
     case 'gitgraph':
-      return appendGitGraphStructure(source, ordinal, itemCount, variantIndex);
+      return renderGitGraph(bits, context);
     case 'mindmap':
-      return appendMindmapStructure(source, ordinal, itemCount, variantIndex);
+      return renderMindmap(bits, context);
     case 'packet':
-      return appendPacketStructure(source, ordinal, itemCount, variantIndex);
+      return renderPacket(bits, context);
     case 'radar':
-      return appendRadarStructure(source, ordinal, itemCount, variantIndex);
+      return renderRadar(bits, context);
     case 'sankey':
-      return appendSankeyStructure(source, ordinal, itemCount, variantIndex);
+      return renderSankey(bits, context);
     case 'treemap':
-      return appendTreemapStructure(source, ordinal, itemCount, variantIndex);
+      return renderTreemap(bits, context);
     case 'venn':
-      return appendVennStructure(source, ordinal, itemCount, variantIndex);
+      return renderVenn(bits, context);
     case 'ishikawa':
-      return appendIshikawaStructure(source, ordinal, itemCount, variantIndex);
+      return renderIshikawa(bits, context);
     case 'cynefin':
-      return appendCynefinStructure(source, ordinal, itemCount, variantIndex);
+      return renderCynefin(bits, context);
     case 'block':
-      return appendBlockStructure(source, ordinal, itemCount, variantIndex);
+      return renderBlock(bits, context);
     case 'eventmodeling':
-      return appendEventModelingStructure(source, ordinal, itemCount, variantIndex);
+      return renderEventModeling(bits, context);
     case 'agentflow':
-      return appendAgentflowStructure(source, ordinal, itemCount, variantIndex);
+      return renderAgentflow(bits, context);
     case 'usecase':
-      return appendUseCaseStructure(source, ordinal, itemCount, variantIndex);
+      return renderUseCase(bits, context);
     case 'wardley':
-      return appendWardleyStructure(source, ordinal, itemCount, variantIndex);
+      return renderWardley(bits, context);
     case 'zenuml':
-      return appendZenUmlStructure(source, ordinal, itemCount, variantIndex);
+      return renderZenUml(bits, context);
     default:
-      throw new Error(`Unsupported structural visual kind: ${kind}`);
+      throw new Error(`Unsupported independent visual kind: ${kind}`);
   }
 }
 
-function appendFlowNodes(source, ordinal, itemCount, variantIndex) {
-  const anchor = findFirstIdentifier(source, ['[', '(', '{', '@', '-']);
-  const ids = generatedIds('StructureNode', ordinal, itemCount);
-  const shapes = [
-    (id, label) => `${id}["${label}"]`,
-    (id, label) => `${id}("${label}")`,
-    (id, label) => `${id}{${label}}`,
-    (id, label) => `${id}[("${label}")]`,
+function renderFlowchart(bits, context) {
+  const lines = ['flowchart LR', `  Start([${context.title}])`];
+  bits.forEach((bit, index) => {
+    const id = `N${index + 1}`;
+    const label = context.label(index);
+    lines.push(bit === 0 ? `  ${id}[${label}]` : `  ${id}{${label}?}`);
+  });
+  lines.push('  Start --> N1');
+  for (let index = 1; index < bits.length; index += 1) {
+    lines.push(`  N${index} --> N${index + 1}`);
+  }
+  return scenario(
+    lines,
+    bits,
+    'process-node',
+    'decision-node',
+    context,
+    ['flow-topology', 'node-shapes'],
+  );
+}
+
+function renderSwimlanes(bits, context) {
+  const lanes = [
+    ['Intake', []],
+    ['Assessment', []],
+    ['Execution', []],
+    ['Closure', []],
   ];
-  const nodes = ids.map((id, index) =>
-    `  ${shapes[variantIndex](id, generatedLabel(ordinal, index))}`
-  );
-  const edges = [];
-  if (variantIndex === 3) {
-    ids.forEach((id) => edges.push(`  ${anchor} --> ${id}`));
-  } else {
-    const operator = ['-->', '-.->', '==>'][variantIndex];
-    let previous = anchor;
-    ids.forEach((id) => {
-      edges.push(`  ${previous} ${operator} ${id}`);
-      previous = id;
-    });
+  bits.forEach((bit, index) => {
+    const id = `N${index + 1}`;
+    const label = context.label(index);
+    const node = bit === 0 ? `${id}[${label}]` : `${id}{${label}?}`;
+    lanes[index % lanes.length][1].push(`    ${node}`);
+  });
+  const lines = ['swimlane-beta LR'];
+  lanes.forEach(([name, nodes]) => {
+    lines.push(`  subgraph ${name}`, ...nodes, '  end');
+  });
+  for (let index = 1; index < bits.length; index += 1) {
+    lines.push(`  N${index} --> N${index + 1}`);
   }
-  return variation(
-    ['solid-chain', 'dotted-chain', 'thick-chain', 'star'][variantIndex],
-    source,
-    [...nodes, ...edges],
+  return scenario(
+    lines,
+    bits,
+    'lane-process',
+    'lane-decision',
+    context,
+    ['lane-ownership', 'cross-lane-flow'],
+    [context.label(0)],
   );
 }
 
-function appendArchitectureServices(source, ordinal, itemCount, variantIndex) {
-  const serviceDeclarations = [...source.matchAll(
-    /^\s*service\s+([A-Za-z_][A-Za-z0-9_-]*)\b([^\r\n]*)$/gm,
-  )];
-  const anchorDeclaration = serviceDeclarations.at(-1);
-  if (anchorDeclaration === undefined) {
-    throw new Error('Missing Architecture service while adding structural variation');
+function renderArchitecture(bits, context) {
+  const lines = [
+    'architecture-beta',
+    `  group platform(cloud)[${context.title}]`,
+  ];
+  bits.forEach((bit, index) => {
+    const icon = bit === 0 ? 'server' : 'database';
+    lines.push(
+      `  service s${index + 1}(${icon})[${context.label(index)}] in platform`,
+    );
+  });
+  for (let index = 1; index < bits.length; index += 1) {
+    lines.push(`  s${index}:R --> L:s${index + 1}`);
   }
-  const anchor = anchorDeclaration[1];
-  const parent = anchorDeclaration[2].match(
-    /\s+in\s+([A-Za-z_][A-Za-z0-9_-]*)\s*$/,
-  )?.[1];
-  const parentSuffix = parent === undefined ? '' : ` in ${parent}`;
-  const ids = generatedIds('structure_service', ordinal, itemCount);
-  const icons = ['server', 'internet', 'disk', 'database'];
-  const lines = ids.map((id, index) =>
-    `  service ${id}(${icons[variantIndex]})` +
-      `[${generatedLabel(ordinal, index)}]${parentSuffix}`
+  return scenario(
+    lines,
+    bits,
+    'compute-service',
+    'data-service',
+    context,
+    ['services', 'directional-ports'],
   );
-  let previous = anchor;
-  ids.forEach((id) => {
-    const ports = [
-      `${previous}:R --> L:${id}`,
-      `${previous}:R <-- L:${id}`,
-      `${previous}:R <--> L:${id}`,
-      `${previous}:R --> L:${id}`,
-    ][variantIndex];
-    lines.push(`  ${ports}`);
+}
+
+function renderC4(bits, context) {
+  const lines = ['C4Context', `  title ${context.title}`];
+  bits.forEach((bit, index) => {
+    const constructor = bit === 0 ? 'Person' : 'System';
+    lines.push(
+      `  ${constructor}(e${index + 1}, "${context.label(index)}", ` +
+        `"${context.goal.stages[index % 4]} responsibility")`,
+    );
+  });
+  for (let index = 1; index < bits.length; index += 1) {
+    lines.push(`  Rel(e${index}, e${index + 1}, "hands off")`);
+  }
+  return scenario(
+    lines,
+    bits,
+    'person-element',
+    'system-element',
+    context,
+    ['context-elements', 'relationships'],
+  );
+}
+
+function renderRailroad(bits, context) {
+  const expressions = bits.map((bit, index) => {
+    const token = context.goal.stages[index % 4].toLowerCase();
+    return bit === 0
+      ? `    terminal("${token}-${index + 1}")`
+      : `    optional(nonterminal("${token}-${index + 1}"))`;
+  });
+  const lines = ['railroad-beta', '  process = sequence('];
+  expressions.forEach((expression, index) => {
+    lines.push(`${expression}${index === expressions.length - 1 ? '' : ','}`);
+  });
+  lines.push('  ) ;');
+  return scenario(
+    lines,
+    bits,
+    'required-terminal',
+    'optional-nonterminal',
+    context,
+    ['sequence', 'optional'],
+    [context.goal.stages[0].toLowerCase()],
+  );
+}
+
+function renderTreeView(bits, context) {
+  const lines = ['treeView-beta', `    ${context.domain.code}/`];
+  bits.forEach((bit, index) => {
+    const name = `${context.goal.code}-${index + 1}`;
+    if (bit === 0) {
+      lines.push(`        ${name}.md`);
+    } else {
+      lines.push(`        ${name}/`, '            index.kt');
+    }
+  });
+  return scenario(
+    lines,
+    bits,
+    'leaf-file',
+    'nested-directory',
+    context,
+    ['indentation', 'files-and-directories'],
+    [context.goal.code],
+  );
+}
+
+function renderXyChart(bits, context) {
+  const categories = context.goal.stages
+    .flatMap((stage) => [`${stage} A`, `${stage} B`]);
+  const lines = [
+    'xychart',
+    `  title "${context.title}"`,
+    `  x-axis [${categories.map((value) => `"${value}"`).join(', ')}]`,
+    '  y-axis "Signal" 0 --> 100',
+  ];
+  bits.forEach((bit, index) => {
+    const values = Array.from(
+      { length: categories.length },
+      (_, point) => 12 + index * 7 + ((point * 9 + index * 3) % 31),
+    );
+    const plot = bit === 0 ? 'line' : 'bar';
+    lines.push(`  ${plot} "Signal ${index + 1}" [${values.join(', ')}]`);
+  });
+  return scenario(
+    lines,
+    bits,
+    'line-series',
+    'bar-series',
+    context,
+    ['mixed-plots', 'categorical-axis'],
+  );
+}
+
+function renderQuadrant(bits, context) {
+  const lines = [
+    'quadrantChart',
+    `  title ${context.title}`,
+    '  x-axis Earlier --> Later',
+    '  y-axis Lower impact --> Higher impact',
+    '  quadrant-1 Prioritize',
+    '  quadrant-2 Prepare',
+    '  quadrant-3 Observe',
+    '  quadrant-4 Execute',
+  ];
+  bits.forEach((bit, index) => {
+    const x = bit === 0 ? 0.22 + (index % 2) * 0.08 : 0.68 + (index % 2) * 0.08;
+    const y = 0.14 + index * 0.1;
+    lines.push(
+      `  "${context.label(index)}": [${x.toFixed(2)}, ${y.toFixed(2)}]`,
+    );
+  });
+  return scenario(
+    lines,
+    bits,
+    'left-half-point',
+    'right-half-point',
+    context,
+    ['points', 'quadrant-placement'],
+  );
+}
+
+function renderTimeline(bits, context) {
+  const lines = ['timeline', `  title ${context.title}`, `  Baseline : ${context.domain.object}`];
+  bits.forEach((bit, index) => {
+    const event = `${context.goal.stages[index % 4]} phase ${index + 1}`;
+    lines.push(
+      bit === 0
+        ? `  Period ${index + 1} : ${event}`
+        : `       : ${event}`,
+    );
+  });
+  return scenario(
+    lines,
+    bits,
+    'new-period',
+    'continued-period',
+    context,
+    ['periods', 'continued-events'],
+  );
+}
+
+function renderKanban(bits, context) {
+  const intake = [];
+  const review = [];
+  bits.forEach((bit, index) => {
+    const task = `    task${index + 1}[${context.label(index)}]`;
+    (bit === 0 ? intake : review).push(task);
+  });
+  const lines = [
+    'kanban',
+    '  intake[Intake]',
+    ...intake,
+    '  review[Review]',
+    ...review,
+  ];
+  return scenario(
+    lines,
+    bits,
+    'intake-lane',
+    'review-lane',
+    context,
+    ['sections', 'task-placement'],
+    [context.label(0)],
+  );
+}
+
+function renderSequence(bits, context) {
+  const lines = [
+    'sequenceDiagram',
+    `  actor User as ${context.domain.actor}`,
+    `  participant Platform as ${context.domain.platform}`,
+    '  participant Worker as Specialist',
+  ];
+  bits.forEach((bit, index) => {
+    lines.push(
+      bit === 0
+        ? `  User->>Platform: ${context.label(index)}`
+        : `  Platform-->>Worker: ${context.label(index)}`,
+    );
+  });
+  return scenario(
+    lines,
+    bits,
+    'user-request',
+    'platform-delegation',
+    context,
+    ['participants', 'message-direction'],
+    [context.label(0)],
+  );
+}
+
+function renderClass(bits, context) {
+  const lines = ['classDiagram', '  direction LR'];
+  for (let index = 0; index <= bits.length; index += 1) {
+    lines.push(
+      `  class C${index} {`,
+      `    +String ${context.goal.stages[index % 4].toLowerCase()}`,
+      '  }',
+    );
+  }
+  bits.forEach((bit, index) => {
+    const relation = bit === 0 ? '*--' : '..>';
+    lines.push(`  C${index} ${relation} C${index + 1} : step`);
+  });
+  return scenario(
+    lines,
+    bits,
+    'composition-relation',
+    'dependency-relation',
+    context,
+    ['classes', 'relation-types'],
+    ['C0'],
+  );
+}
+
+function renderState(bits, context) {
+  const lines = ['stateDiagram-v2', '  [*] --> S0'];
+  bits.forEach((bit, index) => {
+    const from = bit === 0 ? `S${index}` : `S${index + 1}`;
+    const to = bit === 0 ? `S${index + 1}` : `S${index}`;
+    lines.push(`  ${from} --> ${to} : ${context.goal.stages[index % 4]}`);
+  });
+  lines.push('  S8 --> [*]');
+  return scenario(
+    lines,
+    bits,
+    'forward-transition',
+    'recovery-transition',
+    context,
+    ['states', 'transition-direction'],
+    ['S0'],
+  );
+}
+
+function renderEr(bits, context) {
+  const lines = ['erDiagram'];
+  for (let index = 0; index <= bits.length; index += 1) {
+    lines.push(
+      `  ENTITY_${index} {`,
+      '    bigint id PK',
+      `    string ${context.goal.stages[index % 4].toLowerCase()}`,
+      '  }',
+    );
+  }
+  bits.forEach((bit, index) => {
+    const relation = bit === 0 ? '||--o{' : '}o--||';
+    lines.push(
+      `  ENTITY_${index} ${relation} ENTITY_${index + 1} : relates`,
+    );
+  });
+  return scenario(
+    lines,
+    bits,
+    'one-to-many',
+    'many-to-one',
+    context,
+    ['entities', 'cardinality-direction'],
+    ['ENTITY_0'],
+  );
+}
+
+function renderGantt(bits, context) {
+  const lines = [
+    'gantt',
+    `  title ${context.title}`,
+    '  dateFormat YYYY-MM-DD',
+    '  todayMarker off',
+    '  section Delivery',
+  ];
+  let previous = null;
+  bits.forEach((bit, index) => {
+    const id = `task_${index + 1}`;
+    const schedule = previous === null
+      ? '2027-01-01'
+      : `after ${previous}`;
+    const state = bit === 0 ? 'crit' : 'active';
+    lines.push(
+      `  ${context.label(index)} :${state}, ${id}, ${schedule}, 2d`,
+    );
     previous = id;
   });
-  return variation(
-    [
-      'server-forward-chain',
-      'internet-reverse-chain',
-      'disk-bidirectional-chain',
-      'database-forward-chain',
-    ][variantIndex],
-    source,
+  return scenario(
     lines,
+    bits,
+    'critical-task',
+    'active-task',
+    context,
+    ['tasks', 'task-states'],
   );
 }
 
-function appendC4Elements(source, ordinal, itemCount, variantIndex) {
-  const constructors = ['Person', 'System', 'SystemDb', 'SystemQueue'];
-  const ids = generatedIds('StructureElement', ordinal, itemCount);
-  const lines = ids.map((id, index) =>
-    `  ${constructors[variantIndex]}(${id}, "${generatedLabel(ordinal, index)}")`
-  );
-  for (let index = 1; index < ids.length; index += 1) {
-    lines.push(`  Rel(${ids[index - 1]}, ${ids[index]}, "continues")`);
-  }
-  return variation(
-    ['people-chain', 'system-chain', 'database-chain', 'queue-chain'][variantIndex],
-    source,
-    lines,
-  );
-}
-
-function appendRailroadRules(source, ordinal, itemCount, variantIndex) {
-  const declaration = source
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .find((line) => /^railroad(?:-(?:ebnf|abnf|peg))?-beta$/.test(line));
-  if (declaration === undefined) {
-    throw new Error('Missing Railroad declaration');
-  }
-  const lines = Array.from({ length: itemCount }, (_, index) => {
-    const id = `structure-rule-${ordinal}-${index + 1}`;
-    const token = `token-${ordinal}-${index + 1}`;
-    if (declaration === 'railroad-beta') {
-      const expressions = [
-        `terminal("${token}")`,
-        `sequence(terminal("${token}"), optional(nonterminal("tail")))`,
-        `choice(terminal("${token}"), special("fallback"))`,
-        `oneOrMore(nonterminal("${token}"))`,
-      ];
-      return `  ${id} = ${expressions[variantIndex]} ;`;
-    }
-    if (declaration === 'railroad-ebnf-beta') {
-      const expressions = [
-        `"${token}"`,
-        `"${token}", [ identifier ]`,
-        `"${token}" | identifier`,
-        `{ "${token}" }`,
-      ];
-      return `  ${id} = ${expressions[variantIndex]} ;`;
-    }
-    if (declaration === 'railroad-abnf-beta') {
-      const expressions = [
-        `"${token}"`,
-        `1*2ALPHA`,
-        `"${token}" / DIGIT`,
-        `[ "${token}" ]`,
-      ];
-      return `  ${id} = ${expressions[variantIndex]} ;`;
-    }
-    const expressions = [
-      `"${token}"`,
-      `"${token}"+`,
-      `"${token}" / .`,
-      `!"deny" "${token}"`,
-    ];
-    return `  ${id} <- ${expressions[variantIndex]} ;`;
+function renderPie(bits, context) {
+  const lines = ['pie showData', `  title ${context.title}`];
+  bits.forEach((bit, index) => {
+    const value = (index + 1) * 3 + (bit === 0 ? 1 : index + 4);
+    lines.push(`  "${context.label(index)}" : ${value}`);
   });
-  return variation(
-    ['terminal-rules', 'sequence-rules', 'choice-rules', 'repetition-rules'][
-      variantIndex
-    ],
-    source,
+  return scenario(
     lines,
+    bits,
+    'baseline-allocation',
+    'expanded-allocation',
+    context,
+    ['slices', 'non-proportional-values'],
   );
 }
 
-function appendTreeEntries(source, ordinal, itemCount, variantIndex) {
-  if (/[├└┣┗]/u.test(source)) {
-    return appendBoxDrawingTreeEntries(
-      source,
-      ordinal,
-      itemCount,
-      variantIndex,
-    );
-  }
-  const root = `    structure-${String(ordinal).padStart(3, '0')}/`;
-  const lines = [root];
-  for (let index = 0; index < itemCount; index += 1) {
-    const label = `case-${String(index + 1).padStart(2, '0')}`;
-    if (variantIndex === 0) {
-      lines.push(`        ${label}.md`);
-    } else if (variantIndex === 1) {
-      lines.push(`        ${label}/`, `            index.kt`);
-    } else if (variantIndex === 2) {
-      lines.push(`        ${label}.kt :::highlight ## generated branch`);
-    } else {
-      lines.push(`        "${label} folder/"`, `            data.json icon(file)`);
-    }
-  }
-  return variation(
-    ['flat-files', 'nested-directories', 'highlighted-files', 'quoted-icon-tree'][
-      variantIndex
-    ],
-    source,
+function renderJourney(bits, context) {
+  const lines = ['journey', `  title ${context.title}`, '  section Experience'];
+  bits.forEach((bit, index) => {
+    const actors = bit === 0
+      ? context.domain.actor
+      : `${context.domain.actor}, ${context.domain.platform}`;
+    const score = bit === 0 ? 2 : 5;
+    lines.push(`    ${context.label(index)}: ${score}: ${actors}`);
+  });
+  return scenario(
     lines,
+    bits,
+    'single-actor-low-score',
+    'shared-high-score',
+    context,
+    ['journey-tasks', 'actor-participation'],
   );
 }
 
-function appendBoxDrawingTreeEntries(
-  source,
-  ordinal,
-  itemCount,
-  variantIndex,
-) {
-  const heavy = /[┣┗]/u.test(source);
-  const branch = heavy ? '┣━━ ' : '├── ';
-  const last = heavy ? '┗━━ ' : '└── ';
-  const vertical = heavy ? '┃   ' : '│   ';
-  const indent = '    ';
-  const lines = [
-    `${last}structure-${String(ordinal).padStart(3, '0')}/`,
-  ];
-  for (let index = 0; index < itemCount; index += 1) {
-    const label = `case-${String(index + 1).padStart(2, '0')}`;
-    const connector = index === itemCount - 1 ? last : branch;
-    const childPrefix = `${indent}${connector}`;
-    if (variantIndex === 0) {
-      lines.push(`${childPrefix}${label}.md`);
-    } else if (variantIndex === 1) {
-      lines.push(
-        `${childPrefix}${label}/`,
-        `${indent}${index === itemCount - 1 ? indent : vertical}${last}index.kt`,
-      );
-    } else if (variantIndex === 2) {
-      lines.push(`${childPrefix}${label}.kt :::highlight ## generated branch`);
-    } else {
-      lines.push(
-        `${childPrefix}"${label} folder/"`,
-        `${indent}${index === itemCount - 1 ? indent : vertical}${last}` +
-          'data.json icon(file)',
-      );
-    }
-  }
-  return variation(
-    ['flat-files', 'nested-directories', 'highlighted-files', 'quoted-icon-tree'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendXySeries(source, ordinal, itemCount, variantIndex) {
-  const pointCount = xyPointCount(source);
-  const labelledBarOverflow =
-    variantIndex === 1 &&
-    itemCount >= 5 &&
-    source.includes('showDataLabelOutsideBar: true');
-  const lines = [];
-  for (let index = 0; index < itemCount; index += 1) {
-    const plotType =
-      !labelledBarOverflow &&
-      (variantIndex === 1 || (variantIndex === 2 && index % 2 === 0))
-      ? 'bar'
-      : 'line';
-    const values = Array.from({ length: pointCount }, (_, valueIndex) =>
-      xyValue(variantIndex, index, valueIndex, pointCount)
-    );
+function renderRequirement(bits, context) {
+  const lines = ['requirementDiagram', '  direction LR'];
+  bits.forEach((bit, index) => {
+    const type = bit === 0 ? 'functionalRequirement' : 'performanceRequirement';
     lines.push(
-      `  ${plotType} "Structure ${ordinal}-${index + 1}" [${values.join(', ')}]`,
-    );
-  }
-  return variation(
-    labelledBarOverflow
-      ? 'labelled-line-series'
-      : ['rising-lines', 'grouped-bars', 'mixed-series', 'oscillating-lines'][
-        variantIndex
-      ],
-    source,
-    lines,
-  );
-}
-
-function appendQuadrantPoints(source, ordinal, itemCount, variantIndex) {
-  const lines = Array.from({ length: itemCount }, (_, index) => {
-    const x = (((ordinal + index * 2) % 9) + 1) / 10;
-    const y = (((ordinal * 3 + index) % 9) + 1) / 10;
-    const style = [
-      '',
-      ` radius: ${7 + (index % 4)}`,
-      ` color: #2563eb`,
-      ` radius: ${8 + (index % 3)}, color: #16a34a, stroke-width: 2px`,
-    ][variantIndex];
-    return `  "Structure ${ordinal}-${index + 1}": ` +
-      `[${x.toFixed(1)}, ${y.toFixed(1)}]${style}`;
-  });
-  return variation(
-    ['plain-points', 'radius-points', 'colored-points', 'fully-styled-points'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendTimelineStructure(source, ordinal, itemCount, variantIndex) {
-  const lines = [];
-  if (variantIndex !== 2) {
-    lines.push(`  section Structure ${ordinal}`);
-  }
-  for (let index = 0; index < itemCount; index += 1) {
-    const event = `Milestone ${ordinal}-${index + 1}`;
-    if (variantIndex === 0) {
-      lines.push(`    ${event} : Planned`);
-    } else if (variantIndex === 1) {
-      lines.push(`    ${event} : Planned : Verified`);
-    } else if (variantIndex === 2) {
-      lines.push(`  ${event} : Sectionless event`);
-    } else {
-      lines.push(`    ${event} : Draft : Review : Release`);
-    }
-  }
-  return variation(
-    ['section-events', 'multi-events', 'sectionless-events', 'three-stage-events'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendKanbanStructure(source, ordinal, itemCount, variantIndex) {
-  const stageId = `StructureStage${ordinal}`;
-  const lines = [`  ${stageId}[Structure stage ${ordinal}]`];
-  for (let index = 0; index < itemCount; index += 1) {
-    const id = `StructureTask${ordinal}_${index + 1}`;
-    const label = generatedLabel(ordinal, index);
-    const task = [
-      `${id}[${label}]`,
-      `${id}(${label})`,
-      `${id}((` + `${label}` + '))',
-      `${id}[${label}]@{ priority: High, assigned: Owner }`,
-    ][variantIndex];
-    lines.push(`    ${task}`);
-  }
-  return variation(
-    ['square-tasks', 'rounded-tasks', 'circle-tasks', 'metadata-tasks'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendSequenceStructure(source, ordinal, itemCount, variantIndex) {
-  const participants = sequenceParticipantIds(source);
-  const messages = Array.from({ length: itemCount }, (_, index) => {
-    const from = participants[index % participants.length];
-    const to = participants[(index + 1) % participants.length];
-    return `    ${from}->>${to}: ${generatedLabel(ordinal, index)}`;
-  });
-  const lines = [
-    messages.map((line) => line.trimStart()),
-    [`  loop structure ${ordinal}`, ...messages, '  end'],
-    [`  opt structure ${ordinal}`, ...messages, '  end'],
-    [
-      `  par structure ${ordinal}`,
-      ...messages,
-      '  and ack',
-      `    ${participants.at(-1)}-->>${participants[0]}: complete`,
-      '  end',
-    ],
-  ][variantIndex];
-  return {
-    variant: ['message-chain', 'loop-region', 'optional-region', 'parallel-region'][
-      variantIndex
-    ],
-    source: `${source.trimEnd()}\n${lines.join('\n')}\n`,
-  };
-}
-
-function appendClassStructure(source, ordinal, itemCount, variantIndex) {
-  const ids = generatedIds('StructureClass', ordinal, itemCount);
-  const lines = [];
-  ids.forEach((id, index) => {
-    lines.push(`  class ${id} {`, `    +String value${index + 1}`, '  }');
-  });
-  const operators = ['-->', '*--', '..>', '<|--'];
-  for (let index = 1; index < ids.length; index += 1) {
-    lines.push(
-      `  ${ids[index - 1]} ${operators[variantIndex]} ${ids[index]} : step`,
-    );
-  }
-  return variation(
-    ['associations', 'compositions', 'dependencies', 'inheritance'][variantIndex],
-    source,
-    lines,
-  );
-}
-
-function appendStateStructure(source, ordinal, itemCount, variantIndex) {
-  const ids = generatedIds('StructureState', ordinal, itemCount);
-  const lines = ids.map((id, index) =>
-    `  state "${generatedLabel(ordinal, index)}" as ${id}`
-  );
-  for (let index = 1; index < ids.length; index += 1) {
-    const label = ['advance', 'approved', 'retry', 'complete'][variantIndex];
-    if (variantIndex === 2 && index % 2 === 0) {
-      lines.push(`  ${ids[index]} --> ${ids[index - 1]} : ${label}`);
-    } else {
-      lines.push(`  ${ids[index - 1]} --> ${ids[index]} : ${label}`);
-    }
-  }
-  if (variantIndex === 3 && ids.length > 0) {
-    lines.push(`  ${ids.at(-1)} --> [*] : done`);
-  }
-  return variation(
-    ['linear-states', 'labelled-states', 'retry-states', 'terminal-states'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendErStructure(source, ordinal, itemCount, variantIndex) {
-  const ids = generatedIds('STRUCTURE_ENTITY', ordinal, itemCount);
-  const lines = [];
-  ids.forEach((id, index) => {
-    lines.push(
-      `  ${id} {`,
-      `    bigint id PK`,
-      variantIndex >= 2 ? `    string value_${index + 1} UK` : `    string value`,
+      `  ${type} R${index + 1} {`,
+      `    id: "REQ-${index + 1}"`,
+      `    text: "${context.label(index)}"`,
+      `    risk: ${bit === 0 ? 'medium' : 'high'}`,
+      `    verifyMethod: ${bit === 0 ? 'test' : 'analysis'}`,
       '  }',
     );
   });
-  const cardinalities = ['||--o{', '||--|{', '}o--o{', '|o..o|'];
-  for (let index = 1; index < ids.length; index += 1) {
-    lines.push(
-      `  ${ids[index - 1]} ${cardinalities[variantIndex]} ` +
-        `${ids[index]} : relates`,
-    );
+  for (let index = 1; index < bits.length; index += 1) {
+    const relation = bits[index] === 0 ? 'contains' : 'derives';
+    lines.push(`  R${index} - ${relation} -> R${index + 1}`);
   }
-  return variation(
-    ['optional-many', 'required-many', 'many-to-many', 'optional-one'][
-      variantIndex
-    ],
-    source,
+  return scenario(
     lines,
+    bits,
+    'functional-requirement',
+    'performance-requirement',
+    context,
+    ['requirement-types', 'requirement-relations'],
+    ['REQ-1'],
   );
 }
 
-function appendGanttStructure(source, ordinal, itemCount, variantIndex) {
-  const lines = [`  section Structure ${ordinal}`];
-  let previousId = null;
-  for (let index = 0; index < itemCount; index += 1) {
-    const id = `structure_${ordinal}_${index + 1}`;
-    const state = ['', 'done, ', 'active, ', index === itemCount - 1 ? 'milestone, ' : 'crit, '][
-      variantIndex
-    ];
-    const schedule = previousId === null
-      ? `2030-01-${String((ordinal % 20) + 1).padStart(2, '0')}, 1d`
-      : `after ${previousId}, ${variantIndex === 3 && index === itemCount - 1 ? '0d' : '1d'}`;
+function renderGitGraph(bits, context) {
+  const lines = ['gitGraph LR:', '  commit id: "baseline"'];
+  bits.forEach((bit, index) => {
+    const suffix = bit === 0 ? '' : ' type: HIGHLIGHT';
     lines.push(
-      `  Structure task ${ordinal}-${index + 1} :${state}${id}, ${schedule}`,
+      `  commit id: "${context.goal.code}-${index + 1}"${suffix}`,
     );
-    previousId = id;
-  }
-  return variation(
-    ['scheduled-tasks', 'completed-tasks', 'active-tasks', 'critical-milestone'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendPieStructure(source, ordinal, itemCount, variantIndex) {
-  const lines = Array.from({ length: itemCount }, (_, index) => {
-    const value = [
-      index + 1,
-      (index + 1) * (index + 1),
-      itemCount - index,
-      index === 0 ? itemCount * 5 : 1,
-    ][variantIndex];
-    return `  "Structure ${ordinal}-${index + 1}" : ${value}`;
   });
-  return variation(
-    ['ascending-slices', 'quadratic-slices', 'descending-slices', 'skewed-slices'][
-      variantIndex
-    ],
-    source,
+  return scenario(
     lines,
+    bits,
+    'normal-commit',
+    'highlighted-commit',
+    context,
+    ['commits', 'commit-types'],
+    [context.goal.code],
   );
 }
 
-function appendJourneyStructure(source, ordinal, itemCount, variantIndex) {
-  const lines = [`  section Structure ${ordinal}`];
-  for (let index = 0; index < itemCount; index += 1) {
-    const score = variantIndex === 3
-      ? `${((index % 5) + 1) - 0.5}`
-      : `${(index % 5) + 1}`;
-    const actors = [
-      '',
-      ': Operator',
-      ': Operator, Reviewer',
-      index % 2 === 0 ? '' : ': Reliability Engineer',
-    ][variantIndex];
-    lines.push(
-      `    Structure task ${ordinal}-${index + 1}: ${score}${actors}`,
-    );
-  }
-  return variation(
-    ['actorless-tasks', 'single-actor-tasks', 'multi-actor-tasks', 'mixed-decimal-tasks'][
-      variantIndex
-    ],
-    source,
+function renderMindmap(bits, context) {
+  const lines = ['mindmap', `  root((${context.title}))`];
+  bits.forEach((bit, index) => {
+    if (bit === 0) {
+      lines.push(`    ${context.label(index)}`);
+    } else {
+      lines.push(
+        `    ${context.goal.stages[index % 4]} branch ${index + 1}`,
+        `      ${context.label(index)}`,
+      );
+    }
+  });
+  return scenario(
     lines,
+    bits,
+    'root-child',
+    'nested-child',
+    context,
+    ['hierarchy', 'branch-depth'],
   );
 }
 
-function appendRequirementStructure(source, ordinal, itemCount, variantIndex) {
-  const anchor = lastMatch(
-    source,
-    /^\s*(?:requirement|functionalRequirement|performanceRequirement|interfaceRequirement|physicalRequirement|designConstraint)\s+([A-Za-z_][A-Za-z0-9_-]*)\s*\{/m,
-  );
-  const types = [
-    'requirement',
-    'functionalRequirement',
-    'performanceRequirement',
-    'interfaceRequirement',
+function renderPacket(bits, context) {
+  const lines = [
+    '---',
+    `title: ${context.title}`,
+    '---',
+    'packet',
   ];
-  const ids = generatedIds('structure_requirement', ordinal, itemCount);
-  const lines = [];
-  ids.forEach((id, index) => {
-    lines.push(
-      `  ${types[variantIndex]} ${id} {`,
-      `    id: "STRUCT-${ordinal}-${index + 1}"`,
-      `    text: "${generatedLabel(ordinal, index)}"`,
-      `    risk: ${['low', 'medium', 'high', 'medium'][variantIndex]}`,
-      `    verifyMethod: ${['inspection', 'test', 'analysis', 'demonstration'][variantIndex]}`,
-      '  }',
-    );
+  let offset = 0;
+  bits.forEach((bit, index) => {
+    const width = bit === 0 ? 4 : 8;
+    const end = offset + width - 1;
+    lines.push(`  ${offset}-${end}: "${context.label(index)}"`);
+    offset = end + 1;
   });
-  lines.push(`  ${anchor} - traces -> ${ids[0]}`);
-  for (let index = 1; index < ids.length; index += 1) {
-    lines.push(
-      `  ${ids[index - 1]} - ${['contains', 'derives', 'refines', 'traces'][variantIndex]} -> ${ids[index]}`,
-    );
-  }
-  return variation(
-    ['base-requirements', 'functional-requirements', 'performance-requirements', 'interface-requirements'][
-      variantIndex
-    ],
-    source,
+  return scenario(
     lines,
+    bits,
+    'four-bit-field',
+    'eight-bit-field',
+    context,
+    ['field-widths', 'contiguous-ranges'],
   );
 }
 
-function appendGitGraphStructure(source, ordinal, itemCount, variantIndex) {
-  const lines = Array.from({ length: itemCount }, (_, index) => {
-    const id = `structure-${ordinal}-${index + 1}`;
-    const suffix = [
-      '',
-      ` type: HIGHLIGHT`,
-      ` type: REVERSE`,
-      ` tag: "profile-${index + 1}"`,
-    ][variantIndex];
-    return `  commit id: "${id}"${suffix}`;
-  });
-  return variation(
-    ['plain-commits', 'highlighted-commits', 'reverse-commits', 'tagged-commits'][
-      variantIndex
-    ],
-    source,
-    lines,
+function renderRadar(bits, context) {
+  const axes = bits.map((_, index) => `axis${index + 1}`);
+  const values = bits.map(
+    (bit, index) => 25 + index * 6 + (bit === 0 ? 0 : index + 9),
   );
-}
-
-function appendMindmapStructure(source, ordinal, itemCount, variantIndex) {
-  const branchId = `structure_${ordinal}`;
-  const lines = [`    ${branchId}[Structure ${ordinal}]`];
-  for (let index = 0; index < itemCount; index += 1) {
-    const id = `${branchId}_${index + 1}`;
-    const label = generatedLabel(ordinal, index);
-    if (variantIndex === 0) {
-      lines.push(`      ${id}[${label}]`);
-    } else if (variantIndex === 1) {
-      lines.push(`${'      '.repeat(index + 1)}${id}(${label})`);
-    } else if (variantIndex === 2) {
-      lines.push(`      ${id}((${label}))`);
-    } else {
-      lines.push(`      ${id}{{${label}}}`, `        ${id}_child[Evidence]`);
-    }
-  }
-  return variation(
-    ['wide-square-branch', 'deep-rounded-branch', 'circle-branch', 'hexagon-pairs'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendPacketStructure(source, ordinal, itemCount, variantIndex) {
-  const widths = [1, 4, 8, 16];
-  const lines = Array.from({ length: itemCount }, (_, index) =>
-    `  +${widths[(variantIndex + index) % widths.length]}: ` +
-      `"Structure ${ordinal}-${index + 1}"`
-  );
-  return variation(
-    ['single-bit-fields', 'nibble-fields', 'byte-fields', 'word-fields'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendRadarStructure(source, ordinal, itemCount, variantIndex) {
-  const axisIds = radarAxisIds(source);
-  const lines = [];
-  for (let index = 0; index < itemCount; index += 1) {
-    const values = axisIds.map((_, axisIndex) =>
-      20 + ((ordinal + index * 11 + axisIndex * (variantIndex + 3)) % 75)
-    );
-    if (variantIndex === 1) {
-      lines.push(
-        `  curve structure_${ordinal}_${index + 1} { ` +
-          axisIds.map((id, axisIndex) => `${id}: ${values[axisIndex]}`).join(', ') +
-          ' }',
-      );
-    } else {
-      lines.push(
-        `  curve structure_${ordinal}_${index + 1}["Structure ${ordinal}-${index + 1}"] ` +
-          `{ ${values.join(', ')} }`,
-      );
-    }
-  }
-  lines.push([
-    '  graticule circle',
-    '  graticule polygon',
-    '  showLegend false',
-    `  ticks ${Math.min(10, itemCount + 3)}`,
-  ][variantIndex]);
-  return variation(
-    ['circle-positional-curves', 'polygon-detailed-curves', 'hidden-legend-curves', 'custom-tick-curves'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendSankeyStructure(source, ordinal, itemCount, variantIndex) {
-  const nodes = generatedIds('Structure', ordinal, itemCount + 1);
-  const lines = [];
-  for (let index = 0; index < itemCount; index += 1) {
-    const value = index + 1;
-    if (variantIndex === 0) {
-      lines.push(`${nodes[index]},${nodes[index + 1]},${value}`);
-    } else if (variantIndex === 1) {
-      lines.push(`${nodes[0]},${nodes[index + 1]},${value}`);
-    } else if (variantIndex === 2) {
-      lines.push(`${nodes[index]},${nodes.at(-1)},${value}`);
-    } else {
-      const middle = `StructureMiddle${ordinal}_${index + 1}`;
-      lines.push(`${nodes[index]},${middle},${value}`);
-      lines.push(`${middle},${nodes[index + 1]},${value}`);
-    }
-  }
-  return variation(
-    ['flow-chain', 'source-fanout', 'target-merge', 'two-stage-flow'][variantIndex],
-    source,
-    lines,
-  );
-}
-
-function appendTreemapStructure(source, ordinal, itemCount, variantIndex) {
-  const existingTotal = treemapLeafTotal(source);
-  const generatedLeafCount = itemCount * (variantIndex === 3 ? 2 : 1);
-  const generatedLeafValue = existingTotal * 0.4 / generatedLeafCount;
-  const lines = [`"Structure ${ordinal}"`];
-  for (let index = 0; index < itemCount; index += 1) {
-    const value = formatTreemapValue(
-      generatedLeafValue * (0.9 + index * 0.05),
-    );
-    if (variantIndex === 0) {
-      lines.push(`    "Leaf ${index + 1}": ${value}`);
-    } else if (variantIndex === 1) {
-      lines.push(`    "G${index + 1}"`, `        "Leaf": ${value}`);
-    } else if (variantIndex === 2) {
-      lines.push(`    "Leaf ${index + 1}", ${value}`);
-    } else {
-      lines.push(
-        `    "G${index + 1}"`,
-        `        "A": ${formatTreemapValue(value * 0.9)}`,
-        `        "B": ${formatTreemapValue(value * 1.1)}`,
-      );
-    }
-  }
-  const variant = [
-    'flat-colon-leaves',
-    'nested-colon-leaves',
-    'flat-comma-leaves',
-    'paired-nested-leaves',
-  ][variantIndex];
-  const sizedSource = insertBeforeMatchingDeclaration(
-    source,
-    /^\s*treemap(?:-beta|:)?\s*$/,
-    [
-      '%%{init: {"treemap": {"nodeWidth": 160, "nodeHeight": 90}}}%%',
-    ],
-  );
-  const sourceLines = sizedSource.trim().split(/\r?\n/);
-  const classDefinitionIndex = sourceLines.findIndex((line) =>
-    line.trimStart().startsWith('classDef ')
-  );
-  if (classDefinitionIndex < 0) {
-    return variation(variant, source, lines);
-  }
-  sourceLines.splice(classDefinitionIndex, 0, ...lines);
-  return {
-    variant,
-    source: `${sourceLines.join('\n')}\n`,
-  };
-}
-
-function appendVennStructure(source, ordinal, itemCount, variantIndex) {
-  const ids = generatedIds('StructureSet', ordinal, itemCount);
-  const lines = ids.map((id, index) =>
-    `  set ${id}["Structure ${ordinal}-${index + 1}"]:${12 + index}`
-  );
-  if (variantIndex === 1) {
-    ids.forEach((id, index) =>
-      lines.push(`    text StructureText${ordinal}_${index + 1}["Evidence"]`)
-    );
-  } else if (variantIndex === 2 && ids.length > 1) {
-    for (let index = 1; index < ids.length; index += 1) {
-      lines.push(
-        `  union ${ids[index - 1]},${ids[index]}["Overlap ${index}"]:${index + 1}`,
-      );
-    }
-  } else if (variantIndex === 3) {
-    ids.forEach((id, index) =>
-      lines.push(
-        `  style ${id} fill:${index % 2 === 0 ? '#dbeafe' : '#dcfce7'},` +
-          'stroke:#334155,fill-opacity:0.24',
-      )
-    );
-  }
-  return variation(
-    ['independent-sets', 'sets-with-text', 'pairwise-unions', 'styled-sets'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendIshikawaStructure(source, ordinal, itemCount, variantIndex) {
-  const lines = [];
-  for (let index = 0; index < itemCount; index += 1) {
-    const label = `Structure cause ${ordinal}-${index + 1}`;
-    if (variantIndex === 0) {
-      lines.push(`  ${label}`);
-    } else if (variantIndex === 1) {
-      lines.push(`  ${label}`, `    Evidence ${index + 1}`);
-    } else if (variantIndex === 2) {
-      lines.push(`  ${label}`, `    Evidence ${index + 1}`, `      Root ${index + 1}`);
-    } else {
-      lines.push(
-        `  ${label}`,
-        `    Primary ${index + 1}`,
-        `    Secondary ${index + 1}`,
-      );
-    }
-  }
-  return variation(
-    ['top-level-causes', 'nested-causes', 'deep-causes', 'branched-causes'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendCynefinStructure(source, ordinal, itemCount, variantIndex) {
-  const domain = ['complex', 'complicated', 'clear', 'chaotic'][variantIndex];
-  const lines = [`  ${domain}`];
-  for (let index = 0; index < itemCount; index += 1) {
-    lines.push(`    "Structure ${ordinal}-${index + 1}"`);
-  }
-  return variation(
-    ['complex-items', 'complicated-items', 'clear-items', 'chaotic-items'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendBlockStructure(source, ordinal, itemCount, variantIndex) {
-  const ids = generatedIds('structure_block', ordinal, itemCount);
-  const shapes = [
-    (id, label) => `${id}["${label}"]`,
-    (id, label) => `${id}("${label}")`,
-    (id, label) => `${id}[("${label}")]`,
-    (id, label) => `${id}{{"${label}"}}`,
+  const lines = [
+    'radar-beta',
+    `  title ${context.title}`,
+    `  axis ${axes.map((id, index) =>
+      `${id}["${context.goal.stages[index % 4]} ${index + 1}"]`
+    ).join(', ')}`,
+    `  curve profile["${context.domain.object}"] { ${values.join(', ')} }`,
+    '  min 0',
+    '  max 100',
+    '  ticks 5',
   ];
-  const lines = ids.map((id, index) =>
-    `  ${shapes[variantIndex](id, generatedLabel(ordinal, index))}`
-  );
-  for (let index = 1; index < ids.length; index += 1) {
-    lines.push(`  ${ids[index - 1]} --> ${ids[index]}`);
-  }
-  return variation(
-    ['square-blocks', 'rounded-blocks', 'database-blocks', 'hexagon-blocks'][
-      variantIndex
-    ],
-    source,
+  return scenario(
     lines,
+    bits,
+    'baseline-axis-value',
+    'elevated-axis-value',
+    context,
+    ['axes', 'curve-values'],
   );
 }
 
-function appendEventModelingStructure(source, ordinal, itemCount, variantIndex) {
-  const types = ['ui', 'cmd', 'evt', 'rmo'];
-  const lines = [];
-  for (let index = 0; index < itemCount; index += 1) {
-    const frame = 700 + index;
-    const relation = index === 0 ? '' : ` ->> ${frame - 1}`;
+function renderSankey(bits, context) {
+  const lines = ['sankey'];
+  bits.forEach((bit, index) => {
+    const target = bit === 0 ? 'Standard Path' : 'Escalation Path';
     lines.push(
-      `  tf ${frame} ${types[variantIndex]} Structure${ordinal}_${index + 1}` +
-        `${relation}`,
+      `${context.goal.stages[index % 4]} ${index + 1},${target},${index + 2}`,
     );
-  }
-  return variation(
-    ['ui-flow', 'command-flow', 'event-flow', 'read-model-flow'][variantIndex],
-    source,
-    lines,
-  );
-}
-
-function appendAgentflowStructure(source, ordinal, itemCount, variantIndex) {
-  const anchor = findFirstIdentifier(source, ['[', '@', '-']);
-  const ids = generatedIds('structure_agent', ordinal, itemCount);
-  const shapes = ['task', 'tool', 'decision', 'action'];
-  const lines = ids.map((id, index) =>
-    `  ${id}["${generatedLabel(ordinal, index)}"]@{ shape: ${shapes[variantIndex]} }`
-  );
-  if (variantIndex === 2) {
-    ids.forEach((id) => lines.push(`  ${anchor} --> ${id}`));
-  } else {
-    ids.forEach((id, index) => {
-      const previous = index === 0 ? anchor : ids[index - 1];
-      const operator = variantIndex === 1 ? '-.-' : variantIndex === 3 ? '--x' : '-->';
-      lines.push(`  ${previous} ${operator} ${id}`);
-    });
-  }
-  return variation(
-    ['task-chain', 'tool-reference-chain', 'decision-fanout', 'failure-action-chain'][
-      variantIndex
-    ],
-    source,
-    lines,
-  );
-}
-
-function appendUseCaseStructure(source, ordinal, itemCount, variantIndex) {
-  const actor = `StructureActor${ordinal}`;
-  const ids = generatedIds('StructureUseCase', ordinal, itemCount);
-  const lines = [`actor ${actor}("Structure actor ${ordinal}")`];
-  ids.forEach((id, index) => {
-    lines.push(`${id}("${generatedLabel(ordinal, index)}")`);
   });
-  if (variantIndex === 0) {
-    ids.forEach((id) => lines.push(`${actor} --> ${id}`));
-  } else if (variantIndex === 1) {
-    for (let index = 1; index < ids.length; index += 1) {
-      lines.push(`${ids[index - 1]} ..> : include ${ids[index]}`);
-    }
-  } else if (variantIndex === 2) {
-    for (let index = 1; index < ids.length; index += 1) {
-      lines.push(`${ids[index]} ..> : extend ${ids[index - 1]}`);
-    }
-  } else {
-    ids.forEach((id, index) => {
-      lines.push(`${actor} --> ${id}`);
-      lines.push(`note for ${id} "Evidence ${index + 1}"`);
-    });
-  }
-  return variation(
-    ['actor-associations', 'include-chain', 'extend-chain', 'noted-associations'][
-      variantIndex
-    ],
-    source,
+  return scenario(
     lines,
+    bits,
+    'standard-flow',
+    'escalation-flow',
+    context,
+    ['flow-destinations', 'weighted-links'],
+    [context.goal.stages[0]],
   );
 }
 
-function appendWardleyStructure(source, ordinal, itemCount, variantIndex) {
-  const names = Array.from(
-    { length: itemCount },
-    (_, index) => `"Structure ${ordinal}-${index + 1}"`,
-  );
-  const lines = names.map((name, index) => {
-    const visibility = Math.max(0.1, 0.84 - index * 0.06);
-    const evolution = Math.min(0.95, 0.2 + index * 0.08);
-    const sourcing = ['', ' (build)', ' (buy)', ' (inertia)'][variantIndex];
-    return `component ${name} [${visibility.toFixed(2)}, ${evolution.toFixed(2)}]${sourcing}`;
+function renderTreemap(bits, context) {
+  const primary = [];
+  const secondary = [];
+  bits.forEach((bit, index) => {
+    const stage = context.goal.stages[index % context.goal.stages.length];
+    const line = `    "${stage} ${index + 1}": 40`;
+    (bit === 0 ? primary : secondary).push(line);
   });
-  for (let index = 1; index < names.length; index += 1) {
-    lines.push(`${names[index - 1]} -> ${names[index]}`);
+  const lines = ['treemap-beta', `title ${context.title}`];
+  if (primary.length > 0) {
+    lines.push('"Main"', ...primary);
   }
-  return variation(
-    ['component-chain', 'build-chain', 'buy-chain', 'inertia-chain'][variantIndex],
-    source,
+  if (secondary.length > 0) {
+    lines.push('"Alt"', ...secondary);
+  }
+  return scenario(
     lines,
+    bits,
+    'primary-branch',
+    'secondary-branch',
+    context,
+    ['hierarchy', 'branch-membership'],
   );
 }
 
-function appendZenUmlStructure(source, ordinal, itemCount, variantIndex) {
-  const ids = generatedIds('StructureParticipant', ordinal, itemCount);
-  const withParticipants = insertAfterDeclaration(
-    source,
+function renderVenn(bits, context) {
+  const lines = [
+    'venn-beta',
+    `  title ${context.title}`,
+    '  set A["Need"]:30',
+    '  set B["Value"]:30',
+    '  set C["Feasibility"]:30',
+    '  set D["Safety"]:30',
+  ];
+  const unions = [
+    ['A,B', 'Need and value', 3],
+    ['A,C', 'Need and feasibility', 3],
+    ['A,D', 'Need and safety', 3],
+    ['B,C', 'Value and feasibility', 3],
+    ['B,D', 'Value and safety', 3],
+    ['C,D', 'Feasibility and safety', 3],
+    ['A,B,C', 'Validated value', 1],
+    ['B,C,D', 'Deliverable safety', 1],
+  ];
+  bits.forEach((bit, index) => {
+    if (bit === 1) {
+      const [members, label, value] = unions[index];
+      lines.push(`  union ${members}["${label}"]:${value}`);
+    }
+  });
+  return scenario(
+    lines,
+    bits,
+    'absent-intersection',
+    'present-intersection',
+    context,
+    ['sets', 'intersection-presence'],
+    ['Need'],
+  );
+}
+
+function renderIshikawa(bits, context) {
+  const lines = ['ishikawa-beta', context.title];
+  bits.forEach((bit, index) => {
+    if (bit === 0) {
+      lines.push(`  ${context.label(index)}`);
+    } else {
+      lines.push(
+        `  ${context.goal.stages[index % 4]} cause ${index + 1}`,
+        `    ${context.label(index)}`,
+      );
+    }
+  });
+  return scenario(
+    lines,
+    bits,
+    'direct-cause',
+    'nested-cause',
+    context,
+    ['causes', 'cause-depth'],
+  );
+}
+
+function renderCynefin(bits, context) {
+  const transitions = [
+    'complex --> complicated',
+    'complicated --> clear',
+    'clear --> chaotic',
+    'chaotic --> complex',
+    'confusion --> complex',
+    'confusion --> complicated',
+    'confusion --> clear',
+    'confusion --> chaotic',
+  ];
+  const lines = [
+    'cynefin-beta',
+    `  title ${context.title}`,
+    '  clear',
+    `    "${context.label(0)}"`,
+    '  complicated',
+    `    "${context.label(1)}"`,
+    '  complex',
+    `    "${context.label(2)}"`,
+    '  chaotic',
+    `    "${context.label(3)}"`,
+    '  confusion',
+    `    "${context.label(4)}"`,
+  ];
+  bits.forEach((bit, index) => {
+    if (bit === 1) {
+      lines.push(`  ${transitions[index]}`);
+    }
+  });
+  return scenario(
+    lines,
+    bits,
+    'domain-transition-absent',
+    'domain-transition-present',
+    context,
+    ['domains', 'cross-domain-transitions'],
+  );
+}
+
+function renderBlock(bits, context) {
+  const lines = ['block', '  columns 4'];
+  bits.forEach((bit, index) => {
+    const id = `B${index + 1}`;
+    lines.push(
+      bit === 0
+        ? `  ${id}["${context.label(index)}"]`
+        : `  ${id}("${context.label(index)}")`,
+    );
+  });
+  for (let index = 1; index < bits.length; index += 1) {
+    lines.push(`  B${index} --> B${index + 1}`);
+  }
+  return scenario(
+    lines,
+    bits,
+    'square-block',
+    'rounded-block',
+    context,
+    ['grid', 'block-shapes'],
+    [context.label(0)],
+  );
+}
+
+function renderEventModeling(bits, context) {
+  const lines = ['eventmodeling'];
+  bits.forEach((bit, index) => {
+    const type = bit === 0 ? 'cmd' : 'evt';
+    lines.push(
+      `  tf ${String(index + 1).padStart(2, '0')} ${type} ` +
+        `${identifierToken(context.goal.stages[index % 4])}${index + 1}`,
+    );
+  });
+  return scenario(
+    lines,
+    bits,
+    'command-frame',
+    'event-frame',
+    context,
+    ['frames', 'frame-types'],
+    [context.goal.stages[0]],
+  );
+}
+
+function renderAgentflow(bits, context) {
+  const lines = ['agentflow-beta LR'];
+  bits.forEach((bit, index) => {
+    const shape = bit === 0 ? 'task' : 'decision';
+    lines.push(
+      `  A${index + 1}["${context.label(index)}"]@{ shape: ${shape} }`,
+    );
+  });
+  for (let index = 1; index < bits.length; index += 1) {
+    lines.push(`  A${index} --> A${index + 1}`);
+  }
+  return scenario(
+    lines,
+    bits,
+    'task-node',
+    'decision-node',
+    context,
+    ['typed-nodes', 'edge-chain'],
+    [context.label(0)],
+  );
+}
+
+function renderUseCase(bits, context) {
+  const lines = [
+    'usecase-beta',
+    'direction LR',
+    `actor Primary("${context.domain.actor}")`,
+    `systemBoundary platform["${context.domain.platform}"]`,
+  ];
+  bits.forEach((bit, index) => {
+    lines.push(
+      bit === 0
+        ? `  U${index + 1}("${context.label(index)}")`
+        : `  U${index + 1}[${context.label(index)}]`,
+    );
+  });
+  lines.push('end');
+  bits.forEach((_, index) => lines.push(`Primary --> U${index + 1}`));
+  return scenario(
+    lines,
+    bits,
+    'ellipse-use-case',
+    'rectangle-use-case',
+    context,
+    ['actors', 'use-case-forms'],
+    [context.domain.actor],
+  );
+}
+
+function renderWardley(bits, context) {
+  const lines = [
+    'wardley-beta',
+    `title ${context.title}`,
+    'anchor User [0.95, 0.50]',
+  ];
+  bits.forEach((bit, index) => {
+    const visibility = 0.86 - index * 0.08;
+    const evolution = bit === 0 ? 0.28 : 0.74;
+    lines.push(
+      `component "Capability ${index + 1}" ` +
+        `[${visibility.toFixed(2)}, ${evolution.toFixed(2)}]`,
+    );
+  });
+  lines.push('User -> "Capability 1"');
+  for (let index = 1; index < bits.length; index += 1) {
+    lines.push(`"Capability ${index}" -> "Capability ${index + 1}"`);
+  }
+  return scenario(
+    lines,
+    bits,
+    'custom-evolution',
+    'product-evolution',
+    context,
+    ['components', 'evolution-position'],
+    ['Capability 1'],
+  );
+}
+
+function renderZenUml(bits, context) {
+  const lines = [
     'zenuml',
-    ids.map((id, index) => `${id} as "${generatedLabel(ordinal, index)}"`),
-  );
-  const calls = ids.map((id, index) => {
-    const previous = index === 0 ? ids.at(-1) : ids[index - 1];
-    return `  ${previous}->${id}: step ${index + 1}`;
+    `title ${context.title}`,
+    `Actor as "${context.domain.actor}"`,
+    `Platform as "${context.domain.platform}"`,
+    'Worker as "Specialist"',
+  ];
+  bits.forEach((bit, index) => {
+    lines.push(
+      bit === 0
+        ? `Actor->Platform: ${context.label(index)}`
+        : `Platform->Worker: ${context.label(index)}`,
+    );
   });
-  const lines = [
-    calls.map((line) => line.trimStart()),
-    ['loop(structure) {', ...calls, '}'],
-    ['opt(structure) {', ...calls, '}'],
-    ['par {', ...calls, '}'],
-  ][variantIndex];
-  return {
-    variant: ['participant-messages', 'loop-messages', 'optional-messages', 'parallel-messages'][
-      variantIndex
-    ],
-    source: `${withParticipants.trimEnd()}\n${lines.join('\n')}\n`,
-  };
-}
-
-function variation(variant, source, lines) {
-  return {
-    variant,
-    source: `${source.trim()}\n${lines.join('\n')}\n`,
-  };
-}
-
-function generatedIds(prefix, ordinal, count) {
-  return Array.from(
-    { length: count },
-    (_, index) => `${prefix}${ordinal}_${index + 1}`,
+  return scenario(
+    lines,
+    bits,
+    'actor-platform-message',
+    'platform-worker-message',
+    context,
+    ['participants', 'message-target'],
   );
 }
 
-function generatedLabel(ordinal, index) {
-  return `Structure ${ordinal}-${index + 1}`;
-}
-
-function structuralExpectedTexts(kind, ordinal, variantIndex) {
-  switch (kind) {
-    case 'railroad':
-      return [`structure-rule-${ordinal}-1`];
-    case 'treeview':
-      return [[
-        'case-01.md',
-        'case-01',
-        'case-01.kt',
-        'case-01 folder',
-      ][variantIndex]];
-    case 'xychart':
-    case 'radar':
-      return [];
-    case 'class':
-      return [`StructureClass${ordinal}_1`];
-    case 'er':
-      return [`STRUCTURE_ENTITY${ordinal}_1`];
-    case 'timeline':
-      return [`Milestone ${ordinal}-1`];
-    case 'gantt':
-    case 'journey':
-      return [`Structure task ${ordinal}-1`];
-    case 'gitgraph':
-      return [`structure-${ordinal}-1`];
-    case 'sankey':
-      return [`Structure${ordinal}_1`];
-    case 'treemap':
-      return [];
-    case 'eventmodeling':
-      return [`Structure${ordinal}_1`];
-    case 'ishikawa':
-      return [`Structure cause ${ordinal}-1`];
-    default:
-      return [generatedLabel(ordinal, 0)];
-  }
-}
-
-function findFirstIdentifier(source, expectedRestPrefixes) {
-  for (const line of source.split(/\r?\n/)) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_-]*)\s*(.*)$/);
-    if (match === null) {
-      continue;
-    }
-    const [, identifier, rest] = match;
-    if (expectedRestPrefixes.some((prefix) => rest.startsWith(prefix))) {
-      return identifier;
-    }
-  }
-  throw new Error('Missing diagram identifier while adding structural variation');
-}
-
-function firstMatch(source, pattern) {
-  const value = source.match(pattern)?.[1];
-  if (value === undefined) {
-    throw new Error(`Missing source match for ${pattern}`);
-  }
-  return value;
-}
-
-function lastMatch(source, pattern) {
-  const flags = pattern.flags.includes('g') ? pattern.flags : `${pattern.flags}g`;
-  const matches = [...source.matchAll(new RegExp(pattern.source, flags))];
-  const value = matches.at(-1)?.[1];
-  if (value === undefined) {
-    throw new Error(`Missing source match for ${pattern}`);
-  }
-  return value;
-}
-
-function insertAfterDeclaration(source, declaration, lines) {
-  const sourceLines = source.trim().split(/\r?\n/);
-  const declarationIndex = sourceLines.findIndex(
-    (line) => line.trim() === declaration,
-  );
-  if (declarationIndex < 0) {
-    throw new Error(`Missing ${declaration} declaration`);
-  }
-  sourceLines.splice(declarationIndex + 1, 0, ...lines);
-  return sourceLines.join('\n');
-}
-
-function insertBeforeMatchingDeclaration(source, declarationPattern, lines) {
-  const sourceLines = source.trim().split(/\r?\n/);
-  const declarationIndex = sourceLines.findIndex(
-    (line) => declarationPattern.test(line),
-  );
-  if (declarationIndex < 0) {
-    throw new Error(`Missing declaration matching ${declarationPattern}`);
-  }
-  sourceLines.splice(declarationIndex, 0, ...lines);
-  return sourceLines.join('\n');
-}
-
-function sequenceParticipantIds(source) {
-  const ids = [];
-  for (const match of source.matchAll(
-    /^\s*(?:participant|actor)\s+([A-Za-z_][A-Za-z0-9_-]*)/gm,
-  )) {
-    if (!ids.includes(match[1])) {
-      ids.push(match[1]);
-    }
-  }
-  if (ids.length === 0) {
-    throw new Error('Missing Sequence participant while adding structural variation');
-  }
-  return ids;
-}
-
-function treemapLeafTotal(source) {
-  const values = [...source.matchAll(
-    /^\s*"[^"]+"\s*(?::|,)\s*(-?(?:\d+(?:\.\d+)?|\.\d+))/gm,
-  )]
-    .map((match) => Number(match[1]))
-    .filter((value) => Number.isFinite(value) && value > 0);
-  return values.reduce((total, value) => total + value, 0) || 100;
-}
-
-function formatTreemapValue(value) {
-  return Number(value.toFixed(2));
-}
-
-function xyPointCount(source) {
-  const values = source.match(
-    /^\s*(?:line|bar)(?:\s+"[^"]*")?\s+\[([^\]]+)]/m,
-  )?.[1];
-  if (values === undefined) {
-    throw new Error('Missing XY plot values');
-  }
-  return values.split(',').length;
-}
-
-function xyValue(variantIndex, seriesIndex, pointIndex, pointCount) {
-  if (variantIndex === 0) {
-    return 10 + seriesIndex * 6 + pointIndex * 4;
-  }
-  if (variantIndex === 1) {
-    return 20 + seriesIndex * 8 + (pointCount - pointIndex) * 3;
-  }
-  if (variantIndex === 2) {
-    return 15 + seriesIndex * 7 + ((pointIndex * 5) % 23);
-  }
-  return 35 + seriesIndex * 5 + (pointIndex % 2 === 0 ? 18 : -12);
-}
-
-function radarAxisIds(source) {
-  const ids = [];
-  for (const line of source.split(/\r?\n/)) {
-    if (!line.trimStart().startsWith('axis ')) {
-      continue;
-    }
-    for (const match of line.matchAll(/([A-Za-z_][A-Za-z0-9_-]*)\s*\[/g)) {
-      ids.push(match[1]);
-    }
-  }
-  if (ids.length < 3) {
-    throw new Error('Missing Radar axes');
-  }
-  return ids;
+function scenario(
+  lines,
+  bits,
+  zeroDecision,
+  oneDecision,
+  context,
+  features,
+  expectedTexts = [context.title],
+) {
+  return Object.freeze({
+    source: lines.join('\n'),
+    decisions: Object.freeze(bits.map(
+      (bit, index) =>
+        `slot-${index + 1}:${bit === 0 ? zeroDecision : oneDecision}`,
+    )),
+    features: Object.freeze(features),
+    expectedTexts: Object.freeze(expectedTexts),
+  });
 }
 
 function validateCorpus() {
   const expectedCount = kinds.length * casesPerKind;
   if (cases.length !== expectedCount) {
-    throw new Error(`Expected ${expectedCount} structural cases, found ${cases.length}`);
+    throw new Error(
+      `Expected ${expectedCount} independent scenarios, found ${cases.length}`,
+    );
   }
   const allIds = new Set();
   const allSources = new Set();
   for (const kind of kinds) {
-    const kindCases = cases.filter((entry) => entry.kind === kind);
+    const kindCases = scenarioBlueprintsByKind[kind];
+    assertUnique(kindCases, 'scenarioBlueprintId', casesPerKind, kind);
+    assertUnique(kindCases, 'normalizedSemanticSignature', casesPerKind, kind);
+    assertUnique(kindCases, 'structuralSignature', casesPerKind, kind);
+    assertUnique(kindCases, 'source', casesPerKind, kind);
     if (kindCases.length !== casesPerKind) {
       throw new Error(
-        `Expected ${casesPerKind} ${kind} structural cases, found ${kindCases.length}`,
+        `Expected ${casesPerKind} ${kind} scenarios, found ${kindCases.length}`,
       );
     }
-    const signatures = new Set(
-      kindCases.map((entry) => entry.structuralSignature),
-    );
-    if (signatures.size !== casesPerKind) {
-      throw new Error(
-        `${kind} has only ${signatures.size} unique structural signatures`,
-      );
-    }
-    const representedSeeds = new Set(
-      kindCases.map((entry) => entry.structuralScenarioId),
-    );
-    const expectedSeeds = structuralSeedsByKind[kind];
-    if (
-      representedSeeds.size !== expectedSeeds.length ||
-      expectedSeeds.some((seed) => !representedSeeds.has(seed.id))
-    ) {
-      throw new Error(`${kind} does not cover every curated structural seed`);
-    }
-    if (
-      kindCases.some((entry) =>
-        entry.structuralDimensions.itemCount < 1 ||
-        entry.structuralDimensions.itemCount > maximumProfileItemCount ||
-        entry.structuralDimensions.variant.length === 0
-      )
-    ) {
-      throw new Error(`${kind} has an empty or invalid structural dimension`);
+    for (const entry of kindCases) {
+      if (entry.normalizedSemanticStructure.decisions.length !== 8) {
+        throw new Error(`${entry.id} does not contain eight semantic decisions`);
+      }
+      if (
+        Object.keys(entry.normalizedSemanticStructure).some((key) =>
+          /seed|profile|itemCount|ordinal|scenarioBlueprintId|title|label/i
+            .test(key)
+        ) ||
+        entry.normalizedSemanticStructure.decisions.some((decision) =>
+          /seed|profile|itemCount|ordinal|scenarioBlueprintId|title|label/i
+            .test(decision)
+        )
+      ) {
+        throw new Error(
+          `${entry.id} normalized structure contains identity or label data`,
+        );
+      }
+      if (
+        entry.structuralSignature !==
+          sha256(JSON.stringify(entry.normalizedSemanticStructure))
+      ) {
+        throw new Error(`${entry.id} has a stale structural signature`);
+      }
+      if (
+        entry.normalizedSemanticStructure.normalizedSource !==
+          normalizeScenarioSource(entry)
+      ) {
+        throw new Error(`${entry.id} has a stale normalized source`);
+      }
+      if (
+        entry.expectedTexts.some((expectedText) =>
+          !entry.source.includes(expectedText)
+        )
+      ) {
+        throw new Error(`${entry.id} has an expected text absent from its source`);
+      }
+      if (
+        Object.hasOwn(entry, 'structuralScenarioId') ||
+        Object.hasOwn(entry, 'structuralProfileId') ||
+        Object.hasOwn(entry, 'seedId') ||
+        Object.hasOwn(entry, 'originScenarioId')
+      ) {
+        throw new Error(`${entry.id} reuses a seed or profile identity`);
+      }
     }
   }
   for (const entry of cases) {
     if (!/^visual_[a-z0-9]+_\d{3}$/.test(entry.id)) {
-      throw new Error(`Invalid structural visual case id: ${entry.id}`);
+      throw new Error(`Invalid independent visual case id: ${entry.id}`);
     }
     if (allIds.has(entry.id)) {
-      throw new Error(`Duplicate structural visual case id: ${entry.id}`);
+      throw new Error(`Duplicate independent visual case id: ${entry.id}`);
     }
     if (allSources.has(entry.source)) {
-      throw new Error(`Duplicate structural visual source: ${entry.id}`);
+      throw new Error(`Duplicate independent visual source: ${entry.id}`);
     }
     if (
-      entry.coverageRole !== 'structural-visual-case' ||
+      entry.coverageRole !== 'independent-visual-scenario' ||
       entry.structuralSignature.length !== 64 ||
-      entry.sourceSha256.length !== 64
+      entry.normalizedSemanticSignature.length !== 64 ||
+      entry.sourceSha256 !== sha256(entry.source)
     ) {
-      throw new Error(`Invalid structural metadata: ${entry.id}`);
+      throw new Error(`Invalid independent scenario metadata: ${entry.id}`);
     }
     allIds.add(entry.id);
     allSources.add(entry.source);
   }
+}
+
+function assertUnique(entries, field, expectedCount, kind) {
+  const count = new Set(entries.map((entry) => entry[field])).size;
+  if (count !== expectedCount) {
+    throw new Error(`${kind} has only ${count} unique ${field} values`);
+  }
+}
+
+function deepFreeze(value) {
+  Object.freeze(value);
+  for (const child of Object.values(value)) {
+    if (child !== null && typeof child === 'object' && !Object.isFrozen(child)) {
+      deepFreeze(child);
+    }
+  }
+  return value;
+}
+
+function identifierToken(value) {
+  return value.replace(/[^A-Za-z0-9_]/g, '');
 }
 
 function sha256(value) {

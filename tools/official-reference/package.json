@@ -74,6 +74,8 @@
     "audit:diagram-inventory": "node audit-diagram-inventory.mjs",
     "audit:detail": "node audit-capture-detail.mjs",
     "audit:stability-geometry": "node audit-capture-geometry.mjs",
+    "audit:visual-scenario-duplicates": "node audit-visual-scenario-duplicates.mjs",
+    "test:visual-scenario-duplicates": "node --test audit-visual-scenario-duplicates.test.mjs",
     "test:visual-stress-corpus": "node --test visual-stress-corpus.test.mjs",
     "test:visual-structure-corpus": "node --test visual-structure-corpus.test.mjs",
     "test:visual-structure-official": "node validate-visual-structure-official.mjs",

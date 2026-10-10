@@ -38,8 +38,10 @@ jobs:
         run: |
           node tools/official-reference/generate-stability-corpus.mjs
           node tools/official-reference/generate-invalid-source-corpus.mjs
-          node --test tools/official-reference/visual-structure-corpus.test.mjs
-          node --test tools/official-reference/visual-stress-corpus.test.mjs
+          node --test \
+            tools/official-reference/visual-structure-corpus.test.mjs \
+            tools/official-reference/audit-visual-scenario-duplicates.test.mjs \
+            tools/official-reference/visual-stress-corpus.test.mjs
           git diff --exit-code -- \
             docs/assets/stability-report/visual-structure-corpus-metadata.json \
             docs/assets/stability-report/visual-stress-corpus-metadata.json \

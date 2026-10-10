@@ -1,246 +1,246 @@
 {
   "mermaidVersion": "12.0.0",
-  "role": "structural-and-syntax-visual-coverage",
+  "role": "independent-scenario-visual-coverage",
   "source": "tools/official-reference/visual-structure-corpus.mjs",
   "diagramFamilyCount": 33,
   "caseCount": 8448,
   "casesPerDiagramFamily": 256,
   "uniquenessBasis": [
-    "curated-seed-scenario",
-    "seed-feature-set",
-    "generated-structural-item-count",
-    "family-specific-structural-variant"
+    "unique-scenario-blueprint-id",
+    "explicit-256-entry-business-scenario-catalog",
+    "label-stripped-normalized-mermaid-source",
+    "eight-rendered-semantic-decisions"
   ],
   "diagramFamilies": [
     {
       "kind": "flowchart",
-      "structuralSeedCount": 10,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 26,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "swimlanes",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "architecture",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "c4",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "railroad",
-      "structuralSeedCount": 18,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 15,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "treeview",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "xychart",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 32,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "quadrant",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "timeline",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "kanban",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "sequence",
-      "structuralSeedCount": 10,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 26,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "class",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "state",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "er",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "gantt",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "pie",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "journey",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "requirement",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "gitgraph",
-      "structuralSeedCount": 9,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 29,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "mindmap",
-      "structuralSeedCount": 10,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 26,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "packet",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "radar",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "sankey",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "treemap",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "venn",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "ishikawa",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "cynefin",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "block",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "eventmodeling",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "agentflow",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "usecase",
-      "structuralSeedCount": 18,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 15,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "wardley",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     },
     {
       "kind": "zenuml",
-      "structuralSeedCount": 13,
-      "structuralCaseCount": 256,
-      "structuralProfileCount": 20,
+      "independentScenarioCount": 256,
+      "uniqueBlueprintCount": 256,
+      "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256
     }
   ]

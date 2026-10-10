@@ -207,15 +207,15 @@ if (shouldWriteManifest) {
       caseCount: persistedManifest.length,
       ...(corpusSource === 'visual-parity'
         ? {
-            corpusRole: 'structural-and-syntax-visual-coverage',
-            structuralCaseCount: persistedManifest.length,
-            structuralCasesPerDiagram:
+            corpusRole: 'independent-scenario-visual-coverage',
+            independentScenarioCount: persistedManifest.length,
+            independentScenariosPerDiagram:
               visualStructureCorpusSummary.structuralCasesPerKind,
             uniquenessBasis: [
-              'curated-seed-scenario',
-              'seed-feature-set',
-              'generated-structural-item-count',
-              'family-specific-structural-variant',
+              'unique-scenario-blueprint-id',
+              'explicit-256-entry-business-scenario-catalog',
+              'label-stripped-normalized-mermaid-source',
+              'eight-rendered-semantic-decisions',
             ],
           }
         : {}),
@@ -382,7 +382,7 @@ function renderEvidenceIndex(records, evidenceKinds) {
       return `![${kindTitles[kind]} visual parity page ${page}](${file})`;
     }).join('\n\n');
     return `<details>
-<summary><strong>${kindTitles[kind]} - ${kindSummary.structuralCaseCount} structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>${kindTitles[kind]} - ${kindSummary.independentScenarioCount} independent Native/Official scenarios</strong></summary>
 
 ${images}
 
@@ -390,22 +390,31 @@ ${images}
   }).join('\n\n');
   return `# Large-Scale Native/Official Visual Evidence
 
-This index contains ${caseCount.toLocaleString('en-US')} structurally distinct
-source cases and
+This index contains ${caseCount.toLocaleString('en-US')} independent scenario
+blueprints and
 ${screenshotCount.toLocaleString('en-US')} screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
-The matrix contains 256 structurally distinct cases per supported diagram
-type. Uniqueness is determined from the curated seed scenario, seed feature
-set, generated structural item count, and family-specific syntax/topology
-variant. Ordinal numbers and label length are not uniqueness dimensions.
+The matrix contains 256 explicitly cataloged business scenarios per supported
+diagram type. The catalog contains 256 unique scenario names, codes, and
+workflow descriptions; it is not generated from a reused seed or a Cartesian
+product of generic profiles. Every scenario has a unique blueprint ID, and
+each family retains 256 unique Mermaid structures after business labels,
+titles, and scenario names are normalized away. Ordinal numbers, IDs, hashes,
+and label text are not uniqueness dimensions.
 
-Case IDs, structural signatures, profile dimensions, source hashes, image
+Case IDs, blueprint IDs, normalized semantic signatures, source hashes, image
 hashes, and capture sizes are recorded in
 [\`visual-parity-manifest.json\`](visual-parity-manifest.json).
 Corpus accounting is published separately in
 [\`visual-structure-corpus-metadata.json\`](visual-structure-corpus-metadata.json).
+The mandatory
+[\`visual-scenario-duplicate-audit.json\`](visual-scenario-duplicate-audit.json)
+reports 256/256 unique values for every family across blueprint IDs,
+normalized semantic structures, label-normalized Mermaid sources,
+text-and-ID-stripped Native manifest fingerprints, Native PNGs, and Official
+PNGs. Any duplicate in any dimension fails the audit.
 
 ${sections}
 `;

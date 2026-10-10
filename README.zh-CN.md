@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>在线 Web Demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448 案例结构视觉报告</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448 案例独立场景视觉报告</strong></a>
     ·
     <a href="docs/stability-report.md">完整 Stable 报告</a>
     ·
@@ -35,10 +35,10 @@
 > 全部 33 个家族门禁均已通过，受支持的 Mermaid `12.0.0` 契约评级为
 > **Stable**。
 >
-> 当前 **[8,448 案例 Native/Official 结构视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
-> 覆盖全部家族；每个家族包含 256 组结构不同的同源码对拍、自动细节与几何审计，
-> 并已重新生成 528 页 contact sheet。441 个手写生产场景和 8,448 个文本/布局
-> 压力输入作为独立证据层保留。
+> 当前 **[8,448 案例 Native/Official 独立场景视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
+> 覆盖全部家族；每个家族包含 256 个不同的命名业务场景及去标签后仍不同的
+> Mermaid 结构，并通过重复、细节与几何审计，已重新生成 528 页 contact sheet。
+> 441 个手写生产场景和 8,448 个文本/布局压力输入作为独立证据层保留。
 
 CMP Mermaid 面向需要在同一页面渲染多个图表的应用，无需为每个图表创建
 WebView。生产渲染链路不内嵌 Mermaid.js、不包含网络客户端，也不需要
@@ -56,18 +56,19 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 已实现图表家族 | 33/33 |
 | 待翻译 | 0 |
 | 待完成视觉门禁 | 0 |
-| 独立结构/生产场景 | 441 组 Native/Official 对拍 |
+| 独立生产场景 | 441 组 Native/Official 对拍 |
 | 已声明能力覆盖率 | 738/738 |
-| 结构视觉矩阵 | 8,448 组结构不同的 Native/Official 对拍；每家族 256 组 |
+| 独立场景视觉矩阵 | 8,448 组 Native/Official 对拍；每家族 256 个不同业务场景 |
+| 重复硬门禁 | 每个家族的 blueprint、归一化语义、去标签源码、去文本/ID Native manifest、Native PNG、Official PNG 均为 256/256 唯一 |
 | 文本/布局压力输入 | 从 441 个生产场景派生的 8,448 个字节级不同输入；独立统计，不计作结构覆盖 |
-| Native/Official 截图 | 16,896 张结构矩阵截图，另有 882 张独立语料截图和 16,896 张异常源码截图 |
+| Native/Official 截图 | 16,896 张独立场景截图，另有 882 张独立语料截图和 16,896 张异常源码截图 |
 | 异常源码对齐 | 8,448/8,448 个 Official 接受/拒绝结果一致；6,292 个 Native 拒绝均为 `CONTENT_ERROR`；精确诊断文案单独统计；0 崩溃 |
-| 结构细节审计 | 33 个家族：7,953 个 pass、495 个 review、0 个 fail |
-| 自动视觉几何 | 8,448/8,448 个结构对拍无硬失败；保留 4 条 Mindmap CoSE 比例 review |
+| 独立场景细节审计 | 33 个家族：8,218 个 pass、230 个 review、0 个 fail |
+| 自动视觉几何 | 8,448/8,448 组对拍：0 个 failure、0 个 review |
 | 确定性 SceneGraph 重放 | 441 个通过，0 个不一致 |
 | 内置主题矩阵 | 363/363 |
 | 独立生成的 Native 压力输入 | 保留的历史基线 7,936 个 |
-| JVM 测试 | 802 个通过，0 个失败 |
+| JVM 测试 | 883 个通过，0 个失败 |
 | Core 生产场景压力测试 | 历史 415 场景基线：2,075 次渲染，总耗时 674ms，P95 为 1ms，保留堆 63,968 bytes |
 | 物理设备运行时矩阵 | Kotlin 2.3.20 Android 8/8、Kotlin 1.7.21 Android 8/8、iOS 6/6 通过；9,702 次语料渲染；人工审阅 198 张代表图和 22 张完成截图；0 崩溃、0 Android ANR |
 | 运行时负载矩阵 | 三条物理设备轨道均完整通过 441 个场景；Web 保留此前 397 场景基线；iOS 模拟器和 Desktop 保留此前 236 场景基线 |
@@ -76,7 +77,7 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | --- | --- |
 | **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单和已完成的 33/33 家族门禁 |
 | **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
-| **[全部 8,448 个 Native/Official 结构对比](docs/assets/stability-report/visual-parity-evidence.md)** | 528 页分页对比图，每页包含 16 组结构不同的同源码结果 |
+| **[全部 8,448 个 Native/Official 独立场景](docs/assets/stability-report/visual-parity-evidence.md)** | 528 页分页对比图，每页包含 16 个不同的同源码场景 |
 | **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 从 441 个结构场景的字节级不同压力样本派生的 8,448 个系统化变异、16,896 张截图和 528 张对比图 |
 | **[Android 物理设备兼容性报告](docs/android-real-device-compatibility.md)** | Kotlin 2.3.20 与 Kotlin 1.7.21 分别覆盖 Android 9-16 |
 | **[iOS 物理设备兼容性报告](docs/ios-real-device-compatibility.md)** | iOS 14.3-26.0 共 6 台设备的完整 441 场景负载 |
@@ -117,9 +118,9 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | :---: | :---: |
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native State Diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js State Diagram" width="700"> |
 
-当前已发布测试报告包含 441 个独立生产场景对比和 8,448 个结构不同的视觉
+当前已发布测试报告包含 441 个独立生产场景对比和 8,448 个独立场景视觉
 case。另有 8,448 个文本/布局压力输入用于发现换行和布局压力回归：
-**[查看全部 528 页结构视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
+**[查看全部 528 页独立场景视觉证据](docs/assets/stability-report/visual-parity-evidence.md)**。
 
 </details>
 

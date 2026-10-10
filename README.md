@@ -20,7 +20,7 @@
   <p>
     <a href="https://swithun-liu.github.io/cmp-mermaid/"><strong>Live Web demo</strong></a>
     ·
-    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448-case structural visual report</strong></a>
+    <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448-case independent-scenario visual report</strong></a>
     ·
     <a href="docs/stability-report.md">Full Stable report</a>
     ·
@@ -35,9 +35,10 @@
 > `12.0.0`, and all 33 family gates pass.** The supported Mermaid `12.0.0`
 > contract is rated **Stable**.
 >
-> The current **[8,448-case Native/Official structural visual report](docs/assets/stability-report/visual-parity-evidence.md)**
-> covers every family with 256 structurally distinct same-source pairs,
-> automated detail and geometry audits, and 528 regenerated contact sheets.
+> The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
+> covers every family with 256 different named business scenarios and
+> label-normalized Mermaid structures, automated duplicate/detail/geometry
+> audits, and 528 regenerated contact sheets.
 > The 441 hand-authored production scenarios and 8,448 text/layout stress
 > inputs remain separate evidence layers.
 
@@ -59,14 +60,15 @@ geometry gates.
 | Implemented diagram families | 33/33 |
 | Translation pending | 0 |
 | Visual family gates pending | 0 |
-| Independent structural/production scenarios | 441 Native/Official pairs |
+| Independent production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
-| Structural visual matrix | 8,448 structurally distinct Native/Official pairs; 256 per family |
+| Independent-scenario visual matrix | 8,448 Native/Official pairs; 256 different business scenarios per family |
+| Duplicate hard gate | Every family has 256/256 unique blueprints, normalized semantics, label-normalized sources, text/ID-stripped Native manifests, Native PNGs, and Official PNGs |
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
-| Native/Official captures | 16,896 structural-matrix screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
+| Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Structural detail audit | 33 families: 7,953 pass, 495 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 structural pairs have 0 hard failures; 4 Mindmap CoSE ratio findings remain review-only |
+| Independent-scenario detail audit | 33 families: 8,218 pass, 230 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 0 review |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
@@ -79,7 +81,7 @@ geometry gates.
 | --- | --- |
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and the completed 33/33 family gates |
 | **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
-| **[All 8,448 Native/Official structural pairs](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 structurally distinct same-source pairs per page |
+| **[All 8,448 Native/Official independent scenarios](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 different same-source scenarios per page |
 | **[Source-mutation Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 AI-like mutations from byte-distinct stress bases derived from 441 structural scenarios, 16,896 screenshots, and 528 comparison sheets |
 | **[Android physical-device report](docs/android-real-device-compatibility.md)** | Separate Kotlin 2.3.20 and Kotlin 1.7.21 matrices across Android 9-16 |
 | **[iOS physical-device report](docs/ios-real-device-compatibility.md)** | Six-device iOS 14.3-26.0 matrix with complete 441-case loads |
@@ -122,10 +124,10 @@ not pixel-identical browser output; platform font metrics may differ.
 | <img src="docs/assets/parity-state-native.png" alt="CMP Native state diagram" width="700"> | <img src="docs/assets/parity-state-official.png" alt="Official Mermaid.js state diagram" width="700"> |
 
 The current published report contains 441 independent production comparisons
-plus 8,448 structurally distinct visual cases. A separate 8,448-input
+plus 8,448 independent-scenario visual cases. A separate 8,448-input
 text/layout stress corpus remains available for wrapping and layout-pressure
 regressions:
-**[open all 528 structural visual-evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
+**[open all 528 independent-scenario visual-evidence pages](docs/assets/stability-report/visual-parity-evidence.md)**.
 
 </details>
 

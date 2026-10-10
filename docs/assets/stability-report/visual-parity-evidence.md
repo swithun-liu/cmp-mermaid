@@ -1,24 +1,33 @@
 # Large-Scale Native/Official Visual Evidence
 
-This index contains 8,448 structurally distinct
-source cases and
+This index contains 8,448 independent scenario
+blueprints and
 16,896 screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
-The matrix contains 256 structurally distinct cases per supported diagram
-type. Uniqueness is determined from the curated seed scenario, seed feature
-set, generated structural item count, and family-specific syntax/topology
-variant. Ordinal numbers and label length are not uniqueness dimensions.
+The matrix contains 256 explicitly cataloged business scenarios per supported
+diagram type. The catalog contains 256 unique scenario names, codes, and
+workflow descriptions; it is not generated from a reused seed or a Cartesian
+product of generic profiles. Every scenario has a unique blueprint ID, and
+each family retains 256 unique Mermaid structures after business labels,
+titles, and scenario names are normalized away. Ordinal numbers, IDs, hashes,
+and label text are not uniqueness dimensions.
 
-Case IDs, structural signatures, profile dimensions, source hashes, image
+Case IDs, blueprint IDs, normalized semantic signatures, source hashes, image
 hashes, and capture sizes are recorded in
 [`visual-parity-manifest.json`](visual-parity-manifest.json).
 Corpus accounting is published separately in
 [`visual-structure-corpus-metadata.json`](visual-structure-corpus-metadata.json).
+The mandatory
+[`visual-scenario-duplicate-audit.json`](visual-scenario-duplicate-audit.json)
+reports 256/256 unique values for every family across blueprint IDs,
+normalized semantic structures, label-normalized Mermaid sources,
+text-and-ID-stripped Native manifest fingerprints, Native PNGs, and Official
+PNGs. Any duplicate in any dimension fails the audit.
 
 <details>
-<summary><strong>Flowchart - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Flowchart - 256 independent Native/Official scenarios</strong></summary>
 
 ![Flowchart visual parity page 01](flowchart-visual-parity-01.jpg)
 
@@ -55,7 +64,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Swimlanes - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Swimlanes - 256 independent Native/Official scenarios</strong></summary>
 
 ![Swimlanes visual parity page 01](swimlanes-visual-parity-01.jpg)
 
@@ -92,7 +101,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Architecture - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Architecture - 256 independent Native/Official scenarios</strong></summary>
 
 ![Architecture visual parity page 01](architecture-visual-parity-01.jpg)
 
@@ -129,7 +138,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>C4 - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>C4 - 256 independent Native/Official scenarios</strong></summary>
 
 ![C4 visual parity page 01](c4-visual-parity-01.jpg)
 
@@ -166,7 +175,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Railroad - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Railroad - 256 independent Native/Official scenarios</strong></summary>
 
 ![Railroad visual parity page 01](railroad-visual-parity-01.jpg)
 
@@ -203,7 +212,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>TreeView - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>TreeView - 256 independent Native/Official scenarios</strong></summary>
 
 ![TreeView visual parity page 01](treeview-visual-parity-01.jpg)
 
@@ -240,7 +249,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>XY Chart - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>XY Chart - 256 independent Native/Official scenarios</strong></summary>
 
 ![XY Chart visual parity page 01](xychart-visual-parity-01.jpg)
 
@@ -277,7 +286,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Quadrant Chart - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Quadrant Chart - 256 independent Native/Official scenarios</strong></summary>
 
 ![Quadrant Chart visual parity page 01](quadrant-visual-parity-01.jpg)
 
@@ -314,7 +323,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Timeline - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Timeline - 256 independent Native/Official scenarios</strong></summary>
 
 ![Timeline visual parity page 01](timeline-visual-parity-01.jpg)
 
@@ -351,7 +360,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Sequence - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Sequence - 256 independent Native/Official scenarios</strong></summary>
 
 ![Sequence visual parity page 01](sequence-visual-parity-01.jpg)
 
@@ -388,7 +397,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Class - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Class - 256 independent Native/Official scenarios</strong></summary>
 
 ![Class visual parity page 01](class-visual-parity-01.jpg)
 
@@ -425,7 +434,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>State - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>State - 256 independent Native/Official scenarios</strong></summary>
 
 ![State visual parity page 01](state-visual-parity-01.jpg)
 
@@ -462,7 +471,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Entity Relationship - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Entity Relationship - 256 independent Native/Official scenarios</strong></summary>
 
 ![Entity Relationship visual parity page 01](er-visual-parity-01.jpg)
 
@@ -499,7 +508,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Gantt - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Gantt - 256 independent Native/Official scenarios</strong></summary>
 
 ![Gantt visual parity page 01](gantt-visual-parity-01.jpg)
 
@@ -536,7 +545,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Pie - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Pie - 256 independent Native/Official scenarios</strong></summary>
 
 ![Pie visual parity page 01](pie-visual-parity-01.jpg)
 
@@ -573,7 +582,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>User Journey - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>User Journey - 256 independent Native/Official scenarios</strong></summary>
 
 ![User Journey visual parity page 01](journey-visual-parity-01.jpg)
 
@@ -610,7 +619,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Requirement - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Requirement - 256 independent Native/Official scenarios</strong></summary>
 
 ![Requirement visual parity page 01](requirement-visual-parity-01.jpg)
 
@@ -647,7 +656,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Git Graph - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Git Graph - 256 independent Native/Official scenarios</strong></summary>
 
 ![Git Graph visual parity page 01](gitgraph-visual-parity-01.jpg)
 
@@ -684,7 +693,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Mindmap - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Mindmap - 256 independent Native/Official scenarios</strong></summary>
 
 ![Mindmap visual parity page 01](mindmap-visual-parity-01.jpg)
 
@@ -721,7 +730,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Packet - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Packet - 256 independent Native/Official scenarios</strong></summary>
 
 ![Packet visual parity page 01](packet-visual-parity-01.jpg)
 
@@ -758,7 +767,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Radar - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Radar - 256 independent Native/Official scenarios</strong></summary>
 
 ![Radar visual parity page 01](radar-visual-parity-01.jpg)
 
@@ -795,7 +804,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Sankey - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Sankey - 256 independent Native/Official scenarios</strong></summary>
 
 ![Sankey visual parity page 01](sankey-visual-parity-01.jpg)
 
@@ -832,7 +841,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Treemap - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Treemap - 256 independent Native/Official scenarios</strong></summary>
 
 ![Treemap visual parity page 01](treemap-visual-parity-01.jpg)
 
@@ -869,7 +878,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Venn - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Venn - 256 independent Native/Official scenarios</strong></summary>
 
 ![Venn visual parity page 01](venn-visual-parity-01.jpg)
 
@@ -906,7 +915,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Kanban - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Kanban - 256 independent Native/Official scenarios</strong></summary>
 
 ![Kanban visual parity page 01](kanban-visual-parity-01.jpg)
 
@@ -943,7 +952,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Ishikawa - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Ishikawa - 256 independent Native/Official scenarios</strong></summary>
 
 ![Ishikawa visual parity page 01](ishikawa-visual-parity-01.jpg)
 
@@ -980,7 +989,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Cynefin - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Cynefin - 256 independent Native/Official scenarios</strong></summary>
 
 ![Cynefin visual parity page 01](cynefin-visual-parity-01.jpg)
 
@@ -1017,7 +1026,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Block - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Block - 256 independent Native/Official scenarios</strong></summary>
 
 ![Block visual parity page 01](block-visual-parity-01.jpg)
 
@@ -1054,7 +1063,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Event Modeling - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Event Modeling - 256 independent Native/Official scenarios</strong></summary>
 
 ![Event Modeling visual parity page 01](eventmodeling-visual-parity-01.jpg)
 
@@ -1091,7 +1100,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Agentflow - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Agentflow - 256 independent Native/Official scenarios</strong></summary>
 
 ![Agentflow visual parity page 01](agentflow-visual-parity-01.jpg)
 
@@ -1128,7 +1137,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Use Case - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Use Case - 256 independent Native/Official scenarios</strong></summary>
 
 ![Use Case visual parity page 01](usecase-visual-parity-01.jpg)
 
@@ -1165,7 +1174,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>Wardley Map - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>Wardley Map - 256 independent Native/Official scenarios</strong></summary>
 
 ![Wardley Map visual parity page 01](wardley-visual-parity-01.jpg)
 
@@ -1202,7 +1211,7 @@ Corpus accounting is published separately in
 </details>
 
 <details>
-<summary><strong>ZenUML - 256 structurally distinct Native/Official pairs</strong></summary>
+<summary><strong>ZenUML - 256 independent Native/Official scenarios</strong></summary>
 
 ![ZenUML visual parity page 01](zenuml-visual-parity-01.jpg)
 

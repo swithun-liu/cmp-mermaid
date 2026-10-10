@@ -155,7 +155,7 @@ class ProductionCorpusTest {
     }
 
     @Test
-    fun renders256StructurallyDistinctCasesForEveryDiagramFamily() {
+    fun renders256IndependentScenariosForEveryDiagramFamily() {
         assertEquals(8_448, visualStructureCaseCount)
         assertEquals(visualStructureCaseCount, visualStructureCorpusCases.size)
         assertEquals(
@@ -167,6 +167,20 @@ class ProductionCorpusTest {
                 .groupingBy(StabilityCorpusCase::diagramId)
                 .eachCount(),
         )
+        assertTrue(
+            visualStructureCorpusCases.all { case ->
+                INDEPENDENT_SCENARIO_FEATURE in case.features
+            },
+        )
+        visualStructureCorpusCases
+            .groupBy(StabilityCorpusCase::diagramId)
+            .forEach { (diagramId, cases) ->
+                assertEquals(
+                    visualStructureCasesPerDiagram,
+                    cases.map(StabilityCorpusCase::title).toSet().size,
+                    "$diagramId scenario titles",
+                )
+            }
         assertEquals(
             visualStructureCaseCount,
             visualStructureCorpusCases.map(StabilityCorpusCase::source).toSet().size,
@@ -380,6 +394,7 @@ class ProductionCorpusTest {
     private fun Int?.orZero(): Int = this ?: 0
 
     private companion object {
+        const val INDEPENDENT_SCENARIO_FEATURE = "independent-scenario-blueprint"
         const val STRUCTURAL_SCENARIO_PREFIX = "seed:"
         const val STRUCTURAL_SIGNATURE_PREFIX = "structural-signature:"
         const val MAX_SCENE_SIZE = 20_000f
