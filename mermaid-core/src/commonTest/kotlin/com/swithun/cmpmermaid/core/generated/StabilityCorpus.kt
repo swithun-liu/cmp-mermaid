@@ -2,8 +2,6 @@
 // Do not edit by hand.
 package com.swithun.cmpmermaid.core.generated
 
-import kotlin.io.encoding.Base64
-
 internal data class StabilityCorpusCase(
     val id: String,
     val diagramId: String,
@@ -25985,6 +25983,51 @@ private val visualStructureCorpusRecordChunks: List<String> = listOf(
     """.trimIndent(),
 )
 
+private const val base64Alphabet: String =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+private val base64DecodeTable: IntArray = IntArray(128) { -1 }.apply {
+    base64Alphabet.forEachIndexed { value, character ->
+        this[character.code] = value
+    }
+}
+
+private fun decodeBase64Utf8(encoded: String): String {
+    if (encoded.isEmpty()) {
+        return ""
+    }
+    val padding = when {
+        encoded.endsWith("==") -> 2
+        encoded.endsWith("=") -> 1
+        else -> 0
+    }
+    val decoded = ByteArray(encoded.length / 4 * 3 - padding)
+    var inputIndex = 0
+    var outputIndex = 0
+    while (inputIndex < encoded.length) {
+        val first = base64Value(encoded[inputIndex])
+        val second = base64Value(encoded[inputIndex + 1])
+        val third = base64Value(encoded[inputIndex + 2])
+        val fourth = base64Value(encoded[inputIndex + 3])
+        decoded[outputIndex++] = ((first shl 2) or (second shr 4)).toByte()
+        if (outputIndex < decoded.size) {
+            decoded[outputIndex++] = ((second shl 4) or (third shr 2)).toByte()
+        }
+        if (outputIndex < decoded.size) {
+            decoded[outputIndex++] = ((third shl 6) or fourth).toByte()
+        }
+        inputIndex += 4
+    }
+    return decoded.decodeToString()
+}
+
+private fun base64Value(character: Char): Int =
+    if (character == '=') {
+        0
+    } else {
+        base64DecodeTable[character.code]
+    }
+
 internal val visualStructureCorpusCases: List<StabilityCorpusCase> by lazy {
     visualStructureCorpusRecordChunks
         .asSequence()
@@ -25992,14 +26035,14 @@ internal val visualStructureCorpusCases: List<StabilityCorpusCase> by lazy {
         .filter(String::isNotBlank)
         .map { record ->
             val fields = record.split('|', limit = 9)
-            val expectedTextPayload = Base64.decode(fields[6]).decodeToString()
-            val featurePayload = Base64.decode(fields[7]).decodeToString()
-            val payload = Base64.decode(fields[8]).decodeToString()
+            val expectedTextPayload = decodeBase64Utf8(fields[6])
+            val featurePayload = decodeBase64Utf8(fields[7])
+            val payload = decodeBase64Utf8(fields[8])
             StabilityCorpusCase(
                 id = fields[0],
                 diagramId = fields[1],
-                title = Base64.decode(fields[2]).decodeToString(),
-                scenario = Base64.decode(fields[3]).decodeToString(),
+                title = decodeBase64Utf8(fields[2]),
+                scenario = decodeBase64Utf8(fields[3]),
                 layout = fields[4],
                 initialAspectRatio = fields[5].toFloat(),
                 source = payload,
