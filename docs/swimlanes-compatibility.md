@@ -39,9 +39,9 @@ in a later upstream release.
 - 256 deterministic same-source matrix cases exercise 13 structural seeds and
   20 visible text/layout-pressure profiles.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
-  were `1.007-1.191`, `0.912-1.070`, and `0.928-1.603`.
-- Production detail produced `10 pass / 3 review / 0 fail`.
-- The fresh 256-case full-factorial input audit reports `121 pass / 135 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.336`, height `0.929-1.115`, and foreground ink `0.920-1.200`.
+  were `1.028-1.128`, `1.020-1.070`, and `0.972-1.187`.
+- Production detail produced `11 pass / 2 review / 0 fail`.
+- The fresh 256-case full-factorial input audit reports `137 pass / 119 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.287`, height `0.924-1.109`, and foreground ink `0.897-1.173`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved lane, node, shape, edge, marker, label, color,
   clipping, overlap, or paint-order defect remains.

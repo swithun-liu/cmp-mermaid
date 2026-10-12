@@ -31,7 +31,7 @@ stress inputs.
 | Native core render results | 441 production scenarios and all 8,448 independent visual scenarios render successfully; the text/layout stress inputs are tracked separately |
 | Web Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Visual evidence | 528 freshly generated independent-scenario sheets plus 528 source-mutation sheets across all 33 families |
-| Independent-scenario detail audit | 8,448/8,448 processed: 7,725 pass, 723 review, 0 fail |
+| Independent-scenario detail audit | 8,448/8,448 processed: 7,741 pass, 707 review, 0 fail |
 | Automated visual geometry | 8,448/8,448 processed: 0 failure, 132 review findings across 108 Architecture cases |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
@@ -87,7 +87,7 @@ defines eight named, family-specific binary input dimensions and exercises all
 pair for any two dimensions occurs in 64 cases. Business titles make cases
 readable but do not establish coverage. Each family also has a 256-case
 geometry result and 16 paged contact sheets. The fresh total is:
-`7,725 pass / 723 review / 0 fail`.
+`7,741 pass / 707 review / 0 fail`.
 
 The mandatory
 [duplicate audit](assets/stability-report/visual-scenario-duplicate-audit.json)
@@ -118,7 +118,7 @@ kept visible rather than hidden by broader thresholds.
 | Family | Pass | Review | Width ratio | Height ratio | Ink ratio |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Flowchart | 253 | 3 | `1.035-1.113` | `0.939-1.117` | `0.931-1.144` |
-| Swimlanes | 121 | 135 | `0.901-1.336` | `0.929-1.115` | `0.920-1.200` |
+| Swimlanes | 137 | 119 | `0.901-1.287` | `0.924-1.109` | `0.897-1.173` |
 | Architecture | 70 | 186 | `0.867-1.658` | `0.339-1.335` | `0.313-2.640` |
 | C4 | 256 | 0 | `1.023-1.069` | `0.957-1.041` | `0.939-1.072` |
 | Railroad | 256 | 0 | `1.003-1.107` | `1.023-1.127` | `1.058-1.263` |
@@ -151,8 +151,8 @@ kept visible rather than hidden by broader thresholds.
 | Wardley Map | 256 | 0 | `1.012-1.012` | `1.024-1.024` | `0.913-0.964` |
 | ZenUML | 256 | 0 | `1.043-1.082` | `1.042-1.079` | `0.967-1.184` |
 All 528 independent-scenario contact sheets were regenerated from the same 8,448
-source cases recorded in the manifest. The 723 detail-review cases are
-distributed as follows: Architecture 186, Swimlanes 135, Entity Relationship
+source cases recorded in the manifest. The 707 detail-review cases are
+distributed as follows: Architecture 186, Swimlanes 119, Entity Relationship
 108, Gantt 71, Agentflow 50, Venn 48, Class 35, XY Chart 32, Quadrant 26, Git
 Graph 21, State 5, Flowchart 3, and Kanban 3. The other 20 families pass all
 256 detail cases automatically.
@@ -239,7 +239,7 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | Event Modeling | 13 | 22/22 | frame forms, entity aliases, swimlanes, inferred/explicit relations, inline data, reset behavior, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Agentflow | 13 | 32/32 | typed nodes and edge semantics, nested/global/collapsed flows, connectors, metadata, diagnostics, configuration, themes, Dagre layout | Production evidence retained; independent-scenario matrix 206 pass / 50 review / 0 fail; 16/16 sheets regenerated |
 | Block | 13 | 31/31 | grids, spans, spaces, nested composites, documented shapes, block arrows, links, markers, classes, inline styles, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Swimlanes | 13 | 15/15 | directions, lane ownership and defaults, nested subgraphs, flowchart shapes, cross-lane edges, orthogonal routes, cycles, styles, configuration, themes | Production evidence retained; independent-scenario matrix 121 pass / 135 review / 0 fail; 16/16 sheets regenerated |
+| Swimlanes | 13 | 15/15 | directions, lane ownership and defaults, nested subgraphs, flowchart shapes, cross-lane edges, orthogonal routes, cycles, styles, configuration, themes | Production evidence retained; independent-scenario matrix 137 pass / 119 review / 0 fail; 16/16 sheets regenerated |
 | Architecture | 13 | 18/18 | services, icons, nested groups, junctions, directional ports, arrows, labels, boundary modifiers, row/column alignment, configuration, deterministic seed, metadata | Production evidence retained; independent-scenario matrix 70 pass / 186 review / 0 fail; 16/16 sheets regenerated |
 | C4 | 13 | 26/26 | five diagram levels, people, systems, containers, components, external/database/queue variants, nested boundaries, deployment nodes, relation variants, dynamic indexes, styles, configuration, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Railroad | 18 | 24/24 | Railroad IR, EBNF, ABNF, PEG, terminals, non-terminals, sequences, choices, optional and repeated expressions, notation-specific constructs, configuration, themes, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
@@ -371,10 +371,10 @@ The fresh 256-case independent-scenario Native/Official audit reports `256 pass 
 ![Swimlanes complex Native and Official corpus](assets/stability-report/swimlanes-complex-corpus.png)
 
 The production geometry passed all 13 pairs. Width, height, and foreground-ink
-ratios were `1.007-1.191`, `0.912-1.070`, and `0.928-1.603`. Production
-detail was `10 pass / 3 review / 0 fail`.
+ratios were `1.028-1.128`, `1.020-1.070`, and `0.972-1.187`. Production
+detail was `11 pass / 2 review / 0 fail`.
 
-The fresh 256-case independent-scenario Native/Official audit reports `121 pass / 135 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.336`, height `0.929-1.115`, and foreground ink `0.920-1.200`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+The fresh 256-case independent-scenario Native/Official audit reports `137 pass / 119 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.287`, height `0.924-1.109`, and foreground ink `0.897-1.173`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 

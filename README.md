@@ -69,7 +69,7 @@ geometry gates.
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
 | Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Independent-scenario detail audit | 33 families: 7,725 pass, 723 review, 0 fail |
+| Independent-scenario detail audit | 33 families: 7,741 pass, 707 review, 0 fail |
 | Automated visual geometry | 8,448/8,448 pairs: 0 failure, 132 review findings, all from seeded Architecture fCoSE placement |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |

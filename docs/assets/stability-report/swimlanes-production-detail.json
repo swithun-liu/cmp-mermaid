@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T18:46:53.203Z",
-  "inputDirectory": "captures/local/swimlanes-production-20260920",
+  "generatedAt": "2026-10-12T08:39:21.980Z",
+  "inputDirectory": "captures/local/swimlanes-production-report-final",
   "corpusSource": "production",
   "corpusKind": "swimlanes",
   "theme": null,
-  "failOnReview": true,
+  "failOnReview": false,
   "gridSize": 96,
   "caseCount": 13,
   "counts": {
-    "pass": 10,
-    "review": 3
+    "pass": 11,
+    "review": 2
   },
   "reviewQueue": [
     {
@@ -20,7 +20,7 @@
       "findingCodes": [
         "text-position"
       ],
-      "heatmap": "captures/local/swimlanes-production-20260920/detail-diffs/rc_swimlanes_vertical_cycle_heatmap.png"
+      "heatmap": "captures/local/swimlanes-production-report-final/detail-diffs/rc_swimlanes_vertical_cycle_heatmap.png"
     },
     {
       "id": "prod_swimlane_vertical_delivery",
@@ -29,16 +29,7 @@
       "findingCodes": [
         "text-position"
       ],
-      "heatmap": "captures/local/swimlanes-production-20260920/detail-diffs/prod_swimlane_vertical_delivery_heatmap.png"
-    },
-    {
-      "id": "prod_swimlane_reverse_horizontal",
-      "kind": "swimlanes",
-      "status": "review",
-      "findingCodes": [
-        "text-position"
-      ],
-      "heatmap": "captures/local/swimlanes-production-20260920/detail-diffs/prod_swimlane_reverse_horizontal_heatmap.png"
+      "heatmap": "captures/local/swimlanes-production-report-final/detail-diffs/prod_swimlane_vertical_delivery_heatmap.png"
     }
   ],
   "cases": [
@@ -58,7 +49,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -92,15 +84,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 11,
-          "maximumCenterDistance": 0.0702357192756473,
-          "p95CenterDistance": 0.04829451583263782,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.01765984530301939,
+          "p95CenterDistance": 0.017659836513805708,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -131,8 +127,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.09027777777777778,
-                "y": 0.4634920634920635
+                "x": 0.10392978503722886,
+                "y": 0.45839874411302983
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -143,7 +139,7 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.8791666666666667,
+                "x": 0.8608939800270937,
                 "y": 0.5
               },
               "occlusionDepth": 0,
@@ -155,8 +151,8 @@
               "pathOrder": 11,
               "position": "end",
               "point": {
-                "x": 0.45694444444444443,
-                "y": 0.9
+                "x": 0.450433479141492,
+                "y": 0.8956043956043956
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -167,8 +163,8 @@
               "pathOrder": 12,
               "position": "end",
               "point": {
-                "x": 0.8791666666666667,
-                "y": 0.9
+                "x": 0.8608939800270937,
+                "y": 0.8956043956043956
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -179,8 +175,8 @@
               "pathOrder": 13,
               "position": "end",
               "point": {
-                "x": 0.9347222222222222,
-                "y": 0.5365079365079365
+                "x": 0.9248507708192345,
+                "y": 0.5416012558869702
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -191,8 +187,8 @@
               "pathOrder": 14,
               "position": "end",
               "point": {
-                "x": 0.9347222222222222,
-                "y": 0.1365079365079365
+                "x": 0.9248507708192345,
+                "y": 0.14599686028257458
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -295,11 +291,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.7802803953114227,
-        "exactMaskIou": 0.7171358900465529,
-        "edgeF1": 0.8266790858167479,
-        "colorError": 0.022888845772067613,
-        "exactColorError": 0.0450497911423492
+        "maskIou": 0.9857873791927232,
+        "exactMaskIou": 0.9384017758046614,
+        "edgeF1": 0.9755249408566304,
+        "colorError": 0.01938954136032337,
+        "exactColorError": 0.02685505574778931
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -311,13 +307,13 @@
           255
         ],
         "contentBounds": {
-          "x": 14,
-          "y": 185,
-          "width": 1172,
-          "height": 530
+          "x": 15,
+          "y": 155,
+          "width": 1170,
+          "height": 590
         },
-        "foregroundCells": 4274,
-        "edgeCells": 1723
+        "foregroundCells": 3514,
+        "edgeCells": 2202
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -347,7 +343,7 @@
         {
           "severity": "review",
           "code": "text-position",
-          "message": "Maximum normalized text-center distance 0.329 exceeds 0.120"
+          "message": "Maximum normalized text-center distance 0.268 exceeds 0.120"
         }
       ],
       "manifest": {
@@ -361,7 +357,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "review",
         "native": {
@@ -395,15 +392,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 11,
-          "maximumCenterDistance": 0.3290149487134246,
-          "p95CenterDistance": 0.16983916060807405,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.26768515323216696,
+          "p95CenterDistance": 0.019634931372957024,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -434,8 +435,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.14619080301990392,
-                "y": 0.21172638436482086
+                "x": 0.16940581542351454,
+                "y": 0.2112676056338028
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -446,8 +447,8 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.39190116678105696,
-                "y": 0.250814332247557
+                "x": 0.3988621997471555,
+                "y": 0.25273865414710484
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -458,8 +459,8 @@
               "pathOrder": 11,
               "position": "end",
               "point": {
-                "x": 0.5017158544955388,
-                "y": 0.3583061889250814
+                "x": 0.5,
+                "y": 0.3599374021909233
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -470,8 +471,8 @@
               "pathOrder": 12,
               "position": "end",
               "point": {
-                "x": 0.8572409059711736,
-                "y": 0.7100977198697068
+                "x": 0.8305941845764855,
+                "y": 0.7057902973395931
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -482,8 +483,8 @@
               "pathOrder": 13,
               "position": "end",
               "point": {
-                "x": 0.8572409059711736,
-                "y": 0.8566775244299675
+                "x": 0.8305941845764855,
+                "y": 0.8544600938967136
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -494,8 +495,8 @@
               "pathOrder": 14,
               "position": "end",
               "point": {
-                "x": 0.14619080301990392,
-                "y": 0.14332247557003258
+                "x": 0.06826801517067003,
+                "y": 0.10406885758998435
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -598,11 +599,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8643581826202029,
-        "exactMaskIou": 0.7871035940803383,
-        "edgeF1": 0.7880908222002789,
-        "colorError": 0.01854515678561993,
-        "exactColorError": 0.04258342660531443
+        "maskIou": 0.9970979443772672,
+        "exactMaskIou": 0.9467232437529467,
+        "edgeF1": 0.9913436441074536,
+        "colorError": 0.013515329833035309,
+        "exactColorError": 0.018872895692930637
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -614,13 +615,13 @@
           255
         ],
         "contentBounds": {
-          "x": 86,
+          "x": 63,
           "y": 18,
-          "width": 1028,
+          "width": 1074,
           "height": 864
         },
-        "foregroundCells": 4318,
-        "edgeCells": 2124
+        "foregroundCells": 4123,
+        "edgeCells": 2427
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -640,7 +641,7 @@
         "foregroundCells": 4135,
         "edgeCells": 2518
       },
-      "heatmap": "captures/local/swimlanes-production-20260920/detail-diffs/rc_swimlanes_vertical_cycle_heatmap.png"
+      "heatmap": "captures/local/swimlanes-production-report-final/detail-diffs/rc_swimlanes_vertical_cycle_heatmap.png"
     },
     {
       "id": "rc_swimlanes_default_and_nested",
@@ -658,7 +659,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -692,15 +694,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
-          "maximumCenterDistance": 0.028651236256957157,
-          "p95CenterDistance": 0.028651201931832803,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.020395727760740456,
+          "p95CenterDistance": 0.020187939696167403,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 0.9230769230769231,
-            "asset": 1
+            "geometryObject": 0.9230769230769231,
+            "geometryExpanded": 0.9230769230769231
           }
         },
         "styleComparison": {
@@ -731,8 +737,8 @@
               "pathOrder": 8,
               "position": "end",
               "point": {
-                "x": 0.10083760529540783,
-                "y": 0.7737729418659187
+                "x": 0.11111868670664206,
+                "y": 0.7643263180373765
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -743,8 +749,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.4729820888586611,
-                "y": 0.8354712304479409
+                "x": 0.4699621472743305,
+                "y": 0.8314806467686616
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -755,8 +761,8 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.8754671420392676,
-                "y": 0.8354712304479409
+                "x": 0.8633421982655154,
+                "y": 0.8314806467686616
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -823,11 +829,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.9963698891860909,
-        "exactMaskIou": 0.9378709198813057,
-        "edgeF1": 0.9821715343368083,
-        "colorError": 0.011303676400137519,
-        "exactColorError": 0.030523312193324412
+        "maskIou": 0.9935250428489811,
+        "exactMaskIou": 0.9870918754745635,
+        "edgeF1": 0.988095238095238,
+        "colorError": 0.0076432347652585254,
+        "exactColorError": 0.011441134287174753
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -839,13 +845,13 @@
           255
         ],
         "contentBounds": {
-          "x": 13,
-          "y": 300,
-          "width": 1174,
-          "height": 300
+          "x": 14,
+          "y": 283,
+          "width": 1172,
+          "height": 334
         },
-        "foregroundCells": 5232,
-        "edgeCells": 1500
+        "foregroundCells": 5251,
+        "edgeCells": 1530
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -883,7 +889,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -917,15 +924,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
-          "maximumCenterDistance": 0.03947401409045602,
-          "p95CenterDistance": 0.03947401083323191,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03216353621755565,
+          "p95CenterDistance": 0.03216353221999418,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -957,7 +968,7 @@
               "position": "end",
               "point": {
                 "x": 0.5,
-                "y": 0.423841059602649
+                "y": 0.4179566563467492
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -968,8 +979,8 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.8314476165803109,
-                "y": 0.7152317880794702
+                "x": 0.7227979274611399,
+                "y": 0.7941176470588235
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -980,8 +991,8 @@
               "pathOrder": 11,
               "position": "end",
               "point": {
-                "x": 0.8201142487046632,
-                "y": 0.7152317880794702
+                "x": 0.8134715025906736,
+                "y": 0.7120743034055728
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1048,11 +1059,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8699268968994203,
-        "exactMaskIou": 0.8172464478196962,
-        "edgeF1": 0.7566460483521922,
-        "colorError": 0.022446555257391393,
-        "exactColorError": 0.06740063982476871
+        "maskIou": 0.9907633795164358,
+        "exactMaskIou": 0.9417064122946476,
+        "edgeF1": 0.9809018567639258,
+        "colorError": 0.025178751590121506,
+        "exactColorError": 0.027758554402153017
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1065,12 +1076,12 @@
         ],
         "contentBounds": {
           "x": 19,
-          "y": 225,
+          "y": 213,
           "width": 1162,
-          "height": 450
+          "height": 474
         },
-        "foregroundCells": 3737,
-        "edgeCells": 1913
+        "foregroundCells": 3647,
+        "edgeCells": 1760
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1108,7 +1119,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -1142,15 +1154,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 8,
-          "maximumCenterDistance": 0.11511272335900115,
-          "p95CenterDistance": 0.054173129290253,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.049657811780015,
+          "p95CenterDistance": 0.04901727818949981,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1181,8 +1197,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.7777686387613897,
-                "y": 0.5339233038348082
+                "x": 0.7616199976162,
+                "y": 0.5333333333333333
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1193,8 +1209,8 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.8799439772619002,
-                "y": 0.8702064896755162
+                "x": 0.8712199987122,
+                "y": 0.8637362637362638
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1249,11 +1265,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.7548262548262549,
-        "exactMaskIou": 0.6610324349017817,
-        "edgeF1": 0.576282478157766,
-        "colorError": 0.014689384747938317,
-        "exactColorError": 0.04872968526530454
+        "maskIou": 0.8063798219584569,
+        "exactMaskIou": 0.7107728337236534,
+        "edgeF1": 0.7505970175013102,
+        "colorError": 0.017145581979148807,
+        "exactColorError": 0.04902297531034272
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1265,13 +1281,13 @@
           255
         ],
         "contentBounds": {
-          "x": 99,
+          "x": 137,
           "y": 22,
-          "width": 1002,
+          "width": 926,
           "height": 861
         },
-        "foregroundCells": 3411,
-        "edgeCells": 1487
+        "foregroundCells": 3444,
+        "edgeCells": 1415
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1309,7 +1325,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -1343,15 +1360,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 12,
-          "maximumCenterDistance": 0.05403051010953643,
-          "p95CenterDistance": 0.046487210667236135,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.01578112891031897,
+          "p95CenterDistance": 0.015744040981192354,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1382,8 +1403,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.06643499930677634,
-                "y": 0.4620253164556962
+                "x": 0.07368500465377485,
+                "y": 0.45839874411302983
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1394,7 +1415,7 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.6159035474194372,
+                "x": 0.6103637845683989,
                 "y": 0.5
               },
               "occlusionDepth": 0,
@@ -1406,8 +1427,8 @@
               "pathOrder": 11,
               "position": "end",
               "point": {
-                "x": 0.3207277351148679,
-                "y": 0.8987341772151899
+                "x": 0.3193520798187712,
+                "y": 0.8956043956043956
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1418,8 +1439,8 @@
               "pathOrder": 12,
               "position": "end",
               "point": {
-                "x": 0.6159035474194372,
-                "y": 0.8987341772151899
+                "x": 0.6103637845683989,
+                "y": 0.8956043956043956
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1430,8 +1451,8 @@
               "pathOrder": 13,
               "position": "end",
               "point": {
-                "x": 0.656786623915915,
-                "y": 0.5379746835443038
+                "x": 0.6557084028168757,
+                "y": 0.5416012558869702
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1442,8 +1463,8 @@
               "pathOrder": 14,
               "position": "end",
               "point": {
-                "x": 0.656786623915915,
-                "y": 0.13924050632911392
+                "x": 0.6557084028168757,
+                "y": 0.14599686028257458
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1454,8 +1475,8 @@
               "pathOrder": 15,
               "position": "end",
               "point": {
-                "x": 0.911079308620161,
-                "y": 0.10126582278481013
+                "x": 0.9013754553095629,
+                "y": 0.1043956043956044
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1570,11 +1591,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.7784360189573459,
-        "exactMaskIou": 0.7213302752293578,
-        "edgeF1": 0.8465859482036536,
-        "colorError": 0.020872154835792477,
-        "exactColorError": 0.0362253402890208
+        "maskIou": 0.9382176052487698,
+        "exactMaskIou": 0.8982597054886211,
+        "edgeF1": 0.9440638818833016,
+        "colorError": 0.011097467296898741,
+        "exactColorError": 0.01659868231094312
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1587,12 +1608,12 @@
         ],
         "contentBounds": {
           "x": 12,
-          "y": 263,
+          "y": 241,
           "width": 1176,
-          "height": 374
+          "height": 418
         },
-        "foregroundCells": 4048,
-        "edgeCells": 1439
+        "foregroundCells": 3633,
+        "edgeCells": 1867
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1622,7 +1643,7 @@
         {
           "severity": "review",
           "code": "text-position",
-          "message": "Maximum normalized text-center distance 0.352 exceeds 0.120"
+          "message": "Maximum normalized text-center distance 0.296 exceeds 0.120"
         }
       ],
       "manifest": {
@@ -1636,7 +1657,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "review",
         "native": {
@@ -1670,15 +1692,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 12,
-          "maximumCenterDistance": 0.35224177218690084,
-          "p95CenterDistance": 0.15066671706559703,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.296131472091746,
+          "p95CenterDistance": 0.017910057923739245,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -1709,8 +1735,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.14718019257221457,
-                "y": 0.18497109826589594
+                "x": 0.16940581542351454,
+                "y": 0.18392370572207084
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1721,8 +1747,8 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.14718019257221457,
-                "y": 0.31213872832369943
+                "x": 0.16940581542351454,
+                "y": 0.3133514986376022
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1733,8 +1759,8 @@
               "pathOrder": 11,
               "position": "end",
               "point": {
-                "x": 0.3920220082530949,
-                "y": 0.3453757225433526
+                "x": 0.3988621997471555,
+                "y": 0.34945504087193463
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1745,8 +1771,8 @@
               "pathOrder": 12,
               "position": "end",
               "point": {
-                "x": 0.5020632737276479,
-                "y": 0.4393063583815029
+                "x": 0.5,
+                "y": 0.4427792915531335
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1757,8 +1783,8 @@
               "pathOrder": 13,
               "position": "end",
               "point": {
-                "x": 0.8569463548830811,
-                "y": 0.7485549132947977
+                "x": 0.8305941845764855,
+                "y": 0.7438692098092643
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1769,8 +1795,8 @@
               "pathOrder": 14,
               "position": "end",
               "point": {
-                "x": 0.8569463548830811,
-                "y": 0.8757225433526011
+                "x": 0.8305941845764855,
+                "y": 0.8732970027247956
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1781,8 +1807,8 @@
               "pathOrder": 15,
               "position": "end",
               "point": {
-                "x": 0.14718019257221457,
-                "y": 0.12427745664739884
+                "x": 0.06826801517067003,
+                "y": 0.09059945504087194
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1897,11 +1923,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8662741799831791,
-        "exactMaskIou": 0.7427842136265462,
-        "edgeF1": 0.7856014691424019,
-        "colorError": 0.018647653000594178,
-        "exactColorError": 0.03995667512374411
+        "maskIou": 0.981780442804428,
+        "exactMaskIou": 0.9223713646532439,
+        "edgeF1": 0.9850089771754093,
+        "colorError": 0.013910851589947433,
+        "exactColorError": 0.018124022166659353
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1913,13 +1939,13 @@
           255
         ],
         "contentBounds": {
-          "x": 152,
+          "x": 132,
           "y": 17,
-          "width": 896,
+          "width": 936,
           "height": 866
         },
-        "foregroundCells": 4540,
-        "edgeCells": 2346
+        "foregroundCells": 4257,
+        "edgeCells": 2403
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1939,7 +1965,7 @@
         "foregroundCells": 4336,
         "edgeCells": 2505
       },
-      "heatmap": "captures/local/swimlanes-production-20260920/detail-diffs/prod_swimlane_vertical_delivery_heatmap.png"
+      "heatmap": "captures/local/swimlanes-production-report-final/detail-diffs/prod_swimlane_vertical_delivery_heatmap.png"
     },
     {
       "id": "prod_swimlane_reverse_vertical",
@@ -1957,7 +1983,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -1991,15 +2018,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 6,
-          "maximumCenterDistance": 0.048821962571415106,
-          "p95CenterDistance": 0.04882196257141508,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.041298908945900895,
+          "p95CenterDistance": 0.04129890894590086,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2033,7 +2064,7 @@
               "position": "end",
               "point": {
                 "x": 0.5884615384615385,
-                "y": 0.7064220183486238
+                "y": 0.7083333333333334
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2045,7 +2076,7 @@
               "position": "end",
               "point": {
                 "x": 0.7423076923076923,
-                "y": 0.4036697247706422
+                "y": 0.40789473684210525
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2057,7 +2088,7 @@
               "position": "end",
               "point": {
                 "x": 0.4115384615384615,
-                "y": 0.29357798165137616
+                "y": 0.2916666666666667
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2069,7 +2100,7 @@
               "position": "end",
               "point": {
                 "x": 0.25769230769230766,
-                "y": 0.5963302752293578
+                "y": 0.5921052631578947
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2148,11 +2179,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8295397066262014,
-        "exactMaskIou": 0.546387345019239,
-        "edgeF1": 0.9294178351370417,
-        "colorError": 0.08735193669629394,
-        "exactColorError": 0.12020443349065435
+        "maskIou": 0.8108672936259144,
+        "exactMaskIou": 0.7226640159045725,
+        "edgeF1": 0.9381008601787822,
+        "colorError": 0.0975542259387415,
+        "exactColorError": 0.08442482360737535
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -2165,12 +2196,12 @@
         ],
         "contentBounds": {
           "x": 25,
-          "y": 218,
+          "y": 207,
           "width": 1150,
-          "height": 464
+          "height": 486
         },
-        "foregroundCells": 1703,
-        "edgeCells": 2708
+        "foregroundCells": 1552,
+        "edgeCells": 2649
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -2195,14 +2226,8 @@
     {
       "id": "prod_swimlane_reverse_horizontal",
       "kind": "swimlanes",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-position",
-          "message": "Maximum normalized text-center distance 0.291 exceeds 0.120"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -2214,9 +2239,10 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 22,
@@ -2248,15 +2274,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 8,
-          "maximumCenterDistance": 0.2914475863912603,
-          "p95CenterDistance": 0.08299147490014173,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.06520685290576328,
+          "p95CenterDistance": 0.025171787436128225,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2287,8 +2317,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.7438201654697583,
-                "y": 0.3653250773993808
+                "x": 0.7355037071193681,
+                "y": 0.3635670731707317
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2299,8 +2329,8 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.3253671927080363,
-                "y": 0.9009287925696594
+                "x": 0.3299093545607883,
+                "y": 0.8986280487804879
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2311,8 +2341,8 @@
               "pathOrder": 11,
               "position": "end",
               "point": {
-                "x": 0.7438201654697583,
-                "y": 0.13622291021671826
+                "x": 0.7355037071193681,
+                "y": 0.14176829268292682
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2379,11 +2409,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.6530952380952381,
-        "exactMaskIou": 0.6038346038346039,
-        "edgeF1": 0.6066009113317083,
-        "colorError": 0.027485866504018835,
-        "exactColorError": 0.06006247574875026
+        "maskIou": 0.9574049803407602,
+        "exactMaskIou": 0.8983158563711471,
+        "edgeF1": 0.9773415483458141,
+        "colorError": 0.016498154817482548,
+        "exactColorError": 0.0440485907317063
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -2395,13 +2425,13 @@
           255
         ],
         "contentBounds": {
-          "x": 244,
+          "x": 254,
           "y": 18,
-          "width": 712,
+          "width": 692,
           "height": 864
         },
-        "foregroundCells": 3977,
-        "edgeCells": 2105
+        "foregroundCells": 3008,
+        "edgeCells": 2209
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -2421,7 +2451,7 @@
         "foregroundCells": 2966,
         "edgeCells": 2068
       },
-      "heatmap": "captures/local/swimlanes-production-20260920/detail-diffs/prod_swimlane_reverse_horizontal_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "prod_swimlane_default_lane",
@@ -2439,7 +2469,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -2473,15 +2504,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 5,
-          "maximumCenterDistance": 0.03268820723788783,
-          "p95CenterDistance": 0.023924246386608613,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.0284204162055139,
+          "p95CenterDistance": 0.02018564690978926,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 0.9090909090909091,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2512,8 +2547,8 @@
               "pathOrder": 8,
               "position": "end",
               "point": {
-                "x": 0.2755239106530811,
-                "y": 0.5337586209991806
+                "x": 0.27791546815543666,
+                "y": 0.5311631266949443
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2524,8 +2559,8 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.6745265562349815,
-                "y": 0.723305349845308
+                "x": 0.673069975099449,
+                "y": 0.722765410534225
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2580,11 +2615,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.944047118216239,
-        "exactMaskIou": 0.8784552845528455,
-        "edgeF1": 0.9785911212569541,
-        "colorError": 0.01435183983900868,
-        "exactColorError": 0.03336946702800361
+        "maskIou": 0.9713307659392384,
+        "exactMaskIou": 0.8888888888888888,
+        "edgeF1": 0.9946290439964804,
+        "colorError": 0.01409654915874608,
+        "exactColorError": 0.027853481149190576
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -2596,13 +2631,13 @@
           255
         ],
         "contentBounds": {
-          "x": 93,
+          "x": 104,
           "y": 22,
-          "width": 1014,
+          "width": 992,
           "height": 856
         },
-        "foregroundCells": 4568,
-        "edgeCells": 2620
+        "foregroundCells": 4540,
+        "edgeCells": 2715
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -2640,7 +2675,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -2674,15 +2710,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 7,
-          "maximumCenterDistance": 0.09031965385706425,
-          "p95CenterDistance": 0.07315201015636719,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.021250005719448732,
+          "p95CenterDistance": 0.021178356588216443,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2715,8 +2755,8 @@
               "pathOrder": 6,
               "position": "end",
               "point": {
-                "x": 0.455046403712297,
-                "y": 0.8315789473684211
+                "x": 0.450433479141492,
+                "y": 0.8272727272727273
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2727,8 +2767,8 @@
               "pathOrder": 7,
               "position": "end",
               "point": {
-                "x": 0.455046403712297,
-                "y": 0.16842105263157894
+                "x": 0.450433479141492,
+                "y": 0.17272727272727273
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2739,8 +2779,8 @@
               "pathOrder": 8,
               "position": "end",
               "point": {
-                "x": 0.8738399071925754,
-                "y": 0.8315789473684211
+                "x": 0.8608939800270937,
+                "y": 0.8272727272727273
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2807,11 +2847,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.49021084337349397,
-        "exactMaskIou": 0.3416949152542373,
-        "edgeF1": 0.6684201587117465,
-        "colorError": 0.10419041298147907,
-        "exactColorError": 0.18164174144233966
+        "maskIou": 0.8794326241134752,
+        "exactMaskIou": 0.8275862068965517,
+        "edgeF1": 0.9845158681195866,
+        "colorError": 0.08375075917062379,
+        "exactColorError": 0.07076741041244083
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -2823,13 +2863,13 @@
           255
         ],
         "contentBounds": {
-          "x": 14,
-          "y": 293,
-          "width": 1172,
-          "height": 314
+          "x": 15,
+          "y": 274,
+          "width": 1170,
+          "height": 352
         },
-        "foregroundCells": 978,
-        "edgeCells": 1713
+        "foregroundCells": 1119,
+        "edgeCells": 2031
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -2867,7 +2907,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -2901,15 +2942,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 8,
-          "maximumCenterDistance": 0.030018431142785167,
-          "p95CenterDistance": 0.030018423784749775,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.026150249203317117,
+          "p95CenterDistance": 0.026150240756870363,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -2941,7 +2986,7 @@
               "position": "end",
               "point": {
                 "x": 0.376953125,
-                "y": 0.32663316582914576
+                "y": 0.3229665071770335
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2952,8 +2997,8 @@
               "pathOrder": 13,
               "position": "end",
               "point": {
-                "x": 0.626953125,
-                "y": 0.5527638190954773
+                "x": 0.544921875,
+                "y": 0.6136363636363636
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2965,7 +3010,7 @@
               "position": "end",
               "point": {
                 "x": 0.869140625,
-                "y": 0.7788944723618091
+                "y": 0.777511961722488
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -2976,8 +3021,8 @@
               "pathOrder": 15,
               "position": "end",
               "point": {
-                "x": 0.6181640625,
-                "y": 0.5527638190954773
+                "x": 0.61328125,
+                "y": 0.5502392344497608
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -3056,11 +3101,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8836875358989087,
-        "exactMaskIou": 0.8429334082607474,
-        "edgeF1": 0.828699018407513,
-        "colorError": 0.017335272582224472,
-        "exactColorError": 0.04463910880452209
+        "maskIou": 0.9614554424915202,
+        "exactMaskIou": 0.9536240786240786,
+        "edgeF1": 0.9857593498890086,
+        "colorError": 0.016895080081053573,
+        "exactColorError": 0.020064717123540653
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -3073,12 +3118,12 @@
         ],
         "contentBounds": {
           "x": 16,
-          "y": 228,
+          "y": 217,
           "width": 1168,
-          "height": 444
+          "height": 466
         },
-        "foregroundCells": 3326,
-        "edgeCells": 1770
+        "foregroundCells": 3128,
+        "edgeCells": 1623
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -3116,7 +3161,8 @@
           "textOverlapRatio": 0.35,
           "maximumTextOverlapRatioDifference": 0.08,
           "clippingTolerance": 0.01,
-          "maximumMarkerOcclusionDepthDifference": 0.01
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
         "status": "pass",
         "native": {
@@ -3150,15 +3196,19 @@
           "absentInOfficial": [],
           "multiplicityDifferences": [],
           "matchedCount": 7,
-          "maximumCenterDistance": 0.11158169158759806,
-          "p95CenterDistance": 0.06350096084758504,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.026321046873665415,
+          "p95CenterDistance": 0.02623877565160516,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
+            "asset": 1,
             "geometry": 1,
-            "asset": 1
+            "geometryObject": 1,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -3189,7 +3239,7 @@
               "pathOrder": 9,
               "position": "end",
               "point": {
-                "x": 0.7752214456309766,
+                "x": 0.7640429179353202,
                 "y": 0.5
               },
               "occlusionDepth": 0,
@@ -3201,8 +3251,8 @@
               "pathOrder": 10,
               "position": "end",
               "point": {
-                "x": 0.8785679074098379,
-                "y": 0.8580441640378549
+                "x": 0.8725289326777017,
+                "y": 0.8540031397174255
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -3257,11 +3307,11 @@
           "maximumColorError": 0.24
         },
         "status": "pass",
-        "maskIou": 0.8640948058497226,
-        "exactMaskIou": 0.7619161105815062,
-        "edgeF1": 0.7578328855557919,
-        "colorError": 0.017199872340345174,
-        "exactColorError": 0.03588820974846882
+        "maskIou": 0.9546772068511199,
+        "exactMaskIou": 0.867102944877926,
+        "edgeF1": 0.9832278159070881,
+        "colorError": 0.01645029477842614,
+        "exactColorError": 0.028529173226468203
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -3273,13 +3323,13 @@
           255
         ],
         "contentBounds": {
-          "x": 70,
+          "x": 98,
           "y": 18,
-          "width": 1060,
+          "width": 1004,
           "height": 864
         },
-        "foregroundCells": 3721,
-        "edgeCells": 1792
+        "foregroundCells": 3746,
+        "edgeCells": 1852
       },
       "officialRaster": {
         "imageWidth": 1200,

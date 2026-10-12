@@ -97,7 +97,7 @@ rendered manifest uniqueness do not establish input coverage. All 8,448 cases
 render in the Native core test and have fresh Native/Official captures.
 
 The replacement detail gate reports
-`7,725 pass / 723 review / 0 fail`. Review findings are retained for text
+`7,741 pass / 707 review / 0 fail`. Review findings are retained for text
 position/overlap, raster mask/edge/color, equivalent element-count
 representation, marker occlusion, and paint-order occlusion. No expected-text
 loss, clipping error, or hard detail failure was recorded. The geometry gate
