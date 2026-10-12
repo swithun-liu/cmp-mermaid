@@ -49,5 +49,5 @@
 - Frontmatter and configuration: `UsecaseConfigTest.kt`
 - Official documentation fixtures: `OfficialUsecaseDocumentationTest.kt`
 - Production and deterministic replay: `ProductionCorpusTest.kt`
-- 256-case structural parity: `ProductionCorpusTest.kt` and the published
+- 256-case full-factorial input parity: `ProductionCorpusTest.kt` and the published
   Native/Official evidence

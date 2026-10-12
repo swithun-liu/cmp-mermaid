@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import { compareDetailManifests } from './detail-audit-core.mjs';
+import { classifyDetailFindings } from './detail-audit-policy.mjs';
 import { classifyGeometryRatio } from './geometry-audit-policy.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
@@ -96,7 +97,11 @@ try {
       readJson(`${prefix}_official.manifest.json`),
       auditCase.expectedTexts ?? [],
     );
-    const structuralErrors = detail.findings.filter(
+    const detailFindings = classifyDetailFindings(
+      detail.findings,
+      auditCase,
+    );
+    const structuralErrors = detailFindings.filter(
       (finding) => finding.severity === 'error',
     );
     structuralErrors.forEach((finding) => {
@@ -104,6 +109,13 @@ try {
         `${auditCase.id}/structure ${finding.code}: ${finding.message}`,
       );
     });
+    detailFindings
+      .filter((finding) => finding.policy === 'iterative-layout-placement')
+      .forEach((finding) => {
+        reviews.push(
+          `${auditCase.id}/structure ${finding.code}: ${finding.message}`,
+        );
+      });
     const reviewIterativeGeometry =
       auditCase.layout === 'cose-bilkent' &&
       structuralErrors.length === 0;

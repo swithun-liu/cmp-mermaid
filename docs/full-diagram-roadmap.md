@@ -22,7 +22,9 @@ Mermaid's registry count is not the public family count:
 | Implemented, independent production corpus and 256-case structural visual gate passing | Flowchart, XY Chart, Quadrant Chart, Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey, Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, ZenUML |
 
 The repository contains 441 hand-authored production scenarios and a generated
-visual matrix of 8,448 structurally distinct cases across all 33 families.
+visual matrix of 8,448 systematic input cases across all 33 families. Each
+family defines eight named binary dimensions and covers all `2^8`
+combinations.
 All cases pass Native rendering and complete the Native/Official detail and
 geometry audits without a hard failure. A separate 8,448-input text/layout
 stress corpus remains isolated from structural coverage. A Git Graph label paint-order defect
@@ -52,18 +54,20 @@ global label layers reports a `paint-order-occlusion` mismatch for
 Native overlap `0`). The corrected commit-order scene reports one occluded text
 on both sides and passes with no findings.
 
-All 33 families have completed the structural visual gate. Together they have
+All 33 families have completed the visual-input gate. Together they have
 8,448 same-source pairs:
-`7,953 pass / 495 review / 0 fail` across 528 regenerated contact sheets.
-Geometry has 0 hard failures and retains four CoSE-Bilkent ratio reviews from
-three Mindmap cases; fixed-input algorithm parity is tested separately.
+`7,725 pass / 723 review / 0 fail` across 528 regenerated contact sheets.
+Geometry has 0 hard failures and retains 132 review findings across 108
+Architecture cases. Architecture uses seeded iterative fCoSE layout on both
+sides, and its cross-runtime placement differences remain explicit review
+evidence.
 
 The fresh per-family pass/review counts and width, height, and foreground-ink
 ranges are published in the
-[8,448-case structural visual evidence index](assets/stability-report/visual-parity-evidence.md).
-Across the complete matrix, width ratios are `0.878-1.464`, height ratios are
-`0.798-1.442`, and foreground-ink ratios are `0.538-1.527`; the out-of-range
-width/height values are the four documented Mindmap reviews.
+[8,448-case visual-input evidence index](assets/stability-report/visual-parity-evidence.md).
+Across the complete matrix, width ratios are `0.867-1.658`, height ratios are
+`0.339-1.335`, and foreground-ink ratios are `0.313-2.640`; all out-of-range
+values are retained Architecture fCoSE reviews.
 
 ## Expected Behavior
 
@@ -75,7 +79,7 @@ Kotlin Multiplatform and rendered by Compose Canvas:
   pinned upstream implementation;
 - unsupported behavior returns a typed error instead of a silent substitute;
 - the same source drives Native and Official reference rendering;
-- every family has 256 distinct acceptance sources plus independent
+- every family has all 256 combinations of eight named binary input dimensions plus independent
   documentation, production, randomized, and cross-platform coverage.
 
 ## Translation Batches
@@ -106,7 +110,7 @@ Each of the 33 families must pass all of the following:
    perceptual difference, clipping, and overlap diagnostics are recorded.
    Font rasterization receives explicit tolerance; missing or wrongly layered
    content does not.
-5. **Visual review:** all 256 structurally distinct Native/Official pairs are reviewed from paged
+5. **Visual review:** all 256 full-factorial Native/Official input pairs are reviewed from paged
    contact sheets and every anomaly is resolved or documented as an allowed
    platform-font difference.
 6. **Stress and replay:** at least 256 separately generated legal inputs render

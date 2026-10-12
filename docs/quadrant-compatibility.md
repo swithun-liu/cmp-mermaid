@@ -24,7 +24,7 @@ Baseline: Mermaid `12.0.0`.
   finite SceneGraphs.
 - 13 independent production cases pass detail audit:
   `13 pass / 0 review / 0 fail`.
-- The fresh 256-case structural Native/Official audit reports `253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width `1.007-1.023`, height `1.011-1.022`, and foreground ink `1.025-1.036`.
+- The fresh 256-case full-factorial input audit reports `230 pass / 26 review / 0 fail`; geometry has 0 hard failures with width `1.014-1.032`, height `1.009-1.035`, and foreground ink `1.019-1.060`.
 - Sixteen paged contact sheets cover every pair; representative first,
   middle, and final pages were checked for blank output, clipping, label
   overlap, geometry, color, and text differences.

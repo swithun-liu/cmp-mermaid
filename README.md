@@ -36,9 +36,10 @@
 > contract is rated **Stable**.
 >
 > The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
-> covers every family with 256 different named business scenarios and
-> label-normalized Mermaid structures, automated duplicate/detail/geometry
-> audits, and 528 regenerated contact sheets.
+> covers every family with the complete `2^8` combinations of eight named,
+> family-specific binary input dimensions. Automated input-space,
+> duplicate/detail/geometry audits and 528 regenerated contact sheets preserve
+> the result.
 > The 441 hand-authored production scenarios and 8,448 text/layout stress
 > inputs remain separate evidence layers.
 
@@ -62,17 +63,18 @@ geometry gates.
 | Visual family gates pending | 0 |
 | Independent production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
-| Independent-scenario visual matrix | 8,448 Native/Official pairs; 256 different business scenarios per family |
-| Duplicate hard gate | Every family has 256/256 unique blueprints, normalized semantics, label-normalized sources, text/ID-stripped Native manifests, Native PNGs, and Official PNGs |
+| Independent-scenario visual matrix | 8,448 Native/Official pairs; 8 binary input dimensions and all 256 combinations per family |
+| Input-space hard gate | Every family covers 256/256 dimension vectors; each option occurs 128 times and every two-dimension option pair occurs 64 times |
+| Duplicate hard gate | Every family has 256/256 unique blueprints, normalized semantics, and label-normalized sources; rendered manifest/PNG uniqueness is diagnostic because distinct legal inputs can render equivalently |
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
 | Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Independent-scenario detail audit | 33 families: 8,218 pass, 230 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 0 review |
+| Independent-scenario detail audit | 33 families: 7,725 pass, 723 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 132 review findings, all from seeded Architecture fCoSE placement |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 883 passed, 0 failed |
+| JVM tests | 892 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |

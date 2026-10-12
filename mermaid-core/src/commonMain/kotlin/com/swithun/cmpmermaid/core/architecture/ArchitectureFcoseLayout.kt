@@ -498,6 +498,7 @@ internal object ArchitectureFcoseLayout {
             applyCompoundRepulsion(
                 nodes = nodes,
                 groups = groups,
+                edges = edges,
                 defaultIdealLength = defaultIdealLength,
                 padding = config.padding.toDouble(),
                 iconSize = config.iconSize.toDouble(),
@@ -586,6 +587,7 @@ internal object ArchitectureFcoseLayout {
     private fun applyCompoundRepulsion(
         nodes: Map<String, WorkNode>,
         groups: List<ArchitectureGroup>,
+        edges: List<com.swithun.cmpmermaid.core.architecture.upstream.mermaid.ArchitectureEdge>,
         defaultIdealLength: Double,
         padding: Double,
         iconSize: Double,
@@ -636,6 +638,26 @@ internal object ArchitectureFcoseLayout {
                     val first = siblings[firstIndex]
                     val second = siblings[secondIndex]
                     if (!first.isGroup && !second.isGroup) {
+                        continue
+                    }
+                    if (
+                        first.owner == null &&
+                            second.owner == null &&
+                            first.isGroup != second.isGroup &&
+                            edges.any { edge ->
+                                (
+                                    edge.lhsId in first.nodeIds &&
+                                        edge.rhsId in second.nodeIds
+                                    ) || (
+                                    edge.rhsId in first.nodeIds &&
+                                        edge.lhsId in second.nodeIds
+                                    )
+                            }
+                    ) {
+                        // cytoscape-fcose 2.2.0 keeps directly connected
+                        // compound/root pairs in the edge integration path.
+                        // Applying the compound overlap displacement again
+                        // creates an unbounded feedback loop in this adapter.
                         continue
                     }
                     applyBodyRepulsion(

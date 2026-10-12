@@ -9,6 +9,7 @@ const defaultThresholds = Object.freeze({
   maximumTextOverlapRatioDifference: 0.08,
   clippingTolerance: 0.01,
   maximumMarkerOcclusionDepthDifference: 0.01,
+  maximumMarkerOcclusionErrorDepthDifference: 0.03,
 });
 
 export function manifestViewportBackground(manifest) {
@@ -622,17 +623,37 @@ function compareMarkerVisibility(native, official, thresholds, findings) {
   const nativeDeeper = differences.filter(
     ({ depthDifference }) => depthDifference > 0,
   );
+  const nativeMateriallyHidden = nativeDeeper.filter(
+    ({ depthDifference }) =>
+      depthDifference >
+        thresholds.maximumMarkerOcclusionErrorDepthDifference,
+  );
+  const nativeDepthReviews = nativeDeeper.filter(
+    ({ depthDifference }) =>
+      depthDifference <=
+        thresholds.maximumMarkerOcclusionErrorDepthDifference,
+  );
   const officialDeeper = differences.filter(
     ({ depthDifference }) => depthDifference < 0,
   );
-  if (nativeDeeper.length > 0) {
+  if (nativeMateriallyHidden.length > 0) {
     findings.push({
       severity: 'error',
       code: 'marker-occlusion',
       message:
-        `${nativeDeeper.length} Native markers are materially deeper beneath ` +
+        `${nativeMateriallyHidden.length} Native markers are materially deeper beneath ` +
         'later opaque paint than their Official counterparts',
-      differences: nativeDeeper,
+      differences: nativeMateriallyHidden,
+    });
+  }
+  if (nativeDepthReviews.length > 0) {
+    findings.push({
+      severity: 'review',
+      code: 'marker-occlusion-depth',
+      message:
+        `${nativeDepthReviews.length} Native marker anchors are moderately deeper ` +
+        'beneath later opaque paint; endpoint depth alone does not prove the marker glyph is hidden',
+      differences: nativeDepthReviews,
     });
   }
   if (officialDeeper.length > 0) {

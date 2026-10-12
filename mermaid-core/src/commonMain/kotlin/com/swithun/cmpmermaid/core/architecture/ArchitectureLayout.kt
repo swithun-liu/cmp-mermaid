@@ -64,11 +64,6 @@ internal class ArchitectureLayout {
                 is GMResult.Err -> return result
             }
         }
-        db.getGroups().forEach { group ->
-            val bounds = placement.groupBounds[group.id]
-                ?: return layoutError("Architecture group '${group.id}' was not positioned")
-            elements += drawGroup(group, bounds, context)
-        }
         db.getServices().forEach { service ->
             val center = placement.nodeCenters[service.id]
                 ?: return layoutError("Architecture service '${service.id}' was not positioned")
@@ -78,6 +73,11 @@ internal class ArchitectureLayout {
             if (placement.nodeCenters[junction.id] == null) {
                 return layoutError("Architecture junction '${junction.id}' was not positioned")
             }
+        }
+        db.getGroups().forEach { group ->
+            val bounds = placement.groupBounds[group.id]
+                ?: return layoutError("Architecture group '${group.id}' was not positioned")
+            elements += drawGroup(group, bounds, context)
         }
         return GMResult.Ok(normalize(elements, db, context))
     }
@@ -195,7 +195,9 @@ internal class ArchitectureLayout {
                 rotationDegrees = rotation,
                 rotationPivot = midpoint,
                 softWrap = true,
-                zIndex = 20,
+                // Mermaid.js 12.0.0: architectureRenderer.ts -> draw creates the
+                // complete edge layer before the service and group layers.
+                zIndex = 7,
             )
         }
         return GMResult.Ok(result)
@@ -369,7 +371,10 @@ internal class ArchitectureLayout {
                 zIndex = 20,
             )
         }
-        return elements
+        // Mermaid.js 12.0.0: architectureRenderer.ts -> draw appends the
+        // complete group layer after every service. Keep each group's internal
+        // insertion order while placing the whole layer above services.
+        return elements.map { element -> element.withZIndex(30) }
     }
 
     private fun drawService(
@@ -984,6 +989,13 @@ internal class ArchitectureLayout {
             points = points.map { point -> ScenePoint(point.x + dx, point.y + dy) },
             commands = commands.map { command -> command.translate(dx, dy) },
         )
+    }
+
+    private fun SceneElement.withZIndex(zIndex: Int): SceneElement = when (this) {
+        is SceneAsset -> copy(zIndex = zIndex)
+        is ScenePath -> copy(zIndex = zIndex)
+        is SceneShape -> copy(zIndex = zIndex)
+        is SceneText -> copy(zIndex = zIndex)
     }
 
     private fun ScenePathCommand.translate(

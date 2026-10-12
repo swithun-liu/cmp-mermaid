@@ -48,6 +48,7 @@ const captureCombinedPreviews =
   capturePreviews.some((preview) => preview.toLowerCase() === 'official');
 const viewportWidth = Number(process.env.VIEWPORT_WIDTH ?? 900);
 const viewportHeight = Number(process.env.VIEWPORT_HEIGHT ?? 900);
+const pageBatchSize = Number(process.env.CAPTURE_PAGE_BATCH_SIZE ?? 0);
 const minimumCaptureBytes = Number(
   process.env.MIN_CAPTURE_BYTES ??
     (auditSource === 'invalid-source' ? 1_000 : 5_000),
@@ -120,6 +121,9 @@ if (!supportedAuditSources.includes(auditSource)) {
 if (!['full', 'smoke'].includes(invalidSourceScope)) {
   throw new Error('INVALID_SOURCE_SCOPE must be full or smoke');
 }
+if (!Number.isInteger(pageBatchSize) || pageBatchSize < 0) {
+  throw new Error('CAPTURE_PAGE_BATCH_SIZE must be a non-negative integer');
+}
 if (
   auditSource === 'invalid-source' &&
   (
@@ -180,14 +184,17 @@ if (availableCases.length === 0) {
 mkdirSync(outputDirectory, { recursive: true });
 const browser = await puppeteer.launch(puppeteerLaunchOptions);
 try {
-  const page = await browser.newPage();
-  await page.setViewport({
-    width: viewportWidth,
-    height: viewportHeight,
-    deviceScaleFactor: 1,
-  });
+  let page = await createCapturePage(browser);
+  let casesOnPage = 0;
 
   for (const auditCase of availableCases) {
+    if (pageBatchSize > 0 && casesOnPage >= pageBatchSize) {
+      await page.close();
+      page = await createCapturePage(browser);
+      casesOnPage = 0;
+      combinedPageInitialized = false;
+    }
+    casesOnPage += 1;
     if (captureCombinedPreviews) {
       await captureCombinedPreviewPair(page, auditCase);
       continue;
@@ -309,6 +316,16 @@ console.log(
   `Captured ${availableCases.length * capturePreviews.length} Web audit images to ` +
     outputDirectory,
 );
+
+async function createCapturePage(browser) {
+  const page = await browser.newPage();
+  await page.setViewport({
+    width: viewportWidth,
+    height: viewportHeight,
+    deviceScaleFactor: 1,
+  });
+  return page;
+}
 
 async function captureCombinedPreviewPair(page, auditCase) {
   const themeSuffix = themeOverride === null ? '' : `_${themeOverride}`;

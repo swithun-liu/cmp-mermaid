@@ -55,7 +55,7 @@ not expose a functional rendering defect.
   validation.
 - 13 independent production scenarios cover all 18 declared Requirement
   capability points.
-- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.024-1.060`, height `0.980-1.052`, and foreground ink `1.003-1.115`.
+- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.033-1.071`, height `1.016-1.055`, and foreground ink `0.985-1.105`.
 - The 13 production scenarios pass the replacement detail audit with no review
   queue. Production width, height, and foreground-ink ratios are
   `1.011-1.078`, `1.003-1.055`, and `0.955-1.162`; matrix ratios are

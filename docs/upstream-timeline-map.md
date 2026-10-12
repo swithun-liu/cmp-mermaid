@@ -73,8 +73,9 @@ network.
 - A separate deterministic generator renders 256 legal Timelines twice and
   checks finite SceneGraph geometry.
 - The production detail audit passes all 13 independent Timeline cases.
-- The large-scale matrix contains 256 unique same-source Native/Official
-  Timeline cases. At a shared `1200 x 900` viewport, all 256 pass the
+- The large-scale matrix contains all 256 full-factorial same-source
+  Native/Official Timeline input cases. At a shared `1200 x 900` viewport, all
+  256 pass the
   manifest/raster detail audit with no review queue and all 256 pass the
   geometry gate.
 - Sixteen contact sheets cover the complete matrix and were all inspected for

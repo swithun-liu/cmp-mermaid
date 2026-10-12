@@ -1,5 +1,11 @@
 import { createHash } from 'node:crypto';
 import { businessScenarios } from './independent-scenario-catalog.mjs';
+import {
+  familyDimensionSpecs,
+  renderInputSpaceScenario,
+} from './visual-input-space.mjs';
+
+export { familyDimensionSpecs };
 
 export const kinds = [
   'flowchart',
@@ -105,6 +111,11 @@ export const corpusSummary = Object.freeze({
         new Set(kindCases.map((entry) => entry.normalizedSemanticSignature)).size,
       structuralSignatureCount:
         new Set(kindCases.map((entry) => entry.structuralSignature)).size,
+      structuralProfileCount:
+        new Set(kindCases.map((entry) =>
+          JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
+        )).size,
+      dimensions: familyDimensionSpecs[kind],
     });
   })),
 });
@@ -125,11 +136,12 @@ function createScenarioBlueprint(kind, index) {
     label: (slot) =>
       `${domainModel.object} ${goalModel.stages[slot % goalModel.stages.length]}`,
   });
-  const rendered = renderFamilyScenario(kind, bits, context);
+  const rendered = renderInputSpaceScenario(kind, bits, context);
   const source = `${rendered.source.trim()}\n`;
   const normalizedSemanticStructure = deepFreeze({
     grammar: kind,
-    decisions: rendered.decisions,
+    dimensions: rendered.dimensions,
+    structuralProfile: rendered.structuralProfile,
     normalizedSource: normalizeSourceWithContext(source, context),
   });
   const normalizedSemanticSignature = sha256(
@@ -143,7 +155,7 @@ function createScenarioBlueprint(kind, index) {
     title,
     scenario:
       `${domainModel.name} ${goalModel.name} is an independently generated ` +
-      `${kind} scenario whose topology is defined by eight semantic decisions.`,
+      `${kind} scenario in a balanced matrix of eight named input dimensions.`,
     layout: rendered.layout ?? 'dagre',
     aspectRatio: aspectRatios[kind],
     features: Object.freeze([
@@ -160,7 +172,8 @@ function createScenarioBlueprint(kind, index) {
     scenarioBlueprintId,
     normalizedSemanticStructure,
     normalizedSemanticSignature,
-    structuralDimensions: normalizedSemanticStructure,
+    inputDimensions: rendered.dimensions,
+    structuralDimensions: rendered.dimensions,
     structuralSignature: normalizedSemanticSignature,
     source,
     sourceSha256,
@@ -1142,17 +1155,17 @@ function validateCorpus() {
       );
     }
     for (const entry of kindCases) {
-      if (entry.normalizedSemanticStructure.decisions.length !== 8) {
-        throw new Error(`${entry.id} does not contain eight semantic decisions`);
+      if (entry.normalizedSemanticStructure.dimensions.length !== 8) {
+        throw new Error(`${entry.id} does not contain eight input dimensions`);
       }
       if (
         Object.keys(entry.normalizedSemanticStructure).some((key) =>
-          /seed|profile|itemCount|ordinal|scenarioBlueprintId|title|label/i
+          /seed|itemCount|ordinal|scenarioBlueprintId|title/i
             .test(key)
         ) ||
-        entry.normalizedSemanticStructure.decisions.some((decision) =>
-          /seed|profile|itemCount|ordinal|scenarioBlueprintId|title|label/i
-            .test(decision)
+        entry.normalizedSemanticStructure.dimensions.some((decision) =>
+          /seed|itemCount|ordinal|scenarioBlueprintId/i
+            .test(JSON.stringify(decision))
         )
       ) {
         throw new Error(

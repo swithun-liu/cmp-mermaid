@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -699,7 +700,7 @@ private fun DiagramAuditScreen(
         }
     }
 
-    Box(
+    BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
@@ -709,12 +710,21 @@ private fun DiagramAuditScreen(
             .padding(8.dp),
         contentAlignment = Alignment.Center,
     ) {
+        // Mermaid.js 12.0.0: diagrams/gantt/ganttRenderer.js -> draw reads
+        // elem.parentElement.offsetWidth before applying gantt.useWidth.
+        // Core keeps the upstream 1200 fallback because it has no DOM parent;
+        // the audit host does have a measured parent and must pass that width.
+        val measuredNativeOptions = if (spec.id == "gantt") {
+            nativeOptions.copy(ganttUseWidth = constraints.maxWidth.toFloat())
+        } else {
+            nativeOptions
+        }
         when (preview) {
             MermaidDebugPreview.Native -> MermaidDiagram(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
                 theme = MermaidTheme.preset(themePreset),
-                options = nativeOptions,
+                options = measuredNativeOptions,
                 contentDescription = "${demo.title} native audit preview",
                 respectSourceViewportSizing = false,
                 onRenderResult = { result ->
@@ -757,7 +767,7 @@ private fun DiagramAuditScreen(
                     source = demo.source,
                     modifier = Modifier.fillMaxSize(),
                     theme = MermaidTheme.preset(themePreset),
-                    options = nativeOptions,
+                    options = measuredNativeOptions,
                     contentDescription = "${demo.title} native audit preview",
                     respectSourceViewportSizing = false,
                     onRenderResult = { result ->

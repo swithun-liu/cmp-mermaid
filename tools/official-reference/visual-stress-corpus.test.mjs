@@ -58,7 +58,13 @@ test('public reports keep structural cases and derived stress inputs separate', 
   const combined = reports.join('\n');
 
   assert.match(combined, /8,448 independent-scenario visual cases/);
-  assert.match(combined, /256 different business scenarios per family/);
+  assert.match(
+    combined,
+    /8 binary input dimensions and all 256 combinations per family/,
+  );
+  assert.match(combined, /complete `2\^8` matrix/);
+  assert.match(combined, /option occurs 128 times/);
+  assert.match(combined, /two-dimension option pair occurs 64 times/);
   assert.match(combined, /8,448[^\n]{0,48}text\/layout stress inputs/);
   assert.match(combined, /do not add structural or syntax coverage/);
   assert.match(combined, /不计作结构覆盖/);

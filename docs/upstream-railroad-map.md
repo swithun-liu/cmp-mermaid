@@ -87,7 +87,7 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   constructs, metadata, configuration, malformed input, limits, and
   deterministic rendering.
 - The replacement Web gate compares 18 independent production scenarios and
-  256 structurally distinct same-source cases against Mermaid.js `12.0.0`.
+  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `18/18`.
 - Matrix geometry and detail pass `256/256`, with
   `256 pass / 0 review / 0 fail`.

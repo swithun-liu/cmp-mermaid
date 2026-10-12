@@ -108,11 +108,10 @@ production so an upstream grammar diff can be translated incrementally.
 - The independent production audit passes `13 pass / 0 review / 0 fail`.
   Geometry ratios are width `1.016-1.020`, height `1.012-1.015`, and
   foreground ink `0.967-1.144`.
-- The structural Web audit compares 256 structurally distinct same-source
-  cases against Mermaid.js `12.0.0`: `255 pass / 1 review / 0 fail`; geometry
-  has 0 hard failures with width `1.012-1.016`, height `1.008-1.018`, and
-  foreground ink `0.962-1.154`. The review is a paint-order occlusion-ratio
-  representation difference.
+- The full-factorial Web audit compares 256 same-source input cases against
+  Mermaid.js `12.0.0`: `224 pass / 32 review / 0 fail`; geometry has 0 hard
+  failures with width `1.016-1.019`, height `1.012-1.015`, and foreground ink
+  `0.901-1.106`. The reviews retain text-overlap representation differences.
 - All 16 matrix contact sheets were manually reviewed with no unresolved
   visual defect.
 

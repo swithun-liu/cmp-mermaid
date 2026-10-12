@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import {
   cases,
   casesPerKind,
+  familyDimensionSpecs,
   kinds,
   normalizeScenarioSource,
 } from './visual-structure-corpus.mjs';
@@ -28,6 +29,9 @@ const omittedManifestKeys = new Set([
   'title',
 ]);
 
+const requiredInputDimensionCount = 8;
+const minimumStructuralProfileCount = 192;
+
 export function manifestVisualStructureFingerprint(manifest) {
   return sha256(JSON.stringify(normalizeManifestValue(manifest)));
 }
@@ -45,6 +49,251 @@ export function duplicateGroups(entries, valueOf) {
     .map(([value, ids]) => ({ value, ids }));
 }
 
+export function analyzeInputSpaceCoverage(
+  entries,
+  dimensions,
+  { minimumStructuralProfiles = minimumStructuralProfileCount } = {},
+) {
+  const failures = [];
+  const selectionsByEntry = entries.map((entry) => ({
+    entry,
+    selections: new Map(
+      entry.inputDimensions.map((selection) => [
+        selection.name,
+        selection.option,
+      ]),
+    ),
+  }));
+  if (dimensions.length !== requiredInputDimensionCount) {
+    failures.push(
+      `expected ${requiredInputDimensionCount} named dimensions, found ` +
+        dimensions.length,
+    );
+  }
+
+  const dimensionReports = dimensions.map((dimension) => {
+    const optionCounts = new Map(
+      dimension.options.map((option) => [option, 0]),
+    );
+    const unexpectedOptionCounts = new Map();
+    let missingCount = 0;
+    for (const { selections } of selectionsByEntry) {
+      const option = selections.get(dimension.name);
+      if (option === undefined) {
+        missingCount += 1;
+      } else if (optionCounts.has(option)) {
+        optionCounts.set(option, optionCounts.get(option) + 1);
+      } else {
+        unexpectedOptionCounts.set(
+          option,
+          (unexpectedOptionCounts.get(option) ?? 0) + 1,
+        );
+      }
+    }
+    const expectedCount = entries.length / dimension.options.length;
+    const status =
+      missingCount === 0 &&
+      unexpectedOptionCounts.size === 0 &&
+      [...optionCounts.values()].every((count) => count === expectedCount)
+        ? 'pass'
+        : 'fail';
+    if (status === 'fail') {
+      failures.push(`${dimension.name} is not evenly balanced`);
+    }
+    return {
+      name: dimension.name,
+      category: dimension.category,
+      expectedCountPerOption: expectedCount,
+      optionCounts: Object.fromEntries(optionCounts),
+      unexpectedOptionCounts: Object.fromEntries(unexpectedOptionCounts),
+      missingCount,
+      status,
+    };
+  });
+
+  const pairwiseReports = [];
+  for (let leftIndex = 0; leftIndex < dimensions.length; leftIndex += 1) {
+    for (
+      let rightIndex = leftIndex + 1;
+      rightIndex < dimensions.length;
+      rightIndex += 1
+    ) {
+      const left = dimensions[leftIndex];
+      const right = dimensions[rightIndex];
+      const expectedCount =
+        entries.length / (left.options.length * right.options.length);
+      const combinations = left.options.flatMap((leftOption) =>
+        right.options.map((rightOption) => ({
+          leftOption,
+          rightOption,
+          count: selectionsByEntry.filter(({ selections }) =>
+            selections.get(left.name) === leftOption &&
+            selections.get(right.name) === rightOption
+          ).length,
+        }))
+      );
+      const status = combinations.every(
+        (combination) => combination.count === expectedCount,
+      )
+        ? 'pass'
+        : 'fail';
+      if (status === 'fail') {
+        failures.push(`${left.name} x ${right.name} is not evenly balanced`);
+      }
+      pairwiseReports.push({
+        left: left.name,
+        right: right.name,
+        expectedCountPerCombination: expectedCount,
+        combinations,
+        status,
+      });
+    }
+  }
+
+  const dimensionVector = ({ selections }) =>
+    JSON.stringify(dimensions.map((dimension) =>
+      selections.get(dimension.name)
+    ));
+  const dimensionVectorEntries = selectionsByEntry.map((entry) => ({
+    id: entry.entry.id,
+    value: dimensionVector(entry),
+  }));
+  const uniqueDimensionVectorCount =
+    new Set(dimensionVectorEntries.map((entry) => entry.value)).size;
+  const expectedDimensionVectorCount = 2 ** dimensions.length;
+  if (
+    entries.length !== expectedDimensionVectorCount ||
+    uniqueDimensionVectorCount !== expectedDimensionVectorCount
+  ) {
+    failures.push(
+      `expected ${expectedDimensionVectorCount} full-factorial dimension ` +
+        `vectors, found ${uniqueDimensionVectorCount} across ${entries.length} cases`,
+    );
+  }
+
+  const profileEntries = entries.map((entry) => ({
+    id: entry.id,
+    value: sha256(JSON.stringify(
+      entry.normalizedSemanticStructure.structuralProfile,
+    )),
+  }));
+  const uniqueStructuralProfileCount =
+    new Set(profileEntries.map((entry) => entry.value)).size;
+  if (uniqueStructuralProfileCount < minimumStructuralProfiles) {
+    failures.push(
+      `expected at least ${minimumStructuralProfiles} structural profiles, ` +
+        `found ${uniqueStructuralProfileCount}`,
+    );
+  }
+
+  const entriesByVector = new Map(
+    selectionsByEntry.map((entry) => [dimensionVector(entry), entry]),
+  );
+  const topologyAndDataEffects = dimensions
+    .filter((dimension) =>
+      dimension.category === 'topology' || dimension.category === 'data'
+    )
+    .map((dimension) => {
+      const dimensionIndex = dimensions.indexOf(dimension);
+      const unchangedPairs = [];
+      let missingCounterpartCount = 0;
+      let comparisonCount = 0;
+      for (const candidate of selectionsByEntry) {
+        if (
+          candidate.selections.get(dimension.name) !== dimension.options[0]
+        ) {
+          continue;
+        }
+        const counterpartVector = dimensions.map((vectorDimension, index) =>
+          index === dimensionIndex
+            ? dimension.options[1]
+            : candidate.selections.get(vectorDimension.name)
+        );
+        const counterpart = entriesByVector.get(
+          JSON.stringify(counterpartVector),
+        );
+        if (counterpart === undefined) {
+          missingCounterpartCount += 1;
+          continue;
+        }
+        comparisonCount += 1;
+        const profile = JSON.stringify(
+          candidate.entry.normalizedSemanticStructure.structuralProfile,
+        );
+        const counterpartProfile = JSON.stringify(
+          counterpart.entry.normalizedSemanticStructure.structuralProfile,
+        );
+        if (profile === counterpartProfile) {
+          unchangedPairs.push([
+            candidate.entry.id,
+            counterpart.entry.id,
+          ]);
+        }
+      }
+      const expectedComparisonCount = entries.length / 2;
+      const status =
+        comparisonCount === expectedComparisonCount &&
+        missingCounterpartCount === 0 &&
+        unchangedPairs.length === 0
+          ? 'pass'
+          : 'fail';
+      if (status === 'fail') {
+        failures.push(
+          `${dimension.name} does not change every paired structural profile`,
+        );
+      }
+      return {
+        name: dimension.name,
+        category: dimension.category,
+        expectedComparisonCount,
+        comparisonCount,
+        missingCounterpartCount,
+        unchangedPairs,
+        status,
+      };
+    });
+
+  const topologyAndDataDimensions = dimensions.filter((dimension) =>
+    dimension.category === 'topology' || dimension.category === 'data'
+  );
+  const uniqueTopologyAndDataVectorCount = new Set(
+    selectionsByEntry.map(({ selections }) =>
+      JSON.stringify(topologyAndDataDimensions.map((dimension) =>
+        selections.get(dimension.name)
+      ))
+    ),
+  ).size;
+
+  return {
+    status: failures.length === 0 ? 'pass' : 'fail',
+    counts: {
+      cases: entries.length,
+      namedDimensions: dimensions.length,
+      dimensionPairs: pairwiseReports.length,
+      uniqueDimensionVectors: uniqueDimensionVectorCount,
+      uniqueTopologyAndDataVectors: uniqueTopologyAndDataVectorCount,
+      uniqueStructuralProfiles: uniqueStructuralProfileCount,
+    },
+    requirements: {
+      namedDimensions: requiredInputDimensionCount,
+      fullFactorialDimensionVectors: expectedDimensionVectorCount,
+      minimumStructuralProfiles,
+    },
+    dimensions: dimensionReports,
+    dimensionPairs: pairwiseReports,
+    topologyAndDataEffects,
+    repeatedDimensionVectors: duplicateGroups(
+      dimensionVectorEntries,
+      (entry) => entry.value,
+    ),
+    nearIsomorphicStructuralProfiles: duplicateGroups(
+      profileEntries,
+      (entry) => entry.value,
+    ),
+    failures,
+  };
+}
+
 export function auditVisualScenarioDuplicates({
   inputDirectory,
   outputFile,
@@ -53,15 +302,24 @@ export function auditVisualScenarioDuplicates({
 }) {
   const failures = [];
   const familyReports = selectedKinds.map((kind) => {
+    const familyFailures = [];
     const familyCases = cases.filter((entry) => entry.kind === kind);
+    const inputSpaceCoverage = analyzeInputSpaceCoverage(
+      familyCases,
+      familyDimensionSpecs[kind],
+    );
     const caseReports = familyCases.map((entry) => {
       const prefix = capturePrefix(inputDirectory, entry);
       const nativeManifest = readJson(`${prefix}_native.manifest.json`);
       return {
         id: entry.id,
         scenarioBlueprintId: entry.scenarioBlueprintId,
+        inputDimensions: entry.inputDimensions,
         normalizedSemanticSignature: entry.normalizedSemanticSignature,
         normalizedSourceSha256: sha256(normalizeScenarioSource(entry)),
+        structuralProfileFingerprint: sha256(JSON.stringify(
+          entry.normalizedSemanticStructure.structuralProfile,
+        )),
         nativeManifestFingerprint:
           manifestVisualStructureFingerprint(nativeManifest),
         nativePngSha256: sha256(readFileSync(`${prefix}_native.png`)),
@@ -79,6 +337,10 @@ export function auditVisualScenarioDuplicates({
     const duplicateNormalizedSources = duplicateGroups(
       caseReports,
       (entry) => entry.normalizedSourceSha256,
+    );
+    const duplicateStructuralProfiles = duplicateGroups(
+      caseReports,
+      (entry) => entry.structuralProfileFingerprint,
     );
     const duplicateNativeManifests = duplicateGroups(
       caseReports,
@@ -100,6 +362,8 @@ export function auditVisualScenarioDuplicates({
         caseReports.length - duplicateEntryCount(duplicateSemanticStructures),
       uniqueNormalizedSources:
         caseReports.length - duplicateEntryCount(duplicateNormalizedSources),
+      uniqueStructuralProfiles:
+        caseReports.length - duplicateEntryCount(duplicateStructuralProfiles),
       uniqueNativeManifestFingerprints:
         caseReports.length - duplicateEntryCount(duplicateNativeManifests),
       uniqueNativePngs:
@@ -111,31 +375,49 @@ export function auditVisualScenarioDuplicates({
       blueprints: duplicateBlueprints,
       normalizedSemanticStructures: duplicateSemanticStructures,
       normalizedSources: duplicateNormalizedSources,
+      structuralProfiles: duplicateStructuralProfiles,
       nativeManifestFingerprints: duplicateNativeManifests,
       nativePngs: duplicateNativePngs,
       officialPngs: duplicateOfficialPngs,
     };
-    for (const [name, count] of Object.entries(counts)) {
+    for (const [name, count] of Object.entries({
+      cases: counts.cases,
+      uniqueBlueprints: counts.uniqueBlueprints,
+      uniqueNormalizedSemanticStructures:
+        counts.uniqueNormalizedSemanticStructures,
+      uniqueNormalizedSources: counts.uniqueNormalizedSources,
+    })) {
       if (count !== casesPerKind) {
-        failures.push(
+        familyFailures.push(
           `${kind} has ${count}/${casesPerKind} ${name}`,
         );
       }
     }
+    if (
+      counts.uniqueStructuralProfiles < minimumStructuralProfileCount
+    ) {
+      familyFailures.push(
+        `${kind} has ${counts.uniqueStructuralProfiles}/` +
+          `${minimumStructuralProfileCount} required structural profiles`,
+      );
+    }
+    familyFailures.push(
+      ...inputSpaceCoverage.failures.map(
+        (failure) => `${kind} input space: ${failure}`,
+      ),
+    );
+    failures.push(...familyFailures);
     return {
       kind,
-      status: Object.values(counts).every(
-        (count) => count === casesPerKind,
-      )
-        ? 'pass'
-        : 'fail',
+      status: familyFailures.length === 0 ? 'pass' : 'fail',
       counts,
+      inputSpaceCoverage,
       duplicates: duplicateEvidence,
       cases: caseReports,
     };
   });
   const report = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt,
     inputDirectory: path.relative(repositoryRoot, inputDirectory),
     requirements: {
@@ -145,7 +427,18 @@ export function auditVisualScenarioDuplicates({
       manifestNormalization:
         'Remove all rendered text, identifiers, titles, accessibility text, ' +
         'and renderer identity; retain ordered visual properties and geometry.',
-      exactRasterDuplicatesAllowed: 0,
+      namedInputDimensionsPerFamily: requiredInputDimensionCount,
+      fullFactorialDimensionVectorsPerFamily: casesPerKind,
+      optionOccurrencesPerDimension: casesPerKind / 2,
+      occurrencesPerDimensionPairCombination: casesPerKind / 4,
+      minimumStructuralProfilesPerFamily: minimumStructuralProfileCount,
+      nativeVisualStructurePolicy:
+        'Diagnostic only. Distinct valid inputs can intentionally render the ' +
+        'same geometry, including long-form grammar aliases and reset frames ' +
+        'without predecessors.',
+      rasterDuplicatePolicy:
+        'Diagnostic only. Raster hashes can differ because labels differ and ' +
+        'can match when distinct valid inputs are visually equivalent.',
     },
     summary: {
       diagramFamilyCount: familyReports.length,
@@ -234,10 +527,20 @@ function runFromEnvironment() {
         `semantic structures ` +
         `${counts.uniqueNormalizedSemanticStructures}/${casesPerKind}; ` +
         `normalized sources ${counts.uniqueNormalizedSources}/${casesPerKind}; ` +
+        `structural profiles ` +
+        `${counts.uniqueStructuralProfiles}/${casesPerKind}; ` +
         `Native manifests ` +
         `${counts.uniqueNativeManifestFingerprints}/${casesPerKind}; ` +
         `Native PNGs ${counts.uniqueNativePngs}/${casesPerKind}; ` +
         `Official PNGs ${counts.uniqueOfficialPngs}/${casesPerKind}`,
+    );
+    console.log(
+      `${family.kind}: input dimensions ` +
+        `${family.inputSpaceCoverage.counts.namedDimensions}/` +
+        `${requiredInputDimensionCount}; vectors ` +
+        `${family.inputSpaceCoverage.counts.uniqueDimensionVectors}/` +
+        `${casesPerKind}; pair matrices ` +
+        `${family.inputSpaceCoverage.counts.dimensionPairs}`,
     );
   }
   console.log(

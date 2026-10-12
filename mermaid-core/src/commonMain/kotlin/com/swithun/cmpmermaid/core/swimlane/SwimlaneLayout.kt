@@ -5,6 +5,7 @@ import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.ScenePoint
 import com.swithun.cmpmermaid.core.SceneRect
+import com.swithun.cmpmermaid.core.SceneShapeKind
 import com.swithun.cmpmermaid.core.SceneSize
 import com.swithun.cmpmermaid.core.flowchart.FlowDirection
 import com.swithun.cmpmermaid.core.flowchart.FlowEdge
@@ -99,6 +100,17 @@ internal object SwimlaneLayout {
         )
         applyDirection(proper.graph, routed, document.direction)
         clipAndSimplifyEdges(proper.graph, routed, nodeShapeLayouts)
+        adjustLaneTitleBands(
+            graph = proper.graph,
+            routes = routed,
+            direction = document.direction,
+        )
+        val labelAnchors = anchorEdgeLabels(
+            graph = proper.graph,
+            routes = routed,
+            edgeLabelSizes = edgeLabelSizes,
+            direction = document.direction,
+        )
 
         val nodeBounds = document.nodes.keys.associateWith { id ->
             proper.graph.nodes.getValue(id).bounds()
@@ -106,11 +118,11 @@ internal object SwimlaneLayout {
         val subgraphBounds = document.subgraphs.mapNotNull { subgraph ->
             proper.graph.nodes[subgraph.id]?.bounds()?.let { subgraph.id to it }
         }.toMap(linkedMapOf())
-        val edges = routed.mapValues { (_, route) ->
+        val edges = routed.mapValues { (index, route) ->
             val points = route.points.removeAdjacentDuplicates()
             FlowRoutedEdge(
                 points = points,
-                labelAnchor = points.halfLengthPoint(),
+                labelAnchor = labelAnchors[index] ?: points.halfLengthPoint(),
                 curveOverride = "rounded",
             )
         }
@@ -605,6 +617,7 @@ internal object SwimlaneLayout {
                     graph.nodes.getValue(id).apply {
                         this.x = x + this.width / 2f
                         this.y = yOffset + layerHeight / 2f
+                        this.positioned = true
                         x += this.width + nodeGap
                     }
                 }
@@ -618,7 +631,9 @@ internal object SwimlaneLayout {
             val target = graph.nodes[first.originalTo] ?: return@forEach
             val midX = round((source.x + target.x) / 2f)
             chain.flatMap { listOf(it.from, it.to) }.distinct().forEach { id ->
-                graph.nodes[id]?.takeIf(WorkNode::isDummy)?.x = midX
+                graph.nodes[id]
+                    ?.takeIf { node -> node.isDummy && !node.isEdgeLabel }
+                    ?.x = midX
             }
         }
     }
@@ -628,14 +643,20 @@ internal object SwimlaneLayout {
         graph: WorkGraph,
         document: FlowchartDocument,
     ) {
-        val groups = document.subgraphs.associateBy(FlowSubgraph::id)
-        val depths = groups.values.associate { group ->
-            group.id to generateSequence(group.parentId) { groups[it]?.parentId }.count()
-        }
-        groups.values.sortedByDescending { depths[it.id] ?: 0 }.forEach { group ->
+        val topLevelGroups = mutableListOf<WorkNode>()
+        val capturedBounds = linkedMapOf<String, SceneRect>()
+        document.subgraphs.forEach { group ->
+            val workGroup = graph.nodes.getValue(group.id)
+            if (group.parentId == null) {
+                topLevelGroups += workGroup
+            }
             val children = graph.nodes.values.filter { it.parentId == group.id }
             val bounds = boundsOf(children) ?: return@forEach
-            graph.nodes.getValue(group.id).setBounds(
+            // Mermaid.js 12.0.0: swimlanes/helpers.ts ->
+            // writeBackToLayoutData. Bounds are captured in source order, so
+            // an outer group keeps the current size of a nested group.
+            capturedBounds[group.id] = bounds
+            workGroup.setBounds(
                 bounds.expand(
                     horizontal = if (group.parentId == null) {
                         max(group.padding, 20f)
@@ -647,23 +668,24 @@ internal object SwimlaneLayout {
             )
         }
 
-        val lanes = sourceLaneOrder(document).mapNotNull(graph.nodes::get)
-        val validLanes = lanes.filter { lane -> graph.nodes.values.any { it.parentId == lane.id } }
-        val contentBounds = validLanes.mapNotNull { lane ->
-            boundsOf(graph.nodes.values.filter { it.parentId == lane.id })?.let { lane to it }
+        val contentBounds = topLevelGroups.mapNotNull { lane ->
+            capturedBounds[lane.id]?.let { lane to it }
         }
         if (contentBounds.isEmpty()) return
         val globalTop = contentBounds.minOf { it.second.top }
         val globalBottom = contentBounds.maxOf { it.second.bottom }
-        val maxPadding = validLanes.maxOfOrNull(WorkNode::padding) ?: 20f
+        val maxPadding = topLevelGroups.maxOfOrNull(WorkNode::padding) ?: 20f
         val verticalMargin = max(maxPadding, 36f)
         val laneHeight = globalBottom - globalTop + verticalMargin * 2f
         val centerY = (globalTop + globalBottom) / 2f
 
-        contentBounds.forEach { (lane, bounds) ->
+        topLevelGroups.forEach { lane ->
             lane.y = centerY
             lane.height = laneHeight
             lane.contentTop = globalTop
+            lane.positioned = true
+        }
+        contentBounds.forEach { (lane, bounds) ->
             lane.width = bounds.width + max(lane.padding, 20f) * 2f
             lane.x = bounds.center.x
         }
@@ -715,7 +737,13 @@ internal object SwimlaneLayout {
                 abs(to.x - from.x) + abs(to.y - from.y)
             }.thenBy { it },
         )
-        val sides = assignPortSides(document.edges, graph)
+        val sides = assignPortSides(
+            edges = document.edges,
+            graph = graph,
+            diamondNodeIds = document.nodes.values
+                .filter { node -> node.shape == SceneShapeKind.Diamond }
+                .mapTo(mutableSetOf()) { node -> node.id },
+        )
         val portOffsets = assignPortOffsets(document.edges, graph, sides)
         val routed = linkedMapOf<Int, MutableRoute>()
         routeOrder.forEach { index ->
@@ -759,15 +787,90 @@ internal object SwimlaneLayout {
     private fun assignPortSides(
         edges: List<FlowEdge>,
         graph: WorkGraph,
+        diamondNodeIds: Set<String>,
     ): Map<Int, EndpointSides> {
         val result = linkedMapOf<Int, EndpointSides>()
+        val sideInfoByIndex = linkedMapOf<Int, EdgeSideInfo>()
         edges.forEachIndexed { index, edge ->
             if (edge.from == edge.to) return@forEachIndexed
             val source = graph.nodes[edge.from] ?: return@forEachIndexed
             val target = graph.nodes[edge.to] ?: return@forEachIndexed
-            result[index] = EndpointSides(
+            val dx = target.x - source.x
+            val dy = target.y - source.y
+            sideInfoByIndex[index] = EdgeSideInfo(
+                edgeIndex = index,
+                sourceId = edge.from,
+                targetId = edge.to,
                 source = chooseSide(source, target.center(), Side.Bottom),
-                target = chooseSide(target, source.center(), Side.Top),
+                target = chooseSide(target, source.center(), Side.Bottom),
+                absoluteDx = abs(dx),
+                absoluteDy = abs(dy),
+                dxSign = dx.compareTo(0f),
+                dySign = dy.compareTo(0f),
+            )
+        }
+
+        // Mermaid.js 12.0.0: swimlanes/orthogonalRouter/router.ts ->
+        // Step 6.2 sibling side-splitting. Keep the strongest directional
+        // preference on its primary side and move weaker siblings only when
+        // their secondary side has strictly less committed load.
+        val sideLoad = mutableMapOf<Pair<String, Side>, Int>()
+        sideInfoByIndex.values.forEach { info ->
+            val sourceKey = info.sourceId to info.source
+            val targetKey = info.targetId to info.target
+            sideLoad[sourceKey] = (sideLoad[sourceKey] ?: 0) + 1
+            sideLoad[targetKey] = (sideLoad[targetKey] ?: 0) + 1
+        }
+        sideInfoByIndex.values
+            .groupBy { info -> info.sourceId to info.source }
+            .values
+            .filter { group -> group.size >= 2 }
+            .forEach { group ->
+                val ordered = group.sortedWith(
+                    compareByDescending<EdgeSideInfo>(EdgeSideInfo::preferenceStrength)
+                        .thenBy(EdgeSideInfo::edgeIndex),
+                )
+                ordered.drop(1).forEach { info ->
+                    val secondary = info.secondarySide()
+                    val primaryKey = info.sourceId to info.source
+                    val secondaryKey = info.sourceId to secondary
+                    val primaryLoad = sideLoad[primaryKey] ?: 0
+                    val secondaryLoad = sideLoad[secondaryKey] ?: 0
+                    if (secondaryLoad >= primaryLoad) return@forEach
+                    sideLoad[primaryKey] = primaryLoad - 1
+                    sideLoad[secondaryKey] = secondaryLoad + 1
+                    info.source = secondary
+                }
+            }
+
+        // Mermaid.js 12.0.0: swimlanes/orthogonalRouter/router.ts ->
+        // Step 6.2b bimodal in/out de-collision. A diamond side collapses
+        // to a narrow pin, so move an outgoing edge to a free secondary
+        // side when an incoming edge already occupies its primary side.
+        val incomingSidesByNode = mutableMapOf<String, MutableSet<Side>>()
+        sideInfoByIndex.values.forEach { info ->
+            incomingSidesByNode
+                .getOrPut(info.targetId, ::mutableSetOf)
+                .add(info.target)
+        }
+        sideInfoByIndex.values.forEach { info ->
+            if (info.sourceId !in diamondNodeIds) return@forEach
+            val incomingSides = incomingSidesByNode[info.sourceId] ?: return@forEach
+            if (info.source !in incomingSides) return@forEach
+            val secondary = info.secondarySide()
+            val secondaryKey = info.sourceId to secondary
+            if (secondary in incomingSides || (sideLoad[secondaryKey] ?: 0) > 0) {
+                return@forEach
+            }
+            val primaryKey = info.sourceId to info.source
+            sideLoad[primaryKey] = max(0, (sideLoad[primaryKey] ?: 0) - 1)
+            sideLoad[secondaryKey] = 1
+            info.source = secondary
+        }
+        sideInfoByIndex.forEach { (index, info) ->
+            result[index] = EndpointSides(
+                source = info.source,
+                target = info.target,
             )
         }
         return result
@@ -1135,6 +1238,367 @@ internal object SwimlaneLayout {
         }
     }
 
+    // Mermaid.js 12.0.0:
+    // swimlanes/direction/materializedGeometry.ts ->
+    // liftTopLaneTitleBandsAboveRails.
+    private fun adjustLaneTitleBands(
+        graph: WorkGraph,
+        routes: Map<Int, MutableRoute>,
+        direction: FlowDirection,
+    ) {
+        if (direction != FlowDirection.TopToBottom) return
+        repeat(2) {
+            liftTopLaneTitleBandsAboveRails(graph, routes)
+        }
+    }
+
+    private fun liftTopLaneTitleBandsAboveRails(
+        graph: WorkGraph,
+        routes: Map<Int, MutableRoute>,
+    ) {
+        val lanes = graph.nodes.values.mapNotNull { node ->
+            if (!node.isGroup || node.parentId != null) return@mapNotNull null
+            val contentTop = node.contentTop ?: return@mapNotNull null
+            val bounds = node.bounds()
+            val headerBottom = min(contentTop, bounds.bottom)
+            val titleHeight = min(
+                TopLaneTitleBandHeight,
+                max(0f, headerBottom - bounds.top),
+            )
+            if (titleHeight <= 0f) return@mapNotNull null
+            node to SceneRect(
+                left = bounds.left,
+                top = bounds.top,
+                right = bounds.right,
+                bottom = bounds.top + titleHeight,
+            )
+        }
+        if (lanes.isEmpty()) return
+
+        var topDelta = 0f
+        routes.values.forEach { route ->
+            route.points.removeAdjacentDuplicates().zipWithNext { first, second ->
+                if (abs(first.y - second.y) > MaterializedGeometryEpsilon) {
+                    return@zipWithNext
+                }
+                lanes.forEach { (_, title) ->
+                    val y = first.y
+                    if (
+                        y > title.top + MaterializedGeometryEpsilon &&
+                        y < title.bottom - MaterializedGeometryEpsilon &&
+                        overlapLength(first.x, second.x, title.left, title.right) >=
+                        MinimumSharedTitleSpan
+                    ) {
+                        topDelta = max(topDelta, title.bottom - y + TitleRailClearance)
+                    }
+                }
+            }
+        }
+        if (topDelta <= MaterializedGeometryEpsilon) return
+
+        lanes.forEach { (lane, _) ->
+            lane.y -= topDelta / 2f
+            lane.height += topDelta
+        }
+    }
+
+    private fun overlapLength(
+        firstStart: Float,
+        firstEnd: Float,
+        secondStart: Float,
+        secondEnd: Float,
+    ): Float = max(
+        0f,
+        min(max(firstStart, firstEnd), max(secondStart, secondEnd)) -
+            max(min(firstStart, firstEnd), min(secondStart, secondEnd)),
+    )
+
+    // Mermaid.js 12.0.0: swimlanes/direction/labelAnchoring.ts ->
+    // anchorLabelsToPolyline.
+    private fun anchorEdgeLabels(
+        graph: WorkGraph,
+        routes: Map<Int, MutableRoute>,
+        edgeLabelSizes: Map<Int, SceneSize>,
+        direction: FlowDirection,
+    ): Map<Int, ScenePoint> {
+        val edgeSegments = routes.flatMap { (edgeIndex, route) ->
+            route.points.zipWithNext { first, second ->
+                LabelSegmentRef(edgeIndex, first, second)
+            }
+        }
+        val realNodeBounds = graph.nodes.values
+            .filter { node -> !node.isGroup && !node.isDummy }
+            .map { node -> node.bounds() }
+        val laneBounds = graph.nodes.values
+            .filter { node -> node.isGroup && node.parentId == null }
+            .map { node -> node.id to node.bounds() }
+        // Mermaid.js runs label anchoring after its complete materialized-geometry
+        // pipeline. The Kotlin port currently translates a smaller routing subset,
+        // so preserve the same final no-title-overlap invariant explicitly.
+        val laneTitleBounds = graph.nodes.values
+            .filter { node -> node.isGroup && node.parentId == null }
+            .mapNotNull { node ->
+                val bounds = node.bounds()
+                when (direction) {
+                    FlowDirection.TopToBottom -> SceneRect(
+                        left = bounds.left,
+                        top = bounds.top,
+                        right = bounds.right,
+                        bottom = min(bounds.bottom, bounds.top + TopLaneTitleBandHeight),
+                    )
+                    FlowDirection.LeftToRight -> SceneRect(
+                        left = bounds.left,
+                        top = bounds.top,
+                        right = min(bounds.right, bounds.left + LeftLaneTitleBandWidth),
+                        bottom = bounds.bottom,
+                    )
+                    FlowDirection.BottomToTop,
+                    FlowDirection.RightToLeft,
+                    -> null
+                }
+            }
+        val placedLabelBounds = mutableMapOf<Int, SceneRect>()
+        val result = mutableMapOf<Int, ScenePoint>()
+
+        routes.keys.sorted().forEach { edgeIndex ->
+            val size = edgeLabelSizes[edgeIndex] ?: return@forEach
+            if (size.width <= 0f || size.height <= 0f) return@forEach
+            val points = routes[edgeIndex]?.points.orEmpty().removeAdjacentDuplicates()
+            if (points.size < 2) return@forEach
+
+            val segments = points.zipWithNext().mapIndexedNotNull { index, (first, second) ->
+                val dx = abs(second.x - first.x)
+                val dy = abs(second.y - first.y)
+                if (dx < LabelEpsilon && dy < LabelEpsilon) {
+                    null
+                } else if (dx >= LabelEpsilon && dy >= LabelEpsilon) {
+                    null
+                } else {
+                    LabelSegmentCandidate(
+                        index = index,
+                        length = dx + dy,
+                        orientation = if (dx >= LabelEpsilon) {
+                            LabelOrientation.Horizontal
+                        } else {
+                            LabelOrientation.Vertical
+                        },
+                    )
+                }
+            }
+            if (segments.isEmpty()) return@forEach
+
+            val middleSegments = if (segments.size >= 3) {
+                segments.filter { segment ->
+                    segment.index > 0 && segment.index < segments.size - 1
+                }
+            } else {
+                segments
+            }
+            val basePool = middleSegments.ifEmpty { segments }
+            val labelLongAxis = if (size.width >= size.height) {
+                LabelOrientation.Horizontal
+            } else {
+                LabelOrientation.Vertical
+            }
+            fun ranked(pool: List<LabelSegmentCandidate>): List<LabelSegmentCandidate> =
+                pool.sortedWith { first, second ->
+                    val firstMatches = first.orientation == labelLongAxis
+                    val secondMatches = second.orientation == labelLongAxis
+                    if (firstMatches != secondMatches) {
+                        if (firstMatches) -1 else 1
+                    } else {
+                        val firstExtent = if (first.orientation == LabelOrientation.Horizontal) {
+                            size.width
+                        } else {
+                            size.height
+                        }
+                        val secondExtent = if (second.orientation == LabelOrientation.Horizontal) {
+                            size.width
+                        } else {
+                            size.height
+                        }
+                        val firstFits = first.length >= firstExtent + 2f
+                        val secondFits = second.length >= secondExtent + 2f
+                        if (firstFits != secondFits) {
+                            if (firstFits) -1 else 1
+                        } else {
+                            second.length.compareTo(first.length)
+                        }
+                    }
+                }
+
+            val firstVisible = segments.first()
+            val lastVisible = segments.last()
+
+            fun anchorAt(
+                segment: LabelSegmentCandidate,
+                fraction: Float,
+            ): ScenePoint {
+                val first = points[segment.index]
+                val second = points[segment.index + 1]
+                return ScenePoint(
+                    x = first.x + (second.x - first.x) * fraction,
+                    y = first.y + (second.y - first.y) * fraction,
+                )
+            }
+
+            fun placementFor(anchor: ScenePoint): LabelPlacement? {
+                val centered = labelBounds(anchor, size)
+                val centeredLane = laneBounds.firstOrNull { (_, bounds) ->
+                    bounds.contains(centered)
+                }
+                if (centeredLane != null) {
+                    return LabelPlacement(centeredLane.first, anchor, centered)
+                }
+
+                val containingLane = laneBounds.firstOrNull { (_, bounds) ->
+                    bounds.containsInclusive(anchor)
+                } ?: return null
+                val bounds = containingLane.second
+                val minimumX = bounds.left + size.width / 2f + LabelLaneMargin
+                val maximumX = bounds.right - size.width / 2f - LabelLaneMargin
+                val minimumY = bounds.top + size.height / 2f + LabelLaneMargin
+                val maximumY = bounds.bottom - size.height / 2f - LabelLaneMargin
+                if (minimumX > maximumX || minimumY > maximumY) return null
+                val clamped = ScenePoint(
+                    x = anchor.x.coerceIn(minimumX, maximumX),
+                    y = anchor.y.coerceIn(minimumY, maximumY),
+                )
+                val clampedBounds = labelBounds(clamped, size)
+                return if (clampedBounds.containsInclusive(anchor)) {
+                    LabelPlacement(containingLane.first, clamped, clampedBounds)
+                } else {
+                    null
+                }
+            }
+
+            fun clearsTerminalEndpoints(
+                segment: LabelSegmentCandidate,
+                anchor: ScenePoint,
+            ): Boolean {
+                val halfExtent = if (segment.orientation == LabelOrientation.Horizontal) {
+                    size.width / 2f
+                } else {
+                    size.height / 2f
+                }
+                val requiredDistance = halfExtent + LabelEndpointClearance
+                fun distance(point: ScenePoint): Float =
+                    if (segment.orientation == LabelOrientation.Horizontal) {
+                        abs(anchor.x - point.x)
+                    } else {
+                        abs(anchor.y - point.y)
+                    }
+                if (
+                    segment == firstVisible &&
+                    distance(points[segment.index]) + LabelEpsilon < requiredDistance
+                ) {
+                    return false
+                }
+                if (
+                    segment == lastVisible &&
+                    distance(points[segment.index + 1]) + LabelEpsilon < requiredDistance
+                ) {
+                    return false
+                }
+                return true
+            }
+
+            fun overlapsForeignGeometry(bounds: SceneRect): Boolean {
+                val buffered = bounds.expand(
+                    horizontal = LabelPlacementBuffer,
+                    vertical = LabelPlacementBuffer,
+                )
+                if (realNodeBounds.any { bounds -> buffered.overlaps(bounds) }) return true
+                if (laneTitleBounds.any { title -> buffered.overlaps(title) }) return true
+                return edgeSegments.any { segment ->
+                    segment.edgeIndex != edgeIndex &&
+                        segment.intersects(buffered)
+                }
+            }
+
+            fun isSafe(
+                placement: LabelPlacement,
+                allowForeignEdgeOverlap: Boolean = false,
+            ): Boolean {
+                if (labelOverlapsOwnMarker(placement.bounds, points)) return false
+                if (placedLabelBounds.any { (placedIndex, bounds) ->
+                        placedIndex != edgeIndex && placement.bounds.overlaps(bounds)
+                    }
+                ) {
+                    return false
+                }
+                val buffered = placement.bounds.expand(
+                    horizontal = LabelPlacementBuffer,
+                    vertical = LabelPlacementBuffer,
+                )
+                if (realNodeBounds.any { bounds -> buffered.overlaps(bounds) }) return false
+                if (laneTitleBounds.any { title -> buffered.overlaps(title) }) return false
+                return allowForeignEdgeOverlap || edgeSegments.none { segment ->
+                    segment.edgeIndex != edgeIndex &&
+                        segment.intersects(buffered)
+                }
+            }
+
+            fun tryPool(pool: List<LabelSegmentCandidate>): LabelPlacement? {
+                ranked(pool).forEach { segment ->
+                    LabelAnchorFractions.forEach { fraction ->
+                        val anchor = anchorAt(segment, fraction)
+                        if (!clearsTerminalEndpoints(segment, anchor)) return@forEach
+                        val placement = placementFor(anchor) ?: return@forEach
+                        if (
+                            !labelOverlapsOwnMarker(placement.bounds, points) &&
+                            placedLabelBounds.values.none { bounds ->
+                                placement.bounds.overlaps(bounds)
+                            } &&
+                            !overlapsForeignGeometry(placement.bounds)
+                        ) {
+                            return placement
+                        }
+                    }
+                }
+                return null
+            }
+
+            fun fallback(
+                requireEndpointClearance: Boolean,
+                allowForeignEdgeOverlap: Boolean = false,
+            ): LabelPlacement? {
+                ranked(segments).forEach { segment ->
+                    val anchor = anchorAt(segment, 0.5f)
+                    if (
+                        requireEndpointClearance &&
+                        !clearsTerminalEndpoints(segment, anchor)
+                    ) {
+                        return@forEach
+                    }
+                    val placement = placementFor(anchor) ?: return@forEach
+                    if (isSafe(placement, allowForeignEdgeOverlap)) return placement
+                }
+                return null
+            }
+
+            val chosen = tryPool(basePool)
+                ?: (
+                    if (basePool.size < segments.size) {
+                        tryPool(segments)
+                    } else {
+                        null
+                    }
+                    )
+                ?: fallback(requireEndpointClearance = true)
+                ?: fallback(requireEndpointClearance = false)
+                ?: fallback(
+                    requireEndpointClearance = false,
+                    allowForeignEdgeOverlap = true,
+                )
+            if (chosen != null) {
+                result[edgeIndex] = chosen.anchor
+                placedLabelBounds[edgeIndex] = chosen.bounds
+            }
+        }
+        return result
+    }
+
     private fun optimizeLaneOrder(
         graph: WorkGraph,
         document: FlowchartDocument,
@@ -1256,8 +1720,9 @@ internal object SwimlaneLayout {
         if (values.isEmpty()) Double.POSITIVE_INFINITY else values.average()
 
     private fun boundsOf(nodes: Collection<WorkNode>): SceneRect? {
-        if (nodes.isEmpty()) return null
-        return nodes.map(WorkNode::bounds).reduce(SceneRect::union)
+        val positioned = nodes.filter(WorkNode::positioned)
+        if (positioned.isEmpty()) return null
+        return positioned.map(WorkNode::bounds).reduce(SceneRect::union)
     }
 
     private fun SceneRect.expand(
@@ -1272,6 +1737,101 @@ internal object SwimlaneLayout {
 
     private fun SceneRect.containsStrictly(point: ScenePoint): Boolean =
         point.x > left && point.x < right && point.y > top && point.y < bottom
+
+    private fun SceneRect.containsInclusive(point: ScenePoint): Boolean =
+        point.x >= left - LabelEpsilon &&
+            point.x <= right + LabelEpsilon &&
+            point.y >= top - LabelEpsilon &&
+            point.y <= bottom + LabelEpsilon
+
+    private fun SceneRect.contains(other: SceneRect): Boolean =
+        other.left >= left &&
+            other.right <= right &&
+            other.top >= top &&
+            other.bottom <= bottom
+
+    private fun SceneRect.overlaps(other: SceneRect): Boolean =
+        left < other.right &&
+            right > other.left &&
+            top < other.bottom &&
+            bottom > other.top
+
+    private fun labelBounds(
+        center: ScenePoint,
+        size: SceneSize,
+    ): SceneRect = SceneRect(
+        left = center.x - size.width / 2f,
+        top = center.y - size.height / 2f,
+        right = center.x + size.width / 2f,
+        bottom = center.y + size.height / 2f,
+    )
+
+    private fun LabelSegmentRef.intersects(bounds: SceneRect): Boolean {
+        val minimumX = min(first.x, second.x)
+        val maximumX = max(first.x, second.x)
+        val minimumY = min(first.y, second.y)
+        val maximumY = max(first.y, second.y)
+        return if (abs(first.y - second.y) < LabelEpsilon) {
+            first.y >= bounds.top &&
+                first.y <= bounds.bottom &&
+                maximumX >= bounds.left &&
+                minimumX <= bounds.right
+        } else if (abs(first.x - second.x) < LabelEpsilon) {
+            first.x >= bounds.left &&
+                first.x <= bounds.right &&
+                maximumY >= bounds.top &&
+                minimumY <= bounds.bottom
+        } else {
+            false
+        }
+    }
+
+    private fun labelOverlapsOwnMarker(
+        bounds: SceneRect,
+        points: List<ScenePoint>,
+    ): Boolean =
+        markerClearanceBounds(points, atStart = true)?.let { marker ->
+            bounds.overlaps(marker)
+        } == true ||
+            markerClearanceBounds(points, atStart = false)?.let { marker ->
+                bounds.overlaps(marker)
+            } == true
+
+    private fun markerClearanceBounds(
+        points: List<ScenePoint>,
+        atStart: Boolean,
+    ): SceneRect? {
+        if (points.size < 2) return null
+        val tip = if (atStart) points.first() else points.last()
+        val inner = if (atStart) points[1] else points[points.lastIndex - 1]
+        val dx = inner.x - tip.x
+        val dy = inner.y - tip.y
+        if (abs(dx) + abs(dy) < LabelEpsilon) return null
+        return if (abs(dy) <= LabelEpsilon) {
+            val endX = tip.x + (if (dx < 0f) -1f else 1f) * MarkerClearanceLength
+            SceneRect(
+                left = min(tip.x, endX),
+                top = tip.y - MarkerClearanceHalfWidth,
+                right = max(tip.x, endX),
+                bottom = tip.y + MarkerClearanceHalfWidth,
+            )
+        } else if (abs(dx) <= LabelEpsilon) {
+            val endY = tip.y + (if (dy < 0f) -1f else 1f) * MarkerClearanceLength
+            SceneRect(
+                left = tip.x - MarkerClearanceHalfWidth,
+                top = min(tip.y, endY),
+                right = tip.x + MarkerClearanceHalfWidth,
+                bottom = max(tip.y, endY),
+            )
+        } else {
+            SceneRect(
+                left = min(tip.x, inner.x),
+                top = min(tip.y, inner.y),
+                right = max(tip.x, inner.x),
+                bottom = max(tip.y, inner.y),
+            )
+        }
+    }
 
     private fun ScenePoint.move(side: Side, distance: Float): ScenePoint = when (side) {
         Side.Top -> copy(y = y - distance)
@@ -1425,6 +1985,7 @@ internal object SwimlaneLayout {
         var x: Float = 0f,
         var y: Float = 0f,
         var contentTop: Float? = null,
+        var positioned: Boolean = false,
     ) {
         fun bounds(): SceneRect = SceneRect(
             left = x - width / 2f,
@@ -1440,6 +2001,7 @@ internal object SwimlaneLayout {
             y = bounds.center.y
             width = bounds.width
             height = bounds.height
+            positioned = true
         }
     }
 
@@ -1482,10 +2044,63 @@ internal object SwimlaneLayout {
         val bounds: SceneRect,
     )
 
+    private data class LabelSegmentRef(
+        val edgeIndex: Int,
+        val first: ScenePoint,
+        val second: ScenePoint,
+    )
+
+    private data class LabelSegmentCandidate(
+        val index: Int,
+        val length: Float,
+        val orientation: LabelOrientation,
+    )
+
+    private data class LabelPlacement(
+        val laneId: String,
+        val anchor: ScenePoint,
+        val bounds: SceneRect,
+    )
+
+    private enum class LabelOrientation {
+        Horizontal,
+        Vertical,
+    }
+
     private data class EndpointSides(
         val source: Side,
         val target: Side,
     )
+
+    private data class EdgeSideInfo(
+        val edgeIndex: Int,
+        val sourceId: String,
+        val targetId: String,
+        var source: Side,
+        val target: Side,
+        val absoluteDx: Float,
+        val absoluteDy: Float,
+        val dxSign: Int,
+        val dySign: Int,
+    ) {
+        fun preferenceStrength(): Float = when (source) {
+            Side.Top,
+            Side.Bottom,
+            -> if (absoluteDx == 0f) Float.POSITIVE_INFINITY else absoluteDy / absoluteDx
+            Side.Left,
+            Side.Right,
+            -> if (absoluteDy == 0f) Float.POSITIVE_INFINITY else absoluteDx / absoluteDy
+        }
+
+        fun secondarySide(): Side = when (source) {
+            Side.Top,
+            Side.Bottom,
+            -> if (dxSign >= 0) Side.Right else Side.Left
+            Side.Left,
+            Side.Right,
+            -> if (dySign >= 0) Side.Bottom else Side.Top
+        }
+    }
 
     private data class PortGroup(
         val nodeId: String,
@@ -1517,4 +2132,26 @@ internal object SwimlaneLayout {
     }
 
     private const val Epsilon = 0.000001f
+    private const val LabelEpsilon = 0.001f
+    private const val LabelPlacementBuffer = 3f
+    private const val LabelLaneMargin = 1f
+    private const val LabelEndpointClearance = 12f
+    private const val MarkerClearanceLength = 10f
+    private const val MarkerClearanceHalfWidth = 7f
+    private const val TopLaneTitleBandHeight = 21f
+    private const val LeftLaneTitleBandWidth = 36f
+    private const val TitleRailClearance = 4f
+    private const val MinimumSharedTitleSpan = 8f
+    private const val MaterializedGeometryEpsilon = 0.001f
+    private val LabelAnchorFractions = listOf(
+        0.5f,
+        0.25f,
+        0.75f,
+        0.05f,
+        0.95f,
+        0.15f,
+        0.85f,
+        0.1f,
+        0.9f,
+    )
 }

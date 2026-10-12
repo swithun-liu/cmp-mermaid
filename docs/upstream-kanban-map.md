@@ -50,5 +50,5 @@
 4. Regenerate the 3 official documentation fixtures and both production
    corpora.
 5. Re-run focused tests, 256-sample deterministic stress, 13-case production
-   detail/geometry capture, and 256-case structural visual parity.
+   detail/geometry capture, and the 256-case full-factorial input matrix.
 6. Review all 16 contact sheets before changing the family status.

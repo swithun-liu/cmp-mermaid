@@ -58,7 +58,7 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   [detail](assets/stability-report/mindmap-production-detail.json) and
   [geometry](assets/stability-report/mindmap-production-geometry.json) reports
   preserve the audit results.
-- The fresh 256-case structural Native/Official audit reports `161 pass / 95 review / 0 fail`; geometry has 0 hard failures with width `0.878-1.464`, height `0.798-1.442`, and foreground ink `0.745-1.336`. Four CoSE-Bilkent width/height ratios remain review-only; final large-tree coordinate identity is not claimed.
+- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.023-1.078`, height `0.826-1.108`, and foreground ink `0.934-1.120`.
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
 - The CoSE-Bilkent algorithm gate uses identical fixed node dimensions and

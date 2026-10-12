@@ -60,7 +60,7 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   failures, configuration precedence, entity preservation, and portable text
   measurement constraints pass on JVM.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 structurally distinct same-source cases against Mermaid.js `12.0.0`.
+  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry passes 13/13. Its detail result is
   `12 pass / 1 review / 0 fail`; the root-only review is the Native manifest's
   zero-length spine, which Official omits from visible geometry.

@@ -52,5 +52,5 @@
 - Geometry, scene rendering, and cached arrow primitive paint:
   `ZenUmlLayoutTest.kt`
 - Official documentation fixtures: `OfficialZenUmlDocumentationTest.kt`
-- Production, determinism, themes, and 256-case Native structural matrix:
+- Production, determinism, themes, and 256-case Native full-factorial input matrix:
   `ProductionCorpusTest.kt`

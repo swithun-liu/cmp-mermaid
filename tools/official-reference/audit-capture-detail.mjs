@@ -12,6 +12,7 @@ import {
   compareRasterFeatures,
   manifestViewportBackground,
 } from './detail-audit-core.mjs';
+import { classifyDetailFindings } from './detail-audit-policy.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
@@ -92,7 +93,10 @@ try {
       manifestViewportBackground(officialManifest),
     );
     const raster = compareRasterFeatures(nativeRaster, officialRaster);
-    const findings = [...manifest.findings, ...raster.findings];
+    const findings = [
+      ...classifyDetailFindings(manifest.findings, auditCase),
+      ...raster.findings,
+    ];
     const status = findings.some((finding) => finding.severity === 'error')
       ? 'fail'
       : findings.length > 0

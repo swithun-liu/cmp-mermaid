@@ -6,13 +6,12 @@ blueprints and
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
-The matrix contains 256 explicitly cataloged business scenarios per supported
-diagram type. The catalog contains 256 unique scenario names, codes, and
-workflow descriptions; it is not generated from a reused seed or a Cartesian
-product of generic profiles. Every scenario has a unique blueprint ID, and
-each family retains 256 unique Mermaid structures after business labels,
-titles, and scenario names are normalized away. Ordinal numbers, IDs, hashes,
-and label text are not uniqueness dimensions.
+Each diagram family defines eight named, family-specific binary input
+dimensions spanning syntax, topology, data, layout, and style as applicable.
+The matrix exercises the complete 2^8 input space: each option appears in 128
+cases, and every option pair for any two dimensions appears in 64 cases.
+Business titles only make cases readable; ordinal numbers, IDs, hashes, and
+label text are not coverage dimensions.
 
 Case IDs, blueprint IDs, normalized semantic signatures, source hashes, image
 hashes, and capture sizes are recorded in
@@ -21,10 +20,13 @@ Corpus accounting is published separately in
 [`visual-structure-corpus-metadata.json`](visual-structure-corpus-metadata.json).
 The mandatory
 [`visual-scenario-duplicate-audit.json`](visual-scenario-duplicate-audit.json)
-reports 256/256 unique values for every family across blueprint IDs,
-normalized semantic structures, label-normalized Mermaid sources,
-text-and-ID-stripped Native manifest fingerprints, Native PNGs, and Official
-PNGs. Any duplicate in any dimension fails the audit.
+verifies all 256 dimension vectors, balanced single-dimension and pairwise
+coverage, 256/256 unique blueprint IDs, normalized semantic structures, and
+label-normalized Mermaid sources for every family. It also publishes
+family-specific structural-profile counts, text-and-ID-stripped Native
+structure counts, and Native/Official PNG hash counts. Rendered counts are
+diagnostics rather than hard uniqueness requirements because distinct legal
+inputs can intentionally produce equivalent geometry.
 
 <details>
 <summary><strong>Flowchart - 256 independent Native/Official scenarios</strong></summary>

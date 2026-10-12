@@ -41,7 +41,7 @@ change in a later upstream release.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.011-1.169`, `0.975-1.062`, and `0.930-1.050`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
-- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.010-1.160`, height `0.956-1.027`, and foreground ink `0.938-1.086`.
+- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.002-1.061`, height `0.977-1.042`, and foreground ink `0.912-1.057`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved hierarchy, connector, icon, highlight, description,
   text, clipping, overlap, or paint-order defect remains.

@@ -580,6 +580,40 @@ test('detects a declared marker hidden beneath a later opaque node', () => {
   );
 });
 
+test('keeps moderate marker-anchor depth differences in review', () => {
+  const native = manifest([
+    {
+      ...path(0, 'Solid', []),
+      arrowEnd: 'Triangle',
+      markerEndPoint: { x: 62, y: 50 },
+    },
+    {
+      ...shape('target-node', 1),
+      bounds: { x: 60, y: 30, width: 30, height: 40 },
+    },
+  ]);
+  const official = manifest([
+    {
+      ...path(0, 'Solid', []),
+      arrowEnd: 'Marker',
+      markerEndPoint: { x: 60, y: 50 },
+    },
+    {
+      ...shape('target-node', 1),
+      bounds: { x: 60, y: 30, width: 30, height: 40 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'review');
+  assert.ok(
+    result.findings.some((finding) =>
+      finding.code === 'marker-occlusion-depth'
+    ),
+  );
+});
+
 test('does not treat an ellipse corner as opaque marker coverage', () => {
   const marker = {
     ...path(0, 'Solid', []),

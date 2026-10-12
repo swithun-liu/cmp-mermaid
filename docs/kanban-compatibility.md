@@ -65,7 +65,7 @@ test.
   `13 pass / 0 review / 0 fail` and the geometry gate. Their Native/Official
   ratios are width `1.047-1.116`, height `0.879-1.123`, and foreground ink
   `1.018-1.206`.
-- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.036-1.089`, height `0.894-1.089`, and foreground ink `0.999-1.121`.
+- The fresh 256-case full-factorial input audit reports `253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width `1.043-1.071`, height `0.828-1.161`, and foreground ink `1.015-1.108`.
 - All 16 paged contact sheets were manually inspected, including the corrected
   three-line titles in cases 114 and 117.
 

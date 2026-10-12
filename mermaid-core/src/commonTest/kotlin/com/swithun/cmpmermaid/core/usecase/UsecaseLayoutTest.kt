@@ -93,6 +93,42 @@ class UsecaseLayoutTest {
     }
 
     @Test
+    fun preservesUnifiedRendererNodeOrderForCompoundLeftToRightLayout() {
+        val scene = render(
+            """
+            usecase-beta
+            direction LR
+            actor Primary("Traveler")
+            actor Reviewer("Specialist")@{ type: hollow }
+            actor Operator("Operator")@{ type: awesome }
+            systemBoundary platform["Travel Platform"]
+              U1("Booking Book")
+              U2("Booking Assign")
+              U4("Booking Complete")
+            end
+            systemBoundary package["Specialized package"]@{ type: package }
+              U3("Booking Track")
+            end
+            Primary --> U1
+            U1 --> U2
+            U2 --> U3
+            U3 --> U4
+            Reviewer --> U3
+            Operator --> U4
+            note for U2 "Requires validated evidence"
+            """.trimIndent(),
+        )
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val operator = shapes.getValue("Operator")
+        val platform = shapes.getValue("subgraph_platform")
+
+        assertTrue(
+            operator.bounds.bottom <= platform.bounds.top,
+            "operator=${operator.bounds} platform=${platform.bounds}",
+        )
+    }
+
+    @Test
     fun preservesRelationshipMarkersPatternsAndRoleColors() {
         val scene = render(
             """

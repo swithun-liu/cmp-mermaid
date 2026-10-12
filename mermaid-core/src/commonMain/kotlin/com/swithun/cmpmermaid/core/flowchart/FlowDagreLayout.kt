@@ -32,8 +32,15 @@ internal object FlowDagreLayout {
         nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         edgeLabelSizes: Map<Int, SceneSize>,
         options: MermaidRenderOptions,
+        layoutNodeOrder: List<String>? = null,
     ): GMResult<FlowLayoutPlacement, MermaidError> {
-        val graph = buildGraph(document, nodeSizes, edgeLabelSizes, options)
+        val graph = buildGraph(
+            document = document,
+            nodeSizes = nodeSizes,
+            edgeLabelSizes = edgeLabelSizes,
+            options = options,
+            layoutNodeOrder = layoutNodeOrder,
+        )
         when (val adjusted = MermaidGraphAdapter.adjustClustersAndEdges(graph)) {
             is GMResult.Err -> return adjusted
             is GMResult.Ok -> Unit
@@ -102,6 +109,7 @@ internal object FlowDagreLayout {
         nodeSizes: Map<String, SceneSize>,
         edgeLabelSizes: Map<Int, SceneSize>,
         options: MermaidRenderOptions,
+        layoutNodeOrder: List<String>?,
     ): DagreGraph {
         val graph = Graph<DagreNode, DagreEdge, DagreGraphLabel>(
             multigraph = true,
@@ -115,35 +123,55 @@ internal object FlowDagreLayout {
                 marginy = 8f,
             ),
         )
+        val subgraphsById = document.subgraphs.associateBy(FlowSubgraph::id)
         val subgraphDepths = document.subgraphs.associate { subgraph ->
             subgraph.id to generateSequence(subgraph.parentId) { parent ->
-                document.subgraphs.firstOrNull { it.id == parent }?.parentId
+                subgraphsById[parent]?.parentId
             }.count()
         }
-
-        // Mermaid: rendering-util/layout-algorithms/dagre/index.js
-        // -> prepareLayoutForDagre. FlowDB emits groups before regular nodes,
-        // and Dagre uses that insertion order to break equal-crossing ties.
-        document.subgraphs.forEach { subgraph ->
-            graph.setNode(
-                subgraph.id,
-                DagreNode(
-                    originalId = subgraph.id,
-                    dir = subgraph.direction?.toDagreDirection(),
-                ),
-            )
-            subgraph.parentId?.let { graph.setParent(subgraph.id, it) }
-        }
-        document.nodes.forEach { (nodeId, _) ->
-            val size = nodeSizes.getValue(nodeId)
-            graph.setNode(
-                nodeId,
-                DagreNode(width = size.width, height = size.height, originalId = nodeId),
-            )
+        val parentByNode = document.nodes.keys.associateWith { nodeId ->
             document.subgraphs
                 .filter { nodeId in it.nodeIds }
                 .maxByOrNull { subgraphDepths.getValue(it.id) }
-                ?.let { graph.setParent(nodeId, it.id) }
+                ?.id
+        }
+
+        // Mermaid: rendering-util/layout-algorithms/dagre/index.js
+        // -> prepareLayoutForDagre. Dagre uses graph insertion order to break
+        // equal-crossing ties. Flowchart emits groups first, while unified
+        // renderers such as Use Case retain their LayoutData.nodes order.
+        fun addNode(id: String) {
+            if (graph.hasNode(id)) return
+            val subgraph = subgraphsById[id]
+            if (subgraph != null) {
+                graph.setNode(
+                    id,
+                    DagreNode(
+                        originalId = id,
+                        dir = subgraph.direction?.toDagreDirection(),
+                    ),
+                )
+            } else {
+                val size = nodeSizes.getValue(id)
+                graph.setNode(
+                    id,
+                    DagreNode(width = size.width, height = size.height, originalId = id),
+                )
+            }
+        }
+
+        val orderedIds = (
+            layoutNodeOrder.orEmpty() +
+                document.subgraphs.map(FlowSubgraph::id) +
+                document.nodes.keys
+            ).distinct()
+        orderedIds.forEach { id ->
+            addNode(id)
+            val parentId = subgraphsById[id]?.parentId ?: parentByNode[id]
+            if (parentId != null) {
+                addNode(parentId)
+                graph.setParent(id, parentId)
+            }
         }
         document.edges.forEachIndexed { index, edge ->
             val label = edgeLabelSizes[index]

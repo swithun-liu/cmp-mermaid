@@ -24,8 +24,9 @@ and enforced by
   Wardley Map; 38 for Use Case; and the per-family counts shown
   below for the remaining families
 - 738/738 declared capability points covered
-- 8,448 structurally distinct visual cases: 256 per diagram type
-- 8,448 published Native/Official structural pairs
+- 8,448 systematic visual-input cases: eight family-specific binary dimensions
+  and all 256 combinations per diagram type
+- 8,448 published Native/Official same-source pairs
 - 8,448 separate text/layout stress inputs derived from the 441 production
   scenarios; no additional structural coverage is claimed for that corpus
 
@@ -87,22 +88,23 @@ also exports renderer manifests and checks semantic text, normalized element
 geometry, style categories, markers, clipping, overlap, paint-order occlusion,
 foreground masks, edges, colors, and review heatmaps.
 
-The large-scale structural matrix generates 256 structurally distinct cases
-per type. Its uniqueness signature uses the curated seed scenario, seed
-feature set, generated structural item count, and family-specific
-syntax/topology variant rather than labels or ordinals. All 8,448 cases render
-in the Native core test and have fresh Native/Official captures.
+The large-scale input matrix defines eight named binary dimensions per family
+and generates the complete `2^8 = 256` combinations. Every option appears 128
+times, every option pair for any two dimensions appears 64 times, and each
+family retains 256 distinct normalized semantic structures and
+label-normalized Mermaid sources. Business labels, ordinals, image hashes, and
+rendered manifest uniqueness do not establish input coverage. All 8,448 cases
+render in the Native core test and have fresh Native/Official captures.
 
 The replacement detail gate reports
-`7,953 pass / 495 review / 0 fail`. Review findings are retained for text
-position, text overlap, raster mask, stroke pattern, element count, equivalent
-text segmentation/size, paint-order overlap ratio, and one Treemap text
-multiplicity difference. No expected-text loss, structural-manifest error, or
-clipping error was recorded. The geometry gate has 0 hard failures; four
-out-of-range ratios from three CoSE-Bilkent Mindmap cases remain review-only
-because their detail manifests match structurally. Fixed-input CoSE algorithm
-parity is covered separately, and final large-tree coordinate equality is not
-claimed.
+`7,725 pass / 723 review / 0 fail`. Review findings are retained for text
+position/overlap, raster mask/edge/color, equivalent element-count
+representation, marker occlusion, and paint-order occlusion. No expected-text
+loss, clipping error, or hard detail failure was recorded. The geometry gate
+has 0 hard failures and retains 132 review findings across 108 Architecture
+cases. Architecture uses seeded iterative fCoSE layout on both sides; final
+cross-runtime coordinate equality is not claimed, and the differences remain
+visible rather than being hidden by broader thresholds.
 
 Machine-readable structural counts are published in
 [`visual-structure-corpus-metadata.json`](assets/stability-report/visual-structure-corpus-metadata.json).

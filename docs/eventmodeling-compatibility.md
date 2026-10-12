@@ -53,7 +53,7 @@ weakening the Official visual gate.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.029-1.044`, `1.013-1.044`, and `1.029-1.115`.
 - Production detail passed `13/13`.
-- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.021-1.049`, height `1.053-1.227`, and foreground ink `1.018-1.356`.
+- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `0.960-1.069`, height `1.033-1.202`, and foreground ink `1.028-1.399`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved swimlane, card, relation, marker, color, label,
   clipping, overlap, or paint-order defect remains.

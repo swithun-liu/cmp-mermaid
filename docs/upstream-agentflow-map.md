@@ -89,15 +89,15 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   nested/collapsed flows, connector references, edge semantics, color slots,
   and structured failures.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 structurally distinct same-source cases against Mermaid.js `12.0.0`,
+  256 full-factorial same-source input cases against Mermaid.js `12.0.0`,
   with Dagre selected explicitly for both renderers.
 - Production geometry passes 13/13. Its detail result is
   `11 pass / 2 review / 0 fail`; both remaining findings are collapsed-shape
   stroke-pattern classifications. Geometry counts compare both render objects
   and expanded primitives, eliminating decomposition-only reviews.
-- Structural geometry has 0 hard failures; detail reports
-  `226 pass / 30 review / 0 fail`. The reviews are stroke-pattern
-  representation differences.
+- Matrix geometry has 0 hard failures; detail reports
+  `206 pass / 50 review / 0 fail`. The reviews retain text-position and marker
+  occlusion representation differences.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed with no unresolved node-kind, container, connector, edge, marker,
   metadata-driven appearance, label, clipping, or paint-order defect.

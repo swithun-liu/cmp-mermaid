@@ -42,7 +42,7 @@ and theme colors.
   objects and expanded primitives, so Official's decomposed database and queue
   paths and Native's semantic shapes are validated without a
   representation-only review.
-- The fresh 256-case structural Native/Official audit reports `250 pass / 6 review / 0 fail`; geometry has 0 hard failures with width `0.995-1.141`, height `0.923-1.049`, and foreground ink `0.969-1.103`.
+- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.023-1.069`, height `0.957-1.041`, and foreground ink `0.939-1.072`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved element, boundary, relation, dynamic-index, label,
   clipping, overlap, or paint-order defect remains.

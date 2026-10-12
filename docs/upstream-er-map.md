@@ -97,8 +97,8 @@ diff can be translated incrementally.
   self-relationships.
 - `OfficialErDocumentationCases` executes all 24 examples extracted from
   Mermaid's ER documentation.
-- The large-scale Web audit compares 256 unique same-source cases against
-  Mermaid.js `12.0.0`, including long aliases and unbroken entity identifiers,
+- The large-scale Web audit compares all 256 full-factorial same-source input
+  cases against Mermaid.js `12.0.0`, including long aliases and unbroken entity identifiers,
   and enforces content-bound and foreground-density limits.
 
 ## Upgrade Procedure

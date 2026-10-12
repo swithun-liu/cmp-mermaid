@@ -47,12 +47,17 @@ internal fun MermaidScene.toAuditManifestJson(): String = buildString {
 }
 
 private fun StringBuilder.appendViewport(scene: MermaidScene) {
+    val padding = scene.viewportPadding.coerceAtLeast(0f)
     append('{')
-    append("\"x\":0,\"y\":0,\"width\":")
-    appendFiniteNumber(scene.width)
+    append("\"x\":")
+    appendFiniteNumber(-padding)
+    append(",\"y\":")
+    appendFiniteNumber(-padding)
+    append(",\"width\":")
+    appendFiniteNumber(scene.width + padding * 2f)
     append(',')
     append("\"height\":")
-    appendFiniteNumber(scene.height)
+    appendFiniteNumber(scene.height + padding * 2f)
     append(',')
     append("\"background\":")
     appendColor(scene.background)

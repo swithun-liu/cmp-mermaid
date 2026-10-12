@@ -122,6 +122,30 @@ class XyChartLayoutTest {
     }
 
     @Test
+    fun inheritsDefaultFontSizeWhenVerticalDataLabelsDoNotFit() {
+        val scene = render(
+            """
+            ---
+            config:
+              xyChart:
+                showDataLabel: true
+            ---
+            xychart
+                x-axis [A, B, C, D]
+                bar [15, 24, 33, 42]
+            """.trimIndent(),
+        )
+        val labels = scene.elements.filterIsInstance<SceneText>()
+            .filter { text ->
+                text.zIndex == 18 &&
+                    text.text in setOf("15", "24", "33", "42")
+            }
+
+        assertEquals(listOf("15", "24", "33", "42"), labels.map(SceneText::text))
+        assertTrue(labels.all { text -> text.fontSize == 16f })
+    }
+
+    @Test
     fun usesFirstPlotValuesForEveryBarLabelLikeMermaid12Renderer() {
         val scene = render(
             """

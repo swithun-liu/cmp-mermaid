@@ -986,6 +986,20 @@ private fun DrawScope.drawSceneShapeShadow(
             is GMResult.Err -> null
         }
     }
+    val primitiveStyle = if ((shape.fill.argb ushr 24) != 0L) {
+        Fill
+    } else {
+        // Mermaid.js 12.0.0: packages/mermaid/src/styles.ts applies the
+        // drop-shadow filter to the rendered rect. A fill:none cluster casts
+        // a shadow from its stroke only, not from its transparent interior.
+        Stroke(
+            width = shape.strokeWidth,
+            cap = StrokeCap.Butt,
+            join = StrokeJoin.Miter,
+            pathEffect = shape.dashIntervals.toPathEffect()
+                ?: shape.strokePattern.toPathEffect(),
+        )
+    }
     shadow.samples().forEach { sample ->
         val color = shadowColor.copy(alpha = shadowColor.alpha * sample.alpha)
         withTransform({
@@ -997,13 +1011,22 @@ private fun DrawScope.drawSceneShapeShadow(
                     color = color,
                     topLeft = bounds.topLeft,
                     size = bounds.size,
-                    style = Fill,
+                    style = primitiveStyle,
+                )
+                primitivePath == null &&
+                    shape.kind.primitiveCanvasShape() ==
+                    PrimitiveCanvasShape.RoundedRectangle -> drawRoundRect(
+                    color = color,
+                    topLeft = bounds.topLeft,
+                    size = bounds.size,
+                    cornerRadius = CornerRadius(shape.cornerRadius, shape.cornerRadius),
+                    style = primitiveStyle,
                 )
                 primitivePath == null -> drawRect(
                     color = color,
                     topLeft = bounds.topLeft,
                     size = bounds.size,
-                    style = Fill,
+                    style = primitiveStyle,
                 )
                 primitive.fill != SceneShapePaint.None -> drawPath(
                     path = primitivePath,

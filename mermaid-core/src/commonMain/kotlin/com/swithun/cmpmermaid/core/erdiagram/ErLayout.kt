@@ -189,8 +189,10 @@ internal class ErLayout {
                 source = entity.alias.ifEmpty { entity.label },
                 style = style,
                 context = context,
-                // Mermaid: rendering-elements/shapes/erBox.ts -> addText/createText.
-                maxWidth = context.options.wrappingWidth,
+                // Mermaid.js 12.0.0: rendering-elements/shapes/erBox.ts ->
+                // addText passes calculateTextWidth(labelText) + 100, so ER
+                // entity titles remain unwrapped instead of inheriting the
+                // flowchart wrappingWidth.
             )
         ) {
             is GMResult.Ok -> measured.value

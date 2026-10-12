@@ -68,6 +68,34 @@ class ArchitectureLayoutTest {
     }
 
     @Test
+    fun paintsEdgesThenServicesThenGroupsLikeUpstreamLayers() {
+        val scene = render(
+            """
+                architecture-beta
+                  group runtime(server)[Runtime]
+                  service source(server)[Source] in runtime
+                  service target(internet)[Target] in runtime
+                  source:B -[observes]-> T:target
+            """.trimIndent(),
+        )
+        val edgeLabelIndex = scene.elements.indexOfFirst { element ->
+            element is SceneText && element.text == "observes"
+        }
+        val serviceBackgroundIndex = scene.elements.indexOfFirst { element ->
+            element is SceneShape &&
+                element.id.startsWith("architecture-service-icon-") &&
+                element.id.endsWith("-background")
+        }
+        val groupIndex = scene.elements.indexOfFirst { element ->
+            element is SceneShape && element.id == "architecture-group-runtime"
+        }
+
+        assertTrue(edgeLabelIndex >= 0)
+        assertTrue(serviceBackgroundIndex > edgeLabelIndex)
+        assertTrue(groupIndex > serviceBackgroundIndex)
+    }
+
+    @Test
     fun honorsExplicitRowAndColumnAlignment() {
         val row = render(
             """
@@ -929,6 +957,31 @@ class ArchitectureLayoutTest {
                 ) <= 10f,
             )
         }
+    }
+
+    @Test
+    fun keepsCrossGroupEdgesWithinFcoseScale() {
+        val scene = render(
+            """
+                architecture-beta
+                  group runtime(server)[Delivery Platform]
+                  service declare(server)[Declare] in runtime
+                  service inspect(server)[Inspect] in runtime
+                  service assess(server)[Assess] in runtime
+                  service release(internet)[Release]
+                  declare:R --> L:inspect
+                  inspect:R --> L:assess
+                  assess:R --> L:release
+                  declare:B -[observes]-> T:release
+            """.trimIndent(),
+        )
+        val centers = listOf("declare", "inspect", "assess", "release")
+            .map { id -> scene.serviceBounds(id).center }
+        val xSpan = centers.maxOf(ScenePoint::x) - centers.minOf(ScenePoint::x)
+        val ySpan = centers.maxOf(ScenePoint::y) - centers.minOf(ScenePoint::y)
+
+        assertTrue(xSpan in 200f..800f, "xSpan=$xSpan")
+        assertTrue(ySpan in 100f..800f, "ySpan=$ySpan")
     }
 
     @Test

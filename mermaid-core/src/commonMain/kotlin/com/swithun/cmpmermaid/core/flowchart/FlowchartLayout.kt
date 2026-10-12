@@ -266,20 +266,18 @@ internal class FlowchartLayout {
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ): GMResult<Unit, MermaidError> {
-        val subgraphsById = document.subgraphs.associateBy(FlowSubgraph::id)
-        fun depth(subgraph: FlowSubgraph): Int {
-            var current = subgraph.parentId
-            var result = 0
-            val visited = mutableSetOf<String>()
-            while (current != null && visited.add(current)) {
-                result += 1
-                current = subgraphsById[current]?.parentId
-            }
-            return result
+        val childrenByParent = document.subgraphs.groupBy(FlowSubgraph::parentId)
+        val orderedSubgraphs = mutableListOf<FlowSubgraph>()
+        val visited = mutableSetOf<String>()
+        fun appendSubgraph(subgraph: FlowSubgraph) {
+            if (!visited.add(subgraph.id)) return
+            orderedSubgraphs += subgraph
+            childrenByParent[subgraph.id].orEmpty().forEach(::appendSubgraph)
         }
+        childrenByParent[null].orEmpty().forEach(::appendSubgraph)
+        document.subgraphs.forEach(::appendSubgraph)
 
-        document.subgraphs
-            .sortedBy(::depth)
+        orderedSubgraphs
             .forEachIndexed { index, subgraph ->
                 val bounds = subgraphBounds[subgraph.id]
                     ?: return@forEachIndexed
@@ -824,7 +822,11 @@ internal class FlowchartLayout {
             width = bounds.width + padding * 2f,
             height = bounds.height + padding * 2f,
             background = context.theme.background,
-            elements = translated.sortedBy(SceneElement::zIndex),
+            // Mermaid.js 12.0.0: rendering-util/layout-algorithms/common
+            // paints clusters, edges, and node groups in insertion order.
+            // Sorting by zIndex separates a node or cluster from its own label
+            // and changes which later elements can cover that text.
+            elements = translated,
             title = document.title,
             accessibilityTitle = document.accessibilityTitle,
             accessibilityDescription = document.accessibilityDescription,

@@ -81,10 +81,10 @@ Mermaid browser text measurement is supplied by the shared
 - The independent production audit passes
   `14 pass / 0 review / 0 fail`. Geometry ratios are width `1.019-1.254`,
   height `0.910-1.111`, and foreground ink `0.939-1.327`.
-- The large-scale Web audit compares 256 unique same-source cases against
-  Mermaid.js `12.0.0`. It passes the replacement detail and geometry gates
-  with `231 pass / 25 review / 0 fail`; width `1.015-1.272`, height
-  `0.897-1.090`, and foreground ink `0.927-1.437`. Spatially equivalent
+- The large-scale Web audit compares all 256 full-factorial same-source input
+  cases against Mermaid.js `12.0.0`. It passes the replacement detail and
+  geometry gates with `256 pass / 0 review / 0 fail`; width `1.006-1.240`,
+  height `0.897-1.087`, and foreground ink `0.900-1.466`. Spatially equivalent
   segmented labels are compared by their combined bounds.
 - All 16 matrix contact sheets were manually reviewed with no unresolved
   visual defect.

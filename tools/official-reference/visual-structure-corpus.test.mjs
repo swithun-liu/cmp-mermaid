@@ -8,6 +8,7 @@ import {
   cases,
   casesPerKind,
   corpusSummary,
+  familyDimensionSpecs,
   kinds,
   normalizeScenarioSource,
   scenarioBlueprintsByKind,
@@ -44,6 +45,125 @@ test('provides 256 independent scenarios for every diagram family', () => {
   }
 });
 
+test('defines eight named orthogonal input dimensions for every family', () => {
+  for (const kind of kinds) {
+    const dimensions = familyDimensionSpecs[kind];
+    assert.equal(dimensions.length, 8, `${kind} dimension count`);
+    assert.equal(
+      new Set(dimensions.map((dimension) => dimension.name)).size,
+      8,
+      `${kind} dimension names`,
+    );
+    assert.ok(
+      new Set(dimensions.map((dimension) => dimension.category)).size >= 3,
+      `${kind} dimension categories`,
+    );
+    assert.ok(
+      dimensions.filter((dimension) =>
+        dimension.category === 'topology' ||
+        dimension.category === 'data'
+      ).length >= 3,
+      `${kind} topology/data dimensions`,
+    );
+    for (const dimension of dimensions) {
+      assert.match(dimension.name, /^[a-z][a-z0-9-]+$/, `${kind} dimension`);
+      assert.equal(dimension.options.length, 2, `${kind}/${dimension.name}`);
+      assert.equal(
+        new Set(dimension.options).size,
+        2,
+        `${kind}/${dimension.name} options`,
+      );
+    }
+  }
+});
+
+test('covers every dimension and every dimension pair with a balanced matrix', () => {
+  for (const kind of kinds) {
+    const familyCases = scenarioBlueprintsByKind[kind];
+    const dimensions = familyDimensionSpecs[kind];
+    for (const dimension of dimensions) {
+      const counts = new Map(dimension.options.map((option) => [option, 0]));
+      for (const entry of familyCases) {
+        const selection = entry.inputDimensions.find(
+          (candidate) => candidate.name === dimension.name,
+        );
+        assert.ok(selection, `${entry.id}/${dimension.name}`);
+        counts.set(selection.option, (counts.get(selection.option) ?? 0) + 1);
+      }
+      assert.deepEqual(
+        [...counts.values()],
+        [128, 128],
+        `${kind}/${dimension.name}`,
+      );
+    }
+    for (let left = 0; left < dimensions.length; left += 1) {
+      for (let right = left + 1; right < dimensions.length; right += 1) {
+        const combinations = new Map();
+        for (const entry of familyCases) {
+          const leftOption = entry.inputDimensions[left].option;
+          const rightOption = entry.inputDimensions[right].option;
+          const key = `${leftOption}|${rightOption}`;
+          combinations.set(key, (combinations.get(key) ?? 0) + 1);
+        }
+        assert.equal(combinations.size, 4, `${kind}/${left}/${right} variants`);
+        assert.deepEqual(
+          new Set(combinations.values()),
+          new Set([64]),
+          `${kind}/${left}/${right} balance`,
+        );
+      }
+    }
+  }
+});
+
+test('every named dimension changes the label-normalized Mermaid input', () => {
+  for (const kind of kinds) {
+    const familyCases = scenarioBlueprintsByKind[kind];
+    for (let dimensionIndex = 0; dimensionIndex < 8; dimensionIndex += 1) {
+      const mask = 1 << dimensionIndex;
+      for (let index = 0; index < casesPerKind; index += 1) {
+        if ((index & mask) !== 0) {
+          continue;
+        }
+        assert.notEqual(
+          normalizeScenarioSource(familyCases[index]),
+          normalizeScenarioSource(familyCases[index ^ mask]),
+          `${kind}/${familyDimensionSpecs[kind][dimensionIndex].name}/${index}`,
+        );
+      }
+    }
+  }
+});
+
+test('every topology and data dimension changes the structural profile', () => {
+  for (const kind of kinds) {
+    const familyCases = scenarioBlueprintsByKind[kind];
+    for (let dimensionIndex = 0; dimensionIndex < 8; dimensionIndex += 1) {
+      const dimension = familyDimensionSpecs[kind][dimensionIndex];
+      if (dimension.category !== 'topology' && dimension.category !== 'data') {
+        continue;
+      }
+      const mask = 1 << dimensionIndex;
+      for (let index = 0; index < casesPerKind; index += 1) {
+        if ((index & mask) !== 0) {
+          continue;
+        }
+        assert.notDeepEqual(
+          familyCases[index].normalizedSemanticStructure.structuralProfile,
+          familyCases[index ^ mask].normalizedSemanticStructure.structuralProfile,
+          `${kind}/${dimension.name}/${index}`,
+        );
+      }
+    }
+    assert.ok(
+      new Set(familyCases.map((entry) =>
+        JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
+      )).size >= 192,
+      `${kind} structural profile diversity`,
+    );
+  }
+});
+
 test('does not reuse seed scenarios, profiles, labels, or ordinals as uniqueness', () => {
   for (const entry of cases) {
     assert.equal(entry.coverageRole, 'independent-visual-scenario', entry.id);
@@ -54,10 +174,19 @@ test('does not reuse seed scenarios, profiles, labels, or ordinals as uniqueness
 
     assert.deepEqual(
       Object.keys(entry.normalizedSemanticStructure).sort(),
-      ['decisions', 'grammar', 'normalizedSource'],
+      ['dimensions', 'grammar', 'normalizedSource', 'structuralProfile'],
       entry.id,
     );
-    assert.equal(entry.normalizedSemanticStructure.decisions.length, 8, entry.id);
+    assert.equal(entry.inputDimensions.length, 8, entry.id);
+    assert.deepEqual(
+      entry.normalizedSemanticStructure.dimensions,
+      entry.inputDimensions,
+      entry.id,
+    );
+    assert.ok(
+      Object.keys(entry.normalizedSemanticStructure.structuralProfile).length > 0,
+      entry.id,
+    );
     assert.equal(
       entry.normalizedSemanticStructure.normalizedSource,
       normalizeScenarioSource(entry),
@@ -106,41 +235,103 @@ test('covers 256 named business scenarios without repeating a blueprint', () => 
   }
 });
 
+test('flowchart matrix covers real topology, layout, edge, and shape changes', () => {
+  const familyCases = scenarioBlueprintsByKind.flowchart;
+  assert.equal(
+    familyCases.filter((entry) => /^flowchart TD$/m.test(entry.source)).length,
+    128,
+  );
+  assert.equal(
+    familyCases.filter((entry) => /^\s*subgraph /m.test(entry.source)).length,
+    128,
+  );
+  assert.equal(
+    familyCases.filter((entry) => /Validate --> Execute\n\s+Validate --> Review/.test(
+      entry.source,
+    )).length,
+    128,
+  );
+  assert.equal(
+    familyCases.filter((entry) => /Review --> Complete/.test(entry.source)).length,
+    128,
+  );
+  assert.equal(
+    familyCases.filter((entry) => /Complete -.-> Validate/.test(entry.source)).length,
+    128,
+  );
+  assert.equal(
+    familyCases.filter((entry) => /-->\|approved\|/.test(entry.source)).length,
+    128,
+  );
+  assert.equal(
+    familyCases.filter((entry) => /Validate\{/.test(entry.source)).length,
+    128,
+  );
+});
+
 test('keeps representative family decisions in the rendered Mermaid source', () => {
-  assert.match(caseSource('flowchart', 1), /N1\[Patient Case Register]/);
-  assert.match(caseSource('flowchart', 2), /N1\{Patient Case Refer\?\}/);
+  assert.match(caseSource('flowchart', 1), /^flowchart LR$/m);
+  assert.match(caseSource('flowchart', 2), /^flowchart TD$/m);
 
   assert.match(caseSource('architecture', 1), /s1\(server\)/);
-  assert.match(caseSource('architecture', 2), /s1\(database\)/);
+  assert.match(caseSource('architecture', 2), /group platform\(cloud\)/);
 
   assert.match(caseSource('sequence', 1), /User->>Platform:/);
-  assert.match(caseSource('sequence', 2), /Platform-->>Worker:/);
+  assert.match(caseSource('sequence', 2), /^  autonumber$/m);
 
-  assert.match(caseSource('pie', 1), /"Patient Case Register" : 4/);
-  assert.match(caseSource('pie', 2), /"Patient Case Refer" : 7/);
+  assert.match(caseSource('pie', 1), /^pie$/m);
+  assert.match(caseSource('pie', 2), /^pie showData$/m);
 
   assert.match(caseSource('gantt', 1), /:crit, task_1, 2027-01-01, 2d/);
-  assert.match(caseSource('gantt', 2), /:active, task_1, 2027-01-01, 2d/);
+  assert.match(caseSource('gantt', 2), /section Validation/);
   assert.match(caseSource('gantt', 256), /^\s*todayMarker off$/m);
-  assert.doesNotMatch(caseSource('gantt', 256), /:milestone,/);
+  assert.match(caseSource('gantt', 256), /:milestone,/);
 
-  assert.match(caseSource('treemap', 1), /^"Main"$/m);
-  assert.match(caseSource('treemap', 2), /^"Alt"$/m);
-  assert.match(caseSource('treemap', 1), /"Register 1": 40/);
+  assert.match(
+    caseSource('er', 65),
+    /^  direction LR\n  subgraph MASTER_DATA\n    direction TB$/m,
+  );
+  assert.match(
+    caseSource('er', 66),
+    /^  direction TB\n  subgraph MASTER_DATA\n    direction TB$/m,
+  );
+  assert.equal(
+    [...caseSource('er', 65).matchAll(/^  subgraph /gm)].length,
+    2,
+  );
+
+  assert.match(caseSource('treemap', 1), /^treemap$/m);
+  assert.match(caseSource('treemap', 2), /^treemap-beta$/m);
+  assert.match(caseSource('treemap', 1), /"Main"/);
 
   assert.doesNotMatch(caseSource('venn', 1), /^\s*union A,B/m);
-  assert.match(caseSource('venn', 2), /^\s*union A,B/m);
+  assert.match(caseSource('venn', 2), /^\s*set D/m);
 
   assert.match(caseSource('packet', 1), /^\s*0-3:/m);
-  assert.match(caseSource('packet', 2), /^\s*0-7:/m);
+  assert.match(caseSource('packet', 2), /^packet-beta$/m);
 
   assert.doesNotMatch(
     caseSource('cynefin', 1),
     /^\s*complex --> complicated/m,
   );
   assert.match(
-    caseSource('cynefin', 2),
+    caseSource('cynefin', 5),
     /^\s*complex --> complicated/m,
+  );
+});
+
+test('records the actual layout engine used by layout-specific families', () => {
+  assert.deepEqual(
+    new Set(scenarioBlueprintsByKind.swimlanes.map((entry) => entry.layout)),
+    new Set(['swimlane']),
+  );
+  assert.deepEqual(
+    new Set(scenarioBlueprintsByKind.architecture.map((entry) => entry.layout)),
+    new Set(['cose-bilkent']),
+  );
+  assert.deepEqual(
+    new Set(scenarioBlueprintsByKind.mindmap.map((entry) => entry.layout)),
+    new Set(['dagre', 'tidy-tree']),
   );
 });
 
@@ -161,7 +352,9 @@ test('publishes machine-readable independent scenario accounting', () => {
     'unique-scenario-blueprint-id',
     'explicit-256-entry-business-scenario-catalog',
     'label-stripped-normalized-mermaid-source',
-    'eight-rendered-semantic-decisions',
+    'eight-named-orthogonal-input-dimensions',
+    'balanced-full-factorial-2x2x2x2x2x2x2x2-matrix',
+    'family-specific-structural-profile',
   ]);
 });
 

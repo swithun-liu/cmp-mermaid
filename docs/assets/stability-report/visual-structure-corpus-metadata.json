@@ -9,7 +9,9 @@
     "unique-scenario-blueprint-id",
     "explicit-256-entry-business-scenario-catalog",
     "label-stripped-normalized-mermaid-source",
-    "eight-rendered-semantic-decisions"
+    "eight-named-orthogonal-input-dimensions",
+    "balanced-full-factorial-2x2x2x2x2x2x2x2-matrix",
+    "family-specific-structural-profile"
   ],
   "diagramFamilies": [
     {
@@ -17,231 +19,2442 @@
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "branching",
+          "category": "topology",
+          "options": [
+            "single-path",
+            "fan-out"
+          ]
+        },
+        {
+          "name": "merging",
+          "category": "topology",
+          "options": [
+            "separate-endings",
+            "fan-in"
+          ]
+        },
+        {
+          "name": "cycle",
+          "category": "topology",
+          "options": [
+            "acyclic",
+            "rework-loop"
+          ]
+        },
+        {
+          "name": "grouping",
+          "category": "topology",
+          "options": [
+            "flat",
+            "subgraph"
+          ]
+        },
+        {
+          "name": "path-length",
+          "category": "topology",
+          "options": [
+            "direct-paths",
+            "cross-link"
+          ]
+        },
+        {
+          "name": "edge-semantics",
+          "category": "style",
+          "options": [
+            "solid-unlabelled",
+            "labelled-dotted"
+          ]
+        },
+        {
+          "name": "node-form",
+          "category": "style",
+          "options": [
+            "process",
+            "decision"
+          ]
+        }
+      ]
     },
     {
       "kind": "swimlanes",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "lane-count",
+          "category": "topology",
+          "options": [
+            "two-lanes",
+            "four-lanes"
+          ]
+        },
+        {
+          "name": "lane-nesting",
+          "category": "topology",
+          "options": [
+            "flat-lanes",
+            "nested-lane"
+          ]
+        },
+        {
+          "name": "branching",
+          "category": "topology",
+          "options": [
+            "single-path",
+            "cross-lane-fan-out"
+          ]
+        },
+        {
+          "name": "merging",
+          "category": "topology",
+          "options": [
+            "separate-endings",
+            "cross-lane-fan-in"
+          ]
+        },
+        {
+          "name": "cycle",
+          "category": "topology",
+          "options": [
+            "acyclic",
+            "return-loop"
+          ]
+        },
+        {
+          "name": "edge-semantics",
+          "category": "style",
+          "options": [
+            "solid-unlabelled",
+            "labelled-dotted"
+          ]
+        },
+        {
+          "name": "node-form",
+          "category": "style",
+          "options": [
+            "process",
+            "decision"
+          ]
+        }
+      ]
     },
     {
       "kind": "architecture",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 192,
+      "dimensions": [
+        {
+          "name": "groups",
+          "category": "topology",
+          "options": [
+            "ungrouped",
+            "platform-group"
+          ]
+        },
+        {
+          "name": "nested-groups",
+          "category": "topology",
+          "options": [
+            "single-level",
+            "nested-groups"
+          ]
+        },
+        {
+          "name": "junction",
+          "category": "topology",
+          "options": [
+            "direct-route",
+            "junction-fan-out"
+          ]
+        },
+        {
+          "name": "storage",
+          "category": "data",
+          "options": [
+            "compute-only",
+            "database-service"
+          ]
+        },
+        {
+          "name": "bidirectional",
+          "category": "topology",
+          "options": [
+            "one-way",
+            "two-way"
+          ]
+        },
+        {
+          "name": "edge-label",
+          "category": "style",
+          "options": [
+            "unlabelled",
+            "labelled"
+          ]
+        },
+        {
+          "name": "alignment",
+          "category": "layout",
+          "options": [
+            "free-layout",
+            "row-column-grid"
+          ]
+        },
+        {
+          "name": "boundary-route",
+          "category": "topology",
+          "options": [
+            "service-route",
+            "group-route"
+          ]
+        }
+      ]
     },
     {
       "kind": "c4",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "external-system",
+          "category": "topology",
+          "options": [
+            "internal-only",
+            "external-system"
+          ]
+        },
+        {
+          "name": "boundary",
+          "category": "topology",
+          "options": [
+            "unbounded",
+            "system-boundary"
+          ]
+        },
+        {
+          "name": "database",
+          "category": "data",
+          "options": [
+            "service",
+            "database"
+          ]
+        },
+        {
+          "name": "queue",
+          "category": "data",
+          "options": [
+            "direct-call",
+            "queued-flow"
+          ]
+        },
+        {
+          "name": "fan-out",
+          "category": "topology",
+          "options": [
+            "linear",
+            "fan-out"
+          ]
+        },
+        {
+          "name": "relationship-direction",
+          "category": "layout",
+          "options": [
+            "automatic",
+            "directed"
+          ]
+        },
+        {
+          "name": "bidirectional",
+          "category": "topology",
+          "options": [
+            "one-way",
+            "bidirectional"
+          ]
+        },
+        {
+          "name": "relationship-style",
+          "category": "style",
+          "options": [
+            "default",
+            "styled"
+          ]
+        }
+      ]
     },
     {
       "kind": "railroad",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "choice",
+          "category": "topology",
+          "options": [
+            "single-token",
+            "alternatives"
+          ]
+        },
+        {
+          "name": "optional",
+          "category": "syntax",
+          "options": [
+            "required",
+            "optional"
+          ]
+        },
+        {
+          "name": "zero-or-more",
+          "category": "topology",
+          "options": [
+            "single",
+            "zero-or-more"
+          ]
+        },
+        {
+          "name": "one-or-more",
+          "category": "topology",
+          "options": [
+            "single-use",
+            "one-or-more"
+          ]
+        },
+        {
+          "name": "nesting",
+          "category": "topology",
+          "options": [
+            "flat",
+            "nested-sequence"
+          ]
+        },
+        {
+          "name": "symbol-kind",
+          "category": "syntax",
+          "options": [
+            "terminal",
+            "nonterminal-special"
+          ]
+        },
+        {
+          "name": "rule-count",
+          "category": "data",
+          "options": [
+            "one-rule",
+            "three-rules"
+          ]
+        },
+        {
+          "name": "branch-width",
+          "category": "data",
+          "options": [
+            "two-alternatives",
+            "four-alternatives"
+          ]
+        }
+      ]
     },
     {
       "kind": "treeview",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "root-count",
+          "category": "topology",
+          "options": [
+            "single-root",
+            "second-root"
+          ]
+        },
+        {
+          "name": "branch-width",
+          "category": "topology",
+          "options": [
+            "narrow",
+            "wide"
+          ]
+        },
+        {
+          "name": "depth",
+          "category": "topology",
+          "options": [
+            "shallow",
+            "deep"
+          ]
+        },
+        {
+          "name": "entry-kind",
+          "category": "data",
+          "options": [
+            "files",
+            "mixed-files-directories"
+          ]
+        },
+        {
+          "name": "quoted-labels",
+          "category": "syntax",
+          "options": [
+            "bare",
+            "quoted"
+          ]
+        },
+        {
+          "name": "box-drawing",
+          "category": "syntax",
+          "options": [
+            "indentation",
+            "box-drawing"
+          ]
+        },
+        {
+          "name": "description",
+          "category": "data",
+          "options": [
+            "plain",
+            "described"
+          ]
+        },
+        {
+          "name": "class-highlight",
+          "category": "style",
+          "options": [
+            "default",
+            "highlighted"
+          ]
+        }
+      ]
     },
     {
       "kind": "xychart",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "orientation",
+          "category": "layout",
+          "options": [
+            "vertical",
+            "horizontal"
+          ]
+        },
+        {
+          "name": "x-axis",
+          "category": "data",
+          "options": [
+            "categorical",
+            "numeric"
+          ]
+        },
+        {
+          "name": "domain",
+          "category": "data",
+          "options": [
+            "automatic",
+            "explicit"
+          ]
+        },
+        {
+          "name": "primary-plot",
+          "category": "style",
+          "options": [
+            "line",
+            "bar"
+          ]
+        },
+        {
+          "name": "series-count",
+          "category": "data",
+          "options": [
+            "one-series",
+            "three-series"
+          ]
+        },
+        {
+          "name": "point-count",
+          "category": "data",
+          "options": [
+            "four-points",
+            "eight-points"
+          ]
+        },
+        {
+          "name": "value-shape",
+          "category": "data",
+          "options": [
+            "monotonic",
+            "peaked"
+          ]
+        },
+        {
+          "name": "labels",
+          "category": "style",
+          "options": [
+            "plain",
+            "legend-and-data-labels"
+          ]
+        }
+      ]
     },
     {
       "kind": "quadrant",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "point-count",
+          "category": "data",
+          "options": [
+            "four-points",
+            "eight-points"
+          ]
+        },
+        {
+          "name": "distribution",
+          "category": "data",
+          "options": [
+            "clustered",
+            "all-quadrants"
+          ]
+        },
+        {
+          "name": "boundary-points",
+          "category": "data",
+          "options": [
+            "interior",
+            "boundaries"
+          ]
+        },
+        {
+          "name": "empty-region",
+          "category": "topology",
+          "options": [
+            "all-occupied",
+            "empty-quadrant"
+          ]
+        },
+        {
+          "name": "point-radius",
+          "category": "style",
+          "options": [
+            "default-radius",
+            "varied-radius"
+          ]
+        },
+        {
+          "name": "point-color",
+          "category": "style",
+          "options": [
+            "theme-color",
+            "inline-colors"
+          ]
+        },
+        {
+          "name": "class-style",
+          "category": "style",
+          "options": [
+            "no-class",
+            "class-style"
+          ]
+        },
+        {
+          "name": "metadata",
+          "category": "syntax",
+          "options": [
+            "minimal",
+            "title-and-comments"
+          ]
+        }
+      ]
     },
     {
       "kind": "timeline",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "sections",
+          "category": "topology",
+          "options": [
+            "sectionless",
+            "sectioned"
+          ]
+        },
+        {
+          "name": "period-count",
+          "category": "data",
+          "options": [
+            "three-periods",
+            "six-periods"
+          ]
+        },
+        {
+          "name": "continued-events",
+          "category": "topology",
+          "options": [
+            "one-event-per-period",
+            "continued-events"
+          ]
+        },
+        {
+          "name": "event-density",
+          "category": "data",
+          "options": [
+            "sparse",
+            "dense"
+          ]
+        },
+        {
+          "name": "html-break",
+          "category": "syntax",
+          "options": [
+            "plain-text",
+            "html-break"
+          ]
+        },
+        {
+          "name": "palette",
+          "category": "style",
+          "options": [
+            "multicolor",
+            "single-color"
+          ]
+        },
+        {
+          "name": "metadata",
+          "category": "syntax",
+          "options": [
+            "minimal",
+            "title-and-comments"
+          ]
+        }
+      ]
     },
     {
       "kind": "kanban",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "section-count",
+          "category": "topology",
+          "options": [
+            "two-sections",
+            "four-sections"
+          ]
+        },
+        {
+          "name": "task-count",
+          "category": "data",
+          "options": [
+            "four-tasks",
+            "eight-tasks"
+          ]
+        },
+        {
+          "name": "task-identity",
+          "category": "syntax",
+          "options": [
+            "anonymous",
+            "explicit-ids"
+          ]
+        },
+        {
+          "name": "node-form",
+          "category": "style",
+          "options": [
+            "square",
+            "rounded"
+          ]
+        },
+        {
+          "name": "indentation",
+          "category": "topology",
+          "options": [
+            "flat",
+            "nested"
+          ]
+        },
+        {
+          "name": "empty-section",
+          "category": "topology",
+          "options": [
+            "all-populated",
+            "empty-section"
+          ]
+        },
+        {
+          "name": "metadata",
+          "category": "data",
+          "options": [
+            "plain",
+            "ticket-assignee-priority"
+          ]
+        },
+        {
+          "name": "markdown",
+          "category": "syntax",
+          "options": [
+            "plain-labels",
+            "markdown-labels"
+          ]
+        }
+      ]
     },
     {
       "kind": "sequence",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "autonumber",
+          "category": "syntax",
+          "options": [
+            "manual",
+            "autonumber"
+          ]
+        },
+        {
+          "name": "participant-kind",
+          "category": "data",
+          "options": [
+            "participants",
+            "actors-and-boundary"
+          ]
+        },
+        {
+          "name": "activation",
+          "category": "topology",
+          "options": [
+            "inactive",
+            "activated"
+          ]
+        },
+        {
+          "name": "message-shape",
+          "category": "style",
+          "options": [
+            "solid",
+            "dotted-and-self"
+          ]
+        },
+        {
+          "name": "loop",
+          "category": "topology",
+          "options": [
+            "linear",
+            "loop"
+          ]
+        },
+        {
+          "name": "alternative",
+          "category": "topology",
+          "options": [
+            "single-outcome",
+            "alt-opt"
+          ]
+        },
+        {
+          "name": "parallel",
+          "category": "topology",
+          "options": [
+            "sequential",
+            "parallel"
+          ]
+        },
+        {
+          "name": "notes",
+          "category": "data",
+          "options": [
+            "no-notes",
+            "notes"
+          ]
+        }
+      ]
     },
     {
       "kind": "class",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "members",
+          "category": "data",
+          "options": [
+            "attributes-only",
+            "attributes-and-methods"
+          ]
+        },
+        {
+          "name": "generics",
+          "category": "syntax",
+          "options": [
+            "concrete",
+            "generic"
+          ]
+        },
+        {
+          "name": "annotation",
+          "category": "data",
+          "options": [
+            "plain",
+            "annotated"
+          ]
+        },
+        {
+          "name": "relation-kind",
+          "category": "topology",
+          "options": [
+            "association",
+            "inheritance-composition"
+          ]
+        },
+        {
+          "name": "cardinality",
+          "category": "data",
+          "options": [
+            "unqualified",
+            "cardinalities-and-labels"
+          ]
+        },
+        {
+          "name": "namespace",
+          "category": "topology",
+          "options": [
+            "flat",
+            "namespace"
+          ]
+        },
+        {
+          "name": "notes",
+          "category": "data",
+          "options": [
+            "no-notes",
+            "notes-and-style"
+          ]
+        }
+      ]
     },
     {
       "kind": "state",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "description",
+          "category": "data",
+          "options": [
+            "identifier-only",
+            "aliases-and-descriptions"
+          ]
+        },
+        {
+          "name": "composite",
+          "category": "topology",
+          "options": [
+            "flat",
+            "composite"
+          ]
+        },
+        {
+          "name": "choice",
+          "category": "topology",
+          "options": [
+            "direct",
+            "choice"
+          ]
+        },
+        {
+          "name": "fork-join",
+          "category": "topology",
+          "options": [
+            "sequential",
+            "fork-join"
+          ]
+        },
+        {
+          "name": "concurrency",
+          "category": "topology",
+          "options": [
+            "single-region",
+            "concurrent-regions"
+          ]
+        },
+        {
+          "name": "cycle",
+          "category": "topology",
+          "options": [
+            "acyclic",
+            "recovery-loop"
+          ]
+        },
+        {
+          "name": "notes-style",
+          "category": "style",
+          "options": [
+            "plain",
+            "notes-and-class"
+          ]
+        }
+      ]
     },
     {
       "kind": "er",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "attributes",
+          "category": "data",
+          "options": [
+            "minimal",
+            "rich-attributes"
+          ]
+        },
+        {
+          "name": "keys",
+          "category": "data",
+          "options": [
+            "primary-key",
+            "primary-foreign-unique"
+          ]
+        },
+        {
+          "name": "cardinality",
+          "category": "topology",
+          "options": [
+            "one-to-many",
+            "many-to-many"
+          ]
+        },
+        {
+          "name": "identification",
+          "category": "topology",
+          "options": [
+            "identifying",
+            "non-identifying"
+          ]
+        },
+        {
+          "name": "branching",
+          "category": "topology",
+          "options": [
+            "linear",
+            "hub"
+          ]
+        },
+        {
+          "name": "subgraph",
+          "category": "topology",
+          "options": [
+            "flat",
+            "subgraph"
+          ]
+        },
+        {
+          "name": "alias-style",
+          "category": "style",
+          "options": [
+            "identifiers",
+            "aliases-and-classes"
+          ]
+        }
+      ]
     },
     {
       "kind": "gantt",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "sections",
+          "category": "topology",
+          "options": [
+            "one-section",
+            "three-sections"
+          ]
+        },
+        {
+          "name": "dependencies",
+          "category": "topology",
+          "options": [
+            "fixed-dates",
+            "dependencies"
+          ]
+        },
+        {
+          "name": "task-states",
+          "category": "style",
+          "options": [
+            "critical",
+            "mixed-states"
+          ]
+        },
+        {
+          "name": "milestone",
+          "category": "topology",
+          "options": [
+            "no-milestone",
+            "milestone"
+          ]
+        },
+        {
+          "name": "calendar",
+          "category": "data",
+          "options": [
+            "calendar-days",
+            "weekend-excludes"
+          ]
+        },
+        {
+          "name": "axis",
+          "category": "layout",
+          "options": [
+            "default-axis",
+            "formatted-axis"
+          ]
+        },
+        {
+          "name": "top-axis",
+          "category": "layout",
+          "options": [
+            "bottom-axis",
+            "top-axis"
+          ]
+        },
+        {
+          "name": "vertical-marker",
+          "category": "data",
+          "options": [
+            "no-marker",
+            "vertical-marker"
+          ]
+        }
+      ]
     },
     {
       "kind": "pie",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "show-data",
+          "category": "style",
+          "options": [
+            "legend-only",
+            "show-data"
+          ]
+        },
+        {
+          "name": "slice-count",
+          "category": "data",
+          "options": [
+            "four-slices",
+            "eight-slices"
+          ]
+        },
+        {
+          "name": "value-kind",
+          "category": "data",
+          "options": [
+            "integers",
+            "decimals-and-zero"
+          ]
+        },
+        {
+          "name": "distribution",
+          "category": "data",
+          "options": [
+            "balanced",
+            "skewed"
+          ]
+        },
+        {
+          "name": "donut",
+          "category": "style",
+          "options": [
+            "pie",
+            "donut"
+          ]
+        },
+        {
+          "name": "legend-position",
+          "category": "layout",
+          "options": [
+            "right",
+            "center"
+          ]
+        },
+        {
+          "name": "highlight",
+          "category": "style",
+          "options": [
+            "none",
+            "static-highlight"
+          ]
+        },
+        {
+          "name": "label-form",
+          "category": "syntax",
+          "options": [
+            "plain",
+            "escaped-and-duplicate"
+          ]
+        }
+      ]
     },
     {
       "kind": "journey",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "sections",
+          "category": "topology",
+          "options": [
+            "one-section",
+            "three-sections"
+          ]
+        },
+        {
+          "name": "task-count",
+          "category": "data",
+          "options": [
+            "four-tasks",
+            "eight-tasks"
+          ]
+        },
+        {
+          "name": "scores",
+          "category": "data",
+          "options": [
+            "integer-scores",
+            "decimal-scores"
+          ]
+        },
+        {
+          "name": "actors",
+          "category": "data",
+          "options": [
+            "single-actor",
+            "multiple-actors"
+          ]
+        },
+        {
+          "name": "actor-reuse",
+          "category": "topology",
+          "options": [
+            "fixed-actor",
+            "reordered-reused-actors"
+          ]
+        },
+        {
+          "name": "actorless",
+          "category": "data",
+          "options": [
+            "all-assigned",
+            "actorless-task"
+          ]
+        },
+        {
+          "name": "title-source",
+          "category": "syntax",
+          "options": [
+            "diagram-title",
+            "frontmatter-title"
+          ]
+        },
+        {
+          "name": "long-text",
+          "category": "layout",
+          "options": [
+            "short-labels",
+            "long-labels"
+          ]
+        }
+      ]
     },
     {
       "kind": "requirement",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "requirement-types",
+          "category": "data",
+          "options": [
+            "functional",
+            "mixed-types"
+          ]
+        },
+        {
+          "name": "risk-levels",
+          "category": "data",
+          "options": [
+            "medium",
+            "mixed-risks"
+          ]
+        },
+        {
+          "name": "verification",
+          "category": "data",
+          "options": [
+            "test",
+            "mixed-methods"
+          ]
+        },
+        {
+          "name": "elements",
+          "category": "topology",
+          "options": [
+            "requirements-only",
+            "elements"
+          ]
+        },
+        {
+          "name": "relationship-kind",
+          "category": "topology",
+          "options": [
+            "contains",
+            "mixed-relations"
+          ]
+        },
+        {
+          "name": "reverse-relations",
+          "category": "topology",
+          "options": [
+            "forward-only",
+            "reverse"
+          ]
+        },
+        {
+          "name": "styling",
+          "category": "style",
+          "options": [
+            "default",
+            "direct-and-class-style"
+          ]
+        }
+      ]
     },
     {
       "kind": "gitgraph",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 224,
+      "dimensions": [
+        {
+          "name": "orientation",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "branches",
+          "category": "topology",
+          "options": [
+            "main-only",
+            "feature-branch"
+          ]
+        },
+        {
+          "name": "merge",
+          "category": "topology",
+          "options": [
+            "linear",
+            "merge"
+          ]
+        },
+        {
+          "name": "parallel-work",
+          "category": "topology",
+          "options": [
+            "single-branch",
+            "two-branches"
+          ]
+        },
+        {
+          "name": "commit-types",
+          "category": "style",
+          "options": [
+            "normal",
+            "highlight-reverse"
+          ]
+        },
+        {
+          "name": "tags",
+          "category": "data",
+          "options": [
+            "untagged",
+            "tagged"
+          ]
+        },
+        {
+          "name": "messages",
+          "category": "data",
+          "options": [
+            "ids-only",
+            "messages"
+          ]
+        },
+        {
+          "name": "branch-names",
+          "category": "syntax",
+          "options": [
+            "bare",
+            "quoted"
+          ]
+        }
+      ]
     },
     {
       "kind": "mindmap",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "depth",
+          "category": "topology",
+          "options": [
+            "shallow",
+            "deep"
+          ]
+        },
+        {
+          "name": "width",
+          "category": "topology",
+          "options": [
+            "narrow",
+            "wide"
+          ]
+        },
+        {
+          "name": "shape-variety",
+          "category": "style",
+          "options": [
+            "default",
+            "mixed-shapes"
+          ]
+        },
+        {
+          "name": "irregular-indentation",
+          "category": "topology",
+          "options": [
+            "regular",
+            "irregular"
+          ]
+        },
+        {
+          "name": "markdown",
+          "category": "syntax",
+          "options": [
+            "plain",
+            "markdown"
+          ]
+        },
+        {
+          "name": "html-entities",
+          "category": "syntax",
+          "options": [
+            "literal",
+            "html-and-entities"
+          ]
+        },
+        {
+          "name": "layout",
+          "category": "layout",
+          "options": [
+            "dagre",
+            "tidy-tree"
+          ]
+        },
+        {
+          "name": "metadata",
+          "category": "data",
+          "options": [
+            "minimal",
+            "title-comments-unicode"
+          ]
+        }
+      ]
     },
     {
       "kind": "packet",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "header",
+          "category": "syntax",
+          "options": [
+            "packet",
+            "packet-beta"
+          ]
+        },
+        {
+          "name": "field-count",
+          "category": "data",
+          "options": [
+            "four-fields",
+            "eight-fields"
+          ]
+        },
+        {
+          "name": "field-widths",
+          "category": "data",
+          "options": [
+            "fixed-four-bit",
+            "mixed-widths"
+          ]
+        },
+        {
+          "name": "single-bit",
+          "category": "data",
+          "options": [
+            "ranges-only",
+            "single-bit-fields"
+          ]
+        },
+        {
+          "name": "addressing",
+          "category": "syntax",
+          "options": [
+            "explicit-ranges",
+            "mixed-addressing"
+          ]
+        },
+        {
+          "name": "row-splitting",
+          "category": "layout",
+          "options": [
+            "single-row",
+            "multiple-rows"
+          ]
+        },
+        {
+          "name": "bit-labels",
+          "category": "style",
+          "options": [
+            "show-bits",
+            "hide-bits"
+          ]
+        },
+        {
+          "name": "metadata",
+          "category": "syntax",
+          "options": [
+            "minimal",
+            "title-comments-escaped"
+          ]
+        }
+      ]
     },
     {
       "kind": "radar",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "axis-count",
+          "category": "data",
+          "options": [
+            "four-axes",
+            "eight-axes"
+          ]
+        },
+        {
+          "name": "entry-form",
+          "category": "syntax",
+          "options": [
+            "positional",
+            "detailed"
+          ]
+        },
+        {
+          "name": "curve-count",
+          "category": "data",
+          "options": [
+            "one-curve",
+            "three-curves"
+          ]
+        },
+        {
+          "name": "range",
+          "category": "data",
+          "options": [
+            "inferred",
+            "explicit"
+          ]
+        },
+        {
+          "name": "graticule",
+          "category": "style",
+          "options": [
+            "circle",
+            "polygon"
+          ]
+        },
+        {
+          "name": "legend",
+          "category": "style",
+          "options": [
+            "shown",
+            "hidden"
+          ]
+        },
+        {
+          "name": "ticks",
+          "category": "data",
+          "options": [
+            "four-ticks",
+            "eight-ticks"
+          ]
+        },
+        {
+          "name": "reference-order",
+          "category": "topology",
+          "options": [
+            "declaration-order",
+            "reordered"
+          ]
+        }
+      ]
     },
     {
       "kind": "sankey",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "header",
+          "category": "syntax",
+          "options": [
+            "sankey",
+            "sankey-beta"
+          ]
+        },
+        {
+          "name": "branching",
+          "category": "topology",
+          "options": [
+            "linear",
+            "branching"
+          ]
+        },
+        {
+          "name": "merging",
+          "category": "topology",
+          "options": [
+            "separate",
+            "merging"
+          ]
+        },
+        {
+          "name": "stages",
+          "category": "topology",
+          "options": [
+            "two-stage",
+            "four-stage"
+          ]
+        },
+        {
+          "name": "csv-escaping",
+          "category": "syntax",
+          "options": [
+            "plain-records",
+            "quoted-records"
+          ]
+        },
+        {
+          "name": "alignment",
+          "category": "layout",
+          "options": [
+            "justify",
+            "left"
+          ]
+        },
+        {
+          "name": "link-color",
+          "category": "style",
+          "options": [
+            "source",
+            "gradient"
+          ]
+        },
+        {
+          "name": "values",
+          "category": "data",
+          "options": [
+            "hidden",
+            "shown-with-units"
+          ]
+        }
+      ]
     },
     {
       "kind": "treemap",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "header",
+          "category": "syntax",
+          "options": [
+            "treemap",
+            "treemap-beta"
+          ]
+        },
+        {
+          "name": "root-count",
+          "category": "topology",
+          "options": [
+            "single-root",
+            "multiple-roots"
+          ]
+        },
+        {
+          "name": "depth",
+          "category": "topology",
+          "options": [
+            "shallow",
+            "deep"
+          ]
+        },
+        {
+          "name": "branch-width",
+          "category": "data",
+          "options": [
+            "four-leaves",
+            "eight-leaves"
+          ]
+        },
+        {
+          "name": "value-syntax",
+          "category": "syntax",
+          "options": [
+            "colon-values",
+            "comma-values"
+          ]
+        },
+        {
+          "name": "classes",
+          "category": "style",
+          "options": [
+            "default",
+            "class-styled"
+          ]
+        },
+        {
+          "name": "values",
+          "category": "data",
+          "options": [
+            "hidden",
+            "shown-formatted"
+          ]
+        },
+        {
+          "name": "sizing",
+          "category": "layout",
+          "options": [
+            "responsive",
+            "intrinsic-padded"
+          ]
+        }
+      ]
     },
     {
       "kind": "venn",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "set-count",
+          "category": "data",
+          "options": [
+            "three-sets",
+            "four-sets"
+          ]
+        },
+        {
+          "name": "set-size",
+          "category": "data",
+          "options": [
+            "default-sizes",
+            "explicit-sizes"
+          ]
+        },
+        {
+          "name": "pairwise-unions",
+          "category": "topology",
+          "options": [
+            "none",
+            "pairwise"
+          ]
+        },
+        {
+          "name": "multi-set-union",
+          "category": "topology",
+          "options": [
+            "pairwise-only",
+            "triple-union"
+          ]
+        },
+        {
+          "name": "intersection-text",
+          "category": "data",
+          "options": [
+            "unlabelled",
+            "labelled"
+          ]
+        },
+        {
+          "name": "set-style",
+          "category": "style",
+          "options": [
+            "default",
+            "styled-sets"
+          ]
+        },
+        {
+          "name": "intersection-style",
+          "category": "style",
+          "options": [
+            "default-intersections",
+            "styled-intersections"
+          ]
+        },
+        {
+          "name": "sizing",
+          "category": "layout",
+          "options": [
+            "responsive",
+            "intrinsic-debug"
+          ]
+        }
+      ]
     },
     {
       "kind": "ishikawa",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "header",
+          "category": "syntax",
+          "options": [
+            "ishikawa",
+            "ishikawa-beta"
+          ]
+        },
+        {
+          "name": "cause-count",
+          "category": "data",
+          "options": [
+            "three-causes",
+            "six-causes"
+          ]
+        },
+        {
+          "name": "nesting",
+          "category": "topology",
+          "options": [
+            "flat",
+            "nested"
+          ]
+        },
+        {
+          "name": "depth",
+          "category": "topology",
+          "options": [
+            "two-level",
+            "four-level"
+          ]
+        },
+        {
+          "name": "alternation",
+          "category": "topology",
+          "options": [
+            "single-side",
+            "alternating"
+          ]
+        },
+        {
+          "name": "indentation",
+          "category": "syntax",
+          "options": [
+            "regular",
+            "irregular"
+          ]
+        },
+        {
+          "name": "label-form",
+          "category": "syntax",
+          "options": [
+            "plain",
+            "entities-and-html"
+          ]
+        },
+        {
+          "name": "wrapping",
+          "category": "layout",
+          "options": [
+            "short",
+            "long-wrapping"
+          ]
+        }
+      ]
     },
     {
       "kind": "cynefin",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "domain-density",
+          "category": "data",
+          "options": [
+            "one-item",
+            "three-items"
+          ]
+        },
+        {
+          "name": "empty-domain",
+          "category": "topology",
+          "options": [
+            "all-populated",
+            "empty-domain"
+          ]
+        },
+        {
+          "name": "transitions",
+          "category": "topology",
+          "options": [
+            "single-transition",
+            "cross-domain"
+          ]
+        },
+        {
+          "name": "transition-labels",
+          "category": "data",
+          "options": [
+            "unlabelled",
+            "labelled"
+          ]
+        },
+        {
+          "name": "confusion",
+          "category": "data",
+          "options": [
+            "single-item",
+            "overflow"
+          ]
+        },
+        {
+          "name": "descriptions",
+          "category": "data",
+          "options": [
+            "hidden",
+            "shown"
+          ]
+        },
+        {
+          "name": "boundaries",
+          "category": "style",
+          "options": [
+            "wavy",
+            "straight"
+          ]
+        },
+        {
+          "name": "sizing",
+          "category": "layout",
+          "options": [
+            "responsive",
+            "intrinsic"
+          ]
+        }
+      ]
     },
     {
       "kind": "block",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "columns",
+          "category": "layout",
+          "options": [
+            "automatic",
+            "explicit"
+          ]
+        },
+        {
+          "name": "spans",
+          "category": "topology",
+          "options": [
+            "single-column",
+            "column-spans"
+          ]
+        },
+        {
+          "name": "spaces",
+          "category": "topology",
+          "options": [
+            "packed",
+            "spaces"
+          ]
+        },
+        {
+          "name": "composites",
+          "category": "topology",
+          "options": [
+            "flat",
+            "nested-composites"
+          ]
+        },
+        {
+          "name": "shapes",
+          "category": "style",
+          "options": [
+            "rectangles",
+            "mixed-shapes"
+          ]
+        },
+        {
+          "name": "links",
+          "category": "topology",
+          "options": [
+            "linear",
+            "branching"
+          ]
+        },
+        {
+          "name": "edge-style",
+          "category": "style",
+          "options": [
+            "solid",
+            "labelled-thick-dotted"
+          ]
+        },
+        {
+          "name": "classes",
+          "category": "style",
+          "options": [
+            "default",
+            "classes-and-inline-style"
+          ]
+        }
+      ]
     },
     {
       "kind": "eventmodeling",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "syntax",
+          "category": "syntax",
+          "options": [
+            "compact",
+            "relaxed"
+          ]
+        },
+        {
+          "name": "timeframes",
+          "category": "data",
+          "options": [
+            "four-frames",
+            "eight-frames"
+          ]
+        },
+        {
+          "name": "reset-frame",
+          "category": "topology",
+          "options": [
+            "continuous",
+            "reset"
+          ]
+        },
+        {
+          "name": "entity-alias",
+          "category": "data",
+          "options": [
+            "default-entity",
+            "entity-alias"
+          ]
+        },
+        {
+          "name": "swimlanes",
+          "category": "topology",
+          "options": [
+            "default-lane",
+            "namespaced-lanes"
+          ]
+        },
+        {
+          "name": "relations",
+          "category": "topology",
+          "options": [
+            "inferred",
+            "explicit"
+          ]
+        },
+        {
+          "name": "relation-count",
+          "category": "topology",
+          "options": [
+            "single",
+            "multiple"
+          ]
+        },
+        {
+          "name": "inline-data",
+          "category": "data",
+          "options": [
+            "no-data",
+            "inline-data"
+          ]
+        }
+      ]
     },
     {
       "kind": "agentflow",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "node-shapes",
+          "category": "style",
+          "options": [
+            "task-only",
+            "mixed-shapes"
+          ]
+        },
+        {
+          "name": "fan-out",
+          "category": "topology",
+          "options": [
+            "linear",
+            "fan-out"
+          ]
+        },
+        {
+          "name": "edge-labels",
+          "category": "data",
+          "options": [
+            "unlabelled",
+            "labelled"
+          ]
+        },
+        {
+          "name": "failure-edge",
+          "category": "topology",
+          "options": [
+            "success-only",
+            "failure-path"
+          ]
+        },
+        {
+          "name": "flows",
+          "category": "topology",
+          "options": [
+            "global",
+            "flow-container"
+          ]
+        },
+        {
+          "name": "nested-flows",
+          "category": "topology",
+          "options": [
+            "single-level",
+            "nested"
+          ]
+        },
+        {
+          "name": "connector-metadata",
+          "category": "data",
+          "options": [
+            "plain",
+            "connector-and-metadata"
+          ]
+        }
+      ]
     },
     {
       "kind": "usecase",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "direction",
+          "category": "layout",
+          "options": [
+            "left-to-right",
+            "top-to-bottom"
+          ]
+        },
+        {
+          "name": "actor-variants",
+          "category": "data",
+          "options": [
+            "single-actor",
+            "multiple-actor-types"
+          ]
+        },
+        {
+          "name": "usecase-form",
+          "category": "style",
+          "options": [
+            "ellipses",
+            "mixed-forms"
+          ]
+        },
+        {
+          "name": "boundary",
+          "category": "topology",
+          "options": [
+            "system",
+            "nested-package"
+          ]
+        },
+        {
+          "name": "include",
+          "category": "topology",
+          "options": [
+            "associations",
+            "include"
+          ]
+        },
+        {
+          "name": "extend",
+          "category": "topology",
+          "options": [
+            "base-only",
+            "extend"
+          ]
+        },
+        {
+          "name": "generalization",
+          "category": "topology",
+          "options": [
+            "flat-actors",
+            "generalization"
+          ]
+        },
+        {
+          "name": "notes-style",
+          "category": "style",
+          "options": [
+            "plain",
+            "notes-and-classes"
+          ]
+        }
+      ]
     },
     {
       "kind": "wardley",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "component-count",
+          "category": "data",
+          "options": [
+            "four-components",
+            "eight-components"
+          ]
+        },
+        {
+          "name": "inertia",
+          "category": "data",
+          "options": [
+            "none",
+            "inertia"
+          ]
+        },
+        {
+          "name": "sourcing",
+          "category": "data",
+          "options": [
+            "none",
+            "sourcing-strategies"
+          ]
+        },
+        {
+          "name": "dependencies",
+          "category": "topology",
+          "options": [
+            "linear",
+            "branching"
+          ]
+        },
+        {
+          "name": "link-style",
+          "category": "style",
+          "options": [
+            "solid",
+            "dashed-labelled"
+          ]
+        },
+        {
+          "name": "flow-links",
+          "category": "topology",
+          "options": [
+            "dependencies",
+            "flow"
+          ]
+        },
+        {
+          "name": "pipeline",
+          "category": "topology",
+          "options": [
+            "components",
+            "pipeline"
+          ]
+        },
+        {
+          "name": "annotations",
+          "category": "data",
+          "options": [
+            "plain",
+            "notes-annotations-accelerators"
+          ]
+        }
+      ]
     },
     {
       "kind": "zenuml",
       "independentScenarioCount": 256,
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
-      "structuralSignatureCount": 256
+      "structuralSignatureCount": 256,
+      "structuralProfileCount": 256,
+      "dimensions": [
+        {
+          "name": "aliases",
+          "category": "data",
+          "options": [
+            "direct-names",
+            "aliases"
+          ]
+        },
+        {
+          "name": "participant-groups",
+          "category": "topology",
+          "options": [
+            "ungrouped",
+            "grouped"
+          ]
+        },
+        {
+          "name": "message-kind",
+          "category": "style",
+          "options": [
+            "synchronous",
+            "asynchronous"
+          ]
+        },
+        {
+          "name": "nesting",
+          "category": "topology",
+          "options": [
+            "flat",
+            "nested-messages"
+          ]
+        },
+        {
+          "name": "creation",
+          "category": "topology",
+          "options": [
+            "existing-participants",
+            "creation"
+          ]
+        },
+        {
+          "name": "returns",
+          "category": "topology",
+          "options": [
+            "one-way",
+            "assignments-and-returns"
+          ]
+        },
+        {
+          "name": "conditionals",
+          "category": "topology",
+          "options": [
+            "linear",
+            "if-else"
+          ]
+        },
+        {
+          "name": "concurrency",
+          "category": "topology",
+          "options": [
+            "sequential",
+            "loop-and-parallel"
+          ]
+        }
+      ]
     }
   ]
 }

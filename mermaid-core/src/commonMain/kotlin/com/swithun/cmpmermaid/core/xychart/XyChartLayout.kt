@@ -1174,8 +1174,10 @@ private class XyPlot(
             }
             fontSize
         }
-        val fontSize = floor(candidates.minOrNull() ?: 0f)
-        if (fontSize <= 0f) return emptyList()
+        val configuredFontSize = floor(candidates.minOrNull() ?: 0f)
+        // Mermaid.js 12.0.0: xychartRenderer.ts writes the negative value to
+        // SVG. Browsers reject that attribute and inherit the 16px default.
+        val fontSize = if (configuredFontSize < 0f) 16f else configuredFontSize
         val dimensions = XyTextDimensions(context)
         return bars.mapIndexed { index, bar ->
             val targetY = if (config.showDataLabelOutsideBar) {

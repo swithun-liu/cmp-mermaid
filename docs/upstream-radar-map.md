@@ -79,7 +79,7 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - `OfficialRadarDocumentationTest` executes all three active examples
   extracted from Mermaid's Radar documentation.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 structurally distinct same-source cases against Mermaid.js `12.0.0`.
+  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
   Both corpora report `0 review / 0 fail`, all 269 geometry pairs pass, and all
   16 matrix contact sheets were manually reviewed.
 

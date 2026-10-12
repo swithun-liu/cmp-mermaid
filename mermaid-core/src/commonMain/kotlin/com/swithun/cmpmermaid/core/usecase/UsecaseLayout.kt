@@ -292,6 +292,14 @@ internal class UsecaseLayout {
                 nodeShapeLayouts = nodeShapeLayouts,
                 edgeLabelSizes = renderedEdgeLabels.mapValues { (_, label) -> label.size },
                 options = layoutOptions,
+                // Mermaid.js 12.0.0: usecaseDb.ts -> getData and
+                // rendering-util/layout-algorithms/dagre/index.js ->
+                // prepareLayoutForDagre. Preserve LayoutData.nodes order;
+                // Dagre uses insertion order to resolve equal-crossing layouts.
+                layoutNodeOrder = buildList {
+                    addAll(visuals.keys)
+                    addAll(document.systemBoundaries.keys)
+                },
             )
         ) {
             is GMResult.Ok -> result.value

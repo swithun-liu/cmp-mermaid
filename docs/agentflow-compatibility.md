@@ -40,7 +40,7 @@ in a later upstream release.
   vertices, edges, containers, and connectors.
 - 13 independent production scenarios cover all 32 declared Agentflow
   capability points.
-- The fresh 256-case structural Native/Official audit reports `226 pass / 30 review / 0 fail`; geometry has 0 hard failures with width `1.009-1.130`, height `0.918-1.100`, and foreground ink `0.841-1.210`.
+- The fresh 256-case full-factorial input audit reports `206 pass / 50 review / 0 fail`; geometry has 0 hard failures with width `1.002-1.196`, height `0.919-1.200`, and foreground ink `0.842-1.122`.
 - The production geometry audit passed all 13 pairs. Width, height, and
   foreground-ink ratios were `1.041-1.186`, `0.820-1.095`, and
   `0.766-1.206`.

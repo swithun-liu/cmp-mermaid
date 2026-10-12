@@ -59,7 +59,7 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   validity, self-relationships, and repeated relationships.
 - 13 independent production Native/Official pairs pass geometry and detail
   review (`10 pass / 3 manually reviewed / 0 fail`).
-- The fresh 256-case structural Native/Official audit reports `207 pass / 49 review / 0 fail`; geometry has 0 hard failures with width `1.015-1.098`, height `0.981-1.059`, and foreground ink `0.538-0.899`.
+- The fresh 256-case full-factorial input audit reports `148 pass / 108 review / 0 fail`; geometry has 0 hard failures with width `0.961-1.081`, height `0.974-1.172`, and foreground ink `0.620-1.084`.
 - 20 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0` with Dagre.
 - The 20 Native Android screenshots are compared side by side with 20

@@ -127,6 +127,217 @@ class SwimlaneLayoutTest {
     }
 
     @Test
+    fun keepsCrossLaneLabelsFromExpandingLaneBounds() {
+        val scene = render(
+            """
+                swimlane-beta TD
+                  subgraph Intake
+                    N1[Interpret]
+                  end
+                  subgraph Assessment
+                    N2{Track?}
+                  end
+                  subgraph Execution
+                    N3[Report]
+                  end
+                  subgraph Closure
+                    N4[Attest]
+                  end
+                  N1 --> N2
+                  N2 --> N3
+                  N3 --> N4
+                  N3 --> N4
+                  N4 -.-> N2
+                  N1 -->|accepted| N3
+                  N4 -. revise .-> N1
+            """.trimIndent(),
+        )
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val lanes = listOf("Intake", "Assessment", "Execution", "Closure")
+            .map { id -> shapes.getValue("subgraph_$id").bounds }
+
+        lanes.zipWithNext().forEach { (first, second) ->
+            assertTrue(first.right <= second.left + 0.01f)
+        }
+        val edgeLabels = scene.elements.filterIsInstance<SceneText>()
+            .filter { text -> text.text == "accepted" || text.text == "revise" }
+            .associateBy(SceneText::text)
+        assertEquals(setOf("accepted", "revise"), edgeLabels.keys)
+        val accepted = edgeLabels.getValue("accepted").bounds
+        val revise = edgeLabels.getValue("revise").bounds
+        assertTrue(
+            accepted.right <= revise.left ||
+                revise.right <= accepted.left ||
+                accepted.bottom <= revise.top ||
+                revise.bottom <= accepted.top,
+            "accepted=$accepted overlaps revise=$revise",
+        )
+    }
+
+    @Test
+    fun liftsTopLaneTitlesClearOfReturnRailLabels() {
+        val scene = render(
+            """
+                swimlane-beta TD
+                  subgraph Intake
+                    N1[Service Ticket Report]
+                  end
+                  subgraph Assessment
+                    N2{Service Ticket Analyze?}
+                  end
+                  subgraph Execution
+                    N3[Service Ticket Approve]
+                  end
+                  subgraph Closure
+                    N4[Service Ticket Credit]
+                  end
+                  N1 --> N2
+                  N2 --> N3
+                  N2 --> N4
+                  N1 -->|accepted| N3
+                  N4 -. revise .-> N1
+            """.trimIndent(),
+        )
+        val titles = scene.elements.filterIsInstance<SceneShape>()
+            .filter { shape ->
+                shape.id in setOf(
+                    "subgraph_Intake",
+                    "subgraph_Assessment",
+                    "subgraph_Execution",
+                    "subgraph_Closure",
+                )
+            }
+        val reviseBackground = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "L_N4_N1_0_label_background" }
+
+        assertEquals(4, titles.size)
+        assertTrue(
+            titles.none { title ->
+                title.bounds.left < reviseBackground.bounds.right &&
+                    title.bounds.right > reviseBackground.bounds.left &&
+                    title.bounds.top < reviseBackground.bounds.bottom &&
+                    title.bounds.bottom > reviseBackground.bounds.top
+            },
+            "titles=${titles.map(SceneShape::bounds)} revise=${reviseBackground.bounds}",
+        )
+    }
+
+    @Test
+    fun writesNestedLaneBoundsAndPaintOrderLikeUpstreamSourceOrder() {
+        val scene = render(
+            """
+                swimlane-beta TD
+                  subgraph Intake
+                    N1[Forecast]
+                  end
+                  subgraph Assessment
+                    subgraph Specialist
+                      N2[Prioritize]
+                    end
+                  end
+                  N3[Assign]
+                  N4[Release]
+                  N1 --> N2 --> N3 --> N4
+            """.trimIndent(),
+        )
+        val assessment = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "subgraph_Assessment" }
+        val specialist = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "subgraph_Specialist" }
+        val intakeBody = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "subgraph_Intake_body" }
+        val defaultBody = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape ->
+                shape.id == "subgraph_${SwimlaneLayout.DefaultLaneId}_body"
+            }
+        val assessmentTitleIndex = scene.elements.indexOfFirst { element ->
+            element is SceneText && element.text == "Assessment"
+        }
+        val specialistIndex = scene.elements.indexOf(specialist)
+        val intakeBodyIndex = scene.elements.indexOfFirst { element ->
+            element is SceneShape && element.id == "subgraph_Intake_body"
+        }
+
+        assertTrue(assessment.bounds.width < specialist.bounds.width)
+        assertEquals(defaultBody.bounds.width, intakeBody.bounds.width, 0.01f)
+        assertEquals(defaultBody.bounds.right, intakeBody.bounds.left, 0.01f)
+        assertTrue(assessmentTitleIndex >= 0)
+        assertTrue(
+            specialistIndex > assessmentTitleIndex,
+            "assessmentTitle=$assessmentTitleIndex specialist=$specialistIndex " +
+                "elements=${scene.elements.map { element -> element.describe() }}",
+        )
+        assertTrue(
+            intakeBodyIndex > specialistIndex,
+            "specialist=$specialistIndex intakeBody=$intakeBodyIndex",
+        )
+    }
+
+    @Test
+    fun splitsWeakerFanOutSiblingOntoSecondarySide() {
+        val scene = render(
+            """
+                swimlane-beta LR
+                  subgraph Intake
+                    N1[Book]
+                  end
+                  subgraph Assessment
+                    N2{Assign?}
+                  end
+                  subgraph Execution
+                    N3[Track]
+                  end
+                  subgraph Closure
+                    N4[Complete]
+                  end
+                  N1 --> N2
+                  N2 --> N3
+                  N2 --> N4
+            """.trimIndent(),
+        )
+        val decision = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "N2" }
+        val longBranch = scene.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "L_N2_N4_0" }
+
+        assertEquals(decision.bounds.right, longBranch.points.first().x, 0.01f)
+        assertTrue(longBranch.points.maxOf { point -> point.x } > decision.bounds.right + 20f)
+    }
+
+    @Test
+    fun separatesDiamondOutgoingEdgeFromOccupiedIncomingSide() {
+        val scene = render(
+            """
+                swimlane-beta LR
+                  subgraph Intake
+                    N1[Detect]
+                  end
+                  subgraph Assessment
+                    N2{Identify?}
+                  end
+                  subgraph Execution
+                    N3[Treat]
+                  end
+                  subgraph Closure
+                    N4[Monitor]
+                  end
+                  N1 --> N2
+                  N2 --> N3
+                  N3 --> N4
+                  N3 --> N4
+                  N4 -.-> N2
+            """.trimIndent(),
+        )
+        val decision = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "N2" }
+        val outgoing = scene.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "L_N2_N3_0" }
+
+        assertEquals(decision.bounds.right, outgoing.points.first().x, 0.01f)
+        assertTrue(outgoing.points.maxOf { point -> point.x } > decision.bounds.right + 20f)
+    }
+
+    @Test
     fun scopedDagreOverrideUsesRegularFlowchartClusters() {
         val scene = render(
             """
@@ -202,5 +413,12 @@ class SwimlaneLayoutTest {
     private fun render(source: String): MermaidScene {
         val result = engine.render(source, context)
         return assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+    }
+
+    private fun Any.describe(): String = when (this) {
+        is SceneShape -> "shape:$id:$zIndex"
+        is SceneText -> "text:$text:$zIndex"
+        is ScenePath -> "path:$id:$zIndex"
+        else -> toString()
     }
 }

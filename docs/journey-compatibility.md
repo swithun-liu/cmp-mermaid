@@ -53,7 +53,7 @@ typed `MermaidTheme.journey` API.
   capability points. Production detail and geometry pass all 13 pairs, with
   width ratios `1.021-1.037`, height ratios `1.030-1.060`, and foreground-ink
   ratios `1.011-1.080`.
-- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.017-1.033`, height `1.023-1.053`, and foreground ink `0.910-1.107`.
+- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `0.985-1.037`, height `0.923-1.060`, and foreground ink `0.836-1.104`.
 - Android Emulator, iOS Simulator, Desktop, and Web load tests traverse the
   complete 236-case mixed corpus.
 

@@ -57,7 +57,7 @@ presentation flags do not alter the fixed intrinsic SceneGraph dimensions.
   Compose and Mermaid.js `12.0.0`: detail audit `13 pass / 0 review / 0 fail`;
   geometry width `1.016-1.020`, height `1.012-1.015`, and foreground ink
   `0.967-1.144`.
-- The fresh 256-case structural Native/Official audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `1.012-1.016`, height `1.008-1.018`, and foreground ink `0.962-1.154`.
+- The fresh 256-case full-factorial input audit reports `224 pass / 32 review / 0 fail`; geometry has 0 hard failures with width `1.016-1.019`, height `1.012-1.015`, and foreground ink `0.901-1.106`.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
 

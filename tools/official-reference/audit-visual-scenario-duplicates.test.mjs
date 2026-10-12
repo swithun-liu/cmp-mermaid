@@ -1,9 +1,14 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  analyzeInputSpaceCoverage,
   duplicateGroups,
   manifestVisualStructureFingerprint,
 } from './audit-visual-scenario-duplicates.mjs';
+import {
+  familyDimensionSpecs,
+  scenarioBlueprintsByKind,
+} from './visual-structure-corpus.mjs';
 
 test('manifest fingerprint ignores rendered text and identifiers', () => {
   const first = manifest({
@@ -61,6 +66,70 @@ test('duplicate groups list every case sharing the same evidence value', () => {
   assert.deepEqual(
     duplicateGroups(entries, (entry) => entry.value),
     [{ value: 'a', ids: ['case-1', 'case-3'] }],
+  );
+});
+
+test('input-space coverage proves the full balanced flowchart matrix', () => {
+  const report = analyzeInputSpaceCoverage(
+    scenarioBlueprintsByKind.flowchart,
+    familyDimensionSpecs.flowchart,
+  );
+
+  assert.equal(report.status, 'pass');
+  assert.deepEqual(report.failures, []);
+  assert.deepEqual(report.counts, {
+    cases: 256,
+    namedDimensions: 8,
+    dimensionPairs: 28,
+    uniqueDimensionVectors: 256,
+    uniqueTopologyAndDataVectors: 32,
+    uniqueStructuralProfiles: 256,
+  });
+  assert.ok(
+    report.dimensions.every((dimension) =>
+      dimension.status === 'pass' &&
+      Object.values(dimension.optionCounts).every((count) => count === 128)
+    ),
+  );
+  assert.ok(
+    report.dimensionPairs.every((pair) =>
+      pair.status === 'pass' &&
+      pair.combinations.every((combination) => combination.count === 64)
+    ),
+  );
+  assert.ok(
+    report.topologyAndDataEffects.every((effect) =>
+      effect.status === 'pass' &&
+      effect.comparisonCount === 128 &&
+      effect.unchangedPairs.length === 0
+    ),
+  );
+  assert.deepEqual(report.repeatedDimensionVectors, []);
+  assert.deepEqual(report.nearIsomorphicStructuralProfiles, []);
+});
+
+test('input-space coverage rejects duplicated dimension vectors', () => {
+  const entries = scenarioBlueprintsByKind.flowchart.map((entry, index) =>
+    index === 1
+      ? {
+          ...entry,
+          inputDimensions:
+            scenarioBlueprintsByKind.flowchart[0].inputDimensions,
+        }
+      : entry
+  );
+  const report = analyzeInputSpaceCoverage(
+    entries,
+    familyDimensionSpecs.flowchart,
+  );
+
+  assert.equal(report.status, 'fail');
+  assert.equal(report.counts.uniqueDimensionVectors, 255);
+  assert.ok(report.repeatedDimensionVectors.length > 0);
+  assert.ok(
+    report.failures.some((failure) =>
+      failure.includes('full-factorial dimension vectors')
+    ),
   );
 });
 

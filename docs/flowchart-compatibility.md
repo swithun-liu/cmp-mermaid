@@ -90,7 +90,7 @@ Additional platform limitations:
   sanitization, colors, all shapes, markers, D3 curves, numeric Dagre parity,
   compound Dagre hierarchy, line hops, assets, interactions, viewport behavior,
   and resource limits.
-- The fresh 256-case structural Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.022-1.103`, height `0.976-1.051`, and foreground ink `0.947-1.259`.
+- The fresh 256-case full-factorial input audit reports `253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width `1.035-1.113`, height `0.939-1.117`, and foreground ink `0.931-1.144`.
 - All 16 matrix contact sheets were manually reviewed for topology, advanced
   shapes, marker visibility, labels, clipping, overlap, and paint order.
 - Marker manifests include actual path endpoint anchors. The detail auditor

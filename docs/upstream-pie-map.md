@@ -81,9 +81,8 @@ grammar is Langium-based rather than Jison-based.
   Mermaid's Pie documentation.
 - The Android gallery compares 20 identical sources against official Mermaid
   `12.0.0` output.
-- The structural gate compares 256 structurally distinct same-source cases:
-  `241 pass / 15 review / 0 fail`, with 0 geometry hard failures. Reviews are
-  text-overlap and paint-order occlusion-ratio representation differences.
+- The full-factorial input gate compares 256 same-source cases:
+  `256 pass / 0 review / 0 fail`, with 0 geometry hard failures.
 
 ## Upgrade Procedure
 
@@ -96,6 +95,6 @@ grammar is Langium-based rather than Jison-based.
 5. Run full JVM tests, Android lint/assembly, and every configured iOS compile
    target.
 6. Install the Android sample and capture all 20 Native/Official gallery pairs.
-7. Capture the 256-case structural matrix and run detail and geometry audits.
+7. Capture the 256-case full-factorial input matrix and run detail and geometry audits.
 8. Review all matrix contact sheets and update this map, the compatibility
    matrix, and the public stability report before publishing.

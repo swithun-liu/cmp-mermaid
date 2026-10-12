@@ -1,13 +1,31 @@
 package com.swithun.cmpmermaid.debugui
 
+import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.SceneRect
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
 
 class SceneAuditManifestTest {
+    @Test
+    fun includesViewportPaddingInAuditedCoordinates() {
+        val manifest = MermaidScene(
+            width = 700f,
+            height = 500f,
+            background = SceneColor(0xFFFFFFFF),
+            elements = emptyList(),
+            viewportPadding = 12f,
+        ).toAuditManifestJson()
+
+        assertContains(
+            manifest,
+            "\"viewport\":{\"x\":-12.0,\"y\":-12.0,\"width\":724.0,\"height\":524.0",
+        )
+    }
+
     @Test
     fun removesHorizontalLayoutPaddingFromStartAndEndTextBounds() {
         val bounds = SceneRect(left = 2f, top = 3f, right = 30f, bottom = 19f)

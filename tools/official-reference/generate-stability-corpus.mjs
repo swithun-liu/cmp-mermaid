@@ -593,7 +593,9 @@ function renderVisualStructureCorpusMetadata() {
       'unique-scenario-blueprint-id',
       'explicit-256-entry-business-scenario-catalog',
       'label-stripped-normalized-mermaid-source',
-      'eight-rendered-semantic-decisions',
+      'eight-named-orthogonal-input-dimensions',
+      'balanced-full-factorial-2x2x2x2x2x2x2x2-matrix',
+      'family-specific-structural-profile',
     ],
     diagramFamilies: visualStructureCorpusSummary.countsByKind,
   };
