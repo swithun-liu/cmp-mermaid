@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import {
   cases,
   casesPerKind,
+  familyCoverageContracts,
   familyDimensionSpecs,
   kinds,
   normalizeScenarioSource,
@@ -47,6 +48,17 @@ export function duplicateGroups(entries, valueOf) {
   return [...values.entries()]
     .filter(([, ids]) => ids.length > 1)
     .map(([value, ids]) => ({ value, ids }));
+}
+
+function groupBy(entries, keyOf) {
+  const groups = new Map();
+  for (const entry of entries) {
+    const key = keyOf(entry);
+    const group = groups.get(key) ?? [];
+    group.push(entry);
+    groups.set(key, group);
+  }
+  return groups;
 }
 
 export function analyzeInputSpaceCoverage(
@@ -294,6 +306,129 @@ export function analyzeInputSpaceCoverage(
   };
 }
 
+export function analyzeCoverageDrivenCoverage(entries, contract) {
+  const failures = [];
+  const categoryReports = contract.categories.map((category) => {
+    const count = entries.filter(
+      (entry) => entry.coverageCategory === category.id,
+    ).length;
+    const status = count === category.quota ? 'pass' : 'fail';
+    if (status === 'fail') {
+      failures.push(
+        `${category.id} has ${count}/${category.quota} required cases`,
+      );
+    }
+    return {
+      id: category.id,
+      expectedCount: category.quota,
+      count,
+      status,
+    };
+  });
+  const unexpectedCategories = entries
+    .map((entry) => entry.coverageCategory)
+    .filter((value) =>
+      !contract.categories.some((category) => category.id === value)
+    );
+  if (unexpectedCategories.length > 0) {
+    failures.push(
+      `unexpected categories: ${[...new Set(unexpectedCategories)].join(', ')}`,
+    );
+  }
+
+  const capabilityCounts = new Map();
+  for (const entry of entries) {
+    for (const capability of entry.coverageCapabilities ?? []) {
+      capabilityCounts.set(
+        capability,
+        (capabilityCounts.get(capability) ?? 0) + 1,
+      );
+    }
+  }
+  const missingCapabilities = contract.requiredCapabilities.filter(
+    (capability) => !capabilityCounts.has(capability),
+  );
+  if (missingCapabilities.length > 0) {
+    failures.push(
+      `missing required capabilities: ${missingCapabilities.join(', ')}`,
+    );
+  }
+
+  const structuralProfiles = entries.map((entry) =>
+    sha256(JSON.stringify(
+      entry.normalizedSemanticStructure.structuralProfile,
+    ))
+  );
+  const uniqueStructuralProfileCount = new Set(structuralProfiles).size;
+  if (uniqueStructuralProfileCount < contract.minimumStructuralProfiles) {
+    failures.push(
+      `expected at least ${contract.minimumStructuralProfiles} structural ` +
+        `profiles, found ${uniqueStructuralProfileCount}`,
+    );
+  }
+
+  const equivalentEntries = entries.filter(
+    (entry) => entry.coverageCategory === 'equivalent-syntax',
+  );
+  const equivalenceGroups = groupBy(
+    equivalentEntries,
+    (entry) => entry.equivalenceGroup,
+  );
+  const invalidEquivalenceGroups = [...equivalenceGroups.entries()]
+    .filter(([, group]) =>
+      group.length !== 2 ||
+      new Set(group.map((entry) => entry.syntaxVariant)).size !== 2 ||
+      new Set(group.map((entry) =>
+        JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
+      )).size !== 1
+    )
+    .map(([group]) => group);
+  if (
+    equivalenceGroups.size !== contract.equivalentSyntaxGroupCount ||
+    invalidEquivalenceGroups.length > 0
+  ) {
+    failures.push(
+      `expected ${contract.equivalentSyntaxGroupCount} valid equivalent ` +
+        `syntax pairs, found ${equivalenceGroups.size}; invalid ` +
+        `${invalidEquivalenceGroups.join(', ') || 'none'}`,
+    );
+  }
+
+  return {
+    mode: contract.mode,
+    status: failures.length === 0 ? 'pass' : 'fail',
+    counts: {
+      cases: entries.length,
+      categories: categoryReports.length,
+      requiredCapabilities: contract.requiredCapabilities.length,
+      coveredRequiredCapabilities:
+        contract.requiredCapabilities.length - missingCapabilities.length,
+      uniqueCapabilities: capabilityCounts.size,
+      uniqueStructuralProfiles: uniqueStructuralProfileCount,
+      equivalentSyntaxGroups: equivalenceGroups.size,
+    },
+    requirements: {
+      cases: contract.caseCount,
+      categories: Object.fromEntries(
+        contract.categories.map((category) => [category.id, category.quota]),
+      ),
+      requiredCapabilities: contract.requiredCapabilities,
+      minimumStructuralProfiles: contract.minimumStructuralProfiles,
+      equivalentSyntaxGroups: contract.equivalentSyntaxGroupCount,
+    },
+    categories: categoryReports,
+    capabilityCounts: Object.fromEntries(
+      [...capabilityCounts.entries()].sort(([left], [right]) =>
+        left.localeCompare(right)
+      ),
+    ),
+    missingCapabilities,
+    unexpectedCategories: [...new Set(unexpectedCategories)],
+    invalidEquivalenceGroups,
+    failures,
+  };
+}
+
 export function auditVisualScenarioDuplicates({
   inputDirectory,
   outputFile,
@@ -304,17 +439,27 @@ export function auditVisualScenarioDuplicates({
   const familyReports = selectedKinds.map((kind) => {
     const familyFailures = [];
     const familyCases = cases.filter((entry) => entry.kind === kind);
-    const inputSpaceCoverage = analyzeInputSpaceCoverage(
-      familyCases,
-      familyDimensionSpecs[kind],
-    );
+    const coverageContract = familyCoverageContracts[kind];
+    const coverageAudit = coverageContract.mode === 'coverage-driven'
+      ? analyzeCoverageDrivenCoverage(familyCases, coverageContract)
+      : analyzeInputSpaceCoverage(
+          familyCases,
+          familyDimensionSpecs[kind],
+        );
     const caseReports = familyCases.map((entry) => {
       const prefix = capturePrefix(inputDirectory, entry);
       const nativeManifest = readJson(`${prefix}_native.manifest.json`);
       return {
         id: entry.id,
         scenarioBlueprintId: entry.scenarioBlueprintId,
-        inputDimensions: entry.inputDimensions,
+        ...(entry.inputDimensions === undefined
+          ? {
+              coverageCategory: entry.coverageCategory,
+              coverageCapabilities: entry.coverageCapabilities,
+              equivalenceGroup: entry.equivalenceGroup,
+              syntaxVariant: entry.syntaxVariant,
+            }
+          : { inputDimensions: entry.inputDimensions }),
         normalizedSemanticSignature: entry.normalizedSemanticSignature,
         normalizedSourceSha256: sha256(normalizeScenarioSource(entry)),
         structuralProfileFingerprint: sha256(JSON.stringify(
@@ -393,17 +538,18 @@ export function auditVisualScenarioDuplicates({
         );
       }
     }
-    if (
-      counts.uniqueStructuralProfiles < minimumStructuralProfileCount
-    ) {
+    const minimumProfiles = coverageContract.mode === 'coverage-driven'
+      ? coverageContract.minimumStructuralProfiles
+      : minimumStructuralProfileCount;
+    if (counts.uniqueStructuralProfiles < minimumProfiles) {
       familyFailures.push(
         `${kind} has ${counts.uniqueStructuralProfiles}/` +
-          `${minimumStructuralProfileCount} required structural profiles`,
+          `${minimumProfiles} required structural profiles`,
       );
     }
     familyFailures.push(
-      ...inputSpaceCoverage.failures.map(
-        (failure) => `${kind} input space: ${failure}`,
+      ...coverageAudit.failures.map(
+        (failure) => `${kind} coverage: ${failure}`,
       ),
     );
     failures.push(...familyFailures);
@@ -411,13 +557,17 @@ export function auditVisualScenarioDuplicates({
       kind,
       status: familyFailures.length === 0 ? 'pass' : 'fail',
       counts,
-      inputSpaceCoverage,
+      coverageContract,
+      coverageAudit,
+      ...(coverageContract.mode === 'full-factorial'
+        ? { inputSpaceCoverage: coverageAudit }
+        : { coverageDrivenCoverage: coverageAudit }),
       duplicates: duplicateEvidence,
       cases: caseReports,
     };
   });
   const report = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     generatedAt,
     inputDirectory: path.relative(repositoryRoot, inputDirectory),
     requirements: {
@@ -427,11 +577,9 @@ export function auditVisualScenarioDuplicates({
       manifestNormalization:
         'Remove all rendered text, identifiers, titles, accessibility text, ' +
         'and renderer identity; retain ordered visual properties and geometry.',
-      namedInputDimensionsPerFamily: requiredInputDimensionCount,
-      fullFactorialDimensionVectorsPerFamily: casesPerKind,
-      optionOccurrencesPerDimension: casesPerKind / 2,
-      occurrencesPerDimensionPairCombination: casesPerKind / 4,
-      minimumStructuralProfilesPerFamily: minimumStructuralProfileCount,
+      coverageContractsByFamily: Object.fromEntries(
+        selectedKinds.map((kind) => [kind, familyCoverageContracts[kind]]),
+      ),
       nativeVisualStructurePolicy:
         'Diagnostic only. Distinct valid inputs can intentionally render the ' +
         'same geometry, including long-form grammar aliases and reset frames ' +
@@ -535,12 +683,18 @@ function runFromEnvironment() {
         `Official PNGs ${counts.uniqueOfficialPngs}/${casesPerKind}`,
     );
     console.log(
-      `${family.kind}: input dimensions ` +
-        `${family.inputSpaceCoverage.counts.namedDimensions}/` +
-        `${requiredInputDimensionCount}; vectors ` +
-        `${family.inputSpaceCoverage.counts.uniqueDimensionVectors}/` +
-        `${casesPerKind}; pair matrices ` +
-        `${family.inputSpaceCoverage.counts.dimensionPairs}`,
+      family.coverageContract.mode === 'coverage-driven'
+        ? `${family.kind}: coverage categories ` +
+          `${family.coverageAudit.counts.categories}; capabilities ` +
+          `${family.coverageAudit.counts.coveredRequiredCapabilities}/` +
+          `${family.coverageAudit.counts.requiredCapabilities}; profiles ` +
+          `${family.coverageAudit.counts.uniqueStructuralProfiles}`
+        : `${family.kind}: input dimensions ` +
+          `${family.coverageAudit.counts.namedDimensions}/` +
+          `${requiredInputDimensionCount}; vectors ` +
+          `${family.coverageAudit.counts.uniqueDimensionVectors}/` +
+          `${casesPerKind}; pair matrices ` +
+          `${family.coverageAudit.counts.dimensionPairs}`,
     );
   }
   console.log(

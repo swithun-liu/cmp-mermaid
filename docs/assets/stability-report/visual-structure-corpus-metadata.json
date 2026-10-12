@@ -9,8 +9,9 @@
     "unique-scenario-blueprint-id",
     "explicit-256-entry-business-scenario-catalog",
     "label-stripped-normalized-mermaid-source",
-    "eight-named-orthogonal-input-dimensions",
-    "balanced-full-factorial-2x2x2x2x2x2x2x2-matrix",
+    "family-specific-coverage-contract",
+    "flowchart-six-category-coverage-driven-corpus",
+    "full-factorial-2x2x2x2x2x2x2x2-matrix-for-other-families",
     "family-specific-structural-profile"
   ],
   "diagramFamilies": [
@@ -20,73 +21,83 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "branching",
-          "category": "topology",
-          "options": [
-            "single-path",
-            "fan-out"
-          ]
-        },
-        {
-          "name": "merging",
-          "category": "topology",
-          "options": [
-            "separate-endings",
-            "fan-in"
-          ]
-        },
-        {
-          "name": "cycle",
-          "category": "topology",
-          "options": [
-            "acyclic",
-            "rework-loop"
-          ]
-        },
-        {
-          "name": "grouping",
-          "category": "topology",
-          "options": [
-            "flat",
-            "subgraph"
-          ]
-        },
-        {
-          "name": "path-length",
-          "category": "topology",
-          "options": [
-            "direct-paths",
-            "cross-link"
-          ]
-        },
-        {
-          "name": "edge-semantics",
-          "category": "style",
-          "options": [
-            "solid-unlabelled",
-            "labelled-dotted"
-          ]
-        },
-        {
-          "name": "node-form",
-          "category": "style",
-          "options": [
-            "process",
-            "decision"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "One upstream Flowchart syntax or rendering capability at a time."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and three-way combinations across syntax, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled graph structures that stress Dagre routing and compound layout."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid Flowchart programs emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs expressed through different legal syntax."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Previously fragile parser, layout, text, style, and routing structures."
+          }
+        ],
+        "requiredCapabilities": [
+          "headers",
+          "directions",
+          "classic-shapes",
+          "metadata-shapes",
+          "expanded-shape-catalog",
+          "solid-edges",
+          "open-edges",
+          "dotted-edges",
+          "thick-edges",
+          "invisible-edges",
+          "bidirectional-edges",
+          "circle-markers",
+          "cross-markers",
+          "minimum-length",
+          "edge-labels",
+          "edge-ids",
+          "edge-animation",
+          "multi-node-links",
+          "subgraphs",
+          "nested-subgraphs",
+          "subgraph-direction",
+          "collapsed-subgraphs",
+          "classes",
+          "inline-styles",
+          "link-styles",
+          "frontmatter-config",
+          "comments",
+          "markdown-labels",
+          "html-labels",
+          "entities",
+          "unicode",
+          "cycles",
+          "self-loops",
+          "parallel-edges",
+          "disconnected-components",
+          "dense-crossings"
+        ],
+        "minimumStructuralProfiles": 224,
+        "equivalentSyntaxGroupCount": 16
+      }
     },
     {
       "kind": "swimlanes",

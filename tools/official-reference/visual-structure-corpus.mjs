@@ -1,11 +1,15 @@
 import { createHash } from 'node:crypto';
+import {
+  flowchartCoverageContract,
+  renderFlowchartCoverageScenario,
+} from './flowchart-coverage-corpus.mjs';
 import { businessScenarios } from './independent-scenario-catalog.mjs';
 import {
   familyDimensionSpecs,
   renderInputSpaceScenario,
 } from './visual-input-space.mjs';
 
-export { familyDimensionSpecs };
+export { familyDimensionSpecs, flowchartCoverageContract };
 
 export const kinds = [
   'flowchart',
@@ -44,6 +48,19 @@ export const kinds = [
 ];
 
 export const casesPerKind = 256;
+
+export const familyCoverageContracts = Object.freeze(
+  Object.fromEntries(kinds.map((kind) => [
+    kind,
+    kind === 'flowchart'
+      ? flowchartCoverageContract
+      : Object.freeze({
+          mode: 'full-factorial',
+          caseCount: casesPerKind,
+          dimensions: familyDimensionSpecs[kind],
+        }),
+  ])),
+);
 
 const aspectRatios = Object.freeze({
   flowchart: 1.7,
@@ -115,7 +132,9 @@ export const corpusSummary = Object.freeze({
         new Set(kindCases.map((entry) =>
           JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
         )).size,
-      dimensions: familyDimensionSpecs[kind],
+      ...(kind === 'flowchart'
+        ? { coverageContract: familyCoverageContracts[kind] }
+        : { dimensions: familyDimensionSpecs[kind] }),
     });
   })),
 });
@@ -136,11 +155,15 @@ function createScenarioBlueprint(kind, index) {
     label: (slot) =>
       `${domainModel.object} ${goalModel.stages[slot % goalModel.stages.length]}`,
   });
-  const rendered = renderInputSpaceScenario(kind, bits, context);
+  const rendered = kind === 'flowchart'
+    ? renderFlowchartCoverageScenario(index, context)
+    : renderInputSpaceScenario(kind, bits, context);
   const source = `${rendered.source.trim()}\n`;
   const normalizedSemanticStructure = deepFreeze({
     grammar: kind,
-    dimensions: rendered.dimensions,
+    ...(rendered.coverage === undefined
+      ? { dimensions: rendered.dimensions }
+      : { coverage: rendered.coverage }),
     structuralProfile: rendered.structuralProfile,
     normalizedSource: normalizeSourceWithContext(source, context),
   });
@@ -155,7 +178,9 @@ function createScenarioBlueprint(kind, index) {
     title,
     scenario:
       `${domainModel.name} ${goalModel.name} is an independently generated ` +
-      `${kind} scenario in a balanced matrix of eight named input dimensions.`,
+      (kind === 'flowchart'
+        ? 'flowchart scenario in a fixed coverage-driven release corpus.'
+        : `${kind} scenario in a balanced matrix of eight named input dimensions.`),
     layout: rendered.layout ?? 'dagre',
     aspectRatio: aspectRatios[kind],
     features: Object.freeze([
@@ -172,8 +197,21 @@ function createScenarioBlueprint(kind, index) {
     scenarioBlueprintId,
     normalizedSemanticStructure,
     normalizedSemanticSignature,
-    inputDimensions: rendered.dimensions,
-    structuralDimensions: rendered.dimensions,
+    ...(rendered.coverage === undefined
+      ? {
+          inputDimensions: rendered.dimensions,
+          structuralDimensions: rendered.dimensions,
+        }
+      : {
+          coverageCategory: rendered.coverage.category,
+          coverageCapabilities: rendered.coverage.capabilities,
+          ...(rendered.coverage.equivalenceGroup === undefined
+            ? {}
+            : {
+                equivalenceGroup: rendered.coverage.equivalenceGroup,
+                syntaxVariant: rendered.coverage.syntaxVariant,
+              }),
+        }),
     structuralSignature: normalizedSemanticSignature,
     source,
     sourceSha256,
@@ -1155,7 +1193,23 @@ function validateCorpus() {
       );
     }
     for (const entry of kindCases) {
-      if (entry.normalizedSemanticStructure.dimensions.length !== 8) {
+      const normalizedCoverage = kind === 'flowchart'
+        ? entry.normalizedSemanticStructure.coverage
+        : entry.normalizedSemanticStructure.dimensions;
+      if (
+        kind === 'flowchart' &&
+        (
+          normalizedCoverage?.category?.length === 0 ||
+          normalizedCoverage?.capabilities?.length === 0 ||
+          Object.hasOwn(entry, 'inputDimensions')
+        )
+      ) {
+        throw new Error(`${entry.id} has invalid coverage-driven metadata`);
+      }
+      if (
+        kind !== 'flowchart' &&
+        entry.normalizedSemanticStructure.dimensions.length !== 8
+      ) {
         throw new Error(`${entry.id} does not contain eight input dimensions`);
       }
       if (
@@ -1163,10 +1217,8 @@ function validateCorpus() {
           /seed|itemCount|ordinal|scenarioBlueprintId|title/i
             .test(key)
         ) ||
-        entry.normalizedSemanticStructure.dimensions.some((decision) =>
-          /seed|itemCount|ordinal|scenarioBlueprintId/i
-            .test(JSON.stringify(decision))
-        )
+        /seed|itemCount|ordinal|scenarioBlueprintId/i
+          .test(JSON.stringify(normalizedCoverage))
       ) {
         throw new Error(
           `${entry.id} normalized structure contains identity or label data`,

@@ -562,11 +562,16 @@ internal class FlowchartLayout {
             val style = resolveStyle(node)
             val shapeLayout = nodeShapeLayouts.getValue(id)
             val isIconShape = node.shape in ICON_SHAPES
-            val fill = style.fill
-                ?: node.colorIndex?.let(context.theme::colorFill)
-                ?: context.theme.nodeFill
+            val isTextBlock = node.shape == SceneShapeKind.TextBlock
+            val fill = when {
+                isTextBlock && style.fill == null -> SceneColor(0x00000000)
+                else -> style.fill
+                    ?: node.colorIndex?.let(context.theme::colorFill)
+                    ?: context.theme.nodeFill
+            }
             val stroke = when {
                 node.shape == SceneShapeKind.Icon -> SceneColor(0x00000000)
+                isTextBlock && style.stroke == null -> SceneColor(0x00000000)
                 isIconShape -> fill
                 else -> style.stroke
                     ?: node.colorIndex?.let(context.theme::colorStroke)
@@ -583,12 +588,13 @@ internal class FlowchartLayout {
                     fill
                 },
                 stroke = stroke,
-                strokeWidth = style.strokeWidth ?: context.theme.strokeWidth,
+                strokeWidth = style.strokeWidth
+                    ?: if (isTextBlock) 0f else context.theme.strokeWidth,
                 strokePattern = style.strokePattern ?: com.swithun.cmpmermaid.core.SceneStrokePattern.Solid,
                 dashIntervals = style.dashIntervals,
                 cornerRadius = 9f,
                 shadow = context.theme.dropShadow.takeIf {
-                    node.look == "neo" && !isIconShape
+                    node.look == "neo" && !isIconShape && !isTextBlock
                 },
             )
             shapeLayout.assetOffset?.let { offset ->

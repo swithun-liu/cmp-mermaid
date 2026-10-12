@@ -8,7 +8,9 @@ import {
   cases,
   casesPerKind,
   corpusSummary,
+  familyCoverageContracts,
   familyDimensionSpecs,
+  flowchartCoverageContract,
   kinds,
   normalizeScenarioSource,
   scenarioBlueprintsByKind,
@@ -16,6 +18,9 @@ import {
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
+const fullFactorialKinds = kinds.filter(
+  (kind) => familyCoverageContracts[kind].mode === 'full-factorial',
+);
 
 test('provides 256 independent scenarios for every diagram family', () => {
   assert.equal(kinds.length, 33);
@@ -45,8 +50,9 @@ test('provides 256 independent scenarios for every diagram family', () => {
   }
 });
 
-test('defines eight named orthogonal input dimensions for every family', () => {
-  for (const kind of kinds) {
+test('defines eight named orthogonal dimensions for full-factorial families', () => {
+  assert.equal(fullFactorialKinds.length, 32);
+  for (const kind of fullFactorialKinds) {
     const dimensions = familyDimensionSpecs[kind];
     assert.equal(dimensions.length, 8, `${kind} dimension count`);
     assert.equal(
@@ -78,7 +84,7 @@ test('defines eight named orthogonal input dimensions for every family', () => {
 });
 
 test('covers every dimension and every dimension pair with a balanced matrix', () => {
-  for (const kind of kinds) {
+  for (const kind of fullFactorialKinds) {
     const familyCases = scenarioBlueprintsByKind[kind];
     const dimensions = familyDimensionSpecs[kind];
     for (const dimension of dimensions) {
@@ -117,7 +123,7 @@ test('covers every dimension and every dimension pair with a balanced matrix', (
 });
 
 test('every named dimension changes the label-normalized Mermaid input', () => {
-  for (const kind of kinds) {
+  for (const kind of fullFactorialKinds) {
     const familyCases = scenarioBlueprintsByKind[kind];
     for (let dimensionIndex = 0; dimensionIndex < 8; dimensionIndex += 1) {
       const mask = 1 << dimensionIndex;
@@ -136,7 +142,7 @@ test('every named dimension changes the label-normalized Mermaid input', () => {
 });
 
 test('every topology and data dimension changes the structural profile', () => {
-  for (const kind of kinds) {
+  for (const kind of fullFactorialKinds) {
     const familyCases = scenarioBlueprintsByKind[kind];
     for (let dimensionIndex = 0; dimensionIndex < 8; dimensionIndex += 1) {
       const dimension = familyDimensionSpecs[kind][dimensionIndex];
@@ -172,17 +178,34 @@ test('does not reuse seed scenarios, profiles, labels, or ordinals as uniqueness
     assert.ok(!Object.hasOwn(entry, 'seedId'), entry.id);
     assert.ok(!Object.hasOwn(entry, 'originScenarioId'), entry.id);
 
+    const expectedStructureKeys = entry.kind === 'flowchart'
+      ? ['coverage', 'grammar', 'normalizedSource', 'structuralProfile']
+      : ['dimensions', 'grammar', 'normalizedSource', 'structuralProfile'];
     assert.deepEqual(
       Object.keys(entry.normalizedSemanticStructure).sort(),
-      ['dimensions', 'grammar', 'normalizedSource', 'structuralProfile'],
+      expectedStructureKeys,
       entry.id,
     );
-    assert.equal(entry.inputDimensions.length, 8, entry.id);
-    assert.deepEqual(
-      entry.normalizedSemanticStructure.dimensions,
-      entry.inputDimensions,
-      entry.id,
-    );
+    if (entry.kind === 'flowchart') {
+      assert.ok(!Object.hasOwn(entry, 'inputDimensions'), entry.id);
+      assert.equal(
+        entry.normalizedSemanticStructure.coverage.category,
+        entry.coverageCategory,
+        entry.id,
+      );
+      assert.deepEqual(
+        entry.normalizedSemanticStructure.coverage.capabilities,
+        entry.coverageCapabilities,
+        entry.id,
+      );
+    } else {
+      assert.equal(entry.inputDimensions.length, 8, entry.id);
+      assert.deepEqual(
+        entry.normalizedSemanticStructure.dimensions,
+        entry.inputDimensions,
+        entry.id,
+      );
+    }
     assert.ok(
       Object.keys(entry.normalizedSemanticStructure.structuralProfile).length > 0,
       entry.id,
@@ -235,43 +258,68 @@ test('covers 256 named business scenarios without repeating a blueprint', () => 
   }
 });
 
-test('flowchart matrix covers real topology, layout, edge, and shape changes', () => {
+test('flowchart uses the fixed six-category coverage-driven contract', () => {
   const familyCases = scenarioBlueprintsByKind.flowchart;
-  assert.equal(
-    familyCases.filter((entry) => /^flowchart TD$/m.test(entry.source)).length,
-    128,
+  assert.equal(flowchartCoverageContract.mode, 'coverage-driven');
+  assert.equal(flowchartCoverageContract.caseCount, 256);
+  assert.deepEqual(
+    categoryCounts(familyCases),
+    Object.fromEntries(
+      flowchartCoverageContract.categories.map((entry) => [
+        entry.id,
+        entry.quota,
+      ]),
+    ),
   );
   assert.equal(
-    familyCases.filter((entry) => /^\s*subgraph /m.test(entry.source)).length,
-    128,
+    new Set(familyCases.map((entry) => normalizeScenarioSource(entry))).size,
+    256,
   );
   assert.equal(
-    familyCases.filter((entry) => /Validate --> Execute\n\s+Validate --> Review/.test(
-      entry.source,
-    )).length,
-    128,
+    new Set(familyCases.map((entry) =>
+      JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
+    )).size,
+    240,
   );
-  assert.equal(
-    familyCases.filter((entry) => /Review --> Complete/.test(entry.source)).length,
-    128,
+  const capabilities = new Set(
+    familyCases.flatMap((entry) => entry.coverageCapabilities),
   );
-  assert.equal(
-    familyCases.filter((entry) => /Complete -.-> Validate/.test(entry.source)).length,
-    128,
+  assert.deepEqual(
+    flowchartCoverageContract.requiredCapabilities.filter(
+      (capability) => !capabilities.has(capability),
+    ),
+    [],
   );
-  assert.equal(
-    familyCases.filter((entry) => /-->\|approved\|/.test(entry.source)).length,
-    128,
+
+  const equivalentCases = familyCases.filter(
+    (entry) => entry.coverageCategory === 'equivalent-syntax',
   );
-  assert.equal(
-    familyCases.filter((entry) => /Validate\{/.test(entry.source)).length,
-    128,
+  const equivalentGroups = groupBy(
+    equivalentCases,
+    (entry) => entry.equivalenceGroup,
   );
+  assert.equal(equivalentGroups.size, 16);
+  for (const [group, entries] of equivalentGroups) {
+    assert.equal(entries.length, 2, group);
+    assert.deepEqual(
+      new Set(entries.map((entry) => entry.syntaxVariant)),
+      new Set(['first', 'second']),
+      group,
+    );
+    assert.equal(
+      new Set(entries.map((entry) =>
+        JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
+      )).size,
+      1,
+      group,
+    );
+  }
 });
 
 test('keeps representative family decisions in the rendered Mermaid source', () => {
-  assert.match(caseSource('flowchart', 1), /^flowchart LR$/m);
-  assert.match(caseSource('flowchart', 2), /^flowchart TD$/m);
+  assert.match(caseSource('flowchart', 1), /shape: rect/);
+  assert.match(caseSource('flowchart', 47), /^flowchart TB$/m);
+  assert.match(caseSource('flowchart', 48), /^flowchart TD$/m);
 
   assert.match(caseSource('architecture', 1), /s1\(server\)/);
   assert.match(caseSource('architecture', 2), /group platform\(cloud\)/);
@@ -352,11 +400,34 @@ test('publishes machine-readable independent scenario accounting', () => {
     'unique-scenario-blueprint-id',
     'explicit-256-entry-business-scenario-catalog',
     'label-stripped-normalized-mermaid-source',
-    'eight-named-orthogonal-input-dimensions',
-    'balanced-full-factorial-2x2x2x2x2x2x2x2-matrix',
+    'family-specific-coverage-contract',
+    'flowchart-six-category-coverage-driven-corpus',
+    'full-factorial-2x2x2x2x2x2x2x2-matrix-for-other-families',
     'family-specific-structural-profile',
   ]);
 });
+
+function categoryCounts(entries) {
+  const counts = new Map();
+  for (const entry of entries) {
+    counts.set(
+      entry.coverageCategory,
+      (counts.get(entry.coverageCategory) ?? 0) + 1,
+    );
+  }
+  return Object.fromEntries(counts);
+}
+
+function groupBy(entries, keyOf) {
+  const groups = new Map();
+  for (const entry of entries) {
+    const key = keyOf(entry);
+    const group = groups.get(key) ?? [];
+    group.push(entry);
+    groups.set(key, group);
+  }
+  return groups;
+}
 
 function caseSource(kind, ordinal) {
   const entry = cases.find(

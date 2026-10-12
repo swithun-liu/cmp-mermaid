@@ -5,16 +5,6 @@ const dimension = (name, category, zero, one) => Object.freeze({
 });
 
 export const familyDimensionSpecs = Object.freeze({
-  flowchart: Object.freeze([
-    dimension('direction', 'layout', 'left-to-right', 'top-to-bottom'),
-    dimension('branching', 'topology', 'single-path', 'fan-out'),
-    dimension('merging', 'topology', 'separate-endings', 'fan-in'),
-    dimension('cycle', 'topology', 'acyclic', 'rework-loop'),
-    dimension('grouping', 'topology', 'flat', 'subgraph'),
-    dimension('path-length', 'topology', 'direct-paths', 'cross-link'),
-    dimension('edge-semantics', 'style', 'solid-unlabelled', 'labelled-dotted'),
-    dimension('node-form', 'style', 'process', 'decision'),
-  ]),
   swimlanes: Object.freeze([
     dimension('direction', 'layout', 'left-to-right', 'top-to-bottom'),
     dimension('lane-count', 'topology', 'two-lanes', 'four-lanes'),
@@ -383,7 +373,6 @@ function identifierToken(value) {
 }
 
 const renderers = {
-  flowchart: renderFlowchart,
   swimlanes: renderSwimlanes,
   architecture: renderArchitecture,
   c4: renderC4,
@@ -417,78 +406,6 @@ const renderers = {
   wardley: renderWardley,
   zenuml: renderZenUml,
 };
-
-function renderFlowchart(bits, context) {
-  const direction = selected(bits, 0) ? 'TD' : 'LR';
-  const decision = selected(bits, 7);
-  const lines = [
-    `flowchart ${direction}`,
-    `  Start([${context.title}])`,
-  ];
-  if (selected(bits, 4)) {
-    lines.push(
-      '  subgraph Delivery[Delivery path]',
-      decision
-        ? `    Validate{${context.label(0)}?}`
-        : `    Validate[${context.label(0)}]`,
-      `    Execute[${context.label(1)}]`,
-      `    Review[${context.label(2)}]`,
-      '  end',
-    );
-  } else {
-    lines.push(
-      decision
-        ? `  Validate{${context.label(0)}?}`
-        : `  Validate[${context.label(0)}]`,
-      `  Execute[${context.label(1)}]`,
-      `  Review[${context.label(2)}]`,
-    );
-  }
-  lines.push(
-    `  Complete([${context.label(3)}])`,
-    `  Archive[( ${context.domain.object} archive )]`,
-    '  Start --> Validate',
-  );
-  if (selected(bits, 1)) {
-    lines.push('  Validate --> Execute', '  Validate --> Review');
-  } else {
-    lines.push('  Validate --> Execute', '  Execute --> Review');
-  }
-  if (selected(bits, 2)) {
-    lines.push('  Execute --> Complete', '  Review --> Complete');
-  } else {
-    lines.push('  Execute --> Complete', '  Review --> Archive');
-  }
-  if (selected(bits, 3)) {
-    lines.push('  Complete -.-> Validate');
-  }
-  if (selected(bits, 5)) {
-    lines.push('  Start ----> Review');
-  }
-  if (selected(bits, 6)) {
-    lines.push(
-      '  Execute -->|approved| Complete',
-      '  Review -. needs-work .-> Archive',
-    );
-  }
-  return scenario(
-    'flowchart',
-    lines,
-    bits,
-    {
-      direction,
-      fanOut: selected(bits, 1),
-      fanIn: selected(bits, 2),
-      cycleCount: selected(bits, 3) ? 1 : 0,
-      groupDepth: selected(bits, 4) ? 1 : 0,
-      crossLinkCount: selected(bits, 5) ? 1 : 0,
-      labelledEdgeCount: selected(bits, 6) ? 2 : 0,
-      decisionNodeCount: decision ? 1 : 0,
-    },
-    ['directions', 'branching', 'merging', 'cycles', 'subgraphs', 'edge-semantics'],
-    [context.title, context.label(0)],
-  );
-}
 
 function renderSwimlanes(bits, context) {
   const direction = selected(bits, 0) ? 'TD' : 'LR';

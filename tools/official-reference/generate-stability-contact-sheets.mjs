@@ -215,8 +215,9 @@ if (shouldWriteManifest) {
               'unique-scenario-blueprint-id',
               'explicit-256-entry-business-scenario-catalog',
               'label-stripped-normalized-mermaid-source',
-              'eight-named-orthogonal-input-dimensions',
-              'balanced-full-factorial-2x2x2x2x2x2x2x2-matrix',
+              'family-specific-coverage-contract',
+              'flowchart-six-category-coverage-driven-corpus',
+              'full-factorial-2x2x2x2x2x2x2x2-matrix-for-other-families',
               'family-specific-structural-profile',
             ],
           }
@@ -398,12 +399,13 @@ ${screenshotCount.toLocaleString('en-US')} screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
-Each diagram family defines eight named, family-specific binary input
-dimensions spanning syntax, topology, data, layout, and style as applicable.
-The matrix exercises the complete 2^8 input space: each option appears in 128
-cases, and every option pair for any two dimensions appears in 64 cases.
-Business titles only make cases readable; ordinal numbers, IDs, hashes, and
-label text are not coverage dimensions.
+Flowchart uses a fixed coverage-driven corpus: 64 official syntax atoms, 64
+multi-feature combinations, 48 topology/layout stress cases, 32 common valid
+AI outputs, 32 equivalent-syntax variants, and 16 historical regressions. The
+other 32 families retain their complete 2^8 input spaces: each option appears
+in 128 cases, and every option pair for any two dimensions appears in 64
+cases. Business titles only make cases readable; ordinal numbers, IDs, hashes,
+and label text do not establish coverage.
 
 Case IDs, blueprint IDs, normalized semantic signatures, source hashes, image
 hashes, and capture sizes are recorded in
@@ -412,13 +414,15 @@ Corpus accounting is published separately in
 [\`visual-structure-corpus-metadata.json\`](visual-structure-corpus-metadata.json).
 The mandatory
 [\`visual-scenario-duplicate-audit.json\`](visual-scenario-duplicate-audit.json)
-verifies all 256 dimension vectors, balanced single-dimension and pairwise
-coverage, 256/256 unique blueprint IDs, normalized semantic structures, and
-label-normalized Mermaid sources for every family. It also publishes
-family-specific structural-profile counts, text-and-ID-stripped Native
-structure counts, and Native/Official PNG hash counts. Rendered counts are
-diagnostics rather than hard uniqueness requirements because distinct legal
-inputs can intentionally produce equivalent geometry.
+verifies the Flowchart category quotas, required capabilities, equivalent
+syntax pairs, and structural-profile floor; it continues to verify all 256
+dimension vectors and balanced pairwise coverage for every full-factorial
+family. All families require 256/256 unique blueprint IDs, normalized semantic
+structures, and label-normalized Mermaid sources. The audit also publishes
+text-and-ID-stripped Native structure counts and Native/Official PNG hash
+counts. Rendered counts are diagnostics rather than hard uniqueness
+requirements because distinct legal inputs can intentionally produce
+equivalent geometry.
 
 ${sections}
 `;

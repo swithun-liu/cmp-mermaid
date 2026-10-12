@@ -182,7 +182,7 @@ internal object MermaidShapePort {
                 SceneShapeKind.TrapezoidAlt -> invertedTrapezoid(label, node.padding, node.look)
                 SceneShapeKind.Asymmetric -> asymmetric(label, node.padding, node.look)
                 SceneShapeKind.Ellipse -> ellipse(label, node.padding)
-                SceneShapeKind.TextBlock -> text(label)
+                SceneShapeKind.TextBlock -> text(label, node.padding)
                 SceneShapeKind.NotchedRectangle -> card(label, node.padding, node.look)
                 SceneShapeKind.LinedRectangle -> shadedProcess(label, node.padding, node.look)
                 SceneShapeKind.SmallCircle -> stateStart()
@@ -717,18 +717,14 @@ internal object MermaidShapePort {
         return centeredShape(listOf(closedPath(outline)), outline)
     }
 
-    private fun text(label: SceneSize): MermaidShapeLayout {
-        val outline = rectanglePoints(max(label.width, 0.1f), max(label.height, 0.1f))
-        return centeredShape(
-            listOf(
-                closedPath(
-                    outline,
-                    fill = SceneShapePaint.None,
-                    stroke = SceneShapePaint.None,
-                ),
-            ),
-            outline,
+    private fun text(label: SceneSize, padding: Float): MermaidShapeLayout {
+        // Mermaid.js 12.0.0:
+        // rendering-elements/shapes/text.ts -> text.
+        val outline = rectanglePoints(
+            width = max(label.width + padding, 0.1f),
+            height = max(label.height + padding, 0.1f),
         )
+        return centeredShape(listOf(closedPath(outline)), outline)
     }
 
     private fun card(label: SceneSize, padding: Float, look: String): MermaidShapeLayout {

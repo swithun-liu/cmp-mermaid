@@ -23,15 +23,15 @@ stress inputs.
 | Implemented families | 33/33; all family gates passing |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
-| Independent-scenario visual matrix | 8,448 Native/Official pairs: eight named binary input dimensions and all 256 combinations per family |
-| Input-space hard gate | All 33 families cover 256/256 dimension vectors; every option occurs 128 times and every two-dimension option pair occurs 64 times |
+| Independent-scenario visual matrix | 8,448 Native/Official pairs: a six-category coverage-driven Flowchart corpus plus complete `2^8` input spaces for the other 32 families |
+| Input-space hard gate | Flowchart passes all six quotas, 36/36 required capabilities, 16/16 equivalent-syntax groups, and 240 structural profiles; the other 32 families cover 8,192/8,192 dimension vectors with balanced option and pair counts |
 | Duplicate hard gate | All 33 families have 256/256 unique blueprints, normalized semantic structures, and label-normalized sources; rendered manifest/PNG uniqueness is diagnostic because distinct legal inputs can render equivalently |
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; no additional structural coverage |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; all 6,292 Native rejections were `CONTENT_ERROR`; 16,896 screenshots; 0 crashes or timeouts |
 | Native core render results | 441 production scenarios and all 8,448 independent visual scenarios render successfully; the text/layout stress inputs are tracked separately |
 | Web Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Visual evidence | 528 freshly generated independent-scenario sheets plus 528 source-mutation sheets across all 33 families |
-| Independent-scenario detail audit | 8,448/8,448 processed: 7,741 pass, 707 review, 0 fail |
+| Independent-scenario detail audit | 8,448/8,448 processed: 7,724 pass, 724 review, 0 fail |
 | Automated visual geometry | 8,448/8,448 processed: 0 failure, 132 review findings across 108 Architecture cases |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
@@ -81,32 +81,37 @@ change its counts.
 
 ## Completed Independent-Scenario Visual Gate
 
-All 33 families have completed the independent-scenario visual gate. Each
-defines eight named, family-specific binary input dimensions and exercises all
-`2^8 = 256` combinations. Every option occurs in 128 cases, and every option
-pair for any two dimensions occurs in 64 cases. Business titles make cases
+All 33 families have completed the independent-scenario visual gate.
+Flowchart uses a fixed coverage-driven corpus: 64 official syntax atoms, 64
+multi-feature combinations, 48 topology/layout stress cases, 32 common valid
+AI outputs, 32 equivalent-syntax variants, and 16 historical regressions. The
+other 32 families retain eight named binary input dimensions and all
+`2^8 = 256` combinations, with every option appearing in 128 cases and every
+two-dimension option pair appearing in 64 cases. Business titles make cases
 readable but do not establish coverage. Each family also has a 256-case
 geometry result and 16 paged contact sheets. The fresh total is:
-`7,741 pass / 707 review / 0 fail`.
+`7,724 pass / 724 review / 0 fail`.
 
 The mandatory
 [duplicate audit](assets/stability-report/visual-scenario-duplicate-audit.json)
-requires complete and balanced dimension-vector coverage plus `256/256` unique
-blueprint IDs, normalized semantic structures, and label-normalized Mermaid
-sources for every family. Family-specific structural profiles must have at
-least 192 distinct values. Text-and-ID-stripped Native manifest fingerprints
-and Native/Official PNG hashes are reported as diagnostics, not hard
-uniqueness requirements, because distinct legal inputs can intentionally
-produce equivalent geometry.
+requires Flowchart's six category quotas, 36 required capabilities, 16
+equivalent-syntax groups, and 224-profile floor. For the other 32 families it
+requires complete and balanced dimension-vector coverage. Every family still
+requires `256/256` unique blueprint IDs, normalized semantic structures, and
+label-normalized Mermaid sources; the full-factorial families require at least
+192 structural profiles. Text-and-ID-stripped Native manifest fingerprints and
+Native/Official PNG hashes are diagnostics, not hard uniqueness requirements,
+because distinct legal inputs can intentionally produce equivalent geometry.
 
 Detail review findings are retained as explicit representation differences:
 
-- text position: 372 findings;
+- text position: 354 findings;
 - text overlap: 211 findings;
-- raster mask, edge, or color: 194 findings;
-- equivalent element-count representation: 160 findings;
+- raster mask, edge, or color: 193 findings;
+- equivalent element-count representation: 168 findings;
 - marker depth/reference occlusion: 24 findings;
-- paint-order occlusion: 12 findings.
+- paint-order occlusion: 13 findings;
+- stroke-pattern representation: 9 findings.
 
 These categories may co-occur within one case. No expected-text loss,
 clipping error, or hard detail/geometry failure was recorded. The geometry
@@ -117,7 +122,7 @@ kept visible rather than hidden by broader thresholds.
 
 | Family | Pass | Review | Width ratio | Height ratio | Ink ratio |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Flowchart | 253 | 3 | `1.035-1.113` | `0.939-1.117` | `0.931-1.144` |
+| Flowchart | 236 | 20 | `1.016-1.169` | `0.940-1.245` | `0.849-1.287` |
 | Swimlanes | 137 | 119 | `0.901-1.287` | `0.924-1.109` | `0.897-1.173` |
 | Architecture | 70 | 186 | `0.867-1.658` | `0.339-1.335` | `0.313-2.640` |
 | C4 | 256 | 0 | `1.023-1.069` | `0.957-1.041` | `0.939-1.072` |
@@ -151,10 +156,10 @@ kept visible rather than hidden by broader thresholds.
 | Wardley Map | 256 | 0 | `1.012-1.012` | `1.024-1.024` | `0.913-0.964` |
 | ZenUML | 256 | 0 | `1.043-1.082` | `1.042-1.079` | `0.967-1.184` |
 All 528 independent-scenario contact sheets were regenerated from the same 8,448
-source cases recorded in the manifest. The 707 detail-review cases are
+source cases recorded in the manifest. The 724 detail-review cases are
 distributed as follows: Architecture 186, Swimlanes 119, Entity Relationship
 108, Gantt 71, Agentflow 50, Venn 48, Class 35, XY Chart 32, Quadrant 26, Git
-Graph 21, State 5, Flowchart 3, and Kanban 3. The other 20 families pass all
+Graph 21, Flowchart 20, State 5, and Kanban 3. The other 20 families pass all
 256 detail cases automatically.
 Per-family compatibility
 pages and machine-readable reports preserve the individual findings and
@@ -190,10 +195,10 @@ as substitutes for each other:
    production-like structures used for capability coverage and deterministic
    replay. The published screenshot, geometry, and detail reports cover all
    441 same-source Native/Official pairs.
-2. **8,448 independent-scenario visual cases.** Each diagram type contributes
-   eight named binary input dimensions and the complete `2^8` matrix. Every
-   dimension option appears 128 times, every two-dimension option pair appears
-   64 times, and all 256 normalized Mermaid inputs remain distinct after
+2. **8,448 independent-scenario visual cases.** Flowchart contributes its
+   six-category coverage-driven corpus. Each of the other 32 diagram types
+   contributes eight named binary input dimensions and the complete `2^8`
+   matrix. All 256 normalized Mermaid inputs per family remain distinct after
    business labels, titles, IDs, and ordinals are removed. Rendered manifest
    and PNG uniqueness are diagnostics, not substitutes for input coverage.
 3. **8,448 generated text/layout stress inputs.** These byte-distinct inputs
@@ -215,7 +220,7 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 
 | Diagram | Production cases | Capability points | Scenario examples | Current visual result |
 | --- | ---: | ---: | --- | --- |
-| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Production evidence retained; independent-scenario matrix 253 pass / 3 review / 0 fail; 16/16 sheets regenerated |
+| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Production evidence retained; coverage-driven corpus 236 pass / 20 review / 0 fail; 16/16 sheets regenerated |
 | XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Production evidence retained; independent-scenario matrix 224 pass / 32 review / 0 fail; 16/16 sheets regenerated |
 | Quadrant Chart | 13 | 17/17 | axes, quadrant labels, boundary points, styles, themes | Production evidence retained; independent-scenario matrix 230 pass / 26 review / 0 fail; 16/16 sheets regenerated |
 | Timeline | 13 | 16/16 | directions, sections, periods, events, color scales, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
@@ -251,11 +256,11 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 
 ## Independent-Scenario Visual Matrix
 
-The generated visual matrix and published evidence contain all combinations of
-eight named, family-specific binary input dimensions for each of all 33
-families. Within every family, the 256 Mermaid sources remain different after
-business labels, titles, IDs, and ordinals are normalized away. The families
-are:
+The generated visual matrix and published evidence use the six-category
+coverage-driven contract for Flowchart and all combinations of eight named,
+family-specific binary input dimensions for the other 32 families. Within
+every family, the 256 Mermaid sources remain different after business labels,
+titles, IDs, and ordinals are normalized away. The families are:
 Flowchart,
 XY Chart, Quadrant Chart, Timeline, Sequence, Class, State, Entity
 Relationship, Gantt, Pie, User Journey, Requirement, Git Graph, Mindmap,
@@ -264,11 +269,15 @@ Agentflow, Block, Swimlanes, Architecture, C4, Railroad, TreeView, Use Case,
 Kanban, Wardley Map, and ZenUML:
 
 - 8,448 independent scenario blueprints;
-- 8,448 dimension vectors in 33 balanced full-factorial `2^8` matrices;
+- 256 Flowchart cases across its exact `64 / 64 / 48 / 32 / 32 / 16` quotas;
+- 36/36 required Flowchart capabilities, 16 equivalent-syntax groups, and 240
+  structural profiles;
+- 8,192 dimension vectors in 32 balanced full-factorial `2^8` matrices;
 - every option represented 128 times and every two-dimension option pair
-  represented 64 times per family;
+  represented 64 times in each full-factorial family;
 - 8,448 unique normalized semantic structures and label-normalized sources;
-- at least 192 family-specific structural profiles per family;
+- at least 224 Flowchart structural profiles and at least 192 per
+  full-factorial family;
 - 8,448 CMP Native screenshots;
 - 8,448 Mermaid.js `12.0.0` screenshots;
 - 528 paged contact sheets, with 16 same-source pairs per page;
@@ -303,7 +312,7 @@ The source IDs and scenario descriptions are printed above every pair.
 
 ![Flowchart complex Native and Official corpus](assets/stability-report/flowchart-complex-corpus.png)
 
-The fresh 256-case independent-scenario Native/Official audit reports `253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width `1.035-1.113`, height `0.939-1.117`, and foreground ink `0.931-1.144`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+The fresh 256-case coverage-driven Native/Official audit reports `236 pass / 20 review / 0 fail`; geometry has 0 hard failures with width `1.016-1.169`, height `0.940-1.245`, and foreground ink `0.849-1.287`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -690,10 +699,12 @@ visual geometry gate, and Web load test on every push to `main` and every pull
 request. The
 [`Full Visual Parity`](../.github/workflows/full-visual-parity.yml) workflow
 runs the 8,448-pair independent-scenario visual matrix weekly and on demand in
-33 parallel diagram jobs. Each job requires all 256 dimension vectors,
-balanced option and pairwise coverage, distinct normalized semantics and
-sources, and at least 192 structural profiles before the geometry and detail
-gates run. Rendered manifest and PNG uniqueness remain diagnostics.
+33 parallel diagram jobs. The Flowchart job requires its category quotas,
+capability set, equivalent-syntax groups, distinct normalized semantics and
+sources, and 224-profile floor. Each other job requires all 256 dimension
+vectors, balanced option and pairwise coverage, distinct normalized semantics
+and sources, and at least 192 structural profiles before the geometry and
+detail gates run. Rendered manifest and PNG uniqueness remain diagnostics.
 
 The previously published cross-platform verification command completed
 successfully:

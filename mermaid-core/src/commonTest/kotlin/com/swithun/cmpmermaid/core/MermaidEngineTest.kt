@@ -1461,6 +1461,32 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun keepsTextShapeBoxTransparentAndPaddingInItsLayoutBounds() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A@{ shape: text, label: "Text only" }
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val shape = scene.elements.filterIsInstance<SceneShape>().single { it.id == "A" }
+        val text = scene.elements.filterIsInstance<SceneText>().single { it.text == "Text only" }
+        val path = assertIs<SceneShapeGeometry>(shape.geometry).paths.single()
+
+        assertEquals(SceneShapeKind.TextBlock, shape.kind)
+        assertEquals(0L, shape.fill.argb ushr 24)
+        assertEquals(0L, shape.stroke.argb ushr 24)
+        assertEquals(0f, shape.strokeWidth)
+        assertNull(shape.shadow)
+        assertEquals(SceneShapePaint.Fill, path.fill)
+        assertEquals(SceneShapePaint.Stroke, path.stroke)
+        assertTrue(shape.bounds.width > text.bounds.width)
+        assertTrue(shape.bounds.height > text.bounds.height)
+    }
+
+    @Test
     fun preservesAnimatedEdgeDashPatternInStaticPreview() {
         val scene = renderCase("edge_ids_and_length")
         assertEquals(

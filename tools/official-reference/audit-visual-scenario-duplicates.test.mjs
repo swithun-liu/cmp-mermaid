@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  analyzeCoverageDrivenCoverage,
   analyzeInputSpaceCoverage,
   duplicateGroups,
   manifestVisualStructureFingerprint,
 } from './audit-visual-scenario-duplicates.mjs';
 import {
   familyDimensionSpecs,
+  flowchartCoverageContract,
   scenarioBlueprintsByKind,
 } from './visual-structure-corpus.mjs';
 
@@ -69,10 +71,10 @@ test('duplicate groups list every case sharing the same evidence value', () => {
   );
 });
 
-test('input-space coverage proves the full balanced flowchart matrix', () => {
+test('input-space coverage proves a full balanced factorial matrix', () => {
   const report = analyzeInputSpaceCoverage(
-    scenarioBlueprintsByKind.flowchart,
-    familyDimensionSpecs.flowchart,
+    scenarioBlueprintsByKind.swimlanes,
+    familyDimensionSpecs.swimlanes,
   );
 
   assert.equal(report.status, 'pass');
@@ -108,19 +110,42 @@ test('input-space coverage proves the full balanced flowchart matrix', () => {
   assert.deepEqual(report.nearIsomorphicStructuralProfiles, []);
 });
 
+test('coverage-driven audit proves the six-category flowchart corpus', () => {
+  const report = analyzeCoverageDrivenCoverage(
+    scenarioBlueprintsByKind.flowchart,
+    flowchartCoverageContract,
+  );
+
+  assert.equal(report.status, 'pass');
+  assert.deepEqual(report.failures, []);
+  assert.deepEqual(report.counts, {
+    cases: 256,
+    categories: 6,
+    requiredCapabilities: 36,
+    coveredRequiredCapabilities: 36,
+    uniqueCapabilities: 102,
+    uniqueStructuralProfiles: 240,
+    equivalentSyntaxGroups: 16,
+  });
+  assert.ok(report.categories.every((entry) => entry.status === 'pass'));
+  assert.deepEqual(report.missingCapabilities, []);
+  assert.deepEqual(report.unexpectedCategories, []);
+  assert.deepEqual(report.invalidEquivalenceGroups, []);
+});
+
 test('input-space coverage rejects duplicated dimension vectors', () => {
-  const entries = scenarioBlueprintsByKind.flowchart.map((entry, index) =>
+  const entries = scenarioBlueprintsByKind.swimlanes.map((entry, index) =>
     index === 1
       ? {
           ...entry,
           inputDimensions:
-            scenarioBlueprintsByKind.flowchart[0].inputDimensions,
+            scenarioBlueprintsByKind.swimlanes[0].inputDimensions,
         }
       : entry
   );
   const report = analyzeInputSpaceCoverage(
     entries,
-    familyDimensionSpecs.flowchart,
+    familyDimensionSpecs.swimlanes,
   );
 
   assert.equal(report.status, 'fail');
