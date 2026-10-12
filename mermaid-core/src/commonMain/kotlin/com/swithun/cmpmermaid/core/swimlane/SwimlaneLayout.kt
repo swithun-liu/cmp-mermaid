@@ -99,6 +99,7 @@ internal object SwimlaneLayout {
             nodeShapeLayouts = nodeShapeLayouts,
         )
         applyDirection(proper.graph, routed, document.direction)
+        simplifyDetouredEdges(proper.graph, routed)
         portSwapToLShape(proper.graph, routed)
         clipAndSimplifyEdges(proper.graph, routed, nodeShapeLayouts)
         resolveRenderedOrthogonalCrossings(proper.graph, routed)
@@ -1215,6 +1216,367 @@ internal object SwimlaneLayout {
         }
     }
 
+    // Mermaid.js 12.0.0:
+    // swimlanes/direction/detourSimplification.ts -> simplifyDetouredEdges.
+    private fun simplifyDetouredEdges(
+        graph: WorkGraph,
+        routes: MutableMap<Int, MutableRoute>,
+    ) {
+        val visibleRoutes = routes.entries
+            .filter { (_, route) -> route.edge != null }
+            .sortedBy { entry -> entry.key }
+        val realNodes = graph.nodes.values.filter { node ->
+            !node.isGroup && !node.isDummy
+        }
+        if (realNodes.isEmpty()) return
+
+        val outsideTracks = mapOf(
+            Side.Top to realNodes.minOf { node -> node.bounds().top } - OrthogonalRouteAnchor,
+            Side.Bottom to realNodes.maxOf { node -> node.bounds().bottom } +
+                OrthogonalRouteAnchor,
+            Side.Left to realNodes.minOf { node -> node.bounds().left } - OrthogonalRouteAnchor,
+            Side.Right to realNodes.maxOf { node -> node.bounds().right } +
+                OrthogonalRouteAnchor,
+        )
+        val faceClaims = mutableMapOf<Pair<String, Side>, MutableSet<Int>>()
+
+        fun nearestSide(point: ScenePoint, node: WorkNode): Side {
+            val bounds = node.bounds()
+            return listOf(
+                Side.Top to abs(point.y - bounds.top),
+                Side.Bottom to abs(point.y - bounds.bottom),
+                Side.Left to abs(point.x - bounds.left),
+                Side.Right to abs(point.x - bounds.right),
+            ).minBy { (_, distance) -> distance }.first
+        }
+
+        fun addFaceClaim(nodeId: String, side: Side, routeIndex: Int) {
+            faceClaims.getOrPut(nodeId to side, ::mutableSetOf) += routeIndex
+        }
+
+        visibleRoutes.forEach { (routeIndex, route) ->
+            val edge = route.edge ?: return@forEach
+            val points = route.points.removeAdjacentDuplicates()
+            if (points.isEmpty()) return@forEach
+            graph.nodes[edge.from]?.let { source ->
+                addFaceClaim(edge.from, nearestSide(points.first(), source), routeIndex)
+            }
+            graph.nodes[edge.to]?.let { target ->
+                addFaceClaim(edge.to, nearestSide(points.last(), target), routeIndex)
+            }
+        }
+
+        fun faceIsClaimed(nodeId: String, side: Side, routeIndex: Int): Boolean =
+            faceClaims[nodeId to side]?.any { claimant -> claimant != routeIndex } == true
+
+        fun pathHitsNode(route: MutableRoute, points: List<ScenePoint>): Boolean {
+            val edge = route.edge ?: return true
+            return points.zipWithNext().any { (first, second) ->
+                segmentHitsAnyNode(
+                    first,
+                    second,
+                    realNodes,
+                    setOf(edge.from, edge.to),
+                )
+            }
+        }
+
+        fun orthogonalSegments(points: List<ScenePoint>): List<Pair<ScenePoint, ScenePoint>> =
+            points.zipWithNext().filter { (first, second) ->
+                (
+                    abs(first.y - second.y) < MaterializedGeometryEpsilon &&
+                        abs(first.x - second.x) > MaterializedGeometryEpsilon
+                    ) ||
+                    (
+                        abs(first.x - second.x) < MaterializedGeometryEpsilon &&
+                            abs(first.y - second.y) > MaterializedGeometryEpsilon
+                        )
+            }
+
+        fun pathConflictCount(
+            points: List<ScenePoint>,
+            routeIndex: Int,
+            includeIncidentEdges: Boolean,
+        ): Int {
+            val routeEdge = routes.getValue(routeIndex).edge ?: return Int.MAX_VALUE
+            var conflicts = 0
+            val pathSegments = orthogonalSegments(points)
+            visibleRoutes.forEach otherRouteLoop@ { (otherIndex, otherRoute) ->
+                if (otherIndex == routeIndex) return@otherRouteLoop
+                val otherEdge = otherRoute.edge ?: return@otherRouteLoop
+                if (
+                    !includeIncidentEdges &&
+                    (
+                        otherEdge.from == routeEdge.from ||
+                            otherEdge.from == routeEdge.to ||
+                            otherEdge.to == routeEdge.from ||
+                            otherEdge.to == routeEdge.to
+                        )
+                ) {
+                    return@otherRouteLoop
+                }
+                val otherSegments = orthogonalSegments(otherRoute.points)
+                pathSegments.forEach { pathSegment ->
+                    otherSegments.forEach { otherSegment ->
+                        if (
+                            orthogonalSegmentsCross(
+                                pathSegment.first,
+                                pathSegment.second,
+                                otherSegment.first,
+                                otherSegment.second,
+                                epsilon = MaterializedGeometryEpsilon,
+                                endpointTolerance = MaterializedGeometryEpsilon,
+                            ) ||
+                            sameAxisSegmentOverlapLength(
+                                pathSegment.first,
+                                pathSegment.second,
+                                otherSegment.first,
+                                otherSegment.second,
+                                epsilon = MaterializedGeometryEpsilon,
+                            ) >=
+                            MinimumSharedTrackSpan
+                        ) {
+                            conflicts += 1
+                        }
+                    }
+                }
+            }
+            return conflicts
+        }
+
+        fun sameSideTrackPath(
+            source: ScenePoint,
+            sourceSide: Side,
+            target: ScenePoint,
+        ): List<ScenePoint> {
+            val track = outsideTracks.getValue(sourceSide)
+            return when (sourceSide) {
+                Side.Top,
+                Side.Bottom,
+                -> listOf(
+                    source,
+                    ScenePoint(source.x, track),
+                    ScenePoint(target.x, track),
+                    target,
+                )
+                Side.Left,
+                Side.Right,
+                -> listOf(
+                    source,
+                    ScenePoint(track, source.y),
+                    ScenePoint(track, target.y),
+                    target,
+                )
+            }
+        }
+
+        visibleRoutes.forEach { (routeIndex, route) ->
+            val edge = route.edge ?: return@forEach
+            val points = route.points.removeAdjacentDuplicates()
+            val currentBends = countOrthogonalBends(points)
+            if (currentBends < DetourBendThreshold) return@forEach
+            val source = graph.nodes[edge.from] ?: return@forEach
+            val target = graph.nodes[edge.to] ?: return@forEach
+            val currentIncidentConflicts = pathConflictCount(
+                points,
+                routeIndex,
+                includeIncidentEdges = true,
+            )
+            val currentNonIncidentConflicts = pathConflictCount(
+                points,
+                routeIndex,
+                includeIncidentEdges = false,
+            )
+            var bestPath: List<ScenePoint>? = null
+            var bestIncidentConflicts = currentIncidentConflicts
+            var bestBends = currentBends
+
+            Side.values().forEach sourceSideLoop@ { sourceSide ->
+                if (faceIsClaimed(edge.from, sourceSide, routeIndex)) {
+                    return@sourceSideLoop
+                }
+                val sourcePort = port(source, sourceSide, 0f)
+                Side.values().forEach targetSideLoop@ { targetSide ->
+                    if (faceIsClaimed(edge.to, targetSide, routeIndex)) {
+                        return@targetSideLoop
+                    }
+                    val targetPort = port(target, targetSide, 0f)
+                    val candidates = mutableListOf<List<ScenePoint>>()
+                    buildOrthogonalPortPath(
+                        sourcePort,
+                        sourceSide,
+                        targetPort,
+                        targetSide,
+                    )?.let(candidates::add)
+                    if (sourceSide == targetSide) {
+                        candidates += sameSideTrackPath(sourcePort, sourceSide, targetPort)
+                    }
+                    candidates.distinct().forEach candidateLoop@ { candidate ->
+                        if (pathHitsNode(route, candidate)) return@candidateLoop
+                        val candidateBends = countOrthogonalBends(candidate)
+                        if (currentIncidentConflicts > 0) {
+                            val candidateIncidentConflicts = pathConflictCount(
+                                candidate,
+                                routeIndex,
+                                includeIncidentEdges = true,
+                            )
+                            if (
+                                candidateIncidentConflicts > bestIncidentConflicts ||
+                                (
+                                    candidateIncidentConflicts == bestIncidentConflicts &&
+                                        candidateBends >= bestBends
+                                    )
+                            ) {
+                                return@candidateLoop
+                            }
+                            bestIncidentConflicts = candidateIncidentConflicts
+                            bestBends = candidateBends
+                            bestPath = candidate
+                            return@candidateLoop
+                        }
+
+                        val candidateNonIncidentConflicts = pathConflictCount(
+                            candidate,
+                            routeIndex,
+                            includeIncidentEdges = false,
+                        )
+                        if (
+                            candidateNonIncidentConflicts > currentNonIncidentConflicts ||
+                            candidateBends >= bestBends
+                        ) {
+                            return@candidateLoop
+                        }
+                        bestBends = candidateBends
+                        bestPath = candidate
+                    }
+                }
+            }
+
+            val replacement = bestPath ?: return@forEach
+            route.points = replacement.toMutableList()
+            faceClaims.forEach { (_, claimants) -> claimants -= routeIndex }
+            addFaceClaim(edge.from, nearestSide(replacement.first(), source), routeIndex)
+            addFaceClaim(edge.to, nearestSide(replacement.last(), target), routeIndex)
+        }
+    }
+
+    // Mermaid.js 12.0.0:
+    // swimlanes/direction/geometry.ts -> buildOrthogonalPortPath.
+    private fun buildOrthogonalPortPath(
+        source: ScenePoint,
+        sourceSide: Side,
+        target: ScenePoint,
+        targetSide: Side,
+    ): List<ScenePoint>? {
+        val sourceHorizontal = sourceSide.isVerticalFace
+        val targetHorizontal = targetSide.isVerticalFace
+        if (sourceHorizontal && targetHorizontal) {
+            val opposingDirection =
+                (
+                    sourceSide == Side.Right &&
+                        targetSide == Side.Left &&
+                        source.x < target.x
+                    ) ||
+                    (
+                        sourceSide == Side.Left &&
+                            targetSide == Side.Right &&
+                            source.x > target.x
+                        )
+            if (opposingDirection) {
+                if (abs(source.y - target.y) < MaterializedGeometryEpsilon) {
+                    return listOf(source, target)
+                }
+                val middleX = (source.x + target.x) / 2f
+                return listOf(
+                    source,
+                    ScenePoint(middleX, source.y),
+                    ScenePoint(middleX, target.y),
+                    target,
+                )
+            }
+            if (sourceSide == targetSide) {
+                if (abs(source.y - target.y) < MaterializedGeometryEpsilon) return null
+                val trackX = if (sourceSide == Side.Left) {
+                    min(source.x, target.x) - OrthogonalRouteAnchor
+                } else {
+                    max(source.x, target.x) + OrthogonalRouteAnchor
+                }
+                return listOf(
+                    source,
+                    ScenePoint(trackX, source.y),
+                    ScenePoint(trackX, target.y),
+                    target,
+                )
+            }
+            return null
+        }
+
+        if (!sourceHorizontal && !targetHorizontal) {
+            if (sourceSide == targetSide) {
+                if (abs(source.x - target.x) < MaterializedGeometryEpsilon) return null
+                val trackY = if (sourceSide == Side.Top) {
+                    min(source.y, target.y) - OrthogonalRouteAnchor
+                } else {
+                    max(source.y, target.y) + OrthogonalRouteAnchor
+                }
+                return listOf(
+                    source,
+                    ScenePoint(source.x, trackY),
+                    ScenePoint(target.x, trackY),
+                    target,
+                )
+            }
+            val sameDirection =
+                (
+                    sourceSide == Side.Bottom &&
+                        targetSide == Side.Top &&
+                        source.y < target.y
+                    ) ||
+                    (
+                        sourceSide == Side.Top &&
+                            targetSide == Side.Bottom &&
+                            source.y > target.y
+                        )
+            if (!sameDirection) return null
+            if (abs(source.x - target.x) < MaterializedGeometryEpsilon) {
+                return listOf(source, target)
+            }
+            val middleY = (source.y + target.y) / 2f
+            return listOf(
+                source,
+                ScenePoint(source.x, middleY),
+                ScenePoint(target.x, middleY),
+                target,
+            )
+        }
+
+        if (sourceHorizontal) {
+            val sourceFacesTarget =
+                (sourceSide == Side.Right && target.x > source.x) ||
+                    (sourceSide == Side.Left && target.x < source.x)
+            val targetFacesSource =
+                (targetSide == Side.Top && source.y < target.y) ||
+                    (targetSide == Side.Bottom && source.y > target.y)
+            return if (sourceFacesTarget && targetFacesSource) {
+                listOf(source, ScenePoint(target.x, source.y), target)
+            } else {
+                null
+            }
+        }
+
+        val sourceFacesTarget =
+            (sourceSide == Side.Bottom && target.y > source.y) ||
+                (sourceSide == Side.Top && target.y < source.y)
+        val targetFacesSource =
+            (targetSide == Side.Left && source.x < target.x) ||
+                (targetSide == Side.Right && source.x > target.x)
+        return if (sourceFacesTarget && targetFacesSource) {
+            listOf(source, ScenePoint(source.x, target.y), target)
+        } else {
+            null
+        }
+    }
+
     // Mermaid.js 12.0.0: swimlanes/direction/portSwap.ts ->
     // portSwapToLShape.
     private fun portSwapToLShape(
@@ -1380,11 +1742,19 @@ internal object SwimlaneLayout {
         second: ScenePoint,
         otherFirst: ScenePoint,
         otherSecond: ScenePoint,
+        epsilon: Float = Epsilon,
+        endpointTolerance: Float = Epsilon,
     ): Boolean {
-        val firstHorizontal = first.isHorizontalTo(second)
-        val firstVertical = first.isVerticalTo(second)
-        val otherHorizontal = otherFirst.isHorizontalTo(otherSecond)
-        val otherVertical = otherFirst.isVerticalTo(otherSecond)
+        val firstHorizontal =
+            abs(first.y - second.y) < epsilon && abs(first.x - second.x) > epsilon
+        val firstVertical =
+            abs(first.x - second.x) < epsilon && abs(first.y - second.y) > epsilon
+        val otherHorizontal =
+            abs(otherFirst.y - otherSecond.y) < epsilon &&
+                abs(otherFirst.x - otherSecond.x) > epsilon
+        val otherVertical =
+            abs(otherFirst.x - otherSecond.x) < epsilon &&
+                abs(otherFirst.y - otherSecond.y) > epsilon
         if (
             !(
                 (firstHorizontal && otherVertical) ||
@@ -1407,9 +1777,23 @@ internal object SwimlaneLayout {
             return false
         }
         val matchesHorizontalEndpoint =
-            intersection.samePoint(horizontalFirst) || intersection.samePoint(horizontalSecond)
+            (
+                abs(intersection.x - horizontalFirst.x) < endpointTolerance &&
+                    abs(intersection.y - horizontalFirst.y) < endpointTolerance
+                ) ||
+                (
+                    abs(intersection.x - horizontalSecond.x) < endpointTolerance &&
+                        abs(intersection.y - horizontalSecond.y) < endpointTolerance
+                    )
         val matchesVerticalEndpoint =
-            intersection.samePoint(verticalFirst) || intersection.samePoint(verticalSecond)
+            (
+                abs(intersection.x - verticalFirst.x) < endpointTolerance &&
+                    abs(intersection.y - verticalFirst.y) < endpointTolerance
+                ) ||
+                (
+                    abs(intersection.x - verticalSecond.x) < endpointTolerance &&
+                        abs(intersection.y - verticalSecond.y) < endpointTolerance
+                    )
         return !(matchesHorizontalEndpoint && matchesVerticalEndpoint)
     }
 
@@ -1558,125 +1942,6 @@ internal object SwimlaneLayout {
                 }
             }
             return CrossingSnapshot(count, crossingRouteIndices)
-        }
-
-        fun buildOrthogonalPortPath(
-            source: ScenePoint,
-            sourceSide: Side,
-            target: ScenePoint,
-            targetSide: Side,
-        ): List<ScenePoint>? {
-            val sourceHorizontal = sourceSide.isVerticalFace
-            val targetHorizontal = targetSide.isVerticalFace
-            if (sourceHorizontal && targetHorizontal) {
-                val opposingDirection =
-                    (
-                        sourceSide == Side.Right &&
-                            targetSide == Side.Left &&
-                            source.x < target.x
-                        ) ||
-                        (
-                            sourceSide == Side.Left &&
-                                targetSide == Side.Right &&
-                                source.x > target.x
-                            )
-                if (opposingDirection) {
-                    if (abs(source.y - target.y) < MaterializedGeometryEpsilon) {
-                        return listOf(source, target)
-                    }
-                    val middleX = (source.x + target.x) / 2f
-                    return listOf(
-                        source,
-                        ScenePoint(middleX, source.y),
-                        ScenePoint(middleX, target.y),
-                        target,
-                    )
-                }
-                if (sourceSide == targetSide) {
-                    if (abs(source.y - target.y) < MaterializedGeometryEpsilon) {
-                        return null
-                    }
-                    val trackX = if (sourceSide == Side.Left) {
-                        min(source.x, target.x) - CrossingResolutionAnchor
-                    } else {
-                        max(source.x, target.x) + CrossingResolutionAnchor
-                    }
-                    return listOf(
-                        source,
-                        ScenePoint(trackX, source.y),
-                        ScenePoint(trackX, target.y),
-                        target,
-                    )
-                }
-                return null
-            }
-
-            if (!sourceHorizontal && !targetHorizontal) {
-                if (sourceSide == targetSide) {
-                    if (abs(source.x - target.x) < MaterializedGeometryEpsilon) {
-                        return null
-                    }
-                    val trackY = if (sourceSide == Side.Top) {
-                        min(source.y, target.y) - CrossingResolutionAnchor
-                    } else {
-                        max(source.y, target.y) + CrossingResolutionAnchor
-                    }
-                    return listOf(
-                        source,
-                        ScenePoint(source.x, trackY),
-                        ScenePoint(target.x, trackY),
-                        target,
-                    )
-                }
-                val sameDirection =
-                    (
-                        sourceSide == Side.Bottom &&
-                            targetSide == Side.Top &&
-                            source.y < target.y
-                        ) ||
-                        (
-                            sourceSide == Side.Top &&
-                                targetSide == Side.Bottom &&
-                                source.y > target.y
-                            )
-                if (!sameDirection) return null
-                if (abs(source.x - target.x) < MaterializedGeometryEpsilon) {
-                    return listOf(source, target)
-                }
-                val middleY = (source.y + target.y) / 2f
-                return listOf(
-                    source,
-                    ScenePoint(source.x, middleY),
-                    ScenePoint(target.x, middleY),
-                    target,
-                )
-            }
-
-            if (sourceHorizontal) {
-                val sourceFacesTarget =
-                    (sourceSide == Side.Right && target.x > source.x) ||
-                        (sourceSide == Side.Left && target.x < source.x)
-                val targetFacesSource =
-                    (targetSide == Side.Top && source.y < target.y) ||
-                        (targetSide == Side.Bottom && source.y > target.y)
-                return if (sourceFacesTarget && targetFacesSource) {
-                    listOf(source, ScenePoint(target.x, source.y), target)
-                } else {
-                    null
-                }
-            }
-
-            val sourceFacesTarget =
-                (sourceSide == Side.Bottom && target.y > source.y) ||
-                    (sourceSide == Side.Top && target.y < source.y)
-            val targetFacesSource =
-                (targetSide == Side.Left && source.x < target.x) ||
-                    (targetSide == Side.Right && source.x > target.x)
-            return if (sourceFacesTarget && targetFacesSource) {
-                listOf(source, ScenePoint(source.x, target.y), target)
-            } else {
-                null
-            }
         }
 
         fun candidatePathsFor(route: MutableRoute): List<List<ScenePoint>> {
@@ -1845,14 +2110,19 @@ internal object SwimlaneLayout {
         second: ScenePoint,
         otherFirst: ScenePoint,
         otherSecond: ScenePoint,
+        epsilon: Float = SharedTrackAxisEpsilon,
     ): Float = when {
-        first.isHorizontalTo(second) &&
-            otherFirst.isHorizontalTo(otherSecond) &&
-            abs(first.y - otherFirst.y) < SharedTrackAxisEpsilon ->
+        abs(first.y - second.y) < epsilon &&
+            abs(first.x - second.x) > epsilon &&
+            abs(otherFirst.y - otherSecond.y) < epsilon &&
+            abs(otherFirst.x - otherSecond.x) > epsilon &&
+            abs(first.y - otherFirst.y) < epsilon ->
             overlapLength(first.x, second.x, otherFirst.x, otherSecond.x)
-        first.isVerticalTo(second) &&
-            otherFirst.isVerticalTo(otherSecond) &&
-            abs(first.x - otherFirst.x) < SharedTrackAxisEpsilon ->
+        abs(first.x - second.x) < epsilon &&
+            abs(first.y - second.y) > epsilon &&
+            abs(otherFirst.x - otherSecond.x) < epsilon &&
+            abs(otherFirst.y - otherSecond.y) > epsilon &&
+            abs(first.x - otherFirst.x) < epsilon ->
             overlapLength(first.y, second.y, otherFirst.y, otherSecond.y)
         else -> 0f
     }
@@ -2772,8 +3042,9 @@ internal object SwimlaneLayout {
     private const val TitleRailClearance = 4f
     private const val MinimumSharedTitleSpan = 8f
     private const val MaterializedGeometryEpsilon = 0.001f
+    private const val DetourBendThreshold = 4
+    private const val OrthogonalRouteAnchor = 20f
     private const val CrossingResolutionNodeBuffer = 2f
-    private const val CrossingResolutionAnchor = 20f
     private const val CrossingResolutionMaximumIterations = 4
     private const val MinimumSharedTrackSpan = 8f
     private const val SharedTrackAxisEpsilon = 0.5f

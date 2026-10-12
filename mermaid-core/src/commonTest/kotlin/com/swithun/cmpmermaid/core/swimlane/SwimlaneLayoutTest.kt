@@ -374,6 +374,41 @@ class SwimlaneLayoutTest {
     }
 
     @Test
+    fun simplifiesLongReturnEdgeToUpstreamSameSideRail() {
+        val scene = render(
+            """
+                swimlane-beta LR
+                  subgraph Intake
+                    N1[Patient Case Register]
+                  end
+                  subgraph Assessment
+                    N2[Patient Case Assess]
+                  end
+                  N3[Patient Case Stabilize]
+                  N4[Patient Case Transfer]
+                  N1 --> N2
+                  N2 --> N3
+                  N3 --> N4
+            """.trimIndent(),
+        )
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val assess = shapes.getValue("N2")
+        val stabilize = shapes.getValue("N3")
+        val returnEdge = scene.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "L_N2_N3_0" }
+
+        assertEquals(assess.bounds.left, returnEdge.points.first().x, 0.01f)
+        assertEquals(stabilize.bounds.left, returnEdge.points.last().x, 0.01f)
+        assertEquals(
+            minOf(assess.bounds.left, stabilize.bounds.left) - 20f,
+            returnEdge.points.minOf(ScenePoint::x),
+            0.01f,
+            "returnEdge=${returnEdge.points}",
+        )
+        assertEquals(4, returnEdge.points.size, "returnEdge=${returnEdge.points}")
+    }
+
+    @Test
     fun separatesDiamondOutgoingEdgeFromOccupiedIncomingSide() {
         val scene = render(
             """
