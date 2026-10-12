@@ -5,6 +5,7 @@ import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.ScenePath
+import com.swithun.cmpmermaid.core.ScenePoint
 import com.swithun.cmpmermaid.core.SceneShape
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.TextMetricProvider
@@ -305,6 +306,74 @@ class SwimlaneLayoutTest {
     }
 
     @Test
+    fun matchesUpstreamConfiguredRoutingWithoutStrictCrossing() {
+        val scene = render(
+            """
+                ---
+                config:
+                  swimlane:
+                    lineHops: gap
+                    ignoreCrossLaneEdges: false
+                    optimizeRanksByCrossings: true
+                    automaticLaneOrdering: true
+                ---
+                swimlane-beta TB
+                  subgraph Product
+                    plan[Plan]
+                  end
+                  subgraph Engineering
+                    build[Build]
+                  end
+                  subgraph Quality
+                    verify[Verify]
+                  end
+                  subgraph Operations
+                    release[Release]
+                  end
+                  plan --> build --> verify --> release
+                  plan --> verify
+            """.trimIndent(),
+        )
+        val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
+        val plan = shapes.getValue("plan")
+        val verify = shapes.getValue("verify")
+        val planToBuild = scene.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "L_plan_build_0" }
+        val buildToVerify = scene.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "L_build_verify_0" }
+        val planToVerify = scene.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "L_plan_verify_0" }
+
+        assertEquals(plan.bounds.right, planToBuild.points.first().x, 0.01f)
+        assertEquals(plan.bounds.right, planToVerify.points.first().x, 0.01f)
+        assertEquals(3, planToBuild.points.size)
+        assertTrue(
+            kotlin.math.abs(
+                planToBuild.points.first().y - planToVerify.points.first().y,
+            ) > 7.9f,
+            "planToBuild=${planToBuild.points} planToVerify=${planToVerify.points}",
+        )
+        assertEquals(
+            verify.bounds.left,
+            buildToVerify.points.last().x,
+            0.01f,
+            "buildToVerify=${buildToVerify.points} planToVerify=${planToVerify.points}",
+        )
+        assertTrue(
+            !pathsStrictlyCross(buildToVerify.points, planToVerify.points),
+            "buildToVerify=${buildToVerify.points} planToVerify=${planToVerify.points}",
+        )
+        listOf(planToBuild, buildToVerify, planToVerify).forEach { path ->
+            path.points.zipWithNext().forEach { (first, second) ->
+                assertTrue(
+                    first.x == second.x || first.y == second.y,
+                    "${path.id} is not orthogonal: ${path.points}",
+                )
+            }
+        }
+    }
+
+    @Test
     fun separatesDiamondOutgoingEdgeFromOccupiedIncomingSide() {
         val scene = render(
             """
@@ -413,6 +482,34 @@ class SwimlaneLayoutTest {
     private fun render(source: String): MermaidScene {
         val result = engine.render(source, context)
         return assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+    }
+
+    private fun pathsStrictlyCross(
+        first: List<ScenePoint>,
+        second: List<ScenePoint>,
+    ): Boolean = first.zipWithNext().any { (firstStart, firstEnd) ->
+        second.zipWithNext().any segmentLoop@ { (secondStart, secondEnd) ->
+            val firstHorizontal = firstStart.y == firstEnd.y
+            val firstVertical = firstStart.x == firstEnd.x
+            val secondHorizontal = secondStart.y == secondEnd.y
+            val secondVertical = secondStart.x == secondEnd.x
+            if (
+                !(
+                    (firstHorizontal && secondVertical) ||
+                        (firstVertical && secondHorizontal)
+                    )
+            ) {
+                return@segmentLoop false
+            }
+            val horizontalStart = if (firstHorizontal) firstStart else secondStart
+            val horizontalEnd = if (firstHorizontal) firstEnd else secondEnd
+            val verticalStart = if (firstHorizontal) secondStart else firstStart
+            val verticalEnd = if (firstHorizontal) secondEnd else firstEnd
+            verticalStart.x > minOf(horizontalStart.x, horizontalEnd.x) &&
+                verticalStart.x < maxOf(horizontalStart.x, horizontalEnd.x) &&
+                horizontalStart.y > minOf(verticalStart.y, verticalEnd.y) &&
+                horizontalStart.y < maxOf(verticalStart.y, verticalEnd.y)
+        }
     }
 
     private fun Any.describe(): String = when (this) {
