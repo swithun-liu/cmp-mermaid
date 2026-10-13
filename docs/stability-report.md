@@ -1,8 +1,12 @@
 # Mermaid 12.0.0 Stability Test Report
 
 > [!NOTE]
-> This report records the completed Stable evidence for all 33 official
-> Mermaid `12.0.0` families. Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
+> This report contains current evidence for all 33 official Mermaid `12.0.0`
+> families, including the directly retranslated Swimlanes implementation.
+> Swimlanes classic-look gates are complete, but Swimlanes and the overall
+> contract are **not Stable** because the legal RoughJS-backed
+> `look: handDrawn` capability returns a structured unsupported result. Kotlin
+> 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS now have separate fresh 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
 > identified by their measured corpus sizes. See the
@@ -18,25 +22,26 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Stable** |
+| Current rating | **Not Stable: `look: handDrawn` explicitly unsupported** |
 | Mermaid compatibility baseline | `12.0.0` |
-| Implemented families | 33/33; all family gates passing |
+| Implemented families | 33/33; all 33 family evidence gates current |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
 | Independent-scenario visual matrix | 8,448 Native/Official pairs: every family uses a fixed `64 / 64 / 48 / 32 / 32 / 16` coverage-driven corpus |
-| Coverage hard gate | All 33 families pass all six quotas, required family capabilities, 16/16 equivalent-syntax groups, and their family-specific structural-profile floors |
+| Coverage hard gate | All 33 families satisfy their six quotas, required capabilities, equivalent-syntax groups, and structural-profile floor |
 | Duplicate hard gate | All 33 families have 256/256 unique blueprints, normalized semantic structures, and label-normalized sources; rendered manifest/PNG uniqueness is diagnostic because distinct legal inputs can render equivalently |
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; no additional structural coverage |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; all 6,292 Native rejections were `CONTENT_ERROR`; 16,896 screenshots; 0 crashes or timeouts |
 | Native core render results | 441 production scenarios and all 8,448 independent visual scenarios render successfully; the text/layout stress inputs are tracked separately |
 | Web Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Visual evidence | 528 freshly generated independent-scenario sheets plus 528 source-mutation sheets across all 33 families |
-| Independent-scenario detail audit | 8,448/8,448 processed: 7,722 pass, 726 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 processed: 0 failure, 177 review findings across 125 cases |
+| Independent-scenario detail audit | 8,448/8,448 processed: 7,829 pass, 619 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 processed: 0 failure, 176 review findings across 124 cases |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | 892 passed, 0 failed |
+| JVM tests | 1,039 passed, 0 failed |
+| Wasm tests | Core and Compose: 1,031 passed, 0 failed; debug UI: 5 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -44,9 +49,11 @@ stress inputs.
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
-**Current conclusion:** all 33 families pass the Native core, determinism,
-theme, independent-scenario duplicate/detail/geometry, and contact-sheet
-generation gates. The supported Mermaid `12.0.0` contract is rated **Stable**.
+**Current conclusion:** all fresh Swimlanes Native core, DDLT, detail,
+geometry, per-edge topology, contact-sheet, JVM, Wasm, and production gates
+are complete. The overall Mermaid `12.0.0` contract remains **not Stable**
+because legal `look: handDrawn` input is explicitly unsupported rather than
+silently approximated.
 
 ## AI-Like Source-Mutation Safety Gate
 
@@ -91,7 +98,7 @@ relations, data points, or hierarchy rather than metadata-only profile changes.
 Business titles make cases readable but do not establish coverage. Each family
 also has a 256-case
 geometry result and 16 paged contact sheets. The fresh total is:
-`7,722 pass / 726 review / 0 fail`.
+`7,829 pass / 619 review / 0 fail`.
 
 The mandatory
 [duplicate audit](assets/stability-report/visual-scenario-duplicate-audit.json)
@@ -104,19 +111,19 @@ because distinct legal inputs can intentionally produce equivalent geometry.
 
 Detail review findings are retained as explicit representation differences:
 
-- text position: 330 findings;
-- text overlap: 221 findings;
-- raster mask, edge, or color: 205 findings;
+- text position: 233 findings;
+- text overlap: 218 findings;
+- raster mask, edge, or color: 202 findings;
 - equivalent element-count representation: 164 findings;
-- marker depth/reference occlusion: 17 findings;
-- paint-order occlusion or ratio: 33 findings;
+- marker depth/reference occlusion: 11 findings;
+- paint-order occlusion or ratio: 25 findings;
 - text-presence differences accepted only by the strict Treemap
   truncation policy: 10 findings;
 - stroke-pattern representation: 2 findings.
 
 These categories may co-occur within one case. No expected-text loss,
 clipping error, or hard detail/geometry failure was recorded. The geometry
-gate retains 177 review findings across 125 cases: 39 width, 46 height, 60
+gate retains 176 review findings across 124 cases: 39 width, 45 height, 60
 foreground-ink, 22 paint-order, and 10 strict text-presence findings. Of these,
 157 findings across 105 cases come from Architecture's seeded iterative fCoSE
 layout. The remaining findings retain font-wrapping, dense Pie,
@@ -126,7 +133,7 @@ with broader thresholds.
 | Family | Pass | Review | Width ratio | Height ratio | Ink ratio |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Flowchart | 256 | 0 | `1.024-1.027` | `1.000-1.131` | `0.861-1.059` |
-| Swimlanes | 148 | 108 | `0.901-1.329` | `0.964-1.255` | `0.881-1.193` |
+| Swimlanes | 255 | 1 | `1.023-1.074` | `0.976-1.078` | `0.982-1.130` |
 | Architecture | 78 | 178 | `0.725-15.283` | `0.316-2.312` | `0.162-15.222` |
 | C4 | 254 | 2 | `0.989-1.118` | `0.925-1.065` | `0.911-1.121` |
 | Railroad | 256 | 0 | `1.003-1.120` | `1.022-1.131` | `1.051-1.281` |
@@ -159,17 +166,19 @@ with broader thresholds.
 | Wardley Map | 256 | 0 | `1.008-1.015` | `1.019-1.024` | `0.941-1.106` |
 | ZenUML | 256 | 0 | `1.042-1.100` | `1.039-1.102` | `1.012-1.256` |
 All 528 independent-scenario contact sheets were regenerated from the same 8,448
-source cases recorded in the manifest. The 726 detail-review cases are
-distributed as follows: Architecture 178, Entity Relationship 109, Swimlanes
-108, Venn 80, Gantt 66, Agentflow 43, XY Chart 35, Class 31, Quadrant 25, Git
-Graph 25, Treemap 10, State 4, Pie 4, Mindmap 3, C4 2, Cynefin 2, and Ishikawa
-1. The other 16 families pass all 256 detail cases automatically.
+source cases recorded in the manifest. The 619 detail-review cases are
+distributed as follows: Architecture 178, Entity Relationship 109, Venn 80,
+Gantt 66, Agentflow 43, XY Chart 35, Class 31, Quadrant 25, Git Graph 25,
+Treemap 10, State 4, Pie 4, Mindmap 3, C4 2, Cynefin 2, Ishikawa 1, and
+Swimlanes 1. The other 16 families pass all 256 detail cases automatically.
 Per-family compatibility
 pages and machine-readable reports preserve the individual findings and
 geometry ranges.
 
-All per-family results pass, so overall supported Mermaid `12.0.0`
-compatibility is **Stable**.
+The table contains the fresh direct-translation run. It does not make
+Swimlanes Stable because `look: handDrawn` remains a mapped
+`UnsupportedFeature`; overall Mermaid `12.0.0` compatibility is therefore
+**not Stable**.
 
 ## What This Report Does And Does Not Prove
 
@@ -247,7 +256,7 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | Event Modeling | 13 | 22/22 | frame forms, entity aliases, swimlanes, inferred/explicit relations, inline data, reset behavior, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Agentflow | 13 | 32/32 | typed nodes and edge semantics, nested/global/collapsed flows, connectors, metadata, diagnostics, configuration, themes, Dagre layout | Production evidence retained; independent-scenario matrix 213 pass / 43 review / 0 fail; 16/16 sheets regenerated |
 | Block | 13 | 31/31 | grids, spans, spaces, nested composites, documented shapes, block arrows, links, markers, classes, inline styles, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Swimlanes | 13 | 15/15 | directions, lane ownership and defaults, nested subgraphs, flowchart shapes, cross-lane edges, orthogonal routes, cycles, styles, configuration, themes | Production evidence retained; independent-scenario matrix 148 pass / 108 review / 0 fail; 16/16 sheets regenerated |
+| Swimlanes | 13 | 15/15 classic-look points; handDrawn unsupported | directions, lane ownership and defaults, nested subgraphs, flowchart shapes, cross-lane edges, orthogonal routes, cycles, styles, configuration, themes | Fresh production and DDLT detail/topology 13/13 pass; 256-case detail 255 pass / 1 reviewed / 0 fail; topology 256/256 pass; 16/16 sheets reviewed |
 | Architecture | 13 | 18/18 | services, icons, nested groups, junctions, directional ports, arrows, labels, boundary modifiers, row/column alignment, configuration, deterministic seed, metadata | Production evidence retained; independent-scenario matrix 78 pass / 178 review / 0 fail; 16/16 sheets regenerated |
 | C4 | 13 | 26/26 | five diagram levels, people, systems, containers, components, external/database/queue variants, nested boundaries, deployment nodes, relation variants, dynamic indexes, styles, configuration, metadata | Production evidence retained; independent-scenario matrix 254 pass / 2 review / 0 fail; 16/16 sheets regenerated |
 | Railroad | 18 | 24/24 | Railroad IR, EBNF, ABNF, PEG, terminals, non-terminals, sequences, choices, optional and repeated expressions, notation-specific constructs, configuration, themes, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
@@ -291,7 +300,7 @@ Machine-readable evidence:
 [manifest](assets/stability-report/visual-parity-manifest.json),
 [detail report](assets/stability-report/visual-parity-detail.json), and
 [geometry report](assets/stability-report/visual-parity-geometry.json).
-The geometry gate recorded 0 failures and 177 review findings across 125
+The geometry gate recorded 0 failures and 176 review findings across 124
 cases. Overall Native/Official width ratios were `0.563-15.283`, height ratios
 were `0.316-2.312`, and foreground-ink ratios were `0.162-15.222`.
 Architecture contributes 157 findings across 105 seeded fCoSE cases; the
@@ -379,11 +388,20 @@ The fresh 256-case independent-scenario Native/Official audit reports `256 pass 
 
 ![Swimlanes complex Native and Official corpus](assets/stability-report/swimlanes-complex-corpus.png)
 
-The production geometry passed all 13 pairs. Width, height, and foreground-ink
-ratios were `1.028-1.128`, `1.020-1.070`, and `0.972-1.187`. Production
-detail was `11 pass / 2 review / 0 fail`.
+The fresh production geometry, detail, and per-edge topology audits passed all
+13 pairs. Width, height, and foreground-ink ratios were `1.028-1.074`,
+`0.976-1.070`, and `1.004-1.130`.
 
-The fresh 256-case independent-scenario Native/Official audit reports `148 pass / 108 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.329`, height `0.964-1.255`, and foreground ink `0.881-1.193`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+The fresh 256-case independent-scenario Native/Official audit reports
+`255 pass / 1 manually accepted review / 0 fail`; geometry has no review or
+failure with width `1.023-1.074`, height `0.976-1.078`, and foreground ink
+`0.982-1.130`; topology is `256/256` pass. The sole review,
+`visual_swimlanes_004`, preserves the title/author overlap present in both
+renderers rather than applying a Native-only coordinate patch. See the
+[Swimlanes detail](assets/stability-report/swimlanes-visual-parity-detail.json),
+[geometry](assets/stability-report/swimlanes-visual-parity-geometry.json), and
+[topology](assets/stability-report/swimlanes-visual-parity-topology.json)
+reports.
 
 </details>
 
@@ -1003,10 +1021,12 @@ The Stable label requires all of these code-level gates:
 - no open high-severity correctness, crash, resource-exhaustion, or
   data-exposure defect exists for the supported contract.
 
-These criteria are satisfied for the supported Mermaid `12.0.0` contract. All
-33 official families are implemented and have completed the semantic,
-paint-order, perceptual, geometry, and manual contact-sheet gates. The public
-code status is therefore **Stable**. The Android Kotlin 2.3.20, Android Kotlin
-1.7.21, and iOS 441-case physical-device loads are fresh; the core soak and
-other runtime performance values remain labelled with their measured corpus
-sizes.
+The retranslated Swimlanes implementation now satisfies every evidence gate:
+the source map, translated tests, DDLT, production, 256-case detail and
+geometry, per-edge topology, and manual contact-sheet review are current.
+However, its mapped `look: handDrawn` case remains a structured unsupported
+result. The public code status is therefore **not Stable**, rather than
+carrying a pending label: no evidence gate remains pending, but the explicit
+unsupported boundary still blocks Stable. The Android Kotlin 2.3.20, Android
+Kotlin 1.7.21, and iOS 441-case physical-device loads predate the Swimlanes
+retranslation and remain historical evidence for that family.

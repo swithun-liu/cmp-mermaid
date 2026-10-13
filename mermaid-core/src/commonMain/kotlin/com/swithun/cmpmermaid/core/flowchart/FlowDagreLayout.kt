@@ -15,6 +15,7 @@ import com.swithun.cmpmermaid.core.flowchart.upstream.dagre.DagreNode
 import com.swithun.cmpmermaid.core.flowchart.upstream.dagre.DagreSelfLoop
 import com.swithun.cmpmermaid.core.flowchart.upstream.graphlib.Graph
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidGraphAdapter
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeIntersectionPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
 import kotlin.math.abs
 import kotlin.math.max
@@ -471,14 +472,14 @@ internal object FlowDagreLayout {
             ?: nodeBounds[source.to]
             ?: subgraphBounds[source.to]
         if (startBounds != null) {
-            points[0] = intersect(
+            points[0] = MermaidShapeIntersectionPort.intersect(
                 shapeLayout = nodeShapeLayouts[source.from],
                 bounds = startBounds,
                 toward = points[1],
             )
         }
         if (endBounds != null) {
-            points[points.lastIndex] = intersect(
+            points[points.lastIndex] = MermaidShapeIntersectionPort.intersect(
                 shapeLayout = nodeShapeLayouts[source.to],
                 bounds = endBounds,
                 toward = points[points.lastIndex - 1],
@@ -623,50 +624,6 @@ internal object FlowDagreLayout {
         FlowDirection.BottomToTop -> "BT"
         FlowDirection.LeftToRight -> "LR"
         FlowDirection.RightToLeft -> "RL"
-    }
-
-    private fun intersect(
-        shapeLayout: MermaidShapeLayout?,
-        bounds: SceneRect,
-        toward: ScenePoint,
-    ): ScenePoint {
-        val center = bounds.center
-        val outline = if (shapeLayout == null) {
-            listOf(
-                ScenePoint(bounds.left, bounds.top),
-                ScenePoint(bounds.right, bounds.top),
-                ScenePoint(bounds.right, bounds.bottom),
-                ScenePoint(bounds.left, bounds.bottom),
-            )
-        } else {
-            shapeLayout.geometry.outline.map { point ->
-                ScenePoint(center.x + point.x, center.y + point.y)
-            }
-        }
-        val directionX = toward.x - center.x
-        val directionY = toward.y - center.y
-        var best: Pair<Float, ScenePoint>? = null
-        (outline + outline.first()).zipWithNext().forEach { (first, second) ->
-            val segmentX = second.x - first.x
-            val segmentY = second.y - first.y
-            val denominator = directionX * segmentY - directionY * segmentX
-            if (abs(denominator) < 0.0001f) return@forEach
-            val offsetX = first.x - center.x
-            val offsetY = first.y - center.y
-            val ray = (offsetX * segmentY - offsetY * segmentX) / denominator
-            val segment = (offsetX * directionY - offsetY * directionX) / denominator
-            val currentBest = best
-            if (ray in 0f..1f &&
-                segment in 0f..1f &&
-                (currentBest == null || ray > currentBest.first)
-            ) {
-                best = ray to ScenePoint(
-                    center.x + directionX * ray,
-                    center.y + directionY * ray,
-                )
-            }
-        }
-        return best?.second ?: center
     }
 
     private fun List<ScenePoint>.halfLengthPoint(): ScenePoint {

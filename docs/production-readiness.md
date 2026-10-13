@@ -18,7 +18,8 @@ rated Stable. A successful build alone is not sufficient.
   `UnsupportedFeature`
 - Official Mermaid families: 33
 - Implemented families: 33; pending translations: 0
-- Release status: **Stable**
+- Release status: **Not Stable** because legal `look: handDrawn` input remains
+  explicitly unsupported; all current classic-look evidence gates pass
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
   Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
   User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey,
@@ -26,8 +27,8 @@ rated Stable. A successful build alone is not sufficient.
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
   (`8,448/8,448` coverage-driven input cases processed;
-  `7,722 pass / 726 review / 0 fail`;
-  geometry has 0 hard failures and 177 review findings across 125 cases)
+  `7,829 pass / 619 review / 0 fail`;
+  geometry has 0 hard failures and 176 review findings across 124 cases)
 - Pending replacement detail gates: none
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -155,9 +156,11 @@ latest full evidence is linked from the stability report, and there are no
 open severity-1 correctness, crash, resource-exhaustion, or data-exposure
 defects.
 
-The full rule is satisfied for the supported Mermaid `12.0.0` contract. All 33
-families are implemented and have passed the replacement detail, geometry, and
-manual review gates. The former coarse geometry check missed a visible Git
-Graph paint-order defect; that defect is corrected. The load and soak values
-above remain explicitly identified as retained historical baselines and are
-not presented as a fresh 441-case performance rerun.
+All 33 families have passed the replacement detail, geometry, and manual
+review gates for their current classic-look evidence. The full Mermaid
+`12.0.0` rule is not yet satisfied because RoughJS-backed
+`look: handDrawn` remains explicitly unsupported. The former coarse geometry
+check missed a visible Git Graph paint-order defect; that defect is corrected.
+The load and soak values above remain explicitly identified as retained
+historical baselines and are not presented as a fresh 441-case performance
+rerun.

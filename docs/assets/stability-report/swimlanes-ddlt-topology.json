@@ -1,0 +1,3772 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-13T07:07:28.932Z",
+  "inputDirectory": "captures/local/swimlanes-ddlt-retranslation",
+  "casePrefix": "ddlt_swimlanes_",
+  "caseCount": 13,
+  "counts": {
+    "pass": 13
+  },
+  "failures": [],
+  "cases": [
+    {
+      "id": "ddlt_swimlanes_10_node_placement",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 8,
+      "officialEdgeCount": 8,
+      "edges": [
+        {
+          "edgeId": "L_D1_D2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D2_D3_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D3_D4_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D4_D2_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D4_T6_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_T6_T5_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_Te2_D1_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_Te2_T4_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_14_messy_layout",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 42,
+      "officialEdgeCount": 42,
+      "edges": [
+        {
+          "edgeId": "L_10_11_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_11_12_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_12_13_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_13_14_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_14_15_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_15_16_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_16_17_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_17_18_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_18_19_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_19_20_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_1_2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_20_21_0",
+          "native": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "U",
+              "L",
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "U",
+              "L",
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_21_22_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_22_23_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_23_24_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_24_25_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_25_26_0",
+          "native": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "L",
+              "U",
+              "L",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "L",
+              "U",
+              "L",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_26_27_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_27_28_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_28_29_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_29_30_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_2_3_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_30_31_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_31_32_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_32_33_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_32_35_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_33_33a_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_33_33b_0",
+          "native": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_33a_39_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_33b_39_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_35_36_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_36_37_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_37_38_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_38_39_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_3_4_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_4_5_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_5_6_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_6_7_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_7_8_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_7_9_0",
+          "native": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_8_9_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_9_10_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_15_border_hugging",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 5,
+      "officialEdgeCount": 5,
+      "edges": [
+        {
+          "edgeId": "L_23_24_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_24_25_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_25_26_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_26_27_0",
+          "native": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "U",
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "U",
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_27_28_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_15_border_hugging_lr",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 5,
+      "officialEdgeCount": 5,
+      "edges": [
+        {
+          "edgeId": "L_23_24_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_24_25_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_25_26_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_26_27_0",
+          "native": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "U"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_27_28_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "U",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "U",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_4_car_fun_sales_tb",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 14,
+      "officialEdgeCount": 14,
+      "edges": [
+        {
+          "edgeId": "L_A_B_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_C_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_C_D_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_E_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_H_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_F_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_F_G_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_H_I_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_J_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_K_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_J_E_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_K_L_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_M_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_N_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [
+          "L_E_F_0|L_I_J_0"
+        ],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [
+          "L_E_F_0|L_I_J_0"
+        ],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_5_car_fun_sales_wide_tb",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 14,
+      "officialEdgeCount": 14,
+      "edges": [
+        {
+          "edgeId": "L_A_B_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_C_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_C_D_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_E_0",
+          "native": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "D",
+              "L",
+              "D",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "D",
+              "L",
+              "D",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_H_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_F_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_F_G_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_H_I_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_J_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_K_0",
+          "native": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "R",
+              "D",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_J_E_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_K_L_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_M_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_N_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_6_legal_constr_sales",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 14,
+      "officialEdgeCount": 14,
+      "edges": [
+        {
+          "edgeId": "L_A_B_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_C_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_C_D_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_E_0",
+          "native": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "R",
+              "U",
+              "R",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "R",
+              "U",
+              "R",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_H_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_F_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_F_G_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_H_I_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_J_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_K_0",
+          "native": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "D",
+              "R",
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 5,
+            "bendCount": 3,
+            "directionSequence": [
+              "D",
+              "R",
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_J_E_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_K_L_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_M_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_N_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_7_car_sales_constr",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 14,
+      "officialEdgeCount": 14,
+      "edges": [
+        {
+          "edgeId": "L_A_B_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_C_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_C_D_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_E_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "L",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_H_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_F_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_F_G_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_H_I_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_J_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_I_K_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "R",
+              "D",
+              "L"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_J_E_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_K_L_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_M_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "L"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Right"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_L_N_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [
+          "L_E_F_0|L_I_J_0"
+        ],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [
+          "L_E_F_0|L_I_J_0"
+        ],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_8_query_process_2",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 8,
+      "officialEdgeCount": 8,
+      "edges": [
+        {
+          "edgeId": "L_A2_B_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_A2_E_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "Diagonal",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "Diagonal",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_A_A2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_C_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_E_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_F_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_G_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_G_F2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_mermaid_work",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 11,
+      "officialEdgeCount": 11,
+      "edges": [
+        {
+          "edgeId": "L_A1_G1_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_A2_G2_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_C1_C3_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_C2_C3_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_C3_G2_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_G1_G3_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_G2_G3_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_G3_C1_0",
+          "native": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "R",
+              "D",
+              "R",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 6,
+            "bendCount": 4,
+            "directionSequence": [
+              "R",
+              "D",
+              "R",
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_G3_C2_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_R1_R2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_R2_G3_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "U",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_pebr_3_process_too_wide_in_lane",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 2,
+      "officialEdgeCount": 2,
+      "edges": [
+        {
+          "edgeId": "L_Dep1.Proc1_Dep1.Proc2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_Dep1.Proc2_Dep1.Proc3_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_query_process",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 8,
+      "officialEdgeCount": 8,
+      "edges": [
+        {
+          "edgeId": "L_A2_B_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "R"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_A2_E_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_A_A2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_C_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_E_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "U",
+              "R"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_F_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_G_0",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "D",
+              "R",
+              "U"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_G_F2_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "ddlt_swimlanes_simple_2",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 5,
+      "officialEdgeCount": 5,
+      "edges": [
+        {
+          "edgeId": "L_A_B_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_A_D_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_B_C_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_D_E_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "L_E_B_0",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "L",
+              "D"
+            ],
+            "sourcePortSide": "Left",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    }
+  ]
+}

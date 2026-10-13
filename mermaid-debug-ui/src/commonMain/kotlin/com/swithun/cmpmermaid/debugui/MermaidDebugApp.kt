@@ -55,6 +55,7 @@ import com.swithun.cmpmermaid.core.MermaidThemePreset
 import com.swithun.cmpmermaid.debugui.generated.invalidSourceCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.productionCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.stabilityCorpusCases
+import com.swithun.cmpmermaid.debugui.generated.swimlaneDdltCorpusCases
 import com.swithun.cmpmermaid.debugui.generated.visualStructureCorpusCases
 
 enum class MermaidDebugPreview {
@@ -365,6 +366,21 @@ private val productionAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
         }
     }
 
+private val swimlaneDdltAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
+    swimlaneDdltCorpusCases.mapNotNull { corpusCase ->
+        destinations.firstOrNull { destination ->
+            destination.spec.id == corpusCase.diagramId
+        }?.let { destination ->
+            destination.spec to DiagramDocsCase(
+                id = corpusCase.id,
+                title = corpusCase.title,
+                category = "Mermaid 12.0.0 DDLT corpus",
+                source = corpusCase.source,
+                initialAspectRatio = corpusCase.initialAspectRatio,
+            )
+        }
+    }
+
 private val visualParityAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>> =
     visualStructureCorpusCases.mapNotNull { corpusCase ->
         destinations.firstOrNull { destination ->
@@ -436,6 +452,8 @@ fun MermaidDebugApp(
             } ?: stabilityAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId
             } ?: productionAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            } ?: swimlaneDdltAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId
             } ?: visualParityAuditCases.firstOrNull { (_, corpusCase) ->
                 corpusCase.id == requestedId

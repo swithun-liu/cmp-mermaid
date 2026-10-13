@@ -57,8 +57,8 @@ on both sides and passes with no findings.
 
 All 33 families have completed the visual-input gate. Together they have
 8,448 same-source pairs:
-`7,722 pass / 726 review / 0 fail` across 528 regenerated contact sheets.
-Geometry has 0 hard failures and retains 177 review findings across 125 cases.
+`7,829 pass / 619 review / 0 fail` across 528 regenerated contact sheets.
+Geometry has 0 hard failures and retains 176 review findings across 124 cases.
 Architecture contributes 157 findings across 105 seeded iterative fCoSE cases;
 its cross-runtime placement differences and the remaining strict font-metric
 reviews stay explicit.
@@ -122,9 +122,10 @@ Each of the 33 families must pass all of the following:
 
 ## Overall Stable Gate
 
-Overall Mermaid `12.0.0` support is **Stable**: all 33 family gates pass, the
-report covers 441 independent production scenarios and 8,448 structurally
-distinct same-source Native/Official pairs. The derived text/layout stress
-corpus remains a separate robustness layer. Future changes
-must keep every family gate passing; a regression returns the affected family
-and the overall rating to a pending state.
+Overall Mermaid `12.0.0` support is **not Stable**. All current classic-look
+family gates pass, and the report covers 441 independent production scenarios
+and 8,448 structurally distinct same-source Native/Official pairs. However,
+legal RoughJS-backed `look: handDrawn` input remains explicitly unsupported.
+The derived text/layout stress corpus remains a separate robustness layer.
+Stable requires translating that mapped gap as well as keeping every current
+family gate passing.

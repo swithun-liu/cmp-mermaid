@@ -21,6 +21,7 @@ import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
 import com.swithun.cmpmermaid.core.SceneTextSpan
 import com.swithun.cmpmermaid.core.SceneTextWeight
+import com.swithun.cmpmermaid.core.TextMetrics
 import com.swithun.cmpmermaid.core.TextMetricsRequest
 import com.swithun.cmpmermaid.core.subGraphTitleTotalMargin
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPort
@@ -34,6 +35,11 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sin
 
+private data class MeasuredFlowText(
+    val size: SceneSize,
+    val softWrap: Boolean,
+)
+
 internal class FlowchartLayout {
     fun layout(
         document: FlowchartDocument,
@@ -41,7 +47,7 @@ internal class FlowchartLayout {
     ): GMResult<MermaidScene, MermaidError> {
         val resolvedDocument = resolveImageMetrics(document, context)
         val nodeSizes = linkedMapOf<String, SceneSize>()
-        val nodeTextSizes = linkedMapOf<String, SceneSize>()
+        val nodeTextMeasurements = linkedMapOf<String, MeasuredFlowText>()
         val nodeShapeLayouts = linkedMapOf<String, MermaidShapeLayout>()
         for ((id, node) in resolvedDocument.nodes) {
             val style = resolveStyle(node)
@@ -55,6 +61,7 @@ internal class FlowchartLayout {
                         fontFamily = textFontFamily(style, context),
                         weight = style.fontWeight ?: SceneTextWeight.Normal,
                         spans = textSpans(node.label, node.labelSpans, style),
+                        htmlLabel = context.options.htmlLabels,
                     ),
                 )
             } catch (failure: Exception) {
@@ -62,8 +69,9 @@ internal class FlowchartLayout {
                     MermaidError.Unexpected.from(failure, "Text measurement failed for '$id'"),
                 )
             }
-            val textSize = SceneSize(measured.width, measured.height)
-            nodeTextSizes[id] = textSize
+            val textMeasurement = measured.toMeasuredFlowText(node.label)
+            val textSize = textMeasurement.size
+            nodeTextMeasurements[id] = textMeasurement
             val shapeLayout = when (
                 val shapeResult = MermaidShapePort.layout(
                     node = node,
@@ -79,7 +87,7 @@ internal class FlowchartLayout {
             nodeShapeLayouts[id] = shapeLayout
             nodeSizes[id] = shapeLayout.size
         }
-        val edgeLabelSizes = linkedMapOf<Int, SceneSize>()
+        val edgeLabelMeasurements = linkedMapOf<Int, MeasuredFlowText>()
         for ((index, edge) in resolvedDocument.edges.withIndex()) {
             val label = edge.label ?: continue
             val edgeStyle = resolveEdgeStyle(edge)
@@ -93,6 +101,7 @@ internal class FlowchartLayout {
                         fontFamily = textFontFamily(edgeStyle, context),
                         weight = edgeStyle.fontWeight ?: SceneTextWeight.Normal,
                         spans = textSpans(label, edge.labelSpans, edgeStyle),
+                        htmlLabel = context.options.htmlLabels,
                     ),
                 )
             } catch (failure: Exception) {
@@ -103,9 +112,10 @@ internal class FlowchartLayout {
                     ),
                 )
             }
-            edgeLabelSizes[index] = SceneSize(measured.width, measured.height)
+            edgeLabelMeasurements[index] = measured.toMeasuredFlowText(label)
         }
-        val subgraphLabelSizes = linkedMapOf<String, SceneSize>()
+        val edgeLabelSizes = edgeLabelMeasurements.mapValues { (_, measured) -> measured.size }
+        val subgraphLabelMeasurements = linkedMapOf<String, MeasuredFlowText>()
         for (subgraph in resolvedDocument.subgraphs) {
             val style = subgraph.inlineStyle ?: FlowNodeStyle()
             val measured = try {
@@ -118,6 +128,7 @@ internal class FlowchartLayout {
                         fontFamily = textFontFamily(style, context),
                         weight = style.fontWeight ?: SceneTextWeight.Normal,
                         spans = textSpans(subgraph.label, subgraph.labelSpans, style),
+                        htmlLabel = context.options.htmlLabels,
                     ),
                 )
             } catch (failure: Exception) {
@@ -128,8 +139,11 @@ internal class FlowchartLayout {
                     ),
                 )
             }
-            subgraphLabelSizes[subgraph.id] = SceneSize(measured.width, measured.height)
+            subgraphLabelMeasurements[subgraph.id] =
+                measured.toMeasuredFlowText(subgraph.label)
         }
+        val subgraphLabelSizes =
+            subgraphLabelMeasurements.mapValues { (_, measured) -> measured.size }
 
         val placement = when (context.options.layout) {
             "dagre" -> when (
@@ -195,7 +209,7 @@ internal class FlowchartLayout {
             val subgraphs = addSubgraphs(
                 document = resolvedDocument,
                 subgraphBounds = subgraphBounds,
-                subgraphLabelSizes = subgraphLabelSizes,
+                subgraphLabelMeasurements = subgraphLabelMeasurements,
                 context = context,
                 elements = elements,
             )
@@ -207,7 +221,7 @@ internal class FlowchartLayout {
             val edges = addEdges(
                 document = resolvedDocument,
                 routedEdges = placement.edges,
-                edgeLabelSizes = edgeLabelSizes,
+                edgeLabelMeasurements = edgeLabelMeasurements,
                 context = context,
                 elements = elements,
             )
@@ -215,7 +229,14 @@ internal class FlowchartLayout {
             is GMResult.Ok -> Unit
             is GMResult.Err -> return edges
         }
-        addNodes(resolvedDocument, nodeBounds, nodeTextSizes, nodeShapeLayouts, context, elements)
+        addNodes(
+            resolvedDocument,
+            nodeBounds,
+            nodeTextMeasurements,
+            nodeShapeLayouts,
+            context,
+            elements,
+        )
         when (val title = addDiagramTitle(resolvedDocument, context, elements)) {
             is GMResult.Ok -> Unit
             is GMResult.Err -> return title
@@ -262,7 +283,7 @@ internal class FlowchartLayout {
     private fun addSubgraphs(
         document: FlowchartDocument,
         subgraphBounds: Map<String, SceneRect>,
-        subgraphLabelSizes: Map<String, SceneSize>,
+        subgraphLabelMeasurements: Map<String, MeasuredFlowText>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ): GMResult<Unit, MermaidError> {
@@ -282,17 +303,18 @@ internal class FlowchartLayout {
                 val bounds = subgraphBounds[subgraph.id]
                     ?: return@forEachIndexed
                 val style = subgraph.inlineStyle ?: FlowNodeStyle()
-                val measured = subgraphLabelSizes[subgraph.id]
+                val textMeasurement = subgraphLabelMeasurements[subgraph.id]
                     ?: return GMResult.Err(
                         MermaidError.Layout(
                             "Subgraph '${subgraph.id}' has no measured label",
                         ),
                     )
+                val measured = textMeasurement.size
                 if (context.options.layout == "swimlane" && subgraph.parentId == null) {
                     addSwimlane(
                         subgraph = subgraph,
                         bounds = bounds,
-                        measured = measured,
+                        textMeasurement = textMeasurement,
                         style = style,
                         direction = document.direction,
                         context = context,
@@ -343,6 +365,8 @@ internal class FlowchartLayout {
                     spans = textSpans(subgraph.label, subgraph.labelSpans, style),
                     horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                     zIndex = index + 1,
+                    softWrap = textMeasurement.softWrap,
+                    htmlLabel = context.options.htmlLabels,
                 )
             }
         return GMResult.Ok(Unit)
@@ -355,13 +379,14 @@ internal class FlowchartLayout {
     private fun addSwimlane(
         subgraph: FlowSubgraph,
         bounds: SceneRect,
-        measured: SceneSize,
+        textMeasurement: MeasuredFlowText,
         style: FlowNodeStyle,
         direction: FlowDirection,
         context: MermaidRenderContext,
         zIndex: Int,
         elements: MutableList<SceneElement>,
     ) {
+        val measured = textMeasurement.size
         val width = max(bounds.width, measured.width + subgraph.padding)
         val renderedBounds = SceneRect(
             left = bounds.center.x - width / 2f,
@@ -452,13 +477,15 @@ internal class FlowchartLayout {
             rotationDegrees = if (leftTitle) -90f else 0f,
             rotationPivot = labelCenter.takeIf { leftTitle },
             zIndex = zIndex + 2,
+            softWrap = textMeasurement.softWrap,
+            htmlLabel = context.options.htmlLabels,
         )
     }
 
     private fun addEdges(
         document: FlowchartDocument,
         routedEdges: Map<Int, FlowRoutedEdge>,
-        edgeLabelSizes: Map<Int, SceneSize>,
+        edgeLabelMeasurements: Map<Int, MeasuredFlowText>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ): GMResult<Unit, MermaidError> {
@@ -503,7 +530,8 @@ internal class FlowchartLayout {
             )
 
             val label = edge.label ?: return@forEachIndexed
-            val labelSize = edgeLabelSizes[index] ?: return@forEachIndexed
+            val textMeasurement = edgeLabelMeasurements[index] ?: return@forEachIndexed
+            val labelSize = textMeasurement.size
             val center = routed.labelAnchor.translate(
                 dx = 0f,
                 dy = context.options.subGraphTitleTotalMargin / 2f,
@@ -536,6 +564,8 @@ internal class FlowchartLayout {
                 spans = textSpans(label, edge.labelSpans, edgeStyle),
                 horizontalAlignment = edgeStyle.textAlignment ?: SceneTextAlignment.Center,
                 zIndex = 7,
+                softWrap = textMeasurement.softWrap,
+                htmlLabel = context.options.htmlLabels,
             )
         }
         elements += when {
@@ -552,7 +582,7 @@ internal class FlowchartLayout {
     private fun addNodes(
         document: FlowchartDocument,
         nodeBounds: Map<String, SceneRect>,
-        nodeTextSizes: Map<String, SceneSize>,
+        nodeTextMeasurements: Map<String, MeasuredFlowText>,
         nodeShapeLayouts: Map<String, MermaidShapeLayout>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
@@ -634,7 +664,8 @@ internal class FlowchartLayout {
                 }
             }
             if (shapeLayout.showsLabel) {
-                val textSize = nodeTextSizes.getValue(id)
+                val textMeasurement = nodeTextMeasurements.getValue(id)
+                val textSize = textMeasurement.size
                 val center = bounds.center
                 val labelCenter = ScenePoint(
                     x = center.x + shapeLayout.labelOffset.x,
@@ -669,6 +700,8 @@ internal class FlowchartLayout {
                     weight = style.fontWeight ?: SceneTextWeight.Normal,
                     spans = textSpans(node.label, node.labelSpans, style),
                     horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
+                    softWrap = textMeasurement.softWrap,
+                    htmlLabel = context.options.htmlLabels,
                 )
             }
         }
@@ -739,8 +772,9 @@ internal class FlowchartLayout {
 
     /**
      * Native equivalent of utils.insertTitle() in Mermaid's unified Flowchart
-     * renderer. Compose uses top-left text bounds rather than an SVG baseline,
-     * so the measured text height is applied above the same top margin.
+     * renderer. The SVG title baseline is fixed at `-titleTopMargin`, not
+     * relative to the graph bounds. Compose uses top-left bounds, so the
+     * measured text height is applied above that same baseline.
      */
     private fun addDiagramTitle(
         document: FlowchartDocument,
@@ -770,7 +804,7 @@ internal class FlowchartLayout {
             )
         }
         val centerX = graphBounds.left + graphBounds.width / 2f
-        val bottom = graphBounds.top - context.options.titleTopMargin
+        val bottom = -context.options.titleTopMargin
         elements += SceneText(
             text = title,
             bounds = SceneRect(
@@ -787,6 +821,16 @@ internal class FlowchartLayout {
             zIndex = 30,
         )
         return GMResult.Ok(Unit)
+    }
+
+    private fun TextMetrics.toMeasuredFlowText(text: String): MeasuredFlowText {
+        val explicitLineCount = text.count { character -> character == '\n' } + 1
+        return MeasuredFlowText(
+            size = SceneSize(width, height),
+            softWrap = lineCount?.let { measuredLines ->
+                measuredLines > explicitLineCount
+            } ?: true,
+        )
     }
 
     private fun normalizeScene(

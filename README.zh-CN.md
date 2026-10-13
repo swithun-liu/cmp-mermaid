@@ -22,7 +22,7 @@
     ·
     <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448 案例独立场景视觉报告</strong></a>
     ·
-    <a href="docs/stability-report.md">完整 Stable 报告</a>
+    <a href="docs/stability-report.md">完整稳定性报告</a>
     ·
     <a href="docs/full-diagram-roadmap.md">33 类图路线</a>
     ·
@@ -32,8 +32,10 @@
 
 > [!IMPORTANT]
 > **CMP Mermaid 当前已实现 Mermaid `12.0.0` 的全部 33 个官方图表家族。**
-> 全部 33 个家族门禁均已通过，受支持的 Mermaid `12.0.0` 契约评级为
-> **Stable**。
+> Swimlanes 直接上游重译后的 classic-look 生产、256-case 视觉及逐边拓扑门禁均已通过。
+> 但合法的 `look: handDrawn` 仍返回明确的
+> `MermaidError.UnsupportedFeature`，因此整体 Mermaid `12.0.0` 契约
+> **不是 Stable**。
 >
 > 当前 **[8,448 案例 Native/Official 独立场景视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
 > 覆盖全部家族；每个家族都使用固定的六类 coverage-driven 语料。
@@ -65,12 +67,13 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 文本/布局压力输入 | 从 441 个生产场景派生的 8,448 个字节级不同输入；独立统计，不计作结构覆盖 |
 | Native/Official 截图 | 16,896 张独立场景截图，另有 882 张独立语料截图和 16,896 张异常源码截图 |
 | 异常源码对齐 | 8,448/8,448 个 Official 接受/拒绝结果一致；6,292 个 Native 拒绝均为 `CONTENT_ERROR`；精确诊断文案单独统计；0 崩溃 |
-| 独立场景细节审计 | 33 个家族：7,722 个 pass、726 个 review、0 个 fail |
-| 自动视觉几何 | 8,448/8,448 组对拍：0 个 failure、125 个 case 共 177 条 review；其中 Architecture 的 105 个 seeded fCoSE case 贡献 157 条 |
+| 独立场景细节审计 | 33 个家族：7,829 个 pass、619 个 review、0 个 fail |
+| 自动视觉几何 | 8,448/8,448 组对拍：0 个 failure、124 个 case 共 176 条 review；其中 Architecture 的 105 个 seeded fCoSE case 贡献 157 条 |
 | 确定性 SceneGraph 重放 | 441 个通过，0 个不一致 |
 | 内置主题矩阵 | 363/363 |
 | 独立生成的 Native 压力输入 | 保留的历史基线 7,936 个 |
-| JVM 测试 | 892 个通过，0 个失败 |
+| JVM 测试 | 1,039 个通过，0 个失败 |
+| Wasm 测试 | Core 与 Compose：1,031 个通过、0 个失败；debug UI：5 个通过、0 个失败 |
 | Core 生产场景压力测试 | 历史 415 场景基线：2,075 次渲染，总耗时 674ms，P95 为 1ms，保留堆 63,968 bytes |
 | 物理设备运行时矩阵 | Kotlin 2.3.20 Android 8/8、Kotlin 1.7.21 Android 8/8、iOS 6/6 通过；9,702 次语料渲染；人工审阅 198 张代表图和 22 张完成截图；0 崩溃、0 Android ANR |
 | 运行时负载矩阵 | 三条物理设备轨道均完整通过 441 个场景；Web 保留此前 397 场景基线；iOS 模拟器和 Desktop 保留此前 236 场景基线 |
@@ -78,7 +81,7 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 证据文档 | 内容 |
 | --- | --- |
 | **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单和已完成的 33/33 家族门禁 |
-| **[Stable 测试报告](docs/stability-report.md)** | Stable 判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
+| **[稳定性测试报告](docs/stability-report.md)** | 当前判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
 | **[全部 8,448 个 Native/Official 独立场景](docs/assets/stability-report/visual-parity-evidence.md)** | 528 页分页对比图，每页包含 16 个不同的同源码场景 |
 | **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 从 441 个结构场景的字节级不同压力样本派生的 8,448 个系统化变异、16,896 张截图和 528 张对比图 |
 | **[Android 物理设备兼容性报告](docs/android-real-device-compatibility.md)** | Kotlin 2.3.20 与 Kotlin 1.7.21 分别覆盖 Android 9-16 |
@@ -89,8 +92,8 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 全部 33 个家族的每周/手动截图与细节门禁 |
 | [Full Invalid Source Matrix](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-invalid-source.yml) | 每周/手动执行 33 × 256 组 Native/Official 异常源码安全矩阵 |
 
-全部 33 个家族均已通过新门禁，整体 Mermaid `12.0.0` 支持评级为
-**Stable**。
+全部 33 个家族的最新证据门禁均已完成；整体 Mermaid `12.0.0` 支持仍
+**不是 Stable**，唯一明确阻塞项是 RoughJS-backed `handDrawn` look。
 对于无法忠实表达的合法特性，系统会返回
 `MermaidError.UnsupportedFeature`，而不是静默绘制可能误导用户的近似结果。
 
@@ -155,7 +158,7 @@ case。另有 8,448 个文本/布局压力输入用于发现换行和布局压�
 | Event Modeling | 细节门禁通过 | 13 | Langium 语法、帧、泳道、数据、关系、校验与主题 | [兼容性](docs/eventmodeling-compatibility.md) |
 | Agentflow | 细节门禁通过 | 13 | Jison 语法、类型化节点与边、嵌套/全局/折叠 flow、连接器、元数据与 Dagre | [兼容性](docs/agentflow-compatibility.md) |
 | Block | 细节门禁通过 | 13 | Jison 语法、网格、跨列、复合块、形状、块箭头、连线、类与样式 | [兼容性](docs/block-compatibility.md) |
-| Swimlanes | 细节门禁通过 | 13 | Flowchart 语法与形状、泳道感知 Sugiyama 布局、正交路由、方向变换 | [兼容性](docs/swimlanes-compatibility.md) |
+| Swimlanes | 已重验；handDrawn 不支持 | 13 | Flowchart 语法与形状、泳道感知 Sugiyama 布局、正交路由、方向变换、256/256 拓扑通过 | [兼容性](docs/swimlanes-compatibility.md) |
 | Architecture | 细节门禁通过 | 13 | Langium 语法、服务、分组、连接点、定向连线、约束 fCoSE 布局与图标 | [兼容性](docs/architecture-compatibility.md) |
 | C4 | 细节门禁通过 | 13 | 五类 C4 层级、嵌套边界、部署节点、关系变体、样式与配置 | [兼容性](docs/c4-compatibility.md) |
 | Railroad | 细节门禁通过 | 18 | Railroad IR、EBNF、ABNF、PEG、共享 AST、语法路径、样式与配置 | [兼容性](docs/railroad-compatibility.md) |
@@ -417,7 +420,7 @@ CMP Mermaid 采用带源码映射的翻译工作流，而不是根据截图重�
 ./gradlew :sample:webApp:wasmJsBrowserDevelopmentRun
 ```
 
-**[Stable 测试报告](docs/stability-report.md#reproduce-the-report)**
+**[稳定性测试报告](docs/stability-report.md#reproduce-the-report)**
 包含完整的跨平台构建和 Native/Official 视觉证据复现命令。
 
 ## 许可证

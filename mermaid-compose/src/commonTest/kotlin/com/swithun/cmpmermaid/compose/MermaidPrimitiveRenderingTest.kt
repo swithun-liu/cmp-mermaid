@@ -74,4 +74,11 @@ class MermaidPrimitiveRenderingTest {
             205f.mermaidTextConstraint(spans = emptyList()),
         )
     }
+
+    @Test
+    fun matchesBrowserHtmlLabelBoundaryWrapping() {
+        assertEquals(true, htmlLabelFitsWithoutWrapping(119.04785f, 120f))
+        assertEquals(false, htmlLabelFitsWithoutWrapping(120f, 120f))
+        assertEquals(false, htmlLabelFitsWithoutWrapping(121.41992f, 120f))
+    }
 }

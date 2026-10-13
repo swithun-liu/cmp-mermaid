@@ -69,6 +69,7 @@ test.
 - All 16 paged contact sheets were manually inspected, including the corrected
   three-line titles in cases 114 and 117.
 
-The Kanban family has completed its per-family Stable gate. All 33 Mermaid
-`12.0.0` family gates now pass, so overall supported compatibility is
-**Stable**.
+The Kanban family has completed its per-family evidence gate. All current
+classic-look family evidence gates pass; overall Mermaid `12.0.0`
+compatibility remains **not Stable** because `look: handDrawn` is explicitly
+unsupported.

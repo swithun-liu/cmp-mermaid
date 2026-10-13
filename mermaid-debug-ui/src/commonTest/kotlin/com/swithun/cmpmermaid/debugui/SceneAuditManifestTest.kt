@@ -2,6 +2,8 @@ package com.swithun.cmpmermaid.debugui
 
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.SceneColor
+import com.swithun.cmpmermaid.core.ScenePath
+import com.swithun.cmpmermaid.core.ScenePoint
 import com.swithun.cmpmermaid.core.SceneRect
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
@@ -62,6 +64,42 @@ class SceneAuditManifestTest {
             SceneRect(left = 6f, top = 3f, right = 14f, bottom = 19f),
             text(insetBoundaryBounds, SceneTextAlignment.Start).auditBounds(),
         )
+    }
+
+    @Test
+    fun exportsNormalizedPathTopologyForEdgeAudits() {
+        val manifest = MermaidScene(
+            width = 100f,
+            height = 100f,
+            background = SceneColor(0xFFFFFFFF),
+            elements = listOf(
+                ScenePath(
+                    id = "L_A_B_0",
+                    points = listOf(
+                        ScenePoint(10f, 20f),
+                        ScenePoint(10f, 20f),
+                        ScenePoint(30f, 20f),
+                        ScenePoint(50f, 20f),
+                        ScenePoint(50f, 60f),
+                    ),
+                    commands = emptyList(),
+                    color = SceneColor(0xFF000000),
+                    strokeWidth = 1f,
+                    look = "classic",
+                    animated = false,
+                ),
+            ),
+        ).toAuditManifestJson()
+
+        assertContains(
+            manifest,
+            "\"topologyPoints\":[{\"x\":10.0,\"y\":20.0}," +
+                "{\"x\":50.0,\"y\":20.0},{\"x\":50.0,\"y\":60.0}]",
+        )
+        assertContains(manifest, "\"bendPoints\":[{\"x\":50.0,\"y\":20.0}]")
+        assertContains(manifest, "\"directionSequence\":[\"R\",\"D\"]")
+        assertContains(manifest, "\"sourcePortSide\":\"Right\"")
+        assertContains(manifest, "\"destinationPortSide\":\"Top\"")
     }
 
     private fun text(

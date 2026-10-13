@@ -13,6 +13,7 @@ import { cases as invalidSourceCases } from './invalid-source-corpus.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
+import { cases as swimlaneDdltCases } from './swimlane-ddlt-corpus.mjs';
 import { cases as visualParityCases } from './visual-structure-corpus.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -95,6 +96,7 @@ const supportedAuditSources = [
   'gallery',
   'stability',
   'production',
+  'swimlane-ddlt',
   'visual-parity',
   'invalid-source',
 ];
@@ -150,6 +152,7 @@ if (themeOverride !== null && !supportedThemes.includes(themeOverride)) {
 const corpusCases = {
   stability: stabilityCases,
   production: productionCases,
+  'swimlane-ddlt': swimlaneDdltCases,
   'visual-parity': visualParityCases,
   'invalid-source': invalidSourceCases,
 }[auditSource] ?? [];
@@ -835,6 +838,95 @@ async function extractOfficialManifest(page, caseId) {
         return { start: null, end: null };
       }
     };
+    const transformGeometryPoint = (element, point) => {
+      const screenMatrix = element.getScreenCTM();
+      if (
+        screenMatrix == null ||
+        inverseScreenMatrix == null ||
+        !Number.isFinite(point?.x) ||
+        !Number.isFinite(point?.y)
+      ) {
+        return null;
+      }
+      const transformed = new DOMPoint(point.x, point.y)
+        .matrixTransform(screenMatrix)
+        .matrixTransform(inverseScreenMatrix);
+      return Number.isFinite(transformed.x) && Number.isFinite(transformed.y)
+        ? { x: transformed.x, y: transformed.y }
+        : null;
+    };
+    const routePoints = (element) => {
+      const encoded = element.getAttribute('data-points');
+      if (encoded == null || encoded.length === 0) return [];
+      try {
+        const decoded = JSON.parse(atob(encoded));
+        if (!Array.isArray(decoded)) return [];
+        return decoded
+          .map((point) => transformGeometryPoint(element, point))
+          .filter((point) => point !== null);
+      } catch {
+        return [];
+      }
+    };
+    const pathTopology = (points) => {
+      const epsilon = 1e-4;
+      const direction = (start, end) => {
+        const dx = end.x - start.x;
+        const dy = end.y - start.y;
+        if (dx * dx + dy * dy <= epsilon * epsilon) return null;
+        if (Math.abs(dy) <= epsilon) return dx > 0 ? 'R' : 'L';
+        if (Math.abs(dx) <= epsilon) return dy > 0 ? 'D' : 'U';
+        return 'Diagonal';
+      };
+      const deduplicated = [];
+      for (const point of points) {
+        const previous = deduplicated.at(-1);
+        if (
+          previous == null ||
+          Math.hypot(point.x - previous.x, point.y - previous.y) > epsilon
+        ) {
+          deduplicated.push(point);
+        }
+      }
+      const topologyPoints = [];
+      for (const point of deduplicated) {
+        while (topologyPoints.length >= 2) {
+          const firstDirection = direction(
+            topologyPoints.at(-2),
+            topologyPoints.at(-1),
+          );
+          const secondDirection = direction(topologyPoints.at(-1), point);
+          if (firstDirection == null || firstDirection !== secondDirection) break;
+          topologyPoints.pop();
+        }
+        topologyPoints.push(point);
+      }
+      const directionSequence = topologyPoints
+        .slice(0, -1)
+        .map((point, index) => direction(point, topologyPoints[index + 1]))
+        .filter((entry) => entry !== null);
+      const sourceSide = {
+        R: 'Right',
+        L: 'Left',
+        D: 'Bottom',
+        U: 'Top',
+      };
+      const destinationSide = {
+        R: 'Left',
+        L: 'Right',
+        D: 'Top',
+        U: 'Bottom',
+      };
+      return {
+        routePoints: points,
+        topologyPoints,
+        bendPoints: topologyPoints.slice(1, -1),
+        directionSequence,
+        sourcePortSide: sourceSide[directionSequence[0]] ?? null,
+        destinationPortSide:
+          destinationSide[directionSequence.at(-1)] ?? null,
+      };
+    };
     const normalizeText = (value) => value.replace(/\s+/g, ' ').trim();
     const renderedTextSegments = (element) =>
       element.localName === 'text'
@@ -927,12 +1019,18 @@ async function extractOfficialManifest(page, caseId) {
       const markerPoints = hasMarkerStart || hasMarkerEnd
         ? geometryEndpoints(element)
         : { start: null, end: null };
+      const topology = type === 'path'
+        ? pathTopology(routePoints(element))
+        : null;
       elements.push({
         order: elements.length,
         zIndex: null,
         type,
         role: tag,
         id: element.id || null,
+        edgeId: type === 'path'
+          ? element.getAttribute('data-id') || null
+          : null,
         classes: [...element.classList],
         bounds: elementBounds,
         ...(textElement && !usecaseIconFallback ? {
@@ -951,6 +1049,7 @@ async function extractOfficialManifest(page, caseId) {
         arrowEnd: hasMarkerEnd ? 'Marker' : 'None',
         markerStartPoint: hasMarkerStart ? markerPoints.start : null,
         markerEndPoint: hasMarkerEnd ? markerPoints.end : null,
+        ...(topology ?? {}),
       });
     }
     const bodyStyle = getComputedStyle(frame.contentDocument.body);

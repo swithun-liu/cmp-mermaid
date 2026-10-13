@@ -2,6 +2,12 @@
 
 Baseline: Mermaid `12.0.0`.
 
+> [!WARNING]
+> Status: **revalidated, not Stable**. All translated classic-look behavior
+> passed the fresh production, DDLT, 256-case visual, and per-edge topology
+> gates. Mermaid's legal RoughJS-backed `look: handDrawn` remains explicitly
+> unsupported, so this family and the overall contract are not Stable.
+
 ## Compatibility Contract
 
 The target is visual and semantic parity rather than pixel identity. A
@@ -24,35 +30,44 @@ in a later upstream release.
 | Directions | Supported | `TB`, `TD`, `BT`, `LR`, and `RL`, including rotated horizontal-lane titles |
 | Routing | Supported | Obstacle-aware orthogonal routes, cross-lane edges, cycles, self-loops, edge-label nodes, endpoint clipping, and line hops |
 | Flowchart semantics | Supported | Flowchart node shapes, labels, marker families, line patterns, classes, inline styles, and Markdown/HTML text |
-| Configuration | Supported | `layout`, `theme`, `look`, `lineHops`, `ignoreCrossLaneEdges`, `optimizeRanksByCrossings`, and `automaticLaneOrdering` with typed validation |
-| Themes | Supported | Upstream Redux default, all built-in color themes, classic/hand-drawn look selection, and lane palette assignment |
+| Configuration | Supported with explicit boundary | `layout`, `theme`, `lineHops`, `ignoreCrossLaneEdges`, `optimizeRanksByCrossings`, and `automaticLaneOrdering` use typed validation; effective `look: handDrawn` returns `UnsupportedFeature` |
+| Themes | Supported with explicit boundary | Upstream Redux default, all built-in color themes, classic look, and lane palette assignment are supported; the RoughJS-backed hand-drawn look is not approximated |
 
 ## Validation Corpus
 
-- All 13 active Mermaid Swimlanes documentation examples are generated from
-  the pinned documentation source and rendered in JVM tests.
-- Focused tests cover vertical and horizontal lanes, rotated titles, default
-  lanes, labelled orthogonal edges, scoped Dagre fallback, all Swimlanes
-  options, and accessibility metadata.
-- 13 independent production scenarios cover all 15 declared visual capability
-  points.
-- 256 deterministic same-source cases cover the fixed six-category quotas,
-  family-specific capability axes, scaled stress structures, equivalent syntax,
-  and historical regressions.
-- Production geometry passed `13/13`. Width, height, and foreground-ink ratios
-  were `1.028-1.128`, `1.020-1.070`, and `0.972-1.187`.
-- Production detail produced `11 pass / 2 review / 0 fail`.
-- The fresh 256-case coverage-driven input audit reports `148 pass / 108 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.329`, height `0.964-1.255`, and foreground ink `0.881-1.193`.
-- The production contact sheet and all 16 matrix contact sheets were manually
-  reviewed. No unresolved lane, node, shape, edge, marker, label, color,
-  clipping, overlap, or paint-order defect remains.
-- Raw
-  [production detail](assets/stability-report/swimlanes-production-detail.json),
-  [production geometry](assets/stability-report/swimlanes-production-geometry.json),
-  [matrix detail](assets/stability-report/swimlanes-visual-parity-detail.json),
-  and
-  [matrix geometry](assets/stability-report/swimlanes-visual-parity-geometry.json)
-  reports are published with the evidence.
+The direct translation has fresh evidence at three independent levels:
+
+- 13 upstream DDLT fixtures: `13 pass / 0 review / 0 fail` for detail and
+  topology, with 0 geometry review or failure;
+- 13 production cases: `13 pass / 0 review / 0 fail` for detail and topology,
+  with width `1.028-1.074`, height `0.976-1.070`, and foreground ink
+  `1.004-1.130`;
+- 256 deterministic same-source cases: `255 pass / 1 review / 0 fail` for
+  detail, `256/256` topology pass, and 0 geometry review or failure, with width
+  `1.023-1.074`, height `0.976-1.078`, and foreground ink `0.982-1.130`.
+
+All 16 regenerated contact sheets were manually reviewed. The sole detail
+review is `visual_swimlanes_004`: Native and Official both preserve the
+upstream title/author overlap. Raster IoU is `0.9874` and edge F1 is `0.9901`;
+the different overlap ratio comes from platform font metrics and is retained
+instead of being hidden by a coordinate patch.
+
+The 47-entry upstream spec map is complete: 33 translated Kotlin unit-test
+groups, 13 executable DDLT fixtures, and one structured unsupported case for
+`handDrawn`. Machine-readable evidence:
+
+- [production detail](assets/stability-report/swimlanes-production-detail.json),
+  [geometry](assets/stability-report/swimlanes-production-geometry.json), and
+  [topology](assets/stability-report/swimlanes-production-topology.json);
+- [256-case detail](assets/stability-report/swimlanes-visual-parity-detail.json),
+  [geometry](assets/stability-report/swimlanes-visual-parity-geometry.json), and
+  [topology](assets/stability-report/swimlanes-visual-parity-topology.json);
+- [DDLT detail](assets/stability-report/swimlanes-ddlt-detail.json),
+  [geometry](assets/stability-report/swimlanes-ddlt-geometry.json), and
+  [topology](assets/stability-report/swimlanes-ddlt-topology.json).
+
+Stable remains blocked only by the explicit `look: handDrawn` unsupported
+boundary.
 
 ## Reference Workflow
 
@@ -70,9 +85,12 @@ Capture the 256-case Swimlanes partition:
 cd tools/official-reference
 AUDIT_SOURCE=visual-parity \
 AUDIT_KIND=swimlanes \
-OUTPUT_DIR=captures/local/swimlanes-visual-parity \
+OUTPUT_DIR=captures/local/coverage-driven-v2/swimlanes \
 BASE_URL=http://127.0.0.1:8093/ \
 VIEWPORT_WIDTH=1200 \
 VIEWPORT_HEIGHT=900 \
 npm run capture:web-audit
+
+INPUT_DIR=captures/local/coverage-driven-v2/swimlanes \
+npm run audit:topology
 ```

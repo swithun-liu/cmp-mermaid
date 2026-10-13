@@ -118,7 +118,10 @@ private fun StringBuilder.appendShape(shape: SceneShape) {
 
 private fun StringBuilder.appendPath(path: ScenePath) {
     val markerAnchors = path.auditMarkerAnchors()
+    val topology = path.auditTopology()
     append(",\"type\":\"path\",\"role\":\"path\",\"id\":")
+    appendJsonString(path.id)
+    append(",\"edgeId\":")
     appendJsonString(path.id)
     append(",\"bounds\":")
     appendRect(path.auditBounds())
@@ -154,6 +157,18 @@ private fun StringBuilder.appendPath(path: ScenePath) {
     appendPointOrNull(markerAnchors.first)
     append(",\"markerEndPoint\":")
     appendPointOrNull(markerAnchors.second)
+    append(",\"routePoints\":")
+    appendPointArray(path.points)
+    append(",\"topologyPoints\":")
+    appendPointArray(topology.points)
+    append(",\"bendPoints\":")
+    appendPointArray(topology.bendPoints)
+    append(",\"directionSequence\":")
+    appendStringArray(topology.directionSequence)
+    append(",\"sourcePortSide\":")
+    appendJsonStringOrNull(topology.sourcePortSide)
+    append(",\"destinationPortSide\":")
+    appendJsonStringOrNull(topology.destinationPortSide)
     append(",\"curve\":")
     appendJsonString(path.curve)
     append(",\"animated\":")
@@ -284,6 +299,82 @@ private fun ScenePath.auditBounds(): SceneRect {
     )
 }
 
+private data class AuditPathTopology(
+    val points: List<ScenePoint>,
+    val bendPoints: List<ScenePoint>,
+    val directionSequence: List<String>,
+    val sourcePortSide: String?,
+    val destinationPortSide: String?,
+)
+
+private fun ScenePath.auditTopology(): AuditPathTopology {
+    val finitePoints = points.filter(ScenePoint::isFinite)
+    val deduplicated = finitePoints.fold(mutableListOf<ScenePoint>()) { result, point ->
+        if (result.isEmpty() || result.last().isDistinctFrom(point)) {
+            result += point
+        }
+        result
+    }
+    val simplified = mutableListOf<ScenePoint>()
+    for (point in deduplicated) {
+        while (simplified.size >= 2) {
+            val firstDirection = auditDirection(
+                simplified[simplified.lastIndex - 1],
+                simplified.last(),
+            )
+            val secondDirection = auditDirection(simplified.last(), point)
+            if (firstDirection == null || firstDirection != secondDirection) break
+            simplified.removeAt(simplified.lastIndex)
+        }
+        simplified += point
+    }
+    val directions = simplified.zipWithNext()
+        .mapNotNull { (start, end) -> auditDirection(start, end) }
+    return AuditPathTopology(
+        points = simplified,
+        bendPoints = if (simplified.size > 2) {
+            simplified.subList(1, simplified.lastIndex)
+        } else {
+            emptyList()
+        },
+        directionSequence = directions,
+        sourcePortSide = directions.firstOrNull()?.let(::sourcePortSide),
+        destinationPortSide = directions.lastOrNull()?.let(::destinationPortSide),
+    )
+}
+
+private fun auditDirection(
+    start: ScenePoint,
+    end: ScenePoint,
+): String? {
+    val deltaX = end.x - start.x
+    val deltaY = end.y - start.y
+    if (deltaX * deltaX + deltaY * deltaY <= AUDIT_POINT_EPSILON_SQUARED) return null
+    return when {
+        kotlin.math.abs(deltaY) <= AUDIT_POINT_EPSILON ->
+            if (deltaX > 0f) "R" else "L"
+        kotlin.math.abs(deltaX) <= AUDIT_POINT_EPSILON ->
+            if (deltaY > 0f) "D" else "U"
+        else -> "Diagonal"
+    }
+}
+
+private fun sourcePortSide(direction: String): String? = when (direction) {
+    "R" -> "Right"
+    "L" -> "Left"
+    "D" -> "Bottom"
+    "U" -> "Top"
+    else -> null
+}
+
+private fun destinationPortSide(direction: String): String? = when (direction) {
+    "R" -> "Left"
+    "L" -> "Right"
+    "D" -> "Top"
+    "U" -> "Bottom"
+    else -> null
+}
+
 /**
  * Mirrors MermaidDiagram.markerTangent anchors without exporting renderer
  * implementation details into the production SceneGraph.
@@ -361,7 +452,7 @@ private fun ScenePath.pathHasEndMarker(): Boolean =
 private fun ScenePoint.isDistinctFrom(other: ScenePoint): Boolean {
     val deltaX = other.x - x
     val deltaY = other.y - y
-    return deltaX * deltaX + deltaY * deltaY > 0.0001f * 0.0001f
+    return deltaX * deltaX + deltaY * deltaY > AUDIT_POINT_EPSILON_SQUARED
 }
 
 private fun ScenePoint.isFinite(): Boolean = x.isFinite() && y.isFinite()
@@ -377,6 +468,15 @@ private fun StringBuilder.appendPointOrNull(point: ScenePoint?) {
     append(",\"y\":")
     appendFiniteNumber(point.y)
     append('}')
+}
+
+private fun StringBuilder.appendPointArray(points: List<ScenePoint>) {
+    append('[')
+    points.filter(ScenePoint::isFinite).forEachIndexed { index, point ->
+        if (index > 0) append(',')
+        appendPointOrNull(point)
+    }
+    append(']')
 }
 
 private fun StringBuilder.appendRect(rect: SceneRect) {
@@ -411,6 +511,15 @@ private fun StringBuilder.appendNumberArray(values: List<Float>) {
     values.forEachIndexed { index, value ->
         if (index > 0) append(',')
         appendFiniteNumber(value)
+    }
+    append(']')
+}
+
+private fun StringBuilder.appendStringArray(values: List<String>) {
+    append('[')
+    values.forEachIndexed { index, value ->
+        if (index > 0) append(',')
+        appendJsonString(value)
     }
     append(']')
 }
@@ -456,3 +565,6 @@ private fun StringBuilder.appendJsonString(value: String) {
 }
 
 private const val TEXT_HORIZONTAL_INSET = 4f
+private const val AUDIT_POINT_EPSILON = 0.0001f
+private const val AUDIT_POINT_EPSILON_SQUARED =
+    AUDIT_POINT_EPSILON * AUDIT_POINT_EPSILON

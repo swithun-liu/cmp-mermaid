@@ -22,7 +22,7 @@
     ·
     <a href="docs/assets/stability-report/visual-parity-evidence.md"><strong>8,448-case independent-scenario visual report</strong></a>
     ·
-    <a href="docs/stability-report.md">Full Stable report</a>
+    <a href="docs/stability-report.md">Full stability report</a>
     ·
     <a href="docs/full-diagram-roadmap.md">33-diagram roadmap</a>
     ·
@@ -31,9 +31,12 @@
 </div>
 
 > [!IMPORTANT]
-> **CMP Mermaid now implements all 33 official diagram families from Mermaid
-> `12.0.0`, and all 33 family gates pass.** The supported Mermaid `12.0.0`
-> contract is rated **Stable**.
+> **CMP Mermaid implements all 33 official diagram families from Mermaid
+> `12.0.0`.** Swimlanes has been revalidated after a direct upstream
+> translation: its classic-look production, 256-case visual, and per-edge
+> topology gates are current. The overall Mermaid `12.0.0` contract remains
+> **not Stable** because legal `look: handDrawn` input returns the documented
+> `MermaidError.UnsupportedFeature` boundary instead of approximating rough.js.
 >
 > The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
 > covers every family with a fixed six-category coverage-driven corpus.
@@ -69,20 +72,21 @@ geometry gates.
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
 | Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Independent-scenario detail audit | 33 families: 7,722 pass, 726 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 177 review findings across 125 cases; 157 findings come from 105 seeded Architecture fCoSE cases |
+| Independent-scenario detail audit | 33 families: 7,829 pass, 619 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 176 review findings across 124 cases; 157 findings come from 105 seeded Architecture fCoSE cases |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 892 passed, 0 failed |
+| JVM tests | 1,039 passed, 0 failed |
+| Wasm tests | Core and Compose: 1,031 passed, 0 failed; debug UI: 5 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
 
 | Evidence document | What it contains |
 | --- | --- |
-| **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and the completed 33/33 family gates |
-| **[Stable test report](docs/stability-report.md)** | Decision, visual contact sheets, tests, soak metrics, runtime load evidence, and reproduction steps |
+| **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and current family-gate state |
+| **[Stability test report](docs/stability-report.md)** | Current decision, visual evidence, tests, soak metrics, runtime load evidence, and reproduction steps |
 | **[All 8,448 Native/Official independent scenarios](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 different same-source scenarios per page |
 | **[Source-mutation Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 AI-like mutations from byte-distinct stress bases derived from 441 structural scenarios, 16,896 screenshots, and 528 comparison sheets |
 | **[Android physical-device report](docs/android-real-device-compatibility.md)** | Separate Kotlin 2.3.20 and Kotlin 1.7.21 matrices across Android 9-16 |
@@ -93,7 +97,10 @@ geometry gates.
 | [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | Weekly/manual capture and detail enforcement for all 33 families |
 | [Full Invalid Source Matrix](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-invalid-source.yml) | Weekly/manual 33 × 256 Native/Official malformed-source safety matrix |
 
-Overall Mermaid `12.0.0` support is **Stable** because all 33 family gates pass.
+All fresh Swimlanes translation, topology, visual, JVM, Wasm, production
+isolation, and publication gates have completed. Overall Mermaid `12.0.0`
+support remains **not Stable** solely because the legal RoughJS-backed
+`handDrawn` look is explicitly unsupported.
 A legal feature that cannot be represented faithfully returns
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation.
@@ -162,7 +169,7 @@ regressions:
 | Event Modeling | Detail gate passed | 13 | Langium grammar, frames, swimlanes, data, relations, validation, themes | [Compatibility](docs/eventmodeling-compatibility.md) |
 | Agentflow | Detail gate passed | 13 | Jison grammar, typed nodes and edges, nested/global/collapsed flows, connectors, metadata, Dagre | [Compatibility](docs/agentflow-compatibility.md) |
 | Block | Detail gate passed | 13 | Jison grammar, grids, spans, composites, shapes, block arrows, links, classes, styles | [Compatibility](docs/block-compatibility.md) |
-| Swimlanes | Detail gate passed | 13 | Flowchart grammar and shapes, lane-aware Sugiyama layout, orthogonal routing, direction transforms | [Compatibility](docs/swimlanes-compatibility.md) |
+| Swimlanes | Revalidated; handDrawn unsupported | 13 | Direct upstream lane-aware Sugiyama translation, orthogonal routing, direction transforms, 256/256 topology pass | [Compatibility](docs/swimlanes-compatibility.md) |
 | Architecture | Detail gate passed | 13 | Langium grammar, services, groups, junctions, directional edges, constrained fCoSE layout, icons | [Compatibility](docs/architecture-compatibility.md) |
 | C4 | Detail gate passed | 13 | Five C4 levels, nested boundaries, deployment nodes, relation variants, styles, and configuration | [Compatibility](docs/c4-compatibility.md) |
 | Railroad | Detail gate passed | 18 | Railroad IR, EBNF, ABNF, PEG, shared AST, routed grammar paths, styles, and configuration | [Compatibility](docs/railroad-compatibility.md) |
@@ -458,7 +465,7 @@ Run the samples:
 ./gradlew :sample:webApp:wasmJsBrowserDevelopmentRun
 ```
 
-The **[Stable test report](docs/stability-report.md#reproduce-the-report)**
+The **[stability test report](docs/stability-report.md#reproduce-the-report)**
 contains the complete cross-platform build and Native/Official visual
 reproduction commands.
 

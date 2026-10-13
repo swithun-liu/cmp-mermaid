@@ -301,7 +301,12 @@ class SwimlaneLayoutTest {
         val longBranch = scene.elements.filterIsInstance<ScenePath>()
             .single { path -> path.id == "L_N2_N4_0" }
 
-        assertEquals(decision.bounds.right, longBranch.points.first().x, 0.01f)
+        assertEquals(
+            decision.bounds.right,
+            longBranch.points.first().x,
+            0.01f,
+            "decision=${decision.bounds}, points=${longBranch.points}",
+        )
         assertTrue(longBranch.points.maxOf { point -> point.x } > decision.bounds.right + 20f)
     }
 
@@ -437,7 +442,12 @@ class SwimlaneLayoutTest {
         val outgoing = scene.elements.filterIsInstance<ScenePath>()
             .single { path -> path.id == "L_N2_N3_0" }
 
-        assertEquals(decision.bounds.right, outgoing.points.first().x, 0.01f)
+        assertEquals(
+            decision.bounds.right,
+            outgoing.points.first().x,
+            0.01f,
+            "decision=${decision.bounds}, points=${outgoing.points}",
+        )
         assertTrue(outgoing.points.maxOf { point -> point.x } > decision.bounds.right + 20f)
     }
 
@@ -514,8 +524,98 @@ class SwimlaneLayoutTest {
         )
     }
 
-    private fun render(source: String): MermaidScene {
-        val result = engine.render(source, context)
+    @Test
+    fun clipsStraightEdgeToDiamondVertexLikeUpstreamQueryProcessFixture() {
+        val scene = render(
+            """
+                ---
+                config:
+                  layout: swimlane
+                ---
+                swimlane-beta LR
+                  subgraph StatusSeeker
+                    A(Incoming query)
+                    A2{Knows<br/>which team?}
+                  end
+                  A --> A2
+            """.trimIndent(),
+        )
+        val diamond = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "A2" }
+        val edge = scene.elements.filterIsInstance<ScenePath>()
+            .single { it.id == "L_A_A2_0" }
+
+        assertEquals(diamond.bounds.left, edge.points.last().x, 0.01f)
+        assertEquals(diamond.bounds.center.y, edge.points.last().y, 0.01f)
+    }
+
+    @Test
+    fun positionsDiagramTitleAtUpstreamSvgOriginInsteadOfAboveGraphBounds() {
+        val scene = render(
+            """
+                ---
+                title: "Workflow title"
+                ---
+                swimlane-beta TB
+                  subgraph Intake
+                    A[Plan]
+                  end
+                  subgraph Review
+                    B[Verify]
+                  end
+                  A --> B
+            """.trimIndent(),
+        )
+        val diagramTitle = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "Workflow title" }
+        val laneTitle = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "Review" }
+
+        assertTrue(diagramTitle.bounds.top < laneTitle.bounds.bottom)
+        assertTrue(diagramTitle.bounds.bottom > laneTitle.bounds.top)
+    }
+
+    @Test
+    fun preservesMeasuredAutomaticWrappingWithoutRewrappingSingleLineLabels() {
+        val measuredContext = MermaidRenderContext(
+            textMetrics = TextMetricProvider { request ->
+                val explicitLines = request.text.count { character -> character == '\n' } + 1
+                val lineCount = if (request.text == "Automatically wrapped") {
+                    explicitLines + 1
+                } else {
+                    explicitLines
+                }
+                TextMetrics(
+                    width = minOf(request.maxWidth, request.text.length * request.fontSize * 0.55f),
+                    height = lineCount * request.fontSize * request.lineHeight,
+                    lineCount = lineCount,
+                )
+            },
+        )
+        val scene = render(
+            """
+                swimlane-beta TB
+                  subgraph Product
+                    A[Automatically wrapped]
+                    B["First<br/>Second"]
+                  end
+                  A -->|Edge label| B
+            """.trimIndent(),
+            measuredContext,
+        )
+        val texts = scene.elements.filterIsInstance<SceneText>().associateBy(SceneText::text)
+
+        assertEquals(false, texts.getValue("Product").softWrap)
+        assertEquals(true, texts.getValue("Automatically wrapped").softWrap)
+        assertEquals(false, texts.getValue("First\nSecond").softWrap)
+        assertEquals(false, texts.getValue("Edge label").softWrap)
+    }
+
+    private fun render(
+        source: String,
+        renderContext: MermaidRenderContext = context,
+    ): MermaidScene {
+        val result = engine.render(source, renderContext)
         return assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
     }
 

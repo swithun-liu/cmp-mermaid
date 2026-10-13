@@ -56,6 +56,7 @@ Evidence:
 
 ## Status
 
-Wardley Map has completed its per-family replacement gate. All 33 Mermaid
-`12.0.0` family gates now pass, so overall supported compatibility is
-**Stable**.
+Wardley Map has completed its per-family replacement gate. All current
+classic-look family evidence gates pass; overall Mermaid `12.0.0`
+compatibility remains **not Stable** because `look: handDrawn` is explicitly
+unsupported.

@@ -246,6 +246,7 @@ data class SceneText(
     val outlineWidth: Float = 0f,
     val maxLines: Int? = null,
     val overflowEllipsis: Boolean = false,
+    val htmlLabel: Boolean = false,
 ) : SceneElement
 
 data class SceneTextSpan(
@@ -372,6 +373,7 @@ data class TextMetricsRequest(
     val weight: SceneTextWeight = SceneTextWeight.Medium,
     val spans: List<SceneTextSpan> = emptyList(),
     val horizontalScale: Float? = null,
+    val htmlLabel: Boolean = false,
 )
 
 data class TextMetrics(

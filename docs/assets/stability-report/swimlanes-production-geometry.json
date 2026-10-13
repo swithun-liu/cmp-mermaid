@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-12T08:39:20.554Z",
-  "inputDirectory": "captures/local/swimlanes-production-report-final",
+  "generatedAt": "2026-10-13T07:50:53.581Z",
+  "inputDirectory": "captures/local/swimlanes-production-retranslation",
   "corpusSource": "production",
   "theme": null,
   "caseCount": 13,
@@ -23,6 +23,7 @@
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -39,16 +40,17 @@
             255
           ]
         ],
-        "inkPixels": 216944,
-        "inkRatio": 0.20087407407407407,
+        "inkPixels": 207780,
+        "inkRatio": 0.1923888888888889,
         "contentBounds": {
-          "x": 15,
-          "y": 155,
-          "width": 1170,
-          "height": 590
+          "x": 14,
+          "y": 169,
+          "width": 1172,
+          "height": 562
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -74,15 +76,20 @@
           "height": 576
         }
       },
-      "widthRatio": 1.0335689045936396,
-      "heightRatio": 1.0243055555555556,
-      "inkRatio": 1.064599077436451
+      "manifestWidthRatio": 1.0385875832560445,
+      "manifestHeightRatio": 0.9636913767019667,
+      "manifestGeometryWidthRatio": 1.0594803374837751,
+      "manifestGeometryHeightRatio": 0.99999995591532,
+      "widthRatio": 1.0353356890459364,
+      "heightRatio": 0.9756944444444444,
+      "inkRatio": 1.019629011679262
     },
     {
       "id": "rc_swimlanes_vertical_cycle",
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -99,8 +106,8 @@
             255
           ]
         ],
-        "inkPixels": 311418,
-        "inkRatio": 0.28835,
+        "inkPixels": 311402,
+        "inkRatio": 0.2883351851851852,
         "contentBounds": {
           "x": 63,
           "y": 18,
@@ -109,6 +116,7 @@
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -134,15 +142,20 @@
           "height": 818
         }
       },
+      "manifestWidthRatio": 0.9705521472392638,
+      "manifestHeightRatio": 0.9638009049773756,
+      "manifestGeometryWidthRatio": 1.0000000499704385,
+      "manifestGeometryHeightRatio": 1.000000040604401,
       "widthRatio": 1.0570866141732282,
       "heightRatio": 1.0562347188264058,
-      "inkRatio": 1.1088173298772324
+      "inkRatio": 1.1087603611815307
     },
     {
       "id": "rc_swimlanes_default_and_nested",
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -169,6 +182,7 @@
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -194,6 +208,10 @@
           "height": 324
         }
       },
+      "manifestWidthRatio": 0.9824872095290513,
+      "manifestHeightRatio": 0.9426678603745319,
+      "manifestGeometryWidthRatio": 0.9999999464523233,
+      "manifestGeometryHeightRatio": 1.0000000785986844,
       "widthRatio": 1.0316901408450705,
       "heightRatio": 1.0308641975308641,
       "inkRatio": 1.0492965271593946
@@ -203,6 +221,7 @@
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -229,6 +248,7 @@
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -254,6 +274,10 @@
           "height": 452
         }
       },
+      "manifestWidthRatio": 0.9698492462311558,
+      "manifestHeightRatio": 0.930835734870317,
+      "manifestGeometryWidthRatio": 0.9999999508197982,
+      "manifestGeometryHeightRatio": 0.9999999222115695,
       "widthRatio": 1.0449640287769784,
       "heightRatio": 1.0486725663716814,
       "inkRatio": 1.0889189465667943
@@ -263,6 +287,7 @@
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -279,16 +304,17 @@
             255
           ]
         ],
-        "inkPixels": 243367,
-        "inkRatio": 0.22533981481481483,
+        "inkPixels": 263693,
+        "inkRatio": 0.24416018518518517,
         "contentBounds": {
-          "x": 137,
-          "y": 22,
-          "width": 926,
-          "height": 861
+          "x": 132,
+          "y": 18,
+          "width": 936,
+          "height": 864
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -314,15 +340,20 @@
           "height": 818
         }
       },
-      "widthRatio": 1.0404494382022471,
-      "heightRatio": 1.0525672371638142,
-      "inkRatio": 1.0128517265345702
+      "manifestWidthRatio": 0.9632635067321735,
+      "manifestHeightRatio": 0.9644478063540091,
+      "manifestGeometryWidthRatio": 0.996596624375108,
+      "manifestGeometryHeightRatio": 1.000805161067499,
+      "widthRatio": 1.051685393258427,
+      "heightRatio": 1.0562347188264058,
+      "inkRatio": 1.0974450534586877
     },
     {
       "id": "prod_swimlane_support_handoff",
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -339,16 +370,17 @@
             255
           ]
         ],
-        "inkPixels": 155765,
-        "inkRatio": 0.14422685185185186,
+        "inkPixels": 150655,
+        "inkRatio": 0.13949537037037038,
         "contentBounds": {
           "x": 12,
-          "y": 241,
+          "y": 250,
           "width": 1176,
-          "height": 418
+          "height": 400
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -374,15 +406,20 @@
           "height": 410
         }
       },
+      "manifestWidthRatio": 1.0403252964462817,
+      "manifestHeightRatio": 0.9636913767019667,
+      "manifestGeometryWidthRatio": 1.0551125440774882,
+      "manifestGeometryHeightRatio": 1.000000052213049,
       "widthRatio": 1.027972027972028,
-      "heightRatio": 1.0195121951219512,
-      "inkRatio": 1.0380457962360718
+      "heightRatio": 0.975609756097561,
+      "inkRatio": 1.003991843045263
     },
     {
       "id": "prod_swimlane_vertical_delivery",
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -399,8 +436,8 @@
             255
           ]
         ],
-        "inkPixels": 275821,
-        "inkRatio": 0.2553898148148148,
+        "inkPixels": 275833,
+        "inkRatio": 0.25540092592592595,
         "contentBounds": {
           "x": 132,
           "y": 17,
@@ -409,6 +446,7 @@
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -434,15 +472,20 @@
           "height": 824
         }
       },
+      "manifestWidthRatio": 0.9705521472392638,
+      "manifestHeightRatio": 0.9683377308707124,
+      "manifestGeometryWidthRatio": 0.9999999917887891,
+      "manifestGeometryHeightRatio": 1.000000063975743,
       "widthRatio": 1.051685393258427,
       "heightRatio": 1.0509708737864079,
-      "inkRatio": 1.0920187347324997
+      "inkRatio": 1.0920662446204952
     },
     {
       "id": "prod_swimlane_reverse_vertical",
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -469,6 +512,7 @@
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -494,6 +538,10 @@
           "height": 458
         }
       },
+      "manifestWidthRatio": 0.9558823529411765,
+      "manifestHeightRatio": 0.9047619047619048,
+      "manifestGeometryWidthRatio": 0.9999999875580651,
+      "manifestGeometryHeightRatio": 0.9999999388701948,
       "widthRatio": 1.0589318600368325,
       "heightRatio": 1.0611353711790392,
       "inkRatio": 1.028074630550559
@@ -503,6 +551,7 @@
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -519,16 +568,17 @@
             255
           ]
         ],
-        "inkPixels": 157706,
-        "inkRatio": 0.14602407407407408,
+        "inkPixels": 151847,
+        "inkRatio": 0.14059907407407407,
         "contentBounds": {
-          "x": 254,
+          "x": 267,
           "y": 18,
-          "width": 692,
+          "width": 666,
           "height": 864
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -554,15 +604,20 @@
           "height": 819
         }
       },
-      "widthRatio": 1.0984126984126985,
+      "manifestWidthRatio": 0.9549207497055986,
+      "manifestHeightRatio": 0.9647058823529412,
+      "manifestGeometryWidthRatio": 1.000000071851588,
+      "manifestGeometryHeightRatio": 1.0000000082402736,
+      "widthRatio": 1.0571428571428572,
       "heightRatio": 1.054945054945055,
-      "inkRatio": 1.1521815365732488
+      "inkRatio": 1.1093763698530057
     },
     {
       "id": "prod_swimlane_default_lane",
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -589,6 +644,7 @@
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -614,6 +670,10 @@
           "height": 800
         }
       },
+      "manifestWidthRatio": 0.9593921559499108,
+      "manifestHeightRatio": 0.9511313859273516,
+      "manifestGeometryWidthRatio": 1.0023291624294228,
+      "manifestGeometryHeightRatio": 0.9999999271426786,
       "widthRatio": 1.0735930735930737,
       "heightRatio": 1.07,
       "inkRatio": 1.129833610822422
@@ -623,6 +683,7 @@
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -639,16 +700,17 @@
             255
           ]
         ],
-        "inkPixels": 21108,
-        "inkRatio": 0.019544444444444444,
+        "inkPixels": 23235,
+        "inkRatio": 0.021513888888888888,
         "contentBounds": {
           "x": 15,
-          "y": 274,
+          "y": 272,
           "width": 1170,
-          "height": 352
+          "height": 356
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -674,15 +736,20 @@
           "height": 344
         }
       },
+      "manifestWidthRatio": 0.9809253517583527,
+      "manifestHeightRatio": 0.941320293398533,
+      "manifestGeometryWidthRatio": 1.0000000421364117,
+      "manifestGeometryHeightRatio": 0.9999999776692883,
       "widthRatio": 1.0335689045936396,
-      "heightRatio": 1.0232558139534884,
-      "inkRatio": 0.9715995397008056
+      "heightRatio": 1.0348837209302326,
+      "inkRatio": 1.069505178365938
     },
     {
       "id": "prod_swimlane_configured_routing",
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -709,6 +776,7 @@
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -734,6 +802,10 @@
           "height": 450
         }
       },
+      "manifestWidthRatio": 0.9770992366412213,
+      "manifestHeightRatio": 0.9457013574660633,
+      "manifestGeometryWidthRatio": 0.9999999675991288,
+      "manifestGeometryHeightRatio": 1.0000000033797498,
       "widthRatio": 1.0373001776198933,
       "heightRatio": 1.0355555555555556,
       "inkRatio": 1.0622175586769838
@@ -743,6 +815,7 @@
       "kind": "swimlanes",
       "layout": null,
       "native": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -759,16 +832,17 @@
             255
           ]
         ],
-        "inkPixels": 269702,
-        "inkRatio": 0.24972407407407407,
+        "inkPixels": 254575,
+        "inkRatio": 0.2357175925925926,
         "contentBounds": {
-          "x": 98,
+          "x": 127,
           "y": 18,
-          "width": 1004,
+          "width": 946,
           "height": 864
         }
       },
       "official": {
+        "gridSize": 96,
         "width": 1200,
         "height": 900,
         "background": [
@@ -794,9 +868,13 @@
           "height": 818
         }
       },
-      "widthRatio": 1.1280898876404495,
+      "manifestWidthRatio": 0.9716016653872871,
+      "manifestHeightRatio": 0.9636913767019667,
+      "manifestGeometryWidthRatio": 1.005428223148539,
+      "manifestGeometryHeightRatio": 1.0000000080819258,
+      "widthRatio": 1.0629213483146067,
       "heightRatio": 1.0562347188264058,
-      "inkRatio": 1.1868962694679028
+      "inkRatio": 1.1203258329556005
     }
   ]
 }

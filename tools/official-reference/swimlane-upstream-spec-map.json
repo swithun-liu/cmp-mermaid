@@ -1,0 +1,244 @@
+{
+  "baseline": "12.0.0",
+  "sourceRoot": "packages/mermaid/src/rendering-util/layout-algorithms/swimlanes",
+  "mappings": [
+    {
+      "upstream": "__tests__/direction.endpointClip.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "EndpointClipTest.kt"
+    },
+    {
+      "upstream": "__tests__/direction.geometry.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "DirectionAndPipelineTest.kt"
+    },
+    {
+      "upstream": "__tests__/direction.lr.transform.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "DirectionTransformTest.kt"
+    },
+    {
+      "upstream": "__tests__/direction.materializedGeometry.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "MaterializedGeometryTest.kt"
+    },
+    {
+      "upstream": "__tests__/direction.portSwap.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "DirectionAndPipelineTest.kt"
+    },
+    {
+      "upstream": "__tests__/direction.sharedTrackNudging.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "SharedTrackAndPostProcessingTest.kt"
+    },
+    {
+      "upstream": "__tests__/direction.terminalStub.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "DirectionAndPipelineTest.kt"
+    },
+    {
+      "upstream": "__tests__/edgeLabelNodes.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "EdgeLabelNodesTest.kt"
+    },
+    {
+      "upstream": "__tests__/helpers.laneHeights.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "HelpersAndLaneOrderingTest.kt"
+    },
+    {
+      "upstream": "__tests__/helpers.prepareLayout.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "HelpersAndLaneOrderingTest.kt"
+    },
+    {
+      "upstream": "__tests__/laneOrdering.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "HelpersAndLaneOrderingTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase0.helpers.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "Phase0AndCyclesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase1.cycles.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "Phase0AndCyclesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase2.compact.lanes.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase2.compact.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase2.layering.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase3.ordering.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase4.coordinates.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase4.lanes.columns.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase4.lanes.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "__tests__/phase5.pipeline.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "DirectionAndPipelineTest.kt"
+    },
+    {
+      "upstream": "__tests__/pipeline.hoe.lr.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "PipelineIntegrationTest.kt"
+    },
+    {
+      "upstream": "__tests__/pipeline.knsv3.lr.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "PipelineIntegrationTest.kt"
+    },
+    {
+      "upstream": "__tests__/pipeline.lr.e2e.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "PipelineIntegrationTest.kt"
+    },
+    {
+      "upstream": "__tests__/postProcessing.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "SharedTrackAndPostProcessingTest.kt",
+      "note": "The upstream obstacle-nudging test is skipped; its one active test is translated."
+    },
+    {
+      "upstream": "direction/geometry.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "DirectionGeometryTest.kt"
+    },
+    {
+      "upstream": "orthogonalRouter/__tests__/raykov.crossing.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "OrthogonalRouterRegressionTest.kt"
+    },
+    {
+      "upstream": "orthogonalRouter/__tests__/raykov.detour.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "OrthogonalRouterRegressionTest.kt"
+    },
+    {
+      "upstream": "orthogonalRouter/__tests__/raykov.issues.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "OrthogonalRouterIssuesTest.kt"
+    },
+    {
+      "upstream": "orthogonalRouter/__tests__/raykov.repro_crossing.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "OrthogonalRouterRegressionTest.kt"
+    },
+    {
+      "upstream": "orthogonalRouter/__tests__/raykov.router.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "OrthogonalRouterCoreTest.kt",
+      "note": "The two tests in upstream describe.skip are intentionally excluded."
+    },
+    {
+      "upstream": "orthogonalRouter/__tests__/raykov.wide_node.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "OrthogonalRouterRegressionTest.kt"
+    },
+    {
+      "upstream": "phase2.layering.spec.ts",
+      "coverage": "kotlin-unit",
+      "target": "LayeringOrderingCoordinatesTest.kt"
+    },
+    {
+      "upstream": "10-node-placement.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_10_node_placement"
+    },
+    {
+      "upstream": "14-messy-layout.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_14_messy_layout"
+    },
+    {
+      "upstream": "15-border-hugging-compare.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_15_border_hugging"
+    },
+    {
+      "upstream": "15-border-hugging-lr.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_15_border_hugging_lr"
+    },
+    {
+      "upstream": "16-intake-cycle-lr.ddlt.spec.ts",
+      "coverage": "structured-unsupported",
+      "target": "ddlt_swimlanes_16_intake_cycle_lr",
+      "note": "Blocked by the globally unsupported Mermaid roughjs handDrawn renderer."
+    },
+    {
+      "upstream": "4-car-fun-sales-tb.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_4_car_fun_sales_tb"
+    },
+    {
+      "upstream": "5-car-fun-sales-wide-tb.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_5_car_fun_sales_wide_tb"
+    },
+    {
+      "upstream": "6-legal-constr-sales.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_6_legal_constr_sales"
+    },
+    {
+      "upstream": "7-car-sales-constr.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_7_car_sales_constr"
+    },
+    {
+      "upstream": "8-query-process-2.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_8_query_process_2"
+    },
+    {
+      "upstream": "mermaid-work.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_mermaid_work"
+    },
+    {
+      "upstream": "pebr-3-process-too-wide-in-lane.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_pebr_3_process_too_wide_in_lane"
+    },
+    {
+      "upstream": "query-process.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_query_process"
+    },
+    {
+      "upstream": "simple-2.ddlt.spec.ts",
+      "coverage": "ddlt-corpus",
+      "target": "ddlt_swimlanes_simple_2"
+    }
+  ]
+}

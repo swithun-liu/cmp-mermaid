@@ -1,7 +1,7 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "production",
-  "generatedAt": "2026-10-12T08:39:23.304Z",
+  "generatedAt": "2026-10-13T07:51:16.432Z",
   "caseCount": 441,
   "cases": [
     {
@@ -316,9 +316,9 @@
       "expectedTexts": [],
       "nativeFile": "rc_swimlanes_support_escalation_native.png",
       "officialFile": "rc_swimlanes_support_escalation_official.png",
-      "nativeBytes": 25150,
+      "nativeBytes": 24811,
       "officialBytes": 25833,
-      "nativeSha256": "13ed364078e699b1ddbcfe82b3a4ed7b647d997bc748b6c47d639cb658bdd47a",
+      "nativeSha256": "e2f00066957670527dbecefc62e1e17edfb4ee1b0fd364befb1a5444b4c54114",
       "officialSha256": "309fcb3bd311b5d5966734970c6a9edd1389ff2dd05be14252a570174ca164f9",
       "sourceSha256": "3e5764d39f1a6902f5eb339273c9f14d8c05066fd46c92a15fa2c0bd7ae53231"
     },
@@ -332,9 +332,9 @@
       "expectedTexts": [],
       "nativeFile": "rc_swimlanes_vertical_cycle_native.png",
       "officialFile": "rc_swimlanes_vertical_cycle_official.png",
-      "nativeBytes": 33017,
+      "nativeBytes": 33023,
       "officialBytes": 33958,
-      "nativeSha256": "b8ebb08aa28ac53c6236b4e218a0744fd5fd64036ce2d10dd095a2208a9a664b",
+      "nativeSha256": "6fabcd0350fe2ddc4cebaa7c67623cbdc1734278e251134551aed099b5f563ec",
       "officialSha256": "fae146cfa33abf4aa65343cb9078fce16e846c59364e359ac90a98aae7550792",
       "sourceSha256": "774ad9e925c92f15b33106ff0e9bad8f5c19af9700d5fb7abde13d9c1580bcb4"
     },
@@ -349,9 +349,9 @@
       "nativeFile": "rc_swimlanes_default_and_nested_native.png",
       "officialFile": "rc_swimlanes_default_and_nested_official.png",
       "nativeBytes": 16270,
-      "officialBytes": 16813,
+      "officialBytes": 16792,
       "nativeSha256": "962674ed89c9699d1cf73a3b763942e4c8091847f055811c1e5b8f7ef1096567",
-      "officialSha256": "6891b7c85eb3e933750fc8d8f67f21c3b3d1e09ef7c4d0a753714b94fef952e9",
+      "officialSha256": "818a13e9d20e6681a29ee61ba7644d6b3cf407b0ec1d108659d0a2e040e82cc4",
       "sourceSha256": "d4bc43d1c36a58bddd8299f5a52a5267ec637ee871b7427c8e4ebac86518fe8f"
     },
     {
@@ -380,9 +380,9 @@
       "expectedTexts": [],
       "nativeFile": "rc_swimlanes_regional_accessibility_native.png",
       "officialFile": "rc_swimlanes_regional_accessibility_official.png",
-      "nativeBytes": 22673,
+      "nativeBytes": 23696,
       "officialBytes": 23233,
-      "nativeSha256": "e3c6208036fd8eb159a168407e3f6326a31ab2f3b995d91315e16ef377de2165",
+      "nativeSha256": "9457ba3e2c98b55111662fba1a7372ac9216e09bbbc56d15e447dae61666fd38",
       "officialSha256": "8f2c5b9ba4017a5c2fee195b4cbed26e3452a5438cc3ce64b5a3db0dff76c1c8",
       "sourceSha256": "3aac54357216c6563bd1843b059ffb9fbcd0dd47abaaea9cb8ad8ddaee22eff9"
     },
@@ -406,9 +406,9 @@
       ],
       "nativeFile": "prod_swimlane_support_handoff_native.png",
       "officialFile": "prod_swimlane_support_handoff_official.png",
-      "nativeBytes": 19574,
+      "nativeBytes": 19000,
       "officialBytes": 20756,
-      "nativeSha256": "d653eb99cc2cfffccd824b65fe63d859caaf296a247e43fb673dd15e6cfe12d5",
+      "nativeSha256": "c8ae0f744304e8077604e46e86e21d6a62fd1ff51c7c6367df2fba76780e374c",
       "officialSha256": "789ce8246cfb6e7354c7c8219a06952c2223deb13a28616e5df3b52391b60c6b",
       "sourceSha256": "2cbe97d53d027b91444c6708fd60711b1ed664888cecb4e775718b45c08b22c1"
     },
@@ -431,9 +431,9 @@
       ],
       "nativeFile": "prod_swimlane_vertical_delivery_native.png",
       "officialFile": "prod_swimlane_vertical_delivery_official.png",
-      "nativeBytes": 32189,
+      "nativeBytes": 32143,
       "officialBytes": 32779,
-      "nativeSha256": "66364cc81987b7d138203e052b4f4320f5f919d493fa2b8274da9ba9a4919cf8",
+      "nativeSha256": "f2f37773c310fbde9125e57423cc3ee8505f52bb9c3470ab490d41da859dd04d",
       "officialSha256": "459d24a5627c00f8efcb668aadceb1f3f8c211a5253324ece6de9e4583617bbd",
       "sourceSha256": "dae0ccd83236f154288dcdd34542884f38e9eeeee276823557d710c93bae73d9"
     },
@@ -479,9 +479,9 @@
       ],
       "nativeFile": "prod_swimlane_reverse_horizontal_native.png",
       "officialFile": "prod_swimlane_reverse_horizontal_official.png",
-      "nativeBytes": 20469,
+      "nativeBytes": 21412,
       "officialBytes": 21771,
-      "nativeSha256": "a64f3c07666cf0064bff14a7beda2c6e6c42e89ae01493cd8b9fe00ad1b89698",
+      "nativeSha256": "381f6fbbbdadda366bfbebbf762cbe05c67919da8f6a9ccdb45369bc5f915643",
       "officialSha256": "8fd94ee5279c66689934e75079a36e71883be9a042131d96c649ec79c6d3f512",
       "sourceSha256": "19d0526f0214113689310e739fd8446584cfc4af29581c41d25107647331a1d2"
     },
@@ -505,9 +505,9 @@
       "nativeFile": "prod_swimlane_default_lane_native.png",
       "officialFile": "prod_swimlane_default_lane_official.png",
       "nativeBytes": 36330,
-      "officialBytes": 37405,
+      "officialBytes": 37379,
       "nativeSha256": "5fb841ca4df338133e1e4932c1d263a267347986e713f092bbec328d62eadadb",
-      "officialSha256": "aeb799d9aebdaa47cfea8f9eeef7bf079ac74607d2ee19908dd3fc9aa04ebcee",
+      "officialSha256": "fbca39745d328be15fd02205a3cbc5626ed813088aeee5cabca1d57d83307bd9",
       "sourceSha256": "36571aeaae6dc8b77c3b02dad72a3153206a66dc4861ed318631267adc580a52"
     },
     {
@@ -528,9 +528,9 @@
       ],
       "nativeFile": "prod_swimlane_edge_semantics_native.png",
       "officialFile": "prod_swimlane_edge_semantics_official.png",
-      "nativeBytes": 15112,
+      "nativeBytes": 15772,
       "officialBytes": 16458,
-      "nativeSha256": "5aa9aca00fd5d218c4cdec57ef5d7bee2055d2b97d693804a705cadc2886761f",
+      "nativeSha256": "1370a40f1a4315095635efe3fc7e52ab46e758e94bbebeb5b2e428f68fe9d8f0",
       "officialSha256": "b300ecdcf50352b5d1528943536bef6a2794f71b614a300c470d5529bf057f32",
       "sourceSha256": "ec0aa19ac7896d12dc574f04244f6006c61b84483d499157294b8f6b35c6f994"
     },
@@ -581,9 +581,9 @@
       ],
       "nativeFile": "prod_swimlane_accessibility_native.png",
       "officialFile": "prod_swimlane_accessibility_official.png",
-      "nativeBytes": 16124,
+      "nativeBytes": 16166,
       "officialBytes": 16130,
-      "nativeSha256": "8bb62bff087aa17b278e00a34e46f9dde949c98490e7a2ed9f24a58beaa7e5cd",
+      "nativeSha256": "74e6d1aa8c9339b19b64abb93b15ce7e874879daa8501d7a73bb329e723a42bc",
       "officialSha256": "2caf5e2e0d4effeeab46194637709be6a96f208dde7478d461fe38a46b73c7e9",
       "sourceSha256": "9a6bc90d502f6d1a6dad87683b80e4810557e30f2cba56626492651c83ae49ad"
     },

@@ -13,20 +13,56 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 
 ## Translation Map
 
-| Kotlin source | Upstream source | Translation boundary |
+Status values are mandatory: `Exact` means the upstream function and stage
+order are translated directly; `Platform adaptation` means only the runtime or
+rendering boundary differs while preserving the upstream contract;
+`Unsupported` blocks Stable.
+
+| Upstream source | Kotlin source | Status |
 | --- | --- | --- |
-| `swimlane/SwimlanePlugin.kt` | `diagrams/swimlanes/detector.ts` and `swimlanesDiagram.ts` | Header detection, Flowchart parser/database reuse, layout selection, and typed failure propagation |
-| `swimlane/SwimlaneLayout.kt -> prepareDocument` | `layoutCore.ts`, `helpers.ts`, and `adjustLayout.ts` | Default-lane synthesis, direct ownership, layout data preparation, and group write-back |
-| `swimlane/SwimlaneLayout.kt -> buildModel` | `edgeLabelNodes.ts` and `phase0.helpers.ts` | Working graph normalization and edge-label dummy nodes |
-| `swimlane/SwimlaneLayout.kt -> removeCycles` | `phase1.cycles.ts` | Deterministic DFS cycle removal and reversed-edge tracking |
-| `swimlane/SwimlaneLayout.kt -> assignLaneAwareLayers`, `assignGravityLayers`, and `optimizeRanks` | `phase2.laneAwareCompact.ts`, `phase2.gravity.ts`, `phase2.crossOptimization.ts`, and related phase-two helpers | Lane-aware or gravity layering, crossing-aware rank refinement, and proper-layer dummy nodes |
-| `swimlane/SwimlaneLayout.kt -> orderLayers` | `phase3.ordering.ts`, `phase2.multitree.core.ts`, and `phase2.multitree.order.ts` | Median ordering, lane constraints, transpose improvement, and deterministic tie-breaking |
-| `swimlane/SwimlaneLayout.kt -> assignCoordinates` | `phase4.coordinates.ts` | Rank spacing, in-lane placement, lane extents, and adjacent-lane width alignment |
-| `swimlane/SwimlaneLayout.kt -> optimizeLaneOrder` | `laneOrdering.ts` and `phase2.crossCounts.ts` | Top-level lane ordering and crossing cost |
-| `swimlane/SwimlaneLayout.kt -> routeEdges` | `orthogonalRouter/router.ts`, `driving-tree.ts`, and direction routing helpers | Ports, obstacle-aware orthogonal routes, detours, shared tracks, terminal stubs, self-loops, and label anchors |
-| `swimlane/SwimlaneLayout.kt -> applyDirection` and `clipAndSimplifyEdges` | `direction/lrTransform.ts`, `materializedGeometry.ts`, `endpointClip.ts`, `geometry.ts`, and `postProcessing.ts` | LR/BT/RL transforms, materialized group geometry, shape endpoint clipping, and route simplification |
-| `flowchart/FlowchartLayout.kt -> addSwimlane` | Mermaid Swimlanes styles and shared cluster renderer | Lane body/title bands, rotated titles, palette colors, borders, and SceneGraph paint order |
-| `MermaidPreprocessor.kt` and `MermaidContract.kt` | `defaultConfig.ts`, `config.type.ts`, and Swimlanes layout options | Typed defaults, frontmatter/init overrides, merge precedence, and validation |
+| `config.ts` | `upstream/SwimlaneConfig.kt` | Exact |
+| `helpers.ts` | `upstream/SwimlaneTypes.kt`, `upstream/Helpers.kt` | Exact |
+| `edgeLabelNodes.ts` | `upstream/EdgeLabelNodes.kt` | Exact |
+| `phase0.helpers.ts` | `upstream/Phase0Helpers.kt` | Platform adaptation: deterministic KMP translation of host `localeCompare` |
+| `phase1.cycles.ts` | `upstream/Phase1Cycles.kt` | Exact |
+| `phase2.options.ts` | `upstream/Phase2Options.kt` | Exact |
+| `phase2.longestPath.ts` | `upstream/Phase2LongestPath.kt` | Exact |
+| `phase2.crossCounts.ts` | `upstream/Phase2CrossCounts.kt` | Exact |
+| `phase2.crossLaneAdjust.ts` | `upstream/Phase2CrossLaneAdjust.kt` | Exact |
+| `phase2.crossOptimization.ts` | `upstream/Phase2CrossOptimization.kt` | Exact |
+| `phase2.dummies.ts` | `upstream/Phase2Dummies.kt` | Exact |
+| `phase2.gravity.ts` | `upstream/Phase2Gravity.kt` | Exact |
+| `phase2.laneAwareCompact.ts` | `upstream/Phase2LaneAwareCompact.kt` | Exact |
+| `phase2.multitree.core.ts` | `upstream/Phase2MultitreeCore.kt` | Exact |
+| `phase2.multitree.order.ts` | `upstream/Phase2MultitreeOrder.kt` | Exact |
+| `phase3.ordering.ts` | `upstream/Phase3Ordering.kt` | Exact |
+| `phase4.coordinates.ts` | `upstream/Phase4Coordinates.kt` | Exact |
+| `driving-tree.ts` | `upstream/DrivingTree.kt` | Exact |
+| `laneOrdering.ts` | `upstream/LaneOrdering.kt` | Exact |
+| `pipeline.ts` | `upstream/Pipeline.kt` | Exact |
+| `layoutCore.ts` | `upstream/LayoutCore.kt` | Exact |
+| `orthogonalRouter/router.ts` | `upstream/OrthogonalRouter.kt` | Exact |
+| `direction/geometry.ts` | `upstream/DirectionGeometry.kt` | Exact |
+| `direction/detourSimplification.ts` | `upstream/DetourSimplification.kt` | Exact |
+| `direction/endpointClip.ts` | `upstream/EndpointClip.kt` | Exact |
+| `direction/labelAnchoring.ts` | `upstream/LabelAnchoring.kt` | Exact |
+| `direction/lrTransform.ts` | `upstream/DirectionTransform.kt` | Exact |
+| `direction/materializedGeometry.ts` | `upstream/MaterializedGeometry.kt` | Exact |
+| `direction/portSwap.ts` | `upstream/PortSwap.kt` | Exact |
+| `direction/sharedTrackNudging.ts` | `upstream/SharedTrackNudging.kt` | Exact |
+| `direction/siblingSharedFaceRouting.ts` | `upstream/SiblingSharedFaceRouting.kt` | Exact |
+| `direction/terminalStub.ts` | `upstream/TerminalStub.kt` | Exact |
+| `direction/validation.ts` | `upstream/Validation.kt` | Exact |
+| `postProcessing.ts` | `upstream/PostProcessing.kt` | Exact |
+| `index.ts` | `upstream/SwimlaneLayoutAdapter.kt` | Platform adaptation: Flowchart model to `LayoutData` |
+| `adjustLayout.ts` | shared Compose line-hop rendering | Platform adaptation: Canvas instead of SVG mutation |
+| `rendering-elements/edges.js -> insertEdge` | `upstream/SwimlaneLayoutAdapter.kt`, `MermaidShapeIntersectionPort.kt` | Platform adaptation: SceneGraph shape intersection |
+| `diagrams/swimlanes/detector.ts`, `swimlanesDiagram.ts` | `swimlane/SwimlanePlugin.kt` | Platform adaptation: translated Flowchart parser/database reuse |
+| `clusters/swimlane.js`, `diagrams/swimlanes/styles.ts` | `flowchart/FlowchartLayout.kt` | Platform adaptation: Compose SceneGraph painting |
+| `config.type.ts -> look: handDrawn`, RoughJS shape renderer | `MermaidEngine.kt` | Unsupported: returns `MermaidError.UnsupportedFeature("handDrawn look")` |
+
+`swimlane/SwimlaneLayout.kt` is intentionally only a thin facade. It does not
+contain an alternative layout algorithm.
 
 ## Locked Upstream Hashes
 
@@ -81,33 +117,57 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - Mermaid itself treats Swimlanes as a Flowchart layout variant. Kotlin
   preserves that boundary by reusing the translated Flowchart parser,
   database, shapes, edge semantics, and renderer.
-- The upstream phase modules are consolidated into `SwimlaneLayout.kt` so the
-  complete layout state remains platform-neutral and allocation can use
-  Kotlin collections. Method boundaries and phase order remain traceable.
+- Every upstream layout, direction, routing, and post-processing source file
+  has a corresponding file under `swimlane/upstream/`. Kotlin collections
+  replace JavaScript collections, but method boundaries and stage order remain
+  separate and traceable.
+- Upstream graph ordering calls JavaScript `String.localeCompare`, whose
+  default locale is selected by the browser host. `compareMermaidIds` provides
+  one deterministic KMP ordering for Mermaid's ASCII node and generated IDs,
+  including lowercase generated `edge-label-*` IDs before uppercase node IDs.
+  Every upstream Swimlanes `localeCompare` call routes through this helper;
+  no cycle, lane, or case-specific ordering branch is added.
 - SVG measurement is replaced by `TextMetricProvider`; SVG groups, paths,
   markers, rotated labels, and paint order become SceneGraph elements rendered
   by Compose Canvas.
+- The renderer-side Swimlanes endpoint clipping branch is translated in the
+  adapter because Compose builds `ScenePath` directly instead of mutating an
+  SVG path. Shape intersection is shared with Dagre through
+  `MermaidShapeIntersectionPort`.
 - Parser, configuration, state, and layout failures remain explicit
   `GMResult.Err` values. Pure geometric operations preserve upstream
   floating-point behavior.
 
-## Parity Gate
+## Current Verification State
 
-- All 13 active documentation fixtures are regenerated from the pinned source
-  and rendered in JVM tests.
-- Focused tests cover lane ownership, directions, default lanes, edge routing,
-  scoped layout fallback, configuration, and accessibility.
-- The replacement Web gate compares 13 independent production scenarios and
-  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
-- Production geometry passes `13/13`; detail is
-  `11 pass / 2 review / 0 fail`.
-- Matrix geometry has 0 hard failures; detail reports
-  `148 pass / 108 review / 0 fail`.
-- The review findings retain text-position, raster-mask, and marker-depth
-  differences along semantically correct orthogonal routes. The production
-  contact sheet and all 16 matrix
-  contact sheets were manually reviewed with no unresolved lane, node, edge,
-  marker, label, clipping, overlap, or paint-order defect.
+The direct translation and every classic-look verification gate are complete.
+The 47-entry upstream spec map resolves to 33 translated Kotlin unit-test
+groups, 13 executable DDLT fixtures, and one structured unsupported case.
+`look: handDrawn` depends on Mermaid's RoughJS renderer and returns
+`MermaidError.UnsupportedFeature`; that declared gap keeps Swimlanes and the
+overall Mermaid contract **not Stable**.
+
+Completed fresh gates:
+
+- all mapped upstream layout, direction, routing, and post-processing tests;
+- focused facade, router key, shape-intersection, title-coordinate, HTML-label,
+  and topology-manifest tests, including both `N3 -> N4` edges in
+  `visual_swimlanes_011`;
+- 13 DDLT fixtures: detail and topology `13/13` pass, with no geometry review
+  or failure;
+- 13 production pairs: detail and topology `13/13` pass, with no geometry
+  review or failure;
+- 256 Native/Official pairs: `255 pass / 1 manually accepted review / 0 fail`
+  for detail, `256/256` topology pass, and no geometry review or failure;
+- manual review of all 16 regenerated contact sheets;
+- full JVM `1,039/1,039`, Wasm core/Compose `1,031/1,031`, and Wasm debug UI
+  `5/5` tests;
+- Wasm production build, production isolation, publication coordinate, and
+  source-map consistency gates.
+
+The sole 256-case review is `visual_swimlanes_004`, where both Native and
+Official retain the upstream title/author overlap. It is documented rather
+than altered with a Native-only coordinate adjustment.
 
 ## Upgrade Procedure
 
@@ -116,6 +176,9 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 3. Diff every mapped detector, diagram, style, pipeline, phase, routing,
    direction, configuration, and documentation file.
 4. Translate changed behavior in the corresponding Kotlin method.
-5. Run focused JVM tests and all platform build gates.
-6. Capture and review all 256 Swimlanes Native/Official pairs.
-7. Update this map, the capability matrix, and the public stability report.
+5. Run translated upstream tests, focused JVM tests, and all platform gates.
+6. Capture all 256 Swimlanes Native/Official pairs.
+7. Enforce detail, geometry, and per-edge topology audits.
+8. Review all contact sheets.
+9. Only then update this map, the capability matrix, and the public stability
+   report. Mark Stable only when no mapped entry remains `Unsupported`.

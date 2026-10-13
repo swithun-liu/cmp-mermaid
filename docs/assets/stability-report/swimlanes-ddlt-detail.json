@@ -1,0 +1,5671 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-13T07:08:09.289Z",
+  "inputDirectory": "captures/local/swimlanes-ddlt-retranslation",
+  "corpusSource": "swimlane-ddlt",
+  "corpusKind": "swimlanes",
+  "theme": null,
+  "failOnReview": false,
+  "gridSize": 96,
+  "caseCount": 13,
+  "counts": {
+    "pass": 13
+  },
+  "reviewQueue": [],
+  "cases": [
+    {
+      "id": "ddlt_swimlanes_10_node_placement",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 44,
+          "typeCounts": {
+            "shape": 20,
+            "text": 16,
+            "path": 8
+          },
+          "textCount": 16,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 44,
+          "typeCounts": {
+            "shape": 20,
+            "text": 16,
+            "path": 8
+          },
+          "textCount": 16,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 16,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.01483974868966434,
+          "p95CenterDistance": 0.014506405271332743,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 10,
+          "officialPaletteSize": 10,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 24
+          },
+          "officialStrokePatterns": {
+            "Solid": 24
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 8
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 8
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_Te2_D1_0",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.2735550731173568,
+                "y": 0.929217668972858
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D1_D2_0",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.4641447265953318,
+                "y": 0.929217668972858
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D2_D3_0",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.6666462974349361,
+                "y": 0.929217668972858
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D3_D4_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.7227726981762544,
+                "y": 0.7349654071314529
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_Te2_T4_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.2735550731173568,
+                "y": 0.35018626929217667
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D4_D2_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5202711974947388,
+                "y": 0.9010111761575306
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D4_T6_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.8779249257937897,
+                "y": 0.35018626929217667
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_T6_T5_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.9340513966931967,
+                "y": 0.12134113890367217
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_Te2_D1_0",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.2773048013176008,
+                "y": 0.9185262065386611
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D1_D2_0",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.46473846962396914,
+                "y": 0.9185262065386611
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D2_D3_0",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.6638867540434907,
+                "y": 0.9185262065386611
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D3_D4_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.7190838193411236,
+                "y": 0.7291126102750389
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_Te2_T4_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.2773048013176008,
+                "y": 0.3539180072651791
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D4_D2_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5199355349216022,
+                "y": 0.8910223144784639
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D4_T6_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.8716668231830033,
+                "y": 0.3539180072651791
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_T6_T5_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.9268638884806363,
+                "y": 0.13077322262584334
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9824026278742375,
+        "exactMaskIou": 0.9347378062743302,
+        "edgeF1": 0.9898678414096916,
+        "colorError": 0.014399543708084769,
+        "exactColorError": 0.01809201812165214
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 10,
+          "y": 163,
+          "width": 878,
+          "height": 574
+        },
+        "foregroundCells": 4202,
+        "edgeCells": 2293
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 27,
+          "y": 173,
+          "width": 846,
+          "height": 554
+        },
+        "foregroundCells": 4247,
+        "edgeCells": 2203
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_14_messy_layout",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 164,
+          "typeCounts": {
+            "shape": 66,
+            "text": 56,
+            "path": 42
+          },
+          "textCount": 56,
+          "uniqueTextCount": 51,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 166,
+          "typeCounts": {
+            "shape": 64,
+            "text": 56,
+            "path": 46
+          },
+          "textCount": 56,
+          "uniqueTextCount": 51,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 56,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.007122969376743667,
+          "p95CenterDistance": 0.0061434152686320066,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.018181818181818,
+            "geometryObject": 0.9818181818181818,
+            "geometryExpanded": 1.018181818181818
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 102
+          },
+          "officialStrokePatterns": {
+            "Solid": 144
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 42
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 42
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_1_2_0",
+              "pathOrder": 30,
+              "position": "end",
+              "point": {
+                "x": 0.4338790490699589,
+                "y": 0.04875148632580262
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_2_3_0",
+              "pathOrder": 31,
+              "position": "end",
+              "point": {
+                "x": 0.4338790490699589,
+                "y": 0.0894768133174792
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_3_4_0",
+              "pathOrder": 32,
+              "position": "end",
+              "point": {
+                "x": 0.08062611680358288,
+                "y": 0.10047562425683709
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_4_5_0",
+              "pathOrder": 33,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.09259809750297265
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_5_6_0",
+              "pathOrder": 34,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.12395957193816885
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_6_7_0",
+              "pathOrder": 35,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.16468489892984542
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_7_8_0",
+              "pathOrder": 36,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.25772889417360284
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_8_9_0",
+              "pathOrder": 37,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.3164387633769322
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_7_9_0",
+              "pathOrder": 38,
+              "position": "end",
+              "point": {
+                "x": 0.5437466007049586,
+                "y": 0.3164387633769322
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_9_10_0",
+              "pathOrder": 39,
+              "position": "end",
+              "point": {
+                "x": 0.6158956725175105,
+                "y": 0.32431629013079666
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_10_11_0",
+              "pathOrder": 40,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.34780023781212843
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_11_12_0",
+              "pathOrder": 41,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.3947681331747919
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_12_13_0",
+              "pathOrder": 42,
+              "position": "end",
+              "point": {
+                "x": 0.36545482850222144,
+                "y": 0.4057669441141498
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_13_14_0",
+              "pathOrder": 43,
+              "position": "end",
+              "point": {
+                "x": 0.3353142240896671,
+                "y": 0.4292508917954816
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_14_15_0",
+              "pathOrder": 44,
+              "position": "end",
+              "point": {
+                "x": 0.40373844465740455,
+                "y": 0.44961355529131986
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_15_16_0",
+              "pathOrder": 45,
+              "position": "end",
+              "point": {
+                "x": 0.4338790490699589,
+                "y": 0.482461355529132
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_16_17_0",
+              "pathOrder": 46,
+              "position": "end",
+              "point": {
+                "x": 0.4338790490699589,
+                "y": 0.5169441141498217
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_17_18_0",
+              "pathOrder": 47,
+              "position": "end",
+              "point": {
+                "x": 0.4338790490699589,
+                "y": 0.5639120095124851
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_18_19_0",
+              "pathOrder": 48,
+              "position": "end",
+              "point": {
+                "x": 0.05048551239102853,
+                "y": 0.585909631391201
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_19_20_0",
+              "pathOrder": 49,
+              "position": "end",
+              "point": {
+                "x": 0.11528778927256705,
+                "y": 0.574910820451843
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_20_21_0",
+              "pathOrder": 50,
+              "position": "end",
+              "point": {
+                "x": 0.9495144876089715,
+                "y": 0.5639120095124851
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_21_22_0",
+              "pathOrder": 51,
+              "position": "end",
+              "point": {
+                "x": 0.8847121881219796,
+                "y": 0.574910820451843
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_22_23_0",
+              "pathOrder": 52,
+              "position": "end",
+              "point": {
+                "x": 0.8545715837094253,
+                "y": 0.6015160523186682
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_23_24_0",
+              "pathOrder": 53,
+              "position": "end",
+              "point": {
+                "x": 0.4338790490699589,
+                "y": 0.6453626634958383
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_24_25_0",
+              "pathOrder": 54,
+              "position": "end",
+              "point": {
+                "x": 0.509838420740835,
+                "y": 0.6218787158145065
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_25_26_0",
+              "pathOrder": 55,
+              "position": "end",
+              "point": {
+                "x": 0.36545482850222144,
+                "y": 0.6218787158145065
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_26_27_0",
+              "pathOrder": 56,
+              "position": "end",
+              "point": {
+                "x": 0.27051190199722197,
+                "y": 0.6218787158145065
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_27_28_0",
+              "pathOrder": 57,
+              "position": "end",
+              "point": {
+                "x": 0.17556899809767576,
+                "y": 0.6218787158145065
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_28_29_0",
+              "pathOrder": 58,
+              "position": "end",
+              "point": {
+                "x": 0.509838420740835,
+                "y": 0.66884661117717
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_29_30_0",
+              "pathOrder": 59,
+              "position": "end",
+              "point": {
+                "x": 0.6158956725175105,
+                "y": 0.66884661117717
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_30_31_0",
+              "pathOrder": 60,
+              "position": "end",
+              "point": {
+                "x": 0.6460362769300649,
+                "y": 0.6923305588585018
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_31_32_0",
+              "pathOrder": 61,
+              "position": "end",
+              "point": {
+                "x": 0.6460362769300649,
+                "y": 0.7205707491082045
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_32_33_0",
+              "pathOrder": 62,
+              "position": "end",
+              "point": {
+                "x": 0.7520935287067405,
+                "y": 0.7862663495838288
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_33_33a_0",
+              "pathOrder": 63,
+              "position": "end",
+              "point": {
+                "x": 0.7520935287067405,
+                "y": 0.9051724137931034
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_33_33b_0",
+              "pathOrder": 64,
+              "position": "end",
+              "point": {
+                "x": 0.7520935287067405,
+                "y": 0.963436385255648
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_33a_39_0",
+              "pathOrder": 65,
+              "position": "end",
+              "point": {
+                "x": 0.46764157456325883,
+                "y": 0.9735434007134364
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_33b_39_0",
+              "pathOrder": 66,
+              "position": "end",
+              "point": {
+                "x": 0.46764157456325883,
+                "y": 0.9757728894173603
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_32_35_0",
+              "pathOrder": 67,
+              "position": "end",
+              "point": {
+                "x": 0.5399790251533892,
+                "y": 0.7987514863258026
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_35_36_0",
+              "pathOrder": 68,
+              "position": "end",
+              "point": {
+                "x": 0.46401965348251323,
+                "y": 0.8159928656361475
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_36_37_0",
+              "pathOrder": 69,
+              "position": "end",
+              "point": {
+                "x": 0.6460362769300649,
+                "y": 0.8301129607609988
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_37_38_0",
+              "pathOrder": 70,
+              "position": "end",
+              "point": {
+                "x": 0.5701196295659436,
+                "y": 0.8754458977407847
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_38_39_0",
+              "pathOrder": 71,
+              "position": "end",
+              "point": {
+                "x": 0.4338790490699589,
+                "y": 0.9678953626634959
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_1_2_0",
+              "pathOrder": 30,
+              "position": "end",
+              "point": {
+                "x": 0.4344715295818112,
+                "y": 0.05162804341449105
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_2_3_0",
+              "pathOrder": 31,
+              "position": "end",
+              "point": {
+                "x": 0.4344715295818112,
+                "y": 0.09181578175418009
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_3_4_0",
+              "pathOrder": 32,
+              "position": "end",
+              "point": {
+                "x": 0.08438418241428591,
+                "y": 0.1026694045174538
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_4_5_0",
+              "pathOrder": 33,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.09489586388970371
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_5_6_0",
+              "pathOrder": 34,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.12584335582282194
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_6_7_0",
+              "pathOrder": 35,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.17219125843355823
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_7_8_0",
+              "pathOrder": 36,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.2640070401877383
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_8_9_0",
+              "pathOrder": 37,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.3219419184511587
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_7_9_0",
+              "pathOrder": 38,
+              "position": "end",
+              "point": {
+                "x": 0.5433545437208946,
+                "y": 0.3219419184511587
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_9_10_0",
+              "pathOrder": 39,
+              "position": "end",
+              "point": {
+                "x": 0.6148570699701679,
+                "y": 0.3297154590789087
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_10_11_0",
+              "pathOrder": 40,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.35288941038427685
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_11_12_0",
+              "pathOrder": 41,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.39923731299501314
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_12_13_0",
+              "pathOrder": 42,
+              "position": "end",
+              "point": {
+                "x": 0.36666046263552166,
+                "y": 0.41009093575828687
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_13_14_0",
+              "pathOrder": 43,
+              "position": "end",
+              "point": {
+                "x": 0.336789955586217,
+                "y": 0.43326488706365496
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_14_15_0",
+              "pathOrder": 44,
+              "position": "end",
+              "point": {
+                "x": 0.40460102253250635,
+                "y": 0.45335875623349947
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_15_16_0",
+              "pathOrder": 45,
+              "position": "end",
+              "point": {
+                "x": 0.4344715295818112,
+                "y": 0.48577295394543846
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_16_17_0",
+              "pathOrder": 46,
+              "position": "end",
+              "point": {
+                "x": 0.4344715295818112,
+                "y": 0.5198005280140803
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_17_18_0",
+              "pathOrder": 47,
+              "position": "end",
+              "point": {
+                "x": 0.4344715295818112,
+                "y": 0.5661484306248166
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_18_19_0",
+              "pathOrder": 48,
+              "position": "end",
+              "point": {
+                "x": 0.05451367536498117,
+                "y": 0.5878556761513639
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_19_20_0",
+              "pathOrder": 49,
+              "position": "end",
+              "point": {
+                "x": 0.11873524273159816,
+                "y": 0.5770020533880903
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_20_21_0",
+              "pathOrder": 50,
+              "position": "end",
+              "point": {
+                "x": 0.9454862334774656,
+                "y": 0.5661484306248166
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_21_22_0",
+              "pathOrder": 51,
+              "position": "end",
+              "point": {
+                "x": 0.8812646433214604,
+                "y": 0.5770020533880903
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_22_23_0",
+              "pathOrder": 52,
+              "position": "end",
+              "point": {
+                "x": 0.8513941590615439,
+                "y": 0.603256086828982
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_23_24_0",
+              "pathOrder": 53,
+              "position": "end",
+              "point": {
+                "x": 0.4344715295818112,
+                "y": 0.6465239073041947
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_24_25_0",
+              "pathOrder": 54,
+              "position": "end",
+              "point": {
+                "x": 0.5097502261391003,
+                "y": 0.6233499559988266
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_25_26_0",
+              "pathOrder": 55,
+              "position": "end",
+              "point": {
+                "x": 0.36666046263552166,
+                "y": 0.6233499559988266
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_26_27_0",
+              "pathOrder": 56,
+              "position": "end",
+              "point": {
+                "x": 0.2725683540355176,
+                "y": 0.6233499559988266
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_27_28_0",
+              "pathOrder": 57,
+              "position": "end",
+              "point": {
+                "x": 0.17847625683020762,
+                "y": 0.6233499559988266
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_28_29_0",
+              "pathOrder": 58,
+              "position": "end",
+              "point": {
+                "x": 0.5097502261391003,
+                "y": 0.6696978586095629
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_29_30_0",
+              "pathOrder": 59,
+              "position": "end",
+              "point": {
+                "x": 0.6148570699701679,
+                "y": 0.6696978586095629
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_30_31_0",
+              "pathOrder": 60,
+              "position": "end",
+              "point": {
+                "x": 0.6447275770194725,
+                "y": 0.692871809914931
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_31_32_0",
+              "pathOrder": 61,
+              "position": "end",
+              "point": {
+                "x": 0.6447275770194725,
+                "y": 0.7207392197125256
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_32_33_0",
+              "pathOrder": 62,
+              "position": "end",
+              "point": {
+                "x": 0.7498344350939077,
+                "y": 0.7855676151364036
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_33_33a_0",
+              "pathOrder": 63,
+              "position": "end",
+              "point": {
+                "x": 0.7498344350939077,
+                "y": 0.9029040774420651
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_33_33b_0",
+              "pathOrder": 64,
+              "position": "end",
+              "point": {
+                "x": 0.7498344350939077,
+                "y": 0.9603989439718392
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_33a_39_0",
+              "pathOrder": 65,
+              "position": "end",
+              "point": {
+                "x": 0.46793151627007357,
+                "y": 0.9703725432678205
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_33b_39_0",
+              "pathOrder": 66,
+              "position": "end",
+              "point": {
+                "x": 0.4679315152018211,
+                "y": 0.9725726019360517
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_32_35_0",
+              "pathOrder": 67,
+              "position": "end",
+              "point": {
+                "x": 0.5396207303397315,
+                "y": 0.7978879436784981
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_35_36_0",
+              "pathOrder": 68,
+              "position": "end",
+              "point": {
+                "x": 0.46434203663111584,
+                "y": 0.814901730712819
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_36_37_0",
+              "pathOrder": 69,
+              "position": "end",
+              "point": {
+                "x": 0.6447275770194725,
+                "y": 0.8288354356116163
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_37_38_0",
+              "pathOrder": 70,
+              "position": "end",
+              "point": {
+                "x": 0.5694912373890362,
+                "y": 0.8735699618656497
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_38_39_0",
+              "pathOrder": 71,
+              "position": "end",
+              "point": {
+                "x": 0.4344715295818112,
+                "y": 0.9647990613083015
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.6709732988802756,
+        "exactMaskIou": 0.6227519866164785,
+        "edgeF1": 0.8347086256600343,
+        "colorError": 0.025491178927711435,
+        "exactColorError": 0.03991055783808017
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 103,
+          "y": 8,
+          "width": 694,
+          "height": 883
+        },
+        "foregroundCells": 1654,
+        "edgeCells": 3079
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 114,
+          "y": 21,
+          "width": 672,
+          "height": 858
+        },
+        "foregroundCells": 2226,
+        "edgeCells": 4129
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_15_border_hugging",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 35,
+          "typeCounts": {
+            "shape": 18,
+            "text": 12,
+            "path": 5
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 35,
+          "typeCounts": {
+            "shape": 18,
+            "text": 12,
+            "path": 5
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 12,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.0381834137706974,
+          "p95CenterDistance": 0.03818341114039633,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 23
+          },
+          "officialStrokePatterns": {
+            "Solid": 23
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 5
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 5
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_23_24_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.08769633507853403,
+                "y": 0.8380566801619433
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_24_25_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.20026178010471204,
+                "y": 0.5182186234817814
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_25_26_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.36518324607329844,
+                "y": 0.5182186234817814
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_26_27_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.9646596858638743,
+                "y": 0.5182186234817814
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_27_28_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.5824607329842932,
+                "y": 0.2408906882591093
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_23_24_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.09407216494845361,
+                "y": 0.8081180811808122
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_24_25_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.2048969072164948,
+                "y": 0.516605166051661
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_25_26_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.3672680412371133,
+                "y": 0.516605166051661
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_26_27_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.9574742268041239,
+                "y": 0.516605166051661
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_27_28_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.5811855670103093,
+                "y": 0.2638376383763842
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8085573230938015,
+        "exactMaskIou": 0.4138078902229846,
+        "edgeF1": 0.9763200206535689,
+        "colorError": 0.10206328375619714,
+        "exactColorError": 0.21114530431955517
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 12,
+          "y": 380,
+          "width": 876,
+          "height": 138
+        },
+        "foregroundCells": 1613,
+        "edgeCells": 3028
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 27,
+          "y": 385,
+          "width": 846,
+          "height": 130
+        },
+        "foregroundCells": 1684,
+        "edgeCells": 2961
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_15_border_hugging_lr",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 35,
+          "typeCounts": {
+            "shape": 18,
+            "text": 12,
+            "path": 5
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 35,
+          "typeCounts": {
+            "shape": 18,
+            "text": 12,
+            "path": 5
+          },
+          "textCount": 12,
+          "uniqueTextCount": 12,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 12,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.0496020728195407,
+          "p95CenterDistance": 0.04955519286478922,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 23
+          },
+          "officialStrokePatterns": {
+            "Solid": 23
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 5
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 5
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_23_24_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.23880597014925373,
+                "y": 0.081145584725537
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_24_25_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.5373134328358209,
+                "y": 0.22775315376747357
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_25_26_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.5373134328358209,
+                "y": 0.3924309580634163
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_26_27_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.5373134328358209,
+                "y": 0.9727241732015002
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_27_28_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.835820895522388,
+                "y": 0.5966587112171837
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_23_24_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.2602739726027393,
+                "y": 0.08788996980878899
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_24_25_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.5342465753424658,
+                "y": 0.2321368668232137
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_25_26_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.5342465753424658,
+                "y": 0.39416303253941637
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_26_27_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.5342465753424658,
+                "y": 0.9651123783965114
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_27_28_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.8082191780821913,
+                "y": 0.5951023146595104
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7258207630878438,
+        "exactMaskIou": 0.49903660886319845,
+        "edgeF1": 0.9667749318386624,
+        "colorError": 0.09672982733884135,
+        "exactColorError": 0.16252421071190196
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 370,
+          "y": 12,
+          "width": 157,
+          "height": 876
+        },
+        "foregroundCells": 1735,
+        "edgeCells": 4194
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 376,
+          "y": 27,
+          "width": 148,
+          "height": 846
+        },
+        "foregroundCells": 2155,
+        "edgeCells": 4485
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_4_car_fun_sales_tb",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 21,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.016068598825149168,
+          "p95CenterDistance": 0.016068590847595335,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 11,
+          "officialPaletteSize": 11,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 38
+          },
+          "officialStrokePatterns": {
+            "Solid": 38
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 14
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 14
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.23981191222570533,
+                "y": 0.08591731266149871
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.4373040752351097,
+                "y": 0.08591731266149871
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.1744186046511628
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.4373040752351097,
+                "y": 0.5458656330749354
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.8949843260188087,
+                "y": 0.5116279069767442
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.8949843260188087,
+                "y": 0.6343669250645995
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.2971576227390181
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.6347962382445141,
+                "y": 0.3313953488372093
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.6974921630094044,
+                "y": 0.5116279069767442
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.5626959247648903,
+                "y": 0.5458656330749354
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.7601880877742947,
+                "y": 0.791343669250646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.5626959247648903,
+                "y": 0.791343669250646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.3652037617554859,
+                "y": 0.791343669250646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.8798449612403101
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.24461538461538462,
+                "y": 0.09837092731829573
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.43846153846153846,
+                "y": 0.09837092731829573
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.18421052631578955
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.43846153846153846,
+                "y": 0.5444862155388471
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.8876923076923077,
+                "y": 0.5112781954887218
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.8876923076923077,
+                "y": 0.630325814536341
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.3032581453634086
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.6323076923076923,
+                "y": 0.33646616541353386
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.6938461538461538,
+                "y": 0.5112781954887218
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.5615384615384615,
+                "y": 0.5444862155388471
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.7553846153846154,
+                "y": 0.7825814536340854
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.5615384615384615,
+                "y": 0.7825814536340854
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.3676923076923077,
+                "y": 0.7825814536340854
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.8684210526315791
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9719981015662079,
+        "exactMaskIou": 0.8890656967492612,
+        "edgeF1": 0.935163490553736,
+        "colorError": 0.019265260551233513,
+        "exactColorError": 0.029747402484521884
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 13,
+          "y": 184,
+          "width": 874,
+          "height": 530
+        },
+        "foregroundCells": 4096,
+        "edgeCells": 2430
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 29,
+          "y": 196,
+          "width": 842,
+          "height": 508
+        },
+        "foregroundCells": 4214,
+        "edgeCells": 2711
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_5_car_fun_sales_wide_tb",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 21,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 21,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 21,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.02874161363781456,
+          "p95CenterDistance": 0.028293912429639398,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 11,
+          "officialPaletteSize": 11,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 38
+          },
+          "officialStrokePatterns": {
+            "Solid": 38
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 14
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 14
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.4279141104294479,
+                "y": 0.07059447983014862
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.6211656441717791,
+                "y": 0.07059447983014862
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.6825153374233128,
+                "y": 0.14331210191082802
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.6825153374233128,
+                "y": 0.5207006369426752
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.35736196319018404,
+                "y": 0.5488322717622081
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.2960122699386503,
+                "y": 0.6995753715498938
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.6855828220858896,
+                "y": 0.24416135881104034
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.8251533742331288,
+                "y": 0.27229299363057324
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.8865030674846626,
+                "y": 0.4426751592356688
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.7438650306748467,
+                "y": 0.5488322717622081
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.8865030674846626,
+                "y": 0.8004246284501062
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.7438650306748467,
+                "y": 0.828556263269639
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.5506134969325154,
+                "y": 0.828556263269639
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.6825153374233128,
+                "y": 0.9012738853503185
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.43846153846153846,
+                "y": 0.07188644688644688
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.6323076923076923,
+                "y": 0.07188644688644688
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.6938461538461538,
+                "y": 0.1346153846153846
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.6938461538461538,
+                "y": 0.5370879120879122
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.3676923076923077,
+                "y": 0.5613553113553115
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.3061538461538461,
+                "y": 0.7298534798534798
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.696923076923077,
+                "y": 0.2216117216117216
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.8261538461538461,
+                "y": 0.24587912087912087
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.8876923076923077,
+                "y": 0.4313186813186814
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.7553846153846154,
+                "y": 0.5613553113553115
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.8876923076923077,
+                "y": 0.8168498168498168
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.7553846153846154,
+                "y": 0.841117216117216
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.5615384615384615,
+                "y": 0.841117216117216
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.6938461538461538,
+                "y": 0.9038461538461537
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.8830559112249253,
+        "exactMaskIou": 0.6842908952090093,
+        "edgeF1": 0.9158348610160433,
+        "colorError": 0.021494074979150908,
+        "exactColorError": 0.05813712390854414
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 13,
+          "y": 132,
+          "width": 875,
+          "height": 633
+        },
+        "foregroundCells": 4452,
+        "edgeCells": 2732
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 29,
+          "y": 98,
+          "width": 842,
+          "height": 704
+        },
+        "foregroundCells": 4372,
+        "edgeCells": 2859
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_6_legal_constr_sales",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 21,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 21,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 21,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.043821511787945744,
+          "p95CenterDistance": 0.040925304987805264,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 11,
+          "officialPaletteSize": 11,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 38
+          },
+          "officialStrokePatterns": {
+            "Solid": 38
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 14
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 14
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.04166430034806998,
+                "y": 0.44281644281644283
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.04166430034806998,
+                "y": 0.6479446479446479
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.15091396091221998,
+                "y": 0.6695156695156695
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.6598129747246406,
+                "y": 0.6695156695156695
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.6854525441696068,
+                "y": 0.28083028083028083
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.8093447384975443,
+                "y": 0.25925925925925924
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.2858031684867129,
+                "y": 0.6727716727716728
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.311442737931679,
+                "y": 0.8644688644688645
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.6598129747246406,
+                "y": 0.886039886039886
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.6854525441696068,
+                "y": 0.6910866910866911
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.8093447384975443,
+                "y": 0.886039886039886
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.8349843079425104,
+                "y": 0.6910866910866911
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.8349843079425104,
+                "y": 0.48595848595848595
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.9442339364571987,
+                "y": 0.6695156695156695
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.050062854863150257,
+                "y": 0.43420538852010915
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.050062854863150257,
+                "y": 0.6310035142522452
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.14755853722251655,
+                "y": 0.6516985552518547
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.6346464785137933,
+                "y": 0.6516985552518547
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.6628509037888076,
+                "y": 0.2787973447871925
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.8087246251194802,
+                "y": 0.258102303787583
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.27325864485689705,
+                "y": 0.6516985552518547
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.3014630701319113,
+                "y": 0.8278016399843809
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.6346464785137933,
+                "y": 0.8484966809839908
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.6628509037888076,
+                "y": 0.6723935962514642
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.8087246251194802,
+                "y": 0.8484966809839908
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.8369290503944944,
+                "y": 0.6723935962514642
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.8369290503944944,
+                "y": 0.4755954705193284
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.9344247112355919,
+                "y": 0.6516985552518547
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9255256435449007,
+        "exactMaskIou": 0.8230697674418604,
+        "edgeF1": 0.880296746055501,
+        "colorError": 0.010805926401633508,
+        "exactColorError": 0.030763337893296855
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 9,
+          "y": 277,
+          "width": 882,
+          "height": 346
+        },
+        "foregroundCells": 4750,
+        "edgeCells": 1724
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 22,
+          "y": 260,
+          "width": 856,
+          "height": 380
+        },
+        "foregroundCells": 5049,
+        "edgeCells": 1880
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_7_car_sales_constr",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 61,
+          "typeCounts": {
+            "shape": 26,
+            "text": 21,
+            "path": 14
+          },
+          "textCount": 21,
+          "uniqueTextCount": 20,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 21,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.016068598825149168,
+          "p95CenterDistance": 0.016068590847595335,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 11,
+          "officialPaletteSize": 11,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 38
+          },
+          "officialStrokePatterns": {
+            "Solid": 38
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 14
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 14
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.23981191222570533,
+                "y": 0.08591731266149871
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.4373040752351097,
+                "y": 0.08591731266149871
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.1744186046511628
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.4373040752351097,
+                "y": 0.5458656330749354
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.8949843260188087,
+                "y": 0.5116279069767442
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.8949843260188087,
+                "y": 0.6343669250645995
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.2971576227390181
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.6347962382445141,
+                "y": 0.3313953488372093
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.6974921630094044,
+                "y": 0.5116279069767442
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.5626959247648903,
+                "y": 0.5458656330749354
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.7601880877742947,
+                "y": 0.791343669250646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.5626959247648903,
+                "y": 0.791343669250646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.3652037617554859,
+                "y": 0.791343669250646
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.8798449612403101
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_B_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.24461538461538462,
+                "y": 0.09837092731829573
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_C_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.43846153846153846,
+                "y": 0.09837092731829573
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_C_D_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.18421052631578955
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_E_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.43846153846153846,
+                "y": 0.5444862155388471
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_F_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.8876923076923077,
+                "y": 0.5112781954887218
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_F_G_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.8876923076923077,
+                "y": 0.630325814536341
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_H_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.3032581453634086
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_H_I_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.6323076923076923,
+                "y": 0.33646616541353386
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_J_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.6938461538461538,
+                "y": 0.5112781954887218
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_J_E_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.5615384615384615,
+                "y": 0.5444862155388471
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_I_K_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.7553846153846154,
+                "y": 0.7825814536340854
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_K_L_0",
+              "pathOrder": 26,
+              "position": "end",
+              "point": {
+                "x": 0.5615384615384615,
+                "y": 0.7825814536340854
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_M_0",
+              "pathOrder": 27,
+              "position": "end",
+              "point": {
+                "x": 0.3676923076923077,
+                "y": 0.7825814536340854
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_L_N_0",
+              "pathOrder": 28,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.8684210526315791
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9719981015662079,
+        "exactMaskIou": 0.8890656967492612,
+        "edgeF1": 0.935163490553736,
+        "colorError": 0.019265260551233513,
+        "exactColorError": 0.029747402484521884
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 13,
+          "y": 184,
+          "width": 874,
+          "height": 530
+        },
+        "foregroundCells": 4096,
+        "edgeCells": 2430
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 29,
+          "y": 196,
+          "width": 842,
+          "height": 508
+        },
+        "foregroundCells": 4214,
+        "edgeCells": 2711
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_8_query_process_2",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 45,
+          "typeCounts": {
+            "shape": 20,
+            "text": 17,
+            "path": 8
+          },
+          "textCount": 17,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 45,
+          "typeCounts": {
+            "shape": 20,
+            "text": 17,
+            "path": 8
+          },
+          "textCount": 17,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 17,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.011930614211478653,
+          "p95CenterDistance": 0.011644956803841684,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 22
+          },
+          "officialStrokePatterns": {
+            "Solid": 22
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 8
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 8
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_E_F_0",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.706079263010346,
+                "y": 0.5127737226277372
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_E_G_0",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.8173232515487161,
+                "y": 0.5486618004866181
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_G_F2_0",
+              "pathOrder": 11,
+              "position": "end",
+              "point": {
+                "x": 0.9201435447639771,
+                "y": 0.5127737226277372
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_C_0",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5833490840905652,
+                "y": 0.8424574209245742
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A_A2_0",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.13583759462699768,
+                "y": 0.170316301703163
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A2_B_0",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.30589885706377,
+                "y": 0.8424574209245742
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A2_E_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.4635929081339231,
+                "y": 0.5023722627737226
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_E_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.4635929081339231,
+                "y": 0.5231751824817519
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_F_0",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.7038082585638932,
+                "y": 0.5124113475177305
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_G_0",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.8138263359570179,
+                "y": 0.5472813238770685
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_G_F2_0",
+              "pathOrder": 11,
+              "position": "end",
+              "point": {
+                "x": 0.9155135779988061,
+                "y": 0.5124113475177305
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_C_0",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5824305473192524,
+                "y": 0.83274231678487
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_A2_0",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.13985065944482697,
+                "y": 0.17966903073286053
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A2_B_0",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.3080378371967418,
+                "y": 0.83274231678487
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A2_E_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.4639941117874782,
+                "y": 0.5023049789681221
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_E_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.4639941117874782,
+                "y": 0.522517716067339
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9822567230385362,
+        "exactMaskIou": 0.9445199891215665,
+        "edgeF1": 0.9976544175136826,
+        "colorError": 0.014907993966817495,
+        "exactColorError": 0.01574671025150156
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 8,
+          "y": 284,
+          "width": 882,
+          "height": 332
+        },
+        "foregroundCells": 3607,
+        "edgeCells": 1923
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 23,
+          "y": 289,
+          "width": 854,
+          "height": 322
+        },
+        "foregroundCells": 3543,
+        "edgeCells": 1898
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_mermaid_work",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 50,
+          "typeCounts": {
+            "shape": 22,
+            "text": 17,
+            "path": 11
+          },
+          "textCount": 17,
+          "uniqueTextCount": 17,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 50,
+          "typeCounts": {
+            "shape": 22,
+            "text": 17,
+            "path": 11
+          },
+          "textCount": 17,
+          "uniqueTextCount": 17,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 17,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.010995999271564322,
+          "p95CenterDistance": 0.010586822878652908,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 10,
+          "officialPaletteSize": 10,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 33
+          },
+          "officialStrokePatterns": {
+            "Solid": 33
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 11
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 11
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_A1_G1_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.20275691600222526,
+                "y": 0.22685816962566407
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_G1_G3_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.379004932936965,
+                "y": 0.22685816962566407
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A2_G2_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.9077489943447483,
+                "y": 0.21973546414291167
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_G2_G3_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.42141918841064396,
+                "y": 0.19302531858259014
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_G3_C1_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.5552529710788325,
+                "y": 0.40635034779102464
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_C1_C3_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.7315009562028807,
+                "y": 0.4711669676840715
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_C3_G2_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.9077489943447483,
+                "y": 0.23398087510841648
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_G3_C2_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.5552529710788325,
+                "y": 0.5502289985426232
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_C2_C3_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.7315009562028807,
+                "y": 0.4854123786495763
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_R1_R2_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.20275691600222526,
+                "y": 0.9092133548733444
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_R2_G3_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.41770794105669706,
+                "y": 0.260691020668738
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A1_G1_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.20649159570826128,
+                "y": 0.23144890824438244
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_G1_G3_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.380525148969355,
+                "y": 0.23144890824438244
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A2_G2_0",
+              "pathOrder": 17,
+              "position": "end",
+              "point": {
+                "x": 0.9026258726584971,
+                "y": 0.22444591555922722
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_G2_G3_0",
+              "pathOrder": 18,
+              "position": "end",
+              "point": {
+                "x": 0.4224064940624745,
+                "y": 0.19818469298989486
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_G3_C1_0",
+              "pathOrder": 19,
+              "position": "end",
+              "point": {
+                "x": 0.5545587341833793,
+                "y": 0.40792432391029604
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_C1_C3_0",
+              "pathOrder": 20,
+              "position": "end",
+              "point": {
+                "x": 0.7285922554915424,
+                "y": 0.47165155734520925
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_C3_G2_0",
+              "pathOrder": 21,
+              "position": "end",
+              "point": {
+                "x": 0.9026258726584971,
+                "y": 0.23845190092953783
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_G3_C2_0",
+              "pathOrder": 22,
+              "position": "end",
+              "point": {
+                "x": 0.5545587341833793,
+                "y": 0.5493847761504329
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_C2_C3_0",
+              "pathOrder": 23,
+              "position": "end",
+              "point": {
+                "x": 0.7285922554915424,
+                "y": 0.4856575427155197
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_R1_R2_0",
+              "pathOrder": 24,
+              "position": "end",
+              "point": {
+                "x": 0.20649159570826128,
+                "y": 0.9023356074822598
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_R2_G3_0",
+              "pathOrder": 25,
+              "position": "end",
+              "point": {
+                "x": 0.4187418763668265,
+                "y": 0.26471312349887016
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 2,
+          "officialOccludedTextCount": 2,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9704844997215519,
+        "exactMaskIou": 0.900626678603402,
+        "edgeF1": 0.9354494099919287,
+        "colorError": 0.010746370491556308,
+        "exactColorError": 0.02065616936120912
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 9,
+          "y": 124,
+          "width": 880,
+          "height": 646
+        },
+        "foregroundCells": 5387,
+        "edgeCells": 2354
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 24,
+          "y": 134,
+          "width": 852,
+          "height": 631
+        },
+        "foregroundCells": 5228,
+        "edgeCells": 2109
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_pebr_3_process_too_wide_in_lane",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 11,
+          "typeCounts": {
+            "shape": 5,
+            "text": 4,
+            "path": 2
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 11,
+          "typeCounts": {
+            "shape": 5,
+            "text": 4,
+            "path": 2
+          },
+          "textCount": 4,
+          "uniqueTextCount": 4,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 4,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.030620710761763665,
+          "p95CenterDistance": 0.0203424232960822,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 4,
+          "officialPaletteSize": 4,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 7
+          },
+          "officialStrokePatterns": {
+            "Solid": 7
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_Dep1.Proc1_Dep1.Proc2_0",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.4179566563467492
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_Dep1.Proc2_Dep1.Proc3_0",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.7120743034055728
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_Dep1.Proc1_Dep1.Proc2_0",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.4999999999999999,
+                "y": 0.42363112391930835
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_Dep1.Proc2_Dep1.Proc3_0",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.4999999999999999,
+                "y": 0.6974063400576369
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.857685009487666,
+        "exactMaskIou": 0.49636988918609093,
+        "edgeF1": 0.9844989160625947,
+        "colorError": 0.10733764596567878,
+        "exactColorError": 0.18315588622406037
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 185,
+          "y": 15,
+          "width": 530,
+          "height": 857
+        },
+        "foregroundCells": 1904,
+        "edgeCells": 3538
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 208,
+          "y": 64,
+          "width": 484,
+          "height": 772
+        },
+        "foregroundCells": 2012,
+        "edgeCells": 3482
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_query_process",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 45,
+          "typeCounts": {
+            "shape": 20,
+            "text": 17,
+            "path": 8
+          },
+          "textCount": 17,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 45,
+          "typeCounts": {
+            "shape": 20,
+            "text": 17,
+            "path": 8
+          },
+          "textCount": 17,
+          "uniqueTextCount": 10,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 17,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.011930614211478743,
+          "p95CenterDistance": 0.011930590352082257,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 8,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 22
+          },
+          "officialStrokePatterns": {
+            "Solid": 22
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 8
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 8
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_E_F_0",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.706079263010346,
+                "y": 0.1575425790754258
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_E_G_0",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.8173232515487161,
+                "y": 0.19343065693430658
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_G_F2_0",
+              "pathOrder": 11,
+              "position": "end",
+              "point": {
+                "x": 0.9201435447639771,
+                "y": 0.1575425790754258
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_C_0",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5833490840905652,
+                "y": 0.8424574209245742
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A_A2_0",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.13583759462699768,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A2_B_0",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.30589885706377,
+                "y": 0.8424574209245742
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A2_E_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.4635929081339231,
+                "y": 0.14714111922141118
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_E_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.4635929081339231,
+                "y": 0.1679440389294404
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_F_0",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.7038082585638932,
+                "y": 0.16725768321513002
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_G_0",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.8138263359570179,
+                "y": 0.20212765957446807
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_G_F2_0",
+              "pathOrder": 11,
+              "position": "end",
+              "point": {
+                "x": 0.9155135779988061,
+                "y": 0.16725768321513002
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_C_0",
+              "pathOrder": 12,
+              "position": "end",
+              "point": {
+                "x": 0.5824305473192524,
+                "y": 0.8327423167848699
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_A2_0",
+              "pathOrder": 13,
+              "position": "end",
+              "point": {
+                "x": 0.13985065944482697,
+                "y": 0.4999999999999999
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A2_B_0",
+              "pathOrder": 14,
+              "position": "end",
+              "point": {
+                "x": 0.3080378371967418,
+                "y": 0.8327423167848699
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A2_E_0",
+              "pathOrder": 15,
+              "position": "end",
+              "point": {
+                "x": 0.4639941117874782,
+                "y": 0.15715130001095157
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_E_0",
+              "pathOrder": 16,
+              "position": "end",
+              "point": {
+                "x": 0.4639941117874782,
+                "y": 0.17736406641930835
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.9716234652114597,
+        "exactMaskIou": 0.9346720214190094,
+        "edgeF1": 0.9977739302498145,
+        "colorError": 0.013639924094003318,
+        "exactColorError": 0.015880865509970164
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 8,
+          "y": 284,
+          "width": 882,
+          "height": 332
+        },
+        "foregroundCells": 3665,
+        "edgeCells": 2026
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 23,
+          "y": 289,
+          "width": 854,
+          "height": 322
+        },
+        "foregroundCells": 3561,
+        "edgeCells": 1958
+      },
+      "heatmap": null
+    },
+    {
+      "id": "ddlt_swimlanes_simple_2",
+      "kind": "swimlanes",
+      "status": "pass",
+      "findings": [],
+      "manifest": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "native": {
+          "renderer": "Native",
+          "elementCount": 25,
+          "typeCounts": {
+            "shape": 11,
+            "text": 9,
+            "path": 5
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 25,
+          "typeCounts": {
+            "shape": 11,
+            "text": 9,
+            "path": 5
+          },
+          "textCount": 9,
+          "uniqueTextCount": 9,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 9,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.02412018039323328,
+          "p95CenterDistance": 0.02412017150419224,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 1,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 6,
+          "officialPaletteSize": 6,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 14
+          },
+          "officialStrokePatterns": {
+            "Solid": 14
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 5
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 5
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "L_D_E_0",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.7423076923076923,
+                "y": 0.27607361963190186
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_E_B_0",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.27692307692307694,
+                "y": 0.6155419222903885
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A_D_0",
+              "pathOrder": 8,
+              "position": "end",
+              "point": {
+                "x": 0.5884615384615385,
+                "y": 0.1359918200408998
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_A_B_0",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.25769230769230766,
+                "y": 0.6155419222903885
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "L_B_C_0",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.25769230769230766,
+                "y": 0.8098159509202454
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_D_E_0",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.7316176470588236,
+                "y": 0.28654970760233917
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_E_B_0",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.286764705882353,
+                "y": 0.6101364522417154
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_D_0",
+              "pathOrder": 8,
+              "position": "end",
+              "point": {
+                "x": 0.5845588235294119,
+                "y": 0.1530214424951267
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_A_B_0",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.2683823529411765,
+                "y": 0.6101364522417154
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-L_B_C_0",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.2683823529411765,
+                "y": 0.7953216374269005
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "raster": {
+        "thresholds": {
+          "minimumMaskIou": 0.42,
+          "minimumEdgeF1": 0.38,
+          "maximumColorError": 0.24
+        },
+        "status": "pass",
+        "maskIou": 0.7003405221339387,
+        "exactMaskIou": 0.5499224004138644,
+        "edgeF1": 0.9869743208038705,
+        "colorError": 0.08788911519355772,
+        "exactColorError": 0.11978873977595866
+      },
+      "nativeRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 20,
+          "y": 38,
+          "width": 860,
+          "height": 815
+        },
+        "foregroundCells": 1762,
+        "edgeCells": 2722
+      },
+      "officialRaster": {
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "contentBounds": {
+          "x": 47,
+          "y": 71,
+          "width": 806,
+          "height": 758
+        },
+        "foregroundCells": 1234,
+        "edgeCells": 2340
+      },
+      "heatmap": null
+    }
+  ]
+}

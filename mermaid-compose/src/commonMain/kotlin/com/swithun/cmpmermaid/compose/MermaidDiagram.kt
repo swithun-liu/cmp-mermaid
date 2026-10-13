@@ -278,12 +278,12 @@ fun rememberMermaidScene(
                 fontScale = density.fontScale,
                 fontFamilyResolver = effectiveFontFamilyResolver,
             )
-            val result = textMeasurer.measure(
+            val result = textMeasurer.measureMermaidText(
                 text = request.text.toAnnotatedString(
-                    spans = request.spans,
-                    monospaceFontFamily = monospaceFontFamily,
-                    cjkFontFamily = cjkFontFamily,
-                    symbolFontFamily = symbolFontFamily,
+                    request.spans,
+                    monospaceFontFamily,
+                    cjkFontFamily,
+                    symbolFontFamily,
                 ),
                 style = style,
                 softWrap = true,
@@ -294,11 +294,12 @@ fun rememberMermaidScene(
                         horizontalScale = request.horizontalScale,
                     ),
                 ),
+                htmlLabel = request.htmlLabel,
             )
             TextMetrics(
-                width = result.size.width.toFloat(),
-                height = result.size.height.toFloat(),
-                lineCount = result.lineCount,
+                width = result.measuredWidth,
+                height = result.layout.size.height.toFloat(),
+                lineCount = result.layout.lineCount,
             )
         }
     }
@@ -2361,13 +2362,14 @@ private fun DrawScope.drawSceneText(
             SceneTextAlignment.End -> TextAlign.End
         },
     )
-    val layout = textMeasurer.measure(
-        text = element.text.toAnnotatedString(
-            spans = element.spans,
-            monospaceFontFamily = monospaceFontFamily,
-            cjkFontFamily = cjkFontFamily,
-            symbolFontFamily = symbolFontFamily,
-        ),
+    val annotatedText = element.text.toAnnotatedString(
+        spans = element.spans,
+        monospaceFontFamily = monospaceFontFamily,
+        cjkFontFamily = cjkFontFamily,
+        symbolFontFamily = symbolFontFamily,
+    )
+    val layout = textMeasurer.measureMermaidText(
+        text = annotatedText,
         style = style,
         softWrap = element.softWrap,
         maxLines = mermaidTextMaxLines(element.text, element.softWrap, element.maxLines),
@@ -2382,17 +2384,13 @@ private fun DrawScope.drawSceneText(
         } else {
             Constraints()
         },
-    )
+        htmlLabel = element.htmlLabel,
+    ).layout
     val outlineLayout = element.outlineColor
         ?.takeIf { element.outlineWidth > 0f }
         ?.let { outlineColor ->
-            textMeasurer.measure(
-                text = element.text.toAnnotatedString(
-                    spans = element.spans,
-                    monospaceFontFamily = monospaceFontFamily,
-                    cjkFontFamily = cjkFontFamily,
-                    symbolFontFamily = symbolFontFamily,
-                ),
+            textMeasurer.measureMermaidText(
+                text = annotatedText,
                 style = style.copy(
                     color = outlineColor.toComposeColor(),
                     drawStyle = Stroke(width = element.outlineWidth),
@@ -2414,7 +2412,8 @@ private fun DrawScope.drawSceneText(
                 } else {
                     Constraints()
                 },
-            )
+                htmlLabel = element.htmlLabel,
+            ).layout
         }
     val x = when (element.horizontalAlignment) {
         SceneTextAlignment.Start -> element.bounds.left + 4f
@@ -2477,6 +2476,84 @@ internal fun mermaidTextMaxLines(
 
 internal fun mermaidTextHorizontalScale(override: Float?): Float =
     override ?: MERMAID_FONT_WIDTH_SCALE
+
+private data class MermaidTextMeasurement(
+    val layout: androidx.compose.ui.text.TextLayoutResult,
+    val measuredWidth: Float,
+)
+
+/**
+ * Mermaid.js 12.0.0:
+ * packages/mermaid/src/rendering-util/createText.ts -> addHtmlSpan.
+ *
+ * HTML labels are first measured with `white-space: nowrap`. They only switch
+ * to `break-spaces` when the subpixel intrinsic width reaches the configured
+ * maximum. Compose constraints are integer pixels, so deciding from
+ * [androidx.compose.ui.text.TextLayoutResult.size] wraps boundary labels early.
+ */
+private fun TextMeasurer.measureMermaidText(
+    text: AnnotatedString,
+    style: TextStyle,
+    softWrap: Boolean,
+    maxLines: Int,
+    overflow: TextOverflow = TextOverflow.Clip,
+    constraints: Constraints,
+    htmlLabel: Boolean,
+): MermaidTextMeasurement {
+    if (!htmlLabel || !softWrap) {
+        val layout = measure(
+            text = text,
+            style = style,
+            softWrap = softWrap,
+            maxLines = maxLines,
+            overflow = overflow,
+            constraints = constraints,
+        )
+        return MermaidTextMeasurement(layout, layout.size.width.toFloat())
+    }
+
+    val intrinsicLayout = measure(
+        text = text,
+        style = style.copy(
+            fontSize = style.fontSize * HTML_LABEL_INTRINSIC_SCALE,
+            lineHeight = style.lineHeight * HTML_LABEL_INTRINSIC_SCALE,
+        ),
+        softWrap = false,
+        maxLines = maxLines,
+        overflow = overflow,
+        constraints = Constraints(),
+    )
+    val intrinsicWidth =
+        intrinsicLayout.multiParagraph.maxIntrinsicWidth / HTML_LABEL_INTRINSIC_SCALE
+    if (htmlLabelFitsWithoutWrapping(intrinsicWidth, constraints.maxWidth.toFloat())) {
+        val unwrapped = measure(
+            text = text,
+            style = style,
+            softWrap = false,
+            maxLines = maxLines,
+            overflow = overflow,
+            constraints = Constraints(),
+        )
+        return MermaidTextMeasurement(unwrapped, intrinsicWidth)
+    }
+
+    val wrapped = measure(
+        text = text,
+        style = style,
+        softWrap = true,
+        maxLines = maxLines,
+        overflow = overflow,
+        constraints = constraints,
+    )
+    return MermaidTextMeasurement(wrapped, wrapped.size.width.toFloat())
+}
+
+private const val HTML_LABEL_INTRINSIC_SCALE = 64f
+
+internal fun htmlLabelFitsWithoutWrapping(
+    intrinsicWidth: Float,
+    maximumWidth: Float,
+): Boolean = intrinsicWidth < maximumWidth
 
 private fun TextMetricsRequest.toTextStyle(
     density: Float,

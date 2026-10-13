@@ -106,7 +106,18 @@ internal object FlowchartDataAdapter {
                 val label = when (
                     val rendered = MermaidTextPort.render(
                         source = group.label.orEmpty(),
-                        labelType = group.labelType,
+                        // Mermaid.js 12.0.0:
+                        // rendering-elements/clusters/swimlane.js -> swimlane.
+                        // createText() keeps its default markdown=true for
+                        // top-level lane titles, independent of FlowDB labelType.
+                        labelType = if (
+                            config.layout == "swimlane" &&
+                            group.parentId == null
+                        ) {
+                            FlowLabelType.Markdown
+                        } else {
+                            group.labelType
+                        },
                         config = config,
                     )
                 ) {

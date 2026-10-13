@@ -1,0 +1,880 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-13T07:08:10.815Z",
+  "inputDirectory": "captures/local/swimlanes-ddlt-retranslation",
+  "corpusSource": "swimlane-ddlt",
+  "theme": null,
+  "caseCount": 13,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "reviews": [],
+  "cases": [
+    {
+      "id": "ddlt_swimlanes_10_node_placement",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 192259,
+        "inkRatio": 0.23735679012345678,
+        "contentBounds": {
+          "x": 10,
+          "y": 163,
+          "width": 878,
+          "height": 574
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 178774,
+        "inkRatio": 0.22070864197530865,
+        "contentBounds": {
+          "x": 27,
+          "y": 173,
+          "width": 846,
+          "height": 554
+        }
+      },
+      "manifestWidthRatio": 0.9834408686867241,
+      "manifestHeightRatio": 0.9750908147379346,
+      "manifestGeometryWidthRatio": 1.0000000128158786,
+      "manifestGeometryHeightRatio": 0.9999999772669153,
+      "widthRatio": 1.037825059101655,
+      "heightRatio": 1.036101083032491,
+      "inkRatio": 1.0754304317182588
+    },
+    {
+      "id": "ddlt_swimlanes_14_messy_layout",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 60029,
+        "inkRatio": 0.07410987654320987,
+        "contentBounds": {
+          "x": 103,
+          "y": 8,
+          "width": 694,
+          "height": 883
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 53023,
+        "inkRatio": 0.06546049382716049,
+        "contentBounds": {
+          "x": 114,
+          "y": 21,
+          "width": 672,
+          "height": 858
+        }
+      },
+      "manifestWidthRatio": 0.9910387542481699,
+      "manifestHeightRatio": 0.986799647990613,
+      "manifestGeometryWidthRatio": 0.9999999726222153,
+      "manifestGeometryHeightRatio": 0.9937667327944528,
+      "widthRatio": 1.0327380952380953,
+      "heightRatio": 1.029137529137529,
+      "inkRatio": 1.1321313392301455
+    },
+    {
+      "id": "ddlt_swimlanes_15_border_hugging",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 20226,
+        "inkRatio": 0.024970370370370372,
+        "contentBounds": {
+          "x": 12,
+          "y": 380,
+          "width": 876,
+          "height": 138
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 19973,
+        "inkRatio": 0.024658024691358024,
+        "contentBounds": {
+          "x": 27,
+          "y": 385,
+          "width": 846,
+          "height": 130
+        }
+      },
+      "manifestWidthRatio": 0.9845360824742269,
+      "manifestHeightRatio": 0.9114391143911439,
+      "manifestGeometryWidthRatio": 0.9999999749332922,
+      "manifestGeometryHeightRatio": 1.0000000048704416,
+      "widthRatio": 1.0354609929078014,
+      "heightRatio": 1.0615384615384615,
+      "inkRatio": 1.012667100585791
+    },
+    {
+      "id": "ddlt_swimlanes_15_border_hugging_lr",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 22146,
+        "inkRatio": 0.027340740740740742,
+        "contentBounds": {
+          "x": 370,
+          "y": 12,
+          "width": 157,
+          "height": 876
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 21869,
+        "inkRatio": 0.026998765432098764,
+        "contentBounds": {
+          "x": 376,
+          "y": 27,
+          "width": 148,
+          "height": 846
+        }
+      },
+      "manifestWidthRatio": 0.9178082191780822,
+      "manifestHeightRatio": 0.9838980207983898,
+      "manifestGeometryWidthRatio": 1.0000001395178773,
+      "manifestGeometryHeightRatio": 0.9999999960808755,
+      "widthRatio": 1.0608108108108107,
+      "heightRatio": 1.0354609929078014,
+      "inkRatio": 1.0126663313365953
+    },
+    {
+      "id": "ddlt_swimlanes_4_car_fun_sales_tb",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 173268,
+        "inkRatio": 0.2139111111111111,
+        "contentBounds": {
+          "x": 13,
+          "y": 184,
+          "width": 874,
+          "height": 530
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 162283,
+        "inkRatio": 0.20034938271604938,
+        "contentBounds": {
+          "x": 29,
+          "y": 196,
+          "width": 842,
+          "height": 508
+        }
+      },
+      "manifestWidthRatio": 0.9815384615384616,
+      "manifestHeightRatio": 0.9699248120300752,
+      "manifestGeometryWidthRatio": 0.9999999714685989,
+      "manifestGeometryHeightRatio": 1.0000000413738568,
+      "widthRatio": 1.0380047505938241,
+      "heightRatio": 1.0433070866141732,
+      "inkRatio": 1.067690392709033
+    },
+    {
+      "id": "ddlt_swimlanes_5_car_fun_sales_wide_tb",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 222143,
+        "inkRatio": 0.2742506172839506,
+        "contentBounds": {
+          "x": 13,
+          "y": 132,
+          "width": 875,
+          "height": 633
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 227791,
+        "inkRatio": 0.28122345679012345,
+        "contentBounds": {
+          "x": 29,
+          "y": 98,
+          "width": 842,
+          "height": 704
+        }
+      },
+      "manifestWidthRatio": 1.003076923076923,
+      "manifestHeightRatio": 0.8626373626373627,
+      "manifestGeometryWidthRatio": 1.02222219305679,
+      "manifestGeometryHeightRatio": 0.8802280890194092,
+      "widthRatio": 1.0391923990498813,
+      "heightRatio": 0.8991477272727273,
+      "inkRatio": 0.9752053417386991
+    },
+    {
+      "id": "ddlt_swimlanes_6_legal_constr_sales",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 145617,
+        "inkRatio": 0.1797740740740741,
+        "contentBounds": {
+          "x": 9,
+          "y": 277,
+          "width": 882,
+          "height": 346
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 163653,
+        "inkRatio": 0.20204074074074074,
+        "contentBounds": {
+          "x": 22,
+          "y": 260,
+          "width": 856,
+          "height": 380
+        }
+      },
+      "manifestWidthRatio": 1.1000350585275394,
+      "manifestHeightRatio": 0.9593908629441624,
+      "manifestGeometryWidthRatio": 1.110048299888559,
+      "manifestGeometryHeightRatio": 0.9774284310652281,
+      "widthRatio": 1.030373831775701,
+      "heightRatio": 0.9105263157894737,
+      "inkRatio": 0.8897912045608697
+    },
+    {
+      "id": "ddlt_swimlanes_7_car_sales_constr",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 173268,
+        "inkRatio": 0.2139111111111111,
+        "contentBounds": {
+          "x": 13,
+          "y": 184,
+          "width": 874,
+          "height": 530
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 162283,
+        "inkRatio": 0.20034938271604938,
+        "contentBounds": {
+          "x": 29,
+          "y": 196,
+          "width": 842,
+          "height": 508
+        }
+      },
+      "manifestWidthRatio": 0.9815384615384616,
+      "manifestHeightRatio": 0.9699248120300752,
+      "manifestGeometryWidthRatio": 0.9999999714685989,
+      "manifestGeometryHeightRatio": 1.0000000413738568,
+      "widthRatio": 1.0380047505938241,
+      "heightRatio": 1.0433070866141732,
+      "inkRatio": 1.067690392709033
+    },
+    {
+      "id": "ddlt_swimlanes_8_query_process_2",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 100668,
+        "inkRatio": 0.12428148148148148,
+        "contentBounds": {
+          "x": 8,
+          "y": 284,
+          "width": 882,
+          "height": 332
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 93685,
+        "inkRatio": 0.1156604938271605,
+        "contentBounds": {
+          "x": 23,
+          "y": 289,
+          "width": 854,
+          "height": 322
+        }
+      },
+      "manifestWidthRatio": 0.9889800107482355,
+      "manifestHeightRatio": 0.9716312056737588,
+      "manifestGeometryWidthRatio": 1.0000000200732193,
+      "manifestGeometryHeightRatio": 1.000000078722818,
+      "widthRatio": 1.0327868852459017,
+      "heightRatio": 1.031055900621118,
+      "inkRatio": 1.0745370123285478
+    },
+    {
+      "id": "ddlt_swimlanes_mermaid_work",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 283773,
+        "inkRatio": 0.35033703703703706,
+        "contentBounds": {
+          "x": 9,
+          "y": 124,
+          "width": 880,
+          "height": 646
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 265791,
+        "inkRatio": 0.32813703703703706,
+        "contentBounds": {
+          "x": 24,
+          "y": 134,
+          "width": 852,
+          "height": 631
+        }
+      },
+      "manifestWidthRatio": 0.9874355832818945,
+      "manifestHeightRatio": 0.9831927912944047,
+      "manifestGeometryWidthRatio": 1.0000000161341542,
+      "manifestGeometryHeightRatio": 0.9999999718627354,
+      "widthRatio": 1.0328638497652582,
+      "heightRatio": 1.0237717908082409,
+      "inkRatio": 1.067654660993036
+    },
+    {
+      "id": "ddlt_swimlanes_pebr_3_process_too_wide_in_lane",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 54435,
+        "inkRatio": 0.06720370370370371,
+        "contentBounds": {
+          "x": 185,
+          "y": 15,
+          "width": 530,
+          "height": 857
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 52166,
+        "inkRatio": 0.06440246913580247,
+        "contentBounds": {
+          "x": 208,
+          "y": 64,
+          "width": 484,
+          "height": 772
+        }
+      },
+      "manifestWidthRatio": 0.896551724137931,
+      "manifestHeightRatio": 0.930835734870317,
+      "manifestGeometryWidthRatio": 1.0000000952209471,
+      "manifestGeometryHeightRatio": 0.9999999991840252,
+      "widthRatio": 1.0950413223140496,
+      "heightRatio": 1.1101036269430051,
+      "inkRatio": 1.0434957635241346
+    },
+    {
+      "id": "ddlt_swimlanes_query_process",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 100733,
+        "inkRatio": 0.12436172839506172,
+        "contentBounds": {
+          "x": 8,
+          "y": 284,
+          "width": 882,
+          "height": 332
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 94363,
+        "inkRatio": 0.11649753086419753,
+        "contentBounds": {
+          "x": 23,
+          "y": 289,
+          "width": 854,
+          "height": 322
+        }
+      },
+      "manifestWidthRatio": 0.9889800107482355,
+      "manifestHeightRatio": 0.9716312056737588,
+      "manifestGeometryWidthRatio": 1.0000000200732193,
+      "manifestGeometryHeightRatio": 1.000000078722818,
+      "widthRatio": 1.0327868852459017,
+      "heightRatio": 1.031055900621118,
+      "inkRatio": 1.0675052721935503
+    },
+    {
+      "id": "ddlt_swimlanes_simple_2",
+      "kind": "swimlanes",
+      "layout": "swimlane",
+      "native": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 45580,
+        "inkRatio": 0.0562716049382716,
+        "contentBounds": {
+          "x": 20,
+          "y": 38,
+          "width": 860,
+          "height": 815
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 900,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 42743,
+        "inkRatio": 0.052769135802469135,
+        "contentBounds": {
+          "x": 47,
+          "y": 71,
+          "width": 806,
+          "height": 758
+        }
+      },
+      "manifestWidthRatio": 0.9558823529411765,
+      "manifestHeightRatio": 0.9532163742690059,
+      "manifestGeometryWidthRatio": 0.9999999748867864,
+      "manifestGeometryHeightRatio": 1.0000000220019372,
+      "widthRatio": 1.066997518610422,
+      "heightRatio": 1.075197889182058,
+      "inkRatio": 1.0663734412652364
+    }
+  ]
+}

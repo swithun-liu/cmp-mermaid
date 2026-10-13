@@ -11,6 +11,7 @@ import { classifyGeometryRatio } from './geometry-audit-policy.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
+import { cases as swimlaneDdltCases } from './swimlane-ddlt-corpus.mjs';
 import { cases as visualParityCases } from './visual-structure-corpus.mjs';
 
 const repositoryRoot = path.resolve(
@@ -28,11 +29,12 @@ const corpusSource = process.env.CORPUS_SOURCE ?? 'stability';
 const corpusCases = {
   stability: stabilityCases,
   production: productionCases,
+  'swimlane-ddlt': swimlaneDdltCases,
   'visual-parity': visualParityCases,
 }[corpusSource];
 if (corpusCases === undefined) {
   throw new Error(
-    'CORPUS_SOURCE must be stability, production, or visual-parity',
+    'CORPUS_SOURCE must be stability, production, swimlane-ddlt, or visual-parity',
   );
 }
 const corpusKind = process.env.CORPUS_KIND ?? 'all';
