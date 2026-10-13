@@ -10,8 +10,45 @@ import com.swithun.cmpmermaid.core.SceneTextAlignment
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 class SceneAuditManifestTest {
+    @Test
+    fun auditCaseIdentityEscapesSourceAsJson() {
+        val identity = auditCaseIdentityJson(
+            caseId = "visual_flowchart_129",
+            auditSource = "visual-parity",
+            source = "flowchart LR\n  A[\"quoted\"] --> B\\C",
+        )
+
+        assertEquals(
+            "{\"caseId\":\"visual_flowchart_129\"," +
+                "\"auditSource\":\"visual-parity\"," +
+                "\"source\":\"flowchart LR\\n  A[\\\"quoted\\\"] --> B\\\\C\"}",
+            identity,
+        )
+    }
+
+    @Test
+    fun resolvesCaseIdsOnlyWithinRequestedAuditSource() {
+        assertNull(
+            resolveAuditCase(
+                requestedId = "visual_flowchart_129",
+                auditSource = MermaidDebugAuditSource.Gallery,
+            ),
+        )
+        val visualParity = assertNotNull(
+            resolveAuditCase(
+                requestedId = "visual_flowchart_129",
+                auditSource = MermaidDebugAuditSource.VisualParity,
+            ),
+        )
+
+        assertContains(visualParity.second.source, "Start --> N0")
+        assertContains(visualParity.second.source, "N3 --> Finish")
+    }
+
     @Test
     fun includesViewportPaddingInAuditedCoordinates() {
         val manifest = MermaidScene(

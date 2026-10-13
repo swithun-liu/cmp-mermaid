@@ -79,6 +79,30 @@ export const flowchartCoverageContract = Object.freeze({
   ]),
   minimumStructuralProfiles: 224,
   equivalentSyntaxGroupCount: 16,
+  topologyDiversity: Object.freeze({
+    minimumUniqueTopologies: 100,
+    minimumClassCounts: Object.freeze({
+      branching: 100,
+      merging: 90,
+      cyclic: 36,
+      disconnected: 12,
+      compound: 20,
+      'parallel-edge': 10,
+      'self-loop': 8,
+    }),
+    maximumClassCounts: Object.freeze({
+      'linear-chain': 128,
+      'single-edge': 96,
+    }),
+    minimumUniqueTopologiesByCategory: Object.freeze({
+      'official-syntax-atom': 2,
+      'feature-combination': 15,
+      'topology-layout-stress': 45,
+      'ai-common-valid': 28,
+      'equivalent-syntax': 7,
+      'historical-regression': 14,
+    }),
+  }),
 });
 
 const metadataShapes = Object.freeze([

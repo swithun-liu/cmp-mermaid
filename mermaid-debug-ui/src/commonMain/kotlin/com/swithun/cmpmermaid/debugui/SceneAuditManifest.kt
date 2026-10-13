@@ -46,6 +46,21 @@ internal fun MermaidScene.toAuditManifestJson(): String = buildString {
     append("]}")
 }
 
+internal fun auditCaseIdentityJson(
+    caseId: String,
+    auditSource: String,
+    source: String,
+): String = buildString {
+    append('{')
+    append("\"caseId\":")
+    appendJsonString(caseId)
+    append(",\"auditSource\":")
+    appendJsonString(auditSource)
+    append(",\"source\":")
+    appendJsonString(source)
+    append('}')
+}
+
 private fun StringBuilder.appendViewport(scene: MermaidScene) {
     val padding = scene.viewportPadding.coerceAtLeast(0f)
     append('{')

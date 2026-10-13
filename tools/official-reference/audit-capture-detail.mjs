@@ -13,6 +13,10 @@ import {
   manifestViewportBackground,
 } from './detail-audit-core.mjs';
 import { classifyDetailFindings } from './detail-audit-policy.mjs';
+import {
+  mergedInputDirectoryMetadata,
+  replaceCasesForKind,
+} from './partial-audit-report.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
@@ -150,20 +154,11 @@ const report = {
   gridSize,
   caseCount: results.length,
   counts,
-  reviewQueue: results
-    .filter((result) => result.status !== 'pass')
-    .map((result) => ({
-      id: result.id,
-      kind: result.kind,
-      status: result.status,
-      findingCodes: [...new Set(
-        result.findings.map((finding) => finding.code),
-      )],
-      heatmap: result.heatmap,
-    })),
+  reviewQueue: buildReviewQueue(results),
   cases: results,
 };
-writeFileSync(outputFile, `${JSON.stringify(report, null, 2)}\n`);
+const persistedReport = mergePartialDetailReport(report);
+writeFileSync(outputFile, `${JSON.stringify(persistedReport, null, 2)}\n`);
 
 console.log(
   `Detailed audit: ${counts.pass ?? 0} pass, ${counts.review ?? 0} review, ` +
@@ -184,6 +179,78 @@ function capturePrefix(auditCase, themeSuffix) {
     return directPrefix;
   }
   return path.join(inputDirectory, auditCase.kind, filePrefix);
+}
+
+function mergePartialDetailReport(current) {
+  if (!existsSync(outputFile)) {
+    return current;
+  }
+  const previous = readJson(outputFile);
+  if (selectedIds.size > 0) {
+    if (previous.caseCount !== current.caseCount) {
+      throw new Error(
+        'Refusing to overwrite a larger detail report with selected case IDs',
+      );
+    }
+    return current;
+  }
+  if (corpusKind === 'all') {
+    return current;
+  }
+  const previousKinds = new Set(
+    previous.cases.map((entry) => entry.kind),
+  );
+  if (previousKinds.size === 1 && previousKinds.has(corpusKind)) {
+    return current;
+  }
+  requireCompatiblePartialReport(previous, current);
+  const mergedCases = replaceCasesForKind(
+    previous.cases,
+    current.cases,
+    corpusKind,
+  );
+  const mergedCounts = countBy(mergedCases, (entry) => entry.status);
+  return {
+    ...previous,
+    ...current,
+    schemaVersion: 2,
+    ...mergedInputDirectoryMetadata(
+      previous,
+      current,
+      mergedCases,
+      corpusKind,
+    ),
+    corpusKind: 'all',
+    caseCount: mergedCases.length,
+    counts: mergedCounts,
+    reviewQueue: buildReviewQueue(mergedCases),
+    cases: mergedCases,
+  };
+}
+
+function requireCompatiblePartialReport(previous, current) {
+  for (const key of ['corpusSource', 'theme', 'gridSize']) {
+    if (previous[key] !== current[key]) {
+      throw new Error(
+        `Partial detail audit ${key} mismatch: ` +
+          `${previous[key]} != ${current[key]}`,
+      );
+    }
+  }
+}
+
+function buildReviewQueue(auditResults) {
+  return auditResults
+    .filter((result) => result.status !== 'pass')
+    .map((result) => ({
+      id: result.id,
+      kind: result.kind,
+      status: result.status,
+      findingCodes: [...new Set(
+        result.findings.map((finding) => finding.code),
+      )],
+      heatmap: result.heatmap,
+    }));
 }
 
 async function analyzePng(page, fileName, size, declaredBackground) {

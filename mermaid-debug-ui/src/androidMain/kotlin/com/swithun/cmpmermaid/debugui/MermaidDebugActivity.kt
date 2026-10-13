@@ -14,6 +14,9 @@ class MermaidDebugActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val options = MermaidDebugLaunchOptions(
             auditDemoId = intent.getStringExtra(EXTRA_AUDIT_DEMO_ID),
+            auditSource = MermaidDebugAuditSource.from(
+                intent.getStringExtra(EXTRA_AUDIT_SOURCE),
+            ),
             auditPreview = MermaidDebugPreview.from(
                 intent.getStringExtra(EXTRA_AUDIT_PREVIEW),
             ),
@@ -35,6 +38,7 @@ class MermaidDebugActivity : ComponentActivity() {
 
     companion object {
         const val EXTRA_AUDIT_DEMO_ID = "auditDemoId"
+        const val EXTRA_AUDIT_SOURCE = "auditSource"
         const val EXTRA_AUDIT_PREVIEW = "auditPreview"
         const val EXTRA_AUDIT_LAYOUT = "auditLayout"
         const val EXTRA_AUDIT_THEME = "auditTheme"

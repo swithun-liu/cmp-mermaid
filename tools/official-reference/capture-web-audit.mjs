@@ -8,6 +8,11 @@ import {
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
+import {
+  auditCaseIdentityPrefix,
+  manifestMatchesAuditCase,
+  validateAuditCaseIdentity,
+} from './audit-source-identity.mjs';
 import { cases as flowchartCases } from './cases.mjs';
 import { cases as invalidSourceCases } from './invalid-source-corpus.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
@@ -55,7 +60,6 @@ const minimumCaptureBytes = Number(
     (auditSource === 'invalid-source' ? 1_000 : 5_000),
 );
 const skipExisting = (process.env.SKIP_EXISTING ?? 'false') === 'true';
-let combinedPageInitialized = false;
 
 const kotlinGalleryFiles = {
   swimlanes: ['SwimlaneDemos.kt', 'SwimlaneDemo'],
@@ -195,7 +199,6 @@ try {
       await page.close();
       page = await createCapturePage(browser);
       casesOnPage = 0;
-      combinedPageInitialized = false;
     }
     casesOnPage += 1;
     if (captureCombinedPreviews) {
@@ -250,6 +253,7 @@ try {
       const url = new URL(baseUrl);
       const captureLayout = layoutOverride ?? auditCase.layout ?? 'dagre';
       url.searchParams.set('auditDemoId', auditCase.id);
+      url.searchParams.set('auditSource', auditSource);
       url.searchParams.set('auditPreview', preview);
       url.searchParams.set('auditLayout', captureLayout);
       if (themeOverride !== null) {
@@ -259,6 +263,7 @@ try {
         waitUntil: 'domcontentloaded',
         timeout: 60_000,
       });
+      const captureIdentity = await readBrowserAuditIdentity(page, auditCase);
       let manifest = null;
       if (renderer === 'official') {
         manifest = await waitForOfficialSvg(page, effectiveAuditCase);
@@ -281,6 +286,7 @@ try {
       manifest = {
         ...manifest,
         outcome: manifest.outcome ?? 'success',
+        ...captureIdentity,
         ...(auditSource === 'invalid-source'
           ? { sourceFingerprint: auditCase.sourceFingerprint }
           : {}),
@@ -354,70 +360,17 @@ async function captureCombinedPreviewPair(page, auditCase) {
   const url = new URL(baseUrl);
   const captureLayout = layoutOverride ?? auditCase.layout ?? 'dagre';
   url.searchParams.set('auditDemoId', auditCase.id);
+  url.searchParams.set('auditSource', auditSource);
   url.searchParams.set('auditPreview', 'Both');
   url.searchParams.set('auditLayout', captureLayout);
   if (themeOverride !== null) {
     url.searchParams.set('auditTheme', themeOverride);
   }
-  if (!combinedPageInitialized) {
-    await page.goto(url.href, {
-      waitUntil: 'domcontentloaded',
-      timeout: 60_000,
-    });
-    combinedPageInitialized = true;
-  } else {
-    await page.evaluate((detail) => {
-      const roots = [document];
-      for (let index = 0; index < roots.length; index += 1) {
-        const root = roots[index];
-        for (const element of root.querySelectorAll?.('[aria-label]') ?? []) {
-          if (
-            (element.getAttribute('aria-label') ?? '')
-              .startsWith('cmp-mermaid-audit:')
-          ) {
-            element.setAttribute('aria-label', 'cmp-mermaid-audit:loading');
-          }
-        }
-        root.querySelectorAll?.('*').forEach((element) => {
-          if (element.shadowRoot !== null) {
-            roots.push(element.shadowRoot);
-          }
-        });
-      }
-      window.dispatchEvent(new CustomEvent(
-        'cmp-mermaid:set-audit-case',
-        { detail },
-      ));
-    }, {
-      demoId: auditCase.id,
-      preview: 'Both',
-      layout: captureLayout,
-      themeName: themeOverride ?? '',
-    });
-    await page.waitForFunction(
-      () => {
-        const roots = [document];
-        for (let index = 0; index < roots.length; index += 1) {
-          const root = roots[index];
-          for (const element of root.querySelectorAll?.('[aria-label]') ?? []) {
-            if (
-              element.getAttribute('aria-label') ===
-                'cmp-mermaid-audit:loading'
-            ) {
-              return true;
-            }
-          }
-          root.querySelectorAll?.('*').forEach((element) => {
-            if (element.shadowRoot !== null) {
-              roots.push(element.shadowRoot);
-            }
-          });
-        }
-        return false;
-      },
-      { timeout: 60_000 },
-    );
-  }
+  await page.goto(url.href, {
+    waitUntil: 'domcontentloaded',
+    timeout: 60_000,
+  });
+  const captureIdentity = await readBrowserAuditIdentity(page, auditCase);
   const nativeManifest = await waitForNativeCanvas(page, auditCase);
   let officialManifest = await waitForOfficialSvg(page, auditCase);
   officialManifest ??= await extractOfficialManifest(page, auditCase.id);
@@ -430,11 +383,11 @@ async function captureCombinedPreviewPair(page, auditCase) {
   assertExpectedTexts(auditCase, 'Official', officialManifest);
   writeFileSync(
     nativeManifestTarget,
-    `${JSON.stringify(nativeManifest, null, 2)}\n`,
+    `${JSON.stringify({ ...nativeManifest, ...captureIdentity }, null, 2)}\n`,
   );
   writeFileSync(
     officialManifestTarget,
-    `${JSON.stringify(officialManifest, null, 2)}\n`,
+    `${JSON.stringify({ ...officialManifest, ...captureIdentity }, null, 2)}\n`,
   );
 
   await setOfficialFrameVisibility(page, false);
@@ -506,6 +459,9 @@ function readReusableManifest(path, auditCase) {
     if (!['success', 'error'].includes(outcome)) {
       return null;
     }
+    if (!manifestMatchesAuditCase(manifest, auditCase, auditSource)) {
+      return null;
+    }
     if (
       auditSource === 'invalid-source' &&
       manifest.sourceFingerprint !== auditCase.sourceFingerprint
@@ -516,6 +472,42 @@ function readReusableManifest(path, auditCase) {
   } catch {
     return null;
   }
+}
+
+async function readBrowserAuditIdentity(page, auditCase) {
+  const identityHandle = await page.waitForFunction(
+    (prefix) => {
+      const roots = [document];
+      for (let index = 0; index < roots.length; index += 1) {
+        const root = roots[index];
+        for (const element of root.querySelectorAll?.('[aria-label]') ?? []) {
+          const label = element.getAttribute('aria-label') ?? '';
+          if (label.startsWith(prefix) && label !== `${prefix}loading`) {
+            return label.slice(prefix.length);
+          }
+        }
+        root.querySelectorAll?.('*').forEach((element) => {
+          if (element.shadowRoot !== null) {
+            roots.push(element.shadowRoot);
+          }
+        });
+      }
+      return null;
+    },
+    { timeout: 60_000 },
+    auditCaseIdentityPrefix,
+  );
+  const encodedIdentity = await identityHandle.jsonValue();
+  await identityHandle.dispose();
+  let identity;
+  try {
+    identity = JSON.parse(encodedIdentity);
+  } catch (error) {
+    throw new Error(
+      `${auditCase.id} returned an invalid audit case identity: ${error}`,
+    );
+  }
+  return validateAuditCaseIdentity(identity, auditCase, auditSource);
 }
 
 async function waitForNativeCanvas(page, auditCase) {

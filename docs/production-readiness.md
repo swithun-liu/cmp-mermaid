@@ -19,7 +19,8 @@ rated Stable. A successful build alone is not sufficient.
 - Official Mermaid families: 33
 - Implemented families: 33; pending translations: 0
 - Release status: **Not Stable** because legal `look: handDrawn` input remains
-  explicitly unsupported; all current classic-look evidence gates pass
+  explicitly unsupported and the refreshed Flowchart corpus retains 11
+  per-edge routing mismatches
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
   Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
   User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey,
@@ -27,8 +28,9 @@ rated Stable. A successful build alone is not sufficient.
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
   (`8,448/8,448` coverage-driven input cases processed;
-  `7,829 pass / 619 review / 0 fail`;
+  `7,810 pass / 638 review / 0 fail`;
   geometry has 0 hard failures and 176 review findings across 124 cases)
+- Flowchart per-edge topology: `245 pass / 11 fail`
 - Pending replacement detail gates: none
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -45,7 +47,7 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | 441 independent production pairs plus 8,448/8,448 coverage-driven visual-input pairs; 528 contact sheets regenerated; 0 detail or geometry hard failures | Passing |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | 441 independent production pairs plus 8,448/8,448 coverage-driven visual-input pairs; 528 contact sheets regenerated; 0 detail or geometry hard failures; Flowchart topology 245 pass / 11 fail | Blocked by Flowchart routing |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 738/738 points across all 33 families | Passing |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 441-case corpus equality test | Passing |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 33 by 11 matrix: 363/363 renders | Passing |
@@ -156,11 +158,11 @@ latest full evidence is linked from the stability report, and there are no
 open severity-1 correctness, crash, resource-exhaustion, or data-exposure
 defects.
 
-All 33 families have passed the replacement detail, geometry, and manual
-review gates for their current classic-look evidence. The full Mermaid
-`12.0.0` rule is not yet satisfied because RoughJS-backed
-`look: handDrawn` remains explicitly unsupported. The former coarse geometry
-check missed a visible Git Graph paint-order defect; that defect is corrected.
-The load and soak values above remain explicitly identified as retained
-historical baselines and are not presented as a fresh 441-case performance
-rerun.
+All 33 families have completed the replacement detail, geometry, and manual
+review runs for their current classic-look evidence. The full Mermaid `12.0.0`
+rule is not yet satisfied because the refreshed Flowchart route audit retains
+11 failures and RoughJS-backed `look: handDrawn` remains explicitly
+unsupported. The former coarse geometry check missed a visible Git Graph
+paint-order defect; that defect is corrected. The load and soak values above
+remain explicitly identified as retained historical baselines and are not
+presented as a fresh 441-case performance rerun.

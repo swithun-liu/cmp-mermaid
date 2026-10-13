@@ -70,8 +70,26 @@ enum class MermaidDebugPreview {
     }
 }
 
+enum class MermaidDebugAuditSource(
+    val wireName: String,
+) {
+    Gallery("gallery"),
+    Stability("stability"),
+    Production("production"),
+    SwimlaneDdlt("swimlane-ddlt"),
+    VisualParity("visual-parity"),
+    InvalidSource("invalid-source"),
+    ;
+
+    companion object {
+        fun from(value: String?): MermaidDebugAuditSource =
+            entries.firstOrNull { it.wireName.equals(value, ignoreCase = true) } ?: Gallery
+    }
+}
+
 data class MermaidDebugLaunchOptions(
     val auditDemoId: String? = null,
+    val auditSource: MermaidDebugAuditSource = MermaidDebugAuditSource.Gallery,
     val auditPreview: MermaidDebugPreview = MermaidDebugPreview.Native,
     val auditLayout: String = "dagre",
     val auditThemeName: String? = null,
@@ -411,6 +429,39 @@ private val invalidSourceAuditCases: List<Pair<DiagramDocsSpec, DiagramDocsCase>
         }
     }
 
+internal fun resolveAuditCase(
+    requestedId: String,
+    auditSource: MermaidDebugAuditSource,
+): Pair<DiagramDocsSpec, DiagramDocsCase>? =
+    when (auditSource) {
+        MermaidDebugAuditSource.Gallery ->
+            destinations.firstNotNullOfOrNull { destination ->
+                destination.spec.cases
+                    .firstOrNull { it.id == requestedId }
+                    ?.let { demo -> destination.spec to demo }
+            }
+        MermaidDebugAuditSource.Stability ->
+            stabilityAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            }
+        MermaidDebugAuditSource.Production ->
+            productionAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            }
+        MermaidDebugAuditSource.SwimlaneDdlt ->
+            swimlaneDdltAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            }
+        MermaidDebugAuditSource.VisualParity ->
+            visualParityAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            }
+        MermaidDebugAuditSource.InvalidSource ->
+            invalidSourceAuditCases.firstOrNull { (_, corpusCase) ->
+                corpusCase.id == requestedId
+            }
+    }
+
 @Composable
 fun MermaidDebugApp(
     options: MermaidDebugLaunchOptions = MermaidDebugLaunchOptions(),
@@ -443,23 +494,9 @@ fun MermaidDebugApp(
         surfaceVariant = Color(0xFFF0F2F5),
         outlineVariant = Color(0xFFDDE1E6),
     )
-    val auditCase = remember(options.auditDemoId) {
+    val auditCase = remember(options.auditDemoId, options.auditSource) {
         options.auditDemoId?.let { requestedId ->
-            destinations.firstNotNullOfOrNull { destination ->
-                destination.spec.cases
-                    .firstOrNull { it.id == requestedId }
-                    ?.let { demo -> destination.spec to demo }
-            } ?: stabilityAuditCases.firstOrNull { (_, corpusCase) ->
-                corpusCase.id == requestedId
-            } ?: productionAuditCases.firstOrNull { (_, corpusCase) ->
-                corpusCase.id == requestedId
-            } ?: swimlaneDdltAuditCases.firstOrNull { (_, corpusCase) ->
-                corpusCase.id == requestedId
-            } ?: visualParityAuditCases.firstOrNull { (_, corpusCase) ->
-                corpusCase.id == requestedId
-            } ?: invalidSourceAuditCases.firstOrNull { (_, corpusCase) ->
-                corpusCase.id == requestedId
-            }
+            resolveAuditCase(requestedId, options.auditSource)
         }
     }
 
@@ -476,6 +513,7 @@ fun MermaidDebugApp(
                     preview = options.auditPreview,
                     layoutOverride = options.auditLayout,
                     themeNameOverride = options.auditThemeName,
+                    auditSource = options.auditSource,
                 )
                 return@Box
             }
@@ -681,6 +719,7 @@ private fun DiagramAuditScreen(
     preview: MermaidDebugPreview,
     layoutOverride: String,
     themeNameOverride: String?,
+    auditSource: MermaidDebugAuditSource,
 ) {
     val usesCorpusLayout =
         spec.id == "flowchart" || spec.id == "requirement" || spec.id == "mindmap"
@@ -728,6 +767,18 @@ private fun DiagramAuditScreen(
             .padding(8.dp),
         contentAlignment = Alignment.Center,
     ) {
+        Spacer(
+            modifier = Modifier
+                .size(1.dp)
+                .semantics {
+                    contentDescription = AUDIT_CASE_IDENTITY_PREFIX +
+                        auditCaseIdentityJson(
+                            caseId = demo.id,
+                            auditSource = auditSource.wireName,
+                            source = demo.source,
+                        )
+                },
+        )
         // Mermaid.js 12.0.0: diagrams/gantt/ganttRenderer.js -> draw reads
         // elem.parentElement.offsetWidth before applying gantt.useWidth.
         // Core keeps the upstream 1200 fallback because it has no DOM parent;
@@ -823,6 +874,7 @@ private fun DiagramAuditScreen(
 private const val AUDIT_STATUS_LOADING = "cmp-mermaid-audit:loading"
 private const val AUDIT_STATUS_READY_PREFIX = "cmp-mermaid-audit:ready:"
 private const val AUDIT_STATUS_ERROR_PREFIX = "cmp-mermaid-audit:error:"
+private const val AUDIT_CASE_IDENTITY_PREFIX = "cmp-mermaid-audit-case:"
 private const val VISUAL_TEST_COMPLETE_MARKER = "CMP_MERMAID_VISUAL_TEST_COMPLETE"
 private const val VISUAL_TEST_FAILURE_MARKER = "CMP_MERMAID_VISUAL_TEST_FAILED"
 

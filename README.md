@@ -35,7 +35,8 @@
 > `12.0.0`.** Swimlanes has been revalidated after a direct upstream
 > translation: its classic-look production, 256-case visual, and per-edge
 > topology gates are current. The overall Mermaid `12.0.0` contract remains
-> **not Stable** because legal `look: handDrawn` input returns the documented
+> **not Stable** because the refreshed Flowchart corpus retains 11 per-edge
+> routing mismatches and legal `look: handDrawn` input returns the documented
 > `MermaidError.UnsupportedFeature` boundary instead of approximating rough.js.
 >
 > The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
@@ -63,7 +64,7 @@ geometry gates.
 | Official Mermaid diagram families | 33 |
 | Implemented diagram families | 33/33 |
 | Translation pending | 0 |
-| Visual family gates pending | 0 |
+| Flowchart per-edge topology | 245 pass, 11 fail |
 | Independent production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
 | Independent-scenario visual matrix | 8,448 Native/Official pairs; each family has 64 focused syntax, 64 combination, 48 stress, 32 AI-common, 32 equivalent-syntax, and 16 regression cases |
@@ -72,7 +73,7 @@ geometry gates.
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
 | Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Independent-scenario detail audit | 33 families: 7,829 pass, 619 review, 0 fail |
+| Independent-scenario detail audit | 33 families: 7,810 pass, 638 review, 0 fail |
 | Automated visual geometry | 8,448/8,448 pairs: 0 failure, 176 review findings across 124 cases; 157 findings come from 105 seeded Architecture fCoSE cases |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
@@ -98,9 +99,11 @@ geometry gates.
 | [Full Invalid Source Matrix](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-invalid-source.yml) | Weekly/manual 33 × 256 Native/Official malformed-source safety matrix |
 
 All fresh Swimlanes translation, topology, visual, JVM, Wasm, production
-isolation, and publication gates have completed. Overall Mermaid `12.0.0`
-support remains **not Stable** solely because the legal RoughJS-backed
-`handDrawn` look is explicitly unsupported.
+isolation, and publication gates have completed. The refreshed Flowchart
+matrix has 107 unique graph topologies but retains 11 strict per-edge routing
+failures. Overall Mermaid `12.0.0` support remains **not Stable** until those
+failures and the legal RoughJS-backed unsupported `handDrawn` look are
+resolved.
 A legal feature that cannot be represented faithfully returns
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation.
@@ -144,7 +147,7 @@ regressions:
 
 | Diagram | Status | Production cases | Main coverage | Details |
 | --- | :---: | ---: | --- | --- |
-| Flowchart | Detail gate passed | 14 | Jison/FlowDB, Dagre, shapes, links, Markdown/HTML labels | [Compatibility](docs/flowchart-compatibility.md) |
+| Flowchart | Detail reviewed; topology gaps | 14 | Jison/FlowDB, Dagre, shapes, links, Markdown/HTML labels; topology 245 pass / 11 fail | [Compatibility](docs/flowchart-compatibility.md) |
 | XY Chart | Detail gate passed | 13 | Jison/XY DB, D3 scales and ticks, bar/line plots, labels | [Compatibility](docs/xychart-compatibility.md) |
 | Quadrant Chart | Detail gate passed | 13 | Axes, quadrants, points, classes, direct styles, themes | [Compatibility](docs/quadrant-compatibility.md) |
 | Timeline | Detail gate passed | 13 | LR/TD layouts, sections, periods, events, color scales, themes | [Compatibility](docs/timeline-compatibility.md) |

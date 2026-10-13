@@ -15,6 +15,11 @@ import {
   kinds,
   normalizeScenarioSource,
 } from './visual-structure-corpus.mjs';
+import {
+  analyzeFlowchartTopologyDiversity,
+  extractFlowchartTopologies,
+} from './flowchart-topology-audit.mjs';
+import { manifestMatchesAuditCase } from './audit-source-identity.mjs';
 
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -24,8 +29,11 @@ const repositoryRoot = path.resolve(
 const omittedManifestKeys = new Set([
   'accessibilityDescription',
   'accessibilityTitle',
+  'auditCaseId',
+  'auditSource',
   'id',
   'renderer',
+  'sourceSha256',
   'text',
   'title',
 ]);
@@ -429,13 +437,26 @@ export function analyzeCoverageDrivenCoverage(entries, contract) {
   };
 }
 
-export function auditVisualScenarioDuplicates({
+export async function auditVisualScenarioDuplicates({
   inputDirectory,
   outputFile,
   generatedAt = new Date().toISOString(),
   selectedKinds = kinds,
 }) {
   const failures = [];
+  const topologyAudits = new Map();
+  if (selectedKinds.includes('flowchart')) {
+    const flowchartCases = cases.filter((entry) => entry.kind === 'flowchart');
+    const parsedTopologies = await extractFlowchartTopologies(flowchartCases);
+    topologyAudits.set(
+      'flowchart',
+      analyzeFlowchartTopologyDiversity(
+        flowchartCases,
+        parsedTopologies,
+        familyCoverageContracts.flowchart.topologyDiversity,
+      ),
+    );
+  }
   const familyReports = selectedKinds.map((kind) => {
     const familyFailures = [];
     const familyCases = cases.filter((entry) => entry.kind === kind);
@@ -449,6 +470,7 @@ export function auditVisualScenarioDuplicates({
     const caseReports = familyCases.map((entry) => {
       const prefix = capturePrefix(inputDirectory, entry);
       const nativeManifest = readJson(`${prefix}_native.manifest.json`);
+      const officialManifest = readJson(`${prefix}_official.manifest.json`);
       return {
         id: entry.id,
         scenarioBlueprintId: entry.scenarioBlueprintId,
@@ -467,6 +489,10 @@ export function auditVisualScenarioDuplicates({
         )),
         nativeManifestFingerprint:
           manifestVisualStructureFingerprint(nativeManifest),
+        nativeSourceIdentityMatches:
+          manifestMatchesAuditCase(nativeManifest, entry, 'visual-parity'),
+        officialSourceIdentityMatches:
+          manifestMatchesAuditCase(officialManifest, entry, 'visual-parity'),
         nativePngSha256: sha256(readFileSync(`${prefix}_native.png`)),
         officialPngSha256: sha256(readFileSync(`${prefix}_official.png`)),
       };
@@ -515,6 +541,10 @@ export function auditVisualScenarioDuplicates({
         caseReports.length - duplicateEntryCount(duplicateNativePngs),
       uniqueOfficialPngs:
         caseReports.length - duplicateEntryCount(duplicateOfficialPngs),
+      sourceBoundNativeManifests:
+        caseReports.filter((entry) => entry.nativeSourceIdentityMatches).length,
+      sourceBoundOfficialManifests:
+        caseReports.filter((entry) => entry.officialSourceIdentityMatches).length,
     };
     const duplicateEvidence = {
       blueprints: duplicateBlueprints,
@@ -531,6 +561,8 @@ export function auditVisualScenarioDuplicates({
       uniqueNormalizedSemanticStructures:
         counts.uniqueNormalizedSemanticStructures,
       uniqueNormalizedSources: counts.uniqueNormalizedSources,
+      sourceBoundNativeManifests: counts.sourceBoundNativeManifests,
+      sourceBoundOfficialManifests: counts.sourceBoundOfficialManifests,
     })) {
       if (count !== casesPerKind) {
         familyFailures.push(
@@ -552,6 +584,14 @@ export function auditVisualScenarioDuplicates({
         (failure) => `${kind} coverage: ${failure}`,
       ),
     );
+    const topologyAudit = topologyAudits.get(kind);
+    if (topologyAudit !== undefined) {
+      familyFailures.push(
+        ...topologyAudit.failures.map(
+          (failure) => `${kind} parser topology: ${failure}`,
+        ),
+      );
+    }
     failures.push(...familyFailures);
     return {
       kind,
@@ -562,12 +602,15 @@ export function auditVisualScenarioDuplicates({
       ...(coverageContract.mode === 'full-factorial'
         ? { inputSpaceCoverage: coverageAudit }
         : { coverageDrivenCoverage: coverageAudit }),
+      ...(topologyAudit === undefined
+        ? {}
+        : { parserTopologyDiversity: topologyAudit }),
       duplicates: duplicateEvidence,
       cases: caseReports,
     };
   });
   const report = {
-    schemaVersion: 3,
+    schemaVersion: 4,
     generatedAt,
     inputDirectory: path.relative(repositoryRoot, inputDirectory),
     requirements: {
@@ -577,6 +620,9 @@ export function auditVisualScenarioDuplicates({
       manifestNormalization:
         'Remove all rendered text, identifiers, titles, accessibility text, ' +
         'and renderer identity; retain ordered visual properties and geometry.',
+      captureSourceIdentityPolicy:
+        'Both Native and Official capture manifests must bind the requested ' +
+        'case ID and visual-parity corpus to the exact expected source SHA-256.',
       coverageContractsByFamily: Object.fromEntries(
         selectedKinds.map((kind) => [kind, familyCoverageContracts[kind]]),
       ),
@@ -584,6 +630,10 @@ export function auditVisualScenarioDuplicates({
         'Diagnostic only. Distinct valid inputs can intentionally render the ' +
         'same geometry, including long-form grammar aliases and reset frames ' +
         'without predecessors.',
+      flowchartTopologyPolicy:
+        'Parse every source through Mermaid.js 12.0.0 FlowDB, then compute an ' +
+        'identifier-, label-, and shape-independent canonical directed graph ' +
+        'fingerprint that retains multiedges and subgraph containment.',
       rasterDuplicatePolicy:
         'Diagnostic only. Raster hashes can differ because labels differ and ' +
         'can match when distinct valid inputs are visually equivalent.',
@@ -604,7 +654,12 @@ export function auditVisualScenarioDuplicates({
     families: familyReports,
   };
   mkdirSync(path.dirname(outputFile), { recursive: true });
-  writeFileSync(outputFile, `${JSON.stringify(report, null, 2)}\n`);
+  const persistedReport = mergePartialAuditReport(
+    outputFile,
+    report,
+    selectedKinds,
+  );
+  writeFileSync(outputFile, `${JSON.stringify(persistedReport, null, 2)}\n`);
   return report;
 }
 
@@ -629,6 +684,87 @@ function duplicateEntryCount(groups) {
   return groups.reduce((sum, group) => sum + group.ids.length - 1, 0);
 }
 
+function mergePartialAuditReport(outputFile, current, selectedKinds) {
+  if (selectedKinds.length === kinds.length || !existsSync(outputFile)) {
+    return current;
+  }
+  const previous = readJson(outputFile);
+  const currentFamilies = new Map(
+    current.families.map((family) => [family.kind, family]),
+  );
+  const previousFamilies = new Map(
+    previous.families.map((family) => [family.kind, family]),
+  );
+  const families = kinds.map((kind) =>
+    currentFamilies.get(kind) ?? previousFamilies.get(kind)
+  );
+  if (families.some((family) => family === undefined)) {
+    throw new Error('Partial duplicate audit cannot merge an incomplete report');
+  }
+  const failures = families
+    .filter((family) => family.status === 'fail')
+    .map((family) => `${family.kind} failed its duplicate audit`);
+  return {
+    ...previous,
+    schemaVersion: 5,
+    generatedAt: current.generatedAt,
+    ...mergePartialInputDirectories(
+      previous,
+      current,
+      selectedKinds,
+    ),
+    requirements: {
+      ...previous.requirements,
+      ...current.requirements,
+      diagramFamilyCount: kinds.length,
+      totalCaseCount: kinds.length * casesPerKind,
+      coverageContractsByFamily: Object.fromEntries(
+        kinds.map((kind) => [kind, familyCoverageContracts[kind]]),
+      ),
+    },
+    summary: {
+      diagramFamilyCount: families.length,
+      caseCount: families.reduce(
+        (sum, family) => sum + family.counts.cases,
+        0,
+      ),
+      passingFamilyCount:
+        families.filter((family) => family.status === 'pass').length,
+      failingFamilyCount:
+        families.filter((family) => family.status === 'fail').length,
+      failureCount: failures.length,
+    },
+    failures,
+    families,
+  };
+}
+
+function mergePartialInputDirectories(previous, current, selectedKinds) {
+  const previousDirectories = previous.inputDirectoriesByKind ?? {};
+  const directoriesByKind = new Map(
+    kinds.map((kind) => [
+      kind,
+      previousDirectories[kind] ?? previous.inputDirectory,
+    ]),
+  );
+  for (const kind of selectedKinds) {
+    directoriesByKind.set(kind, current.inputDirectory);
+  }
+  for (const [kind, directory] of directoriesByKind) {
+    if (typeof directory !== 'string' || directory.length === 0) {
+      throw new Error(`Missing duplicate-audit input directory for ${kind}`);
+    }
+  }
+  const uniqueDirectories = new Set(directoriesByKind.values());
+  return {
+    inputDirectory:
+      uniqueDirectories.size === 1
+        ? directoriesByKind.values().next().value
+        : null,
+    inputDirectoriesByKind: Object.fromEntries(directoriesByKind),
+  };
+}
+
 function readJson(fileName) {
   return JSON.parse(readFileSync(fileName, 'utf8'));
 }
@@ -645,7 +781,7 @@ function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
 }
 
-function runFromEnvironment() {
+async function runFromEnvironment() {
   const inputDirectory = path.resolve(
     repositoryRoot,
     process.env.INPUT_DIR ??
@@ -663,7 +799,7 @@ function runFromEnvironment() {
   if (selectedKinds.length === 0) {
     throw new Error(`Unsupported CORPUS_KIND: ${corpusKind}`);
   }
-  const report = auditVisualScenarioDuplicates({
+  const report = await auditVisualScenarioDuplicates({
     inputDirectory,
     outputFile,
     selectedKinds,
@@ -679,6 +815,9 @@ function runFromEnvironment() {
         `${counts.uniqueStructuralProfiles}/${casesPerKind}; ` +
         `Native manifests ` +
         `${counts.uniqueNativeManifestFingerprints}/${casesPerKind}; ` +
+        `source-bound manifests Native ` +
+        `${counts.sourceBoundNativeManifests}/${casesPerKind}, Official ` +
+        `${counts.sourceBoundOfficialManifests}/${casesPerKind}; ` +
         `Native PNGs ${counts.uniqueNativePngs}/${casesPerKind}; ` +
         `Official PNGs ${counts.uniqueOfficialPngs}/${casesPerKind}`,
     );
@@ -696,6 +835,16 @@ function runFromEnvironment() {
           `${casesPerKind}; pair matrices ` +
           `${family.coverageAudit.counts.dimensionPairs}`,
     );
+    if (family.parserTopologyDiversity !== undefined) {
+      console.log(
+        `${family.kind}: parser topologies ` +
+          `${family.parserTopologyDiversity.counts.uniqueTopologies}/` +
+          `${family.parserTopologyDiversity.counts.cases}; classes ` +
+          JSON.stringify(
+            family.parserTopologyDiversity.counts.topologyClasses,
+          ),
+      );
+    }
   }
   console.log(
     `Duplicate audit: ${report.summary.passingFamilyCount}/` +
@@ -711,5 +860,5 @@ function runFromEnvironment() {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  runFromEnvironment();
+  await runFromEnvironment();
 }

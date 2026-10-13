@@ -8,6 +8,11 @@ import {
 } from './detail-audit-core.mjs';
 import { classifyDetailFindings } from './detail-audit-policy.mjs';
 import { classifyGeometryRatio } from './geometry-audit-policy.mjs';
+import {
+  mergedInputDirectoryMetadata,
+  replaceCasesForKind,
+  replaceMessagesForCaseIds,
+} from './partial-audit-report.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
@@ -231,6 +236,7 @@ const report = {
   generatedAt: new Date().toISOString(),
   inputDirectory: path.relative(repositoryRoot, inputDirectory),
   corpusSource,
+  corpusKind,
   theme: themeOverride,
   caseCount: results.length,
   thresholds,
@@ -241,7 +247,11 @@ const report = {
 
 if (outputFile !== null) {
   fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-  fs.writeFileSync(outputFile, `${JSON.stringify(report, null, 2)}\n`);
+  const persistedReport = mergePartialGeometryReport(report);
+  fs.writeFileSync(
+    outputFile,
+    `${JSON.stringify(persistedReport, null, 2)}\n`,
+  );
 }
 
 console.log(
@@ -263,6 +273,82 @@ if (reviews.length > 0) {
   console.log('Geometry review queue:');
   for (const review of reviews) {
     console.log(`- ${review}`);
+  }
+}
+
+function mergePartialGeometryReport(current) {
+  if (outputFile === null || !fs.existsSync(outputFile)) {
+    return current;
+  }
+  const previous = readJson(outputFile);
+  if (selectedIds.size > 0) {
+    if (previous.caseCount !== current.caseCount) {
+      throw new Error(
+        'Refusing to overwrite a larger geometry report with selected case IDs',
+      );
+    }
+    return current;
+  }
+  if (corpusKind === 'all') {
+    return current;
+  }
+  const previousKinds = new Set(
+    previous.cases.map((entry) => entry.kind),
+  );
+  if (previousKinds.size === 1 && previousKinds.has(corpusKind)) {
+    return current;
+  }
+  requireCompatiblePartialReport(previous, current);
+  const replacedCaseIds = new Set(
+    previous.cases
+      .filter((entry) => entry.kind === corpusKind)
+      .map((entry) => entry.id),
+  );
+  const mergedCases = replaceCasesForKind(
+    previous.cases,
+    current.cases,
+    corpusKind,
+  );
+  return {
+    ...previous,
+    ...current,
+    schemaVersion: 2,
+    ...mergedInputDirectoryMetadata(
+      previous,
+      current,
+      mergedCases,
+      corpusKind,
+    ),
+    corpusKind: 'all',
+    caseCount: mergedCases.length,
+    failures: replaceMessagesForCaseIds(
+      previous.failures,
+      current.failures,
+      replacedCaseIds,
+    ),
+    reviews: replaceMessagesForCaseIds(
+      previous.reviews,
+      current.reviews,
+      replacedCaseIds,
+    ),
+    cases: mergedCases,
+  };
+}
+
+function requireCompatiblePartialReport(previous, current) {
+  for (const key of ['corpusSource', 'theme']) {
+    if (previous[key] !== current[key]) {
+      throw new Error(
+        `Partial geometry audit ${key} mismatch: ` +
+          `${previous[key]} != ${current[key]}`,
+      );
+    }
+  }
+  if (
+    JSON.stringify(previous.thresholds) !==
+    JSON.stringify(current.thresholds)
+  ) {
+    throw new Error('Partial geometry audit thresholds do not match');
   }
 }
 

@@ -4,7 +4,8 @@
 > This matrix covers all 33 implemented families and feeds the Stable gate. It
 > defines tested classic-look coverage, not support for every possible legal
 > Mermaid program. RoughJS-backed `look: handDrawn` remains explicitly
-> unsupported and blocks Stable. See
+> unsupported, and the refreshed Flowchart corpus retains 11 per-edge routing
+> mismatches; both block Stable. See
 > [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
 
 This matrix defines the major Mermaid `12.0.0` capabilities exercised by the
@@ -100,7 +101,7 @@ manifest uniqueness do not establish input coverage. All 8,448 cases render in
 the Native core test and have fresh Native/Official captures.
 
 The replacement detail gate reports
-`7,829 pass / 619 review / 0 fail`. Review findings are retained for text
+`7,810 pass / 638 review / 0 fail`. Review findings are retained for text
 position/overlap, raster mask/edge/color, equivalent element-count
 representation, marker occlusion, and paint-order occlusion. No expected-text
 loss, clipping error, or hard detail failure was recorded. The geometry gate
@@ -109,6 +110,12 @@ Architecture contributes 157 findings across 105 seeded iterative fCoSE
 cases; font wrapping, truncation, and font-bound differences account for the
 remaining strict reviews and remain visible rather than being hidden by
 broader thresholds.
+
+Flowchart's parser-derived diversity gate passes with 107 unique graph
+topologies across 256 sources. Its stricter route comparison reports
+`245 pass / 11 fail`: one invisible-edge manifest mismatch, nine self-loop
+route mismatches, and one dense cyclic crossing mismatch. These failures
+remain separate from the detail and geometry counts.
 
 Machine-readable structural counts are published in
 [`visual-structure-corpus-metadata.json`](assets/stability-report/visual-structure-corpus-metadata.json).

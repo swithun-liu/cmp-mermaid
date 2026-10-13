@@ -10,6 +10,7 @@ import {
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import puppeteer from 'puppeteer';
+import { manifestMatchesAuditCase } from './audit-source-identity.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 import { cases as stabilityCases } from './stability-corpus.mjs';
@@ -275,8 +276,12 @@ function mergePartialManifest(path, currentRecords) {
 function captureRecord(entry) {
   const nativePath = resolveCapturePath(entry, 'native');
   const officialPath = resolveCapturePath(entry, 'official');
+  const sourceIdentity = corpusSource === 'visual-parity'
+    ? captureSourceIdentity(entry, nativePath, officialPath)
+    : {};
   return {
     ...entry,
+    ...sourceIdentity,
     nativeFile: `${entry.id}_native.png`,
     officialFile: `${entry.id}_official.png`,
     nativePath,
@@ -285,6 +290,30 @@ function captureRecord(entry) {
     officialBytes: statSync(officialPath).size,
     nativeSha256: sha256File(nativePath),
     officialSha256: sha256File(officialPath),
+  };
+}
+
+function captureSourceIdentity(entry, nativePath, officialPath) {
+  const nativeManifest = JSON.parse(
+    readFileSync(nativePath.replace(/\.png$/, '.manifest.json'), 'utf8'),
+  );
+  const officialManifest = JSON.parse(
+    readFileSync(officialPath.replace(/\.png$/, '.manifest.json'), 'utf8'),
+  );
+  if (
+    !manifestMatchesAuditCase(nativeManifest, entry, 'visual-parity') ||
+    !manifestMatchesAuditCase(officialManifest, entry, 'visual-parity')
+  ) {
+    throw new Error(
+      `${entry.id} capture manifests are not bound to the expected ` +
+        'visual-parity source',
+    );
+  }
+  return {
+    captureSourceIdentityVerified: true,
+    captureAuditSource: 'visual-parity',
+    nativeManifestSourceSha256: nativeManifest.sourceSha256,
+    officialManifestSourceSha256: officialManifest.sourceSha256,
   };
 }
 

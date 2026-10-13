@@ -98,7 +98,31 @@
           "dense-crossings"
         ],
         "minimumStructuralProfiles": 224,
-        "equivalentSyntaxGroupCount": 16
+        "equivalentSyntaxGroupCount": 16,
+        "topologyDiversity": {
+          "minimumUniqueTopologies": 100,
+          "minimumClassCounts": {
+            "branching": 100,
+            "merging": 90,
+            "cyclic": 36,
+            "disconnected": 12,
+            "compound": 20,
+            "parallel-edge": 10,
+            "self-loop": 8
+          },
+          "maximumClassCounts": {
+            "linear-chain": 128,
+            "single-edge": 96
+          },
+          "minimumUniqueTopologiesByCategory": {
+            "official-syntax-atom": 2,
+            "feature-combination": 15,
+            "topology-layout-stress": 45,
+            "ai-common-valid": 28,
+            "equivalent-syntax": 7,
+            "historical-regression": 14
+          }
+        }
       }
     },
     {

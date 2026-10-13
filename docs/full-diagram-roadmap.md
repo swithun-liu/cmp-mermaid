@@ -27,7 +27,8 @@ family uses the same fixed six-category allocation while preserving
 family-specific official capabilities, generator axes, stress structures,
 equivalent-syntax pairs, and historical regressions.
 All cases pass Native rendering and complete the Native/Official detail and
-geometry audits without a hard failure. A separate 8,448-input text/layout
+geometry audits without a hard failure. Flowchart's stricter per-edge route
+audit retains 11 failures. A separate 8,448-input text/layout
 stress corpus remains isolated from structural coverage. A Git Graph label paint-order defect
 was visible in the original 3,072-pair matrix and was not identified during
 the earlier review. That defect is corrected; no family uses a legacy geometry
@@ -57,11 +58,16 @@ on both sides and passes with no findings.
 
 All 33 families have completed the visual-input gate. Together they have
 8,448 same-source pairs:
-`7,829 pass / 619 review / 0 fail` across 528 regenerated contact sheets.
+`7,810 pass / 638 review / 0 fail` across 528 regenerated contact sheets.
 Geometry has 0 hard failures and retains 176 review findings across 124 cases.
 Architecture contributes 157 findings across 105 seeded iterative fCoSE cases;
 its cross-runtime placement differences and the remaining strict font-metric
 reviews stay explicit.
+
+Flowchart's parser-derived diversity gate passes with 107 unique graph
+topologies. Its per-edge route gate reports `245 pass / 11 fail`, covering one
+invisible-edge manifest mismatch, nine self-loop route mismatches, and one
+dense cyclic crossing mismatch.
 
 The fresh per-family pass/review counts and width, height, and foreground-ink
 ranges are published in the
@@ -122,10 +128,10 @@ Each of the 33 families must pass all of the following:
 
 ## Overall Stable Gate
 
-Overall Mermaid `12.0.0` support is **not Stable**. All current classic-look
-family gates pass, and the report covers 441 independent production scenarios
-and 8,448 structurally distinct same-source Native/Official pairs. However,
+Overall Mermaid `12.0.0` support is **not Stable**. The report covers 441
+independent production scenarios and 8,448 structurally distinct same-source
+Native/Official pairs, but Flowchart retains 11 per-edge routing failures and
 legal RoughJS-backed `look: handDrawn` input remains explicitly unsupported.
 The derived text/layout stress corpus remains a separate robustness layer.
-Stable requires translating that mapped gap as well as keeping every current
-family gate passing.
+Stable requires resolving both mapped gaps while keeping every current family
+gate passing.

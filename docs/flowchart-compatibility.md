@@ -28,7 +28,7 @@ silently dropped or approximated as another feature.
 | Multi-node links | Supported | Chained links and `A & B --> C & D` expansion preserve FlowDB order |
 | Classes and inline styles | Supported with explicit boundaries | Fill, stroke, background, border, dash, animation, font, line height, alignment, and decoration; unknown CSS returns `UnsupportedFeature` |
 | Colors | Supported | Hex, RGB(A), HSL(A), transparent, and CSS named colors |
-| Routing: Dagre | Supported | Translated Graphlib/Dagre pipeline, compound graphs, cycles, self-loops, parallel lanes, and Mermaid D3 curves |
+| Routing: Dagre | Supported with known parity gaps | Translated Graphlib/Dagre pipeline, compound graphs, cycles, self-loops, parallel lanes, and Mermaid D3 curves; the refreshed per-edge gate retains 11 route mismatches |
 | Routing: ELK | Unsupported | Every `elk` and `elk.*` request returns `UnsupportedFeature("ELK layout")`; Native never substitutes Dagre |
 | Line hops | Supported | `arc`, `gap`, and disabled crossing treatment on supported Native routes |
 | Subgraphs | Supported | Nested groups, collapsed groups, boundary links, local directions, title margins, and cross-hierarchy edges |
@@ -90,9 +90,28 @@ Additional platform limitations:
   sanitization, colors, all shapes, markers, D3 curves, numeric Dagre parity,
   compound Dagre hierarchy, line hops, assets, interactions, viewport behavior,
   and resource limits.
-- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.024-1.027`, height `1.000-1.131`, and foreground ink `0.861-1.059`.
+- The refreshed 256-case coverage-driven detail audit reports
+  `237 pass / 19 review / 0 fail`; geometry has 0 hard failures with width
+  `1.022-1.167`, height `0.940-1.245`, and foreground ink `0.849-1.276`.
+- Mermaid.js parsing yields 107 ID-, label-, and shape-independent graph
+  topologies across the 256 sources, including branching, merging, cyclic,
+  disconnected, compound, parallel-edge, and self-loop structures. The
+  diversity gate passes all global and per-category floors.
 - All 16 matrix contact sheets were manually reviewed for topology, advanced
-  shapes, marker visibility, labels, clipping, overlap, and paint order.
+  shapes, marker visibility, labels, clipping, overlap, and paint order. The
+  strict per-edge audit reports `245 pass / 11 fail`: one invisible-edge
+  manifest mismatch, nine self-loop route mismatches, and one dense cyclic
+  crossing mismatch.
+- Every refreshed Native and Official capture manifest binds its requested
+  case ID, visual-parity corpus, and exact source SHA-256. This prevents a
+  stale Web distribution from silently supplying an older source for the same
+  case ID.
+- Machine-readable evidence is published in the
+  [detail](assets/stability-report/flowchart-visual-parity-detail.json),
+  [geometry](assets/stability-report/flowchart-visual-parity-geometry.json),
+  [topology](assets/stability-report/flowchart-visual-parity-topology.json),
+  and [duplicate/diversity](assets/stability-report/visual-scenario-duplicate-audit.json)
+  reports.
 - Marker manifests include actual path endpoint anchors. The detail auditor
   rejects missing anchors and compares endpoint coverage by later opaque paint,
   preventing a declared but hidden arrow from passing on marker counts alone.

@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.swithun.cmpmermaid.debugui.MermaidDebugApp
+import com.swithun.cmpmermaid.debugui.MermaidDebugAuditSource
 import com.swithun.cmpmermaid.debugui.MermaidDebugLaunchOptions
 import com.swithun.cmpmermaid.debugui.MermaidDebugPreview
 import kotlinx.browser.document
@@ -22,6 +23,7 @@ fun main() {
     val body = document.body ?: return
     val initialOptions = MermaidDebugLaunchOptions(
         auditDemoId = queryParameter("auditDemoId"),
+        auditSource = MermaidDebugAuditSource.from(queryParameter("auditSource")),
         auditPreview = MermaidDebugPreview.from(queryParameter("auditPreview")),
         auditLayout = queryParameter("auditLayout") ?: "elk",
         auditThemeName = queryParameter("auditTheme"),
@@ -37,11 +39,15 @@ fun main() {
         DisposableEffect(Unit) {
             val listener: (Event) -> Unit = { event ->
                 val demoId = auditEventDetail(event, "demoId")
+                val auditSource = auditEventDetail(event, "auditSource")
                 val preview = auditEventDetail(event, "preview")
                 val layout = auditEventDetail(event, "layout")
                 val themeName = auditEventDetail(event, "themeName")
                 launchOptions = launchOptions.copy(
                     auditDemoId = demoId ?: launchOptions.auditDemoId,
+                    auditSource = auditSource
+                        ?.let(MermaidDebugAuditSource::from)
+                        ?: launchOptions.auditSource,
                     auditPreview = preview
                         ?.let(MermaidDebugPreview::from)
                         ?: launchOptions.auditPreview,

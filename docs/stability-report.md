@@ -3,9 +3,10 @@
 > [!NOTE]
 > This report contains current evidence for all 33 official Mermaid `12.0.0`
 > families, including the directly retranslated Swimlanes implementation.
-> Swimlanes classic-look gates are complete, but Swimlanes and the overall
-> contract are **not Stable** because the legal RoughJS-backed
-> `look: handDrawn` capability returns a structured unsupported result. Kotlin
+> Swimlanes classic-look gates are complete, but Swimlanes remains
+> **not Stable** because the legal RoughJS-backed `look: handDrawn` capability
+> returns a structured unsupported result. The overall contract is also
+> blocked by 11 Flowchart per-edge topology failures. Kotlin
 > 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS now have separate fresh 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
@@ -22,7 +23,7 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Not Stable: `look: handDrawn` explicitly unsupported** |
+| Current rating | **Not Stable: Flowchart has 11 topology failures and `look: handDrawn` is unsupported** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Implemented families | 33/33; all 33 family evidence gates current |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
@@ -35,8 +36,9 @@ stress inputs.
 | Native core render results | 441 production scenarios and all 8,448 independent visual scenarios render successfully; the text/layout stress inputs are tracked separately |
 | Web Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Visual evidence | 528 freshly generated independent-scenario sheets plus 528 source-mutation sheets across all 33 families |
-| Independent-scenario detail audit | 8,448/8,448 processed: 7,829 pass, 619 review, 0 fail |
+| Independent-scenario detail audit | 8,448/8,448 processed: 7,810 pass, 638 review, 0 fail |
 | Automated visual geometry | 8,448/8,448 processed: 0 failure, 176 review findings across 124 cases |
+| Flowchart per-edge topology | 256 processed: 245 pass, 11 fail |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
@@ -51,9 +53,11 @@ stress inputs.
 
 **Current conclusion:** all fresh Swimlanes Native core, DDLT, detail,
 geometry, per-edge topology, contact-sheet, JVM, Wasm, and production gates
-are complete. The overall Mermaid `12.0.0` contract remains **not Stable**
-because legal `look: handDrawn` input is explicitly unsupported rather than
-silently approximated.
+are complete. The refreshed Flowchart corpus also exposes 11 unresolved
+per-edge topology mismatches. The overall Mermaid `12.0.0` contract remains
+**not Stable** because of those routing mismatches and because legal
+`look: handDrawn` input is explicitly unsupported rather than silently
+approximated.
 
 ## AI-Like Source-Mutation Safety Gate
 
@@ -98,7 +102,28 @@ relations, data points, or hierarchy rather than metadata-only profile changes.
 Business titles make cases readable but do not establish coverage. Each family
 also has a 256-case
 geometry result and 16 paged contact sheets. The fresh total is:
-`7,829 pass / 619 review / 0 fail`.
+`7,810 pass / 638 review / 0 fail`.
+
+Flowchart additionally has a parser-derived topology-diversity gate. It
+ignores IDs, labels, and node shapes while retaining directed edges,
+multiedges, and subgraph containment. The current 256 cases contain 107 unique
+topologies and 240 structural profiles: 116 branching, 108 merging, 42 cyclic,
+15 disconnected, 26 compound, 13 parallel-edge, and 10 self-loop cases.
+Single-edge and linear-chain cases are capped at 96 and 128 respectively; the
+current counts are 77 and 119. Unique topology counts by coverage category are
+`2 / 16 / 48 / 31 / 7 / 16` for the fixed
+`64 / 64 / 48 / 32 / 32 / 16` quotas. The first 64 focused syntax cases
+intentionally isolate individual grammar atoms, so many are short; the later
+combination, stress, common-valid, and regression sections provide the
+topological breadth.
+
+The earlier Flowchart contact sheets were traced to a stale Web distribution:
+the capture page resolved the requested case ID against an older bundled
+corpus even though the source generator had already changed. Every refreshed
+Native and Official manifest now binds `auditCaseId`, `auditSource`, and the
+expected source SHA-256. Capture reuse and contact-sheet generation fail when
+that identity differs. All 512 refreshed Flowchart captures pass this source
+identity check.
 
 The mandatory
 [duplicate audit](assets/stability-report/visual-scenario-duplicate-audit.json)
@@ -113,13 +138,13 @@ Detail review findings are retained as explicit representation differences:
 
 - text position: 233 findings;
 - text overlap: 218 findings;
-- raster mask, edge, or color: 202 findings;
-- equivalent element-count representation: 164 findings;
+- raster mask, edge, or color: 204 findings;
+- equivalent element-count representation: 172 findings;
 - marker depth/reference occlusion: 11 findings;
 - paint-order occlusion or ratio: 25 findings;
 - text-presence differences accepted only by the strict Treemap
   truncation policy: 10 findings;
-- stroke-pattern representation: 2 findings.
+- stroke-pattern representation: 11 findings.
 
 These categories may co-occur within one case. No expected-text loss,
 clipping error, or hard detail/geometry failure was recorded. The geometry
@@ -132,7 +157,7 @@ with broader thresholds.
 
 | Family | Pass | Review | Width ratio | Height ratio | Ink ratio |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Flowchart | 256 | 0 | `1.024-1.027` | `1.000-1.131` | `0.861-1.059` |
+| Flowchart | 237 | 19 | `1.022-1.167` | `0.940-1.245` | `0.849-1.276` |
 | Swimlanes | 255 | 1 | `1.023-1.074` | `0.976-1.078` | `0.982-1.130` |
 | Architecture | 78 | 178 | `0.725-15.283` | `0.316-2.312` | `0.162-15.222` |
 | C4 | 254 | 2 | `0.989-1.118` | `0.925-1.065` | `0.911-1.121` |
@@ -166,19 +191,20 @@ with broader thresholds.
 | Wardley Map | 256 | 0 | `1.008-1.015` | `1.019-1.024` | `0.941-1.106` |
 | ZenUML | 256 | 0 | `1.042-1.100` | `1.039-1.102` | `1.012-1.256` |
 All 528 independent-scenario contact sheets were regenerated from the same 8,448
-source cases recorded in the manifest. The 619 detail-review cases are
+source cases recorded in the manifest. The 638 detail-review cases are
 distributed as follows: Architecture 178, Entity Relationship 109, Venn 80,
 Gantt 66, Agentflow 43, XY Chart 35, Class 31, Quadrant 25, Git Graph 25,
-Treemap 10, State 4, Pie 4, Mindmap 3, C4 2, Cynefin 2, Ishikawa 1, and
-Swimlanes 1. The other 16 families pass all 256 detail cases automatically.
+Flowchart 19, Treemap 10, State 4, Pie 4, Mindmap 3, C4 2, Cynefin 2,
+Ishikawa 1, and Swimlanes 1. The other 15 families pass all 256 detail cases
+automatically.
 Per-family compatibility
 pages and machine-readable reports preserve the individual findings and
 geometry ranges.
 
-The table contains the fresh direct-translation run. It does not make
-Swimlanes Stable because `look: handDrawn` remains a mapped
-`UnsupportedFeature`; overall Mermaid `12.0.0` compatibility is therefore
-**not Stable**.
+The table contains the fresh direct-translation run. It does not make the
+overall Mermaid `12.0.0` contract Stable: Flowchart retains 11 strict topology
+failures, and Swimlanes `look: handDrawn` remains a mapped
+`UnsupportedFeature`.
 
 ## What This Report Does And Does Not Prove
 
@@ -232,7 +258,7 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 
 | Diagram | Production cases | Capability points | Scenario examples | Current visual result |
 | --- | ---: | ---: | --- | --- |
-| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Production evidence retained; coverage-driven corpus 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
+| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Production evidence retained; coverage-driven detail 237 pass / 19 review / 0 fail; topology 245 pass / 11 fail; 16/16 sheets regenerated |
 | XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Production evidence retained; independent-scenario matrix 221 pass / 35 review / 0 fail; 16/16 sheets regenerated |
 | Quadrant Chart | 13 | 17/17 | axes, quadrant labels, boundary points, styles, themes | Production evidence retained; independent-scenario matrix 231 pass / 25 review / 0 fail; 16/16 sheets regenerated |
 | Timeline | 13 | 16/16 | directions, sections, periods, events, color scales, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
@@ -307,6 +333,15 @@ Architecture contributes 157 findings across 105 seeded fCoSE cases; the
 remaining strict reviews retain font wrapping, truncation, and font-bound
 differences rather than hiding them through threshold changes.
 
+Flowchart's stricter
+[per-edge topology report](assets/stability-report/flowchart-visual-parity-topology.json)
+records `245 pass / 11 fail`. Case `058` differs because Official retains an
+invisible edge that the Native scene manifest omits. Cases `105-112` and `192`
+have self-loop route differences involving diagonal segments, direction
+sequences, and source/destination port sides. Case `248` additionally differs
+in bend count on a dense cyclic crossing. These are retained as failures even
+where the raster image looks close.
+
 ## Independent Production Visual Evidence
 
 Each contact sheet uses the same Mermaid source on both sides:
@@ -321,7 +356,18 @@ The source IDs and scenario descriptions are printed above every pair.
 
 ![Flowchart complex Native and Official corpus](assets/stability-report/flowchart-complex-corpus.png)
 
-The fresh 256-case independent-scenario Native/Official audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.024-1.027`, height `1.000-1.131`, and foreground ink `0.861-1.059`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+The refreshed 256-case independent-scenario Native/Official detail audit
+reports `237 pass / 19 review / 0 fail`; the 19 reviews comprise 9 stroke
+pattern, 8 equivalent element-count, 1 raster-mask, and 1 raster-color
+difference. Geometry has 0 hard failures with width `1.022-1.167`, height
+`0.940-1.245`, and foreground ink `0.849-1.276`. The stricter edge-topology
+audit reports `245 pass / 11 fail`. See the
+[Flowchart detail](assets/stability-report/flowchart-visual-parity-detail.json),
+[Flowchart geometry](assets/stability-report/flowchart-visual-parity-geometry.json),
+[Flowchart topology](assets/stability-report/flowchart-visual-parity-topology.json),
+[aggregate detail](assets/stability-report/visual-parity-detail.json), and
+[aggregate geometry](assets/stability-report/visual-parity-geometry.json)
+reports.
 
 </details>
 
@@ -1021,12 +1067,12 @@ The Stable label requires all of these code-level gates:
 - no open high-severity correctness, crash, resource-exhaustion, or
   data-exposure defect exists for the supported contract.
 
-The retranslated Swimlanes implementation now satisfies every evidence gate:
-the source map, translated tests, DDLT, production, 256-case detail and
-geometry, per-edge topology, and manual contact-sheet review are current.
-However, its mapped `look: handDrawn` case remains a structured unsupported
-result. The public code status is therefore **not Stable**, rather than
-carrying a pending label: no evidence gate remains pending, but the explicit
-unsupported boundary still blocks Stable. The Android Kotlin 2.3.20, Android
-Kotlin 1.7.21, and iOS 441-case physical-device loads predate the Swimlanes
+The retranslated Swimlanes implementation now satisfies its classic-look
+evidence gates: the source map, translated tests, DDLT, production, 256-case
+detail and geometry, per-edge topology, and manual contact-sheet review are
+current. Its mapped `look: handDrawn` case remains a structured unsupported
+result. Separately, the refreshed Flowchart matrix has 11 unresolved per-edge
+topology failures. The public code status is therefore **not Stable** until
+both boundaries are resolved. The Android Kotlin 2.3.20, Android Kotlin
+1.7.21, and iOS 441-case physical-device loads predate the Swimlanes
 retranslation and remain historical evidence for that family.
