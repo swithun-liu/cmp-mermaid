@@ -116,7 +116,6 @@ class C4ParserTest {
         malformed.forEach { source ->
             val result = C4Parser(
                 options = MermaidRenderOptions(),
-                frontmatterTitle = null,
                 lineOffset = 0,
             ).parse(source)
             assertIs<GMResult.Err<MermaidError>>(result, source)
@@ -367,7 +366,6 @@ class C4ParserTest {
 
     private fun parser(): C4Parser = C4Parser(
         options = MermaidRenderOptions(),
-        frontmatterTitle = null,
         lineOffset = 0,
     )
 

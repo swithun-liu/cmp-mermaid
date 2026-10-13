@@ -72,11 +72,12 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   failures, configuration precedence, entity decoding, seed arithmetic, and
   portable text measurement pass on JVM.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
+  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass 13/13 with
   `13 pass / 0 review / 0 fail`.
-- Matrix geometry and detail pass 256/256 with
-  `256 pass / 0 review / 0 fail`.
+- Matrix geometry has no hard failure; detail reports
+  `254 pass / 2 review / 0 fail`. The two font-bound paint-order differences
+  remain explicit review items.
 - The production contact sheet and all 16 matrix sheets were manually
   reviewed with no unresolved domain, boundary, transition, overflow, theme,
   label, clipping, or paint-order defect.

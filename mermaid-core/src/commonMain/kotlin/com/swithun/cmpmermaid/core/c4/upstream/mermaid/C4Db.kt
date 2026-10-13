@@ -9,7 +9,6 @@ import com.swithun.cmpmermaid.core.MermaidPreprocessor
  */
 internal class C4Db(
     val config: MermaidC4Options,
-    frontmatterTitle: String?,
 ) {
     private val shapes = linkedMapOf<String, C4Shape>()
     private val boundaries = linkedMapOf(
@@ -28,7 +27,9 @@ internal class C4Db(
 
     var diagramType: C4DiagramType? = null
         private set
-    var diagramTitle: String? = frontmatterTitle
+    // The upstream C4 DB exports setTitle(), but not Diagram.setDiagramTitle().
+    // Frontmatter titles are therefore intentionally ignored for this family.
+    var diagramTitle: String? = null
         private set
     var accessibilityTitle: String? = null
         private set

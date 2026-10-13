@@ -83,7 +83,7 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   nested composites, shapes, arrows, edges, duplicate declarations, classes,
   inline styles, metadata, configuration, and typed failures.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
+  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`.
 - Matrix geometry has 0 hard failures; detail reports
   `256 pass / 0 review / 0 fail`.

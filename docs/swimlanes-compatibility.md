@@ -36,12 +36,13 @@ in a later upstream release.
   options, and accessibility metadata.
 - 13 independent production scenarios cover all 15 declared visual capability
   points.
-- 256 deterministic same-source matrix cases exercise 13 structural seeds and
-  20 visible text/layout-pressure profiles.
+- 256 deterministic same-source cases cover the fixed six-category quotas,
+  family-specific capability axes, scaled stress structures, equivalent syntax,
+  and historical regressions.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.028-1.128`, `1.020-1.070`, and `0.972-1.187`.
 - Production detail produced `11 pass / 2 review / 0 fail`.
-- The fresh 256-case full-factorial input audit reports `137 pass / 119 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.287`, height `0.924-1.109`, and foreground ink `0.897-1.173`.
+- The fresh 256-case coverage-driven input audit reports `148 pass / 108 review / 0 fail`; geometry has 0 hard failures with width `0.901-1.329`, height `0.964-1.255`, and foreground ink `0.881-1.193`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved lane, node, shape, edge, marker, label, color,
   clipping, overlap, or paint-order defect remains.

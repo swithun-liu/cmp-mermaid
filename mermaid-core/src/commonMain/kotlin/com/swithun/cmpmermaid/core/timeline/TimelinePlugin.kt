@@ -15,7 +15,6 @@ class TimelinePlugin : MermaidDiagramPlugin {
         context: MermaidRenderContext,
     ): GMResult<MermaidScene, MermaidError> = when (
         val parsed = TimelineParser(
-            diagramTitle = context.diagramTitle,
             lineOffset = context.frontmatterLineOffset,
         ).parse(source)
     ) {

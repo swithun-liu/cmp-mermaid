@@ -94,8 +94,8 @@ production so an upstream grammar diff can be translated incrementally.
 - The Web RC capture rejects an Official Gantt SVG whose viewBox is less than
   75% of its iframe width, preventing a flex-shrunk reference from masking or
   inventing Native layout differences.
-- The full-factorial Web gate uses a shared `1200 x 900` viewport. Its 256
-  same-source input pairs report `185 pass / 71 review / 0 fail`, with 0
+- The coverage-driven Web gate uses a shared `1200 x 900` viewport. Its 256
+  same-source input pairs report `190 pass / 66 review / 0 fail`, with 0
   geometry hard failures. All 16 contact sheets were regenerated.
 
 ## Upgrade Procedure

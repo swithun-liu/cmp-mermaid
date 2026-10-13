@@ -10,8 +10,10 @@
     "explicit-256-entry-business-scenario-catalog",
     "label-stripped-normalized-mermaid-source",
     "family-specific-coverage-contract",
-    "flowchart-six-category-coverage-driven-corpus",
-    "full-factorial-2x2x2x2x2x2x2x2-matrix-for-other-families",
+    "six-category-coverage-driven-corpus-for-all-families",
+    "family-specific-capability-axes",
+    "family-specific-stress-augmentation",
+    "sixteen-equivalent-syntax-pairs-per-family",
     "family-specific-structural-profile"
   ],
   "diagramFamilies": [
@@ -105,73 +107,118 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "lane-count",
-          "category": "topology",
-          "options": [
-            "two-lanes",
-            "four-lanes"
-          ]
-        },
-        {
-          "name": "lane-nesting",
-          "category": "topology",
-          "options": [
-            "flat-lanes",
-            "nested-lane"
-          ]
-        },
-        {
-          "name": "branching",
-          "category": "topology",
-          "options": [
-            "single-path",
-            "cross-lane-fan-out"
-          ]
-        },
-        {
-          "name": "merging",
-          "category": "topology",
-          "options": [
-            "separate-endings",
-            "cross-lane-fan-in"
-          ]
-        },
-        {
-          "name": "cycle",
-          "category": "topology",
-          "options": [
-            "acyclic",
-            "return-loop"
-          ]
-        },
-        {
-          "name": "edge-semantics",
-          "category": "style",
-          "options": [
-            "solid-unlabelled",
-            "labelled-dotted"
-          ]
-        },
-        {
-          "name": "node-form",
-          "category": "style",
-          "options": [
-            "process",
-            "decision"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "swimlane-beta-header",
+          "directions",
+          "top-level-lanes",
+          "default-lane",
+          "nested-subgraphs",
+          "node-shapes",
+          "cross-lane-edges",
+          "edge-labels",
+          "edge-patterns",
+          "cycles",
+          "classes-styles",
+          "frontmatter-config",
+          "line-hops",
+          "accessibility",
+          "unicode",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "lane-count:two-lanes",
+          "lane-count:four-lanes",
+          "lane-nesting:flat-lanes",
+          "lane-nesting:nested-lane",
+          "branching:single-path",
+          "branching:cross-lane-fan-out",
+          "merging:separate-endings",
+          "merging:cross-lane-fan-in",
+          "cycle:acyclic",
+          "cycle:return-loop",
+          "edge-semantics:solid-unlabelled",
+          "edge-semantics:labelled-dotted",
+          "node-form:process",
+          "node-form:decision"
+        ],
+        "officialCapabilities": [
+          "swimlane-beta-header",
+          "directions",
+          "top-level-lanes",
+          "default-lane",
+          "nested-subgraphs",
+          "node-shapes",
+          "cross-lane-edges",
+          "edge-labels",
+          "edge-patterns",
+          "cycles",
+          "classes-styles",
+          "frontmatter-config",
+          "line-hops",
+          "accessibility",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "lane-count:two-lanes",
+          "lane-count:four-lanes",
+          "lane-nesting:flat-lanes",
+          "lane-nesting:nested-lane",
+          "branching:single-path",
+          "branching:cross-lane-fan-out",
+          "merging:separate-endings",
+          "merging:cross-lane-fan-in",
+          "cycle:acyclic",
+          "cycle:return-loop",
+          "edge-semantics:solid-unlabelled",
+          "edge-semantics:labelled-dotted",
+          "node-form:process",
+          "node-form:decision"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/swimlanes",
+          "demos/flowchart.html"
+        ]
+      }
     },
     {
       "kind": "architecture",
@@ -179,73 +226,124 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 192,
-      "dimensions": [
-        {
-          "name": "groups",
-          "category": "topology",
-          "options": [
-            "ungrouped",
-            "platform-group"
-          ]
-        },
-        {
-          "name": "nested-groups",
-          "category": "topology",
-          "options": [
-            "single-level",
-            "nested-groups"
-          ]
-        },
-        {
-          "name": "junction",
-          "category": "topology",
-          "options": [
-            "direct-route",
-            "junction-fan-out"
-          ]
-        },
-        {
-          "name": "storage",
-          "category": "data",
-          "options": [
-            "compute-only",
-            "database-service"
-          ]
-        },
-        {
-          "name": "bidirectional",
-          "category": "topology",
-          "options": [
-            "one-way",
-            "two-way"
-          ]
-        },
-        {
-          "name": "edge-label",
-          "category": "style",
-          "options": [
-            "unlabelled",
-            "labelled"
-          ]
-        },
-        {
-          "name": "alignment",
-          "category": "layout",
-          "options": [
-            "free-layout",
-            "row-column-grid"
-          ]
-        },
-        {
-          "name": "boundary-route",
-          "category": "topology",
-          "options": [
-            "service-route",
-            "group-route"
-          ]
-        }
-      ]
+      "structuralProfileCount": 204,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "architecture-beta-header",
+          "services",
+          "built-in-icons",
+          "icon-text",
+          "groups",
+          "nested-groups",
+          "junctions",
+          "directional-ports",
+          "arrowheads",
+          "bidirectional-edges",
+          "edge-labels",
+          "group-boundary-modifier",
+          "align-row",
+          "align-column",
+          "frontmatter-config",
+          "deterministic-seed",
+          "accessibility",
+          "unicode",
+          "groups:ungrouped",
+          "groups:platform-group",
+          "nested-groups:single-level",
+          "nested-groups:nested-groups",
+          "junction:direct-route",
+          "junction:junction-fan-out",
+          "storage:compute-only",
+          "storage:database-service",
+          "bidirectional:one-way",
+          "bidirectional:two-way",
+          "edge-label:unlabelled",
+          "edge-label:labelled",
+          "alignment:free-layout",
+          "alignment:row-column-grid",
+          "boundary-route:service-route",
+          "boundary-route:group-route"
+        ],
+        "officialCapabilities": [
+          "architecture-beta-header",
+          "services",
+          "built-in-icons",
+          "icon-text",
+          "groups",
+          "nested-groups",
+          "junctions",
+          "directional-ports",
+          "arrowheads",
+          "bidirectional-edges",
+          "edge-labels",
+          "group-boundary-modifier",
+          "align-row",
+          "align-column",
+          "frontmatter-config",
+          "deterministic-seed",
+          "accessibility",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "groups:ungrouped",
+          "groups:platform-group",
+          "nested-groups:single-level",
+          "nested-groups:nested-groups",
+          "junction:direct-route",
+          "junction:junction-fan-out",
+          "storage:compute-only",
+          "storage:database-service",
+          "bidirectional:one-way",
+          "bidirectional:two-way",
+          "edge-label:unlabelled",
+          "edge-label:labelled",
+          "alignment:free-layout",
+          "alignment:row-column-grid",
+          "boundary-route:service-route",
+          "boundary-route:group-route"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 192,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/architecture",
+          "demos/architecture.html"
+        ]
+      }
     },
     {
       "kind": "c4",
@@ -253,73 +351,140 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "external-system",
-          "category": "topology",
-          "options": [
-            "internal-only",
-            "external-system"
-          ]
-        },
-        {
-          "name": "boundary",
-          "category": "topology",
-          "options": [
-            "unbounded",
-            "system-boundary"
-          ]
-        },
-        {
-          "name": "database",
-          "category": "data",
-          "options": [
-            "service",
-            "database"
-          ]
-        },
-        {
-          "name": "queue",
-          "category": "data",
-          "options": [
-            "direct-call",
-            "queued-flow"
-          ]
-        },
-        {
-          "name": "fan-out",
-          "category": "topology",
-          "options": [
-            "linear",
-            "fan-out"
-          ]
-        },
-        {
-          "name": "relationship-direction",
-          "category": "layout",
-          "options": [
-            "automatic",
-            "directed"
-          ]
-        },
-        {
-          "name": "bidirectional",
-          "category": "topology",
-          "options": [
-            "one-way",
-            "bidirectional"
-          ]
-        },
-        {
-          "name": "relationship-style",
-          "category": "style",
-          "options": [
-            "default",
-            "styled"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "c4-context-header",
+          "c4-container-header",
+          "c4-component-header",
+          "c4-dynamic-header",
+          "c4-deployment-header",
+          "people",
+          "systems",
+          "external-elements",
+          "database-shapes",
+          "queue-shapes",
+          "boundaries",
+          "nested-boundaries",
+          "deployment-nodes",
+          "relationships",
+          "directional-relationships",
+          "bidirectional-relationships",
+          "back-relationships",
+          "dynamic-indexes",
+          "element-styles",
+          "relationship-styles",
+          "layout-config",
+          "frontmatter-config",
+          "accessibility",
+          "unicode",
+          "comments",
+          "named-attributes",
+          "external-system:internal-only",
+          "external-system:external-system",
+          "boundary:unbounded",
+          "boundary:system-boundary",
+          "database:service",
+          "database:database",
+          "queue:direct-call",
+          "queue:queued-flow",
+          "fan-out:linear",
+          "fan-out:fan-out",
+          "relationship-direction:automatic",
+          "relationship-direction:directed",
+          "bidirectional:one-way",
+          "bidirectional:bidirectional",
+          "relationship-style:default",
+          "relationship-style:styled"
+        ],
+        "officialCapabilities": [
+          "c4-context-header",
+          "c4-container-header",
+          "c4-component-header",
+          "c4-dynamic-header",
+          "c4-deployment-header",
+          "people",
+          "systems",
+          "external-elements",
+          "database-shapes",
+          "queue-shapes",
+          "boundaries",
+          "nested-boundaries",
+          "deployment-nodes",
+          "relationships",
+          "directional-relationships",
+          "bidirectional-relationships",
+          "back-relationships",
+          "dynamic-indexes",
+          "element-styles",
+          "relationship-styles",
+          "layout-config",
+          "frontmatter-config",
+          "accessibility",
+          "unicode",
+          "comments",
+          "named-attributes"
+        ],
+        "generatorCapabilities": [
+          "external-system:internal-only",
+          "external-system:external-system",
+          "boundary:unbounded",
+          "boundary:system-boundary",
+          "database:service",
+          "database:database",
+          "queue:direct-call",
+          "queue:queued-flow",
+          "fan-out:linear",
+          "fan-out:fan-out",
+          "relationship-direction:automatic",
+          "relationship-direction:directed",
+          "bidirectional:one-way",
+          "bidirectional:bidirectional",
+          "relationship-style:default",
+          "relationship-style:styled"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/c4",
+          "demos/c4.html"
+        ]
+      }
     },
     {
       "kind": "railroad",
@@ -327,73 +492,136 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "choice",
-          "category": "topology",
-          "options": [
-            "single-token",
-            "alternatives"
-          ]
-        },
-        {
-          "name": "optional",
-          "category": "syntax",
-          "options": [
-            "required",
-            "optional"
-          ]
-        },
-        {
-          "name": "zero-or-more",
-          "category": "topology",
-          "options": [
-            "single",
-            "zero-or-more"
-          ]
-        },
-        {
-          "name": "one-or-more",
-          "category": "topology",
-          "options": [
-            "single-use",
-            "one-or-more"
-          ]
-        },
-        {
-          "name": "nesting",
-          "category": "topology",
-          "options": [
-            "flat",
-            "nested-sequence"
-          ]
-        },
-        {
-          "name": "symbol-kind",
-          "category": "syntax",
-          "options": [
-            "terminal",
-            "nonterminal-special"
-          ]
-        },
-        {
-          "name": "rule-count",
-          "category": "data",
-          "options": [
-            "one-rule",
-            "three-rules"
-          ]
-        },
-        {
-          "name": "branch-width",
-          "category": "data",
-          "options": [
-            "two-alternatives",
-            "four-alternatives"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "ir-header",
+          "ebnf-header",
+          "abnf-header",
+          "peg-header",
+          "terminals",
+          "non-terminals",
+          "sequences",
+          "choices",
+          "optional",
+          "zero-or-more",
+          "one-or-more",
+          "special",
+          "ebnf-iso",
+          "ebnf-exception",
+          "abnf-bounded-repeat",
+          "abnf-numeric-value",
+          "peg-predicates",
+          "peg-any",
+          "comments",
+          "accessibility",
+          "frontmatter-config",
+          "theme",
+          "unicode",
+          "entities",
+          "choice:single-token",
+          "choice:alternatives",
+          "optional:required",
+          "optional:optional",
+          "zero-or-more:single",
+          "zero-or-more:zero-or-more",
+          "one-or-more:single-use",
+          "one-or-more:one-or-more",
+          "nesting:flat",
+          "nesting:nested-sequence",
+          "symbol-kind:terminal",
+          "symbol-kind:nonterminal-special",
+          "rule-count:one-rule",
+          "rule-count:three-rules",
+          "branch-width:two-alternatives",
+          "branch-width:four-alternatives"
+        ],
+        "officialCapabilities": [
+          "ir-header",
+          "ebnf-header",
+          "abnf-header",
+          "peg-header",
+          "terminals",
+          "non-terminals",
+          "sequences",
+          "choices",
+          "optional",
+          "zero-or-more",
+          "one-or-more",
+          "special",
+          "ebnf-iso",
+          "ebnf-exception",
+          "abnf-bounded-repeat",
+          "abnf-numeric-value",
+          "peg-predicates",
+          "peg-any",
+          "comments",
+          "accessibility",
+          "frontmatter-config",
+          "theme",
+          "unicode",
+          "entities"
+        ],
+        "generatorCapabilities": [
+          "choice:single-token",
+          "choice:alternatives",
+          "optional:required",
+          "optional:optional",
+          "zero-or-more:single",
+          "zero-or-more:zero-or-more",
+          "one-or-more:single-use",
+          "one-or-more:one-or-more",
+          "nesting:flat",
+          "nesting:nested-sequence",
+          "symbol-kind:terminal",
+          "symbol-kind:nonterminal-special",
+          "rule-count:one-rule",
+          "rule-count:three-rules",
+          "branch-width:two-alternatives",
+          "branch-width:four-alternatives"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/railroad",
+          "demos/railroad.html"
+        ]
+      }
     },
     {
       "kind": "treeview",
@@ -401,73 +629,132 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "root-count",
-          "category": "topology",
-          "options": [
-            "single-root",
-            "second-root"
-          ]
-        },
-        {
-          "name": "branch-width",
-          "category": "topology",
-          "options": [
-            "narrow",
-            "wide"
-          ]
-        },
-        {
-          "name": "depth",
-          "category": "topology",
-          "options": [
-            "shallow",
-            "deep"
-          ]
-        },
-        {
-          "name": "entry-kind",
-          "category": "data",
-          "options": [
-            "files",
-            "mixed-files-directories"
-          ]
-        },
-        {
-          "name": "quoted-labels",
-          "category": "syntax",
-          "options": [
-            "bare",
-            "quoted"
-          ]
-        },
-        {
-          "name": "box-drawing",
-          "category": "syntax",
-          "options": [
-            "indentation",
-            "box-drawing"
-          ]
-        },
-        {
-          "name": "description",
-          "category": "data",
-          "options": [
-            "plain",
-            "described"
-          ]
-        },
-        {
-          "name": "class-highlight",
-          "category": "style",
-          "options": [
-            "default",
-            "highlighted"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "treeview-beta-header",
+          "indentation",
+          "box-drawing",
+          "heavy-box-drawing",
+          "files",
+          "directories",
+          "quoted-labels",
+          "bare-labels",
+          "class-annotation",
+          "highlight",
+          "description",
+          "explicit-icons",
+          "default-icons",
+          "icon-suppression",
+          "filename-icons",
+          "extension-icons",
+          "frontmatter-config",
+          "theme",
+          "accessibility",
+          "comments",
+          "unicode",
+          "entities",
+          "root-count:single-root",
+          "root-count:second-root",
+          "branch-width:narrow",
+          "branch-width:wide",
+          "depth:shallow",
+          "depth:deep",
+          "entry-kind:files",
+          "entry-kind:mixed-files-directories",
+          "quoted-labels:bare",
+          "quoted-labels:quoted",
+          "box-drawing:indentation",
+          "box-drawing:box-drawing",
+          "description:plain",
+          "description:described",
+          "class-highlight:default",
+          "class-highlight:highlighted"
+        ],
+        "officialCapabilities": [
+          "treeview-beta-header",
+          "indentation",
+          "box-drawing",
+          "heavy-box-drawing",
+          "files",
+          "directories",
+          "quoted-labels",
+          "bare-labels",
+          "class-annotation",
+          "highlight",
+          "description",
+          "explicit-icons",
+          "default-icons",
+          "icon-suppression",
+          "filename-icons",
+          "extension-icons",
+          "frontmatter-config",
+          "theme",
+          "accessibility",
+          "comments",
+          "unicode",
+          "entities"
+        ],
+        "generatorCapabilities": [
+          "root-count:single-root",
+          "root-count:second-root",
+          "branch-width:narrow",
+          "branch-width:wide",
+          "depth:shallow",
+          "depth:deep",
+          "entry-kind:files",
+          "entry-kind:mixed-files-directories",
+          "quoted-labels:bare",
+          "quoted-labels:quoted",
+          "box-drawing:indentation",
+          "box-drawing:box-drawing",
+          "description:plain",
+          "description:described",
+          "class-highlight:default",
+          "class-highlight:highlighted"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/treeView",
+          "demos/treeView.html"
+        ]
+      }
     },
     {
       "kind": "xychart",
@@ -475,73 +762,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "orientation",
-          "category": "layout",
-          "options": [
-            "vertical",
-            "horizontal"
-          ]
-        },
-        {
-          "name": "x-axis",
-          "category": "data",
-          "options": [
-            "categorical",
-            "numeric"
-          ]
-        },
-        {
-          "name": "domain",
-          "category": "data",
-          "options": [
-            "automatic",
-            "explicit"
-          ]
-        },
-        {
-          "name": "primary-plot",
-          "category": "style",
-          "options": [
-            "line",
-            "bar"
-          ]
-        },
-        {
-          "name": "series-count",
-          "category": "data",
-          "options": [
-            "one-series",
-            "three-series"
-          ]
-        },
-        {
-          "name": "point-count",
-          "category": "data",
-          "options": [
-            "four-points",
-            "eight-points"
-          ]
-        },
-        {
-          "name": "value-shape",
-          "category": "data",
-          "options": [
-            "monotonic",
-            "peaked"
-          ]
-        },
-        {
-          "name": "labels",
-          "category": "style",
-          "options": [
-            "plain",
-            "legend-and-data-labels"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "vertical",
+          "horizontal",
+          "categorical-axis",
+          "numeric-axis",
+          "explicit-domain",
+          "automatic-domain",
+          "bars",
+          "lines",
+          "mixed-plots",
+          "legend",
+          "data-labels",
+          "outside-labels",
+          "point-labels",
+          "axis-rotation",
+          "theme-palette",
+          "component-visibility",
+          "orientation:vertical",
+          "orientation:horizontal",
+          "x-axis:categorical",
+          "x-axis:numeric",
+          "domain:automatic",
+          "domain:explicit",
+          "primary-plot:line",
+          "primary-plot:bar",
+          "series-count:one-series",
+          "series-count:three-series",
+          "point-count:four-points",
+          "point-count:eight-points",
+          "value-shape:monotonic",
+          "value-shape:peaked",
+          "labels:plain",
+          "labels:legend-and-data-labels"
+        ],
+        "officialCapabilities": [
+          "vertical",
+          "horizontal",
+          "categorical-axis",
+          "numeric-axis",
+          "explicit-domain",
+          "automatic-domain",
+          "bars",
+          "lines",
+          "mixed-plots",
+          "legend",
+          "data-labels",
+          "outside-labels",
+          "point-labels",
+          "axis-rotation",
+          "theme-palette",
+          "component-visibility"
+        ],
+        "generatorCapabilities": [
+          "orientation:vertical",
+          "orientation:horizontal",
+          "x-axis:categorical",
+          "x-axis:numeric",
+          "domain:automatic",
+          "domain:explicit",
+          "primary-plot:line",
+          "primary-plot:bar",
+          "series-count:one-series",
+          "series-count:three-series",
+          "point-count:four-points",
+          "point-count:eight-points",
+          "value-shape:monotonic",
+          "value-shape:peaked",
+          "labels:plain",
+          "labels:legend-and-data-labels"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/xychart",
+          "demos/xychart.html"
+        ]
+      }
     },
     {
       "kind": "quadrant",
@@ -549,73 +883,122 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "point-count",
-          "category": "data",
-          "options": [
-            "four-points",
-            "eight-points"
-          ]
-        },
-        {
-          "name": "distribution",
-          "category": "data",
-          "options": [
-            "clustered",
-            "all-quadrants"
-          ]
-        },
-        {
-          "name": "boundary-points",
-          "category": "data",
-          "options": [
-            "interior",
-            "boundaries"
-          ]
-        },
-        {
-          "name": "empty-region",
-          "category": "topology",
-          "options": [
-            "all-occupied",
-            "empty-quadrant"
-          ]
-        },
-        {
-          "name": "point-radius",
-          "category": "style",
-          "options": [
-            "default-radius",
-            "varied-radius"
-          ]
-        },
-        {
-          "name": "point-color",
-          "category": "style",
-          "options": [
-            "theme-color",
-            "inline-colors"
-          ]
-        },
-        {
-          "name": "class-style",
-          "category": "style",
-          "options": [
-            "no-class",
-            "class-style"
-          ]
-        },
-        {
-          "name": "metadata",
-          "category": "syntax",
-          "options": [
-            "minimal",
-            "title-and-comments"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "title",
+          "x-axis",
+          "y-axis",
+          "quadrant-labels",
+          "points",
+          "boundary-points",
+          "empty-points",
+          "point-radius",
+          "point-color",
+          "point-stroke",
+          "class-styles",
+          "inline-precedence",
+          "frontmatter-config",
+          "theme-colors",
+          "metadata",
+          "unicode",
+          "comments",
+          "point-count:four-points",
+          "point-count:eight-points",
+          "distribution:clustered",
+          "distribution:all-quadrants",
+          "boundary-points:interior",
+          "boundary-points:boundaries",
+          "empty-region:all-occupied",
+          "empty-region:empty-quadrant",
+          "point-radius:default-radius",
+          "point-radius:varied-radius",
+          "point-color:theme-color",
+          "point-color:inline-colors",
+          "class-style:no-class",
+          "class-style:class-style",
+          "metadata:minimal",
+          "metadata:title-and-comments"
+        ],
+        "officialCapabilities": [
+          "title",
+          "x-axis",
+          "y-axis",
+          "quadrant-labels",
+          "points",
+          "boundary-points",
+          "empty-points",
+          "point-radius",
+          "point-color",
+          "point-stroke",
+          "class-styles",
+          "inline-precedence",
+          "frontmatter-config",
+          "theme-colors",
+          "metadata",
+          "unicode",
+          "comments"
+        ],
+        "generatorCapabilities": [
+          "point-count:four-points",
+          "point-count:eight-points",
+          "distribution:clustered",
+          "distribution:all-quadrants",
+          "boundary-points:interior",
+          "boundary-points:boundaries",
+          "empty-region:all-occupied",
+          "empty-region:empty-quadrant",
+          "point-radius:default-radius",
+          "point-radius:varied-radius",
+          "point-color:theme-color",
+          "point-color:inline-colors",
+          "class-style:no-class",
+          "class-style:class-style",
+          "metadata:minimal",
+          "metadata:title-and-comments"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/quadrant-chart",
+          "demos/quadrantchart.html"
+        ]
+      }
     },
     {
       "kind": "timeline",
@@ -623,73 +1006,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "sections",
-          "category": "topology",
-          "options": [
-            "sectionless",
-            "sectioned"
-          ]
-        },
-        {
-          "name": "period-count",
-          "category": "data",
-          "options": [
-            "three-periods",
-            "six-periods"
-          ]
-        },
-        {
-          "name": "continued-events",
-          "category": "topology",
-          "options": [
-            "one-event-per-period",
-            "continued-events"
-          ]
-        },
-        {
-          "name": "event-density",
-          "category": "data",
-          "options": [
-            "sparse",
-            "dense"
-          ]
-        },
-        {
-          "name": "html-break",
-          "category": "syntax",
-          "options": [
-            "plain-text",
-            "html-break"
-          ]
-        },
-        {
-          "name": "palette",
-          "category": "style",
-          "options": [
-            "multicolor",
-            "single-color"
-          ]
-        },
-        {
-          "name": "metadata",
-          "category": "syntax",
-          "options": [
-            "minimal",
-            "title-and-comments"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "lr",
+          "td",
+          "title",
+          "periods",
+          "events",
+          "continued-events",
+          "sections",
+          "sectionless-colors",
+          "disable-multicolor",
+          "html-breaks",
+          "frontmatter-config",
+          "theme-colors",
+          "redux-theme",
+          "metadata",
+          "unicode",
+          "comments",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "sections:sectionless",
+          "sections:sectioned",
+          "period-count:three-periods",
+          "period-count:six-periods",
+          "continued-events:one-event-per-period",
+          "continued-events:continued-events",
+          "event-density:sparse",
+          "event-density:dense",
+          "html-break:plain-text",
+          "html-break:html-break",
+          "palette:multicolor",
+          "palette:single-color",
+          "metadata:minimal",
+          "metadata:title-and-comments"
+        ],
+        "officialCapabilities": [
+          "lr",
+          "td",
+          "title",
+          "periods",
+          "events",
+          "continued-events",
+          "sections",
+          "sectionless-colors",
+          "disable-multicolor",
+          "html-breaks",
+          "frontmatter-config",
+          "theme-colors",
+          "redux-theme",
+          "metadata",
+          "unicode",
+          "comments"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "sections:sectionless",
+          "sections:sectioned",
+          "period-count:three-periods",
+          "period-count:six-periods",
+          "continued-events:one-event-per-period",
+          "continued-events:continued-events",
+          "event-density:sparse",
+          "event-density:dense",
+          "html-break:plain-text",
+          "html-break:html-break",
+          "palette:multicolor",
+          "palette:single-color",
+          "metadata:minimal",
+          "metadata:title-and-comments"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/timeline",
+          "demos/timeline.html"
+        ]
+      }
     },
     {
       "kind": "kanban",
@@ -697,73 +1127,122 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "section-count",
-          "category": "topology",
-          "options": [
-            "two-sections",
-            "four-sections"
-          ]
-        },
-        {
-          "name": "task-count",
-          "category": "data",
-          "options": [
-            "four-tasks",
-            "eight-tasks"
-          ]
-        },
-        {
-          "name": "task-identity",
-          "category": "syntax",
-          "options": [
-            "anonymous",
-            "explicit-ids"
-          ]
-        },
-        {
-          "name": "node-form",
-          "category": "style",
-          "options": [
-            "square",
-            "rounded"
-          ]
-        },
-        {
-          "name": "indentation",
-          "category": "topology",
-          "options": [
-            "flat",
-            "nested"
-          ]
-        },
-        {
-          "name": "empty-section",
-          "category": "topology",
-          "options": [
-            "all-populated",
-            "empty-section"
-          ]
-        },
-        {
-          "name": "metadata",
-          "category": "data",
-          "options": [
-            "plain",
-            "ticket-assignee-priority"
-          ]
-        },
-        {
-          "name": "markdown",
-          "category": "syntax",
-          "options": [
-            "plain-labels",
-            "markdown-labels"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "sections",
+          "tasks",
+          "anonymous-items",
+          "explicit-ids",
+          "node-forms",
+          "deeper-indentation",
+          "comments",
+          "wrapped-labels",
+          "empty-sections",
+          "ticket",
+          "assigned",
+          "priorities",
+          "ticket-links",
+          "section-width",
+          "theme-colors",
+          "markdown",
+          "unicode",
+          "section-count:two-sections",
+          "section-count:four-sections",
+          "task-count:four-tasks",
+          "task-count:eight-tasks",
+          "task-identity:anonymous",
+          "task-identity:explicit-ids",
+          "node-form:square",
+          "node-form:rounded",
+          "indentation:flat",
+          "indentation:nested",
+          "empty-section:all-populated",
+          "empty-section:empty-section",
+          "metadata:plain",
+          "metadata:ticket-assignee-priority",
+          "markdown:plain-labels",
+          "markdown:markdown-labels"
+        ],
+        "officialCapabilities": [
+          "sections",
+          "tasks",
+          "anonymous-items",
+          "explicit-ids",
+          "node-forms",
+          "deeper-indentation",
+          "comments",
+          "wrapped-labels",
+          "empty-sections",
+          "ticket",
+          "assigned",
+          "priorities",
+          "ticket-links",
+          "section-width",
+          "theme-colors",
+          "markdown",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "section-count:two-sections",
+          "section-count:four-sections",
+          "task-count:four-tasks",
+          "task-count:eight-tasks",
+          "task-identity:anonymous",
+          "task-identity:explicit-ids",
+          "node-form:square",
+          "node-form:rounded",
+          "indentation:flat",
+          "indentation:nested",
+          "empty-section:all-populated",
+          "empty-section:empty-section",
+          "metadata:plain",
+          "metadata:ticket-assignee-priority",
+          "markdown:plain-labels",
+          "markdown:markdown-labels"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/kanban",
+          "demos/kanban.html"
+        ]
+      }
     },
     {
       "kind": "sequence",
@@ -771,73 +1250,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "autonumber",
-          "category": "syntax",
-          "options": [
-            "manual",
-            "autonumber"
-          ]
-        },
-        {
-          "name": "participant-kind",
-          "category": "data",
-          "options": [
-            "participants",
-            "actors-and-boundary"
-          ]
-        },
-        {
-          "name": "activation",
-          "category": "topology",
-          "options": [
-            "inactive",
-            "activated"
-          ]
-        },
-        {
-          "name": "message-shape",
-          "category": "style",
-          "options": [
-            "solid",
-            "dotted-and-self"
-          ]
-        },
-        {
-          "name": "loop",
-          "category": "topology",
-          "options": [
-            "linear",
-            "loop"
-          ]
-        },
-        {
-          "name": "alternative",
-          "category": "topology",
-          "options": [
-            "single-outcome",
-            "alt-opt"
-          ]
-        },
-        {
-          "name": "parallel",
-          "category": "topology",
-          "options": [
-            "sequential",
-            "parallel"
-          ]
-        },
-        {
-          "name": "notes",
-          "category": "data",
-          "options": [
-            "no-notes",
-            "notes"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "participants",
+          "actor-types",
+          "aliases",
+          "autonumber",
+          "activations",
+          "arrow-families",
+          "notes",
+          "loops",
+          "alt-opt",
+          "parallel",
+          "critical",
+          "break",
+          "rect",
+          "boxes",
+          "create-destroy",
+          "self-messages",
+          "autonumber:manual",
+          "autonumber:autonumber",
+          "participant-kind:participants",
+          "participant-kind:actors-and-boundary",
+          "activation:inactive",
+          "activation:activated",
+          "message-shape:solid",
+          "message-shape:dotted-and-self",
+          "loop:linear",
+          "loop:loop",
+          "alternative:single-outcome",
+          "alternative:alt-opt",
+          "parallel:sequential",
+          "parallel:parallel",
+          "notes:no-notes",
+          "notes:notes"
+        ],
+        "officialCapabilities": [
+          "participants",
+          "actor-types",
+          "aliases",
+          "autonumber",
+          "activations",
+          "arrow-families",
+          "notes",
+          "loops",
+          "alt-opt",
+          "parallel",
+          "critical",
+          "break",
+          "rect",
+          "boxes",
+          "create-destroy",
+          "self-messages"
+        ],
+        "generatorCapabilities": [
+          "autonumber:manual",
+          "autonumber:autonumber",
+          "participant-kind:participants",
+          "participant-kind:actors-and-boundary",
+          "activation:inactive",
+          "activation:activated",
+          "message-shape:solid",
+          "message-shape:dotted-and-self",
+          "loop:linear",
+          "loop:loop",
+          "alternative:single-outcome",
+          "alternative:alt-opt",
+          "parallel:sequential",
+          "parallel:parallel",
+          "notes:no-notes",
+          "notes:notes"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/sequence",
+          "demos/sequence.html"
+        ]
+      }
     },
     {
       "kind": "class",
@@ -845,73 +1371,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "members",
-          "category": "data",
-          "options": [
-            "attributes-only",
-            "attributes-and-methods"
-          ]
-        },
-        {
-          "name": "generics",
-          "category": "syntax",
-          "options": [
-            "concrete",
-            "generic"
-          ]
-        },
-        {
-          "name": "annotation",
-          "category": "data",
-          "options": [
-            "plain",
-            "annotated"
-          ]
-        },
-        {
-          "name": "relation-kind",
-          "category": "topology",
-          "options": [
-            "association",
-            "inheritance-composition"
-          ]
-        },
-        {
-          "name": "cardinality",
-          "category": "data",
-          "options": [
-            "unqualified",
-            "cardinalities-and-labels"
-          ]
-        },
-        {
-          "name": "namespace",
-          "category": "topology",
-          "options": [
-            "flat",
-            "namespace"
-          ]
-        },
-        {
-          "name": "notes",
-          "category": "data",
-          "options": [
-            "no-notes",
-            "notes-and-style"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "members",
+          "visibility",
+          "generics",
+          "annotations",
+          "relation-markers",
+          "two-way-relations",
+          "relation-labels",
+          "cardinalities",
+          "lollipop",
+          "namespaces",
+          "nested-namespaces",
+          "direction",
+          "notes",
+          "classes-styles",
+          "markdown",
+          "metadata",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "members:attributes-only",
+          "members:attributes-and-methods",
+          "generics:concrete",
+          "generics:generic",
+          "annotation:plain",
+          "annotation:annotated",
+          "relation-kind:association",
+          "relation-kind:inheritance-composition",
+          "cardinality:unqualified",
+          "cardinality:cardinalities-and-labels",
+          "namespace:flat",
+          "namespace:namespace",
+          "notes:no-notes",
+          "notes:notes-and-style"
+        ],
+        "officialCapabilities": [
+          "members",
+          "visibility",
+          "generics",
+          "annotations",
+          "relation-markers",
+          "two-way-relations",
+          "relation-labels",
+          "cardinalities",
+          "lollipop",
+          "namespaces",
+          "nested-namespaces",
+          "direction",
+          "notes",
+          "classes-styles",
+          "markdown",
+          "metadata"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "members:attributes-only",
+          "members:attributes-and-methods",
+          "generics:concrete",
+          "generics:generic",
+          "annotation:plain",
+          "annotation:annotated",
+          "relation-kind:association",
+          "relation-kind:inheritance-composition",
+          "cardinality:unqualified",
+          "cardinality:cardinalities-and-labels",
+          "namespace:flat",
+          "namespace:namespace",
+          "notes:no-notes",
+          "notes:notes-and-style"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/class",
+          "demos/classchart.html"
+        ]
+      }
     },
     {
       "kind": "state",
@@ -919,73 +1492,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "description",
-          "category": "data",
-          "options": [
-            "identifier-only",
-            "aliases-and-descriptions"
-          ]
-        },
-        {
-          "name": "composite",
-          "category": "topology",
-          "options": [
-            "flat",
-            "composite"
-          ]
-        },
-        {
-          "name": "choice",
-          "category": "topology",
-          "options": [
-            "direct",
-            "choice"
-          ]
-        },
-        {
-          "name": "fork-join",
-          "category": "topology",
-          "options": [
-            "sequential",
-            "fork-join"
-          ]
-        },
-        {
-          "name": "concurrency",
-          "category": "topology",
-          "options": [
-            "single-region",
-            "concurrent-regions"
-          ]
-        },
-        {
-          "name": "cycle",
-          "category": "topology",
-          "options": [
-            "acyclic",
-            "recovery-loop"
-          ]
-        },
-        {
-          "name": "notes-style",
-          "category": "style",
-          "options": [
-            "plain",
-            "notes-and-class"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "simple-states",
+          "descriptions",
+          "aliases",
+          "start-end",
+          "composites",
+          "nested-composites",
+          "choice",
+          "fork-join",
+          "concurrency",
+          "direction",
+          "notes",
+          "classes-styles",
+          "links",
+          "markdown",
+          "metadata",
+          "unicode",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "description:identifier-only",
+          "description:aliases-and-descriptions",
+          "composite:flat",
+          "composite:composite",
+          "choice:direct",
+          "choice:choice",
+          "fork-join:sequential",
+          "fork-join:fork-join",
+          "concurrency:single-region",
+          "concurrency:concurrent-regions",
+          "cycle:acyclic",
+          "cycle:recovery-loop",
+          "notes-style:plain",
+          "notes-style:notes-and-class"
+        ],
+        "officialCapabilities": [
+          "simple-states",
+          "descriptions",
+          "aliases",
+          "start-end",
+          "composites",
+          "nested-composites",
+          "choice",
+          "fork-join",
+          "concurrency",
+          "direction",
+          "notes",
+          "classes-styles",
+          "links",
+          "markdown",
+          "metadata",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "description:identifier-only",
+          "description:aliases-and-descriptions",
+          "composite:flat",
+          "composite:composite",
+          "choice:direct",
+          "choice:choice",
+          "fork-join:sequential",
+          "fork-join:fork-join",
+          "concurrency:single-region",
+          "concurrency:concurrent-regions",
+          "cycle:acyclic",
+          "cycle:recovery-loop",
+          "notes-style:plain",
+          "notes-style:notes-and-class"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/state",
+          "demos/state.html"
+        ]
+      }
     },
     {
       "kind": "er",
@@ -993,73 +1613,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "attributes",
-          "category": "data",
-          "options": [
-            "minimal",
-            "rich-attributes"
-          ]
-        },
-        {
-          "name": "keys",
-          "category": "data",
-          "options": [
-            "primary-key",
-            "primary-foreign-unique"
-          ]
-        },
-        {
-          "name": "cardinality",
-          "category": "topology",
-          "options": [
-            "one-to-many",
-            "many-to-many"
-          ]
-        },
-        {
-          "name": "identification",
-          "category": "topology",
-          "options": [
-            "identifying",
-            "non-identifying"
-          ]
-        },
-        {
-          "name": "branching",
-          "category": "topology",
-          "options": [
-            "linear",
-            "hub"
-          ]
-        },
-        {
-          "name": "subgraph",
-          "category": "topology",
-          "options": [
-            "flat",
-            "subgraph"
-          ]
-        },
-        {
-          "name": "alias-style",
-          "category": "style",
-          "options": [
-            "identifiers",
-            "aliases-and-classes"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "entities",
+          "aliases",
+          "unicode",
+          "attributes",
+          "optional-types",
+          "keys",
+          "comments",
+          "cardinalities",
+          "identifying",
+          "non-identifying",
+          "direction",
+          "subgraphs",
+          "nested-subgraphs",
+          "classes-styles",
+          "layout-config",
+          "metadata",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "attributes:minimal",
+          "attributes:rich-attributes",
+          "keys:primary-key",
+          "keys:primary-foreign-unique",
+          "cardinality:one-to-many",
+          "cardinality:many-to-many",
+          "identification:identifying",
+          "identification:non-identifying",
+          "branching:linear",
+          "branching:hub",
+          "subgraph:flat",
+          "subgraph:subgraph",
+          "alias-style:identifiers",
+          "alias-style:aliases-and-classes"
+        ],
+        "officialCapabilities": [
+          "entities",
+          "aliases",
+          "unicode",
+          "attributes",
+          "optional-types",
+          "keys",
+          "comments",
+          "cardinalities",
+          "identifying",
+          "non-identifying",
+          "direction",
+          "subgraphs",
+          "nested-subgraphs",
+          "classes-styles",
+          "layout-config",
+          "metadata"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "attributes:minimal",
+          "attributes:rich-attributes",
+          "keys:primary-key",
+          "keys:primary-foreign-unique",
+          "cardinality:one-to-many",
+          "cardinality:many-to-many",
+          "identification:identifying",
+          "identification:non-identifying",
+          "branching:linear",
+          "branching:hub",
+          "subgraph:flat",
+          "subgraph:subgraph",
+          "alias-style:identifiers",
+          "alias-style:aliases-and-classes"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/er",
+          "demos/er.html"
+        ]
+      }
     },
     {
       "kind": "gantt",
@@ -1067,73 +1734,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "sections",
-          "category": "topology",
-          "options": [
-            "one-section",
-            "three-sections"
-          ]
-        },
-        {
-          "name": "dependencies",
-          "category": "topology",
-          "options": [
-            "fixed-dates",
-            "dependencies"
-          ]
-        },
-        {
-          "name": "task-states",
-          "category": "style",
-          "options": [
-            "critical",
-            "mixed-states"
-          ]
-        },
-        {
-          "name": "milestone",
-          "category": "topology",
-          "options": [
-            "no-milestone",
-            "milestone"
-          ]
-        },
-        {
-          "name": "calendar",
-          "category": "data",
-          "options": [
-            "calendar-days",
-            "weekend-excludes"
-          ]
-        },
-        {
-          "name": "axis",
-          "category": "layout",
-          "options": [
-            "default-axis",
-            "formatted-axis"
-          ]
-        },
-        {
-          "name": "top-axis",
-          "category": "layout",
-          "options": [
-            "bottom-axis",
-            "top-axis"
-          ]
-        },
-        {
-          "name": "vertical-marker",
-          "category": "data",
-          "options": [
-            "no-marker",
-            "vertical-marker"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "date-formats",
+          "duration-units",
+          "dependencies",
+          "task-states",
+          "milestones",
+          "excludes",
+          "weekends",
+          "axis-format",
+          "tick-interval",
+          "sections",
+          "compact-mode",
+          "top-axis",
+          "vertical-markers",
+          "links",
+          "frontmatter-config",
+          "unicode",
+          "sections:one-section",
+          "sections:three-sections",
+          "dependencies:fixed-dates",
+          "dependencies:dependencies",
+          "task-states:critical",
+          "task-states:mixed-states",
+          "milestone:no-milestone",
+          "milestone:milestone",
+          "calendar:calendar-days",
+          "calendar:weekend-excludes",
+          "axis:default-axis",
+          "axis:formatted-axis",
+          "top-axis:bottom-axis",
+          "top-axis:top-axis",
+          "vertical-marker:no-marker",
+          "vertical-marker:vertical-marker"
+        ],
+        "officialCapabilities": [
+          "date-formats",
+          "duration-units",
+          "dependencies",
+          "task-states",
+          "milestones",
+          "excludes",
+          "weekends",
+          "axis-format",
+          "tick-interval",
+          "sections",
+          "compact-mode",
+          "top-axis",
+          "vertical-markers",
+          "links",
+          "frontmatter-config",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "sections:one-section",
+          "sections:three-sections",
+          "dependencies:fixed-dates",
+          "dependencies:dependencies",
+          "task-states:critical",
+          "task-states:mixed-states",
+          "milestone:no-milestone",
+          "milestone:milestone",
+          "calendar:calendar-days",
+          "calendar:weekend-excludes",
+          "axis:default-axis",
+          "axis:formatted-axis",
+          "top-axis:bottom-axis",
+          "top-axis:top-axis",
+          "vertical-marker:no-marker",
+          "vertical-marker:vertical-marker"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/gantt",
+          "demos/gantt.html"
+        ]
+      }
     },
     {
       "kind": "pie",
@@ -1141,73 +1855,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "show-data",
-          "category": "style",
-          "options": [
-            "legend-only",
-            "show-data"
-          ]
-        },
-        {
-          "name": "slice-count",
-          "category": "data",
-          "options": [
-            "four-slices",
-            "eight-slices"
-          ]
-        },
-        {
-          "name": "value-kind",
-          "category": "data",
-          "options": [
-            "integers",
-            "decimals-and-zero"
-          ]
-        },
-        {
-          "name": "distribution",
-          "category": "data",
-          "options": [
-            "balanced",
-            "skewed"
-          ]
-        },
-        {
-          "name": "donut",
-          "category": "style",
-          "options": [
-            "pie",
-            "donut"
-          ]
-        },
-        {
-          "name": "legend-position",
-          "category": "layout",
-          "options": [
-            "right",
-            "center"
-          ]
-        },
-        {
-          "name": "highlight",
-          "category": "style",
-          "options": [
-            "none",
-            "static-highlight"
-          ]
-        },
-        {
-          "name": "label-form",
-          "category": "syntax",
-          "options": [
-            "plain",
-            "escaped-and-duplicate"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "basic-slices",
+          "show-data",
+          "title",
+          "escaped-labels",
+          "duplicate-labels",
+          "zero-values",
+          "decimal-values",
+          "donut",
+          "legend-right",
+          "legend-center",
+          "legend-transforms",
+          "static-highlight",
+          "theme-colors",
+          "many-slices",
+          "metadata",
+          "unicode",
+          "show-data:legend-only",
+          "show-data:show-data",
+          "slice-count:four-slices",
+          "slice-count:eight-slices",
+          "value-kind:integers",
+          "value-kind:decimals-and-zero",
+          "distribution:balanced",
+          "distribution:skewed",
+          "donut:pie",
+          "donut:donut",
+          "legend-position:right",
+          "legend-position:center",
+          "highlight:none",
+          "highlight:static-highlight",
+          "label-form:plain",
+          "label-form:escaped-and-duplicate"
+        ],
+        "officialCapabilities": [
+          "basic-slices",
+          "show-data",
+          "title",
+          "escaped-labels",
+          "duplicate-labels",
+          "zero-values",
+          "decimal-values",
+          "donut",
+          "legend-right",
+          "legend-center",
+          "legend-transforms",
+          "static-highlight",
+          "theme-colors",
+          "many-slices",
+          "metadata",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "show-data:legend-only",
+          "show-data:show-data",
+          "slice-count:four-slices",
+          "slice-count:eight-slices",
+          "value-kind:integers",
+          "value-kind:decimals-and-zero",
+          "distribution:balanced",
+          "distribution:skewed",
+          "donut:pie",
+          "donut:donut",
+          "legend-position:right",
+          "legend-position:center",
+          "highlight:none",
+          "highlight:static-highlight",
+          "label-form:plain",
+          "label-form:escaped-and-duplicate"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/pie",
+          "demos/pie.html"
+        ]
+      }
     },
     {
       "kind": "journey",
@@ -1215,73 +1976,120 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "sections",
-          "category": "topology",
-          "options": [
-            "one-section",
-            "three-sections"
-          ]
-        },
-        {
-          "name": "task-count",
-          "category": "data",
-          "options": [
-            "four-tasks",
-            "eight-tasks"
-          ]
-        },
-        {
-          "name": "scores",
-          "category": "data",
-          "options": [
-            "integer-scores",
-            "decimal-scores"
-          ]
-        },
-        {
-          "name": "actors",
-          "category": "data",
-          "options": [
-            "single-actor",
-            "multiple-actors"
-          ]
-        },
-        {
-          "name": "actor-reuse",
-          "category": "topology",
-          "options": [
-            "fixed-actor",
-            "reordered-reused-actors"
-          ]
-        },
-        {
-          "name": "actorless",
-          "category": "data",
-          "options": [
-            "all-assigned",
-            "actorless-task"
-          ]
-        },
-        {
-          "name": "title-source",
-          "category": "syntax",
-          "options": [
-            "diagram-title",
-            "frontmatter-title"
-          ]
-        },
-        {
-          "name": "long-text",
-          "category": "layout",
-          "options": [
-            "short-labels",
-            "long-labels"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "sections",
+          "scores",
+          "decimal-scores",
+          "single-actor",
+          "multi-actor",
+          "actor-order",
+          "actor-reuse",
+          "actorless-tasks",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "configuration",
+          "theme-colors",
+          "long-task-text",
+          "long-actor-text",
+          "sections:one-section",
+          "sections:three-sections",
+          "task-count:four-tasks",
+          "task-count:eight-tasks",
+          "scores:integer-scores",
+          "scores:decimal-scores",
+          "actors:single-actor",
+          "actors:multiple-actors",
+          "actor-reuse:fixed-actor",
+          "actor-reuse:reordered-reused-actors",
+          "actorless:all-assigned",
+          "actorless:actorless-task",
+          "title-source:diagram-title",
+          "title-source:frontmatter-title",
+          "long-text:short-labels",
+          "long-text:long-labels"
+        ],
+        "officialCapabilities": [
+          "sections",
+          "scores",
+          "decimal-scores",
+          "single-actor",
+          "multi-actor",
+          "actor-order",
+          "actor-reuse",
+          "actorless-tasks",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "configuration",
+          "theme-colors",
+          "long-task-text",
+          "long-actor-text"
+        ],
+        "generatorCapabilities": [
+          "sections:one-section",
+          "sections:three-sections",
+          "task-count:four-tasks",
+          "task-count:eight-tasks",
+          "scores:integer-scores",
+          "scores:decimal-scores",
+          "actors:single-actor",
+          "actors:multiple-actors",
+          "actor-reuse:fixed-actor",
+          "actor-reuse:reordered-reused-actors",
+          "actorless:all-assigned",
+          "actorless:actorless-task",
+          "title-source:diagram-title",
+          "title-source:frontmatter-title",
+          "long-text:short-labels",
+          "long-text:long-labels"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/user-journey",
+          "demos/journey.html"
+        ]
+      }
     },
     {
       "kind": "requirement",
@@ -1289,73 +2097,122 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "requirement-types",
-          "category": "data",
-          "options": [
-            "functional",
-            "mixed-types"
-          ]
-        },
-        {
-          "name": "risk-levels",
-          "category": "data",
-          "options": [
-            "medium",
-            "mixed-risks"
-          ]
-        },
-        {
-          "name": "verification",
-          "category": "data",
-          "options": [
-            "test",
-            "mixed-methods"
-          ]
-        },
-        {
-          "name": "elements",
-          "category": "topology",
-          "options": [
-            "requirements-only",
-            "elements"
-          ]
-        },
-        {
-          "name": "relationship-kind",
-          "category": "topology",
-          "options": [
-            "contains",
-            "mixed-relations"
-          ]
-        },
-        {
-          "name": "reverse-relations",
-          "category": "topology",
-          "options": [
-            "forward-only",
-            "reverse"
-          ]
-        },
-        {
-          "name": "styling",
-          "category": "style",
-          "options": [
-            "default",
-            "direct-and-class-style"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "requirement-types",
+          "fields",
+          "risk-levels",
+          "verification-methods",
+          "elements",
+          "relationship-types",
+          "reverse-relationships",
+          "directions",
+          "dagre-layout",
+          "frontmatter-title",
+          "accessibility",
+          "markdown",
+          "direct-styles",
+          "classes",
+          "theme-variables",
+          "unicode",
+          "comments",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "requirement-types:functional",
+          "requirement-types:mixed-types",
+          "risk-levels:medium",
+          "risk-levels:mixed-risks",
+          "verification:test",
+          "verification:mixed-methods",
+          "elements:requirements-only",
+          "elements:elements",
+          "relationship-kind:contains",
+          "relationship-kind:mixed-relations",
+          "reverse-relations:forward-only",
+          "reverse-relations:reverse",
+          "styling:default",
+          "styling:direct-and-class-style"
+        ],
+        "officialCapabilities": [
+          "requirement-types",
+          "fields",
+          "risk-levels",
+          "verification-methods",
+          "elements",
+          "relationship-types",
+          "reverse-relationships",
+          "directions",
+          "dagre-layout",
+          "frontmatter-title",
+          "accessibility",
+          "markdown",
+          "direct-styles",
+          "classes",
+          "theme-variables",
+          "unicode",
+          "comments"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "requirement-types:functional",
+          "requirement-types:mixed-types",
+          "risk-levels:medium",
+          "risk-levels:mixed-risks",
+          "verification:test",
+          "verification:mixed-methods",
+          "elements:requirements-only",
+          "elements:elements",
+          "relationship-kind:contains",
+          "relationship-kind:mixed-relations",
+          "reverse-relations:forward-only",
+          "reverse-relations:reverse",
+          "styling:default",
+          "styling:direct-and-class-style"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/requirement",
+          "demos/requirements.html"
+        ]
+      }
     },
     {
       "kind": "gitgraph",
@@ -1363,73 +2220,136 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 224,
-      "dimensions": [
-        {
-          "name": "orientation",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "branches",
-          "category": "topology",
-          "options": [
-            "main-only",
-            "feature-branch"
-          ]
-        },
-        {
-          "name": "merge",
-          "category": "topology",
-          "options": [
-            "linear",
-            "merge"
-          ]
-        },
-        {
-          "name": "parallel-work",
-          "category": "topology",
-          "options": [
-            "single-branch",
-            "two-branches"
-          ]
-        },
-        {
-          "name": "commit-types",
-          "category": "style",
-          "options": [
-            "normal",
-            "highlight-reverse"
-          ]
-        },
-        {
-          "name": "tags",
-          "category": "data",
-          "options": [
-            "untagged",
-            "tagged"
-          ]
-        },
-        {
-          "name": "messages",
-          "category": "data",
-          "options": [
-            "ids-only",
-            "messages"
-          ]
-        },
-        {
-          "name": "branch-names",
-          "category": "syntax",
-          "options": [
-            "bare",
-            "quoted"
-          ]
-        }
-      ]
+      "structuralProfileCount": 228,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "commits",
+          "custom-ids",
+          "messages",
+          "tags",
+          "commit-types",
+          "branches",
+          "quoted-branches",
+          "checkout",
+          "switch",
+          "branch-order",
+          "main-branch-config",
+          "merges",
+          "merge-customization",
+          "cherry-pick",
+          "merge-cherry-pick",
+          "orientations",
+          "parallel-commits",
+          "visibility-config",
+          "frontmatter-config",
+          "title",
+          "accessibility",
+          "theme-variables",
+          "unicode",
+          "comments",
+          "orientation:left-to-right",
+          "orientation:top-to-bottom",
+          "branches:main-only",
+          "branches:feature-branch",
+          "merge:linear",
+          "merge:merge",
+          "parallel-work:single-branch",
+          "parallel-work:two-branches",
+          "commit-types:normal",
+          "commit-types:highlight-reverse",
+          "tags:untagged",
+          "tags:tagged",
+          "messages:ids-only",
+          "messages:messages",
+          "branch-names:bare",
+          "branch-names:quoted"
+        ],
+        "officialCapabilities": [
+          "commits",
+          "custom-ids",
+          "messages",
+          "tags",
+          "commit-types",
+          "branches",
+          "quoted-branches",
+          "checkout",
+          "switch",
+          "branch-order",
+          "main-branch-config",
+          "merges",
+          "merge-customization",
+          "cherry-pick",
+          "merge-cherry-pick",
+          "orientations",
+          "parallel-commits",
+          "visibility-config",
+          "frontmatter-config",
+          "title",
+          "accessibility",
+          "theme-variables",
+          "unicode",
+          "comments"
+        ],
+        "generatorCapabilities": [
+          "orientation:left-to-right",
+          "orientation:top-to-bottom",
+          "branches:main-only",
+          "branches:feature-branch",
+          "merge:linear",
+          "merge:merge",
+          "parallel-work:single-branch",
+          "parallel-work:two-branches",
+          "commit-types:normal",
+          "commit-types:highlight-reverse",
+          "tags:untagged",
+          "tags:tagged",
+          "messages:ids-only",
+          "messages:messages",
+          "branch-names:bare",
+          "branch-names:quoted"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 224,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/git",
+          "demos/git.html"
+        ]
+      }
     },
     {
       "kind": "mindmap",
@@ -1437,73 +2357,132 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "depth",
-          "category": "topology",
-          "options": [
-            "shallow",
-            "deep"
-          ]
-        },
-        {
-          "name": "width",
-          "category": "topology",
-          "options": [
-            "narrow",
-            "wide"
-          ]
-        },
-        {
-          "name": "shape-variety",
-          "category": "style",
-          "options": [
-            "default",
-            "mixed-shapes"
-          ]
-        },
-        {
-          "name": "irregular-indentation",
-          "category": "topology",
-          "options": [
-            "regular",
-            "irregular"
-          ]
-        },
-        {
-          "name": "markdown",
-          "category": "syntax",
-          "options": [
-            "plain",
-            "markdown"
-          ]
-        },
-        {
-          "name": "html-entities",
-          "category": "syntax",
-          "options": [
-            "literal",
-            "html-and-entities"
-          ]
-        },
-        {
-          "name": "layout",
-          "category": "layout",
-          "options": [
-            "dagre",
-            "tidy-tree"
-          ]
-        },
-        {
-          "name": "metadata",
-          "category": "data",
-          "options": [
-            "minimal",
-            "title-comments-unicode"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "hierarchy",
+          "irregular-indentation",
+          "deep-hierarchy",
+          "wide-hierarchy",
+          "default-shape",
+          "square-shape",
+          "rounded-shape",
+          "circle-shape",
+          "cloud-shape",
+          "bang-shape",
+          "hexagon-shape",
+          "markdown",
+          "html-breaks",
+          "entities",
+          "comments",
+          "frontmatter-title",
+          "cose-bilkent-layout",
+          "dagre-layout",
+          "tidy-tree-layout",
+          "sizing-config",
+          "theme-variables",
+          "unicode",
+          "depth:shallow",
+          "depth:deep",
+          "width:narrow",
+          "width:wide",
+          "shape-variety:default",
+          "shape-variety:mixed-shapes",
+          "irregular-indentation:regular",
+          "irregular-indentation:irregular",
+          "markdown:plain",
+          "markdown:markdown",
+          "html-entities:literal",
+          "html-entities:html-and-entities",
+          "layout:dagre",
+          "layout:tidy-tree",
+          "metadata:minimal",
+          "metadata:title-comments-unicode"
+        ],
+        "officialCapabilities": [
+          "hierarchy",
+          "irregular-indentation",
+          "deep-hierarchy",
+          "wide-hierarchy",
+          "default-shape",
+          "square-shape",
+          "rounded-shape",
+          "circle-shape",
+          "cloud-shape",
+          "bang-shape",
+          "hexagon-shape",
+          "markdown",
+          "html-breaks",
+          "entities",
+          "comments",
+          "frontmatter-title",
+          "cose-bilkent-layout",
+          "dagre-layout",
+          "tidy-tree-layout",
+          "sizing-config",
+          "theme-variables",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "depth:shallow",
+          "depth:deep",
+          "width:narrow",
+          "width:wide",
+          "shape-variety:default",
+          "shape-variety:mixed-shapes",
+          "irregular-indentation:regular",
+          "irregular-indentation:irregular",
+          "markdown:plain",
+          "markdown:markdown",
+          "html-entities:literal",
+          "html-entities:html-and-entities",
+          "layout:dagre",
+          "layout:tidy-tree",
+          "metadata:minimal",
+          "metadata:title-comments-unicode"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/mindmap",
+          "demos/mindmap.html"
+        ]
+      }
     },
     {
       "kind": "packet",
@@ -1511,73 +2490,122 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "header",
-          "category": "syntax",
-          "options": [
-            "packet",
-            "packet-beta"
-          ]
-        },
-        {
-          "name": "field-count",
-          "category": "data",
-          "options": [
-            "four-fields",
-            "eight-fields"
-          ]
-        },
-        {
-          "name": "field-widths",
-          "category": "data",
-          "options": [
-            "fixed-four-bit",
-            "mixed-widths"
-          ]
-        },
-        {
-          "name": "single-bit",
-          "category": "data",
-          "options": [
-            "ranges-only",
-            "single-bit-fields"
-          ]
-        },
-        {
-          "name": "addressing",
-          "category": "syntax",
-          "options": [
-            "explicit-ranges",
-            "mixed-addressing"
-          ]
-        },
-        {
-          "name": "row-splitting",
-          "category": "layout",
-          "options": [
-            "single-row",
-            "multiple-rows"
-          ]
-        },
-        {
-          "name": "bit-labels",
-          "category": "style",
-          "options": [
-            "show-bits",
-            "hide-bits"
-          ]
-        },
-        {
-          "name": "metadata",
-          "category": "syntax",
-          "options": [
-            "minimal",
-            "title-comments-escaped"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "packet-header",
+          "packet-beta-header",
+          "explicit-ranges",
+          "single-bit-fields",
+          "bit-count-fields",
+          "mixed-addressing",
+          "row-splitting",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "escaped-labels",
+          "configuration",
+          "show-bits",
+          "hide-bits",
+          "responsive-sizing",
+          "unicode",
+          "header:packet",
+          "header:packet-beta",
+          "field-count:four-fields",
+          "field-count:eight-fields",
+          "field-widths:fixed-four-bit",
+          "field-widths:mixed-widths",
+          "single-bit:ranges-only",
+          "single-bit:single-bit-fields",
+          "addressing:explicit-ranges",
+          "addressing:mixed-addressing",
+          "row-splitting:single-row",
+          "row-splitting:multiple-rows",
+          "bit-labels:show-bits",
+          "bit-labels:hide-bits",
+          "metadata:minimal",
+          "metadata:title-comments-escaped"
+        ],
+        "officialCapabilities": [
+          "packet-header",
+          "packet-beta-header",
+          "explicit-ranges",
+          "single-bit-fields",
+          "bit-count-fields",
+          "mixed-addressing",
+          "row-splitting",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "escaped-labels",
+          "configuration",
+          "show-bits",
+          "hide-bits",
+          "responsive-sizing",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "header:packet",
+          "header:packet-beta",
+          "field-count:four-fields",
+          "field-count:eight-fields",
+          "field-widths:fixed-four-bit",
+          "field-widths:mixed-widths",
+          "single-bit:ranges-only",
+          "single-bit:single-bit-fields",
+          "addressing:explicit-ranges",
+          "addressing:mixed-addressing",
+          "row-splitting:single-row",
+          "row-splitting:multiple-rows",
+          "bit-labels:show-bits",
+          "bit-labels:hide-bits",
+          "metadata:minimal",
+          "metadata:title-comments-escaped"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/packet",
+          "demos/packet.html"
+        ]
+      }
     },
     {
       "kind": "radar",
@@ -1585,73 +2613,138 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "axis-count",
-          "category": "data",
-          "options": [
-            "four-axes",
-            "eight-axes"
-          ]
-        },
-        {
-          "name": "entry-form",
-          "category": "syntax",
-          "options": [
-            "positional",
-            "detailed"
-          ]
-        },
-        {
-          "name": "curve-count",
-          "category": "data",
-          "options": [
-            "one-curve",
-            "three-curves"
-          ]
-        },
-        {
-          "name": "range",
-          "category": "data",
-          "options": [
-            "inferred",
-            "explicit"
-          ]
-        },
-        {
-          "name": "graticule",
-          "category": "style",
-          "options": [
-            "circle",
-            "polygon"
-          ]
-        },
-        {
-          "name": "legend",
-          "category": "style",
-          "options": [
-            "shown",
-            "hidden"
-          ]
-        },
-        {
-          "name": "ticks",
-          "category": "data",
-          "options": [
-            "four-ticks",
-            "eight-ticks"
-          ]
-        },
-        {
-          "name": "reference-order",
-          "category": "topology",
-          "options": [
-            "declaration-order",
-            "reordered"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "axis-declarations",
+          "axis-labels",
+          "positional-entries",
+          "detailed-entries",
+          "reference-reordering",
+          "multiple-curves",
+          "inferred-max",
+          "explicit-range",
+          "circle-graticule",
+          "polygon-graticule",
+          "legend",
+          "hidden-legend",
+          "ticks",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "escaped-labels",
+          "configuration",
+          "responsive-sizing",
+          "theme-variables",
+          "unicode",
+          "option-last-wins",
+          "tick-cap",
+          "curve-tension",
+          "axis-count:four-axes",
+          "axis-count:eight-axes",
+          "entry-form:positional",
+          "entry-form:detailed",
+          "curve-count:one-curve",
+          "curve-count:three-curves",
+          "range:inferred",
+          "range:explicit",
+          "graticule:circle",
+          "graticule:polygon",
+          "legend:shown",
+          "legend:hidden",
+          "ticks:four-ticks",
+          "ticks:eight-ticks",
+          "reference-order:declaration-order",
+          "reference-order:reordered"
+        ],
+        "officialCapabilities": [
+          "axis-declarations",
+          "axis-labels",
+          "positional-entries",
+          "detailed-entries",
+          "reference-reordering",
+          "multiple-curves",
+          "inferred-max",
+          "explicit-range",
+          "circle-graticule",
+          "polygon-graticule",
+          "legend",
+          "hidden-legend",
+          "ticks",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "escaped-labels",
+          "configuration",
+          "responsive-sizing",
+          "theme-variables",
+          "unicode",
+          "option-last-wins",
+          "tick-cap",
+          "curve-tension"
+        ],
+        "generatorCapabilities": [
+          "axis-count:four-axes",
+          "axis-count:eight-axes",
+          "entry-form:positional",
+          "entry-form:detailed",
+          "curve-count:one-curve",
+          "curve-count:three-curves",
+          "range:inferred",
+          "range:explicit",
+          "graticule:circle",
+          "graticule:polygon",
+          "legend:shown",
+          "legend:hidden",
+          "ticks:four-ticks",
+          "ticks:eight-ticks",
+          "reference-order:declaration-order",
+          "reference-order:reordered"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/radar",
+          "demos/radar.html"
+        ]
+      }
     },
     {
       "kind": "sankey",
@@ -1659,73 +2752,142 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "header",
-          "category": "syntax",
-          "options": [
-            "sankey",
-            "sankey-beta"
-          ]
-        },
-        {
-          "name": "branching",
-          "category": "topology",
-          "options": [
-            "linear",
-            "branching"
-          ]
-        },
-        {
-          "name": "merging",
-          "category": "topology",
-          "options": [
-            "separate",
-            "merging"
-          ]
-        },
-        {
-          "name": "stages",
-          "category": "topology",
-          "options": [
-            "two-stage",
-            "four-stage"
-          ]
-        },
-        {
-          "name": "csv-escaping",
-          "category": "syntax",
-          "options": [
-            "plain-records",
-            "quoted-records"
-          ]
-        },
-        {
-          "name": "alignment",
-          "category": "layout",
-          "options": [
-            "justify",
-            "left"
-          ]
-        },
-        {
-          "name": "link-color",
-          "category": "style",
-          "options": [
-            "source",
-            "gradient"
-          ]
-        },
-        {
-          "name": "values",
-          "category": "data",
-          "options": [
-            "hidden",
-            "shown-with-units"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "sankey-header",
+          "sankey-beta-header",
+          "csv-records",
+          "quoted-commas",
+          "escaped-quotes",
+          "blank-lines",
+          "multi-stage-flow",
+          "branching",
+          "merging",
+          "left-alignment",
+          "right-alignment",
+          "center-alignment",
+          "justify-alignment",
+          "gradient-links",
+          "source-links",
+          "target-links",
+          "fixed-link-color",
+          "show-values",
+          "hide-values",
+          "value-prefix",
+          "value-suffix",
+          "node-width",
+          "node-padding",
+          "outlined-labels",
+          "custom-node-colors",
+          "frontmatter-title",
+          "responsive-sizing",
+          "header:sankey",
+          "header:sankey-beta",
+          "branching:linear",
+          "branching:branching",
+          "merging:separate",
+          "merging:merging",
+          "stages:two-stage",
+          "stages:four-stage",
+          "csv-escaping:plain-records",
+          "csv-escaping:quoted-records",
+          "alignment:justify",
+          "alignment:left",
+          "link-color:source",
+          "link-color:gradient",
+          "values:hidden",
+          "values:shown-with-units"
+        ],
+        "officialCapabilities": [
+          "sankey-header",
+          "sankey-beta-header",
+          "csv-records",
+          "quoted-commas",
+          "escaped-quotes",
+          "blank-lines",
+          "multi-stage-flow",
+          "branching",
+          "merging",
+          "left-alignment",
+          "right-alignment",
+          "center-alignment",
+          "justify-alignment",
+          "gradient-links",
+          "source-links",
+          "target-links",
+          "fixed-link-color",
+          "show-values",
+          "hide-values",
+          "value-prefix",
+          "value-suffix",
+          "node-width",
+          "node-padding",
+          "outlined-labels",
+          "custom-node-colors",
+          "frontmatter-title",
+          "responsive-sizing"
+        ],
+        "generatorCapabilities": [
+          "header:sankey",
+          "header:sankey-beta",
+          "branching:linear",
+          "branching:branching",
+          "merging:separate",
+          "merging:merging",
+          "stages:two-stage",
+          "stages:four-stage",
+          "csv-escaping:plain-records",
+          "csv-escaping:quoted-records",
+          "alignment:justify",
+          "alignment:left",
+          "link-color:source",
+          "link-color:gradient",
+          "values:hidden",
+          "values:shown-with-units"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/sankey",
+          "demos/sankey.html"
+        ]
+      }
     },
     {
       "kind": "treemap",
@@ -1733,73 +2895,166 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "header",
-          "category": "syntax",
-          "options": [
-            "treemap",
-            "treemap-beta"
-          ]
-        },
-        {
-          "name": "root-count",
-          "category": "topology",
-          "options": [
-            "single-root",
-            "multiple-roots"
-          ]
-        },
-        {
-          "name": "depth",
-          "category": "topology",
-          "options": [
-            "shallow",
-            "deep"
-          ]
-        },
-        {
-          "name": "branch-width",
-          "category": "data",
-          "options": [
-            "four-leaves",
-            "eight-leaves"
-          ]
-        },
-        {
-          "name": "value-syntax",
-          "category": "syntax",
-          "options": [
-            "colon-values",
-            "comma-values"
-          ]
-        },
-        {
-          "name": "classes",
-          "category": "style",
-          "options": [
-            "default",
-            "class-styled"
-          ]
-        },
-        {
-          "name": "values",
-          "category": "data",
-          "options": [
-            "hidden",
-            "shown-formatted"
-          ]
-        },
-        {
-          "name": "sizing",
-          "category": "layout",
-          "options": [
-            "responsive",
-            "intrinsic-padded"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "treemap-header",
+          "treemap-beta-header",
+          "sections",
+          "leaves",
+          "numeric-values",
+          "colon-values",
+          "comma-values",
+          "multiple-roots",
+          "hierarchy",
+          "deep-hierarchy",
+          "irregular-indentation",
+          "class-selectors",
+          "class-definitions",
+          "class-fill",
+          "class-stroke",
+          "class-stroke-width",
+          "class-text-color",
+          "class-font-style",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "unicode",
+          "theme",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "padding",
+          "diagram-padding",
+          "show-values",
+          "hide-values",
+          "node-width",
+          "node-height",
+          "border-width",
+          "value-font-size",
+          "label-font-size",
+          "thousands-format",
+          "currency-format",
+          "fixed-format",
+          "percentage-format",
+          "header:treemap",
+          "header:treemap-beta",
+          "root-count:single-root",
+          "root-count:multiple-roots",
+          "depth:shallow",
+          "depth:deep",
+          "branch-width:four-leaves",
+          "branch-width:eight-leaves",
+          "value-syntax:colon-values",
+          "value-syntax:comma-values",
+          "classes:default",
+          "classes:class-styled",
+          "values:hidden",
+          "values:shown-formatted",
+          "sizing:responsive",
+          "sizing:intrinsic-padded"
+        ],
+        "officialCapabilities": [
+          "treemap-header",
+          "treemap-beta-header",
+          "sections",
+          "leaves",
+          "numeric-values",
+          "colon-values",
+          "comma-values",
+          "multiple-roots",
+          "hierarchy",
+          "deep-hierarchy",
+          "irregular-indentation",
+          "class-selectors",
+          "class-definitions",
+          "class-fill",
+          "class-stroke",
+          "class-stroke-width",
+          "class-text-color",
+          "class-font-style",
+          "title",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "unicode",
+          "theme",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "padding",
+          "diagram-padding",
+          "show-values",
+          "hide-values",
+          "node-width",
+          "node-height",
+          "border-width",
+          "value-font-size",
+          "label-font-size",
+          "thousands-format",
+          "currency-format",
+          "fixed-format",
+          "percentage-format"
+        ],
+        "generatorCapabilities": [
+          "header:treemap",
+          "header:treemap-beta",
+          "root-count:single-root",
+          "root-count:multiple-roots",
+          "depth:shallow",
+          "depth:deep",
+          "branch-width:four-leaves",
+          "branch-width:eight-leaves",
+          "value-syntax:colon-values",
+          "value-syntax:comma-values",
+          "classes:default",
+          "classes:class-styled",
+          "values:hidden",
+          "values:shown-formatted",
+          "sizing:responsive",
+          "sizing:intrinsic-padded"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/treemap",
+          "demos/treemap.html"
+        ]
+      }
     },
     {
       "kind": "venn",
@@ -1807,73 +3062,164 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "set-count",
-          "category": "data",
-          "options": [
-            "three-sets",
-            "four-sets"
-          ]
-        },
-        {
-          "name": "set-size",
-          "category": "data",
-          "options": [
-            "default-sizes",
-            "explicit-sizes"
-          ]
-        },
-        {
-          "name": "pairwise-unions",
-          "category": "topology",
-          "options": [
-            "none",
-            "pairwise"
-          ]
-        },
-        {
-          "name": "multi-set-union",
-          "category": "topology",
-          "options": [
-            "pairwise-only",
-            "triple-union"
-          ]
-        },
-        {
-          "name": "intersection-text",
-          "category": "data",
-          "options": [
-            "unlabelled",
-            "labelled"
-          ]
-        },
-        {
-          "name": "set-style",
-          "category": "style",
-          "options": [
-            "default",
-            "styled-sets"
-          ]
-        },
-        {
-          "name": "intersection-style",
-          "category": "style",
-          "options": [
-            "default-intersections",
-            "styled-intersections"
-          ]
-        },
-        {
-          "name": "sizing",
-          "category": "layout",
-          "options": [
-            "responsive",
-            "intrinsic-debug"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "venn-beta-header",
+          "title",
+          "frontmatter-title",
+          "sets",
+          "quoted-identifiers",
+          "bracket-labels",
+          "unquoted-bracket-labels",
+          "default-sizes",
+          "explicit-sizes",
+          "pairwise-unions",
+          "multi-set-unions",
+          "synthetic-pairwise-layout",
+          "indented-text",
+          "explicit-text",
+          "labeled-text",
+          "unlabeled-text",
+          "numeric-text-identifiers",
+          "set-styles",
+          "intersection-styles",
+          "text-styles",
+          "fill",
+          "stroke",
+          "stroke-width",
+          "fill-opacity",
+          "text-color",
+          "hex-colors",
+          "rgb-colors",
+          "rgba-colors",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "width",
+          "height",
+          "padding",
+          "debug-layout",
+          "theme",
+          "theme-variables",
+          "comments",
+          "unicode",
+          "set-count:three-sets",
+          "set-count:four-sets",
+          "set-size:default-sizes",
+          "set-size:explicit-sizes",
+          "pairwise-unions:none",
+          "pairwise-unions:pairwise",
+          "multi-set-union:pairwise-only",
+          "multi-set-union:triple-union",
+          "intersection-text:unlabelled",
+          "intersection-text:labelled",
+          "set-style:default",
+          "set-style:styled-sets",
+          "intersection-style:default-intersections",
+          "intersection-style:styled-intersections",
+          "sizing:responsive",
+          "sizing:intrinsic-debug"
+        ],
+        "officialCapabilities": [
+          "venn-beta-header",
+          "title",
+          "frontmatter-title",
+          "sets",
+          "quoted-identifiers",
+          "bracket-labels",
+          "unquoted-bracket-labels",
+          "default-sizes",
+          "explicit-sizes",
+          "pairwise-unions",
+          "multi-set-unions",
+          "synthetic-pairwise-layout",
+          "indented-text",
+          "explicit-text",
+          "labeled-text",
+          "unlabeled-text",
+          "numeric-text-identifiers",
+          "set-styles",
+          "intersection-styles",
+          "text-styles",
+          "fill",
+          "stroke",
+          "stroke-width",
+          "fill-opacity",
+          "text-color",
+          "hex-colors",
+          "rgb-colors",
+          "rgba-colors",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "width",
+          "height",
+          "padding",
+          "debug-layout",
+          "theme",
+          "theme-variables",
+          "comments",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "set-count:three-sets",
+          "set-count:four-sets",
+          "set-size:default-sizes",
+          "set-size:explicit-sizes",
+          "pairwise-unions:none",
+          "pairwise-unions:pairwise",
+          "multi-set-union:pairwise-only",
+          "multi-set-union:triple-union",
+          "intersection-text:unlabelled",
+          "intersection-text:labelled",
+          "set-style:default",
+          "set-style:styled-sets",
+          "intersection-style:default-intersections",
+          "intersection-style:styled-intersections",
+          "sizing:responsive",
+          "sizing:intrinsic-debug"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/venn",
+          "demos/venn.html"
+        ]
+      }
     },
     {
       "kind": "ishikawa",
@@ -1881,73 +3227,130 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "header",
-          "category": "syntax",
-          "options": [
-            "ishikawa",
-            "ishikawa-beta"
-          ]
-        },
-        {
-          "name": "cause-count",
-          "category": "data",
-          "options": [
-            "three-causes",
-            "six-causes"
-          ]
-        },
-        {
-          "name": "nesting",
-          "category": "topology",
-          "options": [
-            "flat",
-            "nested"
-          ]
-        },
-        {
-          "name": "depth",
-          "category": "topology",
-          "options": [
-            "two-level",
-            "four-level"
-          ]
-        },
-        {
-          "name": "alternation",
-          "category": "topology",
-          "options": [
-            "single-side",
-            "alternating"
-          ]
-        },
-        {
-          "name": "indentation",
-          "category": "syntax",
-          "options": [
-            "regular",
-            "irregular"
-          ]
-        },
-        {
-          "name": "label-form",
-          "category": "syntax",
-          "options": [
-            "plain",
-            "entities-and-html"
-          ]
-        },
-        {
-          "name": "wrapping",
-          "category": "layout",
-          "options": [
-            "short",
-            "long-wrapping"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "ishikawa-header",
+          "ishikawa-beta-header",
+          "effect",
+          "root-only",
+          "top-level-causes",
+          "alternating-causes",
+          "nested-causes",
+          "deep-hierarchy",
+          "leaf-causes",
+          "base-level-normalization",
+          "irregular-indentation",
+          "comments",
+          "entities",
+          "html-breaks",
+          "frontmatter-title",
+          "diagram-padding",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "unicode",
+          "long-wrapping",
+          "header:ishikawa",
+          "header:ishikawa-beta",
+          "cause-count:three-causes",
+          "cause-count:six-causes",
+          "nesting:flat",
+          "nesting:nested",
+          "depth:two-level",
+          "depth:four-level",
+          "alternation:single-side",
+          "alternation:alternating",
+          "indentation:regular",
+          "indentation:irregular",
+          "label-form:plain",
+          "label-form:entities-and-html",
+          "wrapping:short",
+          "wrapping:long-wrapping"
+        ],
+        "officialCapabilities": [
+          "ishikawa-header",
+          "ishikawa-beta-header",
+          "effect",
+          "root-only",
+          "top-level-causes",
+          "alternating-causes",
+          "nested-causes",
+          "deep-hierarchy",
+          "leaf-causes",
+          "base-level-normalization",
+          "irregular-indentation",
+          "comments",
+          "entities",
+          "html-breaks",
+          "frontmatter-title",
+          "diagram-padding",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "unicode",
+          "long-wrapping"
+        ],
+        "generatorCapabilities": [
+          "header:ishikawa",
+          "header:ishikawa-beta",
+          "cause-count:three-causes",
+          "cause-count:six-causes",
+          "nesting:flat",
+          "nesting:nested",
+          "depth:two-level",
+          "depth:four-level",
+          "alternation:single-side",
+          "alternation:alternating",
+          "indentation:regular",
+          "indentation:irregular",
+          "label-form:plain",
+          "label-form:entities-and-html",
+          "wrapping:short",
+          "wrapping:long-wrapping"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/ishikawa",
+          "demos/ishikawa.html"
+        ]
+      }
     },
     {
       "kind": "cynefin",
@@ -1955,73 +3358,148 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "domain-density",
-          "category": "data",
-          "options": [
-            "one-item",
-            "three-items"
-          ]
-        },
-        {
-          "name": "empty-domain",
-          "category": "topology",
-          "options": [
-            "all-populated",
-            "empty-domain"
-          ]
-        },
-        {
-          "name": "transitions",
-          "category": "topology",
-          "options": [
-            "single-transition",
-            "cross-domain"
-          ]
-        },
-        {
-          "name": "transition-labels",
-          "category": "data",
-          "options": [
-            "unlabelled",
-            "labelled"
-          ]
-        },
-        {
-          "name": "confusion",
-          "category": "data",
-          "options": [
-            "single-item",
-            "overflow"
-          ]
-        },
-        {
-          "name": "descriptions",
-          "category": "data",
-          "options": [
-            "hidden",
-            "shown"
-          ]
-        },
-        {
-          "name": "boundaries",
-          "category": "style",
-          "options": [
-            "wavy",
-            "straight"
-          ]
-        },
-        {
-          "name": "sizing",
-          "category": "layout",
-          "options": [
-            "responsive",
-            "intrinsic"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "cynefin-beta-header",
+          "colon-header",
+          "domains",
+          "fixed-domain-layout",
+          "quoted-items",
+          "empty-domains",
+          "duplicate-domain-replacement",
+          "transitions",
+          "transition-labels",
+          "unlabelled-transitions",
+          "self-loop-filtering",
+          "confusion-items",
+          "confusion-overflow",
+          "domain-descriptions",
+          "hidden-domain-descriptions",
+          "wavy-boundaries",
+          "straight-boundaries",
+          "deterministic-seed",
+          "width",
+          "height",
+          "padding",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "theme-variables",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode",
+          "domain-density:one-item",
+          "domain-density:three-items",
+          "empty-domain:all-populated",
+          "empty-domain:empty-domain",
+          "transitions:single-transition",
+          "transitions:cross-domain",
+          "transition-labels:unlabelled",
+          "transition-labels:labelled",
+          "confusion:single-item",
+          "confusion:overflow",
+          "descriptions:hidden",
+          "descriptions:shown",
+          "boundaries:wavy",
+          "boundaries:straight",
+          "sizing:responsive",
+          "sizing:intrinsic"
+        ],
+        "officialCapabilities": [
+          "cynefin-beta-header",
+          "colon-header",
+          "domains",
+          "fixed-domain-layout",
+          "quoted-items",
+          "empty-domains",
+          "duplicate-domain-replacement",
+          "transitions",
+          "transition-labels",
+          "unlabelled-transitions",
+          "self-loop-filtering",
+          "confusion-items",
+          "confusion-overflow",
+          "domain-descriptions",
+          "hidden-domain-descriptions",
+          "wavy-boundaries",
+          "straight-boundaries",
+          "deterministic-seed",
+          "width",
+          "height",
+          "padding",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "theme-variables",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "domain-density:one-item",
+          "domain-density:three-items",
+          "empty-domain:all-populated",
+          "empty-domain:empty-domain",
+          "transitions:single-transition",
+          "transitions:cross-domain",
+          "transition-labels:unlabelled",
+          "transition-labels:labelled",
+          "confusion:single-item",
+          "confusion:overflow",
+          "descriptions:hidden",
+          "descriptions:shown",
+          "boundaries:wavy",
+          "boundaries:straight",
+          "sizing:responsive",
+          "sizing:intrinsic"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/cynefin",
+          "demos/cynefin.html"
+        ]
+      }
     },
     {
       "kind": "block",
@@ -2029,73 +3507,150 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "columns",
-          "category": "layout",
-          "options": [
-            "automatic",
-            "explicit"
-          ]
-        },
-        {
-          "name": "spans",
-          "category": "topology",
-          "options": [
-            "single-column",
-            "column-spans"
-          ]
-        },
-        {
-          "name": "spaces",
-          "category": "topology",
-          "options": [
-            "packed",
-            "spaces"
-          ]
-        },
-        {
-          "name": "composites",
-          "category": "topology",
-          "options": [
-            "flat",
-            "nested-composites"
-          ]
-        },
-        {
-          "name": "shapes",
-          "category": "style",
-          "options": [
-            "rectangles",
-            "mixed-shapes"
-          ]
-        },
-        {
-          "name": "links",
-          "category": "topology",
-          "options": [
-            "linear",
-            "branching"
-          ]
-        },
-        {
-          "name": "edge-style",
-          "category": "style",
-          "options": [
-            "solid",
-            "labelled-thick-dotted"
-          ]
-        },
-        {
-          "name": "classes",
-          "category": "style",
-          "options": [
-            "default",
-            "classes-and-inline-style"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "block-header",
+          "block-beta-header",
+          "columns",
+          "auto-columns",
+          "column-spans",
+          "spaces",
+          "composites",
+          "nested-composites",
+          "shape-delimiters",
+          "block-arrows",
+          "arrow-directions",
+          "links",
+          "labelled-links",
+          "link-markers",
+          "link-thickness",
+          "link-patterns",
+          "edge-numbering",
+          "classes",
+          "inline-styles",
+          "duplicate-declarations",
+          "frontmatter-title",
+          "comments",
+          "entities",
+          "unicode",
+          "sanitized-labels",
+          "width-overflow",
+          "padding",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "palette-composites",
+          "columns:automatic",
+          "columns:explicit",
+          "spans:single-column",
+          "spans:column-spans",
+          "spaces:packed",
+          "spaces:spaces",
+          "composites:flat",
+          "composites:nested-composites",
+          "shapes:rectangles",
+          "shapes:mixed-shapes",
+          "links:linear",
+          "links:branching",
+          "edge-style:solid",
+          "edge-style:labelled-thick-dotted",
+          "classes:default",
+          "classes:classes-and-inline-style"
+        ],
+        "officialCapabilities": [
+          "block-header",
+          "block-beta-header",
+          "columns",
+          "auto-columns",
+          "column-spans",
+          "spaces",
+          "composites",
+          "nested-composites",
+          "shape-delimiters",
+          "block-arrows",
+          "arrow-directions",
+          "links",
+          "labelled-links",
+          "link-markers",
+          "link-thickness",
+          "link-patterns",
+          "edge-numbering",
+          "classes",
+          "inline-styles",
+          "duplicate-declarations",
+          "frontmatter-title",
+          "comments",
+          "entities",
+          "unicode",
+          "sanitized-labels",
+          "width-overflow",
+          "padding",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "palette-composites"
+        ],
+        "generatorCapabilities": [
+          "columns:automatic",
+          "columns:explicit",
+          "spans:single-column",
+          "spans:column-spans",
+          "spaces:packed",
+          "spaces:spaces",
+          "composites:flat",
+          "composites:nested-composites",
+          "shapes:rectangles",
+          "shapes:mixed-shapes",
+          "links:linear",
+          "links:branching",
+          "edge-style:solid",
+          "edge-style:labelled-thick-dotted",
+          "classes:default",
+          "classes:classes-and-inline-style"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/block",
+          "demos/block.html"
+        ]
+      }
     },
     {
       "kind": "eventmodeling",
@@ -2103,73 +3658,132 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "syntax",
-          "category": "syntax",
-          "options": [
-            "compact",
-            "relaxed"
-          ]
-        },
-        {
-          "name": "timeframes",
-          "category": "data",
-          "options": [
-            "four-frames",
-            "eight-frames"
-          ]
-        },
-        {
-          "name": "reset-frame",
-          "category": "topology",
-          "options": [
-            "continuous",
-            "reset"
-          ]
-        },
-        {
-          "name": "entity-alias",
-          "category": "data",
-          "options": [
-            "default-entity",
-            "entity-alias"
-          ]
-        },
-        {
-          "name": "swimlanes",
-          "category": "topology",
-          "options": [
-            "default-lane",
-            "namespaced-lanes"
-          ]
-        },
-        {
-          "name": "relations",
-          "category": "topology",
-          "options": [
-            "inferred",
-            "explicit"
-          ]
-        },
-        {
-          "name": "relation-count",
-          "category": "topology",
-          "options": [
-            "single",
-            "multiple"
-          ]
-        },
-        {
-          "name": "inline-data",
-          "category": "data",
-          "options": [
-            "no-data",
-            "inline-data"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "eventmodeling-header",
+          "compact-syntax",
+          "relaxed-syntax",
+          "timeframes",
+          "reset-frames",
+          "entity-type-aliases",
+          "default-swimlanes",
+          "namespaced-swimlanes",
+          "inferred-relations",
+          "explicit-relations",
+          "multiple-relations",
+          "inline-data",
+          "frontmatter-title",
+          "comments",
+          "entities",
+          "unicode",
+          "padding",
+          "row-height",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "theme-variables",
+          "syntax:compact",
+          "syntax:relaxed",
+          "timeframes:four-frames",
+          "timeframes:eight-frames",
+          "reset-frame:continuous",
+          "reset-frame:reset",
+          "entity-alias:default-entity",
+          "entity-alias:entity-alias",
+          "swimlanes:default-lane",
+          "swimlanes:namespaced-lanes",
+          "relations:inferred",
+          "relations:explicit",
+          "relation-count:single",
+          "relation-count:multiple",
+          "inline-data:no-data",
+          "inline-data:inline-data"
+        ],
+        "officialCapabilities": [
+          "eventmodeling-header",
+          "compact-syntax",
+          "relaxed-syntax",
+          "timeframes",
+          "reset-frames",
+          "entity-type-aliases",
+          "default-swimlanes",
+          "namespaced-swimlanes",
+          "inferred-relations",
+          "explicit-relations",
+          "multiple-relations",
+          "inline-data",
+          "frontmatter-title",
+          "comments",
+          "entities",
+          "unicode",
+          "padding",
+          "row-height",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "theme-variables"
+        ],
+        "generatorCapabilities": [
+          "syntax:compact",
+          "syntax:relaxed",
+          "timeframes:four-frames",
+          "timeframes:eight-frames",
+          "reset-frame:continuous",
+          "reset-frame:reset",
+          "entity-alias:default-entity",
+          "entity-alias:entity-alias",
+          "swimlanes:default-lane",
+          "swimlanes:namespaced-lanes",
+          "relations:inferred",
+          "relations:explicit",
+          "relation-count:single",
+          "relation-count:multiple",
+          "inline-data:no-data",
+          "inline-data:inline-data"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/eventmodeling",
+          "demos/eventmodeling.html"
+        ]
+      }
     },
     {
       "kind": "agentflow",
@@ -2177,73 +3791,152 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "node-shapes",
-          "category": "style",
-          "options": [
-            "task-only",
-            "mixed-shapes"
-          ]
-        },
-        {
-          "name": "fan-out",
-          "category": "topology",
-          "options": [
-            "linear",
-            "fan-out"
-          ]
-        },
-        {
-          "name": "edge-labels",
-          "category": "data",
-          "options": [
-            "unlabelled",
-            "labelled"
-          ]
-        },
-        {
-          "name": "failure-edge",
-          "category": "topology",
-          "options": [
-            "success-only",
-            "failure-path"
-          ]
-        },
-        {
-          "name": "flows",
-          "category": "topology",
-          "options": [
-            "global",
-            "flow-container"
-          ]
-        },
-        {
-          "name": "nested-flows",
-          "category": "topology",
-          "options": [
-            "single-level",
-            "nested"
-          ]
-        },
-        {
-          "name": "connector-metadata",
-          "category": "data",
-          "options": [
-            "plain",
-            "connector-and-metadata"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "agentflow-beta-header",
+          "directions",
+          "shape-aliases",
+          "canonical-shapes",
+          "sequence-edges",
+          "chained-edges",
+          "fan-out",
+          "labelled-edges",
+          "reference-edges",
+          "failure-edges",
+          "flows",
+          "nested-flows",
+          "global-nodes",
+          "collapsed-flows",
+          "connectors",
+          "connector-ref-bare",
+          "connector-ref-dotted",
+          "connector-ref-url",
+          "single-line-metadata",
+          "multiline-metadata",
+          "custom-metadata",
+          "container-metadata",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode",
+          "agentflow-config",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "look",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "node-shapes:task-only",
+          "node-shapes:mixed-shapes",
+          "fan-out:linear",
+          "fan-out:fan-out",
+          "edge-labels:unlabelled",
+          "edge-labels:labelled",
+          "failure-edge:success-only",
+          "failure-edge:failure-path",
+          "flows:global",
+          "flows:flow-container",
+          "nested-flows:single-level",
+          "nested-flows:nested",
+          "connector-metadata:plain",
+          "connector-metadata:connector-and-metadata"
+        ],
+        "officialCapabilities": [
+          "agentflow-beta-header",
+          "directions",
+          "shape-aliases",
+          "canonical-shapes",
+          "sequence-edges",
+          "chained-edges",
+          "fan-out",
+          "labelled-edges",
+          "reference-edges",
+          "failure-edges",
+          "flows",
+          "nested-flows",
+          "global-nodes",
+          "collapsed-flows",
+          "connectors",
+          "connector-ref-bare",
+          "connector-ref-dotted",
+          "connector-ref-url",
+          "single-line-metadata",
+          "multiline-metadata",
+          "custom-metadata",
+          "container-metadata",
+          "frontmatter-title",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode",
+          "agentflow-config",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "look"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "node-shapes:task-only",
+          "node-shapes:mixed-shapes",
+          "fan-out:linear",
+          "fan-out:fan-out",
+          "edge-labels:unlabelled",
+          "edge-labels:labelled",
+          "failure-edge:success-only",
+          "failure-edge:failure-path",
+          "flows:global",
+          "flows:flow-container",
+          "nested-flows:single-level",
+          "nested-flows:nested",
+          "connector-metadata:plain",
+          "connector-metadata:connector-and-metadata"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/agentflow",
+          "demos/dataflowchart.html"
+        ]
+      }
     },
     {
       "kind": "usecase",
@@ -2251,73 +3944,164 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "direction",
-          "category": "layout",
-          "options": [
-            "left-to-right",
-            "top-to-bottom"
-          ]
-        },
-        {
-          "name": "actor-variants",
-          "category": "data",
-          "options": [
-            "single-actor",
-            "multiple-actor-types"
-          ]
-        },
-        {
-          "name": "usecase-form",
-          "category": "style",
-          "options": [
-            "ellipses",
-            "mixed-forms"
-          ]
-        },
-        {
-          "name": "boundary",
-          "category": "topology",
-          "options": [
-            "system",
-            "nested-package"
-          ]
-        },
-        {
-          "name": "include",
-          "category": "topology",
-          "options": [
-            "associations",
-            "include"
-          ]
-        },
-        {
-          "name": "extend",
-          "category": "topology",
-          "options": [
-            "base-only",
-            "extend"
-          ]
-        },
-        {
-          "name": "generalization",
-          "category": "topology",
-          "options": [
-            "flat-actors",
-            "generalization"
-          ]
-        },
-        {
-          "name": "notes-style",
-          "category": "style",
-          "options": [
-            "plain",
-            "notes-and-classes"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "usecase-beta-header",
+          "directions",
+          "actors",
+          "actor-variants",
+          "actor-icons",
+          "business-elements",
+          "stereotypes",
+          "ellipse-usecases",
+          "rectangle-usecases",
+          "system-boundaries",
+          "package-boundaries",
+          "associations",
+          "association-markers",
+          "edge-labels",
+          "minimum-length",
+          "include",
+          "extend",
+          "generalization",
+          "edge-ids",
+          "edge-classes",
+          "edge-styles",
+          "edge-animation",
+          "notes",
+          "json-tables",
+          "classes",
+          "inline-styles",
+          "frontmatter-title-reset",
+          "frontmatter-config",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode",
+          "markdown",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "theme-variables",
+          "color-rotation",
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "actor-variants:single-actor",
+          "actor-variants:multiple-actor-types",
+          "usecase-form:ellipses",
+          "usecase-form:mixed-forms",
+          "boundary:system",
+          "boundary:nested-package",
+          "include:associations",
+          "include:include",
+          "extend:base-only",
+          "extend:extend",
+          "generalization:flat-actors",
+          "generalization:generalization",
+          "notes-style:plain",
+          "notes-style:notes-and-classes"
+        ],
+        "officialCapabilities": [
+          "usecase-beta-header",
+          "directions",
+          "actors",
+          "actor-variants",
+          "actor-icons",
+          "business-elements",
+          "stereotypes",
+          "ellipse-usecases",
+          "rectangle-usecases",
+          "system-boundaries",
+          "package-boundaries",
+          "associations",
+          "association-markers",
+          "edge-labels",
+          "minimum-length",
+          "include",
+          "extend",
+          "generalization",
+          "edge-ids",
+          "edge-classes",
+          "edge-styles",
+          "edge-animation",
+          "notes",
+          "json-tables",
+          "classes",
+          "inline-styles",
+          "frontmatter-title-reset",
+          "frontmatter-config",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode",
+          "markdown",
+          "responsive-sizing",
+          "intrinsic-sizing",
+          "theme",
+          "theme-variables",
+          "color-rotation"
+        ],
+        "generatorCapabilities": [
+          "direction:left-to-right",
+          "direction:top-to-bottom",
+          "actor-variants:single-actor",
+          "actor-variants:multiple-actor-types",
+          "usecase-form:ellipses",
+          "usecase-form:mixed-forms",
+          "boundary:system",
+          "boundary:nested-package",
+          "include:associations",
+          "include:include",
+          "extend:base-only",
+          "extend:extend",
+          "generalization:flat-actors",
+          "generalization:generalization",
+          "notes-style:plain",
+          "notes-style:notes-and-classes"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/usecase",
+          "demos/usecase.html"
+        ]
+      }
     },
     {
       "kind": "wardley",
@@ -2325,73 +4109,144 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "component-count",
-          "category": "data",
-          "options": [
-            "four-components",
-            "eight-components"
-          ]
-        },
-        {
-          "name": "inertia",
-          "category": "data",
-          "options": [
-            "none",
-            "inertia"
-          ]
-        },
-        {
-          "name": "sourcing",
-          "category": "data",
-          "options": [
-            "none",
-            "sourcing-strategies"
-          ]
-        },
-        {
-          "name": "dependencies",
-          "category": "topology",
-          "options": [
-            "linear",
-            "branching"
-          ]
-        },
-        {
-          "name": "link-style",
-          "category": "style",
-          "options": [
-            "solid",
-            "dashed-labelled"
-          ]
-        },
-        {
-          "name": "flow-links",
-          "category": "topology",
-          "options": [
-            "dependencies",
-            "flow"
-          ]
-        },
-        {
-          "name": "pipeline",
-          "category": "topology",
-          "options": [
-            "components",
-            "pipeline"
-          ]
-        },
-        {
-          "name": "annotations",
-          "category": "data",
-          "options": [
-            "plain",
-            "notes-annotations-accelerators"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "wardley-beta-header",
+          "titles",
+          "size",
+          "anchors",
+          "components",
+          "coordinates",
+          "label-offsets",
+          "inertia",
+          "sourcing-strategies",
+          "dependencies",
+          "dashed-links",
+          "flow-links",
+          "link-labels",
+          "evolution-trends",
+          "custom-evolution-stages",
+          "custom-stage-widths",
+          "pipelines",
+          "notes",
+          "annotations",
+          "accelerators",
+          "deaccelerators",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode",
+          "theme",
+          "theme-variables",
+          "responsive-sizing",
+          "component-count:four-components",
+          "component-count:eight-components",
+          "inertia:none",
+          "inertia:inertia",
+          "sourcing:none",
+          "sourcing:sourcing-strategies",
+          "dependencies:linear",
+          "dependencies:branching",
+          "link-style:solid",
+          "link-style:dashed-labelled",
+          "flow-links:dependencies",
+          "flow-links:flow",
+          "pipeline:components",
+          "pipeline:pipeline",
+          "annotations:plain",
+          "annotations:notes-annotations-accelerators"
+        ],
+        "officialCapabilities": [
+          "wardley-beta-header",
+          "titles",
+          "size",
+          "anchors",
+          "components",
+          "coordinates",
+          "label-offsets",
+          "inertia",
+          "sourcing-strategies",
+          "dependencies",
+          "dashed-links",
+          "flow-links",
+          "link-labels",
+          "evolution-trends",
+          "custom-evolution-stages",
+          "custom-stage-widths",
+          "pipelines",
+          "notes",
+          "annotations",
+          "accelerators",
+          "deaccelerators",
+          "accessibility",
+          "comments",
+          "entities",
+          "unicode",
+          "theme",
+          "theme-variables",
+          "responsive-sizing"
+        ],
+        "generatorCapabilities": [
+          "component-count:four-components",
+          "component-count:eight-components",
+          "inertia:none",
+          "inertia:inertia",
+          "sourcing:none",
+          "sourcing:sourcing-strategies",
+          "dependencies:linear",
+          "dependencies:branching",
+          "link-style:solid",
+          "link-style:dashed-labelled",
+          "flow-links:dependencies",
+          "flow-links:flow",
+          "pipeline:components",
+          "pipeline:pipeline",
+          "annotations:plain",
+          "annotations:notes-annotations-accelerators"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/wardley",
+          "demos/wardley.html"
+        ]
+      }
     },
     {
       "kind": "zenuml",
@@ -2399,73 +4254,140 @@
       "uniqueBlueprintCount": 256,
       "normalizedSemanticStructureCount": 256,
       "structuralSignatureCount": 256,
-      "structuralProfileCount": 256,
-      "dimensions": [
-        {
-          "name": "aliases",
-          "category": "data",
-          "options": [
-            "direct-names",
-            "aliases"
-          ]
-        },
-        {
-          "name": "participant-groups",
-          "category": "topology",
-          "options": [
-            "ungrouped",
-            "grouped"
-          ]
-        },
-        {
-          "name": "message-kind",
-          "category": "style",
-          "options": [
-            "synchronous",
-            "asynchronous"
-          ]
-        },
-        {
-          "name": "nesting",
-          "category": "topology",
-          "options": [
-            "flat",
-            "nested-messages"
-          ]
-        },
-        {
-          "name": "creation",
-          "category": "topology",
-          "options": [
-            "existing-participants",
-            "creation"
-          ]
-        },
-        {
-          "name": "returns",
-          "category": "topology",
-          "options": [
-            "one-way",
-            "assignments-and-returns"
-          ]
-        },
-        {
-          "name": "conditionals",
-          "category": "topology",
-          "options": [
-            "linear",
-            "if-else"
-          ]
-        },
-        {
-          "name": "concurrency",
-          "category": "topology",
-          "options": [
-            "sequential",
-            "loop-and-parallel"
-          ]
-        }
-      ]
+      "structuralProfileCount": 240,
+      "coverageContract": {
+        "mode": "coverage-driven",
+        "caseCount": 256,
+        "categories": [
+          {
+            "id": "official-syntax-atom",
+            "quota": 64,
+            "description": "Focused cases anchored by one named upstream syntax or rendering capability."
+          },
+          {
+            "id": "feature-combination",
+            "quota": 64,
+            "description": "Pairwise and higher-order combinations across syntax, data, style, and topology."
+          },
+          {
+            "id": "topology-layout-stress",
+            "quota": 48,
+            "description": "Scaled structures that exercise family-specific layout and rendering limits."
+          },
+          {
+            "id": "ai-common-valid",
+            "quota": 32,
+            "description": "Common valid programs and feature combinations emitted by general-purpose AI models."
+          },
+          {
+            "id": "equivalent-syntax",
+            "quota": 32,
+            "description": "Sixteen semantic pairs using implicit and explicit empty theme-variable configuration."
+          },
+          {
+            "id": "historical-regression",
+            "quota": 16,
+            "description": "Dense parser, layout, text, style, and routing combinations kept as fixed regressions."
+          }
+        ],
+        "requiredCapabilities": [
+          "zenuml-header",
+          "titles",
+          "frontmatter-title",
+          "participants",
+          "aliases",
+          "annotators",
+          "participant-groups",
+          "async-messages",
+          "sync-messages",
+          "nested-messages",
+          "creation-messages",
+          "assignments",
+          "return-messages",
+          "return-annotator",
+          "comments",
+          "markdown",
+          "dividers",
+          "if-else",
+          "loop",
+          "par",
+          "opt",
+          "critical",
+          "section",
+          "ref",
+          "try-catch-finally",
+          "unicode",
+          "aliases:direct-names",
+          "aliases:aliases",
+          "participant-groups:ungrouped",
+          "participant-groups:grouped",
+          "message-kind:synchronous",
+          "message-kind:asynchronous",
+          "nesting:flat",
+          "nesting:nested-messages",
+          "creation:existing-participants",
+          "creation:creation",
+          "returns:one-way",
+          "returns:assignments-and-returns",
+          "conditionals:linear",
+          "conditionals:if-else",
+          "concurrency:sequential",
+          "concurrency:loop-and-parallel"
+        ],
+        "officialCapabilities": [
+          "zenuml-header",
+          "titles",
+          "frontmatter-title",
+          "participants",
+          "aliases",
+          "annotators",
+          "participant-groups",
+          "async-messages",
+          "sync-messages",
+          "nested-messages",
+          "creation-messages",
+          "assignments",
+          "return-messages",
+          "return-annotator",
+          "comments",
+          "markdown",
+          "dividers",
+          "if-else",
+          "loop",
+          "par",
+          "opt",
+          "critical",
+          "section",
+          "ref",
+          "try-catch-finally",
+          "unicode"
+        ],
+        "generatorCapabilities": [
+          "aliases:direct-names",
+          "aliases:aliases",
+          "participant-groups:ungrouped",
+          "participant-groups:grouped",
+          "message-kind:synchronous",
+          "message-kind:asynchronous",
+          "nesting:flat",
+          "nesting:nested-messages",
+          "creation:existing-participants",
+          "creation:creation",
+          "returns:one-way",
+          "returns:assignments-and-returns",
+          "conditionals:linear",
+          "conditionals:if-else",
+          "concurrency:sequential",
+          "concurrency:loop-and-parallel"
+        ],
+        "minimumCapabilityOccurrences": 1,
+        "minimumStructuralProfiles": 240,
+        "equivalentSyntaxGroupCount": 16,
+        "upstreamReferences": [
+          "packages/mermaid/src/diagrams/zenuml",
+          "demos/zenuml.html"
+        ]
+      }
     }
   ]
 }

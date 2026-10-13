@@ -5,6 +5,7 @@ import com.swithun.cmpmermaid.core.MermaidError
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertNull
 
 class TimelineParserTest {
     @Test
@@ -79,20 +80,18 @@ class TimelineParserTest {
               }
               2026 : R&amp;D
             """.trimIndent(),
-            diagramTitle = "Frontmatter title",
         )
 
-        assertEquals("Frontmatter title", document.title)
+        assertNull(document.title)
         assertEquals("Release &amp; migration", document.accessibilityTitle)
         assertEquals("First line\n    Second &lt; third", document.accessibilityDescription)
         assertEquals(listOf("R&amp;D"), document.tasks.single().events)
     }
 
     @Test
-    fun dslTitleOverridesFrontmatterTitle() {
+    fun parsesDslTitle() {
         val document = parse(
             "timeline\n  title Source title\n  Period",
-            diagramTitle = "Frontmatter title",
         )
 
         assertEquals("Source title", document.title)
@@ -171,18 +170,14 @@ class TimelineParserTest {
         }
     }
 
-    private fun parse(
-        source: String,
-        diagramTitle: String? = null,
-    ): TimelineDocument = assertIs<GMResult.Ok<TimelineDocument>>(
+    private fun parse(source: String): TimelineDocument =
+        assertIs<GMResult.Ok<TimelineDocument>>(
         TimelineParser(
-            diagramTitle = diagramTitle,
             lineOffset = 0,
         ).parse(source),
     ).value
 
     private fun parser(lineOffset: Int = 0): TimelineParser = TimelineParser(
-        diagramTitle = null,
         lineOffset = lineOffset,
     )
 }

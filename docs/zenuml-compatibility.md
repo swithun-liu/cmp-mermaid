@@ -31,13 +31,13 @@ Supported behavior includes:
   interactions.
 - The 256-case generated Native matrix renders with finite deterministic
   SceneGraphs.
-- All 256 full-factorial visual-input matrix sources render successfully
+- All 256 coverage-driven visual-input matrix sources render successfully
   through Mermaid.js `12.0.0` with
   `@mermaid-js/mermaid-zenuml@1.0.0` and `@zenuml/core@3.49.2`.
 - All 13 production pairs pass the replacement detail and geometry audits.
   Native/Official content ratios are width `1.042-1.100`, height
   `1.039-1.102`, and foreground ink `1.094-1.238`.
-- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.043-1.082`, height `1.042-1.079`, and foreground ink `0.967-1.184`.
+- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.042-1.100`, height `1.039-1.102`, and foreground ink `1.012-1.256`.
 - The cached open and filled message-arrow vectors have explicit black
   primitive paint, with a regression test protecting Kotlin object
   initialization order.

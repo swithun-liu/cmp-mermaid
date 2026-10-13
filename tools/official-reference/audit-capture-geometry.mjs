@@ -2,7 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
-import { compareDetailManifests } from './detail-audit-core.mjs';
+import {
+  compareDetailManifests,
+  compareRasterFeatures,
+} from './detail-audit-core.mjs';
 import { classifyDetailFindings } from './detail-audit-policy.mjs';
 import { classifyGeometryRatio } from './geometry-audit-policy.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
@@ -92,14 +95,18 @@ try {
       page,
       `${prefix}_official.png`,
     );
+    const nativeManifest = readJson(`${prefix}_native.manifest.json`);
+    const officialManifest = readJson(`${prefix}_official.manifest.json`);
     const detail = compareDetailManifests(
-      readJson(`${prefix}_native.manifest.json`),
-      readJson(`${prefix}_official.manifest.json`),
+      nativeManifest,
+      officialManifest,
       auditCase.expectedTexts ?? [],
     );
+    const raster = compareRasterFeatures(native, official);
     const detailFindings = classifyDetailFindings(
       detail.findings,
       auditCase,
+      { manifest: detail, raster },
     );
     const structuralErrors = detailFindings.filter(
       (finding) => finding.severity === 'error',
@@ -110,7 +117,7 @@ try {
       );
     });
     detailFindings
-      .filter((finding) => finding.policy === 'iterative-layout-placement')
+      .filter((finding) => finding.policy !== undefined)
       .forEach((finding) => {
         reviews.push(
           `${auditCase.id}/structure ${finding.code}: ${finding.message}`,
@@ -119,12 +126,68 @@ try {
     const reviewIterativeGeometry =
       auditCase.layout === 'cose-bilkent' &&
       structuralErrors.length === 0;
+    const manifestWidthRatio = ratio(
+      nativeManifest.viewport?.width,
+      officialManifest.viewport?.width,
+    );
+    const manifestHeightRatio = ratio(
+      nativeManifest.viewport?.height,
+      officialManifest.viewport?.height,
+    );
+    const nativeGeometryBounds = manifestGeometryBounds(nativeManifest);
+    const officialGeometryBounds = manifestGeometryBounds(officialManifest);
+    const manifestGeometryWidthRatio = ratio(
+      nativeGeometryBounds.width,
+      officialGeometryBounds.width,
+    );
+    const manifestGeometryHeightRatio = ratio(
+      nativeGeometryBounds.height,
+      officialGeometryBounds.height,
+    );
+    const manifestGeometryMatches =
+      structuralErrors.length === 0 &&
+      (
+        (
+          within(
+            manifestWidthRatio,
+            thresholds.minimumWidthRatio,
+            thresholds.maximumWidthRatio,
+          ) &&
+          within(
+            manifestHeightRatio,
+            thresholds.minimumHeightRatio,
+            thresholds.maximumHeightRatio,
+          )
+        ) ||
+        (
+          within(
+            manifestGeometryWidthRatio,
+            thresholds.minimumWidthRatio,
+            thresholds.maximumWidthRatio,
+          ) &&
+          within(
+            manifestGeometryHeightRatio,
+            thresholds.minimumHeightRatio,
+            thresholds.maximumHeightRatio,
+          ) &&
+          within(detail.elementComparison.ratios.geometry, 0.95, 1.05)
+        )
+      );
+    const dimensionReviewReason = reviewIterativeGeometry
+      ? 'CoSE manifest structure matches'
+      : manifestGeometryMatches
+        ? 'manifest viewport and structure match; raster bounds reflect font wrapping'
+        : null;
     const result = {
       id: auditCase.id,
       kind: auditCase.kind,
       layout: auditCase.layout ?? null,
-      native,
-      official,
+      native: geometrySummary(native),
+      official: geometrySummary(official),
+      manifestWidthRatio,
+      manifestHeightRatio,
+      manifestGeometryWidthRatio,
+      manifestGeometryHeightRatio,
       widthRatio: ratio(native.contentBounds.width, official.contentBounds.width),
       heightRatio: ratio(
         native.contentBounds.height,
@@ -140,21 +203,21 @@ try {
       result.widthRatio,
       thresholds.minimumWidthRatio,
       thresholds.maximumWidthRatio,
-      reviewIterativeGeometry,
+      dimensionReviewReason,
     );
     validateRatio(
       `${auditCase.id}/height`,
       result.heightRatio,
       thresholds.minimumHeightRatio,
       thresholds.maximumHeightRatio,
-      reviewIterativeGeometry,
+      dimensionReviewReason,
     );
     validateRatio(
       `${auditCase.id}/ink`,
       result.inkRatio,
       thresholds.minimumInkRatio,
       thresholds.maximumInkRatio,
-      reviewIterativeGeometry,
+      reviewIterativeGeometry ? 'CoSE manifest structure matches' : null,
     );
   }
 } finally {
@@ -195,7 +258,7 @@ if (failures.length > 0) {
   process.exitCode = 1;
 }
 if (reviews.length > 0) {
-  console.log('Iterative-layout geometry review queue:');
+  console.log('Geometry review queue:');
   for (const review of reviews) {
     console.log(`- ${review}`);
   }
@@ -219,13 +282,14 @@ function validateCapture(label, capture) {
   }
 }
 
-function validateRatio(label, value, minimum, maximum, reviewOnly = false) {
+function validateRatio(label, value, minimum, maximum, reviewReason = null) {
   const result = classifyGeometryRatio({
     label,
     value,
     minimum,
     maximum,
-    iterativeLayoutWithMatchingStructure: reviewOnly,
+    iterativeLayoutWithMatchingStructure: false,
+    reviewReason,
   });
   if (result.status === 'review') {
     reviews.push(result.message);
@@ -327,20 +391,134 @@ async function analyzePng(page, fileName) {
           width: maximumX - minimumX + 1,
           height: maximumY - minimumY + 1,
         };
+    const gridSize = 96;
+    const evidenceBackground = manifestBackground ?? background;
+    const normalizedCanvas = document.createElement('canvas');
+    normalizedCanvas.width = gridSize;
+    normalizedCanvas.height = gridSize;
+    const normalizedContext = normalizedCanvas.getContext(
+      '2d',
+      { willReadFrequently: true },
+    );
+    normalizedContext.imageSmoothingEnabled = true;
+    normalizedContext.drawImage(
+      image,
+      contentBounds.x,
+      contentBounds.y,
+      contentBounds.width,
+      contentBounds.height,
+      0,
+      0,
+      gridSize,
+      gridSize,
+    );
+    const normalizedPixels = normalizedContext.getImageData(
+      0,
+      0,
+      gridSize,
+      gridSize,
+    ).data;
+    const mask = [];
+    const colors = [];
+    const luminance = [];
+    for (let index = 0; index < normalizedPixels.length; index += 4) {
+      const pixelDistance =
+        Math.abs(normalizedPixels[index] - evidenceBackground[0]) +
+        Math.abs(normalizedPixels[index + 1] - evidenceBackground[1]) +
+        Math.abs(normalizedPixels[index + 2] - evidenceBackground[2]) +
+        Math.abs(normalizedPixels[index + 3] - evidenceBackground[3]);
+      mask.push(pixelDistance > 24);
+      colors.push(
+        normalizedPixels[index],
+        normalizedPixels[index + 1],
+        normalizedPixels[index + 2],
+      );
+      luminance.push(
+        normalizedPixels[index] * 0.2126 +
+        normalizedPixels[index + 1] * 0.7152 +
+        normalizedPixels[index + 2] * 0.0722,
+      );
+    }
+    const edges = mask.map((foreground, index) => {
+      const x = index % gridSize;
+      const y = Math.floor(index / gridSize);
+      if (
+        x === 0 ||
+        y === 0 ||
+        x + 1 === gridSize ||
+        y + 1 === gridSize
+      ) {
+        return false;
+      }
+      const horizontal =
+        Math.abs(luminance[index - 1] - luminance[index + 1]);
+      const vertical =
+        Math.abs(
+          luminance[index - gridSize] - luminance[index + gridSize],
+        );
+      const maskBoundary =
+        mask[index - 1] !== foreground ||
+        mask[index + 1] !== foreground ||
+        mask[index - gridSize] !== foreground ||
+        mask[index + gridSize] !== foreground;
+      return horizontal + vertical > 48 || maskBoundary;
+    });
     return {
+      gridSize,
       width: image.width,
       height: image.height,
-      background: manifestBackground ?? background,
+      background: evidenceBackground,
       backgroundColors: backgrounds,
       inkPixels,
       inkRatio: inkPixels / (image.width * image.height),
       contentBounds,
+      mask,
+      edges,
+      colors,
     };
   }, { imageSource: source, manifestBackground });
 }
 
+function geometrySummary(value) {
+  const { mask, edges, colors, ...summary } = value;
+  return summary;
+}
+
 function ratio(numerator, denominator) {
   return denominator === 0 ? Number.NaN : numerator / denominator;
+}
+
+function within(value, minimum, maximum) {
+  return Number.isFinite(value) && value >= minimum && value <= maximum;
+}
+
+function manifestGeometryBounds(manifest) {
+  const bounds = (manifest.elements ?? [])
+    .filter((element) =>
+      element.type !== 'text' &&
+      Number.isFinite(element.bounds?.x) &&
+      Number.isFinite(element.bounds?.y) &&
+      Number.isFinite(element.bounds?.width) &&
+      Number.isFinite(element.bounds?.height) &&
+      element.bounds.width >= 0 &&
+      element.bounds.height >= 0
+    )
+    .map((element) => element.bounds);
+  if (bounds.length === 0) {
+    return { width: Number.NaN, height: Number.NaN };
+  }
+  const minimumX = Math.min(...bounds.map((entry) => entry.x));
+  const minimumY = Math.min(...bounds.map((entry) => entry.y));
+  const maximumX = Math.max(
+    ...bounds.map((entry) => entry.x + entry.width),
+  );
+  const maximumY = Math.max(
+    ...bounds.map((entry) => entry.y + entry.height),
+  );
+  return {
+    width: maximumX - minimumX,
+    height: maximumY - minimumY,
+  };
 }
 
 function range(values) {

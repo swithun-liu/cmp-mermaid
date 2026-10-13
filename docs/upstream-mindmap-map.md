@@ -108,9 +108,9 @@ continue to require final relative-coordinate identity.
   translated algorithm boundaries.
 - `MindmapStressTest` renders 256 deterministic randomized Native diagrams.
 - The refreshed Web audit compares 13 independent production scenarios and
-  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
+  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
   Production results are `9 pass / 4 manually reviewed / 0 fail`; matrix
-  results are `256 pass / 0 review / 0 fail`, with 256/256 geometry passes.
+  results are `253 pass / 3 review / 0 fail`, with 256/256 geometry passes.
   Expected text, nodes, hierarchy edges, shapes, colors, clipping, overlap,
   and paint order pass across 16 contact sheets.
 - The geometry gate keeps the shared numeric thresholds unchanged. A

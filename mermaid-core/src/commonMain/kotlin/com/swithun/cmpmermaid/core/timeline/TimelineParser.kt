@@ -32,7 +32,6 @@ internal data class TimelineDocument(
  * and timelineDb.js.
  */
 internal class TimelineParser(
-    private val diagramTitle: String?,
     private val lineOffset: Int,
 ) {
     fun parse(source: String): GMResult<TimelineDocument, MermaidError> {
@@ -51,7 +50,9 @@ internal class TimelineParser(
             else -> TimelineDirection.LR
         }
 
-        var title = diagramTitle
+        // Mermaid's timeline DB exposes getCommonDb(), but not setDiagramTitle().
+        // Diagram.fromText() therefore cannot apply a frontmatter title here.
+        var title: String? = null
         var accessibilityTitle: String? = null
         var accessibilityDescription: String? = null
         var currentSection = ""

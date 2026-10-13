@@ -89,7 +89,7 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   data, notes, GWT, namespaces, validation, reset behavior, paint order,
   configuration, and typed failures.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
+  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`.
 - Matrix geometry and detail pass `256/256`.
 - The audit compares the combined bounds of spatially equivalent text

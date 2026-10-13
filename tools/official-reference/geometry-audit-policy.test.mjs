@@ -50,6 +50,24 @@ test('queues ratio mismatches only for structurally matching iterative layouts',
   );
 });
 
+test('queues raster bounds when manifest geometry independently matches', () => {
+  assert.deepEqual(
+    classifyGeometryRatio({
+      ...base,
+      value: 1.3,
+      iterativeLayoutWithMatchingStructure: false,
+      reviewReason:
+        'manifest viewport and structure match; raster bounds reflect font wrapping',
+    }),
+    {
+      status: 'review',
+      message:
+        'visual_mindmap_001/height ratio 1.300 is outside [0.800, 1.250]; ' +
+        'manifest viewport and structure match; raster bounds reflect font wrapping',
+    },
+  );
+});
+
 test('keeps non-finite ratios visible instead of formatting them as numbers', () => {
   assert.deepEqual(
     classifyGeometryRatio({

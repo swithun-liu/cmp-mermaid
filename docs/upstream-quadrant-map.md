@@ -57,9 +57,9 @@ execute Mermaid.js and does not require a WebView.
 - A separate deterministic generator renders 256 legal charts twice and
   checks finite SceneGraph geometry.
 - The production detail audit passes all 13 independent Quadrant cases.
-- The large-scale matrix contains all 256 full-factorial same-source
+- The large-scale matrix contains all 256 coverage-driven same-source
   Native/Official Quadrant input cases. The fresh result is
-  `230 pass / 26 review / 0 fail`, with
+  `231 pass / 25 review / 0 fail`, with
   0 geometry hard failures at the shared `1200 x 900` viewport.
 - Sixteen contact sheets cover the complete matrix. Representative first,
   middle, and final sheets were inspected for clipping, overlap, paint order,

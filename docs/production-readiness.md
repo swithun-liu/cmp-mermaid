@@ -25,9 +25,9 @@ rated Stable. A successful build alone is not sufficient.
   Treemap, Venn, Ishikawa, Cynefin, Event Modeling, Agentflow, Block,
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
-  (`8,448/8,448` full-factorial input cases processed;
-  `7,741 pass / 707 review / 0 fail`;
-  geometry has 0 hard failures and 132 Architecture fCoSE review findings)
+  (`8,448/8,448` coverage-driven input cases processed;
+  `7,722 pass / 726 review / 0 fail`;
+  geometry has 0 hard failures and 177 review findings across 125 cases)
 - Pending replacement detail gates: none
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -44,7 +44,7 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | 441 independent production pairs plus 8,448/8,448 full-factorial visual-input pairs; 528 contact sheets regenerated; 0 detail or geometry hard failures | Passing |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | 441 independent production pairs plus 8,448/8,448 coverage-driven visual-input pairs; 528 contact sheets regenerated; 0 detail or geometry hard failures | Passing |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 738/738 points across all 33 families | Passing |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 441-case corpus equality test | Passing |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 33 by 11 matrix: 363/363 renders | Passing |
@@ -76,13 +76,14 @@ copies of the documentation gallery. CI must:
    differences that automated metrics cannot prove.
 
 The regular Quality Gate runs the 441 independent cases on every push and pull
-request. The weekly/manual Full Visual Parity workflow defines eight named
-binary input dimensions per diagram type and exercises every `2^8`
-combination, or 8,448 Native/Official pairs total. The gate verifies all 256
-dimension vectors, 128 occurrences per option, 64 occurrences per
-two-dimension option pair, distinct normalized semantics and sources, and at
-least 192 family-specific structural profiles. Rendered hash uniqueness is
-diagnostic rather than a substitute for input-space coverage.
+request. The weekly/manual Full Visual Parity workflow assigns every diagram
+type 256 cases across fixed `64 / 64 / 48 / 32 / 32 / 16` coverage categories,
+or 8,448 Native/Official pairs total. The gate verifies every family's
+declared official capabilities and generator-axis options, 16
+equivalent-syntax groups, distinct normalized semantics and sources, and its
+family-specific structural-profile floor. Rendered hash uniqueness is
+diagnostic rather than a substitute for source and coverage-contract
+validation.
 Machine-readable accounting is published in
 [`visual-structure-corpus-metadata.json`](assets/stability-report/visual-structure-corpus-metadata.json).
 The separate 8,448-input text/layout stress corpus remains documented in

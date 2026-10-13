@@ -38,12 +38,13 @@ release.
   sizing, malformed input, resource limits, and configuration failures.
 - 13 independent production scenarios cover all 31 declared visual capability
   points.
-- 256 deterministic same-source matrix cases exercise 13 structural seeds and
-  20 visible text/layout-pressure profiles.
+- 256 deterministic same-source cases cover the fixed six-category quotas,
+  family-specific capability axes, scaled stress structures, equivalent syntax,
+  and historical regressions.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `0.970-1.116`, `0.880-1.069`, and `0.908-1.388`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
-- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.024-1.066`, height `0.929-1.075`, and foreground ink `0.965-1.108`.
+- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `0.978-1.107`, height `0.942-1.102`, and foreground ink `0.951-1.448`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved shape, grid, edge, marker, color, text, clipping,
   overlap, or paint-order defect remains.

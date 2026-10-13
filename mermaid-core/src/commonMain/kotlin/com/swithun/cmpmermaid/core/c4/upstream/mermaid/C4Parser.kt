@@ -15,7 +15,6 @@ import com.swithun.cmpmermaid.core.MermaidRenderOptions
  */
 internal class C4Parser(
     private val options: MermaidRenderOptions,
-    private val frontmatterTitle: String?,
     private val lineOffset: Int,
 ) {
     fun parse(source: String): GMResult<C4Db, MermaidError> {
@@ -23,7 +22,7 @@ internal class C4Parser(
             .replace("\r\n", "\n")
             .replace('\r', '\n')
             .split('\n')
-        val db = C4Db(options.c4, frontmatterTitle)
+        val db = C4Db(options.c4)
         var headerFound = false
         var waitingForBoundaryBrace = false
         var index = 0

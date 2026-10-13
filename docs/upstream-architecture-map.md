@@ -78,10 +78,10 @@ JavaScript runtime.
   validation, disconnected components, groups, junctions, directional edges,
   arrows, alignment, icons, metadata, configuration, and deterministic seeds.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
+  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`.
-- Matrix geometry has 0 hard failures and retains 132 seeded fCoSE review
-  findings across 108 cases; detail reports `70 pass / 186 review / 0 fail`.
+- Matrix geometry has 0 hard failures and retains 157 seeded fCoSE review
+  findings across 105 cases; detail reports `78 pass / 178 review / 0 fail`.
   The reviews retain placement, text-position, raster, overlap, and
   paint-order differences without a hard structural error.
 - The production contact sheet and all 16 matrix contact sheets were manually

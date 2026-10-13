@@ -82,8 +82,8 @@ the grammar behavior; it does not bundle the Langium runtime.
   twice and validates structure, finite geometry, and exact replay.
 - `OfficialGitGraphDocumentationTest` executes all 35 examples extracted from
   Mermaid `12.0.0` documentation.
-- The full-factorial Web audit compares 256 same-source input cases against
-  Mermaid.js `12.0.0`: `235 pass / 21 review / 0 fail`, with 0
+- The coverage-driven Web audit compares 256 same-source input cases against
+  Mermaid.js `12.0.0`: `231 pass / 25 review / 0 fail`, with 0
   geometry hard failures. The reviews are text-overlap representation
   differences; semantic text, clipping, and paint order remain complete.
 - Case `parity_gitgraph_005` proves the paint-order correction: the Native

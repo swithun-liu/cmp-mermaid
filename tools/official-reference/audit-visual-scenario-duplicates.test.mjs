@@ -72,8 +72,9 @@ test('duplicate groups list every case sharing the same evidence value', () => {
 });
 
 test('input-space coverage proves a full balanced factorial matrix', () => {
+  const entries = syntheticInputSpaceEntries(familyDimensionSpecs.swimlanes);
   const report = analyzeInputSpaceCoverage(
-    scenarioBlueprintsByKind.swimlanes,
+    entries,
     familyDimensionSpecs.swimlanes,
   );
 
@@ -134,12 +135,15 @@ test('coverage-driven audit proves the six-category flowchart corpus', () => {
 });
 
 test('input-space coverage rejects duplicated dimension vectors', () => {
-  const entries = scenarioBlueprintsByKind.swimlanes.map((entry, index) =>
+  const inputSpaceEntries = syntheticInputSpaceEntries(
+    familyDimensionSpecs.swimlanes,
+  );
+  const entries = inputSpaceEntries.map((entry, index) =>
     index === 1
       ? {
           ...entry,
           inputDimensions:
-            scenarioBlueprintsByKind.swimlanes[0].inputDimensions,
+            inputSpaceEntries[0].inputDimensions,
         }
       : entry
   );
@@ -157,6 +161,28 @@ test('input-space coverage rejects duplicated dimension vectors', () => {
     ),
   );
 });
+
+function syntheticInputSpaceEntries(dimensions) {
+  return Array.from({ length: 256 }, (_, vector) => {
+    const bits = Array.from({ length: 8 }, (_, bit) => (vector >> bit) & 1);
+    return {
+      id: `synthetic-${vector}`,
+      inputDimensions: dimensions.map((dimension, index) => ({
+        name: dimension.name,
+        category: dimension.category,
+        option: dimension.options[bits[index]],
+      })),
+      normalizedSemanticStructure: {
+        structuralProfile: Object.fromEntries(
+          dimensions.map((dimension, index) => [
+            dimension.name,
+            bits[index],
+          ]),
+        ),
+      },
+    };
+  });
+}
 
 function manifest({
   id,

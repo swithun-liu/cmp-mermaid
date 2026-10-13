@@ -86,7 +86,7 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - SVG percentage title coordinates are re-resolved after viewBox
   normalization; the SceneGraph translation preserves that upstream shift.
 - Venn title bounds apply a local Compose/Trebuchet metric correction so the
-  256-case full-factorial input matrix has no unresolved clipping mismatch without changing shared
+  256-case coverage-driven input matrix has no unresolved clipping mismatch without changing shared
   text rendering.
 
 ## Parity Gate
@@ -101,7 +101,7 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - A separate deterministic randomized test renders 256 Venn inputs twice and
   verifies finite, stable SceneGraphs.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 full-factorial same-source input cases against Mermaid.js `12.0.0`.
+  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - All 16 matrix contact sheets were manually reviewed. The final result is
   `208 pass + 48 review + 0 fail`.
 

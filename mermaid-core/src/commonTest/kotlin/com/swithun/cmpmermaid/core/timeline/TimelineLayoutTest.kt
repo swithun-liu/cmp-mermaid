@@ -76,6 +76,23 @@ class TimelineLayoutTest {
     }
 
     @Test
+    fun ignoresFrontmatterTitleBecauseUpstreamTimelineDbDoesNotExposeSetDiagramTitle() {
+        val scene = render(
+            """
+            ---
+            title: Frontmatter title
+            ---
+            timeline
+              2026 : Launch
+            """.trimIndent(),
+        )
+
+        assertTrue(scene.elements.filterIsInstance<SceneText>().none {
+            text -> text.text == "Frontmatter title"
+        })
+    }
+
+    @Test
     fun laysOutTdTasksLeftAndEventsRightOfVerticalAxis() {
         val scene = render(
             """

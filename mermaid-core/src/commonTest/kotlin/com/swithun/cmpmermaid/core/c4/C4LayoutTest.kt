@@ -77,6 +77,24 @@ class C4LayoutTest {
     }
 
     @Test
+    fun ignoresFrontmatterTitleBecauseUpstreamC4DbDoesNotExposeSetDiagramTitle() {
+        val scene = render(
+            """
+                ---
+                title: Frontmatter title
+                ---
+                C4Context
+                title Source title
+                Person(user, "User")
+            """.trimIndent(),
+        )
+        val texts = scene.elements.filterIsInstance<SceneText>().map(SceneText::text)
+
+        assertTrue("Frontmatter title" !in texts)
+        assertTrue("Source title" in texts)
+    }
+
+    @Test
     fun appliesConfiguredPersonWidthBeforeBuildingCircularHeadGeometry() {
         val scene = render(
             """

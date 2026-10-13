@@ -60,11 +60,11 @@ test('public reports keep structural cases and derived stress inputs separate', 
   assert.match(combined, /8,448 independent-scenario visual cases/);
   assert.match(
     combined,
-    /8 binary input dimensions and all 256 combinations per family/,
+    /six-category coverage-driven corpus/,
   );
-  assert.match(combined, /complete `2\^8` matrix/);
-  assert.match(combined, /option occurs 128 times/);
-  assert.match(combined, /two-dimension option pair occurs 64 times/);
+  assert.match(combined, /family-specific capability axes/);
+  assert.match(combined, /16 equivalent-syntax/);
+  assert.match(combined, /48 topology\/layout stress/);
   assert.match(combined, /8,448[^\n]{0,48}text\/layout stress inputs/);
   assert.match(combined, /do not add structural or syntax coverage/);
   assert.match(combined, /不计作结构覆盖/);

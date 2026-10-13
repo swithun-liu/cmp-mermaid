@@ -94,7 +94,11 @@ try {
     );
     const raster = compareRasterFeatures(nativeRaster, officialRaster);
     const findings = [
-      ...classifyDetailFindings(manifest.findings, auditCase),
+      ...classifyDetailFindings(
+        manifest.findings,
+        auditCase,
+        { manifest, raster },
+      ),
       ...raster.findings,
     ];
     const status = findings.some((finding) => finding.severity === 'error')

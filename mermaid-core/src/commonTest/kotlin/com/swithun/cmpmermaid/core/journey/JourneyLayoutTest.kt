@@ -131,6 +131,34 @@ class JourneyLayoutTest {
     }
 
     @Test
+    fun keepsOverflowingFrontmatterTitleVisibleWithoutStretchingTheActivityLine() {
+        val body = """
+            journey
+              section Work
+                Review evidence: 4: Operator
+        """.trimIndent()
+        val withoutTitle = render(body)
+        val withTitle = render(
+            """
+            ---
+            title: Automation evidence journey with a deliberately long visible title
+            ---
+            $body
+            """.trimIndent(),
+        )
+        val title = withTitle.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text.startsWith("Automation evidence journey") }
+        val activityWithoutTitle = withoutTitle.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "journey-activity-line" }
+        val activityWithTitle = withTitle.elements.filterIsInstance<ScenePath>()
+            .single { path -> path.id == "journey-activity-line" }
+
+        assertTrue(withTitle.width >= title.bounds.right + context.options.journey.diagramMarginX)
+        assertTrue(withTitle.width > withoutTitle.width)
+        assertEquals(activityWithoutTitle.points.last().x, activityWithTitle.points.last().x)
+    }
+
+    @Test
     fun mirrorsOfficialTextPlacementStrategies() {
         val source = """
             journey

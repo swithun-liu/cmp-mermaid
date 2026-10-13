@@ -18,9 +18,6 @@ import {
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
-const fullFactorialKinds = kinds.filter(
-  (kind) => familyCoverageContracts[kind].mode === 'full-factorial',
-);
 
 test('provides 256 independent scenarios for every diagram family', () => {
   assert.equal(kinds.length, 33);
@@ -50,9 +47,8 @@ test('provides 256 independent scenarios for every diagram family', () => {
   }
 });
 
-test('defines eight named orthogonal dimensions for full-factorial families', () => {
-  assert.equal(fullFactorialKinds.length, 32);
-  for (const kind of fullFactorialKinds) {
+test('keeps eight named family-specific capability axes as generator inputs', () => {
+  for (const kind of kinds.filter((candidate) => candidate !== 'flowchart')) {
     const dimensions = familyDimensionSpecs[kind];
     assert.equal(dimensions.length, 8, `${kind} dimension count`);
     assert.equal(
@@ -83,89 +79,141 @@ test('defines eight named orthogonal dimensions for full-factorial families', ()
   }
 });
 
-test('covers every dimension and every dimension pair with a balanced matrix', () => {
-  for (const kind of fullFactorialKinds) {
+test('all diagram families use fixed six-category coverage contracts', () => {
+  for (const kind of kinds) {
     const familyCases = scenarioBlueprintsByKind[kind];
-    const dimensions = familyDimensionSpecs[kind];
-    for (const dimension of dimensions) {
-      const counts = new Map(dimension.options.map((option) => [option, 0]));
-      for (const entry of familyCases) {
-        const selection = entry.inputDimensions.find(
-          (candidate) => candidate.name === dimension.name,
-        );
-        assert.ok(selection, `${entry.id}/${dimension.name}`);
-        counts.set(selection.option, (counts.get(selection.option) ?? 0) + 1);
-      }
-      assert.deepEqual(
-        [...counts.values()],
-        [128, 128],
-        `${kind}/${dimension.name}`,
-      );
-    }
-    for (let left = 0; left < dimensions.length; left += 1) {
-      for (let right = left + 1; right < dimensions.length; right += 1) {
-        const combinations = new Map();
-        for (const entry of familyCases) {
-          const leftOption = entry.inputDimensions[left].option;
-          const rightOption = entry.inputDimensions[right].option;
-          const key = `${leftOption}|${rightOption}`;
-          combinations.set(key, (combinations.get(key) ?? 0) + 1);
-        }
-        assert.equal(combinations.size, 4, `${kind}/${left}/${right} variants`);
-        assert.deepEqual(
-          new Set(combinations.values()),
-          new Set([64]),
-          `${kind}/${left}/${right} balance`,
-        );
-      }
-    }
-  }
-});
-
-test('every named dimension changes the label-normalized Mermaid input', () => {
-  for (const kind of fullFactorialKinds) {
-    const familyCases = scenarioBlueprintsByKind[kind];
-    for (let dimensionIndex = 0; dimensionIndex < 8; dimensionIndex += 1) {
-      const mask = 1 << dimensionIndex;
-      for (let index = 0; index < casesPerKind; index += 1) {
-        if ((index & mask) !== 0) {
-          continue;
-        }
-        assert.notEqual(
-          normalizeScenarioSource(familyCases[index]),
-          normalizeScenarioSource(familyCases[index ^ mask]),
-          `${kind}/${familyDimensionSpecs[kind][dimensionIndex].name}/${index}`,
-        );
-      }
-    }
-  }
-});
-
-test('every topology and data dimension changes the structural profile', () => {
-  for (const kind of fullFactorialKinds) {
-    const familyCases = scenarioBlueprintsByKind[kind];
-    for (let dimensionIndex = 0; dimensionIndex < 8; dimensionIndex += 1) {
-      const dimension = familyDimensionSpecs[kind][dimensionIndex];
-      if (dimension.category !== 'topology' && dimension.category !== 'data') {
-        continue;
-      }
-      const mask = 1 << dimensionIndex;
-      for (let index = 0; index < casesPerKind; index += 1) {
-        if ((index & mask) !== 0) {
-          continue;
-        }
-        assert.notDeepEqual(
-          familyCases[index].normalizedSemanticStructure.structuralProfile,
-          familyCases[index ^ mask].normalizedSemanticStructure.structuralProfile,
-          `${kind}/${dimension.name}/${index}`,
-        );
-      }
-    }
+    const contract = familyCoverageContracts[kind];
+    assert.equal(contract.mode, 'coverage-driven', kind);
+    assert.equal(contract.caseCount, 256, kind);
+    assert.deepEqual(
+      categoryCounts(familyCases),
+      Object.fromEntries(contract.categories.map((entry) => [
+        entry.id,
+        entry.quota,
+      ])),
+      kind,
+    );
+    const capabilities = new Set(
+      familyCases.flatMap((entry) => entry.coverageCapabilities),
+    );
+    assert.deepEqual(
+      contract.requiredCapabilities.filter(
+        (capability) => !capabilities.has(capability),
+      ),
+      [],
+      kind,
+    );
     assert.ok(
       new Set(familyCases.map((entry) =>
         JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
-      )).size >= 192,
+      )).size >= contract.minimumStructuralProfiles,
       `${kind} structural profile diversity`,
+    );
+    const equivalentGroups = groupBy(
+      familyCases.filter(
+        (entry) => entry.coverageCategory === 'equivalent-syntax',
+      ),
+      (entry) => entry.equivalenceGroup,
+    );
+    assert.equal(
+      equivalentGroups.size,
+      contract.equivalentSyntaxGroupCount,
+      `${kind} equivalent syntax groups`,
+    );
+    for (const [group, entries] of equivalentGroups) {
+      assert.equal(entries.length, 2, group);
+      assert.deepEqual(
+        new Set(entries.map((entry) => entry.syntaxVariant)),
+        new Set(['first', 'second']),
+        group,
+      );
+      assert.equal(
+        new Set(entries.map((entry) =>
+          JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
+        )).size,
+        1,
+        group,
+      );
+    }
+  }
+});
+
+test('non-flowchart equivalent variants use a top-level no-op config', () => {
+  for (const kind of kinds.filter((candidate) => candidate !== 'flowchart')) {
+    const secondVariants = scenarioBlueprintsByKind[kind].filter(
+      (entry) =>
+        entry.coverageCategory === 'equivalent-syntax' &&
+        entry.syntaxVariant === 'second',
+    );
+    assert.equal(secondVariants.length, 16, kind);
+    for (const entry of secondVariants) {
+      const lines = entry.source.split('\n');
+      const closingIndex = lines.indexOf('---', 1);
+      const configIndex = lines.indexOf('config:', 1);
+      assert.equal(lines[0], '---', entry.id);
+      assert.ok(configIndex > 0 && configIndex < closingIndex, entry.id);
+      assert.equal(lines[configIndex + 1], '  themeVariables: {}', entry.id);
+      assert.doesNotMatch(entry.source, /^\s*theme:\s*default\s*$/m, entry.id);
+      assert.ok(
+        entry.features.includes('explicit-empty-theme-variables'),
+        entry.id,
+      );
+    }
+  }
+});
+
+test('non-flowchart syntax atoms cover official capabilities and generator axes', () => {
+  for (const kind of kinds.filter((candidate) => candidate !== 'flowchart')) {
+    const familyCases = scenarioBlueprintsByKind[kind];
+    const focusedCases = familyCases.filter(
+      (entry) => entry.coverageCategory === 'official-syntax-atom',
+    );
+    assert.equal(focusedCases.length, 64, kind);
+    for (const entry of focusedCases) {
+      assert.ok(entry.coverageFocusCapability, entry.id);
+      assert.ok(
+        entry.coverageCapabilities.includes(entry.coverageFocusCapability),
+        entry.id,
+      );
+    }
+    const atomCapabilities = new Set(
+      focusedCases.flatMap((entry) => entry.coverageCapabilities),
+    );
+    assert.deepEqual(
+      familyCoverageContracts[kind].officialCapabilities.filter(
+        (capability) => !atomCapabilities.has(capability),
+      ),
+      [],
+      `${kind} official capability coverage`,
+    );
+    assert.deepEqual(
+      familyCoverageContracts[kind].generatorCapabilities.filter(
+        (capability) => !atomCapabilities.has(capability),
+      ),
+      [],
+      `${kind} generator capability coverage`,
+    );
+    assert.ok(
+      focusedCases.filter((entry) =>
+        entry.features.includes('curated-upstream-conformance-case')
+      ).length >= 4,
+      `${kind} curated upstream conformance atoms`,
+    );
+  }
+});
+
+test('non-flowchart stress cases add real family-specific structures', () => {
+  for (const kind of kinds.filter((candidate) => candidate !== 'flowchart')) {
+    const stressCases = scenarioBlueprintsByKind[kind].filter(
+      (entry) => entry.coverageCategory === 'topology-layout-stress',
+    );
+    assert.equal(stressCases.length, 48, kind);
+    assert.deepEqual(
+      new Set(stressCases.map((entry) =>
+        entry.normalizedSemanticStructure.structuralProfile.stressExtraCount
+      )),
+      new Set([2, 3, 4, 5]),
+      kind,
     );
   }
 });
@@ -178,34 +226,28 @@ test('does not reuse seed scenarios, profiles, labels, or ordinals as uniqueness
     assert.ok(!Object.hasOwn(entry, 'seedId'), entry.id);
     assert.ok(!Object.hasOwn(entry, 'originScenarioId'), entry.id);
 
-    const expectedStructureKeys = entry.kind === 'flowchart'
-      ? ['coverage', 'grammar', 'normalizedSource', 'structuralProfile']
-      : ['dimensions', 'grammar', 'normalizedSource', 'structuralProfile'];
+    const expectedStructureKeys = [
+      'coverage',
+      'grammar',
+      'normalizedSource',
+      'structuralProfile',
+    ];
     assert.deepEqual(
       Object.keys(entry.normalizedSemanticStructure).sort(),
       expectedStructureKeys,
       entry.id,
     );
-    if (entry.kind === 'flowchart') {
-      assert.ok(!Object.hasOwn(entry, 'inputDimensions'), entry.id);
-      assert.equal(
-        entry.normalizedSemanticStructure.coverage.category,
-        entry.coverageCategory,
-        entry.id,
-      );
-      assert.deepEqual(
-        entry.normalizedSemanticStructure.coverage.capabilities,
-        entry.coverageCapabilities,
-        entry.id,
-      );
-    } else {
-      assert.equal(entry.inputDimensions.length, 8, entry.id);
-      assert.deepEqual(
-        entry.normalizedSemanticStructure.dimensions,
-        entry.inputDimensions,
-        entry.id,
-      );
-    }
+    assert.ok(!Object.hasOwn(entry, 'inputDimensions'), entry.id);
+    assert.equal(
+      entry.normalizedSemanticStructure.coverage.category,
+      entry.coverageCategory,
+      entry.id,
+    );
+    assert.deepEqual(
+      entry.normalizedSemanticStructure.coverage.capabilities,
+      entry.coverageCapabilities,
+      entry.id,
+    );
     assert.ok(
       Object.keys(entry.normalizedSemanticStructure.structuralProfile).length > 0,
       entry.id,
@@ -321,49 +363,107 @@ test('keeps representative family decisions in the rendered Mermaid source', () 
   assert.match(caseSource('flowchart', 47), /^flowchart TB$/m);
   assert.match(caseSource('flowchart', 48), /^flowchart TD$/m);
 
-  assert.match(caseSource('architecture', 1), /s1\(server\)/);
-  assert.match(caseSource('architecture', 2), /group platform\(cloud\)/);
-
-  assert.match(caseSource('sequence', 1), /User->>Platform:/);
-  assert.match(caseSource('sequence', 2), /^  autonumber$/m);
-
-  assert.match(caseSource('pie', 1), /^pie$/m);
-  assert.match(caseSource('pie', 2), /^pie showData$/m);
-
-  assert.match(caseSource('gantt', 1), /:crit, task_1, 2027-01-01, 2d/);
-  assert.match(caseSource('gantt', 2), /section Validation/);
-  assert.match(caseSource('gantt', 256), /^\s*todayMarker off$/m);
-  assert.match(caseSource('gantt', 256), /:milestone,/);
+  assert.match(
+    caseSourceWithCapability('architecture', 'groups:ungrouped'),
+    /s1\(server\)/,
+  );
+  assert.match(
+    caseSourceWithCapability('architecture', 'groups:platform-group'),
+    /group platform\(cloud\)/,
+  );
 
   assert.match(
-    caseSource('er', 65),
+    caseSourceWithCapability('sequence', 'autonumber:manual'),
+    /User->>Platform:/,
+  );
+  assert.match(
+    caseSourceWithCapability('sequence', 'autonumber:autonumber'),
+    /^  autonumber$/m,
+  );
+
+  assert.match(
+    caseSourceWithCapability('pie', 'show-data:legend-only'),
+    /^pie$/m,
+  );
+  assert.match(
+    caseSourceWithCapability('pie', 'show-data:show-data'),
+    /^pie showData$/m,
+  );
+
+  assert.match(
+    caseSourceWithCapability('gantt', 'task-states:critical'),
+    /:crit, task_1, 2027-01-01, 2d/,
+  );
+  assert.match(
+    caseSourceWithCapability('gantt', 'sections:three-sections'),
+    /section Validation/,
+  );
+  assert.match(
+    caseSourceWithCapability('gantt', 'vertical-marker:vertical-marker'),
+    /^\s*todayMarker off$/m,
+  );
+  assert.match(
+    caseSourceWithCapability('gantt', 'milestone:milestone'),
+    /:milestone,/,
+  );
+
+  const erLrSubgraph = caseSourceWithCapabilities('er', [
+    'direction:left-to-right',
+    'subgraph:subgraph',
+  ]);
+  assert.match(
+    erLrSubgraph,
     /^  direction LR\n  subgraph MASTER_DATA\n    direction TB$/m,
   );
   assert.match(
-    caseSource('er', 66),
+    caseSourceWithCapabilities('er', [
+      'direction:top-to-bottom',
+      'subgraph:subgraph',
+    ]),
     /^  direction TB\n  subgraph MASTER_DATA\n    direction TB$/m,
   );
   assert.equal(
-    [...caseSource('er', 65).matchAll(/^  subgraph /gm)].length,
+    [...erLrSubgraph.matchAll(/^  subgraph /gm)].length,
     2,
   );
 
-  assert.match(caseSource('treemap', 1), /^treemap$/m);
-  assert.match(caseSource('treemap', 2), /^treemap-beta$/m);
-  assert.match(caseSource('treemap', 1), /"Main"/);
-
-  assert.doesNotMatch(caseSource('venn', 1), /^\s*union A,B/m);
-  assert.match(caseSource('venn', 2), /^\s*set D/m);
-
-  assert.match(caseSource('packet', 1), /^\s*0-3:/m);
-  assert.match(caseSource('packet', 2), /^packet-beta$/m);
+  assert.match(
+    caseSourceWithCapability('treemap', 'header:treemap'),
+    /^treemap$/m,
+  );
+  assert.match(
+    caseSourceWithCapability('treemap', 'header:treemap-beta'),
+    /^treemap-beta$/m,
+  );
+  assert.match(
+    caseSourceWithCapability('treemap', 'root-count:single-root'),
+    /"Main"/,
+  );
 
   assert.doesNotMatch(
-    caseSource('cynefin', 1),
+    caseSourceWithCapability('venn', 'pairwise-unions:none'),
+    /^\s*union A,B/m,
+  );
+  assert.match(
+    caseSourceWithCapability('venn', 'set-count:four-sets'),
+    /^\s*set D/m,
+  );
+
+  assert.match(
+    caseSourceWithCapability('packet', 'header:packet'),
+    /^\s*0-3:/m,
+  );
+  assert.match(
+    caseSourceWithCapability('packet', 'header:packet-beta'),
+    /^packet-beta$/m,
+  );
+
+  assert.doesNotMatch(
+    caseSourceWithCapability('cynefin', 'transitions:single-transition'),
     /^\s*complex --> complicated/m,
   );
   assert.match(
-    caseSource('cynefin', 5),
+    caseSourceWithCapability('cynefin', 'transitions:cross-domain'),
     /^\s*complex --> complicated/m,
   );
 });
@@ -379,7 +479,7 @@ test('records the actual layout engine used by layout-specific families', () => 
   );
   assert.deepEqual(
     new Set(scenarioBlueprintsByKind.mindmap.map((entry) => entry.layout)),
-    new Set(['dagre', 'tidy-tree']),
+    new Set(['cose-bilkent', 'dagre', 'tidy-tree']),
   );
 });
 
@@ -401,8 +501,10 @@ test('publishes machine-readable independent scenario accounting', () => {
     'explicit-256-entry-business-scenario-catalog',
     'label-stripped-normalized-mermaid-source',
     'family-specific-coverage-contract',
-    'flowchart-six-category-coverage-driven-corpus',
-    'full-factorial-2x2x2x2x2x2x2x2-matrix-for-other-families',
+    'six-category-coverage-driven-corpus-for-all-families',
+    'family-specific-capability-axes',
+    'family-specific-stress-augmentation',
+    'sixteen-equivalent-syntax-pairs-per-family',
     'family-specific-structural-profile',
   ]);
 });
@@ -435,6 +537,22 @@ function caseSource(kind, ordinal) {
       candidate.id === `visual_${kind}_${String(ordinal).padStart(3, '0')}`,
   );
   assert.ok(entry, `${kind} ${ordinal}`);
+  return entry.source;
+}
+
+function caseSourceWithCapability(kind, capability) {
+  return caseSourceWithCapabilities(kind, [capability]);
+}
+
+function caseSourceWithCapabilities(kind, capabilities) {
+  const entry = cases.find(
+    (candidate) =>
+      candidate.kind === kind &&
+      capabilities.every((capability) =>
+        candidate.coverageCapabilities.includes(capability)
+      ),
+  );
+  assert.ok(entry, `${kind} ${capabilities.join(', ')}`);
   return entry.source;
 }
 

@@ -72,7 +72,7 @@ hour shifts are intentionally not reproduced.
   review (`13 pass / 0 review / 0 fail`). Their width, height, and
   foreground-ink ratios are `1.035-1.037`, `0.883-0.961`, and
   `1.003-1.027`.
-- The fresh 256-case full-factorial input audit reports `185 pass / 71 review / 0 fail`; geometry has 0 hard failures with width `1.047-1.051`, height `0.928-0.957`, and foreground ink `0.854-1.038`.
+- The fresh 256-case coverage-driven input audit reports `190 pass / 66 review / 0 fail`; geometry has 0 hard failures with width `1.018-1.051`, height `0.896-0.978`, and foreground ink `0.875-1.031`.
 - 20 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0`.
 - All 20 Native Android screenshots were compared side by side with 20

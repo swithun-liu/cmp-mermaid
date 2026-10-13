@@ -27,7 +27,6 @@ internal class C4Plugin : MermaidDiagramPlugin {
     ): GMResult<MermaidScene, MermaidError> = when (
         val parsed = C4Parser(
             options = context.options,
-            frontmatterTitle = context.diagramTitle,
             lineOffset = context.frontmatterLineOffset,
         ).parse(source)
     ) {

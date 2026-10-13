@@ -93,28 +93,12 @@ internal class JourneyLayout {
             if (tasks.isEmpty()) 0f else TASK_LINE_BOTTOM,
         )
         val baseHeight = boundsStopY + 2f * options.diagramMarginY
-        val width = leftMargin + stopX + 2f * options.diagramMarginX
-        val height = baseHeight +
-            if (title == null) VIEWPORT_BOTTOM_PADDING else TITLE_EXTRA_HEIGHT +
-            VIEWPORT_BOTTOM_PADDING
-
-        elements += path(
-            id = "journey-activity-line",
-            start = ScenePoint(leftMargin, options.height * 4f + verticalShift),
-            end = ScenePoint(
-                width - leftMargin - ACTIVITY_ARROW_RETAIN,
-                options.height * 4f + verticalShift,
-            ),
-            color = context.theme.journey.textColor,
-            strokeWidth = 4f,
-            arrowEnd = SceneArrowHead.Triangle,
-            zIndex = 8,
-            look = context.options.look,
-        )
-
-        if (title != null) {
+        val contentWidth = leftMargin + stopX + 2f * options.diagramMarginX
+        val titleMeasurement = if (title == null) {
+            null
+        } else {
             val fontSize = resolveTitleFontSize(options.titleFontSize, context.theme.fontSize)
-            val measured = when (
+            when (
                 val result = measure(
                     text = title,
                     fontSize = fontSize,
@@ -124,9 +108,40 @@ internal class JourneyLayout {
                     context = context,
                 )
             ) {
-                is GMResult.Ok -> result.value
+                is GMResult.Ok -> TitleMeasurement(fontSize, result.value)
                 is GMResult.Err -> return result
             }
+        }
+        // Mermaid's SVG keeps the activity-line width while allowing an unwrapped
+        // title to overflow the configured viewBox. Compose Canvas clips at scene
+        // bounds, so include that visible overflow without stretching the line.
+        val width = max(
+            contentWidth,
+            titleMeasurement?.metrics?.let { measured ->
+                leftMargin + measured.width + options.diagramMarginX
+            } ?: 0f,
+        )
+        val height = baseHeight +
+            if (title == null) VIEWPORT_BOTTOM_PADDING else TITLE_EXTRA_HEIGHT +
+            VIEWPORT_BOTTOM_PADDING
+
+        elements += path(
+            id = "journey-activity-line",
+            start = ScenePoint(leftMargin, options.height * 4f + verticalShift),
+            end = ScenePoint(
+                contentWidth - leftMargin - ACTIVITY_ARROW_RETAIN,
+                options.height * 4f + verticalShift,
+            ),
+            color = context.theme.journey.textColor,
+            strokeWidth = 4f,
+            arrowEnd = SceneArrowHead.Triangle,
+            zIndex = 8,
+            look = context.options.look,
+        )
+
+        if (title != null && titleMeasurement != null) {
+            val fontSize = titleMeasurement.fontSize
+            val measured = titleMeasurement.metrics
             val baseline = TITLE_BASELINE + verticalShift
             elements += SceneText(
                 text = title,
@@ -801,6 +816,11 @@ internal class JourneyLayout {
     private data class ActorLayout(
         val maxWidth: Float,
         val elements: List<SceneElement>,
+    )
+
+    private data class TitleMeasurement(
+        val fontSize: Float,
+        val metrics: TextMetrics,
     )
 
     private companion object {

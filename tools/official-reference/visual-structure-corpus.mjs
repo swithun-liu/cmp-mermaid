@@ -3,13 +3,20 @@ import {
   flowchartCoverageContract,
   renderFlowchartCoverageScenario,
 } from './flowchart-coverage-corpus.mjs';
+import {
+  generatedFamilyCoverageContracts,
+  renderFamilyCoverageScenario,
+} from './family-coverage-corpus.mjs';
 import { businessScenarios } from './independent-scenario-catalog.mjs';
 import {
   familyDimensionSpecs,
-  renderInputSpaceScenario,
 } from './visual-input-space.mjs';
 
-export { familyDimensionSpecs, flowchartCoverageContract };
+export {
+  familyDimensionSpecs,
+  flowchartCoverageContract,
+  generatedFamilyCoverageContracts,
+};
 
 export const kinds = [
   'flowchart',
@@ -54,11 +61,7 @@ export const familyCoverageContracts = Object.freeze(
     kind,
     kind === 'flowchart'
       ? flowchartCoverageContract
-      : Object.freeze({
-          mode: 'full-factorial',
-          caseCount: casesPerKind,
-          dimensions: familyDimensionSpecs[kind],
-        }),
+      : generatedFamilyCoverageContracts[kind],
   ])),
 );
 
@@ -132,9 +135,7 @@ export const corpusSummary = Object.freeze({
         new Set(kindCases.map((entry) =>
           JSON.stringify(entry.normalizedSemanticStructure.structuralProfile)
         )).size,
-      ...(kind === 'flowchart'
-        ? { coverageContract: familyCoverageContracts[kind] }
-        : { dimensions: familyDimensionSpecs[kind] }),
+      coverageContract: familyCoverageContracts[kind],
     });
   })),
 });
@@ -146,7 +147,6 @@ function createScenarioBlueprint(kind, index) {
   const businessScenario = businessScenarios[index];
   const domainModel = businessScenario.domain;
   const goalModel = businessScenario.goal;
-  const bits = Array.from({ length: 8 }, (_, bit) => (index >> bit) & 1);
   const title = businessScenario.title;
   const context = Object.freeze({
     domain: domainModel,
@@ -155,9 +155,7 @@ function createScenarioBlueprint(kind, index) {
     label: (slot) =>
       `${domainModel.object} ${goalModel.stages[slot % goalModel.stages.length]}`,
   });
-  const rendered = kind === 'flowchart'
-    ? renderFlowchartCoverageScenario(index, context)
-    : renderInputSpaceScenario(kind, bits, context);
+  const rendered = renderCoverageScenario(kind, index, context);
   const source = `${rendered.source.trim()}\n`;
   const normalizedSemanticStructure = deepFreeze({
     grammar: kind,
@@ -165,7 +163,11 @@ function createScenarioBlueprint(kind, index) {
       ? { dimensions: rendered.dimensions }
       : { coverage: rendered.coverage }),
     structuralProfile: rendered.structuralProfile,
-    normalizedSource: normalizeSourceWithContext(source, context),
+    normalizedSource: normalizeSourceWithContext(
+      source,
+      context,
+      rendered.normalizationTexts,
+    ),
   });
   const normalizedSemanticSignature = sha256(
     JSON.stringify(normalizedSemanticStructure),
@@ -178,9 +180,7 @@ function createScenarioBlueprint(kind, index) {
     title,
     scenario:
       `${domainModel.name} ${goalModel.name} is an independently generated ` +
-      (kind === 'flowchart'
-        ? 'flowchart scenario in a fixed coverage-driven release corpus.'
-        : `${kind} scenario in a balanced matrix of eight named input dimensions.`),
+      `${kind} scenario in a fixed coverage-driven release corpus.`,
     layout: rendered.layout ?? 'dagre',
     aspectRatio: aspectRatios[kind],
     features: Object.freeze([
@@ -205,6 +205,12 @@ function createScenarioBlueprint(kind, index) {
       : {
           coverageCategory: rendered.coverage.category,
           coverageCapabilities: rendered.coverage.capabilities,
+          ...(rendered.coverage.focusCapability === undefined
+            ? {}
+            : {
+                coverageFocusCapability:
+                  rendered.coverage.focusCapability,
+              }),
           ...(rendered.coverage.equivalenceGroup === undefined
             ? {}
             : {
@@ -238,10 +244,20 @@ export function normalizeScenarioSource(entry) {
     label: (slot) =>
       `${domainModel.object} ${goalModel.stages[slot % goalModel.stages.length]}`,
   };
-  return normalizeSourceWithContext(entry.source, context);
+  const match = entry.id.match(/_(\d{3})$/);
+  if (match === null) {
+    throw new Error(`Invalid independent visual case id: ${entry.id}`);
+  }
+  const index = Number(match[1]) - 1;
+  const rendered = renderCoverageScenario(entry.kind, index, context);
+  return normalizeSourceWithContext(
+    entry.source,
+    context,
+    rendered.normalizationTexts,
+  );
 }
 
-function normalizeSourceWithContext(source, context) {
+function normalizeSourceWithContext(source, context, additionalTexts = []) {
   const scenarioText = new Set([
     context.title,
     context.domain.code,
@@ -255,6 +271,7 @@ function normalizeSourceWithContext(source, context) {
     ...context.goal.stages.map((stage) => stage.toLowerCase()),
     ...context.goal.stages.map(identifierToken),
     ...Array.from({ length: 8 }, (_, index) => context.label(index)),
+    ...additionalTexts,
   ]);
   let normalized = source;
   for (const value of [...scenarioText].sort((left, right) =>
@@ -267,6 +284,12 @@ function normalizeSourceWithContext(source, context) {
     .map((line) => line.trimEnd())
     .filter((line) => line.trim().length > 0)
     .join('\n');
+}
+
+function renderCoverageScenario(kind, index, context) {
+  return kind === 'flowchart'
+    ? renderFlowchartCoverageScenario(index, context)
+    : renderFamilyCoverageScenario(kind, index, context);
 }
 
 function renderFamilyScenario(kind, bits, context) {
@@ -1193,32 +1216,23 @@ function validateCorpus() {
       );
     }
     for (const entry of kindCases) {
-      const normalizedCoverage = kind === 'flowchart'
-        ? entry.normalizedSemanticStructure.coverage
-        : entry.normalizedSemanticStructure.dimensions;
+      const normalizedCoverage =
+        entry.normalizedSemanticStructure.coverage;
       if (
-        kind === 'flowchart' &&
-        (
-          normalizedCoverage?.category?.length === 0 ||
-          normalizedCoverage?.capabilities?.length === 0 ||
-          Object.hasOwn(entry, 'inputDimensions')
-        )
+        normalizedCoverage?.category?.length === 0 ||
+        normalizedCoverage?.capabilities?.length === 0 ||
+        Object.hasOwn(entry, 'inputDimensions')
       ) {
         throw new Error(`${entry.id} has invalid coverage-driven metadata`);
       }
       if (
-        kind !== 'flowchart' &&
-        entry.normalizedSemanticStructure.dimensions.length !== 8
-      ) {
-        throw new Error(`${entry.id} does not contain eight input dimensions`);
-      }
-      if (
-        Object.keys(entry.normalizedSemanticStructure).some((key) =>
+        [
+          ...Object.keys(entry.normalizedSemanticStructure),
+          ...collectObjectKeys(normalizedCoverage),
+        ].some((key) =>
           /seed|itemCount|ordinal|scenarioBlueprintId|title/i
             .test(key)
-        ) ||
-        /seed|itemCount|ordinal|scenarioBlueprintId/i
-          .test(JSON.stringify(normalizedCoverage))
+        )
       ) {
         throw new Error(
           `${entry.id} normalized structure contains identity or label data`,
@@ -1277,10 +1291,35 @@ function validateCorpus() {
 }
 
 function assertUnique(entries, field, expectedCount, kind) {
-  const count = new Set(entries.map((entry) => entry[field])).size;
-  if (count !== expectedCount) {
-    throw new Error(`${kind} has only ${count} unique ${field} values`);
+  const groups = new Map();
+  for (const entry of entries) {
+    const value = entry[field];
+    groups.set(value, [...(groups.get(value) ?? []), entry.id]);
   }
+  const count = groups.size;
+  if (count !== expectedCount) {
+    const duplicates = [...groups.values()]
+      .filter((ids) => ids.length > 1)
+      .map((ids) => ids.join(', '))
+      .join('; ');
+    throw new Error(
+      `${kind} has only ${count} unique ${field} values; duplicates: ` +
+        duplicates,
+    );
+  }
+}
+
+function collectObjectKeys(value) {
+  if (value === null || typeof value !== 'object') {
+    return [];
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap(collectObjectKeys);
+  }
+  return Object.entries(value).flatMap(([key, child]) => [
+    key,
+    ...collectObjectKeys(child),
+  ]);
 }
 
 function deepFreeze(value) {

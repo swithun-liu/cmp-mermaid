@@ -4,6 +4,7 @@ export function classifyGeometryRatio({
   minimum,
   maximum,
   iterativeLayoutWithMatchingStructure,
+  reviewReason = null,
 }) {
   if (Number.isFinite(value) && value >= minimum && value <= maximum) {
     return { status: 'pass', message: null };
@@ -11,10 +12,14 @@ export function classifyGeometryRatio({
   const message =
     `${label} ratio ${formatRatio(value)} is outside ` +
     `[${minimum.toFixed(3)}, ${maximum.toFixed(3)}]`;
-  return iterativeLayoutWithMatchingStructure
+  const effectiveReviewReason = reviewReason ??
+    (iterativeLayoutWithMatchingStructure
+      ? 'CoSE manifest structure matches'
+      : null);
+  return effectiveReviewReason !== null
     ? {
         status: 'review',
-        message: `${message}; CoSE manifest structure matches`,
+        message: `${message}; ${effectiveReviewReason}`,
       }
     : { status: 'failure', message };
 }

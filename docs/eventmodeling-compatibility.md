@@ -48,12 +48,13 @@ weakening the Official visual gate.
   frontmatter offsets, and typed resource/configuration failures.
 - 13 independent production scenarios cover all 23 declared visual capability
   points.
-- 256 deterministic same-source matrix cases exercise 13 structural seeds and
-  20 visible text/layout-pressure profiles.
+- 256 deterministic same-source cases cover the fixed six-category quotas,
+  family-specific capability axes, scaled stress structures, equivalent syntax,
+  and historical regressions.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.029-1.044`, `1.013-1.044`, and `1.029-1.115`.
 - Production detail passed `13/13`.
-- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `0.960-1.069`, height `1.033-1.202`, and foreground ink `1.028-1.399`.
+- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.005-1.069`, height `0.984-1.130`, and foreground ink `0.923-1.232`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved swimlane, card, relation, marker, color, label,
   clipping, overlap, or paint-order defect remains.

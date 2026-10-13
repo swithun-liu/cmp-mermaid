@@ -59,7 +59,7 @@ arbitrary URLs or JavaScript.
 - 13 independent production scenarios pass the detail audit with
   `13 pass / 0 review / 0 fail`; geometry ratios are width `1.036-1.196`,
   height `0.906-1.055`, and foreground ink `0.723-1.230`.
-- The fresh 256-case full-factorial input audit reports `221 pass / 35 review / 0 fail`; geometry has 0 hard failures with width `1.039-1.199`, height `0.872-1.067`, and foreground ink `0.858-1.249`.
+- The fresh 256-case coverage-driven input audit reports `225 pass / 31 review / 0 fail`; geometry has 0 hard failures with width `1.030-1.217`, height `0.849-1.085`, and foreground ink `0.749-1.252`.
 - All 16 matrix contact sheets were manually reviewed with no unresolved
   class, namespace, relation, marker, cardinality, note, label, clipping,
   overlap, or paint-order defect.

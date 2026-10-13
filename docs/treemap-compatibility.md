@@ -41,7 +41,7 @@ colors closely enough that side-by-side review exposes no functional defect.
 - Production detail passed `13/13`. Manual contact-sheet review found matching
   hierarchy, rectangle geometry, labels, values, formats, styles, colors,
   clipping, and paint order.
-- The fresh 256-case full-factorial input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.043-1.044`, height `1.037-1.038`, and foreground ink `1.078-1.095`.
+- The fresh 256-case coverage-driven input audit reports `246 pass / 10 review / 0 fail`; geometry has 0 hard failures with width `1.033-1.044`, height `1.029-1.040`, and foreground ink `0.945-1.094`.
 - Raw
   [production detail](assets/stability-report/treemap-production-detail.json),
   [production geometry](assets/stability-report/treemap-production-geometry.json),

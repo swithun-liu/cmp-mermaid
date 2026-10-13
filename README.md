@@ -36,8 +36,8 @@
 > contract is rated **Stable**.
 >
 > The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
-> covers every family with the complete `2^8` combinations of eight named,
-> family-specific binary input dimensions. Automated input-space,
+> covers every family with a fixed six-category coverage-driven corpus.
+> Family-specific capability, stress, equivalent-syntax,
 > duplicate/detail/geometry audits and 528 regenerated contact sheets preserve
 > the result.
 > The 441 hand-authored production scenarios and 8,448 text/layout stress
@@ -63,14 +63,14 @@ geometry gates.
 | Visual family gates pending | 0 |
 | Independent production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
-| Independent-scenario visual matrix | 8,448 Native/Official pairs; 8 binary input dimensions and all 256 combinations per family |
-| Input-space hard gate | Every family covers 256/256 dimension vectors; each option occurs 128 times and every two-dimension option pair occurs 64 times |
+| Independent-scenario visual matrix | 8,448 Native/Official pairs; each family has 64 focused syntax, 64 combination, 48 stress, 32 AI-common, 32 equivalent-syntax, and 16 regression cases |
+| Coverage hard gate | Every family satisfies all six quotas, its required capabilities, 16 equivalent-syntax groups, and its structural-profile floor |
 | Duplicate hard gate | Every family has 256/256 unique blueprints, normalized semantics, and label-normalized sources; rendered manifest/PNG uniqueness is diagnostic because distinct legal inputs can render equivalently |
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
 | Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Independent-scenario detail audit | 33 families: 7,741 pass, 707 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 132 review findings, all from seeded Architecture fCoSE placement |
+| Independent-scenario detail audit | 33 families: 7,722 pass, 726 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 177 review findings across 125 cases; 157 findings come from 105 seeded Architecture fCoSE cases |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |

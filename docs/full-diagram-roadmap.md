@@ -23,8 +23,9 @@ Mermaid's registry count is not the public family count:
 
 The repository contains 441 hand-authored production scenarios and a generated
 visual matrix of 8,448 systematic input cases across all 33 families. Each
-family defines eight named binary dimensions and covers all `2^8`
-combinations.
+family uses the same fixed six-category allocation while preserving
+family-specific official capabilities, generator axes, stress structures,
+equivalent-syntax pairs, and historical regressions.
 All cases pass Native rendering and complete the Native/Official detail and
 geometry audits without a hard failure. A separate 8,448-input text/layout
 stress corpus remains isolated from structural coverage. A Git Graph label paint-order defect
@@ -56,18 +57,18 @@ on both sides and passes with no findings.
 
 All 33 families have completed the visual-input gate. Together they have
 8,448 same-source pairs:
-`7,741 pass / 707 review / 0 fail` across 528 regenerated contact sheets.
-Geometry has 0 hard failures and retains 132 review findings across 108
-Architecture cases. Architecture uses seeded iterative fCoSE layout on both
-sides, and its cross-runtime placement differences remain explicit review
-evidence.
+`7,722 pass / 726 review / 0 fail` across 528 regenerated contact sheets.
+Geometry has 0 hard failures and retains 177 review findings across 125 cases.
+Architecture contributes 157 findings across 105 seeded iterative fCoSE cases;
+its cross-runtime placement differences and the remaining strict font-metric
+reviews stay explicit.
 
 The fresh per-family pass/review counts and width, height, and foreground-ink
 ranges are published in the
 [8,448-case visual-input evidence index](assets/stability-report/visual-parity-evidence.md).
-Across the complete matrix, width ratios are `0.867-1.658`, height ratios are
-`0.339-1.335`, and foreground-ink ratios are `0.313-2.640`; all out-of-range
-values are retained Architecture fCoSE reviews.
+Across the complete matrix, width ratios are `0.563-15.283`, height ratios are
+`0.316-2.312`, and foreground-ink ratios are `0.162-15.222`; all out-of-range
+values remain visible in the review evidence.
 
 ## Expected Behavior
 
@@ -79,8 +80,9 @@ Kotlin Multiplatform and rendered by Compose Canvas:
   pinned upstream implementation;
 - unsupported behavior returns a typed error instead of a silent substitute;
 - the same source drives Native and Official reference rendering;
-- every family has all 256 combinations of eight named binary input dimensions plus independent
-  documentation, production, randomized, and cross-platform coverage.
+- every family has 256 cases across the fixed coverage-driven categories plus
+  independent documentation, production, randomized, and cross-platform
+  coverage.
 
 ## Translation Batches
 
@@ -110,7 +112,7 @@ Each of the 33 families must pass all of the following:
    perceptual difference, clipping, and overlap diagnostics are recorded.
    Font rasterization receives explicit tolerance; missing or wrongly layered
    content does not.
-5. **Visual review:** all 256 full-factorial Native/Official input pairs are reviewed from paged
+5. **Visual review:** all 256 coverage-driven Native/Official input pairs are reviewed from paged
    contact sheets and every anomaly is resolved or documented as an allowed
    platform-font difference.
 6. **Stress and replay:** at least 256 separately generated legal inputs render

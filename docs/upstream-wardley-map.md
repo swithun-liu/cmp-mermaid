@@ -42,5 +42,5 @@
 - Caller configuration, source sanitizer parity, and theme variables:
   `WardleyConfigTest.kt`
 - Official documentation fixtures: `OfficialWardleyDocumentationTest.kt`
-- Production, determinism, themes, and 256-case Native full-factorial input matrix:
+- Production, determinism, themes, and 256-case Native coverage-driven input matrix:
   `ProductionCorpusTest.kt`
