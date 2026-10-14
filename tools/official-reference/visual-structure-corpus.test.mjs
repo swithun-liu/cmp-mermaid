@@ -448,6 +448,89 @@ test('publishes machine-readable independent scenario accounting', () => {
   ]);
 });
 
+test('publishes pass, review, and fail counts in the visual evidence index', () => {
+  const reportDirectory = resolve(
+    repositoryRoot,
+    'docs/assets/stability-report',
+  );
+  const detail = JSON.parse(readFileSync(
+    resolve(reportDirectory, 'visual-parity-detail.json'),
+    'utf8',
+  ));
+  const evidence = readFileSync(
+    resolve(reportDirectory, 'visual-parity-evidence.md'),
+    'utf8',
+  );
+  const manifest = JSON.parse(readFileSync(
+    resolve(reportDirectory, 'visual-parity-manifest.json'),
+    'utf8',
+  ));
+  const evidenceKinds = [...new Set(
+    manifest.cases.map((entry) => entry.kind),
+  )];
+  const normalizedTopologyCounts = (fileName) => {
+    const counts = JSON.parse(readFileSync(
+      resolve(reportDirectory, fileName),
+      'utf8',
+    )).counts;
+    return {
+      pass: counts.pass ?? 0,
+      review: counts.review ?? 0,
+      fail: counts.fail ?? 0,
+    };
+  };
+  const topologyByKind = {
+    flowchart: normalizedTopologyCounts(
+      'flowchart-visual-parity-topology.json',
+    ),
+    swimlanes: normalizedTopologyCounts(
+      'swimlanes-visual-parity-topology.json',
+    ),
+  };
+  const expectedByKind = evidenceKinds.map((kind) => {
+    const familyCases = detail.cases.filter((entry) => entry.kind === kind);
+    const result = {
+      pass: familyCases.filter((entry) => entry.status === 'pass').length,
+      review: familyCases.filter((entry) => entry.status === 'review').length,
+      fail: familyCases.filter((entry) => entry.status === 'fail').length,
+    };
+    const topology = topologyByKind[kind];
+    return {
+      ...result,
+      status:
+        result.fail > 0 || (topology?.fail ?? 0) > 0
+          ? 'FAIL'
+          : result.review > 0 || (topology?.review ?? 0) > 0
+          ? 'REVIEW'
+          : 'PASS',
+      topology,
+    };
+  });
+  const summaries = [...evidence.matchAll(
+    /<summary><strong>.+? - 256 independent Native\/Official scenarios - (PASS|REVIEW|FAIL) - detail (\d+) pass \/ (\d+) review \/ (\d+) fail(?:; topology (\d+) pass \/ (\d+) review \/ (\d+) fail)?<\/strong><\/summary>/g,
+  )].map((match) => ({
+    status: match[1],
+    pass: Number(match[2]),
+    review: Number(match[3]),
+    fail: Number(match[4]),
+    topology: match[5] === undefined
+      ? undefined
+      : {
+          pass: Number(match[5]),
+          review: Number(match[6]),
+          fail: Number(match[7]),
+        },
+  }));
+  assert.deepEqual(summaries, expectedByKind);
+  assert.match(
+    evidence,
+    /\*\*21 families passing all 256 cases\*\*/,
+  );
+  assert.match(evidence, /\*\*12 families with review cases\*\*/);
+  assert.match(evidence, /\*\*0 families with hard detail failures\*\*/);
+  assert.match(evidence, /\*\*11 hard per-edge topology failures\*\*/);
+});
+
 function categoryCounts(entries) {
   const counts = new Map();
   for (const entry of entries) {

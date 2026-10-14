@@ -232,9 +232,10 @@ if (shouldWriteManifest) {
     }, null, 2)}\n`,
   );
   if (corpusSource === 'visual-parity' && corpusKind === 'all') {
+    const auditSummary = readVisualAuditSummary(outputDirectory, kinds);
     writeFileSync(
       resolve(outputDirectory, 'visual-parity-evidence.md'),
-      renderEvidenceIndex(persistedManifest, kinds),
+      renderEvidenceIndex(persistedManifest, kinds, auditSummary),
     );
   }
 }
@@ -401,12 +402,86 @@ function renderContactSheet(kind, records, pageNumber, pageCount) {
 </html>`;
 }
 
-function renderEvidenceIndex(records, evidenceKinds) {
+function readVisualAuditSummary(directory, evidenceKinds) {
+  const detail = readAuditReport(directory, 'visual-parity-detail.json');
+  const flowchartTopology = readAuditReport(
+    directory,
+    'flowchart-visual-parity-topology.json',
+  );
+  const swimlanesTopology = readAuditReport(
+    directory,
+    'swimlanes-visual-parity-topology.json',
+  );
+  const detailByKind = evidenceKinds.map((kind) => {
+    const familyCases = detail.cases.filter((entry) => entry.kind === kind);
+    if (familyCases.length !== 256) {
+      throw new Error(
+        `${kind} detail audit must contain 256 cases, found ` +
+          familyCases.length,
+      );
+    }
+    return {
+      kind,
+      pass: familyCases.filter((entry) => entry.status === 'pass').length,
+      review: familyCases.filter((entry) => entry.status === 'review').length,
+      fail: familyCases.filter((entry) => entry.status === 'fail').length,
+    };
+  });
+  return {
+    detailByKind,
+    fullyPassedFamilies: detailByKind.filter(
+      (entry) => entry.pass === 256 && entry.review === 0 && entry.fail === 0,
+    ).length,
+    reviewFamilies: detailByKind.filter((entry) => entry.review > 0).length,
+    failedFamilies: detailByKind.filter((entry) => entry.fail > 0).length,
+    flowchartTopology: topologyCounts(flowchartTopology),
+    swimlanesTopology: topologyCounts(swimlanesTopology),
+  };
+}
+
+function readAuditReport(directory, fileName) {
+  const path = resolve(directory, fileName);
+  if (!existsSync(path)) {
+    throw new Error(`Missing visual audit report: ${path}`);
+  }
+  return JSON.parse(readFileSync(path, 'utf8'));
+}
+
+function topologyCounts(report) {
+  return {
+    pass: report.counts?.pass ?? 0,
+    review: report.counts?.review ?? 0,
+    fail: report.counts?.fail ?? 0,
+  };
+}
+
+function familyAuditStatus(detail, topology) {
+  if (detail.fail > 0 || (topology?.fail ?? 0) > 0) {
+    return 'FAIL';
+  }
+  if (detail.review > 0 || (topology?.review ?? 0) > 0) {
+    return 'REVIEW';
+  }
+  return 'PASS';
+}
+
+function renderEvidenceIndex(records, evidenceKinds, auditSummary) {
   const caseCount = records.length;
   const screenshotCount = caseCount * 2;
   const sections = evidenceKinds.map((kind) => {
     const kindSummary = visualStructureCorpusSummary.countsByKind
       .find((entry) => entry.kind === kind);
+    const kindAudit = auditSummary.detailByKind
+      .find((entry) => entry.kind === kind);
+    const topology = {
+      flowchart: auditSummary.flowchartTopology,
+      swimlanes: auditSummary.swimlanesTopology,
+    }[kind];
+    const status = familyAuditStatus(kindAudit, topology);
+    const topologyResult = topology === undefined
+      ? ''
+      : `; topology ${topology.pass} pass / ${topology.review} review / ` +
+        `${topology.fail} fail`;
     const pageCount = Math.ceil(
       cases.filter((entry) => entry.kind === kind).length / pageSize,
     );
@@ -416,7 +491,7 @@ function renderEvidenceIndex(records, evidenceKinds) {
       return `![${kindTitles[kind]} visual parity page ${page}](${file})`;
     }).join('\n\n');
     return `<details>
-<summary><strong>${kindTitles[kind]} - ${kindSummary.independentScenarioCount} independent Native/Official scenarios</strong></summary>
+<summary><strong>${kindTitles[kind]} - ${kindSummary.independentScenarioCount} independent Native/Official scenarios - ${status} - detail ${kindAudit.pass} pass / ${kindAudit.review} review / ${kindAudit.fail} fail${topologyResult}</strong></summary>
 
 ${images}
 
@@ -429,6 +504,14 @@ blueprints and
 ${screenshotCount.toLocaleString('en-US')} screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
+
+Current detail result:
+**${auditSummary.fullyPassedFamilies} families passing all 256 cases**,
+**${auditSummary.reviewFamilies} families with review cases**, and
+**${auditSummary.failedFamilies} families with hard detail failures**.
+Flowchart also has
+**${auditSummary.flowchartTopology.fail} hard per-edge topology failures**.
+Each diagram title below carries its current PASS, REVIEW, or FAIL result.
 
 Flowchart uses its 256-case coverage-driven corpus. Every other family uses the
 complete 256-combination matrix of eight family-specific binary capability axes.
