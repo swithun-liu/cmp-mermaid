@@ -58,7 +58,7 @@ on both sides and passes with no findings.
 
 All 33 families have completed the visual-input gate. Together they have
 8,448 same-source pairs:
-`7,832 pass / 616 review / 0 fail` across 528 regenerated contact sheets.
+`7,864 pass / 584 review / 0 fail` across 528 regenerated contact sheets.
 Geometry has 0 hard failures and retains 155 review findings across 121
 Architecture seeded iterative fCoSE cases; those cross-runtime placement
 differences stay explicit.

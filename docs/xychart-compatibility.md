@@ -58,7 +58,7 @@ presentation flags do not alter the fixed intrinsic SceneGraph dimensions.
   geometry width `1.016-1.020`, height `1.012-1.015`, and foreground ink
   `0.967-1.144`.
 - The fresh 256-case coverage-driven input audit reports
-  `224 pass / 32 review / 0 fail`; geometry has 0 hard failures with width
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
   `1.012-1.014`, height `1.009-1.012`, and foreground ink `0.934-1.091`.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.

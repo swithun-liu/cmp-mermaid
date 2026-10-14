@@ -66,15 +66,17 @@ class SceneAuditManifestTest {
     }
 
     @Test
-    fun removesHorizontalLayoutPaddingFromStartAndEndTextBounds() {
+    fun translatesStartAndEndTextBoundsWithoutChangingGlyphWidth() {
         val bounds = SceneRect(left = 2f, top = 3f, right = 30f, bottom = 19f)
 
-        listOf(SceneTextAlignment.Start, SceneTextAlignment.End).forEach { alignment ->
-            assertEquals(
-                SceneRect(left = 6f, top = 3f, right = 26f, bottom = 19f),
-                text(bounds, alignment).auditBounds(),
-            )
-        }
+        assertEquals(
+            SceneRect(left = 6f, top = 3f, right = 34f, bottom = 19f),
+            text(bounds, SceneTextAlignment.Start).auditBounds(),
+        )
+        assertEquals(
+            SceneRect(left = -2f, top = 3f, right = 26f, bottom = 19f),
+            text(bounds, SceneTextAlignment.End).auditBounds(),
+        )
     }
 
     @Test
@@ -100,6 +102,10 @@ class SceneAuditManifestTest {
         assertEquals(
             SceneRect(left = 6f, top = 3f, right = 14f, bottom = 19f),
             text(insetBoundaryBounds, SceneTextAlignment.Start).auditBounds(),
+        )
+        assertEquals(
+            SceneRect(left = -2f, top = 3f, right = 6f, bottom = 19f),
+            text(insetBoundaryBounds, SceneTextAlignment.End).auditBounds(),
         )
     }
 

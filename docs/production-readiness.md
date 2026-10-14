@@ -28,7 +28,7 @@ rated Stable. A successful build alone is not sufficient.
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
   (`8,448/8,448` coverage-driven input cases processed;
-  `7,832 pass / 616 review / 0 fail`;
+  `7,864 pass / 584 review / 0 fail`;
   geometry has 0 hard failures and 155 review findings across 121 Architecture
   cases)
 - Flowchart per-edge topology: `245 pass / 11 fail`

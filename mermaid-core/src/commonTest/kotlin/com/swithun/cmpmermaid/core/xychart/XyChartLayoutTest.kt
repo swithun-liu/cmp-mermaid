@@ -119,6 +119,14 @@ class XyChartLayoutTest {
         assertEquals(3, labels.size)
         assertTrue(bars.all { it.bounds.width > 0f && it.bounds.height > 0f })
         assertTrue(labels.zip(bars).all { (label, bar) -> label.bounds.left >= bar.bounds.right })
+        labels.zip(bars).forEach { (label, bar) ->
+            assertEquals(bar.bounds.center.y, label.rotationPivot?.y)
+            assertEquals(
+                bar.bounds.center.y - label.bounds.height / 2f,
+                label.bounds.top,
+                absoluteTolerance = 0.001f,
+            )
+        }
     }
 
     @Test
@@ -143,6 +151,50 @@ class XyChartLayoutTest {
 
         assertEquals(listOf("15", "24", "33", "42"), labels.map(SceneText::text))
         assertTrue(labels.all { text -> text.fontSize == 16f })
+        val bars = scene.elements.filterIsInstance<SceneShape>()
+            .filter { shape -> shape.id.startsWith("xy-bar-") }
+        labels.zip(bars).forEach { (label, bar) ->
+            val anchorY = bar.bounds.top + 10f
+            assertEquals(anchorY, label.rotationPivot?.y)
+            assertEquals(
+                anchorY - label.fontSize * 0.1875f,
+                label.bounds.top,
+                absoluteTolerance = 0.001f,
+            )
+        }
+    }
+
+    @Test
+    fun usesAutoBaselineAnchorForVerticalLabelsOutsideBars() {
+        val scene = render(
+            """
+            ---
+            config:
+              xyChart:
+                showDataLabel: true
+                showDataLabelOutsideBar: true
+            ---
+            xychart
+                x-axis [A, B]
+                y-axis 0 --> 100
+                bar [40, 80]
+            """.trimIndent(),
+        )
+        val bars = scene.elements.filterIsInstance<SceneShape>()
+            .filter { shape -> shape.id.startsWith("xy-bar-") }
+        val labels = scene.elements.filterIsInstance<SceneText>()
+            .filter { text -> text.zIndex == 18 }
+
+        assertEquals(2, labels.size)
+        labels.zip(bars).forEach { (label, bar) ->
+            val anchorY = bar.bounds.top - 10f
+            assertEquals(anchorY, label.rotationPivot?.y)
+            assertEquals(
+                anchorY - label.fontSize,
+                label.bounds.top,
+                absoluteTolerance = 0.001f,
+            )
+        }
     }
 
     @Test

@@ -7,8 +7,8 @@ visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
 Current detail result:
-**21 families passing all 256 cases**,
-**12 families with review cases**, and
+**22 families passing all 256 cases**,
+**11 families with review cases**, and
 **0 families with hard detail failures**.
 Flowchart also has
 **11 hard per-edge topology failures**.
@@ -260,7 +260,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>XY Chart - 256 independent Native/Official scenarios - REVIEW - detail 224 pass / 32 review / 0 fail</strong></summary>
+<summary><strong>XY Chart - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![XY Chart visual parity page 01](xychart-visual-parity-01.jpg)
 

@@ -81,6 +81,10 @@ production so an upstream grammar diff can be translated incrementally.
   fit even when the label is placed outside. When that produces a negative
   SVG `font-size`, browsers reject the attribute and inherit `16px`; the
   Kotlin translation reproduces that fallback explicitly.
+- `xychartRenderer.ts` uses `middle` for horizontal bar-label baselines,
+  `hanging` for vertical labels inside bars, and the SVG default `auto`
+  baseline for vertical labels outside bars. `XyChartLayout` preserves those
+  anchors and adapts the browser `getBBox()` hanging offset to Scene bounds.
 - DOM text measurement is supplied by `TextMetricProvider`; Compose uses the
   same font, size, alignment, rotation, and line-height inputs for measurement
   and painting.
@@ -108,7 +112,7 @@ production so an upstream grammar diff can be translated incrementally.
 - The independent production audit passes `13 pass / 0 review / 0 fail`.
   Geometry ratios are width `1.016-1.020`, height `1.008-1.015`, and
   foreground ink `0.967-1.144`.
-- The current 256-case Native/Official matrix reports `224 pass / 32 review / 0 fail`.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
   Geometry has 0 hard failures with width `1.012-1.014`, height `1.009-1.012`,
   and foreground ink `0.934-1.091`.
 - All 16 matrix contact sheets are published and source-bound; current automated

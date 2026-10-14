@@ -219,19 +219,12 @@ private fun StringBuilder.appendText(text: SceneText) {
 }
 
 internal fun SceneText.auditBounds(): SceneRect {
-    // MermaidDiagram.drawSceneText applies the same 4px horizontal inset.
-    // Report the painted glyph box rather than the SceneText layout box.
-    val paintedBounds = when {
-        horizontalAlignment == SceneTextAlignment.Center -> bounds
-        bounds.width > TEXT_HORIZONTAL_INSET * 2f -> SceneRect(
-            left = bounds.left + TEXT_HORIZONTAL_INSET,
-            top = bounds.top,
-            right = bounds.right - TEXT_HORIZONTAL_INSET,
-            bottom = bounds.bottom,
-        )
-        horizontalAlignment == SceneTextAlignment.Start ->
-            bounds.translateX(TEXT_HORIZONTAL_INSET)
-        else -> bounds.translateX(-TEXT_HORIZONTAL_INSET)
+    // MermaidDiagram.drawSceneText offsets the painted glyph origin by 4px
+    // without changing the measured glyph width.
+    val paintedBounds = when (horizontalAlignment) {
+        SceneTextAlignment.Center -> bounds
+        SceneTextAlignment.Start -> bounds.translateX(TEXT_HORIZONTAL_INSET)
+        SceneTextAlignment.End -> bounds.translateX(-TEXT_HORIZONTAL_INSET)
     }
     if (rotationDegrees == 0f) return paintedBounds
     val pivot = rotationPivot ?: bounds.center

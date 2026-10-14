@@ -385,7 +385,7 @@ private class XyChartTitle(
                 color = theme.titleColor,
                 fontSize = config.titleFontSize,
                 horizontal = SceneTextAlignment.Center,
-                verticalTop = false,
+                vertical = XyTextBaseline.Middle,
                 dimensions = dimensions,
             ),
         )
@@ -483,7 +483,7 @@ private class XyLegend(
                         color = theme.legendTextColor,
                         fontSize = layout.fontSize,
                         horizontal = SceneTextAlignment.Start,
-                        verticalTop = false,
+                        vertical = XyTextBaseline.Middle,
                         dimensions = dimensions,
                     ),
                 )
@@ -724,7 +724,7 @@ private abstract class XyBaseAxis(
                         color = theme.label,
                         fontSize = axisConfig.labelFontSize,
                         horizontal = SceneTextAlignment.End,
-                        verticalTop = false,
+                        vertical = XyTextBaseline.Middle,
                         dimensions = dimensions,
                     ),
                 )
@@ -749,7 +749,7 @@ private abstract class XyBaseAxis(
                     color = theme.title,
                     fontSize = axisConfig.titleFontSize,
                     horizontal = SceneTextAlignment.Center,
-                    verticalTop = true,
+                    vertical = XyTextBaseline.TextBeforeEdge,
                     dimensions = dimensions,
                     rotation = 270f,
                 ),
@@ -779,7 +779,7 @@ private abstract class XyBaseAxis(
                         color = theme.label,
                         fontSize = axisConfig.labelFontSize,
                         horizontal = SceneTextAlignment.Center,
-                        verticalTop = true,
+                        vertical = XyTextBaseline.TextBeforeEdge,
                         dimensions = dimensions,
                         rotation = axisConfig.labelRotation,
                     ),
@@ -802,7 +802,7 @@ private abstract class XyBaseAxis(
                     color = theme.title,
                     fontSize = axisConfig.titleFontSize,
                     horizontal = SceneTextAlignment.Center,
-                    verticalTop = true,
+                    vertical = XyTextBaseline.TextBeforeEdge,
                     dimensions = dimensions,
                 ),
             )
@@ -831,7 +831,7 @@ private abstract class XyBaseAxis(
                         color = theme.label,
                         fontSize = axisConfig.labelFontSize,
                         horizontal = SceneTextAlignment.Center,
-                        verticalTop = true,
+                        vertical = XyTextBaseline.TextBeforeEdge,
                         dimensions = dimensions,
                     ),
                 )
@@ -855,7 +855,7 @@ private abstract class XyBaseAxis(
                     color = theme.title,
                     fontSize = axisConfig.titleFontSize,
                     horizontal = SceneTextAlignment.Center,
-                    verticalTop = true,
+                    vertical = XyTextBaseline.TextBeforeEdge,
                     dimensions = dimensions,
                 ),
             )
@@ -1038,7 +1038,7 @@ private class XyPlot(
                 color = plot.stroke,
                 fontSize = 12f,
                 horizontal = alignment,
-                verticalTop = false,
+                vertical = XyTextBaseline.Middle,
                 dimensions = XyTextDimensions(context),
                 zIndex = 18,
             )
@@ -1150,7 +1150,7 @@ private class XyPlot(
                 } else {
                     SceneTextAlignment.End
                 },
-                verticalTop = false,
+                vertical = XyTextBaseline.Middle,
                 dimensions = dimensions,
                 zIndex = 18,
             )
@@ -1181,7 +1181,7 @@ private class XyPlot(
         val dimensions = XyTextDimensions(context)
         return bars.mapIndexed { index, bar ->
             val targetY = if (config.showDataLabelOutsideBar) {
-                bar.bounds.top - 10f - fontSize
+                bar.bounds.top - 10f
             } else {
                 bar.bounds.top + 10f
             }
@@ -1193,7 +1193,14 @@ private class XyPlot(
                 color = theme.dataLabelColor,
                 fontSize = fontSize,
                 horizontal = SceneTextAlignment.Center,
-                verticalTop = true,
+                // Mermaid.js 12.0.0:
+                // packages/mermaid/src/diagrams/xychart/xychartRenderer.ts
+                // -> draw(rect) dominant-baseline for vertical data labels.
+                vertical = if (config.showDataLabelOutsideBar) {
+                    XyTextBaseline.Auto
+                } else {
+                    XyTextBaseline.Hanging
+                },
                 dimensions = dimensions,
                 zIndex = 18,
             )
@@ -1209,7 +1216,7 @@ private fun sceneText(
     color: SceneColor,
     fontSize: Float,
     horizontal: SceneTextAlignment,
-    verticalTop: Boolean,
+    vertical: XyTextBaseline,
     dimensions: XyTextDimensions,
     rotation: Float = 0f,
     zIndex: Int = 20,
@@ -1220,7 +1227,15 @@ private fun sceneText(
         SceneTextAlignment.Center -> x - measured.width / 2f
         SceneTextAlignment.End -> x + 4f - measured.width
     }
-    val top = if (verticalTop) y else y - measured.height / 2f
+    val top = when (vertical) {
+        XyTextBaseline.Middle -> y - measured.height / 2f
+        XyTextBaseline.TextBeforeEdge -> y
+        // SVG getBBox() extends hanging text slightly above its anchor.
+        XyTextBaseline.Hanging -> y - fontSize * SVG_HANGING_TOP_FACTOR
+        // Preserve the browser's alphabetic baseline placement used by
+        // xychartRenderer.ts for vertical labels outside bars.
+        XyTextBaseline.Auto -> y - fontSize
+    }
     return SceneText(
         text = text,
         bounds = SceneRect(
@@ -1240,6 +1255,15 @@ private fun sceneText(
         softWrap = false,
     )
 }
+
+private enum class XyTextBaseline {
+    Middle,
+    TextBeforeEdge,
+    Hanging,
+    Auto,
+}
+
+private const val SVG_HANGING_TOP_FACTOR = 0.1875f
 
 private fun rectangle(
     id: String,

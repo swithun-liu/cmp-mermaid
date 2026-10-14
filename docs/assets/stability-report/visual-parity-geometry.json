@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-10-13T12:47:23.400Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-14T06:33:15.249Z",
   "inputDirectory": "captures/local/independent-visual-parity-v2",
   "corpusSource": "visual-parity",
   "corpusKind": "all",
@@ -110549,8 +110549,8 @@
             255
           ]
         ],
-        "inkPixels": 214676,
-        "inkRatio": 0.19877407407407408,
+        "inkPixels": 214660,
+        "inkRatio": 0.19875925925925925,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -110591,7 +110591,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0399255936522085
+      "inkRatio": 1.0398480870399256
     },
     {
       "id": "visual_xychart_138",
@@ -110681,8 +110681,8 @@
             255
           ]
         ],
-        "inkPixels": 72095,
-        "inkRatio": 0.06675462962962964,
+        "inkPixels": 72080,
+        "inkRatio": 0.06674074074074074,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -110723,7 +110723,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0467969566732491
+      "inkRatio": 1.0465791613427808
     },
     {
       "id": "visual_xychart_140",
@@ -111605,8 +111605,8 @@
             255
           ]
         ],
-        "inkPixels": 287978,
-        "inkRatio": 0.26664629629629627,
+        "inkPixels": 287959,
+        "inkRatio": 0.26662870370370373,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -111647,7 +111647,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0102564102564102,
-      "inkRatio": 1.0351250512210377
+      "inkRatio": 1.0350567565041733
     },
     {
       "id": "visual_xychart_154",
@@ -111737,8 +111737,8 @@
             255
           ]
         ],
-        "inkPixels": 98230,
-        "inkRatio": 0.0909537037037037,
+        "inkPixels": 98215,
+        "inkRatio": 0.09093981481481482,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -111779,7 +111779,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0486815415821502
+      "inkRatio": 1.048521404932209
     },
     {
       "id": "visual_xychart_156",
@@ -112661,8 +112661,8 @@
             255
           ]
         ],
-        "inkPixels": 301119,
-        "inkRatio": 0.2788138888888889,
+        "inkPixels": 301104,
+        "inkRatio": 0.2788,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -112703,7 +112703,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0102564102564102,
-      "inkRatio": 1.0348905545989753
+      "inkRatio": 1.0348390023610925
     },
     {
       "id": "visual_xychart_170",
@@ -112793,8 +112793,8 @@
             255
           ]
         ],
-        "inkPixels": 134741,
-        "inkRatio": 0.12476018518518518,
+        "inkPixels": 134721,
+        "inkRatio": 0.12474166666666667,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -112835,7 +112835,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0645403406756628
+      "inkRatio": 1.064382327845021
     },
     {
       "id": "visual_xychart_172",
@@ -113717,8 +113717,8 @@
             255
           ]
         ],
-        "inkPixels": 361733,
-        "inkRatio": 0.33493796296296297,
+        "inkPixels": 361717,
+        "inkRatio": 0.33492314814814816,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -113759,7 +113759,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0270699235375456
+      "inkRatio": 1.0270244946748854
     },
     {
       "id": "visual_xychart_186",
@@ -113849,8 +113849,8 @@
             255
           ]
         ],
-        "inkPixels": 154060,
-        "inkRatio": 0.14264814814814814,
+        "inkPixels": 154045,
+        "inkRatio": 0.14263425925925927,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -113891,7 +113891,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 0.9812613852052838
+      "inkRatio": 0.9811658450210825
     },
     {
       "id": "visual_xychart_188",
@@ -114773,8 +114773,8 @@
             255
           ]
         ],
-        "inkPixels": 209847,
-        "inkRatio": 0.19430277777777777,
+        "inkPixels": 209811,
+        "inkRatio": 0.19426944444444444,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -114815,7 +114815,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0102564102564102,
-      "inkRatio": 1.0163952688630353
+      "inkRatio": 1.0162209026358362
     },
     {
       "id": "visual_xychart_202",
@@ -114905,8 +114905,8 @@
             255
           ]
         ],
-        "inkPixels": 72507,
-        "inkRatio": 0.0671361111111111,
+        "inkPixels": 72478,
+        "inkRatio": 0.06710925925925926,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -114947,7 +114947,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0437617861718513
+      "inkRatio": 1.043344321764291
     },
     {
       "id": "visual_xychart_204",
@@ -115829,8 +115829,8 @@
             255
           ]
         ],
-        "inkPixels": 291219,
-        "inkRatio": 0.2696472222222222,
+        "inkPixels": 291189,
+        "inkRatio": 0.26961944444444447,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -115871,7 +115871,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0102564102564102,
-      "inkRatio": 1.0341253298012494
+      "inkRatio": 1.0340187991150853
     },
     {
       "id": "visual_xychart_218",
@@ -115961,8 +115961,8 @@
             255
           ]
         ],
-        "inkPixels": 100419,
-        "inkRatio": 0.09298055555555555,
+        "inkPixels": 100390,
+        "inkRatio": 0.0929537037037037,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -116003,7 +116003,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0419502780775296
+      "inkRatio": 1.0416493732879555
     },
     {
       "id": "visual_xychart_220",
@@ -116885,8 +116885,8 @@
             255
           ]
         ],
-        "inkPixels": 298912,
-        "inkRatio": 0.2767703703703704,
+        "inkPixels": 298883,
+        "inkRatio": 0.2767435185185185,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -116927,7 +116927,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0102564102564102,
-      "inkRatio": 1.0260712557111324
+      "inkRatio": 1.0259717077959747
     },
     {
       "id": "visual_xychart_234",
@@ -117017,8 +117017,8 @@
             255
           ]
         ],
-        "inkPixels": 135258,
-        "inkRatio": 0.1252388888888889,
+        "inkPixels": 135224,
+        "inkRatio": 0.1252074074074074,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -117059,7 +117059,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 1.0618464437117288
+      "inkRatio": 1.0615795258282303
     },
     {
       "id": "visual_xychart_236",
@@ -117941,8 +117941,8 @@
             255
           ]
         ],
-        "inkPixels": 368204,
-        "inkRatio": 0.34092962962962964,
+        "inkPixels": 368171,
+        "inkRatio": 0.34089907407407405,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -117983,7 +117983,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0102564102564102,
-      "inkRatio": 1.0531578661342775
+      "inkRatio": 1.0530634776714078
     },
     {
       "id": "visual_xychart_250",
@@ -118073,8 +118073,8 @@
             255
           ]
         ],
-        "inkPixels": 157151,
-        "inkRatio": 0.1455101851851852,
+        "inkPixels": 157122,
+        "inkRatio": 0.14548333333333333,
         "contentBounds": {
           "x": 36,
           "y": 63,
@@ -118115,7 +118115,7 @@
       "manifestGeometryHeightRatio": 0.8639999479880168,
       "widthRatio": 1.0126582278481013,
       "heightRatio": 1.0103092783505154,
-      "inkRatio": 0.9807716311348544
+      "inkRatio": 0.980590643566828
     },
     {
       "id": "visual_xychart_252",
@@ -557743,5 +557743,40 @@
       "heightRatio": 1.0424528301886793,
       "inkRatio": 1.1672015506339168
     }
-  ]
+  ],
+  "inputDirectoriesByKind": {
+    "flowchart": "captures/local/independent-visual-parity-v2",
+    "swimlanes": "captures/local/independent-visual-parity-v2",
+    "architecture": "captures/local/independent-visual-parity-v2",
+    "c4": "captures/local/independent-visual-parity-v2",
+    "railroad": "captures/local/independent-visual-parity-v2",
+    "treeview": "captures/local/independent-visual-parity-v2",
+    "xychart": "captures/local/independent-visual-parity-v2",
+    "quadrant": "captures/local/independent-visual-parity-v2",
+    "timeline": "captures/local/independent-visual-parity-v2",
+    "kanban": "captures/local/independent-visual-parity-v2",
+    "sequence": "captures/local/independent-visual-parity-v2",
+    "class": "captures/local/independent-visual-parity-v2",
+    "state": "captures/local/independent-visual-parity-v2",
+    "er": "captures/local/independent-visual-parity-v2",
+    "gantt": "captures/local/independent-visual-parity-v2",
+    "pie": "captures/local/independent-visual-parity-v2",
+    "journey": "captures/local/independent-visual-parity-v2",
+    "requirement": "captures/local/independent-visual-parity-v2",
+    "gitgraph": "captures/local/independent-visual-parity-v2",
+    "mindmap": "captures/local/independent-visual-parity-v2",
+    "packet": "captures/local/independent-visual-parity-v2",
+    "radar": "captures/local/independent-visual-parity-v2",
+    "sankey": "captures/local/independent-visual-parity-v2",
+    "treemap": "captures/local/independent-visual-parity-v2",
+    "venn": "captures/local/independent-visual-parity-v2",
+    "ishikawa": "captures/local/independent-visual-parity-v2",
+    "cynefin": "captures/local/independent-visual-parity-v2",
+    "block": "captures/local/independent-visual-parity-v2",
+    "eventmodeling": "captures/local/independent-visual-parity-v2",
+    "agentflow": "captures/local/independent-visual-parity-v2",
+    "usecase": "captures/local/independent-visual-parity-v2",
+    "wardley": "captures/local/independent-visual-parity-v2",
+    "zenuml": "captures/local/independent-visual-parity-v2"
+  }
 }

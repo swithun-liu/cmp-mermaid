@@ -36,7 +36,7 @@ stress inputs.
 | Native core render results | 441 production scenarios and all 8,448 independent visual scenarios render successfully; the text/layout stress inputs are tracked separately |
 | Web Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Visual evidence | 528 freshly generated independent-scenario sheets plus 528 source-mutation sheets across all 33 families |
-| Independent-scenario detail audit | 8,448/8,448 processed: 7,832 pass, 616 review, 0 fail |
+| Independent-scenario detail audit | 8,448/8,448 processed: 7,864 pass, 584 review, 0 fail |
 | Automated visual geometry | 8,448/8,448 processed: 0 failure, 155 review findings across 121 cases |
 | Flowchart per-edge topology | 256 processed: 245 pass, 11 fail |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
@@ -155,7 +155,7 @@ with broader thresholds.
 | C4 | 256 | 0 | `0.985-1.086` | `1.044-1.062` | `1.063-1.119` |
 | Railroad | 256 | 0 | `1.003-1.110` | `1.023-1.101` | `1.051-1.215` |
 | TreeView | 256 | 0 | `0.994-1.066` | `0.970-1.035` | `0.902-1.062` |
-| XY Chart | 224 | 32 | `1.012-1.014` | `1.009-1.012` | `0.934-1.091` |
+| XY Chart | 256 | 0 | `1.012-1.014` | `1.009-1.012` | `0.934-1.091` |
 | Quadrant | 230 | 26 | `1.014-1.035` | `1.016-1.025` | `1.026-1.037` |
 | Timeline | 256 | 0 | `1.026-1.064` | `1.000-1.074` | `1.020-1.159` |
 | Kanban | 253 | 3 | `1.012-1.088` | `0.829-1.154` | `0.998-1.129` |
@@ -183,10 +183,10 @@ with broader thresholds.
 | Wardley Map | 256 | 0 | `1.008-1.008` | `1.019-1.020` | `1.016-1.095` |
 | ZenUML | 256 | 0 | `1.041-1.093` | `1.042-1.089` | `1.013-1.265` |
 All 528 independent-scenario contact sheets were regenerated from the same 8,448
-source cases recorded in the manifest. The 616 detail-review cases are
+source cases recorded in the manifest. The 584 detail-review cases are
 distributed as follows: Architecture 189, Entity Relationship 108, Venn 64,
-Gantt 64, Agentflow 50, Class 35, XY Chart 32, Quadrant 26, Git Graph 21,
-Flowchart 19, State 5, and Kanban 3. The other 21 families pass all 256 detail
+Gantt 64, Agentflow 50, Class 35, Quadrant 26, Git Graph 21, Flowchart 19,
+State 5, and Kanban 3. The other 22 families pass all 256 detail
 cases automatically.
 Per-family compatibility
 pages and machine-readable reports preserve the individual findings and
@@ -250,7 +250,7 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 | Diagram | Production cases | Capability points | Scenario examples | Current visual result |
 | --- | ---: | ---: | --- | --- |
 | Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Production evidence retained; coverage-driven detail 237 pass / 19 review / 0 fail; topology 245 pass / 11 fail; 16/16 sheets regenerated |
-| XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Production evidence retained; independent-scenario matrix 224 pass / 32 review / 0 fail; 16/16 sheets regenerated |
+| XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Quadrant Chart | 13 | 17/17 | axes, quadrant labels, boundary points, styles, themes | Production evidence retained; independent-scenario matrix 230 pass / 26 review / 0 fail; 16/16 sheets regenerated |
 | Timeline | 13 | 16/16 | directions, sections, periods, events, color scales, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Sequence | 14 | 16/16 | checkout saga, lifecycle, self messages, parallel and critical regions | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
@@ -532,7 +532,7 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![XY Chart complex Native and Official corpus](assets/stability-report/xychart-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`224 pass / 32 review / 0 fail`; geometry has 0 hard failures with width
+`256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
 `1.012-1.014`, height `1.009-1.012`, and foreground ink `0.934-1.091`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
