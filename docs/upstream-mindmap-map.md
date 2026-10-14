@@ -107,12 +107,9 @@ continue to require final relative-coordinate identity.
 - `MindmapDagreLayoutTest` and `NonLayeredTidyTreeLayoutTest` cover their
   translated algorithm boundaries.
 - `MindmapStressTest` renders 256 deterministic randomized Native diagrams.
-- The refreshed Web audit compares 13 independent production scenarios and
-  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
-  Production results are `9 pass / 4 manually reviewed / 0 fail`; matrix
-  results are `253 pass / 3 review / 0 fail`, with 256/256 geometry passes.
-  Expected text, nodes, hierarchy edges, shapes, colors, clipping, overlap,
-  and paint order pass across 16 contact sheets.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.023-1.113`, height `0.809-1.106`,
+  and foreground ink `0.927-1.141`.
 - The geometry gate keeps the shared numeric thresholds unchanged. A
   CoSE-Bilkent ratio outside those thresholds is queued for review only when
   the Native and Official detail manifests have no structural error. Blank

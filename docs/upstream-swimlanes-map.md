@@ -157,17 +157,15 @@ Completed fresh gates:
   or failure;
 - 13 production pairs: detail and topology `13/13` pass, with no geometry
   review or failure;
-- 256 Native/Official pairs: `255 pass / 1 manually accepted review / 0 fail`
-  for detail, `256/256` topology pass, and no geometry review or failure;
-- manual review of all 16 regenerated contact sheets;
-- full JVM `1,039/1,039`, Wasm core/Compose `1,031/1,031`, and Wasm debug UI
-  `5/5` tests;
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.032-1.057`, height `1.017-1.056`,
+  and foreground ink `0.978-1.127`. Per-edge topology is `256/256` pass.
+- The production and all 16 matrix contact sheets are published and source-bound;
+  current automated findings remain explicit.
+- full JVM `1,041/1,041`, Wasm core/Compose `1,031/1,031`, and Wasm debug UI
+  `7/7` tests;
 - Wasm production build, production isolation, publication coordinate, and
   source-map consistency gates.
-
-The sole 256-case review is `visual_swimlanes_004`, where both Native and
-Official retain the upstream title/author overlap. It is documented rather
-than altered with a Native-only coordinate adjustment.
 
 ## Upgrade Procedure
 

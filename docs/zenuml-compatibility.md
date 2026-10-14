@@ -37,13 +37,14 @@ Supported behavior includes:
 - All 13 production pairs pass the replacement detail and geometry audits.
   Native/Official content ratios are width `1.042-1.100`, height
   `1.039-1.102`, and foreground ink `1.094-1.238`.
-- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.042-1.100`, height `1.039-1.102`, and foreground ink `1.012-1.256`.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `1.041-1.093`, height `1.042-1.089`, and foreground ink `1.013-1.265`.
 - The cached open and filled message-arrow vectors have explicit black
   primitive paint, with a regression test protecting Kotlin object
   initialization order.
-- All 16 freshly generated visual-matrix contact sheets were manually reviewed
-  with no unresolved participant, occurrence, message arrow, fragment, icon,
-  clipping, overlap, or paint-order defect.
+- All 16 matrix contact sheets are published and source-bound; current automated
+  findings remain explicit.
 - Parser, coordinate, layout, malformed-input, and resource-limit tests are
   included in the JVM suite.
 

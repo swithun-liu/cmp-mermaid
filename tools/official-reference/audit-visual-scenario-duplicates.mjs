@@ -206,14 +206,24 @@ export function analyzeInputSpaceCoverage(
     );
   }
 
+  const normalizedSourceEntries = entries.map((entry) => ({
+    id: entry.id,
+    value: entry.normalizedSemanticStructure.normalizedSource,
+  }));
+  const uniqueNormalizedSourceCount =
+    new Set(normalizedSourceEntries.map((entry) => entry.value)).size;
+  if (uniqueNormalizedSourceCount !== expectedDimensionVectorCount) {
+    failures.push(
+      `expected ${expectedDimensionVectorCount} label-normalized Mermaid ` +
+        `sources, found ${uniqueNormalizedSourceCount}`,
+    );
+  }
+
   const entriesByVector = new Map(
     selectionsByEntry.map((entry) => [dimensionVector(entry), entry]),
   );
-  const topologyAndDataEffects = dimensions
-    .filter((dimension) =>
-      dimension.category === 'topology' || dimension.category === 'data'
-    )
-    .map((dimension) => {
+  const pairedEffects = (effectDimensions, valueOf, effectName) =>
+    effectDimensions.map((dimension) => {
       const dimensionIndex = dimensions.indexOf(dimension);
       const unchangedPairs = [];
       let missingCounterpartCount = 0;
@@ -237,13 +247,7 @@ export function analyzeInputSpaceCoverage(
           continue;
         }
         comparisonCount += 1;
-        const profile = JSON.stringify(
-          candidate.entry.normalizedSemanticStructure.structuralProfile,
-        );
-        const counterpartProfile = JSON.stringify(
-          counterpart.entry.normalizedSemanticStructure.structuralProfile,
-        );
-        if (profile === counterpartProfile) {
+        if (valueOf(candidate.entry) === valueOf(counterpart.entry)) {
           unchangedPairs.push([
             candidate.entry.id,
             counterpart.entry.id,
@@ -259,7 +263,7 @@ export function analyzeInputSpaceCoverage(
           : 'fail';
       if (status === 'fail') {
         failures.push(
-          `${dimension.name} does not change every paired structural profile`,
+          `${dimension.name} does not change every paired ${effectName}`,
         );
       }
       return {
@@ -272,6 +276,20 @@ export function analyzeInputSpaceCoverage(
         status,
       };
     });
+  const sourceEffects = pairedEffects(
+    dimensions,
+    (entry) => entry.normalizedSemanticStructure.normalizedSource,
+    'label-normalized Mermaid source',
+  );
+  const topologyAndDataEffects = pairedEffects(
+    dimensions.filter((dimension) =>
+      dimension.category === 'topology' || dimension.category === 'data'
+    ),
+    (entry) => JSON.stringify(
+      entry.normalizedSemanticStructure.structuralProfile,
+    ),
+    'structural profile',
+  );
 
   const topologyAndDataDimensions = dimensions.filter((dimension) =>
     dimension.category === 'topology' || dimension.category === 'data'
@@ -292,15 +310,19 @@ export function analyzeInputSpaceCoverage(
       dimensionPairs: pairwiseReports.length,
       uniqueDimensionVectors: uniqueDimensionVectorCount,
       uniqueTopologyAndDataVectors: uniqueTopologyAndDataVectorCount,
+      uniqueNormalizedSources: uniqueNormalizedSourceCount,
       uniqueStructuralProfiles: uniqueStructuralProfileCount,
     },
     requirements: {
       namedDimensions: requiredInputDimensionCount,
       fullFactorialDimensionVectors: expectedDimensionVectorCount,
+      labelNormalizedSources: expectedDimensionVectorCount,
+      pairedSourceEffectsPerDimension: entries.length / 2,
       minimumStructuralProfiles,
     },
     dimensions: dimensionReports,
     dimensionPairs: pairwiseReports,
+    sourceEffects,
     topologyAndDataEffects,
     repeatedDimensionVectors: duplicateGroups(
       dimensionVectorEntries,
@@ -308,6 +330,10 @@ export function analyzeInputSpaceCoverage(
     ),
     nearIsomorphicStructuralProfiles: duplicateGroups(
       profileEntries,
+      (entry) => entry.value,
+    ),
+    duplicateNormalizedSources: duplicateGroups(
+      normalizedSourceEntries,
       (entry) => entry.value,
     ),
     failures,
@@ -466,6 +492,10 @@ export async function auditVisualScenarioDuplicates({
       : analyzeInputSpaceCoverage(
           familyCases,
           familyDimensionSpecs[kind],
+          {
+            minimumStructuralProfiles:
+              coverageContract.minimumStructuralProfiles,
+          },
         );
     const caseReports = familyCases.map((entry) => {
       const prefix = capturePrefix(inputDirectory, entry);
@@ -570,9 +600,7 @@ export async function auditVisualScenarioDuplicates({
         );
       }
     }
-    const minimumProfiles = coverageContract.mode === 'coverage-driven'
-      ? coverageContract.minimumStructuralProfiles
-      : minimumStructuralProfileCount;
+    const minimumProfiles = coverageContract.minimumStructuralProfiles;
     if (counts.uniqueStructuralProfiles < minimumProfiles) {
       familyFailures.push(
         `${kind} has ${counts.uniqueStructuralProfiles}/` +
@@ -610,7 +638,7 @@ export async function auditVisualScenarioDuplicates({
     };
   });
   const report = {
-    schemaVersion: 4,
+    schemaVersion: 6,
     generatedAt,
     inputDirectory: path.relative(repositoryRoot, inputDirectory),
     requirements: {
@@ -706,7 +734,7 @@ function mergePartialAuditReport(outputFile, current, selectedKinds) {
     .map((family) => `${family.kind} failed its duplicate audit`);
   return {
     ...previous,
-    schemaVersion: 5,
+    schemaVersion: 6,
     generatedAt: current.generatedAt,
     ...mergePartialInputDirectories(
       previous,

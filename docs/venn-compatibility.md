@@ -41,7 +41,9 @@ that side-by-side review exposes no functional defect.
   every render.
 - The production Native/Official geometry audit accepted all 13 pairs: width
   `1.014-1.022`, height `1.010-1.027`, and foreground ink `1.028-1.044`.
-- The fresh 256-case coverage-driven input audit reports `176 pass / 80 review / 0 fail`; geometry has 0 hard failures with width `0.882-1.027`, height `1.003-1.028`, and foreground ink `0.934-1.199`.
+- The fresh 256-case coverage-driven input audit reports
+  `192 pass / 64 review / 0 fail`; geometry has 0 hard failures with width
+  `1.011-1.023`, height `1.003-1.011`, and foreground ink `1.015-1.030`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed for circle topology, overlap size, labels, text placement, styles,
   clipping, and paint order. Raw [production detail](assets/stability-report/venn-production-detail.json), [production geometry](assets/stability-report/venn-production-geometry.json), [matrix detail](assets/stability-report/venn-visual-parity-detail.json), and [matrix geometry](assets/stability-report/venn-visual-parity-geometry.json) reports are published with the evidence.

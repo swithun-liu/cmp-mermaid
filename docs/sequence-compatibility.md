@@ -61,10 +61,11 @@ not silently discarded.
   Compose and Mermaid.js `12.0.0`: detail audit
   `14 pass / 0 review / 0 fail`; geometry width `1.019-1.254`, height
   `0.910-1.111`, and foreground ink `0.939-1.327`.
-- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `0.929-1.215`, height `0.916-1.154`, and foreground ink `0.945-1.332`.
-- All 16 matrix contact sheets and all 256 pairs were manually reviewed. No
-  unresolved blank, clipping, participant, lifecycle, message, marker, note,
-  activation, control-frame, overlap, or paint-order defect remains.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `0.978-1.169`, height `1.013-1.171`, and foreground ink `0.957-1.255`.
+- All 16 matrix contact sheets are published and source-bound; current automated
+  findings remain explicit.
 - Core and Compose compile for JVM, Android, Desktop, and all configured iOS
   architectures.
 

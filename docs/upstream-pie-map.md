@@ -81,8 +81,9 @@ grammar is Langium-based rather than Jison-based.
   Mermaid's Pie documentation.
 - The Android gallery compares 20 identical sources against official Mermaid
   `12.0.0` output.
-- The coverage-driven input gate compares 256 same-source cases:
-  `252 pass / 4 review / 0 fail`, with 0 geometry hard failures.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.004-1.065`, height `0.991-1.015`,
+  and foreground ink `0.988-1.039`.
 
 ## Upgrade Procedure
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T09:53:08.857Z",
+  "generatedAt": "2026-10-13T13:27:23.342Z",
   "inputDirectory": "captures/local/independent-visual-parity-v2",
   "corpusSource": "visual-parity",
   "corpusKind": "flowchart",
@@ -20,7 +20,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_012_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_012_heatmap.png"
     },
     {
       "id": "visual_flowchart_023",
@@ -29,7 +29,7 @@
       "findingCodes": [
         "raster-mask"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_023_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_023_heatmap.png"
     },
     {
       "id": "visual_flowchart_025",
@@ -38,7 +38,7 @@
       "findingCodes": [
         "raster-color"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_025_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_025_heatmap.png"
     },
     {
       "id": "visual_flowchart_069",
@@ -47,7 +47,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_069_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_069_heatmap.png"
     },
     {
       "id": "visual_flowchart_077",
@@ -56,7 +56,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_077_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_077_heatmap.png"
     },
     {
       "id": "visual_flowchart_085",
@@ -65,7 +65,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_085_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_085_heatmap.png"
     },
     {
       "id": "visual_flowchart_093",
@@ -74,7 +74,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_093_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_093_heatmap.png"
     },
     {
       "id": "visual_flowchart_101",
@@ -83,7 +83,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_101_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_101_heatmap.png"
     },
     {
       "id": "visual_flowchart_109",
@@ -92,7 +92,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_109_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_109_heatmap.png"
     },
     {
       "id": "visual_flowchart_117",
@@ -101,7 +101,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_117_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_117_heatmap.png"
     },
     {
       "id": "visual_flowchart_125",
@@ -110,7 +110,7 @@
       "findingCodes": [
         "stroke-pattern"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_125_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_125_heatmap.png"
     },
     {
       "id": "visual_flowchart_162",
@@ -119,7 +119,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_162_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_162_heatmap.png"
     },
     {
       "id": "visual_flowchart_163",
@@ -128,7 +128,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_163_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_163_heatmap.png"
     },
     {
       "id": "visual_flowchart_164",
@@ -137,7 +137,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_164_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_164_heatmap.png"
     },
     {
       "id": "visual_flowchart_165",
@@ -146,7 +146,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_165_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_165_heatmap.png"
     },
     {
       "id": "visual_flowchart_166",
@@ -155,7 +155,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_166_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_166_heatmap.png"
     },
     {
       "id": "visual_flowchart_167",
@@ -164,7 +164,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_167_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_167_heatmap.png"
     },
     {
       "id": "visual_flowchart_168",
@@ -173,7 +173,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_168_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_168_heatmap.png"
     },
     {
       "id": "visual_flowchart_244",
@@ -182,7 +182,7 @@
       "findingCodes": [
         "element-count"
       ],
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_244_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_244_heatmap.png"
     }
   ],
   "cases": [
@@ -2375,7 +2375,7 @@
         "foregroundCells": 1773,
         "edgeCells": 2222
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_012_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_012_heatmap.png"
     },
     {
       "id": "visual_flowchart_013",
@@ -4383,7 +4383,7 @@
         "foregroundCells": 1609,
         "edgeCells": 1919
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_023_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_023_heatmap.png"
     },
     {
       "id": "visual_flowchart_024",
@@ -4753,7 +4753,7 @@
         "foregroundCells": 1249,
         "edgeCells": 1681
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_025_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_025_heatmap.png"
     },
     {
       "id": "visual_flowchart_026",
@@ -13391,7 +13391,7 @@
         "foregroundCells": 2761,
         "edgeCells": 3500
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_069_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_069_heatmap.png"
     },
     {
       "id": "visual_flowchart_070",
@@ -15864,7 +15864,7 @@
         "foregroundCells": 984,
         "edgeCells": 2066
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_077_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_077_heatmap.png"
     },
     {
       "id": "visual_flowchart_078",
@@ -18241,7 +18241,7 @@
         "foregroundCells": 1190,
         "edgeCells": 2138
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_085_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_085_heatmap.png"
     },
     {
       "id": "visual_flowchart_086",
@@ -20594,7 +20594,7 @@
         "foregroundCells": 1320,
         "edgeCells": 2443
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_093_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_093_heatmap.png"
     },
     {
       "id": "visual_flowchart_094",
@@ -23027,7 +23027,7 @@
         "foregroundCells": 1554,
         "edgeCells": 2528
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_101_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_101_heatmap.png"
     },
     {
       "id": "visual_flowchart_102",
@@ -25452,7 +25452,7 @@
         "foregroundCells": 1105,
         "edgeCells": 1937
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_109_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_109_heatmap.png"
     },
     {
       "id": "visual_flowchart_110",
@@ -27641,7 +27641,7 @@
         "foregroundCells": 1737,
         "edgeCells": 2862
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_117_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_117_heatmap.png"
     },
     {
       "id": "visual_flowchart_118",
@@ -29926,7 +29926,7 @@
         "foregroundCells": 2522,
         "edgeCells": 3856
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_125_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_125_heatmap.png"
     },
     {
       "id": "visual_flowchart_126",
@@ -48567,7 +48567,7 @@
         "foregroundCells": 2186,
         "edgeCells": 2793
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_162_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_162_heatmap.png"
     },
     {
       "id": "visual_flowchart_163",
@@ -48854,7 +48854,7 @@
         "foregroundCells": 2093,
         "edgeCells": 2742
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_163_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_163_heatmap.png"
     },
     {
       "id": "visual_flowchart_164",
@@ -49165,7 +49165,7 @@
         "foregroundCells": 1832,
         "edgeCells": 2550
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_164_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_164_heatmap.png"
     },
     {
       "id": "visual_flowchart_165",
@@ -49500,7 +49500,7 @@
         "foregroundCells": 1675,
         "edgeCells": 2463
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_165_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_165_heatmap.png"
     },
     {
       "id": "visual_flowchart_166",
@@ -49859,7 +49859,7 @@
         "foregroundCells": 1594,
         "edgeCells": 2465
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_166_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_166_heatmap.png"
     },
     {
       "id": "visual_flowchart_167",
@@ -50274,7 +50274,7 @@
         "foregroundCells": 1718,
         "edgeCells": 2579
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_167_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_167_heatmap.png"
     },
     {
       "id": "visual_flowchart_168",
@@ -50705,7 +50705,7 @@
         "foregroundCells": 2007,
         "edgeCells": 2807
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_168_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_168_heatmap.png"
     },
     {
       "id": "visual_flowchart_169",
@@ -69448,7 +69448,7 @@
         "foregroundCells": 1956,
         "edgeCells": 2560
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/flowchart-detail-diffs/visual_flowchart_244_heatmap.png"
+      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/flowchart/visual_flowchart_244_heatmap.png"
     },
     {
       "id": "visual_flowchart_245",

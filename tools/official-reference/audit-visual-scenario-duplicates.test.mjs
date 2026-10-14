@@ -86,6 +86,7 @@ test('input-space coverage proves a full balanced factorial matrix', () => {
     dimensionPairs: 28,
     uniqueDimensionVectors: 256,
     uniqueTopologyAndDataVectors: 32,
+    uniqueNormalizedSources: 256,
     uniqueStructuralProfiles: 256,
   });
   assert.ok(
@@ -101,6 +102,13 @@ test('input-space coverage proves a full balanced factorial matrix', () => {
     ),
   );
   assert.ok(
+    report.sourceEffects.every((effect) =>
+      effect.status === 'pass' &&
+      effect.comparisonCount === 128 &&
+      effect.unchangedPairs.length === 0
+    ),
+  );
+  assert.ok(
     report.topologyAndDataEffects.every((effect) =>
       effect.status === 'pass' &&
       effect.comparisonCount === 128 &&
@@ -108,6 +116,7 @@ test('input-space coverage proves a full balanced factorial matrix', () => {
     ),
   );
   assert.deepEqual(report.repeatedDimensionVectors, []);
+  assert.deepEqual(report.duplicateNormalizedSources, []);
   assert.deepEqual(report.nearIsomorphicStructuralProfiles, []);
 });
 
@@ -162,6 +171,32 @@ test('input-space coverage rejects duplicated dimension vectors', () => {
   );
 });
 
+test('input-space coverage rejects label-only source variation', () => {
+  const inputSpaceEntries = syntheticInputSpaceEntries(
+    familyDimensionSpecs.swimlanes,
+  );
+  const entries = inputSpaceEntries.map((entry) => ({
+    ...entry,
+    normalizedSemanticStructure: {
+      ...entry.normalizedSemanticStructure,
+      normalizedSource: 'swimlane-beta LR\n  A --> B',
+    },
+  }));
+  const report = analyzeInputSpaceCoverage(
+    entries,
+    familyDimensionSpecs.swimlanes,
+  );
+
+  assert.equal(report.status, 'fail');
+  assert.equal(report.counts.uniqueNormalizedSources, 1);
+  assert.ok(report.sourceEffects.every((effect) => effect.status === 'fail'));
+  assert.ok(
+    report.failures.some((failure) =>
+      failure.includes('label-normalized Mermaid sources')
+    ),
+  );
+});
+
 function syntheticInputSpaceEntries(dimensions) {
   return Array.from({ length: 256 }, (_, vector) => {
     const bits = Array.from({ length: 8 }, (_, bit) => (vector >> bit) & 1);
@@ -173,6 +208,7 @@ function syntheticInputSpaceEntries(dimensions) {
         option: dimension.options[bits[index]],
       })),
       normalizedSemanticStructure: {
+        normalizedSource: `diagram\n  vector ${bits.join(' ')}`,
         structuralProfile: Object.fromEntries(
           dimensions.map((dimension, index) => [
             dimension.name,

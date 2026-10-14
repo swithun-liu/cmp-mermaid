@@ -84,9 +84,11 @@ production so an upstream grammar diff can be translated incrementally.
 - `OfficialClassDocumentationTest` executes all 38 examples extracted from
   Mermaid's Class documentation.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 deterministic matrix sources against Mermaid `12.0.0`. Both detail
-  audits have empty review queues, both geometry audits pass, and all 16 matrix
-  contact sheets were manually reviewed.
+  256 deterministic matrix sources against Mermaid `12.0.0`. Production detail
+  passes `13/13`; matrix detail reports `221 pass / 35 review / 0 fail`, and
+  geometry has 0 hard failures.
+- All 16 matrix contact sheets are published and source-bound; current
+  automated findings remain explicit.
 
 ## Upgrade Procedure
 

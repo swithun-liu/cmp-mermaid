@@ -36,7 +36,9 @@ does not expose a functional rendering defect.
 - The replacement production audit accepted all 13 pairs:
   `13 pass / 0 review / 0 fail`; geometry ratios are width `1.017-1.033`,
   height `1.015-1.021`, and foreground ink `1.035-1.037`.
-- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.011-1.035`, height `1.010-1.021`, and foreground ink `1.018-1.041`.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `1.012-1.037`, height `1.018-1.020`, and foreground ink `1.034-1.038`.
 - 256 deterministic randomized Native inputs exercise both curve entry forms,
   both graticules, configuration, themes, Unicode, finite geometry, and
   deterministic replay.

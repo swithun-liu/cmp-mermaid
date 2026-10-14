@@ -37,16 +37,18 @@ change in a later upstream release.
   configuration, deterministic seeds, malformed input, and typed failures.
 - 13 independent production scenarios cover all 18 declared visual capability
   points.
-- 256 deterministic same-source cases cover the fixed six-category quotas,
-  family-specific capability axes, scaled stress structures, equivalent syntax,
-  and historical regressions.
+- 256 deterministic same-source cases cover all combinations of eight
+  Architecture capability axes; each axis and every pair are balanced, and
+  every axis changes all 128 paired label-normalized sources.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.020-1.232`, `0.996-1.236`, and `0.985-1.561`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
-- The fresh 256-case coverage-driven input audit reports `78 pass / 178 review / 0 fail`; geometry has 0 hard failures with width `0.725-15.283`, height `0.316-2.312`, and foreground ink `0.162-15.222`.
-- The production contact sheet and all 16 matrix contact sheets were manually
-  reviewed. No unresolved service, icon, group, junction, edge, arrow, label,
-  alignment, clipping, overlap, or paint-order defect remains.
+- The fresh 256-case coverage-driven input audit reports
+  `67 pass / 189 review / 0 fail`; geometry has 0 hard failures with width
+  `0.717-2.218`, height `0.454-1.336`, and foreground ink `0.313-3.535`.
+- The production contact sheet and all 16 matrix contact sheets are published;
+  source identity is verified, and the automated review findings remain
+  explicit for manual inspection.
 - Raw
   [production detail](assets/stability-report/architecture-production-detail.json),
   [production geometry](assets/stability-report/architecture-production-geometry.json),

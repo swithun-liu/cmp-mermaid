@@ -87,10 +87,9 @@ they are not silently approximated with Dagre.
 - `RequirementStressTest` renders 256 deterministic random legal diagrams.
 - `OfficialRequirementDocumentationTest` executes the examples extracted from
   Mermaid `12.0.0` documentation.
-- The replacement large-scale Web audit compares all 256 coverage-driven
-  same-source input cases against Mermaid.js `12.0.0`:
-  `256 pass / 0 review / 0 fail`, with 0
-  geometry hard failures and all 16 contact sheets regenerated.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.027-1.071`, height `1.006-1.055`,
+  and foreground ink `0.954-1.104`.
 - The 13 independent production scenarios pass both replacement detail and
   geometry audits with no review queue.
 

@@ -1,8 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T09:53:11.681Z",
+  "generatedAt": "2026-10-13T13:27:41.960Z",
   "inputDirectory": "captures/local/independent-visual-parity-v2",
   "corpusSource": "visual-parity",
+  "corpusKind": "flowchart",
   "theme": null,
   "caseCount": 256,
   "thresholds": {

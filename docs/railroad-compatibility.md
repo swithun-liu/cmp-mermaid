@@ -37,13 +37,15 @@ change in a later upstream release.
   resource limits, and deterministic rendering.
 - 13 independent conformance scenarios plus 5 release-candidate scenarios
   cover all 25 declared visual capability points.
-- 256 deterministic same-source cases cover the fixed six-category quotas,
-  family-specific capability axes, scaled stress structures, equivalent syntax,
-  and historical regressions.
+- 256 deterministic same-source cases cover all combinations of eight Railroad
+  capability axes; each axis and every pair are balanced, and every axis
+  changes all 128 paired label-normalized sources.
 - Production geometry passed `18/18`. Width, height, and foreground-ink ratios
   were `1.038-1.120`, `1.028-1.131`, and `1.078-1.281`.
 - Production detail produced `18 pass / 0 review / 0 fail`.
-- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `1.003-1.120`, height `1.022-1.131`, and foreground ink `1.051-1.281`.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `1.003-1.110`, height `1.023-1.101`, and foreground ink `1.051-1.215`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved rule, symbol, choice, repetition, path, label,
   clipping, overlap, or paint-order defect remains.

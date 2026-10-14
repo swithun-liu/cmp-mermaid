@@ -71,11 +71,11 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`. Geometry counts compare both
   render objects and expanded primitives for SVG database and queue subpaths.
-- Matrix geometry has 0 hard failures; detail reports
-  `254 pass / 2 review / 0 fail`.
-- The production contact sheet and all 16 matrix contact sheets were manually
-  reviewed with no unresolved shape, boundary, relation, label, clipping,
-  overlap, or paint-order defect.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `0.985-1.086`, height `1.044-1.062`,
+  and foreground ink `1.063-1.119`.
+- The production and all 16 matrix contact sheets are published and source-bound;
+  current automated findings remain explicit.
 
 ## Upgrade Procedure
 

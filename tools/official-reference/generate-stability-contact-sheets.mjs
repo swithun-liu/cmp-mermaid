@@ -217,10 +217,10 @@ if (shouldWriteManifest) {
               'explicit-256-entry-business-scenario-catalog',
               'label-stripped-normalized-mermaid-source',
               'family-specific-coverage-contract',
-              'six-category-coverage-driven-corpus-for-all-families',
+              'flowchart-coverage-driven-corpus',
+              'non-flowchart-full-factorial-input-space',
+              'paired-source-effect-for-every-capability-axis',
               'family-specific-capability-axes',
-              'family-specific-stress-augmentation',
-              'sixteen-equivalent-syntax-pairs-per-family',
               'family-specific-structural-profile',
             ],
           }
@@ -430,14 +430,12 @@ ${screenshotCount.toLocaleString('en-US')} screenshots from the large-scale
 visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
-Every family uses a fixed coverage-driven corpus: 64 focused official syntax
-cases, 64 multi-feature combinations, 48 topology/layout stress cases, 32
-common valid AI outputs, 32 equivalent-syntax variants, and 16 historical
-regressions. Each non-Flowchart family focuses all 16 options from its eight
-family-specific capability axes and every declared official capability in the
-64 focused syntax cases, then adds real stress structures. Business titles only
-make cases readable; ordinal numbers, IDs, hashes, and label text do not
-establish coverage.
+Flowchart uses its 256-case coverage-driven corpus. Every other family uses the
+complete 256-combination matrix of eight family-specific binary capability axes.
+Each axis is balanced 128/128, every pair of axes covers all four combinations
+64 times, and flipping any one axis must change the label-normalized Mermaid
+source in all 128 paired cases. Business titles only make cases readable;
+ordinal numbers, IDs, hashes, and label text do not establish coverage.
 
 Case IDs, blueprint IDs, normalized semantic signatures, source hashes, image
 hashes, and capture sizes are recorded in
@@ -446,10 +444,10 @@ Corpus accounting is published separately in
 [\`visual-structure-corpus-metadata.json\`](visual-structure-corpus-metadata.json).
 The mandatory
 [\`visual-scenario-duplicate-audit.json\`](visual-scenario-duplicate-audit.json)
-verifies every family's category quotas, required capabilities, 16 equivalent
-syntax pairs, and family-specific structural-profile floor. All families
-require 256/256 unique blueprint IDs, normalized semantic structures, and
-label-normalized Mermaid sources. The audit also publishes
+verifies Flowchart's category contract and every other family's complete input
+matrix, paired source effects, and family-specific structural-profile floor.
+All families require 256/256 unique blueprint IDs, normalized semantic
+structures, and label-normalized Mermaid sources. The audit also publishes
 text-and-ID-stripped Native structure counts and Native/Official PNG hash
 counts. Rendered counts are diagnostics rather than hard uniqueness
 requirements because distinct legal inputs can intentionally produce

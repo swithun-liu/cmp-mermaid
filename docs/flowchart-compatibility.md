@@ -97,11 +97,8 @@ Additional platform limitations:
   topologies across the 256 sources, including branching, merging, cyclic,
   disconnected, compound, parallel-edge, and self-loop structures. The
   diversity gate passes all global and per-category floors.
-- All 16 matrix contact sheets were manually reviewed for topology, advanced
-  shapes, marker visibility, labels, clipping, overlap, and paint order. The
-  strict per-edge audit reports `245 pass / 11 fail`: one invisible-edge
-  manifest mismatch, nine self-loop route mismatches, and one dense cyclic
-  crossing mismatch.
+- All 16 matrix contact sheets are published and source-bound; current automated
+  findings remain explicit.
 - Every refreshed Native and Official capture manifest binds its requested
   case ID, visual-parity corpus, and exact source SHA-256. This prevents a
   stale Web distribution from silently supplying an older source for the same

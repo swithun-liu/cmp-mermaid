@@ -85,11 +85,9 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - The replacement Web gate compares 13 independent production scenarios and
   256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`.
-- Matrix geometry has 0 hard failures; detail reports
-  `256 pass / 0 review / 0 fail`.
-  The production contact sheet and all 16 matrix contact sheets were manually
-  reviewed with no unresolved shape, grid, edge, marker, color, text, clipping,
-  overlap, or paint-order defect.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.018-1.086`, height `0.934-1.070`,
+  and foreground ink `0.967-1.128`.
 
 ## Upgrade Procedure
 

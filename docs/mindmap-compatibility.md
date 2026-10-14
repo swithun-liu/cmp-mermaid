@@ -58,7 +58,9 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
   [detail](assets/stability-report/mindmap-production-detail.json) and
   [geometry](assets/stability-report/mindmap-production-geometry.json) reports
   preserve the audit results.
-- The fresh 256-case coverage-driven input audit reports `253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width `0.991-1.125`, height `0.808-1.168`, and foreground ink `0.758-1.152`.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `1.023-1.113`, height `0.809-1.106`, and foreground ink `0.927-1.141`.
 - 256 deterministic randomized Native inputs exercise CoSE-Bilkent, Dagre, and
   tidy-tree layouts with finite geometry and deterministic replay.
 - The CoSE-Bilkent algorithm gate uses identical fixed node dimensions and

@@ -32,7 +32,9 @@ that side-by-side review exposes no functional defect.
   runs in a JVM test.
 - 13 independent production scenarios cover all 21 declared Ishikawa
   capability points.
-- The fresh 256-case coverage-driven input audit reports `255 pass / 1 review / 0 fail`; geometry has 0 hard failures with width `1.032-1.188`, height `1.032-1.119`, and foreground ink `1.038-1.326`.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `1.038-1.119`, height `1.028-1.098`, and foreground ink `1.034-1.227`.
 - The production Native/Official geometry audit accepted all 13 pairs: width
   `1.040-1.188`, height `1.059-1.119`, and foreground ink `1.067-1.326`.
 - The production detail audit produced `12 pass / 1 review / 0 fail`. The

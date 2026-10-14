@@ -126,10 +126,12 @@ not a production runtime dependency.
   `12.0.0` Dagre PNGs on the same device viewport.
 - Focused tests cover every translated parser, text, shape, edge, marker,
   line-hop, interaction, asset, and resource-limit boundary.
-- The replacement Web audit passes 14/14 production scenarios and 256/256
-  matrix pairs. Its manifests record actual marker endpoint anchors and compare
-  their occlusion by later opaque nodes; all 16 matrix contact sheets were
-  manually reviewed.
+- The replacement Web audit processes 14/14 production scenarios and 256/256
+  matrix pairs. Matrix detail reports `237 pass / 19 review / 0 fail`,
+  geometry has 0 hard failures, and strict topology reports
+  `245 pass / 11 fail`.
+- All 16 matrix contact sheets are published and source-bound; current
+  automated findings remain explicit.
 
 ## Upgrade Procedure
 

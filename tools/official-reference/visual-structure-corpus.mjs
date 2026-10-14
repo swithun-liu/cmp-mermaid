@@ -3,19 +3,15 @@ import {
   flowchartCoverageContract,
   renderFlowchartCoverageScenario,
 } from './flowchart-coverage-corpus.mjs';
-import {
-  generatedFamilyCoverageContracts,
-  renderFamilyCoverageScenario,
-} from './family-coverage-corpus.mjs';
 import { businessScenarios } from './independent-scenario-catalog.mjs';
 import {
   familyDimensionSpecs,
+  renderInputSpaceScenario,
 } from './visual-input-space.mjs';
 
 export {
   familyDimensionSpecs,
   flowchartCoverageContract,
-  generatedFamilyCoverageContracts,
 };
 
 export const kinds = [
@@ -56,12 +52,24 @@ export const kinds = [
 
 export const casesPerKind = 256;
 
+const inputSpaceStructuralProfileMinimums = Object.freeze({
+  architecture: 192,
+  gitgraph: 224,
+});
+
 export const familyCoverageContracts = Object.freeze(
   Object.fromEntries(kinds.map((kind) => [
     kind,
     kind === 'flowchart'
       ? flowchartCoverageContract
-      : generatedFamilyCoverageContracts[kind],
+      : Object.freeze({
+          mode: 'full-factorial',
+          caseCount: casesPerKind,
+          dimensionCount: familyDimensionSpecs[kind].length,
+          dimensions: familyDimensionSpecs[kind],
+          minimumStructuralProfiles:
+            inputSpaceStructuralProfileMinimums[kind] ?? casesPerKind,
+        }),
   ])),
 );
 
@@ -180,7 +188,7 @@ function createScenarioBlueprint(kind, index) {
     title,
     scenario:
       `${domainModel.name} ${goalModel.name} is an independently generated ` +
-      `${kind} scenario in a fixed coverage-driven release corpus.`,
+      `${kind} scenario in a fixed 256-source release corpus.`,
     layout: rendered.layout ?? 'dagre',
     aspectRatio: aspectRatios[kind],
     features: Object.freeze([
@@ -289,7 +297,11 @@ function normalizeSourceWithContext(source, context, additionalTexts = []) {
 function renderCoverageScenario(kind, index, context) {
   return kind === 'flowchart'
     ? renderFlowchartCoverageScenario(index, context)
-    : renderFamilyCoverageScenario(kind, index, context);
+    : renderInputSpaceScenario(kind, bitsOf(index), context);
+}
+
+function bitsOf(vector) {
+  return Array.from({ length: 8 }, (_, bit) => (vector >> bit) & 1);
 }
 
 function renderFamilyScenario(kind, bits, context) {
@@ -1210,6 +1222,13 @@ function validateCorpus() {
     assertUnique(kindCases, 'normalizedSemanticSignature', casesPerKind, kind);
     assertUnique(kindCases, 'structuralSignature', casesPerKind, kind);
     assertUnique(kindCases, 'source', casesPerKind, kind);
+    assertUniqueValues(
+      kindCases,
+      normalizeScenarioSource,
+      casesPerKind,
+      kind,
+      'label-normalized source',
+    );
     if (kindCases.length !== casesPerKind) {
       throw new Error(
         `Expected ${casesPerKind} ${kind} scenarios, found ${kindCases.length}`,
@@ -1218,17 +1237,29 @@ function validateCorpus() {
     for (const entry of kindCases) {
       const normalizedCoverage =
         entry.normalizedSemanticStructure.coverage;
-      if (
-        normalizedCoverage?.category?.length === 0 ||
-        normalizedCoverage?.capabilities?.length === 0 ||
-        Object.hasOwn(entry, 'inputDimensions')
+      const normalizedDimensions =
+        entry.normalizedSemanticStructure.dimensions;
+      if (kind === 'flowchart') {
+        if (
+          normalizedCoverage?.category?.length === 0 ||
+          normalizedCoverage?.capabilities?.length === 0 ||
+          Object.hasOwn(entry, 'inputDimensions')
+        ) {
+          throw new Error(`${entry.id} has invalid coverage-driven metadata`);
+        }
+      } else if (
+        normalizedDimensions?.length !== 8 ||
+        entry.inputDimensions?.length !== 8 ||
+        normalizedCoverage !== undefined ||
+        Object.hasOwn(entry, 'coverageCategory')
       ) {
-        throw new Error(`${entry.id} has invalid coverage-driven metadata`);
+        throw new Error(`${entry.id} has invalid full-factorial metadata`);
       }
       if (
         [
           ...Object.keys(entry.normalizedSemanticStructure),
           ...collectObjectKeys(normalizedCoverage),
+          ...collectObjectKeys(normalizedDimensions),
         ].some((key) =>
           /seed|itemCount|ordinal|scenarioBlueprintId|title/i
             .test(key)
@@ -1291,9 +1322,19 @@ function validateCorpus() {
 }
 
 function assertUnique(entries, field, expectedCount, kind) {
+  assertUniqueValues(
+    entries,
+    (entry) => entry[field],
+    expectedCount,
+    kind,
+    field,
+  );
+}
+
+function assertUniqueValues(entries, valueOf, expectedCount, kind, label) {
   const groups = new Map();
   for (const entry of entries) {
-    const value = entry[field];
+    const value = valueOf(entry);
     groups.set(value, [...(groups.get(value) ?? []), entry.id]);
   }
   const count = groups.size;
@@ -1303,7 +1344,7 @@ function assertUnique(entries, field, expectedCount, kind) {
       .map((ids) => ids.join(', '))
       .join('; ');
     throw new Error(
-      `${kind} has only ${count} unique ${field} values; duplicates: ` +
+      `${kind} has only ${count} unique ${label} values; duplicates: ` +
         duplicates,
     );
   }

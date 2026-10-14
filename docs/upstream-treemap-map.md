@@ -101,10 +101,9 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   render in the JVM test.
 - A separate deterministic randomized test renders 256 Treemap inputs twice
   and verifies finite, stable SceneGraphs.
-- The replacement Web gate compares 13 independent production scenarios and
-  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
-  Production detail and geometry pass `13/13`; matrix detail reports
-  `246 pass / 10 review / 0 fail`, with 0 geometry hard failures.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.037-1.038`, height `1.032-1.034`,
+  and foreground ink `1.069-1.085`.
 
 ## Upgrade Procedure
 

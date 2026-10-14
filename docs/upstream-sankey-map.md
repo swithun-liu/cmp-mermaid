@@ -102,9 +102,11 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - `OfficialSankeyDocumentationTest` executes all eight active examples
   extracted from Mermaid's Sankey documentation.
 - The replacement Web gate compares 13 independent production scenarios and
-  256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
-  Both corpora report `0 review / 0 fail`, all 269 geometry pairs pass, and all
-  16 matrix contact sheets were manually reviewed.
+  256 coverage-driven same-source inputs against Mermaid.js `12.0.0`.
+  Matrix detail reports `256 pass / 0 review / 0 fail`; all 269 production
+  and matrix geometry pairs have 0 hard failures.
+- All 16 matrix contact sheets are published and source-bound; current
+  automated findings remain explicit.
 
 ## Upgrade Procedure
 

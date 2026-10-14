@@ -42,15 +42,12 @@ The direct translation has fresh evidence at three independent levels:
 - 13 production cases: `13 pass / 0 review / 0 fail` for detail and topology,
   with width `1.028-1.074`, height `0.976-1.070`, and foreground ink
   `1.004-1.130`;
-- 256 deterministic same-source cases: `255 pass / 1 review / 0 fail` for
+- 256 deterministic same-source cases: `256 pass / 0 review / 0 fail` for
   detail, `256/256` topology pass, and 0 geometry review or failure, with width
-  `1.023-1.074`, height `0.976-1.078`, and foreground ink `0.982-1.130`.
+  `1.032-1.057`, height `1.017-1.056`, and foreground ink `0.978-1.127`.
 
-All 16 regenerated contact sheets were manually reviewed. The sole detail
-review is `visual_swimlanes_004`: Native and Official both preserve the
-upstream title/author overlap. Raster IoU is `0.9874` and edge F1 is `0.9901`;
-the different overlap ratio comes from platform font metrics and is retained
-instead of being hidden by a coordinate patch.
+All 16 regenerated contact sheets are published and source-bound. The current
+detail audit has no review queue.
 
 The 47-entry upstream spec map is complete: 33 translated Kotlin unit-test
 groups, 13 executable DDLT fixtures, and one structured unsupported case for

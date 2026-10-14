@@ -38,13 +38,15 @@ release.
   sizing, malformed input, resource limits, and configuration failures.
 - 13 independent production scenarios cover all 31 declared visual capability
   points.
-- 256 deterministic same-source cases cover the fixed six-category quotas,
-  family-specific capability axes, scaled stress structures, equivalent syntax,
-  and historical regressions.
+- 256 deterministic same-source cases cover all combinations of eight Block
+  capability axes; each axis and every pair are balanced, and every axis
+  changes all 128 paired label-normalized sources.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `0.970-1.116`, `0.880-1.069`, and `0.908-1.388`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
-- The fresh 256-case coverage-driven input audit reports `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width `0.978-1.107`, height `0.942-1.102`, and foreground ink `0.951-1.448`.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `1.018-1.086`, height `0.934-1.070`, and foreground ink `0.967-1.128`.
 - The production contact sheet and all 16 matrix contact sheets were manually
   reviewed. No unresolved shape, grid, edge, marker, color, text, clipping,
   overlap, or paint-order defect remains.

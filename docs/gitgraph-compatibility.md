@@ -53,7 +53,9 @@ side-by-side comparison does not expose a functional rendering defect.
   SceneGraphs.
 - 13 independent production scenarios cover all 24 declared Git Graph
   capability points.
-- The fresh 256-case coverage-driven input audit reports `231 pass / 25 review / 0 fail`; geometry has 0 hard failures with width `1.043-1.144`, height `1.039-1.135`, and foreground ink `1.042-1.373`.
+- The fresh 256-case coverage-driven input audit reports
+  `235 pass / 21 review / 0 fail`; geometry has 0 hard failures with width
+  `1.063-1.155`, height `1.059-1.137`, and foreground ink `1.066-1.418`.
 - The 13 production pairs are also accepted:
   `12 pass / 1 manually reviewed / 0 fail`. The single review has the same
   text-bound cause and passes semantic, clipping, paint-order, and raster

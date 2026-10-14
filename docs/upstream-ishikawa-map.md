@@ -64,11 +64,11 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - Production geometry passes 13/13. Its detail result is
   `12 pass / 1 review / 0 fail`; the root-only review is the Native manifest's
   zero-length spine, which Official omits from visible geometry.
-- Matrix geometry passes 256/256 and matrix detail is
-  `255 pass / 1 review / 0 fail`.
-- The production contact sheet and all 16 matrix contact sheets were manually
-  reviewed with no unresolved hierarchy, branch-direction, fish-head, label,
-  wrapping, theme, clipping, or paint-order defect.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.038-1.119`, height `1.028-1.098`,
+  and foreground ink `1.034-1.227`.
+- The production and all 16 matrix contact sheets are published and source-bound;
+  current automated findings remain explicit.
 
 ## Upgrade Procedure
 

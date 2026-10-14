@@ -28,8 +28,9 @@ rated Stable. A successful build alone is not sufficient.
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
   (`8,448/8,448` coverage-driven input cases processed;
-  `7,810 pass / 638 review / 0 fail`;
-  geometry has 0 hard failures and 176 review findings across 124 cases)
+  `7,832 pass / 616 review / 0 fail`;
+  geometry has 0 hard failures and 155 review findings across 121 Architecture
+  cases)
 - Flowchart per-edge topology: `245 pass / 11 fail`
 - Pending replacement detail gates: none
 - Detailed conformance scope:
@@ -80,13 +81,12 @@ copies of the documentation gallery. CI must:
 
 The regular Quality Gate runs the 441 independent cases on every push and pull
 request. The weekly/manual Full Visual Parity workflow assigns every diagram
-type 256 cases across fixed `64 / 64 / 48 / 32 / 32 / 16` coverage categories,
-or 8,448 Native/Official pairs total. The gate verifies every family's
-declared official capabilities and generator-axis options, 16
-equivalent-syntax groups, distinct normalized semantics and sources, and its
-family-specific structural-profile floor. Rendered hash uniqueness is
-diagnostic rather than a substitute for source and coverage-contract
-validation.
+type 256 cases, or 8,448 Native/Official pairs total. Flowchart keeps its
+dedicated coverage corpus; every other family covers all 256 combinations of
+eight capability axes. The gate verifies option and pairwise balance, paired
+source effects, distinct normalized sources, and the family-specific
+structural-profile floor. Rendered hash uniqueness is diagnostic rather than a
+substitute for source and coverage-contract validation.
 Machine-readable accounting is published in
 [`visual-structure-corpus-metadata.json`](assets/stability-report/visual-structure-corpus-metadata.json).
 The separate 8,448-input text/layout stress corpus remains documented in

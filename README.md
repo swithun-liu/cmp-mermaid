@@ -40,10 +40,10 @@
 > `MermaidError.UnsupportedFeature` boundary instead of approximating rough.js.
 >
 > The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
-> covers every family with a fixed six-category coverage-driven corpus.
-> Family-specific capability, stress, equivalent-syntax,
-> duplicate/detail/geometry audits and 528 regenerated contact sheets preserve
-> the result.
+> gives every family 256 real, label-normalized Mermaid sources. Flowchart
+> retains its dedicated coverage corpus; the other 32 families use the complete
+> 256-combination matrix of eight family-specific capability axes. Source,
+> duplicate, detail, geometry, and 528 contact-sheet gates preserve the result.
 > The 441 hand-authored production scenarios and 8,448 text/layout stress
 > inputs remain separate evidence layers.
 
@@ -67,19 +67,19 @@ geometry gates.
 | Flowchart per-edge topology | 245 pass, 11 fail |
 | Independent production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
-| Independent-scenario visual matrix | 8,448 Native/Official pairs; each family has 64 focused syntax, 64 combination, 48 stress, 32 AI-common, 32 equivalent-syntax, and 16 regression cases |
-| Coverage hard gate | Every family satisfies all six quotas, its required capabilities, 16 equivalent-syntax groups, and its structural-profile floor |
+| Independent-scenario visual matrix | 8,448 Native/Official pairs; Flowchart has its dedicated 256-case corpus and every other family has all 256 combinations of eight capability axes |
+| Coverage hard gate | Every family has 256/256 label-normalized sources; non-Flowchart axes are balanced 128/128, pairwise balanced 64/64/64/64, and each axis changes all 128 paired sources |
 | Duplicate hard gate | Every family has 256/256 unique blueprints, normalized semantics, and label-normalized sources; rendered manifest/PNG uniqueness is diagnostic because distinct legal inputs can render equivalently |
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
 | Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Independent-scenario detail audit | 33 families: 7,810 pass, 638 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 176 review findings across 124 cases; 157 findings come from 105 seeded Architecture fCoSE cases |
+| Independent-scenario detail audit | 33 families: 7,832 pass, 616 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 155 review findings across 121 cases; all findings come from seeded Architecture fCoSE cases |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 1,039 passed, 0 failed |
-| Wasm tests | Core and Compose: 1,031 passed, 0 failed; debug UI: 5 passed, 0 failed |
+| JVM tests | 1,041 passed, 0 failed |
+| Wasm tests | Core and Compose: 1,031 passed, 0 failed; debug UI: 7 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |

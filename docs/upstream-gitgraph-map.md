@@ -82,10 +82,9 @@ the grammar behavior; it does not bundle the Langium runtime.
   twice and validates structure, finite geometry, and exact replay.
 - `OfficialGitGraphDocumentationTest` executes all 35 examples extracted from
   Mermaid `12.0.0` documentation.
-- The coverage-driven Web audit compares 256 same-source input cases against
-  Mermaid.js `12.0.0`: `231 pass / 25 review / 0 fail`, with 0
-  geometry hard failures. The reviews are text-overlap representation
-  differences; semantic text, clipping, and paint order remain complete.
+- The current 256-case Native/Official matrix reports `235 pass / 21 review / 0 fail`.
+  Geometry has 0 hard failures with width `1.063-1.155`, height `1.059-1.137`,
+  and foreground ink `1.066-1.418`.
 - Case `parity_gitgraph_005` proves the paint-order correction: the Native
   SceneGraph now emits labels in upstream commit order instead of legacy
   global label layers, matching the Official cherry-pick label occlusion.

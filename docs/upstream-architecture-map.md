@@ -80,13 +80,11 @@ JavaScript runtime.
 - The replacement Web gate compares 13 independent production scenarios and
   256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
 - Production geometry and detail pass `13/13`.
-- Matrix geometry has 0 hard failures and retains 157 seeded fCoSE review
-  findings across 105 cases; detail reports `78 pass / 178 review / 0 fail`.
-  The reviews retain placement, text-position, raster, overlap, and
-  paint-order differences without a hard structural error.
-- The production contact sheet and all 16 matrix contact sheets were manually
-  reviewed with no unresolved service, icon, group, junction, edge, arrow,
-  label, alignment, clipping, overlap, or paint-order defect.
+- The current 256-case Native/Official matrix reports `67 pass / 189 review / 0 fail`.
+  Geometry has 0 hard failures with width `0.717-2.218`, height `0.454-1.336`,
+  and foreground ink `0.313-3.535`. The geometry report retains 155 review findings across 121 cases.
+- The production and all 16 matrix contact sheets are published and source-bound;
+  current automated findings remain explicit.
 
 ## Upgrade Procedure
 

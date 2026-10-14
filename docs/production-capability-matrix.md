@@ -26,8 +26,9 @@ and enforced by
   Wardley Map; 38 for Use Case; and the per-family counts shown
   below for the remaining families
 - 738/738 declared capability points covered
-- 8,448 systematic visual-input cases: 256 per diagram type across fixed
-  `64 / 64 / 48 / 32 / 32 / 16` coverage categories
+- 8,448 systematic visual-input cases: Flowchart has its dedicated 256-case
+  corpus; every other family covers all 256 combinations of eight capability
+  axes
 - 8,448 published Native/Official same-source pairs
 - 8,448 separate text/layout stress inputs derived from the 441 production
   scenarios; no additional structural coverage is claimed for that corpus
@@ -90,26 +91,22 @@ also exports renderer manifests and checks semantic text, normalized element
 geometry, style categories, markers, clipping, overlap, paint-order occlusion,
 foreground masks, edges, colors, and review heatmaps.
 
-The large-scale visual matrix assigns every family the same fixed six-category
-contract: 64 focused official-syntax cases, 64 feature combinations, 48
-topology/layout stress cases, 32 common valid AI outputs, 32
-equivalent-syntax variants, and 16 historical regressions. Each family covers
-its declared official capabilities and all options from eight named generator
-axes, retains 16 equivalent-syntax groups, and meets a family-specific
-structural-profile floor. Business labels, ordinals, image hashes, and rendered
+The large-scale visual matrix retains Flowchart's dedicated coverage corpus.
+Every other family covers the complete 256-combination matrix of eight named
+capability axes. Each option appears 128 times, every pairwise option
+combination appears 64 times, and flipping any axis changes all 128 paired
+label-normalized sources. Business labels, ordinals, image hashes, and rendered
 manifest uniqueness do not establish input coverage. All 8,448 cases render in
-the Native core test and have fresh Native/Official captures.
+the Native core test and have same-source Native/Official captures.
 
 The replacement detail gate reports
-`7,810 pass / 638 review / 0 fail`. Review findings are retained for text
+`7,832 pass / 616 review / 0 fail`. Review findings are retained for text
 position/overlap, raster mask/edge/color, equivalent element-count
 representation, marker occlusion, and paint-order occlusion. No expected-text
 loss, clipping error, or hard detail failure was recorded. The geometry gate
-has 0 hard failures and retains 176 review findings across 124 cases.
-Architecture contributes 157 findings across 105 seeded iterative fCoSE
-cases; font wrapping, truncation, and font-bound differences account for the
-remaining strict reviews and remain visible rather than being hidden by
-broader thresholds.
+has 0 hard failures and retains 155 review findings across 121 Architecture
+seeded iterative fCoSE cases. Those cross-runtime placement differences remain
+visible rather than being hidden by broader thresholds.
 
 Flowchart's parser-derived diversity gate passes with 107 unique graph
 topologies across 256 sources. Its stricter route comparison reports

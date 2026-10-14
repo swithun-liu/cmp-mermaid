@@ -102,8 +102,10 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   verifies finite, stable SceneGraphs.
 - The replacement Web gate compares 13 independent production scenarios and
   256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
-- All 16 matrix contact sheets were manually reviewed. The final result is
-  `208 pass + 48 review + 0 fail`.
+- Matrix detail reports `192 pass / 64 review / 0 fail`; geometry has 0 hard
+  failures.
+- All 16 matrix contact sheets are published and source-bound; current
+  automated findings remain explicit.
 
 ## Upgrade Procedure
 

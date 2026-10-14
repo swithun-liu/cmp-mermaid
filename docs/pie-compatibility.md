@@ -44,7 +44,9 @@ would change the feature's meaning.
 - 13 independent production scenarios and 256 deterministic same-source
   Native/Official matrix cases exercise complex structures under visible text
   and layout pressure.
-- The fresh 256-case coverage-driven input audit reports `252 pass / 4 review / 0 fail`; geometry has 0 hard failures with width `0.999-1.065`, height `0.994-1.017`, and foreground ink `0.993-1.044`.
+- The fresh 256-case coverage-driven input audit reports
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `1.004-1.065`, height `0.991-1.015`, and foreground ink `0.988-1.039`.
 - Parser and layout tests cover quoting, escapes, comments, metadata,
   duplicates, negative and zero values, one-percent filtering, input order,
   donut geometry, static highlighting, all five legend positions, themes,
@@ -57,11 +59,6 @@ would change the feature's meaning.
   Mermaid.js `12.0.0`.
 - All 20 Native Android screenshots were compared side by side with 20
   Puppeteer-rendered official references.
-- The replacement matrix detail audit reports
-  `252 pass / 4 review / 0 fail`; the four dense-label font-bound differences
-  remain explicit review items.
-  Native/Official geometry ratios are `1.005-1.066` for width,
-  `0.998-1.021` for height, and `0.998-1.050` for foreground ink.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
 

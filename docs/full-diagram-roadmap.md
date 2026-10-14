@@ -23,9 +23,9 @@ Mermaid's registry count is not the public family count:
 
 The repository contains 441 hand-authored production scenarios and a generated
 visual matrix of 8,448 systematic input cases across all 33 families. Each
-family uses the same fixed six-category allocation while preserving
-family-specific official capabilities, generator axes, stress structures,
-equivalent-syntax pairs, and historical regressions.
+family contributes 256 label-normalized sources. Flowchart keeps its dedicated
+coverage corpus; every other family contributes all 256 combinations of eight
+family-specific capability axes.
 All cases pass Native rendering and complete the Native/Official detail and
 geometry audits without a hard failure. Flowchart's stricter per-edge route
 audit retains 11 failures. A separate 8,448-input text/layout
@@ -58,11 +58,10 @@ on both sides and passes with no findings.
 
 All 33 families have completed the visual-input gate. Together they have
 8,448 same-source pairs:
-`7,810 pass / 638 review / 0 fail` across 528 regenerated contact sheets.
-Geometry has 0 hard failures and retains 176 review findings across 124 cases.
-Architecture contributes 157 findings across 105 seeded iterative fCoSE cases;
-its cross-runtime placement differences and the remaining strict font-metric
-reviews stay explicit.
+`7,832 pass / 616 review / 0 fail` across 528 regenerated contact sheets.
+Geometry has 0 hard failures and retains 155 review findings across 121
+Architecture seeded iterative fCoSE cases; those cross-runtime placement
+differences stay explicit.
 
 Flowchart's parser-derived diversity gate passes with 107 unique graph
 topologies. Its per-edge route gate reports `245 pass / 11 fail`, covering one
@@ -72,8 +71,8 @@ dense cyclic crossing mismatch.
 The fresh per-family pass/review counts and width, height, and foreground-ink
 ranges are published in the
 [8,448-case visual-input evidence index](assets/stability-report/visual-parity-evidence.md).
-Across the complete matrix, width ratios are `0.563-15.283`, height ratios are
-`0.316-2.312`, and foreground-ink ratios are `0.162-15.222`; all out-of-range
+Across the complete matrix, width ratios are `0.717-2.218`, height ratios are
+`0.454-1.336`, and foreground-ink ratios are `0.313-3.535`; all out-of-range
 values remain visible in the review evidence.
 
 ## Expected Behavior
