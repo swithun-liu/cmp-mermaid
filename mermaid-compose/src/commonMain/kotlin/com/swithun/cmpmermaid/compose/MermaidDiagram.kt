@@ -2372,7 +2372,11 @@ private fun DrawScope.drawSceneText(
         cjkFontFamily = cjkFontFamily,
         symbolFontFamily = symbolFontFamily,
     )
-    val layoutWidth = element.bounds.width.mermaidTextLayoutWidth(
+    val wrappingWidth = mermaidTextWrappingWidth(
+        boundsWidth = element.bounds.width,
+        wrappingWidth = element.wrappingWidth,
+    )
+    val layoutWidth = wrappingWidth.mermaidTextLayoutWidth(
         spans = element.spans,
         horizontalScale = element.horizontalScale,
         htmlLabel = element.htmlLabel,
@@ -2390,7 +2394,7 @@ private fun DrawScope.drawSceneText(
         } else {
             Constraints()
         },
-        maximumWidth = element.bounds.width,
+        maximumWidth = wrappingWidth,
         intrinsicWidthScale = element.horizontalScale,
         htmlLabel = element.htmlLabel,
     ).layout
@@ -2417,7 +2421,7 @@ private fun DrawScope.drawSceneText(
                 } else {
                     Constraints()
                 },
-                maximumWidth = element.bounds.width,
+                maximumWidth = wrappingWidth,
                 intrinsicWidthScale = element.horizontalScale,
                 htmlLabel = element.htmlLabel,
             ).layout
@@ -2495,7 +2499,9 @@ private data class MermaidTextMeasurement(
  *
  * HTML labels are first measured with `white-space: nowrap`. They only switch
  * to `break-spaces` when the subpixel intrinsic width reaches the configured
- * maximum. Compose constraints are integer pixels, so deciding from
+ * maximum. The measured foreignObject bounds can be narrower than that CSS
+ * maximum, so SceneText keeps both values. Compose constraints are integer
+ * pixels, so deciding from
  * [androidx.compose.ui.text.TextLayoutResult.size] wraps boundary labels early.
  *
  */
@@ -2566,6 +2572,14 @@ internal fun htmlLabelFitsWithoutWrapping(
     intrinsicWidth: Float,
     maximumWidth: Float,
 ): Boolean = intrinsicWidth < maximumWidth
+
+internal fun mermaidTextWrappingWidth(
+    boundsWidth: Float,
+    wrappingWidth: Float?,
+): Float = wrappingWidth
+    ?.takeIf { value -> value.isFinite() && value > 0f }
+    ?.coerceAtLeast(boundsWidth)
+    ?: boundsWidth
 
 internal fun Float.mermaidTextIntrinsicWidth(horizontalScale: Float?): Float {
     val scale = horizontalScale?.takeIf { value ->

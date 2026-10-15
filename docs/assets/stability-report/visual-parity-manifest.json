@@ -1,7 +1,7 @@
 {
   "mermaidVersion": "12.0.0",
   "corpusSource": "visual-parity",
-  "generatedAt": "2026-10-14T19:39:41.528Z",
+  "generatedAt": "2026-10-15T09:49:11.167Z",
   "caseCount": 8448,
   "corpusRole": "independent-scenario-visual-coverage",
   "independentScenarioCount": 8448,
@@ -1112764,9 +1112764,9 @@
       "officialManifestSourceSha256": "8256086419b868267555d93b6ad12f911b5eed69aa15039b64f39b2d674bcbae",
       "nativeFile": "visual_kanban_001_native.png",
       "officialFile": "visual_kanban_001_official.png",
-      "nativeBytes": 58175,
+      "nativeBytes": 49350,
       "officialBytes": 44774,
-      "nativeSha256": "ea8cc1301c339a3d2031d81965921f12f0a9b6a8b593398c33436d6858d1ed3d",
+      "nativeSha256": "bcab1f7ac23e4714e7df244d0ffe5f2460334e24f65be26d1e611d50e572dd6c",
       "officialSha256": "066a6131fb2d72118b43d6870461828c5fd5de7c7df42d4829c56da510159162"
     },
     {
@@ -1112950,9 +1112950,9 @@
       "officialManifestSourceSha256": "45296dc9209dc17cdf8ad574bef672bf69aa17850b583b810e07706f749bf32b",
       "nativeFile": "visual_kanban_002_native.png",
       "officialFile": "visual_kanban_002_official.png",
-      "nativeBytes": 35906,
+      "nativeBytes": 31446,
       "officialBytes": 29578,
-      "nativeSha256": "7051cf76b69340e88275aae397c6b255c1aa794c4c5fbe39c42ff56dc151b2d2",
+      "nativeSha256": "70300ac6a4f8832d8df58debdebd57eaa27ebec6b0ec4cc022718561984754ef",
       "officialSha256": "f9f92d00732ea361d8c62e75d06c2f276301734be56e1aad4debb4b6fcdc8787"
     },
     {
@@ -1113136,9 +1113136,9 @@
       "officialManifestSourceSha256": "35fd46f9d3466babe2404b647c4469917978c53c4220495904311558d07c7767",
       "nativeFile": "visual_kanban_003_native.png",
       "officialFile": "visual_kanban_003_official.png",
-      "nativeBytes": 78908,
+      "nativeBytes": 71709,
       "officialBytes": 71689,
-      "nativeSha256": "4a9ec3e0a0076314fa02139f412e090fd4cab5daadf21d699ea483c09cb89e0c",
+      "nativeSha256": "152075de42bdf28166ab8cf81f7ef847f10687832e08c3a8c4180507f4d04ecb",
       "officialSha256": "69ce0d24dc2637253e78c627b7647dfbc43a77fa1f7b1d7846164ecf98efeba9"
     },
     {
@@ -1113322,9 +1113322,9 @@
       "officialManifestSourceSha256": "8ad76f03a5bc4619131e356724e3c42ff350814b852fad6d5290e8931759e08c",
       "nativeFile": "visual_kanban_004_native.png",
       "officialFile": "visual_kanban_004_official.png",
-      "nativeBytes": 48607,
+      "nativeBytes": 43562,
       "officialBytes": 40175,
-      "nativeSha256": "5b60a7f69db42631c00fc13e449addf9467d13faf78f6b9cf4cd05471f02c734",
+      "nativeSha256": "9eee7b1410887ead2773b8ebda0ab52fb54c5131dc96e810f6a0d4790c09fb7f",
       "officialSha256": "fa73a8690b4d4405eafd3a8ecfae74bf20823ac09e3ff5a0ba033333339f950c"
     },
     {
@@ -1113508,9 +1113508,9 @@
       "officialManifestSourceSha256": "bf8e5c9b1c1b6c925245f49241b73e20f1620af3721013480fa130042634bc84",
       "nativeFile": "visual_kanban_005_native.png",
       "officialFile": "visual_kanban_005_official.png",
-      "nativeBytes": 49289,
+      "nativeBytes": 45372,
       "officialBytes": 43285,
-      "nativeSha256": "5d1088bd9814ec355e1af5d2b8f116fc95d0ba4bee872e8fdee740c045b4c6b7",
+      "nativeSha256": "eb01658037ec2da1bb6de85365d01db48bfbb3bccab77b1a78b99eb9ebbe52a1",
       "officialSha256": "a9280edac75b18105e4d1f842618541d0d5173cdfed2abcdc93ae1741ad51524"
     },
     {
@@ -1113694,9 +1113694,9 @@
       "officialManifestSourceSha256": "ae9e72083375263a2b4b23637704cc759df708efb0b50968b19c33f4a4a08015",
       "nativeFile": "visual_kanban_006_native.png",
       "officialFile": "visual_kanban_006_official.png",
-      "nativeBytes": 33472,
+      "nativeBytes": 31228,
       "officialBytes": 29322,
-      "nativeSha256": "954b2571495dc7b35733b920f52d8eaf3a13602471a73c99bb03e5153f00f9f4",
+      "nativeSha256": "4519931dabc34ef4f0de62205296b972cd42dc23341db6c4129d32e5671f09d4",
       "officialSha256": "789e4863d579d22a2cd16f439f6a20290167fa970b84a7820187c406be1120ca"
     },
     {
@@ -1113880,9 +1113880,9 @@
       "officialManifestSourceSha256": "0027792eedec6ded54b2dabd9cc62b1ae74584b778bcff085995125c62ab7bdc",
       "nativeFile": "visual_kanban_007_native.png",
       "officialFile": "visual_kanban_007_official.png",
-      "nativeBytes": 80574,
+      "nativeBytes": 73797,
       "officialBytes": 70124,
-      "nativeSha256": "6896a2fa47201987e4cc47101f862a4f0e9773cf1dd5f6ecea1b46f632e783af",
+      "nativeSha256": "69cc754578b78501e66b2fed0b7fc5d7485618615ab5e7d6cc3da8ab67f77ed1",
       "officialSha256": "74ac55613c34795d8264ef8d983e815c0e27140977359b0d7101ab1260d1b442"
     },
     {
@@ -1114066,9 +1114066,9 @@
       "officialManifestSourceSha256": "0f5237d01b6cf01ba29aec009c62c28e0ff3a2dfe3434c0827242a6d348869af",
       "nativeFile": "visual_kanban_008_native.png",
       "officialFile": "visual_kanban_008_official.png",
-      "nativeBytes": 48127,
+      "nativeBytes": 42773,
       "officialBytes": 40241,
-      "nativeSha256": "b1ada1d1d1b0741b6fa22e0c9ebba8147d42dd747cb00a4ef75cfabbc8b2edbb",
+      "nativeSha256": "08ae9c9d02342f4998dbf51ddce7e45b45dcf351f7e166720e10c0baa14af25d",
       "officialSha256": "b14a1c3d1c5960f50c18e084ec0251951176bd78a84da762eadca2cacff7d64c"
     },
     {
@@ -1114252,9 +1114252,9 @@
       "officialManifestSourceSha256": "430273160d99a6c2f9e0de5c42111233c4b37cfe22bab12bfb6f4ee1522ee5d0",
       "nativeFile": "visual_kanban_009_native.png",
       "officialFile": "visual_kanban_009_official.png",
-      "nativeBytes": 52338,
+      "nativeBytes": 44743,
       "officialBytes": 41882,
-      "nativeSha256": "2a4de5026634bfab353e5eb7ddd517c4caa85cfc1f24b9be04bc67ea8d79d258",
+      "nativeSha256": "d053d9f7cf90bb613649c682a887e38165d495f6300f6e10efb2e3767b0efcf1",
       "officialSha256": "074cae2836e7522518f485ecd3ab57bf227f2c478cafa8f04da889558c40d2fb"
     },
     {
@@ -1114438,9 +1114438,9 @@
       "officialManifestSourceSha256": "4c613f497d2313e42508bff039d5ffdc552d909668b402fd53a9a5471b406ba9",
       "nativeFile": "visual_kanban_010_native.png",
       "officialFile": "visual_kanban_010_official.png",
-      "nativeBytes": 33355,
+      "nativeBytes": 30672,
       "officialBytes": 28941,
-      "nativeSha256": "2f7e1b26d6ad3c646b35ca8a0d37aff092e6878e3d4d65180565211ddcaedd3c",
+      "nativeSha256": "ea47327fc407cad140d216be03b7c991d2adb4357602284f79fb75a148493667",
       "officialSha256": "646e5c8ec652345246f4f7ffd8ade6e9c184814801d1f0e7f1e9cea62c0d817f"
     },
     {
@@ -1114624,9 +1114624,9 @@
       "officialManifestSourceSha256": "4fe08e4060ec2b66e8ee884e6b06790a793e1fe8f9ba13f499e0788c5d8ebaca",
       "nativeFile": "visual_kanban_011_native.png",
       "officialFile": "visual_kanban_011_official.png",
-      "nativeBytes": 72432,
+      "nativeBytes": 69209,
       "officialBytes": 66838,
-      "nativeSha256": "15cb7cee198434d20652958b2412d733f14c1537333b162794ee7d1a044751f3",
+      "nativeSha256": "9a55c5d7435d9747283e7fd3737397b49501d0991a6ed9670fdf2d82142ebf9f",
       "officialSha256": "4a02492344aee0734120c587b5a449527c75965fdaa1a52a5520d9d350d3cfeb"
     },
     {
@@ -1114810,9 +1114810,9 @@
       "officialManifestSourceSha256": "8028075f53ee7a059165cead0fa0d466f893b556af801f1558524cd73fc76067",
       "nativeFile": "visual_kanban_012_native.png",
       "officialFile": "visual_kanban_012_official.png",
-      "nativeBytes": 47254,
+      "nativeBytes": 40079,
       "officialBytes": 37463,
-      "nativeSha256": "566166958991ba29cc3fd3824fa43b607937cb2cdee9b943755616aea839c9dd",
+      "nativeSha256": "d882fe8d6ebe2ee49e886d12928c66054f852ccece5923f93ab5565b4e92def4",
       "officialSha256": "384013fae3f4906b0ebab1eef7e9c669d111d5984a82aded06e566f9c90985ea"
     },
     {
@@ -1114996,9 +1114996,9 @@
       "officialManifestSourceSha256": "03326bdbe1437ef7cf558ae849416b09a4e33c8154e297b61c898344f65a2c10",
       "nativeFile": "visual_kanban_013_native.png",
       "officialFile": "visual_kanban_013_official.png",
-      "nativeBytes": 48621,
+      "nativeBytes": 44342,
       "officialBytes": 41162,
-      "nativeSha256": "ddb46c411d581a4e8f0a30466d76463fbe542058506520cb53ed172e7b4e0c6e",
+      "nativeSha256": "54ef0789d93ec362ebc47c75729e4b0e05f81912f883aea539157aa14d7f71cb",
       "officialSha256": "414c823feba6b6f193e837702c35a81d34e12938c1e74117e3909f813a307a9b"
     },
     {
@@ -1115182,9 +1115182,9 @@
       "officialManifestSourceSha256": "558218a7052a3dc50bc83a3d245d5a86cb78806ec3a7263b5c06023cf617c327",
       "nativeFile": "visual_kanban_014_native.png",
       "officialFile": "visual_kanban_014_official.png",
-      "nativeBytes": 34207,
+      "nativeBytes": 30220,
       "officialBytes": 28465,
-      "nativeSha256": "44e808214909f6ffb31575b434d774101b6dce9f8609f3ec3fe320153db5c5a0",
+      "nativeSha256": "bbcf9a7a502d4bf39e73b03ade591c724f8ba5084838067ee44e8e4aa2fabefe",
       "officialSha256": "397c41a6aef9ae78c2706617cd70514a5b0f052fe482271db55fcbe5ed8eef21"
     },
     {
@@ -1115368,9 +1115368,9 @@
       "officialManifestSourceSha256": "661ac57a74b037a745d55b6afe37611ac28531fe0c9ead6f99848ff86dcc5fd3",
       "nativeFile": "visual_kanban_015_native.png",
       "officialFile": "visual_kanban_015_official.png",
-      "nativeBytes": 75493,
+      "nativeBytes": 71863,
       "officialBytes": 70000,
-      "nativeSha256": "1ea1968c1357d05ddb6944f7b421a4e3cde83e2296ae75a85263d2987094d8c0",
+      "nativeSha256": "cbdb9c282b0c8171b875eb3fc02f6db8dfff2dea10749fc712f69d24fdb006ac",
       "officialSha256": "907cff74060bb993fb85443f91005c3f42ebd2376ce45734d7385ce901f0067a"
     },
     {
@@ -1115554,9 +1115554,9 @@
       "officialManifestSourceSha256": "25f6ae95f702bd5ac4ffac84ae931837f4c901a054c797959d43dcd3a4acab25",
       "nativeFile": "visual_kanban_016_native.png",
       "officialFile": "visual_kanban_016_official.png",
-      "nativeBytes": 50026,
+      "nativeBytes": 43363,
       "officialBytes": 39708,
-      "nativeSha256": "9ef42b2262f41a590f533f1e0a0aac3f01187ec6f388227b04ae2e678552deb3",
+      "nativeSha256": "1ddbb15dfac751490852cdac20e384638541e68396d22d9ff4a09e953ce23da3",
       "officialSha256": "52e1db52178f93f7fc50403d9861f14fec2617853276b602bf957724f90174df"
     },
     {
@@ -1115740,9 +1115740,9 @@
       "officialManifestSourceSha256": "c6043dfe8babeef68ca1c9b9f24d63e2c5ac5981d21991b2532e8c906dd6825e",
       "nativeFile": "visual_kanban_017_native.png",
       "officialFile": "visual_kanban_017_official.png",
-      "nativeBytes": 62280,
+      "nativeBytes": 56935,
       "officialBytes": 49136,
-      "nativeSha256": "be3064d2b4073be1ede58e6e55e41e2f888efd9f7f5bec12bf1235d9a40fe140",
+      "nativeSha256": "98d939811299c5b45ae881da7258287c9627fcbe6904ac0c1f1ef83ace2740a9",
       "officialSha256": "67cf66f8350d0a62696b217ae40a29bb4639c60a358a5b68e03f8dc13eb2ea9a"
     },
     {
@@ -1115926,9 +1115926,9 @@
       "officialManifestSourceSha256": "4586a8832bc57d6a6ffc073d43f90361a75ad7c43d9d46eea1871aef20704262",
       "nativeFile": "visual_kanban_018_native.png",
       "officialFile": "visual_kanban_018_official.png",
-      "nativeBytes": 34799,
+      "nativeBytes": 33665,
       "officialBytes": 31669,
-      "nativeSha256": "c89ecbaf1e9f981a0e61142e6c3c97fd6b4640f4a0ed37b7b5063ea612e2aa2a",
+      "nativeSha256": "1d03935f656d59d273f502c3a73d68d894d35d8e75fe20e5cdd5f02a8544cb6b",
       "officialSha256": "808dff68492acb25f519b1920b7b9421df75f4800281aa3e761319c8752fb705"
     },
     {
@@ -1116112,9 +1116112,9 @@
       "officialManifestSourceSha256": "bded80f7bacc41c7a704aa7d1dc3d53b5fd71b9172167b88ccba4ac5a389d3c4",
       "nativeFile": "visual_kanban_019_native.png",
       "officialFile": "visual_kanban_019_official.png",
-      "nativeBytes": 75860,
+      "nativeBytes": 73144,
       "officialBytes": 63563,
-      "nativeSha256": "f11f6a05494801eee63b09376e4dc8003b913d02e867a0affc1726ac8b317879",
+      "nativeSha256": "93c30eba9b67caf0c6c8ec1607517a176898d3016a391aca99bbf24d649d1351",
       "officialSha256": "24d216395cc541528f15af8d2194d848ec0eba26da23f526be87514f5862a257"
     },
     {
@@ -1116298,9 +1116298,9 @@
       "officialManifestSourceSha256": "37b13ef5160f4d8f1a5babe81875a6f9778d2d40498c14f40cdb4127890477e0",
       "nativeFile": "visual_kanban_020_native.png",
       "officialFile": "visual_kanban_020_official.png",
-      "nativeBytes": 52410,
+      "nativeBytes": 47789,
       "officialBytes": 43257,
-      "nativeSha256": "6ed8d245f5dd9fbc25fc68396f9d989f85013c936850689a00b0acb781e5c103",
+      "nativeSha256": "03621475b807a9f56e1e17270cdd146871f203214757486ad2992becb1e7ef94",
       "officialSha256": "e32bbbb7d4d44f2e2e3f04e4547399483bddbef9f0c2367098e01c9f054a50f0"
     },
     {
@@ -1116484,9 +1116484,9 @@
       "officialManifestSourceSha256": "71b4faf4f36ba07a9edc675bf0af93ae760f5c6c5792f809a9f74f4c2aa313a3",
       "nativeFile": "visual_kanban_021_native.png",
       "officialFile": "visual_kanban_021_official.png",
-      "nativeBytes": 65084,
+      "nativeBytes": 59304,
       "officialBytes": 50849,
-      "nativeSha256": "02fab1334740c6101a4f33163dce8ea524c5844538b1e89976c9f6060ec9eee9",
+      "nativeSha256": "2dd400987665e21a8c7c52d1a0a1d0a1009952f2f049d2ecbfce3de65f7ef414",
       "officialSha256": "7043ae2adb1fff1c5d1530b5e633ea0b86825229f3ea9265acb1126b0ab6673e"
     },
     {
@@ -1116670,9 +1116670,9 @@
       "officialManifestSourceSha256": "2d2bb9872b9a97ba84bf6ba2e250eb4a0002e7c5b18b5d38d5e728d7a83c85fc",
       "nativeFile": "visual_kanban_022_native.png",
       "officialFile": "visual_kanban_022_official.png",
-      "nativeBytes": 38132,
+      "nativeBytes": 34696,
       "officialBytes": 32689,
-      "nativeSha256": "e9665cf908f6cde3c107bf62491a9c7e2e4d19df7169ddc1c59672433c3a5b6d",
+      "nativeSha256": "5960998696435d676d6d102cef2bd4cff58cd8d0b342c97c084c84b491a45b00",
       "officialSha256": "63dc008d8224b9a47312ae75fa91f76f4b9f77129140d15f081c92aaf59536f5"
     },
     {
@@ -1116856,9 +1116856,9 @@
       "officialManifestSourceSha256": "50e7be030b1e6e475038094d28d874f8800ec825cd65518ecee735329f6f4233",
       "nativeFile": "visual_kanban_023_native.png",
       "officialFile": "visual_kanban_023_official.png",
-      "nativeBytes": 79893,
+      "nativeBytes": 79092,
       "officialBytes": 65885,
-      "nativeSha256": "73272aee16ebbdca20cc9630522a74e7eb687526f73d0f972015e39ce2e6ab3f",
+      "nativeSha256": "10381dbe6a199408d2eb36ecf459edfa06b8a88baf310fc2afa45f11410fe777",
       "officialSha256": "b8986cbd97a0d5dc4a44a14669eeb8b6a6bef68168d5d62ad8864f6f222253a4"
     },
     {
@@ -1117042,9 +1117042,9 @@
       "officialManifestSourceSha256": "d1720f751bc30e606e7913c87a0a27727e22d92815eff42cfe91849b67a39ea5",
       "nativeFile": "visual_kanban_024_native.png",
       "officialFile": "visual_kanban_024_official.png",
-      "nativeBytes": 52713,
+      "nativeBytes": 48320,
       "officialBytes": 42533,
-      "nativeSha256": "04bedb6a358fcf9f042f37325c31755ab9804884cca2d3ebee270f098a15d87a",
+      "nativeSha256": "f5ec1a9fea207bd5eebee8dd774df5c3ad877174bd5952f68462e825216449b8",
       "officialSha256": "9f04c42ebcde258d79b0e847352b1e72ca78ba7de2c616a8aab88ddfd7cfea77"
     },
     {
@@ -1117228,9 +1117228,9 @@
       "officialManifestSourceSha256": "7d7864ea271c66fa95238a8bed5e80a78cf2cda83b7cc4a85982293174aa0ca2",
       "nativeFile": "visual_kanban_025_native.png",
       "officialFile": "visual_kanban_025_official.png",
-      "nativeBytes": 59475,
+      "nativeBytes": 56897,
       "officialBytes": 49923,
-      "nativeSha256": "5726d1aeba6d699e4ec821176a7164042e9804480a28389d2b5434873d0283f7",
+      "nativeSha256": "3e9da7a3e1309b6ee34329bdbb38fb3bf5206f42b22d876d05af0bedf4f737ad",
       "officialSha256": "d4240fbc7650d6f70676ef9aa45f2b71a45d6c6561256cf7fdf57a46ae53baa7"
     },
     {
@@ -1117414,9 +1117414,9 @@
       "officialManifestSourceSha256": "683f30e2133ba945fec5750966671591715eb56a520d9a3ad6190a75d4a931f0",
       "nativeFile": "visual_kanban_026_native.png",
       "officialFile": "visual_kanban_026_official.png",
-      "nativeBytes": 37241,
+      "nativeBytes": 34660,
       "officialBytes": 32291,
-      "nativeSha256": "ad52a70cfc11a9d15cb19c33c7b40b86957f14af084747c0330bec6a6b100f18",
+      "nativeSha256": "9b52e231eafcbc3360cf524d3d25a1a2d8bb8a2a10a84b3c2ab5b0f69ff23688",
       "officialSha256": "f5cda4017143dd99f50dcc25fc15141deeace6ef2955429ed6f026fdaa04d0bd"
     },
     {
@@ -1117600,9 +1117600,9 @@
       "officialManifestSourceSha256": "cef11cb5dafe74939d3a08044b0ecad2bc655156c9ee8171fe9b52680e886e08",
       "nativeFile": "visual_kanban_027_native.png",
       "officialFile": "visual_kanban_027_official.png",
-      "nativeBytes": 80285,
+      "nativeBytes": 75716,
       "officialBytes": 64894,
-      "nativeSha256": "73d783284519e0d0043843f75d71b7e20a90040edc5bbfa423bb483ea5a34af6",
+      "nativeSha256": "72db0aa387a61d9b9ef031567bdc6cde3c528c89a695dbe8bc79c42632558e9f",
       "officialSha256": "4a283455cce373e79d6e0dd6dfd7c78639313595101bbad3365709355e1178e3"
     },
     {
@@ -1117786,9 +1117786,9 @@
       "officialManifestSourceSha256": "20e02a9937d7b7df44d888b1f6449043428c1903372be13b51cdd4a25dce7bff",
       "nativeFile": "visual_kanban_028_native.png",
       "officialFile": "visual_kanban_028_official.png",
-      "nativeBytes": 47776,
+      "nativeBytes": 43954,
       "officialBytes": 38899,
-      "nativeSha256": "87399017dbb6c3123dde305ca89018ebefbc115304297f9859e29b922f5db87b",
+      "nativeSha256": "a2acf2641a71b1584994d900131a2d69b4e1405d7f92c3457973f3b201dfa229",
       "officialSha256": "f3ecf2542c3dfff3e71ab4591252583f179114a545654878187d9fece6c01e1d"
     },
     {
@@ -1117972,9 +1117972,9 @@
       "officialManifestSourceSha256": "8afd2679fd81e319f58b39a75e2b587e3c563ca862ead2288b5de005396689cb",
       "nativeFile": "visual_kanban_029_native.png",
       "officialFile": "visual_kanban_029_official.png",
-      "nativeBytes": 59335,
+      "nativeBytes": 56768,
       "officialBytes": 48972,
-      "nativeSha256": "ae31bf0525ea81c52f572d166c5a4f646a0da262eabc407dd9751c84ad888543",
+      "nativeSha256": "e8c88c21d34ad2aa1af91dcaff305dfe3938a72e978b86c4e4cc5f893c7a5eb4",
       "officialSha256": "faf0f645f91b69065b62cce53cabdc63780315254c3e28e14b93c7135d955fed"
     },
     {
@@ -1118158,9 +1118158,9 @@
       "officialManifestSourceSha256": "c5e2d44432ce43eea054fa9c309b377ef6be28c714416c0f6d2ac915e5ebb40d",
       "nativeFile": "visual_kanban_030_native.png",
       "officialFile": "visual_kanban_030_official.png",
-      "nativeBytes": 34996,
+      "nativeBytes": 32852,
       "officialBytes": 30746,
-      "nativeSha256": "242ac7e75c3f1ff8317cbad5237dc0d96ef66a8ae4fc88c3f24e73b835aea1f1",
+      "nativeSha256": "81e6ecf88ed5e5c96e28af6041303dfef727ab36640337c7d9a597003904a2fb",
       "officialSha256": "e92d82e872e86349ba9bdf299e9c9fa0e9f32108bb29065ed6637edcefe117e9"
     },
     {
@@ -1118344,9 +1118344,9 @@
       "officialManifestSourceSha256": "f66dd46f53591faa166549b9c5d475ea776ace2fc27f7f43d47c9e93f24e44f5",
       "nativeFile": "visual_kanban_031_native.png",
       "officialFile": "visual_kanban_031_official.png",
-      "nativeBytes": 75613,
+      "nativeBytes": 75836,
       "officialBytes": 64330,
-      "nativeSha256": "5a378473dc9dc4078397470e718617a9877e6797f98c0292ff177aee0ede2651",
+      "nativeSha256": "07e336cccf812ffaebfd4c197004da05eac1645403ee6d7b752146a0c5cd09c5",
       "officialSha256": "d2a37a37752a5adfaa6cd2d6d9240c1c0b38eae52c831a5b08f0c6d4d7ee5258"
     },
     {
@@ -1118530,9 +1118530,9 @@
       "officialManifestSourceSha256": "1821e6582f563614bd3ea94ab9a9b3dfd9aed8bd8d61a7e9370c7895732063ae",
       "nativeFile": "visual_kanban_032_native.png",
       "officialFile": "visual_kanban_032_official.png",
-      "nativeBytes": 51801,
+      "nativeBytes": 46250,
       "officialBytes": 42511,
-      "nativeSha256": "caedfcfc4b67991cb39c9d6172b64f1df5f5e688671293705823785af4fc2d39",
+      "nativeSha256": "79ea93420b7747ee366d2130bd4c212872be59d5ca990578b34c8d563e76e9a7",
       "officialSha256": "08454cc1113460fd100eef536236b1bd164141e5f28017425ed480a3fb108b58"
     },
     {
@@ -1118716,9 +1118716,9 @@
       "officialManifestSourceSha256": "e6c2e2419224da54c47b6ad453dee40ce11fea79d0a1fbd7ff02be95d4d9fdd1",
       "nativeFile": "visual_kanban_033_native.png",
       "officialFile": "visual_kanban_033_official.png",
-      "nativeBytes": 36666,
+      "nativeBytes": 35491,
       "officialBytes": 32531,
-      "nativeSha256": "5233512b36e35c05c05d191a7d149e0ed5325ae1702ea448d72f123ddd22d0ef",
+      "nativeSha256": "728b10dfbfa552fb16adaeb550bc9b1f57321ea3dffa3563662e009bee87c50c",
       "officialSha256": "7a2b769f067943b45fe3bbbffb2f3c3b3ddfc2da7555fb9e214c5e43ed1d54b8"
     },
     {
@@ -1118902,9 +1118902,9 @@
       "officialManifestSourceSha256": "7b20039eda68116e42425845ee53f82f54a6a2d1ff7a314eb6f482a3b5bfad10",
       "nativeFile": "visual_kanban_034_native.png",
       "officialFile": "visual_kanban_034_official.png",
-      "nativeBytes": 29805,
+      "nativeBytes": 28669,
       "officialBytes": 26197,
-      "nativeSha256": "cde0491454044f2c987e5492f0650cf1e91cbe1f1afde60310219ac1c9272945",
+      "nativeSha256": "18d3e211503c2e010deaa8fdc4ecff363170039492c7661bd7e48c1e04f1dd4c",
       "officialSha256": "b41725e9c2fbc475c8a7dc102a4f54b45ce3d94fad5090cf314d7b4fcee7b68b"
     },
     {
@@ -1119088,9 +1119088,9 @@
       "officialManifestSourceSha256": "f497c4a7fda8e4ff85c40b31917a1712cc375f7003ac8c382bbdff1639991e95",
       "nativeFile": "visual_kanban_035_native.png",
       "officialFile": "visual_kanban_035_official.png",
-      "nativeBytes": 56992,
+      "nativeBytes": 54307,
       "officialBytes": 45148,
-      "nativeSha256": "e9967584c116e08cdbeed667c70fbe37dd61b7946bb0ee3493ac214559dbc746",
+      "nativeSha256": "7dbed38d1f5fa67586a66cf8d84fa17a6cf335fb74912bbdd89e8aca71da3ce6",
       "officialSha256": "f5e476f29a510fcb2ac4e41a140382bb18b19af51d3d75db3ad578737532c8e3"
     },
     {
@@ -1119274,9 +1119274,9 @@
       "officialManifestSourceSha256": "fa637112d3e462dae9edfaaa94abc1b54fa8a4f78ba281faebf63d471bc402f9",
       "nativeFile": "visual_kanban_036_native.png",
       "officialFile": "visual_kanban_036_official.png",
-      "nativeBytes": 39351,
+      "nativeBytes": 37657,
       "officialBytes": 34390,
-      "nativeSha256": "fb42b5a2e5f303bd6acbf02420f1b2040aa9e6a8d51039eb5c5a1374f3129d67",
+      "nativeSha256": "d4124d6d537dc2be4b886ff3126312c86fa5b62391f051ee71f27446f9cc203a",
       "officialSha256": "a3c5b8588be53ed7f6ee60add326589c721a99495453b68454499f8e2c926554"
     },
     {
@@ -1119460,9 +1119460,9 @@
       "officialManifestSourceSha256": "3491b369d26abe96c76aa06be14abc9a8400e1684340bf16184dd120b8588950",
       "nativeFile": "visual_kanban_037_native.png",
       "officialFile": "visual_kanban_037_official.png",
-      "nativeBytes": 34435,
+      "nativeBytes": 34418,
       "officialBytes": 30514,
-      "nativeSha256": "0a0bb9aa868098525194a703eb9ae08f5389e3395d23f09e19bd1802c21564f4",
+      "nativeSha256": "6025834bfa426133ca3ec5fa588490b828cac6ffebc984f942cbd48f3d4d4e6a",
       "officialSha256": "49e14e834b302295d900e09d296eb63a8fbf1585602360952c95311afbb8c058"
     },
     {
@@ -1119646,9 +1119646,9 @@
       "officialManifestSourceSha256": "866a657d816aad136acfe6dd2c50218496d9b73d2398aadb4e83604d2237e466",
       "nativeFile": "visual_kanban_038_native.png",
       "officialFile": "visual_kanban_038_official.png",
-      "nativeBytes": 29850,
+      "nativeBytes": 28014,
       "officialBytes": 26237,
-      "nativeSha256": "5ca11ccd1cf0d66d12241ecccb20914a9f8006c7fca78319b7f9efead101e25f",
+      "nativeSha256": "f51aebdfaeb7f729ca44968db1fa2e414922106b7135731ed45bf9b09e092dda",
       "officialSha256": "15aec6f141dac8c9a4048beedc11824c647c44d83c45544cb82aae98438c7332"
     },
     {
@@ -1119832,9 +1119832,9 @@
       "officialManifestSourceSha256": "1b28e0ee2bd21ed56ae2bd8e87e4bb1cc0a54c174affa3b59d6d083e2b37c2c8",
       "nativeFile": "visual_kanban_039_native.png",
       "officialFile": "visual_kanban_039_official.png",
-      "nativeBytes": 49700,
+      "nativeBytes": 49952,
       "officialBytes": 40709,
-      "nativeSha256": "737c4177dfdd83cccaeb218a5f1cccee0f5d326ed57f92b2c6f606b9d59374e0",
+      "nativeSha256": "848d28fa3b2fdfb0b53e2a12931173e1a2490652ef936a8920619c532d4ce7c0",
       "officialSha256": "0a3adf46764530996afcb1684aaa90ff55785d280e6c6c583104b0bf498206c6"
     },
     {
@@ -1120018,9 +1120018,9 @@
       "officialManifestSourceSha256": "4c84a4b8f874b9df6b31740d3a040f062587f49dbc786430b5261a663578d320",
       "nativeFile": "visual_kanban_040_native.png",
       "officialFile": "visual_kanban_040_official.png",
-      "nativeBytes": 38542,
+      "nativeBytes": 36919,
       "officialBytes": 33242,
-      "nativeSha256": "5756c36beee375b4d34c74ea6e09d425bbe78987526bcae93d264e0cc8678a3e",
+      "nativeSha256": "e070261991ed01ce4c5b256fc2f28aed54de8ca5d7a206c855a3029b3274b70b",
       "officialSha256": "01f542957486f773a3858381c142bc843d1997a88ddde2de7cb415445aedb9aa"
     },
     {
@@ -1120204,9 +1120204,9 @@
       "officialManifestSourceSha256": "1eb33525c8a0584d07856c37a372770b271752736a700b3da5899eb4c62f6863",
       "nativeFile": "visual_kanban_041_native.png",
       "officialFile": "visual_kanban_041_official.png",
-      "nativeBytes": 35821,
+      "nativeBytes": 35478,
       "officialBytes": 31396,
-      "nativeSha256": "1596d221f8e4e7323456391c0c2f505368f01fbc497e8812787e395c25e8cc30",
+      "nativeSha256": "8cea8a88da746fea6b4a7f7e145451a0ccd062c71534291c0f9a4dd173bbf11f",
       "officialSha256": "86cbc6b8530af2a5a5620d203aaf5346b0b5138230e4cb27a0f40bb855dc4961"
     },
     {
@@ -1120390,9 +1120390,9 @@
       "officialManifestSourceSha256": "0a68be1009d197bca6de22fcde7f1a13d48f1cb7e57106df9859582148b6b8ac",
       "nativeFile": "visual_kanban_042_native.png",
       "officialFile": "visual_kanban_042_official.png",
-      "nativeBytes": 28243,
+      "nativeBytes": 27156,
       "officialBytes": 24883,
-      "nativeSha256": "73b0c97de12143313a27a761fcb765757a6c8f56150f97184a36d6bee6a958ee",
+      "nativeSha256": "d922a82c6493fcdd144a10d27e7af827923ad6a4946074f69977f9de792f001b",
       "officialSha256": "058795d13f1c19e8378fb012e0cd54d1db6066423c5acb95a8472d15d76493a4"
     },
     {
@@ -1120576,9 +1120576,9 @@
       "officialManifestSourceSha256": "4db2ee5687d9948bb7904ce812818a96a33309cb06180b6012f40398a80b2931",
       "nativeFile": "visual_kanban_043_native.png",
       "officialFile": "visual_kanban_043_official.png",
-      "nativeBytes": 54550,
+      "nativeBytes": 52744,
       "officialBytes": 43647,
-      "nativeSha256": "71408c6764f8166a8c1895c56063cf19a1bd2be2642ba1a6c54c17d4da4ed1f0",
+      "nativeSha256": "d9ea3d65e866af342dd7f97aecadab05896cb1ae6b0d590ffca09cf2fde02d26",
       "officialSha256": "23a1d6993daf2d8c284911b179dbad31fadd7774e79273f6e721885d96fec0ba"
     },
     {
@@ -1120762,9 +1120762,9 @@
       "officialManifestSourceSha256": "057cb31e14979d32cc75dbba3c1948769fb93cf66f701e5db71562f39469e334",
       "nativeFile": "visual_kanban_044_native.png",
       "officialFile": "visual_kanban_044_official.png",
-      "nativeBytes": 41039,
+      "nativeBytes": 37207,
       "officialBytes": 33877,
-      "nativeSha256": "c12fe2298cf80116d2c1c8c52819bb07d754bfbb18ecc98f17c237183df68792",
+      "nativeSha256": "ee5b4dd263a29e199d31dfe35c5998a80057eea678c095a9c5bcf35b2c5012ce",
       "officialSha256": "714fc1605587819077e0b1ea30bb4a0a4c00a7a0efb9ad8a549a10a27207bd20"
     },
     {
@@ -1120948,9 +1120948,9 @@
       "officialManifestSourceSha256": "12fcc8020a72f03251a831509f5d092e2db862c843c5eff5a5bc13926c751277",
       "nativeFile": "visual_kanban_045_native.png",
       "officialFile": "visual_kanban_045_official.png",
-      "nativeBytes": 34835,
+      "nativeBytes": 35141,
       "officialBytes": 31655,
-      "nativeSha256": "1a2e539d176a3784b2ed603e42574f4a2394496bbf25cd5f26a44df554283133",
+      "nativeSha256": "a2be3008de726dab2eaff51fa235354cf4e29ed326bf04a9f39d9df1e3fafe05",
       "officialSha256": "6f0218841dc1578740394e70fb4a92773486ef147728564da458465d6a9eeebe"
     },
     {
@@ -1121134,9 +1121134,9 @@
       "officialManifestSourceSha256": "2a022f3a4907a30d2ba8779184ca4cfc3af766b341d5ea9772baf4e08ed52f40",
       "nativeFile": "visual_kanban_046_native.png",
       "officialFile": "visual_kanban_046_official.png",
-      "nativeBytes": 27209,
+      "nativeBytes": 26332,
       "officialBytes": 24141,
-      "nativeSha256": "2c2b33324a8c310fe20beb5834c97fd482dec98e554be65c035aaa25e9369c79",
+      "nativeSha256": "04427f9cf5d65cd2b7ab44d51cdc71c47301d46aa1a209349ad7810e936ea774",
       "officialSha256": "8105fe9ab0fef637919fcf7fd8c98f3ab259e517b5c15a722954952a0c9de458"
     },
     {
@@ -1121320,9 +1121320,9 @@
       "officialManifestSourceSha256": "fa2692e71ac9cfdc98778f076a047790c70b6a6e1e4071b3a086db13b38fdeb9",
       "nativeFile": "visual_kanban_047_native.png",
       "officialFile": "visual_kanban_047_official.png",
-      "nativeBytes": 51670,
+      "nativeBytes": 49773,
       "officialBytes": 41127,
-      "nativeSha256": "c4caee271b35df1f23750d95a4399c0c7657585dbee404dc317448d12e968bea",
+      "nativeSha256": "1f3939682574bfb1859fcb05c1d1892c207961f5a74dc2897bb0412fdfdd4bae",
       "officialSha256": "b3ed696fa3913d10d2bc4f7db2cfed63606c8aa3ea70a6f5ff7eeb374e7fbbd0"
     },
     {
@@ -1121506,9 +1121506,9 @@
       "officialManifestSourceSha256": "2d897dfc59ec40ab0d4fd99514dfcb5b09105175dbb8f07cd6f93295b94a5ca2",
       "nativeFile": "visual_kanban_048_native.png",
       "officialFile": "visual_kanban_048_official.png",
-      "nativeBytes": 39795,
+      "nativeBytes": 38399,
       "officialBytes": 35007,
-      "nativeSha256": "11fc123b1a72331c441c1e52bbd0afe0450ca470f3672b7e41ae143cedc8ff3c",
+      "nativeSha256": "a30dbe16ce868bd1505556cbc242b21903e70392ab856e447fb48af19742ab6e",
       "officialSha256": "e833b618d78fd71979f9689f9629c7fe588c68a778f82727e54efdfe2b4826e7"
     },
     {
@@ -1121692,9 +1121692,9 @@
       "officialManifestSourceSha256": "1becfa86851858d623682571bbc31548aa1406d3131ba6f21407ab8570597d9d",
       "nativeFile": "visual_kanban_049_native.png",
       "officialFile": "visual_kanban_049_official.png",
-      "nativeBytes": 48623,
+      "nativeBytes": 45464,
       "officialBytes": 39708,
-      "nativeSha256": "7a8e55243d9acad96cad3b84758c600cf2344e214ff5762f09ee6080b6d9906f",
+      "nativeSha256": "650e4821dd2a5de4ec401b35ebf069099c5797a366c13cffb73efc876a15d81c",
       "officialSha256": "afe85c3ece9e4c8ba378395cb9288a3b5ed6799a259099119f169f4e0f932c2d"
     },
     {
@@ -1121878,9 +1121878,9 @@
       "officialManifestSourceSha256": "2187303cfd8263717c6d77012011f9ab27d9c9fdb512d43050889f4a9033c049",
       "nativeFile": "visual_kanban_050_native.png",
       "officialFile": "visual_kanban_050_official.png",
-      "nativeBytes": 36240,
+      "nativeBytes": 33813,
       "officialBytes": 31007,
-      "nativeSha256": "c4d3469f087a77aa0590c1f18ad5cb25671f16a8972127e900e108d789b0210c",
+      "nativeSha256": "18690f4d96d82636dcb8a0afa5513e00730facb2c03e7659a817284f507ad088",
       "officialSha256": "000fc7e9f374b440cc7099569a35adb92f43c7ac0d53a1bfa539ea54fb4a607d"
     },
     {
@@ -1122064,9 +1122064,9 @@
       "officialManifestSourceSha256": "3996fc411696bdf02e5a36c7b5e07e5d20d9d033f3256233496a2df3cdd9490f",
       "nativeFile": "visual_kanban_051_native.png",
       "officialFile": "visual_kanban_051_official.png",
-      "nativeBytes": 72293,
+      "nativeBytes": 67150,
       "officialBytes": 55259,
-      "nativeSha256": "d5827f465859d2c9ef3b5b45b10a7009a5a23363fcd4beca2a96054f23aa40ba",
+      "nativeSha256": "f3652c5644541158267813186288c31bbf571da1b02987b2eec5e570a98e59cf",
       "officialSha256": "979e83fa8c8ae4ceb2367a31565f9a0fab07810f5c4e7a69cbe41ba7be8248ab"
     },
     {
@@ -1122250,9 +1122250,9 @@
       "officialManifestSourceSha256": "62b7f651c76014e238df7820c2be342853118f24d67032f707571404b6ccd921",
       "nativeFile": "visual_kanban_052_native.png",
       "officialFile": "visual_kanban_052_official.png",
-      "nativeBytes": 49059,
+      "nativeBytes": 42594,
       "officialBytes": 37937,
-      "nativeSha256": "e7a57d29c75abf985596e584fcf23887a5328a7338575ff076782008f175e904",
+      "nativeSha256": "65d46e2a882bcdb17f9019587616c6febea63152fae7893f32385910e1af827b",
       "officialSha256": "daf7ee77406692344dbae49121b2ac70aa90c37edebc1648add209ad6a765b3d"
     },
     {
@@ -1122436,9 +1122436,9 @@
       "officialManifestSourceSha256": "4399f808ef7f8b680e5d649064dc3da090929797e216912279c40eac2cc21ce8",
       "nativeFile": "visual_kanban_053_native.png",
       "officialFile": "visual_kanban_053_official.png",
-      "nativeBytes": 53445,
+      "nativeBytes": 50804,
       "officialBytes": 44057,
-      "nativeSha256": "d0639856c66cec77777371e0d32df590b261e59bed099b17db7241b690a8a3b6",
+      "nativeSha256": "0df26fb5b622801f37c8a209d0436cb3e15d383e26fe5353dd6790ba871eb192",
       "officialSha256": "80f6155e8db14316d9d774bab145fb5fe9a3bf40885c316a8d4e0b6258c3141e"
     },
     {
@@ -1122622,9 +1122622,9 @@
       "officialManifestSourceSha256": "b1fe9d212db02961b7b0314b60af0a4da5f3da642cf787fe4e7c4f3c8a7a50ac",
       "nativeFile": "visual_kanban_054_native.png",
       "officialFile": "visual_kanban_054_official.png",
-      "nativeBytes": 37547,
+      "nativeBytes": 34848,
       "officialBytes": 31619,
-      "nativeSha256": "e24f25ced323f3dc34cc24b02a0fe11519e967b8e09e4cf19f11db415b6aed1f",
+      "nativeSha256": "0b4a71cdc1679d689e33d27ba328a2c7659a0df320f32e70fe3ce0b3bbb5ff6d",
       "officialSha256": "72b5a35168a925af522842f105c03f7ff3b90d8d1aadbf0f17094135a75f5508"
     },
     {
@@ -1122808,9 +1122808,9 @@
       "officialManifestSourceSha256": "2c3f779945375005841d2bd91dc8ac867f00b369409f57538a7878fc20586b50",
       "nativeFile": "visual_kanban_055_native.png",
       "officialFile": "visual_kanban_055_official.png",
-      "nativeBytes": 68957,
+      "nativeBytes": 64413,
       "officialBytes": 52437,
-      "nativeSha256": "db4e006213d32595df1fff8859f1b063ca22b43a2cd864f96da705eae5949d3d",
+      "nativeSha256": "81a8a4d9080f22e47981c6b39bdef3f0fc59ff0217f3dca3ef6f764bb368244f",
       "officialSha256": "604248d240441517874fd0f314170bbe4b4e206b5f053a1bd5ead7dd33c1c635"
     },
     {
@@ -1122994,9 +1122994,9 @@
       "officialManifestSourceSha256": "51d0d919de2a8b873cd70687ec292157c3b8469dcbd0d419d2972bd9e9defa9f",
       "nativeFile": "visual_kanban_056_native.png",
       "officialFile": "visual_kanban_056_official.png",
-      "nativeBytes": 48320,
+      "nativeBytes": 42221,
       "officialBytes": 38076,
-      "nativeSha256": "d8306469c1b497f480cb2c96e510b3719284392c8b5e4a4105cfb637b5ade92e",
+      "nativeSha256": "1d18224c4915e077ddf173cb358eed3f702f9846103e4e43511204f619c12aeb",
       "officialSha256": "3cc28ef9223b1cb89693a417aaf6f79bf408891c00c68106769b6ca3226183a2"
     },
     {
@@ -1123180,9 +1123180,9 @@
       "officialManifestSourceSha256": "c3489a19db6acf28d9fb6fe9f0c389430c635f9591bceb6d2666d1a3d7dfeeb8",
       "nativeFile": "visual_kanban_057_native.png",
       "officialFile": "visual_kanban_057_official.png",
-      "nativeBytes": 47058,
+      "nativeBytes": 47483,
       "officialBytes": 40095,
-      "nativeSha256": "24e79575ee719f8bccf8615a9fb7450416f4abeeed6da5016039e0516a9040cc",
+      "nativeSha256": "6f4316ac2bfd193e383a6b9d47c54219e4e5cab6a26f365ba1cf269584096594",
       "officialSha256": "e6e23c42624e7aa54014ae69f5da61487744b2960bc363a073c09f0129730ae2"
     },
     {
@@ -1123366,9 +1123366,9 @@
       "officialManifestSourceSha256": "5fe4ff57e207f349d52728ca73acf800b2e3a0c4d35ec90f0fd065babd2843da",
       "nativeFile": "visual_kanban_058_native.png",
       "officialFile": "visual_kanban_058_official.png",
-      "nativeBytes": 36638,
+      "nativeBytes": 33508,
       "officialBytes": 31528,
-      "nativeSha256": "254a9a2c63d2c90c01daae7b4b24d3c4d3eaf677f59e23f4cf3bdaaa03ef2843",
+      "nativeSha256": "ea3e33e3434f2a878bb9d1be8d0e499fee629ade8a801c4be582f2b75cbe352a",
       "officialSha256": "e960c1c497a4e7cf6ca08fac4701b2cb4f1d8afe4573c968c1abc55845b9d9b0"
     },
     {
@@ -1123552,9 +1123552,9 @@
       "officialManifestSourceSha256": "259b89e7b7158b10367f721db2693458d038286fcdbf53f0d70ba7698af29077",
       "nativeFile": "visual_kanban_059_native.png",
       "officialFile": "visual_kanban_059_official.png",
-      "nativeBytes": 67927,
+      "nativeBytes": 62997,
       "officialBytes": 51979,
-      "nativeSha256": "bce838487ba022c38a777b5941da723254d57465afbaf27a019298ca960252bd",
+      "nativeSha256": "8ff38bff1290eb144c09e55b0cf0059f138821973cda9b922cea78d732a8bdd1",
       "officialSha256": "76181f26c6b518d1242198a7637dc1880044166c81fd02d24455957d2543fd62"
     },
     {
@@ -1123738,9 +1123738,9 @@
       "officialManifestSourceSha256": "79b72604bff29b7fa7d8df20c19383d1f2614d8563fa32ddf82486f74af3cc90",
       "nativeFile": "visual_kanban_060_native.png",
       "officialFile": "visual_kanban_060_official.png",
-      "nativeBytes": 47121,
+      "nativeBytes": 41825,
       "officialBytes": 37378,
-      "nativeSha256": "b9f24f23e79d342f7b5b7e8766a03be76d61fdfae330aa4f1fc3d958825ec9fa",
+      "nativeSha256": "652885e255d23e01ae2b9453f2c851026520da4ddfa8fb292d1a9801efc54393",
       "officialSha256": "8bb94f7a6dac173fd6bd4d96a1cbed564efd27fa0e558efd43b46c2f9468f875"
     },
     {
@@ -1123924,9 +1123924,9 @@
       "officialManifestSourceSha256": "93419e31eaf176719c494daaa6974be4c01c304052d53096e5f4e2183455b656",
       "nativeFile": "visual_kanban_061_native.png",
       "officialFile": "visual_kanban_061_official.png",
-      "nativeBytes": 49565,
+      "nativeBytes": 48468,
       "officialBytes": 41118,
-      "nativeSha256": "e22c0bfd630c3100941eb0e05d6886f84d32222879e574d3b9255e3abd76e260",
+      "nativeSha256": "db3251181613bc0512b095c8c634dd64c8d286656ba6b3f18a55a89a937fad78",
       "officialSha256": "eabff841b4cbd1616c5c2f04043e0118eb119a553187fa005dddc9a1572f6826"
     },
     {
@@ -1124110,9 +1124110,9 @@
       "officialManifestSourceSha256": "99c79138ad3101d234f5a1b83596b51c62f4be40d4915d4bf68b9ee688ee584f",
       "nativeFile": "visual_kanban_062_native.png",
       "officialFile": "visual_kanban_062_official.png",
-      "nativeBytes": 35459,
+      "nativeBytes": 33722,
       "officialBytes": 30723,
-      "nativeSha256": "7b7cf79cc2fa9ccec7a7f89f7e496f94c01bf0a7f4d3fe0e107522a116d638df",
+      "nativeSha256": "18483cff1879b32cfd76f740fc66c812ef577619e3b60e2c878ec31631e70c6c",
       "officialSha256": "ed89a2b117a754c5b96a13a98f87a691c0764cfb1bfe2e4b7dbcb73afeafea31"
     },
     {
@@ -1124296,9 +1124296,9 @@
       "officialManifestSourceSha256": "894cd6f0209aab3424c221f741ebb6a56129c91e80b01ea22575129ee705e01d",
       "nativeFile": "visual_kanban_063_native.png",
       "officialFile": "visual_kanban_063_official.png",
-      "nativeBytes": 74307,
+      "nativeBytes": 68170,
       "officialBytes": 58443,
-      "nativeSha256": "4fd07af0b9332e01dbb42231b8cdce4f103d4c481d0f08ea8f706624f1192bb1",
+      "nativeSha256": "38f44bb4c46fa3bdff5823630694d534003e3705f31a1a020aede5d0f0bbab69",
       "officialSha256": "66a3893ee8d05ac4d3f8bb422bb28c2ca085855ad6296f69677e2a3e3822f553"
     },
     {
@@ -1124482,9 +1124482,9 @@
       "officialManifestSourceSha256": "8b2579b96a4aca7d6b650671a812515246c6d9601ad99001c4084722eeb28113",
       "nativeFile": "visual_kanban_064_native.png",
       "officialFile": "visual_kanban_064_official.png",
-      "nativeBytes": 50303,
+      "nativeBytes": 43135,
       "officialBytes": 37993,
-      "nativeSha256": "8f0b6e82c1aa9e2e48f51890bb9da0bee947be9a85ea0d4a192d65e9637f3051",
+      "nativeSha256": "b9ce11f2f252251c1324b11260dbeae137f317717fdaf0c66d0463cb712eff35",
       "officialSha256": "8cbe30d1bac6c58bfa36e831ba722cf2fb8e6d801affa0edeb00420a658f5e2c"
     },
     {
@@ -1124668,9 +1124668,9 @@
       "officialManifestSourceSha256": "c8bccc3f159957478a1f5bdcef44f895ed3c14a507718fd6e9a77fab1f14edce",
       "nativeFile": "visual_kanban_065_native.png",
       "officialFile": "visual_kanban_065_official.png",
-      "nativeBytes": 73815,
+      "nativeBytes": 65918,
       "officialBytes": 61939,
-      "nativeSha256": "3d601a76435537df584c5e13c149eb7a7faeed396b87eeee1bfe2a000b8e637a",
+      "nativeSha256": "1b82d79d3bc2008818ccffa10f4d8df4eaf873d462585562f5d55a151923716d",
       "officialSha256": "98dda149d7fc6c1cf12d5e10fab2e62ca715d5851f4552f0b8bbd0efa4304765"
     },
     {
@@ -1124854,9 +1124854,9 @@
       "officialManifestSourceSha256": "17b5641fdaaafc5d2a167c537af1e3c38d0aea46a42d37db4d7e3d398dcf50fe",
       "nativeFile": "visual_kanban_066_native.png",
       "officialFile": "visual_kanban_066_official.png",
-      "nativeBytes": 41502,
+      "nativeBytes": 39319,
       "officialBytes": 36738,
-      "nativeSha256": "765647f1dcc53346d12fec073c3d8953fc575c580b826a6189448fe326891bdd",
+      "nativeSha256": "df4eaea57c8919752c22a7030022daa43b92328de55f589e69eaa508abc0e081",
       "officialSha256": "4a91791f08d571a8abb11bb60bd5c9a669a446fbb605ca0cc7bb814817779971"
     },
     {
@@ -1125040,9 +1125040,9 @@
       "officialManifestSourceSha256": "d75765e028dbebf713878d660832ee20f020098ec8713823349a013594b74bcd",
       "nativeFile": "visual_kanban_067_native.png",
       "officialFile": "visual_kanban_067_official.png",
-      "nativeBytes": 116709,
+      "nativeBytes": 103016,
       "officialBytes": 98919,
-      "nativeSha256": "a596496da5ef15ac17f53b377fbb56d5423aeb4395c02bfa2f4a05328e9169c0",
+      "nativeSha256": "737695fdf1658b02ce208eda45bb820fae435ccbec613c02913972492c086047",
       "officialSha256": "335e85f643799ef5204bfed28d660fc9e638742d99abcca9f4d0bd1dc93b895b"
     },
     {
@@ -1125226,9 +1125226,9 @@
       "officialManifestSourceSha256": "acabf036ed1c43367daf7cc4e5360663e0d8bfbf5ceb4057a12c192b05d63f01",
       "nativeFile": "visual_kanban_068_native.png",
       "officialFile": "visual_kanban_068_official.png",
-      "nativeBytes": 65961,
+      "nativeBytes": 62142,
       "officialBytes": 56910,
-      "nativeSha256": "662848f53a394d1ffe1a3e09d61e58645f6a4cd1ef114d78f9b4ca8db569973e",
+      "nativeSha256": "e7e1947b13356a685196ea08545c4bbc264881387b0884e9fccf5a9aebcadc76",
       "officialSha256": "d05be954b873e532db4cf75a8776038d6f0a5fd573871d6c5082c2d501910f16"
     },
     {
@@ -1125412,9 +1125412,9 @@
       "officialManifestSourceSha256": "35270bb442c5ffff477d7fb1321faa6c89181032fe3fc754f4e78074f5f78a8d",
       "nativeFile": "visual_kanban_069_native.png",
       "officialFile": "visual_kanban_069_official.png",
-      "nativeBytes": 76980,
+      "nativeBytes": 66845,
       "officialBytes": 61633,
-      "nativeSha256": "240d70dd6285943d36dbafc52956c6b9ccd23c39efb42bfa53476045d4e58df3",
+      "nativeSha256": "a391d1b8490f1216fa38943d997de35b18f64777a3e48a409e17005850afde78",
       "officialSha256": "94d7596b51cbc7700268fd39ec7f44ca439d7ec70921792ccbe8ea90a700fb2b"
     },
     {
@@ -1125598,9 +1125598,9 @@
       "officialManifestSourceSha256": "6a6577b7261c449bcd36289ae8d5252c9456e1139a32803fccdd66ea3799e4ae",
       "nativeFile": "visual_kanban_070_native.png",
       "officialFile": "visual_kanban_070_official.png",
-      "nativeBytes": 40929,
+      "nativeBytes": 38842,
       "officialBytes": 36237,
-      "nativeSha256": "400d558523c4785b663963f89a79eb838424b612fdaa4ca2a35134c1ab1283f6",
+      "nativeSha256": "8e624eae1cd0ee59b1c02a7c974fdac18b58f20616563553f5dfbc6cb876ca0d",
       "officialSha256": "dca80ca31b8dd390d4565bbbd0912cf17847f2bf84e0d4582c3b79de1eff19d1"
     },
     {
@@ -1125784,9 +1125784,9 @@
       "officialManifestSourceSha256": "2ff6cad78cad67643b8ab2a98f95594828c7c863e6edea30f3b8c480436c7c03",
       "nativeFile": "visual_kanban_071_native.png",
       "officialFile": "visual_kanban_071_official.png",
-      "nativeBytes": 121666,
+      "nativeBytes": 106821,
       "officialBytes": 101019,
-      "nativeSha256": "8177e15e1abaaf411e5a36207ab190fbbb02310b272728107d1f91dfff9bb3a4",
+      "nativeSha256": "e42c71ef582146052359aeda81b7308872312d96d6ff07faad8f284e3cc6dfe2",
       "officialSha256": "41634cbb26bb5f18007af7c1af701d1bd560ba7cfcb8e13d0818b81303f738d0"
     },
     {
@@ -1125970,9 +1125970,9 @@
       "officialManifestSourceSha256": "c9fffda6248737aabb31faebfac0e0a24b615f1e7523aac007d4f2e0b8917e44",
       "nativeFile": "visual_kanban_072_native.png",
       "officialFile": "visual_kanban_072_official.png",
-      "nativeBytes": 64254,
+      "nativeBytes": 60956,
       "officialBytes": 56067,
-      "nativeSha256": "5e08dd899196cb3859c5c954b63c4891ef1eedbc4975defe4a553f756ca03380",
+      "nativeSha256": "b72a10317e2939ec50cd195232d0815cae00d545c1bc710cb940e2b88d780434",
       "officialSha256": "e4a7076bb3fc87b35bcf5e2aade55a8d0e3c5cc10648a2b75e026b61834ffc59"
     },
     {
@@ -1126156,9 +1126156,9 @@
       "officialManifestSourceSha256": "8fb24dede5409e895baeb1a3961661a9e323be72876938cf5edfd9253a9ade14",
       "nativeFile": "visual_kanban_073_native.png",
       "officialFile": "visual_kanban_073_official.png",
-      "nativeBytes": 70714,
+      "nativeBytes": 60529,
       "officialBytes": 58111,
-      "nativeSha256": "9a02beff5e95c8a6db5ec08f983fdc87ad314802f979f67e1fc2b273546c9dd9",
+      "nativeSha256": "0c4d5ab8e1edc46dc160310eb0d0e63f321a9711c6698cae75f47eefd3f40a4c",
       "officialSha256": "e158241163f86120faf1152ce30591fb9b5811343ec85e87ba8c5c5683935d75"
     },
     {
@@ -1126342,9 +1126342,9 @@
       "officialManifestSourceSha256": "4c41b0ae8217724c18c2a50595b732d609a886f5c41116f1a238736eec4bec1f",
       "nativeFile": "visual_kanban_074_native.png",
       "officialFile": "visual_kanban_074_official.png",
-      "nativeBytes": 40885,
+      "nativeBytes": 38169,
       "officialBytes": 35731,
-      "nativeSha256": "9ea77a846dfa3f0c8aa12029d07b7a25595dd1a8336ad2d66a1a6b86ca3f5c01",
+      "nativeSha256": "fa5386ae05506ebc3eec98802df6d65c72702a2f53eb7f379a142374ba9b7473",
       "officialSha256": "e49fff6b75c15566eeda020385a241a0b5bc92be0bc0d49e83998698e61d78ff"
     },
     {
@@ -1126528,9 +1126528,9 @@
       "officialManifestSourceSha256": "3b283759cd366ed1682a05a64cdc2150b13f90d8299e7d73e13ff219ed591884",
       "nativeFile": "visual_kanban_075_native.png",
       "officialFile": "visual_kanban_075_official.png",
-      "nativeBytes": 120237,
+      "nativeBytes": 107501,
       "officialBytes": 104244,
-      "nativeSha256": "304d30ccf54e02b32ff79a7c7b662e5f0fe259ab7c262b9f3455d3b3e0ff5086",
+      "nativeSha256": "90124c17d25e56fc2cb78727741c39eab52c3e913bd4cfa4c94247018f619985",
       "officialSha256": "70cf288ea1bd82993996b5f56719563d8e40f2f78ee4f6a41fd6d9a785037c1c"
     },
     {
@@ -1126714,9 +1126714,9 @@
       "officialManifestSourceSha256": "f266cb606ee0da01ea3841eae23ac5cf40aaf88d1791de1973562d9107cf24fa",
       "nativeFile": "visual_kanban_076_native.png",
       "officialFile": "visual_kanban_076_official.png",
-      "nativeBytes": 71003,
+      "nativeBytes": 63523,
       "officialBytes": 57315,
-      "nativeSha256": "f4d63927db7408d701d7b116316b10fb6c6b598067035a9bd8f650c05cad87c1",
+      "nativeSha256": "d3d0ca41397ab74817fabb981079cfbfd6673faca551cf52bb9d48783644c819",
       "officialSha256": "8aba15593856606e1995f2eb72fadc62aeeb3aaca78287ab1d695d4a327eb6b8"
     },
     {
@@ -1126900,9 +1126900,9 @@
       "officialManifestSourceSha256": "352bc550f0dcb30a3469e47bdb203762cdad8ac3be589d11e583bb98d91d50a4",
       "nativeFile": "visual_kanban_077_native.png",
       "officialFile": "visual_kanban_077_official.png",
-      "nativeBytes": 76294,
+      "nativeBytes": 66001,
       "officialBytes": 61321,
-      "nativeSha256": "28646802143a2191361b71b324a44b9bba5ea24edcad26dbbfe2e345393c05ff",
+      "nativeSha256": "bf7446c7159da8ba17b04392cf0b789501cf099900c6fa6f19b5dc083d28876c",
       "officialSha256": "c51b6980ae600e4572dcd16ee594393097314bd54dcc9c85227e414c5fb26a90"
     },
     {
@@ -1127086,9 +1127086,9 @@
       "officialManifestSourceSha256": "b6550076f2de1364d3686cfbf177b5c2e45bb0316d61dfe824721d3e709edd91",
       "nativeFile": "visual_kanban_078_native.png",
       "officialFile": "visual_kanban_078_official.png",
-      "nativeBytes": 43160,
+      "nativeBytes": 40372,
       "officialBytes": 37848,
-      "nativeSha256": "31a820b6bb1ce39f36a2c88a95661ccc63e048ef7d23849c15714beba5fbdadf",
+      "nativeSha256": "30b3a4091e42cc4349539dbd3667fb44f250894a5fce978f6958be44146accd4",
       "officialSha256": "d500a1a35c7c421ead2bf6af98715a1062981bf7cd4412a6d98565aed91bcbca"
     },
     {
@@ -1127272,9 +1127272,9 @@
       "officialManifestSourceSha256": "e7545f429118ebbdc1a5bdfbd1dd79ae04a88197daa58888a8d92dd195976a4b",
       "nativeFile": "visual_kanban_079_native.png",
       "officialFile": "visual_kanban_079_official.png",
-      "nativeBytes": 124463,
+      "nativeBytes": 110250,
       "officialBytes": 104820,
-      "nativeSha256": "a2902c691a7e1f7f1bc50423c00de0c50e5c7d6c0b4325df74a1c41088b831a4",
+      "nativeSha256": "ddd1b874f25bc4c7069b3e64fafb67212671a11d8bce29408d8253a28308c66f",
       "officialSha256": "7208494d8581791ee060276ce9a3a12bd4cf4319e531a33b93245f169384285c"
     },
     {
@@ -1127458,9 +1127458,9 @@
       "officialManifestSourceSha256": "6ea6c264f1bff7b7a6f8b9c6a078a8a5b03fb45c9d546e120dc925fb16597ced",
       "nativeFile": "visual_kanban_080_native.png",
       "officialFile": "visual_kanban_080_official.png",
-      "nativeBytes": 65217,
+      "nativeBytes": 61854,
       "officialBytes": 56955,
-      "nativeSha256": "e7ab0595bc769ce617b203d732e1614682ef36a01ba3f5512272f93cb2be222d",
+      "nativeSha256": "9639dcf7e575489b615a2e3c366001bcb898d086de5d2ee91e9519d2e8c576ea",
       "officialSha256": "aaf0673f6a81414ce4bbf03af226b8b22e7c91eaae64df648c9e3e9614be901c"
     },
     {
@@ -1127644,9 +1127644,9 @@
       "officialManifestSourceSha256": "aba2915cd65641a4a051caa13b58f83371564ad8df28b6c9050fe062e4d6564d",
       "nativeFile": "visual_kanban_081_native.png",
       "officialFile": "visual_kanban_081_official.png",
-      "nativeBytes": 94242,
+      "nativeBytes": 87398,
       "officialBytes": 77889,
-      "nativeSha256": "fbc60a15c400a0dd2b21003f7c59a6cb1741d915d23bdb5ada1c8aef32958087",
+      "nativeSha256": "3de766cefc1ee7b74aa957d8bb393f4197e91efbace2a2442c3829e33f6031c8",
       "officialSha256": "0756d8d9973e20060fb7586722adb79bd631b840e7b8a0856b42253966c0b763"
     },
     {
@@ -1127830,9 +1127830,9 @@
       "officialManifestSourceSha256": "3953ad6aa0bd9cbeee198a9d643b57e86757a0d6146c0516255d69042a687834",
       "nativeFile": "visual_kanban_082_native.png",
       "officialFile": "visual_kanban_082_official.png",
-      "nativeBytes": 53193,
+      "nativeBytes": 50626,
       "officialBytes": 46328,
-      "nativeSha256": "12cdac303d2676c2981ad2b22397038d86849efeac4e8a854df1e257b759a90b",
+      "nativeSha256": "2cbf0da21363f4888fad06303fdb1306e33df3caeb0c7b644e496b2eaeb31b41",
       "officialSha256": "5a1f3bd6115efd7106a85e342de73c63067de4c5ef41c627ca91da419a66ac7f"
     },
     {
@@ -1128016,9 +1128016,9 @@
       "officialManifestSourceSha256": "6926f8ef3099c2122a6c46131ed6be1e1e72f52a7affa8ecee3a0f3d4afcfaf4",
       "nativeFile": "visual_kanban_083_native.png",
       "officialFile": "visual_kanban_083_official.png",
-      "nativeBytes": 137096,
+      "nativeBytes": 131692,
       "officialBytes": 100221,
-      "nativeSha256": "a94a619f69b4c64d32a45f15de45bb92dd54d0beecd43adb7758e0091643d07a",
+      "nativeSha256": "857b7e7b490ffce97c3fb0fc4e4558a6b9d6262d9cbbdd283a7c48995bfcfcc3",
       "officialSha256": "a6386ed06167de916f264796dfe4d2d166b615a0500999c3dde14d00400b7ea7"
     },
     {
@@ -1128202,9 +1128202,9 @@
       "officialManifestSourceSha256": "ad9aefacbe5bab810a106fd3185268a450f1b919a5ee0a29c18b58ceb057827d",
       "nativeFile": "visual_kanban_084_native.png",
       "officialFile": "visual_kanban_084_official.png",
-      "nativeBytes": 79391,
+      "nativeBytes": 71306,
       "officialBytes": 64940,
-      "nativeSha256": "6e1c36f0cf578f1a6866f3b9e3d2093852692b1ef8d8336d6220fe98056f824b",
+      "nativeSha256": "d835d8d18f26b668e27d006cd5a683a71eee19ad507330d4bee1b487c499833d",
       "officialSha256": "e28045b5556db51c3e096c6c8c88ae168b872ca8a7a358396f7feec989ecaf90"
     },
     {
@@ -1128388,9 +1128388,9 @@
       "officialManifestSourceSha256": "13e2285888d67d57ae1823423e49a9a9536c182e00940a207a906996258c579c",
       "nativeFile": "visual_kanban_085_native.png",
       "officialFile": "visual_kanban_085_official.png",
-      "nativeBytes": 93348,
+      "nativeBytes": 83791,
       "officialBytes": 75521,
-      "nativeSha256": "3fba044fdef4d66b36467c12a2c16c61cb7f33127b5f5b5c45632b4e61c856ce",
+      "nativeSha256": "e105dc3d54e0d8f42fbaf071bb3c5800c83c14b6ea319cf4be38cb8c274b48fb",
       "officialSha256": "2a0bf018ef18f3c40843843eaa6533ebee6b2cc6944805654b3e03f61195cae7"
     },
     {
@@ -1128574,9 +1128574,9 @@
       "officialManifestSourceSha256": "454bd59459bec99e91da006b55aa1c75700cf84bde5722a9eeb3188fb261b3af",
       "nativeFile": "visual_kanban_086_native.png",
       "officialFile": "visual_kanban_086_official.png",
-      "nativeBytes": 52784,
+      "nativeBytes": 49907,
       "officialBytes": 45522,
-      "nativeSha256": "d259c666ddc1ce76840ed879dde2ac44a63424cf563c93eabc0cb229184ca1aa",
+      "nativeSha256": "0788ca9a829e4a001d11635368f4afb2c4395ed541d019c0d6563477a6be0669",
       "officialSha256": "0214726582dae001d98275b316574c7ffbe569f070ff789fab112f2b93d76c2f"
     },
     {
@@ -1128760,9 +1128760,9 @@
       "officialManifestSourceSha256": "4e82409d01504ebbf647507312e12c0adafedb03ffb9edf0fef9155e40e5accd",
       "nativeFile": "visual_kanban_087_native.png",
       "officialFile": "visual_kanban_087_official.png",
-      "nativeBytes": 132678,
+      "nativeBytes": 126126,
       "officialBytes": 96036,
-      "nativeSha256": "4c29275631fccc9971b748b893595c81786e0a1968f87a77e16e22d861c8c1bb",
+      "nativeSha256": "1fd0cbfb8f4da46e9fabe729f18fd1a87de9c8a9c9eb7b7c11f182329787c9ad",
       "officialSha256": "3007b6aede0ba1da706d158ac3415092c870204d9d9f43614019ca0ac594965b"
     },
     {
@@ -1128946,9 +1128946,9 @@
       "officialManifestSourceSha256": "9980c4a7be027e4abbe580fe1d7875823a80fb8e48a8bd9279980eb1c8251a79",
       "nativeFile": "visual_kanban_088_native.png",
       "officialFile": "visual_kanban_088_official.png",
-      "nativeBytes": 81470,
+      "nativeBytes": 72630,
       "officialBytes": 66105,
-      "nativeSha256": "03db2a37a36dbb6b1343e208d85789b6f1a418adcd16d69d0a6d38c5acd97bcd",
+      "nativeSha256": "b2d1bec6e65930e217d6770e2a14037d6d4822317d1b23dd5bce6c3d663befc9",
       "officialSha256": "d353739e08044061169082501df7069bd0f31f53cf77382b2be18ee9331ea930"
     },
     {
@@ -1129132,9 +1129132,9 @@
       "officialManifestSourceSha256": "7860f449187651fe86418a890d97aef5557cf1d5ca1cdd73d36412dc4b35db76",
       "nativeFile": "visual_kanban_089_native.png",
       "officialFile": "visual_kanban_089_official.png",
-      "nativeBytes": 92915,
+      "nativeBytes": 85577,
       "officialBytes": 77771,
-      "nativeSha256": "821ec4cf612477ed305954f025bb44050c65b4a9670f70aef5bfc09c05f142aa",
+      "nativeSha256": "497cd8be324bf93cf0280bf3ebe63a4861a61e809e8cb5a729e7e588cdf92ac6",
       "officialSha256": "3b61a5c644321bcb985fd02dbe09c14a708dd54d2ae5ad6cba33dfbfd2cec6f5"
     },
     {
@@ -1129318,9 +1129318,9 @@
       "officialManifestSourceSha256": "61646842de0f8d11f9393a1a316b515d0f5b465bea14ef1c4742e6d762cdaea5",
       "nativeFile": "visual_kanban_090_native.png",
       "officialFile": "visual_kanban_090_official.png",
-      "nativeBytes": 50244,
+      "nativeBytes": 46752,
       "officialBytes": 43411,
-      "nativeSha256": "3ae41901bc76ff53a9de2071524f0707e27dce4acb43c87d7b99b9fdb6952c59",
+      "nativeSha256": "2c8724704b2d503a90af3026e49e9c7017d27ebf1726e1ae5f107f405ccd1c52",
       "officialSha256": "be46ff7de001df94c8cf55f687cfe39a87762634624f78e2f24c9d580dcd35fe"
     },
     {
@@ -1129504,9 +1129504,9 @@
       "officialManifestSourceSha256": "624c6ec513e60761cc6a6e1f7c169fcdc423ab78d6f8c335f2a536925084b7b6",
       "nativeFile": "visual_kanban_091_native.png",
       "officialFile": "visual_kanban_091_official.png",
-      "nativeBytes": 137262,
+      "nativeBytes": 129389,
       "officialBytes": 98026,
-      "nativeSha256": "c3fc7f48778e537f4b978eaa5b5fdc7f56a1bcb6ad018c905e99cac52d9f4014",
+      "nativeSha256": "4f231f413fe8b6e080dc6e1db81fe78b06f06d7ad622ca7ec1d377e3c5c0cb8f",
       "officialSha256": "23daf2496bcc0e645123a8455d7ab9b771e961064e23dcc952cc0f4b188c9dc6"
     },
     {
@@ -1129690,9 +1129690,9 @@
       "officialManifestSourceSha256": "16291eee54d47d9205ea3a4747fee9b0929e651f3db8d9647911df9943a586aa",
       "nativeFile": "visual_kanban_092_native.png",
       "officialFile": "visual_kanban_092_official.png",
-      "nativeBytes": 83471,
+      "nativeBytes": 74816,
       "officialBytes": 67459,
-      "nativeSha256": "95ab325203a8d5a72158fda778ef27ecf7a647facf1ce9e6f04f76e2a3b6c1fe",
+      "nativeSha256": "cce6f4ab7869fe264ade7987ead2227b736e1c87b5417b40eb200a912ba79abd",
       "officialSha256": "1dc9356e1e209b18acebd1b764ce5dca6d207cf57c5314b67343c53ef30f4ce9"
     },
     {
@@ -1129876,9 +1129876,9 @@
       "officialManifestSourceSha256": "343e34f81ab189d870baaa09950a4a6bb717cc344afeaff20c03a58d106e967e",
       "nativeFile": "visual_kanban_093_native.png",
       "officialFile": "visual_kanban_093_official.png",
-      "nativeBytes": 103404,
+      "nativeBytes": 87050,
       "officialBytes": 78987,
-      "nativeSha256": "ef20beac9d9891c390dd876fcfa66f9e4fdadb7db7e1a410d0d5d02469fd7e4b",
+      "nativeSha256": "7f02a28c740bdb842892909504b1f27cad21f6a4a8f581e02e36f6e7ca7a09a7",
       "officialSha256": "9738583af52bf25c01b023e4ef9246796c86bfe99f20e860657467448b825af9"
     },
     {
@@ -1130062,9 +1130062,9 @@
       "officialManifestSourceSha256": "53c0b0b6eb990f9601468b3b6c06ce64c60771adb2f428675407b9801901298c",
       "nativeFile": "visual_kanban_094_native.png",
       "officialFile": "visual_kanban_094_official.png",
-      "nativeBytes": 52992,
+      "nativeBytes": 48336,
       "officialBytes": 44520,
-      "nativeSha256": "d9d32137495f723506e6dfe9ac04c01babe0f7f4e1e1eef5797eb9137950da1b",
+      "nativeSha256": "b3ece514b515f1f703229a7160653c9857d95c30118a32c2d6dd26681d823c2a",
       "officialSha256": "02b0128b9837d865b95cda8c171799e34f1a36f31526dec22ba786ea87e64756"
     },
     {
@@ -1130248,9 +1130248,9 @@
       "officialManifestSourceSha256": "b87a2f34b6dc2cebd878a0421315746aa4885fb9cb0fd35706e3f82315a3ace4",
       "nativeFile": "visual_kanban_095_native.png",
       "officialFile": "visual_kanban_095_official.png",
-      "nativeBytes": 139439,
+      "nativeBytes": 131419,
       "officialBytes": 101794,
-      "nativeSha256": "b67c62a4968c18b2024ccb5a9eecc5c24e4f6c363ff90165fab44e7be753e4b1",
+      "nativeSha256": "44a858ff3a6e0b9a73109ee697274cdca0d4bb05971d1c4d7a87e43d2750d168",
       "officialSha256": "a7dba9881d18daccb0083b0c54ff1d2cc5c35b13a9ba5254cad68b9428f25913"
     },
     {
@@ -1130434,9 +1130434,9 @@
       "officialManifestSourceSha256": "1a6616fa0032e58b329aaa10c45289969d5e66beedadf5454ecb42aaa9847f8b",
       "nativeFile": "visual_kanban_096_native.png",
       "officialFile": "visual_kanban_096_official.png",
-      "nativeBytes": 80996,
+      "nativeBytes": 73361,
       "officialBytes": 67103,
-      "nativeSha256": "36a2a8eddfe2224ec68ddf9915e61baf000ff5e4b0355d5c3458179e893382d7",
+      "nativeSha256": "41554e2e44861a9b6b9257ee2acfb86298d00b2652f885b58a6aeb92ce139e35",
       "officialSha256": "30176d6ea6932c92b7e1cd624151f6b18b78c36889b74ce8d624e82a3fa4644b"
     },
     {
@@ -1130620,9 +1130620,9 @@
       "officialManifestSourceSha256": "694bed2eb3754a7e3b2cd40b57640279c046ea64e4abdbf93742c884d781bf32",
       "nativeFile": "visual_kanban_097_native.png",
       "officialFile": "visual_kanban_097_official.png",
-      "nativeBytes": 44150,
+      "nativeBytes": 43330,
       "officialBytes": 37167,
-      "nativeSha256": "62a9a37e04fe5cc0f6a01e30e4b100d65f3b81c25d64cc8ded9a0a34d3685684",
+      "nativeSha256": "f7559ae7995e0d9c973de393332991b1328cbee24b2c74b5abb66174586c1cd6",
       "officialSha256": "cf6ac4282b68cfce4ed65504f80b8b7b2b61a3877316735638758e8f9358cc92"
     },
     {
@@ -1130806,9 +1130806,9 @@
       "officialManifestSourceSha256": "a8b13734a212d612a4fb235fa81c665d60b801591c317367e98afc140bd199f8",
       "nativeFile": "visual_kanban_098_native.png",
       "officialFile": "visual_kanban_098_official.png",
-      "nativeBytes": 38811,
+      "nativeBytes": 36041,
       "officialBytes": 33245,
-      "nativeSha256": "0ff3a6d6fb0f0f267b2981bf259b850abacdbe9db04fa60172052654a86147f1",
+      "nativeSha256": "94784084487e8931306127d69cadef34ceb4da9824ebd84e68a27983d910a6d7",
       "officialSha256": "398f0e22b087308b313e3ffab077e2a49fc545a691cb8ddff6fdc8bd6396e743"
     },
     {
@@ -1130992,9 +1130992,9 @@
       "officialManifestSourceSha256": "3e8d7e459566dcebc125ad0d24ca7c9f44a988285f83a8340bb9cf2905906333",
       "nativeFile": "visual_kanban_099_native.png",
       "officialFile": "visual_kanban_099_official.png",
-      "nativeBytes": 83553,
+      "nativeBytes": 84158,
       "officialBytes": 67417,
-      "nativeSha256": "576ae5fe1a5f95a669bc38072c554b8ed6e46ffb156bfbb6dd4f21b84d9682a9",
+      "nativeSha256": "372ce7f32ca2fc9a13dc854a38a9b51fc0c3446ba823673434a950fe484e1a7a",
       "officialSha256": "e87ae19e7ee49db913468e81617fe83967dbc1570493c57a4dc84ba9cc182079"
     },
     {
@@ -1131178,9 +1131178,9 @@
       "officialManifestSourceSha256": "eb83a9f851107934641f0852903629c09e846f2d5bcc4fa6016e88dc07eebb5d",
       "nativeFile": "visual_kanban_100_native.png",
       "officialFile": "visual_kanban_100_official.png",
-      "nativeBytes": 59528,
+      "nativeBytes": 56280,
       "officialBytes": 48082,
-      "nativeSha256": "3e5400625d0da0ea1ff14b5c438b11ae7f1820ebb636d915e5a4d22e8da13ca7",
+      "nativeSha256": "f9f0e263a08b0d6bf91c26b20392004c06ebbb6a6c97b4afed5ff26548d88e55",
       "officialSha256": "dbf2bf82b11c41abcb85766ca7a88159f3df7064849c4a0e559b593569a53a42"
     },
     {
@@ -1131364,9 +1131364,9 @@
       "officialManifestSourceSha256": "3f24b7ee122840bb6238280e2aebf35bb56aecc1fd8f6932985d681320154532",
       "nativeFile": "visual_kanban_101_native.png",
       "officialFile": "visual_kanban_101_official.png",
-      "nativeBytes": 52909,
+      "nativeBytes": 51937,
       "officialBytes": 42565,
-      "nativeSha256": "5b0aef452c83bb37a205bf5aba63f0d66ef12a790982a958a845fee39e5d1408",
+      "nativeSha256": "ea620bf9e0c81a7947f3fd9e6dc3be26636144945bb6ad1f2c7ad927cae6be08",
       "officialSha256": "49a7fbe2d24706fd67c4b8a9761ff51d6d4803b274b514f988cbeedbc722c8c4"
     },
     {
@@ -1131550,9 +1131550,9 @@
       "officialManifestSourceSha256": "025c8dfe063f0174c36b742fb30e16007c6a9a3f6f54822c864aac1abd5d51f1",
       "nativeFile": "visual_kanban_102_native.png",
       "officialFile": "visual_kanban_102_official.png",
-      "nativeBytes": 40666,
+      "nativeBytes": 38709,
       "officialBytes": 35106,
-      "nativeSha256": "16f972fa1de844af157a8a417c00bdca702da9b81a34bb04f40ea7a0063d1e67",
+      "nativeSha256": "7a6c2c8cd38468bf209304086d738daffa5d9f846902ad18815b099e35817b1c",
       "officialSha256": "709c8de7d7f0a52fb99242f67990e9766ebf0eda05536a2bfdf082cd2d69f825"
     },
     {
@@ -1131736,9 +1131736,9 @@
       "officialManifestSourceSha256": "93d38048cbfebabdb2c4eb5b5a61f02dbcb2d6003b63b347ad1393d9d806940d",
       "nativeFile": "visual_kanban_103_native.png",
       "officialFile": "visual_kanban_103_official.png",
-      "nativeBytes": 85024,
+      "nativeBytes": 84186,
       "officialBytes": 68615,
-      "nativeSha256": "1ae2774394202e15a55f87adf4e3561cbde758bda8562859e79874f59caa0500",
+      "nativeSha256": "4d6c5bdf6297b5e8146589ba159d2af894f68d17e4fea1b5d52a23f12410b50f",
       "officialSha256": "cdfb4efe8c8dd79f2f1043f90aba97796561f41b40c6a510fa02fe1bbbfcf55a"
     },
     {
@@ -1131922,9 +1131922,9 @@
       "officialManifestSourceSha256": "eff128a54dc984d47ad14589a7b26ca09f9f48b3b5ebda88ff0a22511787fe46",
       "nativeFile": "visual_kanban_104_native.png",
       "officialFile": "visual_kanban_104_official.png",
-      "nativeBytes": 63597,
+      "nativeBytes": 59782,
       "officialBytes": 51071,
-      "nativeSha256": "ebf95d37f716b0d9a155507046019a4a7fb24fc6fbf95fbbe1dcfba7f9a4df34",
+      "nativeSha256": "d7fe325b0a2c77fb2db5bad0c3d7f74044489506c4281c99aacd3ec1c83c1437",
       "officialSha256": "fdb1c74cc12677c92430b17bb7e29f3b28f160628e652b0aca890ea156473a7e"
     },
     {
@@ -1132108,9 +1132108,9 @@
       "officialManifestSourceSha256": "ebfd4f35812f9ae6385b325d0d7eb26924c835a69672db2d73789942e38635ec",
       "nativeFile": "visual_kanban_105_native.png",
       "officialFile": "visual_kanban_105_official.png",
-      "nativeBytes": 52144,
+      "nativeBytes": 52363,
       "officialBytes": 43877,
-      "nativeSha256": "f1378d29391e5d8af52723e8ad7f88a493a86414b29422d3bc48cf10c2e0d90d",
+      "nativeSha256": "dc473900368970242d8396ccd01bb7dfbc7c2f1bd5e173429d7c78000eef5df0",
       "officialSha256": "9aa4cc52578eab69c2de88c06c25216aea334a9f395f8aad21c924abf53b3d45"
     },
     {
@@ -1132294,9 +1132294,9 @@
       "officialManifestSourceSha256": "8611cc161c310c63ac3118062479873aaef731065e2a7b17482748db040d7ff8",
       "nativeFile": "visual_kanban_106_native.png",
       "officialFile": "visual_kanban_106_official.png",
-      "nativeBytes": 38101,
+      "nativeBytes": 36348,
       "officialBytes": 33009,
-      "nativeSha256": "0b4d5e00ff0f0e84de91863ce054e2654e622eb3c49330d2a00f116dfe882348",
+      "nativeSha256": "0a4607f48e04fcb3d5c468aef0e6a80c77ad6dbbf8e016f5fdb7895734c88da7",
       "officialSha256": "348353794bd2b5d0b0d8b65b5ac8cc1eb3d4241619f08c444919b9fa36cb660c"
     },
     {
@@ -1132480,9 +1132480,9 @@
       "officialManifestSourceSha256": "d9b2902288775461555568997c3daca28e27f9f7c911dc68c3fc88b7e6173f72",
       "nativeFile": "visual_kanban_107_native.png",
       "officialFile": "visual_kanban_107_official.png",
-      "nativeBytes": 84567,
+      "nativeBytes": 81329,
       "officialBytes": 65412,
-      "nativeSha256": "83cd49601821fe128f705a1381e62c3b8b42d6a068cd43b0c3b050716221292f",
+      "nativeSha256": "e2b9fcbb577b0e4059ed23edf7de5a6988982dc2656bb97585cbdcf13bff9249",
       "officialSha256": "dfbb6c2b2aa2993538637fea4a576d129d9b0f38dd40428cfde3ba559cb3ef2a"
     },
     {
@@ -1132666,9 +1132666,9 @@
       "officialManifestSourceSha256": "114b6ea2275e0c713fad5a558e60dd11f02e426dcd692bd4f66f9cff5d7df097",
       "nativeFile": "visual_kanban_108_native.png",
       "officialFile": "visual_kanban_108_official.png",
-      "nativeBytes": 62913,
+      "nativeBytes": 57567,
       "officialBytes": 50894,
-      "nativeSha256": "d04266dfe11fe774b7d440ae13eaf41709f4efb9511f343b4236b5b6878896a1",
+      "nativeSha256": "26d3423244e73ee24a81874ca12c866754703859dc0c5565e67cce7aa1318b25",
       "officialSha256": "6276e8107dfc585aa1fa058d10c433a44bf93dc4fafacc8a4fbce43207f90b45"
     },
     {
@@ -1132852,9 +1132852,9 @@
       "officialManifestSourceSha256": "3f72a422b2e88c989499d2398b59609ebc80ef40a8023d046ba6e5022327063f",
       "nativeFile": "visual_kanban_109_native.png",
       "officialFile": "visual_kanban_109_official.png",
-      "nativeBytes": 51307,
+      "nativeBytes": 50135,
       "officialBytes": 42751,
-      "nativeSha256": "3fe0779189a8e3b27149be375e7dcbfdc18dad2240362a69acf637a61178c9c7",
+      "nativeSha256": "cdafe8ec1ca63d2da33c7422456927cdc912654ace3d973a34f37a141a7226c6",
       "officialSha256": "5d271fcb3b564ce7da8687f8ec0e606e1e839ea7c12381cc71538a2a5c6f341e"
     },
     {
@@ -1133038,9 +1133038,9 @@
       "officialManifestSourceSha256": "0566bada7caf1980865a4315a88001f14427d34b8e2753e6de7151c827807502",
       "nativeFile": "visual_kanban_110_native.png",
       "officialFile": "visual_kanban_110_official.png",
-      "nativeBytes": 39170,
+      "nativeBytes": 37979,
       "officialBytes": 34109,
-      "nativeSha256": "0439c316a155d977047eedc14b4f3f238e0cf04566d8a358cfa8c709624a16e9",
+      "nativeSha256": "7f1d6a9dd4d3e6b2eef1f0e491fab51d05a493befe8f7481704cb63439900fba",
       "officialSha256": "f41505c840363c1ca97638e42fcc3a431da047dcb2b3a39b46407a13244471f4"
     },
     {
@@ -1133224,9 +1133224,9 @@
       "officialManifestSourceSha256": "009bd52a05d151d7698932d709af18311230389e27597f99f88f16cdc3989a1d",
       "nativeFile": "visual_kanban_111_native.png",
       "officialFile": "visual_kanban_111_official.png",
-      "nativeBytes": 86184,
+      "nativeBytes": 84332,
       "officialBytes": 68377,
-      "nativeSha256": "8f5ce75346763f6f139fa5562da47abd7c3a97b66fc5d164ff1681bb1d3da282",
+      "nativeSha256": "4774e2158c47da9473fbaa176f79362156ed643406d3bf42d9765ca3e5590669",
       "officialSha256": "82096c4b9359380bd8742947b8faa6ef278dab160cb29b29c9142a461c78db3d"
     },
     {
@@ -1133410,9 +1133410,9 @@
       "officialManifestSourceSha256": "8c030e402ac35eae64eafd3bd1eddf3205ba8decc80a0843818d991c03340551",
       "nativeFile": "visual_kanban_112_native.png",
       "officialFile": "visual_kanban_112_official.png",
-      "nativeBytes": 61099,
+      "nativeBytes": 57415,
       "officialBytes": 48570,
-      "nativeSha256": "9fafed15c8fa1f2c9adf05f48bfba140c2c92e1330d90e4cd43172766675c152",
+      "nativeSha256": "bff7bc6dc0e3339a292d60c26cfee10fe063592069961aa96241419a136300c7",
       "officialSha256": "ec6054faa06e13cba559ec6aa4797218b68d22c4d113a5ba0273615bdc71cb2d"
     },
     {
@@ -1133596,10 +1133596,10 @@
       "officialManifestSourceSha256": "50e7c8f8dd9b2573766fdce5d159a424697d5883230579d678a16c5a349434e1",
       "nativeFile": "visual_kanban_113_native.png",
       "officialFile": "visual_kanban_113_official.png",
-      "nativeBytes": 63352,
-      "officialBytes": 52292,
-      "nativeSha256": "cb6d8933cf70990b7f6a640c024215e51de3d94d405d31adc555977188733bfe",
-      "officialSha256": "dcc035e5c0420be97b3e6d4c1d09ff99bb542e8784e7e87f2406d6e9be0a04a9"
+      "nativeBytes": 62976,
+      "officialBytes": 52187,
+      "nativeSha256": "3de7cf795b6ff0b31132131f5ec90877b34ddfe053c78083f2000b586e48e1a2",
+      "officialSha256": "3d2dd1fc481e46bc14b944cb7524fbf5d2b075ce9bacfbef80633809faf27d6b"
     },
     {
       "id": "visual_kanban_114",
@@ -1133782,9 +1133782,9 @@
       "officialManifestSourceSha256": "034c6c1e36385b3eaf39a19ae273998df17d87557252d7ad28ef61ed05375074",
       "nativeFile": "visual_kanban_114_native.png",
       "officialFile": "visual_kanban_114_official.png",
-      "nativeBytes": 43656,
+      "nativeBytes": 41852,
       "officialBytes": 38354,
-      "nativeSha256": "c64e684ed0464ac9cd541cc2aa1543e762a838e9b7465436b544f2ae5073293c",
+      "nativeSha256": "c8501f737e2d1f465d9fbded677969e9d5356b76ba8f7f1f16c6bbb76f9c3b75",
       "officialSha256": "d8595765c59bcc97aa6fc5e15632009a93fcd543a78f637439e31f0525df9c9b"
     },
     {
@@ -1133968,9 +1133968,9 @@
       "officialManifestSourceSha256": "e6b2c77b7832945b13a79444ccd13795c230f710f61844f9ce10b8c334014adb",
       "nativeFile": "visual_kanban_115_native.png",
       "officialFile": "visual_kanban_115_official.png",
-      "nativeBytes": 100691,
+      "nativeBytes": 98180,
       "officialBytes": 78363,
-      "nativeSha256": "c015fa50c2c3ae6a5b7844023d1c2107a6ed9fd083f2e4969ea5116a7c18c526",
+      "nativeSha256": "e834255a467db62d47460176a32cc08ec4cad4b7a1a43971d7ad93bcf07dd739",
       "officialSha256": "e6591f40d18492a2273927754b1031ca6c727cd94a849e984d48346b93843a70"
     },
     {
@@ -1134154,9 +1134154,9 @@
       "officialManifestSourceSha256": "ac56365693d933d37a2db5058cb7dd1661feeb98528720ee629aef545b862f3a",
       "nativeFile": "visual_kanban_116_native.png",
       "officialFile": "visual_kanban_116_official.png",
-      "nativeBytes": 71122,
+      "nativeBytes": 66587,
       "officialBytes": 57080,
-      "nativeSha256": "fe40a51c21cecb9e0fcadb616dcfe69091529dc30520507550608cb95f3d10d1",
+      "nativeSha256": "e70cd97f16fa93ef879d60a7b2fab1f3a70b8078b62830b521ffa3407361b78c",
       "officialSha256": "e6ea178ff0598005d2702a38273440006b285486ccb9dfb8a19ba2276d1702f4"
     },
     {
@@ -1134340,9 +1134340,9 @@
       "officialManifestSourceSha256": "3c52101feef4d58c39f7e7674814fc42f19e3bb9ad102049901b6c80dc07403e",
       "nativeFile": "visual_kanban_117_native.png",
       "officialFile": "visual_kanban_117_official.png",
-      "nativeBytes": 61318,
+      "nativeBytes": 60235,
       "officialBytes": 50194,
-      "nativeSha256": "17e72693bc74fe9aeba1993ea632f6ab181048dae1098e02251998374026c23c",
+      "nativeSha256": "0b6a1b1b26f11fe7ba12f80ae11f02e1e02cc8e01e627c7e5f28dbc560896334",
       "officialSha256": "145186647bd42964174cc804ac90426b85754e0461a0771f6aa8cc6987d7aeba"
     },
     {
@@ -1134526,10 +1134526,10 @@
       "officialManifestSourceSha256": "f77fa74f231c732d9167d1d7c0d09e7653408e0babbe7fc426be6f8883dae54c",
       "nativeFile": "visual_kanban_118_native.png",
       "officialFile": "visual_kanban_118_official.png",
-      "nativeBytes": 43517,
-      "officialBytes": 38119,
-      "nativeSha256": "c85d9df52f0ceae4ad7c046342cc212f02d3ec80afc35b943c7c42f7aed2dd67",
-      "officialSha256": "4e2299406e0445aad45385ee78d16bc9df58ff940d96235ab255a7307331e7f4"
+      "nativeBytes": 42499,
+      "officialBytes": 38130,
+      "nativeSha256": "075dca6448449174b8338691a5d7ef2c8097870a6aa2d3ac125aad1921cbb270",
+      "officialSha256": "5a182abb6fa69213e2b857f934317cd57245580e86d52705993eadb8a860a17a"
     },
     {
       "id": "visual_kanban_119",
@@ -1134712,10 +1134712,10 @@
       "officialManifestSourceSha256": "728ab73315639c9495cd3879563fadd8c6778500f55e0eb65bd27943b8ed332d",
       "nativeFile": "visual_kanban_119_native.png",
       "officialFile": "visual_kanban_119_official.png",
-      "nativeBytes": 101398,
-      "officialBytes": 80094,
-      "nativeSha256": "0e026247c08724f799f401cd604555bfbf89913982650012060a734d686e0051",
-      "officialSha256": "ae7907b082c2f716b160db839d86ef72b326782391b7648b0a5c9fda5a35daa7"
+      "nativeBytes": 96841,
+      "officialBytes": 79989,
+      "nativeSha256": "9254ce38310d25d7fc94eeb0e5e8f1b3b6486f83743e3d6ba0e4d518e7c1fafc",
+      "officialSha256": "b532fd00ea360d3ada09aec120ad5e0d153834741b7860ad10d9fe17623153d2"
     },
     {
       "id": "visual_kanban_120",
@@ -1134898,9 +1134898,9 @@
       "officialManifestSourceSha256": "652807f487fc81052b0859251dc4b9e031e112a5a7a1507d23150c4a9e006f50",
       "nativeFile": "visual_kanban_120_native.png",
       "officialFile": "visual_kanban_120_official.png",
-      "nativeBytes": 67446,
+      "nativeBytes": 63113,
       "officialBytes": 53323,
-      "nativeSha256": "519f073e2c0f8b2a722b7d271d25ade2c653439c51e818b6fa0354248e7b49e4",
+      "nativeSha256": "880a271a3c3d6807823f1c013d8bd3d33198f524c752b0ad8d4ff9599e96dfd7",
       "officialSha256": "a2bd080606d15792cf10da37042080f402a41bd4c9ad6f089b5340d3fd782211"
     },
     {
@@ -1135084,9 +1135084,9 @@
       "officialManifestSourceSha256": "68f4028b851401832766d2365c4b159255dce88a5e0c03cd3eca45c04cb05b9e",
       "nativeFile": "visual_kanban_121_native.png",
       "officialFile": "visual_kanban_121_official.png",
-      "nativeBytes": 64245,
+      "nativeBytes": 63931,
       "officialBytes": 53641,
-      "nativeSha256": "5f9aac7d0643f78e9dd3994bdd9b0e93afe8f962122f748947030bceac1ff47b",
+      "nativeSha256": "722e29137bcca88ab90fa8af0bdb246be25efb259aa4aa421f4b049a7bcca39c",
       "officialSha256": "cd094a7ac4c79f0d1578e8cc2f5cbb941ea1240d36c0f024d604e0097413c7c6"
     },
     {
@@ -1135270,9 +1135270,9 @@
       "officialManifestSourceSha256": "9253af29984bacc81fe6eb97b26a8d5ccfa0b6bbf4f0cb81ff957ec797062b93",
       "nativeFile": "visual_kanban_122_native.png",
       "officialFile": "visual_kanban_122_official.png",
-      "nativeBytes": 45553,
+      "nativeBytes": 43471,
       "officialBytes": 38592,
-      "nativeSha256": "e6db3b35da029bdc2207437820565e6b99dc8d7c2b91094793371c14c1eb0ff1",
+      "nativeSha256": "e091b851a7ce0c5e07be043fd42cf7688edc486b28d9b63b4f0e959e597678da",
       "officialSha256": "f8ff4b3021367998bc30eb6650fa2b0c3089f0f34031330262d5f70f3dd6c17f"
     },
     {
@@ -1135456,9 +1135456,9 @@
       "officialManifestSourceSha256": "24e9fb5a8b8f189b4d81fd8f54c809836d5bb09144decf3375b2056997f335f0",
       "nativeFile": "visual_kanban_123_native.png",
       "officialFile": "visual_kanban_123_official.png",
-      "nativeBytes": 100303,
+      "nativeBytes": 97931,
       "officialBytes": 79047,
-      "nativeSha256": "1c03d8dbc4854ce9f1b7efdc53b54ffd000352f56099076a25ff76c60df8b4ba",
+      "nativeSha256": "fedbddc30e264ddb62d3003d28cb18d4fc3c9c90a6a831d769ac885a06aa989a",
       "officialSha256": "b8e54157c9c978987ecc6c3563c9e1f9e39965ecb3d602f6ef484358ac1bd592"
     },
     {
@@ -1135642,9 +1135642,9 @@
       "officialManifestSourceSha256": "28a9dd6ff7959db4d98b219e66c1d329e2ce8e3ccde5c2144ccecd9dd2941ee3",
       "nativeFile": "visual_kanban_124_native.png",
       "officialFile": "visual_kanban_124_official.png",
-      "nativeBytes": 68354,
+      "nativeBytes": 64125,
       "officialBytes": 54874,
-      "nativeSha256": "20c7616cf8f0f66949261bf1e4ee3e1f68df0ad91d6c885ef6550d969a0da38e",
+      "nativeSha256": "79333801f3d17baa69719bb9e938ebec45bad506bbcc6f794f8d9745757a930f",
       "officialSha256": "df4e3c8ebdfa1149cba868a37250c0f4176325f1e3c5d06434f3fd2caba18315"
     },
     {
@@ -1135828,9 +1135828,9 @@
       "officialManifestSourceSha256": "e473a393f2efbd5c40b615501998670c34abdee06ddd560315bf0db41778e7fb",
       "nativeFile": "visual_kanban_125_native.png",
       "officialFile": "visual_kanban_125_official.png",
-      "nativeBytes": 68340,
+      "nativeBytes": 66564,
       "officialBytes": 57028,
-      "nativeSha256": "65c21a4e51cb895fc202b0b74882b72ab61b7d76cbb54cac4d95ea01440203d3",
+      "nativeSha256": "08f6cae64bbf9184308554b3cb2cb2e63fb8e4485e6bf782eeeaaaa1b9b64469",
       "officialSha256": "52b209892718209ba3384ca14518797ef991077d122155239cee9b6051b1e296"
     },
     {
@@ -1136014,9 +1136014,9 @@
       "officialManifestSourceSha256": "26bc0650e59521fa00b4ad3f9e4fdd616d6e7f1dd4dda089c878ec0744561770",
       "nativeFile": "visual_kanban_126_native.png",
       "officialFile": "visual_kanban_126_official.png",
-      "nativeBytes": 47242,
+      "nativeBytes": 46037,
       "officialBytes": 40413,
-      "nativeSha256": "7ff41692c939bd3538e0bbe766895f982bf8a9ffd6c11c4856168a0e7e294b0b",
+      "nativeSha256": "a3ed8af3f8c1a18f210bc82bc6f28bce2b7b1d7277fe25ae7088ae24a6401f0e",
       "officialSha256": "6687eb76f60174a23d5cf2fb0944a3453e78a4453702377e02d5931fd6255a28"
     },
     {
@@ -1136200,9 +1136200,9 @@
       "officialManifestSourceSha256": "8960c1eea9ec8447114cde99c0fa50c5471c1b4378241b9796d6b43e86f622e1",
       "nativeFile": "visual_kanban_127_native.png",
       "officialFile": "visual_kanban_127_official.png",
-      "nativeBytes": 95976,
+      "nativeBytes": 93708,
       "officialBytes": 77160,
-      "nativeSha256": "acc0fbf1294a8984144a7e083781697c945c74c1d3b4f801af60fe281ef9c7fe",
+      "nativeSha256": "717f9dd0ea25bcc8f5e93e4e9bdd7e58cd3d8887b55b8f1776b6c6acc3d3f0f7",
       "officialSha256": "dfe7133df30b2a52d507e3a1f13e8e077901bbf6731bebf93053fdd184ba43ad"
     },
     {
@@ -1136386,9 +1136386,9 @@
       "officialManifestSourceSha256": "2070c3795cba11439929c9a0a216507e165a6f2ac84e6d31e507ec64a778c24f",
       "nativeFile": "visual_kanban_128_native.png",
       "officialFile": "visual_kanban_128_official.png",
-      "nativeBytes": 69301,
+      "nativeBytes": 64474,
       "officialBytes": 55340,
-      "nativeSha256": "bb3e91e554a33b57336b77a4a1eabee1986e71d4ec3ad430fbbcd1460932776f",
+      "nativeSha256": "bd695feb6eddd3ded830018cb537d6a337154ad5dc1b2f7bbac8e21e682ecb48",
       "officialSha256": "5cf4d91dac19c31fb45f00dfebc6f4dc58a95c2c424616951f8dab93f7e38983"
     },
     {
@@ -1136572,9 +1136572,9 @@
       "officialManifestSourceSha256": "7b94739b80ba45b86d7619b1b68e41563c3f72e87bb7e7f98a94157b8b2e95a6",
       "nativeFile": "visual_kanban_129_native.png",
       "officialFile": "visual_kanban_129_official.png",
-      "nativeBytes": 47110,
+      "nativeBytes": 43407,
       "officialBytes": 41937,
-      "nativeSha256": "9f9d74ab2c12c9f9f2032373c4b2b4b3d0d954111687d624a960074fc782c9a4",
+      "nativeSha256": "7459f98675dc61d332555d556be0d175087a53712cbe6fc8a38305554cdfac1f",
       "officialSha256": "878168e8ec5f80482f0aa888fffb7340c9295b04c9a5d2eba024b2dc060ee395"
     },
     {
@@ -1136758,9 +1136758,9 @@
       "officialManifestSourceSha256": "7e4b5ee04c498c0b8e2bb913ca8f1fcc16117ed414d308e55796bd2875f68b0c",
       "nativeFile": "visual_kanban_130_native.png",
       "officialFile": "visual_kanban_130_official.png",
-      "nativeBytes": 35309,
+      "nativeBytes": 32867,
       "officialBytes": 30501,
-      "nativeSha256": "dff531a81b853634a491bde0402e9534af4165c39eb6e1b6880d99aec7252b24",
+      "nativeSha256": "ee70c2615888f966b6c998b091b86b2aec0359d11f056af809850c216fb203f4",
       "officialSha256": "c7baec77785a2929b9e81e474b3df5a58c244ed577e3464b82b7ec5fdd5c467b"
     },
     {
@@ -1136944,9 +1136944,9 @@
       "officialManifestSourceSha256": "aab6f7f5027f0f32070537692aed3be6ab6d6f451763b75bdd4371bca21bd109",
       "nativeFile": "visual_kanban_131_native.png",
       "officialFile": "visual_kanban_131_official.png",
-      "nativeBytes": 63816,
+      "nativeBytes": 62895,
       "officialBytes": 64308,
-      "nativeSha256": "2429dc0b4551fdac52115269a55785d4efc61685950abb1bfe057ab17989483d",
+      "nativeSha256": "9fc974e01ef085344001b3e4bedc92be79d48ddb57e5736474004cb303f63022",
       "officialSha256": "7c4b295fad6383f20a864efad70cbdb2ac0fca42f038eb0877429951fc0ccdb7"
     },
     {
@@ -1137130,9 +1137130,9 @@
       "officialManifestSourceSha256": "649d9e8ca0674bd6f8051eca15a2588cbb9ab2f34ba2d7c41e821058b25e9b0f",
       "nativeFile": "visual_kanban_132_native.png",
       "officialFile": "visual_kanban_132_official.png",
-      "nativeBytes": 47854,
+      "nativeBytes": 42403,
       "officialBytes": 39145,
-      "nativeSha256": "c5f57c184a46111d2648c012e8532aa095a7810b6400823e4dc4c221593aa6bf",
+      "nativeSha256": "3969fbfad81c619959b46318b68bada5a67896cbd39b462f879fe19276f7a304",
       "officialSha256": "51183af9de1decab9777d856518f161118456597607086fa8ab22e0ff4f9fbc8"
     },
     {
@@ -1137316,9 +1137316,9 @@
       "officialManifestSourceSha256": "8887f2676fab2179832d7a1e3106ae507497a19d4fb9f349c5081ade9d9b8045",
       "nativeFile": "visual_kanban_133_native.png",
       "officialFile": "visual_kanban_133_official.png",
-      "nativeBytes": 48213,
+      "nativeBytes": 43236,
       "officialBytes": 42360,
-      "nativeSha256": "9971cffdbf022091dbbd05e70d907c1faeafb2499020d32419246d6b9f8c6a36",
+      "nativeSha256": "5179c773c818b8573063436ef7dff7b71551379197ee4882e44539f73d1085a8",
       "officialSha256": "999efc0ef36aebaa74ec47480c27e7c6d167c103faa920286a5c28708088dc21"
     },
     {
@@ -1137502,9 +1137502,9 @@
       "officialManifestSourceSha256": "6b63c97444b94403ea19f4650c8639768dba1e424fa42bfec14eb38ae580c046",
       "nativeFile": "visual_kanban_134_native.png",
       "officialFile": "visual_kanban_134_official.png",
-      "nativeBytes": 34072,
+      "nativeBytes": 31091,
       "officialBytes": 28879,
-      "nativeSha256": "f030447aa78c906d2dbb9fbcb8b77a5ff3d720c322a58125d1ddf58bfe889fc9",
+      "nativeSha256": "f63372726e3d25d2a2874a249b92329afe65b59f2eecd2e592dbb75cfbaac43c",
       "officialSha256": "dcc3e9f97345a75938005424f38f4ad494be944ca8c6b454b3949e22e3c885b4"
     },
     {
@@ -1137688,9 +1137688,9 @@
       "officialManifestSourceSha256": "737c7fa25e108a5454ca3134e46e73063336c3bcb1e9e20c86fbe28c9eabc3ad",
       "nativeFile": "visual_kanban_135_native.png",
       "officialFile": "visual_kanban_135_official.png",
-      "nativeBytes": 76446,
+      "nativeBytes": 71152,
       "officialBytes": 70532,
-      "nativeSha256": "9a18833202c789179f68f5fee95ab2c2e060ea12f84596d74f0eed80789e798e",
+      "nativeSha256": "b845a573e1f5200d8178af83b95e49a80bb7975700db6fa2ddd0db7750204ad2",
       "officialSha256": "d67255ee4ee4733159c59ad8488c7b1b46d95e143863432a460620542764075a"
     },
     {
@@ -1137874,9 +1137874,9 @@
       "officialManifestSourceSha256": "bb77fadcb7a11841697ab29e29f8caa618b20a69c1f91767ed7633a0e5de7351",
       "nativeFile": "visual_kanban_136_native.png",
       "officialFile": "visual_kanban_136_official.png",
-      "nativeBytes": 47400,
+      "nativeBytes": 41855,
       "officialBytes": 38872,
-      "nativeSha256": "d9a635033032e17695bf97851d6a71bfc13724f4365642993a3c897c015c3d89",
+      "nativeSha256": "ddd5a0bdb7a35f85c2e6a5464a2c87df9f861caa28c4feed96b229485c595450",
       "officialSha256": "5154f0394b61da522942dbbfedd41a53f5e3f3cc342a051f5b0a609e3c647d2a"
     },
     {
@@ -1138060,9 +1138060,9 @@
       "officialManifestSourceSha256": "91dc2b49d1db35a48bcce84299139834df4b7ec03ffccd3639fbcc60f7173e25",
       "nativeFile": "visual_kanban_137_native.png",
       "officialFile": "visual_kanban_137_official.png",
-      "nativeBytes": 46513,
+      "nativeBytes": 46741,
       "officialBytes": 44470,
-      "nativeSha256": "8f6792d8921392073d09c5328c794e4f8a2dcfdc4537a8972d1efbc54e1e4225",
+      "nativeSha256": "17605f192cbb783c68eb5fe7d5d38c0e4d29a4367bd59b546db523a03993fbdf",
       "officialSha256": "8fff50f06ad0201b2d5d7c3cca7e0a96eb161b1fbe6fb807911b7a7b810490bc"
     },
     {
@@ -1138246,9 +1138246,9 @@
       "officialManifestSourceSha256": "d7ca5118e098236578f3ad9492d3a168cd98eb02d6d2452b5885578a7e2c8135",
       "nativeFile": "visual_kanban_138_native.png",
       "officialFile": "visual_kanban_138_official.png",
-      "nativeBytes": 32065,
+      "nativeBytes": 29338,
       "officialBytes": 27514,
-      "nativeSha256": "2cd61dcc148c02fca1d4869ec9818f003ce010dc059e263ca604b140437b3ad9",
+      "nativeSha256": "2dcaa4275835a8d07cfaf9e13c9735bb3f64ab165bd0bd652b9e315924005bed",
       "officialSha256": "64cf60795d9a879262a8c2e9c63ddbb4885e007674cb3ef7dd97ce7722e8a603"
     },
     {
@@ -1138432,9 +1138432,9 @@
       "officialManifestSourceSha256": "dae61cb9f5c0153e2910d27057a2284fdc3a1af56b3ce50391320a9489b8b46f",
       "nativeFile": "visual_kanban_139_native.png",
       "officialFile": "visual_kanban_139_official.png",
-      "nativeBytes": 65570,
+      "nativeBytes": 65104,
       "officialBytes": 63337,
-      "nativeSha256": "fa641a2ae7f91800981ab067af9efa94bb0cae9d586cf8ad2743fc6501c8abf8",
+      "nativeSha256": "7e08978df78ca8d68fccd5e383e9c92a973fdc43fa7d06d1730dd31c9d6656f9",
       "officialSha256": "2ede6506a348bd1127bc2007e3a848f8c5f83777109200326d4ea1c769185809"
     },
     {
@@ -1138618,9 +1138618,9 @@
       "officialManifestSourceSha256": "eeecf838401d2b4e6e50695a058489098b61f62f50fc7f3c9b34bd14ebbff164",
       "nativeFile": "visual_kanban_140_native.png",
       "officialFile": "visual_kanban_140_official.png",
-      "nativeBytes": 47529,
+      "nativeBytes": 44433,
       "officialBytes": 40987,
-      "nativeSha256": "274fefdf9320564633e5c2816db8362cb1cf5575d3bcc8b847a472c2917a17ca",
+      "nativeSha256": "8c222431e8b699b49b1908ad2ecbc9e8b18f6cc36bcef1d617432af91fbc88c1",
       "officialSha256": "2dd1bcaa060d886cca4d9e5ef1946b7fe0c908cf2fd8d04358b13533538e0936"
     },
     {
@@ -1138804,9 +1138804,9 @@
       "officialManifestSourceSha256": "d487fe7fa8a085e0007f8a0d2be4fd60a1e6f7d9c90fd9ad4b06b7e8ed6a1aad",
       "nativeFile": "visual_kanban_141_native.png",
       "officialFile": "visual_kanban_141_official.png",
-      "nativeBytes": 46775,
+      "nativeBytes": 40510,
       "officialBytes": 39059,
-      "nativeSha256": "080f36e684185e8a3c8a04f395362ebdf74aa3f0eab3613d1b9403980038454f",
+      "nativeSha256": "ed9809873e62d6deb049bd20bd08c4f5198b4dffa1b1f7ebb9f7d83ba9c9d202",
       "officialSha256": "aa358a09fa8d920279be2b50ef84e7a2c1b9d8c8fb9ec723638bb4df295eef77"
     },
     {
@@ -1138990,9 +1138990,9 @@
       "officialManifestSourceSha256": "0002db21b4eac065b5780f4093fd8f7593bf020753f63555fe36abff8b50e9be",
       "nativeFile": "visual_kanban_142_native.png",
       "officialFile": "visual_kanban_142_official.png",
-      "nativeBytes": 30434,
+      "nativeBytes": 28506,
       "officialBytes": 27027,
-      "nativeSha256": "5ae962a16887de801986b38e5cd97b6ccd78614cd981ccdcfeca320316b1585d",
+      "nativeSha256": "39de55e41f14e234ba70a3655c169fc04424a4ed4ad2d688bb68cc931ea545c5",
       "officialSha256": "f69518ab49048cde7efcb553bc931dab4ac25f3109e0eda17334a9208360fa93"
     },
     {
@@ -1139176,9 +1139176,9 @@
       "officialManifestSourceSha256": "f8561412802c8246879fb7fd69780b5ea8041ea43d27a785b52cd537dc4586a6",
       "nativeFile": "visual_kanban_143_native.png",
       "officialFile": "visual_kanban_143_official.png",
-      "nativeBytes": 65742,
+      "nativeBytes": 63134,
       "officialBytes": 65108,
-      "nativeSha256": "b316a8961c883499a0b69de892bc050223a789009481af8744cae31cbc43c6a4",
+      "nativeSha256": "285d4c89864fc57159022a9c056803f602a7256ca645c4de8fa643cbb89f39f3",
       "officialSha256": "255dd732c02fd02ab908b781a11926e918d45bb43ed940a3ae49b512f9a7581a"
     },
     {
@@ -1139362,9 +1139362,9 @@
       "officialManifestSourceSha256": "5dc71ac6673c7550dc8524cc123a6ceeefaa535f57cbdcd6f6ce02d4e40cdcf5",
       "nativeFile": "visual_kanban_144_native.png",
       "officialFile": "visual_kanban_144_official.png",
-      "nativeBytes": 46823,
+      "nativeBytes": 43696,
       "officialBytes": 40131,
-      "nativeSha256": "3f17df6187cb085ea3bd69d29342ef2e1391973bea15965f38f48b8574484ca3",
+      "nativeSha256": "a7a0b58923c19f1004cbfc1b00174a8868c5721bc9d5348fddadcfa852f33876",
       "officialSha256": "5266611a64782009b57b285df7e1b0ad5b247c0f9a57ab2e36a534e78b25c9a7"
     },
     {
@@ -1139548,9 +1139548,9 @@
       "officialManifestSourceSha256": "9cbaf3fe5c7faf42d8f700eed9ec715efe633db659424c63d3947c41f8722d6c",
       "nativeFile": "visual_kanban_145_native.png",
       "officialFile": "visual_kanban_145_official.png",
-      "nativeBytes": 62811,
+      "nativeBytes": 60349,
       "officialBytes": 51793,
-      "nativeSha256": "54b77d132ffe065a68ac88d2f6ef8751093b3cbf41494596a6118df026b0a037",
+      "nativeSha256": "7bf1465178f6b3e8049a021c997cc3da095220a1fae2f3b2bd189d90a918146d",
       "officialSha256": "00c6b72b9877d7d181075439db17cedc93a45145b2a83da76198644f0f98cbdf"
     },
     {
@@ -1139734,9 +1139734,9 @@
       "officialManifestSourceSha256": "42a7385a7386908309cbbdef2aa910b90e94bdef55602b5b25a223ecf0d5d9ab",
       "nativeFile": "visual_kanban_146_native.png",
       "officialFile": "visual_kanban_146_official.png",
-      "nativeBytes": 35843,
+      "nativeBytes": 34616,
       "officialBytes": 31324,
-      "nativeSha256": "fe370e53ebbc900fd42809258f347876ee3d75a9ee36da87d2e3a180e20ca76b",
+      "nativeSha256": "b5ce886558682e9e41b7abeb949c4bc20e93bd15e2ee57ab813f41a0e9c6820b",
       "officialSha256": "621487c788aa6a579e2775cbc4c5e67640db5157db5dee878d04205fb0925a55"
     },
     {
@@ -1139920,9 +1139920,9 @@
       "officialManifestSourceSha256": "b86ce8bb965145b332cc4c359cb6910d32f62a57158cca74f0a09c74f468f15f",
       "nativeFile": "visual_kanban_147_native.png",
       "officialFile": "visual_kanban_147_official.png",
-      "nativeBytes": 75890,
+      "nativeBytes": 73696,
       "officialBytes": 64017,
-      "nativeSha256": "484cba7aa60334f2ee029864943efb8477d981ade17e634168943d2d2092142d",
+      "nativeSha256": "820f448c0edc59862a00cda9553b38071f25aae823dd27e20e9b2f74c5b2ce53",
       "officialSha256": "0a48b205249cb549bee20ef0fa8183795af7eb21cc3640e0e651197b3ae61e0e"
     },
     {
@@ -1140106,9 +1140106,9 @@
       "officialManifestSourceSha256": "d0694adba69f8206aa39cd9aa005724aa1c3507124bdc308f59f6217d8a41887",
       "nativeFile": "visual_kanban_148_native.png",
       "officialFile": "visual_kanban_148_official.png",
-      "nativeBytes": 51391,
+      "nativeBytes": 47529,
       "officialBytes": 42231,
-      "nativeSha256": "35701498640833d178f244424a89cdf62d391d28401a0f41bb5e3499b27453b7",
+      "nativeSha256": "6824db2fa165035c4dccb80c0f9437b94e7ec2977d9682200c9bec366345eb61",
       "officialSha256": "4a8a8c4e59926b3c45514ceb098fee9ac26f48aa85dc56279e2ae4a92c6938e8"
     },
     {
@@ -1140292,9 +1140292,9 @@
       "officialManifestSourceSha256": "bd79c871f1ea1c23b8cddd54379e38cd142f9f2f819001432d963522867a5aea",
       "nativeFile": "visual_kanban_149_native.png",
       "officialFile": "visual_kanban_149_official.png",
-      "nativeBytes": 60226,
+      "nativeBytes": 60135,
       "officialBytes": 50746,
-      "nativeSha256": "1da92e1c14a83b3cadc36f1bcf0db612ad4c2c7472906477824dee1c33910df6",
+      "nativeSha256": "598bd437152db0170ceb5e6444b4e73f31cc65c40475099abbc82fc649b3bbdc",
       "officialSha256": "e4203f58e1b738fca95d83a2848fcc3459b83f64af9fac2b530bc733b75766c7"
     },
     {
@@ -1140478,9 +1140478,9 @@
       "officialManifestSourceSha256": "f2cd534a773ce7cd663ecaa586940e0d9b3cf907b65be977b4f7b8eaa6469bf4",
       "nativeFile": "visual_kanban_150_native.png",
       "officialFile": "visual_kanban_150_official.png",
-      "nativeBytes": 38064,
+      "nativeBytes": 36865,
       "officialBytes": 33163,
-      "nativeSha256": "9b63a17c70c4a89878706e7d858c3797ce03a6657db27984e558b834bbeef9a3",
+      "nativeSha256": "3a530e776aa96dc284bfedd546c03155717de8b3491f67b6e5bc6c77589f711e",
       "officialSha256": "53821bdfb67b8baa66f887053edb5f0c2ce576578b28b89517b254ae28fbc993"
     },
     {
@@ -1140664,9 +1140664,9 @@
       "officialManifestSourceSha256": "a798f3a02c30b28ffd9d52692de9460bda28b121ccc17a8c9a9b77899f49be90",
       "nativeFile": "visual_kanban_151_native.png",
       "officialFile": "visual_kanban_151_official.png",
-      "nativeBytes": 80064,
+      "nativeBytes": 77632,
       "officialBytes": 65516,
-      "nativeSha256": "f0390a0297450951a32b85acbadcd9a10770a53e4328ec796f32785f01f8342d",
+      "nativeSha256": "6bfc0d31f5b5f955eff7de16ae25d677e752e57b20b9e1a0695ad5830b0b1914",
       "officialSha256": "c424b8b0405fcb4d4d5312e53263387a0e8eec33e6e80b53752a1d3981338c3d"
     },
     {
@@ -1140850,9 +1140850,9 @@
       "officialManifestSourceSha256": "4e1089262e82312d3192d0fc4d2755ed224cb2521b124f7a457308a5d6beabd1",
       "nativeFile": "visual_kanban_152_native.png",
       "officialFile": "visual_kanban_152_official.png",
-      "nativeBytes": 50329,
+      "nativeBytes": 46242,
       "officialBytes": 40193,
-      "nativeSha256": "1a2f44583e222ad717350fe8e58c6c47dc6e4d8d13b5b3f42aa544f8cce90dfc",
+      "nativeSha256": "823a5ae8a424bfb801187fc75c904fb7ecb49ffc900cd6a2a722afc1f1b8c152",
       "officialSha256": "02c682206ea0a879318f330617eba4dde8bf44e68f3c9cc8dbfa86ff121d007d"
     },
     {
@@ -1141036,9 +1141036,9 @@
       "officialManifestSourceSha256": "52a2109dc6c150fab4ad1fbd69c7e1cbd79f3c95f8599fff0d28b7642125f4d8",
       "nativeFile": "visual_kanban_153_native.png",
       "officialFile": "visual_kanban_153_official.png",
-      "nativeBytes": 60680,
+      "nativeBytes": 57335,
       "officialBytes": 48492,
-      "nativeSha256": "f98aac85a5e1968f66e5de3c9358e9b141a5b66d395866307ceb4b85b40dfc3c",
+      "nativeSha256": "f84ea291352b619be0bc43229353f17d8cc3d82a004331adb466431f78d362d0",
       "officialSha256": "d67e96d8f560174c0f56682c4ca877c6331366521f0728ff5e47b6905d4ed882"
     },
     {
@@ -1141222,9 +1141222,9 @@
       "officialManifestSourceSha256": "da4b153ce658bc5945f7decf1d2ac4fbc5ddc1469278ce3d09ed3d95e23c37f3",
       "nativeFile": "visual_kanban_154_native.png",
       "officialFile": "visual_kanban_154_official.png",
-      "nativeBytes": 36246,
+      "nativeBytes": 34023,
       "officialBytes": 31051,
-      "nativeSha256": "bf045f14bef2d92d30ccec282d96d2b52ef48ce3e741ddc48b2efd5b8d5070d7",
+      "nativeSha256": "0cac01a01cc1f49d702f4944dbaccbf307efd1cdc35624fdf03f792106b4c375",
       "officialSha256": "61ffc16334d915f49aaf0de2299480916119dfdb34f6869fd0142fb6b287c8b8"
     },
     {
@@ -1141408,9 +1141408,9 @@
       "officialManifestSourceSha256": "9658017968d12a10c1a8369a9b31556d21ea23cfaddc377ea3c17f2ab52d9d67",
       "nativeFile": "visual_kanban_155_native.png",
       "officialFile": "visual_kanban_155_official.png",
-      "nativeBytes": 77547,
+      "nativeBytes": 76455,
       "officialBytes": 63724,
-      "nativeSha256": "166ef1a55376db181b98facf03ddedeec2f457c5a2daea2612d666b10c467fdf",
+      "nativeSha256": "affcb3a93d67219625832f7614fd6fd730be2e58f8b66cd548f7a49609fb5e58",
       "officialSha256": "73d1288329ee65f3c93f8e29655e9a268aa33b3e88181e29e7167e186d9ac3c1"
     },
     {
@@ -1141594,9 +1141594,9 @@
       "officialManifestSourceSha256": "72ce64c12ab6997e151876c70cc9fecd7ce48e49c0639e23e04a937d20f52845",
       "nativeFile": "visual_kanban_156_native.png",
       "officialFile": "visual_kanban_156_official.png",
-      "nativeBytes": 54002,
+      "nativeBytes": 50251,
       "officialBytes": 43755,
-      "nativeSha256": "0ecffe34d84bbb3c9041466b39506fe13965b5975654df17c7072a1c90c353f4",
+      "nativeSha256": "1408fc101df70ebfeacf379be6cd638b0cb115be68f46228c6047cfa57948525",
       "officialSha256": "ada0684094de39c2722719fc2f5965aadf1fdd8fc649ba520f6827d24bb84773"
     },
     {
@@ -1141780,9 +1141780,9 @@
       "officialManifestSourceSha256": "8771983a514e3db5fff28b8c0e072bed4b9db649c8386c5765574526b8d8cb56",
       "nativeFile": "visual_kanban_157_native.png",
       "officialFile": "visual_kanban_157_official.png",
-      "nativeBytes": 61439,
+      "nativeBytes": 57186,
       "officialBytes": 49499,
-      "nativeSha256": "921c047106f9f49cfecaa57a5f8a81878c16625563df85318bf87b7fe7b9c15c",
+      "nativeSha256": "39032096569cf36376aede5d833d2b682e6447c95d3a241419760ff2b74be969",
       "officialSha256": "9d43a757aeee70d7b687f9482a33aba6b689f3483b91d9add379932a936bf9e0"
     },
     {
@@ -1141966,9 +1141966,9 @@
       "officialManifestSourceSha256": "0a77e4f4a36976b4dc4008d229961b51aea28e7f3d3b824b4cc38a804ecd9a47",
       "nativeFile": "visual_kanban_158_native.png",
       "officialFile": "visual_kanban_158_official.png",
-      "nativeBytes": 38770,
+      "nativeBytes": 37129,
       "officialBytes": 32950,
-      "nativeSha256": "b85239de8d1102a1d565fbad338b33daad1a0787a9947af5a8b62f2722df25b0",
+      "nativeSha256": "f2c228d8e4abaf39dc76ddf5ee119e9f936119d0fefe37f412f35feb1b7be90e",
       "officialSha256": "97f7adbc96e34317ade624a5a76cfa72eab9f27f9eb4ed6ae99a858696aa9405"
     },
     {
@@ -1142152,9 +1142152,9 @@
       "officialManifestSourceSha256": "60946a00a5232e5373b55f0a4dce32dc74d510d308fdb998b82d82e24198dfb9",
       "nativeFile": "visual_kanban_159_native.png",
       "officialFile": "visual_kanban_159_official.png",
-      "nativeBytes": 82165,
+      "nativeBytes": 81921,
       "officialBytes": 69151,
-      "nativeSha256": "cff14c48f0876e1b67b33a9ed295d22f4b18caa5be34a99662a066d67f3c49cd",
+      "nativeSha256": "9f131f9ae55f06e11361983a3a407d86cc8925bacef072167c19242d24829ad5",
       "officialSha256": "343219c063e925baabb74c7849a2688712b6f5850148288c9c28d3c7c3f203f2"
     },
     {
@@ -1142338,9 +1142338,9 @@
       "officialManifestSourceSha256": "8e06d8073ed17b1db200c0af6cfcd78ea8b95738112ab0b9d2ddc86f5b3e0a2a",
       "nativeFile": "visual_kanban_160_native.png",
       "officialFile": "visual_kanban_160_official.png",
-      "nativeBytes": 52822,
+      "nativeBytes": 51777,
       "officialBytes": 44273,
-      "nativeSha256": "9b85e389b9265a8c1b369a8373b6ff1f41496bae4d044cc179ee65d22de4e20e",
+      "nativeSha256": "459d88a85bc44324c4a6d81f2722ebb0ffe9f32cbe6902478e741541a45556b1",
       "officialSha256": "154751048da75be94a8cbc079cf77a73c3d82b56c9b0f8296e0f1b09f18859ac"
     },
     {
@@ -1142524,9 +1142524,9 @@
       "officialManifestSourceSha256": "4697b3d8250188870789e3d529a9844aaf38aa910acd314c7adade0491622efd",
       "nativeFile": "visual_kanban_161_native.png",
       "officialFile": "visual_kanban_161_official.png",
-      "nativeBytes": 39731,
+      "nativeBytes": 39841,
       "officialBytes": 36387,
-      "nativeSha256": "c830a0fc09e0e5aae64e5050cb26f5b0a2245d71bef156f10a9f445804db9c5a",
+      "nativeSha256": "aa44f4e5a9c109c2bfc1ab4db534b0af2726ff78a87f63e4906c15c3c4c0e4a4",
       "officialSha256": "c43b98f155c6c3a00682afe3556b6d1d2fc2937f33e69d717e1a02cb3fab283a"
     },
     {
@@ -1142710,9 +1142710,9 @@
       "officialManifestSourceSha256": "b699d5478b42d6a8c41fdc82b69c633c10f4f424bd937d3e0c3fa19283386734",
       "nativeFile": "visual_kanban_162_native.png",
       "officialFile": "visual_kanban_162_official.png",
-      "nativeBytes": 34938,
+      "nativeBytes": 33190,
       "officialBytes": 29243,
-      "nativeSha256": "fe9da0c97d21b78afd1b452a7962de4ca4c4abc8a35b5f4e43063a99e5c59146",
+      "nativeSha256": "506fcabcac78406c7f551b17ea31fdbbef9701dad0043d8ddb89e12f0d0d2aa4",
       "officialSha256": "df100030636c71ecc334861d668f4e30d0e47a48ba46c85c174466de701e19a9"
     },
     {
@@ -1142896,9 +1142896,9 @@
       "officialManifestSourceSha256": "075c7edddb63f596ffd7327cb43e67515641a72fec0786bd3e39ecfb6a875724",
       "nativeFile": "visual_kanban_163_native.png",
       "officialFile": "visual_kanban_163_official.png",
-      "nativeBytes": 58402,
+      "nativeBytes": 58597,
       "officialBytes": 50965,
-      "nativeSha256": "cdbc7bf08cba9fe16b2c1c87d90e71cb1db2e76722fa230e607d90ea5b889fbf",
+      "nativeSha256": "7f6bcfb92862283c3a9af1dfbcc87cf8ac6a6309151f437e029eb26316b4b039",
       "officialSha256": "cd2b1eef9d35b56ca01c78b8cc5a68b2a9165ecee250a251ee313a43e1f56e16"
     },
     {
@@ -1143082,9 +1143082,9 @@
       "officialManifestSourceSha256": "0384e9324420db26a4432e20e2f39b0829e8f9a7008aea8ac0fefd52d4a35272",
       "nativeFile": "visual_kanban_164_native.png",
       "officialFile": "visual_kanban_164_official.png",
-      "nativeBytes": 47152,
+      "nativeBytes": 46139,
       "officialBytes": 38837,
-      "nativeSha256": "4335800cbe7923d94d5c4c3af5727d185a6950a1fc79820aa09b1f8a85de2fcd",
+      "nativeSha256": "5cd760c67a752e3e4851bcc26457977fa7374c3ed005cc4ea996a5a663d03f0d",
       "officialSha256": "f5a02c2a421d76b789c25a1a7d784d051c6c9c5a5014c61dd8caeb71e7f359a7"
     },
     {
@@ -1143268,9 +1143268,9 @@
       "officialManifestSourceSha256": "1a5214d0f3abcb3f86fee3e0efedd359869216309476f0dc3a90e3f804ec36a3",
       "nativeFile": "visual_kanban_165_native.png",
       "officialFile": "visual_kanban_165_official.png",
-      "nativeBytes": 41984,
+      "nativeBytes": 42909,
       "officialBytes": 38078,
-      "nativeSha256": "bbd42fed34f092c3627436937eee699c2e651f55a0a01361ad20c777f9690eec",
+      "nativeSha256": "79d4376cc2632c17c610d639d0a609530844e3918f24ac2d61864689b7a0b328",
       "officialSha256": "4da5eb0caec31e85751f76801a9f44444623fd9b09aacfffcb9f406f78acfc9e"
     },
     {
@@ -1143454,9 +1143454,9 @@
       "officialManifestSourceSha256": "ce536f275368e7af91c6d50d977de7b470c979e500626d330ad2dfbef5c15342",
       "nativeFile": "visual_kanban_166_native.png",
       "officialFile": "visual_kanban_166_official.png",
-      "nativeBytes": 33045,
+      "nativeBytes": 33500,
       "officialBytes": 30416,
-      "nativeSha256": "85e995865e02a792d1bfe5e4b8dd7afafac0458da1cd8f619838b7c1f72532c5",
+      "nativeSha256": "ad09658b0324f2a065a099243bfd2176c4297eb1ad4e84ccd890d1f5eb6c146c",
       "officialSha256": "8f5f9894ae350b2c242df7c69facdcf83cb69be64c5dac07ef97d2249ae9f8d4"
     },
     {
@@ -1143640,9 +1143640,9 @@
       "officialManifestSourceSha256": "5bc58855cff82eb97ca6945230b49034af1f162581de621a22a6a3444ffe65db",
       "nativeFile": "visual_kanban_167_native.png",
       "officialFile": "visual_kanban_167_official.png",
-      "nativeBytes": 63668,
+      "nativeBytes": 63536,
       "officialBytes": 53267,
-      "nativeSha256": "a476491a383ea2ff355bf78d79a3ba5c5c6b7f5347e9146520e8c9db75281abf",
+      "nativeSha256": "8f7370a061e154318fa0c3d0704ae65afba6613a2f49b1cb039632aae8dee3a6",
       "officialSha256": "1c7ce0f3661ae1692b43477ed85301c306c24d18fb7f9035409837d362f62047"
     },
     {
@@ -1143826,9 +1143826,9 @@
       "officialManifestSourceSha256": "2c0c46626bef90e3a948a1afd4972ef86530bf6fef95edaa5e3941ce29bdbb74",
       "nativeFile": "visual_kanban_168_native.png",
       "officialFile": "visual_kanban_168_official.png",
-      "nativeBytes": 50593,
+      "nativeBytes": 48991,
       "officialBytes": 41689,
-      "nativeSha256": "5e4696f1b6cf2ee549acd6f36e9a0a943e8a1190e1b5cbd75fdbde1e7fc37709",
+      "nativeSha256": "e9e63e83583350378cbad821618a808f68553f4383357431a6ee0517459d8569",
       "officialSha256": "4295e031fb604b62dce4919cac6669667d7833e936ddd4fdea6e069dbb9af8dd"
     },
     {
@@ -1144012,9 +1144012,9 @@
       "officialManifestSourceSha256": "d65ae8d60afbeec6f6dd1ee268478c99e921f24afb5ab093ab47df238ae00a11",
       "nativeFile": "visual_kanban_169_native.png",
       "officialFile": "visual_kanban_169_official.png",
-      "nativeBytes": 39329,
+      "nativeBytes": 40368,
       "officialBytes": 37435,
-      "nativeSha256": "d733519520aaf18dcd0b830c8679ee6bfb766cefc178719afcf0a8763738b98e",
+      "nativeSha256": "889a6fbe2cdf0e16701922f9936a17dd04f9e8cb6e15e7e208417db3aa39c6c0",
       "officialSha256": "bbebc966776c6eeb3dbea614931a00bb585740eab3e22261a0bebe413ef1c797"
     },
     {
@@ -1144198,9 +1144198,9 @@
       "officialManifestSourceSha256": "7142bbe08b6112550904b696c18d15c4b24f7bbe85a1c6ebe98ea78f6545ef17",
       "nativeFile": "visual_kanban_170_native.png",
       "officialFile": "visual_kanban_170_official.png",
-      "nativeBytes": 35262,
+      "nativeBytes": 33541,
       "officialBytes": 30501,
-      "nativeSha256": "69f658b3bbe8cdd773ec7517706c7c9b56b24edb79e1f2240829ec01526f91c9",
+      "nativeSha256": "e9db45d401223e678214ffcc98a84314945465b0dca7d025071c39d29cbd4f59",
       "officialSha256": "200a688601e6daceec69eaa0a2f83105e087c02631ef779fe6642d63791fb964"
     },
     {
@@ -1144384,9 +1144384,9 @@
       "officialManifestSourceSha256": "61e9c2cfbe0a755ded8de38ffbb7f3f4e373b8e5ae26251a03d999fdc74a5c9b",
       "nativeFile": "visual_kanban_171_native.png",
       "officialFile": "visual_kanban_171_official.png",
-      "nativeBytes": 61257,
+      "nativeBytes": 61025,
       "officialBytes": 52637,
-      "nativeSha256": "08738d56ebade300ccdfb03e0aad363df97beccfa7844cac43406e9655a3de4c",
+      "nativeSha256": "625ad2af91cce16390789e5ff2b83e68eb9092e7b17d1782917b0441fd43cffe",
       "officialSha256": "8114ca53f2ffc3c75ee6333b8e843f27956c4fdb355d49c041d7ffe4fb60cb90"
     },
     {
@@ -1144570,9 +1144570,9 @@
       "officialManifestSourceSha256": "175f394511d85d075b8b24d34576e9068c938df32e3d36ad7c1bae78ffbe2feb",
       "nativeFile": "visual_kanban_172_native.png",
       "officialFile": "visual_kanban_172_official.png",
-      "nativeBytes": 50804,
+      "nativeBytes": 49261,
       "officialBytes": 42657,
-      "nativeSha256": "395bc70bb1f88c8232abbfae41f76f138af0c24296b280ec90a57f1536c9a7fd",
+      "nativeSha256": "2c07339009f4f435424bcae24db1d6ba400ae1a85c73f830c1b700bdece26497",
       "officialSha256": "55f79f155b3fd7c1065b3dd25a822678bcebadaaa2f26e9fc7429407c4f3b8b9"
     },
     {
@@ -1144756,9 +1144756,9 @@
       "officialManifestSourceSha256": "069bd7e597c5c26eeec494c8f8a75ab7f363ee17e2000b8e327c796f9b65fcb8",
       "nativeFile": "visual_kanban_173_native.png",
       "officialFile": "visual_kanban_173_official.png",
-      "nativeBytes": 36926,
+      "nativeBytes": 37771,
       "officialBytes": 34728,
-      "nativeSha256": "c095e21035d8f785baa4f08370e601afb05511fedad782943de3be82968919a2",
+      "nativeSha256": "81d8dc28e8ef2d0bc9348a7a7a9d02cad941805e0e8487eb3b3a0df9fe09f030",
       "officialSha256": "ad2feb48e0c2f261a4364c221cc894b883f20075176521eb597a20a177526732"
     },
     {
@@ -1144942,9 +1144942,9 @@
       "officialManifestSourceSha256": "fa74fbac45e6efdb6a2fe025d2457c9e5f3e26f823ec44f2f12b26039466fdb4",
       "nativeFile": "visual_kanban_174_native.png",
       "officialFile": "visual_kanban_174_official.png",
-      "nativeBytes": 33839,
+      "nativeBytes": 33204,
       "officialBytes": 29321,
-      "nativeSha256": "6449130e62aa6fd83592ff7b8392e71e0309e5ffc9072a5e4342b7eb5ed91e1d",
+      "nativeSha256": "5a442cc2c76c3b58c70562454e268e24933ad452e35844089ac33d5b29c0f4f1",
       "officialSha256": "2102740065eb52460e726d1e2b607fcc6b859b33dd713fad506c40f7c3ac8e0b"
     },
     {
@@ -1145128,9 +1145128,9 @@
       "officialManifestSourceSha256": "b5e2481f2f27e0665754d285602aba0fe744978ab761b213271b22abdfdc4d49",
       "nativeFile": "visual_kanban_175_native.png",
       "officialFile": "visual_kanban_175_official.png",
-      "nativeBytes": 68187,
+      "nativeBytes": 67771,
       "officialBytes": 57646,
-      "nativeSha256": "a9b2270d2ebdfe7d0b4f2b1ca46c0fe2616538d8ab941d2f64edb04b148e89b3",
+      "nativeSha256": "7a810c4feaf5bbf1d8728e311d6ecec827ab9aefc9d8c9f2efac958c36a1a116",
       "officialSha256": "26a796ca48e073c31ec58c29e84ef75591755989107c261d13579b0e58a70c00"
     },
     {
@@ -1145314,9 +1145314,9 @@
       "officialManifestSourceSha256": "0dcb231ea2aca8b84b1a2fa8cde02f5216a8ba1b874648171cd1c6c3154f83cd",
       "nativeFile": "visual_kanban_176_native.png",
       "officialFile": "visual_kanban_176_official.png",
-      "nativeBytes": 46818,
+      "nativeBytes": 43782,
       "officialBytes": 38279,
-      "nativeSha256": "e584ead23157e5991f5df04711161d8e96b8c35b846f095ab094193afd3702c4",
+      "nativeSha256": "31834bb0e27e8230dbc85db56d3a8927c994ff0ee99ad6d6fa17d6f7def9f4f1",
       "officialSha256": "282ef65e6550fc970989cfc3a6e517b27ac29096a08d024bab38ab21e706371b"
     },
     {
@@ -1145500,9 +1145500,9 @@
       "officialManifestSourceSha256": "f5161691cec837fa1e48515f22095aa6decf8f1872ed9cfc70300a7dc576bdf2",
       "nativeFile": "visual_kanban_177_native.png",
       "officialFile": "visual_kanban_177_official.png",
-      "nativeBytes": 48997,
+      "nativeBytes": 47953,
       "officialBytes": 39627,
-      "nativeSha256": "836d3ee59bc897d79e2f32dde5fe0effd303c0dcf465ba33116c185b871b4b25",
+      "nativeSha256": "d793ce2cb01ad51b445878167a8704363f6cdf64934cd2c9a98df58742cd92a3",
       "officialSha256": "5d2f79d64b68041914d18daeec1d2df8c5a069a0ec38fc49a430cb492dc45bf4"
     },
     {
@@ -1145686,9 +1145686,9 @@
       "officialManifestSourceSha256": "98bd21712c1e1dff50a7a11fe3c0f14b77cd9c8074e2cdeece4046e955d4a317",
       "nativeFile": "visual_kanban_178_native.png",
       "officialFile": "visual_kanban_178_official.png",
-      "nativeBytes": 37837,
+      "nativeBytes": 35564,
       "officialBytes": 32663,
-      "nativeSha256": "c9a3124bc8e9248966e8c2c42354ed761d93beddca6311dcb4d3ae7b5fd8496f",
+      "nativeSha256": "be11e341ed029050292dfa39a8b6108da454e551635370d8340fef563b83f499",
       "officialSha256": "757f5060aaf5c78c76e18750e44b685476539338501dd8b80dcebf87d09d72c1"
     },
     {
@@ -1145872,9 +1145872,9 @@
       "officialManifestSourceSha256": "c6f7501cf0cec384924a04001eeccaaeef09e285ac087026eb762e527d14794a",
       "nativeFile": "visual_kanban_179_native.png",
       "officialFile": "visual_kanban_179_official.png",
-      "nativeBytes": 65652,
+      "nativeBytes": 62992,
       "officialBytes": 53012,
-      "nativeSha256": "d659bb0e18c8d65879458dcffc48fc15885b1afb4bfaaa37eb7e7e479f041fd5",
+      "nativeSha256": "a8eee05924e4ce2ab5e683480f986a29b890f8631edbd8e555cad9ca26d45791",
       "officialSha256": "973ef158d48fa895ec26985597ce942ed7d9696b54a360030e6df3afc3a2a9af"
     },
     {
@@ -1146058,9 +1146058,9 @@
       "officialManifestSourceSha256": "3c6668ac2c555298d3fafd853d1a966230627a218af8a7da2ff154f5f5f7de1d",
       "nativeFile": "visual_kanban_180_native.png",
       "officialFile": "visual_kanban_180_official.png",
-      "nativeBytes": 51181,
+      "nativeBytes": 44460,
       "officialBytes": 39161,
-      "nativeSha256": "020f674cdfd3afba58dc507d7ab3ef88f47289e0148af72efc266e185cb2f8c1",
+      "nativeSha256": "9a223d311f7da8b8666b46237d22374de20ffecdd86e25981368f10bdc695c28",
       "officialSha256": "a612651bb3900ebe8989d6a0574ab130c7794aa0e1c6d576832203bca4330a13"
     },
     {
@@ -1146244,9 +1146244,9 @@
       "officialManifestSourceSha256": "bd3e91d2ddbefb459500d6ca7a8d4b4d98d545c7867f474e68293775081c6610",
       "nativeFile": "visual_kanban_181_native.png",
       "officialFile": "visual_kanban_181_official.png",
-      "nativeBytes": 45447,
+      "nativeBytes": 44285,
       "officialBytes": 37712,
-      "nativeSha256": "e3ac2682662f94e9835e3545daf1991cf4d7fe88473fc659e871551676e6cb10",
+      "nativeSha256": "dbaa1a456dda0e54e34ccea468bdc027ecddb1569ce50f39010b765159d31608",
       "officialSha256": "8c9dd8795679b0bc3b76b5d2a917edf1437e056e95a45c0833504b1259b70796"
     },
     {
@@ -1146430,9 +1146430,9 @@
       "officialManifestSourceSha256": "0df6fdb4e71469b2d8eeea5ff1c4ba8d8fba8fa91255469f607d32080a76e117",
       "nativeFile": "visual_kanban_182_native.png",
       "officialFile": "visual_kanban_182_official.png",
-      "nativeBytes": 37946,
+      "nativeBytes": 34704,
       "officialBytes": 31038,
-      "nativeSha256": "457bfaf1ec890e0ae71f2f4aad77e724bea316eb96777d92b4853c30a6e0a302",
+      "nativeSha256": "eaa5e6dcc3f70979ea93df12abc4e052f3e26c6a6f565b9cde39efb9bb6ddefb",
       "officialSha256": "5eaa35ed270bbff24c614e8a378190c6b47dba09d31e58f3067be7b645e3caf9"
     },
     {
@@ -1146616,9 +1146616,9 @@
       "officialManifestSourceSha256": "93325cee9a6eb4b6ccecca8b4bc3a53c7ccbd332829672343c4e458a273c950c",
       "nativeFile": "visual_kanban_183_native.png",
       "officialFile": "visual_kanban_183_official.png",
-      "nativeBytes": 69237,
+      "nativeBytes": 66462,
       "officialBytes": 54305,
-      "nativeSha256": "548abda7c43ca3b5bf406b7cf057f48174158e6202c95c5a1f71452d210c3d28",
+      "nativeSha256": "523b58c7bc06f102e8faeb6e8a6ce0b377bb0e9713da669edf4a9590f5f1768b",
       "officialSha256": "ef8b4710e48e5238321a96ec2c8aa842b46b2d08804e639b50f6df02514cd887"
     },
     {
@@ -1146802,9 +1146802,9 @@
       "officialManifestSourceSha256": "87105b7d5e81fce450e2c2fc69f8b6aee65da99a07d3b43d72153f1eb479abcd",
       "nativeFile": "visual_kanban_184_native.png",
       "officialFile": "visual_kanban_184_official.png",
-      "nativeBytes": 48732,
+      "nativeBytes": 44207,
       "officialBytes": 38478,
-      "nativeSha256": "c43e6cfa7f965fb6e6efc0c2e159d15ec62fd1158a6350e9431fa947976a60b6",
+      "nativeSha256": "08fb31e7ae7be5e2dd29d5912b248f5fe2b46858c18a7027da877cc66e8a4019",
       "officialSha256": "bd24989b0c615a3695e87049d2108270fce441529a19d5a5073d445eb65c3083"
     },
     {
@@ -1146988,9 +1146988,9 @@
       "officialManifestSourceSha256": "507e251d9a1e7df4edd1329824ced83adc79d481a371cfd8c0b643482fd463c8",
       "nativeFile": "visual_kanban_185_native.png",
       "officialFile": "visual_kanban_185_official.png",
-      "nativeBytes": 50062,
+      "nativeBytes": 47226,
       "officialBytes": 39900,
-      "nativeSha256": "63f9fc9a26a52c28b641cf8197b518e57f23e27d826dc1cd837a8605ce21b3fe",
+      "nativeSha256": "0f8b7bb668c52093d23b5c36ef3a63dd9e8442f471c90fa7ced4f07c2a0e0080",
       "officialSha256": "15dad2102336f295b394d06a089c3ee873453c4649caf3c8b258b027cb008f10"
     },
     {
@@ -1147174,9 +1147174,9 @@
       "officialManifestSourceSha256": "8cef0722fe407f5778bbe2ad45cb67bf27387d246fa7b754bfc23bfaf0ebec10",
       "nativeFile": "visual_kanban_186_native.png",
       "officialFile": "visual_kanban_186_official.png",
-      "nativeBytes": 36630,
+      "nativeBytes": 34287,
       "officialBytes": 31014,
-      "nativeSha256": "6e7a699c6ac7c8979d2709366dbe6f8877aba28b0f07758ffe21a2e82f1e7dc5",
+      "nativeSha256": "3e20b2b22c0559bd0463d0e86bebc79ca5171098b8856d813bb2f873bad230d9",
       "officialSha256": "1929757529083918eb542b5107e6761374ab174aec535533d4fd5b487cb4a062"
     },
     {
@@ -1147360,9 +1147360,9 @@
       "officialManifestSourceSha256": "7b16d3ba039ad4d0690ea59e874b6bef613b18cd1be031a6f560b21947a22183",
       "nativeFile": "visual_kanban_187_native.png",
       "officialFile": "visual_kanban_187_official.png",
-      "nativeBytes": 69729,
+      "nativeBytes": 65714,
       "officialBytes": 55523,
-      "nativeSha256": "1c114341955df7fc8e29808434bf3835e8de1d9ef0609e8f7cc98b950129bc5f",
+      "nativeSha256": "4ed54fa79fd0f21389e459e8427575be4190eed5490b4694238a741f0bfaf098",
       "officialSha256": "b6df9784d555a5fb2baa8c56ca7b6f9cdb0948150c4a5d931897cdd4e79453ed"
     },
     {
@@ -1147546,9 +1147546,9 @@
       "officialManifestSourceSha256": "c87e2f8e470a5f361cdb2403d2e969c922fbaf0aa572970838e3b686b5b3a743",
       "nativeFile": "visual_kanban_188_native.png",
       "officialFile": "visual_kanban_188_official.png",
-      "nativeBytes": 48460,
+      "nativeBytes": 43529,
       "officialBytes": 37879,
-      "nativeSha256": "dec6c7bea127be3a7fbf83c6d8aa5f22e7f8764000d63e935925416ff5991d7b",
+      "nativeSha256": "d4af6c02285c8be4c91163593d5f5ccd2562ef0d5faea94548a0ba7293477f35",
       "officialSha256": "1c11281525148cdc03bc09659234f09e2cad94b1de69c1321aca0635ec4f93fd"
     },
     {
@@ -1147732,9 +1147732,9 @@
       "officialManifestSourceSha256": "41064505c97f4cdf9592ea12b2c51d6e77588d60e6900bafbadd2522bbab1b1a",
       "nativeFile": "visual_kanban_189_native.png",
       "officialFile": "visual_kanban_189_official.png",
-      "nativeBytes": 47567,
+      "nativeBytes": 44821,
       "officialBytes": 39063,
-      "nativeSha256": "e64bf3be5ae64093444e3dec339875eae65af25e340f8afcc78d5b71337df06a",
+      "nativeSha256": "9ed277fc33464335ab6dc8381ac30807422c109eb2657703ddb60a3b0d57bc80",
       "officialSha256": "9534a4c6b3387e51fc4609c46f52417457de10e05e0197c7ca5b74f1e4ae4ff3"
     },
     {
@@ -1147918,9 +1147918,9 @@
       "officialManifestSourceSha256": "fb8d481c3d2d692462145a104c165c2401c6328a8f609f83e7f735f382dc03d8",
       "nativeFile": "visual_kanban_190_native.png",
       "officialFile": "visual_kanban_190_official.png",
-      "nativeBytes": 37274,
+      "nativeBytes": 35844,
       "officialBytes": 33124,
-      "nativeSha256": "44bc59dd792939a7d15393a695f3b2e529423cbba380ecc5911ca1e9e133aaea",
+      "nativeSha256": "59181bdfc3ccf92c0f240b9b8edcf695c40db3ea3a2630122bc53df93a8d48ff",
       "officialSha256": "5be1d5190a1d350f488e67518cfc5c13c975fb1e87ac75573259e73c2766bb71"
     },
     {
@@ -1148104,9 +1148104,9 @@
       "officialManifestSourceSha256": "9fde0c4e3c4f6bf464be4bbe0f353b06e8f2e3ebc9e6b45c183183c7c65e828d",
       "nativeFile": "visual_kanban_191_native.png",
       "officialFile": "visual_kanban_191_official.png",
-      "nativeBytes": 64425,
+      "nativeBytes": 61962,
       "officialBytes": 52462,
-      "nativeSha256": "8f8491b579df88f54939b94653e5de5ffdadcce37e84e4765ac0be44dce2984e",
+      "nativeSha256": "4c57adc1e7085994fd0f16b13ece77d98ab6734dd3940265abd1755c6f49accc",
       "officialSha256": "0fb0df836b910de92e1f9b2de3106ed03d8e7a70707a8cce695d2eb9ae639549"
     },
     {
@@ -1148290,9 +1148290,9 @@
       "officialManifestSourceSha256": "198b8b12ea148e47f50dfc4bc978e2039f035478ca58c6c100c4eb31f4771855",
       "nativeFile": "visual_kanban_192_native.png",
       "officialFile": "visual_kanban_192_official.png",
-      "nativeBytes": 48605,
+      "nativeBytes": 42978,
       "officialBytes": 37818,
-      "nativeSha256": "4c580b0ad8e8ae86aefbe3e5f26f771cf503228bbd177f206f15e899014308fa",
+      "nativeSha256": "b54a6095f87c4b2b7269fe86a8be295e05963586ba1816475000151e0938d41a",
       "officialSha256": "331c305321f260e9c1375e525bd900d48286ffdb302bd6c968f4450df3af6cb4"
     },
     {
@@ -1148476,9 +1148476,9 @@
       "officialManifestSourceSha256": "4781ab3fa5c96a187e2cfbfb29745ca1ccbe4dd0a46c1d85407b4b2dfcf005d9",
       "nativeFile": "visual_kanban_193_native.png",
       "officialFile": "visual_kanban_193_official.png",
-      "nativeBytes": 75274,
+      "nativeBytes": 70804,
       "officialBytes": 65596,
-      "nativeSha256": "3eaca9cd862cee3fd5e4315d10380d86adb9d048222038ce9e294080bb28eb0f",
+      "nativeSha256": "395f7a539e464b4cf27bb17034e41627c33985c1882491387ea010c8821d3143",
       "officialSha256": "fe593b356faa5b7f4a4844d5ed2327d29aeda5fec11a1f2b7db6f15d6f275eed"
     },
     {
@@ -1148662,9 +1148662,9 @@
       "officialManifestSourceSha256": "300fd07f2cc578c5fa9d91908c0ffefbd7aaa5900ec17c75a3c97ca1f53cc78f",
       "nativeFile": "visual_kanban_194_native.png",
       "officialFile": "visual_kanban_194_official.png",
-      "nativeBytes": 46674,
+      "nativeBytes": 40935,
       "officialBytes": 38332,
-      "nativeSha256": "2684ca679a03dd14fa43a66021cab6b21953434422a233bf0662ebde438a64c5",
+      "nativeSha256": "e2b6c6d297d5d607a5d1918a5feaa5f4151b2aefef6bae2a4cf77e7e6a318565",
       "officialSha256": "715831014ac649daea0d075c2d426e66650c6e8c522d561785b732079e33134e"
     },
     {
@@ -1148848,9 +1148848,9 @@
       "officialManifestSourceSha256": "6c22bd366f6afb1769d5e8779d3839e0844de824c3835fe43355a8362bf16b28",
       "nativeFile": "visual_kanban_195_native.png",
       "officialFile": "visual_kanban_195_official.png",
-      "nativeBytes": 130428,
+      "nativeBytes": 118102,
       "officialBytes": 112187,
-      "nativeSha256": "7d950ac99225377274bbabe099dc41353538eeeb092eb1b94a856be02c8aa68b",
+      "nativeSha256": "ad6297418046f38e9764daa4d7ffaecd7171803f324936f8f4223036096c1db9",
       "officialSha256": "d7f4d9f6842207c4849f8d4aec4579f2d0b4e3cf781f2235f2a2c3acb514fd12"
     },
     {
@@ -1149034,9 +1149034,9 @@
       "officialManifestSourceSha256": "b125b33dd5eec0e221732dfb5d09502795f324ceadf090a6674d98f2019bf591",
       "nativeFile": "visual_kanban_196_native.png",
       "officialFile": "visual_kanban_196_official.png",
-      "nativeBytes": 77574,
+      "nativeBytes": 71226,
       "officialBytes": 62195,
-      "nativeSha256": "4714a6375295688e8b9efe8142f22fd86adcae96ecf7a86fcc42839763f34e6b",
+      "nativeSha256": "a72d0aa89a6e6f51090055f36c9bbb360842cb1b19fa4f94f363071f9f267b0f",
       "officialSha256": "0695205cb2329bb1ac006bce518cbb1b04243172ecd0e30f8b416098d284af3d"
     },
     {
@@ -1149220,9 +1149220,9 @@
       "officialManifestSourceSha256": "fd2f03713bb7ad0e7bd6d86108591b1c671fdfa7033013817619d37453d94b4a",
       "nativeFile": "visual_kanban_197_native.png",
       "officialFile": "visual_kanban_197_official.png",
-      "nativeBytes": 86963,
+      "nativeBytes": 80379,
       "officialBytes": 68302,
-      "nativeSha256": "c7eb2241c75febe788683d5a9d0eb83707b0dc3e4423d54fd10acde89559feb6",
+      "nativeSha256": "2cae91bdd9ab6229178c49d0cc7a732606c9f78fed85dd9b07841f6f552cbe7e",
       "officialSha256": "061f103314db5af3791921c9f895fd88e86fea30cc99de90b31765c6bb1a9cb9"
     },
     {
@@ -1149406,9 +1149406,9 @@
       "officialManifestSourceSha256": "c4fb24cb12178895bb9c705cfc36eaa2ccc648ff9360965bc1659d37ff79dfcc",
       "nativeFile": "visual_kanban_198_native.png",
       "officialFile": "visual_kanban_198_official.png",
-      "nativeBytes": 47382,
+      "nativeBytes": 44846,
       "officialBytes": 40129,
-      "nativeSha256": "2cf2e8df816bc1d4a38bfb33649682bda4feef38663ed4f578d6f7ea460d25b0",
+      "nativeSha256": "db308bf21b7ca89a38901a25be579ca3747370e973e36a8be122c3f2c9040e2d",
       "officialSha256": "db7b94fd542bbad6f7be103ecbe1b86940429b3b92c02f621669648bc1bd42e5"
     },
     {
@@ -1149592,9 +1149592,9 @@
       "officialManifestSourceSha256": "67eca48a97ee6c60612d18a46b3814a17a8ab4c3cf87b17a4c2cf7bbfe661f1f",
       "nativeFile": "visual_kanban_199_native.png",
       "officialFile": "visual_kanban_199_official.png",
-      "nativeBytes": 121842,
+      "nativeBytes": 109299,
       "officialBytes": 105939,
-      "nativeSha256": "189e5c0f1c193a4b67a680d472c2d11712287bc23c76a8e278d2dd698b335572",
+      "nativeSha256": "e8fa807db7e018e5662767fdf4881c7adadcd13735fe475b074fb5a5c2117ecd",
       "officialSha256": "64e7cebb645db9727845237fc1fd8fea57c4b2e356f84919f01dfc23fa1093c7"
     },
     {
@@ -1149778,9 +1149778,9 @@
       "officialManifestSourceSha256": "748a1596860f92e3290122d005e14a1d9a3d9c4382746e1288df578eef2b5743",
       "nativeFile": "visual_kanban_200_native.png",
       "officialFile": "visual_kanban_200_official.png",
-      "nativeBytes": 76598,
+      "nativeBytes": 67657,
       "officialBytes": 66078,
-      "nativeSha256": "f0a3c9dfb2d0e25b84c957a7a5d33e041cc2b949902ec4ca79234464b9fa27d2",
+      "nativeSha256": "1ad607315500aad9b24d3baa5c16f7e4aa446f90cea8d4d40fbb38cc562b2de1",
       "officialSha256": "889c580cc6007f8a5891defd89dc02ca81d34ed34c46e92a7e9003fe1d77dc25"
     },
     {
@@ -1149964,9 +1149964,9 @@
       "officialManifestSourceSha256": "866e5da3050a91f47adc92ed675922fe60ec9a1ab14ed88cc67b1b5c58d2ab35",
       "nativeFile": "visual_kanban_201_native.png",
       "officialFile": "visual_kanban_201_official.png",
-      "nativeBytes": 81830,
+      "nativeBytes": 72385,
       "officialBytes": 66813,
-      "nativeSha256": "9c06543e8e3a22d6c88dc7df84d62b0a0207e2c9db844e8a2e2c6bf6d8c9e2ac",
+      "nativeSha256": "83e7288a400e4d5339b361620b4c541d667c3b1053811ae2bd4c9f35be63f8d3",
       "officialSha256": "bc0376ffdd5ab7fbbf9da5f5f94aa12b82a4c0495273627e022730e5d214922f"
     },
     {
@@ -1150150,9 +1150150,9 @@
       "officialManifestSourceSha256": "080e867352273bda25d07e20538158efe70b3a883e7597117346e3e614de3b3e",
       "nativeFile": "visual_kanban_202_native.png",
       "officialFile": "visual_kanban_202_official.png",
-      "nativeBytes": 48241,
+      "nativeBytes": 44784,
       "officialBytes": 41010,
-      "nativeSha256": "e0400a5546b4f89c7b0740d0b6dd07ecc05203133ba37cd3bd4942a38c8f2925",
+      "nativeSha256": "2a62fa9021199dd86ddfd60f4cbbe4aa71df7bdb6ed9fb90e0da75185bbd3f1e",
       "officialSha256": "41499efcb09e21f69baf9cf9b591d2649ab49fc7d18d5a65e658ecd07727c3f3"
     },
     {
@@ -1150336,9 +1150336,9 @@
       "officialManifestSourceSha256": "3452316ab6c4ca304024fa885bdf6973ddb39d176beca73fae880c020e5e6940",
       "nativeFile": "visual_kanban_203_native.png",
       "officialFile": "visual_kanban_203_official.png",
-      "nativeBytes": 139326,
+      "nativeBytes": 129382,
       "officialBytes": 110574,
-      "nativeSha256": "df1f1a41d5147de662bae944e607d1c7abd6abfb088a58622ee9cb14e0114ac6",
+      "nativeSha256": "97519d03d42ae3c7f5f1346b7a5cf752c5eb220af074891593391b9e9f59be66",
       "officialSha256": "6e74b35a5d79832eadd95fbd92423afec37dc851d283a4fefe5122e0ea62c059"
     },
     {
@@ -1150522,9 +1150522,9 @@
       "officialManifestSourceSha256": "e17eba24a42404521d680c68c6844e19f466da41fc2143186b6ae8d941ec2b14",
       "nativeFile": "visual_kanban_204_native.png",
       "officialFile": "visual_kanban_204_official.png",
-      "nativeBytes": 76373,
+      "nativeBytes": 68011,
       "officialBytes": 60863,
-      "nativeSha256": "09a81a17e999cb2ff4a90d63c4e36f03297206ef1d66281b40777fd4e37a746b",
+      "nativeSha256": "a44597ba0a16f38e91ccdcd2df8008178c1c0abf58e5c7ab8eabe9a28122e87b",
       "officialSha256": "0684027ee709ccfaa67b0f6798d1b901c8df47273270803cb0d3c0a31097c7a5"
     },
     {
@@ -1150708,9 +1150708,9 @@
       "officialManifestSourceSha256": "cb3726d5a3e07f59a9ac4058dcb7e73fd1730cf24e03686776ec3b5f6efdf122",
       "nativeFile": "visual_kanban_205_native.png",
       "officialFile": "visual_kanban_205_official.png",
-      "nativeBytes": 80092,
+      "nativeBytes": 66735,
       "officialBytes": 66200,
-      "nativeSha256": "6dbb120a437e670fe97723f7f5179eb92ab8cf759ddcf44c33658df0b5de3d28",
+      "nativeSha256": "3704aa7773c70f225a502ebcef2c4ed78d34811646187cb1db86935f6c15148c",
       "officialSha256": "95b0735b40cd1c05534e7791ce5f4b04d1ca836dab284a4131e2c765ebb8435d"
     },
     {
@@ -1150894,9 +1150894,9 @@
       "officialManifestSourceSha256": "6f86e95a13d9aab192f02b87fae4e898d06851ac0a37b8297492b690bcc188a8",
       "nativeFile": "visual_kanban_206_native.png",
       "officialFile": "visual_kanban_206_official.png",
-      "nativeBytes": 44172,
+      "nativeBytes": 41203,
       "officialBytes": 37995,
-      "nativeSha256": "4dae27e81aeb7db787cbca2b5dd2e32b55c85cdc264a3727be7e8f548a6429c3",
+      "nativeSha256": "1aad416aea95bb98e4e859dbc8db78d26b0348cb7b03536775c4c3720735347a",
       "officialSha256": "e604a6c95a7cf98a60c3daae797cee8522703a36d1b6ff7fa8296e7a1b934ed5"
     },
     {
@@ -1151080,9 +1151080,9 @@
       "officialManifestSourceSha256": "6fa88979032037d861735955bc9b565f1b958ed27a981189796bc0ae0f97ec8e",
       "nativeFile": "visual_kanban_207_native.png",
       "officialFile": "visual_kanban_207_official.png",
-      "nativeBytes": 123545,
+      "nativeBytes": 109598,
       "officialBytes": 105975,
-      "nativeSha256": "5b52c79529017730bd460ed8d422b8a85bf6fb10121e4a320d55291ddc85e8d4",
+      "nativeSha256": "ab48c69e7a4781042bd920c7620164e046fd693e285ed0112db082dc4a3b8ff8",
       "officialSha256": "b998edd8fcac57597506e6802e20f6c27a52b5a0d7be551e523b11a3567cc773"
     },
     {
@@ -1151266,9 +1151266,9 @@
       "officialManifestSourceSha256": "199b545374f3e9ce50300249df805ef92140cf06abdc80d15d972dab99b714a3",
       "nativeFile": "visual_kanban_208_native.png",
       "officialFile": "visual_kanban_208_official.png",
-      "nativeBytes": 74605,
+      "nativeBytes": 67419,
       "officialBytes": 60749,
-      "nativeSha256": "2cd705ca85d2ff7f48ffd6c441cef46be66e187f42c5352958243c8e76266bbd",
+      "nativeSha256": "6d644b49fb259eb822cc90f380d05677db89a1ba592775f37ce1881afc845e85",
       "officialSha256": "98a97c0a59776e036ef9c0f59c8535360b2dfd99eca4413b50c3c0665cf28f2f"
     },
     {
@@ -1151452,9 +1151452,9 @@
       "officialManifestSourceSha256": "e7a26ec72fd7d73bfceb5871231318bff29aaf004b2ef759c506d56e34c53357",
       "nativeFile": "visual_kanban_209_native.png",
       "officialFile": "visual_kanban_209_official.png",
-      "nativeBytes": 99212,
+      "nativeBytes": 86213,
       "officialBytes": 77782,
-      "nativeSha256": "4a3f9c28c4b75ac9391f4dccfc8d2c333ae51a28f52e381bf247fa7c9f96db5f",
+      "nativeSha256": "5cd342b262c77c261f553f07dd3204fe2ca738762bf465a037849fc220d00ca4",
       "officialSha256": "1d13e226bc9659519afc6ed5161c285edd786ec0f046713974dae36b1581fd6d"
     },
     {
@@ -1151638,9 +1151638,9 @@
       "officialManifestSourceSha256": "e9def425b61ca25a72c0cd926c46d41d0ebabe61454ca57fb66ff27dbb4fcdb4",
       "nativeFile": "visual_kanban_210_native.png",
       "officialFile": "visual_kanban_210_official.png",
-      "nativeBytes": 58003,
+      "nativeBytes": 51923,
       "officialBytes": 47920,
-      "nativeSha256": "5cecac74345a45362f02f25e43dbf8a52d3d12da927e5cb675510c18df625f5f",
+      "nativeSha256": "26171e8b49e61560bcdddda3b9280c1eb7e6ab57b865564caa1d5cd083f0c189",
       "officialSha256": "daeb1b9580091b2bf6bd18f0da6a044da82c14116c7fefd4249742c1506925a2"
     },
     {
@@ -1151824,9 +1151824,9 @@
       "officialManifestSourceSha256": "b26bf7817ae93e3f7542b0ef258a8a432f386eb4c574312b043a48c25eb6b093",
       "nativeFile": "visual_kanban_211_native.png",
       "officialFile": "visual_kanban_211_official.png",
-      "nativeBytes": 136835,
+      "nativeBytes": 132327,
       "officialBytes": 100196,
-      "nativeSha256": "618b7a3e92ead8c42ad3d8d458b9b448309b86f5f9b261b666ffd00d830eff37",
+      "nativeSha256": "ead101a9669386675b3f2eb7f5c833724ba67200ef4ceafd2b7ff5e2713abc9d",
       "officialSha256": "c3a3eb6e3b93d5a0b0859bbf10fa22b12c497180a5248dab096d2daa5866593e"
     },
     {
@@ -1152010,9 +1152010,9 @@
       "officialManifestSourceSha256": "52a0e08f38ee95123ec26ab2c593df648a8938cf0dfe618bb63c67cf1d786f97",
       "nativeFile": "visual_kanban_212_native.png",
       "officialFile": "visual_kanban_212_official.png",
-      "nativeBytes": 95950,
+      "nativeBytes": 88023,
       "officialBytes": 75636,
-      "nativeSha256": "bd2643f4eb2454eb355dfb188ae543deba10de37749d07f0c352423cfedf951d",
+      "nativeSha256": "33f927ec3a4bf4b5d87cae3ad555ecb89cb2591f9e2dbd69ba8785470fd8ade2",
       "officialSha256": "ea5f0cdc2b2c6acc37a81df4b9f8024f4c15acfd331924dc81b87bdb8517546e"
     },
     {
@@ -1152196,9 +1152196,9 @@
       "officialManifestSourceSha256": "3d9ad3d586d7816db2f6e53c1822243273cd9f078f241ed6949f3a362cdd0fda",
       "nativeFile": "visual_kanban_213_native.png",
       "officialFile": "visual_kanban_213_official.png",
-      "nativeBytes": 103757,
+      "nativeBytes": 93639,
       "officialBytes": 81351,
-      "nativeSha256": "fc4144e8180d859baf280c545172e29731cc00b4dbe73c5e7cdb70ab06d19eff",
+      "nativeSha256": "14eb4982bc7c03574756efa8507b45be17924591faa3a2c324810c808a0ab79a",
       "officialSha256": "fc5fa85a663c258176254b095c492f6cd6671f59775ebde9c9ad8250532ea08f"
     },
     {
@@ -1152382,9 +1152382,9 @@
       "officialManifestSourceSha256": "84eb5d5733dbd1696752eab87733e5e0c934711148e2d7ab15f3a3ae3f258bf9",
       "nativeFile": "visual_kanban_214_native.png",
       "officialFile": "visual_kanban_214_official.png",
-      "nativeBytes": 50358,
+      "nativeBytes": 47184,
       "officialBytes": 42422,
-      "nativeSha256": "32cc4394fd42a64dd920101944f58ccf6fd1e6ada0afca9b7f918cb4688c319d",
+      "nativeSha256": "2d8d9331c7603925c373258c666e3994c3243090bac06a4cfc917d0eddafcc31",
       "officialSha256": "8fcbf85b98311f158110a0c10b894b426e3ebcab6647c46c6c5d8bfc36e0a220"
     },
     {
@@ -1152568,9 +1152568,9 @@
       "officialManifestSourceSha256": "895cd28f36710b1bfa2e30377f480bf243e07cf3b2de5d48a5b62301515febd4",
       "nativeFile": "visual_kanban_215_native.png",
       "officialFile": "visual_kanban_215_official.png",
-      "nativeBytes": 124443,
+      "nativeBytes": 114303,
       "officialBytes": 97931,
-      "nativeSha256": "86840f373420b1365c72652660c388fa8f842ee5236529bca1635c304de19e5c",
+      "nativeSha256": "b982b8e4e157d592c87e6d8d6128a594a607ca7a12f6965edcfb402c4130f911",
       "officialSha256": "b46e002d26f07bc4420fe57777416903a6427f2af20f83c6a0ecac55999901e6"
     },
     {
@@ -1152754,9 +1152754,9 @@
       "officialManifestSourceSha256": "cfe05d8f9dd3f7ba49565fce63532dc97eb91f99bbdddb0b84d14a4df2b6f722",
       "nativeFile": "visual_kanban_216_native.png",
       "officialFile": "visual_kanban_216_official.png",
-      "nativeBytes": 83209,
+      "nativeBytes": 76088,
       "officialBytes": 68576,
-      "nativeSha256": "f5ee3701eed70dc401156601c9004a3021a6b40ff447a92bb5efdc7f2073ced2",
+      "nativeSha256": "cffe37452ad4755ca242680971115e3a4b04550bc7f7bc29983977e7ccbeed05",
       "officialSha256": "7dee00029a962c9a72f7d5d88f69b5858a2617b42e63afdd9275e402c107960e"
     },
     {
@@ -1152940,9 +1152940,9 @@
       "officialManifestSourceSha256": "4831c3130ed8723d7ba155777c210fba58b00cbe7ed949f7a26773595a2c7b78",
       "nativeFile": "visual_kanban_217_native.png",
       "officialFile": "visual_kanban_217_official.png",
-      "nativeBytes": 94588,
+      "nativeBytes": 86582,
       "officialBytes": 76861,
-      "nativeSha256": "3107edbb7180d06bf30a896b3c3a757b98205c18acd96e0ec7ffaa4242122c2c",
+      "nativeSha256": "05b3601f9b123631ce2cbc0da603004616b4beab4f7cc094b7c1591b98c7de39",
       "officialSha256": "8135e5f3f41d27435121f20ef5ff6997014fa16203edafa9add17631bbe4777e"
     },
     {
@@ -1153126,9 +1153126,9 @@
       "officialManifestSourceSha256": "57491542caa639b608bfc68ebfba44aabbc800e8053606ecd327f8158d460e6d",
       "nativeFile": "visual_kanban_218_native.png",
       "officialFile": "visual_kanban_218_official.png",
-      "nativeBytes": 54513,
+      "nativeBytes": 51684,
       "officialBytes": 45540,
-      "nativeSha256": "983a3ae0a296a8d92ce9332fa0d67c198f4fa3fd1f3961d3579ef7b1373bbb23",
+      "nativeSha256": "04a1c2a574c1a8e5a99d49124540adc0f650b37e364c8a42ccb1a5fdb8b971f6",
       "officialSha256": "6773d653fbfa134fa221b5ad7d94724f54f8e78d7c4b10bbda40ab6078a5daa2"
     },
     {
@@ -1153312,9 +1153312,9 @@
       "officialManifestSourceSha256": "108128871061d3a9109c6299730dbdaf2b45c27ef3bd44aa9bb02bdf9a12fe34",
       "nativeFile": "visual_kanban_219_native.png",
       "officialFile": "visual_kanban_219_official.png",
-      "nativeBytes": 141711,
+      "nativeBytes": 133439,
       "officialBytes": 100083,
-      "nativeSha256": "761cf23191812591b35a5727d1bd19941834853e10cdc3c6379c0f921b08c489",
+      "nativeSha256": "3dd93824e2b56f31b4977095296a3de55abd435f3fbceec2df0afb27db29c448",
       "officialSha256": "9a016ab1796386831beb8f68f89c92c1e0b492c7a2e19faf983e1595c309af8e"
     },
     {
@@ -1153498,9 +1153498,9 @@
       "officialManifestSourceSha256": "a128fe9f294dd2d6b40e28ed8d57fa7c02252046688fbe75e6d2a09958b9524e",
       "nativeFile": "visual_kanban_220_native.png",
       "officialFile": "visual_kanban_220_official.png",
-      "nativeBytes": 82112,
+      "nativeBytes": 75413,
       "officialBytes": 68457,
-      "nativeSha256": "3ba136cadaf4110b6601302c474703ac746b0a1d26c599e527bb3038a5e77d49",
+      "nativeSha256": "17d08d1c48af3d530b7764f8e95ffa2c179c06471aacce9d135bba53fa9a1637",
       "officialSha256": "2fc1267e67ee5d8a3a2e656f4e8c96fd65a8f6f313a79e69a9ff4b9dbbdfeaab"
     },
     {
@@ -1153684,9 +1153684,9 @@
       "officialManifestSourceSha256": "fb340e642bbca16077302dac9b5ea9832b890f26d68daabddfaa73668823fe3c",
       "nativeFile": "visual_kanban_221_native.png",
       "officialFile": "visual_kanban_221_official.png",
-      "nativeBytes": 97369,
+      "nativeBytes": 89539,
       "officialBytes": 78524,
-      "nativeSha256": "13769451b166634ff7c55d8f9773564f405958c13ef2af91e080a45cc6689239",
+      "nativeSha256": "ebec93862e2d7618f4b27f3acd1d65d1eb8c09d86af7308a59f0b73b9fd52c4a",
       "officialSha256": "0350a4c0d374fbb2039f6a5209e1bb5c5c5e5b7cfe4a84251af0580f8a419962"
     },
     {
@@ -1153870,9 +1153870,9 @@
       "officialManifestSourceSha256": "1b48e76dc4e353bbfc73d4e094d9ef633a7f9ce4a19457ef5b770485fc166b0f",
       "nativeFile": "visual_kanban_222_native.png",
       "officialFile": "visual_kanban_222_official.png",
-      "nativeBytes": 53010,
+      "nativeBytes": 49247,
       "officialBytes": 45640,
-      "nativeSha256": "a6ccd502c2788d965a7beaddbf30d8a12e4fcc9273e6708a00c4a8e69ef662ca",
+      "nativeSha256": "f8eff63ad90b9a0e7daa6068dff7d9c7f9661c54ccc3c8c6b3cba2772dabc30c",
       "officialSha256": "11ee33cd74b12bef8e5fec861925e4d0842055e1d9c5233c6b97ba9eac73ec88"
     },
     {
@@ -1154056,9 +1154056,9 @@
       "officialManifestSourceSha256": "18529bc012e1872b95c7c668ff614a61d4ddbbb0c03ce5f445f72e551297641c",
       "nativeFile": "visual_kanban_223_native.png",
       "officialFile": "visual_kanban_223_official.png",
-      "nativeBytes": 138611,
+      "nativeBytes": 131867,
       "officialBytes": 101605,
-      "nativeSha256": "2d3e7766ecd1ddf75fd1e8699248817f7fb658945c2b0d8bceeeaedf6956b544",
+      "nativeSha256": "4c0c55f36855c1cfe24bbbb206d5c19c91bc48153c2e06277164dad7dac97335",
       "officialSha256": "bcdca67d500effc7d9e961e42b1c23966984541c34da3fb4f0dc910479b09a75"
     },
     {
@@ -1154242,9 +1154242,9 @@
       "officialManifestSourceSha256": "98aa4ce289328fd01ff310db076e36e7acd96d569aa8c8f336725266c18b531f",
       "nativeFile": "visual_kanban_224_native.png",
       "officialFile": "visual_kanban_224_official.png",
-      "nativeBytes": 87335,
+      "nativeBytes": 75198,
       "officialBytes": 68101,
-      "nativeSha256": "ef48130d72e1d0bf722d813ac57d22d8bb02b7ff8f868ead618c91f7ddc33e2c",
+      "nativeSha256": "bc880de5e2296cfd6aa4001956488e67793f8853e5eee7706202f0a8e52bffcd",
       "officialSha256": "c6a05bf3a497c0d61d5e3c252b0cd741d1f25558517803e296cfe8fe02f14982"
     },
     {
@@ -1154428,9 +1154428,9 @@
       "officialManifestSourceSha256": "0e17463239053410566599998724f0275717728dd59a20d16584a5a112a905e9",
       "nativeFile": "visual_kanban_225_native.png",
       "officialFile": "visual_kanban_225_official.png",
-      "nativeBytes": 45325,
+      "nativeBytes": 45737,
       "officialBytes": 39106,
-      "nativeSha256": "25b496ae97494615c28c45e5d368865664b18fec409dd32006cd2c795e40028d",
+      "nativeSha256": "c62309ebe339ce3fd5a1bd6a3066d5c784bc3f3bf7bd453159255e1df9bacea6",
       "officialSha256": "7555476631806e1a5fe55bc55d4c6767360fbb396b12378b797904a142164af6"
     },
     {
@@ -1154614,9 +1154614,9 @@
       "officialManifestSourceSha256": "5821fa15b03f882d999a9fc92155d55c28fca2bb330c3f10c676f5cb9a713297",
       "nativeFile": "visual_kanban_226_native.png",
       "officialFile": "visual_kanban_226_official.png",
-      "nativeBytes": 39267,
+      "nativeBytes": 37070,
       "officialBytes": 32817,
-      "nativeSha256": "f0a40d29726b24f8192e2fa3c231a92ce73949443b9835411ce8462fa6741614",
+      "nativeSha256": "53adc97184eeea6f5925a396a792ef8d341da7152a28ee4b2dfa28a3cb02973a",
       "officialSha256": "24ab7ff0a4a33f26a5b697016fb05d03c68703ee78956a542eeca05893390c87"
     },
     {
@@ -1154800,9 +1154800,9 @@
       "officialManifestSourceSha256": "a7cc1187638e0e5a8fee5525d36256fc266617d048dcbe42f743d4581cb902e0",
       "nativeFile": "visual_kanban_227_native.png",
       "officialFile": "visual_kanban_227_official.png",
-      "nativeBytes": 77048,
+      "nativeBytes": 77049,
       "officialBytes": 62595,
-      "nativeSha256": "0f02c0c4c549f11a16c64b5bd71fc0148c1709dd1bf0fb0282f52df132c537b6",
+      "nativeSha256": "dc7fbe281bdf5c71dc4c618ead33e4f5a1b6167afc2d0094cfa441597decee6f",
       "officialSha256": "403dd1407f55b9a1deb71514135677495b66b0495bce8fc5c2b0c3bad6b4ee43"
     },
     {
@@ -1154986,9 +1154986,9 @@
       "officialManifestSourceSha256": "be054fd1233922dc34a336338facca5209c238efe15c4ed7d9a201a8de20f64b",
       "nativeFile": "visual_kanban_228_native.png",
       "officialFile": "visual_kanban_228_official.png",
-      "nativeBytes": 60000,
+      "nativeBytes": 57128,
       "officialBytes": 48109,
-      "nativeSha256": "e1f7db2dc08d802ff1060d79e39fe23dc23bc5abe7ef112530c448b3af6dcf1a",
+      "nativeSha256": "1874aabbe305d68a7eca032270d2ad651fd58f119f12f5540595b0e55f1524bc",
       "officialSha256": "6cf4807c511ef0db8b0311067cae8c595347af81f2b1770d2f01e5ad00ba8252"
     },
     {
@@ -1155172,9 +1155172,9 @@
       "officialManifestSourceSha256": "84b2980a03d0b2207fae1c4168c876359bb5d7d6191d8613aa65862cb8c875ad",
       "nativeFile": "visual_kanban_229_native.png",
       "officialFile": "visual_kanban_229_official.png",
-      "nativeBytes": 46474,
+      "nativeBytes": 47264,
       "officialBytes": 39099,
-      "nativeSha256": "9531cb2510f848780c826e04036eb9abb5adb6b5179fdd3f69dbe0647c798fb5",
+      "nativeSha256": "7788274d175162c6960d442958e26fa771549baa9f1579d1d6c611c15a2981f3",
       "officialSha256": "bda4f34f08d06a899c262dd8c34331d0965da511b6bef8b50007c4a872d0a611"
     },
     {
@@ -1155358,9 +1155358,9 @@
       "officialManifestSourceSha256": "b0c2801ca8c9f96973cbd05ed1cf51b4ee9f63fc0acb1a0aa6a6cfdb54737baf",
       "nativeFile": "visual_kanban_230_native.png",
       "officialFile": "visual_kanban_230_official.png",
-      "nativeBytes": 40455,
+      "nativeBytes": 38798,
       "officialBytes": 34050,
-      "nativeSha256": "fbe4a4245115de6ea2458557e7b246039d944be4547aa95dcd884242367619da",
+      "nativeSha256": "c21a637d38844a70809c8fa320c643f03613a64b7557e19ce69cd1d5e6a08282",
       "officialSha256": "110cbedefdfcf6a820e24e7c718ca15c81885c2a0adb3fc4a500e896ec047276"
     },
     {
@@ -1155544,9 +1155544,9 @@
       "officialManifestSourceSha256": "f9da754c3f1e7c69b60bbf341f6a0d7d04605c4842959d804fbfa81025d0e332",
       "nativeFile": "visual_kanban_231_native.png",
       "officialFile": "visual_kanban_231_official.png",
-      "nativeBytes": 79740,
+      "nativeBytes": 80068,
       "officialBytes": 64674,
-      "nativeSha256": "136aaff00d776fafb2ee1be4e0851e80c843109df65f3ad9e38816bb3a5582b0",
+      "nativeSha256": "dd3cdc0a4ab5870290b43d332d2eda30d7a1d3153f8c0335f8b7f436c5154256",
       "officialSha256": "ebdde3301380549082c02495a788f0ca4d76f538500b767e4f168d02ac0a497f"
     },
     {
@@ -1155730,9 +1155730,9 @@
       "officialManifestSourceSha256": "7aacf2c7ab802f4b88d4af79e9a12899e18890003660560e7cb5b4e9864f173f",
       "nativeFile": "visual_kanban_232_native.png",
       "officialFile": "visual_kanban_232_official.png",
-      "nativeBytes": 60772,
+      "nativeBytes": 58740,
       "officialBytes": 49807,
-      "nativeSha256": "216d40e4262496962bfbc34c8f60c5479fbd910771c940db1f9157ad158a803c",
+      "nativeSha256": "33f718bb8a273d96e4c68d5355859a926f582b2056ee6369141dc293c5d991a3",
       "officialSha256": "b2dd19d5ff226425c35938db02efcf5121a61c81f291abe5239a3df5f07f5a28"
     },
     {
@@ -1155916,9 +1155916,9 @@
       "officialManifestSourceSha256": "c4137b8996d8631b41ebb6f19a09bd8a87fe1c3810d0b41e168dd5d059c4f3c0",
       "nativeFile": "visual_kanban_233_native.png",
       "officialFile": "visual_kanban_233_official.png",
-      "nativeBytes": 46217,
+      "nativeBytes": 46373,
       "officialBytes": 38925,
-      "nativeSha256": "9994e92e40d4772e1327ee7d308b208b95b6740173e68494ed09d5a3ee17f2c3",
+      "nativeSha256": "9f8be9c7fe33376a04217a0f6e52a8b5a8f2f1d2cdb62be01f91295d35cddcb6",
       "officialSha256": "f1a20a4486ef1db9bcee991712fd9690de1affbd9a78923745930b8aa28491c1"
     },
     {
@@ -1156102,9 +1156102,9 @@
       "officialManifestSourceSha256": "fad8b284c9d766a8e7abe1785c235aff13fcdbacb1e3ef289c455ded5c061f72",
       "nativeFile": "visual_kanban_234_native.png",
       "officialFile": "visual_kanban_234_official.png",
-      "nativeBytes": 38084,
+      "nativeBytes": 36296,
       "officialBytes": 32206,
-      "nativeSha256": "ddbd18d3640fa594f10d990d7964d8515f6ce2118bf8e82d62786677e7ed677c",
+      "nativeSha256": "70ef53aa301f9f8401d3eaf59b91e3b017e9e31a9eeb2b96eaa69f1f9152ac8a",
       "officialSha256": "76ca881fe3e19df4b9b3c3ddc266469fb5f41603b0c2fcc22dd4bdc3f8d6b44b"
     },
     {
@@ -1156288,9 +1156288,9 @@
       "officialManifestSourceSha256": "23b65032caad1c0049e8badcb399cb3f893351cea8a952dba82c78812e844240",
       "nativeFile": "visual_kanban_235_native.png",
       "officialFile": "visual_kanban_235_official.png",
-      "nativeBytes": 81761,
+      "nativeBytes": 82544,
       "officialBytes": 66656,
-      "nativeSha256": "38e2776e4fa65e69750e1c1e36df2f382583bbece3805230d6f420d43315eb15",
+      "nativeSha256": "b892f3048f5d8a8b699ccda4fbfd99d1e294897ee6404b499b576b4089d63aaf",
       "officialSha256": "1ff5c0c36578203ef2d919e9e9b239a7930083af036555ff8aca43d66c5f46c5"
     },
     {
@@ -1156474,9 +1156474,9 @@
       "officialManifestSourceSha256": "970e6772449b29502e7c9cab8e82b7e302f48ff2106ace42286ffa5853461a13",
       "nativeFile": "visual_kanban_236_native.png",
       "officialFile": "visual_kanban_236_official.png",
-      "nativeBytes": 58821,
+      "nativeBytes": 55705,
       "officialBytes": 46563,
-      "nativeSha256": "157d40fe77189c4df7bb2074d484e1cf874d08c86bbd2c82b08cd62b85cc9f3b",
+      "nativeSha256": "2f2202511332e12becc675aa4ffe1ae057c4f2e1a25f2f413719cadca643e5a0",
       "officialSha256": "61ead475f6da1883c001b2bd57499bb086ba0c613308f2703d96805a43f62762"
     },
     {
@@ -1156660,9 +1156660,9 @@
       "officialManifestSourceSha256": "c4092342c4b8e85f3c29d084b977084b1e0fb63e99c14c15b9ee2884bb02700c",
       "nativeFile": "visual_kanban_237_native.png",
       "officialFile": "visual_kanban_237_official.png",
-      "nativeBytes": 41272,
+      "nativeBytes": 41086,
       "officialBytes": 35158,
-      "nativeSha256": "2c2eea2a9147e48e832a2ff74f8bfbbc40d125e65f3829ed1be1ca56887e7291",
+      "nativeSha256": "7c4ec4d79c92159a2a5a4d198ea53a7f9cec61450347427e865275e5ed2503f1",
       "officialSha256": "04454c70f880d22c96474955c23008a68ea7a6f7d643609b678a4ca99128d481"
     },
     {
@@ -1156846,9 +1156846,9 @@
       "officialManifestSourceSha256": "a6843ced28c3ecdebec479e4a91ed02162b8c27a4769b57f0126b1b918cfa8a2",
       "nativeFile": "visual_kanban_238_native.png",
       "officialFile": "visual_kanban_238_official.png",
-      "nativeBytes": 39739,
+      "nativeBytes": 37426,
       "officialBytes": 33837,
-      "nativeSha256": "a9f1fc316c91d618e44da1ec5843c67d5e3294a6c013964aff9da5ba9837c307",
+      "nativeSha256": "4efe65a84838c29461946000eb7af56e707bfc534f063ae3cc9d5ddcaa244195",
       "officialSha256": "5b56b82e4218d6ca232538ca74e9473dddfac9cf405d3b5e98794d81f854f397"
     },
     {
@@ -1157032,9 +1157032,9 @@
       "officialManifestSourceSha256": "aa3d60ef50e0a575531551e549fa2bc77783974502fe0d9330e9b1221ddfd84f",
       "nativeFile": "visual_kanban_239_native.png",
       "officialFile": "visual_kanban_239_official.png",
-      "nativeBytes": 76903,
+      "nativeBytes": 76622,
       "officialBytes": 61998,
-      "nativeSha256": "dcaf8ae6cedacb65dc30e59cadb4347af9fccc9a49e2bba8389c31e80dfdf5f4",
+      "nativeSha256": "bbe7bc56d546cc45be97e22d2e5bf75e6ecc3cd9236c91c7569e72a909efbb21",
       "officialSha256": "989a8e44400bf4acc68840f244258ce1395b5f3fede4e21fc787168ec61d5390"
     },
     {
@@ -1157218,9 +1157218,9 @@
       "officialManifestSourceSha256": "2b9ee24094690d1f3abbfecb43bf23cdbf80e7cfd939a5bbc81ac46307d2ae2d",
       "nativeFile": "visual_kanban_240_native.png",
       "officialFile": "visual_kanban_240_official.png",
-      "nativeBytes": 58974,
+      "nativeBytes": 56983,
       "officialBytes": 47228,
-      "nativeSha256": "02a27d620def827d0a44c296b9e2c5512800959dab9e59c58da99cd6ab4f0b9e",
+      "nativeSha256": "169628d5d2b94c5bc58d16dacb48f4076e8b16d612999d9d1ea86b3830663130",
       "officialSha256": "c63c77957af126ec91b6d67f9615a0c1cdda0dd4120c380d7d5a75960e8bc18d"
     },
     {
@@ -1157404,9 +1157404,9 @@
       "officialManifestSourceSha256": "df799989df1645586b26eaad6c3e9d9d32c1c9051bfb37d0db9b670e377426f5",
       "nativeFile": "visual_kanban_241_native.png",
       "officialFile": "visual_kanban_241_official.png",
-      "nativeBytes": 68757,
+      "nativeBytes": 68641,
       "officialBytes": 59197,
-      "nativeSha256": "9af98b5918cee6113a23c0864f2f43ec1ec391313fce69921c5ad10f9fdb8fab",
+      "nativeSha256": "07885bc1cedd430742e361c0f82e91c29cd460eef39178c1254c1601f69e03da",
       "officialSha256": "84c29c7c8ec880d31eeb8c5df3ec3a5dc50488bd7a003295c6b70415769bc3a4"
     },
     {
@@ -1157590,9 +1157590,9 @@
       "officialManifestSourceSha256": "df74a2ee2ea930c6235d3fdd503bb0305eeb92baca7eff6fddb7aa38c432d277",
       "nativeFile": "visual_kanban_242_native.png",
       "officialFile": "visual_kanban_242_official.png",
-      "nativeBytes": 50926,
+      "nativeBytes": 48188,
       "officialBytes": 40598,
-      "nativeSha256": "e14ae0f70ba1b28ac47021e4fb5c62367f648e0248c4b0e71418abf927a8efff",
+      "nativeSha256": "24d52cc8ab250e946e8518d3bf73dac7c614517f458f6e87f19f9dc3a56ad7f0",
       "officialSha256": "c3475ebda45dca81644179b18fbabbc875bb5508d2752766e1bed716e606d73a"
     },
     {
@@ -1157776,9 +1157776,9 @@
       "officialManifestSourceSha256": "760c3b19987306d3316fa149702a9e02d4faf16af78f59fa91b9346d1046595c",
       "nativeFile": "visual_kanban_243_native.png",
       "officialFile": "visual_kanban_243_official.png",
-      "nativeBytes": 104117,
+      "nativeBytes": 102916,
       "officialBytes": 82262,
-      "nativeSha256": "4b1e7efe2dbcadc3ce2f882d627048ee7045dfddad0f2287a4e693c3ceb20338",
+      "nativeSha256": "e1ddb25fb27bd857d14791286ec4086f39560599d1e2b31b3743bc70f1278a23",
       "officialSha256": "e961b93bb369c7b90853edc21a5b0b2cbc96344eef5d579e7f5b7f5b30de3941"
     },
     {
@@ -1157962,9 +1157962,9 @@
       "officialManifestSourceSha256": "d67caa78722874dd8c82bab4442888181657b7139ca3a770e9dc650af7ec3f43",
       "nativeFile": "visual_kanban_244_native.png",
       "officialFile": "visual_kanban_244_official.png",
-      "nativeBytes": 75215,
+      "nativeBytes": 69606,
       "officialBytes": 57667,
-      "nativeSha256": "02bdfe9a7dc08a143e07c14cf5536255693c25f122fe59d1a11088c846a10b5c",
+      "nativeSha256": "b27e0732a78debb8b8f3a0f0b21f3dfcc673efe71af26a67544d664e93a36855",
       "officialSha256": "a66d1e35f570cdaa227130e576ad5624c547d587011d5d7b9c6bf48030b30495"
     },
     {
@@ -1158148,9 +1158148,9 @@
       "officialManifestSourceSha256": "a39fe964399216be5ed632bd3cc35bf8b7cda1b3c5392329ae02c7429f8e430a",
       "nativeFile": "visual_kanban_245_native.png",
       "officialFile": "visual_kanban_245_official.png",
-      "nativeBytes": 72407,
+      "nativeBytes": 71416,
       "officialBytes": 57702,
-      "nativeSha256": "5fb0868f2ec9b4b742cfcb5e372ceb150212514c62ecf6ada34c01f4ef863777",
+      "nativeSha256": "34600e9cc2ede460ad75014716ebb203fe8f2ea519c121dc9ce897887f87646e",
       "officialSha256": "bcbbe4efb850f603dafee3bc76a3efd63f7ee516a12d270f88e0480374be2bc1"
     },
     {
@@ -1158334,9 +1158334,9 @@
       "officialManifestSourceSha256": "904376cdea8fb87e9cfd941dc58b22cff34fa701373fd292a59e94bfdcc63485",
       "nativeFile": "visual_kanban_246_native.png",
       "officialFile": "visual_kanban_246_official.png",
-      "nativeBytes": 47604,
+      "nativeBytes": 44510,
       "officialBytes": 38729,
-      "nativeSha256": "303c5ef796da51d0baa66138d6781bfabb11ffc600e1b2149ab090a14ebcf685",
+      "nativeSha256": "15f7994573e7bee59105547a0f78775e2311c8eb59dc99013b12f9d0ea24b166",
       "officialSha256": "582748c71483b046b18eaaf1d9c96bf877c9b72a75bf19ede796c48de53a3898"
     },
     {
@@ -1158520,9 +1158520,9 @@
       "officialManifestSourceSha256": "fc81d9791e7d5d0f4da44abe678bed46e8b04bf460876da8497ac6ac06b8be6d",
       "nativeFile": "visual_kanban_247_native.png",
       "officialFile": "visual_kanban_247_official.png",
-      "nativeBytes": 109256,
+      "nativeBytes": 106323,
       "officialBytes": 85797,
-      "nativeSha256": "07d5048e8313e4453e99f1352fede010be2d19d62e6faddccc0525a5f41a705b",
+      "nativeSha256": "4dd2f68edab2c7d423b56204e175f6709fa0395e89ae1b0ce3f477cda0d9efb0",
       "officialSha256": "34aa3610b739a0394aae4497cce7d9ab569a75a0a4b44412261db233b9173102"
     },
     {
@@ -1158706,9 +1158706,9 @@
       "officialManifestSourceSha256": "946957f1a648ba114cce75d9c96c068747feb472b4844e5a4ebe3610b56bb282",
       "nativeFile": "visual_kanban_248_native.png",
       "officialFile": "visual_kanban_248_official.png",
-      "nativeBytes": 81031,
+      "nativeBytes": 77136,
       "officialBytes": 64327,
-      "nativeSha256": "ce491519b187e7a8556e31dc9b7ef8f6436656339903d78d6d4a2a89aab4db44",
+      "nativeSha256": "9bf07bc1a1f164b81dd038c698ac6ccdf9731f8d04a558c26d6d45de35ae5344",
       "officialSha256": "ec40afe3991327d60962b86f342c3746b59b6bc7b25eed7d1400ae60732881d9"
     },
     {
@@ -1158892,9 +1158892,9 @@
       "officialManifestSourceSha256": "0ba15a214cf22cba4fea9e61fd9b1e11369253c2eb025ba64827eddb28b76ce7",
       "nativeFile": "visual_kanban_249_native.png",
       "officialFile": "visual_kanban_249_official.png",
-      "nativeBytes": 67086,
+      "nativeBytes": 66160,
       "officialBytes": 54967,
-      "nativeSha256": "a910f2af2da271eceebe36fe3929c2bf656366df8e188b6d920fbff647d2ee6b",
+      "nativeSha256": "f7454eed973794525d2111db8b1229a62e249c4b3a4c9e204b07a4c7ba088e56",
       "officialSha256": "ec4d8d7fb0af4dcd14cb03be387683af89d364637e21cc0dbf6a143cc2ef9022"
     },
     {
@@ -1159078,9 +1159078,9 @@
       "officialManifestSourceSha256": "4f9d7e7ae7abe773d3c09e4a11081380276349f108e04cc5bad27780ace6ccc9",
       "nativeFile": "visual_kanban_250_native.png",
       "officialFile": "visual_kanban_250_official.png",
-      "nativeBytes": 52827,
+      "nativeBytes": 49292,
       "officialBytes": 41280,
-      "nativeSha256": "7cc7c43e9c2b23052c88b2ea6829cbc994fbba95811e9b1c72706def9a269125",
+      "nativeSha256": "508c514c448ab5dab73fb3d0937b9e39dab2356280c1e6f7e726aae8fab596f5",
       "officialSha256": "ea0da57d1ff51cde53ac5829b9c941934d9f02cab4aa762bed2b27660d34b378"
     },
     {
@@ -1159264,9 +1159264,9 @@
       "officialManifestSourceSha256": "189c3df2d59b37567d257bc72edd693545e8ca0286a321c05817c66130a4532a",
       "nativeFile": "visual_kanban_251_native.png",
       "officialFile": "visual_kanban_251_official.png",
-      "nativeBytes": 111247,
+      "nativeBytes": 109357,
       "officialBytes": 87145,
-      "nativeSha256": "5bdd1fb5ad1e1fbe8294b019cb03e04684500dbe0c2ff4011a023205b32fba1e",
+      "nativeSha256": "cc450e825936a150eeff0503032bb4abd1aaef206a3430e77d6ae4cec1a45d50",
       "officialSha256": "661c58d46636a59392253c250b792979dc8a06eba5cf859f32a67679b4147cda"
     },
     {
@@ -1159450,9 +1159450,9 @@
       "officialManifestSourceSha256": "069698a553297fab8199ebfa51e47997a9c4a3e60d36b4c591217a4b1f4c0917",
       "nativeFile": "visual_kanban_252_native.png",
       "officialFile": "visual_kanban_252_official.png",
-      "nativeBytes": 73987,
+      "nativeBytes": 69715,
       "officialBytes": 57970,
-      "nativeSha256": "092441a5022de5231a6a0cb6cde6e1e56c6c0c950e7489c15612d7a16eaf4ae3",
+      "nativeSha256": "22df4db8722557fd552124efa576e4bc1964390a479d409246b272ce789d3845",
       "officialSha256": "58d550bf09ce7c92002c16c4e41f9bdd91658e131fb00ea9670423cd64881419"
     },
     {
@@ -1159636,9 +1159636,9 @@
       "officialManifestSourceSha256": "16a8d87936a7a3936fd3c9652cffbd559483125e5cb4f6b9dbbd2c3911c81041",
       "nativeFile": "visual_kanban_253_native.png",
       "officialFile": "visual_kanban_253_official.png",
-      "nativeBytes": 67199,
+      "nativeBytes": 66689,
       "officialBytes": 55790,
-      "nativeSha256": "558f9488e5d29231b1f3419ff63006536d4cb3e242df17310ca7cb40ba9fd919",
+      "nativeSha256": "42979a2a36b1c55dd4388927d06be2efa8c0d2f34375f152a8d52c7f430e5a88",
       "officialSha256": "d9556868237a37d0e33796634a4bd80b469055d3ff561edfe2f958b28091b28f"
     },
     {
@@ -1159822,9 +1159822,9 @@
       "officialManifestSourceSha256": "c66cffaacf8b7b3a54d2e17a15ddbf5a58dd5129640a4590cfc7c79bcb07d7e4",
       "nativeFile": "visual_kanban_254_native.png",
       "officialFile": "visual_kanban_254_official.png",
-      "nativeBytes": 50495,
+      "nativeBytes": 46781,
       "officialBytes": 40395,
-      "nativeSha256": "375d8f2c35e1fe5661c1e8a6e18670b36c4b7f6e613cc963c2031189ed6c4a15",
+      "nativeSha256": "50214e8eb87512fcd9508b3f8286a72967c4105597f2b8747df5c3e850bbc206",
       "officialSha256": "6940408f8852667fa68d9cc64f8726b89f8cf600948a4b60e39679a0e5fd3d9b"
     },
     {
@@ -1160008,9 +1160008,9 @@
       "officialManifestSourceSha256": "62e2b950c391be823b4016a3aa1222836d891079db6e7bb75eac5725c10919df",
       "nativeFile": "visual_kanban_255_native.png",
       "officialFile": "visual_kanban_255_official.png",
-      "nativeBytes": 107046,
+      "nativeBytes": 105366,
       "officialBytes": 82082,
-      "nativeSha256": "b3d9559eeb8b1f8e240a67dbe57ffee5f6ecdab61aec3dba879353e550ef4b50",
+      "nativeSha256": "a84e59f085f649b882af1c4fe0dbaa3603bb882a38747236a0ef962f4088ec4e",
       "officialSha256": "4b359612344fa86eab662ef9f3a8e02e5eaf554911452aa9912deb047005a4c3"
     },
     {
@@ -1160194,9 +1160194,9 @@
       "officialManifestSourceSha256": "ecbc8e89c03cdb5df25510e5b61fd6a8146e1a9a8895135b6b630695a2b59f03",
       "nativeFile": "visual_kanban_256_native.png",
       "officialFile": "visual_kanban_256_official.png",
-      "nativeBytes": 73441,
+      "nativeBytes": 68971,
       "officialBytes": 58201,
-      "nativeSha256": "0ba31526a3198e1e855cecdce13be2c4b8a44206287bebb8200436c1121d28b9",
+      "nativeSha256": "ff59003a0da399a66167c59a6f5d257414931aaf1591abd4f5dc470f680487b0",
       "officialSha256": "fa990c492d807c3f5b02567e9ea3920fecebf89186687403b65f6bd6fdd54395"
     },
     {

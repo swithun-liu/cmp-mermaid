@@ -154,7 +154,7 @@ gate reports `0 fail / 0 review` across all 8,448 pairs.
 | XY Chart | 256 | 0 | `1.012-1.014` | `1.009-1.012` | `0.934-1.091` |
 | Quadrant | 256 | 0 | `1.014-1.035` | `1.016-1.025` | `1.026-1.037` |
 | Timeline | 256 | 0 | `1.026-1.064` | `1.000-1.074` | `1.020-1.159` |
-| Kanban | 254 | 2 | `1.012-1.088` | `0.927-1.172` | `0.992-1.139` |
+| Kanban | 254 | 2 | `1.012-1.088` | `0.895-1.154` | `0.999-1.144` |
 | Sequence | 256 | 0 | `0.978-1.169` | `1.013-1.171` | `0.957-1.255` |
 | Class | 256 | 0 | `1.036-1.219` | `0.870-1.085` | `0.853-1.270` |
 | State | 256 | 0 | `0.978-1.069` | `1.013-1.186` | `0.801-1.175` |
@@ -690,7 +690,9 @@ The fresh 256-case independent-scenario Native/Official audit reports
 
 The fresh 256-case independent-scenario Native/Official audit reports
 `254 pass / 2 review / 0 fail`; geometry has 0 hard failures with width
-`1.012-1.088`, height `0.927-1.172`, and foreground ink `0.992-1.139`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`1.012-1.088`, height `0.895-1.154`, and foreground ink `0.999-1.144`. Case
+035 confirms single-line `Declare`, `Inspect`, and `Shipment` labels plus
+section-label `textColor` inheritance. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 

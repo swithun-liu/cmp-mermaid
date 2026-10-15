@@ -156,6 +156,7 @@ internal class KanbanLayout {
                 horizontalAlignment = SceneTextAlignment.Center,
                 softWrap = true,
                 htmlLabel = true,
+                wrappingWidth = section.label.wrappingWidth,
                 zIndex = SECTION_Z_START + section.index * SECTION_Z_STRIDE + 1,
             )
         }
@@ -405,6 +406,9 @@ private class KanbanNodeFactory(
                     width = metrics.width.coerceAtMost(maxWidth),
                     height = metrics.height.coerceAtLeast(fontSize * lineHeight),
                 ),
+                // createText.ts -> addHtmlSpan keeps this CSS max-width after
+                // the foreignObject is narrowed to its measured bounding box.
+                wrappingWidth = maxWidth,
             ),
         )
     }
@@ -471,9 +475,7 @@ private class KanbanNodeFactory(
             } else {
                 fill
             },
-            text = context.theme.mindmap.sectionLabelColors.getOrElse(paletteIndex) {
-                context.theme.nodeText
-            },
+            text = context.theme.textColor,
         )
     }
 
@@ -519,6 +521,7 @@ private data class KanbanItemVisual(
 private data class KanbanTextVisual(
     val rendered: MermaidRenderedText,
     val metrics: TextMetrics,
+    val wrappingWidth: Float,
 )
 
 private data class KanbanSectionColors(
@@ -594,6 +597,7 @@ private fun KanbanTextVisual.toSceneText(
         horizontalAlignment = alignment,
         softWrap = true,
         htmlLabel = true,
+        wrappingWidth = wrappingWidth,
         zIndex = zIndex,
     )
 }

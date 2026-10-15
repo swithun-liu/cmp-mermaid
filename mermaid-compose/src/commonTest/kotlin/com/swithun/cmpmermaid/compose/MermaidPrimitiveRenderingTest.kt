@@ -83,6 +83,19 @@ class MermaidPrimitiveRenderingTest {
     }
 
     @Test
+    fun keepsHtmlWrappingWidthSeparateFromMeasuredBounds() {
+        val maximumWidth = mermaidTextWrappingWidth(
+            boundsWidth = 56f,
+            wrappingWidth = 200f,
+        )
+
+        assertEquals(200f, maximumWidth)
+        assertEquals(true, htmlLabelFitsWithoutWrapping(56f, maximumWidth))
+        assertEquals(56f, mermaidTextWrappingWidth(56f, null))
+        assertEquals(56f, mermaidTextWrappingWidth(56f, 40f))
+    }
+
+    @Test
     fun preservesSubpixelMaximumWidthBeforeComposeConstraintRounding() {
         assertEquals(
             186.56717f,

@@ -74,6 +74,32 @@ class KanbanLayoutTest {
     }
 
     @Test
+    fun preservesHtmlMaxWidthAndInheritedSectionTextColor() {
+        val scene = render(
+            """
+            kanban
+              section1[Declare]
+                [Shipment Declare]
+                [Shipment Inspect]
+                [Shipment Assess]
+                [Shipment Release]
+              section2[Inspect]
+            """.trimIndent(),
+        )
+        val texts = scene.elements.filterIsInstance<SceneText>().associateBy(SceneText::text)
+        val declare = texts.getValue("Declare")
+        val inspect = texts.getValue("Inspect")
+        val shipmentDeclare = texts.getValue("Shipment Declare")
+
+        assertEquals(56f, declare.bounds.width)
+        assertEquals(200f, declare.wrappingWidth)
+        assertEquals(200f, inspect.wrappingWidth)
+        assertEquals(175f, shipmentDeclare.wrappingWidth)
+        assertEquals(context.theme.textColor, declare.color)
+        assertEquals(context.theme.textColor, inspect.color)
+    }
+
+    @Test
     fun measuresItemTitleAtUpstreamWidthMinusTen() {
         val label = "Authorization And Policy Evaluation Label"
         val scene = assertIs<GMResult.Ok<MermaidScene>>(

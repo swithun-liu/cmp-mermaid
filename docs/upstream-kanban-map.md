@@ -35,10 +35,10 @@ Status follows the Mermaid `12.0.0` production call order. A stage is not
 | 1 | `kanbanRenderer.ts -> draw`: read `getData`, call `getConfig`, mutate only that returned copy, create section/item layers, and preserve source order | `KanbanLayout.layout` | **Platform adaptation**: DOM groups become ordered SceneGraph elements while section/item ordering is retained; the local `htmlLabels = false` mutation's lack of effect on fresh `getConfig()` reads is preserved |
 | 2 | `kanbanRenderer.ts -> draw`: measure every `kanbanSection` through `insertCluster` before placing items | `KanbanNodeFactory.measure`, section measurement loop | **Platform adaptation**: browser measurement becomes `TextMetricProvider`; the measured maximum label height and fixed section coordinates are retained |
 | 3 | `kanbanRenderer.ts -> draw`: set item width, call `insertNode`, read its rendered bounds, and advance the vertical cursor | `KanbanNodeFactory.measureItem`, item placement loop | **Platform adaptation**: the same `sectionWidth - 15`, rendered height, and 5px item gap feed native geometry |
-| 4 | `kanbanItem.ts -> kanbanItem`; `util.ts -> labelHelper`; `createText.ts -> createText`, `addHtmlSpan`; `handle-markdown-text.ts -> markdownToHTML` for the title | `KanbanNodeFactory.measure`, `measureItem`, title `SceneText`, and Compose HTML-label measurement | **Unsupported**: HTML `max-width`, `break-spaces`, 1.5 line-height, and subpixel intrinsic-width comparison are translated, but the bundled fallback cannot reproduce proprietary Trebuchet MS metrics exactly |
+| 4 | `kanbanItem.ts -> kanbanItem`; `util.ts -> labelHelper`; `createText.ts -> createText`, `addHtmlSpan`; `handle-markdown-text.ts -> markdownToHTML` for the title | `KanbanNodeFactory.measure`, `measureItem`, title `SceneText`, and Compose HTML-label measurement | **Unsupported**: measured `foreignObject` bounds and retained CSS `max-width` are represented separately; `break-spaces`, 1.5 line-height, and subpixel intrinsic-width comparison are translated, but the bundled fallback cannot reproduce proprietary Trebuchet MS metrics exactly |
 | 5 | `kanbanItem.ts -> kanbanItem`; `util.ts -> insertLabel`; `createText.ts -> createText`, `addHtmlSpan` for ticket and assignee | `KanbanNodeFactory.measure`, metadata placement, and Compose HTML-label measurement | **Unsupported**: HTML line-height and width comparison are translated, but exact Trebuchet MS glyph metrics are host-dependent |
 | 6 | `kanbanItem.ts -> kanbanItem`: total width/height, title/metadata transforms, card rectangle, priority line, and intersection bounds | `KanbanNodeFactory.measureItem` and item paint loop | **Platform adaptation**: SVG transforms become absolute SceneGraph bounds while retaining the upstream formulas and paint order |
-| 7 | `clusters.js -> kanbanSection`; `styles.ts -> getStyles` | section paint loop and `sectionColors` | **Platform adaptation**: SVG/CSS becomes explicit SceneGraph paint while retaining the palette selector offset and classic/neo styling |
+| 7 | `clusters.js -> kanbanSection`; `styles.ts -> getStyles` | section paint loop and `sectionColors` | **Platform adaptation**: SVG/CSS becomes explicit SceneGraph paint while retaining the palette selector offset, classic/neo styling, and HTML section-label inheritance from `textColor`; `cScaleLabel*` remains limited to SVG `<text>` |
 | 8 | `kanbanRenderer.ts -> setupGraphViewbox` | `normalize` | **Platform adaptation**: the upstream `mindmap.padding` / `mindmap.useMaxWidth` compatibility quirk is retained without a DOM viewBox |
 
 `getConfig()` returns a copy of the effective current configuration.
@@ -49,6 +49,15 @@ so titles, tickets, assignees, and section labels follow `createText`'s
 `white-space: break-spaces`, and line-height `1.5`. The SVG
 `splitLineToFitWidth` path is not in the effective Kanban production call
 chain.
+
+`addHtmlSpan` first measures a nowrap XHTML `div`. `kanbanSection` and
+`labelHelper` then size the `foreignObject` to that measured bounding box while
+the inner `div` retains its original CSS `max-width`. Native therefore stores
+the measured box in `SceneText.bounds` and the independent CSS limit in
+`SceneText.wrappingWidth`; using the measured width as the second layout limit
+would incorrectly wrap short labels such as `Declare`. Section labels use the
+HTML `.cluster-label, .label` `textColor` rule, not the `.section-X text`
+`cScaleLabel*` rule.
 
 Mermaid's classic theme starts with proprietary Trebuchet MS. The public
 Compose adapter cannot bundle that font and its cross-platform font API cannot
@@ -61,9 +70,11 @@ task-label wrap boundaries. The retained Arimo fallback uses the measured
 
 The final production build was recaptured across all 256 Native/Official
 cases. Detail reports `254 pass / 2 review / 0 fail`; geometry reports no
-failures or reviews. In cases 242 and 250, the bundled Arimo fallback wraps
-`Program Case Schedule` and `Program Case Respond`, while Mermaid's Trebuchet
-renderer keeps each label on one line.
+failures or reviews with width `1.012-1.088`, height `0.895-1.154`, and
+foreground ink `0.999-1.144`. Case 035 confirms single-line section/task labels
+and `textColor` inheritance. In cases 242 and 250, the bundled Arimo fallback
+wraps `Program Case Schedule` and `Program Case Respond`, while Mermaid's
+Trebuchet renderer keeps each label on one line.
 
 Kanban must not be described as complete or Stable while exact Trebuchet
 metrics remain unsupported. The `254/256` detail result records the current

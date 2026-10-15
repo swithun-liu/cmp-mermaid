@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T19:02:52.233Z",
-  "inputDirectory": "captures/local/independent-visual-parity-v2/kanban",
+  "generatedAt": "2026-10-15T09:44:44.448Z",
+  "inputDirectory": "captures/local/independent-visual-parity-v3/kanban",
   "corpusSource": "visual-parity",
   "corpusKind": "kanban",
   "theme": null,
@@ -41,8 +41,8 @@
             255
           ]
         ],
-        "inkPixels": 191520,
-        "inkRatio": 0.17733333333333334,
+        "inkPixels": 192943,
+        "inkRatio": 0.17865092592592594,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -83,7 +83,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.06875
+      "inkRatio": 1.0766908482142858
     },
     {
       "id": "visual_kanban_002",
@@ -107,13 +107,13 @@
             255
           ]
         ],
-        "inkPixels": 79486,
-        "inkRatio": 0.07359814814814815,
+        "inkPixels": 79798,
+        "inkRatio": 0.07388703703703704,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -148,8 +148,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0400795572013661
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0441620977977835
     },
     {
       "id": "visual_kanban_003",
@@ -173,8 +173,8 @@
             255
           ]
         ],
-        "inkPixels": 278148,
-        "inkRatio": 0.25754444444444446,
+        "inkPixels": 279930,
+        "inkRatio": 0.25919444444444445,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -215,7 +215,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.073934648396326
+      "inkRatio": 1.0808149838416365
     },
     {
       "id": "visual_kanban_004",
@@ -239,8 +239,8 @@
             255
           ]
         ],
-        "inkPixels": 103454,
-        "inkRatio": 0.09579074074074075,
+        "inkPixels": 103694,
+        "inkRatio": 0.09601296296296297,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -281,7 +281,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.0361771599126621
+      "inkRatio": 1.0385809579135035
     },
     {
       "id": "visual_kanban_005",
@@ -305,8 +305,8 @@
             255
           ]
         ],
-        "inkPixels": 190730,
-        "inkRatio": 0.17660185185185184,
+        "inkPixels": 191960,
+        "inkRatio": 0.17774074074074073,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -347,7 +347,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0697739637668966
+      "inkRatio": 1.0766728363901508
     },
     {
       "id": "visual_kanban_006",
@@ -371,13 +371,13 @@
             255
           ]
         ],
-        "inkPixels": 79822,
-        "inkRatio": 0.07390925925925926,
+        "inkPixels": 79850,
+        "inkRatio": 0.07393518518518519,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -412,8 +412,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0431657496830853
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0435316718723455
     },
     {
       "id": "visual_kanban_007",
@@ -437,8 +437,8 @@
             255
           ]
         ],
-        "inkPixels": 279752,
-        "inkRatio": 0.2590296296296296,
+        "inkPixels": 281478,
+        "inkRatio": 0.2606277777777778,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -479,7 +479,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0750389086367567
+      "inkRatio": 1.0816716303199156
     },
     {
       "id": "visual_kanban_008",
@@ -503,8 +503,8 @@
             255
           ]
         ],
-        "inkPixels": 104175,
-        "inkRatio": 0.09645833333333333,
+        "inkPixels": 104463,
+        "inkRatio": 0.096725,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -545,7 +545,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.0348989688263694
+      "inkRatio": 1.037760028610598
     },
     {
       "id": "visual_kanban_009",
@@ -569,8 +569,8 @@
             255
           ]
         ],
-        "inkPixels": 191687,
-        "inkRatio": 0.17748796296296296,
+        "inkPixels": 192329,
+        "inkRatio": 0.1780824074074074,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -611,7 +611,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0715176110859563
+      "inkRatio": 1.0751063484876435
     },
     {
       "id": "visual_kanban_010",
@@ -635,13 +635,13 @@
             255
           ]
         ],
-        "inkPixels": 79521,
-        "inkRatio": 0.07363055555555556,
+        "inkPixels": 79556,
+        "inkRatio": 0.07366296296296296,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -676,8 +676,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0435278987979633
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0439871922733712
     },
     {
       "id": "visual_kanban_011",
@@ -701,8 +701,8 @@
             255
           ]
         ],
-        "inkPixels": 276391,
-        "inkRatio": 0.2559175925925926,
+        "inkPixels": 277141,
+        "inkRatio": 0.25661203703703706,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -743,7 +743,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0789274393766688
+      "inkRatio": 1.0818551598144996
     },
     {
       "id": "visual_kanban_012",
@@ -767,13 +767,13 @@
             255
           ]
         ],
-        "inkPixels": 103197,
-        "inkRatio": 0.09555277777777778,
+        "inkPixels": 103307,
+        "inkRatio": 0.09565462962962963,
         "contentBounds": {
           "x": 21,
-          "y": 352,
+          "y": 358,
           "width": 1161,
-          "height": 194
+          "height": 188
         }
       },
       "official": {
@@ -808,8 +808,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.065934065934066,
-      "inkRatio": 1.0375937581692776
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0386997526594142
     },
     {
       "id": "visual_kanban_013",
@@ -833,8 +833,8 @@
             255
           ]
         ],
-        "inkPixels": 191591,
-        "inkRatio": 0.17739907407407407,
+        "inkPixels": 192639,
+        "inkRatio": 0.17836944444444444,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -875,7 +875,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0700179834016554
+      "inkRatio": 1.0758709663006691
     },
     {
       "id": "visual_kanban_014",
@@ -899,13 +899,13 @@
             255
           ]
         ],
-        "inkPixels": 79644,
-        "inkRatio": 0.07374444444444445,
+        "inkPixels": 79509,
+        "inkRatio": 0.07361944444444445,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -940,8 +940,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0459243305711323
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0441514439176856
     },
     {
       "id": "visual_kanban_015",
@@ -965,8 +965,8 @@
             255
           ]
         ],
-        "inkPixels": 276311,
-        "inkRatio": 0.2558435185185185,
+        "inkPixels": 277809,
+        "inkRatio": 0.2572305555555556,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -1007,7 +1007,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0750522330860124
+      "inkRatio": 1.0808805506164867
     },
     {
       "id": "visual_kanban_016",
@@ -1031,13 +1031,13 @@
             255
           ]
         ],
-        "inkPixels": 103540,
-        "inkRatio": 0.09587037037037037,
+        "inkPixels": 103594,
+        "inkRatio": 0.09592037037037036,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -1072,8 +1072,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0378909382518045
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0384322373696873
     },
     {
       "id": "visual_kanban_017",
@@ -1097,8 +1097,8 @@
             255
           ]
         ],
-        "inkPixels": 224777,
-        "inkRatio": 0.20812685185185184,
+        "inkPixels": 226212,
+        "inkRatio": 0.20945555555555556,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -1139,7 +1139,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0790245541607661
+      "inkRatio": 1.0859131603581116
     },
     {
       "id": "visual_kanban_018",
@@ -1163,13 +1163,13 @@
             255
           ]
         ],
-        "inkPixels": 89433,
-        "inkRatio": 0.08280833333333333,
+        "inkPixels": 89604,
+        "inkRatio": 0.08296666666666666,
         "contentBounds": {
           "x": 21,
-          "y": 316,
+          "y": 323,
           "width": 1161,
-          "height": 265
+          "height": 258
         }
       },
       "official": {
@@ -1204,8 +1204,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0642570281124497,
-      "inkRatio": 1.0338597059095533
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0358364931101451
     },
     {
       "id": "visual_kanban_019",
@@ -1229,8 +1229,8 @@
             255
           ]
         ],
-        "inkPixels": 257743,
-        "inkRatio": 0.23865092592592593,
+        "inkPixels": 258429,
+        "inkRatio": 0.23928611111111112,
         "contentBounds": {
           "x": 78,
           "y": 32,
@@ -1271,7 +1271,7 @@
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
       "heightRatio": 1.083547557840617,
-      "inkRatio": 1.109956504887817
+      "inkRatio": 1.1129107273588563
     },
     {
       "id": "visual_kanban_020",
@@ -1295,13 +1295,13 @@
             255
           ]
         ],
-        "inkPixels": 110048,
-        "inkRatio": 0.10189629629629629,
+        "inkPixels": 110128,
+        "inkRatio": 0.10197037037037036,
         "contentBounds": {
           "x": 21,
-          "y": 281,
+          "y": 289,
           "width": 1161,
-          "height": 334
+          "height": 326
         }
       },
       "official": {
@@ -1336,8 +1336,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0603174603174603,
-      "inkRatio": 1.0390709092625814
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.039826267585686
     },
     {
       "id": "visual_kanban_021",
@@ -1361,8 +1361,8 @@
             255
           ]
         ],
-        "inkPixels": 225569,
-        "inkRatio": 0.20886018518518518,
+        "inkPixels": 226968,
+        "inkRatio": 0.21015555555555557,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -1403,7 +1403,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.079153590018371
+      "inkRatio": 1.085846601347214
     },
     {
       "id": "visual_kanban_022",
@@ -1427,13 +1427,13 @@
             255
           ]
         ],
-        "inkPixels": 89385,
-        "inkRatio": 0.08276388888888889,
+        "inkPixels": 89564,
+        "inkRatio": 0.08292962962962963,
         "contentBounds": {
           "x": 21,
-          "y": 316,
+          "y": 323,
           "width": 1161,
-          "height": 265
+          "height": 258
         }
       },
       "official": {
@@ -1468,8 +1468,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0642570281124497,
-      "inkRatio": 1.0345725595499895
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0366443667677492
     },
     {
       "id": "visual_kanban_023",
@@ -1493,13 +1493,13 @@
             255
           ]
         ],
-        "inkPixels": 258539,
-        "inkRatio": 0.23938796296296297,
+        "inkPixels": 259338,
+        "inkRatio": 0.24012777777777777,
         "contentBounds": {
           "x": 78,
-          "y": 19,
+          "y": 32,
           "width": 1049,
-          "height": 856
+          "height": 843
         }
       },
       "official": {
@@ -1534,8 +1534,8 @@
       "manifestGeometryWidthRatio": 1.0000000031252003,
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
-      "heightRatio": 1.1002570694087404,
-      "inkRatio": 1.109328539125286
+      "heightRatio": 1.083547557840617,
+      "inkRatio": 1.1127568555601801
     },
     {
       "id": "visual_kanban_024",
@@ -1559,13 +1559,13 @@
             255
           ]
         ],
-        "inkPixels": 110182,
-        "inkRatio": 0.10202037037037037,
+        "inkPixels": 110255,
+        "inkRatio": 0.10208796296296296,
         "contentBounds": {
           "x": 21,
-          "y": 281,
+          "y": 289,
           "width": 1161,
-          "height": 334
+          "height": 326
         }
       },
       "official": {
@@ -1600,8 +1600,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0603174603174603,
-      "inkRatio": 1.039335169603441
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.040023770893861
     },
     {
       "id": "visual_kanban_025",
@@ -1625,8 +1625,8 @@
             255
           ]
         ],
-        "inkPixels": 224576,
-        "inkRatio": 0.20794074074074073,
+        "inkPixels": 225272,
+        "inkRatio": 0.20858518518518518,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -1667,7 +1667,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0837354746554453
+      "inkRatio": 1.0870941589777245
     },
     {
       "id": "visual_kanban_026",
@@ -1691,13 +1691,13 @@
             255
           ]
         ],
-        "inkPixels": 89404,
-        "inkRatio": 0.08278148148148148,
+        "inkPixels": 89416,
+        "inkRatio": 0.0827925925925926,
         "contentBounds": {
           "x": 21,
-          "y": 316,
+          "y": 323,
           "width": 1161,
-          "height": 265
+          "height": 258
         }
       },
       "official": {
@@ -1732,8 +1732,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0642570281124497,
-      "inkRatio": 1.0363638471257839
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0365029501431602
     },
     {
       "id": "visual_kanban_027",
@@ -1757,8 +1757,8 @@
             255
           ]
         ],
-        "inkPixels": 257975,
-        "inkRatio": 0.23886574074074074,
+        "inkPixels": 258739,
+        "inkRatio": 0.23957314814814815,
         "contentBounds": {
           "x": 78,
           "y": 32,
@@ -1799,7 +1799,7 @@
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
       "heightRatio": 1.083547557840617,
-      "inkRatio": 1.1088449701700394
+      "inkRatio": 1.1121288447982394
     },
     {
       "id": "visual_kanban_028",
@@ -1823,13 +1823,13 @@
             255
           ]
         ],
-        "inkPixels": 109601,
-        "inkRatio": 0.10148240740740741,
+        "inkPixels": 109616,
+        "inkRatio": 0.10149629629629629,
         "contentBounds": {
           "x": 21,
-          "y": 281,
+          "y": 289,
           "width": 1161,
-          "height": 334
+          "height": 326
         }
       },
       "official": {
@@ -1864,8 +1864,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0603174603174603,
-      "inkRatio": 1.0402129759690217
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.0403553395846779
     },
     {
       "id": "visual_kanban_029",
@@ -1889,13 +1889,13 @@
             255
           ]
         ],
-        "inkPixels": 226142,
-        "inkRatio": 0.20939074074074074,
+        "inkPixels": 226421,
+        "inkRatio": 0.20964907407407407,
         "contentBounds": {
           "x": 34,
-          "y": 120,
+          "y": 133,
           "width": 1137,
-          "height": 655
+          "height": 642
         }
       },
       "official": {
@@ -1930,8 +1930,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.086235489220564,
-      "inkRatio": 1.08543123599065
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.086770373854653
     },
     {
       "id": "visual_kanban_030",
@@ -1955,8 +1955,8 @@
             255
           ]
         ],
-        "inkPixels": 89029,
-        "inkRatio": 0.08243425925925926,
+        "inkPixels": 89151,
+        "inkRatio": 0.08254722222222222,
         "contentBounds": {
           "x": 21,
           "y": 323,
@@ -1997,7 +1997,7 @@
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.036144578313253,
-      "inkRatio": 1.035257043850367
+      "inkRatio": 1.0366756979894647
     },
     {
       "id": "visual_kanban_031",
@@ -2021,8 +2021,8 @@
             255
           ]
         ],
-        "inkPixels": 257853,
-        "inkRatio": 0.23875277777777779,
+        "inkPixels": 258797,
+        "inkRatio": 0.23962685185185184,
         "contentBounds": {
           "x": 78,
           "y": 32,
@@ -2063,7 +2063,7 @@
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
       "heightRatio": 1.083547557840617,
-      "inkRatio": 1.1081157738670793
+      "inkRatio": 1.1121725864328842
     },
     {
       "id": "visual_kanban_032",
@@ -2087,13 +2087,13 @@
             255
           ]
         ],
-        "inkPixels": 110443,
-        "inkRatio": 0.10226203703703704,
+        "inkPixels": 110105,
+        "inkRatio": 0.10194907407407408,
         "contentBounds": {
           "x": 21,
-          "y": 281,
+          "y": 289,
           "width": 1161,
-          "height": 334
+          "height": 326
         }
       },
       "official": {
@@ -2128,8 +2128,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0603174603174603,
-      "inkRatio": 1.0431747770893154
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.039982242708176
     },
     {
       "id": "visual_kanban_033",
@@ -2153,8 +2153,8 @@
             255
           ]
         ],
-        "inkPixels": 178725,
-        "inkRatio": 0.1654861111111111,
+        "inkPixels": 180001,
+        "inkRatio": 0.1666675925925926,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -2195,7 +2195,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0833393948210648
+      "inkRatio": 1.0910738531665212
     },
     {
       "id": "visual_kanban_034",
@@ -2219,13 +2219,13 @@
             255
           ]
         ],
-        "inkPixels": 80959,
-        "inkRatio": 0.07496203703703704,
+        "inkPixels": 81351,
+        "inkRatio": 0.075325,
         "contentBounds": {
           "x": 21,
-          "y": 386,
+          "y": 393,
           "width": 1161,
-          "height": 125
+          "height": 118
         }
       },
       "official": {
@@ -2260,8 +2260,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0869565217391304,
-      "inkRatio": 1.039722086661701
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0447563763388386
     },
     {
       "id": "visual_kanban_035",
@@ -2285,13 +2285,13 @@
             255
           ]
         ],
-        "inkPixels": 221126,
-        "inkRatio": 0.2047462962962963,
+        "inkPixels": 222075,
+        "inkRatio": 0.205625,
         "contentBounds": {
           "x": 34,
-          "y": 119,
+          "y": 133,
           "width": 1137,
-          "height": 656
+          "height": 642
         }
       },
       "official": {
@@ -2326,8 +2326,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.087893864013267,
-      "inkRatio": 1.089349669193897
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.0940247993733652
     },
     {
       "id": "visual_kanban_036",
@@ -2351,8 +2351,8 @@
             255
           ]
         ],
-        "inkPixels": 98096,
-        "inkRatio": 0.09082962962962964,
+        "inkPixels": 98469,
+        "inkRatio": 0.091175,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -2393,7 +2393,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.035062728836272
+      "inkRatio": 1.038998448925327
     },
     {
       "id": "visual_kanban_037",
@@ -2417,8 +2417,8 @@
             255
           ]
         ],
-        "inkPixels": 178622,
-        "inkRatio": 0.16539074074074073,
+        "inkPixels": 179781,
+        "inkRatio": 0.16646388888888888,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -2459,7 +2459,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.083108976691164
+      "inkRatio": 1.090136796914793
     },
     {
       "id": "visual_kanban_038",
@@ -2483,13 +2483,13 @@
             255
           ]
         ],
-        "inkPixels": 81024,
-        "inkRatio": 0.07502222222222223,
+        "inkPixels": 81342,
+        "inkRatio": 0.07531666666666667,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -2524,8 +2524,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0397423229432676
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0438230651763831
     },
     {
       "id": "visual_kanban_039",
@@ -2549,13 +2549,13 @@
             255
           ]
         ],
-        "inkPixels": 219284,
-        "inkRatio": 0.20304074074074074,
+        "inkPixels": 219792,
+        "inkRatio": 0.20351111111111111,
         "contentBounds": {
           "x": 34,
-          "y": 119,
+          "y": 133,
           "width": 1137,
-          "height": 656
+          "height": 642
         }
       },
       "official": {
@@ -2590,8 +2590,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.087893864013267,
-      "inkRatio": 1.0924326209335924
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.0949633836496786
     },
     {
       "id": "visual_kanban_040",
@@ -2615,13 +2615,13 @@
             255
           ]
         ],
-        "inkPixels": 98007,
-        "inkRatio": 0.09074722222222223,
+        "inkPixels": 98126,
+        "inkRatio": 0.0908574074074074,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -2656,8 +2656,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0371440363186133
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.038403335555626
     },
     {
       "id": "visual_kanban_041",
@@ -2681,8 +2681,8 @@
             255
           ]
         ],
-        "inkPixels": 178622,
-        "inkRatio": 0.16539074074074073,
+        "inkPixels": 179593,
+        "inkRatio": 0.1662898148148148,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -2723,7 +2723,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.086574609161141
+      "inkRatio": 1.0924812944826328
     },
     {
       "id": "visual_kanban_042",
@@ -2747,13 +2747,13 @@
             255
           ]
         ],
-        "inkPixels": 80886,
-        "inkRatio": 0.07489444444444444,
+        "inkPixels": 80917,
+        "inkRatio": 0.07492314814814814,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -2788,8 +2788,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0443910753021381
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0447913438694347
     },
     {
       "id": "visual_kanban_043",
@@ -2813,8 +2813,8 @@
             255
           ]
         ],
-        "inkPixels": 220748,
-        "inkRatio": 0.2043962962962963,
+        "inkPixels": 221621,
+        "inkRatio": 0.20520462962962963,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -2855,7 +2855,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0887103535689802
+      "inkRatio": 1.0930159152894294
     },
     {
       "id": "visual_kanban_044",
@@ -2879,13 +2879,13 @@
             255
           ]
         ],
-        "inkPixels": 98523,
-        "inkRatio": 0.091225,
+        "inkPixels": 98629,
+        "inkRatio": 0.09132314814814815,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -2920,8 +2920,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0374118142571338
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0385279561966938
     },
     {
       "id": "visual_kanban_045",
@@ -2945,13 +2945,13 @@
             255
           ]
         ],
-        "inkPixels": 179238,
-        "inkRatio": 0.16596111111111111,
+        "inkPixels": 179840,
+        "inkRatio": 0.1665185185185185,
         "contentBounds": {
           "x": 34,
-          "y": 255,
+          "y": 270,
           "width": 1137,
-          "height": 383
+          "height": 368
         }
       },
       "official": {
@@ -2986,8 +2986,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.1005747126436782,
-      "inkRatio": 1.0876092233009709
+      "heightRatio": 1.0574712643678161,
+      "inkRatio": 1.09126213592233
     },
     {
       "id": "visual_kanban_046",
@@ -3011,13 +3011,13 @@
             255
           ]
         ],
-        "inkPixels": 80638,
-        "inkRatio": 0.07466481481481481,
+        "inkPixels": 80776,
+        "inkRatio": 0.07479259259259259,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -3052,8 +3052,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0424541717299687
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0442381777283656
     },
     {
       "id": "visual_kanban_047",
@@ -3077,13 +3077,13 @@
             255
           ]
         ],
-        "inkPixels": 221115,
-        "inkRatio": 0.20473611111111112,
+        "inkPixels": 221548,
+        "inkRatio": 0.20513703703703703,
         "contentBounds": {
           "x": 34,
-          "y": 121,
+          "y": 133,
           "width": 1137,
-          "height": 654
+          "height": 642
         }
       },
       "official": {
@@ -3118,8 +3118,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0845771144278606,
-      "inkRatio": 1.0908377815709762
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.0929739223095973
     },
     {
       "id": "visual_kanban_048",
@@ -3143,13 +3143,13 @@
             255
           ]
         ],
-        "inkPixels": 98679,
-        "inkRatio": 0.09136944444444445,
+        "inkPixels": 98671,
+        "inkRatio": 0.09136203703703703,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -3184,8 +3184,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0393389787664309
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.039254718570947
     },
     {
       "id": "visual_kanban_049",
@@ -3209,13 +3209,13 @@
             255
           ]
         ],
-        "inkPixels": 186893,
-        "inkRatio": 0.17304907407407408,
+        "inkPixels": 187664,
+        "inkRatio": 0.17376296296296295,
         "contentBounds": {
           "x": 34,
-          "y": 255,
+          "y": 270,
           "width": 1137,
-          "height": 383
+          "height": 368
         }
       },
       "official": {
@@ -3250,8 +3250,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.1005747126436782,
-      "inkRatio": 1.073900202261653
+      "heightRatio": 1.0574712643678161,
+      "inkRatio": 1.0783304219913579
     },
     {
       "id": "visual_kanban_050",
@@ -3275,8 +3275,8 @@
             255
           ]
         ],
-        "inkPixels": 84176,
-        "inkRatio": 0.07794074074074074,
+        "inkPixels": 84333,
+        "inkRatio": 0.0780861111111111,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -3317,7 +3317,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.0411379097093383
+      "inkRatio": 1.0430797773654916
     },
     {
       "id": "visual_kanban_051",
@@ -3341,13 +3341,13 @@
             255
           ]
         ],
-        "inkPixels": 231683,
-        "inkRatio": 0.2145212962962963,
+        "inkPixels": 232032,
+        "inkRatio": 0.21484444444444445,
         "contentBounds": {
           "x": 34,
-          "y": 121,
+          "y": 133,
           "width": 1137,
-          "height": 654
+          "height": 642
         }
       },
       "official": {
@@ -3382,8 +3382,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0845771144278606,
-      "inkRatio": 1.0841303859544043
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.0857634859431737
     },
     {
       "id": "visual_kanban_052",
@@ -3407,13 +3407,13 @@
             255
           ]
         ],
-        "inkPixels": 102573,
-        "inkRatio": 0.094975,
+        "inkPixels": 102594,
+        "inkRatio": 0.09499444444444445,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -3448,8 +3448,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.039693078038051
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0399059367302879
     },
     {
       "id": "visual_kanban_053",
@@ -3473,13 +3473,13 @@
             255
           ]
         ],
-        "inkPixels": 187494,
-        "inkRatio": 0.17360555555555557,
+        "inkPixels": 189254,
+        "inkRatio": 0.1752351851851852,
         "contentBounds": {
           "x": 34,
-          "y": 256,
+          "y": 270,
           "width": 1137,
-          "height": 382
+          "height": 368
         }
       },
       "official": {
@@ -3514,8 +3514,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.8421053523262537,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 0.9294403892944039,
-      "inkRatio": 1.0429486074104566
+      "heightRatio": 0.8953771289537713,
+      "inkRatio": 1.0527387316226575
     },
     {
       "id": "visual_kanban_054",
@@ -3539,8 +3539,8 @@
             255
           ]
         ],
-        "inkPixels": 84411,
-        "inkRatio": 0.07815833333333333,
+        "inkPixels": 84750,
+        "inkRatio": 0.07847222222222222,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -3581,7 +3581,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.0390964485751215
+      "inkRatio": 1.043269526681849
     },
     {
       "id": "visual_kanban_055",
@@ -3605,8 +3605,8 @@
             255
           ]
         ],
-        "inkPixels": 230480,
-        "inkRatio": 0.2134074074074074,
+        "inkPixels": 231387,
+        "inkRatio": 0.21424722222222223,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -3647,7 +3647,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.081578255809588
+      "inkRatio": 1.0858345534407028
     },
     {
       "id": "visual_kanban_056",
@@ -3671,13 +3671,13 @@
             255
           ]
         ],
-        "inkPixels": 102564,
-        "inkRatio": 0.09496666666666667,
+        "inkPixels": 102872,
+        "inkRatio": 0.09525185185185185,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -3712,8 +3712,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0356756975088608
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0387858347386172
     },
     {
       "id": "visual_kanban_057",
@@ -3737,8 +3737,8 @@
             255
           ]
         ],
-        "inkPixels": 187603,
-        "inkRatio": 0.1737064814814815,
+        "inkPixels": 188785,
+        "inkRatio": 0.17480092592592592,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -3779,7 +3779,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.071215261718371
+      "inkRatio": 1.0779644951493454
     },
     {
       "id": "visual_kanban_058",
@@ -3803,13 +3803,13 @@
             255
           ]
         ],
-        "inkPixels": 84509,
-        "inkRatio": 0.07824907407407407,
+        "inkPixels": 84382,
+        "inkRatio": 0.07813148148148148,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -3844,8 +3844,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0445589834866014
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0429892217937309
     },
     {
       "id": "visual_kanban_059",
@@ -3869,8 +3869,8 @@
             255
           ]
         ],
-        "inkPixels": 229771,
-        "inkRatio": 0.21275092592592593,
+        "inkPixels": 230521,
+        "inkRatio": 0.21344537037037037,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -3911,7 +3911,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0830642614388943
+      "inkRatio": 1.0865995126067056
     },
     {
       "id": "visual_kanban_060",
@@ -3935,13 +3935,13 @@
             255
           ]
         ],
-        "inkPixels": 102244,
-        "inkRatio": 0.09467037037037038,
+        "inkPixels": 102359,
+        "inkRatio": 0.09477685185185185,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -3976,8 +3976,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0374729835313696
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0386398920355957
     },
     {
       "id": "visual_kanban_061",
@@ -4001,8 +4001,8 @@
             255
           ]
         ],
-        "inkPixels": 187401,
-        "inkRatio": 0.17351944444444445,
+        "inkPixels": 188417,
+        "inkRatio": 0.1744601851851852,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -4043,7 +4043,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0727508987246126
+      "inkRatio": 1.0785668490829576
     },
     {
       "id": "visual_kanban_062",
@@ -4067,8 +4067,8 @@
             255
           ]
         ],
-        "inkPixels": 83983,
-        "inkRatio": 0.07776203703703703,
+        "inkPixels": 84349,
+        "inkRatio": 0.07810092592592592,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -4109,7 +4109,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.038314128875921
+      "inkRatio": 1.0428391276395825
     },
     {
       "id": "visual_kanban_063",
@@ -4133,8 +4133,8 @@
             255
           ]
         ],
-        "inkPixels": 230526,
-        "inkRatio": 0.21345,
+        "inkPixels": 232495,
+        "inkRatio": 0.21527314814814816,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -4175,7 +4175,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0759371966245985
+      "inkRatio": 1.0851271376297513
     },
     {
       "id": "visual_kanban_064",
@@ -4199,8 +4199,8 @@
             255
           ]
         ],
-        "inkPixels": 102530,
-        "inkRatio": 0.09493518518518519,
+        "inkPixels": 102856,
+        "inkRatio": 0.09523703703703704,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -4241,7 +4241,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.035499671766904
+      "inkRatio": 1.0387921022067363
     },
     {
       "id": "visual_kanban_065",
@@ -4265,13 +4265,13 @@
             255
           ]
         ],
-        "inkPixels": 211432,
-        "inkRatio": 0.19577037037037037,
+        "inkPixels": 213015,
+        "inkRatio": 0.1972361111111111,
         "contentBounds": {
           "x": 34,
-          "y": 224,
+          "y": 236,
           "width": 1137,
-          "height": 448
+          "height": 436
         }
       },
       "official": {
@@ -4306,8 +4306,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0900243309002433,
-      "inkRatio": 1.0714423262083574
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.079464258566694
     },
     {
       "id": "visual_kanban_066",
@@ -4331,13 +4331,13 @@
             255
           ]
         ],
-        "inkPixels": 86026,
-        "inkRatio": 0.0796537037037037,
+        "inkPixels": 86064,
+        "inkRatio": 0.07968888888888889,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -4372,8 +4372,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0555596456354757
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0560259147463742
     },
     {
       "id": "visual_kanban_067",
@@ -4397,8 +4397,8 @@
             255
           ]
         ],
-        "inkPixels": 313413,
-        "inkRatio": 0.2901972222222222,
+        "inkPixels": 315386,
+        "inkRatio": 0.29202407407407405,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -4439,7 +4439,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0774871593886013
+      "inkRatio": 1.0842701650886637
     },
     {
       "id": "visual_kanban_068",
@@ -4463,13 +4463,13 @@
             255
           ]
         ],
-        "inkPixels": 114374,
-        "inkRatio": 0.10590185185185186,
+        "inkPixels": 114498,
+        "inkRatio": 0.10601666666666666,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -4504,8 +4504,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0362028665132546
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0373262787874395
     },
     {
       "id": "visual_kanban_069",
@@ -4529,8 +4529,8 @@
             255
           ]
         ],
-        "inkPixels": 211040,
-        "inkRatio": 0.19540740740740742,
+        "inkPixels": 213210,
+        "inkRatio": 0.19741666666666666,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -4571,7 +4571,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0682486573495245
+      "inkRatio": 1.079232829006312
     },
     {
       "id": "visual_kanban_070",
@@ -4595,13 +4595,13 @@
             255
           ]
         ],
-        "inkPixels": 85815,
-        "inkRatio": 0.07945833333333334,
+        "inkPixels": 85764,
+        "inkRatio": 0.07941111111111111,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -4636,8 +4636,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0570953436807096
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0564671101256466
     },
     {
       "id": "visual_kanban_071",
@@ -4661,8 +4661,8 @@
             255
           ]
         ],
-        "inkPixels": 315013,
-        "inkRatio": 0.2916787037037037,
+        "inkPixels": 317119,
+        "inkRatio": 0.2936287037037037,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -4703,7 +4703,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.077129551111962
+      "inkRatio": 1.0843306343518342
     },
     {
       "id": "visual_kanban_072",
@@ -4727,13 +4727,13 @@
             255
           ]
         ],
-        "inkPixels": 113744,
-        "inkRatio": 0.10531851851851852,
+        "inkPixels": 114145,
+        "inkRatio": 0.10568981481481482,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -4768,8 +4768,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0337356405409337
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0373800348989386
     },
     {
       "id": "visual_kanban_073",
@@ -4793,8 +4793,8 @@
             255
           ]
         ],
-        "inkPixels": 210175,
-        "inkRatio": 0.1946064814814815,
+        "inkPixels": 211581,
+        "inkRatio": 0.19590833333333332,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -4835,7 +4835,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0722612506440965
+      "inkRatio": 1.079434317461775
     },
     {
       "id": "visual_kanban_074",
@@ -4859,13 +4859,13 @@
             255
           ]
         ],
-        "inkPixels": 85432,
-        "inkRatio": 0.0791037037037037,
+        "inkPixels": 85748,
+        "inkRatio": 0.0793962962962963,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -4900,8 +4900,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.051833247149787
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0557238186698186
     },
     {
       "id": "visual_kanban_075",
@@ -4925,8 +4925,8 @@
             255
           ]
         ],
-        "inkPixels": 315015,
-        "inkRatio": 0.29168055555555555,
+        "inkPixels": 317590,
+        "inkRatio": 0.29406481481481483,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -4967,7 +4967,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0753383740975269
+      "inkRatio": 1.0841284200105823
     },
     {
       "id": "visual_kanban_076",
@@ -4991,13 +4991,13 @@
             255
           ]
         ],
-        "inkPixels": 114660,
-        "inkRatio": 0.10616666666666667,
+        "inkPixels": 114833,
+        "inkRatio": 0.10632685185185185,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -5032,8 +5032,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.034529427156172
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.036090334106268
     },
     {
       "id": "visual_kanban_077",
@@ -5057,13 +5057,13 @@
             255
           ]
         ],
-        "inkPixels": 212169,
-        "inkRatio": 0.19645277777777778,
+        "inkPixels": 213631,
+        "inkRatio": 0.19780648148148147,
         "contentBounds": {
           "x": 34,
-          "y": 224,
+          "y": 236,
           "width": 1137,
-          "height": 448
+          "height": 436
         }
       },
       "official": {
@@ -5098,8 +5098,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0900243309002433,
-      "inkRatio": 1.0714469677458451
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0788300230783603
     },
     {
       "id": "visual_kanban_078",
@@ -5123,13 +5123,13 @@
             255
           ]
         ],
-        "inkPixels": 86209,
-        "inkRatio": 0.07982314814814814,
+        "inkPixels": 86208,
+        "inkRatio": 0.07982222222222222,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -5164,8 +5164,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0563404443028512
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0563281910526767
     },
     {
       "id": "visual_kanban_079",
@@ -5189,13 +5189,13 @@
             255
           ]
         ],
-        "inkPixels": 315785,
-        "inkRatio": 0.2923935185185185,
+        "inkPixels": 317799,
+        "inkRatio": 0.29425833333333334,
         "contentBounds": {
           "x": 34,
-          "y": 53,
+          "y": 67,
           "width": 1137,
-          "height": 789
+          "height": 775
         }
       },
       "official": {
@@ -5230,8 +5230,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0837912087912087,
-      "inkRatio": 1.0775144335103117
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.0843865587508703
     },
     {
       "id": "visual_kanban_080",
@@ -5255,13 +5255,13 @@
             255
           ]
         ],
-        "inkPixels": 114375,
-        "inkRatio": 0.10590277777777778,
+        "inkPixels": 114656,
+        "inkRatio": 0.10616296296296296,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -5296,8 +5296,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0346090873730203
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.037150946639047
     },
     {
       "id": "visual_kanban_081",
@@ -5321,8 +5321,8 @@
             255
           ]
         ],
-        "inkPixels": 251455,
-        "inkRatio": 0.2328287037037037,
+        "inkPixels": 253956,
+        "inkRatio": 0.23514444444444443,
         "contentBounds": {
           "x": 34,
           "y": 100,
@@ -5363,7 +5363,7 @@
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0646616541353384,
-      "inkRatio": 1.0608527998447461
+      "inkRatio": 1.0714041623247592
     },
     {
       "id": "visual_kanban_082",
@@ -5387,13 +5387,13 @@
             255
           ]
         ],
-        "inkPixels": 97077,
-        "inkRatio": 0.08988611111111111,
+        "inkPixels": 97516,
+        "inkRatio": 0.09029259259259259,
         "contentBounds": {
           "x": 21,
-          "y": 308,
+          "y": 315,
           "width": 1161,
-          "height": 281
+          "height": 274
         }
       },
       "official": {
@@ -5428,8 +5428,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.060377358490566,
-      "inkRatio": 1.026292419917539
+      "heightRatio": 1.0339622641509434,
+      "inkRatio": 1.0309335024844064
     },
     {
       "id": "visual_kanban_083",
@@ -5453,13 +5453,13 @@
             255
           ]
         ],
-        "inkPixels": 239164,
-        "inkRatio": 0.22144814814814814,
+        "inkPixels": 241183,
+        "inkRatio": 0.2233175925925926,
         "contentBounds": {
           "x": 142,
-          "y": 18,
+          "y": 29,
           "width": 920,
-          "height": 860
+          "height": 849
         }
       },
       "official": {
@@ -5494,8 +5494,8 @@
       "manifestGeometryWidthRatio": 0.9999999958330665,
       "manifestGeometryHeightRatio": 1.0000000604877457,
       "widthRatio": 1.0722610722610724,
-      "heightRatio": 1.0913705583756346,
-      "inkRatio": 1.0769611794319887
+      "heightRatio": 1.0774111675126903,
+      "inkRatio": 1.0860527844447547
     },
     {
       "id": "visual_kanban_084",
@@ -5519,13 +5519,13 @@
             255
           ]
         ],
-        "inkPixels": 126037,
-        "inkRatio": 0.11670092592592593,
+        "inkPixels": 126381,
+        "inkRatio": 0.11701944444444444,
         "contentBounds": {
           "x": 21,
-          "y": 264,
+          "y": 272,
           "width": 1161,
-          "height": 368
+          "height": 360
         }
       },
       "official": {
@@ -5560,8 +5560,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999280955746,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0294449163617356
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.0322546393099843
     },
     {
       "id": "visual_kanban_085",
@@ -5585,8 +5585,8 @@
             255
           ]
         ],
-        "inkPixels": 251753,
-        "inkRatio": 0.23310462962962963,
+        "inkPixels": 254004,
+        "inkRatio": 0.2351888888888889,
         "contentBounds": {
           "x": 34,
           "y": 100,
@@ -5627,7 +5627,7 @@
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0646616541353384,
-      "inkRatio": 1.061058052986943
+      "inkRatio": 1.0705452951539622
     },
     {
       "id": "visual_kanban_086",
@@ -5651,13 +5651,13 @@
             255
           ]
         ],
-        "inkPixels": 96941,
-        "inkRatio": 0.08976018518518518,
+        "inkPixels": 97441,
+        "inkRatio": 0.09022314814814815,
         "contentBounds": {
           "x": 21,
-          "y": 309,
+          "y": 315,
           "width": 1161,
-          "height": 280
+          "height": 274
         }
       },
       "official": {
@@ -5692,8 +5692,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0566037735849056,
-      "inkRatio": 1.0245621822716848
+      "heightRatio": 1.0339622641509434,
+      "inkRatio": 1.0298466448946808
     },
     {
       "id": "visual_kanban_087",
@@ -5717,13 +5717,13 @@
             255
           ]
         ],
-        "inkPixels": 239179,
-        "inkRatio": 0.22146203703703704,
+        "inkPixels": 240379,
+        "inkRatio": 0.22257314814814816,
         "contentBounds": {
           "x": 142,
-          "y": 17,
+          "y": 29,
           "width": 920,
-          "height": 861
+          "height": 849
         }
       },
       "official": {
@@ -5758,8 +5758,8 @@
       "manifestGeometryWidthRatio": 0.9999999958330665,
       "manifestGeometryHeightRatio": 1.0000000604877457,
       "widthRatio": 1.0722610722610724,
-      "heightRatio": 1.0926395939086295,
-      "inkRatio": 1.0805954639920483
+      "heightRatio": 1.0774111675126903,
+      "inkRatio": 1.0860169874401373
     },
     {
       "id": "visual_kanban_088",
@@ -5783,13 +5783,13 @@
             255
           ]
         ],
-        "inkPixels": 126528,
-        "inkRatio": 0.11715555555555555,
+        "inkPixels": 127045,
+        "inkRatio": 0.11763425925925926,
         "contentBounds": {
           "x": 21,
-          "y": 264,
+          "y": 272,
           "width": 1161,
-          "height": 368
+          "height": 360
         }
       },
       "official": {
@@ -5824,8 +5824,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999280955746,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0288836846213896
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.0330877569607078
     },
     {
       "id": "visual_kanban_089",
@@ -5849,13 +5849,13 @@
             255
           ]
         ],
-        "inkPixels": 252824,
-        "inkRatio": 0.2340962962962963,
+        "inkPixels": 253839,
+        "inkRatio": 0.2350361111111111,
         "contentBounds": {
           "x": 34,
-          "y": 85,
+          "y": 100,
           "width": 1137,
-          "height": 723
+          "height": 708
         }
       },
       "official": {
@@ -5890,8 +5890,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.087218045112782,
-      "inkRatio": 1.0659583438738511
+      "heightRatio": 1.0646616541353384,
+      "inkRatio": 1.0702377940804453
     },
     {
       "id": "visual_kanban_090",
@@ -5915,13 +5915,13 @@
             255
           ]
         ],
-        "inkPixels": 96683,
-        "inkRatio": 0.0895212962962963,
+        "inkPixels": 96939,
+        "inkRatio": 0.08975833333333333,
         "contentBounds": {
           "x": 21,
-          "y": 308,
+          "y": 315,
           "width": 1161,
-          "height": 281
+          "height": 274
         }
       },
       "official": {
@@ -5956,8 +5956,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.060377358490566,
-      "inkRatio": 1.0276460959588445
+      "heightRatio": 1.0339622641509434,
+      "inkRatio": 1.0303671265491805
     },
     {
       "id": "visual_kanban_091",
@@ -5981,13 +5981,13 @@
             255
           ]
         ],
-        "inkPixels": 239205,
-        "inkRatio": 0.2214861111111111,
+        "inkPixels": 240664,
+        "inkRatio": 0.22283703703703703,
         "contentBounds": {
           "x": 142,
-          "y": 17,
+          "y": 29,
           "width": 920,
-          "height": 861
+          "height": 849
         }
       },
       "official": {
@@ -6022,8 +6022,8 @@
       "manifestGeometryWidthRatio": 0.9999999958330665,
       "manifestGeometryHeightRatio": 1.0000000604877457,
       "widthRatio": 1.0722610722610724,
-      "heightRatio": 1.0926395939086295,
-      "inkRatio": 1.079615462731027
+      "heightRatio": 1.0774111675126903,
+      "inkRatio": 1.086200437794778
     },
     {
       "id": "visual_kanban_092",
@@ -6047,13 +6047,13 @@
             255
           ]
         ],
-        "inkPixels": 127097,
-        "inkRatio": 0.1176824074074074,
+        "inkPixels": 127925,
+        "inkRatio": 0.11844907407407407,
         "contentBounds": {
           "x": 21,
-          "y": 265,
+          "y": 272,
           "width": 1161,
-          "height": 367
+          "height": 360
         }
       },
       "official": {
@@ -6088,8 +6088,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999280955746,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0545977011494252,
-      "inkRatio": 1.0266233713782602
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.0333115241395465
     },
     {
       "id": "visual_kanban_093",
@@ -6113,8 +6113,8 @@
             255
           ]
         ],
-        "inkPixels": 253783,
-        "inkRatio": 0.23498425925925925,
+        "inkPixels": 255885,
+        "inkRatio": 0.23693055555555556,
         "contentBounds": {
           "x": 34,
           "y": 100,
@@ -6155,7 +6155,7 @@
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0646616541353384,
-      "inkRatio": 1.0610322553671843
+      "inkRatio": 1.0698204318832703
     },
     {
       "id": "visual_kanban_094",
@@ -6179,13 +6179,13 @@
             255
           ]
         ],
-        "inkPixels": 97050,
-        "inkRatio": 0.08986111111111111,
+        "inkPixels": 97223,
+        "inkRatio": 0.0900212962962963,
         "contentBounds": {
           "x": 21,
-          "y": 308,
+          "y": 315,
           "width": 1161,
-          "height": 281
+          "height": 274
         }
       },
       "official": {
@@ -6220,8 +6220,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.060377358490566,
-      "inkRatio": 1.0285296424256556
+      "heightRatio": 1.0339622641509434,
+      "inkRatio": 1.0303630852709893
     },
     {
       "id": "visual_kanban_095",
@@ -6245,8 +6245,8 @@
             255
           ]
         ],
-        "inkPixels": 239993,
-        "inkRatio": 0.22221574074074074,
+        "inkPixels": 242347,
+        "inkRatio": 0.22439537037037038,
         "contentBounds": {
           "x": 142,
           "y": 29,
@@ -6287,7 +6287,7 @@
       "manifestGeometryHeightRatio": 1.0000000604877457,
       "widthRatio": 1.0722610722610724,
       "heightRatio": 1.0774111675126903,
-      "inkRatio": 1.0754735582632389
+      "inkRatio": 1.0860224690904365
     },
     {
       "id": "visual_kanban_096",
@@ -6311,13 +6311,13 @@
             255
           ]
         ],
-        "inkPixels": 126481,
-        "inkRatio": 0.11711203703703704,
+        "inkPixels": 127249,
+        "inkRatio": 0.11782314814814815,
         "contentBounds": {
           "x": 21,
-          "y": 264,
+          "y": 272,
           "width": 1161,
-          "height": 368
+          "height": 360
         }
       },
       "official": {
@@ -6352,8 +6352,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999280955746,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0255992345366676
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.031826732833836
     },
     {
       "id": "visual_kanban_097",
@@ -6377,8 +6377,8 @@
             255
           ]
         ],
-        "inkPixels": 191672,
-        "inkRatio": 0.17747407407407406,
+        "inkPixels": 192570,
+        "inkRatio": 0.17830555555555555,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -6419,7 +6419,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0835660580021482
+      "inkRatio": 1.0886426592797784
     },
     {
       "id": "visual_kanban_098",
@@ -6443,13 +6443,13 @@
             255
           ]
         ],
-        "inkPixels": 87547,
-        "inkRatio": 0.08106203703703704,
+        "inkPixels": 87877,
+        "inkRatio": 0.08136759259259259,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -6484,8 +6484,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0490952666267228
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0530497303774715
     },
     {
       "id": "visual_kanban_099",
@@ -6509,8 +6509,8 @@
             255
           ]
         ],
-        "inkPixels": 247102,
-        "inkRatio": 0.22879814814814814,
+        "inkPixels": 248443,
+        "inkRatio": 0.2300398148148148,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -6551,7 +6551,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0807895692185223
+      "inkRatio": 1.0866549155626315
     },
     {
       "id": "visual_kanban_100",
@@ -6575,13 +6575,13 @@
             255
           ]
         ],
-        "inkPixels": 109240,
-        "inkRatio": 0.10114814814814815,
+        "inkPixels": 109810,
+        "inkRatio": 0.10167592592592592,
         "contentBounds": {
           "x": 21,
-          "y": 335,
+          "y": 341,
           "width": 1161,
-          "height": 228
+          "height": 222
         }
       },
       "official": {
@@ -6616,8 +6616,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0604651162790697,
-      "inkRatio": 1.0287705419786222
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.034138531807694
     },
     {
       "id": "visual_kanban_101",
@@ -6641,13 +6641,13 @@
             255
           ]
         ],
-        "inkPixels": 192715,
-        "inkRatio": 0.1784398148148148,
+        "inkPixels": 193992,
+        "inkRatio": 0.1796222222222222,
         "contentBounds": {
           "x": 34,
-          "y": 222,
+          "y": 236,
           "width": 1137,
-          "height": 450
+          "height": 436
         }
       },
       "official": {
@@ -6682,8 +6682,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.094890510948905,
-      "inkRatio": 1.0811985951683665
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0883630120846937
     },
     {
       "id": "visual_kanban_102",
@@ -6707,13 +6707,13 @@
             255
           ]
         ],
-        "inkPixels": 88158,
-        "inkRatio": 0.08162777777777777,
+        "inkPixels": 88174,
+        "inkRatio": 0.08164259259259259,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -6748,8 +6748,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0526202672206897
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0528113097157048
     },
     {
       "id": "visual_kanban_103",
@@ -6773,8 +6773,8 @@
             255
           ]
         ],
-        "inkPixels": 247301,
-        "inkRatio": 0.2289824074074074,
+        "inkPixels": 248679,
+        "inkRatio": 0.23025833333333334,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -6815,7 +6815,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0805445957695954
+      "inkRatio": 1.086565559910341
     },
     {
       "id": "visual_kanban_104",
@@ -6839,13 +6839,13 @@
             255
           ]
         ],
-        "inkPixels": 110140,
-        "inkRatio": 0.10198148148148148,
+        "inkPixels": 110857,
+        "inkRatio": 0.10264537037037037,
         "contentBounds": {
           "x": 21,
-          "y": 335,
+          "y": 341,
           "width": 1161,
-          "height": 228
+          "height": 222
         }
       },
       "official": {
@@ -6880,8 +6880,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0604651162790697,
-      "inkRatio": 1.026534815878016
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0332174512782752
     },
     {
       "id": "visual_kanban_105",
@@ -6905,8 +6905,8 @@
             255
           ]
         ],
-        "inkPixels": 192450,
-        "inkRatio": 0.17819444444444443,
+        "inkPixels": 194058,
+        "inkRatio": 0.17968333333333333,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -6947,7 +6947,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0787858404103254
+      "inkRatio": 1.0877995459514
     },
     {
       "id": "visual_kanban_106",
@@ -6971,13 +6971,13 @@
             255
           ]
         ],
-        "inkPixels": 87267,
-        "inkRatio": 0.08080277777777778,
+        "inkPixels": 87523,
+        "inkRatio": 0.08103981481481481,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -7012,8 +7012,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0491470202815614
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0522247201817767
     },
     {
       "id": "visual_kanban_107",
@@ -7037,8 +7037,8 @@
             255
           ]
         ],
-        "inkPixels": 246559,
-        "inkRatio": 0.22829537037037037,
+        "inkPixels": 247688,
+        "inkRatio": 0.22934074074074073,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -7079,7 +7079,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0825861690450054
+      "inkRatio": 1.087543358946213
     },
     {
       "id": "visual_kanban_108",
@@ -7103,13 +7103,13 @@
             255
           ]
         ],
-        "inkPixels": 110207,
-        "inkRatio": 0.10204351851851852,
+        "inkPixels": 110462,
+        "inkRatio": 0.10227962962962962,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -7144,8 +7144,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.030318611869414
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.032702591526121
     },
     {
       "id": "visual_kanban_109",
@@ -7169,13 +7169,13 @@
             255
           ]
         ],
-        "inkPixels": 192941,
-        "inkRatio": 0.17864907407407407,
+        "inkPixels": 193822,
+        "inkRatio": 0.17946481481481483,
         "contentBounds": {
           "x": 34,
-          "y": 222,
+          "y": 236,
           "width": 1137,
-          "height": 450
+          "height": 436
         }
       },
       "official": {
@@ -7210,8 +7210,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.094890510948905,
-      "inkRatio": 1.083408671042805
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0883556913194115
     },
     {
       "id": "visual_kanban_110",
@@ -7235,13 +7235,13 @@
             255
           ]
         ],
-        "inkPixels": 87674,
-        "inkRatio": 0.08117962962962963,
+        "inkPixels": 87888,
+        "inkRatio": 0.08137777777777777,
         "contentBounds": {
           "x": 21,
-          "y": 378,
+          "y": 384,
           "width": 1161,
-          "height": 142
+          "height": 136
         }
       },
       "official": {
@@ -7276,8 +7276,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0757575757575757,
-      "inkRatio": 1.0506045463805107
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.053168925477226
     },
     {
       "id": "visual_kanban_111",
@@ -7301,13 +7301,13 @@
             255
           ]
         ],
-        "inkPixels": 246565,
-        "inkRatio": 0.22830092592592593,
+        "inkPixels": 248070,
+        "inkRatio": 0.22969444444444445,
         "contentBounds": {
           "x": 34,
-          "y": 52,
+          "y": 67,
           "width": 1137,
-          "height": 790
+          "height": 775
         }
       },
       "official": {
@@ -7342,8 +7342,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.085164835164835,
-      "inkRatio": 1.0811409278260107
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.0877400684030518
     },
     {
       "id": "visual_kanban_112",
@@ -7367,13 +7367,13 @@
             255
           ]
         ],
-        "inkPixels": 109211,
-        "inkRatio": 0.10112129629629629,
+        "inkPixels": 109651,
+        "inkRatio": 0.1015287037037037,
         "contentBounds": {
           "x": 21,
-          "y": 335,
+          "y": 341,
           "width": 1161,
-          "height": 228
+          "height": 222
         }
       },
       "official": {
@@ -7408,8 +7408,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0604651162790697,
-      "inkRatio": 1.0308467760965803
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0349999528048102
     },
     {
       "id": "visual_kanban_113",
@@ -7433,8 +7433,8 @@
             255
           ]
         ],
-        "inkPixels": 199898,
-        "inkRatio": 0.18509074074074075,
+        "inkPixels": 200972,
+        "inkRatio": 0.1860851851851852,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -7460,8 +7460,8 @@
             255
           ]
         ],
-        "inkPixels": 186463,
-        "inkRatio": 0.17265092592592593,
+        "inkPixels": 186049,
+        "inkRatio": 0.17226759259259258,
         "contentBounds": {
           "x": 68,
           "y": 250,
@@ -7475,7 +7475,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0720518279765958
+      "inkRatio": 1.080210052190552
     },
     {
       "id": "visual_kanban_114",
@@ -7499,13 +7499,13 @@
             255
           ]
         ],
-        "inkPixels": 88877,
-        "inkRatio": 0.08229351851851852,
+        "inkPixels": 89104,
+        "inkRatio": 0.0825037037037037,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -7540,8 +7540,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0373980133764429
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.040047622938382
     },
     {
       "id": "visual_kanban_115",
@@ -7565,8 +7565,8 @@
             255
           ]
         ],
-        "inkPixels": 252204,
-        "inkRatio": 0.23352222222222221,
+        "inkPixels": 254811,
+        "inkRatio": 0.23593611111111112,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -7607,7 +7607,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0706707930564576
+      "inkRatio": 1.0817381780206066
     },
     {
       "id": "visual_kanban_116",
@@ -7631,13 +7631,13 @@
             255
           ]
         ],
-        "inkPixels": 112492,
-        "inkRatio": 0.10415925925925926,
+        "inkPixels": 113222,
+        "inkRatio": 0.10483518518518518,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -7672,8 +7672,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0286111390506845
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0352861571098086
     },
     {
       "id": "visual_kanban_117",
@@ -7697,8 +7697,8 @@
             255
           ]
         ],
-        "inkPixels": 199776,
-        "inkRatio": 0.18497777777777777,
+        "inkPixels": 200554,
+        "inkRatio": 0.18569814814814814,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -7739,7 +7739,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.076779621734373
+      "inkRatio": 1.0809729910365382
     },
     {
       "id": "visual_kanban_118",
@@ -7763,13 +7763,13 @@
             255
           ]
         ],
-        "inkPixels": 88926,
-        "inkRatio": 0.08233888888888889,
+        "inkPixels": 89192,
+        "inkRatio": 0.08258518518518519,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -7804,8 +7804,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0369290686691777
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.040030783941044
     },
     {
       "id": "visual_kanban_119",
@@ -7829,13 +7829,13 @@
             255
           ]
         ],
-        "inkPixels": 252228,
-        "inkRatio": 0.23354444444444444,
+        "inkPixels": 255026,
+        "inkRatio": 0.2361351851851852,
         "contentBounds": {
           "x": 34,
-          "y": 54,
+          "y": 67,
           "width": 1137,
-          "height": 788
+          "height": 775
         }
       },
       "official": {
@@ -7856,8 +7856,8 @@
             255
           ]
         ],
-        "inkPixels": 236981,
-        "inkRatio": 0.21942685185185185,
+        "inkPixels": 235943,
+        "inkRatio": 0.21846574074074074,
         "contentBounds": {
           "x": 68,
           "y": 91,
@@ -7870,8 +7870,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0824175824175823,
-      "inkRatio": 1.0643384912714522
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.0808797039963043
     },
     {
       "id": "visual_kanban_120",
@@ -7895,13 +7895,13 @@
             255
           ]
         ],
-        "inkPixels": 112115,
-        "inkRatio": 0.10381018518518519,
+        "inkPixels": 112376,
+        "inkRatio": 0.10405185185185185,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -7936,8 +7936,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0334227433195993
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0358285171768566
     },
     {
       "id": "visual_kanban_121",
@@ -7961,13 +7961,13 @@
             255
           ]
         ],
-        "inkPixels": 200241,
-        "inkRatio": 0.18540833333333334,
+        "inkPixels": 201380,
+        "inkRatio": 0.18646296296296297,
         "contentBounds": {
           "x": 34,
-          "y": 223,
+          "y": 236,
           "width": 1137,
-          "height": 449
+          "height": 436
         }
       },
       "official": {
@@ -8002,8 +8002,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0924574209245743,
-      "inkRatio": 1.0739546907515072
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0800635015982667
     },
     {
       "id": "visual_kanban_122",
@@ -8027,13 +8027,13 @@
             255
           ]
         ],
-        "inkPixels": 89097,
-        "inkRatio": 0.08249722222222222,
+        "inkPixels": 89373,
+        "inkRatio": 0.08275277777777777,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -8068,8 +8068,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0375558971492453
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.040769983230855
     },
     {
       "id": "visual_kanban_123",
@@ -8093,8 +8093,8 @@
             255
           ]
         ],
-        "inkPixels": 252983,
-        "inkRatio": 0.23424351851851852,
+        "inkPixels": 255123,
+        "inkRatio": 0.236225,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -8135,7 +8135,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.072830129469189
+      "inkRatio": 1.0819052707911911
     },
     {
       "id": "visual_kanban_124",
@@ -8159,13 +8159,13 @@
             255
           ]
         ],
-        "inkPixels": 111848,
-        "inkRatio": 0.10356296296296297,
+        "inkPixels": 112196,
+        "inkRatio": 0.10388518518518519,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -8200,8 +8200,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0311707708335256
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0343791199166568
     },
     {
       "id": "visual_kanban_125",
@@ -8225,13 +8225,13 @@
             255
           ]
         ],
-        "inkPixels": 199745,
-        "inkRatio": 0.18494907407407407,
+        "inkPixels": 202019,
+        "inkRatio": 0.18705462962962963,
         "contentBounds": {
           "x": 34,
-          "y": 223,
+          "y": 236,
           "width": 1137,
-          "height": 449
+          "height": 436
         }
       },
       "official": {
@@ -8266,8 +8266,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0924574209245743,
-      "inkRatio": 1.0677268475210477
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.079882400106909
     },
     {
       "id": "visual_kanban_126",
@@ -8291,13 +8291,13 @@
             255
           ]
         ],
-        "inkPixels": 89218,
-        "inkRatio": 0.08260925925925926,
+        "inkPixels": 89589,
+        "inkRatio": 0.08295277777777778,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -8332,8 +8332,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.035564222206746
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0398704645170278
     },
     {
       "id": "visual_kanban_127",
@@ -8357,8 +8357,8 @@
             255
           ]
         ],
-        "inkPixels": 251995,
-        "inkRatio": 0.2333287037037037,
+        "inkPixels": 253879,
+        "inkRatio": 0.23507314814814814,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -8399,7 +8399,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0739414860747085
+      "inkRatio": 1.0819706364934263
     },
     {
       "id": "visual_kanban_128",
@@ -8423,13 +8423,13 @@
             255
           ]
         ],
-        "inkPixels": 111874,
-        "inkRatio": 0.10358703703703703,
+        "inkPixels": 112567,
+        "inkRatio": 0.1042287037037037,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -8464,8 +8464,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0286507659206678
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.035022710972986
     },
     {
       "id": "visual_kanban_129",
@@ -8489,8 +8489,8 @@
             255
           ]
         ],
-        "inkPixels": 192208,
-        "inkRatio": 0.17797037037037036,
+        "inkPixels": 193470,
+        "inkRatio": 0.17913888888888888,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -8531,7 +8531,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0836250880902043
+      "inkRatio": 1.0907399577167018
     },
     {
       "id": "visual_kanban_130",
@@ -8555,13 +8555,13 @@
             255
           ]
         ],
-        "inkPixels": 80393,
-        "inkRatio": 0.07443796296296297,
+        "inkPixels": 80500,
+        "inkRatio": 0.07453703703703704,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -8596,8 +8596,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0491334760139899
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0505298324372292
     },
     {
       "id": "visual_kanban_131",
@@ -8621,13 +8621,13 @@
             255
           ]
         ],
-        "inkPixels": 280360,
-        "inkRatio": 0.2595925925925926,
+        "inkPixels": 280331,
+        "inkRatio": 0.25956574074074074,
         "contentBounds": {
           "x": 34,
-          "y": 121,
+          "y": 133,
           "width": 1137,
-          "height": 654
+          "height": 642
         }
       },
       "official": {
@@ -8662,8 +8662,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0845771144278606,
-      "inkRatio": 1.1014075985967229
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.1012936707169991
     },
     {
       "id": "visual_kanban_132",
@@ -8687,13 +8687,13 @@
             255
           ]
         ],
-        "inkPixels": 104674,
-        "inkRatio": 0.09692037037037037,
+        "inkPixels": 104693,
+        "inkRatio": 0.09693796296296296,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -8728,8 +8728,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0486275295531957
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0488178721699057
     },
     {
       "id": "visual_kanban_133",
@@ -8753,13 +8753,13 @@
             255
           ]
         ],
-        "inkPixels": 192999,
-        "inkRatio": 0.17870277777777777,
+        "inkPixels": 193433,
+        "inkRatio": 0.17910462962962964,
         "contentBounds": {
           "x": 34,
-          "y": 255,
+          "y": 270,
           "width": 1137,
-          "height": 383
+          "height": 368
         }
       },
       "official": {
@@ -8794,8 +8794,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.1005747126436782,
-      "inkRatio": 1.0886369405195024
+      "heightRatio": 1.0574712643678161,
+      "inkRatio": 1.0910849761683166
     },
     {
       "id": "visual_kanban_134",
@@ -8819,13 +8819,13 @@
             255
           ]
         ],
-        "inkPixels": 79655,
-        "inkRatio": 0.07375462962962963,
+        "inkPixels": 79928,
+        "inkRatio": 0.07400740740740741,
         "contentBounds": {
           "x": 21,
-          "y": 386,
+          "y": 393,
           "width": 1161,
-          "height": 125
+          "height": 118
         }
       },
       "official": {
@@ -8860,8 +8860,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0869565217391304,
-      "inkRatio": 1.0468799285038377
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0504678792976554
     },
     {
       "id": "visual_kanban_135",
@@ -8885,8 +8885,8 @@
             255
           ]
         ],
-        "inkPixels": 285595,
-        "inkRatio": 0.2644398148148148,
+        "inkPixels": 286430,
+        "inkRatio": 0.265212962962963,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -8927,7 +8927,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.100346753997303
+      "inkRatio": 1.1035638605278366
     },
     {
       "id": "visual_kanban_136",
@@ -8951,13 +8951,13 @@
             255
           ]
         ],
-        "inkPixels": 104480,
-        "inkRatio": 0.09674074074074074,
+        "inkPixels": 104567,
+        "inkRatio": 0.0968212962962963,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -8992,8 +8992,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0473240509628203
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0481961527280745
     },
     {
       "id": "visual_kanban_137",
@@ -9017,8 +9017,8 @@
             255
           ]
         ],
-        "inkPixels": 194494,
-        "inkRatio": 0.18008703703703705,
+        "inkPixels": 195378,
+        "inkRatio": 0.18090555555555554,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -9059,7 +9059,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0869108426193963
+      "inkRatio": 1.0918509908238423
     },
     {
       "id": "visual_kanban_138",
@@ -9083,8 +9083,8 @@
             255
           ]
         ],
-        "inkPixels": 79379,
-        "inkRatio": 0.07349907407407408,
+        "inkPixels": 79664,
+        "inkRatio": 0.07376296296296296,
         "contentBounds": {
           "x": 21,
           "y": 393,
@@ -9125,7 +9125,7 @@
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0260869565217392,
-      "inkRatio": 1.046388083311363
+      "inkRatio": 1.0501450039546532
     },
     {
       "id": "visual_kanban_139",
@@ -9149,8 +9149,8 @@
             255
           ]
         ],
-        "inkPixels": 280951,
-        "inkRatio": 0.2601398148148148,
+        "inkPixels": 281842,
+        "inkRatio": 0.2609648148148148,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -9191,7 +9191,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0999526272311204
+      "inkRatio": 1.103440985666801
     },
     {
       "id": "visual_kanban_140",
@@ -9215,8 +9215,8 @@
             255
           ]
         ],
-        "inkPixels": 104589,
-        "inkRatio": 0.09684166666666667,
+        "inkPixels": 105150,
+        "inkRatio": 0.0973611111111111,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -9257,7 +9257,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.042720130802361
+      "inkRatio": 1.0483131280906046
     },
     {
       "id": "visual_kanban_141",
@@ -9281,8 +9281,8 @@
             255
           ]
         ],
-        "inkPixels": 192196,
-        "inkRatio": 0.17795925925925926,
+        "inkPixels": 192774,
+        "inkRatio": 0.17849444444444446,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -9323,7 +9323,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0871921349458655
+      "inkRatio": 1.0904616985892228
     },
     {
       "id": "visual_kanban_142",
@@ -9347,13 +9347,13 @@
             255
           ]
         ],
-        "inkPixels": 79934,
-        "inkRatio": 0.07401296296296296,
+        "inkPixels": 79705,
+        "inkRatio": 0.07380092592592592,
         "contentBounds": {
           "x": 21,
-          "y": 385,
+          "y": 393,
           "width": 1161,
-          "height": 126
+          "height": 118
         }
       },
       "official": {
@@ -9388,8 +9388,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001871960338,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0956521739130434,
-      "inkRatio": 1.0540376602141464
+      "heightRatio": 1.0260869565217392,
+      "inkRatio": 1.0510179861807059
     },
     {
       "id": "visual_kanban_143",
@@ -9413,8 +9413,8 @@
             255
           ]
         ],
-        "inkPixels": 281723,
-        "inkRatio": 0.26085462962962963,
+        "inkPixels": 282966,
+        "inkRatio": 0.26200555555555555,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -9455,7 +9455,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.098463757944399
+      "inkRatio": 1.1033103286934145
     },
     {
       "id": "visual_kanban_144",
@@ -9479,13 +9479,13 @@
             255
           ]
         ],
-        "inkPixels": 104892,
-        "inkRatio": 0.09712222222222222,
+        "inkPixels": 104804,
+        "inkRatio": 0.09704074074074075,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -9520,8 +9520,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.048647351688561
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0477675804290885
     },
     {
       "id": "visual_kanban_145",
@@ -9545,13 +9545,13 @@
             255
           ]
         ],
-        "inkPixels": 231500,
-        "inkRatio": 0.21435185185185185,
+        "inkPixels": 232161,
+        "inkRatio": 0.2149638888888889,
         "contentBounds": {
           "x": 34,
-          "y": 121,
+          "y": 133,
           "width": 1137,
-          "height": 654
+          "height": 642
         }
       },
       "official": {
@@ -9586,8 +9586,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0845771144278606,
-      "inkRatio": 1.0925789582979366
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.0956985897944158
     },
     {
       "id": "visual_kanban_146",
@@ -9611,13 +9611,13 @@
             255
           ]
         ],
-        "inkPixels": 89925,
-        "inkRatio": 0.08326388888888889,
+        "inkPixels": 90201,
+        "inkRatio": 0.08351944444444444,
         "contentBounds": {
           "x": 21,
-          "y": 316,
+          "y": 323,
           "width": 1161,
-          "height": 265
+          "height": 258
         }
       },
       "official": {
@@ -9652,8 +9652,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0642570281124497,
-      "inkRatio": 1.0393670754400768
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0425571261803765
     },
     {
       "id": "visual_kanban_147",
@@ -9677,8 +9677,8 @@
             255
           ]
         ],
-        "inkPixels": 264977,
-        "inkRatio": 0.24534907407407408,
+        "inkPixels": 265565,
+        "inkRatio": 0.2458935185185185,
         "contentBounds": {
           "x": 78,
           "y": 32,
@@ -9719,7 +9719,7 @@
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
       "heightRatio": 1.083547557840617,
-      "inkRatio": 1.123707624063849
+      "inkRatio": 1.1262011992909424
     },
     {
       "id": "visual_kanban_148",
@@ -9743,13 +9743,13 @@
             255
           ]
         ],
-        "inkPixels": 112253,
-        "inkRatio": 0.10393796296296297,
+        "inkPixels": 112097,
+        "inkRatio": 0.10379351851851852,
         "contentBounds": {
           "x": 21,
-          "y": 281,
+          "y": 289,
           "width": 1161,
-          "height": 334
+          "height": 326
         }
       },
       "official": {
@@ -9784,8 +9784,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0603174603174603,
-      "inkRatio": 1.0487210149666475
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.0472635886320747
     },
     {
       "id": "visual_kanban_149",
@@ -9809,8 +9809,8 @@
             255
           ]
         ],
-        "inkPixels": 231463,
-        "inkRatio": 0.2143175925925926,
+        "inkPixels": 232520,
+        "inkRatio": 0.2152962962962963,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -9851,7 +9851,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0901097348467008
+      "inkRatio": 1.0950878349738613
     },
     {
       "id": "visual_kanban_150",
@@ -9875,13 +9875,13 @@
             255
           ]
         ],
-        "inkPixels": 90826,
-        "inkRatio": 0.08409814814814814,
+        "inkPixels": 90783,
+        "inkRatio": 0.08405833333333333,
         "contentBounds": {
           "x": 21,
-          "y": 316,
+          "y": 323,
           "width": 1161,
-          "height": 265
+          "height": 258
         }
       },
       "official": {
@@ -9916,8 +9916,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0642570281124497,
-      "inkRatio": 1.0416781356087714
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.041184971098266
     },
     {
       "id": "visual_kanban_151",
@@ -9941,8 +9941,8 @@
             255
           ]
         ],
-        "inkPixels": 266382,
-        "inkRatio": 0.24665,
+        "inkPixels": 267098,
+        "inkRatio": 0.24731296296296296,
         "contentBounds": {
           "x": 78,
           "y": 32,
@@ -9983,7 +9983,7 @@
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
       "heightRatio": 1.083547557840617,
-      "inkRatio": 1.1246675166980502
+      "inkRatio": 1.127690475989428
     },
     {
       "id": "visual_kanban_152",
@@ -10007,13 +10007,13 @@
             255
           ]
         ],
-        "inkPixels": 111738,
-        "inkRatio": 0.10346111111111111,
+        "inkPixels": 111641,
+        "inkRatio": 0.1033712962962963,
         "contentBounds": {
           "x": 21,
-          "y": 282,
+          "y": 289,
           "width": 1161,
-          "height": 333
+          "height": 326
         }
       },
       "official": {
@@ -10048,8 +10048,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0571428571428572,
-      "inkRatio": 1.048976258202608
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.0480656396391321
     },
     {
       "id": "visual_kanban_153",
@@ -10073,8 +10073,8 @@
             255
           ]
         ],
-        "inkPixels": 228543,
-        "inkRatio": 0.21161388888888888,
+        "inkPixels": 230271,
+        "inkRatio": 0.2132138888888889,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -10115,7 +10115,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0881031051524008
+      "inkRatio": 1.0963301878707663
     },
     {
       "id": "visual_kanban_154",
@@ -10139,13 +10139,13 @@
             255
           ]
         ],
-        "inkPixels": 90084,
-        "inkRatio": 0.08341111111111112,
+        "inkPixels": 90091,
+        "inkRatio": 0.0834175925925926,
         "contentBounds": {
           "x": 21,
-          "y": 316,
+          "y": 323,
           "width": 1161,
-          "height": 265
+          "height": 258
         }
       },
       "official": {
@@ -10180,8 +10180,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0642570281124497,
-      "inkRatio": 1.041277033509415
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0413579462046167
     },
     {
       "id": "visual_kanban_155",
@@ -10205,8 +10205,8 @@
             255
           ]
         ],
-        "inkPixels": 265524,
-        "inkRatio": 0.24585555555555555,
+        "inkPixels": 266490,
+        "inkRatio": 0.24675,
         "contentBounds": {
           "x": 78,
           "y": 32,
@@ -10247,7 +10247,7 @@
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
       "heightRatio": 1.083547557840617,
-      "inkRatio": 1.1228369898002333
+      "inkRatio": 1.1269219709399685
     },
     {
       "id": "visual_kanban_156",
@@ -10271,13 +10271,13 @@
             255
           ]
         ],
-        "inkPixels": 112276,
-        "inkRatio": 0.10395925925925927,
+        "inkPixels": 112248,
+        "inkRatio": 0.10393333333333334,
         "contentBounds": {
           "x": 21,
-          "y": 282,
+          "y": 289,
           "width": 1161,
-          "height": 333
+          "height": 326
         }
       },
       "official": {
@@ -10312,8 +10312,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0571428571428572,
-      "inkRatio": 1.0475755059387744
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.0473142558571336
     },
     {
       "id": "visual_kanban_157",
@@ -10337,13 +10337,13 @@
             255
           ]
         ],
-        "inkPixels": 230309,
-        "inkRatio": 0.21324907407407406,
+        "inkPixels": 230877,
+        "inkRatio": 0.213775,
         "contentBounds": {
           "x": 34,
-          "y": 119,
+          "y": 133,
           "width": 1137,
-          "height": 656
+          "height": 642
         }
       },
       "official": {
@@ -10378,8 +10378,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.087893864013267,
-      "inkRatio": 1.0933306115860981
+      "heightRatio": 1.064676616915423,
+      "inkRatio": 1.0960270402422987
     },
     {
       "id": "visual_kanban_158",
@@ -10403,13 +10403,13 @@
             255
           ]
         ],
-        "inkPixels": 90901,
-        "inkRatio": 0.0841675925925926,
+        "inkPixels": 90994,
+        "inkRatio": 0.0842537037037037,
         "contentBounds": {
           "x": 21,
-          "y": 316,
+          "y": 323,
           "width": 1161,
-          "height": 265
+          "height": 258
         }
       },
       "official": {
@@ -10444,8 +10444,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000619987983,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0642570281124497,
-      "inkRatio": 1.0405929826569746
+      "heightRatio": 1.036144578313253,
+      "inkRatio": 1.0416576040295347
     },
     {
       "id": "visual_kanban_159",
@@ -10469,13 +10469,13 @@
             255
           ]
         ],
-        "inkPixels": 268211,
-        "inkRatio": 0.24834351851851852,
+        "inkPixels": 269577,
+        "inkRatio": 0.24960833333333332,
         "contentBounds": {
           "x": 78,
-          "y": 19,
+          "y": 32,
           "width": 1049,
-          "height": 856
+          "height": 843
         }
       },
       "official": {
@@ -10510,8 +10510,8 @@
       "manifestGeometryWidthRatio": 1.0000000031252003,
       "manifestGeometryHeightRatio": 0.9999999791653339,
       "widthRatio": 1.0825593395252837,
-      "heightRatio": 1.1002570694087404,
-      "inkRatio": 1.1206884304737867
+      "heightRatio": 1.083547557840617,
+      "inkRatio": 1.126396102403824
     },
     {
       "id": "visual_kanban_160",
@@ -10535,13 +10535,13 @@
             255
           ]
         ],
-        "inkPixels": 114299,
-        "inkRatio": 0.1058324074074074,
+        "inkPixels": 113970,
+        "inkRatio": 0.10552777777777778,
         "contentBounds": {
           "x": 21,
-          "y": 281,
+          "y": 289,
           "width": 1161,
-          "height": 334
+          "height": 326
         }
       },
       "official": {
@@ -10576,8 +10576,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999408072225,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0603174603174603,
-      "inkRatio": 1.0525932883928242
+      "heightRatio": 1.034920634920635,
+      "inkRatio": 1.0495634876781965
     },
     {
       "id": "visual_kanban_161",
@@ -10601,13 +10601,13 @@
             255
           ]
         ],
-        "inkPixels": 189896,
-        "inkRatio": 0.17582962962962964,
+        "inkPixels": 190540,
+        "inkRatio": 0.17642592592592593,
         "contentBounds": {
           "x": 34,
-          "y": 222,
+          "y": 236,
           "width": 1137,
-          "height": 450
+          "height": 436
         }
       },
       "official": {
@@ -10642,8 +10642,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.094890510948905,
-      "inkRatio": 1.0940978543937683
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0978083012606301
     },
     {
       "id": "visual_kanban_162",
@@ -10667,13 +10667,13 @@
             255
           ]
         ],
-        "inkPixels": 85784,
-        "inkRatio": 0.07942962962962963,
+        "inkPixels": 85903,
+        "inkRatio": 0.07953981481481481,
         "contentBounds": {
           "x": 21,
-          "y": 369,
+          "y": 376,
           "width": 1161,
-          "height": 159
+          "height": 152
         }
       },
       "official": {
@@ -10708,8 +10708,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999998810285409,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0743243243243243,
-      "inkRatio": 1.0555432508920881
+      "heightRatio": 1.027027027027027,
+      "inkRatio": 1.0570075058447153
     },
     {
       "id": "visual_kanban_163",
@@ -10733,13 +10733,13 @@
             255
           ]
         ],
-        "inkPixels": 239311,
-        "inkRatio": 0.22158425925925926,
+        "inkPixels": 240704,
+        "inkRatio": 0.22287407407407409,
         "contentBounds": {
           "x": 34,
-          "y": 52,
+          "y": 67,
           "width": 1137,
-          "height": 790
+          "height": 775
         }
       },
       "official": {
@@ -10774,8 +10774,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.085164835164835,
-      "inkRatio": 1.09364317704049
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.1000091399323646
     },
     {
       "id": "visual_kanban_164",
@@ -10799,13 +10799,13 @@
             255
           ]
         ],
-        "inkPixels": 106902,
-        "inkRatio": 0.09898333333333334,
+        "inkPixels": 106809,
+        "inkRatio": 0.09889722222222222,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -10840,8 +10840,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0661733172429613
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.065245793730739
     },
     {
       "id": "visual_kanban_165",
@@ -10865,13 +10865,13 @@
             255
           ]
         ],
-        "inkPixels": 193834,
-        "inkRatio": 0.17947592592592593,
+        "inkPixels": 194666,
+        "inkRatio": 0.1802462962962963,
         "contentBounds": {
           "x": 34,
-          "y": 189,
+          "y": 203,
           "width": 1137,
-          "height": 516
+          "height": 502
         }
       },
       "official": {
@@ -10906,8 +10906,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999655584629,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0909090909090908,
-      "inkRatio": 1.092527252026288
+      "heightRatio": 1.0613107822410148,
+      "inkRatio": 1.0972167423823962
     },
     {
       "id": "visual_kanban_166",
@@ -10931,8 +10931,8 @@
             255
           ]
         ],
-        "inkPixels": 86778,
-        "inkRatio": 0.08035,
+        "inkPixels": 86982,
+        "inkRatio": 0.08053888888888888,
         "contentBounds": {
           "x": 21,
           "y": 376,
@@ -10973,7 +10973,7 @@
       "manifestGeometryHeightRatio": 0.9999998810285409,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.027027027027027,
-      "inkRatio": 1.0502759488768398
+      "inkRatio": 1.0527449651432998
     },
     {
       "id": "visual_kanban_167",
@@ -10997,13 +10997,13 @@
             255
           ]
         ],
-        "inkPixels": 237299,
-        "inkRatio": 0.2197212962962963,
+        "inkPixels": 236853,
+        "inkRatio": 0.21930833333333333,
         "contentBounds": {
           "x": 34,
-          "y": 85,
+          "y": 100,
           "width": 1137,
-          "height": 723
+          "height": 708
         }
       },
       "official": {
@@ -11038,8 +11038,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0855855855855856,
-      "inkRatio": 1.100986855841101
+      "heightRatio": 1.063063063063063,
+      "inkRatio": 1.09891756714749
     },
     {
       "id": "visual_kanban_168",
@@ -11063,13 +11063,13 @@
             255
           ]
         ],
-        "inkPixels": 104762,
-        "inkRatio": 0.09700185185185185,
+        "inkPixels": 104829,
+        "inkRatio": 0.0970638888888889,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -11104,8 +11104,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0423353597261882
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0430019799615948
     },
     {
       "id": "visual_kanban_169",
@@ -11129,13 +11129,13 @@
             255
           ]
         ],
-        "inkPixels": 194334,
-        "inkRatio": 0.1799388888888889,
+        "inkPixels": 195010,
+        "inkRatio": 0.18056481481481482,
         "contentBounds": {
           "x": 34,
-          "y": 191,
+          "y": 203,
           "width": 1137,
-          "height": 514
+          "height": 502
         }
       },
       "official": {
@@ -11170,8 +11170,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999655584629,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0866807610993658,
-      "inkRatio": 1.0917333782758913
+      "heightRatio": 1.0613107822410148,
+      "inkRatio": 1.0955310244094267
     },
     {
       "id": "visual_kanban_170",
@@ -11195,13 +11195,13 @@
             255
           ]
         ],
-        "inkPixels": 85920,
-        "inkRatio": 0.07955555555555556,
+        "inkPixels": 85879,
+        "inkRatio": 0.0795175925925926,
         "contentBounds": {
           "x": 21,
-          "y": 368,
+          "y": 376,
           "width": 1161,
-          "height": 160
+          "height": 152
         }
       },
       "official": {
@@ -11236,8 +11236,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999998810285409,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0810810810810811,
-      "inkRatio": 1.0399419026870007
+      "heightRatio": 1.027027027027027,
+      "inkRatio": 1.039445654805132
     },
     {
       "id": "visual_kanban_171",
@@ -11261,8 +11261,8 @@
             255
           ]
         ],
-        "inkPixels": 235872,
-        "inkRatio": 0.2184,
+        "inkPixels": 236819,
+        "inkRatio": 0.21927685185185186,
         "contentBounds": {
           "x": 34,
           "y": 100,
@@ -11303,7 +11303,7 @@
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.063063063063063,
-      "inkRatio": 1.094472697576005
+      "inkRatio": 1.0988668844426297
     },
     {
       "id": "visual_kanban_172",
@@ -11327,13 +11327,13 @@
             255
           ]
         ],
-        "inkPixels": 109500,
-        "inkRatio": 0.10138888888888889,
+        "inkPixels": 109475,
+        "inkRatio": 0.10136574074074074,
         "contentBounds": {
           "x": 21,
-          "y": 317,
+          "y": 324,
           "width": 1161,
-          "height": 263
+          "height": 256
         }
       },
       "official": {
@@ -11368,8 +11368,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000209321425,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0647773279352226,
-      "inkRatio": 1.0474760132775955
+      "heightRatio": 1.0364372469635628,
+      "inkRatio": 1.0472368635028746
     },
     {
       "id": "visual_kanban_173",
@@ -11393,13 +11393,13 @@
             255
           ]
         ],
-        "inkPixels": 189495,
-        "inkRatio": 0.17545833333333333,
+        "inkPixels": 190421,
+        "inkRatio": 0.17631574074074075,
         "contentBounds": {
           "x": 34,
-          "y": 222,
+          "y": 236,
           "width": 1137,
-          "height": 450
+          "height": 436
         }
       },
       "official": {
@@ -11434,8 +11434,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.094890510948905,
-      "inkRatio": 1.093072219658514
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0984137055837564
     },
     {
       "id": "visual_kanban_174",
@@ -11459,8 +11459,8 @@
             255
           ]
         ],
-        "inkPixels": 85696,
-        "inkRatio": 0.07934814814814815,
+        "inkPixels": 85850,
+        "inkRatio": 0.07949074074074074,
         "contentBounds": {
           "x": 21,
           "y": 376,
@@ -11501,7 +11501,7 @@
       "manifestGeometryHeightRatio": 0.9999998810285409,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.027027027027027,
-      "inkRatio": 1.053099846390169
+      "inkRatio": 1.0549923195084485
     },
     {
       "id": "visual_kanban_175",
@@ -11525,8 +11525,8 @@
             255
           ]
         ],
-        "inkPixels": 243433,
-        "inkRatio": 0.22540092592592592,
+        "inkPixels": 244476,
+        "inkRatio": 0.22636666666666666,
         "contentBounds": {
           "x": 35,
           "y": 34,
@@ -11567,7 +11567,7 @@
       "manifestGeometryHeightRatio": 0.9999999613020553,
       "widthRatio": 1.0882070949185043,
       "heightRatio": 1.0894941634241244,
-      "inkRatio": 1.139027699794123
+      "inkRatio": 1.1439079169006177
     },
     {
       "id": "visual_kanban_176",
@@ -11591,13 +11591,13 @@
             255
           ]
         ],
-        "inkPixels": 105499,
-        "inkRatio": 0.09768425925925926,
+        "inkPixels": 105678,
+        "inkRatio": 0.09785,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -11632,8 +11632,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0422948487423185
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.044063308897627
     },
     {
       "id": "visual_kanban_177",
@@ -11657,13 +11657,13 @@
             255
           ]
         ],
-        "inkPixels": 189955,
-        "inkRatio": 0.17588425925925927,
+        "inkPixels": 190344,
+        "inkRatio": 0.17624444444444445,
         "contentBounds": {
           "x": 34,
-          "y": 256,
+          "y": 270,
           "width": 1137,
-          "height": 382
+          "height": 368
         }
       },
       "official": {
@@ -11698,8 +11698,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0977011494252873,
-      "inkRatio": 1.0843232505437173
+      "heightRatio": 1.0574712643678161,
+      "inkRatio": 1.086543785641301
     },
     {
       "id": "visual_kanban_178",
@@ -11723,8 +11723,8 @@
             255
           ]
         ],
-        "inkPixels": 85186,
-        "inkRatio": 0.07887592592592593,
+        "inkPixels": 85593,
+        "inkRatio": 0.07925277777777778,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -11765,7 +11765,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.0432812423455642
+      "inkRatio": 1.0482658110027925
     },
     {
       "id": "visual_kanban_179",
@@ -11789,8 +11789,8 @@
             255
           ]
         ],
-        "inkPixels": 234237,
-        "inkRatio": 0.2168861111111111,
+        "inkPixels": 235649,
+        "inkRatio": 0.2181935185185185,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -11831,7 +11831,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0906411509987428
+      "inkRatio": 1.0972156260185315
     },
     {
       "id": "visual_kanban_180",
@@ -11855,13 +11855,13 @@
             255
           ]
         ],
-        "inkPixels": 104212,
-        "inkRatio": 0.09649259259259259,
+        "inkPixels": 104167,
+        "inkRatio": 0.09645092592592593,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -11896,8 +11896,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0479676595402345
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0475151344502323
     },
     {
       "id": "visual_kanban_181",
@@ -11921,13 +11921,13 @@
             255
           ]
         ],
-        "inkPixels": 189396,
-        "inkRatio": 0.17536666666666667,
+        "inkPixels": 189860,
+        "inkRatio": 0.17579629629629628,
         "contentBounds": {
           "x": 34,
-          "y": 255,
+          "y": 270,
           "width": 1137,
-          "height": 383
+          "height": 368
         }
       },
       "official": {
@@ -11962,8 +11962,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.1005747126436782,
-      "inkRatio": 1.0834577562683416
+      "heightRatio": 1.0574712643678161,
+      "inkRatio": 1.0861121122151858
     },
     {
       "id": "visual_kanban_182",
@@ -11987,13 +11987,13 @@
             255
           ]
         ],
-        "inkPixels": 85018,
-        "inkRatio": 0.07872037037037037,
+        "inkPixels": 85345,
+        "inkRatio": 0.07902314814814815,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -12028,8 +12028,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0437419434043338
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0477564299306366
     },
     {
       "id": "visual_kanban_183",
@@ -12053,8 +12053,8 @@
             255
           ]
         ],
-        "inkPixels": 235070,
-        "inkRatio": 0.2176574074074074,
+        "inkPixels": 236316,
+        "inkRatio": 0.21881111111111112,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -12095,7 +12095,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0926830628779673
+      "inkRatio": 1.098474882745862
     },
     {
       "id": "visual_kanban_184",
@@ -12119,13 +12119,13 @@
             255
           ]
         ],
-        "inkPixels": 104121,
-        "inkRatio": 0.09640833333333333,
+        "inkPixels": 104396,
+        "inkRatio": 0.09666296296296296,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -12160,8 +12160,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0435893837950527
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0463456681233212
     },
     {
       "id": "visual_kanban_185",
@@ -12185,8 +12185,8 @@
             255
           ]
         ],
-        "inkPixels": 189582,
-        "inkRatio": 0.17553888888888888,
+        "inkPixels": 190588,
+        "inkRatio": 0.17647037037037036,
         "contentBounds": {
           "x": 34,
           "y": 270,
@@ -12227,7 +12227,7 @@
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0807997309146051
+      "inkRatio": 1.0865348984373662
     },
     {
       "id": "visual_kanban_186",
@@ -12251,13 +12251,13 @@
             255
           ]
         ],
-        "inkPixels": 84989,
-        "inkRatio": 0.07869351851851852,
+        "inkPixels": 85121,
+        "inkRatio": 0.07881574074074074,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -12292,8 +12292,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.046366177068072
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.04799133250434
     },
     {
       "id": "visual_kanban_187",
@@ -12317,8 +12317,8 @@
             255
           ]
         ],
-        "inkPixels": 235146,
-        "inkRatio": 0.21772777777777777,
+        "inkPixels": 236804,
+        "inkRatio": 0.21926296296296297,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -12359,7 +12359,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0901833152521627
+      "inkRatio": 1.0978701308334957
     },
     {
       "id": "visual_kanban_188",
@@ -12383,13 +12383,13 @@
             255
           ]
         ],
-        "inkPixels": 103281,
-        "inkRatio": 0.09563055555555555,
+        "inkPixels": 103567,
+        "inkRatio": 0.09589537037037037,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -12424,8 +12424,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0442867109533776
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.047178491622936
     },
     {
       "id": "visual_kanban_189",
@@ -12449,13 +12449,13 @@
             255
           ]
         ],
-        "inkPixels": 189284,
-        "inkRatio": 0.17526296296296295,
+        "inkPixels": 190047,
+        "inkRatio": 0.17596944444444446,
         "contentBounds": {
           "x": 34,
-          "y": 255,
+          "y": 270,
           "width": 1137,
-          "height": 383
+          "height": 368
         }
       },
       "official": {
@@ -12490,8 +12490,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999322303396,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.1005747126436782,
-      "inkRatio": 1.0815239749508616
+      "heightRatio": 1.0574712643678161,
+      "inkRatio": 1.085883576358733
     },
     {
       "id": "visual_kanban_190",
@@ -12515,13 +12515,13 @@
             255
           ]
         ],
-        "inkPixels": 85717,
-        "inkRatio": 0.07936759259259259,
+        "inkPixels": 85747,
+        "inkRatio": 0.07939537037037037,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -12556,8 +12556,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0467973377297428
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0471637051963119
     },
     {
       "id": "visual_kanban_191",
@@ -12581,8 +12581,8 @@
             255
           ]
         ],
-        "inkPixels": 233969,
-        "inkRatio": 0.21663796296296298,
+        "inkPixels": 235090,
+        "inkRatio": 0.21767592592592594,
         "contentBounds": {
           "x": 34,
           "y": 133,
@@ -12623,7 +12623,7 @@
       "manifestGeometryHeightRatio": 1.0000000457819185,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.064676616915423,
-      "inkRatio": 1.0932926487355377
+      "inkRatio": 1.0985308685818957
     },
     {
       "id": "visual_kanban_192",
@@ -12647,13 +12647,13 @@
             255
           ]
         ],
-        "inkPixels": 103394,
-        "inkRatio": 0.09573518518518519,
+        "inkPixels": 103525,
+        "inkRatio": 0.09585648148148149,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -12688,8 +12688,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0457041719342606
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0470290771175728
     },
     {
       "id": "visual_kanban_193",
@@ -12713,8 +12713,8 @@
             255
           ]
         ],
-        "inkPixels": 223859,
-        "inkRatio": 0.20727685185185185,
+        "inkPixels": 226385,
+        "inkRatio": 0.20961574074074074,
         "contentBounds": {
           "x": 34,
           "y": 203,
@@ -12755,7 +12755,7 @@
       "manifestGeometryHeightRatio": 0.9999999655584629,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0613107822410148,
-      "inkRatio": 1.064732769240282
+      "inkRatio": 1.0767470951110352
     },
     {
       "id": "visual_kanban_194",
@@ -12779,13 +12779,13 @@
             255
           ]
         ],
-        "inkPixels": 89101,
-        "inkRatio": 0.08250092592592592,
+        "inkPixels": 89459,
+        "inkRatio": 0.08283240740740741,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -12820,8 +12820,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0534772635910048
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0577100428007284
     },
     {
       "id": "visual_kanban_195",
@@ -12845,8 +12845,8 @@
             255
           ]
         ],
-        "inkPixels": 339761,
-        "inkRatio": 0.3145935185185185,
+        "inkPixels": 343581,
+        "inkRatio": 0.3181305555555556,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -12887,7 +12887,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0797375027806908
+      "inkRatio": 1.0918772046906282
     },
     {
       "id": "visual_kanban_196",
@@ -12911,8 +12911,8 @@
             255
           ]
         ],
-        "inkPixels": 123665,
-        "inkRatio": 0.11450462962962962,
+        "inkPixels": 124405,
+        "inkRatio": 0.11518981481481481,
         "contentBounds": {
           "x": 21,
           "y": 324,
@@ -12953,7 +12953,7 @@
       "manifestGeometryHeightRatio": 1.0000000209321425,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0364372469635628,
-      "inkRatio": 1.0392977502122045
+      "inkRatio": 1.0455168124784644
     },
     {
       "id": "visual_kanban_197",
@@ -12977,13 +12977,13 @@
             255
           ]
         ],
-        "inkPixels": 225467,
-        "inkRatio": 0.20876574074074075,
+        "inkPixels": 226901,
+        "inkRatio": 0.2100935185185185,
         "contentBounds": {
           "x": 34,
-          "y": 191,
+          "y": 203,
           "width": 1137,
-          "height": 514
+          "height": 502
         }
       },
       "official": {
@@ -13018,8 +13018,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999655584629,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0866807610993658,
-      "inkRatio": 1.0727533115103534
+      "heightRatio": 1.0613107822410148,
+      "inkRatio": 1.0795761647381243
     },
     {
       "id": "visual_kanban_198",
@@ -13043,8 +13043,8 @@
             255
           ]
         ],
-        "inkPixels": 90162,
-        "inkRatio": 0.08348333333333334,
+        "inkPixels": 90680,
+        "inkRatio": 0.08396296296296296,
         "contentBounds": {
           "x": 21,
           "y": 367,
@@ -13085,7 +13085,7 @@
       "manifestGeometryHeightRatio": 0.999999873449309,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0365853658536586,
-      "inkRatio": 1.0481028550172047
+      "inkRatio": 1.0541244303915187
     },
     {
       "id": "visual_kanban_199",
@@ -13109,13 +13109,13 @@
             255
           ]
         ],
-        "inkPixels": 335697,
-        "inkRatio": 0.31083055555555555,
+        "inkPixels": 339257,
+        "inkRatio": 0.31412685185185185,
         "contentBounds": {
           "x": 34,
-          "y": 53,
+          "y": 67,
           "width": 1137,
-          "height": 789
+          "height": 775
         }
       },
       "official": {
@@ -13150,8 +13150,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0837912087912087,
-      "inkRatio": 1.082226757062584
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.0937035568407851
     },
     {
       "id": "visual_kanban_200",
@@ -13175,13 +13175,13 @@
             255
           ]
         ],
-        "inkPixels": 120813,
-        "inkRatio": 0.11186388888888889,
+        "inkPixels": 121426,
+        "inkRatio": 0.11243148148148148,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -13216,8 +13216,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.863636381714123,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 0.9271255060728745,
-      "inkRatio": 1.0225651095668955
+      "heightRatio": 0.8987854251012146,
+      "inkRatio": 1.0277535612415043
     },
     {
       "id": "visual_kanban_201",
@@ -13241,8 +13241,8 @@
             255
           ]
         ],
-        "inkPixels": 223979,
-        "inkRatio": 0.20738796296296297,
+        "inkPixels": 227063,
+        "inkRatio": 0.21024351851851852,
         "contentBounds": {
           "x": 34,
           "y": 203,
@@ -13283,7 +13283,7 @@
       "manifestGeometryHeightRatio": 0.9999999655584629,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0613107822410148,
-      "inkRatio": 1.0622871669370062
+      "inkRatio": 1.0769139561575747
     },
     {
       "id": "visual_kanban_202",
@@ -13307,13 +13307,13 @@
             255
           ]
         ],
-        "inkPixels": 90436,
-        "inkRatio": 0.08373703703703704,
+        "inkPixels": 91031,
+        "inkRatio": 0.08428796296296297,
         "contentBounds": {
           "x": 21,
-          "y": 361,
+          "y": 367,
           "width": 1161,
-          "height": 176
+          "height": 170
         }
       },
       "official": {
@@ -13348,8 +13348,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.999999873449309,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0731707317073171,
-      "inkRatio": 1.0456358612077836
+      "heightRatio": 1.0365853658536586,
+      "inkRatio": 1.0525153487726764
     },
     {
       "id": "visual_kanban_203",
@@ -13373,8 +13373,8 @@
             255
           ]
         ],
-        "inkPixels": 345763,
-        "inkRatio": 0.3201509259259259,
+        "inkPixels": 349465,
+        "inkRatio": 0.32357870370370373,
         "contentBounds": {
           "x": 35,
           "y": 34,
@@ -13415,7 +13415,7 @@
       "manifestGeometryHeightRatio": 0.9999999613020553,
       "widthRatio": 1.0882070949185043,
       "heightRatio": 1.0909090909090908,
-      "inkRatio": 1.1233329326415444
+      "inkRatio": 1.135360184014997
     },
     {
       "id": "visual_kanban_204",
@@ -13439,13 +13439,13 @@
             255
           ]
         ],
-        "inkPixels": 120764,
-        "inkRatio": 0.11181851851851853,
+        "inkPixels": 121653,
+        "inkRatio": 0.11264166666666667,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -13480,8 +13480,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0320915485133622
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0396892546727174
     },
     {
       "id": "visual_kanban_205",
@@ -13505,8 +13505,8 @@
             255
           ]
         ],
-        "inkPixels": 223946,
-        "inkRatio": 0.2073574074074074,
+        "inkPixels": 225921,
+        "inkRatio": 0.2091861111111111,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -13547,7 +13547,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.078073249634137
+      "inkRatio": 1.087580874990372
     },
     {
       "id": "visual_kanban_206",
@@ -13571,13 +13571,13 @@
             255
           ]
         ],
-        "inkPixels": 88768,
-        "inkRatio": 0.0821925925925926,
+        "inkPixels": 89190,
+        "inkRatio": 0.08258333333333333,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -13612,8 +13612,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0540514866533677
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0590624109432887
     },
     {
       "id": "visual_kanban_207",
@@ -13637,13 +13637,13 @@
             255
           ]
         ],
-        "inkPixels": 336940,
-        "inkRatio": 0.31198148148148147,
+        "inkPixels": 340013,
+        "inkRatio": 0.31482685185185183,
         "contentBounds": {
           "x": 34,
-          "y": 52,
+          "y": 67,
           "width": 1137,
-          "height": 790
+          "height": 775
         }
       },
       "official": {
@@ -13678,8 +13678,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.085164835164835,
-      "inkRatio": 1.0832028650513248
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.0930820198097466
     },
     {
       "id": "visual_kanban_208",
@@ -13703,8 +13703,8 @@
             255
           ]
         ],
-        "inkPixels": 120007,
-        "inkRatio": 0.11111759259259259,
+        "inkPixels": 121302,
+        "inkRatio": 0.11231666666666666,
         "contentBounds": {
           "x": 21,
           "y": 341,
@@ -13745,7 +13745,7 @@
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0325581395348837,
-      "inkRatio": 1.0310499772323078
+      "inkRatio": 1.0421760758808518
     },
     {
       "id": "visual_kanban_209",
@@ -13769,13 +13769,13 @@
             255
           ]
         ],
-        "inkPixels": 259892,
-        "inkRatio": 0.24064074074074074,
+        "inkPixels": 261621,
+        "inkRatio": 0.24224166666666666,
         "contentBounds": {
           "x": 34,
-          "y": 85,
+          "y": 100,
           "width": 1137,
-          "height": 723
+          "height": 708
         }
       },
       "official": {
@@ -13810,8 +13810,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.087218045112782,
-      "inkRatio": 1.0746488366227118
+      "heightRatio": 1.0646616541353384,
+      "inkRatio": 1.0817982211305868
     },
     {
       "id": "visual_kanban_210",
@@ -13835,13 +13835,13 @@
             255
           ]
         ],
-        "inkPixels": 100476,
-        "inkRatio": 0.09303333333333333,
+        "inkPixels": 100530,
+        "inkRatio": 0.09308333333333334,
         "contentBounds": {
           "x": 21,
-          "y": 308,
+          "y": 315,
           "width": 1161,
-          "height": 281
+          "height": 274
         }
       },
       "official": {
@@ -13876,8 +13876,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.060377358490566,
-      "inkRatio": 1.03566422033479
+      "heightRatio": 1.0339622641509434,
+      "inkRatio": 1.036220829553888
     },
     {
       "id": "visual_kanban_211",
@@ -13901,13 +13901,13 @@
             255
           ]
         ],
-        "inkPixels": 251807,
-        "inkRatio": 0.23315462962962963,
+        "inkPixels": 252589,
+        "inkRatio": 0.2338787037037037,
         "contentBounds": {
           "x": 142,
-          "y": 19,
+          "y": 29,
           "width": 920,
-          "height": 859
+          "height": 849
         }
       },
       "official": {
@@ -13942,8 +13942,8 @@
       "manifestGeometryWidthRatio": 0.9999999958330665,
       "manifestGeometryHeightRatio": 1.0000000604877457,
       "widthRatio": 1.0722610722610724,
-      "heightRatio": 1.0901015228426396,
-      "inkRatio": 1.096987941309727
+      "heightRatio": 1.0774111675126903,
+      "inkRatio": 1.100394695570348
     },
     {
       "id": "visual_kanban_212",
@@ -13967,13 +13967,13 @@
             255
           ]
         ],
-        "inkPixels": 137664,
-        "inkRatio": 0.12746666666666667,
+        "inkPixels": 137891,
+        "inkRatio": 0.12767685185185185,
         "contentBounds": {
           "x": 21,
-          "y": 247,
+          "y": 255,
           "width": 1161,
-          "height": 402
+          "height": 394
         }
       },
       "official": {
@@ -14008,8 +14008,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999176107848,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0551181102362204,
-      "inkRatio": 1.031407336370175
+      "heightRatio": 1.0341207349081365,
+      "inkRatio": 1.0331080676096858
     },
     {
       "id": "visual_kanban_213",
@@ -14033,13 +14033,13 @@
             255
           ]
         ],
-        "inkPixels": 268801,
-        "inkRatio": 0.2488898148148148,
+        "inkPixels": 269972,
+        "inkRatio": 0.24997407407407407,
         "contentBounds": {
           "x": 34,
-          "y": 52,
+          "y": 67,
           "width": 1137,
-          "height": 790
+          "height": 775
         }
       },
       "official": {
@@ -14074,8 +14074,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.085164835164835,
-      "inkRatio": 1.0898737000020273
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.0946216068279035
     },
     {
       "id": "visual_kanban_214",
@@ -14099,13 +14099,13 @@
             255
           ]
         ],
-        "inkPixels": 98640,
-        "inkRatio": 0.09133333333333334,
+        "inkPixels": 99020,
+        "inkRatio": 0.09168518518518519,
         "contentBounds": {
           "x": 21,
-          "y": 308,
+          "y": 315,
           "width": 1161,
-          "height": 281
+          "height": 274
         }
       },
       "official": {
@@ -14140,8 +14140,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.060377358490566,
-      "inkRatio": 1.0328255065179834
+      "heightRatio": 1.0339622641509434,
+      "inkRatio": 1.0368043557928905
     },
     {
       "id": "visual_kanban_215",
@@ -14165,13 +14165,13 @@
             255
           ]
         ],
-        "inkPixels": 211598,
-        "inkRatio": 0.19592407407407408,
+        "inkPixels": 212553,
+        "inkRatio": 0.19680833333333334,
         "contentBounds": {
           "x": 192,
-          "y": 16,
+          "y": 27,
           "width": 820,
-          "height": 863
+          "height": 852
         }
       },
       "official": {
@@ -14206,8 +14206,8 @@
       "manifestGeometryWidthRatio": 1.0000000298630232,
       "manifestGeometryHeightRatio": 0.9999999464251456,
       "widthRatio": 1.0677083333333333,
-      "heightRatio": 1.082810539523212,
-      "inkRatio": 1.0820881020322584
+      "heightRatio": 1.06900878293601,
+      "inkRatio": 1.0869718633978704
     },
     {
       "id": "visual_kanban_216",
@@ -14231,13 +14231,13 @@
             255
           ]
         ],
-        "inkPixels": 131297,
-        "inkRatio": 0.1215712962962963,
+        "inkPixels": 132040,
+        "inkRatio": 0.12225925925925926,
         "contentBounds": {
           "x": 21,
-          "y": 264,
+          "y": 272,
           "width": 1161,
-          "height": 368
+          "height": 360
         }
       },
       "official": {
@@ -14272,8 +14272,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999280955746,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0363888954667804
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.0422537434780206
     },
     {
       "id": "visual_kanban_217",
@@ -14297,13 +14297,13 @@
             255
           ]
         ],
-        "inkPixels": 260436,
-        "inkRatio": 0.24114444444444444,
+        "inkPixels": 261485,
+        "inkRatio": 0.24211574074074074,
         "contentBounds": {
           "x": 34,
-          "y": 86,
+          "y": 100,
           "width": 1137,
-          "height": 722
+          "height": 708
         }
       },
       "official": {
@@ -14338,8 +14338,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0857142857142856,
-      "inkRatio": 1.077535416390838
+      "heightRatio": 1.0646616541353384,
+      "inkRatio": 1.081875579240037
     },
     {
       "id": "visual_kanban_218",
@@ -14363,13 +14363,13 @@
             255
           ]
         ],
-        "inkPixels": 100099,
-        "inkRatio": 0.09268425925925926,
+        "inkPixels": 100520,
+        "inkRatio": 0.09307407407407407,
         "contentBounds": {
           "x": 21,
-          "y": 308,
+          "y": 315,
           "width": 1161,
-          "height": 281
+          "height": 274
         }
       },
       "official": {
@@ -14404,8 +14404,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.060377358490566,
-      "inkRatio": 1.041949015811552
+      "heightRatio": 1.0339622641509434,
+      "inkRatio": 1.0463312827238755
     },
     {
       "id": "visual_kanban_219",
@@ -14429,8 +14429,8 @@
             255
           ]
         ],
-        "inkPixels": 250430,
-        "inkRatio": 0.23187962962962963,
+        "inkPixels": 252166,
+        "inkRatio": 0.23348703703703705,
         "contentBounds": {
           "x": 142,
           "y": 29,
@@ -14471,7 +14471,7 @@
       "manifestGeometryHeightRatio": 1.0000000604877457,
       "widthRatio": 1.0722610722610724,
       "heightRatio": 1.0774111675126903,
-      "inkRatio": 1.094541497121928
+      "inkRatio": 1.102128942871254
     },
     {
       "id": "visual_kanban_220",
@@ -14495,13 +14495,13 @@
             255
           ]
         ],
-        "inkPixels": 131260,
-        "inkRatio": 0.12153703703703704,
+        "inkPixels": 131689,
+        "inkRatio": 0.12193425925925926,
         "contentBounds": {
           "x": 21,
-          "y": 264,
+          "y": 272,
           "width": 1161,
-          "height": 368
+          "height": 360
         }
       },
       "official": {
@@ -14536,8 +14536,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999280955746,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0379566661394908
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.0413490431757078
     },
     {
       "id": "visual_kanban_221",
@@ -14561,13 +14561,13 @@
             255
           ]
         ],
-        "inkPixels": 260545,
-        "inkRatio": 0.24124537037037036,
+        "inkPixels": 261623,
+        "inkRatio": 0.24224351851851852,
         "contentBounds": {
           "x": 34,
-          "y": 85,
+          "y": 100,
           "width": 1137,
-          "height": 723
+          "height": 708
         }
       },
       "official": {
@@ -14602,8 +14602,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 0.9999999527604634,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.087218045112782,
-      "inkRatio": 1.075872007796144
+      "heightRatio": 1.0646616541353384,
+      "inkRatio": 1.0803234078399149
     },
     {
       "id": "visual_kanban_222",
@@ -14627,8 +14627,8 @@
             255
           ]
         ],
-        "inkPixels": 99131,
-        "inkRatio": 0.09178796296296296,
+        "inkPixels": 99601,
+        "inkRatio": 0.09222314814814815,
         "contentBounds": {
           "x": 21,
           "y": 315,
@@ -14669,7 +14669,7 @@
       "manifestGeometryHeightRatio": 1.0000000458969178,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0339622641509434,
-      "inkRatio": 1.032066298112461
+      "inkRatio": 1.0369595319153369
     },
     {
       "id": "visual_kanban_223",
@@ -14693,13 +14693,13 @@
             255
           ]
         ],
-        "inkPixels": 228716,
-        "inkRatio": 0.2117740740740741,
+        "inkPixels": 230185,
+        "inkRatio": 0.21313425925925925,
         "contentBounds": {
           "x": 168,
-          "y": 18,
+          "y": 28,
           "width": 868,
-          "height": 860
+          "height": 850
         }
       },
       "official": {
@@ -14734,8 +14734,8 @@
       "manifestGeometryWidthRatio": 0.9999999958330665,
       "manifestGeometryHeightRatio": 1.064516193422439,
       "widthRatio": 1.0116550116550116,
-      "heightRatio": 1.0913705583756346,
-      "inkRatio": 0.9924885114581662
+      "heightRatio": 1.0786802030456852,
+      "inkRatio": 0.9988630791461811
     },
     {
       "id": "visual_kanban_224",
@@ -14759,13 +14759,13 @@
             255
           ]
         ],
-        "inkPixels": 131483,
-        "inkRatio": 0.12174351851851851,
+        "inkPixels": 131950,
+        "inkRatio": 0.12217592592592592,
         "contentBounds": {
           "x": 21,
-          "y": 264,
+          "y": 272,
           "width": 1161,
-          "height": 368
+          "height": 360
         }
       },
       "official": {
@@ -14800,8 +14800,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 0.9999999280955746,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0574712643678161,
-      "inkRatio": 1.0391120173234072
+      "heightRatio": 1.0344827586206897,
+      "inkRatio": 1.0428027249592995
     },
     {
       "id": "visual_kanban_225",
@@ -14825,8 +14825,8 @@
             255
           ]
         ],
-        "inkPixels": 191306,
-        "inkRatio": 0.17713518518518517,
+        "inkPixels": 192680,
+        "inkRatio": 0.1784074074074074,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -14867,7 +14867,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.088041586568539
+      "inkRatio": 1.095856130492646
     },
     {
       "id": "visual_kanban_226",
@@ -14891,13 +14891,13 @@
             255
           ]
         ],
-        "inkPixels": 87160,
-        "inkRatio": 0.08070370370370371,
+        "inkPixels": 87546,
+        "inkRatio": 0.08106111111111111,
         "contentBounds": {
           "x": 21,
-          "y": 378,
+          "y": 384,
           "width": 1161,
-          "height": 142
+          "height": 136
         }
       },
       "official": {
@@ -14932,8 +14932,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0757575757575757,
-      "inkRatio": 1.0545291761944515
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0591993031105948
     },
     {
       "id": "visual_kanban_227",
@@ -14957,8 +14957,8 @@
             255
           ]
         ],
-        "inkPixels": 245500,
-        "inkRatio": 0.2273148148148148,
+        "inkPixels": 246560,
+        "inkRatio": 0.2282962962962963,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -14999,7 +14999,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0955126374410966
+      "inkRatio": 1.1002427531058119
     },
     {
       "id": "visual_kanban_228",
@@ -15023,13 +15023,13 @@
             255
           ]
         ],
-        "inkPixels": 109209,
-        "inkRatio": 0.10111944444444444,
+        "inkPixels": 109328,
+        "inkRatio": 0.10122962962962963,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -15064,8 +15064,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.040571314232356
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0417051767015084
     },
     {
       "id": "visual_kanban_229",
@@ -15089,13 +15089,13 @@
             255
           ]
         ],
-        "inkPixels": 192341,
-        "inkRatio": 0.1780935185185185,
+        "inkPixels": 193311,
+        "inkRatio": 0.17899166666666666,
         "contentBounds": {
           "x": 34,
-          "y": 222,
+          "y": 236,
           "width": 1137,
-          "height": 450
+          "height": 436
         }
       },
       "official": {
@@ -15130,8 +15130,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.094890510948905,
-      "inkRatio": 1.0914326894704587
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0969369226229657
     },
     {
       "id": "visual_kanban_230",
@@ -15155,13 +15155,13 @@
             255
           ]
         ],
-        "inkPixels": 87301,
-        "inkRatio": 0.08083425925925926,
+        "inkPixels": 87689,
+        "inkRatio": 0.08119351851851851,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -15196,8 +15196,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.053965302845553
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0586495394236457
     },
     {
       "id": "visual_kanban_231",
@@ -15221,8 +15221,8 @@
             255
           ]
         ],
-        "inkPixels": 245761,
-        "inkRatio": 0.22755648148148147,
+        "inkPixels": 247381,
+        "inkRatio": 0.22905648148148147,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -15263,7 +15263,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0943771791937373
+      "inkRatio": 1.101591061910254
     },
     {
       "id": "visual_kanban_232",
@@ -15287,13 +15287,13 @@
             255
           ]
         ],
-        "inkPixels": 109564,
-        "inkRatio": 0.10144814814814815,
+        "inkPixels": 109928,
+        "inkRatio": 0.10178518518518519,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -15328,8 +15328,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0391615687390334
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0426139327547779
     },
     {
       "id": "visual_kanban_233",
@@ -15353,8 +15353,8 @@
             255
           ]
         ],
-        "inkPixels": 191904,
-        "inkRatio": 0.1776888888888889,
+        "inkPixels": 192862,
+        "inkRatio": 0.17857592592592592,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -15395,7 +15395,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0909152923921757
+      "inkRatio": 1.0963612281210384
     },
     {
       "id": "visual_kanban_234",
@@ -15419,13 +15419,13 @@
             255
           ]
         ],
-        "inkPixels": 86974,
-        "inkRatio": 0.08053148148148148,
+        "inkPixels": 87316,
+        "inkRatio": 0.08084814814814814,
         "contentBounds": {
           "x": 21,
-          "y": 377,
+          "y": 384,
           "width": 1161,
-          "height": 143
+          "height": 136
         }
       },
       "official": {
@@ -15460,8 +15460,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0833333333333333,
-      "inkRatio": 1.0547289021476818
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.0588763172893851
     },
     {
       "id": "visual_kanban_235",
@@ -15485,13 +15485,13 @@
             255
           ]
         ],
-        "inkPixels": 245561,
-        "inkRatio": 0.2273712962962963,
+        "inkPixels": 247475,
+        "inkRatio": 0.22914351851851852,
         "contentBounds": {
           "x": 34,
-          "y": 53,
+          "y": 67,
           "width": 1137,
-          "height": 789
+          "height": 775
         }
       },
       "official": {
@@ -15526,8 +15526,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0837912087912087,
-      "inkRatio": 1.091804386585035
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.1003143437684793
     },
     {
       "id": "visual_kanban_236",
@@ -15551,13 +15551,13 @@
             255
           ]
         ],
-        "inkPixels": 108669,
-        "inkRatio": 0.10061944444444444,
+        "inkPixels": 109135,
+        "inkRatio": 0.10105092592592592,
         "contentBounds": {
           "x": 21,
-          "y": 335,
+          "y": 341,
           "width": 1161,
-          "height": 228
+          "height": 222
         }
       },
       "official": {
@@ -15592,8 +15592,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0604651162790697,
-      "inkRatio": 1.0378389219440916
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.0422894362363546
     },
     {
       "id": "visual_kanban_237",
@@ -15617,13 +15617,13 @@
             255
           ]
         ],
-        "inkPixels": 190864,
-        "inkRatio": 0.17672592592592593,
+        "inkPixels": 191531,
+        "inkRatio": 0.1773435185185185,
         "contentBounds": {
           "x": 34,
-          "y": 222,
+          "y": 236,
           "width": 1137,
-          "height": 450
+          "height": 436
         }
       },
       "official": {
@@ -15658,8 +15658,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.094890510948905,
-      "inkRatio": 1.0924680468665036
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0962858238556685
     },
     {
       "id": "visual_kanban_238",
@@ -15683,13 +15683,13 @@
             255
           ]
         ],
-        "inkPixels": 87451,
-        "inkRatio": 0.08097314814814814,
+        "inkPixels": 87805,
+        "inkRatio": 0.08130092592592593,
         "contentBounds": {
           "x": 21,
-          "y": 378,
+          "y": 384,
           "width": 1161,
-          "height": 142
+          "height": 136
         }
       },
       "official": {
@@ -15724,8 +15724,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000001372441323,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0757575757575757,
-      "inkRatio": 1.0542234759442093
+      "heightRatio": 1.0303030303030303,
+      "inkRatio": 1.05849095270816
     },
     {
       "id": "visual_kanban_239",
@@ -15749,13 +15749,13 @@
             255
           ]
         ],
-        "inkPixels": 245046,
-        "inkRatio": 0.22689444444444445,
+        "inkPixels": 246369,
+        "inkRatio": 0.22811944444444446,
         "contentBounds": {
           "x": 34,
-          "y": 54,
+          "y": 67,
           "width": 1137,
-          "height": 788
+          "height": 775
         }
       },
       "official": {
@@ -15790,8 +15790,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0824175824175823,
-      "inkRatio": 1.0945074970855835
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.1004167280815769
     },
     {
       "id": "visual_kanban_240",
@@ -15815,8 +15815,8 @@
             255
           ]
         ],
-        "inkPixels": 108643,
-        "inkRatio": 0.10059537037037038,
+        "inkPixels": 109136,
+        "inkRatio": 0.10105185185185185,
         "contentBounds": {
           "x": 21,
           "y": 341,
@@ -15857,7 +15857,7 @@
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0325581395348837,
-      "inkRatio": 1.0378086640875006
+      "inkRatio": 1.0425180302813202
     },
     {
       "id": "visual_kanban_241",
@@ -15881,8 +15881,8 @@
             255
           ]
         ],
-        "inkPixels": 206013,
-        "inkRatio": 0.19075277777777777,
+        "inkPixels": 207236,
+        "inkRatio": 0.1918851851851852,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -15923,7 +15923,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0809337418935085
+      "inkRatio": 1.0873507251243522
     },
     {
       "id": "visual_kanban_242",
@@ -15947,13 +15947,13 @@
             255
           ]
         ],
-        "inkPixels": 92408,
-        "inkRatio": 0.08556296296296297,
+        "inkPixels": 92710,
+        "inkRatio": 0.0858425925925926,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -15988,8 +15988,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.0576628133226509
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0611193773606502
     },
     {
       "id": "visual_kanban_243",
@@ -16013,13 +16013,13 @@
             255
           ]
         ],
-        "inkPixels": 262227,
-        "inkRatio": 0.24280277777777778,
+        "inkPixels": 263700,
+        "inkRatio": 0.24416666666666667,
         "contentBounds": {
           "x": 34,
-          "y": 52,
+          "y": 67,
           "width": 1137,
-          "height": 790
+          "height": 775
         }
       },
       "official": {
@@ -16054,8 +16054,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.085164835164835,
-      "inkRatio": 1.0885666605781845
+      "heightRatio": 1.0645604395604396,
+      "inkRatio": 1.09468143400362
     },
     {
       "id": "visual_kanban_244",
@@ -16079,8 +16079,8 @@
             255
           ]
         ],
-        "inkPixels": 115956,
-        "inkRatio": 0.10736666666666667,
+        "inkPixels": 116236,
+        "inkRatio": 0.10762592592592593,
         "contentBounds": {
           "x": 21,
           "y": 341,
@@ -16121,7 +16121,7 @@
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0325581395348837,
-      "inkRatio": 1.0397310020174848
+      "inkRatio": 1.0422416498542928
     },
     {
       "id": "visual_kanban_245",
@@ -16145,8 +16145,8 @@
             255
           ]
         ],
-        "inkPixels": 204820,
-        "inkRatio": 0.18964814814814815,
+        "inkPixels": 206587,
+        "inkRatio": 0.19128425925925926,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -16187,7 +16187,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.07971618045525
+      "inkRatio": 1.0890309860936858
     },
     {
       "id": "visual_kanban_246",
@@ -16211,13 +16211,13 @@
             255
           ]
         ],
-        "inkPixels": 90485,
-        "inkRatio": 0.0837824074074074,
+        "inkPixels": 90831,
+        "inkRatio": 0.08410277777777778,
         "contentBounds": {
           "x": 21,
-          "y": 351,
+          "y": 358,
           "width": 1161,
-          "height": 195
+          "height": 188
         }
       },
       "official": {
@@ -16252,8 +16252,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0714285714285714,
-      "inkRatio": 1.041841774993955
+      "heightRatio": 1.032967032967033,
+      "inkRatio": 1.0458256093769789
     },
     {
       "id": "visual_kanban_247",
@@ -16277,8 +16277,8 @@
             255
           ]
         ],
-        "inkPixels": 262963,
-        "inkRatio": 0.24348425925925926,
+        "inkPixels": 265100,
+        "inkRatio": 0.24546296296296297,
         "contentBounds": {
           "x": 34,
           "y": 67,
@@ -16319,7 +16319,7 @@
       "manifestGeometryHeightRatio": 1.0000000472975186,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0645604395604396,
-      "inkRatio": 1.0843387901529833
+      "inkRatio": 1.093150797905241
     },
     {
       "id": "visual_kanban_248",
@@ -16343,13 +16343,13 @@
             255
           ]
         ],
-        "inkPixels": 117932,
-        "inkRatio": 0.10919629629629629,
+        "inkPixels": 118032,
+        "inkRatio": 0.1092888888888889,
         "contentBounds": {
           "x": 21,
-          "y": 317,
+          "y": 324,
           "width": 1161,
-          "height": 263
+          "height": 256
         }
       },
       "official": {
@@ -16384,8 +16384,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.0000000209321425,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0647773279352226,
-      "inkRatio": 1.0451258419000353
+      "heightRatio": 1.0364372469635628,
+      "inkRatio": 1.0460120524636654
     },
     {
       "id": "visual_kanban_249",
@@ -16409,13 +16409,13 @@
             255
           ]
         ],
-        "inkPixels": 205086,
-        "inkRatio": 0.18989444444444445,
+        "inkPixels": 205400,
+        "inkRatio": 0.19018518518518518,
         "contentBounds": {
           "x": 34,
-          "y": 223,
+          "y": 236,
           "width": 1137,
-          "height": 449
+          "height": 436
         }
       },
       "official": {
@@ -16450,8 +16450,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
-      "heightRatio": 1.0924574209245743,
-      "inkRatio": 1.087020586426951
+      "heightRatio": 1.0608272506082725,
+      "inkRatio": 1.0886848856191829
     },
     {
       "id": "visual_kanban_250",
@@ -16475,8 +16475,8 @@
             255
           ]
         ],
-        "inkPixels": 92311,
-        "inkRatio": 0.08547314814814815,
+        "inkPixels": 92833,
+        "inkRatio": 0.08595648148148148,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -16517,7 +16517,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.0553446896078655
+      "inkRatio": 1.0613124499828512
     },
     {
       "id": "visual_kanban_251",
@@ -16541,13 +16541,13 @@
             255
           ]
         ],
-        "inkPixels": 267309,
-        "inkRatio": 0.24750833333333333,
+        "inkPixels": 267676,
+        "inkRatio": 0.24784814814814815,
         "contentBounds": {
           "x": 35,
-          "y": 21,
+          "y": 34,
           "width": 1135,
-          "height": 853
+          "height": 840
         }
       },
       "official": {
@@ -16582,8 +16582,8 @@
       "manifestGeometryWidthRatio": 0.9999999747751295,
       "manifestGeometryHeightRatio": 1.0875912923162794,
       "widthRatio": 1.0617399438727784,
-      "heightRatio": 1.1717032967032968,
-      "inkRatio": 1.0988748525222296
+      "heightRatio": 1.1538461538461537,
+      "inkRatio": 1.1003835449750674
     },
     {
       "id": "visual_kanban_252",
@@ -16607,13 +16607,13 @@
             255
           ]
         ],
-        "inkPixels": 115802,
-        "inkRatio": 0.10722407407407407,
+        "inkPixels": 116186,
+        "inkRatio": 0.10757962962962964,
         "contentBounds": {
           "x": 21,
-          "y": 334,
+          "y": 341,
           "width": 1161,
-          "height": 229
+          "height": 222
         }
       },
       "official": {
@@ -16648,8 +16648,8 @@
       "manifestGeometryWidthRatio": 0.9999999678889318,
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
-      "heightRatio": 1.0651162790697675,
-      "inkRatio": 1.0394126253242497
+      "heightRatio": 1.0325581395348837,
+      "inkRatio": 1.042859322688065
     },
     {
       "id": "visual_kanban_253",
@@ -16673,8 +16673,8 @@
             255
           ]
         ],
-        "inkPixels": 204793,
-        "inkRatio": 0.18962314814814815,
+        "inkPixels": 205950,
+        "inkRatio": 0.19069444444444444,
         "contentBounds": {
           "x": 34,
           "y": 236,
@@ -16715,7 +16715,7 @@
       "manifestGeometryHeightRatio": 1.0000001058874262,
       "widthRatio": 1.0636108512628626,
       "heightRatio": 1.0608272506082725,
-      "inkRatio": 1.0814151815181519
+      "inkRatio": 1.0875247524752476
     },
     {
       "id": "visual_kanban_254",
@@ -16739,8 +16739,8 @@
             255
           ]
         ],
-        "inkPixels": 90879,
-        "inkRatio": 0.08414722222222222,
+        "inkPixels": 91318,
+        "inkRatio": 0.0845537037037037,
         "contentBounds": {
           "x": 21,
           "y": 358,
@@ -16781,7 +16781,7 @@
       "manifestGeometryHeightRatio": 1.00000010063388,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.032967032967033,
-      "inkRatio": 1.0420111219400332
+      "inkRatio": 1.0470446597488963
     },
     {
       "id": "visual_kanban_255",
@@ -16805,8 +16805,8 @@
             255
           ]
         ],
-        "inkPixels": 265465,
-        "inkRatio": 0.24580092592592592,
+        "inkPixels": 267203,
+        "inkRatio": 0.24741018518518518,
         "contentBounds": {
           "x": 35,
           "y": 34,
@@ -16847,7 +16847,7 @@
       "manifestGeometryHeightRatio": 0.9999999613020553,
       "widthRatio": 1.0882070949185043,
       "heightRatio": 1.0909090909090908,
-      "inkRatio": 1.128591349301499
+      "inkRatio": 1.135980239607513
     },
     {
       "id": "visual_kanban_256",
@@ -16871,8 +16871,8 @@
             255
           ]
         ],
-        "inkPixels": 115598,
-        "inkRatio": 0.10703518518518519,
+        "inkPixels": 116321,
+        "inkRatio": 0.10770462962962964,
         "contentBounds": {
           "x": 21,
           "y": 341,
@@ -16913,7 +16913,7 @@
       "manifestGeometryHeightRatio": 1.000000054490767,
       "widthRatio": 1.0403225806451613,
       "heightRatio": 1.0325581395348837,
-      "inkRatio": 1.0380940407342218
+      "inkRatio": 1.0445867308452172
     }
   ]
 }

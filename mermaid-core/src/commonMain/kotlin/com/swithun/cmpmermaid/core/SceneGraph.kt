@@ -247,6 +247,8 @@ data class SceneText(
     val maxLines: Int? = null,
     val overflowEllipsis: Boolean = false,
     val htmlLabel: Boolean = false,
+    // CSS layout width when it differs from the measured glyph bounds.
+    val wrappingWidth: Float? = null,
 ) : SceneElement
 
 data class SceneTextSpan(

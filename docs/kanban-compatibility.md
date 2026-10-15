@@ -19,6 +19,8 @@ The implementation covers:
 - `label`, `ticket`, `assigned`, `priority`, `icon`, and `shape` metadata parsing;
 - fixed-width columns, wrapped task labels, empty sections, ticket and assignee
   rows, and the five upstream priority colors;
+- separate HTML-label measured bounds and CSS `max-width`, preserving upstream
+  nowrap behavior when the measured label is narrower than its container;
 - `kanban.sectionWidth`, `kanban.ticketBaseUrl`, built-in themes,
   `themeVariables.cScale*`, `themeVariables.cScaleLabel*`, and `look`;
 - external ticket interactions with `#TICKET#` replacement;
@@ -43,6 +45,9 @@ test.
   upstream SVG groups.
 - The first visible section uses Mermaid's `section-1` rule, which resolves to
   `cScale2` because of the upstream stylesheet's `i - 1` selector offset.
+- HTML section labels inherit Mermaid's `.cluster-label, .label` `textColor`;
+  `cScaleLabel*` applies to SVG `<text>` and does not recolor the effective
+  `foreignObject` label path.
 - Task labels are left aligned; ticket labels sit at bottom-left and assignees
   at bottom-right.
 - Ticket text is underlined and exposes an `_blank` interaction only when
@@ -55,7 +60,8 @@ test.
 - `KanbanParserTest` covers hierarchy, node forms, comments, decorations,
   metadata, and typed failures.
 - `KanbanLayoutTest` covers fixed geometry, metadata placement, priorities,
-  links, theme slots, Neo styling, configuration, and resource limits.
+  links, theme slots, HTML-label width/color inheritance, Neo styling,
+  configuration, and resource limits.
 - `KanbanStressTest` renders 256 deterministic randomized boards twice.
 - `OfficialKanbanDocumentationTest` executes all 3 diagrams extracted from the
   Mermaid `12.0.0` syntax document.
@@ -67,8 +73,10 @@ test.
   `1.018-1.206`.
 - The fresh 256-case coverage-driven input audit reports
   `254 pass / 2 review / 0 fail`; geometry has 0 hard failures or reviews with
-  width `1.012-1.088`, height `0.927-1.172`, and foreground ink
-  `0.992-1.139`.
+  width `1.012-1.088`, height `0.895-1.154`, and foreground ink
+  `0.999-1.144`.
+- Case 035 verifies that `Declare`, `Inspect`, and all four `Shipment` task
+  labels remain on one line and that both section labels use `textColor`.
 - The two reviews are cases 242 and 250. Native Arimo wraps
   `Program Case Schedule` and `Program Case Respond`; Mermaid's proprietary
   Trebuchet MS metrics keep each label on one line.
