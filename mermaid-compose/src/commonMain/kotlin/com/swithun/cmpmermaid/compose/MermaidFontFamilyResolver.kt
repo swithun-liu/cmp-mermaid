@@ -12,6 +12,7 @@ import com.swithun.cmpmermaid.compose.generated.resources.arimo_italic
 import com.swithun.cmpmermaid.compose.generated.resources.arimo_regular
 import com.swithun.cmpmermaid.compose.generated.resources.droid_sans_fallback
 import com.swithun.cmpmermaid.compose.generated.resources.droid_sans_mono
+import com.swithun.cmpmermaid.compose.generated.resources.noto_sans_math_regular
 import com.swithun.cmpmermaid.compose.generated.resources.noto_sans_symbols2_regular
 import org.jetbrains.compose.resources.Font
 
@@ -43,6 +44,21 @@ fun rememberMermaidCjkFontFamily(): FontFamily {
 fun rememberMermaidSymbolFontFamily(): FontFamily {
     val font = Font(
         Res.font.noto_sans_symbols2_regular,
+        FontWeight.Normal,
+        FontStyle.Normal,
+    )
+    return remember(font) {
+        FontFamily(font)
+    }
+}
+
+/**
+ * Returns the bundled mathematical-symbol fallback used for operators and shapes.
+ */
+@Composable
+internal fun rememberMermaidMathFontFamily(): FontFamily {
+    val font = Font(
+        Res.font.noto_sans_math_regular,
         FontWeight.Normal,
         FontStyle.Normal,
     )

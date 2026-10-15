@@ -37,6 +37,22 @@ class MermaidFontFamilyResolverTest {
     }
 
     @Test
+    fun groupsMathematicalOperatorsAndGeometricShapesIntoMathFontRanges() {
+        assertEquals(
+            listOf(1..4),
+            "A∠≅∥△B".bundledMathFontRanges(),
+        )
+    }
+
+    @Test
+    fun leavesGreekLettersInThePrimaryTextFont() {
+        assertEquals(
+            listOf(2..2),
+            "AΔ∠B".bundledMathFontRanges(),
+        )
+    }
+
+    @Test
     fun groupsSupportedDingbatsIntoBundledSymbolFontRanges() {
         assertEquals(
             listOf(1..2),

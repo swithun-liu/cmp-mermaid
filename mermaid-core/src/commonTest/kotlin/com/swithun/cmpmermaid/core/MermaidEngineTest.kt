@@ -64,6 +64,40 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun ignoresInvalidCssDeclarationProducedByUnquotedStyleTarget() {
+        val result = engine.render(
+            """
+                flowchart TD
+                  subgraph Group Label
+                    A
+                  end
+                  style Group Label fill:#fff,stroke:#fff
+            """.trimIndent(),
+            context,
+        )
+
+        assertIs<GMResult.Ok<MermaidScene>>(result, result.toString())
+    }
+
+    @Test
+    fun rendersIncompleteHtmlTagOpenersInFlowchartEdgeLabels() {
+        val result = engine.render(
+            """
+                flowchart TD
+                  A[Input] -- Value < 3 --> B[Low]
+                  B -- Delta H < 0 --> C[Done]
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val labels = scene.elements.filterIsInstance<SceneText>().map(SceneText::text).toSet()
+        assertTrue("Value < 3" in labels)
+        assertTrue("Delta H < 0" in labels)
+        assertEquals(2, scene.elements.filterIsInstance<ScenePath>().size)
+    }
+
+    @Test
     fun matchesMermaidSvgEdgeLabelBackgroundGeometry() {
         val result = engine.render(
             "flowchart LR\n A -- label --> B",

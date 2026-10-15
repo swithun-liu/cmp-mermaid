@@ -148,6 +148,18 @@ class MermaidTextPortTest {
     }
 
     @Test
+    fun keepsIncompleteTagOpenersAsBrowserFragmentText() {
+        val result = MermaidTextPort.render(
+            source = "27°C <= Temp < 30°C",
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(),
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
+        assertEquals("27°C <= Temp < 30°C", text.text)
+    }
+
+    @Test
     fun decodesBrowserHtmlEntitiesAndPreservesUnknownNames() {
         val result = MermaidTextPort.render(
             source = "&copy; &euro; &Alpha; &NotEqualTilde; &bogus;",

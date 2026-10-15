@@ -117,6 +117,24 @@ internal object GanttDatePort {
             is GMResult.Ok -> return direct
             is GMResult.Err -> Unit
         }
+        // Mermaid.js 12.0.0: ganttDb.js -> getStartDate uses `new Date(str)`.
+        // V8 treats the decimal forms 0..12 as browser month strings:
+        // 0 is January 2000, while 1..12 are months in 2001. UTC is the
+        // deterministic KMP adaptation of the browser's local midnight.
+        value
+            .takeIf { candidate -> candidate.length <= 2 && candidate.all(Char::isDigit) }
+            ?.toIntOrNull()
+            ?.takeIf { month -> month in 0..12 }
+            ?.let { month ->
+                val date = if (month == 0) {
+                    LocalDate(2000, 1, 1)
+                } else {
+                    LocalDate(2001, month, 1)
+                }
+                return GMResult.Ok(
+                    date.atStartOfDayIn(TimeZone.UTC).toEpochMilliseconds(),
+                )
+            }
         val match = ISO_DATE_TOKEN.findAll(value).firstOrNull { candidate ->
             val start = candidate.range.first
             val endExclusive = candidate.range.last + 1

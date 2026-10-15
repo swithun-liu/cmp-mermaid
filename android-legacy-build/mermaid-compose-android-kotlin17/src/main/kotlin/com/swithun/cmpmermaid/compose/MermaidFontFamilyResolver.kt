@@ -37,6 +37,18 @@ fun rememberMermaidSymbolFontFamily(): FontFamily {
 }
 
 @Composable
+internal fun rememberMermaidMathFontFamily(): FontFamily {
+    val font = Font(
+        R.font.noto_sans_math_regular,
+        FontWeight.Normal,
+        FontStyle.Normal,
+    )
+    return remember(font) {
+        FontFamily(font)
+    }
+}
+
+@Composable
 internal fun rememberMermaidMonospaceFontFamily(): FontFamily {
     val font = Font(
         R.font.droid_sans_mono,

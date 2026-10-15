@@ -118,6 +118,30 @@ class GanttJisonParserTest {
     }
 
     @Test
+    fun translatesBrowserNumericMonthDateFallback() {
+        val expectedDates = listOf("2000-01-01") +
+            (1..12).map { month -> "2001-${month.toString().padStart(2, '0')}-01" }
+
+        assertEquals(
+            expectedDates,
+            (0..12).map { month ->
+                GanttDatePort.dateOnly(
+                    GanttDatePort.parseJavaScriptDateFallback(month.toString()).value(),
+                )
+            },
+        )
+
+        val document = parse(
+            """
+            gantt
+                dateFormat YYYY-MM-DD
+                Zero origin :zero, 0, 1h
+            """.trimIndent(),
+        ).compile().value()
+        assertEquals("2000-01-01", GanttDatePort.dateOnly(document.tasks.single().startMillis))
+    }
+
+    @Test
     fun sanitizesLinksAndKeepsCallbacksLooseOnly() {
         val strict = parse(
             """

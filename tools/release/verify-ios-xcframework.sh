@@ -35,6 +35,7 @@ for font in \
   arimo_regular.ttf \
   droid_sans_fallback.ttf \
   droid_sans_mono.ttf \
+  noto_sans_math_regular.ttf \
   noto_sans_symbols2_regular.ttf
 do
   if [[ -z "$(find "$xcframework" -type f -name "$font" -print -quit)" ]]; then

@@ -364,8 +364,9 @@ internal object FlowStyleAdapter {
                 val value = pair.getOrNull(1)?.trim()
                 // Mermaid.js 12.0.0:
                 // rendering-elements/shapes/handDrawnShapeStyles.ts -> styles2Map/styles2String.
-                // Empty values become invalid inline CSS declarations and are ignored by the DOM.
-                if (key.isNotEmpty() && !value.isNullOrBlank()) {
+                // Empty values and invalid property names become invalid inline CSS
+                // declarations and are ignored by the browser style parser.
+                if (key.isCssPropertyName() && !value.isNullOrBlank()) {
                     declarations[key] = value
                 }
             }
@@ -481,6 +482,60 @@ internal object FlowStyleAdapter {
         source.split(';')
             .map(String::trim)
             .filter(String::isNotEmpty)
+
+    private fun String.isCssPropertyName(): Boolean {
+        if (isEmpty()) return false
+        var cursor = 0
+        if (startsWith("--")) {
+            cursor = 2
+            if (cursor == length) return false
+        } else {
+            if (this[cursor] == '-') cursor++
+            if (cursor >= length || !hasCssNameStartAt(cursor)) return false
+            cursor = cssNameCharacterEnd(cursor)
+        }
+        while (cursor < length) {
+            val character = this[cursor]
+            cursor = when {
+                character.isLetterOrDigit() || character == '_' ||
+                    character == '-' || character.code >= 0x80 -> cursor + 1
+                character == '\\' && hasCssEscapeAt(cursor) -> cssEscapeEnd(cursor)
+                else -> return false
+            }
+        }
+        return true
+    }
+
+    private fun String.hasCssNameStartAt(index: Int): Boolean {
+        val character = getOrNull(index) ?: return false
+        return character.isLetter() || character == '_' || character.code >= 0x80 ||
+            (character == '\\' && hasCssEscapeAt(index))
+    }
+
+    private fun String.cssNameCharacterEnd(index: Int): Int =
+        if (this[index] == '\\') cssEscapeEnd(index) else index + 1
+
+    private fun String.hasCssEscapeAt(index: Int): Boolean =
+        getOrNull(index) == '\\' &&
+            getOrNull(index + 1)?.let { next -> next != '\n' && next != '\r' && next != '\u000C' } == true
+
+    private fun String.cssEscapeEnd(index: Int): Int {
+        var cursor = index + 1
+        var hexDigits = 0
+        while (cursor < length && hexDigits < 6 && this[cursor].isHexDigit()) {
+            cursor++
+            hexDigits++
+        }
+        if (hexDigits > 0 && getOrNull(cursor)?.isWhitespace() == true) {
+            cursor++
+        } else if (hexDigits == 0) {
+            cursor++
+        }
+        return cursor
+    }
+
+    private fun Char.isHexDigit(): Boolean =
+        this in '0'..'9' || this in 'a'..'f' || this in 'A'..'F'
 
     private fun parsePaintColor(value: String): SceneColor? = when (value.trim().lowercase()) {
         "none" -> SceneColor(0x00000000)

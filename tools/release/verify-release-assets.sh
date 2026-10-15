@@ -64,6 +64,7 @@ for font in \
   arimo_regular.ttf \
   droid_sans_fallback.ttf \
   droid_sans_mono.ttf \
+  noto_sans_math_regular.ttf \
   noto_sans_symbols2_regular.ttf
 do
   grep -Fq \
@@ -150,6 +151,7 @@ for font in \
   arimo_regular.ttf \
   droid_sans_fallback.ttf \
   droid_sans_mono.ttf \
+  noto_sans_math_regular.ttf \
   noto_sans_symbols2_regular.ttf
 do
   grep -Fq "res/font/$font" <<<"$legacy_aar_entries"

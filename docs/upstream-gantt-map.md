@@ -29,6 +29,17 @@ Mermaid.js and does not require a WebView.
 `GanttJisonTables.kt`. Semantic actions remain indexed by the matching Jison
 production so an upstream grammar diff can be translated incrementally.
 
+### Task Date Production Function Checklist
+
+| Production order | Upstream function | Kotlin stage | Status |
+| ---: | --- | --- | --- |
+| 1 | `ganttDb.js -> getStartDate` trim and `x` / `X` timestamp handling | `GanttDb.resolveStart`, `GanttDatePort.parse` | **Exact / Platform adaptation**: typed UTC milliseconds replace browser `Date` objects |
+| 2 | `getStartDate` `after` dependency lookup and latest end selection | `GanttDb.resolveStart`, `resolveReferences` | **Exact** |
+| 3 | `getStartDate` strict Day.js parse with configured `dateFormat` | `GanttDatePort.parse` | **Platform adaptation**: the consumed Day.js token set is translated to multiplatform date arithmetic |
+| 4 | `getStartDate` `new Date(str)` fallback and ±10,000 year guard | `GanttDatePort.parseJavaScriptDateFallback` | **Platform adaptation**: deterministic ISO-token and browser numeric-month forms replace engine-dependent JavaScript parsing |
+| 5 | `ganttDb.js -> getEndDate` `until`, strict date, duration, and unchanged-start fallback | `GanttDb.resolveEnd`, `GanttDatePort.parseDuration`, `add` | **Exact / Platform adaptation** |
+| 6 | `ganttDb.js -> checkTaskDates`, `fixTaskDates` | `GanttDb.applyExclusions` and date helpers | **Exact / Platform adaptation** |
+
 ## Layout And Rendering
 
 | Kotlin source | Upstream source | Translation boundary |

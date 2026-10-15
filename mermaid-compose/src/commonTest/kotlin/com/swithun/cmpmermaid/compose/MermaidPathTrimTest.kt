@@ -5,6 +5,14 @@ import kotlin.test.assertEquals
 
 class MermaidPathTrimTest {
     @Test
+    fun suppressesOnlyComposeHairlineForZeroWidthSvgStroke() {
+        assertEquals(false, shouldDrawScenePathStroke(0f))
+        assertEquals(false, shouldDrawScenePathStroke(-1f))
+        assertEquals(false, shouldDrawScenePathStroke(Float.NaN))
+        assertEquals(true, shouldDrawScenePathStroke(0.5f))
+    }
+
+    @Test
     fun explicitDashIntervalsOverrideGeneratedNeoPattern() {
         assertEquals(
             false,

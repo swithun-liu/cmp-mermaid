@@ -256,6 +256,14 @@ fun rememberMermaidScene(
     } else {
         null
     }
+    val mathFontFamily = if (
+        fontFamilyResolver == null &&
+        source.hasBundledMathFontCharacters()
+    ) {
+        rememberMermaidMathFontFamily()
+    } else {
+        null
+    }
     val symbolFontFamily = if (
         fontFamilyResolver == null &&
         source.hasBundledSymbolFontCharacters()
@@ -270,6 +278,7 @@ fun rememberMermaidScene(
         effectiveFontFamilyResolver,
         monospaceFontFamily,
         cjkFontFamily,
+        mathFontFamily,
         symbolFontFamily,
     ) {
         TextMetricProvider { request ->
@@ -288,6 +297,7 @@ fun rememberMermaidScene(
                     request.spans,
                     monospaceFontFamily,
                     cjkFontFamily,
+                    mathFontFamily,
                     symbolFontFamily,
                 ),
                 style = style,
@@ -384,6 +394,17 @@ private fun MermaidSceneCanvasInternal(
     }
     val cjkFontFamily = if (fontFamilyResolver == null && hasCjkText) {
         rememberMermaidCjkFontFamily()
+    } else {
+        null
+    }
+    val hasMathText = remember(scene) {
+        scene.elements
+            .asSequence()
+            .filterIsInstance<SceneText>()
+            .any { it.text.hasBundledMathFontCharacters() }
+    }
+    val mathFontFamily = if (fontFamilyResolver == null && hasMathText) {
+        rememberMermaidMathFontFamily()
     } else {
         null
     }
@@ -577,6 +598,7 @@ private fun MermaidSceneCanvasInternal(
                             fontFamilyResolver = effectiveFontFamilyResolver,
                             monospaceFontFamily = monospaceFontFamily,
                             cjkFontFamily = cjkFontFamily,
+                            mathFontFamily = mathFontFamily,
                             symbolFontFamily = symbolFontFamily,
                         )
                     }
@@ -1240,47 +1262,53 @@ private fun DrawScope.drawScenePath(
             )
         }
     }
-    val visiblePaths = if (useNeoMarkerMargin) {
-        listOf(paths.withMermaidNeoMarkerGaps(element))
-    } else {
-        paths
-    }
-    val pathBounds = element.points.toComposeBounds()
-    val strokeGradient = element.strokeGradient?.toComposeBrush(pathBounds)
-    visiblePaths.forEach { visiblePath ->
-        val stroke = Stroke(
-            width = element.strokeWidth,
-            cap = if (element.animated) StrokeCap.Round else StrokeCap.Butt,
-            join = StrokeJoin.Miter,
-            pathEffect = if (
-                !useNeoMarkerMargin &&
-                element.dashIntervals.size >= 2 &&
-                element.dashIntervals.all { it.isFinite() && it > 0f }
-            ) {
-                PathEffect.dashPathEffect(
-                    intervals = element.dashIntervals.toFloatArray(),
-                    phase = element.animationDashPhase(animationTimeMillis),
-                )
-            } else if (!useNeoMarkerMargin) {
-                element.strokePattern.toPathEffect()
-            } else null,
-        )
-        if (strokeGradient == null) {
-            drawPath(
-                path = visiblePath,
-                color = element.color.toComposeColor(),
-                alpha = element.opacity.coerceIn(0f, 1f),
-                style = stroke,
-                blendMode = element.blendMode.toComposeBlendMode(),
-            )
+    // Mermaid.js 12.0.0: rendering-elements/edges.js -> insertEdge.
+    // `stroke-width:0` suppresses the SVG path stroke, while addEdgeMarkers()
+    // still attaches and paints independent markers. Compose Stroke(0f) is a
+    // visible hairline, so omit only the path stroke here.
+    if (shouldDrawScenePathStroke(element.strokeWidth)) {
+        val visiblePaths = if (useNeoMarkerMargin) {
+            listOf(paths.withMermaidNeoMarkerGaps(element))
         } else {
-            drawPath(
-                path = visiblePath,
-                brush = strokeGradient,
-                alpha = element.opacity.coerceIn(0f, 1f),
-                style = stroke,
-                blendMode = element.blendMode.toComposeBlendMode(),
+            paths
+        }
+        val pathBounds = element.points.toComposeBounds()
+        val strokeGradient = element.strokeGradient?.toComposeBrush(pathBounds)
+        visiblePaths.forEach { visiblePath ->
+            val stroke = Stroke(
+                width = element.strokeWidth,
+                cap = if (element.animated) StrokeCap.Round else StrokeCap.Butt,
+                join = StrokeJoin.Miter,
+                pathEffect = if (
+                    !useNeoMarkerMargin &&
+                    element.dashIntervals.size >= 2 &&
+                    element.dashIntervals.all { it.isFinite() && it > 0f }
+                ) {
+                    PathEffect.dashPathEffect(
+                        intervals = element.dashIntervals.toFloatArray(),
+                        phase = element.animationDashPhase(animationTimeMillis),
+                    )
+                } else if (!useNeoMarkerMargin) {
+                    element.strokePattern.toPathEffect()
+                } else null,
             )
+            if (strokeGradient == null) {
+                drawPath(
+                    path = visiblePath,
+                    color = element.color.toComposeColor(),
+                    alpha = element.opacity.coerceIn(0f, 1f),
+                    style = stroke,
+                    blendMode = element.blendMode.toComposeBlendMode(),
+                )
+            } else {
+                drawPath(
+                    path = visiblePath,
+                    brush = strokeGradient,
+                    alpha = element.opacity.coerceIn(0f, 1f),
+                    style = stroke,
+                    blendMode = element.blendMode.toComposeBlendMode(),
+                )
+            }
         }
     }
     drawArrowHead(
@@ -1302,6 +1330,9 @@ private fun DrawScope.drawScenePath(
         strokeWidth = element.strokeWidth,
     )
 }
+
+internal fun shouldDrawScenePathStroke(strokeWidth: Float): Boolean =
+    strokeWidth.isFinite() && strokeWidth > 0f
 
 private fun List<ScenePoint>.toComposeBounds(): Rect {
     if (isEmpty()) {
@@ -2345,6 +2376,7 @@ private fun DrawScope.drawSceneText(
     fontFamilyResolver: MermaidFontFamilyResolver,
     monospaceFontFamily: FontFamily,
     cjkFontFamily: FontFamily?,
+    mathFontFamily: FontFamily?,
     symbolFontFamily: FontFamily?,
 ) {
     val style = TextStyle(
@@ -2370,6 +2402,7 @@ private fun DrawScope.drawSceneText(
         spans = element.spans,
         monospaceFontFamily = monospaceFontFamily,
         cjkFontFamily = cjkFontFamily,
+        mathFontFamily = mathFontFamily,
         symbolFontFamily = symbolFontFamily,
     )
     val wrappingWidth = mermaidTextWrappingWidth(
@@ -2667,6 +2700,7 @@ private fun String.toAnnotatedString(
     spans: List<com.swithun.cmpmermaid.core.SceneTextSpan>,
     monospaceFontFamily: FontFamily,
     cjkFontFamily: FontFamily?,
+    mathFontFamily: FontFamily?,
     symbolFontFamily: FontFamily?,
 ): AnnotatedString = buildAnnotatedString {
     append(this@toAnnotatedString)
@@ -2711,6 +2745,15 @@ private fun String.toAnnotatedString(
             )
         }
     }
+    if (mathFontFamily != null) {
+        bundledMathFontRanges().forEach { range ->
+            addStyle(
+                style = SpanStyle(fontFamily = mathFontFamily),
+                start = range.first,
+                end = range.last + 1,
+            )
+        }
+    }
     if (symbolFontFamily != null) {
         bundledSymbolFontRanges().forEach { range ->
             addStyle(
@@ -2724,6 +2767,9 @@ private fun String.toAnnotatedString(
 
 internal fun String.cjkFontRanges(): List<IntRange> =
     fontRanges(Int::usesCjkFont)
+
+internal fun String.bundledMathFontRanges(): List<IntRange> =
+    fontRanges(Int::usesBundledMathFont)
 
 internal fun String.bundledSymbolFontRanges(): List<IntRange> =
     fontRanges(Int::usesBundledSymbolFont)
@@ -2777,6 +2823,13 @@ private fun Int.usesCjkFont(): Boolean =
         this in 0xFE30..0xFE4F ||
         this in 0xFF00..0xFFEF ||
         this in 0x20000..0x2FA1F
+
+private fun String.hasBundledMathFontCharacters(): Boolean =
+    bundledMathFontRanges().isNotEmpty()
+
+private fun Int.usesBundledMathFont(): Boolean =
+    this in 0x2200..0x22FF ||
+        this in 0x25A0..0x25FF
 
 private fun String.hasBundledSymbolFontCharacters(): Boolean =
     bundledSymbolFontRanges().isNotEmpty()

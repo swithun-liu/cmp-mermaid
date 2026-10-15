@@ -26,7 +26,13 @@ internal object MermaidHtmlFragmentTokenizer {
                 continue
             }
             val tagEnd = findTagEnd(source, tagStart + 1)
-                ?: return parseError(source, tagStart, "Unclosed HTML label tag")
+            if (tagEnd == null) {
+                // Mermaid.js 12.0.0: createText.ts -> addHtmlSpan assigns the label
+                // to HTMLElement.innerHTML. Browser fragment parsing keeps an
+                // incomplete tag opener as text instead of rejecting the label.
+                tokens += MermaidHtmlFragmentToken.Text(source.substring(tagStart))
+                break
+            }
             val rawBody = source.substring(tagStart + 1, tagEnd)
             val parsed = when (val result = parseTag(rawBody, tagStart)) {
                 is GMResult.Ok -> result.value

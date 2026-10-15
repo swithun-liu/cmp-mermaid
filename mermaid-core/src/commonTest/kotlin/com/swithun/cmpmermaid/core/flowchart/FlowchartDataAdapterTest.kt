@@ -1,7 +1,9 @@
 package com.swithun.cmpmermaid.core.flowchart
 
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
+import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.FlowLabelType
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidFlowLayoutData
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidFlowLayoutNode
@@ -30,6 +32,30 @@ class FlowchartDataAdapterTest {
         val document = assertIs<GMResult.Ok<FlowchartDocument>>(result).value
         assertEquals("Lane\\nTitle", document.subgraphs.single { it.id == "lane" }.label)
         assertEquals("Nested\nTitle", document.subgraphs.single { it.id == "nested" }.label)
+    }
+
+    @Test
+    fun discardsInvalidCssPropertyNamesLikeBrowserStyleParsing() {
+        val result = FlowStyleAdapter.parse(
+            styles = listOf("Line fill:#ffffff", "fill:#123456"),
+            owner = "subgraph 'Number'",
+        )
+
+        val style = assertIs<GMResult.Ok<FlowNodeStyle>>(result).value
+        assertEquals(SceneColor(0xFF123456), style.fill)
+    }
+
+    @Test
+    fun keepsValidUntranslatedCssPropertiesExplicitlyUnsupported() {
+        val result = FlowStyleAdapter.parse(
+            styles = listOf("opacity:0.5"),
+            owner = "node 'A'",
+        )
+
+        val error = assertIs<MermaidError.UnsupportedFeature>(
+            assertIs<GMResult.Err<MermaidError>>(result).error,
+        )
+        assertEquals("CSS opacity", error.feature)
     }
 
     private fun group(

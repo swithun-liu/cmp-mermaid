@@ -47,6 +47,25 @@ Marked extensions and parser/renderer fields that Mermaid does not configure
 or consume are intentionally outside this translation. DOM-only content that
 cannot map to text spans returns `UnsupportedFeature`.
 
+### HTML Label Production Function Checklist
+
+| Production order | Upstream function or browser stage | Kotlin stage | Status |
+| ---: | --- | --- | --- |
+| 1 | `common.ts -> sanitizeMore`, `removeScript`, `sanitizeText` | `MermaidTextPort.sanitizeSvgLiteral`, `HtmlStyleStack` suppression | **Platform adaptation**: the allowlisted text/span projection preserves Mermaid's sanitization result without a DOM |
+| 2 | `handle-markdown-text.ts -> nonMarkdownToHTML`, `markdownToHTML` | `MermaidTextPort.renderNonMarkdown`, `renderHtmlLabel` | **Exact / Platform adaptation**: the same text, line-break, and supported inline-style semantics become typed spans |
+| 3 | `createText.ts -> decodeEntities`, `replaceIconSubstring`, `addHtmlSpan` | `MermaidHtmlEntityDecoder`, `MermaidHtmlFragmentTokenizer`, `HtmlStyleStack` | **Platform adaptation**: browser fragment parsing is translated to typed tokens; a bare or incomplete `<` remains text like HTML fragment parsing |
+| 4 | Browser HTML fragment tree and CSS inheritance | `StyledTextBuilder`, `HtmlStyleStack` | **Platform adaptation**: supported browser text semantics are retained; DOM-only interaction and asset elements return `UnsupportedFeature` |
+| 5 | `common.ts -> hasKatex`, `renderKatexSanitized` | `MermaidTextPort.render` | **Unsupported**: KaTeX layout has not been source-translated and returns structured `UnsupportedFeature` instead of plain-text approximation |
+
+### Flow CSS Production Function Checklist
+
+| Production order | Upstream function or browser stage | Kotlin stage | Status |
+| ---: | --- | --- | --- |
+| 1 | `flowDb.ts -> getCompiledStyles` and renderer-data `cssCompiledStyles` / `cssStyles` ordering | `FlowchartDataAdapter.convert` | **Exact**: class styles precede inline styles and later declarations win |
+| 2 | `handDrawnShapeStyles.ts -> normalizeStyleList`, `styles2Map` | `FlowStyleAdapter.normalizeStyleList`, declaration map | **Exact** for Mermaid's split/order semantics |
+| 3 | SVG `style` attribute CSS parsing | `FlowStyleAdapter.parse` | **Platform adaptation**: invalid property names and invalid declarations are discarded like CSSOM; valid properties without a native representation return `UnsupportedFeature` |
+| 4 | `styles2String`, `isLabelStyle`, `userNodeOverrides` | `FlowNodeStyle` and SceneGraph paint/text fields | **Platform adaptation** for supported fill, stroke, label, font, dash, and animation properties |
+
 ## Dagre And Graphlib
 
 | Kotlin source | Upstream source | Translation boundary |
@@ -118,8 +137,9 @@ recapture.
 | 3 | `dagre/index.js -> getEdgesToRender`, `getSelfLoopSide`, `getSelfLoopPoints`, `getSelfLoopLabelPosition`: merge the three layout segments back into one logical edge | `FlowDagreLayout.collectEdges`, `selfLoopSide`, `selfLoopPoints`, `selfLoopLabelPosition` | **Exact** |
 | 4 | `edges.js -> insertEdge`: remove center endpoints and intersect the remaining route with both rendered node boundaries | `FlowDagreLayout.addRoutedEdge`, `clipSelfLoopEndpoints`, `MermaidShapeIntersectionPort.intersect` | **Platform adaptation**: typed geometry replaces DOM-installed `intersect`; focused tests and the 256-case topology recapture pass |
 | 5 | `edges.js -> insertEdge`: create an SVG path even for `edge-thickness-invisible`, with zero stroke width and no markers | `FlowchartLayout.addEdges` creates a transparent zero-width `ScenePath` | **Platform adaptation**: Canvas keeps the logical path without painting it; focused tests and the 256-case topology recapture pass |
-| 6 | `edges.js -> resolveEdgeCurveType`, `d3.line().curve(...)` | `MermaidEdgePathPort.generate`, `D3CurvePort.generate` | **Exact** for the line-only curve branches used by Mermaid edges |
-| 7 | `edges.js -> insertEdge` marker offsets and marker attachment | `MermaidEdgePathPort`, `MermaidMarkerPort`, Compose marker painting | **Platform adaptation** with translated marker geometry and focused tests |
+| 6 | `edges.js -> insertEdge`: apply an explicit `stroke-width:0` to the SVG path, then still call `addEdgeMarkers` | `MermaidDiagram.drawScenePath` omits the Compose hairline but continues to marker painting | **Platform adaptation**: path stroke is hidden while independently defined markers remain visible, matching official SVG output |
+| 7 | `edges.js -> resolveEdgeCurveType`, `d3.line().curve(...)` | `MermaidEdgePathPort.generate`, `D3CurvePort.generate` | **Exact** for the line-only curve branches used by Mermaid edges |
+| 8 | `edges.js -> insertEdge` marker offsets and marker attachment | `MermaidEdgePathPort`, `MermaidMarkerPort`, Compose marker painting | **Platform adaptation** with translated marker geometry and focused tests |
 
 ## Intentional Kotlin Adaptations
 

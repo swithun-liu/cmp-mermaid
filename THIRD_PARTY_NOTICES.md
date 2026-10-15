@@ -573,6 +573,26 @@ Bundled file SHA-256:
 
 `630846d528dbe4c4981370a4d0a9475a1fd1491a129bb411f8e157cdb5de13c6`
 
+## Noto Sans Math
+
+The Compose adapter bundles Noto Sans Math for mathematical operators and
+geometric symbols that are not covered by Arimo.
+
+Copyright 2022 The Noto Project Authors
+
+Noto Sans Math is distributed under the SIL Open Font License 1.1. The
+complete license text is included at:
+
+`third_party/licenses/NOTO-SANS-MATH-OFL-1.1.txt`
+
+Upstream revision:
+
+https://github.com/google/fonts/tree/dbd1ab6e65dc59bcda3ca8de9fd372f58f98e0af/ofl/notosansmath
+
+Bundled file SHA-256:
+
+`3f495fe933c06786e4d5f6d86b8ee70b6753a68ee3b9d87528726de0f6e2c47d`
+
 ## AndroidX WebKit
 
 The Android sample uses AndroidX WebKit `1.17.0` to serve bundled Mermaid
