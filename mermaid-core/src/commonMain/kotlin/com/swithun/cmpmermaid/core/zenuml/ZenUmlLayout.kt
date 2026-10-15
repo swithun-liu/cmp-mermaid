@@ -1099,11 +1099,13 @@ internal class ZenUmlLayout {
         )
         val width = max(metrics.width.toDouble(), 1.0)
         val height = max(metrics.height.toDouble(), fontSize.toDouble())
+        // Compose applies a 4px anchor inset while retaining the measured glyph width.
+        // Encode that renderer contract without adding the inset to the audited text width.
         val bounds = when (alignment) {
             SceneTextAlignment.Start -> SceneRect(
                 left = (x - 4.0).toFloat(),
                 top = (centerY - height / 2.0).toFloat(),
-                right = (x + width + 4.0).toFloat(),
+                right = (x + width - 4.0).toFloat(),
                 bottom = (centerY + height / 2.0).toFloat(),
             )
             SceneTextAlignment.Center -> SceneRect(
@@ -1113,7 +1115,7 @@ internal class ZenUmlLayout {
                 bottom = (centerY + height / 2.0).toFloat(),
             )
             SceneTextAlignment.End -> SceneRect(
-                left = (x - width - 4.0).toFloat(),
+                left = (x - width + 4.0).toFloat(),
                 top = (centerY - height / 2.0).toFloat(),
                 right = (x + 4.0).toFloat(),
                 bottom = (centerY + height / 2.0).toFloat(),

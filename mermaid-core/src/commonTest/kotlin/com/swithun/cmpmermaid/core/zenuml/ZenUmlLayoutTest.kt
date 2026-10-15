@@ -14,6 +14,7 @@ import com.swithun.cmpmermaid.core.SceneShape
 import com.swithun.cmpmermaid.core.SceneShapePaint
 import com.swithun.cmpmermaid.core.SceneShapeViewportFit
 import com.swithun.cmpmermaid.core.SceneText
+import com.swithun.cmpmermaid.core.SceneTextAlignment
 import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
 import com.swithun.cmpmermaid.core.zenuml.upstream.zenuml.ZenUmlDocument
@@ -75,6 +76,36 @@ class ZenUmlLayoutTest {
         )
         assertTrue(paths.containsKey("zenuml-lifeline-A"))
         assertTrue(paths.containsKey("zenuml-lifeline-B"))
+    }
+
+    @Test
+    fun preservesUpstreamSequenceNumberAnchorWithoutPaddingGlyphBounds() {
+        val scene = render(
+            """
+                zenuml
+                title Recovery Flow
+                try {
+                  Consumer->API: Book request
+                  API.startBooking() {
+                    BookingService.reserve()
+                  }
+                } catch(error) {
+                  API->Consumer: Show failure
+                } finally {
+                  BookingService.rollback()
+                }
+            """.trimIndent(),
+        )
+        val sequenceNumber = scene.elements
+            .filterIsInstance<SceneText>()
+            .single { text ->
+                text.text == "1" &&
+                    text.fontSize == 12f &&
+                    text.horizontalAlignment == SceneTextAlignment.End
+            }
+
+        assertEquals(7f, sequenceNumber.bounds.width)
+        assertEquals(8f, sequenceNumber.bounds.right - 4f)
     }
 
     @Test

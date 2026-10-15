@@ -38,6 +38,10 @@
   upstream constants and ordering.
 - Participant and fragment SVG assets are converted to reusable SceneGraph
   vector paths; the generator remains outside production modules.
+- Start/end anchored SVG text keeps the upstream anchor coordinate while its
+  `SceneText.bounds` width remains the measured glyph width; Compose's 4px
+  anchor inset is encoded in the bounds origin instead of added as audit-visible
+  padding.
 - Cached open and filled message arrows preserve the upstream black primitive
   fill/stroke paint. Their palette is initialized before the cached vector
   definitions to retain the SVG component semantics on Kotlin targets.
