@@ -85,10 +85,9 @@ production so an upstream grammar diff can be translated incrementally.
   Mermaid's Class documentation.
 - The replacement Web gate compares 13 independent production scenarios and
   256 deterministic matrix sources against Mermaid `12.0.0`. Production detail
-  passes `13/13`; matrix detail reports `221 pass / 35 review / 0 fail`, and
-  geometry has 0 hard failures.
-- All 16 matrix contact sheets are published and source-bound; current
-  automated findings remain explicit.
+  passes `13/13`; matrix detail reports `256 pass / 0 review / 0 fail`, and
+  geometry has 0 hard failures or reviews.
+- All 16 matrix contact sheets are published and source-bound.
 
 ## Upgrade Procedure
 

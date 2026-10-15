@@ -522,13 +522,37 @@ test('publishes pass, review, and fail counts in the visual evidence index', () 
         },
   }));
   assert.deepEqual(summaries, expectedByKind);
-  assert.match(
-    evidence,
-    /\*\*22 families passing all 256 cases\*\*/,
+  const fullyPassedFamilies = expectedByKind.filter(
+    (entry) => entry.pass === 256 && entry.review === 0 && entry.fail === 0,
+  ).length;
+  const reviewFamilies = expectedByKind.filter(
+    (entry) => entry.review > 0,
+  ).length;
+  const hardDetailFailureFamilies = expectedByKind.filter(
+    (entry) => entry.fail > 0,
+  ).length;
+  const hardTopologyFailures = Object.values(topologyByKind).reduce(
+    (sum, counts) => sum + counts.fail,
+    0,
   );
-  assert.match(evidence, /\*\*11 families with review cases\*\*/);
-  assert.match(evidence, /\*\*0 families with hard detail failures\*\*/);
-  assert.match(evidence, /\*\*11 hard per-edge topology failures\*\*/);
+  assert.ok(
+    evidence.includes(
+      `**${fullyPassedFamilies} families passing all 256 cases**`,
+    ),
+  );
+  assert.ok(
+    evidence.includes(`**${reviewFamilies} families with review cases**`),
+  );
+  assert.ok(
+    evidence.includes(
+      `**${hardDetailFailureFamilies} families with hard detail failures**`,
+    ),
+  );
+  assert.ok(
+    evidence.includes(
+      `**${hardTopologyFailures} hard per-edge topology failures**`,
+    ),
+  );
 });
 
 function categoryCounts(entries) {

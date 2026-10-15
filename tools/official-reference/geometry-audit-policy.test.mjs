@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { classifyGeometryRatio } from './geometry-audit-policy.mjs';
+import {
+  classifyGeometryRatio,
+  hasInsufficientContentExtent,
+} from './geometry-audit-policy.mjs';
 
 const base = {
   label: 'visual_mindmap_001/height',
@@ -80,5 +83,20 @@ test('keeps non-finite ratios visible instead of formatting them as numbers', ()
       message:
         'visual_mindmap_001/height ratio NaN is outside [0.800, 1.250]',
     },
+  );
+});
+
+test('rejects content only when both dimensions are below the minimum', () => {
+  assert.equal(
+    hasInsufficientContentExtent({ width: 19, height: 19 }, 20),
+    true,
+  );
+  assert.equal(
+    hasInsufficientContentExtent({ width: 855, height: 19 }, 20),
+    false,
+  );
+  assert.equal(
+    hasInsufficientContentExtent({ width: 19, height: 855 }, 20),
+    false,
   );
 });

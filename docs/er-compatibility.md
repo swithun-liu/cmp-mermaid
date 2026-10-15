@@ -26,13 +26,13 @@ discarded or rendered as a different feature.
 | Relationships | Supported | Identifying and non-identifying relationships, labels, self-relationships, and repeated relationships |
 | Cardinalities | Supported | Only one, zero or one, one or more, and zero or more with Mermaid 12 crow-foot geometry |
 | `MD_PARENT` | Upstream-equivalent | The grammar and DB retain it; Mermaid 12's unified ER renderer does not register the legacy diamond marker, so no marker is painted |
-| Subgraphs | Supported | Root, nested, labelled, relationship-connected, and direction-aware subgraphs with parent-before-child paint order |
+| Subgraphs | Supported | Root, nested, labelled, relationship-connected, and direction-aware subgraphs with parent-before-child paint order and Mermaid's configured title margins |
 | Direction | Supported | TB, BT, LR, and RL at root and nested subgraph levels |
 | Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default, including Mermaid's recursive subgraph `nodesep` and `ranksep + 25` propagation; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Shared Mermaid/Marked text path for entity aliases, attributes, relationship labels, and subgraph labels |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, `class`, inline `:::`, fill, stroke, dash, text, font, decoration, and line-height properties |
-| Themes | Supported | Mermaid 12 redux-color palette, alternating attribute rows, edge-label backgrounds, neo shadows, and shared native theme variables |
-| ER configuration | Supported | `diagramPadding`, `entityPadding`, `minEntityWidth`, `minEntityHeight`, `nodeSpacing`, `rankSpacing`, and `titleTopMargin` |
+| Themes | Supported | Mermaid 12 redux-color palette, alternating attribute rows, ER-specific edge-label backgrounds, cluster fill/border/title fallbacks, neo shadows, and shared native theme variables |
+| ER configuration | Supported | `diagramPadding`, `entityPadding`, `minEntityWidth`, `minEntityHeight`, `nodeSpacing`, `rankSpacing`, `titleTopMargin`, and shared `flowchart.subGraphTitleMargin` |
 | Resource controls | Supported | Relationships are bounded by host-owned `maxEdges` |
 
 ## Explicit Unsupported Boundaries
@@ -60,8 +60,9 @@ The following legal Mermaid capabilities return `UnsupportedFeature`:
 - 13 independent production Native/Official pairs pass geometry and detail
   review (`10 pass / 3 manually reviewed / 0 fail`).
 - The fresh 256-case coverage-driven input audit reports
-  `148 pass / 108 review / 0 fail`; geometry has 0 hard failures with width
-  `0.956-1.081`, height `0.968-1.173`, and foreground ink `0.599-1.048`.
+  `256 pass / 0 review / 0 fail`; geometry has 0 review or hard failures with
+  width `1.029-1.079`, height `1.004-1.061`, and foreground ink
+  `0.548-0.979`.
 - 20 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0` with Dagre.
 - The 20 Native Android screenshots are compared side by side with 20

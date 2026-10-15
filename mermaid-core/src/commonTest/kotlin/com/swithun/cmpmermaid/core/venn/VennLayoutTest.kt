@@ -12,6 +12,7 @@ import com.swithun.cmpmermaid.core.SceneShape
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
+import com.swithun.cmpmermaid.core.TextMetricsRequest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -152,21 +153,40 @@ class VennLayoutTest {
     }
 
     @Test
-    fun wrapsAreaLabelsUsingVennJsPreStyleFontMetrics() {
-        val scene = render(
+    fun keepsAreaLabelsUnwrappedLikeVennJsDetachedDummySvg() {
+        val requests = mutableListOf<TextMetricsRequest>()
+        val wrappingMetrics = TextMetricProvider { request ->
+            requests += request
+            val naturalWidth = request.text.length * request.fontSize * 0.58f
+            val wrapped = naturalWidth > request.maxWidth
+            TextMetrics(
+                width = if (wrapped) request.maxWidth else naturalWidth,
+                height = request.fontSize * request.lineHeight * if (wrapped) 2 else 1,
+                lineCount = if (wrapped) 2 else 1,
+            )
+        }
+        val result = MermaidEngine().render(
             """
             venn-beta
               title Delivery ownership
               set Product["Product planning"]:24
               set Engineering["Engineering delivery"]
-              union Product,Engineering["Shared roadmap"]:6
+              union Product,Engineering["Shared delivery ownership boundary"]:6
             """.trimIndent(),
+            context().copy(textMetrics = wrappingMetrics),
         )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
 
-        val engineering = scene.elements
+        val shared = scene.elements
             .filterIsInstance<SceneText>()
-            .first { text -> text.text.replace("\n", " ") == "Engineering delivery" }
-        assertEquals("Engineering delivery", engineering.text)
+            .first { text -> text.text == "Shared delivery ownership boundary" }
+        assertEquals(24f * 1.1f, shared.bounds.height, absoluteTolerance = 0.001f)
+        assertEquals(
+            100_000f,
+            requests.first { request ->
+                request.text == "Shared delivery ownership boundary"
+            }.maxWidth,
+        )
     }
 
     @Test

@@ -49,6 +49,7 @@ internal object VennLayoutEngine {
         width: Double,
         height: Double,
         padding: Double,
+        random: VennDeterministicRandom = VennDeterministicRandom(),
     ): GMResult<List<VennLayoutArea>, MermaidError> {
         if (!width.isFinite() || width <= 0.0 || !height.isFinite() || height <= 0.0) {
             return layoutError("width and height must be positive finite numbers")
@@ -72,7 +73,7 @@ internal object VennLayoutEngine {
             return GMResult.Ok(emptyList())
         }
 
-        var solution = venn(data)
+        var solution = venn(data, random)
         if (solution.values.any { circle -> !circle.isFinite() }) {
             return layoutError("venn.js optimization produced non-finite circle geometry")
         }
@@ -168,9 +169,12 @@ internal object VennLayoutEngine {
         return output
     }
 
-    private fun venn(sets: List<VennData>): LinkedHashMap<String, VennCircle> {
+    private fun venn(
+        sets: List<VennData>,
+        random: VennDeterministicRandom,
+    ): LinkedHashMap<String, VennCircle> {
         val areas = addMissingAreas(sets)
-        val circles = bestInitialLayout(areas)
+        val circles = bestInitialLayout(areas, random)
         val setIds = circles.keys.toList()
         val initial = DoubleArray(setIds.size * 2)
         setIds.forEachIndexed { index, setId ->
@@ -226,10 +230,13 @@ internal object VennLayoutEngine {
         return result
     }
 
-    private fun bestInitialLayout(areas: List<VennData>): LinkedHashMap<String, VennCircle> {
+    private fun bestInitialLayout(
+        areas: List<VennData>,
+        random: VennDeterministicRandom,
+    ): LinkedHashMap<String, VennCircle> {
         var initial = greedyLayout(areas)
         if (areas.size >= 8) {
-            val constrained = constrainedMdsLayout(areas)
+            val constrained = constrainedMdsLayout(areas, random)
             if (
                 constrained.isNotEmpty() &&
                 lossFunction(constrained, areas) + 1e-8 < lossFunction(initial, areas)
@@ -242,6 +249,7 @@ internal object VennLayoutEngine {
 
     private fun constrainedMdsLayout(
         areas: List<VennData>,
+        random: VennDeterministicRandom,
     ): LinkedHashMap<String, VennCircle> {
         val sets = areas.filter { area -> area.sets.size == 1 }
         if (sets.isEmpty()) {
@@ -262,7 +270,6 @@ internal object VennLayoutEngine {
         // @upsetjs/venn.js 2.0.0 uses Math.random for every constrained-MDS
         // restart. A fixed initial state makes the same upstream search path
         // reproducible across KMP targets and the isolated Official oracle.
-        val random = VennDeterministicRandom()
         var best: Fmin.Result? = null
         repeat(CONSTRAINED_MDS_RESTARTS) {
             val initial = DoubleArray(distances.size * 2) { random.nextDouble() }

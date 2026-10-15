@@ -39,6 +39,21 @@ production so an upstream grammar diff can be translated incrementally.
 | `SceneGraph.kt` | Mermaid Gantt SVG elements | Typed bars, milestone geometry, lines, text spans, metadata, and interactions |
 | `mermaid-compose/.../MermaidDiagram.kt` | Mermaid SVG painting behavior | Native Canvas shapes, text, paths, clipping, pan, and zoom |
 
+## Production Renderer Function Checklist
+
+| Order | Upstream production stage | Kotlin stage | Status |
+| ---: | --- | --- | --- |
+| 1 | `ganttRenderer.js -> draw` configuration, task compilation, sizing, and time-domain setup | `GanttLayout.layout` | **Platform adaptation**: browser width and D3 scales map to explicit scene width and `TimeScale` while retaining the upstream inputs |
+| 2 | `ganttRenderer.js -> drawSections` | `addSections` | **Platform adaptation**: SVG rect/text nodes map to ordered SceneGraph elements |
+| 3 | `ganttRenderer.js -> makeGrid` bottom `axisBottom`, tick interval selection, labels, and negative full-height tick lines | `addGrid`, `GanttDatePort.ticks`, `automaticTicks`, `axisLabelBounds` | **Exact / Platform adaptation** after the translated D3 interval and SVG baseline conversions |
+| 4 | `ganttRenderer.js -> makeGrid` optional top `axisTop`, including its second full-height tick-line set | `addGrid` | **Exact / Platform adaptation**: both D3 axis tick-line sets are retained, with SVG `currentColor` mapped to the Gantt text color |
+| 5 | `ganttRenderer.js` exclusion ranges, task rects, milestones, vertical markers, and task labels | `addExcludedRanges`, `addTasks` | **Platform adaptation** |
+| 6 | `ganttRenderer.js` title, section labels, today marker, links, and callbacks | `addTitle`, section-label creation, `addTodayMarker`, interactions | **Platform adaptation** |
+
+Rows 3-4 preserve the two distinct D3 axis transforms. The regression test
+asserts both full-height tick-line sets, their endpoints, and the translated
+`currentColor` paint.
+
 ## Locked Upstream Hashes
 
 | Upstream file | SHA-256 |
@@ -94,7 +109,7 @@ production so an upstream grammar diff can be translated incrementally.
 - The Web RC capture rejects an Official Gantt SVG whose viewBox is less than
   75% of its iframe width, preventing a flex-shrunk reference from masking or
   inventing Native layout differences.
-- The current 256-case Native/Official matrix reports `192 pass / 64 review / 0 fail`.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
   Geometry has 0 hard failures with width `1.034-1.037`, height `0.927-0.957`,
   and foreground ink `0.921-1.029`.
 

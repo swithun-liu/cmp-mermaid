@@ -116,10 +116,6 @@ internal class ErLayout {
         val options = context.options.copy(
             nodeSpacing = context.options.erNodeSpacing,
             rankSpacing = context.options.erRankSpacing,
-            subGraphTitleTopMargin = max(
-                context.options.subGraphTitleTopMargin,
-                SUBGRAPH_TITLE_MARGIN,
-            ),
         )
         val placement = when (val layoutName = context.options.layout) {
             "dagre" -> FlowDagreLayout.layout(
@@ -227,9 +223,14 @@ internal class ErLayout {
             }
             rows += row
         }
-        val columnPadding = context.options.erDiagramPadding
-        val textPadding = context.options.erEntityPadding *
-            if (context.options.htmlLabels) 1f else 1.25f
+        // Mermaid.js 12.0.0:
+        // rendering-util/rendering-elements/shapes/erBox.ts -> erBox.
+        // This branch reads config.htmlLabels directly instead of evaluate().
+        // An absent root value therefore scales both paddings even though the
+        // shared text path evaluates that same absent value as HTML-enabled.
+        val svgLabelScale = if (context.options.rootHtmlLabels == true) 1f else 1.25f
+        val columnPadding = context.options.erDiagramPadding * svgLabelScale
+        val textPadding = context.options.erEntityPadding * svgLabelScale
         var typeWidth = rows.maxOfOrNull { it.type.metrics.width }?.plus(columnPadding) ?: 0f
         var nameWidth = rows.maxOfOrNull { it.name.metrics.width }?.plus(columnPadding) ?: 0f
         var keysWidth = rows
@@ -282,6 +283,7 @@ internal class ErLayout {
                 title = title,
                 rows = measuredRows,
                 headerHeight = headerHeight,
+                columnPadding = columnPadding,
                 typeWidth = typeWidth,
                 nameWidth = nameWidth,
                 keysWidth = keysWidth,
@@ -547,8 +549,8 @@ internal class ErLayout {
                 id = "er-subgraph-${visual.source.id}",
                 bounds = frame,
                 kind = SceneShapeKind.Rectangle,
-                fill = visual.style.fill ?: context.theme.groupFill,
-                stroke = visual.style.stroke ?: context.theme.groupStroke,
+                fill = visual.style.fill ?: context.theme.erClusterFill,
+                stroke = visual.style.stroke ?: context.theme.erClusterStroke,
                 strokeWidth = visual.style.strokeWidth ?: 1f,
                 strokePattern = visual.style.strokePattern ?: SceneStrokePattern.Solid,
                 dashIntervals = visual.style.dashIntervals,
@@ -558,11 +560,13 @@ internal class ErLayout {
             elements += visual.label.asSceneText(
                 bounds = SceneRect(
                     left = frame.center.x - visual.label.metrics.width / 2f,
-                    top = frame.top + SUBGRAPH_LABEL_TOP,
+                    top = frame.top + context.options.subGraphTitleTopMargin,
                     right = frame.center.x + visual.label.metrics.width / 2f,
-                    bottom = frame.top + SUBGRAPH_LABEL_TOP + visual.label.metrics.height,
+                    bottom = frame.top +
+                        context.options.subGraphTitleTopMargin +
+                        visual.label.metrics.height,
                 ),
-                color = visual.style.text ?: context.theme.groupText,
+                color = visual.style.text ?: context.theme.erClusterText,
                 alignment = SceneTextAlignment.Center,
                 zIndex = index + 1,
             )
@@ -619,7 +623,7 @@ internal class ErLayout {
                 zIndex = 5,
             )
             edgeVisuals[index]?.let { visual ->
-                val bounds = SceneRect(
+                val backgroundBounds = SceneRect(
                     left = routed.labelAnchor.x - visual.size.width / 2f - EDGE_LABEL_PADDING_X,
                     top = routed.labelAnchor.y - visual.size.height / 2f - EDGE_LABEL_PADDING_Y,
                     right = routed.labelAnchor.x + visual.size.width / 2f + EDGE_LABEL_PADDING_X,
@@ -627,9 +631,12 @@ internal class ErLayout {
                 )
                 elements += SceneShape(
                     id = "$edgeId-label-background",
-                    bounds = bounds,
+                    bounds = backgroundBounds,
                     kind = SceneShapeKind.Rectangle,
-                    fill = context.theme.edgeLabelFill,
+                    // Mermaid.js 12.0.0: diagrams/er/styles.ts -> getStyles.
+                    // redux-color themes use erEdgeLabelBackground rather than
+                    // the shared edgeLabelBackground value.
+                    fill = context.theme.erEdgeLabelFill,
                     stroke = TRANSPARENT,
                     strokeWidth = 0f,
                     cornerRadius = 0f,
@@ -637,7 +644,12 @@ internal class ErLayout {
                 )
                 elements += SceneText(
                     text = visual.text,
-                    bounds = bounds,
+                    bounds = SceneRect(
+                        left = routed.labelAnchor.x - visual.size.width / 2f,
+                        top = routed.labelAnchor.y - visual.size.height / 2f,
+                        right = routed.labelAnchor.x + visual.size.width / 2f,
+                        bottom = routed.labelAnchor.y + visual.size.height / 2f,
+                    ),
                     color = context.theme.nodeText,
                     fontSize = EDGE_FONT_SIZE,
                     lineHeight = DEFAULT_LINE_HEIGHT,
@@ -728,11 +740,12 @@ internal class ErLayout {
             var left = bounds.left
             columns.forEach { (line, width) ->
                 val top = rowTop + (row.height - line.metrics.height) / 2f
+                val textLeft = left + visual.columnPadding / 2f
                 elements += line.asSceneText(
                     bounds = SceneRect(
-                        left = left + context.options.erDiagramPadding / 2f,
+                        left = textLeft - CANVAS_TEXT_HORIZONTAL_INSET,
                         top = top,
-                        right = left + width - context.options.erDiagramPadding / 2f,
+                        right = textLeft - CANVAS_TEXT_HORIZONTAL_INSET + line.metrics.width,
                         bottom = top + line.metrics.height,
                     ),
                     color = visual.style.text ?: context.theme.nodeText,
@@ -1046,6 +1059,7 @@ internal class ErLayout {
         val title: ErTextVisual,
         val rows: List<ErAttributeRow> = emptyList(),
         val headerHeight: Float = size.height,
+        val columnPadding: Float = 0f,
         val typeWidth: Float = 0f,
         val nameWidth: Float = 0f,
         val keysWidth: Float = 0f,
@@ -1075,9 +1089,8 @@ internal class ErLayout {
         const val TITLE_FONT_SIZE = 18f
         const val EDGE_LABEL_PADDING_X = 6f
         const val EDGE_LABEL_PADDING_Y = 3f
+        const val CANVAS_TEXT_HORIZONTAL_INSET = 4f
         const val SUBGRAPH_PADDING = 8f
-        const val SUBGRAPH_TITLE_MARGIN = 24f
-        const val SUBGRAPH_LABEL_TOP = 4f
         const val UNWRAPPED_TEXT_WIDTH = 100_000f
         const val ER_CURVE = "basis"
     }

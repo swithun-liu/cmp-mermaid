@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T13:36:50.202Z",
+  "generatedAt": "2026-10-14T18:20:35.237Z",
   "inputDirectory": "captures/local/independent-visual-parity-v2",
   "corpusSource": "visual-parity",
   "corpusKind": "state",
@@ -9,56 +9,9 @@
   "gridSize": 96,
   "caseCount": 256,
   "counts": {
-    "pass": 251,
-    "review": 5
+    "pass": 256
   },
-  "reviewQueue": [
-    {
-      "id": "visual_state_005",
-      "kind": "state",
-      "status": "review",
-      "findingCodes": [
-        "raster-mask"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_005_heatmap.png"
-    },
-    {
-      "id": "visual_state_021",
-      "kind": "state",
-      "status": "review",
-      "findingCodes": [
-        "raster-mask"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_021_heatmap.png"
-    },
-    {
-      "id": "visual_state_023",
-      "kind": "state",
-      "status": "review",
-      "findingCodes": [
-        "raster-mask"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_023_heatmap.png"
-    },
-    {
-      "id": "visual_state_037",
-      "kind": "state",
-      "status": "review",
-      "findingCodes": [
-        "raster-mask"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_037_heatmap.png"
-    },
-    {
-      "id": "visual_state_039",
-      "kind": "state",
-      "status": "review",
-      "findingCodes": [
-        "raster-mask"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_039_heatmap.png"
-    }
-  ],
+  "reviewQueue": [],
   "cases": [
     {
       "id": "visual_state_001",
@@ -1271,14 +1224,8 @@
     {
       "id": "visual_state_005",
       "kind": "state",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "raster-mask",
-          "message": "Tolerant foreground-mask IoU 0.412 is below 0.420"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -1327,17 +1274,17 @@
           "matchedCount": 6,
           "segmentationEquivalent": false,
           "segmentationGroups": [],
-          "maximumCenterDistance": 0.05324915913606384,
-          "p95CenterDistance": 0.05282391268397673,
+          "maximumCenterDistance": 0.040212953353354904,
+          "p95CenterDistance": 0.03964813261612259,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
             "asset": 1,
-            "geometry": 0.84,
-            "geometryObject": 0.76,
-            "geometryExpanded": 0.84
+            "geometry": 1.105263157894737,
+            "geometryObject": 1,
+            "geometryExpanded": 1.105263157894737
           }
         },
         "styleComparison": {
@@ -1369,7 +1316,7 @@
               "position": "end",
               "point": {
                 "x": 0.05975395430579965,
-                "y": 0.39659132872392405
+                "y": 0.3299642246080291
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1381,7 +1328,7 @@
               "position": "end",
               "point": {
                 "x": 0.30140597539543057,
-                "y": 0.39659132872392405
+                "y": 0.3299642246080291
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1393,7 +1340,7 @@
               "position": "end",
               "point": {
                 "x": 0.4648506151142355,
-                "y": 0.39659132872392405
+                "y": 0.3299642246080291
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1405,7 +1352,7 @@
               "position": "end",
               "point": {
                 "x": 0.6818980667838312,
-                "y": 0.35139217901032843
+                "y": 0.2797742807655572
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1417,7 +1364,7 @@
               "position": "end",
               "point": {
                 "x": 0.22319859402460457,
-                "y": 0.39659132872392405
+                "y": 0.3299642246080291
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1429,7 +1376,7 @@
               "position": "end",
               "point": {
                 "x": 0.6722897451669596,
-                "y": 0.7840128347505526
+                "y": 0.7601639906225108
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1441,7 +1388,7 @@
               "position": "end",
               "point": {
                 "x": 0.8137082601054482,
-                "y": 0.8802222532589717
+                "y": 0.8669966488174496
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1453,7 +1400,7 @@
               "position": "end",
               "point": {
                 "x": 0.9771528998242531,
-                "y": 0.8802222532589717
+                "y": 0.8669966488174496
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -1579,12 +1526,12 @@
           "minimumEdgeF1": 0.38,
           "maximumColorError": 0.24
         },
-        "status": "review",
-        "maskIou": 0.4124194493263035,
-        "exactMaskIou": 0.21277665995975856,
-        "edgeF1": 0.7893602973120907,
-        "colorError": 0.11337324270392744,
-        "exactColorError": 0.223368314461935
+        "status": "pass",
+        "maskIou": 0.7250495703899538,
+        "exactMaskIou": 0.5572792362768496,
+        "edgeF1": 0.9262898545497328,
+        "colorError": 0.10970700725126767,
+        "exactColorError": 0.15801706521908682
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -1597,12 +1544,12 @@
         ],
         "contentBounds": {
           "x": 15,
-          "y": 342,
+          "y": 353,
           "width": 1173,
-          "height": 219
+          "height": 196
         },
-        "foregroundCells": 1161,
-        "edgeCells": 2169
+        "foregroundCells": 1360,
+        "edgeCells": 2331
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -1622,7 +1569,7 @@
         "foregroundCells": 1250,
         "edgeCells": 2157
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_005_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_state_006",
@@ -7357,14 +7304,8 @@
     {
       "id": "visual_state_021",
       "kind": "state",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "raster-mask",
-          "message": "Tolerant foreground-mask IoU 0.413 is below 0.420"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -7413,17 +7354,17 @@
           "matchedCount": 8,
           "segmentationEquivalent": false,
           "segmentationGroups": [],
-          "maximumCenterDistance": 0.04439692394486854,
-          "p95CenterDistance": 0.043500466858764755,
+          "maximumCenterDistance": 0.03536717529324426,
+          "p95CenterDistance": 0.03368095492710589,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
             "asset": 1,
-            "geometry": 0.8333333333333334,
-            "geometryObject": 0.7777777777777778,
-            "geometryExpanded": 0.8333333333333334
+            "geometry": 1,
+            "geometryObject": 0.9333333333333333,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -7455,7 +7396,7 @@
               "position": "end",
               "point": {
                 "x": 0.04709141274238227,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7467,7 +7408,7 @@
               "position": "end",
               "point": {
                 "x": 0.23753462603878117,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7479,7 +7420,7 @@
               "position": "end",
               "point": {
                 "x": 0.36634349030470914,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7491,7 +7432,7 @@
               "position": "end",
               "point": {
                 "x": 0.5373961218836565,
-                "y": 0.29365482990869257
+                "y": 0.2296382059881414
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7503,7 +7444,7 @@
               "position": "end",
               "point": {
                 "x": 0.17590027700831026,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7515,7 +7456,7 @@
               "position": "end",
               "point": {
                 "x": 0.5298239127423823,
-                "y": 0.655191504518909
+                "y": 0.6239412366407119
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7527,7 +7468,7 @@
               "position": "end",
               "point": {
                 "x": 0.6412742382271468,
-                "y": 0.7355927312175463
+                "y": 0.7116292903897166
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7539,7 +7480,7 @@
               "position": "end",
               "point": {
                 "x": 0.682825484764543,
-                "y": 0.5712824999027358
+                "y": 0.5324274922747546
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7551,7 +7492,7 @@
               "position": "end",
               "point": {
                 "x": 0.682825484764543,
-                "y": 0.8999029625323567
+                "y": 0.8908310885046784
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7563,7 +7504,7 @@
               "position": "end",
               "point": {
                 "x": 0.8128317867036011,
-                "y": 0.6957698236516834
+                "y": 0.6681972010738925
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7575,7 +7516,7 @@
               "position": "end",
               "point": {
                 "x": 0.8128317867036011,
-                "y": 0.7754156765558762
+                "y": 0.7550614209013563
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7587,7 +7528,7 @@
               "position": "end",
               "point": {
                 "x": 0.853185595567867,
-                "y": 0.7355927312175463
+                "y": 0.7116292903897166
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7599,7 +7540,7 @@
               "position": "end",
               "point": {
                 "x": 0.981994459833795,
-                "y": 0.7355927312175463
+                "y": 0.7116292903897166
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -7785,12 +7726,12 @@
           "minimumEdgeF1": 0.38,
           "maximumColorError": 0.24
         },
-        "status": "review",
-        "maskIou": 0.41310975609756095,
-        "exactMaskIou": 0.20860495436766624,
-        "edgeF1": 0.7537141078629922,
-        "colorError": 0.13968030428868908,
-        "exactColorError": 0.24466088912748932
+        "status": "pass",
+        "maskIou": 0.8048016701461378,
+        "exactMaskIou": 0.652963671128107,
+        "edgeF1": 0.9633720172064275,
+        "colorError": 0.10723780282322987,
+        "exactColorError": 0.15055674277359127
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -7803,12 +7744,12 @@
         ],
         "contentBounds": {
           "x": 13,
-          "y": 347,
+          "y": 356,
           "width": 1176,
-          "height": 208
+          "height": 190
         },
-        "foregroundCells": 940,
-        "edgeCells": 1989
+        "foregroundCells": 815,
+        "edgeCells": 1821
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -7828,7 +7769,7 @@
         "foregroundCells": 914,
         "edgeCells": 1947
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_021_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_state_022",
@@ -8303,14 +8244,8 @@
     {
       "id": "visual_state_023",
       "kind": "state",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "raster-mask",
-          "message": "Tolerant foreground-mask IoU 0.410 is below 0.420"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -8359,17 +8294,17 @@
           "matchedCount": 8,
           "segmentationEquivalent": false,
           "segmentationGroups": [],
-          "maximumCenterDistance": 0.04439692394486854,
-          "p95CenterDistance": 0.043500466858764755,
+          "maximumCenterDistance": 0.03536717529324426,
+          "p95CenterDistance": 0.03368095492710589,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
             "asset": 1,
-            "geometry": 0.8333333333333334,
-            "geometryObject": 0.7777777777777778,
-            "geometryExpanded": 0.8333333333333334
+            "geometry": 1,
+            "geometryObject": 0.9333333333333333,
+            "geometryExpanded": 1
           }
         },
         "styleComparison": {
@@ -8401,7 +8336,7 @@
               "position": "end",
               "point": {
                 "x": 0.04709141274238227,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8413,7 +8348,7 @@
               "position": "end",
               "point": {
                 "x": 0.23753462603878117,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8425,7 +8360,7 @@
               "position": "end",
               "point": {
                 "x": 0.36634349030470914,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8437,7 +8372,7 @@
               "position": "end",
               "point": {
                 "x": 0.5373961218836565,
-                "y": 0.29365482990869257
+                "y": 0.2296382059881414
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8449,7 +8384,7 @@
               "position": "end",
               "point": {
                 "x": 0.17590027700831026,
-                "y": 0.3314272968776145
+                "y": 0.2708340216467533
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8461,7 +8396,7 @@
               "position": "end",
               "point": {
                 "x": 0.5298239127423823,
-                "y": 0.655191504518909
+                "y": 0.6239412366407119
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8473,7 +8408,7 @@
               "position": "end",
               "point": {
                 "x": 0.6412742382271468,
-                "y": 0.7355927312175463
+                "y": 0.7116292903897166
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8485,7 +8420,7 @@
               "position": "end",
               "point": {
                 "x": 0.682825484764543,
-                "y": 0.5712824999027358
+                "y": 0.5324274922747546
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8497,7 +8432,7 @@
               "position": "end",
               "point": {
                 "x": 0.682825484764543,
-                "y": 0.8999029625323567
+                "y": 0.8908310885046784
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8509,7 +8444,7 @@
               "position": "end",
               "point": {
                 "x": 0.8128317867036011,
-                "y": 0.6957698236516834
+                "y": 0.6681972010738925
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8521,7 +8456,7 @@
               "position": "end",
               "point": {
                 "x": 0.8128317867036011,
-                "y": 0.7754156765558762
+                "y": 0.7550614209013563
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8533,7 +8468,7 @@
               "position": "end",
               "point": {
                 "x": 0.853185595567867,
-                "y": 0.7355927312175463
+                "y": 0.7116292903897166
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8545,7 +8480,7 @@
               "position": "end",
               "point": {
                 "x": 0.981994459833795,
-                "y": 0.7355927312175463
+                "y": 0.7116292903897166
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -8731,12 +8666,12 @@
           "minimumEdgeF1": 0.38,
           "maximumColorError": 0.24
         },
-        "status": "review",
-        "maskIou": 0.41008276899924756,
-        "exactMaskIou": 0.2082527401676338,
-        "edgeF1": 0.7575541971479071,
-        "colorError": 0.14083090544026786,
-        "exactColorError": 0.2450790761178746
+        "status": "pass",
+        "maskIou": 0.8105590062111802,
+        "exactMaskIou": 0.6531190926275993,
+        "edgeF1": 0.9635814571924368,
+        "colorError": 0.10608693508830308,
+        "exactColorError": 0.15232341203652225
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -8749,12 +8684,12 @@
         ],
         "contentBounds": {
           "x": 13,
-          "y": 347,
+          "y": 356,
           "width": 1176,
-          "height": 208
+          "height": 190
         },
-        "foregroundCells": 952,
-        "edgeCells": 1997
+        "foregroundCells": 827,
+        "edgeCells": 1836
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -8774,7 +8709,7 @@
         "foregroundCells": 922,
         "edgeCells": 1956
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_023_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_state_024",
@@ -14705,14 +14640,8 @@
     {
       "id": "visual_state_037",
       "kind": "state",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "raster-mask",
-          "message": "Tolerant foreground-mask IoU 0.411 is below 0.420"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -14761,17 +14690,17 @@
           "matchedCount": 9,
           "segmentationEquivalent": false,
           "segmentationGroups": [],
-          "maximumCenterDistance": 0.024805008570101327,
-          "p95CenterDistance": 0.02437580351452489,
+          "maximumCenterDistance": 0.020871488971859305,
+          "p95CenterDistance": 0.018803856026722077,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
             "asset": 1,
-            "geometry": 0.8888888888888888,
-            "geometryObject": 0.8333333333333334,
-            "geometryExpanded": 0.8888888888888888
+            "geometry": 1.0666666666666667,
+            "geometryObject": 1,
+            "geometryExpanded": 1.0666666666666667
           }
         },
         "styleComparison": {
@@ -14805,7 +14734,7 @@
               "position": "end",
               "point": {
                 "x": 0.04106280193236715,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14817,7 +14746,7 @@
               "position": "end",
               "point": {
                 "x": 0.2071256038647343,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14829,7 +14758,7 @@
               "position": "end",
               "point": {
                 "x": 0.3194444444444444,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14841,7 +14770,7 @@
               "position": "end",
               "point": {
                 "x": 0.46859903381642515,
-                "y": 0.16342349192148375
+                "y": 0.12285911797801904
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14853,7 +14782,7 @@
               "position": "end",
               "point": {
                 "x": 0.15338164251207728,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14865,7 +14794,7 @@
               "position": "end",
               "point": {
                 "x": 0.46199621376811595,
-                "y": 0.36462427276641957
+                "y": 0.3338158310456477
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14877,7 +14806,7 @@
               "position": "end",
               "point": {
                 "x": 0.5591787439613527,
-                "y": 0.4093688149081557
+                "y": 0.3807299707338597
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14889,7 +14818,7 @@
               "position": "end",
               "point": {
                 "x": 0.7572463768115942,
-                "y": 0.7130637653244182
+                "y": 0.6991506460712326
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14901,7 +14830,7 @@
               "position": "end",
               "point": {
                 "x": 0.9118357487922706,
-                "y": 0.7130637653244182
+                "y": 0.6991506460712326
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14913,7 +14842,7 @@
               "position": "end",
               "point": {
                 "x": 0.6714975845410628,
-                "y": 0.6405704922974439
+                "y": 0.6231422800347663
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -14925,7 +14854,7 @@
               "position": "end",
               "point": {
                 "x": 0.8278985507246377,
-                "y": 0.17816720058177635
+                "y": 0.13831772755369032
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15087,12 +15016,12 @@
           "minimumEdgeF1": 0.38,
           "maximumColorError": 0.24
         },
-        "status": "review",
-        "maskIou": 0.4105594956658786,
-        "exactMaskIou": 0.145233525271913,
-        "edgeF1": 0.7722891934759518,
-        "colorError": 0.1053341384863124,
-        "exactColorError": 0.1602607688415524
+        "status": "pass",
+        "maskIou": 0.7288765088207985,
+        "exactMaskIou": 0.40105342362678703,
+        "edgeF1": 0.8881838386275229,
+        "colorError": 0.0851159777761168,
+        "exactColorError": 0.11871130192734229
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -15105,12 +15034,12 @@
         ],
         "contentBounds": {
           "x": 13,
-          "y": 285,
+          "y": 292,
           "width": 1174,
-          "height": 331
+          "height": 316
         },
-        "foregroundCells": 733,
-        "edgeCells": 1642
+        "foregroundCells": 805,
+        "edgeCells": 1619
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -15130,7 +15059,7 @@
         "foregroundCells": 1057,
         "edgeCells": 2259
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_037_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_state_038",
@@ -15559,14 +15488,8 @@
     {
       "id": "visual_state_039",
       "kind": "state",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "raster-mask",
-          "message": "Tolerant foreground-mask IoU 0.416 is below 0.420"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -15615,17 +15538,17 @@
           "matchedCount": 9,
           "segmentationEquivalent": false,
           "segmentationGroups": [],
-          "maximumCenterDistance": 0.024805008570101327,
-          "p95CenterDistance": 0.02437580351452489,
+          "maximumCenterDistance": 0.020871488971859305,
+          "p95CenterDistance": 0.018803856026722077,
           "maximumSizeRatio": 1
         },
         "elementComparison": {
           "ratios": {
             "text": 1,
             "asset": 1,
-            "geometry": 0.8888888888888888,
-            "geometryObject": 0.8333333333333334,
-            "geometryExpanded": 0.8888888888888888
+            "geometry": 1.0666666666666667,
+            "geometryObject": 1,
+            "geometryExpanded": 1.0666666666666667
           }
         },
         "styleComparison": {
@@ -15659,7 +15582,7 @@
               "position": "end",
               "point": {
                 "x": 0.04106280193236715,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15671,7 +15594,7 @@
               "position": "end",
               "point": {
                 "x": 0.2071256038647343,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15683,7 +15606,7 @@
               "position": "end",
               "point": {
                 "x": 0.3194444444444444,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15695,7 +15618,7 @@
               "position": "end",
               "point": {
                 "x": 0.46859903381642515,
-                "y": 0.16342349192148375
+                "y": 0.12285911797801904
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15707,7 +15630,7 @@
               "position": "end",
               "point": {
                 "x": 0.15338164251207728,
-                "y": 0.18444446149478647
+                "y": 0.14489936368708628
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15719,7 +15642,7 @@
               "position": "end",
               "point": {
                 "x": 0.46199621376811595,
-                "y": 0.36462427276641957
+                "y": 0.3338158310456477
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15731,7 +15654,7 @@
               "position": "end",
               "point": {
                 "x": 0.5591787439613527,
-                "y": 0.4093688149081557
+                "y": 0.3807299707338597
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15743,7 +15666,7 @@
               "position": "end",
               "point": {
                 "x": 0.7572463768115942,
-                "y": 0.7130637653244182
+                "y": 0.6991506460712326
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15755,7 +15678,7 @@
               "position": "end",
               "point": {
                 "x": 0.9118357487922706,
-                "y": 0.7130637653244182
+                "y": 0.6991506460712326
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15767,7 +15690,7 @@
               "position": "end",
               "point": {
                 "x": 0.6714975845410628,
-                "y": 0.6405704922974439
+                "y": 0.6231422800347663
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15779,7 +15702,7 @@
               "position": "end",
               "point": {
                 "x": 0.8278985507246377,
-                "y": 0.17816720058177635
+                "y": 0.13831772755369032
               },
               "occlusionDepth": 0,
               "occluder": null
@@ -15941,12 +15864,12 @@
           "minimumEdgeF1": 0.38,
           "maximumColorError": 0.24
         },
-        "status": "review",
-        "maskIou": 0.41608118657298987,
-        "exactMaskIou": 0.1561504142766093,
-        "edgeF1": 0.7735545292917597,
-        "colorError": 0.10289267650523107,
-        "exactColorError": 0.16030692710481262
+        "status": "pass",
+        "maskIou": 0.7322907083716651,
+        "exactMaskIou": 0.4010416666666667,
+        "edgeF1": 0.888832372223185,
+        "colorError": 0.08531935059020469,
+        "exactColorError": 0.11956796607531901
       },
       "nativeRaster": {
         "imageWidth": 1200,
@@ -15959,12 +15882,12 @@
         ],
         "contentBounds": {
           "x": 13,
-          "y": 285,
+          "y": 292,
           "width": 1174,
-          "height": 331
+          "height": 316
         },
-        "foregroundCells": 743,
-        "edgeCells": 1651
+        "foregroundCells": 812,
+        "edgeCells": 1623
       },
       "officialRaster": {
         "imageWidth": 1200,
@@ -15984,7 +15907,7 @@
         "foregroundCells": 1071,
         "edgeCells": 2271
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/state/visual_state_039_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_state_040",

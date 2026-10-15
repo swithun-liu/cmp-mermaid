@@ -27,8 +27,8 @@ family contributes 256 label-normalized sources. Flowchart keeps its dedicated
 coverage corpus; every other family contributes all 256 combinations of eight
 family-specific capability axes.
 All cases pass Native rendering and complete the Native/Official detail and
-geometry audits without a hard failure. Flowchart's stricter per-edge route
-audit retains 11 failures. A separate 8,448-input text/layout
+geometry audits without a hard detail failure. Flowchart's stricter per-edge
+route audit passes all 256 cases. A separate 8,448-input text/layout
 stress corpus remains isolated from structural coverage. A Git Graph label paint-order defect
 was visible in the original 3,072-pair matrix and was not identified during
 the earlier review. That defect is corrected; no family uses a legacy geometry
@@ -58,22 +58,19 @@ on both sides and passes with no findings.
 
 All 33 families have completed the visual-input gate. Together they have
 8,448 same-source pairs:
-`7,864 pass / 584 review / 0 fail` across 528 regenerated contact sheets.
-Geometry has 0 hard failures and retains 155 review findings across 121
-Architecture seeded iterative fCoSE cases; those cross-runtime placement
-differences stay explicit.
+`8,441 pass / 7 review / 0 fail` across 528 regenerated contact sheets.
+Geometry has `0 fail / 0 review` across all 8,448 pairs.
 
 Flowchart's parser-derived diversity gate passes with 107 unique graph
-topologies. Its per-edge route gate reports `245 pass / 11 fail`, covering one
-invisible-edge manifest mismatch, nine self-loop route mismatches, and one
-dense cyclic crossing mismatch.
+topologies. Its per-edge route gate reports `256 pass / 0 fail`, including
+invisible edges, merged self-loops, endpoint ports, bend directions, and dense
+cyclic crossings.
 
 The fresh per-family pass/review counts and width, height, and foreground-ink
 ranges are published in the
 [8,448-case visual-input evidence index](assets/stability-report/visual-parity-evidence.md).
-Across the complete matrix, width ratios are `0.717-2.218`, height ratios are
-`0.454-1.336`, and foreground-ink ratios are `0.313-3.535`; all out-of-range
-values remain visible in the review evidence.
+Across the complete matrix, width ratios are `0.978-1.219`, height ratios are
+`0.809-1.186`, and foreground-ink ratios are `0.548-1.419`.
 
 ## Expected Behavior
 
@@ -129,8 +126,10 @@ Each of the 33 families must pass all of the following:
 
 Overall Mermaid `12.0.0` support is **not Stable**. The report covers 441
 independent production scenarios and 8,448 structurally distinct same-source
-Native/Official pairs, but Flowchart retains 11 per-edge routing failures and
-legal RoughJS-backed `look: handDrawn` input remains explicitly unsupported.
-The derived text/layout stress corpus remains a separate robustness layer.
-Stable requires resolving both mapped gaps while keeping every current family
-gate passing.
+Native/Official pairs, but Architecture's legal `randomize: true` path and
+legal RoughJS-backed `look: handDrawn` input remain explicitly unsupported;
+seven detail cases also remain under review: five Architecture and two
+Kanban. Two core regression tests also fail on both JVM and Wasm: multiple
+Dagre self-loops and deterministic ER stress. The derived
+text/layout stress corpus remains a separate robustness layer. Stable requires
+resolving these mapped gaps while keeping every current family gate passing.

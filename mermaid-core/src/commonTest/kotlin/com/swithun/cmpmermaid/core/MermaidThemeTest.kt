@@ -83,6 +83,27 @@ class MermaidThemeTest {
     }
 
     @Test
+    fun matchesAndOverridesMermaid12ErEdgeLabelBackgrounds() {
+        assertEquals(
+            SceneColor(0xFFFFFFFF),
+            MermaidTheme.preset(MermaidThemePreset.ReduxColor).erEdgeLabelFill,
+        )
+        assertEquals(
+            SceneColor(0xFF16141F),
+            MermaidTheme.preset(MermaidThemePreset.ReduxDarkColor).erEdgeLabelFill,
+        )
+
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.preset(MermaidThemePreset.ReduxColor),
+                values = mapOf("erEdgeLabelBackground" to "#102030"),
+                themeName = MermaidThemePreset.ReduxColor.configName,
+            ),
+        ).value
+        assertEquals(SceneColor(0xFF102030), customized.erEdgeLabelFill)
+    }
+
+    @Test
     fun matchesAndOverridesMermaid12ErrorColors() {
         val expected = mapOf(
             MermaidThemePreset.Default to (0xFF552222 to 0xFF552222),

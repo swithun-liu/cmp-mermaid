@@ -109,10 +109,6 @@ internal class StateLayout {
             layout = layoutName,
             nodeSpacing = context.options.stateNodeSpacing ?: context.options.nodeSpacing,
             rankSpacing = context.options.stateRankSpacing ?: context.options.rankSpacing,
-            subGraphTitleTopMargin = max(
-                context.options.subGraphTitleTopMargin,
-                STATE_GROUP_TITLE_MARGIN,
-            ),
         )
         val placement = when (layoutName) {
             "dagre" -> FlowDagreLayout.layout(
@@ -1076,7 +1072,6 @@ internal class StateLayout {
         const val DESCRIPTION_GAP = 10f
         const val CHOICE_SIZE = 28f
         const val STATE_GROUP_PADDING = 16f
-        const val STATE_GROUP_TITLE_MARGIN = 22f
         const val GROUP_LABEL_PADDING = 8f
         const val GROUP_LABEL_TOP = 2f
         const val EDGE_LABEL_PADDING = 4f

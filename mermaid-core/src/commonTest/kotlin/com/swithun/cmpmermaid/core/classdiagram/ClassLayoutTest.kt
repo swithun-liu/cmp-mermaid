@@ -142,6 +142,16 @@ class ClassLayoutTest {
         val labelBackground = scene.elements.filterIsInstance<SceneShape>()
             .single { it.id.endsWith("-label-background") }
         assertEquals(context.theme.nodeFill, labelBackground.fill)
+        assertEquals(
+            relationLabel.bounds.width + 12f,
+            labelBackground.bounds.width,
+            0.001f,
+        )
+        assertEquals(
+            relationLabel.bounds.height + 6f,
+            labelBackground.bounds.height,
+            0.001f,
+        )
     }
 
     @Test

@@ -231,13 +231,29 @@ if (shouldWriteManifest) {
       })),
     }, null, 2)}\n`,
   );
-  if (corpusSource === 'visual-parity' && corpusKind === 'all') {
+  if (
+    corpusSource === 'visual-parity' &&
+    hasCompleteVisualParityManifest(persistedManifest)
+  ) {
     const auditSummary = readVisualAuditSummary(outputDirectory, kinds);
     writeFileSync(
       resolve(outputDirectory, 'visual-parity-evidence.md'),
       renderEvidenceIndex(persistedManifest, kinds, auditSummary),
     );
   }
+}
+
+function hasCompleteVisualParityManifest(records) {
+  const expectedCasesPerKind =
+    visualStructureCorpusSummary.structuralCasesPerKind;
+  return (
+    records.length === kinds.length * expectedCasesPerKind &&
+    kinds.every(
+      (kind) =>
+        records.filter((entry) => entry.kind === kind).length ===
+        expectedCasesPerKind,
+    )
+  );
 }
 
 function mergePartialManifest(path, currentRecords) {

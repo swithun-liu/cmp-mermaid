@@ -66,12 +66,15 @@ test.
   ratios are width `1.047-1.116`, height `0.879-1.123`, and foreground ink
   `1.018-1.206`.
 - The fresh 256-case coverage-driven input audit reports
-  `253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width
-  `1.012-1.088`, height `0.829-1.154`, and foreground ink `0.998-1.129`.
-- All 16 paged contact sheets were manually inspected, including the corrected
-  three-line titles in cases 114 and 117.
+  `254 pass / 2 review / 0 fail`; geometry has 0 hard failures or reviews with
+  width `1.012-1.088`, height `0.927-1.172`, and foreground ink
+  `0.992-1.139`.
+- The two reviews are cases 242 and 250. Native Arimo wraps
+  `Program Case Schedule` and `Program Case Respond`; Mermaid's proprietary
+  Trebuchet MS metrics keep each label on one line.
+- All 16 paged contact sheets were regenerated and inspected.
 
-The Kanban family has completed its per-family evidence gate. All current
-classic-look family evidence gates pass; overall Mermaid `12.0.0`
-compatibility remains **not Stable** because `look: handDrawn` is explicitly
-unsupported.
+The Kanban family has current per-family evidence but remains under review
+until its two font-metric differences are resolved. Overall Mermaid `12.0.0`
+compatibility also remains **not Stable** because `look: handDrawn` is
+explicitly unsupported.

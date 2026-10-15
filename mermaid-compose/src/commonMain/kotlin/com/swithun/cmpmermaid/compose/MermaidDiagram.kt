@@ -278,6 +278,11 @@ fun rememberMermaidScene(
                 fontScale = density.fontScale,
                 fontFamilyResolver = effectiveFontFamilyResolver,
             )
+            val layoutWidth = request.maxWidth.mermaidTextLayoutWidth(
+                spans = request.spans,
+                horizontalScale = request.horizontalScale,
+                htmlLabel = request.htmlLabel,
+            )
             val result = textMeasurer.measureMermaidText(
                 text = request.text.toAnnotatedString(
                     request.spans,
@@ -289,11 +294,10 @@ fun rememberMermaidScene(
                 softWrap = true,
                 maxLines = 8,
                 constraints = Constraints(
-                    maxWidth = request.maxWidth.mermaidTextConstraint(
-                        spans = request.spans,
-                        horizontalScale = request.horizontalScale,
-                    ),
+                    maxWidth = layoutWidth.mermaidTextConstraint(),
                 ),
+                maximumWidth = request.maxWidth,
+                intrinsicWidthScale = request.horizontalScale,
                 htmlLabel = request.htmlLabel,
             )
             TextMetrics(
@@ -2368,6 +2372,11 @@ private fun DrawScope.drawSceneText(
         cjkFontFamily = cjkFontFamily,
         symbolFontFamily = symbolFontFamily,
     )
+    val layoutWidth = element.bounds.width.mermaidTextLayoutWidth(
+        spans = element.spans,
+        horizontalScale = element.horizontalScale,
+        htmlLabel = element.htmlLabel,
+    )
     val layout = textMeasurer.measureMermaidText(
         text = annotatedText,
         style = style,
@@ -2376,14 +2385,13 @@ private fun DrawScope.drawSceneText(
         overflow = if (element.overflowEllipsis) TextOverflow.Ellipsis else TextOverflow.Clip,
         constraints = if (element.softWrap) {
             Constraints(
-                maxWidth = element.bounds.width.mermaidTextConstraint(
-                    spans = element.spans,
-                    horizontalScale = element.horizontalScale,
-                ),
+                maxWidth = layoutWidth.mermaidTextConstraint(),
             )
         } else {
             Constraints()
         },
+        maximumWidth = element.bounds.width,
+        intrinsicWidthScale = element.horizontalScale,
         htmlLabel = element.htmlLabel,
     ).layout
     val outlineLayout = element.outlineColor
@@ -2404,14 +2412,13 @@ private fun DrawScope.drawSceneText(
                 },
                 constraints = if (element.softWrap) {
                     Constraints(
-                        maxWidth = element.bounds.width.mermaidTextConstraint(
-                            spans = element.spans,
-                            horizontalScale = element.horizontalScale,
-                        ),
+                        maxWidth = layoutWidth.mermaidTextConstraint(),
                     )
                 } else {
                     Constraints()
                 },
+                maximumWidth = element.bounds.width,
+                intrinsicWidthScale = element.horizontalScale,
                 htmlLabel = element.htmlLabel,
             ).layout
         }
@@ -2490,6 +2497,7 @@ private data class MermaidTextMeasurement(
  * to `break-spaces` when the subpixel intrinsic width reaches the configured
  * maximum. Compose constraints are integer pixels, so deciding from
  * [androidx.compose.ui.text.TextLayoutResult.size] wraps boundary labels early.
+ *
  */
 private fun TextMeasurer.measureMermaidText(
     text: AnnotatedString,
@@ -2498,6 +2506,8 @@ private fun TextMeasurer.measureMermaidText(
     maxLines: Int,
     overflow: TextOverflow = TextOverflow.Clip,
     constraints: Constraints,
+    maximumWidth: Float,
+    intrinsicWidthScale: Float?,
     htmlLabel: Boolean,
 ): MermaidTextMeasurement {
     if (!htmlLabel || !softWrap) {
@@ -2512,20 +2522,22 @@ private fun TextMeasurer.measureMermaidText(
         return MermaidTextMeasurement(layout, layout.size.width.toFloat())
     }
 
-    val intrinsicLayout = measure(
-        text = text,
-        style = style.copy(
-            fontSize = style.fontSize * HTML_LABEL_INTRINSIC_SCALE,
-            lineHeight = style.lineHeight * HTML_LABEL_INTRINSIC_SCALE,
-        ),
+    val intrinsicStyle = style.copy(
+        fontSize = style.fontSize * TEXT_INTRINSIC_SCALE,
+        lineHeight = style.lineHeight * TEXT_INTRINSIC_SCALE,
+    )
+    fun intrinsicWidth(value: AnnotatedString): Float = measure(
+        text = value,
+        style = intrinsicStyle,
         softWrap = false,
         maxLines = maxLines,
         overflow = overflow,
         constraints = Constraints(),
-    )
-    val intrinsicWidth =
-        intrinsicLayout.multiParagraph.maxIntrinsicWidth / HTML_LABEL_INTRINSIC_SCALE
-    if (htmlLabelFitsWithoutWrapping(intrinsicWidth, constraints.maxWidth.toFloat())) {
+    ).multiParagraph.maxIntrinsicWidth / TEXT_INTRINSIC_SCALE
+
+    val intrinsicWidth = intrinsicWidth(text)
+        .mermaidTextIntrinsicWidth(intrinsicWidthScale)
+    if (htmlLabelFitsWithoutWrapping(intrinsicWidth, maximumWidth)) {
         val unwrapped = measure(
             text = text,
             style = style,
@@ -2548,12 +2560,19 @@ private fun TextMeasurer.measureMermaidText(
     return MermaidTextMeasurement(wrapped, wrapped.size.width.toFloat())
 }
 
-private const val HTML_LABEL_INTRINSIC_SCALE = 64f
+private const val TEXT_INTRINSIC_SCALE = 64f
 
 internal fun htmlLabelFitsWithoutWrapping(
     intrinsicWidth: Float,
     maximumWidth: Float,
 ): Boolean = intrinsicWidth < maximumWidth
+
+internal fun Float.mermaidTextIntrinsicWidth(horizontalScale: Float?): Float {
+    val scale = horizontalScale?.takeIf { value ->
+        value.isFinite() && value > 0f
+    } ?: 1f
+    return this * scale
+}
 
 private fun TextMetricsRequest.toTextStyle(
     density: Float,
@@ -2593,7 +2612,22 @@ private fun normalizedSp(
 internal fun Float.mermaidTextConstraint(
     spans: List<com.swithun.cmpmermaid.core.SceneTextSpan>,
     horizontalScale: Float? = null,
-): Int {
+): Int = mermaidTextMaximumWidth(spans, horizontalScale).mermaidTextConstraint()
+
+internal fun Float.mermaidTextLayoutWidth(
+    spans: List<com.swithun.cmpmermaid.core.SceneTextSpan>,
+    horizontalScale: Float? = null,
+    htmlLabel: Boolean,
+): Float = if (htmlLabel) {
+    this
+} else {
+    mermaidTextMaximumWidth(spans, horizontalScale)
+}
+
+internal fun Float.mermaidTextMaximumWidth(
+    spans: List<com.swithun.cmpmermaid.core.SceneTextSpan>,
+    horizontalScale: Float? = null,
+): Float {
     val explicitScale = horizontalScale?.takeIf { scale ->
         scale.isFinite() && scale > 0f
     }
@@ -2604,8 +2638,10 @@ internal fun Float.mermaidTextConstraint(
     } else {
         1f
     }
-    return (this / widthScale).roundToInt().coerceAtLeast(1)
+    return this / widthScale
 }
+
+private fun Float.mermaidTextConstraint(): Int = roundToInt().coerceAtLeast(1)
 
 private fun SceneTextWeight.toComposeWeight(): FontWeight = when (this) {
     SceneTextWeight.Normal -> FontWeight.Normal

@@ -493,7 +493,6 @@ internal class FlowchartLayout {
         val labels = mutableListOf<SceneElement>()
 
         document.edges.forEachIndexed { index, edge ->
-            if (edge.invisible) return@forEachIndexed
             val routed = routedEdges[index] ?: return@forEachIndexed
             val edgeStyle = resolveEdgeStyle(edge)
             val curve = routed.curveOverride ?: edge.curve ?: context.options.curve
@@ -512,8 +511,18 @@ internal class FlowchartLayout {
                 id = edge.id,
                 points = routed.points,
                 commands = commands,
-                color = edgeStyle.stroke ?: context.theme.edge,
-                strokeWidth = edgeStyle.strokeWidth ?: edge.thickness ?: context.theme.strokeWidth,
+                color = if (edge.invisible) {
+                    Transparent
+                } else {
+                    edgeStyle.stroke ?: context.theme.edge
+                },
+                // Mermaid.js 12.0.0: rendering-elements/edges.js -> insertEdge.
+                // Invisible links remain in the rendered edge set with a zero-width stroke.
+                strokeWidth = if (edge.invisible) {
+                    0f
+                } else {
+                    edgeStyle.strokeWidth ?: edge.thickness ?: context.theme.strokeWidth
+                },
                 strokePattern = if (edge.animated) SceneStrokePattern.Dashed else edgeStyle.strokePattern ?: edge.pattern,
                 arrowStart = edge.arrowStart,
                 arrowEnd = edge.arrowEnd,

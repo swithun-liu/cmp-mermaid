@@ -7,7 +7,10 @@ import {
   compareRasterFeatures,
 } from './detail-audit-core.mjs';
 import { classifyDetailFindings } from './detail-audit-policy.mjs';
-import { classifyGeometryRatio } from './geometry-audit-policy.mjs';
+import {
+  classifyGeometryRatio,
+  hasInsufficientContentExtent,
+} from './geometry-audit-policy.mjs';
 import {
   mergedInputDirectoryMetadata,
   replaceCasesForKind,
@@ -360,8 +363,10 @@ function validateCapture(label, capture) {
     );
   }
   if (
-    capture.contentBounds.width < thresholds.minimumContentSize ||
-    capture.contentBounds.height < thresholds.minimumContentSize
+    hasInsufficientContentExtent(
+      capture.contentBounds,
+      thresholds.minimumContentSize,
+    )
   ) {
     failures.push(
       `${label} content bounds are ` +

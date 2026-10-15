@@ -33,6 +33,43 @@ class VennJsLayoutTest {
     }
 
     @Test
+    fun consumesOneSharedRandomStreamAcrossSequentialLayouts() {
+        val source = listOf(
+            VennData(listOf("A"), 10.0),
+            VennData(listOf("B"), 10.0),
+            VennData(listOf("C"), 10.0),
+            VennData(listOf("D"), 10.0),
+            VennData(listOf("A", "B"), 5.0),
+            VennData(listOf("B", "C"), 4.0),
+        )
+        val afterOneLayout = VennDeterministicRandom()
+        assertIs<GMResult.Ok<List<VennLayoutArea>>>(
+            VennLayoutEngine.layout(
+                source = source,
+                width = 800.0,
+                height = 426.0,
+                padding = 15.0,
+                random = afterOneLayout,
+            ),
+        )
+        assertEquals(0.02850638116973281, afterOneLayout.nextDouble())
+
+        val afterTwoLayouts = VennDeterministicRandom()
+        repeat(2) {
+            assertIs<GMResult.Ok<List<VennLayoutArea>>>(
+                VennLayoutEngine.layout(
+                    source = source,
+                    width = 800.0,
+                    height = 426.0,
+                    padding = 15.0,
+                    random = afterTwoLayouts,
+                ),
+            )
+        }
+        assertEquals(0.17828952783164265, afterTwoLayouts.nextDouble())
+    }
+
+    @Test
     fun matchesUpstreamCircleIntersectionPrimitives() {
         assertClose(0.0, VennGeometry.circleArea(10.0, 0.0))
         assertClose(PI * 50.0, VennGeometry.circleArea(10.0, 10.0))

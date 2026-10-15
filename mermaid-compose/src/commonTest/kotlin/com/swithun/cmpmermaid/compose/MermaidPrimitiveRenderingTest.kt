@@ -81,4 +81,50 @@ class MermaidPrimitiveRenderingTest {
         assertEquals(false, htmlLabelFitsWithoutWrapping(120f, 120f))
         assertEquals(false, htmlLabelFitsWithoutWrapping(121.41992f, 120f))
     }
+
+    @Test
+    fun preservesSubpixelMaximumWidthBeforeComposeConstraintRounding() {
+        assertEquals(
+            186.56717f,
+            175f.mermaidTextMaximumWidth(
+                spans = emptyList(),
+                horizontalScale = 0.938f,
+            ),
+            0.0001f,
+        )
+    }
+
+    @Test
+    fun keepsHtmlLabelLayoutAtItsCssVisualWidth() {
+        assertEquals(
+            175f,
+            175f.mermaidTextLayoutWidth(
+                spans = emptyList(),
+                horizontalScale = 0.98f,
+                htmlLabel = true,
+            ),
+        )
+        assertEquals(
+            178.57143f,
+            175f.mermaidTextLayoutWidth(
+                spans = emptyList(),
+                horizontalScale = 0.98f,
+                htmlLabel = false,
+            ),
+            0.0001f,
+        )
+    }
+
+    @Test
+    fun appliesExplicitHorizontalScaleToHtmlIntrinsicWidth() {
+        assertEquals(
+            98f,
+            100f.mermaidTextIntrinsicWidth(0.98f),
+            0.0001f,
+        )
+        assertEquals(
+            178.76553f,
+            178.76553f.mermaidTextIntrinsicWidth(null),
+        )
+    }
 }

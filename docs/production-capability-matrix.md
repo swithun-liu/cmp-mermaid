@@ -4,8 +4,10 @@
 > This matrix covers all 33 implemented families and feeds the Stable gate. It
 > defines tested classic-look coverage, not support for every possible legal
 > Mermaid program. RoughJS-backed `look: handDrawn` remains explicitly
-> unsupported, and the refreshed Flowchart corpus retains 11 per-edge routing
-> mismatches; both block Stable. See
+> unsupported; Architecture's `randomize: true` path is also unsupported and
+> seven detail cases remain under review: five Architecture and two Kanban.
+> Two core regression tests fail on both JVM and Wasm. These boundaries block
+> Stable. See
 > [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
 
 This matrix defines the major Mermaid `12.0.0` capabilities exercised by the
@@ -100,19 +102,15 @@ manifest uniqueness do not establish input coverage. All 8,448 cases render in
 the Native core test and have same-source Native/Official captures.
 
 The replacement detail gate reports
-`7,864 pass / 584 review / 0 fail`. Review findings are retained for text
-position/overlap, raster mask/edge/color, equivalent element-count
-representation, marker occlusion, and paint-order occlusion. No expected-text
+`8,441 pass / 7 review / 0 fail`. Review findings are retained for five
+Architecture text-overlap cases and two Kanban text-position cases. No expected-text
 loss, clipping error, or hard detail failure was recorded. The geometry gate
-has 0 hard failures and retains 155 review findings across 121 Architecture
-seeded iterative fCoSE cases. Those cross-runtime placement differences remain
-visible rather than being hidden by broader thresholds.
+has `0 fail / 0 review` across all 8,448 pairs.
 
 Flowchart's parser-derived diversity gate passes with 107 unique graph
 topologies across 256 sources. Its stricter route comparison reports
-`245 pass / 11 fail`: one invisible-edge manifest mismatch, nine self-loop
-route mismatches, and one dense cyclic crossing mismatch. These failures
-remain separate from the detail and geometry counts.
+`256 pass / 0 fail`. Invisible edges, self-loops, endpoint ports, bend
+direction sequences, and dense cyclic crossings now pass the per-edge gate.
 
 Machine-readable structural counts are published in
 [`visual-structure-corpus-metadata.json`](assets/stability-report/visual-structure-corpus-metadata.json).

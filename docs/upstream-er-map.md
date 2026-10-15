@@ -36,6 +36,7 @@ diff can be translated incrementally.
 | `erdiagram/ErLayout.kt` | `erDb.ts` `getData()` and `erRenderer-unified.ts` | Entity/subgraph projection, layout selection, relationship direction, labels, title, accessibility, and SceneGraph orchestration |
 | `erdiagram/ErLayout.kt` | `rendering-elements/shapes/erBox.ts` | Entity header, alternating attribute rows, type/name/key/comment columns, dividers, padding, and minimum dimensions |
 | `erdiagram/ErLayout.kt` | `erRenderer-unified.ts` and `styles.ts` | Theme colors, identifying and non-identifying lines, subgraph paint order, and ER configuration |
+| `erdiagram/ErLayout.kt` | `utils/subGraphTitleMargins.ts -> getSubGraphTitleMargins`, `rendering-elements/clusters.js -> insertCluster` | Configured subgraph title margins, default zero margin, label placement, and cluster frame geometry |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
 | `flowchart/FlowDagreLayout.kt` | `rendering-util/layout-algorithms/dagre/index.js` `measureDagreGraph()` | Default entity and subgraph placement, recursive parent `nodesep` and `ranksep + 25` propagation, edge routing, and distinct routing for repeated self-relationships |
 | `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Retained mapping boundary that returns structured `UnsupportedFeature` |
@@ -43,6 +44,25 @@ diff can be translated incrementally.
 | `flowchart/upstream/mermaid/MermaidMarkerPort.kt` | `rendering-elements/markers.js` | Marker offset behavior, including ER markers anchored at entity boundaries |
 | `SceneGraph.kt` | Mermaid ER relationship marker semantics | Typed crow-foot markers and marker background color |
 | `mermaid-compose/.../MermaidDiagram.kt` | `markers.js` and `erMarkers.js` | Native bars, circles, quadratic crow-foot paths, orientation, and Canvas painting |
+
+## Production Renderer Function Checklist
+
+| Order | Upstream production stage | Kotlin stage | Status |
+| ---: | --- | --- | --- |
+| 1 | `erRenderer-unified.ts -> draw` configuration, `getData()`, layout selection, marker registration, render, title, and viewport | `ErLayout.layout`, `buildScene` | **Platform adaptation**: SVG setup and viewport fitting map to typed SceneGraph bounds while retaining the upstream data and stage order |
+| 2 | `erDb.ts -> getData` entity, subgraph, relationship, class, direction, and marker projection | `ErDb`, `ErLayout.buildLayoutDocument` | **Exact / Platform adaptation** |
+| 3 | `render.ts -> render`, `createGraph.ts -> createGraphWithElements`, Dagre `measureDagreGraph` | `FlowDagreLayout.layout` and ER SceneGraph assembly | **Platform adaptation**: translated Dagre placement is shared with the unified flow renderer |
+| 4 | `subGraphTitleMargins.ts -> getSubGraphTitleMargins`, `clusters.js -> insertCluster` title offsets and frame geometry | `MermaidRenderOptions.subGraphTitle*Margin`, `FlowDagreLayout.applySubgraphTitleMargins`, `ErLayout.addSubGraphs` | **Exact / Platform adaptation**: default margins remain zero, configured margins retain upstream geometry, and SVG label transforms map to SceneText bounds |
+| 5 | `erBox.ts -> erBox` entity without attributes through `drawRect` | `measureEntity`, `addEntity` | **Exact / Platform adaptation** |
+| 6 | `erBox.ts -> erBox`, `addText`, `lineToPolygon` attribute table sizing, rows, dividers, and text placement | `measureEntity`, `entityGridGeometry`, `addEntity` | **Exact / Platform adaptation**: the SVG-label branch scales both `PADDING` and `TEXT_PADDING` by `1.25`; Canvas text bounds retain the Compose horizontal inset explicitly |
+| 7 | `styles.ts -> getStyles` entity palette, relationship-label background, and `clusterBkg ?? mainBkg`, `clusterBorder ?? nodeBorder`, `titleColor ?? textColor` fallbacks | `MermaidTheme`, `ErLayout.addEntity`, `addEdges`, `addSubGraphs` | **Exact / Platform adaptation** |
+| 8 | `edges.js`, `markers.js`, `erMarkers.js` relationship curves, endpoint correction, and crow-foot markers | `MermaidEdgePathPort`, `MermaidMarkerPort`, `MermaidDiagram` | **Platform adaptation** |
+
+Rows 4-5 intentionally represent one native shape or geometry path for an
+upstream rough-svg group that can contain multiple SVG paths even when
+`roughness=0`. Raw SVG child count is therefore not a semantic rendering
+contract; bounds, paint, dividers, and topology remain the required parity
+signals.
 
 ## Locked Upstream Hashes
 
@@ -53,6 +73,8 @@ diff can be translated incrementally.
 | `erDb.ts` | `c048254a2fe1f3a294f41b901d8b9f73d0f6bbb1b999e8c9f82f7ba5b736aa69` |
 | `erRenderer-unified.ts` | `e41c45a44665ca346aa22e9e427e584932edacdaaa8e9f0265dd8d7275a81371` |
 | `erBox.ts` | `661b2d73c63686bd3c2f1407c1319f11d47481bb8f9a5b96874db7eaf29b0520` |
+| `subGraphTitleMargins.ts` | `245ada172ff8d0c231822a585f47d6850e898de690bd0003aaa6c8eadcc17aa0` |
+| `clusters.js` | `4a73517c6b85450b99cfe1bb6a6d0478055751d1e15c7feb6ed159fadd8fc733` |
 | `markers.js` | `e495d9d84cdf51ee2ead29e3656f98554e7a3a57d20a2873884a32522c4d8f35` |
 | `erMarkers.js` | `afcae8780d19f8a0465fbbd785bd909e875cc5df7b7354432f006e3a02d509e4` |
 | `styles.ts` | `8a090f8401285cf5256d6c113fa5c2cc9d206e6940f33bb7601da044a8c932c4` |

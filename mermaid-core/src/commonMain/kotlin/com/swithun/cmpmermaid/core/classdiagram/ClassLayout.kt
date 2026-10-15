@@ -1049,15 +1049,25 @@ internal class ClassLayout {
         relation.title?.takeIf(String::isNotBlank)?.let {
             val visual = labelVisual ?: return@let
             val size = visual.size
-            val bounds = SceneRect(
-                left = labelAnchor.x - size.width / 2f - EDGE_LABEL_PADDING_X,
-                top = labelAnchor.y - size.height / 2f - EDGE_LABEL_PADDING_Y,
-                right = labelAnchor.x + size.width / 2f + EDGE_LABEL_PADDING_X,
-                bottom = labelAnchor.y + size.height / 2f + EDGE_LABEL_PADDING_Y,
+            // Mermaid.js 12.0.0:
+            // rendering-util/rendering-elements/edges.js -> insertEdgeLabel.
+            // Dagre and terminal-overlap semantics use the measured text box;
+            // Native background padding remains a separate painted shape.
+            val textBounds = SceneRect(
+                left = labelAnchor.x - size.width / 2f,
+                top = labelAnchor.y - size.height / 2f,
+                right = labelAnchor.x + size.width / 2f,
+                bottom = labelAnchor.y + size.height / 2f,
+            )
+            val backgroundBounds = SceneRect(
+                left = textBounds.left - EDGE_LABEL_PADDING_X,
+                top = textBounds.top - EDGE_LABEL_PADDING_Y,
+                right = textBounds.right + EDGE_LABEL_PADDING_X,
+                bottom = textBounds.bottom + EDGE_LABEL_PADDING_Y,
             )
             elements += SceneShape(
                 id = "$edgeId-label-background",
-                bounds = bounds,
+                bounds = backgroundBounds,
                 kind = SceneShapeKind.Rectangle,
                 fill = context.theme.nodeFill,
                 stroke = SceneColor(0x00000000),
@@ -1067,7 +1077,7 @@ internal class ClassLayout {
             )
             elements += SceneText(
                 text = visual.text,
-                bounds = bounds,
+                bounds = textBounds,
                 color = context.theme.nodeText,
                 fontSize = EDGE_FONT_SIZE,
                 lineHeight = DEFAULT_LINE_HEIGHT,

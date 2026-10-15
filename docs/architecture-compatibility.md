@@ -23,8 +23,8 @@ change in a later upstream release.
 | Services and icons | Supported | Built-in `blank`, `cloud`, `database`, `disk`, `internet`, and `server` icons, quoted icon text, external icon assets, and service labels |
 | Groups and junctions | Supported | Compound and nested group bounds, group icons and labels, junction fan-out, and group-boundary endpoints |
 | Edges | Supported | `L`, `R`, `T`, and `B` ports, straight and orthogonal bends, source and target arrowheads, bidirectional arrows, edge labels, and group modifiers |
-| Constraint layout | Supported | Seeded initial positions, Mermaid spatial constraints, upstream row/column alignment hints, relative placement, force integration, overlap removal, compound bounds, and disconnected-component packing |
-| Configuration | Supported | `useMaxWidth`, `padding`, `iconSize`, `fontSize`, `randomize`, `nodeSeparation`, `idealEdgeLengthMultiplier`, `edgeElasticity`, `numIter`, and `seed` with typed validation |
+| Constraint layout | Supported for `randomize: false` | Reached Mermaid, Cytoscape, fCoSE, CoSE, and layout-base stages are translated, including the two-run lifecycle, row/column alignment, relative placement, force integration, compound bounds, and constrained disconnected graphs |
+| Configuration | Partial | `useMaxWidth`, `padding`, `iconSize`, `fontSize`, `nodeSeparation`, `idealEdgeLengthMultiplier`, `edgeElasticity`, `numIter`, and `seed` are supported with typed validation; legal `randomize: true` input returns `UnsupportedFeature` until spectral/Matrix/SVD initialization is translated |
 | Themes | Supported | Architecture edge, arrow, group-border, icon, and text colors across all built-in themes |
 
 ## Validation Corpus
@@ -43,9 +43,14 @@ change in a later upstream release.
 - Production geometry passed `13/13`. Width, height, and foreground-ink ratios
   were `1.020-1.232`, `0.996-1.236`, and `0.985-1.561`.
 - Production detail produced `13 pass / 0 review / 0 fail`.
+- Seven coordinate-oracle fixtures compare the Kotlin fCoSE adapter with the
+  pinned JavaScript stack, including disconnected roots, nested compounds,
+  mixed-axis constraints, label-expanded bounds, and both seeded layout runs.
 - The fresh 256-case coverage-driven input audit reports
-  `67 pass / 189 review / 0 fail`; geometry has 0 hard failures with width
-  `0.717-2.218`, height `0.454-1.336`, and foreground ink `0.313-3.535`.
+  `251 pass / 5 review / 0 fail`; the remaining reviews are genuine
+  text-overlap findings in cases `042`, `178`, `186`, `242`, and `250`.
+  Geometry has `0 fail / 0 review`, with width `0.990-1.090`, height
+  `0.959-1.173`, and foreground ink `0.978-1.184`.
 - The production contact sheet and all 16 matrix contact sheets are published;
   source identity is verified, and the automated review findings remain
   explicit for manual inspection.
@@ -56,6 +61,10 @@ change in a later upstream release.
   and
   [matrix geometry](assets/stability-report/architecture-visual-parity-geometry.json)
   reports are published with the evidence.
+
+Architecture remains non-Stable because `randomize: true` is a legal Mermaid
+configuration that is still structurally unsupported, and because the five
+detail-review cases remain unresolved.
 
 ## Reference Workflow
 

@@ -73,7 +73,7 @@ hour shifts are intentionally not reproduced.
   foreground-ink ratios are `1.035-1.037`, `0.883-0.961`, and
   `1.003-1.027`.
 - The fresh 256-case coverage-driven input audit reports
-  `192 pass / 64 review / 0 fail`; geometry has 0 hard failures with width
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
   `1.034-1.037`, height `0.927-0.957`, and foreground ink `0.921-1.029`.
 - 20 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0`.

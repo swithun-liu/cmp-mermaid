@@ -438,17 +438,35 @@ internal class GanttLayout {
             labels += value to measured
         }
         val bottom = height - AXIS_BOTTOM_MARGIN
+        val topAxisEnabled = document.topAxis || context.options.ganttTopAxis
         labels.forEachIndexed { index, (value, label) ->
             val x = scale(value)
+            // Mermaid.js 12.0.0: ganttRenderer.js -> makeGrid.
+            // D3 axis tick lines carry stroke="currentColor", so the rendered
+            // line uses the axis text color rather than the parent grid stroke.
             elements += line(
                 id = "gantt-grid-$index",
                 start = ScenePoint(x, context.options.ganttGridLineStartPadding),
                 end = ScenePoint(x, bottom),
-                color = palette.grid.withOpacity(GRID_OPACITY),
+                color = palette.text,
                 width = 1f,
                 zIndex = 2,
                 look = context.options.look,
             )
+            if (topAxisEnabled) {
+                elements += line(
+                    id = "gantt-grid-top-$index",
+                    start = ScenePoint(x, context.options.ganttTopPadding),
+                    end = ScenePoint(
+                        x,
+                        height - context.options.ganttGridLineStartPadding,
+                    ),
+                    color = palette.text,
+                    width = 1f,
+                    zIndex = 2,
+                    look = context.options.look,
+                )
+            }
             elements += SceneText(
                 text = label.text,
                 bounds = axisLabelBounds(
@@ -463,7 +481,7 @@ internal class GanttLayout {
                 weight = SceneTextWeight.Normal,
                 zIndex = 20,
             )
-            if (document.topAxis || context.options.ganttTopAxis) {
+            if (topAxisEnabled) {
                 elements += SceneText(
                     text = label.text,
                     bounds = axisLabelBounds(
@@ -1082,7 +1100,6 @@ internal class GanttLayout {
         const val DEFAULT_LINE_HEIGHT = 1.2f
         const val UNWRAPPED_TEXT_WIDTH = 100_000f
         const val SECTION_OPACITY = 0.2f
-        const val GRID_OPACITY = 0.8f
         const val MIN_HEIGHT = 100f
         const val AXIS_BOTTOM_MARGIN = 50f
         const val AXIS_TICK_PADDING = 3f

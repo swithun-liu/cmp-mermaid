@@ -157,6 +157,32 @@ class StateLayoutTest {
     }
 
     @Test
+    fun honorsConfiguredCompositeTitleMarginWithoutInjectingAMinimum() {
+        val source = """
+            stateDiagram-v2
+                direction LR
+                [*] --> Pending
+                state Processing {
+                    [*] --> Validate
+                    Validate --> Execute
+                    Execute --> [*]
+                }
+                Pending --> Processing
+        """.trimIndent()
+        val defaultScene = render(source)
+        val configuredScene = render(
+            source = source,
+            options = context.options.copy(subGraphTitleTopMargin = 22f),
+        )
+        val defaultGroup = defaultScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "state-group-Processing" }
+        val configuredGroup = configuredScene.elements.filterIsInstance<SceneShape>()
+            .single { it.id == "state-group-Processing" }
+
+        assertEquals(defaultGroup.bounds.height + 22f, configuredGroup.bounds.height, 0.01f)
+    }
+
+    @Test
     fun rendersNotesWithUpstreamDirectedDashedConnectors() {
         val scene = render(
             """

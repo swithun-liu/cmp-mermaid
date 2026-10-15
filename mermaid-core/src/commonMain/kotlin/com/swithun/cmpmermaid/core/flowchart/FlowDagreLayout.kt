@@ -310,12 +310,17 @@ internal object FlowDagreLayout {
         edgeId: String,
         originalEdge: DagreEdge,
     ) {
-        val loopPrefix = "$nodeId---$edgeId"
+        val loopPrefix = "$nodeId---$nodeId"
         val firstDummy = "$loopPrefix---1"
         val secondDummy = "$loopPrefix---2"
         val parent = graph.parent(nodeId)
-        graph.setNode(firstDummy, DagreNode(width = 10f, height = 10f))
-        graph.setNode(secondDummy, DagreNode(width = 10f, height = 10f))
+        // Mermaid.js 12.0.0:
+        // rendering-util/layout-algorithms/dagre/index.js -> prepareLayoutForDagre
+        // rendering-util/rendering-elements/shapes/labelRect.ts -> labelRect
+        // The prepared 10x10 labelRect nodes are remeasured before Dagre runs;
+        // the hidden empty rect becomes exactly 0.1x0.1.
+        graph.setNode(firstDummy, DagreNode(width = 0.1f, height = 0.1f))
+        graph.setNode(secondDummy, DagreNode(width = 0.1f, height = 0.1f))
         graph.setParent(firstDummy, parent)
         graph.setParent(secondDummy, parent)
 
@@ -331,19 +336,19 @@ internal object FlowDagreLayout {
             nodeId,
             firstDummy,
             segment(order = 0, keepLabel = false),
-            "$loopPrefix-cyclic-special-0",
+            "$nodeId-cyclic-special-0",
         )
         graph.setEdge(
             firstDummy,
             secondDummy,
             segment(order = 1, keepLabel = true),
-            "$loopPrefix-cyclic-special-1",
+            "$nodeId-cyclic-special-1",
         )
         graph.setEdge(
             secondDummy,
             nodeId,
             segment(order = 2, keepLabel = false),
-            "$loopPrefix-cyclic-special-2",
+            "$nodeId-cyclic-special-2",
         )
     }
 
@@ -418,7 +423,13 @@ internal object FlowDagreLayout {
                 side = side,
                 labelWidth = middle.width,
             )
-            val points = localPoints.map { it.translate(offsetX, offsetY) }
+            val points = clipSelfLoopEndpoints(
+                points = localPoints.map { it.translate(offsetX, offsetY) },
+                source = source,
+                nodeShapeLayouts = nodeShapeLayouts,
+                nodeBounds = nodeBounds,
+                subgraphBounds = subgraphBounds,
+            )
             val localLabelAnchor = selfLoopLabelPosition(
                 node = node,
                 points = localPoints,
@@ -448,6 +459,37 @@ internal object FlowDagreLayout {
                 result = result,
             )
         }
+    }
+
+    private fun clipSelfLoopEndpoints(
+        points: List<ScenePoint>,
+        source: FlowEdge,
+        nodeShapeLayouts: Map<String, MermaidShapeLayout>,
+        nodeBounds: Map<String, SceneRect>,
+        subgraphBounds: Map<String, SceneRect>,
+    ): List<ScenePoint> {
+        if (points.size < 3) return points
+        val bounds = nodeBounds[source.from]
+            ?: subgraphBounds[source.from]
+            ?: return points
+        val innerPoints = points.subList(1, points.lastIndex)
+        val start = MermaidShapeIntersectionPort.intersect(
+            shapeLayout = nodeShapeLayouts[source.from],
+            bounds = bounds,
+            toward = innerPoints.first(),
+        )
+        val end = MermaidShapeIntersectionPort.intersect(
+            shapeLayout = nodeShapeLayouts[source.to],
+            bounds = bounds,
+            toward = innerPoints.last(),
+        )
+        // Mermaid.js 12.0.0: rendering-elements/edges.js -> insertEdge.
+        // Merged self-loop points still pass through the normal endpoint clipping phase.
+        return buildList {
+            add(start)
+            addAll(innerPoints)
+            add(end)
+        }.removeAdjacentDuplicates()
     }
 
     private fun addRoutedEdge(

@@ -189,9 +189,9 @@ internal object MermaidShapePort {
                 SceneShapeKind.FramedCircle -> stateEnd()
                 SceneShapeKind.ForkJoin -> forkJoin(direction)
                 SceneShapeKind.Hourglass -> hourglass()
-                SceneShapeKind.BraceLeft -> curlyBrace(label, node.padding, node.look, BraceKind.Left)
-                SceneShapeKind.BraceRight -> curlyBrace(label, node.padding, node.look, BraceKind.Right)
-                SceneShapeKind.Braces -> curlyBrace(label, node.padding, node.look, BraceKind.Both)
+                SceneShapeKind.BraceLeft -> curlyBraceLeft(label, node.padding, node.look)
+                SceneShapeKind.BraceRight -> curlyBraceRight(label, node.padding, node.look)
+                SceneShapeKind.Braces -> curlyBraces(label, node.padding, node.look)
                 SceneShapeKind.Bolt -> lightningBolt()
                 SceneShapeKind.Document -> waveDocument(label, node.padding, node.look, DocumentKind.Single)
                 SceneShapeKind.Delay -> delay(label, node.padding, node.look)
@@ -804,53 +804,207 @@ internal object MermaidShapePort {
         return centeredShape(listOf(closedPath(points)), points, showsLabel = false)
     }
 
-    private fun curlyBrace(
+    /**
+     * Mermaid.js 12.0.0:
+     * rendering-elements/shapes/curlyBraceLeft.ts -> curlyBraceLeft.
+     */
+    private fun curlyBraceLeft(
         label: SceneSize,
         padding: Float,
         look: String,
-        kind: BraceKind,
     ): MermaidShapeLayout {
-        val width = label.width + if (look == NEO) 36f else padding
-        val height = label.height + if (look == NEO) 24f else padding
+        val paddingX = if (look == NEO) 18f else padding
+        val paddingY = if (look == NEO) 12f else padding
+        val width = label.width + paddingX
+        val height = label.height + paddingY
         val radius = max(5f, height * 0.1f)
-        val boundsOutline = rectanglePoints(width + radius * 2f, height + radius * 2f)
-
-        fun leftBrace(): List<ScenePoint> =
+        val bracePoints =
             mermaidCirclePoints(width / 2f, -height / 2f, radius, 30, -90f, 0f) +
                 ScenePoint(-width / 2f - radius, radius) +
                 mermaidCirclePoints(width / 2f + radius * 2f, -radius, radius, 20, -180f, -270f) +
                 mermaidCirclePoints(width / 2f + radius * 2f, radius, radius, 20, -90f, -180f) +
                 ScenePoint(-width / 2f - radius, -height / 2f) +
                 mermaidCirclePoints(width / 2f, height / 2f, radius, 20, 0f, 90f)
+        val boundsPoints =
+            listOf(
+                ScenePoint(width / 2f, -height / 2f - radius),
+                ScenePoint(-width / 2f, -height / 2f - radius),
+            ) +
+                mermaidCirclePoints(width / 2f, -height / 2f, radius, 20, -90f, 0f) +
+                ScenePoint(-width / 2f - radius, -radius) +
+                mermaidCirclePoints(
+                    width / 2f + width * 0.1f,
+                    -radius,
+                    radius,
+                    20,
+                    -180f,
+                    -270f,
+                ) +
+                mermaidCirclePoints(
+                    width / 2f + width * 0.1f,
+                    radius,
+                    radius,
+                    20,
+                    -90f,
+                    -180f,
+                ) +
+                ScenePoint(-width / 2f - radius, height / 2f) +
+                mermaidCirclePoints(width / 2f, height / 2f, radius, 20, 0f, 90f) +
+                listOf(
+                    ScenePoint(-width / 2f, height / 2f + radius),
+                    ScenePoint(width / 2f, height / 2f + radius),
+                )
+        val translatedBrace = bracePoints.translateX(radius)
+        val translatedBounds = boundsPoints.translateX(radius)
+        val labelCenter = ScenePoint(
+            x = -width / 2f + radius + label.width / 2f,
+            y = -height / 2f + padding / 2f + label.height / 2f,
+        )
+        return centeredShape(
+            paths = listOf(openPath(translatedBrace), invisiblePath(translatedBounds)),
+            outline = translatedBounds,
+            labelCenter = labelCenter,
+        )
+    }
 
-        fun rightBrace(): List<ScenePoint> =
+    /**
+     * Mermaid.js 12.0.0:
+     * rendering-elements/shapes/curlyBraceRight.ts -> curlyBraceRight.
+     */
+    private fun curlyBraceRight(
+        label: SceneSize,
+        padding: Float,
+        look: String,
+    ): MermaidShapeLayout {
+        val labelPaddingX = if (look == NEO) 18f else padding
+        val labelPaddingY = if (look == NEO) 12f else padding
+        val width = label.width + if (look == NEO) labelPaddingX * 2f else labelPaddingX
+        val height = label.height + if (look == NEO) labelPaddingY * 2f else labelPaddingY
+        val radius = max(5f, height * 0.1f)
+        val bracePoints =
             circlePoints(width / 2f, -height / 2f, radius, 20, -90f, 0f) +
                 ScenePoint(width / 2f + radius, -radius) +
                 circlePoints(width / 2f + radius * 2f, -radius, radius, 20, -180f, -270f) +
                 circlePoints(width / 2f + radius * 2f, radius, radius, 20, -90f, -180f) +
                 ScenePoint(width / 2f + radius, height / 2f) +
                 circlePoints(width / 2f, height / 2f, radius, 20, 0f, 90f)
+        val boundsPoints =
+            listOf(
+                ScenePoint(-width / 2f, -height / 2f - radius),
+                ScenePoint(width / 2f, -height / 2f - radius),
+            ) +
+                circlePoints(width / 2f, -height / 2f, radius, 20, -90f, 0f) +
+                ScenePoint(width / 2f + radius, -radius) +
+                circlePoints(width / 2f + radius * 2f, -radius, radius, 20, -180f, -270f) +
+                circlePoints(width / 2f + radius * 2f, radius, radius, 20, -90f, -180f) +
+                ScenePoint(width / 2f + radius, height / 2f) +
+                circlePoints(width / 2f, height / 2f, radius, 20, 0f, 90f) +
+                listOf(
+                    ScenePoint(width / 2f, height / 2f + radius),
+                    ScenePoint(-width / 2f, height / 2f + radius),
+                )
+        val translatedBrace = bracePoints.translateX(-radius)
+        val translatedBounds = boundsPoints.translateX(-radius)
+        val labelCenter = ScenePoint(
+            x = -width / 2f + padding / 2f + label.width / 2f,
+            y = -height / 2f + padding / 2f + label.height / 2f,
+        )
+        return centeredShape(
+            paths = listOf(openPath(translatedBrace), invisiblePath(translatedBounds)),
+            outline = translatedBounds,
+            labelCenter = labelCenter,
+        )
+    }
 
-        val paths = when (kind) {
-            BraceKind.Left -> listOf(
-                openPath(leftBrace().map { ScenePoint(it.x + radius, it.y) }),
-                invisiblePath(boundsOutline),
-            )
-            BraceKind.Right -> listOf(
-                openPath(rightBrace().map { ScenePoint(it.x - radius, it.y) }),
-                invisiblePath(boundsOutline),
-            )
-            BraceKind.Both -> {
-                val left = leftBrace().map { ScenePoint(it.x + radius - radius / 4f, it.y) }
-                val right = rightBrace().map { ScenePoint(it.x + radius - radius / 4f, it.y) }
-                listOf(openPath(left), openPath(right), invisiblePath(boundsOutline))
-            }
-        }
-        val labelCenter = when (kind) {
-            BraceKind.Left -> ScenePoint(radius - 18f, -4.5f)
-            BraceKind.Right, BraceKind.Both -> ScenePoint(-10.5f, -4.5f)
-        }
-        return centeredShape(paths, boundsOutline, labelCenter)
+    /**
+     * Mermaid.js 12.0.0:
+     * rendering-elements/shapes/curlyBraces.ts -> curlyBraces.
+     */
+    private fun curlyBraces(
+        label: SceneSize,
+        padding: Float,
+        look: String,
+    ): MermaidShapeLayout {
+        val labelPaddingX = if (look == NEO) 18f else padding
+        val labelPaddingY = if (look == NEO) 12f else padding
+        val width = label.width + if (look == NEO) labelPaddingX * 2f else labelPaddingX
+        val height = label.height + if (look == NEO) labelPaddingY * 2f else labelPaddingY
+        val radius = max(5f, height * 0.1f)
+        val leftBracePoints =
+            mermaidCirclePoints(width / 2f, -height / 2f, radius, 30, -90f, 0f) +
+                ScenePoint(-width / 2f - radius, radius) +
+                mermaidCirclePoints(width / 2f + radius * 2f, -radius, radius, 20, -180f, -270f) +
+                mermaidCirclePoints(width / 2f + radius * 2f, radius, radius, 20, -90f, -180f) +
+                ScenePoint(-width / 2f - radius, -height / 2f) +
+                mermaidCirclePoints(width / 2f, height / 2f, radius, 20, 0f, 90f)
+        val rightBracePoints =
+            mermaidCirclePoints(
+                -width / 2f + radius + radius / 2f,
+                -height / 2f,
+                radius,
+                20,
+                -90f,
+                -180f,
+            ) +
+                ScenePoint(width / 2f - radius / 2f, radius) +
+                mermaidCirclePoints(-width / 2f - radius / 2f, -radius, radius, 20, 0f, 90f) +
+                mermaidCirclePoints(-width / 2f - radius / 2f, radius, radius, 20, -90f, 0f) +
+                ScenePoint(width / 2f - radius / 2f, -radius) +
+                mermaidCirclePoints(
+                    -width / 2f + radius + radius / 2f,
+                    height / 2f,
+                    radius,
+                    30,
+                    -180f,
+                    -270f,
+                )
+        val boundsPoints =
+            listOf(
+                ScenePoint(width / 2f, -height / 2f - radius),
+                ScenePoint(-width / 2f, -height / 2f - radius),
+            ) +
+                mermaidCirclePoints(width / 2f, -height / 2f, radius, 20, -90f, 0f) +
+                ScenePoint(-width / 2f - radius, -radius) +
+                mermaidCirclePoints(
+                    width / 2f + width * 0.1f,
+                    -radius,
+                    radius,
+                    20,
+                    -180f,
+                    -270f,
+                ) +
+                mermaidCirclePoints(
+                    width / 2f + width * 0.1f,
+                    radius,
+                    radius,
+                    20,
+                    -90f,
+                    -180f,
+                ) +
+                ScenePoint(-width / 2f - radius, height / 2f) +
+                mermaidCirclePoints(width / 2f, height / 2f, radius, 20, 0f, 90f) +
+                listOf(
+                    ScenePoint(-width / 2f, height / 2f + radius),
+                    ScenePoint(width / 2f - radius - radius / 2f, height / 2f + radius),
+                ) +
+                rightBracePoints
+        val translationX = radius - radius / 4f
+        val translatedLeft = leftBracePoints.translateX(translationX)
+        val translatedRight = rightBracePoints.translateX(translationX)
+        val translatedBounds = boundsPoints.translateX(translationX)
+        val labelCenter = ScenePoint(
+            x = -width / 2f + padding / 2f + label.width / 2f,
+            y = -height / 2f + padding / 2f + label.height / 2f,
+        )
+        return centeredShape(
+            paths = listOf(
+                openPath(translatedLeft),
+                openPath(translatedRight),
+                invisiblePath(translatedBounds),
+            ),
+            outline = translatedBounds,
+            labelCenter = labelCenter,
+        )
     }
 
     private fun lightningBolt(): MermaidShapeLayout {
@@ -1419,6 +1573,9 @@ internal object MermaidShapePort {
         )
     }
 
+    private fun List<ScenePoint>.translateX(offset: Float): List<ScenePoint> =
+        map { point -> ScenePoint(point.x + offset, point.y) }
+
     private fun rectanglePoints(
         width: Float,
         height: Float,
@@ -1735,12 +1892,6 @@ internal object MermaidShapePort {
         Right,
         Left,
         TrapezoidBottom,
-    }
-
-    private enum class BraceKind {
-        Left,
-        Right,
-        Both,
     }
 
     private enum class DocumentKind {

@@ -45,7 +45,7 @@ internal class ArchitectureLayout {
         db: ArchitectureDb,
         context: MermaidRenderContext,
     ): GMResult<MermaidScene, MermaidError> {
-        val placement = when (val result = ArchitectureFcoseLayout.layout(db)) {
+        val placement = when (val result = ArchitectureFcoseLayout.layout(db, context)) {
             is GMResult.Ok -> result.value
             is GMResult.Err -> return result
         }
@@ -65,12 +65,12 @@ internal class ArchitectureLayout {
             }
         }
         db.getServices().forEach { service ->
-            val center = placement.nodeCenters[service.id]
+            val position = placement.nodePositions[service.id]
                 ?: return layoutError("Architecture service '${service.id}' was not positioned")
-            elements += drawService(service, center, db, context)
+            elements += drawService(service, position, db, context)
         }
         db.getJunctions().forEach { junction ->
-            if (placement.nodeCenters[junction.id] == null) {
+            if (placement.nodePositions[junction.id] == null) {
                 return layoutError("Architecture junction '${junction.id}' was not positioned")
             }
         }
@@ -172,7 +172,7 @@ internal class ArchitectureLayout {
                     fontSize = db.config.fontSize,
                     maxWidth = maxWidth,
                     fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
-                    weight = SceneTextWeight.Medium,
+                    weight = SceneTextWeight.Normal,
                 ),
             )
             val rotation = when (axis) {
@@ -180,24 +180,23 @@ internal class ArchitectureLayout {
                 EdgeAxis.Vertical -> -90f
                 EdgeAxis.Bend -> diagonalLabelRotation(edge)
             }
+            val textTop = midpoint.y + svgCreateTextTopOffset(db.config.fontSize)
             result += SceneText(
                 text = label,
                 bounds = SceneRect(
                     left = midpoint.x - metrics.width / 2f,
-                    top = midpoint.y - metrics.height / 2f,
+                    top = textTop,
                     right = midpoint.x + metrics.width / 2f,
-                    bottom = midpoint.y + metrics.height / 2f,
+                    bottom = textTop + metrics.height,
                 ),
                 color = context.theme.textColor,
                 fontSize = db.config.fontSize,
                 fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
-                weight = SceneTextWeight.Medium,
+                weight = SceneTextWeight.Normal,
                 rotationDegrees = rotation,
                 rotationPivot = midpoint,
                 softWrap = true,
-                // Mermaid.js 12.0.0: architectureRenderer.ts -> draw creates the
-                // complete edge layer before the service and group layers.
-                zIndex = 7,
+                zIndex = 5,
             )
         }
         return GMResult.Ok(result)
@@ -265,7 +264,7 @@ internal class ArchitectureLayout {
             stroke = TRANSPARENT,
             strokeWidth = 0f,
             cornerRadius = 0f,
-            zIndex = 6,
+            zIndex = 5,
         )
     }
 
@@ -279,12 +278,17 @@ internal class ArchitectureLayout {
         val node = db.getNode(id)
         val bounds = when {
             node != null -> {
-                val center = placement.nodeCenters[id] ?: return null
+                // Cytoscape 3.34.x:
+                // renderer/base/coord-ele-math/edge-endpoints.mjs ->
+                // manualEndptToPx. Architecture's percentage endpoints
+                // multiply the full outer size and add it directly to
+                // node.position(), matching the service SVG's local bounds.
+                val position = placement.nodePositions[id] ?: return null
                 SceneRect(
-                    left = center.x - db.config.iconSize / 2f,
-                    top = center.y - db.config.iconSize / 2f,
-                    right = center.x + db.config.iconSize / 2f,
-                    bottom = center.y + db.config.iconSize / 2f,
+                    left = position.x,
+                    top = position.y,
+                    right = position.x + db.config.iconSize,
+                    bottom = position.y + db.config.iconSize,
                 )
             }
             else -> placement.groupBounds[id] ?: return null
@@ -346,26 +350,38 @@ internal class ArchitectureLayout {
         }
         group.title?.let { title ->
             val fontSize = context.options.architecture.fontSize
+            // Mermaid.js 12.0.0: svgDraw.ts -> drawGroups. Compose Start
+            // alignment paints 4px inside SceneText.bounds, so move the scene
+            // rectangle back by that renderer inset while preserving the SVG
+            // text anchor. An icon also shifts the SVG label baseline down by
+            // fontSize / 2 - 1 relative to the drawn group rectangle.
+            val sceneTextLeft = labelLeft - START_ALIGNED_TEXT_INSET
+            val labelTop = bounds.top + if (group.icon != null) {
+                fontSize / 2f - 1f
+            } else {
+                2f
+            }
             val metrics = context.textMetrics.measure(
                 TextMetricsRequest(
                     text = title,
                     fontSize = fontSize,
                     maxWidth = max(fontSize, bounds.right - labelLeft - 4f),
                     fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
+                    weight = SceneTextWeight.Normal,
                 ),
             )
             elements += SceneText(
                 text = title,
                 bounds = SceneRect(
-                    left = labelLeft,
-                    top = bounds.top + 2f,
-                    right = minOf(bounds.right - 4f, labelLeft + metrics.width),
-                    bottom = bounds.top + 2f + metrics.height,
+                    left = sceneTextLeft,
+                    top = labelTop,
+                    right = minOf(bounds.right - 4f, sceneTextLeft + metrics.width),
+                    bottom = labelTop + metrics.height,
                 ),
                 color = context.theme.textColor,
                 fontSize = fontSize,
                 fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
-                weight = SceneTextWeight.Medium,
+                weight = SceneTextWeight.Normal,
                 horizontalAlignment = SceneTextAlignment.Start,
                 softWrap = false,
                 zIndex = 20,
@@ -379,17 +395,50 @@ internal class ArchitectureLayout {
 
     private fun drawService(
         service: ArchitectureService,
-        center: ScenePoint,
+        position: ScenePoint,
         db: ArchitectureDb,
         context: MermaidRenderContext,
     ): List<SceneElement> {
         val iconSize = db.config.iconSize
+        // Mermaid.js 12.0.0: architectureRenderer.ts -> positionNodes applies
+        // node.position() directly as the SVG service group's translation.
+        // Service child geometry starts at local (0, 0), so this coordinate is
+        // the drawable origin rather than the Cytoscape body center.
         val bounds = SceneRect(
-            left = center.x - iconSize / 2f,
-            top = center.y - iconSize / 2f,
-            right = center.x + iconSize / 2f,
-            bottom = center.y + iconSize / 2f,
+            left = position.x,
+            top = position.y,
+            right = position.x + iconSize,
+            bottom = position.y + iconSize,
         )
+        val titleElement = service.title?.let { title ->
+            val maxWidth = iconSize * 1.5f
+            val metrics = context.textMetrics.measure(
+                TextMetricsRequest(
+                    text = title,
+                    fontSize = db.config.fontSize,
+                    maxWidth = maxWidth,
+                    fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
+                    weight = SceneTextWeight.Normal,
+                ),
+            )
+            SceneText(
+                text = title,
+                bounds = SceneRect(
+                    left = bounds.center.x - metrics.width / 2f,
+                    top = bounds.bottom + svgCreateTextTopOffset(db.config.fontSize),
+                    right = bounds.center.x + metrics.width / 2f,
+                    bottom = bounds.bottom +
+                        svgCreateTextTopOffset(db.config.fontSize) +
+                        metrics.height,
+                ),
+                color = context.theme.textColor,
+                fontSize = db.config.fontSize,
+                fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
+                weight = SceneTextWeight.Normal,
+                softWrap = true,
+                zIndex = 10,
+            )
+        }
         val elements = mutableListOf<SceneElement>()
         when {
             service.icon != null -> elements += drawIcon(
@@ -419,7 +468,7 @@ internal class ArchitectureLayout {
                     color = WHITE,
                     fontSize = fontSize,
                     fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
-                    weight = SceneTextWeight.Medium,
+                    weight = SceneTextWeight.Normal,
                     softWrap = true,
                     maxLines = maxLines,
                     overflowEllipsis = true,
@@ -444,33 +493,11 @@ internal class ArchitectureLayout {
                 zIndex = 10,
             )
         }
-        service.title?.let { title ->
-            val maxWidth = iconSize * 1.5f
-            val metrics = context.textMetrics.measure(
-                TextMetricsRequest(
-                    text = title,
-                    fontSize = db.config.fontSize,
-                    maxWidth = maxWidth,
-                    fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
-                ),
-            )
-            elements += SceneText(
-                text = title,
-                bounds = SceneRect(
-                    left = center.x - metrics.width / 2f,
-                    top = bounds.bottom,
-                    right = center.x + metrics.width / 2f,
-                    bottom = bounds.bottom + metrics.height,
-                ),
-                color = context.theme.textColor,
-                fontSize = db.config.fontSize,
-                fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
-                weight = SceneTextWeight.Medium,
-                softWrap = true,
-                zIndex = 20,
-            )
-        }
-        return elements
+        // Mermaid.js 12.0.0: svgDraw.ts -> drawServices appends each
+        // service's title before its icon, then advances to the next service.
+        // A single layer preserves that insertion order through normalization.
+        return (listOfNotNull(titleElement) + elements)
+            .map { element -> element.withZIndex(10) }
     }
 
     private fun drawIcon(
@@ -928,6 +955,16 @@ internal class ArchitectureLayout {
         return if (pair in setOf("LT", "TL", "BR", "RB")) -45f else 45f
     }
 
+    /**
+     * Mermaid.js 12.0.0:
+     * rendering-util/createText.ts -> createFormattedText/createTspan.
+     *
+     * The first SVG tspan baseline resolves to 1em. Browser glyph bounds start
+     * one third of an em below the Architecture transform anchor; SceneText
+     * stores those visual bounds directly.
+     */
+    private fun svgCreateTextTopOffset(fontSize: Float): Float = fontSize / 3f
+
     private fun SceneRect.port(direction: ArchitectureDirection): ScenePoint = when (direction) {
         ArchitectureDirection.L -> ScenePoint(left, center.y)
         ArchitectureDirection.R -> ScenePoint(right, center.y)
@@ -1034,6 +1071,7 @@ internal class ArchitectureLayout {
         val TRANSPARENT = SceneColor(0x00000000)
         val WHITE = SceneColor(0xFFFFFFFF)
         val ARCHITECTURE_BLUE = SceneColor(0xFF087EBF)
+        const val START_ALIGNED_TEXT_INSET = 4f
         val BUILT_IN_ICONS = setOf(
             "database",
             "server",

@@ -25,7 +25,7 @@ Baseline: Mermaid `12.0.0`.
 - 13 independent production cases pass detail audit:
   `13 pass / 0 review / 0 fail`.
 - The fresh 256-case coverage-driven input audit reports
-  `230 pass / 26 review / 0 fail`; geometry has 0 hard failures with width
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
   `1.014-1.035`, height `1.016-1.025`, and foreground ink `1.026-1.037`.
 - Sixteen paged contact sheets cover every pair; representative first,
   middle, and final pages were checked for blank output, clipping, label

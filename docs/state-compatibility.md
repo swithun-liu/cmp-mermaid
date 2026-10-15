@@ -63,8 +63,8 @@ navigation; the native renderer does not execute arbitrary URLs or JavaScript.
 - 13 independent production scenarios and 256 systematic visual-matrix cases
   render identical source through Native Compose and Mermaid.js `12.0.0`.
 - The fresh 256-case coverage-driven input audit reports
-  `251 pass / 5 review / 0 fail`; geometry has 0 hard failures with width
-  `0.978-1.069`, height `1.013-1.186`, and foreground ink `0.823-1.175`.
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+  `0.978-1.069`, height `1.013-1.186`, and foreground ink `0.801-1.175`.
 - All 16 matrix contact sheets are published and source-bound; current automated
   findings remain explicit.
 - 25 curated gallery cases render identical source through Native Compose and

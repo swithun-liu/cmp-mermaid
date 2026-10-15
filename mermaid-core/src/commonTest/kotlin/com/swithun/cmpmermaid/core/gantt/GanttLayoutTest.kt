@@ -156,6 +156,38 @@ class GanttLayoutTest {
     }
 
     @Test
+    fun rendersBothD3GridAxesWithCurrentColorWhenTopAxisIsEnabled() {
+        val scene = render(
+            """
+            gantt
+                dateFormat YYYY-MM-DD
+                tickInterval 1day
+                topAxis
+                todayMarker off
+                Task :task, 2025-01-01, 2d
+            """.trimIndent(),
+        )
+        val paths = scene.elements.filterIsInstance<ScenePath>()
+        val bottom = paths.filter { path ->
+            path.id.startsWith("gantt-grid-") &&
+                !path.id.startsWith("gantt-grid-top-")
+        }
+        val top = paths.filter { it.id.startsWith("gantt-grid-top-") }
+
+        assertTrue(bottom.isNotEmpty())
+        assertEquals(bottom.size, top.size)
+        assertEquals(context.options.ganttGridLineStartPadding, bottom.first().points.first().y)
+        assertEquals(scene.height - 50f, bottom.first().points.last().y)
+        assertEquals(context.options.ganttTopPadding, top.first().points.first().y)
+        assertEquals(
+            scene.height - context.options.ganttGridLineStartPadding,
+            top.first().points.last().y,
+        )
+        assertEquals(context.theme.gantt.text, bottom.first().color)
+        assertEquals(context.theme.gantt.text, top.first().color)
+    }
+
+    @Test
     fun usesMermaid12BuiltInGanttPalette() {
         val scene = render(
             """

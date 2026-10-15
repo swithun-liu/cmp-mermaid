@@ -741,6 +741,21 @@ async function extractOfficialManifest(page, caseId) {
       'image',
       'use',
     ].join(',');
+    // Mermaid.js 12.0.0:
+    // rendering-elements/shapes/erBox.ts -> rough.svg(...).
+    // Rough.js emits multiple SVG paths for one semantic rectangle or divider.
+    // Preserve the explicit wrapper-group identity so the detail audit can
+    // compare semantic geometry rather than renderer-specific child counts.
+    const roughGroupSelector = [
+      'g.outer-path',
+      'g.row-rect-even',
+      'g.row-rect-odd',
+      'g.divider',
+    ].join(',');
+    const roughGeometryGroups = new Map(
+      [...svg.querySelectorAll(roughGroupSelector)]
+        .map((group, index) => [group, `rough-${index}`]),
+    );
 
     const number = (value, fallback = 1) => {
       const parsed = Number.parseFloat(value);
@@ -846,6 +861,67 @@ async function extractOfficialManifest(page, caseId) {
       return Number.isFinite(transformed.x) && Number.isFinite(transformed.y)
         ? { x: transformed.x, y: transformed.y }
         : null;
+    };
+    const geometryOutlinePoints = (element, fill) => {
+      if (fill == null) return [];
+      const tag = element.localName;
+      if (tag === 'polygon' || tag === 'polyline') {
+        return [...element.points]
+          .map((point) => transformGeometryPoint(element, point))
+          .filter((point) => point !== null);
+      }
+      if (
+        !['path', 'rect', 'circle', 'ellipse'].includes(tag) ||
+        typeof element.getTotalLength !== 'function' ||
+        typeof element.getPointAtLength !== 'function'
+      ) {
+        return [];
+      }
+      try {
+        const length = element.getTotalLength();
+        if (!Number.isFinite(length) || length <= 0) return [];
+        const sampleCount = Math.min(
+          512,
+          Math.max(16, Math.ceil(length / 2)),
+        );
+        return Array.from(
+          { length: sampleCount },
+          (_, index) => element.getPointAtLength(length * index / sampleCount),
+        )
+          .map((point) => transformGeometryPoint(element, point))
+          .filter((point) => point !== null);
+      } catch {
+        return [];
+      }
+    };
+    const textOutlinePoints = (element) => {
+      if (typeof element.getBBox !== 'function') return [];
+      try {
+        const localBounds = element.getBBox();
+        if (
+          !Number.isFinite(localBounds.x) ||
+          !Number.isFinite(localBounds.y) ||
+          !Number.isFinite(localBounds.width) ||
+          !Number.isFinite(localBounds.height) ||
+          localBounds.width <= 0 ||
+          localBounds.height <= 0
+        ) {
+          return [];
+        }
+        return [
+          { x: localBounds.x, y: localBounds.y },
+          { x: localBounds.x + localBounds.width, y: localBounds.y },
+          {
+            x: localBounds.x + localBounds.width,
+            y: localBounds.y + localBounds.height,
+          },
+          { x: localBounds.x, y: localBounds.y + localBounds.height },
+        ]
+          .map((point) => transformGeometryPoint(element, point))
+          .filter((point) => point !== null);
+      } catch {
+        return [];
+      }
     };
     const routePoints = (element) => {
       const encoded = element.getAttribute('data-points');
@@ -1014,6 +1090,7 @@ async function extractOfficialManifest(page, caseId) {
       const topology = type === 'path'
         ? pathTopology(routePoints(element))
         : null;
+      const roughGeometryGroup = element.closest(roughGroupSelector);
       elements.push({
         order: elements.length,
         zIndex: null,
@@ -1024,7 +1101,11 @@ async function extractOfficialManifest(page, caseId) {
           ? element.getAttribute('data-id') || null
           : null,
         classes: [...element.classList],
+        geometryGroup: roughGeometryGroups.get(roughGeometryGroup) ?? null,
         bounds: elementBounds,
+        outlinePoints: textElement
+          ? textOutlinePoints(element)
+          : geometryOutlinePoints(element, fill),
         ...(textElement && !usecaseIconFallback ? {
           text,
           ...(textSegments.length > 0 ? { textSegments } : {}),

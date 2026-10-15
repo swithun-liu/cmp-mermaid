@@ -58,6 +58,52 @@ class ErLayoutTest {
     }
 
     @Test
+    fun scalesNonHtmlEntityPaddingLikeUpstreamErBox() {
+        val scene = render(
+            """
+            erDiagram
+                ACCOUNT {
+                    int id PK
+                }
+            """.trimIndent(),
+        )
+        val entity = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id.matches(Regex("""entity-ACCOUNT-\d+""")) }
+        val attributeTexts = scene.elements.filterIsInstance<SceneText>()
+            .filter { it.text in setOf("int", "id", "PK") }
+            .associateBy(SceneText::text)
+
+        // erBox.ts multiplies PADDING and TEXT_PADDING by 1.25 for SVG labels.
+        assertEquals(131f, entity.bounds.width)
+        assertEquals(79.5f, entity.bounds.height)
+        assertEquals(24f, attributeTexts.getValue("int").bounds.width)
+        assertEquals(16f, attributeTexts.getValue("id").bounds.width)
+        assertEquals(16f, attributeTexts.getValue("PK").bounds.width)
+    }
+
+    @Test
+    fun keepsUnscaledEntityPaddingWhenRootHtmlLabelsIsExplicitlyTrue() {
+        val scene = render(
+            """
+            ---
+            config:
+              htmlLabels: true
+            ---
+            erDiagram
+                ACCOUNT {
+                    int id PK
+                }
+            """.trimIndent(),
+        )
+        val entity = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id.matches(Regex("""entity-ACCOUNT-\d+""")) }
+
+        // erBox.ts reads config.htmlLabels directly for this branch.
+        assertEquals(116f, entity.bounds.width)
+        assertEquals(75f, entity.bounds.height)
+    }
+
+    @Test
     fun keepsLongEntityAliasUnwrappedLikeUpstreamErBox() {
         val alias = "End To End Production Compatibility Verification Evidence Label 255"
         var measuredAliasWidth: Float? = null
@@ -160,6 +206,73 @@ class ErLayoutTest {
         assertTrue(paths.filterNot { it.id.contains("entity-K-") }.all {
             it.strokePattern == SceneStrokePattern.Solid
         })
+    }
+
+    @Test
+    fun usesMermaid12ErSpecificRelationshipLabelBackground() {
+        val scene = render(
+            """
+            erDiagram
+                ACCOUNT ||--o{ RECORD : owns
+            """.trimIndent(),
+        )
+        val background = scene.elements.filterIsInstance<SceneShape>()
+            .single { it.id.endsWith("-label-background") }
+
+        assertEquals(
+            MermaidTheme.FlowchartDefault.erEdgeLabelFill,
+            background.fill,
+        )
+        assertEquals(0xFFFFFFFF, background.fill.argb)
+    }
+
+    @Test
+    fun usesMermaid12DefaultSubgraphMarginsAndErThemeFallbacks() {
+        val scene = render(
+            """
+            erDiagram
+                direction LR
+                subgraph MASTER_DATA
+                    direction TB
+                    ACCOUNT {
+                        uuid id PK
+                    }
+                    RECORD {
+                        uuid id PK
+                    }
+                end
+                subgraph ACTIVITY
+                    direction TB
+                    EVENT {
+                        uuid id PK
+                    }
+                    TAG {
+                        uuid id PK
+                    }
+                end
+                ACCOUNT ||--o{ RECORD : owns
+                RECORD ||--o{ EVENT : emits
+                EVENT ||--o{ TAG : tagged
+            """.trimIndent(),
+        )
+        val shapes = scene.elements.filterIsInstance<SceneShape>()
+        val masterData = shapes.single { it.id == "er-subgraph-MASTER_DATA" }
+        val account = shapes.single { it.id.matches(Regex("""entity-ACCOUNT-\d+""")) }
+        val title = scene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "MASTER_DATA" }
+
+        // Mermaid.js 12.0.0: subGraphTitleMargins.ts defaults both margins to
+        // zero; clusters.js places the label at the cluster top.
+        assertEquals(239.5f, masterData.bounds.height)
+        assertEquals(80f, account.bounds.top - masterData.bounds.top)
+        assertEquals(masterData.bounds.top, title.bounds.top)
+
+        // Mermaid.js 12.0.0: diagrams/er/styles.ts -> getStyles.
+        assertEquals(context.theme.erClusterFill, masterData.fill)
+        assertEquals(context.theme.erClusterStroke, masterData.stroke)
+        assertEquals(context.theme.erClusterText, title.color)
+        assertEquals(0xFF28253D, masterData.stroke.argb)
+        assertEquals(0xFF28253D, title.color.argb)
     }
 
     @Test

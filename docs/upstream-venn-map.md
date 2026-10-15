@@ -36,7 +36,7 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 | Kotlin source | Upstream source | Translation boundary |
 | --- | --- | --- |
 | `venn/VennLayout.kt` | `vennRenderer.ts` `draw`, `ensurePairwiseSubsets`, and `renderTextNodes` | Pairwise completion, layout invocation, circles and intersections, labels, free text, styles, debug guides, viewport, and sizing |
-| `venn/VennLayout.kt` | `@upsetjs/venn.js/src/diagram.js` `wrapText` and intersection path helpers | Text wrapping, area paths, and center placement adapted to measured Compose text |
+| `venn/VennLayout.kt` | `@upsetjs/venn.js/src/diagram.js` `wrapText` and intersection path helpers | Detached-SVG no-wrap label semantics, area paths, and center placement adapted to measured Compose text |
 | `venn/VennLayout.kt` | `styles.ts` and Venn theme variables | Fill opacity, strokes, titles, set labels, text nodes, eight palette slots, and flat-theme fallback |
 | `MermaidPreprocessor.kt` | `defaultConfig.ts` and `schemas/config.schema.yaml` | Typed Venn defaults, frontmatter/init overrides, merge precedence, and validation |
 | `MermaidContract.kt` | Mermaid Venn configuration | Public typed Venn options |
@@ -72,15 +72,17 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - The generic Venn.js and fmin APIs are narrowed to Mermaid's exact invocation
   and retain JavaScript number semantics for finite optimization inputs.
 - Upstream constrained MDS calls `Math.random` for ten restart vectors.
-  Production Kotlin replaces that process-global source with a fixed xorshift64
-  stream. The isolated Official renderer temporarily installs the same stream
-  only while rendering `venn-beta` and restores `Math.random` in `finally`.
+  Production Kotlin replaces that process-global source with one renderer-scoped
+  fixed xorshift64 stream shared by both Venn.js layout invocations. The isolated
+  Official renderer temporarily installs the same stream only while rendering
+  `venn-beta` and restores `Math.random` in `finally`.
   `VennJsLayoutTest` locks the first five doubles on both sides of this oracle.
 - Multi-set unions synthesize pairwise overlap entries exactly at Mermaid's
   renderer boundary before entering the translated Venn.js layout.
 - Browser DOM and SVG measurement are replaced by `TextMetricProvider` and
-  SceneGraph geometry. Text centers and line wrapping are computed before
-  Canvas painting.
+  SceneGraph geometry. Area labels preserve the upstream detached-SVG
+  `getComputedTextLength() == 0` behavior and remain unwrapped; text-node
+  wrapping is computed before Canvas painting.
 - Compose has no SVG overflow viewport behavior, so painted bounds are
   normalized with the same padding used by the isolated Official reference.
 - SVG percentage title coordinates are re-resolved after viewBox
@@ -94,18 +96,18 @@ Mermaid.js, use a WebView, or depend on a JavaScript runtime.
 - Parser, database, circle geometry, Venn.js optimization, fmin routines,
   pairwise completion, configuration, styles, metadata, and structured-error
   tests pass.
-- The deterministic constrained-MDS oracle test verifies the first five random
-  values consumed by Kotlin against the isolated JavaScript renderer.
+- The deterministic constrained-MDS oracle tests verify the first five random
+  values and the continuous consumption across both layout calls against the
+  isolated JavaScript renderer.
 - All four active examples extracted from Mermaid's Venn documentation render
   in the JVM test.
 - A separate deterministic randomized test renders 256 Venn inputs twice and
   verifies finite, stable SceneGraphs.
 - The replacement Web gate compares 13 independent production scenarios and
   256 coverage-driven same-source input cases against Mermaid.js `12.0.0`.
-- Matrix detail reports `192 pass / 64 review / 0 fail`; geometry has 0 hard
+- Matrix detail reports `256 pass / 0 review / 0 fail`; geometry has 0 hard
   failures.
-- All 16 matrix contact sheets are published and source-bound; current
-  automated findings remain explicit.
+- All 16 matrix contact sheets are published and source-bound.
 
 ## Upgrade Procedure
 

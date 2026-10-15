@@ -279,6 +279,82 @@ test('accepts spatially equivalent segmented text', () => {
   assert.equal(result.textComparison.segmentationGroups.length, 1);
 });
 
+test('compares overlap topology through equivalent segmented text groups', () => {
+  const native = manifest([
+    {
+      ...text('Delivery', 0),
+      bounds: { x: 10, y: 10, width: 50, height: 10 },
+    },
+    {
+      ...text('observes', 1),
+      bounds: { x: 40, y: 10, width: 50, height: 10 },
+    },
+  ]);
+  const official = manifest([
+    {
+      ...text('Delivery', 0),
+      bounds: { x: 10, y: 10, width: 50, height: 10 },
+    },
+    {
+      ...text('observ', 1),
+      bounds: { x: 40, y: 10, width: 25, height: 10 },
+    },
+    {
+      ...text('es', 2),
+      bounds: { x: 65, y: 10, width: 25, height: 10 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.textComparison.segmentationEquivalent, true);
+  assert.deepEqual(result.overlapComparison.mismatches, []);
+  assert.deepEqual(result.overlapComparison.ratioDifferences, []);
+});
+
+test('reports material overlap differences through segmented text groups', () => {
+  const native = manifest([
+    {
+      ...text('Delivery', 0),
+      bounds: { x: 10, y: 10, width: 50, height: 10 },
+    },
+    {
+      ...text('observes', 1),
+      bounds: { x: 40, y: 10, width: 50, height: 10 },
+    },
+  ]);
+  const official = manifest([
+    {
+      ...text('Delivery', 0),
+      bounds: { x: 10, y: 10, width: 50, height: 10 },
+    },
+    {
+      ...text('observ', 1),
+      bounds: { x: 52, y: 10, width: 19, height: 10 },
+    },
+    {
+      ...text('es', 2),
+      bounds: { x: 71, y: 10, width: 19, height: 10 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'review');
+  assert.equal(result.textComparison.segmentationEquivalent, true);
+  assert.equal(result.overlapComparison.mismatches.length, 1);
+  assert.deepEqual(
+    result.overlapComparison.ratioDifferences.map(
+      ({ nativeOverlap, officialOverlap }) => ({
+        nativeOverlap,
+        officialOverlap,
+      }),
+    ),
+    [{ nativeOverlap: 0.4, officialOverlap: 0.211 }],
+  );
+});
+
 test('keeps spatially divergent segmented text in review', () => {
   const official = manifest([
     text('[Another request owns refresh]', 0),
@@ -412,6 +488,38 @@ test('reports materially different text-overlap ratios', () => {
   );
 });
 
+test('uses oriented text outlines instead of rotated bounding boxes', () => {
+  const left = {
+    ...text('Left diagonal', 0),
+    bounds: { x: 0, y: 0, width: 50, height: 50 },
+    outlinePoints: [
+      { x: 0, y: 5 },
+      { x: 5, y: 0 },
+      { x: 50, y: 45 },
+      { x: 45, y: 50 },
+    ],
+  };
+  const right = (offset) => ({
+    ...text('Right diagonal', 1),
+    bounds: { x: offset, y: 0, width: 50, height: 50 },
+    outlinePoints: [
+      { x: offset, y: 5 },
+      { x: offset + 5, y: 0 },
+      { x: offset + 50, y: 45 },
+      { x: offset + 45, y: 50 },
+    ],
+  });
+
+  const result = compareDetailManifests(
+    manifest([left, right(20)]),
+    manifest([left, right(30)]),
+  );
+
+  assert.equal(result.status, 'pass');
+  assert.deepEqual(result.overlapComparison.mismatches, []);
+  assert.deepEqual(result.overlapComparison.ratioDifferences, []);
+});
+
 test('ignores text overlaps hidden behind matching later backgrounds', () => {
   const nativeCovered = {
     ...text('Covered', 0),
@@ -447,6 +555,64 @@ test('ignores text overlaps hidden behind matching later backgrounds', () => {
   assert.ok(
     result.findings.every((finding) => finding.code !== 'text-overlap'),
   );
+});
+
+test('keeps matched text comparable across minor visibility threshold flips', () => {
+  const firstLabel = text('Repeated point', 0);
+  const secondLabel = text('Repeated point', 2);
+  const native = manifest([
+    firstLabel,
+    {
+      ...shape('later-point', 1),
+      bounds: { x: 55.5, y: 8, width: 50, height: 14 },
+    },
+    secondLabel,
+  ]);
+  const official = manifest([
+    firstLabel,
+    {
+      ...shape('later-point', 1),
+      bounds: { x: 54.5, y: 8, width: 50, height: 14 },
+    },
+    secondLabel,
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.deepEqual(result.overlapComparison.mismatches, []);
+  assert.deepEqual(result.overlapComparison.ratioDifferences, []);
+});
+
+test('keeps unique matched text comparable across visibility threshold flips', () => {
+  const native = manifest([
+    text('Partially covered', 0),
+    {
+      ...shape('later-point', 1),
+      bounds: { x: 55.5, y: 8, width: 50, height: 14 },
+    },
+    {
+      ...text('Adjacent label', 2),
+      bounds: { x: 30, y: 10, width: 50, height: 10 },
+    },
+  ]);
+  const official = manifest([
+    text('Partially covered', 0),
+    {
+      ...shape('later-point', 1),
+      bounds: { x: 54.5, y: 8, width: 50, height: 14 },
+    },
+    {
+      ...text('Adjacent label', 2),
+      bounds: { x: 30, y: 10, width: 50, height: 10 },
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.deepEqual(result.overlapComparison.mismatches, []);
+  assert.deepEqual(result.overlapComparison.ratioDifferences, []);
 });
 
 test('ignores non-rendered zero-size text duplicates', () => {
@@ -538,6 +704,57 @@ test('prefers Mermaid patterned edge classes over the base solid class', () => {
   assert.equal(result.status, 'pass');
   assert.deepEqual(result.styleComparison.nativeStrokePatterns, { Dotted: 1 });
   assert.deepEqual(result.styleComparison.officialStrokePatterns, { Dashed: 1 });
+});
+
+test('preserves visible Mermaid edge animation dashes on solid edges', () => {
+  const native = manifest([
+    {
+      ...path(0, 'Dashed', [9, 5]),
+      animated: true,
+    },
+  ]);
+  const official = manifest([
+    {
+      ...path(0, 'Dashed', [9, 5]),
+      classes: [
+        'edge-thickness-normal',
+        'edge-pattern-solid',
+        'flowchart-link',
+        'edge-animation-fast',
+      ],
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.deepEqual(result.styleComparison.nativeStrokePatterns, { Dashed: 1 });
+  assert.deepEqual(result.styleComparison.officialStrokePatterns, { Dashed: 1 });
+});
+
+test('treats Mermaid datastore outline construction as solid', () => {
+  const native = manifest([
+    {
+      ...shape('database', 0),
+      bounds: { x: 8, y: 8, width: 180, height: 72 },
+    },
+  ]);
+  const official = manifest([
+    {
+      ...shape('database', 0),
+      role: 'rect',
+      classes: ['basic', 'label-container'],
+      bounds: { x: 8, y: 8, width: 180, height: 72 },
+      strokePattern: 'Dashed',
+      dashIntervals: [180, 72],
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.deepEqual(result.styleComparison.nativeStrokePatterns, { Solid: 1 });
+  assert.deepEqual(result.styleComparison.officialStrokePatterns, { Solid: 1 });
 });
 
 test('detects a declared marker hidden beneath a later opaque node', () => {
@@ -634,6 +851,78 @@ test('does not treat an ellipse corner as opaque marker coverage', () => {
   assert.equal(result.status, 'pass');
 });
 
+test('does not treat a polygon bounding-box corner as marker coverage', () => {
+  const polygon = {
+    ...shape('target-node', 1),
+    role: 'polygon',
+    bounds: { x: 60, y: 30, width: 30, height: 40 },
+    outlinePoints: [
+      { x: 75, y: 30 },
+      { x: 90, y: 50 },
+      { x: 75, y: 70 },
+      { x: 60, y: 50 },
+    ],
+  };
+  const nativeMarker = {
+    ...path(0, 'Solid', []),
+    arrowEnd: 'Triangle',
+    markerEndPoint: { x: 62, y: 32 },
+  };
+  const officialMarker = {
+    ...path(0, 'Solid', []),
+    arrowEnd: 'Marker',
+    markerEndPoint: { x: 60, y: 50 },
+  };
+
+  const result = compareDetailManifests(
+    manifest([nativeMarker, polygon]),
+    manifest([officialMarker, polygon]),
+  );
+
+  assert.equal(result.status, 'pass');
+  assert.equal(
+    result.markerVisibilityComparison.native[0].occlusionDepth,
+    0,
+  );
+});
+
+test('detects a marker inside a filled polygon outline', () => {
+  const polygon = {
+    ...shape('target-node', 1),
+    role: 'polygon',
+    bounds: { x: 60, y: 30, width: 30, height: 40 },
+    outlinePoints: [
+      { x: 75, y: 30 },
+      { x: 90, y: 50 },
+      { x: 75, y: 70 },
+      { x: 60, y: 50 },
+    ],
+  };
+  const hiddenNative = {
+    ...path(0, 'Solid', []),
+    arrowEnd: 'Triangle',
+    markerEndPoint: { x: 75, y: 50 },
+  };
+  const visibleOfficial = {
+    ...path(0, 'Solid', []),
+    arrowEnd: 'Marker',
+    markerEndPoint: { x: 60, y: 50 },
+  };
+
+  const result = compareDetailManifests(
+    manifest([hiddenNative, polygon]),
+    manifest([visibleOfficial, polygon]),
+  );
+
+  assert.equal(result.status, 'fail');
+  assert.ok(
+    result.findings.some((finding) => finding.code === 'marker-occlusion'),
+  );
+  assert.ok(
+    result.markerVisibilityComparison.native[0].occlusionDepth > 0.1,
+  );
+});
+
 test('does not accept matching marker metadata without endpoint anchors', () => {
   const native = manifest([
     {
@@ -715,6 +1004,118 @@ test('accepts equivalent geometry across compound and decomposed objects', () =>
 
   assert.equal(result.status, 'pass');
   assert.equal(result.elementComparison.ratios.geometryObject, 1 / 6);
+  assert.equal(result.elementComparison.ratios.geometryExpanded, 1);
+  assert.equal(result.elementComparison.ratios.geometry, 1);
+});
+
+test('accepts matching geometry objects when primitive expansion differs', () => {
+  const native = manifest([
+    path(0, 'Solid', []),
+    {
+      ...shape('compound-node', 1),
+      geometryPathCount: 3,
+    },
+    shape('plain-node', 2),
+  ]);
+  const official = manifest([
+    path(0, 'Solid', []),
+    shape('compound-node', 1),
+    shape('plain-node', 2),
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.elementComparison.ratios.geometryObject, 1);
+  assert.equal(result.elementComparison.ratios.geometryExpanded, 5 / 3);
+});
+
+test('ignores zero-path label background geometry', () => {
+  const native = manifest([
+    path(0, 'Solid', []),
+    {
+      ...shape('L_A_B_0_label_background', 1),
+      geometryPathCount: 0,
+    },
+  ]);
+  const official = manifest([
+    path(0, 'Solid', []),
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.elementComparison.ratios.geometryObject, 1);
+  assert.equal(result.elementComparison.ratios.geometryExpanded, 1);
+});
+
+test('counts zero-path subgraph rectangles as semantic geometry', () => {
+  const native = manifest([
+    path(0, 'Solid', []),
+    {
+      ...shape('subgraph_G', 1),
+      geometryPathCount: 0,
+    },
+  ]);
+  const official = manifest([
+    path(0, 'Solid', []),
+    shape('subgraph_G', 1),
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.elementComparison.ratios.geometryObject, 1);
+  assert.equal(result.elementComparison.ratios.geometryExpanded, 1);
+});
+
+test('collapses Rough.js child paths by their explicit semantic group', () => {
+  const native = manifest([
+    shape('entity-box', 0),
+    {
+      ...shape('entity-grid', 1),
+      geometryPathCount: 3,
+    },
+  ]);
+  const official = manifest([
+    {
+      ...path(0, 'Solid', []),
+      geometryGroup: 'rough-outer',
+    },
+    {
+      ...path(1, 'Solid', []),
+      geometryGroup: 'rough-outer',
+    },
+    {
+      ...path(2, 'Solid', []),
+      geometryGroup: 'rough-divider-1',
+    },
+    {
+      ...path(3, 'Solid', []),
+      geometryGroup: 'rough-divider-1',
+    },
+    {
+      ...path(4, 'Solid', []),
+      geometryGroup: 'rough-divider-2',
+    },
+    {
+      ...path(5, 'Solid', []),
+      geometryGroup: 'rough-divider-2',
+    },
+    {
+      ...path(6, 'Solid', []),
+      geometryGroup: 'rough-divider-3',
+    },
+    {
+      ...path(7, 'Solid', []),
+      geometryGroup: 'rough-divider-3',
+    },
+  ]);
+
+  const result = compareDetailManifests(native, official);
+
+  assert.equal(result.status, 'pass');
+  assert.equal(result.elementComparison.ratios.geometryObject, 1 / 2);
   assert.equal(result.elementComparison.ratios.geometryExpanded, 1);
   assert.equal(result.elementComparison.ratios.geometry, 1);
 });

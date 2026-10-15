@@ -95,11 +95,11 @@ execute Mermaid.js, use a WebView, or depend on a JavaScript runtime.
   `11 pass / 2 review / 0 fail`; both remaining findings are collapsed-shape
   stroke-pattern classifications. Geometry counts compare both render objects
   and expanded primitives, eliminating decomposition-only reviews.
-- The current 256-case Native/Official matrix reports `206 pass / 50 review / 0 fail`.
-  Geometry has 0 hard failures with width `1.023-1.196`, height `0.930-1.194`,
-  and foreground ink `0.830-1.153`.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has 0 hard failures or reviews with width `1.023-1.196`, height
+  `0.922-1.126`, and foreground ink `0.816-1.152`.
 - The production and all 16 matrix contact sheets are published and source-bound;
-  current automated findings remain explicit.
+  the matrix detail and geometry gates have no remaining findings.
 
 ## Upgrade Procedure
 

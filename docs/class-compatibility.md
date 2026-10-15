@@ -60,10 +60,9 @@ arbitrary URLs or JavaScript.
   `13 pass / 0 review / 0 fail`; geometry ratios are width `1.036-1.196`,
   height `0.906-1.055`, and foreground ink `0.723-1.230`.
 - The fresh 256-case coverage-driven input audit reports
-  `221 pass / 35 review / 0 fail`; geometry has 0 hard failures with width
-  `1.036-1.217`, height `0.870-1.085`, and foreground ink `0.843-1.252`.
-- All 16 matrix contact sheets are published and source-bound; current automated
-  findings remain explicit.
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures or reviews with
+  width `1.036-1.219`, height `0.870-1.085`, and foreground ink `0.853-1.270`.
+- All 16 matrix contact sheets are published and source-bound.
 - 27 curated gallery cases render identical source through Native Compose and
   Mermaid.js `12.0.0` with Dagre.
 - The 27 Native Android screenshots were compared side by side with 27

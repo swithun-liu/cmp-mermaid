@@ -602,7 +602,12 @@ class MermaidEngineTest {
 
         val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
         val paths = scene.elements.filterIsInstance<ScenePath>()
-        assertEquals(3, paths.size)
+        val invisible = paths.single { path -> path.id == "L_B_C_0" }
+        assertEquals(4, paths.size)
+        assertEquals(0f, invisible.strokeWidth)
+        assertEquals(0x00000000L, invisible.color.argb)
+        assertEquals(SceneArrowHead.None, invisible.arrowStart)
+        assertEquals(SceneArrowHead.None, invisible.arrowEnd)
         assertTrue(paths.any { it.arrowStart == SceneArrowHead.None && it.arrowEnd == SceneArrowHead.Cross })
         assertTrue(paths.any { it.arrowStart == SceneArrowHead.Triangle && it.arrowEnd == SceneArrowHead.Triangle })
     }

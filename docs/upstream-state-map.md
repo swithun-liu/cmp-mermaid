@@ -44,6 +44,27 @@ production so an upstream grammar diff can be translated incrementally.
 | `SceneGraph.kt` | Mermaid State shape semantics | Typed state, note, group, edge, text, metadata, and interaction output |
 | `mermaid-compose/.../MermaidDiagram.kt` | State SVG rendering behavior | Native Canvas geometry and painting |
 
+## Production Function Checklist
+
+Status follows the Mermaid `12.0.0` unified-renderer call sequence. A stage is
+not `Exact` merely because its current output is renderable.
+
+| Order | Upstream production stage | Kotlin stage | Status |
+| ---: | --- | --- | --- |
+| 1 | `stateRenderer-v3-unified.ts -> draw`: extract DB state and call `getData` | `StateDb.extract`, `StateDataFetcher.getData`, `StateLayout.layout` | **Exact** |
+| 2 | `dataFetcher.ts -> getData`, `processDocument`, `processItem`, and note-edge projection | `StateDataFetcher` | **Exact** |
+| 3 | `stateRenderer-v3-unified.ts -> draw`: select the registered layout and pass State spacing/markers into unified `render` | `StateLayout.layout`, `FlowDagreLayout.layout` | **Platform adaptation**: the Dagre work graph and routed output remain pure Kotlin; unsupported registered engines return structured errors |
+| 4 | `rendering-util/subGraphTitleMargins.ts -> getSubGraphTitleMargins` in unified Dagre compound layout | `StateLayout.layout` option projection | **Exact**: the configured top and bottom margins, including the upstream zero defaults, pass through without a diagram-specific minimum |
+| 5 | `clusters.js -> insertCluster`, `roundedWithTitle`, and `noteGroup` | `StateLayout.addGroups` | **Platform adaptation**: SVG outer/body/title groups become ordered SceneGraph elements while preserving State group and note-group semantics |
+| 6 | `rendering-elements/shapes.ts` plus State shape registrations | `StateLayout.measureNode`, `shape`, and `addNode` | **Platform adaptation**: browser shape insertion becomes typed SceneGraph geometry |
+| 7 | `rendering-elements/edges.js` and `lineWithOffset.ts` | `MermaidEdgePathPort`, `StateLayout.addEdges` | **Platform adaptation** |
+| 8 | `stateRenderer-v3-unified.ts -> setupViewPortForSVG`, title, and link injection | `StateLayout.normalizeScene`, title and interaction projection | **Platform adaptation** |
+
+The former self-developed 22px State minimum has been removed. A focused
+composite regression verifies that only an explicit configured margin changes
+the group height, and the final 256-case Native/Official recapture passes both
+detail and geometry gates.
+
 ## Locked Upstream Hashes
 
 | Upstream file | SHA-256 |
@@ -87,9 +108,9 @@ production so an upstream grammar diff can be translated incrementally.
   Mermaid's State documentation.
 - The Android gallery compares 25 identical sources against official Mermaid
   `12.0.0` Dagre output.
-- The current 256-case Native/Official matrix reports `251 pass / 5 review / 0 fail`.
-  Geometry has 0 hard failures with width `0.978-1.069`, height `1.013-1.186`,
-  and foreground ink `0.823-1.175`.
+- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+  Geometry has no failures or reviews, with width `0.978-1.069`, height
+  `1.013-1.186`, and foreground ink `0.801-1.175`.
 - All 16 matrix contact sheets are published and source-bound; current automated
   findings remain explicit.
 

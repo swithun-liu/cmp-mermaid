@@ -5,6 +5,10 @@ import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.ScenePath
 import com.swithun.cmpmermaid.core.ScenePoint
 import com.swithun.cmpmermaid.core.SceneRect
+import com.swithun.cmpmermaid.core.SceneShape
+import com.swithun.cmpmermaid.core.SceneShapeGeometry
+import com.swithun.cmpmermaid.core.SceneShapeKind
+import com.swithun.cmpmermaid.core.SceneShapePath
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
 import kotlin.test.Test
@@ -87,6 +91,34 @@ class SceneAuditManifestTest {
     }
 
     @Test
+    fun exportsRotatedTextOutlineInPaintOrder() {
+        val rotated = SceneText(
+            text = "label",
+            bounds = SceneRect(0f, 0f, 10f, 20f),
+            color = SceneColor(0xFF000000),
+            fontSize = 14f,
+            rotationDegrees = 90f,
+            rotationPivot = ScenePoint(0f, 0f),
+        )
+
+        val outline = rotated.auditOutlinePoints()
+        assertEquals(4, outline.size)
+        assertEquals(0f, outline[0].x, 0.0001f)
+        assertEquals(0f, outline[0].y, 0.0001f)
+        assertEquals(0f, outline[1].x, 0.0001f)
+        assertEquals(10f, outline[1].y, 0.0001f)
+        assertEquals(-20f, outline[2].x, 0.0001f)
+        assertEquals(10f, outline[2].y, 0.0001f)
+        assertEquals(-20f, outline[3].x, 0.0001f)
+        assertEquals(0f, outline[3].y, 0.0001f)
+        val auditBounds = rotated.auditBounds()
+        assertEquals(-20f, auditBounds.left, 0.0001f)
+        assertEquals(0f, auditBounds.top, 0.0001f)
+        assertEquals(0f, auditBounds.right, 0.0001f)
+        assertEquals(10f, auditBounds.bottom, 0.0001f)
+    }
+
+    @Test
     fun preservesNarrowTextWidthWhenApplyingStartAndEndInsets() {
         val bounds = SceneRect(left = 2f, top = 3f, right = 8f, bottom = 19f)
         val insetBoundaryBounds = SceneRect(left = 2f, top = 3f, right = 10f, bottom = 19f)
@@ -143,6 +175,41 @@ class SceneAuditManifestTest {
         assertContains(manifest, "\"directionSequence\":[\"R\",\"D\"]")
         assertContains(manifest, "\"sourcePortSide\":\"Right\"")
         assertContains(manifest, "\"destinationPortSide\":\"Top\"")
+    }
+
+    @Test
+    fun exportsShapeOutlineInAbsoluteSceneCoordinates() {
+        val outline = listOf(
+            ScenePoint(-20f, -30f),
+            ScenePoint(20f, -30f),
+            ScenePoint(20f, 30f),
+            ScenePoint(-20f, 30f),
+        )
+        val manifest = MermaidScene(
+            width = 100f,
+            height = 100f,
+            background = SceneColor(0xFFFFFFFF),
+            elements = listOf(
+                SceneShape(
+                    id = "node",
+                    bounds = SceneRect(10f, 20f, 50f, 80f),
+                    kind = SceneShapeKind.Rectangle,
+                    geometry = SceneShapeGeometry(
+                        paths = listOf(SceneShapePath(points = outline)),
+                        outline = outline,
+                    ),
+                    fill = SceneColor(0xFFFFFFFF),
+                    stroke = SceneColor(0xFF000000),
+                ),
+            ),
+        ).toAuditManifestJson()
+
+        assertContains(
+            manifest,
+            "\"outlinePoints\":[{\"x\":10.0,\"y\":20.0}," +
+                "{\"x\":50.0,\"y\":20.0},{\"x\":50.0,\"y\":80.0}," +
+                "{\"x\":10.0,\"y\":80.0}]",
+        )
     }
 
     private fun text(

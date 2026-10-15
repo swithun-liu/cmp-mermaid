@@ -10,6 +10,7 @@ import com.swithun.cmpmermaid.core.ScenePathCommand
 import com.swithun.cmpmermaid.core.ScenePoint
 import com.swithun.cmpmermaid.core.SceneRect
 import com.swithun.cmpmermaid.core.SceneShape
+import com.swithun.cmpmermaid.core.SceneShapeViewportFit
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
 import kotlin.math.PI
@@ -117,6 +118,8 @@ private fun StringBuilder.appendShape(shape: SceneShape) {
     appendNumberArray(shape.dashIntervals)
     append(",\"geometryPathCount\":")
     append(shape.geometry?.paths?.size ?: 0)
+    append(",\"outlinePoints\":")
+    appendPointArray(shape.auditOutlinePoints())
     append(",\"strokeGradient\":")
     val gradient = shape.strokeGradient
     if (gradient == null) {
@@ -128,6 +131,50 @@ private fun StringBuilder.appendShape(shape: SceneShape) {
         append(",\"endColor\":")
         appendColor(gradient.endColor)
         append('}')
+    }
+}
+
+private fun SceneShape.auditOutlinePoints(): List<ScenePoint> {
+    val geometry = geometry ?: return emptyList()
+    val outline = geometry.outline.filter(ScenePoint::isFinite)
+    if (outline.isEmpty()) return emptyList()
+    val viewBox = geometry.viewBox
+    if (viewBox == null || viewBox.width <= 0f || viewBox.height <= 0f) {
+        return outline.map { point ->
+            ScenePoint(bounds.center.x + point.x, bounds.center.y + point.y)
+        }
+    }
+    val rawScaleX = bounds.width / viewBox.width
+    val rawScaleY = bounds.height / viewBox.height
+    val scaleX: Float
+    val scaleY: Float
+    val alignX: Float
+    val alignY: Float
+    when (geometry.viewportFit) {
+        SceneShapeViewportFit.Stretch -> {
+            scaleX = rawScaleX
+            scaleY = rawScaleY
+            alignX = 0f
+            alignY = 0f
+        }
+        SceneShapeViewportFit.MeetStart -> {
+            scaleX = minOf(rawScaleX, rawScaleY)
+            scaleY = scaleX
+            alignX = 0f
+            alignY = 0f
+        }
+        SceneShapeViewportFit.MeetCenter -> {
+            scaleX = minOf(rawScaleX, rawScaleY)
+            scaleY = scaleX
+            alignX = (bounds.width - viewBox.width * scaleX) / 2f
+            alignY = (bounds.height - viewBox.height * scaleY) / 2f
+        }
+    }
+    return outline.map { point ->
+        ScenePoint(
+            x = bounds.left + alignX + (point.x - viewBox.left) * scaleX,
+            y = bounds.top + alignY + (point.y - viewBox.top) * scaleY,
+        )
     }
 }
 
@@ -193,6 +240,8 @@ private fun StringBuilder.appendPath(path: ScenePath) {
 private fun StringBuilder.appendText(text: SceneText) {
     append(",\"type\":\"text\",\"role\":\"text\",\"id\":null,\"bounds\":")
     appendRect(text.auditBounds())
+    append(",\"outlinePoints\":")
+    appendPointArray(text.auditOutlinePoints())
     append(",\"text\":")
     appendJsonString(text.text)
     append(",\"fill\":")
@@ -218,7 +267,7 @@ private fun StringBuilder.appendText(text: SceneText) {
     append(text.clipToBounds)
 }
 
-internal fun SceneText.auditBounds(): SceneRect {
+internal fun SceneText.auditOutlinePoints(): List<ScenePoint> {
     // MermaidDiagram.drawSceneText offsets the painted glyph origin by 4px
     // without changing the measured glyph width.
     val paintedBounds = when (horizontalAlignment) {
@@ -226,17 +275,18 @@ internal fun SceneText.auditBounds(): SceneRect {
         SceneTextAlignment.Start -> bounds.translateX(TEXT_HORIZONTAL_INSET)
         SceneTextAlignment.End -> bounds.translateX(-TEXT_HORIZONTAL_INSET)
     }
-    if (rotationDegrees == 0f) return paintedBounds
-    val pivot = rotationPivot ?: bounds.center
-    val radians = rotationDegrees * PI / 180.0
-    val cosine = cos(radians).toFloat()
-    val sine = sin(radians).toFloat()
     val corners = listOf(
         ScenePoint(paintedBounds.left, paintedBounds.top),
         ScenePoint(paintedBounds.right, paintedBounds.top),
         ScenePoint(paintedBounds.right, paintedBounds.bottom),
         ScenePoint(paintedBounds.left, paintedBounds.bottom),
-    ).map { point ->
+    )
+    if (rotationDegrees == 0f) return corners
+    val pivot = rotationPivot ?: bounds.center
+    val radians = rotationDegrees * PI / 180.0
+    val cosine = cos(radians).toFloat()
+    val sine = sin(radians).toFloat()
+    return corners.map { point ->
         val x = point.x - pivot.x
         val y = point.y - pivot.y
         ScenePoint(
@@ -244,6 +294,10 @@ internal fun SceneText.auditBounds(): SceneRect {
             y = pivot.y + x * sine + y * cosine,
         )
     }
+}
+
+internal fun SceneText.auditBounds(): SceneRect {
+    val corners = auditOutlinePoints()
     return SceneRect(
         left = corners.minOf(ScenePoint::x),
         top = corners.minOf(ScenePoint::y),

@@ -152,9 +152,10 @@ internal class KanbanLayout {
                 fontFamily = factory.fontFamily,
                 weight = SceneTextWeight.Normal,
                 spans = section.label.rendered.spans,
-                horizontalScale = KANBAN_TEXT_HORIZONTAL_SCALE,
+                horizontalScale = factory.horizontalScale,
                 horizontalAlignment = SceneTextAlignment.Center,
                 softWrap = true,
+                htmlLabel = true,
                 zIndex = SECTION_Z_START + section.index * SECTION_Z_STRIDE + 1,
             )
         }
@@ -193,6 +194,7 @@ internal class KanbanLayout {
                     fontSize = factory.fontSize,
                     lineHeight = factory.lineHeight,
                     fontFamily = factory.fontFamily,
+                    horizontalScale = factory.horizontalScale,
                     alignment = SceneTextAlignment.Start,
                     zIndex = paintBase + 1,
                 )
@@ -213,6 +215,7 @@ internal class KanbanLayout {
                         fontSize = factory.fontSize,
                         lineHeight = factory.lineHeight,
                         fontFamily = factory.fontFamily,
+                        horizontalScale = factory.horizontalScale,
                         alignment = SceneTextAlignment.Start,
                         zIndex = paintBase + 2,
                         underline = linked,
@@ -241,6 +244,7 @@ internal class KanbanLayout {
                         fontSize = factory.fontSize,
                         lineHeight = factory.lineHeight,
                         fontFamily = factory.fontFamily,
+                        horizontalScale = factory.horizontalScale,
                         alignment = SceneTextAlignment.Start,
                         zIndex = paintBase + 3,
                     )
@@ -350,11 +354,16 @@ private class KanbanNodeFactory(
 ) {
     val fontSize: Float = context.options.fontSize ?: context.theme.fontSize
     val fontFamily: String = context.options.fontFamily ?: context.theme.fontFamily
-    val lineHeight: Float = if (context.options.htmlLabels) {
-        HTML_LINE_HEIGHT
-    } else {
-        SVG_LINE_HEIGHT
-    }
+    val horizontalScale: Float =
+        if (fontFamily.equals(DEFAULT_MERMAID_FONT_FAMILY, ignoreCase = true)) {
+            KANBAN_TEXT_HORIZONTAL_SCALE
+        } else {
+            1f
+        }
+    // Mermaid.js 12.0.0: diagrams/kanban/kanbanRenderer.ts -> draw calls
+    // getConfig(), which returns a copy. Mutating conf.htmlLabels does not
+    // change the effective config read by kanbanSection and labelHelper.
+    val lineHeight: Float = HTML_LINE_HEIGHT
 
     fun measure(
         source: String,
@@ -380,7 +389,8 @@ private class KanbanNodeFactory(
                     fontFamily = fontFamily,
                     weight = SceneTextWeight.Normal,
                     spans = rendered.spans,
-                    horizontalScale = KANBAN_TEXT_HORIZONTAL_SCALE,
+                    horizontalScale = horizontalScale,
+                    htmlLabel = true,
                 ),
             )
         } catch (failure: Exception) {
@@ -479,7 +489,9 @@ private class KanbanNodeFactory(
         const val UPSTREAM_TITLE_WIDTH_REDUCTION = 10f
         const val ITEM_VERTICAL_PADDING = 20f
         const val HTML_LINE_HEIGHT = 1.5f
-        const val SVG_LINE_HEIGHT = 1.1f
+        const val DEFAULT_MERMAID_FONT_FAMILY =
+            "\"trebuchet ms\", verdana, arial, sans-serif"
+        const val KANBAN_TEXT_HORIZONTAL_SCALE = 0.98f
         const val THEME_COLOR_LIMIT = 12
         const val NEO_LOOK = "neo"
     }
@@ -528,6 +540,7 @@ private fun KanbanTextVisual.toSceneText(
     fontSize: Float,
     lineHeight: Float,
     fontFamily: String,
+    horizontalScale: Float,
     alignment: SceneTextAlignment,
     zIndex: Int,
     underline: Boolean = false,
@@ -542,6 +555,7 @@ private fun KanbanTextVisual.toSceneText(
     fontSize = fontSize,
     lineHeight = lineHeight,
     fontFamily = fontFamily,
+    horizontalScale = horizontalScale,
     alignment = alignment,
     zIndex = zIndex,
     underline = underline,
@@ -553,6 +567,7 @@ private fun KanbanTextVisual.toSceneText(
     fontSize: Float,
     lineHeight: Float,
     fontFamily: String,
+    horizontalScale: Float,
     alignment: SceneTextAlignment,
     zIndex: Int,
     underline: Boolean = false,
@@ -575,16 +590,13 @@ private fun KanbanTextVisual.toSceneText(
         fontFamily = fontFamily,
         weight = SceneTextWeight.Normal,
         spans = spans,
-        horizontalScale = KANBAN_TEXT_HORIZONTAL_SCALE,
+        horizontalScale = horizontalScale,
         horizontalAlignment = alignment,
         softWrap = true,
+        htmlLabel = true,
         zIndex = zIndex,
     )
 }
-
-// Mermaid.js 12.0.0 uses Trebuchet MS for Kanban labels. Compress the
-// bundled Arial-compatible Arimo advances to preserve its boundary wraps.
-private const val KANBAN_TEXT_HORIZONTAL_SCALE = 0.98f
 
 private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
     is SceneAsset -> element.bounds

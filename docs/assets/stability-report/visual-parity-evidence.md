@@ -7,11 +7,11 @@ visual parity matrix. Every page shows the same Mermaid source on the left in
 CMP Native and on the right in Mermaid.js 12.0.0.
 
 Current detail result:
-**22 families passing all 256 cases**,
-**11 families with review cases**, and
+**31 families passing all 256 cases**,
+**2 families with review cases**, and
 **0 families with hard detail failures**.
 Flowchart also has
-**11 hard per-edge topology failures**.
+**0 hard per-edge topology failures**.
 Each diagram title below carries its current PASS, REVIEW, or FAIL result.
 
 Flowchart uses its 256-case coverage-driven corpus. Every other family uses the
@@ -38,7 +38,7 @@ requirements because distinct legal inputs can intentionally produce
 equivalent geometry.
 
 <details>
-<summary><strong>Flowchart - 256 independent Native/Official scenarios - FAIL - detail 237 pass / 19 review / 0 fail; topology 245 pass / 0 review / 11 fail</strong></summary>
+<summary><strong>Flowchart - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail; topology 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Flowchart visual parity page 01](flowchart-visual-parity-01.jpg)
 
@@ -112,7 +112,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Architecture - 256 independent Native/Official scenarios - REVIEW - detail 67 pass / 189 review / 0 fail</strong></summary>
+<summary><strong>Architecture - 256 independent Native/Official scenarios - REVIEW - detail 251 pass / 5 review / 0 fail</strong></summary>
 
 ![Architecture visual parity page 01](architecture-visual-parity-01.jpg)
 
@@ -297,7 +297,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Quadrant Chart - 256 independent Native/Official scenarios - REVIEW - detail 230 pass / 26 review / 0 fail</strong></summary>
+<summary><strong>Quadrant Chart - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Quadrant Chart visual parity page 01](quadrant-visual-parity-01.jpg)
 
@@ -408,7 +408,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Class - 256 independent Native/Official scenarios - REVIEW - detail 221 pass / 35 review / 0 fail</strong></summary>
+<summary><strong>Class - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Class visual parity page 01](class-visual-parity-01.jpg)
 
@@ -445,7 +445,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>State - 256 independent Native/Official scenarios - REVIEW - detail 251 pass / 5 review / 0 fail</strong></summary>
+<summary><strong>State - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![State visual parity page 01](state-visual-parity-01.jpg)
 
@@ -482,7 +482,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Entity Relationship - 256 independent Native/Official scenarios - REVIEW - detail 148 pass / 108 review / 0 fail</strong></summary>
+<summary><strong>Entity Relationship - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Entity Relationship visual parity page 01](er-visual-parity-01.jpg)
 
@@ -519,7 +519,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Gantt - 256 independent Native/Official scenarios - REVIEW - detail 192 pass / 64 review / 0 fail</strong></summary>
+<summary><strong>Gantt - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Gantt visual parity page 01](gantt-visual-parity-01.jpg)
 
@@ -667,7 +667,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Git Graph - 256 independent Native/Official scenarios - REVIEW - detail 235 pass / 21 review / 0 fail</strong></summary>
+<summary><strong>Git Graph - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Git Graph visual parity page 01](gitgraph-visual-parity-01.jpg)
 
@@ -889,7 +889,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Venn - 256 independent Native/Official scenarios - REVIEW - detail 192 pass / 64 review / 0 fail</strong></summary>
+<summary><strong>Venn - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Venn visual parity page 01](venn-visual-parity-01.jpg)
 
@@ -926,7 +926,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Kanban - 256 independent Native/Official scenarios - REVIEW - detail 253 pass / 3 review / 0 fail</strong></summary>
+<summary><strong>Kanban - 256 independent Native/Official scenarios - REVIEW - detail 254 pass / 2 review / 0 fail</strong></summary>
 
 ![Kanban visual parity page 01](kanban-visual-parity-01.jpg)
 
@@ -1111,7 +1111,7 @@ equivalent geometry.
 </details>
 
 <details>
-<summary><strong>Agentflow - 256 independent Native/Official scenarios - REVIEW - detail 206 pass / 50 review / 0 fail</strong></summary>
+<summary><strong>Agentflow - 256 independent Native/Official scenarios - PASS - detail 256 pass / 0 review / 0 fail</strong></summary>
 
 ![Agentflow visual parity page 01](agentflow-visual-parity-01.jpg)
 

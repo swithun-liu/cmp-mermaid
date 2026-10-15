@@ -52,6 +52,52 @@ class MermaidPreprocessorTest {
     }
 
     @Test
+    fun preservesMermaid12AbsentRootHtmlLabelsSemantics() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                erDiagram
+                  ACCOUNT {
+                    int id PK
+                  }
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value
+
+        assertEquals(true, options.htmlLabels)
+        assertEquals(null, options.rootHtmlLabels)
+    }
+
+    @Test
+    fun preservesMermaid12RootHtmlLabelsPrecedenceAndRawValue() {
+        val result = MermaidPreprocessor.preprocess(
+            """
+                ---
+                config:
+                  htmlLabels: true
+                  flowchart:
+                    htmlLabels: false
+                ---
+                erDiagram
+                  ACCOUNT {
+                    int id PK
+                  }
+            """.trimIndent(),
+        )
+
+        val processed = assertIs<GMResult.Ok<MermaidPreprocessResult>>(result).value
+        val options = assertIs<GMResult.Ok<MermaidRenderOptions>>(
+            processed.config.applyTo(MermaidRenderOptions()),
+        ).value
+
+        assertEquals(true, options.htmlLabels)
+        assertEquals(true, options.rootHtmlLabels)
+    }
+
+    @Test
     fun directiveLayoutOverridesFrontmatterAndCallerOptions() {
         val result = MermaidPreprocessor.preprocess(
             """

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T13:32:58.024Z",
+  "generatedAt": "2026-10-14T18:07:32.477Z",
   "inputDirectory": "captures/local/independent-visual-parity-v2",
   "corpusSource": "visual-parity",
   "corpusKind": "quadrant",
@@ -9,245 +9,9 @@
   "gridSize": 96,
   "caseCount": 256,
   "counts": {
-    "pass": 230,
-    "review": 26
+    "pass": 256
   },
-  "reviewQueue": [
-    {
-      "id": "visual_quadrant_020",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_020_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_028",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_028_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_034",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_034_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_042",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_042_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_050",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_050_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_052",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_052_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_058",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_058_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_060",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_060_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_066",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_066_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_068",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_068_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_074",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_074_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_076",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_076_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_082",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_082_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_114",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_114_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_116",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_116_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_122",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_122_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_124",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_124_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_148",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_148_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_154",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_154_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_156",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_156_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_180",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_180_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_188",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_188_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_194",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_194_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_202",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_202_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_210",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_210_heatmap.png"
-    },
-    {
-      "id": "visual_quadrant_234",
-      "kind": "quadrant",
-      "status": "review",
-      "findingCodes": [
-        "text-overlap"
-      ],
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_234_heatmap.png"
-    }
-  ],
+  "reviewQueue": [],
   "cases": [
     {
       "id": "visual_quadrant_001",
@@ -3216,18 +2980,8 @@
     {
       "id": "visual_quadrant_020",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 2 pairs",
-          "pairs": [
-            "Order Allocate#0|Order Allocate#1",
-            "Order Receive#0|Order Receive#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -3242,7 +2996,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -3322,24 +3076,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 2,
-          "mismatches": [
-            "Order Allocate#0|Order Allocate#1",
-            "Order Receive#0|Order Receive#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Order Allocate#0|Order Allocate#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Order Receive#0|Order Receive#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -3391,7 +3131,7 @@
         "foregroundCells": 4970,
         "edgeCells": 1612
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_020_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_021",
@@ -4488,19 +4228,8 @@
     {
       "id": "visual_quadrant_028",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 3 pairs",
-          "pairs": [
-            "Order Activate#0|Order Activate#1",
-            "Order Fund#0|Order Fund#1",
-            "Order Redeem#0|Order Redeem#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -4515,7 +4244,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -4595,30 +4324,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 1,
-          "mismatches": [
-            "Order Activate#0|Order Activate#1",
-            "Order Fund#0|Order Fund#1",
-            "Order Redeem#0|Order Redeem#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Order Activate#0|Order Activate#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Order Fund#0|Order Fund#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Order Redeem#0|Order Redeem#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -4670,7 +4379,7 @@
         "foregroundCells": 4853,
         "edgeCells": 1573
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_028_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_029",
@@ -5455,17 +5164,8 @@
     {
       "id": "visual_quadrant_034",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Shipment Replan#0|Shipment Replan#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -5480,7 +5180,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -5559,19 +5259,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 3,
+          "nativeCount": 4,
           "officialCount": 4,
-          "mismatches": [
-            "Shipment Replan#0|Shipment Replan#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Shipment Replan#0|Shipment Replan#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -5623,7 +5315,7 @@
         "foregroundCells": 4809,
         "edgeCells": 1555
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_034_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_035",
@@ -6720,17 +6412,8 @@
     {
       "id": "visual_quadrant_042",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Shipment Close#0|Shipment Close#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -6745,7 +6428,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -6824,19 +6507,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 3,
+          "nativeCount": 4,
           "officialCount": 4,
-          "mismatches": [
-            "Shipment Close#0|Shipment Close#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Shipment Close#0|Shipment Close#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -6888,7 +6563,7 @@
         "foregroundCells": 4744,
         "edgeCells": 1492
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_042_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_043",
@@ -7985,17 +7660,8 @@
     {
       "id": "visual_quadrant_050",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Transaction Review#0|Transaction Review#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -8010,7 +7676,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -8089,19 +7755,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Transaction Review#0|Transaction Review#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Transaction Review#0|Transaction Review#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -8153,7 +7811,7 @@
         "foregroundCells": 4809,
         "edgeCells": 1590
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_050_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_051",
@@ -8314,17 +7972,8 @@
     {
       "id": "visual_quadrant_052",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Transaction Clear#0|Transaction Clear#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -8339,7 +7988,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -8419,18 +8068,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 3,
-          "mismatches": [
-            "Transaction Clear#0|Transaction Clear#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Transaction Clear#0|Transaction Clear#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -8482,7 +8123,7 @@
         "foregroundCells": 5012,
         "edgeCells": 1682
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_052_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_053",
@@ -9267,17 +8908,8 @@
     {
       "id": "visual_quadrant_058",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Transaction Assess#0|Transaction Assess#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -9292,7 +8924,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -9371,19 +9003,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Transaction Assess#0|Transaction Assess#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Transaction Assess#0|Transaction Assess#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -9435,7 +9059,7 @@
         "foregroundCells": 4744,
         "edgeCells": 1528
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_058_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_059",
@@ -9596,17 +9220,8 @@
     {
       "id": "visual_quadrant_060",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Transaction Post#0|Transaction Post#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -9621,7 +9236,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -9701,18 +9316,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 3,
-          "mismatches": [
-            "Transaction Post#0|Transaction Post#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Transaction Post#0|Transaction Post#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -9764,7 +9371,7 @@
         "foregroundCells": 4874,
         "edgeCells": 1642
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_060_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_061",
@@ -10549,19 +10156,8 @@
     {
       "id": "visual_quadrant_066",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 3 pairs",
-          "pairs": [
-            "Course Assess#0|Course Assess#1",
-            "Course Moderate#0|Course Moderate#1",
-            "Course Submit#0|Course Submit#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -10576,7 +10172,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -10656,30 +10252,10 @@
         },
         "overlapComparison": {
           "nativeCount": 3,
-          "officialCount": 0,
-          "mismatches": [
-            "Course Assess#0|Course Assess#1",
-            "Course Moderate#0|Course Moderate#1",
-            "Course Submit#0|Course Submit#1"
-          ],
+          "officialCount": 3,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Course Assess#0|Course Assess#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Moderate#0|Course Moderate#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Submit#0|Course Submit#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -10731,7 +10307,7 @@
         "foregroundCells": 4809,
         "edgeCells": 1550
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_066_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_067",
@@ -10892,19 +10468,8 @@
     {
       "id": "visual_quadrant_068",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 3 pairs",
-          "pairs": [
-            "Course Approve#0|Course Approve#1",
-            "Course Review#0|Course Review#1",
-            "Course Revise#0|Course Revise#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -10919,7 +10484,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -10999,30 +10564,10 @@
         },
         "overlapComparison": {
           "nativeCount": 3,
-          "officialCount": 0,
-          "mismatches": [
-            "Course Approve#0|Course Approve#1",
-            "Course Review#0|Course Review#1",
-            "Course Revise#0|Course Revise#1"
-          ],
+          "officialCount": 3,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Course Approve#0|Course Approve#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Review#0|Course Review#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Revise#0|Course Revise#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -11074,7 +10619,7 @@
         "foregroundCells": 4972,
         "edgeCells": 1604
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_068_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_069",
@@ -11859,18 +11404,8 @@
     {
       "id": "visual_quadrant_074",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 2 pairs",
-          "pairs": [
-            "Course Credit#0|Course Credit#1",
-            "Course Evaluate#0|Course Evaluate#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -11885,7 +11420,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -11965,24 +11500,10 @@
         },
         "overlapComparison": {
           "nativeCount": 2,
-          "officialCount": 0,
-          "mismatches": [
-            "Course Credit#0|Course Credit#1",
-            "Course Evaluate#0|Course Evaluate#1"
-          ],
+          "officialCount": 2,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Course Credit#0|Course Credit#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Evaluate#0|Course Evaluate#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -12034,7 +11555,7 @@
         "foregroundCells": 4744,
         "edgeCells": 1478
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_074_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_075",
@@ -12195,20 +11716,8 @@
     {
       "id": "visual_quadrant_076",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 4 pairs",
-          "pairs": [
-            "Course Authorize#0|Course Authorize#1",
-            "Course Review#0|Course Review#1",
-            "Course Screen#0|Course Screen#1",
-            "Course Submit#0|Course Submit#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -12223,7 +11732,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -12303,36 +11812,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 0,
-          "mismatches": [
-            "Course Authorize#0|Course Authorize#1",
-            "Course Review#0|Course Review#1",
-            "Course Screen#0|Course Screen#1",
-            "Course Submit#0|Course Submit#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Course Authorize#0|Course Authorize#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Review#0|Course Review#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Screen#0|Course Screen#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Course Submit#0|Course Submit#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -12384,7 +11867,7 @@
         "foregroundCells": 4866,
         "edgeCells": 1585
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_076_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_077",
@@ -13169,17 +12652,8 @@
     {
       "id": "visual_quadrant_082",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Work Order Classify#0|Work Order Classify#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -13194,7 +12668,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -13273,19 +12747,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Work Order Classify#0|Work Order Classify#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Work Order Classify#0|Work Order Classify#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -13337,7 +12803,7 @@
         "foregroundCells": 4809,
         "edgeCells": 1611
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_082_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_083",
@@ -18178,17 +17644,8 @@
     {
       "id": "visual_quadrant_114",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Grid Event Adjust#0|Grid Event Adjust#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -18203,7 +17660,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -18282,19 +17739,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Grid Event Adjust#0|Grid Event Adjust#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Grid Event Adjust#0|Grid Event Adjust#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -18346,7 +17795,7 @@
         "foregroundCells": 4809,
         "edgeCells": 1586
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_114_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_115",
@@ -18507,17 +17956,8 @@
     {
       "id": "visual_quadrant_116",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Grid Event Release#0|Grid Event Release#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -18532,7 +17972,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -18612,18 +18052,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 3,
-          "mismatches": [
-            "Grid Event Release#0|Grid Event Release#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Grid Event Release#0|Grid Event Release#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -18675,7 +18107,7 @@
         "foregroundCells": 5017,
         "edgeCells": 1702
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_116_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_117",
@@ -19460,17 +18892,8 @@
     {
       "id": "visual_quadrant_122",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Grid Event Contract#0|Grid Event Contract#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -19485,7 +18908,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -19564,19 +18987,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Grid Event Contract#0|Grid Event Contract#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Grid Event Contract#0|Grid Event Contract#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -19628,7 +19043,7 @@
         "foregroundCells": 4744,
         "edgeCells": 1542
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_122_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_123",
@@ -19789,17 +19204,8 @@
     {
       "id": "visual_quadrant_124",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Grid Event Connect#0|Grid Event Connect#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -19814,7 +19220,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 38,
@@ -19894,18 +19300,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 3,
-          "mismatches": [
-            "Grid Event Connect#0|Grid Event Connect#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Grid Event Connect#0|Grid Event Connect#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -19957,7 +19355,7 @@
         "foregroundCells": 4873,
         "edgeCells": 1637
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_124_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_125",
@@ -23550,18 +22948,8 @@
     {
       "id": "visual_quadrant_148",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 2 pairs",
-          "pairs": [
-            "Claim Reinstate#0|Claim Reinstate#1",
-            "Claim Retry#0|Claim Retry#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -23576,7 +22964,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -23656,24 +23044,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 2,
-          "mismatches": [
-            "Claim Reinstate#0|Claim Reinstate#1",
-            "Claim Retry#0|Claim Retry#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Claim Reinstate#0|Claim Reinstate#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            },
-            {
-              "key": "Claim Retry#0|Claim Retry#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -23725,7 +23099,7 @@
         "foregroundCells": 4871,
         "edgeCells": 1950
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_148_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_149",
@@ -24510,17 +23884,8 @@
     {
       "id": "visual_quadrant_154",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Claim Code#0|Claim Code#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -24535,7 +23900,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -24615,18 +23980,10 @@
         },
         "overlapComparison": {
           "nativeCount": 2,
-          "officialCount": 1,
-          "mismatches": [
-            "Claim Code#0|Claim Code#1"
-          ],
+          "officialCount": 2,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Claim Code#0|Claim Code#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -24678,7 +24035,7 @@
         "foregroundCells": 4637,
         "edgeCells": 1812
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_154_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_155",
@@ -24839,17 +24196,8 @@
     {
       "id": "visual_quadrant_156",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Claim Approve#0|Claim Approve#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -24864,7 +24212,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -24944,18 +24292,10 @@
         },
         "overlapComparison": {
           "nativeCount": 3,
-          "officialCount": 2,
-          "mismatches": [
-            "Claim Approve#0|Claim Approve#1"
-          ],
+          "officialCount": 3,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Claim Approve#0|Claim Approve#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -25007,7 +24347,7 @@
         "foregroundCells": 4789,
         "edgeCells": 1954
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_156_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_157",
@@ -28600,17 +27940,8 @@
     {
       "id": "visual_quadrant_180",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Field Task Deliver#0|Field Task Deliver#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -28625,7 +27956,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -28705,18 +28036,10 @@
         },
         "overlapComparison": {
           "nativeCount": 4,
-          "officialCount": 3,
-          "mismatches": [
-            "Field Task Deliver#0|Field Task Deliver#1"
-          ],
+          "officialCount": 4,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Field Task Deliver#0|Field Task Deliver#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -28768,7 +28091,7 @@
         "foregroundCells": 4908,
         "edgeCells": 2010
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_180_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_181",
@@ -29865,17 +29188,8 @@
     {
       "id": "visual_quadrant_188",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Field Task Map#0|Field Task Map#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -29890,7 +29204,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -29970,18 +29284,10 @@
         },
         "overlapComparison": {
           "nativeCount": 3,
-          "officialCount": 2,
-          "mismatches": [
-            "Field Task Map#0|Field Task Map#1"
-          ],
+          "officialCount": 3,
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Field Task Map#0|Field Task Map#1",
-              "nativeOverlap": 1,
-              "officialOverlap": 0
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -30033,7 +29339,7 @@
         "foregroundCells": 4769,
         "edgeCells": 1952
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_188_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_189",
@@ -30818,17 +30124,8 @@
     {
       "id": "visual_quadrant_194",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Service Ticket Repair#0|Service Ticket Repair#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -30843,7 +30140,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -30922,19 +30219,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Service Ticket Repair#0|Service Ticket Repair#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Service Ticket Repair#0|Service Ticket Repair#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -30986,7 +30275,7 @@
         "foregroundCells": 4670,
         "edgeCells": 1902
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_194_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_195",
@@ -32083,17 +31372,8 @@
     {
       "id": "visual_quadrant_202",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Service Ticket Issue#0|Service Ticket Issue#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -32108,7 +31388,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -32187,19 +31467,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Service Ticket Issue#0|Service Ticket Issue#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Service Ticket Issue#0|Service Ticket Issue#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -32251,7 +31523,7 @@
         "foregroundCells": 4613,
         "edgeCells": 1874
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_202_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_203",
@@ -33348,17 +32620,8 @@
     {
       "id": "visual_quadrant_210",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Property Case Negotiate#0|Property Case Negotiate#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -33373,7 +32636,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -33452,19 +32715,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 2,
+          "nativeCount": 3,
           "officialCount": 3,
-          "mismatches": [
-            "Property Case Negotiate#0|Property Case Negotiate#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Property Case Negotiate#0|Property Case Negotiate#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -33516,7 +32771,7 @@
         "foregroundCells": 4674,
         "edgeCells": 1913
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_210_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_211",
@@ -37109,17 +36364,8 @@
     {
       "id": "visual_quadrant_234",
       "kind": "quadrant",
-      "status": "review",
-      "findings": [
-        {
-          "severity": "review",
-          "code": "text-overlap",
-          "message": "Text-overlap topology differs for 1 pairs",
-          "pairs": [
-            "Study Publish#0|Study Publish#1"
-          ]
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "manifest": {
         "thresholds": {
           "maximumTextCenterDistance": 0.12,
@@ -37134,7 +36380,7 @@
           "maximumMarkerOcclusionDepthDifference": 0.01,
           "maximumMarkerOcclusionErrorDepthDifference": 0.03
         },
-        "status": "review",
+        "status": "pass",
         "native": {
           "renderer": "Native",
           "elementCount": 39,
@@ -37213,19 +36459,11 @@
           "ratioDifferences": []
         },
         "overlapComparison": {
-          "nativeCount": 3,
+          "nativeCount": 4,
           "officialCount": 4,
-          "mismatches": [
-            "Study Publish#0|Study Publish#1"
-          ],
+          "mismatches": [],
           "toleratedMismatches": [],
-          "ratioDifferences": [
-            {
-              "key": "Study Publish#0|Study Publish#1",
-              "nativeOverlap": 0,
-              "officialOverlap": 1
-            }
-          ]
+          "ratioDifferences": []
         }
       },
       "raster": {
@@ -37277,7 +36515,7 @@
         "foregroundCells": 4655,
         "edgeCells": 1828
       },
-      "heatmap": "captures/local/independent-visual-parity-v2/detail-diffs/quadrant/visual_quadrant_234_heatmap.png"
+      "heatmap": null
     },
     {
       "id": "visual_quadrant_235",

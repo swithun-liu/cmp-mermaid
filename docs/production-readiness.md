@@ -17,10 +17,12 @@ rated Stable. A successful build alone is not sufficient.
 - Production JavaScript runtime: none; ELK requests return structured
   `UnsupportedFeature`
 - Official Mermaid families: 33
-- Implemented families: 33; pending translations: 0
+- Implemented families: 33; pending translation: Architecture's legal
+  `randomize: true` spectral/Matrix/SVD path
 - Release status: **Not Stable** because legal `look: handDrawn` input remains
-  explicitly unsupported and the refreshed Flowchart corpus retains 11
-  per-edge routing mismatches
+  explicitly unsupported, Architecture `randomize: true` is unsupported, and
+  seven detail cases remain under review: five Architecture and two Kanban;
+  two core regression tests fail on both JVM and Wasm
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
   Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
   User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey,
@@ -28,10 +30,9 @@ rated Stable. A successful build alone is not sufficient.
   Swimlanes, Architecture, C4, Railroad, TreeView, Use Case, Wardley Map, and
   ZenUML
   (`8,448/8,448` coverage-driven input cases processed;
-  `7,864 pass / 584 review / 0 fail`;
-  geometry has 0 hard failures and 155 review findings across 121 Architecture
-  cases)
-- Flowchart per-edge topology: `245 pass / 11 fail`
+  `8,441 pass / 7 review / 0 fail`;
+  geometry has `0 fail / 0 review`)
+- Flowchart per-edge topology: `256 pass / 0 fail`
 - Pending replacement detail gates: none
 - Detailed conformance scope:
   [`production-capability-matrix.md`](production-capability-matrix.md)
@@ -48,7 +49,7 @@ contract.
 
 | Gate | Requirement | Current evidence | Status |
 | --- | --- | --- | --- |
-| Visual fidelity | No known semantic or major visual mismatch in every family corpus | 441 independent production pairs plus 8,448/8,448 coverage-driven visual-input pairs; 528 contact sheets regenerated; 0 detail or geometry hard failures; Flowchart topology 245 pass / 11 fail | Blocked by Flowchart routing |
+| Visual fidelity | No known semantic or major visual mismatch in every family corpus | 441 independent production pairs plus 8,448/8,448 coverage-driven visual-input pairs; 528 contact sheets regenerated; 0 detail hard failures; 0 geometry reviews; Flowchart topology 256 pass / 0 fail; Architecture retains 5 detail reviews and Kanban retains 2 | Under review |
 | Capability coverage | Every Mermaid 12.0.0 family and declared major capability has an independent conformance case | 738/738 points across all 33 families | Passing |
 | Determinism | Repeated rendering returns the same SceneGraph | Full 441-case corpus equality test | Passing |
 | Theme compatibility | Every implemented diagram family renders with every applicable built-in theme | 33 by 11 matrix: 363/363 renders | Passing |
@@ -160,9 +161,12 @@ defects.
 
 All 33 families have completed the replacement detail, geometry, and manual
 review runs for their current classic-look evidence. The full Mermaid `12.0.0`
-rule is not yet satisfied because the refreshed Flowchart route audit retains
-11 failures and RoughJS-backed `look: handDrawn` remains explicitly
-unsupported. The former coarse geometry check missed a visible Git Graph
+rule is not yet satisfied because Architecture's legal `randomize: true`
+spectral/Matrix/SVD path and RoughJS-backed `look: handDrawn` remain explicitly
+unsupported; seven detail cases also remain under review: five Architecture
+and two Kanban. Two core regression tests also fail on both JVM and Wasm:
+multiple Dagre self-loops and deterministic ER stress. The former coarse
+geometry check missed a visible Git Graph
 paint-order defect; that defect is corrected. The load and soak values above
 remain explicitly identified as retained historical baselines and are not
 presented as a fresh 441-case performance rerun.

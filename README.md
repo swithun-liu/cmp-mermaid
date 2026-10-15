@@ -35,9 +35,11 @@
 > `12.0.0`.** Swimlanes has been revalidated after a direct upstream
 > translation: its classic-look production, 256-case visual, and per-edge
 > topology gates are current. The overall Mermaid `12.0.0` contract remains
-> **not Stable** because the refreshed Flowchart corpus retains 11 per-edge
-> routing mismatches and legal `look: handDrawn` input returns the documented
-> `MermaidError.UnsupportedFeature` boundary instead of approximating rough.js.
+> **not Stable** because Architecture's legal `randomize: true` path and legal
+> `look: handDrawn` input return documented `MermaidError.UnsupportedFeature`
+> results, and seven detail cases remain under review: five Architecture and
+> two Kanban. Two core regression tests also currently fail on both JVM and
+> Wasm: multiple Dagre self-loops and deterministic ER stress.
 >
 > The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
 > gives every family 256 real, label-normalized Mermaid sources. Flowchart
@@ -63,8 +65,8 @@ geometry gates.
 | --- | ---: |
 | Official Mermaid diagram families | 33 |
 | Implemented diagram families | 33/33 |
-| Translation pending | 0 |
-| Flowchart per-edge topology | 245 pass, 11 fail |
+| Translation pending | Architecture `randomize: true` spectral/Matrix/SVD path; non-default packing, tiling, radial, and bendpoint branches remain mapped unsupported |
+| Flowchart per-edge topology | 256 pass, 0 fail |
 | Independent production scenarios | 441 Native/Official pairs |
 | Declared capability coverage | 738/738 |
 | Independent-scenario visual matrix | 8,448 Native/Official pairs; Flowchart has its dedicated 256-case corpus and every other family has all 256 combinations of eight capability axes |
@@ -73,13 +75,13 @@ geometry gates.
 | Text/layout stress inputs | 8,448 byte-distinct inputs derived from the 441 production scenarios; tracked separately and not counted as structural coverage |
 | Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Source-mutation parity | 8,448/8,448 Official accept/reject outcomes matched: 2,156 accepted and 6,292 rejected; every Native rejection was `CONTENT_ERROR`; 0 crashes or timeouts |
-| Independent-scenario detail audit | 33 families: 7,864 pass, 584 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 155 review findings across 121 cases; all findings come from seeded Architecture fCoSE cases |
+| Independent-scenario detail audit | 33 families: 8,441 pass, 7 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 pairs: 0 failure, 0 review findings |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | 1,041 passed, 0 failed |
-| Wasm tests | Core and Compose: 1,031 passed, 0 failed; debug UI: 7 passed, 0 failed |
+| JVM tests | Core: 1,017 passed, 2 failed; Compose: 38 passed, 0 failed |
+| Wasm tests | Core: 1,015 passed, 2 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -147,7 +149,7 @@ regressions:
 
 | Diagram | Status | Production cases | Main coverage | Details |
 | --- | :---: | ---: | --- | --- |
-| Flowchart | Detail reviewed; topology gaps | 14 | Jison/FlowDB, Dagre, shapes, links, Markdown/HTML labels; topology 245 pass / 11 fail | [Compatibility](docs/flowchart-compatibility.md) |
+| Flowchart | Detail and topology gates passed | 14 | Jison/FlowDB, Dagre, shapes, links, Markdown/HTML labels; topology 256 pass / 0 fail | [Compatibility](docs/flowchart-compatibility.md) |
 | XY Chart | Detail gate passed | 13 | Jison/XY DB, D3 scales and ticks, bar/line plots, labels | [Compatibility](docs/xychart-compatibility.md) |
 | Quadrant Chart | Detail gate passed | 13 | Axes, quadrants, points, classes, direct styles, themes | [Compatibility](docs/quadrant-compatibility.md) |
 | Timeline | Detail gate passed | 13 | LR/TD layouts, sections, periods, events, color scales, themes | [Compatibility](docs/timeline-compatibility.md) |
@@ -173,7 +175,7 @@ regressions:
 | Agentflow | Detail gate passed | 13 | Jison grammar, typed nodes and edges, nested/global/collapsed flows, connectors, metadata, Dagre | [Compatibility](docs/agentflow-compatibility.md) |
 | Block | Detail gate passed | 13 | Jison grammar, grids, spans, composites, shapes, block arrows, links, classes, styles | [Compatibility](docs/block-compatibility.md) |
 | Swimlanes | Revalidated; handDrawn unsupported | 13 | Direct upstream lane-aware Sugiyama translation, orthogonal routing, direction transforms, 256/256 topology pass | [Compatibility](docs/swimlanes-compatibility.md) |
-| Architecture | Detail gate passed | 13 | Langium grammar, services, groups, junctions, directional edges, constrained fCoSE layout, icons | [Compatibility](docs/architecture-compatibility.md) |
+| Architecture | Default layout translated; 5 detail reviews; `randomize: true` unsupported | 13 | Langium grammar, services, groups, junctions, directional edges, constrained fCoSE layout, icons | [Compatibility](docs/architecture-compatibility.md) |
 | C4 | Detail gate passed | 13 | Five C4 levels, nested boundaries, deployment nodes, relation variants, styles, and configuration | [Compatibility](docs/c4-compatibility.md) |
 | Railroad | Detail gate passed | 18 | Railroad IR, EBNF, ABNF, PEG, shared AST, routed grammar paths, styles, and configuration | [Compatibility](docs/railroad-compatibility.md) |
 | TreeView | Detail gate passed | 13 | Indentation and box-drawing syntax, hierarchy, annotations, descriptions, icons, styles, and configuration | [Compatibility](docs/treeview-compatibility.md) |

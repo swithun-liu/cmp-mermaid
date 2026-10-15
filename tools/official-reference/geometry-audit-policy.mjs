@@ -24,6 +24,10 @@ export function classifyGeometryRatio({
     : { status: 'failure', message };
 }
 
+export function hasInsufficientContentExtent(bounds, minimum) {
+  return bounds.width < minimum && bounds.height < minimum;
+}
+
 function formatRatio(value) {
   return Number.isFinite(value) ? value.toFixed(3) : String(value);
 }

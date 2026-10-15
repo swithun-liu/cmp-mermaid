@@ -1,112 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T12:35:59.751Z",
-  "inputDirectory": "captures/local/independent-visual-parity-v2/flowchart",
+  "generatedAt": "2026-10-14T11:14:57.163Z",
+  "inputDirectory": "captures/local/flowchart-final-256-brace-translation",
   "casePrefix": "visual_flowchart_",
   "caseCount": 256,
   "counts": {
-    "pass": 245,
-    "fail": 11
+    "pass": 256
   },
-  "failures": [
-    {
-      "id": "visual_flowchart_058",
-      "findingCodes": [
-        "edge-set-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_105",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_106",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_107",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_108",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_109",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_110",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_111",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_112",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_192",
-      "findingCodes": [
-        "diagonal-segment-mismatch",
-        "direction-sequence-mismatch",
-        "source-port-side-mismatch",
-        "destination-port-side-mismatch"
-      ]
-    },
-    {
-      "id": "visual_flowchart_248",
-      "findingCodes": [
-        "bend-count-mismatch",
-        "direction-sequence-mismatch",
-        "destination-port-side-mismatch",
-        "diagonal-segment-mismatch",
-        "source-port-side-mismatch"
-      ]
-    }
-  ],
+  "failures": [],
   "cases": [
     {
       "id": "visual_flowchart_001",
@@ -2557,17 +2458,34 @@
     },
     {
       "id": "visual_flowchart_058",
-      "status": "fail",
-      "findings": [
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 1,
+      "officialEdgeCount": 1,
+      "edges": [
         {
-          "severity": "error",
-          "code": "edge-set-mismatch",
-          "message": "edge IDs differ: Native=[]; Official=[\"L_A_B_0\"]"
+          "edgeId": "L_A_B_0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
         }
       ],
-      "nativeEdgeCount": 0,
-      "officialEdgeCount": 1,
-      "edges": [],
       "nativeRelationships": {
         "sharedTracks": [],
         "strictCrossings": [],
@@ -8915,29 +8833,8 @@
     },
     {
       "id": "visual_flowchart_105",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_A_A_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_A_A_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_A_A_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_A_A_0 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -8947,12 +8844,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -8965,12 +8862,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_A_B_0",
@@ -9098,29 +8990,8 @@
     },
     {
       "id": "visual_flowchart_106",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_A_A_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_A_A_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_A_A_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_A_A_0 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -9130,12 +9001,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -9148,12 +9019,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_A_B_0",
@@ -9281,29 +9147,8 @@
     },
     {
       "id": "visual_flowchart_107",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_A_A_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_A_A_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_A_A_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_A_A_0 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -9313,12 +9158,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -9331,12 +9176,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_A_B_0",
@@ -9464,29 +9304,8 @@
     },
     {
       "id": "visual_flowchart_108",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_A_A_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_A_A_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_A_A_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_A_A_0 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -9496,12 +9315,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -9514,12 +9333,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_A_B_0",
@@ -9647,29 +9461,8 @@
     },
     {
       "id": "visual_flowchart_109",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "e1 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "e1 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "e1 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "e1 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -9791,12 +9584,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -9809,12 +9602,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         }
       ],
       "nativeRelationships": {
@@ -9830,29 +9618,8 @@
     },
     {
       "id": "visual_flowchart_110",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_A_A_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_A_A_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_A_A_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_A_A_0 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -9862,12 +9629,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -9880,12 +9647,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_A_B_0",
@@ -10013,29 +9775,8 @@
     },
     {
       "id": "visual_flowchart_111",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_A_A_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_A_A_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_A_A_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_A_A_0 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -10045,12 +9786,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -10063,12 +9804,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_A_B_0",
@@ -10196,29 +9932,8 @@
     },
     {
       "id": "visual_flowchart_112",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_A_A_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_A_A_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_A_A_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_A_A_0 destination port side differs: Native=\"Right\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 6,
       "officialEdgeCount": 6,
       "edges": [
@@ -10228,12 +9943,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -10246,12 +9961,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_A_B_0",
@@ -28800,29 +28510,8 @@
     },
     {
       "id": "visual_flowchart_192",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_C_C_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_C_C_0 direction sequence differs: Native=[\"D\",\"R\",\"U\"]; Official=[\"Diagonal\",\"R\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_C_C_0 source port side differs: Native=\"Bottom\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_C_C_0 destination port side differs: Native=\"Bottom\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 7,
       "officialEdgeCount": 7,
       "edges": [
@@ -28904,12 +28593,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "D",
+              "Diagonal",
               "R",
-              "U"
+              "Diagonal"
             ],
-            "sourcePortSide": "Bottom",
-            "destinationPortSide": "Bottom"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -28922,12 +28611,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_C_D_0",
@@ -34210,59 +33894,8 @@
     },
     {
       "id": "visual_flowchart_248",
-      "status": "fail",
-      "findings": [
-        {
-          "severity": "error",
-          "code": "bend-count-mismatch",
-          "message": "L_B_D_0 bend count differs: Native=1; Official=2"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_B_D_0 direction sequence differs: Native=[\"Diagonal\",\"R\"]; Official=[\"Diagonal\",\"R\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_B_D_0 destination port side differs: Native=\"Left\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "diagonal-segment-mismatch",
-          "message": "L_C_C_0 diagonal segment presence differs: Native=false; Official=true"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_C_C_0 direction sequence differs: Native=[\"R\",\"D\",\"L\"]; Official=[\"Diagonal\",\"D\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_C_C_0 source port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "destination-port-side-mismatch",
-          "message": "L_C_C_0 destination port side differs: Native=\"Right\"; Official=null"
-        },
-        {
-          "severity": "error",
-          "code": "bend-count-mismatch",
-          "message": "L_E_A_0 bend count differs: Native=1; Official=2"
-        },
-        {
-          "severity": "error",
-          "code": "direction-sequence-mismatch",
-          "message": "L_E_A_0 direction sequence differs: Native=[\"L\",\"Diagonal\"]; Official=[\"Diagonal\",\"L\",\"Diagonal\"]"
-        },
-        {
-          "severity": "error",
-          "code": "source-port-side-mismatch",
-          "message": "L_E_A_0 source port side differs: Native=\"Left\"; Official=null"
-        }
-      ],
+      "status": "pass",
+      "findings": [],
       "nativeEdgeCount": 9,
       "officialEdgeCount": 9,
       "edges": [
@@ -34341,14 +33974,15 @@
         {
           "edgeId": "L_B_D_0",
           "native": {
-            "pointCount": 3,
-            "bendCount": 1,
+            "pointCount": 4,
+            "bendCount": 2,
             "directionSequence": [
               "Diagonal",
-              "R"
+              "R",
+              "Diagonal"
             ],
             "sourcePortSide": null,
-            "destinationPortSide": "Left"
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -34361,11 +33995,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "bend-count-mismatch",
-            "direction-sequence-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_C_C_0",
@@ -34373,12 +34003,12 @@
             "pointCount": 4,
             "bendCount": 2,
             "directionSequence": [
-              "R",
+              "Diagonal",
               "D",
-              "L"
+              "Diagonal"
             ],
-            "sourcePortSide": "Right",
-            "destinationPortSide": "Right"
+            "sourcePortSide": null,
+            "destinationPortSide": null
           },
           "official": {
             "pointCount": 4,
@@ -34391,12 +34021,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "diagonal-segment-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch",
-            "destination-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_C_D_0",
@@ -34447,13 +34072,14 @@
         {
           "edgeId": "L_E_A_0",
           "native": {
-            "pointCount": 3,
-            "bendCount": 1,
+            "pointCount": 4,
+            "bendCount": 2,
             "directionSequence": [
+              "Diagonal",
               "L",
               "Diagonal"
             ],
-            "sourcePortSide": "Left",
+            "sourcePortSide": null,
             "destinationPortSide": null
           },
           "official": {
@@ -34467,11 +34093,7 @@
             "sourcePortSide": null,
             "destinationPortSide": null
           },
-          "findingCodes": [
-            "bend-count-mismatch",
-            "direction-sequence-mismatch",
-            "source-port-side-mismatch"
-          ]
+          "findingCodes": []
         },
         {
           "edgeId": "L_E_C_0",

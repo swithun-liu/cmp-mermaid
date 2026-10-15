@@ -5,8 +5,11 @@
 > families, including the directly retranslated Swimlanes implementation.
 > Swimlanes classic-look gates are complete, but Swimlanes remains
 > **not Stable** because the legal RoughJS-backed `look: handDrawn` capability
-> returns a structured unsupported result. The overall contract is also
-> blocked by 11 Flowchart per-edge topology failures. Kotlin
+> returns a structured unsupported result. Architecture also remains
+> non-Stable because legal `randomize: true` input returns a structured
+> unsupported result. Seven detail cases remain under review: five
+> Architecture and two Kanban. Two core regression tests also fail on both
+> JVM and Wasm. Kotlin
 > 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS now have separate fresh 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
@@ -23,7 +26,7 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Not Stable: Flowchart has 11 topology failures and `look: handDrawn` is unsupported** |
+| Current rating | **Not Stable: Architecture `randomize: true` and `look: handDrawn` are unsupported; 5 Architecture and 2 Kanban cases remain under review; 2 core regression tests fail on JVM and Wasm** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Implemented families | 33/33; all 33 family evidence gates current |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
@@ -36,14 +39,14 @@ stress inputs.
 | Native core render results | 441 production scenarios and all 8,448 independent visual scenarios render successfully; the text/layout stress inputs are tracked separately |
 | Web Native/Official captures | 16,896 independent-scenario screenshots plus 882 independent-corpus and 16,896 malformed-source screenshots |
 | Visual evidence | 528 freshly generated independent-scenario sheets plus 528 source-mutation sheets across all 33 families |
-| Independent-scenario detail audit | 8,448/8,448 processed: 7,864 pass, 584 review, 0 fail |
-| Automated visual geometry | 8,448/8,448 processed: 0 failure, 155 review findings across 121 cases |
-| Flowchart per-edge topology | 256 processed: 245 pass, 11 fail |
+| Independent-scenario detail audit | 8,448/8,448 processed: 8,441 pass, 7 review, 0 fail |
+| Automated visual geometry | 8,448/8,448 processed: 0 failure, 0 review findings |
+| Flowchart per-edge topology | 256 processed: 256 pass, 0 fail |
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | 1,041 passed, 0 failed |
-| Wasm tests | Core and Compose: 1,031 passed, 0 failed; debug UI: 7 passed, 0 failed |
+| JVM tests | Core: 1,017 passed, 2 failed; Compose: 38 passed, 0 failed |
+| Wasm tests | Core: 1,015 passed, 2 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -51,13 +54,15 @@ stress inputs.
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 
-**Current conclusion:** all fresh Swimlanes Native core, DDLT, detail,
-geometry, per-edge topology, contact-sheet, JVM, Wasm, and production gates
-are complete. The refreshed Flowchart corpus also exposes 11 unresolved
-per-edge topology mismatches. The overall Mermaid `12.0.0` contract remains
-**not Stable** because of those routing mismatches and because legal
-`look: handDrawn` input is explicitly unsupported rather than silently
-approximated.
+**Current conclusion:** the fresh Flowchart detail, geometry, per-edge
+topology, and contact-sheet gates pass. The affected-family targeted JVM tests,
+Compose/debug UI Wasm tests, and Wasm production build pass. The overall
+Mermaid `12.0.0` contract remains **not Stable** because Architecture's legal
+`randomize: true` spectral path and legal `look: handDrawn` input are
+explicitly unsupported rather than silently approximated; five Architecture
+and two Kanban detail cases also remain under review. Multiple Dagre
+self-loops and deterministic ER stress currently fail in core on both JVM and
+Wasm.
 
 ## AI-Like Source-Mutation Safety Gate
 
@@ -132,70 +137,61 @@ because distinct legal inputs can intentionally produce equivalent geometry.
 
 Detail review findings are retained as explicit representation differences:
 
-- text position: 243 findings;
-- text overlap: 211 findings;
-- raster mask, edge, or color: 198 findings;
-- equivalent element-count representation: 168 findings;
-- marker depth/reference occlusion: 20 findings;
-- paint-order occlusion: 12 findings;
-- stroke-pattern representation: 9 findings.
+- text position: 3 findings;
+- text overlap: 87 findings;
+- raster mask: 5 findings;
 
 These categories may co-occur within one case. No expected-text loss,
 clipping error, or hard detail/geometry failure was recorded. The geometry
-gate retains 155 review findings across 121 Architecture cases: 52 width,
-36 height, 55 foreground-ink, and 12 paint-order findings. These seeded
-iterative fCoSE placement differences remain visible rather than being hidden
-with broader thresholds.
+gate reports `0 fail / 0 review` across all 8,448 pairs.
 
 | Family | Pass | Review | Width ratio | Height ratio | Ink ratio |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Flowchart | 237 | 19 | `1.022-1.167` | `0.940-1.245` | `0.849-1.276` |
+| Flowchart | 256 | 0 | `1.028-1.167` | `0.953-1.173` | `0.818-1.347` |
 | Swimlanes | 256 | 0 | `1.032-1.057` | `1.017-1.056` | `0.978-1.127` |
-| Architecture | 67 | 189 | `0.717-2.218` | `0.454-1.336` | `0.313-3.535` |
+| Architecture | 251 | 5 | `0.990-1.090` | `0.959-1.173` | `0.978-1.184` |
 | C4 | 256 | 0 | `0.985-1.086` | `1.044-1.062` | `1.063-1.119` |
 | Railroad | 256 | 0 | `1.003-1.110` | `1.023-1.101` | `1.051-1.215` |
 | TreeView | 256 | 0 | `0.994-1.066` | `0.970-1.035` | `0.902-1.062` |
 | XY Chart | 256 | 0 | `1.012-1.014` | `1.009-1.012` | `0.934-1.091` |
-| Quadrant | 230 | 26 | `1.014-1.035` | `1.016-1.025` | `1.026-1.037` |
+| Quadrant | 256 | 0 | `1.014-1.035` | `1.016-1.025` | `1.026-1.037` |
 | Timeline | 256 | 0 | `1.026-1.064` | `1.000-1.074` | `1.020-1.159` |
-| Kanban | 253 | 3 | `1.012-1.088` | `0.829-1.154` | `0.998-1.129` |
+| Kanban | 254 | 2 | `1.012-1.088` | `0.927-1.172` | `0.992-1.139` |
 | Sequence | 256 | 0 | `0.978-1.169` | `1.013-1.171` | `0.957-1.255` |
-| Class | 221 | 35 | `1.036-1.217` | `0.870-1.085` | `0.843-1.252` |
-| State | 251 | 5 | `0.978-1.069` | `1.013-1.186` | `0.823-1.175` |
-| Entity Relationship | 148 | 108 | `0.956-1.081` | `0.968-1.173` | `0.599-1.048` |
-| Gantt | 192 | 64 | `1.034-1.037` | `0.927-0.957` | `0.921-1.029` |
+| Class | 256 | 0 | `1.036-1.219` | `0.870-1.085` | `0.853-1.270` |
+| State | 256 | 0 | `0.978-1.069` | `1.013-1.186` | `0.801-1.175` |
+| Entity Relationship | 256 | 0 | `1.029-1.079` | `1.004-1.061` | `0.548-0.979` |
+| Gantt | 256 | 0 | `1.034-1.037` | `0.927-0.957` | `0.921-1.029` |
 | Pie | 256 | 0 | `1.004-1.065` | `0.991-1.015` | `0.988-1.039` |
 | User Journey | 256 | 0 | `0.979-1.032` | `0.919-1.055` | `0.828-1.090` |
 | Requirement | 256 | 0 | `1.027-1.071` | `1.006-1.055` | `0.954-1.104` |
-| Git Graph | 235 | 21 | `1.063-1.155` | `1.059-1.137` | `1.066-1.418` |
+| Git Graph | 256 | 0 | `1.063-1.155` | `1.059-1.137` | `1.066-1.419` |
 | Mindmap | 256 | 0 | `1.023-1.113` | `0.809-1.106` | `0.927-1.141` |
 | Packet | 256 | 0 | `1.010-1.023` | `1.000-1.067` | `0.993-1.071` |
 | Radar | 256 | 0 | `1.012-1.037` | `1.018-1.020` | `1.034-1.038` |
 | Sankey | 256 | 0 | `1.053-1.053` | `1.052-1.053` | `1.109-1.112` |
 | Treemap | 256 | 0 | `1.037-1.038` | `1.032-1.034` | `1.069-1.085` |
-| Venn | 192 | 64 | `1.011-1.023` | `1.003-1.011` | `1.015-1.030` |
+| Venn | 256 | 0 | `1.011-1.023` | `1.005-1.011` | `1.016-1.031` |
 | Ishikawa | 256 | 0 | `1.038-1.119` | `1.028-1.098` | `1.034-1.227` |
 | Cynefin | 256 | 0 | `1.013-1.018` | `1.011-1.015` | `1.012-1.051` |
 | Block | 256 | 0 | `1.018-1.086` | `0.934-1.070` | `0.967-1.128` |
 | Event Modeling | 256 | 0 | `1.019-1.063` | `1.017-1.092` | `0.964-1.186` |
-| Agentflow | 206 | 50 | `1.023-1.196` | `0.930-1.194` | `0.830-1.153` |
+| Agentflow | 256 | 0 | `1.023-1.196` | `0.922-1.126` | `0.816-1.152` |
 | Use Case | 256 | 0 | `1.022-1.094` | `0.972-1.059` | `0.979-1.133` |
 | Wardley Map | 256 | 0 | `1.008-1.008` | `1.019-1.020` | `1.016-1.095` |
 | ZenUML | 256 | 0 | `1.041-1.093` | `1.042-1.089` | `1.013-1.265` |
 All 528 independent-scenario contact sheets were regenerated from the same 8,448
-source cases recorded in the manifest. The 584 detail-review cases are
-distributed as follows: Architecture 189, Entity Relationship 108, Venn 64,
-Gantt 64, Agentflow 50, Class 35, Quadrant 26, Git Graph 21, Flowchart 19,
-State 5, and Kanban 3. The other 22 families pass all 256 detail
-cases automatically.
+source cases recorded in the manifest. The 7 detail-review cases are
+distributed as follows: Architecture 5 and Kanban 2. The other 31 families
+pass all 256 detail cases automatically.
 Per-family compatibility
 pages and machine-readable reports preserve the individual findings and
 geometry ranges.
 
 The table contains the fresh direct-translation run. It does not make the
-overall Mermaid `12.0.0` contract Stable: Flowchart retains 11 strict topology
-failures, and Swimlanes `look: handDrawn` remains a mapped
-`UnsupportedFeature`.
+overall Mermaid `12.0.0` contract Stable: Architecture `randomize: true` and
+Swimlanes `look: handDrawn` remain mapped `UnsupportedFeature` results, and
+seven detail cases remain under review: five Architecture and two Kanban.
 
 ## What This Report Does And Does Not Prove
 
@@ -249,39 +245,39 @@ use `prod_`. Neither set can be resolved through the normal demo gallery.
 
 | Diagram | Production cases | Capability points | Scenario examples | Current visual result |
 | --- | ---: | ---: | --- | --- |
-| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Production evidence retained; coverage-driven detail 237 pass / 19 review / 0 fail; topology 245 pass / 11 fail; 16/16 sheets regenerated |
+| Flowchart | 14 | 16/16 | orchestration, edge semantics, advanced shapes, nested domains | Production evidence retained; coverage-driven detail 256 pass / 0 review / 0 fail; topology 256 pass / 0 fail; 16/16 sheets regenerated |
 | XY Chart | 13 | 16/16 | latency, categorical and numeric axes, horizontal labels, mixed plots | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Quadrant Chart | 13 | 17/17 | axes, quadrant labels, boundary points, styles, themes | Production evidence retained; independent-scenario matrix 230 pass / 26 review / 0 fail; 16/16 sheets regenerated |
+| Quadrant Chart | 13 | 17/17 | axes, quadrant labels, boundary points, styles, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Timeline | 13 | 16/16 | directions, sections, periods, events, color scales, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Sequence | 14 | 16/16 | checkout saga, lifecycle, self messages, parallel and critical regions | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Class | 13 | 16/16 | commerce, namespaces, generics, relations, annotations | Production evidence retained; independent-scenario matrix 221 pass / 35 review / 0 fail; 16/16 sheets regenerated |
-| State | 13 | 16/16 | fulfillment, nested composites, fork/join, concurrency, notes | Production evidence retained; independent-scenario matrix 251 pass / 5 review / 0 fail; 16/16 sheets regenerated |
-| Entity Relationship | 13 | 16/16 | commerce, aliases, attributes, cardinalities, nested subgraphs | Production evidence retained; independent-scenario matrix 148 pass / 108 review / 0 fail; 16/16 sheets regenerated |
-| Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Production evidence retained; independent-scenario matrix 192 pass / 64 review / 0 fail; 16/16 sheets regenerated |
+| Class | 13 | 16/16 | commerce, namespaces, generics, relations, annotations | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
+| State | 13 | 16/16 | fulfillment, nested composites, fork/join, concurrency, notes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
+| Entity Relationship | 13 | 16/16 | commerce, aliases, attributes, cardinalities, nested subgraphs | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
+| Gantt | 13 | 16/16 | release plans, date units, exclusions, top axes, vertical markers | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Pie | 13 | 16/16 | cost, escaped labels, donut, legends, themes, many slices | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | User Journey | 13 | 16/16 | sections, scores, actor order, metadata, configuration, long text | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Requirement | 13 | 17/17 | typed requirements, elements, relationships, directions, styling, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Production evidence retained; independent-scenario matrix 235 pass / 21 review / 0 fail; 16/16 sheets regenerated |
+| Git Graph | 13 | 24/24 | commits, branches, merges, cherry-picks, orientations, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Mindmap | 13 | 22/22 | hierarchy, shapes, text, CoSE-Bilkent, Dagre, tidy tree, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Packet | 13 | 17/17 | explicit and counted fields, packet-beta, row splitting, metadata, configuration, responsive sizing | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Radar | 13 | 25/25 | axes, curve entry forms, value ranges, graticules, legends, metadata, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Sankey | 13 | 27/27 | CSV records, D3 Sankey layout, all alignments, value labels, link and node colors, configuration | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Treemap | 13 | 39/39 | hierarchy, multiple roots, D3 squarify layout, classes, values and formats, metadata, dimensions, fonts, responsive sizing | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Venn | 13 | 38/38 | weighted sets and intersections, Venn.js/fmin optimization, pairwise completion, text nodes, styles, dimensions, debug layout, themes | Production evidence retained; independent-scenario matrix 192 pass / 64 review / 0 fail; 16/16 sheets regenerated |
+| Venn | 13 | 38/38 | weighted sets and intersections, Venn.js/fmin optimization, pairwise completion, text nodes, styles, dimensions, debug layout, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Ishikawa | 13 | 21/21 | headers, effect and root-only forms, indentation hierarchy, alternating branches, recursive descendants, fish-head geometry, wrapping, entities, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Cynefin | 13 | 30/30 | headers, five domains, fixed layout, items, transitions, confusion overflow, seeded boundaries, dimensions, themes, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Event Modeling | 13 | 22/22 | frame forms, entity aliases, swimlanes, inferred/explicit relations, inline data, reset behavior, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Agentflow | 13 | 32/32 | typed nodes and edge semantics, nested/global/collapsed flows, connectors, metadata, diagnostics, configuration, themes, Dagre layout | Production evidence retained; independent-scenario matrix 206 pass / 50 review / 0 fail; 16/16 sheets regenerated |
+| Agentflow | 13 | 32/32 | typed nodes and edge semantics, nested/global/collapsed flows, connectors, metadata, diagnostics, configuration, themes, Dagre layout | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Block | 13 | 31/31 | grids, spans, spaces, nested composites, documented shapes, block arrows, links, markers, classes, inline styles, configuration, themes | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Swimlanes | 13 | 15/15 classic-look points; handDrawn unsupported | directions, lane ownership and defaults, nested subgraphs, flowchart shapes, cross-lane edges, orthogonal routes, cycles, styles, configuration, themes | Fresh production and DDLT detail/topology 13/13 pass; 256-case detail 256 pass / 0 review / 0 fail; topology 256/256 pass; 16/16 sheets regenerated |
-| Architecture | 13 | 18/18 | services, icons, nested groups, junctions, directional ports, arrows, labels, boundary modifiers, row/column alignment, configuration, deterministic seed, metadata | Production evidence retained; independent-scenario matrix 67 pass / 189 review / 0 fail; 16/16 sheets regenerated |
+| Architecture | 13 | 18/18 declared classic/default points; `randomize: true` unsupported | services, icons, nested groups, junctions, directional ports, arrows, labels, boundary modifiers, row/column alignment, configuration, deterministic seed, metadata | Default fCoSE/CoSE/layout-base path translated; independent-scenario matrix 251 pass / 5 review / 0 fail; 16/16 sheets regenerated |
 | C4 | 13 | 26/26 | five diagram levels, people, systems, containers, components, external/database/queue variants, nested boundaries, deployment nodes, relation variants, dynamic indexes, styles, configuration, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Railroad | 18 | 24/24 | Railroad IR, EBNF, ABNF, PEG, terminals, non-terminals, sequences, choices, optional and repeated expressions, notation-specific constructs, configuration, themes, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | TreeView | 13 | 22/22 | indentation and box-drawing hierarchy, files and directories, annotations, descriptions, icons, configuration, themes, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Use Case | 18 | 38/38 | actors and actor variants, use cases, boundaries, associations and dependencies, markers, notes, JSON tables, classes/styles, configuration, themes, metadata | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | Wardley Map | 13 | 28/28 | components, sourcing, dependencies, evolution, pipelines, notes, annotations, forces, themes, metadata; caller configuration is tested separately | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
 | ZenUML | 13 | 26/26 | participants, aliases, annotators, messages, assignments, replies, groups, control fragments, comments, dividers, Unicode | Production evidence retained; independent-scenario matrix 256 pass / 0 review / 0 fail; 16/16 sheets regenerated |
-| Kanban | 13 | 17/17 | sections, tasks, metadata, priorities, ticket links, themes | Production evidence retained; independent-scenario matrix 253 pass / 3 review / 0 fail; 16/16 sheets regenerated |
+| Kanban | 13 | 17/17 | sections, tasks, metadata, priorities, ticket links, themes | Production evidence retained; independent-scenario matrix 254 pass / 2 review / 0 fail; 16/16 sheets regenerated |
 
 ## Independent-Scenario Visual Matrix
 
@@ -318,20 +314,15 @@ Machine-readable evidence:
 [manifest](assets/stability-report/visual-parity-manifest.json),
 [detail report](assets/stability-report/visual-parity-detail.json), and
 [geometry report](assets/stability-report/visual-parity-geometry.json).
-The geometry gate recorded 0 failures and 155 review findings across 121
-Architecture cases. Overall Native/Official width ratios were `0.717-2.218`,
-height ratios were `0.454-1.336`, and foreground-ink ratios were
-`0.313-3.535`. These seeded fCoSE placement differences remain explicit
-rather than being hidden through threshold changes.
+The geometry gate recorded `0 fail / 0 review`. Overall Native/Official width
+ratios were `0.978-1.219`, height ratios were `0.809-1.186`, and
+foreground-ink ratios were `0.548-1.419`.
 
 Flowchart's stricter
 [per-edge topology report](assets/stability-report/flowchart-visual-parity-topology.json)
-records `245 pass / 11 fail`. Case `058` differs because Official retains an
-invisible edge that the Native scene manifest omits. Cases `105-112` and `192`
-have self-loop route differences involving diagonal segments, direction
-sequences, and source/destination port sides. Case `248` additionally differs
-in bend count on a dense cyclic crossing. These are retained as failures even
-where the raster image looks close.
+records `256 pass / 0 fail`. The translated invisible-edge path, self-loop
+dummy dimensions and IDs, merged-loop endpoint clipping, and dense-cycle
+routing now match the Official edge topology gate.
 
 ## Independent Production Visual Evidence
 
@@ -348,11 +339,10 @@ The source IDs and scenario descriptions are printed above every pair.
 ![Flowchart complex Native and Official corpus](assets/stability-report/flowchart-complex-corpus.png)
 
 The refreshed 256-case independent-scenario Native/Official detail audit
-reports `237 pass / 19 review / 0 fail`; the 19 reviews comprise 9 stroke
-pattern, 8 equivalent element-count, 1 raster-mask, and 1 raster-color
-difference. Geometry has 0 hard failures with width `1.022-1.167`, height
-`0.940-1.245`, and foreground ink `0.849-1.276`. The stricter edge-topology
-audit reports `245 pass / 11 fail`. See the
+reports `256 pass / 0 review / 0 fail`. Geometry has 0 ratio reviews with
+width `1.028-1.167`, height `0.953-1.173`, and foreground ink
+`0.818-1.347`. The stricter edge-topology audit reports
+`256 pass / 0 fail`. See the
 [Flowchart detail](assets/stability-report/flowchart-visual-parity-detail.json),
 [Flowchart geometry](assets/stability-report/flowchart-visual-parity-geometry.json),
 [Flowchart topology](assets/stability-report/flowchart-visual-parity-topology.json),
@@ -408,8 +398,11 @@ complete labels, equivalent visible geometry, correct edge semantics, and no
 clipping, overlap, or paint-order defect.
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`206 pass / 50 review / 0 fail`; geometry has 0 hard failures with width
-`1.023-1.196`, height `0.930-1.194`, and foreground ink `0.830-1.153`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`256 pass / 0 review / 0 fail`; geometry has 0 hard failures or reviews with
+width `1.023-1.196`, height `0.922-1.126`, and foreground ink `0.816-1.152`.
+See the [aggregate detail](assets/stability-report/visual-parity-detail.json)
+and [aggregate geometry](assets/stability-report/visual-parity-geometry.json)
+reports.
 
 </details>
 
@@ -457,9 +450,12 @@ The production geometry and detail audits passed all 13 pairs with
 `1.020-1.232`, `0.996-1.236`, and `0.985-1.561`.
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`67 pass / 189 review / 0 fail`; geometry has 0 hard failures with width
-`0.717-2.218`, height `0.454-1.336`, and foreground ink `0.313-3.535`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json)
-and [aggregate geometry](assets/stability-report/visual-parity-geometry.json)
+`251 pass / 5 review / 0 fail`; the remaining reviews are text overlaps in
+cases `042`, `178`, `186`, `242`, and `250`. Geometry has
+`0 fail / 0 review`, with width `0.990-1.090`, height `0.959-1.173`, and
+foreground ink `0.978-1.184`. See the
+[aggregate detail](assets/stability-report/visual-parity-detail.json) and
+[aggregate geometry](assets/stability-report/visual-parity-geometry.json)
 reports.
 
 </details>
@@ -543,7 +539,7 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![Quadrant Chart complex Native and Official corpus](assets/stability-report/quadrant-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`230 pass / 26 review / 0 fail`; geometry has 0 hard failures with width
+`256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
 `1.014-1.035`, height `1.016-1.025`, and foreground ink `1.026-1.037`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
@@ -576,8 +572,11 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![Class complex Native and Official corpus](assets/stability-report/class-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`221 pass / 35 review / 0 fail`; geometry has 0 hard failures with width
-`1.036-1.217`, height `0.870-1.085`, and foreground ink `0.843-1.252`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`256 pass / 0 review / 0 fail`; geometry has 0 hard failures or reviews with
+width `1.036-1.219`, height `0.870-1.085`, and foreground ink `0.853-1.270`.
+See the [aggregate detail](assets/stability-report/visual-parity-detail.json)
+and [aggregate geometry](assets/stability-report/visual-parity-geometry.json)
+reports.
 
 </details>
 
@@ -587,8 +586,8 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![State complex Native and Official corpus](assets/stability-report/state-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`251 pass / 5 review / 0 fail`; geometry has 0 hard failures with width
-`0.978-1.069`, height `1.013-1.186`, and foreground ink `0.823-1.175`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+`0.978-1.069`, height `1.013-1.186`, and foreground ink `0.801-1.175`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -598,8 +597,11 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![Entity Relationship complex Native and Official corpus](assets/stability-report/er-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`148 pass / 108 review / 0 fail`; geometry has 0 hard failures with width
-`0.956-1.081`, height `0.968-1.173`, and foreground ink `0.599-1.048`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`256 pass / 0 review / 0 fail`; geometry has 0 review or hard failures with
+width `1.029-1.079`, height `1.004-1.061`, and foreground ink `0.548-0.979`.
+See the [aggregate detail](assets/stability-report/visual-parity-detail.json)
+and [aggregate geometry](assets/stability-report/visual-parity-geometry.json)
+reports.
 
 </details>
 
@@ -609,7 +611,7 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![Gantt complex Native and Official corpus](assets/stability-report/gantt-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`192 pass / 64 review / 0 fail`; geometry has 0 hard failures with width
+`256 pass / 0 review / 0 fail`; geometry has 0 review or hard failures with width
 `1.034-1.037`, height `0.927-0.957`, and foreground ink `0.921-1.029`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
@@ -661,8 +663,8 @@ F1 is `0.823`. Production width, height, and foreground-ink ratios are
 `1.048-1.129`, `1.047-1.146`, and `1.074-1.342`.
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`235 pass / 21 review / 0 fail`; geometry has 0 hard failures with width
-`1.063-1.155`, height `1.059-1.137`, and foreground ink `1.066-1.418`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+`1.063-1.155`, height `1.059-1.137`, and foreground ink `1.066-1.419`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -689,8 +691,8 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![Kanban complex Native and Official corpus](assets/stability-report/kanban-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`253 pass / 3 review / 0 fail`; geometry has 0 hard failures with width
-`1.012-1.088`, height `0.829-1.154`, and foreground ink `0.998-1.129`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`254 pass / 2 review / 0 fail`; geometry has 0 hard failures with width
+`1.012-1.088`, height `0.927-1.172`, and foreground ink `0.992-1.139`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -744,8 +746,8 @@ The fresh 256-case independent-scenario Native/Official audit reports
 ![Venn complex Native and Official corpus](assets/stability-report/venn-complex-corpus.png)
 
 The fresh 256-case independent-scenario Native/Official audit reports
-`192 pass / 64 review / 0 fail`; geometry has 0 hard failures with width
-`1.011-1.023`, height `1.003-1.011`, and foreground ink `1.015-1.030`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
+`256 pass / 0 review / 0 fail`; geometry has 0 hard failures with width
+`1.011-1.023`, height `1.005-1.011`, and foreground ink `1.016-1.031`. See the [aggregate detail](assets/stability-report/visual-parity-detail.json) and [aggregate geometry](assets/stability-report/visual-parity-geometry.json) reports.
 
 </details>
 
@@ -854,16 +856,20 @@ failures: 0
 errors: 0
 ```
 
-The current source-level JVM suite also passes:
+The latest source-level JVM run is not green:
 
 ```text
-mermaid-core: 999 tests
-mermaid-compose: 35 tests
-mermaid-debug-ui: 7 tests
-total: 1,041 tests
-failures: 0
+mermaid-core: 1,019 tests; 1,017 passed; 2 failed
+mermaid-compose: 38 tests; 38 passed
+total: 1,057 tests; 1,055 passed
+failures: 2
 errors: 0
 ```
+
+The two failures are
+`MermaidEngineTest.preservesMultipleDagreSelfLoopsOnTheSameNode` and
+`ErStressTest.rendersDeterministicRandomizedCorpusWithDagre`. The same two
+tests fail in the Wasm core run; Compose and debug UI Wasm tests pass.
 
 The current independent corpus test is
 [`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/ProductionCorpusTest.kt).
@@ -1125,8 +1131,12 @@ The retranslated Swimlanes implementation now satisfies its classic-look
 evidence gates: the source map, translated tests, DDLT, production, 256-case
 detail and geometry, per-edge topology, and manual contact-sheet review are
 current. Its mapped `look: handDrawn` case remains a structured unsupported
-result. Separately, the refreshed Flowchart matrix has 11 unresolved per-edge
-topology failures. The public code status is therefore **not Stable** until
-both boundaries are resolved. The Android Kotlin 2.3.20, Android Kotlin
+result. Flowchart's refreshed detail and per-edge topology matrices now pass
+all 256 cases. Architecture's default fCoSE/CoSE/layout-base path is
+translated, but `randomize: true` remains unsupported and five detail cases
+remain under review. Kanban also retains two font-metric review cases. The
+core JVM and Wasm runs also retain the two regression failures listed above.
+The public code status is therefore **not Stable** until those boundaries are
+resolved. The Android Kotlin 2.3.20, Android Kotlin
 1.7.21, and iOS 441-case physical-device loads predate the Swimlanes
 retranslation and remain historical evidence for that family.

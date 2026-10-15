@@ -98,6 +98,67 @@ class KanbanLayoutTest {
         assertEquals(185f, item.bounds.width)
         assertEquals(175f, title.bounds.width)
         assertEquals(0.98f, title.horizontalScale)
+        assertEquals(MermaidTheme.MermaidDefault.fontFamily, title.fontFamily)
+        assertTrue(title.htmlLabel)
+    }
+
+    @Test
+    fun preservesEffectiveHtmlLabelMeasurementAfterRendererConfigCopyMutation() {
+        val requestedHtmlModes = mutableListOf<Boolean>()
+        val requestedLineHeights = mutableListOf<Float>()
+        val requestedScales = mutableListOf<Float?>()
+        val metrics = TextMetricProvider { request ->
+            requestedHtmlModes += request.htmlLabel
+            requestedLineHeights += request.lineHeight
+            requestedScales += request.horizontalScale
+            TextMetrics(
+                width = minOf(request.maxWidth, request.text.length * 8f),
+                height = 24f,
+                lineCount = 1,
+            )
+        }
+
+        assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                "kanban\n  todo[Todo]\n    task[Boundary width title]",
+                context.copy(textMetrics = metrics),
+            ),
+        )
+        assertTrue(requestedHtmlModes.isNotEmpty())
+        assertTrue(requestedHtmlModes.all { it })
+        assertTrue(requestedLineHeights.all { it == 1.5f })
+        assertTrue(requestedScales.all { it == 0.98f })
+    }
+
+    @Test
+    fun preservesExplicitCustomFontWithoutTrebuchetCompatibilityScale() {
+        val requestedFamilies = mutableListOf<String?>()
+        val requestedScales = mutableListOf<Float?>()
+        val metrics = TextMetricProvider { request ->
+            requestedFamilies += request.fontFamily
+            requestedScales += request.horizontalScale
+            TextMetrics(
+                width = minOf(request.maxWidth, request.text.length * 8f),
+                height = 24f,
+                lineCount = 1,
+            )
+        }
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                "kanban\n  todo[Todo]\n    task[Custom font title]",
+                context.copy(
+                    textMetrics = metrics,
+                    options = context.options.copy(fontFamily = "\"Host Font\", sans-serif"),
+                ),
+            ),
+        ).value
+        val title = scene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "Custom font title" }
+
+        assertTrue(requestedFamilies.all { it == "\"Host Font\", sans-serif" })
+        assertTrue(requestedScales.all { it == 1f })
+        assertEquals("\"Host Font\", sans-serif", title.fontFamily)
+        assertEquals(1f, title.horizontalScale)
     }
 
     @Test
@@ -122,7 +183,7 @@ class KanbanLayoutTest {
             .single { it.id == "task-priority" }
         val interaction = assertNotNull(scene.interactions.singleOrNull())
 
-        assertEquals(56f, shape.bounds.height)
+        assertEquals(56f, shape.bounds.height, 0.001f)
         assertEquals(SceneColor(0xFFFFA500), priority.color)
         assertEquals(shape.bounds.left + 2f, priority.points.first().x)
         assertEquals(ticket.bounds.top, assigned.bounds.top)

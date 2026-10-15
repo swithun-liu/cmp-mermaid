@@ -28,6 +28,7 @@ import com.swithun.cmpmermaid.core.venn.upstream.mermaid.VennStyleData
 import com.swithun.cmpmermaid.core.venn.upstream.mermaid.VennTextData
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennArc
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennCircle
+import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennDeterministicRandom
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennLayoutArea
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennLayoutEngine
 import com.swithun.cmpmermaid.core.venn.upstream.vennjs.VennPoint
@@ -77,12 +78,16 @@ internal class VennLayout {
         if (layoutHeight <= 0f) {
             return configurationError("height is too small for the title")
         }
+        // Mermaid.js 12.0.0: vennRenderer.ts -> draw. Both Venn.js layout
+        // invocations consume the same process-global Math.random stream.
+        val random = VennDeterministicRandom()
         val circleAreas = when (
             val result = VennLayoutEngine.layout(
                 source = renderSets,
                 width = width.toDouble(),
                 height = layoutHeight.toDouble(),
                 padding = VENN_JS_DEFAULT_PADDING,
+                random = random,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -94,6 +99,7 @@ internal class VennLayout {
                 width = width.toDouble(),
                 height = layoutHeight.toDouble(),
                 padding = config.padding.toDouble(),
+                random = random,
             )
         ) {
             is GMResult.Ok -> result.value.associateBy { area ->
@@ -347,14 +353,14 @@ internal class VennLayout {
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ) {
-        val maximumWidth = area.circles.firstOrNull()?.radius?.toFloat() ?: 50f
         // @upsetjs/venn.js 2.0.0: src/diagram.js -> wrapText. Mermaid invokes
-        // it on a detached dummy SVG, where getComputedTextLength() is zero.
+        // it on a detached dummy SVG, where getComputedTextLength() is zero,
+        // so no label is split into multiple tspans.
         val metrics = context.textMetrics.measure(
             TextMetricsRequest(
                 text = label,
                 fontSize = fontSize,
-                maxWidth = maximumWidth,
+                maxWidth = UNWRAPPED_TEXT_WIDTH,
                 lineHeight = AREA_LINE_HEIGHT,
                 fontFamily = context.theme.fontFamily,
                 weight = SceneTextWeight.Normal,
@@ -365,9 +371,9 @@ internal class VennLayout {
         elements += SceneText(
             text = label,
             bounds = SceneRect(
-                left = centerX - max(maximumWidth, metrics.width) / 2f,
+                left = centerX - metrics.width / 2f,
                 top = centerY - metrics.height / 2f,
-                right = centerX + max(maximumWidth, metrics.width) / 2f,
+                right = centerX + metrics.width / 2f,
                 bottom = centerY + metrics.height / 2f,
             ),
             color = color,

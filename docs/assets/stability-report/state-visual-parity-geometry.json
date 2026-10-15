@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T13:37:09.284Z",
+  "generatedAt": "2026-10-14T19:51:19.887Z",
   "inputDirectory": "captures/local/independent-visual-parity-v2",
   "corpusSource": "visual-parity",
   "corpusKind": "state",
@@ -305,13 +305,13 @@
             255
           ]
         ],
-        "inkPixels": 19431,
-        "inkRatio": 0.017991666666666666,
+        "inkPixels": 19128,
+        "inkRatio": 0.01771111111111111,
         "contentBounds": {
           "x": 15,
-          "y": 342,
+          "y": 353,
           "width": 1173,
-          "height": 219
+          "height": 196
         }
       },
       "official": {
@@ -342,12 +342,12 @@
         }
       },
       "manifestWidthRatio": 0.9793291857450789,
-      "manifestHeightRatio": 0.9910105263157895,
+      "manifestHeightRatio": 0.892466293393057,
       "manifestGeometryWidthRatio": 0.9999822482539154,
-      "manifestGeometryHeightRatio": 1.1200167628530049,
+      "manifestGeometryHeightRatio": 0.9999622090932628,
       "widthRatio": 1.0362190812720848,
-      "heightRatio": 1.1526315789473685,
-      "inkRatio": 0.892476575417968
+      "heightRatio": 1.0315789473684212,
+      "inkRatio": 0.878559617857799
     },
     {
       "id": "visual_state_006",
@@ -1361,13 +1361,13 @@
             255
           ]
         ],
-        "inkPixels": 17180,
-        "inkRatio": 0.01590740740740741,
+        "inkPixels": 16571,
+        "inkRatio": 0.015343518518518518,
         "contentBounds": {
           "x": 13,
-          "y": 347,
+          "y": 356,
           "width": 1176,
-          "height": 208
+          "height": 190
         }
       },
       "official": {
@@ -1398,12 +1398,12 @@
         }
       },
       "manifestWidthRatio": 0.9836378938034274,
-      "manifestHeightRatio": 0.9924764761012185,
+      "manifestHeightRatio": 0.9100022492970946,
       "manifestGeometryWidthRatio": 0.9999860716494647,
-      "manifestGeometryHeightRatio": 1.0969925515191004,
+      "manifestGeometryHeightRatio": 0.9999694134564958,
       "widthRatio": 1.0315789473684212,
-      "heightRatio": 1.1243243243243244,
-      "inkRatio": 0.9390030607783122
+      "heightRatio": 1.027027027027027,
+      "inkRatio": 0.9057170966331438
     },
     {
       "id": "visual_state_022",
@@ -1493,13 +1493,13 @@
             255
           ]
         ],
-        "inkPixels": 17350,
-        "inkRatio": 0.016064814814814816,
+        "inkPixels": 16741,
+        "inkRatio": 0.015500925925925927,
         "contentBounds": {
           "x": 13,
-          "y": 347,
+          "y": 356,
           "width": 1176,
-          "height": 208
+          "height": 190
         }
       },
       "official": {
@@ -1530,12 +1530,12 @@
         }
       },
       "manifestWidthRatio": 0.9836378938034274,
-      "manifestHeightRatio": 0.9924764761012185,
+      "manifestHeightRatio": 0.9100022492970946,
       "manifestGeometryWidthRatio": 0.9999860716494647,
-      "manifestGeometryHeightRatio": 1.0969925515191004,
+      "manifestGeometryHeightRatio": 0.9999694134564958,
       "widthRatio": 1.0315789473684212,
-      "heightRatio": 1.1243243243243244,
-      "inkRatio": 0.9380406574394464
+      "heightRatio": 1.027027027027027,
+      "inkRatio": 0.9051146193771626
     },
     {
       "id": "visual_state_024",
@@ -2417,13 +2417,13 @@
             255
           ]
         ],
-        "inkPixels": 19734,
-        "inkRatio": 0.01827222222222222,
+        "inkPixels": 19203,
+        "inkRatio": 0.017780555555555556,
         "contentBounds": {
           "x": 13,
-          "y": 285,
+          "y": 292,
           "width": 1174,
-          "height": 331
+          "height": 316
         }
       },
       "official": {
@@ -2454,12 +2454,12 @@
         }
       },
       "manifestWidthRatio": 0.9857142857142858,
-      "manifestHeightRatio": 0.9957413919413919,
+      "manifestHeightRatio": 0.9496922030350601,
       "manifestGeometryWidthRatio": 1.0000000207112703,
-      "manifestGeometryHeightRatio": 1.050178168740085,
+      "manifestGeometryHeightRatio": 0.999921169090167,
       "widthRatio": 1.0253275109170306,
-      "heightRatio": 1.0711974110032363,
-      "inkRatio": 0.823073073073073
+      "heightRatio": 1.022653721682848,
+      "inkRatio": 0.8009259259259259
     },
     {
       "id": "visual_state_038",
@@ -2549,13 +2549,13 @@
             255
           ]
         ],
-        "inkPixels": 19986,
-        "inkRatio": 0.018505555555555556,
+        "inkPixels": 19455,
+        "inkRatio": 0.01801388888888889,
         "contentBounds": {
           "x": 13,
-          "y": 285,
+          "y": 292,
           "width": 1174,
-          "height": 331
+          "height": 316
         }
       },
       "official": {
@@ -2586,12 +2586,12 @@
         }
       },
       "manifestWidthRatio": 0.9857142857142858,
-      "manifestHeightRatio": 0.9957413919413919,
+      "manifestHeightRatio": 0.9496922030350601,
       "manifestGeometryWidthRatio": 1.0000000207112703,
-      "manifestGeometryHeightRatio": 1.050178168740085,
+      "manifestGeometryHeightRatio": 0.999921169090167,
       "widthRatio": 1.0253275109170306,
-      "heightRatio": 1.0711974110032363,
-      "inkRatio": 0.8239950525664812
+      "heightRatio": 1.022653721682848,
+      "inkRatio": 0.8021026592455164
     },
     {
       "id": "visual_state_040",

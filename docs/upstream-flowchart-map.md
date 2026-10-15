@@ -95,6 +95,32 @@ not a production runtime dependency.
 | `MermaidDiagram.kt` | Mermaid SVG output behavior | Compose Canvas paths, multi-contour trim, text, shadows, assets, and hit testing |
 | `AndroidMermaidAssetProvider.kt` | Browser image/SVG loading role | Android `data:` loading, BitmapFactory, and AndroidSVG adapter; external sources require a host provider |
 
+### Curly-Brace Shape Function Checklist
+
+| Upstream production function | Kotlin function | Status |
+| --- | --- | --- |
+| `shapes/curlyBraceLeft.ts -> curlyBraceLeft` | `MermaidShapePort.curlyBraceLeft` | **Exact**: asymmetric Neo padding, sampled brace path, hidden intersection outline, translation, and label transform |
+| `shapes/curlyBraceRight.ts -> curlyBraceRight` | `MermaidShapePort.curlyBraceRight` | **Exact**: Neo/classic sizing, sampled brace path, hidden intersection outline, translation, and label transform |
+| `shapes/curlyBraces.ts -> curlyBraces` | `MermaidShapePort.curlyBraces` | **Exact**: both brace paths, combined hidden outline, translation, and label transform |
+| SVG group/path insertion and `updateNodeBounds` | `SceneShapeGeometry`, `SceneShapePath`, and Compose Canvas | **Platform adaptation**: typed paths and the exact hidden outline replace SVG DOM elements |
+
+### Edge Production Function Checklist
+
+This checklist follows the production order for the edge cases covered by the
+strict topology gate. Status is based on the implementation and evidence
+available in the current worktree and the fresh 256-case Native/Official
+recapture.
+
+| Order | Upstream production stage | Kotlin stage | Status |
+| ---: | --- | --- | --- |
+| 1 | `flowDb.ts -> getData`: preserve invisible edges while removing their marker types | `FlowDb.getData`, `FlowchartDataAdapter` | **Exact** |
+| 2 | Dagre normalization expands a self-loop into three layout edges | `FlowDagreLayout.addSelfLoop`, translated Dagre normalization | **Exact** |
+| 3 | `dagre/index.js -> getEdgesToRender`, `getSelfLoopSide`, `getSelfLoopPoints`, `getSelfLoopLabelPosition`: merge the three layout segments back into one logical edge | `FlowDagreLayout.collectEdges`, `selfLoopSide`, `selfLoopPoints`, `selfLoopLabelPosition` | **Exact** |
+| 4 | `edges.js -> insertEdge`: remove center endpoints and intersect the remaining route with both rendered node boundaries | `FlowDagreLayout.addRoutedEdge`, `clipSelfLoopEndpoints`, `MermaidShapeIntersectionPort.intersect` | **Platform adaptation**: typed geometry replaces DOM-installed `intersect`; focused tests and the 256-case topology recapture pass |
+| 5 | `edges.js -> insertEdge`: create an SVG path even for `edge-thickness-invisible`, with zero stroke width and no markers | `FlowchartLayout.addEdges` creates a transparent zero-width `ScenePath` | **Platform adaptation**: Canvas keeps the logical path without painting it; focused tests and the 256-case topology recapture pass |
+| 6 | `edges.js -> resolveEdgeCurveType`, `d3.line().curve(...)` | `MermaidEdgePathPort.generate`, `D3CurvePort.generate` | **Exact** for the line-only curve branches used by Mermaid edges |
+| 7 | `edges.js -> insertEdge` marker offsets and marker attachment | `MermaidEdgePathPort`, `MermaidMarkerPort`, Compose marker painting | **Platform adaptation** with translated marker geometry and focused tests |
+
 ## Intentional Kotlin Adaptations
 
 - JavaScript missing properties map to nullable Kotlin fields; they are not
@@ -127,9 +153,9 @@ not a production runtime dependency.
 - Focused tests cover every translated parser, text, shape, edge, marker,
   line-hop, interaction, asset, and resource-limit boundary.
 - The replacement Web audit processes 14/14 production scenarios and 256/256
-  matrix pairs. Matrix detail reports `237 pass / 19 review / 0 fail`,
-  geometry has 0 hard failures, and strict topology reports
-  `245 pass / 11 fail`.
+  matrix pairs. Matrix detail reports `256 pass / 0 review / 0 fail`,
+  geometry has 0 ratio reviews, and strict topology reports
+  `256 pass / 0 fail`.
 - All 16 matrix contact sheets are published and source-bound; current
   automated findings remain explicit.
 

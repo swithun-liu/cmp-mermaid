@@ -28,7 +28,7 @@ silently dropped or approximated as another feature.
 | Multi-node links | Supported | Chained links and `A & B --> C & D` expansion preserve FlowDB order |
 | Classes and inline styles | Supported with explicit boundaries | Fill, stroke, background, border, dash, animation, font, line height, alignment, and decoration; unknown CSS returns `UnsupportedFeature` |
 | Colors | Supported | Hex, RGB(A), HSL(A), transparent, and CSS named colors |
-| Routing: Dagre | Supported with known parity gaps | Translated Graphlib/Dagre pipeline, compound graphs, cycles, self-loops, parallel lanes, and Mermaid D3 curves; the refreshed per-edge gate retains 11 route mismatches |
+| Routing: Dagre | Supported | Translated Graphlib/Dagre pipeline, compound graphs, cycles, self-loops, parallel lanes, and Mermaid D3 curves; the refreshed per-edge gate passes all 256 cases |
 | Routing: ELK | Unsupported | Every `elk` and `elk.*` request returns `UnsupportedFeature("ELK layout")`; Native never substitutes Dagre |
 | Line hops | Supported | `arc`, `gap`, and disabled crossing treatment on supported Native routes |
 | Subgraphs | Supported | Nested groups, collapsed groups, boundary links, local directions, title margins, and cross-hierarchy edges |
@@ -91,8 +91,11 @@ Additional platform limitations:
   compound Dagre hierarchy, line hops, assets, interactions, viewport behavior,
   and resource limits.
 - The refreshed 256-case coverage-driven detail audit reports
-  `237 pass / 19 review / 0 fail`; geometry has 0 hard failures with width
-  `1.022-1.167`, height `0.940-1.245`, and foreground ink `0.849-1.276`.
+  `256 pass / 0 review / 0 fail`; geometry has 0 ratio reviews with width
+  `1.028-1.167`, height `0.953-1.173`, and foreground ink `0.818-1.347`.
+- The strict per-edge topology audit reports `256 pass / 0 fail`, including
+  invisible edges, merged self-loops, dense cycles, endpoint ports, and bend
+  direction sequences.
 - Mermaid.js parsing yields 107 ID-, label-, and shape-independent graph
   topologies across the 256 sources, including branching, merging, cyclic,
   disconnected, compound, parallel-edge, and self-loop structures. The

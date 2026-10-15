@@ -61,6 +61,79 @@ class FlowDagreLayoutOrderTest {
         )
     }
 
+    @Test
+    fun matchesAgentflowCompoundBranchOrdering() {
+        val nodes = linkedMapOf(
+            "A" to flowNode("A"),
+            "B" to flowNode("B"),
+            "C" to flowNode("C"),
+            "D" to flowNode("D"),
+        )
+        val document = FlowchartDocument(
+            direction = FlowDirection.LeftToRight,
+            nodes = nodes,
+            edges = listOf(
+                FlowEdge(id = "L_A_B_0", from = "A", to = "B", look = "classic"),
+                FlowEdge(id = "L_B_C_0", from = "B", to = "C", look = "classic"),
+                FlowEdge(id = "L_C_D_0", from = "C", to = "D", look = "classic"),
+                FlowEdge(
+                    id = "L_B_D_0",
+                    from = "B",
+                    to = "D",
+                    label = "approved",
+                    look = "classic",
+                ),
+                FlowEdge(id = "L_C_D_2", from = "C", to = "D", look = "classic"),
+            ),
+            subgraphs = listOf(
+                FlowSubgraph(
+                    id = "team",
+                    label = "Delivery Platform Team",
+                    labelSpans = emptyList(),
+                    nodeIds = nodes.keys,
+                    padding = 8f,
+                    look = "classic",
+                ),
+            ),
+        )
+        val placement = assertIs<GMResult.Ok<FlowLayoutPlacement>>(
+            FlowDagreLayout.layout(
+                document = document,
+                nodeSizes = mapOf(
+                    "A" to SceneSize(192f, 56f),
+                    "B" to SceneSize(136f, 40f),
+                    "C" to SceneSize(136f, 64f),
+                    "D" to SceneSize(136f, 64f),
+                ),
+                nodeShapeLayouts = emptyMap(),
+                edgeLabelSizes = mapOf(3 to SceneSize(70.71875f, 28f)),
+                options = MermaidRenderOptions(),
+            ),
+        ).value
+
+        val first = placement.nodeBounds.getValue("A").center
+        val branch = placement.nodeBounds.getValue("B").center
+        val mainPath = placement.nodeBounds.getValue("C").center
+        val target = placement.nodeBounds.getValue("D").center
+
+        assertEquals(194.17969f, first.x, 0.001f)
+        assertEquals(194.17969f, branch.x, 0.001f)
+        assertEquals(125f, mainPath.x, 0.001f)
+        assertEquals(194.17969f, target.x, 0.001f)
+        assertTrue(mainPath.x < branch.x)
+    }
+
+    private fun flowNode(id: String): FlowNode = FlowNode(
+        id = id,
+        label = id,
+        labelSpans = emptyList(),
+        labelType = FlowLabelType.Text,
+        shape = SceneShapeKind.Rectangle,
+        padding = 8f,
+        minWidth = null,
+        look = "classic",
+    )
+
     private fun spacingDocument(): FlowchartDocument {
         val nodeIds = listOf("A", "B", "C")
         return FlowchartDocument(

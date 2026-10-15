@@ -48,7 +48,10 @@ export function compareDetailManifests(
     validateExpectedText(official, expectedText, findings);
   }
 
-  const textComparison = compareTexts(native, official, thresholds, findings);
+  const {
+    comparison: textComparison,
+    correspondence: textCorrespondence,
+  } = compareTexts(native, official, thresholds, findings);
   const elementComparison = compareElementCounts(
     native,
     official,
@@ -79,6 +82,7 @@ export function compareDetailManifests(
     official,
     thresholds,
     findings,
+    textCorrespondence,
   );
 
   return {
@@ -200,6 +204,10 @@ function analyzeManifest(manifest, thresholds, findings, renderer) {
         ),
         normalizedMarkerEndPoint: normalizePoint(
           element.markerEndPoint,
+          safeViewport,
+        ),
+        normalizedOutlinePoints: normalizePointArray(
+          element.outlinePoints,
           safeViewport,
         ),
         clippedFraction: clippedFraction(bounds),
@@ -391,20 +399,26 @@ function compareTexts(native, official, thresholds, findings) {
   }
 
   return {
-    absentInNative,
-    absentInOfficial,
-    multiplicityDifferences,
-    matchedCount: matches.length,
-    segmentationEquivalent,
-    segmentationGroups: segmentationDiagnostics.map((diagnostic) => ({
-      nativeTexts: diagnostic.nativeTexts,
-      officialTexts: diagnostic.officialTexts,
-      centerDistance: diagnostic.centerDistance,
-      sizeRatio: Math.exp(diagnostic.sizeLogRatio),
-    })),
-    maximumCenterDistance,
-    p95CenterDistance: percentile(centerDistances, 0.95),
-    maximumSizeRatio: Math.exp(maximumSizeLogRatio),
+    comparison: {
+      absentInNative,
+      absentInOfficial,
+      multiplicityDifferences,
+      matchedCount: matches.length,
+      segmentationEquivalent,
+      segmentationGroups: segmentationDiagnostics.map((diagnostic) => ({
+        nativeTexts: diagnostic.nativeTexts,
+        officialTexts: diagnostic.officialTexts,
+        centerDistance: diagnostic.centerDistance,
+        sizeRatio: Math.exp(diagnostic.sizeLogRatio),
+      })),
+      maximumCenterDistance,
+      p95CenterDistance: percentile(centerDistances, 0.95),
+      maximumSizeRatio: Math.exp(maximumSizeLogRatio),
+    },
+    correspondence: buildTextCorrespondence(
+      matches,
+      segmentationEquivalent ? segmentationGroups : [],
+    ),
   };
 }
 
@@ -469,23 +483,20 @@ function compareElementCounts(
     Math.max(1, expandedGeometryCount(native)),
     Math.max(1, expandedGeometryCount(official)),
   );
-  const geometryRatio = [objectGeometryRatio, expandedGeometryRatio]
-    .sort((left, right) =>
-      Math.abs(Math.log(left)) - Math.abs(Math.log(right))
-    )[0];
+  const geometryRatio = expandedGeometryRatio;
   ratios.geometry = geometryRatio;
   ratios.geometryObject = objectGeometryRatio;
   ratios.geometryExpanded = expandedGeometryRatio;
   if (
-    geometryRatio > thresholds.maximumElementCountRatio ||
-    geometryRatio < 1 / thresholds.maximumElementCountRatio
+    ratioOutside(objectGeometryRatio, thresholds.maximumElementCountRatio) &&
+    ratioOutside(expandedGeometryRatio, thresholds.maximumElementCountRatio)
   ) {
     findings.push({
       severity: 'review',
       code: 'element-count',
       type: 'geometry',
       message:
-        `geometry object/expanded ratios ` +
+        `geometry object/semantic-expanded ratios ` +
         `${format(objectGeometryRatio)}/${format(expandedGeometryRatio)} are ` +
         `outside [${format(1 / thresholds.maximumElementCountRatio)}, ` +
         `${format(thresholds.maximumElementCountRatio)}]`,
@@ -495,19 +506,50 @@ function compareElementCounts(
 }
 
 function geometryObjectCount(analysis) {
-  return analysis.elements.filter(
-    (element) => element.type === 'shape' || element.type === 'path',
-  ).length;
+  const groups = new Set();
+  countedGeometry(analysis).forEach((element) => {
+    groups.add(
+      typeof element.geometryGroup === 'string' &&
+        element.geometryGroup.length > 0
+        ? `group:${element.geometryGroup}`
+        : `element:${element.order}`,
+    );
+  });
+  return groups.size;
 }
 
 function expandedGeometryCount(analysis) {
-  return analysis.elements
-    .filter((element) => element.type === 'shape' || element.type === 'path')
-    .reduce(
-      (sum, element) =>
-        sum + Math.max(1, element.geometryPathCount ?? 1),
-      0,
-    );
+  const groups = new Map();
+  countedGeometry(analysis)
+    .forEach((element) => {
+      const explicitGroup =
+        typeof element.geometryGroup === 'string' &&
+        element.geometryGroup.length > 0
+          ? `group:${element.geometryGroup}`
+          : null;
+      const key = explicitGroup ?? `element:${element.order}`;
+      const count = Math.max(1, element.geometryPathCount ?? 1);
+      groups.set(key, Math.max(groups.get(key) ?? 0, count));
+    });
+  return [...groups.values()].reduce((sum, count) => sum + count, 0);
+}
+
+function countedGeometry(analysis) {
+  return analysis.elements.filter(
+    (element) =>
+      (element.type === 'shape' || element.type === 'path') &&
+      !isSemanticLabelBackground(element),
+  );
+}
+
+function isSemanticLabelBackground(element) {
+  return element.geometryPathCount === 0 &&
+    typeof element.id === 'string' &&
+    element.id.endsWith('_label_background');
+}
+
+function ratioOutside(value, maximum) {
+  return value > maximum || value < 1 / maximum;
 }
 
 function compareStyles(native, official, thresholds, findings) {
@@ -745,11 +787,173 @@ function pointInsetDepth(point, element) {
       deltaY * boundaryScale - deltaY,
     );
   }
+  const outline = element.normalizedOutlinePoints;
+  if (outline.length >= 3) {
+    const depth = Math.min(
+      ...outline.map((start, index) =>
+        pointToSegmentDistance(
+          point,
+          start,
+          outline[(index + 1) % outline.length],
+        )
+      ),
+    );
+    if (depth <= Number.EPSILON || !pointInPolygon(point, outline)) return 0;
+    return depth;
+  }
   return Math.min(
     point.x - bounds.x,
     right - point.x,
     point.y - bounds.y,
     bottom - point.y,
+  );
+}
+
+function pointInPolygon(point, polygon) {
+  let inside = false;
+  for (
+    let current = 0, previous = polygon.length - 1;
+    current < polygon.length;
+    previous = current, current += 1
+  ) {
+    const start = polygon[current];
+    const end = polygon[previous];
+    if (
+      (start.y > point.y) !== (end.y > point.y) &&
+      point.x <
+        (end.x - start.x) *
+          (point.y - start.y) /
+          (end.y - start.y) +
+          start.x
+    ) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+function polygonArea(polygon) {
+  return Math.abs(polygonSignedArea(polygon));
+}
+
+function polygonSignedArea(polygon) {
+  if (polygon.length < 3) return 0;
+  let doubledArea = 0;
+  for (let index = 0; index < polygon.length; index += 1) {
+    const current = polygon[index];
+    const next = polygon[(index + 1) % polygon.length];
+    doubledArea += current.x * next.y - next.x * current.y;
+  }
+  return doubledArea / 2;
+}
+
+function intersectConvexPolygons(subject, clip) {
+  if (subject.length < 3 || clip.length < 3) return [];
+  const orientation = Math.sign(polygonSignedArea(clip)) || 1;
+  let output = [...subject];
+  for (let index = 0; index < clip.length; index += 1) {
+    const clipStart = clip[index];
+    const clipEnd = clip[(index + 1) % clip.length];
+    const input = output;
+    output = [];
+    if (input.length === 0) break;
+    let start = input.at(-1);
+    for (const end of input) {
+      const startInside = pointInsideHalfPlane(
+        start,
+        clipStart,
+        clipEnd,
+        orientation,
+      );
+      const endInside = pointInsideHalfPlane(
+        end,
+        clipStart,
+        clipEnd,
+        orientation,
+      );
+      if (endInside) {
+        if (!startInside) {
+          output.push(lineIntersection(start, end, clipStart, clipEnd));
+        }
+        output.push(end);
+      } else if (startInside) {
+        output.push(lineIntersection(start, end, clipStart, clipEnd));
+      }
+      start = end;
+    }
+  }
+  return output;
+}
+
+function pointInsideHalfPlane(point, start, end, orientation) {
+  return orientation * crossProduct(start, end, point) >= -Number.EPSILON;
+}
+
+function lineIntersection(start, end, clipStart, clipEnd) {
+  const segmentX = end.x - start.x;
+  const segmentY = end.y - start.y;
+  const clipX = clipEnd.x - clipStart.x;
+  const clipY = clipEnd.y - clipStart.y;
+  const denominator = segmentX * clipY - segmentY * clipX;
+  if (Math.abs(denominator) <= Number.EPSILON) return end;
+  const offsetX = clipStart.x - start.x;
+  const offsetY = clipStart.y - start.y;
+  const position = (offsetX * clipY - offsetY * clipX) / denominator;
+  return {
+    x: start.x + position * segmentX,
+    y: start.y + position * segmentY,
+  };
+}
+
+function crossProduct(start, end, point) {
+  return (
+    (end.x - start.x) * (point.y - start.y) -
+    (end.y - start.y) * (point.x - start.x)
+  );
+}
+
+function convexHull(points) {
+  const sorted = [...points].sort(
+    (left, right) => left.x - right.x || left.y - right.y,
+  );
+  if (sorted.length <= 3) return sorted;
+  const half = [];
+  const append = (point) => {
+    while (
+      half.length >= 2 &&
+      crossProduct(half.at(-2), half.at(-1), point) <= Number.EPSILON
+    ) {
+      half.pop();
+    }
+    half.push(point);
+  };
+  sorted.forEach(append);
+  const lower = [...half];
+  half.length = 0;
+  sorted.toReversed().forEach(append);
+  return [...lower.slice(0, -1), ...half.slice(0, -1)];
+}
+
+function pointToSegmentDistance(point, start, end) {
+  const deltaX = end.x - start.x;
+  const deltaY = end.y - start.y;
+  const lengthSquared = deltaX * deltaX + deltaY * deltaY;
+  if (lengthSquared <= Number.EPSILON) {
+    return Math.hypot(point.x - start.x, point.y - start.y);
+  }
+  const projection = Math.max(
+    0,
+    Math.min(
+      1,
+      (
+        (point.x - start.x) * deltaX +
+        (point.y - start.y) * deltaY
+      ) / lengthSquared,
+    ),
+  );
+  return Math.hypot(
+    point.x - (start.x + projection * deltaX),
+    point.y - (start.y + projection * deltaY),
   );
 }
 
@@ -857,22 +1061,47 @@ function comparePaintOrder(native, official, thresholds, findings) {
   };
 }
 
-function compareTextOverlaps(native, official, thresholds, findings) {
+function compareTextOverlaps(
+  native,
+  official,
+  thresholds,
+  findings,
+  correspondence,
+) {
   const nativeVisibleTexts = visibleTextElements(native, thresholds);
   const officialVisibleTexts = visibleTextElements(official, thresholds);
-  const nativePairs = textOverlapPairs(
+  const visibleCorrespondence = visibleCorrespondenceGroups(
+    correspondence,
     nativeVisibleTexts,
+    officialVisibleTexts,
+  );
+  const nativeOverlapUnits = canonicalTextUnits(
+    native.texts,
+    nativeVisibleTexts,
+    correspondence,
+    'native',
+    visibleCorrespondence,
+  );
+  const officialOverlapUnits = canonicalTextUnits(
+    official.texts,
+    officialVisibleTexts,
+    correspondence,
+    'official',
+    visibleCorrespondence,
+  );
+  const nativePairs = textOverlapPairs(
+    nativeOverlapUnits,
     thresholds.textOverlapRatio,
   );
   const officialPairs = textOverlapPairs(
-    officialVisibleTexts,
+    officialOverlapUnits,
     thresholds.textOverlapRatio,
   );
   const nativeKeys = new Set(nativePairs.map((pair) => pair.key));
   const officialKeys = new Set(officialPairs.map((pair) => pair.key));
   const topologyMismatches = symmetricDifference(nativeKeys, officialKeys);
-  const nativeRatios = textOverlapRatioMap(nativeVisibleTexts);
-  const officialRatios = textOverlapRatioMap(officialVisibleTexts);
+  const nativeRatios = textOverlapRatioMap(nativeOverlapUnits);
+  const officialRatios = textOverlapRatioMap(officialOverlapUnits);
   const ratioDifferences = topologyMismatches.map((key) => ({
     key,
     nativeOverlap: nativeRatios.get(key) ?? 0,
@@ -973,8 +1202,8 @@ function textOverlapPairs(texts, minimumRatio) {
   for (let left = 0; left < texts.length; left += 1) {
     for (let right = left + 1; right < texts.length; right += 1) {
       const overlap = Math.max(
-        overlapRatio(texts[left].normalizedBounds, texts[right].normalizedBounds),
-        overlapRatio(texts[right].normalizedBounds, texts[left].normalizedBounds),
+        textElementOverlapRatio(texts[left], texts[right]),
+        textElementOverlapRatio(texts[right], texts[left]),
       );
       if (overlap >= minimumRatio) {
         pairs.push({
@@ -985,6 +1214,26 @@ function textOverlapPairs(texts, minimumRatio) {
     }
   }
   return pairs;
+}
+
+function textElementOverlapRatio(subject, occluder) {
+  const subjectOutline = subject.normalizedOutlinePoints ?? [];
+  const occluderOutline = occluder.normalizedOutlinePoints ?? [];
+  if (subjectOutline.length >= 3 && occluderOutline.length >= 3) {
+    return ratio(
+      polygonArea(intersectConvexPolygons(subjectOutline, occluderOutline)),
+      polygonArea(subjectOutline),
+    );
+  }
+  return overlapRatio(subject.normalizedBounds, occluder.normalizedBounds);
+}
+
+function canonicalTextOutlinePoints(elements) {
+  const points = elements.flatMap(
+    (element) => element.normalizedOutlinePoints ?? [],
+  );
+  if (points.length < 3) return [];
+  return elements.length === 1 ? points : convexHull(points);
 }
 
 function textOverlapRatioMap(texts) {
@@ -1079,9 +1328,99 @@ function matchSegmentedTextGroups(nativeTexts, officialTexts) {
   return groups.length > 0 ? groups : null;
 }
 
+function buildTextCorrespondence(
+  matches,
+  segmentationGroups,
+) {
+  const occurrences = new Map();
+  const nextKey = (base) => {
+    const occurrence = occurrences.get(base) ?? 0;
+    occurrences.set(base, occurrence + 1);
+    return `${base}#${occurrence}`;
+  };
+  const correspondence = matches.map(({ native, official }) => ({
+    key: nextKey(native.normalizedText),
+    native: [native],
+    official: [official],
+  }));
+  for (const group of segmentationGroups ?? []) {
+    const singleElementSide = group.native.length === 1
+      ? group.native
+      : group.official.length === 1
+        ? group.official
+        : null;
+    const displayText = singleElementSide?.[0]?.normalizedText ??
+      group.native.map((element) => element.normalizedText).join(' ');
+    correspondence.push({
+      key: nextKey(displayText),
+      native: group.native,
+      official: group.official,
+    });
+  }
+  return correspondence;
+}
+
+function canonicalTextUnits(
+  allTexts,
+  visibleTexts,
+  correspondence,
+  renderer,
+  visibleCorrespondence,
+) {
+  const visible = new Set(visibleTexts);
+  const matched = new Set();
+  const units = [];
+  for (const group of correspondence) {
+    const members = group[renderer];
+    members.forEach((element) => matched.add(element));
+    if (!visibleCorrespondence.has(group)) continue;
+    const visibleMembers = members.filter((element) => visible.has(element));
+    const comparableMembers = visibleMembers.length > 0
+      ? visibleMembers
+      : members;
+    units.push({
+      normalizedText: group.key,
+      normalizedBounds: unionBounds(
+        comparableMembers.map((element) => element.normalizedBounds),
+      ),
+      normalizedOutlinePoints: canonicalTextOutlinePoints(comparableMembers),
+      canonicalOccurrenceKey: group.key,
+    });
+  }
+  const rawKeys = new Map(
+    occurrenceKeys(allTexts).map((key, index) => [allTexts[index], key]),
+  );
+  for (const element of visibleTexts) {
+    if (matched.has(element)) continue;
+    units.push({
+      ...element,
+      canonicalOccurrenceKey: `${renderer}:${rawKeys.get(element)}`,
+    });
+  }
+  return units;
+}
+
+function visibleCorrespondenceGroups(
+  correspondence,
+  nativeVisibleTexts,
+  officialVisibleTexts,
+) {
+  const nativeVisible = new Set(nativeVisibleTexts);
+  const officialVisible = new Set(officialVisibleTexts);
+  return new Set(
+    correspondence.filter((group) =>
+      group.native.some((element) => nativeVisible.has(element)) ||
+      group.official.some((element) => officialVisible.has(element))
+    ),
+  );
+}
+
 function occurrenceKeys(elements) {
   const occurrences = new Map();
   return elements.map((element) => {
+    if (typeof element.canonicalOccurrenceKey === 'string') {
+      return element.canonicalOccurrenceKey;
+    }
     const occurrence = occurrences.get(element.normalizedText) ?? 0;
     occurrences.set(element.normalizedText, occurrence + 1);
     return `${element.normalizedText}#${occurrence}`;
@@ -1130,6 +1469,13 @@ function normalizePoint(point, viewport) {
     x: (point.x - viewport.x) / viewport.width,
     y: (point.y - viewport.y) / viewport.height,
   };
+}
+
+function normalizePointArray(points, viewport) {
+  if (!Array.isArray(points)) return [];
+  return points
+    .map((point) => normalizePoint(point, viewport))
+    .filter((point) => point !== null);
 }
 
 function clippedFraction(bounds) {
@@ -1202,30 +1548,76 @@ function effectiveStrokePattern(element) {
   // -> insertEdge. Neo solid edges use stroke-dasharray only to leave marker
   // clearance, so the semantic edge-pattern class must take precedence.
   const classes = Array.isArray(element?.classes) ? element.classes : [];
+  const intervals = Array.isArray(element?.dashIntervals)
+    ? element.dashIntervals
+      .filter(finite)
+      .map((value) => Math.abs(value))
+    : [];
+  if (isDatastoreOutlineDash(element, classes, intervals)) {
+    return 'Solid';
+  }
   if (
     classes.includes('edge-pattern-dotted') ||
     classes.includes('edge-pattern-dashed')
   ) {
     return 'Dashed';
   }
+  // Mermaid: packages/mermaid/src/styles.ts -> edge-animation-fast/slow.
+  // The animation rule uses !important, so its visible 9,5 dash overrides
+  // edge-pattern-solid while marker-clearance dashes remain semantic solids.
+  if (
+    (
+      classes.includes('edge-animation-fast') ||
+      classes.includes('edge-animation-slow')
+    ) &&
+    hasVisibleDashGap(intervals)
+  ) {
+    return 'Dashed';
+  }
   if (classes.includes('edge-pattern-solid')) {
     return 'Solid';
   }
-  const intervals = Array.isArray(element?.dashIntervals)
-    ? element.dashIntervals
-      .filter(finite)
-      .map((value) => Math.abs(value))
-    : [];
   if (intervals.length === 0) {
     return element?.strokePattern ?? 'Solid';
   }
+  return hasVisibleDashGap(intervals)
+    ? (element?.strokePattern ?? 'Dashed')
+    : 'Solid';
+}
+
+function isDatastoreOutlineDash(element, classes, intervals) {
+  // Mermaid: packages/mermaid/src/rendering-util/rendering-elements/shapes/
+  // datastore.ts -> datastore. The SVG rect uses width,height as its dash
+  // cycle to omit the vertical sides; this constructs a solid datastore
+  // outline and does not represent a user-selected dashed stroke.
+  if (
+    element?.type !== 'shape' ||
+    String(element?.role ?? '').toLowerCase() !== 'rect' ||
+    !classes.includes('basic') ||
+    !classes.includes('label-container') ||
+    intervals.length !== 2
+  ) {
+    return false;
+  }
+  const width = Math.abs(element?.bounds?.width ?? Number.NaN);
+  const height = Math.abs(element?.bounds?.height ?? Number.NaN);
+  return approximatelyEqual(intervals[0], width) &&
+    approximatelyEqual(intervals[1], height);
+}
+
+function approximatelyEqual(left, right) {
+  if (!finite(left) || !finite(right)) return false;
+  const scale = Math.max(1, Math.abs(left), Math.abs(right));
+  return Math.abs(left - right) <= scale * 1e-4;
+}
+
+function hasVisibleDashGap(intervals) {
   const cycle = intervals.length % 2 === 0
     ? intervals
     : [...intervals, ...intervals];
-  const hasVisibleGap = cycle.some(
+  return cycle.some(
     (value, index) => index % 2 === 1 && value > Number.EPSILON,
   );
-  return hasVisibleGap ? (element?.strokePattern ?? 'Dashed') : 'Solid';
 }
 
 function markerSummary(elements) {

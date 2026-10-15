@@ -6,6 +6,7 @@ import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.SceneAsset
+import com.swithun.cmpmermaid.core.SceneArrowHead
 import com.swithun.cmpmermaid.core.ScenePath
 import com.swithun.cmpmermaid.core.SceneRect
 import com.swithun.cmpmermaid.core.SceneShape
@@ -82,6 +83,92 @@ class FlowchartStressTest {
 
         assertTrue(outer.zIndex < subgraphs.getValue("subgraph_top").zIndex)
         assertTrue(outer.zIndex < subgraphs.getValue("subgraph_bottom").zIndex)
+    }
+
+    @Test
+    fun preservesInvisibleEdgesAsZeroWidthScenePaths() {
+        val scene = renderSource(
+            """
+                flowchart LR
+                  A["Transaction Monitor"]
+                  B["Transaction Notify"]
+                  A ~~~ B
+            """.trimIndent(),
+        )
+
+        val edge = scene.elements.filterIsInstance<ScenePath>().single()
+        assertEquals("L_A_B_0", edge.id)
+        assertEquals(0f, edge.strokeWidth)
+        assertEquals(0x00000000L, edge.color.argb)
+        assertEquals(SceneArrowHead.None, edge.arrowStart)
+        assertEquals(SceneArrowHead.None, edge.arrowEnd)
+        assertEquals(3, edge.points.size)
+    }
+
+    @Test
+    fun clipsMergedSelfLoopEndpointsAgainstTheNodeBoundary() {
+        val scene = renderSource(
+            """
+                flowchart LR
+                  A["Content Item Design"]
+                  A -->|accepted| A
+            """.trimIndent(),
+        )
+
+        val node = scene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id == "A" }
+        val edge = scene.elements.filterIsInstance<ScenePath>().single()
+        val first = edge.points.first()
+        val firstInner = edge.points[1]
+        val lastInner = edge.points[edge.points.lastIndex - 1]
+        val last = edge.points.last()
+
+        assertEquals("L_A_A_0", edge.id)
+        assertEquals(4, edge.points.size)
+        assertEquals(node.bounds.right, first.x, INTERSECTION_EPSILON)
+        assertEquals(node.bounds.right, last.x, INTERSECTION_EPSILON)
+        assertTrue(
+            first.x != firstInner.x && first.y != firstInner.y,
+            "Self-loop source segment must be diagonal after insertEdge clipping: ${edge.points}",
+        )
+        assertTrue(
+            lastInner.x != last.x && lastInner.y != last.y,
+            "Self-loop destination segment must be diagonal after insertEdge clipping: ${edge.points}",
+        )
+    }
+
+    @Test
+    fun measuresSelfLoopLabelRectDummiesBeforeRoutingAdjacentEdges() {
+        val scene = renderSource(
+            """
+                flowchart LR
+                A["Program Case Receive"]
+                B["Program Case Protect"]
+                C["Program Case Investigate"]
+                D["Program Case Resolve"]
+                E["Program Case Receive"]
+                A --> B --> C --> D --> E
+                E --> A
+                B --> D
+                C --> C
+                E -. retry .-> C
+                A ==>|priority| D
+            """.trimIndent(),
+        )
+        val edges = scene.elements.filterIsInstance<ScenePath>().associateBy(ScenePath::id)
+        val shortcut = edges.getValue("L_B_D_0").points
+        val cycle = edges.getValue("L_E_A_0").points
+
+        assertTrue(
+            shortcut[shortcut.lastIndex - 1].x != shortcut.last().x &&
+                shortcut[shortcut.lastIndex - 1].y != shortcut.last().y,
+            "Dagre shortcut must retain its destination diagonal: $shortcut",
+        )
+        assertTrue(
+            cycle.first().x != cycle[1].x &&
+                cycle.first().y != cycle[1].y,
+            "Dagre cycle must retain its source diagonal: $cycle",
+        )
     }
 
     @Test
@@ -191,9 +278,15 @@ class FlowchartStressTest {
         generated: GeneratedFlowchart,
         layout: String,
         curve: String,
+    ): MermaidScene = renderSource(generated.source, layout, curve)
+
+    private fun renderSource(
+        source: String,
+        layout: String = "dagre",
+        curve: String = "basis",
     ): MermaidScene {
         val result = engine.render(
-            source = generated.source,
+            source = source,
             context = MermaidRenderContext(
                 textMetrics = textMetrics,
                 options = MermaidRenderOptions(
@@ -205,7 +298,7 @@ class FlowchartStressTest {
         )
         return assertIs<GMResult.Ok<MermaidScene>>(
             result,
-            "Expected Flowchart render success for $layout:\n${generated.source}\n$result",
+            "Expected Flowchart render success for $layout:\n$source\n$result",
         ).value
     }
 
@@ -222,8 +315,15 @@ class FlowchartStressTest {
             .filterIsInstance<SceneShape>()
             .filter { shape -> shape.id in generated.nodeIds }
         val paths = scene.elements.filterIsInstance<ScenePath>()
+        val expectedRenderedEdgeCount =
+            generated.edges.count { edge -> edge.from != edge.to } +
+                generated.edges.filter { edge -> edge.from == edge.to }
+                    .distinctBy(GeneratedEdge::from)
+                    .size
         assertEquals(generated.nodeIds, nodes.mapTo(linkedSetOf(), SceneShape::id), failureContext)
-        assertEquals(generated.edges.size, paths.size, failureContext)
+        // Mermaid.js 12.0.0: dagre/index.js -> prepareLayoutForDagre.
+        // Self-loop dummy ids are node-based, so later loops on the same node replace earlier ones.
+        assertEquals(expectedRenderedEdgeCount, paths.size, failureContext)
         assertEquals(
             generated.expectedSubgraphs,
             scene.elements.filterIsInstance<SceneShape>()

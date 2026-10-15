@@ -573,7 +573,11 @@ data class MermaidRenderOptions(
     val subGraphTitleTopMargin: Float = 0f,
     val subGraphTitleBottomMargin: Float = 0f,
     val inheritDirection: Boolean = false,
+    // Mermaid.js 12.0.0: config.ts -> evaluate(undefined) returns true.
     val htmlLabels: Boolean = true,
+    // Mermaid.js 12.0.0: erBox.ts also reads config.htmlLabels directly, so
+    // the absent root value must remain distinguishable from effective true.
+    val rootHtmlLabels: Boolean? = null,
     val markdownAutoWrap: Boolean = true,
     val securityLevel: MermaidSecurityLevel = MermaidSecurityLevel.Strict,
     val maxTextSize: Int = 50_000,
@@ -949,14 +953,18 @@ data class MermaidTheme(
     val nodeText: SceneColor = SceneColor(0xFF131300),
     val edge: SceneColor = SceneColor(0xFF333333),
     val edgeLabelFill: SceneColor = SceneColor(0xCCE8E8E8),
+    val erEdgeLabelFill: SceneColor = edgeLabelFill,
     val groupFill: SceneColor = SceneColor(0xFFFFFFDE),
     val groupStroke: SceneColor = SceneColor(0xFFAAAA33),
     val flowContainerStroke: SceneColor = SceneColor(0xFFEEEEBC),
     val groupText: SceneColor = SceneColor(0xFF333333),
+    val textColor: SceneColor = SceneColor(0xFF333333),
+    val erClusterFill: SceneColor = groupFill,
+    val erClusterStroke: SceneColor = nodeStroke,
+    val erClusterText: SceneColor = textColor,
     val noteFill: SceneColor = SceneColor(0xFFFFF5AD),
     val noteStroke: SceneColor = SceneColor(0xFFAAAA33),
     val noteText: SceneColor = SceneColor(0xFF000000),
-    val textColor: SceneColor = SceneColor(0xFF333333),
     val fontSize: Float = 16f,
     val fontFamily: String = MERMAID_CLASSIC_FONT_FAMILY,
     val strokeWidth: Float = 1f,
@@ -1068,6 +1076,7 @@ data class MermaidTheme(
             nodeText = SceneColor(0xFF28253D),
             edge = SceneColor(0xFF000000),
             edgeLabelFill = SceneColor(0xFFCCCCCC),
+            erEdgeLabelFill = SceneColor(0xFFFFFFFF),
             groupFill = SceneColor(0xFFF9F9FB),
             groupStroke = SceneColor(0xFFBDBCCC),
             flowContainerStroke = SceneColor(0xFFB3B3B3),
@@ -1373,6 +1382,7 @@ data class MermaidTheme(
             "redux-color" -> FlowchartDefault
             "redux-dark" -> reduxDark()
             "redux-dark-color" -> reduxDark().copy(
+                erEdgeLabelFill = SceneColor(0xFF16141F),
                 borderColorArray = reduxColorBorders(),
                 gantt = reduxDarkColorGanttTheme(),
                 journey = reduxColorJourneyTheme(dark = true),
@@ -1888,18 +1898,36 @@ data class MermaidTheme(
                 is GMResult.Ok -> parsed.value
                 is GMResult.Err -> return GMResult.Err(parsed.error)
             }
+            val resolvedEdgeLabelFill =
+                color("edgeLabelBackground") ?: theme.edgeLabelFill
+            val resolvedErEdgeLabelFill = when {
+                "erEdgeLabelBackground" in values ->
+                    color("erEdgeLabelBackground") ?: theme.erEdgeLabelFill
+                theme.erEdgeLabelFill != theme.edgeLabelFill ->
+                    theme.erEdgeLabelFill
+                else -> resolvedEdgeLabelFill
+            }
             val resolved = theme.copy(
                 background = color("background") ?: theme.background,
                 nodeFill = color("mainBkg", "primaryColor") ?: theme.nodeFill,
                 nodeStroke = color("nodeBorder", "primaryBorderColor") ?: theme.nodeStroke,
                 nodeText = color("nodeTextColor", "primaryTextColor", "textColor") ?: theme.nodeText,
                 edge = color("defaultLinkColor", "lineColor") ?: theme.edge,
-                edgeLabelFill = color("edgeLabelBackground") ?: theme.edgeLabelFill,
+                edgeLabelFill = resolvedEdgeLabelFill,
+                erEdgeLabelFill = resolvedErEdgeLabelFill,
                 groupFill = color("clusterBkg") ?: theme.groupFill,
                 groupStroke = color("clusterBorder") ?: theme.groupStroke,
                 flowContainerStroke =
                     color("flowContainerStroke") ?: theme.flowContainerStroke,
                 groupText = color("clusterText", "titleColor") ?: theme.groupText,
+                erClusterFill =
+                    color("clusterBkg", "mainBkg", "primaryColor")
+                        ?: theme.erClusterFill,
+                erClusterStroke =
+                    color("clusterBorder", "nodeBorder", "primaryBorderColor")
+                        ?: theme.erClusterStroke,
+                erClusterText =
+                    color("titleColor", "textColor") ?: theme.erClusterText,
                 noteFill = color("noteBkgColor") ?: theme.noteFill,
                 noteStroke = color("noteBorderColor") ?: theme.noteStroke,
                 noteText = color("noteTextColor") ?: theme.noteText,

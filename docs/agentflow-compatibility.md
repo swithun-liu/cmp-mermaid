@@ -41,8 +41,8 @@ in a later upstream release.
 - 13 independent production scenarios cover all 32 declared Agentflow
   capability points.
 - The fresh 256-case coverage-driven input audit reports
-  `206 pass / 50 review / 0 fail`; geometry has 0 hard failures with width
-  `1.023-1.196`, height `0.930-1.194`, and foreground ink `0.830-1.153`.
+  `256 pass / 0 review / 0 fail`; geometry has 0 hard failures or reviews with
+  width `1.023-1.196`, height `0.922-1.126`, and foreground ink `0.816-1.152`.
 - The production geometry audit passed all 13 pairs. Width, height, and
   foreground-ink ratios were `1.041-1.186`, `0.820-1.095`, and
   `0.766-1.206`.

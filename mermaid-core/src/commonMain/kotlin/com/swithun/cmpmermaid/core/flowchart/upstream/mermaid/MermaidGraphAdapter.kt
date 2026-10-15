@@ -171,7 +171,10 @@ internal object MermaidGraphAdapter {
                         newGraph.setParent(id, clusterId)
                     }
 
-                    graph.nodeEdges(id).toList().forEach { edge ->
+                    // Mermaid.js 12.0.0: mermaid-graphlib.js -> copy.
+                    // Upstream calls graph.edges(node), but graphlib edges() has no
+                    // parameters, so JavaScript ignores `node` and returns every edge.
+                    graph.edges().toList().forEach { edge ->
                         if (edgeInCluster(edge.v, edge.w, rootId)) {
                             copyNode(edge.v, graph, newGraph)
                             copyNode(edge.w, graph, newGraph)
