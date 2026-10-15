@@ -7974,7 +7974,10 @@ export const cases = [
     expectedTexts: [],
   })),
   ...conformanceCases,
-];
+].map((entry) => ({
+  ...entry,
+  source: entry.source.trim(),
+}));
 
 function expandTemplate(template) {
   return template.variants.map((variant) => ({

@@ -1,7 +1,7 @@
 // Independent stable corpus. These cases are intentionally not part
 // of the demo gallery: they model larger workflows and combined syntax that is
 // closer to application documentation than isolated feature examples.
-export const cases = [
+const rawCases = [
   {
     id: 'rc_flow_checkout_saga',
     kind: 'flowchart',
@@ -4710,3 +4710,8 @@ try {
 `,
   },
 ];
+
+export const cases = rawCases.map((entry) => ({
+  ...entry,
+  source: entry.source.trim(),
+}));

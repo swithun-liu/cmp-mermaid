@@ -13,6 +13,10 @@ import {
 const root = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(root, '../..');
 
+test('canonicalizes production sources to the exact runtime form', () => {
+  assert.ok(productionCases.every((entry) => entry.source === entry.source.trim()));
+});
+
 test('separates structural scenarios from text and layout stress samples', () => {
   assert.equal(productionCases.length, 441);
   assert.equal(corpusSummary.structuralScenarioCount, 441);
