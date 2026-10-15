@@ -21,8 +21,8 @@ rated Stable. A successful build alone is not sufficient.
   `randomize: true` spectral/Matrix/SVD path
 - Release status: **Not Stable** because legal `look: handDrawn` input remains
   explicitly unsupported, Architecture `randomize: true` is unsupported, and
-  seven detail cases remain under review: five Architecture and two Kanban;
-  two core regression tests fail on both JVM and Wasm
+  seven detail cases remain under review: five Architecture and two Kanban.
+  The full JVM and Wasm core suites pass
 - Completed replacement detail gates: Flowchart, XY Chart, Quadrant Chart,
   Timeline, Kanban, Sequence, Class, State, Entity Relationship, Gantt, Pie,
   User Journey, Requirement, Git Graph, Mindmap, Packet, Radar, Sankey,
@@ -164,8 +164,7 @@ review runs for their current classic-look evidence. The full Mermaid `12.0.0`
 rule is not yet satisfied because Architecture's legal `randomize: true`
 spectral/Matrix/SVD path and RoughJS-backed `look: handDrawn` remain explicitly
 unsupported; seven detail cases also remain under review: five Architecture
-and two Kanban. Two core regression tests also fail on both JVM and Wasm:
-multiple Dagre self-loops and deterministic ER stress. The former coarse
+and two Kanban. The full JVM and Wasm core suites pass. The former coarse
 geometry check missed a visible Git Graph
 paint-order defect; that defect is corrected. The load and soak values above
 remain explicitly identified as retained historical baselines and are not

@@ -8,9 +8,8 @@
 > returns a structured unsupported result. Architecture also remains
 > non-Stable because legal `randomize: true` input returns a structured
 > unsupported result. Seven detail cases remain under review: five
-> Architecture and two Kanban. Two core regression tests also fail on both
-> JVM and Wasm. Kotlin
-> 2.3.20 Android, Kotlin 1.7.21 Android,
+> Architecture and two Kanban. The full JVM and Wasm core suites pass.
+> Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS now have separate fresh 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
 > identified by their measured corpus sizes. See the
@@ -26,7 +25,7 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Not Stable: Architecture `randomize: true` and `look: handDrawn` are unsupported; 5 Architecture and 2 Kanban cases remain under review; 2 core regression tests fail on JVM and Wasm** |
+| Current rating | **Not Stable: Architecture `randomize: true` and `look: handDrawn` are unsupported; 5 Architecture and 2 Kanban cases remain under review** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Implemented families | 33/33; all 33 family evidence gates current |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
@@ -45,8 +44,8 @@ stress inputs.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | Core: 1,017 passed, 2 failed; Compose: 38 passed, 0 failed |
-| Wasm tests | Core: 1,015 passed, 2 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
+| JVM tests | Core: 1,019 passed, 0 failed; Compose: 38 passed, 0 failed |
+| Wasm tests | Core: 1,017 passed, 0 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -60,9 +59,8 @@ Compose/debug UI Wasm tests, and Wasm production build pass. The overall
 Mermaid `12.0.0` contract remains **not Stable** because Architecture's legal
 `randomize: true` spectral path and legal `look: handDrawn` input are
 explicitly unsupported rather than silently approximated; five Architecture
-and two Kanban detail cases also remain under review. Multiple Dagre
-self-loops and deterministic ER stress currently fail in core on both JVM and
-Wasm.
+and two Kanban detail cases also remain under review. The full JVM and Wasm
+core suites pass.
 
 ## AI-Like Source-Mutation Safety Gate
 
@@ -856,20 +854,18 @@ failures: 0
 errors: 0
 ```
 
-The latest source-level JVM run is not green:
+The latest source-level JVM run is green:
 
 ```text
-mermaid-core: 1,019 tests; 1,017 passed; 2 failed
+mermaid-core: 1,019 tests; 1,019 passed
 mermaid-compose: 38 tests; 38 passed
-total: 1,057 tests; 1,055 passed
-failures: 2
+total: 1,057 tests; 1,057 passed
+failures: 0
 errors: 0
 ```
 
-The two failures are
-`MermaidEngineTest.preservesMultipleDagreSelfLoopsOnTheSameNode` and
-`ErStressTest.rendersDeterministicRandomizedCorpusWithDagre`. The same two
-tests fail in the Wasm core run; Compose and debug UI Wasm tests pass.
+The corresponding Wasm run also passes: Core `1,017/1,017`, Compose
+`37/37`, and debug UI `9/9`.
 
 The current independent corpus test is
 [`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/ProductionCorpusTest.kt).
@@ -1135,8 +1131,8 @@ result. Flowchart's refreshed detail and per-edge topology matrices now pass
 all 256 cases. Architecture's default fCoSE/CoSE/layout-base path is
 translated, but `randomize: true` remains unsupported and five detail cases
 remain under review. Kanban also retains two font-metric review cases. The
-core JVM and Wasm runs also retain the two regression failures listed above.
-The public code status is therefore **not Stable** until those boundaries are
-resolved. The Android Kotlin 2.3.20, Android Kotlin
+full JVM and Wasm core runs pass. The public code status is therefore
+**not Stable** until the mapped unsupported capabilities and detail reviews
+are resolved. The Android Kotlin 2.3.20, Android Kotlin
 1.7.21, and iOS 441-case physical-device loads predate the Swimlanes
 retranslation and remain historical evidence for that family.

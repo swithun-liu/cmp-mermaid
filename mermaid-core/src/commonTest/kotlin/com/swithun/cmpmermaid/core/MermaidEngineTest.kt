@@ -1269,7 +1269,7 @@ class MermaidEngineTest {
     }
 
     @Test
-    fun preservesMultipleDagreSelfLoopsOnTheSameNode() {
+    fun matchesOfficialDagreOverwriteForMultipleSelfLoopsOnTheSameNode() {
         val result = engine.render(
             """
                 flowchart LR
@@ -1284,8 +1284,10 @@ class MermaidEngineTest {
             .filterIsInstance<ScenePath>()
             .filter { path -> path.id.startsWith("L_A_A_") }
 
-        assertEquals(2, loops.size)
-        assertTrue(loops.all { loop -> loop.points.size == 4 })
+        // Mermaid.js 12.0.0: prepareLayoutForDagre derives dummy IDs from the
+        // node only, so each later self-loop replaces the previous one.
+        assertEquals(listOf("L_A_A_2"), loops.map(ScenePath::id))
+        assertEquals(4, loops.single().points.size)
     }
 
     @Test

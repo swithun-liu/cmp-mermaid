@@ -33,9 +33,11 @@
 > [!IMPORTANT]
 > **CMP Mermaid 当前已实现 Mermaid `12.0.0` 的全部 33 个官方图表家族。**
 > Swimlanes 直接上游重译后的 classic-look 生产、256-case 视觉及逐边拓扑门禁均已通过。
-> 但合法的 `look: handDrawn` 仍返回明确的
-> `MermaidError.UnsupportedFeature`，因此整体 Mermaid `12.0.0` 契约
-> **不是 Stable**。
+> 但 Architecture 合法的 `randomize: true` 路径和合法的
+> `look: handDrawn` 输入仍返回明确的
+> `MermaidError.UnsupportedFeature`，另有 7 个细节案例待评审：
+> Architecture 5 个、Kanban 2 个。因此整体 Mermaid `12.0.0` 契约
+> **不是 Stable**。JVM 和 Wasm 的完整 Core 测试套件均已通过。
 >
 > 当前 **[8,448 案例 Native/Official 独立场景视觉报告](docs/assets/stability-report/visual-parity-evidence.md)**
 > 为每个家族提供 256 份去除业务标题和标签后仍不同的 Mermaid source。
@@ -57,7 +59,8 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | --- | ---: |
 | Mermaid 官方图表家族 | 33 |
 | 已实现图表家族 | 33/33 |
-| 待翻译 | 0 |
+| 待翻译 | Architecture `randomize: true` 的 spectral/Matrix/SVD 路径；非默认 packing、tiling、radial 和 bendpoint 分支仍明确标记为不支持 |
+| Flowchart 逐边拓扑 | 256 个通过，0 个失败 |
 | 待完成视觉门禁 | 0 |
 | 独立生产场景 | 441 组 Native/Official 对拍 |
 | 已声明能力覆盖率 | 738/738 |
@@ -67,13 +70,13 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 文本/布局压力输入 | 从 441 个生产场景派生的 8,448 个字节级不同输入；独立统计，不计作结构覆盖 |
 | Native/Official 截图 | 16,896 张独立场景截图，另有 882 张独立语料截图和 16,896 张异常源码截图 |
 | 异常源码对齐 | 8,448/8,448 个 Official 接受/拒绝结果一致；6,292 个 Native 拒绝均为 `CONTENT_ERROR`；精确诊断文案单独统计；0 崩溃 |
-| 独立场景细节审计 | 33 个家族：7,864 个 pass、584 个 review、0 个 fail |
-| 自动视觉几何 | 8,448/8,448 组对拍：0 个 failure、121 个 Architecture seeded fCoSE case 共 155 条 review |
+| 独立场景细节审计 | 33 个家族：8,441 个 pass、7 个 review、0 个 fail |
+| 自动视觉几何 | 8,448/8,448 组对拍：0 个 failure、0 个 review |
 | 确定性 SceneGraph 重放 | 441 个通过，0 个不一致 |
 | 内置主题矩阵 | 363/363 |
 | 独立生成的 Native 压力输入 | 保留的历史基线 7,936 个 |
-| JVM 测试 | 1,041 个通过，0 个失败 |
-| Wasm 测试 | Core 与 Compose：1,031 个通过、0 个失败；debug UI：7 个通过、0 个失败 |
+| JVM 测试 | Core：1,019 个通过、0 个失败；Compose：38 个通过、0 个失败 |
+| Wasm 测试 | Core：1,017 个通过、0 个失败；Compose：37 个通过、0 个失败；debug UI：9 个通过、0 个失败 |
 | Core 生产场景压力测试 | 历史 415 场景基线：2,075 次渲染，总耗时 674ms，P95 为 1ms，保留堆 63,968 bytes |
 | 物理设备运行时矩阵 | Kotlin 2.3.20 Android 8/8、Kotlin 1.7.21 Android 8/8、iOS 6/6 通过；9,702 次语料渲染；人工审阅 198 张代表图和 22 张完成截图；0 崩溃、0 Android ANR |
 | 运行时负载矩阵 | 三条物理设备轨道均完整通过 441 个场景；Web 保留此前 397 场景基线；iOS 模拟器和 Desktop 保留此前 236 场景基线 |
@@ -92,8 +95,10 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | [Full Visual Parity](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-visual-parity.yml) | 全部 33 个家族的每周/手动截图与细节门禁 |
 | [Full Invalid Source Matrix](https://github.com/swithun-liu/cmp-mermaid/actions/workflows/full-invalid-source.yml) | 每周/手动执行 33 × 256 组 Native/Official 异常源码安全矩阵 |
 
-全部 33 个家族的最新证据门禁均已完成；整体 Mermaid `12.0.0` 支持仍
-**不是 Stable**，唯一明确阻塞项是 RoughJS-backed `handDrawn` look。
+全部 33 个家族的最新证据门禁均已完成。刷新后的 Flowchart 矩阵包含
+107 种唯一图拓扑，且 256 个逐边路由案例全部通过。整体 Mermaid `12.0.0`
+支持仍**不是 Stable**，需要先解决 Architecture 缺口、7 个细节 Review
+以及合法但尚不支持的 RoughJS-backed `handDrawn` look。
 对于无法忠实表达的合法特性，系统会返回
 `MermaidError.UnsupportedFeature`，而不是静默绘制可能误导用户的近似结果。
 
@@ -213,16 +218,16 @@ Kotlin Dagre。ELK 名称和 `flowchart-elk` 仍会作为上游输入被识别�
 
 | 使用方 | 制品 |
 | --- | --- |
-| 当前 Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.8` |
-| 当前 Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.8` |
-| Kotlin `1.7.21` Android | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.8` |
-| Kotlin `1.7.21` Android Compose | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.8` |
-| iOS 二进制 | `CMPMermaid` CocoaPod `0.1.8` |
+| 当前 Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.9` |
+| 当前 Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.9` |
+| Kotlin `1.7.21` Android | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.9` |
+| Kotlin `1.7.21` Android Compose | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.9` |
+| iOS 二进制 | `CMPMermaid` CocoaPod `0.1.9` |
 
 当前 Kotlin Multiplatform 项目：
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.8")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.9")
 }
 ```
 
@@ -235,7 +240,7 @@ dependencies {
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.8",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.9",
     )
 }
 ```
@@ -261,7 +266,7 @@ container.addView(diagramView)
 iOS 项目可以通过 CocoaPods 使用预编译的静态 XCFramework：
 
 ```ruby
-pod 'CMPMermaid', '0.1.8'
+pod 'CMPMermaid', '0.1.9'
 ```
 
 二进制向 Swift 暴露

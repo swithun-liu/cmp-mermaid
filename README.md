@@ -38,8 +38,7 @@
 > **not Stable** because Architecture's legal `randomize: true` path and legal
 > `look: handDrawn` input return documented `MermaidError.UnsupportedFeature`
 > results, and seven detail cases remain under review: five Architecture and
-> two Kanban. Two core regression tests also currently fail on both JVM and
-> Wasm: multiple Dagre self-loops and deterministic ER stress.
+> two Kanban. The full JVM and Wasm core suites pass.
 >
 > The current **[8,448-case Native/Official independent-scenario visual report](docs/assets/stability-report/visual-parity-evidence.md)**
 > gives every family 256 real, label-normalized Mermaid sources. Flowchart
@@ -80,8 +79,8 @@ geometry gates.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | Core: 1,017 passed, 2 failed; Compose: 38 passed, 0 failed |
-| Wasm tests | Core: 1,015 passed, 2 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
+| JVM tests | Core: 1,019 passed, 0 failed; Compose: 38 passed, 0 failed |
+| Wasm tests | Core: 1,017 passed, 0 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -102,10 +101,10 @@ geometry gates.
 
 All fresh Swimlanes translation, topology, visual, JVM, Wasm, production
 isolation, and publication gates have completed. The refreshed Flowchart
-matrix has 107 unique graph topologies but retains 11 strict per-edge routing
-failures. Overall Mermaid `12.0.0` support remains **not Stable** until those
-failures and the legal RoughJS-backed unsupported `handDrawn` look are
-resolved.
+matrix has 107 unique graph topologies and passes all 256 per-edge routing
+cases. Overall Mermaid `12.0.0` support remains **not Stable** until the
+Architecture gaps, seven detail reviews, and legal RoughJS-backed unsupported
+`handDrawn` look are resolved.
 A legal feature that cannot be represented faithfully returns
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation.
@@ -233,16 +232,16 @@ The current publication coordinates are:
 
 | Consumer | Artifact |
 | --- | --- |
-| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.8` |
-| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.8` |
-| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.8` |
-| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.8` |
-| iOS binary | `CMPMermaid` CocoaPod `0.1.8` |
+| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.9` |
+| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.9` |
+| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.9` |
+| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.9` |
+| iOS binary | `CMPMermaid` CocoaPod `0.1.9` |
 
 Current Kotlin Multiplatform projects:
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.8")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.9")
 }
 ```
 
@@ -256,7 +255,7 @@ Android projects pinned to Kotlin `1.7.21` use the isolated Android artifact:
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.8",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.9",
     )
 }
 ```
@@ -286,7 +285,7 @@ Kotlin `1.7.21` Android artifact.
 iOS projects can consume the precompiled static XCFramework through CocoaPods:
 
 ```ruby
-pod 'CMPMermaid', '0.1.8'
+pod 'CMPMermaid', '0.1.9'
 ```
 
 The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`

@@ -1,7 +1,6 @@
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer';
 import { puppeteerLaunchOptions } from './puppeteer-options.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -24,6 +23,7 @@ const topologyClasses = [
 ];
 
 export async function extractFlowchartTopologies(entries) {
+  const { default: puppeteer } = await import('puppeteer');
   const browser = await puppeteer.launch(puppeteerLaunchOptions);
   try {
     const page = await browser.newPage();

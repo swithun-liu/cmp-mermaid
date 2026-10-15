@@ -6,8 +6,8 @@
 > Mermaid program. RoughJS-backed `look: handDrawn` remains explicitly
 > unsupported; Architecture's `randomize: true` path is also unsupported and
 > seven detail cases remain under review: five Architecture and two Kanban.
-> Two core regression tests fail on both JVM and Wasm. These boundaries block
-> Stable. See
+> The full JVM and Wasm core suites pass. The unsupported capabilities and
+> detail reviews block Stable. See
 > [`full-diagram-roadmap.md`](full-diagram-roadmap.md).
 
 This matrix defines the major Mermaid `12.0.0` capabilities exercised by the

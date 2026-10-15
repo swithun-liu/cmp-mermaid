@@ -42,6 +42,26 @@ val prepareLegacySources by tasks.registering(Sync::class) {
                 )
         }
     }
+    filesMatching("**/architecture/upstream/cose/ConstraintHandler.kt") {
+        filter { line: String ->
+            if (
+                line.trim() ==
+                "private typealias Dag = LinkedHashMap<String, MutableList<Adjacent>>"
+            ) {
+                ""
+            } else {
+                line.replace(
+                    Regex("""\bDag\b"""),
+                    "LinkedHashMap<String, MutableList<Adjacent>>",
+                )
+            }
+        }
+    }
+    filesMatching("**/swimlane/upstream/*.kt") {
+        filter { line: String ->
+            line.replace("RectSide.entries", "RectSide.values().asList()")
+        }
+    }
 }
 
 android {

@@ -127,42 +127,48 @@ class ErStressTest {
             until = entityCount * 2,
         )
         val entities = List(entityCount) { index -> "Case${caseIndex}Entity$index" }
+        val selfLoopEntities = mutableSetOf<String>()
+        var renderedRelationshipCount = 0
+        val source = buildString {
+            appendLine("erDiagram")
+            appendLine("    direction ${DIRECTIONS.random(random)}")
+            if (caseIndex % 4 == 0) {
+                appendLine("    classDef highlighted fill:#dbeafe,stroke:#2563eb")
+            }
+            entities.forEachIndexed { index, entity ->
+                val alias = if (index % 3 == 0) """["Entity $caseIndex.$index"]""" else ""
+                val style = if (caseIndex % 4 == 0 && index == 0) ":::highlighted" else ""
+                appendLine("    $entity$alias$style {")
+                appendLine("        int id PK")
+                appendLine("        string value$index")
+                if (random.nextBoolean()) {
+                    appendLine("""        string? note$index UK "Optional note $index"""")
+                }
+                if (random.nextInt(3) == 0) {
+                    appendLine("        decimal amount$index FK")
+                }
+                appendLine("    }")
+            }
+            repeat(relationshipCount) { relationshipIndex ->
+                val start = entities.random(random)
+                val end = if (relationshipIndex % 7 == 0) {
+                    start
+                } else {
+                    entities.filterNot(start::equals).random(random)
+                }
+                if (start != end || selfLoopEntities.add(start)) {
+                    renderedRelationshipCount += 1
+                }
+                appendLine(
+                    "    $start ${RELATIONSHIPS.random(random)} $end : " +
+                        "\"relation $relationshipIndex\"",
+                )
+            }
+        }
         return GeneratedErCase(
             entityCount = entityCount,
-            relationshipCount = relationshipCount,
-            source = buildString {
-                appendLine("erDiagram")
-                appendLine("    direction ${DIRECTIONS.random(random)}")
-                if (caseIndex % 4 == 0) {
-                    appendLine("    classDef highlighted fill:#dbeafe,stroke:#2563eb")
-                }
-                entities.forEachIndexed { index, entity ->
-                    val alias = if (index % 3 == 0) """["Entity $caseIndex.$index"]""" else ""
-                    val style = if (caseIndex % 4 == 0 && index == 0) ":::highlighted" else ""
-                    appendLine("    $entity$alias$style {")
-                    appendLine("        int id PK")
-                    appendLine("        string value$index")
-                    if (random.nextBoolean()) {
-                        appendLine("""        string? note$index UK "Optional note $index"""")
-                    }
-                    if (random.nextInt(3) == 0) {
-                        appendLine("        decimal amount$index FK")
-                    }
-                    appendLine("    }")
-                }
-                repeat(relationshipCount) { relationshipIndex ->
-                    val start = entities.random(random)
-                    val end = if (relationshipIndex % 7 == 0) {
-                        start
-                    } else {
-                        entities.filterNot(start::equals).random(random)
-                    }
-                    appendLine(
-                        "    $start ${RELATIONSHIPS.random(random)} $end : " +
-                            "\"relation $relationshipIndex\"",
-                    )
-                }
-            },
+            relationshipCount = renderedRelationshipCount,
+            source = source,
         )
     }
 

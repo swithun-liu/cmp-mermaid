@@ -129,7 +129,6 @@ independent production scenarios and 8,448 structurally distinct same-source
 Native/Official pairs, but Architecture's legal `randomize: true` path and
 legal RoughJS-backed `look: handDrawn` input remain explicitly unsupported;
 seven detail cases also remain under review: five Architecture and two
-Kanban. Two core regression tests also fail on both JVM and Wasm: multiple
-Dagre self-loops and deterministic ER stress. The derived
+Kanban. The full JVM and Wasm core suites pass. The derived
 text/layout stress corpus remains a separate robustness layer. Stable requires
 resolving these mapped gaps while keeping every current family gate passing.

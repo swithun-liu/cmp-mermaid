@@ -162,9 +162,8 @@ Completed fresh gates:
   and foreground ink `0.978-1.127`. Per-edge topology is `256/256` pass.
 - The production and all 16 matrix contact sheets are published and source-bound;
   current automated findings remain explicit.
-- latest full JVM core `1,017/1,019` and Compose `38/38`; Wasm core
-  `1,015/1,017`, Compose `37/37`, and debug UI `9/9`; the two core failures
-  are the unrelated Dagre self-loop and ER stress regressions;
+- latest full JVM core `1,019/1,019` and Compose `38/38`; Wasm core
+  `1,017/1,017`, Compose `37/37`, and debug UI `9/9`;
 - Wasm production build, production isolation, publication coordinate, and
   source-map consistency gates.
 

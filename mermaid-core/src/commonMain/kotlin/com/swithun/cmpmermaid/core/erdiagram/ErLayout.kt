@@ -582,9 +582,26 @@ internal class ErLayout {
     ): GMResult<Unit, MermaidError> {
         relationships.forEachIndexed { index, relationship ->
             val routed = routedEdges[index]
-                ?: return GMResult.Err(
+            if (routed == null) {
+                // Mermaid.js 12.0.0: rendering-util/layout-algorithms/dagre/index.js
+                // -> applyDagreLayoutResult replaces LayoutData.edges with the
+                // actual Dagre output. Node-keyed dummy IDs therefore retain
+                // only the last self-loop for a node.
+                val isOverwrittenSelfLoop = relationship.entityA == relationship.entityB &&
+                    routedEdges.keys.any { routedIndex ->
+                        routedIndex != index &&
+                            relationships.getOrNull(routedIndex)?.let { routedRelationship ->
+                                routedRelationship.entityA == relationship.entityA &&
+                                    routedRelationship.entityB == relationship.entityB
+                            } == true
+                    }
+                if (isOverwrittenSelfLoop) {
+                    return@forEachIndexed
+                }
+                return GMResult.Err(
                     MermaidError.Layout("ER relationship ${relationship.id(index)} was not routed"),
                 )
+            }
             val arrowStart = relationship.specification.cardB.arrowHead
             val arrowEnd = relationship.specification.cardA.arrowHead
             val commands = when (
