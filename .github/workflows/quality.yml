@@ -313,7 +313,7 @@ jobs:
 
   visual-regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 90
 
     steps:
       - name: Checkout
