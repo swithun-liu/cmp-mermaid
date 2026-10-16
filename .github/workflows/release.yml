@@ -278,12 +278,14 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
         run: |
           ./android-legacy-build/gradlew -p android-legacy-build \
+            -PVERSION_NAME="${{ needs.validate.outputs.version }}" \
             assembleRelease \
             verifyLegacyPublicationCoordinates \
             publishLegacyToReleaseRepository \
             --console=plain
           ./android-legacy-build/gradlew \
             -p android-legacy-build/consumer-smoke \
+            -PVERSION_NAME="${{ needs.validate.outputs.version }}" \
             assembleRelease \
             --console=plain
 

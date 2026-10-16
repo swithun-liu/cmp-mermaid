@@ -33,7 +33,7 @@ android {
         minSdk = 24
         targetSdk = 33
         versionCode = 1
-        versionName = "0.1.10-kotlin17-audit"
+        versionName = "0.1.11-kotlin17-audit"
     }
 
     buildFeatures {
