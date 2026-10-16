@@ -104,6 +104,127 @@ class MermaidThemeTest {
     }
 
     @Test
+    fun matchesMermaid12ErRowColorsForEveryPreset() {
+        val expected: Map<MermaidThemePreset, Pair<SceneColor?, SceneColor?>> = mapOf(
+            MermaidThemePreset.Default to
+                (SceneColor(0xFFFFFFFF) to SceneColor(0xFFF1F1FF)),
+            MermaidThemePreset.Dark to
+                (SceneColor(0xFF2C2D2D) to SceneColor(0xFF060606)),
+            MermaidThemePreset.Forest to
+                (SceneColor(0xFFFFFFFF) to SceneColor(0xFFF4F9E9)),
+            MermaidThemePreset.Neutral to
+                (SceneColor(0xFFFFFFFF) to SceneColor(0xFFF4F4F4)),
+            MermaidThemePreset.Base to
+                (SceneColor(0xFFFFFFFF) to SceneColor(0xFFFFFCF6)),
+            MermaidThemePreset.Neo to (null to null),
+            MermaidThemePreset.NeoDark to (null to null),
+            MermaidThemePreset.Redux to (null to null),
+            MermaidThemePreset.ReduxColor to (null to null),
+            MermaidThemePreset.ReduxDark to (null to null),
+            MermaidThemePreset.ReduxDarkColor to (null to null),
+        )
+
+        expected.forEach { (preset, rows) ->
+            val theme = MermaidTheme.preset(preset)
+            assertEquals(rows.first, theme.rowOdd, "${preset.name} rowOdd")
+            assertEquals(rows.second, theme.rowEven, "${preset.name} rowEven")
+        }
+    }
+
+    @Test
+    fun recalculatesErRowsOnlyWhereMermaid12ThemeSourcesDo() {
+        fun customized(
+            preset: MermaidThemePreset,
+            values: Map<String, String>,
+        ): MermaidTheme = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.preset(preset),
+                values = values,
+                themeName = preset.configName,
+            ),
+        ).value
+
+        val scenarios = listOf(
+            Triple(
+                MermaidThemePreset.Default,
+                mapOf("primaryColor" to "#102030"),
+                SceneColor(0xFFCFDFEF) to SceneColor(0xFF112334),
+            ),
+            Triple(
+                MermaidThemePreset.Default,
+                mapOf("mainBkg" to "#102030"),
+                SceneColor(0xFFFFFFFF) to SceneColor(0xFFF1F1FF),
+            ),
+            Triple(
+                MermaidThemePreset.Dark,
+                mapOf("mainBkg" to "#102030"),
+                SceneColor(0xFF2C2D2D) to SceneColor(0xFF060606),
+            ),
+            Triple(
+                MermaidThemePreset.Forest,
+                mapOf("mainBkg" to "#102030"),
+                SceneColor(0xFFCFDFEF) to SceneColor(0xFF29537C),
+            ),
+            Triple(
+                MermaidThemePreset.Neutral,
+                mapOf("mainBkg" to "#102030"),
+                SceneColor(0xFFFFFFFF) to SceneColor(0xFFF4F4F4),
+            ),
+            Triple(
+                MermaidThemePreset.Base,
+                mapOf("mainBkg" to "#102030"),
+                SceneColor(0xFFCFDFEF) to SceneColor(0xFF162D43),
+            ),
+            Triple(
+                MermaidThemePreset.Base,
+                mapOf("mainBkg" to "#102030", "darkMode" to "true"),
+                SceneColor(0xFF0A131D) to SceneColor(0xFF03060A),
+            ),
+        )
+
+        scenarios.forEach { (preset, values, rows) ->
+            val theme = customized(preset, values)
+            assertEquals(rows.first, theme.rowOdd, "${preset.name} $values rowOdd")
+            assertEquals(rows.second, theme.rowEven, "${preset.name} $values rowEven")
+        }
+    }
+
+    @Test
+    fun explicitErRowOverridesWinAfterDerivedThemeColors() {
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.preset(MermaidThemePreset.Base),
+                values = mapOf(
+                    "mainBkg" to "#102030",
+                    "rowOdd" to "#112233",
+                    "rowEven" to "#445566",
+                ),
+                themeName = MermaidThemePreset.Base.configName,
+            ),
+        ).value
+
+        assertEquals(SceneColor(0xFF112233), customized.rowOdd)
+        assertEquals(SceneColor(0xFF445566), customized.rowEven)
+    }
+
+    @Test
+    fun partialErRowOverridePreservesTheOtherDerivedColor() {
+        val customized = assertIs<GMResult.Ok<MermaidTheme>>(
+            MermaidTheme.withVariables(
+                theme = MermaidTheme.preset(MermaidThemePreset.Base),
+                values = mapOf(
+                    "mainBkg" to "#102030",
+                    "rowOdd" to "#112233",
+                ),
+                themeName = MermaidThemePreset.Base.configName,
+            ),
+        ).value
+
+        assertEquals(SceneColor(0xFF112233), customized.rowOdd)
+        assertEquals(SceneColor(0xFF162D43), customized.rowEven)
+    }
+
+    @Test
     fun matchesAndOverridesMermaid12ErrorColors() {
         val expected = mapOf(
             MermaidThemePreset.Default to (0xFF552222 to 0xFF552222),

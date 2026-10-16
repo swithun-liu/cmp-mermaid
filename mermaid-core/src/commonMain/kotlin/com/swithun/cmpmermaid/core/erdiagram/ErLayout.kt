@@ -706,11 +706,19 @@ internal class ErLayout {
             var top = bounds.top + visual.headerHeight
             visual.rows.forEachIndexed { index, row ->
                 val rowBounds = SceneRect(bounds.left, top, bounds.right, top + row.height)
+                // Mermaid.js 12.0.0:
+                // rendering-util/rendering-elements/shapes/erBox.ts -> erBox.
+                // Undefined Neo/Redux row variables leave the row unfilled.
+                val rowFill = if (index % 2 == 0) {
+                    context.theme.rowOdd
+                } else {
+                    context.theme.rowEven
+                }
                 elements += SceneShape(
                     id = "${visual.source.id}-row-$index",
                     bounds = rowBounds,
                     kind = SceneShapeKind.Rectangle,
-                    fill = if (index % 2 == 0) ER_ROW_ODD else ER_ROW_EVEN,
+                    fill = rowFill ?: TRANSPARENT,
                     stroke = TRANSPARENT,
                     strokeWidth = 0f,
                     cornerRadius = 0f,
@@ -1097,8 +1105,6 @@ internal class ErLayout {
 
     private companion object {
         val TRANSPARENT = SceneColor(0x00000000)
-        val ER_ROW_ODD = SceneColor(0xFFFFFFFF)
-        val ER_ROW_EVEN = SceneColor(0xFFF7F7F7)
         val ER_DASH_INTERVALS = listOf(8f, 8f)
         val HTML_BREAK = Regex("""<br\s*/?>""", RegexOption.IGNORE_CASE)
         const val DEFAULT_LINE_HEIGHT = 1.5f

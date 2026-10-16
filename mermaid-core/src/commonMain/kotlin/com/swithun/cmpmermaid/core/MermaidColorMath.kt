@@ -1,5 +1,6 @@
 package com.swithun.cmpmermaid.core
 
+import kotlin.math.floor
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -53,8 +54,14 @@ private fun SceneColor.mermaidAdjustColor(
         maximum == greenUnit -> ((blueUnit - redUnit) / delta + 2.0) / 6.0
         else -> ((redUnit - greenUnit) / delta + 4.0) / 6.0
     }
-    val adjustedSaturation = (saturation + saturationAmount / 100.0).coerceIn(0.0, 1.0)
-    val adjustedLightness = (lightness + lightnessAmount / 100.0).coerceIn(0.0, 1.0)
+    // Khroma adjustChannel() returns an HSL string through Color.stringify().
+    // lang.round() serializes each HSL channel to 10 decimal places before the
+    // browser converts that CSS color back to RGB.
+    val adjustedHue = (hue * 360.0).khromaRound() / 360.0
+    val adjustedSaturation = (saturation * 100.0 + saturationAmount)
+        .coerceIn(0.0, 100.0).khromaRound() / 100.0
+    val adjustedLightness = (lightness * 100.0 + lightnessAmount)
+        .coerceIn(0.0, 100.0).khromaRound() / 100.0
     if (adjustedSaturation == 0.0) {
         val channel = (adjustedLightness * 255.0).roundToInt()
         return color(channel, channel, channel)
@@ -66,11 +73,14 @@ private fun SceneColor.mermaidAdjustColor(
     }
     val lower = 2.0 * adjustedLightness - upper
     return color(
-        red = (hueToRgb(lower, upper, hue + 1.0 / 3.0) * 255.0).roundToInt(),
-        green = (hueToRgb(lower, upper, hue) * 255.0).roundToInt(),
-        blue = (hueToRgb(lower, upper, hue - 1.0 / 3.0) * 255.0).roundToInt(),
+        red = (hueToRgb(lower, upper, adjustedHue + 1.0 / 3.0) * 255.0).roundToInt(),
+        green = (hueToRgb(lower, upper, adjustedHue) * 255.0).roundToInt(),
+        blue = (hueToRgb(lower, upper, adjustedHue - 1.0 / 3.0) * 255.0).roundToInt(),
     )
 }
+
+private fun Double.khromaRound(): Double =
+    floor(this * KHROMA_ROUNDING_FACTOR + 0.5) / KHROMA_ROUNDING_FACTOR
 
 private fun hueToRgb(
     lower: Double,
@@ -107,3 +117,5 @@ private val SceneColor.alpha: Int get() = ((argb shr 24) and 0xFF).toInt()
 private val SceneColor.red: Int get() = ((argb shr 16) and 0xFF).toInt()
 private val SceneColor.green: Int get() = ((argb shr 8) and 0xFF).toInt()
 private val SceneColor.blue: Int get() = (argb and 0xFF).toInt()
+
+private const val KHROMA_ROUNDING_FACTOR = 10_000_000_000.0

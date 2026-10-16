@@ -35,6 +35,9 @@ diff can be translated incrementally.
 | --- | --- | --- |
 | `erdiagram/ErLayout.kt` | `erDb.ts` `getData()` and `erRenderer-unified.ts` | Entity/subgraph projection, layout selection, relationship direction, labels, title, accessibility, and SceneGraph orchestration |
 | `erdiagram/ErLayout.kt` | `rendering-elements/shapes/erBox.ts` | Entity header, alternating attribute rows, type/name/key/comment columns, dividers, padding, and minimum dimensions |
+| `MermaidContract.kt` | `themes/theme-{default,dark,forest,neutral,base}.js` | Exact `rowOdd`/`rowEven` constructor, `updateColors()`, and `calculate()` order, including theme-specific base variables and explicit overrides |
+| `MermaidContract.kt` | `themes/theme-{neo,neo-dark,redux,redux-color,redux-dark,redux-dark-color}.js` | Exact missing `rowOdd`/`rowEven` values retained as nullable fields |
+| `MermaidColorMath.kt` | Khroma `adjustChannel`, `Color.stringify`, `lang.round` | HSL adjustment, 10-decimal CSS serialization, and RGB conversion used by derived theme colors |
 | `erdiagram/ErLayout.kt` | `erRenderer-unified.ts` and `styles.ts` | Theme colors, identifying and non-identifying lines, subgraph paint order, and ER configuration |
 | `erdiagram/ErLayout.kt` | `utils/subGraphTitleMargins.ts -> getSubGraphTitleMargins`, `rendering-elements/clusters.js -> insertCluster` | Configured subgraph title margins, default zero margin, label placement, and cluster frame geometry |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
@@ -55,10 +58,24 @@ diff can be translated incrementally.
 | 4 | `subGraphTitleMargins.ts -> getSubGraphTitleMargins`, `clusters.js -> insertCluster` title offsets and frame geometry | `MermaidRenderOptions.subGraphTitle*Margin`, `FlowDagreLayout.applySubgraphTitleMargins`, `ErLayout.addSubGraphs` | **Exact / Platform adaptation**: default margins remain zero, configured margins retain upstream geometry, and SVG label transforms map to SceneText bounds |
 | 5 | `erBox.ts -> erBox` entity without attributes through `drawRect` | `measureEntity`, `addEntity` | **Exact / Platform adaptation** |
 | 6 | `erBox.ts -> erBox`, `addText`, `lineToPolygon` attribute table sizing, rows, dividers, and text placement | `measureEntity`, `entityGridGeometry`, `addEntity` | **Exact / Platform adaptation**: the SVG-label branch scales both `PADDING` and `TEXT_PADDING` by `1.25`; Canvas text bounds retain the Compose horizontal inset explicitly |
-| 7 | `styles.ts -> getStyles` entity palette, relationship-label background, and `clusterBkg ?? mainBkg`, `clusterBorder ?? nodeBorder`, `titleColor ?? textColor` fallbacks | `MermaidTheme`, `ErLayout.addEntity`, `addEdges`, `addSubGraphs` | **Exact / Platform adaptation** |
-| 8 | `edges.js`, `markers.js`, `erMarkers.js` relationship curves, endpoint correction, and crow-foot markers | `MermaidEdgePathPort`, `MermaidMarkerPort`, `MermaidDiagram` | **Platform adaptation** |
+| 7 | `theme-*.js -> constructor`, `updateColors`, `calculate`; `erBox.ts -> erBox` row paint | `MermaidTheme.preset`, `withVariables`, `deriveErRowColors`, `ErLayout.addEntity` | **Exact / Platform adaptation**: classic themes retain their distinct formulas and calculation order; missing Neo/Redux fills map to transparent Canvas row overlays |
+| 8 | `styles.ts -> getStyles` entity palette, relationship-label background, and `clusterBkg ?? mainBkg`, `clusterBorder ?? nodeBorder`, `titleColor ?? textColor` fallbacks | `MermaidTheme`, `ErLayout.addEntity`, `addEdges`, `addSubGraphs` | **Exact / Platform adaptation** |
+| 9 | `edges.js`, `markers.js`, `erMarkers.js` relationship curves, endpoint correction, and crow-foot markers | `MermaidEdgePathPort`, `MermaidMarkerPort`, `MermaidDiagram` | **Platform adaptation** |
 
-Rows 4-5 intentionally represent one native shape or geometry path for an
+## ER Row Theme Function Checklist
+
+| Upstream source | Production stage | Status |
+| --- | --- | --- |
+| `theme-default.js -> constructor`, `updateColors`, `calculate` | Clear the `calculated` placeholders, then derive rows from `primaryColor`; restore explicit row overrides last | **Exact** |
+| `theme-dark.js -> constructor`, `calculate` | Derive rows once from the constructor's `mainBkg`; later `mainBkg` overrides do not recompute them | **Exact** |
+| `theme-forest.js -> updateColors`, `calculate` | Derive rows from the resolved `mainBkg`; restore explicit row overrides last | **Exact** |
+| `theme-neutral.js -> constructor`, `calculate` | Derive the odd row and pin the even row in the constructor; later `mainBkg` overrides do not recompute them | **Exact** |
+| `theme-base.js -> updateColors`, `calculate` | Derive rows from resolved `mainBkg`, selecting lighten or darken formulas with `darkMode`; restore explicit row overrides last | **Exact** |
+| `theme-{neo,neo-dark,redux,redux-color,redux-dark,redux-dark-color}.js -> calculate` | Leave `rowOdd` and `rowEven` undefined unless explicitly supplied | **Exact** |
+| Khroma `adjustChannel`, `Color.stringify`, `lang.round` | Serialize adjusted HSL channels to 10 decimal places before converting the CSS color to SceneColor | **Exact** |
+| `erBox.ts -> erBox` | Read resolved `rowOdd`/`rowEven` and paint alternating attribute rows | **Platform adaptation**: an undefined SVG/Rough.js fill maps to a transparent SceneShape overlay |
+
+Rows 5-6 intentionally represent one native shape or geometry path for an
 upstream rough-svg group that can contain multiple SVG paths even when
 `roughness=0`. Raw SVG child count is therefore not a semantic rendering
 contract; bounds, paint, dividers, and topology remain the required parity
@@ -78,12 +95,25 @@ signals.
 | `markers.js` | `e495d9d84cdf51ee2ead29e3656f98554e7a3a57d20a2873884a32522c4d8f35` |
 | `erMarkers.js` | `afcae8780d19f8a0465fbbd785bd909e875cc5df7b7354432f006e3a02d509e4` |
 | `styles.ts` | `8a090f8401285cf5256d6c113fa5c2cc9d206e6940f33bb7601da044a8c932c4` |
+| `theme-default.js` | `bd25bdb136ffa3030c4eddf211643d6f24049c7aef0eced66002732506fb4aa7` |
+| `theme-dark.js` | `fd03ff4a32d0f3eda6ac47e7f2a27027d8cc30e8581ec11f4c55e15ba1e54d9f` |
+| `theme-forest.js` | `948244e4805c146c21c42db669119e3af7690fa7d74c5be61d39a7076eff5364` |
+| `theme-neutral.js` | `524e8b79ba225fc585b1552fbf563709f3f4f932e509b0125c706b4043f4a882` |
+| `theme-base.js` | `dee4c92a557572d4857a5b188fff50e77ca336259101961ec89195dc83d1fa40` |
+| `theme-neo.js` | `3e7c44e329ccef9c15e12d8606ccdac8196bc6f34f739d5617d14e318ff32e78` |
+| `theme-neo-dark.js` | `62397b9e875f5383f5fe437a1fb803398d9c6f38f1df7c809d50c1322da85ef5` |
+| `theme-redux.js` | `86bedbf4126091c17ca9bfabcdd89a5a5625fcbbe5be0048a9f66bfaf7363de5` |
+| `theme-redux-color.js` | `54108c0e2d02eb55dca3046f0dd55c6eca8c79c63ce7bf373a364c6846650698` |
+| `theme-redux-dark.js` | `77b617007349cfa9e209c696db408e694e65f3a3f2a79571c14011b95b201770` |
+| `theme-redux-dark-color.js` | `14ad5214a0e57244dd452fc53d9ccfbd8b7d2f27399e816fe69ef3034985bee7` |
 | `rendering-util/layout-algorithms/dagre/index.js` | `9981c5e6418078fc81fa5b2c8accd2e954827ae683c6adfeba81c521126c7337` |
 | `entityRelationshipDiagram.md` | `0be2f34ff578b2d86d0429ce288e8681ef46a27d645841a5162c78d501e5441b` |
 
 ## Intentional Kotlin Adaptations
 
 - JavaScript missing properties map to nullable Kotlin fields.
+- Undefined Neo/Redux ER row fills map to transparent SceneShape overlays so
+  the entity or palette fill remains visible beneath them.
 - JavaScript insertion order maps to linked Kotlin collections.
 - Expected parser, semantic, resource, text, and layout failures use
   `GMResult.Err`.
@@ -128,7 +158,7 @@ signals.
 1. Update the locked Mermaid version, source commit, and hashes.
 2. Diff `erDiagram.jison`, `erTypes.ts`, `erDb.ts`,
    `erRenderer-unified.ts`, `erBox.ts`, `markers.js`, `erMarkers.js`, and
-   `styles.ts`.
+   `styles.ts`, plus every `theme-*.js` file listed above.
 3. Regenerate `ErJisonTables.kt` and translate changed semantic actions, DB
    behavior, data projection, entity geometry, marker methods, or styling in
    the mapped Kotlin files.

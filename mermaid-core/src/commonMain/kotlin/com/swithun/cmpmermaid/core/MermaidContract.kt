@@ -962,6 +962,8 @@ data class MermaidTheme(
     val erClusterFill: SceneColor = groupFill,
     val erClusterStroke: SceneColor = nodeStroke,
     val erClusterText: SceneColor = textColor,
+    val rowOdd: SceneColor? = SceneColor(0xFFFFFFFF),
+    val rowEven: SceneColor? = SceneColor(0xFFF1F1FF),
     val noteFill: SceneColor = SceneColor(0xFFFFF5AD),
     val noteStroke: SceneColor = SceneColor(0xFFAAAA33),
     val noteText: SceneColor = SceneColor(0xFF000000),
@@ -997,6 +999,7 @@ data class MermaidTheme(
         paletteColor(borderColorArray, index) ?: groupStroke
 
     companion object {
+        // Mermaid.js 12.0.0: themes/theme-default.js -> updateColors.
         val MermaidDefault = MermaidTheme()
 
         val Dark = MermaidTheme(
@@ -1014,6 +1017,9 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFF2F2F2F),
             noteText = SceneColor(0xFFB8B6B6),
             textColor = SceneColor(0xFFCCCCCC),
+            // Mermaid.js 12.0.0: themes/theme-dark.js -> constructor.
+            rowOdd = SceneColor(0xFF2C2D2D),
+            rowEven = SceneColor(0xFF060606),
             errorBackground = SceneColor(0xFFA44141),
             errorText = SceneColor(0xFFDDDDDD),
             gantt = darkGanttTheme(),
@@ -1085,6 +1091,8 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
             textColor = SceneColor(0xFF28253D),
+            rowOdd = null,
+            rowEven = null,
             errorBackground = SceneColor(0xFFFFFFFF),
             errorText = SceneColor(0xFF000000),
             gantt = reduxColorGanttTheme(),
@@ -1143,6 +1151,9 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFF6EAA49),
                 noteText = SceneColor(0xFF000000),
                 textColor = SceneColor(0xFF000000),
+                // Mermaid.js 12.0.0: themes/theme-forest.js -> updateColors.
+                rowOdd = SceneColor(0xFFFFFFFF),
+                rowEven = SceneColor(0xFFF4F9E9),
                 gantt = forestGanttTheme(),
                 journey = forestJourneyTheme(),
                 requirement = forestRequirementTheme(),
@@ -1200,6 +1211,9 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFF999999),
                 noteText = SceneColor(0xFFFFFFFF),
                 textColor = SceneColor(0xFF333333),
+                // Mermaid.js 12.0.0: themes/theme-neutral.js -> constructor.
+                rowOdd = SceneColor(0xFFFFFFFF),
+                rowEven = SceneColor(0xFFF4F4F4),
                 gantt = neutralGanttTheme(),
                 journey = neutralJourneyTheme(),
                 requirement = neutralRequirementTheme(),
@@ -1245,6 +1259,9 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 textColor = SceneColor(0xFF333333),
+                // Mermaid.js 12.0.0: themes/theme-base.js -> updateColors.
+                rowOdd = SceneColor(0xFFFFFFFF),
+                rowEven = SceneColor(0xFFFFFCF6),
                 errorBackground = SceneColor(0xFFF7F9FF),
                 errorText = SceneColor(0xFF090600),
                 gantt = baseGanttTheme(),
@@ -1277,6 +1294,8 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 textColor = SceneColor(0xFF333333),
+                rowOdd = null,
+                rowEven = null,
                 errorBackground = SceneColor(0xFFFFFFFF),
                 errorText = SceneColor(0xFF000000),
                 gantt = neoGanttTheme(),
@@ -1318,6 +1337,8 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFE4DB95),
                 noteText = SceneColor(0xFF333333),
                 textColor = SceneColor(0xFFE0DFDF),
+                rowOdd = null,
+                rowEven = null,
                 errorBackground = SceneColor(0xFF201F1F),
                 errorText = SceneColor(0xFFDFE0E0),
                 gantt = neoDarkGanttTheme(),
@@ -1358,6 +1379,8 @@ data class MermaidTheme(
                 noteStroke = SceneColor(0xFFFACC15),
                 noteText = SceneColor(0xFF28253D),
                 textColor = SceneColor(0xFF28253D),
+                rowOdd = null,
+                rowEven = null,
                 errorBackground = SceneColor(0xFFFFFFFF),
                 errorText = SceneColor(0xFF000000),
                 gantt = reduxGanttTheme(),
@@ -1907,6 +1930,14 @@ data class MermaidTheme(
                     theme.erEdgeLabelFill
                 else -> resolvedEdgeLabelFill
             }
+            val resolvedRowColors = deriveErRowColors(
+                theme = theme,
+                themeName = themeName,
+                mainBackground = color("mainBkg"),
+                primaryColor = color("primaryColor"),
+                darkMode = boolean("darkMode"),
+                values = values,
+            )
             val resolved = theme.copy(
                 background = color("background") ?: theme.background,
                 nodeFill = color("mainBkg", "primaryColor") ?: theme.nodeFill,
@@ -1928,6 +1959,8 @@ data class MermaidTheme(
                         ?: theme.erClusterStroke,
                 erClusterText =
                     color("titleColor", "textColor") ?: theme.erClusterText,
+                rowOdd = color("rowOdd") ?: resolvedRowColors.first,
+                rowEven = color("rowEven") ?: resolvedRowColors.second,
                 noteFill = color("noteBkgColor") ?: theme.noteFill,
                 noteStroke = color("noteBorderColor") ?: theme.noteStroke,
                 noteText = color("noteTextColor") ?: theme.noteText,
@@ -1964,6 +1997,65 @@ data class MermaidTheme(
                     ),
                 )
             }
+        }
+
+        private fun deriveErRowColors(
+            theme: MermaidTheme,
+            themeName: String?,
+            mainBackground: SceneColor?,
+            primaryColor: SceneColor?,
+            darkMode: Boolean?,
+            values: Map<String, String>,
+        ): Pair<SceneColor?, SceneColor?> {
+            // Mermaid.js 12.0.0:
+            // packages/mermaid/src/themes/theme-{default,dark,forest,neutral,base}.js
+            // -> constructor, updateColors, calculate. Neo and Redux themes leave
+            // rowOdd/rowEven undefined, which the Canvas renderer preserves as no fill.
+            val configuredThemeName = themeName?.lowercase().takeUnless { it == "null" }
+            val resolvedThemeName = configuredThemeName ?: when (theme) {
+                MermaidDefault -> MermaidThemePreset.Default.configName
+                Dark -> MermaidThemePreset.Dark.configName
+                FlowchartDefault -> MermaidThemePreset.ReduxColor.configName
+                else -> null
+            }
+            val inherited = theme.rowOdd to theme.rowEven
+            val derived = when (resolvedThemeName) {
+                "default" -> {
+                    if ("primaryColor" in values && primaryColor != null) {
+                        primaryColor.mermaidLighten(75.0) to
+                            primaryColor.mermaidLighten(1.0)
+                    } else {
+                        inherited
+                    }
+                }
+                "forest" -> {
+                    if ("mainBkg" in values && mainBackground != null) {
+                        mainBackground.mermaidLighten(75.0) to
+                            mainBackground.mermaidLighten(20.0)
+                    } else {
+                        inherited
+                    }
+                }
+                "base" -> {
+                    if (
+                        ("mainBkg" in values && mainBackground != null) ||
+                        ("darkMode" in values && darkMode != null)
+                    ) {
+                        val source = mainBackground ?: theme.nodeFill
+                        if (darkMode == true) {
+                            source.mermaidDarken(5.0) to source.mermaidDarken(10.0)
+                        } else {
+                            source.mermaidLighten(75.0) to source.mermaidLighten(5.0)
+                        }
+                    } else {
+                        inherited
+                    }
+                }
+                else -> inherited
+            }
+            val rowOdd = if ("rowOdd" in values) theme.rowOdd else derived.first
+            val rowEven = if ("rowEven" in values) theme.rowEven else derived.second
+            return rowOdd to rowEven
         }
 
         private fun deriveGitInverseColor(
@@ -2026,6 +2118,8 @@ data class MermaidTheme(
             noteStroke = SceneColor(0xFFFACC15),
             noteText = SceneColor(0xFF28253D),
             textColor = SceneColor(0xFFE0DFDF),
+            rowOdd = null,
+            rowEven = null,
             errorBackground = SceneColor(0xFF201F1F),
             errorText = SceneColor(0xFFDFE0E0),
             gantt = reduxDarkGanttTheme(),
