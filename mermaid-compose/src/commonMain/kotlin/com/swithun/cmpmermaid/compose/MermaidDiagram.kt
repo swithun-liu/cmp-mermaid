@@ -2587,6 +2587,25 @@ private fun TextMeasurer.measureMermaidText(
         )
         return MermaidTextMeasurement(unwrapped, intrinsicWidth)
     }
+    if (useMermaidCssBreakSpacesLayout) {
+        val cssWrappedText = text.withCssBreakSpacesLines(maximumWidth) { candidate ->
+            intrinsicWidth(candidate).mermaidTextIntrinsicWidth(intrinsicWidthScale)
+        }
+        val cssWrapped = measure(
+            text = cssWrappedText,
+            style = style,
+            softWrap = false,
+            maxLines = maxLines,
+            overflow = overflow,
+            constraints = Constraints(),
+        )
+        val cssWrappedWidth = intrinsicWidth(cssWrappedText)
+            .mermaidTextIntrinsicWidth(intrinsicWidthScale)
+        return MermaidTextMeasurement(
+            layout = cssWrapped,
+            measuredWidth = max(maximumWidth, cssWrappedWidth),
+        )
+    }
 
     val wrapped = measure(
         text = text,
