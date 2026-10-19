@@ -90,6 +90,7 @@ jobs:
           sparse-checkout: |
             /*
             !/docs/assets/
+            /docs/assets/invalid-source-report/invalid-source-manifest.json
           sparse-checkout-cone-mode: false
 
       - name: Validate signing secrets
