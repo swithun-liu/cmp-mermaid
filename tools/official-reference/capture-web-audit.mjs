@@ -13,6 +13,7 @@ import {
   manifestMatchesAuditCase,
   validateAuditCaseIdentity,
 } from './audit-source-identity.mjs';
+import { invalidSourceCaseMatchesScope } from './audit-source-selection.mjs';
 import { cases as flowchartCases } from './cases.mjs';
 import { cases as invalidSourceCases } from './invalid-source-corpus.mjs';
 import { cases as productionCases } from './production-corpus.mjs';
@@ -174,13 +175,11 @@ const sourceCases = supportedAuditSources.slice(1).includes(auditSource)
       ),
     ];
 const availableCases = sourceCases.filter(
-  ({ id, profileIndex, caseIndex, mutationVariant }) =>
-    (selectedIds.size === 0 || selectedIds.has(id)) &&
+  (entry) =>
+    (selectedIds.size === 0 || selectedIds.has(entry.id)) &&
     (
       auditSource !== 'invalid-source' ||
-      invalidSourceScope === 'full' ||
-      mutationVariant === 1 ||
-      (mutationVariant === undefined && (profileIndex === 1 || caseIndex === 1))
+      invalidSourceCaseMatchesScope(entry, invalidSourceScope)
     ),
 );
 
