@@ -30,6 +30,7 @@ discarded or rendered as a different feature.
 | Direction | Supported | TB, BT, LR, and RL at root and nested subgraph levels |
 | Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default, including Mermaid's recursive subgraph `nodesep` and `ranksep + 25` propagation; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Shared Mermaid/Marked text path for entity aliases, attributes, relationship labels, and subgraph labels |
+| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` can measure and draw one complete `$$...$$` label; entity, attribute, relationship, and subgraph text retain the request through SceneGraph |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, `class`, inline `:::`, fill, stroke, dash, text, font, decoration, and line-height properties |
 | Themes | Supported | Mermaid 12 redux-color palette, alternating attribute rows, ER-specific edge-label backgrounds, cluster fill/border/title fallbacks, neo shadows, and shared native theme variables |
 | ER configuration | Supported | `diagramPadding`, `entityPadding`, `minEntityWidth`, `minEntityHeight`, `nodeSpacing`, `rankSpacing`, `titleTopMargin`, and shared `flowchart.subGraphTitleMargin` |
@@ -37,9 +38,13 @@ discarded or rendered as a different feature.
 
 ## Explicit Unsupported Boundaries
 
-KaTeX/MathML layout is not translated. A `$$...$$` HTML label renders its
-inner formula source as plain text and the successful scene reports
-`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
+KaTeX parsing and MathML generation are not translated or bundled. Without a
+host formula renderer, a `$$...$$` HTML label renders its inner source as plain
+text and the successful scene reports
+`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. A supplied
+renderer can asynchronously measure and draw a label consisting of one complete
+formula block. Renderer failures, mixed text/formula labels, and multiple
+formula blocks retain the plain-text fallback.
 
 The following legal Mermaid capabilities return
 `MermaidError.UnsupportedFeature`:
@@ -73,6 +78,9 @@ The following legal Mermaid capabilities return
   Puppeteer-rendered official references.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
+- Focused tests verify formula request propagation for ER relationship labels.
+  The published Native/Official images predate provider-backed formula output,
+  so they do not promote formula rendering to Stable.
 
 ## Reference Workflow
 

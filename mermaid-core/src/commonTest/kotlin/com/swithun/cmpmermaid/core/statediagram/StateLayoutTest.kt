@@ -4,6 +4,8 @@ import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidDiagnostic
 import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidEngine
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
+import com.swithun.cmpmermaid.core.MermaidFormulaMetrics
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -298,6 +300,62 @@ class StateLayoutTest {
         )
         assertEquals("KaTeX label", diagnostic.feature)
         assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+    }
+
+    @Test
+    fun exposesProviderRequestForStateTransitionFormula() {
+        val result = engine.render(
+            """
+            stateDiagram-v2
+                Pending --> Approved : ${'$'}${'$'}x^2${'$'}${'$'}
+            """.trimIndent(),
+            context,
+            MermaidFormulaRenderContext(),
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val request = scene.formulaRequests.single()
+        val label = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals("x^2", request.source)
+        assertEquals(request, label.formula)
+        assertTrue(scene.diagnostics.isEmpty())
+    }
+
+    @Test
+    fun preservesResolvedFormulaHeightForStateTransition() {
+        val source = """
+            stateDiagram-v2
+                Pending --> Approved : ${'$'}${'$'}x^2${'$'}${'$'}
+        """.trimIndent()
+        val firstScene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source,
+                context,
+                MermaidFormulaRenderContext(),
+            ),
+        ).value
+        val request = firstScene.formulaRequests.single()
+        val resolvedHeight = 41f
+        val resolvedScene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source,
+                context,
+                MermaidFormulaRenderContext(
+                    metrics = mapOf(
+                        request to MermaidFormulaMetrics(
+                            width = 70f,
+                            height = resolvedHeight,
+                            baseline = 30f,
+                        ),
+                    ),
+                ),
+            ),
+        ).value
+        val label = resolvedScene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals(resolvedHeight + 8f, label.bounds.height)
     }
 
     private fun render(

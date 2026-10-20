@@ -86,6 +86,7 @@ internal class MindmapLayout {
                     labelType = FlowLabelType.Markdown,
                     config = context.options,
                     onDiagnostic = context::reportDiagnostic,
+                    formulaRenderingAvailable = context.formulaRenderingEnabled,
                 )
             ) {
                 is GMResult.Ok -> result.value
@@ -184,7 +185,7 @@ internal class MindmapLayout {
                 horizontalAlignment = SceneTextAlignment.Center,
                 softWrap = true,
                 zIndex = 20,
-            )
+            ).withFormula(visual.textMetrics.formula)
         }
 
         return GMResult.Ok(normalize(elements, document, context))
@@ -541,7 +542,7 @@ internal class MindmapLayout {
         is SceneText -> copy(
             bounds = bounds.translate(dx, dy),
             rotationPivot = rotationPivot?.translate(dx, dy),
-        )
+        ).withFormula(formula)
         is ScenePath -> copy(
             points = points.map { point -> point.translate(dx, dy) },
             commands = commands.map { command -> command.translate(dx, dy) },

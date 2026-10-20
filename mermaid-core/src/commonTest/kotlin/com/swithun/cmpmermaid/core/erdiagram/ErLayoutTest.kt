@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core.erdiagram
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidEngine
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -224,6 +225,26 @@ class ErLayoutTest {
             background.fill,
         )
         assertEquals(0xFFFFFFFF, background.fill.argb)
+    }
+
+    @Test
+    fun exposesProviderRequestForErRelationshipFormula() {
+        val result = engine.render(
+            """
+            erDiagram
+                ACCOUNT ||--o{ RECORD : "${'$'}${'$'}x^2${'$'}${'$'}"
+            """.trimIndent(),
+            context,
+            MermaidFormulaRenderContext(),
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val request = scene.formulaRequests.single()
+        val label = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals("x^2", request.source)
+        assertEquals(request, label.formula)
+        assertTrue(scene.diagnostics.isEmpty())
     }
 
     @Test

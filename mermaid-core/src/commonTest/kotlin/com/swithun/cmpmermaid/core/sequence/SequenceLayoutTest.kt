@@ -1,7 +1,10 @@
 package com.swithun.cmpmermaid.core.sequence
 
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
+import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidEngine
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -191,6 +194,34 @@ class SequenceLayoutTest {
         )
         assertTrue(scene.width > 0f)
         assertTrue(scene.height > 0f)
+    }
+
+    @Test
+    fun keepsSequenceKatexOnItsExplicitPlainTextBoundary() {
+        val source = """
+            sequenceDiagram
+                participant A as ${'$'}${'$'}A^2${'$'}${'$'}
+                participant B
+                A->>B:${'$'}${'$'}x^2${'$'}${'$'}
+        """.trimIndent()
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source,
+                context,
+                MermaidFormulaRenderContext(),
+            ),
+        ).value
+        val texts = scene.elements.filterIsInstance<SceneText>()
+        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
+            scene.diagnostics.single(),
+        )
+
+        assertTrue(texts.any { text -> text.text == "${'$'}${'$'}A^2${'$'}${'$'}" })
+        assertTrue(texts.any { text -> text.text == "${'$'}${'$'}x^2${'$'}${'$'}" })
+        assertTrue(texts.all { text -> text.formula == null })
+        assertEquals(emptyList(), scene.formulaRequests)
+        assertEquals("Sequence KaTeX layout", diagnostic.feature)
+        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
     }
 
     @Test

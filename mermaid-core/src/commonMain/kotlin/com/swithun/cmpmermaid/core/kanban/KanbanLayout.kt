@@ -158,7 +158,7 @@ internal class KanbanLayout {
                 htmlLabel = true,
                 wrappingWidth = section.label.wrappingWidth,
                 zIndex = SECTION_Z_START + section.index * SECTION_Z_STRIDE + 1,
-            )
+            ).withFormula(section.label.metrics.formula)
         }
 
         var itemIndex = 0
@@ -376,6 +376,7 @@ private class KanbanNodeFactory(
                 labelType = FlowLabelType.Markdown,
                 config = context.options,
                 onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -406,7 +407,7 @@ private class KanbanNodeFactory(
                 metrics = metrics.copy(
                     width = metrics.width.coerceAtMost(maxWidth),
                     height = metrics.height.coerceAtLeast(fontSize * lineHeight),
-                ),
+                ).withFormula(metrics.formula),
                 // createText.ts -> addHtmlSpan keeps this CSS max-width after
                 // the foreignObject is narrowed to its measured bounding box.
                 wrappingWidth = maxWidth,
@@ -600,7 +601,7 @@ private fun KanbanTextVisual.toSceneText(
         htmlLabel = true,
         wrappingWidth = wrappingWidth,
         zIndex = zIndex,
-    )
+    ).withFormula(metrics.formula)
 }
 
 private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
@@ -631,7 +632,7 @@ private fun SceneElement.translate(
     is SceneText -> copy(
         bounds = bounds.translate(dx, dy),
         rotationPivot = rotationPivot?.translate(dx, dy),
-    )
+    ).withFormula(formula)
     is ScenePath -> copy(
         points = points.map { point -> point.translate(dx, dy) },
         commands = commands.map { command -> command.translate(dx, dy) },

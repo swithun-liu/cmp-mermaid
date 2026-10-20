@@ -1,5 +1,6 @@
 package com.swithun.cmpmermaid.core.usecase
 
+import com.swithun.cmpmermaid.core.MermaidFormulaMeasureRequest
 import com.swithun.cmpmermaid.core.ScenePoint
 import com.swithun.cmpmermaid.core.SceneShapeGeometry
 import com.swithun.cmpmermaid.core.SceneShapeKind
@@ -384,6 +385,7 @@ internal data class UsecaseMeasuredText(
     val text: String,
     val spans: List<SceneTextSpan>,
     val size: SceneSize,
+    val formula: MermaidFormulaMeasureRequest? = null,
 )
 
 internal data class UsecaseTextVisual(

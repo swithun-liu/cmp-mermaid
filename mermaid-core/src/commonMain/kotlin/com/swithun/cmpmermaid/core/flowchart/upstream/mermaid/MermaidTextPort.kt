@@ -5,8 +5,10 @@ import com.swithun.cmpmermaid.core.CssColorParser
 import com.swithun.cmpmermaid.core.MermaidDiagnostic
 import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaSource
 import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
+import com.swithun.cmpmermaid.core.MERMAID_KATEX_PATTERN
 import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.SceneTextBaselineShift
 import com.swithun.cmpmermaid.core.SceneTextFontFamily
@@ -30,17 +32,24 @@ internal object MermaidTextPort {
         labelType: FlowLabelType,
         config: MermaidRenderOptions,
         onDiagnostic: (MermaidDiagnostic) -> Unit = {},
+        formulaRenderingAvailable: Boolean = false,
     ): GMResult<MermaidRenderedText, MermaidError> {
         val parserDecoded = MermaidPreprocessor.decodeEntities(source)
-        if (config.htmlLabels && KATEX.containsMatchIn(parserDecoded)) {
-            onDiagnostic(
-                MermaidDiagnostic.UnsupportedFeature(
-                    feature = "KaTeX label",
-                    fallback = MermaidDiagnosticFallback.PlainText,
-                    message = "Native Mermaid rendered an unsupported KaTeX label as plain text",
-                ),
+        if (config.htmlLabels && MERMAID_KATEX_PATTERN.containsMatchIn(parserDecoded)) {
+            val rendered = renderKatexPlainText(parserDecoded)
+            val formulaSource = rendered.formulaSource()
+            if (!formulaRenderingAvailable || formulaSource == null) {
+                onDiagnostic(katexPlainTextDiagnostic())
+            }
+            return GMResult.Ok(
+                if (formulaRenderingAvailable) {
+                    rendered
+                } else {
+                    rendered.copy(
+                        spans = rendered.spans.map { span -> span.withFormula(null) },
+                    )
+                },
             )
-            return GMResult.Ok(renderKatexPlainText(parserDecoded))
         }
         if (config.htmlLabels && FONT_AWESOME_ICON.containsMatchIn(parserDecoded)) {
             return unsupported("FontAwesome label icon")
@@ -65,11 +74,26 @@ internal object MermaidTextPort {
     private fun renderKatexPlainText(source: String): MermaidRenderedText {
         val normalized = source
             .replace(LINE_BREAK, "\n")
-            .replace("\\n", "\n")
             .replace("\\\\", "\\")
         val decoded = MermaidHtmlEntityDecoder.decode(normalized)
+        val formulaMatch = MERMAID_KATEX_PATTERN
+            .findAll(decoded)
+            .toList()
+            .singleOrNull()
+            ?.takeIf { match ->
+                match.range.first == 0 && match.range.last == decoded.lastIndex
+            }
+        val text = MERMAID_KATEX_PATTERN.replace(decoded) { match -> match.groupValues[1] }
         return MermaidRenderedText(
-            text = KATEX.replace(decoded) { match -> match.groupValues[1] },
+            text = text,
+            spans = formulaMatch?.let { match ->
+                listOf(
+                    SceneTextSpan(
+                        start = 0,
+                        end = text.length,
+                    ).withFormula(MermaidFormulaSource(match.groupValues[1])),
+                )
+            }.orEmpty(),
         )
     }
 
@@ -448,6 +472,13 @@ internal object MermaidTextPort {
             ),
         )
 
+    private fun katexPlainTextDiagnostic(): MermaidDiagnostic.UnsupportedFeature =
+        MermaidDiagnostic.UnsupportedFeature(
+            feature = "KaTeX label",
+            fallback = MermaidDiagnosticFallback.PlainText,
+            message = "Native Mermaid rendered an unsupported KaTeX label as plain text",
+        )
+
     private class HtmlStyleStack {
         private val frames = mutableListOf<HtmlStyleFrame>()
         private val suppressedTags = mutableListOf<String>()
@@ -800,7 +831,6 @@ internal object MermaidTextPort {
     private val MULTIPLE_NEWLINES = Regex("""\n{2,}""")
     private val HTML_TEXT_NEWLINE = Regex("""\n *""")
     // Mermaid.js 12.0.0: diagrams/common/common.ts -> katexRegex.
-    private val KATEX = Regex("""\$\$(.*?)\$\$""")
     private val FONT_AWESOME_ICON = Regex("""fa[bklrs]?:fa-[\w-]+""")
     private val TRAILING_INDENTED_NEWLINE = Regex("""\r?\n([\t ]*)${'$'}""")
     private val DEDENT_LINE = Regex("""\n([\t ]+|[^\s])""")
@@ -899,4 +929,16 @@ internal object MermaidTextPort {
 internal data class MermaidRenderedText(
     val text: String,
     val spans: List<SceneTextSpan> = emptyList(),
-)
+) {
+    fun formulaSource(): MermaidFormulaSource? =
+        spans
+            .asSequence()
+            .filter { span ->
+                span.formula != null &&
+                    span.start == 0 &&
+                    span.end == text.length
+            }
+            .mapNotNull(SceneTextSpan::formula)
+            .distinct()
+            .singleOrNull()
+}

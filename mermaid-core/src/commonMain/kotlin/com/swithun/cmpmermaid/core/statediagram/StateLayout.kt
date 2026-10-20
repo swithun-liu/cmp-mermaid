@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core.statediagram
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaMeasureRequest
 import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -343,6 +344,7 @@ internal class StateLayout {
                 labelType = FlowLabelType.Markdown,
                 config = context.options,
                 onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -359,6 +361,7 @@ internal class StateLayout {
                 text = rendered.text,
                 spans = rendered.spans,
                 size = SceneSize(metrics.width, metrics.height),
+                formula = metrics.formula,
             ),
         )
     }
@@ -374,6 +377,7 @@ internal class StateLayout {
                 labelType = FlowLabelType.Markdown,
                 config = context.options,
                 onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -414,6 +418,9 @@ internal class StateLayout {
         )
         // CSS foreignObject labels retain the complete line box; Compose trims
         // leading from TextLayoutResult.size, so restore it from the measured line count.
+        if (measured.formula != null) {
+            return measured
+        }
         return measured.lineCount?.let { lineCount ->
             measured.copy(height = lineCount * fontSize * lineHeight)
         } ?: measured
@@ -789,7 +796,7 @@ internal class StateLayout {
                     weight = SceneTextWeight.Normal,
                     spans = visual.spans,
                     zIndex = 7,
-                )
+                ).withFormula(visual.formula)
             }
         }
         return GMResult.Ok(Unit)
@@ -965,10 +972,14 @@ internal class StateLayout {
         spans = spans,
         horizontalAlignment = alignment,
         zIndex = zIndex,
-    )
+    ).withFormula(metrics.formula)
 
     private fun StateTextVisual.withMinWidth(minWidth: Float): StateTextVisual =
-        copy(metrics = metrics.copy(width = max(metrics.width, minWidth)))
+        copy(
+            metrics = metrics.copy(
+                width = max(metrics.width, minWidth),
+            ).withFormula(metrics.formula),
+        )
 
     private fun direction(value: String): FlowDirection = when (value) {
         "BT" -> FlowDirection.BottomToTop
@@ -1005,7 +1016,7 @@ internal class StateLayout {
     ): SceneElement = when (this) {
         is com.swithun.cmpmermaid.core.SceneAsset -> copy(bounds = bounds.translate(dx, dy))
         is SceneShape -> copy(bounds = bounds.translate(dx, dy))
-        is SceneText -> copy(bounds = bounds.translate(dx, dy))
+        is SceneText -> copy(bounds = bounds.translate(dx, dy)).withFormula(formula)
         is ScenePath -> copy(
             points = points.map { point -> point.translate(dx, dy) },
             commands = commands.map { command -> command.translate(dx, dy) },
@@ -1059,6 +1070,7 @@ internal class StateLayout {
         val text: String,
         val spans: List<SceneTextSpan>,
         val size: SceneSize,
+        val formula: MermaidFormulaMeasureRequest?,
     )
 
     private companion object {

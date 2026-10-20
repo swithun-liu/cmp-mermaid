@@ -65,9 +65,11 @@ production so an upstream grammar diff can be translated incrementally.
   `GMResult.Err`.
 - Mermaid DOM text maps to shared SceneGraph text spans and host-supplied
   measurement.
-- Browser-only label content returns `MermaidError.UnsupportedFeature`, except
-  `$$...$$` KaTeX labels, whose untranslated formula source renders as plain
-  text with `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
+- Browser-only label content returns `MermaidError.UnsupportedFeature`.
+  A complete `$$...$$` label may use the optional platform-neutral formula
+  renderer; absent/failed renderers and unsupported mixed composition retain
+  visible plain text with
+  `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
 - SceneGraph interactions preserve links, callbacks, and tooltips while the
   host owns their execution.
 - SceneGraph output remains platform independent; Compose owns final Canvas
@@ -79,8 +81,9 @@ production so an upstream grammar diff can be translated incrementally.
   notes, members, relations, styles, and malformed input.
 - `ClassLayoutTest` covers compartments, classifiers, every marker family,
   labels, cardinalities, notes, namespaces, interactions, Markdown, structured
-  unsupported errors, layout selection, title, accessibility metadata, and
-  Mermaid's asymmetric header/body text-group width.
+  unsupported errors, formula request propagation, layout selection, title,
+  accessibility metadata, and Mermaid's asymmetric header/body text-group
+  width.
 - `ClassStressTest` covers Mermaid's relation matrix and 256 deterministic
   random legal diagrams under Dagre.
 - `OfficialClassDocumentationTest` executes all 38 examples extracted from

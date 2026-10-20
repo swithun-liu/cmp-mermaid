@@ -24,6 +24,7 @@ class FlowchartPlugin : MermaidDiagramPlugin {
             val document = FlowchartDataAdapter.convert(
                 db = parsed.value,
                 onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
             )
         ) {
             is GMResult.Ok -> FlowchartLayout().layout(document.value, context)

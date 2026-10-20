@@ -31,6 +31,7 @@ native SceneGraph returns `MermaidError.UnsupportedFeature`.
 | Lifecycle | Supported | `create` and `destroy` for participant and actor glyphs |
 | Control regions | Supported | `loop`, `alt`, `else`, `opt`, `par`, `and`, `par_over`, `critical`, `option`, `break`, and `rect` |
 | Text | Supported | Unicode, HTML entities, explicit `<br>` variants, and `wrap:`/`nowrap:` |
+| Formula labels | Plain-text fallback, non-Stable | Sequence-specific `calculateMathMLDimensions` preflight and `drawKatex` placement are not translated; formula source stays visible and reports a structured fallback diagnostic even when a shared host renderer exists |
 | Themes | Supported | Mermaid 12 redux-color participant palette and Sequence note/control colors through the shared native theme |
 | Resource controls | Supported | Sequence messages are bounded by host-owned `maxEdges` |
 
@@ -39,6 +40,11 @@ native SceneGraph returns `MermaidError.UnsupportedFeature`.
 - Participant `links` menus require browser click-menu behavior.
 - Participant `properties` depend on the same browser menu surface.
 - Participant `details` is a browser DOM element reference.
+- KaTeX actor, message, note, and control labels require Sequence-specific
+  formula measurement and placement stages. Native reports
+  `MermaidDiagnostic.UnsupportedFeature(feature = "Sequence KaTeX layout",
+  fallback = PlainText)` and does not route them through the shared formula
+  renderer until those complete upstream stages are translated.
 
 These cases return a structured `MermaidError.UnsupportedFeature`; they are
 not silently discarded.
@@ -56,7 +62,8 @@ not silently discarded.
 - Focused tests cover Jison lexer/parser behavior, SequenceDB state,
   participant shapes, every message marker family, notes, wrapping, HTML line
   breaks, activations, control nesting, lifecycle endpoints, and resource
-  limits.
+  limits. A dedicated boundary test verifies that Sequence formula labels stay
+  plain text and produce no provider request.
 - 14 independent production scenarios render identical source through Native
   Compose and Mermaid.js `12.0.0`: detail audit
   `14 pass / 0 review / 0 fail`; geometry width `1.019-1.254`, height
@@ -68,6 +75,8 @@ not silently discarded.
   findings remain explicit.
 - Core and Compose compile for JVM, Android, Desktop, and all configured iOS
   architectures.
+- The published Native/Official images do not cover provider-backed formula
+  output and cannot promote Sequence formula rendering to Stable.
 
 ## Reference Workflow
 

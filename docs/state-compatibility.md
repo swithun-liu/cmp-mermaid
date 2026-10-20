@@ -30,6 +30,7 @@ discarded or rendered as a different feature.
 | Direction | Supported | TB, BT, LR, and RL at root and nested composite levels |
 | Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Shared Mermaid/Marked text path for states, descriptions, transitions, notes, and composite labels |
+| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` can measure and draw one complete `$$...$$` label; state, note, composite, and transition text retain the request through SceneGraph |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, `class`, inline `:::`, fill, stroke, dash, text, font, decoration, and line-height properties |
 | Themes | Supported | Mermaid 12 redux-color palette, note colors, group color slots, neo appearance, and shared native theme variables |
 | Links and tooltips | Supported | Sanitized `click`/`href` data is exposed as `SceneNodeInteraction`; the host owns navigation |
@@ -38,9 +39,13 @@ discarded or rendered as a different feature.
 
 ## Explicit Unsupported Boundaries
 
-KaTeX/MathML layout is not translated. A `$$...$$` HTML label renders its
-inner formula source as plain text and the successful scene reports
-`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
+KaTeX parsing and MathML generation are not translated or bundled. Without a
+host formula renderer, a `$$...$$` HTML label renders its inner source as plain
+text and the successful scene reports
+`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. A supplied
+renderer can asynchronously measure and draw a label consisting of one complete
+formula block. Renderer failures, mixed text/formula labels, and multiple
+formula blocks retain the plain-text fallback.
 
 The following legal Mermaid capabilities return
 `MermaidError.UnsupportedFeature`:
@@ -77,6 +82,9 @@ navigation; the native renderer does not execute arbitrary URLs or JavaScript.
   Puppeteer-rendered official references.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
+- Focused tests verify formula request propagation for State transition labels.
+  The published Native/Official images predate provider-backed formula output,
+  so they do not promote formula rendering to Stable.
 
 ## Reference Workflow
 

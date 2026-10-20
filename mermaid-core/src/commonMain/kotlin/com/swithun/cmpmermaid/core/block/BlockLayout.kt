@@ -132,6 +132,7 @@ internal class BlockLayout {
                 labelType = FlowLabelType.Text,
                 config = context.options,
                 onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
             )
         ) {
             is GMResult.Ok -> text.value
@@ -527,7 +528,7 @@ internal class BlockLayout {
                     horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                     softWrap = true,
                     zIndex = paint + 1,
-                )
+                ).withFormula(labelMetrics.formula)
             }
         }
         block.children.forEach { child ->
@@ -585,6 +586,7 @@ internal class BlockLayout {
                     labelType = FlowLabelType.Text,
                     config = context.options,
                     onDiagnostic = context::reportDiagnostic,
+                    formulaRenderingAvailable = context.formulaRenderingEnabled,
                 )
             ) {
                 is GMResult.Ok -> result.value
@@ -636,7 +638,7 @@ internal class BlockLayout {
                 weight = SceneTextWeight.Normal,
                 spans = rendered.spans,
                 zIndex = z + 2,
-            )
+            ).withFormula(measured.formula)
         }
         return GMResult.Ok(Unit)
     }
@@ -1180,7 +1182,7 @@ internal class BlockLayout {
         is SceneText -> copy(
             bounds = bounds.translate(dx, dy),
             rotationPivot = rotationPivot?.translate(dx, dy),
-        )
+        ).withFormula(formula)
         is ScenePath -> copy(
             points = points.map { point -> point.translate(dx, dy) },
             commands = commands.map { command -> command.translate(dx, dy) },

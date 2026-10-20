@@ -8,7 +8,11 @@
 > returns a structured unsupported result. Architecture also remains
 > non-Stable because legal `randomize: true` input returns a structured
 > unsupported result. Seven detail cases remain under review: five
-> Architecture and two Kanban. The full JVM and Wasm core suites pass.
+> Architecture and two Kanban. Provider-backed formula rendering is also
+> **not Stable**: whole-label shared-text plumbing is implemented, but mixed
+> composition and Sequence-specific formula stages remain unsupported, and no
+> dedicated cross-platform formula visual corpus has passed. The full JVM and
+> Wasm core suites pass.
 > Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS now have separate fresh 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
@@ -25,7 +29,7 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Not Stable: Architecture `randomize: true` and `look: handDrawn` are unsupported; 5 Architecture and 2 Kanban cases remain under review** |
+| Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; 5 Architecture and 2 Kanban cases remain under review** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Implemented families | 33/33; all 33 family evidence gates current |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
@@ -44,7 +48,7 @@ stress inputs.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | Core: 1,019 passed, 0 failed; Compose: 38 passed, 0 failed |
+| JVM tests | Core: 1,058 passed, 0 failed; Compose: 61 passed, 0 failed |
 | Wasm tests | Core: 1,017 passed, 0 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
@@ -52,6 +56,7 @@ stress inputs.
 | Platform build matrix | Android debug/release, Web production, Desktop distributable, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
+| Formula renderer evidence | Unit-tested provider contract and cross-family request propagation; no dedicated Native/Official visual or physical-device formula matrix; non-Stable |
 
 **Current conclusion:** the fresh Flowchart detail, geometry, per-edge
 topology, and contact-sheet gates pass. The affected-family targeted JVM tests,
@@ -59,8 +64,10 @@ Compose/debug UI Wasm tests, and Wasm production build pass. The overall
 Mermaid `12.0.0` contract remains **not Stable** because Architecture's legal
 `randomize: true` spectral path and legal `look: handDrawn` input are
 explicitly unsupported rather than silently approximated; five Architecture
-and two Kanban detail cases also remain under review. The full JVM and Wasm
-core suites pass.
+and two Kanban detail cases also remain under review. Formula rendering remains
+non-Stable because mixed composition and Sequence-specific formula layout are
+not translated and the published visual corpus does not exercise provider
+output. The full JVM and Wasm core suites pass.
 
 ## AI-Like Source-Mutation Safety Gate
 

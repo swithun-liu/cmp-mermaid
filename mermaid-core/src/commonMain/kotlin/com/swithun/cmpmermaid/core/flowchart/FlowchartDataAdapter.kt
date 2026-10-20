@@ -27,6 +27,7 @@ internal object FlowchartDataAdapter {
     fun convert(
         db: FlowDb,
         onDiagnostic: (MermaidDiagnostic) -> Unit = {},
+        formulaRenderingAvailable: Boolean = false,
     ): GMResult<FlowchartDocument, MermaidError> =
         convert(
             data = db.getData(),
@@ -36,6 +37,7 @@ internal object FlowchartDataAdapter {
             accessibilityTitleSource = db.accessibilityTitle,
             accessibilityDescriptionSource = db.accessibilityDescription,
             onDiagnostic = onDiagnostic,
+            formulaRenderingAvailable = formulaRenderingAvailable,
         )
 
     fun convert(
@@ -46,6 +48,7 @@ internal object FlowchartDataAdapter {
         accessibilityTitleSource: String?,
         accessibilityDescriptionSource: String?,
         onDiagnostic: (MermaidDiagnostic) -> Unit = {},
+        formulaRenderingAvailable: Boolean = false,
     ): GMResult<FlowchartDocument, MermaidError> {
         val nodes = linkedMapOf<String, FlowNode>()
         data.nodes.filterNot { it.isGroup }.forEach { node ->
@@ -68,6 +71,7 @@ internal object FlowchartDataAdapter {
                     labelType = node.labelType,
                     config = config,
                     onDiagnostic = onDiagnostic,
+                    formulaRenderingAvailable = formulaRenderingAvailable,
                 )
             ) {
                 is GMResult.Ok -> rendered.value
@@ -132,6 +136,7 @@ internal object FlowchartDataAdapter {
                         },
                         config = config,
                         onDiagnostic = onDiagnostic,
+                        formulaRenderingAvailable = formulaRenderingAvailable,
                     )
                 ) {
                     is GMResult.Ok -> rendered.value
@@ -187,6 +192,7 @@ internal object FlowchartDataAdapter {
                         labelType = edge.labelType,
                         config = config,
                         onDiagnostic = onDiagnostic,
+                        formulaRenderingAvailable = formulaRenderingAvailable,
                     )
                 ) {
                     is GMResult.Ok -> rendered.value

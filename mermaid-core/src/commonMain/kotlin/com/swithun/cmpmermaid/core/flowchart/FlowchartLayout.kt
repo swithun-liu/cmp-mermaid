@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core.flowchart
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaMeasureRequest
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.SceneAsset
@@ -38,6 +39,7 @@ import kotlin.math.sin
 private data class MeasuredFlowText(
     val size: SceneSize,
     val softWrap: Boolean,
+    val formula: MermaidFormulaMeasureRequest?,
 )
 
 internal class FlowchartLayout {
@@ -367,7 +369,7 @@ internal class FlowchartLayout {
                     zIndex = index + 1,
                     softWrap = textMeasurement.softWrap,
                     htmlLabel = context.options.htmlLabels,
-                )
+                ).withFormula(textMeasurement.formula)
             }
         return GMResult.Ok(Unit)
     }
@@ -479,7 +481,7 @@ internal class FlowchartLayout {
             zIndex = zIndex + 2,
             softWrap = textMeasurement.softWrap,
             htmlLabel = context.options.htmlLabels,
-        )
+        ).withFormula(textMeasurement.formula)
     }
 
     private fun addEdges(
@@ -575,7 +577,7 @@ internal class FlowchartLayout {
                 zIndex = 7,
                 softWrap = textMeasurement.softWrap,
                 htmlLabel = context.options.htmlLabels,
-            )
+            ).withFormula(textMeasurement.formula)
         }
         elements += when {
             context.options.layout == "elk" || context.options.layout.startsWith("elk.") ->
@@ -711,7 +713,7 @@ internal class FlowchartLayout {
                     horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                     softWrap = textMeasurement.softWrap,
                     htmlLabel = context.options.htmlLabels,
-                )
+                ).withFormula(textMeasurement.formula)
             }
         }
     }
@@ -839,6 +841,7 @@ internal class FlowchartLayout {
             softWrap = lineCount?.let { measuredLines ->
                 measuredLines > explicitLineCount
             } ?: true,
+            formula = formula,
         )
     }
 
@@ -943,7 +946,7 @@ internal class FlowchartLayout {
         is SceneText -> copy(
             bounds = bounds.translate(dx, dy),
             rotationPivot = rotationPivot?.translate(dx, dy),
-        )
+        ).withFormula(formula)
         is ScenePath -> copy(
             points = points.map { ScenePoint(it.x + dx, it.y + dy) },
             commands = commands.map { command -> command.translate(dx, dy) },

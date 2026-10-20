@@ -594,7 +594,7 @@ internal class UsecaseLayout {
                 spans = measured.spans,
                 horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                 zIndex = 7,
-            )
+            ).withFormula(measured.formula)
         }
         return GMResult.Ok(Unit)
     }
@@ -864,6 +864,7 @@ internal class UsecaseLayout {
                     labelType = FlowLabelType.Markdown,
                     config = context.options,
                     onDiagnostic = context::reportDiagnostic,
+                    formulaRenderingAvailable = context.formulaRenderingEnabled,
                 )
             ) {
                 is GMResult.Ok -> result.value
@@ -902,6 +903,7 @@ internal class UsecaseLayout {
                 text = rendered.text,
                 spans = rendered.spans,
                 size = SceneSize(metrics.width, metrics.height),
+                formula = metrics.formula,
             ),
         )
     }
@@ -1016,7 +1018,7 @@ internal class UsecaseLayout {
             spans = styledSpans(visual.measured.text, visual.measured.spans, style),
             horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
             zIndex = zIndex,
-        )
+        ).withFormula(visual.measured.formula)
     }
 
     private fun styledSpans(
@@ -1197,7 +1199,7 @@ internal class UsecaseLayout {
         is SceneText -> copy(
             bounds = bounds.translate(dx, dy),
             rotationPivot = rotationPivot?.translate(dx, dy),
-        )
+        ).withFormula(formula)
         is ScenePath -> copy(
             points = points.map { point -> point.translate(dx, dy) },
             commands = commands.map { command -> command.translate(dx, dy) },

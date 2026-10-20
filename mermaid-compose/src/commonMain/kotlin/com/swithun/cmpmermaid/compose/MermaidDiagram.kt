@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
@@ -72,8 +73,13 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
+import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaMeasureRequest
+import com.swithun.cmpmermaid.core.MermaidFormulaMetrics
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderErrorInfo
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
@@ -162,31 +168,121 @@ fun MermaidDiagram(
     onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
     onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
     respectSourceViewportSizing: Boolean = true,
+    onRenderResult: ((GMResult<MermaidScene, MermaidError>) -> Unit)? = null,
+    formulaRenderer: MermaidFormulaRenderer?,
+    formulaRenderingMode: MermaidFormulaRenderingMode = MermaidFormulaRenderingMode.Automatic,
+    onFormulaError: ((MermaidFormulaRequest, MermaidFormulaError) -> Unit)? = null,
+) {
+    MermaidDiagram(
+        source = source,
+        modifier = modifier,
+        theme = theme,
+        options = options,
+        fontFamilyResolver = fontFamilyResolver,
+        contentDescription = contentDescription,
+        assetProvider = assetProvider,
+        onAssetError = onAssetError,
+        formulaRenderer = formulaRenderer,
+        formulaRenderingMode = formulaRenderingMode,
+        onFormulaError = onFormulaError,
+        onNodeInteraction = onNodeInteraction,
+        respectSourceViewportSizing = respectSourceViewportSizing,
+        onRenderResult = onRenderResult,
+        onError = null,
+    )
+}
+
+@Composable
+fun MermaidDiagram(
+    source: String,
+    modifier: Modifier = Modifier,
+    theme: MermaidTheme = MermaidTheme.FlowchartDefault,
+    options: MermaidRenderOptions = MermaidRenderOptions(),
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
+    contentDescription: String = "Mermaid diagram",
+    assetProvider: MermaidAssetProvider? = null,
+    onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
+    onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
+    respectSourceViewportSizing: Boolean = true,
     onError: ((MermaidRenderErrorInfo) -> Unit)?,
     onRenderResult: ((GMResult<MermaidScene, MermaidError>) -> Unit)? = null,
+) {
+    MermaidDiagram(
+        source = source,
+        modifier = modifier,
+        theme = theme,
+        options = options,
+        fontFamilyResolver = fontFamilyResolver,
+        contentDescription = contentDescription,
+        assetProvider = assetProvider,
+        onAssetError = onAssetError,
+        onNodeInteraction = onNodeInteraction,
+        respectSourceViewportSizing = respectSourceViewportSizing,
+        onError = onError,
+        onRenderResult = onRenderResult,
+        formulaRenderer = null,
+    )
+}
+
+@Composable
+fun MermaidDiagram(
+    source: String,
+    modifier: Modifier = Modifier,
+    theme: MermaidTheme = MermaidTheme.FlowchartDefault,
+    options: MermaidRenderOptions = MermaidRenderOptions(),
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
+    contentDescription: String = "Mermaid diagram",
+    assetProvider: MermaidAssetProvider? = null,
+    onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
+    onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
+    respectSourceViewportSizing: Boolean = true,
+    onError: ((MermaidRenderErrorInfo) -> Unit)?,
+    onRenderResult: ((GMResult<MermaidScene, MermaidError>) -> Unit)? = null,
+    formulaRenderer: MermaidFormulaRenderer?,
+    formulaRenderingMode: MermaidFormulaRenderingMode = MermaidFormulaRenderingMode.Automatic,
+    onFormulaError: ((MermaidFormulaRequest, MermaidFormulaError) -> Unit)? = null,
 ) {
     val platformAssetProvider = rememberPlatformMermaidAssetProvider()
     val effectiveAssetProvider = remember(assetProvider, platformAssetProvider) {
         (assetProvider ?: platformAssetProvider)?.cached()
     }
+    val builtInFormulaRenderer = rememberBuiltInMermaidFormulaRenderer()
+    val effectiveFormulaRenderer = remember(
+        formulaRenderer,
+        builtInFormulaRenderer,
+        formulaRenderingMode,
+    ) {
+        selectMermaidFormulaRenderer(
+            hostRenderer = formulaRenderer,
+            builtInRenderer = builtInFormulaRenderer,
+            mode = formulaRenderingMode,
+        )?.cached()
+    }
     var assetMetrics by remember(source) {
         mutableStateOf<Map<String, SceneSize>>(emptyMap())
     }
-    val sceneResult = rememberMermaidScene(
+    val preparedScene = rememberMermaidPreparedScene(
         source = source,
         theme = theme,
         options = options,
         fontFamilyResolver = fontFamilyResolver,
         assetMetrics = assetMetrics,
+        formulaRenderer = effectiveFormulaRenderer,
     ).value
+    val sceneResult = preparedScene?.result
     val currentRenderResultHandler by rememberUpdatedState(onRenderResult)
     val currentErrorHandler by rememberUpdatedState(onError)
-    LaunchedEffect(sceneResult) {
-        sceneResult?.let { result ->
+    val currentFormulaErrorHandler by rememberUpdatedState(onFormulaError)
+    LaunchedEffect(preparedScene) {
+        preparedScene?.let { prepared ->
+            val result = prepared.result
             if (result is GMResult.Err) {
                 reportMermaidRenderError(result.error, source, currentErrorHandler)
             }
             currentRenderResultHandler?.invoke(result)
+            prepared.formulaFailures.forEach { (request, error) ->
+                currentFormulaErrorHandler?.invoke(request, error)
+            }
         }
     }
     when (sceneResult) {
@@ -198,6 +294,7 @@ fun MermaidDiagram(
             contentDescription = contentDescription,
             fontFamilyResolver = fontFamilyResolver,
             assetProvider = effectiveAssetProvider,
+            formulaArtifacts = preparedScene.formulaArtifacts,
             onAssetError = onAssetError,
             onAssetResolved = { asset, resolved ->
                 if (asset.kind == SceneAssetKind.Image) {
@@ -247,6 +344,36 @@ fun rememberMermaidScene(
     fontFamilyResolver: MermaidFontFamilyResolver? = null,
     assetMetrics: Map<String, SceneSize> = emptyMap(),
 ): State<GMResult<MermaidScene, com.swithun.cmpmermaid.core.MermaidError>?> {
+    val prepared = rememberMermaidPreparedScene(
+        source = source,
+        theme = theme,
+        options = options,
+        engine = engine,
+        fontFamilyResolver = fontFamilyResolver,
+        assetMetrics = assetMetrics,
+        formulaRenderer = null,
+    )
+    return remember(prepared) {
+        derivedStateOf { prepared.value?.result }
+    }
+}
+
+internal data class MermaidPreparedScene(
+    val result: GMResult<MermaidScene, MermaidError>,
+    val formulaArtifacts: Map<MermaidFormulaRequest, MermaidFormulaArtifact> = emptyMap(),
+    val formulaFailures: Map<MermaidFormulaRequest, MermaidFormulaError> = emptyMap(),
+)
+
+@Composable
+internal fun rememberMermaidPreparedScene(
+    source: String,
+    theme: MermaidTheme = MermaidTheme.FlowchartDefault,
+    options: MermaidRenderOptions = MermaidRenderOptions(),
+    engine: MermaidEngine = remember { MermaidEngine() },
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
+    assetMetrics: Map<String, SceneSize> = emptyMap(),
+    formulaRenderer: MermaidFormulaRenderer?,
+): State<MermaidPreparedScene?> {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val density = LocalDensity.current
     val effectiveFontFamilyResolver = rememberMermaidFontFamilyResolver(fontFamilyResolver)
@@ -317,7 +444,7 @@ fun rememberMermaidScene(
             )
         }
     }
-    return produceState<GMResult<MermaidScene, MermaidError>?>(
+    return produceState<MermaidPreparedScene?>(
         initialValue = null,
         source,
         theme,
@@ -326,21 +453,201 @@ fun rememberMermaidScene(
         metrics,
         effectiveFontFamilyResolver,
         assetMetrics,
+        formulaRenderer,
+        density.density,
     ) {
         value = null
         value = withContext(mermaidRenderDispatcher()) {
-            engine.render(
+            prepareMermaidScene(
+                source = source,
+                theme = theme,
+                options = options,
+                engine = engine,
+                textMetrics = metrics,
+                assetMetrics = assetMetrics,
+                formulaRenderer = formulaRenderer,
+                formulaRasterScale = density.density,
+            )
+        }
+    }
+}
+
+// Mermaid.js 12.0.0:
+// rendering-util/createText.ts -> createText/addHtmlSpan and
+// diagrams/common/common.ts -> calculateMathMLDimensions.
+// Compose resolves provider-owned dimensions before rebuilding the final scene.
+internal suspend fun prepareMermaidScene(
+    source: String,
+    theme: MermaidTheme,
+    options: MermaidRenderOptions,
+    engine: MermaidEngine,
+    textMetrics: TextMetricProvider,
+    assetMetrics: Map<String, SceneSize>,
+    formulaRenderer: MermaidFormulaRenderer?,
+    formulaRasterScale: Float,
+): MermaidPreparedScene {
+    if (formulaRenderer == null) {
+        return MermaidPreparedScene(
+            result = engine.render(
                 source,
                 MermaidRenderContext(
-                    textMetrics = metrics,
+                    textMetrics = textMetrics,
                     theme = theme,
                     options = options,
                     assetMetrics = assetMetrics,
+                ),
+            ),
+        )
+    }
+
+    val resolvedMetrics =
+        linkedMapOf<MermaidFormulaMeasureRequest, MermaidFormulaMetrics>()
+    val formulaFallbacks = linkedSetOf<MermaidFormulaMeasureRequest>()
+    val resolutionLimitFallbacks = linkedSetOf<MermaidFormulaMeasureRequest>()
+    val artifacts = linkedMapOf<MermaidFormulaRequest, MermaidFormulaArtifact>()
+    val failures = linkedMapOf<MermaidFormulaRequest, MermaidFormulaError>()
+    var requestsAtResolutionLimit = emptyList<MermaidFormulaRequest>()
+
+    repeat(MAX_FORMULA_RESOLUTION_PASSES) {
+        val result = engine.render(
+            source,
+            MermaidRenderContext(
+                textMetrics = textMetrics,
+                theme = theme,
+                options = options,
+                assetMetrics = assetMetrics,
+            ),
+            MermaidFormulaRenderContext(
+                rasterScale = formulaRasterScale,
+                metrics = resolvedMetrics,
+                fallbacks = formulaFallbacks,
+                resolutionLimitFallbacks = resolutionLimitFallbacks,
+            ),
+        )
+        val scene = when (result) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return MermaidPreparedScene(
+                result = result,
+                formulaArtifacts = artifacts,
+                formulaFailures = failures,
+            )
+        }
+        val paintRequests = scene.elements
+            .asSequence()
+            .filterIsInstance<SceneText>()
+            .mapNotNull(SceneText::formulaRequest)
+            .distinct()
+            .toList()
+        val paintRequestByMeasurement = paintRequests.associateBy {
+            it.measurementRequest()
+        }
+        val measurementRequests = scene.formulaRequests
+            .asSequence()
+            .filterNot(resolvedMetrics::containsKey)
+            .filterNot(formulaFallbacks::contains)
+            .map { request ->
+                paintRequestByMeasurement[request] ?: request.toRequest(DEFAULT_FORMULA_COLOR)
+            }
+        val requests = (
+            measurementRequests +
+                paintRequests.asSequence().filterNot(artifacts::containsKey)
+            )
+            .filterNot(failures::containsKey)
+            .distinct()
+            .toList()
+        requestsAtResolutionLimit = requests
+        if (requests.isEmpty()) {
+            return MermaidPreparedScene(
+                result = result.withFormulaFallbackDiagnostic(
+                    hasFormulaFailures = failures.isNotEmpty(),
+                ),
+                formulaArtifacts = artifacts,
+                formulaFailures = failures,
+            )
+        }
+        requests.forEach { request ->
+            when (val resolved = resolveMermaidFormula(request, formulaRenderer)) {
+                is GMResult.Ok -> {
+                    artifacts[request] = resolved.value
+                    val measurementRequest = request.measurementRequest()
+                    resolvedMetrics[measurementRequest] = resolved.value.metrics()
+                    formulaFallbacks -= measurementRequest
+                }
+                is GMResult.Err -> {
+                    failures[request] = resolved.error
+                    val measurementRequest = request.measurementRequest()
+                    if (measurementRequest !in resolvedMetrics) {
+                        formulaFallbacks += measurementRequest
+                    }
+                }
+            }
+        }
+    }
+
+    requestsAtResolutionLimit.forEach { request ->
+        resolutionLimitFallbacks += request.measurementRequest()
+        if (request !in failures) {
+            failures[request] = MermaidFormulaError.ResolutionLimit(
+                    "Formula layout did not converge after $MAX_FORMULA_RESOLUTION_PASSES passes",
+            )
+        }
+    }
+    val finalResult = engine.render(
+        source,
+        MermaidRenderContext(
+            textMetrics = textMetrics,
+            theme = theme,
+            options = options,
+            assetMetrics = assetMetrics,
+        ),
+        MermaidFormulaRenderContext(
+            rasterScale = formulaRasterScale,
+            metrics = resolvedMetrics,
+            fallbacks = formulaFallbacks,
+            resolutionLimitFallbacks = resolutionLimitFallbacks,
+        ),
+    )
+    return MermaidPreparedScene(
+        result = finalResult.withFormulaFallbackDiagnostic(
+            hasFormulaFailures = failures.isNotEmpty(),
+        ),
+        formulaArtifacts = artifacts,
+        formulaFailures = failures,
+    )
+}
+
+private fun GMResult<MermaidScene, MermaidError>.withFormulaFallbackDiagnostic(
+    hasFormulaFailures: Boolean,
+): GMResult<MermaidScene, MermaidError> {
+    if (!hasFormulaFailures) {
+        return this
+    }
+    return when (this) {
+        is GMResult.Err -> this
+        is GMResult.Ok -> {
+            val diagnostic = MermaidDiagnostic.UnsupportedFeature(
+                feature = "KaTeX label",
+                fallback = MermaidDiagnosticFallback.PlainText,
+                message = "Native Mermaid rendered an unsupported KaTeX label as plain text",
+            )
+            GMResult.Ok(
+                value.copy(
+                    diagnostics = (value.diagnostics + diagnostic).distinct(),
                 ),
             )
         }
     }
 }
+
+private fun MermaidFormulaRequest.measurementRequest(): MermaidFormulaMeasureRequest =
+    MermaidFormulaMeasureRequest(
+        source = source,
+        displayMode = displayMode,
+        maxWidth = maxWidth,
+        fontSize = fontSize,
+        rasterScale = rasterScale,
+        accessibilityText = accessibilityText,
+    )
 
 @Composable
 fun MermaidSceneCanvas(
@@ -354,6 +661,33 @@ fun MermaidSceneCanvas(
     onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
     respectSourceViewportSizing: Boolean = true,
 ) {
+    MermaidSceneCanvas(
+        scene = scene,
+        modifier = modifier,
+        contentDescription = contentDescription,
+        fontFamilyResolver = fontFamilyResolver,
+        assetProvider = assetProvider,
+        onAssetError = onAssetError,
+        onAssetResolved = onAssetResolved,
+        onNodeInteraction = onNodeInteraction,
+        respectSourceViewportSizing = respectSourceViewportSizing,
+        formulaArtifacts = emptyMap(),
+    )
+}
+
+@Composable
+fun MermaidSceneCanvas(
+    scene: MermaidScene,
+    modifier: Modifier = Modifier,
+    contentDescription: String = "Mermaid diagram",
+    fontFamilyResolver: MermaidFontFamilyResolver? = null,
+    assetProvider: MermaidAssetProvider? = null,
+    onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)? = null,
+    onAssetResolved: ((SceneAsset, MermaidResolvedAsset) -> Unit)? = null,
+    onNodeInteraction: ((SceneNodeInteraction) -> Unit)? = null,
+    respectSourceViewportSizing: Boolean = true,
+    formulaArtifacts: Map<MermaidFormulaRequest, MermaidFormulaArtifact>,
+) {
     MermaidSceneCanvasInternal(
         scene = scene,
         renderErrorKey = scene,
@@ -361,6 +695,7 @@ fun MermaidSceneCanvas(
         contentDescription = contentDescription,
         fontFamilyResolver = fontFamilyResolver,
         assetProvider = assetProvider,
+        formulaArtifacts = formulaArtifacts,
         onAssetError = onAssetError,
         onAssetResolved = onAssetResolved,
         onNodeInteraction = onNodeInteraction,
@@ -377,6 +712,7 @@ private fun MermaidSceneCanvasInternal(
     contentDescription: String,
     fontFamilyResolver: MermaidFontFamilyResolver?,
     assetProvider: MermaidAssetProvider?,
+    formulaArtifacts: Map<MermaidFormulaRequest, MermaidFormulaArtifact>,
     onAssetError: ((SceneAsset, MermaidAssetError) -> Unit)?,
     onAssetResolved: ((SceneAsset, MermaidResolvedAsset) -> Unit)?,
     onNodeInteraction: ((SceneNodeInteraction) -> Unit)?,
@@ -590,17 +926,25 @@ private fun MermaidSceneCanvasInternal(
                         }
                         is SceneShape -> drawSceneShape(element)
                         is ScenePath -> drawScenePath(element, animationTimeMillis)
-                        is SceneText -> drawSceneText(
-                            element = element,
-                            textMeasurer = textMeasurer,
-                            density = density.density,
-                            fontScale = density.fontScale,
-                            fontFamilyResolver = effectiveFontFamilyResolver,
-                            monospaceFontFamily = monospaceFontFamily,
-                            cjkFontFamily = cjkFontFamily,
-                            mathFontFamily = mathFontFamily,
-                            symbolFontFamily = symbolFontFamily,
-                        )
+                        is SceneText -> {
+                            val formulaArtifact = element.formulaRequest()
+                                ?.let(formulaArtifacts::get)
+                            if (formulaArtifact == null) {
+                                drawSceneText(
+                                    element = element,
+                                    textMeasurer = textMeasurer,
+                                    density = density.density,
+                                    fontScale = density.fontScale,
+                                    fontFamilyResolver = effectiveFontFamilyResolver,
+                                    monospaceFontFamily = monospaceFontFamily,
+                                    cjkFontFamily = cjkFontFamily,
+                                    mathFontFamily = mathFontFamily,
+                                    symbolFontFamily = symbolFontFamily,
+                                )
+                            } else {
+                                drawSceneFormula(element, formulaArtifact)
+                            }
+                        }
                     }
                 }
             }
@@ -2305,6 +2649,8 @@ private const val HTML_SUBSCRIPT_BASELINE_SHIFT = -0.19f
 private const val HTML_SUPERSCRIPT_BASELINE_SHIFT = 0.46f
 private const val UNKNOWN_ICON_FONT_SCALE = 67.75f / 80f
 private const val EDGE_ANIMATION_DASH_OFFSET = 900f
+private const val MAX_FORMULA_RESOLUTION_PASSES = 8
+private val DEFAULT_FORMULA_COLOR = SceneColor(0xFF000000)
 
 private data class MarkerTangent(
     val anchor: ScenePoint,
@@ -2367,6 +2713,52 @@ private data class MarkerCrossDefinition(
     val scale: Float,
     val strokeWidth: Float,
 )
+
+private fun DrawScope.drawSceneFormula(
+    element: SceneText,
+    artifact: MermaidFormulaArtifact,
+) {
+    val bounds = formulaArtifactBounds(element, artifact)
+    withTransform({
+        rotate(
+            degrees = element.rotationDegrees,
+            pivot = (element.rotationPivot ?: element.bounds.center).let { point ->
+                Offset(point.x, point.y)
+            },
+        )
+    }) {
+        if (element.clipToBounds) {
+            clipRect(
+                left = element.bounds.left,
+                top = element.bounds.top,
+                right = element.bounds.right,
+                bottom = element.bounds.bottom,
+            ) {
+                artifact.painter.draw(this, bounds)
+            }
+        } else {
+            artifact.painter.draw(this, bounds)
+        }
+    }
+}
+
+internal fun formulaArtifactBounds(
+    element: SceneText,
+    artifact: MermaidFormulaArtifact,
+): Rect {
+    val left = when (element.horizontalAlignment) {
+        SceneTextAlignment.Start -> element.bounds.left + 4f
+        SceneTextAlignment.Center -> element.bounds.center.x - artifact.width / 2f
+        SceneTextAlignment.End -> element.bounds.right - artifact.width - 4f
+    }
+    val top = element.bounds.center.y - artifact.height / 2f
+    return Rect(
+        left = left,
+        top = top,
+        right = left + artifact.width,
+        bottom = top + artifact.height,
+    )
+}
 
 private fun DrawScope.drawSceneText(
     element: SceneText,

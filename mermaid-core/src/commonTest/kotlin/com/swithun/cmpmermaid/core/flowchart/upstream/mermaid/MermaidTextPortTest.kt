@@ -4,6 +4,7 @@ import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidDiagnostic
 import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaDisplayMode
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.SceneColor
 import com.swithun.cmpmermaid.core.SceneTextBaselineShift
@@ -214,6 +215,100 @@ class MermaidTextPortTest {
         )
         assertEquals("KaTeX label", diagnostic.feature)
         assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+    }
+
+    @Test
+    fun omitsFormulaMetadataWhenRendererIsUnavailable() {
+        val diagnostics = mutableListOf<MermaidDiagnostic>()
+        val result = MermaidTextPort.render(
+            source = "\$\$x^2\$\$",
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(),
+            onDiagnostic = diagnostics::add,
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
+        assertEquals("x^2", text.text)
+        assertEquals(null, text.formulaSource())
+        assertIs<MermaidDiagnostic.UnsupportedFeature>(diagnostics.single())
+    }
+
+    @Test
+    fun exposesOneCompleteKatexLabelToTheFormulaRenderer() {
+        val diagnostics = mutableListOf<MermaidDiagnostic>()
+        val result = MermaidTextPort.render(
+            source = "\$\$x^2\$\$",
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(),
+            onDiagnostic = diagnostics::add,
+            formulaRenderingAvailable = true,
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
+        val formula = text.formulaSource()
+        assertEquals("x^2", text.text)
+        assertEquals("x^2", formula?.source)
+        assertEquals(MermaidFormulaDisplayMode.Block, formula?.displayMode)
+        assertEquals(emptyList(), diagnostics)
+    }
+
+    @Test
+    fun preservesFormulaCommandsBeginningWithBackslashN() {
+        listOf(
+            "\$\$\\nabla x\$\$" to "\\nabla x",
+            "\$\$\\neq\$\$" to "\\neq",
+            "\$\$\\\\nabla x\$\$" to "\\nabla x",
+        ).forEach { (source, expected) ->
+            val text = assertIs<GMResult.Ok<MermaidRenderedText>>(
+                MermaidTextPort.render(
+                    source = source,
+                    labelType = FlowLabelType.Text,
+                    config = MermaidRenderOptions(),
+                    formulaRenderingAvailable = true,
+                ),
+            ).value
+
+            assertEquals(expected, text.text)
+            assertEquals(expected, text.formulaSource()?.source)
+        }
+    }
+
+    @Test
+    fun keepsMixedKatexLabelsOnTheDocumentedPlainTextFallback() {
+        val diagnostics = mutableListOf<MermaidDiagnostic>()
+        val result = MermaidTextPort.render(
+            source = "energy \$\$E = mc^2\$\$",
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(),
+            onDiagnostic = diagnostics::add,
+            formulaRenderingAvailable = true,
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
+        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
+            diagnostics.single(),
+        )
+        assertEquals("energy E = mc^2", text.text)
+        assertEquals(null, text.formulaSource())
+        assertEquals("KaTeX label", diagnostic.feature)
+        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+    }
+
+    @Test
+    fun keepsMultipleKatexBlocksOnTheDocumentedPlainTextFallback() {
+        val diagnostics = mutableListOf<MermaidDiagnostic>()
+        val result = MermaidTextPort.render(
+            source = "\$\$x\$\$\$\$y\$\$",
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(),
+            onDiagnostic = diagnostics::add,
+            formulaRenderingAvailable = true,
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
+        assertEquals("xy", text.text)
+        assertEquals(null, text.formulaSource())
+        assertIs<MermaidDiagnostic.UnsupportedFeature>(diagnostics.single())
     }
 
     @Test

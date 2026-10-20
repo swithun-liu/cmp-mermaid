@@ -60,6 +60,10 @@ Mermaid browser text measurement is supplied by the shared
   `GMResult.Err`.
 - Browser-only participant menus, properties, and DOM `details` references
   return `MermaidError.UnsupportedFeature`.
+- Sequence KaTeX remains an explicit plain-text fallback. The upstream
+  `calculateMathMLDimensions` preflight and `drawKatex` placement stages are not
+  translated, so Sequence does not approximate them through the shared formula
+  renderer.
 - Control-title wrapping uses Mermaid's loop-width preflight and word-breaking
   behavior. A calibrated `1.1` SVG-to-Compose measurement factor preserves the
   upstream wrap boundary while native glyph metrics own final placement.
@@ -74,7 +78,8 @@ Mermaid browser text measurement is supplied by the shared
   families, lifecycle, metadata, and malformed input.
 - `SequenceLayoutTest` covers participant geometry, notes, controls,
   activations, endpoint offsets, markers, wrapping, line breaks, control-title
-  preflight, created-participant text bounds, and resource limits.
+  preflight, created-participant text bounds, resource limits, and the explicit
+  formula fallback boundary.
 - `OfficialSequenceDocumentationTest` executes all 38 examples extracted from
   Mermaid's Sequence documentation. The two browser menu examples must return
   their declared `UnsupportedFeature`.

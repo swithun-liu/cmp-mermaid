@@ -29,6 +29,7 @@ discarded or rendered as a different feature.
 | Direction | Supported | TB, BT, LR, and RL |
 | Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Mermaid/Marked text path for class labels, members, notes, namespace labels, lollipop labels, and relation labels |
+| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` can measure and draw one complete `$$...$$` label; relation, note, class, namespace, and lollipop text retain the request through SceneGraph |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, fill, stroke, dash, text, font, decoration, and line-height properties mapped by the shared style adapter |
 | Themes | Supported | Mermaid 12 class color slots, note colors, group colors, redux/neo appearance, and shared native theme variables |
 | Links, callbacks, and tooltips | Supported | Exposed as `SceneNodeInteraction`; callbacks are retained only at Mermaid's loose security level |
@@ -36,9 +37,13 @@ discarded or rendered as a different feature.
 
 ## Explicit Unsupported Boundaries
 
-KaTeX/MathML layout is not translated. A `$$...$$` HTML label renders its
-inner formula source as plain text and the successful scene reports
-`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
+KaTeX parsing and MathML generation are not translated or bundled. Without a
+host formula renderer, a `$$...$$` HTML label renders its inner source as plain
+text and the successful scene reports
+`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. A supplied
+renderer can asynchronously measure and draw a label consisting of one complete
+formula block. Renderer failures, mixed text/formula labels, and multiple
+formula blocks retain the plain-text fallback.
 
 The following legal Mermaid capabilities return
 `MermaidError.UnsupportedFeature`:
@@ -74,6 +79,9 @@ arbitrary URLs or JavaScript.
   self-relations, notes, namespaces, styles, title, Unicode, and a dense model.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
+- Focused tests verify formula request propagation for Class relation labels.
+  The published Native/Official images predate provider-backed formula output,
+  so they do not promote formula rendering to Stable.
 
 ## Reference Workflow
 

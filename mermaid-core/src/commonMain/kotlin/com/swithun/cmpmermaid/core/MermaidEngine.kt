@@ -44,13 +44,29 @@ data class MermaidRenderContext(
     internal val frontmatterLineOffset: Int = 0,
 ) {
     private val reportedDiagnostics = linkedSetOf<MermaidDiagnostic>()
+    private val requestedFormulas = linkedSetOf<MermaidFormulaMeasureRequest>()
+    internal var formulaRenderingEnabled: Boolean = false
 
     internal fun reportDiagnostic(diagnostic: MermaidDiagnostic) {
         reportedDiagnostics += diagnostic
     }
 
     internal fun diagnostics(): List<MermaidDiagnostic> = reportedDiagnostics.toList()
+
+    internal fun reportFormulaRequest(request: MermaidFormulaMeasureRequest) {
+        requestedFormulas += request
+    }
+
+    internal fun formulaRequests(): List<MermaidFormulaMeasureRequest> =
+        requestedFormulas.toList()
 }
+
+data class MermaidFormulaRenderContext(
+    val rasterScale: Float = 1f,
+    val metrics: Map<MermaidFormulaMeasureRequest, MermaidFormulaMetrics> = emptyMap(),
+    val fallbacks: Set<MermaidFormulaMeasureRequest> = emptySet(),
+    val resolutionLimitFallbacks: Set<MermaidFormulaMeasureRequest> = emptySet(),
+)
 
 interface MermaidDiagramPlugin {
     val id: String
@@ -120,12 +136,21 @@ class MermaidEngine(
         source: String,
         context: MermaidRenderContext,
     ): GMResult<MermaidScene, MermaidError> = renderSafely {
-        renderInternal(source, context)
+        renderInternal(source, context, formulaContext = null)
+    }
+
+    fun render(
+        source: String,
+        context: MermaidRenderContext,
+        formulaContext: MermaidFormulaRenderContext,
+    ): GMResult<MermaidScene, MermaidError> = renderSafely {
+        renderInternal(source, context, formulaContext)
     }
 
     private fun renderInternal(
         source: String,
         context: MermaidRenderContext,
+        formulaContext: MermaidFormulaRenderContext?,
     ): GMResult<MermaidScene, MermaidError> {
         val preprocessed = when (val result = MermaidPreprocessor.preprocess(source)) {
             is GMResult.Ok -> result.value
@@ -274,12 +299,26 @@ class MermaidEngine(
             preprocessed.code.cleaned
         }
         val parserSource = MermaidPreprocessor.encodeEntities(sourceForParser) + "\n"
-        val renderContext = context.copy(
+        lateinit var renderContext: MermaidRenderContext
+        val formulaAwareTextMetrics = FormulaAwareTextMetricProvider(
+            delegate = context.textMetrics,
+            enabled = formulaContext != null,
+            rasterScale = formulaContext?.rasterScale ?: 1f,
+            resolvedMetrics = formulaContext?.metrics.orEmpty(),
+            fallbacks = formulaContext?.fallbacks.orEmpty(),
+            resolutionLimitFallbacks = formulaContext?.resolutionLimitFallbacks.orEmpty(),
+            onRequest = { renderContext.reportFormulaRequest(it) },
+            onFallback = { renderContext.reportDiagnostic(formulaFallbackDiagnostic()) },
+        )
+        renderContext = context.copy(
+            textMetrics = formulaAwareTextMetrics,
             theme = resolvedTheme,
             options = diagramOptions,
             diagramTitle = preprocessed.title,
             frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,
-        )
+        ).also { copiedContext ->
+            copiedContext.formulaRenderingEnabled = formulaContext != null
+        }
         return when (
             val compiled = plugin.compileSafely(
                 source = parserSource,
@@ -291,6 +330,8 @@ class MermaidEngine(
                     diagnostics = (
                         compiled.value.diagnostics + renderContext.diagnostics()
                         ).distinct(),
+                ).withFormulaRequests(
+                    (compiled.value.formulaRequests + renderContext.formulaRequests()).distinct(),
                 ),
             )
             is GMResult.Err -> GMResult.Err(
@@ -320,3 +361,85 @@ private inline fun <T> renderSafely(
 } catch (exception: Exception) {
     GMResult.Err(MermaidError.Unexpected.from(exception))
 }
+
+// Mermaid.js 12.0.0:
+// rendering-util/createText.ts -> createText/addHtmlSpan intrinsic measurement.
+private class FormulaAwareTextMetricProvider(
+    private val delegate: TextMetricProvider,
+    private val enabled: Boolean,
+    private val rasterScale: Float,
+    private val resolvedMetrics: Map<MermaidFormulaMeasureRequest, MermaidFormulaMetrics>,
+    private val fallbacks: Set<MermaidFormulaMeasureRequest>,
+    private val resolutionLimitFallbacks: Set<MermaidFormulaMeasureRequest>,
+    private val onRequest: (MermaidFormulaMeasureRequest) -> Unit,
+    private val onFallback: () -> Unit,
+) : TextMetricProvider {
+    override fun measure(request: TextMetricsRequest): TextMetrics {
+        if (!enabled) {
+            return delegate.measure(request)
+        }
+        val formulaSource = request.formulaSource() ?: return delegate.measure(request)
+        val formulaRequest = MermaidFormulaMeasureRequest(
+            source = formulaSource.source,
+            displayMode = formulaSource.displayMode,
+            maxWidth = request.maxWidth,
+            fontSize = request.fontSize,
+            rasterScale = rasterScale.takeIf { it.isFinite() && it > 0f } ?: 1f,
+            accessibilityText = formulaSource.accessibilityText,
+        )
+        onRequest(formulaRequest)
+        if (
+            formulaRequest in fallbacks ||
+            resolutionLimitFallbacks.any { fallback ->
+                fallback.matchesFormulaIdentity(formulaRequest)
+            }
+        ) {
+            onFallback()
+            return delegate.measure(request)
+        }
+        val metrics = resolvedMetrics[formulaRequest]
+        if (metrics != null && metrics.isValid()) {
+            return TextMetrics(
+                width = metrics.width,
+                height = metrics.height,
+            ).withFormula(formulaRequest)
+        }
+        return delegate.measure(request).withFormula(formulaRequest)
+    }
+}
+
+private fun MermaidFormulaMeasureRequest.matchesFormulaIdentity(
+    other: MermaidFormulaMeasureRequest,
+): Boolean =
+    source == other.source &&
+        displayMode == other.displayMode &&
+        fontSize == other.fontSize &&
+        rasterScale == other.rasterScale &&
+        accessibilityText == other.accessibilityText
+
+private fun TextMetricsRequest.formulaSource(): MermaidFormulaSource? =
+    spans
+        .asSequence()
+        .filter { span ->
+            span.formula != null &&
+                span.start == 0 &&
+                span.end == text.length
+        }
+        .mapNotNull(SceneTextSpan::formula)
+        .distinct()
+        .singleOrNull()
+
+private fun MermaidFormulaMetrics.isValid(): Boolean =
+    width.isFinite() &&
+        width > 0f &&
+        height.isFinite() &&
+        height > 0f &&
+        baseline.isFinite() &&
+        baseline in 0f..height
+
+private fun formulaFallbackDiagnostic(): MermaidDiagnostic.UnsupportedFeature =
+    MermaidDiagnostic.UnsupportedFeature(
+        feature = "KaTeX label",
+        fallback = MermaidDiagnosticFallback.PlainText,
+        message = "Native Mermaid rendered an unsupported KaTeX label as plain text",
+    )

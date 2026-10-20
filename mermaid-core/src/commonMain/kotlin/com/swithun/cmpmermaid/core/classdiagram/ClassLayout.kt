@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core.classdiagram
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaMeasureRequest
 import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -215,6 +216,7 @@ internal class ClassLayout {
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
                         onDiagnostic = context::reportDiagnostic,
+                        formulaRenderingAvailable = context.formulaRenderingEnabled,
                     )
                 ) {
                     is GMResult.Ok -> result.value
@@ -242,6 +244,7 @@ internal class ClassLayout {
                     labelType = FlowLabelType.Markdown,
                     config = context.options,
                     onDiagnostic = context::reportDiagnostic,
+                    formulaRenderingAvailable = context.formulaRenderingEnabled,
                 )
             ) {
                 is GMResult.Ok -> result.value
@@ -368,6 +371,7 @@ internal class ClassLayout {
                 labelType = FlowLabelType.Markdown,
                 config = context.options,
                 onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -443,6 +447,7 @@ internal class ClassLayout {
                     labelType = FlowLabelType.Markdown,
                     config = context.options,
                     onDiagnostic = context::reportDiagnostic,
+                    formulaRenderingAvailable = context.formulaRenderingEnabled,
                 )
             ) {
                 is GMResult.Ok -> result.value
@@ -498,6 +503,7 @@ internal class ClassLayout {
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
                         onDiagnostic = context::reportDiagnostic,
+                        formulaRenderingAvailable = context.formulaRenderingEnabled,
                     )
                 ) {
                     is GMResult.Ok -> result.value
@@ -544,6 +550,7 @@ internal class ClassLayout {
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
                         onDiagnostic = context::reportDiagnostic,
+                        formulaRenderingAvailable = context.formulaRenderingEnabled,
                     )
                 ) {
                     is GMResult.Ok -> result.value
@@ -594,6 +601,7 @@ internal class ClassLayout {
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
                         onDiagnostic = context::reportDiagnostic,
+                        formulaRenderingAvailable = context.formulaRenderingEnabled,
                     )
                 ) {
                     is GMResult.Ok -> result.value
@@ -618,6 +626,7 @@ internal class ClassLayout {
                         width = metrics.width,
                         height = metrics.height,
                     ),
+                    formula = metrics.formula,
                 )
             }
             GMResult.Ok(visuals)
@@ -849,7 +858,7 @@ internal class ClassLayout {
                 weight = SceneTextWeight.Normal,
                 spans = visual.spans,
                 zIndex = index + 1,
-            )
+            ).withFormula(metrics.formula)
         }
     }
 
@@ -945,7 +954,7 @@ internal class ClassLayout {
             spans = visual.spans,
             horizontalAlignment = SceneTextAlignment.Start,
             zIndex = 20,
-        )
+        ).withFormula(visual.metrics.formula)
     }
 
     private fun addInterface(
@@ -969,7 +978,7 @@ internal class ClassLayout {
             weight = SceneTextWeight.Normal,
             spans = visual.spans,
             zIndex = 20,
-        )
+        ).withFormula(visual.metrics.formula)
     }
 
     private fun addEdges(
@@ -1028,16 +1037,21 @@ internal class ClassLayout {
                 zIndex = 5,
             )
             if (relation != null) {
-                addRelationLabels(
-                    relation = relation,
-                    edgeId = edge.id,
-                    points = routed.points,
-                    labelAnchor = routed.labelAnchor,
-                    labelVisual = edgeLabelVisuals[index],
-                    nodeBounds = nodeBounds,
-                    context = context,
-                    elements = elements,
-                )
+                when (
+                    val labels = addRelationLabels(
+                        relation = relation,
+                        edgeId = edge.id,
+                        points = routed.points,
+                        labelAnchor = routed.labelAnchor,
+                        labelVisual = edgeLabelVisuals[index],
+                        nodeBounds = nodeBounds,
+                        context = context,
+                        elements = elements,
+                    )
+                ) {
+                    is GMResult.Ok -> Unit
+                    is GMResult.Err -> return labels
+                }
             }
         }
         return GMResult.Ok(Unit)
@@ -1052,7 +1066,7 @@ internal class ClassLayout {
         nodeBounds: Map<String, SceneRect>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
-    ) {
+    ): GMResult<Unit, MermaidError> {
         relation.title?.takeIf(String::isNotBlank)?.let {
             val visual = labelVisual ?: return@let
             val size = visual.size
@@ -1092,42 +1106,53 @@ internal class ClassLayout {
                 weight = SceneTextWeight.Normal,
                 spans = visual.spans,
                 zIndex = 7,
-            )
+            ).withFormula(visual.formula)
         }
         relation.relationTitle1
             .takeUnless { it == "none" || it.isBlank() }
             ?.let { cardinality ->
-                addTerminalLabel(
-                    id = "$edgeId-start-cardinality",
-                    text = decode(cardinality),
-                    position = terminalLabelPosition(
-                        points = points,
-                        marker = relation.relation.type1 != ClassRelationType.NONE,
-                        start = true,
-                    ),
-                    centered = true,
-                    avoidBounds = nodeBounds[relation.id1],
-                    context = context,
-                    elements = elements,
-                )
+                when (
+                    val label = addTerminalLabel(
+                        id = "$edgeId-start-cardinality",
+                        text = decode(cardinality),
+                        position = terminalLabelPosition(
+                            points = points,
+                            marker = relation.relation.type1 != ClassRelationType.NONE,
+                            start = true,
+                        ),
+                        centered = true,
+                        avoidBounds = nodeBounds[relation.id1],
+                        context = context,
+                        elements = elements,
+                    )
+                ) {
+                    is GMResult.Ok -> Unit
+                    is GMResult.Err -> return label
+                }
             }
         relation.relationTitle2
             .takeUnless { it == "none" || it.isBlank() }
             ?.let { cardinality ->
-                addTerminalLabel(
-                    id = "$edgeId-end-cardinality",
-                    text = decode(cardinality),
-                    position = terminalLabelPosition(
-                        points = points,
-                        marker = relation.relation.type2 != ClassRelationType.NONE,
-                        start = false,
-                    ),
-                    centered = false,
-                    avoidBounds = nodeBounds[relation.id2],
-                    context = context,
-                    elements = elements,
-                )
+                when (
+                    val label = addTerminalLabel(
+                        id = "$edgeId-end-cardinality",
+                        text = decode(cardinality),
+                        position = terminalLabelPosition(
+                            points = points,
+                            marker = relation.relation.type2 != ClassRelationType.NONE,
+                            start = false,
+                        ),
+                        centered = false,
+                        avoidBounds = nodeBounds[relation.id2],
+                        context = context,
+                        elements = elements,
+                    )
+                ) {
+                    is GMResult.Ok -> Unit
+                    is GMResult.Err -> return label
+                }
             }
+        return GMResult.Ok(Unit)
     }
 
     private fun addTerminalLabel(
@@ -1138,16 +1163,29 @@ internal class ClassLayout {
         avoidBounds: SceneRect?,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
-    ) {
-        if (position == null) return
+    ): GMResult<Unit, MermaidError> {
+        if (position == null) return GMResult.Ok(Unit)
+        val rendered = when (
+            val result = MermaidTextPort.render(
+                source = text,
+                labelType = FlowLabelType.Text,
+                config = context.options,
+                onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
+            )
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
         val metrics = context.textMetrics.measure(
             TextMetricsRequest(
-                text = text,
+                text = rendered.text,
                 fontSize = TERMINAL_FONT_SIZE,
                 maxWidth = UNWRAPPED_TEXT_WIDTH,
                 lineHeight = DEFAULT_LINE_HEIGHT,
                 fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
                 weight = SceneTextWeight.Normal,
+                spans = rendered.spans,
             ),
         )
         val rawBounds = if (centered) {
@@ -1172,15 +1210,17 @@ internal class ClassLayout {
             ?.let { obstacle -> rawBounds.translatedOutside(obstacle) }
             ?: rawBounds
         elements += SceneText(
-            text = text,
+            text = rendered.text,
             bounds = bounds,
             color = context.theme.nodeText,
             fontSize = TERMINAL_FONT_SIZE,
             lineHeight = DEFAULT_LINE_HEIGHT,
             fontFamily = context.options.fontFamily ?: context.theme.fontFamily,
             weight = SceneTextWeight.Normal,
+            spans = rendered.spans,
             zIndex = 8,
-        )
+        ).withFormula(metrics.formula)
+        return GMResult.Ok(Unit)
     }
 
     private fun SceneRect.translatedOutside(
@@ -1480,7 +1520,7 @@ internal class ClassLayout {
         spans = spans,
         horizontalAlignment = alignment,
         zIndex = 20,
-    )
+    ).withFormula(metrics.formula)
 
     private fun paletteFill(
         index: Int,
@@ -1563,7 +1603,7 @@ internal class ClassLayout {
     ): SceneElement = when (this) {
         is com.swithun.cmpmermaid.core.SceneAsset -> copy(bounds = bounds.translate(dx, dy))
         is SceneShape -> copy(bounds = bounds.translate(dx, dy))
-        is SceneText -> copy(bounds = bounds.translate(dx, dy))
+        is SceneText -> copy(bounds = bounds.translate(dx, dy)).withFormula(formula)
         is ScenePath -> copy(
             points = points.map { point -> point.translate(dx, dy) },
             commands = commands.map { command -> command.translate(dx, dy) },
@@ -1644,6 +1684,7 @@ internal class ClassLayout {
         val text: String,
         val spans: List<SceneTextSpan>,
         val size: SceneSize,
+        val formula: MermaidFormulaMeasureRequest?,
     )
 
     private data class ClassLayoutEdge(

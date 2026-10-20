@@ -34,6 +34,7 @@ silently dropped or approximated as another feature.
 | Subgraphs | Supported | Nested groups, collapsed groups, boundary links, local directions, title margins, and cross-hierarchy edges |
 | Markdown strings | Supported for Mermaid's label path | Marked `16.4.2` lexer/token behavior used by Mermaid, including emphasis, code, deletion, blocks, escapes, and line breaks |
 | HTML labels | Supported with explicit boundaries | Formatting spans, entities, sanitization, color/background, relative font sizes, alignment, decoration, and line height |
+| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` can measure and draw one complete `$$...$$` label asynchronously; no formula engine is bundled, and mixed or multiple formula blocks fall back to plain text |
 | Themes | Supported with explicit boundaries | Mermaid default, dark, forest, neutral, base, neo/redux variants, theme variables, color arrays, and default Flowchart appearance |
 | Security levels | Supported | Strict, loose, antiscript, and sandbox URL/callback handling; diagram text cannot override secure host limits |
 | Links, callbacks, and tooltips | Supported | Exposed as `SceneNodeInteraction`; callbacks are retained only at Mermaid's loose security level |
@@ -45,10 +46,14 @@ silently dropped or approximated as another feature.
 
 ## Explicit Unsupported Boundaries
 
-KaTeX/MathML layout is not translated. A `$$...$$` HTML label renders its
-inner formula source as plain text and the successful scene reports
-`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. With
-`htmlLabels=false`, the original delimiters stay on the SVG text path.
+KaTeX parsing and MathML generation are not translated or bundled. Without a
+host formula renderer, a `$$...$$` HTML label renders its inner source as plain
+text and the successful scene reports
+`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. With a renderer,
+one complete formula label is measured before layout and drawn through the
+platform-neutral Compose contract. Renderer failures, mixed text/formula
+labels, and multiple formula blocks use the same visible plain-text fallback.
+With `htmlLabels=false`, the original delimiters stay on the SVG text path.
 
 The following legal Mermaid capabilities currently return
 `MermaidError.UnsupportedFeature`:
@@ -93,7 +98,8 @@ Additional platform limitations:
 - Focused tests cover parser tables, FlowDB, Marked fixtures, HTML entities,
   sanitization, colors, all shapes, markers, D3 curves, numeric Dagre parity,
   compound Dagre hierarchy, line hops, assets, interactions, viewport behavior,
-  and resource limits.
+  resource limits, formula request propagation, asynchronous resolved metrics,
+  and renderer-failure fallback.
 - The refreshed 256-case coverage-driven detail audit reports
   `256 pass / 0 review / 0 fail`; geometry has 0 ratio reviews with width
   `1.028-1.167`, height `0.953-1.173`, and foreground ink `0.818-1.347`.
@@ -121,6 +127,9 @@ Additional platform limitations:
   preventing a declared but hidden arrow from passing on marker counts alone.
 - Android rendering has been installed and visually audited on a 1080 x 2280
   device. Core and Compose also compile for all configured iOS architectures.
+- The published visual corpus predates provider-backed formula output and does
+  not count as formula visual-parity evidence. Formula rendering remains
+  non-Stable until a dedicated cross-platform Native/Official corpus passes.
 
 ## Performance Audit
 

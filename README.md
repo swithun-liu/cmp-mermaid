@@ -79,7 +79,7 @@ geometry gates.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | Core: 1,019 passed, 0 failed; Compose: 38 passed, 0 failed |
+| JVM tests | Core: 1,058 passed, 0 failed; Compose: 61 passed, 0 failed |
 | Wasm tests | Core: 1,017 passed, 0 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
@@ -104,12 +104,13 @@ isolation, and publication gates have completed. The refreshed Flowchart
 matrix has 107 unique graph topologies and passes all 256 per-edge routing
 cases. Overall Mermaid `12.0.0` support remains **not Stable** until the
 Architecture gaps, seven detail reviews, and legal RoughJS-backed unsupported
-`handDrawn` look are resolved.
+`handDrawn` look are resolved, and the remaining formula stages are translated
+and revalidated.
 A legal feature that cannot be represented faithfully returns
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
 approximation. An explicitly documented non-semantic fallback, such as
-plain-text KaTeX source, returns `MermaidDiagnostic.UnsupportedFeature` in the
-successful `MermaidScene`.
+plain-text formula source, returns `MermaidDiagnostic.UnsupportedFeature` in
+the successful `MermaidScene`.
 
 ## Native Vs Mermaid.js
 
@@ -338,6 +339,105 @@ fun Diagram(source: String) {
 }
 ```
 
+### Injecting Formula Rendering
+
+Formula rendering is an optional host extension. CMP Mermaid does not bundle a
+formula parser, a platform View, or a native image type. The host first adapts
+its platform formula engine to `MermaidFormulaRenderer`:
+
+```kotlin
+import com.swithun.cmpmermaid.compose.MermaidFormulaArtifact
+import com.swithun.cmpmermaid.compose.MermaidFormulaError
+import com.swithun.cmpmermaid.compose.MermaidFormulaPainter
+import com.swithun.cmpmermaid.compose.MermaidFormulaRenderer
+import com.swithun.cmpmermaid.compose.MermaidFormulaRequest
+import com.swithun.cmpmermaid.compose.MermaidFormulaRenderingMode
+import com.swithun.cmpmermaid.core.GMResult
+
+private data class HostFormulaOutput(
+    val width: Float,
+    val height: Float,
+    val baseline: Float,
+    val accessibilityText: String,
+    val painter: MermaidFormulaPainter,
+)
+
+private interface HostFormulaAdapter {
+    suspend fun render(
+        request: MermaidFormulaRequest,
+    ): GMResult<HostFormulaOutput, MermaidFormulaError>
+}
+
+private fun HostFormulaAdapter.asMermaidFormulaRenderer(): MermaidFormulaRenderer =
+    MermaidFormulaRenderer { request ->
+        when (val result = render(request)) {
+            is GMResult.Ok -> {
+                val output = result.value
+                GMResult.Ok(
+                    MermaidFormulaArtifact(
+                        width = output.width,
+                        height = output.height,
+                        baseline = output.baseline,
+                        accessibilityText = output.accessibilityText,
+                        painter = output.painter,
+                    ),
+                )
+            }
+            is GMResult.Err -> GMResult.Err(result.error)
+        }
+    }
+```
+
+In a KMP host, the concrete `HostFormulaAdapter` normally lives in
+`androidMain`, `iosMain`, or the host dependency-injection layer. It may
+rasterize the platform result and capture that image in
+`MermaidFormulaPainter`; CMP Mermaid never imports or discovers the platform
+formula engine.
+
+The host then injects that renderer into the normal Compose entry point:
+
+```kotlin
+val hostFormulaRenderer = hostFormulaAdapter.asMermaidFormulaRenderer()
+
+MermaidDiagram(
+    source = source,
+    formulaRenderer = hostFormulaRenderer,
+    formulaRenderingMode = MermaidFormulaRenderingMode.Automatic,
+    onFormulaError = { request, error ->
+        reportFormulaFallback(request.source, error.message)
+    },
+)
+```
+
+The adapter contract is:
+
+- `request.source` contains the formula without the surrounding `$$`
+  delimiters. The adapter should also honor `displayMode`, `color`, and
+  `accessibilityText`.
+- `maxWidth` and `fontSize` use Mermaid scene logical pixels.
+  `rasterScale` tells a bitmap-backed adapter how many physical pixels to
+  allocate per logical pixel; `MermaidDiagram` supplies the current Compose
+  density automatically.
+- Returned `width`, `height`, and `baseline` also use logical pixels. Width and
+  height must be finite and positive; baseline must be finite and within
+  `0..height`.
+- `render` is suspending and may run away from the UI thread. An adapter whose
+  platform engine requires the main thread must perform that dispatch itself.
+- The returned painter is invoked later by Compose Canvas and must keep its
+  drawing resources alive until then. It draws into the supplied logical
+  bounds; no platform View is inserted into the diagram.
+- Expected platform, syntax, or resource-limit failures return
+  `GMResult.Err(MermaidFormulaError...)`. Coroutine cancellation and fatal
+  process errors must continue to propagate.
+
+The explicitly supplied host renderer takes precedence over any future built-in
+renderer. `MermaidFormulaRenderingMode.PlainText` bypasses all renderers. A
+selected renderer failure falls back directly to the visible formula source;
+it does not switch implementations or fail the complete diagram. The current
+provider path supports only a label consisting of one complete `$$...$$`
+block. Mixed text/formula labels, multiple formula blocks, and Sequence formula
+layout remain documented non-Stable boundaries.
+
 The error callback receives `MermaidRenderErrorInfo`, including the original
 source passed to the renderer.
 `CONTENT_ERROR` represents structured parse, configuration, resource-limit, or
@@ -435,6 +535,7 @@ Source maps:
 [Class](docs/upstream-class-map.md) ·
 [State](docs/upstream-state-map.md) ·
 [ER](docs/upstream-er-map.md) ·
+[Formula rendering](docs/upstream-formula-rendering-map.md) ·
 [Gantt](docs/upstream-gantt-map.md) ·
 [Pie](docs/upstream-pie-map.md) ·
 [User Journey](docs/upstream-journey-map.md) ·

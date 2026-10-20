@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core.erdiagram
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaMeasureRequest
 import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -364,6 +365,7 @@ internal class ErLayout {
                 text = label.text,
                 spans = label.spans,
                 size = SceneSize(label.metrics.width, label.metrics.height),
+                formula = label.metrics.formula,
             ),
         )
     }
@@ -381,6 +383,7 @@ internal class ErLayout {
                 labelType = FlowLabelType.Markdown,
                 config = context.options,
                 onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -675,7 +678,7 @@ internal class ErLayout {
                     weight = SceneTextWeight.Normal,
                     spans = visual.spans,
                     zIndex = 7,
-                )
+                ).withFormula(visual.formula)
             }
         }
         return GMResult.Ok(Unit)
@@ -994,7 +997,7 @@ internal class ErLayout {
         horizontalAlignment = alignment,
         zIndex = zIndex,
         softWrap = softWrap,
-    )
+    ).withFormula(metrics.formula)
 
     private fun decode(source: String): String =
         MermaidHtmlEntityDecoder.decode(MermaidPreprocessor.decodeEntities(source))
@@ -1028,7 +1031,7 @@ internal class ErLayout {
     ): SceneElement = when (this) {
         is SceneAsset -> copy(bounds = bounds.translate(dx, dy))
         is SceneShape -> copy(bounds = bounds.translate(dx, dy))
-        is SceneText -> copy(bounds = bounds.translate(dx, dy))
+        is SceneText -> copy(bounds = bounds.translate(dx, dy)).withFormula(formula)
         is ScenePath -> copy(
             points = points.map { point -> point.translate(dx, dy) },
             commands = commands.map { command -> command.translate(dx, dy) },
@@ -1102,6 +1105,7 @@ internal class ErLayout {
         val text: String,
         val spans: List<SceneTextSpan>,
         val size: SceneSize,
+        val formula: MermaidFormulaMeasureRequest?,
     )
 
     private companion object {

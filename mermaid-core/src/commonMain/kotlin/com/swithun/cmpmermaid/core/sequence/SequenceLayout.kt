@@ -2,6 +2,9 @@ package com.swithun.cmpmermaid.core.sequence
 
 import com.swithun.cmpmermaid.core.CssColorParser
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MERMAID_KATEX_PATTERN
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
+import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -60,6 +63,15 @@ internal class SequenceLayout {
         }
         if (db.getActors().values.any { it.properties.isNotEmpty() }) {
             return unsupported("sequence participant properties")
+        }
+        if (db.hasKatexText()) {
+            context.reportDiagnostic(
+                MermaidDiagnostic.UnsupportedFeature(
+                    feature = "Sequence KaTeX layout",
+                    fallback = MermaidDiagnosticFallback.PlainText,
+                    message = "Native Mermaid rendered unsupported Sequence KaTeX text as plain text",
+                ),
+            )
         }
 
         return try {
@@ -1612,6 +1624,18 @@ internal class SequenceLayout {
 
     private fun formatSequenceNumber(value: Double): String =
         if (value % 1.0 == 0.0) value.toInt().toString() else value.toString()
+
+    // Mermaid.js 12.0.0:
+    // sequenceRenderer.ts -> calculateMathMLDimensions and
+    // svgDraw.js -> drawKatex. These Sequence-specific stages are not yet
+    // translated, so their parsed text remains on the explicit fallback path.
+    private fun SequenceDb.hasKatexText(): Boolean =
+        getActors().values.any { actor ->
+            MERMAID_KATEX_PATTERN.containsMatchIn(actor.description)
+        } ||
+            getMessages().any { message ->
+                MERMAID_KATEX_PATTERN.containsMatchIn(message.message)
+            }
 
     private fun rectangleGeometry(width: Float, height: Float): SceneShapeGeometry {
         val points = listOf(

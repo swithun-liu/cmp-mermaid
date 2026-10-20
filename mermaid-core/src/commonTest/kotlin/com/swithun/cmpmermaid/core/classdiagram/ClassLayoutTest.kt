@@ -5,6 +5,8 @@ import com.swithun.cmpmermaid.core.MermaidDiagnostic
 import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaMetrics
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -230,6 +232,77 @@ class ClassLayoutTest {
         )
         assertEquals("KaTeX label", diagnostic.feature)
         assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+    }
+
+    @Test
+    fun exposesProviderRequestForClassRelationFormula() {
+        val result = engine.render(
+            source = """
+            classDiagram
+                Service --> Repository : ${'$'}${'$'}x^2${'$'}${'$'}
+            """.trimIndent(),
+            context = context,
+            formulaContext = MermaidFormulaRenderContext(),
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val request = scene.formulaRequests.single()
+        val label = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals("x^2", request.source)
+        assertEquals(request, label.formula)
+        assertTrue(scene.diagnostics.isEmpty())
+    }
+
+    @Test
+    fun usesProviderMetricsForClassRelationCardinalities() {
+        val source = """
+            classDiagram
+                Service "${'$'}${'$'}x^2${'$'}${'$'}" --> "${'$'}${'$'}y^2${'$'}${'$'}" Repository
+        """.trimIndent()
+        val pending = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source = source,
+                context = context,
+                formulaContext = MermaidFormulaRenderContext(),
+            ),
+        ).value
+        val requests = pending.formulaRequests.associateBy { request -> request.source }
+
+        assertEquals(setOf("x^2", "y^2"), requests.keys)
+        assertEquals(
+            requests.values.toSet(),
+            pending.elements.filterIsInstance<SceneText>()
+                .mapNotNull(SceneText::formula)
+                .toSet(),
+        )
+
+        val resolved = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source = source,
+                context = context,
+                formulaContext = MermaidFormulaRenderContext(
+                    metrics = mapOf(
+                        assertNotNull(requests["x^2"]) to MermaidFormulaMetrics(
+                            width = 41f,
+                            height = 17f,
+                            baseline = 13f,
+                        ),
+                        assertNotNull(requests["y^2"]) to MermaidFormulaMetrics(
+                            width = 53f,
+                            height = 19f,
+                            baseline = 14f,
+                        ),
+                    ),
+                ),
+            ),
+        ).value
+        val labels = resolved.elements.filterIsInstance<SceneText>()
+
+        assertEquals(41f, labels.single { text -> text.text == "x^2" }.bounds.width)
+        assertEquals(17f, labels.single { text -> text.text == "x^2" }.bounds.height)
+        assertEquals(53f, labels.single { text -> text.text == "y^2" }.bounds.width)
+        assertEquals(19f, labels.single { text -> text.text == "y^2" }.bounds.height)
     }
 
     @Test

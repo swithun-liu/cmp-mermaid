@@ -91,6 +91,69 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun exposesFormulaRequestsAndUsesResolvedLogicalDimensions() {
+        val source = "flowchart LR\n A[\"${'$'}${'$'}x^2${'$'}${'$'}\"] --> B[Done]"
+        val formulaContext = MermaidFormulaRenderContext(rasterScale = 2f)
+        val pendingScene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(source, context, formulaContext),
+        ).value
+        val request = pendingScene.formulaRequests.single()
+        val pendingText = pendingScene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals(request, pendingText.formula)
+        assertEquals(2f, request.rasterScale)
+        assertEquals(emptyList(), pendingScene.diagnostics)
+
+        val resolvedScene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source,
+                context,
+                formulaContext.copy(
+                    metrics = mapOf(
+                        request to MermaidFormulaMetrics(
+                            width = 96f,
+                            height = 30f,
+                            baseline = 22f,
+                        ),
+                    ),
+                ),
+            ),
+        ).value
+        val resolvedText = resolvedScene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals(96f, resolvedText.bounds.width)
+        assertEquals(30f, resolvedText.bounds.height)
+        assertEquals(request, resolvedText.formula)
+    }
+
+    @Test
+    fun marksFailedFormulaRequestsAsPlainTextFallbacks() {
+        val source = "flowchart LR\n A[\"${'$'}${'$'}x^2${'$'}${'$'}\"] --> B[Done]"
+        val formulaContext = MermaidFormulaRenderContext()
+        val request = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(source, context, formulaContext),
+        ).value.formulaRequests.single()
+        val fallbackScene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source,
+                context,
+                formulaContext.copy(fallbacks = setOf(request)),
+            ),
+        ).value
+        val fallbackText = fallbackScene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
+            fallbackScene.diagnostics.single(),
+        )
+
+        assertNull(fallbackText.formula)
+        assertEquals("KaTeX label", diagnostic.feature)
+        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+    }
+
+    @Test
     fun keepsMalformedFlowchartAsAnError() {
         val result = engine.render(
             "flowchart LR\n A[",

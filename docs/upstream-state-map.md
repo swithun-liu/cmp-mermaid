@@ -89,9 +89,11 @@ detail and geometry gates.
   line-prefix matchers while retaining their Jison rule indexes.
 - Mermaid DOM text maps to shared SceneGraph text spans and host-supplied
   measurement.
-- Browser-only label content returns `MermaidError.UnsupportedFeature`, except
-  `$$...$$` KaTeX labels, whose untranslated formula source renders as plain
-  text with `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
+- Browser-only label content returns `MermaidError.UnsupportedFeature`.
+  A complete `$$...$$` label may use the optional platform-neutral formula
+  renderer; absent/failed renderers and unsupported mixed composition retain
+  visible plain text with
+  `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
 - SceneGraph interactions preserve sanitized links and tooltips while the host
   owns navigation.
 - SceneGraph output remains platform independent; Compose owns final Canvas
@@ -103,7 +105,8 @@ detail and geometry gates.
   concurrency translation, and every official documentation fixture.
 - `StateLayoutTest` covers pseudostates, descriptions, Markdown, nested
   composites, concurrency, note edge direction, styles, interactions, title,
-  accessibility, and structured unsupported errors.
+  accessibility, formula request propagation, and structured unsupported
+  errors.
 - `StateStressTest` renders 256 deterministic random legal diagrams under
   Dagre.
 - `OfficialStateDocumentationTest` executes all 22 examples extracted from

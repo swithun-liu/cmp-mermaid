@@ -3,6 +3,7 @@ package com.swithun.cmpmermaid.core.usecase
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.MermaidSceneViewportSizing
@@ -177,6 +178,24 @@ class UsecaseLayoutTest {
         assertEquals(SceneColor(0xFF2DD4BF), shapes.getValue("Browse").stroke)
         assertEquals(SceneColor(0xFFF0FDFA), shapes.getValue("Checkout").fill)
         assertEquals(SceneColor(0xFF2DD4BF), shapes.getValue("Checkout").stroke)
+    }
+
+    @Test
+    fun preservesFormulaRequestOnRelationshipLabel() {
+        val result = engine.render(
+            """
+            usecase-beta
+            A -- "`${'$'}${'$'}x^2${'$'}${'$'}`" --> B
+            """.trimIndent(),
+            context,
+            MermaidFormulaRenderContext(),
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val request = scene.formulaRequests.single()
+        val label = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals(request, label.formula)
     }
 
     @Test

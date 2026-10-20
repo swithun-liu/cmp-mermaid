@@ -3,6 +3,7 @@ package com.swithun.cmpmermaid.core.kanban
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidKanbanOptions
 import com.swithun.cmpmermaid.core.MermaidMindmapOptions
 import com.swithun.cmpmermaid.core.MermaidRenderContext
@@ -97,6 +98,21 @@ class KanbanLayoutTest {
         assertEquals(175f, shipmentDeclare.wrappingWidth)
         assertEquals(context.theme.textColor, declare.color)
         assertEquals(context.theme.textColor, inspect.color)
+    }
+
+    @Test
+    fun preservesFormulaRequestOnSectionTitle() {
+        val result = engine.render(
+            "kanban\n  todo[${'$'}${'$'}x^2${'$'}${'$'}]",
+            context,
+            MermaidFormulaRenderContext(),
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val request = scene.formulaRequests.single()
+        val title = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+
+        assertEquals(request, title.formula)
     }
 
     @Test

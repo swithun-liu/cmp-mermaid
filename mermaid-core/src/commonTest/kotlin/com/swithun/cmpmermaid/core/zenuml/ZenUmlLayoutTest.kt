@@ -1,8 +1,11 @@
 package com.swithun.cmpmermaid.core.zenuml
 
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
+import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -419,6 +422,25 @@ class ZenUmlLayoutTest {
         val code = geometry("zenuml\nA\nB\n// `note`\nA -> B: hello", context)
 
         assertEquals(plain.comments.single().x + 2.0, code.comments.single().x)
+    }
+
+    @Test
+    fun keepsCommentFormulaOnPlainTextFallback() {
+        val result = MermaidEngine().render(
+            "zenuml\nA\nB\n// ${'$'}${'$'}x^2${'$'}${'$'}\nA -> B: hello",
+            context,
+            MermaidFormulaRenderContext(),
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result).value
+        val comment = scene.elements.filterIsInstance<SceneText>()
+            .single { text -> text.text == "x^2" }
+        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
+            scene.diagnostics.single(),
+        )
+
+        assertEquals(null, comment.formula)
+        assertTrue(scene.formulaRequests.isEmpty())
+        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
     }
 
     private fun parse(source: String): ZenUmlDocument =

@@ -47,6 +47,7 @@ class AgentflowPlugin : MermaidDiagramPlugin {
                         accessibilityTitleSource = db.accessibilityTitle,
                         accessibilityDescriptionSource = db.accessibilityDescription,
                         onDiagnostic = context::reportDiagnostic,
+                        formulaRenderingAvailable = context.formulaRenderingEnabled,
                     )
                 ) {
                     is GMResult.Ok -> when (

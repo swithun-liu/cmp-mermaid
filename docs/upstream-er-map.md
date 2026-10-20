@@ -125,9 +125,11 @@ signals.
   `wrappingWidth` for both measurement and `SceneText.softWrap`. Unbroken entity
   identifiers remain single-line, matching browser `break-spaces` behavior
   instead of Compose's default character-level hard wrapping.
-- Browser-only label content returns `MermaidError.UnsupportedFeature`, except
-  `$$...$$` KaTeX labels, whose untranslated formula source renders as plain
-  text with `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
+- Browser-only label content returns `MermaidError.UnsupportedFeature`.
+  A complete `$$...$$` label may use the optional platform-neutral formula
+  renderer; absent/failed renderers and unsupported mixed composition retain
+  visible plain text with
+  `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
 - `MD_PARENT` remains in the translated grammar and DB, but maps to no
   SceneGraph marker because Mermaid 12's unified ER renderer does not register
   the legacy diamond marker from `erMarkers.js`.
@@ -145,7 +147,7 @@ signals.
   subgraph, and every official documentation fixture.
 - `ErLayoutTest` covers tables, keys, comments, cardinalities, identification,
   `MD_PARENT`, styles, nested subgraph ordering, configuration, title, and
-  accessibility.
+  accessibility, including relationship formula request propagation.
 - `ErStressTest` renders 256 deterministic random legal diagrams under Dagre.
 - `MermaidEngineTest` protects distinct Dagre routes for repeated
   self-relationships.
