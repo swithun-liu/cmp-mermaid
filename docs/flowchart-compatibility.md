@@ -45,10 +45,14 @@ silently dropped or approximated as another feature.
 
 ## Explicit Unsupported Boundaries
 
-The following legal Mermaid capabilities currently return
-`UnsupportedFeature`:
+KaTeX/MathML layout is not translated. A `$$...$$` HTML label renders its
+inner formula source as plain text and the successful scene reports
+`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. With
+`htmlLabels=false`, the original delimiters stay on the SVG text path.
 
-- KaTeX labels.
+The following legal Mermaid capabilities currently return
+`MermaidError.UnsupportedFeature`:
+
 - FontAwesome substring replacement and custom Iconify pack registration.
 - Inline HTML `<img>`, `<a>`, `<svg>`, and MathML content inside labels.
 - HTML layout tags whose DOM box behavior cannot be represented by text spans.

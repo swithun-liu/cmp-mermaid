@@ -38,7 +38,7 @@ production boundaries so an upstream diff can be translated incrementally.
 | --- | --- | --- |
 | `upstream/marked/MarkedLexer.kt` | Marked `16.4.2` `Lexer.ts` and `Tokenizer.ts` | Token fields and production behavior consumed by Mermaid labels |
 | `upstream/marked/MarkedGeneratedRules.kt` | Marked `16.4.2` compiled regex rules | Generated and SHA-256 pinned |
-| `upstream/mermaid/MermaidTextPort.kt` | Mermaid `createText.ts`, `handle-markdown-text.ts`, and sanitization flow | Markdown projection, HTML spans, relative font styles, line breaks, and explicit unsupported detection |
+| `upstream/mermaid/MermaidTextPort.kt` | Mermaid `createText.ts`, `handle-markdown-text.ts`, and sanitization flow | Markdown projection, HTML spans, relative font styles, line breaks, explicit unsupported errors, and documented fallback diagnostics |
 | `upstream/mermaid/MermaidHtmlFragmentTokenizer.kt` | Browser HTML fragment tokenization behavior used by Mermaid labels | Typed fragment tokens without a DOM |
 | `upstream/mermaid/Html5NamedEntities.kt` | WHATWG named character references | Generated 2,231-entry entity table |
 | `upstream/mermaid/MermaidUrlSanitizer.kt` | Mermaid URL sanitization behavior | Native URL scheme filtering |
@@ -58,7 +58,7 @@ cannot map to text spans returns `UnsupportedFeature`.
 | 5 | CSS `white-space: break-spaces` with the default `overflow-wrap: normal` and Unicode line-breaking rules | `useMermaidCssBreakSpacesLayout`, `cssBreakSpacesLineBreakPositions`, `withCssBreakSpacesLines` | **Platform adaptation**: Android ICU supplies Unicode line-break opportunities and every preserved space remains an additional opportunity; explicit lines prevent `StaticLayout` from creating emergency character breaks inside oversized segments, while iOS, JVM, and Wasm keep their native line breaker |
 | 6 | `display: table; width: <limit>` may expand to the longest unbreakable segment's min-content width | `measureMermaidText` wrapped intrinsic-width maximum | **Platform adaptation**: measured label geometry is the larger of the configured CSS width and the widest explicit line, matching the browser table box instead of clipping an oversized segment into a narrower node |
 | 7 | Browser HTML fragment tree and CSS inheritance | `StyledTextBuilder`, `HtmlStyleStack` | **Platform adaptation**: supported browser text semantics are retained; DOM-only interaction and asset elements return `UnsupportedFeature` |
-| 8 | `common.ts -> hasKatex`, `renderKatexSanitized` | `MermaidTextPort.render` | **Unsupported**: KaTeX layout has not been source-translated and returns structured `UnsupportedFeature` instead of plain-text approximation |
+| 8 | `common.ts -> katexRegex`, `hasKatex`; `createText.ts -> renderKatexSanitized`, `inputForKatex` | `MermaidTextPort.render`, `renderKatexPlainText` | **Unsupported / Platform adaptation**: only Mermaid's `$$...$$` syntax selects this branch; KaTeX/MathML layout is not translated, so HTML labels remove the delimiters and render the formula source as plain text while reporting `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)` |
 
 ### Flow CSS Production Function Checklist
 

@@ -380,6 +380,7 @@ internal class ErLayout {
                 source = source,
                 labelType = FlowLabelType.Markdown,
                 config = context.options,
+                onDiagnostic = context::reportDiagnostic,
             )
         ) {
             is GMResult.Ok -> result.value

@@ -36,9 +36,13 @@ discarded or rendered as a different feature.
 
 ## Explicit Unsupported Boundaries
 
-The following legal Mermaid capabilities return `UnsupportedFeature`:
+KaTeX/MathML layout is not translated. A `$$...$$` HTML label renders its
+inner formula source as plain text and the successful scene reports
+`MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
 
-- KaTeX labels.
+The following legal Mermaid capabilities return
+`MermaidError.UnsupportedFeature`:
+
 - FontAwesome substring replacement.
 - Inline HTML links, images, SVG, MathML, or DOM layout elements inside labels.
 - `look: handDrawn`, because Mermaid implements it through roughjs.

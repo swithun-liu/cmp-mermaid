@@ -364,6 +364,7 @@ data class MermaidScene(
     val interactions: List<SceneNodeInteraction> = emptyList(),
     val viewportPadding: Float = 0f,
     val viewportSizing: MermaidSceneViewportSizing = MermaidSceneViewportSizing.Fit,
+    val diagnostics: List<MermaidDiagnostic> = emptyList(),
 )
 
 data class TextMetricsRequest(

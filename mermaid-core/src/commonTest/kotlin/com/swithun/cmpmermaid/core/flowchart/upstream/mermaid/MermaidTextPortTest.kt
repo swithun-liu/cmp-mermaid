@@ -1,6 +1,8 @@
 package com.swithun.cmpmermaid.core.flowchart.upstream.mermaid
 
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
+import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.SceneColor
@@ -193,6 +195,60 @@ class MermaidTextPortTest {
 
         val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
         assertEquals("<u> under </u>", text.text)
+    }
+
+    @Test
+    fun rendersKatexSourceAsPlainTextAndReportsFallback() {
+        val diagnostics = mutableListOf<MermaidDiagnostic>()
+        val result = MermaidTextPort.render(
+            source = "energy \$\$E = mc^2\$\$<br/>ratio &amp; \$\$\\\\frac{a}{b}\$\$",
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(),
+            onDiagnostic = diagnostics::add,
+        )
+
+        val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
+        assertEquals("energy E = mc^2\nratio & \\frac{a}{b}", text.text)
+        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
+            diagnostics.single(),
+        )
+        assertEquals("KaTeX label", diagnostic.feature)
+        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+    }
+
+    @Test
+    fun recognizesOnlyMermaidDoubleDollarKatexSyntax() {
+        val diagnostics = mutableListOf<MermaidDiagnostic>()
+        val source = "single \$x\$ and escaped \\(x^2\\) plus \\[y\\]"
+        val result = MermaidTextPort.render(
+            source = source,
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(),
+            onDiagnostic = diagnostics::add,
+        )
+
+        assertEquals(
+            source,
+            assertIs<GMResult.Ok<MermaidRenderedText>>(result).value.text,
+        )
+        assertEquals(emptyList(), diagnostics)
+    }
+
+    @Test
+    fun preservesDoubleDollarTextWhenHtmlLabelsAreDisabled() {
+        val diagnostics = mutableListOf<MermaidDiagnostic>()
+        val result = MermaidTextPort.render(
+            source = "\$\$x^2\$\$",
+            labelType = FlowLabelType.Text,
+            config = MermaidRenderOptions(htmlLabels = false),
+            onDiagnostic = diagnostics::add,
+        )
+
+        assertEquals(
+            "\$\$x^2\$\$",
+            assertIs<GMResult.Ok<MermaidRenderedText>>(result).value.text,
+        )
+        assertEquals(emptyList(), diagnostics)
     }
 
     @Test

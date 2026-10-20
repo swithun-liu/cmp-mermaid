@@ -1,6 +1,8 @@
 package com.swithun.cmpmermaid.core.classdiagram
 
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
+import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderContext
@@ -211,20 +213,23 @@ class ClassLayoutTest {
     }
 
     @Test
-    fun rejectsClassKatexInsteadOfRenderingLiteralMarkup() {
-        val result = engine.render(
+    fun rendersClassKatexSourceAsPlainTextWithDiagnostic() {
+        val scene = render(
             """
             classDiagram
                 class Service
-                note for Service "\(x^2\)"
+                note for Service "${'$'}${'$'}x^2${'$'}${'$'}"
             """.trimIndent(),
-            context,
         )
 
-        val error = assertIs<MermaidError.UnsupportedFeature>(
-            assertIs<GMResult.Err<MermaidError>>(result).error,
+        assertTrue(
+            scene.elements.filterIsInstance<SceneText>().any { text -> text.text == "x^2" },
         )
-        assertEquals("KaTeX label", error.feature)
+        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
+            scene.diagnostics.single(),
+        )
+        assertEquals("KaTeX label", diagnostic.feature)
+        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
     }
 
     @Test

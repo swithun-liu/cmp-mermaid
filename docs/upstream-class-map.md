@@ -65,7 +65,9 @@ production so an upstream grammar diff can be translated incrementally.
   `GMResult.Err`.
 - Mermaid DOM text maps to shared SceneGraph text spans and host-supplied
   measurement.
-- Browser-only label content returns `UnsupportedFeature`.
+- Browser-only label content returns `MermaidError.UnsupportedFeature`, except
+  `$$...$$` KaTeX labels, whose untranslated formula source renders as plain
+  text with `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
 - SceneGraph interactions preserve links, callbacks, and tooltips while the
   host owns their execution.
 - SceneGraph output remains platform independent; Compose owns final Canvas

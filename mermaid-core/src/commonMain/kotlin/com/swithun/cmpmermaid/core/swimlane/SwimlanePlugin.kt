@@ -29,7 +29,12 @@ internal class SwimlanePlugin : MermaidDiagramPlugin {
             diagramTitle = context.diagramTitle,
         ).parse(source)
     ) {
-        is GMResult.Ok -> when (val converted = FlowchartDataAdapter.convert(parsed.value)) {
+        is GMResult.Ok -> when (
+            val converted = FlowchartDataAdapter.convert(
+                db = parsed.value,
+                onDiagnostic = context::reportDiagnostic,
+            )
+        ) {
             is GMResult.Ok -> FlowchartLayout().layout(
                 document = if (context.options.layout == "swimlane") {
                     SwimlaneLayout.prepareDocument(

@@ -104,6 +104,7 @@ internal class EventModelingDb(
                 source = name,
                 labelType = FlowLabelType.String,
                 config = context.options,
+                onDiagnostic = context::reportDiagnostic,
             )
         ) {
             is GMResult.Ok -> rendered.value.text
@@ -153,6 +154,7 @@ internal class EventModelingDb(
                     source = value,
                     labelType = FlowLabelType.String,
                     config = context.options,
+                    onDiagnostic = context::reportDiagnostic,
                 )
             ) {
                 is GMResult.Ok -> result.value.text

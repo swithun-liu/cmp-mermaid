@@ -42,7 +42,15 @@ data class MermaidRenderContext(
     val assetMetrics: Map<String, SceneSize> = emptyMap(),
     internal val diagramTitle: String? = null,
     internal val frontmatterLineOffset: Int = 0,
-)
+) {
+    private val reportedDiagnostics = linkedSetOf<MermaidDiagnostic>()
+
+    internal fun reportDiagnostic(diagnostic: MermaidDiagnostic) {
+        reportedDiagnostics += diagnostic
+    }
+
+    internal fun diagnostics(): List<MermaidDiagnostic> = reportedDiagnostics.toList()
+}
 
 interface MermaidDiagramPlugin {
     val id: String
@@ -266,18 +274,25 @@ class MermaidEngine(
             preprocessed.code.cleaned
         }
         val parserSource = MermaidPreprocessor.encodeEntities(sourceForParser) + "\n"
+        val renderContext = context.copy(
+            theme = resolvedTheme,
+            options = diagramOptions,
+            diagramTitle = preprocessed.title,
+            frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,
+        )
         return when (
             val compiled = plugin.compileSafely(
                 source = parserSource,
-                context = context.copy(
-                    theme = resolvedTheme,
-                    options = diagramOptions,
-                    diagramTitle = preprocessed.title,
-                    frontmatterLineOffset = preprocessed.code.frontmatterLineOffset,
-                ),
+                context = renderContext,
             )
         ) {
-            is GMResult.Ok -> compiled
+            is GMResult.Ok -> GMResult.Ok(
+                compiled.value.copy(
+                    diagnostics = (
+                        compiled.value.diagnostics + renderContext.diagnostics()
+                        ).distinct(),
+                ),
+            )
             is GMResult.Err -> GMResult.Err(
                 MermaidUpstreamErrorFormatter.format(
                     diagramId = plugin.id,

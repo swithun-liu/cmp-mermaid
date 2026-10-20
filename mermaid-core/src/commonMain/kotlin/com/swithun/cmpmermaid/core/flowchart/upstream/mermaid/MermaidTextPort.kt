@@ -2,6 +2,8 @@ package com.swithun.cmpmermaid.core.flowchart.upstream.mermaid
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.CssColorParser
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
+import com.swithun.cmpmermaid.core.MermaidDiagnosticFallback
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
@@ -27,10 +29,18 @@ internal object MermaidTextPort {
         source: String,
         labelType: FlowLabelType,
         config: MermaidRenderOptions,
+        onDiagnostic: (MermaidDiagnostic) -> Unit = {},
     ): GMResult<MermaidRenderedText, MermaidError> {
         val parserDecoded = MermaidPreprocessor.decodeEntities(source)
-        if (KATEX.containsMatchIn(parserDecoded)) {
-            return unsupported("KaTeX label")
+        if (config.htmlLabels && KATEX.containsMatchIn(parserDecoded)) {
+            onDiagnostic(
+                MermaidDiagnostic.UnsupportedFeature(
+                    feature = "KaTeX label",
+                    fallback = MermaidDiagnosticFallback.PlainText,
+                    message = "Native Mermaid rendered an unsupported KaTeX label as plain text",
+                ),
+            )
+            return GMResult.Ok(renderKatexPlainText(parserDecoded))
         }
         if (config.htmlLabels && FONT_AWESOME_ICON.containsMatchIn(parserDecoded)) {
             return unsupported("FontAwesome label icon")
@@ -41,6 +51,26 @@ internal object MermaidTextPort {
             FlowLabelType.Text,
             -> renderNonMarkdown(source, config)
         }
+    }
+
+    /**
+     * Mermaid.js 12.0.0:
+     * diagrams/common/common.ts -> katexRegex, hasKatex;
+     * rendering-util/createText.ts -> inputForKatex.
+     *
+     * KaTeX/MathML layout is not translated. The native fallback preserves the
+     * formula source without delimiters so one unsupported label cannot replace
+     * the complete diagram with Mermaid's error rendering.
+     */
+    private fun renderKatexPlainText(source: String): MermaidRenderedText {
+        val normalized = source
+            .replace(LINE_BREAK, "\n")
+            .replace("\\n", "\n")
+            .replace("\\\\", "\\")
+        val decoded = MermaidHtmlEntityDecoder.decode(normalized)
+        return MermaidRenderedText(
+            text = KATEX.replace(decoded) { match -> match.groupValues[1] },
+        )
     }
 
     /**
@@ -769,7 +799,8 @@ internal object MermaidTextPort {
     private val SVG_WORD = Regex("""<[^>]+>|[^\s<>]+""")
     private val MULTIPLE_NEWLINES = Regex("""\n{2,}""")
     private val HTML_TEXT_NEWLINE = Regex("""\n *""")
-    private val KATEX = Regex("""(?:\$\$?[^$]+\$\$?|\\\(|\\\[)""")
+    // Mermaid.js 12.0.0: diagrams/common/common.ts -> katexRegex.
+    private val KATEX = Regex("""\$\$(.*?)\$\$""")
     private val FONT_AWESOME_ICON = Regex("""fa[bklrs]?:fa-[\w-]+""")
     private val TRAILING_INDENTED_NEWLINE = Regex("""\r?\n([\t ]*)${'$'}""")
     private val DEDENT_LINE = Regex("""\n([\t ]+|[^\s])""")

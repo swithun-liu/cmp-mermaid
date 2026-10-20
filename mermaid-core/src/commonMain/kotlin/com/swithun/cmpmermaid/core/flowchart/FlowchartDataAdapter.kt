@@ -1,6 +1,7 @@
 package com.swithun.cmpmermaid.core.flowchart
 
 import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidDiagnostic
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.CssColorParser
@@ -23,7 +24,10 @@ import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidTextPort
  * only converts Mermaid renderer data to the platform-neutral SceneGraph model.
  */
 internal object FlowchartDataAdapter {
-    fun convert(db: FlowDb): GMResult<FlowchartDocument, MermaidError> =
+    fun convert(
+        db: FlowDb,
+        onDiagnostic: (MermaidDiagnostic) -> Unit = {},
+    ): GMResult<FlowchartDocument, MermaidError> =
         convert(
             data = db.getData(),
             config = db.config(),
@@ -31,6 +35,7 @@ internal object FlowchartDataAdapter {
             titleSource = db.diagramTitle,
             accessibilityTitleSource = db.accessibilityTitle,
             accessibilityDescriptionSource = db.accessibilityDescription,
+            onDiagnostic = onDiagnostic,
         )
 
     fun convert(
@@ -40,6 +45,7 @@ internal object FlowchartDataAdapter {
         titleSource: String?,
         accessibilityTitleSource: String?,
         accessibilityDescriptionSource: String?,
+        onDiagnostic: (MermaidDiagnostic) -> Unit = {},
     ): GMResult<FlowchartDocument, MermaidError> {
         val nodes = linkedMapOf<String, FlowNode>()
         data.nodes.filterNot { it.isGroup }.forEach { node ->
@@ -61,6 +67,7 @@ internal object FlowchartDataAdapter {
                     source = node.label.orEmpty(),
                     labelType = node.labelType,
                     config = config,
+                    onDiagnostic = onDiagnostic,
                 )
             ) {
                 is GMResult.Ok -> rendered.value
@@ -68,7 +75,12 @@ internal object FlowchartDataAdapter {
             }
             val tooltip = when (
                 val rendered = node.tooltip?.let { source ->
-                    MermaidTextPort.render(source, FlowLabelType.Text, config)
+                    MermaidTextPort.render(
+                        source = source,
+                        labelType = FlowLabelType.Text,
+                        config = config,
+                        onDiagnostic = onDiagnostic,
+                    )
                 }
             ) {
                 null -> null
@@ -119,6 +131,7 @@ internal object FlowchartDataAdapter {
                             group.labelType
                         },
                         config = config,
+                        onDiagnostic = onDiagnostic,
                     )
                 ) {
                     is GMResult.Ok -> rendered.value
@@ -173,6 +186,7 @@ internal object FlowchartDataAdapter {
                         source = edge.label,
                         labelType = edge.labelType,
                         config = config,
+                        onDiagnostic = onDiagnostic,
                     )
                 ) {
                     is GMResult.Ok -> rendered.value
@@ -215,18 +229,24 @@ internal object FlowchartDataAdapter {
                 )
             }
         }
-        val title = when (val rendered = renderOptional(titleSource, config)) {
+        val title = when (
+            val rendered = renderOptional(titleSource, config, onDiagnostic)
+        ) {
             is GMResult.Ok -> rendered.value
             is GMResult.Err -> return rendered
         }
         val accessibilityTitle = when (
-            val rendered = renderOptional(accessibilityTitleSource, config)
+            val rendered = renderOptional(accessibilityTitleSource, config, onDiagnostic)
         ) {
             is GMResult.Ok -> rendered.value
             is GMResult.Err -> return rendered
         }
         val accessibilityDescription = when (
-            val rendered = renderOptional(accessibilityDescriptionSource, config)
+            val rendered = renderOptional(
+                accessibilityDescriptionSource,
+                config,
+                onDiagnostic,
+            )
         ) {
             is GMResult.Ok -> rendered.value
             is GMResult.Err -> return rendered
@@ -248,11 +268,17 @@ internal object FlowchartDataAdapter {
     private fun renderOptional(
         source: String?,
         config: MermaidRenderOptions,
+        onDiagnostic: (MermaidDiagnostic) -> Unit,
     ): GMResult<MermaidRenderedText?, MermaidError> =
         if (source == null) {
             GMResult.Ok(null)
         } else {
-            MermaidTextPort.render(source, FlowLabelType.Text, config)
+            MermaidTextPort.render(
+                source = source,
+                labelType = FlowLabelType.Text,
+                config = config,
+                onDiagnostic = onDiagnostic,
+            )
         }
 
     private fun direction(value: String?): FlowDirection? = when (value) {

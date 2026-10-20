@@ -20,7 +20,12 @@ class FlowchartPlugin : MermaidDiagramPlugin {
             diagramTitle = context.diagramTitle,
         ).parse(source)
     ) {
-        is GMResult.Ok -> when (val document = FlowchartDataAdapter.convert(parsed.value)) {
+        is GMResult.Ok -> when (
+            val document = FlowchartDataAdapter.convert(
+                db = parsed.value,
+                onDiagnostic = context::reportDiagnostic,
+            )
+        ) {
             is GMResult.Ok -> FlowchartLayout().layout(document.value, context)
             is GMResult.Err -> document
         }

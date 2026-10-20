@@ -86,6 +86,31 @@ sealed interface MermaidError {
     }
 }
 
+enum class MermaidDiagnosticSeverity {
+    Warning,
+}
+
+enum class MermaidDiagnosticFallback {
+    PlainText,
+}
+
+/**
+ * Structured information about a successful render that used a documented
+ * compatibility fallback.
+ */
+sealed interface MermaidDiagnostic {
+    val severity: MermaidDiagnosticSeverity
+    val message: String
+
+    data class UnsupportedFeature(
+        val feature: String,
+        val fallback: MermaidDiagnosticFallback,
+        override val message: String,
+        override val severity: MermaidDiagnosticSeverity =
+            MermaidDiagnosticSeverity.Warning,
+    ) : MermaidDiagnostic
+}
+
 /**
  * Stable host-facing render failure payload.
  *

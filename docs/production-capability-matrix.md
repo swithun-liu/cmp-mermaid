@@ -121,5 +121,7 @@ It does not add structural coverage. The prior randomized stress corpus remains
 Native-only robustness evidence and is not presented as Official parity.
 
 This matrix does not claim exhaustive support for every legal Mermaid program.
-Unsupported legal features must return `MermaidError.UnsupportedFeature`
-instead of rendering a misleading approximation.
+Unsupported legal features must return `MermaidError.UnsupportedFeature`, or
+use an explicitly documented non-semantic fallback with
+`MermaidDiagnostic.UnsupportedFeature`; they must never render a silent,
+misleading approximation.

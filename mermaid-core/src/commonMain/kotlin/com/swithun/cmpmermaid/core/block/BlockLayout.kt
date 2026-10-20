@@ -131,6 +131,7 @@ internal class BlockLayout {
                 source = block.label.orEmpty(),
                 labelType = FlowLabelType.Text,
                 config = context.options,
+                onDiagnostic = context::reportDiagnostic,
             )
         ) {
             is GMResult.Ok -> text.value
@@ -580,9 +581,10 @@ internal class BlockLayout {
         if (label.isNotEmpty()) {
             val rendered = when (
                 val result = MermaidTextPort.render(
-                    label,
-                    FlowLabelType.Text,
-                    context.options,
+                    source = label,
+                    labelType = FlowLabelType.Text,
+                    config = context.options,
+                    onDiagnostic = context::reportDiagnostic,
                 )
             ) {
                 is GMResult.Ok -> result.value

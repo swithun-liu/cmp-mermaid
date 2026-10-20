@@ -64,6 +64,45 @@ class MermaidEngineTest {
     }
 
     @Test
+    fun rendersFlowchartKatexSourcesAsPlainTextWithOneDiagnostic() {
+        val result = engine.render(
+            """
+                flowchart LR
+                  A["${'$'}${'$'}E = mc^2${'$'}${'$'}"] -->
+                    B["${'$'}${'$'}x^2 + y^2 = z^2${'$'}${'$'}"]
+            """.trimIndent(),
+            context,
+        )
+
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(result, result.toString()).value
+        val labels = scene.elements.filterIsInstance<SceneText>().map(SceneText::text).toSet()
+        assertTrue("E = mc^2" in labels)
+        assertTrue("x^2 + y^2 = z^2" in labels)
+        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
+            scene.diagnostics.single(),
+        )
+        assertEquals("KaTeX label", diagnostic.feature)
+        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+
+        val ordinaryScene = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render("flowchart LR\n A --> B", context),
+        ).value
+        assertEquals(emptyList(), ordinaryScene.diagnostics)
+    }
+
+    @Test
+    fun keepsMalformedFlowchartAsAnError() {
+        val result = engine.render(
+            "flowchart LR\n A[",
+            context,
+        )
+
+        assertIs<MermaidError.Parse>(
+            assertIs<GMResult.Err<MermaidError>>(result).error,
+        )
+    }
+
+    @Test
     fun ignoresInvalidCssDeclarationProducedByUnquotedStyleTarget() {
         val result = engine.render(
             """

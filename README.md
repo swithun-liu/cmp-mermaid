@@ -107,7 +107,9 @@ Architecture gaps, seven detail reviews, and legal RoughJS-backed unsupported
 `handDrawn` look are resolved.
 A legal feature that cannot be represented faithfully returns
 `MermaidError.UnsupportedFeature` instead of silently drawing a misleading
-approximation.
+approximation. An explicitly documented non-semantic fallback, such as
+plain-text KaTeX source, returns `MermaidDiagnostic.UnsupportedFeature` in the
+successful `MermaidScene`.
 
 ## Native Vs Mermaid.js
 

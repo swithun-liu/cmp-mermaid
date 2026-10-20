@@ -214,6 +214,7 @@ internal class ClassLayout {
                         source = "«$source»",
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
+                        onDiagnostic = context::reportDiagnostic,
                     )
                 ) {
                     is GMResult.Ok -> result.value
@@ -240,6 +241,7 @@ internal class ClassLayout {
                     source = node.label + generic,
                     labelType = FlowLabelType.Markdown,
                     config = context.options,
+                    onDiagnostic = context::reportDiagnostic,
                 )
             ) {
                 is GMResult.Ok -> result.value
@@ -365,6 +367,7 @@ internal class ClassLayout {
                 source = member.displayText.escapeAngles(),
                 labelType = FlowLabelType.Markdown,
                 config = context.options,
+                onDiagnostic = context::reportDiagnostic,
             )
         ) {
             is GMResult.Ok -> result.value
@@ -439,6 +442,7 @@ internal class ClassLayout {
                     source = note.text,
                     labelType = FlowLabelType.Markdown,
                     config = context.options,
+                    onDiagnostic = context::reportDiagnostic,
                 )
             ) {
                 is GMResult.Ok -> result.value
@@ -493,6 +497,7 @@ internal class ClassLayout {
                         source = namespaceLabel(namespace, context),
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
+                        onDiagnostic = context::reportDiagnostic,
                     )
                 ) {
                     is GMResult.Ok -> result.value
@@ -538,6 +543,7 @@ internal class ClassLayout {
                         source = classInterface.label,
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
+                        onDiagnostic = context::reportDiagnostic,
                     )
                 ) {
                     is GMResult.Ok -> result.value
@@ -587,6 +593,7 @@ internal class ClassLayout {
                         source = label,
                         labelType = FlowLabelType.Markdown,
                         config = context.options,
+                        onDiagnostic = context::reportDiagnostic,
                     )
                 ) {
                     is GMResult.Ok -> result.value

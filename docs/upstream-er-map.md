@@ -125,7 +125,9 @@ signals.
   `wrappingWidth` for both measurement and `SceneText.softWrap`. Unbroken entity
   identifiers remain single-line, matching browser `break-spaces` behavior
   instead of Compose's default character-level hard wrapping.
-- Browser-only label content returns `UnsupportedFeature`.
+- Browser-only label content returns `MermaidError.UnsupportedFeature`, except
+  `$$...$$` KaTeX labels, whose untranslated formula source renders as plain
+  text with `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`.
 - `MD_PARENT` remains in the translated grammar and DB, but maps to no
   SceneGraph marker because Mermaid 12's unified ER renderer does not register
   the legacy diamond marker from `erMarkers.js`.

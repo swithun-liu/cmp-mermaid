@@ -863,6 +863,7 @@ internal class UsecaseLayout {
                     source = label.text,
                     labelType = FlowLabelType.Markdown,
                     config = context.options,
+                    onDiagnostic = context::reportDiagnostic,
                 )
             ) {
                 is GMResult.Ok -> result.value
