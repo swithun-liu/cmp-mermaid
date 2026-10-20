@@ -4,7 +4,7 @@ plugins {
 }
 
 val cmpMermaidVersion = providers.gradleProperty("VERSION_NAME")
-    .orElse("0.1.12")
+    .orElse("0.1.13")
 
 android {
     namespace = "com.swithun.cmpmermaid.legacy.smoke"
