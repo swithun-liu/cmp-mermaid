@@ -147,6 +147,14 @@ jobs:
     timeout-minutes: 50
 
     steps:
+      - name: Checkout current release verification tooling
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          path: .release-tooling
+          ref: ${{ github.workflow_sha }}
+          sparse-checkout: tools/release
+
       - name: Download the exact Quality Gate iOS artifact
         shell: bash
         env:
@@ -167,23 +175,12 @@ jobs:
             )"
             while IFS= read -r candidate_run_id; do
               [[ -n "$candidate_run_id" ]] || continue
-              if ! artifacts="$(
-                gh api \
-                  "repos/$GITHUB_REPOSITORY/actions/runs/$candidate_run_id/artifacts"
+              if ! candidate_artifact_id="$(
+                node .release-tooling/tools/release/verified-quality-ios-artifact.mjs \
+                  "$GITHUB_REPOSITORY" "$candidate_run_id" "$SOURCE_SHA"
               )"; then
                 continue
               fi
-              candidate_artifact_id="$(
-                jq -r \
-                  '[
-                    .artifacts[]
-                    | select(
-                        .name == "verified-ios-publication"
-                        and .expired == false
-                      )
-                  ][0].id // empty' \
-                  <<<"$artifacts"
-              )"
               if [[ -n "$candidate_artifact_id" ]]; then
                 quality_run_id="$candidate_run_id"
                 quality_artifact_id="$candidate_artifact_id"
@@ -196,8 +193,6 @@ jobs:
                 | select(
                     .headSha == $sha
                     and .headBranch == "main"
-                    and .status == "completed"
-                    and .conclusion == "success"
                   )
                 | .databaseId' \
                 <<<"$quality_runs"
