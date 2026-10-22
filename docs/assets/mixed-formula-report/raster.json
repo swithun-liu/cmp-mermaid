@@ -1,0 +1,350 @@
+{
+  "officialGeneratedAt": "2026-10-22T12:17:04.490Z",
+  "nativeGeneratedAt": "2026-10-22T12:37:49.491854Z",
+  "caseCount": 28,
+  "screenshotCount": 56,
+  "contactSheets": [
+    "contact-sheet-1.png",
+    "contact-sheet-2.png",
+    "contact-sheet-3.png",
+    "contact-sheet-4.png"
+  ],
+  "cases": [
+    {
+      "id": "flow-single",
+      "ssim": 0.9346888205749635,
+      "nativeSize": [
+        168,
+        52
+      ],
+      "officialSize": [
+        168,
+        51
+      ]
+    },
+    {
+      "id": "flow-text",
+      "ssim": 0.9788549430502497,
+      "nativeSize": [
+        177,
+        61
+      ],
+      "officialSize": [
+        177,
+        61
+      ]
+    },
+    {
+      "id": "flow-multiple",
+      "ssim": 0.9918671648458125,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-fraction",
+      "ssim": 0.9800067884122917,
+      "nativeSize": [
+        168,
+        65
+      ],
+      "officialSize": [
+        168,
+        65
+      ]
+    },
+    {
+      "id": "flow-br",
+      "ssim": 0.9885314122400858,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-newline",
+      "ssim": 0.9885314122400858,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-formula-br",
+      "ssim": 0.974734702852087,
+      "nativeSize": [
+        168,
+        50
+      ],
+      "officialSize": [
+        168,
+        50
+      ]
+    },
+    {
+      "id": "flow-repeated",
+      "ssim": 0.9939260347867288,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-spaces",
+      "ssim": 0.9954928043866339,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-entities",
+      "ssim": 0.994501254890838,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-html",
+      "ssim": 0.9837974982423607,
+      "nativeSize": [
+        180,
+        61
+      ],
+      "officialSize": [
+        180,
+        61
+      ]
+    },
+    {
+      "id": "flow-neutral-html",
+      "ssim": 0.9656942483575754,
+      "nativeSize": [
+        223,
+        61
+      ],
+      "officialSize": [
+        222,
+        61
+      ]
+    },
+    {
+      "id": "flow-adjacent-html",
+      "ssim": 0.9950673063229954,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-small-html",
+      "ssim": 0.9951755676655,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-color-html",
+      "ssim": 0.9945952587271588,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "flow-tall",
+      "ssim": 0.978533096688524,
+      "nativeSize": [
+        168,
+        77
+      ],
+      "officialSize": [
+        168,
+        77
+      ]
+    },
+    {
+      "id": "flow-wide",
+      "ssim": 0.9790306465516019,
+      "nativeSize": [
+        575,
+        61
+      ],
+      "officialSize": [
+        575,
+        61
+      ]
+    },
+    {
+      "id": "flow-edge",
+      "ssim": 0.7782697178078695,
+      "nativeSize": [
+        483,
+        61
+      ],
+      "officialSize": [
+        512,
+        61
+      ]
+    },
+    {
+      "id": "flow-rotation",
+      "ssim": 0.723038488723112,
+      "nativeSize": [
+        168,
+        156
+      ],
+      "officialSize": [
+        168,
+        146
+      ]
+    },
+    {
+      "id": "state-edge",
+      "ssim": 0.6156458006361273,
+      "nativeSize": [
+        152,
+        161
+      ],
+      "officialSize": [
+        152,
+        191
+      ]
+    },
+    {
+      "id": "class-title",
+      "ssim": 0.7930000241614308,
+      "nativeSize": [
+        90,
+        97
+      ],
+      "officialSize": [
+        89,
+        97
+      ]
+    },
+    {
+      "id": "er-title",
+      "ssim": 0.8712395239041305,
+      "nativeSize": [
+        137,
+        96
+      ],
+      "officialSize": [
+        135,
+        96
+      ]
+    },
+    {
+      "id": "er-relation",
+      "ssim": 0.9890431423977097,
+      "nativeSize": [
+        116,
+        279
+      ],
+      "officialSize": [
+        116,
+        279
+      ]
+    },
+    {
+      "id": "block",
+      "ssim": 0.5057135250866115,
+      "nativeSize": [
+        89,
+        55
+      ],
+      "officialSize": [
+        89,
+        47
+      ]
+    },
+    {
+      "id": "kanban",
+      "ssim": 0.7536670766920212,
+      "nativeSize": [
+        220,
+        96
+      ],
+      "officialSize": [
+        220,
+        96
+      ]
+    },
+    {
+      "id": "mindmap",
+      "ssim": 0.6251018095613353,
+      "nativeSize": [
+        99,
+        65
+      ],
+      "officialSize": [
+        107,
+        61
+      ]
+    },
+    {
+      "id": "usecase",
+      "ssim": 0.8295485883077659,
+      "nativeSize": [
+        444,
+        98
+      ],
+      "officialSize": [
+        477,
+        98
+      ]
+    },
+    {
+      "id": "requirement",
+      "ssim": 0.9125591663705538,
+      "nativeSize": [
+        149,
+        182
+      ],
+      "officialSize": [
+        149,
+        182
+      ]
+    }
+  ]
+}

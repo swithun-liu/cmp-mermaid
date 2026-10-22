@@ -274,7 +274,7 @@ class MermaidTextPortTest {
     }
 
     @Test
-    fun keepsMixedKatexLabelsOnTheDocumentedPlainTextFallback() {
+    fun exposesFormulaSlotsInsideOrdinaryText() {
         val diagnostics = mutableListOf<MermaidDiagnostic>()
         val result = MermaidTextPort.render(
             source = "energy \$\$E = mc^2\$\$",
@@ -285,17 +285,17 @@ class MermaidTextPortTest {
         )
 
         val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
-        val diagnostic = assertIs<MermaidDiagnostic.UnsupportedFeature>(
-            diagnostics.single(),
-        )
         assertEquals("energy E = mc^2", text.text)
         assertEquals(null, text.formulaSource())
-        assertEquals("KaTeX label", diagnostic.feature)
-        assertEquals(MermaidDiagnosticFallback.PlainText, diagnostic.fallback)
+        val span = text.spans.single { it.formula != null }
+        assertEquals(7, span.start)
+        assertEquals(text.text.length, span.end)
+        assertEquals("E = mc^2", span.formula?.source)
+        assertEquals(emptyList(), diagnostics)
     }
 
     @Test
-    fun keepsMultipleKatexBlocksOnTheDocumentedPlainTextFallback() {
+    fun exposesEveryFormulaSlotInSourceOrder() {
         val diagnostics = mutableListOf<MermaidDiagnostic>()
         val result = MermaidTextPort.render(
             source = "\$\$x\$\$\$\$y\$\$",
@@ -308,7 +308,9 @@ class MermaidTextPortTest {
         val text = assertIs<GMResult.Ok<MermaidRenderedText>>(result).value
         assertEquals("xy", text.text)
         assertEquals(null, text.formulaSource())
-        assertIs<MermaidDiagnostic.UnsupportedFeature>(diagnostics.single())
+        assertEquals(listOf("x", "y"), text.spans.map { it.formula?.source })
+        assertEquals(listOf(0 to 1, 1 to 2), text.spans.map { it.start to it.end })
+        assertEquals(emptyList(), diagnostics)
     }
 
     @Test

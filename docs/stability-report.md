@@ -1,7 +1,7 @@
 # Mermaid 12.0.0 Stability Test Report
 
 > [!NOTE]
-> This report contains current evidence for all 33 official Mermaid `12.0.0`
+> This report retains corpus evidence for all 33 official Mermaid `12.0.0`
 > families, including the directly retranslated Swimlanes implementation.
 > Swimlanes classic-look gates are complete, but Swimlanes remains
 > **not Stable** because the legal RoughJS-backed `look: handDrawn` capability
@@ -9,9 +9,11 @@
 > non-Stable because legal `randomize: true` input returns a structured
 > unsupported result. Seven detail cases remain under review: five
 > Architecture and two Kanban. Provider-backed formula rendering is also
-> **not Stable**: whole-label shared-text plumbing is implemented, but mixed
-> composition and Sequence-specific formula stages remain unsupported, and no
-> dedicated cross-platform formula visual corpus has passed. The full JVM and
+> **not Stable**: shared-text mixed and multiple-formula composition is translated,
+> but Sequence, ZenUML, Event Modeling, nested formula HTML, and HTML block
+> formatting remain unsupported. A separate 28-source composition audit is
+> linked below; the large corpus and physical-device matrices predate this
+> formula change and were not regenerated for it. The full JVM and
 > Wasm core suites pass.
 > Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS now have separate fresh 441-case physical-device matrices. Core soak,
@@ -31,7 +33,7 @@ stress inputs.
 | --- | --- |
 | Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; 5 Architecture and 2 Kanban cases remain under review** |
 | Mermaid compatibility baseline | `12.0.0` |
-| Implemented families | 33/33; all 33 family evidence gates current |
+| Implemented families | 33/33; retained 33-family corpus evidence, separate current formula audit |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
 | Independent-scenario visual matrix | 8,448 Native/Official pairs: Flowchart uses its dedicated corpus; every other family covers all 256 combinations of eight capability axes |
@@ -48,15 +50,16 @@ stress inputs.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | Core: 1,058 passed, 0 failed; Compose: 61 passed, 0 failed |
-| Wasm tests | Core: 1,017 passed, 0 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
+| JVM tests | Core: 1,075 passed, 0 failed; Compose: 64 passed, 0 failed |
+| Wasm tests | Core: 1,073 passed, 0 failed; Compose: 57 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| iOS Simulator Arm64 tests | Core: 1,073 passed, 0 failed; Compose: 60 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
 | Platform build matrix | Android debug/release, Web production, Desktop distributable, iOS Arm64, iOS Simulator Arm64, iOS X64 passed |
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
-| Formula renderer evidence | Unit-tested provider contract and cross-family request propagation; no dedicated Native/Official visual or physical-device formula matrix; non-Stable |
+| Formula renderer evidence | Unit-tested shared-label composition and provider contract; separate 28-source / 56-screenshot Native/Official audit; physical-device formula parity not established; non-Stable |
 
 **Current conclusion:** the fresh Flowchart detail, geometry, per-edge
 topology, and contact-sheet gates pass. The affected-family targeted JVM tests,
@@ -65,9 +68,12 @@ Mermaid `12.0.0` contract remains **not Stable** because Architecture's legal
 `randomize: true` spectral path and legal `look: handDrawn` input are
 explicitly unsupported rather than silently approximated; five Architecture
 and two Kanban detail cases also remain under review. Formula rendering remains
-non-Stable because mixed composition and Sequence-specific formula layout are
-not translated and the published visual corpus does not exercise provider
-output. The full JVM and Wasm core suites pass.
+non-Stable because the separate formula call chains and HTML formatting
+boundaries listed above remain untranslated. The main 8,448-pair visual corpus
+does not exercise provider output and is retained historical evidence for this
+change. The current formula evidence is tracked in the
+[mixed-formula report](mixed-formula-report.md).
+The full JVM, Wasm, and iOS Simulator Arm64 suites pass.
 
 ## AI-Like Source-Mutation Safety Gate
 
@@ -863,7 +869,7 @@ failures: 0
 errors: 0
 ```
 
-The latest source-level JVM run is green:
+The retained pre-formula source-level JVM run was green:
 
 ```text
 mermaid-core: 1,019 tests; 1,019 passed
@@ -873,8 +879,16 @@ failures: 0
 errors: 0
 ```
 
-The corresponding Wasm run also passes: Core `1,017/1,017`, Compose
+The corresponding historical Wasm run passed: Core `1,017/1,017`, Compose
 `37/37`, and debug UI `9/9`.
+
+The `0.1.15` mixed-formula source run passes JVM Core `1,075/1,075` and
+Compose `64/64`, Wasm Core `1,073/1,073` and Compose `57/57`, and iOS
+Simulator Arm64 Core `1,073/1,073` and Compose `60/60`. These counts are
+computed from the complete platform test-result XML files. The formula
+reference fixture also passes `2/2` after binding the existing Noto Sans Math
+resource: the previous fixture used an unrecorded system MathML font and is
+not a reproducible input across systems.
 
 The current independent corpus test is
 [`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/ProductionCorpusTest.kt).

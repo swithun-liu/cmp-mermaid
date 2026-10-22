@@ -9,6 +9,7 @@ import com.swithun.cmpmermaid.core.cynefin.CynefinPlugin
 import com.swithun.cmpmermaid.core.erdiagram.ErPlugin
 import com.swithun.cmpmermaid.core.eventmodeling.EventModelingPlugin
 import com.swithun.cmpmermaid.core.flowchart.FlowchartPlugin
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidKatexLabelLayout
 import com.swithun.cmpmermaid.core.gantt.GanttPlugin
 import com.swithun.cmpmermaid.core.gitgraph.GitGraphPlugin
 import com.swithun.cmpmermaid.core.ishikawa.IshikawaPlugin
@@ -377,6 +378,42 @@ private class FormulaAwareTextMetricProvider(
     override fun measure(request: TextMetricsRequest): TextMetrics {
         if (!enabled) {
             return delegate.measure(request)
+        }
+        val formulaSpans = request.spans
+            .filter { it.formula != null && it.start >= 0 && it.end <= request.text.length }
+            .distinctBy { it.start to it.end }
+            .sortedBy { it.start }
+        if (formulaSpans.isEmpty()) return delegate.measure(request)
+        if (
+            formulaSpans.size != 1 ||
+            formulaSpans.first().start != 0 ||
+            formulaSpans.first().end != request.text.length
+        ) {
+            return MermaidKatexLabelLayout.measure(
+                request = request,
+                formulas = formulaSpans,
+                delegate = delegate,
+                formulaRequest = { span ->
+                    val source = span.formula
+                    MermaidFormulaMeasureRequest(
+                        source = source?.source.orEmpty(),
+                        displayMode = source?.displayMode ?: MermaidFormulaDisplayMode.Block,
+                        maxWidth = request.maxWidth,
+                        fontSize = request.fontSize,
+                        rasterScale = rasterScale.takeIf { it.isFinite() && it > 0f } ?: 1f,
+                        accessibilityText = source?.accessibilityText.orEmpty(),
+                    ).also(onRequest)
+                },
+                formulaMetrics = { formula ->
+                    resolvedMetrics[formula]?.takeIf { it.isValid() }
+                },
+                isFallback = { formula ->
+                    (
+                        formula in fallbacks ||
+                            resolutionLimitFallbacks.any { it.matchesFormulaIdentity(formula) }
+                        ).also { fallback -> if (fallback) onFallback() }
+                },
+            )
         }
         val formulaSource = request.formulaSource() ?: return delegate.measure(request)
         val formulaRequest = MermaidFormulaMeasureRequest(

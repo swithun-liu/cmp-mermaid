@@ -34,7 +34,7 @@ silently dropped or approximated as another feature.
 | Subgraphs | Supported | Nested groups, collapsed groups, boundary links, local directions, title margins, and cross-hierarchy edges |
 | Markdown strings | Supported for Mermaid's label path | Marked `16.4.2` lexer/token behavior used by Mermaid, including emphasis, code, deletion, blocks, escapes, and line breaks |
 | HTML labels | Supported with explicit boundaries | Formatting spans, entities, sanitization, color/background, relative font sizes, alignment, decoration, and line height |
-| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` can measure and draw one complete `$$...$$` label asynchronously; no formula engine is bundled, and mixed or multiple formula blocks fall back to plain text |
+| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` measures each `$$...$$` match asynchronously; shared labels support ordinary text and multiple formulas using the translated flex composition; no formula engine is bundled |
 | Themes | Supported with explicit boundaries | Mermaid default, dark, forest, neutral, base, neo/redux variants, theme variables, color arrays, and default Flowchart appearance |
 | Security levels | Supported | Strict, loose, antiscript, and sandbox URL/callback handling; diagram text cannot override secure host limits |
 | Links, callbacks, and tooltips | Supported | Exposed as `SceneNodeInteraction`; callbacks are retained only at Mermaid's loose security level |
@@ -50,9 +50,12 @@ KaTeX parsing and MathML generation are not translated or bundled. Without a
 host formula renderer, a `$$...$$` HTML label renders its inner source as plain
 text and the successful scene reports
 `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. With a renderer,
-one complete formula label is measured before layout and drawn through the
-platform-neutral Compose contract. Renderer failures, mixed text/formula
-labels, and multiple formula blocks use the same visible plain-text fallback.
+each formula is measured before layout and drawn through the platform-neutral
+Compose contract. Ordinary text and multiple formulas retain the upstream flex
+item ordering. Renderer failures use a visible per-item plain-text fallback.
+Nested formulas inside user HTML and untranslated block formatting return
+structured unsupported results. See the [formula source map](upstream-formula-rendering-map.md)
+and [28-source audit](assets/mixed-formula-report/index.html).
 With `htmlLabels=false`, the original delimiters stay on the SVG text path.
 
 The following legal Mermaid capabilities currently return

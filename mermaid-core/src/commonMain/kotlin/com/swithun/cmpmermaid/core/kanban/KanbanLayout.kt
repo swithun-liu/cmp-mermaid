@@ -158,7 +158,7 @@ internal class KanbanLayout {
                 htmlLabel = true,
                 wrappingWidth = section.label.wrappingWidth,
                 zIndex = SECTION_Z_START + section.index * SECTION_Z_STRIDE + 1,
-            ).withFormula(section.label.metrics.formula)
+            ).withFormula(section.label.metrics.formula).withFormulaLayout(section.label.metrics.formulaLayout)
         }
 
         var itemIndex = 0
@@ -601,7 +601,7 @@ private fun KanbanTextVisual.toSceneText(
         htmlLabel = true,
         wrappingWidth = wrappingWidth,
         zIndex = zIndex,
-    ).withFormula(metrics.formula)
+    ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
 }
 
 private fun elementBounds(element: SceneElement): SceneRect? = when (element) {

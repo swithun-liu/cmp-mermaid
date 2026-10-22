@@ -594,7 +594,7 @@ internal class UsecaseLayout {
                 spans = measured.spans,
                 horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                 zIndex = 7,
-            ).withFormula(measured.formula)
+            ).withFormula(measured.formula).withFormulaLayout(measured.formulaLayout)
         }
         return GMResult.Ok(Unit)
     }
@@ -904,6 +904,7 @@ internal class UsecaseLayout {
                 spans = rendered.spans,
                 size = SceneSize(metrics.width, metrics.height),
                 formula = metrics.formula,
+                formulaLayout = metrics.formulaLayout,
             ),
         )
     }
@@ -1018,7 +1019,7 @@ internal class UsecaseLayout {
             spans = styledSpans(visual.measured.text, visual.measured.spans, style),
             horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
             zIndex = zIndex,
-        ).withFormula(visual.measured.formula)
+        ).withFormula(visual.measured.formula).withFormulaLayout(visual.measured.formulaLayout)
     }
 
     private fun styledSpans(

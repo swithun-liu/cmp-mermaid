@@ -18,6 +18,7 @@ const mermaidPackage = JSON.parse(
 );
 
 export const formulaMetricsTheme = 'redux-color';
+export const formulaMetricsMathFont = 'CMP Mermaid Audit Math (Noto Sans Math)';
 
 export const formulaMetricCases = Object.freeze([
   {
@@ -66,6 +67,19 @@ export async function captureOfficialFormulaMetrics() {
     await page.setContent(
       '<!doctype html><html><body><div id="container"></div></body></html>',
     );
+    // A system's generic MathML font is not a reproducible fixture input.
+    // Bind the existing public font resource only in this reference harness.
+    const fontBytes = fs.readFileSync(path.resolve(
+      directory,
+      '../../mermaid-compose/src/commonMain/composeResources/font/noto_sans_math_regular.ttf',
+    ));
+    await page.evaluate(async ({ family, data }) => {
+      const font = new FontFace(family, `url(data:font/ttf;base64,${data})`);
+      document.fonts.add(await font.load());
+      const style = document.createElement('style');
+      style.textContent = `math { font-family: "${family}" !important; }`;
+      document.head.appendChild(style);
+    }, { family: formulaMetricsMathFont, data: fontBytes.toString('base64') });
     await page.addScriptTag({ path: mermaidBundle });
     await page.evaluate((theme) => {
       globalThis.mermaid.initialize({
@@ -133,6 +147,7 @@ export async function captureOfficialFormulaMetrics() {
       mermaidVersion: mermaidBaseline.version,
       mermaidSourceCommit: mermaidBaseline.sourceCommit,
       theme: formulaMetricsTheme,
+      mathFont: formulaMetricsMathFont,
       deviceScaleFactor: 1,
       cases,
     };

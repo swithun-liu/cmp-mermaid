@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import {
   captureOfficialFormulaMetrics,
   formulaMetricCases,
+  formulaMetricsMathFont,
   formulaMetricsTheme,
 } from './formula-metrics.mjs';
 import { mermaidBaseline } from './diagram-inventory.mjs';
@@ -26,6 +27,7 @@ test('formula fixture is source-bound to Mermaid 12.0.0', () => {
   assert.equal(fixture.mermaidVersion, mermaidBaseline.version);
   assert.equal(fixture.mermaidSourceCommit, mermaidBaseline.sourceCommit);
   assert.equal(fixture.theme, formulaMetricsTheme);
+  assert.equal(fixture.mathFont, formulaMetricsMathFont);
   assert.deepEqual(
     fixture.cases.map(({ id }) => id),
     formulaMetricCases.map(({ id }) => id),
@@ -39,6 +41,7 @@ test('formula fixture is source-bound to Mermaid 12.0.0', () => {
 test('live Mermaid formula boxes match the locked fixture', async () => {
   const actual = await captureOfficialFormulaMetrics();
   assert.equal(actual.cases.length, fixture.cases.length);
+  assert.equal(actual.mathFont, fixture.mathFont);
 
   for (const [index, expectedCase] of fixture.cases.entries()) {
     const actualCase = actual.cases[index];

@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-22T12:38:53.085Z",
+  "officialGeneratedAt": "2026-10-22T12:17:04.490Z",
+  "nativeGeneratedAt": "2026-10-22T12:37:49.491854Z",
+  "mermaidVersion": "12.0.0",
+  "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
+  "familyCount": 9,
+  "caseCount": 28,
+  "screenshotCount": 56,
+  "formulaFixtureImageCount": 36,
+  "contactSheets": [
+    "contact-sheet-1.png",
+    "contact-sheet-2.png",
+    "contact-sheet-3.png",
+    "contact-sheet-4.png"
+  ],
+  "counts": {
+    "pass": 16,
+    "review": 12,
+    "fail": 0
+  },
+  "boundary": "Native uses official intrinsic formula metrics/pixels through the optional provider. This tests shared label composition and Canvas placement, not native KaTeX parsing or full-family stability.",
+  "records": [
+    {
+      "id": "flow-single",
+      "source": "flowchart LR\nA[\"$$x^2$$\"]",
+      "sourceSha256": "b27670ceecf782ba4eb5189d00f42c06adcf953bc9c5b8fb4df5e63d09cfa199",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-single-native.png",
+          "sha256": "611e7c233892409e787be061d07450b880d84e9d0fc464d6c1a45c11f56edf40"
+        },
+        {
+          "side": "official",
+          "file": "flow-single-official.png",
+          "sha256": "a1c64d5f055c9955831677642753dee8f343a51a8ffc9900e4a3cf4b4a91efdb"
+        }
+      ]
+    },
+    {
+      "id": "flow-text",
+      "source": "flowchart LR\nA[\"energy $$E=mc^2$$ joules\"]",
+      "sourceSha256": "ecbf7dc555de4e80cfd519da73a8b88fcfa11fdcc1e994b51c6c14de39df74e6",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-text-native.png",
+          "sha256": "9438f34ccb1e154c623edabf531c73ce142e1ee6d079540a9a8eaad83c60a3c6"
+        },
+        {
+          "side": "official",
+          "file": "flow-text-official.png",
+          "sha256": "602cfa71e3e9a2aa2b92b81347f6b324e29634c8f0da7fad9b091843cef7ba0e"
+        }
+      ]
+    },
+    {
+      "id": "flow-multiple",
+      "source": "flowchart LR\nA[\"$$a^2$$ + $$b^2$$ = c\"]",
+      "sourceSha256": "8b1be1e5c4df73a96b54d73bfe7083ad80fdc7210f6aa28c1c6664fea318943a",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-multiple-native.png",
+          "sha256": "db8853fc8afb6a092d8684b8ecbf893b8fab9fe344ed84684a3b4d533a0e87ac"
+        },
+        {
+          "side": "official",
+          "file": "flow-multiple-official.png",
+          "sha256": "56b98ab7cb67b4bfcad8913f9167bb53a8b577bac01670c893f09a4e6bbf83e5"
+        }
+      ]
+    },
+    {
+      "id": "flow-fraction",
+      "source": "flowchart LR\nA[\"left $$\\frac{a}{b}$$ right $$x$$ end\"]",
+      "sourceSha256": "bca26a623f825f881574ed84d50af574d02a0663c456087af5a86ba1bc5e1067",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-fraction-native.png",
+          "sha256": "44c39273641c890dc71a4b52a33763cf97190a1f9e5486b9d42a8bd699c896e9"
+        },
+        {
+          "side": "official",
+          "file": "flow-fraction-official.png",
+          "sha256": "080921e6ea9b2003620445b9a1c4e52ee3cad0bd3f975baf34c8c6e7ab328248"
+        }
+      ]
+    },
+    {
+      "id": "flow-br",
+      "source": "flowchart LR\nA[\"energy<br/>$$E=mc^2$$\"]",
+      "sourceSha256": "902390a58b9c6b4dcfd35c22cf2498ad0f504025fba3e3d0f73507803f77eaa8",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-br-native.png",
+          "sha256": "48e28b502d1f8d3294f3ea2d9152c0182f56d00ce7e02dc6218b9a7ffa1ac374"
+        },
+        {
+          "side": "official",
+          "file": "flow-br-official.png",
+          "sha256": "b4a958e27fc8cf38d78fc52fe00efd8506498e1a61399b198742f02f2d295c50"
+        }
+      ]
+    },
+    {
+      "id": "flow-newline",
+      "source": "flowchart LR\nA[\"energy\n$$E=mc^2$$\"]",
+      "sourceSha256": "fc37171998ef9c2d4ca092c18af1d1fc6b8f9a62ff2bc9ea0714192b4fe8d898",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-newline-native.png",
+          "sha256": "48e28b502d1f8d3294f3ea2d9152c0182f56d00ce7e02dc6218b9a7ffa1ac374"
+        },
+        {
+          "side": "official",
+          "file": "flow-newline-official.png",
+          "sha256": "b4a958e27fc8cf38d78fc52fe00efd8506498e1a61399b198742f02f2d295c50"
+        }
+      ]
+    },
+    {
+      "id": "flow-formula-br",
+      "source": "flowchart LR\nA[\"$$x$$<br/>$$y$$\"]",
+      "sourceSha256": "3112b0e08467c0ac92ce8aaa591b6009dc2016b1ecc9cd74ce6fd01397c52392",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-formula-br-native.png",
+          "sha256": "d92e9d6eb97388010cb42a1ce18a80a68068d601557822f611a6df0c191740d5"
+        },
+        {
+          "side": "official",
+          "file": "flow-formula-br-official.png",
+          "sha256": "5fbc8b1478cbd7b685b84addd766c2e4b28dbaa46d8b580fec1b6956070931f7"
+        }
+      ]
+    },
+    {
+      "id": "flow-repeated",
+      "source": "flowchart LR\nA[\"$$x$$ + $$x$$\"]",
+      "sourceSha256": "83dd7c364e606d2776b31818991f9e773435ccffb9599fb493325f3f5146c81c",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-repeated-native.png",
+          "sha256": "ce2884cee543e16e393377cc44237e405870c33e680bce17cf65720e3756acab"
+        },
+        {
+          "side": "official",
+          "file": "flow-repeated-official.png",
+          "sha256": "bd6e304a9b7ec88c5965edd02fc77873a9faa3ea49175a6d813a7cda2513dfe5"
+        }
+      ]
+    },
+    {
+      "id": "flow-spaces",
+      "source": "flowchart LR\nA[\"  A   $$x$$   B  \"]",
+      "sourceSha256": "e3a87c6e49ad421cdf27345b29a1da474e2a493ce977d455ad87656eb672ad40",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-spaces-native.png",
+          "sha256": "9dd90fb08237ba9076b08b7f4dc0fc8fac1a5a4ef69f0f5a1cb6a3d1228d87ce"
+        },
+        {
+          "side": "official",
+          "file": "flow-spaces-official.png",
+          "sha256": "c46637829f18f24b300aeea509014acefc887850d638c85180ffa3c59762562b"
+        }
+      ]
+    },
+    {
+      "id": "flow-entities",
+      "source": "flowchart LR\nA[\"A&nbsp; $$x$$ &amp; B\"]",
+      "sourceSha256": "8f3991965d223c54f3bdb1a262f7175856ce8a5dfe31457db605c9bc6664bb17",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-entities-native.png",
+          "sha256": "2bfabb4892e53bff4ced4d07c9ffe5b26d2f2154dda3aebfdbed1bcc37f76fac"
+        },
+        {
+          "side": "official",
+          "file": "flow-entities-official.png",
+          "sha256": "f536098f6c1202d93082e5e4c2cf70c9b765526e1c9ba3b9482c0fe3434eaba4"
+        }
+      ]
+    },
+    {
+      "id": "flow-html",
+      "source": "flowchart LR\nA[\"<b>energy</b> $$E=mc^2$$ <i>joules</i>\"]",
+      "sourceSha256": "4f34180713269919430969894873cee33744a54461b16973aebd3007771e73be",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-html-native.png",
+          "sha256": "dc8e1532d3dd0fb91457cba354529aaebcbf4f93b8cfcb63fa8d32fedd486ef9"
+        },
+        {
+          "side": "official",
+          "file": "flow-html-official.png",
+          "sha256": "3f05863e402233df03301cb169bbd6bb19ed9fcb7eb2ec203939cbf7e1860f90"
+        }
+      ]
+    },
+    {
+      "id": "flow-neutral-html",
+      "source": "flowchart LR\nA[\"before<span> left <b>middle</b> right </span>after $$x$$\"]",
+      "sourceSha256": "a9dc49cd2376874b9b250f45250905639ece5f825fce0dc43b39e5fd884e81a7",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-neutral-html-native.png",
+          "sha256": "dcb581e6a075e4b476ecae503e70a2d7e55851d6e000bc71b4944da56ca84de7"
+        },
+        {
+          "side": "official",
+          "file": "flow-neutral-html-official.png",
+          "sha256": "55409fee8a7d6a5a88023784c626b93a5cbe0bc24464018b3c9714806bc4ba86"
+        }
+      ]
+    },
+    {
+      "id": "flow-adjacent-html",
+      "source": "flowchart LR\nA[\"<span> a </span><span> b </span>$$x$$\"]",
+      "sourceSha256": "618360645ed9176ad2f327134815aa2dddc906e068de7ac65d3cee58a8edbb9a",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-adjacent-html-native.png",
+          "sha256": "44f61609f9c2fe57b6dbb09ec1995bc19e490cfb35346d8bb9e735dd4131f4b8"
+        },
+        {
+          "side": "official",
+          "file": "flow-adjacent-html-official.png",
+          "sha256": "1b7c939af73edf992e4f2d8a5e71ea25ded3f9a75a383f11de779f6ce7493ae4"
+        }
+      ]
+    },
+    {
+      "id": "flow-small-html",
+      "source": "flowchart LR\nA[\"<small>small</small> $$x$$ large\"]",
+      "sourceSha256": "8a25b628839b697184b6fb9d4de937169da47c20f41a010d82182d219046bf65",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-small-html-native.png",
+          "sha256": "50ec6a3682efd46a52d28e99830f3210f597c6e8395cb7afb2192c4c40e7dd9e"
+        },
+        {
+          "side": "official",
+          "file": "flow-small-html-official.png",
+          "sha256": "50365f018ed4fad96a965bb658df3b990f8e95728abf9559f5595f29420c52f2"
+        }
+      ]
+    },
+    {
+      "id": "flow-color-html",
+      "source": "flowchart LR\nA[\"<span>plain <i style='color:red'>red</i> plain</span> $$x$$\"]",
+      "sourceSha256": "01ad837d533b55a648e695bf86c2b730f4a02e3e10c23b36dbd99e08eba2310b",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-color-html-native.png",
+          "sha256": "3a77b5ec23a7b1194ee45f04f0c075ed7dc48adbca0c1b6c6b823595a1b179d7"
+        },
+        {
+          "side": "official",
+          "file": "flow-color-html-official.png",
+          "sha256": "6de64cc377e18c19ff5779dd8e908602c55d4516675ecfecdf26aef379cd758f"
+        }
+      ]
+    },
+    {
+      "id": "flow-tall",
+      "source": "flowchart LR\nA[\"sum $$\\sum_{i=1}^{n}\\frac{i}{i+1}$$ done\"]",
+      "sourceSha256": "d49ede6e97608864fa5de3f0ebd62f2ed6dd9d5e2993873cb7821ff58cc5e7be",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-tall-native.png",
+          "sha256": "e1cc5ea38f570428555b410fa34e57c0f88e2adf6aedbc22f9e1faad68b28477"
+        },
+        {
+          "side": "official",
+          "file": "flow-tall-official.png",
+          "sha256": "bfc74542fe0707ccd5eadf563a6b4a5d6404dd0ef644b8ca47811412edb9e4d2"
+        }
+      ]
+    },
+    {
+      "id": "flow-wide",
+      "source": "flowchart LR\nA[\"identity $$a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t$$ result\"]",
+      "sourceSha256": "2df224e1032d7adb1860292c3ebfe9f8e1ddaabee151d02e674661fa0ef1249f",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-wide-native.png",
+          "sha256": "c25b67222565f0209e8cc864ab20f970d61ffd6984701d7a9d6439cced8ea985"
+        },
+        {
+          "side": "official",
+          "file": "flow-wide-official.png",
+          "sha256": "d8246f14f7bfd98488b357cff220b95bff598e795a80a7ec0435f427c97df03c"
+        }
+      ]
+    },
+    {
+      "id": "flow-edge",
+      "source": "flowchart LR\nA -->|\"mass $$E=mc^2$$ units\"| B",
+      "sourceSha256": "7b08ed0480fe8281d0494c250414d32d617054d934696ec975a8e25d6c01fe77",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-edge-native.png",
+          "sha256": "b35bb20799d80d73fdd37cac537ec0d8bf865dcb17a69f4e422dfa89a0cbfde2"
+        },
+        {
+          "side": "official",
+          "file": "flow-edge-official.png",
+          "sha256": "5d317a168348fbf177dbfc7650d02c54503df8dde3cacbb266b018cc8fedc056"
+        }
+      ]
+    },
+    {
+      "id": "flow-rotation",
+      "source": "flowchart BT\nA[\"value $$x^2$$\"] --> B[\"$$x$$ + $$y$$\"]",
+      "sourceSha256": "b8a1c0f066549e462c9b61524bc40dbf744f869bcab2300240bb2943331cfc2e",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "flow-rotation-native.png",
+          "sha256": "4e546f52aa7dcbbc95febc7e0b1092f761fc4a40c1da65fb46edac9bf7ab3f42"
+        },
+        {
+          "side": "official",
+          "file": "flow-rotation-official.png",
+          "sha256": "bc3b8a211ddf41b644fa185a1214d48d79dde3c33607af240c021fe6bb82551a"
+        }
+      ]
+    },
+    {
+      "id": "state-edge",
+      "source": "stateDiagram-v2\nPending --> Approved : sum $$x^2$$ plus $$y^2$$",
+      "sourceSha256": "f6eb711e59242a59d056b315b7ba1f9a7f4802237e189e3911b766aeca7b814e",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "state-edge-native.png",
+          "sha256": "479f0513d943ecbe662815bad8f3ff2da89e0e0c91ad1c78489bf160954ca8fa"
+        },
+        {
+          "side": "official",
+          "file": "state-edge-official.png",
+          "sha256": "eb0d6a19c9a20c92c29db14952afa3c710e3f1095b693a1ddfe8a3bdab7daffc"
+        }
+      ]
+    },
+    {
+      "id": "class-title",
+      "source": "classDiagram\nclass A[\"value $$x^2$$\"]",
+      "sourceSha256": "1dcd9a2c0e7b00bcb3ae260b041e2230eb12e0e63ad44e121d7c82bd87985cb1",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "class-title-native.png",
+          "sha256": "85d04f6040715d3caf47bb9ea4d1ee393d73fe0690c3d1f82cb3045deaaab48c"
+        },
+        {
+          "side": "official",
+          "file": "class-title-official.png",
+          "sha256": "76051a42cee3a026dc5f3d9ec8accc416ee464a28190a759309e4794fe1034a2"
+        }
+      ]
+    },
+    {
+      "id": "er-title",
+      "source": "erDiagram\nA[\"value $$x^2$$\"] { string name }",
+      "sourceSha256": "1697c43a3940ab4003dcd4eaae9b2cdc4c31ed66076ea07026a41aa1af74b762",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "er-title-native.png",
+          "sha256": "6673be2e8b46081a098d8df74d0dbf231e7623274b49a2053985e9bd06e55734"
+        },
+        {
+          "side": "official",
+          "file": "er-title-official.png",
+          "sha256": "46293c9b7f33ca08d1df47dbe8fc10d22b37db8d2f30cbedcd3f759c99360bb3"
+        }
+      ]
+    },
+    {
+      "id": "er-relation",
+      "source": "erDiagram\nA ||--o{ B : \"value $$x^2$$\"",
+      "sourceSha256": "595a159c690ff8fe8d396a727f115384ef33307ad6a0742179fa02341e3422ae",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "er-relation-native.png",
+          "sha256": "d57120fbf87a02ac573bd724c499674b0065a9e087df4bf17505a14c4134d27e"
+        },
+        {
+          "side": "official",
+          "file": "er-relation-official.png",
+          "sha256": "7b78ac6f08654971f0a0019766fa0a4cc8284d8ce77b5f015ab2fe2f56332e15"
+        }
+      ]
+    },
+    {
+      "id": "block",
+      "source": "block-beta\nA[\"value $$x^2$$\"]",
+      "sourceSha256": "553b82be523a456341a6f508448b66f220615ed224a5c7c4b446ab2a3ab120fb",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "block-native.png",
+          "sha256": "c289e22543c24703ef79d6a4ef904783a69445543192d3cc7b1e1d51bb51d0e8"
+        },
+        {
+          "side": "official",
+          "file": "block-official.png",
+          "sha256": "862d9eb2c46fc951f3fad06503f8229dba9a8087f909af8dd3bc8b1553c86c9b"
+        }
+      ]
+    },
+    {
+      "id": "kanban",
+      "source": "kanban\ntodo[value $$x^2$$]\n  task[Review]",
+      "sourceSha256": "f13b8fdab0d3d136ac41f3188d1256e97ae39044a379ddac5447f6d2062a2edd",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "kanban-native.png",
+          "sha256": "84dc3c8caeb5afbb4f7529660e167b2e3eb18a6029d2ede18b76e6dbf9fe41b0"
+        },
+        {
+          "side": "official",
+          "file": "kanban-official.png",
+          "sha256": "75f12e000b07d1705b26388c592254ecb6be40fa90861d11def4421c41c3171c"
+        }
+      ]
+    },
+    {
+      "id": "mindmap",
+      "source": "mindmap\nroot[\"value $$x^2$$\"]",
+      "sourceSha256": "7df0b111b8b98d722cb1ea3128a74c38c43f8a8c6d56f45a6e785430860f7619",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "mindmap-native.png",
+          "sha256": "06e83302996eda6fb1fccff82a5ef04f8e04f437181c7b0c4b42712af3c5b16c"
+        },
+        {
+          "side": "official",
+          "file": "mindmap-official.png",
+          "sha256": "808f987bff85a483bc15c97159e2831a094f88921b01d35b8ec45a5f20447ad9"
+        }
+      ]
+    },
+    {
+      "id": "usecase",
+      "source": "usecase-beta\nA -- \"`value $$x^2$$`\" --> B",
+      "sourceSha256": "17e0090a9f34b597b70434c25ba69736743641a8f2796375303e94a74f22d040",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "usecase-native.png",
+          "sha256": "f23032be90aa1aeffa57e032f68656a64bf2712cdffdd868ecbd5d42079ac171"
+        },
+        {
+          "side": "official",
+          "file": "usecase-official.png",
+          "sha256": "d720106f49406d313bd532e45d530a8cbb594b8b7ff3779080e8d02b2f184e4e"
+        }
+      ]
+    },
+    {
+      "id": "requirement",
+      "source": "requirementDiagram\nrequirement formula_label {\nid: 1\ntext: \"value $$x^2$$ plus $$y$$\"\nrisk: low\nverifymethod: test\n}",
+      "sourceSha256": "3aa537cb8fc2eff0f2ff2c5cf7e3d4621da2dc34cb8d4c2b6d34144974105109",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "requirement-native.png",
+          "sha256": "2b771bb447e199aa09a4f93e66c64547e3af6ee39eb438aba781939f8d87c230"
+        },
+        {
+          "side": "official",
+          "file": "requirement-official.png",
+          "sha256": "f0c6eadfc14feb9c86e6bad9b8c516ec7654b6192bedfe2a536f0269b5ff06c7"
+        }
+      ]
+    }
+  ]
+}

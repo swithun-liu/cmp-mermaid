@@ -40,6 +40,7 @@ private data class MeasuredFlowText(
     val size: SceneSize,
     val softWrap: Boolean,
     val formula: MermaidFormulaMeasureRequest?,
+    val formulaLayout: com.swithun.cmpmermaid.core.MermaidFormulaLabelLayout?,
 )
 
 internal class FlowchartLayout {
@@ -74,7 +75,8 @@ internal class FlowchartLayout {
             val textMeasurement = measured.toMeasuredFlowText(
                 text = node.label,
                 formulaLayoutWidth = context.options.wrappingWidth.takeIf {
-                    measured.formula != null && context.options.htmlLabels
+                    (measured.formula != null || measured.formulaLayout != null) &&
+                        context.options.htmlLabels
                 },
             )
             val textSize = textMeasurement.size
@@ -374,7 +376,7 @@ internal class FlowchartLayout {
                     zIndex = index + 1,
                     softWrap = textMeasurement.softWrap,
                     htmlLabel = context.options.htmlLabels,
-                ).withFormula(textMeasurement.formula)
+                ).withFormula(textMeasurement.formula).withFormulaLayout(textMeasurement.formulaLayout)
             }
         return GMResult.Ok(Unit)
     }
@@ -486,7 +488,7 @@ internal class FlowchartLayout {
             zIndex = zIndex + 2,
             softWrap = textMeasurement.softWrap,
             htmlLabel = context.options.htmlLabels,
-        ).withFormula(textMeasurement.formula)
+        ).withFormula(textMeasurement.formula).withFormulaLayout(textMeasurement.formulaLayout)
     }
 
     private fun addEdges(
@@ -582,7 +584,7 @@ internal class FlowchartLayout {
                 zIndex = 7,
                 softWrap = textMeasurement.softWrap,
                 htmlLabel = context.options.htmlLabels,
-            ).withFormula(textMeasurement.formula)
+            ).withFormula(textMeasurement.formula).withFormulaLayout(textMeasurement.formulaLayout)
         }
         elements += when {
             context.options.layout == "elk" || context.options.layout.startsWith("elk.") ->
@@ -718,7 +720,7 @@ internal class FlowchartLayout {
                     horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                     softWrap = textMeasurement.softWrap,
                     htmlLabel = context.options.htmlLabels,
-                ).withFormula(textMeasurement.formula)
+                ).withFormula(textMeasurement.formula).withFormulaLayout(textMeasurement.formulaLayout)
             }
         }
     }
@@ -848,11 +850,12 @@ internal class FlowchartLayout {
             // Mermaid.js 12.0.0: createText.ts -> addHtmlSpan. A complete KaTeX node
             // label contains a block flex wrapper, so the HTML table box fills the
             // flowchart wrapping width while the intrinsic formula remains centered.
-            size = SceneSize(formulaLayoutWidth ?: width, height),
+            size = SceneSize(formulaLayoutWidth?.let { max(it, width) } ?: width, height),
             softWrap = lineCount?.let { measuredLines ->
                 measuredLines > explicitLineCount
             } ?: true,
             formula = formula,
+            formulaLayout = formulaLayout,
         )
     }
 

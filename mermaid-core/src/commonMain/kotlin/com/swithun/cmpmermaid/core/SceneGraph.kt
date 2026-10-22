@@ -253,8 +253,14 @@ class SceneText(
     var formula: MermaidFormulaMeasureRequest? = null
         private set
 
+    var formulaLayout: MermaidFormulaLabelLayout? = null
+        private set
+
     fun withFormula(formula: MermaidFormulaMeasureRequest?): SceneText =
         copy().also { result -> result.formula = formula }
+
+    fun withFormulaLayout(layout: MermaidFormulaLabelLayout?): SceneText =
+        copy().also { result -> result.formulaLayout = layout }
 
     operator fun component1(): String = text
     operator fun component2(): SceneRect = bounds
@@ -325,7 +331,10 @@ class SceneText(
         overflowEllipsis = overflowEllipsis,
         htmlLabel = htmlLabel,
         wrappingWidth = wrappingWidth,
-    ).also { result -> result.formula = formula }
+    ).also { result ->
+        result.formula = formula
+        result.formulaLayout = formulaLayout
+    }
 
     override fun equals(other: Any?): Boolean =
         this === other ||
@@ -353,7 +362,8 @@ class SceneText(
                     overflowEllipsis == other.overflowEllipsis &&
                     htmlLabel == other.htmlLabel &&
                     wrappingWidth == other.wrappingWidth &&
-                    formula == other.formula
+                    formula == other.formula &&
+                    formulaLayout == other.formulaLayout
                 )
 
     override fun hashCode(): Int = listOf(
@@ -380,6 +390,7 @@ class SceneText(
         htmlLabel,
         wrappingWidth,
         formula,
+        formulaLayout,
     ).hashCode()
 
     override fun toString(): String =
@@ -390,7 +401,7 @@ class SceneText(
             "softWrap=$softWrap, clipToBounds=$clipToBounds, horizontalScale=$horizontalScale, " +
             "outlineColor=$outlineColor, outlineWidth=$outlineWidth, maxLines=$maxLines, " +
             "overflowEllipsis=$overflowEllipsis, htmlLabel=$htmlLabel, " +
-            "wrappingWidth=$wrappingWidth, formula=$formula)"
+            "wrappingWidth=$wrappingWidth, formula=$formula, formulaLayout=$formulaLayout)"
 }
 
 enum class MermaidFormulaDisplayMode {
@@ -420,6 +431,30 @@ data class MermaidFormulaMetrics(
     val baseline: Float,
 )
 
+/**
+ * Mermaid.js 12.0.0: common.ts -> renderKatexUnsanitized flex wrapper.
+ * Intrinsic flex item boxes, relative to the complete label's content box.
+ * A null formula denotes an ordinary (including failed-formula fallback) text item.
+ */
+data class MermaidFormulaLabelItem(
+    val text: String,
+    val spans: List<SceneTextSpan>,
+    val bounds: SceneRect,
+    val formula: MermaidFormulaMeasureRequest? = null,
+    val fontSizeScale: Float = 1f,
+)
+
+data class MermaidFormulaLabelLayout(
+    val width: Float,
+    val height: Float,
+    val items: List<MermaidFormulaLabelItem>,
+)
+
+/** A sanitized direct HTML child of Mermaid's formula flex container. */
+data class SceneHtmlFlexItem(
+    val fontSizeScale: Float,
+)
+
 class SceneTextSpan(
     val start: Int,
     val end: Int,
@@ -436,8 +471,14 @@ class SceneTextSpan(
     var formula: MermaidFormulaSource? = null
         private set
 
+    var htmlFlexItem: SceneHtmlFlexItem? = null
+        private set
+
     fun withFormula(formula: MermaidFormulaSource?): SceneTextSpan =
         copy().also { result -> result.formula = formula }
+
+    fun withHtmlFlexItem(item: SceneHtmlFlexItem): SceneTextSpan =
+        copy().also { result -> result.htmlFlexItem = item }
 
     operator fun component1(): Int = start
     operator fun component2(): Int = end
@@ -475,7 +516,10 @@ class SceneTextSpan(
         fontFamily = fontFamily,
         baselineShift = baselineShift,
         fontSizeScale = fontSizeScale,
-    ).also { result -> result.formula = formula }
+    ).also { result ->
+        result.formula = formula
+        result.htmlFlexItem = htmlFlexItem
+    }
 
     override fun equals(other: Any?): Boolean =
         this === other ||
@@ -492,7 +536,8 @@ class SceneTextSpan(
                     fontFamily == other.fontFamily &&
                     baselineShift == other.baselineShift &&
                     fontSizeScale.compareTo(other.fontSizeScale) == 0 &&
-                    formula == other.formula
+                    formula == other.formula &&
+                    htmlFlexItem == other.htmlFlexItem
                 )
 
     override fun hashCode(): Int = listOf(
@@ -508,13 +553,14 @@ class SceneTextSpan(
         baselineShift,
         fontSizeScale,
         formula,
+        htmlFlexItem,
     ).hashCode()
 
     override fun toString(): String =
         "SceneTextSpan(start=$start, end=$end, weight=$weight, italic=$italic, " +
             "underline=$underline, lineThrough=$lineThrough, color=$color, " +
             "background=$background, fontFamily=$fontFamily, baselineShift=$baselineShift, " +
-            "fontSizeScale=$fontSizeScale, formula=$formula)"
+            "fontSizeScale=$fontSizeScale, formula=$formula, htmlFlexItem=$htmlFlexItem)"
 }
 
 enum class SceneTextWeight {
@@ -726,8 +772,14 @@ class TextMetrics(
     var formula: MermaidFormulaMeasureRequest? = null
         private set
 
+    var formulaLayout: MermaidFormulaLabelLayout? = null
+        private set
+
     fun withFormula(formula: MermaidFormulaMeasureRequest?): TextMetrics =
         copy().also { result -> result.formula = formula }
+
+    fun withFormulaLayout(layout: MermaidFormulaLabelLayout?): TextMetrics =
+        copy().also { result -> result.formulaLayout = layout }
 
     operator fun component1(): Float = width
     operator fun component2(): Float = height
@@ -741,7 +793,10 @@ class TextMetrics(
         width = width,
         height = height,
         lineCount = lineCount,
-    ).also { result -> result.formula = formula }
+    ).also { result ->
+        result.formula = formula
+        result.formulaLayout = formulaLayout
+    }
 
     override fun equals(other: Any?): Boolean =
         this === other ||
@@ -750,7 +805,8 @@ class TextMetrics(
                     width.compareTo(other.width) == 0 &&
                     height.compareTo(other.height) == 0 &&
                     lineCount == other.lineCount &&
-                    formula == other.formula
+                    formula == other.formula &&
+                    formulaLayout == other.formulaLayout
                 )
 
     override fun hashCode(): Int = listOf(
@@ -758,10 +814,12 @@ class TextMetrics(
         height,
         lineCount,
         formula,
+        formulaLayout,
     ).hashCode()
 
     override fun toString(): String =
-        "TextMetrics(width=$width, height=$height, lineCount=$lineCount, formula=$formula)"
+        "TextMetrics(width=$width, height=$height, lineCount=$lineCount, " +
+            "formula=$formula, formulaLayout=$formulaLayout)"
 }
 
 fun interface TextMetricProvider {

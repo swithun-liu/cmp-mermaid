@@ -235,16 +235,16 @@ The current publication coordinates are:
 
 | Consumer | Artifact |
 | --- | --- |
-| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.13` |
-| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.13` |
-| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.13` |
-| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.13` |
-| iOS binary | `CMPMermaid` CocoaPod `0.1.13` |
+| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.15` |
+| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.15` |
+| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.15` |
+| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.15` |
+| iOS binary | `CMPMermaid` CocoaPod `0.1.15` |
 
 Current Kotlin Multiplatform projects:
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.13")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.15")
 }
 ```
 
@@ -258,7 +258,7 @@ Android projects pinned to Kotlin `1.7.21` use the isolated Android artifact:
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.13",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.15",
     )
 }
 ```
@@ -288,7 +288,7 @@ Kotlin `1.7.21` Android artifact.
 iOS projects can consume the precompiled static XCFramework through CocoaPods:
 
 ```ruby
-pod 'CMPMermaid', '0.1.13'
+pod 'CMPMermaid', '0.1.15'
 ```
 
 The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`
@@ -440,10 +440,14 @@ The adapter contract is:
 The explicitly supplied host renderer takes precedence over any future built-in
 renderer. `MermaidFormulaRenderingMode.PlainText` bypasses all renderers. A
 selected renderer failure falls back directly to the visible formula source;
-it does not switch implementations or fail the complete diagram. The current
-provider path supports only a label consisting of one complete `$$...$$`
-block. Mixed text/formula labels, multiple formula blocks, and Sequence formula
-layout remain documented non-Stable boundaries.
+it does not switch implementations or fail the complete diagram. The shared
+HTML-label path supports ordinary text around `$$...$$` and multiple formula
+blocks, following Mermaid 12.0.0's per-match replacement and CSS flex layout.
+Direct HTML inline elements retain their formatting. Formula children nested
+inside user HTML, block formatting with margins, Sequence, ZenUML, and Event
+Modeling formula stages remain documented unsupported boundaries. Formula
+support remains non-Stable; the [28-source composition audit](docs/assets/mixed-formula-report/index.html)
+records current Native/Official findings separately from the main visual corpus.
 
 The error callback receives `MermaidRenderErrorInfo`, including the original
 source passed to the renderer.

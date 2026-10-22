@@ -185,7 +185,7 @@ internal class MindmapLayout {
                 horizontalAlignment = SceneTextAlignment.Center,
                 softWrap = true,
                 zIndex = 20,
-            ).withFormula(visual.textMetrics.formula)
+            ).withFormula(visual.textMetrics.formula).withFormulaLayout(visual.textMetrics.formulaLayout)
         }
 
         return GMResult.Ok(normalize(elements, document, context))

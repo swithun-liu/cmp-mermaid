@@ -3,14 +3,15 @@
   "mermaidVersion": "12.0.0",
   "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
   "theme": "redux-color",
+  "mathFont": "CMP Mermaid Audit Math (Noto Sans Math)",
   "deviceScaleFactor": 1,
   "cases": [
     {
       "id": "flowchart-fraction",
       "source": "flowchart LR\n  A[\"$$\\frac{a+b}{c+d}$$\"] --> B[Done]",
       "content": {
-        "width": 31.171875,
-        "height": 24.5625,
+        "width": 32.296875,
+        "height": 30.015625,
         "fontSize": 14,
         "lineHeight": null,
         "maxWidth": null,
@@ -20,7 +21,7 @@
       },
       "layout": {
         "width": 120,
-        "height": 24.5625,
+        "height": 30.015625,
         "fontSize": 14,
         "lineHeight": 21,
         "maxWidth": 120,
@@ -33,8 +34,8 @@
       "id": "state-transition",
       "source": "stateDiagram-v2\n  Pending --> Approved : $$\\sum_{i=1}^{n} i$$",
       "content": {
-        "width": 27.34375,
-        "height": 24.171875,
+        "width": 24.515625,
+        "height": 35.484375,
         "fontSize": 14,
         "lineHeight": null,
         "maxWidth": null,
@@ -43,8 +44,8 @@
         "display": "block math"
       },
       "layout": {
-        "width": 27.34375,
-        "height": 24.171875,
+        "width": 24.515625,
+        "height": 35.484375,
         "fontSize": 14,
         "lineHeight": 21,
         "maxWidth": 200,
@@ -57,8 +58,8 @@
       "id": "kanban-section",
       "source": "kanban\n  todo[$$x^2$$]\n    task[Review]",
       "content": {
-        "width": 14.796875,
-        "height": 12.953125,
+        "width": 12.640625,
+        "height": 11.53125,
         "fontSize": 14,
         "lineHeight": null,
         "maxWidth": null,
@@ -67,8 +68,8 @@
         "display": "block math"
       },
       "layout": {
-        "width": 14.796875,
-        "height": 12.953125,
+        "width": 12.640625,
+        "height": 11.53125,
         "fontSize": 14,
         "lineHeight": 21,
         "maxWidth": 200,
@@ -81,8 +82,8 @@
       "id": "usecase-relation",
       "source": "usecase-beta\n  A -- \"`$$E = mc^2$$`\" --> B\n",
       "content": {
-        "width": 35.322495,
-        "height": 9.389126,
+        "width": 33.515625,
+        "height": 8.328125,
         "fontSize": 10,
         "lineHeight": null,
         "maxWidth": null,
@@ -91,8 +92,8 @@
         "display": "block math"
       },
       "layout": {
-        "width": 39.321854,
-        "height": 9.389126,
+        "width": 37.515625,
+        "height": 8.328125,
         "fontSize": 10,
         "lineHeight": 15,
         "maxWidth": 200,
@@ -105,8 +106,8 @@
       "id": "long-formula",
       "source": "flowchart TD\n  A[\"$$\\sum_{k=1}^{50}\\frac{k^2+2k+1}{k+1}$$\"] --> B[Bounded]",
       "content": {
-        "width": 92.21875,
-        "height": 28.921875,
+        "width": 88.625,
+        "height": 37.453125,
         "fontSize": 14,
         "lineHeight": null,
         "maxWidth": null,
@@ -116,7 +117,7 @@
       },
       "layout": {
         "width": 120,
-        "height": 28.921875,
+        "height": 37.453125,
         "fontSize": 14,
         "lineHeight": 21,
         "maxWidth": 120,

@@ -364,6 +364,7 @@ internal class StateLayout {
                 spans = rendered.spans,
                 size = SceneSize(metrics.width, metrics.height),
                 formula = metrics.formula,
+                formulaLayout = metrics.formulaLayout,
             ),
         )
     }
@@ -420,7 +421,7 @@ internal class StateLayout {
         )
         // CSS foreignObject labels retain the complete line box; Compose trims
         // leading from TextLayoutResult.size, so restore it from the measured line count.
-        if (measured.formula != null) {
+        if (measured.formula != null || measured.formulaLayout != null) {
             return measured
         }
         return measured.lineCount?.let { lineCount ->
@@ -771,7 +772,7 @@ internal class StateLayout {
                 // plain-text adaptation unchanged, but do not apply it to the measured
                 // KaTeX box.
                 val labelPadding = EDGE_LABEL_PADDING.takeUnless {
-                    visual.formula != null
+                    visual.formula != null || visual.formulaLayout != null
                 } ?: 0f
                 val labelAnchor = MermaidEdgePathPort.positionEdgeLabel(
                     layoutAnchor = route.labelAnchor,
@@ -804,7 +805,7 @@ internal class StateLayout {
                     weight = SceneTextWeight.Normal,
                     spans = visual.spans,
                     zIndex = 7,
-                ).withFormula(visual.formula)
+                ).withFormula(visual.formula).withFormulaLayout(visual.formulaLayout)
             }
         }
         return GMResult.Ok(Unit)
@@ -980,7 +981,7 @@ internal class StateLayout {
         spans = spans,
         horizontalAlignment = alignment,
         zIndex = zIndex,
-    ).withFormula(metrics.formula)
+    ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
 
     private fun StateTextVisual.withMinWidth(minWidth: Float): StateTextVisual =
         copy(
@@ -1079,6 +1080,7 @@ internal class StateLayout {
         val spans: List<SceneTextSpan>,
         val size: SceneSize,
         val formula: MermaidFormulaMeasureRequest?,
+        val formulaLayout: com.swithun.cmpmermaid.core.MermaidFormulaLabelLayout?,
     )
 
     private companion object {

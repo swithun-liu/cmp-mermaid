@@ -96,9 +96,25 @@ kotlin {
             implementation(kotlin("test"))
             implementation(libs.kotlinx.coroutines.test)
         }
+        jvmTest.dependencies {
+            implementation(compose.desktop.currentOs)
+            implementation(libs.kotlinx.serialization.json)
+        }
     }
 }
 
 compose.resources {
     packageOfResClass = "com.swithun.cmpmermaid.compose.generated.resources"
+}
+
+// Isolated reference tooling: no desktop or browser dependency enters production.
+tasks.register<JavaExec>("captureMixedFormulaAudit") {
+    dependsOn("jvmTestClasses")
+    val compilation = kotlin.targets.getByName("jvm").compilations.getByName("test")
+    classpath(compilation.output.allOutputs, compilation.runtimeDependencyFiles)
+    mainClass.set("com.swithun.cmpmermaid.compose.MixedFormulaAuditKt")
+    args(
+        providers.gradleProperty("formulaAuditDir")
+            .getOrElse(rootProject.file("build/mixed-formula-audit").absolutePath),
+    )
 }

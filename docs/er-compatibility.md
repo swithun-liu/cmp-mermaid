@@ -30,7 +30,7 @@ discarded or rendered as a different feature.
 | Direction | Supported | TB, BT, LR, and RL at root and nested subgraph levels |
 | Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default, including Mermaid's recursive subgraph `nodesep` and `ranksep + 25` propagation; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Shared Mermaid/Marked text path for entity aliases, attributes, relationship labels, and subgraph labels |
-| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` can measure and draw one complete `$$...$$` label; entity, attribute, relationship, and subgraph text retain the request through SceneGraph |
+| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` measures each `$$...$$` match; ordinary text and multiple formulas retain the shared flex composition through SceneGraph |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, `class`, inline `:::`, fill, stroke, dash, text, font, decoration, and line-height properties |
 | Themes | Supported | Mermaid 12 redux-color palette, alternating attribute rows, ER-specific edge-label backgrounds, cluster fill/border/title fallbacks, neo shadows, and shared native theme variables |
 | ER configuration | Supported | `diagramPadding`, `entityPadding`, `minEntityWidth`, `minEntityHeight`, `nodeSpacing`, `rankSpacing`, `titleTopMargin`, and shared `flowchart.subGraphTitleMargin` |
@@ -42,9 +42,11 @@ KaTeX parsing and MathML generation are not translated or bundled. Without a
 host formula renderer, a `$$...$$` HTML label renders its inner source as plain
 text and the successful scene reports
 `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. A supplied
-renderer can asynchronously measure and draw a label consisting of one complete
-formula block. Renderer failures, mixed text/formula labels, and multiple
-formula blocks retain the plain-text fallback.
+renderer can asynchronously measure and draw each formula in a mixed or
+multiple-formula label. Renderer failures retain a per-item plain-text fallback.
+Nested formulas inside user HTML and untranslated block formatting return
+structured unsupported results. The [shared-label audit](assets/mixed-formula-report/index.html)
+records current findings; full-family formula parity remains non-Stable.
 
 The following legal Mermaid capabilities return
 `MermaidError.UnsupportedFeature`:

@@ -366,6 +366,7 @@ internal class ErLayout {
                 spans = label.spans,
                 size = SceneSize(label.metrics.width, label.metrics.height),
                 formula = label.metrics.formula,
+                formulaLayout = label.metrics.formulaLayout,
             ),
         )
     }
@@ -678,7 +679,7 @@ internal class ErLayout {
                     weight = SceneTextWeight.Normal,
                     spans = visual.spans,
                     zIndex = 7,
-                ).withFormula(visual.formula)
+                ).withFormula(visual.formula).withFormulaLayout(visual.formulaLayout)
             }
         }
         return GMResult.Ok(Unit)
@@ -997,7 +998,7 @@ internal class ErLayout {
         horizontalAlignment = alignment,
         zIndex = zIndex,
         softWrap = softWrap,
-    ).withFormula(metrics.formula)
+    ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
 
     private fun decode(source: String): String =
         MermaidHtmlEntityDecoder.decode(MermaidPreprocessor.decodeEntities(source))
@@ -1106,6 +1107,7 @@ internal class ErLayout {
         val spans: List<SceneTextSpan>,
         val size: SceneSize,
         val formula: MermaidFormulaMeasureRequest?,
+        val formulaLayout: com.swithun.cmpmermaid.core.MermaidFormulaLabelLayout?,
     )
 
     private companion object {

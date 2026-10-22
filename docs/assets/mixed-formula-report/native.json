@@ -1,0 +1,2488 @@
+{
+    "schemaVersion": 1,
+    "generatedAt": "2026-10-22T12:37:49.491854Z",
+    "cases": [
+        {
+            "id": "flow-single",
+            "source": "flowchart LR\nA[\"$$x^2$$\"]",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 51.328125,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "x^2",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 11.328125
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 13.234375,
+                    "intrinsicHeight": 11.328125,
+                    "origin": [
+                        77.38281,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 35.328125
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-text",
+            "source": "flowchart LR\nA[\"energy $$E=mc^2$$ joules\"]",
+            "requests": [
+                {
+                    "source": "E=mc^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 176.6875,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "energy E=mc^2 joules",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 128.6875,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 128.6875,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        24.0,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "energy",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 42.8125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "E=mc^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 42.8125,
+                                "y": 4.7734375,
+                                "width": 49.28125,
+                                "height": 11.453125
+                            }
+                        },
+                        {
+                            "text": "joules",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 92.09375,
+                                "y": 0.0,
+                                "width": 36.59375,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 160.6875,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-multiple",
+            "source": "flowchart LR\nA[\"$$a^2$$ + $$b^2$$ = c\"]",
+            "requests": [
+                {
+                    "source": "a^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                },
+                {
+                    "source": "b^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "a^2 + b^2 = c",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 53.125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        57.4375,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "a^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 4.7890625,
+                                "width": 13.1875,
+                                "height": 11.421875
+                            }
+                        },
+                        {
+                            "text": "+",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 13.1875,
+                                "y": 0.0,
+                                "width": 8.1875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "b^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 21.375,
+                                "y": 3.9609375,
+                                "width": 12.671875,
+                                "height": 13.078125
+                            }
+                        },
+                        {
+                            "text": "= c",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 34.046875,
+                                "y": 0.0,
+                                "width": 19.078125,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-fraction",
+            "source": "flowchart LR\nA[\"left $$\\frac{a}{b}$$ right $$x$$ end\"]",
+            "requests": [
+                {
+                    "source": "\\frac{a}{b}",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                },
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 64.8125,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "left \\frac{a}{b} right x end",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 24.8125
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 86.890625,
+                    "intrinsicHeight": 24.8125,
+                    "origin": [
+                        40.554688,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "left",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 1.90625,
+                                "width": 18.6875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "\\frac{a}{b}",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 18.6875,
+                                "y": 0.0,
+                                "width": 9.78125,
+                                "height": 24.8125
+                            }
+                        },
+                        {
+                            "text": "right",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 28.46875,
+                                "y": 1.90625,
+                                "width": 27.234375,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 55.703125,
+                                "y": 9.1015625,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        },
+                        {
+                            "text": "end",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 63.53125,
+                                "y": 1.90625,
+                                "width": 23.359375,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 48.8125
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-br",
+            "source": "flowchart LR\nA[\"energy<br/>$$E=mc^2$$\"]",
+            "requests": [
+                {
+                    "source": "E=mc^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "energy\nE=mc^2",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 92.09375,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        37.953125,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "energy",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 42.8125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "E=mc^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 42.8125,
+                                "y": 4.7734375,
+                                "width": 49.28125,
+                                "height": 11.453125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-newline",
+            "source": "flowchart LR\nA[\"energy\n$$E=mc^2$$\"]",
+            "requests": [
+                {
+                    "source": "E=mc^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "energy\nE=mc^2",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 92.09375,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        37.953125,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "energy",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 42.8125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "E=mc^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 42.8125,
+                                "y": 4.7734375,
+                                "width": 49.28125,
+                                "height": 11.453125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-formula-br",
+            "source": "flowchart LR\nA[\"$$x$$<br/>$$y$$\"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                },
+                {
+                    "source": "y",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 49.890625,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "x\ny",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 9.890625
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 14.96875,
+                    "intrinsicHeight": 9.890625,
+                    "origin": [
+                        76.515625,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 1.640625,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        },
+                        {
+                            "text": "y",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 7.828125,
+                                "y": 0.0,
+                                "width": 7.140625,
+                                "height": 9.890625
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 33.890625
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-repeated",
+            "source": "flowchart LR\nA[\"$$x$$ + $$x$$\"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "x + x",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 23.84375,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        72.078125,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        },
+                        {
+                            "text": "+",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 7.828125,
+                                "y": 0.0,
+                                "width": 8.1875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 16.015625,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-spaces",
+            "source": "flowchart LR\nA[\"  A   $$x$$   B  \"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "A   x   B",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 26.515625,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        70.74219,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "A",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 9.34375,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 9.34375,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        },
+                        {
+                            "text": "B",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 17.171875,
+                                "y": 0.0,
+                                "width": 9.34375,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-entities",
+            "source": "flowchart LR\nA[\"A&nbsp; $$x$$ &amp; B\"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "A  x & B",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 43.640625,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        62.179688,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "A ",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 13.234375,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 13.234375,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        },
+                        {
+                            "text": "& B",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 21.0625,
+                                "y": 0.0,
+                                "width": 22.578125,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-html",
+            "source": "flowchart LR\nA[\"<b>energy</b> $$E=mc^2$$ <i>joules</i>\"]",
+            "requests": [
+                {
+                    "source": "E=mc^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 179.79688,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "energy E=mc^2 joules",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 131.79688,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 131.79688,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        24.0,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "energy",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 45.921875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "E=mc^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 45.921875,
+                                "y": 4.7734375,
+                                "width": 49.28125,
+                                "height": 11.453125
+                            }
+                        },
+                        {
+                            "text": "joules",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 95.203125,
+                                "y": 0.0,
+                                "width": 36.59375,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 163.79688,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-neutral-html",
+            "source": "flowchart LR\nA[\"before<span> left <b>middle</b> right </span>after $$x$$\"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 222.35938,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "before left middle right after x",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 174.35938,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 174.35938,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        24.0,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "before",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 39.703125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "left middle right",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 39.703125,
+                                "y": 0.0,
+                                "width": 98.8125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "after",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 138.51562,
+                                "y": 0.0,
+                                "width": 28.015625,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 166.53125,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 206.35938,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-adjacent-html",
+            "source": "flowchart LR\nA[\"<span> a </span><span> b </span>$$x$$\"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": " a  b x",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 23.421875,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        72.28906,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "a",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 7.796875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "b",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 7.796875,
+                                "y": 0.0,
+                                "width": 7.796875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 15.59375,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-small-html",
+            "source": "flowchart LR\nA[\"<small>small</small> $$x$$ large\"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "small x large",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 66.203125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        50.898438,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "small",
+                            "kind": "text",
+                            "fontSizeScale": 0.8333333,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 1.75,
+                                "width": 27.234375,
+                                "height": 17.5
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 27.234375,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        },
+                        {
+                            "text": "large",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 35.0625,
+                                "y": 0.0,
+                                "width": 31.140625,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-color-html",
+            "source": "flowchart LR\nA[\"<span>plain <i style='color:red'>red</i> plain</span> $$x$$\"]",
+            "requests": [
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "plain red plain x",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 95.0,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        36.5,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "plain red plain",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 87.171875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 87.171875,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-tall",
+            "source": "flowchart LR\nA[\"sum $$\\sum_{i=1}^{n}\\frac{i}{i+1}$$ done\"]",
+            "requests": [
+                {
+                    "source": "\\sum_{i=1}^{n}\\frac{i}{i+1}",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 76.84375,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "sum \\sum_{i=1}^{n}\\frac{i}{i+1} done",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 36.84375
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 111.5,
+                    "intrinsicHeight": 36.84375,
+                    "origin": [
+                        28.25,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "sum",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 7.921875,
+                                "width": 26.453125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "\\sum_{i=1}^{n}\\frac{i}{i+1}",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 26.453125,
+                                "y": 0.0,
+                                "width": 53.890625,
+                                "height": 36.84375
+                            }
+                        },
+                        {
+                            "text": "done",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 80.34375,
+                                "y": 7.921875,
+                                "width": 31.15625,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 60.84375
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-wide",
+            "source": "flowchart LR\nA[\"identity $$a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t$$ result\"]",
+            "requests": [
+                {
+                    "source": "a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 574.90625,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "identity a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t result",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 526.90625,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 526.90625,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        24.0,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "identity",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 44.359375,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 44.359375,
+                                "y": 3.875,
+                                "width": 448.3125,
+                                "height": 13.25
+                            }
+                        },
+                        {
+                            "text": "result",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 492.67188,
+                                "y": 0.0,
+                                "width": 34.234375,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 558.90625,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "flow-edge",
+            "source": "flowchart LR\nA -->|\"mass $$E=mc^2$$ units\"| B",
+            "requests": [
+                {
+                    "source": "E=mc^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 180.0
+                }
+            ],
+            "sceneWidth": 482.3125,
+            "sceneHeight": 61.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "mass E=mc^2 units",
+                    "bounds": {
+                        "x": 183.0,
+                        "y": 18.0,
+                        "width": 116.3125,
+                        "height": 25.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 112.3125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        185.0,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "mass",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 33.453125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "E=mc^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 33.453125,
+                                "y": 4.7734375,
+                                "width": 49.28125,
+                                "height": 11.453125
+                            }
+                        },
+                        {
+                            "text": "units",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 82.734375,
+                                "y": 0.0,
+                                "width": 29.578125,
+                                "height": 21.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "L_A_B_0_label_background",
+                    "bounds": {
+                        "x": 183.0,
+                        "y": 18.0,
+                        "width": 116.3125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 322.3125,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            160.0,
+                            30.5
+                        ],
+                        [
+                            241.15625,
+                            30.5
+                        ],
+                        [
+                            322.3125,
+                            30.5
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "flow-rotation",
+            "source": "flowchart BT\nA[\"value $$x^2$$\"] --> B[\"$$x$$ + $$y$$\"]",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                },
+                {
+                    "source": "x",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                },
+                {
+                    "source": "y",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 168.0,
+            "sceneHeight": 156.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 115.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 46.703125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        60.648438,
+                        115.0
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 33.46875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 33.46875,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                },
+                {
+                    "text": "x + y",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 23.15625,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        72.421875,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "x",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 7.1953125,
+                                "width": 7.828125,
+                                "height": 6.609375
+                            }
+                        },
+                        {
+                            "text": "+",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 7.828125,
+                                "y": 0.0,
+                                "width": 8.1875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "y",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 16.015625,
+                                "y": 5.5546875,
+                                "width": 7.140625,
+                                "height": 9.890625
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            84.0,
+                            103.0
+                        ],
+                        [
+                            84.0,
+                            78.0
+                        ],
+                        [
+                            84.0,
+                            53.0
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "state-edge",
+            "source": "stateDiagram-v2\nPending --> Approved : sum $$x^2$$ plus $$y^2$$",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 200.0
+                },
+                {
+                    "source": "y^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 200.0
+                }
+            ],
+            "sceneWidth": 152.0,
+            "sceneHeight": 161.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "sum x^2 plus y^2",
+                    "bounds": {
+                        "x": 37.039062,
+                        "y": 70.0,
+                        "width": 77.921875,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 77.921875,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        37.039062,
+                        70.0
+                    ],
+                    "items": [
+                        {
+                            "text": "sum",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 26.453125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 26.453125,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        },
+                        {
+                            "text": "plus",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 39.6875,
+                                "y": 0.0,
+                                "width": 25.6875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "y^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 65.375,
+                                "y": 3.1953125,
+                                "width": 12.546875,
+                                "height": 14.609375
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "edge0-label-background",
+                    "bounds": {
+                        "x": 37.039062,
+                        "y": 70.0,
+                        "width": 77.921875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "id": "Pending",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 136.0,
+                        "height": 37.0
+                    }
+                },
+                {
+                    "id": "Approved",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 116.0,
+                        "width": 136.0,
+                        "height": 37.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "edge0",
+                    "points": [
+                        [
+                            76.0,
+                            45.0
+                        ],
+                        [
+                            76.0,
+                            80.5
+                        ],
+                        [
+                            76.0,
+                            116.0
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "class-title",
+            "source": "classDiagram\nclass A[\"value $$x^2$$\"]",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 100000.0
+                }
+            ],
+            "sceneWidth": 89.046875,
+            "sceneHeight": 97.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 20.0,
+                        "width": 49.046875,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 49.046875,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        20.0,
+                        20.0
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 35.8125,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 35.8125,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 73.046875,
+                        "height": 81.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "er-title",
+            "source": "erDiagram\nA[\"value $$x^2$$\"] { string name }",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 100000.0
+                }
+            ],
+            "sceneWidth": 137.0,
+            "sceneHeight": 95.5,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 45.148438,
+                        "y": 17.375,
+                        "width": 46.703125,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 46.703125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        45.148438,
+                        17.375
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 33.46875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 33.46875,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "entity-A-0",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 121.0,
+                        "height": 79.5
+                    }
+                },
+                {
+                    "id": "entity-A-0-row-0",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 47.75,
+                        "width": 121.0,
+                        "height": 39.75
+                    }
+                },
+                {
+                    "id": "entity-A-0-grid",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 121.0,
+                        "height": 79.5
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "er-relation",
+            "source": "erDiagram\nA ||--o{ B : \"value $$x^2$$\"",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 100000.0
+                }
+            ],
+            "sceneWidth": 116.0,
+            "sceneHeight": 279.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 34.648438,
+                        "y": 129.0,
+                        "width": 46.703125,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 46.703125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        34.648438,
+                        129.0
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 33.46875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 33.46875,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "identity-A-0-entity-B-1-1-label-background",
+                    "bounds": {
+                        "x": 28.648438,
+                        "y": 126.0,
+                        "width": 58.703125,
+                        "height": 27.0
+                    }
+                },
+                {
+                    "id": "entity-A-0",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 100.0,
+                        "height": 81.0
+                    }
+                },
+                {
+                    "id": "entity-B-1",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 190.0,
+                        "width": 100.0,
+                        "height": 81.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "identity-A-0-entity-B-1-1",
+                    "points": [
+                        [
+                            58.0,
+                            89.0
+                        ],
+                        [
+                            58.0,
+                            139.5
+                        ],
+                        [
+                            58.0,
+                            190.0
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "block",
+            "source": "block-beta\nA[\"value $$x^2$$\"]",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff000000",
+                    "maxWidth": 100000.0
+                },
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 87.46875
+                },
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 78.703125
+                }
+            ],
+            "sceneWidth": 88.703125,
+            "sceneHeight": 55.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 21.0,
+                        "y": 17.0,
+                        "width": 46.703125,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 46.703125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        21.0,
+                        17.0
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 33.46875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 33.46875,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 5.0,
+                        "y": 5.0,
+                        "width": 78.703125,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "kanban",
+            "source": "kanban\ntodo[value $$x^2$$]\n  task[Review]",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 200.0
+                }
+            ],
+            "sceneWidth": 220.0,
+            "sceneHeight": 96.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 86.64844,
+                        "y": 10.0,
+                        "width": 46.703125,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 46.703125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        86.64844,
+                        10.0
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 33.46875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 33.46875,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "kanban-section-0-todo",
+                    "bounds": {
+                        "x": 10.0,
+                        "y": 10.0,
+                        "width": 200.0,
+                        "height": 76.0
+                    }
+                },
+                {
+                    "id": "task",
+                    "bounds": {
+                        "x": 17.5,
+                        "y": 35.0,
+                        "width": 185.0,
+                        "height": 41.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "mindmap",
+            "source": "mindmap\nroot[\"value $$x^2$$\"]",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 120.0
+                }
+            ],
+            "sceneWidth": 98.703125,
+            "sceneHeight": 65.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 26.0,
+                        "y": 22.0,
+                        "width": 46.703125,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 46.703125,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        26.0,
+                        22.0
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 33.46875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 33.46875,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "node-0",
+                    "bounds": {
+                        "x": 10.0,
+                        "y": 10.0,
+                        "width": 78.703125,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "usecase",
+            "source": "usecase-beta\nA -- \"`value $$x^2$$`\" --> B",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 10.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 180.0
+                }
+            ],
+            "sceneWidth": 443.35938,
+            "sceneHeight": 98.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "value x^2",
+                    "bounds": {
+                        "x": 203.0,
+                        "y": 39.5,
+                        "width": 37.359375,
+                        "height": 19.0
+                    },
+                    "fontSize": 10.0,
+                    "intrinsicWidth": 33.359375,
+                    "intrinsicHeight": 15.0,
+                    "origin": [
+                        205.0,
+                        41.5
+                    ],
+                    "items": [
+                        {
+                            "text": "value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 23.90625,
+                                "height": 15.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 23.90625,
+                                "y": 3.453125,
+                                "width": 9.453125,
+                                "height": 8.09375
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "edge-0_label_background",
+                    "bounds": {
+                        "x": 203.0,
+                        "y": 39.5,
+                        "width": 37.359375,
+                        "height": 19.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 20.0,
+                        "width": 160.0,
+                        "height": 58.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 263.35938,
+                        "y": 20.0,
+                        "width": 160.0,
+                        "height": 58.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "edge-0",
+                    "points": [
+                        [
+                            180.0,
+                            49.0
+                        ],
+                        [
+                            221.67969,
+                            49.0
+                        ],
+                        [
+                            263.35938,
+                            49.0
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "requirement",
+            "source": "requirementDiagram\nrequirement formula_label {\nid: 1\ntext: \"value $$x^2$$ plus $$y$$\"\nrisk: low\nverifymethod: test\n}",
+            "requests": [
+                {
+                    "source": "x^2",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 232.0
+                },
+                {
+                    "source": "y",
+                    "fontSize": 14.0,
+                    "colorArgb": "ff28253d",
+                    "maxWidth": 232.0
+                }
+            ],
+            "sceneWidth": 149.0,
+            "sceneHeight": 182.0,
+            "providerFailures": 0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Text: value x^2 plus y",
+                    "bounds": {
+                        "x": 14.0,
+                        "y": 100.5,
+                        "width": 113.0,
+                        "height": 21.0
+                    },
+                    "fontSize": 14.0,
+                    "intrinsicWidth": 113.0,
+                    "intrinsicHeight": 21.0,
+                    "origin": [
+                        14.0,
+                        100.5
+                    ],
+                    "items": [
+                        {
+                            "text": "Text: value",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "width": 66.9375,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "x^2",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 66.9375,
+                                "y": 4.8359375,
+                                "width": 13.234375,
+                                "height": 11.328125
+                            }
+                        },
+                        {
+                            "text": "plus",
+                            "kind": "text",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 80.171875,
+                                "y": 0.0,
+                                "width": 25.6875,
+                                "height": 21.0
+                            }
+                        },
+                        {
+                            "text": "y",
+                            "kind": "formula",
+                            "fontSizeScale": 1.0,
+                            "bounds": {
+                                "x": 105.859375,
+                                "y": 5.5546875,
+                                "width": 7.140625,
+                                "height": 9.890625
+                            }
+                        }
+                    ]
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "formula_label",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 133.0,
+                        "height": 166.0
+                    }
+                }
+            ],
+            "edges": []
+        }
+    ]
+}

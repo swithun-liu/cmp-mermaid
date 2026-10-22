@@ -439,7 +439,7 @@ internal fun rememberMermaidPreparedScene(
             )
             TextMetrics(
                 width = result.measuredWidth,
-                height = result.layout.size.height.toFloat(),
+                height = result.measuredHeight,
                 lineCount = result.layout.lineCount,
             )
         }
@@ -535,7 +535,7 @@ internal suspend fun prepareMermaidScene(
         val paintRequests = scene.elements
             .asSequence()
             .filterIsInstance<SceneText>()
-            .mapNotNull(SceneText::formulaRequest)
+            .flatMap { it.formulaRequests() }
             .distinct()
             .toList()
         val paintRequestByMeasurement = paintRequests.associateBy {
@@ -927,6 +927,26 @@ private fun MermaidSceneCanvasInternal(
                         is SceneShape -> drawSceneShape(element)
                         is ScenePath -> drawScenePath(element, animationTimeMillis)
                         is SceneText -> {
+                            if (element.formulaLayout != null) {
+                                drawSceneFormulaLabel(
+                                    element = element,
+                                    artifacts = formulaArtifacts,
+                                    drawOrdinaryText = { item ->
+                                        drawSceneText(
+                                            element = item,
+                                            textMeasurer = textMeasurer,
+                                            density = density.density,
+                                            fontScale = density.fontScale,
+                                            fontFamilyResolver = effectiveFontFamilyResolver,
+                                            monospaceFontFamily = monospaceFontFamily,
+                                            cjkFontFamily = cjkFontFamily,
+                                            mathFontFamily = mathFontFamily,
+                                            symbolFontFamily = symbolFontFamily,
+                                        )
+                                    },
+                                )
+                                return@forEach
+                            }
                             val formulaArtifact = element.formulaRequest()
                                 ?.let(formulaArtifacts::get)
                             if (formulaArtifact == null) {
@@ -2714,6 +2734,72 @@ private data class MarkerCrossDefinition(
     val strokeWidth: Float,
 )
 
+/**
+ * Mermaid.js 12.0.0: common.ts -> renderKatexUnsanitized flex item paint;
+ * createText.ts -> addHtmlSpan outer label box.
+ * Native item bounds come from the same measured composition used by graph
+ * layout. Center the complete intrinsic content without stretching formulas.
+ */
+private fun DrawScope.drawSceneFormulaLabel(
+    element: SceneText,
+    artifacts: Map<MermaidFormulaRequest, MermaidFormulaArtifact>,
+    drawOrdinaryText: DrawScope.(SceneText) -> Unit,
+) {
+    val layout = element.formulaLayout ?: return
+    val origin = formulaLabelOrigin(element, layout.width, layout.height)
+    fun DrawScope.drawItems() {
+        layout.items.forEach { item ->
+            val bounds = item.bounds.translate(origin.x, origin.y)
+            val color = item.spans.lastOrNull { it.color != null }?.color ?: element.color
+            val artifact = item.formula?.toRequest(color)?.let(artifacts::get)
+            if (artifact != null) {
+                artifact.painter.draw(this, bounds.toComposeRect())
+            } else {
+                drawOrdinaryText(
+                    element.copy(
+                        text = item.text,
+                        spans = item.spans,
+                        bounds = bounds,
+                        fontSize = element.fontSize * item.fontSizeScale,
+                        color = element.color,
+                        rotationDegrees = 0f,
+                        rotationPivot = null,
+                        horizontalAlignment = SceneTextAlignment.Center,
+                        lineHeight = 1.5f,
+                        horizontalScale = 1f,
+                        htmlLabel = true,
+                        softWrap = false,
+                        clipToBounds = false,
+                    ).withFormula(null).withFormulaLayout(null),
+                )
+            }
+        }
+    }
+    withTransform({
+        rotate(
+            element.rotationDegrees,
+            (element.rotationPivot ?: element.bounds.center).let { Offset(it.x, it.y) },
+        )
+    }) {
+        if (element.clipToBounds) {
+            clipRect(
+                element.bounds.left, element.bounds.top,
+                element.bounds.right, element.bounds.bottom,
+            ) { drawItems() }
+        } else {
+            drawItems()
+        }
+    }
+}
+
+internal fun formulaLabelOrigin(element: SceneText, width: Float, height: Float): Offset =
+    Offset(
+        // The emitted flex wrapper has justify-content:center, independently
+        // of the surrounding HTML label's inherited text-align property.
+        x = element.bounds.center.x - width / 2f,
+        y = element.bounds.center.y - height / 2f,
+    )
+
 private fun DrawScope.drawSceneFormula(
     element: SceneText,
     artifact: MermaidFormulaArtifact,
@@ -2746,17 +2832,12 @@ internal fun formulaArtifactBounds(
     element: SceneText,
     artifact: MermaidFormulaArtifact,
 ): Rect {
-    val left = when (element.horizontalAlignment) {
-        SceneTextAlignment.Start -> element.bounds.left + 4f
-        SceneTextAlignment.Center -> element.bounds.center.x - artifact.width / 2f
-        SceneTextAlignment.End -> element.bounds.right - artifact.width - 4f
-    }
-    val top = element.bounds.center.y - artifact.height / 2f
+    val origin = formulaLabelOrigin(element, artifact.width, artifact.height)
     return Rect(
-        left = left,
-        top = top,
-        right = left + artifact.width,
-        bottom = top + artifact.height,
+        left = origin.x,
+        top = origin.y,
+        right = origin.x + artifact.width,
+        bottom = origin.y + artifact.height,
     )
 }
 
@@ -2916,6 +2997,7 @@ internal fun mermaidTextHorizontalScale(override: Float?): Float =
 private data class MermaidTextMeasurement(
     val layout: androidx.compose.ui.text.TextLayoutResult,
     val measuredWidth: Float,
+    val measuredHeight: Float = layout.size.height.toFloat(),
 )
 
 /**
@@ -2957,16 +3039,22 @@ private fun TextMeasurer.measureMermaidText(
         fontSize = style.fontSize * TEXT_INTRINSIC_SCALE,
         lineHeight = style.lineHeight * TEXT_INTRINSIC_SCALE,
     )
-    fun intrinsicWidth(value: AnnotatedString): Float = measure(
+    // Reuse the existing scaled intrinsic measurement for height as well:
+    // Skia rounds even MultiParagraph's line height at the normal font size.
+    // createText.addHtmlSpan consumes fractional CSS width and height.
+    fun intrinsicMeasurement(value: AnnotatedString) = measure(
         text = value,
         style = intrinsicStyle,
         softWrap = false,
         maxLines = maxLines,
         overflow = overflow,
         constraints = Constraints(),
-    ).multiParagraph.maxIntrinsicWidth / TEXT_INTRINSIC_SCALE
+    )
+    fun intrinsicWidth(value: AnnotatedString): Float =
+        intrinsicMeasurement(value).multiParagraph.maxIntrinsicWidth / TEXT_INTRINSIC_SCALE
 
-    val intrinsicWidth = intrinsicWidth(text)
+    val intrinsic = intrinsicMeasurement(text)
+    val intrinsicWidth = (intrinsic.multiParagraph.maxIntrinsicWidth / TEXT_INTRINSIC_SCALE)
         .mermaidTextIntrinsicWidth(intrinsicWidthScale)
     if (htmlLabelFitsWithoutWrapping(intrinsicWidth, maximumWidth)) {
         val unwrapped = measure(
@@ -2977,7 +3065,9 @@ private fun TextMeasurer.measureMermaidText(
             overflow = overflow,
             constraints = Constraints(),
         )
-        return MermaidTextMeasurement(unwrapped, intrinsicWidth)
+        return MermaidTextMeasurement(
+            unwrapped, intrinsicWidth, intrinsic.multiParagraph.height / TEXT_INTRINSIC_SCALE,
+        )
     }
     if (useMermaidCssBreakSpacesLayout) {
         val cssWrappedText = text.withCssBreakSpacesLines(maximumWidth) { candidate ->
@@ -2991,11 +3081,13 @@ private fun TextMeasurer.measureMermaidText(
             overflow = overflow,
             constraints = Constraints(),
         )
-        val cssWrappedWidth = intrinsicWidth(cssWrappedText)
+        val cssIntrinsic = intrinsicMeasurement(cssWrappedText)
+        val cssWrappedWidth = (cssIntrinsic.multiParagraph.maxIntrinsicWidth / TEXT_INTRINSIC_SCALE)
             .mermaidTextIntrinsicWidth(intrinsicWidthScale)
         return MermaidTextMeasurement(
             layout = cssWrapped,
             measuredWidth = max(maximumWidth, cssWrappedWidth),
+            measuredHeight = cssIntrinsic.multiParagraph.height / TEXT_INTRINSIC_SCALE,
         )
     }
 

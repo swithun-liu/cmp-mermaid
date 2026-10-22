@@ -386,6 +386,7 @@ internal data class UsecaseMeasuredText(
     val spans: List<SceneTextSpan>,
     val size: SceneSize,
     val formula: MermaidFormulaMeasureRequest? = null,
+    val formulaLayout: com.swithun.cmpmermaid.core.MermaidFormulaLabelLayout? = null,
 )
 
 internal data class UsecaseTextVisual(

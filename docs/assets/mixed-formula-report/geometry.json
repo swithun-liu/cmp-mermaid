@@ -1,0 +1,3386 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-22T12:38:30.378Z",
+  "mermaidVersion": "12.0.0",
+  "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
+  "counts": {
+    "pass": 16,
+    "review": 12,
+    "fail": 0
+  },
+  "caseCount": 28,
+  "screenshotCount": 56,
+  "coordinateTolerancePx": 0.08,
+  "boundary": "Native uses official intrinsic formula metrics/pixels through the optional provider. This tests shared label composition and Canvas placement, not native KaTeX parsing or full-family stability.",
+  "cases": [
+    {
+      "id": "flow-single",
+      "source": "flowchart LR\nA[\"$$x^2$$\"]",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.9347"
+      ],
+      "maximumItemDelta": 0,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9346888205749635,
+      "labels": [
+        {
+          "official": {
+            "width": 13.234375,
+            "height": 11.328125,
+            "items": [
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "x^2",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 11.328125
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 13.234375,
+            "intrinsicHeight": 11.328125,
+            "origin": [
+              77.38281,
+              20
+            ],
+            "items": [
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-text",
+      "source": "flowchart LR\nA[\"energy $$E=mc^2$$ joules\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9788549430502497,
+      "labels": [
+        {
+          "official": {
+            "width": 128.6875,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "energy",
+                "bounds": {
+                  "x": 0,
+                  "width": 42.8125,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "E=mc2",
+                "bounds": {
+                  "x": 42.8125,
+                  "y": 4.765625,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              },
+              {
+                "kind": "text",
+                "text": "joules",
+                "bounds": {
+                  "x": 92.09375,
+                  "width": 36.59375,
+                  "y": 0,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "energy E=mc^2 joules",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 128.6875,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 128.6875,
+            "intrinsicHeight": 21,
+            "origin": [
+              24,
+              20
+            ],
+            "items": [
+              {
+                "text": "energy",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 42.8125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "E=mc^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 42.8125,
+                  "y": 4.7734375,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              },
+              {
+                "text": "joules",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 92.09375,
+                  "y": 0,
+                  "width": 36.59375,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-multiple",
+      "source": "flowchart LR\nA[\"$$a^2$$ + $$b^2$$ = c\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9918671648458125,
+      "labels": [
+        {
+          "official": {
+            "width": 53.125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "formula",
+                "text": "a2",
+                "bounds": {
+                  "x": 0,
+                  "y": 4.78125,
+                  "width": 13.1875,
+                  "height": 11.421875
+                }
+              },
+              {
+                "kind": "text",
+                "text": "+",
+                "bounds": {
+                  "x": 13.1875,
+                  "width": 8.1875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "b2",
+                "bounds": {
+                  "x": 21.375,
+                  "y": 3.953125,
+                  "width": 12.671875,
+                  "height": 13.078125
+                }
+              },
+              {
+                "kind": "text",
+                "text": "= c",
+                "bounds": {
+                  "x": 34.046875,
+                  "width": 19.078125,
+                  "y": 0,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "a^2 + b^2 = c",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 53.125,
+            "intrinsicHeight": 21,
+            "origin": [
+              57.4375,
+              20
+            ],
+            "items": [
+              {
+                "text": "a^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 4.7890625,
+                  "width": 13.1875,
+                  "height": 11.421875
+                }
+              },
+              {
+                "text": "+",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 13.1875,
+                  "y": 0,
+                  "width": 8.1875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "b^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 21.375,
+                  "y": 3.9609375,
+                  "width": 12.671875,
+                  "height": 13.078125
+                }
+              },
+              {
+                "text": "= c",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 34.046875,
+                  "y": 0,
+                  "width": 19.078125,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-fraction",
+      "source": "flowchart LR\nA[\"left $$\\frac{a}{b}$$ right $$x$$ end\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9800067884122917,
+      "labels": [
+        {
+          "official": {
+            "width": 86.890625,
+            "height": 24.8125,
+            "items": [
+              {
+                "kind": "text",
+                "text": "left",
+                "bounds": {
+                  "x": 0,
+                  "width": 18.6875,
+                  "y": 1.90625,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "ab",
+                "bounds": {
+                  "x": 18.6875,
+                  "y": 0,
+                  "width": 9.78125,
+                  "height": 24.8125
+                }
+              },
+              {
+                "kind": "text",
+                "text": "right",
+                "bounds": {
+                  "x": 28.46875,
+                  "width": 27.234375,
+                  "y": 1.90625,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 55.703125,
+                  "y": 9.09375,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "kind": "text",
+                "text": "end",
+                "bounds": {
+                  "x": 63.53125,
+                  "width": 23.359375,
+                  "y": 1.90625,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "left \\frac{a}{b} right x end",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 24.8125
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 86.890625,
+            "intrinsicHeight": 24.8125,
+            "origin": [
+              40.554688,
+              20
+            ],
+            "items": [
+              {
+                "text": "left",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 1.90625,
+                  "width": 18.6875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "\\frac{a}{b}",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 18.6875,
+                  "y": 0,
+                  "width": 9.78125,
+                  "height": 24.8125
+                }
+              },
+              {
+                "text": "right",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 28.46875,
+                  "y": 1.90625,
+                  "width": 27.234375,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 55.703125,
+                  "y": 9.1015625,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "text": "end",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 63.53125,
+                  "y": 1.90625,
+                  "width": 23.359375,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-br",
+      "source": "flowchart LR\nA[\"energy<br/>$$E=mc^2$$\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9885314122400858,
+      "labels": [
+        {
+          "official": {
+            "width": 92.09375,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "energy",
+                "bounds": {
+                  "x": 0,
+                  "width": 42.8125,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "E=mc2",
+                "bounds": {
+                  "x": 42.8125,
+                  "y": 4.765625,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "energy\nE=mc^2",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 92.09375,
+            "intrinsicHeight": 21,
+            "origin": [
+              37.953125,
+              20
+            ],
+            "items": [
+              {
+                "text": "energy",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 42.8125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "E=mc^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 42.8125,
+                  "y": 4.7734375,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-newline",
+      "source": "flowchart LR\nA[\"energy\n$$E=mc^2$$\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9885314122400858,
+      "labels": [
+        {
+          "official": {
+            "width": 92.09375,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "energy",
+                "bounds": {
+                  "x": 0,
+                  "width": 42.8125,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "E=mc2",
+                "bounds": {
+                  "x": 42.8125,
+                  "y": 4.765625,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "energy\nE=mc^2",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 92.09375,
+            "intrinsicHeight": 21,
+            "origin": [
+              37.953125,
+              20
+            ],
+            "items": [
+              {
+                "text": "energy",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 42.8125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "E=mc^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 42.8125,
+                  "y": 4.7734375,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-formula-br",
+      "source": "flowchart LR\nA[\"$$x$$<br/>$$y$$\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.974734702852087,
+      "labels": [
+        {
+          "official": {
+            "width": 14.96875,
+            "height": 9.890625,
+            "items": [
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 0,
+                  "y": 1.640625,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "y",
+                "bounds": {
+                  "x": 7.828125,
+                  "y": 0,
+                  "width": 7.140625,
+                  "height": 9.890625
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "x\ny",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 9.890625
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 14.96875,
+            "intrinsicHeight": 9.890625,
+            "origin": [
+              76.515625,
+              20
+            ],
+            "items": [
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 1.640625,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "text": "y",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 7.828125,
+                  "y": 0,
+                  "width": 7.140625,
+                  "height": 9.890625
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-repeated",
+      "source": "flowchart LR\nA[\"$$x$$ + $$x$$\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9939260347867288,
+      "labels": [
+        {
+          "official": {
+            "width": 23.84375,
+            "height": 21,
+            "items": [
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 0,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "kind": "text",
+                "text": "+",
+                "bounds": {
+                  "x": 7.828125,
+                  "width": 8.1875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 16.015625,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "x + x",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 23.84375,
+            "intrinsicHeight": 21,
+            "origin": [
+              72.078125,
+              20
+            ],
+            "items": [
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "text": "+",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 7.828125,
+                  "y": 0,
+                  "width": 8.1875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 16.015625,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-spaces",
+      "source": "flowchart LR\nA[\"  A   $$x$$   B  \"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9954928043866339,
+      "labels": [
+        {
+          "official": {
+            "width": 26.515625,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "A",
+                "bounds": {
+                  "x": 0,
+                  "width": 9.34375,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 9.34375,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "kind": "text",
+                "text": "B",
+                "bounds": {
+                  "x": 17.171875,
+                  "width": 9.34375,
+                  "y": 0,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "A   x   B",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 26.515625,
+            "intrinsicHeight": 21,
+            "origin": [
+              70.74219,
+              20
+            ],
+            "items": [
+              {
+                "text": "A",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 9.34375,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 9.34375,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "text": "B",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 17.171875,
+                  "y": 0,
+                  "width": 9.34375,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-entities",
+      "source": "flowchart LR\nA[\"A&nbsp; $$x$$ &amp; B\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.994501254890838,
+      "labels": [
+        {
+          "official": {
+            "width": 43.640625,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "A ",
+                "bounds": {
+                  "x": 0,
+                  "width": 13.234375,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 13.234375,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "kind": "text",
+                "text": "& B",
+                "bounds": {
+                  "x": 21.0625,
+                  "width": 22.578125,
+                  "y": 0,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "A  x & B",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 43.640625,
+            "intrinsicHeight": 21,
+            "origin": [
+              62.179688,
+              20
+            ],
+            "items": [
+              {
+                "text": "A ",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 13.234375,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 13.234375,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "text": "& B",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 21.0625,
+                  "y": 0,
+                  "width": 22.578125,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-html",
+      "source": "flowchart LR\nA[\"<b>energy</b> $$E=mc^2$$ <i>joules</i>\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0.0000049999999873762135,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9837974982423607,
+      "labels": [
+        {
+          "official": {
+            "width": 131.796875,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "energy",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 45.921875,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "E=mc2",
+                "bounds": {
+                  "x": 45.921875,
+                  "y": 4.765625,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              },
+              {
+                "kind": "text",
+                "text": "joules",
+                "bounds": {
+                  "x": 95.203125,
+                  "y": 0,
+                  "width": 36.59375,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "energy E=mc^2 joules",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 131.79688,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 131.79688,
+            "intrinsicHeight": 21,
+            "origin": [
+              24,
+              20
+            ],
+            "items": [
+              {
+                "text": "energy",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 45.921875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "E=mc^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 45.921875,
+                  "y": 4.7734375,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              },
+              {
+                "text": "joules",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 95.203125,
+                  "y": 0,
+                  "width": 36.59375,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-neutral-html",
+      "source": "flowchart LR\nA[\"before<span> left <b>middle</b> right </span>after $$x$$\"]",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.9657"
+      ],
+      "maximumItemDelta": 0.015629999999987376,
+      "maximumLabelDelta": 0.015620000000012624,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9656942483575754,
+      "labels": [
+        {
+          "official": {
+            "width": 174.375,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "before",
+                "bounds": {
+                  "x": 0,
+                  "width": 39.703125,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "text",
+                "text": "left middle right",
+                "bounds": {
+                  "x": 39.703125,
+                  "y": 0,
+                  "width": 98.828125,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "text",
+                "text": "after",
+                "bounds": {
+                  "x": 138.53125,
+                  "width": 28.015625,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 166.546875,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "before left middle right after x",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 174.35938,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 174.35938,
+            "intrinsicHeight": 21,
+            "origin": [
+              24,
+              20
+            ],
+            "items": [
+              {
+                "text": "before",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 39.703125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "left middle right",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 39.703125,
+                  "y": 0,
+                  "width": 98.8125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "after",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 138.51562,
+                  "y": 0,
+                  "width": 28.015625,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 166.53125,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-adjacent-html",
+      "source": "flowchart LR\nA[\"<span> a </span><span> b </span>$$x$$\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9950673063229954,
+      "labels": [
+        {
+          "official": {
+            "width": 23.421875,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "a",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 7.796875,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "text",
+                "text": "b",
+                "bounds": {
+                  "x": 7.796875,
+                  "y": 0,
+                  "width": 7.796875,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 15.59375,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": " a  b x",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 23.421875,
+            "intrinsicHeight": 21,
+            "origin": [
+              72.28906,
+              20
+            ],
+            "items": [
+              {
+                "text": "a",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 7.796875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "b",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 7.796875,
+                  "y": 0,
+                  "width": 7.796875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 15.59375,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-small-html",
+      "source": "flowchart LR\nA[\"<small>small</small> $$x$$ large\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.015625,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9951755676655,
+      "labels": [
+        {
+          "official": {
+            "width": 66.1875,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "small",
+                "bounds": {
+                  "x": 0,
+                  "y": 1.75,
+                  "width": 27.21875,
+                  "height": 17.5
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 27.21875,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "kind": "text",
+                "text": "large",
+                "bounds": {
+                  "x": 35.046875,
+                  "width": 31.140625,
+                  "y": 0,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "small x large",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 66.203125,
+            "intrinsicHeight": 21,
+            "origin": [
+              50.898438,
+              20
+            ],
+            "items": [
+              {
+                "text": "small",
+                "kind": "text",
+                "fontSizeScale": 0.8333333,
+                "bounds": {
+                  "x": 0,
+                  "y": 1.75,
+                  "width": 27.234375,
+                  "height": 17.5
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 27.234375,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "text": "large",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 35.0625,
+                  "y": 0,
+                  "width": 31.140625,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-color-html",
+      "source": "flowchart LR\nA[\"<span>plain <i style='color:red'>red</i> plain</span> $$x$$\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9945952587271588,
+      "labels": [
+        {
+          "official": {
+            "width": 95,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "plain red plain",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 87.171875,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 87.171875,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "plain red plain x",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 95,
+            "intrinsicHeight": 21,
+            "origin": [
+              36.5,
+              20
+            ],
+            "items": [
+              {
+                "text": "plain red plain",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 87.171875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 87.171875,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-tall",
+      "source": "flowchart LR\nA[\"sum $$\\sum_{i=1}^{n}\\frac{i}{i+1}$$ done\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.978533096688524,
+      "labels": [
+        {
+          "official": {
+            "width": 111.5,
+            "height": 36.84375,
+            "items": [
+              {
+                "kind": "text",
+                "text": "sum",
+                "bounds": {
+                  "x": 0,
+                  "width": 26.453125,
+                  "y": 7.921875,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "∑i=1nii+1",
+                "bounds": {
+                  "x": 26.453125,
+                  "y": 0,
+                  "width": 53.890625,
+                  "height": 36.84375
+                }
+              },
+              {
+                "kind": "text",
+                "text": "done",
+                "bounds": {
+                  "x": 80.34375,
+                  "width": 31.15625,
+                  "y": 7.921875,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "sum \\sum_{i=1}^{n}\\frac{i}{i+1} done",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 36.84375
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 111.5,
+            "intrinsicHeight": 36.84375,
+            "origin": [
+              28.25,
+              20
+            ],
+            "items": [
+              {
+                "text": "sum",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 7.921875,
+                  "width": 26.453125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "\\sum_{i=1}^{n}\\frac{i}{i+1}",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 26.453125,
+                  "y": 0,
+                  "width": 53.890625,
+                  "height": 36.84375
+                }
+              },
+              {
+                "text": "done",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 80.34375,
+                  "y": 7.921875,
+                  "width": 31.15625,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-wide",
+      "source": "flowchart LR\nA[\"identity $$a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t$$ result\"]",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0000049999999873762135,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9790306465516019,
+      "labels": [
+        {
+          "official": {
+            "width": 526.90625,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "identity",
+                "bounds": {
+                  "x": 0,
+                  "width": 44.359375,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t",
+                "bounds": {
+                  "x": 44.359375,
+                  "y": 3.875,
+                  "width": 448.3125,
+                  "height": 13.25
+                }
+              },
+              {
+                "kind": "text",
+                "text": "result",
+                "bounds": {
+                  "x": 492.671875,
+                  "width": 34.234375,
+                  "y": 0,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "identity a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t result",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 526.90625,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 526.90625,
+            "intrinsicHeight": 21,
+            "origin": [
+              24,
+              20
+            ],
+            "items": [
+              {
+                "text": "identity",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 44.359375,
+                  "height": 21
+                }
+              },
+              {
+                "text": "a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 44.359375,
+                  "y": 3.875,
+                  "width": 448.3125,
+                  "height": 13.25
+                }
+              },
+              {
+                "text": "result",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 492.67188,
+                  "y": 0,
+                  "width": 34.234375,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-edge",
+      "source": "flowchart LR\nA -->|\"mass $$E=mc^2$$ units\"| B",
+      "status": "review",
+      "findings": [
+        "Route endpoint/bend coordinates differ by 30.0000 px",
+        "Outer label geometry differs by 4.0000 px",
+        "Raster SSIM is 0.7783"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 4,
+      "maximumRouteDelta": 30,
+      "ssim": 0.7782697178078695,
+      "labels": [
+        {
+          "official": {
+            "width": 112.3125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "mass",
+                "bounds": {
+                  "x": 0,
+                  "width": 33.453125,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "E=mc2",
+                "bounds": {
+                  "x": 33.453125,
+                  "y": 4.765625,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              },
+              {
+                "kind": "text",
+                "text": "units",
+                "bounds": {
+                  "x": 82.734375,
+                  "width": 29.578125,
+                  "y": 0,
+                  "height": 21
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "mass E=mc^2 units",
+            "bounds": {
+              "x": 183,
+              "y": 18,
+              "width": 116.3125,
+              "height": 25
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 112.3125,
+            "intrinsicHeight": 21,
+            "origin": [
+              185,
+              20
+            ],
+            "items": [
+              {
+                "text": "mass",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 33.453125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "E=mc^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 33.453125,
+                  "y": 4.7734375,
+                  "width": 49.28125,
+                  "height": 11.453125
+                }
+              },
+              {
+                "text": "units",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 82.734375,
+                  "y": 0,
+                  "width": 29.578125,
+                  "height": 21
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 1,
+        "officialEdgeCount": 1,
+        "edges": [
+          {
+            "edgeId": "edge-0",
+            "native": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "R"
+              ],
+              "sourcePortSide": "Right",
+              "destinationPortSide": "Left"
+            },
+            "official": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "R"
+              ],
+              "sourcePortSide": "Right",
+              "destinationPortSide": "Left"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "flow-rotation",
+      "source": "flowchart BT\nA[\"value $$x^2$$\"] --> B[\"$$x$$ + $$y$$\"]",
+      "status": "review",
+      "findings": [
+        "Route endpoint/bend coordinates differ by 10.0000 px",
+        "Raster SSIM is 0.7230"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 10,
+      "ssim": 0.723038488723112,
+      "labels": [
+        {
+          "official": {
+            "width": 46.703125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 33.46875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 24,
+              "y": 115,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 46.703125,
+            "intrinsicHeight": 21,
+            "origin": [
+              60.648438,
+              115
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 33.46875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        },
+        {
+          "official": {
+            "width": 23.15625,
+            "height": 21,
+            "items": [
+              {
+                "kind": "formula",
+                "text": "x",
+                "bounds": {
+                  "x": 0,
+                  "y": 7.1875,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "kind": "text",
+                "text": "+",
+                "bounds": {
+                  "x": 7.828125,
+                  "width": 8.1875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "y",
+                "bounds": {
+                  "x": 16.015625,
+                  "y": 5.546875,
+                  "width": 7.140625,
+                  "height": 9.890625
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "x + y",
+            "bounds": {
+              "x": 24,
+              "y": 20,
+              "width": 120,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 23.15625,
+            "intrinsicHeight": 21,
+            "origin": [
+              72.421875,
+              20
+            ],
+            "items": [
+              {
+                "text": "x",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 7.1953125,
+                  "width": 7.828125,
+                  "height": 6.609375
+                }
+              },
+              {
+                "text": "+",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 7.828125,
+                  "y": 0,
+                  "width": 8.1875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "y",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 16.015625,
+                  "y": 5.5546875,
+                  "width": 7.140625,
+                  "height": 9.890625
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 1,
+        "officialEdgeCount": 1,
+        "edges": [
+          {
+            "edgeId": "edge-0",
+            "native": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "U"
+              ],
+              "sourcePortSide": "Top",
+              "destinationPortSide": "Bottom"
+            },
+            "official": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "U"
+              ],
+              "sourcePortSide": "Top",
+              "destinationPortSide": "Bottom"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "state-edge",
+      "source": "stateDiagram-v2\nPending --> Approved : sum $$x^2$$ plus $$y^2$$",
+      "status": "review",
+      "findings": [
+        "Route endpoint/bend coordinates differ by 30.0000 px",
+        "Raster SSIM is 0.6156"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 30,
+      "ssim": 0.6156458006361273,
+      "labels": [
+        {
+          "official": {
+            "width": 77.921875,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "sum",
+                "bounds": {
+                  "x": 0,
+                  "width": 26.453125,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 26.453125,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              },
+              {
+                "kind": "text",
+                "text": "plus",
+                "bounds": {
+                  "x": 39.6875,
+                  "width": 25.6875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "y2",
+                "bounds": {
+                  "x": 65.375,
+                  "y": 3.1875,
+                  "width": 12.546875,
+                  "height": 14.609375
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "sum x^2 plus y^2",
+            "bounds": {
+              "x": 37.039062,
+              "y": 70,
+              "width": 77.921875,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 77.921875,
+            "intrinsicHeight": 21,
+            "origin": [
+              37.039062,
+              70
+            ],
+            "items": [
+              {
+                "text": "sum",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 26.453125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 26.453125,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              },
+              {
+                "text": "plus",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 39.6875,
+                  "y": 0,
+                  "width": 25.6875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "y^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 65.375,
+                  "y": 3.1953125,
+                  "width": 12.546875,
+                  "height": 14.609375
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 1,
+        "officialEdgeCount": 1,
+        "edges": [
+          {
+            "edgeId": "edge-0",
+            "native": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "D"
+              ],
+              "sourcePortSide": "Bottom",
+              "destinationPortSide": "Top"
+            },
+            "official": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "D"
+              ],
+              "sourcePortSide": "Bottom",
+              "destinationPortSide": "Top"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "class-title",
+      "source": "classDiagram\nclass A[\"value $$x^2$$\"]",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.7930"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.7930000241614308,
+      "labels": [
+        {
+          "official": {
+            "width": 49.046875,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 35.8125,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 35.8125,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 20,
+              "y": 20,
+              "width": 49.046875,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 49.046875,
+            "intrinsicHeight": 21,
+            "origin": [
+              20,
+              20
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 35.8125,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 35.8125,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "er-title",
+      "source": "erDiagram\nA[\"value $$x^2$$\"] { string name }",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.8712"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.8712395239041305,
+      "labels": [
+        {
+          "official": {
+            "width": 46.703125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 33.46875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 45.148438,
+              "y": 17.375,
+              "width": 46.703125,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 46.703125,
+            "intrinsicHeight": 21,
+            "origin": [
+              45.148438,
+              17.375
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 33.46875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "er-relation",
+      "source": "erDiagram\nA ||--o{ B : \"value $$x^2$$\"",
+      "status": "pass",
+      "findings": [],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9890431423977097,
+      "labels": [
+        {
+          "official": {
+            "width": 46.703125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 33.46875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 34.648438,
+              "y": 129,
+              "width": 46.703125,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 46.703125,
+            "intrinsicHeight": 21,
+            "origin": [
+              34.648438,
+              129
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 33.46875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 1,
+        "officialEdgeCount": 1,
+        "edges": [
+          {
+            "edgeId": "edge-0",
+            "native": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "D"
+              ],
+              "sourcePortSide": "Bottom",
+              "destinationPortSide": "Top"
+            },
+            "official": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "D"
+              ],
+              "sourcePortSide": "Bottom",
+              "destinationPortSide": "Top"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "block",
+      "source": "block-beta\nA[\"value $$x^2$$\"]",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.5057"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.5057135250866115,
+      "labels": [
+        {
+          "official": {
+            "width": 46.703125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 33.46875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 21,
+              "y": 17,
+              "width": 46.703125,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 46.703125,
+            "intrinsicHeight": 21,
+            "origin": [
+              21,
+              17
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 33.46875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "kanban",
+      "source": "kanban\ntodo[value $$x^2$$]\n  task[Review]",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.7537"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.7536670766920212,
+      "labels": [
+        {
+          "official": {
+            "width": 46.703125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 33.46875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 86.64844,
+              "y": 10,
+              "width": 46.703125,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 46.703125,
+            "intrinsicHeight": 21,
+            "origin": [
+              86.64844,
+              10
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 33.46875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "mindmap",
+      "source": "mindmap\nroot[\"value $$x^2$$\"]",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.6251"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.6251018095613353,
+      "labels": [
+        {
+          "official": {
+            "width": 46.703125,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 33.46875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 26,
+              "y": 22,
+              "width": 46.703125,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 46.703125,
+            "intrinsicHeight": 21,
+            "origin": [
+              26,
+              22
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 33.46875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 33.46875,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "usecase",
+      "source": "usecase-beta\nA -- \"`value $$x^2$$`\" --> B",
+      "status": "review",
+      "findings": [
+        "Route endpoint/bend coordinates differ by 34.0000 px",
+        "Outer label geometry differs by 4.0000 px",
+        "Raster SSIM is 0.8295"
+      ],
+      "maximumItemDelta": 0,
+      "maximumLabelDelta": 4,
+      "maximumRouteDelta": 33.99999500000001,
+      "ssim": 0.8295485883077659,
+      "labels": [
+        {
+          "official": {
+            "width": 33.359375,
+            "height": 15,
+            "items": [
+              {
+                "kind": "text",
+                "text": "value",
+                "bounds": {
+                  "x": 0,
+                  "width": 23.90625,
+                  "y": 0,
+                  "height": 15
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 23.90625,
+                  "y": 3.453125,
+                  "width": 9.453125,
+                  "height": 8.09375
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "value x^2",
+            "bounds": {
+              "x": 203,
+              "y": 39.5,
+              "width": 37.359375,
+              "height": 19
+            },
+            "fontSize": 10,
+            "intrinsicWidth": 33.359375,
+            "intrinsicHeight": 15,
+            "origin": [
+              205,
+              41.5
+            ],
+            "items": [
+              {
+                "text": "value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 23.90625,
+                  "height": 15
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 23.90625,
+                  "y": 3.453125,
+                  "width": 9.453125,
+                  "height": 8.09375
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 1,
+        "officialEdgeCount": 1,
+        "edges": [
+          {
+            "edgeId": "edge-0",
+            "native": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "R"
+              ],
+              "sourcePortSide": "Right",
+              "destinationPortSide": "Left"
+            },
+            "official": {
+              "pointCount": 2,
+              "bendCount": 0,
+              "directionSequence": [
+                "R"
+              ],
+              "sourcePortSide": "Right",
+              "destinationPortSide": "Left"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    },
+    {
+      "id": "requirement",
+      "source": "requirementDiagram\nrequirement formula_label {\nid: 1\ntext: \"value $$x^2$$ plus $$y$$\"\nrisk: low\nverifymethod: test\n}",
+      "status": "review",
+      "findings": [
+        "Raster SSIM is 0.9126"
+      ],
+      "maximumItemDelta": 0.0078125,
+      "maximumLabelDelta": 0,
+      "maximumRouteDelta": 0,
+      "ssim": 0.9125591663705538,
+      "labels": [
+        {
+          "official": {
+            "width": 113,
+            "height": 21,
+            "items": [
+              {
+                "kind": "text",
+                "text": "Text: value",
+                "bounds": {
+                  "x": 0,
+                  "width": 66.9375,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "x2",
+                "bounds": {
+                  "x": 66.9375,
+                  "y": 4.828125,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              },
+              {
+                "kind": "text",
+                "text": "plus",
+                "bounds": {
+                  "x": 80.171875,
+                  "width": 25.6875,
+                  "y": 0,
+                  "height": 21
+                }
+              },
+              {
+                "kind": "formula",
+                "text": "y",
+                "bounds": {
+                  "x": 105.859375,
+                  "y": 5.546875,
+                  "width": 7.140625,
+                  "height": 9.890625
+                }
+              }
+            ]
+          },
+          "native": {
+            "text": "Text: value x^2 plus y",
+            "bounds": {
+              "x": 14,
+              "y": 100.5,
+              "width": 113,
+              "height": 21
+            },
+            "fontSize": 14,
+            "intrinsicWidth": 113,
+            "intrinsicHeight": 21,
+            "origin": [
+              14,
+              100.5
+            ],
+            "items": [
+              {
+                "text": "Text: value",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 66.9375,
+                  "height": 21
+                }
+              },
+              {
+                "text": "x^2",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 66.9375,
+                  "y": 4.8359375,
+                  "width": 13.234375,
+                  "height": 11.328125
+                }
+              },
+              {
+                "text": "plus",
+                "kind": "text",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 80.171875,
+                  "y": 0,
+                  "width": 25.6875,
+                  "height": 21
+                }
+              },
+              {
+                "text": "y",
+                "kind": "formula",
+                "fontSizeScale": 1,
+                "bounds": {
+                  "x": 105.859375,
+                  "y": 5.5546875,
+                  "width": 7.140625,
+                  "height": 9.890625
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 0,
+        "officialEdgeCount": 0,
+        "edges": [],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      }
+    }
+  ]
+}

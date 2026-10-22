@@ -528,7 +528,7 @@ internal class BlockLayout {
                     horizontalAlignment = style.textAlignment ?: SceneTextAlignment.Center,
                     softWrap = true,
                     zIndex = paint + 1,
-                ).withFormula(labelMetrics.formula)
+                ).withFormula(labelMetrics.formula).withFormulaLayout(labelMetrics.formulaLayout)
             }
         }
         block.children.forEach { child ->
@@ -638,7 +638,7 @@ internal class BlockLayout {
                 weight = SceneTextWeight.Normal,
                 spans = rendered.spans,
                 zIndex = z + 2,
-            ).withFormula(measured.formula)
+            ).withFormula(measured.formula).withFormulaLayout(measured.formulaLayout)
         }
         return GMResult.Ok(Unit)
     }

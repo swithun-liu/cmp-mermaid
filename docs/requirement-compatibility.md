@@ -25,6 +25,7 @@ not expose a functional rendering defect.
 | Requirement boxes | Supported | Type/name headers, body fields, dividers, HTML-label line-box sizing, and final left-aligned body translation |
 | Markers and edges | Supported | Requirement arrow and contains markers, labels, dotted relationships, and Neo marker spacing |
 | Markdown and styling | Supported | Strong/emphasis labels, `style`, `classDef`, `class`, `:::`, and registered Requirement theme variables |
+| Formula labels | Provider-backed, non-Stable | Field prefixes, ordinary text, and multiple `$$...$$` matches use shared flex composition after the translated `addText` source-width preflight |
 | Themes and look | Supported | All 11 built-in themes plus Classic and Neo looks |
 | Resource controls | Supported | Text, node, and edge limits return structured `MermaidError` values |
 
@@ -38,6 +39,11 @@ not expose a functional rendering defect.
 - Browser HTML labels map to measured Compose text. CMP Mermaid preserves the
   Mermaid `14px`/`21px` line box and label placement, while platform glyph
   metrics can still differ.
+- A host renderer supplies intrinsic formula metrics and drawing content.
+  Unavailable or failed formula requests keep a visible plain-text fallback.
+  Nested formulas in user HTML and untranslated block formatting return
+  structured unsupported results. The [shared-label audit](assets/mixed-formula-report/index.html)
+  is separate from the existing non-formula matrix.
 - SceneGraph output is static. Requirement diagrams define no
   Requirement-specific browser interaction contract to execute.
 - Unsupported legal Mermaid features must return

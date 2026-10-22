@@ -183,6 +183,11 @@ internal fun SceneText.formulaRequest(): MermaidFormulaRequest? {
     return formula.toRequest(color)
 }
 
+internal fun SceneText.formulaRequests(): List<MermaidFormulaRequest> =
+    formulaLayout?.items?.mapNotNull { item ->
+        item.formula?.toRequest(item.spans.lastOrNull { it.color != null }?.color ?: color)
+    } ?: listOfNotNull(formulaRequest())
+
 internal fun MermaidFormulaMeasureRequest.toRequest(
     color: SceneColor,
 ): MermaidFormulaRequest = MermaidFormulaRequest(

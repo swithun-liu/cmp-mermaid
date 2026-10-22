@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Mermaid 12.0.0 mixed formula audit</title>
+<style>body{font:15px system-ui;margin:32px;background:#f5f7fa;color:#202936}
+main{max-width:1200px;margin:auto}article{background:white;border:1px solid #dce1e8;
+border-radius:10px;margin:20px 0;padding:20px}.pair{display:grid;grid-template-columns:1fr 1fr;
+gap:20px;overflow:auto}img{max-width:100%;height:auto;image-rendering:auto}
+pre{overflow:auto;font:13px ui-monospace;background:#eef1f5;padding:14px}
+.pass{color:#08754e}.review{color:#956100}small{color:#5b6878}
+@media(max-width:700px){.pair{grid-template-columns:1fr}body{margin:12px}}</style>
+<main><h1>Mixed text and formula labels</h1>
+<p>Mermaid 12.0.0 · 28 shared sources ·
+56 screenshots · 16 Pass / 12 Review / 0 Fail</p>
+<p>Native uses official intrinsic formula metrics/pixels through the optional provider. This tests shared label composition and Canvas placement, not native KaTeX parsing or full-family stability.</p><p>Per-item geometry tolerance: 0.08 px.
+Edge checks compare ports, bends, direction sequences, shared tracks and crossings.
+Review remains required for raster/font rendering and any missing topology evidence.</p>
+<p><a href="official.json">Official geometry</a> · <a href="native.json">Native geometry</a> ·
+<a href="geometry.json">Detailed comparison</a></p>
+<p><a href="contact-sheet-1.png">contact-sheet-1.png</a> · <a href="contact-sheet-2.png">contact-sheet-2.png</a> · <a href="contact-sheet-3.png">contact-sheet-3.png</a> · <a href="contact-sheet-4.png">contact-sheet-4.png</a></p>
+<article><h2 class="review">flow-single — REVIEW</h2>
+<p>Raster SSIM is 0.9347</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-single-native.png" alt="Native flow-single"></div>
+<div><strong>Official</strong><br><img src="flow-single-official.png" alt="Official flow-single"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;$$x^2$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-text — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-text-native.png" alt="Native flow-text"></div>
+<div><strong>Official</strong><br><img src="flow-text-official.png" alt="Official flow-text"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;energy $$E=mc^2$$ joules&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-multiple — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-multiple-native.png" alt="Native flow-multiple"></div>
+<div><strong>Official</strong><br><img src="flow-multiple-official.png" alt="Official flow-multiple"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;$$a^2$$ + $$b^2$$ = c&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-fraction — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-fraction-native.png" alt="Native flow-fraction"></div>
+<div><strong>Official</strong><br><img src="flow-fraction-official.png" alt="Official flow-fraction"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;left $$\frac{a}{b}$$ right $$x$$ end&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-br — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-br-native.png" alt="Native flow-br"></div>
+<div><strong>Official</strong><br><img src="flow-br-official.png" alt="Official flow-br"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;energy&lt;br/&gt;$$E=mc^2$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-newline — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-newline-native.png" alt="Native flow-newline"></div>
+<div><strong>Official</strong><br><img src="flow-newline-official.png" alt="Official flow-newline"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;energy
+$$E=mc^2$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-formula-br — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-formula-br-native.png" alt="Native flow-formula-br"></div>
+<div><strong>Official</strong><br><img src="flow-formula-br-official.png" alt="Official flow-formula-br"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;$$x$$&lt;br/&gt;$$y$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-repeated — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-repeated-native.png" alt="Native flow-repeated"></div>
+<div><strong>Official</strong><br><img src="flow-repeated-official.png" alt="Official flow-repeated"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;$$x$$ + $$x$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-spaces — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-spaces-native.png" alt="Native flow-spaces"></div>
+<div><strong>Official</strong><br><img src="flow-spaces-official.png" alt="Official flow-spaces"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;  A   $$x$$   B  &quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-entities — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-entities-native.png" alt="Native flow-entities"></div>
+<div><strong>Official</strong><br><img src="flow-entities-official.png" alt="Official flow-entities"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;A&amp;nbsp; $$x$$ &amp;amp; B&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-html — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-html-native.png" alt="Native flow-html"></div>
+<div><strong>Official</strong><br><img src="flow-html-official.png" alt="Official flow-html"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;&lt;b&gt;energy&lt;/b&gt; $$E=mc^2$$ &lt;i&gt;joules&lt;/i&gt;&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0.0000049999999873762135,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">flow-neutral-html — REVIEW</h2>
+<p>Raster SSIM is 0.9657</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-neutral-html-native.png" alt="Native flow-neutral-html"></div>
+<div><strong>Official</strong><br><img src="flow-neutral-html-official.png" alt="Official flow-neutral-html"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;before&lt;span&gt; left &lt;b&gt;middle&lt;/b&gt; right &lt;/span&gt;after $$x$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.015629999999987376,
+  &quot;maximumLabelDelta&quot;: 0.015620000000012624,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-adjacent-html — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-adjacent-html-native.png" alt="Native flow-adjacent-html"></div>
+<div><strong>Official</strong><br><img src="flow-adjacent-html-official.png" alt="Official flow-adjacent-html"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;&lt;span&gt; a &lt;/span&gt;&lt;span&gt; b &lt;/span&gt;$$x$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-small-html — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-small-html-native.png" alt="Native flow-small-html"></div>
+<div><strong>Official</strong><br><img src="flow-small-html-official.png" alt="Official flow-small-html"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;&lt;small&gt;small&lt;/small&gt; $$x$$ large&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.015625,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-color-html — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-color-html-native.png" alt="Native flow-color-html"></div>
+<div><strong>Official</strong><br><img src="flow-color-html-official.png" alt="Official flow-color-html"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;&lt;span&gt;plain &lt;i style=&#39;color:red&#39;&gt;red&lt;/i&gt; plain&lt;/span&gt; $$x$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-tall — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-tall-native.png" alt="Native flow-tall"></div>
+<div><strong>Official</strong><br><img src="flow-tall-official.png" alt="Official flow-tall"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;sum $$\sum_{i=1}^{n}\frac{i}{i+1}$$ done&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">flow-wide — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-wide-native.png" alt="Native flow-wide"></div>
+<div><strong>Official</strong><br><img src="flow-wide-official.png" alt="Official flow-wide"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A[&quot;identity $$a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t$$ result&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0000049999999873762135,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">flow-edge — REVIEW</h2>
+<p>Route endpoint/bend coordinates differ by 30.0000 px; Outer label geometry differs by 4.0000 px; Raster SSIM is 0.7783</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-edge-native.png" alt="Native flow-edge"></div>
+<div><strong>Official</strong><br><img src="flow-edge-official.png" alt="Official flow-edge"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
+A --&gt;|&quot;mass $$E=mc^2$$ units&quot;| B</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 4,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 1,
+    &quot;officialEdgeCount&quot;: 1,
+    &quot;edges&quot;: [
+      {
+        &quot;edgeId&quot;: &quot;edge-0&quot;,
+        &quot;native&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;R&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Right&quot;,
+          &quot;destinationPortSide&quot;: &quot;Left&quot;
+        },
+        &quot;official&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;R&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Right&quot;,
+          &quot;destinationPortSide&quot;: &quot;Left&quot;
+        },
+        &quot;findingCodes&quot;: []
+      }
+    ],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">flow-rotation — REVIEW</h2>
+<p>Route endpoint/bend coordinates differ by 10.0000 px; Raster SSIM is 0.7230</p>
+<div class="pair"><div><strong>Native</strong><br><img src="flow-rotation-native.png" alt="Native flow-rotation"></div>
+<div><strong>Official</strong><br><img src="flow-rotation-official.png" alt="Official flow-rotation"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>flowchart BT
+A[&quot;value $$x^2$$&quot;] --&gt; B[&quot;$$x$$ + $$y$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 1,
+    &quot;officialEdgeCount&quot;: 1,
+    &quot;edges&quot;: [
+      {
+        &quot;edgeId&quot;: &quot;edge-0&quot;,
+        &quot;native&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;U&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Top&quot;,
+          &quot;destinationPortSide&quot;: &quot;Bottom&quot;
+        },
+        &quot;official&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;U&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Top&quot;,
+          &quot;destinationPortSide&quot;: &quot;Bottom&quot;
+        },
+        &quot;findingCodes&quot;: []
+      }
+    ],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">state-edge — REVIEW</h2>
+<p>Route endpoint/bend coordinates differ by 30.0000 px; Raster SSIM is 0.6156</p>
+<div class="pair"><div><strong>Native</strong><br><img src="state-edge-native.png" alt="Native state-edge"></div>
+<div><strong>Official</strong><br><img src="state-edge-official.png" alt="Official state-edge"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>stateDiagram-v2
+Pending --&gt; Approved : sum $$x^2$$ plus $$y^2$$</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 1,
+    &quot;officialEdgeCount&quot;: 1,
+    &quot;edges&quot;: [
+      {
+        &quot;edgeId&quot;: &quot;edge-0&quot;,
+        &quot;native&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;D&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Bottom&quot;,
+          &quot;destinationPortSide&quot;: &quot;Top&quot;
+        },
+        &quot;official&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;D&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Bottom&quot;,
+          &quot;destinationPortSide&quot;: &quot;Top&quot;
+        },
+        &quot;findingCodes&quot;: []
+      }
+    ],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">class-title — REVIEW</h2>
+<p>Raster SSIM is 0.7930</p>
+<div class="pair"><div><strong>Native</strong><br><img src="class-title-native.png" alt="Native class-title"></div>
+<div><strong>Official</strong><br><img src="class-title-official.png" alt="Official class-title"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>classDiagram
+class A[&quot;value $$x^2$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">er-title — REVIEW</h2>
+<p>Raster SSIM is 0.8712</p>
+<div class="pair"><div><strong>Native</strong><br><img src="er-title-native.png" alt="Native er-title"></div>
+<div><strong>Official</strong><br><img src="er-title-official.png" alt="Official er-title"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>erDiagram
+A[&quot;value $$x^2$$&quot;] { string name }</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="pass">er-relation — PASS</h2>
+<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+<div class="pair"><div><strong>Native</strong><br><img src="er-relation-native.png" alt="Native er-relation"></div>
+<div><strong>Official</strong><br><img src="er-relation-official.png" alt="Official er-relation"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>erDiagram
+A ||--o{ B : &quot;value $$x^2$$&quot;</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 1,
+    &quot;officialEdgeCount&quot;: 1,
+    &quot;edges&quot;: [
+      {
+        &quot;edgeId&quot;: &quot;edge-0&quot;,
+        &quot;native&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;D&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Bottom&quot;,
+          &quot;destinationPortSide&quot;: &quot;Top&quot;
+        },
+        &quot;official&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;D&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Bottom&quot;,
+          &quot;destinationPortSide&quot;: &quot;Top&quot;
+        },
+        &quot;findingCodes&quot;: []
+      }
+    ],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">block — REVIEW</h2>
+<p>Raster SSIM is 0.5057</p>
+<div class="pair"><div><strong>Native</strong><br><img src="block-native.png" alt="Native block"></div>
+<div><strong>Official</strong><br><img src="block-official.png" alt="Official block"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>block-beta
+A[&quot;value $$x^2$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">kanban — REVIEW</h2>
+<p>Raster SSIM is 0.7537</p>
+<div class="pair"><div><strong>Native</strong><br><img src="kanban-native.png" alt="Native kanban"></div>
+<div><strong>Official</strong><br><img src="kanban-official.png" alt="Official kanban"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>kanban
+todo[value $$x^2$$]
+  task[Review]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">mindmap — REVIEW</h2>
+<p>Raster SSIM is 0.6251</p>
+<div class="pair"><div><strong>Native</strong><br><img src="mindmap-native.png" alt="Native mindmap"></div>
+<div><strong>Official</strong><br><img src="mindmap-official.png" alt="Official mindmap"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>mindmap
+root[&quot;value $$x^2$$&quot;]</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">usecase — REVIEW</h2>
+<p>Route endpoint/bend coordinates differ by 34.0000 px; Outer label geometry differs by 4.0000 px; Raster SSIM is 0.8295</p>
+<div class="pair"><div><strong>Native</strong><br><img src="usecase-native.png" alt="Native usecase"></div>
+<div><strong>Official</strong><br><img src="usecase-official.png" alt="Official usecase"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>usecase-beta
+A -- &quot;`value $$x^2$$`&quot; --&gt; B</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 4,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 1,
+    &quot;officialEdgeCount&quot;: 1,
+    &quot;edges&quot;: [
+      {
+        &quot;edgeId&quot;: &quot;edge-0&quot;,
+        &quot;native&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;R&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Right&quot;,
+          &quot;destinationPortSide&quot;: &quot;Left&quot;
+        },
+        &quot;official&quot;: {
+          &quot;pointCount&quot;: 2,
+          &quot;bendCount&quot;: 0,
+          &quot;directionSequence&quot;: [
+            &quot;R&quot;
+          ],
+          &quot;sourcePortSide&quot;: &quot;Right&quot;,
+          &quot;destinationPortSide&quot;: &quot;Left&quot;
+        },
+        &quot;findingCodes&quot;: []
+      }
+    ],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article><article><h2 class="review">requirement — REVIEW</h2>
+<p>Raster SSIM is 0.9126</p>
+<div class="pair"><div><strong>Native</strong><br><img src="requirement-native.png" alt="Native requirement"></div>
+<div><strong>Official</strong><br><img src="requirement-official.png" alt="Official requirement"></div></div>
+<details><summary>Shared Mermaid source and geometry</summary><pre>requirementDiagram
+requirement formula_label {
+id: 1
+text: &quot;value $$x^2$$ plus $$y$$&quot;
+risk: low
+verifymethod: test
+}</pre>
+<pre>{
+  &quot;maximumItemDelta&quot;: 0.0078125,
+  &quot;maximumLabelDelta&quot;: 0,
+  &quot;topology&quot;: {
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;findings&quot;: [],
+    &quot;nativeEdgeCount&quot;: 0,
+    &quot;officialEdgeCount&quot;: 0,
+    &quot;edges&quot;: [],
+    &quot;nativeRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    },
+    &quot;officialRelationships&quot;: {
+      &quot;sharedTracks&quot;: [],
+      &quot;strictCrossings&quot;: [],
+      &quot;sharedEndpoints&quot;: []
+    }
+  }
+}</pre></details></article>
+</main></html>

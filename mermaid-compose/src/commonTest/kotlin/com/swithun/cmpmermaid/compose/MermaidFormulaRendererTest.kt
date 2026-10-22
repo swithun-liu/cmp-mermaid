@@ -339,7 +339,7 @@ class MermaidFormulaRendererTest {
     }
 
     @Test
-    fun formulaBoundsHonorSceneTextHorizontalAlignment() {
+    fun formulaFlexContentRemainsCenteredUnderInheritedTextAlignment() {
         val artifact = artifact(width = 20f, height = 10f)
         val bounds = SceneRect(
             left = 10f,
@@ -356,10 +356,80 @@ class MermaidFormulaRendererTest {
             horizontalAlignment = alignment,
         )
 
-        assertEquals(14f, formulaArtifactBounds(element(SceneTextAlignment.Start), artifact).left)
+        assertEquals(50f, formulaArtifactBounds(element(SceneTextAlignment.Start), artifact).left)
         assertEquals(50f, formulaArtifactBounds(element(SceneTextAlignment.Center), artifact).left)
-        assertEquals(86f, formulaArtifactBounds(element(SceneTextAlignment.End), artifact).left)
+        assertEquals(50f, formulaArtifactBounds(element(SceneTextAlignment.End), artifact).left)
         assertEquals(35f, formulaArtifactBounds(element(SceneTextAlignment.Center), artifact).top)
+    }
+
+    @Test
+    fun mixedLabelsResolveEveryFormulaAndRelayoutTheCompleteContent() = runTest {
+        val calls = mutableListOf<MermaidFormulaRequest>()
+        val prepared = prepareMermaidScene(
+            source = "flowchart LR\nA[\"energy \$\$x^2\$\$ + \$\$y^2\$\$ joules\"]",
+            theme = MermaidTheme.FlowchartDefault,
+            options = MermaidRenderOptions(layout = "dagre"),
+            engine = MermaidEngine(),
+            textMetrics = textMetrics(),
+            assetMetrics = emptyMap(),
+            formulaRenderer = MermaidFormulaRenderer { request ->
+                calls += request
+                GMResult.Ok(artifact(width = 40f, height = 30f, baseline = 22f))
+            },
+            formulaRasterScale = 2f,
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(prepared.result).value
+        val label = scene.elements.filterIsInstance<SceneText>().single()
+        val layout = assertNotNull(label.formulaLayout)
+        assertEquals(listOf("energy", "x^2", "+", "y^2", "joules"), layout.items.map { it.text })
+        assertEquals(setOf("x^2", "y^2"), calls.mapTo(mutableSetOf()) { it.source })
+        assertEquals(2, calls.size)
+        assertEquals(2, prepared.formulaArtifacts.size)
+        assertEquals(171f, layout.width)
+        assertEquals(30f, label.bounds.height)
+        assertEquals(layout.width, label.bounds.width)
+        assertTrue(label.formulaRequests().all { prepared.formulaArtifacts.containsKey(it) })
+        assertTrue(scene.diagnostics.isEmpty())
+    }
+
+    @Test
+    fun aFailedMixedFormulaDoesNotDiscardOtherArtifactsOrOrdinaryText() = runTest {
+        val prepared = prepareMermaidScene(
+            source = "flowchart LR\nA[\"left \$\$x^2\$\$ + \$\$bad\$\$ right\"]",
+            theme = MermaidTheme.FlowchartDefault,
+            options = MermaidRenderOptions(layout = "dagre"),
+            engine = MermaidEngine(),
+            textMetrics = textMetrics(),
+            assetMetrics = emptyMap(),
+            formulaRenderer = MermaidFormulaRenderer { request ->
+                if (request.source == "bad") GMResult.Err(MermaidFormulaError.Unsupported("invalid"))
+                else GMResult.Ok(artifact(width = 40f, height = 30f, baseline = 22f))
+            },
+            formulaRasterScale = 1f,
+        )
+        val scene = assertIs<GMResult.Ok<MermaidScene>>(prepared.result).value
+        val layout = assertNotNull(scene.elements.filterIsInstance<SceneText>().single().formulaLayout)
+        assertEquals(listOf("left", "x^2", "+", "bad", "right"), layout.items.map { it.text })
+        assertEquals("x^2", layout.items.single { it.formula != null }.formula?.source)
+        assertEquals(setOf("x^2"), prepared.formulaArtifacts.keys.mapTo(mutableSetOf()) { it.source })
+        assertEquals(setOf("bad"), prepared.formulaFailures.keys.mapTo(mutableSetOf()) { it.source })
+        assertEquals(1, scene.diagnostics.size)
+    }
+
+    @Test
+    fun mixedFormulaCancellationPropagatesWithoutPublishingAPartialScene() = runTest {
+        assertFailsWith<CancellationException> {
+            prepareMermaidScene(
+                source = "flowchart LR\nA[\"left \$\$x^2\$\$ right\"]",
+                theme = MermaidTheme.FlowchartDefault,
+                options = MermaidRenderOptions(layout = "dagre"),
+                engine = MermaidEngine(),
+                textMetrics = textMetrics(),
+                assetMetrics = emptyMap(),
+                formulaRenderer = MermaidFormulaRenderer { throw CancellationException("cancel") },
+                formulaRasterScale = 1f,
+            )
+        }
     }
 
     private fun request() = MermaidFormulaRequest(

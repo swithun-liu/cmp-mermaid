@@ -2,6 +2,7 @@ package com.swithun.cmpmermaid.core.requirement
 
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidScene
 import com.swithun.cmpmermaid.core.SceneArrowHead
@@ -39,11 +40,13 @@ import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPor
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidRenderedText
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidTextPort
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidTextDimensionsPort
 import com.swithun.cmpmermaid.core.requirement.upstream.mermaid.RequirementDb
 import com.swithun.cmpmermaid.core.requirement.upstream.mermaid.RequirementElement
 import com.swithun.cmpmermaid.core.requirement.upstream.mermaid.RequirementNode
 import com.swithun.cmpmermaid.core.requirement.upstream.mermaid.RequirementRelation
 import com.swithun.cmpmermaid.core.requirement.upstream.mermaid.RequirementRelationshipType
+import kotlinx.coroutines.CancellationException
 import kotlin.math.max
 import kotlin.math.min
 
@@ -264,17 +267,6 @@ internal class RequirementLayout {
         forceBold: Boolean,
         context: MermaidRenderContext,
     ): GMResult<RequirementTextVisual, MermaidError> {
-        val rendered = when (
-            val result = MermaidTextPort.render(
-                source = source,
-                labelType = FlowLabelType.Markdown,
-                config = context.options,
-                onDiagnostic = context::reportDiagnostic,
-            )
-        ) {
-            is GMResult.Ok -> result.value
-            is GMResult.Err -> return result
-        }
         val fontSize = style.fontSize ?: context.options.fontSize ?: context.theme.fontSize
         val lineHeight = style.lineHeightPixels
             ?.div(fontSize)
@@ -282,10 +274,42 @@ internal class RequirementLayout {
             ?: style.lineHeightMultiplier
             ?: DEFAULT_LINE_HEIGHT
         val fontFamily = style.fontFamily ?: context.options.fontFamily ?: context.theme.fontFamily
-        val weight = if (forceBold) {
-            SceneTextWeight.Bold
-        } else {
-            style.fontWeight ?: SceneTextWeight.Normal
+        val weight = if (forceBold) SceneTextWeight.Bold
+        else style.fontWeight ?: SceneTextWeight.Normal
+        if (source.isEmpty()) {
+            return GMResult.Ok(RequirementTextVisual(
+                text = "", spans = emptyList(), metrics = TextMetrics(0f, 0f),
+                fontSize = fontSize, lineHeight = lineHeight,
+                fontFamily = fontFamily, weight = weight,
+            ))
+        }
+        // Mermaid.js 12.0.0: requirementBox.ts -> addText, input preprocessing;
+        // utils.ts -> calculateTextWidth. This width is not the final label box.
+        val sanitized = when (
+            val result = MermaidTextPort.sanitizeText(MermaidPreprocessor.decodeEntities(source))
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
+        val labelWidth = when (
+            val result = MermaidTextDimensionsPort.calculateTextWidth(
+                source, context.options, context.textMetrics,
+            )
+        ) {
+            is GMResult.Ok -> result.value + 50f
+            is GMResult.Err -> return result
+        }
+        val rendered = when (
+            val result = MermaidTextPort.render(
+                source = sanitized,
+                labelType = FlowLabelType.Markdown,
+                config = context.options,
+                onDiagnostic = context::reportDiagnostic,
+                formulaRenderingAvailable = context.formulaRenderingEnabled,
+            )
+        ) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
         }
         val spans = buildList {
             addAll(rendered.spans)
@@ -309,11 +333,12 @@ internal class RequirementLayout {
                 TextMetricsRequest(
                     text = rendered.text,
                     fontSize = fontSize,
-                    maxWidth = UNWRAPPED_TEXT_WIDTH,
+                    maxWidth = labelWidth,
                     lineHeight = lineHeight,
                     fontFamily = fontFamily,
                     weight = weight,
                     spans = spans,
+                    htmlLabel = context.options.htmlLabels,
                 ),
             )
             // Mermaid: requirementBox.ts -> addText() uses the HTML label's line box
@@ -323,21 +348,28 @@ internal class RequirementLayout {
             } else {
                 rendered.text.count { character -> character == '\n' } + 1
             }
-            val lineBoxHeight = visibleLineCount * fontSize * lineHeight
+            val hasFormulaBox = measured.formula != null || measured.formulaLayout != null
+            val labelHeight = if (!context.options.htmlLabels) {
+                // addText's SVG branch appends six logical pixels to getBBox.
+                measured.height + 6f
+            } else if (hasFormulaBox) {
+                measured.height
+            } else {
+                max(measured.height, visibleLineCount * fontSize * lineHeight)
+            }
             GMResult.Ok(
                 RequirementTextVisual(
                     text = rendered.text,
                     spans = spans,
-                    metrics = TextMetrics(
-                        width = measured.width,
-                        height = max(measured.height, lineBoxHeight),
-                    ),
+                    metrics = measured.copy(height = labelHeight),
                     fontSize = fontSize,
                     lineHeight = lineHeight,
                     fontFamily = fontFamily,
                     weight = weight,
                 ),
             )
+        } catch (cancelled: CancellationException) {
+            throw cancelled
         } catch (failure: Exception) {
             GMResult.Err(
                 MermaidError.Unexpected.from(failure, "Requirement text measurement failed"),
@@ -750,7 +782,7 @@ internal class RequirementLayout {
         horizontalAlignment = alignment,
         zIndex = zIndex,
         softWrap = false,
-    )
+    ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
 
     private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
         is SceneAsset -> element.bounds

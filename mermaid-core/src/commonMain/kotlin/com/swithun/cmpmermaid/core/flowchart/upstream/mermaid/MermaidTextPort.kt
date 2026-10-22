@@ -10,6 +10,7 @@ import com.swithun.cmpmermaid.core.MermaidPreprocessor
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MERMAID_KATEX_PATTERN
 import com.swithun.cmpmermaid.core.SceneColor
+import com.swithun.cmpmermaid.core.SceneHtmlFlexItem
 import com.swithun.cmpmermaid.core.SceneTextBaselineShift
 import com.swithun.cmpmermaid.core.SceneTextFontFamily
 import com.swithun.cmpmermaid.core.SceneTextSpan
@@ -36,9 +37,11 @@ internal object MermaidTextPort {
     ): GMResult<MermaidRenderedText, MermaidError> {
         val parserDecoded = MermaidPreprocessor.decodeEntities(source)
         if (config.htmlLabels && MERMAID_KATEX_PATTERN.containsMatchIn(parserDecoded)) {
-            val rendered = renderKatexPlainText(parserDecoded)
-            val formulaSource = rendered.formulaSource()
-            if (!formulaRenderingAvailable || formulaSource == null) {
+            val rendered = when (val result = renderKatexPlainText(parserDecoded)) {
+                is GMResult.Ok -> result.value
+                is GMResult.Err -> return result
+            }
+            if (!formulaRenderingAvailable) {
                 onDiagnostic(katexPlainTextDiagnostic())
             }
             return GMResult.Ok(
@@ -67,34 +70,54 @@ internal object MermaidTextPort {
      * diagrams/common/common.ts -> katexRegex, hasKatex;
      * rendering-util/createText.ts -> inputForKatex.
      *
-     * KaTeX/MathML layout is not translated. The native fallback preserves the
-     * formula source without delimiters so one unsupported label cannot replace
-     * the complete diagram with Mermaid's error rendering.
+     * renderKatexUnsanitized replaces every match in the original HTML, retaining
+     * ordinary content. Formula spans substitute typed provider slots for MathML.
+     * addHtmlSpan normalizes br to newline before renderKatexUnsanitized splits on
+     * br, so these newlines remain CSS whitespace, not separate formula rows.
      */
-    private fun renderKatexPlainText(source: String): MermaidRenderedText {
+    private fun renderKatexPlainText(
+        source: String,
+    ): GMResult<MermaidRenderedText, MermaidError> {
         val normalized = source
-            .replace(LINE_BREAK, "\n")
             .replace("\\\\", "\\")
-        val decoded = MermaidHtmlEntityDecoder.decode(normalized)
-        val formulaMatch = MERMAID_KATEX_PATTERN
-            .findAll(decoded)
-            .toList()
-            .singleOrNull()
-            ?.takeIf { match ->
-                match.range.first == 0 && match.range.last == decoded.lastIndex
-            }
-        val text = MERMAID_KATEX_PATTERN.replace(decoded) { match -> match.groupValues[1] }
-        return MermaidRenderedText(
-            text = text,
-            spans = formulaMatch?.let { match ->
-                listOf(
-                    SceneTextSpan(
-                        start = 0,
-                        end = text.length,
-                    ).withFormula(MermaidFormulaSource(match.groupValues[1])),
+            .replace(LINE_BREAK, "\n")
+        val output = StyledTextBuilder()
+        val styles = HtmlStyleStack(formulaFlexLayout = true)
+        var offset = 0
+        for (match in MERMAID_KATEX_PATTERN.findAll(normalized)) {
+            when (
+                val result = styles.consume(
+                    raw = normalized.substring(offset, match.range.first),
+                    output = output,
+                    inheritedStyle = TextStyle(),
                 )
-            }.orEmpty(),
-        )
+            ) {
+                is GMResult.Err -> return result
+                is GMResult.Ok -> Unit
+            }
+            if (!styles.isSuppressingContent()) {
+                if (styles.hasOpenElement()) {
+                    return unsupported("formula nested inside an HTML label element")
+                }
+                output.appendFormula(
+                    MermaidFormulaSource(match.groupValues[1]),
+                    styles.current(),
+                )
+            }
+            offset = match.range.last + 1
+        }
+        when (
+            val result = styles.consume(
+                raw = normalized.substring(offset),
+                output = output,
+                inheritedStyle = TextStyle(),
+            )
+        ) {
+            is GMResult.Err -> return result
+            is GMResult.Ok -> Unit
+        }
+        styles.finish(output)
+        return GMResult.Ok(output.build())
     }
 
     /**
@@ -479,7 +502,9 @@ internal object MermaidTextPort {
             message = "Native Mermaid rendered an unsupported KaTeX label as plain text",
         )
 
-    private class HtmlStyleStack {
+    private class HtmlStyleStack(
+        private val formulaFlexLayout: Boolean = false,
+    ) {
         private val frames = mutableListOf<HtmlStyleFrame>()
         private val suppressedTags = mutableListOf<String>()
 
@@ -488,6 +513,13 @@ internal object MermaidTextPort {
         }
 
         fun isSuppressingContent(): Boolean = suppressedTags.isNotEmpty()
+
+        fun hasOpenElement(): Boolean = frames.isNotEmpty()
+
+        fun finish(output: StyledTextBuilder) {
+            frames.firstOrNull()?.let { frame -> appendFlexItem(frame, output) }
+            frames.clear()
+        }
 
         fun consume(
             raw: String,
@@ -535,7 +567,7 @@ internal object MermaidTextPort {
                 return GMResult.Ok(Unit)
             }
             if (tag.closing) {
-                closeFrame(tag.name)
+                closeFrame(tag.name, output)
                 return GMResult.Ok(Unit)
             }
             when (tag.name) {
@@ -550,7 +582,13 @@ internal object MermaidTextPort {
                 in UNSUPPORTED_LAYOUT_TAGS ->
                     return unsupported("HTML label tag '<${tag.name}>'")
             }
-            if (tag.name in BLOCK_TAGS && output.hasText()) {
+            if (
+                formulaFlexLayout &&
+                (tag.name == "p" || (tag.name in BLOCK_TAGS && frames.isNotEmpty()))
+            ) {
+                return unsupported("block HTML content in a formula label")
+            }
+            if (!formulaFlexLayout && tag.name in BLOCK_TAGS && output.hasText()) {
                 output.ensureLineBreak(inheritedStyle.merge(current()))
             }
             val style = when (val result = styleFor(tag)) {
@@ -558,16 +596,26 @@ internal object MermaidTextPort {
                 is GMResult.Err -> return result
             }
             if (!tag.selfClosing && tag.name !in VOID_TAGS) {
-                frames += HtmlStyleFrame(tag.name, style)
+                frames += HtmlStyleFrame(
+                    tag = tag.name,
+                    style = style,
+                    flexItemStart = output.length.takeIf { formulaFlexLayout && frames.isEmpty() },
+                )
             }
             return GMResult.Ok(Unit)
         }
 
-        private fun closeFrame(name: String) {
+        private fun closeFrame(name: String, output: StyledTextBuilder) {
             val index = frames.indexOfLast { frame -> frame.tag == name }
             if (index >= 0) {
+                if (index == 0) appendFlexItem(frames[index], output)
                 frames.subList(index, frames.size).clear()
             }
+        }
+
+        private fun appendFlexItem(frame: HtmlStyleFrame, output: StyledTextBuilder) {
+            val start = frame.flexItemStart ?: return
+            output.appendFlexItem(start, SceneHtmlFlexItem(frame.style.fontSizeScale))
         }
 
         private fun styleFor(
@@ -588,7 +636,7 @@ internal object MermaidTextPort {
                     baselineShift = SceneTextBaselineShift.Superscript,
                     fontSizeScale = HTML_SCRIPT_FONT_SIZE_SCALE,
                 )
-                "small" -> TextStyle(fontSizeScale = 0.8f)
+                "small" -> TextStyle(fontSizeScale = HTML_SCRIPT_FONT_SIZE_SCALE)
                 "mark" -> TextStyle(background = SceneColor(0xFFFFFF00))
                 "font" -> {
                     val colorSource = tag.attributes["color"]
@@ -696,7 +744,7 @@ internal object MermaidTextPort {
         private fun parseFontSizeScale(source: String): Float? {
             val normalized = source.trim().lowercase()
             return when {
-                normalized == "smaller" -> 0.8f
+                normalized == "smaller" -> HTML_SCRIPT_FONT_SIZE_SCALE
                 normalized == "larger" -> 1.2f
                 normalized.endsWith("%") ->
                     normalized.dropLast(1).toFloatOrNull()?.div(100f)
@@ -710,6 +758,18 @@ internal object MermaidTextPort {
     private class StyledTextBuilder {
         private val text = StringBuilder()
         private val spans = mutableListOf<SceneTextSpan>()
+
+        val length: Int get() = text.length
+
+        fun appendFlexItem(start: Int, item: SceneHtmlFlexItem) {
+            spans += SceneTextSpan(start, text.length).withHtmlFlexItem(item)
+        }
+
+        fun appendFormula(source: MermaidFormulaSource, style: TextStyle) {
+            val start = text.length
+            append(source.source, style)
+            spans += SceneTextSpan(start, text.length).withFormula(source)
+        }
 
         fun appendHtml(
             value: String,
@@ -923,6 +983,7 @@ internal object MermaidTextPort {
     private data class HtmlStyleFrame(
         val tag: String,
         val style: TextStyle,
+        val flexItemStart: Int? = null,
     )
 }
 

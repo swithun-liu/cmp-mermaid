@@ -29,7 +29,7 @@ discarded or rendered as a different feature.
 | Direction | Supported | TB, BT, LR, and RL |
 | Layout | Supported with explicit boundary | Pure Kotlin Dagre is the Native default; every ELK selector returns `UnsupportedFeature("ELK layout")` |
 | Markdown and HTML text | Supported with explicit boundaries | Mermaid/Marked text path for class labels, members, notes, namespace labels, lollipop labels, and relation labels |
-| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` can measure and draw one complete `$$...$$` label; relation, note, class, namespace, and lollipop text retain the request through SceneGraph |
+| Formula labels | Provider-backed, non-Stable | A host-supplied `MermaidFormulaRenderer` measures each `$$...$$` match; ordinary text and multiple formulas retain the shared flex composition through SceneGraph |
 | Styles | Supported with explicit boundaries | `style`, `classDef`, fill, stroke, dash, text, font, decoration, and line-height properties mapped by the shared style adapter |
 | Themes | Supported | Mermaid 12 class color slots, note colors, group colors, redux/neo appearance, and shared native theme variables |
 | Links, callbacks, and tooltips | Supported | Exposed as `SceneNodeInteraction`; callbacks are retained only at Mermaid's loose security level |
@@ -41,9 +41,11 @@ KaTeX parsing and MathML generation are not translated or bundled. Without a
 host formula renderer, a `$$...$$` HTML label renders its inner source as plain
 text and the successful scene reports
 `MermaidDiagnostic.UnsupportedFeature(fallback = PlainText)`. A supplied
-renderer can asynchronously measure and draw a label consisting of one complete
-formula block. Renderer failures, mixed text/formula labels, and multiple
-formula blocks retain the plain-text fallback.
+renderer can asynchronously measure and draw each formula in a mixed or
+multiple-formula label. Renderer failures retain a per-item plain-text fallback.
+Nested formulas inside user HTML and untranslated block formatting return
+structured unsupported results. The [shared-label audit](assets/mixed-formula-report/index.html)
+records current findings; full-family formula parity remains non-Stable.
 
 The following legal Mermaid capabilities return
 `MermaidError.UnsupportedFeature`:

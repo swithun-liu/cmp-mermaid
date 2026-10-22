@@ -627,6 +627,7 @@ internal class ClassLayout {
                         height = metrics.height,
                     ),
                     formula = metrics.formula,
+                    formulaLayout = metrics.formulaLayout,
                 )
             }
             GMResult.Ok(visuals)
@@ -858,7 +859,7 @@ internal class ClassLayout {
                 weight = SceneTextWeight.Normal,
                 spans = visual.spans,
                 zIndex = index + 1,
-            ).withFormula(metrics.formula)
+            ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
         }
     }
 
@@ -954,7 +955,7 @@ internal class ClassLayout {
             spans = visual.spans,
             horizontalAlignment = SceneTextAlignment.Start,
             zIndex = 20,
-        ).withFormula(visual.metrics.formula)
+        ).withFormula(visual.metrics.formula).withFormulaLayout(visual.metrics.formulaLayout)
     }
 
     private fun addInterface(
@@ -978,7 +979,7 @@ internal class ClassLayout {
             weight = SceneTextWeight.Normal,
             spans = visual.spans,
             zIndex = 20,
-        ).withFormula(visual.metrics.formula)
+        ).withFormula(visual.metrics.formula).withFormulaLayout(visual.metrics.formulaLayout)
     }
 
     private fun addEdges(
@@ -1106,7 +1107,7 @@ internal class ClassLayout {
                 weight = SceneTextWeight.Normal,
                 spans = visual.spans,
                 zIndex = 7,
-            ).withFormula(visual.formula)
+            ).withFormula(visual.formula).withFormulaLayout(visual.formulaLayout)
         }
         relation.relationTitle1
             .takeUnless { it == "none" || it.isBlank() }
@@ -1219,7 +1220,7 @@ internal class ClassLayout {
             weight = SceneTextWeight.Normal,
             spans = rendered.spans,
             zIndex = 8,
-        ).withFormula(metrics.formula)
+        ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
         return GMResult.Ok(Unit)
     }
 
@@ -1520,7 +1521,7 @@ internal class ClassLayout {
         spans = spans,
         horizontalAlignment = alignment,
         zIndex = 20,
-    ).withFormula(metrics.formula)
+    ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
 
     private fun paletteFill(
         index: Int,
@@ -1685,6 +1686,7 @@ internal class ClassLayout {
         val spans: List<SceneTextSpan>,
         val size: SceneSize,
         val formula: MermaidFormulaMeasureRequest?,
+        val formulaLayout: com.swithun.cmpmermaid.core.MermaidFormulaLabelLayout?,
     )
 
     private data class ClassLayoutEdge(
