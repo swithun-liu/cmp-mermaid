@@ -37,21 +37,39 @@ class CMPMermaidViewControllerFactory {
         contentDescription: String,
         onContentSizeChanged: ((Double, Double) -> Unit)?,
         onError: ((MermaidRenderErrorInfo) -> Unit)?,
-    ): UIViewController = ComposeUIViewController {
-        MermaidDiagram(
-            source = source,
-            modifier = Modifier.fillMaxSize(),
-            contentDescription = contentDescription,
-            onRenderResult = { result ->
-                if (result is GMResult.Ok) {
-                    val size = result.value.contentSizeWithPadding()
-                    onContentSizeChanged?.invoke(
-                        size.width.toDouble(),
-                        size.height.toDouble(),
-                    )
-                }
-            },
-            onError = onError,
-        )
+    ): UIViewController = makeViewController(
+        source = source,
+        contentDescription = contentDescription,
+        formulaProvider = null,
+        onContentSizeChanged = onContentSizeChanged,
+        onError = onError,
+    )
+
+    fun makeViewController(
+        source: String,
+        contentDescription: String,
+        formulaProvider: CMPMermaidFormulaImageProvider?,
+        onContentSizeChanged: ((Double, Double) -> Unit)?,
+        onError: ((MermaidRenderErrorInfo) -> Unit)?,
+    ): UIViewController {
+        val formulaRenderer = formulaProvider?.toMermaidFormulaRenderer()
+        return ComposeUIViewController {
+            MermaidDiagram(
+                source = source,
+                modifier = Modifier.fillMaxSize(),
+                contentDescription = contentDescription,
+                onRenderResult = { result ->
+                    if (result is GMResult.Ok) {
+                        val size = result.value.contentSizeWithPadding()
+                        onContentSizeChanged?.invoke(
+                            size.width.toDouble(),
+                            size.height.toDouble(),
+                        )
+                    }
+                },
+                onError = onError,
+                formulaRenderer = formulaRenderer,
+            )
+        }
     }
 }

@@ -18,6 +18,13 @@ enum class MermaidFormulaRenderingMode {
     PlainText,
 }
 
+/**
+ * Intrinsic formula render request.
+ *
+ * [maxWidth] and [fontSize] are computed Mermaid CSS pixels expressed as scene logical pixels.
+ * [maxWidth] constrains formula content; it does not ask the provider to fill that width.
+ * [rasterScale] is physical bitmap pixels per logical pixel and must not change logical metrics.
+ */
 data class MermaidFormulaRequest(
     val source: String,
     val displayMode: MermaidFormulaDisplayMode,
@@ -49,12 +56,29 @@ sealed interface MermaidFormulaError {
 }
 
 fun interface MermaidFormulaPainter {
+    /**
+     * Draws the intrinsic formula content into [bounds].
+     *
+     * CMP Mermaid supplies a box whose logical width and height equal the
+     * [MermaidFormulaArtifact] dimensions. Bitmap-backed implementations must convert their
+     * physical pixels by [MermaidFormulaRequest.rasterScale] and preserve the content aspect
+     * ratio. Mermaid's wrapping width, edge-label background, and other outer layout are owned
+     * by the translated diagram stage and are not part of this paint box.
+     */
     fun draw(
         scope: DrawScope,
         bounds: Rect,
     )
 }
 
+/**
+ * Provider-owned intrinsic formula content.
+ *
+ * [width], [height], and [baseline] use Mermaid scene logical pixels and describe the
+ * provider's own formula layout box, equivalent to the KaTeX `<math>` box rather than the
+ * surrounding `createText.ts -> addHtmlSpan` div. CMP Mermaid applies diagram-specific outer
+ * width, alignment, and background padding after measurement.
+ */
 data class MermaidFormulaArtifact(
     val width: Float,
     val height: Float,
@@ -67,8 +91,10 @@ data class MermaidFormulaArtifact(
  * Platform-neutral formula extension point.
  *
  * Mermaid.js 12.0.0:
- * diagrams/common/common.ts -> renderKatexSanitized/calculateMathMLDimensions.
- * The host substitutes typed Compose drawing content for browser MathML.
+ * diagrams/common/common.ts -> renderKatexSanitized and
+ * rendering-util/createText.ts -> addHtmlSpan.
+ * The host substitutes intrinsic typed Compose drawing content for browser MathML. The
+ * translated diagram stage retains responsibility for the surrounding HTML-label layout box.
  */
 fun interface MermaidFormulaRenderer {
     suspend fun render(

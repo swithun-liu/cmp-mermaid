@@ -71,7 +71,12 @@ internal class FlowchartLayout {
                     MermaidError.Unexpected.from(failure, "Text measurement failed for '$id'"),
                 )
             }
-            val textMeasurement = measured.toMeasuredFlowText(node.label)
+            val textMeasurement = measured.toMeasuredFlowText(
+                text = node.label,
+                formulaLayoutWidth = context.options.wrappingWidth.takeIf {
+                    measured.formula != null && context.options.htmlLabels
+                },
+            )
             val textSize = textMeasurement.size
             nodeTextMeasurements[id] = textMeasurement
             val shapeLayout = when (
@@ -834,10 +839,16 @@ internal class FlowchartLayout {
         return GMResult.Ok(Unit)
     }
 
-    private fun TextMetrics.toMeasuredFlowText(text: String): MeasuredFlowText {
+    private fun TextMetrics.toMeasuredFlowText(
+        text: String,
+        formulaLayoutWidth: Float? = null,
+    ): MeasuredFlowText {
         val explicitLineCount = text.count { character -> character == '\n' } + 1
         return MeasuredFlowText(
-            size = SceneSize(width, height),
+            // Mermaid.js 12.0.0: createText.ts -> addHtmlSpan. A complete KaTeX node
+            // label contains a block flex wrapper, so the HTML table box fills the
+            // flowchart wrapping width while the intrinsic formula remains centered.
+            size = SceneSize(formulaLayoutWidth ?: width, height),
             softWrap = lineCount?.let { measuredLines ->
                 measuredLines > explicitLineCount
             } ?: true,

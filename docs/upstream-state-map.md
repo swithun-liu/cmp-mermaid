@@ -57,7 +57,7 @@ not `Exact` merely because its current output is renderable.
 | 4 | `rendering-util/subGraphTitleMargins.ts -> getSubGraphTitleMargins` in unified Dagre compound layout | `StateLayout.layout` option projection | **Exact**: the configured top and bottom margins, including the upstream zero defaults, pass through without a diagram-specific minimum |
 | 5 | `clusters.js -> insertCluster`, `roundedWithTitle`, and `noteGroup` | `StateLayout.addGroups` | **Platform adaptation**: SVG outer/body/title groups become ordered SceneGraph elements while preserving State group and note-group semantics |
 | 6 | `rendering-elements/shapes.ts` plus State shape registrations | `StateLayout.measureNode`, `shape`, and `addNode` | **Platform adaptation**: browser shape insertion becomes typed SceneGraph geometry |
-| 7 | `rendering-elements/edges.js` and `lineWithOffset.ts` | `MermaidEdgePathPort`, `StateLayout.addEdges` | **Platform adaptation** |
+| 7 | `rendering-elements/edges.js -> insertEdgeLabel`, `createText.ts -> addHtmlSpan`, and `lineWithOffset.ts` | `StateLayout.measureEdge`, `MermaidEdgePathPort`, `StateLayout.addEdges` | **Platform adaptation**: markdown edge labels use upstream's default 200px width; a complete formula uses its intrinsic height without synthetic background padding |
 | 8 | `stateRenderer-v3-unified.ts -> setupViewPortForSVG`, title, and link injection | `StateLayout.normalizeScene`, title and interaction projection | **Platform adaptation** |
 
 The former self-developed 22px State minimum has been removed. A focused
@@ -88,7 +88,9 @@ detail and geometry gates.
 - Android-incompatible generated metadata regex rules use equivalent
   line-prefix matchers while retaining their Jison rule indexes.
 - Mermaid DOM text maps to shared SceneGraph text spans and host-supplied
-  measurement.
+  measurement. Provider formula metrics represent the intrinsic `<math>` box;
+  State transition backgrounds use that box directly because State's
+  `.labelBkg` adds no CSS padding.
 - Browser-only label content returns `MermaidError.UnsupportedFeature`.
   A complete `$$...$$` label may use the optional platform-neutral formula
   renderer; absent/failed renderers and unsupported mixed composition retain

@@ -414,18 +414,25 @@ The adapter contract is:
 - `request.source` contains the formula without the surrounding `$$`
   delimiters. The adapter should also honor `displayMode`, `color`, and
   `accessibilityText`.
-- `maxWidth` and `fontSize` use Mermaid scene logical pixels.
+- `maxWidth` and `fontSize` are Mermaid's computed CSS pixels expressed as
+  scene logical pixels. `maxWidth` constrains intrinsic formula content; it
+  does not request a bitmap that fills the complete width.
   `rasterScale` tells a bitmap-backed adapter how many physical pixels to
   allocate per logical pixel; `MermaidDiagram` supplies the current Compose
   density automatically.
-- Returned `width`, `height`, and `baseline` also use logical pixels. Width and
-  height must be finite and positive; baseline must be finite and within
-  `0..height`.
+- Returned `width`, `height`, and `baseline` use logical pixels and describe
+  the provider's intrinsic formula layout box, equivalent to KaTeX's
+  `<math>` box. They do not include Mermaid's wrapping width or label
+  background padding. Width and height must be finite and positive; baseline
+  must be finite and within `0..height`.
 - `render` is suspending and may run away from the UI thread. An adapter whose
   platform engine requires the main thread must perform that dispatch itself.
 - The returned painter is invoked later by Compose Canvas and must keep its
-  drawing resources alive until then. It draws into the supplied logical
-  bounds; no platform View is inserted into the diagram.
+  drawing resources alive until then. CMP Mermaid supplies logical bounds
+  matching the returned intrinsic dimensions. Bitmap-backed painters must
+  convert physical pixels by `rasterScale` and preserve the content aspect
+  ratio; Mermaid-specific outer layout remains owned by CMP Mermaid. No
+  platform View is inserted into the diagram.
 - Expected platform, syntax, or resource-limit failures return
   `GMResult.Err(MermaidFormulaError...)`. Coroutine cancellation and fatal
   process errors must continue to propagate.

@@ -318,6 +318,7 @@ class StateLayoutTest {
             .single { text -> text.text == "x^2" }
 
         assertEquals("x^2", request.source)
+        assertEquals(200f, request.maxWidth)
         assertEquals(request, label.formula)
         assertTrue(scene.diagnostics.isEmpty())
     }
@@ -355,7 +356,10 @@ class StateLayoutTest {
         val label = resolvedScene.elements.filterIsInstance<SceneText>()
             .single { text -> text.text == "x^2" }
 
-        assertEquals(resolvedHeight + 8f, label.bounds.height)
+        assertEquals(resolvedHeight, label.bounds.height)
+        val background = resolvedScene.elements.filterIsInstance<SceneShape>()
+            .single { shape -> shape.id.endsWith("-label-background") }
+        assertEquals(resolvedHeight, background.bounds.height)
     }
 
     private fun render(

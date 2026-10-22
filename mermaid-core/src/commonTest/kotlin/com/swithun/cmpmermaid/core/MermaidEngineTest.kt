@@ -103,6 +103,7 @@ class MermaidEngineTest {
 
         assertEquals(request, pendingText.formula)
         assertEquals(2f, request.rasterScale)
+        assertEquals(120f, request.maxWidth)
         assertEquals(emptyList(), pendingScene.diagnostics)
 
         val resolvedScene = assertIs<GMResult.Ok<MermaidScene>>(
@@ -123,7 +124,9 @@ class MermaidEngineTest {
         val resolvedText = resolvedScene.elements.filterIsInstance<SceneText>()
             .single { text -> text.text == "x^2" }
 
-        assertEquals(96f, resolvedText.bounds.width)
+        // createText.ts -> addHtmlSpan keeps the intrinsic formula centered in the
+        // flowchart node's wrapping-width box.
+        assertEquals(120f, resolvedText.bounds.width)
         assertEquals(30f, resolvedText.bounds.height)
         assertEquals(request, resolvedText.formula)
     }

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "mermaidVersion": "12.0.0",
+  "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
+  "theme": "redux-color",
+  "deviceScaleFactor": 1,
+  "cases": [
+    {
+      "id": "flowchart-fraction",
+      "source": "flowchart LR\n  A[\"$$\\frac{a+b}{c+d}$$\"] --> B[Done]",
+      "content": {
+        "width": 31.171875,
+        "height": 24.5625,
+        "fontSize": 14,
+        "lineHeight": null,
+        "maxWidth": null,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "block math"
+      },
+      "layout": {
+        "width": 120,
+        "height": 24.5625,
+        "fontSize": 14,
+        "lineHeight": 21,
+        "maxWidth": 120,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "table"
+      }
+    },
+    {
+      "id": "state-transition",
+      "source": "stateDiagram-v2\n  Pending --> Approved : $$\\sum_{i=1}^{n} i$$",
+      "content": {
+        "width": 27.34375,
+        "height": 24.171875,
+        "fontSize": 14,
+        "lineHeight": null,
+        "maxWidth": null,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "block math"
+      },
+      "layout": {
+        "width": 27.34375,
+        "height": 24.171875,
+        "fontSize": 14,
+        "lineHeight": 21,
+        "maxWidth": 200,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "table-cell"
+      }
+    },
+    {
+      "id": "kanban-section",
+      "source": "kanban\n  todo[$$x^2$$]\n    task[Review]",
+      "content": {
+        "width": 14.796875,
+        "height": 12.953125,
+        "fontSize": 14,
+        "lineHeight": null,
+        "maxWidth": null,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "block math"
+      },
+      "layout": {
+        "width": 14.796875,
+        "height": 12.953125,
+        "fontSize": 14,
+        "lineHeight": 21,
+        "maxWidth": 200,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "table-cell"
+      }
+    },
+    {
+      "id": "usecase-relation",
+      "source": "usecase-beta\n  A -- \"`$$E = mc^2$$`\" --> B\n",
+      "content": {
+        "width": 35.322495,
+        "height": 9.389126,
+        "fontSize": 10,
+        "lineHeight": null,
+        "maxWidth": null,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "block math"
+      },
+      "layout": {
+        "width": 39.321854,
+        "height": 9.389126,
+        "fontSize": 10,
+        "lineHeight": 15,
+        "maxWidth": 200,
+        "paddingLeft": 2,
+        "paddingRight": 2,
+        "display": "table-cell"
+      }
+    },
+    {
+      "id": "long-formula",
+      "source": "flowchart TD\n  A[\"$$\\sum_{k=1}^{50}\\frac{k^2+2k+1}{k+1}$$\"] --> B[Bounded]",
+      "content": {
+        "width": 92.21875,
+        "height": 28.921875,
+        "fontSize": 14,
+        "lineHeight": null,
+        "maxWidth": null,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "block math"
+      },
+      "layout": {
+        "width": 120,
+        "height": 28.921875,
+        "fontSize": 14,
+        "lineHeight": 21,
+        "maxWidth": 120,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "display": "table"
+      }
+    }
+  ]
+}

@@ -82,7 +82,8 @@ navigation; the native renderer does not execute arbitrary URLs or JavaScript.
   Puppeteer-rendered official references.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
-- Focused tests verify formula request propagation for State transition labels.
+- Focused tests verify State transition formula request width, intrinsic
+  background height, and request propagation.
   The published Native/Official images predate provider-backed formula output,
   so they do not promote formula rendering to Stable.
 

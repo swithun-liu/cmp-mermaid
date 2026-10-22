@@ -354,7 +354,9 @@ internal class StateLayout {
             rendered = rendered,
             style = FlowNodeStyle(),
             context = context,
-            maxWidth = context.options.stateWrappingWidth,
+            // Mermaid.js 12.0.0: rendering-elements/edges.js -> insertEdgeLabel
+            // leaves markdown width undefined, so createText uses its 200px default.
+            maxWidth = EDGE_LABEL_MAX_WIDTH,
         )
         return GMResult.Ok(
             StateEdgeVisual(
@@ -765,16 +767,22 @@ internal class StateLayout {
                 zIndex = 5,
             )
             visuals[index]?.let { visual ->
+                // State's HTML labelBkg has no CSS padding. Keep the existing native
+                // plain-text adaptation unchanged, but do not apply it to the measured
+                // KaTeX box.
+                val labelPadding = EDGE_LABEL_PADDING.takeUnless {
+                    visual.formula != null
+                } ?: 0f
                 val labelAnchor = MermaidEdgePathPort.positionEdgeLabel(
                     layoutAnchor = route.labelAnchor,
                     points = route.points,
                     commands = commands,
                 )
                 val bounds = SceneRect(
-                    left = labelAnchor.x - visual.size.width / 2f - EDGE_LABEL_PADDING,
-                    top = labelAnchor.y - visual.size.height / 2f - EDGE_LABEL_PADDING,
-                    right = labelAnchor.x + visual.size.width / 2f + EDGE_LABEL_PADDING,
-                    bottom = labelAnchor.y + visual.size.height / 2f + EDGE_LABEL_PADDING,
+                    left = labelAnchor.x - visual.size.width / 2f - labelPadding,
+                    top = labelAnchor.y - visual.size.height / 2f - labelPadding,
+                    right = labelAnchor.x + visual.size.width / 2f + labelPadding,
+                    bottom = labelAnchor.y + visual.size.height / 2f + labelPadding,
                 )
                 elements += SceneShape(
                     id = "${edge.id}-label-background",
@@ -1089,6 +1097,7 @@ internal class StateLayout {
         const val GROUP_LABEL_PADDING = 8f
         const val GROUP_LABEL_TOP = 2f
         const val EDGE_LABEL_PADDING = 4f
+        const val EDGE_LABEL_MAX_WIDTH = 200f
         const val TITLE_FONT_SIZE = 18f
         const val UNWRAPPED_TEXT_WIDTH = 100_000f
     }

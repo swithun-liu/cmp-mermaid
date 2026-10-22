@@ -190,10 +190,11 @@ class MermaidFormulaRendererTest {
             .single { text -> text.text == "x^2" }
         val paintRequest = assertNotNull(formula.formulaRequest())
 
-        assertEquals(96f, formula.bounds.width)
+        assertEquals(120f, formula.bounds.width)
         assertEquals(30f, formula.bounds.height)
         assertEquals(2f, paintRequest.rasterScale)
         assertNotNull(prepared.formulaArtifacts[paintRequest])
+        assertEquals(96f, prepared.formulaArtifacts.getValue(paintRequest).width)
         assertEquals(renderedRequests.distinct(), renderedRequests)
         assertTrue(scene.diagnostics.isEmpty())
     }

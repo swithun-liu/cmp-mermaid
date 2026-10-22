@@ -21,8 +21,8 @@ are not part of `mermaid-core`.
 | 2 | `rendering-util/createText.ts -> createText`: replace `\\\\` with `\\` before formula rendering | `MermaidTextPort.renderKatexPlainText` and formula metadata | **Exact** |
 | 3 | `diagrams/common/common.ts -> renderKatexUnsanitized`: `displayMode: true` | `MermaidFormulaSource` | **Platform adaptation**: a provider-neutral block-display request replaces the KaTeX call |
 | 4 | `diagrams/common/common.ts -> renderKatexSanitized` | Host `MermaidFormulaRenderer` failure contract | **Platform adaptation**: providers return a typed result; no provider output is interpreted as HTML |
-| 5 | `rendering-util/createText.ts -> addHtmlSpan`: intrinsic measurement before graph layout | formula-aware `TextMetricProvider` projection | **Platform adaptation**: resolved logical width and height are fed into the normal Kotlin layout pass |
-| 6 | Browser `foreignObject` and MathML paint | formula SceneGraph metadata and the Compose formula painter | **Platform adaptation** for one complete `$$...$$` label; provider output is drawn inside the measured scene bounds |
+| 5 | `rendering-util/createText.ts -> addHtmlSpan`: measure the KaTeX `<math>` content and surrounding table-cell div before graph layout | formula-aware `TextMetricProvider` plus diagram-owned label-box projection | **Platform adaptation**: the provider returns intrinsic formula metrics; Kotlin reproduces wrapping width and CSS label padding separately |
+| 6 | Browser `foreignObject` and MathML paint | formula SceneGraph metadata and the Compose formula painter | **Platform adaptation** for one complete `$$...$$` label; intrinsic provider output is aligned inside the translated outer label box without non-uniform scaling |
 | 7 | Missing MathML support or a KaTeX exception | plain-text formula source and `MermaidDiagnostic.UnsupportedFeature` | **Platform adaptation**: one failed formula cannot replace the complete diagram with an error rendering |
 
 ## Explicit Unsupported Stages
@@ -60,9 +60,12 @@ measurement, and placement stages are listed above.
 ## Native Provider Boundary
 
 - The request carries formula source, block display mode, logical maximum
-  width, font size, color, and raster scale.
-- The result carries logical width, height, baseline, accessibility text, and
-  provider-owned Compose drawing content.
+  content width, computed CSS font size, color, and raster scale.
+- The result carries intrinsic logical width, height, baseline, accessibility
+  text, and provider-owned Compose drawing content. These metrics correspond
+  to KaTeX's `<math>` box, not the surrounding Mermaid HTML-label div.
+- Mermaid wrapping width, background padding, and label alignment remain owned
+  by the translated Flowchart, State, Use Case, and other diagram stages.
 - The public contract contains no platform View, native image class, DOM node,
   or implementation-specific type.
 - Provider selection is deterministic: an explicitly supplied host renderer
@@ -82,6 +85,11 @@ measurement, and placement stages are listed above.
   exception conversion, cancellation, asynchronous relayout, resolution-limit
   fallback, request-scoped failures across width and color variants,
   horizontal alignment, and plain-text fallback.
+- `tools/official-reference/formula-metrics.mjs` and the locked
+  `fixtures/formula-metrics-mermaid-12.0.0.json` compare the KaTeX content box
+  with the Mermaid outer layout box under the matching `redux-color` theme.
+  The fixture records Flowchart fixed wrapping width, State's unpadded edge
+  label, Kanban's theme-derived font size, and Use Case horizontal CSS padding.
 - The existing 8,448 Native/Official visual pairs were generated without a
   provider-backed formula corpus. Their counts and passing status remain valid
   for their recorded sources, but they are not evidence for formula visual
