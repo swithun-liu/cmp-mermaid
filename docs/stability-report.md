@@ -50,9 +50,9 @@ stress inputs.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | Core: 1,075 passed, 0 failed; Compose: 64 passed, 0 failed |
-| Wasm tests | Core: 1,073 passed, 0 failed; Compose: 57 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| iOS Simulator Arm64 tests | Core: 1,073 passed, 0 failed; Compose: 60 passed, 0 failed |
+| JVM tests | Core: 1,084 passed, 0 failed; Compose: 69 passed, 0 failed |
+| Wasm tests | Core: 1,082 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| iOS Simulator Arm64 tests | Core: 1,082 passed, 0 failed; Compose: 76 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -882,13 +882,21 @@ errors: 0
 The corresponding historical Wasm run passed: Core `1,017/1,017`, Compose
 `37/37`, and debug UI `9/9`.
 
-The `0.1.15` mixed-formula source run passes JVM Core `1,075/1,075` and
-Compose `64/64`, Wasm Core `1,073/1,073` and Compose `57/57`, and iOS
-Simulator Arm64 Core `1,073/1,073` and Compose `60/60`. These counts are
+The `0.1.16` mixed-formula safety run passes JVM Core `1,084/1,084` and
+Compose `69/69`, Wasm Core `1,082/1,082` and Compose `62/62`, and iOS
+Simulator Arm64 Core `1,082/1,082` and Compose `76/76`. These counts are
 computed from the complete platform test-result XML files. The formula
 reference fixture also passes `2/2` after binding the existing Noto Sans Math
 resource: the previous fixture used an unrecorded system MathML font and is
 not a reproducible input across systems.
+
+The new safety cases reject aggregate non-finite formula geometry, retain
+Requirement's upstream HTML-label configuration, and cover cancelled,
+oversized, malformed, and truncated iOS image completions. The bridge checks
+encoded dimensions before allocating pixels, requires complete decoding, and
+closes temporary native resources. The dedicated audit tooling has 42 passing
+test entries for topology, absolute item placement, and capture freshness.
+These tests do not establish physical-device parity for a host formula engine.
 
 The current independent corpus test is
 [`ProductionCorpusTest`](../mermaid-core/src/commonTest/kotlin/com/swithun/cmpmermaid/core/ProductionCorpusTest.kt).

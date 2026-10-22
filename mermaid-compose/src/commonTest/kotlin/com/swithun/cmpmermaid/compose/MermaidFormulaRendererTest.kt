@@ -21,6 +21,9 @@ import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
 import com.swithun.cmpmermaid.core.TextMetricsRequest
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.async
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -159,6 +162,118 @@ class MermaidFormulaRendererTest {
                 },
             )
         }
+    }
+
+    @Test
+    fun validatesEveryArtifactDimensionAndBaselineBoundary() = runTest {
+        val invalid = listOf(
+            artifact(width = Float.NaN),
+            artifact(width = Float.POSITIVE_INFINITY),
+            artifact(width = 0f),
+            artifact(width = -1f),
+            artifact(height = Float.NaN),
+            artifact(height = Float.POSITIVE_INFINITY),
+            artifact(height = 0f),
+            artifact(height = -1f),
+            artifact(baseline = Float.NaN),
+            artifact(baseline = Float.POSITIVE_INFINITY),
+            artifact(baseline = -1f),
+            artifact(baseline = 21f),
+        )
+        invalid.forEachIndexed { index, value ->
+            val result = resolveMermaidFormula(request(), MermaidFormulaRenderer { GMResult.Ok(value) })
+            assertIs<MermaidFormulaError.InvalidArtifact>(
+                assertIs<GMResult.Err<MermaidFormulaError>>(result, "case=$index").error,
+            )
+        }
+        for (baseline in listOf(0f, 20f)) {
+            val value = artifact(baseline = baseline)
+            assertSame(value, assertIs<GMResult.Ok<MermaidFormulaArtifact>>(
+                resolveMermaidFormula(request(), MermaidFormulaRenderer { GMResult.Ok(value) }),
+            ).value)
+        }
+    }
+
+    @Test
+    fun cacheIdentityPreservesEveryRequestPropertyAndEvictsTheOldestEntry() = runTest {
+        var calls = 0
+        val cached = MermaidFormulaRenderer { calls++; GMResult.Ok(artifact()) }.cached()
+        val original = request()
+        val variants = listOf(
+            original,
+            original.copy(source = "y"),
+            original.copy(maxWidth = 201f),
+            original.copy(fontSize = 17f),
+            original.copy(color = SceneColor(0xff112233)),
+            original.copy(rasterScale = 3f),
+            original.copy(accessibilityText = "alternate"),
+        )
+        for (value in variants) {
+            assertIs<GMResult.Ok<MermaidFormulaArtifact>>(cached.render(value))
+            assertIs<GMResult.Ok<MermaidFormulaArtifact>>(cached.render(value))
+        }
+        assertEquals(variants.size, calls)
+        repeat(256) { cached.render(original.copy(source = "entry-$it")) }
+        val before = calls
+        cached.render(original)
+        assertEquals(before + 1, calls)
+        cached.render(original.copy(source = "entry-255"))
+        assertEquals(before + 1, calls)
+    }
+
+    @Test
+    fun concurrentCacheCallersReceiveTheSameArtifact() = runTest {
+        val release = CompletableDeferred<Unit>()
+        val value = artifact()
+        var calls = 0
+        val cached = MermaidFormulaRenderer {
+            calls++
+            release.await()
+            GMResult.Ok(value)
+        }.cached()
+        val jobs = List(8) {
+            async(start = CoroutineStart.UNDISPATCHED) { cached.render(request()) }
+        }
+        assertEquals(1, calls)
+        release.complete(Unit)
+        jobs.forEach { assertSame(value, assertIs<GMResult.Ok<MermaidFormulaArtifact>>(it.await()).value) }
+        assertEquals(1, calls)
+    }
+
+    @Test
+    fun cancelledCacheOwnerReleasesTheLockAndDoesNotPublishAnArtifact() = runTest {
+        var calls = 0
+        val entered = CompletableDeferred<Unit>()
+        val cached = MermaidFormulaRenderer {
+            calls++
+            if (calls == 1) {
+                entered.complete(Unit)
+                CompletableDeferred<Unit>().await()
+            }
+            GMResult.Ok(artifact())
+        }.cached()
+        val owner = async { cached.render(request()) }
+        entered.await()
+        owner.cancel()
+        owner.join()
+
+        assertIs<GMResult.Ok<MermaidFormulaArtifact>>(cached.render(request()))
+        assertEquals(2, calls)
+    }
+
+    @Test
+    fun fatalRendererErrorsPropagateAndBlankExceptionsKeepAnExplanation() = runTest {
+        assertFailsWith<AssertionError> {
+            resolveMermaidFormula(request(), MermaidFormulaRenderer { throw AssertionError("fatal") })
+        }
+        val result = resolveMermaidFormula(
+            request(),
+            MermaidFormulaRenderer { throw IllegalStateException("") },
+        )
+        assertEquals("Formula renderer failed with IllegalStateException",
+            assertIs<MermaidFormulaError.RenderFailed>(
+                assertIs<GMResult.Err<MermaidFormulaError>>(result).error,
+            ).message)
     }
 
     @Test

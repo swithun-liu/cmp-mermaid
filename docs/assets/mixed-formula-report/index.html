@@ -10,7 +10,7 @@ pre{overflow:auto;font:13px ui-monospace;background:#eef1f5;padding:14px}
 @media(max-width:700px){.pair{grid-template-columns:1fr}body{margin:12px}}</style>
 <main><h1>Mixed text and formula labels</h1>
 <p>Mermaid 12.0.0 · 28 shared sources ·
-56 screenshots · 16 Pass / 12 Review / 0 Fail</p>
+56 screenshots · 15 Pass / 13 Review / 0 Fail</p>
 <p>Native uses official intrinsic formula metrics/pixels through the optional provider. This tests shared label composition and Canvas placement, not native KaTeX parsing or full-family stability.</p><p>Per-item geometry tolerance: 0.08 px.
 Edge checks compare ports, bends, direction sequences, shared tracks and crossings.
 Review remains required for raster/font rendering and any missing topology evidence.</p>
@@ -26,6 +26,7 @@ A[&quot;$$x^2$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -52,6 +53,7 @@ A[&quot;energy $$E=mc^2$$ joules&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -78,6 +80,7 @@ A[&quot;$$a^2$$ + $$b^2$$ = c&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -104,6 +107,7 @@ A[&quot;left $$\frac{a}{b}$$ right $$x$$ end&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -130,6 +134,7 @@ A[&quot;energy&lt;br/&gt;$$E=mc^2$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -157,6 +162,7 @@ $$E=mc^2$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -183,6 +189,7 @@ A[&quot;$$x$$&lt;br/&gt;$$y$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -209,6 +216,7 @@ A[&quot;$$x$$ + $$x$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -235,6 +243,7 @@ A[&quot;  A   $$x$$   B  &quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -261,6 +270,7 @@ A[&quot;A&amp;nbsp; $$x$$ &amp;amp; B&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -287,6 +297,7 @@ A[&quot;&lt;b&gt;energy&lt;/b&gt; $$E=mc^2$$ &lt;i&gt;joules&lt;/i&gt;&quot;]</p
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0.0000049999999873762135,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -313,6 +324,7 @@ A[&quot;before&lt;span&gt; left &lt;b&gt;middle&lt;/b&gt; right &lt;/span&gt;aft
 <pre>{
   &quot;maximumItemDelta&quot;: 0.015629999999987376,
   &quot;maximumLabelDelta&quot;: 0.015620000000012624,
+  &quot;maximumItemPlacementDelta&quot;: 0.015629999999987376,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -339,6 +351,7 @@ A[&quot;&lt;span&gt; a &lt;/span&gt;&lt;span&gt; b &lt;/span&gt;$$x$$&quot;]</pr
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -365,6 +378,7 @@ A[&quot;&lt;small&gt;small&lt;/small&gt; $$x$$ large&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.015625,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -391,6 +405,7 @@ A[&quot;&lt;span&gt;plain &lt;i style=&#39;color:red&#39;&gt;red&lt;/i&gt; plain
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -417,6 +432,7 @@ A[&quot;sum $$\sum_{i=1}^{n}\frac{i}{i+1}$$ done&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -443,6 +459,7 @@ A[&quot;identity $$a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t$$ result&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0000049999999873762135,
   &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumItemPlacementDelta&quot;: 0.0000049999999873762135,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -461,14 +478,15 @@ A[&quot;identity $$a+b+c+d+e+f+g+h+i+j+k+l=m+n+o+p+q+r+s+t$$ result&quot;]</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">flow-edge — REVIEW</h2>
-<p>Route endpoint/bend coordinates differ by 30.0000 px; Outer label geometry differs by 4.0000 px; Raster SSIM is 0.7783</p>
+<p>Route endpoint/bend coordinates differ by 30.0000 px; Outer label geometry differs by 17.0000 px; Absolute item placement differs by 15.0000 px; Raster SSIM is 0.7783</p>
 <div class="pair"><div><strong>Native</strong><br><img src="flow-edge-native.png" alt="Native flow-edge"></div>
 <div><strong>Official</strong><br><img src="flow-edge-official.png" alt="Official flow-edge"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>flowchart LR
 A --&gt;|&quot;mass $$E=mc^2$$ units&quot;| B</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 4,
+  &quot;maximumLabelDelta&quot;: 17,
+  &quot;maximumItemPlacementDelta&quot;: 15,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -510,14 +528,15 @@ A --&gt;|&quot;mass $$E=mc^2$$ units&quot;| B</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">flow-rotation — REVIEW</h2>
-<p>Route endpoint/bend coordinates differ by 10.0000 px; Raster SSIM is 0.7230</p>
+<p>Route endpoint/bend coordinates differ by 10.0000 px; Outer label geometry differs by 10.0000 px; Absolute item placement differs by 10.0078 px; Raster SSIM is 0.7232</p>
 <div class="pair"><div><strong>Native</strong><br><img src="flow-rotation-native.png" alt="Native flow-rotation"></div>
 <div><strong>Official</strong><br><img src="flow-rotation-official.png" alt="Official flow-rotation"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>flowchart BT
 A[&quot;value $$x^2$$&quot;] --&gt; B[&quot;$$x$$ + $$y$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 10,
+  &quot;maximumItemPlacementDelta&quot;: 10.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -559,14 +578,15 @@ A[&quot;value $$x^2$$&quot;] --&gt; B[&quot;$$x$$ + $$y$$&quot;]</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">state-edge — REVIEW</h2>
-<p>Route endpoint/bend coordinates differ by 30.0000 px; Raster SSIM is 0.6156</p>
+<p>Route endpoint/bend coordinates differ by 30.0000 px; Outer label geometry differs by 15.0000 px; Absolute item placement differs by 15.0000 px; Raster SSIM is 0.6155</p>
 <div class="pair"><div><strong>Native</strong><br><img src="state-edge-native.png" alt="Native state-edge"></div>
 <div><strong>Official</strong><br><img src="state-edge-official.png" alt="Official state-edge"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>stateDiagram-v2
 Pending --&gt; Approved : sum $$x^2$$ plus $$y^2$$</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 15,
+  &quot;maximumItemPlacementDelta&quot;: 15,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -608,14 +628,15 @@ Pending --&gt; Approved : sum $$x^2$$ plus $$y^2$$</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">class-title — REVIEW</h2>
-<p>Raster SSIM is 0.7930</p>
+<p>Outer label geometry differs by 6.7500 px; Absolute item placement differs by 6.7500 px; Raster SSIM is 0.7930</p>
 <div class="pair"><div><strong>Native</strong><br><img src="class-title-native.png" alt="Native class-title"></div>
 <div><strong>Official</strong><br><img src="class-title-official.png" alt="Official class-title"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>classDiagram
 class A[&quot;value $$x^2$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 6.75,
+  &quot;maximumItemPlacementDelta&quot;: 6.75,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -634,14 +655,15 @@ class A[&quot;value $$x^2$$&quot;]</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">er-title — REVIEW</h2>
-<p>Raster SSIM is 0.8712</p>
+<p>Outer label geometry differs by 0.8672 px; Absolute item placement differs by 0.8672 px; Raster SSIM is 0.8712</p>
 <div class="pair"><div><strong>Native</strong><br><img src="er-title-native.png" alt="Native er-title"></div>
 <div><strong>Official</strong><br><img src="er-title-official.png" alt="Official er-title"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>erDiagram
 A[&quot;value $$x^2$$&quot;] { string name }</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 0.8671879999999987,
+  &quot;maximumItemPlacementDelta&quot;: 0.8671879999999987,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -659,15 +681,16 @@ A[&quot;value $$x^2$$&quot;] { string name }</pre>
       &quot;sharedEndpoints&quot;: []
     }
   }
-}</pre></details></article><article><h2 class="pass">er-relation — PASS</h2>
-<p>Item and outer-label geometry match; recorded edge topology matches.</p>
+}</pre></details></article><article><h2 class="review">er-relation — REVIEW</h2>
+<p>Outer label geometry differs by 0.1484 px; Absolute item placement differs by 0.1484 px</p>
 <div class="pair"><div><strong>Native</strong><br><img src="er-relation-native.png" alt="Native er-relation"></div>
 <div><strong>Official</strong><br><img src="er-relation-official.png" alt="Official er-relation"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>erDiagram
 A ||--o{ B : &quot;value $$x^2$$&quot;</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 0.14843799999999874,
+  &quot;maximumItemPlacementDelta&quot;: 0.14843799999999874,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -709,14 +732,15 @@ A ||--o{ B : &quot;value $$x^2$$&quot;</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">block — REVIEW</h2>
-<p>Raster SSIM is 0.5057</p>
+<p>Outer label geometry differs by 4.0000 px; Absolute item placement differs by 4.0078 px; Raster SSIM is 0.5057</p>
 <div class="pair"><div><strong>Native</strong><br><img src="block-native.png" alt="Native block"></div>
 <div><strong>Official</strong><br><img src="block-official.png" alt="Official block"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>block-beta
 A[&quot;value $$x^2$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 4,
+  &quot;maximumItemPlacementDelta&quot;: 4.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -743,7 +767,8 @@ todo[value $$x^2$$]
   task[Review]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 0.0000024999999936881068,
+  &quot;maximumItemPlacementDelta&quot;: 0.0078125,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -762,14 +787,15 @@ todo[value $$x^2$$]
     }
   }
 }</pre></details></article><article><h2 class="review">mindmap — REVIEW</h2>
-<p>Raster SSIM is 0.6251</p>
+<p>Outer label geometry differs by 4.0000 px; Absolute item placement differs by 4.0000 px; Raster SSIM is 0.6251</p>
 <div class="pair"><div><strong>Native</strong><br><img src="mindmap-native.png" alt="Native mindmap"></div>
 <div><strong>Official</strong><br><img src="mindmap-official.png" alt="Official mindmap"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>mindmap
 root[&quot;value $$x^2$$&quot;]</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 4,
+  &quot;maximumItemPlacementDelta&quot;: 4,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -788,14 +814,15 @@ root[&quot;value $$x^2$$&quot;]</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">usecase — REVIEW</h2>
-<p>Route endpoint/bend coordinates differ by 34.0000 px; Outer label geometry differs by 4.0000 px; Raster SSIM is 0.8295</p>
+<p>Route endpoint/bend coordinates differ by 34.0000 px; Outer label geometry differs by 17.0000 px; Absolute item placement differs by 17.0000 px; Raster SSIM is 0.8295</p>
 <div class="pair"><div><strong>Native</strong><br><img src="usecase-native.png" alt="Native usecase"></div>
 <div><strong>Official</strong><br><img src="usecase-official.png" alt="Official usecase"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>usecase-beta
 A -- &quot;`value $$x^2$$`&quot; --&gt; B</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0,
-  &quot;maximumLabelDelta&quot;: 4,
+  &quot;maximumLabelDelta&quot;: 17,
+  &quot;maximumItemPlacementDelta&quot;: 17,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],
@@ -837,7 +864,7 @@ A -- &quot;`value $$x^2$$`&quot; --&gt; B</pre>
     }
   }
 }</pre></details></article><article><h2 class="review">requirement — REVIEW</h2>
-<p>Raster SSIM is 0.9126</p>
+<p>Outer label geometry differs by 4.0000 px; Absolute item placement differs by 4.0000 px; Raster SSIM is 0.9126</p>
 <div class="pair"><div><strong>Native</strong><br><img src="requirement-native.png" alt="Native requirement"></div>
 <div><strong>Official</strong><br><img src="requirement-official.png" alt="Official requirement"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>requirementDiagram
@@ -849,7 +876,8 @@ verifymethod: test
 }</pre>
 <pre>{
   &quot;maximumItemDelta&quot;: 0.0078125,
-  &quot;maximumLabelDelta&quot;: 0,
+  &quot;maximumLabelDelta&quot;: 4,
+  &quot;maximumItemPlacementDelta&quot;: 4,
   &quot;topology&quot;: {
     &quot;status&quot;: &quot;pass&quot;,
     &quot;findings&quot;: [],

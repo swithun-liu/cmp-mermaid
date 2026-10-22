@@ -1,6 +1,6 @@
 {
-  "officialGeneratedAt": "2026-10-22T12:17:04.490Z",
-  "nativeGeneratedAt": "2026-10-22T12:37:49.491854Z",
+  "officialGeneratedAt": "2026-10-22T14:12:28.116Z",
+  "nativeGeneratedAt": "2026-10-22T14:26:28.088404Z",
   "caseCount": 28,
   "screenshotCount": 56,
   "contactSheets": [
@@ -216,7 +216,7 @@
     },
     {
       "id": "flow-edge",
-      "ssim": 0.7782697178078695,
+      "ssim": 0.7782816640369449,
       "nativeSize": [
         483,
         61
@@ -228,7 +228,7 @@
     },
     {
       "id": "flow-rotation",
-      "ssim": 0.723038488723112,
+      "ssim": 0.7232450391113043,
       "nativeSize": [
         168,
         156
@@ -240,7 +240,7 @@
     },
     {
       "id": "state-edge",
-      "ssim": 0.6156458006361273,
+      "ssim": 0.6155036019619458,
       "nativeSize": [
         152,
         161
@@ -324,7 +324,7 @@
     },
     {
       "id": "usecase",
-      "ssim": 0.8295485883077659,
+      "ssim": 0.8295306707957165,
       "nativeSize": [
         444,
         98

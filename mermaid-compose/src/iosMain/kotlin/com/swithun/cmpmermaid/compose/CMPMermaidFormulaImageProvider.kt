@@ -1,12 +1,24 @@
+@file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
+
 package com.swithun.cmpmermaid.compose
 
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asComposeImageBitmap
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.toComposeImageBitmap
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidFormulaDisplayMode
+import kotlinx.cinterop.ByteVar
+import kotlinx.cinterop.readBytes
+import kotlinx.cinterop.reinterpret
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
-import org.jetbrains.skia.Image
-import org.jetbrains.skia.makeFromEncoded
+import org.jetbrains.skia.Bitmap
+import org.jetbrains.skia.Codec
+import org.jetbrains.skia.ColorAlphaType
+import org.jetbrains.skia.Data
+import org.jetbrains.skia.EncodedImageFormat
+import org.jetbrains.skia.ImageInfo
+import org.jetbrains.skia.impl.use
 import platform.Foundation.NSData
 import kotlin.coroutines.resume
 
@@ -65,6 +77,7 @@ internal fun CMPMermaidFormulaImageProvider.toMermaidFormulaRenderer(): MermaidF
     MermaidFormulaRenderer { request ->
         suspendCancellableCoroutine { continuation ->
             render(request.toImageRequest()) { artifact, error ->
+                if (!continuation.isActive) return@render
                 val result = when {
                     error != null -> GMResult.Err(error.toMermaidFormulaError())
                     artifact == null -> GMResult.Err(
@@ -110,22 +123,9 @@ private fun CMPMermaidFormulaImageArtifact.toMermaidFormulaArtifact():
             ),
         )
     }
-    val image = try {
-        Image.makeFromEncoded(pngData).toComposeImageBitmap()
-    } catch (failure: Exception) {
-        return GMResult.Err(
-            MermaidFormulaError.InvalidArtifact(
-                failure.message?.takeIf(String::isNotBlank)
-                    ?: "Formula provider returned invalid PNG data",
-            ),
-        )
-    }
-    if (image.width.toLong() * image.height.toLong() > MAX_FORMULA_IMAGE_PIXELS) {
-        return GMResult.Err(
-            MermaidFormulaError.ResolutionLimit(
-                "Formula image exceeds the $MAX_FORMULA_IMAGE_PIXELS pixel limit",
-            ),
-        )
+    val image = when (val result = pngData.decodeFormulaImage()) {
+        is GMResult.Ok -> result.value
+        is GMResult.Err -> return result
     }
     return GMResult.Ok(
         MermaidFormulaArtifact(
@@ -151,6 +151,72 @@ private fun CMPMermaidFormulaImageArtifact.toMermaidFormulaArtifact():
             },
         ),
     )
+}
+
+// Mermaid.js 12.0.0: common.ts -> renderKatexSanitized; native PNG adaptation
+// inventoried in docs/upstream-formula-rendering-map.md, mixed-label row 15b.
+private fun NSData.decodeFormulaImage(): GMResult<ImageBitmap, MermaidFormulaError> {
+    return try {
+        val encodedLength = length
+        if (encodedLength == 0uL || encodedLength > Int.MAX_VALUE.toULong()) {
+            return GMResult.Err(
+                MermaidFormulaError.InvalidArtifact("Formula provider returned invalid PNG data length"),
+            )
+        }
+        val encodedPointer = bytes ?: return GMResult.Err(
+            MermaidFormulaError.InvalidArtifact("Formula provider returned invalid PNG data"),
+        )
+        val encodedBytes = encodedPointer.reinterpret<ByteVar>().readBytes(encodedLength.toInt())
+        Data.makeFromBytes(encodedBytes).use { data ->
+            Codec.makeFromData(data).use decode@ { codec ->
+                if (codec.encodedImageFormat != EncodedImageFormat.PNG) {
+                    return@decode GMResult.Err(
+                        MermaidFormulaError.InvalidArtifact("Formula provider returned non-PNG image data"),
+                    )
+                }
+                val info = codec.imageInfo
+                if (info.width <= 0 || info.height <= 0) {
+                    return@decode GMResult.Err(
+                        MermaidFormulaError.InvalidArtifact("Formula provider returned invalid PNG dimensions"),
+                    )
+                }
+                if (info.width.toLong() * info.height.toLong() > MAX_FORMULA_IMAGE_PIXELS) {
+                    return@decode GMResult.Err(
+                        MermaidFormulaError.ResolutionLimit(
+                            "Formula image exceeds the $MAX_FORMULA_IMAGE_PIXELS pixel limit",
+                        ),
+                    )
+                }
+                val bitmap = Bitmap()
+                var retainedByCompose = false
+                try {
+                    if (!bitmap.allocPixels(ImageInfo.makeN32(info.width, info.height, ColorAlphaType.PREMUL))) {
+                        return@decode GMResult.Err(
+                            MermaidFormulaError.InvalidArtifact("Formula image pixel allocation failed"),
+                        )
+                    }
+                    // readPixels checks complete codec success, unlike drawing a lazy encoded Image.
+                    codec.readPixels(bitmap)
+                    bitmap.setImmutable()
+                    val result = GMResult.Ok(bitmap.asComposeImageBitmap())
+                    // Compose retains this exact Bitmap; do not close it on successful transfer.
+                    retainedByCompose = true
+                    result
+                } finally {
+                    if (!retainedByCompose) bitmap.close()
+                }
+            }
+        }
+    } catch (cancelled: CancellationException) {
+        throw cancelled
+    } catch (failure: Exception) {
+        GMResult.Err(
+            MermaidFormulaError.InvalidArtifact(
+                failure.message?.takeIf(String::isNotBlank)
+                    ?: "Formula provider returned invalid PNG data",
+            ),
+        )
+    }
 }
 
 private fun CMPMermaidFormulaProviderError.toMermaidFormulaError(): MermaidFormulaError =

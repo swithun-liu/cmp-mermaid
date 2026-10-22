@@ -1,12 +1,27 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { compareTopologyManifests } from './topology-audit-core.mjs';
 
 const directory = path.resolve(process.argv[2] ?? 'build/mixed-formula-audit');
-const official = JSON.parse(fs.readFileSync(path.join(directory, 'official.json')));
-const native = JSON.parse(fs.readFileSync(path.join(directory, 'native.json')));
+const inputBytes = {};
+const read = name => {
+  inputBytes[name] = fs.readFileSync(path.join(directory, `${name}.json`));
+  return JSON.parse(inputBytes[name]);
+};
+const official = read('official');
+const native = read('native');
 const rasterFile = path.join(directory, 'raster.json');
-const raster = fs.existsSync(rasterFile) ? JSON.parse(fs.readFileSync(rasterFile)) : null;
+const raster = fs.existsSync(rasterFile) ? read('raster') : null;
+const inputs = Object.fromEntries([['official', official], ['native', native], ['raster', raster]]
+  .map(([name, evidence]) => [name, {
+    generatedAt: evidence?.generatedAt ?? null,
+    sha256: inputBytes[name]
+      ? crypto.createHash('sha256').update(inputBytes[name]).digest('hex') : null,
+  }]));
+// The raster exporter currently declares its capture generations, not its own.
+inputs.raster.officialGeneratedAt = raster?.officialGeneratedAt ?? null;
+inputs.raster.nativeGeneratedAt = raster?.nativeGeneratedAt ?? null;
 if (raster && (raster.officialGeneratedAt !== official.generatedAt ||
     raster.nativeGeneratedAt !== native.generatedAt)) {
   throw new Error('Raster evidence is stale; regenerate mixed-formula-contact-sheets.py');
@@ -15,8 +30,9 @@ const rasterById = new Map(raster?.cases.map(entry => [entry.id, entry]) ?? []);
 const byId = new Map(native.cases.map(entry => [entry.id, entry]));
 const cssText = value => value.replace(/[ \t\r\n\f]+/g, ' ').replace(/^ +| +$/g, '');
 const epsilon = 0.08;
+const topologyEpsilon = 0.001;
 
-function officialItems(label) {
+function officialItems(label, svgRect) {
   const items = label.items.map(item => {
     const rect = item.rect ?? {
       x: item.glyphRect.x, width: item.glyphRect.width,
@@ -29,6 +45,8 @@ function officialItems(label) {
   const left = items[0]?.bounds.x ?? label.row.x;
   return items.map(item => ({ ...item, bounds: {
     ...item.bounds, x: item.bounds.x - left, y: item.bounds.y - label.row.y,
+  }, absoluteBounds: {
+    ...item.bounds, x: item.bounds.x - svgRect.x, y: item.bounds.y - svgRect.y,
   } }));
 }
 
@@ -36,17 +54,26 @@ function topology(edges) {
   return { elements: edges.map((edge, index) => {
     const direction = (a, b) => {
       const dx = b.x - a.x, dy = b.y - a.y;
-      if (Math.hypot(dx, dy) < 0.001) return null;
-      if (Math.abs(dy) < 0.001) return dx > 0 ? 'R' : 'L';
-      if (Math.abs(dx) < 0.001) return dy > 0 ? 'D' : 'U';
+      if (Math.hypot(dx, dy) < topologyEpsilon) return null;
+      if (Math.abs(dy) < topologyEpsilon) return dx > 0 ? 'R' : 'L';
+      if (Math.abs(dx) < topologyEpsilon) return dy > 0 ? 'D' : 'U';
       return 'Diagonal';
+    };
+    const forwardCollinear = (a, b, c) => {
+      const ab = { x: b.x - a.x, y: b.y - a.y };
+      const bc = { x: c.x - b.x, y: c.y - b.y };
+      const dot = ab.x * bc.x + ab.y * bc.y;
+      const cross = ab.x * bc.y - ab.y * bc.x;
+      // Perpendicular distance to the combined segment, in scene pixels.
+      return dot > 0 && Math.abs(cross) <=
+        topologyEpsilon * Math.hypot(c.x - a.x, c.y - a.y);
     };
     const points = [];
     for (const [x, y] of edge.points) {
       const point = { x, y };
       if (points.length && direction(points.at(-1), point) === null) continue;
       while (points.length >= 2 &&
-        direction(points.at(-2), points.at(-1)) === direction(points.at(-1), point)) {
+        forwardCollinear(points.at(-2), points.at(-1), point)) {
         points.pop();
       }
       points.push(point);
@@ -66,6 +93,7 @@ const cases = official.cases.map(reference => {
   const fail = message => { findings.push(message); failed = true; };
   let maximumItemDelta = 0;
   let maximumLabelDelta = 0;
+  let maximumItemPlacementDelta = 0;
   if (!actual || actual.error) fail(actual?.error ?? 'Native case missing');
   if (actual?.providerFailures) fail('Formula provider failures');
   for (const formula of reference.formulas) {
@@ -73,24 +101,41 @@ const cases = official.cases.map(reference => {
     const expectedColor = channels?.length >= 3
       ? ((0xff000000 | channels[0] << 16 | channels[1] << 8 | channels[2]) >>> 0).toString(16)
       : null;
-    if (!actual?.requests.some(request => request.source === formula.source &&
+    if (!actual?.requests?.some(request => request.source === formula.source &&
       Math.abs(request.fontSize - formula.fontSize) < epsilon &&
       request.colorArgb === expectedColor)) {
       fail('Formula font/color request differs from official inherited CSS');
     }
   }
-  if ((actual?.labels.length ?? 0) !== reference.labels.length) fail('Label count mismatch');
+  if ((actual?.labels?.length ?? 0) !== reference.labels.length) fail('Label count mismatch');
   const labels = reference.labels.map((label, labelIndex) => {
-    const expectedItems = officialItems(label);
-    const result = actual?.labels[labelIndex];
+    // Browser rectangles already include the SVG viewBox transform; remove only
+    // the browser viewport origin, not the viewBox origin a second time.
+    const expectedItems = officialItems(label, reference.svgRect);
+    const result = actual?.labels?.[labelIndex];
     const width = expectedItems.reduce((sum, item) => sum + item.bounds.width, 0);
     const height = Math.max(0, ...expectedItems.map(item => item.bounds.height));
+    const nativeAbsoluteItems = [];
     if (result) {
       maximumItemDelta = Math.max(maximumItemDelta,
         Math.abs(result.intrinsicWidth - width), Math.abs(result.intrinsicHeight - height));
       maximumLabelDelta = Math.max(maximumLabelDelta,
+        Math.abs(result.bounds.x - (label.rect.x - reference.svgRect.x)),
+        Math.abs(result.bounds.y - (label.rect.y - reference.svgRect.y)),
         Math.abs(result.bounds.width - label.rect.width),
         Math.abs(result.bounds.height - label.rect.height));
+      // MixedFormulaAudit.labelGeometry and drawSceneFormulaLabel both center
+      // intrinsic content in the outer box; never center each item separately.
+      const origin = [
+        result.bounds.x + (result.bounds.width - result.intrinsicWidth) / 2,
+        result.bounds.y + (result.bounds.height - result.intrinsicHeight) / 2,
+      ];
+      if (!result.origin?.every(Number.isFinite) || result.origin.length !== 2) {
+        fail(`Label ${labelIndex}: intrinsic origin missing or invalid`);
+      } else {
+        maximumItemPlacementDelta = Math.max(maximumItemPlacementDelta,
+          Math.abs(origin[0] - result.origin[0]), Math.abs(origin[1] - result.origin[1]));
+      }
       if (result.items.length !== expectedItems.length) fail(`Label ${labelIndex}: item count mismatch`);
       expectedItems.forEach((item, index) => {
         const measured = result.items[index];
@@ -102,9 +147,18 @@ const cases = official.cases.map(reference => {
         for (const axis of ['x', 'y', 'width', 'height']) {
           maximumItemDelta = Math.max(maximumItemDelta, Math.abs(item.bounds[axis] - measured.bounds[axis]));
         }
+        const absoluteBounds = { ...measured.bounds,
+          x: measured.bounds.x + origin[0], y: measured.bounds.y + origin[1] };
+        nativeAbsoluteItems.push({ ...measured, bounds: absoluteBounds });
+        for (const axis of ['x', 'y']) {
+          maximumItemPlacementDelta = Math.max(maximumItemPlacementDelta,
+            Math.abs(item.absoluteBounds[axis] - absoluteBounds[axis]));
+        }
       });
     }
-    return { official: { width, height, items: expectedItems }, native: result };
+    return { official: { width, height, items: expectedItems,
+      absoluteItems: expectedItems.map(item => ({ ...item, bounds: item.absoluteBounds })) },
+      native: result, nativeAbsoluteItems };
   });
   const nativeTopology = topology(actual?.edges ?? []);
   // Official path data is in SVG user coordinates; Native scene coordinates
@@ -130,20 +184,21 @@ const cases = official.cases.map(reference => {
   if (maximumRouteDelta > epsilon) findings.push(`Route endpoint/bend coordinates differ by ${maximumRouteDelta.toFixed(4)} px`);
   if (maximumItemDelta > epsilon) findings.push(`Intrinsic item geometry differs by ${maximumItemDelta.toFixed(4)} px`);
   if (maximumLabelDelta > epsilon) findings.push(`Outer label geometry differs by ${maximumLabelDelta.toFixed(4)} px`);
+  if (maximumItemPlacementDelta > epsilon) findings.push(`Absolute item placement differs by ${maximumItemPlacementDelta.toFixed(4)} px`);
   const rasterEvidence = rasterById.get(reference.id);
   if (!rasterEvidence) findings.push('Raster evidence pending');
   else if (rasterEvidence.ssim < 0.97) findings.push(`Raster SSIM is ${rasterEvidence.ssim.toFixed(4)}`);
   const status = failed ? 'fail' : findings.length === 0 ? 'pass' : 'review';
   return { id: reference.id, source: reference.source, status, findings,
-    maximumItemDelta, maximumLabelDelta, maximumRouteDelta,
+    maximumItemDelta, maximumLabelDelta, maximumItemPlacementDelta, maximumRouteDelta,
     ssim: rasterEvidence?.ssim ?? null, labels, topology: topologyAudit };
 });
 const counts = Object.fromEntries(['pass', 'review', 'fail'].map(status =>
   [status, cases.filter(entry => entry.status === status).length]));
-const report = { schemaVersion: 1, generatedAt: new Date().toISOString(),
+const report = { schemaVersion: 2, generatedAt: new Date().toISOString(), inputs,
   mermaidVersion: official.mermaidVersion, mermaidSourceCommit: official.mermaidSourceCommit,
   counts, caseCount: cases.length, screenshotCount: cases.length * 2,
-  coordinateTolerancePx: epsilon,
+  coordinateTolerancePx: epsilon, topologyCoordinateTolerancePx: topologyEpsilon,
   boundary: 'Native uses official intrinsic formula metrics/pixels through the optional provider. This tests shared label composition and Canvas placement, not native KaTeX parsing or full-family stability.',
   cases };
 fs.writeFileSync(path.join(directory, 'geometry.json'), JSON.stringify(report, null, 2));
@@ -175,7 +230,8 @@ ${cases.map(entry => `<article><h2 class="${entry.status}">${escape(entry.id)} â
 <div><strong>Official</strong><br><img src="${entry.id}-official.png" alt="Official ${entry.id}"></div></div>
 <details><summary>Shared Mermaid source and geometry</summary><pre>${escape(entry.source)}</pre>
 <pre>${escape(JSON.stringify({ maximumItemDelta: entry.maximumItemDelta,
-maximumLabelDelta: entry.maximumLabelDelta, topology: entry.topology }, null, 2))}</pre></details></article>`).join('')}
+maximumLabelDelta: entry.maximumLabelDelta, maximumItemPlacementDelta: entry.maximumItemPlacementDelta,
+topology: entry.topology }, null, 2))}</pre></details></article>`).join('')}
 </main></html>`);
 console.log(JSON.stringify({ counts, caseCount: cases.length, screenshotCount: report.screenshotCount,
   reviews: cases.filter(entry => entry.status !== 'pass').map(entry => ({

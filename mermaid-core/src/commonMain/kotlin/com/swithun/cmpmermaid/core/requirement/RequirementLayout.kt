@@ -261,6 +261,8 @@ internal class RequirementLayout {
         context = context,
     )
 
+    // Mermaid.js 12.0.0:
+    // rendering-util/rendering-elements/shapes/requirementBox.ts -> addText.
     private fun measureText(
         source: String,
         style: FlowNodeStyle,
@@ -281,6 +283,8 @@ internal class RequirementLayout {
                 text = "", spans = emptyList(), metrics = TextMetrics(0f, 0f),
                 fontSize = fontSize, lineHeight = lineHeight,
                 fontFamily = fontFamily, weight = weight,
+                htmlLabel = context.options.htmlLabels,
+                softWrap = true, wrappingWidth = null,
             ))
         }
         // Mermaid.js 12.0.0: requirementBox.ts -> addText, input preprocessing;
@@ -329,18 +333,17 @@ internal class RequirementLayout {
             }
         }
         return try {
-            val measured = context.textMetrics.measure(
-                TextMetricsRequest(
-                    text = rendered.text,
-                    fontSize = fontSize,
-                    maxWidth = labelWidth,
-                    lineHeight = lineHeight,
-                    fontFamily = fontFamily,
-                    weight = weight,
-                    spans = spans,
-                    htmlLabel = context.options.htmlLabels,
-                ),
+            val request = TextMetricsRequest(
+                text = rendered.text,
+                fontSize = fontSize,
+                maxWidth = labelWidth,
+                lineHeight = lineHeight,
+                fontFamily = fontFamily,
+                weight = weight,
+                spans = spans,
+                htmlLabel = context.options.htmlLabels,
             )
+            val measured = context.textMetrics.measure(request)
             // Mermaid: requirementBox.ts -> addText() uses the HTML label's line box
             // height. Compose may report only glyph height for an isolated line.
             val visibleLineCount = if (rendered.text.isEmpty()) {
@@ -349,7 +352,7 @@ internal class RequirementLayout {
                 rendered.text.count { character -> character == '\n' } + 1
             }
             val hasFormulaBox = measured.formula != null || measured.formulaLayout != null
-            val labelHeight = if (!context.options.htmlLabels) {
+            val labelHeight = if (!request.htmlLabel) {
                 // addText's SVG branch appends six logical pixels to getBBox.
                 measured.height + 6f
             } else if (hasFormulaBox) {
@@ -366,6 +369,10 @@ internal class RequirementLayout {
                     lineHeight = lineHeight,
                     fontFamily = fontFamily,
                     weight = weight,
+                    htmlLabel = request.htmlLabel,
+                    // TextMetricProvider uses soft wrapping for createText's width.
+                    softWrap = true,
+                    wrappingWidth = request.maxWidth,
                 ),
             )
         } catch (cancelled: CancellationException) {
@@ -765,6 +772,8 @@ internal class RequirementLayout {
         ScenePoint(-width / 2f, height / 2f),
     )
 
+    // Mermaid.js 12.0.0: requirementBox.ts -> addText retains the same
+    // constrained createText element for bounding-box measurement and paint.
     private fun RequirementTextVisual.asSceneText(
         bounds: SceneRect,
         color: SceneColor,
@@ -781,7 +790,9 @@ internal class RequirementLayout {
         spans = spans,
         horizontalAlignment = alignment,
         zIndex = zIndex,
-        softWrap = false,
+        htmlLabel = htmlLabel,
+        softWrap = softWrap,
+        wrappingWidth = wrappingWidth,
     ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
 
     private fun elementBounds(element: SceneElement): SceneRect? = when (element) {
@@ -880,6 +891,9 @@ internal class RequirementLayout {
         val lineHeight: Float,
         val fontFamily: String,
         val weight: SceneTextWeight,
+        val htmlLabel: Boolean,
+        val softWrap: Boolean,
+        val wrappingWidth: Float?,
     )
 
     private data class RequirementPositionedText(

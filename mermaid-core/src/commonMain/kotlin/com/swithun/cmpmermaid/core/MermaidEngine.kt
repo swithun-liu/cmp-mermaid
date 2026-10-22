@@ -326,15 +326,23 @@ class MermaidEngine(
                 context = renderContext,
             )
         ) {
-            is GMResult.Ok -> GMResult.Ok(
-                compiled.value.copy(
-                    diagnostics = (
-                        compiled.value.diagnostics + renderContext.diagnostics()
-                        ).distinct(),
-                ).withFormulaRequests(
-                    (compiled.value.formulaRequests + renderContext.formulaRequests()).distinct(),
-                ),
-            )
+            is GMResult.Ok -> {
+                if (formulaContext != null) {
+                    when (val validated = compiled.value.validateFormulaGeometry()) {
+                        is GMResult.Err -> return validated
+                        is GMResult.Ok -> Unit
+                    }
+                }
+                GMResult.Ok(
+                    compiled.value.copy(
+                        diagnostics = (
+                            compiled.value.diagnostics + renderContext.diagnostics()
+                            ).distinct(),
+                    ).withFormulaRequests(
+                        (compiled.value.formulaRequests + renderContext.formulaRequests()).distinct(),
+                    ),
+                )
+            }
             is GMResult.Err -> GMResult.Err(
                 MermaidUpstreamErrorFormatter.format(
                     diagramId = plugin.id,
@@ -345,6 +353,41 @@ class MermaidEngine(
         }
     }
 }
+
+/**
+ * Mermaid.js 12.0.0: mermaid.ts -> render/handleError.
+ * Platform adaptation: browser geometry must be representable by the native
+ * Float scene before Compose measures or paints it. Individually finite
+ * provider dimensions can overflow while composing multiple flex items.
+ * Reject the result without clamping or changing the translated layout.
+ */
+private fun MermaidScene.validateFormulaGeometry(): GMResult<Unit, MermaidError> {
+    val padding = viewportPadding.coerceAtLeast(0f)
+    if (
+        !width.isFinite() || !height.isFinite() || width < 0f || height < 0f ||
+        !viewportPadding.isFinite() ||
+        !(width + padding * 2f).isFinite() || !(height + padding * 2f).isFinite()
+    ) {
+        return GMResult.Err(MermaidError.Layout("Formula layout produced invalid scene dimensions"))
+    }
+    for (element in elements) {
+        if (element !is SceneText) continue
+        val layout = element.formulaLayout ?: continue
+        if (
+            !layout.width.isFinite() || !layout.height.isFinite() ||
+            layout.width < 0f || layout.height < 0f ||
+            !element.bounds.hasFiniteFormulaGeometry() ||
+            layout.items.any { !it.bounds.hasFiniteFormulaGeometry() }
+        ) {
+            return GMResult.Err(MermaidError.Layout("Formula layout produced invalid label geometry"))
+        }
+    }
+    return GMResult.Ok(Unit)
+}
+
+private fun SceneRect.hasFiniteFormulaGeometry(): Boolean =
+    left.isFinite() && top.isFinite() && right.isFinite() && bottom.isFinite() &&
+        width.isFinite() && height.isFinite() && width >= 0f && height >= 0f
 
 private fun MermaidDiagramPlugin.compileSafely(
     source: String,

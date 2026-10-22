@@ -1,8 +1,26 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-10-22T12:38:53.085Z",
-  "officialGeneratedAt": "2026-10-22T12:17:04.490Z",
-  "nativeGeneratedAt": "2026-10-22T12:37:49.491854Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T14:37:44.053Z",
+  "officialGeneratedAt": "2026-10-22T14:12:28.116Z",
+  "nativeGeneratedAt": "2026-10-22T14:26:28.088404Z",
+  "geometryGeneratedAt": "2026-10-22T14:37:29.331Z",
+  "rasterGeneratedAt": null,
+  "inputs": {
+    "official": {
+      "generatedAt": "2026-10-22T14:12:28.116Z",
+      "sha256": "5bf02b022e2edec25287d4707bc81d330a58272401743eea3dbcea599bb60a57"
+    },
+    "native": {
+      "generatedAt": "2026-10-22T14:26:28.088404Z",
+      "sha256": "8a247a1206a2de9ee244cafec30121c74562385db4c5d1bc28f8ebed5616d8c8"
+    },
+    "raster": {
+      "generatedAt": null,
+      "sha256": "ea87a0d324306ffb0f7882fd1be085754fd0395c78de25fe30c56981851a14e3",
+      "officialGeneratedAt": "2026-10-22T14:12:28.116Z",
+      "nativeGeneratedAt": "2026-10-22T14:26:28.088404Z"
+    }
+  },
   "mermaidVersion": "12.0.0",
   "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
   "familyCount": 9,
@@ -16,8 +34,8 @@
     "contact-sheet-4.png"
   ],
   "counts": {
-    "pass": 16,
-    "review": 12,
+    "pass": 15,
+    "review": 13,
     "fail": 0
   },
   "boundary": "Native uses official intrinsic formula metrics/pixels through the optional provider. This tests shared label composition and Canvas placement, not native KaTeX parsing or full-family stability.",
@@ -324,7 +342,7 @@
         {
           "side": "official",
           "file": "flow-edge-official.png",
-          "sha256": "5d317a168348fbf177dbfc7650d02c54503df8dde3cacbb266b018cc8fedc056"
+          "sha256": "455b15c9fc956231f4d46862f47ce3fa83af03a17863c93d330f6857492b57e7"
         }
       ]
     },
@@ -341,7 +359,7 @@
         {
           "side": "official",
           "file": "flow-rotation-official.png",
-          "sha256": "bc3b8a211ddf41b644fa185a1214d48d79dde3c33607af240c021fe6bb82551a"
+          "sha256": "1f247783413f1637427a5eead7f63916b1e857164f68211ac070dd5a9347aade"
         }
       ]
     },
@@ -358,7 +376,7 @@
         {
           "side": "official",
           "file": "state-edge-official.png",
-          "sha256": "eb0d6a19c9a20c92c29db14952afa3c710e3f1095b693a1ddfe8a3bdab7daffc"
+          "sha256": "25be88961c03e1236e8e2ae7719d6b9e7c98a411415a5c712ff3a6cb5b5eab03"
         }
       ]
     },
@@ -477,7 +495,7 @@
         {
           "side": "official",
           "file": "usecase-official.png",
-          "sha256": "d720106f49406d313bd532e45d530a8cbb594b8b7ff3779080e8d02b2f184e4e"
+          "sha256": "1f1c2f23094a11ab13f3086244397a4bd6782e359f724584552bda3d825a1a0d"
         }
       ]
     },

@@ -38,6 +38,8 @@ declared platform adaptation. It is not a full formula compatibility claim.
 | 13 | `addHtmlSpan -> fastdom.measure(getBoundingClientRect)`, equality-to-width and `minWidth` branches | Resolved complete-label dimensions enter graph layout before painting; no coordinate compensation | Platform adaptation |
 | 14 | Browser `foreignObject` paint and inherited transforms | Paint each ordinary text/formula item in the measured label coordinate system; preserve rotation and clipping | Platform adaptation |
 | 15 | Provider exception, invalid output, cancellation | Existing typed per-request failure and cancellation propagation; failed formulas remain readable ordinary text | Platform adaptation |
+| 15a | `mermaid.ts -> render/handleError`, failed native geometry | `MermaidEngine.kt -> validateFormulaGeometry`: reject non-finite scene, viewport, or composed formula boxes before Compose measurement and drawing; do not clamp translated dimensions | Platform adaptation |
+| 15b | Native provider image decoding, no browser equivalent | iOS bridge: skip cancelled completions; inspect encoded dimensions before pixel allocation; require complete codec decoding and close temporary native resources | Platform adaptation |
 | 16 | `sequenceRenderer.ts -> calculateMathMLDimensions`, `sequence/svgDraw.js -> drawKatex` | Separate measurement and placement call chain; not covered by shared `createText` | Unsupported |
 | 17 | ZenUML comment preflight before `createText` | Separate width/vertical-coordinate stage | Unsupported |
 | 18 | Browser legacy HTML-and-MathML selection; native KaTeX parser/macros | Provider-specific behavior; not implemented by the pure Kotlin label translator | Unsupported |
@@ -158,6 +160,12 @@ measurement, and placement stages are listed above.
   exception conversion, cancellation, asynchronous relayout, resolution-limit
   fallback, request-scoped failures across width and color variants,
   horizontal alignment, and plain-text fallback.
+- Safety regressions cover individually finite formula dimensions whose sum
+  overflows a native `Float`, failed or throwing metrics providers, recovery
+  after a rejected render, and cancelled or malformed iOS image completions.
+  Aggregate geometry failures return a structured `Layout` error before the
+  scene reaches Compose. This boundary does not swallow cancellation or
+  process-level fatal errors.
 - `tools/official-reference/formula-metrics.mjs` and the locked
   `fixtures/formula-metrics-mermaid-12.0.0.json` compare the KaTeX content box
   with the Mermaid outer layout box under the matching `redux-color` theme.

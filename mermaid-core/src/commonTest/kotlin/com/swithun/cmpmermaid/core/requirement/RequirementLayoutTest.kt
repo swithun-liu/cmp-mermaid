@@ -3,6 +3,8 @@ package com.swithun.cmpmermaid.core.requirement
 import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidEngine
 import com.swithun.cmpmermaid.core.MermaidError
+import com.swithun.cmpmermaid.core.MermaidFormulaMetrics
+import com.swithun.cmpmermaid.core.MermaidFormulaRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderContext
 import com.swithun.cmpmermaid.core.MermaidRenderOptions
 import com.swithun.cmpmermaid.core.MermaidScene
@@ -14,12 +16,18 @@ import com.swithun.cmpmermaid.core.SceneShape
 import com.swithun.cmpmermaid.core.SceneStrokePattern
 import com.swithun.cmpmermaid.core.SceneText
 import com.swithun.cmpmermaid.core.SceneTextAlignment
+import com.swithun.cmpmermaid.core.SceneTextWeight
 import com.swithun.cmpmermaid.core.TextMetricProvider
 import com.swithun.cmpmermaid.core.TextMetrics
+import com.swithun.cmpmermaid.core.TextMetricsRequest
+import kotlinx.coroutines.CancellationException
+import kotlin.math.ceil
 import kotlin.math.hypot
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertIs
+import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 class RequirementLayoutTest {
@@ -100,6 +108,201 @@ class RequirementLayoutTest {
         val shapes = scene.elements.filterIsInstance<SceneShape>().associateBy(SceneShape::id)
         assertEquals(166f, shapes.getValue("checkout").bounds.height)
         assertEquals(124f, shapes.getValue("gateway").bounds.height)
+    }
+
+    @Test
+    fun preservesLongLabelWrappingBetweenMeasurementAndPainting() {
+        val content = "a b c d ".repeat(12).trim()
+        val input = "Text: $content"
+        val source = """
+            requirementDiagram
+              requirement R {
+                text: "$content"
+              }
+              style R font-size:50px
+        """.trimIndent()
+        for (htmlLabels in listOf(true, false)) {
+            val requests = mutableListOf<TextMetricsRequest>()
+            val renderContext = context.copy(
+                textMetrics = TextMetricProvider { request ->
+                    requests += request
+                    wrappedMetrics(request)
+                },
+                options = context.options.copy(fontSize = 12f, htmlLabels = htmlLabels),
+            )
+            val scene = render(source, renderContext)
+            val label = scene.elements.filterIsInstance<SceneText>().single { it.text == input }
+            val measured = requests.single { it.text == input && it.maxWidth.isFinite() }
+            val expectedWidth = input.length * 12f * 0.5f + 50f
+            assertEquals(656f, expectedWidth)
+            assertEquals(expectedWidth, measured.maxWidth)
+            assertEquals(50f, measured.fontSize)
+            assertEquals(4, wrappedMetrics(measured).lineCount)
+
+            val painted = wrappedMetrics(
+                measured.copy(
+                    maxWidth = if (label.softWrap) {
+                        label.wrappingWidth ?: Float.POSITIVE_INFINITY
+                    } else {
+                        Float.POSITIVE_INFINITY
+                    },
+                    htmlLabel = label.htmlLabel,
+                ),
+            )
+            assertEquals(label.bounds.width, painted.width, 0.01f, "HTML mode: $htmlLabels")
+            assertEquals(
+                label.bounds.height,
+                painted.height + if (htmlLabels) 0f else 6f,
+                0.01f,
+            )
+            assertEquals(measured.maxWidth, label.wrappingWidth)
+            assertEquals(measured.htmlLabel, label.htmlLabel)
+            assertTrue(label.softWrap)
+            val box = scene.elements.filterIsInstance<SceneShape>().single { it.id == "R" }
+            assertEquals(label.bounds.width + 20f, box.bounds.width, 0.01f)
+        }
+    }
+
+    @Test
+    fun preservesMixedFormulaLabelMeasurementAndInlineStyles() {
+        val content = "energy <b>value</b> \$\$a^2\$\$ plus \$\$b^2\$\$"
+        val source = """
+            requirementDiagram
+              requirement R {
+                text: "$content"
+              }
+              style R font-size:18px
+        """.trimIndent()
+        val renderContext = context.copy(
+            textMetrics = TextMetricProvider(::wrappedMetrics),
+            options = context.options.copy(fontSize = 12f),
+        )
+        val engine = MermaidEngine()
+        val pending = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(source, renderContext, MermaidFormulaRenderContext()),
+        ).value
+        val resolved = assertIs<GMResult.Ok<MermaidScene>>(
+            engine.render(
+                source,
+                renderContext,
+                MermaidFormulaRenderContext(
+                    metrics = pending.formulaRequests.associateWith { request ->
+                        if (request.source == "a^2") MermaidFormulaMetrics(30f, 40f, 28f)
+                        else MermaidFormulaMetrics(50f, 60f, 40f)
+                    },
+                ),
+            ),
+        ).value
+        val label = resolved.elements.filterIsInstance<SceneText>()
+            .single { it.formulaLayout != null }
+        val layout = assertNotNull(label.formulaLayout)
+        val expectedWidth = ("Text: $content").length * 12f * 0.5f + 50f
+        assertEquals(listOf("a^2", "b^2"), resolved.formulaRequests.map { it.source })
+        assertTrue(resolved.formulaRequests.all { it.maxWidth == expectedWidth })
+        assertEquals(expectedWidth, label.wrappingWidth)
+        assertTrue(label.htmlLabel)
+        assertTrue(label.softWrap)
+        assertEquals(
+            listOf("Text: energy", "value", "a^2", "plus", "b^2"),
+            layout.items.map { it.text },
+        )
+        assertTrue(layout.items[1].spans.any { it.weight == SceneTextWeight.Bold })
+        assertEquals(30f, layout.items[2].bounds.width)
+        assertEquals(50f, layout.items[4].bounds.width)
+        assertEquals(60f, layout.height)
+        assertEquals(layout.height, label.bounds.height)
+        assertEquals(layout.width, label.bounds.width)
+        assertTrue(layout.width < expectedWidth)
+        layout.items.zipWithNext().forEach { (first, next) ->
+            assertEquals(first.bounds.right, next.bounds.left)
+        }
+        assertEquals(emptyList(), resolved.diagnostics)
+    }
+
+    @Test
+    fun preservesShortAndMultilineLabelContractsForAllRequirementFields() {
+        val source = """
+            requirementDiagram
+              requirement first {
+                text: "first<br/>second"
+              }
+              requirement second {
+              }
+              element implementation {
+                type: component
+                docRef: docs/link
+              }
+              first - traces -> second
+        """.trimIndent()
+        for (htmlLabels in listOf(true, false)) {
+            val requests = mutableListOf<TextMetricsRequest>()
+            val scene = render(
+                source,
+                context.copy(
+                    textMetrics = TextMetricProvider { request ->
+                        requests += request
+                        wrappedMetrics(request)
+                    },
+                    options = context.options.copy(fontSize = 12f, htmlLabels = htmlLabels),
+                ),
+            )
+            val labels = scene.elements.filterIsInstance<SceneText>()
+            assertEquals(10, labels.size)
+            assertTrue(labels.none { it.text.isEmpty() })
+            labels.forEach { label ->
+                val request = requests.first { it.text == label.text && it.maxWidth.isFinite() }
+                assertEquals(request.maxWidth, label.wrappingWidth, label.text)
+                assertEquals(request.htmlLabel, label.htmlLabel, label.text)
+                assertTrue(label.softWrap, label.text)
+                val metrics = wrappedMetrics(request)
+                val edgePadding = if (label.zIndex == 7) 6f else 0f
+                assertEquals(
+                    metrics.height + if (htmlLabels) 0f else 6f,
+                    label.bounds.height - edgePadding,
+                    0.01f,
+                    label.text,
+                )
+            }
+            val field = labels.single { it.text.startsWith("Text:") }
+            assertEquals("Text: first\nsecond", field.text)
+            assertEquals(36f + if (htmlLabels) 0f else 6f, field.bounds.height)
+            assertTrue(scene.elements.filterIsInstance<ScenePath>().none { it.id == "second-divider" })
+        }
+    }
+
+    @Test
+    fun propagatesFinalRequirementLabelMeasurementFailure() {
+        val result = MermaidEngine().render(
+            "requirementDiagram\nrequirement R {\ntext: unavailable\n}",
+            context.copy(
+                textMetrics = TextMetricProvider { request ->
+                    if (request.text == "Text: unavailable" && request.maxWidth.isFinite()) {
+                        throw IllegalStateException("Unavailable label metrics")
+                    }
+                    wrappedMetrics(request)
+                },
+            ),
+        )
+        val failure = assertIs<GMResult.Err<MermaidError>>(result).error
+        assertIs<MermaidError.Unexpected>(failure)
+        assertTrue(failure.message.contains("Requirement text measurement failed"))
+    }
+
+    @Test
+    fun propagatesFinalRequirementLabelMeasurementCancellation() {
+        assertFailsWith<CancellationException> {
+            MermaidEngine().render(
+                "requirementDiagram\nrequirement R {\ntext: cancelled\n}",
+                context.copy(
+                    textMetrics = TextMetricProvider { request ->
+                        if (request.text == "Text: cancelled" && request.maxWidth.isFinite()) {
+                            throw CancellationException("Cancelled label metrics")
+                        }
+                        wrappedMetrics(request)
+                    },
+                ),
+            )
+        }
     }
 
     @Test
@@ -377,6 +580,18 @@ class RequirementLayoutTest {
             context.copy(options = context.options.copy(maxEdges = 0)),
         )
         assertIs<GMResult.Err<MermaidError.ResourceLimit>>(limited)
+    }
+
+    private fun wrappedMetrics(request: TextMetricsRequest): TextMetrics {
+        val widths = request.text.split('\n').map { it.length * request.fontSize * 0.5f }
+        val lineCount = widths.sumOf { width ->
+            ceil((width / request.maxWidth).toDouble()).toInt().coerceAtLeast(1)
+        }
+        return TextMetrics(
+            width = minOf(request.maxWidth, widths.maxOrNull() ?: 0f),
+            height = lineCount * request.fontSize * request.lineHeight,
+            lineCount = lineCount,
+        )
     }
 
     private fun render(
