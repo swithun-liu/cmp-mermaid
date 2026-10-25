@@ -1016,6 +1016,8 @@ data class MermaidTheme(
     ),
     val errorBackground: SceneColor = SceneColor(0xFF552222),
     val errorText: SceneColor = SceneColor(0xFF552222),
+    // Mermaid.js 12.0.0: themes/theme-*.js -> Theme.constructor radius.
+    val radius: Float = 5f,
 ) {
     internal fun colorFill(index: Int?): SceneColor =
         paletteColor(bkgColorArray, index) ?: groupFill
@@ -1125,6 +1127,7 @@ data class MermaidTheme(
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
+            radius = 12f,
             bkgColorArray = reduxColorBackgrounds(),
             borderColorArray = reduxColorBorders(),
             pie = reduxColorPieTheme(dark = false),
@@ -1337,6 +1340,7 @@ data class MermaidTheme(
                 timeline = timelineTheme("neo"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
+                radius = 3f,
                 strokeWidth = 2f,
                 pie = neoPieTheme(dark = false),
                 xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF333333),
@@ -1380,6 +1384,7 @@ data class MermaidTheme(
                 timeline = timelineTheme("neo-dark"),
                 fontSize = 14f,
                 fontFamily = MERMAID_NEO_FONT_FAMILY,
+                radius = 3f,
                 pie = neoPieTheme(dark = true),
                 xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
                 dropShadow = SceneShadow(
@@ -1423,6 +1428,7 @@ data class MermaidTheme(
                 fontSize = 14f,
                 fontFamily = MERMAID_REDUX_FONT_FAMILY,
                 strokeWidth = 2f,
+                radius = 12f,
                 pie = reduxPieTheme(dark = false),
                 xyChart = reduxXyChartTheme(background = 0xFFFFFFFF, text = 0xFF28253D),
                 dropShadow = reduxShadow(dark = false),
@@ -1996,6 +2002,7 @@ data class MermaidTheme(
                 fontSize = number("fontSize") ?: theme.fontSize,
                 fontFamily = values["fontFamily"] ?: theme.fontFamily,
                 strokeWidth = number("strokeWidth") ?: theme.strokeWidth,
+                radius = number("radius") ?: theme.radius,
                 bkgColorArray = bkgColorArray,
                 borderColorArray = borderColorArray,
                 pie = pie,
@@ -2162,6 +2169,7 @@ data class MermaidTheme(
             fontSize = 14f,
             fontFamily = MERMAID_REDUX_FONT_FAMILY,
             strokeWidth = 2f,
+            radius = 12f,
             pie = reduxPieTheme(dark = true),
             xyChart = reduxXyChartTheme(background = 0xFF333333, text = 0xFFE0DFDF),
             dropShadow = reduxShadow(dark = true),

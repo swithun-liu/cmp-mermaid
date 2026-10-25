@@ -62,6 +62,12 @@ arbitrary URLs or JavaScript.
 
 ## Validation Corpus
 
+- The current 0.1.17 [label repair audit](label-compatibility-report.md)
+  verifies member sanitization before generic/method parsing from identical
+  Native/Official input. Both Class cases preserve label content; compartment
+  height remains Review. The combined Flowchart/Class audit has 23 sources,
+  46 screenshots and four contact sheets, with 13 Pass, 10 Review and 0 Fail.
+  The larger matrices below are retained historical evidence.
 - 38 examples extracted from Mermaid's official Class documentation run in JVM
   tests.
 - Mermaid's dense relation matrix runs through Dagre.

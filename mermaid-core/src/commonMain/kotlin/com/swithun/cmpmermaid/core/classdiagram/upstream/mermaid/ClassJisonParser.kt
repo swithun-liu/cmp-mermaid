@@ -232,8 +232,15 @@ internal class ClassJisonParser(
             members += member
             GMResult.Ok(members)
         }
-        64 -> twoStrings(values, 0, 1, token, production, "class id", "member") {
-            id, member -> db.addMember(id, db.cleanupLabel(member))
+        64 -> {
+            val id = values.getOrNull(0) as? String
+                ?: return semanticError(token, production, "class id", 0)
+            val member = values.getOrNull(1) as? String
+                ?: return semanticError(token, production, "member", 1)
+            when (val result = db.addMember(id, db.cleanupLabel(member))) {
+                is GMResult.Ok -> GMResult.Ok(id)
+                is GMResult.Err -> result
+            }
         }
         67 -> classRelation(values, 0, 2, 1, null, null, token, production)
         68 -> classRelation(values, 0, 3, 2, 1, null, token, production)
@@ -365,8 +372,10 @@ internal class ClassJisonParser(
             ?: return semanticError(token, production, "class id", classIndex)
         val members = stringList(values.getOrNull(membersIndex), token, production, membersIndex)
             ?: return semanticError(token, production, "class members", membersIndex)
-        db.addMembers(id, members)
-        return GMResult.Ok(id)
+        return when (val result = db.addMembers(id, members)) {
+            is GMResult.Ok -> GMResult.Ok(id)
+            is GMResult.Err -> result
+        }
     }
 
     private fun addAnnotation(

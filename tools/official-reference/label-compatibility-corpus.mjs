@@ -1,0 +1,25 @@
+// Synthetic same-source regression inputs for Mermaid.js 12.0.0.
+export const labelCompatibilityCases = [
+  { id: 'direction-v', family: 'flowchart', source: 'flowchart TD\nv[Value] --> A[Result]' },
+  { id: 'comparison-negative', family: 'flowchart', source: 'flowchart TD\nA["x < -2 or x > 2"] --> B[Result]' },
+  { id: 'comparison-positive', family: 'flowchart', source: 'flowchart LR\nA["x < 2 and x > -2"]' },
+  { id: 'long-prose', family: 'flowchart', source: 'flowchart TD\nA["A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete."] --> B[Complete]' },
+  { id: 'twelve-lines', family: 'flowchart', source: `flowchart TD\nA["${Array.from({ length: 12 }, (_, i) => `Observation ${i + 1}`).join('<br/>')}"]` },
+  { id: 'accented-lines', family: 'flowchart', source: `flowchart TD\nA["${Array.from({ length: 11 }, (_, i) => `Café numéro ${i + 1}`).join('<br/>')}"]` },
+  { id: 'empty-round', family: 'flowchart', source: 'flowchart TD\nA(" ")' },
+  { id: 'empty-circle', family: 'flowchart', source: 'flowchart TD\nA((" "))' },
+  { id: 'empty-rect', family: 'flowchart', source: 'flowchart TD\nA[" "]' },
+  { id: 'explicit-breaks', family: 'flowchart', source: 'flowchart TD\nA["<br/><br/>"]' },
+  { id: 'transparent-node', family: 'flowchart', source: 'flowchart TD\nA[" "]\nstyle A fill:none,stroke:none' },
+  { id: 'empty-group', family: 'flowchart', source: 'flowchart TD\nsubgraph Empty[Empty group]\nend' },
+  { id: 'mixed-groups', family: 'flowchart', source: 'flowchart TD\nsubgraph Empty[Empty group]\nend\nsubgraph Full[Full group]\nA[Alpha] --> B[Beta]\nend' },
+  { id: 'bare-comment', family: 'flowchart', source: 'flowchart TD\n%%\nA[Alpha] --> B[Beta]' },
+  { id: 'class-raw-angle', family: 'class', source: 'classDiagram\nclass Store {\n+Map<Key,Value> raw\n+load(Map<Key,Value> input) Result\n}' },
+  { id: 'class-tilde-generic', family: 'class', source: 'classDiagram\nclass Store {\n+Map~Key,Value~ typed\n+load(Map~Key,Value~ input) Result\n}' },
+  ...['default', 'forest', 'neo', 'redux-color', 'redux-dark'].map(theme => ({
+    id: `rounded-${theme}`, family: 'flowchart',
+    source: `---\nconfig:\n  theme: ${theme}\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]`,
+  })),
+  { id: 'rounded-override', family: 'flowchart', source: '---\nconfig:\n  theme: redux-color\n  themeVariables:\n    radius: 7\n---\nflowchart TD\nA(Rounded label)' },
+  { id: 'cluster-boundary', family: 'flowchart', source: 'flowchart TD\nsubgraph Box[Group]\nA[Alpha]\nB[Beta]\nC[Gamma]\nend\nA -->|Down| Box\nB -->|Up| Box\nC -->|Left| Box' },
+];

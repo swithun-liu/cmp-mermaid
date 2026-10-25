@@ -138,6 +138,7 @@ internal object MermaidShapePort {
         defaultNodeStroke: SceneColor,
         defaultFlowContainerStroke: SceneColor = defaultNodeStroke,
         explicitNodeWidth: Float? = null,
+        roundedRectRadius: Float = 5f,
     ): GMResult<MermaidShapeLayout, MermaidError> {
         val label = measuredLabel.copy(
             width = if (node.label.isNotEmpty()) {
@@ -149,7 +150,7 @@ internal object MermaidShapePort {
         return GMResult.Ok(
             when (node.shape) {
                 SceneShapeKind.Rectangle -> rectangle(label, node.padding, node.look)
-                SceneShapeKind.RoundedRectangle -> roundedRectangle(label, node.padding)
+                SceneShapeKind.RoundedRectangle -> roundedRectangle(label, node.padding, roundedRectRadius)
                 SceneShapeKind.CollapsedGroup ->
                     collapsedGroup(
                         label = label,
@@ -239,10 +240,11 @@ internal object MermaidShapePort {
         )
     }
 
-    private fun roundedRectangle(label: SceneSize, padding: Float): MermaidShapeLayout {
+    // Mermaid.js 12.0.0: roundedRect.ts -> roundedRect; drawRect.ts -> drawRect.
+    private fun roundedRectangle(label: SceneSize, padding: Float, radius: Float = 5f): MermaidShapeLayout {
         val width = label.width + padding * 2f
         val height = label.height + padding * 2f
-        val outline = roundedRectanglePoints(width, height, radius = 5f)
+        val outline = roundedRectanglePoints(width, height, radius)
         return centeredShape(listOf(closedPath(outline)), rectanglePoints(width, height))
     }
 

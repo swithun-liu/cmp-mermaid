@@ -1,6 +1,9 @@
 package com.swithun.cmpmermaid.core.classdiagram.upstream.mermaid
 
+import com.swithun.cmpmermaid.core.GMResult
+import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.MermaidSecurityLevel
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidTextPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidUrlSanitizer
 
 /**
@@ -81,27 +84,41 @@ internal class ClassDb(
         classes[className]?.annotations?.add(annotation)
     }
 
-    fun addMember(rawClassName: String, rawMember: String) {
+    // Mermaid.js 12.0.0: classDb.ts -> addMember;
+    // classTypes.ts -> ClassMember.constructor sanitizes before parseMember.
+    fun addMember(rawClassName: String, rawMember: String): GMResult<Unit, MermaidError> {
         val className = addClass(rawClassName)
         val member = rawMember.trim()
         if (member.isEmpty()) {
-            return
+            return GMResult.Ok(Unit)
         }
-        val node = classes[className] ?: return
-        when {
-            member.startsWith("<<") && member.endsWith(">>") ->
-                node.annotations += member.substring(2, member.length - 2)
-            ')' in member ->
-                node.methods += ClassMember.parse(member, ClassMemberType.Method)
-            else ->
-                node.members += ClassMember.parse(member, ClassMemberType.Attribute)
+        val node = classes[className] ?: return GMResult.Err(
+            MermaidError.Layout("Class '$className' was not added before its member"),
+        )
+        val annotation = member.startsWith("<<") && member.endsWith(">>")
+        val input = if (annotation) member.substring(2, member.length - 2) else member
+        val sanitized = when (val result = MermaidTextPort.sanitizeText(input)) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
         }
+        if (annotation) {
+            node.annotations += sanitized
+        } else if (member.indexOf(')') > 0) {
+            node.methods += ClassMember.parse(sanitized, ClassMemberType.Method)
+        } else {
+            node.members += ClassMember.parse(sanitized, ClassMemberType.Attribute)
+        }
+        return GMResult.Ok(Unit)
     }
 
-    fun addMembers(rawClassName: String, rawMembers: List<String>) {
+    fun addMembers(rawClassName: String, rawMembers: List<String>): GMResult<Unit, MermaidError> {
         rawMembers.asReversed().forEach { member ->
-            addMember(rawClassName, member)
+            when (val result = addMember(rawClassName, member)) {
+                is GMResult.Ok -> Unit
+                is GMResult.Err -> return result
+            }
         }
+        return GMResult.Ok(Unit)
     }
 
     fun addRelation(relation: ClassRelation) {

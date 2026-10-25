@@ -51,7 +51,13 @@ internal object FlowchartDataAdapter {
         formulaRenderingAvailable: Boolean = false,
     ): GMResult<FlowchartDocument, MermaidError> {
         val nodes = linkedMapOf<String, FlowNode>()
-        data.nodes.filterNot { it.isGroup }.forEach { node ->
+        // Mermaid.js 12.0.0: dagre/index.js -> measureDagreGraph/paintDagreLayoutCore.
+        // A leaf group follows insertNode, not insertCluster. Preserve the same
+        // rect, padding, CSS and label instead of dropping its zero-child box.
+        val parentIds = data.nodes.mapNotNullTo(mutableSetOf()) { it.parentId }
+        fun isCluster(node: com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidFlowLayoutNode) =
+            node.isGroup && (config.layout != "dagre" || node.id in parentIds)
+        data.nodes.filterNot(::isCluster).forEach { node ->
             val shape = when (val mapped = shapeKind(node.shape)) {
                 is GMResult.Ok -> mapped.value
                 is GMResult.Err -> return mapped
@@ -113,12 +119,14 @@ internal object FlowchartDataAdapter {
                 assetWidth = node.assetWidth,
                 assetHeight = node.assetHeight,
                 constraint = node.constraint,
-                colorIndex = node.colorIndex,
+                // Leaf groups use drawRect's ordinary node CSS, not flowGroup's
+                // declaration palette (clusters.js -> flowGroup).
+                colorIndex = node.colorIndex.takeUnless { node.isGroup },
             )
         }
 
         val subgraphs = buildList {
-            data.nodes.filter { it.isGroup }.forEach { group ->
+            data.nodes.filter(::isCluster).forEach { group ->
                 val label = when (
                     val rendered = MermaidTextPort.render(
                         source = group.label.orEmpty(),

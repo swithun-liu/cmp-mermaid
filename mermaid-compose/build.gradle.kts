@@ -118,3 +118,14 @@ tasks.register<JavaExec>("captureMixedFormulaAudit") {
             .getOrElse(rootProject.file("build/mixed-formula-audit").absolutePath),
     )
 }
+
+tasks.register<JavaExec>("captureLabelCompatibility") {
+    dependsOn("jvmTestClasses")
+    val compilation = kotlin.targets.getByName("jvm").compilations.getByName("test")
+    classpath(compilation.output.allOutputs, compilation.runtimeDependencyFiles)
+    mainClass.set("com.swithun.cmpmermaid.compose.LabelCompatibilityAudit")
+    args(
+        providers.gradleProperty("labelAuditDir")
+            .getOrElse(rootProject.file("build/label-compatibility").absolutePath),
+    )
+}

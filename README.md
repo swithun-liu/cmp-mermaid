@@ -235,16 +235,16 @@ The current publication coordinates are:
 
 | Consumer | Artifact |
 | --- | --- |
-| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.16` |
-| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.16` |
-| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.16` |
-| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.16` |
-| iOS binary | `CMPMermaid` CocoaPod `0.1.16` |
+| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.17` |
+| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.17` |
+| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.17` |
+| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.17` |
+| iOS binary | `CMPMermaid` CocoaPod `0.1.17` |
 
 Current Kotlin Multiplatform projects:
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.16")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.17")
 }
 ```
 
@@ -258,7 +258,7 @@ Android projects pinned to Kotlin `1.7.21` use the isolated Android artifact:
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.16",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.17",
     )
 }
 ```
@@ -288,7 +288,7 @@ Kotlin `1.7.21` Android artifact.
 iOS projects can consume the precompiled static XCFramework through CocoaPods:
 
 ```ruby
-pod 'CMPMermaid', '0.1.16'
+pod 'CMPMermaid', '0.1.17'
 ```
 
 The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`

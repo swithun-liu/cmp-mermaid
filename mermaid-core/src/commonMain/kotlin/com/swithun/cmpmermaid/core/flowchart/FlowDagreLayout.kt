@@ -14,6 +14,7 @@ import com.swithun.cmpmermaid.core.flowchart.upstream.dagre.DagreLayout
 import com.swithun.cmpmermaid.core.flowchart.upstream.dagre.DagreNode
 import com.swithun.cmpmermaid.core.flowchart.upstream.dagre.DagreSelfLoop
 import com.swithun.cmpmermaid.core.flowchart.upstream.graphlib.Graph
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidClusterEdgePort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidGraphAdapter
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeIntersectionPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
@@ -504,7 +505,8 @@ internal object FlowDagreLayout {
     ) {
         val index = edge.originalIndex ?: return
         val source = document.edges.getOrNull(index) ?: return
-        val points = edge.points.mapTo(mutableListOf()) { it.translate(offsetX, offsetY) }
+        val originalPoints = edge.points.map { it.translate(offsetX, offsetY) }
+        val points = originalPoints.toMutableList()
         if (points.size < 2) return
 
         val startBounds = edge.fromCluster?.let(subgraphBounds::get)
@@ -530,10 +532,27 @@ internal object FlowDagreLayout {
         // Mermaid.js 12.0.0: rendering-util/rendering-elements/edges.js
         // -> insertEdge. Marker offsets require a non-zero terminal segment.
         val routedPoints = points.removeAdjacentDuplicates()
-        val labelAnchor = edge.x?.let { x ->
-            edge.y?.let { y -> ScenePoint(x + offsetX, y + offsetY) }
-        } ?: routedPoints.halfLengthPoint()
-        result[index] = FlowRoutedEdge(routedPoints, labelAnchor)
+        // insertEdge saves data-points before applying toCluster/fromCluster.
+        var renderPoints = routedPoints
+        var pointsChanged = false
+        edge.toCluster?.let(subgraphBounds::get)?.let { bounds ->
+            renderPoints = MermaidClusterEdgePort.cutPathAtIntersect(originalPoints, bounds)
+            pointsChanged = true
+        }
+        edge.fromCluster?.let(subgraphBounds::get)?.let { bounds ->
+            renderPoints = MermaidClusterEdgePort.cutPathAtIntersect(renderPoints.asReversed(), bounds)
+                .asReversed()
+            pointsChanged = true
+        }
+        val labelAnchor = if (pointsChanged && renderPoints.isNotEmpty()) {
+            // positionEdgeLabel -> utils.calcLabelPosition(updatedPath).
+            renderPoints.halfLengthPoint()
+        } else {
+            edge.x?.let { x ->
+                edge.y?.let { y -> ScenePoint(x + offsetX, y + offsetY) }
+            } ?: routedPoints.halfLengthPoint()
+        }
+        result[index] = FlowRoutedEdge(routedPoints, labelAnchor, renderPoints = renderPoints)
     }
 
     private fun selfLoopSide(
@@ -671,7 +690,7 @@ internal object FlowDagreLayout {
     private fun List<ScenePoint>.halfLengthPoint(): ScenePoint {
         if (size == 1) return first()
         val lengths = zipWithNext { first, second ->
-            abs(second.x - first.x) + abs(second.y - first.y)
+            kotlin.math.hypot(second.x - first.x, second.y - first.y)
         }
         val target = lengths.sum() / 2f
         var traversed = 0f

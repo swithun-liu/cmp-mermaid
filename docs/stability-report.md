@@ -13,10 +13,12 @@
 > but Sequence, ZenUML, Event Modeling, nested formula HTML, and HTML block
 > formatting remain unsupported. A separate 28-source composition audit is
 > linked below; the large corpus and physical-device matrices predate this
-> formula change and were not regenerated for it. The full JVM and
+> formula change and the 0.1.17 label repairs and were not regenerated for
+> either. The fresh label repair audit covers 23 sources, 46 screenshots and
+> four contact sheets: 13 Pass, 10 Review, 0 Fail. The full JVM and
 > Wasm core suites pass.
 > Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
-> and iOS now have separate fresh 441-case physical-device matrices. Core soak,
+> and iOS retain separate historical 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
 > identified by their measured corpus sizes. See the
 > [33-family roadmap](full-diagram-roadmap.md).
@@ -31,9 +33,9 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; 5 Architecture and 2 Kanban cases remain under review** |
+| Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; historical Architecture/Kanban and 10 current label cases remain under review** |
 | Mermaid compatibility baseline | `12.0.0` |
-| Implemented families | 33/33; retained 33-family corpus evidence, separate current formula audit |
+| Implemented families | 33/33; retained 33-family corpus evidence, separate formula and current label audits |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
 | Declared capability coverage | 738/738 points across 33 diagram types |
 | Independent-scenario visual matrix | 8,448 Native/Official pairs: Flowchart uses its dedicated corpus; every other family covers all 256 combinations of eight capability axes |
@@ -50,9 +52,9 @@ stress inputs.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
-| JVM tests | Core: 1,084 passed, 0 failed; Compose: 69 passed, 0 failed |
-| Wasm tests | Core: 1,082 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| iOS Simulator Arm64 tests | Core: 1,082 passed, 0 failed; Compose: 76 passed, 0 failed |
+| JVM tests | Core: 1,094 passed, 0 failed; Compose: 73 passed, 0 failed |
+| Wasm tests | Core: 1,092 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| iOS Simulator Arm64 tests | Historical baseline: Core 1,082 and Compose 76 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -60,10 +62,13 @@ stress inputs.
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 | Formula renderer evidence | Unit-tested shared-label composition and provider contract; separate 28-source / 56-screenshot Native/Official audit; physical-device formula parity not established; non-Stable |
+| Current label repair evidence | 2 families, 23 unique sources, 46 screenshots, 4 contact sheets; 13 Pass / 10 Review / 0 Fail; all label content and cluster-boundary path/topology checks pass |
 
-**Current conclusion:** the fresh Flowchart detail, geometry, per-edge
-topology, and contact-sheet gates pass. The affected-family targeted JVM tests,
-Compose/debug UI Wasm tests, and Wasm production build pass. The overall
+**Current conclusion:** the 0.1.17
+[label repair audit](label-compatibility-report.md) passes label content and
+the cluster-boundary geometry, path and topology checks; ten visual cases
+remain Review. The retained 256-case Flowchart and full 8,448-pair matrix
+predate this change. The full JVM suites pass. The overall
 Mermaid `12.0.0` contract remains **not Stable** because Architecture's legal
 `randomize: true` spectral path and legal `look: handDrawn` input are
 explicitly unsupported rather than silently approximated; five Architecture
@@ -73,7 +78,8 @@ boundaries listed above remain untranslated. The main 8,448-pair visual corpus
 does not exercise provider output and is retained historical evidence for this
 change. The current formula evidence is tracked in the
 [mixed-formula report](mixed-formula-report.md).
-The full JVM, Wasm, and iOS Simulator Arm64 suites pass.
+The fresh Wasm suites pass. iOS Simulator runtime results retain their stated
+historical baseline; the release build matrix verifies the changed code.
 
 ## AI-Like Source-Mutation Safety Gate
 

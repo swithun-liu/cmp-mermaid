@@ -88,6 +88,7 @@ internal class FlowchartLayout {
                     direction = resolvedDocument.direction,
                     defaultNodeStroke = context.theme.nodeStroke,
                     defaultFlowContainerStroke = context.theme.flowContainerStroke,
+                    roundedRectRadius = context.theme.radius,
                 )
             ) {
                 is GMResult.Ok -> shapeResult.value
@@ -507,7 +508,7 @@ internal class FlowchartLayout {
             val curve = routed.curveOverride ?: edge.curve ?: context.options.curve
             val commands = when (
                 val generatedPath = MermaidEdgePathPort.generate(
-                    points = routed.points,
+                    points = routed.renderPoints,
                     curve = curve,
                     arrowStart = edge.arrowStart,
                     arrowEnd = edge.arrowEnd,

@@ -429,7 +429,7 @@ internal fun rememberMermaidPreparedScene(
                 ),
                 style = style,
                 softWrap = true,
-                maxLines = 8,
+                maxLines = mermaidTextMaxLines(request.text, softWrap = true),
                 constraints = Constraints(
                     maxWidth = layoutWidth.mermaidTextConstraint(),
                 ),
@@ -1166,7 +1166,7 @@ private fun DrawScope.drawSceneShape(shape: SceneShape) {
     val strokeGradient = shape.strokeGradient?.toComposeBrush(bounds)
     val geometry = shape.geometry
     shape.shadow?.let { shadow ->
-        drawSceneShapeShadow(shape, bounds, shadow)
+        drawSceneShapeShadow(shape, shadow)
     }
     if (geometry == null) {
         val strokeStyle = Stroke(
@@ -1355,88 +1355,54 @@ private fun SceneLinearGradient.toComposeBrush(bounds: Rect): Brush {
 
 private fun DrawScope.drawSceneShapeShadow(
     shape: SceneShape,
-    bounds: Rect,
     shadow: SceneShadow,
 ) {
-    val shadowColor = shadow.color.toComposeColor()
-    val primitive = shape.geometry
-        ?.paths
-        ?.firstOrNull { path ->
-            (path.points.isNotEmpty() || !path.pathData.isNullOrBlank()) &&
-                (path.fill != SceneShapePaint.None || path.stroke != SceneShapePaint.None)
-        }
-    val primitivePath = primitive?.let { path ->
-        when (
-            val result = path.toComposePath(
-                bounds = bounds,
-                viewBox = shape.geometry?.viewBox?.toComposeRect(),
-                viewportFit = shape.geometry?.viewportFit ?: SceneShapeViewportFit.Stretch,
-            )
-        ) {
-            is GMResult.Ok -> result.value
-            is GMResult.Err -> null
-        }
-    }
-    val primitiveStyle = if ((shape.fill.argb ushr 24) != 0L) {
-        Fill
-    } else {
-        // Mermaid.js 12.0.0: packages/mermaid/src/styles.ts applies the
-        // drop-shadow filter to the rendered rect. A fill:none cluster casts
-        // a shadow from its stroke only, not from its transparent interior.
-        Stroke(
-            width = shape.strokeWidth,
-            cap = StrokeCap.Butt,
-            join = StrokeJoin.Miter,
-            pathEffect = shape.dashIntervals.toPathEffect()
-                ?: shape.strokePattern.toPathEffect(),
-        )
-    }
+    // Mermaid.js 12.0.0: styles.ts -> SVG drop-shadow filter, SourceAlpha.
+    // Reuse the actual shape painter so every path's fill/stroke, opacity,
+    // dash pattern and gradient contributes the same alpha as the source.
     shadow.samples().forEach { sample ->
-        val color = shadowColor.copy(alpha = shadowColor.alpha * sample.alpha)
+        fun paint(source: SceneColor): SceneColor =
+            mermaidShadowPaint(source, shadow.color, sample.alpha)
+        fun gradient(source: SceneLinearGradient): SceneLinearGradient =
+            source.copy(
+                startColor = paint(source.startColor),
+                endColor = paint(source.endColor),
+                colorStops = source.colorStops.map { stop ->
+                    stop.copy(color = paint(stop.color))
+                },
+            )
+        val silhouette = shape.copy(
+            fill = paint(shape.fill),
+            stroke = paint(shape.stroke),
+            shadow = null,
+            strokeGradient = shape.strokeGradient?.let(::gradient),
+            geometry = shape.geometry?.let { geometry ->
+                geometry.copy(paths = geometry.paths.map { primitive ->
+                    primitive.copy(
+                        fillColor = primitive.fillColor?.let(::paint),
+                        strokeColor = primitive.strokeColor?.let(::paint),
+                        fillGradient = primitive.fillGradient?.let(::gradient),
+                    )
+                })
+            },
+        )
         withTransform({
             translate(sample.offset.x, sample.offset.y)
         }) {
-            when {
-                primitivePath == null &&
-                    shape.kind.primitiveCanvasShape() == PrimitiveCanvasShape.Oval -> drawOval(
-                    color = color,
-                    topLeft = bounds.topLeft,
-                    size = bounds.size,
-                    style = primitiveStyle,
-                )
-                primitivePath == null &&
-                    shape.kind.primitiveCanvasShape() ==
-                    PrimitiveCanvasShape.RoundedRectangle -> drawRoundRect(
-                    color = color,
-                    topLeft = bounds.topLeft,
-                    size = bounds.size,
-                    cornerRadius = CornerRadius(shape.cornerRadius, shape.cornerRadius),
-                    style = primitiveStyle,
-                )
-                primitivePath == null -> drawRect(
-                    color = color,
-                    topLeft = bounds.topLeft,
-                    size = bounds.size,
-                    style = primitiveStyle,
-                )
-                primitive.fill != SceneShapePaint.None -> drawPath(
-                    path = primitivePath,
-                    color = color,
-                    style = Fill,
-                )
-                else -> drawPath(
-                    path = primitivePath,
-                    color = color,
-                    style = primitive.strokeStyle(
-                        shape,
-                        bounds,
-                        shape.geometry?.viewBox,
-                        shape.geometry?.viewportFit ?: SceneShapeViewportFit.Stretch,
-                    ),
-                )
-            }
+            drawSceneShape(silhouette)
         }
     }
+}
+
+internal fun mermaidShadowPaint(
+    source: SceneColor,
+    shadow: SceneColor,
+    sampleAlpha: Float,
+): SceneColor {
+    val alpha = ((source.argb ushr 24) and 255L).toFloat() *
+        ((shadow.argb ushr 24) and 255L).toFloat() / 255f *
+        sampleAlpha.coerceIn(0f, 1f)
+    return SceneColor((shadow.argb and 0x00FFFFFFL) or (alpha.toLong() shl 24))
 }
 
 internal data class SceneSvgPathError(
@@ -2986,7 +2952,8 @@ internal fun mermaidTextMaxLines(
     softWrap: Boolean,
     explicitMaxLines: Int? = null,
 ): Int = explicitMaxLines?.coerceAtLeast(1) ?: if (softWrap) {
-    MAX_SOFT_TEXT_LINES
+    // Mermaid.js 12.0.0: createText.ts -> addHtmlSpan has no line clamp.
+    Int.MAX_VALUE
 } else {
     text.count { character -> character == '\n' } + 1
 }
@@ -3023,6 +2990,12 @@ private fun TextMeasurer.measureMermaidText(
     intrinsicWidthScale: Float?,
     htmlLabel: Boolean,
 ): MermaidTextMeasurement {
+    if (htmlLabel && text.text.all { it == ' ' || it == '\t' || it == '\r' || it == '\u000C' }) {
+        // addHtmlSpan's empty/whitespace-only inline span has no line box.
+        // Keep explicit line breaks separate: they still occupy CSS lines.
+        val layout = measure(AnnotatedString(""), style, softWrap = false)
+        return MermaidTextMeasurement(layout, measuredWidth = 0f, measuredHeight = 0f)
+    }
     if (!htmlLabel || !softWrap) {
         val layout = measure(
             text = text,
@@ -3348,7 +3321,6 @@ private val LOW_SURROGATE_RANGE = 0xDC00..0xDFFF
 private const val HIGH_SURROGATE_START = 0xD800
 private const val LOW_SURROGATE_START = 0xDC00
 private const val SUPPLEMENTARY_CODE_POINT_OFFSET = 0x10000
-private const val MAX_SOFT_TEXT_LINES = 8
 private const val SVG_TEXT_MAX_LINE_HEIGHT = 1.2f
 
 private fun com.swithun.cmpmermaid.core.SceneTextSpan.toComposeTextDecoration(): TextDecoration? {

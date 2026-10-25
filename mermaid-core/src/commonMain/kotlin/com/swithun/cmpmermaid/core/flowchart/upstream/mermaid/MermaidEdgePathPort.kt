@@ -48,9 +48,9 @@ internal object MermaidEdgePathPort {
         arrowStart: SceneArrowHead,
         arrowEnd: SceneArrowHead,
     ): GMResult<List<ScenePathCommand>, MermaidError> {
-        if (points.size < 2) {
+        if (points.isEmpty()) {
             return GMResult.Err(
-                MermaidError.Layout("Mermaid edge path requires at least two points"),
+                MermaidError.Layout("Mermaid edge path requires at least one point"),
             )
         }
 
@@ -191,6 +191,8 @@ internal object MermaidEdgePathPort {
         arrowStart: SceneArrowHead,
         arrowEnd: SceneArrowHead,
     ): List<ScenePoint> {
+        // edges.js -> applyMarkerOffsetsToPoints checks points.length >= 2.
+        if (points.size < 2) return points
         val adjusted = points.toMutableList()
         markerOffset(arrowStart).takeIf { offset -> offset > 0f }?.let { offset ->
             val first = points[0]
@@ -238,12 +240,12 @@ internal object MermaidEdgePathPort {
         val endMarkerHeight = markerOffset(arrowEnd).takeIf { offset -> offset > 0f }
 
         if (index == 0 && startMarkerHeight != null) {
-            val (angle, deltaX) = deltaAndLineAngle(points[0], points[1])
+            val (angle, deltaX) = deltaAndLineAngle(points[0], points.getOrNull(1))
             offset = startMarkerHeight * cos(angle) * if (deltaX >= 0f) 1f else -1f
         } else if (index == points.lastIndex && endMarkerHeight != null) {
             val (angle, deltaX) = deltaAndLineAngle(
                 points[points.lastIndex],
-                points[points.lastIndex - 1],
+                points.getOrNull(points.lastIndex - 1),
             )
             offset = endMarkerHeight * cos(angle) * if (deltaX >= 0f) 1f else -1f
         }
@@ -288,12 +290,12 @@ internal object MermaidEdgePathPort {
         val endMarkerHeight = markerOffset(arrowEnd).takeIf { offset -> offset > 0f }
 
         if (index == 0 && startMarkerHeight != null) {
-            val (angle, _, deltaY) = deltaAndLineAngle(points[0], points[1])
+            val (angle, _, deltaY) = deltaAndLineAngle(points[0], points.getOrNull(1))
             offset = startMarkerHeight * abs(sin(angle)) * if (deltaY >= 0f) 1f else -1f
         } else if (index == points.lastIndex && endMarkerHeight != null) {
             val (angle, _, deltaY) = deltaAndLineAngle(
                 points[points.lastIndex],
-                points[points.lastIndex - 1],
+                points.getOrNull(points.lastIndex - 1),
             )
             offset = endMarkerHeight * abs(sin(angle)) * if (deltaY >= 0f) 1f else -1f
         }
@@ -326,9 +328,11 @@ internal object MermaidEdgePathPort {
     }
 
     private fun deltaAndLineAngle(
-        first: ScenePoint,
-        second: ScenePoint,
+        first: ScenePoint?,
+        second: ScenePoint?,
     ): DeltaAndAngle {
+        // Mermaid.js 12.0.0: utils/lineWithOffset.ts -> calculateDeltaAndAngle.
+        if (first == null || second == null) return DeltaAndAngle(0f, 0f, 0f)
         val deltaX = second.x - first.x
         val deltaY = second.y - first.y
         return DeltaAndAngle(

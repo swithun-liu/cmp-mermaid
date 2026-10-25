@@ -25,6 +25,15 @@ internal object MermaidHtmlFragmentTokenizer {
                 cursor = if (commentEnd < 0) source.length else commentEnd + 3
                 continue
             }
+            // Mermaid.js 12.0.0: createText.ts -> addHtmlSpan -> span.innerHTML.
+            // HTML tag-open/end-tag-open states enter a tag name only on an
+            // ASCII letter. Comparisons such as "x < -2 or x > 2" remain text.
+            val nameStart = tagStart + if (source.getOrNull(tagStart + 1) == '/') 2 else 1
+            if (source.getOrNull(nameStart)?.isAsciiLetter() != true) {
+                tokens += MermaidHtmlFragmentToken.Text("<")
+                cursor = tagStart + 1
+                continue
+            }
             val tagEnd = findTagEnd(source, tagStart + 1)
             if (tagEnd == null) {
                 // Mermaid.js 12.0.0: createText.ts -> addHtmlSpan assigns the label
@@ -83,18 +92,12 @@ internal object MermaidHtmlFragmentTokenizer {
         sourceOffset: Int,
     ): GMResult<MermaidHtmlFragmentToken.Tag?, MermaidError> {
         var cursor = 0
-        while (rawBody.getOrNull(cursor)?.isWhitespace() == true) {
-            cursor++
-        }
-        if (rawBody.getOrNull(cursor) in setOf('!', '?')) {
-            return GMResult.Ok(null)
-        }
         val closing = rawBody.getOrNull(cursor) == '/'
         if (closing) {
             cursor++
-            while (rawBody.getOrNull(cursor)?.isWhitespace() == true) {
-                cursor++
-            }
+        }
+        if (rawBody.getOrNull(cursor)?.isAsciiLetter() != true) {
+            return GMResult.Ok(null)
         }
         val nameStart = cursor
         while (rawBody.getOrNull(cursor)?.isHtmlNameCharacter() == true) {
@@ -181,6 +184,9 @@ internal object MermaidHtmlFragmentTokenizer {
 
     private fun Char.isHtmlNameCharacter(): Boolean =
         isLetterOrDigit() || this in setOf('-', ':')
+
+    private fun Char.isAsciiLetter(): Boolean =
+        this in 'A'..'Z' || this in 'a'..'z'
 
     private fun <T> parseError(
         source: String,

@@ -1,0 +1,1915 @@
+{
+  "schemaVersion": 1,
+  "mermaidVersion": "12.0.0",
+  "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
+  "generatedAt": "2026-10-25T07:12:59.894Z",
+  "fontFamily": "Arial (bundled Arimo)",
+  "deviceScaleFactor": 1,
+  "cases": [
+    {
+      "id": "direction-v",
+      "family": "flowchart",
+      "source": "flowchart TD\nv[Value] --> A[Result]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-direction-v-flowchart-v",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-direction-v-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 103,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "Value",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-direction-v-flowchart-v"
+        },
+        {
+          "text": "Result",
+          "bounds": {
+            "x": 24,
+            "y": 115,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-direction-v-flowchart-A"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-direction-v-L_v_A_0",
+          "d": "M84,53L84,57.167C84,61.333,84,69.667,84,77.333C84,85,84,92,84,95.5L84,99",
+          "points": [
+            [
+              84,
+              53
+            ],
+            [
+              84,
+              78
+            ],
+            [
+              84,
+              103
+            ]
+          ],
+          "start": [
+            84,
+            53
+          ],
+          "end": [
+            84,
+            99
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-direction-v_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 156
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 156
+      }
+    },
+    {
+      "id": "comparison-negative",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"x < -2 or x > 2\"] --> B[Result]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-comparison-negative-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-comparison-negative-flowchart-B",
+          "bounds": {
+            "x": 8,
+            "y": 103,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "x < -2 or x > 2",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-comparison-negative-flowchart-A"
+        },
+        {
+          "text": "Result",
+          "bounds": {
+            "x": 24,
+            "y": 115,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-comparison-negative-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-comparison-negative-L_A_B_0",
+          "d": "M84,53L84,57.167C84,61.333,84,69.667,84,77.333C84,85,84,92,84,95.5L84,99",
+          "points": [
+            [
+              84,
+              53
+            ],
+            [
+              84,
+              78
+            ],
+            [
+              84,
+              103
+            ]
+          ],
+          "start": [
+            84,
+            53
+          ],
+          "end": [
+            84,
+            99
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-comparison-negative_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 156
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 156
+      }
+    },
+    {
+      "id": "comparison-positive",
+      "family": "flowchart",
+      "source": "flowchart LR\nA[\"x < 2 and x > -2\"]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-comparison-positive-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "x < 2 and x > -2",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-comparison-positive-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 61
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 61
+      }
+    },
+    {
+      "id": "long-prose",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.\"] --> B[Complete]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-long-prose-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 654
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-long-prose-flowchart-B",
+          "bounds": {
+            "x": 8,
+            "y": 712,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 630
+          },
+          "owner": "label-long-prose-flowchart-A"
+        },
+        {
+          "text": "Complete",
+          "bounds": {
+            "x": 24,
+            "y": 724,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-long-prose-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-long-prose-L_A_B_0",
+          "d": "M84,662L84,666.167C84,670.333,84,678.667,84,686.333C84,694,84,701,84,704.5L84,708",
+          "points": [
+            [
+              84,
+              662
+            ],
+            [
+              84,
+              687
+            ],
+            [
+              84,
+              712
+            ]
+          ],
+          "start": [
+            84,
+            662
+          ],
+          "end": [
+            84,
+            708
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-long-prose_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 765
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 765
+      }
+    },
+    {
+      "id": "twelve-lines",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"Observation 1<br/>Observation 2<br/>Observation 3<br/>Observation 4<br/>Observation 5<br/>Observation 6<br/>Observation 7<br/>Observation 8<br/>Observation 9<br/>Observation 10<br/>Observation 11<br/>Observation 12\"]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-twelve-lines-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 276
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Observation 1\nObservation 2\nObservation 3\nObservation 4\nObservation 5\nObservation 6\nObservation 7\nObservation 8\nObservation 9\nObservation 10\nObservation 11\nObservation 12",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 252
+          },
+          "owner": "label-twelve-lines-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 292
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 292
+      }
+    },
+    {
+      "id": "accented-lines",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"Café numéro 1<br/>Café numéro 2<br/>Café numéro 3<br/>Café numéro 4<br/>Café numéro 5<br/>Café numéro 6<br/>Café numéro 7<br/>Café numéro 8<br/>Café numéro 9<br/>Café numéro 10<br/>Café numéro 11\"]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-accented-lines-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 255
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Café numéro 1\nCafé numéro 2\nCafé numéro 3\nCafé numéro 4\nCafé numéro 5\nCafé numéro 6\nCafé numéro 7\nCafé numéro 8\nCafé numéro 9\nCafé numéro 10\nCafé numéro 11",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 231
+          },
+          "owner": "label-accented-lines-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 271
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 271
+      }
+    },
+    {
+      "id": "empty-round",
+      "family": "flowchart",
+      "source": "flowchart TD\nA(\" \")",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-empty-round-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 30,
+            "height": 30
+          },
+          "radius": "12",
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 23,
+            "y": 23,
+            "width": 0,
+            "height": 0
+          },
+          "owner": "label-empty-round-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 46,
+        "height": 46
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 46,
+        "height": 46
+      }
+    },
+    {
+      "id": "empty-circle",
+      "family": "flowchart",
+      "source": "flowchart TD\nA((\" \"))",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-empty-circle-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 64,
+            "height": 64
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 40,
+            "y": 40,
+            "width": 0,
+            "height": 0
+          },
+          "owner": "label-empty-circle-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "empty-rect",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\" \"]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-empty-rect-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 32,
+            "height": 24
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 0,
+            "height": 0
+          },
+          "owner": "label-empty-rect-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 40
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 40
+      }
+    },
+    {
+      "id": "explicit-breaks",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"<br/><br/>\"]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-explicit-breaks-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 66
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "\n\n",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 42
+          },
+          "owner": "label-explicit-breaks-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 82
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 168,
+        "height": 82
+      }
+    },
+    {
+      "id": "transparent-node",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\" \"]\nstyle A fill:none,stroke:none",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-transparent-node-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 32,
+            "height": 24
+          },
+          "radius": null,
+          "fill": "none"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 0,
+            "height": 0
+          },
+          "owner": "label-transparent-node-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 40
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 40
+      }
+    },
+    {
+      "id": "empty-group",
+      "family": "flowchart",
+      "source": "flowchart TD\nsubgraph Empty[Empty group]\nend",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-empty-group-Empty",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 111.375,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Empty group",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 79.375,
+            "height": 21
+          },
+          "owner": "label-empty-group-Empty"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 127.375,
+        "height": 61
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 127.375,
+        "height": 61
+      }
+    },
+    {
+      "id": "mixed-groups",
+      "family": "flowchart",
+      "source": "flowchart TD\nsubgraph Empty[Empty group]\nend\nsubgraph Full[Full group]\nA[Alpha] --> B[Beta]\nend",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-mixed-groups-Full",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 454,
+            "height": 115
+          },
+          "radius": null,
+          "fill": "rgb(240, 253, 250)"
+        },
+        {
+          "id": "label-mixed-groups-flowchart-A",
+          "bounds": {
+            "x": 45.5,
+            "y": 43,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-mixed-groups-flowchart-B",
+          "bounds": {
+            "x": 272.5,
+            "y": 43,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-mixed-groups-Empty",
+          "bounds": {
+            "x": 512,
+            "y": 43,
+            "width": 111.375,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Full group",
+          "bounds": {
+            "x": 203.8671875,
+            "y": 8,
+            "width": 62.265625,
+            "height": 21
+          },
+          "owner": "label-mixed-groups-Full"
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "Alpha",
+          "bounds": {
+            "x": 61.5,
+            "y": 55,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-mixed-groups-flowchart-A"
+        },
+        {
+          "text": "Beta",
+          "bounds": {
+            "x": 288.5,
+            "y": 55,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-mixed-groups-flowchart-B"
+        },
+        {
+          "text": "Empty group",
+          "bounds": {
+            "x": 528,
+            "y": 55,
+            "width": 79.375,
+            "height": 21
+          },
+          "owner": "label-mixed-groups-Empty"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-mixed-groups-L_A_B_0",
+          "d": "M197.5,65.5L203.75,65.5C210,65.5,222.5,65.5,234.333,65.5C246.167,65.5,257.333,65.5,262.917,65.5L268.5,65.5",
+          "points": [
+            [
+              197.5,
+              65.5
+            ],
+            [
+              235,
+              65.5
+            ],
+            [
+              272.5,
+              65.5
+            ]
+          ],
+          "start": [
+            197.5,
+            65.5
+          ],
+          "end": [
+            268.5,
+            65.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-mixed-groups_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 631.375,
+        "height": 131
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 631.375,
+        "height": 131
+      }
+    },
+    {
+      "id": "bare-comment",
+      "family": "flowchart",
+      "source": "flowchart TD\n%%\nA[Alpha] --> B[Beta]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-bare-comment-flowchart-%%",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-bare-comment-flowchart-A",
+          "bounds": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-bare-comment-flowchart-B",
+          "bounds": {
+            "x": 210,
+            "y": 103,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "%%",
+          "bounds": {
+            "x": 24,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-bare-comment-flowchart-%%"
+        },
+        {
+          "text": "Alpha",
+          "bounds": {
+            "x": 226,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-bare-comment-flowchart-A"
+        },
+        {
+          "text": "Beta",
+          "bounds": {
+            "x": 226,
+            "y": 115,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-bare-comment-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-bare-comment-L_A_B_0",
+          "d": "M286,53L286,57.167C286,61.333,286,69.667,286,77.333C286,85,286,92,286,95.5L286,99",
+          "points": [
+            [
+              286,
+              53
+            ],
+            [
+              286,
+              78
+            ],
+            [
+              286,
+              103
+            ]
+          ],
+          "start": [
+            286,
+            53
+          ],
+          "end": [
+            286,
+            99
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-bare-comment_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 370,
+        "height": 156
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 370,
+        "height": 156
+      }
+    },
+    {
+      "id": "class-raw-angle",
+      "family": "class",
+      "source": "classDiagram\nclass Store {\n+Map<Key,Value> raw\n+load(Map<Key,Value> input) Result\n}",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-class-raw-angle-classId-Store",
+          "bounds": {
+            "x": 7.999709129333496,
+            "y": 8.002455711364746,
+            "width": 198.70370483398438,
+            "height": 134.99508666992188
+          }
+        }
+      ],
+      "labels": [
+        {
+          "text": "Store",
+          "bounds": {
+            "x": 89.45377349853516,
+            "y": 21.501964569091797,
+            "width": 35.79557800292969,
+            "height": 20.999237060546875
+          },
+          "owner": "label-class-raw-angle-classId-Store"
+        },
+        {
+          "text": "+Map raw",
+          "bounds": {
+            "x": 19.999271392822266,
+            "y": 66.50032806396484,
+            "width": 61.85712814331055,
+            "height": 20.999237060546875
+          },
+          "owner": "label-class-raw-angle-classId-Store"
+        },
+        {
+          "text": "+load(Map input) : Result",
+          "bounds": {
+            "x": 19.999271392822266,
+            "y": 111.49868774414062,
+            "width": 156.80679321289062,
+            "height": 20.999237060546875
+          },
+          "owner": "label-class-raw-angle-classId-Store"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 214.703125,
+        "height": 151
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 214.7109375,
+        "height": 151
+      }
+    },
+    {
+      "id": "class-tilde-generic",
+      "family": "class",
+      "source": "classDiagram\nclass Store {\n+Map~Key,Value~ typed\n+load(Map~Key,Value~ input) Result\n}",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-class-tilde-generic-classId-Store",
+          "bounds": {
+            "x": 7.999786376953125,
+            "y": 8.001800537109375,
+            "width": 276.79730224609375,
+            "height": 134.99639892578125
+          }
+        }
+      ],
+      "labels": [
+        {
+          "text": "Store",
+          "bounds": {
+            "x": 128.50047302246094,
+            "y": 21.501440048217773,
+            "width": 35.795928955078125,
+            "height": 20.999441146850586
+          },
+          "owner": "label-class-tilde-generic-classId-Store"
+        },
+        {
+          "text": "+Map<Key,Value> typed",
+          "bounds": {
+            "x": 19.999465942382812,
+            "y": 66.50023651123047,
+            "width": 151.65220642089844,
+            "height": 20.99944305419922
+          },
+          "owner": "label-class-tilde-generic-classId-Store"
+        },
+        {
+          "text": "+load(Map<Key,Value> input) : Result",
+          "bounds": {
+            "x": 19.999465942382812,
+            "y": 111.49903869628906,
+            "width": 234.8999786376953,
+            "height": 20.999435424804688
+          },
+          "owner": "label-class-tilde-generic-classId-Store"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 292.796875,
+        "height": 151
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 292.8046875,
+        "height": 151
+      }
+    },
+    {
+      "id": "rounded-default",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: default\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-rounded-default-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 150,
+            "height": 54
+          },
+          "radius": "5",
+          "fill": "rgb(236, 236, 255)"
+        },
+        {
+          "id": "label-rounded-default-flowchart-B",
+          "bounds": {
+            "x": 208,
+            "y": 11,
+            "width": 152,
+            "height": 48
+          },
+          "radius": null,
+          "fill": "rgb(236, 236, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "Rounded label",
+          "bounds": {
+            "x": 23,
+            "y": 23,
+            "width": 120,
+            "height": 24
+          },
+          "owner": "label-rounded-default-flowchart-A"
+        },
+        {
+          "text": "Rectangle",
+          "bounds": {
+            "x": 224,
+            "y": 23,
+            "width": 120,
+            "height": 24
+          },
+          "owner": "label-rounded-default-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-rounded-default-L_A_B_0",
+          "d": "M158,35L162.167,35C166.333,35,174.667,35,182.333,35C190,35,197,35,200.5,35L204,35",
+          "points": [
+            [
+              158,
+              35
+            ],
+            [
+              183,
+              35
+            ],
+            [
+              208,
+              35
+            ]
+          ],
+          "start": [
+            158,
+            35
+          ],
+          "end": [
+            204,
+            35
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-default_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 70
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 70
+      }
+    },
+    {
+      "id": "rounded-forest",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: forest\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-rounded-forest-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 150,
+            "height": 54
+          },
+          "radius": "5",
+          "fill": "rgb(205, 228, 152)"
+        },
+        {
+          "id": "label-rounded-forest-flowchart-B",
+          "bounds": {
+            "x": 208,
+            "y": 11,
+            "width": 152,
+            "height": 48
+          },
+          "radius": null,
+          "fill": "rgb(205, 228, 152)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "Rounded label",
+          "bounds": {
+            "x": 23,
+            "y": 23,
+            "width": 120,
+            "height": 24
+          },
+          "owner": "label-rounded-forest-flowchart-A"
+        },
+        {
+          "text": "Rectangle",
+          "bounds": {
+            "x": 224,
+            "y": 23,
+            "width": 120,
+            "height": 24
+          },
+          "owner": "label-rounded-forest-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-rounded-forest-L_A_B_0",
+          "d": "M158,35L162.167,35C166.333,35,174.667,35,182.333,35C190,35,197,35,200.5,35L204,35",
+          "points": [
+            [
+              158,
+              35
+            ],
+            [
+              183,
+              35
+            ],
+            [
+              208,
+              35
+            ]
+          ],
+          "start": [
+            158,
+            35
+          ],
+          "end": [
+            204,
+            35
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-forest_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 70
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 70
+      }
+    },
+    {
+      "id": "rounded-neo",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: neo\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-rounded-neo-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 150,
+            "height": 51
+          },
+          "radius": "3",
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-rounded-neo-flowchart-B",
+          "bounds": {
+            "x": 208,
+            "y": 11,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "Rounded label",
+          "bounds": {
+            "x": 23,
+            "y": 23,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-neo-flowchart-A"
+        },
+        {
+          "text": "Rectangle",
+          "bounds": {
+            "x": 224,
+            "y": 23,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-neo-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-rounded-neo-L_A_B_0",
+          "d": "M158,33.5L162.167,33.5C166.333,33.5,174.667,33.5,182.333,33.5C190,33.5,197,33.5,200.5,33.5L204,33.5",
+          "points": [
+            [
+              158,
+              33.5
+            ],
+            [
+              183,
+              33.5
+            ],
+            [
+              208,
+              33.5
+            ]
+          ],
+          "start": [
+            158,
+            33.5
+          ],
+          "end": [
+            204,
+            33.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-neo_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 67
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 67
+      }
+    },
+    {
+      "id": "rounded-redux-color",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: redux-color\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-rounded-redux-color-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 150,
+            "height": 51
+          },
+          "radius": "12",
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-rounded-redux-color-flowchart-B",
+          "bounds": {
+            "x": 208,
+            "y": 11,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "Rounded label",
+          "bounds": {
+            "x": 23,
+            "y": 23,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-redux-color-flowchart-A"
+        },
+        {
+          "text": "Rectangle",
+          "bounds": {
+            "x": 224,
+            "y": 23,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-redux-color-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-rounded-redux-color-L_A_B_0",
+          "d": "M158,33.5L162.167,33.5C166.333,33.5,174.667,33.5,182.333,33.5C190,33.5,197,33.5,200.5,33.5L204,33.5",
+          "points": [
+            [
+              158,
+              33.5
+            ],
+            [
+              183,
+              33.5
+            ],
+            [
+              208,
+              33.5
+            ]
+          ],
+          "start": [
+            158,
+            33.5
+          ],
+          "end": [
+            204,
+            33.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-redux-color_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 67
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 67
+      }
+    },
+    {
+      "id": "rounded-redux-dark",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: redux-dark\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-rounded-redux-dark-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 150,
+            "height": 51
+          },
+          "radius": "12",
+          "fill": "rgb(17, 17, 19)"
+        },
+        {
+          "id": "label-rounded-redux-dark-flowchart-B",
+          "bounds": {
+            "x": 208,
+            "y": 11,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(17, 17, 19)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null
+        },
+        {
+          "text": "Rounded label",
+          "bounds": {
+            "x": 23,
+            "y": 23,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-redux-dark-flowchart-A"
+        },
+        {
+          "text": "Rectangle",
+          "bounds": {
+            "x": 224,
+            "y": 23,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-redux-dark-flowchart-B"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-rounded-redux-dark-L_A_B_0",
+          "d": "M158,33.5L162.167,33.5C166.333,33.5,174.667,33.5,182.333,33.5C190,33.5,197,33.5,200.5,33.5L204,33.5",
+          "points": [
+            [
+              158,
+              33.5
+            ],
+            [
+              183,
+              33.5
+            ],
+            [
+              208,
+              33.5
+            ]
+          ],
+          "start": [
+            158,
+            33.5
+          ],
+          "end": [
+            204,
+            33.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-redux-dark_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 67
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 368,
+        "height": 67
+      }
+    },
+    {
+      "id": "rounded-override",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: redux-color\n  themeVariables:\n    radius: 7\n---\nflowchart TD\nA(Rounded label)",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-rounded-override-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 8,
+            "width": 150,
+            "height": 51
+          },
+          "radius": "7",
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Rounded label",
+          "bounds": {
+            "x": 23,
+            "y": 23,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-override-flowchart-A"
+        }
+      ],
+      "edges": [],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 166,
+        "height": 67
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 166,
+        "height": 67
+      }
+    },
+    {
+      "id": "cluster-boundary",
+      "family": "flowchart",
+      "source": "flowchart TD\nsubgraph Box[Group]\nA[Alpha]\nB[Beta]\nC[Gamma]\nend\nA -->|Down| Box\nB -->|Up| Box\nC -->|Left| Box",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-cluster-boundary-Box",
+          "bounds": {
+            "x": 7.99986457824707,
+            "y": 8.001785278320312,
+            "width": 445.672119140625,
+            "height": 210.99642944335938
+          },
+          "radius": null,
+          "fill": "rgb(253, 244, 255)"
+        },
+        {
+          "id": "label-cluster-boundary-flowchart-A",
+          "bounds": {
+            "x": 42.999271392822266,
+            "y": 33.00136184692383,
+            "width": 151.9974365234375,
+            "height": 44.99924087524414
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-cluster-boundary-flowchart-B",
+          "bounds": {
+            "x": 244.995849609375,
+            "y": 33.00136184692383,
+            "width": 151.9974365234375,
+            "height": 44.99924087524414
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-cluster-boundary-flowchart-C",
+          "bounds": {
+            "x": 143.99755859375,
+            "y": 148.99940490722656,
+            "width": 151.9974365234375,
+            "height": 44.999237060546875
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Group",
+          "bounds": {
+            "x": 211.37533569335938,
+            "y": 8.001785278320312,
+            "width": 38.92120361328125,
+            "height": 20.999645233154297
+          },
+          "owner": "label-cluster-boundary-Box"
+        },
+        {
+          "text": "Down",
+          "bounds": {
+            "x": 101.099853515625,
+            "y": 67.50077819824219,
+            "width": 35.7962646484375,
+            "height": 20.99964141845703
+          },
+          "owner": null
+        },
+        {
+          "text": "Up",
+          "bounds": {
+            "x": 312.0415954589844,
+            "y": 67.50077819824219,
+            "width": 17.90594482421875,
+            "height": 20.99964141845703
+          },
+          "owner": null
+        },
+        {
+          "text": "Left",
+          "bounds": {
+            "x": 284.31549072265625,
+            "y": 150.31187438964844,
+            "width": 23.358978271484375,
+            "height": 20.999649047851562
+          },
+          "owner": null
+        },
+        {
+          "text": "Alpha",
+          "bounds": {
+            "x": 58.999000549316406,
+            "y": 45.00115966796875,
+            "width": 119.99796295166016,
+            "height": 20.99964141845703
+          },
+          "owner": "label-cluster-boundary-flowchart-A"
+        },
+        {
+          "text": "Beta",
+          "bounds": {
+            "x": 260.9955749511719,
+            "y": 45.00115966796875,
+            "width": 119.99798583984375,
+            "height": 20.99964141845703
+          },
+          "owner": "label-cluster-boundary-flowchart-B"
+        },
+        {
+          "text": "Gamma",
+          "bounds": {
+            "x": 159.99729919433594,
+            "y": 160.9991912841797,
+            "width": 119.99797058105469,
+            "height": 20.999649047851562
+          },
+          "owner": "label-cluster-boundary-flowchart-C"
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-cluster-boundary-L_A_Box_0",
+          "d": "M123,78Z",
+          "points": [
+            [
+              119,
+              78
+            ],
+            [
+              119,
+              113.5
+            ],
+            [
+              8,
+              113.5
+            ]
+          ],
+          "start": [
+            123,
+            78
+          ],
+          "end": [
+            123,
+            78
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-cluster-boundary_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-cluster-boundary-L_B_Box_0",
+          "d": "M325,78Z",
+          "points": [
+            [
+              320.99999999999994,
+              78
+            ],
+            [
+              320.99999999999994,
+              113.5
+            ],
+            [
+              453.6796875,
+              113.5
+            ]
+          ],
+          "start": [
+            325,
+            78
+          ],
+          "end": [
+            325,
+            78
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-cluster-boundary_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-cluster-boundary-L_C_Box_0",
+          "d": "M300,160.813Z",
+          "points": [
+            [
+              296,
+              160.81250000000003
+            ],
+            [
+              380,
+              149.00000000000003
+            ],
+            [
+              401,
+              149.00000000000003
+            ],
+            [
+              421.99999999999994,
+              171.5
+            ],
+            [
+              401,
+              194
+            ],
+            [
+              380,
+              194
+            ],
+            [
+              426.3230298913044,
+              219
+            ]
+          ],
+          "start": [
+            300,
+            160.8130035400391
+          ],
+          "end": [
+            300,
+            160.8130035400391
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-cluster-boundary_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 461.671875,
+        "height": 227
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 461.6796875,
+        "height": 227
+      }
+    }
+  ]
+}

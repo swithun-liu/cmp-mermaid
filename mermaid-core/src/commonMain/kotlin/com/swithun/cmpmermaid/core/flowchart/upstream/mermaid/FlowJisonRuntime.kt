@@ -419,9 +419,10 @@ internal class FlowJisonLexer(
             }
             98 -> token("TAGSTART", text)
             99 -> token("TAGEND", text)
-            100 -> token("DOWN", text)
+            // Mermaid.js 12.0.0: flow.jison -> "^" returns UP; "v" returns DOWN.
+            100 -> token("UP", text)
             101 -> unresolvedToken("SEP", text)
-            102 -> token("UP", text)
+            102 -> token("DOWN", text)
             103 -> token("MULT", text)
             104 -> token("BRKT", text)
             105 -> token("AMP", text)

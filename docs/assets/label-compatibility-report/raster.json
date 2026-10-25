@@ -1,0 +1,290 @@
+{
+  "officialGeneratedAt": "2026-10-25T07:12:59.894Z",
+  "nativeGeneratedAt": "2026-10-25T07:13:43.054575Z",
+  "caseCount": 23,
+  "screenshotCount": 46,
+  "contactSheets": [
+    "contact-sheet-1.png",
+    "contact-sheet-2.png",
+    "contact-sheet-3.png",
+    "contact-sheet-4.png"
+  ],
+  "cases": [
+    {
+      "id": "direction-v",
+      "ssim": 0.9967589247974445,
+      "nativeSize": [
+        168,
+        156
+      ],
+      "officialSize": [
+        168,
+        156
+      ]
+    },
+    {
+      "id": "comparison-negative",
+      "ssim": 0.9967586599648676,
+      "nativeSize": [
+        168,
+        156
+      ],
+      "officialSize": [
+        168,
+        156
+      ]
+    },
+    {
+      "id": "comparison-positive",
+      "ssim": 0.9967558007146176,
+      "nativeSize": [
+        168,
+        61
+      ],
+      "officialSize": [
+        168,
+        61
+      ]
+    },
+    {
+      "id": "long-prose",
+      "ssim": 0.5863678946856813,
+      "nativeSize": [
+        168,
+        744
+      ],
+      "officialSize": [
+        168,
+        765
+      ]
+    },
+    {
+      "id": "twelve-lines",
+      "ssim": 0.9981976438242007,
+      "nativeSize": [
+        168,
+        292
+      ],
+      "officialSize": [
+        168,
+        292
+      ]
+    },
+    {
+      "id": "accented-lines",
+      "ssim": 0.9988564252259944,
+      "nativeSize": [
+        168,
+        271
+      ],
+      "officialSize": [
+        168,
+        271
+      ]
+    },
+    {
+      "id": "empty-round",
+      "ssim": 0.9895877228663569,
+      "nativeSize": [
+        46,
+        46
+      ],
+      "officialSize": [
+        46,
+        46
+      ]
+    },
+    {
+      "id": "empty-circle",
+      "ssim": 0.9953785558001497,
+      "nativeSize": [
+        80,
+        80
+      ],
+      "officialSize": [
+        80,
+        80
+      ]
+    },
+    {
+      "id": "empty-rect",
+      "ssim": 0.9948906325201703,
+      "nativeSize": [
+        48,
+        40
+      ],
+      "officialSize": [
+        48,
+        40
+      ]
+    },
+    {
+      "id": "explicit-breaks",
+      "ssim": 0.8054027369843345,
+      "nativeSize": [
+        168,
+        103
+      ],
+      "officialSize": [
+        168,
+        82
+      ]
+    },
+    {
+      "id": "transparent-node",
+      "ssim": 1.0,
+      "nativeSize": [
+        48,
+        40
+      ],
+      "officialSize": [
+        48,
+        40
+      ]
+    },
+    {
+      "id": "empty-group",
+      "ssim": 0.9574543539764871,
+      "nativeSize": [
+        128,
+        61
+      ],
+      "officialSize": [
+        127,
+        61
+      ]
+    },
+    {
+      "id": "mixed-groups",
+      "ssim": 0.9819812759243756,
+      "nativeSize": [
+        632,
+        131
+      ],
+      "officialSize": [
+        631,
+        131
+      ]
+    },
+    {
+      "id": "bare-comment",
+      "ssim": 0.9973152483632918,
+      "nativeSize": [
+        370,
+        156
+      ],
+      "officialSize": [
+        370,
+        156
+      ]
+    },
+    {
+      "id": "class-raw-angle",
+      "ssim": 0.6072555470689527,
+      "nativeSize": [
+        215,
+        136
+      ],
+      "officialSize": [
+        215,
+        151
+      ]
+    },
+    {
+      "id": "class-tilde-generic",
+      "ssim": 0.5643741746362337,
+      "nativeSize": [
+        293,
+        136
+      ],
+      "officialSize": [
+        293,
+        151
+      ]
+    },
+    {
+      "id": "rounded-default",
+      "ssim": 0.9283232116321076,
+      "nativeSize": [
+        368,
+        70
+      ],
+      "officialSize": [
+        368,
+        70
+      ]
+    },
+    {
+      "id": "rounded-forest",
+      "ssim": 0.7989305016571548,
+      "nativeSize": [
+        368,
+        70
+      ],
+      "officialSize": [
+        368,
+        70
+      ]
+    },
+    {
+      "id": "rounded-neo",
+      "ssim": 0.9221279367039719,
+      "nativeSize": [
+        368,
+        67
+      ],
+      "officialSize": [
+        368,
+        67
+      ]
+    },
+    {
+      "id": "rounded-redux-color",
+      "ssim": 0.9927622508046886,
+      "nativeSize": [
+        368,
+        67
+      ],
+      "officialSize": [
+        368,
+        67
+      ]
+    },
+    {
+      "id": "rounded-redux-dark",
+      "ssim": 0.6967546347144986,
+      "nativeSize": [
+        368,
+        67
+      ],
+      "officialSize": [
+        368,
+        67
+      ]
+    },
+    {
+      "id": "rounded-override",
+      "ssim": 0.9867517636939466,
+      "nativeSize": [
+        166,
+        67
+      ],
+      "officialSize": [
+        166,
+        67
+      ]
+    },
+    {
+      "id": "cluster-boundary",
+      "ssim": 0.9879197340041607,
+      "nativeSize": [
+        462,
+        227
+      ],
+      "officialSize": [
+        462,
+        227
+      ]
+    }
+  ]
+}

@@ -2422,10 +2422,9 @@ internal object MermaidPreprocessor {
     }
 
     private fun cleanupComments(source: String): String =
-        source
-            .lineSequence()
-            .filterNot { line -> line.trimStart().startsWith(COMMENT_PREFIX) }
-            .joinToString("\n")
+        // Mermaid.js 12.0.0: diagram-api/comments.ts -> cleanupComments.
+        Regex("""^\s*%%(?!\{)[^\n]+\n?""", RegexOption.MULTILINE)
+            .replace(source, "")
             .trimStart()
 
     private fun YamlMap.node(key: String): YamlNode? =

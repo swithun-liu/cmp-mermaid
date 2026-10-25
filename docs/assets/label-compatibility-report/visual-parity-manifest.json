@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-25T07:17:14.758Z",
+  "mermaidVersion": "12.0.0",
+  "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
+  "layout": "dagre",
+  "officialGeneratedAt": "2026-10-25T07:12:59.894Z",
+  "nativeGeneratedAt": "2026-10-25T07:13:43.054575Z",
+  "auditGeneratedAt": "2026-10-25T07:15:45.193Z",
+  "inputs": {
+    "official": {
+      "generatedAt": "2026-10-25T07:12:59.894Z",
+      "sha256": "7357467f4c26496643cc0610f8164cf93a7ae18cd6e079a81b6f615e2c14da90"
+    },
+    "native": {
+      "generatedAt": "2026-10-25T07:13:43.054575Z",
+      "sha256": "a28effe51bbdb29fe8e4bcea77a5adcaf37e464c33ac52a5ef58bab1f61a4fc6"
+    },
+    "raster": {
+      "generatedAt": null,
+      "sha256": "799b0983b5903a4c6e828297a1c281c9d5c7c0c6552670b9a407f036a05e2a51"
+    },
+    "audit": {
+      "sha256": "51ffbec9e4e00af1649f8c1fb21a17339db1a4a478b1e6e0106bbc405e886d49"
+    }
+  },
+  "familyCount": 2,
+  "caseCount": 23,
+  "screenshotCount": 46,
+  "contactSheets": [
+    "contact-sheet-1.png",
+    "contact-sheet-2.png",
+    "contact-sheet-3.png",
+    "contact-sheet-4.png"
+  ],
+  "counts": {
+    "pass": 13,
+    "review": 10,
+    "fail": 0
+  },
+  "records": [
+    {
+      "id": "direction-v",
+      "family": "flowchart",
+      "source": "flowchart TD\nv[Value] --> A[Result]",
+      "sourceSha256": "19a7021ea6f47f54684dc1bb78a80491c0ea96f926f6e4136170bb1688d670c7",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "direction-v-native.png",
+          "sha256": "396e3fa3faacf90c27fc4109e8272d38507b40a30decfaf31e3e7392e538d3f9"
+        },
+        {
+          "side": "official",
+          "file": "direction-v-official.png",
+          "sha256": "70b444fd7c641176b471a907e6241fc5f348b97647f2c441a2966d2f5a8ac48f"
+        }
+      ]
+    },
+    {
+      "id": "comparison-negative",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"x < -2 or x > 2\"] --> B[Result]",
+      "sourceSha256": "ae8776fb3ebe465b4028f7668a8ada3e8321834f39e9e1e7f7a2dcb9d109243f",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "comparison-negative-native.png",
+          "sha256": "a3825733ec59c3e29b424be21bb6de1158700a5f32ea9bf4550265da8f5a2131"
+        },
+        {
+          "side": "official",
+          "file": "comparison-negative-official.png",
+          "sha256": "5cc807226eb0cf37420125c059901912c8f9eeaa307d6148af0d794ff0838475"
+        }
+      ]
+    },
+    {
+      "id": "comparison-positive",
+      "family": "flowchart",
+      "source": "flowchart LR\nA[\"x < 2 and x > -2\"]",
+      "sourceSha256": "d1241f0aa3dd57547cfdda3e643f2c5076e150a7570d57ad7614022ca315f712",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "comparison-positive-native.png",
+          "sha256": "d86bda778f9c6093cdca56d5d110ceeca70db028f7632cbe165984fabdd840c4"
+        },
+        {
+          "side": "official",
+          "file": "comparison-positive-official.png",
+          "sha256": "0f1cc07bb13aeb0d2287eef7f692506c6aadefd299766f17ca903412672d9b3d"
+        }
+      ]
+    },
+    {
+      "id": "long-prose",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.\"] --> B[Complete]",
+      "sourceSha256": "917c9eea50ef6ef9218c32e16a3e9b23951bf05fa226aeb394a2d82d39c1da08",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "long-prose-native.png",
+          "sha256": "2ebc52df474bd47a9ddd7f113355ee5a639a593068cf909603f73fca0fa65646"
+        },
+        {
+          "side": "official",
+          "file": "long-prose-official.png",
+          "sha256": "a51268198710b57fe1ef49b817356d4b9a52b9516e04e09bc0daf3d9cb18456b"
+        }
+      ]
+    },
+    {
+      "id": "twelve-lines",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"Observation 1<br/>Observation 2<br/>Observation 3<br/>Observation 4<br/>Observation 5<br/>Observation 6<br/>Observation 7<br/>Observation 8<br/>Observation 9<br/>Observation 10<br/>Observation 11<br/>Observation 12\"]",
+      "sourceSha256": "1b77b198dfe22e905ae26d67cac1052c91df89be855d45c004f492bf06a01700",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "twelve-lines-native.png",
+          "sha256": "3163102a01a2030fb8ee8f64fce6b27dcb06a1e3d056f2c3e880cb92d0fbb9b8"
+        },
+        {
+          "side": "official",
+          "file": "twelve-lines-official.png",
+          "sha256": "f3add3c4845890e2dac525287f2d0c8709b22a8ecb6c6e3e24f8a8f4416589d4"
+        }
+      ]
+    },
+    {
+      "id": "accented-lines",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"Café numéro 1<br/>Café numéro 2<br/>Café numéro 3<br/>Café numéro 4<br/>Café numéro 5<br/>Café numéro 6<br/>Café numéro 7<br/>Café numéro 8<br/>Café numéro 9<br/>Café numéro 10<br/>Café numéro 11\"]",
+      "sourceSha256": "b7a5856af1f6714babc2df30312c126502144cefbb10319163c11476e97e6a75",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "accented-lines-native.png",
+          "sha256": "0475958b8ae76acf6dc050295c0744b7545f889211e5e649556f4d0447298a8f"
+        },
+        {
+          "side": "official",
+          "file": "accented-lines-official.png",
+          "sha256": "ae52df6ea1f160ddd66380bcc6213f93e28d7c110bf2ad496438de3ce7495f24"
+        }
+      ]
+    },
+    {
+      "id": "empty-round",
+      "family": "flowchart",
+      "source": "flowchart TD\nA(\" \")",
+      "sourceSha256": "e5b9769002ba85d154f1be29c587e158e1459372a2b47dfcd8ae7e0a01e2e038",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "empty-round-native.png",
+          "sha256": "aba5430722f47b7a4c520f8627037254f25b70f56a191e1bb5330386446f847f"
+        },
+        {
+          "side": "official",
+          "file": "empty-round-official.png",
+          "sha256": "55e50680639297d95bb921808aecfbaf240d53a3f3479edf3d6da25a8de39be5"
+        }
+      ]
+    },
+    {
+      "id": "empty-circle",
+      "family": "flowchart",
+      "source": "flowchart TD\nA((\" \"))",
+      "sourceSha256": "77f7f4dac76bacfc87a6ce494034f591c6d548ccb5dbfbc673552d580f9be45b",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "empty-circle-native.png",
+          "sha256": "c4ecceea31c0b87fc12fe2b1f376a8ca3429536d585b75958d1e96e25fe359d2"
+        },
+        {
+          "side": "official",
+          "file": "empty-circle-official.png",
+          "sha256": "2f7ed49c0a0ac7796609737ef726c27905ee4005e6e383558309ccb2d9ba60d1"
+        }
+      ]
+    },
+    {
+      "id": "empty-rect",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\" \"]",
+      "sourceSha256": "05b349922fa35c6897baac2ac00dcec0699610181371da805bf0f2578cdedab4",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "empty-rect-native.png",
+          "sha256": "e807f77c3553719e0efe3b225d8752ba3bb1ef9dcf3aa8e3e890f8d08181deea"
+        },
+        {
+          "side": "official",
+          "file": "empty-rect-official.png",
+          "sha256": "71599b9d39ba3091798991f3cfbf700cba2c7a5ac28d38b30b015bb15b7b5869"
+        }
+      ]
+    },
+    {
+      "id": "explicit-breaks",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\"<br/><br/>\"]",
+      "sourceSha256": "8fd4920c8e38b71f8572fbba36288ad384878381dc64d2bfbdf887089701f7e1",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "explicit-breaks-native.png",
+          "sha256": "555026cc5492da42ec2028809086be32ac3ae9af0f952fc6768acff87d7ab863"
+        },
+        {
+          "side": "official",
+          "file": "explicit-breaks-official.png",
+          "sha256": "362a90dffbfe507f20243e2dcb3e58a45e185c37e2c65f351f802b3970e8afb8"
+        }
+      ]
+    },
+    {
+      "id": "transparent-node",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[\" \"]\nstyle A fill:none,stroke:none",
+      "sourceSha256": "6e83744334ab445c5ebb7e16664c8289c5ec3de6f88b3206676da0566aadd9aa",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "transparent-node-native.png",
+          "sha256": "01bbaedc87983f2aaa51c6136bb30b6a86ec9865cc2a0202ea40b7ba5e983ec8"
+        },
+        {
+          "side": "official",
+          "file": "transparent-node-official.png",
+          "sha256": "e531d3e906f116e3979301306fef9cee9e63a3bb9ee8d47b2f3d3a595f9e869d"
+        }
+      ]
+    },
+    {
+      "id": "empty-group",
+      "family": "flowchart",
+      "source": "flowchart TD\nsubgraph Empty[Empty group]\nend",
+      "sourceSha256": "52c90d0e8d91f603b4538e4ecb44dbc807f448067bc0411fac34ad9eb4d91ce8",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "empty-group-native.png",
+          "sha256": "3371ec2d2937e2ae54eabc40d96b17485f6738d17c1b3b50ac48bb275ccd99d3"
+        },
+        {
+          "side": "official",
+          "file": "empty-group-official.png",
+          "sha256": "3589f37a57a9ae424cea84f63b1fc29e67701332c1eab01d151454d0856bea08"
+        }
+      ]
+    },
+    {
+      "id": "mixed-groups",
+      "family": "flowchart",
+      "source": "flowchart TD\nsubgraph Empty[Empty group]\nend\nsubgraph Full[Full group]\nA[Alpha] --> B[Beta]\nend",
+      "sourceSha256": "a8242ffbb9670d7e05a70991aca452165a5c091c3c1c58f955b28ca39b691484",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "mixed-groups-native.png",
+          "sha256": "f75df746567f6174241d5462dd91d5bc8e53093b2d18dac3660259aad3646e33"
+        },
+        {
+          "side": "official",
+          "file": "mixed-groups-official.png",
+          "sha256": "7018dac11ea6fc5f3e993a82abdef9fe213d25d35a1ad9c82b6e7bc017db1f8b"
+        }
+      ]
+    },
+    {
+      "id": "bare-comment",
+      "family": "flowchart",
+      "source": "flowchart TD\n%%\nA[Alpha] --> B[Beta]",
+      "sourceSha256": "17bd96adbb318b1cbfb652cccd32f784799d9d670f1ddf358ce30d02683ff740",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "bare-comment-native.png",
+          "sha256": "cb6d14ea1939a5af68e03318eed2f47f8f48512d5425ece28dd4aa7c03fce0dd"
+        },
+        {
+          "side": "official",
+          "file": "bare-comment-official.png",
+          "sha256": "09edf55c822c3c69437b74c32cc59207f188940e20a989cb0ca6dae428f9c5e4"
+        }
+      ]
+    },
+    {
+      "id": "class-raw-angle",
+      "family": "class",
+      "source": "classDiagram\nclass Store {\n+Map<Key,Value> raw\n+load(Map<Key,Value> input) Result\n}",
+      "sourceSha256": "b865d1a496a8dd583bfeae876a39b49f0e6e6d6fc10f11dc7a486b35ba56b917",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "class-raw-angle-native.png",
+          "sha256": "5b8684e2a5da85ee9ba1ac2eb035c53981cc28689ec1bf28014c235d66df88d7"
+        },
+        {
+          "side": "official",
+          "file": "class-raw-angle-official.png",
+          "sha256": "65bdabb5993f23cfa0939decc0bfe109fd60caa3491f2c917f60f058e369c85a"
+        }
+      ]
+    },
+    {
+      "id": "class-tilde-generic",
+      "family": "class",
+      "source": "classDiagram\nclass Store {\n+Map~Key,Value~ typed\n+load(Map~Key,Value~ input) Result\n}",
+      "sourceSha256": "79f4513bf5b3d1527bc5194d9667abc7e3a191316af805df08a3d49e362ba6df",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "class-tilde-generic-native.png",
+          "sha256": "96c57665ebf30d8c007747f9cf66172cf259965c355086f21a0f20d28a17ee2e"
+        },
+        {
+          "side": "official",
+          "file": "class-tilde-generic-official.png",
+          "sha256": "5d6978c84e07746d6e5fad138d260c47fd0a69b2995a2f45a81ea0565e312253"
+        }
+      ]
+    },
+    {
+      "id": "rounded-default",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: default\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "sourceSha256": "5ee754dfbe935403135b99e3fde0faa654d089504803bd2c7de6a4456c2070fd",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "rounded-default-native.png",
+          "sha256": "92109314567c70655d266afe3e94a3aa93b2f1533c1edccc5b8b887887026ac7"
+        },
+        {
+          "side": "official",
+          "file": "rounded-default-official.png",
+          "sha256": "6d93cfcc8869febc614858ac39e5f4fed803db3bd094591147da1faa35de1175"
+        }
+      ]
+    },
+    {
+      "id": "rounded-forest",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: forest\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "sourceSha256": "fddcce0cd0c2ce7f12a8f1b1fa4903a29d9f0d4ab520c9a26090c00e38c46196",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "rounded-forest-native.png",
+          "sha256": "7b8cabfc9081850fc11bd990453162141020e6e7dcf06f358c57d31098a4a8d0"
+        },
+        {
+          "side": "official",
+          "file": "rounded-forest-official.png",
+          "sha256": "c404bda1e3fb31ab2581bea972107e6ce525558ef5e71759bfe9481322c3860e"
+        }
+      ]
+    },
+    {
+      "id": "rounded-neo",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: neo\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "sourceSha256": "ef16b1a29b4be903720d8ea518baa56ff5df387a365986c5c82a79edbb85bf2c",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "rounded-neo-native.png",
+          "sha256": "309757d7e5b833702300272a6a86369fb50a3e76e78dd643c930b740b092fa3d"
+        },
+        {
+          "side": "official",
+          "file": "rounded-neo-official.png",
+          "sha256": "b96a73ad724cf6655c2ccc85f3fe6b40e80a23c09c1ff4c0edf08ed5cad51c59"
+        }
+      ]
+    },
+    {
+      "id": "rounded-redux-color",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: redux-color\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "sourceSha256": "ea51a1c78a207d945eb3b6ee337007e7d542d62dba9d0991aa58e1f67b031a3c",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "rounded-redux-color-native.png",
+          "sha256": "2f21587e47d3ee5f31afb8995323ebc15d49f655796eb42d3ed6de48e329c506"
+        },
+        {
+          "side": "official",
+          "file": "rounded-redux-color-official.png",
+          "sha256": "ba9982bfb9f415f0fe01c93d0e73c989f5ed33dad32902eb905574986324fdd9"
+        }
+      ]
+    },
+    {
+      "id": "rounded-redux-dark",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: redux-dark\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+      "sourceSha256": "544f97342b71e75029c6fa950629615329dfa0bbd8447ff9c2854a8aefa4228a",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "rounded-redux-dark-native.png",
+          "sha256": "cb233be7ae5118b425ec724225ced2891cd92e8158036b8bed072305eb628e4c"
+        },
+        {
+          "side": "official",
+          "file": "rounded-redux-dark-official.png",
+          "sha256": "a2d599250a661be679c76706cf3a22d3277dd45010e09344b6b2941697d5b38d"
+        }
+      ]
+    },
+    {
+      "id": "rounded-override",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  theme: redux-color\n  themeVariables:\n    radius: 7\n---\nflowchart TD\nA(Rounded label)",
+      "sourceSha256": "a6fdd8a906e413051f50a888ec6e7b7e1fde99001f91181c8735415afd635bda",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "rounded-override-native.png",
+          "sha256": "5aef828299509db24b7ea186056bd0dfa3080d6ac1e1096bb653d5bc889b8a1f"
+        },
+        {
+          "side": "official",
+          "file": "rounded-override-official.png",
+          "sha256": "495b86922909ac4ca5162a394d9252245d4ba18ef908df74231859041f48cf8f"
+        }
+      ]
+    },
+    {
+      "id": "cluster-boundary",
+      "family": "flowchart",
+      "source": "flowchart TD\nsubgraph Box[Group]\nA[Alpha]\nB[Beta]\nC[Gamma]\nend\nA -->|Down| Box\nB -->|Up| Box\nC -->|Left| Box",
+      "sourceSha256": "64406b3d4e27af7a6e1b19d286c93827c63047a291514feb7423f6da0f739381",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "cluster-boundary-native.png",
+          "sha256": "e5b66bbbc4bde36b9269a9aa9fadb84090bfa9af5e09f5eaaf61e63a547bf071"
+        },
+        {
+          "side": "official",
+          "file": "cluster-boundary-official.png",
+          "sha256": "cefa2e227cd26a1cb75a5be08d5d84141682b4fb1489ef03a6a32515a13b586b"
+        }
+      ]
+    }
+  ]
+}

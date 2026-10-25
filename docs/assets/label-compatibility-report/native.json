@@ -1,0 +1,1384 @@
+{
+    "schemaVersion": 1,
+    "generatedAt": "2026-10-25T07:13:43.054575Z",
+    "cases": [
+        {
+            "id": "direction-v",
+            "source": "flowchart TD\nv[Value] --> A[Result]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 156.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Value",
+                    "bounds": {
+                        "x": 66.609375,
+                        "y": 20.0,
+                        "width": 34.78125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Result",
+                    "bounds": {
+                        "x": 64.15625,
+                        "y": 115.0,
+                        "width": 39.6875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "v",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_v_A_0",
+                    "points": [
+                        [
+                            84.0,
+                            53.0
+                        ],
+                        [
+                            84.0,
+                            78.0
+                        ],
+                        [
+                            84.0,
+                            103.0
+                        ]
+                    ],
+                    "d": "M84.0,53.0 L84.0,57.166668 C84.0,61.333332 84.0,69.666664 84.0,77.333336 C84.0,85.0 84.0,92.0 84.0,95.5 L84.0,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "comparison-negative",
+            "source": "flowchart TD\nA[\"x < -2 or x > 2\"] --> B[Result]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 156.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "x < -2 or x > 2",
+                    "bounds": {
+                        "x": 40.8125,
+                        "y": 20.0,
+                        "width": 86.375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Result",
+                    "bounds": {
+                        "x": 64.15625,
+                        "y": 115.0,
+                        "width": 39.6875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            84.0,
+                            53.0
+                        ],
+                        [
+                            84.0,
+                            78.0
+                        ],
+                        [
+                            84.0,
+                            103.0
+                        ]
+                    ],
+                    "d": "M84.0,53.0 L84.0,57.166668 C84.0,61.333332 84.0,69.666664 84.0,77.333336 C84.0,85.0 84.0,92.0 84.0,95.5 L84.0,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "comparison-positive",
+            "source": "flowchart LR\nA[\"x < 2 and x > -2\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "x < 2 and x > -2",
+                    "bounds": {
+                        "x": 35.351562,
+                        "y": 20.0,
+                        "width": 97.296875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "long-prose",
+            "source": "flowchart TD\nA[\"A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.\"] --> B[Complete]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 744.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 609.0
+                    }
+                },
+                {
+                    "text": "Complete",
+                    "bounds": {
+                        "x": 54.039062,
+                        "y": 703.0,
+                        "width": 59.921875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 633.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 691.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            84.0,
+                            641.0
+                        ],
+                        [
+                            84.0,
+                            666.0
+                        ],
+                        [
+                            84.0,
+                            691.0
+                        ]
+                    ],
+                    "d": "M84.0,641.0 L84.0,645.1667 C84.0,649.3333 84.0,657.6667 84.0,665.3333 C84.0,673.0 84.0,680.0 84.0,683.5 L84.0,687.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "twelve-lines",
+            "source": "flowchart TD\nA[\"Observation 1<br/>Observation 2<br/>Observation 3<br/>Observation 4<br/>Observation 5<br/>Observation 6<br/>Observation 7<br/>Observation 8<br/>Observation 9<br/>Observation 10<br/>Observation 11<br/>Observation 12\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 292.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Observation 1\nObservation 2\nObservation 3\nObservation 4\nObservation 5\nObservation 6\nObservation 7\nObservation 8\nObservation 9\nObservation 10\nObservation 11\nObservation 12",
+                    "bounds": {
+                        "x": 36.523438,
+                        "y": 20.0,
+                        "width": 94.953125,
+                        "height": 252.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 276.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "accented-lines",
+            "source": "flowchart TD\nA[\"Café numéro 1<br/>Café numéro 2<br/>Café numéro 3<br/>Café numéro 4<br/>Café numéro 5<br/>Café numéro 6<br/>Café numéro 7<br/>Café numéro 8<br/>Café numéro 9<br/>Café numéro 10<br/>Café numéro 11\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 271.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Café numéro 1\nCafé numéro 2\nCafé numéro 3\nCafé numéro 4\nCafé numéro 5\nCafé numéro 6\nCafé numéro 7\nCafé numéro 8\nCafé numéro 9\nCafé numéro 10\nCafé numéro 11",
+                    "bounds": {
+                        "x": 33.796875,
+                        "y": 20.0,
+                        "width": 100.40625,
+                        "height": 231.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 255.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-round",
+            "source": "flowchart TD\nA(\" \")",
+            "sceneWidth": 46.0,
+            "sceneHeight": 46.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 23.0,
+                        "y": 23.0,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 30.0,
+                        "height": 30.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-circle",
+            "source": "flowchart TD\nA((\" \"))",
+            "sceneWidth": 80.0,
+            "sceneHeight": 79.87371,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 40.0,
+                        "y": 39.936855,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 64.0,
+                        "height": 63.87371
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-rect",
+            "source": "flowchart TD\nA[\" \"]",
+            "sceneWidth": 48.0,
+            "sceneHeight": 40.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 32.0,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "explicit-breaks",
+            "source": "flowchart TD\nA[\"<br/><br/>\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 103.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "\n\n",
+                    "bounds": {
+                        "x": 83.99219,
+                        "y": 20.0,
+                        "width": 0.015625,
+                        "height": 63.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 87.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "transparent-node",
+            "source": "flowchart TD\nA[\" \"]\nstyle A fill:none,stroke:none",
+            "sceneWidth": 48.0,
+            "sceneHeight": 40.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 32.0,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-group",
+            "source": "flowchart TD\nsubgraph Empty[Empty group]\nend",
+            "sceneWidth": 127.375,
+            "sceneHeight": 61.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Empty group",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 79.375,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "Empty",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 111.375,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "mixed-groups",
+            "source": "flowchart TD\nsubgraph Empty[Empty group]\nend\nsubgraph Full[Full group]\nA[Alpha] --> B[Beta]\nend",
+            "sceneWidth": 631.375,
+            "sceneHeight": 131.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Full group",
+                    "bounds": {
+                        "x": 203.86719,
+                        "y": 8.0,
+                        "width": 62.265625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Empty group",
+                    "bounds": {
+                        "x": 528.0,
+                        "y": 55.0,
+                        "width": 79.375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Alpha",
+                    "bounds": {
+                        "x": 103.59375,
+                        "y": 55.0,
+                        "width": 35.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Beta",
+                    "bounds": {
+                        "x": 334.09375,
+                        "y": 55.0,
+                        "width": 28.8125,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "subgraph_Full",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 454.0,
+                        "height": 115.0
+                    }
+                },
+                {
+                    "id": "Empty",
+                    "bounds": {
+                        "x": 512.0,
+                        "y": 43.0,
+                        "width": 111.375,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 45.5,
+                        "y": 43.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 272.5,
+                        "y": 43.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            197.5,
+                            65.5
+                        ],
+                        [
+                            235.0,
+                            65.5
+                        ],
+                        [
+                            272.5,
+                            65.5
+                        ]
+                    ],
+                    "d": "M197.5,65.5 L203.75,65.5 C210.0,65.5 222.5,65.5 234.33333,65.5 C246.16667,65.5 257.33334,65.5 262.91666,65.5 L268.5,65.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "bare-comment",
+            "source": "flowchart TD\n%%\nA[Alpha] --> B[Beta]",
+            "sceneWidth": 370.0,
+            "sceneHeight": 156.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "%%",
+                    "bounds": {
+                        "x": 71.546875,
+                        "y": 20.0,
+                        "width": 24.90625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Alpha",
+                    "bounds": {
+                        "x": 268.09375,
+                        "y": 20.0,
+                        "width": 35.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Beta",
+                    "bounds": {
+                        "x": 271.59375,
+                        "y": 115.0,
+                        "width": 28.8125,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "%%",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 210.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 210.0,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            286.0,
+                            53.0
+                        ],
+                        [
+                            286.0,
+                            78.0
+                        ],
+                        [
+                            286.0,
+                            103.0
+                        ]
+                    ],
+                    "d": "M286.0,53.0 L286.0,57.166668 C286.0,61.333332 286.0,69.666664 286.0,77.333336 C286.0,85.0 286.0,92.0 286.0,95.5 L286.0,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "class-raw-angle",
+            "source": "classDiagram\nclass Store {\n+Map<Key,Value> raw\n+load(Map<Key,Value> input) Result\n}",
+            "sceneWidth": 215.0,
+            "sceneHeight": 136.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Store",
+                    "bounds": {
+                        "x": 89.5,
+                        "y": 20.0,
+                        "width": 36.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+Map raw",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 60.0,
+                        "width": 62.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+load(Map input) : Result",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 100.0,
+                        "width": 157.0,
+                        "height": 16.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "Store",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 199.0,
+                        "height": 120.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "class-tilde-generic",
+            "source": "classDiagram\nclass Store {\n+Map~Key,Value~ typed\n+load(Map~Key,Value~ input) Result\n}",
+            "sceneWidth": 293.0,
+            "sceneHeight": 136.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Store",
+                    "bounds": {
+                        "x": 128.5,
+                        "y": 20.0,
+                        "width": 36.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+Map<Key,Value> typed",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 60.0,
+                        "width": 152.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+load(Map<Key,Value> input) : Result",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 100.0,
+                        "width": 235.0,
+                        "height": 16.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "Store",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 277.0,
+                        "height": 120.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "rounded-default",
+            "source": "---\nconfig:\n  theme: default\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 70.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 31.398438,
+                        "y": 23.0,
+                        "width": 103.203125,
+                        "height": 24.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 247.97656,
+                        "y": 23.0,
+                        "width": 72.046875,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 54.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 48.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            35.0
+                        ],
+                        [
+                            183.0,
+                            35.0
+                        ],
+                        [
+                            208.0,
+                            35.0
+                        ]
+                    ],
+                    "d": "M158.0,35.0 L162.16667,35.0 C166.33333,35.0 174.66667,35.0 182.33333,35.0 C190.0,35.0 197.0,35.0 200.5,35.0 L204.0,35.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-forest",
+            "source": "---\nconfig:\n  theme: forest\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 70.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 31.398438,
+                        "y": 23.0,
+                        "width": 103.203125,
+                        "height": 24.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 247.97656,
+                        "y": 23.0,
+                        "width": 72.046875,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 54.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 48.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            35.0
+                        ],
+                        [
+                            183.0,
+                            35.0
+                        ],
+                        [
+                            208.0,
+                            35.0
+                        ]
+                    ],
+                    "d": "M158.0,35.0 L162.16667,35.0 C166.33333,35.0 174.66667,35.0 182.33333,35.0 C190.0,35.0 197.0,35.0 200.5,35.0 L204.0,35.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-neo",
+            "source": "---\nconfig:\n  theme: neo\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 252.47656,
+                        "y": 23.0,
+                        "width": 63.046875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            33.5
+                        ],
+                        [
+                            183.0,
+                            33.5
+                        ],
+                        [
+                            208.0,
+                            33.5
+                        ]
+                    ],
+                    "d": "M158.0,33.5 L162.16667,33.5 C166.33333,33.5 174.66667,33.5 182.33333,33.5 C190.0,33.5 197.0,33.5 200.5,33.5 L204.0,33.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-redux-color",
+            "source": "---\nconfig:\n  theme: redux-color\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 252.47656,
+                        "y": 23.0,
+                        "width": 63.046875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            33.5
+                        ],
+                        [
+                            183.0,
+                            33.5
+                        ],
+                        [
+                            208.0,
+                            33.5
+                        ]
+                    ],
+                    "d": "M158.0,33.5 L162.16667,33.5 C166.33333,33.5 174.66667,33.5 182.33333,33.5 C190.0,33.5 197.0,33.5 200.5,33.5 L204.0,33.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-redux-dark",
+            "source": "---\nconfig:\n  theme: redux-dark\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 252.47656,
+                        "y": 23.0,
+                        "width": 63.046875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            33.5
+                        ],
+                        [
+                            183.0,
+                            33.5
+                        ],
+                        [
+                            208.0,
+                            33.5
+                        ]
+                    ],
+                    "d": "M158.0,33.5 L162.16667,33.5 C166.33333,33.5 174.66667,33.5 182.33333,33.5 C190.0,33.5 197.0,33.5 200.5,33.5 L204.0,33.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-override",
+            "source": "---\nconfig:\n  theme: redux-color\n  themeVariables:\n    radius: 7\n---\nflowchart TD\nA(Rounded label)",
+            "sceneWidth": 166.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "cluster-boundary",
+            "source": "flowchart TD\nsubgraph Box[Group]\nA[Alpha]\nB[Beta]\nC[Gamma]\nend\nA -->|Down| Box\nB -->|Up| Box\nC -->|Left| Box",
+            "sceneWidth": 461.6797,
+            "sceneHeight": 227.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Group",
+                    "bounds": {
+                        "x": 211.3789,
+                        "y": 8.0,
+                        "width": 38.921875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Down",
+                    "bounds": {
+                        "x": 99.10156,
+                        "y": 65.5,
+                        "width": 39.796875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Up",
+                    "bounds": {
+                        "x": 310.04688,
+                        "y": 65.5,
+                        "width": 21.90625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Left",
+                    "bounds": {
+                        "x": 282.3203,
+                        "y": 148.3125,
+                        "width": 27.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Alpha",
+                    "bounds": {
+                        "x": 101.09375,
+                        "y": 45.0,
+                        "width": 35.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Beta",
+                    "bounds": {
+                        "x": 306.59375,
+                        "y": 45.0,
+                        "width": 28.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Gamma",
+                    "bounds": {
+                        "x": 195.10156,
+                        "y": 161.0,
+                        "width": 49.796875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "subgraph_Box",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 445.6797,
+                        "height": 211.0
+                    }
+                },
+                {
+                    "id": "L_A_Box_0_label_background",
+                    "bounds": {
+                        "x": 99.10156,
+                        "y": 65.5,
+                        "width": 39.796875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_B_Box_0_label_background",
+                    "bounds": {
+                        "x": 310.04688,
+                        "y": 65.5,
+                        "width": 21.90625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_C_Box_0_label_background",
+                    "bounds": {
+                        "x": 282.3203,
+                        "y": 148.3125,
+                        "width": 27.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 43.0,
+                        "y": 33.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 245.0,
+                        "y": 33.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "C",
+                    "bounds": {
+                        "x": 144.0,
+                        "y": 149.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_Box_0",
+                    "points": [
+                        [
+                            119.0,
+                            78.0
+                        ],
+                        [
+                            119.0,
+                            113.5
+                        ],
+                        [
+                            8.0,
+                            113.5
+                        ]
+                    ],
+                    "d": "M123.0,78.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_Box_0",
+                    "points": [
+                        [
+                            321.0,
+                            78.0
+                        ],
+                        [
+                            321.0,
+                            113.5
+                        ],
+                        [
+                            453.6797,
+                            113.5
+                        ]
+                    ],
+                    "d": "M325.0,78.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_Box_0",
+                    "points": [
+                        [
+                            296.0,
+                            160.8125
+                        ],
+                        [
+                            380.0,
+                            149.0
+                        ],
+                        [
+                            401.0,
+                            149.0
+                        ],
+                        [
+                            422.0,
+                            171.5
+                        ],
+                        [
+                            401.0,
+                            194.0
+                        ],
+                        [
+                            380.0,
+                            194.0
+                        ],
+                        [
+                            426.32303,
+                            219.0
+                        ]
+                    ],
+                    "d": "M300.0,160.8125",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        }
+    ]
+}

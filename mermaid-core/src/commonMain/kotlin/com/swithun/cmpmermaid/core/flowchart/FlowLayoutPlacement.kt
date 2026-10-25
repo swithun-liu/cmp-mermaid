@@ -16,4 +16,6 @@ internal data class FlowRoutedEdge(
     val points: List<ScenePoint>,
     val labelAnchor: ScenePoint,
     val curveOverride: String? = null,
+    // edges.js -> insertEdge keeps data-points before cluster clipping.
+    val renderPoints: List<ScenePoint> = points,
 )

@@ -30,7 +30,7 @@ class MermaidPrimitiveRenderingTest {
     fun preservesExplicitLinesWhenSoftWrappingIsDisabled() {
         assertEquals(1, mermaidTextMaxLines("main", softWrap = false))
         assertEquals(3, mermaidTextMaxLines("release\ncandidate\nready", softWrap = false))
-        assertEquals(8, mermaidTextMaxLines("release\ncandidate", softWrap = true))
+        assertEquals(Int.MAX_VALUE, mermaidTextMaxLines("release\ncandidate", softWrap = true))
         assertEquals(
             4,
             mermaidTextMaxLines(
