@@ -54,7 +54,7 @@ stress inputs.
 | Separate deterministic Native stress inputs | 7,936 |
 | JVM tests | Core: 1,094 passed, 0 failed; Compose: 73 passed, 0 failed |
 | Wasm tests | Core: 1,092 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| iOS Simulator Arm64 tests | Historical baseline: Core 1,082 and Compose 76 passed, 0 failed |
+| iOS Simulator Arm64 tests | Core: 1,092 passed, 0 failed; Compose: 76 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -78,8 +78,8 @@ boundaries listed above remain untranslated. The main 8,448-pair visual corpus
 does not exercise provider output and is retained historical evidence for this
 change. The current formula evidence is tracked in the
 [mixed-formula report](mixed-formula-report.md).
-The fresh Wasm suites pass. iOS Simulator runtime results retain their stated
-historical baseline; the release build matrix verifies the changed code.
+The fresh Wasm and iOS Simulator Arm64 suites pass. The physical-device
+runtime matrices retain their stated historical baseline.
 
 ## AI-Like Source-Mutation Safety Gate
 
