@@ -779,21 +779,12 @@ private fun DiagramAuditScreen(
                         )
                 },
         )
-        // Mermaid.js 12.0.0: diagrams/gantt/ganttRenderer.js -> draw reads
-        // elem.parentElement.offsetWidth before applying gantt.useWidth.
-        // Core keeps the upstream 1200 fallback because it has no DOM parent;
-        // the audit host does have a measured parent and must pass that width.
-        val measuredNativeOptions = if (spec.id == "gantt") {
-            nativeOptions.copy(ganttUseWidth = constraints.maxWidth.toFloat())
-        } else {
-            nativeOptions
-        }
         when (preview) {
             MermaidDebugPreview.Native -> MermaidDiagram(
                 source = demo.source,
                 modifier = Modifier.fillMaxSize(),
                 theme = MermaidTheme.preset(themePreset),
-                options = measuredNativeOptions,
+                options = nativeOptions,
                 contentDescription = "${demo.title} native audit preview",
                 respectSourceViewportSizing = false,
                 onRenderResult = { result ->
@@ -836,7 +827,7 @@ private fun DiagramAuditScreen(
                     source = demo.source,
                     modifier = Modifier.fillMaxSize(),
                     theme = MermaidTheme.preset(themePreset),
-                    options = measuredNativeOptions,
+                    options = nativeOptions,
                     contentDescription = "${demo.title} native audit preview",
                     respectSourceViewportSizing = false,
                     onRenderResult = { result ->

@@ -41,6 +41,8 @@ data class MermaidRenderContext(
     val theme: MermaidTheme = MermaidTheme.FlowchartDefault,
     val options: MermaidRenderOptions = MermaidRenderOptions(),
     val assetMetrics: Map<String, SceneSize> = emptyMap(),
+    /** Parent content width in logical pixels; null means no container is available. */
+    val containerWidth: Float? = null,
     internal val diagramTitle: String? = null,
     internal val frontmatterLineOffset: Int = 0,
 ) {

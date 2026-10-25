@@ -29,6 +29,15 @@ rendered as a different feature.
 | Configuration | Supported | `padding`, `maxNodeWidth`, `useMaxWidth`, and `layoutAlgorithm` |
 | Resource controls | Supported | Text and edge limits return structured `MermaidError` values |
 
+`look` is independent of layout. Under `redux-color`, official classic
+Mindmap uses a filled root and section-colored edges; Neo uses a
+background-filled root with a border and dark edges. Native's defaults are
+CoSE and Neo. Comparisons against explicit Dagre/classic must set both
+effective values, including `options.mindmap.layoutAlgorithm` for host API
+configuration. Source `config.layout` and `config.look` also select them.
+The [same-config audit](container-width-report.md) confirms the paint
+semantics while retaining small geometry and raster differences as Review.
+
 ## Explicit Unsupported Boundaries
 
 The following legal Mermaid capabilities return `UnsupportedFeature`:

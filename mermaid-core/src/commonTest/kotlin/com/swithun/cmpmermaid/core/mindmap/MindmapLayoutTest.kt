@@ -355,6 +355,55 @@ class MindmapLayoutTest {
         }
     }
 
+    // Mermaid.js 12.0.0: mindmap/styles.ts -> genSections/getStyles.
+    // A layout mismatch is independent of the data-look CSS selector.
+    @Test
+    fun classicAndNeoReduxColorPaintFollowLookUnderBothLayouts() {
+        val source = "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta"
+        val theme = MermaidTheme.preset(MermaidThemePreset.ReduxColor)
+        listOf("dagre", "cose-bilkent").forEach { layout ->
+            fun withLook(look: String) = render(
+                "---\nconfig:\n  layout: $layout\n  look: $look\n---\n$source",
+                context.copy(
+                    theme = theme,
+                    options = context.options.copy(themeName = "redux-color"),
+                ),
+            )
+            val classic = withLook("classic")
+            val neo = withLook("neo")
+            val classicRoot = classic.elements.filterIsInstance<SceneShape>()
+                .single { it.id == "node-0" }
+            val neoRoot = neo.elements.filterIsInstance<SceneShape>()
+                .single { it.id == "node-0" }
+            assertEquals(theme.mindmap.rootFill, classicRoot.fill, layout)
+            assertEquals(0f, classicRoot.strokeWidth, layout)
+            assertEquals(theme.mindmap.mainBackground, neoRoot.fill, layout)
+            assertEquals(theme.mindmap.sectionFills[0], neoRoot.stroke, layout)
+            assertEquals(
+                listOf(5f, 11f, 11f),
+                classic.elements.filterIsInstance<ScenePath>().map { it.strokeWidth }.sorted(),
+                layout,
+            )
+            assertEquals(
+                listOf(4f, 8f, 8f),
+                neo.elements.filterIsInstance<ScenePath>().map { it.strokeWidth }.sorted(),
+                layout,
+            )
+            assertEquals(
+                listOf(theme.mindmap.sectionFills[1], theme.mindmap.sectionFills[1],
+                    theme.mindmap.sectionFills[2]),
+                classic.elements.filterIsInstance<ScenePath>().map { it.color },
+                layout,
+            )
+            assertTrue(
+                neo.elements.filterIsInstance<ScenePath>().all {
+                    it.color == theme.mindmap.nodeBorder
+                },
+                layout,
+            )
+        }
+    }
+
     @Test
     fun appliesMindmapFrontmatterSizingConfiguration() {
         val measuredWidths = mutableListOf<Float>()

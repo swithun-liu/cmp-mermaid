@@ -79,7 +79,8 @@ geometry gates.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| JVM tests | Core: 1,058 passed, 0 failed; Compose: 61 passed, 0 failed |
+| Current 0.1.18 JVM tests | Core: 1,100 passed, 0 failed; Compose: 75 passed, 0 failed |
+| Current container-width audit | 2 families, 3 unique sources, 9 configuration scenarios, 18 screenshots and 3 contact sheets; 0 Pass / 9 Review / 0 Fail |
 | Wasm tests | Core: 1,017 passed, 0 failed; Compose: 37 passed, 0 failed; debug UI: 9 passed, 0 failed |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
@@ -89,6 +90,7 @@ geometry gates.
 | --- | --- |
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and current family-gate state |
 | **[Stability test report](docs/stability-report.md)** | Current decision, visual evidence, tests, soak metrics, runtime load evidence, and reproduction steps |
+| **[0.1.18 container-width repair](docs/container-width-report.md)** | Fresh Gantt parent-width, rounded-coordinate and label-side checks; same-config Mindmap paint and topology, with remaining visual Review findings |
 | **[All 8,448 Native/Official independent scenarios](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 different same-source scenarios per page |
 | **[Source-mutation Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 AI-like mutations from byte-distinct stress bases derived from 441 structural scenarios, 16,896 screenshots, and 528 comparison sheets |
 | **[Android physical-device report](docs/android-real-device-compatibility.md)** | Separate Kotlin 2.3.20 and Kotlin 1.7.21 matrices across Android 9-16 |
@@ -233,18 +235,25 @@ substituted with another layout.
 
 The current publication coordinates are:
 
+Version 0.1.18 makes `MermaidRenderOptions.ganttUseWidth` nullable so that an
+absent value uses Compose parent content width, while every explicit value
+still overrides it. Core without a parent keeps the 1200 fallback. Rebuild
+consumers against the changed API. The full-family and physical-device
+matrices below retain historical evidence; the fresh repair audit is linked
+above.
+
 | Consumer | Artifact |
 | --- | --- |
-| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.17` |
-| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.17` |
-| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.17` |
-| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.17` |
-| iOS binary | `CMPMermaid` CocoaPod `0.1.17` |
+| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.18` |
+| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.18` |
+| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.18` |
+| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.18` |
+| iOS binary | `CMPMermaid` CocoaPod `0.1.18` |
 
 Current Kotlin Multiplatform projects:
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.17")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.18")
 }
 ```
 
@@ -258,7 +267,7 @@ Android projects pinned to Kotlin `1.7.21` use the isolated Android artifact:
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.17",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.18",
     )
 }
 ```
@@ -288,7 +297,7 @@ Kotlin `1.7.21` Android artifact.
 iOS projects can consume the precompiled static XCFramework through CocoaPods:
 
 ```ruby
-pod 'CMPMermaid', '0.1.17'
+pod 'CMPMermaid', '0.1.18'
 ```
 
 The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`

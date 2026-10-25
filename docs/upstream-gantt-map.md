@@ -65,6 +65,12 @@ Rows 3-4 preserve the two distinct D3 axis transforms. The regression test
 asserts both full-height tick-line sets, their endpoints, and the translated
 `currentColor` paint.
 
+The [container-width repair inventory](upstream-container-width-map.md)
+separately maps parent width, undefined versus explicit `useWidth`,
+`rangeRound`, and `drawRects` label-side decisions. The time scale rounds its
+relative range before the left offset is applied; label-side decisions use
+that relative coordinate rather than the final painted coordinate.
+
 ## Locked Upstream Hashes
 
 | Upstream file | SHA-256 |
@@ -94,8 +100,11 @@ asserts both full-height tick-line sets, their endpoints, and the translated
 - Direct `topAxis` calls `enableTopAxis()` because Mermaid `12.0.0`'s generated
   action calls the nonexistent `TopAxis()` method.
 - Mermaid reads `elem.parentElement.offsetWidth` and falls back to 1200 only
-  when that width is unavailable. Core compilation has no browser parent, so
-  `ganttUseWidth` owns the scene width and defaults to the same 1200 units.
+  when that width is unavailable. Compose supplies bounded parent content
+  width in logical pixels through `MermaidRenderContext.containerWidth`.
+  Nullable `ganttUseWidth` preserves upstream's absent configuration, while
+  every explicit value overrides the parent. Core without a parent retains
+  the 1200 fallback.
 - DOM text measurement is supplied by `TextMetricProvider`; Compose uses the
   same font, size, and line-height inputs for measurement and painting.
 - SceneGraph interactions preserve sanitized links and callbacks while the
@@ -120,9 +129,13 @@ asserts both full-height tick-line sets, their endpoints, and the translated
 - The Web RC capture rejects an Official Gantt SVG whose viewBox is less than
   75% of its iframe width, preventing a flex-shrunk reference from masking or
   inventing Native layout differences.
-- The current 256-case Native/Official matrix reports `256 pass / 0 review / 0 fail`.
+- The retained 256-case Native/Official matrix predates the container-width
+  repair and reports `256 pass / 0 review / 0 fail`.
   Geometry has 0 hard failures with width `1.034-1.037`, height `0.927-0.957`,
   and foreground ink `0.921-1.029`.
+- Fresh parent-width, time-scale and label-side evidence is in the
+  [container-width report](container-width-report.md). This does not refresh
+  or promote the retained full-family matrix.
 
 ## Upgrade Procedure
 

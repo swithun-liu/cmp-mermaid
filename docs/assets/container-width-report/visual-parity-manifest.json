@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-25T13:28:51.917Z",
+  "mermaidVersion": "12.0.0",
+  "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
+  "familyCount": 2,
+  "scenarioCount": 9,
+  "uniqueSourceCount": 3,
+  "screenshotCount": 18,
+  "counts": {
+    "pass": 0,
+    "review": 9,
+    "fail": 0
+  },
+  "contactSheets": [
+    "contact-sheet-1.png",
+    "contact-sheet-2.png",
+    "contact-sheet-3.png"
+  ],
+  "inputs": {
+    "official.json": {
+      "sha256": "ec3def49112e11808be7be8ffd842850d7cfa3ace41814381a423b8089b8e07c"
+    },
+    "native.json": {
+      "sha256": "9cdf6e3f3a3534815f526221feea51892c7498da9a3595743fecfa8c97a4afff"
+    },
+    "audit.json": {
+      "sha256": "7c200aadb7d40b6582511d85657df5dc5f7a628946cb72fc70af9739ff5e53a2"
+    },
+    "raster.json": {
+      "sha256": "9e9a0e0fdd4e32960d428717254f03f6c0bdec4bb7c919b36ffc08a719661764"
+    }
+  },
+  "evidence": [
+    {
+      "file": "gantt-parent-344-official.png",
+      "sha256": "083a4230ea45f492faf591235ad72876ad1d805a57436993ffe1a343ceab8a81"
+    },
+    {
+      "file": "gantt-parent-344-native.png",
+      "sha256": "2a7a1c678ae34136f1559a0a03185e22ccf91251c2c09aee0d2fa5eb25b14010"
+    },
+    {
+      "file": "gantt-parent-768-official.png",
+      "sha256": "40ecb81a97fbbc341b06e6752077b3b555ffbb0d3abbaf9031f795bc8de181b1"
+    },
+    {
+      "file": "gantt-parent-768-native.png",
+      "sha256": "84739e77ee335042483b2149c04245757190c8ff7a58bfd5018529344b9c936a"
+    },
+    {
+      "file": "gantt-parent-1200-official.png",
+      "sha256": "9ed88f25684c8b41a872f7fc0fe56524ffd01ecae26903e4089855e3190077d1"
+    },
+    {
+      "file": "gantt-parent-1200-native.png",
+      "sha256": "547b02e6fde1e3af0f34e37f6c961a8231891ecb26c5583ca66cb56c0faaa591"
+    },
+    {
+      "file": "gantt-source-1200-official.png",
+      "sha256": "9ed88f25684c8b41a872f7fc0fe56524ffd01ecae26903e4089855e3190077d1"
+    },
+    {
+      "file": "gantt-source-1200-native.png",
+      "sha256": "547b02e6fde1e3af0f34e37f6c961a8231891ecb26c5583ca66cb56c0faaa591"
+    },
+    {
+      "file": "gantt-host-900-official.png",
+      "sha256": "43c801229d32cd1e51fcaf44e8e5de3c9b399dd76113686c134488ed8f8e6311"
+    },
+    {
+      "file": "gantt-host-900-native.png",
+      "sha256": "5c7dc165752b80035235b1aec0f3ed46cb3702571ceb4bc703a56d8bfae78804"
+    },
+    {
+      "file": "mindmap-dagre-classic-official.png",
+      "sha256": "272888921503f216460f159b08af0e38c7ba38b4f2d8b1861b9ffc37a18ef927"
+    },
+    {
+      "file": "mindmap-dagre-classic-native.png",
+      "sha256": "b95b6f0866b3ced500861f73d29137489bca8652d6b5c0b8b161f8af6c6c9537"
+    },
+    {
+      "file": "mindmap-dagre-neo-official.png",
+      "sha256": "eddf25107ace30fd5b31268b11e32f47d9b3dc9dcc48655d463d9f94958697f4"
+    },
+    {
+      "file": "mindmap-dagre-neo-native.png",
+      "sha256": "b5071a8a1f91f6627dd323258c9deb923520d61e3d106404e767e35d4fb255c8"
+    },
+    {
+      "file": "mindmap-cose-bilkent-classic-official.png",
+      "sha256": "eb0e76a7ebcbc5a83b22d017d88e996c78b9c6421204507bc8bf22c02d8a11d3"
+    },
+    {
+      "file": "mindmap-cose-bilkent-classic-native.png",
+      "sha256": "ef5dcce9d59f13134b07c0862ca742ca78853832568c495caf9b58fe174c98ae"
+    },
+    {
+      "file": "mindmap-cose-bilkent-neo-official.png",
+      "sha256": "0f8dcb72ca9d20b266d6783bdc389d6f75fb7015fd741722f866bd6480413bdb"
+    },
+    {
+      "file": "mindmap-cose-bilkent-neo-native.png",
+      "sha256": "58ede8084b7bdaaa292d4bde83ea4fe4a5cad4bcb7d2abf1401028af118f0122"
+    },
+    {
+      "file": "contact-sheet-1.png",
+      "sha256": "071dd63d0f8932f17e457a811ff95875566008c573c7b88bf109322a786e5208"
+    },
+    {
+      "file": "contact-sheet-2.png",
+      "sha256": "ba04229e6e0db900f61a342c545e3d380584bdaeb919536aaea611b813e18bb8"
+    },
+    {
+      "file": "contact-sheet-3.png",
+      "sha256": "c2ec27d4ee4415e8c1573db141f1b9dd854a32baf4412a41a25839269d728122"
+    }
+  ],
+  "records": [
+    {
+      "id": "gantt-parent-344",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "containerWidth": 344,
+      "layout": "dagre",
+      "look": "classic",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "gantt-parent-344-official.png",
+          "sha256": "083a4230ea45f492faf591235ad72876ad1d805a57436993ffe1a343ceab8a81"
+        },
+        {
+          "side": "native",
+          "file": "gantt-parent-344-native.png",
+          "sha256": "2a7a1c678ae34136f1559a0a03185e22ccf91251c2c09aee0d2fa5eb25b14010"
+        }
+      ]
+    },
+    {
+      "id": "gantt-parent-768",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "containerWidth": 768,
+      "layout": "dagre",
+      "look": "classic",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "gantt-parent-768-official.png",
+          "sha256": "40ecb81a97fbbc341b06e6752077b3b555ffbb0d3abbaf9031f795bc8de181b1"
+        },
+        {
+          "side": "native",
+          "file": "gantt-parent-768-native.png",
+          "sha256": "84739e77ee335042483b2149c04245757190c8ff7a58bfd5018529344b9c936a"
+        }
+      ]
+    },
+    {
+      "id": "gantt-parent-1200",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "containerWidth": 1200,
+      "layout": "dagre",
+      "look": "classic",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "gantt-parent-1200-official.png",
+          "sha256": "9ed88f25684c8b41a872f7fc0fe56524ffd01ecae26903e4089855e3190077d1"
+        },
+        {
+          "side": "native",
+          "file": "gantt-parent-1200-native.png",
+          "sha256": "547b02e6fde1e3af0f34e37f6c961a8231891ecb26c5583ca66cb56c0faaa591"
+        }
+      ]
+    },
+    {
+      "id": "gantt-source-1200",
+      "kind": "gantt",
+      "source": "---\nconfig:\n  gantt:\n    useWidth: 1200\n---\ngantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "sourceSha256": "7df70677428a530c7db17bea20f4cd582d2e817678ad84b32820382b8cfa9990",
+      "containerWidth": 344,
+      "layout": "dagre",
+      "look": "classic",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "gantt-source-1200-official.png",
+          "sha256": "9ed88f25684c8b41a872f7fc0fe56524ffd01ecae26903e4089855e3190077d1"
+        },
+        {
+          "side": "native",
+          "file": "gantt-source-1200-native.png",
+          "sha256": "547b02e6fde1e3af0f34e37f6c961a8231891ecb26c5583ca66cb56c0faaa591"
+        }
+      ]
+    },
+    {
+      "id": "gantt-host-900",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "containerWidth": 344,
+      "layout": "dagre",
+      "look": "classic",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "gantt-host-900-official.png",
+          "sha256": "43c801229d32cd1e51fcaf44e8e5de3c9b399dd76113686c134488ed8f8e6311"
+        },
+        {
+          "side": "native",
+          "file": "gantt-host-900-native.png",
+          "sha256": "5c7dc165752b80035235b1aec0f3ed46cb3702571ceb4bc703a56d8bfae78804"
+        }
+      ]
+    },
+    {
+      "id": "mindmap-dagre-classic",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "containerWidth": 768,
+      "layout": "dagre",
+      "look": "classic",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "mindmap-dagre-classic-official.png",
+          "sha256": "272888921503f216460f159b08af0e38c7ba38b4f2d8b1861b9ffc37a18ef927"
+        },
+        {
+          "side": "native",
+          "file": "mindmap-dagre-classic-native.png",
+          "sha256": "b95b6f0866b3ced500861f73d29137489bca8652d6b5c0b8b161f8af6c6c9537"
+        }
+      ]
+    },
+    {
+      "id": "mindmap-dagre-neo",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "containerWidth": 768,
+      "layout": "dagre",
+      "look": "neo",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "mindmap-dagre-neo-official.png",
+          "sha256": "eddf25107ace30fd5b31268b11e32f47d9b3dc9dcc48655d463d9f94958697f4"
+        },
+        {
+          "side": "native",
+          "file": "mindmap-dagre-neo-native.png",
+          "sha256": "b5071a8a1f91f6627dd323258c9deb923520d61e3d106404e767e35d4fb255c8"
+        }
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-classic",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "containerWidth": 768,
+      "layout": "cose-bilkent",
+      "look": "classic",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "mindmap-cose-bilkent-classic-official.png",
+          "sha256": "eb0e76a7ebcbc5a83b22d017d88e996c78b9c6421204507bc8bf22c02d8a11d3"
+        },
+        {
+          "side": "native",
+          "file": "mindmap-cose-bilkent-classic-native.png",
+          "sha256": "ef5dcce9d59f13134b07c0862ca742ca78853832568c495caf9b58fe174c98ae"
+        }
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-neo",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "containerWidth": 768,
+      "layout": "cose-bilkent",
+      "look": "neo",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "official",
+          "file": "mindmap-cose-bilkent-neo-official.png",
+          "sha256": "0f8dcb72ca9d20b266d6783bdc389d6f75fb7015fd741722f866bd6480413bdb"
+        },
+        {
+          "side": "native",
+          "file": "mindmap-cose-bilkent-neo-native.png",
+          "sha256": "58ede8084b7bdaaa292d4bde83ea4fe4a5cad4bcb7d2abf1401028af118f0122"
+        }
+      ]
+    }
+  ]
+}

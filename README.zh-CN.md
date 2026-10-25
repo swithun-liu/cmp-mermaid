@@ -75,7 +75,8 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 确定性 SceneGraph 重放 | 441 个通过，0 个不一致 |
 | 内置主题矩阵 | 363/363 |
 | 独立生成的 Native 压力输入 | 保留的历史基线 7,936 个 |
-| JVM 测试 | Core：1,019 个通过、0 个失败；Compose：38 个通过、0 个失败 |
+| 0.1.18 当前 JVM 测试 | Core：1,100 个通过、0 个失败；Compose：75 个通过、0 个失败 |
+| 当前容器宽度专项审计 | 2 个家族、3 份唯一源码、9 个配置场景、18 张截图和 3 页 contact sheet；0 Pass / 9 Review / 0 Fail |
 | Wasm 测试 | Core：1,017 个通过、0 个失败；Compose：37 个通过、0 个失败；debug UI：9 个通过、0 个失败 |
 | Core 生产场景压力测试 | 历史 415 场景基线：2,075 次渲染，总耗时 674ms，P95 为 1ms，保留堆 63,968 bytes |
 | 物理设备运行时矩阵 | Kotlin 2.3.20 Android 8/8、Kotlin 1.7.21 Android 8/8、iOS 6/6 通过；9,702 次语料渲染；人工审阅 198 张代表图和 22 张完成截图；0 崩溃、0 Android ANR |
@@ -85,6 +86,7 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | --- | --- |
 | **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单和已完成的 33/33 家族门禁 |
 | **[稳定性测试报告](docs/stability-report.md)** | 当前判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
+| **[0.1.18 容器宽度修复报告](docs/container-width-report.md)** | 新鲜生成的 Gantt 父容器宽度、坐标取整和标签左右选择检查，以及相同配置下的 Mindmap 颜色和拓扑检查；视觉微差继续保留 Review |
 | **[全部 8,448 个 Native/Official 独立场景](docs/assets/stability-report/visual-parity-evidence.md)** | 528 页分页对比图，每页包含 16 个不同的同源码场景 |
 | **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 从 441 个结构场景的字节级不同压力样本派生的 8,448 个系统化变异、16,896 张截图和 528 张对比图 |
 | **[Android 物理设备兼容性报告](docs/android-real-device-compatibility.md)** | Kotlin 2.3.20 与 Kotlin 1.7.21 分别覆盖 Android 9-16 |
@@ -101,6 +103,11 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 以及合法但尚不支持的 RoughJS-backed `handDrawn` look。
 对于无法忠实表达的合法特性，系统会返回
 `MermaidError.UnsupportedFeature`，而不是静默绘制可能误导用户的近似结果。
+
+0.1.18 将 `MermaidRenderOptions.ganttUseWidth` 改为可空：缺省时读取
+Compose 父容器内容宽度，显式值始终覆盖父容器；没有父容器的 Core
+调用仍回退到 1200。调用方需针对新 API 重新构建。全家族与物理设备
+矩阵保留历史证据，本轮新鲜证据以容器宽度专项报告为准。
 
 ## Native 与 Mermaid.js 对比
 

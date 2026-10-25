@@ -32,6 +32,7 @@ import com.swithun.cmpmermaid.core.gantt.upstream.mermaid.GanttDb
 import com.swithun.cmpmermaid.core.gantt.upstream.mermaid.GanttTask
 import com.swithun.cmpmermaid.core.gantt.upstream.mermaid.GanttWeekday
 import kotlin.math.ceil
+import kotlin.math.floor
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -134,16 +135,21 @@ internal class GanttLayout {
         } else {
             regularTasks.size
         }
-        val width = context.options.ganttUseWidth
+        // Mermaid.js 12.0.0: ganttRenderer.js -> draw, width resolution.
+        // Compose supplies offsetWidth's logical-pixel equivalent; configured
+        // useWidth overrides it even when that value is exactly 1200.
+        val width = context.options.ganttUseWidth ?: context.containerWidth ?: 1200f
         val gap = context.options.ganttBarHeight + context.options.ganttBarGap
         val height = max(
             context.options.ganttTopPadding * 2f + rowCount * gap,
             MIN_HEIGHT,
         )
-        if (width <= context.options.ganttLeftPadding + context.options.ganttRightPadding) {
+        if (!width.isFinite() ||
+            width <= context.options.ganttLeftPadding + context.options.ganttRightPadding
+        ) {
             return GMResult.Err(
                 MermaidError.Configuration(
-                    "Gantt useWidth must exceed leftPadding + rightPadding",
+                    "Gantt width must be finite and exceed leftPadding + rightPadding",
                 ),
             )
         }
@@ -682,8 +688,12 @@ internal class GanttLayout {
                 outside = false,
             )
         }
-        val placeLeft =
-            endX + label.metrics.width + 1.5f * context.options.ganttLeftPadding > width
+        // Mermaid.js 12.0.0: ganttRenderer.js -> drawRects text x/class.
+        // timeScale is relative to zero; theSidePad is added only to the
+        // final text anchor. Keep that coordinate space for the branch too.
+        val relativeEndX = endX - context.options.ganttLeftPadding
+        val placeLeft = relativeEndX + label.metrics.width +
+            1.5f * context.options.ganttLeftPadding > width
         return if (placeLeft) {
             LabelPlacement(
                 bounds = SceneRect(
@@ -878,13 +888,17 @@ internal class GanttLayout {
         val start: Float,
         val end: Float,
     ) {
-        private val domainMaximum =
-            if (maximum > minimum) maximum else minimum + MILLIS_PER_DAY
-
+        // Mermaid.js 12.0.0: ganttRenderer.js -> draw, scaleTime.rangeRound.
+        // d3-scale continuous normalize and d3-interpolate numberRound:
+        // equal domain endpoints use 0.5, and only the relative range rounds.
         operator fun invoke(value: Long): Float {
-            val ratio = (value - minimum).toDouble() /
-                (domainMaximum - minimum).toDouble()
-            return start + ratio.toFloat() * (end - start)
+            val ratio = if (maximum == minimum) {
+                0.5
+            } else {
+                (value.toDouble() - minimum.toDouble()) /
+                    (maximum.toDouble() - minimum.toDouble())
+            }
+            return start + floor(ratio * (end - start) + 0.5).toFloat()
         }
     }
 

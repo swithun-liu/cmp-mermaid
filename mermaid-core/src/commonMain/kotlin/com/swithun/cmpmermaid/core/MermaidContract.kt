@@ -561,7 +561,9 @@ data class MermaidRenderOptions(
     val ganttTopAxis: Boolean = false,
     val ganttDisplayMode: String = "",
     val ganttWeekday: String = "sunday",
-    val ganttUseWidth: Float = 1200f,
+    // Mermaid.js 12.0.0: ganttRenderer.js -> draw.
+    // Undefined useWidth reads the parent width, then falls back to 1200.
+    val ganttUseWidth: Float? = null,
     val pieTextPosition: Float = 0.75f,
     val pieDonutHole: Float = 0f,
     val pieLegendPosition: String = "right",

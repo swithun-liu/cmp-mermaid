@@ -1,0 +1,2175 @@
+{
+  "schemaVersion": 1,
+  "mermaidVersion": "12.0.0",
+  "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
+  "generatedAt": "2026-10-25T13:20:49.650Z",
+  "fontFamily": "Arial (bundled Arimo)",
+  "cases": [
+    {
+      "id": "gantt-parent-344",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "containerWidth": 344,
+      "layout": "dagre",
+      "look": "classic",
+      "theme": "redux-color",
+      "width": 344,
+      "height": 172,
+      "tasks": [
+        {
+          "id": "width-gantt-parent-344-build",
+          "bounds": {
+            "x": 75,
+            "y": 50,
+            "width": 111,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-parent-344-review",
+          "bounds": {
+            "x": 186,
+            "y": 74,
+            "width": 55,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-parent-344-publish",
+          "bounds": {
+            "x": 241,
+            "y": 98,
+            "width": 28,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        }
+      ],
+      "labels": [
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 60.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 74.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 88.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 102.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 115.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 129.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 143.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 157.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 171.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 185.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 199.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 212.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 226.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 240.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 08",
+          "bounds": {
+            "x": 254.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Implementation checks",
+          "bounds": {
+            "x": 191,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "anchorX": 191,
+          "anchor": "start",
+          "className": "taskTextOutsideRight taskTextOutside0  width-112.5"
+        },
+        {
+          "text": "Review",
+          "bounds": {
+            "x": 195.4609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "anchorX": 213.5,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-36.09375"
+        },
+        {
+          "text": "Publish",
+          "bounds": {
+            "x": 274,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "anchorX": 274,
+          "anchor": "start",
+          "className": "taskTextOutsideRight taskTextOutside1  width-36.078125"
+        },
+        {
+          "text": "Build",
+          "bounds": {
+            "x": 10,
+            "y": 68,
+            "width": 24.46875,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle0"
+        },
+        {
+          "text": "Release",
+          "bounds": {
+            "x": 10,
+            "y": 104,
+            "width": 40.359375,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle1"
+        },
+        {
+          "text": "Release schedule",
+          "bounds": {
+            "x": 100.4453125,
+            "y": 9,
+            "width": 143.109375,
+            "height": 20
+          },
+          "anchorX": 172,
+          "anchor": "middle",
+          "className": "titleText"
+        }
+      ],
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "id": "gantt-parent-768",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "containerWidth": 768,
+      "layout": "dagre",
+      "look": "classic",
+      "theme": "redux-color",
+      "width": 768,
+      "height": 172,
+      "tasks": [
+        {
+          "id": "width-gantt-parent-768-build",
+          "bounds": {
+            "x": 75,
+            "y": 50,
+            "width": 353,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-parent-768-review",
+          "bounds": {
+            "x": 428,
+            "y": 74,
+            "width": 177,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-parent-768-publish",
+          "bounds": {
+            "x": 605,
+            "y": 98,
+            "width": 88,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        }
+      ],
+      "labels": [
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 60.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 104.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 148.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 192.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 237.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 281.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 325.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 369.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 413.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 457.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 501.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 546.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 590.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 634.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 08",
+          "bounds": {
+            "x": 678.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Implementation checks",
+          "bounds": {
+            "x": 195.25,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "anchorX": 251.5,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-112.5"
+        },
+        {
+          "text": "Review",
+          "bounds": {
+            "x": 498.4609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "anchorX": 516.5,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-36.09375"
+        },
+        {
+          "text": "Publish",
+          "bounds": {
+            "x": 630.9609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "anchorX": 649,
+          "anchor": "middle",
+          "className": "taskText taskText1  width-36.078125"
+        },
+        {
+          "text": "Build",
+          "bounds": {
+            "x": 10,
+            "y": 68,
+            "width": 24.46875,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle0"
+        },
+        {
+          "text": "Release",
+          "bounds": {
+            "x": 10,
+            "y": 104,
+            "width": 40.359375,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle1"
+        },
+        {
+          "text": "Release schedule",
+          "bounds": {
+            "x": 312.4453125,
+            "y": 9,
+            "width": 143.109375,
+            "height": 20
+          },
+          "anchorX": 384,
+          "anchor": "middle",
+          "className": "titleText"
+        }
+      ],
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "id": "gantt-parent-1200",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "containerWidth": 1200,
+      "layout": "dagre",
+      "look": "classic",
+      "theme": "redux-color",
+      "width": 1200,
+      "height": 172,
+      "tasks": [
+        {
+          "id": "width-gantt-parent-1200-build",
+          "bounds": {
+            "x": 75,
+            "y": 50,
+            "width": 600,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-parent-1200-review",
+          "bounds": {
+            "x": 675,
+            "y": 74,
+            "width": 300,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-parent-1200-publish",
+          "bounds": {
+            "x": 975,
+            "y": 98,
+            "width": 150,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        }
+      ],
+      "labels": [
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 60.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 135.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 210.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 285.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 360.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 435.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 510.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 585.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 660.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 735.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 810.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 885.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 960.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 1035.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 08",
+          "bounds": {
+            "x": 1110.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Implementation checks",
+          "bounds": {
+            "x": 318.75,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "anchorX": 375,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-112.5"
+        },
+        {
+          "text": "Review",
+          "bounds": {
+            "x": 806.9609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "anchorX": 825,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-36.09375"
+        },
+        {
+          "text": "Publish",
+          "bounds": {
+            "x": 1031.9609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "anchorX": 1050,
+          "anchor": "middle",
+          "className": "taskText taskText1  width-36.078125"
+        },
+        {
+          "text": "Build",
+          "bounds": {
+            "x": 10,
+            "y": 68,
+            "width": 24.46875,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle0"
+        },
+        {
+          "text": "Release",
+          "bounds": {
+            "x": 10,
+            "y": 104,
+            "width": 40.359375,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle1"
+        },
+        {
+          "text": "Release schedule",
+          "bounds": {
+            "x": 528.4453125,
+            "y": 9,
+            "width": 143.109375,
+            "height": 20
+          },
+          "anchorX": 600,
+          "anchor": "middle",
+          "className": "titleText"
+        }
+      ],
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "id": "gantt-source-1200",
+      "kind": "gantt",
+      "source": "---\nconfig:\n  gantt:\n    useWidth: 1200\n---\ngantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "containerWidth": 344,
+      "layout": "dagre",
+      "look": "classic",
+      "theme": "redux-color",
+      "width": 1200,
+      "height": 172,
+      "tasks": [
+        {
+          "id": "width-gantt-source-1200-build",
+          "bounds": {
+            "x": 75,
+            "y": 50,
+            "width": 600,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-source-1200-review",
+          "bounds": {
+            "x": 675,
+            "y": 74,
+            "width": 300,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-source-1200-publish",
+          "bounds": {
+            "x": 975,
+            "y": 98,
+            "width": 150,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        }
+      ],
+      "labels": [
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 60.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 135.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 210.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 285.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 360.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 435.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 510.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 585.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 660.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 735.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 810.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 885.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 960.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 1035.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 08",
+          "bounds": {
+            "x": 1110.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Implementation checks",
+          "bounds": {
+            "x": 318.75,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "anchorX": 375,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-112.4133071899414"
+        },
+        {
+          "text": "Review",
+          "bounds": {
+            "x": 806.9609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "anchorX": 825,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-36.09001541137695"
+        },
+        {
+          "text": "Publish",
+          "bounds": {
+            "x": 1031.9609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "anchorX": 1050,
+          "anchor": "middle",
+          "className": "taskText taskText1  width-36.09001541137695"
+        },
+        {
+          "text": "Build",
+          "bounds": {
+            "x": 10,
+            "y": 68,
+            "width": 24.46875,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle0"
+        },
+        {
+          "text": "Release",
+          "bounds": {
+            "x": 10,
+            "y": 104,
+            "width": 40.359375,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle1"
+        },
+        {
+          "text": "Release schedule",
+          "bounds": {
+            "x": 528.4453125,
+            "y": 9,
+            "width": 143.109375,
+            "height": 20
+          },
+          "anchorX": 600,
+          "anchor": "middle",
+          "className": "titleText"
+        }
+      ],
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "id": "gantt-host-900",
+      "kind": "gantt",
+      "source": "gantt\n  title Release schedule\n  dateFormat YYYY-MM-DD\n  axisFormat %b %d\n  todayMarker off\n  section Build\n  Implementation checks :build, 2025-01-01, 4d\n  Review :review, after build, 2d\n  section Release\n  Publish :publish, after review, 1d",
+      "containerWidth": 344,
+      "useWidth": 900,
+      "layout": "dagre",
+      "look": "classic",
+      "theme": "redux-color",
+      "width": 900,
+      "height": 172,
+      "tasks": [
+        {
+          "id": "width-gantt-host-900-build",
+          "bounds": {
+            "x": 75,
+            "y": 50,
+            "width": 429,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-host-900-review",
+          "bounds": {
+            "x": 504,
+            "y": 74,
+            "width": 214,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "width-gantt-host-900-publish",
+          "bounds": {
+            "x": 718,
+            "y": 98,
+            "width": 107,
+            "height": 20
+          },
+          "fill": "rgb(236, 236, 254)",
+          "stroke": "rgb(24, 24, 24)",
+          "strokeWidth": 2
+        }
+      ],
+      "labels": [
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 60.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 01",
+          "bounds": {
+            "x": 114.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 167.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 02",
+          "bounds": {
+            "x": 221.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 274.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 03",
+          "bounds": {
+            "x": 328.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 381.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 04",
+          "bounds": {
+            "x": 435.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 489.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 05",
+          "bounds": {
+            "x": 542.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 596.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 06",
+          "bounds": {
+            "x": 649.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 703.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 07",
+          "bounds": {
+            "x": 756.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Jan 08",
+          "bounds": {
+            "x": 810.484375,
+            "y": 126,
+            "width": 30.03125,
+            "height": 11
+          },
+          "anchorX": 0,
+          "anchor": "middle",
+          "className": null
+        },
+        {
+          "text": "Implementation checks",
+          "bounds": {
+            "x": 233.25,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "anchorX": 289.5,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-112.43167114257812"
+        },
+        {
+          "text": "Review",
+          "bounds": {
+            "x": 592.9609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "anchorX": 611,
+          "anchor": "middle",
+          "className": "taskText taskText0  width-36.059898376464844"
+        },
+        {
+          "text": "Publish",
+          "bounds": {
+            "x": 753.4609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "anchorX": 771.5,
+          "anchor": "middle",
+          "className": "taskText taskText1  width-36.059898376464844"
+        },
+        {
+          "text": "Build",
+          "bounds": {
+            "x": 10,
+            "y": 68,
+            "width": 24.46875,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle0"
+        },
+        {
+          "text": "Release",
+          "bounds": {
+            "x": 10,
+            "y": 104,
+            "width": 40.359375,
+            "height": 12
+          },
+          "anchorX": 10,
+          "anchor": "start",
+          "className": "sectionTitle sectionTitle1"
+        },
+        {
+          "text": "Release schedule",
+          "bounds": {
+            "x": 378.4453125,
+            "y": 9,
+            "width": 143.109375,
+            "height": 20
+          },
+          "anchorX": 450,
+          "anchor": "middle",
+          "className": "titleText"
+        }
+      ],
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "id": "mindmap-dagre-classic",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "containerWidth": 768,
+      "layout": "dagre",
+      "look": "classic",
+      "theme": "redux-color",
+      "width": 194.625,
+      "height": 278.27484130859375,
+      "tasks": [],
+      "labels": [],
+      "nodes": [
+        {
+          "id": "node-0",
+          "text": "Root",
+          "bounds": {
+            "x": 70.92506980895996,
+            "y": 10.000000000000004,
+            "width": 56.27486038208009,
+            "height": 56.27486038208008
+          },
+          "fill": "rgb(115, 115, 248)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        },
+        {
+          "id": "node-1",
+          "text": "Alpha",
+          "bounds": {
+            "x": 9.999999999999996,
+            "y": 116.27485847473145,
+            "width": 65.81250000000001,
+            "height": 51
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        },
+        {
+          "id": "node-2",
+          "text": "Child",
+          "bounds": {
+            "x": 11.953124999999998,
+            "y": 217.27485847473147,
+            "width": 61.90625,
+            "height": 50.99999999999997
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        },
+        {
+          "id": "node-3",
+          "text": "Beta",
+          "bounds": {
+            "x": 125.81250000000001,
+            "y": 116.27485847473145,
+            "width": 58.812500000000014,
+            "height": 51
+          },
+          "fill": "rgb(255, 184, 106)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        }
+      ],
+      "edges": [
+        {
+          "id": "width-mindmap-dagre-classic-edge_0_1",
+          "fill": "none",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 11,
+          "d": "M76.625,55.477L70.672,61.11C64.718,66.743,52.812,78.009,46.859,87.808C40.906,97.608,40.906,105.942,40.906,110.108L40.906,114.275",
+          "start": {
+            "x": 78.62500000000001,
+            "y": 57.47700309753418
+          },
+          "end": {
+            "x": 42.905998229980476,
+            "y": 116.27500343322754
+          },
+          "points": [
+            {
+              "x": 78.6245717343694,
+              "y": 57.47666836264119
+            },
+            {
+              "x": 42.90625,
+              "y": 91.27486228942873
+            },
+            {
+              "x": 42.90625,
+              "y": 116.27486228942871
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-dagre-classic-edge_1_2",
+          "fill": "none",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 5,
+          "d": "M40.906,165.275L40.906,169.442C40.906,173.608,40.906,181.942,40.906,190.275C40.906,198.608,40.906,206.942,40.906,211.108L40.906,215.275",
+          "start": {
+            "x": 42.905998229980476,
+            "y": 167.274995803833
+          },
+          "end": {
+            "x": 42.905998229980476,
+            "y": 217.274995803833
+          },
+          "points": [
+            {
+              "x": 42.90625,
+              "y": 167.27486228942874
+            },
+            {
+              "x": 42.90625,
+              "y": 192.27486228942874
+            },
+            {
+              "x": 42.90625,
+              "y": 217.27486228942874
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-dagre-classic-edge_0_3",
+          "fill": "none",
+          "stroke": "rgb(255, 184, 106)",
+          "strokeWidth": 11,
+          "d": "M117.5,55.477L123.453,61.11C129.407,66.743,141.313,78.009,147.266,87.808C153.219,97.608,153.219,105.942,153.219,110.108L153.219,114.275",
+          "start": {
+            "x": 119.5,
+            "y": 57.47700309753418
+          },
+          "end": {
+            "x": 155.218994140625,
+            "y": 116.27500343322754
+          },
+          "points": [
+            {
+              "x": 119.5004282656306,
+              "y": 57.47666836264119
+            },
+            {
+              "x": 155.21875000000003,
+              "y": 91.27486228942873
+            },
+            {
+              "x": 155.21875000000003,
+              "y": 116.27486228942871
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mindmap-dagre-neo",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "containerWidth": 768,
+      "layout": "dagre",
+      "look": "neo",
+      "theme": "redux-color",
+      "width": 194.625,
+      "height": 322.27484130859375,
+      "tasks": [],
+      "labels": [],
+      "nodes": [
+        {
+          "id": "node-0",
+          "text": "Root",
+          "bounds": {
+            "x": 48.9250717163086,
+            "y": 10,
+            "width": 100.27485656738281,
+            "height": 100.27485656738281
+          },
+          "fill": "rgb(255, 255, 255)",
+          "stroke": "rgb(244, 168, 255)",
+          "strokeWidth": 2,
+          "look": "neo"
+        },
+        {
+          "id": "node-1",
+          "text": "Alpha",
+          "bounds": {
+            "x": 9.999999999999998,
+            "y": 160.27485656738278,
+            "width": 65.8125,
+            "height": 51
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 2,
+          "look": "neo"
+        },
+        {
+          "id": "node-2",
+          "text": "Child",
+          "bounds": {
+            "x": 11.953124999999998,
+            "y": 261.2748413085937,
+            "width": 61.90625,
+            "height": 51
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 2,
+          "look": "neo"
+        },
+        {
+          "id": "node-3",
+          "text": "Beta",
+          "bounds": {
+            "x": 125.8125,
+            "y": 160.27485656738278,
+            "width": 58.8125,
+            "height": 51
+          },
+          "fill": "rgb(255, 184, 106)",
+          "stroke": "rgb(255, 184, 106)",
+          "strokeWidth": 2,
+          "look": "neo"
+        }
+      ],
+      "edges": [
+        {
+          "id": "width-mindmap-dagre-neo-edge_0_1",
+          "fill": "none",
+          "stroke": "rgb(40, 37, 61)",
+          "strokeWidth": 8,
+          "d": "M67.047,98.298L62.691,104.127C58.334,109.957,49.62,121.616,45.263,131.612C40.906,141.608,40.906,149.942,40.906,154.108L40.906,158.275",
+          "start": {
+            "x": 69.0469970703125,
+            "y": 100.2979965209961
+          },
+          "end": {
+            "x": 42.90599822998047,
+            "y": 160.27499389648438
+          },
+          "points": [
+            {
+              "x": 69.04741197841675,
+              "y": 100.29781156516756
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 135.2748565673828
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 160.2748565673828
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-dagre-neo-edge_1_2",
+          "fill": "none",
+          "stroke": "rgb(40, 37, 61)",
+          "strokeWidth": 4,
+          "d": "M40.906,209.275L40.906,213.442C40.906,217.608,40.906,225.942,40.906,234.275C40.906,242.608,40.906,250.942,40.906,255.108L40.906,259.275",
+          "start": {
+            "x": 42.90599822998047,
+            "y": 211.27499389648438
+          },
+          "end": {
+            "x": 42.90599822998047,
+            "y": 261.2749938964844
+          },
+          "points": [
+            {
+              "x": 42.90624999999999,
+              "y": 211.27485656738278
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 236.2748565673828
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 261.27485656738276
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-dagre-neo-edge_0_3",
+          "fill": "none",
+          "stroke": "rgb(40, 37, 61)",
+          "strokeWidth": 8,
+          "d": "M127.078,98.298L131.434,104.127C135.791,109.957,144.505,121.616,148.862,131.612C153.219,141.608,153.219,149.942,153.219,154.108L153.219,158.275",
+          "start": {
+            "x": 129.0780029296875,
+            "y": 100.2979965209961
+          },
+          "end": {
+            "x": 155.218994140625,
+            "y": 160.27499389648438
+          },
+          "points": [
+            {
+              "x": 129.0775880215832,
+              "y": 100.29781156516756
+            },
+            {
+              "x": 155.21875,
+              "y": 135.2748565673828
+            },
+            {
+              "x": 155.21875,
+              "y": 160.2748565673828
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-classic",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "containerWidth": 768,
+      "layout": "cose-bilkent",
+      "look": "classic",
+      "theme": "redux-color",
+      "width": 99.72962951660156,
+      "height": 389.0184020996094,
+      "tasks": [],
+      "labels": [],
+      "nodes": [
+        {
+          "id": "node-0",
+          "text": "Root",
+          "bounds": {
+            "x": 19.929452896118164,
+            "y": 218.43163108825684,
+            "width": 56.27486038208008,
+            "height": 56.27486038208008
+          },
+          "fill": "rgb(115, 115, 248)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        },
+        {
+          "id": "node-1",
+          "text": "Alpha",
+          "bounds": {
+            "x": 23.9171257019043,
+            "y": 114.12213134765625,
+            "width": 65.8125,
+            "height": 50.99999999999997
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        },
+        {
+          "id": "node-2",
+          "text": "Child",
+          "bounds": {
+            "x": 13.476783752441406,
+            "y": 9.999999999999996,
+            "width": 61.90625,
+            "height": 51
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        },
+        {
+          "id": "node-3",
+          "text": "Beta",
+          "bounds": {
+            "x": 9.999999999999996,
+            "y": 328.0184020996094,
+            "width": 58.8125,
+            "height": 50.999999999999886
+          },
+          "fill": "rgb(255, 184, 106)",
+          "stroke": "none",
+          "strokeWidth": 1,
+          "look": "classic"
+        }
+      ],
+      "edges": [
+        {
+          "id": "width-mindmap-cose-bilkent-classic-edge_0_1",
+          "fill": "none",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 11,
+          "d": "M54.291,236.619L54.817,230.199C55.342,223.778,56.394,210.937,57.445,198.096C58.497,185.254,59.548,172.413,60.074,165.993L60.599,159.572",
+          "start": {
+            "x": 49.29100036621094,
+            "y": 231.6190032958984
+          },
+          "end": {
+            "x": 55.5989990234375,
+            "y": 154.5720062255859
+          },
+          "points": [
+            {
+              "x": 49.29094278172445,
+              "y": 231.61908652388811
+            },
+            {
+              "x": 52.44512941505309,
+              "y": 193.09559336796184
+            },
+            {
+              "x": 55.599316048381716,
+              "y": 154.57210021203554
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-cose-bilkent-classic-edge_1_2",
+          "fill": "none",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 5,
+          "d": "M60.05,129.727L59.313,123.533C58.576,117.339,57.101,104.95,55.627,92.561C54.152,80.172,52.677,67.784,51.94,61.589L51.203,55.395",
+          "start": {
+            "x": 55.04999923706055,
+            "y": 124.72700500488281
+          },
+          "end": {
+            "x": 46.202999114990234,
+            "y": 50.39500045776367
+          },
+          "points": [
+            {
+              "x": 55.05046679620241,
+              "y": 124.72726947244678
+            },
+            {
+              "x": 50.62664158563814,
+              "y": 87.56106379941359
+            },
+            {
+              "x": 46.20281637507387,
+              "y": 50.3948581263804
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-cose-bilkent-classic-edge_0_3",
+          "fill": "none",
+          "stroke": "rgb(255, 184, 106)",
+          "strokeWidth": 11,
+          "d": "M51.856,266.52L51.336,272.941C50.816,279.361,49.776,292.203,48.737,305.044C47.697,317.885,46.657,330.726,46.137,337.147L45.617,343.567",
+          "start": {
+            "x": 46.85599899291992,
+            "y": 261.5199890136719
+          },
+          "end": {
+            "x": 40.617000579833984,
+            "y": 338.5669860839844
+          },
+          "points": [
+            {
+              "x": 46.85616506118757,
+              "y": 261.5201179165175
+            },
+            {
+              "x": 43.736567211753936,
+              "y": 300.0437364086272
+            },
+            {
+              "x": 40.6169693623203,
+              "y": 338.567354900737
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-neo",
+      "kind": "mindmap",
+      "source": "mindmap\n  root((Root))\n    Alpha\n      Child\n    Beta",
+      "containerWidth": 768,
+      "layout": "cose-bilkent",
+      "look": "neo",
+      "theme": "redux-color",
+      "width": 120.27485656738281,
+      "height": 433.1378173828125,
+      "tasks": [],
+      "labels": [],
+      "nodes": [
+        {
+          "id": "node-0",
+          "text": "Root",
+          "bounds": {
+            "x": 9.999999999999991,
+            "y": 218.50560760498038,
+            "width": 100.27485656738281,
+            "height": 100.2748565673829
+          },
+          "fill": "rgb(255, 255, 255)",
+          "stroke": "rgb(244, 168, 255)",
+          "strokeWidth": 2,
+          "look": "neo"
+        },
+        {
+          "id": "node-1",
+          "text": "Alpha",
+          "bounds": {
+            "x": 36.04393005371094,
+            "y": 114.14933776855467,
+            "width": 65.81249999999999,
+            "height": 51.000000000000014
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 2,
+          "look": "neo"
+        },
+        {
+          "id": "node-2",
+          "text": "Child",
+          "bounds": {
+            "x": 26.02546691894531,
+            "y": 10,
+            "width": 61.906249999999986,
+            "height": 51
+          },
+          "fill": "rgb(70, 236, 213)",
+          "stroke": "rgb(70, 236, 213)",
+          "strokeWidth": 2,
+          "look": "neo"
+        },
+        {
+          "id": "node-3",
+          "text": "Beta",
+          "bounds": {
+            "x": 22.030685424804688,
+            "y": 372.1378173828124,
+            "width": 58.8125,
+            "height": 51
+          },
+          "fill": "rgb(255, 184, 106)",
+          "stroke": "rgb(255, 184, 106)",
+          "strokeWidth": 2,
+          "look": "neo"
+        }
+      ],
+      "edges": [
+        {
+          "id": "width-mindmap-cose-bilkent-neo-edge_0_1",
+          "fill": "none",
+          "stroke": "rgb(40, 37, 61)",
+          "strokeWidth": 8,
+          "d": "M66.16,258.678L66.724,250.423C67.288,242.167,68.416,225.657,69.544,209.146C70.672,192.636,71.8,176.125,72.364,167.87L72.928,159.614",
+          "start": {
+            "x": 61.160003662109375,
+            "y": 253.67800903320312
+          },
+          "end": {
+            "x": 67.9280014038086,
+            "y": 154.61399841308594
+          },
+          "points": [
+            {
+              "x": 61.15983356988323,
+              "y": 253.67792924206265
+            },
+            {
+              "x": 64.54380413886464,
+              "y": 204.1461909779275
+            },
+            {
+              "x": 67.927774707846,
+              "y": 154.61445271379236
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-cose-bilkent-neo-edge_1_2",
+          "fill": "none",
+          "stroke": "rgb(40, 37, 61)",
+          "strokeWidth": 4,
+          "d": "M72.237,129.747L71.525,123.552C70.813,117.357,69.389,104.966,67.964,92.575C66.54,80.184,65.116,67.793,64.404,61.597L63.692,55.402",
+          "start": {
+            "x": 67.23699951171874,
+            "y": 124.74699401855469
+          },
+          "end": {
+            "x": 58.69200134277343,
+            "y": 50.40200042724609
+          },
+          "points": [
+            {
+              "x": 67.23726359056745,
+              "y": 124.74746072544713
+            },
+            {
+              "x": 62.964386522001845,
+              "y": 87.5746685149753
+            },
+            {
+              "x": 58.69150945343626,
+              "y": 50.401876304503475
+            }
+          ]
+        },
+        {
+          "id": "width-mindmap-cose-bilkent-neo-edge_0_3",
+          "fill": "none",
+          "stroke": "rgb(40, 37, 61)",
+          "strokeWidth": 8,
+          "d": "M64.128,288.609L63.571,296.864C63.014,305.12,61.901,321.63,60.787,338.14C59.674,354.651,58.56,371.161,58.003,379.417L57.446,387.672",
+          "start": {
+            "x": 59.12799835205078,
+            "y": 283.6090087890625
+          },
+          "end": {
+            "x": 52.44599914550781,
+            "y": 382.6719970703124
+          },
+          "points": [
+            {
+              "x": 59.12799551389128,
+              "y": 283.6090412336432
+            },
+            {
+              "x": 55.78718203209609,
+              "y": 333.14042532303756
+            },
+            {
+              "x": 52.4463685503009,
+              "y": 382.671809412432
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

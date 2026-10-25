@@ -129,3 +129,14 @@ tasks.register<JavaExec>("captureLabelCompatibility") {
             .getOrElse(rootProject.file("build/label-compatibility").absolutePath),
     )
 }
+
+tasks.register<JavaExec>("captureContainerWidth") {
+    dependsOn("jvmTestClasses")
+    val compilation = kotlin.targets.getByName("jvm").compilations.getByName("test")
+    classpath(compilation.output.allOutputs, compilation.runtimeDependencyFiles)
+    mainClass.set("com.swithun.cmpmermaid.compose.ContainerWidthAudit")
+    args(
+        providers.gradleProperty("containerAuditDir")
+            .getOrElse(rootProject.file("build/container-width").absolutePath),
+    )
+}

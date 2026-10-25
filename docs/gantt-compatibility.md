@@ -81,8 +81,15 @@ hour shifts are intentionally not reproduced.
   Puppeteer-rendered official references.
 - The formal replacement gate uses a shared `1200 x 900` viewport. Mermaid
   reads `elem.parentElement.offsetWidth` and falls back to `1200` only when
-  that width is unavailable; Kotlin uses the same `1200` scene-width default
-  because core compilation has no browser parent element.
+  that width is unavailable. Compose now supplies the bounded content width
+  in logical pixels; core without a parent retains the `1200` fallback.
+  `ganttUseWidth` is nullable to preserve absent versus explicit configuration.
+  Any explicit width, including `1200`, overrides the parent.
+- The retained family corpus predates the container-width repair. The fresh
+  [targeted audit](container-width-report.md) covers parent widths 344, 768,
+  1200, source width and host width overrides, D3 rounded coordinates and
+  task-label side selection. Historical screenshots are not fresh proof for
+  this change.
 - Core and Compose compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
   and iOS X64.
 

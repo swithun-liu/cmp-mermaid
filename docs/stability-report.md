@@ -13,8 +13,8 @@
 > but Sequence, ZenUML, Event Modeling, nested formula HTML, and HTML block
 > formatting remain unsupported. A separate 28-source composition audit is
 > linked below; the large corpus and physical-device matrices predate this
-> formula change and the 0.1.17 label repairs and were not regenerated for
-> either. The fresh label repair audit covers 23 sources, 46 screenshots and
+> formula change, the 0.1.17 label repairs and the subsequent container-width
+> repair and were not regenerated for those changes. The fresh label repair audit covers 23 sources, 46 screenshots and
 > four contact sheets: 13 Pass, 10 Review, 0 Fail. The full JVM and
 > Wasm core suites pass.
 > Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
@@ -53,6 +53,7 @@ stress inputs.
 | Built-in theme matrix | 363/363 renders passed: 33 diagram types by 11 themes |
 | Separate deterministic Native stress inputs | 7,936 |
 | JVM tests | Core: 1,094 passed, 0 failed; Compose: 73 passed, 0 failed |
+| Current container-width JVM tests | Core: 1,100 passed, 0 failed; Compose: 75 passed, 0 failed |
 | Wasm tests | Core: 1,092 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
 | iOS Simulator Arm64 tests | Core: 1,092 passed, 0 failed; Compose: 76 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
@@ -63,8 +64,12 @@ stress inputs.
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 | Formula renderer evidence | Unit-tested shared-label composition and provider contract; separate 28-source / 56-screenshot Native/Official audit; physical-device formula parity not established; non-Stable |
 | Current label repair evidence | 2 families, 23 unique sources, 46 screenshots, 4 contact sheets; 13 Pass / 10 Review / 0 Fail; all label content and cluster-boundary path/topology checks pass |
+| Current container-width repair evidence | 2 families, 3 unique sources, 9 configuration scenarios, 18 screenshots, 3 contact sheets; 0 Pass / 9 Review / 0 Fail; Gantt sizing, rounded task geometry and label-side checks pass; Mindmap paint/topology match under equal config; raster and subpixel geometry remain Review |
 
-**Current conclusion:** the 0.1.17
+**Current conclusion:** the [container-width repair](container-width-report.md)
+restores Gantt parent-width and label-side semantics. Its fresh evidence is
+separate from the retained full-family matrix; all nine scenarios remain
+Review for declared text/raster or subpixel differences. The 0.1.17
 [label repair audit](label-compatibility-report.md) passes label content and
 the cluster-boundary geometry, path and topology checks; ten visual cases
 remain Review. The retained 256-case Flowchart and full 8,448-pair matrix

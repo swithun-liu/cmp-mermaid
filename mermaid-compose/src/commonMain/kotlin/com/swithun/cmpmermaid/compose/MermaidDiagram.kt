@@ -10,6 +10,7 @@ import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.calculatePan
 import androidx.compose.foundation.gestures.calculateZoom
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -261,63 +262,69 @@ fun MermaidDiagram(
     var assetMetrics by remember(source) {
         mutableStateOf<Map<String, SceneSize>>(emptyMap())
     }
-    val preparedScene = rememberMermaidPreparedScene(
-        source = source,
-        theme = theme,
-        options = options,
-        fontFamilyResolver = fontFamilyResolver,
-        assetMetrics = assetMetrics,
-        formulaRenderer = effectiveFormulaRenderer,
-    ).value
-    val sceneResult = preparedScene?.result
-    val currentRenderResultHandler by rememberUpdatedState(onRenderResult)
-    val currentErrorHandler by rememberUpdatedState(onError)
-    val currentFormulaErrorHandler by rememberUpdatedState(onFormulaError)
-    LaunchedEffect(preparedScene) {
-        preparedScene?.let { prepared ->
-            val result = prepared.result
-            if (result is GMResult.Err) {
-                reportMermaidRenderError(result.error, source, currentErrorHandler)
-            }
-            currentRenderResultHandler?.invoke(result)
-            prepared.formulaFailures.forEach { (request, error) ->
-                currentFormulaErrorHandler?.invoke(request, error)
+    // Mermaid.js 12.0.0: ganttRenderer.js -> draw reads parent.offsetWidth
+    // before layout. Pass logical pixels, matching the scene/text coordinate space.
+    BoxWithConstraints(modifier = modifier, propagateMinConstraints = true) {
+        val containerWidth = if (constraints.hasBoundedWidth) maxWidth.value else null
+        val preparedScene = rememberMermaidPreparedScene(
+            source = source,
+            theme = theme,
+            options = options,
+            fontFamilyResolver = fontFamilyResolver,
+            assetMetrics = assetMetrics,
+            formulaRenderer = effectiveFormulaRenderer,
+            containerWidth = containerWidth,
+        ).value
+        val sceneResult = preparedScene?.result
+        val currentRenderResultHandler by rememberUpdatedState(onRenderResult)
+        val currentErrorHandler by rememberUpdatedState(onError)
+        val currentFormulaErrorHandler by rememberUpdatedState(onFormulaError)
+        LaunchedEffect(preparedScene) {
+            preparedScene?.let { prepared ->
+                val result = prepared.result
+                if (result is GMResult.Err) {
+                    reportMermaidRenderError(result.error, source, currentErrorHandler)
+                }
+                currentRenderResultHandler?.invoke(result)
+                prepared.formulaFailures.forEach { (request, error) ->
+                    currentFormulaErrorHandler?.invoke(request, error)
+                }
             }
         }
-    }
-    when (sceneResult) {
-        null -> Box(modifier = modifier)
-        is GMResult.Ok -> MermaidSceneCanvasInternal(
-            scene = sceneResult.value,
-            renderErrorKey = source,
-            modifier = modifier,
-            contentDescription = contentDescription,
-            fontFamilyResolver = fontFamilyResolver,
-            assetProvider = effectiveAssetProvider,
-            formulaArtifacts = preparedScene.formulaArtifacts,
-            onAssetError = onAssetError,
-            onAssetResolved = { asset, resolved ->
-                if (asset.kind == SceneAssetKind.Image) {
-                    val size = SceneSize(
-                        width = resolved.intrinsicWidth.toFloat(),
-                        height = resolved.intrinsicHeight.toFloat(),
-                    )
-                    if (assetMetrics[asset.source] != size) {
-                        assetMetrics = assetMetrics + (asset.source to size)
+        when (sceneResult) {
+            null -> Box(modifier = Modifier)
+            is GMResult.Ok -> MermaidSceneCanvasInternal(
+                scene = sceneResult.value,
+                renderErrorKey = source,
+                modifier = Modifier,
+                contentDescription = contentDescription,
+                fontFamilyResolver = fontFamilyResolver,
+                assetProvider = effectiveAssetProvider,
+                formulaArtifacts = preparedScene.formulaArtifacts,
+                onAssetError = onAssetError,
+                onAssetResolved = { asset, resolved ->
+                    if (asset.kind == SceneAssetKind.Image) {
+                        val size = SceneSize(
+                            width = resolved.intrinsicWidth.toFloat(),
+                            height = resolved.intrinsicHeight.toFloat(),
+                        )
+                        if (assetMetrics[asset.source] != size) {
+                            assetMetrics = assetMetrics + (asset.source to size)
+                        }
                     }
-                }
-            },
-            onNodeInteraction = onNodeInteraction,
-            respectSourceViewportSizing = respectSourceViewportSizing,
-            onRenderException = { error ->
-                reportMermaidRenderError(error, source, currentErrorHandler)
-            },
-        )
-        is GMResult.Err -> MermaidErrorDiagram(
-            modifier = modifier,
-            theme = theme,
-            fontFamilyResolver = fontFamilyResolver,
-        )
+                },
+                onNodeInteraction = onNodeInteraction,
+                respectSourceViewportSizing = respectSourceViewportSizing,
+                onRenderException = { error ->
+                    reportMermaidRenderError(error, source, currentErrorHandler)
+                },
+            )
+            is GMResult.Err -> MermaidErrorDiagram(
+                modifier = Modifier,
+                theme = theme,
+                fontFamilyResolver = fontFamilyResolver,
+            )
+        }
     }
 }
 
@@ -373,6 +380,7 @@ internal fun rememberMermaidPreparedScene(
     fontFamilyResolver: MermaidFontFamilyResolver? = null,
     assetMetrics: Map<String, SceneSize> = emptyMap(),
     formulaRenderer: MermaidFormulaRenderer?,
+    containerWidth: Float? = null,
 ): State<MermaidPreparedScene?> {
     val textMeasurer = rememberTextMeasurer(cacheSize = 256)
     val density = LocalDensity.current
@@ -455,6 +463,7 @@ internal fun rememberMermaidPreparedScene(
         assetMetrics,
         formulaRenderer,
         density.density,
+        containerWidth,
     ) {
         value = null
         value = withContext(mermaidRenderDispatcher()) {
@@ -467,6 +476,7 @@ internal fun rememberMermaidPreparedScene(
                 assetMetrics = assetMetrics,
                 formulaRenderer = formulaRenderer,
                 formulaRasterScale = density.density,
+                containerWidth = containerWidth,
             )
         }
     }
@@ -485,6 +495,7 @@ internal suspend fun prepareMermaidScene(
     assetMetrics: Map<String, SceneSize>,
     formulaRenderer: MermaidFormulaRenderer?,
     formulaRasterScale: Float,
+    containerWidth: Float? = null,
 ): MermaidPreparedScene {
     if (formulaRenderer == null) {
         return MermaidPreparedScene(
@@ -495,6 +506,7 @@ internal suspend fun prepareMermaidScene(
                     theme = theme,
                     options = options,
                     assetMetrics = assetMetrics,
+                    containerWidth = containerWidth,
                 ),
             ),
         )
@@ -516,6 +528,7 @@ internal suspend fun prepareMermaidScene(
                 theme = theme,
                 options = options,
                 assetMetrics = assetMetrics,
+                containerWidth = containerWidth,
             ),
             MermaidFormulaRenderContext(
                 rasterScale = formulaRasterScale,
@@ -599,6 +612,7 @@ internal suspend fun prepareMermaidScene(
             theme = theme,
             options = options,
             assetMetrics = assetMetrics,
+            containerWidth = containerWidth,
         ),
         MermaidFormulaRenderContext(
             rasterScale = formulaRasterScale,

@@ -1,0 +1,121 @@
+{
+  "officialGeneratedAt": "2026-10-25T13:20:49.650Z",
+  "nativeGeneratedAt": "2026-10-25T13:21:49.058673Z",
+  "caseCount": 9,
+  "screenshotCount": 18,
+  "contactSheets": [
+    "contact-sheet-1.png",
+    "contact-sheet-2.png",
+    "contact-sheet-3.png"
+  ],
+  "cases": [
+    {
+      "id": "gantt-parent-344",
+      "ssim": 0.8339682738236925,
+      "officialSize": [
+        344,
+        172
+      ],
+      "nativeSize": [
+        344,
+        172
+      ]
+    },
+    {
+      "id": "gantt-parent-768",
+      "ssim": 0.9284768056401788,
+      "officialSize": [
+        768,
+        172
+      ],
+      "nativeSize": [
+        768,
+        172
+      ]
+    },
+    {
+      "id": "gantt-parent-1200",
+      "ssim": 0.9543125059026982,
+      "officialSize": [
+        1200,
+        172
+      ],
+      "nativeSize": [
+        1200,
+        172
+      ]
+    },
+    {
+      "id": "gantt-source-1200",
+      "ssim": 0.9543125059026982,
+      "officialSize": [
+        1200,
+        172
+      ],
+      "nativeSize": [
+        1200,
+        172
+      ]
+    },
+    {
+      "id": "gantt-host-900",
+      "ssim": 0.9390390151789423,
+      "officialSize": [
+        900,
+        172
+      ],
+      "nativeSize": [
+        900,
+        172
+      ]
+    },
+    {
+      "id": "mindmap-dagre-classic",
+      "ssim": 0.9616942990830646,
+      "officialSize": [
+        195,
+        278
+      ],
+      "nativeSize": [
+        195,
+        279
+      ]
+    },
+    {
+      "id": "mindmap-dagre-neo",
+      "ssim": 0.9576116520386715,
+      "officialSize": [
+        195,
+        322
+      ],
+      "nativeSize": [
+        195,
+        323
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-classic",
+      "ssim": 0.9489461648737394,
+      "officialSize": [
+        100,
+        389
+      ],
+      "nativeSize": [
+        100,
+        390
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-neo",
+      "ssim": 0.9385399501387125,
+      "officialSize": [
+        120,
+        433
+      ],
+      "nativeSize": [
+        121,
+        434
+      ]
+    }
+  ]
+}

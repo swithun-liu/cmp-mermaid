@@ -1,0 +1,2009 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-25T13:28:51.917Z",
+  "inputs": {
+    "official": {
+      "sha256": "ec3def49112e11808be7be8ffd842850d7cfa3ace41814381a423b8089b8e07c"
+    },
+    "native": {
+      "sha256": "9cdf6e3f3a3534815f526221feea51892c7498da9a3595743fecfa8c97a4afff"
+    },
+    "raster": {
+      "sha256": "9e9a0e0fdd4e32960d428717254f03f6c0bdec4bb7c919b36ffc08a719661764"
+    }
+  },
+  "officialGeneratedAt": "2026-10-25T13:20:49.650Z",
+  "nativeGeneratedAt": "2026-10-25T13:21:49.058673Z",
+  "familyCount": 2,
+  "caseCount": 9,
+  "uniqueSourceCount": 3,
+  "screenshotCount": 18,
+  "contactSheets": [
+    "contact-sheet-1.png",
+    "contact-sheet-2.png",
+    "contact-sheet-3.png"
+  ],
+  "counts": {
+    "pass": 0,
+    "review": 9,
+    "fail": 0
+  },
+  "cases": [
+    {
+      "id": "gantt-parent-344",
+      "kind": "gantt",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": true,
+      "geometry": [
+        {
+          "id": "gantt-task-build",
+          "official": {
+            "x": 75,
+            "y": 50,
+            "width": 111,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-build",
+            "x": 75,
+            "y": 50,
+            "width": 111,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-review",
+          "official": {
+            "x": 186,
+            "y": 74,
+            "width": 55,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-review",
+            "x": 186,
+            "y": 74,
+            "width": 55,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-publish",
+          "official": {
+            "x": 241,
+            "y": 98,
+            "width": 28,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-publish",
+            "x": 241,
+            "y": 98,
+            "width": 28,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [
+        {
+          "text": "Implementation checks",
+          "official": {
+            "x": 191,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "native": {
+            "text": "Implementation checks",
+            "x": 191,
+            "y": 54,
+            "width": 113,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Review",
+          "official": {
+            "x": 195.4609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "native": {
+            "text": "Review",
+            "x": 195,
+            "y": 78,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Publish",
+          "official": {
+            "x": 274,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "native": {
+            "text": "Publish",
+            "x": 274,
+            "y": 102,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        }
+      ],
+      "topology": null,
+      "paths": [],
+      "ssim": 0.8339682738236925,
+      "findings": [
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "gantt-parent-768",
+      "kind": "gantt",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": true,
+      "geometry": [
+        {
+          "id": "gantt-task-build",
+          "official": {
+            "x": 75,
+            "y": 50,
+            "width": 353,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-build",
+            "x": 75,
+            "y": 50,
+            "width": 353,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-review",
+          "official": {
+            "x": 428,
+            "y": 74,
+            "width": 177,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-review",
+            "x": 428,
+            "y": 74,
+            "width": 177,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-publish",
+          "official": {
+            "x": 605,
+            "y": 98,
+            "width": 88,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-publish",
+            "x": 605,
+            "y": 98,
+            "width": 88,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [
+        {
+          "text": "Implementation checks",
+          "official": {
+            "x": 195.25,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "native": {
+            "text": "Implementation checks",
+            "x": 195,
+            "y": 54,
+            "width": 113,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Review",
+          "official": {
+            "x": 498.4609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "native": {
+            "text": "Review",
+            "x": 498,
+            "y": 78,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Publish",
+          "official": {
+            "x": 630.9609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "native": {
+            "text": "Publish",
+            "x": 630.5,
+            "y": 102,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        }
+      ],
+      "topology": null,
+      "paths": [],
+      "ssim": 0.9284768056401788,
+      "findings": [
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "gantt-parent-1200",
+      "kind": "gantt",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": true,
+      "geometry": [
+        {
+          "id": "gantt-task-build",
+          "official": {
+            "x": 75,
+            "y": 50,
+            "width": 600,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-build",
+            "x": 75,
+            "y": 50,
+            "width": 600,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-review",
+          "official": {
+            "x": 675,
+            "y": 74,
+            "width": 300,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-review",
+            "x": 675,
+            "y": 74,
+            "width": 300,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-publish",
+          "official": {
+            "x": 975,
+            "y": 98,
+            "width": 150,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-publish",
+            "x": 975,
+            "y": 98,
+            "width": 150,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [
+        {
+          "text": "Implementation checks",
+          "official": {
+            "x": 318.75,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "native": {
+            "text": "Implementation checks",
+            "x": 318.5,
+            "y": 54,
+            "width": 113,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Review",
+          "official": {
+            "x": 806.9609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "native": {
+            "text": "Review",
+            "x": 806.5,
+            "y": 78,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Publish",
+          "official": {
+            "x": 1031.9609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "native": {
+            "text": "Publish",
+            "x": 1031.5,
+            "y": 102,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        }
+      ],
+      "topology": null,
+      "paths": [],
+      "ssim": 0.9543125059026982,
+      "findings": [
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "gantt-source-1200",
+      "kind": "gantt",
+      "sourceSha256": "7df70677428a530c7db17bea20f4cd582d2e817678ad84b32820382b8cfa9990",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": true,
+      "geometry": [
+        {
+          "id": "gantt-task-build",
+          "official": {
+            "x": 75,
+            "y": 50,
+            "width": 600,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-build",
+            "x": 75,
+            "y": 50,
+            "width": 600,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-review",
+          "official": {
+            "x": 675,
+            "y": 74,
+            "width": 300,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-review",
+            "x": 675,
+            "y": 74,
+            "width": 300,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-publish",
+          "official": {
+            "x": 975,
+            "y": 98,
+            "width": 150,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-publish",
+            "x": 975,
+            "y": 98,
+            "width": 150,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [
+        {
+          "text": "Implementation checks",
+          "official": {
+            "x": 318.75,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "native": {
+            "text": "Implementation checks",
+            "x": 318.5,
+            "y": 54,
+            "width": 113,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Review",
+          "official": {
+            "x": 806.9609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "native": {
+            "text": "Review",
+            "x": 806.5,
+            "y": 78,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Publish",
+          "official": {
+            "x": 1031.9609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "native": {
+            "text": "Publish",
+            "x": 1031.5,
+            "y": 102,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        }
+      ],
+      "topology": null,
+      "paths": [],
+      "ssim": 0.9543125059026982,
+      "findings": [
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "gantt-host-900",
+      "kind": "gantt",
+      "sourceSha256": "c6473a10c58094d5a6858cb025fc59e2df291f94ed657a4ea5161fd36aeae3a8",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": true,
+      "geometry": [
+        {
+          "id": "gantt-task-build",
+          "official": {
+            "x": 75,
+            "y": 50,
+            "width": 429,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-build",
+            "x": 75,
+            "y": 50,
+            "width": 429,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-review",
+          "official": {
+            "x": 504,
+            "y": 74,
+            "width": 214,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-review",
+            "x": 504,
+            "y": 74,
+            "width": 214,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        },
+        {
+          "id": "gantt-task-publish",
+          "official": {
+            "x": 718,
+            "y": 98,
+            "width": 107,
+            "height": 20
+          },
+          "native": {
+            "id": "gantt-task-publish",
+            "x": 718,
+            "y": 98,
+            "width": 107,
+            "height": 20,
+            "fill": 4293717246,
+            "stroke": 4279769112,
+            "strokeWidth": 2
+          },
+          "matches": true,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [
+        {
+          "text": "Implementation checks",
+          "official": {
+            "x": 233.25,
+            "y": 53.5,
+            "width": 112.5,
+            "height": 12.28271484375
+          },
+          "native": {
+            "text": "Implementation checks",
+            "x": 233,
+            "y": 54,
+            "width": 113,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Review",
+          "official": {
+            "x": 592.9609375,
+            "y": 77.5,
+            "width": 36.09375,
+            "height": 12
+          },
+          "native": {
+            "text": "Review",
+            "x": 592.5,
+            "y": 78,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        },
+        {
+          "text": "Publish",
+          "official": {
+            "x": 753.4609375,
+            "y": 101.5,
+            "width": 36.078125,
+            "height": 12
+          },
+          "native": {
+            "text": "Publish",
+            "x": 753,
+            "y": 102,
+            "width": 37,
+            "height": 12
+          },
+          "matches": true
+        }
+      ],
+      "topology": null,
+      "paths": [],
+      "ssim": 0.9390390151789423,
+      "findings": [
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "mindmap-dagre-classic",
+      "kind": "mindmap",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": false,
+      "geometry": [
+        {
+          "id": "node-0",
+          "official": {
+            "x": 70.92506980895996,
+            "y": 10.000000000000004,
+            "width": 56.27486038208009,
+            "height": 56.27486038208008
+          },
+          "native": {
+            "id": "node-0",
+            "x": 70.94017,
+            "y": 10,
+            "width": 56.61966,
+            "height": 56.507942,
+            "fill": 4285756408,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-1",
+          "official": {
+            "x": 9.999999999999996,
+            "y": 116.27485847473145,
+            "width": 65.81250000000001,
+            "height": 51
+          },
+          "native": {
+            "id": "node-1",
+            "x": 10,
+            "y": 116.507935,
+            "width": 66,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-2",
+          "official": {
+            "x": 11.953124999999998,
+            "y": 217.27485847473147,
+            "width": 61.90625,
+            "height": 50.99999999999997
+          },
+          "native": {
+            "id": "node-2",
+            "x": 12,
+            "y": 217.50793,
+            "width": 62,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-3",
+          "official": {
+            "x": 125.81250000000001,
+            "y": 116.27485847473145,
+            "width": 58.812500000000014,
+            "height": 51
+          },
+          "native": {
+            "id": "node-3",
+            "x": 126,
+            "y": 116.507935,
+            "width": 59,
+            "height": 51,
+            "fill": 4294948970,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 3,
+        "officialEdgeCount": 3,
+        "edges": [
+          {
+            "edgeId": "edge_0_1",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_0_3",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_1_2",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "paths": [
+        {
+          "id": "edge_0_1",
+          "native": [
+            {
+              "x": 78.69701,
+              "y": 57.712254
+            },
+            {
+              "x": 43,
+              "y": 91.50794
+            },
+            {
+              "x": 43,
+              "y": 116.507935
+            }
+          ],
+          "official": [
+            {
+              "x": 78.6245717343694,
+              "y": 57.47666836264119
+            },
+            {
+              "x": 42.90625,
+              "y": 91.27486228942873
+            },
+            {
+              "x": 42.90625,
+              "y": 116.27486228942871
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 78.62500000000001,
+              "y": 57.47700309753418
+            },
+            "end": {
+              "x": 42.905998229980476,
+              "y": 116.27500343322754
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_1_2",
+          "native": [
+            {
+              "x": 43,
+              "y": 167.50793
+            },
+            {
+              "x": 43,
+              "y": 192.50793
+            },
+            {
+              "x": 43,
+              "y": 217.50793
+            }
+          ],
+          "official": [
+            {
+              "x": 42.90625,
+              "y": 167.27486228942874
+            },
+            {
+              "x": 42.90625,
+              "y": 192.27486228942874
+            },
+            {
+              "x": 42.90625,
+              "y": 217.27486228942874
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 42.905998229980476,
+              "y": 167.274995803833
+            },
+            "end": {
+              "x": 42.905998229980476,
+              "y": 217.274995803833
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_0_3",
+          "native": [
+            {
+              "x": 119.802986,
+              "y": 57.71225
+            },
+            {
+              "x": 155.5,
+              "y": 91.50794
+            },
+            {
+              "x": 155.5,
+              "y": 116.507935
+            }
+          ],
+          "official": [
+            {
+              "x": 119.5004282656306,
+              "y": 57.47666836264119
+            },
+            {
+              "x": 155.21875000000003,
+              "y": 91.27486228942873
+            },
+            {
+              "x": 155.21875000000003,
+              "y": 116.27486228942871
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 119.5,
+              "y": 57.47700309753418
+            },
+            "end": {
+              "x": 155.218994140625,
+              "y": 116.27500343322754
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        }
+      ],
+      "ssim": 0.9616942990830646,
+      "findings": [
+        "geometry-review",
+        "edge-points-review",
+        "rendered-endpoints-review",
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "mindmap-dagre-neo",
+      "kind": "mindmap",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": false,
+      "geometry": [
+        {
+          "id": "node-0",
+          "official": {
+            "x": 48.9250717163086,
+            "y": 10,
+            "width": 100.27485656738281,
+            "height": 100.27485656738281
+          },
+          "native": {
+            "id": "node-0",
+            "x": 48.940166,
+            "y": 10,
+            "width": 100.61966,
+            "height": 100.42112,
+            "fill": 4294967295,
+            "stroke": 4294224127,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-1",
+          "official": {
+            "x": 9.999999999999998,
+            "y": 160.27485656738278,
+            "width": 65.8125,
+            "height": 51
+          },
+          "native": {
+            "id": "node-1",
+            "x": 10,
+            "y": 160.42111,
+            "width": 66,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 4282838229,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-2",
+          "official": {
+            "x": 11.953124999999998,
+            "y": 261.2748413085937,
+            "width": 61.90625,
+            "height": 51
+          },
+          "native": {
+            "id": "node-2",
+            "x": 12,
+            "y": 261.4211,
+            "width": 62,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 4282838229,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-3",
+          "official": {
+            "x": 125.8125,
+            "y": 160.27485656738278,
+            "width": 58.8125,
+            "height": 51
+          },
+          "native": {
+            "id": "node-3",
+            "x": 126,
+            "y": 160.42111,
+            "width": 59,
+            "height": 51,
+            "fill": 4294948970,
+            "stroke": 4294948970,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 3,
+        "officialEdgeCount": 3,
+        "edges": [
+          {
+            "edgeId": "edge_0_1",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_0_3",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_1_2",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "paths": [
+        {
+          "id": "edge_0_1",
+          "native": [
+            {
+              "x": 69.17485,
+              "y": 100.42334
+            },
+            {
+              "x": 43,
+              "y": 135.42111
+            },
+            {
+              "x": 43,
+              "y": 160.42111
+            }
+          ],
+          "official": [
+            {
+              "x": 69.04741197841675,
+              "y": 100.29781156516756
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 135.2748565673828
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 160.2748565673828
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 69.0469970703125,
+              "y": 100.2979965209961
+            },
+            "end": {
+              "x": 42.90599822998047,
+              "y": 160.27499389648438
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_1_2",
+          "native": [
+            {
+              "x": 43,
+              "y": 211.42111
+            },
+            {
+              "x": 43,
+              "y": 236.42111
+            },
+            {
+              "x": 43,
+              "y": 261.4211
+            }
+          ],
+          "official": [
+            {
+              "x": 42.90624999999999,
+              "y": 211.27485656738278
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 236.2748565673828
+            },
+            {
+              "x": 42.90624999999999,
+              "y": 261.27485656738276
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 42.90599822998047,
+              "y": 211.27499389648438
+            },
+            "end": {
+              "x": 42.90599822998047,
+              "y": 261.2749938964844
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_0_3",
+          "native": [
+            {
+              "x": 129.32516,
+              "y": 100.42335
+            },
+            {
+              "x": 155.5,
+              "y": 135.42111
+            },
+            {
+              "x": 155.5,
+              "y": 160.42111
+            }
+          ],
+          "official": [
+            {
+              "x": 129.0775880215832,
+              "y": 100.29781156516756
+            },
+            {
+              "x": 155.21875,
+              "y": 135.2748565673828
+            },
+            {
+              "x": 155.21875,
+              "y": 160.2748565673828
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 129.0780029296875,
+              "y": 100.2979965209961
+            },
+            "end": {
+              "x": 155.218994140625,
+              "y": 160.27499389648438
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        }
+      ],
+      "ssim": 0.9576116520386715,
+      "findings": [
+        "geometry-review",
+        "edge-points-review",
+        "rendered-endpoints-review",
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-classic",
+      "kind": "mindmap",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": false,
+      "geometry": [
+        {
+          "id": "node-0",
+          "official": {
+            "x": 19.929452896118164,
+            "y": 218.43163108825684,
+            "width": 56.27486038208008,
+            "height": 56.27486038208008
+          },
+          "native": {
+            "id": "node-0",
+            "x": 19.852173,
+            "y": 218.43298,
+            "width": 56.61963,
+            "height": 56.507935,
+            "fill": 4285756408,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-1",
+          "official": {
+            "x": 23.9171257019043,
+            "y": 114.12213134765625,
+            "width": 65.8125,
+            "height": 50.99999999999997
+          },
+          "native": {
+            "id": "node-1",
+            "x": 23.919312,
+            "y": 114.12317,
+            "width": 66,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-2",
+          "official": {
+            "x": 13.476783752441406,
+            "y": 9.999999999999996,
+            "width": 61.90625,
+            "height": 51
+          },
+          "native": {
+            "id": "node-2",
+            "x": 13.543091,
+            "y": 10,
+            "width": 62,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-3",
+          "official": {
+            "x": 9.999999999999996,
+            "y": 328.0184020996094,
+            "width": 58.8125,
+            "height": 50.999999999999886
+          },
+          "native": {
+            "id": "node-3",
+            "x": 10,
+            "y": 328.2531,
+            "width": 59,
+            "height": 51,
+            "fill": 4294948970,
+            "stroke": 0,
+            "strokeWidth": 0
+          },
+          "matches": false,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 3,
+        "officialEdgeCount": 3,
+        "edges": [
+          {
+            "edgeId": "edge_0_1",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_0_3",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_1_2",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "paths": [
+        {
+          "id": "edge_0_1",
+          "native": [
+            {
+              "x": 49.384888,
+              "y": 231.73688
+            },
+            {
+              "x": 52.54065,
+              "y": 193.15509
+            },
+            {
+              "x": 55.69641,
+              "y": 154.57324
+            }
+          ],
+          "official": [
+            {
+              "x": 49.29094278172445,
+              "y": 231.61908652388811
+            },
+            {
+              "x": 52.44512941505309,
+              "y": 193.09559336796184
+            },
+            {
+              "x": 55.599316048381716,
+              "y": 154.57210021203554
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 49.29100036621094,
+              "y": 231.6190032958984
+            },
+            "end": {
+              "x": 55.5989990234375,
+              "y": 154.5720062255859
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_1_2",
+          "native": [
+            {
+              "x": 55.148804,
+              "y": 124.72803
+            },
+            {
+              "x": 50.7312,
+              "y": 87.561584
+            },
+            {
+              "x": 46.3136,
+              "y": 50.39514
+            }
+          ],
+          "official": [
+            {
+              "x": 55.05046679620241,
+              "y": 124.72726947244678
+            },
+            {
+              "x": 50.62664158563814,
+              "y": 87.56106379941359
+            },
+            {
+              "x": 46.20281637507387,
+              "y": 50.3948581263804
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 55.04999923706055,
+              "y": 124.72700500488281
+            },
+            "end": {
+              "x": 46.202999114990234,
+              "y": 50.39500045776367
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_0_3",
+          "native": [
+            {
+              "x": 46.952393,
+              "y": 261.63812
+            },
+            {
+              "x": 43.831055,
+              "y": 300.22003
+            },
+            {
+              "x": 40.709595,
+              "y": 338.80194
+            }
+          ],
+          "official": [
+            {
+              "x": 46.85616506118757,
+              "y": 261.5201179165175
+            },
+            {
+              "x": 43.736567211753936,
+              "y": 300.0437364086272
+            },
+            {
+              "x": 40.6169693623203,
+              "y": 338.567354900737
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 46.85599899291992,
+              "y": 261.5199890136719
+            },
+            "end": {
+              "x": 40.617000579833984,
+              "y": 338.5669860839844
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        }
+      ],
+      "ssim": 0.9489461648737394,
+      "findings": [
+        "geometry-review",
+        "edge-points-review",
+        "rendered-endpoints-review",
+        "text-raster-review"
+      ]
+    },
+    {
+      "id": "mindmap-cose-bilkent-neo",
+      "kind": "mindmap",
+      "sourceSha256": "567d15803ae18cba94a8733283833bb7dde66694e93dc604339306d29ca9979e",
+      "status": "review",
+      "contentPass": true,
+      "sizeMatches": false,
+      "geometry": [
+        {
+          "id": "node-0",
+          "official": {
+            "x": 9.999999999999991,
+            "y": 218.50560760498038,
+            "width": 100.27485656738281,
+            "height": 100.2748565673829
+          },
+          "native": {
+            "id": "node-0",
+            "x": 10,
+            "y": 218.5058,
+            "width": 100.61963,
+            "height": 100.42114,
+            "fill": 4294967295,
+            "stroke": 4294224127,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-1",
+          "official": {
+            "x": 36.04393005371094,
+            "y": 114.14933776855467,
+            "width": 65.81249999999999,
+            "height": 51.000000000000014
+          },
+          "native": {
+            "id": "node-1",
+            "x": 36.12195,
+            "y": 114.149414,
+            "width": 66,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 4282838229,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-2",
+          "official": {
+            "x": 26.02546691894531,
+            "y": 10,
+            "width": 61.906249999999986,
+            "height": 51
+          },
+          "native": {
+            "id": "node-2",
+            "x": 26.150879,
+            "y": 10,
+            "width": 62,
+            "height": 51,
+            "fill": 4282838229,
+            "stroke": 4282838229,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        },
+        {
+          "id": "node-3",
+          "official": {
+            "x": 22.030685424804688,
+            "y": 372.1378173828124,
+            "width": 58.8125,
+            "height": 51
+          },
+          "native": {
+            "id": "node-3",
+            "x": 22.110107,
+            "y": 372.28436,
+            "width": 59,
+            "height": 51,
+            "fill": 4294948970,
+            "stroke": 4294948970,
+            "strokeWidth": 2
+          },
+          "matches": false,
+          "paintMatches": true
+        }
+      ],
+      "taskLabels": [],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 3,
+        "officialEdgeCount": 3,
+        "edges": [
+          {
+            "edgeId": "edge_0_1",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_0_3",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge_1_2",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "paths": [
+        {
+          "id": "edge_0_1",
+          "native": [
+            {
+              "x": 61.331543,
+              "y": 253.75122
+            },
+            {
+              "x": 64.71594,
+              "y": 204.18292
+            },
+            {
+              "x": 68.10022,
+              "y": 154.61456
+            }
+          ],
+          "official": [
+            {
+              "x": 61.15983356988323,
+              "y": 253.67792924206265
+            },
+            {
+              "x": 64.54380413886464,
+              "y": 204.1461909779275
+            },
+            {
+              "x": 67.927774707846,
+              "y": 154.61445271379236
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 61.160003662109375,
+              "y": 253.67800903320312
+            },
+            "end": {
+              "x": 67.9280014038086,
+              "y": 154.61399841308594
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_1_2",
+          "native": [
+            {
+              "x": 67.40906,
+              "y": 124.74756
+            },
+            {
+              "x": 63.136353,
+              "y": 87.57471
+            },
+            {
+              "x": 58.86377,
+              "y": 50.401855
+            }
+          ],
+          "official": [
+            {
+              "x": 67.23726359056745,
+              "y": 124.74746072544713
+            },
+            {
+              "x": 62.964386522001845,
+              "y": 87.5746685149753
+            },
+            {
+              "x": 58.69150945343626,
+              "y": 50.401876304503475
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 67.23699951171874,
+              "y": 124.74699401855469
+            },
+            "end": {
+              "x": 58.69200134277343,
+              "y": 50.40200042724609
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        },
+        {
+          "id": "edge_0_3",
+          "native": [
+            {
+              "x": 59.301025,
+              "y": 283.68243
+            },
+            {
+              "x": 55.95996,
+              "y": 333.25043
+            },
+            {
+              "x": 52.618896,
+              "y": 382.8183
+            }
+          ],
+          "official": [
+            {
+              "x": 59.12799551389128,
+              "y": 283.6090412336432
+            },
+            {
+              "x": 55.78718203209609,
+              "y": 333.14042532303756
+            },
+            {
+              "x": 52.4463685503009,
+              "y": 382.671809412432
+            }
+          ],
+          "endpoints": {
+            "start": {
+              "x": 59.12799835205078,
+              "y": 283.6090087890625
+            },
+            "end": {
+              "x": 52.44599914550781,
+              "y": 382.6719970703124
+            }
+          },
+          "pointCountMatches": true,
+          "pointsMatch": false,
+          "renderedEndpointsMatch": false,
+          "paintMatches": true
+        }
+      ],
+      "ssim": 0.9385399501387125,
+      "findings": [
+        "geometry-review",
+        "edge-points-review",
+        "rendered-endpoints-review",
+        "text-raster-review"
+      ]
+    }
+  ]
+}

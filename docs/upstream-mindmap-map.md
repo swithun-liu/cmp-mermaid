@@ -70,6 +70,15 @@ continue to require final relative-coordinate identity.
 
 ## Explicit Translation Boundaries
 
+Effective `layout` and `look` must match on both sides of a comparison.
+`styles.ts -> genSections/getStyles` deliberately renders Redux Color's
+classic root with `git0` fill and colored section edges; its Neo root uses
+`mainBkg` with a section-colored border and `nodeBorder` edges. This behavior
+does not depend on Dagre versus CoSE. The fresh same-config probes and
+remaining geometry reviews are in the
+[container-width report](container-width-report.md); no color override was
+added to imitate an image rendered with a different `look`.
+
 - `::icon(...)` is parsed and retained, then returns
   `UnsupportedFeature("Mindmap icon")` because no browser icon-pack provider
   exists in production.
