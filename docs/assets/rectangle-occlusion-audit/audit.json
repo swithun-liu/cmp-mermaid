@@ -1,0 +1,641 @@
+{
+  "fixture": {
+    "id": "rc_er_inventory_network",
+    "kind": "er",
+    "title": "Warehouse inventory network",
+    "scenario": "Warehouses, bins, stock, suppliers, purchase orders, transfers, and reservations.",
+    "layout": "dagre",
+    "aspectRatio": 1.25,
+    "source": "erDiagram\n  WAREHOUSE {\n    bigint id PK\n    string code UK\n  }\n  BIN {\n    bigint id PK\n    bigint warehouse_id FK\n    string location UK\n  }\n  SKU {\n    bigint id PK\n    string code UK\n  }\n  STOCK {\n    bigint bin_id PK, FK\n    bigint sku_id PK, FK\n    int on_hand\n  }\n  SUPPLIER {\n    bigint id PK\n    string name\n  }\n  PURCHASE_ORDER {\n    bigint id PK\n    bigint supplier_id FK\n    string status\n  }\n  PURCHASE_LINE {\n    bigint order_id PK, FK\n    bigint sku_id PK, FK\n    int quantity\n  }\n  TRANSFER {\n    bigint id PK\n    bigint source_warehouse_id FK\n    bigint target_warehouse_id FK\n  }\n  RESERVATION {\n    bigint id PK\n    bigint sku_id FK\n    bigint warehouse_id FK\n    int quantity\n  }\n  WAREHOUSE ||--|{ BIN : contains\n  BIN ||--o{ STOCK : stores\n  SKU ||--o{ STOCK : counted_as\n  SUPPLIER ||--o{ PURCHASE_ORDER : receives\n  PURCHASE_ORDER ||--|{ PURCHASE_LINE : contains\n  SKU ||--o{ PURCHASE_LINE : replenishes\n  WAREHOUSE ||--o{ TRANSFER : sources\n  WAREHOUSE ||--o{ TRANSFER : targets\n  WAREHOUSE ||--o{ RESERVATION : allocates\n  SKU ||--o{ RESERVATION : reserves",
+    "features": [],
+    "expectedTexts": []
+  },
+  "detail": {
+    "thresholds": {
+      "maximumTextCenterDistance": 0.12,
+      "maximumTextSizeLogRatio": 0.5877866649021191,
+      "maximumElementCountRatio": 1.5,
+      "minimumPaletteCoverage": 0.35,
+      "occlusionOverlapRatio": 0.1,
+      "maximumOcclusionOverlapRatioDifference": 0.1,
+      "textOverlapRatio": 0.35,
+      "maximumTextOverlapRatioDifference": 0.08,
+      "clippingTolerance": 0.01,
+      "maximumMarkerOcclusionDepthDifference": 0.01,
+      "maximumMarkerOcclusionErrorDepthDifference": 0.03
+    },
+    "status": "pass",
+    "findings": [],
+    "native": {
+      "renderer": "Native",
+      "elementCount": 152,
+      "typeCounts": {
+        "path": 10,
+        "shape": 53,
+        "text": 89
+      },
+      "textCount": 89,
+      "uniqueTextCount": 39,
+      "clippedTextCount": 0,
+      "textOverlapCount": 0
+    },
+    "official": {
+      "renderer": "Official",
+      "elementCount": 214,
+      "typeCounts": {
+        "path": 125,
+        "text": 89
+      },
+      "textCount": 89,
+      "uniqueTextCount": 39,
+      "clippedTextCount": 0,
+      "textOverlapCount": 0
+    },
+    "textComparison": {
+      "absentInNative": [],
+      "absentInOfficial": [],
+      "multiplicityDifferences": [],
+      "matchedCount": 89,
+      "segmentationEquivalent": false,
+      "segmentationGroups": [],
+      "maximumCenterDistance": 0.016733579813759683,
+      "p95CenterDistance": 0.015631461450213307,
+      "maximumSizeRatio": 1
+    },
+    "elementComparison": {
+      "ratios": {
+        "text": 1,
+        "asset": 1,
+        "geometry": 1.2125,
+        "geometryObject": 0.7875,
+        "geometryExpanded": 1.2125
+      }
+    },
+    "styleComparison": {
+      "nativePaletteSize": 14,
+      "officialPaletteSize": 14,
+      "nativePaletteCoverage": 1,
+      "officialPaletteCoverage": 1,
+      "nativeStrokePatterns": {
+        "Solid": 28
+      },
+      "officialStrokePatterns": {
+        "Solid": 125
+      },
+      "nativeMarkers": {
+        "start": 10,
+        "end": 10
+      },
+      "officialMarkers": {
+        "start": 10,
+        "end": 10
+      }
+    },
+    "markerVisibilityComparison": {
+      "native": [
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-BIN-1-1",
+          "pathOrder": 0,
+          "position": "start",
+          "point": {
+            "x": 0.23253052917232023,
+            "y": 0.13895271942446044
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-BIN-1-1",
+          "pathOrder": 0,
+          "position": "end",
+          "point": {
+            "x": 0.07937584803256445,
+            "y": 0.32841726618705036
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-BIN-1-entity-STOCK-3-2",
+          "pathOrder": 1,
+          "position": "start",
+          "point": {
+            "x": 0.07937584803256445,
+            "y": 0.5571942446043165
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-BIN-1-entity-STOCK-3-2",
+          "pathOrder": 1,
+          "position": "end",
+          "point": {
+            "x": 0.07937584803256445,
+            "y": 0.7311151079136691
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SKU-2-entity-STOCK-3-3",
+          "pathOrder": 2,
+          "position": "start",
+          "point": {
+            "x": 0.38025780189959296,
+            "y": 0.487223309352518
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SKU-2-entity-STOCK-3-3",
+          "pathOrder": 2,
+          "position": "end",
+          "point": {
+            "x": 0.1459509972862958,
+            "y": 0.7311151079136691
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SUPPLIER-4-entity-PURCHASE_ORDER-5-4",
+          "pathOrder": 3,
+          "position": "start",
+          "point": {
+            "x": 0.9260515603799185,
+            "y": 0.1830935251798561
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SUPPLIER-4-entity-PURCHASE_ORDER-5-4",
+          "pathOrder": 3,
+          "position": "end",
+          "point": {
+            "x": 0.9260515603799185,
+            "y": 0.32841726618705036
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-PURCHASE_ORDER-5-entity-PURCHASE_LINE-6-5",
+          "pathOrder": 4,
+          "position": "start",
+          "point": {
+            "x": 0.9089375848032564,
+            "y": 0.5571942446043165
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-PURCHASE_ORDER-5-entity-PURCHASE_LINE-6-5",
+          "pathOrder": 4,
+          "position": "end",
+          "point": {
+            "x": 0.9112071234735414,
+            "y": 0.7311151079136691
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SKU-2-entity-PURCHASE_LINE-6-6",
+          "pathOrder": 5,
+          "position": "start",
+          "point": {
+            "x": 0.48948439620081413,
+            "y": 0.4624823884892086
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SKU-2-entity-PURCHASE_LINE-6-6",
+          "pathOrder": 5,
+          "position": "end",
+          "point": {
+            "x": 0.9408959972862957,
+            "y": 0.7311151079136691
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-TRANSFER-7-7",
+          "pathOrder": 6,
+          "position": "start",
+          "point": {
+            "x": 0.34175712347354137,
+            "y": 0.1444138345323741
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-TRANSFER-7-7",
+          "pathOrder": 6,
+          "position": "end",
+          "point": {
+            "x": 0.5844640434192673,
+            "y": 0.36019184172661867
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-TRANSFER-7-8",
+          "pathOrder": 7,
+          "position": "start",
+          "point": {
+            "x": 0.34175712347354137,
+            "y": 0.11496292086330935
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-TRANSFER-7-8",
+          "pathOrder": 7,
+          "position": "end",
+          "point": {
+            "x": 0.737210379918589,
+            "y": 0.32841726618705036
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-RESERVATION-8-9",
+          "pathOrder": 8,
+          "position": "start",
+          "point": {
+            "x": 0.27887910447761194,
+            "y": 0.1830935251798561
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-WAREHOUSE-0-entity-RESERVATION-8-9",
+          "pathOrder": 8,
+          "position": "end",
+          "point": {
+            "x": 0.28713788331071916,
+            "y": 0.7025179856115108
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SKU-2-entity-RESERVATION-8-10",
+          "pathOrder": 9,
+          "position": "start",
+          "point": {
+            "x": 0.42203561736770695,
+            "y": 0.5285971223021583
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Native",
+          "pathId": "identity-SKU-2-entity-RESERVATION-8-10",
+          "pathOrder": 9,
+          "position": "end",
+          "point": {
+            "x": 0.3766544776119403,
+            "y": 0.7025179856115108
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        }
+      ],
+      "official": [
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-BIN-1_0",
+          "pathOrder": 0,
+          "position": "start",
+          "point": {
+            "x": 0.23674214878523678,
+            "y": 0.15074687209679782
+          },
+          "occlusionDepth": 0,
+          "occluder": {
+            "order": 23,
+            "id": null,
+            "depth": 0
+          }
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-BIN-1_0",
+          "pathOrder": 0,
+          "position": "end",
+          "point": {
+            "x": 0.08582373571627923,
+            "y": 0.33414464534075095
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-BIN-1_entity-STOCK-3_1",
+          "pathOrder": 1,
+          "position": "start",
+          "point": {
+            "x": 0.08582373571627923,
+            "y": 0.5552851182197495
+          },
+          "occlusionDepth": 0,
+          "occluder": {
+            "order": 39,
+            "id": null,
+            "depth": 0
+          }
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-BIN-1_entity-STOCK-3_1",
+          "pathOrder": 1,
+          "position": "end",
+          "point": {
+            "x": 0.08582373571627923,
+            "y": 0.7234005563282335
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SKU-2_entity-STOCK-3_2",
+          "pathOrder": 2,
+          "position": "start",
+          "point": {
+            "x": 0.3820232797951766,
+            "y": 0.48737272599476267
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SKU-2_entity-STOCK-3_2",
+          "pathOrder": 2,
+          "position": "end",
+          "point": {
+            "x": 0.15129275985201668,
+            "y": 0.7234005563282335
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SUPPLIER-4_entity-PURCHASE_ORDER-5_3",
+          "pathOrder": 3,
+          "position": "start",
+          "point": {
+            "x": 0.9193913998275668,
+            "y": 0.19367176634214184
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SUPPLIER-4_entity-PURCHASE_ORDER-5_3",
+          "pathOrder": 3,
+          "position": "end",
+          "point": {
+            "x": 0.9193913998275668,
+            "y": 0.33414464534075095
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-PURCHASE_ORDER-5_entity-PURCHASE_LINE-6_4",
+          "pathOrder": 4,
+          "position": "start",
+          "point": {
+            "x": 0.9025949660243661,
+            "y": 0.5552851182197495
+          },
+          "occlusionDepth": 0,
+          "occluder": {
+            "order": 121,
+            "id": null,
+            "depth": 0
+          }
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-PURCHASE_ORDER-5_entity-PURCHASE_LINE-6_4",
+          "pathOrder": 4,
+          "position": "end",
+          "point": {
+            "x": 0.9048222011703446,
+            "y": 0.7234005563282335
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SKU-2_entity-PURCHASE_LINE-6_5",
+          "pathOrder": 5,
+          "position": "start",
+          "point": {
+            "x": 0.4887223137236404,
+            "y": 0.46357300483799113
+          },
+          "occlusionDepth": 0,
+          "occluder": {
+            "order": 62,
+            "id": null,
+            "depth": 0
+          }
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SKU-2_entity-PURCHASE_LINE-6_5",
+          "pathOrder": 5,
+          "position": "end",
+          "point": {
+            "x": 0.9339605165921118,
+            "y": 0.7234005563282335
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-TRANSFER-7_6",
+          "pathOrder": 6,
+          "position": "start",
+          "point": {
+            "x": 0.34344118271370055,
+            "y": 0.15596105923075665
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-TRANSFER-7_6",
+          "pathOrder": 6,
+          "position": "end",
+          "point": {
+            "x": 0.5826433875266315,
+            "y": 0.3647913820057154
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-TRANSFER-7_7",
+          "pathOrder": 7,
+          "position": "start",
+          "point": {
+            "x": 0.34344118271370055,
+            "y": 0.1276759438123424
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-TRANSFER-7_7",
+          "pathOrder": 7,
+          "position": "end",
+          "point": {
+            "x": 0.7332787436746097,
+            "y": 0.33414464534075095
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-RESERVATION-8_8",
+          "pathOrder": 8,
+          "position": "start",
+          "point": {
+            "x": 0.2820067497582528,
+            "y": 0.19367176634214184
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-WAREHOUSE-0_entity-RESERVATION-8_8",
+          "pathOrder": 8,
+          "position": "end",
+          "point": {
+            "x": 0.29022885645720486,
+            "y": 0.6957579972183588
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SKU-2_entity-RESERVATION-8_9",
+          "pathOrder": 9,
+          "position": "start",
+          "point": {
+            "x": 0.4227756556655319,
+            "y": 0.5276425591098748
+          },
+          "occlusionDepth": 0,
+          "occluder": {
+            "order": 62,
+            "id": null,
+            "depth": 0
+          }
+        },
+        {
+          "renderer": "Official",
+          "pathId": "cmp-official-1-id_entity-SKU-2_entity-RESERVATION-8_9",
+          "pathOrder": 9,
+          "position": "end",
+          "point": {
+            "x": 0.378247003710721,
+            "y": 0.6957579972183588
+          },
+          "occlusionDepth": 0,
+          "occluder": null
+        }
+      ],
+      "differences": []
+    },
+    "paintOrderComparison": {
+      "nativeOccludedTextCount": 1,
+      "officialOccludedTextCount": 1,
+      "mismatches": [],
+      "ratioDifferences": []
+    },
+    "overlapComparison": {
+      "nativeCount": 0,
+      "officialCount": 0,
+      "mismatches": [],
+      "toleratedMismatches": [],
+      "ratioDifferences": []
+    }
+  },
+  "schemaVersion": 1,
+  "mermaidVersion": "12.0.0",
+  "nativeImplementation": "0.1.19 edge-label code, unchanged in 0.1.20",
+  "caseCount": 1,
+  "screenshotCount": 2,
+  "overallVisualStatus": "Review",
+  "reason": "Independent node/text geometry and raster differences remain",
+  "productionCodeChangedForOcclusion": false,
+  "screenshotsAndManifests": [
+    {
+      "file": "rc_er_inventory_network_native.png",
+      "sha256": "eea7fad5eb48f125e8c7b38daab0ec48f439afc8d9721913c737cca58081559f"
+    },
+    {
+      "file": "rc_er_inventory_network_native.manifest.json",
+      "sha256": "5fc172c818981f068c8f2b27021168d3588f50a387a4cc86abcbab7e5d2768fe"
+    },
+    {
+      "file": "rc_er_inventory_network_official.png",
+      "sha256": "bfea5056a045f757fc9f3e38f8e69e6aae3531d9a710539761c4bf07b411f73e"
+    },
+    {
+      "file": "rc_er_inventory_network_official.manifest.json",
+      "sha256": "aeb47b452de0ccd6aae662e75d23d679d244304401648f4cd73c543d4948d971"
+    }
+  ]
+}

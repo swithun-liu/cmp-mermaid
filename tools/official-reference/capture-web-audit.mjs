@@ -1090,6 +1090,10 @@ async function extractOfficialManifest(page, caseId) {
         ? pathTopology(routePoints(element))
         : null;
       const roughGeometryGroup = element.closest(roughGroupSelector);
+      const screenMatrix = tag === 'path' ? element.getScreenCTM() : null;
+      const pathMatrix = screenMatrix != null && inverseScreenMatrix != null
+        ? inverseScreenMatrix.multiply(screenMatrix)
+        : null;
       elements.push({
         order: elements.length,
         zIndex: null,
@@ -1102,6 +1106,13 @@ async function extractOfficialManifest(page, caseId) {
         classes: [...element.classList],
         geometryGroup: roughGeometryGroups.get(roughGeometryGroup) ?? null,
         bounds: elementBounds,
+        ...(tag === 'path' ? {
+          pathData: element.getAttribute('d'),
+          pathTransform: pathMatrix == null ? null : {
+            a: pathMatrix.a, b: pathMatrix.b,
+            c: pathMatrix.c, d: pathMatrix.d,
+          },
+        } : {}),
         outlinePoints: textElement
           ? textOutlinePoints(element)
           : geometryOutlinePoints(element, fill),

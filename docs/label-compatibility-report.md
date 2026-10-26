@@ -1,6 +1,12 @@
 # Label compatibility repair report
 
-Release: **0.1.19**. Upstream baseline: **Mermaid.js 12.0.0**.
+Release: **0.1.20**. Upstream baseline: **Mermaid.js 12.0.0**.
+
+The edge-label production code and its 32-source evidence were captured at
+0.1.19 and are unchanged in 0.1.20. The 0.1.19 publication was withheld after
+a geometry audit false positive. The
+[SVG rectangle occlusion audit repair](rectangle-occlusion-audit.md)
+records the cause, corrected detection and a separate two-image reproduction.
 
 The current repair follows the [final edge-label source inventory](upstream-edge-label-map.md).
 Flowchart and ER now execute `insertEdge`'s final SVG-path coordinate check;

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T04:26:50.922Z",
+  "inputDirectory": ".",
+  "corpusSource": "production",
+  "corpusKind": "all",
+  "theme": null,
+  "caseCount": 1,
+  "thresholds": {
+    "minimumInkPixels": 100,
+    "minimumContentSize": 20,
+    "minimumWidthRatio": 0.8,
+    "maximumWidthRatio": 1.35,
+    "minimumHeightRatio": 0.8,
+    "maximumHeightRatio": 1.25,
+    "minimumInkRatio": 0.4,
+    "maximumInkRatio": 1.7
+  },
+  "failures": [],
+  "reviews": [],
+  "cases": [
+    {
+      "id": "rc_er_inventory_network",
+      "kind": "er",
+      "layout": "dagre",
+      "native": {
+        "gridSize": 96,
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 134685,
+        "inkRatio": 0.12470833333333334,
+        "contentBounds": {
+          "x": 13,
+          "y": 176,
+          "width": 1176,
+          "height": 551
+        }
+      },
+      "official": {
+        "gridSize": 96,
+        "width": 1200,
+        "height": 900,
+        "background": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "backgroundColors": [
+          [
+            255,
+            255,
+            255,
+            255
+          ]
+        ],
+        "inkPixels": 128787,
+        "inkRatio": 0.11924722222222223,
+        "contentBounds": {
+          "x": 31,
+          "y": 183,
+          "width": 1141,
+          "height": 537
+        }
+      },
+      "manifestWidthRatio": 0.9888547341829207,
+      "manifestHeightRatio": 0.9666203059805285,
+      "manifestGeometryWidthRatio": 1.0050921214780562,
+      "manifestGeometryHeightRatio": 1.0000000305192427,
+      "widthRatio": 1.030674846625767,
+      "heightRatio": 1.0260707635009312,
+      "inkRatio": 1.0457965477882085
+    }
+  ]
+}

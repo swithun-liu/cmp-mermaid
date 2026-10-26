@@ -103,6 +103,49 @@ test('recognizes Mermaid node-bkg paths as opaque node backgrounds', () => {
   assert.equal(result.paintOrderComparison.officialOccludedTextCount, 1);
 });
 
+test('recognizes solid SVG rectangle paths without a node-bkg class', () => {
+  const result = compareDetailManifests(
+    manifest([text('covered-label', 0), shape('background', 1)]),
+    manifest([text('covered-label', 0), rectanglePath('background', 1)]),
+  );
+  assert.equal(result.status, 'pass');
+  assert.equal(result.paintOrderComparison.nativeOccludedTextCount, 1);
+  assert.equal(result.paintOrderComparison.officialOccludedTextCount, 1);
+});
+
+test('keeps true SVG rectangle paint-order differences as failures', () => {
+  const result = compareDetailManifests(
+    manifest([rectanglePath('background', 0), text('covered-label', 1)]),
+    manifest([text('covered-label', 0), rectanglePath('background', 1)]),
+  );
+  assert.equal(result.status, 'fail');
+  assert.ok(result.findings.some(({ code }) => code === 'paint-order-occlusion'));
+});
+
+test('rejects transparent, curved and rotated path bounding boxes as occluders', () => {
+  for (const override of [
+    { fill: color(255, 255, 255, 0) },
+    { pathData: 'M30 8 C40 8 60 8 80 8 L80 22 L30 22' },
+    {
+      pathTransform: { a: 0.7, b: 0.7, c: -0.7, d: 0.7 },
+      outlinePoints: [
+        { x: 55, y: 8 }, { x: 80, y: 15 },
+        { x: 55, y: 22 }, { x: 30, y: 15 },
+      ],
+    },
+  ]) {
+    const result = compareDetailManifests(
+      manifest([text('covered-label', 0), shape('background', 1)]),
+      manifest([
+        text('covered-label', 0),
+        { ...rectanglePath('background', 1), ...override },
+      ]),
+    );
+    assert.equal(result.paintOrderComparison.officialOccludedTextCount, 0);
+    assert.ok(result.findings.some(({ code }) => code === 'paint-order-occlusion'));
+  }
+});
+
 test('tolerates small occlusion-ratio differences from text box semantics', () => {
   const official = manifest([
     text('covered-label', 0),
@@ -1275,6 +1318,20 @@ function nodeBackgroundPath(id, order) {
     type: 'path',
     role: 'path',
     classes: ['node-bkg'],
+  };
+}
+
+function rectanglePath(id, order) {
+  return {
+    ...shape(id, order),
+    type: 'path',
+    role: 'path',
+    pathData: 'M30 8 L80 8 L80 22 L30 22',
+    pathTransform: { a: 1, b: 0, c: 0, d: 1 },
+    outlinePoints: [
+      { x: 30, y: 8 }, { x: 80, y: 8 },
+      { x: 80, y: 22 }, { x: 30, y: 22 },
+    ],
   };
 }
 

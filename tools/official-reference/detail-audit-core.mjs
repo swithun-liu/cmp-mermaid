@@ -1,3 +1,5 @@
+import { isSvgRectanglePath } from './svg-rectangle-path.mjs';
+
 const defaultThresholds = Object.freeze({
   maximumTextCenterDistance: 0.12,
   maximumTextSizeLogRatio: Math.log(1.8),
@@ -1180,9 +1182,29 @@ function isOpaquePaintElement(element) {
   const classes = Array.isArray(element.classes) ? element.classes : [];
   const isNodeBackgroundPath =
     element.type === 'path' && classes.includes('node-bkg');
-  if (element.type !== 'shape' && !isNodeBackgroundPath) return false;
+  const isRectanglePath =
+    element.type === 'path' &&
+    isSvgRectanglePath(element.pathData) &&
+    hasAxisAlignedRectangleOutline(element);
+  if (element.type !== 'shape' && !isNodeBackgroundPath && !isRectanglePath) {
+    return false;
+  }
   if (element.fill?.reference != null) return true;
   return (element.fill?.a ?? 0) >= 230;
+}
+
+function hasAxisAlignedRectangleOutline(element) {
+  const matrix = element.pathTransform;
+  if (matrix == null ||
+      ![matrix.a, matrix.b, matrix.c, matrix.d].every(Number.isFinite)) {
+    return false;
+  }
+  // The DOM-to-SVG matrix must preserve the rectangle's axis alignment.
+  // Arbitrary rotation or skew makes its bounding box invalid for occlusion.
+  return (
+    (matrix.b === 0 && matrix.c === 0 && matrix.a !== 0 && matrix.d !== 0) ||
+    (matrix.a === 0 && matrix.d === 0 && matrix.b !== 0 && matrix.c !== 0)
+  );
 }
 
 function visibleTextElements(analysis, thresholds) {

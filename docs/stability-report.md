@@ -18,6 +18,10 @@
 > The fresh label repair audit covers 32 sources, 64 screenshots and
 > five contact sheets: 14 Pass, 18 Review, 0 Fail. The full JVM and
 > Wasm core suites pass.
+> Release 0.1.20 preserves the edge-label production implementation tested
+> at 0.1.19 and corrects a rectangle-path occlusion audit false positive.
+> Its separate [one-source reproduction](rectangle-occlusion-audit.md)
+> has two screenshots and remains visual Review.
 > Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS retain separate historical 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
@@ -55,9 +59,10 @@ stress inputs.
 | Separate deterministic Native stress inputs | 7,936 |
 | JVM tests | Core: 1,094 passed, 0 failed; Compose: 73 passed, 0 failed |
 | Current container-width JVM tests | Core: 1,100 passed, 0 failed; Compose: 75 passed, 0 failed |
-| Current 0.1.19 edge-label JVM tests | Core: 1,105 passed, 0 failed; Compose: 75 passed, 0 failed |
-| Current 0.1.19 Wasm tests | Core: 1,103 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| Current 0.1.19 iOS Simulator Arm64 tests | Core: 1,103 passed, 0 failed; Compose: 76 passed, 0 failed |
+| Current 0.1.20 edge-label JVM tests | Core: 1,105 passed, 0 failed; Compose: 75 passed, 0 failed; unchanged tests verified from Gradle cache |
+| Unchanged edge-label implementation, tested at 0.1.19 on Wasm | Core: 1,103 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| Unchanged edge-label implementation, tested at 0.1.19 on iOS Simulator Arm64 | Core: 1,103 passed, 0 failed; Compose: 76 passed, 0 failed |
+| Current rectangle-path audit | 77 audit tests passed; one public source, two screenshots; both sides occlude one label; no occlusion differences; visual Review for independent geometry/raster differences |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
